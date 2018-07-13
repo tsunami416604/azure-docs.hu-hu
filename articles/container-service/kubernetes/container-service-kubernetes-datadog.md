@@ -1,6 +1,6 @@
 ---
-title: A figyelő Azure Kubernetes fürt Datadog
-description: Figyelési Kubernetes Datadog használata az Azure Tárolószolgáltatás-fürt
+title: Azure-beli Kubernetes-fürt figyelése a Datadoggal
+description: Figyelés a Datadoggal használata az Azure Container Service Kubernetes-fürtön
 services: container-service
 author: bburns
 manager: jeconnoc
@@ -10,30 +10,30 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 0a3f0baa4998dbc594023935575d659f7d45bbb9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32161990"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38629069"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-datadog"></a>A figyelő egy DataDog az Azure Tárolószolgáltatás-fürt
+# <a name="monitor-an-azure-container-service-cluster-with-datadog"></a>A figyelő az Azure Container Service-fürt a Datadoggal
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató feltételezi, hogy rendelkezik [a Kubernetes Azure Tárolószolgáltatási fürt létrehozott](container-service-kubernetes-walkthrough.md).
+Az útmutató feltételezi, hogy [egy Kubernetes-fürtöt az Azure Container Service használatával létrehozott](container-service-kubernetes-walkthrough.md).
 
-Azt is feltételezi, hogy a `az` Azure cli és `kubectl` eszközök vannak telepítve.
+Azt is feltételezi, hogy a `az` az Azure cli és `kubectl` telepített eszközök.
 
-Ha tesztelheti a `az` eszköz futtatásával telepítve:
+Ha rendelkezik tesztelheti a `az` futtatásával telepített eszköz:
 
 ```console
 $ az --version
 ```
 
-Ha nem rendelkezik a `az` eszköz telepítve, az e-mail utasításokat is [Itt](https://github.com/azure/azure-cli#installation).
+Ha nem rendelkezik a `az` eszközt telepítette, az e-mail utasításokat is [Itt](https://github.com/azure/azure-cli#installation).
 
-Ha tesztelheti a `kubectl` eszköz futtatásával telepítve:
+Ha rendelkezik tesztelheti a `kubectl` futtatásával telepített eszköz:
 
 ```console
 $ kubectl version
@@ -45,16 +45,16 @@ Ha nem rendelkezik `kubectl` telepítve, futtatható:
 $ az acs kubernetes install-cli
 ```
 
-## <a name="datadog"></a>DataDog
-Datadog egy figyelési szolgáltatás, amely a figyelési adatokat gyűjt a tárolók skálázása az Azure Tárolószolgáltatás-fürt belül. Datadog rendelkezik egy Docker integrációs irányítópultot, ahol láthatja adott mérőszámok belül a tárolók. A tárolók gyűjtött metrikák Processzor, memória, hálózati és i/o szerint vannak rendszerezve. Datadog metrikák felosztja a tárolók és a képeket.
+## <a name="datadog"></a>Datadoggal
+Datadoggal egy olyan megfigyelő szolgáltatás, amely figyelési adatait gyűjti össze az Azure Container Service-fürtben található tárolókat. Datadoggal rendelkezik, ahol megtekintheti az adott mérőszámok belül a tárolókat a Docker integrációs irányítópult. A tárolók gyűjtött metrikák CPU, memória, hálózati és i/o szerint vannak rendezve. Datadoggal metrikák felosztja a tárolók és a képeket.
 
-Először [-fiók létrehozása](https://www.datadoghq.com/lpg/)
+Először létre kell [-fiók létrehozása](https://www.datadoghq.com/lpg/)
 
-## <a name="installing-the-datadog-agent-with-a-daemonset"></a>Egy DaemonSet a Datadog ügynök telepítése
-A tároló egyetlen példány futhat az a fürt minden egyes állomás DaemonSets Kubernetes használják.
-Fontosságúak tökéletes figyelőügynökök futtatásához.
+## <a name="installing-the-datadog-agent-with-a-daemonset"></a>A DaemonSet a Datadoggal ügynök telepítése
+Kubernetes DaemonSets használják egy tárolót egyetlen példányát futtatni a fürt minden gazdagépen.
+Azok a futó monitorozási ügynökök ideális.
 
-Miután a Datadog jelentkezett, a [Datadog utasításokat](https://app.datadoghq.com/account/settings#agent/kubernetes) Datadog ügynökök telepítése a fürt egy DaemonSet használatával.
+Miután a Datadoggal bejelentkezett, a [Datadoggal utasításokat](https://app.datadoghq.com/account/settings#agent/kubernetes) Datadoggal ügynökök telepíthetők a fürtön a DaemonSet használatával.
 
 ## <a name="conclusion"></a>Összegzés
-Ennyi az egész! Miután az ügynököket működik, és meg kell jelennie a konzol adatainak néhány perc múlva. Az integrált ellátogathat [kubernetes irányítópult](https://app.datadoghq.com/screen/integration/kubernetes) a fürt összegzését.
+Ennyi az egész! Ha az ügynökök és megtekintheti a konzol adatainak néhány perc múlva. Keresse fel az integrált [kubernetes-irányítópult](https://app.datadoghq.com/screen/integration/kubernetes) a fürt összegzését.

@@ -1,6 +1,6 @@
 ---
-title: Áthelyezési egy Contoso alkalmazást át kell telepítenie az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoporthoz |} Microsoft Docs
-description: Ismerje meg, hogyan Contoso áthelyezési át kell telepítenie a helyszíni alkalmazások az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoporthoz
+title: A Contoso alkalmazás újratárolása migrálással, az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoporthoz |} A Microsoft Docs
+description: Ismerje meg, hogyan Contoso egy helyszíni alkalmazás újratárolása migrálással, az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoporthoz
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,62 +8,62 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 03e3aaad810f6ccd5fb376765ddbada072dedb06
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 33ab56003f2d9428816ea0f32cfd6381ea857df3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301303"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611288"
 ---
-# <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso áttelepítése: az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoport helyi alkalmazások áthelyezési
+# <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso áttelepítési: egy a helyszíni alkalmazás Újratárolása az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoport
 
-Ez a cikk bemutatja, hogyan Contoso áthelyezési SmartHotel alkalmazásuk Azure-ban. Egy Azure virtuális Gépen, és az alkalmazás-adatbázis egy Azure SQL Server virtuális gépre, az SQL Server AlwaysOn rendelkezésre állási csoportok Windows Server feladatátvevő fürtben fut az alkalmazás előtér virtuális gép áttelepítés után.
+Ez a cikk bemutatja, hogyan a Contoso áthelyezési SmartHotel alkalmazás az Azure-ban. Egy Azure virtuális Gépen, és az alkalmazás-adatbázis az Azure SQL Server virtuális Gépet, az SQL Server AlwaysOn rendelkezésre állási csoportok Windows Server feladatátvevő fürtben való az alkalmazás előtérbeli virtuális gép át azokat.
 
-Ez a dokumentum az egyik egy sorozat része, amelyek megjelenítik a hogyan fiktív cég Contoso áttelepíti a Microsoft Azure felhőbe a helyszíni erőforrások cikkeket. Az adatsorozat háttér-információkat, és a szolgáltatásokat, amelyek bemutatják, egy áttelepítési infrastruktúra beállításával, a helyszíni erőforrások az áttelepítéshez értékelésére, és áttelepítések különböző típusú futtató tartalmaz. Forgatókönyvek nő összetettségét, és adott idő alatt további cikkek fel kell venni.
+Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Contoso áttelepíti a saját helyszíni erőforrásokat a Microsoft Azure felhőbe. A sorozat része a háttér-információkat és forgatókönyvek, amelyek a migrálás infrastruktúra beállításával, az áttelepítéshez a helyszíni erőforrások értékelése és áttelepítések különböző típusú futtató mutatják be. Forgatókönyvek egyre összetettebbé válnak, és idővel további cikkek adunk hozzá.
 
 **Cikk** | **Részletek** | **Állapot**
 --- | --- | ---
-[A következő cikket: 1: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk adatsorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
-[2. cikk: Az Azure-infrastruktúra telepítése](contoso-migration-infrastructure.md) | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Ugyanabban az infrastruktúrában található összes áttelepítési cikkek szolgál. | Elérhető
-[3. cikk: A helyszíni erőforrások felmérése](contoso-migration-assessment.md)  | Bemutatja, hogyan Contoso fut-e egy helyszíni kétrétegű SmartHotel alkalmazást a VMware rendszerben futó értékelését. Contoso értékeli az alkalmazás virtuális gépek a [Azure áttelepítése](migrate-overview.md) szolgáltatás, és az alkalmazás SQL Server-adatbázis a [adatbázis áttelepítési Segéd](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
-[4. cikk: Áthelyezési az alkalmazások az Azure virtuális gépek és a felügyelt SQL-példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Bemutatja, hogyan Contoso fut a növekedési és shift áttelepítése az Azure-bA az SmartHotel alkalmazás. Contoso áttelepíti az alkalmazás előtér VM használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az alkalmazás-adatbázis SQL felügyelt példányához, használja a [Azure adatbázis áttelepítési szolgáltatás](https://docs.microsoft.com/azure/dms/dms-overview). | Elérhető
-[5. cikk: Áthelyezési az alkalmazásoknak az Azure virtuális gépek](contoso-migration-rehost-vm.md) | Bemutatja, hogyan Contoso át a SmartHotel app virtuális gépek csak a Site Recovery segítségével.
-Cikk 6: Áthelyezési az alkalmazások Azure virtuális gépek és az SQL Server Always On rendelkezésre állási csoportnak (Ez a cikk) | Bemutatja, hogyan Contoso áttelepíti a SmartHotel alkalmazást. Contoso Site Recovery segítségével telepíti át az alkalmazás virtuális gépek és az adatbázis áttelepítési szolgáltatás áttelepítése az alkalmazás adatbázis AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Elérhető
-[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépen](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso működik a növekedési és shift áttelepítését a Linux osTicket alkalmazást az Azure virtuális gépen, a Site Recovery segítségével | Tervezve
-[8. cikk: Áthelyezési egy Linux alkalmazást az Azure virtuális gépek és az Azure-beli MySQL kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan Contoso Azure virtuális gépeken futó Site Recovery segítségével a Linux osTicket alkalmazást áttelepíti, és az alkalmazás adatbázis áttelepítése egy Azure-beli MySQL Server-példányhoz MySQL munkaterület használatával. | Elérhető
+[1. cikk: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk sorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
+[2. cikk: Egy Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Az összes migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Elérhető
+[3. cikk: A helyszíni erőforrások értékelése](contoso-migration-assessment.md)  | Bemutatja, hogyan Contoso fut a VMware-en futó helyszíni kétrétegű SmartHotel alkalmazás értékelése. Contoso alkalmazás rendelkező virtuális gépek értékeli a [Azure Migrate](migrate-overview.md) szolgáltatás és az alkalmazás SQL Server-adatbázisnak a [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
+[4. cikk: Egy alkalmazás Újratárolása az Azure virtuális gépek és a egy felügyelt SQL-példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Bemutatja, hogyan Contoso fut egy lift-and-shift-migrálás az Azure-bA az SmartHotel alkalmazás. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az alkalmazás-adatbázis SQL felügyelt példányra, használja a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Elérhető
+[5. cikk: Egy alkalmazás Újratárolása az Azure virtuális gépek](contoso-migration-rehost-vm.md) | Bemutatja, hogyan a Contoso át a SmartHotel app virtuális gépek csak a Site Recovery használatával.
+A cikk 6: Egy alkalmazás Újratárolása az Azure virtuális gépek és az SQL Server Always On rendelkezésre állási csoportot (Ez a cikk) | Bemutatja, hogyan telepíti át a Contoso a SmartHotel alkalmazást. Contoso számára, hogy az alkalmazás virtuális gépeit és a Database Migration service, az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt a Site Recovery használja. | Elérhető
+[7. cikk: Egy Linux alkalmazás Újratárolása az Azure virtuális gépek](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso hajtja végre a Linux osTicket alkalmazás lift-and-shift áttelepítés Azure virtuális gépekre, a Site Recovery | Tervezve
+[A cikk 8: Egy Linux alkalmazás Újratárolása az Azure virtuális gépek és az Azure MySQL-kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
 
 
 
-Ebben a cikkben a Contoso a kétrétegű Windows telepíti át. Az Azure-bA VMware virtuális gépeken futó NET SmartHotel alkalmazást. Ha azt szeretné, az alkalmazás használatához, való nyílt forráskódú, és letöltheti a [GitHub](https://github.com/Microsoft/SmartHotel360).
+Ez a cikk a Contoso a kétrétegű Windows át. NET SmartHotel alkalmazás VMware virtuális gépeken futó Azure-bA. Ha szeretné használni ezt az alkalmazást, nyílt forráskódú nyújtja, és töltheti le a [GitHub](https://github.com/Microsoft/SmartHotel360).
 
-## <a name="business-drivers"></a>A stratégiai célok
+## <a name="business-drivers"></a>A stratégiai
 
-Az informatikai vezetőségi tagja szorosan együttműködik az üzleti partnerek megértéséhez válasszon ezek közül az áttelepítés számára:
+Az informatikai vezetőségi szorosan együttműködik az üzleti partnerek megértéséhez, amit szeretnének való áttérés eléréséhez:
 
-- **Üzleti növekedési cím**: Contoso egyre, és ennek eredményeképpen nincs nyomás a helyszíni rendszer és a infrastruktúra.
-- **Hatékonyabbá teheti**: Contoso kell távolítsa el a felesleges eljárásokat, és folyamatok egyszerűsíthető a fejlesztők és a felhasználók számára.  Üzleti igények informatikai fogja használni, és nem hulladék idő vagy pénz, így gyorsabban továbbítása az ügyfelek igényei.
-- **Növeli az agilitást**: Contoso informatikai kell lennie a gyorsabb, az üzleti igényeihez. Gyorsabb, mint a piactéren, a sikeres versenyképes engedélyezéséhez módosításokat reagálni képesnek kell lennie.  Ez nem útban, vagy egy üzleti blokkoló válnak.
-- **Skála**: növekedésével az üzleti sikeresen, a Contoso informatikai biztosítania kell a korábbi rendszerek esetén képes ütemben nő.
+- **Üzleti növekedés cím**: Contoso nő, és ennek eredményeképpen nincs a helyszíni rendszerek és infrastruktúra nyomás.
+- **Növelheti a hatékonyságot**: Contoso cégnek szüksége van, távolítsa el a felesleges eljárásokat, és egyszerűsíthetők a folyamatok a fejlesztők és a felhasználók számára.  Az üzleti igények informatikai gyorsan, és nem Hulladékmennyiség idő vagy költséget takaríthat meg, így gyorsabban továbbítása az ügyfelek igényei.
+- **A gyorsaság növeléséhez**: Contoso IT kell lennie a rugalmasabb ügyfélkapcsolatok kialakítását teszi az üzleti igényeinek. Reagáljon gyorsabban a Marketplace-en, a versenyképes sikeres engedélyezése a módosításokat, képesnek kell lennie.  Azt nem a módon, vagy egy üzleti blocker válnak.
+- **Méretezési csoport**: a vállalat növekedésével sikeres, a Contoso informatikai kell megadnia rendszerek, amelyek képesek a ugyanolyan ütemben nő.
 
 ## <a name="migration-goals"></a>Áttelepítési célok
 
-A Contoso felhő team le az áttelepítés célokat van rögzítve. A legjobb áttelepítési módszer meghatározásához használt ezen célok:
+A Contoso felhőalapú csapat az áttelepítés célok le van rögzítve. Ezen célok lett felhasználva megállapítható hogy melyik a leginkább megfelelő áttelepítési módszer:
 
-- Az áttelepítés után az alkalmazás az Azure-ban kell azonos teljesítménybeli képességeinek azonban jelenleg nem VMWare.  Az alkalmazás el kritikus jelzéssel a felhőben, mert az a helyszínen marad.
-- Contoso nem szeretné, hogy az alkalmazás beruházásának.  Fontos, hogy az üzleti tevékenységre vonatkozóan, de az aktuális képernyőn egyszerűen szeretnék biztonságosan helyezze át a felhőbe.
-- Az alkalmazás a helyi adatbázis volt-e elérhetőségével kapcsolatos problémákat. Ezek szeretné látni, az Azure szolgáltatásba telepített feladatátvételi lehetőségeket, magas rendelkezésre állású fürtöt.
-- A Contoso biztosítani az aktuális SQL Server 2008 R2 platform frissíthet az SQL Server 2017.
-- Contoso nem szeretné használni ezt az alkalmazást egy Azure SQL Database, és alternatívák keres.
+- Az áttelepítés után az alkalmazás az Azure-ban kell teljesítmény ugyanazokat a lehetőségeket, mint jelenleg VMWare-ben.  Az alkalmazás kritikus jelzéssel a felhőben, a helyszínen marad.
+- Nem a Contoso szeretné fektethet be ezt az alkalmazást.  Fontos, hogy az üzleti, de a jelenlegi formájában egyszerűen szeretnék biztonságosan áthelyezése a felhőbe.
+- Az alkalmazás a helyi adatbázis rendelkezésre állási problémák esetében. Ezek szeretné látni, telepített Azure-ban magas rendelkezésre állású fürtbe, a feladatátvételt is használhat.
+- A Contoso biztosítani szeretné a jelenlegi platform az SQL Server 2008 R2 verzióról az SQL Server 2017.
+- A Contoso nem szeretné használni ezt az alkalmazást az Azure SQL Database és lehetőségeket keres.
 
-## <a name="proposed-architecture"></a>Javasolt architektúrája
+## <a name="proposed-architecture"></a>Javasolt architektúra
 
 Ebben a forgatókönyvben:
 
-- Az alkalmazás többszintű két virtuális gépet (WEBVM SQLVM) között.
-- A virtuális gépek a VMware ESXi-állomáson lévő **contosohost1.contoso.com** (6.5-ös verzió)
-- A VMware-környezetben kezeli a vCenter Server 6.5-ös (**vcenter.contoso.com**), a virtuális gép futó.
-- Contoso rendelkezik egy olyan helyszíni adatközpontban (a contoso-adatközpontban), egy a helyi tartományvezérlővel (**contosodc1**).
-- A helyszíni virtuális gépek a Contoso adatközpontban fog kell szerelni, az áttelepítés befejezése után.
+- Az alkalmazás többszintű (WEBVM és SQLVM) két virtuális gép között.
+- VMware ESXi-gazdagépen található virtuális gépek **contosohost1.contoso.com** (6.5-ös verzió)
+- A VMware-környezet kezeli a vCenter Server 6.5-ös (**vcenter.contoso.com**), egy virtuális gépen futó.
+- Contoso rendelkezik egy helyszíni adatközpont (contoso-datacenter), egy helyszíni tartományvezérlővel (**contosodc1**).
+- A helyszíni virtuális gépeket a Contoso-datacenter elvesznek az áttelepítés befejezése után.
 
 ![Forgatókönyv-architektúra](media/contoso-migration-rehost-vm-sql-ag/architecture.png) 
 
@@ -71,610 +71,610 @@ Ebben a forgatókönyvben:
 
 **Szolgáltatás** | **Leírás** | **Költségek**
 --- | --- | ---
-[Adatbázis-kezelési szolgáltatás](https://docs.microsoft.com/azure/dms/dms-overview) | Contoso áttelepíti az alkalmazás adatréteghez tartozó DMS használatával. DMS csatlakozzon a helyszíni SQLVM géphez pont-pont VPN-en keresztül, és lehetővé teszi, hogy zökkenőmentes áttelepítés DMS több adatbázis forrásból át az Azure data platformok, minimális állásidővel. | További tudnivalók [támogató régiók](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) DMS és get [díjszabása](https://azure.microsoft.com/pricing/details/database-migration/).
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Contoso fogja használni a Site Recovery a növekedési és shift az alkalmazás előtér virtuális gép áttelepítését. A Site Recovery koordinálja a kezeli a áttelepítési és vészhelyreállítás Azure virtuális gépek és a helyszíni virtuális gépek és fizikai kiszolgálók.  | Az Azure-bA replikálás során Azure Storage díjak sem merülnek fel.  Azure virtuális gépek jönnek létre, és a függő díj terheli, feladatátvétel esetén. [További](https://azure.microsoft.com/pricing/details/site-recovery/) kapcsolatos díjakat és az árképzés terén.
+[Adatbázis-kezelési szolgáltatás](https://docs.microsoft.com/azure/dms/dms-overview) | Contoso migráljuk az alkalmazás adatrétegének DMS használatával. A DMS a helyszíni SQLVM géphez összekapcsolásához site-to-site VPN, és több adatbázisforrásokból az Azure-beli adat-platformokra, minimális állásidővel DMS lehetővé teszi, hogy zökkenőmentes áttelepítések át. | Ismerje meg [támogatott régiók](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) DMS és a get [díjszabás](https://azure.microsoft.com/pricing/details/database-migration/).
+[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Contoso lift-and-shift-áttelepítés, az alkalmazás előtérbeli virtuális gép Site Recovery használja. A Site Recovery koordinálja a migrálás és vész-helyreállítási kezeli az Azure virtuális gépek és a helyszíni virtuális gépek és fizikai kiszolgálók.  | Az Azure-ba, során Azure Storage-díjat számítunk fel.  Azure virtuális gépek jönnek létre, és a költségek, amikor feladatátvételt hajt végre. [További](https://azure.microsoft.com/pricing/details/site-recovery/) kapcsolatos díjakat és díjszabás.
 
  
 
-## <a name="migration-process"></a>áttelepítési folyamat
+## <a name="migration-process"></a>Áttelepítési folyamat
 
-- Contoso áttelepíti az alkalmazás virtuális gépek Azure-bA.
-- Az előtér virtuális gép lesz áttelepítés után a virtuális gép Azure Site Recovery:
-    - Első lépésként azok lesz előkészítése beállítása az Azure-összetevők és a helyszíni VMware-infrastruktúra előkészítése.
+- Contoso az alkalmazás virtuális gépeit áttelepíti az Azure-bA.
+- Azure virtuális gép Site Recovery használatával fog nekik az előtérbeli virtuális gép át:
+    - Első lépésként azok fog előkészítése beállítása az Azure-összetevőket, és a helyszíni VMware-infrastruktúra előkészítése.
     - Az előkészített mindent elindíthatják a virtuális gép replikálása.
-    - Miután replikáció engedélyezett-e, és dolgozik, áttelepítés után a virtuális gép által feladatátvételével az Azure-bA.
-- Az adatbázis lesz áttelepítés után az Azure-bA az adatok áttelepítési szolgáltatás (DMS) az SQL Server-fürtöt.
-    - Első lépésként kell kiépíteni az Azure SQL Server virtuális gépen a fürt és a belső terheléselosztók beállítása, és AlwaysOn rendelkezésre állási csoportok konfigurálása.
-    - Ennek a helyen akkor az adatbázis áttelepítése
-- Az áttelepítés után az adatbázis AlwaysOn védelmét lehetővé teszik lesz.
+    - Után a replikáció engedélyezve van és működik, azok áttelepítése a virtuális gép – Azure feladatátvétele.
+- SQL Server-fürtöt az Azure-ban, a Data Migration Service (DMS) használatával lesz nekik az adatbázis át.
+    - Első lépésként azok fog kell kiépíteni az SQL Server virtuális gépek az Azure-ban, állítsa be a fürt és a egy belső terheléselosztót, és AlwaysOn rendelkezésre állási csoportok konfigurálása.
+    - A helyen, az adatbázis migrálása
+- Az áttelepítés után a használatukkal fogja az adatbázis AlwaysOn védelmét.
 
-![áttelepítési folyamat](media/contoso-migration-rehost-vm-sql-ag/migration-process.png) 
+![Áttelepítési folyamat](media/contoso-migration-rehost-vm-sql-ag/migration-process.png) 
  
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez mit meg (és a Contoso) futtatnia kell a forgatókönyv:
+Itt látható, milyen meg (és Contoso) kell futtatni az ebben a forgatókönyvben:
 
 **Követelmények** | **Részletek**
 --- | ---
-**Azure-előfizetés** | Kell már létrehozott egy előfizetést az értékelés a sorozat első cikkében végrehajtásakor. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> Ha ingyenes fiókot hoz létre, Ön lesz az előfizetés rendszergazdája, és minden műveletet végrehajthat.<br/><br/> Ha még nem a rendszergazda egy meglévő előfizetéshez használ, meg kell dolgoznia a rendszergazdától, hogy rendeljen Önhöz tulajdonosi vagy közreműködői engedélyekkel kell rendelkeznie.<br/><br/> Ha részletesebb engedélyekre van szükség, tekintse át a [Ez a cikk](../site-recovery/site-recovery-role-based-linked-access-control.md). 
-**Azure-infrastruktúra** | [Megtudhatja, hogyan](contoso-migration-infrastructure.md) Contoso beállítása az Azure-infrastruktúra.<br/><br/> További információ a konkrét [hálózati](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network) és [tárolási](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage) Site Recovery követelményei.
-**A Site recovery (helyszíni)** | A helyszíni vCenter server 5.5, 6.0 vagy 6.5 kell futnia<br/><br/> Az ESXi-állomáson, 5.5, 6.0 vagy 6.5-ös verzióját<br/><br/> Egy vagy több VMware virtuális gépek az ESXi-állomáson futó.<br/><br/> Meg kell felelnie a virtuális gépek [Azure-követelményeknek](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements).<br/><br/> Támogatott [hálózati](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network) és [tárolási](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage) konfigurációs.<br/><br/> Meg kell felelnie a replikálni kívánt virtuális gépeket [Azure-követelményeknek](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements).
-**DMS** | A DMS kell egy [kompatibilis helyszíni VPN-eszköz](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).<br/><br/> Be kell tudnia a helyszíni VPN-eszköz konfigurálásához. Külsőleg irányuló nyilvános IPv4-cím kell rendelkeznie, és a cím nem található a NAT-eszköz mögött.<br/><br/> Ellenőrizze, hogy a helyszíni SQL Server-adatbázis elérhető lesz.<br/><br/> A Windows tűzfal a forrás adatbázismotor eléréséhez képesnek kell lennie. [További információk](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).<br/><br/> Ha a tűzfal előtt az adatbázis-számítógép, vegye fel a szabályokat, hogy engedélyezi a hozzáférést az adatbázishoz, és a fájlok SMB 445-ös porton keresztül.<br/><br/> SQL Server adatforráshoz kapcsolódnak, és felügyelt célpéldányának használt hitelesítő adatokat a sysadmin (rendszergazda) kiszolgálói szerepkör tagjának kell lennie.<br/><br/> Kell egy hálózati megosztás DMS használatával a forrás-adatbázis biztonsági mentése az a helyi adatbázisban.<br/><br/> Győződjön meg arról, hogy a szolgáltatás az adatforrás SQL Server-példányt futtató fióknak írási jogosultságokkal a hálózati megosztáson.<br/><br/> Jegyezze fel a Windows-felhasználó (és jelszó), amely teljes hozzáférési jogosultsággal rendelkezik a hálózati megosztáson. Az Azure-adatbázis áttelepítési szolgáltatás megszemélyesít ezeket a biztonsági mentési fájlok feltöltése az Azure storage-tároló felhasználói hitelesítő adatokat.<br/><br/> Az SQL Server Express telepítési folyamat beállítja a TCP/IP-protokoll **letiltott** alapértelmezés szerint. Győződjön meg arról, hogy engedélyezve van.
+**Azure-előfizetés** | Kell már létrehozott egy előfizetést az értékelés az oktatóanyag-sorozatban az első cikkben végrehajtását. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> Ha ingyenes fiókot hoz létre, Ön lesz az előfizetés rendszergazdája, és minden műveletet végrehajthat.<br/><br/> Ha egy meglévő előfizetést használ, és Ön nem a rendszergazda, kérjen a rendszergazdától tulajdonosi vagy közreműködői jogosultságot rendelhet, szeretne.<br/><br/> Ha részletesebb engedélyek van szüksége, tekintse át a [Ez a cikk](../site-recovery/site-recovery-role-based-linked-access-control.md). 
+**Azure-infrastruktúra** | [Ismerje meg, hogyan](contoso-migration-infrastructure.md) Contoso beállítása az Azure-infrastruktúrát.<br/><br/> További tudnivalók a specifikus [hálózati](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network) és [tárolási](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage) a Site Recovery követelményeinek.
+**A Site recovery (helyszíni)** | A helyszíni vCenter server 5.5-ös, 6.0-s vagy 6.5-ös verzió kell futnia<br/><br/> Egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú ESXi-gazdagép<br/><br/> Egy vagy több futtató VMware virtuális gépeket az ESXi-gazdagépen.<br/><br/> Meg kell felelnie a virtuális gépek [Azure-követelmények](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements).<br/><br/> Támogatott [hálózati](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network) és [tárolási](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage) konfigurációja.<br/><br/> Meg kell felelnie a replikálni kívánt virtuális gépek [Azure-követelmények](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements).
+**A DMS** | A DMS szüksége lesz egy [kompatibilis a helyszíni VPN-eszköz](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).<br/><br/> Konfigurálhatja a helyszíni VPN-eszköznek kell lennie. Egy kifelé irányuló, nyilvános IPv4-címmel kell rendelkeznie, és a cím nem található a NAT-eszköz mögött.<br/><br/> Ellenőrizze, hogy hozzáférése van a helyszíni SQL Server-adatbázisát.<br/><br/> A Windows tűzfal eléréséhez a forrás adatbázismotor képesnek kell lennie. [További információk](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).<br/><br/> Ha a tűzfal elé adatbázis számítógépe, engedélyezi a hozzáférést az adatbázishoz, és a fájlok SMB 445-ös porton keresztül szabályok hozzáadása.<br/><br/> A forrás SQL-kiszolgáló csatlakozik, és a cél felügyelt példány használt hitelesítő adatokat a sysadmin (rendszergazda) kiszolgálói szerepkör tagjának kell lennie.<br/><br/> Kell egy hálózati megosztás DMS használatával a forrás-adatbázis biztonsági mentése a helyi adatbázisban.<br/><br/> Győződjön meg arról, hogy az a forrás SQL Server-példányt futtató szolgáltatásfiók írási jogosultságokkal rendelkezik a hálózati megosztáson.<br/><br/> Jegyezze fel a Windows-felhasználó (és jelszó), amely teljes körű jogosultságokkal rendelkezik a hálózati megosztáson. Az Azure Database Migration Service megszemélyesíti a felhasználói hitelesítő adatokat a biztonsági mentési fájlok feltöltése az Azure storage-tárolóba.<br/><br/> Az SQL Server Express telepítési folyamat beállítja a TCP/IP protokoll **letiltott** alapértelmezés szerint. Győződjön meg arról, hogy engedélyezve van.
 
 
 ## <a name="scenario-steps"></a>A forgatókönyv lépései
 
-Ez a Contoso hogyan működik az áttelepítés:
+Itt látható, hogyan Contoso fog futni az áttelepítési:
 
 > [!div class="checklist"]
-> * **1. lépés: Az SQL Server virtuális gépek létrehozása az Azure-ban**: A magas rendelkezésre állás érdekében a Contoso telepíteni kívánja az Azure-ban fürtözött adatbázis. Két SQL Server virtuális gépek és az Azure belső terheléselosztót központi telepítése.
-> * **2. lépés: A fürt központi telepítése**: az SQL Server virtuális gépen való telepítése után az Azure SQL Server-fürt előkészítése.  Az adatbázis lesz áttelepítés után a korábban létrehozott fürtbe.
-> * **3. lépés: Felkészülés a DMS**: készítse elő a DMS regisztrálják az adatbázist szolgáltató, hozzon létre egy DMS-példányt, és a projekt. Akkor állítsa be a közös hozzáférésű jogosultságkód (SAS) egységes erőforrás-azonosító (URI). DMS a rendszergazdai (SA) URI-azonosítója, amelyhez a szolgáltatás feltölti az SQL Server biztonsági másolat fájljait tároló fiók elérésére használt.
-> * **4. lépés: Felkészülés Azure Site Recovery**: hoznak létre, és a Recovery Services-tároló replikált adatok tárolásához Azure storage-fiók.
-> * **5. lépés: A helyszíni VMware előkészítése a Site Recovery**: készítse elő a fiókok a virtuális gép felderítés és az ügynök telepítése, és készítse elő a helyszíni virtuális gépeket, hogy csatlakozhassanak Azure virtuális gépek a feladatátvételt követően.
-> * **6. lépés: Replikálása virtuális gépek**: replikáció beállításainak konfigurálása, és engedélyezze a virtuális gép replikációját.
-> * **7. lépés: Telepítse át a DMS adatbázis**: az adatbázis áttelepítés után.
-> * **8. lépés: A Site Recovery rendelkező virtuális gépek áttelepítése**: először futtassa a feladatátvételi teszt végrehajtásához ellenőrizze, hogy minden működik, telepítse át a virtuális gép teljes feladatátvétele követ.
+> * **1. lépés: Az SQL Server virtuális gépek létrehozása az Azure-ban**: magas rendelkezésre állás érdekében a Contoso szeretné az Azure-ban fürtözött adatbázis üzembe helyezése. Két SQL Server virtuális gépek és az Azure belső terheléselosztó üzembe helyezése.
+> * **2. lépés: A fürt üzembe helyezéséhez**: az SQL Server virtuális gépek üzembe helyezése után az Azure SQL Server-fürt előkészítéséhez.  Ezek a database fogjuk áttelepíteni az előre létrehozott fürt.
+> * **3. lépés: Készítse elő a DMS**: készítse elő a DMS regisztrálják az adatbázis-Migrálás szolgáltató, hozzon létre egy DMS-példány és a egy projektet. Akkor állítsa be a közös hozzáférésű jogosultságkód (SAS) egységes erőforrás-azonosító (URI). A DMS az SA URI-t használ, amelyhez a szolgáltatás az SQL Server biztonsági mentési fájlokat tölt fel a tárfiók tárolójának eléréséhez.
+> * **4. lépés: Készítse elő az Azure Site Recovery**: hoznak létre, amely tárolja a replikált adatok, és a egy Recovery Services-tároló Azure storage-fiókkal.
+> * **5. lépés: A Site Recovery a helyszíni VMware előkészítése**: a virtuális gépek felderítése és az ügynök telepítési fiókokat készít elő, és készítse elő a helyszíni virtuális gépeket, hogy képesek csatlakozni az Azure virtuális gépek a feladatátvételt követően.
+> * **6. lépés: A gépek replikálása**: replikációs beállítások konfigurálása, és engedélyezze a virtuális gép replikációja.
+> * **7. lépés: A DMS-adatbázis áttelepítése**: nekik át az adatbázist.
+> * **8. lépés: A Site Recovery a virtuális gépek áttelepítése az**: először győződjön meg arról, hogy minden megfelelően működik, a virtuális gép migrálásához teljes feladatátvétel követ, a feladatátvételi teszt futtatásához.
 
 
-## <a name="step-1-prepare-a-sql-server-alwayson-availability-group-cluster"></a>1. lépés: Felkészülés az SQL Server AlwaysOn rendelkezésre állási csoport fürt
+## <a name="step-1-prepare-a-sql-server-alwayson-availability-group-cluster"></a>1. lépés: Készítse elő az SQL Server AlwaysOn rendelkezésre állási csoport fürt
 
-Contoso szeretné előre tervezze meg az adatbázis az Azure-ban egy fürt üzembe helyezésével. Az egyéb adatbázisok majd használhatnak ehhez a fürthöz. 
+A Contoso biztosítani szeretné az adatbázis egy fürt az Azure-beli üzembe helyezésével tervez. Ehhez a fürthöz tartozó adatbázisok indítására használhatja. 
 
-- Az SQL Server virtuális gépen (a termelési erőforrások használt) ContosoRG erőforráscsoportban telepíti.
-- Egyedi nevek mellett mindkét virtuális gépek ugyanazt a beállítást használja.
+- Az SQL Server virtuális gépek telepíti (éles erőforrásait használt) ContosoRG az erőforráscsoportban.
+- Egyedi nevek szereplőkkel mindkét virtuális gép használja ugyanazokat a beállításokat.
 - A belső terheléselosztó lesz telepítve, a ContosoNetworkingRG (használt hálózati erőforrások).
-- Virtuális gépek Windows Server 2016 működik az SQL Server 2017 Enterprise Edition. Contoso nem rendelkezik az operációs rendszer licencek, hogy lesz lemezkép az Azure piactéren, amely arra a saját Azure EA előfizetési licenc biztosít.
+- Virtuális gépek Windows Server 2016-ban működik az SQL Server 2017 Enterprise Edition. Contoso nem rendelkezik licenccel az operációs rendszer, így azok képet fogja használni az Azure Marketplace-en, amely biztosítja az Azure nagyvállalati szerződéssel rendelkező elkötelezettségüket díj a licenc.
 
-Íme, Contoso hogyan állíthatja be a fürtöt:
+Itt látható, hogy Contoso hogyan állította be a fürt:
 
-1. Akkor hozzon létre két SQL Server virtuális gépen SQL Server 2017 vállalati Windows Server 2016-lemezkép kiválasztása az Azure piactéren. 
+1. Akkor hozzon létre két SQL Server virtuális gépek válassza ki az SQL Server 2017 Enterprise Windows Server 2016 rendszerképet az Azure Marketplace-en. 
 
-    ![SQL VIRTUÁLIS GÉP TERMÉKVÁLTOZAT](media/contoso-migration-rehost-vm-sql-ag/sql-vm-sku.png)
+    ![AZ SQL VIRTUÁLIS GÉP TERMÉKVÁLTOZATA](media/contoso-migration-rehost-vm-sql-ag/sql-vm-sku.png)
 
-2. Az a **hozható létre virtuális gép varázsló** > **alapjai**, azok konfigurálása:
+2. Az a **virtuális gép varázsló létrehozása** > **alapjai**, azok konfigurálása:
 
-    - A virtuális gépek neveit: **SQLAOG1** és **SQLAOG2**.
-    - Mivel a gépek üzleti szempontból kritikus fontosságú, lehetővé teszik az SSD a virtuális gép lemez típushoz.
-    - Akkor adja meg a számítógép hitelesítő adatait.
-    - Azok a központi telepítése a virtuális gépek az elsődleges USA keleti RÉGIÓJA 2 régió ContosoRG erőforráscsoportban.
+    - A virtuális gépek nevei: **SQLAOG1** és **SQLAOG2**.
+    - Mivel gépek üzleti szempontból kritikus fontosságú, azok SSD engedélyezése esetén a virtuális merevlemez típusa.
+    - Akkor adja meg a gép hitelesítő adatainak.
+    - Ezek az elsődleges USA keleti RÉGIÓJA 2 virtuális gépek üzembe helyezése régió ContosoRG az erőforráscsoportban.
 
-3. A **mérete**, mindkét virtuális gépek elindítja a D2s_V3 Termékváltozat. Lesz méretezés később szükség van.
+3. A **mérete**, mindkét virtuális gépek indítása D2s_V3 termékváltozatú. Ezek később szükség szerint skálázható.
 4. A **beállítások**, akkor tegye a következőket:
 
-    - Mivel a virtuális gépeken az alkalmazáshoz kritikus adatbázisok, felügyelt lemezek használata.
-    - Ezek helyezni a gépek a termelési hálózat az USA keleti RÉGIÓJA 2 elsődleges régió (**VNET-termék-EUS2**), az adatbázis alhálózat (**termék-DB-EUS2**).
-    - Akkor hozzon létre egy új rendelkezésre állási készlet: **SQLAOGAVSET**, két tartalék tartományok és öt frissítési tartományok.
+    - Mivel ezek a virtuális gépek az alkalmazás foglalja magába, felügyelt lemezeket használnak.
+    - Ezek a gépet helyez az éles hálózati környezetben, az USA keleti RÉGIÓJA 2 elsődleges régió (**VNET-ÉLES-EUS2**), az adatbázis-alhálózat (**ÉLES-DB-EUS2**).
+    - Akkor hozzon létre egy új rendelkezésre állási csoportot: **SQLAOGAVSET**, a két tartalék tartomány és öt frissítési tartománnyal.
 
     ![SQL VIRTUÁLIS GÉP](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
 
-4. A **SQL Server-beállítások**, SQL-kapcsolat a virtuális hálózathoz (személyes) korlátozzák az alapértelmezett 1433-as port. A hitelesítési azok használhatja ugyanazokat a hitelesítő adatokat használnak a helyszínen (**contosoadmin**).
+4. A **SQL Server-beállítások**, korlátozhatja a virtuális hálózathoz (személyes), SQL-kapcsolat az alapértelmezett 1433-as porton. A hitelesítési, használhatja ugyanazokat a hitelesítő adatokat használnak a helyszíni (**contosoadmin**).
 
     ![SQL VIRTUÁLIS GÉP](media/contoso-migration-rehost-vm-sql-ag/sql-vm-db.png)
 
 **További segítségre van szüksége?**
 
-- [Segítség](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings) SQL Server virtuális gép kiépítése.
-- [További tudnivalók](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-prereq#create-sql-server-vms) virtuális gépek konfigurálása az SQL Server különböző Termékváltozatai.
+- [Segítség kérése](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings) egy SQL Server rendszerű virtuális gép kiépítése.
+- [Ismerje meg](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-prereq#create-sql-server-vms) konfigurálása a virtuális gépek különböző SQL Server-termékváltozatok esetében.
 
-## <a name="step-2-deploy-the-failover-cluster"></a>2. lépés: A feladatátvevő fürtök telepítése
+## <a name="step-2-deploy-the-failover-cluster"></a>2. lépés: A feladatátvevő fürt üzembe helyezése
 
-Íme, Contoso hogyan állíthatja be a fürtöt:
+Itt látható, hogy Contoso hogyan állította be a fürt:
 
-1. Azok beállítása az Azure storage-fiók a felhő tanúsító nevében járhasson el.
-2. Az SQL Server virtuális gépeket adnak hozzá az Active Directory-tartomány, a Contoso helyszíni adatközpontban.
-3. Azok a fürt létrehozása az Azure-ban.
-4. A felhő tanúsító konfigurálják.
-5. Végül lehetővé teszik az SQL Always On rendelkezésre állási csoportok.
+1. Állítsa be Azure storage-fiók, a felhőbeli tanúsító funkcionálni.
+2. Az SQL Server virtuális gépek megnövelik a Contoso a helyi adatközpontban az Active Directory-tartományhoz.
+3. Ezek a fürt létrehozása az Azure-ban.
+4. A felhőbeli tanúsító azokat.
+5. Végül SQL Always On rendelkezésre állási csoportok lehetővé teszik.
 
-### <a name="set-up-a-storage-account-as-cloud-witness"></a>Felhő tanúsító a storage-fiók beállítása
+### <a name="set-up-a-storage-account-as-cloud-witness"></a>Felhőbeli tanúsító a storage-fiók beállítása
 
-A felhő tanú beállításához Contoso kell egy Azure Storage-fiókot, amely tartalmazza majd a fürt egyeztetési használt fájlját. Ugyanazt a tárfiókot több fürt tanúsító felhő beállításához használható. 
+Felhőbeli tanúsító beállításával kapcsolatban a Contoso cégnek szüksége van az Azure Storage-fiókot, amely tartalmazza majd a fürt választottbírósági használt blob fájlt. Ugyanazt a tárfiókot a felhőbeli tanúsító több fürt beállításához használható. 
 
-Contoso hoz létre egy tárfiókot az alábbiak szerint:
+Contoso hoz létre egy storage-fiókot a következő:
 
-1. Akkor adja meg egy felismerhető nevet a fiókhoz (**contosocloudwitness**).
-2. Egy általános általános fiókhoz, amely LRS telepíteni azokat.
-3. Ezek a fiók egy harmadik régióban - déli középső Régiójában helyezze el. Ezek helyezze el az elsődleges és másodlagos régióban kívül, hogy a regionális hiba esetén elérhető marad.
-4. Helyezze az erőforráscsoportban, amely tárolja az infrastruktúrához kapcsolódó erőforrások - **ContosoInfraRG**.
+1. A fiók egy felismerhető nevet kell adnia (**contosocloudwitness**).
+2. Az LRS egy általános univerzális fiók azokat üzembe.
+3. A fiók, helyezze a harmadik régiót – USA déli középső Régiójában. Ezek helyezze el az elsődleges és másodlagos régión kívül, hogy a regionális hiba esetén elérhető marad.
+4. Helyezze az erőforráscsoportban, tároló - infrastruktúra-erőforrások **ContosoInfraRG**.
 
-    ![Felhő tanúsító](media/contoso-migration-rehost-vm-sql-ag/witness-storage.png)
+    ![Felhőbeli tanúsító](media/contoso-migration-rehost-vm-sql-ag/witness-storage.png)
 
-5. Ha hoznak létre a tárfiók elsődleges és másodlagos elérési kulcsok akkor jönnek létre. Az elsődleges elérési kulcsot a felhő tanúsító létrehozásához szükséges. A tárfiók neve megjelenik a kulcs > **hívóbetűk**.
+5. Amikor hoznak létre a tárfiók elsődleges és másodlagos elérési kulcsot hoz létre, a. Az elsődleges elérési kulcs létrehozásához a felhőbeli tanúsító van szükségük. A tárfiók neve megjelenik a kulcs > **Tárelérési kulcsok**.
 
     ![Hozzáférési kulcs](media/contoso-migration-rehost-vm-sql-ag/access-key.png)
 
 ### <a name="add-sql-server-vms-to-contoso-domain"></a>SQL Server virtuális gépek hozzáadása a Contoso tartományhoz
 
 1. Contoso SQLAOG1 és SQLAOG2 hozzáadja a contoso.com tartományhoz.
-2. Ezt követően az egyes virtuális gépek telepítése a Windows feladatátvételi fürtszolgáltatás és eszközeinek.
+2. Ezt követően az egyes virtuális Gépeken, a Windows feladatátvételi fürtszolgáltatás és eszközök telepítése.
 
 ## <a name="set-up-the-cluster"></a>A fürt beállítása
 
-Mielőtt beállítaná a fürt, a Contoso pillanatképet készít a minden egyes számítógép az operációsrendszer-lemezképet.
+Mielőtt beállítaná a fürt, Contoso pillanatképet készít az egyes gépek az operációsrendszer-lemez.
 
-![Pillanatkép](media/contoso-migration-rehost-vm-sql-ag/snapshot.png)
+![pillanatkép](media/contoso-migration-rehost-vm-sql-ag/snapshot.png)
 
-2. Ezt követően egy parancsfájlt, azok magánjellegét, hogy futnak a Windows feladatátvevő fürt létrehozásához.
+2. Ezután futnak, hogy helyezze parancsfájl a Windows feladatátvevő fürt létrehozása.
 
     ![Fürt létrehozása](media/contoso-migration-rehost-vm-sql-ag/create-cluster1.png)
 
-3. A fürt is létrehozták, akkor győződjön meg arról, hogy megjelenik-e a virtuális gépek fürtcsomópontokként.
+3. Miután a fürt az általuk létrehozott, azok győződjön meg arról, hogy a virtuális gépek fürtcsomópontokként jelennek meg.
 
      ![Fürt létrehozása](media/contoso-migration-rehost-vm-sql-ag/create-cluster2.png)
 
-## <a name="configure-the-cloud-witness"></a>A felhő tanúsító konfigurálása
+## <a name="configure-the-cloud-witness"></a>A felhőbeli tanúsító konfigurálása
 
-1. Contoso tanúsító a felhő használatával a **kvórum konfigurációs varázsló** a Feladatátvevőfürt-kezelőben.
-2. A varázslóban, és melyik felhőalapú tanúsító a storage-fiók létrehozásához.
-3. A felhő tanúsító konfigurálása után jelenik meg a Feladatátvevőfürt-kezelő beépülő modul.
+1. Contoso konfigurálása a felhőbeli tanúsító – segítségével a **fürtkvórum konfigurálása varázsló** a Feladatátvevőfürt-kezelőben.
+2. A varázsló felhőbeli tanúsító létrehozása a storage-fiók kiválasztásával.
+3. A felhőbeli tanúsító konfigurálása után jelenik meg a Feladatátvevőfürt-kezelő beépülő modulban.
 
-    ![Felhő tanúsító](media/contoso-migration-rehost-vm-sql-ag/cloud-witness.png)
+    ![Felhőbeli tanúsító](media/contoso-migration-rehost-vm-sql-ag/cloud-witness.png)
             
 
 ## <a name="enable-sql-server-always-on-availability-groups"></a>SQL Server Always On rendelkezésre állási csoportok engedélyezése
 
-Contoso most engedélyezheti az Always On:
+Most már engedélyezheti a Contoso Always On:
 
-1. Az SQL Server Configuration Manager, lehetővé teszik az **AlwaysOn rendelkezésre állási csoportok** a a **SQL Server (MSSQLSERVER)** szolgáltatás.
+1. Az SQL Server Configuration Manager, a használatukkal **AlwaysOn rendelkezésre állási csoportok** számára a **SQL Server (MSSQLSERVER)** szolgáltatás.
 
     ![Engedélyezze az AlwaysOn](media/contoso-migration-rehost-vm-sql-ag/enable-alwayson.png)
 
-2. Azok a indítsa újra a szolgáltatást, a módosítások életbe léptetéséhez.
+2. A szolgáltatás a módosítások érvénybe léptetéséhez újraindítás.
 
-Az AlwaysOn rendelkezésre állási csoport, amely védeni fogja a SmartHotel adatbázis AlwaysOn engedélyezése, a Contoso állíthat be.
+AlwaysOn engedélyezés, a Contoso az AlwaysOn rendelkezésre állási csoport, amely védeni fogja a SmartHotel adatbázis is beállíthatja.
 
 **További segítségre van szüksége?**
 
-- [További információ a](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) felhő tanúsító és a storage-fiók beállítása az.
-- [Az utasítások megtekintéséhez](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-tutorial) a fürt és egy rendelkezésre állási csoport létrehozása.
+- [További információ](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) felhőbeli tanúsító és a hozzá tartozó tárfiók beállítása.
+- [Útmutatásért](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-tutorial) -fürt beállítása és a egy rendelkezésre állási csoport létrehozása.
 
-## <a name="step-3-deploy-the-azure-load-balancer"></a>3. lépés: Az Azure Load Balancer központi telepítése
+## <a name="step-3-deploy-the-azure-load-balancer"></a>3. lépés: Az Azure Load Balancer üzembe helyezése
 
-Contoso most szeretne telepíteni egy belső terheléselosztóhoz, amely a fürt csomópontjai előtt helyezkedik el. A load balancer sem figyeli a forgalmat, és átirányítja a megfelelő csomópontra.
+Contoso most szeretne telepíteni egy belső terheléselosztót, amely a fürt csomópontok előtt helyezkedik el. A load balancer figyeli a forgalmat, és átirányítja a megfelelő csomópontra.
 
 ![Terheléselosztás](media/contoso-migration-rehost-vm-sql-ag/architecture-lb.png)
 
-Akkor hoz létre a terheléselosztó a következőképpen:
+Ezek a terheléselosztót a következőképpen hozhat létre:
 
-1. Az Azure portál > **hálózati** > **terheléselosztó**, üzembe egy új belső terheléselosztó: **ILB-termék-DB-EUS2-SQLAOG**.
-2. Azok az éles hálózati környezetben a terheléselosztó tegyen **VNET-termék-EUS2**, az adatbázis alhálózat **termék-DB-EUS2**.
-3. Ezek olyan statikus IP-címet rendeljen hozzá: 10.245.40.100.
-4. Hálózati elem, a terheléselosztó hálózati erőforráscsoportban telepítése **ContosoNetworkingRG**.
+1. Az Azure portal > **hálózatkezelés** > **Load Balancer**, azokat egy új belső terheléselosztó beállítása: **ILB-ÉLES-DB-EUS2-SQLAOG**.
+2. Az éles hálózati környezetben, helyezze a terheléselosztó **VNET-ÉLES-EUS2**, az adatbázis-alhálózat **ÉLES-DB-EUS2**.
+3. Ezek a statikus IP-címet rendeljen hozzá: 10.245.40.100.
+4. Hálózati elem, mint a hálózati erőforráscsoporthoz tartozik, a terheléselosztó üzembe **ContosoNetworkingRG**.
 
     ![Terheléselosztás](media/contoso-migration-rehost-vm-sql-ag/lb-create.png)
 
-A belső terheléselosztó telepítése után Contoso kell beállítani. Akkor hozzon létre egy háttér címkészletet, állítson be egy állapotmintáihoz és konfiguráljon egy terheléselosztási szabályt.
+A belső terheléselosztó üzembe helyezését követően Contoso kell állítsa be. Ezek hozza létre a háttércímkészletet, állítsa be az állapotfigyelő mintavételező, és konfiguráljon egy terheléselosztási szabályt.
 
-### <a name="add-a-backend-pool"></a>Háttérkészlet hozzáadásával
+### <a name="add-a-backend-pool"></a>Háttérkészlet hozzáadása
 
-A virtuális gépeket a fürt felé irányuló forgalom terjesztéséhez Contoso beállítása egy háttér címkészletet, amely tartalmazza a hálózati adapter IP-címét a terheléselosztó hálózati forgalmat fogadó virtuális gépekhez.
+Ossza el a forgalmat a virtuális gépek a fürt, a Contoso beállítása egy háttér címkészletet, amely tartalmazza a hálózati adapter IP-címeket a virtuális gépek, amelyek a terheléselosztóról érkező hálózati forgalom fog kapni.
 
-1. A terheléselosztási beállításokat a portálon, a Contoso háttérkészlet hozzáadásával: **ILB-PROD-DB-EUS-SQLAOG-BEPOOL**.
-2. A készlet azokat társítani SQLAOGAVSET a rendelkezésre állási csoporthoz. A virtuális gépeket, a készlet (**SQLAOG1** és **SQLAOG2**) a készlethez hozzáadott.
+1. A load balancer beállításokat a portálon, a Contoso egy háttérkészlet hozzáadása: **ILB-PROD-DB-EUS-SQLAOG-BEPOOL**.
+2. Azok a készlet rendelkezésre állási csoport SQLAOGAVSET társítani. A virtuális gépet a csoportban (**SQLAOG1** és **SQLAOG2**) hozzáadódnak a készlet.
 
     ![Háttérkészlet](media/contoso-migration-rehost-vm-sql-ag/backend-pool.png)
 
 ### <a name="create-a-health-probe"></a>Állapotminta létrehozása
 
-Contoso hoz létre egy állapotmintáihoz, hogy a terheléselosztó figyelheti az alkalmazások állapotát. A mintavétel dinamikusan eltávolítása vagy virtuális gépek terhelés terheléselosztó elforgatási, hogyan válaszoljanak állapotellenőrzést alapján.
+Contoso hoz létre egy állapotmintát, hogy a terheléselosztó az alkalmazás állapotát figyelhesse. A mintavétel dinamikusan eltávolítása vagy virtuális gépek load balancer elforgatási, állapot-ellenőrzések válaszoljanak hogyan alapján.
 
-Akkor hozzon létre a mintavétel az alábbiak szerint: 
+Ezek a mintavétel a következőképpen hozhat létre: 
 
-1. A terheléselosztási beállításokat a portálon, a Contoso létrehoz egy állapotmintáihoz: **SQLAlwaysOnEndPointProbe**.
-2. Maguk állítják be a mintavétel futó virtuális gépek 59999 TCP-port figyelésére.
-3. Ezek megadni a 5 másodperc közötti mintavételek menüpontban, és a küszöbértéket, a 2. Ha két mintavételt meghibásodik, a virtuális gép akkor veszi figyelembe a nem megfelelő.
+1. A load balancer beállításokat a portálon, a Contoso egy állapotmintát hoz létre: **SQLAlwaysOnEndPointProbe**.
+2. Akkor állítsa be a mintavétel 59999 TCP-porton lévő virtuális gépek figyelése.
+3. Minták és a egy 2-es küszöbértéket 5 másodpercenként időközt állítsa azokat. Ha két mintavételek meghibásodik, a virtuális gép nem megfelelő állapotú akkor minősül.
 
-    ![Hálózatfigyelő](media/contoso-migration-rehost-vm-sql-ag/nlb-probe.png)
+    ![Mintavétel](media/contoso-migration-rehost-vm-sql-ag/nlb-probe.png)
 
-### <a name="configure-the-load-balancer-to-receive-traffic"></a>A load balancer forgalom fogadására konfigurálása
+### <a name="configure-the-load-balancer-to-receive-traffic"></a>Forgalom fogadására a load balancer konfigurálása
 
 
-Most Contoso igények olyan terheléselosztó szabályhoz történő defins hogyan adatforgalom elosztása a virtuális gépekhez.
+Most Contoso igényeinek megfelelően, egy terheléselosztó-szabályt defins forgalom hogyan ossza el a virtuális gépeket.
 
 - Az előtér-IP-cím a bejövő forgalmat kezeli.
-- A háttér IP-készlet fogadja a forgalmat.
+- A háttérbeli IP-címkészlet fogadja a forgalmat.
 
-Akkor hozzon létre a szabály az alábbiak szerint:
+Akkor hozza létre a szabályt a következő:
 
-1. A terheléselosztási beállításokat a portálon, az új terheléselosztási szabály hozzáadása: **SQLAlwaysOnEndPointListener**.
-2. Contoso beállítja egy előtér-figyelő a TCP 1433 bejövő SQL ügyfél forgalom fogadására.
-3. Akkor adja meg a háttérkészletben mely forgalmat továbbítja, és a portot, amelyen virtuális gépek figyeli a forgalmat.
-4. Contoso lehetővé teszi, hogy a lebegőpontos IP (közvetlen kiszolgálói válasz). Ez mindig szükség az SQL AlwaysOn.
+1. A load balancer beállításokat a portálon, az új terheléselosztási szabály hozzáadása: **SQLAlwaysOnEndPointListener**.
+2. Contoso beállítja a TCP 1433-as bejövő SQL ügyfél forgalom fogadásához egy előtér-figyelőt.
+3. Adatforgalom lesznek irányítva, és a portot, amelyen a virtuális gépek figyeli a forgalmat a háttérkészlet kell adnia.
+4. Contoso lehetővé teszi, hogy a fix IP-Címek (közvetlen kiszolgálói válasz). Ez mindig szükség az SQL AlwaysOn-hoz.
 
-    ![Hálózatfigyelő](media/contoso-migration-rehost-vm-sql-ag/nlb-probe.png)
+    ![Mintavétel](media/contoso-migration-rehost-vm-sql-ag/nlb-probe.png)
 
 **További segítségre van szüksége?**
 
-- [Áttekintés](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) Azure terheléselosztó.
-- [További tudnivalók](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-basic-internal-portal) terheléselosztó létrehozása.
+- [Áttekintés](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) Azure Load Balancer.
+- [Ismerje meg](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-basic-internal-portal) terheléselosztó létrehozása.
 
 
 
-## <a name="step-4-prepare-azure-for-the-site-recovery-service"></a>4. lépés: A Site Recovery szolgáltatás Azure előkészítése
+## <a name="step-4-prepare-azure-for-the-site-recovery-service"></a>4. lépés: A Site Recovery szolgáltatással az Azure előkészítése
 
-Az alábbiakban a Contoso kell a Site Recovery üzembe Azure összetevőket:
+Az alábbiakban a Contoso cégnek szüksége van, a Site Recovery üzembe helyezése az Azure-összetevők:
 
-- Egy Vnetet, amelyben virtuális gépek kerülnek, ha a feladatátvétel során létrehozása folyamatban.
-- A replikált adatok tárolásához Azure storage-fiók. 
-- Az Azure Recovery Services-tároló.
+- Egy virtuális hálózatot, amelyben virtuális gépeket fogja tartalmazni, amikor a feladatátvétel során hoznak létre.
+- A replikált adatok tárolásához Azure storage-fiókkal. 
+- Az Azure Recovery Services-tárolóba.
 
-Ezek beállítása a következőképpen:
+Hogy ezek az alábbiak szerint állíthatja:
 
-1.  Már létrehozott egy hálózatot/alhálózatot, hogy használhassák a Site Recovery contoso ha azok [az Azure-infrastruktúra telepített](contoso-migration-rehost-vm-sql-ag.md).
+1.  Már létrehozott egy Site Recovery használhatnak hálózat/alhálózat contoso amikor azok [üzembe helyezve az Azure-infrastruktúra](contoso-migration-rehost-vm-sql-ag.md).
 
-    - A SmartHotel alkalmazást éles alkalmazások, és az éles Azure-hálózathoz (VNET-termék-EUS2) WEBVM telepíti át az elsődleges régióban keleti US2.
-    - WEBVM kerülnek, a ContosoRG erőforráscsoportban, éles erőforrások használt, és az éles alhálózat (termék-FE-EUS2).
+    - A SmartHotel alkalmazás éles alkalmazások, és WEBVM migrálása az Azure éles hálózati (VNET-ÉLES-EUS2) az elsődleges régióban USA 2. keleti régiója.
+    - WEBVM kerülnek a ContosoRG erőforráscsoportban, amely használható éles erőforrásait, és az éles alhálózat (ÉLES-FE-EUS2).
 
-2. A Contoso Azure storage-fiók (contosovmsacc20180528) az elsődleges régióban hoz létre.
+2. Contoso az elsődleges régióban hoz létre egy Azure storage-fiók (contosovmsacc20180528).
 
-    - Standard szintű tárolót, és LRS replikációs egy általános célú fiók használata.
+    - Egy általános célú fiók, és standard szintű storage, LRS-replikációval használnak.
     - A fióknak és a tárolónak ugyanabban a régióban kell lennie.
 
-    ![Helyreállítási tárolási hely](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
+    ![Site Recovery-tároló](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
 
-3. Fiókkal a hálózati és tárolási helyen, most létrehozzák a Recovery Services-tároló (**ContosoMigrationVault**), és helyezze el a a **ContosoFailoverRG** erőforráscsoport, az elsődleges régióban USA keleti régiója 2. régiója .
+3. A helyen lévő hálózati és tárolási fiókkal, akkor most hozzon létre egy Recovery Services-tároló (**ContosoMigrationVault**), és elhelyezheti a **ContosoFailoverRG** erőforráscsoport, az elsődleges régióban USA keleti RÉGIÓJA 2 .
 
     ![Recovery Services-tároló](media/contoso-migration-rehost-vm-sql-ag/asr-vault.png)
 
 **További segítségre van szüksége?**
 
-[További tudnivalók](https://docs.microsoft.com/azure/site-recovery/tutorial-prepare-azure) Azure Site Recovery beállítását.
+[Ismerje meg](https://docs.microsoft.com/azure/site-recovery/tutorial-prepare-azure) beállítása az Azure Site Recovery.
 
 
 ## <a name="step-4-prepare-on-premises-vmware-for-site-recovery"></a>4. lépés: A Site Recovery a helyszíni VMware előkészítése
 
-Íme néhány Contoso előkészíti a helyszíni:
+Mi Contoso előkészíti a helyszíni:
 
-- A vCenter-kiszolgáló vagy vSphere ESXi-állomáson, automatizálhatja a virtuális gép felderítési fiókkal.
-- Egy fiók, amely lehetővé teszi, hogy az automatikus telepíteni a mobilitási szolgáltatást a replikálni kívánt VMware virtuális gépeken.
-- A helyszíni virtuális gép beállításait, hogy a Contoso a replikált Azure virtuális gép a feladatátvételt követően csatlakozni tudnak.
+- Egy fiók a vCenter-kiszolgáló vagy vSphere ESXi-gazdagép, virtuális gépek felderítésének automatizálásához.
+- Egy fiók, amely lehetővé teszi, hogy az automatikus telepíteni a mobilitási szolgáltatást a replikálni kívánt VMware virtuális gépeket.
+- A helyszíni virtuális gép beállításait, úgy, hogy a Contoso az Azure a replikált virtuális gép a feladatátvételt követően csatlakozhatnak.
 
 
 ### <a name="prepare-an-account-for-automatic-discovery"></a>Fiók előkészítése automatikus felderítéshez
 
 A Site Recoverynek hozzáféréssel kell rendelkeznie a VMware-kiszolgálókhoz az alábbiak érdekében:
 
-- Virtuális gépek automatikus észlelését. 
+- A virtuális gépek automatikus felderítése. 
 - Replikáció, feladatátvétel és feladat-visszavétel vezénylése.
-- Szükség van legalább egy csak olvasási jogokat biztosító fiókra. Olyan műveletek, például a létrehozása és lemezek eltávolítása, és bekapcsolja a virtuális gépeket futtató fiók szükséges.
+- Szükség van legalább egy csak olvasási jogokat biztosító fiókra. Futtathatja a műveletek, például a létrehozása és eltávolítása a lemezeket, és ne tudják bekapcsolni a virtuális gépek fiók szükséges.
 
-Contoso beállítja azt a fiókot az alábbiak szerint:
+Contoso a következőképpen állítja be a fiók:
 
-1. Contoso szerepet hoz létre a vCenter szinten.
-2. Contoso majd rendel hozzá, hogy a szerepkört a szükséges engedélyekkel.
+1. Contoso egy szerepkört a vCenter-szinten hoz létre.
+2. Contoso majd hozzárendeli a szerepkört a szükséges engedélyekkel.
 
 
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Fiók előkészítése a mobilitási szolgáltatás telepítéséhez
 
-A mobilitási szolgáltatást telepítenie kell minden egyes virtuális gépen.
+A mobilitási szolgáltatás minden virtuális Géphez telepítve kell lennie.
 
-- A Site Recovery végezhető műveletek az automatikus ügyfélleküldéses telepítést, az összetevő a virtuális gép számára engedélyezve van a replikáció.
-- Egy fiók, amely a Site Recovery használatával is hozzáférhetnek a virtuális Gépet a leküldéses telepítés szükséges. Ezt a fiókot az Azure-konzolon a replikációs beállításához adja meg.
-- A fiók tartományi vagy helyi, a virtuális Gépre telepítéséhez szükséges engedélyekkel rendelkező lehet.
+- A Site Recovery egy automatikus ügyfélleküldéses telepítés összetevő teheti meg, amikor a replikáció engedélyezve van a virtuális gép.
+- A Site Recovery eléri a virtuális Gépet, a leküldéses telepítéshez használható fiók szükséges. Ezt a fiókot adja meg, ha az Azure-konzolon a replikáció beállítása.
+- A fiók lehet tartomány vagy helyi, amely engedéllyel rendelkezik a virtuális Gépre telepíteni.
 
 
 
 
 ### <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
 
-Feladatátvétel után a Contoso Azure virtuális gépek csatlakozni szeretne. Ehhez az szükséges, akkor tegye a következőket áttelepítés előtt:
+A feladatátvételt követően a Contoso biztosítani szeretné az Azure virtuális géphez való kapcsolódásra. Ehhez, tegye a következőket áttelepítés előtt:
 
 1. Az interneten keresztüli eléréshez azokat:
 
  - A feladatátvétel előtt a helyszíni virtuális gép RDP engedélyezése
- - Győződjön meg arról, hogy a TCP és UDP-szabályok hozzáadása történik meg a a **nyilvános** profil.
- - Ellenőrizze, hogy az engedélyezve van az RDP **Windows tűzfal** > **engedélyezett alkalmazások** minden profil esetében.
+ - Győződjön meg arról, hogy a TCP és UDP-szabályokat a adják a **nyilvános** profilt.
+ - Ellenőrizze, hogy az RDP engedélyezve van-e **Windows tűzfal** > **engedélyezett alkalmazások** az összes profil számára.
  
-2. Telephelyek közötti VPN, keresztüli eléréshez azokat:
+2. Site-to-site VPN, keresztüli eléréshez azokat:
 
- - Engedélyezze az RDP-a helyi számítógépen.
- - Az RDP engedélyezése a **Windows tűzfal** -> **engedélyezett alkalmazások és szolgáltatások**, a **tartomány és a saját** hálózatok.
- - Az operációs rendszer TÁROLÓHÁLÓZATI szabályzatát állítsa a helyszíni virtuális Gépre való **OnlineAll**.
+ - Engedélyezze az RDP a helyszíni gépen.
+ - Az RDP engedélyezése a **Windows tűzfal** -> **engedélyezett alkalmazások és szolgáltatások**, a **tartomány és privát** hálózatok.
+ - Az operációs rendszer TÁROLÓHÁLÓZATI szabályzatát állítsa a helyszíni virtuális gép **OnlineAll**.
 
-Emellett a feladatátvétel futtatásakor szükségük ellenőrizze a következőket:
+Emellett a feladatátvétel futtatásakor szükségük ellenőrizze az alábbiakat:
 
-- Nem lehet nincs függőben lévő Windows-frissítések a virtuális Gépre feladatátvétel kiváltása. Ha vannak, akkor nem fogja tudni jelentkezzen be a virtuális gép, csak a frissítés befejeződése után.
-- A feladatátvétel után ellenőrizheti **rendszerindítási diagnosztika** egy Képernyőkép a virtuális Gépet a megtekintéséhez. Ha ez sem működik, akkor győződjön meg arról, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Lehetnek nincsenek függőben lévő Windows-frissítések a virtuális gép feladatátvétel indítása során. Ha vannak, be tud jelentkezni a virtuális Gépet a frissítés befejeződéséig nem.
+- A feladatátvételt követően ellenőrizheti **rendszerindítási diagnosztika** , a virtuális gép képernyőképének megtekintéséhez. Ha ez sem működik, akkor ellenőrizze, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 
 **További segítségre van szüksége?**
 
-- [További tudnivalók](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-automatic-discovery) létrehozása és hozzárendelése egy szerepkört a automatikus felderítése.
-- [További tudnivalók](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-mobility-service-installation) a mobilitási szolgáltatás leküldéses telepítéséhez fiók létrehozása.
+- [Ismerje meg](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-automatic-discovery) létrehozása és hozzárendelése egy szerepkört a automatikus felderítése.
+- [Ismerje meg](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-mobility-service-installation) hozzon létre egy fiókot a mobilitási szolgáltatás leküldéses telepítéséhez.
 
 
-## <a name="step-5-replicate-the-on-premises-vms-to-azure-with-site-recovery"></a>5. lépés: A helyszíni virtuális gépek replikálása az Azure Site Recovery szolgáltatással
+## <a name="step-5-replicate-the-on-premises-vms-to-azure-with-site-recovery"></a>5. lépés: A helyszíni virtuális gépek replikálása az Azure Site recoveryvel
 
-Mielőtt azok lefutnának a áttelepítése az Azure-ba, Contoso kell beállítani, és engedélyezze a replikálást.
+Mielőtt azok lefutnának a migrálás az Azure-ba, Contoso kell beállítani, és engedélyezze a replikációt.
 
-### <a name="set-a-replication-goal"></a>A replikációs cél beállítása
+### <a name="set-a-replication-goal"></a>Állítsa be a replikációs cél
 
-1. A tárolóban, a tároló neve (ContosoVMVault) alatt, és, melyik replikációs cél (**bevezetés** > **Site Recovery** > **infrastruktúra előkészítése** .
-2. Akkor adja meg, hogy a gép-e a helyszínen található, a VMware rendszerben fut, és az Azure-bA replikál.
+1. A tárolóban, a tároló nevét (ContosoVMVault) alatt, replikációs cél kiválasztása (**bevezetés** > **Site Recovery** > **infrastruktúra előkészítése** .
+2. Akkor adja meg, hogy gépeik a helyszínen található, VMware-en futó, és az Azure-bA replikálja.
 
     ![Replikációs cél](./media/contoso-migration-rehost-vm-sql-ag/replication-goal.png)
 
-### <a name="confirm-deployment-planning"></a>Győződjön meg róla, központi telepítésének megtervezése
+### <a name="confirm-deployment-planning"></a>Az üzembe helyezés megtervezésének megerősítése
 
-A folytatáshoz győződjön meg arról, hogy végzi a központi telepítésének megtervezése kiválasztásával kell **Igen, elvégeztem**. Ebben a forgatókönyvben a Contoso csak a virtuális gép áttelepítése, és nem kell központi telepítésének megtervezése.
+A folytatáshoz győződjön meg arról, hogy elvégezték-üzembe helyezés megtervezése, kiválasztásával szükségük **Igen, elvégeztem**. Ebben a forgatókönyvben Contoso csak a virtuális gép áttelepítése, és nem kell az üzembe helyezés megtervezése.
 
 ### <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-Contoso be kell állítania a forrás környezetében. Ehhez az szükséges, azok az OVF-sablon letöltése és helyezzen vele üzembe a Site Recovery konfigurációs kiszolgáló magas rendelkezésre állásúként, helyszíni VMware virtuális gép. Miután a konfigurációs kiszolgáló fut, akkor regisztrálja a tárolóban lévő állapottal.
+A forráskörnyezet beállítása a Contoso cégnek szüksége van. Ehhez, egy OVF-sablon letöltése és használatával a Site Recovery konfigurációs kiszolgálónak a magas rendelkezésre állásúként telepíteni, a helyszíni VMware virtuális gép. Miután a konfigurációs kiszolgáló üzembe helyezéséig, azok regisztrálja a tárolóban.
 
-A konfigurációs kiszolgáló futtatja összetevők száma:
+A konfigurációs kiszolgálón néhány összetevő fut:
 
-- A konfigurációs kiszolgáló-összetevő, amely a helyszíni és az Azure közötti kommunikáció koordinálja, és adatreplikáció kezeli.
-- A folyamatkiszolgáló, amelyek egy replikációs átjáróként működik. Fogadja a replikációs adatokat, gyorsítótárazással, tömörítéssel és titkosítással optimalizálja őket, majd továbbítja az adatokat az Azure-tárolónak.
+- A konfigurációs kiszolgáló összetevő koordinálja a helyszíni és Azure közötti kommunikációt, és felügyeli az adatreplikációt.
+- A folyamatkiszolgáló replikációs átjáróként üzemel. Fogadja a replikációs adatokat, gyorsítótárazással, tömörítéssel és titkosítással optimalizálja őket, majd továbbítja az adatokat az Azure-tárolónak.
 - A folyamatkiszolgáló ezenfelül telepíti a mobilitási szolgáltatást a replikálni kívánt virtuális gépekre, és elvégzi a helyszíni VMware virtuális gépek automatikus felderítését.
 
-Contoso hajtsa végre ezeket a lépéseket az alábbiak szerint:
+Contoso hajtsa végre ezeket a lépéseket a következő:
 
 
-1. A tárolóban, az OVF sablon letöltése **infrastruktúra előkészítése** > **forrás** > **konfigurációs kiszolgáló**.
+1. A tárolóban, az OVF-sablon letöltése **infrastruktúra előkészítése** > **forrás** > **konfigurációs kiszolgáló**.
     
     ![OVF letöltése](./media/contoso-migration-rehost-vm-sql-ag/add-cs.png)
 
-2. Azok a sablon létrehozása és telepítése a virtuális gép VMware importálja.
+2. Ezek a sablon létrehozása és üzembe helyezése a virtuális gép VMware importálja.
 
     ![OVF-sablon](./media/contoso-migration-rehost-vm-sql-ag/vcenter-wizard.png)
 
-3. A virtuális gép első bekapcsolásakor elinduló be egy Windows Server 2016 telepítési élmény. Fogadja el a licencszerződést, és adjon meg egy rendszergazdai jelszót.
-4. A telepítés befejezése után ezek jelentkezzen be a virtuális gép rendszergazdaként. Első bejelentkezéskor a az Azure Site Recovery Configuration Tool alapértelmezés szerint fut.
-5. Az eszköz azok adja meg a nevét a kiszolgáló regisztrálása a tárolóban lévő állapottal.
+3. A virtuális gép első bekapcsolásakor, a bekapcsolásakor egy Windows Server 2016 telepítési folyamatot. Fogadja el a licencszerződést, és adjon meg egy rendszergazdai jelszót.
+4. A telepítés befejezését követően, jelentkezzen be rendszergazdaként a virtuális géphez. Első bejelentkezéskor az Azure Site Recovery Configuration Tool alapértelmezés szerint fut.
+5. Az eszközben kell adnia egy nevet a konfigurációs kiszolgáló regisztrálása a tárolóban használni.
 6. Az eszköz ellenőrzi, hogy a virtuális gép tud-e csatlakozni az Azure-hoz. A kapcsolat létrejötte után bejelentkeznek az Azure-előfizetést. Olyan hitelesítő adatokra van szükség, amelyekkel hozzá lehet férni a tárolóhoz, amelyben regisztrálni kívánja a konfigurációs kiszolgálót.
 
-    ![Regisztráljon egy konfigurációs kiszolgálót](./media/contoso-migration-rehost-vm-sql-ag/config-server-register2.png)
+    ![Konfigurációs kiszolgáló regisztrálása](./media/contoso-migration-rehost-vm-sql-ag/config-server-register2.png)
 
 7. Az eszköz végrehajt néhány konfigurációs feladatot, majd újraindul.
-8. Bejelentkeznek az a gép újra, és a konfigurációs kiszolgáló kezelése varázsló automatikusan elindul.
-9. A varázslóban akkor válassza a NIC-replikációs forgalom fogadására. Ez a beállítás nem módosítható, miután van konfigurálva.
-10. Akkor válassza ki, az előfizetés, erőforráscsoport és tárolót, amelyben a konfigurációs kiszolgáló regisztrálásához.
+8. Bejelentkeznek a gép újra, és a konfigurációs kiszolgáló felügyeleti varázslója automatikusan elindul.
+9. A varázsló, válassza ki a hálózati Adaptert replikációs forgalom fogadására. Ez a beállítás a konfigurálás után nem módosítható.
+10. Akkor válassza ki az előfizetést, erőforráscsoportot és a tároló, amelyben a konfigurációs kiszolgálót regisztrálja.
         ![Tároló](./media/contoso-migration-rehost-vm-sql-ag/cswiz1.png) 
 
-10. Azokat, majd töltse le és telepítse a MySQL-kiszolgáló és a VMWare PowerCLI. 
-11. Ellenőrzés után azokat a vCenter-kiszolgáló vagy vSphere-gazdagép teljes Tartománynevét vagy IP-címe adható meg. Hagyja meg az alapértelmezett portot, és adja meg a vCenter-kiszolgáló rövid nevét.
-12. Akkor adja meg, a fiók automatikus felderítéshez létrehozott és a hitelesítő adatait, amely automatikusan telepíteni a mobilitási szolgáltatás segítségével. A Windows-alapú gépek a fiókot kell a helyi rendszergazdai jogosultsága a virtuális gépeken.
+10. Majd töltse le és telepítse a MySQL-kiszolgáló és a VMWare powercli-t. 
+11. Ellenőrzést hogy a vCenter-kiszolgáló vagy vSphere-gazdagép teljes Tartománynevét vagy IP-címét adja meg. Hagyja bejelölve az alapértelmezett portot, és adja meg a vCenter-kiszolgáló rövid nevét.
+12. A fiók automatikus felderítéshez létrehozott és a hitelesítő adatok a mobilitási szolgáltatás automatikus telepítéséhez használt kell adnia. Windows-gépek a fióknak a virtuális gépek helyi rendszergazdai jogosultsággal kell rendelkeznie.
 
     ![vCenter](./media/contoso-migration-rehost-vm-sql-ag/cswiz2.png)
 
-7. Az Azure portálon, a regisztráció befejezését követően a Contoso dupla ellenőrzi, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel a **forrás** lap a tárolóban lévő állapottal. 15 perc vagy több tarthat a felderítés. 
-8. A Site Recovery ezután csatlakozik a megadott beállítások VMware-kiszolgálók, és felderíti a virtuális gépek.
+7. Az Azure Portalon, a regisztráció befejezését követően dupla Contoso ellenőrzi, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel a a **forrás** lap a tárolóban. 15 percig vagy tovább is tarthat a felderítés. 
+8. Ezután a Site Recovery VMware-kiszolgálókat a megadott beállításokkal csatlakozik, és felderíti a virtuális gépeket.
 
 ### <a name="set-up-the-target"></a>A cél beállítása
 
-Most Contoso megadja a cél replikációs beállításait.
+Most a Contoso megadja a cél replikációs beállításokat.
 
-1. A **infrastruktúra előkészítése** > **cél**, akkor adja meg a tároló beállításait.
-2. A Site Recovery ellenőrzi, hogy nincs-e az Azure storage-fiók és a hálózat a megadott cél.
+1. A **infrastruktúra előkészítése** > **cél**, akkor válassza ki a célbeállítások.
+2. A Site Recovery ellenőrzi, hogy nincs-e egy Azure storage-fiók és a célként megadott hálózat.
 
 ### <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
 Nem, a Contoso egy replikációs házirendet hozhat létre.
 
-1. A **infrastruktúra előkészítése** > **replikációs beállítások** > **replikációs házirend** >  **létrehozása és Társítsa**, akkor hozzon létre egy házirendet **ContosoMigrationPolicy**.
+1. A **infrastruktúra előkészítése** > **replikációs beállítások** > **replikációs házirend** >  **létrehozás és Társítsa**, akkor hozzon létre egy házirendet **ContosoMigrationPolicy**.
 2. Az alapértelmezett beállítások használata:
     - **Helyreállítási Időkorlát küszöbértéke**: alapértelmezett 60 perc. Ez az érték határozza meg, hogy milyen gyakran jönnek létre helyreállítási pontok. A rendszer riasztást ad, ha a folyamatos replikáció túllépi ezt a korlátot.
-    - **Helyreállítási pontok megőrzésének ideje**. Alapértelmezett 24 órás. Ez az érték határozza meg, hogy mennyi ideig a megőrzési időszak az egyes helyreállítási pontok. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók.
-    - **Alkalmazáskonzisztens pillanatkép gyakorisága**. Alapértelmezett érték egy óra. Ezt az értéket adja meg, amellyel alkalmazáskonzisztens pillanatképeket jönnek létre.
+    - **Helyreállítási pont megőrzése**. Alapértelmezett 24 órányi. Ez az érték határozza meg, mennyi ideig őrzi az egyes helyreállítási pontok. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók.
+    - **Alkalmazáskonzisztens pillanatkép gyakorisága**. Alapértelmezés szerint egy óra. Ez az érték, amellyel jönnek létre alkalmazáskonzisztens pillanatképek gyakorisága határozza meg.
  
         ![Replikációs házirend létrehozása](./media/contoso-migration-rehost-vm-sql-ag/replication-policy.png)
 
 5. A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval. 
 
-    ![Replikációs szabályzat társítása](./media/contoso-migration-rehost-vm-sql-ag/replication-policy2.png)
+    ![Replikációs házirend társítása](./media/contoso-migration-rehost-vm-sql-ag/replication-policy2.png)
 
 
 
 ### <a name="enable-replication"></a>A replikáció engedélyezése
 
-Contoso most már elindíthatja WebVM replikálása.
+Most már Contoso is replikáljon WebVM.
 
-1. A **alkalmazás replikálása** > **forrás** > **+ replikálás** az adatforrás-beállítások, és melyik.
-2. Utal, hogy azok szeretné engedélyezni a virtuális gépek, válassza ki a vCenter-kiszolgáló és a konfigurációs kiszolgáló.
+1. A **alkalmazás replikálása** > **forrás** > **+ replikálás** , válassza ki az adatforrás-beállítások.
+2. Ezek azt jelzik, hogy szeretnének-e a virtuális gépek engedélyezéséhez válassza ki a vCenter-kiszolgáló és a konfigurációs kiszolgáló.
 
     ![A replikáció engedélyezése](./media/contoso-migration-rehost-vm-sql-ag/enable-replication1.png)
 
-3. Most akkor adja meg a cél beállításai, többek között az erőforráscsoportot és virtuális hálózat és a tárfiókot, amelyben a replikált adatokat fog tárolni.
+3. Most akkor adja meg a cél beállításai, többek között az erőforráscsoportot és a virtuális hálózat és a tárfiókot, amely a replikált adatokat tárolni szeretné.
 
      ![A replikáció engedélyezése](./media/contoso-migration-rehost-vm-sql-ag/enable-replication2.png)
 
-3. Contoso replikáció WebVM kiválasztása, ellenőrzi a replikációs házirendet, és lehetővé teszi, hogy a replikáció. A Site Recovery a a mobilitási szolgáltatás a virtuális Gépre telepíti, ha engedélyezve van a replikáció.
+3. Contoso kiválasztja a replikáció WebVM, ellenőrzi a replikációs házirendet, és lehetővé teszi a replikációt. A Site Recovery telepíti a mobilitási szolgáltatást a virtuális gépen, ha a replikáció engedélyezve van.
  
     ![A replikáció engedélyezése](./media/contoso-migration-rehost-vm-sql-ag/enable-replication3.png)
 
-4. Azok a replikációs folyamatot a nyomon **feladatok**. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
-5. A **Essentials** az Azure-portálon, a Contoso a struktúra látható a virtuális gépek replikálása Azure-bA.
+4. A replikáció állapotát nyomon követik **feladatok**. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
+5. A **Essentials** az Azure Portalon, a Contoso a struktúra látható a virtuális gépek replikálása Azure-bA.
 
-    ![Infrastruktúra nézet](./media/contoso-migration-rehost-vm-sql-ag/essentials.png)
+    ![Infrastruktúra-nézet](./media/contoso-migration-rehost-vm-sql-ag/essentials.png)
 
 
 **További segítségre van szüksége?**
 
-- El tudja olvasni az alábbi lépéseket a teljes forgatókönyv [vész-helyreállítási beállítása a helyszíni VMware virtuális gépek](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial).
-- Részletes útmutatás segítségével érhető el [a forráskörnyezet beállítása](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-source), [a konfigurációs kiszolgáló telepítésének](https://docs.microsoft.com/azure/site-recovery/vmware-azure-deploy-configuration-server), és [replikáció beállításainak konfigurálása](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-replication).
-- További tudnivalók [replikáció](https://docs.microsoft.com/azure/site-recovery/vmware-azure-enable-replication).
+- Tudjon meg egy teljes forgatókönyv az alábbi lépéseket a [vészhelyreállítás beállítása helyszíni VMware virtuális gépek](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial).
+- Részletes útmutatás segítségével érhetők el [a forráskörnyezet beállítása](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-source), [használt konfigurációs kiszolgáló telepítése](https://docs.microsoft.com/azure/site-recovery/vmware-azure-deploy-configuration-server), és [replikációs beállítások konfigurálása](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-replication).
+- További információ [replikálást](https://docs.microsoft.com/azure/site-recovery/vmware-azure-enable-replication).
 
 
-## <a name="step-5-install-the-database-migration-assistant-dma"></a>5. lépés: Az adatbázis áttelepítési Segéd (DMA-) telepítése
+## <a name="step-5-install-the-database-migration-assistant-dma"></a>5. lépés: A Data Migration Assistant (DMA) telepítése
 
-A Contoso Azure virtuális gép Ezzel telepíti át a SmartHotel adatbázis **SQLAOG1** a DMA használatával. Ezek beállítása DMA az alábbiak szerint:
+Contoso lesz a SmartHotel adatbázis migrálása az Azure virtuális gép **SQLAOG1** a DMA segítségével. Ezek DMA az alábbiak szerint állíthatja:
 
-1. Az eszköz letöltése a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595) a helyszíni SQL Server virtuális géphez (**SQLVM**).
-2. A telepítő (DownloadMigrationAssistant.msi) a virtuális gép számítógépen futnak.
-3. Az a **Befejezés** lapot, és melyik **indítsa el a Microsoft adatok áttelepítési Segéd** a varázsló befejezése előtt.
+1. Töltse le az eszközt a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595) , a helyszíni SQL Server rendszerű virtuális gép (**SQLVM**).
+2. A virtuális gépen futnak a telepítés (DownloadMigrationAssistant.msi).
+3. Az a **Befejezés** lapon válasszon **indítsa el a Microsoft Data Migration Assistant** a varázsló befejezése előtt.
 
-## <a name="step-6-migrate-the-database-with-dma"></a>6. lépés:, Telepítse át az adatbázist a DMA
+## <a name="step-6-migrate-the-database-with-dma"></a>6. lépés: A DMA-adatbázis áttelepítése
 
-1. A DMA futásuk egy új áttelepítési - **SmartHotel**.
-2. Akkor válassza ki a **server Céltípust** , **SQL Server Azure virtuális gépeken**. 
+1. A DMA-ban futnak, egy új migrálást - **SmartHotel**.
+2. Akkor válassza ki a **célkiszolgáló típusa** , **SQL Server Azure virtuális gépeken**. 
 
     ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-1.png)
 
-3. Az áttelepítés részleteit, hozzáadása **SQLVM** a forráskiszolgáló és **SQLAOG1** céljaként. Akkor adja meg az egyes hitelesítő adatait.
+3. Az áttelepítési adatokat hozzáadása **SQLVM** a forráskiszolgálóéval, és **SQLAOG1** célként. Az egyes gépek hitelesítő adatokat kell adnia.
 
      ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-2.png)
 
-4. Ezek helyi megosztani az adatbázis és konfigurációs információt. Írási hozzáféréssel az SQL-szolgáltatásfióknak SQLVM és SQLAOG1 elérhetőnek kell lennie.
+4. Akkor hozzon létre egy helyi megosztás, adatbázis- és konfigurációs adatok. Elérhető-e írási hozzáférése az SQL szolgáltatás fiókonként SQLVM és SQLAOG1 kell lennie.
 
     ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-3.png)
 
-5. Contoso kiválasztja a át kell telepíteni, és az áttelepítést elindító bejelentkezések. Már befejezte a DMA az áttelepítés sikeres jeleníti meg.
+5. Contoso a bejelentkezések kell áttelepíteni, és az áttelepítést elindító választja ki. Befejezését követően a DMA az áttelepítés sikeres jeleníti meg.
 
     ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-4.png)
 
-6. Ezek győződjön meg arról, hogy az adatbázis fut **SQLAOG1**.
+6. Ezek a cégek ellenőrzik, hogy az adatbázis fut-e a **SQLAOG1**.
 
     ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-5.png)
 
-DMS a Contoso datacenter és az Azure közötti pont-pont VPN-kapcsolat a helyszíni SQL Server Virtuálisgép kapcsolódik, és majd áttelepíti az adatbázisban.
+A DMS a Contoso-datacenter és az Azure között helyek közötti VPN-kapcsolat a helyszíni SQL Server rendszerű virtuális gép csatlakozik, és ezután áttelepíti az adatbázisban.
 
 ## <a name="step-7-protect-the-database"></a>7. lépés: Az adatbázis védelmét.
 
-A futó alkalmazások adatbázissal **SQLAOG1**, Contoso most védelme az AlwaysOn rendelkezésre állási csoportokat használ. Konfigurálja az AlwaysOn az SQL Management Studio használatával, és rendeljen a Windows fürtszolgáltatása figyelő. 
+A futó alkalmazás adatbázissal **SQLAOG1**, Contoso mostantól védhetik AlwaysOn rendelkezésre állási csoportok használatával. Konfigurálja az AlwaysOn az SQL Management Studio használatával, és rendelje hozzá egy figyelőt, Windows-fürtszolgáltatás használatával. 
 
-### <a name="create-an-alwayson-availability-group"></a>Az AlwaysOn rendelkezésre állási csoport létrehozása
+### <a name="create-an-alwayson-availability-group"></a>AlwaysOn rendelkezésre állási csoport létrehozása
 
-1. Az SQL Management Studióban, akkor kattintson a jobb gombbal a **mindig a magas rendelkezésre állású** elindítani a **új rendelkezésre állási csoport varázsló**.
-2. A **beállítások megadása**, akkor a rendelkezésre állási csoport neve **SHAOG**. A **válasszon adatbázisok**, akkor válassza ki, hogy a SmartHotel adatbázist.
+1. Az SQL Management Studióban, kattintson a jobb gombbal a **mindig a magas rendelkezésre állású** elindításához a **új rendelkezésre állási csoport varázsló**.
+2. A **beállítások megadása**, akkor nevezze el a rendelkezésre állási csoport **SHAOG**. A **adatbázisok válassza**, akkor válassza ki, hogy a SmartHotel adatbázist.
 
     ![AlwaysOn rendelkezésre állási csoport](media/contoso-migration-rehost-vm-sql-ag/aog-1.png)
 
-3. A **meg replikák**, adja hozzá a két SQL-csomópont rendelkezésre állási másodpéldányok, és konfigurálja őket a szinkron véglegesítési automatikus feladatátvétel biztosítására.
+3. A **replikák megadása**, adja hozzá a két csomópont SQL rendelkezésre állási másodpéldányok, és konfigurálhatja azokat a szinkron véglegesítés automatikus feladatátvételt biztosít.
 
      ![AlwaysOn rendelkezésre állási csoport](media/contoso-migration-rehost-vm-sql-ag/aog-2.png)
 
-4. A csoport egy figyelő konfigurálják (**SHAOG**) és port. Az IP-cím, a belső terheléselosztó statikus IP-cím (10.245.40.100) meg van adva.
+4. Azok a csoportot egy figyelő konfigurálása (**SHAOG**) és a portot. A belső terheléselosztó IP-címet egy statikus IP-cím (10.245.40.100) van hozzáadva.
 
     ![AlwaysOn rendelkezésre állási csoport](media/contoso-migration-rehost-vm-sql-ag/aog-3.png)
 
-5. A **adatszinkronizálás kiválasztása**, lehetővé teszik az automatikus összehangolása. Ezt a beállítást az SQL Server automatikusan hoz létre a másodlagos replikák minden adatbázis csoportjában így Contoso manuálisan biztonsági mentése és visszaállítása ezeket nem kell. Ellenőrzés után a rendelkezésre állási csoport jön létre.
+5. A **adatszinkronizálás kiválasztása**, a használatukkal az automatikus összehangolása. Ezzel a beállítással az SQL Server hozza létre automatikusan a másodlagos replikák minden adatbázis a csoport így Contoso manuálisan biztonsági mentése és visszaállítása ezeket nem kell. Ellenőrzést követően a rendelkezésre állási csoport jön létre.
 
     ![AlwaysOn rendelkezésre állási csoport](media/contoso-migration-rehost-vm-sql-ag/aog-4.png)
 
-6. Contoso problémát hibába ütközött a csoport létrehozásakor. Nem használ Active Directory integrált Windows-védelmet, és így kell megadni az engedélyeket az SQL-bejelentkezési a Windows feladatátvevő fürt szerepkör létrehozásához.
+6. Contoso hibába ütközött egy problémát, a csoport létrehozásakor. Nem használ Active Directory Windows beépített biztonsági, és így kell az SQL-bejelentkezés a Windows feladatátvevő fürt szerepkörök létrehozásához szükséges engedélyek biztosítása.
 
     ![AlwaysOn rendelkezésre állási csoport](media/contoso-migration-rehost-vm-sql-ag/aog-5.png)
 
-6. A csoport létrehozása után a Contoso láthatja azt az SQL Management Studio.
+6. A csoport létrehozása után a Contoso láthatják őket az SQL Management Studióban.
 
-### <a name="configure-a-listener-on-the-cluster"></a>Adja meg a figyelő a fürtön
+### <a name="configure-a-listener-on-the-cluster"></a>Egy figyelő konfigurálása a fürtön
 
-Utolsó lépése az SQL-telepítéssel beállításához a Contoso szerint a figyelő a fürtön állítja be a belső terheléselosztó, és elérhetővé teszi a figyelő online. Ehhez a parancsfájl használata.
+Az SQL-telepítés beállítása az utolsó lépésben a Contoso a belső terheléselosztó konfigurálja a figyelőt a fürtön, és elérhetővé teszi a figyelő online. Egy parancsfájlt ennek használnak.
 
 ![Fürt-figyelő](media/contoso-migration-rehost-vm-sql-ag/cluster-listener.png)
 
 
 ### <a name="verify-the-configuration"></a>Ellenőrizze
 
-Minden beállítással, a Contoso most már rendelkezik egy funkcionális rendelkezésre állási csoport, amely az áttelepített adatbázist használ az Azure-ban. Ezt a belső terheléselosztó az SQL Management Studio csatlakozva azok ellenőrizheti.
+Mindent, a Contoso most már rendelkezik egy funkcionális rendelkezésre állási csoportot az Azure-ban, amely a migrált adatbázis használja. Ez a belső terheléselosztó az SQL Management Studióban való csatlakozással azok ellenőrzése.
 
-![ILB csatlakozás](media/contoso-migration-rehost-vm-sql-ag/ilb-connect.png)
+![ILB-csatlakozás](media/contoso-migration-rehost-vm-sql-ag/ilb-connect.png)
 
 **További segítségre van szüksége?**
 - Létrehozásának elsajátítása egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-tutorial#create-the-availability-group) és [figyelő](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-tutorial#configure-listener).
-- Manuálisan [a load balancer IP-cím használatának beállítása a fürt](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener#configure-the-cluster-to-use-the-load-balancer-ip-address).
-- [További](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-2) létrehozása és SAS használatával kapcsolatban.
+- Manuálisan [a fürt beállítása a terheléselosztó IP-címe használandó](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener#configure-the-cluster-to-use-the-load-balancer-ip-address).
+- [További](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2) létrehozásáról és a SAS használatával.
 
 
 ## <a name="step-8-migrate-the-vm-with-site-recovery"></a>8. lépés: A Site Recovery a virtuális gép áttelepítése
 
-Futtassa egy gyors contoso feladatátvétel tesztelése, és telepítse át a virtuális gép.
+Contoso futtatása egy gyors feladatátvételi teszt, és ezután migrálja a virtuális Gépet.
 
 ### <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 
-Feladatátvételi teszt futtatása segít biztosítani, hogy minden a várt módon működik az áttelepítés előtt. 
+Feladatátvételi teszt futtatása gondoskodik arról, hogy minden a várt módon működik az áttelepítés előtt. 
 
-1. Contoso futtat egy feladatátvételi tesztet a legutóbbi pontnak idő (**legújabb feldolgozott**).
-2. És melyik **gép leállítása a feladatátvétel megkezdése előtt**, hogy a hely helyreállítási művelet megkísérli indítására, a feladatátvétel előtt állítsa le a virtuális gép – forrásként. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. 
-3. Tesztelési feladatátvételi futtatják: 
+1. Contoso fut egy feladatátvételi tesztet a legújabb elérhető pontra idő (**legutóbb feldolgozott**).
+2. Kiválasztják **gép leállítása a feladatátvétel megkezdése előtt**, hogy a Site Recovery megkísérli a forrásoldali virtuális gép leállítása a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. 
+3. Teszt feladatátvétel futtatása: 
 
-    - Egy Előfeltételek ellenőrzése során, hogy az áttelepítéshez szükséges feltételek vannak érvényben.
+    - Ellenőrizze, hogy az áttelepítéshez szükséges feltételek vannak érvényben lefuttatja az előfeltételek ellenőrzését.
     - A feladatátvétel feldolgozza az adatokat, hogy az Azure-beli virtuális gép létrehozható legyen. Ha a legutóbbi helyreállítási pont van kiválasztva, a rendszer egy helyreállítási pontot hoz létre az adatokból.
     - A rendszer létrehoz egy Azure-beli virtuális gépet az előző lépésben feldolgozott adatok használatával.
 
-3. A feladatátvétel befejezése után a replika Azure virtuális gép megjelenik az Azure-portálon. Contoso ellenőrzi, hogy a virtuális gép a megfelelő, csatlakozik-e a megfelelő hálózati méretét, és fut-e. 
-4. Annak ellenőrzése után, Contoso számolja fel a feladatátvétel után, és jegyezze fel, és mentse a megfigyelések. 
+3. A feladatátvétel befejezését követően a replika Azure virtuális gép megjelenik az Azure Portalon. Contoso ellenőrzi, hogy a virtuális gép a megfelelő méret, amely a megfelelő hálózathoz csatlakoztatva van és fut-e. 
+4. Miután ellenőrizte, Contoso tisztítása a feladatátvétel, és jegyezze fel, és mentse a kapcsolatos megfigyelések. 
 
 ### <a name="run-a-failover"></a>Feladatátvétel futtatása
 
-1. Miután meggyőződött arról, hogy a feladatátvételi tesztet működőképes-e a várt módon, a Contoso áttelepítés helyreállítási terv létrehozása, majd adja hozzá WEBVM a terv.
+1. Miután ellenőrizte, hogy a feladatátvételi teszt a várt módon dolgozni, a Contoso hozzon létre egy helyreállítási terv áttelepítése és WEBVM ad hozzá a csomagot.
 
      ![Helyreállítási terv](./media/contoso-migration-rehost-vm-sql-ag/recovery-plan.png)
 
-2. A feladatátvétel a terv számítógépen futnak. Válassza ki a legutóbbi helyreállítási pontot, és adja meg, hogy a Site Recovery próbálkozzon az időt. a feladatátvétel előtt állítsa le a helyszíni virtuális gép.
+2. Feladatátvétel a terv számítógépen futnak. Válassza ki a legutóbbi helyreállítási pontot, és adja meg, hogy a Site Recovery kísérelje meg a helyszíni virtuális gép leállítása a feladatátvétel indítása előtt.
 
     ![Feladatátvétel](./media/contoso-migration-rehost-vm-sql-ag/failover1.png)
 
-3. A feladatátvétel után azok győződjön meg arról, hogy az Azure virtuális gép megjelenik-e a várt módon az Azure-portálon.
+3. A feladatátvétel után, győződjön meg arról, hogy az Azure virtuális gép megjelenik-e a várt módon az Azure Portalon.
 
     ![Helyreállítási terv](./media/contoso-migration-rehost-vm-sql-ag/failover2.png)
 
-6. Annak ellenőrzése után a virtuális Gépet az Azure-ban, akkor az áttelepítési folyamat befejeződését, állítsa le a replikációt a virtuális gép, és állítsa le a Site Recovery számlázási a virtuális gép áttelepítésének befejezéséhez.
+6. Miután ellenőrizte a virtuális gép az Azure-ban, ezek az áttelepítéshez a migrálási folyamat befejezéséhez, állítsa le a virtuális gép replikálását, és állítsa le a virtuális gép Site Recovery-számlázását.
 
     ![Feladatátvétel](./media/contoso-migration-rehost-vm-sql-ag/failover3.png)
 
-### <a name="update-the-connection-string"></a>Frissítse a kapcsolati karakterlánc
+### <a name="update-the-connection-string"></a>A kapcsolati karakterlánc frissítése
 
-Az áttelepítési folyamat utolsó lépése Contoso frissítse úgy, hogy az áttelepített adatbázis a SHAOG figyelő futó mutasson az alkalmazás a kapcsolati karakterláncot. Ez a konfiguráció az Azure-ban már futó WEBVM módosul.  Ez a konfiguráció az ASP-alkalmazás web.config található. 
+Az áttelepítési folyamat utolsó lépését, mint a Contoso frissítse a kapcsolati karakterláncot, az alkalmazás a migrált adatbázis, a SHAOG figyelő futó mutasson. Ez a konfiguráció az Azure-ban már futó WEBVM a módosulnak.  Ez a konfiguráció a Web.config fájl az ASP-alkalmazás található. 
 
 1. Keresse meg a fájlban a következő C:\inetpub\SmartHotelWeb\web.config.  Módosítsa megfelelően a AOG teljes Tartománynevét a kiszolgáló nevét: shaog.contoso.com.
 
     ![Feladatátvétel](./media/contoso-migration-rehost-vm-sql-ag/failover4.png)  
 
-2. A fájl frissítése, és mentse, azok újraindítása után a WEBVM IIS. Akkor ehhez használja az IISRESET /RESTART cmd parancssorból.
-2. IIS újraindítása után, az alkalmazás most használja az adatbázis fut az SQL MI.
+2. A fájl frissítése és a mentés után, indítsa újra az IIS a WEBVM. Ezek ehhez az IISRESET /RESTART cmd parancsot a parancssorba.
+2. Az IIS újraindítása után, az alkalmazás most már használ az adatbázis az SQL Buszpéldány futtat.
 
 
 **További segítségre van szüksége?**
 
-- [További tudnivalók](https://docs.microsoft.com/azure/site-recovery/tutorial-dr-drill-azure) futó feladatátvételi tesztet. 
+- [Ismerje meg](https://docs.microsoft.com/azure/site-recovery/tutorial-dr-drill-azure) feladatátvételi teszt futtatása. 
 - [Ismerje meg,](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) a helyreállítási terv létrehozása.
-- [További tudnivalók](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) Azure feladatátvétele.
+- [Ismerje meg](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) – Azure feladatátvétele.
 
-## <a name="clean-up-after-migration"></a>Az áttelepítés után tisztítása
+## <a name="clean-up-after-migration"></a>Áttelepítés utáni karbantartás
 
-Az áttelepítés után a SmartHotel alkalmazást egy Azure virtuális gépen fut, és az Azure SQL-fürt a SmartHotel adatbázis található.
+Az áttelepítés után a SmartHotel app-beli virtuális gépen fut, és a SmartHotel adatbázis az Azure SQL-fürt található.
 
-Most van szüksége a Contoso tisztítás lépések elvégzéséhez:  
+Most már van szüksége a Contoso karbantartása a lépések elvégzéséhez:  
 
 - Távolítsa el a helyszíni virtuális gépek a vCenter-készlet.
 - Távolítsa el a virtuális gépek helyi biztonsági mentési feladatok.
-- Frissítse a virtuális gépek új helyeket és IP-címek megjeleníteni kívánt belső dokumentációt.
-- Tekintse át minden olyan erőforrásnál, amely interakciót folytatni a leszerelt virtuális gépeket, és bármely vonatkozó beállítások vagy a dokumentációjával tükrözzék az új konfiguráció frissítése.
-- Adja hozzá a két új virtuális gépet (SQLAOG1 SQLAOG2) rendszerek figyelése termelési hozzá kell adni.
+- Frissítés megjelenítése az új helyek és IP-címek a virtuális gépek belső dokumentációjában.
+- Tekintse át az erőforrásokat, amelyek interakciót folytatni a leszerelt virtuális gépeket, és frissítse a bármely vonatkozó beállítások vagy dokumentáció, hogy tükrözzék az új konfigurációt.
+- Adja hozzá az éles rendszerek figyelése (SQLAOG1 és SQLAOG2) a két új virtuális gépet fel kell venni.
 
 ## <a name="review-the-deployment"></a>Tekintse át a központi telepítés
 
-Az áttelepített erőforrások az Azure-ban a Contoso kell teljesen üzemeltető, és az új infrastruktúra biztonságáról.
+Az áttelepített erőforrások az Azure-ban, a Contoso cégnek szüksége van, teljes mértékben üzembe helyezése, és tegye biztonságossá a új infrastruktúrára.
 
 ### <a name="security"></a>Biztonság
 
-A Contoso biztonsági csapata nem ellenőrzi az Azure virtuális gépek WEBVM, SQLAOG1 és SQLAOG2 biztonsági problémák meghatározásához. 
+A Contoso biztonsági csapat áttekinti az Azure-beli virtuális gépek WEBVM, SQLAOG1 és SQLAOG2 bármilyen biztonsági problémák meghatározása érdekében. 
 
-- Ezek tekintse át a hálózati biztonsági csoportokkal (NSG-k) a virtuális géphez való hozzáférést. Az NSG-k segítségével győződjön meg arról, hogy csak az alkalmazás engedélyezett forgalom teljen.
-- Ezek figyelembe véve, az Azure Disk Encryption és KeyVault lemezen lévő adatok védelme.
-- Ezek kell kiértékelni átlátható adattitkosítás (TDE), és a majd engedélyezni a SmartHotel adatbázis az új SQL-AOG futó. [További információk](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017).
+- Azok a hálózati biztonsági csoportok (NSG-k) tekintse át a virtuális géphez való hozzáférés szabályozása. Az NSG-k segítségével győződjön meg arról, hogy csak az alkalmazás engedélyezett forgalom adhat át.
+- Fontolgatják biztonságossá tétele a KeyVault és az Azure Disk Encryption használatával a lemezen lévő adatokat.
+- Azok kell kiértékelni a transzparens adattitkosítás (TDE), és engedélyez az SmartHotel adatbázisban az új SQL-AOG futó. [További információk](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017).
 
-[További](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) virtuális gépek biztonsági eljárásokkal kapcsolatban.
+[További információ](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) virtuális gépek biztonsági eljárásairól.
 
 ### <a name="backups"></a>Biztonsági másolatok
 
-Az adatok biztonsági mentésének WEBVM, SQLAOG1 és SQLAOG2 contoso lesz az Azure Backup szolgáltatással. [További információk](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Az adatok biztonsági mentése WEBVM SQLAOG1 és SQLAOG2 lévő contoso fogja az Azure Backup szolgáltatással. [További információk](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-### <a name="licensing-and-cost-optimization"></a>Licencelési és pluszköltséggel optimalizálása
+### <a name="licensing-and-cost-optimization"></a>Licencelési és a költségek optimalizálása
 
-1. Contoso rendelkezik, azok WEBVM a meglévő licencelésből és fogja használni, az Azure hibrid juttatásra.  Ezek lesz alakítsa át a meglévő Azure virtuális gépeken, a díjszabás előnyeit.
-2. Contoso által Cloudyn, Microsoft leányvállalata Azure költség felügyeletét teszi lehetővé. A többszörös felhő költsége-kezelési megoldás, amely segít használata és kezelése az Azure és más felhőalapú erőforrásokat is.  [További](https://docs.microsoft.com/azure/cost-management/overview) Azure költség-kezeléssel kapcsolatos. 
+1. A Contoso azok WEBVM meglévő licencelésből rendelkezik, és használja az Azure Hybrid Benefit.  Váltás lesz a meglévő Azure virtuális gépek, a díjszabás előnyeinek kihasználása érdekében.
+2. Contoso lehetővé teszi a Cloudyn, a Microsoft egy leányvállalata által licencelt Azure Cost Managementbe. Egy többfelhős költségkezelő felügyeleti megoldás, amely segítséget nyújt az Azure és egyéb felhőerőforrások kezelése, és a.  [További](https://docs.microsoft.com/azure/cost-management/overview) kapcsolatos Azure Cost Managementbe. 
 
 ## <a name="conclusion"></a>Összegzés
 
-Ebben a cikkben a Contoso rehosted az alkalmazás előtér virtuális gép áttelepítésével a Site Recovery szolgáltatás használatával az SmartHotel alkalmazást az Azure-ban. Az alkalmazás adatbázis át az Azure-ban kiépített SQL Server-fürtöt, és egy SQL Server AlwaysOn rendelkezésre állási csoport védi.
+Ebben a cikkben a Contoso rehosted által az alkalmazás előtérbeli virtuális gép migrálása az Azure-bA a Site Recovery szolgáltatással az SmartHotel alkalmazást az Azure-ban. Az alkalmazás-adatbázis áttelepítése az SQL Server-fürt kiépítése az Azure-ban, és védi, egy SQL Server AlwaysOn rendelkezésre állási csoportban.
 
 ## <a name="next-steps"></a>További lépések
 
-A sorozat következő cikkben azt kiderül, milyen Contoso áthelyezési szolgáltatás ügyfélszolgálati osTicket alkalmazásuk Linux rendszeren fut, és a MySQL-adatbázis telepítve.
+A sorozat következő cikkben hogy megmutatjuk, hogyan a Contoso a linuxon futó szolgáltatás desk osTicket alkalmazás újratárolása, és egy MySQL-adatbázis telepítve.
 
 

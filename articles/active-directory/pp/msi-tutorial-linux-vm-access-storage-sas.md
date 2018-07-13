@@ -1,6 +1,6 @@
 ---
-title: A Linux virtuális gép MSI SAS hitelesítő adat segítségével Azure Storage eléréséhez használja
-description: Ez az oktatóanyag bemutatja, hogyan egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) Azure Storage egy SAS-hitelesítő adat használata helyett a fiók tárelérési kulcs elérésére használhat.
+title: Linux rendszerű virtuális gép MSI használata az Azure Storage-ban egy SAS-hitelesítő adatot eléréséhez
+description: Ez az oktatóanyag bemutatja, hogyan egy Linux rendszerű virtuális gépek Felügyeltszolgáltatás-identitás (MSI) Azure Storage helyett a tárfiók hozzáférési kulcsát egy SAS-hitelesítő adatok használatával elérésére használhat.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,25 +15,25 @@ ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: fc7c5b4ab025666fc7fa1d9073198ec90d8e71c3
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28981285"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611027"
 ---
-# <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Linux virtuális gép felügyelt Szolgáltatásidentitás segítségével Azure Storage érhetnek el egy SAS-hitelesítő adat
+# <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Azure Storage elérése SAS-hitelesítő adatot keresztül egy Linux rendszerű virtuális gépek Felügyeltszolgáltatás-identitás segítségével
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Az oktatóanyag bemutatja, hogyan engedélyezése felügyelt szolgáltatás identitásának (MSI) a Linux virtuális gép, majd használja az MSI storage közös hozzáférésű Jogosultságkód (SAS) hitelesítő adatok beszerzése. Pontosabban a [szolgáltatás SAS hitelesítőadat-](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+Ez az oktatóanyag bemutatja, hogyan lehet engedélyezni a Felügyeltszolgáltatás-identitás (MSI) egy Linux rendszerű virtuális gép esetében, akkor az MSI használata egy tároló közös hozzáférésű Jogosultságkód (SAS) hitelesítő adatok beszerzése. Pontosabban a [szolgáltatásalapú SAS-hitelesítő adatok](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
-A szolgáltatás SAS lehetővé teszi a hozzáférést korlátozott a tárfiókban lévő objektumok adott időtartamra és egy adott szolgáltatáshoz (ebben az esetben a blob szolgáltatás), anélkül, hogy egy fiók hozzáférési kulcsot. Használhatja a szokásos módon esetén a következőnek tárolási műveletek, például amikor a Storage szolgáltatás SDK használatával SAS hitelesítő adatokat. Ebben az oktatóanyagban bemutatjuk a fel- és Azure Storage parancssori felület használatával blob letöltéséhez. Megtudhatja, hogyan:
+A szolgáltatás SAS lehetővé teszi a tárfiókban tárolt objektumok korlátozott hozzáférés adható adott időtartamra és a egy adott szolgáltatás (ebben az esetben a blob szolgáltatás), anélkül, hogy a fiók hozzáférési kulcsára. Használhatja a szokásos módon ha ezzel a tárolási műveletek, például amikor a Storage SDK használatával egy SAS-hitelesítő adatot. Ebben az oktatóanyagban bemutatjuk a fel- és Azure Storage CLI-vel blob letöltése. Megtudhatja, hogyan lehet:
 
 
 > [!div class="checklist"]
-> * A Linux virtuális gépek MSI engedélyezése 
-> * A virtuális gép hozzáférést biztosíthat a tárfiók SAS az erőforrás-kezelőben 
-> * Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és a SAS lekérni az erőforrás-kezelő használatával 
+> * Linux rendszerű virtuális gépen az MSI engedélyezéséhez 
+> * A virtuális gép hozzáférést biztosítani a tárfiók SAS a Resource Managerben 
+> * A virtuális gép identitással hozzáférési jogkivonatot kapjon, és a SAS lekérése a Resource Manager használatával 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,93 +45,93 @@ A szolgáltatás SAS lehetővé teszi a hozzáférést korlátozott a tárfiókb
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Egy új erőforráscsoportot a Linux virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Linux rendszerű virtuális gép létrehozása az új erőforráscsoport
 
-Ebben az oktatóanyagban létrehozhatunk egy új Linux virtuális Gépet. A meglévő virtuális MSI is engedélyezheti.
+Ebben az oktatóanyagban létrehozunk egy új Linux rendszerű virtuális Gépet. A meglévő virtuális gép MSI is engedélyezheti.
 
-1. Kattintson a **/ hozzon létre új szolgáltatást** gomb az Azure portál bal felső sarkában található.
+1. Kattintson a **+/ hozzon létre új szolgáltatást** az Azure portal bal felső sarkában található gomb.
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
-3. Adja meg a virtuális gép adatait. A **hitelesítési típus**, jelölje be **nyilvános SSH-kulcs** vagy **jelszó**. A létrehozott hitelesítő adatok lehetővé teszik-e jelentkezni a virtuális gép.
+3. Adja meg a virtuális gép adatait. A **hitelesítési típus**válassza **nyilvános SSH-kulcs** vagy **jelszó**. A létrehozott hitelesítő adatok lehetővé teszik jelentkezzen be a virtuális Gépre.
 
-    ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
-4. Válasszon egy **előfizetés** a virtuális gép meg a legördülő listában.
-5. Jelölje be egy új **erőforráscsoport** szeretne létrehozni, válassza a virtuális gép **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
-6. Adja meg a virtuális gép számára. További méretek megtekintéséhez válasszon **összes** , vagy módosítsa a lemez típusát támogatott szűrő. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
+4. Válasszon egy **előfizetés** a virtuális gép a legördülő listában.
+5. Jelölje be egy új **erőforráscsoport** szeretne létrehozni, válassza ki a virtuális gép **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
+6. Válassza ki a méretet a virtuális gép számára. További méretek megjelenítéséhez válassza ki a **az összes megtekintése** vagy a lemez típusát támogatott szűrő módosítása. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése
+## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen az MSI engedélyezéséhez
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. A színfalak MSI engedélyezése két dolgot eredményez: az MSI-Virtuálisgép-bővítmény a virtuális Gépet telepít, és felügyelt identitás lehetővé teszi a virtuális gép számára.  
+A virtuális gép MSI lehetővé teszi hozzáférési tokenek beszerzése az Azure ad-ből anélkül, hogy hitelesítő adatok üzembe a kódot kellene. Valójában MSI engedélyezéséhez két dolgot eredményez: a virtuális Gépen az MSI-Virtuálisgép-bővítmény telepítése és a Felügyeltszolgáltatás-identitás lehetővé teszi a virtuális gép számára.  
 
-1. Keresse meg az erőforráscsoport a új virtuális gép, és válassza ki a virtuális gépet, az előző lépésben létrehozott.
-2. Kattintson a virtuális gép "Beállítások" a bal oldali **konfigurációs**.
-3. Regisztrálja, és engedélyezze a MSI-t, jelölje be **Igen**, ha szeretné letiltani, válassza a nem.
+1. Keresse meg az erőforráscsoport, az új virtuális gépet, és válassza ki a virtuális gépet az előző lépésben létrehozott.
+2. Kattintson a virtuális gép a bal oldalon a "beállítások" **konfigurációs**.
+3. Regisztráljon, és az MSI engedélyezéséhez, válassza ki a **Igen**, ha szeretné letiltani, válassza a nem.
 4. Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.
 
-    ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Ha ellenőrizni szeretné mely bővítmények a virtuális Gépre, kattintson a **bővítmények**. Ha MSI engedélyezve van, a **ManagedIdentityExtensionforLinux** listájában jelenik meg.
+5. Ha ellenőrizni szeretné milyen kiterjesztésű vannak-e a virtuális gépre, kattintson a **bővítmények**. Ha az MSI engedélyezve van, a **ManagedIdentityExtensionforLinux** megjelenik a listában.
 
-    ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
+    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
-## <a name="create-a-storage-account"></a>Create a storage account 
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
-Ha még nem rendelkezik egy, most létrehoz egy tárfiókot.  Is ezt a lépést kihagyhatja, és a virtuális gép MSI hozzáférést biztosíthat a meglévő tárfiók kulcsait. 
+Ha még nem rendelkezik egy, most már létrehozhat egy storage-fiókot.  Kihagyhatja ezt a lépést is, és a virtuális gép MSI hozzáférést a kulcsokhoz, egy meglévő tárfiókot. 
 
-1. Kattintson a **/ hozzon létre új szolgáltatást** gomb az Azure portál bal felső sarkában található.
-2. Kattintson a **tárolási**, majd **Tárfiók**, és egy új, "Create a storage-fiók" panelen jelenik meg.
-3. Adjon meg egy **neve** a tárfiók, amelyek később fogja használni.  
-4. **Telepítési modell** és **fiók kind** meg "Erőforrás-kezelő" és "Általános célú", illetve. 
-5. Győződjön meg arról a **előfizetés** és **erőforráscsoport** az előző lépésben a virtuális gép létrehozásakor megadott megfelelően.
+1. Kattintson a **+/ hozzon létre új szolgáltatást** az Azure portal bal felső sarkában található gomb.
+2. Kattintson a **tárolási**, majd **Tárfiók**, és a egy új "Tárfiók létrehozása" panelen jelenik meg.
+3. Adjon meg egy **neve** a tárfiók, amely később fogja használni.  
+4. **Üzemi modell** és **fióktípus** értékre kell állítani "Erőforrás-kezelő" és "Általános célú", illetve. 
+5. Győződjön meg, hogy a **előfizetés** és **erőforráscsoport** egyeznek azokkal az előző lépésben a virtuális gép létrehozásakor megadott.
 6. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új tárfiók létrehozása](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-in-the-storage-account"></a>A tárfiók egy blob-tároló létrehozása
+## <a name="create-a-blob-container-in-the-storage-account"></a>Hozzon létre egy blobtárolót a tárfiókban
 
-Később rendszer feltöltése és töltse le a fájlt az új tárfiókot. Mivel a szükséges blob-tároló fájlok, igazolnia kell a fájl tárolására blob tárolókat hozhat létre.
+Hogy később feltöltése és fájl letöltése az új tárfiókot. Mivel a fájlok van szüksége a blob storage-ba, hozzon létre egy blobtárolót a fájl tárolására kell.
 
-1. Lépjen vissza az újonnan létrehozott tárfiók.
-2. Kattintson a **tárolók** hivatkozásra a bal oldali panelen kattintson a "Blob szolgáltatás."
-3. Kattintson a **+ tároló** tetején a lap és az "új tároló" panel diák ki.
-4. Nevezze el a tároló, válassza ki a hozzáférési szintet, majd kattintson a **OK**. A megadott név az oktatóanyag későbbi részében fogja használni. 
+1. Lépjen vissza az újonnan létrehozott tárfiókra.
+2. Kattintson a **tárolók** hivatkozásra a bal oldali panelen, a "Blob szolgáltatás."
+3. Kattintson a **+ tároló** tetején az oldalon, és a egy "új tároló" panel becsúszik.
+4. Adja meg a tároló nevét, válasszon egy hozzáférési szintet, majd kattintson a **OK**. A megadott név lesz az oktatóanyag későbbi részében. 
 
-    ![A tároló létrehozása](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Storage-tároló létrehozása](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>A virtuális gép MSI hozzáférést egy SAS tárolók használatához 
+## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>Hozzáférést biztosít a virtuális gép MSI használata egy tároló SAS 
 
-Az Azure Storage natív módon támogatja az Azure AD-alapú hitelesítés.  Azonban a tároló SAS lekérése a Resource Manager egy olyan MSI Csomaghoz használatával, majd a SAS használatával férjenek hozzá a tároló.  Ebben a lépésben megadta a virtuális gép MSI hozzáférést a tárfiók SAS.   
+Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítés.  Azonban a tároló SAS lekérése a Resource Manager egy MSI-csomag használatával, majd az SAS tároló eléréséhez.  Ebben a lépésben a virtuális gép MSI hozzáférést adhat a tárfiók SAS.   
 
 1. Lépjen vissza az újonnan létrehozott tárfiók...   
-2. Kattintson a **hozzáférés-vezérlés (IAM)** hivatkozás a bal oldali panelen.  
-3. Kattintson a **+ Hozzáadás** fölött a lap egy új szerepkör-hozzárendelés hozzáadása a virtuális gép számára
-4. Állítsa be **szerepkör** "Tárolási fiók munkatárs", a lap jobb oldalán. 
-5. A következő legördülő menüből, állítson be **való hozzáférés hozzárendelése** az erőforrás "Virtuális gép".  
-6. A következő szerepel-e a megfelelő előfizetést a **előfizetés** legördülő menüből, majd állítsa be **erőforráscsoport** "Az összes erőforráscsoport" számára.  
-7. Végezetül a **válasszon** meg a legördülő listában válassza ki a Linux virtuális gép, majd kattintson az **mentése**.  
+2. Kattintson a **hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
+3. Kattintson a **+ Hozzáadás** az oldalra egy új szerepkör-hozzárendelés hozzáadása a virtuális gép felett
+4. Állítsa be **szerepkör** a "Tárfiók-közreműködő", az oldal jobb oldalán. 
+5. Állítsa be a következő legördülő **rendelhet hozzáféréseket** az erőforrás "Virtuális gép".  
+6. Következő lépésként győződjön meg arról, a megfelelő előfizetés szerepel-e **előfizetés** legördülő menüből, majd állítsa be **erőforráscsoport** "Minden erőforráscsoportok".  
+7. Végül **kiválasztása** a legördülő listában válassza ki a Linuxos virtuális géphez, majd kattintson a **mentése**.  
 
-    ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
+    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és hívja az Azure Resource Manager használatával
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>A virtuális gép identitással hozzáférési jogkivonatot kapjon, és hívja az Azure Resource Manager használatával
 
-Az oktatóanyag a hátralévő azt fog működni a korábban létrehozott virtuális gépről.
+Az oktatóanyag további részében hogy működik a korábban létrehozott virtuális gépről.
 
-Ezek a lépések elvégzéséhez szüksége lesz egy SSH-ügyfél. Windows használ, ha az SSH-ügyfél a használhatja a [Linux rendszerhez készült Windows alrendszer](https://msdn.microsoft.com/commandline/wsl/install_guide). Ha az SSH-ügyfél kulcsok konfigurálása segítségre van szüksége, tekintse meg [a Windows Azure használatára SSH-kulcsok hogyan](~/articles/virtual-machines/linux/ssh-from-windows.md), vagy [létrehozása, és az SSH nyilvános és titkos kulcsból álló kulcspárt használata a Linux virtuális gépek Azure-ban](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
+A lépések elvégzéséhez szüksége lesz egy SSH-ügyfél. Ha Windows használ, használhatja az SSH-ügyfél a a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/install_guide). Ha az SSH-ügyfél kulcsok konfigurálása segítségre van szüksége, tekintse meg [használata SSH-kulcsok az Azure-ban a Windows hogyan](~/articles/virtual-machines/linux/ssh-from-windows.md), vagy [létrehozása és a nyilvános és titkos ssh-kulcs használata Linux rendszerű virtuális gépekhez az Azure-ban](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. Az Azure-portálon lépjen a **virtuális gépek**, keresse fel a Linux virtuális gépet, majd a a **áttekintése** kattintson **Connect** tetején. Másolja a karakterláncot, amellyel a virtuális Géphez csatlakozik. 
-2. Csatlakoztassa a virtuális Gépet az SSH-ügyfél használatával.  
-3. A következő kéri be a **jelszó** létrehozásakor hozzáadta a **Linux virtuális gép**. Meg kell majd lehet sikeres volt.  
-4. CURL használatával szerezze be a hozzáférési tokent az Azure Resource Manager.  
+1. Az Azure Portalon lépjen **virtuális gépek**, a Linux virtuális gépet, majd lépjen a **áttekintése** lapon kattintson **Connect** tetején. Másolja a karakterláncot, a virtuális Géphez való csatlakozáshoz. 
+2. A virtuális gépet az SSH-ügyfél csatlakozhat.  
+3. Ezután kéri, adja meg a **jelszó** hozzáadott létrehozásakor a **Linux rendszerű virtuális gép**. Meg kell majd lennie sikeresen bejelentkezett.  
+4. Hozzáférési jogkivonat beszerzése az Azure Resource Manager a CURL használatával.  
 
-    A CURL kérés- és a hozzáférési token nem éri el:
+    A CURL kérés- és a hozzáférési jogkivonat nem éri el:
     
     ```bash
     curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true    
     ```
     
     > [!NOTE]
-    > Az előző kérelem a "resource" paraméter értékének az Azure AD által várt pontosan egyeznie kell. Az Azure Resource Manager erőforrás-azonosító használata esetén meg kell adni a záró perjelet URI-n.
-    > A következő reagálva a access_token elem szerint lettek rövidítve kivonatosan mutatja.
+    > Az előző kérelem az "erőforrás" paraméter értéke az Azure AD által várt pontos egyezésűnek kell lennie. Az Azure Resource Manager erőforrás-azonosító használata esetén meg kell adnia az URI a záró perjellel.
+    > A következő választ access_token elem, kivonatosan csonkolva lettek.
     
     ```bash
     {"access_token":"eyJ0eXAiOiJ...",
@@ -143,11 +143,11 @@ Ezek a lépések elvégzéséhez szüksége lesz egy SSH-ügyfél. Windows haszn
     "token_type":"Bearer"} 
      ```
 
-## <a name="get-a-sas-credential-from-azure-resource-manager-to-make-storage-calls"></a>SAS hitelesítő adatokat az Azure Resource Manager tárolási hívásokat beolvasása
+## <a name="get-a-sas-credential-from-azure-resource-manager-to-make-storage-calls"></a>SAS-hitelesítő adatot az Azure Resource Manager-tároló hívásokhoz beolvasása
 
-Mostantól a CURL használatával hívja az erőforrás-kezelőt a hozzáférési jogkivonat azt lekérése az előző szakaszban tároló SAS-hitelesítő adat létrehozása. Tudunk a SAS-hitelesítő adatokat, miután tárolási feltöltés/letöltés műveletet is nevezzük.
+Most már a CURL használatával hívja meg az előző szakaszban azt lekérése hozzáférési token használatával-tároló SAS-hitelesítő adat létrehozása a Resource Manager. Ha már rendelkezünk a SAS-hitelesítő adatot, storage feltöltési/letöltési műveletek is nevezzük.
 
-A kérelem a SAS-hitelesítő adat létrehozása a következő HTTP kérelemben szereplő paraméterek használjuk:
+A kérelem használjuk a kövesse HTTP-kérelem paramétereit a SAS-hitelesítő adat létrehozása:
 
 ```JSON
 {
@@ -159,30 +159,30 @@ A kérelem a SAS-hitelesítő adat létrehozása a következő HTTP kérelemben 
 }
 ```
 
-Ezek a paraméterek szerepelnek a FELADÁS egy vagy több szervezet SAS hitelesítési kérelem. A paraméterek egy SAS-hitelesítő adatok létrehozására vonatkozó további információkért lásd: a [lista szolgáltatás SAS REST-referencia](/rest/api/storagerp/storageaccounts/listservicesas).
+Ezeket a paramétereket a SAS-hitelesítő adatok kérése bejegyzés törzse tartalmazza. A paramétereket egy SAS-hitelesítő adat létrehozása a további információkért lásd: a [lista szolgáltatás SAS REST-referencia](/rest/api/storagerp/storageaccounts/listservicesas).
 
-Használja a következő CURL-kérelmet a SAS-hitelesítő adat. Ügyeljen arra, hogy cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<STORAGE ACCOUNT NAME>`, `<CONTAINER NAME>`, és `<EXPIRATION TIME>` paraméterértékeket a saját értékekkel. Cserélje le a `<ACCESS TOKEN>` a korábban kapott hozzáférési jogkivonat értéket:
+A SAS-hitelesítő adatot használja a következő CURL-kérelmet. Ne felejtse el a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<STORAGE ACCOUNT NAME>`, `<CONTAINER NAME>`, és `<EXPIRATION TIME>` paraméterértékeket a saját értékeire. Cserélje le a `<ACCESS TOKEN>` értékét a korábban kapott hozzáférési jogkivonattal:
 
 ```bash 
 curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/listServiceSas/?api-version=2017-06-01 -X POST -d "{\"canonicalizedResource\":\"/blob/<STORAGE ACCOUNT NAME>/<CONTAINER NAME>\",\"signedResource\":\"c\",\"signedPermission\":\"rcw\",\"signedProtocol\":\"https\",\"signedExpiry\":\"<EXPIRATION TIME>\"}" -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 
 > [!NOTE]
-> Az előzetes URL-címben a szöveg kis-és nagybetűket, ezért győződjön meg arról, ha ennek megfelelően igazodjon felső-kisbetűk az erőforráscsoportok használ. Ezenkívül fontos, hogy ez egy POST kérést nem GET kérés.
+> Az előzetes URL-címben a szöveg megkülönbözteti a kis-és nagybetűket, ezért győződjön meg arról, ha a felső-kisbetűk, az erőforráscsoportokra vonatkozó használ, ennek megfelelően. Ezenkívül fontos, hogy ez egy POST-kérés nem egy GET kéréssel.
 
-A CURL választ ad vissza a SAS-hitelesítő adat:  
+A CURL-válasz a SAS-hitelesítő adatot adja vissza:  
 
 ```bash 
 {"serviceSasToken":"sv=2015-04-05&sr=c&spr=https&st=2017-09-22T00%3A10%3A00Z&se=2017-09-22T02%3A00%3A00Z&sp=rcw&sig=QcVwljccgWcNMbe9roAJbD8J5oEkYoq%2F0cUPlgriBn0%3D"} 
 ```
 
-Hozzon létre egy minta blob fájlt tölthet fel a blob storage tárolót. A Linux virtuális gép ehhez a következő paranccsal. 
+Hozzon létre egy mintafájlt blob feltöltése a blob storage-tárolóba. A Linux rendszerű virtuális gép ehhez a következő paranccsal. 
 
 ```bash
 echo "This is a test file." > test.txt
 ```
 
-A következő hitelesítik magukat a CLI `az storage` parancs SAS hitelesítő adatokkal, és a fájl feltöltése a blob-tárolóhoz. Ebben a lépésben szüksége lesz a [a legújabb Azure parancssori felület telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) a virtuális gépen, ha még nem tette meg.
+Ezután a CLI-vel hitelesítéséhez `az storage` parancsának használatával a SAS-hitelesítő adatot, és töltse fel a fájlt a blobtárolóba. Ehhez a lépéshez szüksége lesz [telepítse az Azure CLI legújabb](https://docs.microsoft.com/cli/azure/install-azure-cli) a virtuális Gépen, ha még nem tette.
 
 ```azurecli-interactive
  az storage blob upload --container-name 
@@ -202,7 +202,7 @@ Finished[#############################################################]  100.000
 }
 ```
 
-Emellett letöltheti a fájlt az Azure parancssori felület használatával, és a SAS-hitelesítő adat hitelesítése. 
+Ezenkívül, letöltheti a fájlt az Azure CLI-vel, és a SAS-hitelesítő adatot való hitelesítés közben. 
 
 A kérelem: 
 
@@ -258,10 +258,10 @@ Válasz:
 
 ## <a name="next-steps"></a>További lépések
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](msi-overview.md).
-- Hogyan hajtsa végre ugyanezt az oktatóanyagot használata a tárfiók kulcsára, lásd: [elérni az Azure Storage szolgáltatás Linux virtuális gép felügyelt identitás használatára](msi-tutorial-linux-vm-access-storage.md)
-- Az Azure Storage-fiók SAS szolgáltatás kapcsolatos további információkért lásd:
-  - [Közös hozzáférésű jogosultságkód (SAS) használatával](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
+- MSI áttekintését lásd: [Felügyeltszolgáltatás-identitás – áttekintés](msi-overview.md).
+- Megtudhatja, hogyan teheti ezt ugyanezt az oktatóanyagot tárfiókkulcs használatával, lásd: [egy Linux rendszerű virtuális gépek Felügyeltszolgáltatás-identitás használata az Azure Storage eléréséhez](msi-tutorial-linux-vm-access-storage.md)
+- Az Azure Storage-fiók SAS funkció kapcsolatos további információkért lásd:
+  - [Közös hozzáférésű jogosultságkódok (SAS) használata](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
   - [A szolgáltatásalapú SAS létrehozása](/rest/api/storageservices/Constructing-a-Service-SAS.md)
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.

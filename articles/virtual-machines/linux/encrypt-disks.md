@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: 75ec087536d6f833a9a2106b1fdf4ed1fd73ef8e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932411"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634620"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Az Azure-beli Linuxos virtuális gép titkosítása
 Bővített virtuális gép (VM) biztonsági és megfelelőségi virtuális lemezeket és a virtuális gépre titkosíthatók. Virtuális gépek vannak titkosítva, amely egy Azure Key vaultban biztosított titkosítási kulcsok használatával. Szabályozhatja a kriptográfiai kulcsokat és naplózhatja azok használatát. Ez a cikk részletesen bemutatja az Azure CLI 2.0 használatával Linux virtuális gép virtuális lemezeinek titkosításához. 

@@ -1,6 +1,6 @@
 ---
-title: MySQL telepíthető egy OpenSUSE Azure-ban |} Microsoft Docs
-description: Ismerje meg, MySQL telepítsen egy OpenSUSE Linux VMirtual gépet az Azure-ban.
+title: A MySQL telepítése OpenSUSE rendszerű virtuális gépen az Azure-ban |} A Microsoft Docs
+description: Ismerje meg a MySQL telepítése OpenSUSE Linux VMirtual gépen az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,30 +16,30 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: cynthn
 ms.openlocfilehash: 88bd895cb3a384f1ada0394fe2da206aca86b981
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
-ms.locfileid: "28001177"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38670930"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése Azure-ban működő, OpenSUSE Linux rendszerű virtuális gépen
 
-[MySQL](http://www.mysql.com) egy népszerű, nyílt forráskódú SQL-adatbázis. Ez az oktatóanyag bemutatja, hogyan OpenSUSE Linuxot futtató virtuális gép létrehozása, majd telepítse a MySQL.
+[MySQL](http://www.mysql.com) népszerű, nyílt forráskódú SQL-adatbázis. Ez az oktatóanyag bemutatja, hogyan lehet OpenSUSE Linux rendszerű virtuális gép létrehozása, majd a MySQL telepítése.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha telepítése és a parancssori felület helyileg használata mellett dönt, az Azure parancssori felület verzió szüksége 2.0-s vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-virtual-machine-running-opensuse-linux"></a>OpenSUSE Linuxot futtató virtuális gép létrehozása
+## <a name="create-a-virtual-machine-running-opensuse-linux"></a>OpenSUSE Linux rendszerű virtuális gép létrehozása
 
-Először hozzon létre egy erőforráscsoportot. Ebben a példában az erőforráscsoport elnevezési azt *mySQSUSEResourceGroup* hozza létre azt a *USA keleti régiója* régióban.
+Először hozzon létre egy erőforráscsoportot. Ebben a példában az erőforráscsoport elnevezési azt *mySQSUSEResourceGroup* és hozza létre a a *USA keleti Régiójában* régióban.
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-A virtuális gép létrehozása. Ebben a példában a virtuális gép jelenleg elnevezési *myVM*. Is fogjuk használni egy Virtuálisgép-méretet *Standard_D2s_v3*, de kell kiválasztani a [Virtuálisgép-méretet](sizes.md) úgy gondolja, hogy a munkaterhelés számára leginkább megfelelő.
+A virtuális gép létrehozásához. Ebben a példában a virtuális gép elnevezési azt *myVM*. Is fogjuk használni a virtuális gép méretét *Standard_D2s_v3*, de kell kiválasztani a [Virtuálisgép-méret](sizes.md) úgy gondolja, hogy a számítási feladathoz leginkább megfelelő.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -49,7 +49,7 @@ az vm create --resource-group mySQLSUSEResourceGroup \
    --generate-ssh-keys
 ```
 
-Szükség szabályokat adhat hozzá a hálózati biztonsági csoport forgalmának engedélyezésére MySQL 3306 porton keresztül.
+Is hozzá kell egy szabályt a hálózati biztonsági csoporthoz adatforgalom engedélyezéséhez 3306-os porton keresztül a MySQL-hez.
 
 ```azurecli-interactive
 az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
@@ -57,7 +57,7 @@ az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
 
 ## <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-Csatlakoztassa a virtuális Gépet SSH fogja használni. Ebben a példában a virtuális gép nyilvános IP-címe van *10.111.112.113*. Az IP-cím, a kimenetben látható a virtuális gép létrehozása után.
+Csatlakozzon a virtuális Géphez SSH fogja használni. Ebben a példában a virtuális gép nyilvános IP-cím áll *10.111.112.113*. Az IP-címet, a kimenetben láthatja a virtuális gép létrehozásakor.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
@@ -66,7 +66,7 @@ ssh 10.111.112.113
  
 ## <a name="update-the-vm"></a>A virtuális gép frissítése
  
-Miután a virtuális gép csatlakozik, telepítse a rendszer frissítések és javítások. 
+Miután csatlakozott a virtuális Gépet, telepítse a rendszer frissítéseit és javításait. 
    
 ```bash
 sudo zypper update
@@ -77,13 +77,13 @@ Kövesse az utasításokat a virtuális gép frissítése.
 ## <a name="install-mysql"></a>A MySQL telepítése 
 
 
-A MySQL telepítse a virtuális gép SSH-n keresztül. Válaszoljon a megfelelő utasításokat.
+A MySQL telepítése a virtuális gép ssh-n keresztül. Válaszoljon a megfelelő utasításokat.
 
 ```bash
 sudo zypper install mysql
 ```
  
-Állítsa be a MySQL induljon indul el, a rendszer. 
+Állítsa be a MySQL, akkor kezdődik, amikor a rendszer. 
 
 ```bash
 sudo systemctl enable mysql
@@ -94,49 +94,49 @@ Győződjön meg arról, hogy engedélyezve van-e a MySQL.
 systemctl is-enabled mysql
 ```
 
-Ez kell visszaadnia: engedélyezve van.
+A kapott: engedélyezve van.
 
 
-## <a name="mysql-password"></a>MySQL-jelszó
+## <a name="mysql-password"></a>MySQL-jelszavát
 
-A telepítés után a MySQL gyökér szintű jelszó alapértelmezés szerint üres. Futtassa a **mysql\_biztonságos\_telepítési** parancsfájl MySQL biztonságossá tételéhez. A parancsprogram kéri a MySQL gyökér szintű jelszó módosítása, távolítsa el a névtelen felhasználói fiókok, tiltsa le a távoli legfelső szintű bejelentkezéseket, távolítsa el az adatbázisok vizsgálati és töltse be újra a jogosultságok tábla. 
+A telepítés után a MySQL rendszergazdai jelszó alapértelmezés szerint üres. Futtassa a **mysql\_biztonságos\_telepítési** parancsfájl MySQL biztonságossá tételéhez. A parancsfájl kérni fogja, hogy a MySQL rendszergazdai jelszó módosítása, távolítsa el a névtelen felhasználói fiókot, tiltsa le a távoli legfelső szintű bejelentkezések, távolítsa el az adatbázisok vizsgálati és töltse be újra a jogosultságok tábla. 
 
 
 ```bash
 mysql_secure_installation
 ```
 
-## <a name="log-in-to-mysql"></a>Jelentkezzen be a MySQL
+## <a name="log-in-to-mysql"></a>Jelentkezzen be a MySQL-hez
 
-Ezután jelentkezzen be, és adja meg a MySQL-parancssorba.
+Most jelentkezzen be, és adja meg a MySQL-parancssorban.
 
 ```bash  
 mysql -u root -p
 ```
-Ez vált, akkor a MySQL-parancssorba ahol kommunikál az adatbázis SQL-utasításokat adhatnak ki.
+Ez akkor vált, amennyiben a MySQL-parancssorban ahol adhat ki az adatbázis SQL-utasításokkal.
 
-Most hozzon létre egy új MySQL-felhasználó.
+Most hozzon létre egy új MySQL-felhasználót.
 
 ```   
 CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-A pontosvessző (;) a sor végén elengedhetetlen a befejezési a parancsot.
+Pontosvesszővel (;) a sor végén található elengedhetetlen a befejezési a parancsot.
 
 
 ## <a name="create-a-database"></a>Adatbázis létrehozása
 
 
-Hozzon létre egy adatbázist, és adja meg a `mysqluser` felhasználói engedélyek.
+Hozzon létre egy adatbázist, és adja meg a `mysqluser` felhasználói engedélyeket.
 
 ```   
 CREATE DATABASE testdatabase;
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Adatbázis felhasználónevek és jelszavak csak az adatbázishoz való kapcsolódás parancsfájlok által használt.  Adatbázis-felhasználói fiók neve nem feltétlenül jelenti azt, a rendszer a tényleges felhasználói fiókokat.
+Adatbázis felhasználónevek és jelszavak csak az adatbázishoz csatlakozással parancsfájlok segítségével.  Adatbázis-felhasználói fiókok nevei feltétlenül nem felelnek meg a tényleges felhasználói fiókokat a rendszer.
 
-Egy másik számítógépről bejelentkezés engedélyezése. Ebben a példában a számítógépen, amely szeretnénk jelentkezzen be az IP-címe van *10.112.113.114*.
+Jelentkezzen be egy másik számítógépről engedélyezése. Ebben a példában a számítógépen, jelentkezzen be a kívánt IP-címe van *10.112.113.114*.
 
 ```   
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
@@ -150,7 +150,7 @@ quit
 
 
 ## <a name="next-steps"></a>További lépések
-MySQL kapcsolatos részletekért lásd: a [MySQL dokumentáció](http://dev.mysql.com/doc/index-topic.html).
+MySQL kapcsolatos részletekért lásd: a [MySQL dokumentációja](http://dev.mysql.com/doc/index-topic.html).
 
 
 

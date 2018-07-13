@@ -13,6 +13,7 @@
 ## [Erőforrás-szolgáltatók és típusaik](resource-manager-supported-services.md)
 ## [Felügyeleti csoportok](management-groups-overview.md)
 ## [Előfizetés-irányítás](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [Felhőkonzisztencia-sablonok](templates-cloud-consistency.md)
 
 # Útmutató
 ## Sablonok létrehozása

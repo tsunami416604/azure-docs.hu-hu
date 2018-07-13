@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések a klasszikus Windows-alapú virtuális gépek |} Microsoft Docs
-description: Azure Windows virtuális gépek létrehozása a klasszikus üzembe helyezési modellel kapcsolatos gyakori kérdésekre adott válaszok biztosít.
+title: Klasszikus Windows virtuális gépek kapcsolatos gyakori kérdések |} A Microsoft Docs
+description: A klasszikus üzemi modellel létrehozott Windows Azure virtuális gépekről gyakori kérdésekre adott válaszokat biztosít.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -17,15 +17,15 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
 ms.openlocfilehash: 6e40d9269206b82fefbcdb3ecc80a1ca23c7c0ae
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917741"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630249"
 ---
-# <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-the-classic-deployment-model"></a>Gyakran ismételt kérdést a klasszikus üzembe helyezési modellel létrehozott Azure Windows virtuális gépeken
+# <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-the-classic-deployment-model"></a>A klasszikus üzemi modellel létrehozott Azure Windows virtuális gépek – gyakran ismételt kérdések
 > [!IMPORTANT] 
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. A gyakori kérdések a Resource Manager modellt használatakor, lásd: [Itt](../faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. A GYIK a Resource Manager-modell használata esetén, lásd: [Itt](../faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-faq](../../../../includes/virtual-machines-common-classic-faq.md)]
 

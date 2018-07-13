@@ -1,6 +1,6 @@
 ---
-title: A Linux virtuális gép MSI Azure Key Vault eléréséhez használja
-description: Ez az oktatóanyag végigvezeti az Azure Resource Manager eléréséhez használt egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI).
+title: Linux virtuális gép MSI használata az Azure Key Vault elérése
+description: Ez az oktatóanyag végigvezeti a folyamat használatával egy Linux rendszerű virtuális gépek Felügyeltszolgáltatás-identitás (MSI) Azure Resource Manager eléréséhez.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,25 +14,25 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e42ed14b9c7c89972021a5422ebdfe415a70830d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a6ca37105cfff8542f0c4a8af3112fa317416c56
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29384701"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611251"
 ---
-# <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Az Azure Key Vault eléréséhez használja egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) 
+# <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Egy Linux rendszerű virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata az Azure Key Vault eléréséhez 
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Ez az oktatóanyag bemutatja, hogyan engedélyezése felügyelt szolgáltatás identitásának (MSI) a Linux virtuális gép, majd az Azure Key Vault eléréséhez használja az identitásukat. A rendszerindítási szolgál, Key Vault lehetővé teszi az ügyfélalkalmazás által Azure Active Directory (AD) nem védett erőforrások eléréséhez a titkos kulcsot használja. Felügyelt szolgáltatás-identitások Azure automatikusan kezeli, és lehetővé teszik, hogy az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatokat beszúrni a kódot támogató szolgáltatások hitelesítést. 
+Az oktatóanyag bemutatja, hogyan lehet engedélyezni a Felügyeltszolgáltatás-identitás (MSI) egy Linux rendszerű virtuális gép esetében, akkor az identitásukat használata az Azure Key Vault eléréséhez. A rendszerindítási szolgáló, a Key Vault lehetővé teszi az ügyfélalkalmazás által az Azure Active Directory (AD) nem védett erőforrások eléréséhez a titkos kulcsot használja. Felügyelt Szolgáltatásidentitások Azure automatikusan kezeli, és lehetővé teszi szolgáltatások, amelyek támogatják az Azure AD-hitelesítés, anélkül, hogy a hitelesítő adatok beszúrása a kódot a hitelesítéshez. 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * A Linux virtuális gépek MSI engedélyezése 
-> * A virtuális gép hozzáférést biztosíthat a kulcstároló tárolt titkos kulcs 
-> * Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és a titkos kulcs lekérése a Key Vault használatával 
+> * Linux rendszerű virtuális gépen az MSI engedélyezéséhez 
+> * A virtuális gép hozzáférést biztosítani a Key Vaultban tárolt titkos kulcs 
+> * A virtuális gép identitásának használatával hozzáférési jogkivonatot kapjon, és a titkos kulcs lekérése a Key Vault használatával 
  
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,76 +43,76 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Egy új erőforráscsoportot a Linux virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Linux rendszerű virtuális gép létrehozása az új erőforráscsoport
 
-Ebben az oktatóanyagban létrehozhatunk egy új Linux virtuális Gépet. A meglévő virtuális MSI is engedélyezheti.
+Ebben az oktatóanyagban létrehozunk egy új Linux rendszerű virtuális Gépet. A meglévő virtuális gép MSI is engedélyezheti.
 
-1. Kattintson a **hozzon létre egy erőforrást** az Azure portál bal felső sarkában.
+1. Kattintson a **erőforrás létrehozása** a az Azure portal bal felső sarkában.
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
-3. Adja meg a virtuális gép adatait. A **hitelesítési típus**, jelölje be **nyilvános SSH-kulcs** vagy **jelszó**. A létrehozott hitelesítő adatok lehetővé teszik-e jelentkezni a virtuális gép.
+3. Adja meg a virtuális gép adatait. A **hitelesítési típus**válassza **nyilvános SSH-kulcs** vagy **jelszó**. A létrehozott hitelesítő adatok lehetővé teszik jelentkezzen be a virtuális Gépre.
 
-    ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
-4. Válasszon egy **előfizetés** a virtuális gép meg a legördülő listában.
-5. Jelölje be egy új **erőforráscsoport** szeretne létrehozni, válassza a virtuális gép **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
-6. Adja meg a virtuális gép számára. További méretek megtekintéséhez válasszon **összes** , vagy módosítsa a lemez típusát támogatott szűrő. A beállítások lapon hagyja az alapértelmezett beállításokat, és kattintson a **OK**.
+4. Válasszon egy **előfizetés** a virtuális gép a legördülő listában.
+5. Jelölje be egy új **erőforráscsoport** szeretne létrehozni, válassza ki a virtuális gép **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
+6. Válassza ki a méretet a virtuális gép számára. További méretek megjelenítéséhez válassza ki a **az összes megtekintése** vagy a lemez típusát támogatott szűrő módosítása. A beállítások oldalon hagyja változatlanul az alapértelmezett beállításokat, és kattintson a **OK**.
 
-## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése
+## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen az MSI engedélyezéséhez
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. A színfalak MSI engedélyezése két dolgot eredményez: az MSI-Virtuálisgép-bővítmény a virtuális Gépet telepít, és MSI lehetővé teszi a virtuális gép számára.  
+A virtuális gép MSI lehetővé teszi hozzáférési tokenek beszerzése az Azure ad-ből anélkül, hogy hitelesítő adatok üzembe a kódot kellene. Valójában MSI engedélyezéséhez két dolgot eredményez: a virtuális Gépen az MSI-Virtuálisgép-bővítmény telepítése és a virtuális gép MSI lehetővé teszi.  
 
-1. Válassza ki a **virtuális gép** , hogy szeretné-e engedélyezze MSI-t.
+1. Válassza ki a **virtuális gép** , hogy szeretné-e az MSI engedélyezéséhez.
 2. A bal oldali navigációs sávon kattintson **konfigurációs**.
-3. Látni **Szolgáltatásidentitás felügyelt**. Regisztrálja, és engedélyezze a MSI-t, jelölje be **Igen**, ha szeretné letiltani, válassza a nem.
+3. Látja **Felügyeltszolgáltatás-identitás**. Regisztráljon, és az MSI engedélyezéséhez, válassza ki a **Igen**, ha szeretné letiltani, válassza a nem.
 4. Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.
 
-    ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Ha a rendszer mely bővítmények megtekintéséhez **Linux virtuális gép**, kattintson a **bővítmények**. Ha MSI engedélyezve van, a **ManagedIdentityExtensionforLinux** megtalálható a listán.
+5. Ha szeretné ellenőrizni, hogy a rendszer milyen kiterjesztésű **Linux rendszerű virtuális gép**, kattintson a **bővítmények**. Ha az MSI engedélyezve van, a **ManagedIdentityExtensionforLinux** megjelenik a listán.
 
-    ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
+    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 
-## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>A virtuális gép hozzáférést biztosítson a kulcstároló tárolt titkos kulcs  
+## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>A virtuális gép hozzáférést adni a Key Vaultban tárolt titkos kulcs  
 
-MSI-fájl használata a kódban való hitelesítésre szolgáló erőforrásokat, amelyek támogatják az Azure Active Directory-hitelesítés hozzáférési jogkivonatok kérheti le. Azonban nem minden Azure-szolgáltatásokat támogatja az Azure AD-alapú hitelesítés. MSI-fájl használata a szolgáltatások, a szolgáltatás hitelesítő adatok tárolása az Azure Key Vault, és MSI beolvasni a hitelesítő adatok a kulcstároló elérésére használhat. 
+MSI használatával a kód kérheti le jogkivonatot az Azure Active Directory-hitelesítést támogató erőforrásokhoz történő hitelesítéshez. Azonban nem minden Azure-szolgáltatások támogatják az Azure AD-hitelesítés. Az MSI használata ezeket a szolgáltatásokat, a szolgáltatás hitelesítő adatok tárolása az Azure Key Vaultban, és MSI használata a Key Vault beolvasni a hitelesítő adatok eléréséhez. 
 
-Először igazolnia kell a kulcstároló létrehozásához, és a virtuális gép identitásának hozzáférést biztosítson a Key Vault.   
+Először létre kell hozzon létre egy Key Vaultot és a virtuális gépnél identitásos hozzáférést biztosítani a Key Vault.   
 
-1. Válassza ki a bal oldali navigációs sáv felső **+ új** majd **biztonság + identitás szakaszában** majd **Key Vault**.  
+1. Válassza a bal oldali navigációs sáv tetején **+ új** majd **biztonság + identitás** majd **Key Vault**.  
 2. Adjon meg egy **neve** az új Key vault. 
-3. Keresse meg a Key Vault azonos előfizetésbe és erőforráscsoportba tartozik, mint a korábban létrehozott virtuális Gépet. 
+3. Keresse meg a Key Vault azonos előfizetésben és erőforráscsoportban tartozik, mint a korábban létrehozott virtuális Gépet. 
 4. Válassza ki **hozzáférési házirendek** kattintson **új hozzáadása**. 
-5. A konfigurálás a sablon alapján, válassza ki **titkos felügyeleti**. 
-6. Válasszon **egyszerű válasszon**, és a keresési mezőbe írja be a korábban létrehozott virtuális gép nevét.  Válassza ki a virtuális gép az eredménylista **válasszon**. 
-7. Kattintson a **OK** a befejezési hozzáadása az új házirend, és **OK** hozzáférési házirend kijelölés befejezéséhez. 
-8. Kattintson a **létrehozása** a Key Vault létrehozásának befejezéséhez. 
+5. A konfigurálás sablonból, jelölje ki **titkos felügyeleti**. 
+6. Válasszon **rendszerbiztonsági tag kijelölése**, és a keresőmezőbe írja be a korábban létrehozott virtuális gép nevét.  Válassza ki a virtuális Gépet a találatok listájában, és kattintson a **kiválasztása**. 
+7. Kattintson a **OK** való befejezése az új hozzáférési szabályzat hozzáadása és **OK** hozzáférési szabályzat választását befejezéséhez. 
+8. Kattintson a **létrehozás** a Key Vault létrehozásának befejezéséhez. 
 
-    ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
-Ezt követően adja hozzá titkos kulcs a Key Vault, hogy később kérheti le a titkos kulcsot, a virtuális gépen futó kód használatával: 
+Ezután adjon hozzá egy titkos kulcsot a Key vaulthoz, hogy később kérheti le a titkos kulcsot, a virtuális gépen futó kód használatával: 
 
-1. Válassza ki **összes erőforrás**, és keresse meg és jelölje ki a létrehozott kulcstároló. 
+1. Válassza ki **összes erőforrás**, és keresse meg és válassza ki a létrehozott Key Vault. 
 2. Válassza ki **titkok**, és kattintson a **Hozzáadás**. 
-3. Válassza ki **manuális**, a **feltöltési beállításokat**. 
-4. Adja meg egy nevet és értéket a titkos kulcsot.  Az érték lehet bármilyen. 
-5. Hagyja meg az aktiválási dátuma és a lejárati dátum törölje a jelet, és hagyja **engedélyezve** , **Igen**. 
-6. Kattintson a **létrehozása** a titkos kulcs létrehozásához. 
+3. Válassza ki **manuális**, a **feltöltési beállítások**. 
+4. Adja meg a titkos kód nevét és értékét.  Az érték lehet bármit. 
+5. Hagyja meg az aktiválási dátumot és a lejárati dátum törölje, és hagyja **engedélyezve** , **Igen**. 
+6. Kattintson a **létrehozás** a titkos kulcs létrehozása. 
  
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és a titkos kulcs lekérése a Key Vault használatával  
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>A virtuális gép identitással hozzáférési jogkivonatot kapjon, és a titkos kulcs lekérése a Key Vault használatával  
 
-Lépések elvégzéséhez szüksége van egy SSH-ügyfél.  Windows használ, ha az SSH-ügyfél a használhatja a [Linux rendszerhez készült Windows alrendszer](https://msdn.microsoft.com/commandline/wsl/about). Ha az SSH-ügyfél kulcsok konfigurálása segítségre van szüksége, tekintse meg [a Windows Azure használatára SSH-kulcsok hogyan](~/articles/virtual-machines/linux/ssh-from-windows.md), vagy [létrehozása, és az SSH nyilvános és titkos kulcsból álló kulcspárt használata a Linux virtuális gépek Azure-ban](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
+A lépések elvégzéséhez szüksége van egy SSH-ügyfél.  Ha Windows használ, használhatja az SSH-ügyfél a a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/about). Ha az SSH-ügyfél kulcsok konfigurálása segítségre van szüksége, tekintse meg [használata SSH-kulcsok az Azure-ban a Windows hogyan](~/articles/virtual-machines/linux/ssh-from-windows.md), vagy [létrehozása és a nyilvános és titkos ssh-kulcs használata Linux rendszerű virtuális gépekhez az Azure-ban](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
  
-1. A portálon lépjen a Linux virtuális gépre, majd a a **áttekintése**, kattintson a **Connect**. 
-2. **Csatlakozás** a virtuális géphez a az SSH-ügyfél az Ön által választott. 
-3. A Terminálszolgáltatások ablakban használata CURL, indítson egy lekérdezést a helyi MSI-végpont Azure Key vault megszerezni az olyan hozzáférési jogkivonatot.  
+1. A portálon lépjen a Linux rendszerű virtuális gépre, majd a a **áttekintése**, kattintson a **Connect**. 
+2. **Csatlakozás** az SSH-ügyféllel a választott a virtuális géphez. 
+3. A terminálablakban a CURL, használatával indítson egy a helyi MSI-végpontot a hozzáférési jogkivonat beszerzése az Azure Key Vault.  
  
-    A CURL a hozzáférési token kérelme nem éri el.  
+    A CURL kérés esetében a hozzáférési jogkivonat nem éri el.  
     
     ```bash
     curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true  
     ```
-    A válasz az erőforrás-kezelő eléréséhez szükséges jogkivonat tartalmazza. 
+    A válasz tartalmazza a Resource Manager eléréséhez szükséges hozzáférési jogkivonat. 
     
     Válasz:  
     
@@ -126,7 +126,7 @@ Lépések elvégzéséhez szüksége van egy SSH-ügyfél.  Windows használ, ha
     "token_type":"Bearer"} 
     ```
     
-    Ez a jogkivonat segítségével az Azure Key Vaultba hitelesítéséhez.  A következő CURL-kérés megjeleníti a titkos kulcs beolvasása a Key Vault CURL és a Key Vault REST API használatával.  A kulcstároló, amely az URL-CÍMÉT kell a **Essentials** szakasza a **áttekintése** a Key Vault oldalán.  A hozzáférési jogkivonat szerezte be, ha a korábbi hívás is szüksége lesz. 
+    Ez a jogkivonat segítségével hitelesíti az Azure Key Vaultba.  A következő CURL-kérelmet bemutatja, hogyan titkos Key Vault kulcsainak olvasásához a CURL és a Key Vault REST API használatával.  A Key vault, amely az URL-cím lesz szüksége a **Essentials** szakaszában a **áttekintése** a Key Vault lapján.  Emellett az előző hívás a kapott hozzáférési jogkivonat. 
         
     ```bash
     curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -138,14 +138,14 @@ Lépések elvégzéséhez szüksége van egy SSH-ügyfél.  Windows használ, ha
     {"value":"p@ssw0rd!","id":"https://mytestkeyvault.vault.azure.net/secrets/MyTestSecret/7c2204c6093c4d859bc5b9eff8f29050","attributes":{"enabled":true,"created":1505088747,"updated":1505088747,"recoveryLevel":"Purgeable"}} 
     ```
     
-Ha a titkos kulcsot a Key Vault korábban lekért, használhatja, hogy egy szolgáltatás, amely egy nevet és jelszót igényel hitelesítést.
+Miután a titkos kulcsot a Key Vault már lekért, használhatja hitelesíthetik magukat egy szolgáltatásban, amely egy nevet és jelszót igényel.
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](msi-overview.md).
+- MSI áttekintését lásd: [Felügyeltszolgáltatás-identitás – áttekintés](msi-overview.md).
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Eszköz belső vezérlőprogram frissítése az Azure IoT Hub (Java/Java) |} Microsoft Docs
-description: Hogyan használható az eszközkezelés Azure IoT hub eszköz vezérlőprogram-frissítés kezdeményezése. Az Azure IoT-eszközök SDK Java valósítja meg a szimulált eszköz alkalmazásának és a service-alkalmazást, amely elindítja a belső vezérlőprogram-frissítés végrehajtásához a.
+title: Eszköz belső vezérlőprogramjának frissítése az Azure IoT Hub (Java vagy Java) szolgáltatással |} A Microsoft Docs
+description: Hogyan lehet Azure IoT Hub eszközfelügyeleti használatával kezdeményezheti az eszköz belső vezérlőprogram frissítése. Egy szimulált eszközalkalmazás megvalósításához és egy service-alkalmazás, amely elindítja a belső vezérlőprogram-frissítés megvalósítása az Azure IoT eszközoldali SDK a Javához készült használhatja.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -10,29 +10,29 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: dobett
 ms.openlocfilehash: 5991615bca26749e1f138b561260108f8bcf2646
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634607"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611327"
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-javajava"></a>Egy eszköz belső vezérlőprogram-frissítés (Java/Java) kezdeményezésére történő Eszközkezelés használata
+# <a name="use-device-management-to-initiate-a-device-firmware-update-javajava"></a>Eszközfelügyelet használatával kezdeményezheti az eszköz belső vezérlőprogram frissítése (Java vagy Java)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
-Az a [Ismerkedés az eszközkezelés] [ lnk-dm-getstarted] oktatóanyag, megtudhatta, hogyan használható a [eszköz iker] [ lnk-devtwin] és [közvetlen módszerek ] [ lnk-c2dmethod] primitívek távolról az eszköz újraindítását. Ez az oktatóanyag az ugyanazon az IoT-központ primitívek használ, és bemutatja, hogyan hajtsa végre egy végpontok közötti szimulált belső vezérlőprogram-frissítés.  A belső vezérlőprogram frissítési implementációja szerepel ebben a mintában a [málna Pi eszköz megvalósítási minta][lnk-rpi-implementation].
+Az a [Eszközfelügyelet – első lépések] [ lnk-dm-getstarted] oktatóanyag bemutatta, hogyan használható a [ikereszköz] [ lnk-devtwin] és [közvetlen metódusok ] [ lnk-c2dmethod] primitívek távolról újraindítja az eszközt. Ebben az oktatóanyagban használja az ugyanazon az IoT Hub primitívek, és bemutatja, hogyan teheti egy teljes körű szimulált belsővezérlőprogram-frissítést.  Ez a minta a belső vezérlőprogram frissítési megvalósítása szerepel a [Raspberry Pi eszköz megvalósítási minta][lnk-rpi-implementation].
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Hozzon létre egy Java-konzolalkalmazást, amely behívja a **firmwareUpdate** közvetlen módszer a szimulált eszköz alkalmazásában az IoT hub keresztül.
-* Hozzon létre egy Java-Konzolalkalmazás, amely az eszköz és megvalósítja az **firmwareUpdate** közvetlen módszer. Ez a módszer indít el egy többlépcsős folyamat, amely megvárja-e a belső vezérlőprogram lemezképet letölti, letölti a belső vezérlőprogram lemezképet és a belső vezérlőprogram kép végül vonatkozik. A frissítés egyes szakasza alatt az eszköz használatával a jelentésben szereplő tulajdonságok előrehaladásról.
+* Hozzon létre egy Java-konzolalkalmazást, amely meghívja a **firmwareUpdate** közvetlen metódust a szimulált eszközalkalmazásnak, az IoT hub segítségével.
+* Hozzon létre egy Java-konzolalkalmazást, amely szimulálja az eszköz és valósítja meg a **firmwareUpdate** közvetlen metódust. Ez a módszer folyamatot kezdeményez, többlépcsős, a belső vezérlőprogram rendszerképének letöltésére vár, a belső vezérlőprogram rendszerképének letöltése és végül alkalmazza a belsővezérlőprogram-lemezképet. A frissítés minden egyes fázisa során az eszköz jelentett tulajdonságait felhasználva jelenti az állapotot.
 
-Ez az oktatóanyag végén két Java konzol alkalmazások közül választhat:
+Ez az oktatóanyag végén két Java-konzolalkalmazással fog rendelkezni:
 
-**belső vezérlőprogram-frissítés**, meghívja a közvetlen módszer a szimulált eszköz, a válasz, valamint rendszeres időközönként jeleníti meg jelentett tulajdonság frissítései
+**belső vezérlőprogram-frissítés**, közvetlen metódus meghívja a szimulált eszközön, a válasz, valamint rendszeres időközönként jeleníti meg a jelentett tulajdonságok frissítések
 
-**Szimulált eszköz**, csatlakozik az IoT hub a korábban létrehozott eszköz identitású, megkapja a firmwareUpdate közvetlen metódus hívása, és a belső vezérlőprogram frissítési szimuláció keresztül futtatja
+**a szimulált eszköz**, csatlakozik az IoT hubhoz a korábban létrehozott eszközidentitással, megkapja a firmwareUpdate közvetlen metódus meghívása és a belső vezérlőprogram frissítési szimuláció kipróbálása
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
@@ -44,18 +44,18 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Indítás, az eszközön, a közvetlen módszer használatával távoli vezérlőprogram-frissítés
-Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amely indít el egy távoli belső vezérlőprogram frissítése egy eszközön. Az alkalmazás közvetlen módszer előtt használja a frissítés, és az eszköz iker lekérdezések rendszeres időközönként a aktív belső vezérlőprogram frissítése a állapot lekérdezése céljából.
+## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Aktiválja az eszközön, a közvetlen metódus használatával távoli belső vezérlőprogram frissítése
+Ebben a szakaszban egy Java-konzolalkalmazást, amely kezdeményezi egy távoli belső vezérlőprogram frissítése egy eszközön hoz létre. Az alkalmazás közvetlen metódus kezdeményezni a frissítést, és használja az ikereszköz-lekérdezések rendszeres időközönként beolvasni az aktív belső vezérlőprogram frissítésének állapotát.
 
-1. Hozzon létre egy üres nevű fw-get-started.
+1. Hozzon létre egy keretrendszer-get-started nevű üres mappát.
 
-1. A keretrendszer-get-started mappában hozzon létre egy Maven project nevű **belső vezérlőprogram-frissítés** parancsot a parancssorba az alábbi parancs segítségével. Látható, hogy ez egyetlen hosszú parancs:
+1. A keretrendszer-get-started mappában hozzon létre egy nevű Maven-projektet **belső vezérlőprogram-frissítés** használja az alábbi parancsot a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=firmware-update -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
 1. A parancssorban keresse meg a belső vezérlőprogram-frissítés mappát.
 
-1. Egy szövegszerkesztővel nyissa meg a pom.xml fájlt a belső vezérlőprogram-frissítés mappában, és adja hozzá a következő függőség a **függőségek** csomópont. A függőség lehetővé teszi, hogy az iot-szolgáltatás-ügyfélcsomag az alkalmazás kommunikáljon az IoT hub:
+1. Egy szövegszerkesztővel nyissa meg a pom.xml fájlt a belső vezérlőprogram-frissítés mappában, és adja hozzá a következő függőséget a **függőségek** csomópont. Ezzel a függőséggel használhatja az iot-service-client csomagot az alkalmazásban, az IoT hubbal való kommunikációhoz:
 
     ```xml
     <dependency>
@@ -67,9 +67,9 @@ Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amely indít el egy
     ```
 
     > [!NOTE]
-    > Ellenőrizze, hogy a legújabb **iot-szolgáltatásügyfél** használatával [Maven keresési](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > Ellenőrizze, hogy a legújabb **iot-service-client** használatával [Maven keresési](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Adja hozzá a következő **build** csomópont után a **függőségek** csomópont. Ez a konfiguráció arra utasítja a Java 1.8 az lehetővé teszi az alkalmazás Maven:
+1. Adja hozzá a következő **összeállítása** csomópont után a **függőségek** csomópont. Ez a konfiguráció arra utasítja a használható a Java 1.8-as hozhat létre az alkalmazást a maven használatával:
 
     ```xml
     <build>
@@ -89,7 +89,7 @@ Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amely indít el egy
 
 1. Mentse és zárja be a pom.xml fájlt.
 
-1. Egy szövegszerkesztőben nyissa meg a firmware-update\src\main\java\com\mycompany\app\App.java forrásfájl.
+1. Egy szövegszerkesztővel nyissa meg a firmware-update\src\main\java\com\mycompany\app\App.java forrásfájl.
 
 1. Adja hozzá a következő **importálási** utasításokat a fájlhoz:
 
@@ -104,7 +104,7 @@ Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amely indít el egy
     import java.util.concurrent.TimeUnit;
     ```
 
-1. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le **{youriothubconnectionstring}** az IoT hub kapcsolati karakterlánccal feljegyzett a *létrehoz egy IoT-központot* szakasz:
+1. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le **{youriothubconnectionstring}** feljegyzett IoT hub kapcsolati karakterláncra az *hozzon létre egy IoT hubot* szakaszban:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -115,7 +115,7 @@ Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amely indít el egy
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-1. Egy módszert, amelyet az eszköz két olvassa be a jelentésben szereplő tulajdonságok alkalmazásához adja hozzá a következő a **App** osztály:
+1. Megvalósításának egyik módszere, amely beolvassa a jelentett tulajdonságok az ikereszközről, adja hozzá a következőt a **alkalmazás** osztály:
 
     ```java
     public static void ShowReportedProperties() 
@@ -168,13 +168,13 @@ Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amely indít el egy
     }
     ```
 
-1. Aláírását, valamint módosíthatja a **fő** metódust kell küldeni a következő kivételekkel:
+1. Módosítsa az aláírást, a **fő** metódus állíthatunk munkába a következő kivételek érvényesek:
 
     ```java
     public static void main( String[] args ) throws IOException
     ```
 
-1. Meghívni a firmwareUpdate közvetlen metódust a szimulált eszköz, adja hozzá az alábbi kódot a **fő** módszert:
+1. A szimulált eszközön firmwareUpdate közvetlen metódus meghívása, adja hozzá a következő kódot a **fő** módszer:
 
     ```java
     DeviceMethod methodClient = DeviceMethod.createFromConnectionString(iotHubConnectionString);
@@ -202,13 +202,13 @@ Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amely indít el egy
     }
     ```
 
-1. Kérdezze le a szimulált eszköz jelentett tulajdonságait, adja hozzá az alábbi kódot a **fő** módszert:
+1. A szimulált eszköz a jelentett tulajdonságok lekérdezésére, adja hozzá a következő kódot a **fő** módszer:
 
     ```java
     ShowReportedProperties();
     ```
 
-1. Ahhoz, hogy állítsa le az alkalmazást, adja hozzá a következő kódot a **fő** módszert:
+1. Ahhoz, hogy állítsa le az alkalmazást, adja hozzá a következő kódot a **fő** módszer:
 
     ```java
     System.out.println("Press ENTER to exit.");
@@ -218,20 +218,20 @@ Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amely indít el egy
 
 1. Mentse és zárja be a firmware-update\src\main\java\com\mycompany\app\App.java fájlt.
 
-1. Build a **belső vezérlőprogram-frissítés** háttér-alkalmazást, és kijavíthatja az esetleges hibákat. A parancssorban keresse meg a belső vezérlőprogram-frissítés mappát, és futtassa a következő parancsot:
+1. Hozhat létre a **belső vezérlőprogram-frissítés** háttéralkalmazáshoz, és kijavíthatja az esetleges hibákat. A parancssorban keresse meg a belső vezérlőprogram-frissítés mappát, és futtassa a következő parancsot:
 
     `mvn clean package -DskipTests`
 
-## <a name="simulate-a-device-to-handle-direct-method-calls"></a>Közvetlen metódushívások kezeli az eszköz szimulálása
-Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, amely képes fogadni a firmwareUpdate közvetlen módszer. Több államot folyamatot, a belső vezérlőprogram frissítési állapot kommunikáció reportedProperties segítségével szimulálhatja majd futtatja az alkalmazást.
+## <a name="simulate-a-device-to-handle-direct-method-calls"></a>Közvetlen metódust hívja kezelése eszköz szimulálása
+Ebben a szakaszban egy Java szimulált eszköz-konzolalkalmazást, amely képes fogadni a firmwareUpdate közvetlen metódus hoz létre. Az alkalmazás ezután szimulálja a belső vezérlőprogram frissítését reportedProperties használatával való kommunikációhoz állapota több állapot folyamaton keresztül futtatja.
 
-1. A keretrendszer-get-started mappában hozzon létre egy Maven project nevű **szimulált eszköz** parancsot a parancssorba az alábbi parancs segítségével. Látható, hogy ez egyetlen hosszú parancs:
+1. A keretrendszer-get-started mappában hozzon létre egy nevű Maven-projektet **simulated-device** használja az alábbi parancsot a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
 1. A parancssorban lépjen a simulated-device mappára.
 
-1. Egy szövegszerkesztővel nyissa meg a pom.xml fájlt a belső vezérlőprogram-frissítés mappában, és adja hozzá a következő függőség a **függőségek** csomópont. A függőség lehetővé teszi, hogy az iot-szolgáltatás-ügyfélcsomag az alkalmazás kommunikáljon az IoT hub:
+1. Egy szövegszerkesztővel nyissa meg a pom.xml fájlt a belső vezérlőprogram-frissítés mappában, és adja hozzá a következő függőséget a **függőségek** csomópont. Ezzel a függőséggel használhatja az iot-service-client csomagot az alkalmazásban, az IoT hubbal való kommunikációhoz:
 
     ```xml
     <dependency>
@@ -243,9 +243,9 @@ Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, 
     ```
 
     > [!NOTE]
-    > Ellenőrizze, hogy a legújabb **iot-eszközügyfél** használatával [Maven keresési](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > Ellenőrizze, hogy a legújabb **iot-device-client** használatával [Maven keresési](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Adja hozzá a következő **build** csomópont után a **függőségek** csomópont. Ez a konfiguráció arra utasítja a Java 1.8 az lehetővé teszi az alkalmazás Maven:
+1. Adja hozzá a következő **összeállítása** csomópont után a **függőségek** csomópont. Ez a konfiguráció arra utasítja a használható a Java 1.8-as hozhat létre az alkalmazást a maven használatával:
 
     ```xml
     <build>
@@ -265,7 +265,7 @@ Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, 
 
 1. Mentse és zárja be a pom.xml fájlt.
 
-1. Egy szövegszerkesztőben nyissa meg a simulated-device\src\main\java\com\mycompany\app\App.java forrásfájl.
+1. Egy szövegszerkesztővel nyissa meg a simulated-device\src\main\java\com\mycompany\app\App.java forrásfájl.
 
 1. Adja hozzá a következő **importálási** utasításokat a fájlhoz:
 
@@ -282,7 +282,7 @@ Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, 
     import java.util.HashMap;
     ```
 
-1. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le **{yourdeviceconnectionstring}** az eszköz kapcsolati karakterlánccal feljegyzett a *hozzon létre egy Eszközidentitás* szakasz:
+1. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le **{yourdeviceconnectionstring}** eszköz feljegyzett kapcsolati karakterláncra az *Eszközidentitás létrehozása* szakaszban:
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -295,7 +295,7 @@ Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, 
     private static String downloadURL = "unknown";
     ```
 
-1. Közvetlen módszer funkció végrehajtásához adja meg az itt a következő beágyazott osztályok hozzáadásával a **App** osztály:
+1. Közvetlen metódus funkciók végrehajtásához adja meg visszahívások, a következő beágyazott osztályok hozzáadásával a **alkalmazás** osztály:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
@@ -338,7 +338,7 @@ Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, 
     }
     ```
 
-1. Valósítja meg az eszköz a két funkció, adja meg itt a következő beágyazott osztályok hozzáadásával a **App** osztály:
+1. Device twin funkciók végrehajtásához adja meg visszahívások, a következő beágyazott osztályok hozzáadásával a **alkalmazás** osztály:
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
@@ -358,7 +358,7 @@ Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, 
     }
     ```
 
-1. A belső vezérlőprogram-frissítés alkalmazásához adja hozzá a következő beágyazott osztályt a **App** osztály:
+1. A belső vezérlőprogram-frissítés megvalósítása, adja hozzá a következő beágyazott osztály a **alkalmazás** osztály:
 
     ```java
     protected static class FirmwareUpdateThread implements Runnable {
@@ -415,13 +415,13 @@ Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, 
     }
     ```
 
-1. Aláírását, valamint módosíthatja a **fő** metódust kell küldeni a következő kivételekkel:
+1. Módosítsa az aláírást, a **fő** metódus állíthatunk munkába a következő kivételek érvényesek:
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-1. A közvetlen módszerek és az eszköz twins rutin kezdeményez, adja hozzá az alábbi kódot a **fő** módszert:
+1. A közvetlen metódusok és a device twins rutin kezdeményez, adja hozzá a következő kódot a **fő** módszer:
 
     ```java
     client = new DeviceClient(connString, protocol);
@@ -441,7 +441,7 @@ Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, 
     }
     ```
 
-1. Ahhoz, hogy állítsa le az alkalmazást, adja hozzá a következő kódot az végén a **fő** módszert:
+1. Ahhoz, hogy állítsa le az alkalmazást, adja hozzá a következő kódot a végéhez a **fő** módszer:
 
     ```java
     System.out.println("Press any key to exit...");
@@ -454,29 +454,29 @@ Ebben a szakaszban hozzon létre egy Java szimulált eszköz-Konzolalkalmazás, 
 
 1. Mentse és zárja be a simulated-device\src\main\java\com\mycompany\app\App.java fájlt.
 
-1. Build a **szimulált eszköz** alkalmazást, és kijavíthatja az esetleges hibákat. A parancssorban keresse meg a szimulált eszköz mappát, és futtassa a következő parancsot:
+1. Hozhat létre a **simulated-device** alkalmazást, és kijavíthatja az esetleges hibákat. A parancssorban lépjen a simulated-device mappában, és futtassa a következő parancsot:
 
     `mvn clean package -DskipTests`
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 Most már készen áll az alkalmazások futtatására.
 
-1. A parancsot a parancssorba a **szimulált eszköz** mappa, a következő parancsot a belső vezérlőprogram frissítési közvetlen módszer figyelését.
+1. A parancsot a parancssorba a **simulated-device** mappában futtassa a következő parancsot, amellyel megkezdheti a figyeli a belső vezérlőprogram frissítési közvetlen metódus.
    
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-1. A parancsot a parancssorba a **belső vezérlőprogram-frissítés** mappa meghívása a frissítést, és az eszköz twins a szimulált eszköz az IoT hub a lekérdezés a következő parancsot:
+1. A parancsot a parancssorba a **belső vezérlőprogram-frissítés** mappában futtassa a következő parancsot indítja el a belső vezérlőprogram frissítését, és lekérdezheti az ikereszközöket az IoT hub a szimulált eszközön:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-3. A szimulált eszköz ad választ az a közvetlen módszer a konzolon tekintheti meg.
+3. A szimulált eszköz válaszol a közvetlen metódus a konzolon látható.
 
-    ![Belső vezérlőprogram frissítése sikeres volt][img-fwupdate]
+    ![Belső vezérlőprogram frissítése sikeresen megtörtént][img-fwupdate]
 
 ## <a name="next-steps"></a>További lépések
-Ez az oktatóanyag elindítása egy távoli belső vezérlőprogram frissítése egy eszközön a közvetlen módszer használatával, és a jelentésben szereplő tulajdonságok segítségével nyomon követheti a belső vezérlőprogram frissítése.
+Ebben az oktatóanyagban használt közvetlen metódus aktiválhat egy távoli belső vezérlőprogram frissítése egy eszközön, és hajtsa végre a belső vezérlőprogram frissítésének állapotát a jelentett tulajdonságok segítségével.
 
-Megtudhatja, hogyan terjeszthető ki az IoT-megoldás és az ütemezések metódushívások több eszközön, tekintse meg a [ütemezés és a szórásos feladatok] [ lnk-tutorial-jobs] oktatóanyag.
+Ismerje meg, hogyan bővítheti az IoT-megoldás és az ütemezés metódus meghívja a több eszközre, tekintse meg a [feladatok ütemezése és szórása] [ lnk-tutorial-jobs] oktatóanyag.
 
 <!-- images -->
 [img-fwupdate]: media/iot-hub-java-java-firmware-update/firmwareUpdated.png

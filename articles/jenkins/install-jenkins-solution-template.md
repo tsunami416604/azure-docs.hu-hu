@@ -11,11 +11,11 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29936577"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635458"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Jenkins-kiszolgáló létrehozása Azure-beli linuxos virtuális gépen az Azure Portalról
 
@@ -29,7 +29,7 @@ Ez a rövid útmutató bemutatja, hogyan telepítheti a [Jenkins](https://jenkin
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>Jenkins virtuális gép létrehozása a megoldássablonból
-Jenkins támogatja, ahol a kiszolgáló delegáltak működik egy vagy több ügynököt projektek nagy számú futtatására, vagy adja meg a szükséges különböző környezetek egyetlen Jenkins telepítéséhez Jenkins összeállít egy modell, vagy teszteli. Ebben a szakaszban a lépések részletes útmutatót kiszolgáló telepítése és konfigurálása a Jenkins az Azure-on.
+A Jenkins egy modellt, ahol a Jenkins-kiszolgáló delegáltak egy vagy több ügynököt, hogy a Jenkins telepítésének egyetlen üzemeltetésére, projektek nagy számú, vagy adja meg a különböző környezetekben történő üzembe helyezéshez használható buildek támogatja, vagy teszteli. A jelen szakaszban ismertetett lépések útmutató telepítéséhez és a egy Jenkins-kiszolgáló konfigurálása az Azure-ban.
 
 [!INCLUDE [jenkins-install-from-azure-marketplace-image](../../includes/jenkins-install-from-azure-marketplace-image.md)]
 
@@ -45,7 +45,7 @@ Keresse meg a virtuális gép (például http://jenkins2517454.eastus.cloudapp.a
 ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
 ```
 
-Az alagút elindítása után lépjen a http://localhost:8080/ címre a helyi gépen. 
+Az alagút elindítása után lépjen http://localhost:8080/ a helyi gépen. 
 
 Kérje le a kezdeti jelszót az alábbi parancs parancssorbeli futtatásával, miközben SSH-n keresztül kapcsolódik a Jenkinst futtató virtuális géphez.
 

@@ -8,6 +8,8 @@
       href: cheat-sheet.md
 - name: Kibocsátási megjegyzések
   items:
+    - name: 2018. június
+      href: release-notes-june-2018.md
     - name: 2018. május
       href: release-notes-may-2018.md
     - name: 2018. április

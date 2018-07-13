@@ -170,7 +170,7 @@
 #### [Java](iot-hub-java-java-twin-getstarted.md)
 #### [Python](iot-hub-python-twin-getstarted.md)
 ### Ismerkedés az ikermodulokkal
-#### [Portal](iot-hub-portal-csharp-module-twin-getstarted.md)
+#### [Portál](iot-hub-portal-csharp-module-twin-getstarted.md)
 #### [.NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
 #### [Python](iot-hub-python-python-module-twin-getstarted.md)
 #### [C](iot-hub-c-c-module-twin-getstarted.md)
@@ -263,6 +263,11 @@
 ### [IoT eszközoldali SDK-k](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 
 # További források
+## [Azure IoT-minták C#-hoz (.NET)](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)
+## [Azure IoT-minták Node.js-hez](https://azure.microsoft.com/resources/samples/azure-iot-samples-node/)
+## [Azure IoT-minták Javához](https://azure.microsoft.com/resources/samples/azure-iot-samples-java/)
+## [Azure IoT-minták Pythonhoz](https://azure.microsoft.com/resources/samples/azure-iot-samples-python/)
+## [Azure IoT-minták iOS platformhoz](https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/)
 ## [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/)
 ## [Azure IoT fejlesztői központ](https://azure.microsoft.com/develop/iot/)
 ## [Ügyfelek adatkérései](iot-hub-customer-data-requests.md)

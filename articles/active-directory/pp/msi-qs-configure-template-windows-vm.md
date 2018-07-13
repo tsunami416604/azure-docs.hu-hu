@@ -1,6 +1,6 @@
 ---
-title: A felhasználó által hozzárendelt MSI konfigurálása az Azure virtuális gép Azure-sablon alapján
-description: Lépés lépés útmutatást, a felhasználó által hozzárendelt felügyelt szolgáltatás Identity (MSI) konfigurálása az Azure virtuális gép, egy Azure Resource Manager-sablon használatával.
+title: Egy felhasználó által hozzárendelt MSI konfigurálása Azure virtuális gép Azure-sablon használatával
+description: Lépés útmutató egy felhasználó által hozzárendelt Felügyeltszolgáltatás-identitás (MSI) konfigurálásához egy Azure virtuális gép, egy Azure Resource Manager-sablon használatával.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,46 +15,46 @@ ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e01e4c397e0d0a19280a32fc1e8341b57b47e4eb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28984039"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610383"
 ---
-# <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>A felhasználó által hozzárendelt felügyelt szolgáltatás Identity (MSI) konfigurálja a virtuális gépek Azure-sablon alapján
+# <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>Egy felhasználó által hozzárendelt Felügyeltszolgáltatás-identitás (MSI) konfigurálja a virtuális gépek, Azure-sablon használatával
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Felügyelt Szolgáltatásidentitás az Azure Active Directory-identitással felügyelt Azure-szolgáltatásokhoz biztosít. Ezzel az identitással használhatja az Azure AD-alapú hitelesítés, anélkül, hogy hitelesítő adatok a kódban támogató szolgáltatások felé történő hitelesítésre. 
+Felügyeltszolgáltatás-identitás egy felügyelt identitás, az Azure Active Directory Azure-szolgáltatásokat biztosít. Ez az identitás használatával, amelyek támogatják az Azure AD-hitelesítés, anélkül, hogy hitelesítő adatok a kód a szolgáltatásokhoz való hitelesítéséhez. 
 
-Ebből a cikkből megismerheti, hogyan engedélyezheti, és távolítsa el a felhasználó által hozzárendelt MSI egy Azure virtuális gép, egy Azure Resource Manager központi telepítési sablon használatával.
+Ebből a cikkből megismerheti, hogyan engedélyezheti és a egy felhasználó által hozzárendelt MSI eltávolítása egy Azure virtuális gép, egy Azure Resource Manager üzembe helyezési sablon használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
-## <a name="enable-msi-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Egy Azure virtuális Gépen, vagy egy meglévő virtuális gép létrehozásakor MSI engedélyezése
+## <a name="enable-msi-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Az MSI engedélyezéséhez egy Azure virtuális Gépen, vagy pedig egy meglévő virtuális gép létrehozása során
 
-Az Azure portál és parancsfájl-kezelési, Azure Resource Manager-sablonok telepíthet egy Azure erőforráscsoport által meghatározott új vagy megváltozott erőforrásokat adjon meg. Több lehetőség is elérhető Sablonszerkesztés és a központi telepítés, helyi és portálalapú, beleértve:
+Ahogy az az Azure portal és a parancsfájlok, az Azure Resource Manager-sablonok lehetővé teszi, hogy üzembe helyezése az Azure-erőforráscsoport által meghatározott új vagy megváltozott erőforrásokat. Több lehetőség is elérhető, és a helyi és portálalapú, beleértve a központi telepítési sablon Szerkesztés:
 
-   - Használatával egy [egyéni sablont az Azure piactérről](~/articles/azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), amely lehetővé teszi teljesen új sablon létrehozása, vagy létrehozhatja azt egy meglévő közös vagy [gyorsindítási sablonon](https://azure.microsoft.com/documentation/templates/).
-   - Egy sablon exportálása vagy egy meglévő erőforráscsoportot, a Származtatás [az eredeti telepítési](~/articles/azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), vagy a [az üzemelő példány aktuális állapotának](~/articles/azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
-   - Használja a helyi [JSON szerkesztővel (például a Visual STUDIO Code)](~/articles/azure-resource-manager/resource-manager-create-first-template.md), majd feltöltése és a PowerShell vagy a parancssori felület segítségével történő telepítéséhez.
-   - A Visual Studio használatával [Azure erőforráscsoport-projekt](~/articles/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) létrehozása és a sablon telepítéséhez.  
+   - Használatával egy [egyéni sablont az Azure Marketplace-ről](~/articles/azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), amely lehetővé teszi, hogy a sablon létrehozása az alapoktól, vagy egy meglévő közös alapul vagy [gyorsindítási sablon](https://azure.microsoft.com/documentation/templates/).
+   - Sablon exportálása vagy egy meglévő erőforráscsoportot, a Származtatás [az eredeti üzembe helyezés](~/articles/azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), vagy a [az üzemelő példány aktuális állapotát](~/articles/azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
+   - Egy helyi [JSON-szerkesztővel (például a VS Code)](~/articles/azure-resource-manager/resource-manager-create-first-template.md), majd feltöltését és üzembe helyezése a PowerShell vagy parancssori felület használatával.
+   - A Visual Studio használatával [Azure erőforráscsoport-projekt](~/articles/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) hozzon létre és helyezhet üzembe sablont is.  
 
-Függetlenül a választott lehetőség sablon szintaxisa azonos kezdeti üzembe helyezése és újbóli üzembe helyezése során. Hoz létre, és egy felhasználó által hozzárendelt MSI egy új vagy meglévő virtuális géppel megegyező módon történik. Is, alapértelmezés szerint Azure Resource Manager elvégzi az [növekményes frissítés](~/articles/azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) telepítése esetén:
+A lehetőséget választja, függetlenül a sablon szintaxisa megegyezik kezdeti üzembe helyezése és újbóli üzembe helyezés során. Létrehozása és hozzárendelése egy felhasználó által hozzárendelt MSI egy új vagy meglévő virtuális géphez azonos módon történik. Emellett, alapértelmezés szerint az Azure Resource Manager elvégzi az [növekményes frissítés](~/articles/azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) – üzembe helyezéséhez:
 
-1. Jelentkezzen be helyileg Azure vagy az Azure-portál, az Azure-előfizetéssel társított fiókot használ, amely tartalmazza az MSI-fájl és a virtuális gép. Emellett győződjön meg arról, hogy a fiókja tagja-e egy szerepkör, amely lehetővé teszi az írási engedéllyel az előfizetés vagy az erőforrások (például a "tulajdonos" szerepe).
+1. E jelentkezik be az Azure-bA helyileg vagy az Azure Portalon, az Azure-előfizetést, amely tartalmazza az MSI és a virtuális Géphez tartozó fiókot kell használnia. Emellett győződjön meg arról, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi az előfizetés vagy az erőforrások (például "owner" szerepkör) írási engedéllyel.
 
-2. A sablon betöltése a szerkesztő, után keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakasz. Saját tűnhet kissé eltér attól függően, hogy a szerkesztő használata a következő képernyőfelvételen látható, és hogy szerkeszti egy sablont egy új központi telepítés vagy a meglévők egyikét.
+2. A sablon betöltése be egy szerkesztőt, után keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakaszban. Öné kissé eltérhetnek az alábbi képernyőfelvételen látható, a szerkesztő használata függően előfordulhat, hogy keresse meg, és hogy szerkeszti egy sablont egy új központi telepítést vagy a meglévőt.
 
    >[!NOTE] 
-   > Ebben a példában feltételezzük például a változók `vmName`, `storageAccountName`, és `nicName` a sablonban definiált.
+   > Ez a példa feltételezi, hogy változók például `vmName`, `storageAccountName`, és `nicName` van definiálva a sablonban.
    >
 
-   ![Képernyőkép a sablon - keresse meg a virtuális gép](~/articles/active-directory/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
+   ![Képernyőkép a sablonhoz: keresse meg a virtuális gép](~/articles/active-directory/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
-3. Adja hozzá a `"identity"` tulajdonság ugyanazon a szinten az `"type": "Microsoft.Compute/virtualMachines"` tulajdonság. A következő szintaxissal:
+3. Adja hozzá a `"identity"` tulajdonság azonos szinten, a `"type": "Microsoft.Compute/virtualMachines"` tulajdonság. Az alábbi szintaxissal:
 
    ```JSON
    "identity": { 
@@ -62,10 +62,10 @@ Függetlenül a választott lehetőség sablon szintaxisa azonos kezdeti üzembe
    },
    ```
 
-4. Majd adja hozzá a virtuális gép MSI kiterjesztést, mint egy `resources` elemet. A következő szintaxissal:
+4. Adja hozzá a virtuális gép MSI-bővítményt, mint egy `resources` elemet. Az alábbi szintaxissal:
 
    >[!NOTE] 
-   > Az alábbi példa azt feltételezi, hogy a Windows Virtuálisgép-bővítmény (`ManagedIdentityExtensionForWindows`) telepítése történik. Beállíthatja úgy is Linux használatával `ManagedIdentityExtensionForLinux` ehelyett a `"name"` és `"type"` elemeket.
+   > Az alábbi példa feltételezi, hogy Windows VM-bővítmény (`ManagedIdentityExtensionForWindows`) lesz üzembe helyezve. Beállíthatja a Linux használatával `ManagedIdentityExtensionForLinux` ehelyett a `"name"` és `"type"` elemeket.
    >
 
    ```JSON
@@ -90,19 +90,19 @@ Függetlenül a választott lehetőség sablon szintaxisa azonos kezdeti üzembe
    }
    ```
 
-5. Amikor elkészült, a sablon a következő hasonlóan kell kinéznie:
+5. Ha elkészült, a sablon az alábbihoz hasonlóan kell kinéznie:
 
-   ![Képernyőkép a frissítés után sablon](~/articles/active-directory/media/msi-qs-configure-template-windows-vm/template-file-after.png) 
+   ![Képernyőkép a frissítés után a sablon](~/articles/active-directory/media/msi-qs-configure-template-windows-vm/template-file-after.png) 
 
-## <a name="remove-msi-from-an-azure-vm"></a>Az Azure virtuális gép MSI eltávolítása
+## <a name="remove-msi-from-an-azure-vm"></a>Egy Azure virtuális gép MSI eltávolítása
 
-Ha egy virtuális Gépet, amely már nincs szüksége egy olyan MSI Csomaghoz:
+Ha egy virtuális Gépet, amely már nincs szüksége egy MSI-csomag:
 
-1. Jelentkezzen be helyileg Azure vagy az Azure-portál, az Azure-előfizetéssel társított fiókot használ, amely a virtuális Gépet tartalmaz. Emellett győződjön meg arról, hogy a fiókja tagja-e egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuális gép (például "Virtuális gép közreműködő" szerepkör).
+1. Jelentkezzen be az Azure-bA helyileg vagy az Azure Portalon az Azure-előfizetéshez társított olyan fiókot használjon, amely tartalmazza a virtuális Gépet. Emellett győződjön meg arról, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi a virtuális gép (például "Virtuális gép közreműködő" szerepkör) írási engedéllyel.
 
-2. Távolítsa el a két elem az előző szakaszban hozzáadott: a virtuális gép `"identity"` tulajdonság és a `"Microsoft.Compute/virtualMachines/extensions"` erőforrás.
+2. Távolítsa el a két elemet az előző szakaszban hozzáadott: a virtuális gép `"identity"` tulajdonság és a `"Microsoft.Compute/virtualMachines/extensions"` erőforrás.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-- Egy szélesebb körű perspektíva MSI kapcsolatban, olvassa el a [Szolgáltatásidentitás felügyelete – áttekintés](msi-overview.md).
+- Szélesebb perspektíva MSI kapcsolatban, olvassa el a [Felügyeltszolgáltatás-identitás – áttekintés](msi-overview.md).
 

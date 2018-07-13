@@ -1,6 +1,6 @@
 ---
-title: HPC kötegelt és az Azure-ban nagy számítási |} Microsoft Docs
-description: További tudnivalók az Azure megoldások nagy teljesítményű számítástechnikai (HPC), kötegelt és nagy számítási feladatok Azure virtuális gépeken futó és a szolgáltatások számítást.
+title: HPC, Batch és Big Compute az Azure-ban |} A Microsoft Docs
+description: További tudnivalók az Azure-megoldások az Azure-beli virtuális gépek nagy teljesítményű feldolgozási (HPC), batch és Big Compute számítási feladatok futtatásához, és a számítási szolgáltatások.
 services: virtual-machines-windows
 documentationcenter: ''
 author: dlepow
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 05/11/2018
 ms.author: danlep
 ms.openlocfilehash: 661b45d9960d8d803f77295ab29cc5e93cac6619
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34076383"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697432"
 ---
-# <a name="hpc-batch-and-big-compute-solutions-using-azure-vms"></a>Azure virtuális gépek alkalmazó HPC kötegelt és nagy számítási megoldások
+# <a name="hpc-batch-and-big-compute-solutions-using-azure-vms"></a>HPC, Batch és Big Compute megoldások az Azure virtuális gépekkel
 
 [!INCLUDE [virtual-machines-common-high-performance-computing](../../../includes/virtual-machines-common-high-performance-computing.md)]

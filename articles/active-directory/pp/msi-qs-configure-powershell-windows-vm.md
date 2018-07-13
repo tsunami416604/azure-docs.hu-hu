@@ -1,6 +1,6 @@
 ---
-title: MSI konfigurálása az Azure virtuális gép PowerShell használatával
-description: Lépés által felügyelt szolgáltatás identitásának (MSI) konfigurálásához egy Azure virtuális gépen, PowerShell-lel részletes utasításokat.
+title: Az MSI konfigurálása Azure virtuális gép PowerShell-lel
+description: Útmutató Azure virtuális gép, PowerShell-lel konfigurálja a Felügyeltszolgáltatás-identitás (MSI) lépésben.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,84 +15,84 @@ ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9a466a5c695277a7b5833f997e2ad7281c962f3f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31588251"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610999"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) PowerShell használatával
+# <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás (MSI) PowerShell-lel
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Felügyelt Szolgáltatásidentitást az Azure Active Directoryban automatikusan felügyelt identitással Azure szolgáltatásokat biztosít. Ez az identitás, amely támogatja az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatokat a kódban a szolgáltatással való hitelesítésre szolgáló használhatja. 
+Felügyeltszolgáltatás-identitás az Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
 
-Ebből a cikkből megismerheti, hogyan engedélyezheti és MSI eltávolítása egy Azure virtuális gép, PowerShell használatával.
+Ebből a cikkből megismerheti, hogyan engedélyezheti és távolítsa el az MSI egy Azure virtuális gép, PowerShell-lel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
-Továbbá, telepítse [Azure PowerShell legújabb verziójának](https://www.powershellgallery.com/packages/AzureRM) (4.3.1 verzió vagy újabb) Ha még nem tette meg.
+Emellett telepítse [az Azure PowerShell legújabb verzióját](https://www.powershellgallery.com/packages/AzureRM) (4.3.1-es vagy újabb) Ha még nem tette.
 
-## <a name="enable-msi-during-creation-of-an-azure-vm"></a>MSI engedélyezése az Azure virtuális gép létrehozása
+## <a name="enable-msi-during-creation-of-an-azure-vm"></a>Az MSI engedélyezéséhez egy Azure virtuális gép létrehozása során
 
-Az MSI-kompatibilis virtuális gép létrehozása:
+Az MSI-kompatibilis virtuális gép létrehozásához:
 
-1. A következő Azure virtuális gép Quickstarts, csak a szükséges szakaszok befejezése hivatkozik ("Jelentkezzen be az Azure", "Erőforráscsoport létrehozása", "Create hálózati csoport", "A virtuális gép létrehozása"). 
+1. Tekintse meg a következő Azure virtuális gép gyors útmutatók elvégzése csak a szükséges szakaszok egyikét ("Jelentkezzen be az Azure-bA", "Create resource group", "Létrehozása a hálózati csoport", "A virtuális gép létrehozása"). 
 
    > [!IMPORTANT] 
-   > Amikor a "Hozzon létre a virtuális gép" szakaszban, a módosítások enyhe a [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvm) parancsmag szintaxisát. Vegye fel a `-IdentityType "SystemAssigned"` telepítéséhez például a virtuális Géphez egy olyan MSI Csomaghoz, a paraméter:
+   > Ha az "Az VM létrehozása" szakaszban kap, a módosítások kisebb a [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvm) parancsmag szintaxisát. Ügyeljen arra, hogy adjon hozzá egy `-IdentityType "SystemAssigned"` például kiépítéséhez a virtuális Gépet egy olyan MSI Csomaghoz, a paraméter:
    >  
    > `$vmConfig = New-AzureRmVMConfig -VMName myVM -IdentityType "SystemAssigned" ...`
 
-   - [A Windows PowerShell használatával virtuális gép létrehozása](~/articles/virtual-machines/windows/quick-create-powershell.md)
-   - [PowerShell-lel Linux virtuális gép létrehozása](~/articles/virtual-machines/linux/quick-create-powershell.md)
+   - [Hozzon létre egy Windows virtuális gépet PowerShell-lel](~/articles/virtual-machines/windows/quick-create-powershell.md)
+   - [Hozzon létre egy Linux rendszerű virtuális gép PowerShell-lel](~/articles/virtual-machines/linux/quick-create-powershell.md)
 
 
 
-2. Az MSI-VM bővítmény használatával hozzáadása a `-Type` paraméter a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmag. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", attól függően, hogy a típus, a virtuális gépet, és nevezze el a használatával a `-Name` paraméter. A `-Settings` paraméter határozza meg a jogkivonat beszerzése az OAuth-jogkivonat végpont által használt port:
+2. Adja hozzá az MSI-VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
 
    ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzureRmVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
    ```
 
-## <a name="enable-msi-on-an-existing-azure-vm"></a>Egy meglévő Azure virtuális gépen az MSI engedélyezése
+## <a name="enable-msi-on-an-existing-azure-vm"></a>Egy meglévő Azure virtuális gépen az MSI engedélyezéséhez
 
-Ha egy meglévő virtuális gépen az MSI engedélyezni kell:
+Ha szeretne egy meglévő virtuális gépen az MSI engedélyezéséhez:
 
-1. Jelentkezzen be az Azure használatával `Connect-AzureRmAccount`. Az Azure-előfizetés, amely tartalmazza a virtuális Géphez társított olyan fiókot használjon. Emellett győződjön meg arról, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi a virtuális Gépen, például a "Virtuális gép közreműködő" írási engedélyekkel:
+1. Jelentkezzen be Azure-bA `Connect-AzureRmAccount`. Használjon, amely tartalmazza a virtuális gép Azure-előfizetéssel társított fiókot. Ügyeljen arra, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuális Gépen, például a "Virtuális gép közreműködő":
 
    ```powershell
    Connect-AzureRmAccount
    ```
 
-2. Először kérjen le a virtuális gép tulajdonságok a `Get-AzureRmVM` parancsmag. Majd MSI engedélyezéséhez használja a `-IdentityType` váltani a [frissítés-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) parancsmagot:
+2. Először kérjen le a virtuális gép tulajdonságainak használata a `Get-AzureRmVM` parancsmagot. Ezután az MSI engedélyezéséhez használja a `-IdentityType` váltani a [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) parancsmag:
 
    ```powershell
    $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
    Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -IdentityType "SystemAssigned"
    ```
 
-3. Az MSI-VM bővítmény használatával hozzáadása a `-Type` paraméter a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmag. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", attól függően, hogy a típus, a virtuális gépet, és nevezze el a használatával a `-Name` paraméter. A `-Settings` paraméter határozza meg a jogkivonat beszerzése az OAuth-jogkivonat végpont által használt port. Adja meg a megfelelő `-Location` paraméter, a meglévő virtuális gép helyét megfelelő:
+3. Adja hozzá az MSI-VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Ügyeljen arra, hogy adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helye:
 
    ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzureRmVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
    ```
 
-## <a name="remove-msi-from-an-azure-vm"></a>Az Azure virtuális gép MSI eltávolítása
+## <a name="remove-msi-from-an-azure-vm"></a>Egy Azure virtuális gép MSI eltávolítása
 
-Ha egy virtuális gép, amely már nem kell egy olyan MSI Csomaghoz, használhatja a `RemoveAzureRmVMExtension` parancsmag segítségével távolítsa el az MSI-fájl a virtuális gépből:
+Ha egy virtuális gépet, amely már nem kell egy olyan MSI Csomaghoz, használhatja a `RemoveAzureRmVMExtension` távolítsa el a virtuális gép MSI-parancsmagot:
 
-1. Jelentkezzen be az Azure használatával `Connect-AzureRmAccount`. Az Azure-előfizetés, amely tartalmazza a virtuális Géphez társított olyan fiókot használjon. Emellett győződjön meg arról, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi a virtuális Gépen, például a "Virtuális gép közreműködő" írási engedélyekkel:
+1. Jelentkezzen be Azure-bA `Connect-AzureRmAccount`. Használjon, amely tartalmazza a virtuális gép Azure-előfizetéssel társított fiókot. Ügyeljen arra, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuális Gépen, például a "Virtuális gép közreműködő":
 
    ```powershell
    Connect-AzureRmAccount
    ```
 
-2. Használja a `-Name` kapcsoló és a [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) parancsmag, a bővítmény hozzáadásakor használt azonos név megadása:
+2. Használja a `-Name` kapcsolja össze a [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) parancsmagot, ugyanazt a bővítmény hozzáadásakor használt név megadásával:
 
    ```powershell
    Remove-AzureRmVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
@@ -100,13 +100,13 @@ Ha egy virtuális gép, amely már nem kell egy olyan MSI Csomaghoz, használhat
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-- [Felügyelt Szolgáltatásidentitás áttekintése](msi-overview.md)
-- A teljes Azure virtuális gépek létrehozására – Gyorsútmutatók lásd:
+- [Felügyelt Felügyeltszolgáltatás-identitás – áttekintés](msi-overview.md)
+- A teljes Azure virtuális gépek létrehozása rövid útmutatók lásd:
   
-  - [A Windows rendszerű virtuális gép létrehozása a PowerShell használatával](~/articles/virtual-machines/windows/quick-create-powershell.md) 
-  - [Linux virtuális gép létrehozása a PowerShell használatával](~/articles/virtual-machines/linux/quick-create-powershell.md) 
+  - [Windows virtuális gép létrehozása a PowerShell-lel](~/articles/virtual-machines/windows/quick-create-powershell.md) 
+  - [Linux rendszerű virtuális gép létrehozása a PowerShell használatával](~/articles/virtual-machines/linux/quick-create-powershell.md) 
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.
 
 
 

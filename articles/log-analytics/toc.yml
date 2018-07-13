@@ -35,6 +35,8 @@
           href: log-analytics-oms-portal-faq.md
     - name: Log Analytics – gyakori kérdések
       href: log-analytics-faq.md
+    - name: Adatfeldolgozási idő
+      href: log-analytics-data-ingestion-time.md
     - name: Adatbiztonság
       href: log-analytics-data-security.md
     - name: Hozzáférés kezelése

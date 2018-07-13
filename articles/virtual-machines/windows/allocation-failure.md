@@ -1,6 +1,6 @@
 ---
-title: Azure Windows virtuális gép pufferallokációs hibák elhárítása |} Microsoft Docs
-description: Hozzon létre, újraindításakor vagy átméretezésekor egy Windows Azure-ban fellépő lefoglalási hibák elhárítása
+title: Azure Windows virtuális gépek foglalási hibáinak elhárítása |} A Microsoft Docs
+description: Amikor létrehozása, újraindítása vagy átméretezése az Azure-beli Windows virtuális gépek foglalási hibáinak elhárítása
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: c434e7776539031a905b9d7a4c6032d30d6588e9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525420"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630173"
 ---
-# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-windows-vms-in-azure"></a>Hozzon létre, újraindításakor vagy átméretezésekor Windows-alapú virtuális gépek Azure-ban fellépő lefoglalási hibák elhárítása
+# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-windows-vms-in-azure"></a>Amikor létrehozása, újraindítása vagy átméretezése Windows-beli virtuális gépek foglalási hibáinak elhárítása
 
 [!INCLUDE [virtual-machines-common-allocation-failure](../../../includes/virtual-machines-common-allocation-failure.md)]
 

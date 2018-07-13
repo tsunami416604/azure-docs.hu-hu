@@ -1,6 +1,6 @@
 ---
-title: Az Azure Functions futásidejű verziók áttekintése
-description: Az Azure Functions a futtatókörnyezet több verzióit támogatja. Ismerje meg őket, és hogyan válassza azt, amelyik az Ön számára legmegfelelőbb közötti különbségeket.
+title: Az Azure Functions runtime verziók áttekintése
+description: Az Azure Functions futtatókörnyezet több verzióit támogatja. Ismerje meg azokat, és hogyan választható ki a másik pedig az Önnek megfelelő közötti különbségeket.
 services: functions
 documentationcenter: ''
 author: ggailey777
@@ -12,61 +12,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: glenga
-ms.openlocfilehash: 9f916aaa8032ff519709d73a1c1f51195f811686
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8ba12f21d76d8deded047f40489c46657c9380b8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28919355"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38602117"
 ---
-# <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions futásidejű verziók áttekintése
+# <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
 
- Két fő verziója van az Azure Functions futtatókörnyezethez: 1.x és a 2.x. Ez a cikk azt ismerteti, hogyan kiválaszthatja, melyik fő verziót kell használni.
-
-> [!IMPORTANT] 
-> Futásidejű 1.x az üzemi használatra jóváhagyott csak verziója.
+ Az Azure Functions Runtime két fő verziója: 1.x és a 2.x. Éles környezetben való használatra csak 1.x engedélyezték. Ez a cikk ismerteti, what's new in 2.x verziója, amely előzetes verzióban érhető el.
 
 | Futtatókörnyezet | status |
 |---------|---------|
-|1.x|Általában elérhető (GA)|
+|1.x|Általánosan elérhető (GA)|
 |2.x|Előzetes verzió|
 
-Egy függvény alkalmazást vagy egy adott verziójához a fejlesztési környezet konfigurálásával kapcsolatos további információkért lásd: [bemutatásához az Azure Functions futásidejű verziók](set-runtime-version.md) és [kód és a vizsgálati helyileg Azure Functions](functions-run-local.md).
+> [!NOTE] 
+> Ez a cikk az Azure Functions felhőalapú szolgáltatásra vonatkozik. A termék, amely lehetővé teszi Azure Functions helyi futtatását kapcsolatos információkért tekintse meg a [Azure Functions Runtime áttekintése](functions-runtime-overview.md).
 
-## <a name="cross-platform-development"></a>Platformfüggetlen fejlesztésekhez
+## <a name="cross-platform-development"></a>Platformfüggetlen fejlesztés
 
-Futásidejű 1.x támogatja a fejlesztési és üzemeltetési csak a portál vagy a Windows. Futásidejű 2.x futtat a .NET Core, ami azt jelenti, .NET Core, beleértve a macOS és a Linux által támogatott összes platformokon futtatható. Ez lehetővé teszi a platformok közötti fejlesztési és üzemeltetési helyzeteket, amelyek nem 1.x tesz lehetővé.
+Futtatókörnyezet 1.x támogatja a fejlesztési és üzemeltetési csak a portálon vagy a Windows. Futásidejű 2.x fut a .NET Core, ami azt jelenti, .NET Core, beleértve a macOS és Linux által támogatott összes platformokon futtatható. Ez lehetővé teszi a platformfüggetlen fejlesztési és üzemeltetési helyzeteket, amelyek nem lehetséges a 1.x.
 
 ## <a name="languages"></a>Nyelvek
 
-Futásidejű 2.x új nyelvi bővítési modellt használ. Kezdetben JavaScript és Java tart az új modell előnyeit. Az Azure Functions 1.x kísérleti nyelveket az új modell használatára, így azok nem támogatottak a 2.x még nem frissítették. A következő táblázat minden egyes futásidejű verziójában támogatott programozási nyelveket.
+Futásidejű 2.x új nyelvi bővíthetőségi modellt használ. Kezdetben a JavaScript és Java is kihasználhatja az új modell. Az Azure Functions 1.x kísérleti nyelvek még nem lett frissítve az új modellt használ, így a 2.x-es nem támogatottak. Az alábbi táblázat azt jelzi, hogy az egyes verze modulu runtime támogatott programozási nyelvek.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-További információkért lásd: [támogatott nyelv](supported-languages.md).
+További információkért lásd: [támogatott nyelvek](supported-languages.md).
 
 ## <a name="bindings"></a>Kötések 
 
-Futásidejű 2.x használ egy új [kötés bővíthetőségi modell](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) , amely ezeket az előnyöket nyújtja:
+Futásidejű 2.x használja egy új [bővíthetőségi modell kötése](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) , amely ezeket az előnyöket kínálja:
 
-* Támogatása a külső kötés.
-* Futásidejű és kötések leválasztásával. Ez lehetővé teszi, hogy a kötés bővítmények rendszerverzióval ellátott és egymástól függetlenül kiadott kell lennie. Dönthet úgy is, például az olyan bővítményekre, amely egy alapul szolgáló SDK újabb verziójával támaszkodik egy verziójára történő frissítéshez.
-* Egy világosabb végrehajtási környezetben, ahol csak a használatban lévő kötések ismert és a futtatókörnyezet által betöltött.
+* Támogatás a külső kötési bővítményeket.
+* Elválasztás futtatókörnyezeti és a kötéseket. Ez lehetővé teszi a rendszerverzióval ellátott és egymástól függetlenül kiadott kötési bővítményeket. Például kérheti egy bővítmény, amely az alapul szolgáló SDK újabb verziója támaszkodik a verzióra frissíteni.
+* Egy világosabb végrehajtási környezetet, ahol csak a használatban lévő kötéseket ismertek és a futtatókörnyezet által betöltött.
 
-Minden beépített Azure Functions kötés kezdtek el alkalmazni ezt a modellt, és már nem szerepelnek az alapértelmezés szerint a időzítő indítófeltételt és a HTTP-eseményindítóval kivételével. Ezek a bővítmények automatikusan települnek, Funkciók, például a Visual Studio eszközök vagy a portálon keresztül létrehozásakor.
+Az összes beépített Azure Functions-bindings elfogadták ezt a modellt, és már nem szerepelnek alapértelmezetten, kivéve az időzített eseményindítóknak és a HTTP-eseményindítóval. Ezek a bővítmények automatikusan települnek, függvények, például a Visual Studio eszközök vagy a portálon keresztül létrehozásakor.
 
-A következő táblázat azt jelzi, hogy mely kötések támogatottak a minden egyes futásidejű verzióját.
+Az alábbi táblázat azt jelzi, hogy melyik kötések támogatottak a minden egyes modul verzióját.
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-## <a name="known-issues-in-2x"></a>2.x kapcsolatos ismert problémák
+## <a name="known-issues-in-2x"></a>A 2.x ismert problémák
 
-Kötések támogatási és egyéb működési hiányosságait 2.x kapcsolatban további információkért lásd: [ismert problémák futtatókörnyezet 2.0](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues).
+További információ a kötéseket és egyéb működési hiányosságok 2.x: [futtatókörnyezet 2.0 ismert problémák](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues).
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [A helyi fejlesztési környezetben 2.0 futásidejű cél](functions-run-local.md)
+További információkért lásd a következőket:
 
-> [!div class="nextstepaction"]
-> [Tekintse meg a kibocsátási megjegyzések a futtatókörnyezet-verzió](https://github.com/Azure/azure-webjobs-sdk-script/releases)
+* [Az Azure Functions helyi kódolása és tesztelése](functions-run-local.md)
+* [Az Azure Functions runtime verziók bemutatásához](set-runtime-version.md)
+* [Kiadási megjegyzések](https://github.com/Azure/azure-functions-host/releases)

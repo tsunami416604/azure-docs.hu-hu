@@ -1,6 +1,6 @@
 ---
-title: DevTest Labs fogalmak |} Microsoft Docs
-description: Ismerje meg, az alapvető fogalmait DevTest Labs szolgáltatásban, és hogyan azt is megkönnyítheti létrehozására, kezelésére és az Azure virtuális gépek figyelése
+title: DevTest Labs-fogalmak |} A Microsoft Docs
+description: Ismerje meg, az alapvető fogalmait, DevTest Labs szolgáltatásban, és hogyan azt teheti, hogy könnyű létrehozását, kezelését és az Azure virtuális gépek figyelése
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,79 +15,79 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: ce0c51a3b97c57095a336128919c5e27f860905b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787527"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38676470"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-fogalmak
 ## <a name="overview"></a>Áttekintés
-Az alábbi lista tartalmazza az alapfogalmakat DevTest Labs és meghatározások:
+Az alábbi lista a fő DevTest Labs-fogalmak és definíciókat tartalmazza:
 
 ## <a name="labs"></a>Tesztkörnyezetek
-Egy laboratóriumi környezet az infrastruktúra, amely magában foglalja egy csoportot az erőforrások, például a virtuális gépek (VM), amely lehetővé teszi, hogy jobb kezelése ezeket az erőforrásokat korlátozásai és a kvóták megadásával.
+Labor a működő az erőforráscsoportokat erőforrások, például a virtuális gépek (VM), amely lehetővé teszi, hogy jobban korlátok és kvóták meghatározásával felügyelheti az erőforrásokat.
 
 ## <a name="virtual-machine"></a>Virtuális gép
-Egy Azure virtuális gép egyike a számos különböző típusú [igény szerinti, méretezhető számítási erőforrások](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm) , amely az Azure biztosít. Azure virtuális gépek a munkakörnyezetnek a virtualizáció kellene vásárolnia és karbantartania a fizikai hardveren futó, bár továbbra is szeretné a virtuális gép karbantartása bizonyos feladatokat, például a konfigurálását, javítását és a rajta futó szoftverek telepítése nélkül.
+Egy Azure virtuális gép számos különböző típusú [igény szerinti, méretezhető számítási erőforrás](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm) Azure által kínált. Az Azure virtuális gépek a rugalmasságot biztosítanak a virtualization vásárolnia és karbantartania a fizikai hardveren futó, bár továbbra is biztosítani kell a virtuális gép által bizonyos műveletek végrehajtását, például a konfigurálását, javítását és a gépen futó szoftver telepítése nélkül azt.
 
-[A Windows Azure virtuális gépek – áttekintés](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) által biztosított előtt érdemes megfontolni kapcsolatos információk létrehozni egy virtuális Gépet, hogyan hoz létre, és hogyan kezelheti.
+[Az Azure Windows virtual machines – áttekintés](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) nyújt információt arról, hogy mit kell szem előtt létrehozása egy virtuális Gépet, hogyan hoz létre, és hogyan kezelheti azt.
 
-## <a name="claimable-vm"></a>Claimable VM
-Egy Azure Claimable a virtuális gép egy virtuális gépre, amelyik a labor engedélyekkel rendelkező felhasználó által használható. A tesztkörnyezet rendszergazdája készítse elő a virtuális gépek az adott alap képek és összetevők, és mentse azokat egy megosztott készletéhez. Egy lab-felhasználó akkor is jogcím egy működő virtuális gép a készletből, ha szükségük van egy adott adott konfigurációval.
+## <a name="claimable-vm"></a>Igényelhető virtuális gép
+Azure igényelhető virtuális gép egy virtuális gép elérhető bármely labor engedéllyel rendelkező felhasználó általi használatra. A lab rendszergazda is adott alaplemezképek és összetevők a virtuális gépek előkészítése, és mentse azokat egy megosztott készletéhez. A lab-felhasználó akkor is jogcím egy működő virtuális Gépet a készletből, amikor szükségük van egy adott adott konfigurációval.
 
-Egy virtuális Gépet, amely claimable kezdetben nincs hozzárendelve a felhasználóhoz, de fog megjelenni a "Claimable virtual machines" minden felhasználó partnereinek listájához. Miután a felhasználó által a virtuális gépek igényelnek, akár helyezik át az "A virtuális gépnek" területen, és már nem claimable, amelyet semmilyen más felhasználó.
+Egy virtuális Gépet, amely igényelhető nem kezdetben rendelt egy konkrét felhasználóhoz, de minden felhasználói listájában "Igényelhető virtuális gépnek" alatt fog megjelenni. Felhasználó által a virtuális gép átvétele után helyezték át akár a "Saját virtuális gépnek" területen és már nem igényelhető, amelyet semmilyen más felhasználó.
 
 ## <a name="environment"></a>Környezet
-A DevTest Labs szolgáltatásban környezet az Azure-erőforrások egy tesztkörnyezetben gyűjteményre hivatkozik. [Ebben a blogbejegyzésben](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) virtuális Gépre kiterjedő környezetek létrehozása az Azure Resource Manager-sablonok alapján a módját ismerteti.
+DevTest Labs-környezetben egy környezeti tesztkörnyezetben az Azure-erőforrások gyűjteményét hivatkozik. [Ebben a blogbejegyzésben](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) tárgyalja a több virtuális gépes környezet létrehozása az Azure Resource Manager-sablonok alapján.
 
-## <a name="base-images"></a>Alap lemezképek
-Alap képek az eszközök és beállítások előtelepített és konfigurált virtuális gép gyors létrehozásához a VM-lemezképekkel történik. A virtuális gépek válassza háttérszínnek. egy meglévő talál, és vegye fel a test-ügynök telepítéséhez összetevő építhető ki. Majd mentheti a kiosztott virtuális Gépen alapul, hogy a következő anélkül, hogy újra kell telepítenie a teszt ügynök minden virtuális gép üzembe helyezéséhez használható.
+## <a name="base-images"></a>Alapként szolgáló rendszerképek
+Alaplemezképek olyan Virtuálisgép-rendszerképek a kívánt eszközökkel és a egy virtuális gép gyors létrehozása előre telepített és konfigurált beállítások. Egy virtuális Gépet telepíthet egy meglévő Ügyfélkörünk kiadási, és vegye fel a vizsgálati ügynök telepítéséhez összetevőt. Ezután mentheti a kiépített virtuális Gépet alapul, hogy az Alap az egyes a virtuális gép kiépítése a vizsgálati ügynök újratelepítése nélkül is használható.
 
 ## <a name="artifacts"></a>Összetevők
-Összetevők segítségével telepítheti és konfigurálhatja az alkalmazás, egy virtuális gép kiépítése után. Az összetevők lehetnek:
+Összetevők segítségével telepítheti és konfigurálhatja az alkalmazás egy virtuális gép kiépítése után. Az összetevők lehetnek:
 
-* A virtuális Gépen – például ügynökök, a Fiddler és a Visual Studio telepíteni kívánt eszközök.
-* A virtuális Gépen – például egy tárház klónozása futtatni kívánt műveletek.
+* Telepítse a virtuális gép – például ügynökök, Fiddler, és a Visual Studio a kívánt eszközöket.
+* – Például a tárház klónozása az a virtuális gépen futtatni kívánt műveletek.
 * Tesztelni kívánt alkalmazások.
 
-Összetevőket [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) JSON-fájlokat, amelyek tartalmazzák a telepítési utasításokat konfiguráció alkalmazásához.
+Összetevőket [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) központi telepítésének végrehajtása és a konfiguráció alkalmazásához vonatkozó utasításokat tartalmazó JSON-fájlokat.
 
-## <a name="artifact-repositories"></a>Összetevő adattárak
-Összetevő adattárak git tárházak találhatók, ahol a összetevők be van jelölve a rendszer. Összetevő tárolóhelyekkel a szervezet újbóli engedélyezése és megosztása több labs lehet hozzáadni.
+## <a name="artifact-repositories"></a>Összetevő-adattárak
+Összetevő-tárházak git-tárházakat, amelyekbe összetevőket is be. Összetevő-tárházak újbóli engedélyezése és megosztása a szervezetben több labs lehet hozzáadni.
 
 ## <a name="formulas"></a>Képletek
-Képletek alap képek mellett a virtuális gép gyors kiépítése egy olyan mechanizmus biztosítása. A DevTest Labs szolgáltatásban egy képlete VM labor létrehozásához használt alapértelmezett tulajdonság értékek listáját.
-A képletekkel, ugyanazokat a kulcstulajdonságokat tulajdonságai – például az alapjául szolgáló lemezképhez, a virtuális gép mérete, a virtuális hálózat és a összetevők - rendelkező virtuális gépek hozhatók létre anélkül, hogy adja meg azokat a tulajdonságokat, minden alkalommal. Az alapértelmezett értékeket egy képletet a virtuális gép létrehozásakor használható- vagy módosítani.
+Képletek alaprendszerképek lekéréshez mellett a virtuális gépek gyors kiépítése mechanizmus biztosítására. DevTest Labs szolgáltatásban létrehozott képletet az alapértelmezett tulajdonságértékeket egy laborbeli virtuális gép létrehozásához használt listája.
+Képleteket, tulajdonságok – alaplemezkép, a virtuális gép mérete, a virtuális hálózat és a összetevők – például ugyanazokat a virtuális gépek hozhatók létre anélkül, hogy minden alkalommal, amikor adja meg a megadott tulajdonságokkal. A képlet egy virtuális Gépet hoz létre, amikor az alapértelmezett értékeket is használható –, vagy módosítani.
 
 ## <a name="policies"></a>Házirendek
-A házirendek segítenek a költség, a laborban vezérlése. Például létrehozhat egy házirendet, amellyel a virtuális gépek a meghatározott ütemezés szerint automatikusan leáll.
+Szabályzatok segítenek a tesztkörnyezet a költségek ellenőrzés alatt tartásával. Létrehozhat például olyan szabályzatot automatikusan leállíthatók a virtuális gépek egy meghatározott ütemezés alapján.
 
 ## <a name="caps"></a>CAPS
-Caps az eljárást, amely a laborkörnyezetben pazarlás minimalizálásához. Például beállíthat egy kap a felhasználónként vagy egy tesztkörnyezetben hozható létre virtuális gépek számát korlátozhatja.
+Laboronként létrehozható egy olyan mechanizmus, maximális hatékonyság a lab-ben. Például beállíthatja a felhasználónként vagy tesztkörnyezetben létrehozható virtuális gépek számának korlátozása egy korlát.
 
 ## <a name="security-levels"></a>Biztonsági szint
-Biztonsági hozzáférést által átruházásához hozzáférés-vezérlés (RBAC) határozza meg. Hozzáférés működésének megismerése segít engedélyt, a szerepkör és a Szerepalapú által meghatározott hatókör közötti különbségek megismeréséhez.
+Biztonsági hozzáférési által Azure szerepköralapú hozzáférés-vezérlés (RBAC) határozza meg. Szeretné megtudni, hogyan működik a hozzáférés, segít a engedélyt, a szerepkör és egy hatókör szerint RBAC közötti különbségeket.
 
-* Hozzáférés - engedély egy bizonyos művelet (pl. írásvédett minden virtuális gépnek) definiált elérésére.
-* Szerepkör - szerepkör csoportosítva, és a felhasználóhoz rendelt engedélyek egy készletét. Például a *előfizetés tulajdonosa* szerepkör hozzáfér egy előfizetésen belüli összes erőforrást.
-* Hatókör - hatókör egy Azure-erőforrás, például egy erőforráscsoportot, egy laboratóriumi vagy az egész előfizetésre, a hierarchiában egy szint.
+* Hozzáférés - engedély egy meghatározott hozzáférést egy adott művelet (pl. írásvédett összes virtuális gépen).
+* Szerepkör - szerepkör csoportosítva, és a felhasználóhoz rendelt engedélyek egy készletét. Ha például a *előfizetés tulajdonosa* egy előfizetésen belüli összes erőforrás hozzáférése van.
+* Hatókör - hatókör a hierarchiában, az Azure-erőforrás, például egy erőforráscsoport, egy egyetlen labor vagy a teljes előfizetés szintet.
 
-DevTest Labs keretén belül a felhasználói engedélyek megadásához szerepkörök két típusa van: a tesztkörnyezet tulajdonosa és lab-felhasználó.
+DevTest Labs hatókörén belül a felhasználói engedélyek megadásához szerepkörök két típusa van: lab tulajdonos és a lab-felhasználó.
 
-* A tesztkörnyezet tulajdonosa - A tesztkörnyezet tulajdonosa hozzáférni semmilyen erőforráshoz belül van. Ezért a tesztkörnyezet tulajdonosa is házirendek módosíthatók, olvasási és írási bármely virtuális gépek, módosítsa a virtuális hálózatot, és így tovább.
-* Lab-felhasználó - lab-felhasználó összes lab-erőforrások, például a virtuális gépek, a házirendek és a virtuális hálózatok, megtekinthetik, de nem módosíthatja a házirendeket, vagy más felhasználók által létrehozott bármely virtuális gépeket.
+* Tesztlabor - egy tesztlabor tulajdonos tulajdonosa belül a labor létrehozása minden olyan erőforrásokhoz való hozzáférés. Ezért egy tesztlabor tulajdonosa is módosíthatja a szabályzatokat, olvassa el és írhat olyan virtuális gépek, módosítsa a virtuális hálózat, és így tovább.
+* Labor felhasználó - lab-felhasználó minden labor-erőforrásokat, például a virtuális gépek, a házirendek és a virtuális hálózatok, megtekintheti, de nem módosíthatja a szabályzatokat vagy más felhasználók által létrehozott bármely virtuális gépeket.
 
-Egyéni szerepkörök létrehozása a DevTest Labs megtekintéséhez tekintse meg a cikk [felhasználói engedélyeket adott labor házirendek](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
+Egyéni szerepkörök létrehozása a DevTest Labs megtekintéséhez tekintse meg a cikk [felhasználó engedélyeket adott laborszabályzatok](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
-Mivel a hatókörök hierarchikus, amikor egy felhasználó jogosult bizonyos hatókörre, ezeket az engedélyeket minden alacsonyabb szintű hatókörből lefedett automatikusan kapnak. Például ha egy felhasználó a szerepkört az előfizetés tulajdonosa van rendelve, majd hozzáférhetnek, előfizetés összes olyan erőforrást, többek között az összes virtuális gép, az összes virtuális hálózatot és az összes labs. Ezért egy előfizetés tulajdonosa automatikusan örökli a tesztkörnyezet tulajdonosa szerepe. Azonban a ennek fordítottja nem igaz. A tesztkörnyezet tulajdonosa hozzáfér egy tesztkörnyezetet, amelyhez a hatókör alacsonyabb, mint az előfizetés szintjéről. Ezért a tesztkörnyezet tulajdonosa csak akkor láthatók a virtuális gépek vagy virtuális hálózatok, vagy minden olyan erőforrásnál, amely a labor kívül esnek.
+Mivel hatókörök hierarchikus, amikor a felhasználók számára egy bizonyos hatókörben, automatikusan megkapják ezeket az engedélyeket, minden egyes alacsonyabb szintű hatókörben vonatkozik. Például ha egy felhasználó hozzá van rendelve a szerepkört az előfizetés tulajdonosa, majd hozzáféréssel rendelkeznek többek között az összes virtuális gép összes virtuális hálózatot és az összes labs egy adott előfizetés összes erőforrást. Ezért előfizetés tulajdonosaként automatikusan örökli a labor tulajdonosi szerepkörhöz. Azonban nem igaz ennek az ellenkezője. A lab tulajdonosa hozzáférés a laborokhoz, amely kisebb, mint az előfizetés szintjén hatókör. Ezért a labor tulajdonosa nem láthatja a virtuális gépek vagy a virtuális hálózatok vagy olyan erőforrások, amelyek a tesztkörnyezet kívül.
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
-A jelen cikkben ismertetett fogalmakat összes Azure Resource Manager-sablonok, amelyek lehetővé teszik, hogy az infrastruktúra /-konfiguráció a Azure megoldás, és ismételten telepítheti konzisztens állapotú segítségével konfigurálható.
+Minden ebben a cikkben tárgyalt fogalmakat konfigurálható az Azure Resource Manager-sablonokat, amelyek lehetővé teszik az Azure-megoldás infrastruktúrájának/konfigurációval, és ismételten üzembe helyezni egy konzisztens állapotba.
 
-[A struktúra és az Azure Resource Manager-sablonok szintaxisát](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) Azure Resource Manager-sablon és a tulajdonságok érhetők el a különböző szakaszokat, egy sablon leíró.
+[Struktúra és az Azure Resource Manager-sablonok szintaxisát](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) az Azure Resource Manager-sablon és a különböző szakaszokat a rendelkezésre álló tulajdonságok szerkezetét írja le.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>További lépések
-[Labor létrehozása a DevTest Labs szolgáltatásban](devtest-lab-create-lab.md)
+[DevTest Labs szolgáltatásban létrehozott tesztkörnyezet létrehozása](devtest-lab-create-lab.md)

@@ -1,6 +1,6 @@
 ---
-title: Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Data Lake Store eléréséhez
-description: Ez az oktatóanyag bemutatja, hogyan használják a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure Data Lake Store eléréséhez.
+title: Egy Windows virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata Azure Data Lake Store eléréséhez
+description: Ez az oktatóanyag bemutatja, hogyan lehet egy Windows virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata Azure Data Lake Store eléréséhez.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,22 +15,22 @@ ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: daef85164793dd6183c41604f200864aabadf8d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153863"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610881"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
+# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Egy Windows virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata Azure Data Lake Store eléréséhez
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (MSI) egy Windows virtuális gép (VM) az Azure Data Lake Store elérésére használhat. Felügyelt szolgáltatás-identitások Azure automatikusan kezeli, és lehetővé teszik, hogy az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatokat beszúrni a kódot támogató szolgáltatások hitelesítést. Az alábbiak végrehajtásának módját ismerheti meg:
+Az oktatóanyag bemutatja, hogyan használható a Felügyeltszolgáltatás-identitás (MSI) egy Windows virtuális gép (VM) egy Azure Data Lake Store eléréséhez. Felügyelt Szolgáltatásidentitások Azure automatikusan kezeli, és lehetővé teszi szolgáltatások, amelyek támogatják az Azure AD-hitelesítés, anélkül, hogy a hitelesítő adatok beszúrása a kódot a hitelesítéshez. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Virtuális gép Windows MSI engedélyezése 
-> * A virtuális gép hozzáférési jogot az Azure Data Lake Store
-> * Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és az Azure Data Lake Store hozzáférhetne
+> * Egy Windows virtuális gép az MSI engedélyezéséhez 
+> * A virtuális gép hozzáférést adni egy Azure Data Lake Store
+> * A virtuális gép identitásának használatával hozzáférési jogkivonatot kapjon, és használhatja azokat egy Azure Data Lake Store eléréséhez
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,88 +44,88 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
 
-Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet.  A meglévő virtuális MSI is engedélyezheti.
+Ebben az oktatóanyagban létrehozunk egy új Windows virtuális Gépet.  A meglévő virtuális gép MSI is engedélyezheti.
 
-1. Kattintson a **hozzon létre egy erőforrást** az Azure portál bal felső sarkában.
+1. Kattintson a **erőforrás létrehozása** a az Azure portal bal felső sarkában.
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
-3. Adja meg a virtuális gép adatait. A **felhasználónév** és **jelszó** létrehozott itt van a hitelesítő adatok használatával jelentkezzen be a virtuális gép.
-4. Válassza ki a megfelelő **előfizetés** a virtuális gép meg a legördülő listában.
-5. Jelölje be egy új **erőforráscsoport** , amelyen a virtuális gép létrehozásához, **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
-6. Adja meg a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A beállítások lapon hagyja az alapértelmezett beállításokat, majd kattintson **OK**.
+3. Adja meg a virtuális gép adatait. A **felhasználónév** és **jelszó** létrehozott itt van a hitelesítő adatok használatával jelentkezzen be a virtuális gépet.
+4. Válassza ki a megfelelő **előfizetés** a virtuális gép a legördülő listában.
+5. Jelölje be egy új **erőforráscsoport** , amelyben a virtuális gép létrehozásához, válassza ki a **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
+6. Válassza ki a méretet a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A beállítások oldalon hagyja változatlanul az alapértelmezett beállításokat, majd kattintson **OK**.
 
-   ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+   ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése 
+## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen az MSI engedélyezéséhez 
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. MSI engedélyezése közli az Azure-hoz létre egy felügyelt a virtuális gép számára. A színfalak MSI engedélyezése két dolgot eredményez: az MSI-Virtuálisgép-bővítmény a virtuális Gépet telepít, és lehetővé teszi, hogy az Azure Resource Manager MSI.
+Virtuális gép MSI lehetővé teszi, hogy a hozzáférési tokenek beszerzése az Azure ad-ből anélkül, hogy hitelesítő adatok üzembe a kódot kellene. MSI engedélyezéséhez jelzi az Azure a virtuális gép létrehozása egy felügyelt identitás. Valójában MSI engedélyezéséhez két dolgot eredményez: a virtuális Gépen az MSI-Virtuálisgép-bővítmény telepíti, és lehetővé teszi, hogy az Azure Resource Manager MSI.
 
-1. Válassza ki a **virtuális gép** , hogy szeretné-e engedélyezze MSI-t.  
+1. Válassza ki a **virtuális gép** , hogy szeretné-e az MSI engedélyezéséhez.  
 2. A bal oldali navigációs sávon kattintson **konfigurációs**. 
-3. Látni **Szolgáltatásidentitás felügyelt**. Regisztrálja, és engedélyezze a MSI-t, jelölje be **Igen**, ha szeretné letiltani, válassza a nem. 
+3. Látja **Felügyeltszolgáltatás-identitás**. Regisztráljon, és az MSI engedélyezéséhez, válassza ki a **Igen**, ha szeretné letiltani, válassza a nem. 
 4. Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.  
-   ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Ha szeretné ellenőrizni, és a virtuális gép mely bővítmények ellenőrizze, kattintson a **bővítmények**. Ha MSI engedélyezve van, majd **ManagedIdentityExtensionforWindows** listájában jelenik meg.
+5. Ha szeretné ellenőrizni, és a virtuális gépen ellenőrizze, hogy mely bővítmények, kattintson a **bővítmények**. Ha az MSI engedélyezve van, majd **ManagedIdentityExtensionforWindows** megjelenik a listában.
 
-   ![Kép helyettesítő szövege](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+   ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
-## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>A virtuális gép hozzáférési jogot az Azure Data Lake Store
+## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>A virtuális gép hozzáférést biztosítani az Azure Data Lake Store
 
-Most is a virtuális gép hozzáférést a fájlokhoz és mappákhoz az az Azure Data Lake Store.  Ebben a lépésben egy meglévő Data Lake Store használatára, vagy hozzon létre egy újat.  Hozzon létre egy új Data Lake Store az Azure portál használatával, kövesse a [Azure Data Lake Store gyors üzembe helyezés](~/articles/data-lake-store/data-lake-store-get-started-portal.md). Is vannak, amelyek az Azure CLI és az Azure PowerShell quickstarts a [Azure Data Lake Store-dokumentáció](~/articles/data-lake-store/data-lake-store-overview.md).
+Most már képes a virtuális gép hozzáférést a fájlokhoz és mappákhoz az Azure Data Lake Store a.  Ebben a lépésben egy meglévő Data Lake Store használata, vagy hozzon létre egy újat.  Hozzon létre egy új Data Lake Store az Azure portal használatával, kövesse a [Azure Data Lake Store a rövid útmutató](~/articles/data-lake-store/data-lake-store-get-started-portal.md). Még nincsenek rövid útmutatók, amelyek használják az Azure CLI-vel és az Azure PowerShell-lel a [Azure Data Lake Store dokumentációja](~/articles/data-lake-store/data-lake-store-overview.md).
 
-A Data Lake Store-ban hozzon létre egy új mappát, és engedélyt ad a virtuális gép MSI olvasási, írási és futtat fájlokat abban a mappában:
+A Data Lake Store a hozzon létre egy új mappát, és engedélyezi a virtuális gép MSI olvasási, írási és futtat fájlokat abban a mappában:
 
-1. Az Azure portálon kattintson **Data Lake Store** a bal oldali navigációs sáv.
-2. Kattintson a Data Lake Store az oktatóanyag használni kívánt.
-3. Kattintson a **adatkezelő** parancsra a parancssávon.
-4. A Data Lake Store gyökérmappájában van kiválasztva.  Kattintson a **hozzáférés** parancsra a parancssávon.
-5. Kattintson a **Hozzáadás** parancsra.  Az a **válasszon** mezőbe írja be például a virtuális gép neve **DevTestVM**.  Jelölje be a virtuális Gépet a keresési eredmények közül, majd kattintson a **válasszon**.
-6. Kattintson a **engedélyként válassza**.  Válassza ki **olvasási** és **Execute**, hozzáadása **Ez a mappa**, és adja hozzá **csak olyan hozzáférési engedélyek**.  Kattintson az **OK** gombra.  Az engedély sikeresen hozzá kell adni.
+1. Az Azure Portalon kattintson a **Data Lake Store** a bal oldali navigációs menüben.
+2. A Data Lake Store ehhez az oktatóanyaghoz használni kívánt gombra.
+3. Kattintson a **adatkezelő** a parancssávon.
+4. A Data Lake Store gyökérmappájában van kiválasztva.  Kattintson a **hozzáférés** a parancssávon.
+5. Kattintson a **Hozzáadás** parancsra.  Az a **kiválasztása** mezőbe írja be például a virtuális gép neve **DevTestVM**.  Jelölje be a virtuális gép a keresési eredmények között, majd kattintson a **kiválasztása**.
+6. Kattintson a **engedélyek kiválasztása**.  Válassza ki **olvasási** és **Execute**, hozzáadása **Ez a mappa**, és adja hozzá **csak egy engedéllyel**.  Kattintson az **OK** gombra.  Az engedély sikeresen fel kell venni.
 7. Zárja be a **hozzáférés** panelen.
-8. Ebben az oktatóanyagban hozzon létre egy új mappát.  Kattintson a **új mappa** a parancssávon, és adja meg az új mappa nevét, például **TestFolder**.  Kattintson az **OK** gombra.
-9. Kattintson a létrehozott mappát, majd **hozzáférés** parancsra a parancssávon.
-10. Hasonló a 5. lépésében kattintson a **hozzáadása**, a a **válassza** mezőben adja meg a virtuális gép nevét, válassza ki azt, és kattintson a **válassza**.
-11. Hasonló a 6. lépés: kattintson a **Select engedélyeket**, jelölje be **olvasási**, **írási**, és **Execute**, adja hozzá **mappa**, és adja hozzá **egy hozzáférési engedélybejegyzés és egy alapértelmezett engedélybejegyzés**.  Kattintson az **OK** gombra.  Az engedély sikeresen hozzá kell adni.
+8. A jelen oktatóanyag esetében hozzon létre egy új mappát.  Kattintson a **új mappa** a parancssávon, és adja meg az új mappa nevét, például **TestFolder**.  Kattintson az **OK** gombra.
+9. Kattintson a létrehozott mappát, majd kattintson a **hozzáférés** a parancssávon.
+10. Hasonló a 5. lépésében kattintson a **Hozzáadás**, a a **kiválasztása** mezőben adja meg a virtuális gép nevét, válasszon ki, és kattintson **kiválasztása**.
+11. Hasonló a 6. lépés: kattintson a **engedélyek kiválasztása**, jelölje be **olvasási**, **írási**, és **Execute**, hozzá **mappa**, és adja hozzá **hozzáférési engedély bejegyzés és alapértelmezett engedély bejegyzés**.  Kattintson az **OK** gombra.  Az engedély sikeresen fel kell venni.
 
-A virtuális gép MSI most elvégezhetnek fájlokon létrehozott mappába.  A Data Lake Store elérését kezeléséről további információt a cikk elolvasása a [hozzáférés-vezérlés a Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).
+A virtuális gép MSI most már elvégezheti a fájlok minden művelet a létrehozott mappába.  A Data Lake Store, a hozzáférés kezeléséről további információt Ez a cikk a [hozzáférés-vezérlés a Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).
 
-## <a name="get-an-access-token-using-the-vm-msi-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Szereznie egy hozzáférési jogkivonatot, a virtuális gép MSI-fájl használatával, és használja az Azure Data Lake Store-fájlrendszer hívása
+## <a name="get-an-access-token-using-the-vm-msi-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>A virtuális gép MSI használata hozzáférési jogkivonatot kapjon, és az Azure Data Lake Store fájlrendszer meghívására
 
-Azure Data Lake Store natív módon támogatja az Azure AD hitelesítési, így közvetlenül elfogadása jogkivonatot kapott MSI-fájl használatával.  A Data Lake Store-fájlrendszer felé történő hitelesítésre küldése az Azure AD ki a Data Lake Store filesystem "Tulajdonosi < ACCESS_TOKEN_VALUE >" formátumú az Authorization fejlécet a végpont a hozzáférési tokent.  Az Azure AD-alapú hitelesítés Data Lake Store-támogatással kapcsolatos további tudnivalókért olvassa el a [hitelesítési a Data Lake Store az Azure Active Directoryval](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)
+Az Azure Data Lake Store natív módon támogatja az Azure AD-hitelesítést, így közvetlenül fogadja a hozzáférési jogkivonatok beszerezni az MSI használatával.  A Data Lake Store fájlrendszer hitelesítésre küldeni a Data Lake Store fájlrendszer-végpontra, az engedélyeztetési fejléc a következő formátumban: "< ACCESS_TOKEN_VALUE > tulajdonosi" az Azure AD által kiállított hozzáférési jogkivonat.  Az Azure AD-hitelesítés a Data Lake Store-támogatással kapcsolatos további tudnivalókért olvassa el a [hitelesítés a Data Lake Store az Azure Active Directoryval](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)
 
 > [!NOTE]
-> A Data Lake Store-fájlrendszer ügyfél SDK-k még nem támogatják a felügyelt szolgáltatás identitásának.  Ez az oktatóanyag frissítve lesz, ha támogatja az SDK-val.
+> A Data Lake Store-fájlrendszer ügyféloldali SDK-k még nem támogatják a Felügyeltszolgáltatás-identitást.  Ebben az oktatóanyagban frissül a támogatási az SDK-val való felvételekor.
 
-Ebben az oktatóanyagban bejelentkezik a Data Lake Store-fájlrendszer REST API REST ellenőrizze a PowerShell használatával kéri. A virtuális gép MSI használnak a hitelesítéshez, meg kell a kéréseket a virtuális gépről.
+Ebben az oktatóanyagban hitelesítést a REST API, PowerShell-lel, hogy a REST-kérelmek a Data Lake Store-fájlrendszer. A virtuális gép MSI használata a hitelesítéshez, szüksége, hogy a kéréseket a virtuális gépről.
 
-1. A portálon lépjen a **virtuális gépek**, nyissa meg a Windows virtuális gépre, és a a **áttekintése** kattintson **Connect**.
-2. Adja meg a **felhasználónév** és **jelszó** számára, amely hozzá van, a Windows virtuális gép létrehozása után. 
-3. Most, hogy létrehozott egy **távoli asztali kapcsolat** nyissa meg a virtuális gép **PowerShell** a távoli munkamenet. 
-4. A PowerShell használatával `Invoke-WebRequest`, indítson egy lekérdezést a helyi MSI-végpont az Azure Data Lake Store megszerezni az olyan hozzáférési jogkivonatot.  Az erőforrás-azonosító a Data Lake Store "https://datalake.azure.net/".  A Data Lake nem az erőforrás-azonosító a pontos egyezés, és a záró perjelet fontos.
+1. A portálon lépjen a **virtuális gépek**, lépjen a Windows virtuális gépre, és a a **áttekintése** kattintson **Connect**.
+2. Adja meg a **felhasználónév** és **jelszó** számára, amelyhez hozzáadta a Windows virtuális gép létrehozásakor. 
+3. Most, hogy létrehozott egy **távoli asztali kapcsolat** nyissa meg a virtuális géppel **PowerShell** a távoli munkamenet. 
+4. A PowerShell-lel `Invoke-WebRequest`, indítson egy a helyi MSI-végpontot a hozzáférési jogkivonat beszerzése az Azure Data Lake Store.  A Data Lake Store az erőforrás-azonosító "https://datalake.azure.net/".  A Data Lake nem pontosan egyezik az erőforrás-azonosítója, és a záró perjellel fontos.
 
    ```powershell
    $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://datalake.azure.net/"} -Headers @{Metadata="true"}
    ```
     
-   A válasz egy JSON-objektumból átalakítása egy PowerShell-objektum. 
+   A válasz egy JSON-objektumból átalakítása egy PowerShell-objektumot. 
     
    ```powershell
    $content = $response.Content | ConvertFrom-Json
    ```
 
-   Bontsa ki a hozzáférési jogkivonat a választ.
+   Bontsa ki a hozzáférési jogkivonatot a válaszból.
     
    ```powershell
    $AccessToken = $content.access_token
    ```
 
-5. PowerShell "Invoke-WebRequest" használ, indítson egy lekérdezést a Data Lake Store REST-végpont a gyökérmappában található mappák listázásához.  Ez egyszerű módja ellenőrizze, hogy minden helyesen van-e állítva.  Fontos, a "Tulajdonos" karakterlánc a Authorization fejlécet tartalmaz egy nagy "B".  A Data Lake Store a neve található a **áttekintése** szakasza a Data Lake Store panelen az Azure portálon.
+5. Használja a PowerShell "Invoke-WebRequest", indítson egy a Data Lake Store REST-végpont a gyökérmappában található mappák listáját.  Ez az egyik egyszerű módja, ellenőrizze, hogy minden helyesen van-e beállítva.  Fontos, az engedélyezési fejléc a "Tulajdonos" string "B" változtatáshoz rendelkezik.  A Data Lake Store a neve annak a **áttekintése** szakasz a Data Lake Store panel az Azure Portalon.
 
    ```powershell
    Invoke-WebRequest -Uri https://<YOUR_ADLS_NAME>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS -Headers @{Authorization="Bearer $AccessToken"}
    ```
 
-   A sikeres válasz néz ki:
+   A sikeres válasz a következőhöz hasonló:
 
    ```powershell
    StatusCode        : 200
@@ -148,19 +148,19 @@ Ebben az oktatóanyagban bejelentkezik a Data Lake Store-fájlrendszer REST API 
    RawContentLength  : 556
    ```
 
-6. Most megpróbálhatja, a fájl feltöltése a Data Lake Store.  Először hozzon létre a fájlt a feltöltéshez.
+6. Most kipróbálhatja, ha fájlt tölt fel a Data Lake Store.  Először hozzon létre egy fájlt a feltöltéshez.
 
    ```powershell
    echo "Test file." > Test1.txt
    ```
 
-7. A PowerShell használatával `Invoke-WebRequest`, indítson egy lekérdezést a Data Lake Store REST-végpont lehet feltölteni a fájlt a korábban létrehozott mappába.  A kérelem időt vesz igénybe, két lépésből áll.  Az első lépésben indítson egy lekérdezést, és ahol fel kell tölteni a fájlt a következő URL beolvasása.  A második lépésben a fájl ténylegesen feltöltése.  Fontos, hogy állítsa be a mappa nevét és a fájl megfelelően, ha különböző értékekkel ebben az oktatóanyagban használt. 
+7. A PowerShell-lel `Invoke-WebRequest`, indítson egy, a korábban létrehozott mappába töltse fel a fájlt a Data Lake Store REST-végpont.  A kérelem két lépést tart.  Az első lépésben kérés, és hol kell feltölteni a fájlt egy átirányítási beolvasása.  A második lépésben ténylegesen feltöltheti a fájlt.  Állítsa be annak a mappának a nevét, és megfelelően fájlt, ha ebben az oktatóanyagban használt különböző értékeket, mint a vágólapra. 
 
    ```powershell
    $HdfsRedirectResponse = Invoke-WebRequest -Uri https://<YOUR_ADLS_NAME>.azuredatalakestore.net/webhdfs/v1/TestFolder/Test1.txt?op=CREATE -Method PUT -Headers @{Authorization="Bearer $AccessToken"} -Infile Test1.txt -MaximumRedirection 0
    ```
 
-   Ha nézze meg a értékének `$HdfsRedirectResponse` azt a következő válasz hasonlóan kell kinéznie:
+   Nézze meg az értéket, ha `$HdfsRedirectResponse` a következő választ hasonlóan kell kinéznie:
 
    ```powershell
    PS C:\> $HdfsRedirectResponse
@@ -180,13 +180,13 @@ Ebben az oktatóanyagban bejelentkezik a Data Lake Store-fájlrendszer REST API 
    RawContentLength  : 0
    ```
 
-   A feltöltés kérelem küldésével átirányítási végpont:
+   A feltöltés egy kérést küld az átirányítási végpont:
 
    ```powershell
    Invoke-WebRequest -Uri $HdfsRedirectResponse.Headers.Location -Method PUT -Headers @{Authorization="Bearer $AccessToken"} -Infile Test1.txt -MaximumRedirection 0
    ```
 
-   A sikeres válasz megjelenését, például:
+   A sikeres válasz néz ki:
 
    ```powershell
    StatusCode        : 201
@@ -205,16 +205,16 @@ Ebben az oktatóanyagban bejelentkezik a Data Lake Store-fájlrendszer REST API 
    RawContentLength  : 0
    ```
 
-Más Data Lake Store-fájlrendszer API-k fűzze hozzá a fájlokhoz használ, töltse le a fájlokat, és több.
+Egyéb Data Lake Store fájlrendszer API-k fűzze hozzá a fájlokhoz használja, töltse le a fájlokat, és több.
 
-Gratulálunk!  A Data Lake Store-fájlrendszer használatával egy virtuális gép MSI már hitelesítve.
+Gratulálunk!  Virtuális gép MSI használata a Data Lake Store-fájlrendszer már hitelesítve.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](msi-overview.md).
-- A felügyeleti műveletek Data Lake Store az Azure Resource Managert használja.  További információk a virtuális gép MSI hitelesítésére az erőforrás-kezelő használatával, [egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) használatával férjenek hozzá a Resource Manager](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md).
-- További információ [Azure Active Directory használatával a Data Lake Store hitelesítési](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
-- További információ [fájlrendszer-műveleteket a Azure Data Lake Store REST API használatával](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) vagy a [WebHDFS fájlrendszer API-k](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis).
-- További információ [hozzáférés-vezérlés a Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).
+- MSI áttekintését lásd: [Felügyeltszolgáltatás-identitás – áttekintés](msi-overview.md).
+- A felügyeleti műveletek Data Lake Store az Azure Resource Managert használja.  További információk a virtuális gép MSI használata a hitelesítést a Resource Managerhez, [egy Linux rendszerű virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata a Resource Manager eléréséhez](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md).
+- Tudjon meg többet [hitelesítés a Data Lake Store az Azure Active Directoryval](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
+- Tudjon meg többet [fájlrendszerműveletek az Azure Data Lake Store REST API-val](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) vagy a [WebHDFS FileSystem API-k](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis).
+- Tudjon meg többet [hozzáférés-vezérlés a Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.

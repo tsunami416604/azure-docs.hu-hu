@@ -11,12 +11,12 @@
   items:
     - name: Függvény létrehozása – portál
       href: functions-create-first-azure-function.md
-    - name: Függvény létrehozása – Azure CLI
-      href: functions-create-first-azure-function-azure-cli.md
     - name: Függvény létrehozása – Visual Studio
       href: functions-create-your-first-function-visual-studio.md
     - name: Függvény létrehozása – Java/Maven
       href: functions-create-first-java-maven.md
+    - name: Függvény létrehozása – Azure CLI
+      href: functions-create-first-azure-function-azure-cli.md
     - name: Függvény létrehozása – Linux
       href: functions-create-first-azure-function-azure-cli-linux.md
     - name: Eseményindítók
@@ -97,6 +97,8 @@
       items:
         - name: Áttekintés
           href: durable-functions-overview.md
+        - name: Függvények típusai és funkciói
+          href: durable-functions-types-features-overview.md
         - name: Kötések
           href: durable-functions-bindings.md
         - name: Ellenőrzőpont és visszajátszás

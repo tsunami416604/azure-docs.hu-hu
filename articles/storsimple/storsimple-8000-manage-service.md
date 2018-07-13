@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban a StorSimple Device Manager szolgáltatás üzembe helyezése |} Microsoft Docs
-description: Azt ismerteti, hogyan hozhat létre, és törölje a StorSimple Device Manager szolgáltatást, az Azure portálon, és a szolgáltatás regisztrációs kulcsának kezelését ismerteti.
+title: Az Azure-ban a StorSimple-Eszközkezelő szolgáltatás üzembe helyezése |} A Microsoft Docs
+description: Azt ismerteti, hogyan hozhat létre, és az Azure Portalon a StorSimple-Eszközkezelő szolgáltatás törlése, és a szolgáltatás regisztrációs kulcsának kezelését ismerteti.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,201 +15,201 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012743"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38701920"
 ---
-# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>A StorSimple Device Manager szolgáltatás a StorSimple 8000 sorozat eszközeire üzembe helyezése
+# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>A StorSimple 8000 sorozatú eszközök StorSimple-Eszközkezelő szolgáltatás üzembe helyezése
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Device Manager szolgáltatás a Microsoft Azure-ban és több StorSimple eszközt csatlakozik. Miután létrehozta a szolgáltatást, ezáltal az adminisztratív terhek minimalizálása egységes, központi helyről, a StorSimple eszköz Manager szolgáltatáshoz csatlakozó eszközök kezelésére használhatja.
+A StorSimple-Eszközkezelő szolgáltatás a Microsoft Azure-ban fut, és több StorSimple-eszközhöz csatlakozik. Miután létrehozta a szolgáltatást, használhatja az egységes, központi helyről, a StorSimple-Eszközkezelő szolgáltatás csatlakozó eszközök kezelésére, ezáltal minimálisra csökkentik az adminisztratív terhek.
 
-Ez az oktatóanyag azt ismerteti, hogyan létrehozása, törlés, a szolgáltatás és a szolgáltatás regisztrációs kulcsának kezelése. Az ebben a cikkben szereplő információ is alkalmazható, csak a StorSimple 8000 sorozat eszközeire. További információ a StorSimple virtuális tömbök Ugrás [a StorSimple virtuális tömb StorSimple Device Manager szolgáltatás telepítése](storsimple-virtual-array-manage-service.md).
+Ebben az oktatóanyagban a létrehozás, törlés, a szolgáltatás és a szolgáltatás regisztrációs kulcsának kezelése a szükséges lépéseket ismerteti. Ebben a cikkben található információk csak a StorSimple 8000 sorozat eszközeire vonatkozó. További információ a StorSimple Virtual Arrayt Ugrás [a StorSimple Virtual Array egy StorSimple-Eszközkezelő szolgáltatás üzembe helyezése](storsimple-virtual-array-manage-service.md).
 
 > [!NOTE]
-> -  Az Azure-portálon 5.0-s vagy újabb frissítés rendszerű eszközöket támogatja. Ha az eszköz nem naprakész, 5. frissítésétől azonnal kell telepíteni. További információkért látogasson el [telepítése frissítés 5](storsimple-8000-install-update-5.md). 
-> - A StorSimple felhő készülék (8010-es/8020-as modell) használata, a felhő készülék nem frissíthető. Hozzon létre egy új felhőalapú készülék frissítés 5.0, és ezután átveheti a létrehozott új felhő készülék szoftver legújabb verzióját használja. 
-> - Minden eszköz 4.0-s vagy régebbi verziót futtató a frissítés fog tapasztalni [felügyeleti funkció csökkenteni](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
+> -  Az Azure Portalon 5.0-s vagy újabb frissítést futtató eszközöket támogatja. Ha az eszköz nem naprakész, 5. frissítés azonnal kell telepíteni. További információért ugorjon [telepítése Update 5](storsimple-8000-install-update-5.md). 
+> - Ha a StorSimple Cloud Appliance (8010/8020) használ, a felhőalapú berendezés nem frissíthető. A szoftverek legújabb verziójának használatával hozzon létre egy új felhőalapú berendezést az 5.0-s frissítést, és ezután átadja a feladatokat a létrehozott új felhőalapú berendezést. 
+> - Minden eszköz 4.0-s vagy régebbi frissítést futtató tapasztalható [kezelőfunkciók csökkentett](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
 
 ## <a name="create-a-service"></a>Szolgáltatás létrehozása
-Hozzon létre a StorSimple Device Manager szolgáltatást, akkor kell rendelkeznie:
+A StorSimple-Eszközkezelő szolgáltatás létrehozásához szüksége lesz:
 
 * Nagyvállalati szerződéssel rendelkező előfizetés
 * Egy aktív Microsoft Azure storage-fiók
-* A kezelési használt számlázási adatokat
+* A számlázási adatokat, amely hozzáférés-kezelés szolgál
 
-Csak egy nagyvállalati szerződéssel rendelkező előfizetések engedélyezettek. Választhatja azt is, a szolgáltatás létrehozásakor egy alapértelmezett tárfiók létrehozásához.
+Csak nagyvállalati szerződéssel rendelkező előfizetések engedélyezettek. Hozzon létre egy alapértelmezett tárfiókot, a szolgáltatások létrehozásakor, azt is beállíthatja.
 
-Egyetlen szolgáltatás több eszközöket kezelheti. Azonban egy eszköz nem terjedhetnek ki több szolgáltatásra. A nagyvállalatok különböző előfizetések, szervezetek, vagy még a központi telepítési helyek több szolgáltatás példánya is lehet. 
+Egy egyetlen szolgáltatással kezelheti a több eszközre. Azonban egy eszköz nem ívelhet át több szolgáltatást. Nagy vállalatok lehet együttműködni különböző előfizetésekben találhatóak, a szervezeteknek, illetve a telepítési helyek még több szolgáltatáspéldány. 
 
 > [!NOTE]
-> Kezelheti a StorSimple 8000 sorozat eszközeire és a StorSimple virtuális tömbök StorSimple Device Manager szolgáltatás külön példányát kell.
+> Kezelheti a StorSimple 8000 sorozatú eszközök és virtuális StorSimple-tömbök StorSimple-Eszközkezelő szolgáltatás külön példányát kell.
 
-A következő lépésekkel szolgáltatás létrehozása.
+A következő lépésekkel létrehoz egy szolgáltatást.
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-8000-create-new-service.md)]
 
 
-Minden egyes StorSimple Device Manager szolgáltatás található a következő attribútumokat:
+Minden egyes StorSimple-Eszközkezelő szolgáltatás létezik a következő attribútumokat:
 
-* **Név** – a nevét, a StorSimple eszköz Manager szolgáltatás rendelt létrehozásakor. **A szolgáltatás neve nem lehet módosítani, a szolgáltatás létrehozása után. Ez akkor is igaz, az egyéb entitások, például az eszközök, a kötetek, a kötettárolók és a biztonsági mentési házirendek, amelyek nem nevezhető át az Azure portálon.**
+* **Név** – a nevét, amely hozzá lett rendelve a StorSimple-Eszközkezelő szolgáltatás létrehozásakor. **A szolgáltatás neve nem lehet módosítani, a szolgáltatás létrehozása után. Ez a is egyéb entitások, például az eszközök, kötetek, kötettárolók és biztonsági mentési házirendeket, amelyek nem nevezhető át az Azure Portalon.**
 * **Állapot** – a szolgáltatás, amely lehet állapotának **aktív**, **létrehozása**, vagy **Online**.
-* **Hely** – az a földrajzi hely, amely a StorSimple eszköz telepítve lesz.
-* **Előfizetés** – a számlázási előfizetés, amely kapcsolódik a szolgáltatáshoz.
+* **Hely** – az a földrajzi hely, amelyben a StorSimple eszköz üzembe helyezve.
+* **Előfizetés** – a számlázási előfizetés, amely a szolgáltatás társítva van.
 
 ## <a name="delete-a-service"></a>A szolgáltatás törlése
 
-A szolgáltatás törlése előtt győződjön meg arról, hogy nem csatlakoztatott eszközök-k használják. Ha a szolgáltatás használja, kapcsolja ki a csatlakoztatott eszközök. Az inaktiválás művelet-kiszolgálón az eszköz és a szolgáltatás közötti kapcsolat, de a felhőben az eszköz adatok megőrzése érdekében.
+A szolgáltatás törléséhez előtt ellenőrizze, hogy nincsenek csatlakoztatott eszközök használják. Ha a szolgáltatás használja, kapcsolja ki a csatlakoztatott eszközök. Az inaktiválás műveletet az eszköz és a szolgáltatás közötti kapcsolat-kiszolgálóhoz, de megőrizni az eszközön lévő adatokat a felhőben.
 
 > [!IMPORTANT]
-> Szolgáltatás törlését követően a művelet nem vonható vissza. Minden olyan eszköz, amely a szolgáltatás használatával lett kell állítani a gyári beállításokat egy másik szolgáltatás használata előtt. Ebben a forgatókönyvben a helyi adatok az eszköz, valamint a konfigurációs elvész.
+> A szolgáltatás törlését követően a művelet nem vonható vissza. A szolgáltatás használatával lett minden olyan eszköz gyári alaphelyzetbe kell állítani ahhoz, hogy egy másik szolgáltatást kell használni kell. Ebben a forgatókönyvben a helyi adatokat az eszköz, valamint a konfigurációt, az elvész.
 
-A következő lépésekkel törölni a szolgáltatást.
+A következő lépésekkel törölheti a szolgáltatást.
 
-### <a name="to-delete-a-service"></a>A szolgáltatás törlése
+### <a name="to-delete-a-service"></a>Szolgáltatás törlése
 
-1. Keresse meg a törölni kívánt szolgáltatást. Kattintson a **erőforrások** ikon és majd adjon meg a megfelelő feltételek kereséséhez. A keresési eredmények között kattintson a törölni kívánt szolgáltatást.
+1. Keresse meg a törölni kívánt szolgáltatást. Kattintson a **erőforrások** ikon és a megfelelő használati kereséséhez, majd bemeneti. A keresési eredmények között kattintson a törölni kívánt szolgáltatást.
 
-    ![Törölje a keresési szolgáltatást](./media/storsimple-8000-manage-service/deletessdevman1.png)
+    ![Keresési szolgáltatás törlése](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. Ezzel megnyitná a StorSimple Device Manager szolgáltatás panelre. Kattintson a **Törlés** gombra.
+2. Ekkor megjelenik a StorSimple-Eszközkezelő szolgáltatás paneljén. Kattintson a **Törlés** gombra.
 
     ![Szolgáltatás törlése](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
-3. Kattintson a **Igen** a megerősítési értesítés. A szolgáltatás a törlendő néhány percig is eltarthat.
+3. Kattintson a **Igen** a a megerősítési értesítés. Eltarthat néhány percig, a szolgáltatás törlését.
 
     ![Törlés megerősítése](./media/storsimple-8000-manage-service/deletessdevman3.png)
 
 ## <a name="get-the-service-registration-key"></a>Szolgáltatásregisztrációs kulcs lekérése
 
-Miután sikeresen létrehozott egy szolgáltatást, szüksége lesz a StorSimple eszköz regisztrálása a szolgáltatásban. Az első StorSimple eszköz regisztrálása, szüksége lesz a szolgáltatás regisztrációs kulcsának. További eszközök regisztrálása egy meglévő StorSimple szolgáltatásban, mind a regisztrációs kulcs, és a szolgáltatásadat-titkosítási kulcs (amely a regisztráció során van az első eszközön létre) van szükség. A szolgáltatásadat-titkosítási kulcs kapcsolatos további információkért lásd: [StorSimple biztonsági](storsimple-8000-security.md). A regisztrációs kulcs kaphat elérése **kulcsok** a StorSimple Device Manager panelen.
+Miután sikeresen létrehozott egy szolgáltatás, szüksége lesz a StorSimple-eszköz regisztrálása a szolgáltatással. Az első StorSimple eszköz regisztrálásához, szüksége lesz a szolgáltatás regisztrációs kulcsát. További eszközöket regisztrálni egy meglévő StorSimple szolgáltatásban, szüksége van a regisztráció és a szolgáltatásadat-titkosítási kulcs (amely jön létre az első eszköz regisztrációja során). A szolgáltatásadat-titkosítási kulcs kapcsolatos további információkért lásd: [StorSimple biztonsági](storsimple-8000-security.md). Megtekintheti a regisztrációs kulcs elérésével **kulcsok** a StorSimple-Eszközkezelő panel.
 
-A következő lépésekkel Szolgáltatásregisztrációs kulcs lekérése.
+A következő lépésekkel kérnie a Szolgáltatásregisztrációs kulcsot.
 
 [!INCLUDE [storsimple-8000-get-service-registration-key](../../includes/storsimple-8000-get-service-registration-key.md)]
 
-A szolgáltatás regisztrációs kulcsának tartsa biztonságos helyen. Ezt a kulcsot, valamint a szolgáltatásadat-titkosítási kulcs, ez a szolgáltatás további eszközöket regisztrálni kell. Miután beszerezte a szolgáltatás regisztrációs kulcsának, konfigurálnia kell az eszköz StorSimple felület a Windows PowerShell segítségével.
+A szolgáltatás regisztrációs kulcsával tartsa biztonságos helyen. Ezt a kulcsot, valamint a szolgáltatásadat-titkosítási kulcs, ez a szolgáltatás további eszközöket regisztrálni kell. Miután beszerezte a szolgáltatás regisztrációs kulcsával, konfigurálnia kell az eszközt a Windows Powershellen keresztül a StorSimple adapter.
 
-A regisztrációs kulcs használatával, lásd: [3. lépés: konfigurálja, és a Windows PowerShell segítségével az eszközt regisztrálni kell a StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+További információ a Szolgáltatásregisztrációs kulcs használatával: [3. lépés: eszköz konfigurálása és regisztrálása a Windows PowerShell storsimple-höz készült](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
 ## <a name="regenerate-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának újragenerálása
-Kell egy Szolgáltatásregisztrációs kulcs újbóli létrehozása, ha kulcs elforgatás végrehajtásához szükséges, vagy ha a szolgáltatás-rendszergazdák listája megváltozott. Amikor újragenerálja a kulcsot, az új kulccsal csak a következő eszközök regisztrálása. A már regisztrált eszközöket nem érinti ez a folyamat.
+A szolgáltatás regisztrációs kulcsának újragenerálása, ha kulcsrotálás végrehajtásához szükséges, vagy ha a szolgáltatás-rendszergazdák listája megváltozott kell. Amikor újragenerálja a kulcsot, akkor az új kulcs csak az azt követő eszközök regisztrálása szolgál. A már regisztrált eszközöket nem érinti ez a folyamat.
 
-A következő lépésekkel egy Szolgáltatásregisztrációs kulcs újragenerálása.
+Hajtsa végre az alábbi lépések végrehajtásával hozza létre újra a Szolgáltatásregisztrációs kulcs.
 
-### <a name="to-regenerate-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcs újragenerálásához
-1. Az a **StorSimple Device Manager** paneljén lépjen **felügyeleti &gt;**  **kulcsok**.
+### <a name="to-regenerate-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának újragenerálása
+1. Az a **StorSimple-Eszközkezelő** panelen lépjen a **felügyeleti &gt;**  **kulcsok**.
     
     ![Kulcsok panel](./media/storsimple-8000-manage-service/regenregkey2.png)
 
-2. Az a **kulcsok** panelen kattintson a **újragenerálja**.
+2. Az a **kulcsok** panelen kattintson a **újragenerálása**.
 
-    ![Kattintson a újragenerálása](./media/storsimple-8000-manage-service/regenregkey3.png)
-3. Az a **Szolgáltatásregisztrációs kulcs újragenerálása** panelt, tekintse át a művelet megadása kötelező, ha a kulcsok újragenerálása vannak. Minden a további regisztrált eszközök ezzel a szolgáltatással az új regisztrációs kulcsot használja. Kattintson a **újragenerálja** megerősítéséhez. Értesítés jelenik meg a újragenerálása befejeződése után.
+    ![Kattintson a fiókkulcs újbóli létrehozása](./media/storsimple-8000-manage-service/regenregkey3.png)
+3. Az a **Szolgáltatásregisztrációs kulcs újragenerálása** panelen, és tekintse át a művelet kötelező, ha a kulcsok újbóli. Az ezt követő eszközök, amelyek regisztrálva vannak a szolgáltatás az új regisztrációs kulcsot használja. Kattintson a **újragenerálása** megerősítéséhez. Az újragenerálás befejezése után értesítést kap.
 
-    ![Regenerate megerősítése](./media/storsimple-8000-manage-service/regenregkey4.png)
+    ![Erősítse meg a fiókkulcs újbóli létrehozása](./media/storsimple-8000-manage-service/regenregkey4.png)
 
-4. Egy új Szolgáltatásregisztrációs kulcs jelenik meg.
+4. Megjelenik egy új regisztrációs kulcsot.
 
-5. Másolja ki ezt a kulcsot, és mentse az új eszköz regisztrálása ezt a szolgáltatást.
+5. Másolja ezt a kulcsot, és mentse az új eszközök regisztrálásához a szolgáltatásban.
 
 
 
 ## <a name="change-the-service-data-encryption-key"></a>A szolgáltatásadat-titkosítási kulcs módosítása
-Szolgáltatás adattitkosítási kulcsokat bizalmas felhasználói adatok, például a tárfiók hitelesítő adatait, a StorSimple eszközt a StorSimple Manager szolgáltatás a küldött titkosításához használt. Ezek a kulcsok rendszeresen módosítható, ha az IT-szervezet egy kulcs Elforgatás szabályzattal rendelkezik a tárolóeszközök kell. A kulcs változási folyamat kis mértékben eltérhet attól függően, hogy van egy egyetlen vagy több eszközön, a StorSimple Manager szolgáltatás kezeli. További információkért látogasson el [StorSimple biztonság és adatvédelem](storsimple-8000-security.md).
+Szolgáltatási adatok titkosítási kulcsai titkosíthatja a bizalmas felhasználói adatok, például a tárfiók hitelesítő adatait, a StorSimple-eszközt a StorSimple Manager szolgáltatásból küldött szolgálnak. Ezek a kulcsok rendszeresen változnak, ha a munkahelye kulcsrotálás szabályzat a tárolóeszközök kell. Lehet, hogy a kulcs módosítása folyamat némileg eltérnek attól függően, hogy nincs egyetlen vagy több, a StorSimple Manager szolgáltatás által kezelt eszközök. További információért ugorjon [StorSimple biztonsági és adatvédelmi](storsimple-8000-security.md).
 
-A szolgáltatásadat-titkosítási kulcs módosítása egy 3 lépéses folyamat:
+A szolgáltatásadat-titkosítási kulcs módosítása – 3. lépés folyamat során a rendszer:
 
-1. Az Azure Resource Manager használatával a Windows PowerShell-parancsfájlok, engedélyezéséhez módosítsa a szolgáltatásadat-titkosítási kulcs az eszköz.
-2. A Windows PowerShell használatával a StorSimple, indítsa el a szolgáltatás titkosítási kulcs változását.
-3. Ha egynél több StorSimple eszközt, a más eszközökön a szolgáltatásadat-titkosítási kulcs frissítése
+1. Az Azure Resource Manager használatával a Windows PowerShell-parancsfájlok, engedélyezze egy eszközön módosítani a szolgáltatásadat-titkosítási kulcs.
+2. A szolgáltatási adatok titkosítási kulcsváltozás storsimple-höz készült Windows PowerShell használatával kezdeményeznek.
+3. Ha egynél több StorSimple-eszköz, frissítse a szolgáltatásadat-titkosítási kulcs az eszközökön.
 
-### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>1. lépés: A Windows PowerShell parancsfájl módosítása a szolgáltatásadat-titkosítási kulcs az eszköz hitelesítése
-Általában az eszköz-rendszergazdai kérni fogja, hogy a szolgáltatás-rendszergazda engedélyezi-e az eszközöket, hogy módosítsa a szolgáltatás adattitkosítási kulcsokat. A szolgáltatás-rendszergazda fog majd engedélyezni az eszközt, hogy a kulcs módosítása.
+### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>1. lépés: Használata Windows PowerShell-parancsprogram egy eszközön módosítani a szolgáltatásadat-titkosítási kulcs engedélyezése
+Általában az eszköz-rendszergazdai kérni fogja, hogy a szolgáltatás-rendszergazda engedélyezi-e az eszközöket, hogy a szolgáltatási adatok titkosítási kulcsainak módosítása. A szolgáltatás-rendszergazda segítségével hitelesíti majd módosíthatja a kulcsot az eszközön.
 
-Ebben a lépésben az Azure Resource Manager-alapú parancsfájl használatával történik. A szolgáltatás rendszergazda kiválaszthat olyan eszköz, amely jogosult engedéllyel. Az eszköz majd engedélyezve az szolgáltatás titkosítási kulcsváltozás folyamat elindításához. 
+Ebben a lépésben az Azure Resource Manager-alapú szkript használatával történik. A szolgáltatás rendszergazdája választhat, amely számára engedélyezni egy eszköz. Az eszköz ezután jogosult a szolgáltatási adatok titkosítási kulcsváltozás folyamat elindításához. 
 
-A parancsfájl használatával kapcsolatos további információkért látogasson el [engedélyezés-ServiceEncryptionRollover.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
+A parancsfájl használatával kapcsolatos további információkért látogasson el [engedélyezés – ServiceEncryptionRollover.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
 
-#### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>Mely eszközök is engedélyezni kell, hogy módosítsa a szolgáltatás adattitkosítási kulcsokat?
-Egy eszköz a következő feltételeknek kell megfelelnie, mielőtt szolgáltatás titkosítási kulcs adatváltozásokat kezdeményezésére is engedélyezhető:
+#### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>Mely eszközöket jogosult-e a szolgáltatási adatok titkosítási kulcsainak módosítása?
+Egy eszköz a következő feltételeknek kell megfelelnie, mielőtt kezdeményezheti a szolgáltatási adatok titkosítási kulcs módosításokat is engedélyezhető:
 
-* Lehet, hogy az eszköz online jogosult legyen a szolgáltatás adatokat titkosítási kulcsváltozás engedélyezése.
-* 30 perc elteltével újra ugyanarra az eszközre engedélyezhető, ha a kulcs változás nem lett inicializálva.
-* Egy másik eszközön, feltéve, hogy a kulcsváltozás nem kezdeményezte a korábban meghatalmazott eszköz engedélyezhető. Után az új eszköz engedélyezve van-e, a régi eszköz nem indítható el a módosítást.
-* Egy eszköz nem lehet engedélyezni, amíg folyamatban van az a szolgáltatás adattitkosítási kulcshoz kapcsolódó kulcsváltás.
-* Ha egyes a szolgáltatásban regisztrált eszközöket rendelkezik tanúsítványváltást a titkosítási míg mások számára nem engedélyezhető a eszköz. 
+* Az eszköz szolgáltatási adatok titkosítási kulcs módosítása engedélyezési jogosult legyen online állapotban kell lennie.
+* Engedélyezheti ugyanazon az eszközön újra 30 perc után, ha a kulcs módosítása nem lett inicializálva.
+* Engedélyezheti egy másik eszközön, feltéve, hogy a kulcs módosítása a korábban jogosult eszközre nem lett inicializálva. Miután az új eszköz engedélyezett, a régi eszköz a módosítás nem kezdeményezhető.
+* Egy eszköz nem lehet engedélyezni, amíg folyamatban van az alkalmatlanság a szolgáltatásadat-titkosítási kulcs.
+* Egy eszköz során néhány eszközt a szolgáltatásban regisztrált kell leváltani a titkosítást, míg mások nem engedélyezhető. 
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>2. lépés: Használja a Windows PowerShell-lel a szolgáltatás titkosítási kulcs változását kezdeményezése
-Ez a lépés StorSimple felületet a jogosult StorSimple eszközön a Windows PowerShell történik.
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>2. lépés: Használható Windows PowerShell-bővítménye kezdeményezheti a szolgáltatási adatok titkosítási kulcsváltozás
+Ez a lépés a Windows PowerShellben, az arra jogosult a StorSimple eszközön a StorSimple adapter történik.
 
 > [!NOTE]
-> Nincsenek műveletek végrehajtható az Azure-portálon a StorSimple Manager szolgáltatás a kulcshoz kapcsolódó kulcsváltás után befejezéséig.
+> Nincs művelet elvégezhető az Azure Portalon a StorSimple Manager szolgáltatás a kulcshoz kapcsolódó kulcsváltás befejeződéséig.
 
 
-Ha az eszköz soros konzoljához való csatlakozáshoz a Windows PowerShell-felületet használnak, a következő lépésekkel.
+Ha az eszköz soros konzoljához való csatlakozáshoz a Windows PowerShell felületet használ, hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-initiate-the-service-data-encryption-key-change"></a>A szolgáltatás titkosítási kulcs változását kezdeményezése
-1. A beállításnak 1 teljes hozzáféréssel rendelkező bejelentkezni.
+#### <a name="to-initiate-the-service-data-encryption-key-change"></a>A szolgáltatási adatok titkosítási kulcsváltozás kezdeményezése
+1. Jelentkezzen be a teljes körű hozzáféréssel az 1. lehetőséget válassza.
 2. A parancssorba írja be:
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
-3. Miután a parancsmag sikeresen befejeződött, kap egy új szolgáltatásadat-titkosítási kulcs. Másolja ki és mentse a kulcs használható a 3. lépésben a folyamat során. Ezt a kulcsot a StorSimple Manager szolgáltatásban regisztrált összes fennmaradó eszköz frissítéséhez használható.
+3. Miután a parancsmag sikeresen befejeződött, megjelenik egy új szolgáltatásadat-titkosítási kulcs. Másolja és mentse ezt a kulcsot használja a 3. lépésében ezt a folyamatot. Ezt a kulcsot a StorSimple Manager szolgáltatásban regisztrált összes többi eszköz frissítéséhez használható.
    
    > [!NOTE]
    > Ez a folyamat engedélyezése a StorSimple eszköz négy órán belül kell kezdeményezni.
    > 
    > 
    
-   Ez az új kulcs majd kerül a szolgáltatás kerül át a szolgáltatásban regisztrált összes eszközt. A szolgáltatás irányítópultján egy figyelmeztetés fog megjelenni. A szolgáltatás le fogja tiltani a regisztrált eszközökön a műveleteket, és az eszköz-rendszergazdai majd a szolgáltatásadat-titkosítási kulcs az egyéb eszközein futó frissítenie kell. Azonban az i/o műveletek (gazdagép adatokat küldeni a felhőben) fog nem működni.
+   Ez az új kulcs kell leküldeni a szolgáltatásban regisztrált összes eszközt, majd küldendő a szolgáltatást. A szolgáltatás irányítópultján egy figyelmeztetés fog megjelenni. A szolgáltatás le fogja tiltani, hogy a regisztrált eszközökön a műveleteket, és az eszköz-rendszergazdai majd a szolgáltatásadat-titkosítási kulcs az egyéb eszközein futó frissítenie kell. Azonban a i (a gazdagép a felhőbe történő adatküldés) nem megszakad.
    
-   Ha a szolgáltatáshoz regisztrált egyetlen eszközt, a helyettesítő folyamat befejeződött, és ugorjon a következő lépéssel. Ha a szolgáltatáshoz regisztrált több eszközön, ugorjon a 3.
+   Ha egy adott eszköz a szolgáltatáshoz regisztrált, a helyettesítő folyamat befejeződött, és továbbléphet a következő lépéssel. Ha a szolgáltatáshoz regisztrált több eszköze van, folytassa a 3. lépés.
 
-### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>3. lépés: A más StorSimple eszközökhöz a szolgáltatásadat-titkosítási kulcs frissítése
-A Windows PowerShell-felületet a StorSimple eszköz ezeket a lépéseket kell végrehajtani, ha több eszközt regisztrálni a StorSimple Manager szolgáltatásban. A 2. lépésben beszerzett kulcsot kell használni minden a fennmaradó StorSimple eszköz frissítése regisztrálni a StorSimple Manager szolgáltatással.
+### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>3. lépés: Frissítés a szolgáltatásadat-titkosítási kulcs a más StorSimple eszközökhöz
+A Windows PowerShell felületét a StorSimple eszköz ezeket a lépéseket kell végrehajtani, ha több eszközt regisztrálni a StorSimple Manager szolgáltatáshoz. A kulcs a 2. lépésben beszerzett kell használni minden a fennmaradó a StorSimple eszköz frissítése regisztrálva a StorSimple Manager szolgáltatásban.
 
-Frissítéséhez hajtsa végre a következő lépéseket a szolgáltatásadat-titkosítási az eszközön.
+A következő lépésekkel frissítse a szolgáltatásadat-titkosítási az eszközön.
 
-#### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>A fizikai eszközök a szolgáltatásadat-titkosítási kulcs frissítése
-1. Használja a Windows PowerShell-lel a konzolhoz való csatlakozáshoz. A beállításnak 1 teljes hozzáféréssel rendelkező bejelentkezni.
+#### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>A szolgáltatásadat-titkosítási kulcs fizikai eszközöknek a frissítéséhez
+1. Storsimple-höz készült Windows PowerShell használatával kapcsolódni a konzolhoz. Jelentkezzen be a teljes körű hozzáféréssel az 1. lehetőséget válassza.
 2. A parancssorba írja be:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. Adja meg a szolgáltatásadat-titkosítási kulcs beolvasott [2. lépés: használja a Windows PowerShell-lel kezdeményezheti a szolgáltatás titkosítási kulcs változását](#to-initiate-the-service-data-encryption-key-change).
+3. Adja meg a szolgáltatásadat-titkosítási kulcs beolvasott [2. lépés: használható Windows PowerShell-bővítménye kezdeményezheti a szolgáltatási adatok titkosítási kulcsváltozás](#to-initiate-the-service-data-encryption-key-change).
 
-#### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Az a 8010-es/8020-as modellt felhő készülékek a szolgáltatásadat-titkosítási kulcs frissítése
-1. Letöltési és telepítési [frissítés-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell-parancsfájlt. 
+#### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>A szolgáltatásadat-titkosítási kulcs az összes 8010/8020-as felhőalapú berendezések frissítése
+1. Letöltési és telepítési [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell-parancsfájlt. 
 2. Nyissa meg a Powershellt, és írja be a parancssorba:  `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
-Ezt a parancsfájlt biztosítja, hogy szolgáltatásadat-titkosítási kulcs az Eszközkezelőben a 8010-es/8020-as modellt felhő készülékek be van állítva.
+Ez a szkript biztosítja a szolgáltatásadat-titkosítási kulcs alatt az Eszközkezelő 8010/8020-as felhőalapú berendezések van beállítva.
 
-## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Támogatott műveletek előtt frissítés 5.0 verziót futtató eszközök
-Az Azure portálon csak a Update futtatása 5.0-s és újabb rendszer StorSimple-eszközöket támogatja. A régebbi verzióját futtató eszközök csak korlátozottan támogatják. Miután áttelepítette az Azure portálra, az alábbi táblázat segítségével milyen műveletek előtt frissítés 5.0 verziót futtató eszközökön támogatott.
+## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Támogatott műveletek az 5.0-s frissítéssel előtti verziót futtató eszközök
+Az Azure Portalon csak az 5.0-s vagy újabb frissítést futtató StorSimple-eszközök támogatottak. A régebbi verzióit futtató eszközök csak korlátozottan támogatják. Miután áttelepítette az Azure Portalon, az alábbi táblázat segítségével megismerheti, hogy mely műveletek 5.0-s frissítéssel előtti verziót futtató eszközök támogatottak.
 
 | Művelet                                                                                                                       | Támogatott      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | Eszköz regisztrálása                                                                                                               | Igen            |
-| Például az általános beállítások, a hálózati és a biztonság konfigurálása                                                                | Igen            |
+| Például az általános beállítások, a hálózat és a biztonság konfigurálása                                                                | Igen            |
 | Vizsgálat, töltse le és telepítse a frissítéseket                                                                                             | Igen            |
 | Eszköz inaktiválása                                                                                                               | Igen            |
 | Eszköz törlése                                                                                                                   | Igen            |
-| Létrehozása, módosítása és törlése a kötettároló                                                                                   | Nem             |
-| Létrehozása, módosítása és kötet törlése                                                                                             | Nem             |
-| Létrehozása, módosítása és törlése a biztonsági mentési házirend                                                                                      | Nem             |
+| Hozzon létre, módosítani és törölni a kötettárolót                                                                                   | Nem             |
+| Létrehozása, módosítása és a egy kötet törlése                                                                                             | Nem             |
+| Létrehozása, módosítása és a egy biztonsági mentési szabályzat törlése                                                                                      | Nem             |
 | Manuális biztonsági mentés készítése                                                                                                            | Nem             |
 | Ütemezett biztonsági mentés készítése                                                                                                         | Nem alkalmazható |
-| Állítsa vissza egy Fájljelző                                                                                                        | Nem             |
-| Klónozza a futtató eszközre, az Update 3.0-s és újabb verziók <br> A forráseszközt előtt frissítés 3.0-s verzióját futtatja.                                | Igen            |
-| Egy korábbi frissítés 3.0 verziók futtató eszközre klónozása                                                                          | Nem             |
-| Forrás eszközként feladatátvétel <br> (futtató eszközről verzióra való frissítés 3.0-t futtató eszközeiken előzetes frissítés 3.0-s és újabb verziók)                                                               | Igen            |
-| Cél eszközként feladatátvétel <br> (az Update 3.0 előtt szoftververziót futtató eszköz)                                                                                   | Nem             |
+| Visszaállítás a biztonságimásolat-készlet                                                                                                        | Nem             |
+| Az Update 3.0-s és újabb verzióit futtató eszközökre klónozása <br> A forráseszközt előtt Update 3.0-s verzióját futtatja.                                | Igen            |
+| Az Update 3.0 előtti verziót futtató eszközökre klónozása                                                                          | Nem             |
+| Forrás eszközként feladatátvétel <br> (egy eszközről verziót futtat, 3.0-s frissítést futtató eszközről egy korábbi Update 3.0-s és újabb verziók)                                                               | Igen            |
+| Cél eszközként feladatátvétel <br> (a szoftververzió előtt Update 3.0-es eszközök)                                                                                   | Nem             |
 | Riasztás törlése                                                                                                                  | Igen            |
-| Biztonsági mentési házirendek, biztonságimásolat-katalógus, kötetek, kötettárolók, figyelési diagramokat, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Igen            |
-| És eszközvezérlők bekapcsolása                                                                                              | Igen            |
+| Biztonsági mentési szabályzatok, a biztonságimásolat-katalógus, kötetek, kötettárolók, figyelési diagramok, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Igen            |
+| Be- és eszközvezérlők kikapcsolása                                                                                              | Igen            |
 
 
 ## <a name="next-steps"></a>További lépések
-* További információ a [StorSimple telepítési folyamatának](storsimple-8000-deployment-walkthrough-u2.md).
-* További információ [tárfiók felügyelete a StorSimple](storsimple-8000-manage-storage-accounts.md).
-* További tudnivalók a [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+* Tudjon meg többet a [StorSimple üzembehelyezési folyamat](storsimple-8000-deployment-walkthrough-u2.md).
+* Tudjon meg többet [kezelése a StorSimple tárfiók](storsimple-8000-manage-storage-accounts.md).
+* Ismerje meg, hogyan [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).

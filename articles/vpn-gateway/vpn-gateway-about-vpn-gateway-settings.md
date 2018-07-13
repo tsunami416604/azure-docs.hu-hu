@@ -1,6 +1,6 @@
 ---
-title: VPN-átjáró beállításokat a létesítmények közötti Azure-kapcsolatok |} Microsoft Docs
-description: További tudnivalók az Azure virtuális hálózati átjárók VPN-átjáró beállításainak.
+title: Azure-kapcsolatok létesítmények közötti VPN-átjáró beállításai |} A Microsoft Docs
+description: Ismerje meg a VPN Gateway beállításairól az Azure virtuális hálózati átjárókhoz.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -16,35 +16,35 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
 ms.openlocfilehash: 60cdc7bbe08df7816560e9720f96edc51769c342
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824846"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618221"
 ---
-# <a name="about-vpn-gateway-configuration-settings"></a>VPN-átjáró konfigurációs beállításairól
+# <a name="about-vpn-gateway-configuration-settings"></a>Tudnivalók a VPN Gateway konfigurációs beállításairól
 
-VPN-átjáró olyan virtuális hálózati átjáró által a titkosított forgalmat a virtuális hálózat és a helyszíni hely közötti nyilvános kapcsolaton keresztül. VPN-átjáró segítségével virtuális hálózatok közötti Azure gerincét között forgalmat küldeni.
+VPN-átjáró olyan virtuális hálózati átjáró, amely a virtuális hálózat és a helyszíni hely titkosított adatforgalmat továbbít nyilvános kapcsolaton keresztül. VPN-átjáró használatával az Azure gerinchálózatán keresztül a virtuális hálózatok közötti forgalom küldése.
 
-VPN gateway-kapcsolattal konfigurálható beállításokat tartalmaz, amelyek mindegyike több erőforrás konfigurációjának támaszkodik. Ebben a cikkben a szakaszok tárgyalják az erőforrások és a Resource Manager üzembe helyezési modellel létrehozott virtuális hálózat VPN-átjáró szoftverközponthoz kapcsolódó beállításokat. Minden kapcsolat megoldás megtalálhatja leírásokat és topológiai diagramot a [VPN-átjáró](vpn-gateway-about-vpngateways.md) cikk.
+VPN gateway-kapcsolat támaszkodik a konfiguráció több erőforrást, amelyek mindegyike tartalmazza a konfigurálható beállítások. Ez a cikk a szakaszok tárgyalják az erőforrások és a Resource Manager-alapú üzemi modellben létrehozott virtuális hálózat VPN-átjáró szoftverközponthoz kapcsolódó beállításokat. Leírások és topológia-diagramok megtalálhatja az összes kapcsolat-megoldás a [információk a VPN Gateway](vpn-gateway-about-vpngateways.md) cikk.
 
 >[!NOTE]
-> Ebben a cikkben szereplő értékek a - GatewayType "Vpn" használó virtuális hálózati átjárók vonatkozik. Ezért ezek adott virtuális hálózati átjárók VPN-átjáróként hivatkozunk. Az ExpressRoute-átjáró értékei nem ugyanazokat az értékeket a VPN-átjáróként használt.
+> Ebben a cikkben szereplő értékeket használja a - GatewayType "Vpn" virtuális hálózati átjárók vonatkoznak. Éppen ezért az adott virtuális hálózati átjáró VPN-átjárók neve. ExpressRoute-átjáró az értékei nem használhat olyan VPN-átjárók ugyanazokat az értékeket.
 >
->-GatewayType "ExpressRoute" vonatkozó értékeket, lásd: [ExpressRoute a virtuális hálózati átjárók](../expressroute/expressroute-about-virtual-network-gateways.md).
+>A - GatewayType "ExpressRoute" vonatkozó értékek, tekintse meg a [az ExpressRoute virtuális hálózati átjárók](../expressroute/expressroute-about-virtual-network-gateways.md).
 >
 >
 
-## <a name="gwtype"></a>Átjáró típusa
+## <a name="gwtype"></a>Átjárótípusok
 
-Minden egyes virtuális hálózati csak egy virtuális hálózati átjáró típusonkénti van. Ha a virtuális hálózati átjáró hoz létre, győződjön meg arról, hogy helyesek-e az átjáró típusa a konfigurációhoz.
+Minden virtuális hálózatnak csak egy átjárója lehet virtuális hálózati minden típusú. Ha egy virtuális hálózati átjárót hoz létre, győződjön meg arról, hogy az átjáró típusa megfeleljen a konfigurációnak.
 
-A - GatewayType a lehetséges értékek a következők:
+A - GatewayType az elérhető értékek a következők:
 
 * Vpn
 * ExpressRoute
 
-A VPN-átjáró által igényelt a `-GatewayType` *Vpn*.
+VPN-átjáró szükséges a `-GatewayType` *Vpn*.
 
 Példa:
 
@@ -58,15 +58,15 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-### <a name="configure-a-gateway-sku"></a>Konfiguráljon egy átjárót Termékváltozat
+### <a name="configure-a-gateway-sku"></a>Átjárók Termékváltozatainak konfigurálása
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Ha egy erőforrás-kezelő virtuális hálózati átjáró létrehozásához használhatja az Azure-portálon, válassza a legördülő lista használatával az átjáró-Termékváltozat. A beállítások, lehetősége lesz az átjáró típusa és a választott VPN-típus felel meg.
+Ha az Azure portal használatával a Resource Manager virtuális hálózati átjáró létrehozása, az átjáró-Termékváltozatot is választhat a legördülő menüben. A beállítások, lehetősége lesz az átjáró típusa és a VPN-típust választja felelnek meg.
 
 #### <a name="powershell"></a>PowerShell
 
-A következő PowerShell-példa meghatározza, hogy a `-GatewaySku` VpnGw1 szerint. Amikor egy átjáró létrehozása a PowerShell használatával, akkor először hozza létre az IP-konfigurációt, majd a változó segítségével hivatkozik rá. Ebben a példában a konfigurációs változó $gwipconfig.
+Az alábbi PowerShell-példa meghatározza az `-GatewaySku` VpnGw1. Ha-átjáró létrehozása a PowerShell segítségével, akkor először az IP-konfiguráció létrehozása, majd hivatkoznia kell rá a változók használata. Ebben a példában a konfigurációs változó $gwipconfig.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -80,32 +80,32 @@ New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
 ```
 
-###  <a name="resizechange"></a>Átméretezése, vagy egy SKU módosítása
+###  <a name="resizechange"></a>Átméretezés vagy a Termékváltozat módosítása
 
-Ha van VPN-átjáró és egy másik átjáró SKU használni kívánt, az alábbi lehetőségek állnak az átjáró-Termékváltozat vagy átméretezése, vagy egy másikra módosításához. Ha módosítja egy másik átjáró-Termékváltozat, a meglévő átjáró teljes törlése, és egy új build. Ez legfeljebb 45 perc is beletelhet. Szemben ha azt szeretné, hogy egy átjáró-Termékváltozat, fog minimális állásidő mert Önnek nincs törlése, és építse újra az átjárót. Lehetősége van az átjáró-Termékváltozat átméretezése, mint megváltoztatnia, ha ehhez célszerű. Van azonban szabályok vonatkozó átméretezése:
+Ha a különböző átjárók Termékváltozatainak használni kívánt VPN-átjárót, a lehetőségek a következők vagy a az átjárók Termékváltozatainak átméretezése, vagy egy másik termékváltozatra módosításához. Ha módosítja egy másik átjáró-Termékváltozatot, teljesen törölje a meglévő átjárót, és hozhat létre egy újat. Ez sikerült létrehozása akár 45 percet is igénybe vehet. Ezzel szemben amikor átjáró-Termékváltozatok, átméretezése kell nagyon kevés állásidő, mert nem kell törölnie kell, és építse újra az átjárót. Ha az átjárók Termékváltozatainak átméretezése helyett módosítsa a beállítást, ehhez célszerű. Előfordulhatnak azonban olyan szabályok átméretezésével kapcsolatos:
 
 1. Az átméretezés során a VpnGw1, a VpnGw2 és a VpnGw3 termékváltozatok közül választhat.
 2. Ha a régi átjárók termékváltozataival dolgozik, az átméretezéskor az Alapszintű, a Standard és a Nagy teljesítményű termékváltozatok közül választhat.
-3. Az Alapszintű/Standard/Nagy teljesítményű termékváltozatokról **nem** méretezhet a VpnGw1/VpnGw2/VpnGw3 termékváltozatokra. Ehelyett kell [módosítása](#change) az új termékváltozatok számára.
+3. Az Alapszintű/Standard/Nagy teljesítményű termékváltozatokról **nem** méretezhet a VpnGw1/VpnGw2/VpnGw3 termékváltozatokra. Ehelyett kell [módosítása](#change) az új termékváltozatokra.
 
-#### <a name="resizegwsku"></a>Átjáró átméretezése
+#### <a name="resizegwsku"></a>Az átjáró átméretezése
 
 [!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
 
-####  <a name="change"></a>Egy új másikra régi (örökölt) termékváltozatból módosítása
+####  <a name="change"></a>(Örökölt) régiről az új Termékváltozatra módosítása
 
 [!INCLUDE [Change a SKU](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
-## <a name="connectiontype"></a>Kapcsolat típusai
+## <a name="connectiontype"></a>Kapcsolattípusok
 
-A Resource Manager üzembe helyezési modellel minden egyes konfiguráció szükséges egy adott virtuális hálózati átjáró kapcsolattípus. A `-ConnectionType` lehetséges Resource Manager PowerShell-értékei a következők:
+A Resource Manager-alapú üzemi modellben az egyes konfigurációkhoz egy adott virtuális hálózati átjárójának kapcsolattípusa van szükség. A `-ConnectionType` lehetséges Resource Manager PowerShell-értékei a következők:
 
 * IPsec
 * Vnet2Vnet
 * ExpressRoute
 * VPNClient
 
-A következő PowerShell-példa egy S2S kapcsolatot igényel a kapcsolat típusa létrehozhatunk *IPsec*.
+A következő PowerShell-példa hozunk létre, amely megköveteli a kapcsolat típusa S2S kapcsolat *IPsec*.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
@@ -113,17 +113,17 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
 
-## <a name="vpntype"></a>VPN-típusai
+## <a name="vpntype"></a>VPN-típusok
 
-A virtuális hálózati átjáró VPN-átjáró konfigurációt létrehozásakor meg kell adnia egy VPN-típus. A VPN-típus az Ön által a létrehozni kívánt kapcsolat topológia függ. P2S kapcsolatot például egy RouteBased VPN típust igényli. A VPN-típus az Ön által használt hardver is függ. S2S-konfigurációk esetén van szükség, a VPN-eszközön. VPN-eszközök csak egy meghatározott VPN-típus támogatja.
+A VPN-átjáró konfigurálása a virtuális hálózati átjáró létrehozásakor meg kell adnia egy VPN-típussal. A VPN-típust választja a létrehozni kívánt kapcsolat topológia függ. A P2S-kapcsolat például egy Útvonalalapú VPN-típussal van szükség. Egy VPN-típussal is használ a hardverek is függ. S2S-konfigurációk VPN-eszközre van szükség. VPN-eszközök csak egy meghatározott VPN-típust támogatja.
 
-A VPN-típus választja meg kell felelnie a minden kapcsolat megoldásra vonatkozó követelményeket a szeretne létrehozni. Például, ha szeretne létrehozni egy S2S VPN gateway-kapcsolatot, és az azonos virtuális hálózat P2S VPN gateway-kapcsolattal, használhatja VPN-típus *RouteBased* mert P2S egy RouteBased VPN-típus szükséges. Módosítania kell, hogy a VPN-eszköz támogatja-e RouteBased VPN-kapcsolat ellenőrzése. 
+A VPN-típust választja meg kell felelniük minden kapcsolat megoldásra vonatkozó követelményeket a szeretne létrehozni. Például, ha azt szeretné, hozhat létre S2S VPN gateway-kapcsolat és a egy P2S VPN gateway-kapcsolattal az azonos virtuális hálózatban, használja VPN-típust *RouteBased* mert P2S szükséges Útvonalalapú VPN-típust. Ellenőrizze, hogy a VPN-eszköz támogatott egy Útvonalalapú VPN-kapcsolatot is kellene. 
 
-A virtuális hálózati átjáró létrehozása után nem módosíthatja a VPN-típus. Ki kell törölni a virtuális hálózati átjárót, és hozzon létre egy újat. Kétféle VPN-típus létezik:
+A virtuális hálózati átjáró létrehozása után nem módosíthatja a VPN-típust. Törölje a virtuális hálózati átjárót, és hozzon létre egy újat kell. Kétféle VPN-típus létezik:
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-A következő PowerShell-példa meghatározza, hogy a `-VpnType` , *RouteBased*. Egy átjáró létrehozásakor biztosítania kell, hogy -VpnType megfeleljen a konfigurációnak.
+Az alábbi PowerShell-példa meghatározza az `-VpnType` , *RouteBased*. Egy átjáró létrehozásakor biztosítania kell, hogy -VpnType megfeleljen a konfigurációnak.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
@@ -131,21 +131,21 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-## <a name="requirements"></a>Átjáró követelményei
+## <a name="requirements"></a>Átjáróra vonatkozó követelmények
 
 [!INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
-## <a name="gwsub"></a>Átjáró-alhálózatot
+## <a name="gwsub"></a>Átjáró-alhálózat
 
-VPN-átjáró létrehozása előtt létre kell hoznia egy átjáró-alhálózatot. Az átjáró alhálózatának az IP-címek, amelyek a virtuális hálózati átjáró virtuális gépeket és szolgáltatásokat tartalmazza. A virtuális hálózati átjáró létrehozásakor átjáró virtuális gépek az átjáró alhálózatának telepítve és konfigurálva a VPN-átjáró szükséges beállításokat. Soha ne telepítenie kell semmi mást (például további virtuális gépek) az átjáró-alhálózathoz. Az átjáró alhálózatának a "GatewaySubnet" nevű kell megfelelően működjön. Az átjáró alhálózatának elnevezése "GatewaySubnet" lehetővé teszi, hogy tudja, hogy ez az alhálózat, a virtuális hálózati átjáró virtuális gépek és szolgáltatások telepítése Azure.
+Mielőtt létrehozna egy VPN-átjárót, létre kell hoznia egy átjáró-alhálózatot. Az átjáró-alhálózat tartalmaz IP-címek a virtuális hálózati átjáró virtuális gépek és szolgáltatások használatához. A virtuális hálózati átjáró létrehozásakor átjáróként működő virtuális gépekhez az átjáró-alhálózat telepítve és konfigurálva a VPN-átjáró szükséges beállításokat. Soha ne telepítenie kell semmi mást (például további VM-EK) az átjáró-alhálózathoz. Az átjáró-alhálózat neve "GatewaySubnet" megfelelően működjön. Az átjáró-alhálózat "GatewaySubnet" elnevezése lehetővé teszi, hogy tudja, hogy ez az alhálózat a virtuális hálózati átjáró virtuális gépek és szolgáltatások üzembe helyezéséhez Azure.
 
 >[!NOTE]
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
 >
 
-Az átjáróalhálózat létrehozásakor meg kell adnia, hogy hány IP-címet tartalmaz az alhálózat. Az átjáró alhálózatának IP-címek az átjáró virtuális gépek és az átjáró szolgáltatások foglal le. Egyes konfigurációknak a többinél nagyobb számú IP-címre van szükségük. Nézze meg az utasításokat, amelyet szeretne létrehozni, és győződjön meg arról, hogy az átjáró alhálózatának szeretne létrehozni a konfiguráció megfelel ezeknek a követelményeknek. Emellett érdemes lehet ellenőrizze, hogy az átjáró-alhálózatot tartalmaz elég IP-cím lehetséges jövőbeli további konfiguráció alkalmazásához. Létrehozhat egy átjáró-alhálózat mérete /29 legyen, de javasolt, hogy hozzon létre egy átjáró-alhálózatot /28 vagy nagyobb (/ 28, /27, /26 stb.). Ily módon való hozzáadásakor funkcióit a jövőben nem kell az átjáró szakadjon el, majd törölje és hozza létre újra az átjáró alhálózatának további IP-címek lehetővé.
+Az átjáróalhálózat létrehozásakor meg kell adnia, hogy hány IP-címet tartalmaz az alhálózat. Az átjáró-alhálózat IP-címekkel kiosztott az átjáróként működő virtuális gépekhez és átjárószolgáltatásokat. Egyes konfigurációknak a többinél nagyobb számú IP-címre van szükségük. Tekintse meg a konfigurációt, amelyet szeretne létrehozni, és győződjön meg arról, hogy szeretne létrehozni az átjáró-alhálózat megfelel ezeknek a követelményeknek megfelelő utasításokat. Emellett érdemes, hogy az átjáróalhálózat tartalmazza a elegendő IP-címet, lehetséges, további jövőbeni konfigurációk megvalósításához. Létrehozni egy átjáró-alhálózat kisebb, akár/29 méretű, javasoljuk, hogy hozzon létre egy átjáróalhálózatot/28-as vagy nagyobb (/ 28, / 27, / 26-os stb.). Ezzel a módszerrel funkciókat adhat a későbbiekben, ha nem kell bontania az átjárót, majd törölje és hozza létre újra az átjáró-alhálózat, hogy a további IP-címek.
 
-A következő erőforrás-kezelő PowerShell-példa bemutatja egy GatewaySubnet nevű átjáró-alhálózatot. A CIDR-jelöléssel Meghatározza, hogy egy /27 lehetővé teszi, hogy elegendő IP-címek a jelenleg létező legtöbb konfiguráció látható.
+A következő Resource Manager PowerShell-példa bemutatja egy GatewaySubnet nevű átjáró-alhálózatot. Láthatja, hogy a CIDR-jelölésrendszer/27-es, amely lehetővé teszi, hogy elegendő IP-címet, amely a jelenleg létező legtöbb konfiguráció esetében.
 
 ```powershell
 Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
@@ -153,24 +153,24 @@ Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="lng"></a>Helyi hálózati átjáró
+## <a name="lng"></a>Helyi hálózati átjárók
 
-A VPN-átjáró konfiguráció létrehozásakor a helyi hálózati átjáró gyakran jelöli a helyszíni hely. A klasszikus üzembe helyezési modellben a helyi hálózati átjárót a Helyi névvel illettük. 
+Egy VPN-átjárókonfigurációtól létrehozásakor, az a helyi hálózati átjáró gyakran a helyszíni helyet jelöli. A klasszikus üzembe helyezési modellben a helyi hálózati átjárót a Helyi névvel illettük. 
 
-Nevezze el a helyi hálózati átjáró, a helyszíni VPN-eszköz nyilvános IP-címét, és adja meg a címelőtagokat a helyszíni hely található. Azure ellenőrzi, hogy a hálózati forgalom cél címelőtagokat, a konfiguráció a helyi hálózati átjáró megadott olvas, és ennek megfelelően irányítja a csomagokat. Helyi hálózati átjáró VPN gateway-kapcsolatot használó VNet – VNet-konfigurációk is adja meg.
+Nevezze el a helyi hálózati átjárót, a helyszíni VPN-eszköz nyilvános IP-címét, és a helyszínen található címelőtagok. Az Azure megvizsgálja a hálózati forgalmat a cél-címelőtagjainak, consults szintűre frissül, hogy a helyi hálózati átjáró a megadott konfigurációval, és ennek megfelelően irányítja a csomagokat. Helyi hálózati átjárókkal VPN gateway-kapcsolatot használó virtuális hálózatok közötti konfigurációkhoz is megad.
 
-A következő PowerShell-példa létrehoz egy új helyi hálózati átjáró:
+A következő PowerShell-példa egy új helyi hálózati átjárót hoz létre:
 
 ```powershell
 New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 
-Néha módosítania kell a helyi hálózati átjáró beállításainak. Például ha fel vagy módosít a címtartományt, vagy ha megváltozik-e a VPN-eszköz IP-címét. Lásd: [PowerShell használatával a helyi hálózati átjáró beállításainak módosítása](vpn-gateway-modify-local-network-gateway.md).
+Néha szüksége a helyi hálózati átjáró beállításainak módosítására. Például ha felvétele vagy módosítása a címtartomány, vagy ha a VPN-eszköz IP-címe megváltozik. Lásd: [PowerShell-lel a helyi hálózati átjáró beállításainak módosítása](vpn-gateway-modify-local-network-gateway.md).
 
 ## <a name="resources"></a>REST API-k, PowerShell-parancsmagok és parancssori felület
 
-További technikai erőforrások és konkrét szintaxis használatával kapcsolatos követelményeket REST API-k, a PowerShell-parancsmagok vagy az Azure CLI VPN Gateway-konfigurációk esetén tekintse meg a következő oldalakon:
+További technikai erőforrások és a megadott szintaxissal kapcsolatos követelményeket REST API-k, PowerShell-parancsmagok vagy Azure parancssori felület használatával a VPN Gateway-konfigurációk tekintse meg a következő lapokon:
 
 | **Klasszikus** | **Resource Manager** |
 | --- | --- |
@@ -180,4 +180,4 @@ További technikai erőforrások és konkrét szintaxis használatával kapcsola
 
 ## <a name="next-steps"></a>További lépések
 
-Használható kapcsolat konfigurációkkal kapcsolatos további információkért lásd: [VPN-átjáró](vpn-gateway-about-vpngateways.md).
+Rendelkezésre álló kapcsolati konfigurációkkal kapcsolatos további információkért lásd: [információk a VPN Gateway](vpn-gateway-about-vpngateways.md).

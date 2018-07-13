@@ -1,6 +1,6 @@
 ---
-title: Az Azure Kubernetes Helm a tároló üzembe helyezése
-description: Az Azure Tárolószolgáltatásban Kubernetes fürtön tároló üzembe helyezése a Helm csomagolás eszközzel
+title: Az Azure-beli Kubernetes Helm-tárolók üzembe helyezése
+description: A Helm csomagolás eszköz használatával helyezhet üzembe tárolókat a Kubernetes-fürtön az Azure Container Service-ben
 services: container-service
 author: sauryadas
 manager: jeconnoc
@@ -10,143 +10,143 @@ ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 882e785968f94473e80c7a14e5a68498add37735
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163095"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634153"
 ---
-# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Helm segítségével tároló Kubernetes fürt üzembe helyezése
+# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>A Kubernetes-fürtön a tárolók üzembe helyezése a Helm használatával
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-[Helm](https://github.com/kubernetes/helm/) nyílt forráskódú csomagolás eszköz, amely segít telepíteni, és Kubernetes alkalmazások életciklusának kezelését. Linux-csomag kezelői például Apt-get és Yum hasonló, Helm segítségével Kubernetes diagramok, amelyek az előre konfigurált Kubernetes erőforrások-csomagok kezelése. Ez a cikk bemutatja, hogyan Helm dolgozni az Azure Tárolószolgáltatásban telepített Kubernetes fürtön.
+[Helm](https://github.com/kubernetes/helm/) egy nyílt forráskódú csomagolás eszköz, amely segít telepítése és a Kubernetes-alkalmazások életciklusának kezelését. Például az Apt-get paranccsal végzi, és a yum használatával Linux csomagkezelők hasonlóan Helm segítségével Kubernetes-diagramok, amelyek az előre konfigurált Kubernetes-erőforrások-csomagok kezelése. Ez a cikk bemutatja, hogyan használható a Helm, az Azure Container Service-ben üzembe helyezett egy Kubernetes-fürtön.
 
 Helm két részből áll: 
-* A **Helm CLI** helyileg vagy a felhőben a számítógépen futó ügyfél  
+* A **Helm CLI** a gépén helyileg vagy a felhőben futó ügyfél  
 
-* **Kormányrúd** , amely a Kubernetes fürtön fut, és a Kubernetes alkalmazások életciklusát felügyeli 
+* **A tiller valóban** egy kiszolgáló, amely a Kubernetes-fürtön fut, és a Kubernetes-alkalmazások életciklusát felügyeli 
  
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Hozzon létre egy Kubernetes fürtöt](container-service-kubernetes-walkthrough.md) az Azure Tárolószolgáltatásban
+* [Kubernetes-fürt létrehozása](container-service-kubernetes-walkthrough.md) Azure Container Service-ben
 
-* [Telepítse és konfigurálja `kubectl` ](../container-service-connect.md) a helyi számítógépen
+* [Telepítse és konfigurálja `kubectl` ](../container-service-connect.md) helyi számítógépre
 
-* [Telepítse a Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) a helyi számítógépen
+* [Telepítse a Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) helyi számítógépre
 
 ## <a name="helm-basics"></a>Helm alapjai 
 
-A Kubernetes fürt, hogy kormányrúd telepítése, és az alkalmazások telepítésével kapcsolatos információk megtekintéséhez írja be a következő parancsot:
+A Kubernetes-fürt, hogy a tiller valóban telepítése és az alkalmazások üzembe helyezése kapcsolatos információk megtekintéséhez írja be a következő parancsot:
 
 ```bash
 kubectl cluster-info 
 ```
-![kubectl fürt-adatai](./media/container-service-kubernetes-helm/clusterinfo.png)
+![a kubectl fürt-info](./media/container-service-kubernetes-helm/clusterinfo.png)
  
-Miután telepítette a Helm, kormányrúd a fürtön telepíteni a Kubernetes a következő parancs beírásával:
+Miután telepítette a Helm, telepítse a tiller valóban a Kubernetes-fürtön a következő parancs beírásával:
 
 ```bash
 helm init --upgrade
 ```
-Sikeresen befejeződött, a következőhöz hasonló kimenetet láthat:
+Ha sikeresen befejeződik, az alábbihoz hasonló kimenet jelenik meg:
 
-![Kormányrúd telepítése](./media/container-service-kubernetes-helm/tiller-install.png)
+![A tiller valóban telepítése](./media/container-service-kubernetes-helm/tiller-install.png)
  
  
  
  
-A tárházban összes rendelkezésre álló Helm diagramok megtekintéséhez írja be a következő parancsot:
+A tárházban minden a Helm-diagramok rendelkezésre álló megtekintéséhez írja be a következő parancsot:
 
 ```bash 
 helm search 
 ```
 
-A következőhöz hasonló kimenetnek jelenik meg:
+Az alábbihoz hasonló kimenet jelenik meg:
 
-![Helm keresése](./media/container-service-kubernetes-helm/helm-search.png)
+![Helm-keresés](./media/container-service-kubernetes-helm/helm-search.png)
  
-A diagramok első a legújabb verziók frissítése, írja be:
+A diagramok beolvasni a legújabb verzióra frissíti, írja be:
 
 ```bash 
 helm repo update 
 ```
-## <a name="deploy-an-nginx-ingress-controller-chart"></a>Egy Nginx érkező vezérlő diagram telepítése 
+## <a name="deploy-an-nginx-ingress-controller-chart"></a>Az Nginx bejövő vezérlő diagram üzembe helyezése 
  
-Egy Nginx érkező vezérlő diagram telepítéséhez írja be egy parancs:
+Telepíti az Nginx bejövő vezérlő diagramra, írja be az egyetlen paranccsal:
 
 ```bash
 helm install stable/nginx-ingress 
 ```
-![Érkező tartományvezérlő központi telepítése](./media/container-service-kubernetes-helm/nginx-ingress.png)
+![Bejövő forgalom vezérlő üzembe helyezése](./media/container-service-kubernetes-helm/nginx-ingress.png)
 
-Ha `kubectl get svc` minden, a fürtön futó szolgáltatások megtekintése, láthatja, hogy egy IP-címet a érkező tartományvezérlő van rendelve. (A hozzárendelés folyamatban van, amíg megjelenik `<pending>`. Igénybe vehet néhány percet.) 
+Ha `kubectl get svc` azon a fürtön futó összes szolgáltatás, tekintse meg, hogy egy IP-cím hozzá van rendelve a bejövőforgalom-vezérlőt. (A hozzárendelés folyamatban van, amíg megjelenik `<pending>`. Ez eltarthat néhány percig.) 
 
-Az IP-cím után cím hozzá van rendelve, keresse meg a futó Nginx háttér megtekintéséhez a külső IP-cím értékét. 
+Után az IP-cím lesz kiosztva, keresse meg a külső IP-cím megjelenítéséhez a futó Nginx-háttérrendszer értékét. 
  
-![Érkező IP-cím](./media/container-service-kubernetes-helm/ingress-ip-address.png)
+![Bejövő IP-cím](./media/container-service-kubernetes-helm/ingress-ip-address.png)
 
 
-A fürtön telepítve diagramok listájának megtekintéséhez írja be:
+A fürtön telepíteni diagramok listájának megtekintéséhez írja be:
 
 ```bash
 helm list 
 ```
 
-A parancs futtatásával rövidíthető `helm ls`.
+A parancs rövidíthető `helm ls`.
  
  
  
  
 ## <a name="deploy-a-mariadb-chart-and-client"></a>A MariaDB diagram és az ügyfél telepítése
 
-Mostantól telepítheti MariaDB diagram és az adatbázishoz való kapcsolódáshoz MariaDB ügyfél.
+Most már üzembe MariaDB diagram és az adatbázishoz való csatlakozáshoz MariaDB-ügyfelet.
 
-A MariaDB diagram telepítéséhez írja be a következő parancsot:
+A MariaDB diagram központi telepítéséhez írja be a következő parancsot:
 
 ```bash
 helm install --name v1 stable/mariadb
 ```
 
-Ha `--name` kiadásokban használt címke.
+ahol `--name` kiadásokban használható címkék.
 
 > [!TIP]
 > Ha nem sikerül a telepítés, futtassa `helm repo update` , és próbálkozzon újra.
 >
  
  
-A fürt telepített összes diagramok megtekintéséhez írja be:
+A diagramok a fürtre telepített megtekintéséhez írja be:
 
 ```bash 
 helm list
 ```
  
-A fürtben futó összes központi telepítést, írja be:
+A fürtben futó központi telepítések megtekintéséhez írja be:
 
 ```bash
 kubectl get deployments 
 ``` 
  
  
-Végezetül futtatásához egy pod az ügyfél eléréséhez írja be:
+Végül futtassa a pod eléréséhez az ügyfél, írja be:
 
 ```bash
 kubectl run v1-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- bash  
 ``` 
  
  
-Az ügyfél csatlakozik, írja be a következő parancsot, cseréje `v1-mariadb` nevű, a központi telepítés:
+Az ügyfél csatlakozik, írja be a következő parancsot, és cserélje le `v1-mariadb` a központi telepítés nevére:
 
 ```bash
 sudo mysql –h v1-mariadb
 ```
  
  
-Használhatja a szokásos SQL-parancsok létrehozása az adatbázisok, táblák, stb. Például `Create DATABASE testdb1;` létrehoz egy üres adatbázist. 
+Standard SQL-parancsok segítségével most létrehozása az adatbázisok, táblák, stb. Ha például `Create DATABASE testdb1;` létrehoz egy üres adatbázist. 
  
  
  
 ## <a name="next-steps"></a>További lépések
 
-* Kubernetes diagramok kezelésével kapcsolatos további információkért tekintse meg a [Helm dokumentáció](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* Kubernetes-diagramok kezelésével kapcsolatos további információkért lásd: a [dokumentáció Helm](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
 

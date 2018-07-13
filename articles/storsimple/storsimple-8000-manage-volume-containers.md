@@ -1,6 +1,6 @@
 ---
-title: A StorSimple-kötet tárolók a StorSimple 8000 series eszközön kezelése |} Microsoft Docs
-description: Ismerteti, hogyan használhatja a StorSimple Device Manager szolgáltatás kötet tárolók lap hozzáadása, módosítása vagy törlése egy kötettárolót.
+title: A StorSimple kötettároló a StorSimple 8000 sorozatú eszköz kezelése |} A Microsoft Docs
+description: Ismerteti, hogyan használhatja a StorSimple-Eszközkezelő szolgáltatás kötet tárolók lap hozzáadása, módosítása vagy törölni a kötettárolót.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,48 +15,48 @@ ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 0f8e00d6d07224f56625482f339e612e68914be2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874842"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606589"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>A StorSimple Device Manager szolgáltatással a StorSimple-kötet tárolók kezelése
+# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple kötettárolók kezelése
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag ismerteti, hogyan hozhatja létre és kezelheti a StorSimple kötettárolók a StorSimple Device Manager szolgáltatás.
+Ez az oktatóanyag azt ismerteti, hogyan hozhat létre és kezelhet a StorSimple-kötettároló a StorSimple-Eszközkezelő szolgáltatás használata.
 
-A Microsoft Azure StorSimple eszköz a kötettároló tárfiók, a titkosítás és a sávszélesség-használat beállításokat használó egy vagy több kötetet tartalmazza. Egy eszköz több kötet tároló az összes kötet lehet. 
+A Microsoft Azure StorSimple-eszköz kötettároló egy vagy több olyan kötetet, amelyek megosztása a storage-fiókot, a titkosítás és a sávszélesség-használat beállításokat tartalmazza. Egy eszköz rendelkezhet több kötettárolóba tartozó összes kötetet. 
 
 A kötettároló a következő attribútumokat:
 
-* **Kötetek** – a rétegzett, vagy helyileg rögzített kötet tárolóban található StorSimple-köteteket. 
-* **Titkosítási** – titkosítási kulcsot, amelyek az egyes mennyiségi tároló. Ezt a kulcsot a saját StorSimple eszközön a felhőbe küldött adatok titkosításához használt. Egy katonai szintű AES-256 bites kulcsot használ a felhasználó által megadott kulccsal. Az adatok védelme érdekében javasoljuk, hogy mindig engedélyezze felhőalapú tárolás titkosításának.
-* **A tárfiók** – az Azure storage-fiók, amely az adatok tárolására szolgál. A kötettároló szereplő összes kötet ossza meg ezt a tárfiókot. A storage-fiók közül választhat egy meglévő listájához, vagy hozzon létre egy új fiókot, a kötettároló létrehozása, és adja meg a fiókhoz tartozó hozzáférési hitelesítő adatokat.
-* **A felhő sávszélesség** – amikor az adatok az eszközről a felhőbe küldi el az eszköz által felhasznált sávszélesség. Ez a tároló létrehozásakor 1 és 1000 közötti érték megadásával kényszerítheti a sávszélesség-vezérlést. Ha azt szeretné, hogy az eszköz teljes elérhető sávszélesség, a mezőt állítsa **korlátlan**. Hozhat létre, és a ütemezés szerint sávszélesség sávszélesség sablon alkalmazása.
+* **Kötetek** – a rétegzett, vagy a kötettároló belüli lemezképcsomagban StorSimple-köteteket a helyileg rögzített. 
+* **Titkosítási** – egy titkosítási kulcsot, amelyek az egyes kötettároló. Ezt a kulcsot a StorSimple-eszközről a felhőbe küldött adatok titkosításához használatos. A felhasználó által megadott kulcs egy katonai szintű AES-256 bites kulcsot használnak. Az adatok biztonságos, azt javasoljuk, hogy mindig engedélyezze a felhős társzolgáltatás titkosítása.
+* **Storage-fiók** – az Azure storage-fiók, amely az adatok tárolására szolgál. A kötettároló szereplő összes kötet ossza meg ezt a tárfiókot. Egy meglévő listából válasszon ki egy tárfiókot, vagy létrehozhat egy új fiókot, amikor a kötettároló létrehozásához, és adja meg a fiókhoz tartozó hozzáférési hitelesítő adatokat.
+* **A felhő sávszélesség** – Ha az elküldött az adatok az eszközről a felhőbe az eszközök által felhasznált sávszélesség. 1 MB/s és 1000 MB/s közötti értéket adjon meg, ez a tároló létrehozásakor kényszerítheti a sávszélesség-vezérlést. Ha azt szeretné, hogy az eszköz felhasználja az összes rendelkezésre álló sávszélességet, adja meg a mezőben **korlátlan**. Is létrehozhat és sávszélességsablon ütemezés alapján sávszélességet kell kiosztania a alkalmazni.
 
-A következő eljárások azt ismertetik, hogyan használható a StorSimple **kötettárolók** panelen a következő gyakori műveletek végrehajtásához:
+A következő eljárások bemutatják, hogyan használhatja a StorSimple **kötettárolók** panelen a következő gyakori műveletek végrehajtásához:
 
-* A kötettároló hozzáadása
+* Kötettároló hozzáadása
 * A kötettároló módosítása
 * A kötettároló törlése
 
-## <a name="add-a-volume-container"></a>A kötettároló hozzáadása
+## <a name="add-a-volume-container"></a>Kötettároló hozzáadása
 A következő lépésekkel kötettároló hozzáadása.
 
 [!INCLUDE [storsimple-8000-add-volume-container](../../includes/storsimple-8000-create-volume-container.md)]
 
 ## <a name="modify-a-volume-container"></a>A kötettároló módosítása
-A következő lépésekkel módosíthatja egy kötettárolót.
+A következő lépésekkel kötettároló módosítása.
 
 [!INCLUDE [storsimple-8000-modify-volume-container](../../includes/storsimple-8000-modify-volume-container.md)]
 
 ## <a name="delete-a-volume-container"></a>A kötettároló törlése
-A kötettároló kötetek belül. Csak akkor, ha minden benne tárolt kötet először el kell hagyni törölhetők. A következő lépésekkel kötettároló törlése.
+A kötettároló benne lévő köteteket. Csak akkor, ha minden benne tárolt kötet először el kell hagyni törölhetők. A következő lépésekkel törölni a kötettárolót.
 
 [!INCLUDE [storsimple-8000-delete-volume-container](../../includes/storsimple-8000-delete-volume-container.md)]
 
-## <a name="next-steps"></a>Következő lépések
-* További információ [felügyelete a StorSimple-köteteket](storsimple-8000-manage-volumes-u2.md). 
-* További információ [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>További lépések
+* Tudjon meg többet [kezelése a StorSimple-kötetek](storsimple-8000-manage-volumes-u2.md). 
+* Tudjon meg többet [a StorSimple-Eszközkezelő szolgáltatás használata a StorSimple-eszköz felügyeletéhez](storsimple-8000-manager-service-administration.md).
 

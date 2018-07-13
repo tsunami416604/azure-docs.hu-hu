@@ -31,6 +31,8 @@
       href: update-managed-resources.md
     - name: Közzététel a portál használatával
       href: publish-portal.md
+    - name: Key Vaultból származó titkos kulcs használata
+      href: key-vault-access.md
 - name: Referencia
   items:
     - name: Azure CLI

@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure-továbbítási WCF továbbítja a .NET |} Microsoft Docs
-description: Megtudhatja, hogyan használhatja az Azure továbbítási WCF továbbítók két különböző helyen üzemeltetett alkalmazások kapcsolódáshoz.
+title: Ismerkedés az Azure Relay WCF továbbítja a .NET-keretrendszerben |} A Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure Relay WCF-továbbítók két, különböző helyen üzemeltetett alkalmazás csatlakozni.
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
@@ -15,26 +15,26 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: sethm
 ms.openlocfilehash: face684190456fbf4b78a84ac3afe7a4ead8995a
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "26856082"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697892"
 ---
-# <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>A .NET szegélyhálózatába, az Azure-továbbítási WCF használata
-Ez a cikk ismerteti, hogyan használhatja az Azure-továbbítási szolgáltatást. A kódminták C# nyelven íródtak, és a Windows Communication Foundation (WCF) API-t használják a Service Bus-összeállításban található bővítményekkel. Az Azure relayjel kapcsolatos további információkért lásd: a [Azure továbbítási áttekintése](relay-what-is-it.md).
+# <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Az Azure Relay WCF közvetítők használata a .NET használatával
+Ez a cikk ismerteti, hogyan használható az Azure Relay szolgáltatásban. A kódminták C# nyelven íródtak, és a Windows Communication Foundation (WCF) API-t használják a Service Bus-összeállításban található bővítményekkel. Az Azure relay kapcsolatos további információkért lásd: a [Azure Relay áttekintése](relay-what-is-it.md).
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="what-is-wcf-relay"></a>Mi az a WCF továbbító?
+## <a name="what-is-wcf-relay"></a>Mi az a WCF-továbbító?
 
-Az Azure [ *WCF továbbító* ](relay-what-is-it.md) szolgáltatás lehetővé teszi hibrid alkalmazások összeállítását, amelyek egy Azure-adatközpontban és a saját helyszíni vállalati környezetben is futnak. A továbbítási szolgáltatás ezt úgy segíti elő, hogy biztonságosan teszik elérhetővé a anélkül, hogy meg kellene nyitni egy tűzfalkapcsolatot, vagy zavaró módosításokat kellene a vállalati hálózati infrastruktúrában végrehajtani a nyilvános felhőbe, a vállalati hálózaton található Windows Communication Foundation (WCF) szolgáltatásait.
+Az Azure [ *WCF-továbbító* ](relay-what-is-it.md) szolgáltatás lehetővé teszi hibrid alkalmazások összeállítását, amelyek egy Azure-adatközpontban és a saját helyszíni vállalati környezetben is futnak. A továbbítási szolgáltatás megkönnyíti ezt engedélyezi, hogy biztonságosan kellene nyitni egy tűzfalkapcsolatot, vagy zavaró megkövetelése nélkül a nyilvános felhő, a vállalati hálózaton található Windows Communication Foundation (WCF) szolgáltatásokat vállalati hálózati infrastruktúrában módosításait.
 
 ![A WCF Relay szolgáltatással kapcsolatos fogalmak](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
-Az Azure Relay lehetővé teszi WCF-szolgáltatások üzemeltetését a meglévő vállalati környezetben. Majd delegálhatja figyeli a bejövő munkamenetek és kérések a WCF-szolgáltatások a továbbítási szolgáltatás Azure-ban futó nem megfelelő. Ez lehetővé teszi a szolgáltatások közzétételét az Azure-ban futó alkalmazáskódok, illetve mobil dolgozók vagy külső hálózaton lévő partnerkörnyezetek számára. Továbbító segítségével szabályozhatja, hogy biztonságosan ki férhet hozzá ezeket a szolgáltatásokat a minden részletre kiterjedő szinten. Hatékony és biztonságos módot biztosít a meglévő vállalati megoldásaiból származó alkalmazások és adatok közzétételére, valamint kihasználja a felhő előnyeit.
+Az Azure Relay lehetővé teszi WCF-szolgáltatások üzemeltetését a meglévő vállalati környezetben. Ezután delegálhatja figyeli a bejövő munkamenetek és kérések a WCF-szolgáltatásokhoz az Azure-ban futó továbbító szolgáltatás. Ez lehetővé teszi a szolgáltatások közzétételét az Azure-ban futó alkalmazáskódok, illetve mobil dolgozók vagy külső hálózaton lévő partnerkörnyezetek számára. Relay segítségével szabályozhatja, hogy biztonságosan érheti el az ezeket a szolgáltatásokat, részletesen. Hatékony és biztonságos módot biztosít a meglévő vállalati megoldásaiból származó alkalmazások és adatok közzétételére, valamint kihasználja a felhő előnyeit.
 
-A cikkből megtudhatja, hogyan Azure továbbítási segítségével hozzon létre egy WCF-webszolgáltatás a TCP-csatornán kötelező, segítségével két fél között biztonságos párbeszédet megvalósító.
+Ez a cikk ismerteti, hogyan hozzon létre egy WCF-webszolgáltatás üzembe helyezése a TCP-csatornán, kötés használatával, amely a két fél között biztonságos párbeszédet megvalósító Azure Relay használatával.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -46,10 +46,10 @@ A Service Bus API beszerzésének, valamint az alkalmazások az összes Service 
    
    ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
 
-## <a name="expose-and-consume-a-soap-web-service-with-tcp"></a>Közzétételére és felhasználására a SOAP-webszolgáltatás TCP-vel
-Egy meglévő SOAP WCF-webszolgáltatás külső felhasználásra történő közzétételéhez módosítania kell a szolgáltatás kötéseit és címeit. Ehhez a konfigurációs fájl módosítására vagy a kód módosítására lehet szükség, attól függően, hogy hogyan állította be és konfigurálta a WCF-szolgáltatásokat. Vegye figyelembe, hogy a WCF lehetővé teszi, hogy több hálózati végpont használatát ugyanabban a szolgáltatásban, tehát megtarthatja a meglévő belső végpontokat egyszerre külső hozzáférés céljából továbbítási végpontok hozzáadása közben.
+## <a name="expose-and-consume-a-soap-web-service-with-tcp"></a>Közzétételére és felhasználására a TCP SOAP-webszolgáltatás
+Egy meglévő SOAP WCF-webszolgáltatás külső felhasználásra történő közzétételéhez módosítania kell a szolgáltatás kötéseit és címeit. Ehhez a konfigurációs fájl módosítására vagy a kód módosítására lehet szükség, attól függően, hogy hogyan állította be és konfigurálta a WCF-szolgáltatásokat. Vegye figyelembe, hogy a WCF lehetővé teszi, hogy több hálózati végpont ugyanabban a szolgáltatásban, tehát megtarthatja a meglévő belső végpontokat egyszerre külső hozzáférés céljából továbbítási végpontok hozzáadása során.
 
-Ebben a feladatban egy egyszerű WCF-szolgáltatás hozza létre, és adja hozzá a továbbítási figyelő. A gyakorlat feltételezi a Visual Studio bizonyos fokú ismeretét, ezért nem ismerteti a projekt létrehozásának minden részletét. Ehelyett magára a kódra összpontosít.
+Ebben a feladatban egy egyszerű WCF-szolgáltatást hozhat létre, és hozzá tud adni a relay-figyelő. A gyakorlat feltételezi a Visual Studio bizonyos fokú ismeretét, ezért nem ismerteti a projekt létrehozásának minden részletét. Ehelyett magára a kódra összpontosít.
 
 Az alábbi lépések megkezdése előtt végezze el a következő eljárást a környezet beállításához:
 
@@ -80,7 +80,7 @@ interface IProblemSolver
 interface IProblemSolverChannel : IProblemSolver, IClientChannel {}
 ```
 
-A szerződés elkészült, a megvalósítása a következőképpen történik:
+Az érvényben lévő szerződés megvalósítása a következőképpen történik:
 
 ```csharp
 class ProblemSolver : IProblemSolver
@@ -93,7 +93,7 @@ class ProblemSolver : IProblemSolver
 ```
 
 ### <a name="configure-a-service-host-programmatically"></a>Szolgáltatásgazda konfigurálása szoftveresen
-Ha a szerződés és a megvalósítás elkészült, a szolgáltatás üzemeltethető. Az üzemeltetés egy [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/system.servicemodel.servicehost.aspx) objektumon belül történik, amely gondoskodik a szolgáltatás felügyelő példányairól, és üzemelteti az üzeneteket figyelő végpontokat. A következő kód egy normál helyi végponttal és egy továbbító végpont mutatja be a megjelenését, egymás mellett, a belső és külső végpontok úgy konfigurálja a szolgáltatást. A *namespace* karakterláncot helyettesítse a névtér nevével, a *yourKey* karakterláncot pedig az előző lépésben beszerzett SAS-kulccsal.
+Ha a szerződés és a megvalósítás elkészült, a szolgáltatás üzemeltethető. Az üzemeltetés egy [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/system.servicemodel.servicehost.aspx) objektumon belül történik, amely gondoskodik a szolgáltatás felügyelő példányairól, és üzemelteti az üzeneteket figyelő végpontokat. A következő kód egy normál helyi végponttal és a egy továbbítási végpontot, hogy bemutassa a megjelenését, egymás mellett, belső és külső végpontok a szolgáltatás konfigurálja. A *namespace* sztringet helyettesítse a névtér nevével, a *yourKey* sztringet pedig az előző lépésben beszerzett SAS-kulccsal.
 
 ```csharp
 ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
@@ -116,7 +116,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-A példában két végpontot fog létrehozni, amelyek ugyanazon a szerződésmegvalósításhoz tartoznak. Az egyik helyi, egy Azure-továbbítási keresztül van kivetítve. A kettő közötti alapvető a kötéseik jelentik. [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) a helyi egy és [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) a továbbítási végpont és a címek. A helyi végpont egy helyi hálózati címmel rendelkezik egy különálló porttal. A továbbító végpont rendelkezik végpontcímmel karakterlánc `sb`, a névtér nevét, és az elérési út "solver." Ennek eredményeként az URI `sb://[serviceNamespace].servicebus.windows.net/solver`, a szolgáltatás végpontjának azonosítása egy Service Bus (továbbítóként) TCP-végpontként külső teljesen minősített DNS-név. Ha a kódot a helyőrzők behelyettesítésével elhelyezi a **Szolgáltatás** alkalmazás `Main` függvényében, egy működő szolgáltatást kap. Ha azt szeretné, hogy a szolgáltatás kizárólag a továbbítási figyelni, távolítsa el a helyi végpont deklarációját.
+A példában két végpontot fog létrehozni, amelyek ugyanazon a szerződésmegvalósításhoz tartoznak. Helyi és a egy Azure Relay keresztül van kivetítve. A kettő közötti a kötéseik jelentik. [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) számára a helyi és [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) a relay-végpont és a címek. A helyi végpont egy helyi hálózati címmel rendelkezik egy különálló porttal. A relay-végpont rendelkezik végpontcímmel karakterlánc `sb`, a névtér nevével, és az elérési út "solver". Ennek eredményeképpen az URI-t `sb://[serviceNamespace].servicebus.windows.net/solver`, azonosítja a szolgáltatásvégpontot (továbbítóként) a Service Bus TCP-végpontként külső teljesen minősített DNS-név. Ha a kódot a helyőrzők behelyettesítésével elhelyezi a **Szolgáltatás** alkalmazás `Main` függvényében, egy működő szolgáltatást kap. Ha azt szeretné, hogy a szolgáltatás kizárólag a relay, távolítsa el a helyi végpont deklarációját.
 
 ### <a name="configure-a-service-host-in-the-appconfig-file"></a>Szolgáltatásgazda konfigurálása az App.config fájlban
 Az állomást az App.config fájl segítségével is konfigurálhatja. A szolgáltatásüzemeltetési kód ez esetben a következő példában látható.
@@ -129,8 +129,8 @@ Console.ReadLine();
 sh.Close();
 ```
 
-A végpontdefiníciók ekkor az App.config fájlba kerülnek. A NuGet-csomag már hozzá van adva a definíciók egy tartományát az App.config fájlhoz, amelyek az Azure-továbbítási szükséges konfigurációs bővítmények. A következő példának, amely pontosan megegyezik az előző kóddal, közvetlenül a **system.serviceModel** elem alatt kell megjelennie. A kódpélda feltételezi, hogy a projekt C# névterének neve **Service**.
-A helyőrzőket cserélje le a továbbítási névtér nevét és a SAS-kulcsot.
+A végpontdefiníciók ekkor az App.config fájlba kerülnek. A NuGet-csomag már hozzáadta az App.config fájlhoz, amely az Azure Relay a szükséges konfigurációs bővítmények definíciók egy tartományát. A következő példának, amely pontosan megegyezik az előző kóddal, közvetlenül a **system.serviceModel** elem alatt kell megjelennie. A kódpélda feltételezi, hogy a projekt C# névterének neve **Service**.
+A helyőrzőket cserélje le a relay-névtér nevét és a SAS-kulcsot.
 
 ```xml
 <services>
@@ -165,7 +165,7 @@ A szolgáltatás felhasználásához összeállíthat egy WCF-ügyfelet egy [Cha
 
 Először hivatkozzon a(z) `IProblemSolver` szerződéskódra, vagy másolja a szolgáltatásból az ügyfélprojektbe.
 
-Ezután cserélje le a kód a `Main` metódus az ügyfél ismét cserélje le a helyőrzőket a továbbítási névtér és SAS-kulcsot.
+Ezután cserélje le a kódot a `Main` metódus az ügyfél ismét cserélje le a helyőrzőket a relay-névteret és SAS-kulcsot.
 
 ```csharp
 var cf = new ChannelFactory<IProblemSolverChannel>(
@@ -194,7 +194,7 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-A végpontdefiníciók ekkor az App.config fájlba kerülnek. A következő példának, amely megegyezik az előzőekben látható kóddal, közvetlenül alatt kell megjelennie a `<system.serviceModel>` elemet. Itt mint korábban, meg kell cserélje le a helyőrzőket a továbbítási névterére és SAS-kulcsot.
+A végpontdefiníciók ekkor az App.config fájlba kerülnek. A következő példának, amely megegyezik az előzőekben látható kóddal, közvetlenül alatt kell megjelennie a `<system.serviceModel>` elemet. Itt mint korábban, meg kell cserélje le a helyőrzőket a relay-névteret és SAS-kulcsot.
 
 ```xml
 <client>
@@ -217,11 +217,11 @@ A végpontdefiníciók ekkor az App.config fájlba kerülnek. A következő pél
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte az Azure-továbbító alapok, ezek hivatkozásokat követve tudhat meg többet.
+Most, hogy megismerte az alapokat, az Azure Relay, kövesse az alábbi hivatkozások további.
 
 * [Mi az az Azure Relay?](relay-what-is-it.md)
 * [Az Azure Service Bus-architektúra áttekintése](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
-* Töltse le a Service Bus-minták [Azure-minták] [ Azure samples] , vagy keresse meg a [Service Bus-minták áttekintése][overview of Service Bus samples].
+* Töltse le a Service Bus-minták [Azure-minták] [ Azure samples] , vagy tekintse meg a [a Service Bus-minták áttekintését][overview of Service Bus samples].
 
 [Shared Access Signature Authentication with Service Bus]: ../service-bus-messaging/service-bus-shared-access-signature-authentication.md
 [Azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2

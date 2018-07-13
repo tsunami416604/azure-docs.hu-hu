@@ -1,6 +1,6 @@
 ---
-title: Áttekintést az Azure számítási egység |} Microsoft Docs
-description: Az Azure-beli fogalmi áttekintés számítási Linux mértékegységét. A ACU CPU-teljesítmény összehasonlítása különböző Azure termékváltozatok módot nyújt.
+title: Az Azure számítási egység |} A Microsoft Docs
+description: Áttekintés az Azure-fogalom számítási egység Linux rendszeren. Az ACU biztosítja az Azure-termékváltozatok CPU-teljesítmény összehasonlítása.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2017
 ms.author: jonbeck
 ms.openlocfilehash: 387133bf0087d6e3fc3dc725749661235d438d27
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30833523"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606427"
 ---
-# <a name="azure-compute-unit-acu"></a>Az Azure számítási egység (ACU)
+# <a name="azure-compute-unit-acu"></a>Azure-beli számítási egység (ACU-k)
 
 [!INCLUDE [virtual-machines-common-acu](../../../includes/virtual-machines-common-acu.md)]
 
 
-Az alábbiakban a különböző méretű kapcsolatos további információkra mutató hivatkozásokat:
+Az alábbiakban a különböző méretekre vonatkozó további információkra mutató hivatkozásokat:
 - [Általános célú](sizes-general.md)
 - [Memóriaoptimalizált](sizes-memory.md)
 - [Számításra optimalizált](sizes-compute.md)

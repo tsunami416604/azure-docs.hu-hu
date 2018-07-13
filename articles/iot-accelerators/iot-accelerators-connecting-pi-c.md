@@ -1,6 +1,6 @@
 ---
-title: Távoli figyelésével C - Azure használatával málna Pi kiépítése |} Microsoft Docs
-description: Ismerteti, hogyan lehet a Pi málna eszköz csatlakozni a távoli megfigyelési megoldásgyorsító c nyelven írt alkalmazást használ
+title: Raspberry Pi távoli figyelési C – az Azure használatával üzembe helyezése |} A Microsoft Docs
+description: Ismerteti, hogyan lehet egy Raspberry Pi-eszköz csatlakoztatása a távoli figyelési megoldásgyorsító c nyelven írt alkalmazás használatával
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,57 +9,57 @@ ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dobett
 ms.openlocfilehash: 23e84a8d577bb1c4950de3acd76b0f8528551ae0
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735494"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611441"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Csatlakoztassa az málna Pi eszközt a távoli megfigyelési megoldásgyorsító (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>A Raspberry Pi-eszköz csatlakoztatása a távoli figyelési megoldásgyorsító (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli megfigyelési megoldásgyorsító. Csakúgy, mint a beágyazott korlátozott eszközökön futó alkalmazások, az ügyfélkód a málna Pi eszköz alkalmazás íródott a c kiszolgálóra. Ebben az oktatóanyagban hoz létre az alkalmazás egy málna Pi Raspbian operációs rendszert futtató.
+Ez az oktatóanyag bemutatja, hogyan kell egy fizikai eszköz csatlakoztatása a távoli figyelési megoldásgyorsító. Csakúgy, mint legnagyobb beágyazott korlátozott eszközökön futó alkalmazásokhoz, az ügyfélkód a Raspberry Pi eszköz alkalmazás betöltőprogramot c-hez Ebben az oktatóanyagban hozza létre a Raspbian operációs rendszert futtató az alkalmazást egy Raspberry Pi-on.
 
 ### <a name="required-hardware"></a>Szükséges hardver
 
-Ahhoz, hogy a parancssor a málna Pi a távoli csatlakozás egy asztali számítógépen.
+Asztali számítógép ahhoz, hogy távolról csatlakozhat a parancssorban a Raspberry Pi-on.
 
-[Microsoft IoT Starter Kit málna Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) vagy ezzel egyenértékű összetevőket. Ez az oktatóanyag a csomagot a következő elemeket használja:
+[A Microsoft IoT-Kezdőcsomag a Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) vagy ezzel egyenértékű összetevőket. Ebben az oktatóanyagban a csomag a következő cikkeket:
 
-- Raspberry Pi 3
+- Raspberry pi 3 –
 - (A NOOBS) MicroSD-kártyán
-- A USB Mini-kábellel
-- Kábel
+- Egy USB Mini-kábellel
+- Egy Ethernet-kábelek
 
 ### <a name="required-desktop-software"></a>Szükséges asztali szoftverek
 
-SSH-ügyfél van szüksége az asztali gépen ahhoz, hogy a parancssor a málna Pi a érheti el távolról.
+SSH-ügyfelet kell ahhoz, hogy a parancssor a Raspberry Pi-on érheti el távolról asztali gépén.
 
-- A Windows tartalmaz egy SSH-ügyfél. Azt javasoljuk, [PuTTY](http://www.putty.org/).
-- A legtöbb Linux terjesztéseket, a Mac OS közé tartoznak az SSH parancssori segédprogramot. További információkért lásd: [SSH használatával Linux és Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- Windows nem tartalmazza az SSH-ügyfelet. Azt javasoljuk, [PuTTY](http://www.putty.org/).
+- A legtöbb Linux-disztribúciók és Mac OS tartalmazza az SSH parancssori segédprogramot. További információkért lásd: [SSH használatával Linux vagy Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-raspberry-pi-software"></a>Szükséges málna Pi szoftver
+### <a name="required-raspberry-pi-software"></a>Raspberry Pi szükséges szoftverek
 
-Ez a cikk feltételezi, hogy a legújabb verziójának telepítése a [a málna Pi Raspbian operációs](https://www.raspberrypi.org/learning/software-guide/quickstart/).
+Ez a cikk feltételezi, hogy telepítette a legújabb verzióját a [Raspbian operációs rendszer, a Raspberry Pi-on](https://www.raspberrypi.org/learning/software-guide/quickstart/).
 
-A következő lépések bemutatják egy C alkalmazás, amely kapcsolódik a megoldásgyorsító összeállítása a málna Pi előkészítése:
+A következő lépések bemutatják, hogyan készíti elő a Raspberry Pi a C alkalmazás, amely kapcsolódik a megoldásgyorsító létrehozásához:
 
-1. Kapcsolódás a málna Pi **ssh**. További információkért lásd: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a a [málna Pi webhely](https://www.raspberrypi.org/).
+1. Csatlakozzon a Raspberry Pi **ssh**. További információkért lásd: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a a [Raspberry Pi webhely](https://www.raspberrypi.org/).
 
-1. A málna Pi frissítéséhez használja a következő parancsot:
+1. A következő paranccsal a Raspberry Pi frissítése:
 
     ```sh
     sudo apt-get update
     ```
 
-1. A következő paranccsal adja hozzá a málna Pi szükséges Fejlesztőeszközök és a szalagtárak:
+1. A következő parancs használatával adja hozzá a szükséges fejlesztői eszközök és kódtárak a Raspberry Pi:
 
     ```sh
     sudo apt-get install g++ make cmake gcc git libssl1.0-dev build-essential curl libcurl4-openssl-dev uuid-dev
     ```
 
-1. A következő parancsok segítségével töltse le, elkészítéséhez és az IoT-központ klienskódtárak segítségével telepítse a málna Pi:
+1. A következő parancsok használatával töltse le, hozhat létre és telepítse az IoT Hub-ügyfélkönyvtárak a Raspberry Pi-on:
 
     ```sh
     cd ~
@@ -73,9 +73,9 @@ A következő lépések bemutatják egy C alkalmazás, amely kapcsolódik a mego
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
-Az alábbi lépésekkel használatával a **ssh** a málna Pi kapcsolatot:
+Hajtsa végre a következő lépések segítségével a **ssh** a Raspberry Pi kapcsolatot:
 
-1. Hozzon létre egy nevű `remote_monitoring` a málna Pi a saját mappájában. Lépjen abba a mappába, a rendszerhéj:
+1. Hozzon létre egy nevű `remote_monitoring` a kezdőmappát a Raspberry Pi-on. Keresse meg a mappa az felületen:
 
     ```sh
     cd ~
@@ -85,7 +85,7 @@ Az alábbi lépésekkel használatával a **ssh** a málna Pi kapcsolatot:
 
 1. Hozza létre a négy fájlokat **main.c**, **remote_monitoring.c**, **remote_monitoring.h**, és **CMakeLists.txt** a a `remote_monitoring` a mappa.
 
-1. Egy szövegszerkesztőben nyissa meg a **remote_monitoring.c** fájlt. A málna Pi is használhatja a **nano** vagy **vi** szövegszerkesztőben. Adja hozzá a következő `#include`-utasításokat:
+1. Egy szövegszerkesztőben nyissa meg a **remote_monitoring.c** fájlt. A Raspberry Pi-on is használhatja a **nano** vagy **vi** szövegszerkesztőben. Adja hozzá a következő `#include`-utasításokat:
 
     ```c
     #include "iothubtransportmqtt.h"
@@ -129,11 +129,11 @@ Mentse a **main.c** fájlt, és zárja be a szerkesztőt.
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-Az alábbi lépések bemutatják, hogyan használható *CMake* hozhat létre az ügyfélalkalmazást.
+Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmazás hozhat létre.
 
 1. Egy szövegszerkesztőben nyissa meg a **CMakeLists.txt** fájlt a `remote_monitoring` mappát.
 
-1. Az alábbi utasítások segítségével meghatározhatja, hogyan hozható létre az ügyfél-alkalmazás hozzáadása:
+1. Adja hozzá az alábbi utasítások segítségével meghatározhatja, hogyan hozhat létre az ügyfélalkalmazás:
 
     ```cmake
     macro(compileAsC99)
@@ -183,7 +183,7 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* hozhat létre az 
 
 1. Mentse a **CMakeLists.txt** fájlt, és zárja be a szerkesztőt.
 
-1. Az a `remote_monitoring` mappa, hozzon létre egy mappát tárolásához a *ellenőrizze* CMake előállított fájlokat. Ezután futtassa a **cmake** és **ellenőrizze** parancsok az alábbiak szerint:
+1. Az a `remote_monitoring` mappában hozzon létre egy mappát tárolásához a *győződjön meg arról,* CMake által létrehozott fájlokat. Ezután futtassa a **cmake** és **győződjön meg arról,** parancsok az alábbiak szerint:
 
     ```sh
     mkdir cmake
@@ -192,7 +192,7 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* hozhat létre az 
     make
     ```
 
-1. Az ügyfélalkalmazás futtatása, és telemetriai adatokat küldhet az IoT hubhoz:
+1. Futtassa az ügyfélalkalmazást és telemetriát küldjön az IoT hubnak:
 
     ```sh
     ./sample_app

@@ -1,6 +1,6 @@
 ---
-title: Módosítsa a helyi hálózati átjáró IP-cím előtagokat és a VPN-átjáró IP-címe |} Azure |} Portál |} Microsoft Docs
-description: Ez a cikk végigvezeti az Azure portál használatával helyi hálózati átjáró IP-cím előtagokat módosítása.
+title: A helyi hálózati átjáró IP-címelőtagokat, és a VPN-átjáró IP-cím módosítása |} Azure |} Portál |} A Microsoft Docs
+description: Ez a cikk végigvezeti az Azure portal használatával helyi hálózati átjáró IP-címelőtagjainak módosítása.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
 ms.openlocfilehash: bdd6f90fe97408bd45a72adf58bfdc190207de46
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23883823"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38651936"
 ---
-# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Az Azure portál használatával a helyi hálózati átjáró beállításainak módosítása
+# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Az Azure portal használatával a helyi hálózati átjáró beállításainak módosítása
 
-Egyes esetekben a helyi hálózati átjáró címelőtagja vagy GatewayIPAddress beállítások módosítása. Ez a cikk bemutatja, hogyan módosíthatja a helyi hálózati átjáró beállításokat. Emellett módosíthatja ezeket a beállításokat egy másik módszer a egy másik lehetőség kiválasztásával az alábbi listából:
+Néha AddressPrefix vagy GatewayIPAddress helyi hálózati átjáró beállításainak módosítása Ez a cikk bemutatja, hogyan lehet a helyi hálózati átjáró beállításainak módosítása. Ezeket a beállításokat egy másik lehetőség kiválasztásával az alábbi listából egy másik módszer a is módosíthatja:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -34,18 +34,18 @@ Egyes esetekben a helyi hálózati átjáró címelőtagja vagy GatewayIPAddress
 >
 
 
-## <a name="ipaddprefix"></a>IP-cím előtagokat módosítása
+## <a name="ipaddprefix"></a>IP-címelőtagjainak módosítása
 
-IP-cím előtagokat módosításakor követi függ, hogy rendelkezik-e a helyi hálózati átjáró kapcsolatot.
+Amikor IP-címelőtagjainak módosítása, a lépések függ a helyi hálózati átjáró rendelkezik-e a kapcsolat.
 
 [!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
 
-## <a name="gwip"></a>Az átjáró IP-cím módosítása
+## <a name="gwip"></a>Átjáró IP-címének módosítása
 
-Ha a VPN-eszköz, amelyhez csatlakozni akar, megváltoztatta nyilvános IP-címét, a változtatásnak megfelelően módosítania kell a helyi hálózati átjárót. Ha megváltoztatja a nyilvános IP-címet, akkor kövesse függ, hogy rendelkezik-e a helyi hálózati átjáró kapcsolat.
+Ha a VPN-eszköz, amelyhez csatlakozni akar, megváltoztatta nyilvános IP-címét, a változtatásnak megfelelően módosítania kell a helyi hálózati átjárót. Amikor módosítja a nyilvános IP-címet, a lépések függ a helyi hálózati átjáró rendelkezik-e a kapcsolat.
 
 [!INCLUDE [modify gateway IP](../../includes/vpn-gateway-modify-lng-gateway-ip-portal-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ellenőrizheti a gateway-kapcsolatot. Lásd: [egy átjáró kapcsolat ellenőrzéséhez](vpn-gateway-verify-connection-resource-manager.md).
+Ellenőrizheti, hogy az átjárókapcsolat. Lásd: [átjárókapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md).

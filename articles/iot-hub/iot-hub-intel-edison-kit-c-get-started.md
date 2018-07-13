@@ -1,9 +1,9 @@
 ---
-title: Intel Edison felhőbe (C) - Intel Edison csatlakozzon az Azure IoT Hub |} Microsoft Docs
-description: Megtudhatja, hogyan kell beállítania, és Azure IoT-központ Intel Edison adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban Intel Edison csatlakozni.
+title: Intel Edison felhőbe (C) – Intel Edison csatlakoztatása Azure IoT hubra |} A Microsoft Docs
+description: Megtudhatja, hogyan és beállítása és kapcsolódás Intel Edison Intel Edison adatokat küldeni az Azure felhőalapú platformján ebben az oktatóanyagban az Azure IoT hubra.
 author: rangv
 manager: ''
-keywords: az Azure iot intel edison, intel edison iot-központot, intel edison adatküldés intel felhőbe edison felhőbe
+keywords: az Azure iot intel edison, intel edison iot hub, az intel edison küldje az adatokat a felhőbe, az intel edison a felhőbe
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
@@ -11,123 +11,123 @@ ms.topic: conceptual
 ms.date: 4/11/2018
 ms.author: rangv
 ms.openlocfilehash: 2efea8054320323df0e0eb603a20a5773d03cad8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634879"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38676621"
 ---
-# <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Csatlakozás Azure IoT Hub (C) Intel Edison
+# <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Intel Edison csatlakozhat az Azure IoT Hub (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Ebben az oktatóanyagban akkor először tanulás alapjainak Intel Edison használata. Majd megtudhatja, hogyan kapcsolódhat zökkenőmentesen az eszközök a felhőbe [Azure IoT Hub](iot-hub-what-is-iot-hub.md).
+Ez az oktatóanyag első lépésként, tanulás az Intel Edison való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe az eszközök [Azure IoT Hub](iot-hub-what-is-iot-hub.md).
 
-Még nem rendelkezik egy csomagot? Start [Itt](https://azure.microsoft.com/develop/iot/starter-kits)
+Még nem rendelkezik egy csomagot? Indítsa el [Itt](https://azure.microsoft.com/develop/iot/starter-kits)
 
-## <a name="what-you-do"></a>Mit
+## <a name="what-you-do"></a>TEENDŐ
 
-* A telepítő Intel Edison és és Groove-modulok.
-* Létrehoz egy IoT-központot.
-* Eszköz regisztrálása az Edison az IoT hub a.
-* Futtassa a mintaalkalmazást érzékelő adatokat küldeni az IoT hub Edison.
+* A telepítő Intel Edison és és a Groove-modulok.
+* Hozzon létre egy IoT hubot.
+* Eszköz regisztrálása az IoT hub for Edison.
+* Egy mintaalkalmazás futtatása a Edison érzékelőktől kapott adatok küldése az IoT hubnak.
 
-Az IoT-központ az Ön által létrehozott Intel Edison csatlakozni. Majd futtassa a mintaalkalmazást a Edison hőmérséklet és a páratartalom adatokat gyűjteni a Groove hőmérséklet-érzékelő. Végezetül az érzékelő adatokat küldött az IoT hub.
+Intel Edison csatlakozni az IoT hub által létrehozott. Ezután egy mintaalkalmazás futtatunk Edison hőmérséklettel és páratartalommal kapcsolatos adatok gyűjtését egy Groove hőmérséklet-érzékelő. Végül az érzékelő adatokat küld az IoT hubnak.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-* Megtudhatja, hogyan hozzon létre egy Azure IoT-központot, és az új eszköz kapcsolati karakterláncot.
-* Hogyan Edison kapcsolódni egy Groove hőmérséklet-érzékelő.
-* Megtudhatja, hogyan futtatja a mintaalkalmazás Edison érzékelő adatok gyűjtéséért felelős ügyfélfeladatot.
-* Hogyan érzékelő adatokat küldeni az IoT hub.
+* Útmutató az Azure IoT hub létrehozása és az új eszköz kapcsolati karakterláncának beszerzése.
+* Hogyan Edison összekapcsolása egy Groove hőmérséklet-érzékelő.
+* Hogyan gyűjtheti az érzékelőktől kapott adatok egy mintaalkalmazás Edison történő futtatásával.
+* Hogyan küldhet az IoT hub érzékelői adatokat.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
 ![Mi szükséges](media/iot-hub-intel-edison-kit-c-get-started/0_kit.png)
 
-* Az Intel Edison Tanács
+* Intel Edison tábla
 * Arduino bővítése tábla
-* Aktív Azure-előfizetés. Ha az Azure-fiók nem rendelkezik [hozzon létre egy Azure próbafiókot](https://azure.microsoft.com/free/) csak néhány perc múlva.
-* A Mac vagy a Windows vagy Linux rendszerű számítógép.
-* Az internethez.
-* A típus egy USB-kábel Micro B
-* A közvetlen aktuális (DC) tápegység. A tápegység kell tekinthető meg az alábbiak szerint:
-  - 7-15V TARTOMÁNYVEZÉRLŐ
+* Aktív Azure-előfizetés. Ha nem rendelkezik Azure-fiók [hozzon létre egy ingyenes Azure próbafiókot](https://azure.microsoft.com/free/) mindössze néhány perc múlva.
+* Mac vagy Windows vagy Linux rendszert futtató számítógép.
+* Internetkapcsolat.
+* A típus egy USB-kábelen keresztül a Micro B
+* A közvetlen jelenlegi (DC) tápegység. A tápegység minősített módon kell lehet:
+  - 7 – 15V DC
   - Legalább 1500mA
-  - A Központ/belső PIN-kódot kell lennie a pozitív sarkpontot az energiaellátás
+  - A Központ/belső PIN-kódot kell lennie az energiaellátás a pozitív pole
 
 A következő elemek nem kötelező:
 
 * Groove alap pajzs V2
 * Groove - hőmérséklet-érzékelő
-* Groove kábel
-* Bármely Oszlopelválasztó sávok vagy csavart a csomagban, beleértve a két csavart vizsgálókocsihoz a bővítés board és négy csavart és műanyag térköztartók modul a része.
+* Groove-kábellel
+* Bármely Oszlopelválasztó sávok vagy csavart a csomagolás, beleértve a két csavart, a modul a helybővítés tábla és négy csavart és műanyag térköztartók vizsgálókocsihoz szerepel.
 
 > [!NOTE] 
-Ezek az elemek nem kötelező, mert a kód a minta támogatási szimulált érzékelőadatait.
+Ezek az elemek nem kötelező, mivel a kód minta támogatási szimulált érzékelői adatokat.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="setup-intel-edison"></a>A telepítő Intel Edison
+## <a name="setup-intel-edison"></a>Intel Edison beállítása
 
-### <a name="assemble-your-board"></a>A tábla összeállítása
+### <a name="assemble-your-board"></a>Állítsa össze a tábla
 
-Ez a szakasz az Intel® Edison modul csatlakoztatni a bővítés board lépéseket tartalmazza.
+Ez a szakasz tartalmazza az Intel® Edison modul csatlakoztatása a helybővítés tábla lépéseket.
 
-1. A bővítés üzenőfalon, a bővítés táblán csavart, a modul a lyuk sorba állítása az Intel® Edison modul, a fehér vázlatban helyezze el.
+1. A fehér vázlat a helybővítés táblán belül az Intel® Edison modul helye a lyuk az modulban a csavart a helybővítés táblán a sorba állítása.
 
-2. Nyomja le a modul a szavakat alatt `What will you make?` csak úgy érzi, hogy a beépülő modult.
+2. Nyomja le az alatt a szavakat modulon `What will you make?` mindaddig, amíg úgy véli, hogy a beépülő modult.
 
-   ![indítópanel 2 összeállítása](media/iot-hub-intel-edison-kit-c-get-started/1_assemble_board2.jpg)
+   ![Állítsa össze a tábla 2](media/iot-hub-intel-edison-kit-c-get-started/1_assemble_board2.jpg)
 
-3. A bővítés board modul védelmére használja a két hexadecimális nuts (a csomagban található).
+3. A modul a helybővítés táblához való védelmére használja a két hexadecimális nuts (a csomagban található).
 
-   ![indítópanel 3 összeállítása](media/iot-hub-intel-edison-kit-c-get-started/2_assemble_board3.jpg)
+   ![Állítsa össze a tábla 3](media/iot-hub-intel-edison-kit-c-get-started/2_assemble_board3.jpg)
 
-4. Helyezze be elment egyet a négy sarok lyuk a bővítés táblán. Csavarás és szigoríthatja a csavart alakzatot fehér műanyag térköztartók egyikét.
+4. A bővítés táblán a négy sarokban lyuk egyik beszúrása elment. Twist nevűt, és egy alakzatot a csavart fehér műanyag térköztartók növeljük.
 
-   ![indítópanel 4 összeállítása](media/iot-hub-intel-edison-kit-c-get-started/3_assemble_board4.jpg)
+   ![Állítsa össze a tábla 4](media/iot-hub-intel-edison-kit-c-get-started/3_assemble_board4.jpg)
 
-5. Ismételje meg a másik három sarok térköztartók.
+5. Ismételje meg a többi három sarokban térköztartók.
 
-   ![indítópanel 5 összeállítása](media/iot-hub-intel-edison-kit-c-get-started/4_assemble_board5.jpg)
+   ![Állítsa össze a tábla 5](media/iot-hub-intel-edison-kit-c-get-started/4_assemble_board5.jpg)
 
-Most már a üzenőfalon kész.
+Most már a tábla összeállítva.
 
-   ![üzenőfalon kész](media/iot-hub-intel-edison-kit-c-get-started/5_assembled_board.jpg)
+   ![kiépített tábla](media/iot-hub-intel-edison-kit-c-get-started/5_assembled_board.jpg)
 
-### <a name="connect-the-grove-base-shield-and-the-temperature-sensor"></a>Csatlakoztassa a Groove talál pajzs és a hőmérséklet-érzékelő
+### <a name="connect-the-grove-base-shield-and-the-temperature-sensor"></a>Csatlakozás a Groove alap pajzs ikon és a hőmérséklet-érzékelő
 
-1. Jelölje be a tábla a Groove talál pajzs. Győződjön meg arról, hogy a tábla szorosan csatlakoztatott összes PIN-kód.
+1. Jelölje be a tábla Groove alap pajzs ikon. Ellenőrizze, hogy minden PIN-kód szorosan csatlakoztatva vannak a tábla.
    
    ![Groove alap pajzs ikon](media/iot-hub-intel-edison-kit-c-get-started/6_grove_base_sheild.jpg)
 
-2. Groove kábellel csatlakoztassa a Groove talál pajzs alakzatot Groove hőmérséklet-érzékelő **A0** port.
+2. Hőmérséklet-érzékelő Groove alakzatot a Groove alap pajzs Groove-kábel használatával **A0** port.
 
-   ![Csatlakozás hőmérséklet-érzékelő](media/iot-hub-intel-edison-kit-c-get-started/7_temperature_sensor.jpg)
+   ![Csatlakozhat a hőmérséklet-érzékelő](media/iot-hub-intel-edison-kit-c-get-started/7_temperature_sensor.jpg)
    
-   ![Edison és érzékelő kapcsolat](media/iot-hub-intel-edison-kit-c-get-started/16_edion_sensor.png)
+   ![Edison és érzékelő-kapcsolat](media/iot-hub-intel-edison-kit-c-get-started/16_edion_sensor.png)
 
-Most már készen áll az érzékelő.
+Az érzékelő most már készen áll.
 
-### <a name="power-up-edison"></a>Energiagazdálkodási Edison mentése
+### <a name="power-up-edison"></a>Hatékonyabbá Edison
 
-1. Csatlakoztassa a tápegység.
+1. Beépülő modul a tápegység.
 
    ![Beépülő modul tápegység](media/iot-hub-intel-edison-kit-c-get-started/8_plug_power.jpg)
 
-2. A zöld LED-jét (DS1 feliratú a táblán Arduino * bővítése) kell bonyolít le, és megvilágítottnak maradnak.
+2. Egy zöld LED (DS1 címkével a táblán Arduino * kiterjesztése) kell a mobilszolgáltatásokkal és megvilágítottnak maradjon.
 
-3. Várjon egy percet a kártya a rendszerindítás befejezéséhez.
+3. Várjon egy percet a rendszerindítás Befejezés a táblához tartozó.
 
    > [!NOTE]
-   > Ha nem rendelkezik a tartományvezérlő tápegység, továbbra is a USB-porton keresztül board power. Lásd: `Connect Edison to your computer` című szakaszban talál információt. A tábla, ilyen módon működtetéséhez azt eredményezheti, hogy a tábláról előre nem látható viselkedéshez különösen akkor, ha a Wi-Fi használatával, vagy befolyásoló tényezők motorok.
+   > Ha nem rendelkezik egy tartományvezérlő tápegység, melyen keresztül egy USB-porttal továbbra is működtethet. Lásd: `Connect Edison to your computer` című szakasz részletezi. Ilyen módon a tábla tárolóház azt eredményezheti, hogy előre nem látható viselkedéshez a tábláról, különösen akkor, ha a Wi-Fi használatával, vagy vezetői motorok.
 
 ### <a name="connect-edison-to-your-computer"></a>Edison kapcsolódni a számítógéphez
 
-1. Váltás a két micro USB-porttal felé mikrokapcsoló le, hogy Edison eszköz módban van. Az eszköz és a gazdagép üzemmód közötti különbségeket, tekintse át [Itt](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).
+1. Váltsa át a két micro USB-porttal, amelyért mikrokapcsoló le, hogy Edison eszköz módban van. Az eszköz és a gazdagép üzemmód közötti különbségek, kérjük, hivatkozzon [Itt](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).
 
-   ![Váltás a mikrokapcsoló le](media/iot-hub-intel-edison-kit-c-get-started/9_toggle_down_microswitch.jpg)
+   ![Váltsa át a mikrokapcsoló lefelé](media/iot-hub-intel-edison-kit-c-get-started/9_toggle_down_microswitch.jpg)
 
 2. A micro USB-kábellel csatlakoztassa a felső micro USB-porttal.
 
@@ -137,53 +137,53 @@ Most már készen áll az érzékelő.
 
    ![Számítógép USB](media/iot-hub-intel-edison-kit-c-get-started/11_computer_usb.jpg)
 
-4. Tudni fogják, hogy a tábla teljes inicializálását, amikor a számítógép csatlakoztat egy új meghajtót (hasonlóan egy SD-kártya beszúrása a számítógép).
+4. Tudni fogja, hogy a tábla teljes inicializálását, amikor a számítógép csatlakoztatja egy új meghajtót (például egy SD-kártya beszúrása a számítógép jelentősen).
 
 ## <a name="download-and-run-the-configuration-tool"></a>A konfigurációs eszköz letöltése és futtatása
-A legfrissebb konfigurációs eszköz az beszerzése [erre a hivatkozásra](https://software.intel.com/en-us/iot/hardware/edison/downloads) tartozó a `Installers` fejléc. Az eszköz hajtható végre, és kövesse a képernyőn megjelenő utasításokat, amennyiben szükséges Tovább gombra kattint
+A legfrissebb konfigurációs eszközt, az első [ezt a hivatkozást](https://software.intel.com/en-us/iot/hardware/edison/downloads) felsorolva a `Installers` fejléc. Hajtsa végre az eszközt, és kövesse a képernyőn megjelenő utasításokat, ahol szükséges Tovább gombra kattint
 
 ### <a name="flash-firmware"></a>Belső vezérlőprogram Flash
 1. Az a `Set up options` kattintson `Flash Firmware`.
-2. Válassza ki a lemezképet flash alakzatot a tábla a következő módszerek valamelyikével:
-   - Töltse le, és a tábla a legújabb belső vezérlőprogram lemezképpel érhetők el az Intel flash, jelölje be `Download the latest image version xxxx`.
-   - A tábla már mentette a számítógépen lemezképhez flash, jelölje be `Select the local image`. Keresse meg és jelölje ki a flash a kártyához kívánt lemezképet.
+2. Válassza ki a kép Flash alakzatot a tábla a következő módszerek valamelyikével:
+   - Töltse le és a tábla a legújabb Intel elérhető belsővezérlőprogram-lemezkép a flash `Download the latest image version xxxx`.
+   - Válassza ki a tábla már mentette-e a számítógép lemezképét a Flash, `Select the local image`. Keresse meg és válassza ki a flash a táblához való kívánt lemezképet.
 3. A telepítő eszköz megkísérli a tábla flash. A teljes villogó folyamat akár 10 percet is igénybe vehet.
 
 ### <a name="set-password"></a>Jelszó beállítása
 1. Az a `Set up options` kattintson `Enable Security`.
-2. Az Intel® Edison board egyéni nevet állíthatja be. Ez nem kötelező.
-3. Adja meg a tábla jelszavát, majd kattintson az `Set password`.
-4. A jelszót, amely később üzemszünetének.
+2. Az Intel® Edison táblához tartozó egyedi nevet állíthatja be. Ez nem kötelező.
+3. Adja meg a táblához tartozó jelszót, majd kattintson a `Set password`.
+4. Jelölje meg a jelszót, amely később használja fel.
 
-### <a name="connect-wi-fi"></a>Wi-Fi csatlakozás
-1. Az a `Set up options` kattintson `Connect Wi-Fi`. Várjon, amíg legfeljebb egy percig a számítógép elérhető Wi-Fi hálózatok keres.
+### <a name="connect-wi-fi"></a>Csatlakozás Wi-Fi
+1. Az a `Set up options` kattintson `Connect Wi-Fi`. Várjon legfeljebb egy percet, a számítógép számára elérhető Wi-Fi-hálózatok megvizsgálja.
 2. Az a `Detected Networks` legördülő listára, válassza ki a hálózaton.
 3. Az a `Security` legördülő listára, válassza ki a hálózati biztonság típusa.
-4. Adja meg a felhasználónevet és jelszót információkat, majd kattintson az `Configure Wi-Fi`.
-5. Az IP-cím, amely később üzemszünetének.
+4. Adja meg a felhasználónevet és jelszót adatait, majd kattintson a `Configure Wi-Fi`.
+5. Jelölje meg az IP-cím, amely később használható fel.
 
 > [!NOTE]
-> Győződjön meg arról, hogy Edison és a számítógép ugyanahhoz a hálózathoz csatlakozik. A számítógép csatlakozik a Edison az IP-cím használatával.
+> Győződjön meg arról, hogy Edison csatlakozik-e a számítógép ugyanazon a hálózaton. A számítógép csatlakozik a Edison az IP-cím használatával.
 
-   ![Csatlakozás hőmérséklet-érzékelő](media/iot-hub-intel-edison-kit-c-get-started/12_configuration_tool.png)
+   ![Csatlakozhat a hőmérséklet-érzékelő](media/iot-hub-intel-edison-kit-c-get-started/12_configuration_tool.png)
 
-Gratulálunk! Sikeresen konfigurálta az Edison.
+Gratulálunk! Edison sikeresen konfigurálta.
 
-## <a name="run-a-sample-application-on-intel-edison"></a>Futtassa a mintaalkalmazást az Intel Edison
+## <a name="run-a-sample-application-on-intel-edison"></a>Intel Edison a mintaalkalmazás futtatása
 
-### <a name="prepare-the-azure-iot-device-sdk"></a>Az Azure IoT eszköz SDK előkészítése
+### <a name="prepare-the-azure-iot-device-sdk"></a>Készítse elő az Azure IoT eszközoldali SDK-t
 
-1. A számítógép a következő SSH-ügyfél használatával az Intel Edison csatlakozni. Az IP-cím származik-e a konfigurációs eszközt, és a jelszót, az egy adott eszköz a beállított.
-    - [A puTTY](http://www.putty.org/) Windows.
-    - A beépített SSH-ügyfél Ubuntu vagy macOS (Futtatás `ssh root@"the IP address"`).
+1. A gazdagép számítógépről a következő SSH-ügyfél használatával az Intel Edison csatlakozni. Az IP-cím van a konfigurációs eszközt, és a jelszó pedig az eszköz a beállított.
+    - [A puTTY](http://www.putty.org/) Windows számára.
+    - Az Ubuntu vagy macOS rendszeren beépített SSH-ügyfél (Futtatás `ssh root@"the IP address"`).
 
-2. Klónozza a mintaalkalmazást ügyfél az eszközre. 
+2. Klónozza a példaalkalmazást ügyfél az eszközre. 
    
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-c-intel-edison-client-app.git
    ```
 
-3. Keresse meg a tárház mappa a következő parancsot hozhat létre Azure IoT-SDK
+3. Keresse meg a tárház mappában futtassa a következő parancsot hozhat létre az Azure IoT SDK-val
 
    ```bash
    cd iot-hub-c-intel-edison-client-app
@@ -202,36 +202,36 @@ Gratulálunk! Sikeresen konfigurálta az Edison.
 
    ![Konfigurációs fájl](media/iot-hub-intel-edison-kit-c-get-started/13_configure_file.png)
 
-   Két makrók van ebben a fájlban configurate is. Az első egy `INTERVAL`, amely megadja, hogy két felhőbe küldött üzeneteket közötti időközt. A második érték `SIMULATED_DATA`, vagyis az, hogy szimulált érzékelőadatait vagy nem logikai értéket.
+   Nincsenek két makrók configurate használhatja ezt a fájlt. Az első egy `INTERVAL`, amely megadja, hogy a két a felhőbe küldött üzenetek között eltelt időt. A második érték `SIMULATED_DATA`, azaz az e használni a szimulált érzékelői adatokat, vagy nem logikai érték.
 
-   Ha Ön **nem rendelkezik az érzékelő**, beállíthatja a `SIMULATED_DATA` egy érték `1` a minta kérelem létrehozása és használata a szimulált érzékelőadatait.
+   Ha Ön **nem rendelkezik az érzékelő**állítsa be a `SIMULATED_DATA` értéket a következőre `1` , hogy a mintaalkalmazás létrehozása és használata a szimulált érzékelői adatokat.
 
-2. Mentse és zárja be a vezérlő-O billentyűkombináció lenyomásával > Enter > CTRL-X.
+2. Mentéséhez és bezárásához nyomja meg az ellenőrző-O > Enter > CTRL-X.
 
-### <a name="build-and-run-the-sample-application"></a>Hozza létre, és futtassa a mintaalkalmazást
+### <a name="build-and-run-the-sample-application"></a>A minta-alkalmazás összeállítása és futtatása
 
-1. A mintaalkalmazás összeállítása a következő parancs futtatásával:
+1. A mintaalkalmazás létrehozása a következő parancs futtatásával:
 
    ```bash
    cmake . && make
    ```
-   ![Kimeneti összeállítása](media/iot-hub-intel-edison-kit-c-get-started/14_build_output.png)
+   ![Kimeneti létrehozása](media/iot-hub-intel-edison-kit-c-get-started/14_build_output.png)
 
-1. Futtassa a mintaalkalmazást a következő parancs futtatásával:
+1. A mintaalkalmazás futtatása a következő parancs futtatásával:
 
    ```bash
    sudo ./app '<your Azure IoT hub device connection string>'
    ```
 
    > [!NOTE] 
-   Győződjön meg arról, hogy Ön-e beillesztési az eszköz kapcsolati karakterláncát azokat a szimpla idézőjelben.
+   Győződjön meg arról, másolás és beillesztés az eszköz kapcsolati karakterláncának be a szimpla idézőjelek között.
 
-A következő kimeneti bemutatja az érzékelő adatokat és az IoT hub küldött üzenetek kell megjelennie.
+Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket jeleníti meg a következő kimenetnek kell megjelennie.
 
-![Kimeneti - érzékelő adatokat küldött az Intel Edison az IoT hubhoz](media/iot-hub-intel-edison-kit-c-get-started/15_message_sent.png)
+![Kimenet – Intel Edison az IoT hubnak küldött érzékelőktől kapott adatok](media/iot-hub-intel-edison-kit-c-get-started/15_message_sent.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Egy mintaalkalmazás érzékelő adatokat gyűjteni, és küldje el az IoT hub futtatását.
+Egy mintaalkalmazás érzékelőktől kapott adatok összegyűjtésére, és küldje el az IoT hubnak küldött futtatott.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

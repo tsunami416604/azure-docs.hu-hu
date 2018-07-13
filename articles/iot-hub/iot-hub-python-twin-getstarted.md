@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure IoT Hub eszköz twins (Python) |} Microsoft Docs
-description: Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT Python SDK segítségével valósítja meg a szimulált eszköz alkalmazást és egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása.
+title: Első lépések az ikereszközökhöz Azure IoT Hub (Python) |} A Microsoft Docs
+description: Hogyan használható az Azure IoT Hub device twins címkéket adhat hozzá, majd az IoT Hub-lekérdezést. Az Azure IoT SDK Pythonhoz készült használatával valósítható meg a szimulált eszközalkalmazás és a egy szolgáltatás-alkalmazást, amely hozzáadja a címkék és az IoT Hub-lekérdezést.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: kgremban
 ms.openlocfilehash: 08e457febaa7522cac86e63c0c187d1e8e49daff
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34634981"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619365"
 ---
-# <a name="get-started-with-device-twins-python"></a>Ismerkedés az eszköz twins (Python)
+# <a name="get-started-with-device-twins-python"></a>Első lépések az ikereszközökhöz (Python)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Ez az oktatóanyag végén meg kell két Python konzol alkalmazások:
+Ez az oktatóanyag végén két Python-konzolalkalmazással fog rendelkezni:
 
-* **AddTagsAndQuery.py**, a Python háttér-alkalmazás, amely címkét ad hozzá, és lekérdezi az eszköz twins.
-* **ReportConnectivity.py**, a Python-alkalmazás, amely egy eszköz, amely összeköti az IoT hub korábban létrehozott eszköz identitású szimulálja, és jelenti a kapcsolat állapotát.
+* **AddTagsAndQuery.py**, egy Python-háttér-alkalmazást, amely címkét ad hozzá, és lekérdezi az ikereszközök.
+* **ReportConnectivity.py**, Python-alkalmazás, amely szimulálja a olyan eszköz, amely az IoT hubhoz a korábban létrehozott eszközidentitással, és jelenti a kapcsolat állapotát.
 
 > [!NOTE]
-> A cikk [Azure IoT SDK-k] [ lnk-hub-sdks] használható eszközt és a háttér-alkalmazások az Azure IoT SDK-k információt nyújt.
+> A cikk [Azure IoT SDK-k] [ lnk-hub-sdks] használható eszköz és a háttér-alkalmazásokat hozhat létre az Azure IoT SDK-kkal kapcsolatos információkat biztosít.
 > 
 > 
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * [Python 2.x vagy 3.x][lnk-python-download]. Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét][lnk-install-pip].
 * Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra][lnk-visual-c-redist] van szükség a Python natív DLL-jei használatához.
@@ -43,8 +43,8 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="create-the-service-app"></a>A service-alkalmazás létrehozása
-Ebben a szakaszban egy Python-Konzolalkalmazás, a társított eszközök a két hely metaadatok hozzáadó hoz létre a **{eszközazonosító}**. Ezután lekérdezi az eszköz twins tárolja az IoT hub, az eszközök Redmond, és a mobilhálózat kapcsolat jelentő megfelelően kiválasztása.
+## <a name="create-the-service-app"></a>Az alkalmazás létrehozása
+Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely hozzáadja az ikereszköz társított metaadatok helye a **{Device Id}**. Ezután lekérdezi az ikereszközök tárolja az IoT hub kiválasztása az eszközök, Redmond, és amelyekre a mobilhálózati kapcsolat jelent.
 
 1. Nyisson meg egy parancssort, és telepítse a **Pythonhoz készült Azure IoT Hub szolgáltatási SDK-t**. Az SDK telepítése után zárja be a parancssort.
 
@@ -52,7 +52,7 @@ Ebben a szakaszban egy Python-Konzolalkalmazás, a társított eszközök a két
     pip install azure-iothub-service-client
     ```
 
-1. Egy szövegszerkesztő használatával hozzon létre egy új **AddTagsAndQuery.py** fájlt.
+1. Egy szövegszerkesztővel hozzon létre egy új **AddTagsAndQuery.py** fájlt.
 
 3. Adja hozzá az alábbi kódot a szükséges modulok importálásához a szolgáltatás SDK-jából:
 
@@ -62,7 +62,7 @@ Ebben a szakaszban egy Python-Konzolalkalmazás, a társított eszközök a két
     from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
     from iothub_service_client import IoTHubDeviceTwin, IoTHubError
     ```
-2. Az alábbi kódot, a helyőrző cseréje `[IoTHub Connection String]` és `[Device Id]` az IoT-központ és az eszköz azonosítója, a korábbi szakaszokban létrehozott kapcsolati karakterlánccal.
+2. Adja hozzá a következő kódot, lecserélve a helyőrző `[IoTHub Connection String]` és `[Device Id]` az IoT hub és az eszköz azonosítója, a korábbi szakaszokban létrehozott kapcsolati karakterláncára.
    
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -120,7 +120,7 @@ Ebben a szakaszban egy Python-Konzolalkalmazás, a társított eszközök a két
             print ( "IoTHub sample stopped" )
     ```
    
-    A **beállításjegyzék** vezérlőnek eszköz twins a szolgáltatás együttműködhet szükséges összes módszert. A kód első inicializálja a **beállításjegyzék** objektumot, majd az eszköz iker a frissítések **deviceId**, és végül a két lekérdezést futtatja. Az első csak az eszköz twins található eszközök kiválasztja a **Redmond43** gépek és a második rendszerint a lekérdezést csak azokat az eszközöket is keresztül mobilhálózati kapcsolódó kiválasztásához.
+    A **beállításjegyzék** vezérlőnek az ikereszközökhöz, a szolgáltatás használatához szükséges összes módszert. A kód először inicializálja a **beállításjegyzék** objektumot, majd az eszközök ikereszköze a frissítések **deviceId**, és végül a két lekérdezést futtat. Az első kiválasztja a csak az ikereszközök található eszközök a **Redmond43** gépek és a második megjeleníthető a lekérdezést, válassza ki a keresztül mobilhálózati is csatlakozó eszközöket.
    
 1. Adja hozzá a következő kódot végén **AddTagsAndQuery.py** megvalósításához a **iothub_service_sample_run** függvény:
    
@@ -137,14 +137,14 @@ Ebben a szakaszban egy Python-Konzolalkalmazás, a társított eszközök a két
     python AddTagsAndQuery.py
     ```
    
-    Megjelenik az eredmények között egy eszközön a lekérdezés kérni a minden eszköz a mappában lévő **Redmond43** és a lekérdezés, amely korlátozza az eredmények mobilhálózati használó eszközök sem.
+    Megjelenik a lekérdezés feltevéséhez az eredmények között egy eszközön található összes eszköz **Redmond43** sem a lekérdezést, amely korlátozza az eredményeket a mobilhálózati használó eszközöket.
    
     ![első lekérdezés][1]
 
-A következő szakaszban hozzon létre egy eszköz alkalmazást, amely a kapcsolódási adatokat, és módosítja az előző szakaszban a lekérdezés eredménye.
+A következő szakaszban, hogy egy eszközalkalmazás létrehozása, amely jelent a kapcsolati adatokat, és módosítja az előző szakaszban a lekérdezés eredménye.
 
-## <a name="create-the-device-app"></a>Az eszköz-alkalmazás létrehozása
-Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kapcsolódik a hub, mint a **{eszközazonosító}**, és az eszköz iker által jelentett tulajdonságok a információkat, hogy mobilhálózat használata csatlakozik tartalmazzák majd a frissítéseket.
+## <a name="create-the-device-app"></a>Az eszközalkalmazás létrehozása
+Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely csatlakozik a hubhoz, mint a **{Device Id}**, és majd a frissítések az ikereszköz a jelentett tulajdonságok alapján, hogy csatlakoztatva van mobilhálózat használata adatokat tartalmazzák.
 
 1. Nyisson meg egy parancssort, és telepítse a **Pythonhoz készült Azure IoT Hub szolgáltatási SDK-t**. Az SDK telepítése után zárja be a parancssort.
 
@@ -152,7 +152,7 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kapcsolódik a
     pip install azure-iothub-device-client
     ```
 
-1. Egy szövegszerkesztő használatával hozzon létre egy új **ReportConnectivity.py** fájlt.
+1. Egy szövegszerkesztővel hozzon létre egy új **ReportConnectivity.py** fájlt.
 
 3. Adja hozzá az alábbi kódot a szükséges modulok importálásához a szolgáltatás SDK-jából:
 
@@ -162,7 +162,7 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kapcsolódik a
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
     ```
 
-2. Az alábbi kódot, a helyőrző cseréje `[IoTHub Device Connection String]` az IoT hub eszköz, a korábbi szakaszokban létrehozott kapcsolati karakterlánccal.
+2. Adja hozzá a következő kódot, lecserélve a helyőrző `[IoTHub Device Connection String]` a korábbi szakaszokban létrehozott IoT hub-eszköz kapcsolati karakterláncára.
    
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -175,7 +175,7 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kapcsolódik a
     SEND_REPORTED_STATE_CONTEXT = 0
     ```
 
-1. Adja hozzá a következő kódot a **ReportConnectivity.py** fájlt az eszköz végrehajtásához twins funkciókat:
+1. Adja hozzá a következő kódot a **ReportConnectivity.py** fájlt, végrehajtására az eszköz twins funkciókat:
 
     ```python
     def device_twin_callback(update_state, payload, user_context):
@@ -224,7 +224,7 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kapcsolódik a
             print ( "IoTHubClient sample stopped" )
     ```   
 
-    A **ügyfél** vezérlőnek az eszköz twins az eszközről interaktív szükséges összes módszert. Az előző kód után állíthatja a **ügyfél** objektumra, beolvassa az eszköz a két az eszközhöz, és frissíti a jelentett tulajdonság a kapcsolat adatokkal.
+    A **ügyfél** vezérlőnek az ikereszközökhöz az eszközről való kommunikációhoz szükséges összes módszert. Az előző kód után inicializálja a **ügyfél** objektumot, az eszköz az ikereszköz beolvasása és frissíti a jelentett tulajdonság a kapcsolati adatokkal.
 
 1. Adja hozzá a következő kódot végén **ReportConnectivity.py** megvalósításához a **iothub_client_sample_run** függvény:
    
@@ -241,28 +241,28 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kapcsolódik a
     python ReportConnectivity.py
     ```
    
-    Az eszköz twins frissültek megerősítő kell megjelennie.
+    Az ikereszközök frissített megerősítő kell megjelennie.
 
-    ![frissítés twins][2]
+    ![a párok frissítése][2]
 
-6. Most, hogy az eszköz jelentette a kapcsolat adatait, akkor mindkét lekérdezések meg kell jelennie. Lépjen vissza, és futtassa újból a lekérdezést:
+6. Most, hogy az eszköz jelenik meg a kapcsolati információkat, akkor meg kell jelennie mindkét lekérdezést. Lépjen vissza, és futtassa újból a lekérdezést:
    
     ```cmd/sh
     python AddTagsAndQuery.py
     ```
    
-    Most a **{eszközazonosító}** mindkét lekérdezési eredmények jelenjenek meg.
+    Ezúttal a **{Device Id}** meg kell jelennie mindkét lekérdezés eredményeit.
    
     ![második lekérdezés][3]
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Fel van véve eszköz metaadatait címkék egy háttér-alkalmazásból, és a szimulált eszköz alkalmazásának megírt az eszköz a két jelentés eszköz kapcsolódási adatok. Megtudta, ezt az információt a beállításjegyzék lekérdezése is.
+Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Címkeként, egy háttér-alkalmazásból hozzáadott eszközök metaadatait, és a egy szimulált eszközalkalmazás zapsáno do kapcsolat eszközadatokat a jelentés azokat az ikereszköz. Azt is megtanulta, hogyan kérdezhet le ezt az információt a beállításjegyzék használatával.
 
-A következő források segítségével megtudhatja, hogyan:
+Az alábbi forrásanyagokból megtudhatja, hogyan lehet:
 
-* Telemetriai adatokat küldhet az eszközökről a [Ismerkedés az IoT-központ] [ lnk-iothub-getstarted] oktatóanyagban
-* Eszköz iker kívánt tulajdonságokkal rendelkező eszközök konfigurálása a [használata szükséges eszközök tulajdonságok] [ lnk-twin-how-to-configure] oktatóanyagban
-* Az interaktív (például bekapcsolásával a felhasználó által felügyelt alkalmazásból ventilátor), eszközök szabályozásának a [közvetlen módszerekkel] [ lnk-methods-tutorial] oktatóanyag.
+* telemetriát az eszközökről a [IoT Hub használatának első lépései] [ lnk-iothub-getstarted] oktatóanyagban
+* konfigurálhatja az eszközöket használó eszköz ikereszköz kívánt tulajdonságait a a [használata kívánt tulajdonságok konfigurálhatja az eszközöket] [ lnk-twin-how-to-configure] oktatóanyagban
+* Az eszközök, interaktív módon (például bekapcsolása egy felhasználó által felügyelt alkalmazásból ventilátor), szabályozhatja a [közvetlen metódusok használata] [ lnk-methods-tutorial] oktatóanyag.
 
 <!-- images -->
 [1]: media/iot-hub-python-twin-getstarted/1.png

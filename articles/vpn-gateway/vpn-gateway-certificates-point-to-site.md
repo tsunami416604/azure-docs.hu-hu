@@ -1,6 +1,6 @@
 ---
-title: 'Készítése és a pont-pont tanúsítványok exportálása: PowerShell: Azure |} Microsoft Docs'
-description: Hozzon létre egy önaláírt legfelső szintű tanúsítványt, exportálja a nyilvános kulcsot, és a PowerShell-lel Windows 10 vagy Windows Server 2016 ügyféltanúsítványok előállításához.
+title: 'Tanúsítványok létrehozása és exportálása pont – hely számára: PowerShell: Azure |} A Microsoft Docs'
+description: Hozzon létre egy önaláírt főtanúsítványt, exportálja a nyilvános kulcsot és PowerShell használatával a Windows 10-es vagy Windows Server 2016 ügyféltanúsítványokat.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -16,35 +16,35 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: cherylmc
 ms.openlocfilehash: 385b6ed2e8104fd2e15e6e55d46dcd12b963ec6b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423048"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696548"
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Készítése és tanúsítványok exportálása pont-pont a PowerShell használatával
+# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Tanúsítványok létrehozása és exportálása pont – hely a PowerShell használatával
 
-Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cikk bemutatja, hogyan hozzon létre egy önaláírt legfelső szintű tanúsítványt, és a PowerShell-lel Windows 10 vagy Windows Server 2016 ügyféltanúsítványok előállításához. Ha a keresett pont-hely konfigurációs lépések, például a legfelső szintű tanúsítványok feltöltéséről válassza az "konfigurálása pont-pont" cikkekben az alábbi listából:
+Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cikk bemutatja, hogyan hozzon létre egy önaláírt főtanúsítványt, és a PowerShell használatával a Windows 10-es vagy Windows Server 2016 ügyféltanúsítványokat. Ha pont – hely konfigurációs lépések, például a legfelső szintű tanúsítványok feltöltése keres az alábbi listából válassza ki a "Konfigurálás pont – hely" cikkekben:
 
 > [!div class="op_single_selector"]
-> * [Hozzon létre önaláírt tanúsítványokat - PowerShell](vpn-gateway-certificates-point-to-site.md)
-> * [Hozzon létre önaláírt tanúsítványokat - MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
-> * [Pont – hely - Resource Manager - Azure-portál konfigurálása](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Pont – hely - erőforrás-kezelő - PowerShell konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [Pont – hely - klasszikus - Azure-portál konfigurálása](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+> * [Önaláírt tanúsítványok létrehozása – PowerShell](vpn-gateway-certificates-point-to-site.md)
+> * [Önaláírt tanúsítványok létrehozása – MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
+> * [Pont – hely – Resource Manager – Azure portal konfigurálása](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Pont – hely – Resource Manager – a PowerShell konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
+> * [Pont – hely – klasszikus – Azure portal konfigurálása](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 > 
 > 
 
-Ez a cikk a Windows 10 vagy Windows Server 2016 rendszerű számítógépre kell hajtsa végre a lépéseket. A PowerShell-parancsmagok, amelyekkel lehet tanúsítványokat létrehozni az operációs rendszer része, és a Windows más verziói nem működnek. A Windows 10 vagy Windows Server 2016 számítógép csak akkor tanúsítványainak előállításához szükséges. Ha a tanúsítványok jönnek létre, feltöltheti ezeket, vagy telepítse őket a támogatott ügyfél operációs rendszereken. 
+Ez a cikk a Windows 10-es vagy Windows Server 2016 rendszert futtató számítógépen kell hajtsa végre a lépéseket. A PowerShell-parancsmagok használatával is létrehozhat tanúsítványokat az operációs rendszer részét képezik, és a Windows más verziói nem működnek. A Windows 10-es vagy Windows Server 2016 számítógép csak akkor van szükség a tanúsítványok előállításához. A tanúsítványok jönnek létre, miután feltölti őket, vagy telepítse őket a támogatott ügyfél operációs rendszereken. 
 
-Ha nincs hozzáférése a Windows 10 vagy Windows Server 2016 számítógép, [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) tanúsítványainak létrehozásához. A tanúsítványok, létrehozhat módszerek használatával is telepíthető [támogatott](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) ügyfél operációs rendszerét.
+Ha nem rendelkezik hozzáféréssel Windows 10-es vagy Windows Server 2016 számítógéphez, akkor használhatja [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) is létrehozhat tanúsítványokat. A tanúsítványok, létrehozhat módszerek használatával is telepíthető bármelyik [támogatott](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) ügyfél operációs rendszerét.
 
-## <a name="rootcert"></a>1. Hozzon létre egy önaláírt legfelső szintű tanúsítványt
+## <a name="rootcert"></a>1. Hozzon létre egy önaláírt főtanúsítványt.
 
-A New-SelfSignedCertificate parancsmag segítségével hozzon létre egy önaláírt legfelső szintű tanúsítványt. További információkért lásd: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+A New-SelfSignedCertificate-parancsmag segítségével hozzon létre egy önaláírt főtanúsítványt. További információkért lásd: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-1. Windows 10 vagy Windows Server 2016 rendszert futtató számítógépről nyissa meg a Windows PowerShell-konzolban emelt szintű jogosultságokkal.
-2. Az alábbi példát követve létrehozni az önaláírt legfelső szintű tanúsítványt. Az alábbi példa létrehoz egy önaláírt legfelső szintű tanúsítványt, "P2SRootCert", amely automatikusan telepíti a "Tanúsítványok-aktuális User\Personal\Certificates" nevű. A tanúsítvány megtekintéséhez nyissa meg *certmgr.msc*, vagy *kezelheti a felhasználói tanúsítványok*.
+1. Windows 10-es vagy Windows Server 2016 rendszert futtató számítógépről nyissa meg a Windows PowerShell-konzolt emelt szintű jogosultságokkal.
+2. A következő példa használatával hozza létre az önaláírt főtanúsítványt. Az alábbi példa létrehoz egy önaláírt főtanúsítványt a "P2SRootCert", amely automatikusan települ a "Tanúsítványok – aktuális felhasználó\személyes\tanúsítványok" nevű. A tanúsítvány megtekintéséhez nyissa meg *certmgr.msc*, vagy *felhasználói tanúsítványok kezelése*.
 
   ```powershell
   $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -55,17 +55,17 @@ A New-SelfSignedCertificate parancsmag segítségével hozzon létre egy önalá
 
 ## <a name="clientcert"></a>2. Ügyféltanúsítvány létrehozása
 
-Minden, a virtuális hálózathoz pont–hely kapcsolattal csatlakozó ügyfélszámítógépnek rendelkeznie kell telepített ügyféltanúsítvánnyal. Hozzon létre egy ügyféltanúsítványt a önaláírt legfelső szintű tanúsítvány és exportálni, és telepíti az ügyféltanúsítványt. Ha az ügyféltanúsítvány nincs telepítve, a hitelesítés meghiúsul. 
+Minden, a virtuális hálózathoz pont–hely kapcsolattal csatlakozó ügyfélszámítógépnek rendelkeznie kell telepített ügyféltanúsítvánnyal. Az ügyféltanúsítványokat a önaláírt főtanúsítványból és exportálni, és telepítheti az ügyféltanúsítványt. Ha az ügyféltanúsítvány nincs telepítve, a hitelesítés meghiúsul. 
 
-A következő lépések végigvezetik történő tanúsítványgenerálás során egy ügyfél egy önaláírt legfelső szintű tanúsítványt. Előfordulhat, hogy több ügyféltanúsítványt generálása ugyanazon főtanúsítványhoz. Az alábbi lépéseket követve ügyféltanúsítványok létrehozásakor az ügyféltanúsítvány automatikusan települ azon a számítógépen, amelyet a tanúsítvány létrehozásához használt. Ha egy ügyfél-tanúsítványt egy másik ügyfélszámítógépen telepíteni szeretné, exportálhatja a tanúsítványt.
+A következő lépések végigvezetik egy önaláírt főtanúsítványból ügyféltanúsítvány hozható létre. Előfordulhat, hogy több ügyféltanúsítványt generálhatnak ugyanazt a legfelső szintű tanúsítványt. Az alábbi lépéseket követve ügyféltanúsítványok generál, amikor az ügyfél-tanúsítványt automatikusan települ azon a számítógépen, a tanúsítvány létrehozásához használt. Ha telepíthet ügyféltanúsítványt egy másik ügyfélszámítógépre szeretne, exportálhatja a tanúsítványt.
 
-A példák a New-SelfSignedCertificate parancsmaggal hozza létre az ügyfél, amely egy év lejár. További információkat, például a különböző lejárati érték megadásakor az ügyféltanúsítványt, lásd: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+A példák a New-SelfSignedCertificate parancsmag segítségével hozzon létre egy ügyféltanúsítvány, amely egy év múlva lejár. További paraméter információk, például az ügyféltanúsítvány eltérő lejárati értékét: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
 ### <a name="example-1"></a>1. példa
 
-A példa a deklarált "$cert" változót előző szakaszából. Ha a gyökér önaláírt tanúsítvány létrehozása után a PowerShell-konzolon zárva, vagy egy új PowerShell-konzol munkamenetet további ügyfél tanúsítványok készíti, lépésekkel [2. példa](#ex2).
+Ez a példa az előző szakaszban a deklarált "$cert" változó használja. Ha az önaláírt főtanúsítvány létrehozása után a PowerShell-konzol lezárva, vagy egy új PowerShell-konzol munkamenetet ügyféloldali tanúsítványokat készíti, szereplő lépések segítségével [2. példa](#ex2).
 
-Módosítsa, majd futtassa a példa egy ügyfél-tanúsítvány előállításához. Ha az alábbi példa azt a módosítása nélkül futtatja, eredménye "P2SChildCert" nevű ügyfél-tanúsítványt.  Ha szeretné a gyermek tanúsítvány elnevezése valami mást, módosítsa a CN-érték. Ne módosítsa a TextExtension ebben a példában futtatásakor. Az ügyfél tanúsítványát, létrehozhat "Tanúsítványok - aktuális User\Personal\Certificates" automatikusan telepíti a számítógépre.
+Módosíthatja, és futtasson le az ügyféltanúsítvány létrehozása. Ha az alábbi példa azt módosítása nélkül futtatja, ez "P2SChildCert" nevű ügyféltanúsítványt.  Ha meg szeretné nevezi a tanúsítványt, módosítsa a CN-érték. Ne módosítsa a TextExtension ebben a példában futtatásakor. Az ügyféltanúsítvány, azt automatikusan települ a "Tanúsítványok – aktuális felhasználó\személyes\tanúsítványok" a számítógépre.
 
 ```powershell
 New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
@@ -77,14 +77,14 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 
 ### <a name="ex2"></a>2. példa
 
-Ha további ügyféltanúsítványok létrehozni, vagy nem használja az ugyanazon a önaláírt legfelső szintű tanúsítvány létrehozásához használt PowerShell-munkamenetet, tegye a következőket:
+Ha további ügyféltanúsítványok hoz létre, vagy nem használ, amelyet az önaláírt tanúsítvány létrehozásához használt egyetlen PowerShell-munkameneten, használja az alábbi lépéseket:
 
-1. Azonosítsa a önaláírt legfelső szintű tanúsítvány, amely telepítve van a számítógépen. Ez a parancsmag a számítógépen telepített tanúsítványok listáját adja vissza.
+1. Azonosítsa az önaláírt főtanúsítványt, hogy telepítve van a számítógépen. Ez a parancsmag a számítógépre telepített tanúsítványok listáját adja vissza.
 
   ```powershell
   Get-ChildItem -Path “Cert:\CurrentUser\My”
   ```
-2. Keresse meg a tulajdonos nevét, a visszaadott listából, majd másolja le az ujjlenyomatot, amely egy szövegfájlba mellette található. A következő példában két tanúsítványokat is. A CN-név esetén a önaláírt legfelső szintű tanúsítvány, amelyből gyermek tanúsítványt létrehozni kívánja. Ebben az esetben "P2SRootCert".
+2. A tulajdonos nevét, a visszaadott listában keresse meg, majd másolja az ujjlenyomatot, amely annak a mellette található. A következő példában két tanúsítványokat is. A CN-név az önaláírt főtanúsítványt, amelyből gyermek tanúsítványt létrehozni kívánt nevét. Ebben az esetben ez a "P2SRootCert".
 
   ```
   Thumbprint                                Subject
@@ -92,18 +92,18 @@ Ha további ügyféltanúsítványok létrehozni, vagy nem használja az ugyanaz
   AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
   7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
   ```
-3. A legfelső szintű tanúsítvány ujjlenyomata az előző lépésben segítségével változó deklarálható. Cserélje le, amelyből el kívánja létrehozni a tanúsítványt a főtanúsítvány ujjlenyomatának UJJLENYOMATA.
+3. Deklarálja a főtanúsítvány az előző lépésből származó ujjlenyomat használatával egy változót. UJJLENYOMAT cserélje le az ujjlenyomatot a legfelső szintű tanúsítvány, amelyből gyermek tanúsítványt létrehozni kívánja.
 
   ```powershell
   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
   ```
 
-  Például az ujjlenyomat P2SRootCert használja az előző lépésben, a változó néz ki:
+  Ha például az ujjlenyomat P2SRootCert használja az előző lépésben, a változó a következőhöz hasonló:
 
   ```powershell
   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
   ```
-4.  Módosítsa, majd futtassa a példa egy ügyfél-tanúsítvány előállításához. Ha az alábbi példa azt a módosítása nélkül futtatja, eredménye "P2SChildCert" nevű ügyfél-tanúsítványt. Ha szeretné a gyermek tanúsítvány elnevezése valami mást, módosítsa a CN-érték. Ne módosítsa a TextExtension ebben a példában futtatásakor. Az ügyfél tanúsítványát, létrehozhat "Tanúsítványok - aktuális User\Personal\Certificates" automatikusan telepíti a számítógépre.
+4.  Módosíthatja, és futtasson le az ügyféltanúsítvány létrehozása. Ha az alábbi példa azt módosítása nélkül futtatja, ez "P2SChildCert" nevű ügyféltanúsítványt. Ha meg szeretné nevezi a tanúsítványt, módosítsa a CN-érték. Ne módosítsa a TextExtension ebben a példában futtatásakor. Az ügyféltanúsítvány, azt automatikusan települ a "Tanúsítványok – aktuális felhasználó\személyes\tanúsítványok" a számítógépre.
 
   ```powershell
   New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
@@ -118,9 +118,9 @@ Ha további ügyféltanúsítványok létrehozni, vagy nem használja az ugyanaz
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
 
-### <a name="export-the-self-signed-root-certificate-and-private-key-to-store-it-optional"></a>Exportálhatja az önaláírt legfelső szintű tanúsítvány és titkos kulcs tárolható (nem kötelező)
+### <a name="export-the-self-signed-root-certificate-and-private-key-to-store-it-optional"></a>Exportálhatja az önaláírt főtanúsítványok és a titkos kulcsot tárolni (nem kötelező)
 
-Érdemes lehet önaláírt legfelső szintű tanúsítványának exportálása és tárolja biztonságos biztonsági mentés. Ha kell, később egy másik számítógépre telepítse és több ügyfél certifiates készítése. Az önaláírt legfelső szintű tanúsítvány exportálása a .pfx fájlhoz, válassza ki a legfelső szintű tanúsítványt, és használja ugyanazokat a lépéseket, a [ügyféltanúsítvány exportálása](#clientexport).
+Érdemes önaláírt főtanúsítvány exportálása, és tárolja biztonságos biztonsági mentés. Ha kell, később is telepítheti egy másik számítógépen, és több ügyfél certifiates készítése. Önaláírt főtanúsítvány exportálása a .pfx fájlként, válassza ki a legfelső szintű tanúsítványt, és ugyanazokat a lépéseket ismertetett módon kihasználhassák [ügyféltanúsítvány exportálásához](#clientexport).
 
 ## <a name="clientexport"></a>4. Az ügyféltanúsítvány exportálása
 
@@ -129,14 +129,14 @@ Ha további ügyféltanúsítványok létrehozni, vagy nem használja az ugyanaz
 
 ## <a name="install"></a>5. Exportált ügyféltanúsítvány telepítése
 
-A virtuális hálózat egy P2S-kapcsolaton keresztül csatlakozó ügyfeleken rendszer helyben telepítendő ügyféltanúsítványt igényel.
+Minden P2S-kapcsolaton keresztül a virtuális hálózathoz csatlakozó ügyfelet a rendszer helyben telepítendő ügyféltanúsítványt igényel.
 
-Ügyfél-tanúsítvány telepítéséhez tekintse át [telepítheti egy pont – hely kapcsolatok ügyféltanúsítványt](point-to-site-how-to-vpn-client-install-azure-cert.md).
+Ügyféltanúsítvány telepítése: [telepítheti egy ügyféltanúsítványt, a pont – hely kapcsolatok](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="install"></a>6. További konfigurációs lépéseket P2S
+## <a name="install"></a>6. Folytassa a P2S-konfigurációs lépések
 
-A pont-hely konfigurációs folytatásához.
+A pont – hely konfiguráció folytatásához.
 
-* A **erőforrás-kezelő** telepítési modell lépéseket lásd: [konfigurálása P2S natív Azure-alapú hitelesítést használó](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
-* A **klasszikus** telepítési modell lépéseket lásd: [egy virtuális hálózat (klasszikus) pont – hely típusú VPN-kapcsolat konfigurálva](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
-* P2S hibaelhárítási információkat lásd: [Azure hibaelhárítási pont – hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+* A **Resource Manager** üzembe helyezési modell lépéseiért lásd: [P2S konfigurálása Azure natív tanúsítványalapú hitelesítésének használatával](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
+* A **klasszikus** üzembe helyezési modell lépéseiért lásd: [(klasszikus) virtuális hálózathoz pont – hely VPN-kapcsolat konfigurálása](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+* P2S hibaelhárítási információkért lásd: [pont – hely kapcsolatok hibaelhárítása Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

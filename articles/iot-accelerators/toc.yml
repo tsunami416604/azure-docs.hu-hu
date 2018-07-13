@@ -10,6 +10,8 @@
   items:
     - name: Távoli monitorozási megoldás üzembe helyezése
       href: quickstart-remote-monitoring-deploy.md
+    - name: Prediktív karbantartási megoldás üzembe helyezése
+      href: quickstart-predictive-maintenance-deploy.md
     - name: Eszközszimulációs megoldás üzembe helyezése
       href: quickstart-device-simulation-deploy.md
 - name: Oktatóanyagok

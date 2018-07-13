@@ -1,6 +1,6 @@
 ---
-title: Magánhálózati IP-címek konfigurálása virtuális gépek (klasszikus) - Azure PowerShell |} Microsoft Docs
-description: Útmutató a PowerShell használatával (klasszikus) virtuális gépek magánhálózati IP-címek konfigurálásához.
+title: Magánhálózati IP-címek konfigurálása a virtuális gépek (klasszikus) – Azure PowerShell-lel |} A Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja a magánhálózati IP-címek a virtuális gépek (klasszikus) PowerShell-lel.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -17,13 +17,13 @@ ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f99e67341d46e858cee7dd6a22f16fe06ad5b88a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791967"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38678595"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>A PowerShell használatával egy virtuális gép (klasszikus) magánhálózati IP-címek konfigurálása
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Virtuális gép (klasszikus) PowerShell-lel magánhálózati IP-címek konfigurálása
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
@@ -31,14 +31,14 @@ ms.locfileid: "31791967"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. Emellett [kezelése a Resource Manager üzembe helyezési modellel statikus magánhálózati IP-cím](virtual-networks-static-private-ip-arm-ps.md).
+Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. Emellett [kezelése a Resource Manager-alapú üzemi modellben statikus magánhálózati IP-cím](virtual-networks-static-private-ip-arm-ps.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-A minta PowerShell-parancsokat az alábbi már létrehozott egy egyszerű környezetben várható. Ha szeretné a parancsokat a jelen dokumentum megjelenített, először leírt tesztkörnyezet felépítéséhez [hozhat létre egy Vnetet](virtual-networks-create-vnet-classic-netcfg-ps.md).
+A minta PowerShell-parancsokat az alábbi hatással vannak a már létrehozott egy egyszerű környezetben. Ha azt szeretné, akkor jelennek meg ebben a dokumentumban a parancsok futtatásához először hozhat létre a leírt tesztkörnyezet [hozzon létre egy Vnetet](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
-## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Ha rendelkezésére áll-e egy adott IP-cím ellenőrzése
-Ha ellenőrizni az IP-cím *192.168.1.101* érhető el egy nevű Vnetet *TestVNet*, futtassa a következő PowerShell-parancsot, és ellenőrizze a következő *IsAvailable*:
+## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Azt, hogyan ellenőrizheti egy adott IP-cím elérhető-e
+Arra, ha az IP-cím *192.168.1.101* érhető el egy VNet nevű *TestVNet*, futtassa a következő PowerShell-parancsot, és ellenőrizze a értéke *IsAvailable*:
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
@@ -50,8 +50,8 @@ Várt kimenet:
     OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
     OperationStatus      : Succeeded
 
-## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>A statikus magánhálózati IP-cím megadása a virtuális gép létrehozásakor
-Az alábbi PowerShell-parancsfájlt hoz létre egy új felhőalapú szolgáltatás nevű *TestService*, majd beolvassa a lemezkép az Azure-ból, létrehoz egy nevű virtuális gép *DNS01* az új felhőalapú szolgáltatás használata a beolvasott kép úgy állítja be a virtuális Gépet nevű alhálózat *előtér*, és beállítja a *192.168.1.7* , a virtuális gép statikus magánhálózati IP-cím:
+## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Statikus magánhálózati IP-cím megadása a virtuális gép létrehozásakor
+Az alábbi PowerShell-parancsfájlt hoz létre egy új felhőszolgáltatást nevű *TestService*, majd az Azure-ból kéri le a képet, egy nevű virtuális gépet *DNS01* az új cloud service-ben a beolvasott kép használatával állítja be a virtuális gép egy nevű alhálózatban lehet *előtérbeli*, és beállítja a *192.168.1.7* , a virtuális gép statikus privát IP-cím:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -69,8 +69,8 @@ Várt kimenet:
     New-AzureService     fcf705f1-d902-011c-95c7-b690735e7412 Succeeded      
     New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
 
-## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Hogyan lehet lekérni a statikus magánhálózati IP-címadatok a virtuális gépek
-A statikus magánhálózati IP-címadatok a fenti parancsfájl létrehozza a virtuális gép megtekintéséhez futtassa a következő PowerShell-parancsot, és tekintse meg az értékeit *IP-cím*:
+## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Hogyan kérheti le a statikus magánhálózati IP-címadatok egy virtuális géphez
+Az a fenti szkript létrehozni a virtuális gép statikus privát IP-címadatok megtekintéséhez futtassa a következő PowerShell-parancsot, és tekintse meg a tartozó értékeket *IP-cím*:
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 
@@ -103,8 +103,8 @@ Várt kimenet:
     OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
     OperationStatus             : OK
 
-## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>A statikus magánhálózati IP-cím eltávolítása a virtuális gépek
-Távolítsa el a statikus magánhálózati IP-cím hozzá a virtuális gépre, a fenti, a parancsfájl a következő PowerShell-parancsot:
+## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>Virtuális gép statikus privát IP-cím eltávolítása
+Távolítsa el a statikus magánhálózati IP-címet, adja hozzá a fenti szkript a virtuális gép futtassa a következő PowerShell-parancsot:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Remove-AzureStaticVNetIP |
@@ -116,8 +116,8 @@ Várt kimenet:
     -------------------- -----------                          ---------------
     Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
 
-## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>A statikus magánhálózati IP-cím hozzáadása egy meglévő virtuális Gépen
-Adja hozzá a statikus magánhálózati IP-címe cím a fent runt parancsfájl használatával létrehozott virtuális gép a következő parancsot:
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Meglévő virtuális géphez statikus magánhálózati IP-cím hozzáadása
+Hozzáadása egy statikus magánhálózati IP-cím a szkripttel runt a fent létrehozott virtuális géphez a következő parancsot:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
@@ -131,10 +131,10 @@ Várt kimenet:
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>Állítsa be az operációs rendszer belüli IP-címek
 
-Javasoljuk, hogy nem statikusan rendelje a magánhálózati IP-címe az operációs rendszerben a virtuális gépek az Azure virtuális géphez rendelt kivéve, ha szükséges. Ha manuálisan állítsa be a magánhálózati IP-cím, az operációs rendszerből, győződjön meg arról, hogy-e a magánhálózati IP-cím, az Azure virtuális Géphez rendelt megegyező címre, vagy is megszakad a kapcsolat a virtuális géphez. Manuálisan soha ne rendelje a nyilvános IP-cím, egy Azure virtuális gépen belül a virtuális gép operációs rendszerének rendelt.
+Javasoljuk, hogy nem statikusan rendel a privát IP-cím az Azure virtuális gépen belül a virtuális gépek, az operációs rendszer rendelt, kivéve, ha szükséges. Ha manuálisan állítsa be a magánhálózati IP-címet az operációs rendszerből, győződjön meg arról, hogy-e az Azure virtuális Géphez rendelt magánhálózati IP-címet a címmel, vagy a virtuális gép is megszakad a kapcsolat. Meg kell soha nem hozzárendelheti manuálisan, a virtuális gép operációs rendszerén belül egy Azure virtuális géphez társított nyilvános IP-cím.
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók [foglalt nyilvános IP-cím](virtual-networks-reserved-public-ip.md) címek.
-* További tudnivalók [példányszintű nyilvános IP (ILPIP)](virtual-networks-instance-level-public-ip.md) címek.
+* Ismerje meg [lefoglalt nyilvános IP-cím](virtual-networks-reserved-public-ip.md) címeket.
+* Ismerje meg [példányszintű nyilvános IP (ILPIP)](virtual-networks-instance-level-public-ip.md) címeket.
 * Tekintse át a [fenntartott IP-REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 

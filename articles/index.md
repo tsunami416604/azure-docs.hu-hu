@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 557717b6fbb93bf3e0ca007fcc8b793441a13283
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 7e177705e5d8587f89018f4febefaf34fc5f669c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920906"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970951"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -2118,6 +2118,25 @@ s" alt="" />
                                                 <div class="cardText">
                                                     <h3>Network Watcher</h3>
                                                     <p>Hálózati teljesítményfigyelő és diagnosztikai megoldás</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/virtual-wan/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/WAN.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Virtuális WAN</h3>
+                                                    <p>Biztonságos, globális méretű ágkapcsolatok kiépítése</p>
                                                 </div>
                                             </div>
                                         </div>

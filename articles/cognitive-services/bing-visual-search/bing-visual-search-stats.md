@@ -1,7 +1,7 @@
 ---
-title: Bing elemzések a Bing webes keresési API-k |} Microsoft Docs
+title: A Bing elemzések a Bing webes keresési API-k |} A Microsoft Docs
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Ismerteti, hogyan analytics Bing Visual Searach API segítségével.
+description: Elemzések lekérése a Bing vizuális Searach API módját ismerteti.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: scottwhi
 ms.openlocfilehash: 11fe30d6918fa713db83aafbff233c26283f36af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348654"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582943"
 ---
-# <a name="how-to-get-analytics-for-bing-visual-search-api"></a>Hogyan kérhet analytics Bing Visual keresési API-hoz.
+# <a name="how-to-get-analytics-for-bing-visual-search-api"></a>Elemzések lekérése a Bing Visual Search API-hoz
 
 [!INCLUDE [cognitive-services-bing-statistics](../../../includes/cognitive-services-bing-statistics.md)]

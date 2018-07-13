@@ -1,6 +1,6 @@
 ---
-title: Irányítható a hálózati forgalom Azure PowerShell |} Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan hálózati forgalom irányítására egy PowerShell-lel útválasztási táblázathoz.
+title: Irányítható a hálózati forgalom Azure PowerShell-lel |} A Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan irányíthatja a hálózati forgalom útválasztási táblázat PowerShell-lel.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -18,13 +18,13 @@ ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: 2aca1de567dbd4d37daf7f9dd7c407b669396a47
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "31603708"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630323"
 ---
-# <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Hálózati forgalom egy útválasztási táblázathoz PowerShell használatával
+# <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Hálózati forgalom továbbítása PowerShell-lel útválasztási táblázat
 
 Egy adott virtuális hálózaton belül az Azure alapértelmezés szerint automatikusan elosztja a forgalmat az összes alhálózat között. Az Azure alapértelmezett útválasztását felülírhatja saját maga által létrehozott útvonalakkal. Az egyéni útvonalak létrehozása akkor lehet hasznos, hálózati virtuális berendezésen (NVA) keresztül kívánja irányítani az alhálózatok közötti forgalmat. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -44,13 +44,13 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhe
 
 ## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 
-Mielőtt létrehozna egy útválasztási táblázatot, hozzon létre egy erőforráscsoportot, a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* létre ebben a cikkben minden erőforráshoz. 
+Mielőtt létrehozhatna egy útválasztási táblázatot, hozzon létre egy erőforráscsoportot [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). A következő példában létrehozunk egy erőforráscsoportot, nevű *myResourceGroup* az ebben a cikkben létrehozott összes erőforrást. 
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Hozzon létre egy útvonaltábla [New-AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable). Az alábbi példa létrehoz egy útválasztási táblázatot nevű *myRouteTablePublic*.
+Hozzon létre egy útválasztási táblázatot az [New-AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable). Az alábbi példa létrehoz egy útvonaltáblát, nevű *myRouteTablePublic*.
 
 ```azurepowershell-interactive
 $routeTablePublic = New-AzureRmRouteTable `
@@ -61,7 +61,7 @@ $routeTablePublic = New-AzureRmRouteTable `
 
 ## <a name="create-a-route"></a>Útvonal létrehozása
 
-Hozzon létre egy útvonalat útvonal tábla objektum lekérésével [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable), hozzon létre egy útvonalat [Add-AzureRmRouteConfig](/powershell/module/azurerm.network/add-azurermrouteconfig), majd az útválasztó-konfiguráció írni az útvonaltáblában a [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable). 
+Hozzon létre egy útvonalat az útválasztási táblázat objektum lekérésével [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable), hozzon létre egy útvonalat [Add-AzureRmRouteConfig](/powershell/module/azurerm.network/add-azurermrouteconfig), majd az útválasztó-konfiguráció írni az útvonaltáblában a [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable). 
 
 ```azurepowershell-interactive
 Get-AzureRmRouteTable `
@@ -77,7 +77,7 @@ Get-AzureRmRouteTable `
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
-Ahhoz, hogy társíthasson egy útválasztási táblázatot az alhálózathoz, akkor hozzon létre egy virtuális hálózati és alhálózati. Hozzon létre egy virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) paranccsal. Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVirtualNetwork* a címelőtaggal rendelkező *10.0.0.0/16*.
+Mielőtt hozzárendelhetne egy útválasztási táblázatot egy alhálózathoz, akkor hozzon létre egy virtuális hálózatot és alhálózatot. Hozzon létre egy virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) paranccsal. A következő példában létrehozunk egy nevű virtuális hálózatot *myVirtualNetwork* a címelőtaggal rendelkező *10.0.0.0/16*.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzureRmVirtualNetwork `
@@ -87,7 +87,7 @@ $virtualNetwork = New-AzureRmVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Hozzon létre három alhálózatok hozzon létre három alhálózati konfigurációt [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Az alábbi példakód létrehozza a három alhálózati beállítások *nyilvános*, *titkos*, és *DMZ* alhálózatok:
+Hozzon létre három alhálózatot hoz létre a három alhálózat-konfigurációit [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Az alábbi példa létrehoz három alhálózatkonfigurációinak *nyilvános*, *privát*, és *DMZ* alhálózatok:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzureRmVirtualNetworkSubnetConfig `
@@ -106,13 +106,13 @@ $subnetConfigDmz = Add-AzureRmVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-Az alhálózati beállítások írni a virtuális hálózat [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork), amely az alhálózatok hoz létre a virtuális hálózat:
+A virtuális hálózatot az alhálózat-konfigurációit írási [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork), amely az alhálózatokat hoz létre a virtuális hálózat:
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-Társítsa a *myRouteTablePublic* útválasztási táblázatot, hogy a *nyilvános* alhálózat [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) majd írja be az alhálózati konfigurációját, és a a virtuális hálózati [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork).
+Társítsa a *myRouteTablePublic* útválasztási táblázatot az *nyilvános* alhálózat [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) majd írja az alhálózati konfigurációt a a virtuális hálózat [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork).
 
 ```azurepowershell-interactive
 Set-AzureRmVirtualNetworkSubnetConfig `
@@ -127,11 +127,11 @@ Set-AzureRmVirtualNetwork
 
 Az NVA egy olyan virtuális gép, amely hálózati funkciót tölt be, például útválasztóként, tűzfalként vagy WAN-optimalizálóként működik.
 
-Virtuális gép létrehozása előtt hozzon létre egy adott hálózati csatoló.
+Virtuális gép létrehozása előtt hozzon létre egy hálózati adaptert.
 
-### <a name="create-a-network-interface"></a>A hálózati illesztő létrehozása
+### <a name="create-a-network-interface"></a>Hozzon létre egy hálózati adaptert
 
-Mielőtt létrehozna egy adott hálózati csatoló, kell beolvasni a virtuális hálózati azonosítót a [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork), majd az alhálózati azonosító a [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig). Hozzon létre egy hálózati illesztő – [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) a a *DMZ* alhálózat IP-továbbítás engedélyezve:
+A hálózati illesztő létrehozása, előtt kell beolvasni a virtuális hálózati azonosító [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork), majd az alhálózati azonosító a [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig). Hozzon létre egy hálózati adaptert a [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) a a *DMZ* alhálózatot, amelyen az IP-továbbítás engedélyezve van:
 
 ```azurepowershell-interactive
 # Retrieve the virtual network object into a variable.
@@ -155,7 +155,7 @@ $nic = New-AzureRmNetworkInterface `
 
 ### <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális Gépet, és a meglévő hálózati illesztő csatlakoztatni, létre kell hoznia a Virtuálisgép-konfiguráció [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). A konfiguráció tartalmazza a hálózati illesztő az előző lépésben létrehozott. A felhasználónév és jelszó megadását kéri, válassza ki a felhasználónevet és jelentkezzen be a virtuális Géphez a kívánt jelszót. 
+Hozzon létre egy virtuális Gépet, és a egy meglévő hálózati adaptert csatlakoztatni, létre kell hoznia egy Virtuálisgép-konfigurációt a [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). A konfiguráció tartalmazza a hálózati illesztő az előző lépésben létrehozott. Amikor felhasználónév és jelszó megadására kéri, válassza ki a felhasználónevet, és jelentkezzen be a virtuális Gépet a kívánt jelszót. 
 
 ```azurepowershell-interactive
 # Create a credential object.
@@ -176,7 +176,7 @@ $vmConfig = New-AzureRmVMConfig `
   Add-AzureRmVMNetworkInterface -Id $nic.Id
 ```
 
-A virtuális gép a Virtuálisgép-konfiguráció létrehozása [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Az alábbi példakód létrehozza a virtuális gépek nevű *myVmNva*. 
+A Virtuálisgép-konfigurációt a virtuális gép létrehozása [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). A következő példában létrehozunk egy nevű virtuális Gépet *myVmNva*. 
 
 ```azurepowershell-interactive
 $vmNva = New-AzureRmVM `
@@ -186,13 +186,13 @@ $vmNva = New-AzureRmVM `
   -AsJob
 ```
 
-A `-AsJob` beállítás hoz létre a virtuális Gépet a háttérben, így továbbra is a következő lépéssel.
+A `-AsJob` lehetőség a háttérben létrehozza a virtuális Gépet, így a következő lépéssel is.
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Hozzon létre két virtuális gépek a virtuális hálózat, így ellenőrizheti, hogy a forgalom a *nyilvános* alhálózati annak biztosítására, hogy a *titkos* alhálózatot a hálózati virtuális készülék egy későbbi lépésben keresztül. 
+Két virtuális gép létrehozása a virtuális hálózatban, így ellenőrizheti, hogy a forgalom a *nyilvános* alhálózatra irányítja a rendszer a *privát* alhálózat egy későbbi lépésben a hálózati virtuális készüléken keresztül. 
 
-A virtuális gép létrehozása a *nyilvános* alhálózat [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Az alábbi példakód létrehozza a virtuális gépek nevű *myVmPublic* a a *nyilvános* alhálózata a *myVirtualNetwork* virtuális hálózat. 
+A virtuális gép létrehozása a *nyilvános* alhálózat [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). A következő példában létrehozunk egy nevű virtuális Gépet *myVmPublic* a a *nyilvános* alhálózatának a *myVirtualNetwork* virtuális hálózatot. 
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -205,7 +205,7 @@ New-AzureRmVm `
   -AsJob
 ```
 
-A virtuális gép létrehozása a *titkos* alhálózat.
+A virtuális gép létrehozása a *privát* alhálózat.
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -217,11 +217,11 @@ New-AzureRmVm `
   -Name "myVmPrivate"
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. A következő lépéssel nem folytatható, amíg a virtuális gép létrehozása Azure PowerShell kimeneti visszaadja.
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a következő lépés a virtuális gép létrejött, és az Azure PowerShell kimeneti visszaadja.
 
 ## <a name="route-traffic-through-an-nva"></a>Forgalom irányítása NVA-n keresztül
 
-Használjon [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) vissza a nyilvános IP-címét a *myVmPrivate* virtuális gép. A következő példa a nyilvános IP-címét adja vissza a *myVmPrivate* VM:
+Használat [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) a nyilvános IP-címének visszaadásához a *myVmPrivate* virtuális Gépet. Az alábbi példában a nyilvános IP-címét adja vissza a *myVmPrivate* virtuális Géphez:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress `
@@ -230,7 +230,7 @@ Get-AzureRmPublicIpAddress `
   | Select IpAddress
 ```
 
-A távoli asztali munkamenetet a következővel létrehozásához használja a következő parancsot a *myVmPrivate* VM a helyi számítógépről. Cserélje ki a `<publicIpAddress>` kifejezést az előző parancs által visszaadott nyilvános IP-címre.
+A következő paranccsal hozzon létre egy távoli asztali munkamenetet a *myVmPrivate* virtuális Gépet a helyi számítógépről. Cserélje ki a `<publicIpAddress>` kifejezést az előző parancs által visszaadott nyilvános IP-címre.
 
 ```
 mstsc /v:<publicIpAddress>
@@ -240,17 +240,17 @@ Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlako
 
 Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót (előfordulhat, hogy a virtuális gép létrehozásakor beírt hitelesítő adatok megadásához ki kell választania a **További lehetőségek**, majd a **Másik fiók használata** elemet), majd válassza az **OK** gombot. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza az **Igen** lehetőséget a csatlakozás folytatásához. 
 
-Egy későbbi lépésben a tracert.exe parancs segítségével útválasztási tesztelése. Tracert használja az Internet Control üzenet Protocol (ICMP), amely a Windows tűzfalon keresztül megtagadva. Engedélyezze az ICMP-t a Windows tűzfalon. Ehhez adja meg a *myVmPrivate* virtuális gépen a következő PowerShell-parancsot:
+Egy későbbi lépésben a tracert.exe parancs segítségével útválasztásának teszteléséhez. Tracert használja az Internet Control Message Protocol (ICMP), amelyet a Windows tűzfalon keresztül. Engedélyezze az ICMP-t a Windows tűzfalon. Ehhez adja meg a *myVmPrivate* virtuális gépen a következő PowerShell-parancsot:
 
 ```powershell
 New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 ```
 
-Bár a nyomkövetést ebben a cikkben útválasztási tesztelésére szolgál, lehetővé téve az ICMP az üzemi környezetek a Windows tűzfalon keresztül nem ajánlott.
+Habár ebben a cikkben útválasztásának teszteléséhez útvonalkövetést használunk, ICMP engedélyezése a Windows tűzfalon, éles környezetekben üzemelő példányok esetében nem ajánlott.
 
-Az Azure-ban a virtuális gép hálózati adapterében, az [IP-továbbítás engedélyezése](#enable-ip-forwarding) szakaszban engedélyezte az IP-továbbítást. A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. Az operációs rendszerben az IP-továbbítás engedélyezése a *myVmNva*.
+Az Azure-ban a virtuális gép hálózati adapterében, az [IP-továbbítás engedélyezése](#enable-ip-forwarding) szakaszban engedélyezte az IP-továbbítást. A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. Az operációs rendszer, az IP-továbbítást a *myVmNva*.
 
-A parancssorból a *myVmPrivate* VM, a távoli asztal a *myVmNva*:
+A parancsot a parancssorba a *myVmPrivate* virtuális Gépet, a távoli asztal a *myVmNva*:
 
 ``` 
 mstsc /v:myvmnva
@@ -321,7 +321,7 @@ Zárja be a *myVmPrivate* virtuális gépre irányuló távoli asztali munkamene
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség, [Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) használatával távolítsa el az erőforráscsoport és a benne található erőforrásokat.
+Ha már nincs rá szükség, [Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -329,6 +329,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben létrehozott egy útválasztási táblázatot, és az alhálózathoz társított. Létrehozott egy egyszerű hálózati virtuális készülék portleképezéseit titkos alhálózathoz nyilvános alhálózatból származó forgalmat. Hálózati funkciókat, például a tűzfal és a WAN-optimalizálást végző előre konfigurált hálózati virtuális készülékeket különböző központi telepítése a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). További információ az útválasztásról: [Az útválasztás áttekintése](virtual-networks-udr-overview.md); [Útválasztási táblázat kezelése](manage-route-table.md).
+Ebben a cikkben létrehozott egy útválasztási táblázatot, és hozzárendelte egy alhálózathoz. Létrehozott egy egyszerű hálózati virtuális berendezésre, amely átirányította a forgalmat egy nyilvános alhálózatról egy privát alhálózatra. Különböző hálózati funkciók elvégzésére – például a tűzfal- és a WAN-optimalizálást végző előre konfigurált hálózati virtuális berendezések üzembe helyezése a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). További információ az útválasztásról: [Az útválasztás áttekintése](virtual-networks-udr-overview.md); [Útválasztási táblázat kezelése](manage-route-table.md).
 
-Egy virtuális hálózaton belül több Azure-erőforrást helyezhet üzembe, azonban egyes Azure PaaS-szolgáltatások erőforrásai nem helyezhetők üzembe virtuális hálózatban. Ennek ellenére korlátozhatja az egyes Azure PaaS-szolgáltatások erőforrásaihoz való hozzáférést, hogy csak egyetlen virtuális hálózati alhálózatról legyenek elérhetők. Megtudhatja, hogyan, lásd: [hálózati hozzáférés korlátozása PaaS erőforrások](tutorial-restrict-network-access-to-resources-powershell.md).
+Egy virtuális hálózaton belül több Azure-erőforrást helyezhet üzembe, azonban egyes Azure PaaS-szolgáltatások erőforrásai nem helyezhetők üzembe virtuális hálózatban. Ennek ellenére korlátozhatja az egyes Azure PaaS-szolgáltatások erőforrásaihoz való hozzáférést, hogy csak egyetlen virtuális hálózati alhálózatról legyenek elérhetők. További információ [PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása](tutorial-restrict-network-access-to-resources-powershell.md).

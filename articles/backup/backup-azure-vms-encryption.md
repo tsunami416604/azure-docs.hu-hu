@@ -6,27 +6,23 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49361aef774e9eb5a0995bc106e73b236a71b0bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 16620678c38dcdc1564d8cb18f3393352170cefe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441131"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598424"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure Backup szolgáltatással
 Ez a cikk ismerteti a lépéseket, biztonsági mentése és visszaállítása a virtuális gépek (VM) az Azure Backup használatával. A következő többi hibaeseteket támogatott forgatókönyveket, előfeltételeket és hibaelhárítási lépéseket részletesen is ismerteti.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
- * Biztonsági mentés és visszaállítás titkosított virtuális gépek csak az Azure Resource Manager-alapú üzemi modellt használó virtuális gépek esetében támogatott. A klasszikus üzemi modellt használó virtuális gépek esetében nem támogatott. <br>
- * Biztonsági mentése és visszaállítása titkosított virtuális gépek Windows és Linux rendszerű virtuális gépek, amelyek az Azure Disk Encryption használata is támogatott. Lemeztitkosítás használ az iparági szabványos BitLocker funkcióját Windows és Linux dm-crypt funkcióját lemezek titkosítása. <br>
- 
- Az alábbi táblázat a BitLocker titkosítási kulcs (rendelkeznek BEk-KEL) – csak a és a fő titkosítási kulcs-(KEK) – a támogatott forgatókönyveket, titkosított virtuális gépek:
- 
- 
+ Biztonsági mentés és visszaállítás titkosított virtuális gépek csak az Azure Resource Manager-alapú üzemi modellt használó virtuális gépek esetében támogatott. A klasszikus üzemi modellt használó virtuális gépek esetében nem támogatott. Biztonsági mentés és visszaállítás titkosított virtuális gépek Windows és Linux rendszerű virtuális gépek, amelyek az Azure Disk Encryption használata támogatott. Lemeztitkosítás használ az iparági szabványos BitLocker funkcióját Windows és Linux dm-crypt funkcióját lemezek titkosítása. Az alábbi táblázat bemutatja a titkosítási típus és a virtuális gépek számára.
+
    |  | Rendelkeznek BEk-KEL és KEK-beli virtuális gépek | Csak rendelkeznek BEk-KEL virtuális gépek |
    | --- | --- | --- |
    | **Nem felügyelt virtuális gépek**  | Igen | Igen  |

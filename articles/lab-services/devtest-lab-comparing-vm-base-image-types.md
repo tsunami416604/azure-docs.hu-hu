@@ -1,6 +1,6 @@
 ---
-title: Az egyéni lemezképek és a DevTest Labs szolgáltatásban képletek összehasonlítása |} Microsoft Docs
-description: További információk a egyéni lemezképek és a formulák közötti különbségeket, a virtuális gép alapjait, eldöntheti, melyik legjobban megfelel a környezetben.
+title: Egyéni rendszerképek és képletek a DevTest Labs szolgáltatásban |} A Microsoft Docs
+description: Egyéni rendszerképek és képletek közötti különbségekről további, a virtuális gép alapjait, így eldöntheti, melyik leginkább megfelelő a környezet.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 37288fd4a9c7558d05728b8ce03df505117e0232
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787443"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611270"
 ---
-# <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Az egyéni lemezképek és a DevTest Labs szolgáltatásban képletek összehasonlítása
-Mindkét [egyéni lemezképek](devtest-lab-create-template.md) és [képletek](devtest-lab-manage-formulas.md) alapjait használható [létrehozott új virtuális gépek](devtest-lab-add-vm.md). Azonban a fő különbség a között egyéni lemezképek és a formulák az, hogy egy egyéni lemezképet egyszerűen csak egy virtuális merevlemez alapján, amíg egy képlete virtuális merevlemez alapuló rendszerképet kép *kívül* előre konfigurált beállítások – például a Virtuálisgép-méretet, a virtuális hálózati, a alhálózati és az összetevők. Ezek előre konfigurált beállítások vannak beállítva, hogy a virtuális gép létrehozásakor felülbírálhatja az alapértelmezett értékekkel. Ez a cikk ismerteti, néhány (szakemberek számára) előnyeit és hátrányait (hátrányait) használatával egyéni lemezképek és képletek alapján.
+# <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Egyéni rendszerképek és a DevTest Labs szolgáltatásban létrehozott képletek összehasonlítása
+Mindkét [egyéni rendszerképek](devtest-lab-create-template.md) és [képletek](devtest-lab-manage-formulas.md) alapjait, használható [létrehozott új virtuális gépek](devtest-lab-add-vm.md). Azonban a kulcs megkülönböztetése egyéni rendszerképek és képletek, hogy egy egyéni rendszerkép egyszerűen alapuló rendszerképet a virtuális merevlemez, egy rendszerképet a virtuális merevlemez alapján pedig egy képlet *mellett* előre konfigurált beállítások – például a virtuális gép méretét, a virtuális hálózathoz, alhálózat és összetevőket. Ezek a beállítások előre konfigurált alapértelmezett értékekkel, amely a virtuális gép létrehozásakor felülbírálható beállítása. Ez a cikk ismerteti azokat a (szakemberek számára) előnyeit és hátrányait (hátrányai) használatával egyéni képek és képletek használatával.
 
-## <a name="custom-image-pros-and-cons"></a>Kép: egyéni előnyei és hátrányai
-Egyéni lemezképek lehetőséget nyújtanak olyan statikus és nem módosítható a kívánt környezetből virtuális gépek létrehozásához. 
+## <a name="custom-image-pros-and-cons"></a>Egyéni rendszerkép és hátrányai
+Egyéni rendszerképek adjon meg statikus, nem módosítható úgy hozhat létre virtuális gépeket a kívánt környezetre. 
 
-**Informatikai szakemberek**
+**Szakemberek számára**
 
-* Virtuális gép kiépítése egyéni lemezképéről esetén gyors, mert semmi nem változik, miután a virtuális gép van hoz létre a lemezképből. Más szóval nincsenek beállítások alkalmazásához, mert az egyéni lemezképet csak a kép vonatkozó beállítások kihagyásával. 
-* Egyetlen egyéni lemezkép alapján létrehozott virtuális gépek esetén azonosak.
+* Virtuális gépek üzembe helyezésekor egyéni rendszerképpel az gyors, mivel e tekintetben semmilyen változást után a virtuális gép a lemezkép alapján működésbe. Más szóval nem beállításokat a rendszer a alkalmazni, mivel az egyéni rendszerkép csak a vonatkozó beállítások kihagyásával kép. 
+* Egy egyéni lemezkép alapján létrehozott virtuális gépek megegyeznek.
 
-**Hátrányait**
+**Hátrányai**
 
-* Ha módosítania néhány szempontja, hogy az egyéni lemezképet, a lemezkép kell újból létre kell hozni.  
+* Ha bizonyos elemeit az egyéni rendszerképet frissíteni kell, a lemezkép létre kell hozni.  
 
-## <a name="formula-pros-and-cons"></a>Képletadat előnyei és hátrányai
-Képletek biztosít a virtuális gépek létrehozásához a kívánt konfigurációs beállítások dinamikus módot.
+## <a name="formula-pros-and-cons"></a>Képlet és hátrányai
+Képleteket hozhat létre virtuális gépeket a kívánt konfigurációs beállítások dinamikus lehetőséget biztosíthat.
 
-**Informatikai szakemberek**
+**Szakemberek számára**
 
-* A környezet változásai keresztül összetevők parancsprogramok rögzíthetők. Például ha szeretné, hogy egy virtuális Gépet a legújabb bitként a kiadási láncból telepítve, vagy a legújabb kód besorolni a tárházban lévő, egyszerűen megadhat egy összetevő, amely telepíti a legújabb bits vagy felveszi a legújabb kódot a képlet együtt egy cél alapjául szolgáló lemezképhez. A képlet használatával létrehozott virtuális gépet, amikor a legújabb bits kód, telepített/bejegyezve a virtuális Gépet. 
-* Képletek alapértelmezett beállításokat, az egyéni lemezképek nem adhatók meg – például a Virtuálisgép-méretek és a virtuális hálózati beállításokat adhat meg. 
-* A képlet mentett beállításokat alapértelmezett értékei láthatók, de a virtuális gép létrehozásakor módosítható. 
+* A környezet változásai összetevők menet rögzíthetők. Például ha szeretné, a legújabb elemeket a kibocsátási folyamat a telepített virtuális gép vagy bejegyzést elhelyezni a legújabb kódot az adattárból, egyszerűen megadhatja egy összetevő, amely telepíti a legújabb elemeket, vagy a legújabb kódot és a egy cél alapja a képletben részlege kép. Amikor ez a képlet segítségével virtuális gépeket hozhat létre, a legújabb bit/kód, a virtuális gépre telepítve és bejegyezve. 
+* Képletek adhatja meg az alapértelmezett beállításokat, amelyek egyéni rendszerképek nem biztosítanak – például a Virtuálisgép-méretek és a virtuális hálózati beállításait. 
+* A képlet mentett beállításokat alapértelmezett értékek jelennek meg, de módosítható, ha a virtuális gép jön létre. 
 
-**Hátrányait**
+**Hátrányai**
 
-* Virtuális gép létrehozása egy képletet a virtuális gép létrehozása egy egyéni lemezképből több időt is igénybe vehet.
+* A képlet egy virtuális gép létrehozása egyéni rendszerképből egy virtuális gép létrehozása több időt is igénybe vehet.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
-* [Egyéni lemezképek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+* [Egyéni rendszerképek vagy képleteket?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
 ## <a name="next-steps"></a>További lépések
 - [DevTest Labs – gyakori kérdések](devtest-lab-faq.md)

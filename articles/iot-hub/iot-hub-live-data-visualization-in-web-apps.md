@@ -1,9 +1,9 @@
 ---
-title: Az érzékelők adatstreamének az Azure IoT hub – Web Apps a valós idejű adatok vizuális |} Microsoft Docs
-description: A Microsoft Azure App Service Web Apps szolgáltatása segítségével, amely az érzékelő gyűjtése történik, és az Iot hub küldött hőmérséklet és a páratartalom adatainak megjelenítése.
+title: Az Azure IoT hub – a Web Apps érzékelőktől kapott adatok valós idejű adatok vizualizációját |} A Microsoft Docs
+description: A Microsoft Azure App Service Web Apps szolgáltatás használatával jelenítheti meg az érzékelő összegyűjtött és az Iot hubnak küldött hőmérséklettel és páratartalommal kapcsolatos adatokat.
 author: rangv
 manager: ''
-keywords: valós idejű adatok vizuális, az élő adatok vizuális érzékelő adatábrázolási
+keywords: valós idejű adatvizualizáció, élő adatvizualizáció, érzékelő adatmegjelenítés
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -11,44 +11,44 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
 ms.openlocfilehash: 3d127afa94b761d96db17bcb59700a275a44a265
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633740"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38677263"
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Az Azure IoT hub a valós idejű érzékelőadatok megjelenítése az Azure App Service Web Apps szolgáltatásának használatával
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Az Azure App Service Web Apps szolgáltatásának használatát az Azure IoT hub valós idejű érzékelői adatainak megjelenítése
 
-![Végpontok közötti diagramja](media/iot-hub-get-started-e2e-diagram/5.png)
+![Végpontok közötti diagram](media/iot-hub-get-started-e2e-diagram/5.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan jelenítheti meg az IoT-központ által futtatott webalkalmazás fut a webes alkalmazás kap valós idejű érzékelőadatok. Ha azt szeretné, próbálja meg az IoT hub adatainak megjelenítése Power BI használatával kapcsolatos tudnivalókat lásd: [használjon Power BI segítségével ábrázolhatja valós idejű érzékelőadatok Azure IoT hubról](iot-hub-live-data-visualization-in-power-bi.md).
+Ebben az oktatóanyagban elsajátíthatja, hogyan jelenítheti meg az IoT hub által fogadott által üzemeltetett webes alkalmazást futtat egy webalkalmazás, valós idejű érzékelőadatok. Ha azt szeretné, próbálja meg az IoT hub az adatok megjelenítése Power BI használatával kapcsolatban lásd: [Power BI segítségével az Azure IoT Hub valós idejű érzékelői adatainak megjelenítése](iot-hub-live-data-visualization-in-power-bi.md).
 
-## <a name="what-you-do"></a>Mit
+## <a name="what-you-do"></a>TEENDŐ
 
-- Webalkalmazás létrehozása az Azure portálon.
-- Felkészülés az IoT hub adatelérés egy felhasználói csoport hozzáadásával.
-- A webalkalmazás érzékelő adatokat olvasni az IoT hub konfigurálása.
-- Töltse fel a webalkalmazások a web app működhetnek.
-- Nyissa meg a webalkalmazás az IoT hub valós idejű hőmérséklet és a páratartalom adatai.
+- Webalkalmazás létrehozása az Azure Portalon.
+- Készüljön fel az IoT hub az adatok eléréséhez egy fogyasztói csoport hozzáadásával.
+- Az IoT hub érzékelői adatokat olvasni a WebApp konfigurálását.
+- Töltse fel egy webalkalmazást a webalkalmazás üzemeltetni.
+- Nyissa meg a webalkalmazás az IoT hub valós idejű hőmérséklettel és páratartalommal kapcsolatos adatok megtekintéséhez.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-- [Konfigurálja az eszközt](iot-hub-raspberry-pi-kit-node-get-started.md), amely hozzá van rendelve az alábbi követelményeknek:
-  - Aktív Azure-előfizetés
-  - Az Iot-központ az előfizetéshez tartozó
-  - Egy ügyfélalkalmazást, amely üzeneteket küld az Iot hub
-- [Töltse le a Git](https://www.git-scm.com/downloads)
+- [Az eszköz beállítása](iot-hub-raspberry-pi-kit-node-get-started.md), mely kiterjed a következő követelményeknek:
+  - Aktív Azure-előfizetéssel
+  - Az Iot hub, az előfizetéséhez
+  - Egy ügyfélalkalmazás, amely üzeneteket küld az Iot hubhoz
+- [A Git letöltése](https://www.git-scm.com/downloads)
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **hozzon létre egy erőforrást** > **Web + mobil** > **webalkalmazás**.
-2. Adja meg egy egyedi feladat nevét, ellenőrizze az előfizetés, adjon meg egy erőforráscsoportot és helyet, jelölje be **rögzítés az irányítópulton**, és kattintson a **létrehozása**.
+1. Az a [az Azure portal](https://portal.azure.com/), kattintson a **erőforrás létrehozása** > **Web + mobil** > **webalkalmazás**.
+2. Adjon meg egy egyedi feladat nevet, ellenőrizze az előfizetés, adja meg egy erőforráscsoportot és a egy helyen, jelölje be **rögzítés az irányítópulton**, és kattintson a **létrehozás**.
 
-   Azt javasoljuk, hogy legyen, mint az erőforráscsoport válassza ki az ugyanazon a helyen. Ezzel segítséget nyújt a feldolgozási sebesség, és csökkenti az adatátvitelt.
+   Azt javasoljuk, hogy ugyanazon a helyen, amely az erőforráscsoport, jelölje ki. Ezzel segítséget nyújt a feldolgozási sebességétől, és csökkenti a költségeket az adatátvitelt.
 
    ![Webalkalmazás létrehozása](media/iot-hub-live-data-visualization-in-web-apps/2_create-web-app-azure.png)
 
@@ -56,37 +56,37 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan jelenítheti meg az IoT-közpo
 
 ## <a name="configure-the-web-app-to-read-data-from-your-iot-hub"></a>A webalkalmazás adatokat olvasni az IoT hub konfigurálása
 
-1. Nyissa meg a webes alkalmazás imént létesített.
-2. Kattintson a **Alkalmazásbeállítások**, majd az **Alkalmazásbeállítások**, adja hozzá a következő kulcs/érték párok:
+1. Nyissa meg a webalkalmazás csak kiépített.
+2. Kattintson a **Alkalmazásbeállítások**, majd **Alkalmazásbeállítások**, adja hozzá a következő kulcs-érték párok:
 
    | Kulcs                                   | Érték                                                        |
    |---------------------------------------|--------------------------------------------------------------|
-   | Azure.IoT.IoTHub.ConnectionString     | Az IOT hubbal-explorer kapott                                |
-   | Azure.IoT.IoTHub.ConsumerGroup        | A fogyasztói csoportot felvenni kívánt az IoT hub nevét  |
+   | Azure.IoT.IoTHub.ConnectionString     | Iothub-explorer nyert                                |
+   | Azure.IoT.IoTHub.ConsumerGroup        | A fogyasztói csoportot adja hozzá az az IoT hub nevét  |
 
    ![A webalkalmazás a kulcs/érték párok beállítások hozzáadása](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)
 
-3. Kattintson a **Alkalmazásbeállítások**a **általános beállítások**, váltása a **webes szoftvercsatornák** lehetőséget, majd kattintson a **mentése**.
+3. Kattintson a **Alkalmazásbeállítások**alatt **általános beállítások**, be-vagy kikapcsolása a **Web sockets** lehetőséget, majd kattintson a **mentése**.
 
-   ![A webes szoftvercsatornák beállítást váltása](media/iot-hub-live-data-visualization-in-web-apps/10_toggle_web_sockets.png)
+   ![A Web sockets lehetőség átváltása](media/iot-hub-live-data-visualization-in-web-apps/10_toggle_web_sockets.png)
 
-## <a name="upload-a-web-application-to-be-hosted-by-the-web-app"></a>A webalkalmazás üzemeltetnie webalkalmazás feltöltése
+## <a name="upload-a-web-application-to-be-hosted-by-the-web-app"></a>A webalkalmazás üzemeltethető webalkalmazás feltöltése
 
-A Githubon hajtottunk érhető el egy webes alkalmazás, amely az IoT hub valós idejű érzékelő adatait jeleníti meg. Ehhez szüksége a webalkalmazás Git-tárház, töltse le a webes alkalmazás a Githubból, és töltse fel azt Azure állomásnak a webalkalmazás konfigurálása.
+A Githubon végeztünk elérhető egy webalkalmazást, amely az IoT hub valós idejű érzékelői adatainak megjelenítése. Ehhez szüksége a webalkalmazást egy Git-tárház, töltse le a webalkalmazást a Githubról, és töltse fel azt az Azure-gazdagépre a webalkalmazás konfigurálása.
 
-1. Kattintson a webalkalmazás **központi telepítési beállítások** > **forrás választása** > **helyi Git-tárház**, és kattintson a **OK**.
+1. Kattintson a web app alkalmazásban **központi telepítési beállítások** > **forrás kiválasztása** > **helyi Git-tárház**, és kattintson a **OK**.
 
-   ![A webes alkalmazás telepítéséhez a helyi Git-tárházon konfigurálása](media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
+   ![A webalkalmazások üzembe helyezését a helyi Git-tárház használandó konfigurálása](media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
 
-2. Kattintson a **üzembe helyezési hitelesítő adatok**, hozzon létre egy felhasználónevet és jelszót ehhez a Git-tárházat az Azure-ban, és kattintson a **mentése**.
+2. Kattintson a **üzembe helyezési hitelesítő adatok**, hozzon létre egy felhasználónév és jelszó használata az Azure-ban a Git-tárház csatlakozhat, és kattintson a **mentése**.
 
-3. Kattintson a **áttekintése**, és jegyezze fel a értékének **Git-klón URL-címét**.
+3. Kattintson a **áttekintése**, és jegyezze fel az értékét **Git clone URL-cím**.
 
-   ![A webalkalmazás Git klón URL-cím beszerzése](media/iot-hub-live-data-visualization-in-web-apps/7_web-app-git-clone-url-azure.png)
+   ![A webalkalmazás Git clone URL-cím beszerzése](media/iot-hub-live-data-visualization-in-web-apps/7_web-app-git-clone-url-azure.png)
 
-4. Nyissa meg a parancsot vagy terminálablakot a helyi számítógépen.
+4. Nyisson meg egy parancs vagy a terminálablakban a helyi számítógépen.
 
-5. Töltse le a webalkalmazást a Githubból, és töltse fel az Azure a webalkalmazás a gazdagépre. Ehhez futtassa a következő parancsokat:
+5. Töltse le a webalkalmazást a Githubról, és töltse fel az Azure-bA a webalkalmazás-gazdagépre. Ehhez futtassa a következő parancsokat:
 
    ```bash
    git clone https://github.com/Azure-Samples/web-apps-node-iot-hub-data-visualization.git
@@ -96,24 +96,24 @@ A Githubon hajtottunk érhető el egy webes alkalmazás, amely az IoT hub valós
    ```
 
    > [!NOTE]
-   > \<Git-klón URL-cím\> található a Git-tárház URL-címe a **áttekintése** a webes alkalmazás lapján.
+   > \<Git clone URL-cím\> található Git-adattár URL-címe a **áttekintése** a webalkalmazás oldalán.
 
-## <a name="open-the-web-app-to-see-real-time-temperature-and-humidity-data-from-your-iot-hub"></a>Nyissa meg a webes alkalmazást az IoT hub valós idejű hőmérséklet és a páratartalom adatai
+## <a name="open-the-web-app-to-see-real-time-temperature-and-humidity-data-from-your-iot-hub"></a>Nyissa meg a webes alkalmazást az IoT hub valós idejű hőmérséklettel és páratartalommal kapcsolatos adatok
 
-Az a **áttekintése** lap webalkalmazás, kattintson a nyissa meg a webes alkalmazás URL-CÍMÉT.
+Az a **áttekintése** lapon kattintson a webalkalmazásokat, nyissa meg a webalkalmazás URL-CÍMÉT.
 
-![A webalkalmazás URL-cím beszerzése](media/iot-hub-live-data-visualization-in-web-apps/8_web-app-url-azure.png)
+![A webalkalmazás URL-címére](media/iot-hub-live-data-visualization-in-web-apps/8_web-app-url-azure.png)
 
-Az IoT hub származó, meg kell jelennie a hőmérséklet és a páratartalom valós idejű adatok.
+Az IoT hub megtekintheti a valós idejű hőmérséklettel és páratartalommal kapcsolatos adatokat.
 
-![Valós idejű hőmérséklet és a páratartalom bemutató alkalmazás weblap](media/iot-hub-live-data-visualization-in-web-apps/9_web-app-page-show-real-time-temperature-humidity-azure.png)
+![Valós idejű hőmérséklettel és páratartalommal kapcsolatos megjelenítő alkalmazás weblap](media/iot-hub-live-data-visualization-in-web-apps/9_web-app-page-show-real-time-temperature-humidity-azure.png)
 
 > [!NOTE]
-> Ellenőrizze, hogy a mintaalkalmazás fut-e az eszközön. Ha nem, elérhetővé válik egy üres diagram, olvassa el az oktatóanyagok alatt [beállítani az eszközét](iot-hub-raspberry-pi-kit-node-get-started.md).
+> Győződjön meg arról, a mintaalkalmazás fut az eszközön. Ha nem, megjelenik egy üres diagram, olvassa el a oktatóanyagok alatt [beállítani eszközét](iot-hub-raspberry-pi-kit-node-get-started.md).
 
 ## <a name="next-steps"></a>További lépések
-A webalkalmazás sikeresen használtuk az IoT hub a valós idejű érzékelőadatok megjelenítéséhez.
+A webalkalmazás sikeresen felhasználta az IoT hub valós idejű érzékelői adatainak megjelenítése.
 
-Egy Azure IoT Hub-adatok ábrázolása alternatív módja, lásd: [használjon Power BI segítségével ábrázolhatja az IoT hub a valós idejű érzékelőadatok](iot-hub-live-data-visualization-in-power-bi.md).
+Egy alternatív mód az Azure IoT Hub adatainak megjelenítése, lásd: [Power BI segítségével az IoT hub valós idejű érzékelői adatainak megjelenítése](iot-hub-live-data-visualization-in-power-bi.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

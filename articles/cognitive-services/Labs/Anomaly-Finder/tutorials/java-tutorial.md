@@ -1,6 +1,6 @@
 ---
-title: Anomáliadetektálás Java-alkalmazás – Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Megismerkedhet a Java-alkalmazást, amely az Anomáliadetektálási észlelési API kognitív Microsoft-szolgáltatásokban. Eredeti adatpontok küldeni API, és a várt érték és anomáliadetektálási pontok.
+title: Anomáliadetektálás Java-alkalmazás – a Microsoft Cognitive Services |} A Microsoft Docs
+description: Fedezze fel a Microsoft Cognitive Services az Anomáliadetektáló API-t használó Java-alkalmazás. Küldés eredeti adatpontok API-hoz és a várt érték és anomáliadetektálási pontokat.
 services: cognitive-services
 author: wenya
 manager: bix
@@ -10,45 +10,45 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: wenya
 ms.openlocfilehash: 228d440da358eba1322e2228c54f21e925e36ecd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348166"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597948"
 ---
-# <a name="anomaly-detection-java-application"></a>Az anomáliadetektálási észlelési Java-alkalmazás
+# <a name="anomaly-detection-java-application"></a>Rendellenességek észlelése Java-alkalmazás
 
-Ez a cikk bemutatja, egyszerű Java-alkalmazások használata az Anomáliadetektálási észlelési API meghívására.  
-A példa az Anomáliadetektálási észlelési API adatsorozat időadatok elküldi az előfizetés kulccsal, majd az anomáliadetektálási pontok és a várt érték az egyes adatpontokban lekérdezi az API-n.
+Ez a cikk azt ismerteti, egyszerű Java-alkalmazás használatával az Anomáliadetektáló API meghívásához.  
+A példa az idősoros adatainak az Anomáliadetektáló API-t, elküldi az előfizetési kulccsal végzett, majd az anomáliadetektálási pontok és a várt érték az egyes lekérdezi az API-ból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="platform-requirements"></a>Platform-követelmények
 
-Ez az oktatóanyag segítségével fejlesztette [IntelliJ IDEA](https://www.jetbrains.com/idea). Is szeretne telepíteni, és [Java fejlesztői készlet (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8 +, és az aktuális verzió [tartozó Apache Maven](http://maven.apache.org/) eszköz felépítéséhez.
+Ez az oktatóanyag segítségével fejlesztette [az IntelliJ IDEA](https://www.jetbrains.com/idea). Emellett telepítenie kell, és [Java fejlesztői készlet (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8-as +, és a egy naprakész verzióját [az Apache Maven](http://maven.apache.org/) hozhat létre az eszköz.
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Az anomáliadetektálás szolgáltatásra, és egy előfizetés kulcs beszerzése 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Fizessen elő a rendellenességek észlelése és a egy előfizetési kulcs lekérése 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
  
 
-## <a name="download-the-tutorial-project"></a>Az oktatóanyag projekt letöltése
+## <a name="download-the-tutorial-project"></a>Az oktatóanyag projektjének letöltése
 
-1. Keresse fel a MicrosoftAnomalyDetection [Java tárház](https://github.com/MicrosoftAnomalyDetection/java-sample).
+1. Nyissa meg a MicrosoftAnomalyDetection [Java tárház](https://github.com/MicrosoftAnomalyDetection/java-sample).
 2. Kattintson a Klónozás vagy Letöltés gomb.
-3. Kattintson a letöltés a ZIP-az oktatóanyag projekt egy .zip fájl letöltése.
+3. Kattintson az oktatóanyag projektjének .zip fájl letöltése ZIP letöltése.
 
 <a name="Step1"></a>
-### <a name="open-the-tutorial-project"></a>Az oktatóanyag projekt megnyitása
+### <a name="open-the-tutorial-project"></a>Nyissa meg az oktatóanyag projektjének
 
-1. Bontsa ki a .zip-fájlt az oktatóanyag projekt.
-2. IntelliJ IDEA kattintson **fájl > nyitott**, fájl megnyitása vagy projekt párbeszédpanel jelenik meg.
-3. Adja meg a kibontott projekt legfelső szintű elérési útvonalát, majd kattintson az OK gombra.
+1. Bontsa ki a .zip-fájlt, az oktatóanyag projektjének.
+2. Az IntelliJ IDEA, kattintson **fájl > Megnyitás**, fájl megnyitása vagy projekt párbeszédpanel jelenik meg.
+3. Válassza ki a kibontott projekt a meghajtógyökér elérési útja, majd kattintson az OK gombra.
 4. A projektek panelen bontsa ki a **src > fő > java**.
 5. Kattintson duplán a fájl betöltése a szerkesztőbe com.microsoft.cognitiveservice.anomalydetection.Main.java.
 
 <a name="Step2"></a>
-### <a name="replace-subscriptionkey-and-uri-region"></a>Cserélje le a subscriptionKey és URI régió
+### <a name="replace-subscriptionkey-and-uri-region"></a>Cserélje le a subscriptionKey és URI-régió
 
 ```
 // **********************************************
@@ -63,13 +63,13 @@ public static final String uriBase = "https://api.labs.cognitive.microsoft.com/a
 ```
 
 <a name="Step3"></a>
-### <a name="build-and-run-the-tutorial-project"></a>Hozza létre, és futtatja az oktatóprogram projektet
+### <a name="build-and-run-the-tutorial-project"></a>Hozza létre és futtassa az oktatóanyag projektjének
 
-1. Nyissa meg a menüben kattintson a jobb gombbal bárhol com.microsoft.cognitiveservice.anomalydetection.Main.java forrás kód fülre. 
-2. Válassza ki a "Main.main()" futtatása
-3. A minta kérelem eredménye vissza lesz, és a rendszer Terminálszolgáltatások látható.
+1. A menü megjelenítéséhez kattintson a jobb gombbal bárhol com.microsoft.cognitiveservice.anomalydetection.Main.java forrás kód fülre. 
+2. Válassza a "Main.main()" futtatása
+3. A minta kérés eredményét adja vissza lesz, és a rendszer terminálon megjelenő.
 
-### <a name="result-of-the-tutorial-project"></a>Az oktatóanyag projekt eredménye
+### <a name="result-of-the-tutorial-project"></a>Az oktatóanyag projektjének eredménye
 
 [!INCLUDE [diagrams](../includes/diagrams.md)]
 

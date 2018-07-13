@@ -1,6 +1,6 @@
 ---
-title: Az Azure Import/Export importálási feladat létrehozása |} Microsoft Docs
-description: Útmutató a Microsoft Azure Import/Export szolgáltatás importálás létrehozásához.
+title: Az Azure importálási és exportálási szolgáltatáshoz importálási feladat létrehozása |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre a Microsoft Azure Import/Export szolgáltatás importálását.
 author: muralikk
 manager: syadav
 editor: syadav
@@ -15,66 +15,66 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: a80d2169f346238f997c727f0e9d82666897b608
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365882"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697638"
 ---
-# <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Az importálási feladat az Azure Import/Export szolgáltatás létrehozása
+# <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás importálási feladat létrehozása
 
-A Microsoft Azure Import/Export szolgáltatás REST API használatával az importálási feladat létrehozása a következő lépésekből áll:
+A Microsoft Azure Import/Export szolgáltatás REST API használatával importálási feladat létrehozása az alábbi lépésekből áll:
 
--   Felkészülés az Azure Import/Export eszköz rendelkező meghajtókat.
+-   Felkészülés az Azure Import/Export eszközzel rendelkező meghajtókat.
 
--   A helyet, ahová a meghajtó szállítási megszerezni.
+-   A hely, amelyhez a meghajtó szállításra való beszerzéséről.
 
 -   Az importálási feladat létrehozása.
 
--   A szállítási a Microsoftnak a meghajtók támogatott szolgáltatónként szolgáltatáson keresztül.
+-   A szállítási a Microsoftnak a meghajtók támogatott szolgáltató szolgáltatáson keresztül.
 
--   Az importálási feladat frissítése a szállítási adatokkal.
+-   Az importálási feladat frissítése a a szállítás részleteiről.
 
- Lásd: [adatok átviteléhez a Blob Storage a Microsoft Azure Import/Export szolgáltatás használata](storage-import-export-service.md) áttekintését a Import/Export szolgáltatás és egy az oktatóanyag bemutatja, hogyan használható a [Azure-portálon](https://portal.azure.com/) létrehozása Importálás kezeléséhez, és exportálni a feladatokat.
+ Lásd: [adatok átvitele a Blob Storage a Microsoft Azure Import/Export szolgáltatás használata](storage-import-export-service.md) áttekintését, az Import/Export szolgáltatás és a egy oktatóanyag, amely azt ismerteti, hogyan használható a [az Azure portal](https://portal.azure.com/) hozhat létre és importálási kezelése és a feladatok exportálása.
 
-## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Az Azure Import/Export eszközzel meghajtó előkészítése
+## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Az Azure Import/Export eszközzel együtt meghajtók előkészítése
 
-A meghajtók előkészítése az importálási feladat lépésekre azonos e hoz létre a jobvia a portálon, vagy a REST API-n keresztül.
+Meghajtók előkészítése importálási feladatokhoz a lépések ugyanazok, hogy hoz létre a jobvia a portálon, vagy a REST API-n keresztül.
 
-Az alábbiakban van meghajtó előkészítése rövid áttekintést. Tekintse meg a [Azure Import-ExportTool hivatkozás](storage-import-export-tool-how-to-v1.md) részletes utasításokért. Az Azure Import/Export eszközt letöltheti [Itt](http://go.microsoft.com/fwlink/?LinkID=301900).
+Az alábbi, a meghajtó előkészítése rövid áttekintése. Tekintse meg a [Azure Import-ExportTool referencia](storage-import-export-tool-how-to-v1.md) részletes utasításokért. Az Azure Import/Export eszközt letöltheti [Itt](http://go.microsoft.com/fwlink/?LinkID=301900).
 
-A meghajtó előkészítése foglal magában:
+A meghajtó előkészítése foglalja magában:
 
--   Az adatok, importálandók azonosítása.
+-   Az importálandó adatok azonosítása.
 
--   A célként megadott blobot, amely a Windows Azure Storage azonosítása.
+-   A cél a Windows Azure Storage blobok azonosítása.
 
--   Az Azure Import/Export eszköz használatával másolja az adatokat legalább egy merevlemez-meghajtókat.
+-   Az Azure Import/Export eszköz használata az adatok másolása egy vagy több merevlemez-meghajtókat.
 
- Az Azure Import/Export eszköz is létrehoz a jegyzékfájlt a meghajtókhoz előkészítettként van. A jegyzékfájl tartalmazza:
+ Az Azure Import/Export eszköz is generál a jegyzékfájlt a meghajtókhoz, az előkészítés során. A jegyzékfájlt tartalmaz:
 
--   Egy feltöltési és a leképezései ezeket a fájlokat a blobok szánt fájlok felsorolása.
+-   Egy enumerálás feltöltési és a blobokhoz az érintett fájlok a leképezések az összes fájlt.
 
--   Az egyes fájlok szegmenst ellenőrzőösszegeket.
+-   Az egyes fájlok szegmenseinek ellenőrzőösszegek.
 
--   A metaadatok és a tulajdonságok minden egyes blob társítandó vonatkozó információk.
+-   A metaadat- és tulajdonságfájljainak minden egyes blob társítandó vonatkozó adatokat.
 
--   A művelet neve megegyezik egy már meglévő blob a tárolóban lévő blob, amely feltöltődik-e listáját. A lehetséges értékek: a) a blob felülírja a fájlt, a b) megtartja a meglévő blob és a skip feltölteni a fájlt, a c) hozzáfűzése egy utótagot a nevét, hogy más fájlok nem ütköznek.
+-   Ha egy blob feltöltése folyamatban van, a neve megegyezik egy meglévő blobot a tárolóban elvégzendő listája. A lehetséges értékek: a) a blob felülírja a fájlt a, b) tartani a meglévő blobra, majd feltölti a skip, c) hozzáfűzése egy utótagot a nevét, hogy más fájlok nem ütköznek.
 
-## <a name="obtaining-your-shipping-location"></a>A szállítási hely beszerzése
+## <a name="obtaining-your-shipping-location"></a>A szállítási címhez tartozó hely beszerzése
 
-Mielőtt létrehozna egy importálási feladat, be kell szereznie a szállítási hely nevét és címét meghívásával a [lista helyek](/rest/api/storageimportexport/listlocations) műveletet. `List Locations` helyek és a levelezési címek listáját adja vissza. Jelöljön ki egy helyet a visszaadott listából, és küldje el a merevlemez-meghajtók adott címre. Használhatja a `Get Location` közvetlenül beszerzése a szállítási cím, egy adott helyre vonatkozó műveletet.
+Importálási feladat létrehozása előtt be kell szereznie egy szállítási hely nevét és címét meghívásával a [lista helyek](/rest/api/storageimportexport/listlocations) műveletet. `List Locations` helyek és a levelezési címét listáját adja vissza. Válasszon egy helyet a visszaadott listában, és arra a címre rögzített meghajtók kiszállítása. Is használhatja a `Get Location` művelet egy konkrét hely a szállítási cím közvetlenül beszerzése.
 
- A szállítási raktár beszerzése az alábbi lépésekkel:
+ A szállítási címhez tartozó hely beszerzése az alábbi lépésekkel:
 
--   Azonosítsa a tárfiók helyének nevét. Ez az érték található a **hely** található a tárfiók **irányítópult** az Azure portál vagy a service management API művelettel lekérdezett [Storage-fiók beszerzése Tulajdonságok](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Azonosítsa a helyet a tárfiók nevére. Ez az érték alatt található a **hely** a storage-fiókban található **irányítópult** az Azure portal vagy a service management API művelet használatával lekérdezett [Storage-fiók beszerzése Tulajdonságok](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
 
--   A hely, amelyhez feldolgozni ezt a tárfiókot meghívásával beolvasása a `Get Location` műveletet.
+-   A hely, amelyhez ez a tárfiók feldolgozni meghívásával lekérése a `Get Location` műveletet.
 
--   Ha a `AlternateLocations` helyének tulajdonság tartalmaz maga a hely, akkor használja ezt a helyet kapcsolatát. Ellenkező esetben hívható meg a `Get Location` műveletet a másodlagos helyek. Az eredeti helyre ideiglenesen le lehet, hogy a következő karbantartási.
+-   Ha a `AlternateLocations` helye tulajdonsága tartalmaz magát a helyet, akkor már használja ezt a helyet. Ellenkező esetben hívja a `Get Location` a másodlagos helyek újra a műveletet. Az eredeti helyre ideiglenesen megtakarítása karbantartás céljából.
 
 ## <a name="creating-the-import-job"></a>Az importálási feladat létrehozása
-Az importálási feladat létrehozása, hívja meg a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. Meg kell adnia a következő információkat:
+Az importálási feladat létrehozásához hívja a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. Adja meg a következő információkat kell:
 
 -   A feladat nevét.
 
@@ -82,28 +82,28 @@ Az importálási feladat létrehozása, hívja meg a [Put feladat](/rest/api/sto
 
 -   A szállítási hely neve, az előző lépésben beszerzett.
 
--   A feladat típusa (importálás).
+-   Feladat típusa (importálás).
 
--   A válaszcím, ahol a meghajtók kell-e küldeni az importálási feladat befejeződése után.
+-   A válaszcím, ahol a meghajtók kell küldeni az importálási feladat befejezése után.
 
--   A feladat meghajtók listája. Minden olyan meghajtó meg kell adni a következő adatokat, a meghajtó előkészítési lépés során kapott:
+-   A feladat meghajtók listája. Minden meghajtó meghajtó előkészítési lépés során kapott a következőket kell tartalmaznia:
 
     -   A meghajtó azonosítója
 
-    -   A BitLocker-kulcsot
+    -   A BitLocker-kulcs
 
-    -   Az Alkalmazásjegyzék-fájl relatív elérési út a merevlemez-meghajtón
+    -   Az Alkalmazásjegyzék-fájl relatív elérési út a merevlemezen
 
-    -   A Base16 kódolású jegyzékfájl MD5 kivonatoló
+    -   A Base16 kódolású Alkalmazásjegyzék-fájl MD5-kivonat
 
-## <a name="shipping-your-drives"></a>A meghajtók szállítási
-Kell küldje el az előző lépésben beszerzett címre meghajtó, és a csomag követési számának meg kell adnia az Import/Export szolgáltatás.
+## <a name="shipping-your-drives"></a>A szállítási meghajtó
+Meg kell meghajtók kiszállítása a a címet az előző lépésben beszerzett, és az Import/Export szolgáltatás meg kell adnia a csomag a nyomkövetési azonosító szám.
 
 > [!NOTE]
->  A meghajtók, amely előállít egy azonosítószám a csomag támogatott szolgáltatónként szolgáltatáson keresztül kell küldje el.
+>  Meg kell egy támogatott szolgáltató szolgáltatással, amely a csomag biztosít egy nyomkövetési azonosító szám meghajtók kiszállítása.
 
-## <a name="updating-the-import-job-with-your-shipping-information"></a>Az importálási feladat naplóküldése adatainak frissítése
-Miután a nyilvántartási szám, hívja az [frissítése feladat tulajdonságai](/api/storageimportexport/jobs#Jobs_Update) a szállítási szolgáltatónként nevét, a projekt a nyomon követési száma és a vivőjel-számát visszatérési szállítási frissítési művelete. Opcionálisan megadhat meghajtók és a szállítási dátumot is.
+## <a name="updating-the-import-job-with-your-shipping-information"></a>A szállítási adatait az importálási feladat frissítése
+Miután a nyomkövetési azonosító szám, hívja a [feladat tulajdonságainak frissítése](/api/storageimportexport/jobs#Jobs_Update) szállítási szállító nevét, a feladat a nyomkövetési azonosító szám és a Szállítmányozó számlaszáma a visszaszállítási frissítésére szolgáló művelet. Opcionálisan megadhatja a meghajtókat és a szállítási címhez tartozó dátumot is a számot.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

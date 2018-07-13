@@ -1,6 +1,6 @@
 ---
-title: Az MSI-hozzáférés hozzárendelése egy Azure-erőforrás, az Azure portál használatával
-description: Részletes útmutatást ad egy olyan MSI Csomaghoz, egy erőforrás-hozzáférés hozzárendelése egy másik erőforrás, az Azure portál használatával.
+title: MSI-hozzáférés hozzárendelése egy Azure-erőforrás, az Azure portal használatával
+description: Részletes útmutató egy olyan MSI Csomaghoz, egy erőforrás-hozzáférés hozzárendelése egy másik erőforráshoz, az Azure portal használatával.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,50 +15,50 @@ ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 83a56793d08632918a75f6580360a9dd148d7316
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28978837"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611068"
 ---
-# <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Egy felügyelt Szolgáltatásidentitás hozzáférés hozzárendelése egy erőforrást az Azure portál használatával
+# <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>A Felügyeltszolgáltatás-identitás hozzáférés hozzárendelése egy erőforrást az Azure portal használatával
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Miután konfigurálta az Azure-erőforrás a egy felügyelt szolgáltatás Identity (MSI), a MSI hozzáférést biztosíthat más erőforráshoz, csakúgy, mint bármely rendszerbiztonsági tag. Ez a cikk bemutatja, hogyan való hozzáférésre egy Azure virtuális gép MSI egy Azure storage-fiókot az Azure portál használatával.
+Miután beállította egy Azure-erőforrás és a Felügyeltszolgáltatás-identitás (MSI), az MSI hozzáférést biztosíthat más erőforráshoz, csakúgy, mint bármely rendszerbiztonsági tag. Ez a cikk bemutatja az Azure virtuális gép MSI hozzáférés biztosítása az Azure storage-fiókba, az Azure portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
-## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>Az MSI-hozzáférés hozzárendelése egy másik erőforrás RBAC használata
+## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>Az RBAC használatával az MSI-hozzáférés hozzárendelése egy másik erőforrás
 
-Egy Azure-erőforrás a MSI bekapcsolását követően [például egy Azure virtuális gép](msi-qs-configure-portal-windows-vm.md):
+Miután engedélyezte az MSI-Azure-erőforrás [például egy Azure virtuális gép](msi-qs-configure-portal-windows-vm.md):
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely alatt a MSI konfigurált Azure-előfizetéshez társítva.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely alatt az MSI konfigurálása Azure-előfizetéshez társított.
 
-2. Nyissa meg a kívánt erőforrás hozzáférés-vezérlés módosítani kívánja. Ebben a példában azt biztosít Azure virtuális gép hozzáférjen tárfiókba, így azt lépjen a tárfiókhoz.
+2. Keresse meg a kívánt erőforrást, amelyre szeretné módosítani a hozzáférés-vezérlés. Ebben a példában azt egy Azure-beli Virtuálisgép-hozzáférés, hogy küldjön egy storage-fiókot, hogy lépjen a tárfiókhoz.
 
-3. Válassza ki a **hozzáférés-vezérlés (IAM)** az erőforrást, majd válassza a lap **+ Hozzáadás**. Adja meg a **szerepkör**, **hozzáférés hozzárendelése a virtuális gép**, és adja meg a megfelelő **előfizetés** és **erőforráscsoport** ahol az erőforrás található. A keresési feltételek területen láthatja az erőforráshoz. Válassza ki az erőforrás, majd **mentése**. 
+3. Válassza ki a **hozzáférés-vezérlés (IAM)** az erőforrást, és válassza az oldal **+ Hozzáadás**. Adja meg a **szerepkör**, **hozzáférések hozzárendelése a virtuális gép**, és adja meg a megfelelő **előfizetés** és **erőforráscsoport** ahol az erőforrás található. A keresési feltételek területen látnia kell az erőforrás. Válassza ki az erőforrást, és válassza ki **mentése**. 
 
-   ![Hozzáférés-vezérlési (IAM) képernyőkép](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+   ![Hozzáférés-vezérlés (IAM) képernyőképe](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
 
-4. A fő ismét **hozzáférés-vezérlés (IAM)** lap, ahol jelennek meg új bejegyzést az erőforrás MSI. Ebben a példában a "SimpleWinVM" virtuális gép a bemutató erőforráscsoportból rendelkezik **közreműködő** a tárfiók eléréséhez.
+4. A fő a rendszer visszairányítja **hozzáférés-vezérlés (IAM)** lap, Itt láthatja az új bejegyzést az erőforrás MSI számára. Ebben a példában a "SimpleWinVM" bemutató erőforráscsoportból a virtuális gép rendelkezik **közreműködői** a tárfiókhoz való hozzáférést.
 
-   ![Hozzáférés-vezérlési (IAM) képernyőkép](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
+   ![Hozzáférés-vezérlés (IAM) képernyőképe](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha az erőforrás MSI nem jelenik meg a rendelkezésre álló azonosítók listája, győződjön meg arról, hogy az MSI-fájl helytelenül engedélyezett. Ebben az esetben azt is lépjen vissza az Azure virtuális Gépen, és ellenőrizze a következőket:
+Az MSI az erőforrás nem jelenik meg a rendelkezésre álló identitások listájában, győződjön meg arról, hogy az MSI engedélyezve lett-e megfelelően. A mi esetünkben azt lépjen vissza az Azure virtuális géphez, és ellenőrizze az alábbiakat:
 
-- Tekintse meg a **konfigurációs** lapon, és győződjön meg arról, hogy az érték **engedélyezett MSI** van **Igen**.
-- Tekintse meg a **bővítmények** lapon, és győződjön meg arról, hogy az MSI-bővítmény sikeresen telepítve.
+- Tekintse meg a **konfigurációs** lapon és ellenőrizze, hogy az érték **engedélyezett MSI-vel** van **Igen**.
+- Tekintse meg a **bővítmények** lapon és ellenőrizze, hogy a MSI-bővítmény sikeresen telepítve.
 
-Vagy nem megfelelő, ha szüksége lehet, hogy telepítse újra az erőforráson MSI újra, vagy a központi telepítési hiba elhárítása.
+Ha vagy helytelen, szüksége lehet ismételt üzembe helyezése az MSI az erőforráson újra, vagy az üzemelő példány hibájának elhárítása.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](msi-overview.md).
-- Egy Azure virtuális gépen az MSI engedélyezéséről [konfigurálása az Azure virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure portál használatával](msi-qs-configure-portal-windows-vm.md).
+- MSI áttekintését lásd: [Felügyeltszolgáltatás-identitás – áttekintés](msi-overview.md).
+- Egy Azure-beli virtuális gépen az MSI engedélyezéséhez tekintse [konfigurálása az Azure virtuális gépek Felügyeltszolgáltatás-identitás (MSI) az Azure portal használatával](msi-qs-configure-portal-windows-vm.md).
 
 

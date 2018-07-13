@@ -1,6 +1,6 @@
 ---
-title: Diagnosztikai beállítások áttelepítése az Azure IoT Hub |} Microsoft Docs
-description: Megtudhatja, hogyan kell használni az Azure diagnosztikai beállítások helyett az IoT hub valós idejű műveletek állapotának figyelésére figyelési műveletek Azure IoT-központ frissítése.
+title: Diagnosztikai beállítások áttelepítése az Azure IoT Hub |} A Microsoft Docs
+description: Hogyan lehet frissíteni az Azure IoT hubra az Azure diagnosztikai beállítások használata helyett a műveletek, az IoT hub valós idejű műveleti állapotának figyelése.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -9,49 +9,49 @@ ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: kgremban
 ms.openlocfilehash: 85bdb4b4802283c591e4d7a9e8b14ae74fa44e8d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633587"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666722"
 ---
-# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Az IoT Hub át műveletek figyelés felvétele a diagnosztikai beállítások
+# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Az IoT Hub át műveletek figyelése a diagnosztikai beállítások
 
-A felhasználók [figyelési műveletek] [ lnk-opsmon] az IoT-központ műveletek állapotának követésére telepíthet át, hogy a munkafolyamatot [Azure diagnosztikai beállítások] [ lnk-diagnostics-settings], egy Azure-figyelő szolgáltatás. Diagnosztikai beállítások adja meg az erőforrás-szintű diagnosztikai adatainak számos Azure-szolgáltatásokhoz.
+Használó ügyfelek [műveletek figyelése] [ lnk-opsmon] műveletek az IoT Hub állapotának nyomon követését is áttelepíthet az adott munkafolyamat [Azure diagnosztikai beállítások] [ lnk-diagnostics-settings], az Azure Monitor szolgáltatás. Diagnosztikai beállítások adja meg az erőforráscsoport-szintű diagnosztikai adatok számos Azure-szolgáltatásokhoz.
 
-A műveletek, az IoT-központ figyelési funkcióit elavult, és a jövőben eltávolításra kerül. Ez a cikk nyújt tájékoztatást helyezhetik át a munkaterheléseket a diagnosztikai beállításokat a figyelés művelettől. Az elavultként ütemterv kapcsolatos további információkért lásd: [figyelése az Azure IoT-megoldások Azure monitorral és az Azure Resource Health][lnk-blog-announcement].
+A műveletek az IoT Hub monitorozási funkciókat elavult, és a jövőben törlődik. Ez a cikk lépéseit a műveletek figyelése a diagnosztikai beállításokba mozgatását. Az elavulással kapcsolatos ütemterv kapcsolatos további információkért lásd: [monitorozása az Azure IoT-megoldások az Azure monitorral és az Azure Resource Health][lnk-blog-announcement].
 
-## <a name="update-iot-hub"></a>Az IoT-központ frissítése
+## <a name="update-iot-hub"></a>Az IoT Hub frissítése
 
-Az Azure-portálon az IoT Hub frissítéséhez először kapcsolja be a diagnosztikai beállításokat, majd kapcsolja ki a figyelési műveletek.  
+Az Azure Portalon az IoT Hub frissíteni, először kapcsolja be a diagnosztikai beállítások, majd kapcsolja ki a műveletek figyelése.  
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
-### <a name="turn-off-operations-monitoring"></a>Kapcsolja ki a figyelési műveletek
+### <a name="turn-off-operations-monitoring"></a>Kapcsolja ki a műveletek figyelése
 
-Az új diagnosztikai beállítások tesztelése a munkafolyamatban, után kikapcsolhatja a hálózatfigyelési szolgáltatást műveletek. 
+A munkafolyamat tesztelése az új diagnosztikai beállítások, után kikapcsolhatja a hálózatfigyelési szolgáltatást műveletek. 
 
-1. Az IoT-központ menüben válasszon ki **figyelési műveletek**.
-1. Válassza ki a minden felügyeleti kategória **nincs**.
-1. Mentse a műveletek figyeli a változásokat.
+1. Válassza ki az IoT Hub menüben **műveletek figyelése**.
+1. Minden felügyeleti kategória területen válassza ki a **None**.
+1. A műveletek figyelése a módosítások mentéséhez.
 
-## <a name="update-applications-that-use-operations-monitoring"></a>Figyelési műveletek használó alkalmazások
+## <a name="update-applications-that-use-operations-monitoring"></a>Műveletek figyelése használó alkalmazások frissítése
 
-A figyelési műveletekhez, és a diagnosztikai beállítások sémák némileg eltérőek lehetnek. Fontos, hogy a ma figyelési műveletek hozzárendelése a diagnosztikai beállításokat használják a sémát használó alkalmazások frissíteni. 
+Műveletek figyelése és a diagnosztikai beállításokat a sémák némileg eltérőek lehetnek. Fontos, hogy a műveletek figyelése ma leképezése a diagnosztikai beállítások által használt sémát használó alkalmazások frissítéséhez. 
 
-Is diagnosztikai beállítások ajánlatok öt új kategóriákban nyomon követését. Alkalmazások a már meglévő séma frissítése után adja hozzá az új kategóriák:
+Ezenkívül diagnosztikai beállítások ajánlatok nyomon követése az öt új kategóriák is elérhetők. Miután frissítette az alkalmazást a meglévő séma, adja hozzá az új kategóriák:
 
-- Felhő eszközre iker műveletek
-- Eszköz-felhő iker műveletek
-- A két lekérdezések
+- Felhőalapú ikereszköz műveletek
+- Eszközről a felhőbe – az ikereszköz-műveletek
+- Ikereszköz-lekérdezések
 - Feladatműveletek
-- Közvetlen módszer
+- Közvetlen metódusok
 
-Tekintse meg a megadott séma struktúrák [megérteni a sémát a diagnosztikai beállítások][lnk-diagnostics-schema].
+Lásd: a megadott séma struktúrák [megismerni a sémát a diagnosztikai beállítások][lnk-diagnostics-schema].
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure IoT Hub állapotának figyelésére, és a problémák diagnosztizálásához gyorsan][lnk-monitor]
+- [Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása][lnk-monitor]
 
 [lnk-opsmon]: iot-hub-operations-monitoring.md
 [lnk-diagnostics-settings]: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md
