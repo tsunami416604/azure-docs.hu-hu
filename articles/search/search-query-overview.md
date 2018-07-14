@@ -8,12 +8,12 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/13/2017
-ms.openlocfilehash: 50e27cbc485259ea5ce744ba71feee5e90293bcb
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a7b32bad8a9f1d039b17fe0f1be167cffbc86547
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792909"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006205"
 ---
 # <a name="queries-in-azure-search"></a>Lekérdezések az Azure Search szolgáltatásban
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Az Azure Search számára keresési kérések elküldésekor az alkalmazás kere
 Az alábbi lista röviden ismerteti az Azure Search lekérdezési paramétereinek gyakori alkalmazásait. A lekérdezési paraméterek és azok viselkedésének teljes leírását a [REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) és a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters#microsoft_azure_search_models_searchparameters#properties_summary) részletes információi között találja.
 
 ## <a name="types-of-queries"></a>A lekérdezések típusai
-Az Azure Search számos lehetőséget kínál rendkívül hatékony lekérdezések végrehajtására. Az itt használt két fő lekérdezési típus: `search` és `filter`. A `search` lekérdezés egy vagy több kifejezésre keres rá az index összes *searchable* (kereshető) mezőjében, működése pedig hasonló a Google vagy a Bing keresőmotoréhoz. A `filter` lekérdezés egy logikai kifejezés kiértékelését végzi el az index összes *filterable* (szűrhető) mezőjén. A `search` lekérdezésektől eltérően, a `filter` lekérdezéseknek egy mező pontos tartalmával kell megegyezniük, ami azt jelenti, hogy a karakterláncot tartalmazó mezők esetében a rendszer megkülönbözteti a kis- és nagybetűket.
+Az Azure Search számos lehetőséget kínál rendkívül hatékony lekérdezések végrehajtására. Az itt használt két fő lekérdezési típus: `search` és `filter`. A `search` lekérdezés egy vagy több kifejezésre keres rá az index összes *searchable* (kereshető) mezőjében, működése pedig hasonló a Google vagy a Bing keresőmotoréhoz. A `filter` lekérdezés egy logikai kifejezés kiértékelését végzi el az index összes *filterable* (szűrhető) mezőjén. A `search` lekérdezésektől eltérően, a `filter` lekérdezéseknek egy mező pontos tartalmával kell megegyezniük, ami azt jelenti, hogy a sztringet tartalmazó mezők esetében a rendszer megkülönbözteti a kis- és nagybetűket.
 
 A keresések és a szűrések együtt vagy külön-külön is alkalmazhatók. Ha együtt használja azokat, a rendszer a szűrőt először a teljes indexre alkalmazza, majd annak eredményein hajtja végre a keresést. A szűrők éppen ezért hasznosak a lekérdezés teljesítményének javítására, mivel általuk lecsökkenthető a keresési lekérdezés által feldolgozandó dokumentumok köre.
 
@@ -54,12 +54,12 @@ A keresési eredmények lapozása az Azure Search segítségével könnyen megva
 A keresési eredmények lapozásáról további információkat a [Keresési eredmények lapozása az Azure Search szolgáltatásban](search-pagination-page-layout.md) című cikkben talál.
 
 ## <a name="hit-highlighting"></a>Találatok kiemelése
-Az Azure Search szolgáltatás `highlight`, `highlightPreTag` és `highlightPostTag` paramétereinek használatával egyszerűen kiemelhető a keresési lekérdezésnek megfelelő keresési eredmények pontos köre. Megadhatja, hogy mely *searchable* (kereshető) mezők esetében kívánja bekapcsolni az egyező szöveg kiemelését, valamint az Azure által visszaadott egyező szöveg elejére és végére hozzáfűzni kívánt karakterlánc-címkéket.
+Az Azure Search szolgáltatás `highlight`, `highlightPreTag` és `highlightPostTag` paramétereinek használatával egyszerűen kiemelhető a keresési lekérdezésnek megfelelő keresési eredmények pontos köre. Megadhatja, hogy mely *searchable* (kereshető) mezők esetében kívánja bekapcsolni az egyező szöveg kiemelését, valamint az Azure által visszaadott egyező szöveg elejére és végére hozzáfűzni kívánt sztringcímkéket.
 
 ## <a name="try-out-query-syntax"></a>Lekérdezési szintaxis tesztelése
 
 A szintaxisbeli különbségek megértésének legjobb módja, ha lekérdezéseket küld el, és áttekinti az eredményeket.
 
-+ A [Keresési ablak](search-explorer.md) használata az Azure Portalon. [A mintaindex](search-get-started-portal.md) üzembe helyezésével perceken belül lekérdezheti az indexet a portál eszközeivel.
++ Használat [keresési ablak](search-explorer.md) az Azure Portalon. [A mintaindex](search-get-started-portal.md) üzembe helyezésével perceken belül lekérdezheti az indexet a portál eszközeivel.
 
 + A Telerik Fiddler vagy a Chrome Postman használatával lekérdezéseket küldhet a keresési szolgáltatásba feltöltött indexekhez. Mindkét eszköz támogatja a HTTP-végpontok felé indított REST-hívásokat. 

@@ -2,7 +2,7 @@
 
 Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg az eszköz és az IoT Hub közötti üzenetek formátumát.
 
-1. Adja hozzá a következő változódeklarációkat az `#include` utasítások után. Cserélje le a helyőrző értékeket [Eszközazonosító] és [eszközkulcs] az eszközt a távoli felügyeleti megoldás irányítópultja feljegyzett értékekkel. Cserélje le az [IoTHub Name] értéket a megoldás irányítópultján található IoT Hub gazdanévre. Ha például az IoT Hub gazdaneve **contoso.azure-devices.net**, cserélje le az [IoTHub Name] helyőrzőt a **contoso** értékre:
+1. Adja hozzá a következő változódeklarációkat az `#include` utasítások után. Cserélje le a helyőrzőket a [Device ID] és [Device Key] a távoli figyelési megoldás irányítópultján lévő eszköz feljegyzett értékekkel. Cserélje le az [IoTHub Name] értéket a megoldás irányítópultján található IoT Hub gazdanévre. Ha például az IoT Hub gazdaneve **contoso.azure-devices.net**, cserélje le az [IoTHub Name] helyőrzőt a **contoso** értékre:
    
     ```c
     static const char* deviceId = "[Device Id]";
@@ -11,7 +11,7 @@ Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg a
 
 1. Adja hozzá a következő kódot az eszköz és az IoT Hub kommunikációját lehetővé tévő modell létrehozásához. Ez a modell meghatározza, hogy az eszköz:
 
-   - Elküldheti hőmérséklet, külső hőmérséklet, páratartalom és Eszközazonosítót telemetriai adatokat.
+   - Küldhet hőmérséklet, a külső hőmérséklet, a páratartalmat és a egy Eszközazonosítót telemetriaként.
    - Metaadatokat küldhet az eszközzel kapcsolatban az IoT Hub számára. Az eszköz az alapszintű metaadatokat egy **DeviceInfo** objektumban küldi el indításkor.
    - Jelentett tulajdonságokat küldhet az IoT Hubban található ikereszköznek. Ezek a jelentett tulajdonságok konfigurációs, eszköz- és rendszertulajdonságok szerint vannak csoportosítva.
    - Fogadhatja az IoT Hubban található ikereszköz kívánt tulajdonságait, és reagálhat rájuk.
@@ -173,7 +173,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
 
     - Inicializálja a platformot.
     - Regisztrálja a Contoso névteret a szerializációs kódtárban.
-    - Inicializálja az ügyfelet az eszközkapcsolati karakterlánccal.
+    - Inicializálja az ügyfelet az eszközkapcsolati sztringgel.
     - Létrehozza a **Thermostat** modell egy példányát.
     - Létrehozza és elküldi a jelentett tulajdonságértékeket.
     - Elküld egy **DeviceInfo** objektumot.

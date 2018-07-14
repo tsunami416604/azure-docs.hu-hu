@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 88bd895cb3a384f1ada0394fe2da206aca86b981
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a5a6a43c41760e22a7aeb0e97aacc145c69957ff
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38670930"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006396"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése Azure-ban működő, OpenSUSE Linux rendszerű virtuális gépen
 
@@ -33,13 +33,13 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>OpenSUSE Linux rendszerű virtuális gép létrehozása
 
-Először hozzon létre egy erőforráscsoportot. Ebben a példában az erőforráscsoport elnevezési azt *mySQSUSEResourceGroup* és hozza létre a a *USA keleti Régiójában* régióban.
+Először hozzon létre egy erőforráscsoportot. Ebben a példában az erőforráscsoport neve *mySQSUSEResourceGroup* létrehozták, és a *USA keleti Régiójában* régióban.
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-A virtuális gép létrehozásához. Ebben a példában a virtuális gép elnevezési azt *myVM*. Is fogjuk használni a virtuális gép méretét *Standard_D2s_v3*, de kell kiválasztani a [Virtuálisgép-méret](sizes.md) úgy gondolja, hogy a számítási feladathoz leginkább megfelelő.
+A virtuális gép létrehozásához. Ebben a példában a virtuális gép neve *myVM* és a virtuális gép mérete *Standard_D2s_v3*, de kell kiválasztani a [Virtuálisgép-méret](sizes.md) úgy gondolja, hogy a számítási feladathoz leginkább megfelelő.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -96,17 +96,30 @@ systemctl is-enabled mysql
 
 A kapott: engedélyezve van.
 
+Indítsa újra a kiszolgálót.
+
+```bash
+sudo reboot
+```
+
 
 ## <a name="mysql-password"></a>MySQL-jelszavát
 
-A telepítés után a MySQL rendszergazdai jelszó alapértelmezés szerint üres. Futtassa a **mysql\_biztonságos\_telepítési** parancsfájl MySQL biztonságossá tételéhez. A parancsfájl kérni fogja, hogy a MySQL rendszergazdai jelszó módosítása, távolítsa el a névtelen felhasználói fiókot, tiltsa le a távoli legfelső szintű bejelentkezések, távolítsa el az adatbázisok vizsgálati és töltse be újra a jogosultságok tábla. 
+A telepítés után a MySQL rendszergazdai jelszó alapértelmezés szerint üres. Futtassa a **mysql\_biztonságos\_telepítési** parancsfájl MySQL biztonságossá tételéhez. A parancsfájl kérni fogja, hogy a MySQL rendszergazdai jelszó módosítása, távolítsa el a névtelen felhasználói fiókot, tiltsa le a távoli legfelső szintű bejelentkezési, távolítsa el az adatbázisok vizsgálati és töltse be újra a jogosultságok tábla. 
+
+Ha a kiszolgáló újraindul, ssh a virtuális gép újra.
+
+```azurecli-interactive  
+ssh 10.111.112.113
+```
+
 
 
 ```bash
 mysql_secure_installation
 ```
 
-## <a name="log-in-to-mysql"></a>Jelentkezzen be a MySQL-hez
+## <a name="sign-in-to-mysql"></a>Jelentkezzen be a MySQL-hez
 
 Most jelentkezzen be, és adja meg a MySQL-parancssorban.
 
@@ -136,7 +149,7 @@ GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
 Adatbázis felhasználónevek és jelszavak csak az adatbázishoz csatlakozással parancsfájlok segítségével.  Adatbázis-felhasználói fiókok nevei feltétlenül nem felelnek meg a tényleges felhasználói fiókokat a rendszer.
 
-Jelentkezzen be egy másik számítógépről engedélyezése. Ebben a példában a számítógépen, jelentkezzen be a kívánt IP-címe van *10.112.113.114*.
+Jelentkezzen be egy másik számítógépről engedélyezése. Ebben a példában az IP-cím annak a számítógépnek, hogy a bejelentkezési van *10.112.113.114*.
 
 ```   
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';

@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 45179f8f1f46be764144bdc22d5bab3548e9401d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
-ms.translationtype: MT
+ms.openlocfilehash: 789958874784f19169e79a177beb0d811d9f60d4
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346059"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005706"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Hozzon létre egy Linux IoT Edge-eszköz, amely transzparens átjáróként
 
@@ -117,7 +117,7 @@ Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üze
 2. Lépjen a **IoT Edge** , és válassza ki az IoT Edge-eszközt, hogy az átjáró használni kívánt.
 3. Válassza a **Modulok beállítása** lehetőséget.
 4. Kattintson a **Tovább** gombra.
-5. Az a **útvonalak megadása** lépés, rendelkeznie kell egy alapértelmezett útvonalat, amely az összes üzenetet küld az összes modulok az IoT hubnak. Ha nem, adja hozzá a következő kódot, majd válassza ki **tovább**.
+5. Az **Útvonalak megadása** lépésben egy alapértelmezett útvonallal kell rendelkeznie, amely az összes modul összes üzenetét az IoT Hubba irányítja. Amennyiben nem így lenne, adja hozzá a következő kódot, és kattintson a **Tovább** gombra.
    ```JSON
    {
        "routes": {
@@ -181,7 +181,7 @@ Az IoT Edge-futtatókörnyezet továbbíthatnak hasonlóan modulok által küld�
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-A [modul összeállítás cikkben] [lnk-modul-összeállítását] üzenet-útválasztással kapcsolatos részletekért.
+Tekintse meg a [modul összeállítás cikk] [ lnk-module-composition] üzenet-útválasztással kapcsolatos részletekért.
 
 ## <a name="next-steps"></a>További lépések
 [A követelmények és az eszközök IoT Edge-modulok megismerése][lnk-module-dev].
@@ -192,6 +192,7 @@ A [modul összeállítás cikkben] [lnk-modul-összeállítását] üzenet-útv�
 <!-- Links -->
 [lnk-install-linux-x64]: ./how-to-install-iot-edge-linux.md
 [lnk-install-linux-arm]: ./how-to-install-iot-edge-linux-arm.md
+[lnk-module-composition]: ./module-composition.md
 [lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md

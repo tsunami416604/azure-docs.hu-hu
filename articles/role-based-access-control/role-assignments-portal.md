@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/11/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6544503353f085a9dd9b0fe7207bbf8d4e0bc9d0
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: aaa36d850516ff4d8e40b62c588347468da5c6d2
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435617"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008161"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Hozzáférés kezelése az RBAC és az Azure Portal használatával
 
@@ -88,7 +88,9 @@ A hozzáférések kezelésekor szeretné tudni, kinek van hozzáférése, milyen
 
    ![Azure Active Directory-felhasználó Azure-erőforrásai](./media/role-assignments-portal/aad-user-azure-resources.png)
 
-   Az Azure-erőforrások panelen láthatja a kiválasztott felhasználó szerepkör-hozzáféréseit. A lista csak azon erőforrások szerepkör-hozzárendeléseit tartalmazza, amelyekhez olvasási engedéllyel rendelkezik. Ha például a felhasználó egy másik előfizetésben is rendelkezik szerepkör-hozzárendelésekkel, amelyhez Ön nem rendelkezik olvasási engedéllyel, azok a szerepkör-hozzárendelések nem jelennek meg a listában.
+   Az Azure-erőforrások panelen láthatja a szerepkör-hozzárendeléseit a kijelölt felhasználó és a kijelölt előfizetésben. Ez a lista csak szerepkör-hozzárendeléseit olvasási engedéllyel rendelkező erőforrásokat tartalmazza. Például ha a felhasználó is rendelkezik, amely nem olvasható szerepkör-hozzárendeléseket, azokat a szerepkör-hozzárendeléseket nem jelenik a listában.
+
+1. Ha több előfizetéssel rendelkezik, akkor választhatja a **előfizetés** legördülő listából válassza ki egy másik előfizetésben található a szerepkör-hozzárendelések megtekintéséhez.
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
@@ -161,14 +163,6 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 1. A megjelenő, a szerepkör-hozzárendelés eltávolításáról szóló üzenetben válassza az **Igen** lehetőséget.
 
 Az örökölt szerepkör-hozzárendeléseket nem lehet eltávolítani. Ha örökölt szerepkör-hozzárendelést kell eltávolítania, azt abban a hatókörben kell megtennie, ahol a szerepkör-hozzárendelés létrejött. A **Hatókör** oszlopban az **Örökölt** elem melletti hivatkozás azokra az erőforrásokra mutat, ahol az adott szerepkör hozzárendelése megtörtént. Lépjen az ott szereplő hatókörhöz a szerepkör-hozzárendelés eltávolításához.
-
-## <a name="other-tools-to-manage-access"></a>Más eszközök a hozzáférés kezelésére
-
-A szerepkörök hozzárendelését és a hozzáférések kezelését más eszközökön is elvégezheti az Azure RBAC-parancsokkal, nem csak az Azure Portalon. További információk az alábbi hivatkozásokra kattintva érhetők el:
-
-* [Azure PowerShell](role-assignments-powershell.md)
-* [Azure CLI](role-assignments-cli.md)
-* [REST API](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>További lépések
 

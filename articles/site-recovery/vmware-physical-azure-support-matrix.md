@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: cb01e71ae45ae8a7e37e8ab5cdf60e3b3fcb9983
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eecf608a712e6a29180b797bbef491501653dfd6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919760"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006478"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware-alapú és fizikai kiszolgáló replikálása az Azure-támogatási mátrixa
 
@@ -24,13 +24,13 @@ Ez a cikk összefoglalja a támogatott összetevők és a VMware virtuális gép
 **Forgatókönyv** | **Részletek**
 --- | ---
 VMware virtuális gépek | Az Azure-bA a helyszíni VMware virtuális gépek replikálása. Ebben a forgatókönyvben az Azure Portalon vagy a használatával telepíthet [PowerShell](vmware-azure-disaster-recovery-powershell.md).
-Fizikai kiszolgálók | A helyszíni Windows/Linux fizikai serversto Azure replikálása. Ebben a forgatókönyvben az Azure Portalon is telepítheti.
+Fizikai kiszolgálók | A helyszíni Windows/Linux fizikai kiszolgálók Azure-bA replikálását. Ebben a forgatókönyvben az Azure Portalon is telepítheti.
 
 ## <a name="on-premises-virtualization-servers"></a>A helyszíni virtualizálási kiszolgálók
 
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
-VMware | vCenter Server 6.5-ös, 6.0 vagy 5.5-ös vagy vSphere 6.5-ös, 6.0 vagy 5.5-ös | Azt javasoljuk, hogy a vCenter-kiszolgáló használja.<br/><br/> Azt javasoljuk, hogy a vSphere-gazdagépek és vCenter-kiszolgálók található-e a folyamatkiszolgáló ugyanazon a hálózaton. Alapértelmezés szerint a folyamat kiszolgáló-összetevők fut a konfigurációs kiszolgálón, így ez lesz a hálózatot, amelyben állítsa be a konfigurációs kiszolgálót, kivéve, ha dedikált kiszolgáló beállításához.
+VMware | vCenter Server 6.7, 6.5-ös, 6.0 vagy 5.5-ös vagy vSphere 6.7, 6.5-ös, 6.0 vagy 5.5 | Azt javasoljuk, hogy a vCenter-kiszolgáló használja.<br/><br/> Azt javasoljuk, hogy a vSphere-gazdagépek és vCenter-kiszolgálók található-e a folyamatkiszolgáló ugyanazon a hálózaton. Alapértelmezés szerint a folyamat kiszolgáló-összetevők fut a konfigurációs kiszolgálón, így ez lesz a hálózatot, amelyben állítsa be a konfigurációs kiszolgálót, kivéve, ha dedikált kiszolgáló beállításához.
 Fizikai | –
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery konfigurációs kiszolgálónak
@@ -61,7 +61,7 @@ A Site Recovery támogatja az egy támogatott gépen futó bármilyen számítá
 **Összetevő** | **Részletek**
 --- | ---
 Gép beállításai | Az Azure-bA replikált gépek meg kell felelnie [Azure-követelmények](#azure-vm-requirements).
-Windows operációs rendszer | 64 bites Windows Server 2016 (Server Core, kiszolgáló asztali kezelőfelülettel), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, legalább SP1. Windows 2016 Nano Server nem támogatott.
+Windows operációs rendszer | 64 bites Windows Server 2016 (Server Core, kiszolgáló asztali kezelőfelülettel), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, legalább SP1.</br></br>  [A Windows Server 2008, legalább SP2 – 32 bites és 64 bites](migrate-tutorial-windows-server-2008.md) (csak a migrálás). </br></br> * *Windows 2016 Nano Server nem támogatott.*
 Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 a 5.11, 6.1, 6.9, 7.0-7.4 <br/><br/>CentOS: 5.2 a 5.11, 6.1, 6.9, 7.0-7.4 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (támogatott kernel-verzióknál)](#debian-kernel-versions)<br/><br/>Oracle Enterprise Linux 6.4, 6.5, a Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel kiadási 3 (UEK3) <br/><br/>SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4 <br/><br/>Replikált gépek frissítése az SP3 SP4 szervizcsomag nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és engedélyezze újra a frissítés után.
 
 >[!NOTE]
@@ -70,6 +70,7 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 a 5.11, 6.1, 6.9, 7.0
 >
 > - Frissíti a védett számítógépek közötti fő Linux terjesztési verziója nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és frissítse az operációs rendszert, majd újból engedélyezze a replikációt.
 >
+> - Red Hat Enterprise Linux 5.2 5.11 vagy CentOS 5.2 5.11 futtató kiszolgálókat kell rendelkeznie ahhoz, hogy a gépek Azure-ban a Linux integrációs Services(LIS) összetevőit.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu kernel-verzióknál
 

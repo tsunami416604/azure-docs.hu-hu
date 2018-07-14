@@ -8,14 +8,14 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 9e69faf1b07af0e60cfd21cd6eb9f00e211ab91e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 7c0ef019536d527775e4f5b959a155db3eacebbf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031753"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006098"
 ---
-# <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP eszközök csatlakoztatása az IoT-peremhálózati eszköz átjárón keresztül
+# <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása az IoT Edge-eszközátjárón keresztül
 
 Ha egy Azure IoT Hubhoz Modbus TCP vagy RTU protokollt használó IoT-eszközöket kíván csatlakoztatni, használjon egy IoT Edge-eszközt átjáróként. Az átjáróeszköz beolvassa az adatokat a Modbus-eszközökből, majd elküldi ezeket az adatokat a felhőbe egy támogatott protokoll használatával. 
 
@@ -43,10 +43,10 @@ Ha saját modult kíván létrehozni és testre szabni a környezethez, a GitHub
 
 ## <a name="run-the-solution"></a>A megoldás futtatása
 1. Az [Azure Portalon](https://portal.azure.com/) lépjen az IoT hubhoz.
-2. Ugrás a **IoT peremhálózati** és az IoT-peremhálózati eszközön kattintson.
+2. Lépjen a **IoT Edge** , majd kattintson a az IoT Edge-eszköz.
 3. Válassza a **Set modules** (Modulok beállítása) lehetőséget.
 4. Adja hozzá a Modbus-modult:
-   1. Kattintson a **Hozzáadás** válassza **IoT peremhálózati modul**.
+   1. Kattintson a **Hozzáadás** válassza **IoT Edge-modul**.
    2. A **Name** (Név) mezőbe írja a következőt: „modbus”.
    3. Az **Image** (Rendszerkép) mezőbe írja be a mintatároló kép URI-ját: `microsoft/azureiotedge-modbus-tcp:1.0-preview`.
    4. Jelölje be az **Enable** (Engedélyezés) jelölőnégyzetet a moduliker kívánt tulajdonságainak frissítéséhez.
@@ -87,8 +87,8 @@ Ha saját modult kíván létrehozni és testre szabni a környezethez, a GitHub
    ```
 
 8. Kattintson a **Tovább** gombra. 
-9. Az a **felülvizsgálati telepítési** lépésben jelölje be **Submit**. 
-10. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre. Láthatja, hogy az új **modbus** fut, és az IoT-Edge futásidejű modult.
+9. Az **Üzembe helyezés áttekintése** lépésben kattintson a **Küldés** elemre. 
+10. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre. Látható, az új **modbus** modul futtatása az IoT Edge-futtatókörnyezettel együtt.
 
 ## <a name="view-data"></a>Adatok megtekintése
 Tekintse meg a Modbus-modulon keresztül érkező adatokat:
@@ -96,11 +96,11 @@ Tekintse meg a Modbus-modulon keresztül érkező adatokat:
 docker logs -f modbus
 ```
 
-Az eszköz által küldött telemetriát is megtekintheti az [IoT Hub Explorer eszközzel](https://github.com/azure/iothub-explorer). 
+Az eszköz által küldött telemetriát is megtekintheti a [az IoT Hub explorer eszköz](https://github.com/azure/iothub-explorer) vagy a [Azure IoT-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="next-steps"></a>További lépések
 
-- Hogyan IoT peremeszközök is átjáróként kapcsolatos további információkért lásd: [IoT peremhálózati eszköz, amely átlátszó átjáróként létrehozása][lnk-transparent-gateway-linux]
+- Hogyan IoT Edge-eszközök átjáróként való működéséről kapcsolatos további információkért lásd: [transzparens átjáróként IoT Edge-eszköz létrehozása][lnk-transparent-gateway-linux]
 - További információk az IoT Edge-modulok működéséről: [Az Azure IoT Edge-modulok megismerése](iot-edge-modules.md)
 
 <!-- Links -->

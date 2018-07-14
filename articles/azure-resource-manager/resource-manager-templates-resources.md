@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1619f3bfdf49820ec529947ea02d1602a7b2aa8c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6723cf8cc18637c157b295361425357e1c47ec2e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723832"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007161"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Erőforrások szakaszában található Azure Resource Manager-sablonok
 
@@ -30,7 +30,7 @@ Az alábbi struktúra használatával erőforrásokat határoz meg:
 ```json
 "resources": [
   {
-      "condition": "<boolean-value-whether-to-deploy>",
+      "condition": "<true-to-deploy-this-resource>",
       "apiVersion": "<api-version-of-resource>",
       "type": "<resource-provider-namespace/resource-type-name>",
       "name": "<name-of-the-resource>",
@@ -83,7 +83,7 @@ Az alábbi struktúra használatával erőforrásokat határoz meg:
 
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
-| feltétel | Nem | Logikai érték, amely azt jelzi, hogy telepítve van-e az erőforrás. |
+| feltétel | Nem | Logikai érték, amely azt jelzi, hogy az erőforrás jön létre a központi telepítés során. Amikor `true`, az erőforrás létrehozása az üzembe helyezés során. Amikor `false`, az erőforrást a rendszer kihagyta a központi telepítéshez. |
 | apiVersion |Igen |Az erőforrás létrehozásához használt REST API-verzió. |
 | type |Igen |Az erőforrás típusát. Ezt az értéket a névteret, az erőforrás-szolgáltató és az erőforrástípus kombinációja (például **Microsoft.Storage/storageAccounts**). |
 | név |Igen |Az erőforrás neve. A név RFC3986 meghatározott URI-összetevőt korlátozásokat kell követnie. Emellett az Azure-szolgáltatások elérhetővé az erőforrás neve kívüli felek ellenőrzése, hogy a név nem egy másik identitását meghamisítását tett kísérlet. |
@@ -100,7 +100,7 @@ Az alábbi struktúra használatával erőforrásokat határoz meg:
 
 ## <a name="condition"></a>Állapot
 
-Ha el kell döntenie, üzembe helyezés során e hozzon létre egy erőforrást, használja a `condition` elemet. Ez az elem értéke IGAZ vagy hamis értéket mutat. Ha az értéke true, az erőforrás üzembe van helyezve. FALSE (hamis) érték esetén az erőforrás nincs telepítve. Például adja meg, hogy van-e telepítve egy új tárfiókot, vagy egy meglévő tárfiókot használja, használja:
+Ha el kell döntenie, üzembe helyezés során e hozzon létre egy erőforrást, használja a `condition` elemet. Ez az elem értéke IGAZ vagy hamis értéket mutat. Ha az értéke true, az erőforrás jön létre. Ha a beállítás értéke FALSE (hamis), az erőforrás nem lesz létrehozva. Általában ezt az értéket használja, ha azt szeretné, hozzon létre egy új erőforrást, vagy használjon egy meglévőt. Például adja meg, hogy van-e telepítve egy új tárfiókot, vagy egy meglévő tárfiókot használja, használja:
 
 ```json
 {

@@ -26,7 +26,7 @@ A távoli figyelési megoldás irányítópultján metódusokat hívhat meg az e
 
     ![Metódus előzményeinek megtekintése][img-method-history]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az [előre konfigurált megoldások testreszabását][lnk-customize] ismertető cikkben további módokat találhat a minta kibővítésére. A lehetséges bővítmények közé tartozik a valódi érzékelők használata és további parancsok implementálása.
 
 Az [engedélyekről többet is megtudhat az azureiotsuite.com webhelyen][lnk-permissions].

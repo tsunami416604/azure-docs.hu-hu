@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: e54b89d31042d43a14379dea6daffd3e7763a64a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6c3756e721847a8cb746f5dc755ccd90bfebe9f0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796954"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008274"
 ---
 # <a name="indexing-in-azure-search"></a>Indexelés az Azure Search szolgáltatásban
 > [!div class="op_single_selector"]
@@ -59,12 +59,12 @@ Az indexelő funkció az [Azure Portalon](search-import-data-portal.md), a [REST
 
 A portál használatának egyik előnye, hogy az Azure Search általában képes létrehozni egy alapértelmezett indexsémát a forrásadatkészlet metaadatainak kiolvasásával. A létrehozott indexet annak feldolgozásáig módosíthatja, azt követően azonban csak azok a sémamódosítások engedélyezettek, amelyekhez újraindexelés nem szükséges. Ha a végrehajtani kívánt módosítások közvetlen hatással vannak a sémára, újra kell építenie az indexet. 
 
-## <a name="verify-data-import-with-search-explorer"></a>Adatok importálásának ellenőrzése a Keresési ablakkal
+## <a name="verify-data-import-with-search-explorer"></a>Adatok importálásának ellenőrzése a keresési ablakkal
 
-A dokumentumfeltöltés előzetes gyors ellenőrzésére használhatja a portálon a **Keresési ablakot**. A keresési ablak segítségével bármiféle kód írása nélkül kérdezheti le az indexeket. A keresési funkció alapértelmezett beállításokon alapul, mint az [egyszerű szintaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) és az alapértelmezett [searchMode lekérdezési paraméter](/rest/api/searchservice/search-documents). A rendszer az eredményeket JSON-formátumban adja vissza, így a teljes dokumentum vizsgálható.
+A dokumentum feltölt egy előzetes ellenőrzés végrehajtásához egy gyors módja **keresési ablak** a portálon. A keresési ablak segítségével bármiféle kód írása nélkül kérdezheti le az indexeket. A keresési funkció alapértelmezett beállításokon alapul, mint az [egyszerű szintaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) és az alapértelmezett [searchMode lekérdezési paraméter](/rest/api/searchservice/search-documents). A rendszer az eredményeket JSON-formátumban adja vissza, így a teljes dokumentum vizsgálható.
 
 > [!TIP]
-> Számos [Azure Search kódminta](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) tartalmaz beágyazott vagy használatra kész adatkészleteket, így segítséget nyújt az első lépésekhez. A portál emellett egy mintaindexelőt és egy adatforrást is kínál, amely egy kisméretű ingatlan-adatkészletet tartalmaz („realestate-us-sample” néven). Amikor futtatja az előre konfigurált indexelőt a mintaadatforráson, a rendszer egy indexet hoz létre, és feltölti dokumentumokkal, amelyek a Keresési ablakban vagy egy erre írt kóddal lekérdezhetők.
+> Számos [Azure Search kódminta](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) tartalmaz beágyazott vagy használatra kész adatkészleteket, így segítséget nyújt az első lépésekhez. A portál emellett egy mintaindexelőt és egy adatforrást is kínál, amely egy kisméretű ingatlan-adatkészletet tartalmaz („realestate-us-sample” néven). Ha futtatja az előre konfigurált indexelőt a mintaadatforráson, egy index, és a dokumentumokkal, amelyek lekérdezhetők a keresési ablakban vagy által írt kóddal.
 
 ## <a name="see-also"></a>Lásd még
 

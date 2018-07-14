@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Services szerepkör séma |} Microsoft Docs
+title: Azure Cloud Services – szerepkör séma |} A Microsoft Docs
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -10,24 +10,24 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: e4fbffc1-98eb-449c-971c-de415e45ab34
 caps.latest.revision: 12
-author: thraka
-ms.author: adegeo
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 2f5c657bb80ad0788bcc3dd19d962b3f21afa4a8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 20f4186426152d2dc9b445981a69881c35587eb6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358999"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005781"
 ---
-# <a name="azure-cloud-services-config-role-schema"></a>Azure Cloud Services – Config szerepkör séma
+# <a name="azure-cloud-services-config-role-schema"></a>Azure Cloud Services – Config Szerepkörséma
 
-A `Role` elemet a konfigurációs fájl központi telepítése az egyes szerepkörökhöz, a szolgáltatás, a konfigurációs beállítások értékének a szerepkörpéldányok számát adja meg, és a tanúsítványok ujjlenyomatait szerepkörhöz rendelt.
+A `Role` elemet a konfigurációs fájl a szolgáltatás bármely konfigurációs beállítás értékét az egyes szerepkörökhöz telepíthető a szerepkörpéldányok számát adja meg, és a tanúsítványok ujjlenyomatait szerepkörhöz rendelt.
 
-Az Azure szolgáltatás konfigurációs sémán kapcsolatos további információkért lásd: [Felhőszolgáltatás (klasszikus) konfigurációs séma](schema-cscfg-file.md). Az Azure szolgáltatás definíciós séma kapcsolatos további információkért lásd: [Felhőszolgáltatás (klasszikus) Definition séma](schema-csdef-file.md).
+Az Azure szolgáltatás konfigurációs sémáját kapcsolatos további információkért lásd: [Felhőszolgáltatás (klasszikus) konfigurációs séma](schema-cscfg-file.md). Az Azure szolgáltatásdefiníciós sémában kapcsolatos további információkért lásd: [Felhőszolgáltatás (klasszikus) – definíciós séma](schema-csdef-file.md).
 
-##  <a name="Role"></a> Szerepkör elem
-Az alábbi példa azt mutatja meg a `Role` elem és gyermekelemeinek.
+##  <a name="Role"></a> Szerepkör-elem
+A következő példa bemutatja a `Role` elem és az alárendelt elemei.
 
 ```xml 
 <ServiceConfiguration>
@@ -43,20 +43,20 @@ Az alábbi példa azt mutatja meg a `Role` elem és gyermekelemeinek.
 </ServiceConfiguration>
 ```
 
-A következő táblázat ismerteti az attribútumai a `Role` elemet.
+A következő táblázat ismerteti a attribútumait a `Role` elemet.
 
 | Attribútum | Leírás |
 | --------- | ----------- |
-| név   | Kötelező. Adja meg annak a szerepkörnek a nevét. A nevének egyeznie kell a szerepkörhöz a szolgáltatásdefiníciós fájlban megadott névvel.|
-| vmName | Választható. Megadja a DNS-nevet a virtuális gép. A név 10 karakterből kell állnia, vagy kisebb.|
+| név   | Kötelező. Megadja a szerepkör nevét. Neve a szerepkör a szolgáltatásdefiníciós fájlban megadott névnek egyeznie kell.|
+| vmName | Választható. Megadja a virtuális gép DNS-nevét. A névnek kell lennie a 10 karakterből állhat.|
 
 A következő táblázat ismerteti az alárendelt elemei a `Role` elemet.
 
 | Elem | Leírás |
 | ------- | ----------- |
-| Példányok | Kötelező. Meghatározza, hogy a szerepkör telepítése számát. Egy egész számot határozza meg a példányok száma a `count` attribútum.|
-| Beállítás   | Választható. Adja meg a beállítás neve és értéke a szerepkör beállításainak gyűjteménye. Egy karakterláncot határozza meg a beállítás neve a `name` attribútum és a beállítás értéke határozza meg egy karakterláncot a `value` attribútum.|
-| Tanúsítvány | Választható. Megadja a neve, a ujjlenyomat és az algoritmus legyen a szerepkörhöz társított szolgáltatás tanúsítvány. Egy karakterláncot határozza meg a tanúsítvány neve a `name` attribútum. Hexadecimális szám nem a szóközöket tartalmazó karakterláncot határozza meg a tanúsítvány ujjlenyomatát a `thumbprint` attribútum. A hexadecimális szám meg kell jelennie, számjegyek és a nagybetűk alfanumerikus karaktereket tartalmazhat. Egy karakterláncot határozza meg a tanúsítvány algoritmus a `thumbprintAlgorithm` attribútum.|
+| Példányok | Kötelező. Meghatározza a szerepkör üzembe helyezendő példányok száma. A példányok számát határozza meg az egész a `count` attribútum.|
+| Beállítás   | Választható. A beállítások egy adott szerepkör esetében adja meg a beállítás nevét és értékét. Egy karakterláncot határozza meg a beállítás neve a `name` attribútum és a beállítás értéke határozza meg egy karakterláncot a `value` attribútum.|
+| Tanúsítvány | Választható. Megadja a neve, ujjlenyomat és algoritmus kell lennie a szerepkörhöz társított szolgáltatási tanúsítvány. A tanúsítvány nevét határozza meg egy karakterláncot a `name` attribútum. Hexadecimális szám nem a szóközöket tartalmazó karakterláncot határozza meg a tanúsítvány ujjlenyomatát a `thumbprint` attribútum. A hexadecimális szám meg kell jelennie, számjegyek és nagybetűs alfanumerikus karaktereket tartalmazhat. Egy karakterláncot határozza meg a tanúsítvány algoritmus a `thumbprintAlgorithm` attribútum.|
 
 ## <a name="see-also"></a>Lásd még:
 [Cloud Service (klasszikus) konfigurációs séma](schema-cscfg-file.md)

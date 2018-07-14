@@ -15,16 +15,18 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 864f790db48d3d4542ed56a4c7272a198df5bd56
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 928bd4dcc51391e3832b5fea26ff8c665f768cdb
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901136"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005672"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
+**K: Android vagy IOS rendszerű BYOD-eszközök regisztrálása?**
 
+**V:** Igen, de csak az Azure eszközregisztrációs szolgáltatással és a hibrid ügyfelek számára. Az eszközregisztrációs szolgáltatással a helyszíni AD FS nem támogatott.
 
 **K: hogyan regisztrálhatnak a macOS-eszközön?**
 

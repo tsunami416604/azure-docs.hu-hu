@@ -3,7 +3,7 @@ title: Biztonsági javaslatok kezelése az Azure Security Centerben |} A Microso
 description: Ez a dokumentum végigvezeti hogyan javaslatokat az Azure Security Center segítségével megvédheti Azure-erőforrásait, és legyen naprakész, megfelel a biztonsági szabályzatoknak.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: TerryLan
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2018
-ms.author: rkarlin
-ms.openlocfilehash: 7bb7f36338fe117a3e31834570b3ee5c3ae1b83b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.date: 07/12/2018
+ms.author: terrylan
+ms.openlocfilehash: 35f9f197dc9886998f695c4c632aa4b68ac4d072
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856433"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006614"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok kezelése az Azure Security Centerben
 Ez a dokumentum végigvezeti javaslatok használatát az Azure Security Centerben az Azure-erőforrások védelmére.
@@ -76,7 +76,7 @@ Referenciaként az alábbi táblázat segítségével segítenek megérteni a re
 | [Adatgyűjtés engedélyezése az előfizetések számára](security-center-enable-data-collection.md) |Javasolja, hogy kapcsolja be az adatgyűjtést a biztonsági szabályzatban az előfizetések és az összes Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépek mindegyike esetében. |
 | [Biztonsági konfigurációk javítása](security-center-remediate-os-vulnerabilities.md) |Javasolja, hogy az operációs rendszer konfigurálását az ajánlott biztonsági konfigurációs szabályok, például igazítás, ne engedélyezze a jelszavak mentését. |
 | [Rendszerfrissítések alkalmazása](security-center-apply-system-updates.md) |Javasolja, hogy telepít hiányzó rendszerbiztonsági és kritikus frissítések a Windows és Linux rendszerű virtuális gépek és számítógépek. |
-| [A Just-In-Time a alkalmazni a hálózati hozzáférés-vezérlés](security-center-just-in-time.md) | Javasolja, time VM access csak a alkalmazni. Az igény szerinti funkció előzetes verzióban érhető el, és a Security Center Standard szinten elérhető. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). |
+| [A Just-In-Time a alkalmazni a hálózati hozzáférés-vezérlés](security-center-just-in-time.md) | Javasolja, time VM access csak a alkalmazni. Az igény szerinti funkció érhető el a Standard szintű, a Security Center. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). |
 | [Rendszerfrissítések utáni újraindítás](security-center-apply-system-updates.md#reboot-after-system-updates) |Javasolja, hogy a rendszerfrissítések alkalmazási folyamatának befejezéséhez indítson újra egy virtuális gépet. |
 | [Webalkalmazási tűzfal hozzáadása](security-center-add-web-application-firewall.md) |Javasolja, hogy telepít egy webalkalmazási tűzfal (WAF) webes végpontok. A WAF ajánlás bármely nyilvános IP-Címmel (példány szintű IP vagy Load elosztott terhelésű IP), amely rendelkezik egy társított hálózati biztonsági csoport nyílt bejövő webes porttal (80,443) jelennek meg. </br>A Security Center javasolja, hogy a WAF elleni támadásokat a webalkalmazások virtuális gépeken, és az App Service Environment célcsoportkezelés segítségével telepítsen. Van egy App Service Environment (ASE) egy [prémium](https://azure.microsoft.com/pricing/details/app-service/) szolgáltatás, amely az Azure App Service-alkalmazások biztonságos futtatása teljesen elkülönített és dedikált környezetet biztosít az Azure App Service csomag lehetőséget. ASE kapcsolatos további információkért tekintse meg a [App Service Environment dokumentációja](../app-service/environment/intro.md).</br>A Security Center több webalkalmazás védheti meg ezeket az alkalmazásokat a meglévő WAF-példányok hozzáadásával. |
 | [Alkalmazásvédelem véglegesítése](security-center-add-web-application-firewall.md#finalize-application-protection) |A WAF konfigurációjának befejezéséhez forgalmat a WAF berendezésre át irányítva. Ez a javaslat a következő befejezi a szükséges telepítőfájlokat módosításokat. |
@@ -95,6 +95,7 @@ Referenciaként az alábbi táblázat segítségével segítenek megérteni a re
 | [A sebezhetőségi felmérés nincs telepítve](security-center-vulnerability-assessment-recommendations.md) |Javasolja, hogy telepítsen egy biztonsági rések felmérése szolgáló megoldást a virtuális gépére. |
 | [Sebezhetőségek javítása](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Lehetővé teszi a virtuális gépre telepített sebezhetőségfelmérő megoldás által észlelt rendszer- és alkalmazássebezhetőségek megtekintését. |
 | [Az Azure Storage-fiók titkosításának engedélyezése](security-center-enable-encryption-for-storage-account.md) | Inaktív adatok Azure Storage szolgáltatás titkosításának engedélyezését javasolja. Storage Service Encryption (SSE) működik, az adatok titkosítása az Azure storage-bA írt, és visszafejti őket a lekérés előtt. SSE jelenleg csak az Azure Blob service érhető el, és a blokkblobok, lapblobok és használható, és hozzáfűző blobok. További tudnivalókért lásd: [inaktív adatok a Storage Service Encryption](../storage/common/storage-service-encryption.md).</br>Az SSE csak Resource Manager-tárfiókok esetében támogatott. |
+| [Az adaptív alkalmazások vezérlők engedélyezése](security-center-adaptive-application.md) | Javasolja, hogy alkalmazza-e a Windows virtuális gépeken az adaptív alkalmazásvezérlők. Ez a szolgáltatás az előzetes verzióban érhető el, és a Security Center Standard szinten elérhető. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). |
 | App Service-ben csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül | Javasolja, hogy korlátozza az App Service hozzáférését a HTTPS-kapcsolaton keresztül csak. |
 | Webes szoftvercsatornák le kell tiltani a webes alkalmazás| Keresse fel a Web Sockets websocket webalkalmazásokban használatát javasolja.  A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket. |
 | Egyéni tartományok használata az zabalení Webové Aplikace | Egyéni tartományok közös adathalász támadások és más DNS-sel támadások elleni webalkalmazás használatát javasolja. |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1706eaeaa59f09f343d831f0c09f98210eadb820
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 42b9f574d09429d95fbf79da02c137e1079ac369
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970836"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006947"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C#-szkript (.csx) fejlesztői referencia
 
@@ -202,17 +202,19 @@ A `#load` irányelv csak működik *.csx* fájlok, sem a *.cs* fájlokat.
 
 A név használatával egy kimeneti kötést, a metódus visszatérési értéket is használhatja `$return` a *function.json*. Példák: [eseményindítók és kötések](functions-triggers-bindings.md#using-the-function-return-value).
 
+Akkor használja a visszaadott érték, ha mindig egy sikeres függvény végrehajtása a kimeneti kötés átadása visszatérési értéket eredményez. Ellenkező esetben használjon `ICollector` vagy `IAsyncCollector`, a következő szakaszban látható módon.
+
 ## <a name="writing-multiple-output-values"></a>Több kimeneti értékeinek írása
 
-Több érték írni egy kimeneti kötést, használja a [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) típusokat. Ezek a típusok gyűjteményei csak írási a metódus befejezésekor a kimeneti kötés írt.
+Több értéket írni egy kimeneti kötést, vagy ha sikeres függvényhívási nem azt eredményezheti, hogy semmit sem kell átadni a kimeneti kötés használja a [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) típusokat. Ezek a típusok gyűjteményei csak írási a metódus befejezésekor a kimeneti kötés írt.
 
 Ebben a példában több üzenetsorbeli üzenetek írja az üzenetsor használatával `ICollector`:
 
 ```csharp
-public static void Run(ICollector<string> myQueueItem, TraceWriter log)
+public static void Run(ICollector<string> myQueue, TraceWriter log)
 {
-    myQueueItem.Add("Hello");
-    myQueueItem.Add("World!");
+    myQueue.Add("Hello");
+    myQueue.Add("World!");
 }
 ```
 

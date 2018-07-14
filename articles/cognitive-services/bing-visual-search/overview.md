@@ -1,7 +1,7 @@
 ---
-title: Bing Visual Search API áttekintése |} Microsoft Docs
+title: A Bing Visual Search API – áttekintés |} A Microsoft Docs
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Bemutatja, hogyan bevásárlási források vagy hasonló képek például lemezkép észrevételeket vagy adatokat lekérni.
+description: Bemutatja, hogyan adatai vagy információival, például a hasonló képek vagy vásárlási forrás lemezkép beolvasása.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,46 +10,46 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 95f10d8ea7ebe1d40d45231a8ea40df81543fe8b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: aa563d89b1834f5be952f13c31a2451d809709b1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349123"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006529"
 ---
-# <a name="what-is-bing-visual-search-api"></a>Mi az a Bing Visual keresési API-t?
+# <a name="what-is-bing-visual-search-api"></a>Mi a Bing Visual Search API?
 
-Bing Visual Search API Bing.com/images látható részletei hasonló élményt nyújt. A vizuális keresési kép feltöltése szabadon segítségnyújtáshoz például vizuálisan hasonló lemezképek, a vásárlásra szolgáló adatforrások, amelyek közé tartozik a lemezképet, és több képet kaphat. Helyett egy kép feltöltésével adja meg egy insights jogkivonatot kapott, a lemezképek keresési eredmények lemezképpel (lásd: [Bing képek API](../bing-image-search/overview.md)).
+A Bing Visual Search API-Bing.com/images látható részletei hasonló élményt nyújt. Vizuális keresés, a kép feltöltése, és vissza a képen például a vizuálisan hasonló képek, vásárlási forrás, amelyek közé tartozik a lemezkép és egyéb kapcsolatos elemzések lekérése. Kép feltöltése helyett is megadhatja egy, a képek keresési eredmények képet kap insights jogkivonatot (lásd: [Bing API-lemezképek](../bing-image-search/overview.md)).
 
-Visual keresési azonosíthatja az celebrities, műemlékek és jellegzetes hely, alkotást, otthoni berendezések, módon, termékek, karakter felismerési (OCR), és több.
+Vizuális keresés hírességek, emlékművek és arcrész, műalkotások, otthoni berendezések, módon, termékek, karakterfelismerés (OCR) és több azonosíthatja.
 
-A következők feltárása, hogy a Visual keresési lehetővé teszi, hogy felderítése.
+Az alábbiakban a vizuális keresés segítségével megkeresheti az elemzéseket.
 
-- Vizuálisan hasonló képek&mdash;lemezképbe, amelyek a bemeneti kép vizuálisan hasonló listája
-- Vizuálisan hasonló termékek&mdash;lemezképeket, amelyek tartalmazzák a termék a bemeneti ábrának vizuálisan hasonló termékek listáját
-- Adatforrások vásárlás&mdash;helyen, ahol a bemeneti kép megjelenített elem vásárolhat listája
-- A keresések kapcsolódó&mdash;kapcsolódó olyan vagy mások által végzett keresések listáját a lemezkép tartalmát alapuló
-- A lemezképet tartalmazó weblapokra&mdash;listáját, amelyek közé tartozik a bemeneti kép
-- Receptet&mdash;, hogy a bemeneti ábrának edényt receptet tartalmazó weblapok listája
+- Vizuálisan hasonló képek&mdash;a bemeneti kép vizuálisan hasonló képek egy listája
+- Vizuálisan hasonló termékek&mdash;tartalmazó termékhez, melyek a bemeneti képen látható termékre vizuálisan hasonló képek egy listája
+- Vásárlási forrás&mdash;ahol vásárolhat a bemeneti képen látható a cikk helyek listája
+- Kapcsolódó keresések&mdash;mások vagy, amelyek kapcsolódó keresések listáját alapulnak a kép tartalma
+- A lemezképet tartalmazó weblapokra&mdash;listáját, amelyek tartalmazzák a bemeneti kép
+- Receptek&mdash;listáját, amelyek közé tartozik, hogy a bemeneti képen látható az étel receptek
 
-Ezek insights mellett Visual keresési is adja vissza, amely különböző feltételeket (címke) a bemeneti kép származik. Ezekkel a címkékkel engedélyezése a felhasználók számára a lemezképben található fogalmak vizsgálatát. Például ha a bemeneti kép famous sportoló, egyik címkék lehet a sportoló nevét, egy másik címke lehet sport. Vagy, ha a bemeneti kép egy apple torta, a címkék Apple torta, piték, desszertek, így a felhasználók ismerje meg a kapcsolódó fogalmak.
+Ezek az információkhoz vizuális keresés is kezébe a különböző használati (címkék) származik a bemeneti kép adja vissza. Ezek a címkék lehetővé teszik a felhasználóknak, hogy a lemezképben található fogalmak. Például ha a bemeneti kép híres sportoló, a címkék egyikét lehet a athlete nevét, egy másik címke lehet vagy sporttal kapcsolatosak. Vagy, ha a bemeneti kép egy apple torta, a címkék Apple torta, tortadiagram, édességeket választottam, így a felhasználók tallózhatnak a kapcsolódó fogalmak.
 
-A Visual találatok között is szerepelnek, a lemezkép iránti érdeklődését régiókhoz be határolókeret. Ha a kép több celebrities tartalmaz, az eredmények lehet, hogy például a mezőkbe az egyes a kép felismert celebrities határolókeret. Vagy, a Bing felismeri a termék vagy a kép ruházati, ha az eredmény az ismert vagy ruházati elem határolókeret előfordulhat, hogy tartalmazza.
+A vizuális keresési eredmények határoló hasznos helyhez az ábrán régiók mezők is. Például ha a lemezképet tartalmaz számos hírességek, az eredmények tartalmazhat határoló mezőkbe az ábrán a felismert hírességek mindegyikéhez. Vagy ha a Bing egy termék vagy a kép ruházati felismeri, az eredmény tartalmazhatnak a felismert termékhez vagy ruházati elem határolókeret.
 
 > [!IMPORTANT]
-> Használja-e a/képek/részletek végpontot [kép nyerhet](../bing-image-search/image-insights.md), frissítse a kódot használja helyette Visual keresési, mivel átfogóbb insights biztosít.
+> Ha használja a/képek/részletek végpontot, hogy [kép elemzések lekérése](../bing-image-search/image-insights.md), frissítenie kell a kódot használja helyette vizuális keresés, mivel átfogóbb elemzéseket biztosít.
 
 
 ## <a name="the-request"></a>A kérelem
 
-Az alábbiakban nyerek betekintést az adatokba kép beállításait. 
+Az alábbiakban a kép elemzésének lehetőségeit. 
 
-- Küldjön egy insights jogkivonatot kapott egy korábbi hívás egy képet a [Bing képek API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) végpontok
-- A kép URL-küldése
-- (Bináris) lemezkép feltöltése
+- Küldjön egy insights jogkivonatot, amely az egyik előző hívás képet kap a [Bing API-lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) végpontok
+- Kép URL-Címének küldése
+- Töltsön fel egy képet (bináris)
 
 
-Ha Visual keresési küldi el egy kép token vagy URL-cím, az alábbiakban látható a JSON-objektumból, amely meg kell adni a FELADÁS egy vagy több törzsében. 
+Ha Visual Search küld egy kép token vagy URL-cím, az alábbiakban látható a JSON-objektum, amely szerepelnie kell a bejegyzés törzse. 
 
 ```json
 {
@@ -71,67 +71,67 @@ Ha Visual keresési küldi el egy kép token vagy URL-cím, az alábbiakban lát
 }
 ```
 
-A `imageInfo` objektumot kell tartalmaznia, vagy a `url` és `imageInsightsToken` mező, de soha sem egyszerre mindkettőre. Állítsa be a `url` mező Internet elérhető kép URL-címét. A maximális támogatott lemezkép mérete 1 MB.
+A `imageInfo` objektumot kell tartalmaznia, vagy a `url` vagy `imageInsightsToken` mező, de nem mindkettőt. Állítsa be a `url` az interneten elérhető kép URL-mezőt. A maximális támogatott kép mérete 1 MB.
 
-A `imageInsightsToken` egy insights jogkivonatot kell beállítani. Ahhoz, hogy egy insights jogkivonatot, a Bing kép API hívása. A válasz listáját tartalmazza `Image` objektumok. Minden egyes `Image` objektum tartalmaz egy `imageInsightsToken` mező, amely tartalmazza a jogkivonatot.
+A `imageInsightsToken` egy insights tokent kell beállítani. Insights jogkivonatot kapjon a Bing Image API hívja. A válasz a listáját tartalmazza `Image` objektumokat. Minden egyes `Image` az objektum tartalmaz egy `imageInsightsToken` mező, amely tartalmazza a tokent.
 
-A `cropArea` mező kitöltése nem kötelező. A vágási területen felső és alsó, bal sarok jobb felső sarkában a tartományban, adja meg. Adja meg az értékeket a 0,0 és 1,0 közé. A teljes szélesség vagy magasság százalékos értékek. Például a fenti példa állapotúként jelöli meg a jobb oldali fele a lemezképet a tartományban. Ha szeretné korlátozni a insights-kérést a tartományban, adja hozzá.
+A `cropArea` mező kitöltése nem kötelező. A vágási területen megadja a felső és alsó, bal felső sarokban a lényeges terület jobb felső sarkában. Adja meg az értékeket a 0,0 és 1,0 tartományt. Az értékek a következők a teljes szélességének és magasságának százalékában. Például a fenti példában jelöli meg a jobb oldalon fele a lemezképet, a tartományban. Adja meg, ha szeretné korlátozni a régió a lényeges insights vonatkozó kérelem.
 
-A `filters` objektum tartalmazza a hely szűrőt (lásd a `site` mező) használható a hasonló képek és hasonló termékek eredmények korlátozása egy adott tartományban. Például, ha a lemezkép egy Surface Book, beállíthatja `site` www.microsoft.com. 
+A `filters` objektum tartalmazza a hely szűrőt (lásd a `site` mező), hogy a hasonló képek és hasonló termékek eredmények korlátozása egy adott tartományhoz használhatja. Például, ha a kép egy Surface Book, beállíthat `site` www.microsoft.com. 
 
-Ha le szeretné kérdezni a lemezkép másolata észrevételeket, feltölti a lemezképet a bináris adat.
+Ha szeretne kaphat elemzési információkat egy lemezképet egy helyi példányát, a Rendszerkép feltöltése a bináris adat.
 
-Ezek a beállítások a FELADÁS egy vagy több törzsében kapcsolatos részletekért lásd: [űrlap tartalomtípus](#content-form-types).
+Többek között ezek a beállítások a bejegyzés törzse kapcsolatos részletekért lásd: [űrlap tartalomtípus](#content-form-types).
 
 
 ### <a name="endpoint"></a>Végpont
 
-A vizuális keresési végpontja: https:\/\/api.cognitive.microsoft.com/bing/v7.0/images/visualsearch.
+A Visual Search-végpont: https:\/\/api.cognitive.microsoft.com/bing/v7.0/images/visualsearch.
 
-Kérések, csak a HTTP POST-kérésnél kell elküldeni. 
+Csak HTTP POST-kérések kell küldeni a kérelmeket. 
 
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 
-Az alábbiakban adja meg a kérelem lekérdezési paraméterekhez. Tartalmaznia kell legalább a `mkt` lekérdezési paraméter.
+Az alábbiakban a lekérdezési paraméterek a kérésnek meg kell határoznia. Tartalmaznia kell legalább a `mkt` lekérdezési paraméter.
 
 |Name (Név)|Érték|Típus|Szükséges|  
 |----------|-----------|----------|--------------|  
-|<a name="cc" />másolatot kap|2 álló országkódot az ország, ahol az eredmények származik.<br /><br /> Ha a paraméter értéke, meg kell adni a [elfogadás-nyelv](#acceptlanguage) fejléc. Bing talál olyan nyelvet a listából, és határozza meg a piacon találatot, a megadott országhívószám-t ötvözi a nyelvi első támogatott nyelvet használja. Ha a nyelvek listája nem tartalmazza a támogatott nyelvi, a Bing megkeresi a legközelebbi nyelvet és a piaci, amely támogatja a kérelem. Vagy előfordulhat, hogy használjon egy összesített vagy alapértelmezett piaci megadott helyett a eredmény elérése érdekében.<br /><br /> A következő lekérdezésparaméter kell használnia, és a `Accept-Language` lekérdezésparaméter csak akkor, ha több nyelvet ad meg; ellenkező esetben kell használnia a `mkt` és `setLang` lekérdezési paramétert.<br /><br /> Ez a paraméter és a [mkt](#mkt) lekérdezésparaméter, egymást kölcsönösen kizáró&mdash;nem adható meg egyszerre.|Sztring|Nem|  
-|<a name="mkt" />mkt|A piacon, honnan származnak az eredményeket. <br /><br /> **Megjegyzés:** áll javasoljuk, hogy mindig adja meg a piacon, ha ismert. A piacon segít a Bing továbbítja a kérelmet, és egy megfelelő és optimális választ küld vissza.<br /><br /> Ez a paraméter és a [cc](#cc) lekérdezésparaméter, egymást kölcsönösen kizáró&mdash;nem adható meg egyszerre.|Sztring|Igen|  
-|<a name="safesearch" />biztonságos keresés|Felnőtt tartalom szűrésére használt szűrő. A következő értékeket a lehetséges azonban nem szűrő.<br /><ul><li>Ki&mdash;felnőtt szöveg és kép weblapok adja vissza.<br /><br/></li><li>Mérsékelt&mdash;felnőtt szöveget, de nem felnőtt képek weblapok adja vissza.<br /><br/></li><li>Szigorú&mdash;felnőtt szöveg és kép weblapok nem adják vissza.</li></ul><br /> Az alapértelmezett érték a közepes.<br /><br /> **Megjegyzés:** Ha a kérelem egy piaci származik, hogy a Bing felnőtt házirend megköveteli, hogy `safeSearch` Strict állítani, a Bing figyelmen kívül hagyja a `safeSearch` értékét, és a Strict használja.<br/><br/>**Megjegyzés:** használatakor a `site:` lekérdezési operátor nincs az esélye, hogy a válasz tartalmazhat felnőtt tartalom, függetlenül attól, hogy mi a `safeSearch` lekérdezési paraméter értéke. Használjon `site:` csak akkor, ha tisztában lehet a tartalmat a helyen, és adott esetben támogatja a felnőtt tartalom lehetőségét. |Sztring|Nem|  
-|<a name="setlang" />setLang|A felhasználói felület karakterláncok használni kívánt nyelvet. Adja meg a nyelvet a ISO 639-1-2 levelek nyelvi kódot. Például az angol nyelvi kódját EN. Az alapértelmezett érték EN (angol nyelvű).<br /><br /> Bár nem kötelező, a nyelvi mindig meg kell adnia. Általában beállított `setLang` által megadott azonos nyelvének `mkt` kivéve, ha a felhasználó szeretne-e a felhasználói felület karakterláncok más nyelven jelenik meg.<br /><br /> Ez a paraméter és a [elfogadás-nyelv](#acceptlanguage) fejléc, egymást kölcsönösen kizáró&mdash;nem adható meg egyszerre.<br /><br /> A felhasználói felület karakterlánc: a felhasználói felületen címkeként használt karakterlánc. A JSON-válasz objektumok nincsenek néhány felhasználói felület karakterláncok. A válasz objektumok Bing.com tulajdonságok mutató hivatkozások is, a megadott nyelv alkalmazni.|Sztring|Nem| 
+|<a name="cc" />cc|2 karakterből álló országkódot az ország, ahol az eredményeket származnak.<br /><br /> Ha a paraméter értéke, meg kell adni a [Accept-nyelv](#acceptlanguage) fejléc. Bing – megkeresi a nyelvek listáját, és egyesíti az országkódot, a piac származó eredmények határozza meg kell adnia a nyelvi első támogatott nyelvet használja. Ha a nyelvek listája nem tartalmazza a támogatott nyelven, a Bing megkeresi a legközelebbi nyelvet és a piacon, amely támogatja a kérelem. Vagy lehet, hogy használjon egy összesített vagy alapértelmezett piacot az eredményeket a megadottól helyett.<br /><br /> A lekérdezési paramétert kell használnia, és a `Accept-Language` lekérdezési paraméter csak akkor, ha több nyelvet ad meg; ellenkező esetben használjon a `mkt` és `setLang` lekérdezési paramétereket.<br /><br /> Ez a paraméter és a [mkt](#mkt) lekérdezési paraméter, egymást kölcsönösen kizáró&mdash;ne adja meg mindkettőt.|Sztring|Nem|  
+|<a name="mkt" />mkt|A piacon, honnan származnak az eredményeket. <br /><br /> **Megjegyzés:** hosszúan mindig adja meg a piacon, ha ismert. Adja meg a piacon segít a Bing irányítsa át a kérést, és a egy megfelelő és az optimális választ adja vissza.<br /><br /> Ez a paraméter és a [cc](#cc) lekérdezési paraméter, egymást kölcsönösen kizáró&mdash;ne adja meg mindkettőt.|Sztring|Igen|  
+|<a name="safesearch" />biztonságos keresés|Felnőtteknek szóló tartalmak szűrésére használt szűrő. A kis-és szűrő lehetséges értékek a következők.<br /><ul><li>Ki&mdash;weblapjait a felnőtt szöveget és képeket ad vissza.<br /><br/></li><li>Mérsékelt&mdash;weblapjait a felnőtt szöveget, de nem felnőtt képeket ad vissza.<br /><br/></li><li>A szigorú&mdash;felnőtt szöveget és képeket a weblapok nem adott vissza.</li></ul><br /> Alapértelmezett értéke közepes.<br /><br /> **Megjegyzés:** , ha a kérelem egy piaci származik, a Bing felnőtt szabályzat megköveteli, hogy `safeSearch` Strict beállítása, a Bing figyelmen kívül hagyja a `safeSearch` értékét, és szigorú használja.<br/><br/>**Megjegyzés:** használatakor a `site:` operátor, annak az esélyét, hogy a válasz tartalmazhat felnőtt tartalom, függetlenül attól, hogy mi van a `safeSearch` lekérdezési paraméter értéke. Használat `site:` csak akkor, ha tisztában a webhely tartalmának, és a forgatókönyv támogatja a lehetőségét, felnőtt tartalom. |Sztring|Nem|  
+|<a name="setlang" />setLang|A felhasználói felület karakterláncokat használni kívánt nyelvet. Válassza ki a nyelvet, az ISO 639-1-2 levelek nyelvi kód használatával. Például angol nyelvi kódját áll EN. Az alapértelmezett érték EN (angol nyelven).<br /><br /> Bár nem kötelező, mindig adja meg a nyelvet. Általában beállítása `setLang` által megadott nyelvre `mkt` , kivéve, ha a felhasználó szeretne-e a felhasználói felület karakterláncok egy másik nyelven jelenik meg.<br /><br /> Ez a paraméter és a [Accept-nyelv](#acceptlanguage) fejléc, egymást kölcsönösen kizáró&mdash;ne adja meg mindkettőt.<br /><br /> A felhasználói felület karakterlánc egy karakterláncérték, amely egy címkét egy felhasználói felületen. A JSON-válasz objektumok nincsenek néhány felhasználói felület karakterláncokat. A válaszobjektumok Bing.com tulajdonságait mutató hivatkozásokat is, a a megadott nyelvre a alkalmazni.|Sztring|Nem| 
 
 ### <a name="headers"></a>Fejlécek
 
-Az alábbiakban adja meg a kérést a fejlécek. Az Ocp-Apim-előfizetés-kulcs és a Content-Type fejléc csak a szükséges fejléceket, de a felhasználói ügynök, X-MSEdge-ClientID, X-MSEdge-Ügyfélip és X-keresési-hely is meg kell tartalmaznia.
+Az alábbiakban a fejlécek, amelyek a kérésnek meg kell határoznia. A Content-Type és Ocp-Apim-Subscription-Key fejléc csak a szükséges fejléceket, de a felhasználói ügynök, X-MSEdge-ClientID, X-MSEdge-Ügyfélip és a hely keresése X is meg kell tartalmaznia.
 
 
 |Fejléc|Leírás|  
 |------------|-----------------|  
-|<a name="acceptlanguage" />Fogadja el nyelv|Nem kötelező kérelemfejlécet.<br /><br /> Nyelvek használandó felhasználói felület karakterláncok vesszővel tagolt listáját. A lista van csökkenő sorrendben. További információ, beleértve a várt formátum: [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ezt a fejlécet, és a [setLang](#setlang) lekérdezésparaméter, egymást kölcsönösen kizáró&mdash;nem adható meg egyszerre.<br /><br /> Ha megadta ezt a fejlécet, meg kell adni a [cc](#cc) lekérdezési paraméter. Annak megállapításához, a piacon vissza az eredményeket, a Bing megkeresi a listából, és egyesíti a első támogatott nyelvet használja a `cc` paraméter értékét. Ha a lista nem tartalmazza a támogatott nyelvi, Bing megkeresi a legközelebbi nyelvet és a piaci, amely támogatja a kérelem, vagy használja egy összesített vagy alapértelmezett piaci a eredmény elérése érdekében. Annak megállapításához, a Bing használt piacára, tekintse meg a piacra jutási BingAPIs fejléc.<br /><br /> Használja ezt a fejlécet, és a `cc` lekérdezésparaméter csak akkor, ha több nyelvet ad meg. Ellenkező esetben használja a [mkt](#mkt) és [setLang](#setlang) lekérdezési paramétert.<br /><br /> A felhasználói felület karakterlánc: a felhasználói felületen címkeként használt karakterlánc. A JSON-válasz objektumok nincsenek néhány felhasználói felület karakterláncok. A válasz objektumok Bing.com tulajdonságok mutató hivatkozások alkalmazza a megadott nyelven.|  
-|<a name="contenttype" />Tartalomtípus|Szükséges kérelemfejlécet.<br /><br />Multipart/űrlapadat értékre kell állítani, és adja meg a határ értékét (például multipart/űrlapadat; boundary =\<határ karakterlánc\>). További részletekért lásd: [űrlap tartalomtípus](#content-form-types).
-|<a name="market" />Piacra jutási BingAPIs|Válaszfejléc.<br /><br /> A piacon, a kérelem által használt. Az űrlap \<languageCode\>-\<országhívószám\>. Például: hu-hu.|  
-|<a name="traceid" />BingAPIs-TraceId|Válaszfejléc.<br /><br /> Az Eseménynapló-bejegyzés, amely tartalmazza a részleteket a kérelem az azonosítója. Ha hiba lép fel, rögzítése ezt. Ha nem határozza meg és hárítsa el a problémát, tartalmazzák ezt az Azonosítót és az egyéb adatokat, hogy a támogatási csapatával.|  
-|<a name="subscriptionkey" />Az OCP-Apim-előfizetés-kulcs|Szükséges kérelemfejlécet.<br /><br /> Az Előfizetés kulcs, hogy az ehhez a szolgáltatáshoz, a regisztráció során [kognitív szolgáltatások](https://www.microsoft.com/cognitive-services/).|  
-|<a name="pragma" />Pragma|Nem kötelező fejléc<br /><br /> Alapértelmezés szerint a Bing gyorsítótárazott tartalom visszaadása, ha elérhető. Gyorsítótárazott tartalom visszaküldésével a Bing megakadályozása érdekében állítsa a Pragma fejléc no-cache (például Pragma: no-cache).
-|<a name="useragent" />Felhasználói ügynök|Nem kötelező kérelemfejlécet.<br /><br /> A felhasználói ügynök származó a kérelmet. Bing optimalizált élményt biztosít a mobil felhasználók a felhasználói ügynök használja. Bár nem kötelező, meg hosszúan mindig meg ezt a fejlécet.<br /><br /> A felhasználói ügynök által a leggyakrabban használt böngészők ugyanazt a karakterláncot kell lennie. Felhasználói ügynök kapcsolatos információkért lásd: [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> A következő példák felhasználói ügynök karakterláncok.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (kompatibilis; MSIE 10.0; Windows Phone 8.0; Trident vagy 6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; SCH-I500 Build/MÉZESKALÁCS) AppleWebKit/533.1 (KHTML; például gekkó) vagy 4.0-s verziójú Mobile Safari/533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; CPU iPhone operációs rendszer 6_1, például a Mac OS X) AppleWebKit/536.26 (KHTML; például gekkó) Mobile/10B142 iPhone4; 1 BingWeb/3.03.1428.20120423<br /><br /></li><li>PC&mdash;Mozilla/5.0 (a Windows NT 6.3; WOW64; Trident/7.0; Touch; RV:11.0), például gekkó<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; CPU-OS 7_0 például a Mac OS X) AppleWebKit/537.51.1 (például gekkó KHTML) verzió/7.0 Mobile/11A465 Safari/9537.53</li></ul>|
-|<a name="clientid" />X-MSEdge-ClientID|Nem kötelező kérelem-válasz fejléce.<br /><br /> Bing felhasználók biztosít a konzisztens viselkedése Bing API-hívások használja ezt a fejlécet. Bing gyakran repülőútra új szolgáltatásait és fejlesztéseit, és különböző járatok forgalom hozzárendelése kulcsaként használ az ügyfél-azonosító. Címzett több kérés során a felhasználó nem használja az ugyanazon ügyfél-azonosító, ha a Bing is hozzárendelheti a felhasználó több ütköző járatok. Több ütköző járatok lett hozzárendelve inkonzisztens felhasználói élményt is járhat. Például ha a második kérelmet egy másik repülési-hozzárendelést, mint az első, a felhasználói élmény lehet váratlan. Is, a Bing használatával az ügyfél-azonosító személyessé tétele érdekében, hogy az ügyfél webes eredmények keresési előzmények gazdagabb élményt biztosítva a felhasználói azonosítót.<br /><br /> Bing is használja ezt a fejlécet a tevékenység egy ügyfél-azonosítót. által generált elemzésével eredmény rangsort javítása érdekében A fontos fejlesztéseket kézbesíteni Bing API-k és pedig lehetővé teszi, hogy a nagyobb kattintások sebesség API fogyasztó eredmények magasabb színvonalú segít.<br /><br /> **Fontos:** bár nem kötelező, vegye figyelembe ezt a kötelező fejlécet. Megőrzése az ügyfél-azonosító címzett több kérés során ugyanazon felhasználó és eszköz kombináció lehetővé teszi a 1.) az API fogyasztó úgy, hogy a következetes felhasználói élményt biztosít, és 2) magasabb kattintások díjszabás keresztül eredmények magasabb színvonalú fogadjon a Bing API-k.<br /><br /> Az alábbiakban az alapvető használati szabályok ezt a fejlécet.<br /><ul><li>Minden olyan felhasználóhoz, használja az alkalmazást az eszközön rendelkeznie kell egy egyedi, a Bing létrehozott ügyfél-azonosítót.<br /><br/>Ha a kérelem nem adja meg ezt a fejlécet, a Bing Azonosítót hoz létre, és adja vissza, az X-MSEdge-ClientID válaszfejléc. A csak, hogy nem bele kell foglalni ezt a fejlécet a kérelem, az első alkalommal a felhasználó használja az alkalmazást azokon az eszközökön.<br /><br/></li><li>**Figyelem:** meg kell győződnie arról, hogy az ügyfél-azonosító nem összekapcsolhatónak a hitelesített felhasználói fiók adatokat.</li><li>Az ügyfél-Azonosítót használja az alkalmazás lehetővé teszi a felhasználó az eszköz minden egyes Bing API-kérelemhez.<br /><br/></li><li>Megőrzése az ügyfél-azonosítót. Továbbra is fennáll az azonosító egy webböngésző alkalmazást, állandó HTTP cookie-k segítségével ellenőrizze az azonosító olyan munkamenetekben. Ne használjon egy munkamenetcookie-t. Más alkalmazások, például a mobile apps szolgáltatásban használja az eszköz állandó tároló megőrizni a azonosítóját.<br /><br/>A felhasználó használja az alkalmazást azokon az eszközökön, amikor legközelebb megőrizte ügyfél-azonosító beolvasása.</li></ul><br /> **Megjegyzés:** Bing válaszok is, vagy nem tartalmazza ezt a fejlécet. A válasz tartalmazza ezt a fejlécet, ha rögzíti az ügyfél-Azonosítót, és a későbbi Bing azokon az eszközökön a felhasználó használja azt.<br /><br /> **Megjegyzés:** Ha adja meg az X-MSEdge-ClientID, nem tartalmazhat-e be a cookie-kat a kérelemben.|  
-|<a name="clientip" />X-MSEdge-Ügyfélip|Nem kötelező kérelemfejlécet.<br /><br /> Az ügyféleszköz IPv4 vagy IPv6-cím. Az IP-címet a felhasználó földrajzi helye felderítésére szolgál. Bing a Tartózkodásihely-adatok a biztonságos keresési viselkedés meghatározására használja.<br /><br /> **Megjegyzés:** bár nem kötelező, meg hosszúan mindig adja meg ezt a fejlécet, és az X-keresési-helyet megjelölő fejlécet.<br /><br /> Nem takarják a címet (például, ha megváltoztatja az utolsó oktett 0). A cím eredmények nem bárhol mellett az eszköz tényleges helyére a helyen obfuscating, emiatt a Bing hibás eredmények szolgál.|  
-|<a name="location" />X keresése|Nem kötelező kérelemfejlécet.<br /><br /> Az ügyfél földrajzi helye leíró kulcs/érték párok pontosvesszővel elválasztott listája. Bing használja a helyére vonatkozó információkat, annak meghatározásához, hogy biztonságos keresés és a kapcsolódó helyi tartalom. Adja meg, mint a kulcs/érték pár \<kulcs\>:\<érték\>. Az alábbiakban a kulcsokhoz, használja a felhasználó helyének megadására.<br /><br /><ul><li>LAT&mdash;szükséges. A szélesség fok, az ügyfél helye. A szélesség kell lennie nullánál-90.0 és kisebb vagy egyenlő, mint +90.0. Negatív értékek azt jelzik, déli földrajzi szélesség és pozitív értékek azt jelzik, északi szélességet.<br /><br /></li><li>hosszú&mdash;szükséges. A hosszúsági koordinátákkal meghatározni az ügyfél helyét (fokban megadva). A hosszúság kell lennie nullánál-180.0 és kisebb vagy egyenlő, mint +180.0. Negatív értékek azt jelzik, Nyugat hosszúságot, és pozitív értékek azt jelzik, eastern hosszúságot.<br /><br /></li><li>-&mdash;szükséges. A radius, a mérőszámok, adja meg a koordináták a vízszintes pontosságát. Az eszköz helymeghatározó szolgáltatás által visszaadott értéket átadni. Tipikus értékek 22m GPS/Wi-Fi, a cella torony keresztárfolyam 380m és a fordított IP-címkeresés 18,000m lehet.<br /><br /></li><li>TS&mdash;nem kötelező. Ha az ügyfél volt-e az adott helyen UTC UNIX időbélyegzője. (A UNIX-időbélyeg érték 1970. január 1. óta eltelt percek számát.)<br /><br /></li><li>HEAD&mdash;nem kötelező. Az ügyfél relatív címsor vagy utazás irányát. Adja meg a 0 – 360, a számbavételi jobbra viszonyítva igaz északi fok utazás irányát. Adja meg a kulcs csak akkor, ha a `sp` kulcs értéke nem nulla.<br /><br /></li><li>SP&mdash;nem kötelező. A vízszintes sebesség (sebesség), az a másodpercenkénti, az ügyféleszközök utazik mérőszámok.<br /><br /></li><li>ALT&mdash;nem kötelező. Az ügyfél eszköz, a mérőszámok magasság.<br /><br /></li><li>vannak&mdash;nem kötelező. A radius, a mérőszámok, amely meghatározza a koordináták a függőleges pontosságát. Adja meg ezt a kulcsot csak akkor, ha megadja a `alt` kulcs.<br /><br /></li></ul> **Megjegyzés:** annak ellenére, hogy a kulcsokat számos nem kötelező, a további információt ad meg, annál pontosabb a hely eredményei.<br /><br /> **Megjegyzés:** bár nem kötelező, meg hosszúan mindig adja meg a felhasználó földrajzi helye. Különösen fontos, ha az ügyfél IP-cím nem pontosan mutassa a felhasználó fizikai helyét (például, ha az ügyfél használ VPN) biztosít a hely. Az optimális eredmény ezt a fejlécet, és az X-MSEdge-Ügyfélip fejléc kell foglalni, de mindenképpen tartalmaznia kell ezt a fejlécet.|
+|<a name="acceptlanguage" />Fogadja el nyelv|Nem kötelező kérelem fejléce.<br /><br /> Nyelvek használandó felhasználói felület karakterláncok vesszővel tagolt listája. A lista egy csökkenő sorrendben. További információk, beleértve a várt formátum: [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ezt a fejlécet és a [setLang](#setlang) lekérdezési paraméter, egymást kölcsönösen kizáró&mdash;ne adja meg mindkettőt.<br /><br /> Ha beállította ezt a fejlécet, meg kell adni a [cc](#cc) lekérdezési paraméter. Annak megállapításához, a piac eredményeket ad vissza, a Bing, megkeresi a listából, és egyesíti az első támogatott nyelvet használja az `cc` paraméter értéke. Ha a lista nem tartalmazza a támogatott nyelven, a Bing megkeresi a legközelebbi nyelvet és a piacon, amely támogatja a kérés, vagy használ egy összesített vagy alapértelmezett piaci az eredményeket a. Annak megállapításához, a piac, a Bing által használt, tekintse meg a piacra jutási BingAPIs fejléc.<br /><br /> Használja ezt a fejlécet és a `cc` lekérdezési paraméter csak akkor, ha több nyelvet ad meg. Ellenkező esetben a [mkt](#mkt) és [setLang](#setlang) lekérdezési paramétereket.<br /><br /> A felhasználói felület karakterlánc egy karakterláncérték, amely egy címkét egy felhasználói felületen. A JSON-válasz objektumok nincsenek néhány felhasználói felület karakterláncokat. A válaszobjektumok Bing.com tulajdonságait mutató hivatkozásokat a megadott nyelvre a alkalmazni.|  
+|<a name="contenttype" />A Content-Type|Szükséges a kérelem fejlécében.<br /><br />Multipart/form-data értékre kell állítani, és a egy határ paramétert (például a multipart/form-data; a határ =\<határ karakterlánc\>). További információkért lásd: [űrlap tartalomtípus](#content-form-types).
+|<a name="market" />BingAPIs piaci|Válaszfejléc.<br /><br /> A piac, a kérelem által használt. Az űrlap \<languageCode\>-\<countryCode\>. Például: hu-hu.|  
+|<a name="traceid" />BingAPIs-TraceId|Válaszfejléc.<br /><br /> A kérelem részleteit tartalmazó a naplóbejegyzés azonosítója. Ha hiba történik, rögzítése forrástároló. Ha nem határozza meg, és a probléma megoldásához, tartalmazzák ezt az Azonosítót és az egyéb adatokat, hogy a támogatási csoporthoz.|  
+|<a name="subscriptionkey" />OCP-Apim-Subscription-Key|Szükséges a kérelem fejlécében.<br /><br /> Az előfizetési kulcsot, ezt a szolgáltatást a regisztráció során kapott [Cognitive Services](https://www.microsoft.com/cognitive-services/).|  
+|<a name="pragma" />Direktiva pragma|Nem kötelező kérelem fejléce<br /><br /> Alapértelmezés szerint a Bing gyorsítótárazott tartalmat vissza, ha elérhető. Gyorsítótárazott tartalom visszaadó megakadályozni a Bing, állítsa be a Pragma fejléc no-cache (például Pragma: no-cache).
+|<a name="useragent" />Felhasználói ügynök|Nem kötelező kérelem fejléce.<br /><br /> A felhasználói ügynök, a kérelmet indító. A Bing a felhasználói ügynök használatával mobil felhasználók számára egy optimalizált felhasználói élményt biztosíthat. Bár nem kötelező, csak Ön javasoljuk, hogy mindig adja meg ezt a fejlécet.<br /><br /> A felhasználói ügynök ugyanazt a karakterláncot, amely bármely általánosan használt böngésző elküldi kell lennie. Felhasználói ügynökök kapcsolatos információkért lásd: [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> A következő példák felhasználói ügynök karakterláncokat.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (kompatibilis. MSIE 10.0; Windows Phone 8.0-s; A Trident vagy 6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U. Android 2.3.5; en-us; SCH-I500 Build/MÉZESKALÁCS) AppleWebKit/533.1 (KHTML; például gekkó) vagy 4.0-s verziójú Mobile Safari/533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; CPU iPhone operációs rendszer 6_1, például a Mac OS X) AppleWebKit/536.26 (KHTML; például gekkó) Mobile/10B142 iPhone4; 1 BingWeb/3.03.1428.20120423<br /><br /></li><li>PC&mdash;Mozilla/5.0 (Windows NT 6.3. WOW64; A Trident/7.0; Touch; RV:11.0), például gekkó<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; CPU-OS 7_0 például a Mac OS X) AppleWebKit/537.51.1 (például gekkó KHTML) verziója/7.0 Mobile/11A465 Safari/9537.53</li></ul>|
+|<a name="clientid" />X-MSEdge-ClientID|Választható kérések és válaszok fejléc.<br /><br /> A Bing a fejléc használatával biztosítható a felhasználók konzisztens viselkedés között Bing API-hívások. Bing gyakran légi járművek új szolgáltatásait és fejlesztéseit, és hozzárendeléséhez a forgalmat a különböző repülőjáratok kulcsként használ az ügyfél-Azonosítót. Az azonos ügyfél-Azonosítót egy felhasználóhoz több kérés között nem használja, ha majd Bing lehet, hogy a felhasználó hozzárendelése több ütköző repülőjáratok. Több ütköző repülőjáratok folyamatban van rendelve egy konzisztens felhasználói élményt vezethet. Például ha a második kérés, mint az első különböző repülési hozzárendeléssel rendelkezik, a tapasztalatok lehet váratlan. A Bing segítségével is az ügyfél-azonosító webes találatokat, hogy az ügyfél a megfelelő kódolási sebesség kiválasztását azonosítóhoz tartozó keresési előzmények, a felhasználó egy gazdagabb élményt nyújtva.<br /><br /> A Bing is használja ezt a fejlécet a tevékenység egy ügyfél-azonosítót. által generált elemzésével eredmény módosítják a rangsort javítása érdekében A relevancia alapján végzett fejlesztések segítség az eredmények a Bing API-k és üzembe viszont lehetővé teszi, hogy nagyobb átkattintásos arányt API fogyasztók számára jobb minőségű.<br /><br /> **Fontos:** bár nem kötelező, csak akkor érdemes ezt a kötelező fejlécet. (1.) a felhasználó a API a Bing API-k fogadása, egységes felhasználói élmény, és (2) a nagyobb átkattintásos sebesség jobb minőségű eredmények via megőrzése az ügyfél-azonosító több kérés között ugyanazon felhasználó és eszköz kombinációja lehetővé teszi.<br /><br /> Az alábbiakban az alapszintű használati szabályok, amelyek a alkalmazni ezt a fejlécet.<br /><ul><li>Minden egyes felhasználó esetében használja az alkalmazást az eszközön rendelkeznie kell egy egyedi, a Bing létrehozott ügyfél-azonosítót.<br /><br/>Ha a kérés nem adja meg ezt a fejlécet, a Bing létrehoz egy Azonosítót, és visszaadja az X-MSEdge-ClientID fejlécet. Az egyetlen alkalom, hogy a kérelem kell tartalmazza ezt a fejlécet a felhasználó használja az alkalmazást az eszközön lévő első alkalommal.<br /><br/></li><li>**Figyelem:** gondoskodnia kell arról, hogy az ügyfél-azonosító nem összekapcsolhatónak a hitelesített felhasználói fiók adatokat.</li><li>Az ügyfél-azonosító használata minden egyes Bing API-kérelem, amely az alkalmazás lehetővé teszi a felhasználó az eszközön.<br /><br/></li><li>Megőrzése az ügyfél-azonosítót. Egy böngészőalkalmazásban Azonosítóját megőrizni, használjon állandó HTTP cookie-k, használja az összes munkamenetek között. Ne használjon egy munkamenetcookie-t. Más alkalmazások, például a mobilalkalmazások esetében használja az eszköz tartós tároláshoz megőrizni az azonosítója.<br /><br/>A következő alkalommal, amikor a felhasználó használja az alkalmazást, hogy az eszközről, amely megőrizte ügyfél-azonosító beszerzése.</li></ul><br /> **Megjegyzés:** Bing-válaszok is, vagy nem feltétlenül tartalmazzák ezt a fejlécet. Ha a válasz tartalmazza ezt a fejlécet, rögzítheti az ügyfél-Azonosítót, és használhatja azt a felhasználót az eszközön lévő összes további Bing kérelmet.<br /><br /> **Megjegyzés:** Ha adja meg az X-MSEdge-ClientID, nem tartalmazhat-e be a cookie-kat a kérésben.|  
+|<a name="clientip" />X-MSEdge-Ügyfélip|Nem kötelező kérelem fejléce.<br /><br /> Az ügyféleszköz IPv4 vagy IPv6-cím. Az IP-cím a felhasználó földrajzi helye felderítésére szolgál. A Bing biztonságos keresési viselkedés meghatározására használja a helyre vonatkozó adatokat.<br /><br /> **Megjegyzés:** bár nem kötelező, akkor arra biztatjuk mindig adja meg ezt a fejlécet és az X-Search-Location fejlécet.<br /><br /> A cím nem rejtse fel (például úgy, hogy az utolsó oktettet módosítása 0). A cím eredmények a helyen nincs folyamatban bárhol az eszköz tényleges hely közelében obfuscating, emiatt a Bing szolgálja ki a hibás eredményeket.|  
+|<a name="location" />A hely keresése X|Nem kötelező kérelem fejléce.<br /><br /> Kulcs/érték párok, amelyek bemutatják, az ügyfél földrajzi helye pontosvesszővel tagolt listája. A Bing a helyre vonatkozó adatokat használ, annak meghatározásához, hogy biztonságos keresés és a megfelelő helyi tartalom. Adja meg a kulcs/érték pár, \<kulcs\>:\<érték\>. Az alábbiakban a kulcsokat, amelyekkel a felhasználó helyét adja meg.<br /><br /><ul><li>szél&mdash;szükséges. Az ügyfél helye fokban szélességét. A földrajzi szélesség kell lennie, nagyobb vagy egyenlő-90.0 és kisebb vagy egyenlő, mint +90.0. Negatív értékek azt jelzik, déli földrajzi szélesség és pozitív értékek azt jelzik, Észak-szélességet.<br /><br /></li><li>hosszú&mdash;szükséges. Az ügyfél helye fokban hosszúságát. Lehet, hogy a földrajzi hosszúság nagyobb vagy egyenlő-180.0 és kisebb vagy egyenlő, mint +180.0. Negatív értékek azt jelzik, nyugati hosszúságot, és pozitív értékek azt jelzik, kelet-hosszúságot.<br /><br /></li><li>re&mdash;szükséges. A radius, a mérőszámok, amely megadja a koordináták a vízszintes pontosságát. Írjon az eszköz helye szolgáltatás által visszaadott értéket. Tipikus értékek 22m, a GPS és Wi-Fi, esetében a cella tower keresztárfolyam 380m és az IP-címkeresés 18,000m lehet.<br /><br /></li><li>TS&mdash;nem kötelező. Az UTC UNIX timestamp, amikor az ügyfél volt-e a helyen. (A UNIX-időbélyegző az 1970. január 1. óta eltelt másodpercek számát.)<br /><br /></li><li>a fő&mdash;nem kötelező. Az ügyfél relatív fejléc vagy utazási irányát. Adja meg a 0 és 360, a számbavételi képest igaz északi elforgatása jobbra fok utazási irányát. Adja meg a kulcs csak akkor, ha a `sp` kulcs nem nulla.<br /><br /></li><li>SP&mdash;nem kötelező. A vízszintes sebesség (sebesség), a másodpercenkénti, az ügyféleszközön utazik méterben.<br /><br /></li><li>ALT&mdash;nem kötelező. A magasság, az ügyféleszközön, a mérőszámok.<br /><br /></li><li>vannak&mdash;nem kötelező. A radius méterben, amely meghatározza a koordináták a függőleges pontosságát. Adja meg ezt a kulcsot csak akkor, ha adja meg a `alt` kulcsot.<br /><br /></li></ul> **Megjegyzés:** a kulcsokat számos választható, bár a további adatokat ad meg, annál pontosabb helyet eredménye.<br /><br /> **Megjegyzés:** bár nem kötelező, akkor arra biztatjuk mindig adja meg a felhasználó földrajzi helyét. A hely megadása akkor kifejezetten fontos, ha az ügyfél IP-cím nem tükrözik a felhasználó fizikai helye (például, ha az ügyfél használja a VPN). Az optimális eredmények elérése érdekében akkor tartalmaznia kell ezt a fejlécet és az X-MSEdge-Ügyfélip fejléc, de legalább ezt a fejlécet kell tartalmaznia.|
 
 > [!NOTE] 
-> Ne feledje, hogy a vonatkozó törvényeket, beleértve az ezek a fejlécek vonatkozó megfelelőségi a használati feltételek esetében. Például bizonyos országokban, Európa, például nincsenek beszerzése a felhasználói hozzájárulás előtt bizonyos követési eszközök felhasználói eszközökön.
+> Ne feledje, hogy a vonatkozó törvényeket, beleértve a következő fejlécek az vonatkozó megfelelőségi a használati feltételek szükséges. Ha például bizonyos országokban, például Európában, nincsenek felhasználói beleegyezés előtt bizonyos követési eszközök elhelyezése a felhasználói eszközök beszerzése.
 
 
 <a name="content-form-types" />
 
 ### <a name="content-form-types"></a>Tartalom űrlap típusok
 
-Minden egyes kérelem tartalmaznia kell a Content-Type fejléc. A fejléc értékre kell állítani: multipart /-űrlapadat; határ =\<határ karakterlánc\>, ahol \<határ karakterlánc\> egyedi, nem átlátszó karakterlánc, amely azonosítja a határ adatai. Például a határ boundary_1234-abcd =.
+Minden kérelmet tartalmaznia kell a Content-Type fejléc. A fejléc értékre kell állítani: multipart/form-data; határ =\<határ karakterlánc\>, ahol \<határ karakterlánc\> egy egyedi, átlátszatlan karakterlánc, amely azonosítja az űrlapadatok határait. Például a határ = boundary_1234-abcd.
 
 
-Ha Visual keresési küldi el egy kép token vagy URL-címe, a következő jeleníti meg az űrlap adatait meg kell adni a FELADÁS egy vagy több törzsében. Az űrlap adatait tartalmaznia kell a tartalomtípus-szabályozó fejléc és a `name` paraméter "knowledgeRequest" értékre kell állítani. A vonatkozó további információért a `imageInfo` objektumazonosító, lásd: [a kérelem](#the-request).
+Ha Visual Search küld egy kép token vagy URL-cím, az alábbiakban látható az űrlapadatok szerepelnie kell a bejegyzés törzse. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejléc, az `name` paramétert állítsa "knowledgeRequest." További információ a `imageInfo` objektumazonosító, lásd: [a kérelem](#the-request).
 
 
 ```
@@ -147,7 +147,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Ha feltölti egy helyi lemezképet, a következő jeleníti meg az űrlap adatait meg kell adni a FELADÁS egy vagy több törzsében. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejlécben. A `name` paraméter "kép" értékre kell állítani, és a `filename` paraméter bármilyen karakterlánc lehet beállítani. A Content-Type fejléc minden gyakran használt kép mime-típus lehet beállítani. A képernyő tartalmát a bináris kép. A maximális kép lehet, hogy feltölti mérete 1 MB. 
+Ha a helyi rendszerképet tölt fel, az alábbiakban látható az űrlapadatok szerepelnie kell a bejegyzés törzse. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejléc. A `name` paraméter "image" értékre kell állítani, és a `filename` paraméter bármilyen karakterlánc lehet beállítani. A Content-Type fejléc beállítható bármely általánosan használt kép mime-típus. A képernyő tartalmát a rendszerkép a bináris. A maximális képméret tölthet fel érték 1 MB. A lehető legnagyobb szélességének vagy magasságának 1500 képpont kell lennie, vagy kisebb.
 
 
 ```
@@ -160,7 +160,7 @@ Content-Type: image/jpeg
 --boundary_1234-abcd--
 ```
 
-A következő bemutatja, hogyan adhatja meg a tartományban, a feltöltött lemezkép.
+Az alábbiakban látható a régió, a feltöltött kép lényeges megadása.
 
 ```
 --boundary_1234-abcd
@@ -191,7 +191,7 @@ Content-Type: image/jpeg
 
 ### <a name="example-request"></a>Kérelem (példa)
 
-A következő jeleníti meg a a teljes kép insights kérést kapott egy kép token és tartományban. A insights jogkivonat beszerzése egy korábbi hívás /images/search.
+Az alábbiakban látható egy teljes kép insights-kérés, amelyet átad egy kép token és a lényeges terület. Az insights jogkivonat /images/search egy előző hívásából származó kap.
 
 
 ```  
@@ -224,7 +224,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 ## <a name="the-response"></a>A válasz
 
-Ha vannak a kép insights, a válasz egy vagy több tartalmaz `tags` feltárása tartalmaznak. A `image` mezőben a bemeneti kép insights lexikális eleme.
+Ha vannak a kép insights, a válasz tartalmaz egy vagy több `tags` , amelyek tartalmazzák az elemzéseket. A `image` mező tartalmazza a bemeneti kép insights token.
 
 ```json
 {
@@ -242,7 +242,7 @@ Ha vannak a kép insights, a válasz egy vagy több tartalmaz `tags` feltárása
 }
 ```
 
-A `tags` mező egy megjelenítési nevet és a műveletek (insights) listáját tartalmazza. A címkék egyike tartalmaz egy `displayName` állított üres karakterláncot kell megadni. Ezt a címkét tartalmaz, amelyek közé tartozik a lemezképet, vizuálisan hasonló lemezképek és a lemezképben található elemek vásárlásra szolgáló adatforrások például alapértelmezett feltárása. Mivel a teljes kép iránt, az alapértelmezett insights címke nem tartalmazza a határolókeret egyik fontos a régiók jelölőnégyzetéből.
+A `tags` mező tartalmaz egy megjelenítési nevet és az adott műveletek (insights). A címkék egyik tartalmaz egy `displayName` mező, amely egy üres karakterláncra van beállítva. Ez a címke tartalmazza, amelyek a lemezképet, a vizuálisan hasonló képek és a vásárlási forrás a lemezképben található elemek közé tartozik például az alapértelmezett insights. Mivel a teljes kép a lényeges, az alapértelmezett insights címke mezőbe a régiókat a lényeges határoló nem tartalmazza.
 
 
 ```json
@@ -269,19 +269,19 @@ A `tags` mező egy megjelenítési nevet és a műveletek (insights) listáját 
 }
 ```
 
-Az alapértelmezett insights listájáért lásd: [insights alapértelmezett](./default-insights-tag.md).
+Az alapértelmezett insights listáját lásd: [insights alapértelmezett](./default-insights-tag.md).
 
 
 
-A fennmaradó címkék más insights, amely lehet, hogy a felhasználó iránt tartalmaznak. Például a rendszerkép tartalmazza a szöveg, ha az egyik címkével tartalmazhatják egy TextResults insight, amely tartalmazza a felismert szöveget. Vagy ha Bing (személy, hely vagy dolog) entitás felismeri a kép, címkék egyikével, előfordulhat, hogy azonosítja az entitást. Visual keresési is adja vissza, amely különböző feltételeket (címke) a bemeneti kép származik. Ezekkel a címkékkel engedélyezése a felhasználók számára a lemezképben található fogalmak vizsgálatát. Például ha a bemeneti kép famous sportoló, annak a címkék lehetnek sport, amely sport képeket mutató hivatkozásokat tartalmaz.
+A fennmaradó címkék más, amely lehet a felhasználó számára érdekes elemzéseket tartalmaznak. Például ha a kép szöveget tartalmaz, a címkék egyikét tartalmazhat egy TextResults insight, amely tartalmazza a felismert szöveget. Vagy, ha a Bing (személy, hely vagy dolog) entitás felismeri a kép, címkék egyikével, előfordulhat, hogy azonosítja az entitást. Vizuális keresés is kezébe a különböző használati (címkék) származik a bemeneti kép adja vissza. Ezek a címkék lehetővé teszik a felhasználóknak, hogy a lemezképben található fogalmak. Például ha a bemeneti kép híres sportoló, a címkék egyikét lehet például sportesemények, amely által az olimpián képére mutató hivatkozásokat tartalmaz.
 
-Minden tag megjelenített név, használhatja a insight kategorizálását, amely azonosítja a insight alkalmazó iránt érdeklődik, maguk feltárása és a miniatűr kép határolókeret tartalmazza. Például ha a kép egy sport jersey elhasználódó személy, egyik címkével tartalmazhat egy határolókeret, amely a jersey bounds és VisualSearch és ProductVisualSearch insights tartalmazza. És egy másik címke tartalmazhat egy helyileg kapcsolódó képek lekérni egy /images/search API-kérelem URL-címet vagy egy Bing.com keresési URL-címet, amely a felhasználót, hogy a Bing.com kép keresési eredményeket tartalmazó ImageResults egyet.
+Minden címke tartalmazza, amelyek segítségével a elemzés kategorizálásához, amely azonosítja a régió, amely a elemzés vonatkozik, az elemzések magukat, és a kép miniatűrjét határolókeret megjelenített neve. Például ha a kép egy sport jersey elhasználódó személy, a címkék egyikét tartalmazhat egy határolókeret, amely a jersey bounds és VisualSearch és ProductVisualSearch insights tartalmazza. És a egy másik címkét tartalmazhat egy helyileg kapcsolódó képek beolvasni egy /images/search API-kérelem URL-CÍMÉT vagy egy Bing.com Keresés URL-címet, amely a felhasználót, hogy a Bing.com eredményeit tartalmazó ImageResults elemzést.
 
-Az alapértelmezett insights címke nem található összes kódcímkének például jelölőnégyzetéből, amelyek azonosítják a lemezkép iránti érdeklődését régiói határolókeret. Például a lemezkép több felismert személyt tartalmazza, ha a címkék tartalmazhatnak, határolókeret mezőkbe az egyes annak a személynek, vagy ha a kép felismert ruházati elemet tartalmaz, a címkék tartalmazhatnak, egyes felismert ruházati elemekhez tartozó mezőkben határolókeret. A határoló mezőkbe hozhat létre interaktív területek a képe, amely kattintáskor, adja meg az adott régióban, a kép tartalmának részleteit. A határoló jelölőnégyzetéből, amelyek azonosítják a teljes kép kép nem interaktív területek kell tartalmaznia.
+Az alapértelmezett insights címke kívül az összes címke például határoló hasznos helyhez az ábrán területek azonosítására szolgáló mezők. Például ha a kép elfogadott többen is tartalmaz, a címkék lehetnek, mezők határoló minden annak a személynek, vagy ha a kép felismert ruházati elemet tartalmaz, a címkék lehetnek, egyes felismert ruházati elemekhez tartozó mezőkben határoló. A határoló mezők használatával hoz létre a hotspotok a kép fölött, amely rákattintáskor, adja meg a tartalmat az adott régióban, a kép adatait. A hotspotok határoló mezők, amelyek azonosítják a teljes kép a kép nem tartalmaznia.
 
-### <a name="text-recognition"></a>Szöveg
+### <a name="text-recognition"></a>Szövegek felismerése
 
-A rendszerkép tartalmazza a szöveg, amelyet a szolgáltatás észleli, ha az egyik címkével egy TextResults insight (művelet) fogja tartalmazni. A insight `displayName` a felismert szöveget tartalmaz. 
+A rendszerkép tartalmazza a szöveg, amely a szolgáltatás észleli, ha a címkék egyikét egy TextResults insight (művelet) fogja tartalmazni. Az insight `displayName` tartalmazza a felismert szöveget. 
 
 ```json
     {
@@ -311,10 +311,10 @@ A rendszerkép tartalmazza a szöveg, amelyet a szolgáltatás észleli, ha az e
     }
 ```
 
-Mivel a címke `displayName` mezőben ##TextRecognition ne használja azt a kategóriát a UX a cím Álljon a megjelenítendő nevet, amely kezdődik ##. Ehelyett használja a művelet megjelenített neve.
+Mivel a címke `displayName` mező ##TextRecognition tartalmazza, ne használja a UX egy kategória címként Kezdődik, hogy minden megjelenítés goes nevet, amely ##. Ehelyett használja a művelet megjelenített neve.
 
 
-Szöveg is fel tudja ismerni a kapcsolattartási adatokat a névjegyek, például a telefonszámok és az e-mail címet. A határolókeret a kapcsolattartási adatokat a kártya helyét azonosítja. 
+Szövegek felismerése is képes felismerni a kapcsolattartási adatokat a névjegyek, például a telefonszámok és e-mail címek. A határolókeret azonosítja a helyét, a kapcsolattartási adatokat a kártyán. 
 
 ```json
     {
@@ -400,7 +400,7 @@ Szöveg is fel tudja ismerni a kapcsolattartási adatokat a névjegyek, példáu
     }
 ```
 
-A rendszerkép tartalmazza a felismert entitás, például egy személy, hely vagy dolog, ha az egyik címkével entitás egyet tartalmazhat. Entitásokat is tartalmazhat trivia, a következő példában látható módon:
+Ha a rendszerkép tartalmazza a felismert entitás, például egy személy, hely vagy egy dolog, a címkék egyikét tartalmazhat egy entitás elemzést. 
 
 ```json
     {
@@ -428,29 +428,6 @@ A rendszerkép tartalmazza a felismert entitás, például egy személy, hely va
           "webSearchUrl" : "https:\/\/www.bing.com\/search?q=Statue+of+Liberty",
           "displayName" : "Statue of Liberty",
           "actionType" : "Entity",
-        },
-        {
-          "_type" : "ImageModuleAction",
-          "actionType" : "Trivia",
-          "data" : {
-            "value" : [
-              {
-                "name" : "Where was the cornerstone of the statue of liberty laid",
-                "text" : "<the answer>",
-                "hostPageUrl" : "http:\/\/contoso.com\/history\/...",
-              },
-              {
-                "name" : "Why Is the Statue of Liberty Green",
-                "text" : "<the answer>",
-                "hostPageUrl" : "https:\/\/www.contoso.com\/why-statue-of-liberty-is-green",
-              },
-              {
-                "name" : "What is the Statue of Liberty made of",
-                "text" : "<the answer>",
-                "hostPageUrl" : "https:\/\/www.contoso.com\/art-literature\/statue-liberty-made",
-              }
-            ]
-          }
         }
       ]
     }
@@ -460,13 +437,13 @@ A rendszerkép tartalmazza a felismert entitás, például egy személy, hely va
 
 ## <a name="next-steps"></a>További lépések
 
-Használatának gyors megkezdése az első kérelem, tekintse meg a quickstarts: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
+Gyorsan megkezdheti az első kérelmét, tekintse meg a rövid útmutató: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
 
-Próbálja ki az API-t. Ugrás a [Visual keresési API-tesztelési konzol](https://dev.cognitive.microsoft.com/docs/services/878c38e705b84442845e22c7bff8c9ac). 
+Próbálja ki az API-t. Lépjen a [Visual Search API-tesztelési konzol](https://dev.cognitive.microsoft.com/docs/services/878c38e705b84442845e22c7bff8c9ac). 
 
 
-Ismerje meg, a [Visual keresési API-referencia](https://aka.ms/bingvisualsearchreferencedoc). A hivatkozás tartalmazza a végpontok, fejlécek és lekérdezési paraméterek, kérje a keresési eredmények között szeretné használni. A válasz objektumok meghatározását is tartalmaz. 
+Ismerje meg az a [Visual Search API-referencia](https://aka.ms/bingvisualsearchreferencedoc). A referencia olyan végpontok, fejlécek és lekérdezési paraméterek listáját tartalmazza, amelyekkel keresési eredményeket kérhet le, és a válaszobjektumok definícióit is megtalálja benne. 
 
-Olvassa el [Bing használatát és a megjelenített követelmények](./use-and-display-requirements.md) , nem megszakítja a keresési eredmények használatára vonatkozó szabályok egyike.
+Mindenképpen olvassa el a [Bing használati és megjelenítési előírásait,](./use-and-display-requirements.md) hogy ne szegje meg a keresési eredmények használatának szabályait.
 
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a6ca37105cfff8542f0c4a8af3112fa317416c56
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 95a9530c02bbf7b1cd9d137129f96ff4ee016966
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611251"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007665"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Egy Linux rendszerű virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata az Azure Key Vault eléréséhez 
 
@@ -51,7 +51,7 @@ Ebben az oktatóanyagban létrehozunk egy új Linux rendszerű virtuális Gépet
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
 3. Adja meg a virtuális gép adatait. A **hitelesítési típus**válassza **nyilvános SSH-kulcs** vagy **jelszó**. A létrehozott hitelesítő adatok lehetővé teszik jelentkezzen be a virtuális Gépre.
 
-    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Kép ALT szövege](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. Válasszon egy **előfizetés** a virtuális gép a legördülő listában.
 5. Jelölje be egy új **erőforráscsoport** szeretne létrehozni, válassza ki a virtuális gép **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
@@ -66,11 +66,11 @@ A virtuális gép MSI lehetővé teszi hozzáférési tokenek beszerzése az Azu
 3. Látja **Felügyeltszolgáltatás-identitás**. Regisztráljon, és az MSI engedélyezéséhez, válassza ki a **Igen**, ha szeretné letiltani, válassza a nem.
 4. Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.
 
-    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Kép ALT szövege](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 5. Ha szeretné ellenőrizni, hogy a rendszer milyen kiterjesztésű **Linux rendszerű virtuális gép**, kattintson a **bővítmények**. Ha az MSI engedélyezve van, a **ManagedIdentityExtensionforLinux** megjelenik a listán.
 
-    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
+    ![Kép ALT szövege](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>A virtuális gép hozzáférést adni a Key Vaultban tárolt titkos kulcs  

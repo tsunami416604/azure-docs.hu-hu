@@ -8,26 +8,26 @@ ms.topic: include
 ms.date: 02/16/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 0cb3de7d893ccfe638468110b1b6f5fb61b2bc7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a69a739f36854cacd6b361ca2bd17d904e9c4c96
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29402495"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38753676"
 ---
-Erőforrás zárolások akadályozza meg a szervezet véletlen törlés vagy módosítása a fontos erőforrásokhoz. Szerepköralapú hozzáférés-vezérlés, eltérően erőforrás zárolások alkalmazhatók a korlátozás összes felhasználók és szerepkörök. 
+Erőforrás-zárolások letiltja a véletlen törlését vagy módosítását kiemelt fontosságú erőforrásokat a szervezetben. Az erőforrás-zárolások a szerepköralapú hozzáférés-vezérléssel szemben minden felhasználóra és szerepkörre érvényes korlátozásokat alkalmaznak. 
 
-Beállíthatja a zárolási szint beállítása azokhoz a **CanNotDelete** vagy **ReadOnly**. A portálon, a zárolás szintek jelennek meg, **törlése** és **írásvédett** kulcsattribútumokkal.
+A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon, a zárolás szintek jelennek meg, **törlése** és **csak olvasható** jelölik.
 
-* **CanNotDelete** azt jelenti, hogy a jogosult felhasználók továbbra is olvasni és módosítani az erőforrást, de azokat nem lehet törölni az erőforrás. 
-* **Csak olvasható** azt jelenti, hogy a jogosult felhasználók olvashatják egy erőforrást, de nem lehet törölni vagy az erőforrás frissítése. A zárolás alkalmazása hasonlít összes jogosult felhasználó által megadott engedélyek korlátozása a **olvasó** szerepkör. 
+* **Védve** azt jelenti, hogy a jogosult felhasználók továbbra is olvasni és módosítani az erőforrást, de azokat nem lehet törölni az erőforrást. 
+* **Csak olvasható** azt jelenti, hogy a jogosult felhasználók olvashatják egy erőforrást, de nem lehet törölni vagy az erőforrás frissítése. A zárolás alkalmazása hasonlít az összes jogosult felhasználó által adott engedélyek korlátozása a **olvasó** szerepkör. 
 
 > [!TIP]
-> Legyen óvatos, amikor alkalmazza a **ReadOnly** zárolása. Bizonyos műveleteket, amelyek az adatok, például olvasási műveletek ténylegesen szükséges további műveleteket. Például egy **ReadOnly** zárolását egy tárfiókot minden felhasználót megakadályoz a kulcsainak listázása. A listában kulcsok művelet segítségével egy POST kérést kezel, mert a visszaadott kulcsok érhetők el az írási műveletek. A **ReadOnly** egy App Service erőforrás zárolását megakadályozza, hogy a Visual Studio Server Explorer megjelenítése az erőforrás fájlok, mert adott interakció írási hozzáféréssel kell rendelkeznie.
+> Legyen óvatos, ha alkalmazása egy **ReadOnly** zárolás. Bizonyos műveletek, amelyek úgy tűnik, például olvasási műveletekhez ténylegesen szükséges további műveleteket. Ha például egy **ReadOnly** a storage-fiók zárolása megakadályozza, hogy minden felhasználó a kulcsok listázása. A lista kulcsok művelet POST-kérés történik, mert a visszaadott kulcsok érhetők el írási műveletek. A **ReadOnly** egy App Service erőforrás zárolása megakadályozza, hogy a Visual Studio Server Explorer fájl az erőforrás jelenik meg, mert a kapcsolati írási hozzáférésre van szüksége.
 
-A szülő hatókörben zárolást alkalmazásakor hatókörön belüli összes erőforrás öröklik az azonos zárolása. A későbbiekben még akkor is, erőforrások örökölt a zárolást. Az öröklés a legszigorúbb zár lép érvénybe.
+Amikor alkalmazza a zárolást, egy szülő hatókörben, a hatókörön belüli összes erőforrás azonos zárolási öröklik. Hozzáadását a későbbiekben még akkor is, erőforrások a zárolási öröklik a szülő. A legszigorúbb zárolást az öröklési ciklus élvez elsőbbséget.
 
-Csak a fordul elő a felügyeleti vezérlősík, amely küldött műveletek műveletek érvényes erőforrás-kezelő zárolások `https://management.azure.com`. A zárolás nem korlátozza, hogyan erőforrások feldolgozni a saját funkciók. Erőforrás módosítások korlátozott, de erőforrás műveletek nem korlátozott. Például egy SQL-adatbázis csak olvasható zárolást megakadályozza az törölhessék vagy módosíthassák az adatbázisban. Nem gátolja meg létrehozása, frissítése vagy törlése az adatbázisban. Adatok tranzakciók nem engedélyezettek, mert a rendszer nem küldi el a műveletek `https://management.azure.com`.
+Erőforrás-kezelő zárolások csak vonatkozik, amelyek a felügyeleti sík, olyan küldött műveleteket tartalmaz, amely egy operations `https://management.azure.com`. A zárolás nem korlátozza a hogyan feldolgozni az erőforrásokat a saját funkciók. Erőforrás-módosítások korlátozva, de az erőforrás-műveletek nem korlátozott. Például egy SQL-adatbázis írásvédett zárolásának megakadályozza, hogy Ön általi törlését vagy módosítását az adatbázis. Ez nem akadályozza meg a létrehozása, frissítése vagy törlése az adatbázis adatait. Adatok tranzakciók nem engedélyezettek, mert a nem kap meg ezek a műveletek `https://management.azure.com`.
 
-### <a name="who-can-create-or-delete-locks-in-your-organization"></a>Aki létrehozhat vagy törölhet zárolásokat a szervezetében
-Hozzon létre, vagy törölje a felügyeleti zárolás, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/locks/*` műveletek. A beépített szerepkörök, csak **tulajdonos** és **felhasználói hozzáférés adminisztrátora** kapnak a csatolási műveleteket.
+### <a name="who-can-create-or-delete-locks-in-your-organization"></a>Akik hozhatók létre, vagy a szervezet zárolások törlése
+A felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.

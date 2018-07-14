@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-accelerators
+author: dominicbetts
+ms.service: iot-accelerators
+ms.topic: include
+ms.date: 05/30/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 55920b6c147626f68f51b9e0479949330c71a748
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "38756411"
+---
 > [!div class="op_single_selector"]
 > * [C Windowson](../articles/iot-suite/iot-suite-v1-connecting-devices.md)
 > * [C Linuxon](../articles/iot-suite/iot-suite-v1-connecting-devices-linux.md)
@@ -24,13 +41,13 @@ Mielőtt bármilyen kódot írna az eszközhöz, ki kell építenie az előre ko
 ### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Az előre konfigurált távoli figyelési megoldás kiépítése
 Az ebben az oktatóanyagban létrehozott eszköz adatokat küld az előre konfigurált [távoli figyelési][lnk-remote-monitoring] megoldásnak. Ha még nem építette ki az előre konfigurált távoli figyelési megoldást az Azure-fiókban, használja a következő lépéseket:
 
-1. A <https://www.azureiotsuite.com/> oldalon kattintson a **+** elemre egy megoldás létrehozásához.
+1. Az a <https://www.azureiotsolutions.com/> kattintson **+** megoldást hozhat létre.
 2. Kattintson a **Kiválasztás** elemre a **Távoli figyelés** panelen a megoldás létrehozásához.
 3. A **Távoli figyelési megoldás létrehozása** oldalon írjon be egy **megoldásnevet**, válassza ki a **Régiót**, ahová üzembe szeretné helyezni azt, majd válassza ki a használni kívánt Azure-előfizetést. Ezután kattintson a **Megoldás létrehozása** parancsra.
 4. Várja meg, amíg befejeződik a kiépítési folyamat.
 
 > [!WARNING]
-> Az előre konfigurált megoldások számlázható Azure-szolgáltatásokat használnak. A felesleges költségek elkerülése érdekében ügyeljen arra, hogy eltávolítsa az előre konfigurált megoldást az előfizetésből, amikor végzett annak használatával. Teljesen is eltávolíthatja az előre konfigurált megoldást az előfizetésből a <https://www.azureiotsuite.com/> oldalon.
+> Az előre konfigurált megoldások számlázható Azure-szolgáltatásokat használnak. A felesleges költségek elkerülése érdekében ügyeljen arra, hogy eltávolítsa az előre konfigurált megoldást az előfizetésből, amikor végzett annak használatával. Teljes mértékben eltávolíthatja előre konfigurált megoldást az előfizetésből meglátogatják a <https://www.azureiotsolutions.com/> lapot.
 > 
 > 
 

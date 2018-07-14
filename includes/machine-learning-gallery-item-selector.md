@@ -1,5 +1,5 @@
-**[AI Azure katalógusában](http://gallery.cortanaintelligence.com)**  felderítéséhez közösségi szerkesztésű hely és a megoldások megosztása Cortana Intelligence Suite-val készült.
-A gyűjtemény a különböző erőforrások, amelyek segítségével a saját elemzési megoldások fejlesztése rendelkezik.
+**[Az Azure AI-katalógusban](http://gallery.cortanaintelligence.com)**  közösségi hely felderítéséhez és a Cortana Intelligence Suite-megoldások megosztása beépített.
+A gyűjtemény-erőforrások, amelyek segítségével a saját elemzési megoldásokat fejleszthet különböző rendelkezik.
 
 <!-- On the new DOCS platform, this is a drop-down list, not tabs, which doesn't work well in this context. So I'm just removing it for now.
 

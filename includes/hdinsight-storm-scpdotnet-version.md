@@ -1,7 +1,7 @@
 > [!IMPORTANT]
-> A projekthez használt SCP.Net verzió meg kell egyeznie a jelenlegi HDInsight-fürtön található Storm verziójával. A következő táblázat segítségével határozhatja meg a melyik verziót kell használnia:
+> A projekt használt SCP.Net verzió meg kell egyeznie a HDInsight-fürtön található Storm-verzió. Az alábbi táblázat segítségével határozza meg, melyik verziót kell használnia:
 > 
-> | HDInsight-verzió | Apache Storm verzióját | SCP.NET verzió | Alapértelmezett monó verzió |
+> | HDInsight-verzió | Az Apache Storm-verzió | SCP.NET-verzió | Monó alapértelmezett verzió |
 > |:---:|:---:|:---:|:---:|
 > | 3.3 |0.10.0.x |0.10.0.x (csak Windows-alapú fürtök) | NA |
 > | 3.4 |0.10.0.x |0.10.0.x | 3.2.8 |

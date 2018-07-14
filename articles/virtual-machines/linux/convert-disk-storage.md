@@ -1,10 +1,10 @@
 ---
-title: Alakítsa át az Azure szabványos lemezek tárolási kezelik, prémium, és ez fordítva is igaz |} Microsoft Docs
-description: Azure átalakítása felügyelt lemezek tárolási standard prémium, és ez fordítva is igaz, az Azure parancssori felület használatával.
+title: Átalakítása az Azure disks storage felügyelt standardról prémium szintre, és fordítva |} A Microsoft Docs
+description: Átalakítása az Azure felügyelt lemezes tárhely standardról prémium szintre, és fordítva, Azure CLI-vel.
 services: virtual-machines-linux
 documentationcenter: ''
-author: ramankum
-manager: kavithag
+author: cynthn
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,30 +13,30 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
-ms.author: ramankum
-ms.openlocfilehash: c22c2c194cb839c3ec9e3e851768ca19bc6fc443
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.date: 07/12/2018
+ms.author: cynthn
+ms.openlocfilehash: 5c06de6b757da63bb35a4f094e5912e8dcd786f9
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
-ms.locfileid: "23950510"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005050"
 ---
-# <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Alakítsa át az Azure szabványos lemezek tárolási kezelik, prémium, és ez fordítva is igaz
+# <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Átalakítása az Azure disks storage felügyelt standardról prémium szintre, és fordítva
 
-Kezelt lemezek két tárolási lehetőségeket kínál: [prémium](../windows/premium-storage.md) (SSD-alapú) és [szabványos](../windows/standard-storage.md) (HDD-alapú). Ez lehetővé teszi, hogy egyszerűen válthat a két lehetőség közül választhat a teljesítmény igények alapján minimális állásidővel között. Ez a funkció nem felügyelt lemezek nem érhető el. Azonban úgy is könnyen [alakítsa át a felügyelt](convert-unmanaged-to-managed-disks.md) egyszerűen a két beállítás közötti váltáshoz.
+A felügyelt lemezek három tárolási lehetőséget kínál az: [prémium szintű SSD](../windows/premium-storage.md), Standard SSD(Preview) és [Standard HDD](../windows/standard-storage.md). Lehetővé teszi a teljesítmény igények alapján minimális állásidővel lehetőségek közötti egyszerű váltást. Nem felügyelt lemezek esetén ez nem támogatott. De könnyen [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) egyszerűen a lemeztípusok közötti váltáshoz.
 
-Ez a cikk bemutatja, hogyan felügyelt lemezek konvertálása standard, premium, és ez fordítva is igaz az Azure parancssori felület használatával. Ha szeretné telepíteni vagy frissíteni, lásd: [Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli.md). 
+Ez a cikk bemutatja a felügyelt lemezek konvertálása a standard, prémium szintű, és fordítva az Azure parancssori felület használatával. Ha szeretné telepíteni, vagy frissít a csomagon belül, lásd: [Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli.md). 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Az átalakítás újra kell indítani a virtuális gép, úgy ütemezni a áttelepítését a lemezek már meglévő karbantartási időszak alatt történjen. 
-* Használatakor a nem felügyelt lemezek, először [alakítsa át a felügyelt](convert-unmanaged-to-managed-disks.md) használatára Ez a cikk a két tárolási lehetőségek közötti váltáshoz. 
+* Az átalakításhoz újra kell indítani a virtuális gép, ezért ütemezze a lemezek tároló áttelepítése egy már létező karbantartási időszakra. 
+* Ha először használja a nem felügyelt lemezek [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) Ez a cikk használatával válthat a tárolási lehetőségek között. 
 
 
-## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>Alakítsa át a virtuális gépek összes felügyelt lemezeket szabványos prémium szintű, és ez fordítva is igaz
+## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>A felügyelt lemezek, a virtuális gépek konvertálása standard prémium szintre, és ez fordítva is igaz
 
-A következő példában megmutatjuk, hogyan lehet váltani a prémium szintű Storage-standard a virtuális gép összes lemeze. Felügyelt premium lemezek, a virtuális Gépet kell használnia egy [Virtuálisgép-méretet](sizes.md) , amely támogatja a prémium szintű storage. Ebben a példában is, amely támogatja a prémium szintű storage méretre vált.
+Az alábbi példa bemutatja, hogyan lehet váltani a prémium szintű Storage standard virtuális gép mindegyik lemeze. Prémium szintű felügyelt lemezek használata, a virtuális Gépet kell használnia egy [Virtuálisgép-méret](sizes.md) , amely támogatja a premium storage. Ebben a példában is, amely támogatja a prémium szintű storage vált.
 
  ```azurecli
 
@@ -71,9 +71,9 @@ az vm show -n $vmName -g $rgName --query storageProfile.osDisk.managedDisk -o ts
 az vm start --name $vmName --resource-group $rgName
 
 ```
-## <a name="convert-a-managed-disk-from-standard-to-premium-and-vice-versa"></a>Standard felügyelt lemezes átalakítása prémium, és ez fordítva is igaz
+## <a name="convert-a-managed-disk-from-standard-to-premium-and-vice-versa"></a>Standard szintű felügyelt lemez konvertálása prémium szintű, és ez fordítva is igaz
 
-A fejlesztési és tesztelési célú munkaterheléshez érdemes lehet a költségek csökkentése a standard és premium lemezek keverékével van. Prémium szintű Storage, frissítse a lemezek csak az jobb teljesítményt igénylő végrehajtható. A következő példában megmutatjuk, hogyan lehet váltani egyetlen lemezt a virtuális gépek a szabványos prémium szintű Storage, és ez fordítva is igaz. Felügyelt premium lemezek, a virtuális Gépet kell használnia egy [Virtuálisgép-méretet](sizes.md) , amely támogatja a prémium szintű storage. Ebben a példában is, amely támogatja a prémium szintű storage méretre vált.
+A fejlesztési és tesztelési számítási feladatok esetében érdemes a standard és prémium szintű lemezek a költségek csökkentése érdekében keverékét rendelkezik. Ez a premium storage, csak azok a lemezek jobb teljesítményt igénylő frissítésével végezheti el. Az alábbi példa bemutatja, hogyan lehet váltani a prémium szintű Storage, a standard szintű virtuális gépek egyetlen lemezre, és ez fordítva is igaz. Prémium szintű felügyelt lemezek használata, a virtuális Gépet kell használnia egy [Virtuálisgép-méret](sizes.md) , amely támogatja a premium storage. Ebben a példában is, amely támogatja a prémium szintű storage vált.
 
  ```azurecli
 
@@ -106,7 +106,46 @@ az disk update --sku $sku --name $diskName --resource-group $rgName
 az vm start --ids $vmId 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="convert-a-managed-disk-from-standard-hdd-to-standard-ssd-and-vice-versa"></a>Felügyelt lemez konvertálása a standard HDD standard SSD-re és fordítva
 
-Tegye meg a virtuális gépek csak olvasható másolatát a használatával [pillanatképek](snapshot-copy-managed-disk.md).
+Az alábbi példa bemutatja, hogyan egy egyetlen lemezt egy virtuális gép a szabványos HDD standard SSD-re váltani.
+
+ ```azurecli
+
+#resource group that contains the managed disk
+rgName='yourResourceGroup'
+
+#Name of your managed disk
+diskName='yourManagedDiskName'
+
+#Choose between Standard_LRS and StandardSSD_LRS based on your scenario
+sku='StandardSSD_LRS'
+
+#Get the parent VM Id 
+vmId=$(az disk show --name $diskName --resource-group $rgName --query managedBy --output tsv)
+
+#Deallocate the VM before changing the disk type
+az vm deallocate --ids $vmId 
+
+# Update the sku
+az disk update --sku $sku --name $diskName --resource-group $rgName 
+
+az vm start --ids $vmId 
+```
+
+## <a name="convert-using-the-azure-portal"></a>Konvertálja az Azure portal használatával
+
+Nem felügyelt lemezek is konvertálása felügyelt lemezeket az Azure portal használatával.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. A portál virtuális gépek listájából válassza ki a virtuális gép.
+3. Válassza ki a virtuális gép paneljén **lemezek** a menüből.
+4. Felső részén a **lemezek** panelen válassza ki **áttelepítése a managed Disks szolgáltatásba**.
+5. Ha a virtuális gép egy rendelkezésre állási csoportban van, lesz egy figyelmeztetés a a **áttelepítése a managed Disks szolgáltatásba** panel, amelyen a rendelkezésre állási csoportot, először konvertálnia kell. A figyelmeztetés rendelkeznie kell egy hivatkozást is kattinthat a rendelkezésre állási csoport konvertálásához. Miután dátumformátumra alakítja át a rendelkezésre állási csoport, vagy ha a virtuális gép nem egy rendelkezésre állási csoportban, kattintson a **áttelepítése** a lemezek a managed Disks szolgáltatásba való migrálásának a folyamat elindításához. 
+
+A virtuális gép leáll és újraindul a migrálás befejezése után.
+
+## <a name="next-steps"></a>További lépések
+
+Készítsen róla egy írásvédett másolatot a virtuális gépek használatával [pillanatképek](snapshot-copy-managed-disk.md).
 
