@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: cbd5a0ea5fbeb7becbfc33bf72af73425630bff6
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970720"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036938"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
@@ -148,7 +148,7 @@ A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalm
 |**A paraméter**        |**Típus**                          | **Részletek**|
 |:-|-|-|
 |MaxResultsToCache    |Hosszú                              | Windows Update-eredményeket, amely a gyorsítótárba kerüljenek maximális számát. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma, 20. <br> -Történik a havi csomópont frissítések száma, öt. <br> -Művelet eredmények száma 10 lehet. <br> -Az elmúlt három havi eredmény kell tárolni. |
-|TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a szabályzatot, amely a Windows-frissítések telepítése a Service Fabric-fürt csomópontjain a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. Windows Update telepítve egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update egyszerre több frissítési tartományt telepítve. (A maximumot, a frissítési tartományokhoz tartozó összes csomópontját meg a Windows Update.)
+|TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a szabályzatot, amely a Windows-frissítések telepítése a Service Fabric-fürt csomópontjain a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. Windows Update telepítve egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update egyszerre több frissítési tartományt telepítve. (A maximumot, a frissítési tartományokhoz tartozó összes csomópontját meg a Windows Update.)<br> Tekintse meg [– gyakori kérdések](#frequently-asked-questions) szakasz útmutatást a fürt számára leginkább alkalmas házirend kiválasztásában.
 |LogsDiskQuotaInMB   |Hosszú  <br> (Alapértelmezett: 1024)               |Patch orchestration alkalmazás maximális mérete (MB), amely megőrizhetők a csomópontok helyi naplózza.
 | WUQuery               | sztring<br>(Alapértelmezett: "IsInstalled = 0")                | Windows-frissítések lekérdezése. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | Logikai <br> (alapértelmezett: igaz)                 | Ez a jelző lehetővé teszi, hogy a Windows operációs rendszer frissítéseinek kell telepíteni.            |
@@ -304,19 +304,36 @@ VÁLASZOK. **Mi a teendő, ha a fürt nem kifogástalan, és egy sürgős operá
 
 A. A patch orchestration app nem frissítések telepítése, míg a fürt állapota nem kifogástalan. Próbálja meg a fürt hálózatra kapcsolása a tiltásának feloldása a patch orchestration munkafolyamat Kifogástalan állapotba.
 
-VÁLASZOK. **Miért nem különböző fürtökben üzemelő javítás tart sokáig futtatásához?**
+VÁLASZOK. **Kell i beállítása "NodeWise" vagy "UpgradeDomainWise" TaskApprovalPolicy a fürtöm számára?**
 
-A. A patch orchestration alkalmazás számára szükséges idő nagyrészt a következő tényezőktől függ:
+A. "UpgradeDomainWise" lehetővé teszi a teljes fürt javítás gyorsabban azáltal, hogy kijavítja a párhuzamos frissítési tartományokhoz tartozó összes csomópontját. Ez azt jelenti, hogy a teljes frissítési tartományokhoz tartozó lenne nem érhető el (a [letiltott](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) állapot) a javítási folyamat során.
 
-- A szabályzat a koordinátor szolgáltatást. 
-  - Az alapértelmezett házirend `NodeWise`, egyszerre csak egy csomópont javítás eredménye. Különösen akkor, ha van egy nagyobb méretű fürt, azt javasoljuk, hogy a `UpgradeDomainWise` szabályzatot, hogy különböző fürtökben üzemelő gyorsabb javítása.
-- A letöltés és telepítés készült frissítések száma. 
-- Az átlagos idő szükséges töltse le és telepítse a frissítést, amely nem lehet hosszabb néhány óra múlva.
-- A teljesítmény, a virtuális gép és a hálózati sávszélességet.
+Ezzel szemben a NodeWise"szabályzat javítások egyszerre csak egy csomópont, ez azt jelenti, hogy általános fürt javítás hosszabb ideig igénybe. Azonban, max, csak egy csomópont lenne nem érhető el (a [letiltott](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) állapot) a javítási folyamat során.
+
+Ha a fürt fut az frissítési tartományok száma N-1 javítás ciklus (ahol N az a fürt frissítési tartományok száma), majd a szabályzat másként "UpgradeDomainWise" alatt képes elviselni, ellenkező esetben állítsa "NodeWise".
+
+VÁLASZOK. **Mennyi idő mindezt hajtsa végre a megfelelő csomópont javítására?**
+
+A. Egy csomópont javítás percet is igénybe vehet (például: [Windows Defender definíciófrissítéseit](https://www.microsoft.com/wdsi/definitions)) óra (például: [Windows összegző frissítések](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Egy csomópont javítása szükséges idő leggyakrabban függ 
+ - Frissítések mérete
+ - Frissítéseket, amelyek azt a javítási időszakot a alkalmazni kell száma
+ - Telepítse a frissítéseket, újraindíthatja a csomópontot (ha szükséges), és újraindítás utáni telepítési lépéseket szükséges idő.
+ - Virtuális gép és számítógép- és hálózati körülményekhez teljesítményét.
+
+VÁLASZOK. **Mennyi ideig tart egy teljes fürtre javítására?**
+
+A. A teljes fürtöt javítása szükséges idő a következő tényezőktől függ:
+
+- Egy csomópont javítása szükséges idő.
+- A szabályzat a koordinátor szolgáltatást. – Az alapértelmezett házirend `NodeWise`, egyszerre, amelyek alacsonyabb, mint egyetlen csomópont javítás eredményeként `UpgradeDomainWise`. Példa: egy csomópont a javítandó ~ 1 órát vesz igénybe, ha fenntartani egy 20 csomópontot (a csomópontok ugyanazon típus) javítása a fürt 5 frissítési tartománnyal, mindegyik 4 csomóponttal.
+    - Az egész fürt javítására irányuló körülbelül 20 óra múlva szabályzat a `NodeWise`
+    - Ha a házirend ~ 5 óra múlva `UpgradeDomainWise`
+- Fürt betöltés – minden javítási műveletet igényel, az ügyfél számítási feladata áthelyezése más elérhető csomópontokhoz a fürtben. Javítás alatt áll csomópont kell, hogy [letiltása](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) állapot ebben az időszakban. Ha a fürt csúcsterhelés között közel fut, a letiltását folyamat hosszabb ideig igénybe. Ezért átfogó a javítási folyamat lassú ilyen teherhordó feltételek jelenhet meg.
+- Állapottal kapcsolatos hibák bármilyen során javítás - fürt [teljesítménycsökkenés](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) a [a fürt állapota](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) megszakítaná a javítási folyamatot. Ez az egész fürt javítása szükséges teljes időt volna hozzá.
 
 VÁLASZOK. **Miért látok néhány frissítést, a Windows Update eredmények REST API-n keresztül, de nem a számítógépen a Windows Update előzmények alapján?**
 
-A. Egyes frissítéseket csak tűnik, a megfelelő frissítések/javítások előzményeiben. Ha például a Windows Defender frissítések nem jelennek meg a Windows Server 2016-on Windows Update előzmények.
+A. Egyes frissítéseket csak tűnik, a megfelelő frissítések/javítások előzményeiben. Például előfordulhat, hogy a Windows Defender frissítések vagy előfordulhat, hogy nem jelennek meg a Windows Server 2016-on Windows Update előzmények.
 
 VÁLASZOK. **Patch Orchestration alkalmazás használható fejlesztési fürt (egycsomópontos fürt) javítására?**
 

@@ -14,9 +14,9 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 
 | Erőforrás | Korlát |
 | --- | --- |
-| Azure-előfizetésenkénti fizetős IoT Hubok maximális száma |10 |
+| Azure-előfizetésenkénti fizetős IoT Hubok maximális száma |50 |
 | Azure-előfizetésenkénti ingyenes IoT Hubok maximális száma |1 |
-| Eszközazonosítót karakterek maximális száma | 128 |
+| Egy eszközazonosítót karakterek maximális száma | 128 |
 | Eszközidentitások egyetlen hívásban visszaadott<br/> maximális száma |1000 |
 | Egy eszközről a felhőbe irányuló IoT Hub-üzenetek maximális megőrzési ideje |7 nap |
 | Egy eszközről a felhőbe irányuló üzenet maximális mérete |256 KB |
@@ -28,7 +28,7 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális kézbesítésszáma |100 |
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális élettartama |2 nap |
 | Ikereszköz maximális mérete <br/> (címkék, jelentett tulajdonságok és kívánt tulajdonságok) | 8 KB |
-| Az ikereszköz karakterláncértékének maximális mérete | 4 KB |
+| Az ikereszköz sztringértékének maximális mérete | 4 KB |
 | Az ikereszközben található objektum maximális mélysége | 5 |
 | A közvetlen metódus hasznos adatainak maximális mérete | 128 KB |
 | Feladatelőzmények maximális megőrzési ideje | 30 nap |
@@ -38,24 +38,24 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 
 
 > [!NOTE]
-> Ha egy Azure-előfizetésben 10-nél több fizetős IoT Hubra van szüksége, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
+> Ha az Azure-előfizetéssel 50-nél több fizetős IoT hubra van szüksége, forduljon a Microsoft ügyfélszolgálatához.
 
 
 > [!NOTE]
-> Csatlakozhat egy IoT-központ eszközök maximális számát jelenleg 500 000 értéket. Ha azt szeretné, a korlát növeléséhez, forduljon a [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Jelenleg az egyetlen IoT hubra csatlakozhat eszközök maximális száma 500 000 el. Ha ezt a korlátot növelni szeretné, lépjen kapcsolatba [Support](https://azure.microsoft.com/support/options/).
 
 Az IoT Hub szolgáltatás szabályozza a kéréseket az alábbi kvóták átlépése esetén:
 
 | Szabályozás | Kötegenkénti érték |
 | --- | --- |
-| Identitásjegyzék műveletei <br/> (létrehozás, lekérdezés, listázás, frissítés, törlés), <br/> egyéni vagy tömeges importálás/exportálás |83.33/sec/Unit (5000 min/egységenként) (a S3) <br/> 1.67/sec/Unit (100 perc/egységenként) (a S1 és S2). |
+| Identitásjegyzék műveletei <br/> (létrehozás, lekérdezés, listázás, frissítés, törlés), <br/> egyéni vagy tömeges importálás/exportálás |83.33/sec/Unit (5000/perc/egység) (az S3 esetén) <br/> 1.67/sec/Unit (100/perc/egység) (az S1 és S2 esetén). |
 | Eszközkapcsolatok |6000/mp/egység (S3 esetén), 120/mp/egység (S2 esetén), 12/mp/egység (S1 esetén). <br/>Legalább 100/mp. |
 | Az eszközről a felhőbe irányuló küldések |6000/mp/egység (S3 esetén), 120/mp/egység (S2 esetén), 12/mp/egység (S1 esetén). <br/>Legalább 100/mp. |
-| Küldések a felhőből az eszközökre | 83.33/sec/Unit (5000/perc/egysége) (S3), 1.67/sec/unit (100 perc/egységenként) (a S1 és S2). |
-| Fogadások a felhőből az eszközökön |833.33/sec/Unit (50000/perc/egysége) (S3), 16.67/sec/unit (1000/perc / (S1 és) egység S2). |
-| Fájlfeltöltési műveletek |83.33 fájl feltöltése értesítések/mp/egység (5000/perc/egysége) (S3), 1.67 fájl feltöltése értesítések/mp / (100 perc/egységenként) (S1 és egység S2). <br/> Egy Azure Storage-tárfiók esetén egyszerre 10000 SAS URI lehet használatban.<br/> Eszközönként egyszerre 10 SAS URI lehet használatban. |
-| Közvetlen metódusok | 24MB/s/egységet (S3), (az S1) 160KB/s/egység 480KB/s/egységet (S2),<br/> 8 KB-os sávszélesség-szabályozás mérő mérete alapján. |
+| Küldések a felhőből az eszközökre | 83.33/sec/Unit (5000/perc/egység) (S3 esetén), 1.67/sec/unit (100/perc/egység) (az S1 és S2 esetén). |
+| Fogadások a felhőből az eszközökön |833.33/sec/Unit (50000/perc/egység) (S3 esetén), 16.67/sec/unit (1000/perc/egység) (S1 és S2 esetén). |
+| Fájlfeltöltési műveletek |83.33 fájlfeltöltési értesítés/mp/egység (5000/perc/egység) (S3 esetén), 1.67 fájl feltöltése értesítések/mp/egység (100/perc/egység) (az S1 és S2 esetén). <br/> Egy Azure Storage-tárfiók esetén egyszerre 10000 SAS URI lehet használatban.<br/> Eszközönként egyszerre 10 SAS URI lehet használatban. |
+| Közvetlen metódusok | 24MB/mp/egység (S3 esetén), 480KB/mp/egység (s2 esetén), 160KB/mp/egység (S1 esetén)<br/> A 8 KB-os szabályozás mérőszám mérete alapján. |
 | Ikereszköz-olvasások | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (S2 esetén), 10/mp (S1 esetén) |
 | Ikereszköz-frissítések | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (S2 esetén), 10/mp (S1 esetén) |
-| Feladatműveletek <br/> (létrehozás, frissítés, listázás, törlés) | 83.33/sec/Unit (5000/perc/egysége) (S3), 1.67/sec/unit (100 perc/egységenként) (az S2), 1.67/sec/unit (100 perc/egységenként) (a S1) |
+| Feladatműveletek <br/> (létrehozás, frissítés, listázás, törlés) | 83.33/sec/Unit (5000/perc/egység) (S3 esetén), 1.67/sec/unit (100/perc/egység) (az S2 esetén), 1.67/sec/unit (100/perc/egység) (az S1 esetén) |
 | Feladatok eszközönkénti műveleti teljesítménye | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (S2 esetén), 10/mp (S1 esetén) |

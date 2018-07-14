@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 07/13/2018
 ms.author: babanisa
-ms.openlocfilehash: f3541fb3dbca6243f6c10611aa968603745f97a1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 41e7be80eb67deaf7a8189aa0d9f62c48b88799a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38314433"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036237"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents-séma használata az Event GRID használatával
 
@@ -74,8 +74,6 @@ CloudEvents v0.1 érhető el a következő tulajdonságokkal rendelkezik:
 További információkért lásd: a [CloudEvents specifikációja](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
 ## <a name="configure-event-grid-for-cloudevents"></a>Event Grid CloudEvents konfigurálása
-
-Jelenleg az Azure Event Grid rendelkezik előzetes CloudEvents JSON formátumú bemeneti támogatása és a kimeneti **USA nyugati középső Régiója**, **USA középső RÉGIÓJA**, és **Észak-Európa**.
 
 Event Grid bemeneti és kimeneti események CloudEvents-séma is használható. CloudEvents rendszer események, például a Blob Storage-események és az IoT Hub-események és az egyéni eseményeket is használhat. Ez a hálózati oda-vissza események át is alakíthatja.
 

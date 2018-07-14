@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 1ba9f827abeb0c0cf6430089e1fb504288550737
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 8779600f2c85a8bb309f7b2a8874608170de8877
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900463"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035241"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>A virtuális gép konfigurálása méretezési Felügyeltszolgáltatás-identitás (MSI) az Azure portal használatával
 
@@ -56,7 +56,7 @@ Ahhoz, hogy a rendszer hozzárendelt identitás eredetileg anélkül, hogy üzem
 
 3. A virtuális gépen a rendszer által hozzárendelt identitással engedélyezése "Igen" kiválasztásával "Managed service identity" alatt, és kattintson a **mentése**. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
 
-   [![Konfiguráció lap képernyőképe](../media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](../media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
+   [![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
 
 ## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>Felügyeltszolgáltatás-identitás eltávolítása egy Azure-beli virtuálisgép-méretezési csoportot
 
@@ -68,7 +68,7 @@ Ha egy virtuális gép méretezési csoportot, amely már nem kell egy olyan MSI
 
 3. Tiltsa le a rendszer, ha a "Nem", "Managed service identity" alatt a virtuális gép identitásának hozzárendelte, majd kattintson a Mentés gombra. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
 
-   ![Konfiguráció lap képernyőképe](../media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)  
+   ![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)  
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 

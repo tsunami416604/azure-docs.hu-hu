@@ -1,6 +1,6 @@
 ---
-title: A kiadási jegyzetek az Application Insights |} Microsoft Docs
-description: Központi telepítés hozzáadása, vagy összeállíthatja a metrikák explorer diagramokat az Application Insightsban való jelölőket.
+title: Kiadási jegyzetek az Application Insights |} A Microsoft Docs
+description: Központi telepítés hozzáadása, vagy létrehozhatja a mérőszámdiagramok explorer az Application Insights jelölőket.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,82 +13,82 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: fb4bcd57062017c0d7ee802ba1f46660476f6af2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 056716e243980f0a8aadc1ff7e9b8776809ad88e
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293435"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036397"
 ---
-# <a name="annotations-on-metric-charts-in-application-insights"></a>Az Application Insightsban metrika diagramok jegyzetek
-A jegyzetek [Metrikaböngésző](app-insights-metrics-explorer.md) diagramok megjelenítése, amelyen rendszerbe van állítva egy új buildverziót, vagy más jelentős esemény történt. Akkor könnyen látható, hogy a módosítások volt-e az alkalmazás teljesítményére hatással. Ezek automatikusan létrehozhatók a [Visual Studio Team Services rendszer build](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Jegyzeteket, tetszés szerint mindenképpen jelzőt is létrehozhat [hozza létre őket a Powershellből](#create-annotations-from-powershell).
+# <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a mérőszám-diagramok, az Application insights szolgáltatásban
+A jegyzetek [Metrikaböngésző](app-insights-metrics-explorer.md) diagramok megjelenítése, amelybe telepítette egy új létrehozást, vagy egyéb jelentős esemény történt. Vállalnak könnyen látható-e a módosítások volt-e az alkalmazás teljesítményére gyakorolt hatását. Ezek automatikusan létrehozhatók a [Visual Studio Team Services build rendszer](https://docs.microsoft.com/vsts/pipelines/tasks/). Is létrehozhat, hogy ez a jelző azt tetszés szerint bármilyen eseményre [hozza létre őket a PowerShell](#create-annotations-from-powershell).
 
-![Kiszolgáló válaszideje látható korrelációban állnak a jegyzetek – példa](./media/app-insights-annotations/00.png)
+![Jegyzetek kiszolgálói válaszidő látható korrelációkereséssel – példa](./media/app-insights-annotations/00.png)
 
 
 
 ## <a name="release-annotations-with-vsts-build"></a>Kiadási jegyzetek a VSTS-build
 
-Kiadási jegyzetek a felhő alapú build szolgáltatása, és felszabadíthatja a Visual Studio Team Services szolgáltatás. 
+Kiadási jegyzetek érhetők el a felhő alapú build és kiadás tartalmazza a Visual Studio Team Services szolgáltatást. 
 
-### <a name="install-the-annotations-extension-one-time"></a>A jegyzetek (egyszer) bővítményének telepítése
-Nem fogja tudni kiadási jegyzetek írására, lesz szüksége a Visual Studio piactéren elérhető számos Team Service kiterjesztések telepítéséhez.
+### <a name="install-the-annotations-extension-one-time"></a>A jegyzetek bővítmény (egyszer) telepítése
+Kiadási jegyzetek lehessen kell telepíteni az egyik rendelkezésre álló számos Team Services bővítmény a Visual Studio-piactéren.
 
 1. Jelentkezzen be a [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) projekt.
-2. A Visual Studio piactéren [a kiadási jegyzetek bővítmény](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations), és adja hozzá a Team Services-fiókhoz.
+2. A Visual Studio-piactéren [a kiadási jegyzetek bővítmény beszerzése](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations), és adja hozzá a Team Services-fiók.
 
-![At Team Services weblap, nyissa meg piactér jobb felső. Jelölje ki Visual Team Services és a Build és verziószám, válassza lásd: több.](./media/app-insights-annotations/10.png)
+![At leggyakoribb jobb oldalán a Team Services weblapot, nyissa meg a piactéren. Válassza ki a vizuális Team Services és a Build és kiadás, válassza a több megjelenítése.](./media/app-insights-annotations/10.png)
 
-Csak szüksége erre egyszer a Visual Studio Team Services-fiókját. Kiadási jegyzetek a projektre a fiókját most konfigurálhatók. 
+Csak akkor kell elvégeznie egyszer a Visual Studio Team Services-fiókjához. Kiadási jegyzetek mostantól konfigurálható úgy, hogy minden projekt-fiókjában található. 
 
 ### <a name="configure-release-annotations"></a>Kiadási jegyzetek konfigurálása
 
-Minden VSTS kiadási sablon külön API-kulcs csatlakoztatni kell.
+Szeretne egy különálló, minden VSTS-kiadási sablon API-kulcs beszerzése.
 
-1. Jelentkezzen be a [Microsoft Azure portál](https://portal.azure.com) , és nyissa meg az Application Insights-erőforrást, amely az alkalmazás figyeli. (Vagy [létrehozhat egy tárhelyet](app-insights-overview.md), ha még nem tette meg még.)
+1. Jelentkezzen be a [a Microsoft Azure Portal](https://portal.azure.com) , és nyissa meg az Application Insights-erőforrást, amely az alkalmazás figyelésére. (Vagy [hozzon létre egyet most](app-insights-overview.md), ha még nem tette,.)
 2. Nyissa meg **API-hozzáférés**, **Application Insights azonosító**.
    
-    ![A portal.azure.com nyissa meg az Application Insights-erőforrást, majd válassza a beállítások. Nyissa meg az API-hozzáférést. Másolja át az Alkalmazásazonosítót](./media/app-insights-annotations/20.png)
+    ![A Portal.Azure.com címen nyissa meg az Application Insights-erőforrást, és kattintson a beállítások. Nyissa meg az API-hozzáférés. Az Alkalmazásazonosító másolása](./media/app-insights-annotations/20.png)
 
-4. Egy külön böngészőablakban nyissa meg a (vagy hozzon létre) a kiadási sablon, amely a központi telepítések a Visual Studio Team Services kezeli. 
+4. Egy külön böngészőablakot nyissa meg a (vagy hozzon létre), amely kezeli a központi telepítések a Visual Studio Team Services a kiadási sablon. 
    
-    Adjon hozzá egy feladatot, és válassza ki az Application Insights kiadási Megjegyzés feladatot a menüből.
+    Adjon hozzá egy feladatot, és válassza ki az Application Insights kiadási jegyzet feladat a menüből.
    
-    Beillesztés a **alkalmazásazonosító** API-hozzáférés paneljén másolt.
+    Illessze be a **alkalmazásazonosító** , az API-hozzáférés panelen fájlból kimásolt.
    
-    ![A Visual Studio Team Services nyissa meg a kiadási válassza ki a kiadási definícióját, kattintson a Szerkesztés. A feladat hozzáadása gombra, és válassza ki az Application Insights kiadási megjegyzés. Illessze be az Application Insights azonosítóját.](./media/app-insights-annotations/30.png)
-4. Állítsa be a **APIKey** mező egy változóhoz `$(ApiKey)`.
+    ![A Visual Studio Team Services kiadási nyissa meg, válassza ki a kiadási definíció, és válassza a Szerkesztés. Feladat hozzáadása gombra, és válassza ki az Application Insights kiadási jegyzet. Illessze be az Application Insights-azonosítót.](./media/app-insights-annotations/30.png)
+4. Állítsa be a **apikey tulajdonsággal végzett tesztelése** mezőt egy változó `$(ApiKey)`.
 
 5. Az Azure ablakban hozzon létre egy új API-kulcsot, és igénybe vehet egy példányát.
    
-    ![Az API-hozzáférés az Azure ablak panelen kattintson az API-kulcs létrehozása. Adja meg a megjegyzést, ellenőrizze az írási jegyzeteket és kattintson a kulcs létrehozása. Az új kulcs másolása.](./media/app-insights-annotations/40.png)
+    ![Az API-hozzáférés panelen az Azure ablakban kattintson az API-kulcs létrehozása. Adja meg a megjegyzést, ellenőrizze az írási jegyzetek, és kattintson a kulcs létrehozása. Másolja ki az új kulccsal.](./media/app-insights-annotations/40.png)
 
-6. Nyissa meg a kiadási sablon konfiguráció lapon.
+6. Kiadási sablon a konfigurációs lap megnyitásához.
    
-    Hozzon létre egy változó definíciója `ApiKey`.
+    Hozzon létre a változó definícióját `ApiKey`.
    
-    Illessze be az API-kulcs a ApiKey változó definícióját.
+    Illessze be a apikey tulajdonsággal végzett tesztelése változó definícióját az API-kulcsát.
    
-    ![A Team Services ablakban jelölje ki a konfiguráció lapon, és kattintson a változó hozzáadása. Állítsa be a nevét, ApiKey és az értéke, illessze be az imént létrehozott kulcs, és kattintson a lakat ikon.](./media/app-insights-annotations/50.png)
-7. Végezetül **mentése** kiadás meghatározása.
+    ![A Team Services ablakban válassza ki a konfigurációs lapon, és kattintson a változó hozzáadása. Állítsa be a nevét, apikey tulajdonsággal végzett tesztelése, és az érték, illessze be az imént létrehozott kulcsot, és kattintson a lakat ikonra.](./media/app-insights-annotations/50.png)
+7. Végül **mentése** a kiadási definíció.
 
 
-## <a name="view-annotations"></a>Jegyzetek megtekintése
-Most a kiadás sablon telepítése új kiadását használja, a jegyzet az Application insights kapnak. A jegyzetek a Metrikaböngészőben diagramok jelenik meg.
+## <a name="view-annotations"></a>Megjegyzések megjelenítése
+Most, amikor a kiadási sablon használatával telepít egy új kiadás, jegyzet küld az Application Insightsba. A jegyzetek a Metrikaböngésző diagram fog megjelenni.
 
-Kattintson a bármely jegyzet jelölő nyissa meg a kiadást, beleértve a kérelmező, forrás vezérlő fiókirodai részletei, meghatározására, a környezet és több kiadási.
+Kattintson bármely jelölőt, nyissa meg a kiadott, beleértve a kérelmező, forráságat vezérlő részleteit a, a kiadási definíció, a környezet és más.
 
-![Kattintson a kiadási Megjegyzés jelölő.](./media/app-insights-annotations/60.png)
+![Kattintson bármely kiadási jelölőt.](./media/app-insights-annotations/60.png)
 
-## <a name="create-custom-annotations-from-powershell"></a>Hozzon létre egyéni jegyzetek a Powershellből
-Jegyzetek e folyamat (nélkül használja a Visual STUDIO Team System) is létrehozhat. 
+## <a name="create-custom-annotations-from-powershell"></a>Egyéni jegyzetek létrehozása PowerShellben
+Jegyzetek (használata a VS Team System) nélkül szeretné valamilyen folyamat is létrehozhat. 
 
 
-1. Helyi másolatot készít a [Powershell-parancsfájl a Githubról](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Helyi másolatot készít a [Powershell-parancsfájlt a Githubról](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
 
-2. Az Alkalmazásazonosító beszerzése és API-kulcs létrehozása az API-hozzáférés paneljén.
+2. Az alkalmazás Azonosítójának lekéréséhez és API-kulcs létrehozása az API-hozzáférés panelen.
 
-3. A parancsfájl ilyen hívása:
+3. Hívja a parancsfájl ehhez hasonló:
 
 ```PS
 
@@ -101,9 +101,9 @@ Jegyzetek e folyamat (nélkül használja a Visual STUDIO Team System) is létre
           "TriggerBy"="My Name" }
 ```
 
-Nem módosítja a parancsfájlt, például az előző jegyzetek írására.
+Módosítsa a parancsfájlt, például az elmúlt jegyzetek könnyebbé vált a.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Munkaelemek létrehozása](app-insights-diagnostic-search.md#create-work-item)
-* [Automatizálása a PowerShell](app-insights-powershell.md)
+* [Munkaelem létrehozása](app-insights-diagnostic-search.md#create-work-item)
+* [Automatizálás a PowerShell-lel](app-insights-powershell.md)

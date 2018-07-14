@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e01e4c397e0d0a19280a32fc1e8341b57b47e4eb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1af9770fa899a03e6e3514c539c511ba26fdced4
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38610383"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036380"
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>Egy felhasználó által hozzárendelt Felügyeltszolgáltatás-identitás (MSI) konfigurálja a virtuális gépek, Azure-sablon használatával
 
@@ -52,7 +52,7 @@ A lehetőséget választja, függetlenül a sablon szintaxisa megegyezik kezdeti
    > Ez a példa feltételezi, hogy változók például `vmName`, `storageAccountName`, és `nicName` van definiálva a sablonban.
    >
 
-   ![Képernyőkép a sablonhoz: keresse meg a virtuális gép](~/articles/active-directory/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
+   ![Képernyőkép a sablonhoz: keresse meg a virtuális gép](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
 3. Adja hozzá a `"identity"` tulajdonság azonos szinten, a `"type": "Microsoft.Compute/virtualMachines"` tulajdonság. Az alábbi szintaxissal:
 
@@ -92,7 +92,7 @@ A lehetőséget választja, függetlenül a sablon szintaxisa megegyezik kezdeti
 
 5. Ha elkészült, a sablon az alábbihoz hasonlóan kell kinéznie:
 
-   ![Képernyőkép a frissítés után a sablon](~/articles/active-directory/media/msi-qs-configure-template-windows-vm/template-file-after.png) 
+   ![Képernyőkép a frissítés után a sablon](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-after.png) 
 
 ## <a name="remove-msi-from-an-azure-vm"></a>Egy Azure virtuális gép MSI eltávolítása
 

@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96ca5a7ec8b0c87984ea2c76af446d7a8b5504a1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 96a0443a66bb826496c6af42fe6479c0a53ac964
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344300"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036084"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Hozzon létre egy Windows IoT Edge-eszköz, amely transzparens átjáróként
 
@@ -22,8 +22,8 @@ Ez a cikk részletes utasításokat a transzparens átjáróként IoT Edge-eszk�
 >[!NOTE]
 >Jelenleg:
 > * Ha az átjáró nem csatlakozik az IoT hubról, alsóbb rétegbeli eszközök az átjáró nem tudja hitelesíteni.
-> * IoT Edge-eszközökön nem lehet csatlakozni az IoT Edge-átjáró.
-> * Alsóbb rétegbeli eszközök nem használható a fájl feltöltése.
+> * Edge-kompatibilis eszközök IoT Edge-átjáró nem tud kapcsolódni. 
+> * Alsóbb rétegbeli eszközök fájl feltöltése nem használható.
 
 Transzparens átjáró létrehozása a rögzített rész biztonságos összekapcsolása az alsóbb rétegbeli eszközök átjárót. Az Azure IoT Edge lehetővé teszi, hogy ezek az eszközök közötti biztonságos TLS-kapcsolatok beállítása a PKI-infrastruktúra használatával. Ebben az esetben azt engedélyezi egy alsóbb rétegbeli eszközök transzparens átjáróként működő IoT Edge-eszköz csatlakozni.  Ésszerű biztonságának fenntartása érdekében az alsóbb rétegbeli eszközök ellenőrizze identitását a peremhálózati eszköz, mivel csak az eszközök csatlakoztatása az átjárók és a egy potenciálisan kártékony átjáró nincs.
 
@@ -141,7 +141,7 @@ Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üze
 2. Lépjen a **IoT Edge** , és válassza ki az IoT Edge-eszközt, hogy az átjáró használni kívánt.
 3. Válassza a **Modulok beállítása** lehetőséget.
 4. Kattintson a **Tovább** gombra.
-5. Az a **útvonalak megadása** lépés, rendelkeznie kell egy alapértelmezett útvonalat, amely az összes üzenetet küld az összes modulok az IoT hubnak. Ha nem, adja hozzá a következő kódot, majd válassza ki **tovább**.
+5. Az **Útvonalak megadása** lépésben egy alapértelmezett útvonallal kell rendelkeznie, amely az összes modul összes üzenetét az IoT Hubba irányítja. Amennyiben nem így lenne, adja hozzá a következő kódot, és kattintson a **Tovább** gombra.
    ```JSON
    {
        "routes": {

@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/12/2018
 ms.author: juliako
-ms.openlocfilehash: da2df60e3111055729bbae2c6684ccbb9671272e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b62c528716d9386b9da6ddee260fd1ec382fb4a5
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007863"
+ms.locfileid: "39036785"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128, a dinamikus titkosítás és a kulcstovábbítást használata
 
 A Media Services segítségével HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming az AES-128 bites titkosítási kulcsok használatával titkosítja. A Media Services emellett a legfontosabb licenctovábbítási szolgáltatása, amely a titkosítási kulcsokat biztosít a jogosult felhasználókra. Ha azt szeretné, a Media Services az objektum titkosítására, rendelje hozzá a titkosítási kulcs StreamingLocator, és is konfigurálhatja a tartalom fő házirendet. Adatfolyam-lejátszó kér, amikor a Media Services a megadott kulcs használatával dinamikusan titkosítani az AES-titkosítás segítségével. A stream visszafejteni, az a Windows Media player a kulcs kér a kulcstovábbítást. Annak megállapításához, hogy a felhasználó jogosult kulcs lekérése, a szolgáltatás kiértékeli a tartalom a kulcshoz megadott kulcs házirend.
 
-A cikk alapján a [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) minta. A minta azt ismerteti, hogyan hozhat létre egy kódolási átalakító adaptív sávszélességű kódolási előbeállítást beépített használó, és feltölti a fájlt közvetlenül egy [HTTPs URL-cím forrás](job-input-from-http-how-to.md). A kimeneti adategység ezután közzé lesz téve, az AES (ClearKey) titkosítással. A minta kimenete az Azure Media Player, beleértve a DASH-jegyzék és az AES-jogkivonat a tartalmak lejátszásához szükséges URL-címe. A minta a JWT jogkivonat lejáratának 1 órás értékre állítja. Nyisson meg egy böngészőt, és illessze be az Azure Media Player demó oldal URL-cím és az Ön számára már kitöltött jogkivonat elindításához megjelenő URL-cím (a következő formátumban: ``` https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.)
+A cikk alapján a [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) minta. A minta azt ismerteti, hogyan hozhat létre egy kódolási átalakító adaptív sávszélességű kódolási előbeállítást beépített használó, és feltölti a fájlt közvetlenül egy [HTTPs URL-cím forrás](job-input-from-http-how-to.md). A kimeneti adategység ezután közzé lesz téve, az AES (ClearKey) titkosítással. A minta kimenete az Azure Media Player, beleértve a DASH-jegyzék és az AES-jogkivonat a tartalmak lejátszásához szükséges URL-címe. A minta a JWT jogkivonat lejáratának 1 órás értékre állítja. Nyisson meg egy böngészőt, és illessze be a megjelenő URL-cím, indítsa el az Azure Media Player demó oldal URL-cím és jogkivonat automatikusan kitölti már a következő formátumban: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
 
 > [!NOTE]
 > Minden eszközhöz több titkosítási típusok (AES-128, a PlayReady, Widevine, FairPlay) használatával titkosítsa. Lásd: [Streamelési protokollok és a titkosítási típusok](content-protection-overview.md#streaming-protocols-and-encryption-types), mi értelme úgy, hogy megtekintéséhez.

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: ed87b3c935fe4032460f8e524f963355fb3157d9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e7c6c8d017e4371919088ec414d3108939ca4a19
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970301"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036254"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>A prediktív karbantartási megoldásgyorsító áttekintése
 
@@ -35,11 +35,11 @@ A szürke elemek az *eszközfelügyeleti* képességeket megvalósító összete
 
 A kiépített erőforrások megtekintéséhez az Azure Portalon keresse meg a kiválasztott megoldásnévvel rendelkező erőforráscsoportot.
 
-![][img-resource-group]
+![Gyorsító erőforrások][img-resource-group]
 
-A megoldásgyorsító kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. A Machine Learning-munkaterületet is elérheti a [azureiotsolutions.com] [ lnk-azureiotsuite] lap a kiépített megoldáshoz. Amikor a megoldás **Kész** állapotban van, elérhetővé válik egy csempe ezen az oldalon.
+A megoldásgyorsító kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. A Machine Learning-munkaterületet is elérheti a [a Microsoft Azure IoT-Megoldásgyorsítók] [ lnk-azureiotsuite] lap a kiépített megoldáshoz. Amikor a megoldás **Kész** állapotban van, elérhetővé válik egy csempe ezen az oldalon.
 
-![][img-machine-learning]
+![Machine learning-modell][img-machine-learning]
 
 ## <a name="simulated-devices"></a>Szimulált eszközök
 

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ca25aaefee6c9746ff79bdca7668b510df9ac6c3
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 11d96ce0c92916e1975e0cb403aabf057ab8b825
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002041"
+ms.locfileid: "39036829"
 ---
 # <a name="how-to-record-voice-samples-for-a-custom-voice"></a>Hogyan lehet egyéni beszédfelismerési rögzítése a voice-minták
 
@@ -93,7 +93,7 @@ Alapvető parancsprogram formátum három oszlopot tartalmazza:
 ![Példaszkript](media/custom-voice/script.png)
 
 > [!NOTE]
-> A legtöbb studios rögzítse röviden szegmensek, nevén a "időt vesz igénybe," minden ttake ypically tartalmazó tíz – 24 kimondott szöveg. A lekérési szám csak megállapítva később egy adott utterance található megfelelő lesz. Néhány studios érdemesebb hosszabb felvételek. Ebben az esetben érdemes megjegyezni a idő eltolása (az idő a kódban) fájlba. A studio egy neves idő megjelenítése fog rendelkezni.
+> A legtöbb studios rövid jegyezze fel a szegmenseket, a továbbiakban "vesz igénybe," minden időt vesz igénybe, amely általában a tíz – 24 kimondott szöveg. A lekérési szám csak megállapítva később egy adott utterance található megfelelő lesz. Néhány studios hosszabb felvételek előfordulhat, hogy inkább. Ebben az esetben érdemes megjegyezni a idő eltolása (az idő a kódban) fájlba. A studio egy neves idő megjelenítése fog rendelkezni.
 
 Után minden sort írhat jegyzeteket, hagyja elég hely. Győződjön meg arról, hogy nincs utterance (kifejezés) oldalai között van felosztva. A lapok számát, és nyomtassa ki a parancsfájl a papír oldalán.
 
@@ -105,7 +105,7 @@ Szerzői jogi szerzői jogvédelem alatt álló szöveg egy szereplő olvasási 
 
 Szerencsére a lehetőség a problémák teljes egészében elkerülése érdekében. Nincsenek számos forrásból szöveg engedéllyel vagy licenc nélkül is használhatja.
 
-|||
+|Szöveg forrás|Leírás|
 |-|-|
 |[CMU tavi forrásgyűjteményébe](http://festvox.org/cmu_arctic/)|Kifejezetten a speech összefoglaló projektekben használható out-az-szerzői jogok a kiválasztott készül 1100 mondatokat. Egy remek kiindulási pont.|
 |Már nem működik.<br>a szerzői jogi|Általában works 1923 előtt közzé. Angol nyelven projekt Gutenberg kínál több ezer, az ilyen működik. Előfordulhat, hogy szeretné, a nyelv modern angol közelebb lesz újabb works összpontosíthat.|
@@ -129,7 +129,7 @@ Használjon szánt rögzítése a voice studio magas színvonalú hűtő mikrofo
 
 Egy analóg mikrofon is használhatja. Számos bérleti házak "szüreti" mikrofonok elismert a hangalapú karakter kínálnak. Vegye figyelembe, hogy szakmai analóg fogaskerék elosztott terhelésű XLR összekötőket használ, nem pedig az 1/4" csatlakoztassa a fogyasztói berendezések használt. Ha analóg, is szüksége lesz egy preamp és a egy számítógép hang felületen ezeket az összekötőket.
 
-A mikrofon telepíthet bővíteni vagy bumm, és a mikrofon frot pop szűrő használatával "plosive" hangzás "p" és "b". a háttérzaj kiküszöbölése Néhány mikrofonok, amely elkülöníti azokat a rezgés bővíteni, ami hasznos lehet a felfüggesztés csatlakoztatási kapható.
+A mikrofon telepítése egy önálló vagy bumm, és a mikrofon elé pop szűrő használatával "plosive" hangzás "p" és "b". a háttérzaj kiküszöbölése Néhány mikrofonok, amely elkülöníti azokat a rezgés bővíteni, ami hasznos lehet a felfüggesztés csatlakoztatási kapható.
 
 A szóbeli szakembereket a mikrofon konzisztens távolságra kell maradnia. Az emelet a szalag használatával, üzembe kell megjelölni. Szeretném a szakembereket részesíti előnyben, különös gondot mic távolság figyelése, és elkerülheti az elnöki zaj igénybe vehet.
 
@@ -144,7 +144,7 @@ A "érzékelőadatainak," zaj ahol származik, és az OK kiküszöbölése vizsg
 > [!TIP]
 > Bizonyos esetekben előfordulhat, hogy kell segítségével egy hangszínszabályzó vagy egy zaj csökkentésére szoftverfrissítési beépülő modul zaj eltávolítása felvételeit, bár minden esetben célszerű állítsa le a forrásban, amikor csak lehetséges.
 
-A legtöbb digitális felvétel elérhető dinamikus tartományának be torzulást overdriving nélkül történik, így szintek kell beállítani. Ez azt jelenti, hangos lejátszásra, de nem így hangos, hogy a hanganyag eltorzítják. Alább egy példát a helyes felvétel hullám van.
+A legtöbb digitális felvétel elérhető dinamikus tartományának overdriving nélkül történik, így szintek kell beállítani. Ez azt jelenti, hangos lejátszásra, de nem így hangos, hogy a hanganyag eltorzítják. Alább egy példát a helyes felvétel hullám van.
 
 ![jó felvétel hullám](media/custom-voice/good-recording.png)
 
@@ -172,13 +172,13 @@ Közvetlenül a szakembereket a jelszórészek mondjuk ki szavakat. A parancsfá
 |soha nem szeretné, hogy Ön|soha nem szeretné, hogy Ön|
 |négy jelzőfény|ott van a négy lámpa|
 |hogyan alakul mai időjárás|Hogyan történik az adatok "mai időjárás|
-|a kis pony|saját lil "pony|
+|a kis barátjának búcsút|Tegyük fel, saját lil hello "typu friend|
 
 Szakembereket kell *nem* adja hozzá a szavak közötti különböző szünetel. A mondat továbbra is áramlásának magától értetődő, kevés formális riasztások hang közben is. Ezt a gondot megkülönböztetést kellhet bizonyos gyakorlatot is igénybe vehet.
 
 ### <a name="the-recording-session"></a>A rögzítési munkamenet
 
-Hozzon létre egy felvételt, referencia vagy *egyezés fájlt,* egy tipikus utterance (kifejezés), a munkamenet elején annak. Kérje meg a szakembereket, ismételje meg ezt a sort, vagy minden lapon és a egy fél, és hasonlítsa össze az új rögzítés-referenciáját. Ez segít a szakembereket a kötet, tempo, központi felébresztve és felébresztve csúcs és valley konzisztens marad. Eközben a mérnök használhatja az egyezés fájl hivatkozásként van listázva szinteket és az e hang. 
+Hozzon létre egy felvételt, referencia vagy *egyezés fájlt,* egy tipikus utterance (kifejezés), a munkamenet elején annak. Kérje meg a szakembereket, ismételje meg ezt a sort, vagy minden lapon és a egy fél. Minden alkalommal, amikor, hasonlítsa össze az új rögzítés-referenciáját. Ezzel a módszerrel a szakembereket a kötetet, tempo, lényegét és intonation konzisztens marad. Eközben a mérnök használhatja az egyezés fájl hivatkozásként van listázva szinteket és az e hang.
 
 A match fájl különösen fontos, amikor folytatása a felvételt, egy szünet után, vagy egy másik napon. Érdemes a szakembereket a néhányszor, lejátszásához, és ismételje meg minden egyes alkalommal, amíg nem jól megfelelő őket.
 

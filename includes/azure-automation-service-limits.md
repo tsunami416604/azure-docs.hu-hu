@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 6b6e4afa7c8b18c8ce9af8c6abd371b4321e3343
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b71e6d41dcdd7efb2d179486f9195c14dae97194
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755929"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39037745"
 ---
 | Erőforrás | Felső korlát |Megjegyzések|
 | --- | --- |---|
@@ -23,8 +23,9 @@ ms.locfileid: "38755929"
 | Modulok maximális mérete |100 MB ||
 | Feladat futtatási idő – ingyenes |előfizetés naptári hónapban 500 perc ||
 | Lemezterület védőfalat engedélyezett maximális mennyiséget**<sup>1</sup>** |1 GB |Csak Azure próbakörnyezetbe lefordítja vonatkozik|
-| A védőfal megadott memória maximális mennyisége**<sup>1</sup>** |400 MB |Csak Azure próbakörnyezetbe lefordítja vonatkozik|
-| Hálózati szoftvercsatorna védőfal engedélyezett maximális száma**<sup>1</sup>** |1000 |Csak Azure próbakörnyezetbe lefordítja vonatkozik|
+| A védőfal megadott memória maximális mennyisége  **<sup>1</sup>** |400 MB |Csak Azure próbakörnyezetbe lefordítja vonatkozik|
+| Hálózati szoftvercsatorna védőfal engedélyezett maximális száma  **<sup>1</sup>** |1000 |Csak Azure próbakörnyezetbe lefordítja vonatkozik|
+| Runbook engedélyezett maximális futásideje  **<sup>1</sup>** |3 óra |Csak Azure próbakörnyezetbe lefordítja vonatkozik|
 | Maximális száma az Automation-fiókok egy előfizetésben |Korlátlan ||
 |Maximális számú párhuzamosan futó feladatok száma, amelyek futtathat egy egyszeri hibrid Runbook-feldolgozón|50 ||
 

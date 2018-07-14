@@ -1,6 +1,6 @@
 ---
-title: Azure-készletben frissítések alkalmazása |} Microsoft Docs
-description: Megtudhatja, hogyan importálja, és telepítse a Microsoft frissítési csomagokat egy integrált Azure verem rendszer.
+title: Alkalmazza a frissítéseket az Azure Stackben |} A Microsoft Docs
+description: Ismerje meg, hogyan importálhatja, és telepítse a Microsoft frissítési csomagokat egy Azure Stackkel integrált rendszereknél.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,68 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 0f23216c6aced60dc651a0f10179281bc9a29c2c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: da8261d27ae7fad3c5ff30e4e1cce3f1bca2b70a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29802651"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035333"
 ---
-# <a name="apply-updates-in-azure-stack"></a>Azure-készletben frissítések alkalmazása
+# <a name="apply-updates-in-azure-stack"></a>Alkalmazza a frissítéseket az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-Egy Azure verem operátorként a felügyeleti portálon csempe Azure verem csomagok a frissítés használatával a Microsoft update is alkalmazhat. Kell a Microsoft update-csomag, a fájlok importálása a csomag Azure verem és majd a frissítés telepítéséhez. 
+Az Azure Stack operátorait szerint alkalmazhatja a Microsoft vagy a frissítés az Azure Stack OEM frissítési csomagokat a felügyeleti portálon csempére. Kell a frissítési csomag letöltéséhez, a csomagfájlok importálása az Azure Stackben és a frissítési csomag telepítése. 
 
-## <a name="download-the-update-package"></a>A frissítési csomag
+## <a name="download-the-update-package"></a>A frissítési csomag letöltése
 
-A Microsoft Azure verem csomag nem érhető el, töltse le a csomag egy helyre, amely elérhető Azure-vermet, és tekintse át a csomag tartalma. Frissítések jellemzően a következő fájlok áll:
+Azure Stack egy Microsoft- vagy OEM frissítési csomag nem érhető el, letölti a csomagot olyan helyre, amely az Azure Stack-ból érhetők el, és tekintse át a csomag tartalma. A következő fájlok általában tartalmaz egy frissítési csomagot:
 
-- Egy önkicsomagoló *csomagnév*.exe fájlt. Ez a fájl tartalmazza a frissítés, például a legújabb összesítő frissítéssel a Windows Server hasznos.   
-- Megfelelő *csomagnév*.bin fájlt. Ezeket a fájlokat, adja meg, amelyhez társítva van a tartalom tömörítése a *csomagnév*.exe fájlt. 
-- Metadata.xml fájlt. Ez a fájl tartalmazza a frissítés, például a közzétevő, név, előfeltétel, mérete és támogatási elérési URL-címe alapvető adatait.
+- Egy önkicsomagoló *PackageName*.exe-fájlra. Ez a fájl tartalmazza a frissítés, például a legújabb kumulatív frissítés a Windows Server hasznos.   
+- Megfelelő *PackageName*.bin fájlt. Ezeket a fájlokat, adja meg, amelyhez társítva van a tartalom tömörítése a *PackageName*.exe-fájlra. 
+- Metadata.xml fájlt. Ez a fájl tartalmazza a frissítés, például a közzétevő, név, előfeltételként szükséges szoftvert, mérete és támogatási elérési út URL-CÍMÉT alapvető adatait.
 
-## <a name="import-and-install-updates"></a>Importálja és a frissítések telepítése
+## <a name="import-and-install-updates"></a>Importálhatja és a frissítések telepítése
 
-Az alábbi eljárás bemutatja, hogyan importálását és frissítési csomagokat telepítheti a felügyeleti portálon.
+Az alábbi eljárás bemutatja, hogyan importálhatja és frissítési csomagok telepítése a felügyeleti portálon.
 
 > [!IMPORTANT]
-> Határozottan javasoljuk, hogy a karbantartási műveleteket sem felhasználók értesítése, és a normál karbantartási időszak alatt munkaidőn kívüli lehetőség szerint úgy ütemezni. A karbantartási műveleteket hatással lehet a felhasználó munkaterhelések és a portál műveletek.
+> Javasoljuk, hogy a karbantartási műveleteket felhasználók értesítése, és hogy úgy ütemezze a normál karbantartási időszakok során munkaidőn kívüli lehető legnagyobb mértékben. Karbantartási műveletek hatással lehet a felhasználó számítási feladatok és a webportálos műveletek.
 
-1. Válassza a felügyeleti portál **további szolgáltatások**. Ekkor a a **adatok + tárolás** kategória, jelölje be **tárfiókok**. (Vagy a Szűrő mezőbe kezdje el begépelni **tárfiókok**, és jelölje ki.)
+1. A felügyeleti portálon, válassza ki a **további szolgáltatások**. Ezt követően a **adatok + tárolás** kategória, jelölje be **tárfiókok**. (Vagy a szűrőmezőbe, kezdje el begépelni **tárfiókok**, és válassza ki azt.)
 
-    ![Bemutatja, hol található a tárfiók a portálon](media/azure-stack-apply-updates/ApplyUpdates1.png)
+    ![Bemutatja, hogy hol található a storage-fiókok a portálon](media/azure-stack-apply-updates/ApplyUpdates1.png)
 
-2. A Szűrő mezőbe írja be **frissítése**, és válassza ki a **updateadminaccount** tárfiók.
+2. Írja be a Szűrő mezőbe **frissítése**, és válassza ki a **updateadminaccount** storage-fiókot.
 
     ![Bemutatja, hogyan updateadminaccount keresése](media/azure-stack-apply-updates/ApplyUpdates2.png)
 
-3. A tárolóban lévő fiók részleteit, a **szolgáltatások**, jelölje be **Blobok**.
+3. A Storage-fiók részleteit, a **szolgáltatások**válassza **Blobok**.
  
-    ![Bemutatja, hogyan a tárfiók a BLOB beolvasása](media/azure-stack-apply-updates/ApplyUpdates3.png) 
+    ![Bemutatja a blobok a storage-fiók beszerzése](media/azure-stack-apply-updates/ApplyUpdates3.png) 
  
-4. A **Blob szolgáltatás**, jelölje be **+ tároló** hozhat létre tárolót. Adja meg a nevét (például *frissítés-1709*), majd válassza ki **OK**.
+4. A **Blob service**válassza **+ tároló** tároló létrehozásához. Adjon meg egy nevet (például *frissítés – 1709-es*), majd válassza ki **OK**.
  
-     ![Bemutatja, hogyan adjon hozzá egy tárolót a tárfiókban lévő](media/azure-stack-apply-updates/ApplyUpdates4.png)
+     ![Bemutatja, hogyan tároló felvétele a storage-fiókban](media/azure-stack-apply-updates/ApplyUpdates4.png)
 
-5. A tároló létrehozása után kattintson a tároló neve, majd **feltöltése** a csomagfájlok feltölteni a tárolóba.
+5. A tároló létrehozása után kattintson a tároló nevére, és kattintson **feltöltése** a csomag fájlok feltöltése a tárolóba.
  
-    ![A fájlok feltöltéséről](media/azure-stack-apply-updates/ApplyUpdates5.png)
+    ![Bemutatja, hogyan tölthet fel a csomagfájlok](media/azure-stack-apply-updates/ApplyUpdates5.png)
 
-6. A **feltöltése a blob**, a mappa ikonra, és keresse meg a frissítési csomag .exe fájlt, majd kattintson a **nyitott** a fájl explorer-ablakban.
+6. A **blob feltöltése**, kattintson a mappa ikonra, és keresse meg a frissítési csomag .exe fájlt, majd kattintson a **nyílt** a fájl explorer-ablakban.
   
-7. A **feltöltése a blob**, kattintson a **feltöltése**. 
+7. A **blob feltöltése**, kattintson a **feltöltése**. 
  
-    ![Azt minden fájl feltöltése](media/azure-stack-apply-updates/ApplyUpdates6.png)
+    ![Látható minden alkalmazáscsomag-fájl feltöltése](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. Ismételje meg a 6 és 7 a *csomagnév*.bin és Metadata.xml fájlt. A kiegészítő Notice.txt fájl nem importálható, ha tartalmazza.
-9. Ha befejezte, az értesítések (a portál jobb felső sarkában található harang ikonra) tekintheti meg. Az értesítések kell jeleznie, hogy befejeződött a feltöltés. 
-10. Lépjen vissza a frissítés csempe az irányítópulton. A csempe kell jeleznie, hogy egy frissítés érhető el. Kattintson a csempére kattintva tekintse át az újonnan hozzáadott frissítési csomag.
-11. A frissítés telepítéséhez válassza ki a csomagot, amely van megjelölve, **készen** és, vagy kattintson a jobb gombbal a csomagot, és válassza ki **frissítés most**, vagy kattintson a **frissítés most** művelet felső részén .
-12. Frissítési csomag telepítése gombra kattintva megtekintheti az állapotát a **frissítési menetnek részletek** területen. Itt is kattinthat **teljes naplók letöltéséhez** letölteni a rendszernapló fájljaiban.
-13. A frissítés befejezése után a frissítés csempe a frissített Azure verem verzióját jeleníti meg.
+8. Ismételje meg a 6 és 7 a *PackageName*állapotára vonatkozó .bin és Metadata.xml fájlt. Ha tartalmazza, ne importálja a kiegészítő Notice.txt fájlt.
+9. Ha elkészült, az értesítések (Harang ikon a portál jobb felső sarokban) tekintheti meg. Az értesítés jelzi, hogy a feltöltés befejeződött. 
+10. Lépjen vissza a frissítés csempét az irányítópulton. A csempe kell azt jelzik, hogy a frissítés érhető el. Kattintson a csempére, és tekintse át az újonnan hozzáadott frissítési csomag.
+11. Telepítheti a frissítést, válassza ki a csomagot, amely van megjelölve **készen áll** vagy kattintson a jobb gombbal a csomagot, és kattintson **frissítés most**, vagy kattintson a **frissítés most** tetejénél művelet .
+12. Frissítési csomag telepítése gombra kattint, megtekintheti az állapotát a **frissítési menetet részletek** területen. Itt is kattinthat **teljes naplók letöltéséhez** letöltéséhez a rendszernapló fájljaiban.
+13. A frissítés befejeződött, a frissítés csempét jelenít meg a frissített Azure Stack-verzió.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Kezelheti a frissítéseket a Azure verem – áttekintés](azure-stack-updates.md)
-- [Az Azure verem karbantartása házirend](azure-stack-servicing-policy.md)
+- [Kezelheti a frissítéseket az Azure Stack áttekintése](azure-stack-updates.md)
+- [Az Azure Stack karbantartási szabályzat](azure-stack-servicing-policy.md)

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: liamca
-ms.openlocfilehash: a3baa17906e3bfede8a7fc5f8a0bfbde9d2a57ce
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 24fa427ad67a953020370a16b4d156c82a0a1cf6
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951022"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036666"
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Lucene lekérdezési szintaxis példái, amellyel a lekérdezések az Azure Search szolgáltatásban
 Lekérdezések az Azure Search létrehozásánál használható vagy az alapértelmezett [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vagy a tulajdonos alternatív [Lucene lekérdezéselemző az Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). A Lucene lekérdezéselemző támogatja az összetett lekérdezési szerkezeteket, például a mező-hatáskörű lekérdezések, intelligens keresést, közelségi keresésre, időszak kiemelési és reguláris kifejezés keresése.
@@ -69,7 +69,7 @@ A megadott mező **fieldname:searchterm** kell lennie egy kereshető mező. Lás
 ## <a name="fuzzy-search-example"></a>Intelligens keresést
 Egy intelligens keresés egyezések megkeresi, hogy rendelkezik egy hasonló konstrukció. / [Lucene dokumentáció](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), az intelligens keresés alapján [Damerau-Levenshtein távolság](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
 
-Ehhez az intelligens keresést, fűzze hozzá a hullámos vonallal "~" és a egy nem kötelező paraméter, a 0. és 2 közötti értéket, amely megadja a Szerkesztés egyetlen szó végén szimbólum. Például "blue ~" vagy "kék ~ 1" termékazonosítóhoz kék blues és integrációs.
+Ehhez az intelligens keresést, fűzze hozzá a hullámos vonallal `~` szimbólum egy egyetlen szó, és a egy nem kötelező paraméter, a 0. és 2 közötti értéket, amely megadja a Szerkesztés végén. Ha például `blue~` vagy `blue~1` kék blues és integrációs adna vissza.
 
 **3. példa** – kattintson a jobb gombbal a következő lekérdezési kódrészletet. Ez a lekérdezés átvizsgálja a kifejezés társult (ahol, hibásan van megadva) rendelkező feladatok:
 

@@ -14,33 +14,41 @@ ms.topic: article
 ms.date: 07/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: e2785b0beeab042d4b1ad9a9eb5f545dbb58b8b9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 09d5842f349917be0e5d94d919b0e9630347284b
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38487501"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035479"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Az Azure Stack PowerShell telepítése
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure Stack kompatibilis az Azure PowerShell-modulok használata az Azure Stack van szükség. Az útmutató részletesen az Azure stack PowerShell telepítéséhez szükséges lépéseket.
+Az Azure Stack kompatibilis az Azure PowerShell-modulok használata az Azure Stack van szükség. Az útmutató részletesen az Azure stack PowerShell telepítéséhez szükséges lépéseket. Az alábbi lépéseket az internetkapcsolattal rendelkező környezetek vonatkozik. A leválasztott környezetekhez a lap alján görgessen.
 
 Ez a cikk az Azure Stack PowerShell telepítésének útmutatója részletesen.
 
 > [!Note]  
-> Az alábbi lépéseket a PowerShell 5.0 szükséges. A verzió ellenőrzéséhez futtassa a $PSVersionTable.PSVersion, és hasonlítsa össze a **fő** verzió.
+> Az alábbi lépéseket igényelnek legalább PowerShell 5.0-s. A verzió ellenőrzéséhez futtassa a $PSVersionTable.PSVersion, és hasonlítsa össze a **fő** verzió. Ha nem rendelkezik a PowerShell 5.0, kövesse a [hivatkozás](https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) frissítése a PowerShell 5.0-s.
 
 Azure Stack PowerShell-parancsokat a PowerShell-galériából keresztül telepíti. Az alábbi eljárás segítségével ellenőrizheti, hogy a PSGallery regisztrálva van, mint a tárház, nyisson meg egy rendszergazda jogú PowerShell-munkamenetet, és futtassa a következő parancsot:
 
-```PowerShell  
+```PowerShell
+#requires -Version 5
+#requires -RunAsAdministrator
+#requires -Module PowerShellGet
+
+Import-Module -Name PowerShellGet -ErrorAction Stop
+Import-Module -Name PackageManagement -ErrorAction Stop 
+
 Get-PSRepository -Name "PSGallery"
 ```
 
 Ha a tárház nincs regisztrálva, nyisson meg egy rendszergazda jogú PowerShell-munkamenetet, és futtassa a következő parancsot:
 
-```PowerShell  
+```PowerShell
+Register-PsRepository -Default
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 ```
 > [!Note]  
@@ -97,24 +105,22 @@ Leválasztott forgatókönyvekben először töltse le a PowerShell-modulok olya
 
 1. Jelentkezzen be egy számítógépre, ahol nincs internetkapcsolat, és használja a következő szkriptet az AzureRM letöltése és AzureStack csomagok a helyi számítógépre:
 
-   ```PowerShell  
+   ```PowerShell 
+  #requires -Version 5
+  #requires -RunAsAdministrator
+  #requires -Module PowerShellGet
+  #requires -Module PackageManagement
+  
+  Import-Module -Name PowerShellGet -ErrorAction Stop
+  Import-Module -Name PackageManagement -ErrorAction Stop
+
    $Path = "<Path that is used to save the packages>"
 
-   Save-Package `
-     -ProviderName NuGet `
-     -Source https://www.powershellgallery.com/api/v2 `
-     -Name AzureRM `
-     -Path $Path `
-     -Force `
-     -RequiredVersion 1.2.11
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 `
+     -Name AzureRM -Path $Path -Force -RequiredVersion 1.2.11
 
-   Save-Package `
-     -ProviderName NuGet `
-     -Source https://www.powershellgallery.com/api/v2 `
-     -Name AzureStack `
-     -Path $Path `
-     -Force `
-     -RequiredVersion 1.3.0 
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 `
+     -Name AzureStack -Path $Path -Force -RequiredVersion 1.3.0 
    ```
 
   > [!Important]  
@@ -127,19 +133,19 @@ Leválasztott forgatókönyvekben először töltse le a PowerShell-modulok olya
 4. Most kell ezen a helyen az alapértelmezett tárház regisztrálásához és a tárházból az AzureRM- és az AzureStack modulok telepítéséhez:
 
    ```PowerShell
+   #requires -Version 5
+   #requires -RunAsAdministrator
+   #requires -Module PowerShellGet
+   #requires -Module PackageManagement
+
    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
    $RepoName = "MyNuGetSource"
 
-   Register-PSRepository `
-     -Name $RepoName `
-     -SourceLocation $SourceLocation `
-     -InstallationPolicy Trusted
+   Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation  -InstallationPolicy Trusted
 
-   Install-Module AzureRM `
-     -Repository $RepoName
+   Install-Module AzureRM -Repository $RepoName
 
-   Install-Module AzureStack `
-     -Repository $RepoName 
+   Install-Module AzureStack -Repository $RepoName 
    ```
 
 ## <a name="configure-powershell-to-use-a-proxy-server"></a>Proxykiszolgáló használata a PowerShell konfigurálása

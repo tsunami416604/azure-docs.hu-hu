@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/05/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: abf10177f8ce86309043da92d1f2b690775b6d89
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-ms.translationtype: HT
+ms.openlocfilehash: f203e056df00fb1a9b1e7e43930955040dfce4aa
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37909912"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39029990"
 ---
 Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infrastruktúra megbízhatóságának, teljesítményének és biztonságának javítása érdekében. Ezek a frissítések a futtatókörnyezet szoftverösszetevőinek (például az operációs rendszer, a hipervizor és a gazdagépen telepített különböző ügynökök) javítását, a hálózati összetevők frissítését és a hardverek leszerelését takarják. Ezek a frissítések a legtöbb annak hatását a futtatott virtuális gépek működésére. Előfordulhatnak azonban olyan esetekben, amikor frissítések hatással:
 
@@ -21,9 +21,9 @@ Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infr
 
 - Ha karbantartási újraindítás szükséges, egy értesítés, amikor a karbantartás tervezett kap. Ezekben az esetekben meg fogjuk is kell adni egy olyan időkeretet, ahol elkezdheti a karbantartási feladattal saját maga is az Önnek legmegfelelőbb egyszerre.
 
-Ez az oldal ismerteti, hogyan végez a Microsoft Azure-karbantartási mindkét típusú. Nem tervezett események (leállások) kapcsolatos további információkért lásd: a virtuális gépek rendelkezésre állásának kezelése a [Windows] (.. /articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Ez az oldal ismerteti, hogyan végez a Microsoft Azure-karbantartási mindkét típusú. (Kimaradások), nem tervezett eseményekkel kapcsolatos további információt talál a virtuális gépek rendelkezésre állásának kezelése [Windows](../articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
-Egy virtuális gépen futó alkalmazások közelgő frissítésével kapcsolatos információkat gyűjthet a az Azure Metadata Service használatával [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) vagy [Linux] (.. /articles/virtual-machines/linux/instance-metadata-service.md).
+Egy virtuális gépen futó alkalmazások közelgő frissítésével kapcsolatos információkat gyűjthet a az Azure Metadata Service használatával [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) vagy [Linux](../articles/virtual-machines/linux/instance-metadata-service.md).
 
 "Útmutató" információ a tervezett karbantartás kezelése: "Tervezett karbantartásával kapcsolatos értesítések kezelése" a [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) vagy [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 

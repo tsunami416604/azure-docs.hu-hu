@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 37710015904c8112e5d2de504ed5b42895ffb809
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 54bb2466a99569c124128ad3e08f276a0bc0262d
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38610314"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035265"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás (MSI) az Azure portal használatával
 
@@ -52,7 +52,7 @@ Ha rendelkezik egy virtuális Gépet, amely eredetileg egy olyan MSI Csomaghoz n
 
 2. Kattintson a "Beállítások" lap, a virtuális gépen az MSI engedélyezéséhez a "Felügyelt szolgáltatásidentitás" "Igen" gombra kattintva, majd kattintson a **mentése**. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
 
-   ![Konfiguráció lap képernyőképe](~/articles/active-directory/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ## <a name="remove-msi-from-an-azure-vm"></a>Egy Azure virtuális gép MSI eltávolítása
 
@@ -64,7 +64,7 @@ Ha egy virtuális gép, amely már nincs szüksége egy MSI-csomag:
 
 3. A "Beállítások" lapon, a virtuális gép eltávolítása MSI Ha a "Nem", "Managed service identity" alatt, majd kattintson **mentése**. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
 
-   ![Konfiguráció lap képernyőképe](~/articles/active-directory/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
+   ![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 

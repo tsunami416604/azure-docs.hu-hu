@@ -1,6 +1,6 @@
 ---
-title: Létrehozása és feltöltése az Azure-ban SUSE Linux virtuális merevlemez
-description: Ismerje meg, létrehozása és feltöltése az Azure virtuális merevlemez (VHD), amely tartalmazza a SUSE Linux operációs rendszert.
+title: Hozzon létre, és az Azure-beli SUSE Linux VHD feltöltése
+description: Ismerje meg, hozhat létre és töltse fel az Azure virtuális merevlemez (VHD), amely tartalmazza a SUSE Linux operációs rendszer.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -15,95 +15,95 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 99838a7038672998d4940bfb437bd31311d3600f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3bdd3f4d67fcaae37736022c3c59af19eb04bec7
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653433"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036649"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy már telepítve van egy SUSE vagy openSUSE Linux operációs rendszer egy virtuális merevlemez. Több különféle eszköz található .vhd fájlok, például egy például a Hyper-V virtualizálási megoldás létrehozása. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gépek](http://technet.microsoft.com/library/hh846766.aspx).
+Ez a cikk azt feltételezi, hogy már telepítette a SUSE- vagy openSUSE Linux operációs rendszer virtuális merevlemezre. Több eszköz létezik a .vhd fájlokat, például például a Hyper-V virtualizálási megoldás létrehozása. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gép](http://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="sles--opensuse-installation-notes"></a>SLES / openSUSE telepítési megjegyzések
-* Is lásd: [általános Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) kapcsolatos további információkat az Azure Linux előkészítése.
-* A VHDX formátum nem támogatott az Azure csak **rögzített VHD**.  Átválthat a lemez VHD formátumú Hyper-V kezelője vagy a convert-vhd-parancsmag segítségével.
-* A Linux rendszer telepítésekor LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használata ajánlott. LVM neve ütközik a klónozott virtuális gépek, így elkerülhető, különösen akkor, ha egy operációsrendszer-lemez legalább egyszer meg kell hibaelhárítási egy másik virtuális géphez csatlakoztatható. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Ha előnyben részesített adatlemezek használható.
-* Ne konfiguráljon egy swap partíciót az operációsrendszer-lemezképet. A Linux-ügynök beállítható úgy, hogy az ideiglenes erőforrás lemezen a lapozófájl létrehozásához.  További információk a megtalálhatók az alábbi lépéseket.
-* Minden, az Azure virtuális merevlemez rendelkeznie kell egy virtuális mérete 1MB igazodik. Virtuális merevlemez egy nyers lemezen történő átalakítása meg kell győződnie arról, hogy a nyers lemez mérete 1MB átalakítás előtti többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
+### <a name="sles--opensuse-installation-notes"></a>SLES vagy opensuse-alapú telepítéssel kapcsolatos megjegyzések
+* Tekintse meg a is [általános Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) kapcsolatos további tippek Linux előkészítése az Azure-hoz.
+* A VHDX formátum nem támogatott az Azure-ban, csak **rögzített VHD**.  Átválthat a lemez VHD formátumú Hyper-V kezelőjével vagy a convert-vhd-parancsmag használatával.
+* A Linux rendszer telepítésekor LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használata ajánlott. LVM neve nem felel meg a klónozott virtuális gépeket, így elkerülhető, különösen akkor, ha minden eddiginél kell operációsrendszer-lemezt egy másik virtuális Géphez van csatlakoztatva a hibaelhárításhoz. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezekre is használható, ha az előnyben részesített.
+* Az operációsrendszer-lemez nem konfigurál egy lapozó partíciót. A Linux-ügynök beállítható úgy, hogy hozzon létre egy ideiglenes erőforrás lemezen a lapozófájl.  További információ található a következő lépéseket.
+* Az Azure-ban minden virtuális merevlemezek rendelkeznie kell egy virtuális méret 1 MB igazítva. A virtuális merevlemez nyers lemezről történő konvertálása során biztosítania kell, hogy a nyers lemez mérete nagyobb-e az átalakítás előtt 1MB többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
 
-## <a name="use-suse-studio"></a>SUSE studióval
-[SUSE Studio](http://www.susestudio.com) könnyen létrehozása és a SLES és openSUSE lemezképek kezelése az Azure és a Hyper-V. Ez az az ajánlott módszer a saját SLES és openSUSE lemezképek testreszabásához.
+## <a name="use-suse-studio"></a>SUSE Studio használata
+[SUSE Studio](http://www.susestudio.com) egyszerűen hozzon létre és a SLES és openSUSE lemezképek kezelése az Azure és Hyper-V. Ez az az ajánlott módszer a saját SLES és openSUSE rendszerképek testreszabásához.
 
-A saját virtuális merevlemez létrehozása helyett, SUSE is közzéteszi (Bring Your saját előfizetés) saját lemezképek a következő SLES [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007).
+Ahelyett, hogy a saját virtuális merevlemez létrehozásához, mint SUSE is közzéteszi (Bring Your saját előfizetés) saját lemezképek, a SLES-hez [gyakorlatilag korlátlanná teszik](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf).
 
 ## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>SUSE Linux Enterprise Server 11 SP4 előkészítése
 1. A középső ablaktáblán a Hyper-V kezelőjében válassza ki a virtuális gépet.
 2. Kattintson a **Connect** a virtuális gép ablak megnyitásához.
-3. Regisztrálja a SUSE Linux Enterprise rendszer engedélyezze a frissítések letöltése és telepítése a csomagokat.
-4. Frissítés a rendszer, amely a legújabb javítások:
+3. Regisztrálja a SUSE Linux Enterprise rendszer, hogy a csomagok frissítések letöltése és telepítése.
+4. Frissítse a rendszer a legújabb javításokat:
    
         # sudo zypper update
-5. Az Azure Linux ügynök telepítése a SLES tárházból:
+5. Az Azure Linux-ügynök telepítése a SLES adattárából:
    
         # sudo zypper install WALinuxAgent
-6. Ha waagent van-e állítva az "on" beadása chkconfig, és ha nem, engedélyezze az automatikus indítás:
+6. Ha waagent értéke "on" felvétel chkconfig, és ha nem, akkor engedélyezze a autostart:
    
         # sudo chkconfig waagent on
 7. Ellenőrizze, hogy a waagent-szolgáltatás fut, és ha nem, indítsa el: 
    
         # sudo service waagent start
-8. Módosítsa a kernel rendszerindító sor lárvajárat konfigurációs kiegészítő rendszermag paraméterek az Azure-bA felvenni. Ehhez a Megnyitás "/ boot/grub/menu.lst" egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel az alábbi paramétereket tartalmazza:
+8. Módosítsa a rendszermag rendszerindítási sorához további kernel paramétereket tartalmazza az Azure-hoz a grub-hibát konfigurációjában. Ehhez a nyílt "/ boot/grub/menu.lst" egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel tartalmazza a következő paraméterekkel:
    
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-    Ezzel biztosíthatja, hogy minden konzol küldi el az első soros port, amely segít az Azure által támogatott hibáinak feltárására.
-9. Győződjön meg arról, hogy /boot/grub/menu.lst és /etc/fstab is hivatkoznak a lemez az UUID (által-uuid) helyett a Lemezazonosítót (-azonosító szerint). 
+    Ez biztosítja az összes konzol üzenetet küld az első soros port, amely segítheti az Azure támogatási problémák hibakeresésében.
+9. Győződjön meg arról, hogy /boot/grub/menu.lst és /etc/fstab is hivatkozhatnak a lemezt az UUID-azonosítója (amelyet-uuid) helyett a Lemezazonosítót (-azonosító szerint). 
    
-    Lemezek UUID azonosítója beolvasása
+    A lemez UUID azonosító lekérése
    
         # ls /dev/disk/by-uuid/
    
-    Ha /dev/disk/by-id / /boot/grub/menu.lst mind a/etc/fstab használ, frissítse a megfelelő által-uuid-értékkel rendelkező
+    Ha /dev/disk/by-id van /boot/grub/menu.lst mind a/etc/fstab használt, frissítse a megfelelő által-uuid értékkel
    
     Változás előtt
    
         root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1
    
-    Módosítás után
+    Váltás után
    
         root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-10. Az Ethernet-adaptert statikus szabályainak elkerülése érdekében udev szabályok módosítása. Ezek a szabályok problémákat okozhat, ha a Microsoft Azure- vagy Hyper-v virtuális gép klónozása
+10. Az Ethernet-adaptert statikus szabályainak elkerülése érdekében, udev szabályok módosítása. Ezek a szabályok problémákat okozhat, ha a Microsoft Azure vagy Hyper-v virtuális gépek klónozásának
     
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-11. A fájl szerkesztése ajánlott "/ etc/sysconfig/hálózati/dhcp", és módosítsa a `DHCLIENT_SET_HOSTNAME` a következő paramétert:
+11. Ajánlott a fájl szerkesztése "/ etc/sysconfig/hálózati/dhcp", és módosítsa a `DHCLIENT_SET_HOSTNAME` a következő paramétert:
     
      DHCLIENT_SET_HOSTNAME="no"
-12. A "/ etc/sudoers" megjegyzéssé, vagy ha vannak ilyenek, távolítsa el a következő sorokat:
+12. A "/ etc/sudoers" tegye megjegyzésbe, vagy ha vannak ilyenek, távolítsa el a következő sorokat:
     
-     Alapértelmezés szerint targetpw # kérje meg a jelszót, azaz legfelső szintű összes ALL=(ALL) minden célként megadott felhasználó # figyelmeztetés! Csak ezzel együtt a 'Alapértelmezett targetpw'!
-13. Győződjön meg arról, hogy az SSH-kiszolgálót telepítse és konfigurálja a rendszerindítás elindításához.  Ez általában az alapértelmezett beállítás.
-14. Ne hozzon létre az operációsrendszer-lemezképet a lapozóterület.
+     Alapértelmezés szerint targetpw # kérje meg a jelszót a céloldali felhasználó pl. legfelső szintű összes ALL=(ALL) összes # figyelmeztetés! Csak ezzel együtt az 'Alapértelmezett targetpw'!
+13. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve és konfigurálva van rendszerindítás elindításához.  Ez általában az alapértelmezett érték.
+14. Nem hozható létre lapozófájl-kapacitás az operációsrendszer-lemez.
     
-    Az Azure Linux ügynök automatikusan konfigurálhatók a lapozóterület használata a helyi erőforrás lemezt a virtuális Géphez csatolt Azure kiépítése után. Vegye figyelembe, hogy a helyi erőforrás lemez egy *ideiglenes* lemezre, és előfordulhat, hogy szerepelnek, ha a virtuális gép van platformelőfizetés. Az Azure Linux ügynök telepítése után (lásd az előző lépésben), annak megfelelően módosítsa a /etc/waagent.conf a következő paraméterekkel:
+    Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), annak megfelelően módosítsa a következő paramétereket lévő /etc/waagent.conf:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Megjegyzés: állítsa függetlenül esetleg szükség lenne rá kell lennie.
-15. A virtuális gép kiosztásának megszüntetése, és előkészíti az Azure-on történő üzembe helyezéséhez a következő parancsok futtatásával:
+     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Megjegyzés: állítsa ezt a beállítást függetlenül kell legyen.
+15. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-16. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
+16. Kattintson a **művelet le -> Leállítás** a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
 
 - - -
 ## <a name="prepare-opensuse-131"></a>OpenSUSE 13.1 + előkészítése
 1. A középső ablaktáblán a Hyper-V kezelőjében válassza ki a virtuális gépet.
 2. Kattintson a **Connect** a virtuális gép ablak megnyitásához.
-3. Futtassa a parancsot a rendszerhéj "`zypper lr`". Ha ez a parancs visszaadja kimenet az alábbihoz hasonló, akkor a tárolóhelyekkel konfigurált elvárt – módosítás nélkül szükség (vegye figyelembe, hogy a verziószáma változhat):
+3. Futtassa a parancsot a rendszerhéj "`zypper lr`". Ez a parancs kimenete az alábbihoz hasonló, akkor a várt a módosítás nélkül szükség a tárházak vannak konfigurálva (vegye figyelembe, hogy a verziószámok eltérhetnek):
    
         # | Alias                 | Name                  | Enabled | Refresh
         --+-----------------------+-----------------------+---------+--------
@@ -111,53 +111,53 @@ A saját virtuális merevlemez létrehozása helyett, SUSE is közzéteszi (Brin
         2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes
         3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Yes     | Yes
    
-    Ha a parancs visszaadja a "Nincs definiálva... adattárak" használja az alábbi parancsokat a repók hozzáadása:
+    Ha a parancs visszaadja a "Nincs definiálva... tárházak" majd a következő parancsokat használja, ezek a kódtárak hozzáadása:
    
         # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
         # sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    Ezután ellenőrizheti a tárolóhelyekkel lettek hozzáadva a parancs futtatásával "`zypper lr`" újra. Abban az esetben, ha egy, a megfelelő frissítési adattárak nincs engedélyezve, engedélyezze a következő paranccsal:
+    Ezután ellenőrizheti a tárházak lettek hozzáadva a parancs futtatásával "`zypper lr`" újra. Abban az esetben a megfelelő frissítési tárházak egyik nincs engedélyezve, engedélyezze a következő paranccsal:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
-4. Frissítés a legújabb elérhető verziójára kernel:
+4. Az elérhető legújabb verzióra frissíteni a kernel:
    
         # sudo zypper up kernel-default
    
-    Vagy a rendszer frissítése a legújabb javítások:
+    Vagy frissítse a rendszer a legújabb javításokat:
    
         # sudo zypper update
-5. Az Azure Linux ügynök telepítése.
+5. Az Azure Linux-ügynök telepítése.
    
         # sudo zypper install WALinuxAgent
-6. Módosítsa a kernel rendszerindító sor lárvajárat konfigurációs kiegészítő rendszermag paraméterek az Azure-bA felvenni. Ehhez nyissa meg a "/ boot/grub/menu.lst" egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel az alábbi paramétereket tartalmazza:
+6. Módosítsa a rendszermag rendszerindítási sorához további kernel paramétereket tartalmazza az Azure-hoz a grub-hibát konfigurációjában. Ehhez nyissa meg a "/ boot/grub/menu.lst" egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel tartalmazza a következő paraméterekkel:
    
      console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-   Ezzel biztosíthatja, hogy minden konzol küldi el az első soros port, amely segít az Azure által támogatott hibáinak feltárására. A következő paraméterek ezenkívül eltávolítása a kernel rendszerindító sor, ha vannak ilyenek:
+   Ez biztosítja az összes konzol üzenetet küld az első soros port, amely segítheti az Azure támogatási problémák hibakeresésében. A következő paraméterek ezenkívül eltávolítása a rendszermag rendszerindítási sorához, ha vannak ilyenek:
    
      libata.atapi_enabled=0 reserve=0x1f0,0x8
-7. A fájl szerkesztése ajánlott "/ etc/sysconfig/hálózati/dhcp", és módosítsa a `DHCLIENT_SET_HOSTNAME` a következő paramétert:
+7. Ajánlott a fájl szerkesztése "/ etc/sysconfig/hálózati/dhcp", és módosítsa a `DHCLIENT_SET_HOSTNAME` a következő paramétert:
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **Fontos:** "/ etc/sudoers", a megjegyzéssé, vagy ha vannak ilyenek, távolítsa el a következő sorokat:
+8. **Fontos:** "/ etc/sudoers", tegye megjegyzésbe, vagy ha vannak ilyenek, távolítsa el a következő sorokat:
    
-     Alapértelmezés szerint targetpw # kérje meg a jelszót, azaz legfelső szintű összes ALL=(ALL) minden célként megadott felhasználó # figyelmeztetés! Csak ezzel együtt a 'Alapértelmezett targetpw'!
-9. Győződjön meg arról, hogy az SSH-kiszolgálót telepítse és konfigurálja a rendszerindítás elindításához.  Ez általában az alapértelmezett beállítás.
-10. Ne hozzon létre az operációsrendszer-lemezképet a lapozóterület.
+     Alapértelmezés szerint targetpw # kérje meg a jelszót a céloldali felhasználó pl. legfelső szintű összes ALL=(ALL) összes # figyelmeztetés! Csak ezzel együtt az 'Alapértelmezett targetpw'!
+9. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve és konfigurálva van rendszerindítás elindításához.  Ez általában az alapértelmezett érték.
+10. Nem hozható létre lapozófájl-kapacitás az operációsrendszer-lemez.
     
-    Az Azure Linux ügynök automatikusan konfigurálhatók a lapozóterület használata a helyi erőforrás lemezt a virtuális Géphez csatolt Azure kiépítése után. Vegye figyelembe, hogy a helyi erőforrás lemez egy *ideiglenes* lemezre, és előfordulhat, hogy szerepelnek, ha a virtuális gép van platformelőfizetés. Az Azure Linux ügynök telepítése után (lásd az előző lépésben), annak megfelelően módosítsa a /etc/waagent.conf a következő paraméterekkel:
+    Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), annak megfelelően módosítsa a következő paramétereket lévő /etc/waagent.conf:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Megjegyzés: állítsa függetlenül esetleg szükség lenne rá kell lennie.
-11. A virtuális gép kiosztásának megszüntetése, és előkészíti az Azure-on történő üzembe helyezéséhez a következő parancsok futtatásával:
+     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Megjegyzés: állítsa ezt a beállítást függetlenül kell legyen.
+11. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-12. Győződjön meg arról, az Azure Linux ügynök a indításakor fut:
+12. Ellenőrizze, hogy az Azure Linux-ügynök rendszerindításkor futó:
     
         # sudo systemctl enable waagent.service
-13. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
+13. Kattintson a **művelet le -> Leállítás** a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
 
 ## <a name="next-steps"></a>További lépések
-Most már készen áll a SUSE Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, lásd: [Linux virtuális gép létrehozása az egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).
+Most már készen áll a SUSE Linux rendszerű virtuális merevlemez használatával hozzon létre új virtuális gépek az Azure-ban. Ha ez az első alkalommal, hogy a .vhd fájlt videófájl az Azure-ba, tekintse meg a [egy Linux virtuális gép létrehozása egy egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).

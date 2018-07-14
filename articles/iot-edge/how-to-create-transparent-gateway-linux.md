@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 789958874784f19169e79a177beb0d811d9f60d4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 2b4e2a19b5d5f6491ff3db24489b361040a52280
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005706"
+ms.locfileid: "39035574"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Hozzon létre egy Linux IoT Edge-eszköz, amely transzparens átjáróként
 
@@ -22,8 +22,8 @@ Ez a cikk részletes utasításokat a transzparens átjáróként IoT Edge-eszk�
 >[!NOTE]
 >Jelenleg:
 > * Ha az átjáró nem csatlakozik az IoT hubról, alsóbb rétegbeli eszközök az átjáró nem tudja hitelesíteni.
-> * IoT Edge-eszközökön nem lehet csatlakozni az IoT Edge-átjáró.
-> * Alsóbb rétegbeli eszközök nem használható a fájl feltöltése.
+> * Edge-kompatibilis eszközök IoT Edge-átjáró nem tud kapcsolódni. 
+> * Alsóbb rétegbeli eszközök fájl feltöltése nem használható.
 
 Transzparens átjáró létrehozása a rögzített rész biztonságos összekapcsolása az alsóbb rétegbeli eszközök átjárót. Az Azure IoT Edge lehetővé teszi, hogy ezek az eszközök közötti biztonságos TLS-kapcsolatok beállítása a PKI-infrastruktúra használatával. Ebben az esetben azt engedélyezi egy alsóbb rétegbeli eszközök transzparens átjáróként működő IoT Edge-eszköz csatlakozni.  Ésszerű biztonságának fenntartása érdekében az alsóbb rétegbeli eszközök ellenőrizze identitását a peremhálózati eszköz, mivel csak az eszközök csatlakoztatása az átjárók és a egy potenciálisan kártékony átjáró nincs.
 

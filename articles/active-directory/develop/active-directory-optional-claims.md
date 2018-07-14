@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dd436fb431351b41c61af5ef99f11fce470386a8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003596"
+ms.locfileid: "39036751"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nem kötelező jogcímek, az Azure ad-ben (előzetes verzió)
 
@@ -66,7 +66,7 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 | `enfpolids`                | Kényszerített házirend azonosítók. A szabályzat az aktuális felhasználó értékelt azonosítók listáját.  | JWT |  |  |
 | `vnet`                     | VNET-adatok megadása.    | JWT        |           |      |
 | `fwd`                      | IP-cím.| JWT    |   | Felveszi az eredeti IPv4-címet a kérést küldő ügyfélnek (Ha egy virtuális hálózaton belül) |
-| `ctry`                     | A felhasználó ország | JWT |           | |
+| `ctry`                     | A felhasználó ország | JWT |           | Az Azure AD vissza a `ctry` jogcím nem kötelező, ha telepítve, és a jogcím értéke egy standard kétbetűs országkód, például FR, JP, SZ és így tovább. |
 | `tenant_ctry`              | Erőforrás-bérlő ország | JWT | | |
 | `xms_pdl`          | Az adatok előnyben részesített helye   | JWT | | A Multi-földrajzi bérlők számára ez az a 3 betűs kód megjelenítő melyik földrajzi régiót, a felhasználó szerepel.  További részletekért tekintse meg a [adatainak előnyben részesített helye az Azure AD Connect dokumentáció](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation). <br> Például: `APC` Ázsia Csendes-óceáni számára. |
 | `xms_pl`                   | A felhasználó preferált nyelvét  | JWT ||A felhasználó elsődleges nyelv, ha a beállítása.  Származási hely a saját bérlőjén, a Vendég adathozzáférési forgatókönyvek esetében.  R-CC formátumú ("en-us"). |

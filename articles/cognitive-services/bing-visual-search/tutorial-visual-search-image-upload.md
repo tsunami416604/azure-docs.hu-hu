@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: a5ec7142fccb900a7095a0c67623d560d3bc00d7
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 90ea591137b306069c1a5c184aea07375c72ce5c
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009533"
+ms.locfileid: "39036540"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Oktatóanyag: Bontásához, a Bing Visual Search feltöltése
 
@@ -24,7 +24,7 @@ Ebben az oktatóanyagban felszámolja kép feltöltése a Bing és az elemzések
 Ebben az oktatóanyagban, amely szeretne Fedezze fel a Bing válasz tartalmát a fejlesztő biztosítunk. Nem a alkalmazni minden használati és megjelenítési követelményeihez (például nem biztosítják a Microsoft adatvédelmi hivatkozás). Minden használati követelmények, lásd: [követelmények Bing használata és megjelenítése](./use-and-display-requirements.md).
 
 
-### <a name="where-to-start"></a>Hol kell elkezdeni?
+## <a name="where-to-start"></a>Hol kell elkezdeni?
 
 Kezdjük egy HTML-oldalt, amely elküldi a Bing képet, és visszakap insights, és megjeleníti őket. A kedvenc szerkesztőjében hozzon létre egy fájlt, uploaddemo.html. Adja hozzá a fájlhoz a következő egyszerű HTML-struktúrát.
 
@@ -50,7 +50,7 @@ Először hozzunk osztása a lap egy kérelem szakaszt, ahol a felhasználó meg
         <div id="responseSection"></div>
 ```
 
-### <a name="get-the-file-to-upload"></a>A feltölteni kívánt fájl beolvasása
+## <a name="get-the-file-to-upload"></a>A feltölteni kívánt fájl beolvasása
 
 Ahhoz, hogy a felhasználó, válassza ki a feltölteni a lemezképet, a bemutató használja a \<bemeneti\> a type attribútumot állítsa be a következő fájl címke. A felhasználói felületen kell, hogy törölje a jelet, hogy használja-e a bemutató a Bing keresési eredményt. 
 
@@ -126,7 +126,7 @@ Az alábbiakban látható a kezelő, amely a kiválasztott lemezképhez rögzít
 ```
 
 
-### <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Tudnivalók a Bing-hívás végrehajtása előtt van szükség?
+## <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Tudnivalók a Bing-hívás végrehajtása előtt van szükség?
 
 A bemutató továbbra is szüksége van egy előfizetési kulcsot. A gyakorlatban akkor valószínűleg az előfizetési kulcs biztonságos tárolóból azonban ez a bemutató egyszerűsége kell adja meg azt a felhasználói felületen. Adja hozzá a következő \<bemeneti\> címkét (az a szöveges értékre type attribútum) a \<törzs\> csak a fájl alábbi \<kimeneti\> címke.
 
@@ -226,7 +226,7 @@ A bemutató elrejti a listákat egy összecsukható div, amelyek vezérlik a lek
 ```
 
 
-### <a name="making-the-call"></a>A következő hívással
+## <a name="making-the-call"></a>A következő hívással
 
 Adja hozzá a következő Get insights gomb a beállítások div alábbi törzsében. A gomb lehetővé teszi, hogy a felhasználó a hívás indításához. Amikor a felhasználó a gombra kattint, a kurzort a tartalomfogyasztás várakozási kurzor változott, és a kattintásra-kezelő nevezzük.
 
@@ -291,7 +291,7 @@ A sendRequest függvény formázza a végpont URL-címe, állítja be az Ocp-Api
         }
 ```
 
-### <a name="handling-the-response"></a>A válasz kezelése
+## <a name="handling-the-response"></a>A válasz kezelése
 
 A handleResponse függvény kezeli a hívást a Bing Visual Search válaszát. Ha a hívás sikeres, az egyes címkék, az elemzéseket tartalmazó elemzi a JSON-választ. Ezután hozzáadja a karakterlánc, a Bing – internetes keresési eredmények között, lehetővé teszik a felhasználó ismeri az adatok származási Bing az oldalon.
 
@@ -676,7 +676,7 @@ Ne feledje, hogy nincs egy minimális mennyiségű adatot kell megjelenítenie, 
 
 
 
-### <a name="adding-styles-to-make-the-page-display-correctly"></a>Hogy hibásan jelennek meg az oldal stílusok hozzáadása
+## <a name="adding-styles-to-make-the-page-display-correctly"></a>Hogy hibásan jelennek meg az oldal stílusok hozzáadása
 
 Adja hozzá a következő \<stílus\> részt a \<fő\> címke.
 
@@ -1328,3 +1328,7 @@ Itt látható a teljes HTML és JavaScript-példát.
     </body>
 </html>      
 ```
+
+## <a name="next-steps"></a>További lépések
+
+Az elemzések lekérése kipróbálásához használ, és elemzéseket token, lásd: [a Bing Visual Search SDK ImageInsightsToken oktatóanyag](.\tutorial-visual-search-insights-token.md).

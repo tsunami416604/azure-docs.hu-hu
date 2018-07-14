@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 83a56793d08632918a75f6580360a9dd148d7316
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2af83762fdcd3302f2af9b08585febab42387d79
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611068"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035982"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>A Felügyeltszolgáltatás-identitás hozzáférés hozzárendelése egy erőforrást az Azure portal használatával
 
@@ -41,11 +41,11 @@ Miután engedélyezte az MSI-Azure-erőforrás [például egy Azure virtuális g
 
 3. Válassza ki a **hozzáférés-vezérlés (IAM)** az erőforrást, és válassza az oldal **+ Hozzáadás**. Adja meg a **szerepkör**, **hozzáférések hozzárendelése a virtuális gép**, és adja meg a megfelelő **előfizetés** és **erőforráscsoport** ahol az erőforrás található. A keresési feltételek területen látnia kell az erőforrás. Válassza ki az erőforrást, és válassza ki **mentése**. 
 
-   ![Hozzáférés-vezérlés (IAM) képernyőképe](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+   ![Hozzáférés-vezérlés (IAM) képernyőképe](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
 
 4. A fő a rendszer visszairányítja **hozzáférés-vezérlés (IAM)** lap, Itt láthatja az új bejegyzést az erőforrás MSI számára. Ebben a példában a "SimpleWinVM" bemutató erőforráscsoportból a virtuális gép rendelkezik **közreműködői** a tárfiókhoz való hozzáférést.
 
-   ![Hozzáférés-vezérlés (IAM) képernyőképe](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
+   ![Hozzáférés-vezérlés (IAM) képernyőképe](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

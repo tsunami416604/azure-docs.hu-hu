@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure virtuális hálózat VPN átviteli ellenőrzése |} Microsoft Docs
-description: Ez a dokumentum célja a felhasználó a hálózati teljesítményt a helyszíni erőforrások az Azure virtuális gép ellenőrzése érdekében.
+title: A Microsoft Azure Virtual Network VPN teljesítményének érvényesítése |} A Microsoft Docs
+description: Ez a dokumentum az a célja, hogy segítséget nyújtson a felhasználó, ellenőrizze a hálózati átviteli sebesség a helyszíni erőforrások Azure virtuális gépeken.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
@@ -15,83 +15,83 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 38ff1ee4c525d41e2a7446d5adc792c746504491
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754507"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035618"
 ---
-# <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Hogyan VPN átviteli virtuális hálózat ellenőrzése
+# <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Hogyan lehet egy virtuális hálózati VPN teljesítményének érvényesítése
 
-VPN gateway-kapcsolattal lehetővé teszi a biztonságos létrehozásához, létesítmények közötti kapcsolat között a virtuális hálózat az Azure és a helyszíni informatikai infrastruktúrát.
+VPN gateway-kapcsolat lehetővé teszi biztonságos kapcsolat, létesítmények közötti kapcsolatokat a virtuális hálózat Azure-ban és a helyszíni informatikai infrastruktúrát.
 
-Ez a cikk bemutatja, hogyan ellenőrizze a hálózati átviteli a helyszíni erőforrások az Azure virtuális gép (VM). Azt is nyújt hibaelhárítási útmutatót.
+Ez a cikk bemutatja, hogyan érvényesítheti a hálózati átviteli sebesség a helyszíni erőforrások Azure virtuális gépeken (VM). Azt is nyújt hibaelhárítási útmutatót.
 
 >[!NOTE]
->Ez a cikk célja gyakran előforduló problémák megoldásában. Ha nem sikerül, a probléma megoldásához a következő információk segítségével [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+>Ebből a cikkből gyakori hibák azonosítása és kijavítása érdekében. Ha nem sikerül a probléma megoldásához az alábbi információk alapján [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 >
 >
 
 ## <a name="overview"></a>Áttekintés
 
-A VPN gateway-kapcsolatot a következő összetevőket foglalja magában:
+A VPN gateway-kapcsolat a következő összetevőkből áll:
 
-- A helyszíni VPN-eszköz (listájának megtekintéséhez [érvényesíteni a VPN-eszközök)](vpn-gateway-about-vpn-devices.md#devicetable).
-- Nyilvános Internet
+- A helyszíni VPN-eszköz (listájának megtekintéséhez [ellenőrzött VPN-eszközök)](vpn-gateway-about-vpn-devices.md#devicetable).
+- Nyilvános interneten
 - Az Azure VPN gateway
 - Azure VM
 
-Az alábbi ábrán a logikai kapcsolat a helyszíni hálózat az Azure virtuális hálózat VPN-en keresztül.
+Az alábbi ábrán a logikai kapcsolat a helyszíni hálózat egy Azure virtuális hálózathoz VPN-kapcsolaton keresztül.
 
-![Logikai kapcsolat az ügyfél hálózati MSFT hálózathoz VPN-nel](./media/vpn-gateway-validate-throughput-to-vnet/VPNPerf.png)
+![Kapcsolat az ügyfél logikaihálózat MSFT hálózathoz VPN használatával](./media/vpn-gateway-validate-throughput-to-vnet/VPNPerf.png)
 
-## <a name="calculate-the-maximum-expected-ingressegress"></a>A maximális várt belépés és kilépés kiszámítása
+## <a name="calculate-the-maximum-expected-ingressegress"></a>Kiszámítása a maximális várt bejövő/kimenő forgalom
 
 1.  Az alkalmazás eredeti átviteli követelmények meghatározása.
-2.  Az Azure VPN gateway átviteli sebességének korlátai határozza meg. Az "SKU- és VPN-típus szerint összesítő átviteli" részében talál segítséget, [tervezése és kialakítása VPN-átjáró](vpn-gateway-plan-design.md).
-3.  Határozza meg a [Azure virtuális gép átviteli útmutatást](../virtual-machines/virtual-machines-windows-sizes.md) a Virtuálisgép-mérethez.
+2.  Az Azure VPN gateway átviteli korlátainak határozza meg. Segítségre van szüksége, a "Termékváltozat és a VPN-típus szerint az összesített átviteli" című szakaszában talál [tervezéssel és kialakítással VPN-átjáró](vpn-gateway-plan-design.md).
+3.  Határozza meg a [Azure virtuális gép átviteli sebességéről szóló útmutatót](../virtual-machines/virtual-machines-windows-sizes.md) a Virtuálisgép-mérethez.
 4.  Határozza meg, hogy az internetszolgáltató (ISP) sávszélességet.
-5.  A várt átviteli - (VM-átjárón internetszolgáltató) minimális sávszélesség kiszámításához * 0,8 értéket.
+5.  A várt – minimális sávszélesség (virtuális gép, átjáró, ISP) az átviteli sebességet számítja ki * 0,8 értéket.
 
-A számított teljesítményt nem felel meg az alkalmazás eredeti átviteli követelmények, ha a sávszélességet az azonosított a szűk erőforrás növelnie kell. Tekintse meg az Azure VPN Gateway átméretezéséhez [módosítása egy átjáró-Termékváltozat](vpn-gateway-about-vpn-gateway-settings.md#gwsku). A virtuális gépek átméretezéséhez lásd: [méretezze át a virtuális gépek](../virtual-machines/virtual-machines-windows-resize-vm.md). Ha nem várt internetes sávszélességet, is érdemes lehet lépjen kapcsolatba az Internetszolgáltatóval.
+Ha a számított átviteli sebesség nem felel meg az alkalmazás eredeti átviteli sebességet megkövetelő, növelheti a sávszélességet, hogy azonosította az eseményt szűk erőforrás szeretné. Tekintse meg az Azure VPN Gateway átméretezéséhez [átjárók Termékváltozatainak módosítása](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Virtuális gép átméretezése, lásd: [virtuális gép átméretezése](../virtual-machines/virtual-machines-windows-resize-vm.md). Ha nem várt internetes sávszélességet, akkor is érdemes lépjen kapcsolatba az Internetszolgáltatóval.
 
-## <a name="validate-network-throughput-by-using-performance-tools"></a>Hálózati átviteli teljesítmény eszközökkel ellenőrzése
+## <a name="validate-network-throughput-by-using-performance-tools"></a>Teljesítménynövelő eszközök használatával hálózati átviteli sebesség ellenőrzéséhez
 
-Az ellenőrzés során nem csúcsidőre kell hajtható végre, mert VPN alagút átviteli telítettségét tesztelés során nem ad pontos eredményeket.
+Ellenőrzés során nem csúcsidőre hajtható végre, mint a VPN-alagút átviteli színtelítettség tesztelés során nem biztosít pontos eredményeket.
 
-Az eszközt a teszteléshez használjuk iPerf, amely Windows és Linux rendszeren működik és ügyfél- és módok. 3 GB/s a Windows virtuális gépek korlátozva.
+Ebben a tesztben használjuk eszköze iPerf, amely Windows és Linux rendszereken is működik, és ügyfél- és módot támogat. 3 GB/s a Windows virtuális gépek korlátozva.
 
-Ez az eszköz nem végez semmilyen lemez olvasási/írási műveletek. Kizárólag a saját TCP-forgalom több olyan end egyéb hoz létre. Akkor jönnek létre, kísérletezhet, és mérheti az ügyfél és kiszolgáló-csomópont között rendelkezésre álló sávszélesség statisztikát. Ha két csomópont között, egy működik, a kiszolgáló és az egyéb ügyfélként. Ha ez a vizsgálat befejeződött, azt javasoljuk, hogy megfordította a szerepkörök mindkét feltöltés teszteléséhez, és töltse le mindkét csomópont átviteli sebességet.
+Ez az eszköz nem végez lemezre írási/olvasási műveleteket. Kizárólag az önállóan létrehozott TCP-forgalom az egyik hoz létre. Statisztika, amely méri az ügyfél és kiszolgáló-csomópont között rendelkezésre álló sávszélesség Kísérletezési alapján létrehozott. Ha két csomópont közötti teszteli, egy, a kiszolgáló és a többi ügyfél működik. Ha ez a vizsgálat befejeződött, azt javasoljuk, hogy megfordította a szerepkörök mindkét feltöltési teszteléséhez, és töltse le a két csomópontra átviteli sebesség.
 
 ### <a name="download-iperf"></a>Töltse le a iPerf
 Töltse le [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). További információkért lásd: [iPerf dokumentáció](https://iperf.fr/iperf-doc.php).
 
  >[!NOTE]
- >A külső cikkben említett termékeket független, a Microsoft által. A Microsoft nem vállal, vélelmezett vagy a teljesítmény és megbízhatóságára.
+ >A külső termékekhez, hogy ez a cikk ismerteti a Microsoft független a Microsofttól. A Microsoft nem vállal, vélelmezett vagy más módon, a teljesítményére és megbízhatóságára.
  >
  >
 
-### <a name="run-iperf-iperf3exe"></a>Futtassa a iPerf (iperf3.exe)
-1. Engedélyezze az NSG/ACL-szabályának, lehetővé téve a forgalom (a nyilvános IP-cím tesztelés Azure virtuális gépen).
+### <a name="run-iperf-iperf3exe"></a>Futtatási iPerf (iperf3.exe)
+1. Engedélyezze egy NSG/ACL-szabály engedélyezi a forgalmat (a nyilvános IP-cím tesztelése az Azure virtuális gépen).
 
-2. Mindkét csomópontján olyan érvényes tűzfalkivétel port 5001 engedélyezése.
+2. A két csomópontra a tűzfal-kivétel az port 5001 engedélyezése.
 
-    **Windows:** rendszergazdaként futtassa a következő parancsot:
+    **Windows:** rendszergazdaként a következő parancsot:
 
     ```CMD
     netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
     ```
 
-    A szabály eltávolításához tesztelése során befejeződött, a parancs futtatásához:
+    Eltávolítja a szabályt, ha teszteli az elkészült, futtassa a következő parancsot:
 
     ```CMD
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
-    </br>
-    **Az Azure Linux:** Azure Linux képek megengedő tűzfalak vannak. Ha egy alkalmazás egy portot figyel, keresztül engedélyezi a forgalmat. Egyéni képek, védett esetleg explicit módon megnyitott portok. Közös Linux operációsrendszer-réteg tűzfalak tartalmaznak `iptables`, `ufw`, vagy `firewalld`.
+     
+    **Azure-beli Linuxos:** Azure Linux-rendszerképeket megengedő tűzfalak vannak. Ha egy alkalmazás figyeljen egy portot, keresztül engedélyezi a forgalmat. Egyéni rendszerképek védett explicit módon megnyitott portok szükség lehet. Gyakori Linux operációsrendszer-réteg tűzfalak tartalmaznak `iptables`, `ufw`, vagy `firewalld`.
 
-3. A kiszolgáló-csomóponton nyissa meg azt a könyvtárat, ahol iperf3.exe ki kell olvasni. Ezután iPerf kiszolgáló módban fut, és állítsa be úgy a 5001, az alábbi parancsok port figyelésére:
+3. A kiszolgáló-csomóponton módosítsa a könyvtárat, ahol iperf3.exe ki kell olvasni. Ezután iPerf kiszolgáló módban fut, és beállíthatja úgy, hogy a port 5001, az alábbi parancsok figyelése:
 
      ```CMD
      cd c:\iperf-3.1.2-win65
@@ -99,44 +99,44 @@ Töltse le [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). T
      iperf3.exe -s -p 5001
      ```
 
-4. Az ügyfél-csomópontnak módosítsa a könyvtárat, ahol iperf eszköz kibontott, és futtassa a következő parancsot:
+4. Az ügyfél-csomóponton módosítsa a könyvtárat, ahol iperf eszközt ki kell olvasni, és ezután futtassa a következő parancsot:
 
     ```CMD
     iperf3.exe -c <IP of the iperf Server> -t 30 -p 5001 -P 32
     ```
 
-    Az ügyfél 30 másodpercig van hogy forgalmat porton 5001 a kiszolgálóra. A jelző "-P" azt jelzi, hogy a kiszolgáló-csomópontra 32 egyidejűleg létesíthető kapcsolatok használjuk.
+    Az ügyfél a kiszolgálóval 5001-port forgalmát van hogy 30 másodpercig. A jelző "-P", amely azt jelzi, hogy a kiszolgáló-csomópontot az egyidejű kapcsolatok 32 használjuk.
 
-    A következő képernyő Ez a példa mutatja:
+    Az alábbi képernyőn látható a jelen példa kimenetében:
 
     ![Kimenet](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
-5. (VÁLASZTHATÓ) A vizsgálati eredmények megőrzése érdekében futtassa ezt a parancsot:
+5. (NEM KÖTELEZŐ) Ha szeretné megőrizni a vizsgálati eredmények, a következő parancs futtatásával:
 
     ```CMD
     iperf3.exe -c IPofTheServerToReach -t 30 -p 5001 -P 32  >> output.txt
     ```
 
-6. Az előző lépések végrehajtását követően hajtható végre a lépéseket a fordított irányú, szerepkörök, hogy a kiszolgáló-csomópont lesz az ügyfél és fordítva.
+6. Az előző lépések végrehajtását követően hajtható végre ugyanazokat a lépéseket, a fordított irányú, szerepkörökhöz, hogy a kiszolgáló-csomópont lesz az ügyfél és fordítva.
 
-## <a name="address-slow-file-copy-issues"></a>Lassú fájl másolása problémák megoldása
-Problémákat tapasztalhat a másolás, ha a Windows Intézővel vagy áthúzza egy RDP-kapcsolaton keresztül lassú fájlt. Ez a probléma általában nem két, a következő tényezőket:
+## <a name="address-slow-file-copy-issues"></a>Lassú fájl másolási hibáinak megoldásához
+Lassú fájl kiugrások, amikor a Windows Explorer használatával vagy áthúzását keresztül egy RDP-munkamenetet tapasztalhat. Ez a probléma általában egyikét vagy mindkettőt, az alábbi tényezők miatt van:
 
-- Fájl másolása alkalmazások, például a Windows Intézőt, és RDP, ne használja egyszerre használható szálak, amikor a fájlok másolása. A jobb teljesítmény érdekében használjon egy többszálas fájl másolása alkalmazás például [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) 16 vagy 32 szálat használ a fájlok másolása. A szál száma Richcopy fájlmásolási módosításához kattintson **művelet** > **beállításai** > **fájlmásolás**.<br><br>
-![Lassú fájl másolása problémák](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
-- Nincs elegendő méretű lemez olvasási/írási sebessége. További információkért lásd: [Azure Storage hibaelhárítása](../storage/common/storage-e2e-troubleshooting.md).
+- Fájl másolása alkalmazások, például a Windows Explorerben és RDP-t, ne használjon több szálon, amikor fájlokat másol. A jobb teljesítmény érdekében használjon egy több szálon futó fájl másolása alkalmazás például [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) 16 vagy 32 szálak használatával a fájlok másolásához. A szál száma fájlmásolási funkciója Richcopy módosításához kattintson **művelet** > **beállítások másolása** > **fájlmásolás**.<br><br>
+![Lassú fájl másolása kapcsolatos problémák](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
+- Nincs elegendő VM lemez olvasási/írási sebessége. További információkért lásd: [Azure Storage hibaelhárítási](../storage/common/storage-e2e-troubleshooting.md).
 
-## <a name="on-premises-device-external-facing-interface"></a>A helyszíni eszközök külső irányuló felület
-Ha a helyszíni VPN-eszköz Internet felé néző IP-cím szerepel a [helyi hálózati](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) -definícióban az Azure-ban problémákat tapasztalhat, nem tudja telepíteni a tegye fel a VPN-és szórványos bontja a kapcsolatot, vagy a teljesítményproblémák.
+## <a name="on-premises-device-external-facing-interface"></a>Helyszíni eszköz külső irányuló felületén
+Ha a helyszíni VPN-eszköznek az Internet felé néző IP-cím szerepel a [helyi hálózati](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) definíciót az Azure-ban, tapasztalhat meggátoló ahhoz, hogy meg bontja a kapcsolatot a VPN-, időnként fel, vagy a teljesítménnyel kapcsolatos problémák.
 
 ## <a name="checking-latency"></a>Késés ellenőrzése
-A nyomkövetést a Microsoft Azure peremhálózati eszköz tracert segítségével határozhatja meg, ha bármely meghaladja a 100 ms közötti ugrások késések fordulnak.
+A Microsoft Azure Edge-eszközön nyomkövetési tracert használatával határozza meg, hogy vannak-e bármilyen meghaladja a 100 ms közötti útválasztók ugrásainak késések.
 
-A helyi hálózatról futtatni *tracert* a VIP az Azure-átjáró vagy a virtuális gép. Miután látja csak * lett visszaadva, akkor tudja az Azure biztonsági elérte. Amikor megjelenik, amely tartalmazza az adott vissza "MSN" DNS-nevek, ismernie elérte a Microsoft gerincét.<br><br>
+A helyszíni hálózatról futtatni *tracert* , a virtuális IP-cím az Azure-átjáró vagy a virtuális gép. Ha csak * ad vissza, tudja elérte az Azure Edge-ben. Amikor megjelenik, amely tartalmazza az adott vissza "MSN" DNS-nevek, ismernie elérte a Microsoft gerinchálózatán keresztül.<br><br>
 ![Késés ellenőrzése](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
 ## <a name="next-steps"></a>További lépések
-További információt vagy a help tekintse meg a következőket:
+További információ vagy a Súgó tekintse meg az alábbi hivatkozásokat:
 
-- [Az Azure virtuális gépek hálózati teljesítmény optimalizálása](../virtual-network/virtual-network-optimize-network-bandwidth.md)
-- [A Microsoft támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+- [Azure-beli virtuális gépek hálózati teljesítmény optimalizálása](../virtual-network/virtual-network-optimize-network-bandwidth.md)
+- [A Microsoft ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

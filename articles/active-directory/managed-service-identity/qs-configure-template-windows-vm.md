@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: d8490dcba35cfeabb3da589f3d079571d5e98d3b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 000a8e2a9a4907387db8cb7b0f4416eee66642f8
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969204"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036710"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>A virtuális gépek Felügyeltszolgáltatás-identitás konfigurálása egy sablon használatával
 
@@ -59,7 +59,7 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identi
    > Ez a példa feltételezi, hogy változók például `vmName`, `storageAccountName`, és `nicName` van definiálva a sablonban.
    >
 
-   ![Képernyőkép a sablonhoz: keresse meg a virtuális gép](../media/msi-qs-configure-template-windows-vm/template-file-before.png) 
+   ![Képernyőkép a sablonhoz: keresse meg a virtuális gép](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
 3. Ahhoz, hogy a rendszerhez rendelt identitáshoz, adja hozzá a `"identity"` tulajdonság azonos szinten, a `"type": "Microsoft.Compute/virtualMachines"` tulajdonság. Az alábbi szintaxissal:
 
@@ -99,7 +99,7 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identi
 
 5. Ha elkészült, a sablon az alábbihoz hasonlóan kell kinéznie:
 
-   ![Képernyőkép a frissítés után a sablon](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
+   ![Képernyőkép a frissítés után a sablon](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-after.png)
 
 ### <a name="assign-a-role-the-vms-system-assigned-identity"></a>Szerepkör hozzárendelése a virtuális gép rendszer által hozzárendelt identitással
 

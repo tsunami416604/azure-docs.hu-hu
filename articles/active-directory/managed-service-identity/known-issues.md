@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 05096050dfc29aebd2859b298eef884dcd9a1111
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c48d03b6e8a3d850d02d2c36c35915f8214b00e8
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908076"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035812"
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Gyakori kérdések és ismert problémák a Felügyeltszolgáltatás-identitás (MSI) Azure Active Directory
 
@@ -85,7 +85,7 @@ Az elemek magyarázata:
 
 Ha egy virtuális gépen engedélyezve van a Felügyeltszolgáltatás-identitást, használja az "Automation-szkript" funkciót a virtuális gép vagy a saját erőforráscsoportján megkísérlésekor a következő hiba jelenik meg:
 
-![MSI-automatizálási parancsfájl exportálási hiba](../media/msi-known-issues/automation-script-export-error.png)
+![MSI-automatizálási parancsfájl exportálási hiba](../managed-service-identity/media/msi-known-issues/automation-script-export-error.png)
 
 A Managed Service Identity Virtuálisgép-bővítmény jelenleg nem támogatja a séma egy erőforráscsoport sablonjának exportálása lehetővé teszi. Ennek eredményeképpen a létrejött sablon nem jeleníti meg a Felügyeltszolgáltatás-identitást ahhoz, hogy az erőforráson konfigurációs paramétereket. Ezek a szakaszok manuálisan is hozzáadhatók a következő szereplő példák [konfigurálása a virtuális gépek Felügyeltszolgáltatás-identitását egy sablon használatával](qs-configure-template-windows-vm.md).
 
