@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: 995765b70c6cf2379bf6d6702971ddacec7428d5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ef45720981adcb1a3d847b0f5d1a9f675f850ff9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342453"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055151"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 1.x
 
@@ -188,20 +188,20 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction** || Meg kell `in`. Ez a paraméter beállítása automatikusan történik, amikor az eseményindító hoz létre az Azure Portalon. |
 |**name** || A függvénykód módosítása dokumentumok listájának jelölő a használt változó neve. | 
 |**connectionStringSetting**|**ConnectionStringSetting** | A figyelt Azure Cosmos DB-fiókhoz való csatlakozáshoz használt kapcsolati karakterlánc tartalmazó alkalmazásbeállítás neve. |
-|**databaseName**|**DatabaseName**  | A figyelt gyűjteményhez az Azure Cosmos DB-adatbázis neve. |
-|**collectionName** |**CollectionName** | A figyelt gyűjtemény neve. |
+|**DatabaseName**|**DatabaseName**  | A figyelt gyűjteményhez az Azure Cosmos DB-adatbázis neve. |
+|**CollectionName** |**CollectionName** | A figyelt gyűjtemény neve. |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Nem kötelező) A kapcsolati karakterláncot a szolgáltatásnak, amely tartalmazza a bérletek gyűjteményének tartalmazó alkalmazásbeállítás neve. Ha nincs megadva, a `connectionStringSetting` értéket használja. Ez a paraméter értéke a portálon a kötés létrehozásakor automatikusan. A bérletek gyűjteménye kapcsolati karakterláncára írási engedéllyel kell rendelkeznie.|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Nem kötelező) A database csatlakoztatásához használt bérletek tárolásához használni kívánt gyűjtemény neve. Ha nincs megadva, az értékét a `databaseName` beállítást használja. Ez a paraméter értéke a portálon a kötés létrehozásakor automatikusan. |
-|**leaseCollectionName** | **LeaseCollectionName** | (Nem kötelező) A használt bérletek tárolásához használni kívánt gyűjtemény neve. Ha nincs megadva, az érték `leases` szolgál. |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Nem kötelező) Ha a beállítása `true`, a bérletek gyűjteménye automatikusan létrejön, amikor még nem létezik. Az alapértelmezett érték `false`. |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| (Nem kötelező) A Kérelemegységek rendel a bérletek gyűjteménye létrehozásakor mennyisége határozza meg. Ez a beállítás csak használhatók, amikor nem `createLeaseCollectionIfNotExists` értékre van állítva `true`. Ez a paraméter értéke automatikusan, a kötés létrehozásakor a portál használatával.
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (Nem kötelező) Érték beállítása esetén azt ad hozzá egy előtagot a bérletek a bérletek gyűjteményének ennél a függvénynél, hatékonyan lehetővé teszi két különálló Azure Functions, az ugyanazon a bérletek gyűjteményének megosztása más előtagok használatával létrehozott.
-|**feedPollDelay**| **FeedPollDelay**| (Nem kötelező) Ha a készlet, azt határozza meg, ezredmásodpercben, a késleltetés között egy partíciót a hírcsatorna az új módosításokat a lekérdezések összes aktuális változtatások vannak ürítve. Alapértelmezés szerint 5000 (5 másodperces).
-|**leaseAcquireInterval**| **LeaseAcquireInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz elindít egy feladatot a számítási, ha a partíciók lesznek elosztva a gazdagép ismert példányok között. Alapértelmezés szerint 13000 (13 másodperc).
-|**leaseExpirationInterval**| **LeaseExpirationInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz, amelynek a bérlet egy bérletet, egy partíciót jelölő készül. A bérlet ezen az időtartamon belül nem újítja meg, ha azt eredményezi, hamarosan lejár, és a partíció tulajdonjogának áthelyezi egy másik példánya. Alapértelmezés szerint 60000 (60 másodperc).
-|**leaseRenewInterval**| **LeaseRenewInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, minden bérletek példány által jelenleg birtokolt partíciók megújítási időköz. Alapértelmezés szerint 17000 (17 másodperc).
-|**checkpointFrequency**| **CheckpointFrequency**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, a bérlet ellenőrzőpontok közötti időtartam. Alapértelmezés szerint mindig után a sikeres a függvényhívást.
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Nem kötelező) Ha a beállítás, azt testreszabja egy függvény hívásához szükséges fogadott elemek maximális számát.
+|**LeaseCollectionName** | **LeaseCollectionName** | (Nem kötelező) A használt bérletek tárolásához használni kívánt gyűjtemény neve. Ha nincs megadva, az érték `leases` szolgál. |
+|**createLeaseCollectionIfNotExists** | **createLeaseCollectionIfNotExists** | (Nem kötelező) Ha a beállítása `true`, a bérletek gyűjteménye automatikusan létrejön, amikor még nem létezik. Az alapértelmezett érték `false`. |
+|**LeasesCollectionThroughput**| **LeasesCollectionThroughput**| (Nem kötelező) A Kérelemegységek rendel a bérletek gyűjteménye létrehozásakor mennyisége határozza meg. Ez a beállítás csak használhatók, amikor nem `createLeaseCollectionIfNotExists` értékre van állítva `true`. Ez a paraméter értéke automatikusan, a kötés létrehozásakor a portál használatával.
+|**LeaseCollectionPrefix**| **LeaseCollectionPrefix**| (Nem kötelező) Érték beállítása esetén azt ad hozzá egy előtagot a bérletek a bérletek gyűjteményének ennél a függvénynél, hatékonyan lehetővé teszi két különálló Azure Functions, az ugyanazon a bérletek gyűjteményének megosztása más előtagok használatával létrehozott.
+|**FeedPollDelay**| **FeedPollDelay**| (Nem kötelező) Ha a készlet, azt határozza meg, ezredmásodpercben, a késleltetés között egy partíciót a hírcsatorna az új módosításokat a lekérdezések összes aktuális változtatások vannak ürítve. Alapértelmezés szerint 5000 (5 másodperces).
+|**LeaseAcquireInterval**| **LeaseAcquireInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz elindít egy feladatot a számítási, ha a partíciók lesznek elosztva a gazdagép ismert példányok között. Alapértelmezés szerint 13000 (13 másodperc).
+|**LeaseExpirationInterval**| **LeaseExpirationInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz, amelynek a bérlet egy bérletet, egy partíciót jelölő készül. A bérlet ezen az időtartamon belül nem újítja meg, ha azt eredményezi, hamarosan lejár, és a partíció tulajdonjogának áthelyezi egy másik példánya. Alapértelmezés szerint 60000 (60 másodperc).
+|**LeaseRenewInterval**| **LeaseRenewInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, minden bérletek példány által jelenleg birtokolt partíciók megújítási időköz. Alapértelmezés szerint 17000 (17 másodperc).
+|**CheckpointFrequency**| **CheckpointFrequency**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, a bérlet ellenőrzőpontok közötti időtartam. Alapértelmezés szerint mindig után a sikeres a függvényhívást.
+|**MaxItemsPerInvocation**| **MaxItemsPerInvocation**| (Nem kötelező) Ha a beállítás, azt testreszabja egy függvény hívásához szükséges fogadott elemek maximális számát.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1048,7 +1048,7 @@ A következő példa bemutatja egy [JavaScript-függvény](functions-reference-n
 
 A következő JavaScript-kódot:
 
-```cs
+```javascript
 module.exports = function (context, req, toDoItem) {
     context.log('JavaScript queue trigger function processed work item');
     if (!toDoItem)
@@ -1168,8 +1168,8 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type**     || Meg kell `documentdb`.        |
 |**direction**     || Meg kell `in`.         |
 |**name**     || A kötési paraméter, amely a dokumentumot, a függvény neve.  |
-|**databaseName** |**DatabaseName** |A dokumentum tartalmazó adatbázis.        |
-|**collectionName** |**CollectionName** | A gyűjtemény, amely tartalmazza a dokumentum neve. |
+|**DatabaseName** |**DatabaseName** |A dokumentum tartalmazó adatbázis.        |
+|**CollectionName** |**CollectionName** | A gyűjtemény, amely tartalmazza a dokumentum neve. |
 |**id**    | **Azonosító** | A lekérdezni kívánt a dokumentum Azonosítóját. Ez a tulajdonság támogatja [kötési kifejezésekben](functions-triggers-bindings.md#binding-expressions-and-patterns). Ne állítsa mind a **azonosító** és **SQL-lekérdezés** tulajdonságait. Ha nem állít be egy, a rendszer lekéri a teljes gyűjteményt. |
 |**sqlQuery**  |**SqlQuery**  | Egy Azure Cosmos DB SQL-lekérdezés több dokumentumok használt. A tulajdonság támogatja a futtatókörnyezet kötések, mint ebben a példában: `SELECT * FROM c where c.departmentId = {departmentId}`. Ne állítsa mind a **azonosító** és **SQL-lekérdezés** tulajdonságait. Ha nem állít be egy, a rendszer lekéri a teljes gyűjteményt.|
 |**kapcsolat**     |**ConnectionStringSetting**|Az Azure Cosmos DB kapcsolati sztringjét tartalmazó alkalmazásbeállítás neve.        |
@@ -1589,11 +1589,11 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type**     || Meg kell `documentdb`.        |
 |**direction**     || Meg kell `out`.         |
 |**name**     || A kötési paraméter, amely a dokumentumot, a függvény neve.  |
-|**databaseName** | **DatabaseName**|Az a gyűjtemény, amelyben létrehozza a dokumentumban tartalmazó adatbázis.     |
-|**collectionName** |**CollectionName**  | A gyűjtemény, amelyben létrehozza a dokumentumban neve. |
+|**DatabaseName** | **DatabaseName**|Az a gyűjtemény, amelyben létrehozza a dokumentumban tartalmazó adatbázis.     |
+|**CollectionName** |**CollectionName**  | A gyűjtemény, amelyben létrehozza a dokumentumban neve. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Logikai érték jelzi, hogy a gyűjtemény létrehozásakor a rendszer még nem létezik. Az alapértelmezett érték *hamis* , mert az új gyűjtemény hozható létre fenntartott átviteli sebesség, amelynek költsége van hatással. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/documentdb/) olvasható.  |
 |**partitionKey**|**PartitionKey** |Amikor `CreateIfNotExists` értéke true, határozza meg a partíciós kulcs elérési útja a létrehozott gyűjteményre.|
-|**collectionThroughput**|**CollectionThroughput**| Amikor `CreateIfNotExists` értéke true, határozza meg a [átviteli](../cosmos-db/set-throughput.md) a létrehozott gyűjtemény.|
+|**CollectionThroughput**|**CollectionThroughput**| Amikor `CreateIfNotExists` értéke true, határozza meg a [átviteli](../cosmos-db/set-throughput.md) a létrehozott gyűjtemény.|
 |**kapcsolat**    |**ConnectionStringSetting** |Az Azure Cosmos DB kapcsolati sztringjét tartalmazó alkalmazásbeállítás neve.        |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

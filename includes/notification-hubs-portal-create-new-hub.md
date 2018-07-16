@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c718fa972b9d6cba13a13edd3c7e8df29fa63207
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22c1d24042072de5d57d41da379a5fad18180de7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33835760"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972524"
 ---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza az **Erőforrás létrehozása** > **Web + mobil** > **Értesítési központ** elemet.
+2. Válassza az **Erőforrás létrehozása** > **Mobil** > **Értesítési központ** elemet.
    
       ![Azure Portal – Értesítési központ létrehozása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
       
@@ -36,11 +36,11 @@ ms.locfileid: "33835760"
 4. Válassza az **Értesítések** (harang ikon), majd az **Erőforrás megnyitása** lehetőséget. 
 
       ![Azure Portal – Értesítések -> Erőforrás megnyitása](./media/notification-hubs-portal-create-new-hub/notification-go-to-resource.png)    
-5. A listáról válassza a **Hozzáférési szabályzatok** lehetőséget. Figyelje meg a két elérhető kapcsolati karakterláncot. Ezekre később szükség lesz a leküldéses értesítések kezeléséhez.
+5. A listáról válassza a **Hozzáférési szabályzatok** lehetőséget. Figyelje meg a két elérhető kapcsolati sztringet. Ezekre később szükség lesz a leküldéses értesítések kezeléséhez.
 
       >[!IMPORTANT]
       >**NE** használja a DefaultFullSharedAccessSignature elemet az alkalmazásban. Ezt csak a háttérben használhatja.
       >
    
-      ![Azure Portal – értesítési központ kapcsolati karakterláncai](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
+      ![Azure Portal – értesítési központ kapcsolati sztringjei](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
 

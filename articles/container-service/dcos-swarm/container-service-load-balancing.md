@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 62967636a4d80f72f731a666947d5d4d5e47f7e5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7e71b279d6681696b8666846cfbd27007f464679
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163044"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37864859"
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Tárolók terheléselosztása egy Azure Container Service DC/OS-fürtben
 
-Ebben a cikkben azt vizsgáljuk meg, hogyan lehet belső terheléselosztót létrehozni a Marathon-LB-vel egy, a DC/OS által kezelt Azure Container Service szolgáltatásban. Ez a konfiguráció lehetőséget nyújt az alkalmazások horizontális skálázására. Ezenkívül lehetővé teszi a nyilvános és a privát ügynökös fürtök használatát. Ehhez a terheléselosztókat a nyilvános fürtbe kell helyezni, az alkalmazástárolókat pedig a privát fürtbe. Ebben az oktatóanyagban az alábbiakat végezte el:
+Ebben a cikkben azt vizsgáljuk meg, hogyan lehet belső terheléselosztót létrehozni a Marathon-LB-vel egy, a DC/OS által kezelt Azure Container Service szolgáltatásban. Ez a konfiguráció lehetőséget nyújt az alkalmazások horizontális skálázására. Ezenkívül lehetővé teszi a nyilvános és a privát ügynökös fürtök használatát. Ehhez a terheléselosztókat a nyilvános fürtbe kell helyezni, az alkalmazástárolókat pedig a privát fürtbe. Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Egy Marathon Load Balancer konfigurálása

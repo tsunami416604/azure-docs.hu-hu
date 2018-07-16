@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 8b0a591f84dd8ece0f6a8e2de19cddfee21b28e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e304242718478cae2670372a06abe07f926fbed2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449949"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054743"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -93,7 +93,7 @@ További információkért lásd: [Helyszíni identitások integrálása az Azur
 
 **V:** Igen, az Azure AD az [Azure AD Hozzáférési panelén](http://myapps.microsoft.com) keresztül biztosítja a felhasználóknak az önkiszolgáló felületet és az alkalmazások elérését. Ha Ön Office 365-felhasználó, észreveheti, hogy számos képesség megegyezik az Office 365 portál képességeivel.
 
-További információkért lásd: [Bevezetés a Hozzáférési panel használatába](../active-directory-saas-access-panel-introduction.md).
+További információkért lásd: [Bevezetés a Hozzáférési panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 - - -
 **K: Az Azure AD segít a helyszíni infrastruktúrám kezelésében?**

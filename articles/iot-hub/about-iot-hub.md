@@ -3,18 +3,18 @@ title: Az Azure IoT Hub bemutatása | Microsoft Docs
 description: Tudnivalók az Azure IoT Hubról. Ez az IoT-szolgáltatás skálázható adatfeldolgozáshoz, eszközkezeléshez és biztonsághoz lett tervezve.
 author: nberdy
 ms.author: nberdy
-ms.date: 04/27/2018
+ms.date: 07/04/2018
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
 manager: briz
-ms.openlocfilehash: 1d3df8f1f65d02502c11c6d6ef431292efea64e9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0e54c48eb63c5b70626e72f83de6d3676710d4c4
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632356"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860156"
 ---
 # <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
 
@@ -42,7 +42,7 @@ Az IoT Hub biztonságos kommunikációs csatornát nyújt az eszközöknek az ad
 
 ## <a name="route-device-data"></a>Eszközadatok útválasztása
 
-A beépített üzenet-útválasztási funkció rugalmasságot biztosít az automatikus, szabályalapú üzenetelosztáshoz:
+A beépített üzenet-útválasztási funkció rugalmasságot biztosít az automatikus, szabályalapú üzenetelosztás beállításához:
 
 * Az üzenet-átirányítással vezérelheti, hová küldje a központ az eszköz telemetriai adatait.
 * Az üzenetek több végpontra való irányítása nem jár többletköltségekkel.
@@ -108,4 +108,4 @@ Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, a
 
 A végpontok közötti IoT-megoldás kipróbálásához tekintse meg az IoT Hub rövid útmutatóit:
 
-* [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](iot-hub-get-started.md)
+* [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-node.md)

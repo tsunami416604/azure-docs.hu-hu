@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: e4e90082f483720699fb029db33bc8110173c0aa
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: bc53d245dd814b6f9bb4edab89ddcbf841f16a8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082954"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38579177"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -120,6 +120,10 @@ Maga az Azure Data Factory nem tárol adatokat. Lehetővé teszi viszont olyan a
 Bár a Data Factory csak bizonyos régiókban érhető el, az adatok Data Factoryval történő áthelyezését biztosító szolgáltatás globálisan számos régióban elérhető. Ha az adattár tűzfal mögött található, akkor a helyszíni környezetben telepített helyi Integration Runtime végzi az adatok áthelyezését.
 
 Tegyük fel például, hogy számítási környezetei, mint például az Azure HDInsight-fürt és az Azure Machine Learning a nyugat-európai régión kívül futnak. Létrehozhat egy Azure Data Factory-példányt az USA keleti vagy 2. keleti régiójában, és felhasználhatja a Nyugat-Európában lévő számítási környezetein futtatott feladatok ütemezéséhez. A Data Factory néhány ezredmásodperc alatt aktiválja a feladatot a számítási környezetben, a feladatnak a számítási környezetben való futtatásához szükséges idő viszont nem változik.
+
+## <a name="accessibility"></a>Kisegítő lehetőségek
+
+A Data Factory felhasználói felülete az Azure Portalon akadálymentes.
 
 ## <a name="compare-with-version-1"></a>Összehasonlítás az 1-es verzióval
 A Data Factory szolgáltatás 1-es verziója és aktuális verziója közötti különbségek listájáért lásd: [Összehasonlítás az 1-es verzióval](compare-versions.md). 

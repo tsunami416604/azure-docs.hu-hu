@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969367"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Oktatóanyag: Azure Active Directory-integráció az ív közzétételi – egyszeri bejelentkezés
 
@@ -239,7 +239,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Kattintva a ív közzétételi - SSO csempe a hozzáférési panelen, meg kell lekérése automatikusan bejelentkezett a ív közzétételi - alkalmazás egyszeri Bejelentkezéssel való.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../active-directory-saas-access-panel-introduction.md). 
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 

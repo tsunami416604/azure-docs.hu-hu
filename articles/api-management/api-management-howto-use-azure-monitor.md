@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 658588b29e65c9b1cd2f9d82c1c4528929875b2f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b4c885758f572851f058edb6e7851d650faed9f9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935572"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972998"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
@@ -58,10 +58,14 @@ Az API Management percenként biztosít mérőszámokat, így közel valós idej
 A mérőszámok elérése:
 
 1. Válassza a lap alján lévő menü **Metrika** elemét.
-2. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat (több mérőszámot is hozzáadhat). 
 
+    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+
+2. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat (több mérőszámot is hozzáadhat).  
     Például válassza az **Összes átjárókérés** és a **Sikertelen átjárókérések** mérőszámot az elérhető mérőszámok listájából.
-3. A diagram az API-hívások teljes számát mutatja, és a sikertelen API-hívások számát is megjeleníti. 
+3. A diagram az API-hívások teljes számát mutatja, és a sikertelen API-hívások számát is megjeleníti.
+
+    ![metrikadiagram](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Riasztási szabály beállítása jogosulatlan hívások esetére
 
@@ -73,7 +77,10 @@ A mérőszámok és tevékenységnaplók alapján beállíthatja, hogy milyen ri
 
 A riasztások konfigurálása:
 
-1. Válassza a lap alján lévő menü **Riasztási szabályok** elemét.
+1. Válassza a lap alján lévő menüsáv **Riasztások (klasszikus)** elemét.
+
+    ![riasztások](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+
 2. Válassza a **Metrikariasztás hozzáadása** lehetőséget.
 3. Adja meg a riasztás **Nevét**.
 4. A monitorozni kívánt mérőszámként válassza a **Jogosulatlan átjárókérések** mérőszámot.
@@ -100,6 +107,12 @@ A tevékenységnaplók megtekintése:
 1. Válassza ki az APIM-szolgáltatáspéldányt.
 2. Kattintson a **Tevékenységnapló** gombra.
 
+    ![tevékenységnapló](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
+
+3. Válassza ki a kívánt szűrési hatókört, és kattintson az **Alkalmaz** elemre.
+
+    ![tevékenységnaplók](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
 A diagnosztikai naplók rengeteg információt tartalmaznak a műveletekkel és a hibákkal kapcsolatban, amelyek felülvizsgálati és hibaelhárítási célból egyaránt fontosak lehetnek. A diagnosztikai naplók különböznek a tevékenységnaplóktól. A tevékenységnaplók az Azure-erőforrásokon végrehajtott műveletekkel kapcsolatos információkat tartalmaznak. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
@@ -107,7 +120,10 @@ A diagnosztikai naplók rengeteg információt tartalmaznak a műveletekkel és 
 Diagnosztikai naplók konfigurálása:
 
 1. Válassza ki az APIM-szolgáltatáspéldányt.
-2. Kattintson a **Diagnosztikai napló** gombra.
+2. Kattintson a **Diagnosztikai naplók** elemre.
+
+    ![diagnosztikai naplók](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+
 3. Kattintson a **Diagnosztika bekapcsolása** elemre. Diagnosztikai naplókat és mérőszámokat archiválhat egy tárfiókba, majd egy eseményközpontba streamelheti vagy a Log Analyticsbe küldheti őket. 
 
 Az API Management jelenleg különálló API-kérelmekről kínál óránként kötegelt diagnosztikai naplókat, amelyek bejegyzései a következő mintát követik:
@@ -161,42 +177,42 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | logikai | Akkor igaz, ha a befejezett HTTP-kérelem válaszának állapotkódja a 2xx vagy 3xx tartományon belülre esik. |
 | time | dátum-idő | Az átjárótól érkező HTTP-kérelem megérkezésének időbélyegzője |
-| operationName | karakterlánc | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
-| category | karakterlánc | A „GatewayLogs” állandó érték |
+| operationName | sztring | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
+| category | sztring | A „GatewayLogs” állandó érték |
 | durationMs | egész szám | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |
-| callerIpAddress | karakterlánc | Az átjáró közvetlen hívójának IP-címe (közvetítő is lehet) |
-| correlationId | karakterlánc | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
-| location | karakterlánc | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
-| httpStatusCodeCategory | karakterlánc | A HTTP-válasz állapotkódjának kategóriája: Sikeres (301 vagy alacsonyabb, 304 vagy 307), Jogosulatlan (401, 403, 429), Hibás (400, 500 és 600 között), Egyéb |
-| resourceId | karakterlánc | A /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<erőforráscsoport>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> API Management-erőforrás azonosítója |
+| callerIpAddress | sztring | Az átjáró közvetlen hívójának IP-címe (közvetítő is lehet) |
+| correlationId | sztring | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
+| location | sztring | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
+| httpStatusCodeCategory | sztring | A HTTP-válasz állapotkódjának kategóriája: Sikeres (301 vagy alacsonyabb, 304 vagy 307), Jogosulatlan (401, 403, 429), Hibás (400, 500 és 600 között), Egyéb |
+| resourceId | sztring | A /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<erőforráscsoport>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> API Management-erőforrás azonosítója |
 | properties | objektum | Az aktuális kérelem tulajdonságai |
-| method | karakterlánc | A bejövő kérelem HTTP-metódusa |
-| url | karakterlánc | A bejövő kérelem URL-címe |
-| clientProtocol | karakterlánc | A bejövő kérelem HTTP-protokolljának verziója |
+| method | sztring | A bejövő kérelem HTTP-metódusa |
+| url | sztring | A bejövő kérelem URL-címe |
+| clientProtocol | sztring | A bejövő kérelem HTTP-protokolljának verziója |
 | responseCode | egész szám | Az ügyfélnek küldött HTTP-válasz állapotkódja |
-| backendMethod | karakterlánc | A háttérrendszernek küldött kérelem HTTP-metódusa |
-| backendUrl | karakterlánc | A háttérrendszernek küldött kérelem URL-címe |
+| backendMethod | sztring | A háttérrendszernek küldött kérelem HTTP-metódusa |
+| backendUrl | sztring | A háttérrendszernek küldött kérelem URL-címe |
 | backendResponseCode | egész szám | A háttérrendszertől érkezett HTTP-válasz kódja |
-| backendProtocol | karakterlánc | A háttérrendszernek küldött kérelem HTTP-protokolljának verziója | 
+| backendProtocol | sztring | A háttérrendszernek küldött kérelem HTTP-protokolljának verziója | 
 | requestSize | egész szám | A kérelem feldolgozása során az ügyféltől érkezett bájtok száma | 
 | responseSize | egész szám | A kérelem feldolgozása során az ügyfélnek küldött bájtok száma | 
-| cache | karakterlánc | Az API Management-gyorsítótár kérelemfeldolgozásban való részvételének állapota (pl. találat, tévesztés, nincs) | 
+| cache | sztring | Az API Management-gyorsítótár kérelemfeldolgozásban való részvételének állapota (pl. találat, tévesztés, nincs) | 
 | cacheTime | egész szám | Az API Management-gyorsítótár I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
 | backendTime | egész szám | A háttérrendszer I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
 | clientTime | egész szám | Az ügyfél I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
-| apiId | karakterlánc | Az aktuális kérelem API-entitásazonosítója | 
-| operationId | karakterlánc | Az aktuális kérelem műveleti entitásának azonosítója | 
-| productId | karakterlánc | Az aktuális kérelem termékentitásának azonosítója | 
-| userId | karakterlánc | Az aktuális kérelem felhasználói entitásának azonosítója | 
-| apimSubscriptionId | karakterlánc | Az aktuális kérelem előfizetési entitásának azonosítója | 
-| backendId | karakterlánc | Az aktuális kérelem háttérentitásának azonosítója | 
+| apiId | sztring | Az aktuális kérelem API-entitásazonosítója | 
+| operationId | sztring | Az aktuális kérelem műveleti entitásának azonosítója | 
+| productId | sztring | Az aktuális kérelem termékentitásának azonosítója | 
+| userId | sztring | Az aktuális kérelem felhasználói entitásának azonosítója | 
+| apimSubscriptionId | sztring | Az aktuális kérelem előfizetési entitásának azonosítója | 
+| backendId | sztring | Az aktuális kérelem háttérentitásának azonosítója | 
 | LastError | objektum | A legutóbbi kérelemfeldolgozási hiba | 
 | elapsed | egész szám | A kérelem átjáróhoz való megérkezése és a hiba felbukkanása között eltelt ezredmásodpercek száma | 
-| source | karakterlánc | A hibát okozó házirend vagy belső feldolgozáskezelő neve | 
-| scope | karakterlánc | A hibát okozó házirendet tartalmazó szabályzatdokumentum hatóköre | 
-| section | karakterlánc | A hibát okozó szabályzatot tartalmazó szabályzatdokumentum szakasza | 
-| reason | karakterlánc | A hiba oka | 
-| message | karakterlánc | Hibaüzenet | 
+| source | sztring | A hibát okozó házirend vagy belső feldolgozáskezelő neve | 
+| scope | sztring | A hibát okozó házirendet tartalmazó szabályzatdokumentum hatóköre | 
+| section | sztring | A hibát okozó szabályzatot tartalmazó szabályzatdokumentum szakasza | 
+| reason | sztring | A hiba oka | 
+| message | sztring | Hibaüzenet | 
 
 ## <a name="next-steps"></a>További lépések
 

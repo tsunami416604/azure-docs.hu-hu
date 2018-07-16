@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 2018f5b7051f2b6906372dad3319c763974b93b1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 49702349b1c2476f5743122b33cb3375e54df191
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355185"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930096"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Rövid útmutató: Java-webalkalmazás létrehozása a Linuxon futó App Service-ben
 
@@ -76,7 +76,7 @@ A Mavenből való üzembe helyezéshez adja hozzá a következő bővítménydef
       <plugin>
         <groupId>com.microsoft.azure</groupId> 
         <artifactId>azure-webapp-maven-plugin</artifactId> 
-        <version>1.1.0</version>
+        <version>1.2.0</version>
         <configuration> 
           <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup> 
           <appName>YOUR_WEB_APP</appName> 
@@ -106,7 +106,39 @@ Frissítse a következő helyőrzőket a bővítmény konfigurációjában:
 | `YOUR_RESOURCE_GROUP` | Az új erőforráscsoport neve, amelyben létrehozza a webalkalmazást. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-névre, például *TestResources*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
 | `YOUR_WEB_APP` | Az alkalmazásnév az alkalmazás gazdagépnevének része lesz az Azure-beli üzembe helyezést követően (YOUR_WEB_APP.azurewebsites.net). Frissítse ezt az értéket egy egyedi névre, amelyet a Java-alkalmazást futtató új Azure-webalkalmazás kap, például: *contoso*. |
 
-A konfiguráció `linuxRuntime` eleme határozza meg, hogy az alkalmazás melyik beépített Linux-rendszerképet használja.
+A konfiguráció `linuxRuntime` eleme határozza meg, hogy az alkalmazás melyik beépített Linux-rendszerképet használja. A támogatott futtatókörnyezeti vermeket [ezzel a hivatkozással](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin#runtime-stacks) érheti el. 
+
+
+> [!NOTE] 
+> Ebben a cikkben csak WAR-fájlokat használunk. Azonban a bővítmény támogatja a JAR-webalkalmazásokat is, a *pom.xml* fájl `<build>` részében található következő bővítménydefiníció használatával:
+>
+>```xml
+>    <plugins>
+>      <plugin>
+>        <groupId>com.microsoft.azure</groupId> 
+>        <artifactId>azure-webapp-maven-plugin</artifactId> 
+>        <version>1.2.0</version>
+>        <configuration> 
+>          <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup> 
+>          <appName>YOUR_WEB_APP</appName> 
+>          <linuxRuntime>jre8</linuxRuntime>   
+>          <!-- This is to make sure the jar file will not be occupied during the deployment -->
+>          <stopAppDuringDeployment>true</stopAppDuringDeployment>
+>          <deploymentType>ftp</deploymentType> 
+>          <resources> 
+>              <resource> 
+>                  <directory>${project.basedir}/target</directory> 
+>                  <targetPath>webapps</targetPath> 
+>                  <includes> 
+>                      <!-- Currently it is required to set as app.jar -->
+>                      <include>app.jar</include> 
+>                  </includes>  
+>              </resource> 
+>          </resources> 
+>        </configuration>
+>      </plugin>
+>    </plugins>
+>```    
 
 Hajtsa végre az alábbi parancsot, és kövesse az utasításokat az Azure CLI-vel való hitelesítéshez:
 

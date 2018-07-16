@@ -12,20 +12,18 @@ ms.workload: na
 ms.date: 06/21/2018
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 515c9917add27663e8d145fee3e1effc89291bc0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 0c8734bec1ce14a3a9692efa3a1fcf975067953a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033912"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968902"
 ---
-<!-- **TODO** Update publish config with repo paths before publishing! -->
-
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Eszközök belsővezérlőprogram-frissítési folyamatának implementálása
 
 Előfordulhat, hogy frissíteni kell az IoT Hubhoz csatlakoztatott eszközök belső vezérlőprogramját. Például előfordulhat, hogy új funkciókat szeretne hozzáadni a belső vezérlőprogramhoz vagy biztonsági javításokat szeretne alkalmazni. Számos IoT-forgatókönyvben nem célszerű fizikailag megkeresni, majd manuálisan alkalmazni az eszközök belsővezérlőprogram-frissítéseit. Ez az oktatóanyag bemutatja, hogyan indítható el és monitorozható távolról a belsővezérlőprogram-frissítési folyamat a Hubhoz csatlakoztatott háttéralkalmazásból.
 
-A belsővezérlőprogram-frissítési folyamat létrehozásához és monitorozásához az oktatóanyagban szereplő háttéralkalmazás létrehoz egy _konfigurációt_ az IoT Hubban. Az IoT Hub automatikus eszközkezelése ezt a konfigurációt használja az _ikereszköz kívánt tulajdonságainak_ frissítéséhez minden hűtőeszközön. A kívánt tulajdonságok adják meg a szükséges belsővezérlőprogram-frissítés részleteit. Amíg a hűtőeszközök a belsővezérlőprogram-frissítési folyamatot futtatják, jelentést küldenek az állapotukról a háttéralkalmazásnak az _ikereszköz jelentett tulajdonságainak_ használatával. A háttéralkalmazás a konfigurációval monitorozza az eszközről küldött jelentett tulajdonságokat, és nyomon követi a belsővezérlőprogram-frissítési folyamatot a befejezésig:
+A belsővezérlőprogram-frissítési folyamat létrehozásához és monitorozásához az oktatóanyagban szereplő háttéralkalmazás létrehoz egy _konfigurációt_ az IoT Hubban. Az IoT Hub [automatikus eszközkezelése](iot-hub-auto-device-config.md) ezt a konfigurációt használja az _ikereszköz kívánt tulajdonságainak_ frissítéséhez minden hűtőeszközön. A kívánt tulajdonságok adják meg a szükséges belsővezérlőprogram-frissítés részleteit. Amíg a hűtőeszközök a belsővezérlőprogram-frissítési folyamatot futtatják, jelentést küldenek az állapotukról a háttéralkalmazásnak az _ikereszköz jelentett tulajdonságainak_ használatával. A háttéralkalmazás a konfigurációval monitorozza az eszközről küldött jelentett tulajdonságokat, és nyomon követi a belsővezérlőprogram-frissítési folyamatot a befejezésig:
 
 ![A belsővezérlőprogram-frissítési folyamat](media/tutorial-firmware-update/Process.png)
 
@@ -101,7 +99,7 @@ Ha ezeket a parancsokat Windows-parancssorban vagy PowerShell-parancssorban futt
 
 ## <a name="start-the-firmware-update"></a>A belsővezérlőprogram-frissítés elindítása
 
-Hozzon létre egy automatikus eszközkezelési konfigurációt a háttéralkalmazásban, hogy elkezdhesse a belsővezérlőprogram-frissítési folyamatot az összes eszközön, amelyek **devicetype** értéke „chiller”. Ez a szakasz a következőket ismerteti:
+Hozzon létre egy [automatikus eszközkezelési konfigurációt](iot-hub-auto-device-config.md#create-a-configuration) a háttéralkalmazásban, hogy elkezdhesse a belsővezérlőprogram-frissítési folyamatot az összes olyan eszközön, amelynek **devicetype** értéke „chiller”. Ez a szakasz a következőket ismerteti:
 
 * Konfiguráció létrehozása háttéralkalmazásból.
 * A feladat monitorozása a befejeződéséig.

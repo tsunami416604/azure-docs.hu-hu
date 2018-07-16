@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
-ms.date: 04/17/2018
+ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: b742dc94b6f6bea76a0809114f300287633c2a67
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 4c34bd10768ab7acf4700b29386d3a71532490db
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38674852"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rövid útmutató: Csevegőszoba létrehozása a SignalR szolgáltatással
 
@@ -86,21 +87,21 @@ Ebben a szakaszban hozzáadja a [Secret Manager eszközt](https://docs.microsoft
 
 1. Adjon hozzá egy, a `Microsoft.Azure.SignalR` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-preview1-10009
+        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
 
 2. A projekt csomagjainak visszaállításához futtassa a következő parancsot.
 
         dotnet restore
 
-3. Adjon hozzá egy *Azure:SignalR:ConnectionString* nevű titkos kódot a Secret Managerhez. Ez a titkos kód tartalmazza a SignalR szolgáltatási erőforrás elérésére szolgáló kapcsolati karakterláncot. A SignalR alapértelmezés szerint az *Azure:SignalR:ConnectionString* konfigurációs kulcsot keresi a kapcsolat létrehozásához. Cserélje le az értéket az alábbi parancsban a SignalR szolgáltatási erőforráshoz tartozó kapcsolati karakterláncra.
+3. Adjon hozzá egy *Azure__SignalR__ConnectionString* nevű titkos kódot a Secret Managerhez. A titkos kód egy hierarchikus konfigurációs érték, és a kettőspont (:) használata esetleg nem minden platformon megengedett. Az ebben a titkos kódban használt dupla aláhúzásjel (__) használata minden platformon támogatott.  Ez a titkos kód tartalmazza a SignalR szolgáltatási erőforrás elérésére szolgáló kapcsolati sztringet. A SignalR alapértelmezés szerint az *Azure__SignalR__ConnectionString* konfigurációs kulcsot keresi a kapcsolat létrehozásához. Cserélje le az értéket az alábbi parancsban a SignalR szolgáltatási erőforráshoz tartozó kapcsolati sztringre.
 
     Ezt a parancsot abban a könyvtárban kell végrehajtani, ahol a *.csproj* fájl található.
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure__SignalR__ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
     ```
 
-    A Secret Managerre csak addig van szükség a webalkalmazás teszteléséhez, amíg azt helyben futtatja. Egy későbbi oktatóanyagban a webes csevegőalkalmazást üzembe fogja helyezni az Azure-ban. Amikor a webalkalmazást az Azure-ban üzemelteti, a kapcsolati karakterlánc Secret Managerben való tárolása helyett egy alkalmazásbeállítást fog használni.
+    A Secret Managerre csak addig van szükség a webalkalmazás teszteléséhez, amíg azt helyben futtatja. Egy későbbi oktatóanyagban a webes csevegőalkalmazást üzembe fogja helyezni az Azure-ban. Amikor a webalkalmazást az Azure-ban üzemelteti, a kapcsolati sztring Secret Managerben való tárolása helyett egy alkalmazásbeállítást fog használni.
 
 4. Nyissa meg a *Startup.cs* fájlt, és frissítse a `ConfigureServices` metódust úgy, hogy a `services.AddSignalR().AddAzureSignalR()` metódus meghívásával használja az Azure SignalR szolgáltatást:
 
@@ -112,7 +113,7 @@ Ebben a szakaszban hozzáadja a [Secret Manager eszközt](https://docs.microsoft
     }
     ```
 
-    Azáltal, hogy nem ad meg paramétert az `AddAzureSignalR()` metódushoz, ez a kód az alapértelmezett *Azure:SignalR:ConnectionString* konfigurációs kulcsot használja a SignalR szolgáltatási erőforrás kapcsolati karakterláncaként.
+    Azáltal, hogy nem ad meg paramétert az `AddAzureSignalR()` metódushoz, ez a kód az alapértelmezett *Azure__SignalR__ConnectionString* konfigurációs kulcsot használja a SignalR szolgáltatási erőforrás kapcsolati sztringjeként.
 
 5. Még a *Startup.cs* fájlban módosítsa a `Configure` metódust az `app.UseStaticFiles()` meghívása helyett az alábbi kódra, majd mentse a fájlt.
 
@@ -246,13 +247,13 @@ Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és a
 Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat. 
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
+> Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
 > 
 > 
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
-A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. Ebben a rövid útmutatóban a *SignalRTestResources* nevű erőforráscsoportot használtuk. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** lehetőségre.
+A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. Ebben a rövid útmutatóban a *SignalRTestResources* nevű erőforráscsoportot használtuk. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** elemre.
 
    
 ![Törlés](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)

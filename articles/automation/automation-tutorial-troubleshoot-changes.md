@@ -11,12 +11,12 @@ ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4d62e8e4cb778e60b39e502f09ce0aafca9b5212
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34054690"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866817"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -113,6 +113,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
 |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
 |Elérési út megadása     | A fájl elérési útja, például: „c:\temp\myfile.txt”       |
+|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
 
 ### <a name="add-a-linux-file"></a>Linux-fájl hozzáadása
 
@@ -130,6 +131,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
 |Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Mellőzés** – Mellőzi a szimbolikus hivatkozásokat, és nem szerepelteti a hivatkozott fájlokat/címtárakat<br>**Követés** – Követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat<br>**Kezelés** – Követi a szimbolikus hivatkozásokat, és lehetővé teszi a visszaadott tartalom kezelésének módosítását      |
+|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
 
    > [!NOTE]   
    > A „Kezelés” használata nem ajánlott, mert a fájltartalom lekérése nem támogatott.

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 47d52fa412adf3f8e7f0c3c4d4afaf9009b4783e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dc857760cf0d3fa2e146f22196b7bc36d119df5f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651421"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869570"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
 
@@ -49,7 +49,7 @@ A Node.js aktuális verzióját a következő paranccsal ellenőrizheti a fejles
 node --version
 ```
 
-Töltse le a Node.js eszközszimulátor mintaprojektjét a https://github.com/Azure-Samples/iot-hub-tutorials-node/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
+Töltse le a Node.js eszközszimulátor mintaprojektjét a https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -123,6 +123,9 @@ Ezúttal hitelesítési hibát lát, amikor az alkalmazás csatlakozni próbál:
 Ha az eszköze az IoT Hub egyik eszköz SDK-ját használja, az SDK kódtár kódja hozza létre a hubbal való hitelesítéshez használt SAS-jogkivonatot. A SAS-jogkivonat a hubja nevéből, az eszköze nevéből és az eszközkulcsból jön létre.
 
 Bizonyos esetekben előfordulhat, például egy felhő protokollátjárójában vagy egy egyéni hitelesítési séma részeként, hogy saját kezűleg kell létrehoznia a SAS-jogkivonatot. A SAS létrehozási kódjának hibaelhárításához hasznos, ha létre tud hozni egy működőként azonosított SAS-jogkivonatot, amelyet használhat a tesztelés során.
+
+> [!NOTE]
+> A SimulatedDevice-2.js az SAS-jogkivonat SDK-val és SDK nélkül történő létrehozására is tartalmaz példákat.
 
 Egy működő SAS-jogkivonat parancssori felületen való létrehozásához futtassa a következő parancsot:
 

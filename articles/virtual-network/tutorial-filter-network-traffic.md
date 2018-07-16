@@ -1,6 +1,6 @@
 ---
-title: Hálózati forgalom szűrése – oktatóanyag – Azure PowerShell | Microsoft Docs
-description: Eben az oktatóanyagban megismerheti, hogyan szűrheti a hálózati forgalmat alhálózatokra egy hálózati biztonsági csoport és a PowerShell használatával.
+title: Hálózati forgalom szűrése – oktatóanyag – Azure Portal | Microsoft Docs
+description: Ebben az oktatóanyagban megismerheti, hogyan szűrheti a hálózati forgalmat alhálózatokra egy hálózati biztonsági csoport és az Azure Portal használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/30/2018
+ms.date: 06/20/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: 165bd6770109348bd19ebb4fa1735bedf83004b1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.custom: ''
+ms.openlocfilehash: a731c1e0617fe0ccf9d571dd2b7d0c2ad107bc9e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261317"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901398"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-powershell"></a>Oktatóanyag: Hálózati forgalom szűrése hálózati biztonsági csoportokkal a PowerShell használatával
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom szűrése hálózati biztonsági csoportokkal az Azure Portal használatával
 
 A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forgalmát hálózati biztonsági csoport segítségével szűrheti. A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak, amelyek IP-cím, port és protokoll szerint szűrik a hálózati forgalmat. A biztonsági szabályok az egyes alhálózatokban üzembe helyezett erőforrásokra vonatkoznak. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -34,272 +34,191 @@ A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forga
 > * Virtuális gépek üzembe helyezése egy alhálózaton
 > * Forgalomszűrők tesztelése
 
-Igény szerint az oktatóanyag az [Azure CLI](tutorial-filter-network-traffic-cli.md) használatával is elvégezhető.
+Igény szerint az oktatóanyag az [Azure CLI](tutorial-filter-network-traffic-cli.md) vagy a [PowerShell](tutorial-filter-network-traffic-powershell.md) használatával is elvégezhető.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. 
-
-## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-
-A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak. A biztonsági szabályok egy forrást és egy célt határoznak meg. A források és célok lehetnek alkalmazásbiztonsági csoportok.
-
-### <a name="create-application-security-groups"></a>Alkalmazásbiztonsági csoportok létrehozása
-
-Először is hozzon létre egy erőforráscsoportot a jelen oktatóanyag során létrehozott összes erőforrás számára a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal. A következő példa létrehoz egy erőforráscsoportot az *eastus* helyen: 
-
-
-```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
-```
-
-Hozzon létre egy alkalmazásbiztonsági csoportot a [New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup) paranccsal. Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy csoportokba rendezze a hasonló portszűrési követelményekkel rendelkező kiszolgálókat. Az alábbi példa két alkalmazásbiztonsági csoportot hoz létre.
-
-```azurepowershell-interactive
-$webAsg = New-AzureRmApplicationSecurityGroup `
-  -ResourceGroupName myResourceGroup `
-  -Name myAsgWebServers `
-  -Location eastus
-
-$mgmtAsg = New-AzureRmApplicationSecurityGroup `
-  -ResourceGroupName myResourceGroup `
-  -Name myAsgMgmtServers `
-  -Location eastus
-```
-
-### <a name="create-security-rules"></a>Biztonsági szabályok létrehozása
-
-Hozzon létre egy biztonsági szabályt a [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) paranccsal. Az alábbi példa egy olyan szabályt hoz létre, amely engedélyezi az internetről a *myWebServers* alkalmazásbiztonsági csoportba bejövő forgalmat a 80-as és 443-as porton keresztül.
-
-```azurepowershell-interactive
-$webRule = New-AzureRmNetworkSecurityRuleConfig `
-  -Name "Allow-Web-All" `
-  -Access Allow `
-  -Protocol Tcp `
-  -Direction Inbound `
-  -Priority 100 `
-  -SourceAddressPrefix Internet `
-  -SourcePortRange * `
-  -DestinationApplicationSecurityGroupId $webAsg.id `
-  -DestinationPortRange 80,443
-
-The following example creates a rule that allows traffic inbound from the internet to the *myMgmtServers* application security group over port 3389:
-
-$mgmtRule = New-AzureRmNetworkSecurityRuleConfig `
-  -Name "Allow-RDP-All" `
-  -Access Allow `
-  -Protocol Tcp `
-  -Direction Inbound `
-  -Priority 110 `
-  -SourceAddressPrefix Internet `
-  -SourcePortRange * `
-  -DestinationApplicationSecurityGroupId $mgmtAsg.id `
-  -DestinationPortRange 3389
-```
-
-Ebben az oktatóanyagban az RDP (3389-es port) közvetlenül az internetre csatlakozik a *myAsgMgmtServers* virtuális gép esetében. Éles környezet esetében a 3389-es port közvetlenül az internetre való csatlakoztatása helyett javasolt [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [privát](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hálózati kapcsolat használatával csatlakozni a kezelni kívánt Azure-erőforrásokhoz.
-
-### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-
-Hozzon létre egy hálózati biztonsági csoportot a [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) paranccsal. Az alábbi példa egy *myNsg* nevű hálózati biztonsági csoportot hoz létre: 
-
-```powershell-interactive
-$nsg = New-AzureRmNetworkSecurityGroup `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -Name myNsg `
-  -SecurityRules $webRule,$mgmtRule
-```
+Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) paranccsal. Az alábbi példa egy *myVirtualNetwork* virtuális hálózatot hoz létre:
+1. Válassza az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** lehetőséget.
+2. Válassza a **Hálózatkezelés**, majd a **Virtuális hálózat** elemet.
+3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza a **Létrehozás** elemet:
 
-```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
-  -ResourceGroupName myResourceGroup `
-  -Location EastUS `
-  -Name myVirtualNetwork `
-  -AddressPrefix 10.0.0.0/16
-```
+    | Beállítás                 | Érték                                              |
+    | ---                     | ---                                                |
+    | Name (Név)                    | myVirtualNetwork                                   |
+    | Címtér           | 10.0.0.0/16                                        |
+    | Előfizetés            | Válassza ki előfizetését.                          |
+    | Erőforráscsoport          | Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet. |
+    | Hely                | Válassza az **USA keleti régiója** lehetőséget.                                |
+    | Alhálózat – név            | mySubnet                                           |
+    | Alhálózat – címtartomány  | 10.0.0.0/24                                        |
 
-Hozzon létre egy alhálózati konfigurációt a [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) paranccsal, majd írja az alhálózati konfigurációt a virtuális hálózatba a [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) paranccsal Az alábbi példa egy *mySubnet* nevű alhálózatot ad hozzá a virtuális hálózathoz, és hozzárendeli a *myNsg* hálózati biztonsági csoportot.
+## <a name="create-application-security-groups"></a>Alkalmazásbiztonsági csoportok létrehozása
 
-```azurepowershell-interactive
-Add-AzureRmVirtualNetworkSubnetConfig `
-  -Name mySubnet `
-  -VirtualNetwork $virtualNetwork `
-  -AddressPrefix "10.0.2.0/24" `
-  -NetworkSecurityGroup $nsg
-$virtualNetwork | Set-AzureRmVirtualNetwork
-```
+Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendezze a hasonló funkciójú kiszolgálókat, például a webkiszolgálókat.
+
+1. Válassza az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** lehetőséget.
+2. A **Keresés a Marketplace-en** mezőbe írja be a következőt: *Alkalmazásbiztonsági csoport*. Amikor az **Alkalmazásbiztonsági csoport** kifejezés megjelenik a keresési eredmények között, válassza ki ismét az **Alkalmazásbiztonsági csoportot** a **Minden** területen, majd válassza a **Létrehozás** elemet.
+3. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Létrehozás** lehetőséget:
+
+    | Beállítás        | Érték                                                         |
+    | ---            | ---                                                           |
+    | Name (Név)           | myAsgWebServers                                               |
+    | Előfizetés   | Válassza ki előfizetését.                                     |
+    | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
+    | Hely       | USA keleti régiója                                                       |
+
+4. Végezze el ismét a 3. lépést az alábbi értékeket megadva:
+
+    | Beállítás        | Érték                                                         |
+    | ---            | ---                                                           |
+    | Name (Név)           | myAsgMgmtServers                                              |
+    | Előfizetés   | Válassza ki előfizetését.                                     |
+    | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
+    | Hely       | USA keleti régiója                                                       |
+
+## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
+
+1. Válassza az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** lehetőséget.
+2. Kattintson a **Hálózatkezelés**, majd a **Hálózati biztonsági csoport** lehetőségre.
+3. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Létrehozás** lehetőséget:
+
+    |Beállítás|Érték|
+    |---|---|
+    |Name (Név)|myNsg|
+    |Előfizetés| Válassza ki előfizetését.|
+    |Erőforráscsoport | Válassza a **Meglévő használata**, majd a *myResourceGroup* lehetőséget.|
+    |Hely|USA keleti régiója|
+
+## <a name="associate-network-security-group-to-subnet"></a>Hálózati biztonsági csoport társítása alhálózathoz
+
+1. A portál felső részében található *Erőforrások, szolgáltatások és dokumentumok keresése* mezőben kezdje el beírni a *myNsg* nevet. Amikor a **myNsg** elem megjelenik a keresési eredmények között, válassza ki.
+2. A **BEÁLLÍTÁSOK** területen válassza az **Alhálózatok**, majd a **+ Társítás** lehetőséget, ahogyan az a következő képen látható:
+
+    ![NSG társítása alhálózathoz](./media/tutorial-filter-network-traffic/associate-nsg-subnet.png)
+
+3. Az **Alhálózat hozzárendelése** területen válassza a **Virtuális hálózat** elemet, majd a **myVirtualNetwork** lehetőséget. Válassza az **Alhálózat**, majd a **mySubnet** lehetőséget, végül kattintson az **OK** gombra.
+
+## <a name="create-security-rules"></a>Biztonsági szabályok létrehozása
+
+1. A **BEÁLLÍTÁSOK** területen válassza a **Bejövő biztonsági szabályok**, majd a **+ Hozzáadás** elemet a következő képen látható módon:
+
+    ![Bejövő biztonsági szabály hozzáadása](./media/tutorial-filter-network-traffic/add-inbound-rule.png)
+
+2. Hozzon létre egy biztonsági szabályt, amely engedélyezi a 80-as és a 443-as portot a **myAsgWebServers** alkalmazásbiztonsági csoport számára. A **Bejövő biztonsági szabály felvétele** területen írja be vagy válassza ki a következő értékeket, fogadja el a fennmaradó alapértelmezett beállításokat, majd válassza a **Hozzáadás** elemet:
+
+    | Beállítás                 | Érték                                                                                                           |
+    | ---------               | ---------                                                                                                       |
+    | Cél             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgWebServers** elemet az **Alkalmazásbiztonsági csoport** számára.  |
+    | Célporttartományok | Írja be a 80,443 értéket.                                                                                                    |
+    | Protokoll                | Válassza a TCP lehetőséget.                                                                                                      |
+    | Name (Név)                    | Allow-Web-All                                                                                                   |
+
+3. Hajtsa végre ismét a 2. lépést az alábbi értékeket használva:
+
+    | Beállítás                 | Érték                                                                                                           |
+    | ---------               | ---------                                                                                                       |
+    | Cél             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgMgmtServers** elemet az **Alkalmazásbiztonsági csoport** számára. |
+    | Célporttartományok | Írja be a 3389 értéket.                                                                                                      |
+    | Protokoll                | Válassza a TCP lehetőséget.                                                                                                      |
+    | Prioritás                | Írja be a 110 értéket.                                                                                                       |
+    | Name (Név)                    | Allow-RDP-All                                                                                                   |
+
+    Ebben az oktatóanyagban az RDP (3389-es port) közvetlenül az internetre csatlakozik a *myAsgMgmtServers* alkalmazásbiztonsági csoporthoz rendelt virtuális gépen. Éles környezet esetében a 3389-es port közvetlenül az internetre való csatlakoztatása helyett javasolt VPN vagy privát hálózati kapcsolat használatával csatlakozni a kezelni kívánt Azure-erőforrásokhoz.
+
+Miután végrehajtotta az 1–3. lépést, tekintse át a létrehozott szabályokat. A listának a következő képen látható listához kell hasonlítania:
+
+![Biztonsági szabályok](./media/tutorial-filter-network-traffic/security-rules.png)
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-A virtuális gépek létrehozása előtt kérje le a virtuálishálózat-objektumot az alhálózattal együtt a [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) paranccsal.
+Hozzon létre két virtuális gépet a virtuális hálózaton.
 
-```powershell-interactive
-$virtualNetwork = Get-AzureRmVirtualNetwork `
- -Name myVirtualNetwork `
- -Resourcegroupname myResourceGroup
-```
-Hozzon létre egy nyilvános IP-címet minden virtuális gép esetében a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) paranccsal.
+### <a name="create-the-first-vm"></a>Az első virtuális gép létrehozása
 
-```powershell-interactive
-$publicIpWeb = New-AzureRmPublicIpAddress `
-  -AllocationMethod Dynamic `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -Name myVmWeb
+1. Az Azure Portal bal felső sarkában kattintson az **+ Erőforrás létrehozása** gombra.
+2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet.
+3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-$publicIpMgmt = New-AzureRmPublicIpAddress `
-  -AllocationMethod Dynamic `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -Name myVmMgmt
-```
+    |Beállítás|Érték|
+    |---|---|
+    |Name (Név)|myVmWeb|
+    |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
+    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Előfizetés| Válassza ki előfizetését.|
+    |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
+    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
 
-Hozzon létre két hálózati adaptert a [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) paranccsal, és rendeljen hozzájuk egy nyilvános IP-címet. Az alábbi példa létrehoz egy hálózati adaptert, hozzárendeli a *myVmWeb* nyilvános IP-címet, és felveszi azt a *myAsgWebServers* alkalmazásbiztonsági csoport tagjai közé:
+4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
+5. A **Beállítások** területen válassza ki a következő értékeket, fogadja el a fennmaradó alapértelmezett beállításokat, majd kattintson az **OK** gombra:
 
-```powershell-interactive
-$webNic = New-AzureRmNetworkInterface `
-  -Location eastus `
-  -Name myVmWeb `
-  -ResourceGroupName myResourceGroup `
-  -SubnetId $virtualNetwork.Subnets[0].Id `
-  -ApplicationSecurityGroupId $webAsg.Id `
-  -PublicIpAddressId $publicIpWeb.Id
-```
+    |Beállítás|Érték|
+    |---|---|
+    |Virtuális hálózat |Válassza a **myVirtualNetwork** lehetőséget.|
+    |Hálózati biztonsági csoport | Válassza az **Advanced** (Speciális) lehetőséget.|
+    |Hálózati biztonsági csoport (tűzfal)| Válassza az **(új) myVmWeb-nsg** lehetőséget, majd a **Hálózati biztonsági csoport választása** területen válassza a **Nincs** elemet. |
 
-Az alábbi példa létrehoz egy hálózati adaptert, hozzárendeli a *myVmMgmt* nyilvános IP-címet, és felveszi azt a *myAsgMgmtServers* alkalmazásbiztonsági csoport tagjai közé:
+6. Az **Összegzés** lap **Létrehozás** területén kattintson a **Létrehozás** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
 
-```powershell-interactive
-$mgmtNic = New-AzureRmNetworkInterface `
-  -Location eastus `
-  -Name myVmMgmt `
-  -ResourceGroupName myResourceGroup `
-  -SubnetId $virtualNetwork.Subnets[0].Id `
-  -ApplicationSecurityGroupId $mgmtAsg.Id `
-  -PublicIpAddressId $publicIpMgmt.Id
-```
+### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
 
-Hozzon létre két virtuális gépet a virtuális hálózatban, hogy érvényesíthesse majd a fogalom szűrését egy később lépésben. 
+Végezze el ismét az 1–6. lépést, de a 3. lépésben a *myVmMgmt* nevet adja a virtuális gépnek. A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a következő lépéssel a virtuális gép üzembe helyezéséig.
 
-Hozzon létre egy virtuálisgép-konfigurációt a [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) paranccsal, majd hozza létre a virtuális gépet a [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) paranccsal. Az alábbi példa egy virtuális gépet hoz létre, amely webkiszolgálóként fog szolgálni. Az `-AsJob` kapcsoló a háttérben hozza létre a virtuális gépet, így Ön eközben folytathatja a következő lépéssel. 
+## <a name="associate-network-interfaces-to-an-asg"></a>Hálózati adapterek társítása ASG-hez
 
-```azurepowershell-interactive
-# Create user object
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+Amikor a portál létrehozta a virtuális gépeket, létrehozott egy hálózati adaptert mindegyik virtuális géphez, és a hálózati adaptert a virtuális géphez csatolta. Adja hozzá az egyes virtuális gépek hálózati adapterét a korábban létrehozott alkalmazásbiztonsági csoporthoz valamelyikéhez:
 
-$webVmConfig = New-AzureRmVMConfig `
-  -VMName myVmWeb `
-  -VMSize Standard_DS1_V2 | `
-Set-AzureRmVMOperatingSystem -Windows `
-  -ComputerName myVmWeb `
-  -Credential $cred | `
-Set-AzureRmVMSourceImage `
-  -PublisherName MicrosoftWindowsServer `
-  -Offer WindowsServer `
-  -Skus 2016-Datacenter `
-  -Version latest | `
-Add-AzureRmVMNetworkInterface `
-  -Id $webNic.Id
-New-AzureRmVM `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -VM $webVmConfig `
-  -AsJob
-```
+1. A portál felső részében található *Erőforrások, szolgáltatások és dokumentumok keresése* mezőben kezdje el beírni a *myVmWeb* nevet. Amikor a **myVmWeb** virtuális gép megjelenik a keresési eredmények között, válassza ki.
+2. A **BEÁLLÍTÁSOK** területen válassza a **Hálózatkezelés** elemet.  Válassza az **Alkalmazásbiztonsági csoportok konfigurálása** lehetőséget, válassza a **myAsgWebServers** elemet az **Alkalmazásbiztonsági csoportok** számára, majd kattintson a **Mentés** lehetőségre, ahogyan az a következő képen látható:
 
-Hozzon létre egy felügyeleti kiszolgálóként szolgáló virtuális gépet:
+    ![Társítás ASG-hez](./media/tutorial-filter-network-traffic/associate-to-asg.png)
 
-```azurepowershell-interactive
-# Create user object
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-
-# Create the web server virtual machine configuration and virtual machine.
-$mgmtVmConfig = New-AzureRmVMConfig `
-  -VMName myVmMgmt `
-  -VMSize Standard_DS1_V2 | `
-Set-AzureRmVMOperatingSystem -Windows `
-  -ComputerName myVmMgmt `
-  -Credential $cred | `
-Set-AzureRmVMSourceImage `
-  -PublisherName MicrosoftWindowsServer `
-  -Offer WindowsServer `
-  -Skus 2016-Datacenter `
-  -Version latest | `
-Add-AzureRmVMNetworkInterface `
-  -Id $mgmtNic.Id
-New-AzureRmVM `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -VM $mgmtVmConfig
-```
-
-A virtuális gép létrehozása néhány percet vesz igénybe. Ne ugorjon a következő lépésre, amíg az Azure be nem fejezte a virtuális gép létrehozását.
+3. Végezze el ismét az 1. és a 2. lépést, a **myVmMgmt** virtuális gépre keresve, és a **myAsgMgmtServers** ASG-t kiválasztva.
 
 ## <a name="test-traffic-filters"></a>Forgalomszűrők tesztelése
 
-Egy virtuális gép nyilvános IP-címének visszaadásához használja a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) parancsot. Az alábbi példa a *myVmMgmt* virtuális gép nyilvános IP-címét adja vissza:
+1. Csatlakozzon a *myVmMgmt* virtuális géphez. Írja be a *myVmMgmt* nevet a portál tetején lévő keresőmezőbe. Amikor a **myVmMgmt** elem megjelenik a keresési eredmények között, válassza ki. Kattintson a **Csatlakozás** gombra.
+2. Válassza az **RDP-fájl letöltése** parancsot.
+3. Nyissa meg a letöltött RDP-fájlt, és válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania.
+4. Kattintson az **OK** gombra.
+5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
 
-```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
-  -Name myVmMgmt `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress
-```
+    A kapcsolat sikeresen létrejön, mert a 3389-es porton engedélyezve van az internetről a *myAsgMgmtServers* alkalmazásbiztonsági csoportba (amelyben a *myVmMgmt* virtuális géphez csatlakoztatott hálózati adapter található) bejövő forgalom.
 
-Az alábbi parancs használatával hozzon létre egy távoli asztali munkamenetet a *myVmMgmt* virtuális géppel a helyszíni számítógépéről. Cserélje ki a `<publicIpAddress>` kifejezést az előző parancs által visszaadott nyilvános IP-címre.
+6. Csatlakozzon a *myVmWeb* virtuális géphez a *myVmMgmt* virtuális gépről a következő parancs beírásával egy PowerShell-munkamenetben:
 
-```
-mstsc /v:<publicIpAddress>
-```
+    ``` 
+    mstsc /v:myVmWeb
+    ```
 
-Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
+    A myVmMgmt virtuális gépről azért csatlakozhat a myVmWeb virtuális géphez, mert az ugyanazon a virtuális hálózaton található virtuális gépek alapértelmezés szerint bármely porton keresztül kommunikálhatnak egymással. Nem hozhat létre azonban távoli asztali kapcsolatot a *myVmWeb* virtuális géppel az internetről, mert a *myAsgWebServers* biztonsági szabálya nem engedélyezi az internetről bejövő forgalmat a 3389-es porton keresztül, és a rendszer alapértelmezés szerint elutasítja az erőforrásokra irányuló bejövő forgalmat.
 
-Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót (előfordulhat, hogy a virtuális gép létrehozásakor beírt hitelesítő adatok megadásához ki kell választania a **További lehetőségek**, majd a **Másik fiók használata** elemet), majd válassza az **OK** gombot. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza az **Igen** lehetőséget a csatlakozás folytatásához. 
-   
-A kapcsolat sikeresen létrejön, mert a 3389-es porton engedélyezve van az internetről a *myAsgMgmtServers* alkalmazásbiztonsági csoportba (amelyben a *myVmMgmt* virtuális géphez csatlakoztatott hálózati adapter található) bejövő forgalom.
+7. A Microsoft IIS telepítéséhez a *myVmWeb* virtuális gépen írja be a következő parancsot egy PowerShell-munkamenetben a *myVmWeb* virtuális gépen:
 
-Az alábbi parancs PowerShellben történő használatával hozzon létre egy távoli asztali kapcsolatot a *myVmWeb* virtuális géppel a *myVmMgmt* virtuális gépről:
+    ```powershell
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    ```
 
-``` 
-mstsc /v:myvmWeb
-```
+8. Az IIS telepítésének befejezése után csatlakozzon le a *myVmWeb* virtuális gépről. Így csak a *myVmMgmt* virtuális géppel létesített távoli asztali kapcsolat marad.
+9. Csatlakozzon le a *myVmMgmt* virtuális gépről.
+10. Az Azure Portal felső részében található *Erőforrások, szolgáltatások és dokumentumok keresése* mezőben kezdje el beírni a *myVmWeb* nevet a számítógépen. Amikor a **myVmWeb** elem megjelenik a keresési eredmények között, válassza ki. Jegyezze fel a virtuális gép **Nyilvános IP-cím** értékét. A következő képen látható cím a 137.135.84.74, az Ön címe azonban más:
 
-A kapcsolat sikeresen létrejön, mert az egyes hálózati biztonsági csoportokon belüli alapértelmezett biztonsági szabály minden porton keresztül engedélyezi a forgalmat a virtuális hálózaton belüli összes IP-cím között. Nem hozhat létre távoli asztali kapcsolatot a *myVmWeb* virtuális géppel az internetről, mert a *myAsgWebServers* biztonsági szabálya nem engedélyezi az internetről bejövő forgalmat a 3389-es porton keresztül.
-
-Az alábbi parancs PowerShellben történő használatával telepítse a Microsoft IIS-t a *myVmWeb* virtuális gépre:
-
-```powershell
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
-```
-
-Az IIS telepítésének befejezése után csatlakozzon le a *myVmWeb* virtuális gépről. Így csak a *myVmMgmt* virtuális géppel létesített távoli asztali kapcsolat marad. Az IIS üdvözlőképernyőjének megtekintéséhez nyisson meg egy webböngészőt, és lépjen a következő helyre: http://myVmWeb.
-
-Csatlakozzon le a *myVmMgmt* virtuális gépről.
-
-A számítógépén írja be az alábbi parancsot a PowerShellben a *myVmWeb* kiszolgáló nyilvános IP-címének lekéréséhez.
-
-```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
-  -Name myVmWeb `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress
-```
-
-Annak megerősítéséhez, hogy eléri a *myVmWeb* webkiszolgálót az Azure-on kívülről is, nyisson meg egy webböngészőt a számítógépen, és lépjen a következő helyre: `http://<public-ip-address-from-previous-step>`. A kapcsolat sikeresen létrejön, mert a 80-as porton engedélyezve van az internetről a *myAsgWebServers* alkalmazásbiztonsági csoportba (amelyben a *myVmWeb* virtuális géphez csatlakoztatott hálózati adapter található) bejövő forgalom.
+    ![Nyilvános IP-cím](./media/tutorial-filter-network-traffic/public-ip-address.png)
+  
+11. Annak ellenőrzéséhez, hogy eléri-e a *myVmWeb* webkiszolgálót az internetről, nyisson meg egy webböngészőt a számítógépen, és lépjen a következő címre: `http://<public-ip-address-from-previous-step>`. Megjelenik az IIS üdvözlőképernyője, mert a 80-as porton engedélyezve van az internetről a *myAsgWebServers* alkalmazásbiztonsági csoportba (amelyben a *myVmWeb* virtuális géphez csatlakoztatott hálózati adapter található) bejövő forgalom.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást:
+Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 
-```azurepowershell-interactive 
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
-```
+1. Írja be a *myResourceGroup* nevet a portál tetején lévő **keresőmezőbe**. Amikor a **myResourceGroup** megjelenik a keresési eredmények között, válassza ki.
+2. Válassza az **Erőforráscsoport törlése** elemet.
+3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

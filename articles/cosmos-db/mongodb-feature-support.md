@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 9202e8eb328f098f7ab68a18f4629a95ecc10991
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2c86cbe2ac9a0611873aca35480af92304abe5b5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796355"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928691"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>A MongoDB API támogatása a MongoDB funkcióihoz és szintaxisához
 
@@ -23,14 +23,19 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 
 Az Azure Cosmos DB MongoDB API használatával a MongoDB API-k megszokott előnyei mellett az Azure Cosmos DB által biztosított összes vállalati képességet is élvezheti: [globális terjesztés](distribute-data-globally.md), [automatikus horizontális skálázás](partition-data.md), rendelkezésre állási és a késleltetési garanciák, minden mező automatikus indexelése, az inaktív adatok titkosítása, biztonsági mentések és még sok más.
 
+## <a name="mongodb-protocol-support"></a>A MongoDB protokoll támogatása
+
+Az Azure Cosmos DB MongoDB API alapértelmezés szerint kompatibilis a MongoDB-kiszolgáló **3.2**-es verziójával. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. A MongoDB **3.4**-es verziójának új funkciói és lekérdezési operátorai jelenleg előzetes verzióként érhetők el. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódni a Cosmos DB-hez a MongoDB API használatával.
+
+A [MongoDB összesítési folyamata](#aggregation-pipeline) jelenleg szintén elérhető egy különálló előzetes verzióban.
+
 ## <a name="mongodb-query-language-support"></a>A MongoDB lekérdezési nyelv támogatása
 
 Az Azure Cosmos DB MongoDB API átfogó támogatást biztosít a MongoDB lekérdezési nyelv szerkezeteihez. Alább egy részletes listát találhat a jelenleg támogatott műveletekről, operátorokról, fázisokról, parancsokról és beállításokról.
 
-
 ## <a name="database-commands"></a>Adatbázisparancsok
 
-Az Azure Cosmos DB minden MongoDB API-fiók esetében támogatja az alábbi adatbázisparancsokat. 
+Az Azure Cosmos DB minden MongoDB API-fiók esetében támogatja az alábbi adatbázisparancsokat.
 
 ### <a name="query-and-write-operation-commands"></a>Lekérdezési és írási műveletek parancsai
 - delete
@@ -287,7 +292,11 @@ $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` | 
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
-$text |  | Nem támogatott. A $regex használható helyette 
+$text |  | Nem támogatott. A $regex használható helyette.
+
+## <a name="unsupported-operators"></a>Nem támogatott operátorok
+
+A Cosmos DB nem támogatja a ```$where``` és az ```$eval``` operátort.
 
 ### <a name="methods"></a>Metódusok
 
@@ -316,6 +325,10 @@ Az Azure Cosmos DB még nem támogatja a felhasználókat és a szerepköröket.
 ## <a name="replication"></a>Replikáció
 
 Az Azure Cosmos DB támogatja az automatikus natív replikációt a legalsó rétegeken. A rendszer az alacsony késésű, globális replikáció elérése érdekében kiterjeszti ezt a logikát. Az Azure Cosmos DB nem támogatja a manuális replikációs parancsokat.
+
+## <a name="write-concern"></a>Írási szempont
+
+Bizonyos MongoDB API-k támogatják egy [írási szempont](https://docs.mongodb.com/manual/reference/write-concern/) meghatározását, amely megadja az írási műveletek során szükséges válaszok számát. Mivel a Cosmos DB a replikációt a háttérben kezeli, alapértelmezés szerint minden írás automatikusan kvórum. A rendszer az ügyfélkódok által megadott írási szempontokat figyelmen kívül hagyja. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).
 
 ## <a name="sharding"></a>Sharding
 

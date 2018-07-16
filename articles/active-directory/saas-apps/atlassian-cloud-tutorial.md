@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a Atlassian felhőalapú |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Atlassian felhő között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Atlassian Cloud |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az Atlassian felhő között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,177 +15,177 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 7609cea0d16a52a927f87ee9ab6d4445bfc2eb20
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f0ad879bb084a8d3a50a0934557eae64621c0160
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228924"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054253"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Oktatóanyag: Azure Active Directoryval integrált Atlassian felhő
+# <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Oktatóanyag: Azure Active Directory-integráció az Atlassian felhő
 
-Ebben az oktatóanyagban elsajátíthatja Atlassian felhő integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Atlassian Felhőbeli integrálása az Azure Active Directory (Azure AD).
 
-Atlassian felhő integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Atlassian Felhőbeli integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáféréssel rendelkezik Atlassian felhőbe szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan bejelentkezve (egyszeri bejelentkezés) Atlassian felhőhöz, az Azure AD-fiókok.
-- A fiók egyetlen központi helyen, az Azure-portálon kezelheti.
+- Az Azure ad-ben Atlassian felhőbe való hozzáféréssel rendelkező szabályozhatja.
+- Engedélyezheti a felhasználóknak, hogy automatikusan bejelentkeznie (egyszeri bejelentkezés) Atlassian felhőbe, az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen, az Azure Portalon kezelheti.
 
-Az Azure AD egy szolgáltatott szoftverként (SaaS) alkalmazásintegráció, szoftverrel kapcsolatos további információkért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md).
+Az Azure ad-vel szoftverként (saas biztosított) alkalmazás integrációja szoftverrel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Atlassian felhőalapú, a következőkre van szükség:
+Atlassian felhőalapú Azure AD-integráció konfigurálásához a következőkre van szükség:
 
 - Az Azure AD-előfizetés.
-- A Security Assertion Markup Language (SAML) egyszeri bejelentkezés engedélyezése Atlassian felhő termékek, be kell Identity Manager fel. További információ [Identity Manager]( https://www.atlassian.com/enterprise/cloud/identity-manager).
+- Engedélyezi a Security Assertion Markup Language (SAML) egyszeri bejelentkezést az Atlassian felhőalapú termékek, állítsa be a identitás Managert kell. Tudjon meg többet [Identity Manager]( https://www.atlassian.com/enterprise/cloud/identity-manager).
 
 > [!NOTE]
-> Ebben az oktatóanyagban tesztelésekor a lépéseket, ajánlott, hogy nem éles környezetben.
+> Ha ebben az oktatóanyagban a lépéseket, azt javasoljuk, hogy nem használja éles környezetben.
 
-Ez az oktatóanyag lépéseit teszteléséhez hajtsa végre az ezek az ajánlások:
+Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben.
-Az oktatóanyag ismertetett forgatókönyvben két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Az oktatóanyagban ismertetett forgatókönyv két fő építőelemeket áll:
 
-* A gyűjteményből Atlassian felhő hozzáadása
-* És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+* Atlassian felhő hozzáadása a katalógusból
+* Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="add-atlassian-cloud-from-the-gallery"></a>A gyűjteményből Atlassian felhő hozzáadása
-A rendszerrel történő integráció konfigurálása a Atlassian felhőalapú Azure AD, hozzáadása Atlassian felhőalapú a gyűjteményből a kezelt SaaS-alkalmazások listáját a következő módon:
+## <a name="add-atlassian-cloud-from-the-gallery"></a>Atlassian felhő hozzáadása a katalógusból
+A rendszerrel történő integráció konfigurálása a Atlassian felhőalapú Azure ad-ben, hozzá Atlassian felhőalapú a katalógusból a kezelt SaaS-alkalmazások listáját az alábbiak szerint:
 
-1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
+1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb][1]
 
-2. Válassza ki **vállalati alkalmazások** > **összes alkalmazás**.
+2. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
 
-    ![A vállalati alkalmazások ablaktábla][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Hozzáadhat egy alkalmazást, válassza ki a **új alkalmazás**.
+3. Egy alkalmazás hozzáadásához válassza **új alkalmazás**.
 
-    ![Az "új alkalmazás" gomb][3]
+    ![Az "új alkalmazás" gombra][3]
 
-4. Írja be a keresőmezőbe, **Atlassian felhő**, az eredmények listájában válassza **Atlassian felhő**, majd válassza ki **Hozzáadás**.
+4. A Keresés mezőbe írja be a **Atlassian felhőalapú**, az eredmények listájában válassza **Atlassian felhőalapú**, majd válassza ki **Hozzáadás**.
 
-    ![Az eredménylistában Atlassian felhő](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_addfromgallery.png)
+    ![Az eredmények listájában Atlassian felhő](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a Atlassian felhőalapú nevű tesztfelhasználó alapján *Britta Simon*.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés alapján nevű tesztfelhasználó Atlassian felhővel *Britta Simon*.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD az Azure ad-ben a Atlassian felhő felhasználó és a megfelelő azonosítania kell. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat kapcsolatot kell létesítenie Atlassian felhőben.
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell állapítania az Atlassian Felhőbeli felhasználó- és a megfelelő Azure AD-ben. Más szóval, kapcsolatot kell létesítenie egy hivatkozás egy Azure AD-felhasználót és a kapcsolódó felhasználó közötti Atlassian felhőben.
 
-A hivatkozás kapcsolat létrehozására, rendelje hozzá a Atlassian felhők *felhasználónév* ugyanazt az értéket, amely hozzá van rendelve az Azure AD *felhasználónév*.
+A hivatkozás kapcsolat létrehozására, rendelje hozzá a Atlassian felhőként *felhasználónév* ugyanazt az értéket az Azure ad hozzárendelt *felhasználónév*.
 
-Az Azure AD egyszeri bejelentkezést a Atlassian felhőalapú tesztelése és konfigurálása, hogy végrehajtásához szükséges az építőelemeket, az alábbi szakaszokban található.
+Konfigurálása és az Azure AD egyszeri bejelentkezés Atlassian felhővel való teszteléséhez szüksége hajtsa végre az alábbi szakaszokban található építőelemeket.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Atlassian felhőalapú alkalmazásokhoz.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az Atlassian felhőalapú alkalmazás egyszeri bejelentkezés konfigurálása.
 
-Konfigurálja az Azure AD egyszeri bejelentkezést a Atlassian felhőalapú, tegye a következőket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Atlassian felhő, tegye a következőket:
 
-1. Az Azure portálon a a **Atlassian felhő** alkalmazás integrációs ablaktáblán válassza előbb **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Atlassian felhőalapú** application integration ablaktáblában válassza **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** ablakban, a a **egyszeri bejelentkezés mód** mezőben válassza **SAML-alapú bejelentkezés**.
+2. Az a **egyszeri bejelentkezési** ablakban, a a **egyszeri bejelentkezési mód** jelölje ki **SAML-alapú bejelentkezés**.
 
-    ![Egyszeri bejelentkezés ablak](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
+    ![Egyszeri bejelentkezési ablak](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
-3. Az alkalmazás a kiállító terjesztési hely által kezdeményezett módban konfigurálásához **Atlassian felhőalapú tartományt és URL-címek**, tegye a következőket:
+3. Az alkalmazás Identitásszolgáltató által kezdeményezett módban alatt konfigurálását **Atlassian felhőalapú tartomány és URL-címek**, tegye a következőket:
 
-    ![Az egyszeri bejelentkezés információk Atlassian felhőalapú tartományt és URL-címek](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
+    ![Atlassian felhőalapú tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
     
     a. Az a **azonosító** mezőbe írja be **`https://auth.atlassian.com/saml/<unique ID>`**.
     
-    b. Az a **válasz URL-CÍMEN** mezőbe írja be **`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`**.
+    b. Az a **válasz URL-cím** mezőbe írja be **`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`**.
 
-    c. Az a **továbbítási állapotot** mezőbe írja be egy URL-címet a következő szintaxissal: **`https://<instancename>.atlassian.net`**.
+    c. Az a **továbbítási állapot** mezőbe írja be egy URL-címet a következő szintaxissal: **`https://<instancename>.atlassian.net`**.
 
-4. A Szolgáltató által kezdeményezett módban az alkalmazás konfigurálásához jelölje ki a **megjelenítése speciális URL-beállításainak** , majd a a **bejelentkezési URL-cím** mezőbe írja be egy URL-címet a következő szintaxissal: **`https://<instancename>.atlassian.net`** .
+4. Az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban, jelölje be a **speciális URL-beállítások megjelenítése** , majd a **bejelentkezési URL-cím** mezőbe írja be egy URL-címet a következő szintaxissal: **`https://<instancename>.atlassian.net`** .
 
-    ![Az egyszeri bejelentkezés információk Atlassian felhőalapú tartományt és URL-címek](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
+    ![Atlassian felhőalapú tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
     > [!NOTE]
-    > Az előző értékei nem valódi. Frissítse azokat a tényleges azonosítóját, a válasz URL-CÍMEN és a bejelentkezési URL-értékek. A valódi értékek lekérheti a Atlassian felhő SAML konfigurálására szolgáló képernyőn. Az oktatóanyag későbbi részében értékek azt ismertetik.
+    > Az előző értékek nem valódi. Frissítse azokat a tényleges azonosítóját, a válasz URL-cím és a bejelentkezési URL-cím értékeit. A valódi értékek kaphat a felhőalapú SAML-konfigurációja Atlassian képernyőről. Az értékeket az oktatóanyag későbbi részében ismertetjük.
 
-5. A **SAML-aláíró tanúsítványa**, jelölje be **Certificate(Base64)**, majd mentse a tanúsítványfájlt, a számítógépen.
+5. Alatt **SAML-aláíró tanúsítvány**válassza **Certificate(Base64)**, majd mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_certificate.png)
 
-6. A Atlassian felhőalapú alkalmazásnál a SAML helyességi feltételek található egy meghatározott formátumban, amelyek megkövetelik olyan egyéni attribútum-leképezésekhez hozzáadása a SAML-jogkivonat attribútumok konfigurációs vár. 
+6. Atlassian felhőalapú alkalmazás vár egy megadott formátumban, amelyhez egyéni attribútum-leképezéshez hozzá a SAML-jogkivonat attribútumai a SAML helyességi feltételek kereséséhez. 
 
-    Alapértelmezés szerint a **felhasználói azonosító** érték user.userprincipalname van leképezve. Módosítsa ezt az értéket user.mail van leképezve. Másik lehetőségként a szervezet beállítását szerint más megfelelő érték, de az esetek többségében, e-mailt kell működnie.
+    Alapértelmezés szerint a **felhasználóazonosító** érték user.userprincipalname van leképezve. Ez az érték user.mail leképezése módosítható. Azt is beállíthatja bármely más megfelelő érték a szervezet telepítő megfelelően, de a legtöbb esetben működnie kell az e-mailt.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_attribute.png)
+    ![A tanúsítvány letöltési hivatkozás](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_attribute.png)
 
 7. Kattintson a **Mentés** gombra.
 
-    ![A konfigurálása egyszeri bejelentkezéshez mentési gomb](./media/atlassian-cloud-tutorial/tutorial_general_400.png)
+    ![A konfigurálás egyszeri Mentés gomb](./media/atlassian-cloud-tutorial/tutorial_general_400.png)
 
-8. Lehetőségre a **bejelentkezés konfigurálása** ablakban, a a **Atlassian Felhőkonfiguráció** szakaszban jelölje be **Atlassian felhő konfigurálása**.
+8. Megnyitásához a **bejelentkezés konfigurálása** ablakban, a a **Atlassian Felhőkonfiguráció** szakaszban jelölje be **Atlassian felhő konfigurálása**.
 
-9. Az a **rövid összefoglaló** szakaszban, másolja a **SAML Entitásazonosító** és **SAML-alapú egyszeri bejelentkezési URL-címe**.
+9. Az a **rövid összefoglaló** területén másolja a **SAML Entitásazonosító** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím**.
 
     ![Atlassian felhőkonfiguráció](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_configure.png)
 
-10. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, jelentkezzen be rendszergazdai hitelesítő adatokkal a Atlassian portálra.
+10. Egyszeri bejelentkezés az alkalmazáshoz konfigurált kapni, jelentkezzen be rendszergazdai hitelesítő adatait az Atlassian-portálra.
 
-11. Vissza kell igazolnia a tartományban az egyszeri bejelentkezés konfigurálása előtt. További információkért lásd: [Atlassian tartományok ellenőrzésének](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) dokumentum.
+11. Ellenőrizze a tartományt egyszeri bejelentkezés konfigurálása előtt kell. További információkért lásd: [Atlassian tartomány-ellenőrzés](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) dokumentumot.
 
-12. A bal oldali panelen válassza ki a **SAML-alapú egyszeri bejelentkezést**. Ha még nem tette meg, az előfizetés Atlassian Identity Manager.
+12. A bal oldali panelen válassza ki a **SAML egyszeri bejelentkezés**. Ha ezt még nem tette meg, az előfizetés Atlassian Identity Manager.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_11.png)
 
-13. Az a **hozzáadása SAML-alapú konfigurációs** ablakban tegye a következőket:
+13. Az a **hozzáadása SAML-konfigurációja** ablakban tegye a következőket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
 
-    a. Az a **identitásszolgáltató Entitásazonosító** mezőbe illessze be az Azure-portálról másolt SAML entitás azonosítója.
+    a. Az a **identitásszolgáltató Entitásazonosító** mezőbe illessze be az SAML-entitás azonosítója az Azure Portalról másolt.
 
-    b. Az a **identitásszolgáltató egyszeri bejelentkezési URL-cím** mezőbe illessze be a SAML-alapú egyszeri bejelentkezési szolgáltatás URL-cím, az Azure portálról másolt.
+    b. Az a **identitásszolgáltató egyszeri bejelentkezési URL-cím** mezőbe illessze be a SAML egyszeri bejelentkezési szolgáltatás URL-cím, az Azure Portalról másolt.
 
-    c. Nyissa meg a letöltött tanúsítvány egy .txt fájlban, az Azure portálról kimásolhatja az értéket (nélkül a *megkezdéséhez tanúsítvány* és *End Certificate* sorok), majd illessze be azt a **nyilvános X509 tanúsítvány** mezőbe.
+    c. Nyissa meg a letöltött tanúsítvány egy .txt fájlban, az Azure portálról másolja az értéket (nélkül a *megkezdéséhez tanúsítvány* és *End Certificate* sorok), majd illessze be a a **nyilvános X509 tanúsítvány** mezőbe.
     
-    d. Válassza ki **konfigurációjának mentéséhez**.
+    d. Válassza ki **konfiguráció mentése**.
      
-14. Győződjön meg arról, hogy meg van adva a megfelelő URL-címeket, frissítse az Azure AD-beállításokat a következő módon:
+14. Győződjön meg arról, hogy meg van adva a megfelelő URL-címeket, frissítse az Azure AD-beállításokat az alábbiak szerint:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
 
-    a. A SAML ablakban másolja a **SP identitás azonosító** , majd a az Azure portál, Atlassian felhő **tartomány és az URL-címek**, illessze be a **azonosítója** mezőbe.
+    a. A SAML ablakban másolja a **SP Szolgáltatásidentitás azonosítója** , majd az Azure portal alatt Atlassian felhőalapú **tartomány és URL-címek**, illessze be a **azonosító** mezőbe.
     
-    b. A SAML ablakban másolja a **SP helyességi feltétel ügyfél szolgáltatás URL-címe** , majd a az Azure portál, Atlassian felhő **tartomány és az URL-címek**, illessze be a **válasz URL-CÍMEN** mezőbe. A bejelentkezési URL-je a Atlassian felhő bérlői URL-CÍMÉT.
+    b. Az SAML ablakban másolja a **SP helyességi feltétel fogyasztói szolgáltatás URL-címe** , majd az Azure portal alatt Atlassian felhőalapú **tartomány és URL-címek**, illessze be a **válasz URL-cím** mezőbe. A bejelentkezési URL-bérlői URL-címét az Atlassian Felhőbeli.
 
     > [!NOTE]
-    > Ha Ön egy meglévő ügyfél frissítése után a **SP identitás azonosító** és **SP helyességi feltétel ügyfél szolgáltatás URL-címe** értékek az Azure portálon válassza **Igen, a konfigurációfrissítése**. Ha egy új ügyfél, kihagyhatja ezt a lépést.
+    > Hogy egy meglévő ügyfél frissítése után a **SP Szolgáltatásidentitás azonosítója** és **SP helyességi feltétel fogyasztói szolgáltatás URL-címe** értékeket az Azure Portalon válassza ki **Igen, frissítse a konfigurációt**. Ha Ön új ügyfél, kihagyhatja ezt a lépést.
     
-15. Válassza ki az Azure-portálon **mentése**.
+15. Az Azure Portalon válassza ki a **mentése**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/atlassian-cloud-tutorial/tutorial_general_400.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz az alábbi lépésekkel hoz létre tesztfelhasználó Britta Simon az Azure-portálon:
+Ebben a szakaszban tesztfelhasználó Britta Simon az Azure Portalon létrehozhat az alábbiak szerint:
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
-1. Az Azure portálon a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/atlassian-cloud-tutorial/create_aaduser_01.png)
 
-2. Válassza ki azon felhasználók listájának megjelenítéséhez **felhasználók és csoportok** > **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez válassza **felhasználók és csoportok** > **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/atlassian-cloud-tutorial/create_aaduser_02.png)
 
-3. Az a **minden felhasználó** ablakban válassza ki **Hozzáadás**.
+3. Az a **minden felhasználó** ablakban válassza **Hozzáadás**.
 
     ![A Hozzáadás gombra.](./media/atlassian-cloud-tutorial/create_aaduser_03.png)
 
@@ -195,72 +195,72 @@ Ez a szakasz az alábbi lépésekkel hoz létre tesztfelhasználó Britta Simon 
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Létrehozás** gombra.
 
-### <a name="create-an-atlassian-cloud-test-user"></a>Hozzon létre egy Atlassian felhő tesztfelhasználó számára
+### <a name="create-an-atlassian-cloud-test-user"></a>Hozzon létre egy Atlassian felhőalapú tesztfelhasználót
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezhetnek be Atlassian felhőbe, a felhasználói fiókok manuális Atlassian felhőben kiépítése a következő módon:
+Ahhoz, hogy jelentkezzen be a Atlassian felhőalapú Azure AD-felhasználók, a felhasználói fiókok manuális Atlassian felhőben kiosztani az alábbiak szerint:
 
 1. Az a **felügyeleti** ablaktáblán válassza előbb **felhasználók**.
 
-    ![A felhő felhasználóinak Atlassian hivatkozás](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_14.png)
+    ![A Felhőbeli felhasználók Atlassian-hivatkozás](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_14.png)
 
-2. A felhasználó Atlassian felhőben létrehozásához válassza **a meghívás felhasználói**.
+2. Egy felhasználó Atlassian felhőben létrehozásához válassza **meghívó felhasználói**.
 
-    ![Hozzon létre Atlassian felhő felhasználót](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_15.png)
+    ![Hozzon létre egy Atlassian Felhőbeli felhasználó](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_15.png)
 
-3. Az a **E-mail cím** mezőbe, majd rendelje hozzá az alkalmazás-hozzáférés és a felhasználó e-mail címét adja meg.
+3. Az a **E-mail-cím** mezőbe írja be a felhasználó e-mail címét, és rendelje hozzá az alkalmazás-hozzáférést.
 
-    ![Hozzon létre Atlassian felhő felhasználót](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_16.png)
+    ![Hozzon létre egy Atlassian Felhőbeli felhasználó](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_16.png)
 
-4. A felhasználó felkérést e-mailt küldeni, válassza ki a **meghívott felhasználóknak**. E-mailek meghívót küld a felhasználónak, és elfogadja a meghívót, miután a felhasználó nem aktív, a rendszer.
+4. Szeretne küldeni a felhasználónak e-mailes meghívót, válassza ki a **felhasználók meghívása**. E-mailt küld a felhasználónak, és elfogadja a meghívást, miután a felhasználó nem aktív, a rendszer.
 
 >[!NOTE]
->Tömegesen is-felhasználók létrehozása kiválasztásával a **tömeges létrehozása** gombra a **felhasználók** szakasz.
+>Tömegesen is-felhasználók létrehozása kiválasztásával a **tömeges létrehozásához** gombra a **felhasználók** szakaszban.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a felhasználó által biztosított hozzáférés Atlassian felhőalapú Azure egyszeri bejelentkezéshez használandó Britta Simon engedélyezi. Ehhez tegye a következőket:
+Ebben a szakaszban engedélyezze felhasználói Britta Simon a hozzáférés biztosításával Atlassian felhőbe Azure egyszeri bejelentkezés használatára. Ehhez tegye a következőket:
 
 ![A felhasználói szerepkör hozzárendelése][200]
 
-1. Az Azure portálon, nyissa meg a **alkalmazások** nézetben nyissa meg a könyvtár nézetet, és válassza ki **vállalati alkalmazások** > **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg a **alkalmazások** megtekintése, nyissa meg a könyvtár nézet, és válassza **vállalati alkalmazások** > **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az a **alkalmazások** listáról válassza ki **Atlassian felhő**.
+2. Az a **alkalmazások** listáról válassza ki **Atlassian felhőalapú**.
 
-    ![Az alkalmazások listáját a Atlassian felhő hivatkozás](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_app.png)
+    ![Az alkalmazások listáját az Atlassian felhőalapú hivatkozásra](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_app.png)
 
 3. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Válassza ki **Hozzáadás** , majd a a **hozzáadása hozzárendelés** ablaktáblán válassza előbb **felhasználók és csoportok**.
+4. Válassza ki **Hozzáadás** , majd a **hozzárendelés hozzáadása** ablaktáblán válassza **felhasználók és csoportok**.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. Az a **felhasználók és csoportok** ablakban, a a **felhasználók** listáról válassza ki **Britta Simon**.
 
-6. Az a **felhasználók és csoportok** ablakban válassza ki **válasszon**.
+6. Az a **felhasználók és csoportok** ablakban válassza **kiválasztása**.
 
-7. Az a **hozzáadása hozzárendelés** ablakban válassza ki **hozzárendelése**.
+7. Az a **hozzárendelés hozzáadása** ablakban válassza **hozzárendelése**.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 
-Ha bejelöli a **Atlassian felhő** csempére a hozzáférési panelen, be kell jelentkeznie automatikusan Atlassian felhő Alkalmazásmódosítások.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Amikor kiválasztja a **Atlassian felhőalapú** csempéje a hozzáférési panelen, be kell jelentkeznie automatikusan az Atlassian felhőalapú alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 76430fa5652e98cba86c41433f376e27dbb1639a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5c6a4ac68694c74f9a7ed99a2d7b4939b84dc33f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446860"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054879"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden dokumentumnak Azure Active Directory (Azure AD) különböző-alkalmazásokkal kapcsolatos lehetőségei írt átfogó listáját tartalmazza.
@@ -112,7 +112,7 @@ Ha beállít egyszeri bejelentkezést az alkalmazások és erőforrások, majd t
 | A következő típusú erőforrásokat a feltételes hozzáférés engedélyezése |[Feltételes hozzáférés a SaaS-alkalmazások](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Feltételes hozzáférés az Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások](active-directory-conditional-access-azure-portal.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások az Azure AD-alkalmazásproxyn keresztül közzétett](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Eszközök regisztrálása az Azure Active Directoryban annak érdekében, hogy eszközalapú feltételes hozzáférési szabályzat engedélyezése |[Az Azure Active Directory Eszközregisztráció – áttekintés](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Automatikus Eszközregisztráció engedélyezése a tartományhoz csatlakoztatott Windows-eszközök](active-directory-conditional-access-automatic-device-registration.md)<br />– [Lépéseket a Windows 8.1-eszközök](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Lépéseket a Windows 7-eszközökön](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
-| A Microsoft Authenticator alkalmazás használata a kétlépéses ellenőrzéshez |} [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| A Microsoft Authenticator alkalmazás használata a kétlépéses ellenőrzéshez |} [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
 
 Feltételes hozzáférés egy [prémium szintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) funkció.
 
@@ -180,7 +180,7 @@ Az Azure AD hozzáférési Panel a végfelhasználók hol indítsa el az alkalma
 | A cikk az útmutató |  |
 |:---:| --- |
 | Az egyszeri bejelentkezéses alkalmazások telepítése a felhasználók számára elérhető különböző lehetőségek összehasonlítása |[Üzembe helyezése az Azure AD integrált alkalmazások felhasználók számára](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
-| A hozzáférési panelen és a mobil egyenértékű MyApps áttekintése |[Bevezetés a hozzáférési panelen és a MyApps](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />– [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
+| A hozzáférési panelen és a mobil egyenértékű MyApps áttekintése |[Bevezetés a hozzáférési panelen és a MyApps](user-help/active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />– [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Az Azure AD-alkalmazások elérése az Office 365 webhelyről |[Használja az Office 365 Appindítója](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | Az Azure AD-alkalmazások elérése az Intune Managed Browser mobilalkalmazás |[Az Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />– [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
 | Mélyhivatkozások használata kezdeményezni az egyszeri bejelentkezés az Azure AD-alkalmazások elérése |[Közvetlen bejelentkezés az alkalmazásokra mutató beolvasása](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3b767da394f6337a1110ad171f19ad789fa044d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867493"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972981"
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
@@ -28,7 +28,7 @@ Ahhoz, hogy a felhasználók visszaállíthassák az Azure AD-jelszavukat a Wind
 * A Windows 10 2018. áprilisi verziója, vagy egy újabb, az [Azure AD-hez csatlakoztatott](../device-management-azure-portal.md) vagy a [hibrid Azure AD-hez csatlakoztatott](../device-management-hybrid-azuread-joined-devices-setup.md) ügyfél.
 * Engedélyezni kell az Azure AD önkiszolgáló jelszó-visszaállítását.
 * A Jelszó visszaállítása hivatkozás használatát engedélyező beállítást a következő módokon lehet konfigurálni és üzembe helyezni:
-   * [Intune eszközkonfigurációs profil](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
+   * [Intune eszközkonfigurációs profil](tutorial-sspr-windows.md#configure-reset-password-link-using-intune). Ehhez a metódushoz regisztrálni kell az Intune-ba az eszközt.
    * [Beállításkulcs](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
@@ -66,7 +66,7 @@ Ahhoz, hogy a felhasználók visszaállíthassák az Azure AD-jelszavukat a Wind
    * Kattintson a **Kiválasztás** gombra.
 4. Kattintson a **Create** (Létrehozás) gombra
 
-A csoportok létrehozásával kapcsolatos további információkért lásd: [Erőforrások hozzáférésének kezelése Azure Active Directory-csoportokkal](../active-directory-manage-groups.md).
+A csoportok létrehozásával kapcsolatos további információkért lásd: [Erőforrások hozzáférésének kezelése Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md).
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>Eszközkonfigurációs szabályzat hozzárendelése az eszközcsoporthoz
 

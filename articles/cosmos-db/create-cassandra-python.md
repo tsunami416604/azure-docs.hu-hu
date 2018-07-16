@@ -11,12 +11,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 89e0346bb68679b6a77faf82fa366126baa93605
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 0adabc3561ee989e0ce383a5d995a12c144b19b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797158"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237788"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra alkalmazás felépítése a Python és az Azure Cosmos DB használatával
 
@@ -209,7 +209,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni az alkalmazást. Így már további adatokat importálhat a Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével tárolót készíteni, és hogyan lehet futtatni egy alkalmazást. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Cassandra-adatok importálása az Azure Cosmos DB-be](cassandra-import-data.md)

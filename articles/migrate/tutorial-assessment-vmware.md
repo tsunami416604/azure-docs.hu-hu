@@ -4,15 +4,15 @@ description: Ismerteti, hogyan derítheti fel és értékelheti ki a helyszíni 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 06/19/2018
+ms.date: 07/09/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71d4bc0aa1ea2658c4cd40834a769eaaac649bc3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b1070e29c8dc9f088297622d16fb816a10a55c0
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228373"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970785"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -33,10 +33,6 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **VMware**: A migrálni kívánt virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie. Emellett egy 5.0-s vagy újabb verziójú ESXi gazdagépre is szükség van a gyűjtő virtuális gép üzembe helyezéséhez.
-
-> [!NOTE]
-> A Hyper-V támogatása tervbe van véve, és hamarosan megvalósul.
-
 - **vCenter Server-fiók**: A vCenter Server eléréséhez egy csak olvasási jogokat biztosító fiók szükséges. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
 - **Engedélyek**: A vCenter Serveren megfelelő jogosultságra van szüksége ahhoz, hogy a virtuális gépeket .OVA-formátumú fájlok importálásával létrehozhassa.
 - **Statisztikai beállítások**: A vCenter Server statisztikai beállításait a 3. szintre kell konfigurálni a telepítés megkezdése előtt. A 3. szintnél alacsonyabb konfiguráció esetén a kiértékelés működni fog, de a tároló és a hálózat adatai nem lesznek gyűjtve. A méretezési javaslatok alapjául ebben az esetben a processzor és a memória teljesítményadatai, valamint a lemezek és a hálózati adapterek konfigurációs adatai szolgálnak majd.
@@ -50,9 +46,10 @@ Az Azure Migrate hozzá kell férnie a VMware-kiszolgálókhoz a virtuális gép
 - Részletek: A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.
 - A hozzáférés korlátozásához rendelje a Gyermekobjektumba propagálás objektummal rendelkező Nincs hozzáférés szerepkört a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).
 
+
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
@@ -85,6 +82,14 @@ A telepítése előtt ellenőrizze, hogy az .OVA-fájl biztonságos-e.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. A létrehozott kivonatnak egyeznie kell ezekkel a beállításokkal.
+
+  Az OVA 1.0.9.12-es verziója esetén
+
+    **Algoritmus** | **Kivonat értéke**
+    --- | ---
+    MD5 | d0363e5d1b377a8eb08843cf034ac28a
+    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
   Az OVA 1.0.9.8-as verziója esetében
 
@@ -143,7 +148,7 @@ Importálja a letöltött fájlt a vCenter Serverre.
 5. Az Azure Migrate Collectorban nyissa meg a **Set up prerequisites** (Előfeltételek megadása) felületet.
     - Fogadja el a licencfeltételeket, és olvassa el a külső szolgáltatóval kapcsolatos információkat.
     - A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel.
-    - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel. [Itt tekinthet meg további információkat](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#internet-connectivity) az internetes csatlakozási követelményekkel és a gyűjtő által elért URL-címek listájával kapcsolatban.
+    - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel. [Itt tekinthet meg további információkat](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity) az internetes csatlakozási követelményekkel és a gyűjtő által elért URL-címek listájával kapcsolatban.
 
     > [!NOTE]
     > A proxykiszolgáló címét http://ProxyIPAddress vagy http://ProxyFQDN formátumban kell megadni. Csak a HTTP-proxyk használata támogatott.
@@ -157,10 +162,12 @@ Importálja a letöltött fájlt a vCenter Serverre.
     - A **Collection scope** (Gyűjtés hatóköre) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1500-nál több virtuális gépet. [Itt tekinthet meg további információkat](how-to-scale-assessment.md) azzal kapcsolatban, hogyan fedezheti fel a nagyméretű környezeteket.
 
 7. A **Specify migration project** (Migrálási projekt megadása) területen adja meg az Azure Migrate projekt a portálról kimásolt azonosítóját és kulcsát. Ha nem másolta ki őket, nyissa meg az Azure Portalt a gyűjtő virtuális gépről. A projekt **Áttekintés** lapján kattintson a **Gépek felderítése** elemre, és másolja ki az értékeket.  
-8. A **View collection progress** (Gyűjtési folyamat megtekintése) területen monitorozhatja a felderítési folyamatot, és győződhet meg róla, hogy a virtuális gépekről gyűjtött metaadatok a hatókörbe tartoznak-e. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát. [Itt tekinthet meg további információkat](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) az Azure Migrate-gyűjtő által gyűjtött adatokról.
+8. A **View collection progress** (Gyűjtési folyamat megtekintése) területen monitorozhatja a felderítési folyamatot, és győződhet meg róla, hogy a virtuális gépekről gyűjtött metaadatok a hatókörbe tartoznak-e. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát. [Itt tekinthet meg további információkat](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) az Azure Migrate-gyűjtő által gyűjtött adatokról.
 
 > [!NOTE]
-> Az adatgyűjtő csak az „Angol (Egyesült Államok)” nyelvet támogatja az operációs rendszer és az adatgyűjtő felület nyelveként. A támogatás további nyelveken is hamarosan elérhetővé válik.
+> Az adatgyűjtő csak az „Angol (Egyesült Államok)” nyelvet támogatja az operációs rendszer és az adatgyűjtő felület nyelveként.
+> Ha módosítja a beállításokat egy értékelni kívánt gépen, az értékelés futtatása előtt aktiválja újra az észlelést. Ehhez használja a gyűjtőben a **Gyűjtés újbóli elindítását**. Miután elkészült a gyűjtemény, válassza az **Újraszámítás** lehetőséget az értékeléshez a portálon, hogy megkapja a frissített értékelési eredményeket.
+
 
 
 ### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon

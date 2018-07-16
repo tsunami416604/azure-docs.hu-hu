@@ -4,17 +4,17 @@ description: Ebben a rövid útmutatóban megismerheti, hogyan helyezhet üzembe
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 07/02/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0e0d22b3363b00c81be5091fd12773f9e486c09e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8ee43a1e3b448faae79a7e3086e2e1d639c341f2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099185"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611927"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése x64-es Linux-eszközön
 
@@ -31,7 +31,14 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
 Ebben a rövid útmutatóban Linux rendszerű számítógépét vagy virtuális gépét IoT Edge-eszközzé alakíthatja. Ezután egy modult helyezhet üzembe az eszközén az Azure Portalról. A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom- és nyomásadatokat állít elő. A további Azure IoT Edge-oktatóanyagok az itt elvégzett munkára építkeznek olyan modulok üzembe helyezésével, amelyek a szimulált adatok elemzésével üzleti megállapításokat hoznak létre. 
 
-Ha nem rendelkezik aktív Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][lnk-account] a kezdés előtt.
+Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [ingyenes fiókot][lnk-account].
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A rövid útmutató egy linuxos gépet használ IoT Edge-eszközként. Ha nincs még Linux rendszerű virtuális gépe teszteléshez, kövesse a [Linux rendszerű virtuális gép az Azure Portalon történő létrehozását](../virtual-machines/linux/quick-create-portal.md) ismertető cikk utasításait. 
+* Nem kell követnie a webkiszolgáló telepítését és futtatását bemutató lépéseket. Amint csatlakozott a virtuális gépéhez, nem kell követnie a további lépéseket.  
+* Hozza létre a virtuális gépét egy új erőforráscsoportban, amelyet használhat a rövid útmutatóhoz létrehozott többi erőforrás létrehozásánál. Adjon neki egy könnyen beazonosítható segítő nevet (pl.: *IoTEdgeResources*). 
+* Az IoT Edge teszteléséhez nincs szükség nagyon nagy virtuális gépre. A **B1ms** méret például elegendő. 
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -54,6 +61,8 @@ Telepítse és indítsa el eszközén az Azure IoT Edge-futtatókörnyezetet.
 ![Eszköz regisztrálása][5]
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. Az **IoT Edge biztonsági démon** az Edge-eszközök indulásakor lép működésbe, és az IoT Edge-ügynök elindításával elvégzi az eszköz rendszerindítását. Az **IoT Edge-ügynök** a modulok üzembe helyezését és monitorozását segíti az IoT Edge-eszközön, beleértve az IoT Edge-központot is. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli. 
+
+Hajtsa végre a következő lépéseket a rövid útmutatóhoz előkészített linuxos gépen vagy virtuális gépen. 
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>Eszköz regisztrálása a szoftveradattár használatához
 
@@ -85,11 +94,16 @@ Frissítse az **apt-get** parancsot.
    sudo apt-get update
    ```
 
-Telepítse a Mobyt, egy tároló-futtatókörnyezetet és annak parancssori felületi parancsait. 
+Telepítse a **Moby** tároló-futtatókörnyezetet.
 
    ```bash
    sudo apt-get install moby-engine
-   sudo apt-get install moby-cli   
+   ```
+
+Telepítse a Moby CLI-parancsait. 
+
+   ```bash
+   sudo apt-get install moby-cli
    ```
 
 ### <a name="install-and-configure-the-iot-edge-security-daemon"></a>Az IoT Edge biztonsági démon telepítése és konfigurálása
@@ -109,15 +123,19 @@ A biztonsági démon rendszerszolgáltatásként lesz telepítve, így az IoT Ed
    sudo nano /etc/iotedge/config.yaml
    ```
 
-3. Adja hozzá az IoT Edge-eszköz kapcsolati sztringjét, amelyet az eszköz regisztrálásakor másolt. Cserélje le a **device_connection_string** változó értékét, amelyet a rövid útmutató korábbi részében másolt.
+3. Adja hozzá az IoT Edge-eszköz kapcsolati sztringjét. Keresse meg a **device_connection_string** értéket, és frissítse arra a sztringre, amelyet az eszköz regisztrálása után másolt ki.
 
-4. Indítsa újra az Edge biztonsági démont:
+4. Mentse és zárja be a fájlt. 
+
+   `CTRL + X`, `Y`, `Enter`
+
+4. Indítsa újra az IoT Edge biztonsági démont.
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-5. Ellenőrizze, hogy az Edge biztonsági démon rendszerszolgáltatásként fut-e:
+5. Ellenőrizze, hogy az Edge biztonsági démon rendszerszolgáltatásként fut-e.
 
    ```bash
    sudo systemctl status iotedge
@@ -131,12 +149,14 @@ A biztonsági démon rendszerszolgáltatásként lesz telepítve, így az IoT Ed
    journalctl -u iotedge
    ```
 
-6. Tekintse meg az eszközön futó modulokat: 
+6. Tekintse meg az eszközön futó modulokat. 
+
+   >[!TIP]
+   >Ha `iotedge`-parancsokat futtat, a *sudo* kifejezést kell eléjük írnia. Az engedélyek frissítéséhez jelentkezzen ki a gépről, majd jelentkezzen újra be. Ezután már futtathat emelt szintű jogosultságok nélkül is `iotedge`-parancsokat. 
 
    ```bash
    sudo iotedge list
    ```
-Kijelentkezést és bejelentkezést követően a *sudo* nem szükséges a fenti parancshoz.
 
    ![Egy modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-1.png)
 
@@ -157,7 +177,6 @@ Nyissa meg újra a parancssort a szimulált eszközt futtató számítógépen. 
    ```bash
    sudo iotedge list
    ```
-Kijelentkezést és bejelentkezést követően a *sudo* nem szükséges a fenti parancshoz.
 
    ![Három modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-2.png)
 
@@ -177,7 +196,22 @@ Az eszköz által küldött telemetriát is megtekintheti az [IoT Hub Explorer e
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ha el szeretné távolítani a telepítéseket az eszközéről, azt a következő parancsokkal teheti meg.  
+Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ha nem, törölheti a létrehozott Azure-erőforrásokat, és eltávolíthatja az IoT Edge-futtatókörnyezetet az eszközről. 
+
+### <a name="delete-azure-resources"></a>Azure-erőforrások törlése
+
+Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta létre, törölheti azt a csoportot és az összes társított erőforrást. Ha van valami abban az erőforráscsoportban, amit meg szeretne tartani, csak azokat a különálló erőforrásokat törölje, amelyektől meg szeretne szabadulni. 
+
+Erőforráscsoport eltávolításához hajtsa végre az alábbi lépéseket: 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+2. A **Szűrés név alapján...** mezőbe írja be az IoT Hubot tartalmazó erőforráscsoport nevét. 
+3. Az eredménylistában kattintson az erőforráscsoporttól jobbra lévő **…** ikonra, majd kattintson az **Erőforráscsoport törlése** elemre.
+4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
+
+### <a name="remove-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet eltávolítása
+
+Ha el szeretné távolítani a telepítéseket az eszközéről, azt a következő parancsokkal teheti meg.  
 
 Távolítsa el az IoT Edge-futtatókörnyezetet.
 
@@ -185,10 +219,18 @@ Távolítsa el az IoT Edge-futtatókörnyezetet.
    sudo apt-get remove --purge iotedge
    ```
 
-Törölje az eszközön létrehozott tárolókat. 
+Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tárolók leállnak, de továbbra is ott lesznek az eszközön. Tekintse meg az összes tárolót.
 
    ```bash
-   sudo docker rm -f $(sudo docker ps -aq)
+   sudo docker ps -a
+   ```
+
+Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. Ha más nevet adott neki, módosítsa a tempSensor tároló nevét. 
+
+   ```bash
+   sudo docker rm -f tempSensor
+   sudo docker rm -f edgeHub
+   sudo docker rm -f edgeAgent
    ```
 
 Távolítsa el a tároló-futtatókörnyezetet.
@@ -196,8 +238,6 @@ Távolítsa el a tároló-futtatókörnyezetet.
    ```bash
    sudo apt-get remove --purge moby
    ```
-
-Ha már nincs szüksége az ebben a rövid útmutatóban létrehozott Azure IoT Hub- vagy IoT Edge-eszközre, az Azure Portalon törölheti őket. Nyissa meg az IoT Hub áttekintési lapját, és kattintson a **Törlés** elemre. 
 
 ## <a name="next-steps"></a>További lépések
 
@@ -221,5 +261,6 @@ Ez a rövid útmutató minden IoT Edge-oktatóanyag előfeltétele. Továbbléph
 [9]: ./media/tutorial-simulate-device-linux/sensor-data.png
 
 <!-- Links -->
+[lnk-account]: https://azure.microsoft.com/free
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer

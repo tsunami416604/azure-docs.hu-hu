@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031430"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902904"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával
 
@@ -48,7 +48,7 @@ A Stream Analytics-feladat létrehozása előtt érdemes beállítani azokat az 
 
 4. Az **Összes erőforrás** oldalon keresse meg az előző lépésnél beállított tárfiókot. Nyissa meg az **Áttekintés** oldalt, utána pedig a **Blobok** csempét.  
 
-5. A **Blob szolgáltatás** oldalon válassza a **Tároló** lehetőséget, a **Név** mezőben adja meg a tároló nevét (például *container1*), ezután a **Nyilvános hozzáférési szint** beállítást állítsa Blob értékre (névtelen olvasási hozzáférés csak blobokhoz), majd válassza az **OK** lehetőséget.  
+5. A **Blob szolgáltatás** oldalon válassza a **Tároló** lehetőséget, a **Név** mezőben adja meg a tároló nevét (például *container1*), ezután a **Nyilvános hozzáférés szintje** beállítást állítsa Privát (nincs névtelen hozzáférés) értékre, és válassza az **OK** gombot.  
 
    ![Tároló létrehozása](./media/stream-analytics-quick-create-portal/create-a-storage-container.png)
 

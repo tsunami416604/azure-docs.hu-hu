@@ -1,11 +1,11 @@
-Az átviteli sebesség, tárolási, rendelkezésre állási, késés és a a fiók erőforrásai konzisztenciájának figyeli az Azure portálon. Vegyük a metrikák gyorsan át. 
+A fiókjához tartozó erőforrások adatátviteli sebessége, tárolókapacitása, rendelkezésre állása, késleltetése és konzisztenciája az Azure Portalon monitorozható. Vessünk egy pillantást ezekre a metrikákra. 
 
-1. Kattintson a **metrikák** a navigációs menü.
+1. Kattintson a **Metrikák** elemre a navigációs menüben.
 
-   ![Az Azure-portálon a metrikák](./media/cosmos-db-tutorial-review-slas/metrics.png)
+   ![Mérőszámok az Azure Portalon](./media/cosmos-db-tutorial-review-slas/metrics.png)
 
-2. Kattintson a egyes lapokon így tisztában a metrikák Azure Cosmos DB biztosít. 
+2. Kattintson végig az összes lapon, hogy tisztában legyen az Azure Cosmos DB által biztosított metrikákkal. 
 
-    Minden egyes diagram, amelyhez társítva van a [Azure Cosmos DB szolgáltatói szerződések (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) jeleníti meg, ha a szolgáltatói szerződéseknek bármelyikét megsértése sorokkal biztosít. Azure Cosmos-adatbázis lehetővé teszi a szolgáltatásiszint-szerződések ennek a programcsomagnak a mérőszámok átlátható figyelése. 
+    Az [Azure Cosmos DB szolgáltatói szerződéseihez (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) tartozó összes diagram tartalmaz egy-egy vonalat, amely értesít arról, ha bármely SLA-t megsértették. Az Azure Cosmos DB ezekkel a metrikákkal átláthatóvá teszi az SLA-k monitorozását. 
 
-   ![Az Azure Cosmos DB metrikák csomag](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)
+   ![Azure Cosmos DB-metrikák](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)

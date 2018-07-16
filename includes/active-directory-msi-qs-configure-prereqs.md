@@ -1,1 +1,1 @@
-Ha még nem ismeri MSI-vel, tekintse meg a [Felügyeltszolgáltatás-identitás – áttekintés](../articles/active-directory/msi-overview.md). Ha még nem rendelkezik Azure-fiók [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a folytatás előtt.
+Ha még nem ismeri az MSI-t, tekintse meg [a felügyeltszolgáltatás-identitás áttekintését](../articles/active-directory/msi-overview.md). Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).

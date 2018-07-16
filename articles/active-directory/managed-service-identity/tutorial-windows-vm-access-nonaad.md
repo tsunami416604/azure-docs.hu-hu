@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault eléréséhez használja a Windows virtuális gép MSI
-description: Ez az oktatóanyag bemutatja, hogyan a folyamatot, amely egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Key Vault eléréséhez.
+title: Windows VM-beli MSI használata az Azure Key Vault eléréséhez
+description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure Key Vaulthoz egy Windows VM-beli felügyeltszolgáltatás-identitással (MSI).
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,31 +9,31 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 35391c8148246146eeb0c07bf57aea8a2a95d277
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 81509108060b636e47154a8c375f5569cac73648
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594934"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902734"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Oktatóanyag: A Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure Key Vault elérésére használhat. 
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Oktatóanyag: Az Azure Key Vault elérése Windows VM-beli felügyeltszolgáltatás-identitással (MSI) 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan engedélyezése felügyelt szolgáltatás identitásának (MSI) egy Windows rendszerű virtuális gép számára, majd az Azure Key Vault eléréséhez használja az identitásukat. A rendszerindítási szolgál, Key Vault lehetővé teszi az ügyfélalkalmazás által Azure Active Directory (AD) nem védett erőforrások eléréséhez a titkos kulcsot használja. Felügyelt szolgáltatás-identitások Azure automatikusan kezeli, és lehetővé teszik, hogy az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatokat beszúrni a kódot támogató szolgáltatások hitelesítést. 
+Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyeltszolgáltatás-identitást (MSI) egy Windows rendszerű virtuális gépen, majd hogyan használhatja az identitást az Azure Key Vault hozzáféréséhez. A rendszerindítóként szolgáló Key Vault segítségével az ügyfélalkalmazás ezután a titkos kódot használhatja a nem az Azure Active Directory (AD) által védett erőforrások eléréséhez. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 > [!div class="checklist"]
-> * Windows rendszerű virtuális gép identitásának felügyelt szolgáltatás engedélyezése 
-> * A virtuális gép hozzáférést biztosíthat a kulcstároló tárolt titkos kulcs 
-> * Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és a titkos kulcs lekérése a Key Vault használatával 
+> * Felügyeltszolgáltatás-identitás engedélyezése Windows rendszerű virtuális gépen 
+> * Hozzáférés engedélyezése a VM számára a Key Vaultban tárolt titkos kódokhoz 
+> * Hozzáférési jogkivonat lekérése a VM identitásával, majd a titkos kód lekérése a Key Vaultból 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,103 +45,103 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban
 
-Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet. A meglévő virtuális MSI is engedélyezheti.
+Ebben az oktatóanyagban egy új Windows VM-et fog létrehozni. A meglévő virtuális gépeken is engedélyezheti az MSI-t.
 
 1.  Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 2.  Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
-3.  Adja meg a virtuális gép adatait. A **felhasználónév** és **jelszó** létrehozott itt van a hitelesítő adatok használatával jelentkezzen be a virtuális gép.
-4.  Válassza ki a megfelelő **előfizetés** a virtuális gép meg a legördülő listában.
-5.  Jelölje be egy új **erőforráscsoport** szeretne létrehozni, válassza ki a virtuális gépet **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
-6.  Adja meg a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
+3.  Adja meg a virtuális gép adatait. Az itt létrehozott **felhasználónév** és **jelszó** alkotják a virtuális gépre való bejelentkezéshez használt hitelesítő adatokat.
+4.  Válassza ki a megfelelő **előfizetést** a virtuális géphez a legördülő menüben.
+5.  Ha a virtuális gépet egy új **erőforráscsoportban** szeretné létrehozni, válassza az **Új létrehozása** elemet. Amikor végzett, kattintson az **OK** gombra.
+6.  Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-    ![Kép helyettesítő szövege](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Helyettesítő képszöveg](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése 
+## <a name="enable-msi-on-your-vm"></a>MSI engedélyezése a virtuális gépen 
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. Egy felügyelt identitást a virtuális gép létrehozása Azure MSI engedélyezése jelzi. A színfalak MSI engedélyezése két dolgot eredményez: regisztrálja a virtuális Gépet az Azure Active Directory segítségével hoz létre a felügyelt, és konfigurálja a virtuális gép identitását.
+A virtuális gép MSI-vel anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. Az MSI engedélyezése arra utasítja az Azure-t, hogy létrehozzon egy felügyelt identitást a virtuális géphez. A háttérben az MSI engedélyezésének két következménye van: regisztrálja a virtuális gépet az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a virtuális gépen.
 
-1.  Válassza ki a **virtuális gép** , hogy szeretné-e engedélyezze MSI-t.  
-2.  A bal oldali navigációs sávon kattintson **konfigurációs**. 
-3.  Látni **Szolgáltatásidentitás felügyelt**. Regisztrálja, és engedélyezze a MSI-t, jelölje be **Igen**, ha szeretné letiltani, válassza a nem. 
-4.  Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.  
+1.  Válassza ki azt a **virtuális gépet**, amelyen engedélyezni szeretné az MSI-t.  
+2.  A bal oldali navigációs sávban kattintson a **Konfigurálás** elemre. 
+3.  Megjelenik a **felügyeltszolgáltatás-identitás**. Az MSI regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra. 
+4.  Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.  
 
-    ![Kép helyettesítő szövege](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Helyettesítő képszöveg](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>A virtuális gép hozzáférést biztosítson a kulcstároló tárolt titkos kulcs 
+## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Hozzáférés engedélyezése a VM számára a Key Vaultban tárolt titkos kódokhoz 
  
-MSI-fájl használata a kódot a hozzáférési jogkivonatok erőforrásokat, amelyek támogatják az Azure AD-alapú hitelesítés felé történő hitelesítésre kérheti le.  Azonban nem minden Azure-szolgáltatásokat támogatja az Azure AD-alapú hitelesítés. MSI-fájl használata a szolgáltatások, a szolgáltatás hitelesítő adatok tárolása az Azure Key Vault, és MSI beolvasni a hitelesítő adatok a kulcstároló elérésére használhat. 
+Az MSI segítségével a kód hozzáférési jogkivonatokat kérhet le az olyan erőforrások felé történő hitelesítéshez, amelyek támogatják az Azure AD-hitelesítést.  Az Azure AD-hitelesítést azonban nem minden Azure-szolgáltatás támogatja. Az MSI ilyen szolgáltatásokkal való használatához tárolja el a szolgáltatás hitelesítő adatait az Azure Key Vaultban, és az MSI-vel férjen hozzá a Key Vaulthoz, hogy le tudja kérni a hitelesítő adatokat. 
 
-Először igazolnia kell a kulcstároló létrehozásához, és a virtuális gép identitásának hozzáférést biztosítson a Key Vault.   
+Először létre kell hozni egy Key Vaultot, és gondoskodni kell róla, hogy a VM-identitás hozzá tudjon férni.   
 
-1. A bal oldali navigációs sáv felső részén válassza ki a **hozzon létre egy erőforrást** > **biztonság + identitás szakaszában** > **Key Vault**.  
-2. Adjon meg egy **neve** az új Key vault. 
-3. Keresse meg a Key Vault azonos előfizetésbe és erőforráscsoportba tartozik, mint a korábban létrehozott virtuális Gépet. 
-4. Válassza ki **hozzáférési házirendek** kattintson **új hozzáadása**. 
-5. A konfigurálás a sablon alapján, válassza ki **titkos felügyeleti**. 
-6. Válasszon **egyszerű válasszon**, és a keresési mezőbe írja be a korábban létrehozott virtuális gép nevét.  Válassza ki a virtuális gép az eredménylista **válasszon**. 
-7. Kattintson a **OK** a befejezési hozzáadása az új házirend, és **OK** hozzáférési házirend kijelölés befejezéséhez. 
-8. Kattintson a **létrehozása** a Key Vault létrehozásának befejezéséhez. 
+1. A bal oldali navigációs sáv tetején válassza az **Erőforrás létrehozása** > **Biztonság + identitás** > **Key Vault** lehetőséget.  
+2. Adja meg az új Key Vault **nevét**. 
+3. A Key Vaultot ugyanabban az előfizetésben és erőforráscsoportban hozza létre, mint a korábban létrehozott virtuális gépet. 
+4. Válassza a **Hozzáférési szabályzatok** lehetőséget, és kattintson az **Új hozzáadása** gombra. 
+5. A Konfigurálás sablonból mezőben válassza a **Titkos kódok kezelése** sablont. 
+6. Válassza a **Rendszerbiztonsági tag kijelölése** lehetőséget, és a keresőmezőben adja meg a korábban létrehozott virtuális gép nevét.  Válassza ki a virtuális gépet az eredménylistából, és kattintson a **Kiválasztás** gombra. 
+7. Az új hozzáférési szabályzat hozzáadásának befejezéshez kattintson az **OK**, majd a hozzáférési szabályzat kiválasztásának befejezéséhez ugyanúgy az **OK** gombra. 
+8. Kattintson a **Létrehozás** gombra a Key Vault létrehozásának befejezéséhez. 
 
-    ![Kép helyettesítő szövege](../media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Helyettesítő képszöveg](../media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 
-Ezt követően adja hozzá titkos kulcs a Key Vault, hogy később kérheti le a titkos kulcsot, a virtuális gépen futó kód használatával: 
+Ezután adjon hozzá egy titkos kódot a Key Vaulthoz, hogy később le tudja kérni a VM-ben futó titkos kódot: 
 
-1. Válassza ki **összes erőforrás**, és keresse meg és jelölje ki a létrehozott kulcstároló. 
-2. Válassza ki **titkok**, és kattintson a **Hozzáadás**. 
-3. Válassza ki **manuális**, a **feltöltési beállításokat**. 
-4. Adja meg egy nevet és értéket a titkos kulcsot.  Az érték lehet bármilyen. 
-5. Hagyja meg az aktiválási dátuma és a lejárati dátum törölje a jelet, és hagyja **engedélyezve** , **Igen**. 
-6. Kattintson a **létrehozása** a titkos kulcs létrehozásához. 
+1. Válassza a **Minden erőforrás** lehetőséget, majd keresse meg és válassza ki a létrehozott Key Vaultot. 
+2. Válassza a **Titkos kódok** lehetőséget, és kattintson a **Hozzáadás** gombra. 
+3. A **Feltöltési beállítások** mezőben válassza a **Manuális** lehetőséget. 
+4. Adja meg a titkos kód nevét és értékét.  Az érték bármi lehet. 
+5. Hagyja az aktiválási és a lejárati dátumot üresen, az **Engedélyezve** beállítást pedig az **Igen** értéken. 
+6. A titkos kód létrehozásához kattintson a **Létrehozás** parancsra. 
  
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és a titkos kulcs lekérése a Key Vault használatával  
+## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Hozzáférési jogkivonat lekérése a VM identitásával, majd a titkos kód lekérése a Key Vaultból  
 
-Ha nincs PowerShell 4.3.1 vagy újabb verziójának telepítve, kell [töltse le és telepítse a legújabb verziót](https://docs.microsoft.com/powershell/azure/overview).
+Ha nincs telepítve a PowerShell 4.3.1-es vagy újabb verziója, [le kell töltenie és telepítenie kell a legújabb verziót](https://docs.microsoft.com/powershell/azure/overview).
 
-A virtuális gép MSI először szereznie egy hozzáférési jogkivonatot a Key Vault hitelesítésére használjuk:
+Először a VM MSI-jével szerezzen be egy hozzáférési jogkivonatot a Key Vaulton végzett hitelesítéshez:
  
-1. A portálon lépjen a **virtuális gépek** és nyissa meg a Windows rendszerű virtuális gép és a a **áttekintése**, kattintson a **Connect**.
-2. Adja meg a **felhasználónév** és **jelszó** esetében, amelyek hozzáadott létrehozásakor a **Windows virtuális gép**.  
-3. Most, hogy létrehozott egy **távoli asztali kapcsolat** a virtuális géppel, nyissa meg a Powershellt a távoli munkamenet.  
-4. A PowerShellben hívja meg a webes kérelem a tenant lekérdezni a jogkivonatot a helyi állomás meghatározott portot a virtuális gép.  
+1. A portálon lépjen a **Virtuális gépek** lapra, lépjen a Windows VM-hez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre.
+2. A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a **Windows VM** létrehozásakor adott meg.  
+3. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a PowerShellt a távoli munkamenetben.  
+4. A PowerShellben hívjon meg egy webes kérést a bérlőn, amellyel lekéri a jogkivonatot a helyi gazdagéphez a virtuális gép adott portján.  
 
-    A PowerShell-kérelem:
+    A PowerShell-kérés:
     
     ```powershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -Method GET -Headers @{Metadata="true"} 
     ```
     
-    Ezután bontsa ki a teljes válasz, amely tárolja a $response objektum JavaScript Object Notation (JSON) formátumú karakterláncot.  
+    Ezután nyerje ki a teljes választ, amelyet egy JavaScript Object Notation (JSON) formátumú sztringként tárol a $response objektum.  
     
     ```powershell
     $content = $response.Content | ConvertFrom-Json 
     ```
     
-    Ezután bontsa ki a hozzáférési jogkivonat a választ.  
+    Ezután nyerje ki a hozzáférési jogkivonatot a válaszból.  
     
     ```powershell
     $KeyVaultToken = $content.access_token 
     ```
     
-    Végezetül paranccsal PowerShell Invoke-WebRequest beolvasni a titkos kulcsot a kulcstároló, a hozzáférési jogkivonat hitelesítési fejlécéhez benyújtása korábban létrehozott.  A kulcstároló, amely az URL-CÍMÉT kell a **Essentials** szakasza a **áttekintése** a Key Vault oldalán.  
+    Végül a Powershell Invoke-WebRequest parancsával kérje le a Key Vaultban korábban létrehozott titkos kódot úgy, hogy a hozzáférési jogkivonatot az engedélyezési fejlécbe foglalja.  Szüksége lesz a Key Vault URL-címére, amely a Key Vault **Áttekintés** lapjának **Alapvető erőforrások** szakaszában található.  
     
     ```powershell
     (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 
     ```
     
-    A válasz fog kinézni: 
+    A válasz a következőképp fog kinézni: 
     
     ```powershell
     {"value":"p@ssw0rd!","id":"https://mytestkeyvault.vault.azure.net/secrets/MyTestSecret/7c2204c6093c4d859bc5b9eff8f29050","attributes":{"enabled":true,"created":1505088747,"updated":1505088747,"recoveryLevel":"Purgeable"}} 
     ```
     
-Ha a titkos kulcsot a Key Vault korábban lekért, használhatja, hogy egy szolgáltatás, amely egy nevet és jelszót igényel hitelesítést. 
+Miután lekérte a titkos kódot a Key Vaultból, a használatával hitelesítést végezhet olyan szolgáltatásokban, amelyekhez név és jelszó szükséges. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudta, hogyan hozható létre az Azure Key Vault eléréséhez felügyelt Szolgáltatásidentitás.  További információt az Azure Key Vault lásd:
+Az oktatóanyag bemutatta, hogyan hozhat létre felügyeltszolgáltatás-identitásokat az Azure Key Vault eléréséhez.  További információ az Azure Key Vault szolgáltatásról:
 
 > [!div class="nextstepaction"]
 >[Azure Key Vault](/azure/key-vault/key-vault-whatis)

@@ -9,20 +9,20 @@ ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 7843410043b726526380b2a916d96f414a2decda
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29532323"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38740569"
 ---
-Címkék alkalmazása az erőforrásokat, után megtekintheti a címkék erőforrás költségeket. Költség elemzéshez megjelenítése a legutóbbi használati, ezért még nem láthatók a költségek igénybe vesz igénybe. A költségek érhetők el, tekintheti költségek erőforrások erőforráscsoportok közötti az előfizetésben. Felhasználónak rendelkeznie kell [szintű hozzáféréssel előfizetés számlázási adatokat](../articles/billing/billing-manage-access.md) költségeket megjelenítéséhez.
+Az erőforrások felcímkézése után megtekintheti az adott címkével ellátott erőforrások költségét. A legutóbbi használati adatok megjelenítése eltarthat egy darabig a költségelemzés számára, tehát előfordulhat, hogy rögtön nem látja a költségeket. Amikor a költségek már elérhetők, megtekintheti az előfizetésében lévő erőforráscsoportok erőforrásainak költségét. A költségek megtekintéséhez a felhasználóknak [előfizetéses szintű hozzáféréssel](../articles/billing/billing-manage-access.md) kell rendelkezniük a számlázási adatokhoz.
 
-A portál kódcímke költségek megtekintéséhez jelölje ki az előfizetését, és válassza ki **költség Analysis**.
+Ha címke szerint szeretné megtekinteni a költségeket a portálon, válassza ki az előfizetését, és válassza a **Költségelemzés** lehetőséget.
 
 ![Költségelemzés](./media/resource-manager-governance-tags-billing/select-cost-analysis.png)
 
-Ezt követően a címke értéke alapján szűrni, és válassza ki **alkalmaz**.
+Ezután szűrjön címkeérték szerint, és válassza az **Alkalmaz** lehetőséget.
 
-![Nézet költség címke szerint](./media/resource-manager-governance-tags-billing/view-costs-by-tag.png)
+![Költség megtekintése címke szerint](./media/resource-manager-governance-tags-billing/view-costs-by-tag.png)
 
-Használhatja a [Azure számlázási API-k](../articles/billing/billing-usage-rate-card-overview.md) költségek programozott módon megtekintéséhez.
+Használhatja az [Azure-beli számlázási API-kat](../articles/billing/billing-usage-rate-card-overview.md) is a költségek programozott módon való megtekintéséhez.

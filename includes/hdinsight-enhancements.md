@@ -1,2 +1,2 @@
 > [!NOTE]
-> [További információ a jövőbeli fejlesztések és képességek](https://aka.ms/hdinsightnew).
+> [További információ a hamarosan megjelenő fejlesztésekről és funkciókról](https://aka.ms/hdinsightnew).

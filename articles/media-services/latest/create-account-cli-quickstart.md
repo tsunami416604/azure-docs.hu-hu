@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Azure Media Services-fiók létrehozása a CLI 2.0 használatával | Microsoft Docs
+title: Rövid útmutató – Azure Media Services-fiók létrehozása az Azure CLI használatával | Microsoft Docs
 description: Ezen rövid útmutató lépéseivel egy Azure Media Services-fiókot hozhat létre.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: f7e5cb28f90466e9366c0a32e2a333e6823b9396
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779718"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767102"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Rövid útmutató: Azure Media Services-fiók létrehozása
 
@@ -26,7 +26,7 @@ ms.locfileid: "33779718"
 
 Függetlenül attól, hogy fejlesztő vagy médiatartalmak létrehozója, a médiatartalmaknak az Azure-ban történő tárolásához, titkosításához, kódolásához, felügyeletéhez és streameléséhez Media Services-fiókot kell létrehoznia. A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás azonosítóját. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. A Storage-fiók erőforrásának a Media Services-fiókkal azonos földrajzi régióban kell lennie.  
 
-Ez a rövid útmutató az új Azure Media Services-fiókoknak a CLI 2.0-val történő létrehozásának lépéseit ismerteti.  
+Ez a rövid útmutató az új Azure Media Services-fiókok az Azure CLI használatával történő létrehozásának lépéseit ismerteti.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ Jelentkezzen be az [Azure Portalra](http://portal.azure.com), és indítsa el a 
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-ás vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-ás vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="set-the-azure-subscription"></a>Az Azure-előfizetés beállítása
 

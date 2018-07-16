@@ -1,12 +1,12 @@
 
-## <a name="open-azure-cloud-shell"></a>Nyissa meg az Azure felhőalapú rendszerhéj
+## <a name="open-azure-cloud-shell"></a>Az Azure Cloud Shell megnyitása
 
-Azure Cloud rendszerhéj egy ingyenes, interaktív rendszerhéj, amelyek segítségével a lépések futtatásával a cikkben. Közös Azure eszközök előtelepített és felhő rendszerhéj-fiókjához használatára konfigurálva. Egyszerűen jelölje be a **másolási** gombra kattintva kimásolhatja a kódokat, illessze be a felhő rendszerhéj, és nyomja le az Enter futtatni. Nyissa meg a felhő rendszerhéj néhány módja van:
+Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések végrehajtására használhat. A gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak a Cloud Shellben a fiókjával történő használathoz. A **Másolás** gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz. A Cloud Shell többféleképpen is megnyitható:
 
 |  |   |
 |-----------------------------------------------|---|
-| Válassza ki **kipróbálás** egy kódblokk jobb felső sarkában. | ![A Cloud Shell ebben a cikkben](./media/cloud-shell-try-it/cli-try-it.png) |
+| Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. | ![A Cloud Shell ebben a cikkben](./media/cloud-shell-try-it/cli-try-it.png) |
 | Nyissa meg a Cloud Shellt a böngészőben. | [![https://shell.azure.com/bash](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash) |
-| Válassza ki a **felhő rendszerhéj** jobb felső sarkában a menü gombjára a [Azure-portálon](https://portal.azure.com). |    ![A Cloud Shell a portálon](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| Az [Azure Portal](https://portal.azure.com) jobb felső sarkában található menüben kattintson a **Cloud Shell** gombra. |    ![A Cloud Shell a portálon](./media/cloud-shell-try-it/cloud-shell-menu.png) |
 |  |  |
 

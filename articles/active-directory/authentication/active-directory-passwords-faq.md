@@ -1,6 +1,6 @@
 ---
-title: Az önkiszolgáló jelszó-átállítási gyakori kérdések – Azure Active Directoryban
-description: Gyakori kérdések az Azure AD az önkiszolgáló jelszó alaphelyzetbe állítása
+title: Az önkiszolgáló jelszó-visszaállítási – gyakori kérdések – Azure Active Directory
+description: Gyakori kérdések az Azure AD önkiszolgáló jelszó alaphelyzetbe állítása
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,137 +10,137 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 7f54877f9218cbb0c2ac8cca86c580b7f1aa6c83
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c006e448b8da1acaf51c8339cbcd0b6170f29874
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869750"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054811"
 ---
-# <a name="password-management-frequently-asked-questions"></a>A jelszókezelés gyakran ismételt kérdések
+# <a name="password-management-frequently-asked-questions"></a>A jelszókezelés – gyakori kérdések
 
-Az alábbiakban néhány gyakori kérdésekkel (GYIK) a jelszó alaphelyzetbe állítása kapcsolódó van.
+Az alábbiakban néhány gyakori kérdések (GYIK) jelszó-visszaállítás kapcsolatos összes dolgot.
 
-Ha az Azure Active Directory (Azure AD) általános kérdése van, és az önkiszolgáló jelszó-visszaállításból (SSPR), amely itt nem érkezik válasz, megkérheti a közösségi Ha segítségre van szüksége a a [az Azure AD fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). A Közösség tagjai közé tartozik a mérnökök, termék kezelők, MVP és ahol informatikai szakemberek számára.
+Ha az Azure Active Directory (Azure AD) általános kérdésem van, és az önkiszolgáló jelszó-visszaállítás (SSPR), amely itt nem kaptam választ, megkérheti a Közösség segítségért a a [az Azure AD fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). A Közösség tagjai közé tartozik, mérnökök, termék kezelők, MVP-k és megosztana informatikai szakemberek számára.
 
-Ez a GYIK a következő szakaszok oszlik:
+Ez a GYIK a következő részekre van felosztva:
 
-* [Kérdésekre jelszó-átállítási regisztrációk](#password-reset-registration)
-* [Jelszó alaphelyzetbe állítása kérdések](#password-reset)
-* [A jelszó módosítása kapcsolatos kérdések](#password-change)
-* [Jelszó felügyeleti jelentésekkel kapcsolatos kérdések](#password-management-reports)
-* [A jelszóvisszaírás kapcsolatos kérdések](#password-writeback)
+* [Kérdése jelszó alaphelyzetbe állításának regisztrációja](#password-reset-registration)
+* [Jelszó-visszaállítással kapcsolatos kérdések](#password-reset)
+* [Jelszó módosítása kapcsolatos kérdések](#password-change)
+* [Jelszókezelési jelentések kapcsolatos kérdések](#password-management-reports)
+* [A jelszóvisszaíró kapcsolatos kérdések](#password-writeback)
 
 ## <a name="password-reset-registration"></a>Jelszó alaphelyzetbe állításának regisztrációja
 
-* **K: a felhasználók regisztrálhatják saját jelszó alaphelyzetbe állítása adatokat?**
+* **Kérdés: a felhasználók regisztrálhatják saját jelszó alaphelyzetbe állítása adatait?**
 
-  > **V:** Igen. Nyissa meg, amíg a jelszó alaphelyzetbe állítása engedélyezve van, és azok licencét, a jelszó-visszaállítási portál felhasználók (https://aka.ms/ssprsetup) regisztrálni a hitelesítési adatokat. A felhasználók is regisztrálhatják a hozzáférési Panel keresztül (http://myapps.microsoft.com). A hozzáférési Panel keresztül regisztrálásához szükséges a profilkép megadásához válassza **profil**, majd válassza ki a **regisztrálhatnak a jelszóváltoztatásra** lehetőséget.
+  > **V:** Igen. Mindaddig, amíg engedélyezve van a jelszó-visszaállítás, és rendelkeznek licenccel, a felhasználók ellátogathatnak a jelszó-visszaállítási portál (https://aka.ms/ssprsetup) regisztrálja a hitelesítési adataik. Felhasználók is regisztrálhatja a hozzáférési panelen keresztül (http://myapps.microsoft.com). A hozzáférési panelen keresztül regisztrálásához válassza ki a profilhoz tartozó fotó kiválasztása szükségük **profil**, majd válassza ki a **regisztráljanak a jelszóátállításra** lehetőséget.
   >
   >
-* **K: Ha engedélyezhető a jelszó alaphelyzetbe állítása egy csoport, és úgy dönt, hogy engedélyezze a Mindenki a felhasználók szükség regisztrálja újra?**
+* **K: Ha engedélyezhető a jelszó alaphelyzetbe állítása egy csoport, és úgy dönt, hogy engedélyezze a mindenki saját felhasználók szükséges regisztrálja újra?**
 
-  > **V.:** Nem. Felhasználók, akik rendelkeznek feltöltve a hitelesítési adatok nem szükséges ismételten a regisztrációt.
+  > **V.:** Nem. Felhasználók, akik ki vannak töltve a hitelesítési adatok nem szükségesek az újbóli regisztrációt.
   >
   >
-* **K: jelszó alaphelyzetbe állítása adatok is definiálása a felhasználók nevében?**
+* **K: jelszó alaphelyzetbe állítása adatok is meghatározása a felhasználók nevében?**
 
-  > **V:** Igen, akkor az Azure AD Connect, PowerShell, a [Azure-portálon](https://portal.azure.com), vagy az Office 365 felügyeleti központot. További információkért lásd: [az Azure AD az önkiszolgáló jelszó által használt adatok alaphelyzetbe állítása](howto-sspr-authenticationdata.md).
+  > **V:** Igen, ehhez az Azure AD Connect, a PowerShell, a [az Azure portal](https://portal.azure.com), vagy az Office 365 felügyeleti központban. További információkért lásd: [adatokat használják az Azure AD önkiszolgáló jelszó-visszaállítási](howto-sspr-authenticationdata.md).
   >
   >
-* **K: biztonsági kérdéseket tesz fel, a helyszíni adatok szinkronizálása?**
+* **K: biztonsági kérdéseket a helyszíni adatok szinkronizálása?**
 
-  > **V:** nem, ez nem lehetséges ma.
+  > **V:** nem, ez azonban nem lehet még ma.
   >
   >
-* **K: a felhasználók regisztrálhatják adatokat úgy, hogy más felhasználók nem láthatják ezeket az adatokat?**
+* **Kérdés: a felhasználók regisztrálhatnak adatokat oly módon, hogy más felhasználók nem láthatják ezeket az adatokat?**
 
-  > **V:** Igen. Amikor a felhasználók regisztrálhatnak adatok a jelszó alaphelyzetbe állítása regisztrációs portál, az adatok mentése csak a globális rendszergazdák és a felhasználó számára látható személyes hitelesítési mezőkbe.
+  > **V:** Igen. Amikor a felhasználók adatokat a jelszó alaphelyzetbe állítása regisztrációs portál, az adatok mentése csak a globális rendszergazdák és a felhasználó számára látható magánhálózati hitelesítési mezőkbe.
   >
   >
-* **K: a felhasználók rendelkeznek regisztrálni kell a jelszó alaphelyzetbe állítása használatához?**
+* **Kérdés: a felhasználók rendelkeznek kell regisztrálni a jelszó-visszaállítás használatához?**
 
-  > **V.:** Nem. A nevében elég hitelesítési adatainak megadása esetén a felhasználóknak nem kell regisztrálni. Jelszó-átállítási működik, amíg a megfelelő mezőket a könyvtárban tárolt adatok megfelelően formázott.
+  > **V.:** Nem. Ha elegendő hitelesítési adatok saját nevükben határozza meg, a felhasználóknak ne kelljen regisztrálniuk. Új jelszó kérésének módja mindaddig, amíg a megfelelő mezőket a könyvtárban tárolt adatok megfelelően formázza.
   >
   >
-* **K: I szinkronizálása vagy a hitelesítéshez megadott telefonját, hitelesítési e-mail vagy más hitelesítési phone mezők beállítása a felhasználók nevében?**
+* **K: felhasználhatom szinkronizálása vagy a hitelesítéshez használt telefon, hitelesítő e-mail-cím vagy alternatív hitelesítési telefon mezők beállítása a felhasználók nevében?**
 
-  > **V:** egy globális rendszergazda által beállított kell tudni mezők definiálják a cikk [SSPR követelményeinek](howto-sspr-authenticationdata.md).
+  > **V:** a mezőket, amelyek a globális rendszergazda állíthatja a cikkben meghatározott [SSPR-adatkövetelmények](howto-sspr-authenticationdata.md).
   >
   >
-* **K: hogyan határozza meg a a regisztrációs portálon a felhasználók megjelenítése beállítások?**
+* **K: hogyan határozza meg a regisztrációs portálon a felhasználók megjelenítése, mely beállítások?**
 
-  > **V:** a jelszó-változtatási regisztrációs portál látható csak azokat a beállításokat, hogy a felhasználók számára engedélyezett. Ezek a beállítások alatt találhatók a **felhasználói jelszó-visszaállítási házirend** a címtár **konfigurálása** fülre. Például ha nem engedélyezi az biztonsági kérdéseket, majd felhasználók képesek nem regisztrálja az adott beállítási mód.
+  > **V:** a jelszó-visszaállítási regisztrációs portál megjeleníti csak azokat a beállításokat, hogy a felhasználók számára engedélyezett. Ezek a beállítások alatt találhatók a **felhasználói jelszó-visszaállítási házirend** szakasz a címtár **konfigurálása** fülre. Például ha nem engedélyezi a biztonsági kérdések, majd munkavégzésük nem tud regisztrálni ezt a lehetőséget.
   >
   >
-* **Amikor egy felhasználó tekinthető k: regisztrálni?**
+* **K: Ha a felhasználó számít regisztrálni?**
 
-  > **V:** regisztrált sspr, amikor regisztrálják azokat A felhasználó akkor tekinthető legalább a **számos módszer alaphelyzetbe kell állítani** beállított jelszót a [Azure-portálon](https://portal.azure.com).
+  > **V:** A felhasználó akkor minősül az SSPR regisztrálva van regisztrálásakor legalább a **új jelszó kéréséhez szükséges módszerek száma** állított be jelszót a [az Azure portal](https://portal.azure.com).
   >
   >
 
 ## <a name="password-reset"></a>Új jelszó létrehozása
 
-* **K: el azt, hogy többszöri rövid időn belül a jelszó alaphelyzetbe állítása a felhasználók?**
+* **K: ne, hogy a felhasználók új jelszót kért egy rövid idő alatt több kísérletek?**
 
-  > **V:** Igen, vannak beépítve a jelszó alaphelyzetbe állítása való visszaélés elleni biztonsági funkciók. 
+  > **V:** Igen, vannak új jelszó kérésére vonatkozó való visszaélés elleni védelem beépített biztonsági szolgáltatásait. 
   >
-  > A felhasználók megpróbálják is csak öt jelszó átállítani a jelszavát egy 24 órás időszakban ahhoz, azok zárolva van 24 órán belül. 
+  > Felhasználók próbálja csak öt jelszó alaphelyzetbe állítása kísérlet egy 24 órás időszakban, mielőtt azok zárolva van 24 órán belül. 
   >
-  > Felhasználók próbálkozzon egy telefonszám ellenőrzése, SMS küldése, vagy ellenőrizze a biztonsági kérdések és válaszok csak ötször ahhoz, azok zárolva van 24 órán át egy órán belül. 
+  > Felhasználók próbálkozzon érvényesíteni egy telefonszám, SMS küldése vagy érvényesítéséhez biztonsági kérdéseit és válaszait csak ötször egy órát, mielőtt azok zárolva van 24 órán belül. 
   >
-  > Felhasználó egy e-mailt küldhet a legfeljebb 10-szer ahhoz, azok zárolva van 24 órán át egy 10 perces időszakon belül.
+  > Felhasználók e-mailt küldhet a legfeljebb egy 10 perces időszak, mielőtt azok zárolva van 24 órán belül 10 alkalommal.
   >
-  > A számlálók alaphelyzetbe állnak, miután a felhasználó alaphelyzetbe állítja a jelszót.
+  > A számlálók után a felhasználó a jelszavát alaphelyzetbe állnak vissza.
   >
   >
-* **K: mennyi ideig várjon egy e-mailben, SMS vagy telefonhívás fogadása jelszó alaphelyzetbe állítása?**
+* **K: mennyi ideig várjon egy e-mailben, SMS vagy telefonhíváson alapuló fogadjon a jelszó-visszaállítás?**
 
-  > **V:** e-mailek, az SMS-t, és telefonhívásokat érkeznek meg egy perc alatt. Normális esetben érték 5-20 másodperc.
-    >Ha nem jelenik meg az értesítés a időkereten belül:
+  > **V:** E-mail, SMS-eket, és a egy perc alatt telefonhívásokat megérkezik a. Normális esetben érték 5-20 másodperc.
+    >Ha ezen időszakon belül nem kapja meg az értesítés:
         > * Ellenőrizze a Levélszemét mappát.
-        > * Ellenőrizze, hogy a vagy e-mail, amelyhez csatlakozik egy várt.
-        > * Ellenőrizze, hogy a címtárban a hitelesítési adatok megfelelően van formázva, például + 1 4255551234 vagy *user@contoso.com*. 
+        > * Ellenőrizze, hogy vagy az e-mail, amelyhez csatlakozik egy várt.
+        > * Ellenőrizze, hogy a megadott hitelesítési adat a directory megfelelően van formázva, például + 1 4255551234 vagy *user@contoso.com*. 
   >
   >
-* **K: jelszó alaphelyzetbe állítása milyen nyelveket támogatja?**
+* **Kérdés: milyen nyelveket támogat a jelszó-visszaállítás?**
 
-  > **V:** a jelszó-visszaállítási felhasználói felület, SMS-t, és hanghívások honosítva vannak az Office 365-ben támogatott nyelven.
+  > **V:** a jelszó-visszaállítási felhasználói felület, SMS-EK és hanghívások honosítva ugyanazokat a nyelveket, amelyek támogatottak az Office 365-ben.
   >
   >
-* **K: milyen részei a jelszó alaphelyzetbe állítása élmény első vállalati arculattal, a szervezeti márkajelzési elemek meg a könyvtárban a konfigurálás lap?**
+* **K: mely részeit a jelszóvisszaállítási első termékeire, a szervezeti márkajelzési elemeket a címtáramban meg a konfigurálás lap?**
 
-  > **V:** a jelszó-változtatási portál jeleníti meg a vállalati embléma, és konfigurálhatja a "Forduljon a rendszergazdához" hivatkozásra kattintva egy egyéni e-mail vagy URL-CÍMRE mutasson. A jelszó-visszaállítás által küldött e-mailben a szervezet embléma, színek, és nevét az e-mail törzsében, és testreszabott beállításai közül az adott névvel.
+  > **V:** a jelszó-visszaállítási portál jeleníti meg a vállalati embléma, és lehetővé teszi, hogy a "Forduljon a rendszergazdához" hivatkozást a kívánt egyéni e-mail vagy URL-cím konfigurálása. Bármely jelszó-visszaállítás által küldött e-mailt a szervezet embléma, színek és neve szerepel az e-mail törzse, és testre szabott beállítások adott név alapján.
   >
   >
-* **K: hogyan lehet ismertetni kell a felhasználók visszaállíthassák a jelszavukat önállóan hol találhatnak kapcsolatban?**
+* **K: hogyan is tájékoztassa arról, hogy hová lépjen a felhasználók visszaállíthassák a jelszavukat?**
 
-  > **V:** próbáljon ki a javaslatok a [SSPR telepítési](howto-sspr-deployment.md#email-based-rollout) cikk.
+  > **V:** próbálja meg a javaslatok némelyike a [SSPR üzembehelyezési](howto-sspr-deployment.md#email-based-rollout) cikk.
   >
   >
-* **K: használhatok ezen a lapon egy mobileszközről?**
+* **K: Használhatom ezt oldal mobileszközt?**
 
-  > **V:** Igen, az ezen a lapon a mobileszközök működik.
+  > **V:** Igen, ez az oldal működik mobileszközökön.
   >
   >
-* **K: támogatják a feloldásának helyi Active Directory-fiókokat, amikor a felhasználók visszaállíthassák a jelszavukat?**
+* **K: támogatják a videókban rejlő információk helyi Active Directory-fiókokat, amikor a felhasználók visszaállíthassák a jelszavukat?**
 
-  > **V:** Igen. A felhasználó alaphelyzetbe állítja a jelszavát, ha jelszóvisszaírás van telepítve az Azure AD Connect használatával, amikor azok a jelszó visszaállítása után automatikusan fel nem adott felhasználói fiók.
+  > **V:** Igen. Amikor a felhasználó alaphelyzetbe állítja a jelszavát, ha jelszóvisszaíró az Azure AD Connect segítségével telepítve lett, nem a felhasználói fiók, automatikusan oldják a zárolást, ha azok az új jelszót kérnek.
   >
   >
-* **K: hogyan integrálhatók a jelszó alaphelyzetbe állítása közvetlenül a saját felhasználói asztali bejelentkezés során tapasztal élmény?**
+* **K: hogyan integrálhatók a jelszó-visszaállítást közvetlenül a saját felhasználói asztali bejelentkezési élmény?**
 
-  > **V:** Ha Ön az Azure AD Premium felhasználóinál, telepítse a Microsoft Identity Manager további költségek nélkül, és a jelszó alaphelyzetbe állítása a helyszíni megoldás üzembe helyezéséhez.
+  > **V:** már a prémium szintű Azure AD-ügyfelek, ha további költségek nélkül a Microsoft Identity Manager telepíthető és a jelszó alaphelyzetbe állítása a helyszíni megoldás üzembe helyezése.
   >
   >
-* **K: beállítása a különböző területi beállításokhoz különböző biztonsági kérdést?**
+* **K: állíthatok különböző területi beállításokhoz különböző biztonsági kérdések?**
 
-  > **V:** nem, ez nem lehetséges ma.
+  > **V:** nem, ez azonban nem lehet még ma.
   >
   >
-* **K: hogyan számos kérdés is konfigurálhatja a biztonsági kérdések hitelesítési lehetőséget a?**
+* **K: hogyan számos kérdések is konfigurálja a biztonsági kérdések hitelesítési lehetőség?**
 
-  > **V:** legfeljebb 20 egyéni biztonsági kérdéseket is beállíthat a [Azure-portálon](https://portal.azure.com).
+  > **V:** konfigurálhatja a legfeljebb 20 egyéni biztonsági kérdések a [az Azure portal](https://portal.azure.com).
   >
   >
 * **K: mennyi ideig biztonsági kérdések lehet?**
@@ -150,139 +150,139 @@ Ez a GYIK a következő szakaszok oszlik:
   >
 * **K: mennyi ideig a biztonsági kérdésekre adott válaszok lehet?**
 
-  > **V:** válaszok 3-40 karakter hosszú lehet.
+  > **V:** válaszokat 3 és 40 karakter hosszú lehet.
   >
   >
-* **K: ismétlődő válaszokat ad a biztonsági kérdésekre elutasított vannak?**
+* **K: elutasította a biztonsági kérdésekre ismétlődő válaszokat vannak?**
 
-  > **V:** Igen, azt utasítsa el az ismétlődő válaszokat ad a biztonsági kérdésekre.
+  > **V:** Igen, hogy elutasítja a duplikált biztonsági kérdésekre adott válaszok.
   >
   >
-* **K: egy felhasználó regisztrálhatja a ugyanazt biztonsági kérdésre adott egynél többször?**
+* **Kérdés: a felhasználó regisztrálhatja az azonos biztonsági kérdés egynél többször?**
 
-  > **V.:** Nem. Miután a felhasználó regisztrál egy adott kérdést, azok lehet regisztrálni a a kérdést, még egyszer.
+  > **V.:** Nem. Miután egy felhasználó regisztrál egy adott kérdésre, azok nem sikerül regisztrálnia a kérdés másodszor.
   >
   >
-* **K: van lehetőség a minimális addig, amíg a regisztráció biztonsági kérdések, és alaphelyzetbe állítja?**
+* **K: van, és állítsa be a biztonsági kérdések regisztrációs a minimális korlát lehetséges?**
 
-  > **V:** Igen, egy korlát a regisztrációs és egy másik alaphelyzetbe állítása a állítható be. Lehet, hogy a 3-5 biztonsági kérdések regisztrációjához szükséges, és 3-5 kérdéseket az alaphelyzetbe állítás szükséges lehet.
+  > **V:** Igen, az egyik határértékről regisztráció és a egy másik alaphelyzetbe állítása a állítható. Lehet, hogy a 3-5 biztonsági kérdéseket a regisztrációhoz szükséges, és 3-5 kérdések a visszaállításhoz szükséges lehet.
   >
   >
-* **K: beállítása a házirendet a biztonsági kérdések használata alaphelyzetbe állítása felhasználóknak kötelező legyen, de az Azure rendszergazdák úgy tűnik, hogy eltérően kell konfigurálni.**
+* **Kérdés a szabályzat a felhasználók a biztonsági kérdések-visszaállítás konfigurálva, de az Azure-rendszergazdák a Microsoft-eltérően kell konfigurálni.**
 
-  > **V:** Ez az elvárt működés. A Microsoft érvényesíti egy erős alapértelmezett két-kapu jelszó-visszaállítási házirend bármely Azure rendszergazdai szerepkörhöz. Ez megakadályozza, hogy a rendszergazdák biztonsági kérdések használata. Ez a házirend a további információ található a [jelszóházirendek és -korlátozások az Azure Active Directory](concept-sspr-policy.md#administrator-password-policy-differences) cikk.
+  > **V:** Ez az az elvárt működés. A Microsoft érvényesíti a alapértelmezés szerint két-kapu jelszó kérésére vonatkozó szabályzat minden olyan Azure-rendszergazdai szerepkörhöz. Ez megakadályozza, hogy a rendszergazdák biztonsági kérdések használatával. További információ a jelen szabályzatban foglaltak annak a [jelszóházirendek és -korlátozások az Azure Active Directoryban](concept-sspr-policy.md#administrator-password-policy-differences) cikk.
   >
   >
-* **K:, ha a felhasználó regisztrálva van a több maximális kérdések alaphelyzetbe kell állítani, hogy miként kell a biztonsági kérdések kijelölni alaphelyzetbe állítása során?**
+* **K: Ha a felhasználó több, mint a maximális új jelszó kéréséhez szükséges kérdések száma regisztrálva van, hogyan vannak a biztonsági kérdéseket a kijelölt alaphelyzetbe állítása során?**
 
-  > **V:** *N* biztonsági kérdések számát véletlenszerűen kiválasztott felhasználó regisztrálva van, ahol kérdések száma kívül *N* mutatja meg, hogy be van állítva a **száma a kérdések alaphelyzetbe kell állítani** lehetőséget. Például ha egy felhasználó által regisztrált öt biztonsági kérdéseket, de csak három szükséges a jelszó alaphelyzetbe állítása, három öt kérdéseket a rendszer véletlenszerűen választja ki és jelennek meg, alaphelyzetbe állítása. Kérdés beütés, elkerülésére, ha a felhasználó élvezheti a kérdésekre adott válaszai nem megfelelő a tanúsítványkiválasztási folyamat elindul keresztül.
+  > **V:** *N* biztonsági kérdések számát véletlenszerűen kiválasztott vannak kérdések, amelyre a felhasználó regisztrálta az összes számítógéphez képest *N* mutatja meg, hogy van beállítva a **száma Új jelszó kéréséhez szükséges kérdések** lehetőséget. Például ha egy felhasználó öt biztonsági kérdések regisztrálva van, de csak három szükség a jelszó alaphelyzetbe állítása, három az öt kérdés rendszer véletlenszerűen választja ki, és jelennek meg, alaphelyzetbe állítása. Hogy a kérdés újrapróbálkozni, ha a felhasználó élvezheti a kérdésekre adott válaszokat nem megfelelő a tanúsítványkiválasztási folyamat elindul keresztül.
   >
   >
-* **K: mennyi ideig van az e-mailek és SMS egyszeri PIN-kódok érvényes?**
+* **K: mennyi ideig vannak az e-mailek és SMS egyszeri PIN-kódok érvényes?**
 
-  > **V:** a munkamenetek élettartamát, jelszó-visszaállításhoz érték 15 perc. A jelszó-visszaállítási művelet kezdetétől a felhasználó rendelkezik-e jelszavuk 15 perc. Az e-mailek és SMS egyszer használatos jelszót érvénytelenek, ebben az időszakban lejárata után is.
+  > **V:** a munkamenetek élettartamát, jelszó-visszaállítás beállítás 15 perc. A jelszó-visszaállítási művelettel elejéről a felhasználók számára a jelszavuk 15 perc. Az e-mailek és SMS egyszer használatos jelszót érvénytelenek, ez az időtartam lejárta után is.
   >
   >
-* **K: a jelszó alaphelyzetbe állításával felhasználók megakadályozása?**
+* **K: blokkolja a jelszó alaphelyzetbe állításával felhasználók?**
 
-  > **V:** Igen, ha csoportot használjon SSPR engedélyezéséhez, eltávolíthat egy adott felhasználó a csoport, amely lehetővé teszi a felhasználók visszaállíthassák a jelszavukat. Ha a felhasználó egy globális rendszergazda azok megőrzik a jelszó alaphelyzetbe állításához, és ez nem lehet letiltani.
+  > **V:** Igen, ha egy csoport használatával SSPR engedélyezése, eltávolíthatja egy adott felhasználó a csoportból, amely lehetővé teszi a felhasználók visszaállíthatják a jelszavukat. Ha a felhasználó globális rendszergazdai lesz megőrzését, alaphelyzetbe állíthatja a jelszavát, és ez nem lehet letiltani.
   >
   >
 
 ## <a name="password-change"></a>Jelszó módosítása
 
-* **K: hol kell nyissa meg a felhasználók a jelszavuk módosítása?**
+* **K: hol felhasználóim el kell küldeni a jelszavukat módosítani?**
 
-  > **V:** felhasználók módosíthatják a jelszavukat bárhol láthatják a profilkép vagy ikonra, például jobb felső sarkában a [Office 365](https://portal.office.com) portal vagy [hozzáférési Panel](https://myapps.microsoft.com) észlel. Felhasználók módosíthatják a jelszavukat a a [hozzáférési Panel profilszerkesztési lap](https://account.activedirectory.windowsazure.com/r#/profile). Felhasználók jelszavukat automatikusan a bejelentkezési oldal az Azure AD, ha a jelszavuk is meg kell adnia. Végezetül felhasználók továbbléphet a [az Azure AD-jelszó módosítása portál](https://account.activedirectory.windowsazure.com/ChangePassword.aspx) közvetlenül a jelszavukat módosítani szeretné.
+  > **V:** felhasználókat jelszavuk módosításához bárhol láthatják a profilhoz tartozó fotó vagy ikonra, például a jobb felső sarkában a [Office 365](https://portal.office.com) portál vagy [hozzáférési Panel](https://myapps.microsoft.com) során lép fel. Felhasználók a jelszavuk módosításához a [hozzáférési Panel profilja lap](https://account.activedirectory.windowsazure.com/r#/profile). Felhasználók automatikus az Azure AD bejelentkezési lapján, a jelszavukat módosítani, ha a jelszavuk is meg kell adnunk. Végül felhasználók megnyithatja a [az Azure AD jelszóátállítási portál](https://account.activedirectory.windowsazure.com/ChangePassword.aspx) közvetlenül, ha szeretnék, hogy módosítsák jelszavukat.
   >
   >
-* **K: a felhasználók értesítést kaphat az Office portálon helyszíni jelszavukat lejárati?**
+* **Kérdés: a felhasználók értesítést kaphat az Office portálon helyi jelszó lejár?**
 
-  > **V:** Igen, ez az lehetséges ma Active Directory összevonási szolgáltatások (AD FS) használatakor. Ha az AD FS használatához kövesse az utasításokat a a [jelszó házirend jogcímek az AD FS küldése](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) cikk. Ha Jelszókivonat-szinkronizálást használ, ez nem lehetséges ma. Jelszóházirendek a helyszíni címtárakban, azt nem szinkronizál, ezért nem lehetséges utáni lejárati értesítéseinek feladatait a felhőbe való. Mindkét esetben is lehetőség [jelszavait lejárati idejének közeledtével a PowerShell segítségével a felhasználók értesítése](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > **V:** Igen, ez a lehetőség jelenleg az Active Directory összevonási szolgáltatások (AD FS) használatakor. Ha az AD FS használja, kövesse a a [jelszó házirend jogcímeket az AD FS-sel küldjön](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) cikk. Ha a Jelszókivonat-szinkronizálást használ, ez azonban nem lehet még ma. Jelszóházirendek a helyszíni címtárakban, hogy nem szinkronizálódnak, ezért nem lehetséges közzététele lejárati értesítéseinek élményt felhőbe való. Mindkét esetben is lehetőség [értesíti a felhasználókat, amelyeknek a jelszava hamarosan lejár, a PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
-* **K: felhasználók módosítsák a jelszavukat blokkolja?**
+* **K: blokkolja a felhasználók számára a jelszavát?**
 
-  > **V:** csak felhőalapú felhasználók jelszó-változtatásának nem zárolható. A helyszíni felhasználók számára, beállíthatja a **felhasználó nem módosíthatja a jelszót** lehetőséget kiválasztva. A kijelölt felhasználók nem módosíthatják jelszavukat.
+  > **V:** csak felhőbeli felhasználók, a jelszó módosítására nem lehet blokkolni. A helyszíni felhasználók számára, beállíthatja a **nem lehet változtatni a jelszót** ahhoz, hogy a beállítást. A kijelölt felhasználók nem lehet módosítani a jelszavát.
   >
   >
 
-## <a name="password-management-reports"></a>Jelszó-kezelési jelentések
+## <a name="password-management-reports"></a>Jelszókezelési jelentések
 
-* **K: mennyi ideig tart a jelenik meg a jelszó jelentések adatai?**
+* **K: mennyi ideig tart az adatok jelennek meg az a jelszókezelési jelentések?**
 
-  > **V:** adatok jelenjenek meg a jelszó jelentések, 5 – 10 perc múlva. Bizonyos esetekben az lehet, hogy tarthat egy órát jelennek meg.
+  > **V:** adatokat kell megjelennie a jelszókezelési jelentések 5-10 perc múlva. Bizonyos esetekben ez is igénybe vehet egy órát jelennek meg.
   >
   >
-* **K: hogyan szűrheti a jelszó-kezelési jelentések**
+* **K: hogyan szűrheti a jelszókezelési jelentések?**
 
-  > **V:** a jelszó jelentések szűréséhez válassza a kis nagyítóüveg szélsőséges jobb oldalán az oszlopfejléceket, a jelentés felső részén. Ha szeretné gazdagabb szűrés, töltse le a jelentést az Excel programba, és kimutatás létrehozása.
+  > **V:** a jelszókezelési jelentések szűréséhez válasszon a kis, rendkívüli jobbra az oszlopfejléceket, a jelentés tetején található nagyító ikonra. Ha szeretné gazdagabb szűrést, töltse le a jelentés az Excel, és egy olyan kimutatás létrehozásának.
   >
   >
-* **K: Mi az a jelszó jelentések tárolt események maximális száma?**
+* **K: Mi a jelszókezelési jelentések tárolt események maximális száma?**
 
-  > **V:** legfeljebb 75,000 jelszó alaphelyzetbe állítása vagy a jelszó alaphelyzetbe állítása regisztrációs események tárolódnak a jelszó jelentések, átfedés vissza szerint 30 nap. Jelenleg dolgozunk, bontsa ki ezt a számot, hogy további események tartalmazzák.
+  > **V:** akár 75 000 jelszó alaphelyzetbe állítása vagy a jelszó alaphelyzetbe állítása regisztrációs események a jelszókezelési jelentések, átfedés vissza 30 nap szerint vannak tárolva. Folyamatban van, bontsa ki ezt a számot, hogy további események tartalmazzák.
   >
   >
-* **K: milyen távolságban vissza a jelszó jelentések Ugrás?**
+* **Kérdés: milyen vissza a jelszókezelési jelentések lépjen?**
 
-  > **V:** a jelszókezelés jelentések megjelenítése műveleteket, amelyek az elmúlt 30 napban történt. A lépést Ha ezek az adatok archiválása kell után rendszeresen töltse le a jelentések is mentse őket másik helyen.
+  > **V:** a jelszókezelés jelentések megjelenítése műveletek, amelyek az elmúlt 30 napban történt. Most ha archiválásához ezeket az adatokat, letöltheti a jelentések rendszeres időközönként és mentse őket egy külön helyen.
   >
   >
-* **K: van-e a jelszó jelentések megjeleníthető sorok maximális száma?**
+* **K: van, amely a jelszókezelési jelentések is megjelenhetnek sorok maximális számát?**
 
-  > **V:** Igen. 75,000 sorok maximális megjelenhet vagy a jelszó jelentések, hogy megjelennek-e a felhasználói felület, vagy letöltődnek.
+  > **V:** Igen. Legfeljebb 75 000 sort e jelennek meg a felhasználói felületen vagy a rendszer letölti a is megjelenhetnek a jelszókezelési jelentések egyikét.
   >
   >
-* **K: van egy API-t a jelszó alaphelyzetbe állítása vagy a jelentés adatainak regisztrációs eléréséhez?**
+* **K: van egy API-t a jelszó-visszaállítás vagy a jelentés adatainak regisztrációs eléréséhez?**
 
-  > **V:** Igen. Megtudhatja, hogyan férhet hozzá a jelszó-változtatási adatfolyam reporting, lásd: [elérése programozott módon jelentési események jelszó-visszaállítás](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+  > **V:** Igen. Című cikk nyújt tájékoztatást, hogyan férhet hozzá az adatfolyam jelentéskészítési jelszó-visszaállítás, [elérése programozott módon jelentési események jelszó-visszaállítás](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
   >
   >
 
 ## <a name="password-writeback"></a>Jelszóvisszaíró
 
-* **K: hogyan működik a jelszóvisszaírást a háttérben?**
+* **K: hogyan működik a jelszóvisszaírást a színfalak mögött?**
 
-  > **V:** cikkben [jelszóvisszaírás működése](howto-sspr-writeback.md) annak magyarázatát, mi történik, ha engedélyezi a jelszóvisszaírás, és hogyan áthaladó az adatokat a rendszer biztonsági másolatot a helyszíni környezetbe.
+  > **V:** tekintse meg a cikket [jelszóvisszaírás működéséről](howto-sspr-writeback.md) működéséről, mi történik, ha engedélyezte a jelszóvisszaírást, és hogyan áramlanak keresztül az adatok a rendszer biztonsági a helyszíni környezetbe.
   >
   >
-* **K: mennyi időt jelszóvisszaírás igénybe működéséhez? Van hiba a szinkronizálás késleltetés van a Jelszókivonat-szinkronizálás?**
+* **K: mennyi jelszóvisszaíró tart működik? A hiba a szinkronizálás késleltetés, hogy a Jelszókivonat-szinkronizálás?**
 
-  > **V:** jelszóvisszaírás azonnali. Egy szinkron folyamatot, amely a Jelszókivonat-szinkronizálást alapvetően eltérően működik. A jelszóvisszaírás lehetővé teszi a felhasználóknak a valós idejű visszajelzést a jelszó alaphelyzetbe állítása sikeres vagy módosítsa a műveletet. A jelszó sikeres visszaírása átlagos ideje alatt 500 ms.
+  > **V:** jelszóvisszaíró azonnali. Egy szinkron folyamatot, amely a Jelszókivonat-szinkronizálás alapvetően eltérően működik. A jelszóvisszaíró lehetővé teszi a felhasználóknak a jelszó alaphelyzetbe állítása sikeres kapcsolatos valós idejű visszajelzést kapni, vagy módosítsa a műveletet. A jelszó sikeres visszaírása átlagos ideje alatt 500 ms.
   >
   >
-* **K:, ha a helyi fiók le van tiltva, hogyan van a saját felhő-fiók és a hatással access?**
+* **K: Ha a saját helyi fiók le van tiltva, hogyan van saját felhő-fiók és a hozzáférés érintett?**
 
-  > **V:** a helyszíni-azonosítója le van tiltva, ha a felhő azonosítója és a hozzáférés is letiltja az Azure AD Connect használatával a következő szinkronizálás időközönként. Alapértelmezés szerint a Szinkronizáló 30 percenként van.
+  > **V:** a helyszíni azonosítója le van tiltva, ha a felhő-azonosító és a hozzáférés is letiltja a rendszer a következő szinkronizálás időközönként Azure AD Connecten keresztül. Alapértelmezés szerint a szinkronizálás a 30 percenként.
   >
   >
-* **K:, ha egy a helyszíni Active Directory jelszóházirend korlátozza a helyi fiók, önkiszolgáló jelszó-Változtatási felel meg a házirend jelszó módosításakor?**
+* **K: Ha a saját helyi fiók egy helyi Active Directory jelszóházirend korlátozza, nem az SSPR betartani a szabályzat Ha módosítom a jelszavamat?**
 
-  > **V:** Igen, önkiszolgáló jelszó-Változtatási alapul, és a helyszíni Active Directory jelszóházirend aláveti. Ez a házirend a szokásos Active Directory tartományi jelszóházirend, valamint bármely definiált, a részletes jelszóházirendek, amely egy felhasználónak címezték tartalmazza.
+  > **V:** Igen, az SSPR támaszkodik, és betartja a helyszíni Active Directory jelszóházirend. Ez a házirend a szokásos Active Directory tartományi jelszóházirend, valamint bármely definiált, a részletes jelszóházirendek egy felhasználónak szánt tartalmazza.
   >
   >
-* **K: milyen típusú fiókok jelszóvisszaírás működik?**
+* **Kérdés: milyen típusú fiókok jelszóvisszaíró működik?**
 
-  > **V:** felhasználói fiókok a helyszíni Active Directoryból szinkronizált az Azure AD-jelszó visszaírási működik, beleértve az összevont, a Jelszókivonat szinkronizálása és a csatlakoztatott Autentication felhasználók.
+  > **V:** jelszó visszaírási működik az Azure AD a helyszíni Active Directoryból szinkronizált felhasználói fiókok esetében, beleértve az összevont, jelszókivonatok szinkronizálása és átmenő Autentication felhasználók számára.
   >
   >
-* **K: jelszóvisszaírás jelszóházirendjeinek érvényesítéséhez a tartományomat?**
+* **K: a jelszóvisszaíró felhasználók saját tartomány?**
 
-  > **V:** Igen. A jelszóvisszaírás érvénybe lépteti a jelszó élettartama, előzmények, összetettségét, szűrők és bármely más, előfordulhat, hogy helyezett jelszavak helyen vannak a helyi tartomány korlátozás.
+  > **V:** Igen. A jelszóvisszaíró jelszó kora, előzmények, bonyolultsága, szűrők és bármely más, vannak-e jelszavak helyen a helyi tartomány korlátozás kényszeríti.
   >
   >
-* **K: az jelszóvisszaírás biztonságos?  Hogyan lehet, hogy I nem fognak első megtámadott?**
+* **K: van a jelszóvisszaíró biztonságos?  Hogyan lehet arról szeretnék nem get lesznek?**
 
-  > **V:** Igen, a jelszóvisszaírás biztonságos-e. Olvasható további információ a négy biztonsági réteg alkalmazása a jelszó visszaírási szolgáltatás által megvalósított, tekintse meg a [jelszó visszaírási biztonsági modell](howto-sspr-writeback.md#password-writeback-security-model) szakasz a [jelszó visszaírási áttekintése](howto-sspr-writeback.md) cikk.
+  > **V:** Igen, a jelszóvisszaíró biztonságos-e. Olvassa el a jelszóvisszaíró szolgáltatás implementálja további információt a négy biztonsági réteget, tekintse át a [jelszóvisszaírás biztonsági modelljéről](howto-sspr-writeback.md#password-writeback-security-model) című rész a [jelszó-visszaírás áttekintése](howto-sspr-writeback.md) cikk.
   >
   >
 
 ## <a name="next-steps"></a>További lépések
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
-* [Jelszó visszaállítása vagy módosítása](../active-directory-passwords-update-your-own-password.md)
-* [Regisztráció önkiszolgáló jelszó-visszaállításra](../active-directory-passwords-reset-register.md)
+* [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Regisztráció önkiszolgáló jelszó-visszaállításra](../user-help/active-directory-passwords-reset-register.md)
 * [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)

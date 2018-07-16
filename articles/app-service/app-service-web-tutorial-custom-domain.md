@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/23/2017
+ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a9f1e66a4c55d866d9f174528eb4912c3b9391c0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5c0aa042f97e10f90787b1cdf8e03cd6d849441e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714515"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461639"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure Web Appsra
 
@@ -35,12 +35,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Altartomány hozzárendelése (például `www.contoso.com`) CNAME rekorddal
 > * Gyökértartomány hozzárendelése (például `contoso.com`) A rekorddal
 > * Helyettesítő karaktert tartalmazó tartomány hozzárendelése (például `*.contoso.com`) CNAME rekorddal
+> * Alapértelmezett URL-cím átirányítása egyéni könyvtárra
 > * A tartományleképezés automatizálása szkriptekkel
-
-Az egyéni DNS-neveket **CNAME rekordok** vagy **A rekordok** használatával is leképezheti az App Service-re. 
-
-> [!NOTE]
-> Javasoljuk, hogy a gyökértartomány (például `contoso.com`) kivételével minden egyéni DNS-névhez CNAME-rekordot használjon.
 
 Élő webhely és hozzá tartozó DNS-tartománynév migrálása az App Service-be: [Aktív DNS-név migrálása az Azure App Service-be](app-service-custom-domain-name-migrate.md).
 
@@ -104,13 +100,26 @@ Amikor megjelenik a következő értesítés, a skálázási művelet befejeződ
 
 <a name="cname"></a>
 
-## <a name="map-a-cname-record"></a>CNAME rekord hozzárendelése
+## <a name="map-your-domain"></a>Saját tartomány leképezése
+
+Az egyéni DNS-neveket **CNAME rekordok** vagy **A rekordok** használatával is leképezheti az App Service-re. Hajtsa végre a megfelelő lépéseket:
+
+- [CNAME-rekord leképezése](#map-a-cname-record)
+- [A-rekord leképezése](#map-an-a-record)
+- [Helyettesítő karaktert tartalmazó tartomány leképezése (CNAME-rekorddal)](#map-a-wildcard-domain)
+
+> [!NOTE]
+> A gyökértartományok (például: `contoso.com`) kivételével minden egyéni DNS-névhez CNAME-rekordot használjon. Gyökértartományokhoz A-rekordokat használjon.
+
+### <a name="map-a-cname-record"></a>CNAME rekord hozzárendelése
 
 Az oktatóanyag példájában a `www` altartományhoz (például `www.contoso.com`) tartozó CNAME rekordot ad hozzá.
 
-[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
+#### <a name="access-dns-records-with-domain-provider"></a>DNS-rekordok elérése tartományszolgáltató esetén
 
-### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+#### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
 Egy CNAME rekord hozzáadásával képezzen le egy altartományt az alkalmazás alapértelmezett gazdagépnevére (`<app_name>.azurewebsites.net`, ahol az `<app_name>` az alkalmazás neve).
 
@@ -120,7 +129,7 @@ Miután hozzáadta a CNAME rekordot, a DNS-rekordok oldala a következő példá
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
-### <a name="enable-the-cname-record-mapping-in-azure"></a>A CNAME rekord hozzárendelésének engedélyezése az Azure-ban
+#### <a name="enable-the-cname-record-mapping-in-azure"></a>A CNAME rekord hozzárendelésének engedélyezése az Azure-ban
 
 Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tartományok** elemet. 
 
@@ -136,7 +145,7 @@ Válassza ki a **Gazdagépnév hozzáadása** elem melletti **+** ikont.
 
 Válassza az **Érvényesítés** lehetőséget.
 
-A **Gazdagépnév hozzáadása** gomb aktívvá válik. 
+Megjelenik a **Gazdagépnév hozzáadása** oldal. 
 
 Győződjön meg arról, hogy a **Gazdagépnév rekordtípusa** beállítás értéke **CNAME (www.example.com vagy bármely altartomány)**.
 
@@ -148,19 +157,22 @@ Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni 
 
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
+> [!NOTE]
+> SSL-tanúsítvány hozzáadásához olvassa el a [meglévő egyéni SSL-tanúsítvány az Azure Web Appshez történő kötését](app-service-web-tutorial-custom-ssl.md) ismertető cikket.
+
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 
 ![Ellenőrzési hiba](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
 <a name="a"></a>
 
-## <a name="map-an-a-record"></a>A rekord hozzárendelése
+### <a name="map-an-a-record"></a>A rekord hozzárendelése
 
 Az oktatóanyag példájában egy A rekordot ad hozzá a gyökértartományhoz (például `contoso.com`). 
 
 <a name="info"></a>
 
-### <a name="copy-the-apps-ip-address"></a>Az alkalmazás IP-címének másolása
+#### <a name="copy-the-apps-ip-address"></a>Az alkalmazás IP-címének másolása
 
 A rekord leképezéséhez az alkalmazás külső IP-címére van szükség. Ezt az IP-címet az alkalmazás **Egyéni tartományok** oldalán találja az Azure Portalon.
 
@@ -172,9 +184,11 @@ Az **Egyéni tartományok** oldalon másolja az alkalmazás IP-címét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
+#### <a name="access-dns-records-with-domain-provider"></a>DNS-rekordok elérése tartományszolgáltató esetén
 
-### <a name="create-the-a-record"></a>Az A rekord létrehozása
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+#### <a name="create-the-a-record"></a>Az A rekord létrehozása
 
 Ha egy A rekordot egy alkalmazásra kíván leképezni, az App Service-nek **két** DNS-rekordra van szüksége:
 
@@ -194,7 +208,7 @@ A rekordok hozzáadása után a DNS-rekordok oldala a következő példához has
 
 <a name="enable-a"></a>
 
-### <a name="enable-the-a-record-mapping-in-the-app"></a>Az A rekord hozzárendelésének engedélyezése az alkalmazásban
+#### <a name="enable-the-a-record-mapping-in-the-app"></a>Az A rekord hozzárendelésének engedélyezése az alkalmazásban
 
 Az Azure Portalon az alkalmazás **Egyéni tartományok** oldalán adja hozzá a teljes egyéni DNS-nevet (például `contoso.com`) a listához.
 
@@ -206,7 +220,7 @@ Válassza ki a **Gazdagépnév hozzáadása** elem melletti **+** ikont.
 
 Válassza az **Érvényesítés** lehetőséget.
 
-A **Gazdagépnév hozzáadása** gomb aktívvá válik. 
+Megjelenik a **Gazdagépnév hozzáadása** oldal. 
 
 Győződjön meg arról, hogy a **Gazdagépnév rekordtípusa** beállítás értéke **A rekord (example.com)**.
 
@@ -218,19 +232,24 @@ Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni 
 
 ![A rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
+> [!NOTE]
+> SSL-tanúsítvány hozzáadásához olvassa el a [meglévő egyéni SSL-tanúsítvány az Azure Web Appshez történő kötését](app-service-web-tutorial-custom-ssl.md) ismertető cikket.
+
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 
 ![Ellenőrzési hiba](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
 <a name="wildcard"></a>
 
-## <a name="map-a-wildcard-domain"></a>Helyettesítő karaktert tartalmazó tartomány hozzárendelése
+### <a name="map-a-wildcard-domain"></a>Helyettesítő karaktert tartalmazó tartomány hozzárendelése
 
 Az oktatóanyag példájában egy [helyettesítő karaktert tartalmazó DNS-nevet](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (például `*.contoso.com`) képez le az App Service-alkalmazásra egy CNAME rekord hozzáadásával. 
 
-[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
+#### <a name="access-dns-records-with-domain-provider"></a>DNS-rekordok elérése tartományszolgáltató esetén
 
-### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+#### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
 Egy CNAME rekord hozzáadásával képezzen le egy helyettesítő karaktert tartalmazó nevet az alkalmazás alapértelmezett gazdagépnevére (`<app_name>.azurewebsites.net`).
 
@@ -240,7 +259,7 @@ A CNAME hozzáadása után a DNS-rekordok oldala a következő példához hasonl
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
 
-### <a name="enable-the-cname-record-mapping-in-the-app"></a>A CNAME rekord hozzárendelésének engedélyezése az alkalmazásban
+#### <a name="enable-the-cname-record-mapping-in-the-app"></a>A CNAME rekord hozzárendelésének engedélyezése az alkalmazásban
 
 Most már bármilyen altartományt hozzáadhat az alkalmazáshoz, amely megfelel a helyettesítő karaktert tartalmazó névnek (például a `sub1.contoso.com` és a `sub2.contoso.com` megfelel a `*.contoso.com` névnek). 
 
@@ -268,13 +287,16 @@ Válassza ismét a **+** ikont, ha a helyettesítő karaktert tartalmazó tartom
 
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
+> [!NOTE]
+> SSL-tanúsítvány hozzáadásához olvassa el a [meglévő egyéni SSL-tanúsítvány az Azure Web Appshez történő kötését](app-service-web-tutorial-custom-ssl.md) ismertető cikket.
+
 ## <a name="test-in-browser"></a>Tesztelés a böngészőben
 
 Keresse meg a korábban konfigurált DNS-neve(ke)t (például `contoso.com`, `www.contoso.com`, `sub1.contoso.com` és `sub2.contoso.com`).
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-## <a name="resolve-404-error-web-site-not-found"></a>„A webhely nem található” 404-es hiba megoldása
+## <a name="resolve-404-not-found"></a>404-es „Nem található” hiba feloldása
 
 Ha HTTP 404-es (nem található) hiba történik az egyéni tartomány URL-címének megnyitásakor, a <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a> használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére van-e feloldva. Ha nem, azt a következők okozhatják:
 
@@ -283,7 +305,7 @@ Ha HTTP 404-es (nem található) hiba történik az egyéni tartomány URL-cím�
 
 <a name="virtualdir"></a>
 
-## <a name="direct-default-url-to-a-custom-directory"></a>Egyéni könyvtár közvetlen alapértelmezett URL-címe
+## <a name="redirect-to-a-custom-directory"></a>Átirányítás egyéni könyvtárra
 
 Az App Service alapértelmezés szerint az alkalmazáskód gyökérkönyvtárára irányítja a webes kérelmeket. Bizonyos webes keretrendszerek azonban nem a gyökérkönyvtárban indulnak. A [Laravel](https://laravel.com/) például a `public` alkönyvtárban indul. A `contoso.com` DNS példát folytatva, az ilyen alkalmazások elérhetők a `http://contoso.com/public` könyvtárban, de célszerűbb a `http://contoso.com` átirányítása a `public` könyvtárba. Ez a lépés nem DNS-feloldással, hanem a virtuális könyvtár testreszabásával történik.
 
@@ -333,6 +355,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Altartomány hozzárendelése CNAME rekorddal
 > * Gyökértartomány hozzárendelése A rekorddal
 > * Helyettesítő karaktert tartalmazó tartomány hozzárendelése CNAME rekorddal
+> * Alapértelmezett URL-cím átirányítása egyéni könyvtárra
 > * A tartományleképezés automatizálása szkriptekkel
 
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan köthet egyéni SSL-tanúsítványt webalkalmazásokhoz.

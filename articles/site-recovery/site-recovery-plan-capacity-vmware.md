@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 905798acd5836c31953714d7984cfb19f16cecab
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b615ffa3571730ef9607893882f509b2fa490f35
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920797"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056341"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Kapacitás megtervezése és skálázás az Azure Site Recovery VMware-replikáláshoz
 
@@ -34,9 +34,9 @@ A replikálási környezetre vonatkozó információk összegyűjtésére futtat
 
 **CPU** | **Memória** | **Gyorsítótár-lemez mérete** | **A módosult adatok aránya** | **Védett gépek**
 --- | --- | --- | --- | ---
-8 Vcpu (2 sockets * @ 2,5 gigahertz [GHz-es] 4 mag) | 16 GB | 300 GB | 500 GB vagy kevesebb | 100-nál kevesebb gépeket replikálni.
-12 vcpu-k (2 sockets * @ 2,5 GHz-es 6 mag) | 18 GB | 600 GB | 500 GB – 1 TB | 100 – 150 gépek között replikálja.
-16 vcpu-k (2 sockets * 8 mag, 2,5 GHz-es @) | 32 GB | 1 TB | 1 TB-os 2 TB-ig | 150-200 gépek között replikálja.
+8 Vcpu (2 sockets * 4 mag \@ 2,5 gigahertz [GHz-es]) | 16 GB | 300 GB | 500 GB vagy kevesebb | 100-nál kevesebb gépeket replikálni.
+12 vcpu-k (2 sockets * 6 magok \@ 2,5 GHz-es) | 18 GB | 600 GB | 500 GB – 1 TB | 100 – 150 gépek között replikálja.
+16 vcpu-k (2 sockets * 8 magos \@ 2,5 GHz-es) | 32 GB | 1 TB | 1 TB-os 2 TB-ig | 150-200 gépek között replikálja.
 Egy másik folyamatkiszolgáló üzembe helyezése | | | > 2 TB | További folyamatkiszolgálók üzembe helyezése, ha több mint 200 olyan gépet replikál, vagy ha a napi adatváltozási sebessége meghaladja a 2 TB.
 
 Az elemek magyarázata:
@@ -60,9 +60,9 @@ A következő táblázat ismerteti a forgatókönyv, amelyben:
 
 **Konfigurációs kiszolgáló** | **További folyamatkiszolgáló** | **Gyorsítótár-lemez mérete** | **A módosult adatok aránya** | **Védett gépek**
 --- | --- | --- | --- | ---
-8 Vcpu (2 sockets * 4 mag, 2,5 GHz-es @), 16 GB memória | 4 vcpu-k (2 sockets * 2 mag, 2,5 GHz-es @), 8 GB memória | 300 GB | 250 GB vagy kevesebb | 85 vagy kevesebb gépeket replikálni.
-8 Vcpu (2 sockets * 4 mag, 2,5 GHz-es @), 16 GB memória | 8 Vcpu (2 sockets * 4 mag, 2,5 GHz-es @), 12 GB memória | 600 GB | 250 GB – 1 TB | Replikálja a 85-150 gépek között.
-12 vcpu-k (2 sockets * 6 mag, 2,5 GHz-es @), 18 GB memória | 12 vcpu-k (2 sockets * 6 mag, 2,5 GHz-es @) 24 GB memória | 1 TB | 1 TB-os 2 TB-ig | 150-225 gépek között replikálja.
+8 Vcpu (2 sockets * 4 mag \@ 2,5 GHz-es), 16 GB memória | 4 vcpu-k (2 sockets * 2 mag \@ 2,5 GHz-es), 8 GB memória | 300 GB | 250 GB vagy kevesebb | 85 vagy kevesebb gépeket replikálni.
+8 Vcpu (2 sockets * 4 mag \@ 2,5 GHz-es), 16 GB memória | 8 Vcpu (2 sockets * 4 mag \@ 2,5 GHz-es), 12 GB memória | 600 GB | 250 GB – 1 TB | Replikálja a 85-150 gépek között.
+12 vcpu-k (2 sockets * 6 magok \@ 2,5 GHz-es), 18 GB memória | 12 vcpu-k (2 sockets * 6 magok \@ 2,5 GHz-es) 24 GB memória | 1 TB | 1 TB-os 2 TB-ig | 150-225 gépek között replikálja.
 
 A kiszolgálók, skálázza módja függ a vertikális vagy horizontális felskálázás modellhez tartozó beállításokat.  Néhány csúcskategóriás konfigurációs és folyamatkiszolgálók üzembe helyezésével vertikális vagy horizontális felskálázás kevesebb erőforrást a további kiszolgálók üzembe helyezésével. Például ha 220 gépek van szüksége, sikerült tegye a következők egyikét:
 

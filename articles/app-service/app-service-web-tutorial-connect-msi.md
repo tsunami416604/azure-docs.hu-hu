@@ -14,15 +14,16 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1b51638754287d3359eaea7bd5da3f71bf15cc89
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461537"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Oktatóanyag: Az SQL Database-kapcsolat védelmének biztosítása felügyeltszolgáltatás-identitás segítségével
 
-Az [App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. [Felügyeltszolgáltatás-identitást](app-service-managed-service-identity.md) biztosít az alkalmazásához, vagyis egy kulcsrakész megoldást, amely biztosítja az [Azure SQL Database-hez](/azure/sql-database/) és egyéb Azure-szolgáltatásokhoz való hozzáférés védelmét. Az App Service-ben található felügyeltszolgáltatás-identitások biztonságosabbá teszik alkalmazását a titkos kódok, pl. a kapcsolati karakterláncokban lévő hitelesítő adatok szükségességének megszüntetésével. Ebben az oktatóanyagban hozzáadja a felügyeltszolgáltatás-identitást ahhoz a minta ASP.NET-webalkalmazáshoz, amelyet az [Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával](app-service-web-tutorial-dotnet-sqldatabase.md) című szakaszban hozott létre. Ha ezzel végzett, a mintaalkalmazása biztonságosan csatlakozhat az SQL Database-hez, felhasználónév és jelszó használata nélkül.
+Az [App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. [Felügyeltszolgáltatás-identitást](app-service-managed-service-identity.md) biztosít az alkalmazásához, vagyis egy kulcsrakész megoldást, amely biztosítja az [Azure SQL Database-hez](/azure/sql-database/) és egyéb Azure-szolgáltatásokhoz való hozzáférés védelmét. Az App Service-ben található felügyeltszolgáltatás-identitások biztonságosabbá teszik alkalmazását a titkos kódok, pl. a kapcsolati sztringekban lévő hitelesítő adatok szükségességének megszüntetésével. Ebben az oktatóanyagban hozzáadja a felügyeltszolgáltatás-identitást ahhoz a minta ASP.NET-webalkalmazáshoz, amelyet az [Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával](app-service-web-tutorial-dotnet-sqldatabase.md) című szakaszban hozott létre. Ha ezzel végzett, a mintaalkalmazása biztonságosan csatlakozhat az SQL Database-hez, felhasználónév és jelszó használata nélkül.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -31,6 +32,9 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 > * SQL Database-hozzáférés engedélyezése a szolgáltatásidentitáshoz
 > * Alkalmazáskód konfigurálása SQL Database-hitelesítéshez, az Azure Active Directory-hitelesítés segítségével
 > * Minimális jogosultságok engedélyezése a szolgáltatásidentitáshoz az SQL Database-ben
+
+> [!NOTE]
+> Az Azure Active Directory hitelesítése _eltér_ a helyszíni Active Directoryban (AD DS) lévő [integrált Windows-hitelesítéstől](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)). Az AD DS és az Azure Active Directory teljesen más hitelesítési protokollt használ. További információk [a Windows Server AD DS és az Azure AD közötti különbségekről](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +68,7 @@ Egy példa az Azure Active Directory-ban létrehozott identitás kimenetére:
 A következő lépésben használni fogja a `principalId` értékét. Ha többet szeretne megtudni az Azure Active Directory új identitásáról, futtassa az alábbi választható parancsot a `principalId` értékével:
 
 ```azurecli-interactive
-az ad sp show --id <principalid>`
+az ad sp show --id <principalid>
 ```
 
 ## <a name="grant-database-access-to-identity"></a>Adatbázis-hozzáférés engedélyezése az identitáshoz
@@ -77,7 +81,7 @@ az sql server ad-admin create --resource-group myResourceGroup --server-name <se
 
 A felügyeltszolgáltatás-identitás ezentúl hozzáférhet az Azure SQL Database-kiszolgálójához.
 
-## <a name="modify-connection-string"></a>Kapcsolati karakterlánc módosítása
+## <a name="modify-connection-string"></a>Kapcsolati sztring módosítása
 
 Módosítsa az alkalmazásához előzőleg beállított kapcsolatot. Ehhez futtassa az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. Az alábbi parancsban cserélje le az *\<alkalmazásnév>* elemet a saját alkalmazásának nevére, és cserélje le a *\<kiszolgáló_neve>* és az *\<adatbázis_neve>* elemet az SQL Database értékeire.
 
@@ -121,7 +125,7 @@ Ez a konstruktor konfigurál egy egyéni SqlConnection objektumot annak érdeké
 > Az `SqlConnection.AccessToken` jelenleg csak a .NET-keretrendszerben (4.6-os vagy újabb verzió) támogatott, a [.NET Core-ban](https://www.microsoft.com/net/learn/get-started/windows) nem.
 >
 
-Ha használni szeretné ezt az új konstruktort, nyissa meg a `Controllers\TodosController.cs` fájlt, és keresse meg a `private MyDatabaseContext db = new MyDatabaseContext();` sort. A meglévő kód az alapértelmezett `MyDatabaseContext` vezérlőt használja, hogy a standard kapcsolati karakterlánccal adatbázist hozzon létre, amely [a módosítás előtt](#modify-connection-string) tiszta szöveges felhasználónévvel és jelszóval rendelkezett.
+Ha használni szeretné ezt az új konstruktort, nyissa meg a `Controllers\TodosController.cs` fájlt, és keresse meg a `private MyDatabaseContext db = new MyDatabaseContext();` sort. A meglévő kód az alapértelmezett `MyDatabaseContext` vezérlőt használja, hogy a standard kapcsolati sztringgel adatbázist hozzon létre, amely [a módosítás előtt](#modify-connection-string) tiszta szöveges felhasználónévvel és jelszóval rendelkezett.
 
 Cserélje le a teljes sort az alábbi kódra:
 
@@ -156,7 +160,7 @@ A Cloud Shellben adja hozzá az alkalmazásának felügyeltszolgáltatás-identi
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
 msiobjectid=$(az webapp identity show --resource-group <group_name> --name <app_name> --query principalId --output tsv)
-az ad group member add --group $groupid --member-id $msiid
+az ad group member add --group $groupid --member-id $msiobjectid
 az ad group member list -g $groupid
 ```
 

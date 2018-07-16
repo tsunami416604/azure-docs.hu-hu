@@ -6,17 +6,17 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 06/06/2018
+ms.date: 07/09/2018
 ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 99508d6e4e6502fe4fd2a81ee7aaefdde7cd2e15
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: d0cb1c113724af5d07abf75e6d3a45b54e5202dc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945802"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950770"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Rövid útmutató: Kubernetes Dev Spaces-tér létrehozása az Azure Dev Spaces segítségével (Node.js)
 
@@ -32,7 +32,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
-- Az EastUS, WestEurope vagy CanadaEast régióban lévő, a Kubernetes 1.9.6 verziót futtató [Kubernetes-fürt](https://ms.portal.azure.com/#create/microsoft.aks) a **HTTP-alkalmazások engedélyezett útválasztásával**.
+- Az EastUS, CentralUS, WestUS2, WestEurope, CanadaCentral vagy CanadaEast régióban lévő, a Kubernetes 1.10.3 verziót futtató [Kubernetes-fürt](https://ms.portal.azure.com/#create/microsoft.aks) a **HTTP-alkalmazások engedélyezett útválasztásával**.
 
   ![Ne felejtse el engedélyezni a HTTP-alkalmazások útválasztását.](media/common/Kubernetes-Create-Cluster-3.PNG)
 
@@ -42,8 +42,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 1. Telepítse az [Azure CLI-t](/cli/azure/install-azure-cli?view=azure-cli-latest) (a 2.0.38-as vagy újabb verziót).
 1. A Dev Spaces beállítása az AKS-fürtön: `az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
-1. Töltse le az [Azure Dev Spaces bővítményt](https://aka.ms/get-azds-code) a VS Code-hoz.
-1. A bővítmény telepítése: `code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`
+1. Töltse le az [Azure Dev Spaces bővítményt](https://aka.ms/get-azds-code) a VS Code-hoz. Kattintson egyszer a Telepítés lehetőségre a bővítmény Marketplace-oldalán, majd még egyszer a VS Code-ban.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kód létrehozása és futtatása Kubernetesben
 
@@ -182,4 +181,4 @@ Ebben a konfigurációban a tároló úgy van beállítva, hogy elindítsa a *no
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Több tároló használata és fejlesztés csapatban](get-started-nodejs.md#call-a-service-running-in-a-separate-container)
+> [Több tároló használata és fejlesztés csapatban](team-development-nodejs.md)

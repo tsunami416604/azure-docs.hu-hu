@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: ade47c59a8db673869ce8c60a062a2a6a6656ca2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6d3fe519729bd56dafd11720a3662eb00b916a98
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38689000"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056609"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>A méretezhetőség érdekében további folyamatkiszolgálók beállítása
 
@@ -31,9 +31,9 @@ Ellenőrizze a méretezési követelmények a táblázat foglalja össze. Által
 
 | **További folyamatkiszolgáló** | **Gyorsítótár-lemez mérete** | **A módosult adatok aránya** | **Védett gépek** |
 | --- | --- | --- | --- |
-|4 vcpu-k (2 sockets * 2 mag, 2,5 GHz-es @), 8 GB memória |300 GB |250 GB vagy kevesebb |Kisebb vagy 85 gépeket replikálni. |
-|8 Vcpu (2 sockets * 4 mag, 2,5 GHz-es @), 12 GB memória |600 GB |250 GB – 1 TB |Replikálja a 85-150 gépek között. |
-|12 vcpu-k (2 sockets * 6 mag, 2,5 GHz-es @) 24 GB memória |1 TB |1 TB-os 2 TB-ig |150-225 gépek között replikálja. |
+|4 vcpu-k (2 sockets * 2 mag \@ 2,5 GHz-es), 8 GB memória |300 GB |250 GB vagy kevesebb |Kisebb vagy 85 gépeket replikálni. |
+|8 Vcpu (2 sockets * 4 mag \@ 2,5 GHz-es), 12 GB memória |600 GB |250 GB – 1 TB |Replikálja a 85-150 gépek között. |
+|12 vcpu-k (2 sockets * 6 magok \@ 2,5 GHz-es) 24 GB memória |1 TB |1 TB-os 2 TB-ig |150-225 gépek között replikálja. |
 
 ### <a name="prerequisites"></a>Előfeltételek
 

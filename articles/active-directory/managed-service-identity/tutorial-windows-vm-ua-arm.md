@@ -1,6 +1,6 @@
 ---
-title: A Windows virtuális gép felhasználó lehet hozzárendelve MSI Azure Resource Manager eléréséhez használja
-description: Ez az oktatóanyag bemutatja, hogyan a folyamatot, amely a felhasználó hozzárendelt felügyelt szolgáltatás identitásának (MSI) használata a Windows virtuális gép, Azure Resource Manager eléréséhez.
+title: Windows VM-beli, felhasználóhoz rendelt MSI használata az Azure Resource Manager eléréséhez
+description: Oktatóanyag, amely végigvezeti az Azure Resource Manager Windows VM-beli, felhasználóhoz rendelt felügyeltszolgáltatás-identitással (MSI) való elérésének folyamatán.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,44 +9,45 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
-ms.author: arluca
-ms.openlocfilehash: a2225409e4cb50d91c09207ee70b76df12925192
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
-ms.translationtype: MT
+ms.author: daveba
+ms.openlocfilehash: 67bb45f7bd27a142b978bedb48925cc41e8d1287
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904373"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Oktatóanyag: Használja a felhasználó hozzárendelt felügyelt szolgáltatás identitásának (MSI) a Windows virtuális gép, eléréséhez Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Oktatóanyag: Az Azure Resource Manager Windows VM-beli, felhasználóhoz rendelt felügyeltszolgáltatás-identitással (MSI) való elérése.
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Ez az oktatóanyag ismerteti, hogyan hozzon létre egy felhasználó lehet hozzárendelve identitás, rendelje hozzá a Windows virtuális gép (VM) és az Azure Resource Manager API eléréséhez majd használja az identitásukat. Felügyelt szolgáltatás-identitások Azure automatikusan kezeli. Az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatok beágyazása a kódot támogató szolgáltatások lehetővé teszik. 
+Ez az oktatóanyag ismerteti, hogyan hozhat létre felhasználóhoz rendelt identitást, hogyan csatolhatja azt Windows rendszerű virtuális géphez, majd hogyan használhatja ezt az identitást az Azure Resource Manager API eléréséhez. A felügyeltszolgáltatás-identitások kezelését az Azure automatikusan végzi. Ezek segítségével anélkül végezhet hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban, hogy be kellene ágyaznia a hitelesítő adatokat a kódba. 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Windows rendszerű virtuális gép létrehozása 
-> * Hozzon létre egy felhasználó lehet hozzárendelve identitás
-> * Rendelje hozzá a felhasználó lehet hozzárendelve a Windows virtuális gép identitása
-> * A felhasználó identitása hozzáférési jogot egy erőforráscsoportot az Azure Resource Manager 
-> * Szereznie egy hozzáférési jogkivonatot használja a felhasználó identitását, és hívja az Azure Resource Manager használatával 
+> * Felhasználóhoz rendelt identitás létrehozása
+> * Felhasználóhoz rendelt identitás hozzárendelése Windows rendszerű virtuális géphez
+> * Hozzáférés engedélyezése a felhasználóhoz rendelt identitás számára az Azure Resource Manager erőforráscsoportjához 
+> * Hozzáférési jogkivonat lekérése a felhasználóhoz rendelt identitással, majd az Azure Resource Manager meghívása a használatával 
 > * Erőforráscsoport tulajdonságainak olvasása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha a felügyelt Szolgáltatásidentitás ismerik biztosan tekintse meg a [áttekintése](overview.md) szakasz. **Ne feledje el áttekinteni a [rendszer és a felhasználó közötti különbségek hozzárendelt identitások](overview.md#how-does-it-work)**.
-- Ha még nem telepítette az Azure-fiók [regisztráljon egy ingyenes fiókot](https://azure.microsoft.com/free/) folytatása előtt.
-- Ebben az oktatóanyagban a szükséges erőforrások létrehozása és a szerepkör felügyeleti lépések végrehajtásához a fiókot kell a "Tulajdonos" engedélyeket a megfelelő hatókörben (saját előfizetés vagy az erőforrás csoport). Ha a szerepkör-hozzárendelés segítségre van szüksége, tekintse meg [Use Role-Based hozzáférés-vezérlés kezelése az Azure-előfizetés erőforrásokhoz való hozzáférés](/azure/role-based-access-control/role-assignments-portal).
+- Ha még nem ismeri a felügyeltszolgáltatás-identitást, olvass el az [áttekintés](overview.md) szakaszt. **Mindenképpen tekintse át a [rendszer- és a felhasználóhoz rendelt identitások közötti eltéréseket](overview.md#how-does-it-work)**.
+- Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
+- A jelen oktatóanyag elvégzéséhez szükséges erőforrás-létrehozási és szerepkör-felügyeleti lépések végrehajtásához a fiókjának „Tulajdonos” jogosultságokkal kell rendelkeznie a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban). Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](/azure/role-based-access-control/role-assignments-portal) részben leírtakat.
 
-PowerShell telepítéséhez és használatához helyileg választja, az oktatóanyag az Azure PowerShell 5.7-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.7-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-A következő példában az erőforráscsoport neve, *myResourceGroupVM* jön létre a *EastUS* régióban.
+A következő példában egy *myResourceGroupVM* nevű erőforráscsoportot hozunk létre az *EastUS* régióban.
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -ResourceGroupName "myResourceGroupVM" -Location "EastUS"
@@ -54,7 +55,7 @@ New-AzureRmResourceGroup -ResourceGroupName "myResourceGroupVM" -Location "EastU
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Az erőforráscsoport létrehozása után hozzon létre egy Windows virtuális Gépet.
+Az erőforráscsoport létrehozását követően létrehozunk egy Windows rendszerű virtuális gépet.
 
 A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal:
 
@@ -75,18 +76,17 @@ New-AzureRmVm `
     -Credential $cred
 ```
 
-## <a name="create-a-user-assigned-identity"></a>Hozzon létre egy felhasználó lehet hozzárendelve identitás
+## <a name="create-a-user-assigned-identity"></a>Felhasználóhoz rendelt identitás létrehozása
 
-A felhasználó identitása Azure-erőforrás különálló jön létre. Használja a [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity), az Azure létrehoz identitás, amely egy vagy több Azure szolgáltatáspéldány lehet hozzárendelni az Azure AD-bérlőben.
+A felhasználóhoz rendelt identitás különálló Azure-erőforrásként jön létre. Az Azure a [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity) parancsmaggal egy identitást hoz létre az Azure AD-bérlőben, amely egy vagy több Azure-szolgáltatáspéldányhoz rendelhető hozzá.
 
-> [!IMPORTANT]
-> A felhasználói identitások létrehozása csak alfanumerikus és kötőjel (0 – 9 vagy a-z vagy A-Z vagy -) karaktereket. Emellett nevét kell korlátozni a virtuális gép/VMSS helyes működéséhez hozzárendelés 24 karakter hosszúságot. Biztonsági frissítések ellenőrzése. További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
 ```
 
-A válasz a felhasználó identitása létrehozott, az alábbi példához hasonló részleteit tartalmazza. Megjegyzés: a `Id` érték a felhasználó identitását, a következő lépésben lesz használható:
+A válasz tartalmazza az imént létrehozott felhasználóhoz rendelt identitás részleteit, az alábbi példához hasonlóan. Jegyezze fel a felhasználóhoz rendelt identitás `Id` értékét, mivel azt a következő lépésben használni fogja:
 
 ```azurepowershell
 {
@@ -102,27 +102,27 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-the-user-assigned-identity-to-a-windows-vm"></a>Rendelje hozzá a felhasználó identitását egy Windows virtuális gépre
+## <a name="assign-the-user-assigned-identity-to-a-windows-vm"></a>Felhasználóhoz rendelt identitás hozzárendelése Windows rendszerű virtuális géphez
 
-Egy felhasználó lehet hozzárendelve identitás több Azure-erőforrások az ügyfelek által használható. A következő parancsok segítségével a felhasználó identitásának rendelhet egy virtuális. Használja a `Id` tulajdonságot adott vissza az előző lépésben a `-IdentityID` paraméter.
+A felhasználóhoz rendelt identitást az ügyfelek több Azure-erőforrás esetében is használhatják. Az alábbi parancsokkal rendelhet felhasználóhoz rendelt identitást egyetlen virtuális géphez. Ehhez használja az előző lépésben az `-IdentityID` paraméter esetében visszaadott `Id` tulajdonságot.
 
 ```azurepowershell-interactive
 $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzureRmVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-msi-access-to-a-resource-group-in-azure-resource-manager"></a>Adja meg a felhasználói hozzáférés MSI rendelt egy erőforráscsoportot az Azure Resource Manager 
+## <a name="grant-your-user-assigned-msi-access-to-a-resource-group-in-azure-resource-manager"></a>Hozzáférés engedélyezése a felhasználóhoz rendelt MSI számára az Azure Resource Manager erőforráscsoportjához 
 
-Felügyelt szolgáltatás identitásának (MSI) biztosít identitásokat tartalmaz, amelyek a kód segítségével való hitelesítésre szolgáló erőforrás API-k, támogatás az Azure AD-hitelesítés hozzáférési jogkivonatok igényelhetnek. Ebben az oktatóanyagban a kódot az Azure Resource Manager API-val érik el. 
+A felügyeltszolgáltatás-identitás (MSI) által biztosított identitások segítségével a kód hozzáférési jogkivonatokat tud lekérni az olyan erőforrás API-k hitelesítéséhez, amelyek támogatják az Azure AD-hitelesítést. Ebben az oktatóanyagban a kódot az Azure Resource Manager API-jának eléréséhez használjuk. 
 
-A kódot az API eléréséhez, az identitás hozzáférést egy erőforráshoz az Azure Resource Manager szeretné. Ebben az esetben az erőforráscsoportot, amelyben a virtuális gép található. Frissítse az értéket a `<SUBSCRIPTION ID>` a környezetnek megfelelően.
+Ehhez azonban még engedélyeznie kell az identitás számára a hozzáférést az Azure Resource Manager erőforrásaihoz. Ebben az esetben arról az erőforráscsoportról van szó, amelyben a virtuális gép megtalálható. A környezetnek megfelelően frissítse a `<SUBSCRIPTION ID>` értékét.
 
 ```azurepowershell-interactive
 $spID = (Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1).principalid
 New-AzureRmRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/"
 ```
 
-A válasz tartalmazza a létrehozott, az alábbi példához hasonló szerepkör-hozzárendelés részletei:
+A válasz tartalmazza az imént létrehozott szerepkör-hozzárendelés részleteit, az alábbi példához hasonlóan:
 
 ```azurepowershell
 RoleAssignmentId: /subscriptions/80c696ff-5efa-4909-a64d-f1b616f423ca/resourcegroups/myResourceGroupVM/providers/Microsoft.Authorization/roleAssignments/f9cc753d-265e-4434-ae19-0c3e2ead62ac
@@ -136,19 +136,19 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és hívja az erőforrás-kezelő használatával 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Hozzáférési jogkivonat lekérése a VM identitásával, majd a Resource Manager meghívása a használatával 
 
-Az oktatóanyag a hátralévő fog működni a korábban létrehozott virtuális gépről.
+Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk.
 
-1. Jelentkezzen be az Azure-portálon: [https://portal.azure.com](https://portal.azure.com)
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen
 
-2. A portálon lépjen a **virtuális gépek** és nyissa meg a Windows rendszerű virtuális gép és a a **áttekintése**, kattintson a **Connect**.
+2. A portálon lépjen a **Virtuális gépek** szakaszra, lépjen a Windows rendszerű virtuális géphez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre.
 
-3. Adja meg a **felhasználónév** és **jelszó** a Windows virtuális gép létrehozásakor használt.
+3. Írja be a Windows rendszerű virtuális gép létrehozásakor használt **felhasználónevet** és **jelszót**.
 
-4. Most, hogy létrehozott egy **távoli asztali kapcsolat** nyissa meg a virtuális gép **PowerShell** a távoli munkamenet.
+4. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a **PowerShellt** a távoli munkamenetben.
 
-5. A PowerShell használatával `Invoke-WebRequest`, indítson egy lekérdezést a helyi MSI-végpont megszerezni egy hozzáférési jogkivonatot az Azure Resource Manager.
+5. A PowerShell `Invoke-WebRequest` parancsával kezdeményezzen egy kérést a helyi MSI-végpont felé egy hozzáférési jogkivonat lekérésére az Azure Resource Managerhez.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=73444643-8088-4d70-9532-c3a0fdc190fz&resource=https://management.azure.com' -Method GET -Headers @{Metadata="true"}
@@ -158,12 +158,12 @@ Az oktatóanyag a hátralévő fog működni a korábban létrehozott virtuális
 
 ## <a name="read-the-properties-of-a-resource-group"></a>Erőforráscsoport tulajdonságainak olvasása
 
-Használja a hozzáférési jogkivonat elérését az Azure Resource Manager és az erőforrás tulajdonságainak olvasása az előző lépésben beolvasott csoport rendelkeznek a hozzárendelt felhasználói identitás hozzáférést. Cserélje le <SUBSCRIPTION ID> az előfizetés-azonosítója a környezetben.
+Az Azure Resource Managert az előző lépésben lekért hozzáférési jogkivonattal érheti el, illetve azzal olvashatja annak az erőforráscsoportnak a tartalmát, amelyhez a felhasználóhoz rendelt identitás számára hozzáférést adott. Cserélje le a(z) <SUBSCRIPTION ID> kifejezést a környezet előfizetés-azonosítójára.
 
 ```azurepowershell
 (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616f423ca/resourceGroups/myResourceGroupVM?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{Authorization ="Bearer $ArmToken"}).content
 ```
-A válasz az adott erőforráscsoport információkat tartalmaz, a következőhöz hasonló:
+A válasz tartalmazza az adott erőforráscsoport adatait, az alábbi példához hasonlóan:
 
 ```json
 {"id":"/subscriptions/<SUBSCRIPTIONID>/resourceGroups/TestRG","name":"myResourceGroupVM","location":"eastus","properties":{"provisioningState":"Succeeded"}}
@@ -171,4 +171,7 @@ A válasz az adott erőforráscsoport információkat tartalmaz, a következőh�
 
 ## <a name="next-steps"></a>További lépések
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](overview.md).
+Ebben az oktatóanyagban megismerte, hogy hogyan hozhat létre felhasználóhoz hozzárendelt identitást, majd csatolhatja azt egy Azure-beli virtuális géphez az Azure Resource Manager API eléréséhez.  További információ az Azure Resource Managerről:
+
+> [!div class="nextstepaction"]
+>[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

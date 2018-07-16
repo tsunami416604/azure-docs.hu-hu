@@ -3,20 +3,20 @@ title: Azure rövid útmutató – Tárfiók létrehozása | Microsoft Docs
 description: Gyorsan megismerheti, hogyan hozhat létre új tárfiókokat az Azure Portal, az Azure PowerShell vagy az Azure CLI használatával.
 services: storage
 author: tamram
-manager: jeconnoc
+manager: twooley
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/19/2018
+ms.date: 07/03/2018
 ms.author: tamram
-ms.openlocfilehash: 7f6357c5b0be12c18797e82b73bd05af42888aa0
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 92215c759cd51ce429708ec54b17722c486b7ca6
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752333"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856528"
 ---
-# <a name="create-a-storage-account"></a>Create a storage account
+# <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Az Azure Storage-fiók egyedi névteret biztosít a felhőben az Azure Storage-adatobjektumok tárolásához és eléréséhez. A tárfiókok bármely olyan blobot, fájlt, üzenetsort, táblát vagy lemezt tartalmazhatnak, amelyeket az adott fiók használata során létrehoz. 
 
@@ -27,7 +27,7 @@ Az Azure Storage használatának megkezdéséhez először létre kell hoznia eg
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[Portál](#tab/portal)
 
 Nincs.
 
@@ -60,9 +60,9 @@ Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[Portál](#tab/portal)
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
@@ -88,7 +88,7 @@ az login
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[Portál](#tab/portal)
 
 Az Azure Portalon a következő lépések végrehajtásával hozhat létre egy erőforráscsoportot:
 
@@ -158,14 +158,14 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 - A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 - A tárfiók nevének egyedinek kell lennie az Azure rendszerben. Két tárfióknak nem lehet azonos neve.
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[Portál](#tab/portal)
 
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
 1. Az Azure Portalon nyissa ki bal oldalon a szolgáltatásmenüt, és válassza a **Minden szolgáltatás** lehetőséget. Ezután görgessen le a **Storage** szakaszig, és válassza a **Storage-fiókok** lehetőséget. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 2. Adja meg a tárfiók nevét.
 3. Állítsa be a **Fiók típusa** mezőben a **StorageV2 (általános célú v2)** értéket.
-4. A **Replikáció** mezőben hagyja meg a **Helyileg redundáns tárolás (LRS)** értéket. Ezenkívül a következő lehetőségek közül választhat: **Zónaredundáns tárolás (ZRS) (előzetes verzió)**, **Georedundáns tárolás (GRS)** vagy **Írásvédett georedundáns tárolás (RA-GRS)**.
+4. A **Replikáció** mezőben hagyja meg a **Helyileg redundáns tárolás (LRS)** értéket. Ezenkívül a következő lehetőségek közül választhat: **Zónaredundáns tárolás (ZRS)**, **Georedundáns tárolás (GRS)** vagy **Írásvédett georedundáns tárolás (RA-GRS)**.
 5. Ne módosítsa a következő mezők alapértelmezett értékeit: **Üzemi modell**, **Teljesítmény**, **Biztonságos átvitelre van szükség**.
 6. Válassza ki azt az előfizetést, amelyikben létre kívánja hozni a tárfiókot.
 7. Az **Erőforráscsoport** szakaszban válassza a **Meglévő használata** lehetőséget, majd válassza ki az előző szakaszban létrehozott erőforráscsoportot.
@@ -225,7 +225,7 @@ Az elérhető replikációs beállításokkal kapcsolatban további információ
 
 Ha törölni szeretné a jelen rövid útmutató által létrehozott erőforrásokat, akkor egyszerűen törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó tárfiók, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[Portál](#tab/portal)
 
 Erőforráscsoport eltávolítása az Azure Portallal:
 
@@ -255,7 +255,7 @@ az group delete --name myResourceGroup
 
 Ebben a rövid útmutatóban egy általános célú standard szintű tárfiókot hozott létre. Ha szeretne megismerkedni a blobok tárfiókba történő felöltésével és onnan való letöltésével, folytassa a Blob Storage rövid útmutatójával.
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[Portál](#tab/portal)
 
 > [!div class="nextstepaction"]
 > [Objektumok továbbítása Azure Blob-tárolókra és -tárolókról az Azure Portal használatával](../blobs/storage-quickstart-blobs-portal.md)

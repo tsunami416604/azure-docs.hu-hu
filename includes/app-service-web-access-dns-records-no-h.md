@@ -1,5 +1,5 @@
 > [!NOTE]
-> Használhatja az Azure DNS konfigurálása az Azure Web Apps egy egyéni DNS-nevet. További információkért lásd: [használata Azure DNS számára adja meg az egyéni tartomány beállításait az Azure-szolgáltatások](../articles/dns/dns-custom-domain.md#app-service-web-apps).
+> Az Azure DNS segítségével konfigurálhat egy egyéni DNS-nevet az Azure-webalkalmazások számára. További információt az [egyéni tartománybeállítások egy Azure-szolgáltatáshoz az Azure DNS használatával történő megadását](../articles/dns/dns-custom-domain.md#app-service-web-apps) ismertető cikkben talál.
 >
 >
 

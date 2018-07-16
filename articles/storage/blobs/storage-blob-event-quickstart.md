@@ -1,35 +1,36 @@
 ---
-title: Azure Blob storage-események átirányítása egy egyéni webes végpontjának |} Microsoft Docs
+title: Azure Blob Storage-események átirányítása egyéni webes végpontra | Microsoft Docs
 description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
 services: storage,event-grid
 keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 01/30/2018
-ms.topic: article
+ms.date: 07/05/2018
+ms.topic: quickstart
 ms.service: storage
-ms.openlocfilehash: f0764ebc423cfb5323f2b634ce5a5ecbe075135c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: e2f6f2cbf843c6c3b0202a2ef59f6b8e16291f54
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869222"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>A Blob storage-események átirányítása egy egyéni webkiszolgáló-végpont Azure parancssori felülettel
+# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Azure Blob Storage-események átirányítása egyéni webes végpontra az Azure CLI használatával
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetünk a Blob Storage-eseményekre az Azure CLI-vel, majd elindítjuk az eseményt az eredmény megtekintéséhez. 
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetünk a Blob Storage-eseményekre az Azure CLI-vel, majd elindítjuk az eseményt az eredmény megtekintéséhez.
 
-Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikkben bemutatott példa egyszerűsítése érdekében az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-címet a [Hookbin](https://hookbin.com/) külső eszközével fogjuk létrehozni.
+Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
-> [!NOTE]
-> **Hookbin** nem célja a magas teljesítmény-használatról. Az eszköz jelen használata kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
+A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat a webalkalmazásnak küldte el a rendszer.
 
-A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
+![Előfizetési esemény megtekintése](./media/storage-blob-event-quickstart/view-results.png)
+
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI legújabb verzióját (2.0.24 vagy újabb) kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI legújabb verzióját (2.0.24 vagy újabb) kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie a(z) `az login` használatával.
 
@@ -45,12 +46,12 @@ A következő példában létrehozunk egy `<resource_group_name>` nevű erőforr
 az group create --name <resource_group_name> --location westcentralus
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-A Blob storage-események használatához szüksége vagy egy [Blob storage-fiók](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) vagy egy [általános célú v2 tárfiókkal](../common/storage-account-options.md#general-purpose-v2). **Általános célú v2 (GPv2)** minden funkció támogatása az összes tárolószolgáltatásokra, köztük a blobokat, fájlok, üzenetsorok és táblák storage-fiókok vannak. A **Blob storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumokként) az Azure Storage való tárolására. BLOB storage-fiókok hasonló általános célú tárfiókok, és minden nagy tartósságot, rendelkezésre állási, méretezhetőség és teljesítmény szolgáltatás használata ma beleértve a 100 %-os API-konzisztenciát a blokkblobokhoz, és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát. 
+A Blob Storage-események használatához szüksége lesz vagy egy [Blob Storage-fiókra](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), vagy egy [General Purpose v2-tárfiókra](../common/storage-account-options.md#general-purpose-v2). Az általános célú **General Purpose v2- (GPv2-)** fiókok olyan tárfiókok, amelyek a Storage-szolgáltatások összes funkcióját támogatják, beleértve a blobokat, a fájlokat, az üzenetsorokat és a táblákat is. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát. 
 
 > [!NOTE]
-> Rendelkezésre állás a Storage-események kötődik esemény rács [rendelkezésre állási](../../event-grid/overview.md) és más régiókban is elérhető lesz a esemény rács hasonlóan.
+> A Storage-események rendelkezésre állása az Event Grid [rendelkezésre állásától](../../event-grid/overview.md) függ, a többi régióban pedig az Event Griddel egyszerre válnak majd elérhetővé.
 
 A `<storage_account_name>` elemet cserélje le az erőforráscsoport egyedi nevére, a `<resource_group_name>` elemet pedig a korábban létrehozott erőforráscsoportra.
 
@@ -66,24 +67,48 @@ az storage account create \
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. A Hookbin egy külső eszköz, amely lehetővé teszi egy végpont létrehozását és a neki küldött kérések megtekintését. Nyissa meg a [Hookbin](https://hookbin.com/) eszközt, és kattintson a **Create New Endpoint** (Új végpont létrehozása) elemre.  Másolja ki a tár URL-címét, mert szüksége lesz rá, amikor feliratkozik a témakörre.
+A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. A végpont általában az eseményadatok alapján hajt végre műveleteket. Az útmutató egyszerűsítése érdekében egy olyan [előre létrehozott webalkalmazást](https://github.com/dbarkol/azure-event-grid-viewer) helyezünk üzembe, amely megjeleníti az esemény üzeneteit. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
 
-## <a name="subscribe-to-your-storage-account"></a>A storage-fiók előfizetés
+A `<your-site-name>` elemet a webalkalmazás egyedi nevére cserélje le. A webalkalmazás nevének egyedinek kell lennie, mert a DNS-bejegyzés része.
 
-A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. A következő példa a tárfiókot hozott létre, és az URL-cím továbbítja a Hookbin és a végpontnak a eseményértesítés számítógépcsoportra fizetett elő. Az `<event_subscription_name>` elemet az esemény-feliratkozás egyedi nevére cserélje le, az `<endpoint_URL>` elemet pedig az előző szakaszból származó értékre. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. A `<resource_group_name>` és `<storage_account_name>` elemnél a korábban létrehozott értékeket adja meg.  
+```azurecli-interactive
+sitename=<your-site-name>
+
+az group deployment create \
+  --resource-group <resource_group_name> \
+  --template-uri "https://raw.githubusercontent.com/dbarkol/azure-event-grid-viewer/master/azuredeploy.json" \
+  --parameters siteName=$sitename hostingPlanName=viewerhost
+```
+
+Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
+
+A helynek megjelenített üzenetek nélkül kell megjelennie.
+
+[!INCLUDE [event-grid-register-provider-cli.md](../../../includes/event-grid-register-provider-cli.md)]
+
+## <a name="subscribe-to-your-storage-account"></a>Előfizetés a tárfiókra
+
+A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni azokat. Az alábbi példa bemutatja a létrehozott tárfiókra való feliratkozást, és átadja a webalkalmazásából származó URL-címet az eseményértesítés végpontjaként. Az `<event_subscription_name>` elemet cserélje le az esemény-előfizetéshez választott névre. A `<resource_group_name>` és `<storage_account_name>` elemnél a korábban létrehozott értékeket adja meg.
+
+A webalkalmazás végpontjának az `/api/updates/` utótagot kell tartalmaznia.
 
 ```azurecli-interactive
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
   --resource-id $storageid \
   --name <event_subscription_name> \
-  --endpoint <endpoint_URL>
+  --endpoint $endpoint
 ```
+
+Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfizetés érvényesítési eseményét. Az eseményadatok kibontásához kattintson a szem ikonra. Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A webalkalmazás az előfizetés érvényesítéséhez szükséges kódot tartalmaz.
+
+![Előfizetési esemény megtekintése](./media/storage-blob-event-quickstart/view-subscription-event.png)
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Esemény kiváltása a Blob Storage-ból
 
-Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először hozzuk nevének konfigurálása és a storage-fiók kulcsát ezután azt létrehozni egy tárolót, majd hozzon létre és -fájl feltöltése. Ismét a korábban létrehozott `<storage_account_name>` és `<resource_group_name>` értéket használja.
+Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először konfiguráljuk a tárfiók nevét és kulcsát, majd hozzunk létre egy tárolót, végül hozzunk létre és töltsünk fel egy fájlt. Ismét a korábban létrehozott `<storage_account_name>` és `<resource_group_name>` értéket használja.
 
 ```azurecli-interactive
 export AZURE_STORAGE_ACCOUNT=<storage_account_name>
@@ -95,7 +120,8 @@ touch testfile.txt
 az storage blob upload --file testfile.txt --container-name testcontainer --name testfile.txt
 ```
 
-Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Lépjen a végpont korábban létrehozott URL-címére, vagy kattintson a megnyitott böngésző frissítés gombjára. Megjelenik az imént elküldött esemény. 
+Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tekintse meg a webalkalmazást az imént elküldött esemény megtekintéséhez.
+
 
 ```json
 [{

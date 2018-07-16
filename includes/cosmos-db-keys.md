@@ -1,4 +1,4 @@
-  Most nyissa meg az Azure Cosmos DB fiók lapot, és kattintson a **kulcsok**, mivel ezek az értékek szerepelnek a webes alkalmazás ezután hozzon létre.
+  Lépjen az Azure Cosmos DB-fiók oldalára, majd kattintson a **Kulcsok** elemre, mivel ezeket az értékeket fogjuk használni a következőkben létrehozott webalkalmazásban.
 
-![Az Azure-portál Keys gomb az Azure Cosmos DB fiók oldalon képernyőfelvétele](./media/cosmos-db-keys/keys.png)
+![Képernyőkép az Azure Portalról, amelyen ki van emelve a Kulcsok gomb az Azure Cosmos DB-fiók oldalán](./media/cosmos-db-keys/keys.png)
 

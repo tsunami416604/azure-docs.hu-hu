@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 379f1a369bd94f22736abfb766ba239c3f93acee
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 13e757d3d6d35227667e23eb6000eace56a0674e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798093"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582428"
 ---
 # <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure Cosmos DB: Fejlesztés a Cassandra API-val Java nyelven
 
@@ -228,7 +228,7 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 > * Adatok lekérdezése
 > * SLA-k áttekintése
 
-Most már további adatokat importálhat az Azure Cosmos DB-gyűjteménybe. 
+Most már további adatokat importálhat az Azure Cosmos DB-tárolóba. 
 
 > [!div class="nextstepaction"]
 > [Cassandra-adatok importálása az Azure Cosmos DB-be](cassandra-import-data.md)

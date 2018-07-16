@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 06/20/2018
+ms.date: 07/05/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6c78554b78468329819726bfd95671a34f51b231
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 753a21638745870941ac77e340b5e6aa713c7ffe
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285797"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920722"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -30,7 +30,11 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 - Jelenleg csak a helyszíni VMware virtuális gépek Azure-beli virtuális gépekre való migrálásának lehetőségeit értékelheti ki. A VMware virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
-- A Hyper-V támogatása tervbe van véve. Addig is az [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) használatát javasoljuk a Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez.
+
+> [!NOTE]
+> A Hyper-V és a fizikai kiszolgálók támogatása tervbe van véve. Addig is javasoljuk az [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) használatát a Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez, valamint [partnereszközeink](https://azure.microsoft.com/migration/partners/) használatát a fizikai számítási feladatok migrálásának megtervezéséhez.
+
+
 - Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet. Ha egy nagyobb méretű környezetet szeretne felderíteni, feloszthatja a felderítést, és létrehozhat több projektet, [további információk](how-to-scale-assessment.md). Az Azure Migrate előfizetésenként legfeljebb 20 projektet támogat.
 - Azure Migrate-projektet csak az USA középnyugati régiójában és keleti régiójában lehet létrehozni. Ez azonban nem befolyásolja a migrálás megtervezését egy másik Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.

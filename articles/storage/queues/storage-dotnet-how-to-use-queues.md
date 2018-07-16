@@ -7,14 +7,14 @@ manager: jeconnoc
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 04/16/2018
+ms.date: 06/13/2018
 ms.author: tamram
-ms.openlocfilehash: 749bc318af331100c8c2079d58c8e3ca395f4a49
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 685f333fd0659db54c9d6bf4b061cf4c9aec7cda
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31527314"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722745"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -36,8 +36,6 @@ Ez az oktatóanyag bemutatja, hogyan írhat .NET-kódot néhány, az Azure Queue
 * [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * Egy [Azure-tárfiók](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#create-a-storage-account)
 
-[!INCLUDE [storage-dotnet-client-library-version-include](../../../includes/storage-dotnet-client-library-version-include.md)]
-
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
@@ -55,16 +53,16 @@ using Microsoft.WindowsAzure.Storage.Queue; // Namespace for Queue storage types
 
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>A hitelesítési adatok másolása az Azure Portalról
 
-A mintakódnak hitelesítenie kell a tárfiókhoz való hozzáférést. A hitelesítéshez meg kell adnia az alkalmazásnak a tárfiókjához tartozó, kapcsolati karakterlánc formátumú hitelesítő adatait. A tárfiók hitelesítő adatainak megtekintéséhez a következőt kell tennie:
+A mintakódnak hitelesítenie kell a tárfiókhoz való hozzáférést. A hitelesítéshez meg kell adni az alkalmazás számára a tárfiók hitelesítő adatait egy kapcsolati sztring formájában. A tárfiók hitelesítő adatainak megtekintéséhez a következőt kell tennie:
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
 2. Keresse meg a Storage-fiókját.
-3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Megjelennek a fiókhoz tartozó hozzáférési kulcsok, valamint az egyes kulcsokhoz tartozó kapcsolati karakterláncok.   
-4. Keresse meg a **Kapcsolati karakterlánc** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati karakterlánc másolásához. A kapcsolati karakterlánc értékét hozzáadja egy környezeti változóhoz a következő lépés során.
+3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Megjelennek a fiókhoz tartozó hozzáférési kulcsok, valamint az egyes kulcsokhoz tartozó kapcsolati sztringek.   
+4. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához. A kapcsolati sztring értékét hozzáadja egy környezeti változóhoz a következő lépés során.
 
-    ![A kapcsolati karakterlánc az Azure Portalról történő másolását bemutató képernyőkép](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
+    ![A kapcsolati sztring az Azure Portalról történő másolását bemutató képernyőkép](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
 
-### <a name="parse-the-connection-string"></a>Kapcsolati karakterlánc elemzése
+### <a name="parse-the-connection-string"></a>Kapcsolati sztring elemzése
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="create-the-queue-service-client"></a>A Queue szolgáltatásügyfél létrehozása
@@ -95,7 +93,7 @@ queue.CreateIfNotExists();
 ```
 
 ## <a name="insert-a-message-into-a-queue"></a>Üzenet beszúrása egy üzenetsorba
-Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy **CloudQueueMessage** elemet. Ezután hívja meg az **AddMessage** módszert. A **CloudQueueMessage** egy karakterláncból (UTF-8 formátumban) vagy egy **bájttömbből** hozható létre. Az alábbi kód létrehoz egy üzenetsort (ha még nem létezik), és beszúrja a „Hello, World” üzenetet:
+Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy **CloudQueueMessage** elemet. Ezután hívja meg az **AddMessage** módszert. A **CloudQueueMessage** egy sztringből (UTF-8 formátumban) vagy egy **bájttömbből** hozható létre. Az alábbi kód létrehoz egy üzenetsort (ha még nem létezik), és beszúrja a „Hello, World” üzenetet:
 
 ```csharp
 // Retrieve storage account from connection string.

@@ -1,6 +1,6 @@
 ---
-title: Azure Storage eléréséhez használja Windows virtuális gép felügyelt identitás
-description: Ez az oktatóanyag végigvezeti az Azure Storage eléréséhez használja Windows virtuális gép felügyelt identitás.
+title: Windows VM-beli felügyelt identitás használata az Azure Storage eléréséhez
+description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure Storage-hoz egy Windows VM-beli felügyelt identitással.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,33 +9,33 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: 9ccc94727a18fbcd77f00000531934be57b8e132
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
-ms.translationtype: MT
+ms.openlocfilehash: a9b0ddbd8d0a348d00e57526e6d248e59a8a1e79
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801364"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903957"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Azure Storage eléréséhez a Windows virtuális gép felügyelt identitás használatára
+# <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Windows VM-beli felügyelt identitás használata az Azure Storage eléréséhez
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan engedélyezése felügyelt identitás egy Windows rendszerű virtuális gép számára, és Azure Storage eléréséhez használja az identitásukat.  Az alábbiak végrehajtásának módját ismerheti meg:
+Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyelt identitást egy Windows rendszerű virtuális gépen, majd hogyan használhatja az Azure Storage hozzáféréséhez.  Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Windows virtuális gép egy új erőforráscsoport létrehozása 
-> * Felügyelt identitás Windows virtuális gépre (VM) engedélyezése
-> * A tárfiók egy blob-tároló létrehozása
-> * A Windows virtuális gép identitásának felügyelt hozzáférést a storage-fiók 
-> * Hozzáférés, és hívja az Azure Storage segítségével 
+> * Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban 
+> * Felügyelt identitás engedélyezése Windows rendszerű virtuális gépen (VM)
+> * Blobtároló létrehozása egy tárfiókban
+> * Hozzáférés engedélyezése Windows VM felügyelt identitása számára egy tárfiókhoz 
+> * Hozzáférés kérése, majd az Azure Storage meghívása a hozzáféréssel 
 
 > [!NOTE]
-> Az Azure Storage Azure Active Directory-hitelesítés nyilvános előzetes verziójában van.
+> Az Azure Storage Azure Active Directory-hitelesítése nyilvános előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,76 +47,76 @@ Ez az oktatóanyag bemutatja, hogyan engedélyezése felügyelt identitás egy W
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban
 
-Ebben a szakaszban hozzon létre egy Windows virtuális Gépet, amely egy felügyelt identitás később engedélyezett.
+Ebben a szakaszban olyan Windows rendszerű virtuális gépet hoz létre, amelyhez később felügyelt identitást fog adni.
 
-1.  Kattintson a **/ hozzon létre új szolgáltatást** gomb az Azure portál bal felső sarkában található.
+1.  Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
 2.  Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
-3.  Adja meg a virtuális gép adatait. A **felhasználónév** és **jelszó** létrehozott itt van a hitelesítő adatok használatával jelentkezzen be a virtuális gép.
-4.  Válassza ki a megfelelő **előfizetés** a virtuális gép meg a legördülő listában.
-5.  Jelölje be egy új **erőforráscsoport** szeretne létrehozni, válassza ki a virtuális gépet **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
-6.  Adja meg a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
+3.  Adja meg a virtuális gép adatait. Az itt létrehozott **felhasználónév** és **jelszó** alkotják a virtuális gépre való bejelentkezéshez használt hitelesítő adatokat.
+4.  Válassza ki a megfelelő **előfizetést** a virtuális géphez a legördülő menüben.
+5.  Ha a virtuális gépet egy új **erőforráscsoportban** szeretné létrehozni, válassza az **Új létrehozása** elemet. Amikor végzett, kattintson az **OK** gombra.
+6.  Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-    ![Kép helyettesítő szövege](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Helyettesítő képszöveg](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-managed-identity-on-your-vm"></a>A virtuális Gépet felügyelt identitásának engedélyezése
+## <a name="enable-managed-identity-on-your-vm"></a>Felügyelt identitás engedélyezése a virtuális gépen
 
-A virtuális gép felügyelt azonosítójának hozzáférési jogkivonatok lekérni az Azure AD anélkül, hogy a hitelesítő adatok kerüljenek a kódot a teszi lehetővé. A színfalak engedélyezése egy virtuális gépet az Azure-portálon kezelt identitásának két dolgot eredményez: regisztrálja a virtuális Gépet az Azure AD-hoz létre egy felügyelt, és konfigurálja a virtuális gép identitását. 
+A virtuális gép felügyelt identitásával anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A háttérben a felügyelt identitás Azure Portalon keresztül, virtuális gépen történő engedélyezésének két következménye van: regisztrálja a virtuális gépet az Azure AD-ben egy felügyelt identitás létrehozásához, és konfigurálja az identitást a virtuális gépen. 
 
-1. Keresse meg az erőforráscsoport a új virtuális gép, és válassza ki a virtuális gépet, az előző lépésben létrehozott.
-2. Az a **beállítások** kategória, kattintson a **konfigurációs**.
-3. Ahhoz, hogy a felügyelt identitást, válassza ki a **Igen**.
-4. Kattintson a **mentése** elemre a konfiguráció alkalmazásához. 
+1. Lépjen az új virtuális gép erőforráscsoportjára, és válassza ki az előző lépésben létrehozott virtuális gépet.
+2. A **Beállítások** kategóriában kattintson a **Konfiguráció** elemre.
+3. A felügyelt identitás engedélyezéséhez kattintson az **Igen** gombra.
+4. Kattintson a **Mentés** gombra a konfiguráció alkalmazásához. 
 
-## <a name="create-a-storage-account"></a>Create a storage account 
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
-Ebben a szakaszban hozzon létre egy tárfiókot. 
+Ebben a szakaszban egy új tárfiókot fog létrehozni. 
 
-1. Kattintson a **+ hozzon létre egy erőforrást** gomb az Azure portál bal felső sarkában található.
-2. Kattintson a **tárolási**, majd **tárfiók - blob, a fájl, a tábla, a várólista**.
-3. A **neve**, adja meg a tárfiók nevét.  
-4. **Telepítési modell** és **fiók kind** meg **erőforrás-kezelő** és **Storage (az általános célú v1)**. 
-5. Győződjön meg arról a **előfizetés** és **erőforráscsoport** az előző lépésben a virtuális gép létrehozásakor megadott megfelelően.
+1. Kattintson az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** gombra.
+2. Kattintson a **Storage**, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőségre.
+3. A **Név** mezőben adja meg a tárfiók nevét.  
+4. A **Telepítési modell** mezőben a **Resource Manager**, a **Fiók típusa** mezőben a **Storage (általános célú v1)** beállítást kell megadni. 
+5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
 6. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új tárfiók létrehozása](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>A blob-tároló létrehozása és a fájl feltöltése a tárfiókba
+## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Blobtároló létrehozása és egy fájl feltöltése a tárfiókba
 
-Szükséges fájlok blob Storage tárolóban, ezért szüksége lesz egy blob tároló, amely tárolja a fájl létrehozásához. Majd fájlt töltsön fel az új tárfiók a blob-tárolóhoz.
+A fájlok tárolásához blobtároló szükséges, ezért létre kell hoznia egyet, amelyben a fájlt tárolhatja. Ezután fel fog tölteni egy fájlt az új tárfiókon lévő blobtárolóba.
 
-1. Lépjen vissza az újonnan létrehozott tárfiók.
-2. A **Blob szolgáltatás**, kattintson a **tárolók**.
-3. Kattintson a **+ tároló** az oldal tetején.
-4. A **új tároló**, adjon meg egy nevet, a tároló és a **nyilvános hozzáférési szint** tartsa meg az alapértelmezett értéket.
+1. Lépjen vissza az újonnan létrehozott tárfiókra.
+2. A **Blob Service** területen kattintson a **Tárolók** lehetőségre.
+3. Kattintson a **+ Tároló** gombra a lap tetején.
+4. Az **Új tároló** területen írja be a tároló nevét, és a **Nyilvános hozzáférés szintje** területen tartsa meg az alapértelmezett értéket.
 
-    ![A tároló létrehozása](../media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Storage-tároló létrehozása](../media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-5. Egy fájlt egy szerkesztővel az Ön által választott, hozzon létre *hello world.txt* a helyi számítógépen.  Nyissa meg a fájlt, és adja hozzá a "Hello world szöveg (idézőjelek nélkül)! :) ", és mentse azt. 
-6. Töltse fel a fájlt a tároló neve, majd kattintson az újonnan létrehozott tárolóhoz **feltöltése**
-7. Az a **feltöltése a blob** ablaktáblán, a **fájlok**, a mappa ikonra, és keresse meg a fájlt **hello_world.txt** a helyi számítógépen, válassza ki a fájlt, majd kattintson a **Feltöltése**.
-    ![Szöveg-fájl feltöltése](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
+5. Egy tetszőleges szövegszerkesztővel hozzon létre egy *hello world.txt* nevű fájlt a helyi gépen.  Nyissa meg a fájlt, adja hozzá a „Hello, world! :)” szöveget (idézőjel nélkül), majd mentse el. 
+6. A tároló nevére, majd a **Feltöltés** lehetőségre kattintva töltse fel a fájlt az újonnan létrehozott tárolóba.
+7. A **Blob feltöltése** panel **Fájlok** területén kattintson a mappa ikonra, keresse meg a **hello_world.txt** fájlt a helyi gépen, válassza ki a fájlt, majd kattintson a **Feltöltés** gombra.
+    ![Szövegfájl feltöltése](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>A virtuális gép hozzáférést biztosíthat az Azure Storage-tároló 
+## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure Storage-tárolóhoz 
 
-A virtuális Gépet felügyelt identitás használhatja az Azure storage-blob adatainak beolvasása.   
+A VM felügyelt identitásával lekérheti az Azure-tárolóblob adatait.   
 
-1. Lépjen vissza az újonnan létrehozott tárfiók.  
-2. Kattintson a **hozzáférés-vezérlés (IAM)** hivatkozás a bal oldali panelen.  
-3. Kattintson a **+ Hozzáadás** fölött a lap egy új szerepkör-hozzárendelés hozzáadása a virtuális gép számára.
-4. A **szerepkör**, a legördülő listából válassza ki a **Adatolvasó a tárolási Blob (előzetes verzió)**. 
-5. A következő legördülő alatt **való hozzáférés hozzárendelése**, válassza a **virtuális gép**.  
-6. A következő szerepel-e a megfelelő előfizetést a **előfizetés** legördülő menüből, majd állítsa be **erőforráscsoport** való **összes erőforráscsoport**.  
-7. A **válasszon**, válassza ki a virtuális Gépet, és kattintson a **mentése**. 
+1. Lépjen vissza az újonnan létrehozott tárfiókra.  
+2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
+3. A lap tetején a **+ Hozzáadás** gombra kattintva adjon hozzá egy új szerepkör-hozzárendelést a VM-hez.
+4. A **Szerepkör** területen lévő legördülő listában válassza a **Storage-blobadatok olvasója (minta)** elemet. 
+5. A következő legördülő menüben, a **Hozzáférés hozzárendelése** területen válassza ki a **Virtuális gép** elemet.  
+6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a **Minden erőforráscsoport** értékre.  
+7. A **Kiválasztás** mezőben válassza ki a virtuális gépet, majd kattintson a **Mentés** gombra. 
 
-    ![Engedélyek hozzárendelése](~/articles/active-directory/managed-service-identity/media/tutorial-linux-vm-access-storage/access-storage-perms.png)
+    ![Engedélyek kiosztása](~/articles/active-directory/managed-service-identity/media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Szereznie egy hozzáférési jogkivonatot, és hívja az Azure Storage segítségével 
+## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Hozzáférési jogkivonat lekérése, majd azzal az Azure Storage meghívása 
 
-Az Azure Storage natív módon támogatja az Azure AD hitelesítési, így közvetlenül elfogadása jogkivonatot kapott egy felügyelt identitásával. Az Azure Storage-integráció az Azure ad-val része, és biztosítja a kapcsolati karakterlánc-felhasználó hitelesítő adatai eltérnek.
+Az Azure Storage natív támogatást nyújt az Azure AD-hitelesítésnek, így közvetlenül is elfogadhatja a felügyelt identitás használatával beszerzett hozzáférési jogkivonatokat. Ez az Azure Storage és az Azure AD integrációjának része, és eltér attól a megoldástól, amikor a kapcsolati sztringen adja meg a hitelesítő adatokat.
 
-A .net kódot példa kapcsolat létesítése az Azure Storage access token használatával, és olvassa a korábban létrehozott fájl tartalmát. Ez a kód fogja tudni elérni a virtuális gép identitásának felügyelt végpont a virtuális Gépen kell futnia. .NET-keretrendszer 4.6-os vagy újabb is szükséges a hozzáférési token módszer használatával. Cserélje le a `<URI to blob file>` ennek megfelelően. Ezt úgy szerezheti be ezt az értéket navigáljon a fájl létrehozása és feltöltése a blob storage és másolása a **URL-cím** alatt **tulajdonságok** a **áttekintése** lap.
+Bemutatunk egy .Net-kódpéldát arra, hogyan létesíthető kapcsolat az Azure Storage-tárolóval egy hozzáférés jogkivonattal, majd hogyan olvasható be a korábban létrehozott fájl tartalma. Ennek a kódnak kell futnia a virtuális gépen a VM felügyelt identitásához tartozó végpont eléréséhez. A .NET-keretrendszer 4.6-os vagy újabb verziójára van szükség az access token (hozzáférési jogkivonat) metódus használatához. Cserélje le az `<URI to blob file>` értékét a megfelelőre. Az érték lekéréséhez keresse meg a létrehozott és a blobtárolóba feltöltött fájlt, és másolja ki az **Áttekintés** oldalon lévő **Tulajdonságok** területen szereplő **URL** értéket.
 
 ```csharp
 using System;
@@ -186,13 +186,13 @@ namespace StorageOAuthToken
 }
 ```
 
-A válasz tartalmazza a fájl tartalma:
+A válasz tartalmazza a fájl tartalmát:
 
 `Hello world! :)`
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan engedélyezése a Windows rendszerű virtuális gép felügyelt identitás Azure Storage eléréséhez.  További információért lásd a Azure Storage:
+Az oktatóanyag bemutatta, hogyan gondoskodhat róla, hogy egy Windows rendszerű virtuális gép felügyelt identitása hozzá tudjon férni az Azure Storage-hoz.  További információ az Azure Storage-ról:
 
 > [!div class="nextstepaction"]
 > [Azure Storage](/azure/storage/common/storage-introduction)

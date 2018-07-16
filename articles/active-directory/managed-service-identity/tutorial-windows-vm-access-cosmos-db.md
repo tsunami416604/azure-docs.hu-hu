@@ -1,6 +1,6 @@
 ---
-title: A Windows virtuális gép MSI Azure Cosmos DB eléréséhez használja
-description: Ez az oktatóanyag végigvezeti egy System-Assigned felügyelt szolgáltatás identitásának (MSI) használata a Windows virtuális gép Azure Cosmos adatbázis elérésére.
+title: Windows VM-beli MSI használata az Azure Cosmos DB eléréséhez
+description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure Cosmos DB-hez egy Windows VM-beli, rendszer által hozzárendelt felügyeltszolgáltatás-identitással (MSI).
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,30 +9,30 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
-ms.author: arluca
-ms.openlocfilehash: ed225206e512ff64835d4d90b35bd44800e0a559
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.author: daveba
+ms.openlocfilehash: ed1aff411ae5446688fe717ddc4570ea756c4c1e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595376"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904271"
 ---
-# <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>Oktatóanyag: A Windows virtuális gép MSI Azure Cosmos DB elérésére használhat.
+# <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>Oktatóanyag: Windows VM-beli MSI használata az Azure Cosmos DB eléréséhez
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan létrehozása és használata a Windows virtuális gép MSI Cosmos-adatbázis eléréséhez. Az alábbiak végrehajtásának módját ismerheti meg:
+Ez az oktatóanyag bemutatja, hogyan hozhat létre és használhat Windows VM-beli MSI-t a Cosmos DB eléréséhez. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Hozzon létre egy MSI engedélyezve van a Windows virtuális gép 
+> * MSI-kompatibilis Windows VM létrehozása 
 > * Cosmos DB-fiók létrehozása
-> * A Cosmos DB tárelérési kulcsok GRANT Windows virtuális gép MSI elérésére
-> * Szereznie egy hozzáférési jogkivonatot a Windows virtuális gép MSI hívni az Azure Resource Manager használatával
-> * Tárelérési kulcsok beolvasása az Azure Resource Manager Cosmos DB hívásokat
+> * Windows VM MSI hozzáférésének biztosítása a Cosmos DB-fiók hozzáférési kulcsaihoz
+> * Hozzáférési jogkivonat lekérése a VM MSI-jével az Azure Resource Manager meghívásához
+> * Hozzáférési kulcsok lekérése az Azure Resource Managerből Cosmos DB-hívások indításához
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,110 +45,110 @@ Ez az oktatóanyag bemutatja, hogyan létrehozása és használata a Windows vir
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban
 
-Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet.  A meglévő virtuális MSI is engedélyezheti.
+Ebben az oktatóanyagban egy új Windows VM-et fog létrehozni.  A meglévő virtuális gépeken is engedélyezheti az MSI-t.
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
-3. Adja meg a virtuális gép adatait. A **felhasználónév** és **jelszó** létrehozott itt van a hitelesítő adatok használatával jelentkezzen be a virtuális gép.
-4. Válassza ki a megfelelő **előfizetés** a virtuális gép meg a legördülő listában.
-5. Jelölje be egy új **erőforráscsoport** , amelyen a virtuális gép létrehozásához, **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
-6. Adja meg a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A beállítások lapon hagyja az alapértelmezett beállításokat, majd kattintson **OK**.
+3. Adja meg a virtuális gép adatait. Az itt létrehozott **felhasználónév** és **jelszó** alkotják a virtuális gépre való bejelentkezéshez használt hitelesítő adatokat.
+4. Válassza ki a megfelelő **előfizetést** a virtuális géphez a legördülő menüben.
+5. A virtuális gép létrehozásához használni kívánt új **erőforráscsoport** kiválasztásához válassza az **Új létrehozása** lehetőséget. Amikor végzett, kattintson az **OK** gombra.
+6. Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások lapon hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-   ![Kép helyettesítő szövege](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+   ![Helyettesítő képszöveg](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése 
+## <a name="enable-msi-on-your-vm"></a>MSI engedélyezése a virtuális gépen 
 
-A virtuális gép MSI hozzáférési jogkivonatok lekérni az Azure AD anélkül, hogy a hitelesítő adatok kerüljenek a kódot a teszi lehetővé. A színfalak engedélyezése egy virtuális gépen az Azure-portálon MSI két dolgot eredményez: regisztrálja a virtuális Gépet az Azure AD-hoz létre egy felügyelt, és konfigurálja a virtuális gép identitását.
+A virtuális gép MSI-vel anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A háttérben az MSI Azure Portalon keresztül, virtuális gépen történő engedélyezésének két következménye van: regisztrálja a virtuális gépet az Azure AD-ben egy felügyelt identitás létrehozásához, és konfigurálja az identitást a virtuális gépen.
 
-1. Válassza ki a **virtuális gép** , hogy szeretné-e engedélyezze MSI-t.  
-2. A bal oldali navigációs sávon kattintson **konfigurációs**. 
-3. Látni **Szolgáltatásidentitás felügyelt**. Regisztrálja, és engedélyezze a MSI-t, jelölje be **Igen**, ha szeretné letiltani, válassza a nem. 
-4. Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.  
-   ![Kép helyettesítő szövege](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+1. Válassza ki azt a **virtuális gépet**, amelyen engedélyezni szeretné az MSI-t.  
+2. A bal oldali navigációs sávban kattintson a **Konfigurálás** elemre. 
+3. Megjelenik a **felügyeltszolgáltatás-identitás**. Az MSI regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra. 
+4. Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.  
+   ![Helyettesítő képszöveg](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB-fiók létrehozása 
 
-Ha még nem rendelkezik egy, hozzon létre egy Cosmos DB fiókot. Ezt a lépést kihagyhatja, és meglévő Cosmos DB fiók. 
+Ha még nincs fiókja, hozzon létre egy Cosmos DB-fiókot. Ezt a lépést kihagyhatja, ha egy meglévő Cosmos DB-fiókot használ. 
 
-1. Kattintson a **/ hozzon létre új szolgáltatást** gomb az Azure portál bal felső sarkában található.
-2. Kattintson a **adatbázisok**, majd **Azure Cosmos DB**, és egy új "új fiók" panel jeleníti meg.
-3. Adjon meg egy **azonosító** a Cosmos DB fiók, amely későbbi használatra.  
-4. **API** kell beállítani az "SQL". Az ebben az oktatóanyagban leírt módszer is használható a rendelkezésre álló API típusú, de ez az oktatóanyag lépéseit az SQL API-hoz.
-5. Győződjön meg arról a **előfizetés** és **erőforráscsoport** az előző lépésben a virtuális gép létrehozásakor megadott megfelelően.  Válassza ki a **hely** ahol Cosmos DB áll rendelkezésre.
-6. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
+2. Kattintson az **Adatbázisok**, majd az **Azure Cosmos DB** lehetőségre. Ekkor megjelenik egy új, „Új fiók” nevű panel.
+3. Adja meg a Cosmos DB-fiók **azonosítóját**, amelyet később használni fog.  
+4. Az **API** értéke legyen „SQL”. Az ebben az oktatóanyagban ismertetett megközelítést más API-típusokkal is használhatja, de az itt szereplő lépések az SQL API-ra vonatkoznak.
+5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.  Válasszon ki egy olyan **helyet**, ahol a Cosmos DB elérhető.
+6. Kattintson a **Létrehozás** gombra.
 
-## <a name="create-a-collection-in-the-cosmos-db-account"></a>Hozzon létre egy gyűjteményt a Cosmos DB-fiókban
+## <a name="create-a-collection-in-the-cosmos-db-account"></a>Gyűjtemény létrehozása Cosmos DB-fiókban
 
-Ezután adja hozzá a adatok gyűjtése a Cosmos DB fiók, amely a későbbi lépésekben kérdezhetők le.
+Adjon hozzá egy adatgyűjteményt a Cosmos DB-fiókhoz, amelyet a későbbi lépések során lekérdezhet.
 
-1. Nyissa meg az újonnan létrehozott Cosmos DB fiók.
-2. Az a **áttekintése** lapon kattintson a **/ gyűjtemény hozzáadása** gombra, és egy "gyűjtemény hozzáadása" kimenő diák panelen.
-3. Adjon a gyűjtemény egy adatbázis Azonosítóját, a gyűjtemény Azonosítóját, jelöljön ki egy tárolási kapacitás, adjon meg egy partíciókulcsot, adjon meg egy átviteli értéket, majd kattintson **OK**.  A jelen oktatóanyag esetében is elegendő az használja a "Teszt" az adatbázis-azonosító és a gyűjtemény Azonosítóját, válasszon ki egy rögzített tárolási kapacitás és a legalacsonyabb átviteli sebesség (400 RU/mp).  
+1. Lépjen az újonnan létrehozott Cosmos DB-fiókra.
+2. Az **Áttekintés** lapon kattintson a **+/Gyűjtemény hozzáadása** gombra. Ekkor megjelenik a „Gyűjtemény hozzáadása” panel.
+3. Adja meg a gyűjtemény adatbázis- és gyűjteményazonosítóját, válasszon ki egy tárkapacitást, adjon meg partíciókulcsot és átviteli sebességet, majd kattintson az **OK** gombra.  Ebben az oktatóanyagban elég a „Teszt” kifejezést használni az adatbázis és a gyűjtemény azonosítójaként, kiválasztani egy rögzített kapacitást és a legalacsonyabb átviteli sebességet (400 RU/s).  
 
-## <a name="grant-windows-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>A Cosmos DB tárelérési kulcsok GRANT Windows virtuális gép MSI elérésére
+## <a name="grant-windows-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Windows VM MSI hozzáférésének biztosítása a Cosmos DB-fiók hozzáférési kulcsaihoz
 
-Cosmos DB natív módon támogatja az Azure AD-alapú hitelesítés. Azonban egy Cosmos DB hozzáférési kulcsot a Resource Manager lekéréséhez egy olyan MSI Csomaghoz használja, és a kulcs Cosmos-adatbázis eléréséhez használja. Ebben a lépésben meg hozzáférést a MSI a kulcsokat a Cosmos DB-fiókhoz.
+A Cosmos DB nem támogatja natív módon az Azure AD-hitelesítést. Az MSI használatával azonban lekérheti a Cosmos DB hozzáférési kulcsát a Resource Managerből, és azzal elérheti a tárolót. Ebben a lépésben hozzáférést biztosít az MSI számára a Cosmos DB-fiók kulcsaihoz.
 
-A Cosmos DB-fiókba az Azure Resource Manager PowerShell-lel MSI identitás hozzáférést engedélyez, frissítés a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, és `<COSMOS DB ACCOUNT NAME>` alkalmaz környezetében. Cserélje le `<MSI PRINCIPALID>` rendelkező a `principalId` tulajdonság által visszaadott a `az resource show` parancsot [beolvasni a Linux virtuális gép MSI a principalID](#retrieve-the-principalID-of-the-linux-VM's-MSI).  Cosmos DB két részletességi támogatja a tárelérési kulcsok használata esetén: olvasási/írási hozzáfér a fiókjához, és olvasási hozzáférést ahhoz a fiókhoz.  Rendelje hozzá a `DocumentDB Account Contributor` szerepkör, ha azt szeretné, hogy a fiók olvasási/írási kulcsokat, vagy rendelje hozzá a `Cosmos DB Account Reader Role` szerepkör, ha le szeretné kérdezni a fiók csak olvasható kulcsok:
+Ha a PowerShell-lel szeretne hozzáférést adni az MSI-identitásnak a Cosmos DB-fiókhoz az Azure Resource Managerben, frissítse a környezet `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` és `<COSMOS DB ACCOUNT NAME>` értékét. Cserélje le az `<MSI PRINCIPALID>` elemet a [Linux VM MSI PrincipalId azonosítójának lekérésével kapcsolatos szakaszban](#retrieve-the-principalID-of-the-linux-VM's-MSI) a `az resource show` által visszaadott `principalId` tulajdonságra.  A Cosmos DB a részletesség két szintjét támogatja a hozzáférési kulcsok használatakor: a fiók írási/olvasási, illetve írásvédett hozzáférését.  Rendelje hozzá a `DocumentDB Account Contributor` szerepkört, ha a fiók írási/olvasási kulcsait szeretné lekérni, vagy rendelje hozzá a `Cosmos DB Account Reader Role` szerepkört, ha írásvédett hozzáférést szeretne a fiókhoz:
 
 ```azurepowershell
 $spID = (Get-AzureRMVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzureRmRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
 ```
 
-## <a name="get-an-access-token-using-the-windows-vms-msi-to-call-azure-resource-manager"></a>Szereznie egy hozzáférési jogkivonatot a Windows virtuális gép MSI hívni az Azure Resource Manager használatával
+## <a name="get-an-access-token-using-the-windows-vms-msi-to-call-azure-resource-manager"></a>Hozzáférési jogkivonat lekérése a VM MSI-jével az Azure Resource Manager meghívásához
 
-Az oktatóanyag a hátralévő azt fog működni a korábban létrehozott virtuális gépről. 
+Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk. 
 
-Szüksége lesz az Azure Resource Manager PowerShell-parancsmagok használatához a részében.  Ha nincs telepítve, ez a [a legújabb verzió letöltéséhez](https://docs.microsoft.com/powershell/azure/overview) folytatása előtt.
+Ebben a részben az Azure Resource Manager PowerShell-parancsmagokat kell használnia.  Ha nincs telepítve, a folytatás előtt [töltse le a legújabb verziót](https://docs.microsoft.com/powershell/azure/overview).
 
-Telepítse a legújabb verzióját is kell [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) a Windows virtuális gépén.
+Az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) legújabb verzióját is telepítenie kell a Windows VM-en.
 
-1. Az Azure-portálon lépjen a **virtuális gépek**, keresse fel a Windows rendszerű virtuális gép, majd a a **áttekintése** kattintson **Connect** tetején. 
-2. Adja meg a **felhasználónév** és **jelszó** számára, amely hozzá van, a Windows virtuális gép létrehozása után. 
-3. Most, hogy létrehozott egy **távoli asztali kapcsolat** a virtuális géppel, nyissa meg a Powershellt a távoli munkamenet.
-4. A helyi MSI-végpont megszerezni egy hozzáférési jogkivonatot az Azure Resource Manager használatával Powershell Invoke-WebRequest, indítson egy lekérdezést.
+1. Az Azure Portalon lépjen a **Virtuális gépek** lapra, keresse meg a Windows rendszerű virtuális gépet, majd kattintson az **Áttekintés** lap tetején található **Csatlakozás** gombra. 
+2. A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
+3. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a PowerShellt a távoli munkamenetben.
+4. A PowerShell Invoke-WebRequest parancsával kezdeményezzen egy kérést a helyi MSI-végpont felé egy hozzáférési jogkivonat lekérésére az Azure Resource Managerhez.
 
     ```powershell
         $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
     ```
 
     > [!NOTE]
-    > A "resource" paraméter értékének az Azure AD által várt pontosan egyeznie kell. Az Azure Resource Manager erőforrás-azonosító használata esetén meg kell adni a záró perjelet URI-n.
+    > A „resource” paraméter értékének pontosan egyeznie kell az Azure AD által várt értékkel. Az Azure Resource Manager erőforrás-azonosítójának használatakor a záró perjelet is szerepeltetni kell az URI-ban.
     
-    Ezután bontsa ki a "Tartalom" elemet, amely tárolja a $response objektum JavaScript Object Notation (JSON) formátumú karakterláncot. 
+    Ezután nyerje ki a „Content” elemet, amelyet egy JavaScript Object Notation (JSON) formátumú sztringként tárol a $response objektum. 
     
     ```powershell
     $content = $response.Content | ConvertFrom-Json
     ```
-    Ezután bontsa ki a hozzáférési jogkivonat a választ.
+    Ezután nyerje ki a hozzáférési jogkivonatot a válaszból.
     
     ```powershell
     $ArmToken = $content.access_token
     ```
 
-## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>Tárelérési kulcsok beolvasása az Azure Resource Manager Cosmos DB hívásokat
+## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>Hozzáférési kulcsok lekérése az Azure Resource Managerből Cosmos DB-hívások indításához
 
-Mostantól a PowerShell használatával hívja az erőforrás-kezelőt a hozzáférési jogkivonat lekérése az előző szakaszban a Cosmos DB hívóbetűre beolvasása. Ha a hozzáférési kulcs van, azt Cosmos DB lekérdezheti. Ügyeljen arra, hogy cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, és `<COSMOS DB ACCOUNT NAME>` paraméterértékeket a saját értékekkel. Cserélje le a `<ACCESS TOKEN>` érték és a korábban kapott hozzáférési jogkivonat.  Ha lekéréséhez olvasási/írási kulcsok, kulcs művelet típust használjon `listKeys`.  Ha szeretné letölteni a csak olvasható kulcsokat, a kulcs művelet típust használjon `readonlykeys`:
+Most PowerShell használatával hívjuk meg a Resource Managert az előző szakaszban lekért hozzáférési jogkivonattal a Cosmos DB-fiók hozzáférési kulcsának lekéréséhez. Amint megkaptuk a hozzáférési kulcsot, a Cosmos DB lekérdezhetővé válik. A `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` és `<COSMOS DB ACCOUNT NAME>` paraméterek értékét mindenképp helyettesítse be a saját értékeivel. Az `<ACCESS TOKEN>` paraméter értékét cserélje le a korábban lekért hozzáférési jogkivonattal.  Ha olvasási/írási kulcsokat szeretne lekérni, akkor `listKeys` típusú kulcsműveleteket használjon.  Ha írásvédett kulcsokat kíván lekérni, akkor pedig `readonlykeys` típusúakat:
 
 ```powershell
 Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/listKeys/?api-version=2016-12-01 -Method POST -Headers @{Authorization="Bearer $ARMToken"}
 ```
-A válasz a listán szereplő kulcsokra biztosítják.  Ha például csak olvasható kulcsok elérhetővé:
+A válasz a kulcsok listáját tartalmazza.  Ha például írásvédett kulcsokat kap:
 
 ```powershell
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
-Most, hogy a hozzáférési kulcsot a Cosmos DB fiók adja át azt egy Cosmos DB SDK és a hívásokat a fiók eléréséhez.  Gyors például az Azure parancssori felület a hozzáférési kulcsot tud átadni.  Beszerezheti a <COSMOS DB CONNECTION URL> a a **áttekintése** lapját, amelyen a Cosmos DB-fiók panelen az Azure portálon.  Cserélje le a <ACCESS KEY> a fentiekben kapott érték:
+Most, hogy rendelkezik a Cosmos DB-fiók hozzáférési kulcsával, átadhatja azt egy Cosmos DB SDK-nak, és hívásokat indíthat a fiók elérése érdekében.  Átadhatja például a hozzáférési kulcsot az Azure CLI-nek.  A(z) <COSMOS DB CONNECTION URL> elemet az Azure Portalon, a Cosmos DB-fiók panelének **Áttekintés** lapjáról szerezheti be.  Cserélje le a(z) <ACCESS KEY> elemet az így beszerzett értékre:
 
 ```bash
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 
-A parancssori felület parancs visszaadja a gyűjtemény adatait:
+Ez a CLI-parancs a gyűjtemény részleteit adja vissza:
 
 ```bash
 {
@@ -210,7 +210,7 @@ A parancssori felület parancs visszaadja a gyűjtemény adatait:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudta, hogyan hozható létre Windows felügyelt Szolgáltatásidentitás Cosmos-adatbázis eléréséhez.  További információért lásd a Cosmos DB:
+Az oktatóanyag bemutatta, hogyan hozhat létre Windows felügyeltszolgáltatás-identitásokat a Cosmos DB eléréséhez.  További információ a Cosmos DB-ről:
 
 > [!div class="nextstepaction"]
 >[Az Azure Cosmos DB áttekintése](/azure/cosmos-db/introduction)

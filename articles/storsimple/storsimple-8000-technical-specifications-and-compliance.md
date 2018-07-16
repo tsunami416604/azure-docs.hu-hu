@@ -1,6 +1,6 @@
 ---
-title: StorSimple műszaki specifikációk |} Microsoft Docs
-description: Műszaki adatok és a StorSimple hardverösszetevők szabályozó szabványok megfelelőségi információit mutatja be.
+title: A StorSimple műszaki specifikációk |} A Microsoft Docs
+description: Ismerteti a műszaki specifikációk és a StorSimple hardverösszetevők jogszabályi standards megfelelőségi információit.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,187 +14,187 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 95dbd80e740210c3800a0af10071875a6d6f0939
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27785526"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056463"
 ---
-# <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Műszaki adatok és a StorSimple eszköz megfelelőségét
+# <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Műszaki specifikációkról és a StorSimple-eszköz megfelelőségének
 
 ## <a name="overview"></a>Áttekintés
 
-A hardverösszetevők, a Microsoft Azure StorSimple eszköz a műszaki adatok és a cikkben ismertetett szabályozási előírások igazodik. A műszaki adatok a Power és a hűtési modulok (PCMs), a meghajtók, a tárolási kapacitás és a ház ismertetik. A megfelelőségi információkat a nemzetközi szabványok, a biztonsági és a kibocsátás és a kábelezést is ismerteti.
+A hardverösszetevők, a Microsoft Azure StorSimple eszköz betartja a műszaki specifikációkról és a következő cikkben ismertetett szabályozási normák terén. A műszaki specifikációk írják le, a Power és hűtéssel modulok (PCMs), meghajtók, tárolási kapacitás és házakat. A megfelelőségi adatok nemzetközi előírásoknak, biztonsági és mennyiségét és a kábelezést is ismerteti.
 
-## <a name="power-and-cooling-module-specifications"></a>Teljesítmény- és hűtési modul specifikációk
+## <a name="power-and-cooling-module-specifications"></a>A Power és hűtéssel modul specifikációk
 
-A StorSimple eszköz két 100-240 V kettős ventilátor, SBB-kompatibilis Power hűtési modulok (PCMs) rendelkezik. Ez lehetővé teszi egy redundáns power konfigurációt. Egy PCM nem sikerül, ha az eszköz tovább működik a más PCM a mindaddig, amíg a sikertelen modul váltja fel.
+A StorSimple-eszköz két 100-240 V kettős ventilátor, SBB megfelelő Power hűtéssel modulok (PCMs) rendelkezik. Ez egy redundáns áramforrások konfigurációt biztosít. A PCM meghiúsul, ha az eszköz továbbra is a szokott meg a többi PCM mindaddig, amíg a hibás modult váltja fel.
 
-A EBOD ház egy 580 W PCM, és elsődleges ház egy 764 W PCM használja. Az alábbi táblázatok a műszaki adatok a PCMs társított.
+Az EBOD ház egy 580 W PCM, és elsődleges ház egy 764 W PCM használja. Az alábbi táblázatok sorolják fel a műszaki specifikációk a PCMs társított.
 
-| Meghatározása | 580 W PCM (EBOD) | 764 W PCM (elsődleges) |
+| Specifikáció | 580 W PCM (EBOD) | 764 W PCM (elsődleges) |
 | --- | --- | --- |
-| Maximális kimenő teljesítménye |580 W |764 |
+| Maximális kimeneti összteljesítmény |580 W |764 |
 | Gyakoriság |50/60 Hz |50/60 Hz |
-| A feszültség tartomány kiválasztása |Automatikus beállításnak: 90 – 264 V AC, 47/63 Hz |Automatikus beállításnak: 90-264 V AC, 47/63 Hz |
-| Aktuális maximális behatolása |20 A |20 A |
-| Energiagazdálkodási tényező javítása |> 95 % névleges bemeneti feszültségtartomány |> 95 % névleges bemeneti feszültségtartomány |
+| Feszültség-tartomány kiválasztása |Automatikus terjedő: 90 – 264 V AC, 47/63 Hz |Automatikus terjedő: 90-264 V AC, 47/63 Hz |
+| Jelenlegi maximális behatolása |20-A |20-A |
+| Energiagazdálkodási tényező javítása |> 95 %-os névleges bemeneti feszültség |> 95 %-os névleges bemeneti feszültség |
 | Harmonikus |Megfelel-e EN61000-3-2 |Megfelel-e EN61000-3-2 |
-| Kimenet |2.0 A @ 5V készenléti feszültségérzékelő |2.7 A @ 5V készenléti feszültségérzékelő |
-| + 5 V 42 A |+ 5 V 40 A | |
-| + @ 38 12 A |+ @ 38 12 A | |
-| Moduláris közbeni |Igen |Igen |
-| Kapcsolók és LED |Be-és AC kapcsoló és a négy állapotjelzője LED |Be-és AC kapcsoló és a hat állapotjelzője LED |
-| Ház hűtési |Tengelyirányú hűtési változó ventilátorvezérlésre sebessége a ventilátor |Tengelyirányú hűtési változó ventilátorvezérlésre sebessége a ventilátor |
+| Kimenet |5 voltos készenléti feszültség \@ 2.0 A |5 voltos készenléti feszültség \@ 2.7 A |
+| + 5 VOLTOS \@ 42 A |+ 5 VOLTOS \@ 40 A | |
+| + 12 \@ 38 A |+ 12 \@ 38 A | |
+| A gyakran moduláris |Igen |Igen |
+| Kapcsolók és LED-EK |AC be-/ kikapcsolási kapcsoló és a négy állapotát jelző LED-EK |AC be-/ kikapcsolási kapcsoló és a hat állapotát jelző LED-EK |
+| Hűtés ház |Tengelyirányú hűtés a változó ventilátorvezérlésre sebesség ventilátor |Tengelyirányú hűtés a változó ventilátorvezérlésre sebesség ventilátor |
 
-## <a name="power-consumption-statistics"></a>Energiagazdálkodási felhasználási statisztikát
+## <a name="power-consumption-statistics"></a>Energiagazdálkodási használati statisztikák
 
-Az alábbi táblázat a szokásos energiafogyasztási adatokkal (a tényleges értékek eltérőek lehetnek a közzétett) a StorSimple eszköz különböző modellek esetén.
+A következő táblázat felsorolja a különböző modellek StorSimple-eszköz a tipikus energiafogyasztási adatokkal (a tényleges értékek eltérőek lehetnek a közzétett).
 
 | Feltételek | 240 V AC | 240 V AC | 240 V AC | 110 V AC | 110 V AC | 110 V AC |
 | --- | --- | --- | --- | --- | --- | --- |
-|  Üresjárati lassú, meghajtók ventilátor |1.45 A |0.31 kW |1057.76 BTU/hr |3.19. A |0.34 kW |1160.13 BTU/hr |
-|  Ventilátorok lassú, meghajtók használata |1.54 A |0.33 kW |1126.01 BTU/hr |3.27 A |0.36 kW |1228.37 BTU/hr |
-|  Ventilátorok gyors, meghajtók üresjárati, két PSUs kapcsolva |2.14 A |0.49 kW |1671.95 BTU/hr |4.99 A |0.54 kW |1842.56 BTU/hr |
-|  Gyors és ventilátorok meghajtók üresjárati, egy PSU kapcsolva egy inaktív |2.05 A |0.48 kW |1637.83 BTU/hr |4.58 A |0,50 kW |1706.07 BTU/hr |
-|  Ventilátorok fér hozzá, az alkalmazás bekapcsolja két PSUs gyors és meghajtók |2.26 PONTBAN A |0,51 kW |1740.19 BTU/hr |4.95 A |0.54 kW |1842.56 BTU/hr |
-|  Gyors ventilátorok meghajtók fér hozzá, egy PSU kapcsolva egy inaktív |2.14 A |0.49 kW |1671.95 BTU/hr |4.81 A |0.53 kW |1808.44 BTU/hr |
+|  Inaktív lassú, meghajtók ventilátor |1.45 A |0.31 kW |1057.76 BTU/óra |3.19. A |0.34 kW |1160.13 BTU/óra |
+|  Ventilátorok lassú, meghajtók elérése |1.54 A |0.33 kW |1126.01 BTU/óra |3.27 A |0.36 kW |1228.37 BTU/óra |
+|  Ventilátorok gyorsan és meghajtók tétlen, két PSUs működtetett |2.14 A |0.49 kW |1671.95 BTU/óra |4.99 A |0.54 kW |1842.56 BTU/óra |
+|  Gyors, rajongókat meghajtók tétlen, egy PSU működtetett egy inaktív |2.05 A |0.48 kW |1637.83 BTU/óra |4.58 A |0,50 kW |1706.07 BTU/óra |
+|  Ventilátorok fér hozzá, két PSUs működtetett gyorsan és meghajtók |2.26 PONTBAN A |0,51 kW |1740.19 BTU/óra |4.95 A |0.54 kW |1842.56 BTU/óra |
+|  A rajongókat gyors meghajtók fér hozzá, egy PSU működtetett egy inaktív |2.14 A |0.49 kW |1671.95 BTU/óra |4.81 A |0.53 kW |1808.44 BTU/óra |
 
 ## <a name="disk-drive-specifications"></a>Lemezmeghajtó specifikációk
 
-A StorSimple eszköz támogatja legfeljebb 12 3,5 hüvelykes űrlap tényező soros csatlakozású SCSI (SAS) lemezmeghajtókat. A tényleges meghajtókat is szerepeljenek SSD-meghajtót (SSD) vagy a merevlemezes (HDD) meghajtók, a termék konfigurációjától függően. A 12 lemezmeghajtó üzembe helyezési ponti elé a ház 3 által 4 konfigurációban található. A EBOD ház lehetővé teszi a további tárhely az egy másik 12 lemezmeghajtókat. Ezek a HDD-k mindig.
+A StorSimple-eszköz támogatja a legfeljebb 12 3,5 hüvelykes űrlap tényező soros csatlakozású SCSI (SAS) lemezmeghajtókat. A tényleges meghajtók kettőn tartós állapotú meghajtókhoz (SSD-kkel) és a merevlemezes (HDD) meghajtók, a termék konfigurációjától függően. 12 lemezmeghajtó tárolóhelyben elé a ház 3 x 4 konfigurációban található. Az EBOD ház egy másik 12-meghajtók számára további tárhely lehetővé teszi. Ezek mindig a HDD-k.
 
-## <a name="storage-specifications"></a>Tárolási specifikációk
+## <a name="storage-specifications"></a>Storage-leírások
 
-A StorSimple eszköz merevlemez-meghajtók és SSD-meghajtót a 8100 és 8600 rendelkezik. A teljes használható kapacitása a 8100 és 8600 a rendszer körülbelül 15 TB és 38 TB kulcsattribútumokkal. A következő táblázat dokumentumok felhő kapacitása a StorSimple megoldás kapacitás környezetében, SSD és HDD részleteit.
+A StorSimple-eszközök rendelkező merevlemez-meghajtók és SSD-meghajtókat a 8100-as és 8600-as. A 8100-as és 8600-as teljes felhasználható kapacitás pedig körülbelül 15 TB, illetve 38 TB jelölik. Az alábbi táblázat a dokumentumok felhő kapacitása a StorSimple megoldás kapacitás környezetében, SSD és HDD részleteit.
 
-| Eszközmodell / kapacitás | 8100 | 8600 |
+| Eszköz modellje / kapacitás | 8100 | 8600 |
 | --- | --- | --- |
 | Merevlemezes (HDD) meghajtók száma |8 |19 |
-| SSD-meghajtót (SSD-k) száma |4 |5 |
+| Tartós állapotú meghajtókhoz (SSD-k) száma |4 |5 |
 | Egyetlen HDD-kapacitás |4 TB |4 TB |
 | Egyetlen SSD kapacitása |400 GB |800 GB |
-| Tartalék kapacitás |4 TB |4 TB |
-| Használható HDD-kapacitás |14 TB |36 TB |
-| Használható SSD kapacitása |800 GB |2 TB |
-| Teljes használható kapacitás * |~ 15 TB |~ 38 TB |
-| Megoldás maximális kapacitás (például felhő) |200 TB |500 TB |
+| Tartalék kapacitással |4 TB |4 TB |
+| HDD felhasználható kapacitás |14 TB |36 TB |
+| Felhasználható SSD-kapacitás |800 GB |2 TB |
+| Teljes felhasználható kapacitást * |~ 15 TB |~ 38 TB |
+| Megoldás maximális kapacitás (beleértve a felhő) |200 TB |500 TB |
 
-<sup>* </sup>- *A teljes használható kapacitás tartalmazza az adatokat, metaadatokat és pufferek rendelkezésre álló kapacitás. Helyileg rögzített kötetekhez létesíthet a 8100 eszközön 8.5 TB-os vagy akár 22.5 TB a nagyobb 8600-eszközön. További információkért látogasson el [StorSimple helyileg rögzített kötetek](storsimple-8000-local-volume-faq.md).*
+<sup>* </sup>- *A teljes felhasználható kapacitás rendelkezésre álló kapacitás az adatok, metaadatok és pufferek tartalmazza. A gyors helyi kötetekhez legfeljebb 8,5 TB a 8100-as eszközön vagy a nagyobb 8600-as eszközön legfeljebb 22,5 TB. További információért ugorjon [StorSimple helyileg rögzített kötetekről](storsimple-8000-local-volume-faq.md).*
 
-## <a name="enclosure-dimensions-and-weight-specifications"></a>Ház dimenziókat és súlyozás specifikációk
+## <a name="enclosure-dimensions-and-weight-specifications"></a>Rendszerház dimenziókat és súlyozás specifikációk
 
-A következő táblázat a különböző ház specifikációk dimenziók és a súlyozást.
+Az alábbi táblázatok sorolják fel a ház különböző dimenziók és a súlyozást előírásainak.
 
-### <a name="enclosure-dimensions"></a>Ház dimenziók
+### <a name="enclosure-dimensions"></a>A lemezház dimenziók
 
-A következő táblázat a ház milliméterben és hüvelyk méretei.
+Az alábbi táblázat a ház milliméterben és hüvelyk méretét.
 
-| Ház | Milliméterben | Hüvelyk |
+| Rendszerház | Milliméterben | Hüvelyk |
 | --- | --- | --- |
 | Magasság |87.9 |3.46 |
 | Szélesség bordában között |483 |19.02 |
-| Ház törzsét között szélessége |443 |17.44 |
-| Az első bordában mélyreható ház törzs vége |577 |22.72 |
-| A Műveletek panel mélyreható ház legtávolabbi vége |630.5 |24.82 |
-| Mélyreható bordában a ház legtávolabbi vége |603 |23.74 |
+| Szélesség törzse ház között |443 |17.44 |
+| A ház törzs végén az első bordában mélysége |577 |22.72 |
+| A ház legtávolabbi végén a Műveletek panel mélysége |630.5 |24.82 |
+| A ház legtávolabbi végén bordában a mélysége |603 |23.74 |
 
-### <a name="enclosure-weight"></a>Ház súlyozás
+### <a name="enclosure-weight"></a>A lemezház súlyozása
 
-Attól függően, hogy a konfigurációs egy teljes betöltése elsődleges ház 33 kgs a 21 mérjük is, és két személy kezelnie kell.
+A konfigurációtól függően egy teljesen betöltött elsődleges ház is 33 kgs a 21 mérjük, és Felkészült rá két személyek igényli.
 
-| Ház | Súlyozás |
+| Rendszerház | Súlyozás |
 | --- | --- |
-| Maximális súly (beállításától függ) |30 kg – 33 kg |
-| Üres (nincs felszerelt meghajtó) |21 – 23 kg |
+| Maximális súly (konfigurációjától függ) |30 kg – 33 kg |
+| Üres (nincs felszerelt meghajtók) |21 – 23 kg |
 
-## <a name="enclosure-environment-specifications"></a>Ház környezet specifikációk
+## <a name="enclosure-environment-specifications"></a>A lemezház környezet specifikációk
 
-Ez a rész felsorolja a ház-környezetre vonatkozó előírások. A hőmérséklet, páratartalom, magasság, ütés, vibráció, tájolás, biztonság, és elektromágneses kompatibilitási (EMC) szerepelnek ebbe a kategóriába.
+Ez a szakasz felsorolja a ház környezettel kapcsolatos előírásoknak. A hőmérséklet, páratartalom, tengerszint, megváltani, rezgés, tájolást, biztonsági és elektromágneses kompatibilitási (EMC) ebbe a kategóriába szerepelnek.
 
-### <a name="temperature-and-humidity"></a>Hőmérséklet és a páratartalom
+### <a name="temperature-and-humidity"></a>Hőmérséklettel és páratartalommal kapcsolatos
 
-| Ház | Környezeti hőmérséklet-tartomány | Környezeti relatív nedvességtartalma | Maximális nedves tartályának |
+| Rendszerház | Környezeti hőmérséklet-tartomány | Környezeti relatív páratartalom | Maximális nedves tartályának |
 | --- | --- | --- | --- |
-| Működik |5 C - 35 C (41°-F - 95° F) |80 %-os 20 %-át nem-kondenzációs- |28 C (82° F) |
-| Nem működő |-40 C - 70° C (40°-F - 158° F) |5-100 % nem kicsapódó |29 C (84° F) |
+| Működik |5 C – 35 C (41° F - 95° F) |80 %-os 20 %-os nem-kondenzációs- |28 C (82° F) |
+| Nem működő |-40 C - 70° C (40° F - 158° F) |100 %-os 5 %-os nem kicsapódó |29 C (84° F) |
 
-### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Légmozgás, magasság, ütés, vibráció, tájolás, biztonsági és EMC
+### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Légmozgás, tengerszint, megváltani, rezgés, tájolást, biztonsági és EMC
 
-| Ház | Működési specifikációk |
+| Rendszerház | Működési specifikációk |
 | --- | --- |
-| A légmozgás |Rendszer légmozgás hátsó első. Rendszer alacsony nyomású, hátsó-kipufogógáz telepítést kell működtetni. Állvány ajtók és akadályok által létrehozott hátsó nyomás legfeljebb 5 pascalban (0,5 mm vízjel mérőműszer). |
-| Működési magasság |a fent 7000 láb 5 C által deszerializálni besorolású maximális működési hőmérséklet 3045 mérő (10 000 láb-100 láb) mérőszámok-30. |
-| Magasság nem működő |-305 mérőszámok való 12,192 mérőszámok (40 000 láb-1,000 láb) |
-| Ütés, működési |5 g. 10 ms ½ szinusz |
-| Ütés, nem működő |30g 10 ms ½ szinusz |
-| Működési vibráció |0.21g RMS 5-500 Hz véletlenszerű |
-| Nem működő vibráció |1.04-es g RMS 2-200 Hz véletlenszerű |
-| Vibráció, áttelepítése |3g-2-200 Hz szinusz |
-| Tájolás és csatlakoztatása |19" állványra szerelheti (2 EIA egység) |
-| Állvány sínek |Minimális 700 mm (31.50 hüvelyk) mélysége megfelelően állványok IEC 297 megfelelő |
-| Biztonsági és jóváhagyásokat |CE és UL EN 61000-3 IEC 61000-3, UL 61000-3 |
+| Légmozgás |Rendszer légmozgás hátsó hosszirányú. Rendszer kell egy alacsony nyomású, hátsó-kipufogógáz telepítési az működtetni. Állvány ajtók és az akadályok által létrehozott nyomása legfeljebb 5 pascalban (0,5 mm víz mérőműszer). |
+| Magasság, a üzemeltetési |-30 mérőszámok 3045 mérőszámok (10 000 feet-100 láb) a fent 7000 feet 5 C megszüntetéséhez minősíthetik maximális működési hőmérséklet. |
+| Nem működő magasság |-305 mérőszámok 12,192 mérőszámok (40 000 feet-1,000 láb) |
+| Megváltani, a üzemeltetési |5 g. 10 ms ½ szinusza |
+| Nem működő megváltani |30g 10 ms ½ szinusza |
+| Rezgés, a üzemeltetési |0.21g RMS 5-500 Hz véletlenszerű |
+| Nem működő rezgés |1.04-es g RMS 2 – 200 Hz véletlenszerű |
+| Rezgés, az adatáthelyezési |3g 2 – 200 Hz szinusza |
+| Tájolás és csatlakoztatása |19" rack csatlakoztatási (2 EIA egység) |
+| Állvány rails |Minimális 700 mm (31.50 hüvelyk) mélysége igazítás állványt IEC 297 megfelelő |
+| Biztonság és jóváhagyások |CE és UL EN 61000-3, IEC 61000-3, UL 61000 – 3 |
 | EMC |EN55022 (CISPR - A), FCC A |
 
 ## <a name="international-standards-compliance"></a>Nemzetközi szabványoknak való megfelelés
 
-A Microsoft Azure StorSimple eszköz megfelel a következő nemzetközi követelmények:  
+A következő nemzetközi előírásoknak megfelel a Microsoft Azure StorSimple-eszköz:  
 
 * CE - EN 60950-1
-* Jelentés CB IEC 60950-1
-* UL és cUL való UL 60950-1
+* CB jelentés IEC 60950-1
+* UL és cUL UL 60950-1
 
-## <a name="safety-compliance"></a>Biztonsági megfelelőség
+## <a name="safety-compliance"></a>Biztonsági megfelelőségi
 
-A Microsoft Azure StorSimple eszköz megfelel-e a következő safety minősítések:
+A Microsoft Azure StorSimple-eszköz megfelel-e a következő biztonsági besorolások:
 
 * Rendszer termék típus jóváhagyási: UL, cUL, CE
 * Biztonsági megfelelőségi: UL 60950, IEC 60950, EN 60950
 
-## <a name="emc-compliance"></a>EMC megfelelőségi
+## <a name="emc-compliance"></a>EMC megfelelőség
 
-A Microsoft Azure StorSimple eszköz megfelel-e a következő EMC minősítése.
+A Microsoft Azure StorSimple-eszköz megfelel-e a következő EMC minősítések.
 
-### <a name="emissions"></a>Kibocsátott
+### <a name="emissions"></a>Kibocsátás
 
-Az eszköz vezetett és kisugárzott kibocsátási az EMC-kompatibilis.
+Az eszköz EMC megfelelő vezetett és kisugárzott kibocsátási.
 
-* Vezetett kibocsátott korlátozása szintek: CFR 47 15B osztály A EN55022 osztály A CISPR osztály a.
-* Kisugárzott kibocsátott korlátozása szintek: CFR 47 15B osztály A EN55022 osztály A CISPR osztály a.
+* Vezetett mennyiségét korlátozza szintek: CFR 47 15B osztály egy EN55022 osztály egy CISPR osztály a.
+* Kisugárzott mennyiségét korlátozza szintek: CFR 47 15B osztály egy EN55022 osztály egy CISPR osztály a.
 
 ### <a name="harmonics-and-flicker"></a>Harmonikus és Villódzás
 
-Az eszköz megfelel EN61000-3-2 vagy 3.
+Az eszköz megfelel-e az EN61000-3-2/3.
 
 ### <a name="immunity-limit-levels"></a>Mentesség korlát szintek
 
-Az eszköz megfelel EN55024.
+Az eszköz megfelel-e az EN55024.
 
-## <a name="ac-power-cord-compliance"></a>AC power kábellel megfelelőségi
+## <a name="ac-power-cord-compliance"></a>AC teljesítmény kapcsolatai megfelelőség
 
-A plug és a teljes power kábellel szerelvény meg kell felelnie az ország, amelyen az eszközt használja a megfelelő, és biztonsági jóváhagyások, amelyek elfogadható ebben az országban kell rendelkezniük. A következő táblázat az USA és Európából végzik a munkájukat.
+A Plug and és a teljes körű power kábellel szerelvény meg kell felelnie az előírásoknak megfelelő, az ország, ahol az eszközt használja, és biztonsági jóváhagyások, amelyek elfogadható ebben az országban kell rendelkezniük. Az alábbi táblázatok sorolják fel az USA és Európa szabványainak.
 
-### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC tápkábelek - USA (felsorolt NRTL kell lennie)
+### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC tápkábelek – Amerikai Egyesült Államok (a felsorolt NRTL kell lennie)
 
-| Összetevő | Meghatározása |
+| Összetevő | Specifikáció |
 | --- | --- |
-| Kábellel típusa |SV vagy SVT, 18 AWG minimális, 3 vezető 2.0 mérőszámok maximális hossza |
-| Plug |NEMA 5-15P résidőalapban-típust mellékletfájl plug besorolású 120 V, 10 A; vagy IEC 320 14, 250 V, A 10 |
+| Típus kapcsolatai |SV vagy SVT, minimális. AWG 18., 3 conductor 2.0 mérőszámok maximális hossza |
+| Plug |NEMA 5 – 15P résidőalapban-mellékletet beépülő 120 V, A; 10 besorolása vagy IEC a 320 14, 250 V, A 10 |
 | A szoftvercsatorna |IEC 320 C-13, 250 V, 10 A |
 
-### <a name="ac-power-cords---europe"></a>AC tápkábelek - Európa
+### <a name="ac-power-cords---europe"></a>Tápkábelek AC - Európa
 
-| Összetevő | Meghatározása |
+| Összetevő | Specifikáció |
 | --- | --- |
-| Kábellel típusa |Összehangolt, H05-VVF-3G1.0 |
+| Típus kapcsolatai |Összehangolt, H05-VVF-3G1.0 |
 | A szoftvercsatorna |IEC 320 C-13, 250 V, 10 A |
 
-## <a name="supported-network-cables"></a>Támogatott hálózati kábel
+## <a name="supported-network-cables"></a>A támogatott hálózati kábeleket
 
-A 10 GbE hálózati adapterek DATA 2 és a DATA 3, tekintse meg a [támogatott hálózati kábelek és a modulok listáját](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+A 10 GbE hálózati adapterek DATA 2 és DATA 3, tekintse meg a [támogatott hálózati kábelek és a modulok listája](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Most már készen áll az adatközpontban a StorSimple eszköz telepítése. További információkért lásd: [központi telepítése a helyszíni eszközök](storsimple-8000-deployment-walkthrough-u2.md).
+Most már készen áll az adatközpontban StorSimple eszköz üzembe helyezéséhez. További információkért lásd: [a helyszíni eszköz üzembe helyezésének](storsimple-8000-deployment-walkthrough-u2.md).
 

@@ -1,6 +1,6 @@
 ---
-title: A Windows virtuális gép MSI Azure Resource Manager eléréséhez használja
-description: Ez az oktatóanyag végigvezeti az Azure Resource Manager eléréséhez használt egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI).
+title: Windows VM-beli MSI használata az Azure Resource Manager eléréséhez
+description: Az oktatóanyag azt ismerteti, hogyan érhető el az Azure Resource Managerhez egy Windows VM-beli felügyeltszolgáltatás-identitással (MSI).
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,28 +9,28 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 8abd4f0f597cf255be3c1bc2fdd78a121cfb6517
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 7466c3ca87ed47b6d7dfe3d725197d3a6027fdf9
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594985"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901017"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Erőforrás-kezelő eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
+# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>A Resource Manager elérése Windows VM-beli felügyeltszolgáltatás-identitással (MSI)
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (MSI) engedélyezéséhez a Windows virtuális gép (VM). Az Azure Resource Manager API eléréséhez használhatja identitásukat. Felügyelt szolgáltatás-identitások Azure automatikusan kezeli, és lehetővé teszik, hogy anélkül, hogy a hitelesítő adatokat beszúrni a kódot az Azure AD-alapú hitelesítés támogató szolgáltatások hitelesítést. Az alábbiak végrehajtásának módját ismerheti meg:
+Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyeltszolgáltatás-identitást (MSI) egy Windows rendszerű virtuális gépen (VM). Ezután az identitással érheti el az Azure Resource Manager API-t. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Virtuális gép Windows MSI engedélyezése 
-> * A virtuális gép hozzáférést biztosítson egy erőforráscsoportot az Azure Resource Manager 
-> * Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és hívja az Azure Resource Manager használatával
+> * MSI engedélyezése Windows VM-en 
+> * Hozzáférés engedélyezése virtuális gép számára az Azure Resource Managerben lévő erőforráscsoporthoz 
+> * Hozzáférési jogkivonat lekérése a VM identitásával, majd az Azure Resource Manager meghívása a használatával
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,78 +41,78 @@ Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban
 
-Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet.  A meglévő virtuális MSI is engedélyezheti.
+Ebben az oktatóanyagban egy új Windows VM-et fog létrehozni.  A meglévő virtuális gépeken is engedélyezheti az MSI-t.
 
 1.  Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 2.  Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
-3.  Adja meg a virtuális gép adatait. A **felhasználónév** és **jelszó** létrehozott itt van a hitelesítő adatok használatával jelentkezzen be a virtuális gép.
-4.  Válassza ki a megfelelő **előfizetés** a virtuális gép meg a legördülő listában.
-5.  Jelölje be egy új **erőforráscsoport** , amelyen a virtuális gép létrehozásához, **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
-6.  Adja meg a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A beállítások lapon hagyja az alapértelmezett beállításokat, majd kattintson **OK**.
+3.  Adja meg a virtuális gép adatait. Az itt létrehozott **felhasználónév** és **jelszó** alkotják a virtuális gépre való bejelentkezéshez használt hitelesítő adatokat.
+4.  Válassza ki a megfelelő **előfizetést** a virtuális géphez a legördülő menüben.
+5.  A virtuális gép létrehozásához használni kívánt új **erőforráscsoport** kiválasztásához válassza az **Új létrehozása** lehetőséget. Amikor végzett, kattintson az **OK** gombra.
+6.  Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások lapon hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-    ![Kép helyettesítő szövege](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Helyettesítő képszöveg](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése 
+## <a name="enable-msi-on-your-vm"></a>MSI engedélyezése a virtuális gépen 
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. Engedélyezése felügyelt Szolgáltatásidentitás a virtuális gép, két dolgot eredményez: regiszterekben az Azure Active Directory segítségével felügyelt identitását, és hozzon létre a virtuális gép identitásának konfigurálja a virtuális Gépen.
+A VM MSI-vel anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A felügyeltszolgáltatás-identitás VM-en való engedélyezése két dolgot tesz: regisztrálja a VM-et az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a VM-en.
 
-1.  Válassza ki a **virtuális gép** , hogy szeretné-e engedélyezze MSI-t.  
-2.  A bal oldali navigációs sávon kattintson **konfigurációs**. 
-3.  Látni **Szolgáltatásidentitás felügyelt**. Regisztrálja, és engedélyezze a MSI-t, jelölje be **Igen**, ha szeretné letiltani, válassza a nem. 
-4.  Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.  
-    ![Kép helyettesítő szövege](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+1.  Válassza ki azt a **virtuális gépet**, amelyen engedélyezni szeretné az MSI-t.  
+2.  A bal oldali navigációs sávban kattintson a **Konfigurálás** elemre. 
+3.  Megjelenik a **felügyeltszolgáltatás-identitás**. Az MSI regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra. 
+4.  Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.  
+    ![Helyettesítő képszöveg](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>A virtuális gép hozzáférést biztosítson egy erőforráscsoportot az erőforrás-kezelőben
-MSI-fájl használata a kódot a hozzáférési jogkivonatok erőforrásokat, amelyek támogatják az Azure AD-alapú hitelesítés felé történő hitelesítésre kérheti le.  Az Azure Resource Manager támogatja az Azure AD-alapú hitelesítés.  Először kell a hozzáférést a virtuális gép identitását egy erőforráshoz az erőforrás-kezelőben ebben az esetben az erőforráscsoportot, amelyben a virtuális gép található.  
+## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Hozzáférés biztosítása a VM számára a Resource Managerben lévő erőforráscsoporthoz
+Az MSI segítségével a kód hozzáférési jogkivonatokat kérhet le az olyan erőforrások felé történő hitelesítéshez, amelyek támogatják az Azure AD-hitelesítést.  Az Azure Resource Manager támogatja az Azure AD-hitelesítést.  Először hozzáférést kell adnunk a VM identitásának egy erőforráshoz a Resource Managerben, ebben az esetben ahhoz az erőforráscsoporthoz, amelyben a VM található.  
 
-1.  Lépjen a lapra vonatkozó **erőforráscsoportok**. 
-2.  Válassza ki az adott **erőforráscsoport** a létrehozott a **Windows virtuális gép**. 
-3.  Ugrás a **hozzáférés-vezérlés (IAM)** a bal oldali panelen. 
-4.  Majd **Hozzáadás** az új szerepkör-hozzárendelés a **Windows virtuális gép**.  Válasszon **szerepkör** , **olvasó**. 
-5.  A következő legördülő listán, a **való hozzáférés hozzárendelése** az erőforrás **virtuális gép**. 
-6.  A következő szerepel-e a megfelelő előfizetést a a **előfizetés** legördülő menüből. És a **erőforráscsoport**, jelölje be **összes erőforráscsoport**. 
-7.  Végezetül a **válasszon** adja meg a legördülő menüből, majd kattintson a Windows virtuális gép **mentése**.
+1.  Navigáljon az **Erőforráscsoportok** lapra. 
+2.  Válassza ki a **Windows VM** számára létrehozott **erőforráscsoportot**. 
+3.  Lépjen a **Hozzáférés-vezérlés (IAM)** részre a bal oldali panelen. 
+4.  Ezután a **Hozzáadás** elemre kattintva adjon hozzá egy új szerepkör-hozzárendelést a **Windows VM-hez**.  A **Szerepkör** beállításhoz válassza ki az **Olvasó** értéket. 
+5.  A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a **Virtuális gép** értéket. 
+6.  Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben. Az **Erőforráscsoport** esetében válassza a **Minden erőforráscsoport** lehetőséget. 
+7.  Végül a **Kiválasztás** mezőben válassza ki a Windows VM-et a legördülő menüben, majd kattintson a **Mentés** gombra.
 
-    ![Kép helyettesítő szövege](../media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
+    ![Helyettesítő képszöveg](../media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
 
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-resource-manager"></a>Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és hívja az Azure Resource Manager használatával 
+## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-resource-manager"></a>Hozzáférési jogkivonat lekérése a VM identitásával, majd az Azure Resource Manager meghívása a használatával 
 
-Meg kell használnia **PowerShell** ezen részében.  Ha nincs telepítve, töltse le [Itt](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1). 
+Ebben a részben a **PowerShellt** kell használnia.  Ha nincs telepítve, [innen](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1) letöltheti. 
 
-1.  A portálon lépjen a **virtuális gépek** és nyissa meg a Windows rendszerű virtuális gép és a a **áttekintése**, kattintson a **Connect**. 
-2.  Adja meg a **felhasználónév** és **jelszó** számára, amely hozzá van, a Windows virtuális gép létrehozása után. 
-3.  Most, hogy létrehozott egy **távoli asztali kapcsolat** nyissa meg a virtuális gép **PowerShell** a távoli munkamenet. 
-4.  A helyi MSI-végpont megszerezni egy hozzáférési jogkivonatot az Azure Resource Manager használatával Powershell Invoke-WebRequest, indítson egy lekérdezést.
+1.  A portálon lépjen a **Virtuális gépek** lapra, lépjen a Windows VM-hez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre. 
+2.  A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
+3.  Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a **PowerShellt** a távoli munkamenetben. 
+4.  A PowerShell Invoke-WebRequest parancsával kezdeményezzen egy kérést a helyi MSI-végpont felé egy hozzáférési jogkivonat lekérésére az Azure Resource Managerhez.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
-    > A "resource" paraméter értékének az Azure AD által várt pontosan egyeznie kell. Az Azure Resource Manager erőforrás-azonosító használata esetén meg kell adni a záró perjelet URI-n.
+    > A „resource” paraméter értékének pontosan egyeznie kell az Azure AD által várt értékkel. Az Azure Resource Manager erőforrás-azonosítójának használatakor a záró perjelet is szerepeltetni kell az URI-ban.
     
-    Ezután bontsa ki a teljes válasz, amely tárolja a $response objektum JavaScript Object Notation (JSON) formátumú karakterláncot. 
+    Ezután nyerje ki a teljes választ, amelyet egy JavaScript Object Notation (JSON) formátumú sztringként tárol a $response objektum. 
     
     ```powershell
     $content = $response.Content | ConvertFrom-Json
     ```
-    Ezután bontsa ki a hozzáférési jogkivonat a választ.
+    Ezután nyerje ki a hozzáférési jogkivonatot a válaszból.
     
     ```powershell
     $ArmToken = $content.access_token
     ```
     
-    Végül hívja az Azure Resource Manager hozzáférési jogkivonat. Ebben a példában is használunk PowerShell Invoke-WebRequest a híváshoz az Azure Resource Manager és a hozzáférési jogkivonat szerepeljenek az Authorization fejlécet.
+    Végül hívja meg az Azure Resource Managert a hozzáférési jogkivonattal. Ebben a példában a PowerShell Invoke-WebRequest paranccsal az Azure Resource Managert is meghívjuk, és a hozzáférési jogkivonatot az engedélyezési fejlécbe foglaljuk.
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content
     ```
     > [!NOTE] 
-    > Az URL-címe: kis-és nagybetűket, ezért figyeljen oda arra, hogy használ a pontos nagybetűket használt korábban az erőforráscsoportot és a nagybetűk "G" a "resourceGroups." nevű
+    > Az URL megkülönbözteti a kis- és nagybetűket, ezért ellenőrizze, hogy pontosan ugyanúgy írja be a kis- és nagybetűket, mint az erőforráscsoport elnevezésekor, illetve hogy a „resourceGroups” kifejezésben nagy legyen a „G” betű.
         
-    A következő parancsot az erőforráscsoport-adatait adja vissza:
+    A következő parancs adja vissza az erőforráscsoport adatait:
 
     ```powershell
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}}
@@ -120,7 +120,7 @@ Meg kell használnia **PowerShell** ezen részében.  Ha nincs telepítve, tölt
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudta, hogyan hozzon létre egy felhasználó identitását, és csatlakoztassa azt egy Azure virtuális gép az Azure Resource Manager API eléréséhez.  Az Azure Resource Manager webhelyen olvashat:
+Ebben az oktatóanyagban megismerte, hogy hogyan hozhat létre felhasználóhoz hozzárendelt identitást, majd csatolhatja azt egy Azure-beli virtuális géphez az Azure Resource Manager API eléréséhez.  További információ az Azure Resource Managerről:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

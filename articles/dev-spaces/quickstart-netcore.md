@@ -6,17 +6,17 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 06/06/2018
+ms.date: 07/09/2018
 ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 21b94544105f55cbb8cb77c28d8c546ffcf7f8c0
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 3bb190570cbdf795668dd6e9f9d36630b6f3201b
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945856"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949866"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>Rövid útmutató: Kubernetes Dev Spaces-tér létrehozása az Azure Dev Spaces segítségével (.NET Core és VS Code)
 
@@ -32,7 +32,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
-- Az EastUS, WestEurope vagy CanadaEast régióban lévő, a Kubernetes 1.9.6 verziót futtató [Kubernetes-fürt](https://ms.portal.azure.com/#create/microsoft.aks) a **HTTP-alkalmazások engedélyezett útválasztásával**.
+- Az EastUS, CentralUS, WestUS2, WestEurope, CanadaCentral vagy CanadaEast régióban lévő, a Kubernetes 1.10.3 verziót futtató [Kubernetes-fürt](https://ms.portal.azure.com/#create/microsoft.aks) a **HTTP-alkalmazások engedélyezett útválasztásával**.
 
   ![Ne felejtse el engedélyezni a HTTP-alkalmazások útválasztását.](media/common/Kubernetes-Create-Cluster-3.PNG)
 
@@ -42,8 +42,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 1. Telepítse az [Azure CLI-t](/cli/azure/install-azure-cli?view=azure-cli-latest) (a 2.0.38-as vagy újabb verziót).
 1. A Dev Spaces beállítása az AKS-fürtön: `az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
-1. Töltse le az [Azure Dev Spaces bővítményt](https://aka.ms/get-azds-code) a VS Code-hoz.
-1. A bővítmény telepítése: `code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`
+1. Töltse le az [Azure Dev Spaces bővítményt](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) a VS Code-hoz. Kattintson egyszer a Telepítés lehetőségre a bővítmény Marketplace-oldalán, majd még egyszer a VS Code-ban.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kód létrehozása és futtatása Kubernetesben
 
@@ -89,7 +88,7 @@ Ebben a részben közvetlenül a VS Code-dal végezhet hibakeresést az Azure-ba
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>A hibakeresési objektum inicializálása a VS Code-bővítménnyel
 Először konfigurálja a kódprojektet úgy, hogy a VS Code kommunikálni tudjon az Azure-beli Dev Spaces-térrel. A VS Code Azure Dev Spaceshez készült bővítménye biztosít egy segítőparancsot a hibakeresési konfiguráció beállításához. 
 
-Nyissa meg a **parancskatalógust** (**Nézet | Parancskatalógus** menü), és az automatikus kitöltés használatával írja be és válassza ki a következő parancsot: `Azure Dev Spaces: Create configuration files for connected development`. 
+Nyissa meg a **parancskatalógust** (**Nézet | Parancskatalógus** menü), és az automatikus kitöltés használatával írja be és válassza ki a következő parancsot: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. 
 
 Ez hozzáadja az Azure Dev Spaceshez készült hibakeresési konfigurációt a `.vscode` mappához.
 
@@ -143,4 +142,4 @@ Frissítse a webalkalmazást a böngészőben, és lépjen az Információ oldal
 Megtudhatja, hogyan segít az Azure Dev Spaces az összetettebb alkalmazások fejlesztésében több tároló között, és hogyan egyszerűsítheti le az együttműködésen alapuló fejlesztést a kód különböző verzióinak vagy ágainak különböző terekben való kezelésével. 
 
 > [!div class="nextstepaction"]
-> [Több tároló használata és fejlesztés csapatban](get-started-netcore.md#call-a-service-running-in-a-separate-container)
+> [Több tároló használata és fejlesztés csapatban](team-development-netcore.md)

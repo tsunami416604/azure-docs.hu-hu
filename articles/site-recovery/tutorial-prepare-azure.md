@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffcce12800fae3a4d9e4930c918fcafb919b96ed
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737204"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915969"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek replikálásához
 
@@ -47,20 +47,21 @@ Ha most hozta létre az ingyenes Azure-fiókját, akkor Ön az előfizetés rend
 
 A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális gépek közreműködője beépített szerepkörrel. Emellett a fiókhoz hozzá kell rendelni a Site Recovery-közreműködő beépített szerepkört is, a Site Recovery-műveletek tárolókban való kezeléséhez.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-beli virtuális gépek a tárolóból lesznek létrehozva a helyszínről az Azure-ba történő feladatátvétel során. A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. Ebben az oktatóanyagban a Nyugat-Európa régiót használjuk.
 
 1. Az [Azure Portal](https://portal.azure.com) menüjében válassza az **Erőforrás létrehozása** > **Tárolás** > **Tárfiók – blob, fájl, tábla, üzenetsor** elemet.
 2. A **Tárfiók létrehozása** területen írja be a fiók nevét. Ezekben az oktatóanyagokban a **contosovmsacct1910171607** nevet használjuk. A kiválasztott névnek egyedinek kell lennie az Azure-ban, 3–24 karakter közé kell esnie, továbbá csak számokat és kisbetűket tartalmazhat.
 3. Az **Üzemi modell** mezőben válassza a **Resource Manager** lehetőséget.
-4. A **Fiók típusa** mezőben válassza a **Storage (általános célú v1)** lehetőséget. Ne válasszon blob-tárolót. A **Teljesítmény** mezőben válassza a **Standard** lehetőséget. 
+4. A **Fiók típusa** mezőben válassza a **Storage (általános célú v1)** lehetőséget. Ne válasszon blob-tárolót.
 5. A **Replikáció** mezőben válassza az alapértelmezett **Írásvédett georedundáns tárolás** értéket a tárhely-redundanciához. A **Biztonságos átvitelre van szükség** beállítást hagyja **Letiltva** állapotban.
-6. Az **Előfizetés** mezőben válassza ki azt az előfizetést, amelyikben az új tárfiókot létre szeretné hozni. 
-2. Az **Erőforráscsoport** mezőben adjon meg egy új erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ezekben az oktatóanyagokban a **ContosoRG** nevet használjuk.
-3. A **Hely** mezőben válassza ki a tárfiók földrajzi helyét. 
+6. A **Teljesítmény** mezőben válassza a **Standard** lehetőséget, a **Hozzáférési szint** mezőben pedig az alapértelmezett **Gyakran használt adatok** beállítást.
+7. Az **Előfizetés** mezőben válassza ki azt az előfizetést, amelyikben az új tárfiókot létre szeretné hozni.
+8. Az **Erőforráscsoport** mezőben adjon meg egy új erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ezekben az oktatóanyagokban a **ContosoRG** nevet használjuk.
+9. A **Hely** mezőben válassza ki a tárfiók földrajzi helyét. 
 
-   ![Create a storage account](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Tárfiók létrehozása](media/tutorial-prepare-azure/create-storageacct.png)
 
 9. Kattintson a **Létrehozás** gombra a tárfiók létrehozásához.
 
@@ -98,7 +99,7 @@ Amikor a feladatátvétel után Azure-beli virtuális gépek jönnek létre a t�
 
 - Az Azure Networks [ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 - Az Azure Storage típusainak [ismertetése](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts).
-- - [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) a tárhely-redundanciáról és a tárhely [biztonságos átviteléről](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer).
+- [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) a tárhely-redundanciáról és a tárhely [biztonságos átviteléről](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer).
 
 
 

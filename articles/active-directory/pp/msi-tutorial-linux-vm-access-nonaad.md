@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 95a9530c02bbf7b1cd9d137129f96ff4ee016966
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 95f54cf9cda2bf6dede6e7bfb72471b22707c1c2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007665"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056072"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Egy Linux rendszerű virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata az Azure Key Vault eléréséhez 
 
@@ -88,7 +88,7 @@ Először létre kell hozzon létre egy Key Vaultot és a virtuális gépnél id
 7. Kattintson a **OK** való befejezése az új hozzáférési szabályzat hozzáadása és **OK** hozzáférési szabályzat választását befejezéséhez. 
 8. Kattintson a **létrehozás** a Key Vault létrehozásának befejezéséhez. 
 
-    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Kép ALT szövege](../managed-service-identity/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 Ezután adjon hozzá egy titkos kulcsot a Key vaulthoz, hogy később kérheti le a titkos kulcsot, a virtuális gépen futó kód használatával: 
 

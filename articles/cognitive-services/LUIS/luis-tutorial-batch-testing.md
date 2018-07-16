@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 962f33a178048c459e8c6c2948eb17f0e78904ae
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: b695783c6d68876d39482ed5abec24f45087603d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930990"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054862"
 ---
 # <a name="improve-app-with-batch-test"></a>A batch-teszt alkalmazás fejlesztéséhez
 
@@ -52,7 +52,7 @@ Batch-tesztelés vonatkozó követelmények:
 * Engedélyezett entitástípusra: egyszerű és összetett.
 
 ## <a name="create-a-batch-file-with-utterances"></a>Hozzon létre egy kötegfájlt a kimondott szöveg
-1. Hozzon létre `HumanResources-jobs-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/). Töltse le vagy [a fájl](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json) a LUIS-minták Github-adattárból.
+1. Hozzon létre `HumanResources-jobs-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/). 
 
 2. A JSON-formátumú parancsfájlba, az beszédmódok hozzáadása a **szándékot** azt szeretné, a teszt előre jelzett. 
 
@@ -189,7 +189,7 @@ Annak érdekében, hogy ellenőrizze, hogy a batch-teszt megcímkézzen megfelel
 Az alkalmazás előrejelzési pontosság hibák keresése a Batch és a modell javításának további példa utterances ad hozzá a megfelelő leképezés és képzési nőtt. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza ki **saját alkalmazások** bal felső menüjében. Kattintson a három pontra **...**  az alkalmazások listájában, az alkalmazás nevétől jobbra, válassza ki a **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal oldali menüben. Kattintson a három pontra **...**  az alkalmazások listájában, az alkalmazás nevétől jobbra, válassza ki a **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 
 ## <a name="next-steps"></a>További lépések

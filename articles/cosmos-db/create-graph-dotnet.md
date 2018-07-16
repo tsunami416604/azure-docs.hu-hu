@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: c1277484d8f8b3073ac15534110b01903c265318
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: bbe60fb6a6371551f588d5472ac304148a4a1aa7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795883"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38453416"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Graph API használatával
 
@@ -86,7 +86,7 @@ Az alábbi kódrészletek mind a Program.cs fájlból származnak.
     private static int port = 443;
     private static string authKey = "your-authentication-key";
     private static string database = "your-database";
-    private static string collection = "your-collection-or-graph";
+    private static string collection = "your-graph-container";
     ```
 
 * A végrehajtandó Gremlin-parancsok egy szótárban szerepelnek (26. sor):
@@ -175,7 +175,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     `private static string database = "your-database";`
 
-5. A fentiekben létrehozott gyűjtemény információival illessze be a gyűjteményt (amely a gráf neve is) a 23. sorban található `collection` változóba. 
+5. Hasonlóképpen, a fent létrehozott tároló információival illessze be a gyűjteményt (amely a gráf neve is) a 23. sorban található `collection` változóba. 
 
     `private static string collection = "your-collection-or-graph";`
 
@@ -193,7 +193,7 @@ Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt. Az 
 
 Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és lekérdezheti az új gráfadatokat.
 
-1. Az Adatkezelőben az új adatbázis a Gráfok ablaktáblán jelenik meg. Bontsa ki az adatbázis és a gyűjtemény csomópontjait, és kattintson a **Gráf** elemre.
+1. Az Adatkezelőben az új adatbázis a Gráfok ablaktáblán jelenik meg. Bontsa ki az adatbázis és a tároló csomópontjait, és kattintson a **Gráfra**.
 
 2. Kattintson a **Szűrő alkalmazása** gombra a gráf összes csúcspontjának az alapértelmezett lekérdezéssel történő megtekintéséhez. A mintaalkalmazás által létrehozott adatokat a Gráfok ablaktáblán találja.
 

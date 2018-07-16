@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d866a6b068e9f6b8a46e53d60653d55e35a2ffd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f56ac74c62334ef64fca45a6430a539e3c4c372c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594023"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38442536"
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>A helyszíni címtárak integrálása az Azure Active Directoryval
 Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz. Ez a témakör végigvezeti a tervezéshez, üzembe helyezéshez és működtetéshez szükséges lépéseken. Az anyag a jelen témakörhöz kapcsolódó hivatkozások gyűjteményét is tartalmazza.
@@ -33,8 +33,9 @@ Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Direct
 
 > 
 > - A felhasználók szinkronizálása az Azure AD-ra **ingyenes szolgáltatás**, az ügyfeleknek nem kell fizetett előfizetéssel rendelkezniük.
->- A szinkronizált felhasználók **nem kapnak automatikusan** *semmilyen* licencet. A licencek hozzárendelése továbbra is teljes mértékben a rendszergazdák feladata. 
+> - A szinkronizált felhasználók **nem kapnak automatikusan** *semmilyen* licencet. A licencek hozzárendelése továbbra is teljes mértékben a rendszergazdák feladata. 
 > - A Microsoft azt javasolja az informatikai rendszergazdáknak, hogy szinkronizálják az összes felhasználójukat. Ezzel egyrészt elérhetővé teszik a felhasználók számára az integrált Azure AD-erőforrásokat, másrészt szélesebb körű rálátást kapnak arra, hogy a felhasználók milyen alkalmazásokat nyitnak meg. 
+> - A Microsoft határozottan javasolja, hogy ne szinkronizálja a felhasználókat a rendszergazdai szerepkörökkel az AAD-ben.
 
 ![Mi az az Azure AD Connect?](media/active-directory-aadconnect/arch.png)
 

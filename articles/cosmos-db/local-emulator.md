@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 6869698f2e6dca321d371bb22ded316f32cdeb51
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 368caa063ea0487923af8a29f67aa73cae7ed75e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824094"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952892"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -59,9 +59,10 @@ Ajánlott először megnézni a következő videót, amelyben Kirill Gavrylyuk a
 > 
 
 ## <a name="how-the-emulator-works"></a>Az emulátor működése
+
 Az Azure Cosmos DB Emulator az Azure Cosmos DB szolgáltatás kiváló minőségű emulációját nyújtja. Az Azure Cosmos DB-vel megegyező funkciókat támogat, beleértve a JSON-dokumentumok létrehozásának és lekérdezésének támogatását, a gyűjtemények kiépítését és méretezését, valamint a tárolt eljárások és eseményindítók végrehajtását. Az Azure Cosmos DB Emulator használatával alkalmazásokat fejleszthet és tesztelhet, és globális léptékben üzembe helyezheti azokat az Azure-ba, ha csupán egyetlen konfigurációs módosítást végez az Azure Cosmos DB kapcsolati végpontján.
 
-Bár a tényleges Azure Cosmos DB szolgáltatás kiváló minőségű helyi emulációját hoztuk létre, az Azure Cosmos DB Emulator implementálása eltér a szolgáltatásétól. Az Azure Cosmos DB Emulator például szabványos operációsrendszer-összetevőket használ, például a helyi fájlrendszert az adatmegőrzéshez és a HTTP-protokollvermet a kapcsolatokhoz. Ez azt jelenti, hogy az Azure-infrastruktúrára támaszkodó néhány funkció, például a globális replikáció, az egy számjegyű ezredmásodperces késés az olvasás/írás műveleteknél és az aprólékosan beállítható konzisztenciaszintek nem érhetők el az Azure Cosmos DB Emulatoron keresztül.
+Bár az Azure Cosmos DB emulációja valósághű, az emulátor megvalósítása eltér a szolgáltatásétól. Az emulátor például szabványos operációsrendszer-összetevőket használ, például a helyi fájlrendszert az adatmegőrzéshez és a HTTPS-protokollvermet a kapcsolatokhoz. Az Azure-infrastruktúrára támaszkodó néhány funkció, például a globális replikáció, az egy számjegyű ezredmásodperces késés az olvasás/írás műveleteknél és az aprólékosan beállítható konzisztenciaszintek nem érhetők el.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Az emulátor és a szolgáltatás közötti különbségek 
 Mivel az Azure Cosmos DB Emulator egy helyi fejlesztői munkaállomáson futó emulált környezetet nyújt, különbségek vannak az emulátor és a felhőben lévő Azure Cosmos DB-fiókok funkciói között:
@@ -72,7 +73,7 @@ Mivel az Azure Cosmos DB Emulator egy helyi fejlesztői munkaállomáson futó e
 * Az Azure Cosmos DB Emulator nem szimulál különböző [Azure Cosmos DB konzisztenciaszinteket](consistency-levels.md).
 * Az Azure Cosmos DB Emulator nem szimulál [többrégiós replikációt](distribute-data-globally.md).
 * Az Azure Cosmos DB Emulator nem támogatja az Azure Cosmos DB szolgáltatásban elérhető szolgáltatásikvóta-felülbírálásokat (például a dokumentumméret korlátait, a megnövelt particionált gyűjteménytárolást).
-* Mivel előfordulhat, hogy az Azure Cosmos DB Emulator-példány nincs frissítve az Azure Cosmos DB szolgáltatás legutóbbi módosításaival, tekintse meg az [Azure Cosmos DB Capacity Plannert](https://www.documentdb.com/capacityplanner), hogy pontosan meg tudja becsülni az alkalmazás éles teljesítménnyel (kérelemegységekkel) kapcsolatos igényeit.
+* Mivel előfordulhat, hogy az Azure Cosmos DB Emulator-példány nincs frissítve az Azure Cosmos DB szolgáltatás legutóbbi módosításaival, érdemes az [Azure Cosmos DB Capacity Planner](https://www.documentdb.com/capacityplanner) használatával pontosan megbecsülni az alkalmazás éles teljesítménnyel (kérelemegységekkel) kapcsolatos igényeit.
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 Az Azure Cosmos DB Emulator a következő hardver- és szoftverkövetelményekkel rendelkezik:
@@ -99,7 +100,7 @@ Amikor fut az emulátor, egy ikont lát a Windows tálca értesítési terület�
 
 Az Azure Cosmos DB Emulator alapértelmezés szerint a 8081-es porton figyelő helyi gépen („localhost”) fut.
 
-Az Azure Cosmos DB Emulator alapértelmezés szerint a `C:\Program Files\Azure Cosmos DB Emulator` könyvtárba van telepítve. A parancssorból is elindíthatja és leállíthatja az emulátort. További információkért tekintse meg a [parancssori eszközre vonatkozó referenciákat](#command-line).
+Az Azure Cosmos DB Emulator alapértelmezés szerint a `C:\Program Files\Azure Cosmos DB Emulator` könyvtárba van telepítve. A parancssorból is elindíthatja és leállíthatja az emulátort. További információért tekintse meg a [parancssori eszközre vonatkozó referenciákat](#command-line).
 
 ## <a name="start-data-explorer"></a>Az Adatkezelő elindítása
 
@@ -125,7 +126,7 @@ A felhőbeli Azure Cosmos DB-hez hasonlóan hitelesíteni kell minden olyan kér
 > [!NOTE] 
 > Ha a /Key lehetőséggel indította el az emulátort, akkor a létrehozott kulcsot használja a következő helyett: "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw=="
 
-Ezenkívül az Azure Cosmos DB szolgáltatáshoz hasonlóan az Azure Cosmos DB Emulator csak az SSL-en keresztüli biztonságos kommunikációt támogatja.
+Az Azure Cosmos DB szolgáltatáshoz hasonlóan az Azure Cosmos DB Emulator csak az SSL-en keresztüli biztonságos kommunikációt támogatja.
 
 ## <a name="running-on-a-local-network"></a>Futtatás helyi hálózaton
 
@@ -395,13 +396,13 @@ Futtassa a következő parancsokat a rendszerkép elindításához.
 A parancssorból:
 ```cmd 
 md %LOCALAPPDATA%\CosmosDBEmulatorCert 2>null
-docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
+docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:C:\CosmosDB.Emulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
 ```
 
 A PowerShellből:
 ```powershell
 md $env:LOCALAPPDATA\CosmosDBEmulatorCert 2>null
-docker run -v $env:LOCALAPPDATA\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
+docker run -v $env:LOCALAPPDATA\CosmosDBEmulatorCert:C:\CosmosDB.Emulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
 ```
 
 A válasz a következőhöz hasonlóan néz ki:
@@ -531,7 +532,7 @@ Ebben az oktatóanyagban a következőket hajtotta végre:
 > * Kérelmeket hitelesített
 > * Használta az Adatkezelőt az emulátorban
 > * SSL-tanúsítványokat exportált
-> * Meghívta az emulátort a parancssorból
+> * Behívta az emulátort a parancssorból
 > * Profilelemzési fájlokat gyűjtött össze
 
 Ebben az oktatóanyagban megtudta, hogyan használhatja a helyi emulátort ingyenes helyi fejlesztéshez. Most továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan exportálhatja az emulátor SSL-tanúsítványait. 

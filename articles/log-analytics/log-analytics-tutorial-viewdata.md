@@ -15,12 +15,12 @@ ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: 9350d2556ff4b178ec15f4213c89ee46d4f604d5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6b25712d660c26f2e7206b361c443b8f97aad361
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128421"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867613"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>A Log Analytics-naplókereséssel gyűjtött adatok megtekintése vagy elemzése
 
@@ -85,7 +85,7 @@ Ugyanazon szűrő beállításához válassza ki egy olyan rekord tulajdonságme
 
 Csak olyan tulajdonságoknál adhatja meg a **Szűrő** beállítást, amelyek neve kéken jelenik meg, ha föléjük viszi a mutatót.  Ezek a *kereshető* mezők, amelyek keresési feltételekhez vannak indexelve.  A szürke mezők *kereshető szabad szöveges* mezők, amelyeknél csak a **Hivatkozások megjelenítése** beállítás aktív.  Ez a beállítás azokat a rekordokat adja vissza, amelyeknek bármely tulajdonságában megtalálható a keresett érték.
 
-Egyetlen tulajdonság alapján csoportosíthatja az eredményeket, ha kiválasztja a rekord menüjének **Csoportosítási szempont** elemét.  Ez egy [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) (összegző) operátort ad a lekérdezéshez, amely egy diagramban jeleníti meg az eredményeket.  Több tulajdonság alapján is csoportosíthat, de ehhez közvetlenül kell szerkesztenie a lekérdezést.  Válassza ki a rekord menüjét a **Számítógép** tulajdonság mellett, és válassza a **Csoportosítási szempont: „Computer”** (Számítógép) lehetőséget.  
+Egyetlen tulajdonság alapján csoportosíthatja az eredményeket, ha kiválasztja a rekord menüjének **Csoportosítási szempont** elemét.  Ez egy [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) (összegző) operátort ad a lekérdezéshez, amely egy diagramban jeleníti meg az eredményeket.  Több tulajdonság alapján is csoportosíthat, de ehhez közvetlenül kell szerkesztenie a lekérdezést.  Válassza ki a rekord menüjét a **Computer** (Számítógép) tulajdonság mellett, és válassza a **Csoportosítási szempont: „Computer”** (Számítógép) lehetőséget.  
 
 ![Csoportosítás számítógép alapján](media/log-analytics-tutorial-viewdata/log-analytics-portal-eventlist-04.png)
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sngun
-ms.openlocfilehash: c10f1fdc7e373633298b083d1317f17cff3aa2b8
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 214dfe3e676d3b07cf688fa0f7dcaf11462edfe8
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796631"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930885"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Alapvető ismeretek az Azure Cosmos DB MongoDB API-ról
 
@@ -26,7 +26,7 @@ Az [Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosz
 
 Az Azure Cosmos DB-adatbázisok használhatók a [MongoDB](https://docs.mongodb.com/manual/introduction/)-hez írt alkalmazások adattáraként. Ez a funkció azt jelenti, hogy a meglévő [illesztők](https://docs.mongodb.org/ecosystem/drivers/) segítségével a MongoDB-hez írt alkalmazása mostantól képes kommunikálni az Azure Cosmos DB-vel, és használhat Azure Cosmos DB-adatbázisokat a MongoDB-adatbázisok helyett. Sok esetben egy kapcsolati sztring egyszerű módosításával válthat a MongoDB használatáról az Azure Cosmos DB-re. A funkció használatával könnyedén létrehozhat és futtathat globálisan elosztott MongoDB adatbázis-alkalmazásokat az Azure felhőben az Azure Cosmos DB-vel és az [átfogó, iparágvezető szolgáltatói szerződéseivel](https://azure.microsoft.com/support/legal/sla/cosmos-db), miközben továbbra is alkalmazhatja a MongoDB használata során megszerzett ismereteit és megszokott eszközeit.
 
-**MongoDB-kompatibilitás**: Használhatja a MongoDB-vel kapcsolatos meglévő szakértelmét, alkalmazáskódját és eszközeit, mivel az Azure Cosmos DB a MongoDB 3.4 (5-ös verzió) átviteli protokollját valósítja meg, és támogatja a [MongoDB összesítési folyamatát](mongodb-feature-support.md#aggregation-pipeline). A MongoDB-vel alkalmazásokat fejleszthet, valamint üzembe helyezheti azokat az éles környezetben a teljesen felügyelt és globálisan elosztott Azure Cosmos DB szolgáltatással.
+**MongoDB-kompatibilitás**: Használhatja a MongoDB-vel kapcsolatos meglévő szakértelmét, alkalmazáskódját és eszközeit, mivel az Azure Cosmos DB a MongoDB átviteli protokollját valósítja meg. A MongoDB-vel alkalmazásokat fejleszthet, valamint üzembe helyezheti azokat az éles környezetben a teljesen felügyelt és globálisan elosztott Azure Cosmos DB szolgáltatással. További információ a támogatott verziókkal kapcsolatban: [A MongoDB protokoll támogatása](mongodb-feature-support.md#mongodb-protocol-support).
 
 ## <a name="what-is-the-benefit-of-using-azure-cosmos-db-for-mongodb-applications"></a>Milyen előnyökkel jár az Azure Cosmos DB MongoDB-alkalmazásokkal való használata?
 
@@ -36,7 +36,7 @@ Az Azure Cosmos DB-adatbázisok használhatók a [MongoDB](https://docs.mongodb.
 
 **Nincs kiszolgálókezelés**: Nem szükséges kezelnie és méreteznie a MongoDB-adatbázisait. Az Azure Cosmos DB egy teljesen felügyelt szolgáltatás, amely azt jelenti, hogy nem Önnek kell kezelnie az infrastruktúrákat és a virtuális gépeket. Az Azure Cosmos DB több mint 30 [Azure-régióban](https://azure.microsoft.com/regions/services/) érhető el.
 
-**Aprólékosan beállítható konzisztenciaszintek:** Az Azure Cosmos DB jelenleg a MongoDB 3.4-es verzióját valósítja meg, amely két konzisztenciabeállítással rendelkezik – erős és végleges. Mivel az Azure Cosmos DB több API-t támogat, a konzisztenciabeállítások a fiók szintjén alkalmazhatók, és a konzisztencia kikényszerítését az egyes API-k vezérlik. A MongoDB 3.6-ig nem létezett a munkamenet-konzisztencia fogalma, ezért amikor beállít egy MongoDB API-fiókot a munkamenet-konzisztencia használatára, a MongoDB API-k használatakor a rendszer visszaállítja a konzisztenciát véglegesre. Ha „saját írások olvasása” garanciára van szüksége egy MongoDB API-fiókhoz, a fiók alapértelmezett konzisztenciaszintjét erősre vagy kötött elavulásra kell állítani. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).
+**Beállítható konzisztenciaszintek**: Mivel az Azure Cosmos DB támogatja a többmodelles API-kat, a konzisztenciabeállítások a fiók szintjén alkalmazhatók, és a konzisztencia kikényszerítését az egyes API-k vezérlik. A MongoDB 3.6-ig nem létezett a munkamenet-konzisztencia fogalma, ezért amikor beállít egy MongoDB API-fiókot a munkamenet-konzisztencia használatára, a MongoDB API-k használatakor a rendszer visszaállítja a konzisztenciát véglegesre. Ha „saját írások olvasása” garanciára van szüksége egy MongoDB API-fiókhoz, a fiók alapértelmezett konzisztenciaszintjét erősre vagy kötött elavulásra kell állítani. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).
 
 | Az Azure Cosmos DB alapértelmezett konzisztenciaszintje |   Mongo API (3.4) |
 |---|---|

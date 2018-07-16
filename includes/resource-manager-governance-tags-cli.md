@@ -9,25 +9,25 @@ ms.date: 02/20/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: b9484336add0719749e9f0af56bdd70fa3906ef5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29532344"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38752659"
 ---
-Két címkét adhat hozzá egy erőforráscsoport, a [az csoport frissítése](/cli/azure/group#az_group_update) parancs:
+Ha két címkét szeretne az erőforráscsoporthoz adni, használja az [az group update](/cli/azure/group#az_group_update) parancsot:
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.Environment=Test tags.Dept=IT
 ```
 
-Tegyük fel, hogy hozzá szeretne adni egy harmadik címkét. Futtassa újra a parancsot az új címke. Hozzáfűzi a meglévő címkéket.
+Tegyük fel, hogy hozzá kíván adni egy harmadik címkét. Futtassa ismét a parancsot egy új címkével. A rendszer ezt a címkét hozzáfűzi a meglévő címkékhez.
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.Project=Documentation
 ```
 
-Erőforrások címkék nem örökli az erőforráscsoportot. Jelenleg az erőforráscsoport három címkék rendelkezik, de az erőforrások nem rendelkeznek címkéket. Címkéket az összes erőforráscsoport erőforrásaihoz, és tartsa meg az erőforrás meglévő címkék, használja a következő parancsfájlt:
+Az erőforrások nem örökölnek címkéket az erőforráscsoporttól. Az erőforráscsoportnak jelenleg három címkéje van, de az erőforrásoknak nincs címkéjük. Ha az erőforráscsoport összes címkéjét alkalmazni kívánja a csoport erőforrásaira, és meg szeretné őrizni az erőforrások meglévő címkéit, használja a következő szkriptet:
 
 ```azurecli-interactive
 # Get the tags for the resource group
@@ -53,7 +53,7 @@ do
 done
 ```
 
-Alternatív megoldásként címkékkel láthatja az erőforráscsoportból forrásokat tartani a meglévő címkék nélkül:
+Másik megoldásként alkalmazhatja az erőforráscsoport címkéit az erőforrásokra a meglévő címkék megtartása nélkül:
 
 ```azurecli-interactive
 # Get the tags for the resource group
@@ -73,13 +73,13 @@ do
 done
 ```
 
-Egyesítése egyetlen címkének értékeket, használja a JSON karakterláncnak.
+Ha több értéket szeretne kombinálni egyetlen címkében, használjon JSON-sztringet.
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.CostCenter='{"Dept":"IT","Environment":"Test"}'
 ```
 
-Az erőforráscsoport összes címkék eltávolításához használja:
+Az erőforráscsoport összes címkéjének eltávolításához tegye a következőket:
 
 ```azurecli-interactive
 az group update -n myResourceGroup --remove tags

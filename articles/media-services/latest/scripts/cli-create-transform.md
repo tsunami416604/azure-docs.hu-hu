@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: juliako
-ms.openlocfilehash: 8cc6b779729bf0c596a7c1b7318eed6f47dffb1d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: cbe20c4b75fff27fad60446fb933a9c8ba2e3312
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161346"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461554"
 ---
 # <a name="cli-example-create-a-transform"></a>CLI-példa: Átalakítás létrehozása
 
@@ -27,7 +27,7 @@ A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre átalak
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="example-script"></a>Példaszkript
 

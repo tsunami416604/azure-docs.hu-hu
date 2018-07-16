@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 57fc70d5b47f18affa90e1153884e8af23d937ec
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a9772ae9ac346daa205c146263a4632a641ee038
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31514002"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722813"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a .NET API használatával
 
@@ -37,7 +37,7 @@ Ebben az oktatóanyagban MP4-médiafájlokat konvertál párhuzamosan MP3 formá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Visual Studio IDE](https://www.visualstudio.com/vs) (a Visual Studio 2015-ös vagy újabb verziója). 
+* [Visual Studio 2017](https://www.visualstudio.com/vs). 
 
 * Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
 

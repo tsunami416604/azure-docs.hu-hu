@@ -9,21 +9,21 @@ ms.date: 06/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9a17f34333503436d3da340670abdde154e45ef6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36336026"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38727530"
 ---
-2018. július 1., kezdési támogatja a TLS 1.0 és 1.1 az Azure VPN Gateway távolít el. Csak a TLS 1.2-es VPN-átjáró támogatja. A TLS-támogatás és a kapcsolat fenntartása a Windows 7 és Windows 8 pont-pont használó ügyfelek számára a TLS azt javasoljuk, hogy telepítse a következő frissítéseket:
+2018. július 1-től az Azure VPN Gatewayből el lett távolítva a TLS 1.0 és 1.1 támogatása. Ettől kezdve az Azure VPN Gateway csak a TLS 1.2-es verzióját támogatja. A TLS támogatásának, valamint a TLS-t használó, Windows 7 és Windows 8 rendszerű, pont–hely típusú ügyfelek kapcsolatainak fenntartása érdekében javasoljuk, hogy telepítse az alábbi frissítéseket:
 
-• [Frissítés a Microsoft EAP megvalósítása, amely lehetővé teszi, hogy a TLS használata](https://support.microsoft.com/help/2977292/microsoft-security-advisory-update-for-microsoft-eap-implementation-th)
+•   [A Microsoft EAP-implementáció frissítése, amely lehetővé teszi a TLS használatát](https://support.microsoft.com/help/2977292/microsoft-security-advisory-update-for-microsoft-eap-implementation-th)
 
-• [Engedélyezték a TLS 1.1 és TLS 1.2-es alapértelmezett biztonságos protokollok, a WinHTTP frissítése](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-a-default-secure-protocols-in)
+•   [Frissítés, amely lehetővé teszi a TLS 1.1 és a TLS 1.2 alapértelmezett biztonságos protokollként történő használatát a WinHTTP-ben](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-a-default-secure-protocols-in)
 
-A következő örökölt algoritmusok is elavulttá válik a TLS a 2018. július 1:
+2018. július 1-től a következő örökölt algoritmusok szintén elavulttá válnak a TLS vonatkozásában:
 
-* RC4 (Rivest titkosítási 4)
-* DES (adattitkosító algoritmus)
-* 3DES (háromszoros adattitkosító algoritmus)
+* RC4 (Rivest Cipher 4)
+* DES (adattitkosítási algoritmus)
+* 3DES (háromszoros adattitkosítási algoritmus)
 * MD5 (Message Digest 5)

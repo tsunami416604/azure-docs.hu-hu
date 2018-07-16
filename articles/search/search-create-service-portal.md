@@ -6,14 +6,14 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 11/07/2017
+ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 1837fc6511ac734766c55bd1c2a2a7a40219c31a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0c7f9807605236a8250d75623d0885730c9945a0
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793021"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950679"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
@@ -29,8 +29,8 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 
 ## <a name="find-azure-search"></a>Az Azure Search megkeresése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a plusz jelre („+”) a bal felső sarokban.
-3. Válassza a **Web és mobil** > **Azure Search** lehetőséget.
+2. Kattintson a plusz jelre („+ Erőforrás létrehozása”) a bal felső sarokban.
+3. Válassza a **Web** > **Azure Search** lehetőséget.
 
 ![](./media/search-create-service-portal/find-search3.png)
 
@@ -77,12 +77,14 @@ A ***partíciókkal*** a szolgáltatás több dokumentum tárolására és keres
 
 A ***replikákkal*** a szolgáltatás több keresési kérelem kiszolgálására alkalmas.
 
+Az erőforrások hozzáadása növeli a havi költségeket. A [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) segíthet áttekinteni az erőforrások hozzáadásának számlázási vonatkozásait. Vegye figyelembe, hogy az erőforrások mennyisége a terheléshez igazítható. Például növelheti az erőforrások mennyiségét egy teljes körű első index létrehozásához, majd később csökkentheti azt a növekményes indexeléshez jobban megfelelő szintre.
+
 > [!Important]
 > A szolgáltatásnak [csak olvasható SLA esetén 2, írási/olvasási SLA esetén 3 replikával](https://azure.microsoft.com/support/legal/sla/search/v1_0/) kell rendelkeznie.
 
 1. Nyissa meg a keresési szolgáltatás oldalát az Azure Portalon.
 2. A bal oldali navigációs panelen válassza a **Beállítások** > **Méretezés** lehetőséget.
-3. Replikákat és partíciókat a csúszkák használatával adhat hozzá.
+3. A csúszka segítségével bármelyik típusú erőforrásokat hozzáadhatja.
 
 ![](./media/search-create-service-portal/settings-scale.png)
 
@@ -91,7 +93,7 @@ A ***replikákkal*** a szolgáltatás több keresési kérelem kiszolgálására
 
 ## <a name="when-to-add-a-second-service"></a>Mikor érdemes hozzáadni egy második szolgáltatást?
 
-Az ügyfelek túlnyomó többsége egy csomagban csak egy üzembe helyezett szolgáltatást használ, amely biztosítja [az erőforrások helyes egyensúlyát](search-sku-tier.md). Egy szolgáltatásban több index is fenntartható [a választott csomag korlátozásainak megfelelő számban](search-capacity-planning.md), ha elkülönülnek egymástól. Az Azure Search szolgáltatásban a kérelmek csak egy indexre irányulhatnak. Így kisebb esély van adatok véletlen vagy szándékos lekérésére az egyazon szolgáltatáshoz tartozó más indexekből.
+Az ügyfelek túlnyomó többsége egy csomagban csak egy üzembe helyezett szolgáltatást használ, amely biztosítja [az erőforrások megfelelő egyensúlyát](search-sku-tier.md). Egy szolgáltatásban több index is fenntartható [a választott csomag korlátozásainak megfelelő számban](search-capacity-planning.md), ha elkülönülnek egymástól. Az Azure Search szolgáltatásban a kérelmek csak egy indexre irányulhatnak. Így kisebb esély van adatok véletlen vagy szándékos lekérésére az egyazon szolgáltatáshoz tartozó más indexekből.
 
 Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet a szolgáltatás redundanciájára, ha az üzemeltetési körülmények között az alábbiak szerepelnek:
 

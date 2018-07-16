@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: juliako
-ms.openlocfilehash: b46cd5cf8f730a680078dde06b58eb31846e0a76
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5293ac55fdb13bba85996f5ed81034d4ebeeff12
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161312"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722881"
 ---
 # <a name="cli-example-create-an-azure-event-grid-subscription"></a>CLI-példa: Azure Event Grid-előfizetés létrehozása 
 
@@ -27,7 +27,7 @@ A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre fióksz
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="example-script"></a>Példaszkript
 

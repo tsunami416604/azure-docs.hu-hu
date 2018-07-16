@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: juliako
-ms.openlocfilehash: 5ec63bd8be84481780337d0b5bc2497770f22b0d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 7f9868b0fb53eb75ccf4742c0bf522d35f6ff902
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161380"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723136"
 ---
 # <a name="cli-example-reset-the-account-credentials"></a>CLI-példa: Fiók hitelesítő adatainak alaphelyzet állítása
 
@@ -27,7 +27,7 @@ A cikkben bemutatott Azure CLI-szkripttel alaphelyzetbe állíthatja a fiókja h
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="example-script"></a>Példaszkript
 

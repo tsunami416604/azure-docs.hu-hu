@@ -1,6 +1,6 @@
 ---
-title: A Linux virtuális gép felhasználó által hozzárendelt MSI Azure Resource Manager eléréséhez használja
-description: Ez az oktatóanyag végigvezeti egy User-Assigned felügyelt szolgáltatás identitásának (MSI) használata a Linux virtuális gép, Azure Resource Manager eléréséhez.
+title: Linuxos VM-beli, felhasználóhoz rendelt MSI használata az Azure Resource Manager eléréséhez
+description: Oktatóanyag, amely végigvezeti az Azure Resource Manager Linux VM-beli, felhasználóhoz rendelt felügyeltszolgáltatás-identitással (MSI) való elérésének folyamatán.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,40 +9,40 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/22/2017
-ms.author: arluca
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 542b2e434767711a6947a87c6995343d27e6dddd
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: MT
+ms.openlocfilehash: 1195161a0c4045620447439bf9361b7c4c0189ae
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699115"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904390"
 ---
-# <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Oktatóanyag: A felhasználói identitás használatára a Linux virtuális gép, Azure Resource Manager eléréséhez
+# <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Oktatóanyag: Az Azure Resource Manager Linux VM-beli, felhasználóhoz rendelt identitással való elérése.
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Ez az oktatóanyag ismerteti, hogyan hozzon létre egy felhasználó lehet hozzárendelve identitás, rendelje hozzá a Linux virtuális gép (VM) és az Azure Resource Manager API eléréséhez majd használja az identitásukat. Felügyelt szolgáltatás-identitások Azure automatikusan kezeli. Az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatok beágyazása a kódot támogató szolgáltatások lehetővé teszik. 
+Ez az oktatóanyag ismerteti, hogyan hozhat létre felhasználóhoz rendelt identitást, és hogyan csatolhatja azt Linux rendszerű virtuális géphez, majd hogyan használhatja ezt az identitást az Azure Resource Manager API eléréséhez. A felügyeltszolgáltatás-identitások kezelését az Azure automatikusan végzi. Ezek segítségével anélkül végezhet hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban, hogy be kellene ágyaznia a hitelesítő adatokat a kódba. 
 
-Felügyelt szolgáltatás-identitások Azure automatikusan kezeli. Az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatok beágyazása a kódot támogató szolgáltatások lehetővé teszik.
+A felügyeltszolgáltatás-identitások kezelését az Azure automatikusan végzi. Ezek segítségével anélkül végezhet hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban, hogy be kellene ágyaznia a hitelesítő adatokat a kódba.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Hozzon létre egy felhasználó lehet hozzárendelve identitás
-> * A felhasználó identitása rendelt Linux virtuális gép 
-> * A felhasználó identitása hozzáférési jogot egy erőforráscsoportot az Azure Resource Manager 
-> * Szereznie egy hozzáférési jogkivonatot használja a felhasználó identitását, és hívja az Azure Resource Manager használatával 
+> * Felhasználóhoz rendelt identitás létrehozása
+> * Felhasználóhoz rendelt identitás hozzárendelése Linux rendszerű virtuális géphez 
+> * Hozzáférés engedélyezése a felhasználóhoz rendelt identitás számára az Azure Resource Manager erőforráscsoportjához 
+> * Hozzáférési jogkivonat lekérése a felhasználóhoz rendelt identitással, majd az Azure Resource Manager meghívása a használatával 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha a felügyelt Szolgáltatásidentitás ismerik biztosan tekintse meg a [áttekintése](overview.md) szakasz. **Ne feledje el áttekinteni a [rendszer és a felhasználó közötti különbségek hozzárendelt identitások](overview.md#how-does-it-work)**.
-- Ha még nem telepítette az Azure-fiók [regisztráljon egy ingyenes fiókot](https://azure.microsoft.com/free/) folytatása előtt.
-- Ebben az oktatóanyagban a szükséges erőforrások létrehozása és a szerepkör felügyeleti lépések végrehajtásához a fiókot kell a "Tulajdonos" engedélyeket a megfelelő hatókörben (saját előfizetés vagy az erőforrás csoport). Ha a szerepkör-hozzárendelés segítségre van szüksége, tekintse meg [Use Role-Based hozzáférés-vezérlés kezelése az Azure-előfizetés erőforrásokhoz való hozzáférés](/azure/role-based-access-control/role-assignments-portal).
+- Ha még nem ismeri a felügyeltszolgáltatás-identitást, olvass el az [áttekintés](overview.md) szakaszt. **Mindenképpen tekintse át a [rendszer- és a felhasználóhoz rendelt identitások közötti eltéréseket](overview.md#how-does-it-work)**.
+- Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
+- A jelen oktatóanyag elvégzéséhez szükséges erőforrás-létrehozási és szerepkör-felügyeleti lépések végrehajtásához a fiókjának „Tulajdonos” jogosultságokkal kell rendelkeznie a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban). Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](/azure/role-based-access-control/role-assignments-portal) részben leírtakat.
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
@@ -50,29 +50,29 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Egy új erőforráscsoportot a Linux virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Linux rendszerű virtuális gép létrehozása új erőforráscsoportban
 
-A jelen oktatóanyag esetében először létrehozhat egy új Linux virtuális Gépet. Úgy is dönthet, hogy egy meglévő virtuális gép használja.
+Ebben az oktatóanyagban egy új Linux rendszerű virtuális gépet hozunk létre. Egy már meglévő virtuális gépet is használhat.
 
-1. Kattintson a **hozzon létre egy erőforrást** az Azure portál bal felső sarkában.
+1. Az Azure Portal bal felső sarkában kattintson az **Erőforrás létrehozása** gombra.
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
-3. Adja meg a virtuális gép adatait. A **hitelesítési típus**, jelölje be **nyilvános SSH-kulcs** vagy **jelszó**. A létrehozott hitelesítő adatok lehetővé teszik-e jelentkezni a virtuális gép.
+3. Adja meg a virtuális gép adatait. A **Hitelesítés típusa** résznél válassza az **SSH nyilvános kulcs** vagy a **Jelszó** lehetőséget. A létrehozott hitelesítő adatokkal jelentkezhet be a virtuális gépre.
 
-    ![Linux virtuális gép létrehozása](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Linux rendszerű virtuális gép létrehozása](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
-4. Válasszon egy **előfizetés** a virtuális gép meg a legördülő listában.
-5. Jelölje be egy új **erőforráscsoport** szeretne létrehozni, válassza a virtuális gép **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
-6. Adja meg a virtuális gép számára. További méretek megtekintéséhez válasszon **összes** , vagy módosítsa a lemez típusát támogatott szűrő. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
+4. Válasszon ki egy **előfizetést** a legördülő menüben a virtuális gép számára.
+5. Ha a virtuális gépet egy új **Erőforráscsoportban** szeretné létrehozni, válassza az **Új létrehozása** elemet. Amikor végzett, kattintson az **OK** gombra.
+6. Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a Támogatott lemeztípus szűrőt. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-## <a name="create-a-user-assigned-identity"></a>Hozzon létre egy felhasználó lehet hozzárendelve identitás
+## <a name="create-a-user-assigned-identity"></a>Felhasználóhoz rendelt identitás létrehozása
 
-1. A parancssori felület konzol (helyett egy Azure-felhő rendszerhéj munkamenet) használata, ha először jelentkezik be az Azure-bA. Használjon olyan fiókot, amelybe szeretné létrehozni az új felhasználó identitása Azure-előfizetéssel társított:
+1. Ha a parancssori konzolt használja (Azure Cloud Shell-munkamenet helyett), akkor első lépésként jelentkezzen be az Azure-ba. A használni kívánt fiók azon Azure-előfizetéshez legyen hozzárendelve, amely alatt létre fogja hozni az új felhasználóhoz rendelt identitást:
 
     ```azurecli
     az login
     ```
 
-2. Felhasználó által hozzárendelt identitás létre [az identitás létrehozása](/cli/azure/identity#az_identity_create). A `-g` paraméter határozza meg az erőforráscsoportot, ahol az MSI-fájl jön létre, és a `-n` paraméter határozza meg a nevét. Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>` és `<MSI NAME>` paraméterértékeket a saját értékekkel:
+2. Hozzon létre egy felhasználóhoz rendelt identitást az [az identity create](/cli/azure/identity#az_identity_create) paranccsal. A `-g` paraméter adja meg azt az erőforráscsoportot, amelyben az MSI létre lesz hozva, a `-n` paraméter pedig a nevét határozza meg. Ne felejtse el a `<RESOURCE GROUP>` és `<MSI NAME>` paraméterek értékeit a saját értékeire cserélni:
     
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -81,7 +81,7 @@ A jelen oktatóanyag esetében először létrehozhat egy új Linux virtuális G
 az identity create -g <RESOURCE GROUP> -n <MSI NAME>
 ```
 
-A válasz a felhasználó identitása létrehozott, az alábbi példához hasonló részleteit tartalmazza. Megjegyzés: a `id` érték a felhasználó identitását, a következő lépésben lesz használható:
+A válasz tartalmazza az imént létrehozott felhasználóhoz rendelt identitás részleteit, az alábbi példához hasonlóan. Jegyezze fel a felhasználóhoz rendelt identitás `id` értékét, mivel azt a következő lépésben használni fogja:
 
 ```json
 {
@@ -98,27 +98,27 @@ A válasz a felhasználó identitása létrehozott, az alábbi példához hasonl
 }
 ```
 
-## <a name="assign-a-user-assigned-identity-to-your-linux-vm"></a>A Linux virtuális gép identitásának rendelt felhasználó hozzárendelése
+## <a name="assign-a-user-assigned-identity-to-your-linux-vm"></a>Felhasználóhoz rendelt identitás hozzárendelése Linux rendszerű virtuális géphez
 
-Egy felhasználó lehet hozzárendelve identitás több Azure-erőforrások az ügyfelek által használható. A következő parancsok segítségével a felhasználó identitásának rendelhet egy virtuális. Használja a `Id` tulajdonságot adott vissza az előző lépésben a `-IdentityID` paraméter.
+A felhasználóhoz rendelt identitást az ügyfelek több Azure-erőforrás esetében is használhatják. Az alábbi parancsokkal rendelhet felhasználóhoz rendelt identitást egyetlen virtuális géphez. Ehhez használja az előző lépésben az `-IdentityID` paraméter esetében visszaadott `Id` tulajdonságot.
 
-A felhasználó által hozzárendelt MSI hozzárendelése a Linux virtuális gép [az vm hozzárendelése-identitás](/cli/azure/vm#az_vm_assign_identity). Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>` és `<VM NAME>` paraméterértékeket a saját értékekkel. Használja a `id` tulajdonságot adott vissza az előző lépésben a `--identities` paraméter értékét.
+Rendelje hozzá a felhasználóhoz rendelt MSI-t a Linux rendszerű virtuális géphez az [az vm assign-identity](/cli/azure/vm#az_vm_assign_identity) paranccsal. Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. Ehhez használja az előző lépésben az `--identities` paraméterérték esetében visszaadott `id` tulajdonságot.
 
 ```azurecli-interactive
 az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>"
 ```
 
-## <a name="grant-your-user-assigned-identity-access-to-a-resource-group-in-azure-resource-manager"></a>A felhasználó identitása hozzáférési jogot egy erőforráscsoportot az Azure Resource Manager 
+## <a name="grant-your-user-assigned-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Hozzáférés engedélyezése felhasználóhoz rendelt identitás számára az Azure Resource Manager erőforráscsoportjához 
 
-Felügyelt szolgáltatás identitásának (MSI) biztosít identitásokat tartalmaz, amelyek a kód segítségével való hitelesítésre szolgáló erőforrás API-k, támogatás az Azure AD-hitelesítés hozzáférési jogkivonatok igényelhetnek. Ebben az oktatóanyagban a kódot az Azure Resource Manager API-val érik el.  
+A felügyeltszolgáltatás-identitás (MSI) által biztosított identitások segítségével a kód hozzáférési jogkivonatokat tud lekérni az olyan erőforrás API-k hitelesítéséhez, amelyek támogatják az Azure AD-hitelesítést. Ebben az oktatóanyagban a kódot az Azure Resource Manager API-jának eléréséhez használjuk.  
 
-A kódot az API eléréséhez, az identitás hozzáférést egy erőforráshoz az Azure Resource Manager szeretné. Ebben az esetben az erőforráscsoportot, amelyben a virtuális gép található. Frissítse az értéket a `<SUBSCRIPTION ID>` és `<RESOURCE GROUP>` a környezetnek megfelelően. Továbbá cserélje le `<MSI PRINCIPALID>` rendelkező a `principalId` tulajdonság által visszaadott a `az identity create` parancsot [hozzon létre egy felhasználó által hozzárendelt MSI](#create-a-user-assigned-msi):
+Ehhez azonban még engedélyeznie kell az identitás számára a hozzáférést az Azure Resource Manager erőforrásaihoz. Ebben az esetben arról az erőforráscsoportról van szó, amelyben a virtuális gép megtalálható. A környezetnek megfelelően frissítse a `<SUBSCRIPTION ID>` és `<RESOURCE GROUP>` paraméterek értékeit. Ezen kívül cserélje le a `<MSI PRINCIPALID>` értékét az `az identity create` parancs által a [felhasználóhoz rendelt MSI létrehozását ismertető](#create-a-user-assigned-msi) részben visszaadott `principalId` tulajdonságra.
 
 ```azurecli-interactive
 az role assignment create --assignee <MSI PRINCIPALID> --role 'Reader' --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP> "
 ```
 
-A válasz tartalmazza a létrehozott, az alábbi példához hasonló szerepkör-hozzárendelés részletei:
+A válasz tartalmazza az imént létrehozott szerepkör-hozzárendelés részleteit, az alábbi példához hasonlóan:
 
 ```json
 {
@@ -135,29 +135,29 @@ A válasz tartalmazza a létrehozott, az alábbi példához hasonló szerepkör-
 
 ```
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Szereznie egy hozzáférési jogkivonatot, a virtuális gép azonosítójának használatával, és hívja az erőforrás-kezelő használatával 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Hozzáférési jogkivonat lekérése a VM identitásával, majd a Resource Manager meghívása a használatával 
 
-Az oktatóanyag a hátralévő azt fog működni a korábban létrehozott virtuális gépről.
+Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk.
 
-Lépések elvégzéséhez szüksége van egy SSH-ügyfél. Windows használ, ha az SSH-ügyfél a használhatja a [Linux rendszerhez készült Windows alrendszer](https://msdn.microsoft.com/commandline/wsl/about). 
+A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/about) elérhető SSH-ügyfelet. 
 
-1. Jelentkezzen be a Azure [portal](https://portal.azure.com).
-2. A portálon lépjen a **virtuális gépek** és nyissa meg a Linux virtuális gép és a a **áttekintése**, kattintson a **Connect**. Másolja a karakterláncot, amellyel a virtuális Géphez csatlakozik.
-3. Csatlakoztassa a virtuális Gépet az SSH-ügyfél az Ön által választott. Windows használ, ha az SSH-ügyfél a használhatja a [Linux rendszerhez készült Windows alrendszer](https://msdn.microsoft.com/commandline/wsl/about). Ha az SSH-ügyfél kulcsok konfigurálása segítségre van szüksége, tekintse meg [a Windows Azure használatára SSH-kulcsok hogyan](~/articles/virtual-machines/linux/ssh-from-windows.md), vagy [létrehozása, és az SSH nyilvános és titkos kulcsból álló kulcspárt használata a Linux virtuális gépek Azure-ban](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
-4. A Terminálszolgáltatások ablakban CURL, használatával indítson egy lekérdezést a Azure példány metaadatok szolgáltatás (IMDS) identitás végpont megszerezni egy hozzáférési jogkivonatot az Azure Resource Manager.  
+1. Jelentkezzen be az Azure [Portalra](https://portal.azure.com).
+2. A portálon lépjen a **Virtuális gépek** szakaszra, lépjen a Linux rendszerű virtuális géphez, és az **Áttekintés** területen kattintson a **Csatlakozás** lehetőségre. Másolja ki sztringet a virtuális géphez való csatlakozáshoz.
+3. Csatlakozzon a virtuális géphez a választott SSH-ügyféllel. Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/about) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](~/articles/virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](~/articles/virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
+4. A terminálablakban a CURL használatával küldjön kérést az Azure Instance Metadata szolgáltatás (IMDS) identitásvégpontjára egy hozzáférési jogkivonat lekérésére az Azure Resource Managerhez.  
 
-   A CURL kérelem olyan hozzáférési jogkivonatot szerezni az alábbi példában látható. Ügyeljen arra, hogy a csere `<CLIENT ID>` rendelkező a `clientId` tulajdonság által visszaadott a `az identity create` parancsot [nem hoz létre felhasználó által hozzárendelt](#create-a-user-assigned-msi): 
+   Az alábbi példában a hozzáférési jogkivonat beszerzésére irányuló CURL-kérés látható. Mindenképpen cserélje le a `<CLIENT ID>` értékét az `az identity create` parancs által a [felhasználóhoz rendelt identitás létrehozását ismertető](#create-a-user-assigned-msi) részben visszaadott `clientId` tulajdonságra. 
     
    ```bash
    curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<MSI CLIENT ID>"   
    ```
     
     > [!NOTE]
-    > Értékét a `resource` paraméter az Azure AD által várt pontosan egyeznie kell. Az erőforrás-kezelő erőforrás-azonosító használata esetén meg kell adni a záró perjelet URI-n. 
+    > Az `resource` paraméter értékének pontosan egyeznie kell az Azure AD által várt értékkel. A Resource Manager erőforrás-azonosítójának használatakor a záró perjelet is szerepeltetni kell az URI-ban. 
     
-    A válasz tartalmazza az Azure Resource Manager eléréséhez szükséges jogkivonat. 
+    A válasz tartalmazza az Azure Resource Manager eléréséhez szükséges hozzáférési jogkivonatot. 
     
-    Válasz példa:  
+    Példa a válaszra:  
 
     ```bash
     {
@@ -171,16 +171,16 @@ Lépések elvégzéséhez szüksége van egy SSH-ügyfél. Windows használ, ha 
     } 
     ```
 
-5. A hozzáférési jogkivonat Azure Resource Manager eléréséhez használja, és az erőforráscsoportot, amelyhez Ön korábban hozzáférést a felhasználó lehet hozzárendelve identitás tulajdonságainak olvasása. Ügyeljen arra, hogy a csere `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a korábban megadott értékeket, és `<ACCESS TOKEN>` a jogkivonatok az előző lépés eredményeképpen visszakapott.
+5. Az Azure Resource Managert a hozzáférési jogkivonattal érheti el, illetve azzal olvashatja annak az erőforráscsoportnak a tartalmát, amelyhez a felhasználóhoz rendelt identitás számára korábban hozzáférést adott. Cserélje le a `<SUBSCRIPTION ID>` és a `<RESOURCE GROUP>` értékét a korábban megadott értékekre, az `<ACCESS TOKEN>` értékét pedig az előző lépésben visszaadott jogkivonatra.
 
     > [!NOTE]
-    > Az URL-címe: kis-és nagybetűket, ezért ügyeljen arra, hogy a használt korábban az erőforráscsoportot és a nagybetűk "G" nevű pontos nagybetűket `resourceGroups`.  
+    > Az URL-cím megkülönbözteti a kis- és nagybetűket, ezért pontosan ugyanúgy adja meg, mint ahogy az erőforráscsoportot elnevezésekor, illetve ügyeljen a `resourceGroups` sztringben a nagy G betű használatára is.  
 
     ```bash 
     curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
 
-    A válasz az adott erőforráscsoport információkat tartalmaz, a következőhöz hasonló: 
+    A válasz tartalmazza az adott erőforráscsoport adatait, az alábbi példához hasonlóan: 
 
     ```bash
     {
@@ -193,7 +193,7 @@ Lépések elvégzéséhez szüksége van egy SSH-ügyfél. Windows használ, ha 
     
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudta, hogyan hozzon létre egy felhasználó lehet hozzárendelve identitását, és csatlakoztassa azt egy Linux virtuális gép az Azure Resource Manager API eléréséhez.  Az Azure Resource Manager webhelyen olvashat:
+Ebben az oktatóanyagban megismerte, hogy hogyan hozhat létre felhasználóhoz hozzárendelt identitást, majd csatolhatja egy Linux rendszerű virtuális géphez az Azure Resource Manager API elérése érdekében.  További információ az Azure Resource Managerről:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

@@ -9,18 +9,18 @@ ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c04514218c7ed8dfd72b94345d2deb88e663fda1
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29529977"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38740559"
 ---
-[Az Azure házirendek](/azure/azure-policy/) biztosíthatja összes erőforrás előfizetés súgó felel meg a vállalati szabványoknak. A házirendekkel korlátozza, hogy a központi telepítési beállítások csak erőforrástípusok és jóváhagyott termékváltozatok a költségek csökkentése érdekében. Szabályok és a műveletek megadhatja az erőforrásokhoz, és ezeket a szabályokat automatikus központi telepítés során lépnek érvénybe. Például a telepített erőforrások esetén típusú szabályozhatja. Vagy az engedélyezett helyek erőforrások korlátozhatja. Egyes szabályzatokat művelet megtagadása, és néhány házirend beállítása művelet naplózását.
+[Az Azure-szabályzatok](/azure/azure-policy/) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. A szabályzatokkal csökkentheti a költségeket, ha az üzembehelyezési beállításokat a jóváhagyott erőforrástípusokra és SKU-kra korlátozza. Meghatározhat szabályokat és műveleteket az erőforrásaihoz, és a rendszer automatikusan kikényszeríti ezeket az üzembe helyezés során. Szabályozhatja például az üzembe helyezett erőforrások típusát. Korlátozhatja az erőforrások számára jóváhagyott helyeket is. Egyes szabályzatok megtiltanak bizonyos műveleteket, más szabályzatok pedig beállítják egy művelet naplózását.
 
-A házirend olyan kiegészítő a szerepköralapú hozzáférés-vezérlést (RBAC). Szerepalapú felhasználói hozzáférés összpontosít, és van egy alapértelmezett megtagadási explicit és a rendszer. Házirend során, és a telepítés utáni erőforrás-tulajdonságok összpontosít. Az alapértelmezett engedélyezése és explicit megtagadja a rendszer.
+A szabályzat a szerepköralapú hozzáférés-vezérlést (RBAC) egészíti ki. Az RBAC a felhasználói hozzáférésre összpontosít, és egy alapértelmezés szerint a tiltásra épülő, külön-külön engedélyezési utasításokat fogadó rendszer. A szabályzat az erőforrás tulajdonságaira összpontosít az üzembe helyezés alatt és után. Ez egy alapértelmezés szerint megengedő, külön-külön tiltási utasításokat fogadó rendszer.
 
-Nincsenek a két fogalom megértéséhez házirendekkel - *házirend-definíciók* és *házirend-hozzárendelések*. Házirend-definíció a feltételek kikényszerítéséhez írja le. Egy házirend-hozzárendelést a művelet egy adott hatókör házirend-definíció helyezi.
+A szabályzatokkal kapcsolatban két fogalmat kell megérteni – a *szabályzatdefiníciót* és a *szabályzat-hozzárendelést*. Egy szabályzatdefiníció ismerteti a kikényszeríteni kívánt felügyeleti feltételeket. Egy szabályzat-hozzárendelés érvénybe helyez egy szabályzatdefiníciót egy adott hatókörben.
 
-![Házirendek rendelhetők](./media/resource-manager-governance-policy/policy-concepts.png)
+![Szabályzatok hozzárendelése](./media/resource-manager-governance-policy/policy-concepts.png)
 
-Azure biztosít több beépített házirend-definíciók módosítás nélkül is használhatja. Adja meg, amelyeknél engedélyezve van a hatókörén értékek megadásához paraméterértékeket. Ha a beépített házirend-definíció nem megfelel a követelményeknek, akkor [egyéni házirend-meghatározások létrehozása](../articles/azure-policy/create-manage-policy.md).
+Az Azure számos beépített, módosítás nélkül használható szabályzatdefiníciót tartalmaz. Paraméterértékeket átadva határozhatja meg a hatókörében engedélyezett értékeket. Ha a beépített szabályzatdefiníció nem felel meg az elvárásainak, [létrehozhat egyéni szabályzatdefiníciókat](../articles/azure-policy/create-manage-policy.md).

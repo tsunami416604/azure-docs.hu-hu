@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7a4391b436af4ffa303741397f0be7abf0186fb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722847"
 ---
 # <a name="import-and-publish-your-first-api"></a>Az első API importálása és közzététele 
 
@@ -52,6 +53,8 @@ Ez a szakasz bemutatja az OpenAPI-specifikációjú háttérrendszeri API import
 
     Az API értékeit a létrehozás során vagy később is megadhatja, a **Beállítások** lapon. A piros csillag a mező mellett azt jelzi, hogy a mező kitöltése kötelező.
 
+    Használja az alábbi táblázat értékeit az első API létrehozásához.
+
     |Beállítás|Érték|Leírás|
     |---|---|---|
     |**OpenAPI-specifikáció**|http://conferenceapi.azurewebsites.net?format=json|Az API-t alkalmazó szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket.|
@@ -74,19 +77,21 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 1. Válassza ki az előző lépésben létrehozott API-t (az **API-k** lapról).
 2. Kattintson a **Teszt** fülre.  ![API tesztelése](./media/api-management-get-started/test-api.png)
 3. Kattintson a **GetSpeakers** elemre.
-    A lapon megjelennek a lekérdezési paraméterek mezői, de ebben az esetben nincs ilyen. A lapon a fejlécek mezői is megjelennek. Az ehhez az API-hoz társított termék előfizetői azonosítójának egyik fejléce „Ocp-Apim-Subscription-Key” értékű. A kulcsot automatikusan kitölti a rendszer.
+    A lapon megjelennek a lekérdezési paraméterek mezői (ilyenek ebben az esetben nincsenek), valamint a fejlécek. Az ehhez az API-hoz társított termék előfizetői azonosítójának egyik fejléce „Ocp-Apim-Subscription-Key” értékű. A kulcsot automatikusan kitölti a rendszer.
 4. Kattintson a **Küldés** gombra.
 
     A háttér a **200 OK** üzenetet és néhány adatot küld válaszként.
 
 ## <a name="call-operation"></a>Művelet meghívása a fejlesztői portálról
 
-Műveletek is meghívhatók a **fejlesztői portálról** az API-k teszteléséhez. 
+Műveletek is meghívhatók a **fejlesztői portálról** az API-k teszteléséhez.
 
-1. Válassza a **Demo Conference API** lehetőséget.
-2. Kattintson a **GetSpeakers** elemre.
+1. Lépjen a **fejlesztői portálra**.
+![Fejlesztői portálon](./media/api-management-get-started/developer-portal.png)
+
+2. Kattintson az **API-k**, majd a **Demo Conference API**, majd a **GetSpeakers** lehetőségre.
     
-    A lapon megjelennek a lekérdezési paraméterek mezői, de ebben az esetben nincs ilyen. A lapon a fejlécek mezői is megjelennek. Az ehhez az API-hoz társított termék előfizetői azonosítójának egyik fejléce „Ocp-Apim-Subscription-Key” értékű. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer.
+    A lapon megjelennek a lekérdezési paraméterek mezői (ilyenek ebben az esetben nincsenek), valamint a fejlécek. Az ehhez az API-hoz társított termék előfizetői azonosítójának egyik fejléce „Ocp-Apim-Subscription-Key” értékű. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer.
 3. Kattintson a **Kipróbálás** gombra.
 4. Kattintson a **Küldés** gombra.
     

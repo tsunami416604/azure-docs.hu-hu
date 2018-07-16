@@ -1,6 +1,6 @@
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A minta-parancsprogram futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.
+A mintaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
 
 ```azurecli
 az group delete --name myResourceGroup

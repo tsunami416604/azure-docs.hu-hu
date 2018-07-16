@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: f23d7441a2abc6b66e95e226ef0d17d29ed25c9d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 3bad2e8c8011f82ab4daf75e73b1c71c46436882
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795998"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38407020"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás felépítése a Python és az Azure Cosmos DB használatával
 
@@ -31,9 +31,8 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-s
 
 Továbbá:
 
-* Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
-* Python Tools for Visual Studio, amely beszerezhető a [GitHubról](http://microsoft.github.io/PTVS/). Ez az oktatóanyag a Python Tools VS 2015-ös verziót használja.
-* A [python.org](https://www.python.org/downloads/release/python-2712/) webhelyen elérhető Python 2.7-es verzió
+* Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy az **Azure-fejlesztési** és a **Python-fejlesztési** számítási feladatot válassza ki a Visual Studio telepítése során.
+* Ezenkívül a Python 2 lehetőséget is válassza ki a **Python-fejlesztési** számítási feladatban, vagy töltse le a Python 2.7-es verzióját a [python.org](https://www.python.org/downloads/release/python-2712/) webhelyről.
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 

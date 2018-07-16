@@ -56,7 +56,7 @@
 ## [Jelentéskészítés](../active-directory/authentication/howto-mfa-reporting.md)
 ### [Adatgyűjtés](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
-## [MFA – felhasználói útmutató](../active-directory/authentication/end-user/current/multi-factor-authentication-end-user.md)
+## [MFA – felhasználói útmutató](../active-directory/user-help/multi-factor-authentication-end-user.md)
 
 ## Hibaelhárítás
 ### [GYIK](../active-directory/authentication/multi-factor-authentication-faq.md)

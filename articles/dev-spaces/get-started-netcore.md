@@ -6,17 +6,17 @@ ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 author: ghogen
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 07/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 8b14f06f364bde1d4c5588e60a54aefe07c821d2
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 4da5b42ddd235fa26834e582a911140116692d34
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945921"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299559"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Bevezetés az Azure Dev Spaces .NET Core segítségével történő használatába
 
@@ -130,80 +130,7 @@ Frissítse a webalkalmazást a böngészőben, és lépjen az Információ oldal
 
 **Most tehát rendelkezésére áll egy módszer, amellyel gyorsan iterálhatja a kódot, és közvetlenül a Kubernetesben végezheti a hibakeresést.** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
 
-## <a name="call-a-service-running-in-a-separate-container"></a>Különálló tárolóban futó szolgáltatás hívása
+## <a name="next-steps"></a>További lépések
 
-Ebben a szakaszban egy második, `mywebapi` nevű szolgáltatást fog létrehozni, és a `webfrontend` használatával fogja hívni azt. Minden szolgáltatás különálló tárolókban fut. Ezt követően hibakeresést fog futtatni mindkét tárolóban.
-
-![Több tároló](media/common/multi-container.png)
-
-### <a name="download-sample-code-for-mywebapi"></a>Mintakód letöltése a *mywebapi* szolgáltatáshoz
-Az egyszerűség kedvéért töltsünk le egy mintakódot a GitHub-adattárból. Navigáljon a https://github.com/Azure/dev-spaces helyre, és válassza a **Klónozás vagy Letöltés** lehetőséget a GitHub-adattár letöltéséhez. Az ehhez a szakaszhoz tartozó kód a következő helyen található: `samples/dotnetcore/getting-started/mywebapi`.
-
-### <a name="run-mywebapi"></a>A *mywebapi* szolgáltatás futtatása
-1. Nyissa meg a `mywebapi` mappát egy *különálló VS Code-ablakban*.
-1. Nyomja le az F5 billentyűt, és várjon, amíg a rendszer felépíti és telepíti a szolgáltatást. A folyamat befejezését a VS Code hibakeresési ablakának megjelenése jelzi.
-1. Jegyezze fel a végpont URL-címét, amely valahogy így fog kinézni: http://localhost:\<portnumber\>. **Tipp: A VS Code-állapotsáv egy kattintható URL-címet jelenít meg.** Úgy tűnhet, hogy a tároló helyileg fut, de valójában az Azure-beli Dev Spaces-terünkben fut. A localhost cím oka az, hogy a `mywebapi` nem határozott meg egy nyilvános végpontot sem, és kizárólag a Kubernetes-példányon belülről lehet hozzáférni. Az Ön kényelme, valamint a helyi gép és a privát szolgáltatás közötti interakció elősegítése érdekében az Azure Dev Spaces egy ideiglenes SSH-csatornát hoz létre az Azure-ban futó tárolóhoz.
-1. Ha a `mywebapi` elkészült, nyissa meg a böngészőben a localhost címét. Fűzze a `/api/values` sztringet az URL-címhez a `ValuesController`-hez tartozó alapértelmezett GET API meghívásához. 
-1. Ha minden lépés sikeres volt, választ kell kapnia a `mywebapi` szolgáltatástól.
-
-### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>Kérés indítása a *webfrontend*-ből a *mywebapi*-ba
-Most írjunk olyan kódot a `webfrontend` szolgáltatásban, amely kérést indít a `mywebapi` felé.
-1. Váltson a `webfrontend` VS Code-ablakára.
-1. *Cserélje le* az About metódushoz tartozó kódot:
-
-    ```csharp
-    public async Task<IActionResult> About()
-    {
-        ViewData["Message"] = "Hello from webfrontend";
-        
-        using (var client = new System.Net.Http.HttpClient())
-            {
-                // Call *mywebapi*, and display its response in the page
-                var request = new System.Net.Http.HttpRequestMessage();
-                request.RequestUri = new Uri("http://mywebapi/api/values/1");
-                if (this.Request.Headers.ContainsKey("azds-route-as"))
-                {
-                    // Propagate the dev space routing header
-                    request.Headers.Add("azds-route-as", this.Request.Headers["azds-route-as"] as IEnumerable<string>);
-                }
-                var response = await client.SendAsync(request);
-                ViewData["Message"] += " and " + await response.Content.ReadAsStringAsync();
-            }
-
-        return View();
-    }
-    ```
-
-Az előző példakód továbbítja az `azds-route-as` fejlécet a bejövő kérelemből a kimenő kérelemhez. Később látni fogja, hogy ez miként segíti a csapatot az együttműködésen alapuló fejlesztésben.
-
-### <a name="debug-across-multiple-services"></a>Hibakeresés több szolgáltatásban
-1. Ezen a ponton a `mywebapi` elvileg még mindig fut a hozzácsatolt hibakeresővel. Ha nem fut, nyomja le az F5 billentyűt a `mywebapi` projektben.
-1. Állítson be egy töréspontot a `Get(int id)` metódussal, amely kezeli a `api/values/{id}` GET kéréseit.
-1. A `webfrontend` projektben állítson be egy töréspontot, mielőtt az GET kérést küld a `mywebapi/api/values` felé.
-1. Nyomja le az F5 billentyűt a `webfrontend` projektben.
-1. Hívja meg a webalkalmazást, és tekintse át a kódot mindkét szolgáltatásban.
-1. A webalkalmazás About (Információ) oldalán a két szolgáltatás által összefűzött üzenet jelenik meg: „Hello from webfrontend and Hello from mywebapi.”
-
-
-Remek! Most már rendelkezik egy többtárolós alkalmazással, ahol az egyes tárolók külön-külön fejleszthetők és helyezhetők üzembe.
-
-## <a name="learn-about-team-development"></a>A csapatban végzett fejlesztés bemutatása
-
-[!INCLUDE[](includes/team-development-1.md)]
-
-Lássuk működés közben. Váltson a `mywebapi` VS Code-ablakára, és szerkessze a `string Get(int id)` metódus kódját, például:
-
-```csharp
-[HttpGet("{id}")]
-public string Get(int id)
-{
-    return "mywebapi now says something new";
-}
-```
-
-
-[!INCLUDE[](includes/team-development-2.md)]
-
-[!INCLUDE[](includes/well-done.md)]
-
-[!INCLUDE[](includes/clean-up.md)]
+> [!div class="nextstepaction"]
+> [A csapatban végzett fejlesztés bemutatása](team-development-netcore.md)

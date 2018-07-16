@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: f75671e2e5511054f3db550a8c24e62d031492c3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4c537b06c4ff50d90d9fd5a847b378038f252790
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776712"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972274"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése Xamarin.Android-alkalmazásokba az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -56,9 +56,9 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
     ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
-Az értesítési központ konfigurálva van az FCM-mel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
+Az értesítési központ konfigurálva van az FCM-mel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
-## <a name="create-xamainandroid-app-and-connect-it-to-notification-hub"></a>Egy Xamarin.Android-alkalmazás létrehozása és csatlakoztatása az értesítési központhoz
+## <a name="create-xamarinandroid-app-and-connect-it-to-notification-hub"></a>Egy Xamarin.Android-alkalmazás létrehozása és csatlakoztatása az értesítési központhoz
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Egy Visual Studio-projekt létrehozása és NuGet-csomagok hozzáadása
 1. A Visual Studióban mutasson a **File** (Fájl) menüre, és válassza a **New** (Új), majd a **Project** (Projekt) elemet. 
@@ -100,8 +100,8 @@ Nyissa meg az **AndroidManifest.xml** fájlt, és illessze a következő `<recei
 
 1. Gyűjtse össze az alábbi információikat az Android-alkalmazásra és az értesítési központra vonatkozóan:
    
-   * **Figyelési kapcsolati karakterlánc**: Az [Azure Portalon] irányítópultján válassza a **Kapcsolati karakterláncok megtekintése** elemet. Másolja a *DefaultListenSharedAccessSignature* kapcsolati karakterláncot ezen értékhez.
-   * **Központ neve**: A központ neve az [Azure Portalon]. Például: *mynotificationhub2*.
+   * **Figyelési kapcsolati sztring**: Az [Azure Portal] irányítópultján válassza a **Kapcsolati sztringek megtekintése** elemet. Másolja a *DefaultListenSharedAccessSignature* kapcsolati sztringet ezen értékhez.
+   * **Központ neve**: A központ neve az [Azure Portal]. Például: *mynotificationhub2*.
      
 2. A **Solution Explorer** (Megoldáskezelő) ablakában kattintson a jobb gombbal a **project** (projekt) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **Class** (Osztály) lehetőségre. 
 4. Hozzon létre egy **Constants.cs** osztályt a Xamarin-projekthez, és definiálja a következő konstans értékeket az osztályban. A helyőrzőket cserélje le az értékekkel.
@@ -142,6 +142,7 @@ Nyissa meg az **AndroidManifest.xml** fájlt, és illessze a következő `<recei
 8. Adja hozzá a következő using utasításokat a **MyFirebaseIIDService.cs** osztályhoz:
    
     ```csharp
+    using Android.App;
     using Android.Util;
     using WindowsAzure.Messaging;
     using Firebase.Iid;
@@ -183,6 +184,7 @@ Nyissa meg az **AndroidManifest.xml** fájlt, és illessze a következő `<recei
 12. Adja hozzá a következő using utasításokat a **MyFirebaseMessagingService.cs** osztályhoz.
     
     ```csharp
+        using Android.App;
         using Android.Util;
         using Firebase.Messaging;
     ```
@@ -237,7 +239,7 @@ Nyissa meg az **AndroidManifest.xml** fájlt, és illessze a következő `<recei
 16. **Futtassa** az alkalmazást az eszközén vagy a betöltött emulátoron.
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>Tesztértesítés küldése az Azure Portalról
-Az [Azure Portalon] *Tesztküldés* lehetőségével tesztelheti az alkalmazásban az értesítések fogadását. A parancs egy leküldéses tesztértesítést küld az eszközre.
+Az [Azure Portal] *Tesztküldés* lehetőségével tesztelheti az alkalmazásban az értesítések fogadását. A parancs egy leküldéses tesztértesítést küld az eszközre.
 
 ![Azure Portal – Küldés tesztelése](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
@@ -287,7 +289,7 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Visual Studio és Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 
-[Azure Portalon]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: http://msdn.microsoft.com/library/dn282661.aspx

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 27e5b7fed227248d9d60c8ede460c9ecc65ca52d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5346467dff40832aa35799ee3d532e99bf14d569
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096274"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38482074"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése x64-es Linux-eszközön
 
@@ -44,6 +44,22 @@ Adja hozzá az Azure IoT bővítményt a Cloud Shell-példányhoz.
    az extension add --name azure-cli-iot-ext
    ```
 
+## <a name="prerequisites"></a>Előfeltételek
+
+A rövid útmutató egy linuxos gépet használ IoT Edge-eszközként. Ha nem áll rendelkezésre ilyen a teszteléshez, létrehozhat egyet az Azure CLI-vel. 
+
+Hozzon létre egy új erőforráscsoportot. A könnyű kezelés érdekében használhatja ezt az erőforráscsoportot a rövid útmutatóban létrehozott többi Azure-erőforráshoz.  
+
+   ```azurecli-interactive
+   az group create --name IoTEdgeResources --location westus
+   ```
+
+Hozza létre a virtuális gépet. Az IoT Edge teszteléséhez nincs szükség nagyon nagy virtuális gépre. A **B1ms** méret például elegendő.
+
+   ```azurecli-interactive
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_B1ms
+   ```
+
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 A rövid útmutató első lépéseként hozza létre az IoT Hubot az Azure Portalon.
@@ -51,17 +67,19 @@ A rövid útmutató első lépéseként hozza létre az IoT Hubot az Azure Porta
 
 Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta az IoT Hubot, és már létrehozott egy ingyenes központot, használhatja azt is. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet. 
 
-1. Az Azure Cloud Shellben hozzon létre egy erőforráscsoportot. A következő kód egy **TestResources** nevű erőforráscsoportot hoz létre az **USA nyugati régiójában**. Ha a rövid útmutatóhoz és az oktatóanyagokhoz szükséges összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. 
+1. Az Azure Cloud Shellben hozzon létre egy erőforráscsoportot, ha még nem tette meg az előkészületek során. Ha a rövid útmutatóhoz és az oktatóanyagokhoz szükséges összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. 
 
    ```azurecli-interactive
-   az group create --name TestResources --location westus
+   az group create --name IoTEdgeResources --location westus
    ```
 
-1. Hozzon létre egy IoT-központot az új erőforráscsoportban. A következő kód egy ingyenes **F1** központot hoz létre a **TestResources** erőforráscsoportban. A *{hub_name}* elemet cserélje le az IoT Hub központ egyedi nevére.
+1. Hozzon létre egy IoT-központot az új erőforráscsoportban. A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResources** erőforráscsoportban. A *{hub_name}* elemet cserélje le az IoT Hub központ egyedi nevére.
 
    ```azurecli-interactive
    az iot hub create --resource-group TestResources --name {hub_name} --sku F1 
    ```
+
+   Ha hibaüzenetet kap, mert az előfizetése már tartalmaz egy ingyenes központot, akkor módosítsa az SKU-t **S1**-re. 
 
 ## <a name="register-an-iot-edge-device"></a>IoT Edge-eszköz regisztrálása
 
@@ -73,7 +91,7 @@ Hozzon létre egy eszközidentitást a szimulált eszközhöz, hogy az kommunik�
 1. Az Azure Cloud Shellben a következő paranccsal hozza létre a **myEdgeDevice** nevű eszközt a központjában.
 
    ```azurecli-interactive
-   az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
+   az iot hub device-identity create --hub-name {hub_name} --device-id myEdgeDevice --edge-enabled
    ```
 
 1. Kérje le az eszköze kapcsolati sztringjét, amely összeköti a fizikai eszközt az IoT Hubban tárolt identitással. 
@@ -91,6 +109,8 @@ Telepítse és indítsa el eszközén az Azure IoT Edge-futtatókörnyezetet.
 ![Eszköz regisztrálása][5]
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. Az **IoT Edge biztonsági démon** az Edge-eszközök indulásakor lép működésbe, és az IoT Edge-ügynök elindításával elvégzi az eszköz rendszerindítását. Az **IoT Edge-ügynök** a modulok üzembe helyezését és monitorozását segíti az IoT Edge-eszközön, beleértve az IoT Edge-központot is. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli. 
+
+Hajtsa végre a következő lépéseket a rövid útmutatóhoz előkészített linuxos gépen vagy virtuális gépen. 
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>Eszköz regisztrálása a szoftveradattár használatához
 
@@ -122,11 +142,16 @@ Frissítse az **apt-get** parancsot.
    sudo apt-get update
    ```
 
-Telepítse a Mobyt, egy tároló-futtatókörnyezetet és annak parancssori felületi parancsait. 
+Telepítse a **Moby** tároló-futtatókörnyezetet.
 
    ```bash
    sudo apt-get install moby-engine
-   sudo apt-get install moby-cli   
+   ```
+
+Telepítse a Moby CLI-parancsait. 
+
+   ```bash
+   sudo apt-get install moby-cli
    ```
 
 ### <a name="install-and-configure-the-iot-edge-security-daemon"></a>Az IoT Edge biztonsági démon telepítése és konfigurálása
@@ -146,15 +171,19 @@ A biztonsági démon rendszerszolgáltatásként lesz telepítve, így az IoT Ed
    sudo nano /etc/iotedge/config.yaml
    ```
 
-3. Adja hozzá az IoT Edge-eszköz kapcsolati sztringjét, amelyet az eszköz regisztrálásakor másolt. Cserélje le a **device_connection_string** változó értékét, amelyet a rövid útmutató korábbi részében másolt.
+3. Adja hozzá az IoT Edge-eszköz kapcsolati sztringjét. Keresse meg a **device_connection_string** értéket, és frissítse arra a sztringre, amelyet az eszköz regisztrálása után másolt ki.
 
-4. Indítsa újra az Edge biztonsági démont:
+4. Mentse és zárja be a fájlt. 
+
+   `CTRL + X`, `Y`, `Enter`
+
+4. Indítsa újra az IoT Edge biztonsági démont.
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-5. Ellenőrizze, hogy az Edge biztonsági démon rendszerszolgáltatásként fut-e:
+5. Ellenőrizze, hogy az Edge biztonsági démon rendszerszolgáltatásként fut-e.
 
    ```bash
    sudo systemctl status iotedge
@@ -168,13 +197,14 @@ A biztonsági démon rendszerszolgáltatásként lesz telepítve, így az IoT Ed
    journalctl -u iotedge
    ```
 
-6. Tekintse meg az eszközön futó modulokat: 
+6. Tekintse meg az eszközön futó modulokat. 
+
+   >[!TIP]
+   >Ha `iotedge`-parancsokat futtat, a *sudo* kifejezést kell eléjük írnia. Az engedélyek frissítéséhez jelentkezzen ki a gépről, majd jelentkezzen újra be. Ezután már futtathat emelt szintű jogosultságok nélkül is `iotedge`-parancsokat. 
 
    ```bash
    sudo iotedge list
    ```
-
-   Kijelentkezést és bejelentkezést követően a *sudo* nem szükséges a fenti parancshoz.
 
    ![Egy modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-1.png)
 
@@ -214,7 +244,22 @@ Az eszköz által küldött telemetriát is megtekintheti az [IoT Hub Explorer e
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ha el szeretné távolítani a telepítéseket az eszközéről, azt a következő parancsokkal teheti meg.  
+Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ha nem, törölheti a létrehozott Azure-erőforrásokat, és eltávolíthatja az IoT Edge-futtatókörnyezetet az eszközről. 
+
+### <a name="delete-azure-resources"></a>Azure-erőforrások törlése
+
+Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta létre, törölheti azt a csoportot és az összes társított erőforrást. Ha van valami abban az erőforráscsoportban, amit meg szeretne tartani, csak azokat a különálló erőforrásokat törölje, amelyektől meg szeretne szabadulni. 
+
+Erőforráscsoport eltávolításához hajtsa végre az alábbi lépéseket: 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+2. A **Szűrés név alapján...** mezőbe írja be az IoT Hubot tartalmazó erőforráscsoport nevét. 
+3. Az eredménylistában kattintson az erőforráscsoporttól jobbra lévő **…** ikonra, majd kattintson az **Erőforráscsoport törlése** elemre.
+4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
+
+### <a name="remove-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet eltávolítása
+
+Ha el szeretné távolítani a telepítéseket az eszközéről, azt a következő parancsokkal teheti meg.  
 
 Távolítsa el az IoT Edge-futtatókörnyezetet.
 
@@ -222,22 +267,24 @@ Távolítsa el az IoT Edge-futtatókörnyezetet.
    sudo apt-get remove --purge iotedge
    ```
 
-Törölje az eszközön létrehozott tárolókat. 
+Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tárolók leállnak, de továbbra is ott lesznek az eszközön. Tekintse meg az összes tárolót.
 
    ```bash
-   sudo docker rm -f $(sudo docker ps -aq)
+   sudo docker ps -a
+   ```
+
+Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. Ha más nevet adott neki, módosítsa a tempSensor tároló nevét. 
+
+   ```bash
+   sudo docker rm -f tempSensor
+   sudo docker rm -f edgeHub
+   sudo docker rm -f edgeAgent
    ```
 
 Távolítsa el a tároló-futtatókörnyezetet.
 
    ```bash
    sudo apt-get remove --purge moby
-   ```
-
-Ha már nincs szüksége a létrehozott Azure-erőforrásokra, a következő paranccsal törölheti az erőforráscsoportot és az ahhoz tartozó összes erőforrást:
-
-   ```azurecli-interactive
-   az group delete --name TestResources
    ```
 
 ## <a name="next-steps"></a>További lépések

@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 51ed7dbead7f9085de563d2fb20c4e4a08f90bb2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 951ce8947d113eaad2ea0e3b5df5e9714aa33dd8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723187"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Oktatóanyag: Az Azure Machine Learning Workbench használata haladó adat-előkészítéshez (Kerékpármegosztási adatok)
 Az Azure Machine Learning (előzetes verzió) egy adatszakértőknek készült, az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőméretű üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
@@ -170,10 +172,10 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 
 4. **Adattípusok**: Tekintse át az automatikusan észlelt adattípusokat. A Machine Learning Workbench elemzi a fájlban lévő adatokat, és kikövetkezteti a használandó adattípusokat.
 
-   a. Ezen adatok esetében minden oszlop **ADATTÍPUS** tulajdonságát módosítsa **Karakterlánc** értékre.
+   a. Ezen adatok esetében minden oszlop **ADATTÍPUS** tulajdonságát módosítsa **Sztring** értékre.
 
    > [!NOTE]
-   > A Karakterlánc adattípus még szerepelni fog az oktatóanyag későbbi részében a Workbench funkcióinak bemutatásához. 
+   > A Sztring adattípus még szerepelni fog az oktatóanyag későbbi részében a Workbench funkcióinak bemutatásához. 
 
    ![Az adattípusok áttekintése](media/tutorial-bikeshare-dataprep/datatypedetection.png)
 
@@ -447,12 +449,12 @@ Elkészült az időjárási adatok előkészítésével. A következő lépésbe
 
 ## <a name="use-the-map-inspector"></a>A Térkép vizsgáló használata
 
-Adatok előkészítésekor a karakterlánc, szám és földrajzi adatokhoz vizsgálónak nevezett vizualizáció érhetők el. Ezek segítenek jobban megérteni az adatokat, és azonosítani a kiugró értékeket. Kövesse a következő lépéseket a Térkép vizsgáló használatához.
+Adatok előkészítésekor a sztring, szám és földrajzi adatokhoz vizsgálónak nevezett vizualizáció érhetők el. Ezek segítenek jobban megérteni az adatokat, és azonosítani a kiugró értékeket. Kövesse a következő lépéseket a Térkép vizsgáló használatához.
 
 1. Válassza ki együtt a **start station latitude** és a **start station longitude** oszlopot. Kattintson a jobb gombbal az egyik oszlopra, majd válassza a **Térkép** lehetőséget.
 
     > [!TIP]
-    > Több elem kiválasztásához tartsa lenyomva a Ctrl (Mac gépeken a Command ⌘) billentyűt, és közben jelölje ki az egyes oszlopok fejléceit.
+    > Több elem kiválasztásához tartsa lenyomva a Ctrl (Mac gépeken a Command ⌘) billentyűt, és közben jelölje ki az egyes oszlopok fejlécét.
 
     ![Térkép-vizualizáció](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 

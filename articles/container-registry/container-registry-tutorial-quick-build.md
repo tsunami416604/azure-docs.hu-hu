@@ -9,11 +9,12 @@ ms.topic: tutorial
 ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: fefa6096e39d86b94f8ea348d894179220ad09e1
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: d86c47c890fd15515c590e06b395ca82f9747ffe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461469"
 ---
 # <a name="tutorial-build-container-images-in-the-cloud-with-azure-container-registry-build"></a>Oktatóanyag: Tárolórendszerképek összeállítása a felhőben az Azure Container Registry Build használatával
 
@@ -34,7 +35,7 @@ A további oktatóanyagokban elsajátítja majd, hogy hogyan lehet az ACR Build 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.32-es** vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet: [Az Azure CLI 2.0 telepítése][azure-cli].
+Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.32-es** vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

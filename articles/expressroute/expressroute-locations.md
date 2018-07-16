@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2018
 ms.author: jaredro
-ms.openlocfilehash: eef664877fab68fc78e9bb5717d92594900d0f5f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 8fa32350412b3a27c06d218342cdd7ad99ca5245
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751111"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972417"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -51,6 +51,9 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **Ausztrália kormánya** | Ausztrália középső régiója, Ausztrália 2. középső régiója |Canberra, Canberra2 | 
 | **India** |Nyugat-India, Közép-India, Dél-India |Csennai, Mumbai |
 | **Dél-Korea** |Korea középső régiója, Korea déli régiója |Busan, Szöul |
+| **Dél-Afrika** |[Dél-Afrika nyugati régiója+, Dél-Afrika északi régiója+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Fokváros, Johannesburg |
+
+ **+** = hamarosan elérhető
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>A régiók és az országos felhők geopolitikai határai
 Az alábbi tábla a régiók és az országos felhők geopolitikai határainak információit tartalmazza.
@@ -95,7 +98,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[InterCloud](https://www.intercloud.com/)** |Támogatott |Támogatott |Amszterdam, London, Párizs, Szingapúr, Washington, D.C. |
 | **Internet2** |Támogatott |Támogatott |Washington, D.C. |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Támogatott |Támogatott |Oszaka, Tokió |
-| **Internet Solutions - Cloud Connect** |Támogatott |Támogatott |Amszterdam, London |
+| **[Internet Solutions – Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Támogatott |Támogatott |Fokváros, Johannesburg, London |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Támogatott |Támogatott |Amszterdam, Dublin, London, Párizs |
 | **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|Támogatott |Támogatott | Szilícium-völgy, Toronto |
 | **Jisc** |Támogatott |Támogatott |London |
@@ -106,7 +109,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Támogatott |Támogatott |Fokváros, Johannesburg |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Denver, Dublin, Hongkong, Las Vegas, London, Los Angeles, Melbourne, Miami, New York, Québec város, San Antonio, Seattle, Szilícium-völgy, Szingapúr, Szingapúr2, Sydney, Toronto, Washington, D.C. |
 | **MTN** |Támogatott |Támogatott |London |
-| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |Támogatott |Támogatott |Miami, Sao Paulo |
+| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |Támogatott |Támogatott |Dallas, Miami, Sao Paulo |
 | **[Következő generációs adatok](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Támogatott |Támogatott |Newport (Wales) |
 | **NEXTDC** |Támogatott |Támogatott |Melbourne, Sydney |
 | **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |Támogatott |Támogatott |Amszterdam, Hongkong, London, Los Angeles, Oszaka, Szingapúr, Sydney, Tokió, Washington DC |

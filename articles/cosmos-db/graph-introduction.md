@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: ee6e3adc3300178164b83ee1f8dc2ab307eec45b
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 333bb4074ac741e854ff56c7c397b0e3be247f1b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081212"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857150"
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB használatába: a Graph API
 
@@ -99,7 +99,7 @@ Az Azure Cosmos DB a következő megkülönböztetett képességeket biztosítja
 
  Öt jól meghatározott konzisztenciaszint közül választhat a konzisztencia és a teljesítmény közötti optimális kompromisszum elérése érdekében. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Ezek a részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy ésszerű kompromisszumot alakítson ki a konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [Beállítható adatkonzisztencia-szintek az Azure Cosmos DB-ben](consistency-levels.md).
 
-Az Azure Cosmos DB emellett képes többféle modellt (például dokumentumokat és gráfokat) alkalmazni egyazon tárolón/adatbázison belül. Dokumentumgyűjtemények használatával a gráfadatokat a dokumentumokkal együtt tárolhatja. JSON-alapú SQL-lekérdezések és Gremlin-lekérdezések használatával egyaránt lekérdezheti a gráffal egyező adatokat.
+Az Azure Cosmos DB emellett képes többféle modellt (például dokumentumokat és gráfokat) alkalmazni egyazon tárolón/adatbázison belül. Dokumentumtárolók használatával a gráfadatokat a dokumentumokkal együtt tárolhatja. JSON-alapú SQL-lekérdezések és Gremlin-lekérdezések használatával egyaránt lekérdezheti a gráffal egyező adatokat.
 
 ## <a name="get-started"></a>Bevezetés
 Azure Cosmos DB-fiókokat a Graph API-t támogató Azure parancssori felület (CLI), Azure PowerShell vagy Azure Portal használatával hozhat létre. A fiókok létrehozását követően az Azure Portal szolgáltatásvégpontot biztosít (például `https://<youraccount>.gremlin.cosmosdb.azure.com`), amely egy WebSocket-előtér a Gremlin számára. TinkerPop-kompatibilis eszközeit, például a [Gremlin konzolt](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) beállíthatja, hogy ehhez a végponthoz kapcsolódjanak, és az alkalmazásokat a Java, a Node.js vagy bármely Gremlin ügyfél-illesztőprogram használatával hozzák létre.

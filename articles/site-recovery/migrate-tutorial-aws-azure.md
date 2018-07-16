@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0474ce532831e15738ec882dfdf451bc35d09cf
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ee38fe542ca6e2e4e1f8e09b54717d4390b453d0
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737612"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922657"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -34,10 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 - Ellenőrizze, hogy a migrálni kívánt virtuális gépek támogatott operációsrendszer-verziót futtatnak-e. Támogatott verziók többek között: 
     - Windows Server 2016
-    - Windows Server 2012 R2
-    - Windows Server 2012
-    - A Windows Server 2008 R2 SP1 vagy újabb 64 bites verziója
-    - Red Hat Enterprise Linux 6.7 (csak HVM virtualizált példányok), paravirtualizált Citrix vagy AWS illesztővel. A paravirtualizált Red Hat illesztőprogramokat futtató példányok *nem* támogatottak.
+    - Red Hat Enterprise Linux 6.7 (csak HVM virtualizált példányok), és csak Citrix PV- vagy AWS PV-illesztőkkel rendelkezhet. A Red Hat PV-illesztőket futtató példányok **nem** támogatottak.
 
 - A mobilitási szolgáltatásnak az összes replikálni kívánt virtuális gépen telepítve kell lennie. 
 
@@ -54,7 +51,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az Azure-ban rendelkezésre kell állnia néhány erőforrásnak, amelyeket a migrált EC2-példányok használhatnak. Egy tárfiók, egy kulcstároló és egy virtuális hálózat szükséges.
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-beli virtuális gépek a tárolóból lesznek létrehozva a helyszínről az Azure-ba történő feladatátvétel során.
 

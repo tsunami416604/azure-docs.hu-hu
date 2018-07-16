@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 25e922e211304774462c747ea6a003e47fb38736
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e4e783d131c4ceee9315b3442ee504e662157d8c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797770"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856807"
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Adatok importálása az Azure Cosmos DB Table API-val való használatra
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az átviteli sebesség növelése: az adatok migrálásának időtartama az egyes gyűjteményekhez vagy egy gyűjteménykészlethez beállított átviteli sebességtől függ. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. További információk az átviteli sebesség növeléséről az Azure Portalon: Teljesítményszintek és tarifacsomagok az Azure Cosmos DB-ben.
+* Átviteli sebesség növelése: Az adatátmigrálás időtartamát az egyéni tárolóhoz vagy a tárolócsoporthoz beállított átviteli sebesség határozza meg. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. További információk az átviteli sebesség növeléséről az Azure Portalon: Teljesítményszintek és tarifacsomagok az Azure Cosmos DB-ben.
 
 ## <a name="data-migration-tool"></a>Adatmigrálási eszköz
 

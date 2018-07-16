@@ -1,6 +1,6 @@
 ---
-title: A webes alkalmazás egyéni DNS-rekordok létrehozása |} Microsoft Docs
-description: Hogyan hozhat létre egyéni tartományt a webalkalmazás Azure DNS használatával DNS-rekordokat.
+title: Webalkalmazások egyéni DNS-rekordok létrehozása |} A Microsoft Docs
+description: Hogyan hozhat létre egyéni tartományt a webalkalmazást az Azure DNS használatával DNS-rekordjait.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -13,40 +13,40 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: kumud
-ms.openlocfilehash: 00a56a2683e95e70bb13acd6b936e766f044e1cd
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7ee3dbdcd4d8b2627273a871aec94583b6c5dd6a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771973"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39059801"
 ---
-# <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>Egyéni tartomány DNS-rekordok webalkalmazás létrehozása
+# <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>A webalkalmazás DNS-rekordok létrehozása az egyéni tartomány
 
-Azure DNS az egyéni tartománynév üzemeltetéséhez a web Apps használatával. Azure-webalkalmazás létrehozásakor és azt szeretné, hogy a felhasználók által eléréséhez például contoso.com, vagy a www.contoso.com teljes tartománynév használatával.
+Az Azure DNS segítségével a webalkalmazásokhoz egyéni tartományt üzemeltetéséhez. Például egy Azure-webalkalmazást hoz létre, és azt szeretné, hogy a felhasználók által eléréséhez a contoso.com vagy www.contoso.com az FQDN-ként.
 
 Ehhez hozzon létre két rekordot rendelkezik:
 
-* Válassza a contoso.com gyökérrekordként "A"
-* A www-név, amely A-rekordra mutat "CNAME" rekord
+* A contoso.com mutató egy gyökérszintű "A" rekord
+* Egy "CNAME" rekord, amely a-rekordra mutat www neve
 
-Ne feledje, hogy az A rekord egy webalkalmazás létrehozásakor az Azure-ban, az A rekordot kell manuálisan frissíteni, ha az alapul szolgáló IP-cím a webes alkalmazás módosítások.
+Ne feledje, hogy ha egy A rekordot egy webalkalmazást hoz létre az Azure-ban, az A rekord manuálisan kell frissíteni, ha az alapul szolgáló IP-cím a web app módosítások.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Mielőtt elkezdené, először hozzon létre egy DNS-zónát az Azure DNS-, és a zóna delegálása az Azure DNS a tartományregisztráló.
+Mielőtt elkezdené, először hozzon létre egy DNS-zóna Azure DNS-ben, és a zóna delegálása az Azure DNS-be a regisztráló.
 
-1. Hozzon létre egy DNS-zónát, kövesse a lépéseket a [hozzon létre egy DNS-zóna](dns-getstarted-create-dnszone.md).
-2. A DNS, az Azure DNS-delegálását, kövesse a lépéseket a [DNS-tartomány delegálás](dns-domain-delegation.md).
+1. DNS-zóna létrehozásához kövesse a lépéseket a [DNS-zóna létrehozása](dns-getstarted-create-dnszone.md).
+2. Az Azure DNS a DNS-kiszolgáló delegálása, kövesse [tartomány DNS-delegálás](dns-domain-delegation.md).
 
-Zóna létrehozása, és azt az Azure DNS-delegálás, után is létrehozhat rögzíti az egyéni tartományhoz.
+Miután létrehozta a zónát, és azt az Azure DNS-delegálás, majd az egyéni tartomány hozhat létre rekordokat.
 
-## <a name="1-create-an-a-record-for-your-custom-domain"></a>1. Az egyéni tartomány az A rekord létrehozása
+## <a name="1-create-an-a-record-for-your-custom-domain"></a>1. Hozzon létre egy A rekordot az egyéni tartomány
 
-Az A rekord segítségével hozzárendelhet egy nevet az IP-címét. Az alábbi példa azt fogja rendeljen egy A rekordot egy IPv4-címére:
+A rekord segítségével-név leképezése az IP-címét. A következő példa hozzárendeli \@ , egy A rekordot egy IPv4-címre:
 
 ### <a name="step-1"></a>1. lépés
 
-Az A rekord létrehozása és hozzárendelése egy változó $rs
+Hozzon létre egy rekordot, és rendelje hozzá egy változóhoz $rs
 
 ```powershell
 $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 600
@@ -54,9 +54,9 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>2. lépés
 
-Az IPv4-alapú értékkel adja hozzá a korábban létrehozott rekordkészlet "\@\" a hozzárendelt $rs változó segítségével. Hozzárendelt IPv4 érték lesz a webalkalmazáshoz tartozó IP-címét.
+Adja hozzá az IPv4-értéket a korábban létrehozott rekordhalmazhoz "\@" hozzárendelt $rs változó használatával. Hozzárendelt IPv4 érték lesz az IP-cím a webalkalmazás számára.
 
-Az IP-cím keresése a webes alkalmazás, kövesse a lépéseket a [egyéni tartománynév beállítása az Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
+Webes alkalmazásokhoz az IP-cím megkereséséhez kövesse [egyéni tartománynév konfigurálása az Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"
@@ -64,19 +64,19 @@ Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address
 
 ### <a name="step-3"></a>3. lépés
 
-A változtatások véglegesítése a rekordhalmaz. Használjon `Set-AzureRMDnsRecordSet` feltölteni az Azure DNS-rekordot a módosításokat:
+A módosítások véglegesítéséhez, a rekordhalmaz. Használat `Set-AzureRMDnsRecordSet` tölthet fel a módosításokat az Azure DNS-rekordot:
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
 ```
 
-## <a name="2-create-a-cname-record-for-your-custom-domain"></a>2. Az egyéni tartomány CNAME rekord létrehozása
+## <a name="2-create-a-cname-record-for-your-custom-domain"></a>2. Hozzon létre egy CNAME rekordot, az egyéni tartományhoz
 
-Ha a tartomány már az Azure DNS kezeli (lásd: [DNS-tartomány delegálás](dns-domain-delegation.md), az alábbi contoso.azurewebsites.net CNAME rekord létrehozása a példát.
+Ha a tartomány már kezeli az Azure DNS (lásd: [tartomány DNS-delegálás](dns-domain-delegation.md), a következőt használhatja a példát, hogy hozzon létre egy CNAME rekordot a contoso.azurewebsites.net.
 
 ### <a name="step-1"></a>1. lépés
 
-Nyissa meg a Powershellt, és hozzon létre egy új CNAME rekordkészlete, és rendelje hozzá egy változó $rs. Ebben a példában létrehoz egy "élő idő" rekordhalmaz típus CNAME 600 másodperc neve "contoso.com" DNS-zónában.
+Nyissa meg a Powershellt, és hozzon létre egy új CNAME-rekordhalmazt, és rendelje hozzá egy változóhoz $rs. Ebben a példában létrehoz egy rekordhalmaz típus CNAME és a "Live idő" 600 másodperc "contoso.com" nevű DNS-zónát.
 
 ```powershell
 $rs = New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "www" -RecordType "CNAME" -Ttl 600
@@ -97,9 +97,9 @@ Tags              : {}
 
 ### <a name="step-2"></a>2. lépés
 
-A CNAME-rekordhalmaz létrehozása után szeretne létrehozni a webalkalmazást mutasson alias értéke.
+Beállított CNAME rekord létrehozása után létre kell hozzon létre egy alias értéket, amely a web app mutasson.
 
-A korábban hozzárendelt változó "$rs" használatával az alábbi PowerShell-parancsot a webes alkalmazás contoso.azurewebsites.net aliasa létrehozásához.
+Használja az előzőleg hozzárendelt változó "$rs" használhatja az alábbi PowerShell-paranccsal hozhat létre a webes alkalmazás contoso.azurewebsites.net alias.
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
@@ -120,13 +120,13 @@ A következő példa a válasz.
 
 ### <a name="step-3"></a>3. lépés
 
-Véglegesítse a módosításokat a `Set-AzureRMDnsRecordSet` parancsmagot:
+Hajtsa végre a módosításokat a `Set-AzureRMDnsRecordSet` parancsmagot:
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
 ```
 
-Ellenőrizheti, hogy a rekord megfelelően lett létrehozva a "www.contoso.com" nslookup, használatával lekérdezésével alább látható módon:
+A rekord ellenőrizheti a "www.contoso.com" használatával az nslookup, ahogy az alábbi lekérdezésével megfelelően lett létrehozva:
 
 ```
 PS C:\> nslookup
@@ -145,13 +145,13 @@ contoso.azurewebsites.net
 <instance of web app service>.vip.azurewebsites.windows.net
 ```
 
-## <a name="create-an-awverify-record-for-web-apps"></a>A webalkalmazások egy "awverify" rekord létrehozása
+## <a name="create-an-awverify-record-for-web-apps"></a>Hozzon létre egy "awverify" rekordot, a web apps
 
-Ha úgy dönt, hogy az A rekord használja a webalkalmazás, haladjon végig a annak érdekében, hogy Ön a tulajdonosa az egyéni tartomány-ellenőrzési folyamatot. Az ellenőrzési lépés "awverify" nevű különleges CNAME rekord létrehozásával történik. Ez a szakasz csak egy rekordok vonatkozik.
+Ha úgy dönt, hogy a webalkalmazás egy A rekordot használja, haladjon végig a annak érdekében, hogy Ön a tulajdonosa az egyéni tartomány-ellenőrzési folyamatot. Az ellenőrzési lépés végezhető el "awverify" nevű speciális CNAME rekord létrehozásához. Ez a szakasz csak olyan rekordokat vonatkozik.
 
 ### <a name="step-1"></a>1. lépés
 
-A "awverify" rekordot kell létrehozni. Az alábbi példában létre fogunk hozni a "aweverify" rekord contoso.com a tulajdonjogát az egyéni tartomány ellenőrzéséhez.
+Hozzon létre a "awverify" rekordot. Az alábbi példában hozunk létre a "aweverify" rekord, a contoso.com, az egyéni tartomány tulajdonjogának ellenőrzéséhez.
 
 ```powershell
 $rs = New-AzureRMDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "myresourcegroup" -Name "awverify" -RecordType "CNAME" -Ttl 600
@@ -172,7 +172,7 @@ Tags              : {}
 
 ### <a name="step-2"></a>2. lépés
 
-A "awverify" rekordhalmaz létrehozása után rendelje hozzá a CNAME-rekordhalmazt alias. Az alábbi példa azt a CNAMe rekord awverify.contoso.azurewebsites.net alias beállítása rendeli.
+A "awverify" rekordhalmaz létrehozása után rendeljen alias beállítása a CNAME-rekord. Az alábbi példában hozzárendeljük awverify.contoso.azurewebsites.net alias beállítása a CNAMe-rekord.
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "awverify.contoso.azurewebsites.net"
@@ -193,7 +193,7 @@ A következő példa a válasz.
 
 ### <a name="step-3"></a>3. lépés
 
-Véglegesítse a módosításokat a `Set-AzureRMDnsRecordSet cmdlet`, ahogy az alábbi parancsot.
+Hajtsa végre a módosításokat a `Set-AzureRMDnsRecordSet cmdlet`, ahogyan az az alábbi parancsot.
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
@@ -201,4 +201,4 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse a [beállítása egy egyéni tartománynevet, az App Service](../app-service/app-service-web-tutorial-custom-domain.md) egyéni tartományt webalkalmazás konfigurálása.
+Kövesse a [az App Service egyéni tartománynév beállítása](../app-service/app-service-web-tutorial-custom-domain.md) egy egyéni tartományt a WebApp konfigurálásához.

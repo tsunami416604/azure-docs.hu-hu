@@ -9,11 +9,12 @@ ms.topic: tutorial
 ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 531aeaacf0bd70521d70afb45d141fc3296ebb04
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: a302cdcf94baa869e55262c4cd380fc05bf64299
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461605"
 ---
 # <a name="tutorial-automate-image-builds-on-base-image-update-with-azure-container-registry-build"></a>Oktatóanyag: Az Azure Container Registry Build használata a rendszerképek összeállításának az alapként szolgáló rendszerkép frissítésekor történő automatikus indításához
 
@@ -32,7 +33,7 @@ Az oktatóanyag-sorozat utolsó része az alábbi lépésekből áll:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.32-es** vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet: [Az Azure CLI 2.0 telepítése][azure-cli].
+Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.32-es** vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,11 +76,11 @@ Az alapként szolgáló rendszerképek frissítésekor újra össze kell állít
 
 Ez az oktatóanyag végigvezeti az alapként szolgáló rendszerkép frissítési forgatókönyvén. A [kódminta][code-sample] két Docker-fájlt tartalmaz: egy alkalmazás-rendszerképet, és egy rendszerképet, amelyet az alkalmazás-rendszerkép az alapként szolgáló rendszerképeként ad meg. A következő szakaszokban egy ACR Build-feladatot hoz létre, amely automatikusan aktiválja az alkalmazás-rendszerkép összeállítását, ha a rendszer az alapul szolgáló rendszerkép új verzióját küldi le a tárolóregisztrációs adatbázisba.
 
-[Dockerfile-app][dockerfile-app]: Egy kisméretű Node.js-webalkalmazás, amely az alapjául szolgáló Node.js-verziót jelző statikus weboldalt jelenít meg. A verzió-karakterlánc szimulált elem abban az értelemben, hogy az alapként szolgáló rendszerképben definiált környezeti változó (`NODE_VERSION`) tartalmát jeleníti meg.
+[Dockerfile-app][dockerfile-app]: Egy kisméretű Node.js-webalkalmazás, amely az alapjául szolgáló Node.js-verziót jelző statikus weboldalt jelenít meg. A verziósztring szimulált elem abban az értelemben, hogy az alapként szolgáló rendszerképben definiált környezeti változó (`NODE_VERSION`) tartalmát jeleníti meg.
 
 [Dockerfile-base][dockerfile-base]: A rendszerkép, amelyet a `Dockerfile-app` az alapjaként ad meg. Egy [Node][base-node]-rendszerképen alapul, és tartalmazza a `NODE_VERSION` környezeti változót.
 
-A következő szakaszokban létrehozunk egy összeállítási feladatot, frissítjük a `NODE_VERSION` értékét az alapként szolgáló rendszerkép Docker-fájljában, majd az ACR Build használatával összeállítjuk az alapként szolgáló rendszerképet. Amikor az ACR Build leküldi az alapként szolgáló új rendszerképet a regisztrációs adatbázisba, az automatikusan kiváltja az alkalmazás-rendszerkép összeállítását. Ha kívánja, az alkalmazástároló-rendszerkép helyi futtatásával megtekintheti az összeállított rendszerképek eltérő verzió-karakterláncait.
+A következő szakaszokban létrehozunk egy összeállítási feladatot, frissítjük a `NODE_VERSION` értékét az alapként szolgáló rendszerkép Docker-fájljában, majd az ACR Build használatával összeállítjuk az alapként szolgáló rendszerképet. Amikor az ACR Build leküldi az alapként szolgáló új rendszerképet a regisztrációs adatbázisba, az automatikusan kiváltja az alkalmazás-rendszerkép összeállítását. Ha kívánja, az alkalmazástároló-rendszerkép helyi futtatásával megtekintheti az összeállított rendszerképek eltérő verzió-sztringjeit.
 
 ## <a name="build-base-image"></a>Alapként szolgáló rendszerkép összeállítása
 
@@ -146,7 +147,7 @@ Futtassa helyileg a tárolót a `docker run` paranccsal. A **\<build-id\>** (ös
 docker run -d -p 8080:80 $ACR_NAME.azurecr.io/helloworld:<build-id>
 ```
 
-Lépjen a http://localhost:8080 címre a böngészőben, és a weboldalon a Node.js verziószámának kell megjelennie az alábbihoz hasonlóan. Egy későbbi lépésben majd újabbra frissíti a verziót egy „a” tag hozzáadásával a verzió-karakterlánchoz.
+Lépjen a http://localhost:8080 címre a böngészőben, és a weboldalon a Node.js verziószámának kell megjelennie az alábbihoz hasonlóan. Egy későbbi lépésben majd újabbra frissíti a verziót úgy, hogy egy „a” tagot ad hozzá a verziósztringhez.
 
 ![A böngészőben megjelenített mintaalkalmazás képernyőképe][base-update-01]
 

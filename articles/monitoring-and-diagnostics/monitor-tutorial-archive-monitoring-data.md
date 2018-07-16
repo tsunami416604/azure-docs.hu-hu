@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: 4d08c4c7a76d7ed16ec57590ee0fd4ee978e5258
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f6b7b9fe73f5e815e08bbf4f6493ee181a0c692b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263150"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918271"
 ---
 # <a name="archive-azure-monitoring-data"></a>Azure monitorozási adatok archiválása
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Először be kell állítania egy tárfiókot, amelybe a monitorozási adatokat archiválja. Ehhez [kövesse ezeket a lépéseket](../storage/common/storage-create-storage-account.md).
 
@@ -136,6 +136,11 @@ Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 Az virtuális gépek monitorozási adatai mostantól a tárfiókba kerülnek.
 
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>A tárfiókban lévő monitorozási adatok megtekintése
+
+> [!WARNING]
+> A tárfiókban lévő naplóadatok formátuma 2018. nov. 1-től JSON Lines lesz. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
 Ha követte az előző lépéseket, az adatok elkezdtek a tárfiókba érkezni.
 

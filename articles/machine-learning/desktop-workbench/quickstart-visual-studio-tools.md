@@ -7,22 +7,24 @@ ms.author: ahgyger
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: bbcb2ea5a7ceeb976f590393608cc29c67d9a49e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 735bfd911a738d4e71974f5cdcd94afa50acc502
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932982"
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
 A Visual Studio Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. Emellett könnyített hozzáférést biztosít az [Azure Batch AI előzetes verziójához](https://docs.microsoft.com/azure/batch-ai/).
  
 ## <a name="getting-started"></a>Első lépések 
 Első lépésként le kell tölteni és telepíteni kell a [Visual Studiót](https://www.visualstudio.com/downloads/). A Visual Studio megnyitása után hajtsa végre a következő lépéseket:
-1. Kattintson a Visual Studio menüsorára, és válassza az Extensions and Updates (Bővítmények és frissítések) lehetőséget.
+1. Kattintson a „Tools” (Eszközök) elemre a Visual Studio menüsorán, és válassza az Extensions and Updates (Bővítmények és frissítések) lehetőséget.
 2. Kattintson az Online lapra, és válassza a Search Visual Studio Marketplace (Keresés a Visual Studio piacterén) elemet.
 3. Keressen a „Visual Studio for AI” kifejezésre. 
 3. Kattintson a **Download** (Letöltés) gombra. 

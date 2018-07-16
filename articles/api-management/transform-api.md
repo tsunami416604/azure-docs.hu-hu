@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bebfabfa2c9012fa55bfc6964dc0b638cb7ab3f1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b94f6ad4c7c6f3b5e93cdb890e053a3d1678e161
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722949"
 ---
 # <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme 
 
@@ -54,7 +55,7 @@ Ez a szakasz azt mutatja be, hogyan rejtheti el a HTTP-fejléceket, amelyeket ne
 
 Az eredeti válasz megtekintése:
 
-1. Válassza az **API** lapot.
+1. Az APIM-szolgáltatáspéldányban válassza az **API-k** lehetőséget (az **API Management** területen).
 2. Kattintson a **Demo Conference API** elemre az API-k listájában.
 3. Válassza a **GetSpeakers** műveletet.
 4. A képernyő felső részén kattintson a **Teszt** fülre.
@@ -66,24 +67,24 @@ Az eredeti válasz megtekintése:
 
 ### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
-1. Tallózzon az APIM-példányra.
-2. Válassza az **API** lapot.
-3. Kattintson a **Demo Conference API** elemre az API-k listájában.
-4. Válassza a **Minden művelet** lehetőséget.
-5. A képernyő felső részén válassza a **Tervezés** lapot.
-6. A **Kimenő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett).
-7. Válassza a **Kódszerkesztő** lehetőséget.
-    
-     ![A szabályzat szerkesztése](./media/set-edit-policies/set-edit-policies01.png)
-9. Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
-10. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson kétszer a **+ HTTP-fejléc beállítása** elemre (két szabályzatkódrészlet beszúrásához).
+1. Válassza a **Demo Conference API** lehetőséget.
+2. A képernyő felső részén válassza a **Tervezés** lapot.
+3. Válassza a **Minden művelet** lehetőséget.
+4. A **Kimenő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett), majd válassza a **Kódszerkesztő** lehetőséget.
+     ![Szabályzat szerkesztése](./media/set-edit-policies/set-edit-policies01.png)
+5. Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
+6. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson kétszer a **+ HTTP-fejléc beállítása** elemre (két szabályzatkódrészlet beszúrásához).
 
     ![Házirendek](./media/transform-api/transform-api.png)
-11. Módosítsa **<outbound>** kódját a következő módon:
+7. Módosítsa **<outbound>** kódját a következő módon:
 
         <set-header name="X-Powered-By" exists-action="delete" />
         <set-header name="X-AspNet-Version" exists-action="delete" />
-                
+
+    ![Házirendek](./media/transform-api/set-policy.png)
+8. Kattintson a **Mentés** gombra.
+
+
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
 
 Ez a szakasz bemutatja, hogy az API HTTP-válaszának szövegtörzsében megjelenő URL-címek hogyan rejthetőek el és irányíthatóak át az APIM-átjáróhoz.
@@ -92,11 +93,10 @@ Ez a szakasz bemutatja, hogy az API HTTP-válaszának szövegtörzsében megjele
 
 Az eredeti válasz megtekintése:
 
-1. Válassza az **API** lapot.
-2. Kattintson a **Demo Conference API** elemre az API-k listájában.
-3. Válassza a **GetSpeakers** műveletet.
-4. A képernyő felső részén kattintson a **Teszt** fülre.
-5. A képernyő alján kattintson a **Küldés** gombra. 
+1. Válassza a **Demo Conference API** lehetőséget.
+2. Válassza a **GetSpeakers** műveletet.
+3. A képernyő felső részén kattintson a **Teszt** fülre.
+4. A képernyő alján kattintson a **Küldés** gombra. 
 
     Az eredeti válasz a következőhöz hasonló:
 
@@ -104,16 +104,13 @@ Az eredeti válasz megtekintése:
 
 ### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
-1. Tallózzon az APIM-példányra.
-2. Válassza az **API** lapot.
-3. Kattintson a **Demo Conference API** elemre az API-k listájában.
-4. Válassza a **Minden művelet** lehetőséget.
-5. A képernyő felső részén válassza a **Tervezés** lapot.
-6. A **Kimenő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett).
-7. Válassza a **Kódszerkesztő** lehetőséget.
-8. Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
-9. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson a **+ Karakterlánc keresése és cseréje a szövegtörzsben** elemre.
-10. A **<find-and-replace** kódban (a(z) **<outbound>** elemben) cserélje le az URL-címet az APIM-átjáróéra. Például:
+1. Válassza a **Demo Conference API** lehetőséget.
+2. Válassza a **Minden művelet** lehetőséget.
+3. A képernyő felső részén válassza a **Tervezés** lapot.
+4. A **Kimenő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett), majd válassza a **Kódszerkesztő** lehetőséget.
+5. Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
+6. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson a **+ Sztring keresése és cseréje a szövegtörzsben** elemre.
+7. A **find-and-replace** kódban (az **\<outbound\>** elemben) cserélje le az URL-címet az APIM-átjáróéra. Például:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -121,22 +118,19 @@ Az eredeti válasz megtekintése:
 
 Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k számára a hívásszám korlátjának konfigurálásával. Korlátozhatja például az API hívásainak számát, hogy a fejlesztők ne vegyék túlzottan igénybe. Ebben a példában a korlát minden előfizetési azonosító esetében 15 másodpercenként 3 hívás. 15 másodperc elteltével a fejlesztő újrapróbálhatja az API hívását.
 
-1. Tallózzon az APIM-példányra.
-2. Válassza az **API** lapot.
-3. Kattintson a **Demo Conference API** elemre az API-k listájában.
-4. Válassza a **Minden művelet** lehetőséget.
-5. A képernyő felső részén válassza a **Tervezés** lapot.
-6. A **Bejövő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett).
-7. Válassza a **Kódszerkesztő** lehetőséget.
-8. Vigye a kurzort a **&lt;bejövő&gt;** elemen belülre.
-9. A jobb oldali ablak **Hozzáférés-korlátozási szabályzatok** területén kattintson a **+ Hívások számának korlátozása kulcsonként** elemre.
-10. Módosítsa a **<rate-limit-by-key** kódot (a(z) **<inbound>** elemben) a következőre:
+1. Válassza a **Demo Conference API** lehetőséget.
+2. Válassza a **Minden művelet** lehetőséget.
+3. A képernyő felső részén válassza a **Tervezés** lapot.
+4. A **Bejövő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett), majd válassza a **Kódszerkesztő** lehetőséget.
+5. Vigye a kurzort a **&lt;bejövő&gt;** elemen belülre.
+6. A jobb oldali ablak **Hozzáférés-korlátozási szabályzatok** területén kattintson a **+ Hívások számának korlátozása kulcsonként** elemre.
+7. Módosítsa a **rate-limit-by-key** kódot (az **\<inbound\>** elemben) a következőre:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
 ## <a name="test-the-transformations"></a>Az átalakítások tesztelése
         
-Ekkor a szabályzat kódjának így kellene kinéznie:
+Jelenleg, ha a kódszerkesztőben megtekinti a kódot, a szabályzatok így néznek ki:
 
     <policies>
         <inbound>
@@ -161,12 +155,10 @@ A szakasz további részében teszteljük a szabályzatátalakításokat, amelye
 
 ### <a name="test-the-stripped-response-headers"></a>Az eltávolított válaszfejlécek tesztelése
 
-1. Tallózzon az APIM-példányra.
-2. Válassza az **API** lapot.
-3. Kattintson a **Demo Conference API** elemre az API-k listájában.
-4. Kattintson a **GetSpeakers** műveletre.
-5. Kattintson a **Teszt** fülre.
-6. Kattintson a **Küldés** gombra.
+1. Válassza a **Demo Conference API** lehetőséget.
+2. Kattintson a **GetSpeakers** műveletre.
+3. Kattintson a **Teszt** fülre.
+4. Kattintson a **Küldés** gombra.
 
     Láthatja, hogy a fejlécek el lettek távolítva:
 
@@ -174,12 +166,10 @@ A szakasz további részében teszteljük a szabályzatátalakításokat, amelye
 
 ### <a name="test-the-replaced-url"></a>A lecserélt URL-cím tesztelése
 
-1. Tallózzon az APIM-példányra.
-2. Válassza az **API** lapot.
-3. Kattintson a **Demo Conference API** elemre az API-k listájában.
-4. Kattintson a **GetSpeakers** műveletre.
-5. Kattintson a **Teszt** fülre.
-6. Kattintson a **Küldés** gombra.
+1. Válassza a **Demo Conference API** lehetőséget.
+2. Kattintson a **GetSpeakers** műveletre.
+3. Kattintson a **Teszt** fülre.
+4. Kattintson a **Küldés** gombra.
 
     Láthatja, hogy az URL-cím le lett cserélve.
 
@@ -187,15 +177,13 @@ A szakasz további részében teszteljük a szabályzatátalakításokat, amelye
 
 ### <a name="test-the-rate-limit-throttling"></a>Hívásszám-korlát (szabályozás) tesztelése
 
-1. Tallózzon az APIM-példányra.
-2. Válassza az **API** lapot.
-3. Kattintson a **Demo Conference API** elemre az API-k listájában.
-4. Kattintson a **GetSpeakers** műveletre.
-5. Kattintson a **Teszt** fülre.
-6. Kattintson a **Küldés** gombra háromszor egymás után.
+1. Válassza a **Demo Conference API** lehetőséget.
+2. Kattintson a **GetSpeakers** műveletre.
+3. Kattintson a **Teszt** fülre.
+4. Kattintson a **Küldés** gombra háromszor egymás után.
 
     Miután 3 alkalommal elküldte a kérelmet, a **429 Túl sok kérelem** választ kapja.
-7. Várjon 15 másodpercet, majd kattintson ismét a **Küldés** gombra. Ezúttal a **200 OK** választ kapja.
+5. Várjon 15 másodpercet, majd kattintson ismét a **Küldés** gombra. Ezúttal a **200 OK** választ kapja.
 
     ![Throttling](./media/transform-api/test-throttling.png)
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: 71e75b4b2bb60ad2c1ae1a468991fe1f5520136c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 066826661381f40af2943359eb75abae8306bb7b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700366"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855583"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure PowerShell-minták az Azure Cosmos DB-ben
 
-A következő táblázat az Azure Cosmos DB-hez elérhető Azure PowerShell-példaszkriptekre mutató hivatkozásokat tartalmaz. Jelenleg csak az Azure Cosmos DB-fiók kezelhető a PowerShell-lel, más erőforrások, például adatbázisok és gyűjtemények nem kezelhetők a PowerShell használatával.
+A következő táblázat az Azure Cosmos DB-hez elérhető Azure PowerShell-példaszkriptekre mutató hivatkozásokat tartalmaz. Jelenleg csak az Azure Cosmos DB-fiók kezelhető a PowerShell-lel, más erőforrások, például adatbázisok és tárolók nem kezelhetők a PowerShell használatával.
 
 | |  |
 |---|---|
