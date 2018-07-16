@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 9f550af869ccfc44ba4d840f54503ad017cdaf95
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: cc7bfebd24da0d69e4b42b1a3afd7a640016dd35
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901211"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052091"
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>A sablonok segítségével a VMSS Felügyeltszolgáltatás-identitás konfigurálása
 
@@ -55,7 +55,7 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identi
 
 1. A sablon betöltése a szerkesztő, keresse meg a `Microsoft.Compute/virtualMachineScaleSets` házirendsablonokkal erőforrás a `resources` szakaszban. Öné kissé eltérhetnek az alábbi képernyőfelvételen látható, a szerkesztő használata függően előfordulhat, hogy keresse meg, és hogy szerkeszti egy sablont egy új központi telepítést vagy a meglévőt.
    
-   ![Képernyőkép a sablonhoz: keresse meg a virtuális gép](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
+   ![Képernyőkép a sablonhoz: keresse meg a virtuális gép](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
 
 2. A rendszer által hozzárendelt identitással engedélyezéséhez vegye fel a `"identity"` tulajdonság azonos szinten, a `"type": "Microsoft.Compute/virtualMachineScaleSets"` tulajdonság. Az alábbi szintaxissal:
 
@@ -91,7 +91,7 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identi
 
 4. Ha elkészült, a sablon az alábbihoz hasonlóan kell kinéznie:
 
-   ![Képernyőkép a frissítés után a sablon](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
+   ![Képernyőkép a frissítés után a sablon](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
 
 ### <a name="disable-a-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Tiltsa le az Azure-beli virtuálisgép-méretezési csoportot, a rendszer által hozzárendelt identitással
 

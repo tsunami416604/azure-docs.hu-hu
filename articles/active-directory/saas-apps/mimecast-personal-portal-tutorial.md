@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Mimecast személyes portállal |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a személyes Portal Mimecast között.
+title: 'Oktatóanyag: Azure Active Directory-integráció Mimecast személyes portállal |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és személyes portál Mimecast között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,100 +15,100 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 2380fec59e26ada57dac2134efc898d6d466bd57
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f1415a1ddc49f10539915ccf0ce8f95ce7daf321
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229621"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Oktatóanyag: Azure Active Directory-integráció Mimecast személyes portállal
 
-Ebben az oktatóanyagban elsajátíthatja Mimecast személyes Portal integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Mimecast személyes portál integrálható az Azure Active Directory (Azure AD).
 
-Mimecast személyes Portal integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Személyes portál Mimecast integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáférhet személyes Portal Mimecast szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Mimecast személyes portál (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Mimecast személyes Portal Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Mimecast személyes portálra (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása Mimecast személyes portállal, a következő elemeket kell:
+Az Azure AD-integráció konfigurálása Mimecast személyes portállal, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy Mimecast személyes Portal egyszeri bejelentkezés engedélyezve van az előfizetés
+- Az Azure AD-előfizetéshez
+- Egy személyes portál Mimecast egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Mimecast személyes portál hozzáadását a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Mimecast személyes portál hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-mimecast-personal-portal-from-the-gallery"></a>Mimecast személyes portál hozzáadását a gyűjteményből
-Az Azure AD integrálása a Mimecast személyes Portal konfigurálásához kell hozzáadnia Mimecast személyes Portal a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-mimecast-personal-portal-from-the-gallery"></a>Mimecast személyes portál hozzáadása a katalógusból
+Az Azure AD-be Mimecast személyes portál integráció konfigurálásához, hozzá kell Mimecast személyes portál a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Mimecast személyes Portal hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Mimecast személyes portál hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Mimecast személyes Portal**, jelölje be **Mimecast személyes Portal** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Mimecast személyes portál**, jelölje be **Mimecast személyes portál** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredmények listájában Mimecast személyes portál](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_addfromgallery.png)
+    ![Az eredmények listájában a Mimecast személyes portál](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés Mimecast személyes Portal "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Mimecast személyes Portal "Britta Simon" nevű tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Mimecast személyes portálon a felhasználók az Azure ad-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Mimecast személyes portál közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Mimecast személyes portálon mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Mimecast személyes portálon hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD az egyszeri bejelentkezés Mimecast személyes portállal tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés Mimecast személyes portállal tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Mimecast személyes Portal tesztfelhasználó létrehozása](#create-a-mimecast-personal-portal-test-user)**  - való egy megfelelője a Britta Simon Mimecast személyes portál, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Mimecast személyes portál tesztfelhasználót](#create-a-mimecast-personal-portal-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon Mimecast személyes portálon, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Mimecast személyes portál alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, majd Mimecast személyes portál alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálja az Azure AD az egyszeri bejelentkezés Mimecast személyes portállal, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása Mimecast személyes portállal, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Mimecast személyes Portal** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Mimecast személyes portál** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_samlbase.png)
 
-3. Az a **Mimecast személyes Portal tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Mimecast személyes portál tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk Mimecast személyes Portal tartomány és az URL-címek](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_url.png)
+    ![Mimecast személyes portál tartomány és URL-címek egyszeri bejelentkezési adatait](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőhöz URL-címet írja be: 
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe: 
 
     | Régió  |  Érték | 
     | --------------- | --------------- | 
@@ -116,9 +116,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
     | Dél-Afrika    | `https://za-api.mimecast.com/login/saml`|
     | Ausztrália       | `https://au-api.mimecast.com/login/saml`|
-    | Part        | `https://jer-api.mimecast.com/login/saml`|
+    | Offshore        | `https://jer-api.mimecast.com/login/saml`|
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
 
     | Régió  |  Érték | 
     | --------------- | --------------- |
@@ -126,9 +126,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | Egyesült Államok   | `https://us-api.mimecast.com/sso/<accountcode>`|    
     | Dél-Afrika    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | Ausztrália       | `https://au-api.mimecast.com/sso/<accountcode>`|
-    | Part        | `https://jer-api.mimecast.com/sso/<accountcode>`|
+    | Offshore        | `https://jer-api.mimecast.com/sso/<accountcode>`|
 
-    c. Az a **válasz URL-CÍMEN** szövegmezőhöz URL-címet írja be: 
+    c. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címe: 
 
     | Régió  |  Érték | 
     | --------------- | --------------- | 
@@ -136,26 +136,26 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
     | Dél-Afrika    | `https://za-api.mimecast.com/login/saml`|
     | Ausztrália       | `https://au-api.mimecast.com/login/saml`|
-    | Part        | `https://jer-api.mimecast.com/login/saml`|
+    | Offshore        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
-    > Az azonosító értéke nincs valós. Frissítse az értéket a tényleges azonosítóval. Ügyfél [Mimecast személyes portál ügyfél-támogatási csoport](http://www.mimecast.com/customer-success/technical-support/) az értéket be kell olvasni. 
+    > Az azonosító értéke nem valódi. Frissítse az értéket a tényleges azonosítója. Kapcsolattartó [Mimecast személyes portál ügyfél-támogatási csapatának](http://www.mimecast.com/customer-success/technical-support/) a gépkulcsengedélyek értékének. 
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_certificate.png) 
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/mimecast-personal-portal-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/mimecast-personal-portal-tutorial/tutorial_general_400.png)
 
-6. A a **Mimecast személyes portál konfigurációs** kattintson **Mimecast személyes portál konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **Mimecast személyes portál konfigurációs** területén kattintson **Mimecast személyes portál konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Mimecast személyes beállítása](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_configure.png) 
+    ![Mimecast személyes Portálkonfiguráció](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_configure.png) 
 
-7. Egy másik webes böngészőablakban jelentkezzen be a Mimecast személyes portálra rendszergazdaként.
+7. Egy másik böngészőablakban jelentkezzen be a Mimecast személyes portálra rendszergazdaként.
 
-8. Ugrás a **szolgáltatások \> alkalmazások**.
+8. Lépjen a **szolgáltatások \> alkalmazások**.
    
     ![Alkalmazások](./media/mimecast-personal-portal-tutorial/ic794998.png "alkalmazások")
 
@@ -163,49 +163,49 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
    
     ![Hitelesítési profilok](./media/mimecast-personal-portal-tutorial/ic794999.png "hitelesítési profilok")
 
-10. Kattintson a **új hitelesítési profil**.
+10. Kattintson a **új hitelesítési profilt**.
    
-    ![Új hitelesítési profil](./media/mimecast-personal-portal-tutorial/ic795000.png "új hitelesítési profil")
+    ![Új hitelesítés profil](./media/mimecast-personal-portal-tutorial/ic795000.png "új hitelesítési profil")
 
-11. Az a **hitelesítési profil** területen tegye a következőket:
+11. Az a **hitelesítési profilt** szakaszban, hajtsa végre az alábbi lépéseket:
    
-    ![Hitelesítési profil](./media/mimecast-personal-portal-tutorial/ic795001.png "hitelesítési profil")
+    ![Hitelesítési profilt](./media/mimecast-personal-portal-tutorial/ic795001.png "hitelesítési profilt")
    
-    a. Az a **leírás** szövegmező, adja meg a konfiguráció nevét.
+    a. Az a **leírás** szövegmezőbe írja be a konfiguráció nevét.
    
-    b. Válassza ki **Mimecast személyes portál SAML-alapú hitelesítés kényszerítéséhez**.
+    b. Válassza ki **Mimecast személyes portál SAML-hitelesítés**.
    
-    c. Mint **szolgáltató**, jelölje be **Azure Active Directory**.
+    c. Mint **szolgáltató**válassza **Azure Active Directory**.
    
-    d. A **kiállítójának URL-címe** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító**, amely az Azure-portálon másolta.
+    d. A **kiállítójának URL-címe** szövegmezőjébe illessze be az értéket, **SAML Entitásazonosító**, Azure Portalról másolt.
    
-    e. A **bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta.
+    e. A **bejelentkezési URL-cím** szövegmező, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
    
-    f. A **kijelentkezési URL-cím** szövegmezőhöz illessze be az értékét **Sign-Out URL-cím**, amely az Azure-portálon másolta.
+    f. A **kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket, **kijelentkezéses URL-cím**, az Azure Portalról másolt.
 
-    g. Nyissa meg a **base-64** kódolt tanúsítvány a Jegyzettömbben az Azure portálról letöltött, annak tartalmának másolása a vágólapra és illessze be azt a **Identitástanúsítvány szolgáltató (Metadata)** szövegmező.
+    g. Nyissa meg a **base-64** kódolt tanúsítvány a Jegyzettömbben az Azure-portálról letöltött, a tartalmát a vágólapra másolja és illessze be azt a **Identitástanúsítványt szolgáltató (Metadata)** szövegmezőbe.
 
-    h. Válassza ki **engedélyezése egyszeri bejelentkezéshez**.
+    h. Válassza ki **egyszeri bejelentkezés engedélyezése**.
    
     i. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/mimecast-personal-portal-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/mimecast-personal-portal-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/mimecast-personal-portal-tutorial/create_aaduser_03.png)
 
@@ -215,27 +215,27 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-mimecast-personal-portal-test-user"></a>Mimecast személyes Portal tesztfelhasználó létrehozása
+### <a name="create-a-mimecast-personal-portal-test-user"></a>Személyes portál Mimecast tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be személyes Mimecast portálra, akkor ki kell építenie Mimecast személyes portált. Mimecast személyes Portal, ha egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók személyes portál Mimecast szolgáltatásba való bejelentkezéshez, akkor ki kell építeni Mimecast személyes portált. Mimecast személyes portálon esetén kiépítése a manuális feladat.
 
-Regisztrálja a tartományi felhasználók létrehozása előtt kell.
+Szeretne regisztrálni egy tartományban, felhasználók létrehozása előtt.
 
-**Adja meg a felhasználók átadása, hajtsa végre az alábbi lépéseket:**
+**Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a **Mimecast személyes Portal** rendszergazdaként.
+1. Jelentkezzen be a **Mimecast személyes portál** rendszergazdaként.
 
-2. Ugrás a **könyvtárak \> belső**.
+2. Lépjen a **könyvtárak \> belső**.
    
     ![Könyvtárak](./media/mimecast-personal-portal-tutorial/ic795003.png "könyvtárak")
 
-3. Kattintson a **regisztrálni az új tartomány**.
+3. Kattintson a **új tartomány regisztrálása**.
    
     ![Új tartomány regisztrálása](./media/mimecast-personal-portal-tutorial/ic795004.png "új tartomány regisztrálása")
 
@@ -243,62 +243,62 @@ Regisztrálja a tartományi felhasználók létrehozása előtt kell.
    
     ![Új cím](./media/mimecast-personal-portal-tutorial/ic795005.png "új cím")
 
-5. Új cím párbeszédpanelen a következő lépésekkel egy érvényes Azure AD fiók kiépítése:
+5. Az új cím párbeszédpanelen hajtsa végre az alábbi lépéseket egy érvényes Azure AD-fiókot kíván üzembe helyezni:
    
     ![Mentés](./media/mimecast-personal-portal-tutorial/ic795006.png "mentése")
    
-    a. Az a **E-mail cím** szövegmezőhöz típus **E-mail cím** , a felhasználó **BrittaSimon@contoso.com**.
+    a. Az a **E-mail cím** szövegmezőbe írja be **E-mail cím** , a felhasználó **BrittaSimon@contoso.com**.
     
-    b. Az a **globális név** szövegmezőhöz típusa a **felhasználónév** , **BrittaSimon**.
+    b. Az a **globális név** szövegmezőbe írja be a **felhasználónév** , **BrittaSimon**.
 
-    c. Az a **jelszó**, és **jelszó megerősítése** szövegmezőből, típusa a **jelszó** felhasználó.
+    c. Az a **jelszó**, és **jelszó megerősítése** szövegmezőből, írja be a **jelszó** felhasználó.
    
     b. Kattintson a **Save** (Mentés) gombra.
 
 >[!NOTE]
->Mimecast személyes portál felhasználói fiók létrehozása eszközök vagy Mimecast személyes portál által szolgáltatott API-k segítségével kiépíteni az Azure AD felhasználói fiókokat.
+>Mimecast személyes portál felhasználói fiók létrehozása eszközöket és Mimecast személyes portál által biztosított API-k segítségével az Azure AD-felhasználói fiókok kiépítése.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Mimecast személyes portál Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon Mimecast személyes portálra a hozzáférés biztosításával Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Mimecast személyes Portal, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Mimecast személyes portál, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Mimecast személyes Portal**.
+2. Az alkalmazások listájában jelölje ki a **Mimecast személyes portál**.
 
-    ![Az alkalmazások listáját a Mimecast személyes Portal hivatkozás](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_app.png)  
+    ![Az alkalmazások listáját a személyes portál Mimecast hivatkozásra](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Mimecast személyes Portal csempére kattint, akkor kell beolvasása automatikusan bejelentkezett a Mimecast személyes portál alkalmazásba.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a személyes portál Mimecast csempére kattint, meg kell lekérése automatikusan bejelentkezett a Mimecast személyes portál alkalmazásba.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

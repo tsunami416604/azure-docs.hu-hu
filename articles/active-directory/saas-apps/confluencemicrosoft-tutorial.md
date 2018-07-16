@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált való összefolyás felett SAML SSO Microsoft |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Microsoft által való összefolyás felett SAML SSO között.
+title: 'Oktatóanyag: Azure Active Directory-integráció a Microsoft által való összefolyás felett SAML SSO-val |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés és való összefolyás felett SAML egyszeri bejelentkezés a Microsoft Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,128 +15,128 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b57522933647c9d1d5518740d41b624b199a020e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 97b6507cb8c5a66b8b6ccbfccd2c838b4b3fb53a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110558"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053301"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directoryval integrált való összefolyás felett SAML SSO Microsoft
+# <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory-integráció a Microsoft által való összefolyás felett SAML SSO-val
 
-Ebben az oktatóanyagban elsajátíthatja való összefolyás felett SAML SSO Microsoft integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja a Microsoft által való összefolyás felett SAML SSO integrálása az Azure Active Directory (Azure AD).
 
-Microsoft való összefolyás felett SAML SSO integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Microsoft való összefolyás felett SAML SSO integrálása az Azure AD nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, aki hozzáfér való összefolyás felett SAML SSO Microsoft Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a SAML SSO való összefolyás felett (egyszeri bejelentkezés) a Microsoft által a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá való összefolyás felett SAML egyszeri bejelentkezés a Microsoft Azure AD-ben
+- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett való összefolyás felett SAML SSO, a Microsoft (egyszeri bejelentkezés)
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="description"></a>Leírás:
 
-A Microsoft Azure Active Directory-fiókot használ Atlassian való összefolyás felett server egyszeri bejelentkezés engedélyezése. Ezzel a módszerrel a szervezeti felhasználók bejelentkezési való összefolyás felett alkalmazás használható az Azure AD hitelesítő adatait. A beépülő modul SAML 2.0 használ az összevonáshoz.
+A Microsoft Azure Active Directory-fiók használata Atlassian való összefolyás felett kiszolgáló egyszeri bejelentkezés engedélyezéséhez. Ezzel a módszerrel a munkahely összes felhasználója számára a bejelentkezés alkalmazásba való összefolyás felett használhatja az Azure AD hitelesítő adatait. Ez a beépülő modul SAML 2.0 összevonási használ.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Való összefolyás felett SAML-alapú egyszeri Microsoft Azure AD-integrációs konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a Microsoft által való összefolyás felett SAML SSO-val, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Való összefolyás felett kiszolgáló alkalmazás telepítve van egy 64 bites Windows server (helyszíni vagy a felhő infrastruktúra-szolgáltatási infrastruktúra)
-- A kiszolgálóhoz való összefolyás felett HTTPS-kompatibilis
-- Megjegyzés: a támogatott verziók való összefolyás felett beépülő modul szakasz alatt szerepel.
-- Való összefolyás felett kiszolgáló elérhető-e internetes különösen az Azure AD bejelentkezési lapot a hitelesítéshez, és képes a jogkivonat fogadására Azure ad-érdemes
-- Rendszergazdai hitelesítő adataival való összefolyás felett beállítása
-- WebSudo le van tiltva, az való összefolyás felett
-- A való összefolyás felett kiszolgálói alkalmazásban létrehozott tesztfelhasználó
+- Az Azure AD-előfizetéshez
+- A Windows 64 bites kiszolgálóra telepített való összefolyás felett kiszolgálói alkalmazás (helyszíni vagy a felhőbeli IaaS-infrastruktúra)
+- Kiszolgáló való összefolyás felett HTTPS-kompatibilis
+- Vegye figyelembe, hogy a támogatott verziók való összefolyás felett beépülő modul szakasz alatt található szerepelnek.
+- Való összefolyás felett kiszolgáló elérhető-e internetes különösen az Azure AD bejelentkezési oldal a hitelesítéshez, és meg tudja fogadni a jogkivonatot az Azure ad-ből
+- Rendszergazdai hitelesítő adatok beállítása való összefolyás felett
+- WebSudo való összefolyás felett le van tiltva
+- A való összefolyás felett kiszolgálói alkalmazásban létrehozott tesztfelhasználó számára
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem javasoljuk való összefolyás felett az éles környezetben. Az integráció először tesztelje fejlesztési vagy tesztelési környezetben az alkalmazás, majd az éles környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem javasoljuk egy éles környezetbe való összefolyás felett. Az integráció először tesztelje fejlesztési vagy az alkalmazás átmeneti környezetben, majd az éles környezetben.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió Itt kaphat: [próbaverzió ajánlat](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a ide-egy havi próbalehetőség: [próba](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="supported-versions-of-confluence"></a>Való összefolyás felett támogatott verziói 
+## <a name="supported-versions-of-confluence"></a>Támogatott verzióiról való összefolyás felett 
 
-Mostantól való összefolyás felett következő verziói támogatottak:
+Jelen pillanatban való összefolyás felett következő verziói támogatottak:
 
-- Való összefolyás felett: 5.0 5.10
+- Való összefolyás felett: 5.0-s 5.10
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A katalógusból való összefolyás felett SAML SSO Microsoft hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. A Microsoft által való összefolyás felett SAML SSO hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-confluence-saml-sso-by-microsoft-from-the-gallery"></a>A katalógusból való összefolyás felett SAML SSO Microsoft hozzáadása
-Az Azure AD-be való összefolyás felett SAML SSO Microsoft integrálása konfigurálásához kell hozzáadnia való összefolyás felett SAML SSO Microsoft által a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-confluence-saml-sso-by-microsoft-from-the-gallery"></a>A Microsoft által való összefolyás felett SAML SSO hozzáadása a katalógusból
+Az Azure AD-be való összefolyás felett SAML SSO a Microsoft-integráció konfigurálásához, szeretne hozzáadni a katalógusból való összefolyás felett SAML egyszeri bejelentkezés a Microsoft által a felügyelt SaaS-alkalmazások listájában.
 
-**A katalógusból való összefolyás felett SAML SSO Microsoft hozzáadásához hajtsa végre az alábbi lépéseket:**
+**A Microsoft által való összefolyás felett SAML SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **való összefolyás felett SAML SSO Microsoft**.
+4. A Keresés mezőbe írja be a **való összefolyás felett SAML SSO Microsoft**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_search.png)
 
 5. Az eredmények panelen válassza ki a **való összefolyás felett SAML SSO Microsoft**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezéshez való összefolyás felett SAML-alapú egyszeri "Britta Simon" nevű tesztfelhasználó alapján a Microsoft által.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Microsoft a teszt "Britta Simon" nevű felhasználó való összefolyás felett SAML SSO-val.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználóhoz való összefolyás felett SAML SSO Microsoft által a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Microsoft által való összefolyás felett SAML SSO közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó való összefolyás felett SAML egyszeri bejelentkezés a Microsoft által a mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó való összefolyás felett SAML egyszeri bejelentkezés a Microsoft által a hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezéshez való összefolyás felett SAML-alapú egyszeri Microsoft tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés a Microsoft által való összefolyás felett SAML SSO-val tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Egy való összefolyás felett SAML SSO Microsoft teszt felhasználó létrehozása](#creating-a-confluence-saml-sso-by-microsoft-test-user)**  - való egy megfelelője a Britta Simon való összefolyás felett SAML SSO, amely a felhasználó az Azure AD-ábrázolását csatolva van a Microsoft által.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Egy való összefolyás felett SAML egyszeri bejelentkezés a Microsoft a teszt felhasználó létrehozása](#creating-a-confluence-saml-sso-by-microsoft-test-user)**  – egy megfelelője a Britta Simon való összefolyás felett SAML SSO, amely kapcsolódik az Azure AD felhasználói ábrázolása a Microsoft által van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a való összefolyás felett SAML SSO konfigurálása egyszeri bejelentkezéshez Microsoft-alkalmazás.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszeri bejelentkezés Microsoft-alkalmazáshoz az való összefolyás felett SAML SSO beállításához.
 
-**Az Azure AD egyszeri bejelentkezéshez való összefolyás felett SAML-alapú egyszeri Microsoft megadásához a következő lépésekkel:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása a Microsoft által való összefolyás felett SAML SSO-val, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **való összefolyás felett SAML SSO Microsoft** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **való összefolyás felett SAML egyszeri bejelentkezés a Microsoft** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
 
-3. Az a **való összefolyás felett SAML SSO Microsoft Domain és URL-címek** területen tegye a következőket:
+3. Az a **való összefolyás felett SAML egyszeri bejelentkezés Microsoft-Domain és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<domain:port>/plugins/servlet/saml/auth`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<domain:port>/plugins/servlet/saml/auth`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<domain:port>/`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<domain:port>/`
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<domain:port>/plugins/servlet/saml/auth`
+    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Port megadása nem kötelező, abban az esetben, ha egy elnevezett URL-címet. Ezek az értékek fogadásának való összefolyás felett beépülő modul, az oktatóanyag későbbi részében ismertetett konfigurálása során.
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Abban az esetben azt egy elnevezett URL-cím, port nem kötelező. Ezek az értékek fogadásának való összefolyás felett beépülő modul, az oktatóanyag későbbi részében ismertetett konfigurálása során.
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/tutorial_metadataurl.png)
      
@@ -144,151 +144,151 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/tutorial_general_400.png)
 
-6. Egy másik webes böngészőablakban jelentkezzen be a való összefolyás felett példányát rendszergazdaként.
+6. Egy másik böngészőablakban jelentkezzen be a való összefolyás felett példány rendszergazdaként.
 
-7. Vigye a mutatót a ikonjára, majd kattintson a **bővítmények**.
+7. Vigye a mutatót a fogaskerék alakú ikonjára, majd kattintson a **bővítmények**.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon1.png)
 
-8. Töltse le a beépülő modul a [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56503). A beépülő modul használatával a Microsoft által biztosított manuális feltöltéséhez **töltse fel a bővítmény** menü. A beépülő modul letöltésének hatálya alá tartozó [Microsoft szolgáltatási szerződését](https://www.microsoft.com/en-us/servicesagreement/). 
+8. Töltse le a beépülő modult a [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56503). A beépülő modul használatával a Microsoft által biztosított feltöltött **bővítmény feltöltése** menü. A beépülő modul letöltése hatálya alá tartozó [Microsoft szolgáltatási szerződése](https://www.microsoft.com/en-us/servicesagreement/). 
     
     ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon12.png)
 
-9. A beépülő modul telepítése után megjelenik **felhasználó telepített** bővítmények szakasza **kezelése bővítmény** szakasz. Kattintson a **konfigurálása** konfigurálása az új beépülő modul.
+9. A beépülő modul telepítése után megjelenik a **felhasználó telepített** bővítmények szakaszában **kiegészítő szolgáltatás kezelése** szakaszban. Kattintson a **konfigurálása** a új beépülő modul konfigurálásához.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon13.png)
 
-10. Hajtsa végre a következő lépéseket a konfiguráció lapon:
+10. Hajtsa végre a következő lépéseket a konfigurációs lapon:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon52.png)
 
     > [!TIP]
-    > Győződjön meg arról, hogy van-e rendelve az alkalmazásnak, hogy nincs hiba elhárításához a metaadatok csak egy tanúsítványra. Ha több tanúsítvány, a rendszergazda lekérdezi a metaadatok feloldása során hiba történt.
+    > Győződjön meg arról, hogy nincs-e rendelve az alkalmazást, hogy nincs hiba feloldása a metaadatokat a csak egy tanúsítványt. Ha több tanúsítványt, a rendszergazdai hibát feloldása a metaadatok beolvasása.
 
-    a. A a **metaadatainak URL-CÍMÉT** szövegmező, Beillesztés **alkalmazás összevonási metaadatainak URL-címét** érték, amely a Azure-portálon, majd kattintson a másolt a **megoldásához** gomb. Beolvassa a kiállító terjesztési hely metaadatainak URL-CÍMÉT, és feltölti a mezők adatai.
+    a. Az a **metaadatok URL-címe** szövegmezőjébe illessze be **alkalmazás összevonási metaadatainak URL-címe** érték, amely az Azure Portalon, majd kattintson a másolta a **megoldásához** gombra. Ez olvassa be az identitásszolgáltató metaadatok URL-címet, és tölti fel a mezők adatai.
 
-    b. Másolás a **azonosító, a válasz URL-CÍMEN és a bejelentkezési URL-címen** értéket, majd illessze be őket a **azonosító, a válasz URL-CÍMEN és a bejelentkezési URL-címen** szövegmezőből, illetve a **való összefolyás felett SAML SSO Microsoft Domain és URL-címek**  Azure-portál szakaszban.
+    b. Másolás a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** értéket, majd illessze be őket a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** rendre a szövegmezőből **való összefolyás felett SAML egyszeri bejelentkezés Microsoft-Domain és URL-címek**  szakaszban az Azure Portalon.
 
-    c. A **bejelentkezési gomb neve** írja be a szervezet által a felhasználók a bejelentkezési képernyőn látható gombra.
+    c. A **bejelentkezési gomb neve** írja be a szervezet azt szeretné, tekintse meg a bejelentkezési képernyőn a felhasználók gomb felirata.
 
-    d. A **SAML felhasználói azonosító helyek**, válassza **felhasználói Azonosítóját a tulajdonos utasítás NameIdentifier elemében van** vagy **felhasználói azonosító attribútum elem van**.  Ez az azonosító nem lehet a való összefolyás felett felhasználói azonosítóját. Ha a felhasználói azonosító nem egyezik, majd rendszer nem segítségével a felhasználók a bejelentkezéshez. 
+    d. A **SAML felhasználói azonosító helyek**, válassza **felhasználói Azonosítóját a tulajdonos utasítás NameIdentifier elemében van** vagy **felhasználói azonosító szerepel egy attribútumelem**.  Ez az azonosító nem lehet való összefolyás felett felhasználói azonosító. Ha a felhasználói azonosító nem egyezik, majd rendszer nem engedélyezi felhasználók bejelentkezésének. 
 
     > [!Note]
-    > Alapértelmezett SAML Felhasználóazonosító helye azonosítója. Állítson be egy attribútum lehetőséget, és adja meg a megfelelő attribútum nevét.
+    > Alapértelmezett SAML Felhasználóazonosító helye alkalmazásnév-azonosító. Egy attribútum beállítást módosíthatja, és adja meg a megfelelő attribútum nevét.
     
-    e. Ha **felhasználói azonosító attribútum elem van** beállítás, ezt a **attribútum neve** szövegmezőbe írja be a felhasználói azonosítót várt attribútum neve. 
+    e. Ha **felhasználói azonosító szerepel egy attribútumelem** lehetőség, ezt a **attribútum neve** szövegmezőbe írja be a nevét, ahol a felhasználói azonosító várható. 
 
-    f. Ha az Azure ad-val (például az AD FS stb.) az összevont tartományt használ, majd kattintson a a **engedélyezése Hitelesítőtartományának feltárási** lehetőséget, majd konfigurálja a **tartománynév**.
+    f. Ha az összevont tartományt (például AD FS stb.) az Azure ad-vel használ, majd kattintson a a **engedélyezése a Kezdőtartomány felderítésének** lehetőséget, majd konfigurálja a **tartománynév**.
     
-    g. A **tartománynév** írja be a tartomány nevét az AD FS-alapú bejelentkezés esetén.
+    g. A **tartománynév** írja be a tartomány nevét itt az AD FS-alapú bejelentkezés esetén.
 
-    h. Ellenőrizze **engedélyezése egyszeri bejelentkezéshez kimenő** kívánja-e az Azure AD, ha a való összefolyás felett kijelentkezik a felhasználói jelentkezzen ki. 
+    h. Ellenőrizze **meg az egyszeri bejelentkezés engedélyezése** való jelentkezzen ki, amikor egy felhasználó bejelentkezik való összefolyás felett az Azure AD-ből szeretné. 
 
-    i. Kattintson a **mentése** gombra a beállítások mentéséhez.
+    i. Kattintson a **mentése** gombra kattintva mentse a beállításokat.
 
     > [!NOTE]
-    > Telepítés és a hibaelhárítási kapcsolatban további információkért látogasson el a [MS való összefolyás felett SSO összekötő felügyeleti útmutató](../ms-confluence-jira-plugin-adminguide.md) és is [gyakran ismételt kérdések](../ms-confluence-jira-plugin-faq.md) a segítségért
+    > Telepítési és hibaelhárítási kapcsolatos további információkért látogasson el [MS való összefolyás felett SSO összekötő rendszergazdai útmutató](../ms-confluence-jira-plugin-adminguide.md) , és nincs is [– gyakori kérdések](../ms-confluence-jira-plugin-faq.md) a segítségért
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/confluencemicrosoft-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="creating-a-confluence-saml-sso-by-microsoft-test-user"></a>Egy való összefolyás felett SAML SSO által Microsoft tesztfelhasználó létrehozása
+### <a name="creating-a-confluence-saml-sso-by-microsoft-test-user"></a>Egy való összefolyás felett SAML egyszeri bejelentkezés a Microsoft a teszt felhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgálóra való összefolyás felett, akkor ki kell építenie való összefolyás felett SAML SSO be Microsoft által. A Microsoft által való összefolyás felett a SAML SSO egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgálóra való összefolyás felett, akkor ki kell építeni való összefolyás felett SAML SSO, a Microsoft által. Való összefolyás felett SAML egyszeri bejelentkezés a Microsoft a kiépítés a manuális feladat.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be rendszergazdaként a való összefolyás felett a helyi kiszolgálóra.
+1. Jelentkezzen be a való összefolyás felett a helyszíni kiszolgálón rendszergazdaként.
 
-2. Vigye a mutatót a ikonjára, majd kattintson a **felhasználókezelés**.
+2. Vigye a mutatót a fogaskerék alakú ikonjára, majd kattintson a **felhasználókezelés**.
 
     ![Alkalmazott hozzáadása](./media/confluencemicrosoft-tutorial/user1.png) 
 
-3. A felhasználók szakaszban kattintson **felhasználók hozzáadása az** fülre. Az a **hozzáadni egy felhasználót** párbeszédpanel lapon, a következő lépésekkel:
+3. A felhasználók szakaszban kattintson a **felhasználók hozzáadása** fülre. Az a **felhasználó hozzáadása** párbeszédpanel lapon, a következő lépésekkel:
 
     ![Alkalmazott hozzáadása](./media/confluencemicrosoft-tutorial/user2.png) 
 
-    a. Az a **felhasználónév** szövegmező, írja be a felhasználó Britta Simon például az e-mailt.
+    a. Az a **felhasználónév** szövegmezőbe írja be a felhasználó Britta Simon például az e-mailt.
 
-    b. Az a **teljes nevét** szövegmező, írja be például a Britta Simon felhasználói teljes nevét.
+    b. Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be például a Britta Simon felhasználó teljes nevét.
 
-    c. Az a **E-mail** szövegmező, a felhasználó e-mail címe típusát, például Brittasimon@contoso.com.
+    c. Az a **E-mail** szövegmezőbe írja be az e-mail-cím, felhasználó, például Brittasimon@contoso.com.
 
-    d. Az a **jelszó** szövegmezőhöz Britta Simon írja be a jelszót.
+    d. Az a **jelszó** szövegmezőbe írja be a jelszót a Britta Simon.
 
     e. Kattintson a **jelszó megerősítése** írja be újból a jelszót.
     
     f. Kattintson a **Hozzáadás** gombra.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon való összefolyás felett SAML SSO Microsoft által biztosított hozzáférés szerint használandó Azure egyszeri bejelentkezés engedélyezése.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés való összefolyás felett SAML egyszeri bejelentkezés a Microsoft Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon rendel Microsoft való összefolyás felett SAML SSO, hajtsa végre az alábbi lépéseket:**
+**Britta Simon hozzárendelése a Microsoft által való összefolyás felett SAML SSO, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **való összefolyás felett SAML SSO Microsoft**.
+2. Az alkalmazások listájában jelölje ki a **való összefolyás felett SAML SSO Microsoft**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Gombra a való összefolyás felett SAML SSO által Microsoft csempe a hozzáférési panelen meg kell beolvasása automatikusan bejelentkezett a való összefolyás felett SAML SSO a Microsoft alkalmazás.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+A való összefolyás felett SAML SSO által a hozzáférési panelen Microsoft csempére kattint, amikor, kell lekérése automatikusan bejelentkezett a való összefolyás felett SAML SSO, Microsoft-alkalmazás.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

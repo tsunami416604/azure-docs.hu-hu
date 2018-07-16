@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Ziflow |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Ziflow között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Ziflow |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Ziflow között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,126 +15,126 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 5a50c578bd2b8a0479365f1543b9db741080f19f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fdde8cbec7fc249eecfcc0c1682bb5eed94c1585
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228958"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050489"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Oktatóanyag: Azure Active Directoryval integrált Ziflow
+# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Oktatóanyag: Azure Active Directory-integráció az Ziflow
 
-Ebben az oktatóanyagban elsajátíthatja Ziflow integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Ziflow integrálása az Azure Active Directory (Azure AD).
 
-Ziflow integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Ziflow integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Ziflow szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Ziflow (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Ziflow Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Ziflow (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Ziflow, a következőkre van szükség:
+Ziflow az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Ziflow egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Ziflow hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Ziflow hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-ziflow-from-the-gallery"></a>A gyűjteményből Ziflow hozzáadása
-Az Azure AD integrálása a Ziflow konfigurálásához kell hozzáadnia Ziflow a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-ziflow-from-the-gallery"></a>Ziflow hozzáadása a katalógusból
+Az Azure AD integrálása a Ziflow konfigurálásához hozzá kell Ziflow a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Ziflow hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Ziflow hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Ziflow**, jelölje be **Ziflow** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Ziflow**válassza **Ziflow** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Ziflow](./media/ziflow-tutorial/tutorial_ziflow_addfromgallery.png)
+    ![Az eredmények listájában Ziflow](./media/ziflow-tutorial/tutorial_ziflow_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Ziflow.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Ziflow a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Ziflow a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Ziflow közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Ziflow mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Ziflow hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a Ziflow tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Ziflow tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Ziflow tesztfelhasználó létrehozása](#create-a-ziflow-test-user)**  - való Britta Simon valami Ziflow, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Ziflow tesztfelhasználót](#create-a-ziflow-test-user)**  – egy megfelelője a Britta Simon Ziflow, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Ziflow alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Ziflow alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Ziflow, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Ziflow, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Ziflow** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Ziflow** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/ziflow-tutorial/tutorial_ziflow_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/ziflow-tutorial/tutorial_ziflow_samlbase.png)
 
-3. Az a **Ziflow tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Ziflow tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk Ziflow tartomány és az URL-címek](./media/ziflow-tutorial/tutorial_ziflow_url.png)
+    ![Ziflow tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/ziflow-tutorial/tutorial_ziflow_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.ziflow.io/#/login-sso/<Unique ID>`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.ziflow.io/#/login-sso/<Unique ID>`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `urn:auth0:ziflow-production:<Unique ID>`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `urn:auth0:ziflow-production:<Unique ID>`
 
     > [!NOTE] 
-    > Az előző értékei nem valódi. Az egyedi azonosító értéket a azonosítóját és a bejelentkezési URL-címen frissíti a tényleges érték, amelynek az ismertetése, az oktatóanyag későbbi részében. Ügyfél [Ziflow támogatási csoport](mailto:support@ziflow.com) a bejelentkezési URL-cím altartomány értékéhez.
+    > Az előző értékek nem valódi. Az egyedi azonosító értéket az azonosító és a bejelentkezési URL-cím a tényleges érték, amelynek az ismertetése az oktatóanyag későbbi részében frissíti. Kapcsolattartó [Ziflow támogatási csapatának](mailto:support@ziflow.com) a bejelentkezési URL-cím altartomány értékéhez.
     
-4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/ziflow-tutorial/tutorial_ziflow_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/ziflow-tutorial/tutorial_ziflow_certificate.png) 
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/ziflow-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/ziflow-tutorial/tutorial_general_400.png)
 
-6. A a **Ziflow konfigurációs** kattintson **konfigurálása Ziflow** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és SAML-alapú egyszeri bejelentkezés szolgáltatás URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **Ziflow konfigurációs** területén kattintson **konfigurálása Ziflow** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Ziflow konfiguráció](./media/ziflow-tutorial/tutorial_ziflow_configure.png) 
 
-7. Egy másik webes böngészőablakban, jelentkezzen be a biztonsági-rendszergazdájaként Ziflow.
+7. Egy másik böngészőablakban, jelentkezzen be egy biztonsági-rendszergazdaként Ziflow.
 
 
-8. Kattintson az Avatarjára, a jobb felső sarokban, és kattintson **fiók kezelése**.
+8. Kattintson az Avatar a jobb felső sarokban, és kattintson **fiók kezelése**.
 
-    ![Ziflow konfigurációs kezelése](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
+    ![Ziflow konfiguráció kezelése](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
 
-9. Kattintson a bal felső, **egyszeri bejelentkezés**.
+9. A bal felső sarokban, kattintson **egyszeri bejelentkezés**.
 
     ![Ziflow konfigurációs bejelentkezési](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
@@ -144,31 +144,31 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Válassza ki **típus** , **SAML2.0**.
 
-    b.In a **bejelentkezési az URL-cím** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure portálról másolta.
+    b.In a **bejelentkezési az URL-CÍMÉT** szövegmezőjébe illessze be az értéket, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
-    c. Az Azure-portálról letöltött kódolt Base64-tanúsítvány feltöltése a **aláíró tanúsítvány X509**.
+    c. Töltse fel a base-64 kódolású tanúsítványt be az Azure Portalról letöltött a **aláíró tanúsítvány X509**.
 
-    d. Az a **bejelentkezési kijelentkezési URL-cím** szövegmezőhöz illessze be az értékét **Sign-Out URL-cím**, amely az Azure portálról másolta.
+    d. A a **bejelentkezési kijelentkezési URL-cím** szövegmezőjébe illessze be az értéket, **kijelentkezéses URL-cím**, az Azure Portalról másolt.
 
-    e. Az a **konfigurációs beállításait a azonosítója** szakaszt, másolja a kijelölt egyedi azonosítóérték és fűzi azokat a azonosítója és a bejelentkezési URL-címet a **Ziflow tartomány és az URL-címek szakasz** a Azure-portálon.
+    e. Az a **konfigurációs beállításait az azonosító szolgáltató** szakaszt, másolja a kijelölt egyedi azonosító értéket, és fűzze hozzá a azonosítója és a bejelentkezési URL-címet a **Ziflow tartomány és URL-címek szakaszt** a Az Azure Portalon.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/ziflow-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/ziflow-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/ziflow-tutorial/create_aaduser_03.png)
 
@@ -178,19 +178,19 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
   
 ### <a name="create-a-ziflow-test-user"></a>Ziflow tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Ziflow bejelentkezni, akkor ki kell építenie a Ziflow. A Ziflow egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók Ziflow jelentkezzen be, akkor ki kell építeni Ziflow be. Ziflow a kiépítés manuális feladat.
 
-Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:
+Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:
 
-1. Jelentkezzen be a biztonsági-rendszergazdájaként Ziflow.
+1. Jelentkezzen be egy biztonsági-rendszergazdaként Ziflow.
 
 2. Navigáljon a **személyek** felső.
 
@@ -200,64 +200,64 @@ Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:
 
     ![Ziflow konfigurációs felvenni a felhasználót](./media/ziflow-tutorial/tutorial_ziflow_add.png)
 
-4. Az a **hozzáadni egy felhasználót** előugró ablak, hajtsa végre a következő lépéseket:
+4. Az a **felhasználó hozzáadása** előugró ablakban hajtsa végre az alábbi lépéseket:
 
     ![Ziflow konfigurációs felvenni a felhasználót](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
-    a. A **E-mail** szöveg mezőbe írja be például a felhasználó e-mail brittasimon@contoso.com.
+    a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó brittasimon@contoso.com.
 
-    b. A **Keresztnév** szöveg mezőbe írja be például Britta felhasználó utónevét.
+    b. A **Utónév** szöveg Britta például a felhasználó utónevét adja meg.
 
-    c. A **Vezetéknév** szöveg mezőbe írja be például Simon felhasználó vezetékneve.
+    c. A **Vezetéknév** szöveget adja meg a Simon például a felhasználó vezetékneve.
 
-    d. Válassza ki a Ziflow szerepkör.
+    d. Válassza ki a Ziflow szerepét.
 
-    e. Kattintson a **hozzáadása 1 felhasználó**.
+    e. Kattintson a **adjon hozzá 1 felhasználó**.
 
     > [!NOTE]
-    > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a következő hivatkozás a fiók megerősítéséhez, mielőtt aktívvá válik.
+    > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Ziflow Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Ziflow Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Ziflow, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Ziflow, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Ziflow**.
+2. Az alkalmazások listájában jelölje ki a **Ziflow**.
 
-    ![Az alkalmazások listáját a Ziflow hivatkozás](./media/ziflow-tutorial/tutorial_ziflow_app.png)  
+    ![Az alkalmazások listáját a Ziflow hivatkozásra](./media/ziflow-tutorial/tutorial_ziflow_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Ziflow csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Ziflow alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Ziflow csempére kattint, meg kell lekérése automatikusan bejelentkezett az Ziflow alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

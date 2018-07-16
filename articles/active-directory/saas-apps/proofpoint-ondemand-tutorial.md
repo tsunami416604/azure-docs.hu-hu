@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált az igény szerinti Proofpoint |} Microsoft Docs'
-description: Megtudhatja, hogyan igény szerinti konfigurálása egyszeri bejelentkezés Azure Active Directory és Proofpoint között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az igény szerinti Proofpoint |} A Microsoft Docs'
+description: Ismerje meg, hogyan konfigurálása egyszeri bejelentkezéshez az Azure Active Directory és Proofpoint között igény szerint.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,144 +15,144 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: ee38ea88ef5f74e4e5a9a78f5253812ecc27698f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 36668708cc787e7d515efdaa1c2038b967a74093
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224096"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051727"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Oktatóanyag: Azure Active Directoryval integrált Proofpoint igény szerint
+# <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Oktatóanyag: Azure Active Directory-integráció az igény szerinti Proofpoint
 
 Ebben az oktatóanyagban elsajátíthatja az igény szerinti Proofpoint integrálása az Azure Active Directory (Azure AD).
 
-Az igény szerinti Proofpoint integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Igény szerinti Proofpoint integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér az igény szerinti Proofpoint szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Proofpoint az igény szerinti (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Proofpoint igény szerinti Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Proofpoint igény szerinti (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD rendszerrel történő integráció konfigurálása az igény szerinti Proofpoint, szüksége van a következőkre:
+Az Azure AD-integráció konfigurálása az igény szerinti Proofpoint, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy igény szerinti egyszeri bejelentkezés engedélyezve van az előfizetésben lévő Proofpoint
+- Az Azure AD-előfizetéshez
+- Egy Proofpoint az igény szerinti egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Proofpoint igény szerinti hozzáadásával a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Proofpoint hozzáadásával igény szerint a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-proofpoint-on-demand-from-the-gallery"></a>Proofpoint igény szerinti hozzáadásával a gyűjteményből
-Proofpoint integrálása igény szerint az Azure AD-be történő konfigurálásához szüksége a katalógusban az igény szerinti Proofpoint hozzáadása a kezelt SaaS-alkalmazások listáját.
+## <a name="adding-proofpoint-on-demand-from-the-gallery"></a>Proofpoint hozzáadásával igény szerint a katalógusból
+Igény szerinti Proofpoint az integráció konfigurálásához az Azure AD-be, szüksége a katalógus igény szerinti Proofpoint hozzáadása a felügyelt SaaS-alkalmazások listájában.
 
-**Adja hozzá az igény szerinti Proofpoint a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá az igény szerinti Proofpoint a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **az igény szerinti Proofpoint**, jelölje be **az igény szerinti Proofpoint** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **igény szerinti Proofpoint**, jelölje be **Proofpoint igény szerinti** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az igény szerinti az eredménylistában Proofpoint](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_addfromgallery.png)
+    ![Az eredmények listájában igény szerinti Proofpoint](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a Proofpoint az igény szerinti "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az igény szerint a "Britta Simon" nevű tesztelési felhasználó Proofpoint.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a Proofpoint az igény szerinti megfelelője felhasználót a felhasználó Azure AD-ben. Ez azt jelenti az igény szerinti Proofpoint kapcsolódó felhasználói, valamint az Azure AD-felhasználó közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználót igény szerinti Proofpoint mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Proofpoint igény szerint a hivatkozás kapcsolata kell létrehozni.
 
-Az igény szerinti Proofpoint, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Igény szerinti Proofpoint, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést az igény szerinti Proofpoint tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az igény szerinti Proofpoint tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Proofpoint az igény szerinti tesztfelhasználó](#create-a-proofpoint-on-demand-test-user)**  - való egy megfelelője a Britta Simon Proofpoint igény szerint, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Proofpoint a igény szerinti tesztfelhasználó](#create-a-proofpoint-on-demand-test-user)**  – egy megfelelője a Britta Simon Proofpoint igény szerint, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az igény szerinti alkalmazástól Proofpoint egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az igény szerinti alkalmazás Proofpoint az egyszeri bejelentkezés konfigurálása.
 
-**Az igény szerinti Proofpoint konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Proofpoint igény szerinti, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **az igény szerinti Proofpoint** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Proofpoint igény szerinti** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_samlbase.png)
 
-3. Az a **Proofpoint igény szerinti tartomány és az URL-címekről** területen tegye a következőket:
+3. Az a **igény szerint tartomány és URL-címekről Proofpoint** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Igény szerinti tartomány és az URL-címek egyetlen bejelentkezési adatok Proofpoint](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_url.png)
+    ![Igény szerint tartomány és URL-címeket egyetlen bejelentkezési adatait a Proofpoint](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<hostname>.pphosted.com/ppssamlsp_hostname`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<hostname>.pphosted.com/ppssamlsp_hostname`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<hostname>.pphosted.com/ppssamlsp`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<hostname>.pphosted.com/ppssamlsp`
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
+    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
     
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Proofpoint az igény szerinti ügyfél-támogatási csoport](https://www.proofpoint.com/us/support-services) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [igény szerint ügyfél-támogatási csapat Proofpoint](https://www.proofpoint.com/us/support-services) beolvasni ezeket az értékeket.
 
-5. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_certificate.png) 
 
 6. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/proofpoint-ondemand-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/proofpoint-ondemand-tutorial/tutorial_general_400.png)
     
-7. A a **igény szerinti konfigurációban Proofpoint** kattintson **Proofpoint konfigurálása az igény szerinti** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+7. Az a **igény szerinti konfigurációban Proofpoint** területén kattintson **konfigurálása Proofpoint igény szerinti** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Igény szerinti konfigurációban Proofpoint](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_configure.png) 
 
-8. Egyszeri bejelentkezés konfigurálása **az igény szerinti Proofpoint** oldalon kell küldeniük a letöltött **Certificate(Base64)**, **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** való [Proofpoint igény támogatási csoport](https://www.proofpoint.com/us/support-services). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+8. Az egyszeri bejelentkezés konfigurálása **igény szerinti Proofpoint** oldalon kell küldenie a letöltött **Certificate(Base64)**, **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [igény szerint támogatási csapat Proofpoint](https://www.proofpoint.com/us/support-services). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/proofpoint-ondemand-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/proofpoint-ondemand-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/proofpoint-ondemand-tutorial/create_aaduser_03.png)
 
@@ -162,57 +162,57 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-proofpoint-on-demand-test-user"></a>Hozzon létre egy Proofpoint az igény szerinti tesztfelhasználó számára
+### <a name="create-a-proofpoint-on-demand-test-user"></a>Hozzon létre egy Proofpoint a tesztfelhasználó igény szerint
 
-Ebben a szakaszban az igény szerinti Proofpoint Britta Simon nevű felhasználó létrehozása. Együttműködve [Proofpoint az igény szerinti ügyfél-támogatási csoport](https://www.proofpoint.com/us/support-services) felhasználót is hozzáadhat a Proofpoint igény szerint a platformon.
+Ebben a szakaszban egy felhasználói Britta Simon ezt az igény szerinti Proofpoint hoz létre. Együttműködve [igény szerint ügyfél-támogatási csapat Proofpoint](https://www.proofpoint.com/us/support-services) felhasználót is hozzáadhat a Proofpoint igény szerint platformon.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon hozzáférést biztosít az igény szerinti Proofpoint által használandó Azure egyszeri bejelentkezés engedélyezése.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Proofpoint igény szerinti Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Az igény szerinti Proofpoint Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Proofpoint igény szerinti, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Proofpoint az igény szerinti**.
+2. Az alkalmazások listájában jelölje ki a **igény szerinti Proofpoint**.
 
-    ![Az alkalmazások listáját az igény szerinti kapcsolat Proofpoint](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_app.png)  
+    ![Az alkalmazások listáját az igény szerinti hivatkozásra a Proofpoint](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-A igény szerinti csempére a hozzáférési panelen Proofpoint gombra kattintva meg kell beolvasni automatikusan aláírt a a Proofpoint igény szerint az alkalmazástól.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+A Proofpoint a hozzáférési panelen igény szerint csempére kattintva, meg kell lekérése automatikusan bejelentkezett, az alkalmazás igény szerinti Proofpoint.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

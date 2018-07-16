@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Palo Alto hálózatok - nyílás |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Palo Alto hálózatok - nyílás között.
+title: 'Oktatóanyag: Azure Active Directory-integráció a Palo Alto Networks - rekesze és |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Palo Alto Networks - rekesze és között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,171 +15,171 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 07c0e5558a35d846f8d1333e110e73f6dd37dd58
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 20292c06cf336a0245b5f5db6b1cb4894df0f1ae
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218231"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051581"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Oktatóanyag: Azure Active Directoryval integrált Palo Alto hálózatok - nyílás
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Oktatóanyag: Azure Active Directory-integráció a Palo Alto Networks - rekesze és
 
-Ebben az oktatóanyagban elsajátíthatja Palo Alto hálózatok - nyílás, az Azure Active Directoryval (Azure AD) integrálása.
+Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a Palo Alto Networks - nyílás, az Azure Active Directoryval (Azure AD).
 
-Palo Alto hálózatok - nyílás, az Azure AD integrálása lehetővé teszi a következő előnyöket biztosítja:
+Futtató Palo Alto Networks - nyílás, az Azure AD integrálása nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Palo Alto hálózatok - nyílás szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Palo Alto hálózatokhoz - nyílás (egyszeri bejelentkezés) a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá a Palo Alto Networks - rekesze és az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a Palo Alto Networks - (egyszeri bejelentkezés) rekesze és az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Palo Alto hálózatokkal - nyílás, az Azure AD-integráció konfigurálása a következőkre van szükség:
+A Palo Alto Networks - nyílás, az Azure AD-integráció konfigurálása a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy Palo Alto hálózatok - nyílás egyszeri bejelentkezés engedélyezve az előfizetéshez
+- Az Azure AD-előfizetéshez
+- A Palo Alto Networks - rekesze és egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Palo Alto hálózatok - nyílás a gyűjteményből hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Hozzáadása a Palo Alto Networks - rekesze és a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>Palo Alto hálózatok - nyílás a gyűjteményből hozzáadása
-Palo Alto hálózatok - nyílás, az Azure AD-integráció konfigurálása kell hozzáadnia a Palo Alto hálózatok - nyílás a gyűjteményből, a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>Hozzáadása a Palo Alto Networks - rekesze és a katalógusból
+A Palo Alto Networks - rekesze és az Azure AD-integráció konfigurálása kell hozzáadnia a Palo Alto Networks - rekesze és a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a Palo Alto hálózatok - nyílás a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a Palo Alto Networks - katalógusból, rekesze és hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Palo Alto hálózatok - nyílás**, jelölje be **Palo Alto hálózatok - nyílás** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Palo Alto Networks - rekesze és**, jelölje be **Palo Alto Networks - rekesze és** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Palo Alto hálózatok - nyílás, az eredmények listájában](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_addfromgallery.png)
+    ![Palo Alto Networks - rekesze és az eredmények listájában](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban az Azure AD az egyszeri bejelentkezés Palo Alto hálózatokkal tesztelése és konfigurálása,-nyílás "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés a Palo Alto Networks tesztelése és konfigurálása,-rekesze és a egy "Britta Simon" nevű tesztelési felhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Palo Alto hálózatokban - nyílás a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó Palo Alto hálózatokban - hivatkozás kapcsolatának nyílás kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben kell tudja, hogy mi a partner felhasználó Palo Alto Networks - rekesze és a egy felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a Palo Alto Networks - hivatkozás kapcsolatának rekesze és kell létrehozni.
 
-Konfigurálása és tesztelése az Azure AD az egyszeri bejelentkezés Palo Alto hálózatokkal - nyílás, kell végrehajtani a következő építőelemeket:
+Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés a Palo Alto Networks - nyílás, kell hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Palo Alto hálózatok - nyílás tesztfelhasználó létrehozása](#create-a-palo-alto-networks---aperture-test-user)**  - rendelkezik egy megfelelője a Britta Simon Palo Alto hálózatokból - nyílás, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy futtató Palo Alto Networks - rekesze és tesztfelhasználó](#create-a-palo-alto-networks---aperture-test-user)**  – van egy Britta Simon megfelelője a Palo Alto Networks - nyílás, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Palo Alto hálózatokon - nyílás alkalmazás egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Palo Alto Networks - rekesze és alkalmazás az egyszeri bejelentkezés konfigurálása.
 
-**Az Azure AD konfigurálása egyszeri bejelentkezéshez Palo Alto hálózatokkal - nyílás, hajtsa végre az alábbi lépéseket:**
+**A Palo Alto Networks - nyílás, az Azure AD egyszeri bejelentkezés konfigurálásához hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Palo Alto hálózatok - nyílás** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Palo Alto Networks - rekesze és** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_samlbase.png)
 
-3. Az a **Palo Alto hálózatok - nyílás tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **Palo Alto Networks - rekesze és tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
-    ![Palo Alto hálózatok - nyílás tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url.png)
+    ![Futtató Palo Alto Networks - rekesze és tartomány és URL-címek egyszeri bejelentkezési adatait](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Palo Alto hálózatok - nyílás tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url1.png)
+    ![Futtató Palo Alto Networks - rekesze és tartomány és URL-címek egyszeri bejelentkezési adatait](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in`
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Palo Alto hálózatok - nyílás ügyfél-támogatási csoport](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Palo Alto Networks - rekesze és ügyfél-támogatási csapatának](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) beolvasni ezeket az értékeket. 
 
-5. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_certificate.png) 
 
 6. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/paloaltonetworks-aperture-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/paloaltonetworks-aperture-tutorial/tutorial_general_400.png)
 
 
-7. Az a **Palo Alto hálózatok - nyílás konfigurációs** kattintson **konfigurálása Palo Alto hálózatok - nyílás** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+7. Az a **Palo Alto Networks - rekesze és konfigurációs** területén kattintson **konfigurálása Palo Alto Networks - rekesze és** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![A konfigurálás hivatkozás](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_configure.png)
 
-8. Egy másik webes böngészőablakban, Palo Alto hálózatokhoz - nyílás rendszergazdaként való bejelentkezés.
+8. Egy másik böngészőablakban, jelentkezzen be a Palo Alto Networks - rekesze és rendszergazdaként.
 
-9. A felső menüsávban kattintson **beállítások**.
+9. A felső menüsávon kattintson **beállítások**.
 
-    ![A beállítások lap](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
+    ![A beállítások lapon](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
 
-10. Navigáljon a **alkalmazás** szakaszban kattintson **hitelesítési** bal oldalán található menüben alkotnak.
+10. Navigáljon a **alkalmazás** szakaszban kattintson **hitelesítési** alkotnak a bal oldali menüben.
 
-    ![A hitelesítési lapon](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
+    ![A hitelesítés lap](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
     
-11. Az a **hitelesítési** lapon hajtsa végre a következő lépéseket:
+11. Az a **hitelesítési** oldalon tegye a következőket:
     
     ![A hitelesítési lapon](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
 
-    a. Ellenőrizze a **engedélyezése egyszeri bejelentkezési-On(Supported SSP Providers are Okta, Onelogin)** a **egyszeri bejelentkezés** mező.
+    a. Ellenőrizze a **engedélyezése egyetlen bejelentkezési-On(Supported SSP Providers are Okta, Onelogin)** a **egyszeri bejelentkezés** mező.
 
-    b. Az a **identitás Szolgáltatóazonosító** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító**, amely Azure-portálon másolta.
+    b. Az a **identitás Szolgáltatóazonosító** szövegmezőbe, illessze be az értéket a **SAML Entitásazonosító**, az Azure Portalról másolt.
 
-    c. Kattintson a **Choose File** az Azure AD-t a letöltött tanúsítvány feltöltése a **szolgáltató Identitástanúsítvány** mező.
+    c. Kattintson a **fájl kiválasztása** töltse fel a letöltött az Azure AD-ből a **szolgáltató Identitástanúsítványt** mező.
 
-    d. A a **identitási szolgáltató egyszeri bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta.
+    d. Az a **Identity Provider egyszeri bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
-    e. Ellenőrizze a kiállító terjesztési hely **nyílás Info** szakaszt, és töltse le a tanúsítványt a **nyílás kulcs** mező.
+    e. Tekintse át a adatainak identitásszolgáltatót **rekesze és Info** szakaszt, és töltse le a tanúsítványt a **rekesze és kulcs** mező.
 
     f. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/paloaltonetworks-aperture-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/paloaltonetworks-aperture-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/paloaltonetworks-aperture-tutorial/create_aaduser_03.png)
 
@@ -189,57 +189,57 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-palo-alto-networks---aperture-test-user"></a>Palo Alto hálózatok - nyílás tesztfelhasználó létrehozása
+### <a name="create-a-palo-alto-networks---aperture-test-user"></a>A Palo Alto Networks - rekesze és tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Palo Alto hálózatok - nyílás Britta Simon nevű felhasználót hoz létre. Együttműködve [Palo Alto hálózatok - nyílás ügyfél-támogatási csoport](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) a felhasználók hozzáadása a Palo Alto hálózatok - nyílás platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
+Ebben a szakaszban egy Britta Simon nevű Palo Alto Networks - rekesze és a felhasználó hoz létre. Együttműködve [Palo Alto Networks - rekesze és ügyfél-támogatási csapatának](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) felhasználót is hozzáadhat a a Palo Alto Networks - rekesze és platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Palo Alto hálózatok - nyílás Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Palo Alto Networks - rekesze és Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Palo Alto hálózatok - nyílás, hajtsa végre a következő lépéseket:**
+**Britta Simon hozzárendelése a Palo Alto Networks - nyílás, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Palo Alto hálózatok - nyílás**.
+2. Az alkalmazások listájában jelölje ki a **Palo Alto Networks - rekesze és**.
 
-    ![Palo Alto hálózatok - nyílás hivatkozásra az alkalmazások listáját](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_app.png)  
+    ![A futtató Palo Alto Networks - alkalmazásainak listájában rekesze és hivatkozás](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Palo Alto hálózatok - nyílás csempe a hozzáférési panelen kattintva meg kell beolvasni automatikusan bejelentkezett a Palo Alto hálózatokhoz - nyílás alkalmazás.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+A Palo Alto Networks - rekesze és csempe a hozzáférési panelen kattintva, kell lekérése automatikusan bejelentkezett, a Palo Alto Networks - rekesze és alkalmazás.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

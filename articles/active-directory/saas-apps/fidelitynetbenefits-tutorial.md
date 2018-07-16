@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált hűség NetBenefits |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az adatok megbízhatóságának NetBenefits között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az hűség NetBenefits |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés hűség NetBenefits és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,154 +15,154 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: c3959e6e33ef603edb51d8f0b29ee140d6bd01c7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5eb64ec5d7b116699d9e081aedb35cb9e7a287cc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223059"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053070"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Oktatóanyag: Azure Active Directoryval integrált hűség NetBenefits
+# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Oktatóanyag: Azure Active Directory-integráció az hűség NetBenefits
 
-Ebben az oktatóanyagban elsajátíthatja hűség NetBenefits integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan hűség NetBenefits integrálása az Azure Active Directory (Azure AD).
 
-Rögzített NetBenefits integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Pontosságú NetBenefits integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér hűség NetBenefits szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett az adatok megbízhatóságának NetBenefits (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá hűség NetBenefits Azure AD-ben.
+- A felhasználók automatikusan első bejelentkezett hűség NetBenefits (egyszeri bejelentkezés), engedélyezheti az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rögzített NetBenefits konfigurálása az Azure AD-integrációs, a következőkre van szükség:
+Pontosságú NetBenefits konfigurálni az Azure AD-integráció, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- A rögzített NetBenefits egyszeri bejelentkezés engedélyezve van az előfizetés
+- Az Azure AD-előfizetéshez
+- Egy hűség NetBenefits egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Rögzített NetBenefits hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Pontosságú NetBenefits hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-fidelity-netbenefits-from-the-gallery"></a>Rögzített NetBenefits hozzáadása a gyűjteményből
-Az Azure AD integrálása a rögzített NetBenefits konfigurálásához kell hozzáadnia hűség NetBenefits a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-fidelity-netbenefits-from-the-gallery"></a>Pontosságú NetBenefits hozzáadása a katalógusból
+Konfigurálása az Azure AD integrálása a pontosságú NetBenefits, hozzá kell hűség NetBenefits a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Vegye fel a rögzített NetBenefits a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Pontosságú NetBenefits hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **hűség NetBenefits**, jelölje be **hűség NetBenefits** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **hűség NetBenefits**, jelölje be **hűség NetBenefits** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredmények listájában rögzített NetBenefits](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_addfromgallery.png)
+    ![Az eredmények listájában hűség NetBenefits](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapuló rögzített NetBenefits.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés hűség NetBenefits a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a partner felhasználói hűség NetBenefits a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a rögzített NetBenefits közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználói hűség NetBenefits a mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználói hűség NetBenefits a hivatkozás kapcsolatát kell létrehozni.
 
-Az adatok megbízhatóságának NetBenefits **felhasználói** leképezési el kell végezni a **Azure AD-felhasználó** a hivatkozás kapcsolat létrehozására.
+A pontosságú NetBenefits **felhasználói** leképezést kell elvégezni a **az Azure AD-felhasználó** hivatkozás viszony.
 
-Az Azure AD egyszeri bejelentkezést az adatok megbízhatóságának NetBenefits tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az hűség NetBenefits tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Rögzített NetBenefits tesztfelhasználó létrehozása](#create-a-fidelity-netbenefits-test-user)**  - való egy megfelelője a Britta Simon hűség NetBenefits, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy hűség NetBenefits tesztfelhasználót](#create-a-fidelity-netbenefits-test-user)**  – egy megfelelője a Britta Simon hűség NetBenefits, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az adatok megbízhatóságának NetBenefits alkalmazásban egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és hűség NetBenefits alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Az adatok megbízhatóságának NetBenefits konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés hűség NetBenefits, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **hűség NetBenefits** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **hűség NetBenefits** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_samlbase.png)
 
-3. Az a **hűség NetBenefits tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **hűség NetBenefits tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk hűség NetBenefits tartomány és az URL-címek](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_url.png)
+    ![Pontosságú NetBenefits tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_url.png)
 
-    a. Az a **azonosító** szövegmezőhöz URL-címet írja be:
+    a. Az a **azonosító** szövegmezőbe írja be egy URL-címe:
 
     Tesztelési környezetben:  `urn:sp:fidelity:geninbndnbparts20:uat:xq1`
 
     Éles környezetben:  `urn:sp:fidelity:geninbndnbparts20`
 
-    b. Az a **válasz URL-CÍMEN** szövegmezőhöz URL-címet írja be:
+    b. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címe:
 
     Tesztelési környezetben:  `https://loginxq1.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
 
     Éles környezetben:  `https://login.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
  
-4. Rögzített NetBenefits alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. Hozzárendelt igazolnia a **felhasználói azonosító** rendelkező a **user.userprincipalname**. Leképezheti a **employeeid** vagy más jogcímet, amely a szervezetben alkalmazandó **felhasználói azonosító**. Az alábbi képernyőfelvételen a csak egy példa látható.
+4. Pontosságú NetBenefits alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Mi van leképezve a **felhasználói azonosító** együtt a **user.userprincipalname**. Leképezheti a **employeeid** vagy alkalmazható a szervezet számára, mint minden más követelés **felhasználóazonosító**. A következő képernyőképen a csak egy példa látható.
 
-    ![Rögzített NetBenefits attribútum](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_attribute.png)
+    ![Pontosságú NetBenefits attribútum](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_attribute.png)
 
     >[!Note]
-    >Rögzített NetBenefits statikus és dinamikus összevonási támogatja. A statikus azt jelenti, nem fogja használni a SAML-alapú csak idő szereplő felhasználó üzembe helyezési és dinamikus csak az idő a felhasználók átadása támogatja. Az igény szerinti alapú létesítési felhasználóknak kell néhány további jogcímeket adhatnak hozzá az Azure AD-például a felhasználó születési dátumot stb. Ezek az adatok által biztosított a [hűség NetBenefits támogatási csoport](mailto:SSOMaintenance@fmr.com) és ahhoz, hogy ez a példány dinamikus összevonási rendelkeznek.
+    >Pontosságú NetBenefits statikus és dinamikus összevonás támogatja. A statikus azt jelenti, hogy nem fogja használni a SAML-alapú csak az idő felhasználó kiépítési és dinamikus azt jelenti, hogy csak az idő felhasználókiépítés támogatja. A igény szerinti alapján kiépítési ügyfelek kell néhány további jogcímek hozzáadása az Azure ad-ben például a felhasználó születési dátum, stb. Ezek az adatok által biztosított a [hűség NetBenefits támogatási csoportjának](mailto:SSOMaintenance@fmr.com) kell a példány a dinamikus összevonás engedélyezése.
     
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_certificate.png) 
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/fidelitynetbenefits-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/fidelitynetbenefits-tutorial/tutorial_general_400.png)
 
-6. Az a **hűség NetBenefits konfigurációs** területen kattintson **konfigurálása hűség NetBenefits** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **hűség NetBenefits konfigurációs** területén kattintson **hűség NetBenefits konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Rögzített NetBenefits konfiguráció](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_configure.png) 
+    ![Pontosságú NetBenefits konfiguráció](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_configure.png) 
 
-7. Egyszeri bejelentkezés konfigurálása **hűség NetBenefits** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja**, **SAML-alapú egyszeri bejelentkezési URL-címe** és  **SAML Entitásazonosító** való [hűség NetBenefits támogatási csoport](mailto:SSOMaintenance@fmr.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+7. Az egyszeri bejelentkezés konfigurálása **hűség NetBenefits** oldalon kell küldenie a letöltött **metaadatainak XML**, **SAML egyszeri bejelentkezési szolgáltatás URL-cím** és  **SAML-Entitásazonosító** való [hűség NetBenefits támogatási csoportjának](mailto:SSOMaintenance@fmr.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/fidelitynetbenefits-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/fidelitynetbenefits-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/fidelitynetbenefits-tutorial/create_aaduser_03.png)
 
@@ -172,59 +172,59 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
   
-### <a name="create-a-fidelity-netbenefits-test-user"></a>Rögzített NetBenefits tesztfelhasználó létrehozása
+### <a name="create-a-fidelity-netbenefits-test-user"></a>Pontosságú NetBenefits tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói hűség NetBenefits Britta Simon meghívta hoz létre. Statikus összevonási létrehozásakor adja együttműködve [hűség NetBenefits támogatási csoport](mailto:SSOMaintenance@fmr.com) hűség NetBenefits platform felhasználók létrehozásához. Ezek a felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
+Ebben a szakaszban egy felhasználói hűség NetBenefits Britta Simon nevű hoz létre. Statikus összevonás létrehozásakor együttműködve [hűség NetBenefits támogatási csoportjának](mailto:SSOMaintenance@fmr.com) hűség NetBenefits platform a felhasználók létrehozásához. Ezeket a felhasználókat kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
-Dinamikus összevonási felhasználók létrehozásának időpontja csak a felhasználók átadása. Az igény szerinti alapú létesítési felhasználóknak kell néhány további jogcímeket adhatnak hozzá az Azure AD-például a felhasználó születési dátumot stb. Ezek az adatok által biztosított a [hűség NetBenefits támogatási csoport](mailto:SSOMaintenance@fmr.com) és ahhoz, hogy ez a példány dinamikus összevonási rendelkeznek.
+A dinamikus az összevonáshoz felhasználók használatával jön létre igény szerinti felhasználók átadása. A igény szerinti alapján kiépítési ügyfelek kell néhány további jogcímek hozzáadása az Azure ad-ben például a felhasználó születési dátum, stb. Ezek az adatok által biztosított a [hűség NetBenefits támogatási csoportjának](mailto:SSOMaintenance@fmr.com) kell a példány a dinamikus összevonás engedélyezése.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés hűség NetBenefits Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés hűség NetBenefits Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Az adatok megbízhatóságának NetBenefits Britta Simon rendeléséhez hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel hűség NetBenefits, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **hűség NetBenefits**.
+2. Az alkalmazások listájában jelölje ki a **hűség NetBenefits**.
 
-    ![Az alkalmazások listáját a rögzített NetBenefits hivatkozás](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_app.png)  
+    ![Az alkalmazások listáját a pontosságú NetBenefits hivatkozás](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési Panel hűség NetBenefits mozaik gombra kattint, akkor kell beolvasása automatikusan bejelentkezett az adatok megbízhatóságának NetBenefits alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a pontosságú NetBenefits csempére kattint, kell lekérése automatikusan bejelentkezett a pontosságú NetBenefits alkalmazásba.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

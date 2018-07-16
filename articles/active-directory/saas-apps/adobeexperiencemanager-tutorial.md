@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Adobe élmény-kezelővel |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az Adobe élmény Manager között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Adobe Experience Manager |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az Adobe Experience Manager között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,127 +15,127 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 4279211d130c8fe00a6b89c66222071de480fc52
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 56b392e57809cea0ae93800df39bb9dacd164ce2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216259"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054182"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Oktatóanyag: Azure Active Directory-integráció Adobe élmény-kezelővel
+# <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Oktatóanyag: Azure Active Directory-integráció az Adobe Experience Manager
 
-Ebben az oktatóanyagban elsajátíthatja Adobe élmény Manager integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Adobe Experience Manager integrálása az Azure Active Directory (Azure AD).
 
-Az Adobe élmény Manager integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Az Adobe Experience Manager integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér az Adobe élmény Manager szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása aláírni Adobe élmény Manager az Azure AD-fiókok.
-- A fiók egyetlen központi helyen--az Azure-portálon kezelheti.
+- Szabályozhatja, aki hozzáfér az Adobe Experience Manager Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első jelentkezett be az Adobe Experience Manager az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen--az Azure Portalon kezelheti.
 
-Az Azure AD SaaS integrálásáról további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md).
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Adobe élmény Managerrel, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása az Adobe Experience Manager, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Az Adobe élmény Manager egyszeri bejelentkezés engedélyezve van az előfizetés
+- Az Azure AD-előfizetéshez
+- Az Adobe Experience Manager egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Nem ajánlott, éles környezetben teszteléséhez lépéseit az oktatóanyag segítségével.
+> Ebben az oktatóanyagban a lépéseket tesztelése éles környezetben használata nem ajánlott.
 
-Ez az oktatóanyag lépéseit teszteléséhez hajtsa végre az ezek az ajánlások:
+Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben [ingyenes egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure AD-próba környezetet [egy hónapos ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Az ebben az oktatóanyagban a forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Ebben az oktatóanyagban a forgatókönyv két fő építőelemeket áll:
 
-1. Adobe élmény Manager hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Az Adobe Experience Manager hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="add-adobe-experience-manager-from-the-gallery"></a>A gyűjteményből Adobe élmény kezelő hozzáadása
-Az Azure AD-be a Adobe élmény Manager-integráció konfigurálása szüksége Adobe élmény Manager hozzáadása a kezelt SaaS-alkalmazások listáját a gyűjteményből.
+## <a name="add-adobe-experience-manager-from-the-gallery"></a>Az Adobe Experience Manager hozzáadása a katalógusból
+Az Azure AD-be Adobe Experience Manager-integráció konfigurálása szüksége a katalógusból az Adobe Experience Manager hozzáadása a felügyelt SaaS-alkalmazások listájában.
 
-**A gyűjteményből Adobe élmény Manager hozzáadásához tegye a következőket:**
+**Az Adobe Experience Manager hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** ikonra. 
+1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Ugrás a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Egy új alkalmazást szeretne telepíteni, válassza ki a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Adobe élmény Manager**. Válassza ki **Adobe élmény Manager** az eredmények panelen, és válassza ki azt a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Adobe Experience Manager**. Válassza ki **Adobe Experience Manager** az eredmények panelen, és válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Adobe élmény Manager](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_addfromgallery.png)
+    ![Az Adobe Experience Manager a találatok listájában](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a Adobe élmény Managerrel "Britta Simon." nevű tesztfelhasználó alapján
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Adobe Experience Manager egy úgynevezett "Britta Simon." tesztfelhasználó alapján
 
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, aki a párjukhoz felhasználó Adobe élmény Manager egy felhasználó számára az Azure AD. Más szóval kell Adobe élmény Manager egy Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létrehozásához.
+Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, akik az Adobe Experience Manager tartozó felhasználó, hogy egy felhasználó Azure AD-ben. Más szóval kell létesítenie egy Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat az Adobe Experience Manager.
 
-Az Adobe élmény-kezelőben adjon a érték **felhasználónév** ugyanazt az értéket, a **felhasználónév** az Azure ad-ben. Most hozott létre a hivatkozást a két felhasználó között. 
+Az Adobe Experience Manager, az értéket adjon **felhasználónév** ugyanazt az értéket, a **felhasználónév** az Azure ad-ben. Most hozott létre a kapcsolatot a két olyan felhasználó között. 
 
-Az Azure AD egyszeri bejelentkezést az Adobe élmény Manager tesztelése és konfigurálása, végezze el a következő építőelemeket:
+Az Azure AD egyszeri bejelentkezés az Adobe Experience Manager tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
-1. [Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy a felhasználók számára a szolgáltatás használatához.
-2. [Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. [Hozzon létre egy Adobe élmény Manager tesztfelhasználó](#create-an-adobe-experience-manager-test-user) szeretné, hogy egy Britta Simon megfelelője az Adobe élmény Manager, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. [Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. [Hozzon létre egy Adobe Experience Manager tesztfelhasználót](#create-an-adobe-experience-manager-test-user) szeretné, hogy egy megfelelője a Britta Simon az Adobe Experience Manager, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ellenőrzése, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az Adobe élmény Manager alkalmazásban az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az Adobe Experience Manager alkalmazásban az egyszeri bejelentkezés konfigurálása.
 
-**Az Azure AD egyszeri bejelentkezést az Adobe élmény Manager konfigurálásához tegye a következőket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása az Adobe Experience Manager, az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Adobe élmény Manager** alkalmazás integrációs lapon jelölje be **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Adobe Experience Manager** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Is engedélyezhető az egyszeri bejelentkezés, a **egyszeri bejelentkezés** párbeszédpanel a **mód** legördülő menüben válassza **SAML-alapú bejelentkezés**.
+2. Egyszeri bejelentkezéssel, engedélyeznie a **egyszeri bejelentkezési** párbeszédpanel a **mód** legördülő menüjében válassza **SAML-alapú bejelentkezés**.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_samlbase.png)
 
-3. Az a **Adobe élmény Manager-tartományra és URL-címek** területen tegye a következőket, ha az alkalmazás a konfigurálni kívánt **IdP** mód:
+3. Az a **Adobe Experience Manager tartomány és URL-címek** területén tegye a következőket, ha az alkalmazást a konfigurálni kívánt **identitásszolgáltató** mód:
 
-    ![Az egyszeri bejelentkezés információk Adobe élmény Manager-tartományra és URL-címek](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_url1.png)
+    ![Az Adobe Experience Manager tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_url1.png)
 
-    a. Az a **azonosító** mezőbe írjon be egy egyedi értéket az AEM-kiszolgálón is megadhat. 
+    a. Az a **azonosító** mezőbe írjon be egy egyedi értéket megadhat az AEM-kiszolgálón is. 
 
-    b. Az a **válasz URL-CÍMEN** mezőbe írja be olyan URL-címe a következő mintát: `https://<AEM Server Url>/saml_login`.
+    b. Az a **válasz URL-cím** mezőbe írja be egy URL-címet a következő mintával: `https://<AEM Server Url>/saml_login`.
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. A tényleges azonosítójú frissítheti ezeket az értékeket, és válasz URL-CÍMÉT. Ahhoz, hogy ezeket az értékeket, lépjen kapcsolatba a [Adobe élmény Manager támogatási munkacsoportjának](https://helpx.adobe.com/support/experience-manager.html).
+    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóval, és a válasz URL-címe. Ezek az értékek beszerzéséhez forduljon a [Adobe Experience Manager ügyfélszolgálathoz](https://helpx.adobe.com/support/experience-manager.html).
  
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak**. Majd hajtsa végre az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése**. Ezután tegye a következőket, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk Adobe élmény Manager-tartományra és URL-címek](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_spconfigure.png)
+    ![Az Adobe Experience Manager tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_spconfigure.png)
 
-    Az a **URL-cím bejelentkezési** mezőben adja meg az Adobe élmény Manager-kiszolgáló URL-címe. 
+    Az a **bejelentkezési URL-** mezőbe írja be az Adobe Experience Manager URL-címe. 
 
-5. Az a **SAML-aláíró tanúsítványa** szakaszban jelölje be **tanúsítvány (Base64)**. Mentse a tanúsítványfájlt, a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **tanúsítvány (Base64)**. Mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_certificate.png) 
 
-6. Az Adobe élmény Manager konfigurációs szakaszban a konfigurációs bejelentkezés ablak megnyitásához válassza **Adobe élmény Manager konfigurálása**. Másolás a **SAML bejelentkezési URL-címe**, **SAML Entitásazonosító**, és **Sign-Out azonosító** rövid összefoglaló szakaszából.
+6. A konfigurációs bejelentkezési ablak megnyitásához az Adobe Experience Manager konfigurációs szakaszban válassza **Adobe Experience Manager konfigurálása**. Másolás a **SAML bejelentkezési szolgáltatás URL-**, **SAML Entitásazonosító**, és **kijelentkezéses azonosító** rövid összefoglaló szakaszából.
 
     ![Konfigurációs szakasz hivatkozás](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_configure.png) 
 
 7. Kattintson a **Mentés** gombra.
 
-    ![Egyszeri bejelentkezés mentési gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés konfigurálása Mentés gombra](./media/adobeexperiencemanager-tutorial/tutorial_general_400.png)
 
-8. Egy másik böngészőablakban nyissa meg a **Adobe élmény Manager** felügyeleti portálon.
+8. Egy másik böngésző ablakában nyissa meg a **Adobe Experience Manager** felügyeleti portálon.
 
 9. Válassza ki **beállítások** > **biztonsági** > **felhasználók**.
 
@@ -143,147 +143,147 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 10. Válassza ki **rendszergazda** vagy más, megfelelő felhasználó.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 11. Válassza ki **Fiókbeállítások** > **kezelése TrustStore**.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
-12. A **tanúsítvány hozzáadása a CER-fájljával**, kattintson a **tanúsítványfájlt válasszon**. Keresse meg és jelölje ki a tanúsítványfájlt, amely már letöltötte az Azure portálról.
+12. Alatt **hozzáadása tanúsítvány CER-fájlból**, kattintson a **válassza ki a tanúsítványfájl**. Keresse meg és válassza ki a tanúsítványfájlt, amely már letöltötte az Azure Portalról.
 
-    ![Egyszeri bejelentkezés mentési gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
+    ![Egyszeri bejelentkezés konfigurálása Mentés gombra](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
 
-13. A tanúsítvány a TrustStore kerül. Megjegyzés: a tanúsítványhoz tartozó aliast.
+13. A TrustStore hozzáadta a tanúsítványt. Megjegyzés: a tanúsítvány az alias.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
 
 14. Az a **felhasználók** lapon jelölje be **hitelesítési-szolgáltatás**.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
-15. Válassza ki **Fiókbeállítások** > **létrehozása vagy kezelése KeyStore**. Hozzon létre KeyStore úgy, hogy megadja a jelszót.
+15. Válassza ki **Fiókbeállítások** > **létrehozása/kezelése KeyStore**. Hozzon létre KeyStore jelszó megadásával.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
-16. Lépjen vissza, ha a rendszergazda a képernyőre. Válassza ki **beállítások** > **műveletek** > **Webkonzol**.
+16. Lépjen vissza a rendszergazdai képernyős. Válassza ki **beállítások** > **műveletek** > **Webkonzol**.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
-    Ekkor megnyílik a konfiguráció lapon.
+    Ez megnyitja a konfiguráció lapon.
 
     ![Az egyszeri bejelentkezés mentési gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin2.png)
 
-17. Található **Adobe Gránit SAML 2.0 hitelesítési kezelő**. Válassza ki a **Hozzáadás** ikonra.
+17. Keresés **Adobe Gránit SAML 2.0-s hitelesítési kezelő**. Válassza ki a **Hozzáadás** ikonra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
 
-19. Hajtsa végre a következő műveleteket ezen a lapon.
+19. Az alábbi műveleteket ezen az oldalon.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
-    a. Az a **elérési** adja meg a **/**.
+    a. Az a **elérési** mezőbe írja be **/**.
 
-    b. Az a **IDP URL-cím** mezőbe írja be a **SAML bejelentkezési URL-címe** Azure-portálról másolt érték.
+    b. Az a **Identitásszolgáltató URL-cím** mezőbe írja be a **SAML bejelentkezési szolgáltatás URL-** , az Azure Portalról másolt érték.
 
-    c. Az a **IDP tanúsítvány Alias** mezőbe írja be a **tanúsítvány Alias** TrustStore hozzáadott értéket.
+    c. Az a **Identitásszolgáltató tanúsítvány Alias** mezőbe írja be a **tanúsítvány Alias** TrustStore hozzáadott értéket.
 
-    d. Az a **biztonsági megadott Entitásazonosító** mezőben adja meg az egyedi **SAML Entitásazonosító** érték, amely konfigurálta az Azure portálon.
+    d. Az a **biztonsági a megadott Entitásazonosító** mezőbe írja be az egyedi **SAML Entitásazonosító** érték, amely az Azure Portalon konfigurált.
 
-    e. Az a **helyességi feltétel ügyfél szolgáltatás URL-címe** mezőbe írja be a **válasz URL-CÍMEN** érték, amely konfigurálta az Azure portálon.
+    e. Az a **helyességi feltétel fogyasztói URL-címe** mezőbe írja be a **válasz URL-cím** érték, amely az Azure Portalon konfigurált.
 
-    f. Az a **kulcs Jelszótárolójába** mezőbe írja be a **jelszó** KeyStore beállított.
+    f. Az a **kulcs Store jelszavát** mezőbe írja be a **jelszó** KeyStore beállított.
 
-    g. Az a **attribútum Felhasználóazonosító** mezőbe írja be a **Névazonosító** vagy egy másik felhasználói Azonosítóját, abban az esetben, ha szükséges.
+    g. Az a **felhasználói Attribútumazonosító** mezőbe írja be a **Névazonosító** vagy egy másik felhasználói azonosítója, amely az Ön esetében fontos.
 
     h. Válassza ki **automatikus létrehozás CRX felhasználók**.
 
-    i. Az a **kijelentkezési URL-cím** mezőben adja meg az egyedi **Sign-Out URL-cím** érték, amely az Azure-portálon származik.
+    i. Az a **kijelentkezési URL-címe** mezőbe írja be az egyedi **kijelentkezéses URL-cím** érték, amely az Azure Portalról kapott.
 
     j. Kattintson a **Mentés** gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com) közben állítja be az alkalmazást. Ez az alkalmazás a hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** fülre. Majd hozzáférni a beágyazott dokumentáció keresztül a **konfigurációs** szakasz alján. További, a beágyazott dokumentáció szolgáltatásról [az Azure AD dokumentációjában beágyazott]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com) közben állítja be az alkalmazás. Ez az alkalmazás hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** fülre. A beágyazott dokumentáció majd hozzáférni a **konfigurációs** alul található szakaszában. További tudnivalók a beágyazott dokumentáció funkció [Azure ad-ben a beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985).
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
-**Tesztfelhasználó létrehozása az Azure ad-ben, a következő lépéseket:**
+**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/adobeexperiencemanager-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, majd válassza ki **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, majd válassza ki **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/adobeexperiencemanager-tutorial/create_aaduser_02.png)
 
-3. Lehetőségre a **felhasználói** párbeszédpanel tetején a **minden felhasználó** párbeszédpanelen jelölje ki **Hozzáadás**.
+3. Megnyitásához a **felhasználói** párbeszédpanel tetején a **minden felhasználó** párbeszédpanelen jelölje ki **Hozzáadás**.
 
     ![A Hozzáadás gombra.](./media/adobeexperiencemanager-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanel mezőben a következő lépéseket:
+4. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/adobeexperiencemanager-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölőnégyzetet. Jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Létrehozás** gombra.
   
-### <a name="create-an-adobe-experience-manager-test-user"></a>Az Adobe élmény Manager tesztfelhasználó létrehozása
+### <a name="create-an-adobe-experience-manager-test-user"></a>Az Adobe Experience Manager tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon Adobe élmény Manager nevű felhasználót hoz létre. Ha bejelölte a **automatikus létrehozás CRX felhasználók** beállítás, felhasználók jönnek létre automatikusan a sikeres hitelesítés után. 
+Ebben a szakaszban egy Britta Simon Adobe Experience Manager nevű felhasználó létrehozásához. Ha bejelölte a **automatikus létrehozás CRX felhasználók** lehetőségnél felhasználók automatikusan létrehozza a sikeres hitelesítés után. 
 
-Ha azt szeretné, a felhasználók manuális létrehozásához, a [Adobe élmény Manager támogatási munkacsoportjának](https://helpx.adobe.com/support/experience-manager.html) a felhasználók hozzáadása az Adobe élmény Manager platform. 
+Ha szeretné manuálisan létrehozni a felhasználók, a [Adobe Experience Manager ügyfélszolgálathoz](https://helpx.adobe.com/support/experience-manager.html) a felhasználók hozzáadása az Adobe Experience Manager platformon. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon nyújtó őket az Adobe élmény Manager Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejelentkezés az Adobe Experience Manager hozzáférés biztosításával őket.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Az Adobe élmény Manager Britta Simon hozzárendeléséhez a következő lépéseket:**
+**Britta Simon Adobe Experience Manager való hozzárendeléséhez végezze el az alábbi lépéseket:**
 
-1. Nyissa meg az alkalmazások megtekintése az Azure-portálon. A könyvtár nézetben jelölje ki a következő Ugrás **vállalati alkalmazások**, majd válassza ki **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése. Ezután nyissa meg a könyvtár nézetben válassza **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Adobe élmény Manager**.
+2. Az alkalmazások listájában jelölje ki a **Adobe Experience Manager**.
 
-    ![Az alkalmazások listáját az Adobe élmény Manager hivatkozás](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_app.png)  
+    ![Az alkalmazások listáját az Adobe Experience Manager hivatkozásra](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_app.png)  
 
-3. A bal oldali menüben válasszon ki **felhasználók és csoportok**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Válassza ki a **Hozzáadás** gombra. Ezt követően a a **hozzáadása hozzárendelés** párbeszédpanelen jelölje ki **felhasználók és csoportok**.
+4. Válassza ki a **Hozzáadás** gombra. Ezt követően a a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **felhasználók és csoportok**.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a felhasználók listában.
 
-6. Az a **felhasználók és csoportok** párbeszédpanel, kattintson a **válasszon** gombra.
+6. Az a **felhasználók és csoportok** párbeszédpanelen kattintson a **kiválasztása** gombra.
 
-7. Az a **hozzáadása hozzárendelés** párbeszédpanelen jelölje ki a **hozzárendelése** gombra.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza ki a **hozzárendelése** gombra.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
 
-Az Adobe élmény kezelője csempe a hozzáférési panelen válassza ki, amikor meg kell beolvasni automatikusan megtörténik a az Adobe élmény Manager alkalmazáshoz.
+Az Adobe Experience Manager csempe kiválasztásakor a hozzáférési panelen azt kell lekérése automatikusan bejelentkezett az Adobe Experience Manager alkalmazás.
 
-A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáférési panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

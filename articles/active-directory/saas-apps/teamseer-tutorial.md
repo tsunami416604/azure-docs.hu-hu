@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált TeamSeer |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és TeamSeer között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az TeamSeer |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és TeamSeer között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: d99311dfe096c1fca94bafd630385ef856123ca1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6c13bb4c10adeeba59ff8d0f2c8d7120d6fae43a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209833"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050646"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Oktatóanyag: Azure Active Directoryval integrált TeamSeer
+# <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Oktatóanyag: Azure Active Directory-integráció az TeamSeer
 
-Ebben az oktatóanyagban elsajátíthatja TeamSeer integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan TeamSeer integrálása az Azure Active Directory (Azure AD).
 
-TeamSeer integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+TeamSeer integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a TeamSeer hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett TeamSeer (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá TeamSeer Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett TeamSeer (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs TeamSeer, a következőkre van szükség:
+TeamSeer az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy TeamSeer egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy TeamSeer egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből TeamSeer hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. TeamSeer hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-teamseer-from-the-gallery"></a>A gyűjteményből TeamSeer hozzáadása
-TeamSeer az Azure ad integrálása konfigurálásához szüksége TeamSeer hozzáadása a kezelt SaaS-alkalmazások listáját a gyűjteményből.
+## <a name="adding-teamseer-from-the-gallery"></a>TeamSeer hozzáadása a katalógusból
+TeamSeer az Azure ad-integráció konfigurálásához, hozzá kell TeamSeer a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből TeamSeer hozzáadásához hajtsa végre az alábbi lépéseket:**
+**TeamSeer hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **TeamSeer**.
+4. A Keresés mezőbe írja be a **TeamSeer**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/teamseer-tutorial/tutorial_teamseer_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/teamseer-tutorial/tutorial_teamseer_search.png)
 
 5. Az eredmények panelen válassza ki a **TeamSeer**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/teamseer-tutorial/tutorial_teamseer_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/teamseer-tutorial/tutorial_teamseer_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban konfigurálása, és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon." nevű tesztfelhasználó alapján TeamSeer
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó TeamSeer az Azure AD egyszeri bejelentkezés tesztelése
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó TeamSeer a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a TeamSeer közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó TeamSeer mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó TeamSeer hivatkozás kapcsolata kell létrehozni.
 
-TeamSeer, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+TeamSeer, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a TeamSeer tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az TeamSeer tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[TeamSeer tesztfelhasználó létrehozása](#creating-a-teamseer-test-user)**  - való Britta Simon valami TeamSeer, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[TeamSeer tesztfelhasználó létrehozása](#creating-a-teamseer-test-user)**  – egy megfelelője a Britta Simon TeamSeer, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az TeamSeer alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és TeamSeer alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés TeamSeer, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TeamSeer, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **TeamSeer** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **TeamSeer** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/teamseer-tutorial/tutorial_teamseer_samlbase.png)
 
-3. Az a **TeamSeer tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **TeamSeer tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/teamseer-tutorial/tutorial_teamseer_url.png)
 
-     Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.teamseer.com/<companyid>`
+     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.teamseer.com/<companyid>`
 
     > [!NOTE] 
-    > Az érték nincs valós. Frissítse az értéket a tényleges bejelentkezési URL-címet. Ügyfél [TeamSeer ügyfél-támogatási csoport](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) az értéket be kell olvasni. 
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [TeamSeer ügyfél-támogatási csapatának](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) a gépkulcsengedélyek értékének. 
  
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/teamseer-tutorial/tutorial_teamseer_certificate.png) 
 
@@ -125,144 +125,144 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/teamseer-tutorial/tutorial_general_400.png)
 
-6. A a **TeamSeer konfigurációs** kattintson **konfigurálása TeamSeer** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **TeamSeer konfigurációs** területén kattintson **konfigurálása TeamSeer** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/teamseer-tutorial/tutorial_teamseer_configure.png)
 
-7. Egy másik webes böngészőablakban jelentkezzen be a TeamSeer vállalati webhely rendszergazdaként.
+7. Egy másik böngészőablakban jelentkezzen be a TeamSeer vállalati hely rendszergazdaként.
 
-8. Ugrás a **HR Admin**.
+8. Lépjen a **HR rendszergazdai**.
    
-    ![HR Admin](./media/teamseer-tutorial/ic789634.png "HR-rendszergazda")
+    ![HR rendszergazdai](./media/teamseer-tutorial/ic789634.png "HR-rendszergazda")
 
 9. Kattintson a **telepítő**.
    
     ![A telepítő](./media/teamseer-tutorial/ic789635.png "beállítása")
 
-10. Kattintson a **SAML szolgáltató részleteinek beállítása**.
+10. Kattintson a **SAML-szolgáltató részleteinek beállítása**.
    
-    ![SAML-alapú beállítások](./media/teamseer-tutorial/ic789636.png "SAML-beállítások")
+    ![SAML-beállítások](./media/teamseer-tutorial/ic789636.png "SAML-beállítások")
 
-11. A SAML szolgáltató részleteket tartalmazó területen tegye a következőket:
+11. Az SAML szolgáltatói részletek szakaszban hajtsa végre az alábbi lépéseket:
    
-    ![SAML-alapú beállítások](./media/teamseer-tutorial/ic789637.png "SAML-beállítások")   
+    ![SAML-beállítások](./media/teamseer-tutorial/ic789637.png "SAML-beállítások")   
 
-    a. Beillesztés a **egyszeri bejelentkezési URL-címe** az értéket a **URL-cím** szövegmező.
+    a. Illessze be a **egyszeri bejelentkezési szolgáltatás URL-cím** az értéket a **URL-cím** szövegmezőbe.
           
-    b. Nyissa meg a base-64 kódolású tanúsítvány a Jegyzettömbben, meg a tartalom másolása a vágólapra és illessze be azt a **IdP nyilvános tanúsítvány** szövegmező.
+    b. Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **identitásszolgáltató nyilvános tanúsítvány** szövegmezőbe.
 
-12. A SAML-szolgáltató konfigurációjának befejezéséhez hajtsa végre az alábbi lépéseket:
+12. Az SAML-szolgáltató konfigurációjának befejezéséhez hajtsa végre az alábbi lépéseket:
     
-    ![SAML-alapú beállítások](./media/teamseer-tutorial/ic789638.png "SAML-beállítások") 
+    ![SAML-beállítások](./media/teamseer-tutorial/ic789638.png "SAML-beállítások") 
 
-    a. Az a **teszt E-mail címek**, írja be a tesztfelhasználó számára e-mail címét. 
+    a. Az a **E-mail-címek tesztelése**, írja be a tesztfelhasználó e-mail címet. 
   
-    b. Az a **kibocsátó** szövegmező, a szolgáltató kibocsátó URL-címét. 
+    b. Az a **kibocsátó** szövegmezőbe írja be a kibocsátó URL-címét a szolgáltató. 
   
     c. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/teamseer-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/teamseer-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/teamseer-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/teamseer-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/teamseer-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/teamseer-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/teamseer-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/teamseer-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-teamseer-test-user"></a>TeamSeer tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók TeamSeer bejelentkezni, akkor ki kell építenie a ShiftPlanning. TeamSeer, ha egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók TeamSeer jelentkezzen be, akkor ki kell építenie a ShiftPlanning. TeamSeer, esetén kiépítése a manuális feladat.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a **TeamSeer** vállalati hely rendszergazdaként.
+1. Jelentkezzen be a **TeamSeer** rendszergazdaként a vállalati webhely.
 
-2. Hajtsa végre a következő lépéseket:
+2. Hajtsa végre az alábbi lépéseket:
    
-    ![HR Admin](./media/teamseer-tutorial/ic789640.png "HR-rendszergazda")  
+    ![HR rendszergazdai](./media/teamseer-tutorial/ic789640.png "HR-rendszergazda")  
  
-    a. Ugrás a **HR Admin \> felhasználók**.
+    a. Lépjen a **HR rendszergazdai \> felhasználók**.
   
     b. Kattintson a **az új felhasználó varázsló futtatása**.
 
-3. Az a **felhasználó adatait** területen tegye a következőket:
+3. Az a **felhasználói adatok** szakaszban, hajtsa végre az alábbi lépéseket:
    
-    ![Felhasználó adatait](./media/teamseer-tutorial/ic789641.png "felhasználó részletei")
+    ![Felhasználói adatok](./media/teamseer-tutorial/ic789641.png "felhasználó adatai")
 
-    a. Típus a **Utónév**, **vezetékneve**, **felhasználónevet (E-mail címet)** a egy érvényes ki kívánja építeni a a kapcsolódó szövegmezők az AAD-fiókba.
+    a. Írja be a **Utónév**, **Vezetéknév**, **felhasználói név (E-mail-cím)** belül üzembe helyezhető a kapcsolódó szövegmezőkben szeretné érvényes AAD-fiókok.
   
     b. Kattintson a **Tovább** gombra.
 
-4. Kövesse a képernyőn megjelenő utasításokat az új felhasználót, és kattintson a **Befejezés**.
+4. Kövesse a képernyőn megjelenő utasításokat az új felhasználót, kattintson **Befejezés**.
 
 >[!NOTE]
->Bármely más TeamSeer felhasználói fiók létrehozása eszközök vagy TeamSeer kiépíteni az Azure AD-felhasználói fiókok által nyújtott API-k. 
+>Eszközt is használhat bármilyen más TeamSeer felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése TeamSeer által biztosított API-k. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés TeamSeer Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés TeamSeer Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése TeamSeer, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel TeamSeer, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **TeamSeer**.
+2. Az alkalmazások listájában jelölje ki a **TeamSeer**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/teamseer-tutorial/tutorial_teamseer_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ha azt szeretné, az egyszeri bejelentkezés beállításainak ellenőrzéséhez nyissa meg a hozzáférési Panel. A hozzáférési Panel kapcsolatos további tudnivalókért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ha szeretné tesztelni az egyszeri bejelentkezés beállításai, nyissa meg a hozzáférési panelen. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 
