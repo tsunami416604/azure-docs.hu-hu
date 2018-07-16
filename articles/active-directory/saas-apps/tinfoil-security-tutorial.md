@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integrációja a TINFOIL SECURITY |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a TINFOIL SECURITY között.
+title: 'Oktatóanyag: Azure Active Directory-integráció a TINFOIL SECURITY szolgáltatással |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a TINFOIL SECURITY között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,136 +15,136 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d05a86d98bbdedc2200020aeeb1e561c3786a150
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1ad18bd1aea36c5f185f7a8e3062b1c2103017c5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218751"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049789"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Oktatóanyag: A TINFOIL SECURITY Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Oktatóanyag: Azure Active Directory-integráció a TINFOIL SECURITY szolgáltatással
 
-Ebben az oktatóanyagban elsajátíthatja a TINFOIL SECURITY integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan teljesíteni a TINFOIL SECURITY integrálása az Azure Active Directory (Azure AD).
 
-A TINFOIL SECURITY integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+TINFOIL SECURITY integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, aki hozzáfér a TINFOIL SECURITY Azure AD-ben
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett a TINFOIL SECURITY (egyszeri bejelentkezés)
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá a TINFOIL SECURITY az Azure AD-ben
+- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a TINFOIL SECURITY (egyszeri bejelentkezés)
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a TINFOIL SECURITY, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a TINFOIL SECURITY szolgáltatással, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - A TINFOIL SECURITY egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A TINFOIL SECURITY hozzáadása a gyűjteményből
-2. Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+1. TINFOIL SECURITY hozzáadása a katalógusból
+2. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-## <a name="add-tinfoil-security-from-the-gallery"></a>A TINFOIL SECURITY hozzáadása a gyűjteményből
-Az Azure AD integrálása a TINFOIL SECURITY konfigurálásához kell hozzáadnia a TINFOIL SECURITY a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="add-tinfoil-security-from-the-gallery"></a>TINFOIL SECURITY hozzáadása a katalógusból
+Az Azure AD integrálása a TINFOIL SECURITY konfigurálásához hozzá kell teljesíteni a TINFOIL SECURITY a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**A TINFOIL SECURITY hozzáadása a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**TINFOIL SECURITY hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **TINFOIL SECURITY**, jelölje be **TINFOIL SECURITY** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **teljesíteni a TINFOIL SECURITY**válassza **teljesíteni a TINFOIL SECURITY** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![A TINFOIL SECURITY gyűjteményből](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_addfromgallery.png)
+    ![TINFOIL SECURITY-galériából](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezést a TINFOIL SECURITY "Britta Simon" nevű tesztfelhasználó alapján.
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés teljesíteni a TINFOIL SECURITY "Britta Simon" nevű tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a TINFOIL SECURITY tartozó felhasználót a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a TINFOIL SECURITY közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó a TINFOIL SECURITY mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó a TINFOIL SECURITY felhasználói hivatkozás kapcsolata kell létrehozni.
 
-A TINFOIL SECURITY, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+TINFOIL SECURITY, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a TINFOIL SECURITY tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés a TINFOIL SECURITY szolgáltatással tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[A TINFOIL SECURITY tesztfelhasználó létrehozása](#create-a-tinfoil-security-test-user)**  - való Britta Simon egy megfelelője a TINFOIL SECURITY, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy teljesíteni a TINFOIL SECURITY tesztfelhasználót](#create-a-tinfoil-security-test-user)**  – egy megfelelője a Britta Simon kell teljesíteni a TINFOIL SECURITY, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a TINFOIL SECURITY alkalmazásban egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és teljesíteni a TINFOIL SECURITY alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**A TINFOIL SECURITY konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálásához a TINFOIL SECURITY szolgáltatással, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **TINFOIL SECURITY** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **teljesíteni a TINFOIL SECURITY** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![SAML-alapú bejelentkezés](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_samlbase.png)
+    ![SAML-alapú bejelentkezésre](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_samlbase.png)
 
-3. Az a **TINFOIL SECURITY tartomány és az URL-címek** szakaszban, a felhasználó nem rendelkezik, az alkalmazás már előre integrálva van az Azure-ral bármely lépések végrehajtásához.
+3. Az a **teljesíteni a TINFOIL SECURITY tartomány és URL-címek** szakaszban, a felhasználónak nem kell végrehajthatja a lépéseket, ahogy az alkalmazás már előre integrálva van az Azure-ral.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
 
 
-4. Az a **SAML-aláíró tanúsítványa** szakaszban, másolja a **UJJLENYOMAT** érték.
+4. Az a **SAML-aláíró tanúsítvány** területén másolja a **UJJLENYOMAT** értéket.
 
-    ![SAML-aláíró tanúsítványa szakasz](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_certificate.png) 
+    ![SAML-aláíró tanúsítvány szakaszban](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_certificate.png) 
 
-5. A kötelező attribútum-leképezésekhez hozzáadásához hajtsa végre az alábbi lépéseket:
+5. Adja hozzá a szükséges attribútumleképezések, hajtsa végre az alábbi lépéseket:
     
     ![Attribútumok](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute1.png "attribútumok")
     
     | Attribútum neve    |   Attribútum értéke |
     | ------------------- | -------------------- |
-    | accountid | UXXXXXXXXXXXXX |
+    | fiókazonosító | UXXXXXXXXXXXXX |
     
-    a. Kattintson a **hozzáadása a felhasználói attribútum**.
+    a. Kattintson a **adja hozzá a felhasználói attribútum**.
     
-    ![Hozzáadás attribútum](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute.png "attribútumok")
+    ![Attribútum hozzáadása](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute.png "attribútumok")
     
-    ![Hozzáadás attribútum](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_addatt.png "attribútumok")
+    ![Attribútum hozzáadása](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_addatt.png "attribútumok")
     
-    b. Az a **attribútumnév** szövegmezőhöz típus **accountid**.
+    b. Az a **attribútumnév** szövegmezőbe írja be **accountid**.
     
-    c. Az a **attribútumérték** szövegmező, illessze be a Fiókazonosítót értéket, amelyet később az oktatóanyag fog kapni.
+    c. Az a **attribútumérték** szövegmezőjébe illessze be a Fiókazonosító-értéket, amelyet később az oktatóanyag fog kapni.
     
     d. Kattintson az **OK** gombra.    
 
 6. Kattintson a **mentése** gombra.
 
-    ![Mentés gombja](./media/tinfoil-security-tutorial/tutorial_general_400.png)
+    ![Mentés gomb](./media/tinfoil-security-tutorial/tutorial_general_400.png)
 
-7. A a **TINFOIL SECURITY Configuration** kattintson **konfigurálása a TINFOIL SECURITY** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+7. Az a **teljesíteni a TINFOIL SECURITY Configuration** területén kattintson **konfigurálása teljesíteni a TINFOIL SECURITY** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![A TINFOIL SECURITY Configuration](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_configure.png) 
 
-8. Egy másik webes böngészőablakban jelentkezzen be a TINFOIL SECURITY vállalati webhely rendszergazdaként.
+8. Egy másik böngészőablakban jelentkezzen be a TINFOIL SECURITY vállalati hely rendszergazdaként.
 
-9. A felső eszköztáron kattintson **saját fiók**.
+9. A felső eszköztáron kattintson **My Account**.
    
     ![Irányítópult](./media/tinfoil-security-tutorial/ic798971.png "irányítópult")
 
@@ -152,112 +152,112 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
    
     ![Biztonsági](./media/tinfoil-security-tutorial/ic798972.png "biztonsági")
 
-11. Az a **egyszeri bejelentkezés** konfigurációs lapján tegye a következőket:
+11. Az a **egyszeri bejelentkezés** konfiguráció lapon, a következő lépésekkel:
    
     ![Egyszeri bejelentkezés](./media/tinfoil-security-tutorial/ic798973.png "egyszeri bejelentkezés")
    
     a. Válassza ki **SAML engedélyezése**.
    
-    b. Kattintson a **kézi konfigurálás**.
+    b. Kattintson a **manuális konfigurációs**.
    
-    c. A **SAML Post URL** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe** amely másolta Azure-portálon
+    c. A **SAML Post URL-címe** szövegmezőjébe illessze be az értéket, **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt
    
-    d. A **SAML-alapú tanúsítvány-ujjlenyomat** szövegmezőhöz illessze be az értékét **ujjlenyomat** , amely a másolt **SAML-aláíró tanúsítványa** szakasz.
+    d. A **SAML-tanúsítvány ujjlenyomat** szövegmezőjébe illessze be az értéket, **ujjlenyomat** másolta amely **SAML-aláíró tanúsítvány** szakasz.
   
-    e. Másolás **a Fiókazonosító** értékét, és illessze be az értéket **attribútumérték** szövegmező alatt **attribútum hozzáadása** szakaszban az Azure portálon.
+    e. Másolás **a Fiókazonosító** értékét, és illessze be az értéket a **attribútumérték** szövegmező alatt **attribútum hozzáadása** szakaszban az Azure Portalon.
    
     f. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tinfoil-security-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tinfoil-security-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Felhasználók és csoportok -> minden felhasználó ](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Felhasználó](./media/tinfoil-security-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tinfoil-security-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tinfoil-security-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-tinfoil-security-test-user"></a>A TINFOIL SECURITY tesztfelhasználó létrehozása
+### <a name="create-a-tinfoil-security-test-user"></a>TINFOIL SECURITY tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a TINFOIL SECURITY, akkor ki kell építenie a TINFOIL SECURITY. A TINFOIL SECURITY esetén kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók teljesíteni a TINFOIL SECURITY-ba való bejelentkezéshez, akkor ki kell építeni teljesíteni a TINFOIL SECURITY be. TINFOIL SECURITY, esetén kézi tevékenység kiépítése.
 
-**Ahhoz, hogy egy felhasználó kiépített, hajtsa végre a következő lépéseket:**
+**Kiépített felhasználó lekérése, hajtsa végre az alábbi lépéseket:**
 
-1. Ha a felhasználó a vállalati fiók része, akkor [a TINFOIL SECURITY támogatási csoportjához](https://www.tinfoilsecurity.com/contact) létrehozott felhasználói fiók eléréséhez.
+1. Ha a felhasználó egy vállalati fiók tagja, akkor kell [fel a kapcsolatot a TINFOIL SECURITY csapatával](https://www.tinfoilsecurity.com/contact) beolvasni a létrehozott felhasználói fiókkal.
 
-2. Ha a felhasználó egy rendszeres TINFOIL SECURITY Szolgáltatottszoftver-felhasználó, majd a felhasználó adhat hozzá a felhasználói helyek bármelyikének közreműködő. Ezzel elindítja a folyamat a TINFOIL SECURITY új felhasználói fiók létrehozása a megadott e-mail felkérést küldeni.
+2. Ha a felhasználó egy rendszeres teljesíteni a TINFOIL SECURITY SaaS-felhasználó, majd a felhasználót adhat hozzá egy közreműködő a felhasználó webhelyek bármelyikéhez. Ez elindít egy folyamatot, hogy hozzon létre egy új teljesíteni a TINFOIL SECURITY-felhasználói fiókot a megadott e-mail-meghívó küldése.
 
 > [!NOTE]
-> A TINFOIL SECURITY felhasználói fiók létrehozása eszközök vagy a TINFOIL SECURITY által nyújtott API-k segítségével kiépíteni az Azure AD felhasználói fiókokat.
+> TINFOIL SECURITY felhasználói fiók létrehozása eszközöket és teljesíteni a TINFOIL SECURITY által biztosított API-k segítségével az Azure AD-felhasználói fiókok kiépítése.
 > 
 > 
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon hozzáférést biztosít a TINFOIL SECURITY által használandó Azure egyszeri bejelentkezés engedélyezése.
+Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával a TINFOIL SECURITY Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**A TINFOIL SECURITY Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendelhet TINFOIL SECURITY, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **TINFOIL SECURITY**.
+2. Az alkalmazások listájában jelölje ki a **teljesíteni a TINFOIL SECURITY**.
 
-    ![a TINFOIL SECURITY kiválasztása](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_app.png) 
+    ![Válassza ki a TINFOIL SECURITY](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a TINFOIL SECURITY csempére kattint, akkor kell beolvasása automatikusan bejelentkezett a TINFOIL SECURITY alkalmazásba. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a TINFOIL SECURITY csempére kattint, akkor kell lekérése automatikusan bejelentkezett a TINFOIL SECURITY alkalmazáshoz. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

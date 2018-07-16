@@ -11,12 +11,12 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: fdf195d96bb455334cb4e898e560813ee8709a50
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 4dee39b56cf0f6494f6e79c70b85bbf711d33d65
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035652"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044594"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -49,6 +49,19 @@ A hiba azt jelenti, hogy adott azds.exe nem szerepel a PATH környezeti változ�
 ### <a name="try"></a>Próbálja ki:
 
 Indítsa el a VS Code a parancssorból, ahol a PATH környezeti változóhoz helyesen van beállítva.
+
+## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>"Azds" hiba történt egy belső vagy külső parancs, működtethető program vagy parancsfájl nem ismerhető fel
+ 
+Ez a hiba megjelenhet, ha azds.exe nincs telepítve vagy megfelelően konfigurálva.
+
+### <a name="try"></a>Próbálja ki:
+
+1. Ellenőrizze a azds.exe hely %ProgramFiles%/Microsoft SDKs\Azure\Azure fejlesztési tárolóhelyek CLI (előzetes verzió). Ha nincs, adott helyen hozzáadása a PATH környezeti változóhoz.
+2. Ha azds.exe nincs telepítve, futtassa a következő parancsot:
+
+    ```cmd
+    az aks use-dev-spaces -n <cluster-name> -g <resource-group>
+    ```
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Hiba történt "felső csatlakozási hiba vagy leválasztása/alaphelyzetbe állítása előtt fejlécek"
 Ez a hiba jelenhet meg a szolgáltatás elérésére tett kísérlet során. Például ha, nyissa meg a szolgáltatás URL-címét egy böngészőben. 

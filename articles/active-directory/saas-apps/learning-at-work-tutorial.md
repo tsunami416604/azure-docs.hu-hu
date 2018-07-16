@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Munkahelyi Learning Azure Active Directoryval integrált |} Microsoft Docs'
-description: Ismerje meg, az egyszeri bejelentkezés Azure Active Directory és a tanulási munkahelyi konfigurálása.
+title: 'Oktatóanyag: Azure Active Directory-integráció a munkahelyi tanulással |} A Microsoft Docs'
+description: Ismerje meg, hogyan konfigurálása egyszeri bejelentkezéshez Learning és az Azure Active Directory közötti munkahelyi.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,112 +14,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: jeedes
-ms.openlocfilehash: 47640b2b8145372f372f4f1129eb992bd4f247ed
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b7a097107f68c692c960efc465d00b05e81f7c81
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216412"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046855"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learning-at-work"></a>Oktatóanyag: Munkahelyi Learning Azure Active Directory integrációja
+# <a name="tutorial-azure-active-directory-integration-with-learning-at-work"></a>Oktatóanyag: Azure Active Directory-integráció a munkahelyi tanulással
 
-Ebben az oktatóanyagban elsajátíthatja a munkahelyi tanulási integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja a munkahelyi Learning integrálása az Azure Active Directory (Azure AD).
 
-Learning munkahelyi integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+A munkahelyi Learning integrálása az Azure AD nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, aki hozzáférhet a munkahelyi Learning Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a tanulási munkahelyi (egyszeri bejelentkezés) a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá a tanulást a munkahelyi Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett munkahelyi (egyszeri bejelentkezés) Learning az Azure AD-fiókjukat
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD rendszerrel történő integráció konfigurálása a munkahelyi tanulási, szüksége van a következő elemek:
+Az Azure AD-integráció konfigurálása a munkahelyi tanulással, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- A Learning munkahelyi egyszeri bejelentkezés engedélyezve van az előfizetésben:
+- Az Azure AD-előfizetéshez
+- A munkahelyi egyszeri bejelentkezéses engedélyezett előfizetés Tanulásért
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Learning hozzáadása a munkahelyi hálózatban a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Tanulási hozzáadása a munkahelyi a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-learning-at-work-from-the-gallery"></a>Learning hozzáadása a munkahelyi hálózatban a gyűjteményből
-Learning integrálása az Azure AD-be munkahelyi konfigurálásához kell hozzáadnia tanulási munkahelyi a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-learning-at-work-from-the-gallery"></a>Tanulási hozzáadása a munkahelyi a katalógusból
+Tanulási integrációjának konfigurálása az Azure AD-be munkahelyi, hozzá kell Learning munkahelyi a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a munkahelyi tanulási a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a munkahelyi Learning a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **munkahelyi tanulási**.
+4. A Keresés mezőbe írja be a **munkahelyi tanulási**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/tutorial_learningatwork_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/tutorial_learningatwork_search.png)
 
 5. Az eredmények panelen válassza ki a **munkahelyi tanulási**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/tutorial_learningatwork_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/tutorial_learningatwork_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezéshez "Britta Simon." nevű tesztfelhasználó alapján munkahelyi Learning segítségével
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a teszt "Britta Simon." nevű felhasználó munkahelyi tanulással
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó a munkahelyi tanulási a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a munkahelyi tanulási közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó munkahelyi Learning mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a munkahelyi Learning hivatkozás kapcsolata kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** munkahelyi szeretnének.
+A hivatkozás kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** munkahelyi Learning.
 
-Az Azure AD az egyszeri bejelentkezés a munkahelyi tanulási tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés a munkahelyi tanulással tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[A tanulás következő munkahelyi tesztfelhasználó létrehozása](#creating-a-learning-at-work-test-user)**  - való Britta Simon valami, amely csatolva van a felhasználó az Azure AD-ábrázolását munkahelyi tanulás.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[A Learning létrehozná munkahelyi tesztfelhasználó](#creating-a-learning-at-work-test-user)**  – a felhasználó Azure ad-ben reprezentációja kapcsolódó munkahelyi Learning egy megfelelője a Britta Simon van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez a tanulás következő munkahelyi alkalmazás.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a tanulási Work alkalmazást, az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés munkahelyi tanulási, hajtsa végre az alábbi lépéseket:**
+**Konfigurálja az Azure AD egyszeri bejelentkezés a munkahelyi tanulással, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **munkahelyi tanulási** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **munkahelyi tanulási** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/learning-at-work-tutorial/tutorial_learningatwork_samlbase.png)
 
-3. Az a **munkahelyi tartomány és az URL-címek tanulási** területen tegye a következőket:
+3. Az a **tanulás egy munkahelyi tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/learning-at-work-tutorial/tutorial_learningatwork_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.sabacloud.com/Saba/Web/<company code>`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.sabacloud.com/Saba/Web/<company code>`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.sabacloud.com/Saba/saml/SSO/alias/<company name>`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.sabacloud.com/Saba/saml/SSO/alias/<company name>`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek tényleges. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [munkahelyi ügyfél-támogatási csapatával: tanulási](https://www.learninga-z.com/site/contact/support) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nem a valós. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [tanulás egy munkahelyi ügyfél-támogatási csapatának](https://www.learninga-z.com/site/contact/support) beolvasni ezeket az értékeket. 
  
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/learning-at-work-tutorial/tutorial_learningatwork_certificate.png) 
 
@@ -127,91 +127,91 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/learning-at-work-tutorial/tutorial_general_400.png)
 
-6. Az a **munkahelyi konfigurálás tanulási** területen kattintson **konfigurálása tanulási munkahelyi** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **tanulás egy munkahelyi konfiguráció** területén kattintson **Learning konfigurálása a munkahelyi** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/learning-at-work-tutorial/tutorial_learningatwork_configure.png) 
 
-7. Egyszeri bejelentkezés konfigurálása **munkahelyi tanulási** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja**, **SAML Entitásazonosító**, **SAML-alapú egyszeri bejelentkezési szolgáltatás URL-cím**, és **Sign-Out URL-cím** való [munkahelyi terméktámogatási tanulási](https://www.learninga-z.com/site/contact/support).
+7. Az egyszeri bejelentkezés konfigurálása **munkahelyi tanulási** oldalon kell küldenie a letöltött **metaadatainak XML**, **SAML Entitásazonosító**, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, és **kijelentkezéses URL-cím** való [munkahelyi terméktámogatási tanulási](https://www.learninga-z.com/site/contact/support).
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/learning-at-work-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="creating-a-learning-at-work-test-user"></a>A tanulás következő munkahelyi tesztfelhasználó létrehozása
+### <a name="creating-a-learning-at-work-test-user"></a>A Learning munkahelyi tesztfelhasználó létrehozása
 
-Ebben a szakaszban a felhasználó munkahelyi tanulási Britta Simon meghívta hoz létre. Együttműködve [munkahelyi terméktámogatási tanulási](https://www.learninga-z.com/site/contact/support) felhasználót is hozzáadhat a munkahelyi platform: tanulási.
+Ebben a szakaszban egy munkahelyi Learning Britta Simon nevű felhasználó hoz létre. Együttműködve [munkahelyi terméktámogatási tanulási](https://www.learninga-z.com/site/contact/support) felhasználót is hozzáadhat a munkahelyi platform Tanulásért.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon hozzáférést biztosít a munkahelyi tanulás által használandó Azure egyszeri bejelentkezés engedélyezése.
+Ebben a szakaszban engedélyezze Britta Simon ehhez biztosítson hozzáférést a munkahelyi Learning Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Learning munkahelyi Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel a munkahelyi tanulás, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **munkahelyi tanulási**.
+2. Az alkalmazások listájában jelölje ki a **munkahelyi tanulási**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/learning-at-work-tutorial/tutorial_learningatwork_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a tanulás munkahelyi csempe a hozzáférési panelen, gombra kattint, akkor kell beolvasása automatikusan aláírt a a tanulás következő munkahelyi alkalmazás.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ha munkahelyi csempe a hozzáférési panelen Tanulásért gombra kattint, kell lekérése automatikusan bejelentkezett, a munkahelyi alkalmazások Tanulásért.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

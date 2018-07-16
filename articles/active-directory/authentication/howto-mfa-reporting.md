@@ -1,6 +1,6 @@
 ---
-title: Az Azure MFA hozzáférési és használati jelentések |} Microsoft Docs
-description: Ez ismerteti az Azure multi-factor Authentication szolgáltatás - jelentéseket.
+title: Azure MFA-kiszolgáló hozzáférési és használati jelentések |} A Microsoft Docs
+description: Ez ismerteti az Azure multi-factor Authentication szolgáltatás - jelentések használata.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
@@ -10,44 +10,44 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 4eb91e37331a5af064d2af0e937eb071d805688f
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 146a86058adc73626e532f33e9fdbc83d9cf27e8
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097879"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048987"
 ---
-# <a name="reports-in-azure-multi-factor-authentication"></a>Azure multi-factor Authentication jelentései
+# <a name="reports-in-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication jelentései
 
-Az Azure multi-factor Authentication segítségével, és a szervezet az Azure-portálon keresztül érhető el több jelentéseket biztosít. A következő táblázat az elérhető jelentések megjelenítéséhez.
+Az Azure multi-factor Authentication számos jelentéseket biztosít, amelyek segítségével az Ön és szervezete az Azure Portalon keresztül érhető el. Az alábbi táblázatban az elérhető jelentéseket sorolja fel:
 
 | Jelentés | Hely | Leírás |
 |:--- |:--- |:--- |
-| Blokkolt felhasználó – előzmények | Az Azure AD > multi-factor Authentication kiszolgáló > felhasználó blokkolása/feloldása | A felhasználók blokkolása és feloldása kérelmek előzményeit jeleníti meg. |
-| Használati és csalás riasztások | Az Azure AD > bejelentkezések | Információt nyújt összesített használatát, a – felhasználói összefoglalás és a felhasználó adatait; csakúgy, mint a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
-| A helyszíni összetevők használata | Az Azure AD > multi-factor Authentication kiszolgáló > tevékenységgel kapcsolatos jelentés | Ez a témakör információkat összesített használatát a multi-factor Authentication bővítményével NPS, AD FS, és a multi-factor Authentication kiszolgáló. |
-| Mellőzött felhasználó – előzmények | Az Azure AD > multi-factor Authentication kiszolgáló > egyszeri Mellőzés | A felhasználó átugorja a multi-factor Authentication kérelmek előzményeit biztosítja. |
-| Kiszolgáló állapota | Az Azure AD > multi-factor Authentication kiszolgáló > kiszolgáló állapota | A fiókjához társított multi-factor Authentication kiszolgálók állapotát jeleníti meg. |
+| Blokkolt felhasználó – előzmények | Az Azure AD > MFA-kiszolgáló > felhasználó blokkolása/feloldása | A felhasználók blokkolása és feloldása kérelmek előzményeit jeleníti meg. |
+| Használat és a csalási riasztás | Az Azure AD > bejelentkezések | Információt nyújt az általános használat – felhasználói összefoglalás és felhasználói adatait; csakúgy, mint a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
+| A helyszíni összetevők használata | Az Azure AD > MFA-kiszolgáló > tevékenységgel kapcsolatos jelentés | Információt nyújt az általános használati a multi-factor Authentication az NPS bővítményével, ADFS, és az MFA-kiszolgáló. |
+| Mellőzött felhasználó – előzmények | Az Azure AD > MFA-kiszolgáló > egyszeri Mellőzés | Egy felhasználó a multi-factor Authentication kihagyásához a kérelmek előzményeit biztosítja. |
+| Kiszolgáló állapota | Az Azure AD > MFA-kiszolgáló > kiszolgáló állapota | A fiókjához társított multi-factor Authentication kiszolgálók állapotát jeleníti meg. |
 
 ## <a name="view-reports"></a>Jelentések megtekintése 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki a bal oldali **Azure Active Directory** > **MFA kiszolgáló**.
+2. A bal oldalon válassza ki a **Azure Active Directory** > **MFA-kiszolgáló**.
 3. Válassza ki a megtekinteni kívánt jelentést.
 
    <center>![Felhő](./media/howto-mfa-reporting/report.png)</center>
 
-## <a name="powershell-reporting"></a>PowerShell-jelentés
+## <a name="powershell-reporting"></a>PowerShell-jelentéskészítés
 
-A következő PowerShell-lel MFA regisztrált felhasználók azonosítása.
+A multi-factor Authentication az alábbi PowerShell-lel regisztráló felhasználók azonosításához.
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
 
-A következő PowerShell-lel MFA nem regisztrált felhasználók azonosítása.
+Azonosítsa azokat a felhasználókat, akik nem regisztrált multi-factor Authentication az alábbi PowerShell-lel.
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
 ## <a name="next-steps"></a>További lépések
 
-* [A felhasználók számára](end-user/current/multi-factor-authentication-end-user.md)
-* [Ha központi telepítése](concept-mfa-whichversion.md)
+* [A felhasználók számára](../user-help/multi-factor-authentication-end-user.md)
+* [Az üzembe helyezés](concept-mfa-whichversion.md)

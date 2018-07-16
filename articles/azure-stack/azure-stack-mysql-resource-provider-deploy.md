@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: e4af3dc8aa7a656fd0020285c3f73ce414ba039c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 645fa89bede1311215f1d67c64a2388e4de5c1b1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38305896"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044883"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Az Azure Stackben a MySQL erőforrás-szolgáltató üzembe helyezése
 
@@ -30,23 +30,30 @@ A MySQL-kiszolgáló erőforrás-szolgáltató használatával teszi közzé a M
 Nincsenek számos előfeltételt kell lennie a helyen, az Azure Stack MySQL erőforrás-szolgáltató telepítése előtt. Mindezen követelmények teljesítése érdekében hajtsa végre az olyan számítógépre, amelyen a kiemelt jogosultságú végpont a virtuális gép érhető el ez a cikk lépéseit.
 
 * Ha ezt még nem tette meg, [regisztrálása az Azure Stack](.\azure-stack-registration.md) az Azure-ral, letöltheti az Azure marketplace-elemek.
-* Telepítenie kell az Azure és az Azure Stack PowerShell modulok, a rendszer Ha futni fog a telepítést. A rendszer a .NET-modul legújabb verzióját a Windows 10-es vagy Windows Server 2016 képnek kell lennie. Lásd: [PowerShell telepítése az Azure Stackhez](.\azure-stack-powershell-install.md).
+* Telepítenie kell az Azure és az Azure Stack PowerShell-modulokat a rendszer, amelyen futtatni fogja a telepítést. A rendszer a .NET-modul legújabb verzióját a Windows 10-es vagy Windows Server 2016 képnek kell lennie. Lásd: [PowerShell telepítése az Azure Stackhez](.\azure-stack-powershell-install.md).
 * Az Azure Stack piactéren úgy, hogy letölti a szükséges Windows Server core virtuális gép hozzáadása a **Windows Server 2016 Datacenter - Server Core** kép.
-
-  >[!NOTE]
-  >Ha szeretne egy Windows-frissítés telepítése, elhelyezhet egy. A helyi függőségi útvonalát MSU-csomagot. Ha egynél több. MSU fájl található, a MySQL erőforrás-szolgáltató telepítése sikertelen lesz.
 
 * Töltse le a MySQL erőforrás-szolgáltató bináris, és futtassa a mappába, csomagolja ki a tartalmát egy ideiglenes könyvtárba.
 
   >[!NOTE]
   >A rendszer nem rendelkezik Internet-hozzáférés a MySQL-szolgáltató üzembe helyezése, másolja át a [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) fájlt egy helyi elérési útra. Adja meg az elérési út neve használatával a **DependencyFilesLocalPath** paraméter.
 
-* Az erőforrás-szolgáltató rendelkezik egy minimális megfelelő Azure Stack hozhat létre. Ellenőrizze, hogy a megfelelő bináris Azure Stack, Ön által futtatott verziójának letöltése.
+* Az erőforrás-szolgáltató rendelkezik egy minimális megfelelő Azure Stack hozhat létre. Győződjön meg arról, hogy a megfelelő bináris Azure Stack, Ön által futtatott verziójának letöltése:
 
     | Az Azure Stack-verzió | MySQL-RP-verzió|
     | --- | --- |
     | Verzió 1804 (1.0.180513.1)|[MySQL-RP 1.1.24.0 verzió](https://aka.ms/azurestackmysqlrp1804) |
-    | (1.0.180302.1) 1802-es verzió | [MySQL-RP 1.1.18.0 verzió](https://aka.ms/azurestackmysqlrp1802) |
+    | (1.0.180302.1) 1802-es verzió | [MySQL-RP 1.1.18.0 verzió](https://aka.ms/azurestackmysqlrp1802)|
+    |     |     |
+
+- Ellenőrizze, hogy adatközpont integrációja Előfeltételek teljesülését:
+
+    |Előfeltétel|Leírások|
+    |-----|-----|
+    |Feltételes DNS-továbbítás megfelelően van beállítva.|[Az Azure Stack adatközpont integrációja - DNS](azure-stack-integrate-dns.md)|
+    |Erőforrás-szolgáltatók bejövő portok nyitva.|[Az Azure Stack adatközpont integrációja – végpontok közzététele](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+    |PKI-tanúsítvány tulajdonosának és SAN helyesen van beállítva.|[Az Azure Stack üzembehelyezési kötelező nyilvános kulcsokra épülő infrastruktúra Előfeltételek](azure-stack-pki-certs.md#mandatory-certificates)<br>[Az Azure Stack üzembe helyezés PaaS tanúsítvány előfeltételei](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |     |     |
 
 ### <a name="certificates"></a>Tanúsítványok
 
@@ -56,7 +63,7 @@ _Csak az integrált rendszerek telepítés_. Meg kell adnia az SQL PaaS PKI-tan�
 
 Után minden előfeltétel telepítve van, futtassa a **DeployMySqlProvider.ps1** üzembe helyezi a MYSQL erőforrás-szolgáltató. A DeployMySqlProvider.ps1 parancsfájlt a MySQL erőforrás-szolgáltató bináris letöltött az Azure Stack verziójának részeként ki kell olvasni.
 
-A MySQL erőforrás-szolgáltató üzembe helyezése, nyisson meg egy új emelt szintű PowerShell-konzolablakot, és váltson arra a könyvtárra, amelyben kibontotta a MySQL erőforrás szolgáltató bináris fájlokat. Azt javasoljuk, egy új PowerShell-ablakot a már betöltött PowerShell-modulok által okozott problémák elkerülése érdekében.
+A MySQL erőforrás-szolgáltató üzembe helyezése, nyisson meg egy új emelt szintű PowerShell-ablakot (nem a PowerShell ISE), és váltson arra a könyvtárra, amelyben kibontotta a MySQL erőforrás szolgáltató bináris fájlokat. Azt javasoljuk, egy új PowerShell-ablakot a már betöltött PowerShell-modulok által okozott problémák elkerülése érdekében.
 
 Futtassa a **DeployMySqlProvider.ps1** parancsfájl, amely a következő feladatokat hajtja végre:
 
@@ -65,8 +72,7 @@ Futtassa a **DeployMySqlProvider.ps1** parancsfájl, amely a következő feladat
 * Közzétesz egy gyűjteménycsomag üzemeltetési kiszolgáló üzembe helyezéséhez.
 * Üzembe helyez egy virtuális Gépet a Windows Server 2016 core rendszerképet letöltötte, és ezután telepíti a MySQL erőforrás-szolgáltató használatával.
 * Regisztrálja a helyi DNS-rekordot, amely a virtuális gép erőforrás-szolgáltató van leképezve.
-* Az erőforrás-szolgáltató a helyi Azure Resource Managerrel az operátor és felhasználói fiókok regisztrálása.
-* Szükség esetén telepíti egyetlen Windows Server frissítés az erőforrás-szolgáltató telepítése közben.
+* Az erőforrás-szolgáltató regisztrálása a helyi Azure Resource Managerrel az operátor fiók.
 
 > [!NOTE]
 > A MySQL erőforrás-szolgáltató telepítési indításakor, a **system.local.mysqladapter** erőforráscsoportot kell létrehozni. Ez az erőforráscsoport szükséges központi telepítések befejezéséhez akár 75 perc is eltarthat.

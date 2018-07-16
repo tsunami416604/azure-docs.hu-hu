@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy alkalmazás több webhely-üzemeltetés – az Azure portálon |} Microsoft Docs
-description: Ismerje meg, amelyen az Azure portál használatával több hely Alkalmazásátjáró létrehozása.
+title: Application gateway létrehozása több hely üzemeltetése – Azure portal |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy application gateway, amelyen több helyet az Azure portal használatával.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -10,100 +10,100 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 0db4e3af1e355df2c985922012191cdc7d97d5b7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 84f88c40d8fe1d88e9d85da5ef6c9e7992b33cc4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354743"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049898"
 ---
-# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Hozzon létre egy alkalmazás több helyrendszerszerepkört üzemeltető, az Azure portál használatával
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Application gateway létrehozása több hely üzemeltetése az Azure portal használatával
 
-Az Azure portál segítségével konfigurálhatja [több webhely tárolása](application-gateway-multi-site-overview.md) létrehozásakor egy [Alkalmazásátjáró](application-gateway-introduction.md). Ebben az oktatóanyagban hoz létre a virtuálisgép-méretezési csoportok használatával háttérkészletek menüpontot. Ezután konfigurálja figyelők és szabályok alapján a tartományok, amelyek a saját győződjön meg arról, hogy a webes forgalom érkezik a készletek a megfelelő kiszolgálókat. Ez az oktatóanyag feltételezi, hogy Ön a tulajdonosa több tartományok és felhasználási mintái *www.contoso.com* és *www.fabrikam.com*.
+Az Azure Portalon való konfigurálásához használható [, több webhely üzemeltetése](application-gateway-multi-site-overview.md) létrehozásakor egy [az application gateway](application-gateway-introduction.md). Ebben az oktatóanyagban háttérkészletek virtuálisgép-méretezési csoportok használatával hoz létre. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez az oktatóanyag feltételezi, hogy Ön több tartománnyal rendelkezik. Példaként a *www.contoso.com* és a *www.fabrikam.com* tartományt használja.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Application Gateway létrehozása
-> * Virtuális gépek háttérkiszolgálókhoz létrehozása
-> * Hozzon létre háttérkészletek menüpontot a háttérkiszolgálókon
-> * Figyelők és útválasztási szabályok létrehozása
-> * Hozzon létre egy CNAME rekordot a tartományban
+> * Virtuális gépek a háttérkiszolgálók létrehozása
+> * Háttérkészletek a háttérkiszolgálók létrehozása
+> * Figyelők és az útválasztási szabályok létrehozása
+> * CNAME rekord létrehozása a tartományban
 
-![Többhelyes útválasztási – példa](./media/application-gateway-create-multisite-portal/scenario.png)
+![Többhelyes útválasztási példa](./media/application-gateway-create-multisite-portal/scenario.png)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-portálon: [http://portal.azure.com](http://portal.azure.com)
+Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) címen.
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Egy virtuális hálózatot az Ön által létrehozott erőforrások közötti kommunikációra van szükség. Két alhálózat ebben a példában jönnek létre: egyet az Alkalmazásátjáró, míg a másik a háttérkiszolgálókhoz. Az Alkalmazásátjáró létrehozott egyszerre egy virtuális hálózatot is létrehozhat.
+Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális hálózaton van szükség. Ebben a példában két alhálózatot hozunk létre: egyet az alkalmazásátjáróhoz, egy másikat pedig a háttérkiszolgálókhoz. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat.
 
-1. Kattintson a **új** az Azure portál bal felső sarkában található.
-2. Válassza ki **hálózati** majd **Application Gateway** kiemelt listájában.
-3. Adja meg ezeket az értékeket az Alkalmazásátjáró:
+1. Kattintson a **új** az Azure portal bal felső sarkában található.
+2. Válassza a **Hálózatkezelés**, majd az **Application Gateway** elemet a Kiemeltek listából.
+3. Adja meg a következő értékeket az alkalmazásátjáróhoz:
 
-    - *myAppGateway* – az Alkalmazásátjáró nevét.
-    - *myResourceGroupAG* – az új erőforráscsoport.
+    - Az alkalmazásátjáró neve *myAppGateway*.
+    - Az új erőforráscsoport *myResourceGroupAG*.
 
-    ![Új Alkalmazásátjáró létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
+    ![Új alkalmazásátjáró létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
 
-4. Fogadja el a további beállításoknál az alapértelmezett értékeket, és kattintson a **OK**.
-5. Kattintson a **virtuális hálózatot választ**, kattintson a **hozzon létre új**, és ezekkel az értékekkel adja meg a virtuális hálózat:
+4. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
+5. Kattintson a **virtuális hálózat választása**, kattintson a **új létrehozása**, majd adja meg ezeket az értékeket a virtuális hálózat:
 
-    - *myVNet* – a virtuális hálózat nevét.
-    - *10.0.0.0/16* – a virtuális hálózat címtere.
-    - *myAGSubnet* – az alhálózati név.
-    - *10.0.0.0/24* – az alhálózati címtartományt.
+    - A virtuális hálózat neve *myVNet*.
+    - A virtuális hálózat címtere *10.0.0.0/16*.
+    - Az alhálózat neve *myAGSubnet*.
+    - Az alhálózat címtere *10.0.0.0/24*.
 
     ![Virtuális hálózat létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
 
-6. Kattintson a **OK** a virtuális hálózati és alhálózati létrehozásához.
-7. Kattintson a **egy nyilvános IP-cím kiválasztása**, kattintson a **hozzon létre új**, és írja be a nyilvános IP-cím neve. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el a további beállításoknál az alapértelmezett értékeket, és kattintson a **OK**.
-8. Fogadja el az alapértelmezett értékeket, a figyelő a konfigurációhoz, hagyja a webalkalmazási tűzfal le van tiltva, és kattintson **OK**.
-9. Tekintse át a beállításokat az Összegzés lapon, és kattintson **OK** a hálózati erőforrások és az Alkalmazásátjáró létrehozása. Az alkalmazás-átjáró hozható létre, várjon, amíg a telepítés sikeresen befejeződik, mielőtt továbblép a következő szakaszban több percig is eltarthat.
+6. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
+7. Kattintson a **egy nyilvános IP-cím választása**, kattintson a **új létrehozása**, majd adja meg a nyilvános IP-cím nevére. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
+8. Fogadja el az alapértelmezett értékeket, a figyelőt a konfigurációhoz, hagyja meg a webalkalmazás-tűzfal le van tiltva, és kattintson **OK**.
+9. Tekintse át a beállításokat az Összegzés lapon, és kattintson **OK** a hálózati erőforrások és az application gateway létrehozásához. Az application gateway hozhatók létre, várjon, amíg az üzembe helyezés sikeresen befejeződik, mielőtt továbblép a következő szakaszban több percig is eltarthat.
 
-### <a name="add-a-subnet"></a>Adjon hozzá egy alhálózatot
+### <a name="add-a-subnet"></a>Alhálózat hozzáadása
 
-1. Kattintson a **összes erőforrás** a bal oldali menüből, majd **myVNet** erőforrások listából.
+1. Kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd kattintson a **myVNet** lehetőségre az erőforráslistában.
 2. Kattintson a **alhálózatok**, és kattintson a **alhálózati**.
 
     ![Alhálózat létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-subnet.png)
 
-3. Adja meg *myBackendSubnet* neveként az alhálózati majd **OK**.
+3. Adja meg a *myBackendSubnet* nevet az alhálózat neveként, majd kattintson az **OK** gombra.
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolgálóként használandó hoz létre. IIS ellenőrzése, hogy a forgalom útválasztásához megfelelően van a virtuális gépeken is telepítse.
+Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazásátjáró háttérkiszolgálóiként fogunk használni. Az IIS-et is telepíti a virtuális gépeket, ellenőrizze, hogy a forgalom megfelelő útválasztási-e.
 
 1. Kattintson az **Új** lehetőségre.
-2. Kattintson a **számítási** majd **Windows Server 2016 Datacenter** kiemelt listájában.
-3. Adja meg a virtuális gép ezeket az értékeket:
+2. Kattintson a **számítási** majd **Windows Server 2016 Datacenter** a kiemelt lista.
+3. Adja meg a következő értékeket a virtuális gép számára:
 
-    - *contosoVM* – a virtuális gép nevét.
+    - *contosoVM* – a virtuális gép neve.
     - A rendszergazda felhasználóneve: *azureuser*.
-    - *Azure123456!* a jelszó.
-    - Válassza ki **meglévő**, majd válassza ki *myResourceGroupAG*.
+    - A jelszó *Azure123456!* .
+    - Válassza a **Meglévő használata**, majd a *myResourceGroupAG* lehetőséget.
 
 4. Kattintson az **OK** gombra.
 5. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget, majd kattintson a **Kiválasztás** gombra.
-6. Győződjön meg arról, hogy **myVNet** van kiválasztva a virtuális hálózat és az alhálózat van **myBackendSubnet**. 
+6. Győződjön meg róla, hogy virtuális hálózatként a **myVNet**, alhálózatként pedig a **myBackendSubnet** van kiválasztva. 
 7. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
 8. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
-1. Az interaktív rendszerhéjat, és győződjön meg arról, hogy van-e állítva **PowerShell**.
+1. Nyissa meg az interaktív felületet, és győződjön meg róla, hogy a **PowerShell** van beállítva.
 
-    ![Egyéni kiterjesztés telepítése](./media/application-gateway-create-multisite-portal/application-gateway-extension.png)
+    ![Egyéni bővítmény telepítése](./media/application-gateway-create-multisite-portal/application-gateway-extension.png)
 
-2. A következő parancsot az IIS telepítése a virtuális gépen: 
+2. Futtassa a következő parancsot az IIS a virtuális gépen való telepítéséhez: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -115,76 +115,76 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
       -Settings $publicSettings
     ```
 
-3. A második virtuális gép létrehozásához, és a lépéseket, amelyek az imént befejeződött az IIS telepítése. Írja be a neveket a *fabrikamVM* nevét és a Set-AzureRmVMExtension VMName értékénél.
+3. A második virtuális gép létrehozása és az IIS telepítése a lépéseket, amelyek csak végzett használatával. Adja meg a nevei *fabrikamVM* nevét és a Set-AzureRmVMExtension VMName értékét.
 
-## <a name="create-backend-pools-with-the-virtual-machines"></a>Háttér-címkészletek létrehozása a virtuális gépekkel
+## <a name="create-backend-pools-with-the-virtual-machines"></a>Háttérkészletek a virtuális gépek létrehozása
 
 1. Kattintson a **összes erőforrás** majd **myAppGateway**.
 2. Kattintson a **háttérkészletek**, és kattintson a **Hozzáadás**.
 3. Adjon meg egy *contosoPool* , és adja hozzá *contosoVM* használatával **Hozzáadás cél**.
 
-    ![Adja hozzá a háttérkiszolgálókon](./media/application-gateway-create-multisite-portal/application-gateway-multisite-backendpool.png)
+    ![Háttérkiszolgálók hozzáadása](./media/application-gateway-create-multisite-portal/application-gateway-multisite-backendpool.png)
 
 4. Kattintson az **OK** gombra.
 5. Kattintson a **háttérkészletek** majd **Hozzáadás**.
-6. Hozzon létre a *fabrikamPool* rendelkező a *fabrikamVM* imént befejeződött lépéseit követve.
+6. Hozzon létre a *fabrikamPool* együtt a *fabrikamVM* használatával a lépéseket, amelyek az imént fejeződött be.
 
-## <a name="create-listeners-and-routing-rules"></a>Figyelők és útválasztási szabályok létrehozása
+## <a name="create-listeners-and-routing-rules"></a>Figyelők és az útválasztási szabályok létrehozása
 
 1. Kattintson a **figyelői** majd **többhelyes**.
 2. Adja meg a figyelő ezeket az értékeket:
     
-    - *contosoListener* – a figyelő nevét.
-    - *www.contoso.com* -állomás neve példában cserélje le a tartomány nevét.
+    - *contosoListener* - a figyelő nevét.
+    - *www.contoso.com* -cserélje le a gazdagép neve példa a tartomány nevére.
 
 3. Kattintson az **OK** gombra.
-4. Hozzon létre egy második figyelőt nevével *fabrikamListener* és a második tartománynevét használja. Ebben a példában *www.fabrikam.com* szolgál.
+4. Hozzon létre egy második figyelő neve használatával *fabrikamListener* és használja a második tartomány nevét. Ebben a példában *www.fabrikam.com* szolgál.
 
-Szabályok feldolgozása sorrendben szerepelnek, és a forgalom irányítja a rendszer az első függetlenül sajátlagossága figyelembe vétele egyező szabály használatával. Például ha egy szabályt egy alapszintű figyelő és egy többhelyes figyelő mindkét ugyanazt a portot használó szabály, a szabály a többhelyes figyelőjével szerepelnie kell a szabály a vártnak megfelelően működik az alapvető figyelő ahhoz, hogy a többhelyes szabály előtt. 
+A szabályok a felsorolásuk sorrendjében vannak feldolgozva, és a forgalom az első egyező szabály alapján lesz átirányítva, függetlenül annak sajátlagosságától. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
 
-Ebben a példában két új szabályt hoz létre, és törölje az alapértelmezett szabály, amely az Alkalmazásátjáró létrehozásakor jött létre. 
+Ebben a példában két új szabályt hoz létre, és törli az alkalmazásátjáró létrehozásakor létrehozott alapértelmezett szabályt. 
 
-1. Kattintson a **szabályok** majd **alapvető**.
-2. Adja meg *contosoRule* nevét.
+1. Kattintson a **szabályok** majd **alapszintű**.
+2. Adja meg *contosoRule* neve.
 3. Válassza ki *contosoListener* a figyelőhöz.
-4. Válassza ki *contosoPool* a háttérkészlet.
+4. Válassza ki *contosoPool* háttérkészlete számára.
 
-    ![Elérési út alapú szabály létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-multisite-rule.png)
+    ![Útvonalalapú szabály létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-multisite-rule.png)
 
 5. Kattintson az **OK** gombra.
-6. Hozzon létre egy második szabály nevének használatával *fabrikamRule*, *fabrikamListener*, és *fabrikamPool*.
-7. Törli az alapértelmezett szabályt nevű *Szabály1* kattintson rá, majd **törlése**.
+6. Hozzon létre egy második szabályt, a neveket *fabrikamRule*, *fabrikamListener*, és *fabrikamPool*.
+7. Törölje az alapértelmezett szabály nevű *felhasználóval a rule1* , majd kattintás a **törlése**.
 
-## <a name="create-a-cname-record-in-your-domain"></a>Hozzon létre egy CNAME rekordot a tartományban
+## <a name="create-a-cname-record-in-your-domain"></a>CNAME rekord létrehozása a tartományban
 
-Nyilvános IP-címmel az Alkalmazásátjáró létrehozása után lekérni a DNS-címét, és hozzon létre egy CNAME rekordot a tartomány segítségével. A-rekordok használata nem ajánlott, mert a VIP módosíthatja az Alkalmazásátjáró újraindításakor.
+Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lekérheti a DNS-címet, és a segítségével létrehozhat egy CNAME rekordot a tartományban. Az A rekordok használata nem javasolt, mivel a virtuális IP-cím változhat az alkalmazásátjáró újraindításakor.
 
 1. Kattintson a **összes erőforrás**, és kattintson a **myAGPublicIPAddress**.
 
-    ![Rekord Alkalmazásátjáró DNS-címét](./media/application-gateway-create-multisite-portal/application-gateway-multisite-dns.png)
+    ![Rekord application gateway DNS-cím](./media/application-gateway-create-multisite-portal/application-gateway-multisite-dns.png)
 
-2. Másolja a DNS-címét, és használja az értékeként egy CNAME rekordban a tartományban.
+2. Másolja a DNS-címet, és használni értékét egy új CNAME-rekordot a tartományban.
 
-## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-1. Adjon meg a tartománynevet a böngésző címsorába. Például a http://www.contoso.com.
+1. Adja meg a tartománya nevét a böngésző címsorában. Például: http://www.contoso.com.
 
-    ![Az alkalmazás átjáró contoso hely tesztelése](./media/application-gateway-create-multisite-portal/application-gateway-iistest.png)
+    ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/application-gateway-create-multisite-portal/application-gateway-iistest.png)
 
-2. Módosítsa a címet a másik tartományban, és az alábbihoz hasonlót kell megjelennie:
+2. Változtassa meg a címet a másik tartományára. Ekkor az eredmény a következő példához hasonló:
 
-    ![Az alkalmazás átjáró fabrikam hely tesztelése](./media/application-gateway-create-multisite-portal/application-gateway-iistest2.png)
+    ![Fabrikam webhely tesztelése az alkalmazásátjáróban](./media/application-gateway-create-multisite-portal/application-gateway-iistest2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan:
+Ebben a cikkben megtanulta, hogyan lehet:
 
 > [!div class="checklist"]
 > * Application Gateway létrehozása
-> * Virtuális gépek háttérkiszolgálókhoz létrehozása
-> * Hozzon létre háttérkészletek menüpontot a háttérkiszolgálókon
-> * Figyelők és útválasztási szabályok létrehozása
-> * Hozzon létre egy CNAME rekordot a tartományban
+> * Virtuális gépek a háttérkiszolgálók létrehozása
+> * Háttérkészletek a háttérkiszolgálók létrehozása
+> * Figyelők és az útválasztási szabályok létrehozása
+> * CNAME rekord létrehozása a tartományban
 
 > [!div class="nextstepaction"]
-> [További tudnivalók az Alkalmazásátjáró teendők](application-gateway-introduction.md)
+> [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](application-gateway-introduction.md)

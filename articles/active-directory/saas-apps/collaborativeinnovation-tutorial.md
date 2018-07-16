@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált együttműködési innováció |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az együttműködési innováció között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az együttműködésen alapuló innovációt |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés együttműködésen alapuló innovációt és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,116 +14,116 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 897db5a4d794c22f436fa074ec2c359edc5b590c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0e2936d0b428249226e428ddc0912d62e29a84f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225058"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042401"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Oktatóanyag: Azure Active Directoryval integrált együttműködési innováció
+# <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Oktatóanyag: Azure Active Directory-integráció az együttműködésen alapuló innovációt
 
-Ebben az oktatóanyagban elsajátíthatja együttműködési innováció integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan együttműködésen alapuló innovációt integrálása az Azure Active Directory (Azure AD).
 
-Együttműködési innováció integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Együttműködésen alapuló innovációt integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a együttműködési innováció hozzáféréssel rendelkező Azure AD-ben
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett való együttműködést innováció (egyszeri bejelentkezés)
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá az együttműködésen alapuló innovációt Azure AD-ben
+- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett az együttműködésen alapuló innovációt (egyszeri bejelentkezés)
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Együttműködési innováció konfigurálása az Azure AD-integrációs, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása az együttműködésen alapuló innovációt, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- A együttműködési innováció egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy együttműködésen alapuló innovációt egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Együttműködési innováció hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Együttműködésen alapuló innovációt hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-collaborative-innovation-from-the-gallery"></a>Együttműködési innováció hozzáadása a gyűjteményből
-Az Azure AD integrálása a együttműködési innováció konfigurálásához kell hozzáadnia együttműködési innováció a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-collaborative-innovation-from-the-gallery"></a>Együttműködésen alapuló innovációt hozzáadása a katalógusból
+Együttműködésen alapuló innovációt integrálása az Azure AD beállítása, hozzá kell együttműködésen alapuló innovációt a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből együttműködési innováció hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Együttműködésen alapuló innovációt hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **együttműködési innováció**.
+4. A Keresés mezőbe írja be a **együttműködésen alapuló innovációt**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_search.png)
 
-5. Az eredmények panelen válassza ki a **együttműködési innováció**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+5. Az eredmények panelen válassza ki a **együttműködésen alapuló innovációt**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést az együttműködési innováció "Britta Simon." nevű tesztfelhasználó alapján
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az együttműködésen alapuló innovációt egy "Britta Simon." nevű tesztelési felhasználó alapján
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó együttműködési innováció a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a együttműködési innováció közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó, az együttműködésen alapuló innovációt mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó az együttműködésen alapuló innovációt hivatkozás kapcsolata kell létrehozni.
 
-Együttműködési innováció, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Együttműködésen alapuló innovációt, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést az együttműködési innováció tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az együttműködésen alapuló innovációt tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Együttműködési innováció tesztfelhasználó létrehozása](#creating-a-collaborative-innovation-test-user)**  - való egy megfelelője a Britta Simon együttműködési innováció, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Együttműködésen alapuló innovációt tesztfelhasználó létrehozása](#creating-a-collaborative-innovation-test-user)**  - a-megfelelője a Britta Simon szerepel, amely kapcsolódik az Azure AD felhasználói ábrázolása együttműködésen alapuló innovációt.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az együttműködési innováció alkalmazásban egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az együttműködést támogató innovációt alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Együttműködési innováció konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása az együttműködésen alapuló innovációt, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **együttműködési innováció** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **együttműködésen alapuló innovációt** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_samlbase.png)
 
-3. Az a **együttműködési innováció tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **innováció olyan együttműködési tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<instancename>.foundry.<companyname>.com/`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<instancename>.foundry.<companyname>.com/`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<instancename>.foundry.<companyname>.com`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<instancename>.foundry.<companyname>.com`
     
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [együttműködési innováció ügyfél-támogatási csoport](https://www.unilever.com/contact/) beolvasni ezeket az értékeket.  
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [együttműködésen alapuló innovációt ügyfél-támogatási csapatának](https://www.unilever.com/contact/) beolvasni ezeket az értékeket.  
 
-4. Együttműködési innováció alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. Állítsa be a következő jogcímeket ehhez az alkalmazáshoz. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
+4. Együttműködésen alapuló innovációt alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Állítsa be a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható erre egy példa látható.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/collaborativeinnovation-tutorial/attribute.png)
     
-5. Kattintson a **nézet és egyéb felhasználói attribútumok szerkesztése** jelölőnégyzet a **felhasználói attribútumok** szakaszban bontsa ki az attribútumok. Hajtsa végre a következő lépéseket mindegyik a megjelenített attribútumok-
+5. Kattintson a **megtekintése és egyéb felhasználói attribútumok szerkesztése** a jelölőnégyzetet a **felhasználói attribútumok** szakaszban bontsa ki az attribútumokat. Hajtsa végre az alábbi lépéseket az egyes a megjelenített attribútumok-
 
     | Attribútum neve | Attribútum értéke |
     | ---------------| --------------- |    
@@ -136,11 +136,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/collaborativeinnovation-tutorial/url_update.png)
 
-    b. Az URL-cím érték törlése a **Namespace**.
+    b. Az URL-Címének értékét törli a **Namespace**.
     
     c. Kattintson a **Ok** a beállítás mentéséhez.
 
-6. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+6. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_certificate.png) 
 
@@ -148,90 +148,90 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/collaborativeinnovation-tutorial/tutorial_general_400.png)
 
-8. Egyszeri bejelentkezés konfigurálása **együttműködési innováció** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [együttműködési innováció támogatási csoport](https://www.unilever.com/contact/). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+8. Az egyszeri bejelentkezés konfigurálása **együttműködésen alapuló innovációt** oldalon kell küldenie a letöltött **metaadatainak XML** való [együttműködésen alapuló innovációt támogatási csapatának](https://www.unilever.com/contact/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/collaborativeinnovation-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="creating-a-collaborative-innovation-test-user"></a>Együttműködési innováció tesztfelhasználó létrehozása
+### <a name="creating-a-collaborative-innovation-test-user"></a>Együttműködésen alapuló innovációt tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók együttműködési innováció bejelentkezni, akkor ki kell építenie az együttműködést innováció.  
+Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be az együttműködésen alapuló innovációt, akkor ki kell építeni az együttműködésen alapuló innovációt.  
 
-Ez az alkalmazás esetén automatikus, ha az alkalmazás csak az idő a felhasználók átadása támogatja. Így nincs szükség az itt bármely lépések végrehajtásához.
+Az alkalmazás esetén kiépítés automatikusan sor kerül, az alkalmazás támogatja a csak az idő felhasználókiépítés. Így van, nem szükséges itt bármilyen lépések végrehajtásához.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon használandó Azure egyszeri bejelentkezés által biztosított együttműködési innováció hozzáférés engedélyezéséhez.
+Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával az együttműködésen alapuló innovációt Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Együttműködési innováció Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**Britta Simon hozzárendelni az együttműködésen alapuló innovációt, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **együttműködési innováció**.
+2. Az alkalmazások listájában jelölje ki a **együttműködésen alapuló innovációt**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési Panel együttműködési innováció mozaik gombra kattint, szerezheti be együttműködési innováció alkalmazás bejelentkezési oldalán.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen az együttműködésen alapuló innovációt csempére kattint, az együttműködésen alapuló innovációt alkalmazás bejelentkezési oldal szerezheti be.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

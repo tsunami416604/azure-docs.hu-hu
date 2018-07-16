@@ -1,6 +1,6 @@
 ---
-title: Az Azure Naplóelemzés erőforrások közötti keresési |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan kérdezheti több munkaterületekkel és App Insights app erőforrásokon az előfizetésben.
+title: Keresés erőforrásoknak az Azure Log Analyticsszel |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan végezhet lekérdezéseket erőforrásokat több munkaterületet és az App Insights-alkalmazás az előfizetésében.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,81 +15,92 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a8d5465a2a9aaf9cf686a8e135a1f537cc60c6b5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e7ca3bcb3c3322c0eba12d7f9eb2ee2bc7b7600c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129251"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049847"
 ---
-# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Kereszt-erőforrás napló keresést a Naplóelemzési  
+# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Hajtsa végre az erőforrások közötti naplókeresések a Log Analyticsben  
 
-Korábban az Azure Naplóelemzés, hogy sikerült csak adatok elemzését az aktuális munkaterület, és azt a lekérdezés képessége csak korlátozott az előfizetés definiált több munkaterületek között.  Emellett a web-alapú alkalmazásokhoz az Application insights szolgáltatással közvetlenül az Application Insights vagy a Visual Studio gyűjtött telemetriai elemek csak keressen.  Ez is tette a natív módon elemezheti a működési probléma és alkalmazásadatok együtt.   
+Korábban az Azure Log Analytics, akkor csak elemezheti az aktuális munkaterületen belüli adatokat, és az előfizetésben megadott többi munkaterület lekérdezését, korlátozott.  Ezenkívül csak keressen telemetriai elem az Application insights segítségével közvetlenül az Application Insights webes alkalmazását a, vagy a Visual Studióból.  Ez is tette a natív módon elemezheti a működési probléma és az alkalmazásadatok együtt.   
 
-Lekérheti most nem csak több Naplóelemzési munkaterület, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportban vagy egy másik előfizetést az adott Application Insights alkalmazásból adatok között. Ez lehetővé teszi az adatok rendszerszintű nézetet.  Csak ezek a lekérdezéstípusok a hajthatja végre a [speciális portal](log-analytics-log-search-portals.md#advanced-analytics-portal), és nem az Azure-portálon. Az erőforrások száma (a Naplóelemzési munkaterület és az Application Insights-alkalmazás) is felvehet egyetlen lekérdezést 100 korlátozódik. 
+Most már lekérdezheti a nemcsak a több Log Analytics-munkaterületek, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot, vagy egy másik előfizetést az adott Application Insights alkalmazásból származó adatok között. Ez biztosít a rendszerre kiterjedően megtekintheti az adatokat.  Ezek a lekérdezéstípusok a főadatbázisról csak a [speciális portál](log-analytics-log-search-portals.md#advanced-analytics-portal), nem az Azure Portalon. Az erőforrások (Log Analytics-munkaterületek és Application Insights-alkalmazás), amelyeket megadhat egyetlen lekérdezést számát 100-ra korlátozódik. 
 
-## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>A Naplóelemzési munkaterület és az Application Insights lekérdezése
-A lekérdezés egy másik munkaterület hivatkozik, használja a [ *munkaterület* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) azonosítóját, és az Application Insights egy alkalmazás esetén a [ *app* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())azonosítója.  
+## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>A Log Analytics-munkaterületek között és az Application Insightsból
+Hivatkozhat egy másik munkaterületet, a lekérdezés, használja a [ *munkaterület* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) azonosítóját, és a egy alkalmazást az Application Insightsból, használja a [ *alkalmazás* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())azonosítója.  
 
-### <a name="identifying-workspace-resources"></a>Munkaterület erőforrások azonosítása
-Az alábbi példák bemutatják, lekérdezések Naplóelemzési munkaterület visszaadandó frissítések összesített száma a frissítés táblából nevű munkaterület különböző *contosoretail-it*. 
+### <a name="identifying-workspace-resources"></a>A munkaterület erőforrásai azonosítása
+Az alábbi példák bemutatják a lekérdezések összesített száma a naplók a frissítési tábla visszaadása nevű munkaterület a Log Analytics-munkaterületek között *contosoretail-it*. 
 
-Munkaterület azonosító is lehet befejezett egy számos módon:
+Munkaterület azonosítása, lehet, hogy számos módon elvégezhető az egyik:
 
-* Erőforrásnév - emberek számára olvasható alhálózatnév a munkaterület, más néven *összetevőnév*. 
+* Erőforrás - név a munkaterület, más néven egy természetes nyelven olvasható neve *összetevőnév*. 
 
     `workspace("contosoretail").Update | count`
  
     >[!NOTE]
-    >A munkaterület neve azonosítja azt feltételezi, hogy egyediségi összes elérhető előfizetések között. Ha a megadott névvel több alkalmazást, a lekérdezés nem sikerült a kétértelműség miatt. Ebben az esetben az egyéb azonosítókhoz egyikét kell használnia.
+    >A munkaterület azonosítása név alapján feltételezi, hogy az egyedi-e az összes elérhető előfizetés. Ha több alkalmazás a megadott névvel, a lekérdezés a kétértelműség miatt nem sikerült. Ebben az esetben az egyéb azonosítókhoz kötött egyikét kell használnia.
 
-* Minősített - értéke a "teljes neve" a munkaterületen, az előfizetés neve, az erőforráscsoport és az összetevő neve, a következő formátumban álló: *subscriptionName/resourceGroup/most letölthető a KomponensNév*. 
+* Minősített - név a "teljes neve" a munkaterületen mikroszolgáltatásokból álló, az előfizetés nevét, az erőforráscsoportot és az összetevő neve a következő formátumban: *subscriptionName/resourceGroup/componentName*. 
 
-    `workspace('contoso/contosoretail/development').requests | count `
+    `workspace('contoso/contosoretail/contosoretail-it').Update | count `
 
     >[!NOTE]
-    >Mivel az Azure-előfizetés neve nem egyedi, lehet, hogy ez az azonosító nem egyértelmű. 
+    >Azure-előfizetés nevek nem egyediek, mert lehet, hogy ez az azonosító nem egyértelmű. 
     >
 
-* Munkaterület-azonosító: A munkaterület-Azonosítót az egyes munkaterületeken jelenik meg a globálisan egyedi azonosítóját (GUID) rendelt egyedi, nem módosítható, azonosító.
+* Munkaterület-azonosító: a munkaterület-azonosító hozzárendelve az egyes munkaterületeken egy globálisan egyedi azonosítóját (GUID) szerinti egyedi, nem módosítható, azonosító érték.
 
     `workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update | count`
 
-* Az Azure erőforrás-azonosító – az Azure által meghatározott egyedi azonosító a munkaterületen. Ha az erőforrás neve nem egyértelmű használhatja az erőforrás-azonosítója.  A munkaterületek, formátuma: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. OperationalInsights/munkaterületek/most letölthető a KomponensNév*.  
+* Az Azure erőforrás-azonosító – az Azure által megadott egyedi identitása a munkaterületen. Erőforrás-Azonosítóját használnia, ha az erőforrás neve nem egyértelmű.  A munkaterületek, formátuma: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. Az OperationalInsights/munkaterületek/componentName*.  
 
     Példa:
     ``` 
-    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Event | count
+    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Update | count
     ```
 
 ### <a name="identifying-an-application"></a>Egy alkalmazás azonosítása
-Az alábbi példák felé irányuló nevű alkalmazás kérelmek összesített számát adja vissza *fabrikamapp* az Application insights szolgáltatással. 
+Az alábbi példák az alkalmazás neve kérelmekre összesített számát adja vissza *fabrikamapp* az Application Insightsban. 
 
-Az Application Insightsban alkalmazás azonosító segítségével végezhető a *app(Identifier)* kifejezés.  A *azonosító* argumentum meghatározza az alkalmazás segítségével a következők egyikét:
+Azonosító egy alkalmazást az Application Insights segítségével végezhető a *app(Identifier)* kifejezés.  A *azonosító* argumentum, adja meg az alkalmazást a használatával a következők egyikét:
 
-* Erőforrásnév - alhálózatnév emberi olvasható az alkalmazás, más néven a *összetevőnév*.  
+* Erőforrás - név egy emberi olvasható nevet az alkalmazáshoz, más néven a *összetevőnév*.  
 
     `app("fabrikamapp")`
 
-* Minősített - értéke a "teljes neve" az alkalmazást, és az előfizetés neve, az erőforráscsoport és az összetevő neve, a következő formátumban álló: *subscriptionName/resourceGroup/most letölthető a KomponensNév*. 
+* Minősített - név a "teljes neve" az alkalmazás mikroszolgáltatásokból álló, az előfizetés nevét, az erőforráscsoportot és az összetevő neve a következő formátumban: *subscriptionName/resourceGroup/componentName*. 
 
     `app("AI-Prototype/Fabrikam/fabrikamapp").requests | count`
 
      >[!NOTE]
-    >Mivel az Azure-előfizetés neve nem egyedi, lehet, hogy ez az azonosító nem egyértelmű. 
+    >Azure-előfizetés nevek nem egyediek, mert lehet, hogy ez az azonosító nem egyértelmű. 
     >
 
-* Azonosító: az alkalmazás az alkalmazás GUID azonosítója.
+* Azonosító – az alkalmazás az alkalmazás GUID azonosítója.
 
     `app("b459b4f6-912x-46d5-9cb1-b43069212ab4").requests | count`
 
-* Az Azure erőforrás-azonosító – az Azure által definiált egyedi azonosító az alkalmazás. Ha az erőforrás neve nem egyértelmű használhatja az erőforrás-azonosítója. A formátum: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. OperationalInsights/összetevőinek/most letölthető a KomponensNév*.  
+* Az Azure erőforrás-azonosító – az Azure által megadott egyedi az alkalmazás identitását. Erőforrás-Azonosítóját használnia, ha az erőforrás neve nem egyértelmű. A formátum: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. Az OperationalInsights/components/componentName*.  
 
     Példa:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
 
+### <a name="performing-a-query-across-multiple-resources"></a>A lekérdezés végrehajtása több erőforrás között
+Az erőforrás-példányok bármelyikével tetszőleges irányú lekérdezheti több erőforrást, ezek lehetnek, munkaterületek és alkalmazások kombinált.
+    
+Példa a munkaterületeket két lekérdezést:    
+    ```
+    union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update
+    | where TimeGenerated >= ago(1h)
+    | where UpdateState == "Needed"
+    | summarize dcount(Computer) by Classification
+    ```
+
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a [Naplóelemzési jelentkezzen keresési hivatkozás](https://docs.loganalytics.io/docs/Language-Reference) összes a lekérdezés szintaxisa található lehetőségeit Naplóelemzési megtekintéséhez.    
+Tekintse át a [Log Analytics naplóbeli keresési referencia](https://docs.loganalytics.io/docs/Language-Reference) összes elérhető a Log Analytics lekérdezési szintaxis beállítások megtekintéséhez.    

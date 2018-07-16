@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ba4c4525899e82b4dd93fc46d9e9bbc1850500dc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: afa65cec0d00f2063be05a48085183da72af9048
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003036"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049394"
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-storage"></a>Egy felhasználó által hozzárendelt Felügyeltszolgáltatás-identitás (MSI) használata a Linux rendszerű virtuális gép Azure Storage eléréséhez
 
@@ -114,7 +114,7 @@ Ha még nem rendelkezik egy, most hozzon létre egy tárfiókot. Kihagyhatja ezt
 5. Győződjön meg, hogy a **előfizetés** és **erőforráscsoport** egyeznek azokkal az előző lépésben a virtuális gép létrehozásakor megadott.
 6. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![Új tárfiók létrehozása](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Új tárfiók létrehozása](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Hozzon létre egy blobtárolót a tárfiókban
 
@@ -125,11 +125,11 @@ Mivel a fájlok blob storage-bA igényel, hozzon létre egy blobtárolót a fáj
 3. Kattintson a **+ tároló** tetején az oldalon, és a egy "új tároló" panel becsúszik.
 4. Adja meg a tároló nevét, válasszon egy hozzáférési szintet, majd kattintson a **OK**. Az oktatóanyag későbbi részében is szolgál a megadott néven. 
 
-    ![Storage-tároló létrehozása](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Storage-tároló létrehozása](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 5. Fájl feltöltése a tároló nevére, majd kattintson az újonnan létrehozott tároló **feltöltése**, majd válasszon ki egy fájlt, majd kattintson a **feltöltése**.
 
-    ![Szöveges fájl feltöltése](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
+    ![Szöveges fájl feltöltése](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-user-assigned-msi-access-to-an-azure-storage-container"></a>A felhasználó hozzárendelt MSI hozzáférést biztosít az Azure Storage-tárolóba
 

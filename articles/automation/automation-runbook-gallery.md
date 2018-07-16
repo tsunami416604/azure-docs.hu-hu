@@ -1,104 +1,104 @@
 ---
-title: Az Azure Automation forgatókönyv- és minták
-description: Forgatókönyveit és moduljait a Microsoft és a Közösség érhetők el, telepítése és használata az Azure Automation-környezetben.  Ez a cikk ismerteti, hogyan férhet hozzá ezekhez az erőforrásokhoz, és a runbookok a gyűjteményébe hozzájárulás.
+title: Azure Automation forgatókönyv- és katalógusok
+description: Runbookjai és moduljai a Microsoft és a Közösség érhetők el, hogy telepítheti és használhatja az Azure Automation-környezetben.  Ez a cikk bemutatja, hogyan férhet hozzá ezekhez az erőforrásokhoz és működhet közre a runbookok a katalógusba.
 services: automation
 ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 07/13/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 61d267898bab5e5df394d4097eacb33ada809518
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 489d9c430db000710368a65f3100bb175ad00eae
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355950"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041178"
 ---
-# <a name="runbook-and-module-galleries-for-azure-automation"></a>Az Azure Automation forgatókönyv- és minták
-Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, különféle forgatókönyvekhez, amik már Microsoft és a Közösség által készített végezheti el.  Használja a következő használati helyzetekben módosítás nélkül, vagy használhatja őket a kiindulási pontként, és szerkesztheti azokat az adott igények szerint.
+# <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation forgatókönyv- és katalógusok
+Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, számos forgatókönyv esetében, amely már a Microsoft és a Közösség által készített érheti el.  Ezekben a forgatókönyvekben, módosítás nélkül használhatja, vagy kiindulási pontként használhatja őket, és az adott igények szerint szerkesztheti őket.
 
-A runbookok kaphat a [forgatókönyvek](#runbooks-in-runbook-gallery) és a modulok a [PowerShell-galériában](#modules-in-powerShell-gallery).  Meg is hozzájárulhat a közösségi ossza meg, hogy a most kialakított forgatókönyvek.
+Megjelenik a runbookot a [forgatókönyv-katalógusában](#runbooks-in-runbook-gallery) és a modulok a [PowerShell-galériából](#modules-in-powerShell-gallery).  Is hozzájárulhat a Közösség által megosztási forgatókönyveket, amelyek fejleszt, lásd: [runbook felvétele a katalógusban](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
 
-## <a name="runbooks-in-runbook-gallery"></a>Runbookok a Runbook-galériában
-A [forgatókönyvek](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) runbookok különféle biztosít a Microsoft és a Közösség, amely az Azure Automation importálhatja. A gyűjteményből, amely által egy runbook vagy letöltheti a [TechNet Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/upload), vagy a runbookok az Azure portálon gyűjteményből közvetlenül importálhatók.
+## <a name="runbooks-in-runbook-gallery"></a>Runbookok a Runbook-katalógus
+A [forgatókönyv-katalógusában](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) runbookok különféle biztosít a Microsoft és a Közösség, amelyet importálhat az Azure Automationbe. Letöltheti a runbook a katalógusból, amelyet üzemeltet a [TechNet Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/upload), vagy a runbookok a katalógusból az Azure Portalon közvetlenül importálhatók.
 
-Csak importálhatja a Runbook gyűjteményből közvetlenül az Azure portál használatával. Ez a funkció a Windows PowerShell használatával nem hajtható végre.
+Csak importálhatja közvetlenül a forgatókönyv-katalógus az Azure portal használatával. Ez a Windows PowerShell-lel függvény nem hajtható végre.
 
 > [!NOTE]
-> Ellenőriznie kell, hogy a Runbook-galériából beolvasása, és járjon el körültekintően telepítése, és futtassa azokat éles környezetben a runbook tartalmát.
+> Ellenőriznie kell a runbookokat, hogy a forgatókönyv-katalógus kérhet, és rendkívül körültekintően járjon el a telepítése és az éles környezetben futtatná őket a tartalmát.
 > 
 > 
 
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Runbook importálása a Runbook-galériából és az Azure portál
+### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Runbook importálása a Runbook-galériából, az Azure portal használatával
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
-2. A **folyamat**, kattintson a **Runbookok gyűjteménye**
-3. Keresse meg a gyűjteményelem szeretne, és válassza ki azt a részletek megtekintéséhez. A bal oldali további keresési paraméterek megadása a gyártó és típus.
+2. A **Folyamatautomatizálás**, kattintson a **runbookkatalógus**
+3. Keresse meg a gyűjteményelem szeretne, és válassza ki azt a részletek megtekintéséhez. A bal oldali további keresési paraméterek megadása a közzétevő és típusát.
    
-    ![Keresse meg a gyűjtemény](media/automation-runbook-gallery/browse-gallery.png)
-5. Kattintson a **nézet forráskódú projektként** elem megtekintéséhez a [TechNet Script Center](http://gallery.technet.microsoft.com/).
-6. Szeretne importálni egy elemet, kattintson a részletek megtekintéséhez, és kattintson a **importálása** gombra.
+    ![Tallózás a katalógusban](media/automation-runbook-gallery/browse-gallery.png)
+5. Kattintson a **forrásprojekt megtekintése** elem megtekintéséhez a [TechNet Script Center](http://gallery.technet.microsoft.com/).
+6. Egy elem importálásához kattintson a részletek megtekintéséhez, majd kattintson rá a **importálása** gombra.
    
     ![Importálás gomb](media/automation-runbook-gallery/gallery-item-detail.png)
-7. Szükség esetén változtassa meg a runbook nevét, és kattintson a **OK** a runbook importálásához.
-8. A runbook jelenik meg a **Runbookok** fülre az Automation-fiókhoz.
+7. Szükség esetén módosítsa a runbook nevét, és kattintson a **OK** a runbook importálása.
+8. A runbook megjelenik-e a **Runbookok** az Automation-fiókhoz tartozó lapon.
 
-### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Egy runbook ad hozzá a runbook gyűjteménye
-A Microsoft javasolja, hogy a runbookok hozzáadni a Runbook gyűjteménye, amelyek úgy gondolja, hogy más ügyfelek számára hasznos lehet.  Hozzáadhat egy runbook által [ismét feltölteni a Script Center](http://gallery.technet.microsoft.com/site/upload) figyelembe véve a következő részletekkel.
+### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Egy runbook a runbook-katalógus hozzáadása
+A Microsoft javasolja, hogy a runbookok a Runbook-katalógus, amely úgy gondolja, hogy más felhasználók számára hasznos lehet.  Hozzáadhat egy runbook által [feltölteni a Parancsfájlközpontban a](http://gallery.technet.microsoft.com/site/upload) figyelembe véve a következő részleteket.
 
-* Meg kell adnia *Windows Azure* a a **kategória** és *Automation* a a **alkategóriát** is megjelennek a runbook a varázsló.  
-* A feltöltés egyetlen .ps1 vagy .graphrunbook fájlnak kell lennie.  Ha a runbook van szüksége, bármilyen modulok, gyermekforgatókönyvek vagy eszközök, majd sorolja fel azokat a küldése leírása és a runbook megjegyzéseket tartalmazó részét.  Ha több runbook igénylő környezettel rendelkezik, külön-külön feltöltése minden egyes, és az felsorolja a kapcsolódó runbookokat az egyes azok leírásait tartalmazza. Győződjön meg arról, hogy így azok megjelennek a ugyanilyen kategóriájú használja ugyanazt a címkét. A felhasználónak kell tudnia, hogy szükség-e más runbookokat leírása olvasható a forgatókönyv működjön.
-* Adja hozzá a következő címke: "GraphicalPS" közzétételekor a **grafikus forgatókönyvnek** (ez nem egy grafikus munkafolyamat). 
-* A leírás használata a PowerShell vagy a PowerShell-munkafolyamati kódrészletet beszúrása **helyezze be a kódját a szakasz** ikonra.
-* A feltöltésének megjelennek a forgatókönyvek eredmények, a felhasználó azonosítására a funkciók a runbook részletes információkat kell biztosítania.
-* A feltöltés egy-három a következő címkék kell hozzárendelni.  A runbook, a varázsló a a kategóriák, amelyek megfelelnek a címkék szerepel.  A varázsló a listában nem szereplő címkéket figyelmen kívül hagyja. A címke nem adja meg, ha a runbook szerepel a kategóriában.
+* Meg kell adnia *Windows Azure* számára a **kategória** és *Automation* számára a **alkategória** megjeleníteni a runbook a a varázsló.  
+* A feltöltés egyetlen .ps1 vagy .graphrunbook fájlnak kell lennie.  Ha a runbook igényel minden olyan modulok, a gyermek runbookok vagy az eszközök, majd sorolja fel azokat a Küldés leírását és a runbook a Megjegyzések szakaszban.  Ha ez a forgatókönyv több runbook igénylő, töltse fel az egyes külön-külön, és az felsorolja a kapcsolódó runbookok minden ezek leírását. Győződjön meg arról, hogy ugyanazt a címkét használja, így azok megjelennek a kategóriába. Felhasználó fog rendelkezni, olvassa el a leírást, hogy tudja, hogy más runbookokat szükségesek a forgatókönyv működjön.
+* Adja hozzá a címke "GraphicalPS", ha közzéteszi a **grafikus forgatókönyv** (nem egy grafikus munkafolyamat). 
+* A leírás segítségével a PowerShell vagy egy PowerShell-munkafolyamat a kódrészlet beszúrása **kód szakaszban beszúrása** ikonra.
+* A feltöltés összegzés a Runbook-katalógus eredmény jelenik meg így meg kell adni, amely segít azonosítani az a funkciók a runbook felhasználó részletes információkat.
+* A feltöltés kell egy vagy három, a következő címkék hozzárendelése.  A runbook szerepel a varázslóban a kategóriákat, amelyek megfelelnek a címkék területen.  A listában nem szereplő bármely címkék figyelmen kívül hagyja a varázslót. Bármely címke nem ad meg, ha a runbook szerepel, a többi kategóriában.
   
   * Backup
   * Kapacitáskezelés
-  * Változáskezelés
+  * A változások
   * Megfelelőség
-  * Fejlesztési / tesztelési környezetben
+  * Fejlesztési és tesztelési környezetek
   * Vészhelyreállítás
   * Figyelés
   * Javítás
   * Kiépítés
   * Szervizelés
-  * Virtuális gép életciklusának kezelésére
-* Automation frissíti a gyűjtemény óránként egyszer, ezért az nem fog a hozzájárulások azonnal.
+  * Virtuális gép életciklus-felügyelete
+* Automation frissíti a katalógus óránként egyszer, így azonnal hozzájárulások nem jelenik meg.
 
 ## <a name="modules-in-powershell-gallery"></a>A PowerShell-galériában modulok
-PowerShell-modul a runbookokban használható parancsmagokat tartalmaznak, és az Azure Automationben telepítése meglévő modulok érhetők el a [PowerShell-galériában](http://www.powershellgallery.com).  Indítsa el ezt a tárat, Azure-portálról, és közvetlenül az Azure Automation a telepítést, vagy letöltheti a fájlokat, és manuális telepítése.  
+PowerShell-modulok a runbookokban használható parancsmagokat tartalmaznak, és a meglévő telepítheti az Azure Automation-modulok elérhetők a [PowerShell-galériából](http://www.powershellgallery.com).  Indítsa el a katalógus az Azure Portalról, és telepítse őket közvetlenül az Azure Automationbe, vagy letöltheti a fájlokat, és telepítse őket manuálisan.  
 
-### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>Modul importálása Automation-modul galériából és az Azure portál
+### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>Modul importálása az Automation-modul katalógusból az Azure portal használatával
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
 2. Válassza ki **modulok** alatt **megosztott erőforrások** modulok listájának megnyitásához.
-4. Kattintson a **Tallózás gallery** az oldal tetején.
+4. Kattintson a **Tallózás a katalógusban** az oldal tetején.
    
     ![A modul gyűjteménye](media/automation-runbook-gallery/modules-blade.png) <br>
-5. Az a **Tallózás gyűjtemény** lapon úgy keresheti meg a következő mezőket:
+5. Az a **Tallózás a katalógusban** oldalon kereshet a következő mezőket:
    
    * Modulnév
    * Címkék
    * Szerző
    * A parancsmag/DSC-erőforrás neve
-6. Keresse meg a modul, amely továbbra is érdekli, és válassza ki azt a részletek megtekintéséhez.  
-   Ha egy adott modult elemezze, további információkat láthat egy hivatkozást a PowerShell-galériában, beleértve a modulban kapcsolatos el a szükséges függőségek, és az összes, a parancsmagok és/vagy a DSC-erőforrások, amely a modul tartalmazza.
+6. Keresse meg az Önt érdeklő modul, és válassza ki azt a részletek megtekintéséhez.  
+   További információk megtekintheti egy adott modul részletesen, a modult, és a telepítőre mutató vissza a PowerShell-galériából kapcsolatos előírt függőségeket, és az összes, a parancsmagok és/vagy DSC-erőforrások, amely a modul tartalmazza.
    
     ![PowerShell modul részletei](media/automation-runbook-gallery/gallery-item-details-blade.png) <br>
-7. Közvetlenül az Azure Automation-modul telepítéséhez, kattintson a **importálási** gombra.
-8. Ha az Importálás gombra kattint, a a **importálása** ablaktáblán látható a neve, amely az importálni kívánt. Ha az összes függősége telepítve van, a **OK** gomb aktiválásakor. Ha függőségek hiányzik, azokat importálni, ez a modul importálása előtt szeretné.
-9. Az a **importálása** kattintson **OK** a modul importálásához. Azure Automation importálja a modult, a fiókjához, amíg a modul és a parancsmagokkal kapcsolatos metaadatok bontja ki. Ez eltarthat néhány percig, mivel minden tevékenység kinyerni kell.
-10. Befejezését követően, hogy a modul telepítése értesítés és egy másik értesítést kapni.
-11. A modul az importálása után megjelenik az elérhető tevékenységeket, és használhatja az erőforrásokat a runbookok és a célállapot-konfiguráció.
+7. A modul telepítése közvetlenül az Azure Automationbe, kattintson a **importálás** gombra.
+8. Ha az Importálás gombra kattint, a a **importálása** panelen láthatja a modul neve, amely az importálni kívánt. Ha telepítve van a függőségeket, a **OK** gomb aktívvá válik. Ha függőségei hiányoznak, meg kell importálhatja azokat, ez a modul importálása előtt.
+9. Az a **importálása** kattintson **OK** a modul importálásához. Bár az Azure Automation-fiókjába importálja a modult, kinyeri a metaadatokat, a modul és a parancsmagok. Ez eltarthat néhány percig, óta kinyerni kell minden egyes tevékenységhez.
+10. Befejezése után egy, hogy a modul parancsfájlműveletekkel értesítése és a egy másik értesítést kap.
+11. A modul importálása után megtekintheti az elérhető tevékenységeket, és használhatja az erőforrások a runbookok és a Desired State Configuration.
 
 > [!NOTE]
-> PowerShell core támogató modulok nem támogatottak az Azure Automationben, és nem importálhatók az Azure portálon, vagy közvetlenül a PowerShell-galériából telepítve.
+> A PowerShell core támogató modulok nem támogatottak az Azure Automationben, és nem lehet importálni az Azure Portalon, vagy közvetlenül a PowerShell-galériából helyezik üzembe.
 
-## <a name="requesting-a-runbook-or-module"></a>A kért egy runbook vagy modul
-Kéréseket küldhet [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Ha a szükséges súgó írása egy runbookot, vagy PowerShell kapcsolatos kérdése van, küldéséhez a [fórum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
+## <a name="requesting-a-runbook-or-module"></a>Egy runbook vagy a modul kérése
+Kérelmek küldése [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Súgó írása egy runbook van szüksége, vagy PowerShell kérdése van, ha új kérdést tenne fel, hogy [fórum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
 
 ## <a name="next-steps"></a>További lépések
-* Első lépésként a runbookokkal, lásd: [létrehozása vagy egy Azure Automation forgatókönyv importálása](automation-creating-importing-runbook.md)
-* Runbookok PowerShell és a PowerShell-munkafolyamatok közötti különbségek ismertetése: [tanulási PowerShell munkafolyamat](automation-powershell-workflow.md)
+* Forgatókönyvekkel való ismerkedéshez tekintse meg [létrehozása vagy importálása az Azure Automation-runbook](automation-creating-importing-runbook.md)
+* A forgatókönyvek PowerShell és a PowerShell-munkafolyamat közötti különbségek ismertetése: [Learning PowerShell-munkafolyamat](automation-powershell-workflow.md)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e62117ee98b1d47600141249dcd3b17ec58a9654
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918155"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048968"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory átmenő hitelesítés: Gyakori kérdések
 
@@ -60,7 +60,7 @@ Ez a funkció működjön, meg kell 1.1.486.0 verzió vagy újabb Azure AD Conne
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>Mi történik, ha a felhasználó jelszava lejárt, és próbáljon meg bejelentkezni az átmenő hitelesítés használatával?
 
-Ha konfigurálta a [jelszóvisszaíró](../active-directory-passwords-update-your-own-password.md) egy adott felhasználó, és ha a felhasználó bejelentkezik az átmenő hitelesítés használatával, módosíthatja vagy új jelszót kérjenek. A jelszavak rendszer visszaírja a helyszíni Active Directory elvárt módon.
+Ha konfigurálta a [jelszóvisszaíró](../user-help/active-directory-passwords-update-your-own-password.md) egy adott felhasználó, és ha a felhasználó bejelentkezik az átmenő hitelesítés használatával, módosíthatja vagy új jelszót kérjenek. A jelszavak rendszer visszaírja a helyszíni Active Directory elvárt módon.
 
 Ha nem konfigurálta a jelszóvisszaírás egy adott felhasználó, vagy ha a felhasználó nem rendelkezik érvényes Azure AD-licenccel, a felhasználó nem tudja frissíteni a jelszavát, a felhőben. A jelszavát, azokat nem lehet frissíteni, akkor is, ha a jelszó lejárt. A felhasználó inkább ezt az üzenetet látja: "a szervezet nem engedélyezi, hogy frissítse a jelszavát, ezen a helyen. Frissítse a munkahelye által javasolt módszerrel, vagy kérje a rendszergazda, ha segítségre van szüksége." A felhasználó vagy a rendszergazda alaphelyzetbe kell állítania a jelszavát a helyszíni Active Directoryban.
 

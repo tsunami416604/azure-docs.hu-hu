@@ -37,10 +37,12 @@
   items:
     - name: Rendszergazda
       items:
-        - name: Alkalmazás létrehozása
-          href: howto-create-application.md
+        - name: Alkalmazás létrehozása és kezelése CSP-ként
+          href: howto-create-and-manage-applications-as-CSP.md
         - name: Alkalmazás felügyelése
           href: howto-administer.md
+        - name: Az adatok exportálása
+          href: howto-export-data.md
     - name: Szerkesztő
       items:
         - name: Eszközsablon beállítása
@@ -49,6 +51,10 @@
           href: howto-version-devicetemplate.md
         - name: Telemetriaszabály létrehozása
           href: howto-create-telemetry-rules.md
+        - name: Eseményszabály létrehozása
+          href: howto-create-event-rules.md
+        - name: Folyamatok létrehozása a Microsoft Flow-ban
+          href: howto-add-microsoft-flow.md
         - name: Kezdőlap konfigurálása
           href: howto-configure-homepage.md
         - name: Képek előkészítése és feltöltése

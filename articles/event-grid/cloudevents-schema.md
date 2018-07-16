@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: babanisa
-ms.openlocfilehash: 41e7be80eb67deaf7a8189aa0d9f62c48b88799a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036237"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044549"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents-séma használata az Event GRID használatával
 
@@ -73,6 +73,8 @@ CloudEvents v0.1 érhető el a következő tulajdonságokkal rendelkezik:
 
 További információkért lásd: a [CloudEvents specifikációja](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
+A fejlécek CloudEvents-séma és az Event Grid-séma szállított események értékei azonos, kivéve a `content-type`. CloudEvents-séma, hogy a fejléc értékét kötelező `"content-type":"application/cloudevents+json; charset=utf-8"`. Event Grid-séma, hogy a fejléc értékét kötelező `"content-type":"application/json; charset=utf-8"`.
+
 ## <a name="configure-event-grid-for-cloudevents"></a>Event Grid CloudEvents konfigurálása
 
 Event Grid bemeneti és kimeneti események CloudEvents-séma is használható. CloudEvents rendszer események, például a Blob Storage-események és az IoT Hub-események és az egyéni eseményeket is használhat. Ez a hálózati oda-vissza események át is alakíthatja.
@@ -89,7 +91,7 @@ Az összes Eseménysémák Event Grid érvényesítést egy event grid-témakör
 
 ### <a name="input-schema"></a>A bemeneti séma
 
-A bemeneti sémát az egyéni témakörre való CloudEvents beállításához használja a következő paramétert az Azure CLI az üzenettéma létrehozásakor `--input-schema cloudeventv01schema`. Az egyéni témakör bejövő események most vár CloudEvents v0.1 formátumban.
+A bemeneti sémát az egyéni témakörre való CloudEvents beállításához használja a következő paramétert az Azure CLI az egyéni témakör létrehozásakor `--input-schema cloudeventv01schema`. Az egyéni témakör bejövő események most vár CloudEvents v0.1 formátumban.
 
 Az event grid-témakör létrehozásához használja:
 

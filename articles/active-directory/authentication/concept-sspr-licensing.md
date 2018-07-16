@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 64c12177e5cf6c82018731b493c0da22e1895b7f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e185b67ae73b86b5f1c3b6cda884de05eb89c6fd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855524"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049084"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Az Azure AD önkiszolgáló jelszó-licencelési követelményei alaphelyzetbe állítása
 
@@ -53,13 +53,13 @@ További licencelési információk, beleértve a költségek, a következő lap
 
 Most már Azure ad-ben támogatja a Csoportalapú licencelés. A rendszergazdák tömeges licenceket rendelhet a felhasználók, mint az őket egyenként csoportja számára. További információkért lásd: [hozzárendelése, ellenőrzése és licencek kapcsolatos problémák megoldásához](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Bizonyos Microsoft-szolgáltatások nem érhetők el az összes helyen. Mielőtt egy úgy lehet licencet a felhasználóhoz, a rendszergazdának meg kell adnia a **a felhasználási hely** tulajdonság a felhasználóra. Licencek hozzárendelése alapján teheti meg a **felhasználói** > **profil** > **beállítások** szakaszban az Azure Portalon. *A licenc-hozzárendelés használatakor bármely felhasználó felhasználás helyének megadása nélkül örökli a könyvtár helye.*
+Nem minden Microsoft-szolgáltatás érhető el minden területen. Mielőtt egy úgy lehet licencet a felhasználóhoz, a rendszergazdának meg kell adnia a **a felhasználási hely** tulajdonság a felhasználóra. Licencek hozzárendelése alapján teheti meg a **felhasználói** > **profil** > **beállítások** szakaszban az Azure Portalon. *A licenc-hozzárendelés használatakor bármely felhasználó felhasználás helyének megadása nélkül örökli a könyvtár helye.*
 
 ## <a name="next-steps"></a>További lépések
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
-* [Jelszó visszaállítása vagy módosítása](../active-directory-passwords-update-your-own-password.md)
-* [Regisztráció önkiszolgáló jelszó-visszaállításra](../active-directory-passwords-reset-register.md)
+* [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Regisztráció önkiszolgáló jelszó-visszaállításra](../user-help/active-directory-passwords-reset-register.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)

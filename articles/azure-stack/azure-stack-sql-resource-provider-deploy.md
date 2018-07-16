@@ -11,37 +11,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b06f53b0169e3afd140be81d9d633844a5876c09
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f53b1e08da1cb2d0dc02381bf47c27e8f84cb1d0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38487647"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044832"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Az SQL Server erőforrás-szolgáltató az Azure Stack üzembe helyezése
-
 Az Azure Stack SQL Server erőforrás-szolgáltató használatával teszi közzé az SQL Database-adatbázisok Azure Stack szolgáltatásként. Az erőforrás-szolgáltató SQL szolgáltatásként fut, a Windows Server 2016 Server Core virtuális gépeken (VM).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Nincsenek számos előfeltételt kell lennie a helyen, az Azure Stack SQL erőforrás-szolgáltató telepítése előtt. Mindezen követelmények teljesítése érdekében végezze el az olyan számítógépre, amelyen a kiemelt jogosultságú végpont a virtuális gép érhető el az alábbi lépéseket:
 
-- Ha ezt még nem tette meg, [regisztrálása az Azure Stack](.\azure-stack-registration.md) az Azure-ral, letöltheti az Azure marketplace-elemek.
-- Telepítenie kell az Azure és az Azure Stack PowerShell modulok, a rendszer Ha futni fog a telepítést. A rendszer a .NET-modul legújabb verzióját a Windows 10-es vagy Windows Server 2016 képnek kell lennie. Lásd: [PowerShell telepítése az Azure Stackhez](.\azure-stack-powershell-install.md).
+- Ha ezt még nem tette meg, [regisztrálása az Azure Stack](azure-stack-registration.md) az Azure-ral, letöltheti az Azure marketplace-elemek.
+- Telepítenie kell az Azure és az Azure Stack PowerShell-modulokat a rendszer, amelyen futtatni fogja a telepítést. A rendszer a .NET-modul legújabb verzióját a Windows 10-es vagy Windows Server 2016 képnek kell lennie. Lásd: [PowerShell telepítése az Azure Stackhez](.\azure-stack-powershell-install.md).
 - Az Azure Stack piactéren úgy, hogy letölti a szükséges Windows Server core virtuális gép hozzáadása a **Windows Server 2016 Datacenter - Server Core** kép. 
-
-  >[!NOTE]
-  >Ha szeretne telepíteni egy frissítést, MSU egyetlen csomagban elhelyezheti a helyi függőségi útvonalát. Ha egynél több MSU-fájl található, az SQL erőforrás-szolgáltató telepítése sikertelen lesz.
-
-- Töltse le az SQL erőforrás-szolgáltató bináris, és futtassa a mappába, csomagolja ki a tartalmát egy ideiglenes könyvtárba. Az erőforrás-szolgáltató rendelkezik egy minimális megfelelő Azure Stack hozhat létre. Ellenőrizze, hogy a megfelelő bináris Azure Stack, Ön által futtatott verziójának letöltése.
+- Töltse le az SQL erőforrás-szolgáltató bináris, és futtassa a mappába, csomagolja ki a tartalmát egy ideiglenes könyvtárba. Az erőforrás-szolgáltató rendelkezik egy minimális megfelelő Azure Stack hozhat létre. Győződjön meg arról, hogy a megfelelő bináris Azure Stack, Ön által futtatott verziójának letöltése:
 
     |Az Azure Stack-verzió|SQL-RP-verzió|
     |-----|-----|
     |Verzió 1804 (1.0.180513.1)|[SQL-RP 1.1.24.0 verzió](https://aka.ms/azurestacksqlrp1804)
     |(1.0.180302.1) 1802-es verzió|[SQL-RP 1.1.18.0 verzió](https://aka.ms/azurestacksqlrp1802)|
+    |     |     |
+
+- Ellenőrizze, hogy adatközpont integrációja Előfeltételek teljesülését:
+
+    |Előfeltétel|Leírások|
+    |-----|-----|
+    |Feltételes DNS-továbbítás megfelelően van beállítva.|[Az Azure Stack adatközpont integrációja - DNS](azure-stack-integrate-dns.md)|
+    |Erőforrás-szolgáltatók bejövő portok nyitva.|[Az Azure Stack adatközpont integrációja – végpontok közzététele](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+    |PKI-tanúsítvány tulajdonosának és SAN helyesen van beállítva.|[Az Azure Stack üzembehelyezési kötelező nyilvános kulcsokra épülő infrastruktúra Előfeltételek](azure-stack-pki-certs.md#mandatory-certificates)<br>[Az Azure Stack üzembe helyezés PaaS tanúsítvány előfeltételei](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |     |     |
 
 ### <a name="certificates"></a>Tanúsítványok
 
@@ -51,7 +56,7 @@ _Csak az integrált rendszerek telepítés_. Meg kell adnia az SQL PaaS PKI-tan�
 
 Után minden előfeltétel telepítve van, futtassa a **DeploySqlProvider.ps1** üzembe helyezése erőforrás-szolgáltató az SQL-szkript. A DeploySqlProvider.ps1 parancsfájlt a SQL erőforrás-szolgáltató bináris letöltött az Azure Stack verziójának részeként ki kell olvasni.
 
-Az SQL erőforrás-szolgáltató üzembe helyezése, nyissa meg a **új** emelt szintű PowerShell konzolablakában, és váltson arra a könyvtárra, amelyben kibontotta az SQL resource provider bináris fájlokat. Azt javasoljuk, egy új PowerShell-ablakot a már betöltött PowerShell-modulok által okozott problémák elkerülése érdekében.
+Az SQL erőforrás-szolgáltató üzembe helyezése, nyissa meg a **új** emelt szintű PowerShell-ablakot (nem a PowerShell ISE), és módosítsa azt a könyvtárat, amelyben kibontotta az SQL resource provider bináris fájlokat. Azt javasoljuk, egy új PowerShell-ablakot a már betöltött PowerShell-modulok által okozott problémák elkerülése érdekében.
 
 Futtassa a DeploySqlProvider.ps1 parancsfájlt, amely a következő feladatokat hajtja végre:
 
@@ -60,8 +65,7 @@ Futtassa a DeploySqlProvider.ps1 parancsfájlt, amely a következő feladatokat 
 - Közzétesz egy gyűjteménycsomag üzemeltetési kiszolgáló üzembe helyezéséhez.
 - Üzembe helyez egy virtuális Gépet a Windows Server 2016 core kép letöltött, és ezután telepíti az SQL erőforrás-szolgáltató használatával.
 - Regisztrálja a helyi DNS-rekordot, amely a virtuális gép erőforrás-szolgáltató van leképezve.
-- Az erőforrás-szolgáltató a helyi Azure Resource Managerrel az operátor és felhasználói fiókok regisztrálása.
-- Szükség esetén telepíti egyetlen Windows Server frissítés az erőforrás-szolgáltató telepítése közben.
+- Az erőforrás-szolgáltató regisztrálása a helyi Azure Resource Managerrel az operátor fiók.
 
 > [!NOTE]
 > Az SQL erőforrás-szolgáltató telepítés indításakor, a **system.local.sqladapter** erőforráscsoportot kell létrehozni. Ez az erőforráscsoport, a szükséges központi telepítések befejezéséhez akár 75 perc is eltarthat.

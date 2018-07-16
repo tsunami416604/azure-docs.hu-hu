@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Replicon |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Replicon között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Replicon |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Replicon között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,151 +15,151 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 70a67f5205ee9b1249d3db2cda3eb4af9acabe31
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 10f4749524c4d4b35b83e5637d35f4ef9a8f9ab6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230175"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041330"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Oktatóanyag: Azure Active Directoryval integrált Replicon
+# <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Oktatóanyag: Azure Active Directory-integráció az Replicon
 
-Ebben az oktatóanyagban elsajátíthatja Replicon integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Replicon integrálása az Azure Active Directory (Azure AD).
 
-Replicon integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Replicon integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Replicon szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Replicon (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Replicon Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Replicon (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Replicon, a következőkre van szükség:
+Replicon az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Replicon egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Replicon hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Replicon hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-replicon-from-the-gallery"></a>A gyűjteményből Replicon hozzáadása
-Az Azure AD integrálása a Replicon konfigurálásához kell hozzáadnia Replicon a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-replicon-from-the-gallery"></a>Replicon hozzáadása a katalógusból
+Az Azure AD integrálása a Replicon konfigurálásához hozzá kell Replicon a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Replicon hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Replicon hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra.
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Replicon**, jelölje be **Replicon** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Replicon**válassza **Replicon** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában replicon](./media/replicon-tutorial/tutorial_replicon_addfromgallery.png)
+    ![Az eredmények listájában replicon](./media/replicon-tutorial/tutorial_replicon_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Replicon.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Replicon a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Replicon a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Replicon közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Replicon mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Replicon hivatkozás kapcsolata kell létrehozni.
 
-Replicon, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Replicon, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Replicon tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Replicon tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Replicon tesztfelhasználó létrehozása](#create-a-replicon-test-user)**  - való Britta Simon valami Replicon, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Replicon tesztfelhasználót](#create-a-replicon-test-user)**  – egy megfelelője a Britta Simon Replicon, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Replicon alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Replicon alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Replicon, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Replicon, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Replicon** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Replicon** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/replicon-tutorial/tutorial_replicon_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/replicon-tutorial/tutorial_replicon_samlbase.png)
 
-3. Az a **Replicon tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Replicon tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk replicon tartomány és az URL-címek](./media/replicon-tutorial/tutorial_replicon_url.png)
+    ![Replicon tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/replicon-tutorial/tutorial_replicon_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://global.replicon.com/<companyname>`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://global.replicon.com/<companyname>`
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://global.replicon.com/!/saml2/<companyname>/sso/post`
+    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://global.replicon.com/!/saml2/<companyname>/sso/post`
 
     > [!NOTE]
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, azonosítóját és a válasz URL-CÍMEN. Ügyfél [Replicon ügyfél-támogatási csoport](https://www.replicon.com/customerzone/contact-support) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-azonosító és válasz URL-cím. Kapcsolattartó [Replicon ügyfél-támogatási csapatának](https://www.replicon.com/customerzone/contact-support) beolvasni ezeket az értékeket. 
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/replicon-tutorial/tutorial_replicon_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/replicon-tutorial/tutorial_replicon_certificate.png) 
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/replicon-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/replicon-tutorial/tutorial_general_400.png)
 
-6. Egy másik webes böngészőablakban jelentkezzen be a Replicon vállalati webhely rendszergazdaként.
+6. Egy másik böngészőablakban jelentkezzen be a Replicon vállalati hely rendszergazdaként.
 
-7. SAML 2.0 konfigurálásához hajtsa végre az alábbi lépéseket:
+7. Adja meg az SAML 2.0, hajtsa végre az alábbi lépéseket:
 
-    ![SAML-alapú hitelesítés engedélyezéséhez](./media/replicon-tutorial/ic777805.png "engedélyezése SAML-alapú hitelesítés")
+    ![SAML-hitelesítés engedélyezése](./media/replicon-tutorial/ic777805.png "engedélyezése SAML-hitelesítés")
 
-    a. A megjelenítendő a **EnableSAML Authentication2** párbeszédpanel, az URL-cím, a következő bővítése után a vállalat kulcs: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    a. A megjelenítendő a **EnableSAML Authentication2** párbeszédpanelen fűzze hozzá a következő az URL-címre, a vállalat kulcs után: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
     * Az alábbiakban látható a teljes URL-cím sémája: `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-   b. Kattintson a **+** bontsa ki a **v20Configuration** szakasz.
+   b. Kattintson a **+** bontsa ki a **v20Configuration** szakaszban.
 
-   c. Kattintson a **+** bontsa ki a **metaDataConfiguration** szakasz.
+   c. Kattintson a **+** bontsa ki a **metaDataConfiguration** szakaszban.
 
-   d. Kattintson a **Choose File**ki az identity provider metaadatok XML-fájlt, majd kattintson a **Submit**.
+   d. Kattintson a **fájl kiválasztása**ki az identitás szolgáltató metaadatainak XML-fájlt, majd kattintson a **küldés**.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/replicon-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/replicon-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/replicon-tutorial/create_aaduser_03.png)
 
@@ -169,87 +169,87 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-a-replicon-test-user"></a>Replicon tesztfelhasználó létrehozása
 
-Ez a szakasz célja Replicon Britta Simon nevű felhasználót létrehozni. Replicon támogatja az automatikus a felhasználók átadása, amely alapértelmezés szerint van engedélyezve. További részletek találhatók [Itt](replicon-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
+Ez a szakasz célja Replicon Britta Simon nevű felhasználó létrehozásához. Replicon támogatja a felhasználók automatikus átadása, amely alapértelmezés szerint van engedélyezve. További részleteket talál [Itt](replicon-provisioning-tutorial.md) konfigurálásának a felhasználók automatikus átadása.
 
-**Ha szeretne létrehozni a felhasználót manuálisan, akkor hajtsa végre a következő lépéseket:**
+**Hozza létre a felhasználó manuálisan kell, ha hajtsa végre a következő lépéseket:**
 
-1. A webböngésző ablakának jelentkezzen be a Replicon vállalati webhely rendszergazdaként.
+1. Egy böngészőablakban jelentkezzen be a Replicon vállalati hely rendszergazdaként.
 
-2. Ugrás a **felügyeleti \> felhasználók**.
+2. Lépjen a **felügyeleti \> felhasználók**.
 
     ![Felhasználók](./media/replicon-tutorial/ic777806.png "felhasználók")
 
-3. Kattintson a **hozzáadni a felhasználót +**.
+3. Kattintson a **+ felhasználó hozzáadása**.
 
     ![Felhasználó hozzáadása](./media/replicon-tutorial/ic777807.png "felhasználó hozzáadása")
 
-4. Az a **felhasználói profil** területen tegye a következőket:
+4. Az a **felhasználói profil** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Felhasználói profil](./media/replicon-tutorial/ic777808.png "felhasználói profil")
 
-    a. Az a **bejelentkezési név** szövegmezőhöz típus az Azure AD ki kívánja építeni például Azure AD-felhasználó e-mail címe **BrittaSimon@contoso.com**.
+    a. Az a **bejelentkezési név** szövegmezőbe írja be az Azure AD e-mail címét, az Azure AD-felhasználót kíván létrehozni, például **BrittaSimon@contoso.com**.
 
-    b. Mint **hitelesítési típus**, jelölje be **SSO**.
+    b. Mint **hitelesítési típus**válassza **SSO**.
 
-    c. Az a **részleg** szövegmező, írja be a felhasználói osztály.
+    c. Az a **részleg** szövegmezőbe írja be a felhasználó részlege.
 
-    d. Mint **alkalmazott típus**, jelölje be **rendszergazda**.
+    d. Mint **alkalmazott típusa**válassza **rendszergazda**.
 
     e. Kattintson a **felhasználói profil mentése**.
 
 >[!NOTE]
->Bármely más Replicon felhasználói fiók létrehozása eszközök vagy Replicon kiépíteni az Azure AD-felhasználói fiókok által nyújtott API-k.
+>Eszközt is használhat bármilyen más Replicon felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Replicon által biztosított API-k.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Replicon Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Replicon Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200]
 
-**Britta Simon hozzárendelése Replicon, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Replicon, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listában válassza ki a **Replicon**.
+2. Az alkalmazások listájában jelölje ki a **Replicon**.
 
-    ![Az alkalmazások listáját a Replicon hivatkozás](./media/replicon-tutorial/tutorial_replicon_app.png)
+    ![Az alkalmazások listáját a Replicon hivatkozásra](./media/replicon-tutorial/tutorial_replicon_app.png)
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Replicon csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Replicon alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a Replicon csempére kattint, meg kell lekérése automatikusan bejelentkezett az Replicon alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
-* [A felhasználók átadása konfigurálása](replicon-provisioning-tutorial.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználók átadásának konfigurálása](replicon-provisioning-tutorial.md)
 
 <!--Image references-->
 

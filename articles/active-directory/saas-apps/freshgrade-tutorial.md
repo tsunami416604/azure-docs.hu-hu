@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált FreshGrade |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és FreshGrade között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az FreshGrade |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és FreshGrade között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,120 +14,120 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 93912a693058e550c50d740e14d23b03b06e3430
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7a24f69e19d492647a24284a13342795559e0542
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224769"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047161"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Oktatóanyag: Azure Active Directoryval integrált FreshGrade
+# <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Oktatóanyag: Azure Active Directory-integráció az FreshGrade
 
-Ebben az oktatóanyagban elsajátíthatja FreshGrade integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan FreshGrade integrálása az Azure Active Directory (Azure AD).
 
-FreshGrade integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+FreshGrade integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a FreshGrade hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett FreshGrade (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá FreshGrade Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett FreshGrade (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs FreshGrade, a következőkre van szükség:
+FreshGrade az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy FreshGrade egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből FreshGrade hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. FreshGrade hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-freshgrade-from-the-gallery"></a>A gyűjteményből FreshGrade hozzáadása
-Az Azure AD integrálása a FreshGrade konfigurálásához kell hozzáadnia FreshGrade a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-freshgrade-from-the-gallery"></a>FreshGrade hozzáadása a katalógusból
+Az Azure AD integrálása a FreshGrade konfigurálásához hozzá kell FreshGrade a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből FreshGrade hozzáadásához hajtsa végre az alábbi lépéseket:**
+**FreshGrade hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **FreshGrade**.
+4. A Keresés mezőbe írja be a **FreshGrade**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshgrade-tutorial/tutorial_freshgrade_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshgrade-tutorial/tutorial_freshgrade_search.png)
 
 5. Az eredmények panelen válassza ki a **FreshGrade**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshgrade-tutorial/tutorial_freshgrade_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshgrade-tutorial/tutorial_freshgrade_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján FreshGrade.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés FreshGrade a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó FreshGrade a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a FreshGrade közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó FreshGrade mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó FreshGrade hivatkozás kapcsolata kell létrehozni.
 
-FreshGrade, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+FreshGrade, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a FreshGrade tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az FreshGrade tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[FreshGrade tesztfelhasználó létrehozása](#creating-a-freshgrade-test-user)**  - való Britta Simon valami FreshGrade, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[FreshGrade tesztfelhasználó létrehozása](#creating-a-freshgrade-test-user)**  – egy megfelelője a Britta Simon FreshGrade, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az FreshGrade alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és FreshGrade alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés FreshGrade, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés FreshGrade, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **FreshGrade** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **FreshGrade** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshgrade-tutorial/tutorial_freshgrade_samlbase.png)
 
-3. Az a **FreshGrade tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **FreshGrade tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshgrade-tutorial/tutorial_freshgrade_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőhöz URL-címet a következő minták használatával írja be:
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minták használatával URL-címe:
       | |
       |--|
       | `https://<subdomain>.freshgrade.com/login` |
       | `https://<subdomain>.onboarding.freshgrade.com/login` |
 
-    b. Az a **azonosító** szövegmezőhöz URL-címet a következő minták használatával írja be:
+    b. Az a **azonosító** szövegmezőbe írja be a következő minták használatával URL-címe:
       | |
       |--|
       | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
       | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [FreshGrade ügyfél-támogatási csoport](mailTo:support@freshgrade.com) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [FreshGrade ügyfél-támogatási csapatának](mailTo:support@freshgrade.com) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/freshgrade-tutorial/tutorial_metadataurl.png)
      
@@ -135,88 +135,88 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshgrade-tutorial/tutorial_general_400.png)
 
-6. A a **FreshGrade konfigurációs** kattintson **konfigurálása FreshGrade** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **FreshGrade konfigurációs** területén kattintson **konfigurálása FreshGrade** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshgrade-tutorial/tutorial_freshgrade_configure.png)
 
-7. Egyszeri bejelentkezés konfigurálása **FreshGrade** oldalon kell küldeniük a **alkalmazás összevonási metaadatainak URL-címe** és **SAML-alapú egyszeri bejelentkezési URL-címe** való [ Támogatási csoport FreshGrade](mailTo:support@freshgrade.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+7. Az egyszeri bejelentkezés konfigurálása **FreshGrade** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [ Támogatási csoport FreshGrade](mailTo:support@freshgrade.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshgrade-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshgrade-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshgrade-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshgrade-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshgrade-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshgrade-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshgrade-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshgrade-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-freshgrade-test-user"></a>FreshGrade tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy FreshGrade Britta Simon nevű felhasználót hoz létre. Adjon együttműködve [FreshGrade támogatási csoport](mailTo:support@freshgrade.com) a felhasználók hozzáadása a FreshGrade platform.
+Ebben a szakaszban egy felhasználói Britta Simon nevű FreshGrade hoz létre. Együttműködve [FreshGrade támogatási csapatának](mailTo:support@freshgrade.com) a felhasználók hozzáadása az FreshGrade platformon.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés FreshGrade Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés FreshGrade Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése FreshGrade, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel FreshGrade, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **FreshGrade**.
+2. Az alkalmazások listájában jelölje ki a **FreshGrade**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshgrade-tutorial/tutorial_freshgrade_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen FreshGrade csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az FreshGrade alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a FreshGrade csempére kattint, meg kell lekérése automatikusan bejelentkezett az FreshGrade alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

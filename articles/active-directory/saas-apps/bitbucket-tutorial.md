@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció SAML-alapú egyszeri a Bitbucketből felbontása GmbH |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Bitbucketből SAML SSO közötti GmbH felbontása.
+title: 'Oktatóanyag: Azure Active Directory-integráció az SAML SSO a Bitbucket felbontása GmbH |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Bitbucket SAML SSO közötti GmbH felbontása.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,151 +15,151 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: d18d41caf7a7fb3a821c388e786b3a45d30f4810
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 21b6adb98fdb973b75aa1d6db519777bab730d73
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221444"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048123"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory-integráció SAML-alapú egyszeri a Bitbucketből felbontása GmbH
+# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory-integráció az SAML SSO a Bitbucket GmbH felbontása
 
-Ebben az oktatóanyagban elsajátíthatja a Bitbucketből SAML SSO felbontása GmbH az Azure Active Directoryval (Azure AD) integrálása.
+Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja a Bitbucket SAML SSO GmbH az Azure Active Directoryval (Azure AD-) megoldás.
 
-Bitbucket a SAML SSO felbontása GmbH az Azure AD integrálása lehetővé teszi a következő előnyöket biztosítja:
+Feloldási GmbH az Azure AD által a Bitbucket SAML SSO integrálása nyújt a következő előnyökkel jár:
 
-- Az Azure AD-hozzáféréssel rendelkező SAML SSO a Bitbucketből felbontása GmbH szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása aláírt a SAML SSO a Bitbucketből által az Azure AD-fiókok (egyszeri bejelentkezés) GmbH felbontást.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá SAML SSO a bitbucket-alapú megoldás GmbH által az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett, a Bitbucket SAML SSO felbontása GmbH (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálja az Azure AD-integrációs SAML-alapú egyszeri a Bitbucketből feloldási GmbH, a következőkre van szükség:
+Konfigurálja az Azure AD-integráció a Bitbucket SAML SSO-val feloldási GmbH, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- A SAML SSO a Bitbucketből felbontása GmbH egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- A SAML SSO a bitbucket-alapú megoldás GmbH egyszeri bejelentkezés engedélyezve előfizetés szerint
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Megoldási GmbH Bitbucket a SAML SSO hozzáadását a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Feloldási GmbH SAML SSO a Bitbucket hozzáadását a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>Megoldási GmbH Bitbucket a SAML SSO hozzáadását a gyűjteményből
-Integrálása Bitbucket a SAML SSO felbontása GmbH az Azure AD konfigurálása, kell hozzáadnia a Bitbucketből SAML SSO felbontása GmbH a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>Feloldási GmbH SAML SSO a Bitbucket hozzáadását a katalógusból
+Integráció konfigurálásához a Bitbucket SAML SSO-feloldási GmbH által az Azure AD-be, hozzá kell SAML SSO a Bitbucket felbontása GmbH a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a Bitbucketből SAML SSO felbontása GmbH a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a Bitbucket SAML SSO felbontása GmbH a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Bitbucket felbontása GmbH a SAML SSO**, jelölje be **Bitbucket felbontása GmbH a SAML SSO** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel a az alkalmazás.
+4. A Keresés mezőbe írja be a **SAML SSO a Bitbucket felbontása GmbH**, jelölje be **bitbucket-alapú megoldás GmbH által a SAML SSO** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
 
-    ![Bitbucket felbontása GmbH az eredménylistában a SAML SSO](./media/bitbucket-tutorial/tutorial_bitbucket_addfromgallery.png)
+    ![SAML egyszeri bejelentkezés, a Bitbucket felbontása GmbH, a találatok listájában](./media/bitbucket-tutorial/tutorial_bitbucket_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD az egyszeri bejelentkezés SAML-alapú egyszeri a Bitbucketből GmbH alapján "Britta Simon" nevű tesztfelhasználó felbontása.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Bitbucket SAML SSO-val egy "Britta Simon" nevű tesztelési felhasználó alapján GmbH felbontása.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, milyen a párjukhoz felhasználó Bitbucket a SAML SSO az Azure AD egy felhasználónak van GmbH felbontása. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a SAML SSO a Bitbucketből felbontása hivatkozás kapcsolatának GmbH kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó a SAML SSO a Bitbucket felbontása GmbH, hogy egy felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a SAML SSO a bitbucket-alapú megoldás által hivatkozás kapcsolatának GmbH kell létrehozni.
 
-Bitbucket felbontása GmbH SAML-alapú egyszeri Bejelentkezést, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+SAML egyszeri bejelentkezés az Bitbucket felbontása GmbH, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD az egyszeri bejelentkezés SAML-alapú egyszeri a Bitbucketből felbontása GmbH tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés a Bitbucket SAML SSO-val felbontása GmbH tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy SAML SSO a feloldási GmbH teszt felhasználó Bitbucket](#create-a-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)**  - való egy megfelelője a Britta Simon Bitbucket a SAML SSO felbontása GmbH, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy bitbucket-alapú megoldás GmbH teszt felhasználó által a SAML SSO](#create-a-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)**  - megoldás, amely kapcsolódik az Azure AD felhasználói ábrázolása GmbH által van egy megfelelője a Britta Simon SAML SSO a Bitbucket.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, majd állítsa egyszeri bejelentkezéshez a SAML SSO a Bitbucketből felbontása GmbH alkalmazás.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, majd állítsa egyszeri bejelentkezés a SAML SSO a Bitbucket GmbH kérelem felbontása.
 
-**Konfigurálja az Azure AD az egyszeri bejelentkezés SAML-alapú egyszeri a Bitbucketből feloldási GmbH, hajtsa végre az alábbi lépéseket:**
+**Konfigurálja az Azure AD egyszeri bejelentkezés a Bitbucket SAML SSO-val feloldási GmbH, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Bitbucket felbontása GmbH a SAML SSO** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon a a **SAML SSO a Bitbucket felbontása GmbH** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/bitbucket-tutorial/tutorial_bitbucket_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/bitbucket-tutorial/tutorial_bitbucket_samlbase.png)
 
-3. Az a **SAML SSO Bitbucket felbontása GmbH tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás által kezdeményezett IDP módban, hajtsa végre az alábbi lépéseket:
+3. Az a **SAML SSO Bitbucket felbontása GmbH tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás Identitásszolgáltató által kezdeményezett módban konfigurálása:
 
-    ![Bitbucket felbontása GmbH tartomány a SAML SSO és URL-címeket az egyszeri bejelentkezés információk](./media/bitbucket-tutorial/tutorial_bitbucket_url.png)
+    ![SAML SSO a Bitbucket felbontása GmbH tartomány és URL-címek egyszeri bejelentkezési adatait](./media/bitbucket-tutorial/tutorial_bitbucket_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/samlsso`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/samlsso`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/samlsso`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Bitbucket felbontása GmbH tartomány a SAML SSO és URL-címeket az egyszeri bejelentkezés információk](./media/bitbucket-tutorial/tutorial_bitbucket_url1.png)
+    ![SAML SSO a Bitbucket felbontása GmbH tartomány és URL-címek egyszeri bejelentkezési adatait](./media/bitbucket-tutorial/tutorial_bitbucket_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/samlsso`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/samlsso`
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Bitbucket feloldási GmbH ügyfél által a SAML SSO támogatási csoport](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [bitbucket-alapú megoldás GmbH ügyfél által a SAML SSO támogatási csoportjának](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support) beolvasni ezeket az értékeket. 
 
-5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/bitbucket-tutorial/tutorial_bitbucket_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/bitbucket-tutorial/tutorial_bitbucket_certificate.png) 
 
 6. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/bitbucket-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/bitbucket-tutorial/tutorial_general_400.png)
     
-7. Bejelentkezés a SAML SSO a feloldási GmbH vállalati hely Bitbucket rendszergazdaként.
+7. Bejelentkezés a SAML SSO, a bitbucket-alapú megoldás GmbH vállalati hely rendszergazdaként.
 
-8. Kattintson a jobb oldalon a fő eszköztárnak, **beállítások**.
+8. A fő eszköztár jobb oldalán kattintson a **beállítások**.
 
-9. Ugrás a fiókok területen, kattintson a **SAML SingleSignOn** a Menubar meg.
+9. Ugrás a fiókok területen, kattintson a **SAML egyszeri bejelentkezés** a menüsávon a.
 
     ![A Samlsingle](./media/bitbucket-tutorial/tutorial_bitbucket_samlsingle.png)
 
-10. Az a **SAML SIngleSignOn beépülő modul konfiguráció lapon**, kattintson a **idp hozzáadása**. 
+10. Az a **SAML egyszeri bejelentkezés beépülő modul konfigurációs lapon**, kattintson a **identitásszolgáltató hozzáadása**. 
 
-    ![A kiállító terjesztési hely hozzáadása](./media/bitbucket-tutorial/tutorial_bitbucket_addidp.png)
+    ![Az identitásszolgáltató hozzáadása](./media/bitbucket-tutorial/tutorial_bitbucket_addidp.png)
 
-11. Az a **válassza a SAML-Identitásszolgáltatóként** lapon hajtsa végre a következő lépéseket:
+11. Az a **válassza ki a SAML-identitásszolgáltató** lapon tegye a következőket:
 
     ![Az identitásszolgáltató](./media/bitbucket-tutorial/tutorial_bitbucket_identityprovider.png)
 
-    a. Válassza ki **Idp típus** , **az AZURE AD**.
+    a. Válassza ki **identitásszolgáltató típusa** , **AZURE ad-ben**.
 
-    b. Az a **neve** szövegmező, írja be a nevet.
+    b. Az a **neve** szövegmezőbe írja be a nevét.
 
-    c. Az a **leírás** szövegmező, írja be a leírást.
+    c. Az a **leírás** szövegmezőbe írja be a leírást.
 
     d. Kattintson a **Tovább** gombra.
 
-12. Az a **identitás szolgáltató konfigurálása lapon**, kattintson a **következő**.
+12. Az a **Identity provider konfigurációs lapon**, kattintson a **tovább**.
 
-    ![Az identitás-konfiguráció](./media/bitbucket-tutorial/tutorial_bitbucket_identityconfig.png)
+    ![Az identitás-config](./media/bitbucket-tutorial/tutorial_bitbucket_identityconfig.png)
 
-13.  A a **SAML Idp metaadatok importálása** kattintson **fájl betöltése** feltölteni a **METAADATAINAK XML-kódja** Azure portálról letöltött fájl.
+13.  A a **SAML-identitásszolgáltató metaadatok importálása** kattintson **fájl betöltése** feltölteni a **METAADATAINAK XML** fájlt, amely az Azure Portalról letöltött.
 
     ![A idpmetadata](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
     
@@ -167,28 +167,28 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 15. Kattintson a **beállítások mentése**.
 
-    ![A mentési](./media/bitbucket-tutorial/tutorial_bitbucket_save.png)
+    ![A Mentés](./media/bitbucket-tutorial/tutorial_bitbucket_save.png)
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/bitbucket-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/bitbucket-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/bitbucket-tutorial/create_aaduser_03.png)
 
@@ -198,57 +198,57 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>Hozzon létre egy SAML SSO a Bitbucketből feloldási GmbH teszt felhasználó
+### <a name="create-a-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>Hozzon létre egy bitbucket-alapú megoldás GmbH teszt felhasználó által a SAML SSO
 
-Ez a szakasz célja Britta Simon lévő nevű SAML SSO Bitbucket felbontása GmbH felhasználó létrehozásához. SAML SSO felbontása GmbH Bitbucket támogatja a létesítést just-in-time és is felhasználók hozhatók létre manuálisan, forduljon [Bitbucket feloldási GmbH ügyfél által a SAML SSO támogatási csoport](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support) igényektől szerint.
+Ez a szakasz célja egy nevű felhasználó létrehozásához Britta Simon a SAML SSO a Bitbucket GmbH felbontása. SAML SSO felbontása GmbH Bitbucket támogatja a létesítést igény és a felhasználók is manuálisan is létrehozhatók, lépjen kapcsolatba [bitbucket-alapú megoldás GmbH ügyfél által a SAML SSO támogatási csoportjának](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support) a követelmény alapján.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon hozzáférést biztosít a Bitbucketből SAML SSO felbontása GmbH által használandó Azure egyszeri bejelentkezés engedélyezése.
+Ebben a szakaszban engedélyezze Britta Simon SAML SSO a Bitbucket, a hozzáférés biztosításával felbontása GmbH Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Bitbucket a SAML SSO felbontása GmbH Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel a Bitbucket SAML SSO felbontása GmbH, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Bitbucket felbontása GmbH a SAML SSO**.
+2. Az alkalmazások listájában jelölje ki a **SAML SSO a Bitbucket felbontása GmbH**.
 
-    ![A SAML SSO számára az alkalmazások listáját a feloldási GmbH csatlakozásonkénti Bitbucket](./media/bitbucket-tutorial/tutorial_bitbucket_app.png)  
+    ![Az SAML SSO a bitbucket-alapú megoldás GmbH csatlakozásonkénti alkalmazásainak listájában](./media/bitbucket-tutorial/tutorial_bitbucket_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Gombra a SAML SSO Bitbucket a feloldási GmbH csempe a hozzáférési panelen által meg kell beolvasása automatikusan bejelentkezett a SAML SSO a bitbucket szolgáltatásokkal való felbontása GmbH alkalmazás.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+A SAML SSO a Bitbucket kattintva által feloldási GmbH csempe a hozzáférési panelen, kell lekérése automatikusan bejelentkezett a SAML SSO a Bitbucket, felbontása GmbH alkalmazás.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

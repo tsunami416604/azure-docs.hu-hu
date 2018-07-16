@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Boomi |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Boomi között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Boomi |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Boomi között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,180 +15,180 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: ee97eaf4624b1a34dbc66d1d4e8febab761b7b09
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e0128d4422c462d4424583306af0b30174178bac
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221478"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049252"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Oktatóanyag: Azure Active Directoryval integrált Boomi
+# <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Oktatóanyag: Azure Active Directory-integráció az Boomi
 
-Ebben az oktatóanyagban elsajátíthatja Boomi integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Boomi integrálása az Azure Active Directory (Azure AD).
 
-Boomi integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Boomi integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Boomi szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Boomi (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Boomi Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Boomi (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Boomi, a következőkre van szükség:
+Boomi az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Boomi egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Boomi hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Boomi hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-boomi-from-the-gallery"></a>A gyűjteményből Boomi hozzáadása
-Az Azure AD integrálása a Boomi konfigurálásához kell hozzáadnia Boomi a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-boomi-from-the-gallery"></a>Boomi hozzáadása a katalógusból
+Az Azure AD integrálása a Boomi konfigurálásához hozzá kell Boomi a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Boomi hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Boomi hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Boomi**, jelölje be **Boomi** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Boomi**válassza **Boomi** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Boomi](./media/boomi-tutorial/tutorial_boomi_addfromgallery.png)
+    ![Az eredmények listájában Boomi](./media/boomi-tutorial/tutorial_boomi_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Boomi.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Boomi a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Boomi a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Boomi közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Boomi mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Boomi hivatkozás kapcsolata kell létrehozni.
 
-Boomi, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Boomi, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Boomi tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Boomi tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Boomi tesztfelhasználó létrehozása](#create-a-boomi-test-user)**  - való Britta Simon valami Boomi, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Boomi tesztfelhasználót](#create-a-boomi-test-user)**  – egy megfelelője a Britta Simon Boomi, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Boomi alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Boomi alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Boomi, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Boomi, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Boomi** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Boomi** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/boomi-tutorial/tutorial_boomi_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/boomi-tutorial/tutorial_boomi_samlbase.png)
 
-3. Az a **Boomi tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Boomi tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk Boomi tartomány és az URL-címek](./media/boomi-tutorial/tutorial_boomi_url.png)
+    ![Boomi tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/boomi-tutorial/tutorial_boomi_url.png)
 
-    a. Az a **azonosító** szövegmezőhöz URL-címet írja be: `https://platform.boomi.com/`
+    a. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `https://platform.boomi.com/`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
 
     > [!NOTE] 
-    > A válasz URL-cím értéke nincs valós. Frissítse az értéket a tényleges válasz URL-címet. Ügyfél [Boomi támogatási csoport](https://boomi.com/company/contact/) az értéket be kell olvasni.
+    > A válasz URL-cím értéke nem valódi. Frissítse az értéket a tényleges válasz URL-cím. Kapcsolattartó [Boomi támogatási csapatának](https://boomi.com/company/contact/) a gépkulcsengedélyek értékének.
  
-4. Boomi alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. Állítsa be a következő jogcímeket ehhez az alkalmazáshoz. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
+4. Boomi alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Állítsa be a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható erre egy példa látható.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/boomi-tutorial/tutorial_attribute.png)
 
-5. Az a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanel, az alábbi táblázatban szereplő minden egyes sorára hajtsa végre a következő lépéseket:
+5. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen, az alábbi táblázatban szereplő minden egyes sorára hajtsa végre az alábbi lépéseket:
 
     | Attribútum neve | Attribútum értéke |
     | -------------- | --------------- |
     | FEDERATION_ID | user.mail |
     
-    a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/boomi-tutorial/tutorial_officespace_04.png)
     
     ![Egyszeri bejelentkezés konfigurálása](./media/boomi-tutorial/tutorial_attribute_05.png)
     
-    b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
     
-    c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
+    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
     
     d. Kattintson az **OK** gombra.
 
-6. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+6. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/boomi-tutorial/tutorial_boomi_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/boomi-tutorial/tutorial_boomi_certificate.png) 
 
 7. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/boomi-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/boomi-tutorial/tutorial_general_400.png)
 
-8. A a **Boomi konfigurációs** kattintson **konfigurálása Boomi** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+8. Az a **Boomi konfigurációs** területén kattintson **konfigurálása Boomi** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Boomi konfiguráció](./media/boomi-tutorial/tutorial_boomi_configure.png) 
 
-9. Egy másik webes böngészőablakban jelentkezzen be a Boomi vállalati webhely rendszergazdaként. 
+9. Egy másik böngészőablakban jelentkezzen be a Boomi vállalati hely rendszergazdaként. 
 
-10. Navigáljon a **vállalatnév** , és navigáljon **beállítása**.
+10. Navigáljon a **cégnév** , majd **beállítása**.
 
-11. Kattintson a **egyszeri bejelentkezési beállítások** lapra, és hajtsa végre a következő lépések.
+11. Kattintson a **egyszeri bejelentkezési beállítások** lapra, és hajtsa végre az alábbi lépéseket.
 
-    ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/boomi-tutorial/tutorial_boomi_11.png)
+    ![Egyszeri bejelentkezés az alkalmazás oldalán konfigurálása](./media/boomi-tutorial/tutorial_boomi_11.png)
 
-    a. Ellenőrizze **engedélyezése SAML-alapú egyszeri bejelentkezést** jelölőnégyzetet.
+    a. Ellenőrizze **engedélyezése SAML egyszeri bejelentkezés** jelölőnégyzetet.
 
-    b. Kattintson a **importálási** az Azure AD-be a letöltött tanúsítvány feltöltése **szolgáltató Identitástanúsítvány**.
+    b. Kattintson a **importálás** feltöltése az Azure AD-ből a letöltött tanúsítvány **szolgáltató Identitástanúsítványt**.
     
-    c. Az a **Identity Provider bejelentkezési URL-cím** szövegmező, írja be az értéket a **SAML-alapú egyszeri bejelentkezési URL-címe** az Azure AD alkalmazás-konfigurációs ablakban.
+    c. Az a **Identity Provider bejelentkezési URL-cím** szövegmezőbe put értékét **SAML egyszeri bejelentkezési szolgáltatás URL-cím** az Azure AD-alkalmazás konfigurációs ablakából.
 
-    d. Mint **összevonási azonosító hely**, jelölje be **összevonási azonosító FEDERATION_ID attribútum elem van** választógombot. 
+    d. Mint **összevonási azonosító helye**válassza **csomagazonosítója összevonási FEDERATION_ID attribútumelem** választógombot. 
 
     e. Kattintson a **mentése** gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/boomi-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/boomi-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/boomi-tutorial/create_aaduser_03.png)
 
@@ -198,86 +198,86 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
   
 ### <a name="create-a-boomi-test-user"></a>Boomi tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Boomi bejelentkezni, akkor ki kell építenie a Boomi. Boomi, ha egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók Boomi jelentkezzen be, akkor ki kell építeni Boomi be. Boomi, esetén kiépítése a manuális feladat.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:
 
 1. Jelentkezzen be rendszergazdaként a Boomi vállalati webhely.
 
-2. A bejelentkezés után navigáljon **felhasználókezelés** , és navigáljon **felhasználók**.
+2. Miután bejelentkezett, lépjen **felhasználókezelés** , majd **felhasználók**.
 
     ![Felhasználók](./media/boomi-tutorial/tutorial_boomi_001.png "felhasználók")
 
-3. Kattintson a **+** ikon és a **Add/karbantartása felhasználói szerepkörök** párbeszédpanel nyílik meg.
+3. Kattintson a **+** ikon és a **Hozzáadás/karbantartása felhasználói szerepkörök** párbeszédpanel nyílik meg.
 
     ![Felhasználók](./media/boomi-tutorial/tutorial_boomi_002.png "felhasználók")
 
     ![Felhasználók](./media/boomi-tutorial/tutorial_boomi_003.png "felhasználók")
 
-    a. Az a **felhasználó e-mail címe** szövegmezőben, az e-mailt a felhasználó típusát, például BrittaSimon@contoso.com.
+    a. Az a **felhasználó e-mail címe** szövegmezőbe írja be az e-mailt, felhasználó, például BrittaSimon@contoso.com.
     
-    b. Az a **Keresztnév** szövegmezőhöz felhasználói Britta például az első nevét.
+    b. Az a **Utónév** szövegmezőbe írja be az első felhasználóneve Britta például.
 
-    c. Az a **Vezetéknév** szövegmező, írja be például Simon felhasználó vezetékneve.
+    c. Az a **Vezetéknév** szövegmezőbe írja be a Simon például a felhasználó vezetékneve.
     
-    d. Adja meg a felhasználó **összevonási azonosító**. Minden felhasználónak rendelkeznie kell egy összevonási azonosító, amely egyedileg azonosítja a felhasználó a fiókon belül.
+    d. Adja meg a felhasználó **összevonási azonosító**. Minden felhasználónak rendelkeznie kell egy összevonási azonosítója, amely egyedileg azonosítja a felhasználó a fiókon belül.
     
-    e. Rendelje hozzá a **általános jogú felhasználó** a felhasználói szerepkört. Nem rendelhető hozzá, a rendszergazda szerepkör mert, amely ad neki normál légkör hozzáférés, valamint az egyszeri bejelentkezéses hozzáférést.
+    e. Rendelje hozzá a **általános jogú felhasználói** szerepkört a felhasználóhoz. Ne rendeljen a rendszergazda szerepkör, mert az, hogy adna neki, normál levegőben hozzáférését, valamint az egyszeri bejelentkezéses hozzáférést.
     
     f. Kattintson az **OK** gombra.
     
     > [!NOTE]
-    > A felhasználó nem kap meg az üdvözlő e-mailben értesítést tartalmazó egy jelszót, amely használható a AtomSphere fiók bejelentkezni, mert az identitásszolgáltató kezeli a jelszavát. Bármely más Boomi felhasználói fiók létrehozása eszközt, vagy rendelkezés AAD felhasználói fiókokhoz Boomi által nyújtott API-k.
+    > A felhasználó nem kap meg az üdvözlő e-mailben értesítést tartalmazó egy jelszót, amely használható a AtomSphere fiók bejelentkezni, mert az identitásszolgáltató kezelhető a jelszavát. Előfordulhat, hogy bármely más Boomi felhasználói fiók létrehozása az eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Boomi által biztosított API-k.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Boomi Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Boomi Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Boomi, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Boomi, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Boomi**.
+2. Az alkalmazások listájában jelölje ki a **Boomi**.
 
-    ![Az alkalmazások listáját a Boomi hivatkozás](./media/boomi-tutorial/tutorial_boomi_app.png)  
+    ![Az alkalmazások listáját a Boomi hivatkozásra](./media/boomi-tutorial/tutorial_boomi_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Boomi csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Boomi alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Boomi csempére kattint, meg kell lekérése automatikusan bejelentkezett az Boomi alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

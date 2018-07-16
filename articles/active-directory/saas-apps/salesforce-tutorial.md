@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Salesforce |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Salesforce között.
+title: 'Oktatóanyag: Azure Active Directory-integráció a Salesforce-szal |} A Microsoft Docs'
+description: Ismerje meg, hogyan egyszeri bejelentkezés konfigurálása Azure Active Directory és a Salesforce között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,215 +15,215 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5c2971a59bbaa241a2e1eb4ecca0db7e8b95a885
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 64b94baeaede9b05e953b69324648c63d97cea8e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227132"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045438"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Oktatóanyag: Azure Active Directoryval integrált Salesforce
+# <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Oktatóanyag: Azure Active Directory-integráció a Salesforce-szal
 
-Ebben az oktatóanyagban elsajátíthatja Salesforce integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a Salesforce-hoz az Azure Active Directory (Azure AD).
 
-Salesforce integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Az Azure AD integrálása a Salesforce nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér a Salesforce szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Salesforce (egyszeri bejelentkezés) a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá a Salesforce-hoz az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a Salesforce-hoz (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Salesforce, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a Salesforce-szal, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - A Salesforce egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Salesforce hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. A Salesforce hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-salesforce-from-the-gallery"></a>Salesforce hozzáadása a gyűjteményből
-Az Azure AD integrálása a Salesforce konfigurálásához kell hozzáadnia Salesforce a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-salesforce-from-the-gallery"></a>A Salesforce hozzáadása a katalógusból
+Konfigurálhatja az Azure AD integrálása a Salesforce, hozzá kell Salesforce a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Vegye fel a Salesforce a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a Salesforce-hoz a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Salesforce**, jelölje be **Salesforce** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Salesforce**, jelölje be **Salesforce** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Salesforce](./media/salesforce-tutorial/tutorial_salesforce_addfromgallery.png)
+    ![Az eredmények listájában a Salesforce-ban](./media/salesforce-tutorial/tutorial_salesforce_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés Salesforce "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Salesforce, a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó a Salesforce-ban a felhasználók az Azure ad-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a Salesforce-ban közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a Salesforce-ban a partner felhasználó mi egy felhasználó számára az Azure ad-ben. Más szóval hivatkozás kapcsolatot egy Azure AD-felhasználót és a kapcsolódó felhasználó között a Salesforce-ban kell létrehozni.
 
-A Salesforce, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+A Salesforce-ban, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Salesforce tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés a Salesforce-szal tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Salesforce tesztfelhasználó létrehozása](#create-a-salesforce-test-user)**  - való Britta Simon egy megfelelője a Salesforce, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Salesforce tesztfelhasználót](#create-a-salesforce-test-user)**  - a-megfelelője a Britta Simon rendelkezik a Salesforce-ban, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Salesforce alkalmazást az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Salesforce alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Salesforce, hajtsa végre az alábbi lépéseket:**
+**Konfigurálja az Azure AD egyszeri bejelentkezés, a Salesforce-szal, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Salesforce** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Salesforce** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
 
-3. Az a **Salesforce-tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Salesforce tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Salesforce-tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/salesforce-tutorial/tutorial_salesforce_url.png)
+    ![Salesforce-tartománnyal és URL-címek egyszeri bejelentkezési adatait](./media/salesforce-tutorial/tutorial_salesforce_url.png)
     
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket a következő minta használatával:
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be az értéket a következő minta használatával:
     
     Vállalati fiók: `https://<subdomain>.my.salesforce.com`
 
     Fejlesztői fiók: `https://<subdomain>-dev-ed.my.salesforce.com`
     
-    b. Az a **azonosító** szövegmező, írja be az értéket a következő minta használatával:
+    b. Az a **azonosító** szövegmezőbe írja be az értéket a következő minta használatával:
     
     Vállalati fiók: `https://<subdomain>.my.salesforce.com`
 
     Fejlesztői fiók: `https://<subdomain>-dev-ed.my.salesforce.com`
     
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Salesforce ügyfél-támogatási csoport](https://help.salesforce.com/support) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-cím és azonosító. Kapcsolattartó [a Salesforce-ügyfél-támogatási csapatának](https://help.salesforce.com/support) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/salesforce-tutorial/tutorial_salesforce_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/salesforce-tutorial/tutorial_salesforce_certificate.png) 
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/salesforce-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/salesforce-tutorial/tutorial_general_400.png)
 
-6. A a **Salesforce konfigurációs** kattintson **konfigurálása Salesforce** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **Salesforce konfigurációs** területén kattintson **konfigurálása Salesforce** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Salesforce-konfiguráció](./media/salesforce-tutorial/tutorial_salesforce_configure.png) 
 
-7. Új lap megnyitása a böngésző és a Salesforce-rendszergazdai fiókjával való bejelentkezéshez.
+7. Nyissa meg egy új lapot a böngészőben, és a Salesforce-rendszergazdai fiókjával való bejelentkezéshez.
 
-8. Kattintson a **telepítő** alatt **beállítások ikonra** az oldal jobb felső sarkában a.
+8. Kattintson a a **telepítő** alatt **beállítások ikon** az oldal jobb felső sarkában található.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/configure1.png)
 
-9. Görgessen le a **beállítások** navigációs ablaktábláján kattintson **identitás** a kapcsolódó szakasz kibontásához. Kattintson a **egyszeri bejelentkezési beállítások**.
+9. Görgessen le a **beállítások** navigációs ablaktábláján kattintson **identitás** a kapcsolódó szakasz kibontásához. Kattintson a **egyszeri bejelentkezési beállításainak**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-admin-sso.png)
 
-10. Az a **egyszeri bejelentkezési beállítások** lapján kattintson a **szerkesztése** gombra.
+10. Az a **egyszeri bejelentkezési beállításainak** lap, kattintson a **szerkesztése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-admin-sso-edit.png)
     
     > [!NOTE]
-    > Ha nem lehet engedélyezni az egyszeri bejelentkezés beállítása a Salesforce-fiókhoz, esetleg forduljon [Salesforce ügyfél-támogatási csoport](https://help.salesforce.com/support). 
+    > Ha Ön nem lehet engedélyezni az egyszeri bejelentkezés beállításainak Salesforce-fiókjához, szükség lehet kapcsolódni a [a Salesforce-ügyfél-támogatási csapatának](https://help.salesforce.com/support). 
 
 11. Válassza ki **SAML engedélyezett**, és kattintson a **mentése**.
 
       ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-enable-saml.png)
-12. A SAML-alapú egyszeri bejelentkezés beállítások konfigurálásához kattintson **új**.
+12. Az SAML egyszeri bejelentkezési beállításainak konfigurálásához kattintson **új**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
-13. Az a **SAML-alapú egyszeri bejelentkezési beállítás szerkesztése** lapon, a következő konfigurációkat:
+13. Az a **SAML egyszeri bejelentkezési beállítás szerkesztése** lapon, győződjön meg arról, a következő beállításokat:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-saml-config.png)
 
-    a. Az a **neve** mezőben adjon meg egy felhasználóbarát nevet ehhez a konfigurációhoz. Értéket biztosító **neve** automatikusan feltölti a **API-név** szövegmező.
+    a. Az a **neve** mezőben adja meg egy rövid nevet ehhez a konfigurációhoz. Amely egy értéket a **neve** automatikusan feltölti a **API neve** szövegmezőbe.
 
-    b. Az a **kibocsátó** mezőbe illessze be az értékét **SAML Entitásazonosító**, amely az Azure-portálon másolta.
+    b. Az a **kibocsátó** mezőbe illessze be az értéket a **SAML Entitásazonosító**, az Azure Portalról másolt.
 
-    c. Az a **entitásazonosító szövegmező**, írja be a Salesforce-tartománynév, a következő minta használatával:
+    c. Az a **entitásazonosító szövegmező**, írja be a Salesforce-tartomány nevét, a következő minta használatával:
       
       * Vállalati fiók: `https://<subdomain>.my.salesforce.com`
       * Fejlesztői fiók: `https://<subdomain>-dev-ed.my.salesforce.com`
       
-    d. Töltse fel a **szolgáltató Identitástanúsítvány**, kattintson a **Choose File** keresse meg és jelölje ki a tanúsítványfájlt, amely az Azure-portálról letöltött.
+    d. Feltölteni a **Identitástanúsítványt szolgáltató**, kattintson a **fájl kiválasztása** keresse meg és válassza ki a tanúsítványfájlt, amely már letöltötte az Azure Portalról.
 
     e. Mint **SAML identitástípus**, a következő lehetőségek közül választhat:
     
-      * Válassza ki **helyességi feltételt tartalmaz, a felhasználónév Salesforce**, ha a SAML-előfeltétel szolgáltatóé, a Salesforce felhasználónév
+      * Válassza ki **helyességi feltétel tartalmaz a Salesforce felhasználónév**, ha a felhasználó Salesforce felhasználónév kerül átadásra a SAML helyességi feltétel
 
-      * Válassza ki **helyességi feltételt tartalmaz az összevonási azonosító felhasználó**, ha a felhasználó objektum összevonási azonosító van beadott SAML-előfeltétel
+      * Válassza ki **helyességi feltétel tartalmazza a felhasználói objektum összevonási Azonosítójára**, ha az összevonási Azonosítót a felhasználói objektum a kerül átadásra a SAML helyességi feltétel
 
-      * Válassza ki **helyességi feltételt tartalmaz a használja a User objektum azonosítója**, ha a SAML-előfeltétel szolgáltatóé, a felhasználó a felhasználói azonosító
+      * Válassza ki **helyességi feltétel tartalmazza a felhasználói objektum használata Azonosítójára**, ha a felhasználói Azonosítót a felhasználói objektum a kerül átadásra a SAML helyességi feltétel
 
-    f. A **SAML-alapú identitás hely**, jelölje be **identitás a tulajdonos utasítás NameIdentifier elemében van**.
+    f. A **SAML identitás hely**válassza **identitás a tulajdonos utasítás NameIdentifier elemében van**.
 
-    g. A **szolgáltató által kezdeményezett kérelem Szolgáltatáskötés**, jelölje be **HTTP-átirányítás**.
+    g. A **szolgáltató által kezdeményezett kérelem Szolgáltatáskötést**válassza **HTTP-átirányítás**.
 
-    h. A **Identity Provider bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta
+    h. A **Identity Provider bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt
     
-    i. Végezetül kattintson **mentése** az SAML-alapú egyszeri bejelentkezés beállítások alkalmazásához.
+    i. Végül kattintson **mentése** a SAML egyszeri bejelentkezési beállítások alkalmazásához.
 
-14. A Salesforce bal oldali navigációs ablaktábláján kattintson **vállalati beállítások** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány**.
+14. Kattintson a bal oldali navigációs ablaktáblán, a Salesforce-ban, **vállalati beállítások** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-my-domain.png)
 
-15. Görgessen le a **hitelesítési** szakaszt, és kattintson a **szerkesztése** gombra.
+15. Görgessen le a **hitelesítési konfiguráció** szakaszt, és kattintson a **szerkesztése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-16. Az a **hitelesítési** szakaszt, ellenőrizze a **bejelentkezési oldal** , **hitelesítési szolgálata van** a SAML SSO konfigurációs, és kattintson a  **Mentés**.
+16. Az a **hitelesítési konfiguráció** szakaszt, ellenőrizze a **bejelentkezési oldal** , **hitelesítés hogyan listázhatja** a SAML SSO-konfigurációt, és kattintson a  **Mentés**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
-    > Ha egynél több hitelesítési szolgáltatás be van jelölve, a rendszer kéri a felhasználóktól mely hitelesítési szolgáltatás, például a bejelentkezéshez egyszeri bejelentkezést a Salesforce-környezet elindítása során használandó kiválasztásához. Ha nem szeretné, hogy megtörténjen-e, majd meg kell **hagyja bejelölve minden hitelesítési szolgáltatás**.
+    > Ha egynél több hitelesítési szolgáltatás ki van jelölve, felhasználók mely hitelesítési szolgáltatás, például a bejelentkezéshez egyszeri bejelentkezéshez, a Salesforce-környezet inicializálása során való megadását kéri. Ha nem szeretné, hogy fordulhat elő, akkor meg kell **ne jelölje be minden más hitelesítési szolgáltatás**.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/salesforce-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/salesforce-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/salesforce-tutorial/create_aaduser_03.png)
 
@@ -233,58 +233,58 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="create-a-salesforce-test-user"></a>Salesforce tesztfelhasználó létrehozása
+### <a name="create-a-salesforce-test-user"></a>A Salesforce tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó létrehozása a Salesforce-ban. Salesforce támogatja közvetlenül az időponthoz kötött kiosztást, amely alapértelmezés szerint engedélyezve van. Nincs ebben a szakaszban az Ön művelet elem. Ha a felhasználó nem létezik a Salesforce-ban, egy új létrejön a Salesforce elérésére tett kísérlet során. Salesforce is támogatja az automatikus a felhasználók átadása, további részletei [Itt](salesforce-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Salesforce-ban. A Salesforce támogatja a just-in-time-kiépítés, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik, a Salesforce-ban, egy új létrejön, amikor megpróbálja elérni a Salesforce. Salesforce-hoz is támogatja a felhasználók automatikus átadása, további részleteket talál [Itt](salesforce-provisioning-tutorial.md) konfigurálásának a felhasználók automatikus átadása.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Salesforce Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejelentkezést a hozzáférés biztosításával a Salesforce-hoz.
 
 ![A felhasználói szerepkör hozzárendelése][200]
 
-**Britta Simon hozzárendelése Salesforce, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel a Salesforce-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listában válassza ki a **Salesforce**.
+2. Az alkalmazások listájában jelölje ki a **Salesforce**.
 
-    ![Az alkalmazások listáját a Salesforce-hivatkozás](./media/salesforce-tutorial/tutorial_salesforce_app.png)
+    ![A Salesforce-hivatkozás alkalmazásainak listájában](./media/salesforce-tutorial/tutorial_salesforce_app.png)
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Salesforce csempére kattint, akkor kell beolvasni automatikusan bejelentkezett a Salesforce alkalmazáshoz.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panel a Salesforce csempére kattint, akkor kell lekérése automatikusan bejelentkezett a Salesforce alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
-* [A felhasználók átadása konfigurálása](salesforce-provisioning-tutorial.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználók átadásának konfigurálása](salesforce-provisioning-tutorial.md)
 
 <!--Image references-->
 

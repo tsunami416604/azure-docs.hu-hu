@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált GoToMeeting |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és GoToMeeting között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az GoToMeeting |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a GoToMeeting között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,149 +15,149 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 3573e846c5c7eea1f8c29ff4d7b2d1ab4683507d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b62b3b7f9f3bfd55237ed4d894954a0bde48e7fc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223042"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043720"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Oktatóanyag: Azure Active Directoryval integrált GoToMeeting
+# <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Oktatóanyag: GoToMeeting-Azure Active Directory-integráció
 
-Ebben az oktatóanyagban elsajátíthatja GoToMeeting integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan GoToMeeting integrálása az Azure Active Directory (Azure AD).
 
-GoToMeeting integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+GoToMeeting integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér GoToMeeting szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett GoToMeeting (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá GoToMeeting Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett GoToMeeting (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs GoToMeeting, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a GoToMeeting, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy GoToMeeting egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből GoToMeeting hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. GoToMeeting hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-gotomeeting-from-the-gallery"></a>A gyűjteményből GoToMeeting hozzáadása
-Az Azure AD integrálása a GoToMeeting konfigurálásához kell hozzáadnia GoToMeeting a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-gotomeeting-from-the-gallery"></a>GoToMeeting hozzáadása a katalógusból
+Konfigurálhatja az Azure AD integrálása a GoToMeeting, hozzá kell GoToMeeting a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből GoToMeeting hozzáadásához hajtsa végre az alábbi lépéseket:**
+**GoToMeeting hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **GoToMeeting**, jelölje be **GoToMeeting** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **GoToMeeting**válassza **GoToMeeting** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában GoToMeeting](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_addfromgallery.png)
+    ![Az eredmények listájában GoToMeeting](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján GoToMeeting.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés GoToMeeting, egy "Britta Simon" nevű tesztelési felhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó GoToMeeting a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a GoToMeeting közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó GoToMeeting mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó GoToMeeting hivatkozás kapcsolata kell létrehozni.
 
-GoToMeeting, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+GoToMeeting, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a GoToMeeting tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés GoToMeeting-tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[GoToMeeting tesztfelhasználó létrehozása](#create-a-gotomeeting-test-user)**  - való Britta Simon valami GoToMeeting, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy GoToMeeting tesztfelhasználót](#create-a-gotomeeting-test-user)**  – egy megfelelője a Britta Simon GoToMeeting, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az GoToMeeting alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon és a GoToMeeting-alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés GoToMeeting, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés GoToMeeting, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **GoToMeeting** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **GoToMeeting** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_samlbase.png)
 
-3. Az a **GoToMeeting tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **GoToMeeting-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk GoToMeeting tartomány és az URL-címek](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
+    ![GoToMeeting-tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
 
-    Az a **azonosító** szövegmező, írja be az URL-cím: `https://authentication.logmeininc.com/saml/sp`
+    Az a **azonosító** szövegmezőbe írja be az URL-cím: `https://authentication.logmeininc.com/saml/sp`
 
-4. Kattintson a **speciális URL-cím megjelenítése a configuration** , és konfigurálja az alábbi URL-címek
+4. Kattintson a **speciális URL-cím megjelenítése konfigurációs** és konfigurálja az alábbi URL-címek
 
-    **Jelentkezzen be az URL-cím** (ezt mindig tartsa üres)
+    **Bejelentkezési URL-cím** (üresen is hagyhatja ez)
     
     **Válasz URL-cím**: `https://authentication.logmeininc.com/saml/acs`
     
-    **RelayState**:
+    **Paramétert**:
     
-    - GoToMeeting alkalmazás esetén `https://global.gotomeeting.com`
+    - GoToMeeting-alkalmazás használata `https://global.gotomeeting.com`
     
-    - A GoToTraining használjon `https://global.gototraining.com`
+    - Használja GoToTraining, `https://global.gototraining.com`
     
-    - A GoToWebinar használjon `https://global.gotowebinar.com` 
+    - GoToWebinar használata `https://global.gotowebinar.com` 
     
-    - A GoToAssist használjon `https://app.gotoassist.com`
+    - GoToAssist használata `https://app.gotoassist.com`
     
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/citrix-gotomeeting-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/citrix-gotomeeting-tutorial/tutorial_general_400.png)
 
-6. Egy másik böngészőablakban, jelentkezzen be a [GoToMeeting szervezet Center](https://organization.logmeininc.com/). Kérni fogja annak ellenőrzéséhez, hogy a kiállító terjesztési hely frissült
+6. Egy másik böngészőablakban jelentkezzen be a [GoToMeeting szervezet Center](https://organization.logmeininc.com/). Meg kell adnia annak ellenőrzéséhez, hogy az identitásszolgáltató frissítve lett
 
-7. Engedélyezze a "Saját identitásszolgáltató frissítve lett az új tartomány" jelölőnégyzetet. Kattintson a **végzett** befejezésekor.
+7. Engedélyezze a "Saját identitásszolgáltató frissítve lett az új tartomány" jelölőnégyzetet. Kattintson a **kész** befejezésekor.
 
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/citrix-gotomeeting-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/citrix-gotomeeting-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/citrix-gotomeeting-tutorial/create_aaduser_03.png)
 
@@ -167,63 +167,63 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="create-a-gotomeeting-test-user"></a>GoToMeeting tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználó Britta Simon nevű GoToMeeting jön létre. GoToMeeting támogatja közvetlenül az időponthoz kötött kiosztást, amely alapértelmezés szerint engedélyezve van.
+Ebben a szakaszban egy Britta Simon nevű felhasználó GoToMeeting jön létre. GoToMeeting támogatja a just-in-time-kiépítés, amely alapértelmezés szerint engedélyezve van.
 
-Nincs ebben a szakaszban az Ön művelet elem. Ha a felhasználó nem létezik a GoToMeeting, egy új GoToMeeting elérésére tett kísérlet során jön létre.
+Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a GoToMeeting, egy új jön létre, a hozzáférés GoToMeeting megkísérlésekor.
 
 > [!NOTE]
-> Ha a felhasználót manuálisan kell létrehozni, lépjen kapcsolatba kell [GoToMeeting támogatási csoport](https://support.logmeininc.com/gotomeeting).
+> Ha manuálisan hozzon létre egy felhasználót, lépjen kapcsolatba kell [GoToMeeting támogatási csapatának](https://support.logmeininc.com/gotomeeting).
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés GoToMeeting Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés GoToMeeting Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése GoToMeeting, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel GoToMeeting, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **GoToMeeting**.
+2. Az alkalmazások listájában jelölje ki a **GoToMeeting**.
 
-    ![Az alkalmazások listáját a GoToMeeting hivatkozás](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_app.png)  
+    ![Az alkalmazások listáját a GoToMeeting hivatkozásra](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen GoToMeeting csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az GoToMeeting alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a GoToMeeting csempére kattint, meg kell beolvasása automatikusan bejelentkezett az GoToMeeting-alkalmazás.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
-* [A felhasználók átadása konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrixgotomeeting-provisioning-tutorial)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználók átadásának konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrixgotomeeting-provisioning-tutorial)
 
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Riskware |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Riskware között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Riskware |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Riskware között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,190 +15,190 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: d234b34f7583441f496fb96d37166c5472cadb4c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 7705baa0ba912f24d7859110c75d36703aeb4a77
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110827"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041959"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Oktatóanyag: Azure Active Directoryval integrált Riskware
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Oktatóanyag: Azure Active Directory-integráció az Riskware
 
-Ebben az oktatóanyagban elsajátíthatja Riskware integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Riskware integrálása az Azure Active Directory (Azure AD).
 
-Riskware integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Riskware integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Riskware szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Riskware (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Riskware Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Riskware (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Riskware, a következőkre van szükség:
+Riskware az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Riskware egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Riskware hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Riskware hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-riskware-from-the-gallery"></a>A gyűjteményből Riskware hozzáadása
-Az Azure AD integrálása a Riskware konfigurálásához kell hozzáadnia Riskware a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-riskware-from-the-gallery"></a>Riskware hozzáadása a katalógusból
+Az Azure AD integrálása a Riskware konfigurálásához hozzá kell Riskware a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Riskware hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Riskware hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Riskware**, jelölje be **Riskware** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Riskware**válassza **Riskware** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Riskware](./media/riskware-tutorial/tutorial_riskware_addfromgallery.png)
+    ![Az eredmények listájában Riskware](./media/riskware-tutorial/tutorial_riskware_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Riskware.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Riskware a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Riskware a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Riskware közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Riskware mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Riskware hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a Riskware tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Riskware tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Riskware tesztfelhasználó létrehozása](#create-a-riskware-test-user)**  - való Britta Simon valami Riskware, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Riskware tesztfelhasználót](#create-a-riskware-test-user)**  – egy megfelelője a Britta Simon Riskware, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Riskware alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Riskware alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Riskware, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Riskware, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Riskware** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Riskware** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/riskware-tutorial/tutorial_riskware_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/riskware-tutorial/tutorial_riskware_samlbase.png)
 
-3. Az a **Riskware tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Riskware tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk Riskware tartomány és az URL-címek](./media/riskware-tutorial/tutorial_riskware_url.png)
+    ![Riskware tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/riskware-tutorial/tutorial_riskware_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
     | Környezet| Az URL-minta|
     |--|--|
     | Felhasználói tesztelés|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
-    | TERMÉK| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
+    | TERMÉKKATALÓGUS| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
     | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
-    b. Az a **azonosítója (entitás azonosítója)** szövegmezőhöz URL-címet írja be:
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be egy URL-címe:
     | Környezet| Az URL-minta|
     |--|--|
     | Felhasználói tesztelés| `https://riskcloud.net/uat` |
-    | TERMÉK| `https://riskcloud.net/prod` |
+    | TERMÉKKATALÓGUS| `https://riskcloud.net/prod` |
     | DEMO| `https://riskcloud.net/demo` |
     |||
 
     > [!NOTE]
-    > Nincs valós a bejelentkezési URL-címével. Frissítse az értéket a tényleges bejelentkezési URL-címet. Ügyfél [Riskware ügyfél-támogatási csoport](mailto:support@pansoftware.com.au) az értéket be kell olvasni.
+    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Riskware ügyfél-támogatási csapatának](mailto:support@pansoftware.com.au) a gépkulcsengedélyek értékének.
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/riskware-tutorial/tutorial_riskware_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/riskware-tutorial/tutorial_riskware_certificate.png) 
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/riskware-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/riskware-tutorial/tutorial_general_400.png)
 
-6. A a **Riskware konfigurációs** kattintson **konfigurálása Riskware** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és SAML-alapú egyszeri bejelentkezés szolgáltatás URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **Riskware konfigurációs** területén kattintson **konfigurálása Riskware** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Riskware konfiguráció](./media/riskware-tutorial/tutorial_riskware_configure.png)
 
-7. Egy másik webes böngészőablakban jelentkezzen be a Riskware vállalati webhely rendszergazdaként.
+7. Egy másik böngészőablakban jelentkezzen be a Riskware vállalati hely rendszergazdaként.
 
-8. Kattintson a jobb felső sarokban **karbantartási** karbantartási lapjának megnyitásához.
+8. Kattintson a jobb felső sarokban, **karbantartási** nyissa meg a karbantartást.
 
-    ![Riskware konfigurációk karbantartása](./media/riskware-tutorial/tutorial_riskware_maintain.png)
+    ![Riskware konfigurációk kezelése](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-9. A karbantartási oldalon kattintson **hitelesítési**.
+9. A karbantartás oldalon kattintson **hitelesítési**.
 
     ![Riskware konfigurációs authen](./media/riskware-tutorial/tutorial_riskware_authen.png)
 
-10. A **hitelesítési** lapon, a következő lépésekkel:
+10. A **hitelesítési konfiguráció** lapon, a következő lépésekkel:
 
     ![Riskware konfigurációs authenconfig](./media/riskware-tutorial/tutorial_riskware_config.png)
 
-    a. Válassza ki **típus** , **SAML** hitelesítéshez.
+    a. Válassza ki **típus** , **SAML** a hitelesítéshez.
 
-    b. Az a **kód** szövegmező, írja be a kódját, például AZURE_UAT.
+    b. Az a **kód** szövegmezőbe írja be a kódot, például AZURE_UAT.
 
-    c. Az a **leírás** szövegmező, írja be a leírását, például AZURE konfigurációs egyszeri bejelentkezéshez.
+    c. Az a **leírás** szövegmezőbe írja be a leírást. például az AZURE konfigurálása egyszeri bejelentkezéshez.
 
-    d. A **egyszeri bejelentkezési oldalon** szövegmező, illessze be a **SAML-alapú egyszeri bejelentkezési URL-címe** értéket, amely az Azure-portálon másolta.
+    d. A **egyszeri bejelentkezési oldalon** szövegmezőjébe illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** érték, amely az Azure Portalról másolta.
 
-    e. A **lap Kijelentkezés** szövegmező, illessze be a **Sign-Out URL-cím** értéket, amely az Azure-portálon másolta.
+    e. A **lap Kijelentkezés** szövegmezőjébe illessze be a **kijelentkezéses URL-cím** érték, amely az Azure Portalról másolta.
 
-    f. Az a **Post űrlapmező** szövegmezőhöz a feladás egy vagy több választ, amely tartalmazza a SAML SAMLResponse például szerepel mező neve
+    f. Az a **Post űrlapmező** szövegmező, található bejegyzés választ, amely tartalmazza a SAML SAMLResponse például a mező neve
 
-    g. Az a **XML-identitás címkenév** szövegmezőhöz attribútum, amely tartalmazza a SAML-válasz NameID hasonlóan az egyedi azonosító.
+    g. Az a **XML-címkenév identitás** szövegmezőbe típus attribútuma, amely tartalmazza a NameID például a SAML-válasz egyedi azonosítója.
 
-    h. Nyissa meg a letöltött **metaadatainak XML-kódja** Azure-portálon a Jegyzettömbben, a tanúsítványt a metaadat-fájlt másolja és illessze be azt a **tanúsítvány** szövegmező
+    h. Nyissa meg a letöltött **metaadatainak Xml** a Jegyzettömbben az Azure portálról másolja a tanúsítványt a metaadat-fájlból, és illessze be azt a **tanúsítvány** szövegmező
 
-    i. A **ügyfél URL-címe** szövegmezőhöz illessze be az értékét **válasz URL-CÍMEN**, amely a támogatási csapat kap.
+    i. A **ügyfél URL-címe** szövegmezőbe, illessze be az értéket, **válasz URL-cím**, amely a támogatási csapat kap.
 
-    j. A **kibocsátó** szövegmezőhöz illessze be az értékét **azonosítója**, amely a támogatási csapat kap.
+    j. A **kibocsátó** szövegmezőbe, illessze be az értéket a **azonosító**, amely kap a támogatási csoporthoz.
 
     > [!Note]
-    > Ügyfél [Riskware ügyfél-támogatási csoport](mailto:support@pansoftware.com.au) beolvasni ezeket az értékeket
+    > Kapcsolattartó [Riskware ügyfél-támogatási csapatának](mailto:support@pansoftware.com.au) beolvasni ezeket az értékeket
 
-    k. Válassza ki **használata POST** jelölőnégyzetet.
+    k. Válassza ki **használata utáni** jelölőnégyzetet.
 
-    l. Válassza ki **használható SAML-kérelmek** jelölőnégyzetet.
+    l. Válassza ki **használható SAML-kérelmet** jelölőnégyzetet.
 
     m. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/riskware-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/riskware-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/riskware-tutorial/create_aaduser_03.png)
 
@@ -208,101 +208,101 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-a-riskware-test-user"></a>Riskware tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Riskware bejelentkezni, akkor ki kell építenie Riskware be. A Riskware egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók Riskware bejelentkezni, akkor ki kell építeni Riskware be. Riskware a kiépítés manuális feladat.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a biztonsági-rendszergazdájaként Riskware.
+1. Jelentkezzen be egy biztonsági-rendszergazdaként Riskware.
 
-2. Kattintson a jobb felső sarokban **karbantartási** karbantartási lapjának megnyitásához. 
+2. Kattintson a jobb felső sarokban, **karbantartási** nyissa meg a karbantartást. 
 
-    ![Riskware konfigurációs tart fenn.](./media/riskware-tutorial/tutorial_riskware_maintain.png)
+    ![Riskware konfigurációs kezeli](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-3. A karbantartási oldalon kattintson **személyek**.
+3. A karbantartás oldalon kattintson **személyek**.
 
     ![Riskware konfigurációs személyek](./media/riskware-tutorial/tutorial_riskware_people.png)
 
-4. Válassza ki **részletek** lapra, és hajtsa végre a következő lépéseket:
+4. Válassza ki **részletek** lapra, és hajtsa végre az alábbi lépéseket:
 
     ![Riskware konfiguráció részletei](./media/riskware-tutorial/tutorial_riskware_details.png)
 
-    a. Válassza ki **személy típusa** , például alkalmazott.
+    a. Válassza ki **személy típusa** , például alkalmazottak.
 
-    b. A **Utónév** szövegmező, írja be például a felhasználó utónevét **Britta**.
+    b. A **Utónév** szövegmezőbe írja be például a felhasználó utónevét **Britta**.
 
-    c. A **vezetékneve** szövegmező, írja be például a felhasználó vezetéknevét **Simon**.
+    c. A **Vezetéknév** szövegmezőbe írja be például a felhasználó vezetékneve **Simon**.
 
-5. Az a **biztonsági** lapra, hajtsa végre a következő lépéseket:
+5. Az a **biztonsági** fülre, hajtsa végre az alábbi lépéseket:
 
     ![Riskware konfigurációs biztonság](./media/riskware-tutorial/tutorial_riskware_security.png)
 
-    a. A **hitelesítési** szakaszban jelölje be a **hitelesítési** , például AZURE konfigurációs módját, amely be kell állítania az egyszeri bejelentkezés.
+    a. A **hitelesítési** szakaszban jelölje be a **hitelesítési** üzemmódot, amely rendelkezik beállítása AZURE-konfiguráció, például egyszeri bejelentkezéshez.
 
-    b. A **bejelentkezési adatait** ebben a szakaszban a **felhasználói azonosító** szövegmezőhöz adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
+    b. Alatt **bejelentkezési adatait** ebben a szakaszban a **felhasználói azonosító** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
 
-    c. Az a **jelszó** szövegmező, adja meg a felhasználó jelszavát.
+    c. Az a **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 
-6. Az a **szervezet** lapra, hajtsa végre a következő lépéseket:
+6. Az a **szervezet** fülre, hajtsa végre az alábbi lépéseket:
 
-    ![Riskware konfigurációs szervezeti](./media/riskware-tutorial/tutorial_riskware_org.png)
+    ![Szervezeti Riskware konfiguráció](./media/riskware-tutorial/tutorial_riskware_org.png)
 
     a. Válassza ki a beállítás értéke **Level1** szervezet.
 
-    b. A **személy elsődleges munkahelyi** részben, a a **hely** szövegmezőhöz meg azt a helyet.
+    b. Alatt **személy elsődleges munkahelyi** ebben a szakaszban a **helye** szövegmezőbe írja be a hely.
 
-    c. A **alkalmazott** szakaszban jelölje be **alkalmazott állapota** alkalmi, például.
+    c. A **alkalmazott** szakaszban jelölje be **alkalmazott állapota** magasabb, mint.
 
 7. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Riskware Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Riskware Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200]
 
-**Britta Simon hozzárendelése Riskware, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Riskware, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Riskware**.
+2. Az alkalmazások listájában jelölje ki a **Riskware**.
 
-    ![Az alkalmazások listáját a Riskware hivatkozás](./media/riskware-tutorial/tutorial_riskware_app.png)  
+    ![Az alkalmazások listáját a Riskware hivatkozásra](./media/riskware-tutorial/tutorial_riskware_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Riskware csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Riskware alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Riskware csempére kattint, meg kell lekérése automatikusan bejelentkezett az Riskware alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

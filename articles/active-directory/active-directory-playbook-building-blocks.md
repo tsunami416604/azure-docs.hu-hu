@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38451699"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049469"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -157,7 +157,7 @@ Hozzávetőleges időt Complete: 60 perc
 | Kövesse az utasításokat a ServiceNow konfigurálása |  |
 | ServiceNow-alkalmazás "Kiépítés" panel "Automatikus" kiépítés engedélyezése | [Az új Azure Portalon a vállalati alkalmazások kiépítése a felhasználói fiók kezelése](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | Várjon néhány percet, amíg a kiépítés befejezése.  Addig is a kiépítési jelentéseket ellenőrzéséhez |  |
-| Jelentkezzen be https://myapps.microsoft.com/ teszt felhasználóként, amely hozzáféréssel rendelkezik | [Mi az a hozzáférési panelen?](active-directory-saas-access-panel-introduction.md) |
+| Jelentkezzen be https://myapps.microsoft.com/ teszt felhasználóként, amely hozzáféréssel rendelkezik | [Mi az a hozzáférési panelen?](user-help/active-directory-saas-access-panel-introduction.md) |
 | Kattintson a csempére az újonnan létrehozott alkalmazás. Hozzáférés ellenőrzése |  |
 | Igény szerint megtekinthető az alkalmazás használati jelentéseket. Vegye figyelembe, hogy van néhány késést, ezért meg kell várnia a forgalmat a jelentések megjelenítéséhez egy kis idő. | [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon: felügyelt alkalmazások használati adatai](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Az Azure Active Directory jelentésmegőrzési házirendje](active-directory-reporting-retention.md) |
 
@@ -188,8 +188,8 @@ Hozzávetőleges teljes ideje: 15 perc
 | Jelszavas egyszeri Bejelentkezést konfigurálása | [Egyszeri bejelentkezés a vállalati alkalmazásokat az új Azure Portalon kezelése: jelszóalapú bejelentkezés](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | Az alkalmazás hozzárendelése az előfeltételeket a csoporttal | [Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md) |
 | Jelentkezzen be https://myapps.microsoft.com/ teszt felhasználóként, amely hozzáféréssel rendelkezik |  |
-| Kattintson a csempére az újonnan létrehozott alkalmazás. | [Mi az a hozzáférési panelen?: jelszóalapú egyszeri bejelentkezés identitás üzembe helyezése nélkül](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
-| Adja meg az hitelesítő adatai | [Mi az a hozzáférési panelen?: jelszóalapú egyszeri bejelentkezés identitás üzembe helyezése nélkül](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Kattintson a csempére az újonnan létrehozott alkalmazás. | [Mi az a hozzáférési panelen?: jelszóalapú egyszeri bejelentkezés identitás üzembe helyezése nélkül](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Adja meg az hitelesítő adatai | [Mi az a hozzáférési panelen?: jelszóalapú egyszeri bejelentkezés identitás üzembe helyezése nélkül](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Zárja be a böngészőt, majd ismételje meg a bejelentkezés. A felhasználó ezen idő körülbelül kell megjelennie zökkenőmentes hozzáférést az alkalmazáshoz. |  |
 | Igény szerint megtekinthető az alkalmazás használati jelentéseket. Vegye figyelembe, hogy van néhány késést, ezért meg kell várnia a forgalmat a jelentések megjelenítéséhez egy kis idő. | [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon: felügyelt alkalmazások használati adatai](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Az Azure Active Directory jelentésmegőrzési házirendje](active-directory-reporting-retention.md) |
 
@@ -308,7 +308,7 @@ Hozzávetőleges teljes ideje: 10 perc
 | SaaS-alkalmazás (összevont egyszeri bejelentkezés vagy Egyszeri jelszó) már van konfigurálva | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) |
 | Felhő az alkalmazást a #1 hozzárendelt hozzáférési csoportokhoz | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) <br/>[Hozzon létre egy csoportot, és tagokat vehet fel a az Azure Active Directoryban](fundamentals/active-directory-groups-create-azure-portal.md) |
 | A csoport tulajdonosának hitelesítő adatok | [Erőforrások hozzáférésének kezelése Azure Active Directory-csoportokkal](fundamentals/active-directory-manage-groups.md) |
-| Az Infomunkás fér hozzá az alkalmazásokhoz tartozó hitelesítő adatokat talált | [Mi az a hozzáférési panelen?](active-directory-saas-access-panel-introduction.md) |
+| Az Infomunkás fér hozzá az alkalmazásokhoz tartozó hitelesítő adatokat talált | [Mi az a hozzáférési panelen?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Lépések
@@ -318,7 +318,7 @@ Hozzávetőleges teljes ideje: 10 perc
 | A csoportnak, hogy kapott hozzáférést az alkalmazáshoz, és konfigurálja az adott tulajdonosa csoport| [Az Azure Active Directory-csoport beállításainak kezelése ](fundamentals/active-directory-groups-settings-azure-portal.md) |
 | Jelentkezzen be a csoport tulajdonosa, tekintse meg a csoport tagságát a hozzáférési panel csoportok lapján | [Oldala az Azure Active Directory-csoportok kezelése](https://account.activedirectory.windowsazure.com/r#/groups) |
 | Az Infomunkás a vizsgálni kívánt hozzáadása |  |
-| Jelentkezzen be az információkkal dolgozó, győződjön meg arról, a csempe akkor érhető el | [Mi az a hozzáférési panelen?](active-directory-saas-access-panel-introduction.md) |
+| Jelentkezzen be az információkkal dolgozó, győződjön meg arról, a csempe akkor érhető el | [Mi az a hozzáférési panelen?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -332,7 +332,7 @@ Ha az alkalmazás-kiépítés engedélyezve van, szüksége lehet Várjon néhá
 | --- | --- |
 | SaaS-alkalmazás (összevont egyszeri bejelentkezés vagy Egyszeri jelszó) már van konfigurálva | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) |
 | Felhő az alkalmazást a #1 hozzárendelt hozzáférési csoportokhoz | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) <br/>[Hozzon létre egy csoportot, és tagokat vehet fel a az Azure Active Directoryban](fundamentals/active-directory-groups-create-azure-portal.md) |
-| Az Infomunkás fér hozzá az alkalmazásokhoz tartozó hitelesítő adatokat talált | [Mi az a hozzáférési panelen?](active-directory-saas-access-panel-introduction.md) |
+| Az Infomunkás fér hozzá az alkalmazásokhoz tartozó hitelesítő adatokat talált | [Mi az a hozzáférési panelen?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Lépések
@@ -380,7 +380,7 @@ Hozzávetőleges teljes ideje: 15 perc
 
 | Előfeltétel | További források |
 | --- | --- |
-| A bérlő önkiszolgáló jelszó-kezelés engedélyezése. | [Az Azure Active Directory jelszó-visszaállítás informatikai rendszergazdák számára](active-directory-passwords-update-your-own-password.md) |
+| A bérlő önkiszolgáló jelszó-kezelés engedélyezése. | [Az Azure Active Directory jelszó-visszaállítás informatikai rendszergazdák számára](user-help/active-directory-passwords-update-your-own-password.md) |
 | Engedélyezze a jelszóvisszaírást a helyszíni jelszavak kezeléséhez. Megjegyzés: ehhez az adott Azure AD Connect verziója | [Jelszóvisszaírás előfeltételei](authentication/howto-sspr-writeback.md) |
 | Ezt a funkciót használja, és ellenőrizze, hogy egy biztonsági csoport tagjai a PoC-felhasználóinak azonosítása. A felhasználó nem rendszergazda teljes mértékben az a funkció bemutatására kell lennie. | [Testreszabása: Az Azure AD-jelszókezelés: hozzáférés korlátozása a jelszó-visszaállítás](authentication/howto-sspr-writeback.md) |
 
@@ -395,7 +395,7 @@ Hozzávetőleges teljes ideje: 15 perc
 | Adja meg az önkiszolgáló jelszó-visszaállítási adatok konfigurált kiszolgálónként 2. lépés | https://aka.ms/ssprsetup |
 | Zárja be a böngészőt |  |
 | Az Infomunkás a 4. lépésben használt, a bejelentkezési folyamat Újrakezdés |  |
-| A jelszó alaphelyzetbe állítása | [Saját jelszó frissítése: a jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) |
+| A jelszó alaphelyzetbe állítása | [Saját jelszó frissítése: a jelszó alaphelyzetbe állítása](user-help/active-directory-passwords-update-your-own-password.md) |
 | Próbálja ki a adataikkal jelentkezhetnek be az Azure ad-hez is feltárhatja a helyszíni erőforrásokhoz, hogy új jelszót |  |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
@@ -428,7 +428,7 @@ Hozzávetőleges teljes ideje: 10 perc
 ### <a name="considerations"></a>Megfontolandó szempontok
 
 1. Ez explicit módon beállítása többtényezős hitelesítés a felhasználó az összes bejelentkezés építőelem PoC lépéseit. Például a feltételes hozzáférés és az Identity Protection egyéb eszközöket, amellyel több MFA forgatókönyvek vonatkozik. Ez lehet érdemes figyelembe venni, amikor POC áthelyezését az éles környezetbe.
-2. Az építőelem PoC lépéseit explicit módon használ telefonhívásokat expedience az MFA módszerként. A Váltás a POC az éles környezetben, azt javasoljuk, használjon, például alkalmazások a [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) a második tényezőként, amikor csak lehetséges.
+2. Az építőelem PoC lépéseit explicit módon használ telefonhívásokat expedience az MFA módszerként. A Váltás a POC az éles környezetben, azt javasoljuk, használjon, például alkalmazások a [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) a második tényezőként, amikor csak lehetséges.
 További információ: [DRAFT NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>MFA a feltételes hozzáférés a SaaS-alkalmazások
@@ -553,7 +553,7 @@ Hozzávetőleges időt: 20 perc alatt
 | --- | --- |
 | A felhasználói tanúsítványt kiépített (Windows, iOS vagy Android) a vállalati nyilvános kulcsú infrastruktúra eszköz | [Felhasználói tanúsítványok telepítése](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Az AD FS-összevont Azure AD-tartomány | [Azure AD Connect és összevonás](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Az Active Directory tanúsítványszolgáltatások áttekintése](https://technet.microsoft.com/library/hh831740.aspx)|
-| Az iOS-eszközök rendelkeznek a Microsoft Authenticator alkalmazás telepítve van | [A Microsoft Authenticator alkalmazás használatának első lépései](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| Az iOS-eszközök rendelkeznek a Microsoft Authenticator alkalmazás telepítve van | [A Microsoft Authenticator alkalmazás használatának első lépései](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Lépések
 

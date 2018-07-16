@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 0aa3ec013e93ddb89cd6982c01a38411f67b34c4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: a93e4863a8466ad6599b11e6fe6e53d8d4d971a4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866348"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Oktatóanyag: Azure Active Directory-integráció az UNIFI
 
@@ -228,7 +228,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a UNIFI csempére kattint, meg kell lekérése automatikusan bejelentkezett az UNIFI alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../active-directory-saas-access-panel-introduction.md). 
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 

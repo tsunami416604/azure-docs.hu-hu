@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5d5ddd83a2335e7a08bac587aa627f1dcae9738c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1a2b32e7e0e86608f879941485395ebe379a5c1e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970900"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048861"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Az Eszközfelügyelet az Azure Active Directory bemutatása
 
@@ -181,8 +181,8 @@ Egy USB-szabály használjon:
 - Eszközalapú feltételes hozzáférési kapcsolatos további információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók](active-directory-conditional-access-policy-connected-applications.md).
 
 - A telepítő:
-    - Az Azure Active Directory regisztrált Windows 10-es eszközök, lásd: [konfigurálása Azure Active Directoryban regisztrált Windows 10-eszközök](device-management-azuread-registered-devices-windows10-setup.md)
-    - Az Azure Active Directoryhoz csatlakoztatott eszközök, lásd: [konfigurálása Azure Active Directory-hez csatlakoztatott eszközök](device-management-azuread-joined-devices-setup.md)
+    - Az Azure Active Directory regisztrált Windows 10-es eszközök, lásd: [konfigurálása Azure Active Directoryban regisztrált Windows 10-eszközök](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+    - Az Azure Active Directoryhoz csatlakoztatott eszközök, lásd: [konfigurálása Azure Active Directory-hez csatlakoztatott eszközök](user-help/device-management-azuread-joined-devices-setup.md)
     - Hibrid Azure AD-hez csatlakoztatott eszközök esetén lásd: [hogyan hibrid konfigurálása Azure Active Directoryhoz csatlakoztatott eszközök](device-management-hybrid-azuread-joined-devices-setup.md).
 
 

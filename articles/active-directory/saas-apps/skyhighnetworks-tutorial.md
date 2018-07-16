@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Skyhigh hálózatok |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Skyhigh hálózatok között.
+title: 'Oktatóanyag: Azure Active Directory-integráció Skyhigh hálózatokkal |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Skyhigh hálózatok között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,143 +15,143 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f3f892d085c6fcea7d7891c16d7121a99cfe650
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 403d5754052e616354413160c6c34fa16ff0d837
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214341"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>Oktatóanyag: Azure Active Directory-integráció Skyhigh hálózatokkal
 
-Ebben az oktatóanyagban elsajátíthatja Skyhigh hálózatok integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Skyhigh hálózatok integrálása az Azure Active Directory (Azure AD).
 
-Skyhigh hálózatok integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Skyhigh hálózatok integrálása az Azure AD-vel nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Skyhigh hálózatok szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Skyhigh hálózatokhoz (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Skyhigh hálózatok az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Skyhigh hálózatokhoz (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Skyhigh hálózatok, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása Skyhigh hálózatokkal, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Skyhigh hálózatok egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Skyhigh hálózatokat a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Skyhigh hálózatok hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-skyhigh-networks-from-the-gallery"></a>Skyhigh hálózatokat a gyűjteményből
-Az Azure AD integrálása a Skyhigh hálózatok konfigurálásához szüksége Skyhigh hálózatokat adhat a kezelt SaaS-alkalmazások listáját a gyűjteményből.
+## <a name="adding-skyhigh-networks-from-the-gallery"></a>Skyhigh hálózatok hozzáadása a katalógusból
+Az Azure AD integrálása a Skyhigh hálózatok konfigurálásához, hozzá kell Skyhigh hálózatok a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Skyhigh hálózatokat adhat a gyűjteményből, hajtsa végre a következő lépéseket:**
+**Skyhigh hálózatok hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Skyhigh hálózatok**, jelölje be **Skyhigh hálózatok** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Skyhigh hálózatok**válassza **Skyhigh hálózatok** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Skyhigh hálózatok](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_addfromgallery.png)
+    ![Az eredmények listájában Skyhigh hálózatok](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó Skyhigh hálózatokat.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Skyhigh hálózatok egy "Britta Simon" nevű tesztelési felhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Skyhigh hálózatokban a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó Skyhigh hálózatok közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Skyhigh hálózatok mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Skyhigh hálózatok közötti kapcsolat kapcsolatot kell hozható létre.
 
-Az Azure AD az egyszeri bejelentkezés Skyhigh hálózatokkal tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés Skyhigh hálózatokkal tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Skyhigh hálózatok tesztfelhasználó létrehozása](#create-a-skyhigh-networks-test-user)**  - kell rendelkeznie a megfelelője a Britta Simon Skyhigh hálózatokban, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Skyhigh hálózatok tesztfelhasználót](#create-a-skyhigh-networks-test-user)**  - a-megfelelője a Britta Simon rendelkezik Skyhigh hálózatokból, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Skyhigh hálózatok alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Skyhigh hálózatok alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálja az Azure AD az egyszeri bejelentkezés Skyhigh hálózatokkal, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása Skyhigh hálózatokkal, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Skyhigh hálózatok** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Skyhigh hálózatok** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_samlbase.png)
 
-3. Az a **Skyhigh hálózatok tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **Skyhigh hálózatok tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk Skyhigh hálózatok tartomány és az URL-címek](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_url.png)
+    ![Skyhigh hálózatok tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_url.png)
 
-    a. Az a **azonosítója (entitás azonosítója)** szövegmező, adja meg a következő minta használatával URL-címe: `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
+    a. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<ENV>.myshn.net/shndash/response/saml-postlogin`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<ENV>.myshn.net/shndash/response/saml-postlogin`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk Skyhigh hálózatok tartomány és az URL-címek](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_url1.png)
+    ![Skyhigh hálózatok tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Skyhigh hálózatok ügyfél-támogatási csoport](mailto:support@skyhighnetworks.com) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Skyhigh hálózatok ügyfél-támogatási csapatának](mailto:support@skyhighnetworks.com) beolvasni ezeket az értékeket. 
 
-5. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_certificate.png) 
 
 6. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/skyhighnetworks-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/skyhighnetworks-tutorial/tutorial_general_400.png)
     
-7. Az a **Skyhigh hálózatok konfigurációs** kattintson **Skyhigh hálózatok konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+7. Az a **Skyhigh hálózatok konfigurációs** területén kattintson **Skyhigh hálózatok konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Skyhigh hálózatok konfigurálása](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_configure.png) 
 
-8. Egyszeri bejelentkezés konfigurálása **Skyhigh hálózatok** oldalon kell küldeniük a letöltött **tanúsítvány (Base64), a Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** való [ Skyhigh hálózatok támogatási csoport](mailto:support@skyhighnetworks.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+8. Az egyszeri bejelentkezés konfigurálása **Skyhigh hálózatok** oldalon kell küldenie a letöltött **tanúsítvány (Base64), kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [ Skyhigh hálózatok támogatási csoportjának](mailto:support@skyhighnetworks.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/skyhighnetworks-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/skyhighnetworks-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/skyhighnetworks-tutorial/create_aaduser_03.png)
 
@@ -161,57 +161,57 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="create-a-skyhigh-networks-test-user"></a>Skyhigh hálózatok tesztfelhasználó létrehozása
 
-Ebben a szakaszban Britta Simon meghívta Skyhigh hálózatok felhasználó létrehozása. Együttműködve [Skyhigh hálózatok támogatási csoport](mailto:support@skyhighnetworks.com) a felhasználók hozzáadása a Skyhigh hálózatok platform. Felhasználók kell létrehoznia és egyszeri bejelentkezés használata előtt aktiválva
+Ebben a szakaszban egy Skyhigh hálózatok Britta Simon nevű felhasználó hoz létre. Együttműködve [Skyhigh hálózatok támogatási csoportjának](mailto:support@skyhighnetworks.com) a felhasználók hozzáadása az Skyhigh hálózatok platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez használandó Skyhigh hálózatokhoz való hozzáférés biztosítása.
+Ebben a szakaszban engedélyezze Britta Simon Skyhigh hálózatokhoz a hozzáférés biztosításával Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Skyhigh hálózatok, hajtsa végre az alábbi lépéseket:**
+**Britta Simon Skyhigh hálózatokhoz való hozzárendeléséhez végezze el az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Skyhigh hálózatok**.
+2. Az alkalmazások listájában jelölje ki a **Skyhigh hálózatok**.
 
     ![Az alkalmazások listáját a Skyhigh hálózatok hivatkozás](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Skyhigh hálózatok csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Skyhigh hálózatok alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Skyhigh hálózatok csempére kattint, meg kell lekérése automatikusan bejelentkezett az Skyhigh hálózatok alkalmazás.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

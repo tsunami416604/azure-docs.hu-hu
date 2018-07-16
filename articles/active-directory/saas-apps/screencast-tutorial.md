@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a képernyőfelvétel-O-felosztásban |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a képernyőfelvétel-O-értéket.
+title: 'Oktatóanyag: Azure Active Directory-integráció a képernyőfelvétel-O felosztásban |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a képernyőfelvétel-O felosztásban között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,153 +14,153 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 7212e0b07b525286f0b194a53c6780269630ad9c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 20c0acebde232bd50e6e5befed0facc96ee11b4d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320729"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040949"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>Oktatóanyag: Képernyőfelvétel-O-értéket az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>Oktatóanyag: Azure Active Directory-integráció a képernyőfelvétel-O-értéket
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a képernyőfelvétel-O-értéket az Azure Active Directoryval (Azure AD).
 
-Képernyőfelvétel-O-felosztásban integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Az Azure AD integrálása a képernyőfelvétel-O-értéket nyújt a következő előnyökkel jár:
 
-- Azt is szabályozhatja az Azure AD, aki hozzáfér a képernyőfelvétel-O-értéket.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a képernyőfelvétel-O-értéket (egyszeri bejelentkezés) a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá a képernyőfelvétel-O-értéket az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a képernyőfelvétel-O-értéket (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a képernyőfelvétel-O-értéket, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- A képernyőfelvétel-O-értéket az egyszeri bejelentkezés engedélyezve van az előfizetés
+- Az Azure AD-előfizetéshez
+- A képernyőfelvétel-O felosztásban egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Képernyőfelvétel-O-felosztásban hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Hozzáadása a képernyőfelvétel-O-értéket a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-screencast-o-matic-from-the-gallery"></a>Képernyőfelvétel-O-felosztásban hozzáadása a gyűjteményből
-Az Azure AD integrálása a képernyőfelvétel-O-felosztásban konfigurálásához kell hozzáadnia képernyőfelvétel-O-értéket a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-screencast-o-matic-from-the-gallery"></a>Hozzáadása a képernyőfelvétel-O-értéket a katalógusból
+Az Azure AD integrálása a képernyőfelvétel-O automatikus konfigurálásához, hozzá kell képernyőfelvétel-O-értéket a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a képernyőfelvétel-O-értéket a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a képernyőfelvétel-O-értéket a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **képernyőfelvétel-O-értéket**, jelölje be **képernyőfelvétel-O-felosztásban** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **képernyőfelvétel-O felosztásban**, jelölje be **képernyőfelvétel-O-értéket** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Képernyőfelvétel-O-értéket az eredménylistában](./media/screencast-tutorial/tutorial_screencast_addfromgallery.png)
+    ![Képernyőfelvétel-O-értéket a találatok listájában](./media/screencast-tutorial/tutorial_screencast_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés képernyőfelvétel-O-értéket "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés képernyőfelvétel-O-értéket a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD számára a képernyőfelvétel-O-értéket a partner felhasználót egy felhasználó számára az Azure AD kell. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a képernyőfelvétel-O-felosztásban közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó a képernyőfelvétel-O felosztásban mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a képernyőfelvétel-O értéket hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a képernyőfelvétel-O-felosztásban, tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés a képernyőfelvétel-O felosztásban tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Képernyőfelvétel-O-felosztásban tesztfelhasználó létrehozása](#create-a-screencast-o-matic-test-user)**  - való Britta Simon egy megfelelője a képernyőfelvétel-O-értéket, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Képernyőfelvétel-O felosztásban tesztfelhasználó létrehozása](#create-a-screencast-o-matic-test-user)**  – képernyőfelvétel-O-értéket, amely a felhasználó Azure ad-ben ábrázolása van csatolva van egy megfelelője a Britta Simon.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a képernyőfelvétel-O-felosztásban alkalmazásban egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a képernyőfelvétel-O automatikus alkalmazása az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálja az Azure AD egyszeri bejelentkezést a képernyőfelvétel-O-értéket, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálásához a képernyőfelvétel-O felosztásban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **képernyőfelvétel-O-felosztásban** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon a a **képernyőfelvétel-O felosztásban** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/screencast-tutorial/tutorial_screencast_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/screencast-tutorial/tutorial_screencast_samlbase.png)
 
-3. Az a **képernyőfelvétel-O-automatikus tartomány- és URL-címek** területen tegye a következőket:
+3. Az a **képernyőfelvétel-O felosztásban tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Képernyőfelvétel-O-automatikus tartomány- és URL-címeket az egyszeri bejelentkezés információk](./media/screencast-tutorial/tutorial_screencast_url.png)
+    ![Képernyőfelvétel-O felosztásban tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/screencast-tutorial/tutorial_screencast_url.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://screencast-o-matic.com/<InstanceName>`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://screencast-o-matic.com/<InstanceName>`
 
     > [!NOTE] 
-    > A bejelentkezési URL-cím értéke nincs valós. Frissítse az értéket a tényleges bejelentkezési URL-címet. Ügyfél [képernyőfelvétel-O-felosztásban, ügyfél-támogatási csoport](mailto:support@screencast-o-matic.com) az értéket be kell olvasni. 
+    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [képernyőfelvétel-O automatikus ügyfél-támogatási csapatának](mailto:support@screencast-o-matic.com) a gépkulcsengedélyek értékének. 
  
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/screencast-tutorial/tutorial_screencast_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/screencast-tutorial/tutorial_screencast_certificate.png) 
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/screencast-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/screencast-tutorial/tutorial_general_400.png)
 
-6. Egy másik webes böngészőablakban, jelentkezzen be a képernyőfelvétel-O-felosztásban rendszergazdaként.
+6. Egy másik böngészőablakban, jelentkezzen be a képernyőfelvétel-O-értéket rendszergazdaként.
 
 7. Kattintson a **előfizetés**.
 
     ![Az előfizetés](./media/screencast-tutorial/tutorial_screencast_sub.png)
 
-8. A **lapot** szakaszban kattintson **telepítő**.
+8. A **lapot** részen kattintson **telepítő**.
 
     ![A hozzáférés](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
-9. Az a **hozzáférés telepítőből**, hajtsa végre a következő lépéseket:
+9. Az a **telepítő lapot**, hajtsa végre az alábbi lépéseket:
 
-    * A **URL-CÍMEN** területen írja be a példánynév a megadott szövegmezőben.
+    * A **URL-CÍMEN** szakaszban, a megadott szövegmezőbe írja be a példánynév.
 
     ![A hozzáférés](./media/screencast-tutorial/tutorial_screencast_access.png)
 
-    * Válassza ki **szükséges tartományi felhasználó** alatt **SAML felhasználói korlátozása (nem kötelező)** szakasz.
+    * Válassza ki **szükséges tartományi felhasználó** alatt **SAML felhasználói korlátozása (nem kötelező)** szakaszban.
 
-    * A **IDP metaadatok XML-fájl feltöltése**, kattintson a **Choose File** a metaadatokat, amelyek az Azure-portálról letöltött feltölteni.
+    * A **Identitásszolgáltató metaadatainak XML-fájl feltöltése**, kattintson a **fájl kiválasztása** feltölteni a metaadatokat, amelyek már letöltötte az Azure Portalról.
 
     * Kattintson az **OK** gombra. 
 
     ![A hozzáférés](./media/screencast-tutorial/tutorial_screencast_save.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/screencast-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/screencast-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/screencast-tutorial/create_aaduser_03.png)
 
@@ -170,60 +170,60 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-screencast-o-matic-test-user"></a>Képernyőfelvétel-O-felosztásban tesztfelhasználó létrehozása
+### <a name="create-a-screencast-o-matic-test-user"></a>Képernyőfelvétel-O felosztásban tesztfelhasználó létrehozása
 
-Ez a szakasz célja Britta Simon nevű képernyőfelvétel-O-értéket a felhasználó létrehozásához. Képernyőfelvétel-O-értéket támogatja a just-in-time kiosztást, amely alapértelmezés szerint van engedélyezve. Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre, hozzáférési képernyőfelvétel-O-értéket, ha még nem létezik tett kísérlet során.
+Ez a szakasz célja a képernyőfelvétel-O felosztásban Britta Simon nevű felhasználó létrehozásához. Képernyőfelvétel-O-értéket támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó próbál hozzáférni képernyőfelvétel-O-értéket, ha még nem létezik jön létre.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználó van szüksége, forduljon a [képernyőfelvétel-O-felosztásban, ügyfél-támogatási csoport](mailto:support@screencast-o-matic.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [képernyőfelvétel-O automatikus ügyfél-támogatási csapatának](mailto:support@screencast-o-matic.com).
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez használandó hozzáférést biztosít a képernyőfelvétel-O-értéket.
+Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés hozzáférést biztosít a képernyőfelvétel-O értéket használja.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése képernyőfelvétel-O-értéket, hajtsa végre a következő lépéseket:**
+**Britta Simon rendel képernyőfelvétel-O felosztásban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **képernyőfelvétel-O-felosztásban**.
+2. Az alkalmazások listájában jelölje ki a **képernyőfelvétel-O felosztásban**.
 
-    ![Az alkalmazások listáját a képernyőfelvétel-O-felosztásban hivatkozás](./media/screencast-tutorial/tutorial_screencast_app.png)  
+    ![Az alkalmazások listáját a képernyőfelvétel-O felosztásban hivatkozás](./media/screencast-tutorial/tutorial_screencast_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Amikor a hozzáférési panelen a képernyőfelvétel-O-felosztásban csempére kattint, meg kell beolvasása automatikusan bejelentkezett a képernyőfelvétel-O-felosztásban alkalmazásba.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a képernyőfelvétel-O felosztásban csempére kattint, akkor kell lekérése automatikusan bejelentkezett a képernyőfelvétel-O felosztásban alkalmazásba.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált AnswerHub |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és AnswerHub között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az AnswerHub |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és AnswerHub között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,112 +14,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 8505474687728f8dcf0927e4d2b7ce59e7a4c742
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 447a3911bc1f021fb1ca2658716de1910b5379b6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231287"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044078"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Azure Active Directoryval integrált AnswerHub
+# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Azure Active Directory-integráció az AnswerHub
 
-Ebben az oktatóanyagban elsajátíthatja AnswerHub integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan AnswerHub integrálása az Azure Active Directory (Azure AD).
 
-AnswerHub integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+AnswerHub integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a AnswerHub hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett AnswerHub (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá AnswerHub Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett AnswerHub (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs AnswerHub, a következőkre van szükség:
+AnswerHub az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy AnswerHub egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből AnswerHub hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. AnswerHub hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-answerhub-from-the-gallery"></a>A gyűjteményből AnswerHub hozzáadása
-Az Azure AD integrálása a AnswerHub konfigurálásához kell hozzáadnia AnswerHub a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-answerhub-from-the-gallery"></a>AnswerHub hozzáadása a katalógusból
+Az Azure AD integrálása a AnswerHub konfigurálásához hozzá kell AnswerHub a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből AnswerHub hozzáadásához hajtsa végre az alábbi lépéseket:**
+**AnswerHub hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **AnswerHub**.
+4. A Keresés mezőbe írja be a **AnswerHub**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/answerhub-tutorial/tutorial_answerhub_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/answerhub-tutorial/tutorial_answerhub_search.png)
 
 5. Az eredmények panelen válassza ki a **AnswerHub**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/answerhub-tutorial/tutorial_answerhub_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/answerhub-tutorial/tutorial_answerhub_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján AnswerHub.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés AnswerHub a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó AnswerHub a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a AnswerHub közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó AnswerHub mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó AnswerHub hivatkozás kapcsolata kell létrehozni.
 
-AnswerHub, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+AnswerHub, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a AnswerHub tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az AnswerHub tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Egy AnswerHub tesztfelhasználó létrehozása](#creating-an-answerhub-test-user)**  - való Britta Simon valami AnswerHub, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Egy AnswerHub tesztfelhasználó létrehozása](#creating-an-answerhub-test-user)**  – egy megfelelője a Britta Simon AnswerHub, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az AnswerHub alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és AnswerHub alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés AnswerHub, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés AnswerHub, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **AnswerHub** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **AnswerHub** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/answerhub-tutorial/tutorial_answerhub_samlbase.png)
 
-3. Az a **AnswerHub tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **AnswerHub tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/answerhub-tutorial/tutorial_answerhub_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company>.answerhub.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<company>.answerhub.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company>.answerhub.com`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<company>.answerhub.com`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [AnswerHub ügyfél-támogatási csoport](mailto:success@answerhub.com) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [AnswerHub ügyfél-támogatási csapatának](mailto:success@answerhub.com) beolvasni ezeket az értékeket. 
  
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/answerhub-tutorial/tutorial_answerhub_certificate.png) 
 
@@ -127,142 +127,142 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/answerhub-tutorial/tutorial_general_400.png)
 
-6. A a **AnswerHub konfigurációs** kattintson **konfigurálása AnswerHub** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **AnswerHub konfigurációs** területén kattintson **konfigurálása AnswerHub** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címet, és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/answerhub-tutorial/tutorial_answerhub_configure.png) 
 
-7. Egy másik webes böngészőablakban jelentkezzen be a AnswerHub vállalati webhely rendszergazdaként.
+7. Egy másik böngészőablakban jelentkezzen be a AnswerHub vállalati hely rendszergazdaként.
    
     >[!NOTE]
-    >Ha AnswerHub segítségre van szüksége, forduljon a [AnswerHub tartozó támogatási csoport](mailto:success@answerhub.com.).
+    >Ha AnswerHub segítségre van szüksége, forduljon a [AnswerHub a támogatási csapat](mailto:success@answerhub.com.).
    
-8. Ugrás a **felügyeleti**.
+8. Lépjen a **felügyeleti**.
 
-9. Kattintson a **felhasználók és csoportok** fülre.
+9. Kattintson a **felhasználó és csoport** fülre.
 
-10. A navigációs ablakban a bal oldalon található a **közösségi beállítások** területen kattintson **SAML-alapú telepítő**.
+10. A navigációs ablak bal oldalán az a **közösségi beállítások** területén kattintson **SAML-telepítő**.
 
-11. Kattintson a **IDP Config** fülre.
+11. Kattintson a **Identitásszolgáltató konfigurációs** fülre.
 
-12. Az a **IDP Config** lapra, hajtsa végre a következő lépéseket:
+12. Az a **Identitásszolgáltató konfigurációs** fülre, hajtsa végre az alábbi lépéseket:
 
-     ![SAML-alapú telepítő](./media/answerhub-tutorial/ic785172.png "SAML-alapú telepítő")  
+     ![SAML-telepítő](./media/answerhub-tutorial/ic785172.png "SAML-telepítő")  
   
-     a. A **IDP bejelentkezési URL-cím** szövegmezőhöz Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe** ami Azure-portálon másolta.
+     a. A **Identitásszolgáltató bejelentkezési URL-cím** szövegmezőjébe illessze be **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt.
   
-     b. A **IDP kijelentkezési URL-cím** szövegmezőhöz Beillesztés **Sign-Out URL-cím** érték, amely az Azure-portálon másolta.
+     b. A **Identitásszolgáltató kijelentkezési URL-címe** szövegmezőjébe illessze be **kijelentkezéses URL-cím** Azure Portalról másolt érték.
      
-     c. A **IDP azonosító formátuma** szövegmező, adja meg a felhasználói azonosító érték ugyanaz, mint a kijelölt Azure-portálon a **felhasználói attribútumok** szakasz.
+     c. A **Identitásszolgáltató azonosító formátuma** szövegmezőbe írja be a felhasználói azonosító érték azonos a kiválasztott az Azure Portalon, **felhasználói attribútumok** szakaszban.
   
-     d. Kattintson a **a kulcsoknak és tanúsítványoknak**.
+     d. Kattintson a **kulcsok és tanúsítványok**.
 
-13. A kulcsoknak és tanúsítványoknak lapon hajtsa végre a következő lépéseket:
+13. A kulcsok és tanúsítványok lapon hajtsa végre az alábbi lépéseket:
     
-     ![A kulcsoknak és tanúsítványoknak](./media/answerhub-tutorial/ic785173.png "a kulcsoknak és tanúsítványoknak")  
+     ![Kulcsok és tanúsítványok](./media/answerhub-tutorial/ic785173.png "kulcsok és tanúsítványok")  
  
-     a. Nyissa meg a base-64 kódolású tanúsítványt, amely a Jegyzettömbben az Azure portálról letöltött a tartalmának másolása a vágólapra és illessze be azt a **kiállító terjesztési hely nyilvános kulcsát (x 509-formátumú)** szövegmező.
+     a. Nyissa meg a base-64 kódolású tanúsítvány már letöltötte az Azure Portalról a Jegyzettömbben, amely a tartalmát a vágólapra másolja és illessze be azt a **Identitásszolgáltató nyilvános kulcs (x 509-formátum)** szövegmezőbe.
   
      b. Kattintson a **Save** (Mentés) gombra.
 
-14. Az a **IDP Config** lapra, majd **mentése**.
+14. Az a **Identitásszolgáltató konfigurációs** lapra, majd **mentése**.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/answerhub-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/answerhub-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/answerhub-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/answerhub-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/answerhub-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/answerhub-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/answerhub-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/answerhub-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-an-answerhub-test-user"></a>Egy AnswerHub tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók AnswerHub bejelentkezni, akkor ki kell építenie a AnswerHub.  
-AnswerHub, ha egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók AnswerHub jelentkezzen be, akkor ki kell építeni AnswerHub be.  
+AnswerHub, esetén kiépítése a manuális feladat.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a **AnswerHub** vállalati hely rendszergazdaként.
+1. Jelentkezzen be a **AnswerHub** rendszergazdaként a vállalati webhely.
 
-2. Ugrás a **felügyeleti**.
+2. Lépjen a **felügyeleti**.
 
 3. Kattintson a **felhasználók és csoportok** fülre.
 
-4. A navigációs ablakban a bal oldalon található a **felhasználók kezelése** területen kattintson **létrehozása vagy importálása felhasználók**.
+4. A navigációs ablak bal oldalán az a **felhasználók kezelése** területén kattintson **felhasználók létrehozása vagy importálása**.
    
    ![Felhasználók és csoportok](./media/answerhub-tutorial/ic785175.png "felhasználók és csoportok")
 
-5. Típus a **E-mail cím**, **felhasználónév** és **jelszó** egy érvényes Azure Active Directory-fiók a kapcsolódó szövegmezők kiépíteni, és kattintson a kívánt **mentése**.
+5. Írja be a **E-mail-cím**, **felhasználónév** és **jelszó** érvényes Azure Active Directory-fiókok kiépítéséhez, a kapcsolódó szöveges mezőkben, majd kattintson a szeretné **Mentés**.
 
 >[!NOTE]
->Bármely más AnswerHub felhasználói fiók létrehozása eszközök vagy rendelkezés AAD felhasználói fiókokhoz AnswerHub által nyújtott API-k.
+>Bármely más AnswerHub felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését AnswerHub által biztosított API-k.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés AnswerHub Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés AnswerHub Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése AnswerHub, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel AnswerHub, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **AnswerHub**.
+2. Az alkalmazások listájában jelölje ki a **AnswerHub**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/answerhub-tutorial/tutorial_answerhub_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen AnswerHub csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az AnswerHub alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a AnswerHub csempére kattint, meg kell lekérése automatikusan bejelentkezett az AnswerHub alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

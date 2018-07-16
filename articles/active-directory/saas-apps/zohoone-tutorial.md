@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Zoho egy |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Zoho egy között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az egyik Zoho |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a egy Zoho között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,180 +15,180 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 9168b58cda54fa5de497ba331e1e4995dbc4d4e7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9f1db693ac75d7ab4b9776d60f63a0ca7524f760
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220533"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050184"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Oktatóanyag: Azure Active Directoryval integrált Zoho egy
+# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Oktatóanyag: Azure Active Directory-integráció az Zoho egy
 
-Ebben az oktatóanyagban elsajátíthatja Zoho egy integrálása Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja Zoho egy Azure Active Directoryval (Azure AD).
 
-Egy Zoho integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Az Azure AD integrálása Zoho egy nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, aki hozzáfér Zoho egy Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett (egyszeri bejelentkezés) egy Zoho a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Zoho egy Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett egy Zoho (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Zoho egy, a következőkre van szükség:
+Zoho egy az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Zoho egy egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Zoho egy hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. A katalógusból Zoho egy hozzáadása
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-zoho-one-from-the-gallery"></a>A gyűjteményből Zoho egy hozzáadása
-Az Azure AD integrálása a Zoho egy konfigurálásához kell hozzáadnia Zoho egy a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-zoho-one-from-the-gallery"></a>A katalógusból Zoho egy hozzáadása
+Az Azure AD integrálása a Zoho egy konfigurálásához hozzá kell Zoho egy a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a Zoho egy a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a Zoho egy a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Zoho egy**, jelölje be **Zoho egy** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Zoho egy**válassza **Zoho egy** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylista egy Zoho](./media/zohoone-tutorial/tutorial_zohoone_addfromgallery.png)
+    ![Zoho egy, a találatok listájában](./media/zohoone-tutorial/tutorial_zohoone_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés Zoho egy "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Zoho egy úgynevezett "Britta Simon" tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Zoho egy felhasználó az Azure ad-ben. Ez azt jelenti Zoho egy kapcsolódó felhasználói, valamint az Azure AD-felhasználó közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben kell tudja, hogy mi a partner felhasználó Zoho egy felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Zoho egy hivatkozás kapcsolatát kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a Zoho egy tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Zoho egy tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Zoho tesztfelhasználó](#create-a-zoho-one-test-user)**  - való egy megfelelője a Britta Simon Zoho egy felhasználó az Azure AD ábrázolását kapcsolódik.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Zoho egy tesztfelhasználót](#create-a-zoho-one-test-user)**  – egy megfelelője a Britta Simon Zoho egy felhasználó Azure ad-ben reprezentációja van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az Zoho egy alkalmazás egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az Zoho egy alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Zoho egy, a következő lépésekkel:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés egy Zoho, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Zoho egy** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Zoho egy** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/zohoone-tutorial/tutorial_zohoone_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/zohoone-tutorial/tutorial_zohoone_samlbase.png)
 
-3. Az a **Zoho tartománya és URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **Zoho tartománya és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk Zoho tartománya és URL-címek](./media/zohoone-tutorial/tutorial_zohoone_url.png)
+    ![Zoho tartománya és URL-címek egyszeri bejelentkezési adatait](./media/zohoone-tutorial/tutorial_zohoone_url.png)
 
-    a. Az a **azonosítója (entitás azonosítója)** szövegmezőhöz URL-címet írja be: `one.zoho.com`
+    a. Az a **azonosító (entityid)** szövegmezőbe írja be egy URL-címe: `one.zoho.com`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://accounts.zoho.com/samlresponse/<saml-identifier>`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
-    c. Ellenőrizze **megjelenítése speciális URL-beállításainak**.
+    c. Ellenőrizze **speciális URL-beállítások megjelenítése**.
 
-    d. Az a **továbbítási állapotot** szövegmezőhöz URL-címet írja be:`https://one.zoho.com`
+    d. Az a **továbbítási állapot** szövegmezőbe írja be egy URL-címe:`https://one.zoho.com`
 
-4. Ha szeretne beállítani az alkalmazás **SP** kezdeményezett módban hajtsa végre a következő lépést:
+4. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett módban hajtsa végre a következő lépést:
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com`
      
     > [!NOTE] 
-    > Az előző **válasz URL-CÍMEN** és **bejelentkezési URL-cím** érték nincs valós. Az érték a tényleges válasz URL-CÍMEN és bejelentkezési URL-címet az oktatóanyag későbbi részében ismertetett frissíti. 
+    > Az előző **válasz URL-cím** és **bejelentkezési URL-** értéke nem valódi. A tényleges válasz URL-cím és a bejelentkezési URL-címet az oktatóanyag későbbi részében ismertetett frissíteni az értéket. 
 
-5. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/zohoone-tutorial/tutorial_zohoone_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/zohoone-tutorial/tutorial_zohoone_certificate.png) 
 
 6. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/zohoone-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/zohoone-tutorial/tutorial_general_400.png)
     
-7. A a **Zoho egy konfigurációs** kattintson **Zoho egy konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és SAML-alapú egyszeri bejelentkezés szolgáltatás URL-címe** a a **rövid összefoglaló szakasz.**
+7. Az a **Zoho egy konfigurációs** területén kattintson **Zoho egy konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Egy Zoho konfiguráció](./media/zohoone-tutorial/tutorial_zohoone_configure.png) 
+    ![Zoho egy konfiguráció](./media/zohoone-tutorial/tutorial_zohoone_configure.png) 
 
-8. Egy másik webes böngészőablakban jelentkezzen be a Zoho egy vállalati webhely rendszergazdaként.
+8. Egy másik böngészőablakban jelentkezzen be a Zoho egy vállalati hely rendszergazdaként.
 
-9. Az a **szervezet** lapra, kattintson **telepítő** alatt **SAML-alapú hitelesítés**.
+9. Az a **szervezet** lapra, kattintson **telepítő** alatt **SAML-hitelesítés**.
 
     ![Zoho egy szervezeti](./media/zohoone-tutorial/tutorial_zohoone_setup.png)
 
-10. Az előugró oldalon hajtsa végre a következő lépéseket:
+10. Az előugró oldalon hajtsa végre az alábbi lépéseket:
 
     ![Zoho egy sig](./media/zohoone-tutorial/tutorial_zohoone_save.png)
 
-    a. Az a **bejelentkezési URL** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta.
+    a. A a **bejelentkezési URL** szövegmezőjébe illessze be az értéket, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
-    b. A a **Sign-out URL-cím** szövegmezőhöz illessze be az értékét **Sign-Out URL-cím**, amely az Azure-portálon másolta.
+    b. Az a **kijelentkezéses URL-cím** szövegmezőbe, illessze be az értéket a **kijelentkezéses URL-cím**, az Azure Portalról másolt.
 
-    c. Kattintson a **Tallózás** feltölteni a **tanúsítvány (Base64)** , amely az Azure-portálról letöltött.
+    c. Kattintson a **Tallózás** feltölteni a **tanúsítvány (Base64)** , amely az Azure Portalról letöltött.
 
     d. Kattintson a **Save** (Mentés) gombra.
 
-11. A SAML-alapú hitelesítés beállítása a mentés után másolja a **SAML-Identfier** értékét, és használja ezt az értéket a **válasz URL-CÍMEN** az Azure portálon, a **Zoho tartománya és URL-címek** a szakasz.
+11. Az SAML-hitelesítés beállítása a mentés után másolja a **SAML-Identfier** értékét, és használja ezt az értéket a **válasz URL-cím** az Azure Portalon alatt **Zoho tartománya és URL-címek** a szakasz.
 
     ![Zoho egy saml](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
-12. Lépjen a **tartományok** fülre, majd **tartomány hozzáadása**.
+12. Nyissa meg a **tartományok** fülre, majd **hozzáadni Domain**.
 
-    ![Zoho tartománya](./media/zohoone-tutorial/tutorial_zohoone_domain.png)
+    ![Zoho egy tartományt](./media/zohoone-tutorial/tutorial_zohoone_domain.png)
 
-13. Az a **tartomány hozzáadása** lapon, a következő lépésekkel:
+13. Az a **hozzáadni Domain** lapon, a következő lépésekkel:
 
     ![Zoho egy tartomány hozzáadása](./media/zohoone-tutorial/tutorial_zohoone_adddomain.png)
 
-    a. Az a **tartománynév** szövegmezőhöz típus tartomány például **contoso.com**.
+    a. Az a **tartománynév** szövegmező, például típus tartomány **contoso.com**.
 
     b. Kattintson a **Hozzáadás** parancsra.
 
     >[!Note]
-    >A tartomány követő hozzáadása után [ezek](https://www.zoho.com/one/help/admin-guide/domain-verification.html) lépések végrehajtásával ellenőrizze a tartományt. Ha a tartomány verfified, használja a tartomány nevét a **bejelentkezési URL-cím** a **Zoho tartománya és URL-címek** szakaszban az Azure portálon.
+    >Miután hozzáadta a tartomány kövesse [ezek](https://www.zoho.com/one/help/admin-guide/domain-verification.html) a tartomány ellenőrzésének lépéseit. Ha a tartomány verfified, használja a tartománynevet **bejelentkezési URL-** a **Zoho tartománya és URL-címek** szakaszban az Azure Portalon.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/zohoone-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/zohoone-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/zohoone-tutorial/create_aaduser_03.png)
 
@@ -198,19 +198,19 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="create-a-zoho-one-test-user"></a>Zoho egy tesztfelhasználó létrehozása
 
-Ahhoz, hogy jelentkezzen be a Zoho egy Azure AD-felhasználók, akkor ki kell építenie a Zoho egy. A Zoho egy kézi tevékenység.
+Ahhoz, hogy jelentkezzen be a Zoho egy Azure AD-felhasználók, akkor ki kell építeni az Zoho egy. Zoho egy, a kiépítés a manuális feladat.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be egy, a biztonsági rendszergazda Zoho.
+1. Zoho egy olyan biztonsági-rendszergazdaként jelentkezzen be.
 
 2. Az a **felhasználók** lapra, kattintson a **felhasználói embléma**.
 
@@ -218,58 +218,58 @@ Ahhoz, hogy jelentkezzen be a Zoho egy Azure AD-felhasználók, akkor ki kell é
 
 3. Az a **felhasználó hozzáadása** lapon, a következő lépésekkel:
 
-    ![Zoho egy felhasználó hozzáadása](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
+    ![Zoho több felhasználó hozzáadása](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
     
-    a. A **neve** szöveg mezőbe írja be például a felhasználó nevét **Britta simon**.
+    a. A **neve** szöveget adja meg például a felhasználó nevét **Britta simon**.
     
-    b. A **E-mail cím** szöveg mezőbe írja be például a felhasználó e-mail **brittasimon@contoso.com**.
+    b. A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó **brittasimon@contoso.com**.
 
     >[!Note]
-    >Az ellenőrzött tartomány listából válassza ki a tartományt.
+    >Válasszon ellenőrzött tartományt a tartomány listából.
 
     c. Kattintson a **Hozzáadás** parancsra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Zoho egy Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Zoho egy Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Zoho egy, a következő lépésekkel:**
+**Britta Simon rendel egy Zoho, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Zoho egy**.
+2. Az alkalmazások listájában jelölje ki a **Zoho egy**.
 
     ![Az alkalmazások listáját a Zoho egy hivatkozás](./media/zohoone-tutorial/tutorial_zohoone_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Zoho egy csempére kattint, akkor kell beolvasni automatikusan bejelentkezett az Zoho egy alkalmazáshoz.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Zoho egy csempére kattint, meg kell lekérése automatikusan bejelentkezett a Zoho egy adott alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

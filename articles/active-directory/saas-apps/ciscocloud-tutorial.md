@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 79b0aa9ae435defa980b4da0c8d376fdb69542f3
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 28576452ab982896614af5527a0237ca4ab275f0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866559"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Oktatóanyag: Azure Active Directory-integráció Cisco felhővel
 
@@ -130,7 +130,7 @@ Ebben a szakaszban engedélyezése az Azure AD egyszeri bejelentkezés az Azure 
 
     | Attribútum neve | Attribútum értéke |
     | ---------------| ----------------|
-    | ország      |felhasználó.ország |
+    | Ország      |felhasználó.ország |
     | Vállalati      |User.CompanyName |
 
     a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
@@ -228,7 +228,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a Cisco felhőalapú csempére kattint, akkor kell lekérése automatikusan bejelentkezett a Cisco felhőalkalmazásba.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../active-directory-saas-access-panel-introduction.md). 
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 

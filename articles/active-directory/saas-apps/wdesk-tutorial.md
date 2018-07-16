@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Wdesk |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Wdesk között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Wdesk |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Wdesk között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,118 +14,118 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: fc1d21545cf8ad6f173cebfc8ebce95f4bcce0e5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 909e6441b75e4a43ebf1d9e690a14a0d65c74367
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213267"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040766"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Oktatóanyag: Azure Active Directoryval integrált Wdesk
+# <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Oktatóanyag: Azure Active Directory-integráció az Wdesk
 
-Ebben az oktatóanyagban elsajátíthatja Wdesk integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Wdesk integrálása az Azure Active Directory (Azure AD).
 
-Wdesk integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Wdesk integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a Wdesk hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Wdesk (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá Wdesk Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Wdesk (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg. [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd. [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Wdesk, a következőkre van szükség:
+Wdesk az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy Wdesk egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy Wdesk egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Wdesk hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Wdesk hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-wdesk-from-the-gallery"></a>A gyűjteményből Wdesk hozzáadása
-Az Azure AD integrálása a Wdesk konfigurálásához kell hozzáadnia Wdesk a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-wdesk-from-the-gallery"></a>Wdesk hozzáadása a katalógusból
+Az Azure AD integrálása a Wdesk konfigurálásához hozzá kell Wdesk a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Wdesk hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Wdesk hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **Wdesk**.
+4. A Keresés mezőbe írja be a **Wdesk**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/tutorial_wdesk_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/tutorial_wdesk_search.png)
 
 5. Az eredmények panelen válassza ki a **Wdesk**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/tutorial_wdesk_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/tutorial_wdesk_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban konfigurálása, és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon." nevű tesztfelhasználó alapján Wdesk
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó Wdesk az Azure AD egyszeri bejelentkezés tesztelése
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Wdesk a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Wdesk közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Wdesk mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Wdesk hivatkozás kapcsolata kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** Wdesk a.
+Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** Wdesk a.
 
-Az Azure AD egyszeri bejelentkezést a Wdesk tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Wdesk tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Wdesk tesztfelhasználó létrehozása](#creating-a-wdesk-test-user)**  - való Britta Simon valami Wdesk, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Wdesk tesztfelhasználó létrehozása](#creating-a-wdesk-test-user)**  – egy megfelelője a Britta Simon Wdesk, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Wdesk alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Wdesk alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Wdesk, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Wdesk, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Wdesk** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Wdesk** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_samlbase.png)
 
-3. Az a **Wdesk tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett módban hajtsa végre a következő lépéseket:
+3. Az a **Wdesk tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett módban a következő lépésekkel:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak**. Ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód, hajtsa végre a következő lépést:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése**. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód, hajtsa végre a következő lépést:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ezek az értékek első WDesk portálról az SSO konfigurálásakor. 
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Ezek az értékek első WDesk portálról az egyszeri bejelentkezés konfigurálásakor. 
   
-5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_certificate.png) 
 
@@ -133,33 +133,33 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_general_400.png)
     
-7. Egy másik webes böngészőablakban, jelentkezzen be a biztonsági-rendszergazdájaként Wdesk.
+7. Egy másik böngészőablakban, jelentkezzen be egy biztonsági-rendszergazdaként Wdesk.
 
-8. Kattintson a bal alsó **Admin** válassza **Fiókadminisztrátor**:
+8. Kattintson a bal alsó **rendszergazdai** válassza **Fiókadminisztrátor**:
  
      ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-9. Wdesk rendszergazda, lépjen a **biztonsági**, majd **SAML** > **SAML beállítások**:
+9. Wdesk rendszergazdaként, lépjen a **biztonsági**, majd **SAML** > **SAML-beállítások**:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
-10. A **általános beállítások**, ellenőrizze a **SAML-alapú egyszeri bejelentkezés engedélyezése**:
+10. A **általános beállítások**, ellenőrizze a **SAML egyszeri bejelentkezés engedélyezése**:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
 
-11. A **szolgáltató részletei**, hajtsa végre a következő lépéseket:
+11. A **szolgáltató szolgáltatásismertető**, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
-      a. Másolás a **bejelentkezési URL-cím** és illessze be **bejelentkezési URL-cím** szövegmező Azure-portál.
+      a. Másolás a **bejelentkezési URL-cím** , és illessze be a **bejelentkezési URL-** szövegmezőben, hogy az Azure Portalon.
    
-      b. Másolás a **metaadatainak URL-címét** és illessze be **azonosító** szövegmező Azure-portál.
+      b. Másolás a **metaadatok URL-címe** , és illessze be a **azonosító** szövegmezőben, hogy az Azure Portalon.
        
-      c. Másolás a **ügyfél URL-címe** és illessze be **válasz URL-címen** szövegmező Azure-portál.
+      c. Másolás a **ügyfél URL-címe** , és illessze be a **válasz URL-cím** szövegmezőben, hogy az Azure Portalon.
    
-      d. Kattintson a **mentése** menti a módosításokat az Azure portálon.      
+      d. Kattintson a **mentése** menti a módosításokat az Azure Portalon.      
 
-12. Kattintson a **IdP beállításainak konfigurálása** megnyitásához **IdP beállításainak szerkesztése** párbeszédpanel. Kattintson a **Choose File** kereséséhez a **Metadata.xml** mentett fájlt, Azure-portálon, majd töltse fel.
+12. Kattintson a **IdP-beállítások konfigurálása** megnyitásához **IdP-beállítások szerkesztése** párbeszédpanel. Kattintson a **fájl kiválasztása** keresse meg a **Metadata.xml** mentett fájlt, az Azure Portalon, majd töltse fel.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
@@ -168,116 +168,116 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-wdesk-test-user"></a>Wdesk tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Wdesk bejelentkezni, akkor ki kell építenie a Wdesk. A Wdesk egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók Wdesk jelentkezzen be, akkor ki kell építeni Wdesk be. Wdesk a kiépítés manuális feladat.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a biztonsági-rendszergazdájaként Wdesk.
-2. Navigáljon a **Admin** > **rendszergazdai fiók**.
+1. Jelentkezzen be egy biztonsági-rendszergazdaként Wdesk.
+2. Navigáljon a **rendszergazdai** > **rendszergazdai fiók**.
 
      ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
 3. Kattintson a **tagok** alatt **személyek**.
 
-4. Most kattintson **tag hozzáadása** megnyitásához **tag hozzáadása** párbeszédpanel megnyitásához. 
+4. Most kattintson **tag hozzáadása** megnyitásához **tag hozzáadása** párbeszédpanel bezárásához. 
    
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser1.png)  
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser1.png)  
 
-5. A **felhasználói** szöveg mezőbe írja be például a felhasználó felhasználóneve **brittasimon@contoso.com** kattintson **Folytatás** gombra.
+5. A **felhasználói** szöveget adja meg például a felhasználó felhasználóneve **brittasimon@contoso.com** kattintson **Folytatás** gombra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser3.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser3.png)
 
-6.  Adja meg az alább látható módon:
+6.  Adja meg adatait alább látható módon:
   
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser4.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser4.png)
  
-    a. A **E-mail** szöveg mezőbe írja be például a felhasználó e-mail **brittasimon@contoso.com**.
+    a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **brittasimon@contoso.com**.
 
-    b. A **Utónév** szöveg mezőbe írja be például a felhasználó utónevét **Britta**.
+    b. A **Utónév** szöveget adja meg például a felhasználó utónevét **Britta**.
 
-    c. A **Vezetéknév** szöveg mezőbe írja be például a felhasználó vezetékneve **Simon**.
+    c. A **Vezetéknév** szöveget adja meg például a felhasználó vezetékneve **Simon**.
 
 7. Kattintson a **mentése tag** gombra.  
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser5.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser5.png)
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Wdesk Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Wdesk Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Wdesk, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Wdesk, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Wdesk**.
+2. Az alkalmazások listájában jelölje ki a **Wdesk**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Wdesk csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Wdesk alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a Wdesk csempére kattint, meg kell lekérése automatikusan bejelentkezett az Wdesk alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Wizergos termelékenység szoftverrel |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a termelékenység szoftver Wizergos között.
+title: 'Oktatóanyag: Az Azure Active Directory-integráció az alkalmazáscsomagokat Wizergos |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Wizergos irodai szoftverek között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,160 +15,160 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 7eeb843a44fde53e6146084055607fe1fd6fc57c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 96d028c1e18762f5a58234792271ce3eb1aed6a0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228417"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041755"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Oktatóanyag: Azure Active Directory-integráció Wizergos termelékenység szoftverrel
+# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Oktatóanyag: Az Azure Active Directory-integráció az alkalmazáscsomagokat Wizergos
 
-Ebben az oktatóanyagban elsajátíthatja Wizergos termelékenység szoftver integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Wizergos alkalmazáscsomagokat integrálása az Azure Active Directory (Azure AD).
 
-Wizergos termelékenység szoftver integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Wizergos alkalmazáscsomagokat integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Wizergos termelékenység szoftver szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Wizergos termelékenység szoftverre (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Wizergos irodai szoftverek az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Wizergos irodai szoftverek (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása Wizergos termelékenység szoftverrel, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása Wizergos alkalmazáscsomagokat, a következő elemek szükségesek:
 
-- Az Azure AD szolgáltatásra
-- Egy Wizergos termelékenység szoftver egyszeri bejelentkezés engedélyezve van az előfizetés
+- Az Azure AD-előfizetéshez
+- Egy Wizergos alkalmazáscsomagokat egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Wizergos termelékenység szoftver hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Wizergos irodai szoftverek hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-wizergos-productivity-software-from-the-gallery"></a>A gyűjteményből Wizergos termelékenység szoftver hozzáadása
-Az Azure AD integrálása a Wizergos termelékenység szoftver konfigurálásához kell hozzáadnia Wizergos termelékenység szoftver a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-wizergos-productivity-software-from-the-gallery"></a>Wizergos irodai szoftverek hozzáadása a katalógusból
+Konfigurálása az Azure AD integrálása a Wizergos alkalmazáscsomagokat, hozzá kell Wizergos alkalmazáscsomagokat a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Wizergos termelékenység szoftver hozzáadása a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Wizergos alkalmazáscsomagokat hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Wizergos termelékenység szoftver**, jelölje be **Wizergos termelékenység szoftver** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Wizergos alkalmazáscsomagokat**, jelölje be **Wizergos alkalmazáscsomagokat** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Wizergos termelékenység szoftver](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_addfromgallery.png)
+    ![Az eredmények listájában Wizergos alkalmazáscsomagokat](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Wizergos termelékenység szoftverrel.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Wizergos alkalmazáscsomagokat a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Wizergos termelékenység szoftver a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó Wizergos termelékenység szoftver közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Wizergos alkalmazáscsomagokat mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Wizergos alkalmazáscsomagokat a hivatkozás kapcsolata kell létrehozni.
 
-Wizergos termelékenység szoftverfrissítési, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Wizergos alkalmazáscsomagokat, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD az egyszeri bejelentkezés Wizergos termelékenység szoftverrel tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés Wizergos termelékenység szoftverrel tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Wizergos termelékenység szoftver tesztfelhasználó létrehozása](#create-a-wizergos-productivity-software-test-user)**  - való egy megfelelője a Britta Simon Wizergos termelékenység szoftver, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Wizergos alkalmazáscsomagokat tesztfelhasználót](#create-a-wizergos-productivity-software-test-user)**  – egy megfelelője a Britta Simon Wizergos termelékenység szoftver, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Wizergos termelékenység alkalmazás egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az alkalmazáscsomagokat Wizergos alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálja az Azure AD az egyszeri bejelentkezés Wizergos termelékenység szoftverrel, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Wizergos alkalmazáscsomagokat, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Wizergos termelékenység szoftver** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Wizergos alkalmazáscsomagokat** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_samlbase.png)
 
-3. Az a **Wizergos termelékenység szoftver tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Wizergos irodai szoftverek tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk Wizergos termelékenység szoftver tartomány és az URL-címek](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_url.png)
+    ![Wizergos irodai szoftverek tartomány és URL-címek egyszeri bejelentkezési adatait](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_url.png)
 
-    Az a **azonosító** szövegmező, írja be az URL-cím: `http://www.wizergos.net`
+    Az a **azonosító** szövegmezőbe írja be az URL-cím: `http://www.wizergos.net`
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_certificate.png) 
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/wizergosproductivitysoftware-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/wizergosproductivitysoftware-tutorial/tutorial_general_400.png)
 
-6. A a **Wizergos termelékenység szoftverkonfigurációt** kattintson **Wizergos termelékenység szoftver konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **Wizergos termelékenység szoftverfrissítési konfiguráció** területén kattintson **Wizergos termelékenység szoftver konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Wizergos termelékenység szoftverkonfigurációjának összeállítása](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_configure.png) 
+    ![Wizergos termelékenység szoftverfrissítési konfiguráció](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_configure.png) 
 
-7. Egy másik webes böngészőablakban bejelentkezés a Wizergos termelékenység szoftver bérlő rendszergazdaként.
+7. Egy másik böngészőablakban, a bejelentkezés a Wizergos alkalmazáscsomagokat bérlői rendszergazdaként.
 
-8. A Hamburg menüben válassza ki a **Admin**.
+8. Válassza a hamburger menü **rendszergazdai**.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
 
-9. A rendszergazda lap bal oldali menüben válassza ki **hitelesítési** , majd kattintson a **az Azure AD**.
+9. A rendszergazdai lapjának bal oldali menüben válassza **hitelesítési** , majd kattintson a **Azure ad-ben**.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
 
-10. Hajtsa végre a következő lépéseket **hitelesítési** szakasz.
+10. Hajtsa végre a következő lépéseket **hitelesítési** szakaszban.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
     
-    a. Kattintson a **FELTÖLTÉSE** gomb az Azure AD a letöltött tanúsítvány feltöltése.
+    a. Kattintson a **FELTÖLTÉSE** gombra kattintva töltheti fel az Azure AD-ból letöltött tanúsítvány.
     
-    b. Az a **kiállítójának URL-címe** szövegmező, illessze be a **SAML Entitásazonosító** érték, amely az Azure-portálon másolta.
+    b. Az a **kiállítójának URL-címe** szövegmezőjébe illessze be a **SAML Entitásazonosító** Azure Portalról másolt érték.
     
-    c. Az a **egyszeri bejelentkezési URL-cím** szövegmező, illessze be a **SAML-alapú egyszeri bejelentkezési URL-címe** érték, amely az Azure-portálon másolta.
+    c. Az a **egyszeri bejelentkezési URL-cím** szövegmezőjébe illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt érték.
     
-    d. Az a **egyetlen Sign-Out URL-címet** szövegmező, illessze be a **Sign-Out URL-cím** érték, amely az Azure-portálon másolta.
+    d. Az a **egyszeri kijelentkezéses URL-cím** szövegmezőjébe illessze be a **kijelentkezéses URL-cím** Azure Portalról másolt érték.
     
     e. Kattintson a **mentése** gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/wizergosproductivitysoftware-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/wizergosproductivitysoftware-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/wizergosproductivitysoftware-tutorial/create_aaduser_03.png)
 
@@ -178,57 +178,57 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-wizergos-productivity-software-test-user"></a>Wizergos termelékenység szoftver tesztfelhasználó létrehozása
+### <a name="create-a-wizergos-productivity-software-test-user"></a>Wizergos alkalmazáscsomagokat tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználó Britta Simon meghívta Wizergos termelékenység szoftver hoz létre. Adjon együttműködve [Wizergos termelékenység szoftver támogatási csoport](mailTo:support@wizergos.com) a felhasználók hozzáadása a Wizergos termelékenység szoftver platform.
+Ebben a szakaszban egy Britta Simon nevű Wizergos alkalmazáscsomagokat a felhasználó hoz létre. Együttműködve [Wizergos alkalmazáscsomagokat támogatási csapatának](mailTo:support@wizergos.com) a felhasználók hozzáadása az alkalmazáscsomagokat Wizergos platformon.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés által biztosított hozzáférés Wizergos termelékenység szoftver használatára.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Wizergos alkalmazáscsomagokat Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Wizergos termelékenység szoftver, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Wizergos alkalmazáscsomagokat, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Wizergos termelékenység szoftver**.
+2. Az alkalmazások listájában jelölje ki a **Wizergos alkalmazáscsomagokat**.
 
-    ![Az alkalmazások listáját a Wizergos termelékenység szoftver hivatkozás](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_app.png)  
+    ![Az alkalmazások listáját a Wizergos alkalmazáscsomagokat hivatkozás](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Wizergos termelékenység szoftver csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Wizergos termelékenység szoftverfrissítések alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Wizergos alkalmazáscsomagokat csempére kattint, meg kell lekérése automatikusan bejelentkezett az alkalmazáscsomagokat Wizergos alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

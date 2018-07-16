@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: e2c4c59e52f277358027f5d228fdf43822822992
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37444242"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044528"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési lehetőségek az Azure AD-jelszókezelés
 
@@ -49,7 +49,7 @@ Az Azure portal felületének a továbbfejlesztettük, hogy megtekintheti a jels
 1. Keresse meg a [az Azure portal](https://portal.azure.com).
 2. Válassza ki **minden szolgáltatás** a bal oldali panelen.
 3. Keresse meg **Azure Active Directory** a szolgáltatások listájában, és jelölje ki.
-4. Válassza ki **felhasználók és csoportok**.
+4. Válassza a **Felhasználók és csoportok** elemet.
 5. Válassza ki **Auditnaplók** származó a **felhasználók és csoportok** menü. Ez bemutatja, az összes naplózási esemény történt a címtárban szereplő összes felhasználó ellen. Ez a nézet a jelszóval kapcsolatos események megtekintéséhez szűrheti.
 6. Ez a nézet megtekintéséhez, csak a jelszó alaphelyzetbe állítása kapcsolatos események szűréséhez válassza a **szűrő** gombra a panel tetején.
 7. Az a **szűrő** menüben válassza a **kategória** legördülő listában, és módosítsa a **önkiszolgáló jelszókezelés** kategória típusa.
@@ -173,8 +173,8 @@ Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 ## <a name="next-steps"></a>További lépések
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
-* [Új jelszó kérése vagy jelszó módosítása](../active-directory-passwords-update-your-own-password.md).
-* [Regisztráció új jelszó önkiszolgáló kérésére](../active-directory-passwords-reset-register.md).
+* [Új jelszó kérése vagy jelszó módosítása](../user-help/active-directory-passwords-update-your-own-password.md).
+* [Regisztráció új jelszó önkiszolgáló kérésére](../user-help/active-directory-passwords-reset-register.md).
 * [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Envi MMIS |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Envi MMIS között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Envi MMIS |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Envi MMIS között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,169 +15,169 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: d115a2640da7a23cc0e7744bbe79251afb9302a1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 70066f1c29849b77c67710eb908ef2a340cdc45f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229236"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047660"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Oktatóanyag: Azure Active Directoryval integrált Envi MMIS
+# <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Oktatóanyag: Azure Active Directory-integráció az Envi MMIS
 
-Ebben az oktatóanyagban elsajátíthatja Envi MMIS integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Envi MMIS integrálható az Azure Active Directory (Azure AD).
 
-Envi MMIS integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Envi MMIS integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Envi MMIS szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Envi MMIS (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Envi MMIS Azure AD-ben.
+- A felhasználók automatikusan első bejelentkezett Envi MMIS (egyszeri bejelentkezés), engedélyezheti az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Envi MMIS, a következőkre van szükség:
+Envi MMIS az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Envi MMIS egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Envi MMIS hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Envi MMIS hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-envi-mmis-from-the-gallery"></a>A gyűjteményből Envi MMIS hozzáadása
-Az Azure AD integrálása a Envi MMIS konfigurálásához kell hozzáadnia Envi MMIS a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-envi-mmis-from-the-gallery"></a>Envi MMIS hozzáadása a katalógusból
+Az Azure AD integrálása a Envi MMIS konfigurálásához hozzá kell Envi MMIS a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Envi MMIS hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Envi MMIS hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Envi MMIS**, jelölje be **Envi MMIS** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Envi MMIS**válassza **Envi MMIS** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Envi MMIS](./media/envimmis-tutorial/tutorial_envimmis_addfromgallery.png)
+    ![Az eredmények listájában Envi MMIS](./media/envimmis-tutorial/tutorial_envimmis_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban konfigurál, és az Azure AD az egyszeri bejelentkezés Envi MMIS-teszthez "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban konfigurálja, és tesztelés az Azure AD egyszeri bejelentkezés Envi MMIS "Britta Simon" nevű tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Envi MMIS a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Envi MMIS közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Envi MMIS mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Envi MMIS hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a Envi MMIS tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Envi MMIS tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Envi MMIS tesztfelhasználó](#create-an-envi-mmis-test-user)**  - való egy megfelelője a Britta Simon Envi MMIS, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Envi MMIS tesztfelhasználót](#create-an-envi-mmis-test-user)**  – egy megfelelője a Britta Simon Envi MMIS, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Envi MMIS alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Envi MMIS alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Envi MMIS, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Envi MMIS, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Envi MMIS** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Envi MMIS** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/envimmis-tutorial/tutorial_envimmis_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/envimmis-tutorial/tutorial_envimmis_samlbase.png)
 
-3. Az a **Envi MMIS tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **Envi MMIS tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk Envi MMIS tartomány és az URL-címek](./media/envimmis-tutorial/tutorial_envimmis_url.png)
+    ![Envi MMIS tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/envimmis-tutorial/tutorial_envimmis_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.<CUSTOMER DOMAIN>.com/Account`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.<CUSTOMER DOMAIN>.com/Account`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk Envi MMIS tartomány és az URL-címek](./media/envimmis-tutorial/tutorial_envimmis_url1.png)
+    ![Envi MMIS tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/envimmis-tutorial/tutorial_envimmis_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.<CUSTOMER DOMAIN>.com/Account`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.<CUSTOMER DOMAIN>.com/Account`
      
     > [!NOTE]
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Envi MMIS ügyfél-támogatási csoport](mailto:support@ioscorp.com) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Envi MMIS ügyfél-támogatási csapatának](mailto:support@ioscorp.com) beolvasni ezeket az értékeket.
 
-5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/envimmis-tutorial/tutorial_envimmis_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/envimmis-tutorial/tutorial_envimmis_certificate.png) 
 
 6. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/envimmis-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/envimmis-tutorial/tutorial_general_400.png)
 
-7. Egy másik webes böngészőablakban jelentkezzen be a Envi MMIS webhely rendszergazdaként.
+7. Egy másik böngészőablakban jelentkezzen be a Envi MMIS hely rendszergazdaként.
 
 8. Kattintson a **saját tartomány** fülre.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/envimmis-tutorial/configure1.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/envimmis-tutorial/configure1.png)
 
 9. Kattintson a **Szerkesztés** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/envimmis-tutorial/configure2.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/envimmis-tutorial/configure2.png)
 
-10. Válassza ki **távoli hitelesítés használata** jelölőnégyzetet, és válassza **HTTP-átirányítás** a a **hitelesítési típus** legördülő menüből.
+10. Válassza ki **távoli hitelesítés használata** jelölőnégyzetet, majd **HTTP-átirányítás** származó a **hitelesítési típus** legördülő listából.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/envimmis-tutorial/configure3.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/envimmis-tutorial/configure3.png)
 
 11. Válassza ki **erőforrások** fülre, majd **metaadatok feltöltése**.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/envimmis-tutorial/configure4.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/envimmis-tutorial/configure4.png)
 
-12. Az a **metaadatok feltöltése** előugró ablak, hajtsa végre a következő lépéseket:
+12. Az a **metaadatok feltöltése** előugró ablakban hajtsa végre az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/envimmis-tutorial/configure5.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/envimmis-tutorial/configure5.png)
 
-    a. Válassza ki **fájl** parancsát a **töltse fel a** legördülő menüből.
+    a. Válassza ki **fájl** parancsát a **töltse fel a** legördülő listából.
 
-    b. Töltse fel az Azure-portálról letöltött metaadatfájl kiválasztásával a **fájl ikonja**.
+    b. Az Azure Portalról letöltött metaadatfájl feltöltése kiválasztásával a **válassza ki a fájl ikonra**.
 
     c. Kattintson az **OK** gombra.
 
-13. A letöltött metaadatait tartalmazó fájl feltöltése után a mezők automatikusan fogja lekérni feltöltve. Kattintson a **frissítés**
+13. A letöltött metaadatfájl feltöltése után a mezők automatikusan fog első betöltve. Kattintson a **Update**
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/envimmis-tutorial/configure6.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/envimmis-tutorial/configure6.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/envimmis-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/envimmis-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/envimmis-tutorial/create_aaduser_03.png)
 
@@ -187,18 +187,18 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="create-an-envi-mmis-test-user"></a>Hozzon létre egy Envi MMIS tesztfelhasználó számára
 
-Ahhoz, hogy az Azure AD-felhasználók Envi MMIS bejelentkezni, akkor ki kell építenie Envi MMIS be.  
-Envi MMIS, ha egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók Envi MMIS jelentkezzen be, akkor ki kell építeni Envi MMIS be.  
+Envi MMIS, esetén kiépítése a manuális feladat.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
 1. Jelentkezzen be rendszergazdaként a Envi MMIS vállalati webhely.
 
@@ -210,65 +210,65 @@ Envi MMIS, ha egy kézi tevékenység.
 
     ![Alkalmazott hozzáadása](./media/envimmis-tutorial/user2.png)
 
-4. Az a **felhasználó hozzáadása** területen tegye a következőket:
+4. Az a **felhasználó hozzáadása** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Alkalmazott hozzáadása](./media/envimmis-tutorial/user3.png)
 
-    a. Az a **felhasználónév** szövegmezőhöz Britta Simon fiók felhasználóneve típusa, például **brittasimon@contoso.com**.
+    a. Az a **felhasználónév** szövegmezőbe írja be a felhasználónevet Britta Simon fiók, például **brittasimon@contoso.com**.
     
-    b. Az a **Utónév** szövegmezőhöz BrittaSimon az Utónév típusát, például **Britta**.
+    b. Az a **Utónév** szövegmezőbe BrittaSimon utónevét típusú, például **Britta**.
 
-    c. Az a **Vezetéknév** szövegmezőhöz BrittaSimon vezetékneve típusát, például **Simon**.
+    c. Az a **Vezetéknév** szövegmezőbe BrittaSimon a Vezetéknév típusú, például **Simon**.
 
-    d. A felhasználónak a nevét adja meg a **cím** a szövegmező.
+    d. Adja meg a cím a felhasználó a **cím** , a szövegmezőbe.
     
-    e. Az a **E-mail cím** szövegmezőhöz Britta Simon fiók e-mail címét típusa, például **brittasimon@contoso.com**.
+    e. Az a **E-mail cím** szövegmezőbe írja be az e-mail-cím Britta Simon fiók, például **brittasimon@contoso.com**.
 
-    f. Az a **SSO felhasználónév** szövegmezőhöz Britta Simon fiók felhasználóneve típusa, például **brittasimon@contoso.com**.
+    f. Az a **egyszeri bejelentkezési felhasználónév** szövegmezőbe írja be a felhasználónevet Britta Simon fiók, például **brittasimon@contoso.com**.
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Envi MMIS Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Envi MMIS Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Envi MMIS, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Envi MMIS, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Envi MMIS**.
+2. Az alkalmazások listájában jelölje ki a **Envi MMIS**.
 
     ![Az alkalmazások listáját a Envi MMIS hivatkozás](./media/envimmis-tutorial/tutorial_envimmis_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Envi MMIS csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Envi MMIS alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Envi MMIS csempére kattint, meg kell lekérése automatikusan bejelentkezett az Envi MMIS alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

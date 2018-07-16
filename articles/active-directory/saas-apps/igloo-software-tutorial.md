@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Igloo szoftverrel |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Igloo szoftverek között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Igloo szoftver |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Igloo szoftverek között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,114 +14,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: cea66f48d3ec1ab99b2b1e3dc40ab559e0ca55a5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: acec9379661226dc53607aa9fd12197a193166e0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229158"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042399"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Oktatóanyag: Azure Active Directory-integráció Igloo szoftverrel
 
-Ebben az oktatóanyagban elsajátíthatja Igloo szoftver integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Igloo szoftver integrálása az Azure Active Directory (Azure AD).
 
-Igloo szoftver integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Igloo szoftver integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja az Azure AD, aki hozzáfér Igloo szoftver
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Igloo szoftverre (egyszeri bejelentkezés)
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá Igloo szoftverek az Azure AD-ben
+- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Igloo szoftverre (egyszeri bejelentkezés)
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása Igloo szoftverrel, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása Igloo szoftverekkel rendelkező, a következő elemek szükségesek:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Igloo szoftver egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Igloo szoftver hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Igloo szoftver hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-igloo-software-from-the-gallery"></a>A gyűjteményből Igloo szoftver hozzáadása
-Az Azure AD integrálása a Igloo szoftver konfigurálásához kell hozzáadnia Igloo szoftver a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-igloo-software-from-the-gallery"></a>Igloo szoftver hozzáadása a katalógusból
+Az Azure AD-be Igloo szoftver integráció konfigurálásához, kell Igloo szoftver hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
 
-**Igloo hozzáadása a gyűjteményből, hajtsa végre a következő lépéseket:**
+**Igloo szoftver hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **Igloo szoftver**.
+4. A Keresés mezőbe írja be a **Igloo szoftver**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/igloo-software-tutorial/tutorial_igloosoftware_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/igloo-software-tutorial/tutorial_igloosoftware_search.png)
 
 5. Az eredmények panelen válassza ki a **Igloo szoftver**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/igloo-software-tutorial/tutorial_igloosoftware_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/igloo-software-tutorial/tutorial_igloosoftware_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Igloo szoftverrel.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Igloo szoftver úgynevezett "Britta Simon" tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Igloo szoftver a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó Igloo szoftver közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Igloo szoftverfrissítési mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Igloo szoftveres hivatkozás kapcsolata kell létrehozni.
 
-Igloo szoftver, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Igloo szoftver, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD az egyszeri bejelentkezés Igloo szoftverrel tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés Igloo szoftverrel tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Egy Igloo szoftver tesztfelhasználó létrehozása](#creating-an-igloo-software-test-user)**  - való egy megfelelője a Britta Simon Igloo szoftver, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Egy Igloo szoftver tesztfelhasználó létrehozása](#creating-an-igloo-software-test-user)**  – egy megfelelője a Britta Simon Igloo szoftver, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Igloo alkalmazás egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Igloo szoftver alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálja az Azure AD az egyszeri bejelentkezés Igloo szoftverrel, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása Igloo szoftverrel, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Igloo szoftver** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Igloo szoftver** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/igloo-software-tutorial/tutorial_igloosoftware_samlbase.png)
 
-3. Az a **Igloo szoftver tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Igloo szoftver tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/igloo-software-tutorial/tutorial_igloosoftware_url.png)
     
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company name>.igloocommmunities.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<company name>.igloocommmunities.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company name>.igloocommmunities.com/saml.digest`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<company name>.igloocommmunities.com/saml.digest`
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company name>.igloocommmunities.com/saml.digest`
+    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<company name>.igloocommmunities.com/saml.digest`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Igloo szoftver ügyfél-támogatási csoport](https://www.igloosoftware.com/services/support) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Igloo Szoftverügyfél támogatási csapatának](https://www.igloosoftware.com/services/support) beolvasni ezeket az értékeket. 
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/igloo-software-tutorial/tutorial_igloosoftware_certificate.png) 
 
@@ -129,143 +129,143 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/igloo-software-tutorial/tutorial_general_400.png)
     
-6. A a **Igloo szoftverkonfigurációt** kattintson **Igloo szoftver konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és SAML-alapú egyszeri bejelentkezés szolgáltatás URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **Igloo szoftverfrissítési konfiguráció** területén kattintson **Igloo szoftver konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/igloo-software-tutorial/tutorial_igloosoftware_configure.png) 
 
-7. Egy másik webes böngészőablakban jelentkezzen be a Igloo szoftver vállalati webhely rendszergazdaként.
+7. Egy másik böngészőablakban jelentkezzen be a Igloo szoftver vállalati hely rendszergazdaként.
 
-8. Lépjen a **vezérlőpultot**.
+8. Nyissa meg a **vezérlőpultot**.
    
-     ![Vezérlőpult](./media/igloo-software-tutorial/ic799949.png "vezérlőpultot")
+     ![Vezérlőpultot](./media/igloo-software-tutorial/ic799949.png "vezérlőpultot")
 
-9. Az a **tagsági** lapra, majd **beállításaival bejelentkezési**.
+9. Az a **tagsági** lapra, majd **bejelentkezést a beállítások**.
    
-    ![Jelentkezzen be a beállítások](./media/igloo-software-tutorial/ic783968.png "beállítások bejelentkezés")
+    ![Bejelentkezési beállítások](./media/igloo-software-tutorial/ic783968.png "bejelentkezési beállítások")
 
-10. A SAML-alapú konfigurációs szakaszban kattintson **SAML-alapú hitelesítés beállítása**.
+10. A SAML-konfigurációja területen kattintson a **SAML-hitelesítés konfigurálása**.
    
-    ![SAML-alapú konfigurációs](./media/igloo-software-tutorial/ic783969.png "SAML-konfigurációja")
+    ![SAML-konfigurációja](./media/igloo-software-tutorial/ic783969.png "SAML-konfigurációja")
    
-11. Az a **általános konfigurációs** területen tegye a következőket:
+11. Az a **általános konfigurációs** szakaszban, hajtsa végre az alábbi lépéseket:
    
     ![Általános konfiguráció](./media/igloo-software-tutorial/ic783970.png "általános konfiguráció")
 
-    a. A a **kapcsolatnév** szövegmező, írjon be egy egyéni nevet a konfigurációhoz.
+    a. Az a **kapcsolatnevet** szövegmezőbe írjon be egy egyéni nevet a konfigurációnak.
    
-    b. Az a **IdP bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe** ami Azure-portálon másolta.
+    b. Az a **identitásszolgáltató bejelentkezési URL-cím** szövegmező, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt.
    
-    c. Az a **IdP kijelentkezési URL-cím** szövegmezőhöz illessze be az értékét **Sign-Out URL-cím** ami Azure-portálon másolta.
+    c. A a **identitásszolgáltató kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket, **kijelentkezéses URL-cím** Azure Portalról másolt.
     
-    d. Válassza ki **kijelentkezési válasz és kérelem HTTP típusú** , **POST**.
+    d. Válassza ki **kijelentkezési válaszok és a HTTP típusú** , **POST**.
    
-    e. Nyissa meg a **base-64** kódolt tanúsítvány a Jegyzettömbben az Azure portálról letöltött, annak tartalmának másolása a vágólapra és illessze be azt a **nyilvános tanúsítvány** szövegmező.
+    e. Nyissa meg a **base-64** kódolt tanúsítvány a Jegyzettömbben az Azure-portálról letöltött, a tartalmát a vágólapra másolja és illessze be azt a **nyilvános tanúsítvány** szövegmezőbe.
     
-12. Az a **válasz és a hitelesítési beállításokat**, hajtsa végre a következő lépéseket:
+12. Az a **válasz és a hitelesítési konfiguráció**, hajtsa végre az alábbi lépéseket:
     
-    ![Válasz és a hitelesítési beállításokat](./media/igloo-software-tutorial/IC783971.png "válasz és hitelesítés konfigurációját.")
+    ![Válasz és a hitelesítési konfiguráció](./media/igloo-software-tutorial/IC783971.png "válasz és hitelesítés konfigurációját.")
   
-      a. Mint **identitásszolgáltató**, jelölje be **Microsoft ADFS**.
+      a. Mint **identitásszolgáltató**válassza **Microsoft ADFS**.
       
-      b. Mint **azonosítótípusa**, jelölje be **E-mail cím**. 
+      b. Mint **azonosító típusának**válassza **E-mail cím**. 
 
-      c. Az a **E-mail attribútum** szövegmezőhöz típus **emailaddress**.
+      c. Az a **E-mail attribútum** szövegmezőbe írja be **emailaddress**.
 
-      d. Az a **Keresztnév attribútum** szövegmezőhöz típus **givenname**.
+      d. Az a **First Name attribútum** szövegmezőbe írja be **givenname**.
 
-      e. Az a **utolsó Name attribútum** szövegmezőhöz típus **vezetékneve**.
+      e. Az a **utolsó név attribútum** szövegmezőbe írja be **Vezetéknév**.
 
 13. Hajtsa végre az alábbi lépéseket a konfigurálás befejezéséhez:
     
-    ![Jelentkezzen be a felhasználó létrehozása](./media/igloo-software-tutorial/IC783972.png "jelentkezzen be a felhasználó létrehozása") 
+    ![Felhasználó létrehozása bejelentkezési](./media/igloo-software-tutorial/IC783972.png "bejelentkezési felhasználó létrehozása") 
 
-     a. Mint **jelentkezzen be a felhasználó létrehozása**, jelölje be **a hely új felhasználó létrehozása, amikor bejelentkeznek a**.
+     a. Mint **bejelentkezési felhasználói létrehozása**válassza **új felhasználó létrehozása a helyen található, bejelentkezéskor**.
 
-     b. Mint **beállítások bejelentkezés**, jelölje be **használható SAML gomb a "Bejelentkezés" képernyőn**.
+     b. Mint **bejelentkezési beállítások**válassza **használható SAML gombra a "Bejelentkezés" képernyőn**.
 
      c. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/igloo-software-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/igloo-software-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/igloo-software-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/igloo-software-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/igloo-software-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/igloo-software-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/igloo-software-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/igloo-software-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-an-igloo-software-test-user"></a>Egy Igloo szoftver tesztfelhasználó létrehozása
 
-Nincs művelet elem ahhoz, hogy a felhasználók átadása Igloo szoftver konfigurálása.  
+Nincs művelet elem, hogy a felhasználók átadásának Igloo szoftver konfigurálása.  
 
-Ha egy hozzárendelt felhasználó megpróbál bejelentkezni a hozzáférési panelen Igloo szoftver, a Igloo szoftver ellenőrzi, hogy a felhasználó létezik-e.  Ha nincs felhasználói fiók elérhető még, automatikusan létrejön Igloo szoftvereket.
+Hozzárendelt felhasználóval próbál bejelentkezni a hozzáférési panelen Igloo szoftver, a Igloo szoftver ellenőrzi, hogy a felhasználó létezik-e.  Ha nincs felhasználói fiók elérhető még, automatikusan létrehozott Igloo Software-től.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés által biztosított hozzáférés Igloo szoftver használatára.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Igloo szoftver Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Igloo szoftver, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Igloo szoftver, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Igloo szoftver**.
+2. Az alkalmazások listájában jelölje ki a **Igloo szoftver**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/igloo-software-tutorial/tutorial_igloosoftware_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Igloo szoftver csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Igloo szoftverfrissítések alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Igloo szoftver csempére kattint, meg kell lekérése automatikusan bejelentkezett az Igloo szoftver alkalmazás.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

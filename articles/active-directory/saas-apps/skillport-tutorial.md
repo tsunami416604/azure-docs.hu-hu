@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Skillport |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Skillport között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Skillport |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Skillport között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: d9199f96c4263a8027067b0784a63aaeafe0a06d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cbe2e6db514eb978cf99b249c434eb5cf3df6cd2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294652"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045998"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Oktatóanyag: Azure Active Directoryval integrált Skillport
+# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Oktatóanyag: Azure Active Directory-integráció az Skillport
 
-Ebben az oktatóanyagban elsajátíthatja Skillport integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Skillport integrálása az Azure Active Directory (Azure AD).
 
-Skillport integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Skillport integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a Skillport hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Skillport (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá Skillport Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Skillport (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Skillport, a következőkre van szükség:
+Skillport az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy Skillport egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy Skillport egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Skillport hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Skillport hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-skillport-from-the-gallery"></a>A gyűjteményből Skillport hozzáadása
-Az Azure AD integrálása a Skillport konfigurálásához kell hozzáadnia Skillport a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-skillport-from-the-gallery"></a>Skillport hozzáadása a katalógusból
+Az Azure AD integrálása a Skillport konfigurálásához hozzá kell Skillport a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Skillport hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Skillport hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
@@ -71,66 +71,66 @@ Az Azure AD integrálása a Skillport konfigurálásához kell hozzáadnia Skill
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **Skillport**.
+4. A Keresés mezőbe írja be a **Skillport**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/skillport-tutorial/tutorial_skillport_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/skillport-tutorial/tutorial_skillport_search.png)
 
 5. Az eredmények panelen válassza ki a **Skillport**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/skillport-tutorial/tutorial_skillport_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/skillport-tutorial/tutorial_skillport_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Skillport.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Skillport a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Skillport a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Skillport közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Skillport mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Skillport hivatkozás kapcsolata kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** Skillport a.
+Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** Skillport a.
 
-Az Azure AD egyszeri bejelentkezést a Skillport tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Skillport tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Skillport tesztfelhasználó létrehozása](#creating-a-skillport-test-user)**  - való Britta Simon valami Skillport, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Skillport tesztfelhasználó létrehozása](#creating-a-skillport-test-user)**  – egy megfelelője a Britta Simon Skillport, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Skillport alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Skillport alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Skillport, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Skillport, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Skillport** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Skillport** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/skillport-tutorial/tutorial_skillport_samlbase.png)
 
-3. Az a **Skillport tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Skillport tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/skillport-tutorial/tutorial_skillport_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím:
       
-      EU Datacenter: `https://adfs.skillport.eu`
+      Az EU Datacenter: `https://adfs.skillport.eu`
    
-      USA Datacenter: `https://sso.skillport.com`
+      Egyesült Államokbeli adatközpontok: `https://sso.skillport.com`
 
-    b. Az a **azonosító** szövegmező, írja be az URL-cím:
+    b. Az a **azonosító** szövegmezőbe írja be az URL-cím:
       
-      EU Datacenter: `http://adfs.skillport.eu/adfs/services/trust`
+      Az EU Datacenter: `http://adfs.skillport.eu/adfs/services/trust`
    
-      USA Datacenter: `https://sso.skillport.com`
+      Egyesült Államokbeli adatközpontok: `https://sso.skillport.com`
    
-    c. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-cím:
+    c. Az a **válasz URL-cím** szövegmezőbe írja be az URL-cím:
     
-      EU Datacenter: ` https://adfs.skillport.eu/adfs/ls/`
+      Az EU Datacenter: ` https://adfs.skillport.eu/adfs/ls/`
     
-      USA Datacenter: `https://sso.skillport.com/sp/ACS.saml2`
+      Egyesült Államokbeli adatközpontok: `https://sso.skillport.com/sp/ACS.saml2`
  
-4. Az a **SAML-aláíró tanúsítványa** kattintson **metaadatainak XML-kódja** , és mentse az XML-fájlt a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse az XML-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/skillport-tutorial/tutorial_skillport_certificate.png) 
 
@@ -138,84 +138,84 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/skillport-tutorial/tutorial_general_400.png)
 
-6. Egyszeri bejelentkezés konfigurálása **Skillport** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [Skillport támogatási csoport](https://www.skillsoft.com/contact.asp). Ez lesz állítva, a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+6. Az egyszeri bejelentkezés konfigurálása **Skillport** oldalon kell küldenie a letöltött **metaadatainak XML** való [Skillport támogatási csapatának](https://www.skillsoft.com/contact.asp). Akkor lesz állítsa be a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/skillport-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/skillport-tutorial/create_aaduser_01.png) 
 
-2. Ugrás a **felhasználók és csoportok** kattintson **minden felhasználó** azon felhasználók listájának megjelenítéséhez.
+2. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/skillport-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/skillport-tutorial/create_aaduser_02.png) 
 
 3. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/skillport-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/skillport-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/skillport-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/skillport-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-skillport-test-user"></a>Skillport tesztfelhasználó létrehozása
 
-Tesztfelhasználó Skillport létrehozásához kapcsolatba kell lépnie [Skillport támogatási csoport](https://www.skillsoft.com/contact.asp) több üzleti forgatókönyvek végfelhasználói követelményeinek megfelelően rendelkeznek. Ezek konfigurálása a felhasználó egyeztetését követően.  
+Hozzon létre Skillport tesztfelhasználót, lépjen kapcsolatba kell [Skillport támogatási csapatának](https://www.skillsoft.com/contact.asp) több üzleti forgatókönyvek szerint a végfelhasználó követelmény rendelkeznek. A vállalat konfigurálja azt követően, a felhasználókkal.  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Skillport Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Skillport Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Skillport, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Skillport, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Skillport**.
+2. Az alkalmazások listájában jelölje ki a **Skillport**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/skillport-tutorial/tutorial_skillport_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Skillport csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Skillport alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Skillport csempére kattint, meg kell lekérése automatikusan bejelentkezett az Skillport alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

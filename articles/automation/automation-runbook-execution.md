@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4b9bfc0df01dd8fc8a6a1b7aed5ade466164a82f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4c01a63867ca3df85b4e7203c93855b43e9cd04c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930052"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044849"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
 Ha az Azure Automationben elindít egy runbookot, létrejön egy feladat. Egy feladat a runbook egyszeri futtatási példánya. Egy Azure Automation-feldolgozó rendelt minden egyes feladat futtatása. Feldolgozók több Azure-fiókok által megosztott, miközben másik Automation-fiókok feladatok különítve egymástól. Nem irányítás keresztül melyik worker services, a kérés a feladat. Egyetlen runbook fut egyszerre több feladattal rendelkezhet. A feladatok ugyanazt az Automation-fiók végrehajtási környezetének felhasználhatók. A runbookok listája az Azure Portalon történő megtekintésekor az összes minden runbook elindított feladatok állapotának sorolja fel. A feladatok minden runbook megtekintheti annak érdekében, hogy az egyes állapotának nyomon követését. A különböző feladatok állapotai leírását [feladatállapotok](#job-statuses).
 
-[!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 Az alábbi ábrán látható, a runbook-feladat életciklusa [grafikus runbookok](automation-runbook-types.md#graphical-runbooks) és [PowerShell-munkafolyamati runbookok](automation-runbook-types.md#powershell-workflow-runbooks).
 

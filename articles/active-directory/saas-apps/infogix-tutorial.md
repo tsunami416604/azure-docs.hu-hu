@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Infogix Data3Sixty szabályozására |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Infogix Data3Sixty szabályozására.
+title: 'Oktatóanyag: Azure Active Directory-integráció Infogix Data3Sixty szabályozzák az |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Infogix Data3Sixty szabályozása között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,169 +15,169 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 3acdfbc7665bec6cfb8821f33e642f29eec84be1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ef45bbb20ccb5db8c383717eb81bfe8fa18720c7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214916"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042843"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Oktatóanyag: Azure Active Directoryval integrált Infogix Data3Sixty szabályozására
+# <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Oktatóanyag: Azure Active Directory-integráció az Infogix Data3Sixty szabályozása
 
-Ebben az oktatóanyagban elsajátíthatja az Azure Active Directoryval (Azure AD) integrálása a Infogix Data3Sixty szabályozására.
+Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a Infogix Data3Sixty szabályozása az Azure Active Directory (Azure AD).
 
-Infogix Data3Sixty szabályozására integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Az Azure AD integrálása a Infogix Data3Sixty szabályozása nyújt a következő előnyökkel jár:
 
-- Azt is szabályozhatja az Azure AD, aki hozzáfér Infogix Data3Sixty szabályozása érdekében.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Infogix Data3Sixty (egyszeri bejelentkezés) szabályozása érdekében.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Infogix Data3Sixty szabályozása az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Infogix Data3Sixty szabályozására (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Infogix Data3Sixty szabályozására, a következőkre van szükség:
+Infogix Data3Sixty szabályozása az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy Infogix Data3Sixty szabályozására, az egyszeri bejelentkezés engedélyezve van az előfizetés
+- Az Azure AD-előfizetéshez
+- Egy Infogix Data3Sixty szabályozzák az egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Hozzáadás a Infogix Data3Sixty szabályozására, a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Infogix Data3Sixty szabályozása hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-infogix-data3sixty-govern-from-the-gallery"></a>Hozzáadás a Infogix Data3Sixty szabályozására, a gyűjteményből
-Az Azure AD integrálása a Infogix Data3Sixty szabályozására konfigurálásához kell hozzáadnia Infogix Data3Sixty szabályozására, a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-infogix-data3sixty-govern-from-the-gallery"></a>Infogix Data3Sixty szabályozása hozzáadása a katalógusból
+Konfigurálása az Azure AD integrálása a Infogix Data3Sixty szabályozzák, hozzá kell Infogix Data3Sixty szabályozzák a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a Infogix Data3Sixty szabályozására, a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a Infogix Data3Sixty szabályozzák a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Infogix Data3Sixty szabályozására**, jelölje be **Infogix Data3Sixty szabályozására** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Infogix Data3Sixty szabályozása**, jelölje be **Infogix Data3Sixty szabályozása** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Infogix Data3Sixty szabályozására, az eredmények listájában](./media/infogix-tutorial/tutorial_infogix_addfromgallery.png)
+    ![Infogix Data3Sixty szabályozzák a találatok listájában](./media/infogix-tutorial/tutorial_infogix_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés Infogix Data3Sixty szabályozására, a "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Infogix Data3Sixty szabályozzák a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Infogix Data3Sixty szabályozására, a felhasználó Azure AD-ben. Más szóval kapcsolódó felhasználói Infogix Data3Sixty szabályozására, valamint az Azure AD-felhasználó közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Infogix Data3Sixty szabályozzák a mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Infogix Data3Sixty szabályozzák a hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a Infogix Data3Sixty szabályozására, tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés Infogix Data3Sixty szabályozzák az tesztelése és konfigurálása, kell hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Infogix Data3Sixty szabályozására tesztfelhasználó](#create-an-infogix-data3sixty-govern-test-user)**  - való egy megfelelője a Britta Simon Infogix Data3Sixty szabályozására, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Infogix Data3Sixty szabályozása tesztfelhasználót](#create-an-infogix-data3sixty-govern-test-user)**  – egy megfelelője a Britta Simon Infogix Data3Sixty szabályozzák, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Infogix Data3Sixty szabályozására alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Infogix Data3Sixty szabályozása alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Az Azure AD az egyszeri bejelentkezés konfigurálása Infogix Data3Sixty szabályozására, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása Infogix Data3Sixty szabályozzák, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Infogix Data3Sixty szabályozására** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Infogix Data3Sixty szabályozása** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/infogix-tutorial/tutorial_infogix_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/infogix-tutorial/tutorial_infogix_samlbase.png)
 
-3. Az a **Infogix Data3Sixty szabályozására, tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **Infogix Data3Sixty szabályozása tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk Infogix Data3Sixty szabályozására, tartomány és az URL-címek](./media/infogix-tutorial/tutorial_infogix_url.png)
+    ![Infogix Data3Sixty szabályozása tartomány és URL-címek egyszeri bejelentkezési adatait](./media/infogix-tutorial/tutorial_infogix_url.png)
 
-    a. Az a **azonosító** szövegmezőhöz URL-címet írja be: `https://data3sixty.com/ui`
+    a. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `https://data3sixty.com/ui`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.data3sixty.com/sso/acs`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.data3sixty.com/sso/acs`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk Infogix Data3Sixty szabályozására, tartomány és az URL-címek](./media/infogix-tutorial/tutorial_infogix_url1.png)
+    ![Infogix Data3Sixty szabályozása tartomány és URL-címek egyszeri bejelentkezési adatait](./media/infogix-tutorial/tutorial_infogix_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.data3sixty.com`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.data3sixty.com`
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Infogix Data3Sixty szabályozására, ügyfél-támogatási csoport](mailto:data3sixtysupport@infogix.com) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Infogix Data3Sixty szabályozása ügyfél-támogatási csapatának](mailto:data3sixtysupport@infogix.com) beolvasni ezeket az értékeket.
 
-5. Alkalmazás Infogix Data3Sixty szabályozására, a SAML helyességi feltételek vár egy meghatározott formátumban. A következő jogcímek alkalmazás konfigurálása. Ezek az attribútumok értékének kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
+5. Alkalmazás Infogix Data3Sixty szabályozzák a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható erre egy példa látható.
     
     ![Egyszeri bejelentkezés attb konfigurálása](./media/infogix-tutorial/tutorial_infogix_attribute.png)
     
-6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre a következő lépéseket:
+6. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket:
     
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |    
-    | Utónév           | User.givenName |
+    | Keresztnév           | User.givenName |
     | Vezetéknév        | User.surname |
     | felhasználónév       | user.mail    |
     
-    a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
     ![Egyszeri bejelentkezés konfigurálása hozzáadása](./media/infogix-tutorial/tutorial_attribute_04.png)
 
     ![Egyszeri bejelentkezés Addattb konfigurálása](./media/infogix-tutorial/tutorial_attribute_05.png)
 
-    b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
+    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
 
     d. Hagyja a **Namespace** üres.
     
     e. Kattintson az **OK** gombra.
 
-7. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Raw)** , és mentse a tanúsítványfájlt, a számítógépen.
+7. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Raw)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/infogix-tutorial/tutorial_infogix_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](./media/infogix-tutorial/tutorial_infogix_certificate.png)
 
 8. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/infogix-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/infogix-tutorial/tutorial_general_400.png)
     
-9. Az a **Infogix Data3Sixty szabályozására konfigurációs** területen kattintson **konfigurálása Infogix Data3Sixty szabályozására** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+9. Az a **Infogix Data3Sixty szabályozása konfigurációs** területén kattintson **konfigurálása Infogix Data3Sixty szabályozása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Infogix Data3Sixty szabályozására konfiguráció](./media/infogix-tutorial/tutorial_infogix_configure.png) 
+    ![Infogix Data3Sixty konfigurációs szabályozása](./media/infogix-tutorial/tutorial_infogix_configure.png) 
 
-10. Egyszeri bejelentkezés konfigurálása **Infogix Data3Sixty szabályozására** oldalon kell küldeniük a letöltött **tanúsítvány (Raw), a Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** való [ Támogatási csoport Infogix Data3Sixty szabályozására](mailto:data3sixtysupport@infogix.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+10. Az egyszeri bejelentkezés konfigurálása **Infogix Data3Sixty szabályozása** oldalon kell küldenie a letöltött **tanúsítvány (Raw), kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [ Támogatási csoport Infogix Data3Sixty szabályozása](mailto:data3sixtysupport@infogix.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/infogix-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/infogix-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/infogix-tutorial/create_aaduser_03.png)
 
@@ -187,61 +187,61 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-an-infogix-data3sixty-govern-test-user"></a>Hozzon létre egy Infogix Data3Sixty szabályozására tesztfelhasználó számára
+### <a name="create-an-infogix-data3sixty-govern-test-user"></a>Hozzon létre egy Infogix Data3Sixty szabályozása tesztfelhasználót
 
 
-Ez a szakasz célja Britta Simon nevű Infogix Data3Sixty szabályozására, a felhasználó létrehozásához. Infogix Data3Sixty szabályozására, támogatja a just-in-time kiosztást, amely alapértelmezés szerint van engedélyezve. Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre Infogix Data3Sixty szabályozására, ha még nem létezik elérésére. tett kísérlet során.
+Ez a szakasz célja Infogix Data3Sixty szabályozása Britta Simon nevű felhasználó létrehozásához. Infogix Data3Sixty szabályozzák támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó próbál hozzáférni a Infogix Data3Sixty szabályozására, ha még nem létezik jön létre.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználó van szüksége, forduljon a [Infogix Data3Sixty szabályozására támogatási csoport](mailto:data3sixtysupport@infogix.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [ügyfélszolgálathoz Infogix Data3Sixty szabályozása](mailto:data3sixtysupport@infogix.com).
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejelentkezés nyújtó Infogix Data3Sixty szabályozása érdekében.
+Ebben a szakaszban engedélyezze Britta Simon Infogix Data3Sixty szabályozására a hozzáférés biztosításával Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Annak a szabályozására, Infogix Data3Sixty Britta Simon hozzárendeléséhez a következő lépésekkel:**
+**Britta Simon rendel Infogix Data3Sixty szabályozzák, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Infogix Data3Sixty szabályozására**.
+2. Az alkalmazások listájában jelölje ki a **Infogix Data3Sixty szabályozása**.
 
-    ![Az alkalmazások listáját a Infogix Data3Sixty szabályozására hivatkozás](./media/infogix-tutorial/tutorial_infogix_app.png)  
+    ![A hivatkozás Infogix Data3Sixty szabályozzák az alkalmazások listáját](./media/infogix-tutorial/tutorial_infogix_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési Panel Infogix Data3Sixty szabályozására mozaik gombra kattint, akkor kell beolvasása automatikusan bejelentkezett Infogix Data3Sixty szabályozására Alkalmazásmódosítások.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen Infogix Data3Sixty szabályozása csempére kattint, meg kell lekérése automatikusan bejelentkezett Infogix Data3Sixty szabályozzák az alkalmazásba.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

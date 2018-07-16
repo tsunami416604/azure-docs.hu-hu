@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5ffb758fe5fa42be6323de06afbfb38068ae1926
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: b1cd2e8d7649de48f34efb0c7d839e17906a29bf
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969170"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044985"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Ismerkedés a .NET hívásláncnaplók megtekintése az Application Insights
 Ha NLog, a log4Net, vagy a System.Diagnostics.trace keretrendszert használja, az ASP.NET-alkalmazás diagnosztikai nyomkövetés rendelkezhet a küldött naplók [Azure Application Insights][start], ahol tallózása és keresés őket. A naplók fogja egyesíthető az alkalmazásból érkező, hogy a karbantartási minden egyes felhasználói kéréshez társított nyomkövetési azonosításához, és összefüggésbe hozva azokat az egyéb események és a kivételekről szóló jelentések egyéb telemetriai adatokat.
@@ -65,7 +65,7 @@ Ezt a módszert akkor használja, ha a projekt típusa nem támogatja az Applica
 
    * Microsoft.ApplicationInsights.TraceListener (System.Diagnostics.Trace hívások rögzítéséhez)
    * Microsoft.ApplicationInsights.EventSourceListener (EventSource események rögzítéséhez)
-   * Microsoft.ApplicationInsights.EtwListener (az ETW-események rögzítése)
+   * Microsoft.ApplicationInsights.EtwCollector (az ETW-események rögzítése)
    * Microsoft.ApplicationInsights.NLogTarget
    * Microsoft.ApplicationInsights.Log4NetAppender
 

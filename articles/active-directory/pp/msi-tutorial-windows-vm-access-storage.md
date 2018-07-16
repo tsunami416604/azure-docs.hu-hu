@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a195fa62efa7332f7268c195a3edfb0a8b1d0a7c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 81b508661ac7195f690739fe7961691ddbedc9b0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007682"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049360"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Azure Storage elérése hozzáférési kulcs használatával egy Windows virtuális gépek Felügyeltszolgáltatás-identitás segítségével
 
@@ -82,7 +82,7 @@ Ha még nem rendelkezik egy, most már létrehozhat egy storage-fiókot. Kihagyh
 5. Győződjön meg, hogy a **előfizetés** és **erőforráscsoport** egyeznek azokkal az előző lépésben a virtuális gép létrehozásakor megadott.
 6. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![Új tárfiók létrehozása](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Új tárfiók létrehozása](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Hozzon létre egy blobtárolót a tárfiókban
 
@@ -93,7 +93,7 @@ Hogy később feltöltése és fájl letöltése az új tárfiókot. Mivel a fá
 3. Kattintson a **+ tároló** tetején az oldalon, és a egy "új tároló" panel becsúszik.
 4. Adja meg a tároló nevét, válasszon egy hozzáférési szintet, majd kattintson a **OK**. A megadott név lesz az oktatóanyag későbbi részében. 
 
-    ![Storage-tároló létrehozása](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Storage-tároló létrehozása](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Hozzáférést biztosít a virtuális gép MSI használata a tárfiók hozzáférési kulcsainak 
 
@@ -107,7 +107,7 @@ Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítés.  Azonba
 6. Következő lépésként győződjön meg arról, a megfelelő előfizetés szerepel-e **előfizetés** legördülő menüből, majd állítsa be **erőforráscsoport** "Minden erőforráscsoportok".  
 7. Végül **kiválasztása** a legördülő listában válassza ki a Windows virtuális gép, majd kattintson a **mentése**. 
 
-    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
+    ![Kép ALT szövege](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>A virtuális gép identitással hozzáférési jogkivonatot kapjon, és hívja az Azure Resource Manager használatával 
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: f2d0b009c4451a4108222ac7aa7954ba6dd86699
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 04a446f43bd39ef7bfca590af67289813eab4032
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869007"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048879"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-visszaállítás, az Azure AD részletes bemutatása
 
@@ -248,8 +248,8 @@ Ez a forgatókönyv teszteléséhez nyissa meg http://passwordreset.microsoftonl
 Az alábbi cikkekben az Azure AD jelszóátállításáról olvashat további információkat:
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
-* [Jelszó visszaállítása vagy módosítása](../active-directory-passwords-update-your-own-password.md)
-* [Regisztráció önkiszolgáló jelszó-visszaállításra](../active-directory-passwords-reset-register.md)
+* [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Regisztráció önkiszolgáló jelszó-visszaállításra](../user-help/active-directory-passwords-reset-register.md)
 * [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)

@@ -1,6 +1,6 @@
 ---
-title: A MySQL-Adapter RP a AzureStack által biztosított adatbázisok használatával |} Microsoft Docs
-description: Létrehozása és kezelése a MySQL-adatbázisok kiépítése a MySQL Adapter erőforrás-szolgáltató használatával
+title: Az Azure Stack MySQL erőforrás-szolgáltató frissítése |} A Microsoft Docs
+description: Ismerje meg, hogyan frissítheti az Azure Stack MySQL erőforrás-szolgáltató.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,59 +11,100 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 0a900d75315fd0015633c036877faef84c48d65b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4e894eaee6bb151b480204905d0a98324f5c353b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031835"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049595"
 ---
-# <a name="create-mysql-databases"></a>MySQL-adatbázis létrehozása
+# <a name="update-the-mysql-resource-provider"></a>A MySQL erőforrás-szolgáltató frissítése 
 
-Hozhat létre és kezelheti a felhasználói portálon önkiszolgáló adatbázisokat. Egy Azure verem felhasználónak ajánlattal a MySQL-adatbázis szolgáltatást tartalmazó előfizetéssel kell rendelkeznie.
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek.*
 
-## <a name="test-your-deployment-by-creating-a-mysql-database"></a>MySQL-adatbázis létrehozásával a központi telepítés tesztelése
+Azure Stack-buildek frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató adapter. A meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb. 
 
-1. Jelentkezzen be a Azure verem felhasználói portálra.
-2. Válassza ki **+ új** > **adatok + tárolás** > **MySQL-adatbázis** > **hozzáadása**.
-3. A **MySQL-adatbázis létrehozása**, adja meg az adatbázis nevét, és konfigurálja a más beállításokat a környezetéhez szükséges módon.
+>[!IMPORTANT]
+>A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
-    ![Egy teszt MySQL-adatbázis létrehozása](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>Frissítés a MySQL erőforrás-szolgáltató adapter (csak az integrált rendszerek)
+Azure Stack-buildek frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató adapter. A meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb.  
+ 
+Frissíteni az erőforrás-szolgáltatót használ, a **UpdateMySQLProvider.ps1** parancsfájlt. A folyamat egy erőforrás-szolgáltató telepítéséhez használt leírtak szerint a folyamat hasonlít a [az erőforrás-szolgáltató üzembe helyezése](#deploy-the-resource-provider) című szakaszát. A parancsfájl az erőforrás-szolgáltató a letöltés részét képezi. 
 
-4. A **Create Database**, jelölje be **SKU**. A **válassza ki a MySQL-SKU**, válassza ki az adatbázis a Termékváltozat.
+A **UpdateMySQLProvider.ps1** parancsfájl egy új virtuális Gépet hoz létre az erőforrás-szolgáltató legújabb kódját, és a beállításokat áttelepíti a régi virtuális gépről az új virtuális gépre. A beállításokat, amelyeket át közé tartozik az adatbázis és az üzemeltetési kiszolgáló adatait, és a szükséges DNS-bejegyzést. 
 
-    ![Válassza ki a MySQL-SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
+>[!NOTE]
+>Azt javasoljuk, hogy le kell tölteni a legújabb Windows Server 2016 Core lemezképet a Marketplace-kezelés. Ha szeretne telepíteni egy frissítést, elhelyezhet egy **egyetlen** MSU-csomagot a helyi függőségi útvonalát. A parancsfájl futtatása sikertelen lesz, ha egynél több MSU-fájlt ezen a helyen.
 
-    >[!Note]
-    >Üzemeltetési kiszolgáló hozzáadása az Azure-vermet, hozzá vannak rendelve a Termékváltozat. Adatbázisokat üzemeltető kiszolgálók egy termékváltozatban készletében jönnek létre.
+A szkript a DeployMySqlProvider.ps1 parancsfájl ismertetett argumentumokkal használatát igényli. A tanúsítvány itt is biztosítanak.  
 
-5. A **bejelentkezési**, jelölje be ***kötelező beállítások konfigurálása***.
-6. A **válassza ki a bejelentkezési**, válasszon egy érvényes bejelentkezési adatokkal, vagy válasszon **+ hozzon létre egy új bejelentkezést** állíthat be egy új fiókot.  Adjon meg egy **adatbázis-bejelentkezési adatokat** nevét és **jelszó**, majd válassza ki **OK**.
+Az alábbiakban egy példát a a *UpdateMySQLProvider.ps1* parancsfájlt, amely a PowerShell-parancssorban futtathatja. Ügyeljen arra, hogy a fiók- és igény szerint módosíthatja:  
 
-    ![Hozzon létre egy új adatbázis-bejelentkezési adatokat](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
+> [!NOTE] 
+> A frissítési folyamat csak integrált rendszerek vonatkozik. 
 
-    >[!NOTE]
-    >Az adatbázis-bejelentkezési nevet a hossza nem haladhatja meg a MySQL 5.7 32 karakter hosszú lehet. A korábbi kiadásokban nem haladhatja meg 16 karakter hosszúságú lehet.
+```powershell 
+# Install the AzureRM.Bootstrapper module and set the profile. 
+Install-Module -Name AzureRm.BootStrapper -Force 
+Use-AzureRmProfile -Profile 2017-03-09-profile 
 
-7. Válassza ki **létrehozása** az adatbázis beállításának befejezéséhez.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time. 
+$domain = "AzureStack" 
 
-Miután az adatbázis telepítve lett, tekintse meg a **kapcsolati karakterlánc** alatt **Essentials**. Bármely olyan alkalmazás el tudja érni a MySQL-adatbázis is használhatja ezt a karakterláncot.
+# For integrated systems, use the IP address of one of the ERCS virtual machines 
+$privilegedEndpoint = "AzS-ERCS01" 
 
-![A MySQL-adatbázis a kapcsolati karakterlánc beolvasása](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+# Point to the directory where the resource provider installation files were extracted. 
+$tempDir = 'C:\TEMP\MYSQLRP' 
 
-## <a name="update-the-administrative-password"></a>Frissítés a rendszergazdai jelszó
+# The service admin account (can be Azure Active Directory or Active Directory Federation Services). 
+$serviceAdmin = "admin@mydomain.onmicrosoft.com" 
+$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass) 
+ 
+# Set credentials for the new resource provider VM. 
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass) 
+ 
+# And the cloudadmin credential required for privileged endpoint access. 
+$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass) 
 
-A MySQL server-példányon módosításával módosíthatja a jelszót.
+# Change the following as appropriate. 
+$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+ 
+# Change directory to the folder where you extracted the installation files. 
+# Then adjust the endpoints. 
+$tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds ` 
+-VMLocalCredential $vmLocalAdminCreds ` 
+-CloudAdminCredential $cloudAdminCreds ` 
+-PrivilegedEndpoint $privilegedEndpoint ` 
+-DefaultSSLCertificatePassword $PfxPass ` 
+-DependencyFilesLocalPath $tempDir\cert ` 
+-AcceptLicense 
+``` 
+ 
+### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 paraméterek 
+Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy ha minden paraméter ellenőrzése sikertelen, a rendszer kéri, adja meg a szükséges paramétereket. 
 
-1. Válassza ki **felügyeleti erőforrások** > **üzemeltető kiszolgálók MySQL**. Válassza ki az üzemeltetési kiszolgálóhoz.
-2. A **beállítások**, jelölje be **jelszó**.
-3. A **jelszó**, adja meg az új jelszót, és válassza ki **mentése**.
-
-![Frissítés a rendszergazdai jelszó](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
+| Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték | 
+| --- | --- | --- | 
+| **CloudAdminCredential** | A felhő rendszergazdájához, a kiemelt végponthoz eléréséhez szükséges hitelesítő adatait. | _Szükséges_ | 
+| **AzCredential** | Az Azure Stack szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat az Azure Stack üzembe helyezéséhez használt. | _Szükséges_ | 
+| **VMLocalCredential** |Az SQL-erőforrás-szolgáltató virtuális gép helyi rendszergazdai fiókjának hitelesítő adatait. | _Szükséges_ | 
+| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végponthoz DNS-nevét. |  _Szükséges_ | 
+| **DependencyFilesLocalPath** | A tanúsítvány .pfx fájlját a könyvtárban kell elhelyezni. | _Nem kötelező_ (_kötelező_ több csomópont) | 
+| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ | 
+| **MaxRetryCount** | Többször ismételje meg minden művelet, ha sikertelen egy kívánt száma.| 2 | 
+| **RetryDuration** | Az időkorlát között eltelő időt másodpercben mérve. | 120 | 
+| **Eltávolítás** | Távolítsa el az erőforrás-szolgáltató és az összes társított erőforrást (lásd az alábbi megjegyzések). | Nem | 
+| **DebugMode** | Megakadályozza, hogy hiba esetén az automatikus tisztítás. | Nem | 
+| **AcceptLicense** | A rendszer kéri, fogadja el a GPL-licenc kihagyja.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+ 
 
 ## <a name="next-steps"></a>További lépések
-
-[A MySQL erőforrás-szolgáltató karbantartása](azure-stack-mysql-resource-provider-maintain.md)
+[MySQL típusú erőforrás-szolgáltató kezelése](azure-stack-mysql-resource-provider-maintain.md)

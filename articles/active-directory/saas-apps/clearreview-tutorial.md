@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált egyértelmű áttekintése |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directoryban, és törölje a jelet nézze között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az egyértelmű áttekintése |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés egyértelmű felülvizsgálati és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,175 +15,175 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: jeedes
-ms.openlocfilehash: aa3514d348b812a96b55c4d47950cd064d391dc1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6ce6661bf6d3841f7ade78a74d50a1d6eeefbdaf
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231542"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047994"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Oktatóanyag: Azure Active Directoryval integrált egyértelmű áttekintése
+# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Oktatóanyag: Azure Active Directory-integráció az egyértelmű áttekintése
 
-Ebben az oktatóanyagban elsajátíthatja, törölje a jelet felülvizsgálati integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan egyértelmű felülvizsgálati integrálása az Azure Active Directory (Azure AD).
 
-Törölje a jelet felülvizsgálati integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Egyértelmű felülvizsgálati integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, törölje a jelet felülvizsgálati hozzáféréssel rendelkező Azure AD-ben.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett egyértelmű felülvizsgálandó (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá egyértelmű tekintse át az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett egyértelmű felülvizsgálatra (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Törölje a jelet tekintse át az Azure AD-integrációs konfigurálni, kell a következő elemek:
+Egyértelmű tekintse át az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy egyszerű tekintse át az egyszeri bejelentkezés engedélyezve van az előfizetés
+- Az Azure AD-előfizetéshez
+- Egy világos tekintse át az egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Törölje a jelet felülvizsgálat hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Egyértelmű felülvizsgálat hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-clear-review-from-the-gallery"></a>Törölje a jelet felülvizsgálat hozzáadása a gyűjteményből
-Az Azure AD-be egyértelmű nézze át az integráció konfigurálásához kell hozzáadnia egyértelmű tekintse át a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-clear-review-from-the-gallery"></a>Egyértelmű felülvizsgálat hozzáadása a katalógusból
+Egyértelmű tekintse át az Azure ad-ben integráció konfigurálásához, hozzá kell egyértelmű tekintse át a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Törölje a jelet tekintse át a gyűjteményből hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Egyértelmű felülvizsgálat hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **egyértelmű felülvizsgálati**, jelölje be **egyértelmű felülvizsgálati** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **egyértelmű felülvizsgálati**, jelölje be **egyértelmű tekintse át** eredmény panelen kattintson a **hozzáadása** gombra kattintva vegye fel az alkalmazást.
 
-    ![Tekintse át az eredménylistában törlése](./media/clearreview-tutorial/tutorial_clearreview_addfromgallery.png)
+    ![Felülvizsgálat törlése az eredmények listájában](./media/clearreview-tutorial/tutorial_clearreview_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapuló egyértelmű áttekintése.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés egyértelmű tekintse át a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó törlése felülvizsgálat alatt a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó törlése felülvizsgálat alatt közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó törlése tekintse át a mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó törlése tekintse át a hivatkozás kapcsolata kell létrehozni.
 
-Törölje a jelet felülvizsgálat alatt, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Egyértelmű felülvizsgálat, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést törölje a jelet tekintse át a tesztelése és konfigurálása, kell végrehajtani a következő építőelemeket:
+Az Azure AD egyszeri bejelentkezés egyértelmű tekintse át a tesztelése és konfigurálása, kell hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Törölje a jelet felülvizsgálati tesztfelhasználó létrehozása](#create-a-clear-review-test-user)**  - való egy megfelelője a Britta Simon egyértelmű tekintse át, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy egyértelmű felülvizsgálati tesztfelhasználót](#create-a-clear-review-test-user)**  – egy megfelelője a Britta Simon egyértelmű tekintse át, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és törölje a jelet felülvizsgálati alkalmazásában egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyértelmű felülvizsgálat alkalmazása az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD egyszeri bejelentkezést törölje a jelet felülvizsgálati, hajtsa végre az alábbi lépéseket:**
+**Egyértelmű tekintse át az Azure AD egyszeri bejelentkezés konfigurálása, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **egyértelmű felülvizsgálati** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon a a **egyértelmű felülvizsgálati** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/clearreview-tutorial/tutorial_clearreview_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/clearreview-tutorial/tutorial_clearreview_samlbase.png)
 
-3. Az a **egyértelmű felülvizsgálati tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **kezdeményezett IdP** mód:
+3. Az a **egyértelmű felülvizsgálati tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **identitásszolgáltató által kezdeményezett** mód:
 
-    ![Törölje a jelet felülvizsgálati tartomány és URL-címek az egyszeri bejelentkezés információk](./media/clearreview-tutorial/tutorial_clearreview_url.png)
+    ![Világos felülvizsgálati tartomány és URL-címek egyszeri bejelentkezési adatait](./media/clearreview-tutorial/tutorial_clearreview_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<customer name>.clearreview.com/sso/metadata/`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<customer name>.clearreview.com/sso/metadata/`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<customer name>.clearreview.com/sso/acs/`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<customer name>.clearreview.com/sso/acs/`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Törölje a jelet felülvizsgálati tartomány és URL-címek az egyszeri bejelentkezés információk](./media/clearreview-tutorial/tutorial_clearreview_url_sp.png)
+    ![Világos felülvizsgálati tartomány és URL-címek egyszeri bejelentkezési adatait](./media/clearreview-tutorial/tutorial_clearreview_url_sp.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<customer name>.clearreview.com`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe:`https://<customer name>.clearreview.com`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-címet, a azonosítója és a válasz URL-CÍMEN. Ügyfél [egyértelmű felülvizsgálati támogatási csoport](https://clearreview.com/contact/) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-azonosító és válasz URL-cím. Kapcsolattartó [egyértelmű támogatási csapatától](https://clearreview.com/contact/) beolvasni ezeket az értékeket.
 
-5. Törölje a jelet felülvizsgálati alkalmazás az egyedi felhasználói azonosító értéket várt a névazonosítója jogcímek. Le kell képezni a felhasználói azonosító értéket **user.mail**.
+5. A Névazonosító jogcímet egyértelmű felülvizsgálat alkalmazása számítson az egyedi felhasználói azonosító értékét. Hozzá kell rendelnie a felhasználói azonosító értéket **user.mail**.
 
     ![Az attribútum szakasz](./media/clearreview-tutorial/attribute.png)
 
 
-6. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+6. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/clearreview-tutorial/tutorial_clearreview_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](./media/clearreview-tutorial/tutorial_clearreview_certificate.png)
 
 7. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/clearreview-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/clearreview-tutorial/tutorial_general_400.png)
 
-8. Az a **felülvizsgálati konfiguráció törlése** területen kattintson **egyértelmű felülvizsgálati konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és URL-címe, SAML Entitásazonosító SAML egyszeri bejelentkezés szolgáltatás** a a **rövid összefoglaló szakasz.**
+8. Az a **törölje a konfiguráció áttekintése** területén kattintson **egyértelmű felülvizsgálati konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Törölje a konfiguráció áttekintése](./media/clearreview-tutorial/tutorial_clearreview_configure.png) 
 
-9. Egyszeri bejelentkezés konfigurálása **egyértelmű felülvizsgálati** oldalán, nyissa meg a **egyértelmű felülvizsgálati** portál, rendszergazdai hitelesítő adataival.
+9. Az egyszeri bejelentkezés konfigurálása **egyértelmű felülvizsgálati** oldalán, nyissa meg a **egyértelmű tekintse át** portál, rendszergazdai hitelesítő adataival.
 
-10. Válassza ki **Admin** a bal oldali navigációs sávon.
+10. Válassza ki **rendszergazdai** a bal oldali navigációs sávon.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-11. Válassza ki **módosítás** az oldal alján.
+11. Válassza ki **módosítása** az oldal alján.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
-12. Hajtsa végre a következő lépéseket **egyszeri bejelentkezési beállítások** lap
+12. Hajtsa végre a következő lépéseket **egyszeri bejelentkezési beállításainak** lap
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
-    a. Az a **kiállítójának URL-címe** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító** ami Azure-portálon másolta.
+    a. Az a **kiállítójának URL-címe** szövegmező, illessze be az értéket a **SAML Entitásazonosító** Azure Portalról másolt.
 
-    b. Az a **SAML-végpont** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe** ami Azure-portálon másolta.    
+    b. Az a **SAML-végpont** szövegmező, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt.    
 
-    c. Az a **SLO végpont** szövegmezőhöz illessze be az értékét **bejelentkezési URL-címe** ami Azure-portálon másolta. 
+    c. A a **SLO-végpont** szövegmezőjébe illessze be az értéket, **bejelentkezési szolgáltatás URL-** Azure Portalról másolt. 
 
-    d. A letöltött tanúsítvány megnyitása a Jegyzettömbben, és illessze be a tartalom a **X.509 tanúsítvány** szövegmező.   
+    d. Nyissa meg a letöltött tanúsítvány a Jegyzettömbben, és illessze be a tartalmat a **X.509-tanúsítvány** szövegmezőbe.   
 
 13. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/clearreview-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/clearreview-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/clearreview-tutorial/create_aaduser_03.png)
 
@@ -193,57 +193,57 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
   
-### <a name="create-a-clear-review-test-user"></a>Törölje a jelet felülvizsgálati tesztfelhasználó létrehozása
+### <a name="create-a-clear-review-test-user"></a>Egyértelmű felülvizsgálati tesztfelhasználó létrehozása
 
-Ebben a szakaszban Britta Simon nevű egyértelmű tekintse át a felhasználó létrehozása. Adjon együttműködve [egyértelmű felülvizsgálati támogatási csoport](https://clearreview.com/contact/) a felhasználók hozzáadása a tiszta felülvizsgálati platform.
+Ebben a szakaszban egy Britta Simon nevű egyértelmű tekintse át a felhasználó hoz létre. Együttműködve [egyértelmű támogatási csapatától](https://clearreview.com/contact/) a felhasználók hozzáadása az egyértelmű felülvizsgálati platformon.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés egyértelmű áttekintése Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával egyértelmű tekintse át az Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Törölje a jelet felülvizsgálati Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel egyértelmű áttekintése, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **egyértelmű felülvizsgálati**.
+2. Az alkalmazások listájában jelölje ki a **egyértelmű felülvizsgálati**.
 
-    ![Az alkalmazások listáját a tiszta felülvizsgálati hivatkozás](./media/clearreview-tutorial/tutorial_clearreview_app.png)  
+    ![A tiszta felülvizsgálati hivatkozással alkalmazásainak listájában](./media/clearreview-tutorial/tutorial_clearreview_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési Panel egyértelmű felülvizsgálati mozaik gombra kattint, akkor kell beolvasása automatikusan bejelentkezett egyértelmű felülvizsgálati Alkalmazásmódosítások.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha rákattint a tiszta áttekintése csempe a hozzáférési panelen, kell lekérése automatikusan bejelentkezett a tiszta felülvizsgálati alkalmazásba.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

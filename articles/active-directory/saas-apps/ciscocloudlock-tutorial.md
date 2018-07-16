@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 5f469269d88320a41551fc86168debcd8fe43f7f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 56f88af5d1ec8adb44d5f5c7f539925e26459e19
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865454"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047943"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Oktatóanyag: Azure Active Directory-integráció a Cloud Security fabrickel
 
@@ -203,7 +203,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéses ho
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a Felhőbeli biztonsági háló csempére kattint, meg kell lekérése automatikusan bejelentkezett a a Felhőbeli biztonsági Fabric-alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../active-directory-saas-access-panel-introduction.md).
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 

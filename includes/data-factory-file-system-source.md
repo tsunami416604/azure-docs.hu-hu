@@ -1,6 +1,6 @@
-A másolási tevékenység során típusú forrás esetén **FileSystemSource**, a következő tulajdonságok érhetők el typeProperties szakaszában:
+A másolási tevékenység, ha a forrása típusa **FileSystemSource**, typeProperties szakasz érhető el az alábbi tulajdonságokat:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| Rekurzív |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappát. |IGAZ, hamis (alapértelmezés) |Nem |
+| a rekurzív |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. |TRUE, False (alapértelmezett) |Nem |
 

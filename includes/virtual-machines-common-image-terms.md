@@ -9,21 +9,21 @@ ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 47ef014f31c628fed9d7b2b005e67e8138d3e7e9
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29743367"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38944578"
 ---
 ## <a name="terminology"></a>Terminológia
 
-A Piactéri lemezkép az Azure-ban a következő attribútumokkal rendelkezik:
+Piactéri lemezképet az Azure-ban az alábbi attribútumok tartoznak:
 
-* **A Publisher** -szervezet, amely a lemezkép létrehozása. Példák: Kanonikus, MicrosoftWindowsServer
+* **Közzétevő** – a szervezet, amely a lemezkép létrehozása. Példák: Canonical, MicrosoftWindowsServer
 * **Ajánlat** -közzétevő által létrehozott kapcsolódó képek csoport nevét. Példák: Ubuntu Server WindowsServer
-* **SKU** - ajánlatot, például egy terjesztési jelentős kiadása példányát. Példák: 16.04-es lts verzió, 2016-Datacenter
-* **Verzió** -SKU lemezkép verziószámát. 
+* **Termékváltozat** – egy ajánlatot, például egy terjesztési jelentős kiadása példányát. Példák: 16.04-LTS, 2016-Datacenter
+* **Verzió** -Termékváltozat lemezkép verziószámát. 
 
-Programozott módon telepít egy virtuális gép egy Piactéri lemezképhez kikereséséhez ezeket az értékeket, külön-külön paraméterekként megadni, vagy bizonyos eszközök fogadja el a kép *URN*. A URN összevonja ezeket az értékeket, a kettőspont (:) elválasztva: *Publisher*:*kínálnak*:*Sku*:*verzió*. A URN lecserélheti a verziószámot a "legújabb", amely kiválasztja, hogy a lemezkép legújabb verziója. 
+Piactéri lemezképet azonosítására programozott módon üzembe helyezése egy virtuális Gépet, ezeket az értékeket egyesével paraméterekként megadni, vagy bizonyos eszközök, fogadja el a kép *URN*. Az URN kombinálja ezeket az értékeket, a kettőspont (:) elválasztva: *közzétevő*:*ajánlat*:*termékváltozat*:*verzió*. Az URN lecserélheti a verziószámot a "legújabb", amely a rendszerkép legújabb verzióját választja ki. 
 
-Ha a kép közzétevőjének további licenc és vásárlási feltételeket biztosít, fogadniuk a feltételeket és engedélyezni kell a programozott telepítés. Is kell megadnia *csomag megvásárlásától* paraméterek programozott módon a virtuális gépek telepítésekor. Lásd: [piactér feltételeket a lemezkép telepítése](#deploy-an-image-with-marketplace-terms).
+Ha a kép közzétevőjének biztosít további licenc és a vásárlási feltételeket, kell fogadniuk a feltételeket, és programozott üzembe helyezés engedélyezése. Emellett meg kell adnia *megvásárlása* paramétereket a programozott módon üzembe helyezése egy virtuális Gépet. Lásd: [rendszerkép üzembe helyezése a Marketplace használati feltételei](#deploy-an-image-with-marketplace-terms).

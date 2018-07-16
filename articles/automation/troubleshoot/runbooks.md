@@ -4,16 +4,16 @@ description: Ismerje meg, az Azure Automation-runbookokkal kapcsolatos problém�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b96d723f6c7ca423343c0586f59770abb55ada9f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 286a777e16dea72e38b316e86ba57e1811888eec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929349"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044866"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -94,6 +94,31 @@ A multi-factor authentication szolgáltatás az Azure-fiókkal rendelkezik, ha e
 A klasszikus Azure üzemi modell parancsmagokban tanúsítványt használ, tekintse meg [létrehozása és kezelése az Azure-szolgáltatások egy tanúsítvány hozzáadása.](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Egy egyszerű szolgáltatást az Azure Resource Manager parancsmagjainak használatához tekintse meg [az egyszerű szolgáltatásnév létrehozása az Azure portal használatával](../../azure-resource-manager/resource-group-create-service-principal-portal.md) és [hitelesítése egy egyszerű szolgáltatást az Azure Resource Managerrel.](../../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>A forgatókönyvek használata során előforduló gyakori hibák
+
+### <a name="not-recognized-as-cmdlet"></a>Forgatókönyv: A runbook nem hiányzik a parancsmag miatt
+
+#### <a name="issue"></a>Probléma
+
+A runbook egy a következőhöz hasonló hibaüzenettel meghiúsul:
+
+```
+The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, function, script file, or operable program.  Check the spelling of the name, or if the path was included verify that the path is correct and try again.
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba oka lehet a következő okok miatt:
+
+1. A modul, amely tartalmazza a parancsmag nem importálja az automation-fiók
+2. A modul a parancsmag containg importálja, de nem naprakész
+
+#### <a name="resolution"></a>Megoldás:
+
+Ez a hiba a következő feladatok végrehajtásával oldható meg:
+
+Ha a modul egy Azure-modul, olvassa el [frissítése az Azure PowerShell-modulok az Azure Automationben](../automation-update-azure-modules.md) megtudhatja, hogyan frissíthető a modulokat az automation-fiók.
+
+Ha külön modul, győződjön meg arról a modul importálása az Automation-fiókban.
 
 ### <a name="job-attempted-3-times"></a>Forgatókönyv: A runbook-feladat indítása háromszor történt kísérlet, de nem indult el, hogy minden alkalommal, amikor
 

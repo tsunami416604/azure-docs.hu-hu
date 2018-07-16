@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric Reliable Services-életciklus áttekintése |} Microsoft Docs
-description: További tudnivalók a Service Fabric Reliable Services különböző életciklus események
+title: Az Azure Service Fabric Reliable Services életciklusa – áttekintés |} A Microsoft Docs
+description: További információ a különböző életciklussal kapcsolatos események, a Service Fabric Reliable Services
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
@@ -14,125 +14,128 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 42833323cbebf25ce2ca14e6ab7ec4fa5adbfd15
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f301c0156265f055f0ebf7cdad8dba7f39f5ba2b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206944"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044577"
 ---
-# <a name="reliable-services-lifecycle-overview"></a>Megbízható életciklusának áttekintése
+# <a name="reliable-services-lifecycle-overview"></a>A Reliable Services-életciklus áttekintése
 > [!div class="op_single_selector"]
 > * [C# Windowson](service-fabric-reliable-services-lifecycle.md)
 > * [Java Linuxon](service-fabric-reliable-services-lifecycle-java.md)
 >
 >
 
-Most végezni, az Azure Service Fabric megbízható szolgáltatásokat nyújt, a legfontosabb az életciklus alapjait. A élettartama általában az alábbiakat tartalmazza:
+Ha szeretne áttérni az Azure Service Fabric Reliable Services életciklusokkal kapcsolatos, a legfontosabb életciklusának alapjait. Az életciklus általában a következőket tartalmazza:
 
 - Indításakor:
-  - Szolgáltatások össze.
-  - A szolgáltatások létrehozásához, és térjen vissza a nulla vagy több figyelői lehetőségük van.
-  - A visszaadott figyelői megnyitása, lehetővé téve a szolgáltatással folytatott kommunikáció.
-  - A szolgáltatás **RunAsync** metódus lehívásra kerül, így a szolgáltatás nincs hosszan futó feladatokat vagy háttérműveletek.
-- Leállításakor:
-  - A megszakítási token átadott **RunAsync** megszakad, és a figyelők be van zárva.
-  - Után zárja be a figyelők, a szolgáltatás objektum destructed van.
+  - Szolgáltatások vannak felépítve.
+  - A szolgáltatások kell létrehozni és nulla vagy több figyelői adja vissza.
+  - Minden visszaadott figyelői nyílik, így a szolgáltatással való kommunikáció.
+  - A szolgáltatás **RunAsync** metódust meghívják, és lehetővé teszi a szolgáltatás nincs hosszan futó feladatokat vagy háttérműveletek.
+- Leállítás: során
+  - A megszakítás token átadott **RunAsync** meg lett szakítva, és a figyelők be van zárva.
+  - Után zárja be a figyelők, a service objektum maga destructed van.
 
-Ezek az események pontos rendelési körül részletek érhetők el. Az események sorrendjének attól függően, hogy a megbízható szolgáltatás állapot nélküli és állapotalapú némileg módosíthatja. Emellett az állapotalapú szolgáltatások esetén azt kell foglalkozik az elsődleges swap forgatókönyv. Ez a folyamat során az elsődleges szerepkör átkerül egy másik replika (vagy ismét elérhető lesz) szolgáltatás leállítása nélkül. Végül azt kell gondolni a hiba vagy probléma feltételt.
+Nincsenek információ ezek az események pontos sorrendjét. Az események sorrendjének attól függően, hogy a Reliable Services állapot nélküli vagy állapot-nyilvántartó némileg módosíthatja. Emellett az állapotalapú szolgáltatások esetében azt kell foglalkozniuk, az elsődleges felcserélés forgatókönyv. Ez a feladatütemezés során elsődleges szerepe át egy másik replikára (vagy fog érkezni) a szolgáltatás leállítása nélkül. Végül azt kell gondolni a hiba vagy sikertelen feltételek.
 
-## <a name="stateless-service-startup"></a>Állapot nélküli a szolgáltatás indítása
-Az állapotmentes szolgáltatások életciklusát egyszerű. Az események sorrendje a következő:
+## <a name="stateless-service-startup"></a>Állapotmentes szolgáltatás indítása
+Az életciklus állapotmentes szolgáltatások rendkívül egyszerű. A következő események sorrendje:
 
-1. A szolgáltatás létre lehet hozni az adatforrásnézetet.
+1. A szolgáltatás jön létre.
 2. Ezt követően párhuzamosan, két dolog történik:
-    - `StatelessService.CreateServiceInstanceListeners()` meghívták, és minden visszaadott figyelői megnyitása. `ICommunicationListener.OpenAsync()` a minden egyes figyelő neve.
-    - A szolgáltatás `StatelessService.RunAsync()` metódust.
-3. Ha van ilyen, a szolgáltatás `StatelessService.OnOpenAsync()` metódust. Ez a hívás ritka felülbírálást, de akkor érhető el. Kiterjesztett szolgáltatás inicializálási feladatokat jelenleg indítható.
+    - `StatelessService.CreateServiceInstanceListeners()` meghívott és bármely figyelői megnyitott adja vissza. `ICommunicationListener.OpenAsync()` az egyes figyelő neve.
+    - A szolgáltatás `StatelessService.RunAsync()` módszert hívja meg.
+3. Ilyen esetekben a szolgáltatás `StatelessService.OnOpenAsync()` módszert hívja meg. Ez a hívás nem szokványos felülbírálást, de érhető el. Jelenleg a kiterjesztett szolgáltatás inicializálási feladatok indíthatók el.
 
-Ne feledje, hogy nem a hívások létrehozásához, és nyissa meg a figyelők közötti rendezés és **RunAsync**. A figyelők úgy is megnyithatja, mielőtt **RunAsync** elindult. Hasonlóképpen, hívhat meg **RunAsync** előtt a kommunikációs figyelőket megnyitott vagy akár felépített. Bármely szinkronizálásra szükség, ha azt balról gyakorlat szerint a végrehajtója. Az alábbiakban néhány gyakori:
+Ne feledje, hogy a van nem hozhat létre, és nyissa meg a figyelők a hívások közötti rendezés és **RunAsync**. A figyelők előtt is megnyithatja **RunAsync** elindult. Ehhez hasonlóan hívhat **RunAsync** előtt nyissa meg, vagy akár képzett a kommunikációs figyelőket. Ha bármely szinkronizálásra szükség, azt van hátra gyakorlatként, a végrehajtója. Az alábbiakban néhány gyakori megoldások:
 
-  - Egyes esetekben a figyelői nem működőképes, amíg az egyéb információk jön létre, vagy a munkát. Az állapotmentes szolgáltatások, munkahelyi általában végezheti el a más helyeken, például a következő: 
-    - A szolgáltatás konstruktorában.
-    - Során a `CreateServiceInstanceListeners()` hívható meg.
-    - A figyelő magát a konstrukció részeként.
-  - Egyes esetekben a kód **RunAsync** nem indul el, amíg a figyelők is nyitva. Ebben az esetben a további koordinációs szükség. Egy közös megoldás az, hogy van-e a figyelők belül jelzőt, amely azt jelzi, amikor befejeződött rendelkezik. Ez a jelző majd be van jelölve **RunAsync** a tényleges munkát folytatása előtt.
+  - Néha a figyelői nem működőképes, amíg az egyéb információk jön létre, vagy a munkát. A állapotmentes szolgáltatások esetében, amelyek a munkát általában más helyeken, például a következő lehet elvégezni: 
+    - A szolgáltatás konstruktor.
+    - Során a `CreateServiceInstanceListeners()` hívja.
+    - Maga a figyelő a fejlesztés részeként.
+  - Néha az a kód **RunAsync** nem indul el, amíg meg nyitva, a figyelők. Ebben az esetben további koordináció szükség. Egy gyakori megoldás, hogy azt a jelzőt a figyelők belül, amely azt jelzi, amikor befejeződött rendelkezik. Ez a jelző majd be van jelölve **RunAsync** tényleges munka folytatása előtt.
 
-## <a name="stateless-service-shutdown"></a>Állapot nélküli szolgáltatás leállítása
-Az állapotmentes szolgáltatások leállítása, ugyanilyen mintájú követi, csak a névkeresési:
+## <a name="stateless-service-shutdown"></a>Az állapotmentes szolgáltatás leállítása
+Az állapotmentes szolgáltatás leáll, ugyanezt a mintát követik, csak a fordított:
 
 1. Párhuzamos:
-    - Bármely nyitott figyelők be van zárva. `ICommunicationListener.CloseAsync()` a minden egyes figyelő neve.
-    - A megszakítási token átadott `RunAsync()` megszakadt. A megszakítási token ellenőrzése `IsCancellationRequested` tulajdonság igaz értéket ad vissza, és ha neve, a jogkivonat `ThrowIfCancellationRequested` metódus jelez egy `OperationCanceledException`.
-2. Miután `CloseAsync()` minden egyes figyelő befejezése és `RunAsync()` is befejeződött, a szolgáltatás `StatelessService.OnCloseAsync()` metódus lehívásra kerül, ha van ilyen.  OnCloseAsync nevezzük, amikor az állapot nélküli szolgáltatáspéldány érintetlen szabályosan le kell állítani. Ez akkor fordulhat elő, ha a szolgáltatás kód frissítés alatt áll, a szolgáltatáspéldány áthelyezik a terheléselosztás vagy egy átmeneti hiba észlelhető. Ritka felülbírálása `StatelessService.OnCloseAsync()`, de biztonságos erőforrások bezárása, állítsa le a háttérben történő feldolgozás, külső állapotmentést Befejezés vagy le a meglévő kapcsolatok használható.
-3. Miután `StatelessService.OnCloseAsync()` befejeződik, a szolgáltatás objektum destructed van.
+    - Minden nyitott figyelői bezárul. `ICommunicationListener.CloseAsync()` az egyes figyelő neve.
+    - A megszakítás token átadott `RunAsync()` meg lett szakítva. A megszakítás token ellenőrzése `IsCancellationRequested` tulajdonság igaz értéket ad vissza, és ha a neve, a jogkivonat `ThrowIfCancellationRequested` metódus jelez egy `OperationCanceledException`.
+2. Miután `CloseAsync()` minden egyes figyelő befejezése és `RunAsync()` is befejezését követően a szolgáltatás `StatelessService.OnCloseAsync()` metódust meghívják, és ha van ilyen.  OnCloseAsync nevezzük, amikor az állapot nélküli szolgáltatáspéldány fog szabályosan le kell állítani. Ez akkor fordulhat elő, amikor a szolgáltatást kód frissítés alatt áll, a szolgáltatáspéldány terheléselosztás olvashatják vagy egy átmeneti hiba észlelhető. Ritka felülbírálása `StatelessService.OnCloseAsync()`, de használható, nyugodtan zárja be az erőforrások, állítsa le a háttérben történő feldolgozás, külső állapotmentést Befejezés vagy zárja le a meglévő kapcsolatok.
+3. Miután `StatelessService.OnCloseAsync()` futtatása befejeződik, a service objektum destructed van.
 
-## <a name="stateful-service-startup"></a>Az állapotalapú szolgáltatás indítása
-Állapotalapú szolgáltatások hasonló mintát állapotmentes szolgáltatásokhoz, néhány módosításokkal rendelkezik. Az állapotalapú szolgáltatás elindítása, az események sorrendje a következőképpen történik:
+## <a name="stateful-service-startup"></a>Állapotalapú szolgáltatás indítása
+Állapotalapú szolgáltatások egy hasonló mintát állapotmentes szolgáltatások, néhány módosítással rendelkezik. Egy állapotalapú service kezdve az események sorrendje a következőképpen történik:
 
-1. A szolgáltatás létre lehet hozni az adatforrásnézetet.
-2. `StatefulServiceBase.OnOpenAsync()` nevezik. Ez a hívás nem gyakran felülbírálja a szolgáltatásban.
+1. A szolgáltatás jön létre.
+2. `StatefulServiceBase.OnOpenAsync()` a neve. Ez a hívás nem gyakran bírálja felül a szolgáltatásban.
 3. A következő dolog párhuzamosan történik:
-    - `StatefulServiceBase.CreateServiceReplicaListeners()` meghívták. 
-      - Ha az elsődleges szolgáltatás, az összes visszaadott figyelői megnyitása. `ICommunicationListener.OpenAsync()` a minden egyes figyelő neve.
-      - Ha a másodlagos szolgáltatás, csak ezek a figyelők jelölésű `ListenOnSecondary = true` megnyitása. Figyelők, amelyek nyitva a másodlagos adatbázist, akkor az ritkább.
-    - Ha a szolgáltatás jelenleg egy elsődleges, a szolgáltatás által `StatefulServiceBase.RunAsync()` metódust.
-4. A replika figyelő minden után `OpenAsync()` meghívja a Befejezés gombra és `RunAsync()` nevezik, `StatefulServiceBase.OnChangeRoleAsync()` nevezzük. Ez a hívás nem gyakran felülbírálja a szolgáltatásban.
+    - `StatefulServiceBase.CreateServiceReplicaListeners()` meghívása. 
+      - Ha az elsődleges szolgáltatás, az összes visszaadott figyelői nyílnak meg. `ICommunicationListener.OpenAsync()` az egyes figyelő neve.
+      - Ha a szolgáltatás egy másodlagos szolgáltatást, csak ezek a figyelők megjelölve `ListenOnSecondary = true` nyílnak meg. Figyelők, amelyek meg van nyitva a másodlagos példány hozható létre, akkor az kevésbé gyakori.
+    - Ha a szolgáltatás jelenleg egy elsődleges, a szolgáltatás a `StatefulServiceBase.RunAsync()` módszert hívja meg.
+4. A replika figyelő minden után `OpenAsync()` meghívja a Befejezés gombra és `RunAsync()` nevezzük, `StatefulServiceBase.OnChangeRoleAsync()` nevezzük. Ez a hívás nem gyakran bírálja felül a szolgáltatásban.
 
-Állapotmentes szolgáltatásokhoz hasonlóan van a sorrendet, amelyben a figyelők vannak létrejött, és nem összehangolását és mikor **RunAsync** nevezik. Ha koordinációs van szüksége, a megoldások olyan hasonlóan. Az állapotalapú szolgáltatásból egy további esetében van. Tegyük fel például, hogy a kiszolgálófarmban lévő a kommunikációs figyelőket hívások szükséges-e tartani belül néhány információt [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md). Mivel a kommunikációs figyelőket sikerült megnyitni, mielőtt a megbízható gyűjtemények olvasható és írható, és mielőtt **RunAsync** sikerült elindítani, néhány további koordinációs szükség. A legegyszerűbb és leggyakoribb megoldás van a kommunikációs figyelőket vissza egy hibakódot az ügyfél által használt funkcióját, és próbálkozzon újra a kéréssel.
-
-## <a name="stateful-service-shutdown"></a>Az állapotalapú szolgáltatás leállítása
-Állapotmentes szolgáltatások, például a leállítás során életciklus-események megegyeznek a rendszerindítás során, de fordított irányú. Ha egy állapotalapú szolgáltatás leáll, a következők történnek:
-
-1. Párhuzamos:
-    - Bármely nyitott figyelők be van zárva. `ICommunicationListener.CloseAsync()` a minden egyes figyelő neve.
-    - A megszakítási token átadott `RunAsync()` megszakadt. A megszakítási token ellenőrzése `IsCancellationRequested` tulajdonság igaz értéket ad vissza, és ha neve, a jogkivonat `ThrowIfCancellationRequested` metódus jelez egy `OperationCanceledException`.
-2. Után `CloseAsync()` minden egyes figyelő befejezése és `RunAsync()` is befejeződött, a szolgáltatás `StatefulServiceBase.OnChangeRoleAsync()` nevezik. Ez a hívás nem gyakran felülbírálja a szolgáltatásban.
+Állapotmentes szolgáltatások hasonlóan van nincs összehangolását a sorrendet, amelyben a figyelők létrejön és megnyílik, és ha **RunAsync** nevezzük. Koordinációs van szüksége, ha a megoldások hasonlóan. Állapotalapú szolgáltatás egy további eset van. Tegyük fel, hogy a hívások a kommunikációs figyelőket kiszolgálófarmban szükséges információ néhány belül tartani [a Reliable Collections](service-fabric-reliable-services-reliable-collections.md).
 
    > [!NOTE]  
-   > Várjon, amíg a szükséges **RunAsync** befejezéséhez is csak akkor szükséges, ha a replika egy elsődleges másodpéldány.
+   > Mivel a kommunikációs figyelőket sikerült megnyitni, mielőtt a megbízható gyűjtemények olyan olvasható és írható, és mielőtt **RunAsync** indítható, néhány további koordináció szükség. A legegyszerűbb és leggyakrabban használt megoldás az ügyfél által használt funkcióját, és ismételje meg a kérelmet hibakódot ad vissza, a kommunikációs figyelőket szól.
 
-3. Miután a `StatefulServiceBase.OnChangeRoleAsync()` metódus befejezésekor a `StatefulServiceBase.OnCloseAsync()` metódust. Ez a hívás ritka felülbírálást, de akkor érhető el.
-3. Miután `StatefulServiceBase.OnCloseAsync()` befejeződik, a szolgáltatás objektum destructed van.
+## <a name="stateful-service-shutdown"></a>Állapotalapú szolgáltatás leállítása
+Állapotmentes szolgáltatások, mint a leállítás során életciklusesemények ugyanaz, mint indításakor, de fordított irányú. Ha egy állapotalapú szolgáltatás leáll, az alábbi események történnek:
 
-## <a name="stateful-service-primary-swaps"></a>Az állapotalapú szolgáltatás elsődleges címek cseréje
-Az állapotalapú szolgáltatás futása közben csak az elsődleges replikára változott, hogy az állapotalapú szolgáltatások rendelkezik-e a kommunikációs figyelőket megnyitott és azok **RunAsync** a hívott metódus. Másodlagos replikák össze, de nincs további hívásainak. Az állapotalapú szolgáltatás futása közben, a replika jelenleg az elsődleges módosíthatja. Ez mit jelent a feltételeknek az életciklus replika látható eseményeket? Az állapot-nyilvántartó replika látja a viselkedés attól függ, hogy a replika alatt lefokozásra vagy előléptetett során a felcserélés.
+1. Párhuzamos:
+    - Minden nyitott figyelői bezárul. `ICommunicationListener.CloseAsync()` az egyes figyelő neve.
+    - A megszakítás token átadott `RunAsync()` meg lett szakítva. A megszakítás token ellenőrzése `IsCancellationRequested` tulajdonság igaz értéket ad vissza, és ha a neve, a jogkivonat `ThrowIfCancellationRequested` metódus jelez egy `OperationCanceledException`.
+2. Miután `CloseAsync()` minden egyes figyelő befejezése és `RunAsync()` is befejezését követően a szolgáltatás `StatefulServiceBase.OnChangeRoleAsync()` nevezzük. Ez a hívás nem gyakran bírálja felül a szolgáltatásban.
+
+   > [!NOTE]  
+   > Várjon, amíg kell **RunAsync** befejezéséhez csak akkor szükséges, ha a replika egy elsődleges másodpéldány.
+
+3. Miután a `StatefulServiceBase.OnChangeRoleAsync()` metódus befejeződik, a `StatefulServiceBase.OnCloseAsync()` módszert hívja meg. Ez a hívás nem szokványos felülbírálást, de érhető el.
+3. Miután `StatefulServiceBase.OnCloseAsync()` futtatása befejeződik, a service objektum destructed van.
+
+## <a name="stateful-service-primary-swaps"></a>Állapotalapú szolgáltatás elsődleges cseréje
+Állapotalapú szolgáltatás futása közben, állapotalapú szolgáltatások csak az elsődleges replika rendelkezik-e a kommunikációs figyelőket megnyitott és azok **RunAsync** nevű metódust. Másodlagos replikák tevődnek, de nincs további hívások megtekintése. Egy állapotalapú szolgáltatás fut, amíg a replika, amely jelenleg az elsődleges módosíthatja. Ez mit jelent a feltételek az életciklus-események replika számára látható? Az állapot-nyilvántartó replika látja viselkedése attól függ, hogy-e a replika lefokozása, vagy több előléptetése során a lapozófájl-kapacitás.
 
 ### <a name="for-the-primary-thats-demoted"></a>Az elsődleges, amely lefokozása
-Az elsődleges másodpéldány, hogy visszalép a Service Fabric kell ennek a replikának üzenetek feldolgozása, és lépjen ki a háttérműveletek műveletet. Ennek eredményeképpen ebben a lépésben tűnik, amikor a szolgáltatás le van állítva. Egy különbség, hogy a szolgáltatás nem destructed vagy bezárva, mert egy másodlagos marad. A következő API-k nevezzük:
+A Service Fabric az elsődleges másodpéldány, hogy visszalép, a replika üzenetek feldolgozásának leállítása, és lépjen ki a háttérben történő munka történik mindez kell rendelkeznie. Ezt a lépést, ezért úgy tűnik, mint amikor a szolgáltatás leállt. Egy különbség az, hogy a szolgáltatás nem destructed vagy zárult be, mert egy másodlagos marad. A következő API-k nevezzük:
 
 1. Párhuzamos:
-    - Bármely nyitott figyelők be van zárva. `ICommunicationListener.CloseAsync()` a minden egyes figyelő neve.
-    - A megszakítási token átadott `RunAsync()` megszakadt. A megszakítási token ellenőrzése `IsCancellationRequested` tulajdonság igaz értéket ad vissza, és ha neve, a jogkivonat `ThrowIfCancellationRequested` metódus jelez egy `OperationCanceledException`.
-2. Után `CloseAsync()` minden egyes figyelő befejezése és `RunAsync()` is befejeződött, a szolgáltatás `StatefulServiceBase.OnChangeRoleAsync()` nevezik. Ez a hívás nem gyakran felülbírálja a szolgáltatásban.
+    - Minden nyitott figyelői bezárul. `ICommunicationListener.CloseAsync()` az egyes figyelő neve.
+    - A megszakítás token átadott `RunAsync()` meg lett szakítva. A megszakítás token ellenőrzése `IsCancellationRequested` tulajdonság igaz értéket ad vissza, és ha a neve, a jogkivonat `ThrowIfCancellationRequested` metódus jelez egy `OperationCanceledException`.
+2. Miután `CloseAsync()` minden egyes figyelő befejezése és `RunAsync()` is befejezését követően a szolgáltatás `StatefulServiceBase.OnChangeRoleAsync()` nevezzük. Ez a hívás nem gyakran bírálja felül a szolgáltatásban.
 
-### <a name="for-the-secondary-thats-promoted"></a>A másodlagos, amely állapotban van
-Hasonlóképpen a Service Fabric kell a másodlagos másodpéldány, amely tartományvezérlővé történő megkezdeni a figyelést az üzenetek a keresztülhaladnak a hálózaton, és indítsa el a háttér feladatok elvégzéséhez szükséges. Ennek eredményeképpen a folyamat szolgál a szolgáltatás létrehozásakor azzal a különbséggel, hogy maga a replika már létezik. A következő API-k nevezzük:
+### <a name="for-the-secondary-thats-promoted"></a>A másodlagos, amely előléptetése
+Ehhez hasonlóan a Service Fabric kell a másodlagos másodpéldány, amely lett előléptetve, indítsa el a hálózati üzenetek figyeli, és indítsa el minden olyan háttérfeladatokat, el kell végeznie. Ez a folyamat, ezért úgy tűnik, mint a szolgáltatás létrehozásakor, azzal a különbséggel, hogy maga a replika már létezik. A következő API-k nevezzük:
 
 1. Párhuzamos:
-    - `StatefulServiceBase.CreateServiceReplicaListeners()` meghívták, és minden visszaadott figyelői megnyitása. `ICommunicationListener.OpenAsync()` a minden egyes figyelő neve.
-    - A szolgáltatás `StatefulServiceBase.RunAsync()` metódust.
-2. A replika figyelő minden után `OpenAsync()` meghívja a Befejezés gombra és `RunAsync()` nevezik, `StatefulServiceBase.OnChangeRoleAsync()` nevezzük. Ez a hívás nem gyakran felülbírálja a szolgáltatásban.
+    - `StatefulServiceBase.CreateServiceReplicaListeners()` meghívott és bármely figyelői megnyitott adja vissza. `ICommunicationListener.OpenAsync()` az egyes figyelő neve.
+    - A szolgáltatás `StatefulServiceBase.RunAsync()` módszert hívja meg.
+2. A replika figyelő minden után `OpenAsync()` meghívja a Befejezés gombra és `RunAsync()` nevezzük, `StatefulServiceBase.OnChangeRoleAsync()` nevezzük. Ez a hívás nem gyakran bírálja felül a szolgáltatásban.
 
-### <a name="common-issues-during-stateful-service-shutdown-and-primary-demotion"></a>Az állapotalapú szolgáltatás leállítása és elsődleges lefokozás során kapcsolatos gyakori hibák
-A Service Fabric módosítja az elsődleges számos okból az állapotalapú szolgáltatás. A leggyakoribb vannak [fürt újraelosztás](service-fabric-cluster-resource-manager-balancing.md) és [az alkalmazásfrissítés](service-fabric-application-upgrade.md). Ezek a műveletek során (és a normál szolgáltatás leállítása, például szeretné látni, hogy törölték-e a szolgáltatás), fontos, hogy a szolgáltatás tiszteletben tartják a `CancellationToken`. 
+### <a name="common-issues-during-stateful-service-shutdown-and-primary-demotion"></a>Állapotalapú szolgáltatás leállítása és elsődleges lefokozása során felmerülő gyakori hibák
+A Service Fabric módosítja az elsődleges, a számos okból állapotalapú szolgáltatás. A leggyakoribb vannak [fürt újraegyensúlyozása](service-fabric-cluster-resource-manager-balancing.md) és [alkalmazásfrissítés](service-fabric-application-upgrade.md). Ezek a műveletek során (és a normál szolgáltatás leállítása, például szeretné látni, hogy nem törölték-e a szolgáltatás), fontos, hogy a szolgáltatás tiszteletben a `CancellationToken`. 
 
-Szolgáltatások szabályszerűen nem kezelő törlését is több problémákba ütközhetnek. Ezek a műveletek lassúak, mivel a Service Fabric szabályosan leállítja a szolgáltatások vár. Ez végső soron előfordulhat, hogy a sikertelen frissítések adott túllépi az időkorlátot, és állítsa vissza. Hiba a megszakítási token tiszteletben is eredményezheti, hogy imbalanced fürtök. Fürtök válhat egyenetlen, mert a csomópontok gyakran használt adatok lekérése, de a szolgáltatások nem rebalanced, mert azt túl lassan máshol helyezze el őket. 
+Szolgáltatások, amelyek nem kezeli a törlés szabályszerűen több problémákat tapasztalhatnak. Ezek a műveletek lassúak, mert a szolgáltatások szabályosan leállítani a Service Fabric várakozik. Ez végső soron a sikertelen frissítések vezethet, hogy időtúllépés, és állítsa vissza. Tartsa tiszteletben a megszakítás token hibát is okozhat, imbalanced fürtök. Fürtök kiegyensúlyozatlanná válnak, mivel a csomópontok gyakori elérésű, azonban a szolgáltatások nem rebalanced, mert máshol helyezze el őket túl sokáig tart. 
 
-Mivel a szolgáltatások állapotalapú, akkor valószínű is, hogy használják a [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md). A Service Fabric egy elsődleges lefokozása, az első dolog, ami történik esetén meg kell, hogy a mögöttes állapota írási visszavonva. Ennek eredménye, hogy egy második problémák, amelyek hatással lehetnek a szolgáltatási életciklus. A visszatérési kivételek időzítése, és hogy a replika áthelyezik alapuló gyűjtemények vagy leáll. Az ilyen kivételek megfelelően kell kezelni. A Service Fabric által okozott kivételeket sorolhatók állandó [(`FabricException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) és átmeneti [(`FabricTransientException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) kategóriák. Állandó kivételek legyen naplózva, és alapján néhány újrapróbálkozási logika átmeneti kivételek követően újra ellenőrzésekor.
+Mivel a szolgáltatások állapot-nyilvántartó, annak valószínű oka is használják a [a Reliable Collections](service-fabric-reliable-services-reliable-collections.md). A Service Fabric, az elsődleges visszalép, az első dolog, amely akkor fordul elő, esetén, hogy az alapul szolgáló állapot írási hozzáférést visszavonták. Ez egy második együttesét problémákat, amelyek hatással lehetnek a szolgáltatás-életciklusának vezet. A gyűjtemények visszaadott kivételek alapján ütemezését, és hogy éppen áthelyezik a replika vagy leáll. Az ilyen kivételek megfelelően kell kezelni. A Service Fabric által okozott kivételek feldolgozását soroltuk állandó [(`FabricException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) és átmeneti [(`FabricTransientException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) kategóriák. Állandó kivételeket kell naplózza és lépett fel, amíg az átmeneti kivételek végrehajtásával lehet újrapróbálkozni egy újrapróbálkozási logika alapján.
 
-A kivételek használatát érkező kezelése a `ReliableCollections` szolgáltatás életciklus-események együtt tesztelése és ellenőrzése egy megbízható szolgáltatás fontos részét képezi. Azt javasoljuk, hogy mindig a szolgáltatás terhelés frissítések végrehajtása közben és [chaos tesztelés](service-fabric-controlled-chaos.md) üzemi környezetben üzembe helyezése előtt. Az alábbi alapvető lépések segítségével, győződjön meg arról, hogy a szolgáltatás megfelelően van megvalósítva, és életciklus-események megfelelően kezeli.
+A kivételkezelést származó használatát a `ReliableCollections` service-életciklusesemények együtt teszteléséről és ellenőrzéséről a Reliable Services fontos részét képezi. Azt javasoljuk, hogy mindig terhelés alatt a szolgáltatás frissítések végrehajtása közben, és [káosz tesztelés](service-fabric-controlled-chaos.md) éles környezetben való üzembe helyezés előtt. Alapvető lépéseket segítségével, győződjön meg arról, hogy a megfelelő megvalósításához és életciklus-események megfelelően kezeli.
 
 
-## <a name="notes-on-the-service-lifecycle"></a>Tudnivalók a a szolgáltatási életciklus
-  - Mindkét a `RunAsync()` metódus és a `CreateServiceReplicaListeners/CreateServiceInstanceListeners` hívások nem kötelező. A szolgáltatás rendelkezhetnek őket, mindegyikét, vagy sem. Például, ha a szolgáltatás felhasználói hívások válaszként a tevékenységeket, nincs szükség ahhoz, hogy a megvalósítása `RunAsync()`. Csak a kommunikációs figyelőket és a kapcsolódó kódra szükség. Hasonlóképpen, létrehozása és a kommunikációs figyelőket vissza nem kötelező, lehet, hogy a szolgáltatás csak háttérműveletek elvégzéséhez, és így kell megvalósítani, `RunAsync()`.
-  - A szolgáltatás befejezi érvényes `RunAsync()` sikeresen és visszatérési belőle. Befejezése nincs hiba feltétel. Befejezése `RunAsync()` azt jelzi, hogy a szolgáltatás a háttérműveletek befejeződött. Állapot-nyilvántartó megbízható szolgáltatások esetén `RunAsync()` nem hívják újra történik, ha a replika másodlagos elsődleges visszalép, és majd előléptetni elsődleges.
-  - Ha egy szolgáltatás kilép a `RunAsync()` által egy váratlan kivétel kiváltása, ez jelent hibát. A szolgáltatás objektum le van állítva, és egy állapot jelenik meg hibaüzenet.
-  - Bár ezek a módszerek visszatérése van nem korlátozott, azonnal elveszíti a megbízható gyűjteményekre írjanak, és ezért nem tudja végrehajtani a valódi munkát. Azt javasoljuk, hogy a visszavonási kérelem fogadása után a lehető leggyorsabban vissza. Ha a szolgáltatás nem válaszol az adott API-hívások elfogadható időn belül, a Service Fabric kényszerített is leáll a szolgáltatás. Általában ez csak akkor fordul elő alkalmazásfrissítések vagy egy szolgáltatás törlésekor során. Ez az időkorlát értéke alapértelmezés szerint 15 percenként.
-  - Hibák a `OnCloseAsync()` elérési eredményez `OnAbort()` meghívott, amelyek az egy utolsó-alkalommal legjobb lehetőség a szolgáltatás karbantartása, és felszabadíthatja a minden olyan erőforrásnál, amely azt állítják. Ez általában nevezzük, amikor egy állandó hiba lép fel a csomópont, vagy amikor a Service Fabric megbízhatóan nem tudja kezelni a szolgáltatáspéldány életciklus belső hiba miatt.
-  - `OnChangeRoleAsync()` van meghívva, amikor az állapot-nyilvántartó szolgáltatás replika-jal szerepkör, például elsődleges vagy másodlagos. Elsődleges replikára változott adta írási állapota (engedélyezettek létrehozásához és írásához megbízható gyűjteményeket). Másodlagos replikák adta olvasási állapota (csak Olvasás meglévő megbízható gyűjtemények). A legtöbb munkaelem egy állapotalapú szolgáltatás az elsődleges másodpéldány kellett végezni. Másodlagos replikák írásvédett érvényesítési, jelentéskészítésre, adatbányászat vagy más írásvédett feladatokat hajthat végre.
+## <a name="notes-on-the-service-lifecycle"></a>Megjegyzés a kötegműveletekkel kapcsolatban a szolgáltatási életciklus
+  - Mindkét a `RunAsync()` módszer és a `CreateServiceReplicaListeners/CreateServiceInstanceListeners` hívást kötelezők. Szolgáltatásként lehet őket, mindkettő, vagy egyiket sem. Például, ha a szolgáltatás felhasználói hívások válaszként összes feladatát, nincs szükség ahhoz, hogy megvalósítása `RunAsync()`. Csak a kommunikációs figyelőket és az ahhoz tartozó kódot szükség. Ehhez hasonlóan létrehozásával és a kommunikációs figyelőket visszaadó nem kötelező, mivel lehet, hogy a szolgáltatás csak ehhez a háttérműveletek, és ezért csak kell megvalósítani `RunAsync()`.
+  - Egy szolgáltatás befejezéséhez érvényes `RunAsync()` sikeresen és azt adják vissza. Befejezése nem hiba feltétel. Befejezése `RunAsync()` azt jelzi, hogy a szolgáltatás a háttérműveletek befejeződött. A stateful reliable services for `RunAsync()` nem hívják újra történik, ha a replika visszalép az elsődleges, másodlagos, és ezután előléptetve elsődleges.
+  - Ha egy szolgáltatás kilép a `RunAsync()` szerint néhány váratlan kivétel történt kivétel, ez jelent hibát. A service objektum leáll, és a egy állapot jelenik meg hibaüzenet.
+  - Bár ezek a metódusok visszatérésre nincs időkorlát van, azonnal tudni írni a Reliable Collections, és ezért nem tudja végrehajtani bármely valós munkát. Azt javasoljuk, hogy a megszakítási kérés fogadásakor a lehető leggyorsabban visszaadása. Ha a szolgáltatás nem válaszol ezen API-hívások ésszerű időn belül, a Service Fabric kényszerített leállíthatja a szolgáltatáshoz. Ez általában csak akkor történik alkalmazásfrissítések, vagy ha egy szolgáltatás törlése folyamatban van. Ez az időtúllépési érték alapértelmezés szerint 15 perc.
+  - A hibák a `OnCloseAsync()` elérési út eredményez `OnAbort()` hívott, amely a szolgáltatás karbantartása, és azok által igényelt erőforrásokat kiadása egy utolsó-alkalommal legjobb lehetőség. Ezt általában nevezzük, amikor egy állandó hibát észlel a csomóponton, vagy amikor a Service Fabric nem megbízható életciklusnak a kezelésében a szolgáltatáspéldány belső hiba miatt.
+  - `OnChangeRoleAsync()` Ha az állapotalapú szolgáltatás replika például szerepkör, megváltoztatja az elsődleges vagy másodlagos nevezzük. Elsődleges replikára kapnak írási állapota (megengedett való létrehozásához és írásához a Reliable Collections). Másodlagos replikák olvasási állapota (csak olvasható meglévő megbízható gyűjteményekből) vannak megadva. A legtöbb munkát egy állapotalapú szolgáltatásban történik, az elsődleges replika. Másodlagos replikák csak olvasható érvényesítési, jelentés létrehozásához, data szintű adatbányászatra vagy más csak olvasási feladatokat hajthat végre.
 
 ## <a name="next-steps"></a>További lépések
-- [Bevezetés a Reliable Services használatába](service-fabric-reliable-services-introduction.md)
-- [Megbízható szolgáltatások – első lépések](service-fabric-reliable-services-quick-start.md)
+- [A Reliable Services bemutatása](service-fabric-reliable-services-introduction.md)
+- [A Reliable Services – gyorsútmutató](service-fabric-reliable-services-quick-start.md)
 - [Replikák és példányok](service-fabric-concepts-replica-lifecycle.md)

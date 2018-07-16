@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Datahug |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Datahug között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Datahug |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Datahug között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,184 +14,184 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-ms.openlocfilehash: bb2d6194b5a515d89e3204679860ab19a052ba03
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 24b2ed28d0ad0f3bf5a66494d1f1266254fb552e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285164"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042785"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Oktatóanyag: Azure Active Directoryval integrált Datahug
+# <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Oktatóanyag: Azure Active Directory-integráció az Datahug
 
-Ebben az oktatóanyagban elsajátíthatja Datahug integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Datahug integrálása az Azure Active Directory (Azure AD).
 
-Datahug integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Datahug integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a Datahug hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Datahug (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá Datahug Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Datahug (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg. [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd. [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Datahug, a következőkre van szükség:
+Datahug az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy Datahug egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy Datahug egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Datahug hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Datahug hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-datahug-from-the-gallery"></a>A gyűjteményből Datahug hozzáadása
-Az Azure AD integrálása a Datahug konfigurálásához kell hozzáadnia Datahug a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-datahug-from-the-gallery"></a>Datahug hozzáadása a katalógusból
+Az Azure AD integrálása a Datahug konfigurálásához hozzá kell Datahug a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Datahug hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Datahug hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **Datahug**.
+4. A Keresés mezőbe írja be a **Datahug**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/datahug-tutorial/tutorial_datahug_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/datahug-tutorial/tutorial_datahug_search.png)
 
 5. Az eredmények panelen válassza ki a **Datahug**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/datahug-tutorial/tutorial_datahug_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/datahug-tutorial/tutorial_datahug_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban konfigurálása, és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon." nevű tesztfelhasználó alapján Datahug
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó Datahug az Azure AD egyszeri bejelentkezés tesztelése
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Datahug a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Datahug közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Datahug mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Datahug hivatkozás kapcsolata kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** Datahug a.
+Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** Datahug a.
 
-Az Azure AD egyszeri bejelentkezést a Datahug tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Datahug tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Datahug tesztfelhasználó létrehozása](#creating-a-datahug-test-user)**  - való Britta Simon valami Datahug, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Datahug tesztfelhasználó létrehozása](#creating-a-datahug-test-user)**  – egy megfelelője a Britta Simon Datahug, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Datahug alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Datahug alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Datahug, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Datahug, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Datahug** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Datahug** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/datahug-tutorial/tutorial_datahug_samlbase.png)
 
-3. Az a **Datahug tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **Datahug tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/datahug-tutorial/tutorial_datahug_ur1.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://apps.datahug.com/identity/<uniqueID>`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://apps.datahug.com/identity/<uniqueID>`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://apps.datahug.com/identity/<uniqueID>/acs`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://apps.datahug.com/identity/<uniqueID>/acs`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak**. Ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése**. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/datahug-tutorial/tutorial_datahug_url2.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg az URL-címet: `https://apps.datahug.com/`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-cím: `https://apps.datahug.com/`
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek tényleges. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN. Itt javasoljuk, hogy az egyedi értéket a azonosítója és a válasz URL-CÍMEN karakterlánc. Ügyfél [Datahug ügyfél-támogatási csoport](http://datahug.com/about/contact-us/) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nem a valós. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Itt javasoljuk, hogy az egyedi érték a karakterlánc a azonosítója és a válasz URL-cím használatát. Kapcsolattartó [Datahug ügyfél-támogatási csapatának](http://datahug.com/about/contact-us/) beolvasni ezeket az értékeket. 
 
-5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/datahug-tutorial/tutorial_datahug_certificate.png) 
 
-6.  Ellenőrizze **"Megjelenítése speciális tanúsítvány-aláírási beállításai"** és hajtsa végre a következő lépéseket:
+6.  Ellenőrizze **"Speciális tanúsítvány-aláírási beállítások megjelenítése"** , és hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/datahug-tutorial/tutorial_datahug_cert.png)
 
-    a. A **aláíró beállítás**, jelölje be **bejelentkezési SAML-előfeltétel**.
+    a. A **aláírási beállítás**válassza **bejelentkezési SAML helyességi feltétel**.
     
-    b. A **aláíró algoritmus**, jelölje be **SHA1**.
+    b. A **aláírási algoritmus**válassza **SHA1**.
  
 7. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/datahug-tutorial/tutorial_general_400.png)
     
-8. A a **Datahug konfigurációs** kattintson **konfigurálása Datahug** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** és **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+8. Az a **Datahug konfigurációs** területén kattintson **konfigurálása Datahug** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/datahug-tutorial/tutorial_datahug_configure.png) 
 
-9. Egyszeri bejelentkezés konfigurálása **Datahug** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja**, **SAML Entitásazonosító** és **SAML-alapú egyszeri bejelentkezési URL-címe** való [Datahug támogatási](http://datahug.com/about/contact-us/). Ez állítva ez az alkalmazás a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+9. Az egyszeri bejelentkezés konfigurálása **Datahug** oldalon kell küldenie a letöltött **metaadatainak XML**, **SAML Entitásazonosító** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím**  való [Datahug támogatási](http://datahug.com/about/contact-us/). Ezt az alkalmazást, állítsa be a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/datahug-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/datahug-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/datahug-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/datahug-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/datahug-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/datahug-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/datahug-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/datahug-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-datahug-test-user"></a>Datahug tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Datahug bejelentkezni, akkor ki kell építenie a Datahug.  
-Datahug, ha a kézi tevékenység kiépítés.
+Ahhoz, hogy az Azure AD-felhasználók Datahug jelentkezzen be, akkor ki kell építeni Datahug be.  
+Datahug, ha a manuális tevékenység kiépítése.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
 1. Jelentkezzen be rendszergazdaként a Datahug vállalati webhely.
 
-2. Vigye a **fogaskerékre** a jobb felső sarkában, majd kattintson a **beállítások**
+2. A kurzort a **fogaskerék** a jobb felső sarokban, majd kattintson a **beállításai**
    
    ![Alkalmazott hozzáadása](./media/datahug-tutorial/1.png)
 
@@ -199,53 +199,53 @@ Datahug, ha a kézi tevékenység kiépítés.
 
     ![Alkalmazott hozzáadása](./media/datahug-tutorial/2.png)
 
-4. Írja be annak a személynek szeretné hozzon létre egy fiókot, és kattintson az e-mailt **Hozzáadás**.
+4. Írja be az e-mailt, hozzon létre egy olyan fiókkal, és kattintson a kívánt személy **Hozzáadás**.
 
     ![Alkalmazott hozzáadása](./media/datahug-tutorial/3.png)
 
     > [!NOTE] 
-    > Elküldheti regisztrációs mail felhasználói kiválasztásával **üdvözlő e-mailek küldése** jelölőnégyzetet.  
-    > Létrehozásakor egy Salesforce fiókot ne küldjön az üdvözlő e-mail.
+    > Felhasználói regisztráció e-mail a kiválasztásával küldhet **üdvözlő e-mailt** jelölőnégyzetet.  
+    > Létrehozásakor a Salesforce-fiók az üdvözlő e-mailt küld.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Datahug Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Datahug Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Datahug, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Datahug, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Datahug**.
+2. Az alkalmazások listájában jelölje ki a **Datahug**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/datahug-tutorial/tutorial_datahug_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
-Ha a hozzáférési panelen Datahug csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Datahug alkalmazására. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ha a hozzáférési panelen a Datahug csempére kattint, meg kell lekérése automatikusan bejelentkezett az Datahug alkalmazáshoz. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

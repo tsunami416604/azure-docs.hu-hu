@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 88d5eb22186248024a356610addab0d43f68a961
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: dd5bea791fed0c16195eadca03ba2f9a8c11da1b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887130"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044951"
 ---
 # <a name="prediction-score"></a>Előrejelzési pontszám
 Előrejelzési pontszámot rendelkezik a LUIS-előrejelzési eredményeket megbízhatósági mértékét jelzi. 
@@ -57,6 +57,9 @@ Előrejelzési pontszámok használható kitevő jelöléssel *jelennek meg* fen
 Ha egy másik alkalmazásban ugyanannak a modellnek a vonat, és a pontszámok nem ez ugyanaz, ennek az az oka egy elem, a képzés a véletlenszerűségre azért van. Másodszor az utterance (kifejezés) egynél több beszédszándék bármely átfedésének azt jelenti, hogy az azonos utterance (kifejezés) a felső leképezésének képzési alapján módosíthatja.
 
 A csevegőrobot szükség van egy adott LUIS pontszám bizalom a megjelölésű jelzi, ha Ehelyett használjon a felső két szándék pontszám különbsége. Ezáltal rugalmasan képzési-változások. 
+
+## <a name="punctuation"></a>Absztrakt
+Absztrakt egy külön jogkivonatot a LUIS. Az utterance (kifejezés), amely egy időszak végén, és a egy utterance (kifejezés), amely nem tartalmaz két külön kimondott szöveg, és előfordulhat, hogy két különböző előrejelzés beolvasása. Győződjön meg arról, hogy a modell absztrakt vagy kezeli a a [példa utterances](luis-concept-utterance.md) (kellene és írásjelek nélkül) vagy a a [könnyebben figyelmen kívül a speciális szintaxissal írásjelek patterns}(luis-concept-patterns.md): `I am applying for the {Job} position[.]`
 
 ## <a name="next-steps"></a>További lépések
 

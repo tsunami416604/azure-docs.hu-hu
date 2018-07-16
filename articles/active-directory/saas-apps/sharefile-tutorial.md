@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Citrix ShareFile |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Citrix ShareFile között.
+title: 'Oktatóanyag: Azure Active Directory-integráció a Citrix ShareFile |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Citrix ShareFile között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,104 +15,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: b29d8e9a8e8d63cdeacb8093935de5fba3b25170
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e27a1c834c48b640ab5ed7ab8d6e54f7d1784abd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226765"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045940"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Oktatóanyag: Azure Active Directoryval integrált Citrix ShareFile
+# <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Oktatóanyag: Azure Active Directory-integráció a Citrix ShareFile
 
 Ebben az oktatóanyagban elsajátíthatja a Citrix ShareFile integrálása az Azure Active Directory (Azure AD).
 
-Citrix ShareFile integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+A Citrix ShareFile integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér a Citrix ShareFile szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Citrix ShareFile (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá a Citrix ShareFile Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a Citrix ShareFile (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a Citrix ShareFile, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - A Citrix ShareFile egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Adja hozzá a Citrix ShareFile a gyűjteményből
-2. Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+1. A Citrix ShareFile hozzáadása a katalógusból
+2. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-## <a name="add-citrix-sharefile-from-the-gallery"></a>Adja hozzá a Citrix ShareFile a gyűjteményből
-Az Azure AD integrálása a Citrix ShareFile konfigurálásához kell hozzáadnia a Citrix ShareFile a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="add-citrix-sharefile-from-the-gallery"></a>A Citrix ShareFile hozzáadása a katalógusból
+Az Azure AD-be a Citrix ShareFile integrációjának konfigurálása, hozzá kell a Citrix ShareFile a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a Citrix ShareFile a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**A Citrix ShareFile hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Citrix ShareFile**, jelölje be **Citrix ShareFile** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **a Citrix ShareFile**, jelölje be **a Citrix ShareFile** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Citrix ShareFile az eredménylistában](./media/sharefile-tutorial/tutorial_sharefile_addfromgallery.png)
+    ![A Citrix ShareFile a találatok listájában](./media/sharefile-tutorial/tutorial_sharefile_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban konfigurálása és tesztelése az Azure AD egyszeri bejelentkezést a Citrix ShareFile "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban konfigurálja, és a Citrix ShareFile az Azure AD egyszeri bejelentkezés tesztelése egy "Britta Simon" nevű tesztelési felhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a Citrix ShareFile tartozó felhasználót a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Citrix ShareFile közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a Citrix ShareFile tartozó felhasználó Mi az a felhasználó Azure AD-ben. Más szóval Azure AD-felhasználót és a Citrix ShareFile a kapcsolódó felhasználó közötti kapcsolat kapcsolatot kell létrehozni.
 
-A Citrix ShareFile, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+A Citrix ShareFile, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Citrix ShareFile tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés a Citrix ShareFile tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Citrix ShareFile tesztfelhasználó létrehozása](#create-a-citrix-sharefile-test-user)**  - való Britta Simon egy megfelelője a Citrix ShareFile, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[A Citrix ShareFile tesztfelhasználó létrehozása](#create-a-citrix-sharefile-test-user)**  – egy megfelelője a Britta Simon van a Citrix ShareFile, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Citrix ShareFile alkalmazásban egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Citrix ShareFile alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**A Citrix ShareFile konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása a Citrix ShareFile, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Citrix ShareFile** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **a Citrix ShareFile** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/sharefile-tutorial/tutorial_sharefile_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/sharefile-tutorial/tutorial_sharefile_samlbase.png)
 
-3. Az a **Citrix ShareFile tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **a Citrix ShareFile tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Citrix ShareFile tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/sharefile-tutorial/tutorial_sharefile_url.png)
+    ![A Citrix ShareFile tartomány és URL-címek egyszeri bejelentkezési adatait](./media/sharefile-tutorial/tutorial_sharefile_url.png)
     
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenant-name>.sharefile.com/saml/login`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<tenant-name>.sharefile.com/saml/login`
 
-    b. Az a **azonosítója (entitás azonosítója)** szövegmező, adja meg a következő minta használatával URL-címe:
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-címe:
 
     | |
     |---|
@@ -123,7 +123,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | `https://<tenant-name>.sharefile.eu/saml/info`|
     | |
     
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:
+    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
     | |
     |---|
     | `https://<tenant-name>.sharefile.com/saml/acs`|
@@ -132,61 +132,61 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | |
 
     > [!NOTE]
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, azonosítóját és válasz URL-CÍMEN. Ügyfél [Citrix ShareFile ügyfél-támogatási csoport](https://www.citrix.co.in/products/sharefile/support.html) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-, azonosítóját és válasz URL-cím. Kapcsolattartó [a Citrix ShareFile ügyfél-támogatási csapatának](https://www.citrix.co.in/products/sharefile/support.html) beolvasni ezeket az értékeket.
 
-4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/sharefile-tutorial/tutorial_sharefile_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](./media/sharefile-tutorial/tutorial_sharefile_certificate.png)
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/sharefile-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/sharefile-tutorial/tutorial_general_400.png)
 
-6. A a **Citrix ShareFile konfigurációs** kattintson **konfigurálása a Citrix ShareFile** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **a Citrix ShareFile konfigurációs** területén kattintson **konfigurálása a Citrix ShareFile** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Citrix ShareFile konfiguráció](./media/sharefile-tutorial/tutorial_sharefile_configure.png)
+    ![A Citrix ShareFile konfiguráció](./media/sharefile-tutorial/tutorial_sharefile_configure.png)
 
-7. Egy másik webes böngészőablakban, jelentkezzen be a **Citrix ShareFile** vállalati hely rendszergazdaként.
+7. Egy másik böngészőablakban, jelentkezzen be a **a Citrix ShareFile** rendszergazdaként a vállalati webhely.
 
-8. A felső eszköztáron kattintson **Admin**.
+8. A felső eszköztáron kattintson **rendszergazdai**.
 
-9. A bal oldali navigációs ablakból válassza **konfigurálása egyszeri bejelentkezéshez**.
+9. A bal oldali navigációs panelen válassza ki **konfigurálása egyszeri bejelentkezéshez**.
    
     ![Felügyeleti fiók](./media/sharefile-tutorial/ic773627.png "felügyeleti fiók")
 
-10. Az a **egyszeri bejelentkezés / SAML 2.0 konfigurációs** párbeszédpanel lapján **alapbeállítások**, hajtsa végre a következő lépéseket:
+10. Az a **egyszeri bejelentkezés / SAML 2.0 konfigurációs** párbeszédpanel lapján **alapbeállítások**, hajtsa végre az alábbi lépéseket:
    
     ![Egyszeri bejelentkezés](./media/sharefile-tutorial/ic773628.png "egyszeri bejelentkezés")
    
     a. Kattintson a **SAML engedélyezése**.
     
-    b. A **a kiállító terjesztési hely kibocsátó / Entitásazonosító** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító** ami Azure-portálon másolta.
+    b. A **az Identitásszolgáltató kibocsátója / Entitásazonosító** szövegmezőjébe illessze be az értéket, **SAML Entitásazonosító** Azure Portalról másolt.
 
-    c. Kattintson a **módosítás** mellett a **X.509 tanúsítvány** mezőben, és ezután az az Azure-portálról letöltött tanúsítvány feltöltése.
+    c. Kattintson a **módosítása** mellett a **X.509-tanúsítvány** mezőben, és ezután töltse fel a tanúsítványt, az Azure Portalról letöltött.
     
-    d. A **bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe** ami Azure-portálon másolta.
+    d. A **bejelentkezési URL-cím** szövegmező, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt.
     
-    e. A **kijelentkezési URL-cím** szövegmezőhöz illessze be az értékét **Sign-Out URL-cím** ami Azure-portálon másolta.
+    e. A **kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket a **kijelentkezéses URL-cím** Azure Portalról másolt.
 
 11. Kattintson a **mentése** a Citrix ShareFile felügyeleti portálon.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/sharefile-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/sharefile-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/sharefile-tutorial/create_aaduser_03.png)
 
@@ -196,80 +196,80 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-citrix-sharefile-test-user"></a>Citrix ShareFile tesztfelhasználó létrehozása
+### <a name="create-a-citrix-sharefile-test-user"></a>A Citrix ShareFile tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Citrix ShareFile, akkor ki kell építenie a Citrix ShareFile. Citrix ShareFile, ha egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Citrix ShareFile, akkor ki kell építeni a Citrix ShareFile be. A Citrix ShareFile, esetén kiépítése a manuális feladat.
 
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a **Citrix ShareFile** bérlő.
+1. Jelentkezzen be a **a Citrix ShareFile** bérlő.
 
 2. Kattintson a **felhasználók kezelése \> otthoni felhasználók kezelése \> + alkalmazott létrehozása**.
    
    ![Alkalmazott létrehozása](./media/sharefile-tutorial/IC781050.png "alkalmazott létrehozása")
 
-3. Az a **alapvető információkat** csoportjában hajtsa végre a következő lépések:
+3. Az a **alapinformációk** szakaszban, hajtsa végre az alábbi lépéseket:
    
-   ![Alapvető információkat](./media/sharefile-tutorial/IC799951.png "alapvető információk")
+   ![Alapinformációk](./media/sharefile-tutorial/IC799951.png "alapvető információk")
    
-   a. Az a **E-mail cím** szövegmezőhöz Britta Simon, e-mail címét **brittasimon@contoso.com**.
+   a. Az a **E-mail cím** szövegmezőbe írja be az e-mail-címe, Britta Simon **brittasimon@contoso.com**.
    
-   b. Az a **Utónév** szövegmezőhöz típus **Utónév** , felhasználó **Britta**.
+   b. Az a **Utónév** szövegmezőbe írja be **Utónév** , felhasználó **Britta**.
    
-   c. Az a **Vezetéknév** szövegmezőhöz típus **Vezetéknév** , felhasználó **Simon**.
+   c. Az a **Vezetéknév** szövegmezőbe írja be **Vezetéknév** , felhasználó **Simon**.
 
 4. Kattintson a **felhasználó hozzáadása**.
   
    >[!NOTE]
-   >Az Azure AD fióktulajdonos fog egy e-maileket és hivatkozásra a fiók megerősítéséhez, mielőtt aktívvá válik. Citrix ShareFile felhasználói fiók létrehozása eszközök vagy Citrix ShareFile által nyújtott API-k segítségével kiépíteni az Azure AD felhasználói fiókokat.
+   >Az Azure ad-ben fióktulajdonos kap egy e-mailt, és a egy hivatkozásra kattintva a fiók megerősítéséhez, mielőtt aktívvá válik. A Citrix ShareFile felhasználói fiók létrehozása eszközöket és a Citrix ShareFile által biztosított API-k segítségével az Azure AD-felhasználói fiókok kiépítése.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Citrix ShareFile Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés a Citrix ShareFile Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Citrix ShareFile Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel a Citrix ShareFile, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Citrix ShareFile**.
+2. Az alkalmazások listájában jelölje ki a **a Citrix ShareFile**.
 
-    ![Az alkalmazások listáját a Citrix ShareFile hivatkozás](./media/sharefile-tutorial/tutorial_sharefile_app.png)  
+    ![A Citrix ShareFile hivatkozásra az alkalmazások listáját](./media/sharefile-tutorial/tutorial_sharefile_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Citrix ShareFile csempére kattint, akkor kell beolvasása automatikusan bejelentkezett a Citrix ShareFile alkalmazásba.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Citrix ShareFile csempére kattint, akkor kell lekérése automatikusan bejelentkezett a Citrix ShareFile alkalmazásba.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

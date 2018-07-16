@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Pingboard |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Pingboard között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Pingboard |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Pingboard között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,56 +15,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: e07e85e60c8a4b93e4b0fd7bf43f470c4e3acc61
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3dd1c0043a4516bfba0801d403f4b475fa2817a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221189"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041925"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Oktatóanyag: Azure Active Directoryval integrált Pingboard
+# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Oktatóanyag: Azure Active Directory-integráció az Pingboard
 
-Ebben az oktatóanyagban elsajátíthatja Pingboard integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Pingboard integrálása az Azure Active Directory (Azure AD).
 
-Pingboard integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Pingboard integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a Pingboard hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Pingboard (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá Pingboard Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Pingboard (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Pingboard, a következőkre van szükség:
+Pingboard az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Pingboard egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Pingboard hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Pingboard hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-pingboard-from-the-gallery"></a>A gyűjteményből Pingboard hozzáadása
-Az Azure AD integrálása a Pingboard konfigurálásához kell hozzáadnia Pingboard a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-pingboard-from-the-gallery"></a>Pingboard hozzáadása a katalógusból
+Az Azure AD integrálása a Pingboard konfigurálásához hozzá kell Pingboard a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Pingboard hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Pingboard hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások][2]
 
@@ -72,98 +72,98 @@ Az Azure AD integrálása a Pingboard konfigurálásához kell hozzáadnia Pingb
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Pingboard**, jelölje be **Pingboard** eredmény panelen, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Pingboard**válassza **Pingboard** eredmény panelen, majd kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Pingboard](./media/pingboard-tutorial/tutorial_pingboard_addfromgallery.png)
+    ![Az eredmények listájában Pingboard](./media/pingboard-tutorial/tutorial_pingboard_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Pingboard.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Pingboard a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Pingboard a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Pingboard közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Pingboard mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Pingboard hivatkozás kapcsolata kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** Pingboard a.
+Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** Pingboard a.
 
-Az Azure AD egyszeri bejelentkezést a Pingboard tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Pingboard tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Pingboard tesztfelhasználó létrehozása](#create-a-pingboard-test-user)**  - való Britta Simon valami Pingboard, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Pingboard tesztfelhasználót](#create-a-pingboard-test-user)**  – egy megfelelője a Britta Simon Pingboard, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Pingboard alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Pingboard alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Pingboard, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Pingboard, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Pingboard** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Pingboard** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2.  Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2.  Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/pingboard-tutorial/tutorial_pingboard_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/pingboard-tutorial/tutorial_pingboard_samlbase.png)
 
-3. Az a **Pingboard tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **Pingboard tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk IDP Pingboard tartomány és az URL-címek](./media/pingboard-tutorial/tutorial_pingboard_url.png)
+    ![Pingboard tartomány és URL-címeket egyetlen bejelentkezési adatait Identitásszolgáltató](./media/pingboard-tutorial/tutorial_pingboard_url.png)
 
-    a. Az a **azonosító** szövegmező, írja be az értéket, mint: `http://app.pingboard.com/sp`
+    a. Az a **azonosító** szövegmezőbe írja be az értéket, mint: `http://app.pingboard.com/sp`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<entity-id>.pingboard.com/auth/saml/consume`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<entity-id>.pingboard.com/auth/saml/consume`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak**, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése**, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk SP Pingboard tartomány és az URL-címek](./media/pingboard-tutorial/tutorial_pingboard_sp_initiated01.png)
+    ![Pingboard tartomány és URL-címeket egyetlen bejelentkezési adatait SP](./media/pingboard-tutorial/tutorial_pingboard_sp_initiated01.png)
 
-     Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-CÍMÉT a következő mintát: `https://<sub-domain>.pingboard.com/sign_in`
+     Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím a következő minta használatával: `https://<sub-domain>.pingboard.com/sign_in`
 
     > [!NOTE]
-    > Vegye figyelembe, hogy ezek az értékek nincsenek-e valódi. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Pingboard ügyfél-támogatási csoport](https://support.pingboard.com/) beolvasni ezeket az értékeket.
+    > Vegye figyelembe, hogy ezek az értékek nem tesznek valós. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Pingboard ügyfél-támogatási csapatának](https://support.pingboard.com/) beolvasni ezeket az értékeket.
 
-5. Az a **SAML-aláíró tanúsítványa** kattintson **metaadatainak XML-kódja** , és mentse az XML-fájlt a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse az XML-fájlt a számítógépen.
 
-    ![Pingboard metaadatainak XML-kódja](./media/pingboard-tutorial/tutorial_pingboard_certificate.png)
+    ![Pingboard metaadatainak xml](./media/pingboard-tutorial/tutorial_pingboard_certificate.png)
 
 6. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/pingboard-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/pingboard-tutorial/tutorial_general_400.png)
 
-7. Egyszeri bejelentkezés konfigurálása Pingboard oldalon, nyisson meg egy új böngészőablakot, és jelentkezzen be a Pingboard fiókjához. Az egyszeri bejelentkezés beállítása Pingboard rendszergazdának kell lennie.
+7. Egyszeri bejelentkezés konfigurálása Pingboard oldalán, nyisson meg egy új böngészőablakot, és jelentkezzen be a Pingboard fiókjához. Az egyszeri bejelentkezés beállítása Pingboard rendszergazdának kell lennie.
 
-8. Válassza ki a felső menüben,, **alkalmazások > integrációja**
+8. Válassza ki a felső menüben, **alkalmazások > Integrációk**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/pingboard-tutorial/Pingboard_integration.png)
 
-9. Az a **integrációja** lapon, keresse meg a **"Azure Active Directory"** csempére, majd kattintson rá.
+9. Az a **Integrációk** lapon, keresse meg a **"Azure Active Directory"** csempére, majd kattintson rá.
 
-    ![Pingboard egyszeri bejelentkezés integráció](./media/pingboard-tutorial/Pingboard_aad.png)
+    ![Pingboard egyszeri bejelentkezéses integráció](./media/pingboard-tutorial/Pingboard_aad.png)
 
-10. A következő kattintson a modális **"Beállítása"**
+10. Az a kattintson a következő modális **"Konfigurálás"**
 
     ![Pingboard konfigurációs gomb](./media/pingboard-tutorial/Pingboard_configure.png)
 
-11. A következő oldalon bizonyára észrevette, hogy "Azure SSO-integráció engedélyezve van". A letöltött metaadatok XML-fájl megnyitása a Jegyzettömbben, és illessze be a tartalom **IDP metaadatok**.
+11. A következő oldalon láthatja, hogy "Azure-beli egyszeri bejelentkezés integrációs engedélyezve van". Nyissa meg a letöltött metaadatainak XML-fájlt a Jegyzettömbben, és illessze be a tartalom **Identitásszolgáltató metaadatok**.
 
-    ![Pingboard SSO konfigurálására szolgáló képernyőn](./media/pingboard-tutorial/Pingboard_sso_configure.png)
+    ![Pingboard egyszeri Bejelentkezést a beállítások képernyőn](./media/pingboard-tutorial/Pingboard_sso_configure.png)
 
-12. A fájl van hitelesítve, és minden rendben, ha az egyszeri bejelentkezés most engedélyezve lesz.
+12. A rendszer érvényesíti a fájlt, és ha minden rendben, az egyszeri bejelentkezés most engedélyezve lesz.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Hozzon létre egy Azure AD-teszt felhasználó][100]
+![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](./media/pingboard-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/pingboard-tutorial/create_aaduser_02.png)
 
@@ -175,89 +175,89 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     ![A felhasználó párbeszédpanel](./media/pingboard-tutorial/create_aaduser_04.png)
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-a-pingboard-test-user"></a>Pingboard tesztfelhasználó létrehozása
 
-Ez a szakasz célja Pingboard Britta Simon nevű felhasználót létrehozni. Pingboard támogatja az automatikus a felhasználók átadása, amely alapértelmezés szerint van engedélyezve. További részletek találhatók [Itt](pingboard-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
+Ez a szakasz célja Pingboard Britta Simon nevű felhasználó létrehozásához. Pingboard támogatja a felhasználók automatikus átadása, amely alapértelmezés szerint van engedélyezve. További részleteket talál [Itt](pingboard-provisioning-tutorial.md) konfigurálásának a felhasználók automatikus átadása.
 
-**Ha szeretne létrehozni a felhasználót manuálisan, akkor hajtsa végre a következő lépéseket:**
+**Hozza létre a felhasználó manuálisan kell, ha hajtsa végre a következő lépéseket:**
 
 1. Jelentkezzen be rendszergazdaként a Pingboard vállalati webhely.
 
-2. Kattintson a **"Alkalmazott hozzáadása"** gombra **Directory** lap.
+2. Kattintson a **"Alkalmazott hozzáadása"** gombot **Directory** lapot.
 
     ![Alkalmazott hozzáadása](./media/pingboard-tutorial/create_testuser_add.png)
 
 3. Az a **"Alkalmazott hozzáadása"** párbeszédpanel lapon, a következő lépésekkel:
 
-    ![Felkérése](./media/pingboard-tutorial/create_testuser_name.png)
+    ![Személyek meghívása](./media/pingboard-tutorial/create_testuser_name.png)
 
-    a. Az a **teljes nevét** szövegmező, a felhasználó típusát a teljes nevet, például **Britta Simon**.
+    a. Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be a teljes nevet felhasználó, például **Britta Simon**.
 
-    b. Az a **E-mail** szövegmező, a felhasználó e-mail címe típusát, például **brittasimon@contoso.com**.
+    b. Az a **E-mail** szövegmezőbe írja be az e-mail-cím, felhasználó, például **brittasimon@contoso.com**.
 
-    c. Az a **beosztás** szövegmező, írja be a feladat Britta Simon.
+    c. Az a **beosztás** szövegmezőbe írja be a Britta Simon feladat címe.
 
-    d. A a **hely** legördülő menüben válassza ki a helyet a Britta Simon.
+    d. Az a **hely** legördülő menüben válassza ki a helyet a Britta Simon.
 
     e. Kattintson a **Hozzáadás** parancsra.
 
-4. A felhasználó hozzáadását megerősítéséhez megjelenik egy visszaigazoló képernyő.
+4. A megerősítő képernyőn felhasználó hozzáadásának megerősítéséhez.
 
-    ![Erősítse meg](./media/pingboard-tutorial/create_testuser_confirm.png)
+    ![Győződjön meg róla](./media/pingboard-tutorial/create_testuser_confirm.png)
 
     > [!NOTE]
-    > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a következő hivatkozás a fiók megerősítéséhez, mielőtt aktívvá válik.
+    > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Pingboard Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Pingboard Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Pingboard, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Pingboard, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Pingboard**.
+2. Az alkalmazások listájában jelölje ki a **Pingboard**.
 
-    ![Az alkalmazások listáját a Pingboard hivatkozás](./media/pingboard-tutorial/tutorial_pingboard_app.png) 
+    ![Az alkalmazások listáját a Pingboard hivatkozásra](./media/pingboard-tutorial/tutorial_pingboard_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
-Ha a hozzáférési panelen Pingboard csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Pingboard alkalmazására.
+Ha a hozzáférési panelen a Pingboard csempére kattint, meg kell lekérése automatikusan bejelentkezett az Pingboard alkalmazáshoz.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
-* [A felhasználók átadása konfigurálása](pingboard-provisioning-tutorial.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználók átadásának konfigurálása](pingboard-provisioning-tutorial.md)
 
 <!--Image references-->
 

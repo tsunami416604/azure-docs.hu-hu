@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a ScaleX vállalati |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és ScaleX vállalati között.
+title: 'Oktatóanyag: Azure Active Directory-integráció a vállalati ScaleX |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés ScaleX nagyvállalati és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 18ac9fcf5a8b0c66d3c9e3d3b4e3064099e201c4
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3b2da2680adbc92655030351cc9e1269a4cccccd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287609"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040986"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció a ScaleX vállalati
+# <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció a vállalati ScaleX
 
-Ebben az oktatóanyagban elsajátíthatja ScaleX vállalati integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan ScaleX vállalati integrálása az Azure Active Directory (Azure AD).
 
-ScaleX vállalati integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+ScaleX vállalati integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a ScaleX vállalati hozzáféréssel rendelkező Azure AD-ben
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett ScaleX vállalati (egyszeri bejelentkezés)
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá nagyvállalati ScaleX Azure AD-ben
+- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett ScaleX Enterprise (egyszeri bejelentkezés)
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg. Alkalmazás-hozzáférés és egyszeri bejelentkezés az [Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd. Mi az alkalmazás-hozzáférés és egyszeri bejelentkezést az [Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a ScaleX vállalati, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy ScaleX vállalati egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy vállalati ScaleX egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, ha ez nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, kivéve, ha erre szükség.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből ScaleX vállalati hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. ScaleX vállalati hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-scalex-enterprise-from-the-gallery"></a>A gyűjteményből ScaleX vállalati hozzáadása
-ScaleX vállalat az Azure AD-integráció konfigurálásához szüksége ScaleX vállalati hozzáadása a kezelt SaaS-alkalmazások listáját a gyűjteményből.
+## <a name="adding-scalex-enterprise-from-the-gallery"></a>ScaleX vállalati hozzáadása a katalógusból
+ScaleX vállalat az Azure AD-integrációjának konfigurálásához hozzá kell ScaleX vállalati a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből ScaleX vállalati hozzáadásához hajtsa végre az alábbi lépéseket:**
+**ScaleX vállalati hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
@@ -71,73 +71,73 @@ ScaleX vállalat az Azure AD-integráció konfigurálásához szüksége ScaleX 
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **ScaleX vállalati**.
+4. A Keresés mezőbe írja be a **ScaleX vállalati**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_search.png)
 
 5. Az eredmények panelen válassza ki a **ScaleX vállalati**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban konfigurálása és tesztelése az Azure AD egyszeri bejelentkezést a ScaleX vállalati "Britta Simon." nevű tesztfelhasználó alapján
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban konfigurálja, és a egy "Britta Simon." nevű tesztelési felhasználó alapján ScaleX vállalat az Azure AD egyszeri bejelentkezés tesztelése
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó ScaleX vállalati a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó ScaleX vállalat közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó ScaleX vállalati mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó ScaleX vállalati hivatkozás kapcsolatát kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** ScaleX vállalat.
+Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** ScaleX vállalati.
 
-Az Azure AD egyszeri bejelentkezést a vállalati ScaleX tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés a vállalati ScaleX tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[ScaleX vállalati tesztfelhasználó létrehozása](#creating-a-scalex-enterprise-test-user)**  - kell rendelkeznie a megfelelője a Britta Simon ScaleX vállalat, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Teszt ScaleX vállalati felhasználó létrehozása](#creating-a-scalex-enterprise-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon ScaleX vállalat, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az ScaleX vállalati alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az ScaleX vállalati alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Az Azure AD egyszeri bejelentkezést a ScaleX vállalati megadásához hajtsa végre az alábbi lépéseket:**
+**Konfigurálja az Azure AD egyszeri bejelentkezés a vállalati ScaleX, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **ScaleX vállalati** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **ScaleX vállalati** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. A a **egyszeri bejelentkezés** párbeszédpanel, mint **mód** válasszon **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** válassza **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_samlbase.png)
 
-3. Az a **ScaleX vállalati tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **ScaleX vállalati tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_url1.png)
 
-    a. Az a **azonosító** szövegmező, írja be az értéket a következő minta használatával: `https://platform.rescale.com/saml2/<company id>/`
+    a. Az a **azonosító** szövegmezőbe írja be az értéket a következő minta használatával: `https://platform.rescale.com/saml2/<company id>/`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://platform.rescale.com/saml2/<company id>/acs/`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://platform.rescale.com/saml2/<company id>/acs/`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak**, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése**, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_url2.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket a következő minta használatával: `https://platform.rescale.com/saml2/<company id>/sso/`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be az értéket a következő minta használatával: `https://platform.rescale.com/saml2/<company id>/sso/`
      
     > [!NOTE] 
-    > Ezek a megadandó nem valódi értékek. Ezek az értékek frissíti a tényleges azonosítója, válasz és bejelentkezési URL-címe. Ügyfél [ScaleX vállalati ügyfél-támogatási csoport](http://info.rescale.com/contact_sales) beolvasni ezeket az értékeket. 
+    > Ezek eltérnek a valós értékeket. Frissítse a tényleges azonosítója, válasz URL-cím vagy a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [ScaleX vállalati ügyfél-támogatási csapatának](http://info.rescale.com/contact_sales) beolvasni ezeket az értékeket. 
 
-5. A ScaleX alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban, amelyhez szükség van egyéni attribútum leképezéseket a SAML-jogkivonat attribútumok konfiguráció módosítására. Kattintson a **nézet és egyéb felhasználói attribútumok szerkesztése** jelölőnégyzetet, hogy nyissa meg az egyéni attribútumok beállításait.
+5. ScaleX alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amelyek megkövetelik a SAML-jogkivonat attribútumai konfiguráció egyéni attribútumleképezések módosítása. Kattintson a **megtekintése és egyéb felhasználói attribútumok szerkesztése** jelölőnégyzetet, nyissa meg az egyéni attribútumok beállításait.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/scalex_attributes.png)
     
-    a. Kattintson a jobb gombbal a attribútum **neve** , és válassza a törlés.
+    a. Kattintson a jobb gombbal az attribútum **neve** , és kattintson a Törlés gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/delete_attribute_name.png)
 
-    b. Kattintson a **emailaddress** attribútum a attribútum szerkesztése ablak megnyitásához. Módosítsa az értéket **user.mail** való **user.userprincipalname** kattintson az OK gombra.
+    b. Kattintson a **emailaddress** attribútum szerkesztése attribútum ablak megnyitásához. Módosítsa az értéket **user.mail** való **user.userprincipalname** kattintson az OK gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/edit_email_attribute.png) 
     
-5. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_certificate.png) 
 
@@ -145,123 +145,123 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/tutorial_general_400.png)
     
-7. A a **ScaleX vállalati konfiguráció** kattintson **konfigurálása ScaleX vállalati** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** és **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+7. Az a **ScaleX vállalati konfiguráció** területén kattintson **konfigurálása ScaleX vállalati** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_configure.png) 
 
-8. Egyszeri bejelentkezés konfigurálása **ScaleX vállalati** ügyféloldali, jelentkezzen be rendszergazdaként a vállalati ScaleX vállalati webhely.
+8. Az egyszeri bejelentkezés konfigurálása **ScaleX vállalati** ügyféloldali, jelentkezzen be rendszergazdaként a ScaleX vállalati vállalati webhely.
 
-9. Kattintson a felső jobbra, és válassza a menü **Contoso felügyeleti**.
+9. Kattintson a jobb oldali, és válassza a felső menüben **Contoso felügyeleti**.
 
     > [!NOTE] 
-    > Contoso csak egy példa. A tényleges vállalat neve legyen. 
+    > Contoso csak egy példa. Ez a tényleges vállalat neve legyen. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/Test_Admin.png) 
 
-10. Válassza ki **integrációja** a felső menüben, és válassza ki a **egyszeri bejelentkezés**.
+10. Válassza ki **Integrációk** a felső menüben, majd válassza **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/admin_sso.png) 
 
-11. Töltse ki az űrlapot az alábbiak szerint:
+11. Töltse ki az űrlapot a következőképpen:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/scalex_admin_save.png) 
     
-    a. Válassza ki **"Bármely felhasználó, aki hitelesítheti létrehozása egyszeri bejelentkezési modellel."**
+    a. Válassza ki **"Hozzon létre egyszeri bejelentkezés bármely felhasználó, aki hitelesítheti."**
 
-    b. **Szolgáltató saml**: illessze be az érték ***urn: oasis: nevek: tc: SAML:2.0:nameid-formátum: állandó***
+    b. **Szolgáltató saml**: illessze be az értéket ***urn: oasis: nevek: tc: SAML:2.0:nameid-formátum: állandó***
 
-    c. **Az ACS-válasz identitásszolgáltató e-mail mező neve**: illessze be az érték `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. **Az ACS-válaszban identitásszolgáltató e-mail mező neve**: illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    d. **Identity Provider EntityDescriptor Entitásazonosító:** illessze be a **SAML Entitásazonosító** az Azure-portálon átmásolja értéket.
+    d. **Identity Provider EntityDescriptor entitás azonosítója:** illessze be a **SAML Entitásazonosító** az Azure Portalról másolt érték.
 
-    e. **Identity Provider SingleSignOnService URL-címe:** illessze be a **SAML-alapú egyszeri bejelentkezési URL-címe** Azure-portálról.
+    e. **Identitásszolgáltató szolgáltató SingleSignOnService URL-címe:** illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** az Azure Portalról.
 
-    f. **Szolgáltató nyilvános X509 identitástanúsítvány:** nyissa meg a X509 tanúsítvány az Azure-portálról letöltve a Jegyzettömbben beillesztése ebben a mezőben. Ellenőrizze, hogy nincsenek a nincs sortörések a tanúsítványok tartalmának közepén.
+    f. **Szolgáltató nyilvános X509 identitástanúsítványt:** nyissa meg a X509 tanúsítvány a Jegyzettömbben az Azure-ból letöltött, és illessze be a tartalmakat ebbe a mezőbe. Győződjön meg róla, nincsenek a nincs sortöréseket a tanúsítvány tartalma közepén.
     
-    g. Ellenőrizze az alábbi jelölőnégyzeteket: **engedélyezve, a NameID titkosítására és a bejelentkezési AuthnRequests.**
+    g. Ellenőrizze a következő jelölőnégyzeteket: **engedélyezve, a NameID titkosítása és a bejelentkezési AuthnRequests.**
 
-    h. Kattintson a **egyszeri bejelentkezési beállítások** menti a beállításokat.
+    h. Kattintson a **frissítés egyszeri bejelentkezési beállításainak** a beállítások mentéséhez.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/create_aaduser_01.png) 
 
-2. Ugrás a **felhasználók és csoportok** kattintson **minden felhasználó** azon felhasználók listájának megjelenítéséhez.
+2. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/create_aaduser_02.png) 
 
 3. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/scalexenterprise-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="creating-a-scalex-enterprise-test-user"></a>ScaleX vállalati tesztfelhasználó létrehozása
+### <a name="creating-a-scalex-enterprise-test-user"></a>Teszt ScaleX vállalati felhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók ScaleX vállalati bejelentkezni, akkor ki kell építenie a ScaleX vállalati. ScaleX vállalati automatikus feladatról, és nincs manuális lépések szükségesek. Bárki, aki képes sikeresen hitelesíteni egyszeri bejelentkezési hitelesítő adatokkal rendelkező automatikusan megkapják a ScaleX oldalon.
+Ahhoz, hogy az Azure AD-felhasználók ScaleX vállalati jelentkezzen be, akkor ki kell építeni a ScaleX Enterprise. Esetén ScaleX Enterprise kiépítés egy automatikus feladat, és nem manuális lépések szükségesek. Bármely felhasználó, akik sikeresen hitelesítik magukat az egyszeri bejelentkezési hitelesítő adatok automatikusan kiépítheti ScaleX oldalán.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon szerint ScaleX vállalati való hozzáférés engedélyezése az Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés ScaleX vállalati felhasználó hozzáférésének engedélyezésére használja.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése ScaleX vállalati, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel ScaleX Enterprise, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **ScaleX vállalati**.
+2. Az alkalmazások listájában jelölje ki a **ScaleX vállalati**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Kattintson a hozzáférési panelen ScaleX vállalati csempére, akkor fogja lekérni automatikusan bejelentkezett az ScaleX vállalati alkalmazás. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+A vállalati ScaleX csempére a hozzáférési panelen, meg fog lekérése automatikusan bejelentkezett a ScaleX vállalati alkalmazáshoz. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 
