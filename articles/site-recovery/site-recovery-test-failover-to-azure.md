@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: c173f4f224c7021c0a0db057cb65aa9c6f900528
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 55fc1bf9d59c82abc76e40e834f67aa49942db44
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915571"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056698"
 ---
 # <a name="test-failover-to-azure-in-site-recovery"></a>Az Azure-bA a Site Recovery feladatátvételi teszt
 
@@ -72,7 +72,7 @@ A következő esetekben feladatátvételi egy extra közbenső lépés, amely á
     * storflt
     * Intelide
     * ATAPI
-* VMware virtuális gépek, amelyek nem rendelkeznek a DHCP-kompatibilis, rrespective, hogy a DHCP vagy statikus IP-címeket használják.
+* VMware virtuális gépek, amelyek nem rendelkeznek a DHCP-kompatibilis, megadásától használatával e DHCP vagy statikus IP-címek.
 
 Minden más esetben nincs köztes lépés nem kötelező, és a feladatátvételi jelentősen kevesebb időt vesz igénybe.
 

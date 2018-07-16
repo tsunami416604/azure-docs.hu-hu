@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13057769bad7fcad5f95e49102adac234ebcdb4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: bbb17d1b47c5409d15a15a7461da981fa5e09f7e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868939"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056834"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Csatlakoztassa a számítógépet az OMS-átjáró Internet-hozzáférés nélkül
 Ez a dokumentum ismerteti a kommunikáció konfigurálása az Azure Automation és a Log Analytics használatával az OMS-átjárót, ha közvetlenül csatlakoztatott, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáféréssel.  Az OMS-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxyt, adatok gyűjtéséhez és küldhet az Azure Automation és a Log Analytics a felhasználók nevében.  
@@ -89,8 +89,8 @@ Az alábbi táblázat az átjáró-kiszolgálóval való kommunikációhoz ügyn
 
 |Átjáró |Támogatott ügynökök száma KB.|  
 |--------|----------------------------------|  
-|-CPU: Intel XEON CPU E5-2660 v3 @ 2,6 GHz-es 2 mag<br> -Memória: 4 GB<br> -Hálózati sávszélesség: 1 GB/s| 600|  
-|-CPU: Intel XEON CPU E5-2660 v3 @ 2,6 GHz-es 4 mag<br> -Memória: 8 GB<br> -Hálózati sávszélesség: 1 GB/s| 1000|  
+|-CPU: Intel XEON v3 CPU E5-2660 \@ 2,6 GHz-es 2 mag<br> -Memória: 4 GB<br> -Hálózati sávszélesség: 1 GB/s| 600|  
+|-CPU: Intel XEON v3 CPU E5-2660 \@ 2,6 GHz-es 4 mag<br> -Memória: 8 GB<br> -Hálózati sávszélesség: 1 GB/s| 1000|  
 
 ## <a name="download-the-oms-gateway"></a>Az OMS-átjáró letöltése
 

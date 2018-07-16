@@ -1,6 +1,6 @@
 ---
-title: Olvasási NSG folyamata naplók |} Microsoft Docs
-description: Ez a cikk bemutatja, hogyan NSG folyamata naplók elemzése
+title: Olvasási NSG-Folyamatnaplók |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan NSG-forgalom naplóinak elemzése
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,73 +13,74 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 58474286352ff3f00b31e65a565c2b64a656a177
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 492a0a63198fe2013cfeac0459fc6da8521a5e6e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
-ms.locfileid: "29149634"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056800"
 ---
-# <a name="read-nsg-flow-logs"></a>Olvasási NSG folyamata naplók
+# <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 
-Útmutató olvasása NSG folyamata bejegyzéseiben a PowerShell használatával.
+Ismerje meg, hogyan olvashatja be az NSG folyamat naplók bejegyzéseket a PowerShell használatával.
 
-NSG folyamata naplók tárolódnak a tárfiók [blokkblobokat](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Blokkblobok kisebb blokkokból épülnek fel. Egyes naplókon egy külön blokkblob óránként jön létre. Az új naplók akkor jönnek létre, óránként, a naplókat és az új bejegyzések frissített a legfrissebb adatokkal néhány percenként. Ebben a cikkben megismerheti, hogyan olvasni a folyamat naplók részeit.
+NSG-Folyamatnaplók tárfiókok vannak tárolva [blokkblobok](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). A blokkblobok kisebb blokkokból épülnek fel. Minden napló óránként létrehozott külön blokkblob. Az új naplók óránként jönnek létre, a naplók frissülnek az új bejegyzések a legfrissebb adatokat néhány percenként. Ebben a cikkben megismerheti, hogyan olvashatja be a Folyamatnaplók részeit.
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Abban az esetben akkor egy példa folyamata napló a tárfiókban tárolt. a Microsoft végighaladhat hogyan szelektív módon tudja olvasni a legújabb események NSG folyamata naplókban. Ebben a cikkben PowerShell használjuk, azonban a a cikkben ismertetett fogalmakat nem legfeljebb a programozási nyelv és az Azure Storage API-k által támogatott összes nyelven alkalmazhatók
+A következő esetben van egy példa a storage-fiókban tárolt folyamat napló. hogy végighaladhat hogyan szelektív módon tudja olvasni az NSG-Folyamatnaplók legújabb események. Ebben a cikkben a PowerShell használjuk, azonban a cikkben tárgyalt fogalmakat nem korlátozódnak az programozási nyelvet, és az Azure Storage API-k által támogatott összes nyelv vonatkozó
 
 ## <a name="setup"></a>Beállítás
 
-Mielőtt hozzákezd, rendelkeznie kell hálózati biztonsági csoport Flow naplózás engedélyezve van egy vagy több hálózati biztonsági csoportok a fiókjában. Hálózati biztonsági engedélyezésével kapcsolatos flow a naplókat, a következő cikk tartalmazza: [folyamata naplózási a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md).
+Mielőtt hozzákezd, rendelkeznie kell hálózati biztonsági csoport Flow naplózás engedélyezve van egy vagy több hálózati biztonsági csoportok a fiókjában található. Hálózati biztonság engedélyezésével kapcsolatos flow naplókat, a következő cikkben: [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md).
 
-## <a name="retrieve-the-block-list"></a>A tiltólisták beolvasása
+## <a name="retrieve-the-block-list"></a>A blokk-lista lekérése
 
-A következő PowerShell állít be a lekérdezési napló blob NSG folyamata és a blokkokra bontott listában szükséges változók a [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) blokkblob. Frissítse a parancsfájlt, amellyel a környezet helyes értékeket tartalmaznak.
+Az alábbi PowerShell-lel beállítja a változókat az NSG-t a folyamat log blob lekérdezése és listán belüli blokkokat szükséges a [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) blokkblob típusú. Frissítse a parancsfájlt a környezetnek érvényes értékeket tartalmaznak.
 
 ```powershell
-# The SubscriptionID to use
-$subscriptionId = "00000000-0000-0000-0000-000000000000"
+function Get-NSGFlowLogBlockList {
+    [CmdletBinding()]
+    param (
+        [string] [Parameter(Mandatory=$true)] $subscriptionId,
+        [string] [Parameter(Mandatory=$true)] $NSGResourceGroupName,
+        [string] [Parameter(Mandatory=$true)] $NSGName,
+        [string] [Parameter(Mandatory=$true)] $storageAccountName,
+        [string] [Parameter(Mandatory=$true)] $storageAccountResourceGroup,
+        [string] [Parameter(Mandatory=$true)] $macAddress,
+        [datetime] [Parameter(Mandatory=$true)] $logTime
+    )
 
-# Resource group that contains the Network Security Group
-$resourceGroupName = "<resourceGroupName>"
+    process {
+        # Retrieve the primary storage account key to access the NSG logs
+        $StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroup -Name $storageAccountName).Value[0]
 
-# The name of the Network Security Group
-$nsgName = "NSGName"
+        # Setup a new storage context to be used to query the logs
+        $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
-# The storage account name that contains the NSG logs
-$storageAccountName = "<storageAccountName>" 
+        # Container name used by NSG flow logs
+        $ContainerName = "insights-logs-networksecuritygroupflowevent"
 
-# The date and time for the log to be queried, logs are stored in hour intervals.
-[datetime]$logtime = "06/16/2017 20:00"
+        # Name of the blob that contains the NSG flow log
+        $BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${NSGResourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${NSGName}/y=$($logTime.Year)/m=$(($logTime).ToString("MM"))/d=$(($logTime).ToString("dd"))/h=$(($logTime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
 
-# Retrieve the primary storage account key to access the NSG logs
-$StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
+        # Gets the storage blog
+        $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-# Setup a new storage context to be used to query the logs
-$ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+        # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
+        $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
-# Container name used by NSG flow logs
-$ContainerName = "insights-logs-networksecuritygroupflowevent"
+        # Stores the block list in a variable from the block blob.
+        $blockList = $CloudBlockBlob.DownloadBlockList()
 
-# The MAC Address of the Network Interface
-$macAddress = "000D3AFA8650"
-
-# Name of the blob that contains the NSG flow log
-$BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${nsgName}/y=$($logtime.Year)/m=$(($logtime).ToString("MM"))/d=$(($logtime).ToString("dd"))/h=$(($logtime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
-
-# Gets the storage blog
-$Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
-
-# Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
-$CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
-
-# Stores the block list in a variable from the block blob.
-$blockList = $CloudBlockBlob.DownloadBlockList()
+        # Return the Block List
+        $blockList
+    }
+}
+$blockList = Get-NSGFlowLogBlockList -subscriptionId "00000000-0000-0000-0000-000000000000" -NSGResourceGroupName "resourcegroupname" -storageAccountName "storageaccountname" -storageAccountResourceGroup "sa-rg" -macAddress "000D3AF8196E" -logTime "03/07/2018 22:00"
 ```
 
-A `$blockList` változó a blokkok listáját adja vissza a BLOB. Minden egyes blokkblob legalább két blokk tartalmaz.  Az első kért blokkra hossza `21` bájt, a blokk tartalmaz a nyitó szögletes json napló. A más blokkot a záró szögletes zárójel, és hossza `9` bájt.  A következő példa napló látható tartalmaz hét bejegyzéseket, minden egyes bejegyzés alatt. A naplóban szereplő összes új bejegyzések kerülnek közvetlenül előtt az utolsó blokk végén.
+A `$blockList` változó a blokkok listáját adja vissza a blobban. Minden egyes blokkblob legalább két blokk tartalmaz.  Az első blokk hossza `21` bájt, ezt a blokkot a nyitó szögletes a json-napló tartalmazza. A más Címblokk a záró szögletes zárójel, és hossza `9` bájt.  Amint láthatja, hogy a következő példa log tartalmaz, egy önálló bejegyzés alatt hét bejegyzéseket. A naplóban lévő minden új bejegyzések kerülnek, a teljes körű közvetlenül a végső letiltása előtt.
 
 ```
 Name                                         Length Committed
@@ -95,9 +96,9 @@ Mzk1YzQwM2U0ZWY1ZDRhOWFlMTNhYjQ3OGVhYmUzNjk=   2675      True
 ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 ```
 
-## <a name="read-the-block-blob"></a>Olvassa el a blokkblob
+## <a name="read-the-block-blob"></a>A blokkblobok olvasása
 
-Ezután azt kell olvasni a `$blocklist` változó adatok lekéréséhez. Ebben a példában azt a blocklist iterációt olvassa be a bájtok valamennyi blokkja, illetve szövegegység őket a tömbben. Használjuk a [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódus adatok lekéréséhez.
+Ezután azt kell olvasni az `$blocklist` változó adatok lekéréséhez. Ebben a példában azt a tiltólista iterálódnak a bájtot olvas minden egyes, és szövegegység őket a tömbben. Használjuk a [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódusának segítéségével lekérheti az adatokat.
 
 ```powershell
 # Set the size of the byte array to the largest block
@@ -131,9 +132,9 @@ $valuearray += $value
 }
 ```
 
-Most már a `$valuearray` tömb valamennyi blokkja karakterlánc értékét tartalmazza. A bejegyzés ellenőrzéséhez beszerezni a második az utolsó értékre a tömb futtatásával `$valuearray[$valuearray.Length-2]`. Nem szeretnénk az utolsó értéke csak a záró zárójel.
+Most már a `$valuearray` tömb minden egyes karakterlánc értékét tartalmazza. Ellenőrizze a bejegyzést, kérje le a második az utolsó értékre a tömbből futtatásával `$valuearray[$valuearray.Length-2]`. Nem szeretnénk utolsó értéke csak a záró zárójelet.
 
-Az eredmények ennek az értéknek a következő példa látható:
+Ezt az értéket az eredmények az alábbi példában látható:
 
 ```json
         {
@@ -155,11 +156,11 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
         }
 ```
 
-Ebben a forgatókönyvben a példa bemutatja, hogyan NSG folyamata naplók bejegyzések olvasását anélkül, hogy a teljes naplót elemzése. Új bejegyzések a naplóban olvashatók, a Blokkazonosítót vagy nyomon követése a blokkblob tárolt blokkok hosszát írás. Ez lehetővé teszi, hogy csak az új bejegyzések olvasását.
+Ebben a forgatókönyvben, amelyek a bejegyzéseket az NSG-forgalom naplóinak olvasása elemezni a teljes naplót nélkül. Új bejegyzések a naplóban, a Blokkazonosítót használatával, vagy tárolja a blokkblob típusú blokkok hossza nyomon követése révén megírásának olvashat. Ez lehetővé teszi, hogy csak az új bejegyzések olvasását.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Látogasson el [nyílt forráskódú eszközökkel Azure hálózati figyelő NSG folyamata naplók megjelenítése](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) további információt más módokon NSG folyamata naplók megtekintéséhez.
+Látogasson el [megjelenítése nyílt forráskódú eszközök használatával az Azure Network Watcher NSG-Folyamatnaplók](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) NSG-forgalom naplóinak megtekintéséhez egyéb módjaival kapcsolatos további.
 
-Storage blobsba olvashat további: [Azure Functions Blob storage kötések](../azure-functions/functions-bindings-storage-blob.md)
+Storage-blobokat olvashat további: [Azure Functions – a Blobtároló kötései](../azure-functions/functions-bindings-storage-blob.md)

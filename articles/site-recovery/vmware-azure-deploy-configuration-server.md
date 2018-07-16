@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 240f5270d083fa5f4742f3ed2cd61feee2b635ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718957"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056759"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -38,9 +38,9 @@ A konfigurációs kiszolgáló méretezési követelményei potenciális adatvá
 
 | **CPU** | **Memória** | **Gyorsítótár-lemez mérete** | **A módosult adatok aránya** | **Védett gépek** |
 | --- | --- | --- | --- | --- |
-| 8 Vcpu (2 sockets * 4 mag, 2,5 GHz-es @) |16 GB |300 GB |500 GB vagy kevesebb |100-nál kevesebb gépeket replikálni. |
-| 12 vcpu-k (2 sockets * @ 2,5 GHz-es 6 mag) |18 GB |600 GB |500 GB – 1 TB |100 – 150 gépeket replikálni. |
-| 16 vcpu-k (2 sockets * 8 mag, 2,5 GHz-es @) |32 GB |1 TB |1 TB-os 2 TB-ig |150-200 gépeket replikálni. |
+| 8 Vcpu (2 sockets * 4 mag \@ 2,5 GHz-es) |16 GB |300 GB |500 GB vagy kevesebb |100-nál kevesebb gépeket replikálni. |
+| 12 vcpu-k (2 sockets * 6 magok \@ 2,5 GHz-es) |18 GB |600 GB |500 GB – 1 TB |100 – 150 gépeket replikálni. |
+| 16 vcpu-k (2 sockets * 8 magos \@ 2,5 GHz-es) |32 GB |1 TB |1 TB-os 2 TB-ig |150-200 gépeket replikálni. |
 
 Ha egynél több VMware virtuális gép replikál, olvassa el a [kapacitástervezésének szempontjai](/site-recovery-plan-capacity-vmware.md). Futtassa a [Deployment planner eszköz](site-recovery-deployment-planner.md) a VMWare replikálásához.
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: dobett
-ms.openlocfilehash: beb1e1e166325cb41a5d4e4fa07565b1f3d4b3bb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 71de0a86594737f5f581f9a1f638bab0f7b06e8e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666916"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056742"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Feladatok ütemezése és kiküldése (.NET/.NET)
 
@@ -295,7 +295,7 @@ Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolg�
 [lnk-twin-props]: iot-hub-csharp-csharp-twin-how-to-configure.md
 [lnk-c2d-methods]: iot-hub-csharp-csharp-direct-methods.md
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
-[lnk-fwupdate]: iot-hub-csharp-csharp-firmware-update.md
+[lnk-fwupdate]: tutorial-firmware-update.md
 [lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

@@ -2,7 +2,7 @@
 
 Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A *teljes* tartománynév (FQDN) tartalmazza a zóna nevét, a *relatív* név azonban nem. Például: a „www” relatív rekordnév a „contoso.com” zónában a „www.contoso.com” teljes tartománynevet adja ki.
 
-Egy *csúcs*rekord a gyökérnél egy DNS-rekord vagy egy DNS-zóna *csúcsa*. Például a „contoso.com” DNS-zónában a csúcsrekord szintén a „contoso.com” teljes tartománynévvel rendelkezik (ezt néha *csupasz* tartománynévnek is nevezzük).  A szabályok szerint a '@' relatív név csúcsrekordokat jelöl.
+Egy *csúcs*rekord a gyökérnél egy DNS-rekord vagy egy DNS-zóna *csúcsa*. Például a „contoso.com” DNS-zónában a csúcsrekord szintén a „contoso.com” teljes tartománynévvel rendelkezik (ezt néha *csupasz* tartománynévnek is nevezzük).  A relatív név konvenció szerint "\@" csúcsrekordokat jelöl.
 
 ### <a name="record-types"></a>Rekordtípusok
 
