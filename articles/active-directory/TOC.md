@@ -143,9 +143,9 @@
 ## Jelszavak kezelése
 ### [Jelszavak áttekintése](authentication/active-directory-passwords-overview.md)
 ### Felhasználói dokumentumok
-#### [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
+#### [Jelszó visszaállítása vagy módosítása](user-help/active-directory-passwords-update-your-own-password.md)
 #### [Ajánlott eljárások a jelszavakhoz](active-directory-secure-passwords.md)
-#### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
+#### [Regisztráció önkiszolgáló jelszó-visszaállításra](user-help/active-directory-passwords-reset-register.md)
 ### [Az SSPR működése](authentication/concept-sspr-howitworks.md)
 ### [SSPR üzembehelyezési útmutató](authentication/howto-sspr-deployment.md)
 ### [SSPR és Windows 10](authentication/tutorial-sspr-windows.md)
@@ -174,8 +174,8 @@
 ### [Az Azure AD Join megtervezése](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Gyakori kérdések](device-management-faq.md)
 ### Feladatok
-#### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök beállítása](device-management-azuread-registered-devices-windows10-setup.md)
-#### [Az Azure AD-hez csatlakoztatott eszközök beállítása](device-management-azuread-joined-devices-setup.md)
+#### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök beállítása](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+#### [Az Azure AD-hez csatlakoztatott eszközök beállítása](user-help/device-management-azuread-joined-devices-setup.md)
 #### [Hibrid Azure AD-hez csatlakoztatott eszközök beállítása](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
 #### [Azure AD-csatlakozás a Windows 10 első futtatási élménye alkalmával](device-management-azuread-joined-devices-frx.md)
