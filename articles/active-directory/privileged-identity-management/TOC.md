@@ -42,9 +42,9 @@
 ### [Hozzáférési felülvizsgálat indítása](pim-resource-roles-start-access-review.md)
 ### [Hozzáférési felülvizsgálat befejezése](pim-resource-roles-complete-access-review.md)
 
-# Gyakori kérdések
-## A PIM használata erőforrás-szerepkörökkel
-### [Hozzárendelés-típusok](pim-resource-roles-eligible-visibility.md)
+# Alapelvek
+## [Hozzárendelés-típusok](pim-resource-roles-eligible-visibility.md)
+## [E-mail-értesítések](pim-email-notifications.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)

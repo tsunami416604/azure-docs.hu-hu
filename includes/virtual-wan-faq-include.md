@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/10/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5cb1360731eeabe4963330210ba6fe090f0e088a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 8c3f727c6154a0364f151d22000d2684c361676a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008824"
+ms.locfileid: "39037210"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Mi a különbség egy Azure-beli virtuális hálózati átjáró (VPN Gateway) és egy Azure Virtual WAN-beli VPNGateway között?
 
@@ -78,4 +78,4 @@ Az UDR és az útválasztási funkció általánosan elérhető lesz.
 
 ### <a name="is-there-any-licensing-or-pricing-information-for-virtual-wan"></a>Milyen licenc- vagy díjszabási információ érhető el a Virtual WAN-ról?
  
-A szolgáltatás felár nélkül használható. Az előzetes verzióban a jelenlegi [Azure VPN- és kimenő forgalmi díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway/) marad érvényben.
+A szolgáltatás felár nélkül használható az előzetes verzióban. Az előzetes verzióban a jelenlegi [Azure VPN- és kimenő forgalmi díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway/) marad érvényben.

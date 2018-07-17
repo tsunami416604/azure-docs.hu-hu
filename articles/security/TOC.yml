@@ -218,11 +218,10 @@
           href: ./blueprints/uknhs-iaaswa-overview.md
         - name: PaaS webalkalmazás
           href: ./blueprints/uknhs-paaswa-overview.md
-    - name: UK-OFFICIAL
-      href: ./blueprints/uk-official-three-tier-applications-overview.md
+    - name: UK OFFICIAL
       items:
-        - name: Alapelvek áttekintése
-          href: ./blueprints/uk-official-three-tier-applications-principles-overview.md
+        - name: IaaS-webalkalmazás
+          href: ./blueprints/ukofficial-iaaswa-overview.md
     - name: HIPAA/HITRUST-állapotadatok és mesterséges intelligencia
       href: ./blueprints/azure-health.md
 - name: Tanulmányok

@@ -1,6 +1,6 @@
 ---
-title: Azure-készletben a tárolási kapacitás kezelése |} Microsoft Docs
-description: Megfigyelését és felügyeletét a rendelkezésre álló szabad hely Azure verem.
+title: Kezelheti a tárolási kapacitást az Azure Stackben |} A Microsoft Docs
+description: Figyelheti és kezelheti a rendelkezésre álló tárhely az Azure Stackhez.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,134 +15,134 @@ ms.topic: get-started-article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: da6bb00d7538c1a26e1ed4be29d3c882aa378e9e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: cdfdaf9195f14e3cbe3db2a4507bd91a3133a26e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077411"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071385"
 ---
-# <a name="manage-storage-capacity-for-azure-stack"></a>A tárolókapacitás Azure verem kezelése
+# <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A cikkben szereplő információkat az Azure-verem felhő operátor monitor segítségével, és a tárolási kapacitást az Azure-verem központi telepítés kezelése. Az Azure-verem tároló-infrastruktúra foglal le, a teljes kapacitásának az Azure Alkalmazásveremben üzembe használandó részhalmazának **tárolószolgáltatások**. A tárolási szolgáltatások egy bérlő adatok tárolása, hogy a csomópontok a központi telepítés köteteken megosztások.
+Ebben a cikkben található információk segítséget nyújt az Azure Stack felhő operátor figyelője és kezelése az Azure Stack üzemelő példányához tárolókapacitását. Az Azure Stack tárolási infrastruktúra foglalja le a teljes tárolási kapacitás használható az Azure Stack üzembe egy részhalmazát **tárolószolgáltatások**. A storage szolgáltatásokat a köteteken, amelyek megfelelnek a csomópontok a központi telepítési megosztás egy bérlők adatainak tárolása.
 
-Felhő operátorként használható tárolási csak korlátozott mennyiségű rendelkezik. A megoldás megvalósítása tárolókapacitást határozza meg. A megoldás a OEM gyártójának többcsomópontos megoldás használatakor, vagy a hardver, amelyre telepíti az Azure verem szoftverfejlesztői készlet által biztosított.
+Felhő-felelősként korlátozott mennyiségű tárhely használata rendelkezik. A megoldás megvalósítása tárterület mérete határozza meg. A megoldás az OEM beszállítói egy több csomópontos megoldás használata esetén, vagy a hardvert, amelyre telepíti az Azure Stack Development Kit biztosítunk.
 
-Mivel Azure verem nem támogatja a tárolási kapacitás bővítése, fontos, hogy [figyelő](#monitor-shares) hatékony műveletek biztosításához a rendelkezésre álló tár karbantartása.  
+Mivel az Azure Stack nem támogatja a tárolási kapacitás bővítése, fontos, hogy [figyelő](#monitor-shares) hatékony, hogy a rendelkezésre álló tár karbantartása.  
 
-Amikor egy megosztás szabad kapacitása korlátozott, tervezi [címtér kezelésére](#manage-available-space) megakadályozhatja, hogy a megosztások a relatív azonosítók elfogyását kapacitás.
+Amikor egy megosztás fennmaradó szabad kapacitása korlátozott, tervezi, hogy [címtér kezelésére](#manage-available-space) , hogy elkerülje a megosztások kapacitás futását.
 
-Kezelheti a kapacitás lehetőségek a következők:
+A kapacitás kezelése lehetőségek a következők:
 - Kapacitás visszaigényléséhez
-- A tároló áttelepítése
+- Tároló áttelepítése
 
-Ha egy nem 100 %-os funkcióját, a tárolás szolgáltatás már nem ennek a megosztásnak a funkciók. Segítségkérés a visszaállítási műveleteket a megosztáshoz, a Microsoft támogatási szolgálatához.
+100 %-os használt fel, a storage-megosztás esetén a szolgáltatás már nem használt megosztást a functions. Segítségkérés a visszaállítási műveleteket a megosztás, forduljon a Microsoft ügyfélszolgálatához.
 
 ## <a name="understand-volumes-and-shares-containers-and-disks"></a>Kötetek és megosztások, tárolók és a lemezek ismertetése
 ### <a name="volumes-and-shares"></a>Kötetek és megosztások
-A *társzolgáltatás* particionálja a rendelkezésre álló tár be különálló és egyenlő bérlői adatok tárolásához kiosztott köteteket. A kötetek száma megegyezik a csomópontok számát a verem Azure környezetben:
+A *társzolgáltatás* particionálja a rendelkezésre álló tár be különálló és egyenlő bérlői adatok tárolásához kiosztott köteteket. A kötetek száma egyenlő a csomópontok számát az Azure Stack üzemelő példányban:
 
-- Négy csomópontos üzemelő példányon négy kötetek vannak. Minden kötet egyetlen megosztása rendelkezik. Több csomópontos üzemelő példányon megosztások száma nem csökken, ha egy csomópont eltávolított vagy hibásan.
-- Ha az Azure verem szoftverfejlesztői készlet használ, nincs egyik kötetéről, egyetlen megosztása.
+- Egy négy csomópontos üzemelő példányon nincsenek négy köteteket. Minden kötetnek egyetlen megosztása. A több csomópontos központi telepítést, a megosztások száma nem csökken, ha egy csomópont eltávolított vagy hibásan.
+- Az Azure Stack fejlesztői készletének használja, ha van egy kötetet, és egyetlen megosztása.
 
-Mivel a tárolás szolgáltatás megosztások tárolószolgáltatások kizárólagos használatára, kell közvetlenül nem módosítható, adja hozzá, vagy távolít el fájlokat, ha a megosztásokkal. Csak a tárolási szolgáltatások az ezeken a köteteken tárolt fájlok kell működnie.
+Mivel a storage szolgáltatás megosztások tárolási szolgáltatások kizárólagos használatát, meg kell közvetlenül nem módosítását, adja hozzá vagy távolít el a fájlokat, ha a megosztásokkal. Csak a tárolási szolgáltatások is működnie kell az ezeken a köteteken tárolt fájlokról.
 
-Megosztások köteteken bérlői adatok tárolásához. Bérlői adatok magában foglalja a lapblobokat, blokkblobokat, hozzáfűző blobokat, táblák, üzenetsorok, adatbázisok és kapcsolódó metaadatok tárolja. Belül egyetlen megosztása külön-külön tartalmazza a tárolási objektum (BLOB, stb.), mert az egyes objektumok maximális mérete nem haladhatja meg a fájlmegosztás méretét. Új objektumok maximális mérete attól függ, hogy a kapacitás, amely az új objektum létrehozásakor, a nem használt terület olyan megosztáson marad.
+Megosztások, kötetek bérlői adatok tárolásához. Bérlők adatainak magában foglalja a lapblobokat, blokkblobokat, hozzáfűző blobok, táblák, üzenetsorok, adatbázisok és kapcsolatos metaadat-tárolók. Egyetlen megosztása külön-külön tartalmazza a tárolási objektum (blobok, stb.), mert minden egyes objektum maximális mérete nem haladhatja meg a fájlmegosztás méretét. Új objektumok maximális mérete attól függ, hogy a kapacitás, amely az új objektum létrehozásakor, fel nem használt területe olyan megosztáson marad.
 
-Ha egy nem alacsony lemezterülettel és műveletek [VISSZAIGÉNYLÉSE](#reclaim-capacity) terület nem sikeres vagy elérhető, az Azure-verem felhő üzemeltetője lehet [áttelepítése](#migrate-a-container-between) a blob tárolók egy megosztást a másikra.
+Ha egy megosztást alacsony a szabad terület és műveletek [VISSZAIGÉNYLÉSE](#reclaim-capacity) terület nem sikeres, illetve érhető el, az Azure Stack-felhő üzemeltetője lehet [áttelepítése](#migrate-a-container-between) a blobtárolók egy megosztást a másikra.
 
-- Tárolók és blobok kapcsolatos további információkért lásd: [Blob-tároló](azure-stack-key-features.md#blob-storage) kulcs szolgáltatásainak és fogalmak Azure-készletben.
-- Bérlő felhasználók miként az Azure-készletben a blob storage szolgáltatással kapcsolatos további információkért lásd: [Azure verem tárolószolgáltatások](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
+- Tárolók és blobok kapcsolatos további információkért lásd: [a Blob storage-](azure-stack-key-features.md#blob-storage) a kulcs funkcióiról és koncepciójáról az Azure Stackben.
+- Bérlő felhasználók miként használják a blob storage, az Azure Stack használatával kapcsolatos információkért lásd: [Azure Stack tárolószolgáltatások](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
 
 
-### <a name="containers"></a>Tárolók
-Bérlő felhasználók létrehozása, majd Blobadatok tárolására szolgáló tárolókat. Amíg a felhasználó úgy dönt, hogy mely tárolóban helyezhető el a blobokat, a tárolás szolgáltatás algoritmust használ annak meghatározásához, amelyre a tároló melyik köteten. Az algoritmus általában úgy dönt, a legtöbb szabad területtel rendelkező kötet.  
+### <a name="containers"></a>Containers
+Bérlő felhasználók létrehozása, amely majd Blobadatok tárolására szolgáló tárolókat. Amíg a felhasználó úgy dönt, hogy melyik tárolóban helyezhető el a blobokat, a storage szolgáltatás segítségével egy olyan algoritmust határozza meg, melyik köteten helyezi a tárolót. Az algoritmus általában úgy dönt, a kötet a legtöbb szabad területtel rendelkező.  
 
-Egy blob a tárolóban lévő helyezkedik el, miután a, hogy a blob nagyobb területet növelhető. Amikor új blobok és a meglévő blobok növekszik, a rendelkezésre álló területet a köteten, amely az adott tároló zsugorítja tárolja.  
+Miután egy blobot egy tárolóban kerül, a, hogy a blob nagyobb területet növelhető. Amikor új blobok és a meglévő blobok növekszik, a kötet, amely tartalmazza a tároló zsugorítja rendelkezésre álló területet.  
 
-Tárolók egyetlen megosztása nem korlátozódnak. A kombinált Blobadatok tároló használata 80 %-ának a rendelkezésre álló terület növekszik, ha beírja-e a tároló *túlcsordulás* mód. Túlcsordulás módban bármely új BLOB a tárolóban létrehozott egy másik kötetre elegendő szabad hellyel rendelkező foglal le. Idővel túlcsordulás módban a tároló több kötet elosztott blobok is rendelkezhet.
+Tárolók az egyetlen megosztása nem korlátozódnak. A kombinált blob-tárolóban lévő adatokat használat 80 %-os vagy több, a rendelkezésre álló nő, ha beírja-e a tároló *túlcsordulás* mód. Túlcsordulás módban bármely új blobok létrehozott a tárolóban kiosztott elegendő szabad hellyel rendelkező másik kötetet. Idővel túlcsordulás módban egy tároló lehet a blobokat, amelyekre több kötet vannak elosztva.
 
-80 %-át, és 90 %-a rendelkezésre álló területet a köteten a használata esetén, a rendszer riasztást küld a verem Azure felügyeleti portálon. A felhő üzemeltetői kell tekintse át a rendelkezésre álló lemezterület, és tervezze meg a tartalom egyensúlyba. A tároló szolgáltatás nem működik, ha egy lemez 100 %-át használja, és nincs további riasztásokról értesítő.
+80 %-át, és 90 %-a rendelkezésre álló területet a kötet használata esetén a rendszer riasztást küld az Azure Stack rendszergazdai portálon. Felhő üzemeltetői kell tekintse át a rendelkezésre álló tár kapacitása, és a tartalom újraegyensúlyozására megtervezése. A storage szolgáltatás leáll, ha egy lemez, 100 %-át használja, és nincsenek további riasztások aktiválódnak.
 
 ### <a name="disks"></a>Lemezek
-Virtuális gépek lemezei bérlők tárolók adnak, és operációsrendszer-lemez tartalmazza. Virtuális gépek legalább egy adatlemezt is lehet. Mindkét típusú lemezek lapblobokat tárolódnak. Az útmutató a bérlők számára az, hogy minden lemez a virtuális Gépet a teljesítmény javítása érdekében egy külön tárolóba.
-- Minden egyes tároló, amely egy virtuális géptől (oldalakra vonatkozó blob) lemez egy csatolt tárolót, hogy a virtuális Gépet, a lemez birtokló minősül.
-- Olyan tároló, amely azonban nem tartalmaz olyan lemezek VM tekinthető szabad tárolója.
+Virtuálisgép-lemezek bérlők által hozzáadott tárolókhoz, és tartalmazza az operációsrendszer-lemez. Virtuális gépek egy vagy több adatlemezt is lehet. Mindkét típusú lemezek lap blobként vannak tárolva. Az útmutató a bérlők számára, hogy helyezze el az egyes lemezek teljesítményét a virtuális gép egy külön tárolóba.
+- Minden tároló, amely egy virtuális gép lemeze (lapblob) egy csatlakoztatott tároló, a virtuális géphez, a lemez birtokló számít.
+- Egy tároló, amely nem tartalmaz minden olyan lemezt egy virtuális gépről egy ingyenes tároló számít.
 
-Szabadítson fel lemezterületet a egy csatlakoztatott tároló beállításokat [korlátozott](#move-vm-disks).
+Szabadítson fel lemezterületet egy csatlakoztatott tárolón beállítás [korlátozódnak](#move-vm-disks).
 > [!TIP]  
-> A felhő üzemeltetői kezel közvetlenül a virtuális gépek (VM), amely a bérlők előfordulhat, hogy adja hozzá a tárolóhoz csatlakoztatott lemezek. Azonban a storage-megosztásokat belüli kezelésére szolgáló tervezésekor lehet megérteni, hogyan tárolók és -megosztásoknak kapcsolódnak-e a lemezek használati.
+> Felhő üzemeltetői nem kezel közvetlenül lemezek, virtuális gépek (VM), amely a bérlők adhat hozzá egy tárolóba van csatolva. Azonban megtervezésekor kezelni a területet a storage-megosztásokat, érdemes lehet tudni, hogyan tárolók és -megosztások kapcsolódnak-e a lemezek használatának.
 
 ## <a name="monitor-shares"></a>A figyelő megosztások
-Használja a Powershellt vagy a felügyeleti portál megosztások figyelésére, így megismerheti, ha a szabad terület korlátozva. Ha a portál, megosztások, amelyek kevés a lemezterület kapcsolatos riasztásokat kapni.    
+Használja a Powershellt vagy a felügyeleti portálon figyelése a megosztásokat, így megismerheti, hogy ha a szabad terület korlátozva. Ha a portál, megosztások, amelyek kevés a lemezterület kapcsolatos riasztásokat kap.    
 
 ### <a name="use-powershell"></a>A PowerShell használata
-Felhő operátorként, figyelheti a tárolási kapacitás, a PowerShell használatával megosztás **Get-AzsStorageShare** parancsmag. A Get-AzsStorageShare parancsmag adja vissza az összes lefoglalt és szabad terület bájt egyes a megosztásokat.   
-![Példa: Vissza megosztások szabad terület](media/azure-stack-manage-storage-shares/free-space.png)
+Felhő-felelősként, figyelemmel kísérheti a tárolási kapacitás, a PowerShell-lel megosztás **Get-AzsStorageShare** parancsmagot. A Get-AzsStorageShare parancsmag ad vissza, az egyes a megosztásokat az összes, a lefoglalt és a szabad lemezterület (bájt).   
+![Példa: Megosztások szabad terület adja vissza.](media/azure-stack-manage-storage-shares/free-space.png)
 
-- **Teljes kapacitás** a teljes lemezterület, amely a megosztás elérhető. Ez a terület az adatok és a tárolási szolgáltatások által kezelt metaadatok szolgál.
-- **Használható kapacitás** az adatmennyiség bájtban az összes tartományát a bérlői adatforgalom és kapcsolódó metaadatok tároló fájlok által használt van.
+- **Teljes kapacitás** a teljes területe, amely elérhető a megosztáson (bájt). Ez a terület az adat- és a tárolási szolgáltatások által kezelt metaadat szolgál.
+- **Használt kapacitás** , amennyit a a fájlokat, a bérlői adatok és kapcsolódó metaadatok összes egységek által használt adatok (bájt).
 
-### <a name="use-the-administrator-portal"></a>A felügyeleti portálon
-A felhő üzemeltetője használhatja is a felügyeleti portál minden megosztás tárolókapacitását megtekintéséhez. **Nyissa meg a tárolási** > **fájlmegosztások** nyissa meg a fájl megosztás a listát, ahol megtekintheti a használatra vonatkozó információ.
+### <a name="use-the-administrator-portal"></a>A felügyeleti portál
+Felhő-felelősként minden megosztás tárkapacitása megtekintéséhez használhatja a felügyeleti portálon. **Lépjen a Storage** > **fájlmegosztások** , ahol megtekintheti a használati adatok fájl megosztási listájának megnyitásához.
 ![Példa: Tárolófájl-megosztások](media/azure-stack-manage-storage-shares/storage-file-shares.png)
-- **TELJES** a teljes lemezterület, amely a megosztás elérhető. Ez a terület az adatok és a tárolási szolgáltatások által kezelt metaadatok szolgál.
-- **HASZNÁLT** az adatmennyiség bájtban az összes tartományát a bérlői adatforgalom és kapcsolódó metaadatok tároló fájlok által használt van.
+- **TELJES** a teljes területe, amely elérhető a megosztáson (bájt). Ez a terület az adat- és a tárolási szolgáltatások által kezelt metaadat szolgál.
+- **HASZNÁLT** , amennyit a a fájlokat, a bérlői adatok és kapcsolódó metaadatok összes egységek által használt adatok (bájt).
 
-### <a name="storage-space-alerts"></a>Tárolási terület riasztások
-Ha a felügyeleti portál, megosztások, amelyek kevés a lemezterület kapcsolatos riasztásokat kapni.
+### <a name="storage-space-alerts"></a>Tárolási hely riasztások
+Ha a felügyeleti portál, megosztások, amelyek kevés a lemezterület kapcsolatos riasztásokat kap.
 
 > [!IMPORTANT]
-> A felhő üzemeltetője tartson megosztások elérése teljes kihasználtsága. Ha egy nem 100 %-os funkcióját, a tárolás szolgáltatás már nem ennek a megosztásnak a funkciók. Szabad terület és visszaállítási műveletek 100 %-os be egy megosztott érdekében forduljon a Microsoft támogatási szolgálatához.
+> A felhő felelősnek megosztások megtartása teljes használat eléri. 100 %-os használt fel, a storage-megosztás esetén a szolgáltatás már nem használt megosztást a functions. Szabad hely helyreállítása és visszaállítási műveletek egy megosztáson, amely 100 %-os használt fel, forduljon a Microsoft ügyfélszolgálatához.
 
-**Figyelmeztetés**: amikor fájlmegosztást több mint 80 % funkcióját, akkor megjelenik egy *figyelmeztetés* riasztás a felügyeleti portál: ![példa: figyelmeztető riasztás](media/azure-stack-manage-storage-shares/alert-warning.png)
-
-
-**Kritikus**: amikor fájlmegosztást több mint 90 % funkcióját, akkor megjelenik egy *kritikus* riasztás a felügyeleti portál: ![példa: kritikus riasztás](media/azure-stack-manage-storage-shares/alert-critical.png)
-
-**A részletek megtekintéséhez**: a felügyeleti portálon nyissa meg a riasztás részletei között egy megoldás megtekintéséhez: ![példa: a riasztás részleteinek megtekintése](media/azure-stack-manage-storage-shares/alert-details.png)
+**Figyelmeztetés**: amikor egy fájlmegosztás több mint 80 %-os használt fel, kap egy *figyelmeztetés* riasztás a felügyeleti portálon: ![példa: figyelmeztető riasztás](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 
-## <a name="manage-available-space"></a>Rendelkezésre álló terület kezelése
-Ha a szabad terület-megosztáson található, először használja a legkevésbé zavarja a munkában módszerek. Például megpróbálja jusson, úgy dönt, hogy a tároló áttelepítése előtt.  
+**Kritikus fontosságú**: amikor egy fájlmegosztás több mint 90 %-os használt fel, kap egy *kritikus* riasztás a felügyeleti portálon: ![példa: kritikus riasztás](media/azure-stack-manage-storage-shares/alert-critical.png)
+
+**A részletek megtekintéséhez**: a felügyeleti portálon nyissa meg egy riasztás megtekintése a kockázatcsökkentési lehetőségek részleteit: ![példa: a riasztás részleteinek megtekintése](media/azure-stack-manage-storage-shares/alert-details.png)
+
+
+## <a name="manage-available-space"></a>Rendelkezésre álló hely kezelése
+Ha azt megosztáson lévő szabad hely szükséges, először használja a legkevésbé invazív módszerek. Például próbál jusson úgy dönt, hogy a tároló áttelepítése előtt.  
 
 ### <a name="reclaim-capacity"></a>Kapacitás visszaigényléséhez
-*Ez a beállítás a több csomópontos rendszerekhez és az Azure verem szoftverfejlesztői készlet egyaránt vonatkoznak.*
+*Ez a beállítás is több csomópontos központi telepítések, és az Azure Stack Development Kit vonatkozik.*
 
-A bérlői fiókokat törölt által használt kapacitás is visszaigényléséhez. Ezeket a feladatokat a rendszer automatikusan visszaigényelt, ha az adatok [megőrzési időszak](azure-stack-manage-storage-accounts.md#set-the-retention-period) elérésekor, vagy a visszaszerezni azonnal működhet.
+A törölt bérlő fiókok által használt kapacitás is visszaigényelhetők. Ez a kapacitás a program automatikusan vissza, ha az adatok [megőrzési időszak](azure-stack-manage-storage-accounts.md#set-the-retention-period) elérése vagy felszabadítani, azonnal működhet.
 
 További információkért lásd: [kapacitás visszaigényléséhez](azure-stack-manage-storage-accounts.md#reclaim) a tárolási erőforrások kezelése.
 
-### <a name="migrate-a-container-between-volumes"></a>Telepítse át a tároló kötetek között
-*Ez a beállítás csak több csomópontos rendszerekhez vonatkozik.*
+### <a name="migrate-a-container-between-volumes"></a>Egy tároló kötetek közötti migrálása
+*Ez a beállítás csak a több csomópontos központi telepítések vonatkozik.*
 
-Bérlő használati szokásokról, mert bérlői megosztások használja a többinél nagyobb területet. Az eredmény lehet egy olyan megosztás, futó alacsony előtt más megosztások, viszonylag nem használt terület.
+Bérlői használati mintákat, mert bérlői megosztások használja, mint a többi több helyet. Az eredmény egy futó alacsony előtti más a megosztások, viszonylag nem használt megosztást is lehet.
 
-Próbálja meg manuálisan át kell telepítenie néhány blob tárolók különböző megosztásra szabadítson fel helyet a színvonalát megosztáson. Több kisebb tároló, amely rendelkezik a kapacitás ahhoz, azok összes egyetlen megosztása áttelepítheti. Áttelepítés használatával helyezze át *szabad* tárolók. Szabad tárolók olyan tárolók, amelyek nem tartalmaznak egy lemezt a virtuális gépek.   
+Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelepítésével színvonalát megosztáson hely felszabadítása érdekében. Több kisebb méretű tároló, amely kapacitása az összes tárolásához egyetlen megosztásra áttelepítheti. Áttelepítés használatával áthelyezése *ingyenes* tárolók. Ingyenes tárolók olyan tárolók, amelyek nem tartalmaznak egy lemezt egy virtuális géphez.   
 
-Áttelepítés az új megosztás összes tárolók blob összesíti.
+Áttelepítés az új megosztásban lévő összes tárolók blob összesíti.
 
-- Ha a blobok helyezte el a további kötetek tárolója túlcsordulás módra váltott, az új megosztás összes a tároló áttelepítése a blobok tárolására elegendő kapacitással kell rendelkeznie. Ez magában foglalja a blobok további megosztások található.
+- Ha egy tároló túlcsordulás üzemmódba lépett, és a további kötetek helyezte a blobok, az új megosztás minden a tároló áttelepítése a blobok tárolására elegendő kapacitással kell rendelkeznie. Ez magában foglalja a további megosztások lévő blobokat.
 
-- A PowerShell-parancsmag *Get-AzsStorageContainer* csak a kezdeti köteten használja a tároló terület azonosítja. A parancsmag nem határozza meg a blobok további kötetek elhelyezése által használt lemezterület. A tároló teljes méretét, ezért nem feltétlenül nyilvánvaló. Akkor lehet, hogy egy tárolót az új megosztás összevonása küldhet, hogy új megosztás túlcsordult állapotot az hol helyezi további megosztások adatokat. Ennek eredményeképpen előfordulhat, hogy kell megosztások újra egyensúlyba.
+- A PowerShell-parancsmag *Get-AzsStorageContainer* csak egy tárolót a kezdeti kötetén használt lemezterület azonosítja. A parancsmag nem határozza meg fűzendő további kötetek blobok által használt területet. A tároló teljes méretét, ezért nem feltétlenül nyilvánvaló. Akkor lehet, hogy egy tárolót, egy új megosztást összevonása küldhet, hogy új megosztás túlcsordult állapotot, ahol további megosztások se mají data helyezi. Ennek eredményeképpen előfordulhat, hogy kell megosztások újraegyensúlyozására újra.
 
-- Ha nem rendelkezik engedélyekkel az erőforráscsoporthoz, és nem használható a PowerShell a további kötetek túlcsordulás adatok lekérdezésére, használható tulajdonosának el az adatok áttelepítése előtt át ezeket a erőforráscsoportok és tárolók megérteni az adatok teljes mérete.  
+- Ha nem rendelkezik engedélyekkel az erőforráscsoport és a PowerShell nem használható a további kötetek túlcsordulás adatok lekérdezésére, együttműködve tulajdonosának migrálása adatok migrálása előtt ezeket a erőforráscsoportok és tárolók megismerheti az adatok teljes mérete.  
 
 > [!IMPORTANT]
-> Blobok a tároló áttelepítése során offline állapotban, amely PowerShell használatát igényli. Amíg az áttelepítés befejezése végzi az áttelepítést a tároló összes BLOB offline állapotban marad, és nem használható. Emellett ne Azure verem frissítése csak az összes folyamatban lévő áttelepítést befejeződése után.
+> Egy tároló-blobok az áttelepítése nem offline művelet, amely a PowerShell használata szükséges. Áttelepítés befejeződéséig áttelepítésekor a tároló összes blobok offline állapotban maradnak, és nem használható. Emellett ne frissítése az Azure Stack, mindaddig, amíg az összes folyamatban lévő migrálása befejeződött.
 
-#### <a name="to-migrate-containers-using-powershell"></a>PowerShell-lel tárolók áttelepítése
-1. Győződjön meg arról, hogy [Azure PowerShell telepítése és konfigurálása](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](http://go.microsoft.com/fwlink/?LinkId=394767).
-2.  Vizsgálja meg, hogy milyen adatok áttelepítését tervezi, a megosztott tároló. A legjobb jelölt tárolók egy kötetet az áttelepítéshez azonosításához használja a **Get-AzsStorageContainer** parancsmagot:
+#### <a name="to-migrate-containers-using-powershell"></a>PowerShell-lel a tárolók áttelepítéséhez
+1. Győződjön meg arról, hogy [Azure PowerShell telepítését és konfigurálását](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](http://go.microsoft.com/fwlink/?LinkId=394767).
+2.  Vizsgálja meg a tároló, milyen adatokat a megosztáson található, amely az áttelepíteni kívánt van. A legjobb jelöltek tárolók egy kötet az áttelepítéshez azonosításához használja a **Get-AzsStorageContainer** parancsmagot:
 
     ````PowerShell  
     $farm_name = (Get-AzsStorageFarm)[0].name
     $shares = Get-AzsStorageShare -FarmName $farm_name
     $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
     ````
-    Vizsgálja meg $containers:
+    Majd megvizsgálja a $containers:
 
     ````PowerShell
     $containers
@@ -150,42 +150,43 @@ Próbálja meg manuálisan át kell telepítenie néhány blob tárolók külön
 
     ![Példa: $Containers](media/azure-stack-manage-storage-shares/containers.png)
 
-3.  Azonosítsa a legjobb cél megosztások ahhoz, hogy a tároló áttelepítése:
+3.  Határozza meg, amely tárolja a tároló áttelepítése a legjobb cél megosztások:
 
     ````PowerShell
     $destinationshares = Get-AzsStorageShare -SourceShareName
     $shares[0].ShareName -Intent ContainerMigration
     ````
 
-    Vizsgálja meg $destinationshares:
+    Majd megvizsgálja a $destinationshares:
 
-    A(z) "PowerShell $destinationshares
+    ````PowerShell 
+    $destinationshares
     ````
 
-    ![Example: $destination shares](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+    ![Példa: $destination megosztások](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
-4. Start migration for a container. Migration is asynchronous. If you start migration of additional containers before the first migration completes, use the job id to track the status of each.
+4. Indítsa el áttelepítési tárolóhoz. Az áttelepítés akkor aszinkron. Ha az első áttelepítés befejezése előtt további tárolókat migrálásának indul el, használja a feladat azonosítója egyes állapotának nyomon követését.
 
   ````PowerShell
   $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
   ````
 
-  Vizsgálja meg $jobId. Az alábbi példában cserélje le *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* meg szeretne vizsgálni feladatazonosító:
+  Majd megvizsgálja a $jobId. A következő példában cserélje le a *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* meg szeretné vizsgálni a feladatazonosító:
 
   ````PowerShell
   $jobId
   d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
   ````
 
-5. A feladat az azonosítót használva az áttelepítési feladat állapotát. Ha a tároló áttelepítése be nem fejeződött, **MigrationStatus** értéke **Complete**.
+5. Használja a feladatazonosító az áttelepítési feladat állapotának ellenőrzése. Ha a tároló áttelepítése befejeződött, **MigrationStatus** értékre van állítva **Complete**.
 
   ````PowerShell 
   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
   ````
 
-  ![Példa: Áttelepítés állapota](media/azure-stack-manage-storage-shares/migration-status1.png)
+  ![Példa: Migrálás állapota](media/azure-stack-manage-storage-shares/migration-status1.png)
 
-6.  Egy folyamatban lévő áttelepítési feladat megszakítása Áttelepítési feladatok feldolgozása aszinkron módon megszakítva. Megszakítási $jobid segítségével követheti nyomon:
+6.  Egy folyamatban lévő migrálási feladat megszakítása Áttelepítési feladatok feldolgozása aszinkron módon megszakította. Megszakítás $jobid használatával követheti nyomon:
 
   ````PowerShell
   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
@@ -193,14 +194,14 @@ Próbálja meg manuálisan át kell telepítenie néhány blob tárolók külön
 
   ![Példa: Visszaállítási állapota](media/azure-stack-manage-storage-shares/rollback.png)
 
-7. A parancs a 6. lépés ismét futtathatja, amíg az állapot megerősíti, hogy az áttelepítési feladat **visszavonva**:  
+7. A parancs a 6. lépés ismét futtathatja, amíg az állapot megerősíti, hogy az áttelepítési feladat **megszakított**:  
 
-    ![Példa: Megszakítva állapot](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![Példa: Megszakítva állapota](media/azure-stack-manage-storage-shares/cancelled.png)
 
-### <a name="move-vm-disks"></a>Helyezze át a virtuális gépek lemezei
-*Ez a beállítás csak több csomópontos rendszerekhez vonatkozik.*
+### <a name="move-vm-disks"></a>Helyezze át a Virtuálisgép-lemezek
+*Ez a beállítás csak a több csomópontos központi telepítések vonatkozik.*
 
-A rendkívüli belüli kezelésére szolgáló módszernél a virtuális gép lemezeinek áthelyezésekor. Mivel egy csatlakoztatott tároló (egy virtuális gép lemezt tartalmazó) áthelyezése összetett, forduljon a Microsoft Support Ez a művelet elvégzéséhez.
+Címtér kezelésére rendkívüli módszernél az áthelyezés virtuálisgép-lemezek. Mivel áthelyezése egy csatlakoztatott tároló (egy Virtuálisgép-lemez tartalmazó) összetett, forduljon a Microsoft Support Ez a művelet elvégzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
-További információ [a felhasználók számára virtuális gépek ajánlat](azure-stack-tutorial-tenant-vm.md).
+## <a name="next-steps"></a>További lépések
+Tudjon meg többet [kínál a virtuális gépeket a felhasználók számára](azure-stack-tutorial-tenant-vm.md).
