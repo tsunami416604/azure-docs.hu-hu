@@ -1,6 +1,6 @@
 ---
-title: Beszéd fordítási kapcsolatos |} Microsoft Docs
-description: A beszédfelismerés fordítási lehetőségeinek áttekintését
+title: Beszédalapú fordítási kapcsolatos |} A Microsoft Docs
+description: Beszédalapú fordítási lehetőségeinek áttekintése
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,37 +10,37 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 43fcde887c21794989aa43540a214ef34893a630
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a569c968d444c36ceb3bce4779d2eca39c21f9bc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349695"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069197"
 ---
-# <a name="about-the-speech-translation-api"></a>Diktálásfelismerési API fordítására vonatkozó
+# <a name="about-the-speech-translation-api"></a>Tudnivalók a beszédalapú fordítási API
 
-A Microsoft-hang transzformációs API lehetővé teszi a beszéd-végpontok közötti, valós idejű, a többnyelvű fordítási hozzáadását az alkalmazások, eszközök és eszközök. Az azonos API beszéd beszéd és a beszéd-szöveg fordításhoz használható.
+A Microsoft Speech API lehetővé teszi az alkalmazások, eszközök és eszközök teljes körű, valós idejű, többnyelvű fordítás beszéd hozzáadását. Az azonos API-t a speech beszéd és a hang-szöveg transzformációs fordítás használható.
 
-A Microsoft Translator Diktálásfelismerési API-val ügyfélalkalmazások adatfolyam beszéd hang a szolgáltatáshoz, és adatfolyamon vissza eredményt. Ezekkel az eredményekkel a felismert szöveg az adatforrás nyelvi és a fordítás a célként megadott nyelven szerepel. Ideiglenes fordítások lehet megadott befejezéséig egy utterance, hogy mely végleges fordítását valósul meg.
+A Microsoft Translator Speech API ügyfélalkalmazások adatfolyam speech hangot a szolgáltatáshoz, és vissza adatfolyamban kaphatja kézhez az eredményeket. Ezeket az eredményeket a felismert szöveget tartalmazó az forrás és cél nyelven a fordítás. Ideiglenes fordítások használható befejezéséig az utterance (kifejezés), hogy mely végső fordítás biztosítja.
 
-Másik lehetőségként szintetizált hang verzióját a végleges fordítását előkészítésére szolgál, igaz beszéd beszéd fordítási engedélyezése.
+Szükség esetén a végső fordítás szintetizált hang verzióját is kell készíteni, igaz speech-az-beszédalapú fordítási engedélyezése.
 
-A beszédfelismerés fordítási API a websocket elemek protokollt használja az ügyfél és a kiszolgáló közötti kétirányú kommunikációs csatornát biztosítanak. De nem kell foglalkozni a websocket elemek; a beszédfelismerés SDK kezeli, amely meg.
+A Speech Translation API egy WebSockets protokollt használ az ügyfél és a kiszolgáló közötti kétirányú kommunikációs csatorna. De nem kell foglalkozni a websockets protokoll; a beszédfelismerés SDK kezeli, amely az Ön számára.
 
-A beszédfelismerés fordítási API a különböző Microsoft-termékek és szolgáltatások biztosítására a technológiát alkalmaz. Ez a szolgáltatás már használja vállalatok ezer világszerte, alkalmazások és munkafolyamatok.
+A Speech Translation API, melyek különböző Microsoft-termékek és szolgáltatások technológiákat alkalmaz. Ez a szolgáltatás már használatban van számos vállalkozás világszerte, az alkalmazások és munkafolyamatok.
 
-## <a name="about-the-technology"></a>A technológia
+## <a name="about-the-technology"></a>A technológiával kapcsolatos
 
-Az alapul szolgáló Microsoft fordítási motor a rendszer két különböző szempontok: statisztikai gépi fordítás (SMT) és a Neurális gépi fordítás (NMT). Az utóbbi, a Neurális hálózatokat alkalmazó mesterséges eszközintelligencia megközelítés a korszerűbb gépi fordítás módja van. NMT jobb fordítások biztosítja – nem csupán több pontos, de is több gördülékeny és természetes. A kulcs a rugalmasság oka, hogy használja-e NMT mondat teljes környezetében lefordítani a szavakat.
+Az alapul szolgáló Microsoft fordítási motor két többféle módon is: statisztikai gépi fordítási (SMT) és a Neurális gépi fordítás (NMT). Az utóbbi, mesterséges intelligenciát használó megközelítést alkalmazó Neurális hálózatok, a gépi fordítás korszerűbb módja. NMT jobb fordítások biztosítja – nem csupán pontosabb, de is több fluent és természetes. A kulcs a rugalmasság oka, hogy használja-e NMT mondatok teljes kontextusában szó lefordítandó.
 
-Jelenleg Microsoft tért át NMT a legnépszerűbb nyelvek SMT alkalmazó csak a kevésbé használt nyelveket. Minden [beszéd beszéd fordítási a nyelveket](supported-languages.md#speech-translation) NMT szerint vannak kapcsolva. Beszéd-szöveg fordítási használhat SMT vagy NMT attól függően, hogy a két nyelv között. A megadott nyelv NMT támogatja, a teljes fordítási akkor NMT által biztosított. A megadott nyelv NMT által nem támogatott, ha a fordítás egy hibrid NMT és SMT, mint "pivot" angol között a két nyelv használatával.
+Jelenleg Microsoft lett migrálva, NMT a legnépszerűbb nyelvek SMT alkalmazó csak a kevésbé használt nyelvet. Az összes [speech tolmácsolás elérhető nyelvek](supported-languages.md#speech-translation) NMT működteti. Hang-szöveg transzformációs fordítási attól függően, a nyelv pár SMT vagy NMT használhatja. A Célnyelv NMT által támogatott, ha a teljes fordítás, NMT-alapú. A Célnyelv NMT által nem támogatott, ha a fordítás egy hibrid NMT és SMT, mint "kimutatást" angol között a két nyelv használatával.
 
-Modellek közötti különbségek a fordítási motor belső. A végfelhasználók csak a továbbfejlesztett fordítási minőségét, különösen a kínai, japán és arab figyelje meg.
+A fordítási motor modell közti különbségekkel csomópontokba. A végfelhasználók csak a továbbfejlesztett fordítási minőség, különösen a kínai, japán és arab figyelje meg.
 
 > [!NOTE]
-> Felkeltettük az érdeklődését technológiáját használja a Microsoft fordítási motor többet? Lásd: [gépi fordítás](https://www.microsoft.com/en-us/translator/mt.aspx).
+> Szeretne többet megtudni a Microsoft fordítási motor mögöttes technológia? Lásd: [gépi fordítás](https://www.microsoft.com/en-us/translator/mt.aspx).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [Lásd: how to a C# beszéd felismerésére](quickstart-csharp-windows.md)
+* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-dotnet-windows.md)

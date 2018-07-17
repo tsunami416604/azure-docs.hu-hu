@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: db57e0bd0f7afcfa836ef6446cdfd74e5d61c440
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ad4b31fa7b4f4b062f01935c34f7cacf82f99106
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345260"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072126"
 ---
 # <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service – gyakori kérdések
 
@@ -57,7 +57,7 @@ A feldolgozás befejeződése után az állapot lesz kell "sikeres".
 
 Ha nyelvi adatok egy zip (ha akusztikai adathoz) vagy egy .txt fájl nelze kombinovat a régi és új adatkészletek. Adaptációs van befejezése után az új frissített modell kell lennie a megszüntetéséhez telepített új végpont beszerzése
 
-**Kérdés**: Hogyan növelhetem magasabb szintű egyidejűség érdekében saját deloyed modell, mint a portálon érhető el. 
+**Kérdés**: Mi történik, ha az üzembe helyezett modell, mire a portál érhető el, mint a magasabb szintű egyidejűség érdekében kell. 
 
 **Válasz**: a modell 20 egyidejű kérelmek egységnyi növekményekben vertikálisan felskálázhatja. 
 
@@ -90,7 +90,7 @@ Ha egy akusztikai és nyelvi adatok megcímkézzen túlnyomó többsége (péld�
 
 **Kérdés**: mennyi akusztikai adatot van szükségem?
 
-**Válasz**: javasoljuk, hogy az egy órás akusztikai adathoz 30 perc alatt
+**Válasz**: javasoljuk, hogy az egy órás akusztikai adathoz 30 perc alatt.
 
 **Kérdés**: milyen adatokat kell gyűjteni?
 
@@ -116,18 +116,18 @@ Az alkalmazás, amely az audio adatokat naplózza, és használja, amely egy ver
 
 **Válasz**: Igen, a importálni akusztikai modell csak válassza a legördülő menüben az offline vizsgálat beállításakor.
 
-**Kérdés**: Mi az a Word Hibaarány, és hogyan, számított?
+**Kérdés**: Mi az a Word hiba sebessége (WER), és hogyan, számított?
 
-**Válasz**: Word Hibaarány az értékelés metrika beszédfelismerési. A hibák teljes száma, amely tartalmazza a beszúrások, törléseket és helyettesítések továbbá, a hivatkozás beszédátírási szavak száma osztva számítani. Mód részletek [Itt](https://en.wikipedia.org/wiki/Word_error_rate)
+**Válasz**: Word hiba sebessége (WER) olyan beszédfelismerési a kiértékelés metrika. A hibák teljes száma, amely tartalmazza a beszúrások, törléseket és helyettesítések továbbá, a hivatkozás beszédátírási szavak száma osztva számítani. További részleteket [itt](https://en.wikipedia.org/wiki/Word_error_rate) talál.
 
 **Kérdés**: Hogyan állapítható meg egy pontossága vizsgálati eredményeket, hogy jó?
 
 **Válasz**: az eredmények megjelenítése a modell és a egy testreszabott összehasonlítását.
-Meg kell célja, hogy a modell, hogy a testreszabási adnak a munkánknak beat
+A referenciakonfiguráció modellt, hogy a testreszabási adnak a munkánknak beat kell megfelelnek.
 
-**Kérdés**: hogyan do I döntse el, a WER alap modell, így látható, hogy történt-e fokozása? 
+**Kérdés**: hogyan do I döntse el, a Word hibák aránya az alap-modellek, így látható, hogy történt-e fokozása? 
 
-**Válasz**: az offline vizsgálat eredményeit mutatja a egyéni modell és a javítása alapkonfiguráció pontosságát pontosságát alapkonfiguráció
+**Válasz**: az offline vizsgálat eredményeit mutatja a egyéni modell és a javítása alapkonfiguráció pontosságát pontosságát alapterv.
 
 ## <a name="creating-lm"></a>Az LM létrehozása
 

@@ -1,7 +1,7 @@
 ---
-title: Java gyors üzembe helyezés, a Bing Visual keresés API |} Microsoft Docs
+title: A Bing Visual Search API a Java rövid |} A Microsoft Docs
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Bemutatja, hogyan lemezkép feltöltése a Bing Visual keresési API-hoz, és vissza a képet kaphat.
+description: Bemutatja, hogyan tölthet fel képeket a Bing Visual Search API, majd a kép információival.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,18 +10,18 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 8160302faa373d69b65afe6b68a8efb44442850d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 41e0855b126ca6e54d0a487a88fe59a0be6f72f6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349374"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071995"
 ---
-# <a name="your-first-bing-visual-search-query-in-java"></a>A Java első Bing Visual keresési lekérdezés
+# <a name="your-first-bing-visual-search-query-in-java"></a>Az első a Bing vizuális keresési lekérdezés Java nyelven
 
-Bing Visual Search API, amely megadja a képfájl információt ad vissza. A kép URL-címe, lexikális elem, vagy egy kép feltöltésével egy insights segítségével megadhatja a lemezképet. További információ a kapcsolókról: [Bing Visual Search API újdonságai?](../overview.md) Ez a cikk bemutatja, hogy egy kép feltöltésével. Egy kép feltöltésével olyan mobil forgatókönyveknél, ahol készíthet egy képet arról a jól ismert jellegzetes, és arra vonatkozó információval segítségnyújtáshoz hasznos lehet. Például a feltárása a jellegzetes kapcsolatos trivia tartalmazhatnak. 
+A Bing Visual Search API az Ön által megadott kép adatait adja vissza. Megadhatja a kép URL-címét a képet, egy jogkivonat, vagy egy kép feltöltésével insights használatával. Ezek a beállítások kapcsolatos információkért lásd: [Mi az a Bing Visual Search API?](../overview.md) Ez a cikk bemutatja a kép feltöltése. Kép feltöltése mobil forgatókönyveknél, ahol, egy jól ismert tereptárgyak egy képet, majd az információk hasznosak lehetnek. Az insights például magukban foglalhatják a tereptárgyak kapcsolatos trivia. 
 
-Ha feltölti egy helyi lemezképet, a következő jeleníti meg az űrlap adatait meg kell adni a FELADÁS egy vagy több törzsében. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejlécben. A `name` paraméter "kép" értékre kell állítani, és a `filename` paraméter bármilyen karakterlánc lehet beállítani. A képernyő tartalmát a bináris kép. A maximális kép lehet, hogy feltölti mérete 1 MB. 
+Ha a helyi rendszerképet tölt fel, az alábbiakban látható az űrlapadatok szerepelnie kell a bejegyzés törzse. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejléc. A `name` paraméter "image" értékre kell állítani, és a `filename` paraméter bármilyen karakterlánc lehet beállítani. A képernyő tartalmát a rendszerkép a bináris. A maximális képméret tölthet fel érték 1 MB. 
 
 ```
 --boundary_1234-abcd
@@ -32,26 +32,26 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-A cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing Visual keresési API-kérést küld, és a JSON-keresési eredményeit jeleníti meg. Az alkalmazás Java nyelven van megírva, amíg az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+Ez a cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing Visual Search API-kérést küld, és a JSON keresési eredményeit jeleníti meg. Ez az alkalmazás Java nyelven van megírva, míg a API-ját kompatibilis minden programozási nyelvet, amely JSON elemzése és a HTTP-kéréseket a webes RESTful szolgáltatás. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) fordításához, és futtassa a következő kódot. A Java IDE lehet használni, ha kedvenc, de elegendő egy szövegszerkesztőben.
+Szüksége lesz [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) fordítsa le és futtassa ezt a kódot. Ha kedvencként, de egy szövegszerkesztőben elegendő használhatja a Java ide Környezethez.
 
-A gyors üzembe helyezés, a segítségével egy [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetés vagy egy fizetős billentyűt.
+Használhatja az ebben a rövid útmutatóban egy [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcs vagy egy fizetős kulcsot.
 
 ## <a name="running-the-application"></a>Az alkalmazás futtatása
 
-A következő bemutatja, hogyan feltölti a lemezképet, a Java MultipartEntityBuilder használatával.
+A következő bemutatja, hogyan töltse fel a rendszerképet MultipartEntityBuilder a Java használatával.
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
-1. Töltse le és telepítse a [gson könyvtár](https://github.com/google/gson). Is elérhető, Maven keresztül.
-2. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztő.
-3. A megadott kód hozzáadása nevű fájlba `VisualSearch.java`.
-4. Cserélje le a `subscriptionKey` az Előfizetés kulcs értékének.
-4. Cserélje le a `imagePath` a kép töltse fel az elérési úttal rendelkező értékhez.
+1. Töltse le és telepítse a [gson könyvtár](https://github.com/google/gson). Emellett szerezheti be, Maven-n keresztül.
+2. Hozzon létre egy új Java-projektet a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével a.
+3. A megadott kód hozzáadása egy nevű fájl `VisualSearch.java`.
+4. Cserélje le a `subscriptionKey` az előfizetési kulcs-érték.
+4. Cserélje le a `imagePath` a Rendszerkép feltöltése az elérési úttal rendelkező értékhez.
 5. Futtassa a programot.
 
 
@@ -146,10 +146,11 @@ public class UploadImage2 {
 
 ## <a name="next-steps"></a>További lépések
 
-[Mélyebb betekintés insights token használatával kép](../use-insights-token.md)  
-[Bing Visual keresési alkalmazás oktatóanyag](../tutorial-bing-visual-search-single-page-app.md)  
-[Bing Visual keresési áttekintése](../overview.md)  
+[Lemezkép insights token használatával kapcsolatos elemzések lekérése](../use-insights-token.md)  
+[A Bing Visual Search Rendszerkép feltöltése az oktatóanyag](../tutorial-visual-search-image-upload.md)
+[Bing Visual Search egyoldalas alkalmazás oktatóanyaga](../tutorial-bing-visual-search-single-page-app.md)  
+[Bing vizuális keresés áttekintése](../overview.md)  
 [Próbálja ki](https://aka.ms/bingvisualsearchtryforfree)  
-[Egy ingyenes próba hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Bing Visual keresési API-referencia](https://aka.ms/bingvisualsearchreferencedoc)
+[Ingyenes próba hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[A Bing Visual Search API-referencia](https://aka.ms/bingvisualsearchreferencedoc)
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 43fadadc92e9562e1e9abe6d971f85d37a9825c2
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3eca9e416a18e7389a6ce45cccd3cc99707e9806
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437082"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070434"
 ---
 # <a name="register-in-dev-center"></a>A fejlesztői központban regisztrálása  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
@@ -84,7 +84,7 @@ Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző
 
 ---  
 
-## <a name="issue-dev-center-registration"></a>Probléma: Fejlesztői központ-regisztráció  
+## <a name="get-help-with-dev-center-registration"></a>Segítség a fejlesztői központ-regisztráció  
 Ha problémába ütközik a fejlesztői központ-regisztráció, majd kövesse az alábbi lépéseket egy támogatási jegyet is küldhet.  
 1.  Ugrás a Dev Center támogatásához.  
     *   A támogatás eléréséhez látogasson el a Windows fejlesztői támogatási oldalon található [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support).  
@@ -151,6 +151,41 @@ Ha problémába ütközik a fejlesztői központ-regisztráció, majd kövesse a
 *   **Ahol forduljon az ügyfélszolgálathoz fejlesztői központ-regisztráció kapcsolatos problémákat?**
 A támogatás eléréséhez látogasson el a Windows fejlesztői támogatási oldalon található [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support). 
 
+## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Probléma: A közzétevő kifizetések banki és adózási adatait hozzáadása  
+A banki és adózási adatait az ajánlati típus transact használatával minden kereskedelmi ajánlat megadása kötelező.  
+*   A vásárlás kereskedelmi ajánlatokat tesz közzé, ha majd hozzá kell adnia küldenie jóváhagyásra cége kifizetési és adózási adatait, és ellenőrizni a kéréseket a fejlesztői központban.  
+    >[!IMPORTANT]
+    >Kereskedelmi ajánlatokat (transact) tudja éles környezetben az ajánlatok leküldése előtt be kell fejeznie a banki és adózási adatait.  
+
+*   Ha Ön közzététel csak ingyenes vagy BYOL kínál, majd adja meg az információkat a nem kötelező. Később is hozzáadhat, de az adózási adatok érvényesítése eltarthat egy ideig. Ha azt tervezi, a vásárlás kereskedelmi ajánlatokat kínáló, akkor hozzá kell adnia az adatokat a lehető leghamarabb.  
+
+## <a name="add-bank-information"></a>Adja meg a bank adatait  
+1.  Jelentkezzen be a Microsoft ID. használatával fejlesztői központ  
+    *   Jelentkezzen be a fejlesztői központ, látogasson el a Windows fejlesztői központ lapján található [dev.windows.com](https://dev.windows.com).  
+2.  Válassza ki a bal oldali menüben küldenie jóváhagyásra cége kifizetési fiókot.
+3.  Az a `Choose payment method` lapon jelölje be `Bank account` vagy `PayPal`.  
+    >[!IMPORTANT]
+    >Ha rendelkezik, amelyek az ügyfelek kereskedelmi ajánlatokat a piactéren, küldenie jóváhagyásra cége kifizetési fiókja, ahol esetében a vásárlások payout kap.  
+
+4.  Adja meg a fizetési adatokat. Miután ellenőrizte, hogy helyesen szerepel-e az adatokat, kattintson a Mentés gombra.  
+    >[!IMPORTANT]
+    >Ha frissíteni vagy küldenie jóváhagyásra cége kifizetési fiókjához, majd kell követnie ugyanazokat a lépéseket, és cserélje le az aktuális információk az új adatokat. Küldenie jóváhagyásra cége kifizetési fiókjába módosítások legfeljebb egy fizetési ciklus kifizetések késhet. Ez a késleltetés az okozza, hogy a Microsoft ellenőriznie kell a fiók módosítás, ez ugyanaz, mint amikor az első telepítési küldenie jóváhagyásra cége kifizetési fiókját. A teljes összeget első fizetős, miután a fiók ellenőrzése megtörtént. Fizetési határidő, a jelenlegi fizetési ciklus a következő ciklusig az újbóli kerülnek.  
+
+4.  Kattintson a Tovább gombra. 
+
+---   
+
+## <a name="add-tax-information"></a>Adózási adatok hozzáadása  
+1.  Jelentkezzen be a Microsoft ID. használatával fejlesztői központ  
+    *   Jelentkezzen be a fejlesztői központ, látogasson el a Windows fejlesztői központ lapján található [dev.windows.com](https://dev.windows.com).  
+2.  Válassza ki a bal oldali menüben adó profilt. 
+3.  Az a `Set up your tax form` lapon, válassza ki az országot vagy régiót, ahol az állandó helyével rendelkezik.  
+    
+    Válassza ki az országot vagy régiót, ahol elsődleges polgárságról kis türelmet.  
+    
+    Kattintson a Tovább gombra. 
+4.  Adja meg a adózási adatait.  
+5.  Kattintson a Tovább gombra.  
 
 ## <a name="next-steps"></a>További lépések
 *   Látogasson el a [Azure Marketplace és AppSource útmutató Közzétevőknek](./marketplace-publishers-guide.md) lapot.  

@@ -1,6 +1,6 @@
 ---
-title: Gyári megoldás gyakori kérdések – Azure csatlakoztatott |} Microsoft Docs
-description: Gyakori kérdések a csatlakoztatott gyári megoldásgyorsító
+title: Csatlakoztatott gyár megoldás – gyakori kérdések – Azure |} A Microsoft Docs
+description: Az Okosgyár-megoldásgyorsító kapcsolatos gyakori kérdések
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,75 +8,75 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6d1002fd5131ca97f7bc1b9d081ae1471191a6cf
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627501"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39076335"
 ---
-# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a csatlakoztatott gyári megoldásgyorsító
+# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések az Okosgyár-megoldásgyorsító
 
-Lásd még az általános [gyakran ismételt kérdések](iot-accelerators-faq.md) az IoT-megoldás gyorsítókra.
+Lásd még az általános [– gyakori kérdések](iot-accelerators-faq.md) az IoT-megoldásgyorsítók.
 
-### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Hol található a megoldásgyorsító a kódot?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Hol található a forráskódban a megoldásgyorsító számára?
 
-A forráskód a következő GitHub-tárházban tárolja:
+Az alábbi GitHub-adattárat a forráskód tárolja:
 
-* [Csatlakoztatott gyári megoldásgyorsító](https://github.com/Azure/azure-iot-connected-factory)
+* [Csatlakoztatott Factory-megoldásgyorsítók](https://github.com/Azure/azure-iot-connected-factory)
 
-### <a name="what-is-opc-ua"></a>Mi az a OPC EE?
+### <a name="what-is-opc-ua"></a>Mi az OPC UA?
 
-OPC egyesített architektúra révén, 2008, amely a szabványos platformfüggetlen, szolgáltatásorientált együttműködési. OPC EE különféle ipari rendszerek és egyéb eszközök például számítógépek iparági PLC vagy érzékelők használja. OPC EE OPC klasszikus specifikációit funkcióit integrálja a beépített biztonsági a egy bővíthető keretrendszer. Olyan szabvány, amelyek célja a OPC alapját. A [OPC Foundation](http://opcfoundation.org/) egy nem nonprofit szervezet több mint 440 tagjaival. A szervezet célja, hogy több szállító, többplatformos, biztonságos és megbízható együttműködést elősegítő OPC specifikációk használja:
+OPC egyesített architektúra (EE), 2008-ban, amely a standard szintű platformfüggetlen, szolgáltatásorientált együttműködési. Az OPC UA különféle ipari rendszerek és eszközök, például számítógépek iparági PLC és érzékelők használják. OPC UA egy bővíthető keretrendszer az a funkciók klasszikus OPC specifikációit integrálható a beépített biztonsági. Egy standard határozzák meg az OPC Foundation. A [OPC Foundation](http://opcfoundation.org/) egy nem nonprofit szervezet, több mint 440 tagjaival. A szervezet célja az, hogy használja az OPC-specifikációk keresztül több szállító, többplatformos, biztonságos és megbízható együttműködés megkönnyítése érdekében:
 
 * Infrastruktúra
 * Specifikációk
 * Technológia
 * Folyamatok
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Miért Microsoft adta meg OPC EE számára a gyári csatlakoztatott megoldásgyorsító?
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Miért érdemes a Microsoft adta meg az OPC UA az Okosgyár-megoldásgyorsító a?
 
-Microsoft OPC EE választotta, mert a nyitott, a nem tulajdonosi platform független, iparági ismeri fel és bevált szabványnak. Ez feltétele Industrie 4.0-s verzióját (RAMI4.0) referencia architektúra megoldások gyártási eljárások széles körét és berendezések együttműködésével biztosítása. Microsoft látja az ügyfelek igény Industrie 4.0 megoldások létrehozásához. OPC EE támogatása segítségével csökkenthető az ügyfelek számára a kitűzött célokat a korlát, és azonnali üzleti értéket ad a őket.
+A Microsoft OPC UA úgy döntött, mert az egy nyílt és a nem tulajdonosi, platform független, iparági ismerhető fel és bevált szabvány. Követelmény Industrie 4.0-s verzióját (RAMI4.0) referencia architektúra megoldások biztosítása együttműködés gyártási folyamatok széles körét és a berendezések között. A Microsoft ügyfeleinek az Industrie 4.0 megoldásokat hozhat létre igény szerinti fog látni. Az OPC UA támogatása segítségével csökkentheti a korlát, az ügyfelek számára a kitűzött célokat, és azonnali üzleti értéket kell őket.
 
-### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>Hogyan egy nyilvános IP-cím hozzáadása a virtuális gép szimuláció?
+### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>Hogyan nyilvános IP-cím hozzáadása a virtuális gép szimuláció?
 
-Az IP-cím hozzáadása két lehetőség közül választhat:
+Az IP-cím hozzáadása két lehetősége van:
 
-* A PowerShell-parancsfájl `Simulation/Factory/Add-SimulationPublicIp.ps1` a a [tárház](https://github.com/Azure/azure-iot-connected-factory). A telepítés neve paraméterként adja át. Egy helyi központi telepítésének használata `<your username>ConnFactoryLocal`. A parancsfájl jelenít meg a virtuális gép IP-címét.
+* A PowerShell-szkripttel `Simulation/Factory/Add-SimulationPublicIp.ps1` a a [tárház](https://github.com/Azure/azure-iot-connected-factory). A központi telepítés neve paraméterként adja át. Egy helyi üzemelő példányának használata `<your username>ConnFactoryLocal`. A parancsfájl kiírja ezt a virtuális gép IP-címét.
 
-* Az Azure portálon keresse meg az erőforráscsoportot, a telepítés. A helyi központi telepítés, kivéve az erőforráscsoport rendelkezik, a megoldáshoz megadott vagy telepítés nevét. A build script használó helyi telepítés, az erőforráscsoport neve nem `<your username>ConnFactoryLocal`. Most adjon hozzá egy új **nyilvános IP-cím** erőforrás az erőforráscsoporthoz.
+* Az Azure Portalon keresse meg az erőforráscsoport, a központi telepítés. Egy helyi üzembe helyezés, kivéve az erőforráscsoporthoz a megoldás a megadott név vagy az üzemelő példány neve. A felépítési szkriptjének használatával helyi telepítés esetén az erőforráscsoport neve nem `<your username>ConnFactoryLocal`. Adjon hozzá egy új **nyilvános IP-cím** erőforrás ahhoz az erőforráscsoporthoz.
 
 > [!NOTE]
-> Mindkét esetben ellenőrizze a megjelenő utasításokat követve telepítse a legújabb javítások a [Ubuntu webhely](https://wiki.ubuntu.com/Security/Upgrades). A telepítés naprakészen tartása a mindaddig, amíg a virtuális Gépet egy nyilvános IP-cím keresztül érhető el.
+> Mindkét esetben győződjön meg arról, utasításokat követve telepítheti a legújabb javításokat a [Ubuntu webhely](https://wiki.ubuntu.com/Security/Upgrades). A telepítés tarthatom naprakészen a mindaddig, amíg a virtuális gép nyilvános IP-cím keresztül érhető el.
 
-### <a name="how-do-i-remove-the-public-ip-address-to-the-simulation-vm"></a>Hogyan távolítsa el a szimuláció VM a nyilvános IP-címet?
+### <a name="how-do-i-remove-the-public-ip-address-to-the-simulation-vm"></a>Hogyan távolíthatom el a nyilvános IP-címet a virtuális gép szimuláció?
 
-Az IP-cím eltávolítása két lehetőség közül választhat:
+Az IP-cím eltávolítása két lehetősége van:
 
-* A PowerShell-parancsfájlt a Simulation/Factory/Remove-SimulationPublicIp.ps1 használja a [tárház](https://github.com/Azure/azure-iot-connected-factory). A telepítés neve paraméterként adja át. Egy helyi központi telepítésének használata `<your username>ConnFactoryLocal`. A parancsfájl jelenít meg a virtuális gép IP-címét.
+* A PowerShell-parancsfájlt Simulation/Factory/Remove-SimulationPublicIp.ps1, használja a [tárház](https://github.com/Azure/azure-iot-connected-factory). A központi telepítés neve paraméterként adja át. Egy helyi üzemelő példányának használata `<your username>ConnFactoryLocal`. A parancsfájl kiírja ezt a virtuális gép IP-címét.
 
-* Az Azure portálon keresse meg az erőforráscsoportot, a telepítés. A helyi központi telepítés, kivéve az erőforráscsoport rendelkezik, a megoldáshoz megadott vagy telepítés nevét. A build script használó helyi telepítés, az erőforráscsoport neve nem `<your username>ConnFactoryLocal`. Most eltávolítja a **nyilvános IP-cím** az erőforráscsoportból erőforrás.
+* Az Azure Portalon keresse meg az erőforráscsoport, a központi telepítés. Egy helyi üzembe helyezés, kivéve az erőforráscsoporthoz a megoldás a megadott név vagy az üzemelő példány neve. A felépítési szkriptjének használatával helyi telepítés esetén az erőforráscsoport neve nem `<your username>ConnFactoryLocal`. Most eltávolítja az **nyilvános IP-cím** erőforrást az erőforráscsoportból.
 
-### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Hogyan be a szimuláció virtuális gép számára?
+### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Hogyan tudok bejelentkezni, a virtuális gép szimuláció?
 
-A szimuláció VM bejelentkezés csak támogatott, ha a megoldás a PowerShell-parancsfájl használatával telepített `build.ps1` a a [tárház](https://github.com/Azure/azure-iot-connected-factory).
+Bejelentkezés a virtuális gép szimuláció csak támogatott, ha a megoldás a PowerShell-parancsfájllal központilag telepített `build.ps1` a a [tárház](https://github.com/Azure/azure-iot-connected-factory).
 
-Ha telepítette a www.azureiotsolutions.com megoldást, nem tud bejelentkezni virtuális gép. Nem tud bejelentkezni, mert a jelszó véletlenszerűen történik, és nem állítható alaphelyzetbe.
+Ha üzembe helyezte a megoldást www.azureiotsolutions.com, nem jelentkezhet be a virtuális géphez. Nem tud bejelentkezni, mert a jelszó véletlenszerűen történik, és nem állítható alaphelyzetbe.
 
-1. A nyilvános IP-cím hozzáadása a virtuális Gépet. Lásd: [hogyan adni a nyilvános IP-címnek a szimuláció VM?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
-1. A virtuális géphez az IP-címmel, a virtuális gép SSH-munkamenetet létrehozni.
-1. A felhasználónév használata: `docker`.
+1. Nyilvános IP-cím hozzáadása a virtuális Géphez. Lásd: [Hogyan adhatok hozzá egy nyilvános IP-címet, a virtuális gép szimuláció?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
+1. Hozzon létre SSH-munkamenetből a virtuális gépre, IP-címet a virtuális gép használja.
+1. A használandó felhasználónév: `docker`.
 1. A jelszó használata a központi telepítéséhez használt verziójától függ:
-    * A megoldások a build.ps1 parancsfájl használatával előtt 2017. június 1. telepítve, a jelszó nem: `Passw0rd`.
-    * A megoldások a build.ps1 parancsfájl használatával után 2017. június 1. telepítve, a jelszót a megtalálhatja a `<name of your deployment>.config.user` fájlt. A jelszó tárolódik a **VmAdminPassword** beállítást. A jelszó jön létre véletlenszerűen központi telepítéskor kivéve ha megadja azt a `build.ps1` parancsfájl-paraméter `-VmAdminPassword`
+    * A jelszó, 2017 június 1. előtt a build.ps1 parancsfájl használatával üzembe helyezett megoldások esetén: `Passw0rd`.
+    * 2017 június 1. után a build.ps1 parancsfájl használatával üzembe helyezett megoldások, keresse meg a jelszót a `<name of your deployment>.config.user` fájlt. A jelszó tárolva van a **VmAdminPassword** beállítás. A jelszó létrehozásától véletlenszerűen üzembe helyezéskor, kivéve, ha megadja azt a használatával a `build.ps1` parancsfájl-paraméter `-VmAdminPassword`
 
-### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Hogyan állítsa le és indítsa el az összes docker-folyamat a szimuláció VM?
+### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Hogyan állítsa le és indítsa el az összes docker-folyamat és a virtuális gép szimuláció?
 
-1. Jelentkezzen be a szimuláció virtuális gép. Lásd: [hogyan be a szimuláció virtuális gép számára?](#how-do-i-sign-in-to-the-simulation-vm)
-1. Ellenőrizze, hogy mely tárolók aktívak, futtassa: `docker ps`.
-1. Futtassa az összes szimuláció tároló leállításához: `./stopsimulation`.
-1. Az összes szimuláció tároló indítása:
-    * Exportálja a nevű rendszerhéj változó **IOTHUB_CONNECTIONSTRING**. Az értéket a **IotHubOwnerConnectionString** beállítást azokban a `<name of your deployment>.config.user` fájlt. Példa:
+1. Jelentkezzen be a virtuális gép szimuláció. Lásd: [Hogyan tudok bejelentkezni, a virtuális gép szimuláció?](#how-do-i-sign-in-to-the-simulation-vm)
+1. Annak ellenőrzéséhez, hogy mely tárolók aktívak, Futtatás: `docker ps`.
+1. Minden szimulációs tároló leállításához futtassa: `./stopsimulation`.
+1. Minden szimulációs tároló indítása:
+    * Exportálja egy felületváltozóban nevű **IOTHUB_CONNECTIONSTRING**. Az értéket a **IotHubOwnerConnectionString** beállítását a `<name of your deployment>.config.user` fájlt. Példa:
 
         ```
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -84,19 +84,19 @@ Ha telepítette a www.azureiotsolutions.com megoldást, nem tud bejelentkezni vi
 
     * Futtassa az `./startsimulation` parancsot.
 
-### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Hogyan frissíthetők a szimuláció, a virtuális gép?
+### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Hogyan frissíthetem a szimulációt, a virtuális gépen?
 
-A szimuláció végzett módosításokat, ha használható a PowerShell parancsfájl `build.ps1` a a [tárház](https://github.com/Azure/azure-iot-connected-factory) használatával a `updatedimulation` parancsot. Ezt a parancsfájlt hoz létre a szimuláció összetevők, leállítja a virtuális gép a szimuláció, feltölti, telepíti, és elindítja azokat.
+A szimuláció végzett módosításokat, ha a PowerShell-parancsfájlt használhatja `build.ps1` a a [tárház](https://github.com/Azure/azure-iot-connected-factory) használatával a `updatedimulation` parancsot. Ez a szkript minden szimulációs összetevő, a virtuális gépen a szimuláció leáll, feltölti, telepíti, létrehozásával és elindítja azokat.
 
-### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Hogyan állapítható meg a kapcsolati karakterlánc az IoT-központnak a megoldás által használt?
+### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Hogyan állapíthatom meg a kapcsolati karakterláncot a megoldás által használt IoT hub?
 
-Ha telepítette a megoldást a `build.ps1` a parancsfájl a [tárház](https://github.com/Azure/azure-iot-connected-factory), a kapcsolati karakterlánc értékét: **IotHubOwnerConnectionString** a a `<name of your deployment>.config.user` fájlt.
+Ha üzembe helyezte a megoldás a `build.ps1` szkriptet a [tárház](https://github.com/Azure/azure-iot-connected-factory), a kapcsolati karakterlánc értékét az **IotHubOwnerConnectionString** a a `<name of your deployment>.config.user` fájlt.
 
-A kapcsolati karakterláncot az Azure portál használatával is tájékozódhat. Az IoT-központ erőforrás erőforráscsoporthoz tartozik, a telepítés keresse meg a kapcsolódási karakterlánc beállításainak.
+A kapcsolati karakterláncot az Azure Portalon is megtalálhatja. Az IoT Hub erőforrás az üzembe helyezés az erőforráscsoportban keresse meg azt a kapcsolati karakterlánc beállításokat.
 
-### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Mely IoT Hub eszközöket használ a csatlakoztatott gyári szimuláció?
+### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Mely IoT Hub-eszközöket használ a csatlakoztatott gyár szimuláció?
 
-A szimuláció önkiszolgáló regisztrál, a következő eszközöket:
+A szimuláció önkiszolgáló regisztrálja az alábbi eszközökhöz:
 
 * proxy.beijing.corp.contoso
 * proxy.capetown.corp.contoso
@@ -111,23 +111,23 @@ A szimuláció önkiszolgáló regisztrál, a következő eszközöket:
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-Használja a [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy [az IoT-bővítmény az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) eszköz, ellenőrizheti, hogy mely eszközök vannak regisztrálva az IoT-központ, a megoldás használ. Eszköz-kezelővel, szüksége a kapcsolati karakterlánc az IoT-központ a környezetben. Az Azure CLI 2.0 az IoT-bővítmény használatához szüksége van az IoT Hub nevét.
+Használatával a [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy [az IoT-bővítmény, az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) eszközzel ellenőrizheti, hogy mely eszközök regisztrációja az IoT hub, a megoldás által használt. Device explorer használatához szükség van a kapcsolati karakterláncot az IoT hub a központi telepítésben. Azure CLI 2.0, az IoT-bővítmény használatához szüksége az IoT Hub nevére.
 
-### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Hogyan kaphatok naplóadatait a szimuláció összetevői?
+### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Hogyan kaphatok naplóadatok szimuláció összetevők?
 
-A szimuláció lévő valamennyi összetevőnél információk jelentkezzen be a naplófájlokba. Ezek a fájlok megtalálhatók a virtuális Gépet a mappában `home/docker/Logs`. A naplók lekéréséhez használja a PowerShell parancsfájl `Simulation/Factory/Get-SimulationLogs.ps1` a a [tárház](https://github.com/Azure/azure-iot-connected-factory).
+A szimuláció lévő valamennyi összetevőnél információk jelentkezzen be a naplófájlokat. Ezeket a fájlokat a virtuális gép megtalálható a mappa `home/docker/Logs`. A naplók begyűjtéséről, használhatja a PowerShell-parancsfájl `Simulation/Factory/Get-SimulationLogs.ps1` a a [tárház](https://github.com/Azure/azure-iot-connected-factory).
 
-Ez a parancsfájl be kell jelentkeznie a virtuális géphez. Szükség lehet a a bejelentkezéshez adja meg a hitelesítő adatokat. Lásd: [hogyan be a virtuális gép szimuláció való?](#how-do-i-sign-in-to-the-simulation-vm) a hitelesítő adatok kereséséhez.
+Jelentkezzen be a virtuális Gépet kell ezt a szkriptet. Szükség lehet a bejelentkezéshez adja meg a hitelesítő adatokat. Lásd: [Hogyan tudok bejelentkezni, a virtuális gép szimuláció?](#how-do-i-sign-in-to-the-simulation-vm) a hitelesítő adatok kereséséhez.
 
-A parancsfájl hozzáadása/eltávolítása egy nyilvános IP-címet a virtuális gépre, ha az még nincs ilyen, és eltávolítja azt. A parancsfájl az összes napló fájlokat archiválhatja, és letölti a az archiválás a fejlesztő munkaállomás.
+A szkript hozzáadása/eltávolítása egy nyilvános IP-címet a virtuális géphez, ha még nem rendelkezik egy, és eltávolítja azt. A parancsfájl minden naplófájlok helyezi az archívumot, és letölti az archívum a fejlesztő munkaállomás.
 
-Másik megoldásként jelentkezzen be a virtuális gép SSH-kapcsolaton keresztül, és vizsgálja meg a naplófájlokat a futási időben.
+Alternatív megoldásként jelentkezzen be a virtuális Gépre SSH-n keresztül, és vizsgálja meg a naplófájlok futásidőben.
 
-### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hogyan ellenőrizheti meg, hogy ha a szimuláció adatokat küld a felhőbe-e?
+### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hogyan tudom ellenőrizni Ha a szimulációs adatokat küld a felhőbe?
 
-Az a [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy a [IOT hubbal-explorer](https://github.com/azure/iothub-explorer) eszköz, vizsgálhatja az egyes eszközökről az IoT-központ küldött adatok. Ezek az eszközök használatához szüksége tudni, hogy a kapcsolati karakterláncot az IoT-központ a környezetben. Lásd: [hogyan állapíthatom meg a kapcsolati karakterlánc az IoT-központnak a megoldás által használt?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Az a [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy a [iothub-explorer](https://github.com/azure/iothub-explorer) eszközt, az egyes eszközök által az IoT hubnak küldött adatok ellenőrizheti. Ezek az eszközök használatához, ismernie kell a központi telepítésben az IoT hub kapcsolati karakterláncára. Lásd: [hogyan állapíthatom meg a kapcsolati karakterláncot a megoldás által használt IoT hub?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
-Vizsgálja meg a kiadó eszközök egyike által küldött adatokat:
+Vizsgálja meg az egyik publisher eszköz által küldött adatokat:
 
 * publisher.beijing.corp.contoso
 * publisher.capetown.corp.contoso
@@ -136,53 +136,53 @@ Vizsgálja meg a kiadó eszközök egyike által küldött adatokat:
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-Ha nem az IoT-központ küldött adatokat, majd nincs a szimuláció kapcsolatos problémát. Első lépésként elemzés elemezni kell a naplófájlok a szimuláció összetevőt. Lásd: [Hogyan juthatok naplóadatait a szimuláció összetevői?](#how-can-i-get-log-data-from-the-simulation-components) Ezt követően próbálja állítsa le és indítsa el a szimuláció, és még nincs adat küldése, ha frissíti a szimuláció teljesen. Lásd: [hogyan frissíthetők a szimuláció, a virtuális gép?](#how-do-i-update-the-simulation-in-the-vm)
+Az IoT hubnak küldött adatok nem jelenik meg, majd van-e a szimuláció problémáját. Elemzés az első lépés a naplófájlokat a szimuláció összetevők elemezni kell. Lásd: [Hogyan olvashatom be a naplóadatok szimuláció összetevők?](#how-can-i-get-log-data-from-the-simulation-components) Ezt követően próbálja meg leállítása és a szimuláció elindításához, és ha még nem tartoznak adatok küldött, frissítse a szimuláció teljesen. Lásd: [hogyan frissíthetők a szimulációt, a virtuális gépen?](#how-do-i-update-the-simulation-in-the-vm)
 
-### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Hogyan engedélyezhető az interaktív térkép a csatlakoztatott gyári-megoldásban?
+### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Hogyan engedélyezhetem interaktív térkép a csatlakoztatott gyár megoldás?
 
-Ahhoz, hogy a kapcsolódó gyári megoldásban interaktív térkép, rendelkeznie kell egy meglévő Bing térképek API vállalati terv.
+Ahhoz, hogy a csatlakoztatott gyár megoldás egy olyan interaktív térkép, egy meglévő Bing térképek API nagyvállalati csomagra kell rendelkeznie.
 
-A központi telepítésekor [www.azureiotsolutions.com](http://www.azureiotsolutions.com), a telepítési folyamat ellenőrzi, hogy az előfizetés egy engedélyezett Bing térképek API vállalati terv rendelkezik, és automatikusan telepíti az interaktív térkép csatlakoztatott gyári be. Ha nem ez a helyzet, továbbra is engedélyezheti egy interaktív leképezés a központi telepítésben az alábbiak szerint:
+Amikor üzembe helyezése a [www.azureiotsolutions.com](http://www.azureiotsolutions.com), az üzembe helyezési folyamat ellenőrzi, hogy az előfizetése van egy engedélyezett Bing térképek API nagyvállalati csomagra, és interaktív térkép automatikusan telepíti a csatlakoztatott gyár be. Ha nem ez a helyzet, továbbra is engedélyezheti a interaktív térkép a központi telepítésben a következő:
 
-Központi telepítésekor használ a `build.ps1` parancsfájl a csatlakoztatott gyári github tárház, és a Bing térképek API vállalati terv rendelkezik, és állítsa a környezeti változó `$env:MapApiQueryKey` a build ablakban, a lekérdezési kulcsot a csomag számára. Az interaktív térkép majd automatikusan engedélyezve lesz.
+Központi telepítése esetén használja a `build.ps1` parancsfájlt a csatlakoztatott gyári github a tárházat, és hogy ki rendelkezik Bing térképek API nagyvállalati csomagra, a környezeti változót `$env:MapApiQueryKey` a lekérdezési kulcsot a csomag a build-ablakban. Az interaktív térkép ezután automatikusan engedélyezve lesz.
 
-Ha még nem rendelkezik a Bing térképek API vállalati terv, központi telepítése a csatlakoztatott gyári megoldást [www.azureiotsolutions.com](http://www.azureiotsolutions.com) használatával vagy a `build.ps1` parancsfájl. Majd adja hozzá a Bing térképek API vállalati terv az előfizetés a [hogyan hozható létre a Bing térképek API vállalati fiók?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). A fiókhoz tartozó lekérdezési kulcs kereshető [a Bing térképek API beszerzése a vállalati QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) , és mentse ezt a kulcsot. Navigáljon az Azure portálra, és a kapcsolódó gyári környezetben App Service erőforrás elérésére. Navigáljon a **Alkalmazásbeállítások**, hol található a szakasz **Alkalmazásbeállítások**. Állítsa be a **MapApiQueryKey** a lekérdezési kulcsot kapott. A beállítások mentéséhez, majd lépjen **áttekintése** , és indítsa újra az App Service.
+Ha nem rendelkezik Bing térképek API nagyvállalati csomagra, üzembe helyezése a csatlakoztatott gyár megoldást [www.azureiotsolutions.com](http://www.azureiotsolutions.com) használatával vagy a `build.ps1` parancsfájlt. Majd adja hozzá a Bing térképek API nagyvállalati csomagra az előfizetés leírtak [Hogyan hozhatok létre vállalati fiók Bing térképek API?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Keressük meg ezt a fiókot a lekérdezési kulcs leírtak szerint [a Bing térképek API beszerzése a vállalati querykey értékét](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) és mentette a kulcsot. Keresse meg az Azure Portalon, és a csatlakoztatott gyár központi telepítésben az App Service erőforrás elérésére. Navigáljon a **Alkalmazásbeállítások**, hol található a szakasz **Alkalmazásbeállítások**. Állítsa be a **MapApiQueryKey** a beszerzett lekérdezési kulcsot. Mentse a beállításokat, majd lépjen **áttekintése** , és indítsa újra az App Service-ben.
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Hogyan hozható létre a Bing térképek API vállalati fiók
+### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Hogyan hozhatok létre vállalati fiók Bing térképek API
 
-Kérhet egy ingyenes *belső tranzakciók szintjét 1 a Bing Maps vállalati* terv. Azonban csak hozzáadhat ezen sémák két Azure-előfizetéshez. Ha még nem rendelkezik vállalati fiók a Bing térképek API, hozzon létre egyet az Azure portálon kattintva **+ hozzon létre egy erőforrást**. Majd keresse meg a **Bing Maps API for Enterprise** és kövesse az utasításokat annak létrehozásához.
+Kap egy ingyenes *belső tranzakció szintjét 1 a Bing Maps Enterprise* tervet. Azonban csak adhat az alábbi díjcsomagok két Azure-előfizetéssel. Ha nem rendelkezik Bing térképek API vállalati fiók, hozzon létre egyet az Azure Portalon kattintva **+ erőforrás létrehozása**. Majd keresse meg az **vállalati Bing térképek API** , és kövesse az utasításokat követve hozza létre.
 
-![Bing kulcs](./media/iot-accelerators-faq-cf/bing.png)
+![A Bing-kulcs](./media/iot-accelerators-faq-cf/bing.png)
 
-### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>A Bing térképek API beszerzése a vállalati QueryKey
+### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>A Bing térképek API vállalati querykey kulcsát szervizcsomagjának beszerzése
 
-Miután létrehozta a Bing térképek API-t a vállalati terv, a Bing Maps vállalati erőforrás hozzáadása az erőforráscsoport, a kapcsolódó gyári megoldás az Azure portálon.
+Miután létrehozta a Bing térképek API nagyvállalati csomagra, a Bing térképek vállalati erőforráshoz hozzá az erőforráscsoportot, a csatlakoztatott gyár megoldás az Azure Portalon.
 
-1. Az Azure-portálon lépjen a Bing térképek API-t a vállalati terv tartalmazó erőforráscsoportot.
+1. Az Azure Portalon keresse meg az erőforráscsoportot, amely tartalmazza a Bing térképek API nagyvállalati csomagra.
 
-1. Kattintson a **összes beállítás**, majd **kulcskezelés**.
+1. Kattintson a **minden beállítás**, majd **kulcskezelés**.
 
-1. Két kulcs van: **főkulcsos** és **QueryKey**. Másolás a **QueryKey** érték.
+1. Két kulcs létezi: **MasterKey** és **QueryKey**. Másolás a **QueryKey** értéket.
 
-1. A kulcsot észlelnie a `build.ps1` parancsfájl, a környezeti változót `$env:MapApiQueryKey` a PowerShell-környezetében a **QueryKey** a csomag. A build script majd automatikusan értéket adja meg az App Service beállításait.
+1. Dolgozza fel a kulcsot a `build.ps1` parancsfájl, a környezeti változót `$env:MapApiQueryKey` a PowerShell környezetében a **QueryKey** a csomaghoz. A felépítési szkriptjének ezután automatikusan hozzáadja az érték beállításait, az App Service-ben.
 
-1. Futtassa a helyi vagy felhőalapú használó telepítés a `build.ps1` parancsfájl.
+1. Futtasson helyi vagy felhőbeli üzembe helyezése a `build.ps1` parancsfájlt.
 
-### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Hogyan engedélyezhető az interaktív térkép helyileg hibakeresés során?
+### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Hogyan az interaktív térkép engedélyezése helyi hibakeresése során?
 
-Az interaktív térkép közben helyileg hibakeresést engedélyezéséhez állítsa be a beállítás értékének `MapApiQueryKey` fájlok `local.user.config` és `<yourdeploymentname>.user.config` gyökérkönyvtárában található a központi telepítés értékének a **QueryKey** másolt korábban.
+Az interaktív térkép engedélyezése a helyi hibakeresés során, a beállítás értékét állítsa `MapApiQueryKey` fájlok `local.user.config` és `<yourdeploymentname>.user.config` gyökere a központi telepítést az értékét a **QueryKey** másolt korábban.
 
-### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Hogyan használható egy másik lemezképet, az irányítópult kezdőlapján?
+### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Hogyan használhatom másik képet, az irányítópult kezdőlapján?
 
-Módosítsa a statikus kép io látható az irányítópult kezdőlapján cserélje le a lemezképet `WebApp\Content\img\world.jpg`. Majd újraépítése, és telepítse újra a webalkalmazást.
+A statikus kép látható io módosításához az irányítópult kezdőlapján cserélje le a képet `WebApp\Content\img\world.jpg`. Majd újraépítése és ismételt üzembe helyezése a WebApp.
 
-### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Hogyan használjam nem OPC EE eszközök csatlakoztatott Factory?
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Hogyan használhatom nem OPC UA-eszközök a csatlakoztatott gyár?
 
-A telemetriai adatokat küldeni nem OPC EE az eszközök gyári csatlakoztatva:
+A telemetriai adatokat küldeni a nem az OPC UA eszközök Okosgyár:
 
-1. [Egy új állomás konfigurálása a csatlakoztatott gyári topológia](iot-accelerators-connected-factory-configure.md) a a `ContosoTopologyDescription.json` fájlt.
+1. [A csatlakoztatott gyár topológia egy új állomás konfigurálása](iot-accelerators-connected-factory-configure.md) a a `ContosoTopologyDescription.json` fájlt.
 
-1. A telemetriai adatok csatlakoztatott gyári kompatibilis JSON formátumban betöltési:
+1. Betöltési a telemetriai adatokat a csatlakoztatott gyár kompatibilis JSON formátumban:
 
     ```json
     [
@@ -198,14 +198,14 @@ A telemetriai adatokat küldeni nem OPC EE az eszközök gyári csatlakoztatva:
     ]
     ```
 
-1. Formátuma `<timestamp>` van: `2017-12-08T19:24:51.886753Z`
+1. Formátumát `<timestamp>` van: `2017-12-08T19:24:51.886753Z`
 
-1. Indítsa újra a csatlakoztatott gyári App szolgáltatást.
+1. Indítsa újra a csatlakoztatott gyár App Service.
 
 ### <a name="next-steps"></a>További lépések
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
 * [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
-* [Csatlakoztatott gyári megoldás gyorsító – áttekintés](iot-accelerators-connected-factory-overview.md)
-* [Az IoT biztonsági másolatot az alapoktól](securing-iot-ground-up.md)
+* [Okosgyár-megoldásgyorsító üzembe helyezése](quickstart-connected-factory-deploy.md)
+* [IoT-biztonság létrehozása az alapoktól](/azure/iot-fundamentals/iot-security-ground-up)

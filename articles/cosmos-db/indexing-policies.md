@@ -1,7 +1,7 @@
 ---
-title: Azure-házirendek indexelő Cosmos adatbázis |} Microsoft Docs
-description: Indexelő működésének megismerése az Azure Cosmos-Adatbázisba. Ismerje meg, hogyan lehet konfigurálni, és módosítsa az automatikus indexeléshez és jobb teljesítményt nyújt az indexelési házirendet.
-keywords: Indexelő működése, az automatikus indexeléshez, adatbázis indexelő
+title: Indexelési szabályzatok az Azure Cosmos DB |} A Microsoft Docs
+description: Indexelő működésének megismerése az Azure Cosmos DB-hez. Ismerje meg, hogyan konfigurálja, és módosítsa az indexelési házirendet az Automatikus indexelés és jobb teljesítményt nyújt.
+keywords: Indexelő működése, az automatikus indexelést, database indexelése
 services: cosmos-db
 author: rafats
 manager: kfile
@@ -10,41 +10,41 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: d867079b9a5546dc9555697a9066472e4e470977
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 240c0e1f39833e4dc4c4ad410f50ff03df0b5734
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298297"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072163"
 ---
-# <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan működik az Azure Cosmos DB index adatokat?
+# <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan történik az adatok az Azure Cosmos DB indexelése?
 
-Alapértelmezés szerint az összes Azure Cosmos DB adatok indexelése. Bár sok ügyfél ahhoz, hogy automatikusan kezelik az indexelő minden szempontját Azure Cosmos DB problémamentesen működjön, megadhat egy egyéni *házirend indexelő* gyűjtemények létrehozása az Azure Cosmos-Adatbázisba. Az indexelő házirendek az Azure Cosmos Adatbázisba rugalmasabb és hatékonyabb, mint más adatbázis platformokon felkínált másodlagos indexek. Az Azure Cosmos Adatbázisba tervezését és testre szabhatja az index az alakzat séma rugalmasságát feláldozása nélkül. 
+Alapértelmezés szerint az összes Azure Cosmos DB-adatok indexelését. Bár sok ügyfél forduljon hozzánk, és lehetővé teszik az Azure Cosmos DB automatikusan kezelik az indexelő minden aspektusát, megadhat egy egyéni *indexelési szabályzat* gyűjtemények az Azure Cosmos DB létrehozása során. Az Azure Cosmos DB indexelési szabályzatok olyan, rugalmasabb és hatékonyabb, mint a másodlagos indexeket, amely az adatbázis-platformokhoz érhetők el. Az Azure Cosmos DB tervezheti meg és testre szabhatja az alakzat az index a séma rugalmasságát feláldozása nélkül. 
 
-Megtudhatja, hogyan indexelési működik az Azure Cosmos Adatbázisba, fontos megérteni, hogy ha Ön kezeli az indexelési házirendet, hogy részletes kompromisszumot indextárolási terheléssel jár, az írási és a lekérdezés átviteli sebesség és a lekérdezés konzisztencia között.  
+Ha indexelési útmutató az Azure Cosmos DB, fontos megérteni, hogy ha Ön kezeli az indexelési házirendet, végezhet részletes közti kompromisszummal indextárolási terheléssel jár, írási és lekérdezési adatforgalmat és a lekérdezési konzisztenciát.  
 
-Az alábbi videó az Azure Cosmos DB Programvezető Andrew Liu automatikus képességeket és hangolására, és az indexelési házirendet konfigurálása az Azure Cosmos DB tárolóra indexelő Azure Cosmos-DB mutatja be. 
+Az alábbi videó az Azure Cosmos DB Programigazgatója Andrew Liu azt mutatja be az Azure Cosmos DB Automatikus indexelés képességeit, és hogyan adhatja meg, és a indexelési házirend konfigurálása az Azure Cosmos DB-tároló. 
 
 >[!VIDEO https://www.youtube.com/embed/uFu2D-GscG0]
 
-Ez a cikk azt nézze meg Azure Cosmos DB indexelő házirendjeit, hogyan szabhatja testre az indexelési házirendet, és a kapcsolódó kompromisszumot. 
+Ebben a cikkben azt tekintse meg zárja be az Azure Cosmos DB házirendeket, hogyan szabhatja testre az indexelési házirendet, és a kapcsolódó feláldozását indexelés. 
 
-A cikk elolvasása után képes lesz a következő kérdések megválaszolásához:
+Ez a cikk elolvasása után is elérheti az alábbi kérdések megválaszolásához:
 
-* Hogyan lehet felülbírálni a Tulajdonságok belefoglalása / kizárása az indexelő?
-* Hogyan konfigurálható az index a végleges frissítéseket?
-* Hogyan lehet beállítani a ORDER BY vagy a tartomány lekérdezések végrehajtásához indexelő?
+* Hogyan bírálhatom felül a tulajdonságok alapján belefoglalása vagy kizárása indexelő?
+* Hogyan konfigurálhatok végleges frissítések az indexet?
+* Hogyan konfigurálhatok ORDER BY vagy a tartomány-lekérdezések végrehajtása az indexelés?
 * Hogyan tehetem módosításokat egy gyűjtemény indexelési házirendet?
-* Hogyan összehasonlítása tárterületi és teljesítménybeli különböző indexelési házirendek?
+* Hogyan összehasonlítása tárolás és teljesítmény különböző indexelési szabályzat?
 
-## Az indexelési házirendet gyűjtemény testreszabása <a id="CustomizingIndexingPolicy"></a>  
-Az alapértelmezett házirendet az Azure Cosmos DB gyűjteményt a indexelő felülbírálásával testre tárolás, az írási és a lekérdezési teljesítmény és a lekérdezés konzisztencia közötti kompromisszumot. Konfigurálhatja a következő szempontokat:
+## Gyűjtemény indexelési házirend testreszabása <a id="CustomizingIndexingPolicy"></a>  
+Testre szabhatja a storage, írási és lekérdezési teljesítmény és a lekérdezési konzisztenciát közötti skálán letiltásával alapértelmezett indexelési szabályzat egy Azure Cosmos DB-gyűjteményen. Konfigurálhatja a következő szempontokat:
 
-* **Bevonhat vagy kizárhat a dokumentumok és az elérési út, és onnan az index**. Zárja ki, vagy bizonyos dokumentumokhoz szerepeljenek az index beszúrása vagy cserélje le a dokumentumokat a gyűjteményben. Akkor is is bevonhat vagy kizárhat JSON tulajdonságokat, más néven *elérési utak*, indexben szereplő dokumentumok között indexelése. Elérési utak közé tartozik a helyettesítő mintákat.
-* **Konfigurálja a különféle index**. Az egyes belefoglalt elérési út adja meg az elérési út van szükség, egy gyűjtemény indexe típusú. Megadhatja, hogy az elérési út adatok, a várt lekérdezés munkaterhelés és a numerikus vagy karakterlánc "pontosság." index típusa
-* **Index frissítési módok konfigurálása**. Az Azure Cosmos DB három indexelési módot támogat: egységes, lassú, és "nincs". Az indexelő módok keresztül az indexelési házirendet egy Azure Cosmos DB gyűjteményt konfigurálhatók. 
+* **Bevonhat vagy kizárhat a dokumentumok és az elérési utak, és az indexből**. Zárja ki, vagy meghatározott dokumentumok tartalmazzák az indexben, helyezze be vagy cserélje le a dokumentumokat a gyűjtemény. Akkor is is bevonhat vagy kizárhat meghatározott JSON-tulajdonságokkal, más néven *elérési utak*, indexelendő dokumentumok index részét képező között. Elérési utak közé tartozik a helyettesítő karakterek mintái.
+* **Konfigurálja a különféle index**. Az egyes belefoglalt elérési út adja meg az elérési út van szükség, egy gyűjtemény indexe típusát. Megadhatja, hogy az elérési út adatokat, a várható számítási feladatok és a numerikus vagy karakterlánc "pontosság." index típusa
+* **Index frissítési módok konfigurálása**. Az Azure Cosmos DB támogatja az indexelő három mód: egységes, lassú, sem. Az indexelő üzemmódok indexelési szabályzat egy Azure Cosmos DB-gyűjtemények is beállíthatja. 
 
-A Microsoft .NET következő kódrészletet bemutatja, hogyan állítható be egy egyéni indexelési házirendet, ha létrehoz egy gyűjteményt. Ebben a példában azt állítja be a házirendet egy karakterláncok és számok tartományindexszel rendelkező, a maximális pontosság. Ezzel a házirend-karakterláncok ORDER BY lekérdezések végrehajtásához használható.
+A Microsoft .NET következő kódrészletet bemutatja, hogyan egyéni indexelési szabályzat állítsa a gyűjtemény létrehozásakor. Ebben a példában a házirend-karakterláncok és a számok a tartomány indexszel rendelkező állítjuk, a maximális pontosság. Ez a szabályzat karakterláncok ORDER BY lekérdezések végrehajtásához használható.
 
     DocumentCollection collection = new DocumentCollection { Id = "myCollection" };
 
@@ -55,59 +55,59 @@ A Microsoft .NET következő kódrészletet bemutatja, hogyan állítható be eg
 
 
 > [!NOTE]
-> Az indexelési házirendet REST API verziója 2015-06-03 megjelenésével megváltozott a JSON-séma. Hogy a kiadástól kezdve a JSON-séma házirend indexeléshez karakterláncok tartomány indexek támogatja. .NET SDK 1.2.0 és a Java, Python, és a Node.js SDK-k 1.1.0-ás támogatja az új házirend-séma. Az SDK korábbi verziói a REST API-t 2015-04-08 verzióját használja. A korábbi séma támogatja az indexelési házirendet.
+> A REST API verziója 2015-06-03 megjelenésével megváltozott indexelési szabályzat JSON-sémájában. A JSON-séma indexelési szabályzat a kiadástól kezdve támogatja a tartomány indexek karakterláncok. .NET SDK-val 1.2.0-s vagy annál újabb és a Java, Python és Node.js SDK-k 1.1.0-s támogatja az új házirend-sémában. Az SDK korábbi verziói a REST API verziója 2015-04-08 használják. A korábbi séma az indexelési szabályzat támogatják.
 > 
-> Alapértelmezés szerint Azure Cosmos DB indexeli a dokumentumok kapcsolatikarakterlánc-tulajdonságokat következetesen a kivonat indexszel rendelkező. Az indexek dokumentumok belüli összes numerikus tulajdonság következetesen a tartományindexszel rendelkező.  
+> Alapértelmezés szerint az Azure Cosmos DB indexeli a dokumentumokon belül minden karakterlánc tulajdonságai következetesen kivonatoló indexszel rendelkező. Indexelt dokumentumok belüli összes numerikus tulajdonság következetesen tartomány indexszel.  
 > 
 > 
 
 ### <a name="customize-the-indexing-policy-in-the-portal"></a>Az indexelési házirendet a portál testreszabása
 
-Az indexelési házirendet a gyűjtemény az Azure-portálon módosíthatja: 
+Az Azure Portalon gyűjtemény indexelési házirendet módosíthatja: 
 
-1. A portálon nyissa meg a Azure Cosmos DB-fiókjába, és válassza ki a gyűjteményt. 
-2. Válassza ki a bal oldali navigációs menü **beállítások**, majd válassza ki **indexelő házirend**. 
-3. A **indexelő házirend**, módosítsa az indexelési házirendet, és válassza **OK**. 
+1. A portálon nyissa meg az Azure Cosmos DB-fiókot, és válassza ki a gyűjteményt. 
+2. A bal oldali navigációs menüben válassza ki a **beállítások**, majd válassza ki **indexelési szabályzata**. 
+3. A **indexelési szabályzata**, módosítsa az indexelési házirendet, és válassza **OK**. 
 
-### Az indexelő adatbázis-mód <a id="indexing-modes"></a>  
-Azure Cosmos-adatbázis támogatja az indexelési házirendet egy Azure Cosmos DB gyűjteményen keresztül konfigurálható három indexelési módot: egységes, lassú, és "nincs".
+### Adatbázis-indexelés módok <a id="indexing-modes"></a>  
+Az Azure Cosmos DB támogatja az indexelési házirendet egy Azure Cosmos DB-gyűjteményen keresztül konfigurálható három indexelési mód: egységes, lassú, sem.
 
-**Egységes**: Ha egy Azure Cosmos DB gyűjtési Consistent, egy adott Azure Cosmos DB gyűjtemény lekérdezései hajtsa végre a konzisztencia szintjét a pont olvasása megadott (erős, kötött elavulás, munkamenet és végleges). Az index frissítése a dokumentum frissítéssel (insert, replace, update és delete egy dokumentumot egy Azure Cosmos DB gyűjteményben) szinkron módon történik.
+**Egységes**: Ha egy Azure Cosmos DB-gyűjtemények házirend Consistent, a lekérdezések egy adott Azure Cosmos DB-gyűjteményen hajtsa végre a konzisztencia szintjét az a pont – olvasásokhoz megadott (erős, kötött elavulás, munkamenet és végleges). Az index frissítése szinkron módon, a dokumentum frissítése (insert, replace, update és delete egy dokumentumot egy Azure Cosmos DB-gyűjteményben) részeként.
 
-Egységes indexelő használ egy lehetséges csökkentése érdekében következetes lekérdezéseket támogat, az írási teljesítmény. A csökkentési, a függvény az egyedi elérési utak indexelése igénylő és a "konzisztenciaszint." Egységes indexelő módban készült "write gyorsan, azonnal lekérdezés" munkaterhelések.
+Lemezírás teljesítménye cserébe lehetséges csökkentése konzisztens lekérdezések konzisztens indexelő támogatja. A csökkentési, az egyedi elérési utak indexelni kell függvény és a "konzisztenciaszint." Konzisztens az indexelő mód "írása gyorsan, azonnal query" számítási feladatokhoz készült.
 
-**Lusta**: az index frissítése aszinkron módon ha egy Azure Cosmos DB gyűjteményt videokártyának, ez azt jelenti, hogy ha a gyűjtemény átviteli sebesség nem teljes kihasználását felhasználói kérelem kiszolgálására.  Vegye figyelembe, hogy inkonzisztens eredményeket kaphat, mert az adatok okozhatnak és indexelt lassan. Ez azt jelenti, hogy a COUNT lekérdezés vagy meghatározott lekérdezési eredmények lehet, hogy nem konzisztens vagy repeatable, megadott idő. 
+**Lusta**: az index frissítése aszinkron módon ha egy Azure Cosmos DB-gyűjtemények videokártyának, vagyis ha a gyűjtemény átviteli kapacitás teljes mértékben nem használható a felhasználói kérések kiszolgálására.  Vegye figyelembe, hogy kaphat inkonzisztens, mert az adatok betöltött és lassan indexelt eredmények. Ez azt jelenti, hogy a lekérdezések száma és az adott lekérdezési eredmények lehetséges, hogy nem egységes és megismételhető, megadott idő. 
 
-Az index általában feldolgozott adatokkal utólagos módban van. Az indexelő Lazy idő Élettartam (TTL) változik éppen eltávolítja, majd újból létrehozza az indexet eredményez. Így az a szám és a lekérdezési eredmények inkonzisztens egy ideig. A legtöbb Azure Cosmos DB fiókok a konzisztens indexelési módot kell használniuk.
+Az index általában betöltött utólagos módban van. Lusta indexelést, az élettartam (TTL) módosítja az index eldobása folyamatban van, majd újra létrehozza az eredmény. Ez lehetővé teszi az száma és a lekérdezési eredmények inkonzisztens egy ideig. A legtöbb Azure Cosmos DB-fiókok a konzisztens az indexelő módot kell használnia.
 
-**Nincs**: olyan gyűjtemény, amelyikhez nincs index mód nincs társítva index tartozik. Ez általában akkor használható, ha Azure Cosmos DB egy kulcs-érték tárolóként szolgál, és dokumentumok csak az ID tulajdonság által elért. 
+**Nincs**: egy gyűjteményt, amely tartalmaz egy index mód nincs társítva indexszel rendelkezik. Ez általában akkor használatos, ha az Azure Cosmos DB egy kulcs-érték tárolóként szolgál, és dokumentumok csak az ID tulajdonság által elért. 
 
 > [!NOTE]
-> A meglévő index eldobása mellékhatása konfigurálása az indexelési házirendet nincs rendelkezik. Akkor használja, ha a hozzáférési minták csak azonosító szükséges, vagy önálló hivatkozásra.
+> Az indexelési szabályzat konfigurálása, sem rendelkezik a mellékhatása bármely meglévő index elvetését. Akkor használja, ha csak ID használatának megkövetelése a hozzáférési mintákat, vagy önhivatkozást.
 > 
 > 
 
-Az alábbi táblázat az indexelési üzemmód (Consistent és Lazy) konfigurálva ahhoz a gyűjteményhez, és a lekérdezés kéréshez megadott konzisztenciaszint alapuló lekérdezések konzisztencia. Ez vonatkozik semmilyen felhasználói felületének használatával végzett lekérdezések: REST API-SDK-k, vagy a tárolt eljárások és eseményindítók. 
+Az alábbi táblázat a konzisztenciát a lekérdezések az indexelési üzemmód (Consistent és Lazy) konfigurálva ahhoz a gyűjteményhez, és a konzisztencia szintjét, a lekérdezés kéréshez megadott alapján. Ez minden olyan felhasználói felületének használatával végzett lekérdezésekre vonatkozik: REST API, SDK-k vagy a tárolt eljárásokkal és eseményindítókkal. 
 
-|Konzisztencia|Az indexelő mód: konzisztens|Az indexelő mód: Lusta|
+|Konzisztencia|Az indexelő mód: konzisztens|Az indexelő mód: lassú|
 |---|---|---|
 |Erős|Erős|Végleges|
-|A kötött elavulási|A kötött elavulási|Végleges|
+|Korlátozott frissesség|Korlátozott frissesség|Végleges|
 |Munkamenet|Munkamenet|Végleges|
 |Végleges|Végleges|Végleges|
 
-Azure Cosmos-adatbázis nincs mód indexelő rendelkező gyűjtemények végzett lekérdezések hibát ad vissza. Lekérdezések továbbra is hajtható végre, mert keresztül explicit vizsgálatok **x-ms-documentdb-enable-vizsgálat** fejléc a következő a REST API-t vagy a **EnableScanInQuery** beállítás kérése a .NET SDK használatával. A vizsgálatok nem támogatottak bizonyos lekérdezési funkciók – például ORDER BY **EnableScanInQuery**.
+Az Azure Cosmos DB a gyűjteményeket, amelyek egy sem mód indexelő rendelkezik végzett lekérdezésekhez hibát ad vissza. Lekérdezések továbbra is hajtható végre, az explicit keresztül vizsgálatok **x-ms-documentdb-enable-vizsgálat** fejléc a REST API-ban vagy a **EnableScanInQuery** beállítás kérése a .NET SDK használatával. A vizsgálatok nem támogatottak egyes lekérdezési funkciók, például az ORDER BY **EnableScanInQuery**.
 
-Az alábbi táblázatban láthatók az indexelési mód (Consistent Lazy és None) alapuló lekérdezések konzisztencia amikor **EnableScanInQuery** van megadva.
+Az alábbi táblázatban láthatók a konzisztencia az indexelési mód (Consistent, Lazy és None) alapuló lekérdezések során **EnableScanInQuery** van megadva.
 
-|Konzisztencia|Indexelő mód: konzisztens|Indexelő mód: Lusta|Indexelő mód: nincs|
+|Konzisztencia|Indexelő mód: konzisztens|Indexelő mód: lassú|Indexelő mód: nincs|
 |---|---|---|---|
 |Erős|Erős|Végleges|Erős|
-|A kötött elavulási|A kötött elavulási|Végleges|A kötött elavulási|
+|Korlátozott frissesség|Korlátozott frissesség|Végleges|Korlátozott frissesség|
 |Munkamenet|Munkamenet|Végleges|Munkamenet|
 |Végleges|Végleges|Végleges|Végleges|
 
-A következő kód a minta megjelenítése a .NET SDK használatával következetes indexelő az összes dokumentum Beszúrások hogyan hozzon létre egy Azure Cosmos DB gyűjteményt.
+Az alábbi kód példa show koncentrálódik dokumentum konzisztens indexelése a .NET SDK használatával hogyan hozzon létre egy Azure Cosmos DB-gyűjteményben.
 
      // Default collection creates a Hash index for all string fields and a Range index for all numeric    
      // fields. Hash indexes are compact and offer efficient performance for equality queries.
@@ -120,30 +120,31 @@ A következő kód a minta megjelenítése a .NET SDK használatával következe
 
 
 ### <a name="index-paths"></a>Index elérési utak
-Azure Cosmos-adatbázis a JSON-dokumentumokat és az index fákként modellek. A házirendek a fája módjának észlelheti. A dokumentumok kiválaszthatja a belefoglalása / kizárása indexelő elérési útjait. Ez kínálhat javított teljesítménye és alacsonyabb index tárolási forgatókönyvek, ahol a lekérdezési mintáknak előzetesen ismert.
+Az Azure Cosmos DB JSON-dokumentumokat és az index modelleket, fákat. A házirendek az elérési utak a fa belül hangolhassa. A dokumentumok kiválaszthatja a belefoglalása vagy kizárása indexelő elérési útjára. Ez jobb írási teljesítmény- és alacsonyabb index forgatókönyvekhez, ahol a lekérdezési mintáknak előre ismert kínálnak.
 
-Index elérési utak a legfelső szintű (/) kezdődnie, és általában végén a? helyettesítő karakteres operátor. Ez azt jelzi, hogy nincsenek-e az előtag több lehetséges értékei. Például VÁLASSZA kiszolgálására * a Families F WHERE F.familyName = "Andersen", meg kell adni egy index elérési útját /familyName/? a gyűjtemény indexe házirendben.
+Index elérési utak a gyökér (/) kezdődő, és általában végén a? helyettesítő karakteres operátor. Ez azt jelzi, hogy nincsenek-e több lehetséges értékek a előtag. Például szolgálja ki a SELECT * FROM családok F WHERE F.familyName = "Andersen", /familyName/ egy index elérési útját meg kell adni? a gyűjtemény indexe házirendben.
 
-Index elérési utakat is használhatja a \* helyettesítő operátorral adja meg az elérési utak rekurzív módon az előtag szerinti viselkedését. Például/hasznos / * indexelő kizárását minden elemet a hasznos tulajdonság használható.
+Index elérési utakat is használhatja a \* helyettesítő operátor számára az elérési út rekurzív módon az előtag alapján viselkedésének megadása. Például/hasznos / * kizárása a hasznos adat tulajdonság található minden elemet az indexelő is használható.
 
-Az alábbiakban a megadja a index közös minták:
+Az alábbiakban a közös minta indexet-útvonalak megadása:
 
-| Útvonal                | Leírás/használati eset                                                                                                                                                                                                                                                                                         |
+| Útvonal                | Leírás és használati eset                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| /                   | A gyűjtemény alapértelmezett elérési utat. Rekurzív és a teljes dokumentum fa vonatkozik.                                                                                                                                                                                                                                   |
-| / prop /?             | Index elérési út a következő lekérdezések kiszolgálásához szükséges (a kivonatoló vagy tartomány típusával, illetve):<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop                                                                       |
-| / prop / *             | A megadott címke az összes elérési utat index elérési útját. Az alábbi lekérdezéseket együttműködik<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop > 5<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop.nextprop = "érték"<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop         |
-| [] / tulajdonságai / /?         | Index elérési út szükséges iterációs szolgálnak, és CSATLAKOZZON a skaláris értékeket tartalmazhat, például a ["a", "b", "c"] tömbök lekérdezéseket:<br><br>Válassza ki címke címke IN collection.props a WHERE címke = "érték"<br><br>A gyűjtemény c ILLESZTÉSI címke IN c.props VÁLASSZA címke ahol címke > 5                                                                         |
-| [] /subprop/ /props/? | Index elérési iterációs kiszolgálásához szükséges, és az objektumok tömbök ILLESZTÉS küldött lekérdezésekre, például [{subprop: "a"}, {subprop: "b"}]:<br><br>Válassza ki címke címke IN collection.props a WHERE tag.subprop = "érték"<br><br>A gyűjtemény c ILLESZTÉSI címke IN c.props címke kiválasztása WHERE tag.subprop = "érték"                                  |
-| / prop/subprop /?     | Index elérési lekérdezések kiszolgálásához szükséges (a kivonatoló vagy tartomány típusával, illetve):<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop > 5                                                                                                                    |
+| /                   | A gyűjtemény alapértelmezett elérési utat. A rekurzív, és a teljes dokumentum fa vonatkozik.                                                                                                                                                                                                                                   |
+| / prop /?             | Index elérési út az alábbihoz hasonló-lekérdezések kiszolgálása érdekében szükséges (kivonatoló vagy tartomány típusú, illetve):<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop                                                                       |
+| / prop / *             | A megadott címke alatti összes elérési utat index elérési útja. A következő lekérdezéseket működik<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop > 5<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop.nextprop = "érték"<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop         |
+| / Kellékek / [] /?         | Index kell felelni az iteráció és a JOIN lekérdezéseket az Pole binárních hodnot fejlécekké például ["a", "b", "c"] elérési útja:<br><br>A címke a collection.props címkézése VÁLASSZA WHERE címke = "érték"<br><br>A gyűjtemény c ILLESZTÉSI címke IN c.props VÁLASSZA címke > 5 ahol címkézése                                                                         |
+| [] /subprop/ /props/? | Iteráció kiszolgálásához szükséges index elérési út és a JOIN lekérdezéseket az objektumok, tömbök, például [{subprop: "a"}, {subprop: "b"}]:<br><br>A címke a collection.props címkézése VÁLASSZA WHERE tag.subprop = "érték"<br><br>Válassza ki címkét a gyűjtemény c ILLESZTÉSI címke IN c.props WHERE tag.subprop = "érték"                                  |
+| / prop/subprop /?     | -Lekérdezések kiszolgálása érdekében szükség index elérési (kivonatoló vagy tartomány típusú, illetve):<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop > 5                                                                                                                    |
 
 > [!NOTE]
-> Ha úgy állítja be az egyéni index elérési utak, a következőket kell végrehajtania adhatja meg az alapértelmezett indexelési szabály a teljes dokumentum fa, különleges elérési megjelölt "/ *". 
+> Állíthat be egyéni index elérési utak, akkor szükségesek, adja meg az alapértelmezett indexelési szabály a teljes dokumentum fa, amely speciális elérési helyén "/ *". 
 > 
 > 
 
-A következő példa egy adott helyre tartományindexszel és 20 bájt egyéni pontosság érték konfigurálja:
+Az alábbi példa egy adott elérési út tartományindexszel és a egy egyéni pontosság értéke 20 bájtos konfigurálja:
 
+```
     var collection = new DocumentCollection { Id = "rangeSinglePathCollection" };    
 
     collection.IndexingPolicy.IncludedPaths.Add(
@@ -164,52 +165,119 @@ A következő példa egy adott helyre tartományindexszel és 20 bájt egyéni p
         });
 
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), pathRange);
+```
 
+Az indexelés hozzáadásakor egy elérési utat, a számok és karakterláncok adott elérési útján belül indexelve. Ezért annak ellenére, hogy csak a karakterláncok indexelő határozza meg, az Azure Cosmos DB alapértelmezett definícióját, valamint számokat ad hozzá. Más szóval az Azure Cosmos DB van arra, hogy az elérési út kizárás az indexelési házirendet, de nem írja be a kizárási adott elérési úton. Példa, vegye figyelembe, hogy csak egy index mindkét útvonal van megadva (elérési útja = "/ *" és az elérési út = "/\"attr1\"/?"), de a szám adattípust is hozzá az eredményhez.
+
+```
+var indices = new[]{
+                new IncludedPath  {
+                    Indexes = new Collection<Index>
+                    {
+                        new RangeIndex(DataType.String) { Precision = 3 }// <- note: only 1 index specified
+                    },
+                    Path =  "/*"
+                },
+                new IncludedPath  {
+                    Indexes = new Collection<Index>
+                    {
+                        new RangeIndex(DataType.String) { Precision = 3 } // <- note: only 1 index specified
+                    },
+                    Path =  "/\"attr1\"/?"
+                }
+            };...
+
+            foreach (var index in indices)
+            {
+                documentCollection.IndexingPolicy.IncludedPaths.Add(index);
+            }
+```
+
+Az index létrehozása eredménye:
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": 3
+                },
+                {
+                    "kind": "Range",
+                    "dataType": "Number",
+                    "precision": -1
+                }
+            ]
+        },
+        {
+            "path": "/\"attr\"/?",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": 3
+                },
+                {
+                    "kind": "Range",
+                    "dataType": "Number",
+                    "precision": -1
+                }
+            ]
+        }
+    ],
+}
+```
 
 ### <a name="index-data-types-kinds-and-precisions"></a>Index adattípusok, típusú és szükséges
-Lehetősége van több útvonal az indexelési házirendet konfigurálásakor. Megadhatja, hogy egy vagy több indexelési definíciót minden az elérési úthoz:
+Több lehetőség áll rendelkezésére az indexelési házirendet egy elérési út konfigurálásakor. Egy vagy több indexelő definíciót minden útvonalhoz adhatja meg:
 
-* **Adattípus**: karakterlánc, szám, pont, sokszög vagy LineString (tartalmazhat adatok típusonként és példányonként elérési út csak egy bejegyzés).
-* **Milyen index**: kivonatoló (egyenlőség lekérdezések), a tartomány (egyenlőség, tartomány vagy ORDER BY lekérdezések) vagy a Spatial (térbeli lekérdezéseket).
-* **Pontosság**: egy kivonatoló az index, ez az érték 1-8 karakterláncok és a számok. Az alapértelmezett érték 3. Tartomány index az érték lehet -1 (maximális pontosság). 1 és 100 (maximális pontosság) karakterlánc- vagy számértékeknek a munkafüzet változhat.
+* **Adattípus**: karakterlánc, szám, pont, Polygon vagy LineString (tartalmazhat elérési adattípus eszközönként csak egy bejegyzés).
+* **Index típusa**: kivonata (egyenlőség lekérdezések), a tartomány (egyenlőség, tartomány vagy ORDER BY lekérdezések) vagy a Spatial (térbeli lekérdezések).
+* **Pontosság**: egy kivonatot az index, ez az érték 1-től a sztringekkel és a számok 8-ra. Az alapértelmezett érték 3. Ez az érték egy tartományindexszel lehet -1 (maximális pontosság). 1 és 100 (maximális pontosság) karakterlánc vagy szám értékek munkafüzet változhat.
 
 #### <a name="index-kind"></a>Index típusa
-Azure Cosmos DB támogatja kivonatoló index és a tartomány index különböző minden útvonalat, amelyet a karakterlánc vagy szám adattípusok konfigurálhatók, vagy mindkettőt.
+Az Azure Cosmos DB támogatja a kivonat index és a tartomány index típusú minden elérési utat, karakterlánc vagy szám adattípusok konfigurálható, illetve mindkettőt.
 
-* **Kivonatoló** hatékony egyenlőség és JOIN lekérdezéseket támogat. Kivonatindexek használata esetek többségében az alapértelmezett érték 3 bájt-nál nagyobb pontosságú nincs szükség. Az adattípus karakterlánc vagy szám lehet.
-* **Tartomány** hatékony egyenlőség lekérdezéseket, a lekérdezések támogat (használatával >, <>, =, < =,! =), és ORDER BY lekérdezések. ORDER By lekérdezések alapértelmezés szerint is szükség lehet index maximális pontosság (-1). Az adattípus karakterlánc vagy szám lehet.
+* **Kivonatoló** hatékony egyenlőség és JOIN lekérdezéseket támogat. A legtöbb használati esetek kivonatindexek pontossága nagyobb, mint az alapértelmezett érték 3 bájt nem szükséges. Az adattípus karakterlánc vagy szám lehet.
+* **Tartomány** támogatja hatékony egyenlőség lekérdezéseket, a lekérdezések (használatával >, <>, =, < =,! =), és ORDER BY lekérdezések. Alapértelmezés szerint az ORDER By lekérdezések maximális pontosság (-1) is szükséges. Az adattípus karakterlánc vagy szám lehet.
 
-Azure Cosmos-adatbázis a is támogatja. a térbeli index jellegű minden elérési utat, amely a pont, sokszög vagy LineString adattípusok adható meg. Az érték a megadott elérési úton kell lennie mint érvényes GeoJSON töredéket `{"type": "Point", "coordinates": [0.0, 10.0]}`.
+Az Azure Cosmos DB is támogatja a térbeli index típusa minden elérési utat, amely a terjesztési pontok, Polygon, valamint LineString adattípusok adható meg. A megadott elérési úton értéke nem lehet például egy érvényes GeoJSON töredék `{"type": "Point", "coordinates": [0.0, 10.0]}`.
 
-* **Térbeli** támogatja a hatékony térbeli (belül és távolság) lekérdezések. Az adattípus lehet pont, sokszög vagy LineString.
+* **Térbeli** támogatja a hatékony térbeli (belül és a távolság) lekérdezéseket. Az adattípus lehet pont, Polygon vagy LineString.
 
 > [!NOTE]
-> Azure Cosmos DB támogatja a pont, sokszög és LineString adattípusok automatikus indexeléshez.
+> Az Azure Cosmos DB támogatja az automatikus indexelését, LineString, pontot és sokszög adattípusokat.
 > 
 > 
 
-Az alábbiakban a támogatott index különböző és példákat a lekérdezéseiben, amelyeket el kiszolgálásához használt:
+Az alábbiakban a támogatott index típusú és a lekérdezések, amelyek csak példák szolgáltatására használhatók:
 
-| Index típusa | Leírás/használati eset                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Index típusa | Leírás és használati eset                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kivonat       | Kivonatoló keresztül/prop /? (vagy /) segítségével hatékonyan tudja szolgálni az alábbi lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Kivonatoló keresztül/tulajdonságai / [] /? (és / vagy/tulajdonságai /) segítségével hatékonyan tudja szolgálni az alábbi lekérdezéseket:<br><br>A gyűjtemény c ILLESZTÉSI címke IN c.props címke kiválasztása WHERE címke = 5                                                                                                                       |
-| Tartomány      | Tartomány/prop/keresztül? (vagy /) segítségével hatékonyan tudja szolgálni az alábbi lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop                                                                                                                                                                                                              |
-| Térbeli     | Tartomány/prop/keresztül? (vagy /) segítségével hatékonyan tudja szolgálni az alábbi lekérdezéseket:<br><br>Válassza ki a gyűjtemény c<br><br>HOL ST_DISTANCE (c.prop, {"type": "Terjesztésipont-", "koordináták": [0.0, 10.0]}) < 40<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN(c.prop, {"type": "Polygon",...}) – a pont is engedélyezve van az indexelő<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN({"type": "Point",...}, c.prop)--a sokszög engedélyezve van az indexelő              |
+| Kivonat       | Ujjlenyomat-keresztül/prop /? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Kivonatoló keresztül/Kellékek / [] /? (és / vagy/Kellékek /) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki címkét a gyűjtemény c ILLESZTÉSI címke IN c.props WHERE címke = 5                                                                                                                       |
+| Tartomány      | Tartomány/prop/keresztül? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop                                                                                                                                                                                                              |
+| Térbeli     | Tartomány/prop/keresztül? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény c<br><br>HOL ST_DISTANCE (c.prop, {"type": "Pontot", "koordináták": [0.0, 10.0]}) < 40<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN(c.prop, {"type": "Polygon",...}) – az indexelést a pont van engedélyezve<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN({"type": "Point",...}, c.prop) – az indexelést a sokszög engedélyezve              |
 
-Alapértelmezés szerint hibát ad vissza, mint a tartomány operátorok tartalmazó lekérdezések a > =, ha nincs (a bármely pontosság) tartomány index jelezze, hogy a vizsgálatok akkor lehet szükség, a lekérdezés kiszolgálásához. A tartományindexszel nélkül is végrehajthatók lekérdezések segítségével a **x-ms-documentdb-enable-vizsgálat** fejléc a következő a REST API-t vagy a **EnableScanInQuery** beállítás kérése a .NET SDK használatával. Ha a lekérdezést, hogy Azure Cosmos DB használatával az index alapján szűrni összes többi szűrőt, nem a hibaüzenet.
+Alapértelmezés szerint hibát ad vissza a lekérdezéseket. például tartomány operátorok > =, ha nincs (a bármely pontossági) tartomány index, hogy jelezze, hogy a lekérdezés kiszolgálása érdekében szükség lehet-e a vizsgálatot. Tartomány index nélkül is elvégezhető lekérdezések használatával a **x-ms-documentdb-enable-vizsgálat** fejléc a REST API-ban vagy a **EnableScanInQuery** beállítás kérése a .NET SDK használatával. Ha bármilyen más szűrők a lekérdezésben, hogy az Azure Cosmos DB az index szűrésére használható ellen, nincs hiba adja vissza.
 
-Ugyanazok a szabályok vonatkoznak a térbeli lekérdezéseket. Alapértelmezés szerint hibát ad vissza térbeli lekérdezésekhez, ha nincs térbeli index, és nincsenek egyéb szűrők az indexből szolgáltatható. Akkor is lehet elvégezni, mivel a vizsgálat használatával **x-ms-documentdb-enable-vizsgálat** vagy **EnableScanInQuery**.
+Ugyanezek a szabályok vonatkoznak a térinformatikai lekérdezéseket. Alapértelmezés szerint hibát ad vissza térbeli lekérdezéseket, ha nincs térbeli index, és nincsenek egyéb szűrők, amelyek az indexből kiszolgálható. Akkor is elvégezhető a vizsgálat használatával **x-ms-documentdb-enable-vizsgálat** vagy **EnableScanInQuery**.
 
 #### <a name="index-precision"></a>Index pontosság
-Index pontosság segítségével ellenőrizze az index tárolási terhelés és a lekérdezési teljesítmény közötti kompromisszumot. A számok azt javasoljuk, -1 (maximális) alapértelmezett pontosság konfigurációját. Mivel számok 8 bájt a JSON-ban, ez megegyezik egy 8 bájtos konfigurációt. Például az 1 – 7, a pontosság alacsonyabb értéket válasszon azt jelenti, hogy az egyes tartományokon belül értékek leképezése azonos index bejegyzés. Ezért index tárolóhely csökkenti, de a lekérdezés-végrehajtás kell feldolgozni a további dokumentumokat. Következésképpen a kérelemegység további átviteli elfoglalja.
+Index pontosság segítségével győződjön meg arról, és hátrányokkal indexelt tárolási terhelés és a lekérdezési teljesítmény. Számok javasolt az alapértelmezett pontosság konfigurációt a-1 (maximum értéket) használja. Mivel számok 8 bájtos JSON-ban, ez az egyenértékű 8 bájtos konfigurációra. 1 – 7, például a pontosság kisebb értéket választja azt jelenti, hogy az egyes tartományokon belül értékek leképezése azonos index bejegyzés. Ezért index tárolóhely csökkentheti, de a lekérdezés végrehajtása lehet feldolgozni további dokumentumok. Ebből következően fogyaszt a kérelemegység a kapacitás növelése érdekében.
 
-Index pontosság konfigurációs karakterlánc címtartományai több alkalmazás van. Karakterláncok bármilyen tetszőleges hosszúságú lehet, mert az index pontosság választása hatással lehetnek karakterlánc lekérdezések teljesítményét. Akkor is előfordulhat, hogy hatással a index tárolóhely szükséges. 1 és 100 vagy -1 (maximális) karakterlánc tartomány indexek konfigurálható. Ha azt szeretné, karakterlánc tulajdonságai ORDER BY lekérdezések végrehajtásához, meg kell adnia egy-1 -nek megfelelő útvonalaira pontosságát.
+Index pontosság konfigurációs van több gyakorlati alkalmazás karakterlánc tartományok. Karakterláncok bármilyen tetszőleges hosszúságú lehet, mert az index pontosság választása hatással lehetnek karakterlánc lekérdezések teljesítményét. Index tárterület szükséges mennyisége is érintheti. Karakterlánc tartomány indexek is konfigurálhatók, 1 és 100-as vagy a -1 (maximum értéket). ORDER BY-lekérdezéseket futtassanak karakterlánc tulajdonságait szeretné, ha meg kell adnia a megfelelő elérési utakra 1 pontossága.
 
-A térbeli indexek mindig használja az alapértelmezett index pontosság mindenfajta (Point, LineString és sokszög). Az alapértelmezett index pontosság térbeli indexek nem bírálható felül. 
+A térbeli indexek mindig használja az alapértelmezett index pontosság (pont, LineString és sokszög) minden alkalmazástípus esetében. Az alapértelmezett index pontosság a térbeli indexek nem lehet felülírni. 
 
-A következő példa bemutatja, hogyan .NET SDK használatával egy gyűjtemény tartomány indexek pontosság növeléséhez. 
+Az alábbi példa bemutatja, hogyan növelheti a pontosság, a tartomány indexek egy gyűjtemény a .NET SDK használatával. 
 
-**Hozzon létre egy egyéni index pontosság gyűjteményt**
+**Gyűjtemény létrehozása egyéni index pontosságú**
 
     var rangeDefault = new DocumentCollection { Id = "rangeCollection" };
 
@@ -220,11 +288,11 @@ A következő példa bemutatja, hogyan .NET SDK használatával egy gyűjtemény
 
 
 > [!NOTE]
-> Azure Cosmos DB hibát ad vissza, ha a lekérdezés ORDER BY használja, de nem rendelkezik a lekérdezett útvonalat, ahol a maximális pontosság elleni tartomány indexszel. 
+> Az Azure Cosmos DB hibát ad vissza, ha a lekérdezés ORDER BY használja, de nem rendelkezik a legnagyobb pontosságú lekérdezett elérési elleni tartomány indexszel. 
 > 
 > 
 
-Hasonlóképpen, akkor is teljesen elérési utak kizárása a indexelő. A következő példa bemutatja, hogyan kizárása a dokumentumok egy teljes szakaszáról (egy *részfa*) használatával indexelésének a \* helyettesítő operátor.
+Az indexelő hasonlóan elérési utak teljesen kizárhatja. A következő példa bemutatja, hogyan zárhat ki a dokumentumok egy teljes szakasz (egy *részfa*) az indexelő használatával a \* helyettesítő operátor.
 
     var excluded = new DocumentCollection { Id = "excludedPathCollection" };
     excluded.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
@@ -234,12 +302,12 @@ Hasonlóképpen, akkor is teljesen elérési utak kizárása a indexelő. A köv
 
 
 
-## <a name="opt-in-and-opt-out-of-indexing"></a>Részt vevő és tilthatják le az indexelő
-Kiválaszthatja, hogy kívánja-e a gyűjtemény összes dokumentumot indexeléséhez. Alapértelmezés szerint minden dokumentumok automatikusan indexeli ugyan, de bármikor kikapcsolhatják az automatikus indexeléshez. Ha indexelés ki van kapcsolva, dokumentumokat csak a is elérhetők az erre az önhivatkozások vagy a dokumentum segítségével lekérdezések azonosítóját.
+## <a name="opt-in-and-opt-out-of-indexing"></a>Részvétel a, és lemond az indexelő
+Kiválaszthatja, hogy kívánja-e a gyűjtemény összes dokumentum automatikusan indexelése. Alapértelmezés szerint minden dokumentum automatikusan indexelt, de a felhasználók bármikor kikapcsolhatják az automatikus indexeléshez. Ha az indexelés ki van kapcsolva, dokumentumok csak keresztül elérhető azok önmagukra mutató hivatkozások, vagy a lekérdezések használatával, hogy a dokumentum azonosítója.
 
-Az automatikus indexeléshez ki van kapcsolva, az index csak bizonyos dokumentumokhoz szelektív továbbra is hozzáadhat. Ezzel ellentétben automatikus az indexelő hagyhatja, és szelektív dönt, hogy bizonyos dokumentumokhoz kizárása. Be-és kikapcsolása konfigurációk indexelő akkor hasznos, ha csak egy részhalmazát, amelyet a lekérdezendő dokumentumok rendelkezik.
+Az Automatikus indexelés ki van kapcsolva, az index csak bizonyos dokumentumokhoz szelektív továbbra is hozzáadhat. Ezzel szemben az automatikus indexelést a hagyhatja, és szelektív ki szeretne zárni bizonyos dokumentumokhoz. Be-és kikapcsolása konfigurációk az indexelés akkor hasznos, ha csak egy részhalmazát, amelyet le kell kérdezni dokumentumok rendelkezik.
 
-A következő példa bemutatja, hogyan lehet például egy dokumentum explicit módon használatával a [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) és a [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) tulajdonság.
+A következő minta bemutatja, hogyan tartalmazzák a dokumentum kifejezetten a [SQL API .NET SDK-val](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) és a [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) tulajdonság.
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a document in indexing,
@@ -248,29 +316,29 @@ A következő példa bemutatja, hogyan lehet például egy dokumentum explicit m
         new { id = "AndersenFamily", isRegistered = true },
         new RequestOptions { IndexingDirective = IndexingDirective.Include });
 
-## <a name="modify-the-indexing-policy-of-a-collection"></a>Az indexelési házirendet gyűjtemény módosítása
-Az Azure Cosmos Adatbázisba a parancsprogramok gyűjtemény az indexelési házirendet módosításokat végezheti el. Indexelési házirendet egy Azure Cosmos DB gyűjteményt a változás az index az alakzat egy változást vezethet. A módosítás befolyásolja a indexelhetők elérési utak, a pontosság és a konzisztencia-modell magát az index. A házirend hatékonyan indexelő módosítják végrehajtásához egy új indexbe a régi index. 
+## <a name="modify-the-indexing-policy-of-a-collection"></a>Gyűjtemény indexelési házirend módosítása
+Az Azure Cosmos DB a működés közbeni gyűjtemény indexelési házirendet módosíthatja. Indexelési szabályzat egy Azure Cosmos DB-gyűjtemények a változás az alakzat az index módosítása vezethet. A módosítás befolyásolja a indexelhetők elérési utakat, a pontosság és az index magát a konzisztenciájú modellt. Indexelési szabályzat lényegében változását végrehajtásához egy új indexbe a régi index. 
 
-**Online indexkészítés átalakítások**
+**Online index-átalakítások**
 
-![Indexelő működése – Azure Cosmos DB online indexkészítés átalakítások](./media/indexing-policies/index-transformations.png)
+![Indexelési útmutató – Azure Cosmos DB online index-átalakítások](./media/indexing-policies/index-transformations.png)
 
-Index átalakításokat tesz online. Ez azt jelenti, hogy a régi házirend egy indexelt dokumentumok hatékonyan átalakítaná e az új házirend *anélkül, hogy befolyásolná a írási rendelkezésre állás vagy a kiosztott átviteli sebesség* a gyűjtemény. A konzisztenciájának olvasási és írási műveletet a REST API-t, SDK-k használatával végrehajtott vagy belül tárolt eljárások és eseményindítók nem érinti index átalakítása során. Nincs teljesítménycsökkenés vagy az alkalmazásokhoz állásidő meg, hogy egy indexelési házirendet, módosítsa.
+Online index átalakítások menjenek végbe. Ez azt jelenti, hogy a régi szabályzatonként indexelt dokumentumok hatékonyan átalakításából származnak az új házirend szerint *működésének megzavarása nélkül megtesztelheti az írás rendelkezésre állása, vagy a kiosztott átviteli sebesség* a gyűjtemény. Konzisztenciájának olvasási és írási a REST API, SDK-k használatával végrehajtott műveletek vagy belül tárolt eljárások és eseményindítók nincs hatással az index átalakítása során. Nincs teljesítménycsökkenés vagy leállását, mivel az alkalmazások Ha létrehoz egy indexelési szabályzat módosítása.
 
-Azonban az index átalakítása folyamatban a időszak lekérdezések nem idővel konzisztenssé, függetlenül a indexelési üzemmód (azonos vagy Lazy). Ugyanez vonatkozik a lekérdezések bármely interfész: REST API-SDK-k, és a tárolt eljárások és eseményindítók. Csakúgy, mint az indexelő, Lazy index átalakítása van aszinkron módon történik a háttérben a replikákon szerint történik tartalék erőforrást, amely egy adott replika érhető el. 
+Azonban a index átalakítása folyamatban a időszakban lekérdezéseket is végül konzisztens, függetlenül az indexelési módjának saját konfigurációja (Consistent vagy Lazy). Ugyanez vonatkozik a lekérdezések bármely interfész: REST API, SDK-k és a tárolt eljárásokkal és eseményindítókkal. Csakúgy, mint Lazy indexelést, az index átalakítási aszinkron módon történik a háttérben a replikákon egy adott replika elérhető késztartalék források segítségével. 
 
-Index átalakítások helyen is. Azure Cosmos-adatbázis nem másolatait a két az index és a lapozófájl-kapacitás el a régi index az újjal. Ez azt jelenti, hogy nincs további lemezterület szükséges vagy felhasznált a gyűjteményekben, míg az index átalakítások történik.
+Index átalakításokat is teljesülnek. Az Azure Cosmos DB karbantartása nem két példányban az index és a Váltás a régi index ki az újra. Ez azt jelenti, hogy nincsenek további lemezterület szükséges felhasznált ebben a gyűjteményben, míg az index átalakítások történik.
 
-Ha megváltoztatja az indexelési házirendet, a módosításai érvényesek lesznek a régi index áthelyezése az új elsősorban az indexelési mód konfigurációk alapján. Az indexelő mód konfigurációk mint például a/kizárt elérési utak, index különböző és szükséges egyéb értékek nagyobb szerepet játszanak. 
+Indexelési házirend módosításához változások áthelyezése a régi index, az új elsősorban az indexelési mód konfigurációk alapján lépnek érvénybe. Az indexelő mód konfigurációk, mint például/kizárt elérési utak, index típusú és a szükséges egyéb értékek nagyobb szerepet játszanak. 
 
-Ha a régi és az új házirendek mindkét konzisztens indexelő, az Azure Cosmos DB egy online indexkészítés átalakítást hajt végre. Egy másik indexelési házirendkezelés, amelynél az egységes indexelési mód, amíg folyamatban van az átalakítás nem alkalmazható. Azonban áthelyezheti Lazy vagy nincs folyamatban van az átalakítás során az indexelő mód: 
+Ha a régi és új szabályzatok mindkét konzisztens indexelést, az Azure Cosmos DB egy online indexkészítés átalakítást hajt végre. Egy másik indexelési házirend-módosítások, konzisztens az indexelő mód az átalakítás közben nem lehet alkalmazni. Azonban áthelyezheti Lazy vagy nincs folyamatban van egy átalakítás közben az indexelő mód: 
 
-* Amikor Lazy helyezi át, az index házirend módosítása azonnal hatékony. Azure Cosmos DB elindul, hozza létre újra az index aszinkron módon történik. 
-* Nincs helyezi át, ha az index azonnal megszakad. Nincs áthelyezése akkor hasznos, ha szakítsa meg a folyamatban lévő átalakulása, és indítsa el a különböző indexelési házirendet az alapoktól szeretne. 
+* Lusta helyezi át, az index szabályzatának módosítása esetén hatékony azonnal. Az Azure Cosmos DB elindul, hozza létre újra az index aszinkron módon történik. 
+* Ha áthelyezi a nincs, az index azonnal megszakad. Nincs áthelyezése akkor hasznos, ha megszakítja a folyamatban lévő átalakulása, és a kezdés tiszta lappal egy másik indexelési házirendet. 
 
-A következő kódrészletet bemutatja, hogyan lehet módosítani egy gyűjtemény indexelési házirendet-konzisztens indexelési üzemmódról lusta indexelési módra. Ha a .NET SDK használata esetén is indítsa el az indexelési házirend módosítása az új **ReplaceDocumentCollectionAsync** metódust.
+A következő kódrészletet bemutatja, hogyan módosíthatja egy gyűjtemény indexelési házirend-a konzisztens az indexelő módból lusta indexelési módra. A .NET SDK-t használja, ha akkor is indíthat egy indexelési házirend módosítása az új **ReplaceDocumentCollectionAsync** metódust.
 
-**Módosítsa Lusta Consistent az indexelési házirendet**
+**Lusta Consistent az indexelési házirend módosítása**
 
     // Switch to Lazy indexing mode.
     Console.WriteLine("Changing from Default to Lazy IndexingMode.");
@@ -279,9 +347,9 @@ A következő kódrészletet bemutatja, hogyan lehet módosítani egy gyűjtemé
 
     await client.ReplaceDocumentCollectionAsync(collection);
 
-**Index átalakítása előrehaladását úgy követheti nyomon**
+**Nyomon követheti a index átalakítása**
 
-Nyomon követheti a az index átalakítás előrehaladás százalékosan kifejezve konzisztens index használatával a **IndexTransformationProgress** válasz tulajdonságot egy **ReadDocumentCollectionAsync** hívható meg. Más SDK, és a REST API támogatja egyenértékű tulajdonságai és metódusai indexelési házirend módosítása. Ellenőrizheti a konzisztens indexhez index átalakulása előrehaladását meghívásával **ReadDocumentCollectionAsync**: 
+Nyomon követheti az index átalakítás százalékos előrehaladását konzisztens index használatával a **IndexTransformationProgress** válasz tulajdonságot egy **ReadDocumentCollectionAsync** hívja. Más SDK-k és a REST API-támogatása egyenértékű tulajdonságai és metódusai indexelési szabályzat módosítása. Egy index átalakítást index konzisztens állapotának ellenőrzéséhez hívása **ReadDocumentCollectionAsync**: 
 
     long smallWaitTimeMilliseconds = 1000;
     long progress = 0;
@@ -297,13 +365,13 @@ Nyomon követheti a az index átalakítás előrehaladás százalékosan kifejez
     }
 
 > [!NOTE]
-> * A **IndexTransformationProgress** tulajdonsága alkalmazható csak egy egységes indexhez átalakításakor. Használja a **ResourceResponse.LazyIndexingProgress** nyomon követése átalakítások Lusta indexhez tulajdonság.
-> * A **IndexTransformationProgress** és a **LazyIndexingProgress** tulajdonságok fel van töltve, csak a nem particionált gyűjtemény, ez azt jelenti, hogy gyűjteménye, amely nem tartozik partíciós kulcs jön létre.
+> * A **IndexTransformationProgress** tulajdonság alkalmazható, csak egy egységes index átalakításakor. Használja a **ResourceResponse.LazyIndexingProgress** átalakítások követése Lusta index tulajdonsága.
+> * A **IndexTransformationProgress** és a **LazyIndexingProgress** tulajdonságok fel van töltve, csak az egy nem particionált gyűjteményt, azaz, ha egy gyűjteményt, amely nem tartozik partíciós kulcs létrehozása.
 >
 
-Egy gyűjtemény indexe a nincs mód indexelő áthelyezésével dobhatja el. Ez akkor lehet hasznos működési eszköz, ha azt szeretné, szakítsa meg a folyamatban lévő átalakulása, és azonnal nekiláthasson egy új.
+Egy gyűjtemény indexe helyezi át a nincs mód az indexelés vethetők el. Ha megszakítja a folyamatban lévő átalakulása, és azonnal nekiláthasson egy új erre akkor lehet hasznos működési eszköz.
 
-**Egy gyűjtemény index dobható el**
+**Dobja el a gyűjtemény indexe**
 
     // Switch to Lazy indexing mode.
     Console.WriteLine("Dropping index by changing to to the None IndexingMode.");
@@ -312,24 +380,24 @@ Egy gyűjtemény indexe a nincs mód indexelő áthelyezésével dobhatja el. Ez
 
     await client.ReplaceDocumentCollectionAsync(collection);
 
-Ha szeretné módosítja az indexelő házirend az Azure Cosmos DB gyűjtemények? A leggyakoribb használati esetek a következők:
+Ha szeretné módosít indexelési szabályzat az Azure Cosmos DB-gyűjteményekhez? Az alábbiakban a leggyakoribb alkalmazási helyzetei:
 
-* Konzisztens eredmények szolgálnak a normál működés során, ugyanakkor tartalék megoldásként lusta indexelési módra tömeges adatok importálása során.
-* Indítsa el a jelenlegi Azure Cosmos DB gyűjteményre új indexelési funkciókat használ. Például használja, földrajzi kérdez le, ami megköveteli, hogy a térbeli index jellegű vagy ORDER BY / lekérdezések, a tartomány index típusú karakterlánc igénylő karakterlánc.
-* Válassza ki az aktuális indexelése tulajdonságait, és módosítsa őket adott idő alatt.
-* Az indexelő pontosság lekérdezések teljesítményének növelése vagy csökkentése felhasznált tárhely hangolását.
+* Normál működés során szolgálja ki a konzisztens eredmények, de forráshelyeként lusta indexelési módra tömeges adatok importálás során.
+* Az aktuális Azure Cosmos DB-gyűjteményekre vonatkozó új indexelési szolgáltatások használatának megkezdéséhez. Például használja, a térinformatikai lekérdezések, ami megköveteli, hogy a térbeli index típusa vagy ORDER BY / karakterlánc-tartomány lekérdezések, amelyek a tartomány index típusú karakterlánc szükséges.
+* Válassza ki az aktuális indexelendő tulajdonságait, és módosítsa őket idővel.
+* Finomhangolja az indexelő pontosság lekérdezési teljesítmény vagy a felhasznált tárterület csökkentése érdekében.
 
 > [!NOTE]
-> Indexelési házirendet a módosítandó **ReplaceDocumentCollectionAsync**, 1.3.0 vagy újabb verziója a .NET SDK kell használnia.
+> Indexelési házirend módosítása használatával **ReplaceDocumentCollectionAsync**, 1.3.0 vagy a .NET SDK újabb verzióját kell használnia.
 > 
-> Az index átalakításhoz sikeresen befejeződik győződjön meg arról, hogy nincs elég szabad tárterület érhető el a gyűjtemény. Ha a gyűjtemény eléri a tárolási kvótát, az index átalakítás fel van függesztve. Index átalakítása automatikusan folytatja tárolási hely esetén érhető el, például egyes dokumentumok törlésekor.
+> Index átalakítási sikeresen befejeződik győződjön meg arról, hogy nincs elegendő szabad tárterület érhető el a gyűjtemény. Ha a gyűjtemény elérte a tárolási kvótát, az index átalakítás fel van függesztve. Index átalakítási automatikusan folytatja Ha tárterület érhető el, például ha néhány dokumentumot töröl.
 > 
 > 
 
 ## <a name="performance-tuning"></a>Teljesítmény-finomhangolás
-Az SQL API-k teljesítménymutatók, például a használt index tárhely és minden művelet átviteli költsége (kérelemegység) kapcsolatos információkkal szolgálnak. Ezen információk használatával összehasonlítása különböző indexelési szabályzatok, és a teljesítményhangolás.
+Az SQL API-k teljesítmény-mérőszámokat, például a használt index tárterület és átviteli sebesség költsége (a kérelemegység) minden művelet adatainak megadása. Ezen információk használatával különféle indexelési szabályzatok, összehasonlítása és a teljesítmény finomhangolásának.
 
-A tárolási kvótát és használati gyűjtemény ellenőrzéséhez futtassa a **HEAD** vagy **beolvasása** kérelmet a gyűjtemény-erőforráshoz. Ezt követően vizsgálja meg a **x-ms-kérelem-kvóta** és a **x-ms-kérelem-használati** fejléceket. A .NET SDK-ban a [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) és [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságok [ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) tartalmaznia kell a megfelelő értékeket.
+A tárolási kvótát és a egy gyűjtemény használati ellenőrzéséhez futtassa a **fő** vagy **első** kérelmet a gyűjtemény-erőforráshoz. Ezt követően vizsgálja meg a **x-ms-kérelem-quota** és a **x-ms-kérelem-használat** fejlécek. A .NET SDK-ban a [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) és [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságok [ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) ezek megfelelő értékeket tartalmaznak.
 
      // Measure the document size usage (which includes the index size) against   
      // different policies.
@@ -337,7 +405,7 @@ A tárolási kvótát és használati gyűjtemény ellenőrzéséhez futtassa a 
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-A terhelést növelni az indexelő minden egyes írási műveletnél a mérésére (létrehozása, frissítése vagy törlése), vizsgálja meg a **x-ms-kérelem-kell fizetni** fejléc (vagy egyenértékű [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) tulajdonság [ ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) a .NET SDK-ban), amelyeket a rendszer használni ezeket a műveleteket kérelem egységek számának mérésére.
+Minden egyes írási műveletnél az indexelő járó többletterhelést mérésére (létrehozása, frissítése vagy törlése), vizsgálja meg a **x-ms-kérelem-díj** fejléc (vagy az azzal egyenértékű [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) tulajdonság [ ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) a .NET SDK-ban), ezek a műveletek által felhasznált kérelemegységek számát.
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), myDocument);              
@@ -356,22 +424,22 @@ A terhelést növelni az indexelő minden egyes írási műveletnél a mérésé
 
      Console.WriteLine("Query consumed {0} request units in total", totalRequestCharge);
 
-## <a name="changes-to-the-indexing-policy-specification"></a>Az indexelési házirendet specifikáció módosításai
-A sémában az indexelési házirendet változása 2015. július 7, a REST API verziója 2015-06-03 jelent meg. A megfelelő osztályokhoz SDK verziókban új megvalósítások felel meg a sémának a tartozik. 
+## <a name="changes-to-the-indexing-policy-specification"></a>Az indexelési házirend-megadás módosításai
+A séma az indexelési szabályzat módosítása 2015. július 7,., a REST API verziója 2015-06-03 jelent meg. Az SDK-verziókra megfelelő osztályát felel meg a sémának, új megvalósításokkal rendelkeznek. 
 
-A JSON-specifikáció bevezetett a következő módosításokat:
+A következő módosításokat a JSON-specifikáció lettek megvalósítva:
 
-* Tartomány indexek házirend indexelő támogatja a karakterláncokat.
-* Mindegyik elérési út lehet több index definíciója. Egy, az egyes adattípusokhoz rendelkezhet.
-* 1 és 8 számok, 1 és 100 karakterláncok, illetve -1 (maximális pontosság) pontosság indexelő támogatja.
-* Elérési út szegmensek nem feltétlenül szükséges egy idézőjel karaktert az egyes elérési utakat. Például hozzáadhat egy elérési utat   **/cím /?** Ahelyett, hogy **/ "title" /?**.
-* Az útvonalgyökér "görbékhez" jelölő ábrázolhatók **/ \*** (kívül **/**).
+* Tartomány indexek indexelési szabályzat támogatja a karakterláncokat.
+* Mindegyik elérési út rendelkezhet több index definíciója. Ez lehet egy, az egyes adattípusokhoz.
+* Pontosság indexelő támogatja az 1 – 8 számok, 1 és 100-karakterláncok és a -1 (maximális pontosság).
+* Elérési út szegmensek egy idézőjel karaktert mindegyik elérési út nem igényelnek. Például hozzáadhat egy elérési utat   **/cím /?** helyett **"title" / /?**.
+* A gyökér elérési úthoz, amely jelöli az "összes elérési út" is reprezentovat jako **/ \*** (mellett **/**).
 
-Ha rendelkezik kódot, hogy rendelkezések gyűjtemények a .NET SDK 1.1.0-ás verzióját vagy régebbi verziójú készült egyéni indexelési házirendet, áthelyezése SDK verzió 1.2.0, módosítania kell az alkalmazás kódjában, ezek a változások kezelésére. Ha még nem rendelkezik a kódot, hogy konfigurálja az indexelési házirendet, vagy ha azt tervezi, továbbra is az SDK-t egy korábbi verzióját használja, nem módosításokra szükség.
+Ha rendelkezik a kódot, hogy rendelkezések gyűjtemények tartalmazó 1.1.0-s verzió a .NET SDK vagy korábbi verziójú írt egyéni indexelési házirendet, SDK-verzió, 1.2.0-s áthelyezése módosítania kell az alkalmazás kódjában, ezek a változások kezelésére. Ha nem készített kódot, amely konfigurálja-e indexelési házirendet, vagy ha azt tervezi, az SDK-t egy korábbi verzióját használja, a módosítások nem szükségesek.
 
-Gyakorlati összehasonlítása Ez egy példa egy egyéni indexelési házirendet használatával írt REST API verziója 2015-06-03, ugyanazt az indexelési házirendet a korábbi verziót 2015-04-08 REST API használatával írt követ.
+Gyakorlati összehasonlításáért Íme egy példa egy egyéni indexelési szabályzat használatával írt REST API verziója 2015-06-03, az a korábbi REST API verziója 2015-04-08 használatával írt azonos indexelési szabályokat követ.
 
-**A jelenlegi indexelő házirend JSON (REST API-verzió: 2015-06-03)**
+**Jelenlegi indexelési szabályzat JSON (REST API verziója 2015-06-03)**
 
     {
        "automatic":true,
@@ -401,7 +469,7 @@ Gyakorlati összehasonlítása Ez egy példa egy egyéni indexelési házirendet
     }
 
 
-**Korábban a házirend JSON (REST API-verzió: 2015-04-08) indexelő**
+**Korábban a házirend JSON (REST API verziója 2015-04-08) indexelése**
 
     {
        "automatic":true,
@@ -421,9 +489,9 @@ Gyakorlati összehasonlítása Ez egy példa egy egyéni indexelési házirendet
 
 
 ## <a name="next-steps"></a>További lépések
-Index házirend felügyeleti mintákat és tudhat meg többet az Azure Cosmos DB lekérdező nyelv tekintse meg a következőket:
+Az index csoportházirend felügyeleti mintáit, és tudhat meg többet az Azure Cosmos DB lekérdezési nyelv tekintse meg a következőket:
 
-* [Az SQL API .NET index felügyeleti mintakódok](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
-* [Az SQL API REST adatgyűjtési műveletek](https://msdn.microsoft.com/library/azure/dn782195.aspx)
-* [Az SQL lekérdezés](sql-api-sql-query.md)
+* [Az SQL API .NET index felügyeleti Kódminták](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
+* [Az SQL API REST-gyűjtemény műveletek](https://msdn.microsoft.com/library/azure/dn782195.aspx)
+* [SQL-lekérdezés](sql-api-sql-query.md)
 

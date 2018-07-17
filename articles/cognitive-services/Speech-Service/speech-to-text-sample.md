@@ -1,7 +1,7 @@
 ---
-title: A beszéd-szöveg minta |} Microsoft Docs
+title: Minta a hang-szöveg transzformációs |} A Microsoft Docs
 titleSuffix: Microsoft Cognitive Services
-description: Íme egy minta beszéd-szöveg.
+description: Íme egy mintát, hang-szöveg.
 services: cognitive-services
 author: wolfma61
 manager: onano
@@ -10,72 +10,60 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 2a1850e6a4f3c8eebd1b947aabe1374bdaab3fc8
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5740586eca902fa63ca7b8590b07f4b276d21e4d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030250"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071368"
 ---
-# <a name="sample-for-speech-to-text"></a>Minta beszéd-szöveg
+# <a name="sample-for-speech-to-text"></a>Minta a hang-szöveg
 
-> [!NOTE]
-> Ez a minta és mások letöltése útmutatásért lásd: [beszéd SDK-példák](samples.md).
+[!include[Get a Subscription Key](../../../includes/cognitive-services-speech-service-get-subscription-key.md)]
 
-[!include[Get a Subscription Key](includes/get-subscription-key.md)]
+## <a name="top-level-declarations"></a>Legfelső szintű nyilatkozatok
 
-> [!NOTE]
-> Az összes alábbi minták a következő legfelső szintű nyilatkozatokat helyen kell lennie:
->
-> [!code-csharp[](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs#toplevel)]
->
-> [!code-cpp[](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp#toplevel)]
->
-> - - -
+Az összes minta az alábbi a következő legfelső szintű nyilatkozatokat helyén kell lennie:
 
-## <a name="speech-recognition-using-the-microphone"></a>A Beszédfelismerés a mikrofon használatával
+[!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#toplevel)]
 
-Az alábbi kódrészlet bemutatja, hogyan ismeri fel az alapértelmezett nyelven mikrofon bemeneti (`en-US`).
+[!code-cpp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#toplevel)]
 
-[!code-csharp[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs#recognitionWithMicrophone)]
+[!code-java[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#toplevel)]
 
-[!code-cpp[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp#SpeechRecognitionWithMicrophone)]
+## <a name="speech-recognition-using-the-microphone"></a>A beszédfelismerést a mikrofon
 
-- - -
+Az alábbi kódrészlet bemutatja, hogyan ismerhetik fel a mikrofon az alapértelmezett nyelven a bemeneti (`en-US`).
 
-## <a name="speech-recognition-from-a-file"></a>Beszédfelismerés fájlból
+[!code-csharp[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#recognitionWithMicrophone)]
 
-A következő kódrészletet felismeri az alapértelmezett nyelven hangfájl bemeneti (`en-US`), a támogatott formátuma (monó) egyetlen-csatorna WAV / 16 kHz mintavételi sebességet PCM.
+[!code-cpp[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechRecognitionWithMicrophone)]
+
+[!code-java[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#recognitionWithMicrophone)]
+
+## <a name="speech-recognition-using-a-customized-model"></a>A beszédfelismerés egy testre szabott modell használatával
+
+A [Custom Speech Service (CRIS)](https://www.cris.ai/) a testreszabási lehetőségeket biztosít a Microsoft hang-szöveg transzformációs motor az alkalmazáshoz. Az alábbi kódrészlet bemutatja, hogyan beszédfelismerést a mikrofon a CRIS modell; használatával Töltse ki az CRIS előfizetési kulcs és a saját telepítési azonosító, mielőtt futtatni tudná.
+
+[!code-csharp[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#recognitionCustomized)]
+
+[!code-cpp[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechRecognitionUsingCustomizedModel)]
+
+[!code-java[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#recognitionCustomized)]
+
+## <a name="continuous-speech-recognition-from-a-file"></a>Folyamatos beszédfelismerés-fájlból
+
+Az alábbi kódrészlet folyamatosan felismeri az alapértelmezett nyelven hangfájl a bemeneti (`en-US`), a támogatott formátum: egyetlen csatornát (mono) WAV / 16 KHz mintavételi arány PCM.
 
 [!include[Sample Audio](includes/sample-audio.md)]
 
-[!code-csharp[Speech Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs?name=recognitionFromFile)]
+[!code-csharp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#recognitionContinuousWithFile)]
 
-[!code-cpp[Speech Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp?name=SpeechRecognitionWithFile)]
+[!code-cpp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechContinuousRecognitionWithFile)]
 
-- - -
+[!code-java[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#recognitionContinuousWithFile)]
 
-## <a name="speech-recognition-using-a-customized-model"></a>A beszédfelismerés testreszabott modell segítségével
-
-A [egyéni beszéd szolgáltatás (CRIS)](https://www.cris.ai/) lehetővé teszi, hogy a testreszabás, a Microsoft beszéd-szöveg motor az alkalmazáshoz. Az alábbi részlet mutatja be a CRIS modellel; mikrofon a beszéd felismerésére Adja meg a CRIS előfizetés kulcs és a saját telepítési azonosító, mielőtt futtatná azt.
-
-[!code-csharp[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs#recognitionCustomized)]
-
-[!code-cpp[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp#SpeechRecognitionUsingCustomizedModel)]
-
-- - -
-
-## <a name="continuous-speech-recognition"></a>Folyamatos beszédfelismerés
-
-[!code-csharp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs#recognitionContinuous)]
-
-[!code-cpp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp#SpeechContinuousRecognitionUsingEvents)]
-
-- - -
-
-## <a name="sample-source-code"></a>Forrás mintakód
-
-A legújabb verzióját a mintákat és továbbiakat is speciális minták vannak egy dedikált [GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-speech-sdk).
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>További lépések
 

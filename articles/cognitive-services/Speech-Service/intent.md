@@ -1,74 +1,67 @@
 ---
-title: Leképezési felismerés minta |} Microsoft Docs
+title: Szándékfelismerés minta |} A Microsoft Docs
 titleSuffix: Microsoft Cognitive Services
-description: Íme egy minta leképezési felismeréséhez.
+description: Íme egy minta szándékának felismerése.
 services: cognitive-services
 author: wolfma61
 manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 1c9c1e2d54ccb200ef009be3566f6da9ced01175
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4cf3bbfa24e102c544b0e3215a20b73d323f15df
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111167"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070960"
 ---
-# <a name="sample-for-intent-recognition"></a>A leképezési felismerés minta
+# <a name="sample-for-intent-recognition"></a>Minta szándékfelismerés
 
-> [!NOTE]
-> Ez a minta és mások letöltése útmutatásért lásd: [beszéd SDK-példák](samples.md).
+Először szerezze be egy előfizetési kulcsot. Szakembereket más a Cognitive Speech SDK által támogatott szolgáltatások a szándék felismerés szolgáltatások szükséges egy adott előfizetési kulcsot. [Itt](https://www.luis.ai) talál további információt szeretne a szándékának felismerése, valamint egy előfizetési kulcsot beszerezni információ. Cserélje le a saját Language Understanding előfizetési kulcs, a [régió az előfizetés](regions.md), és a minták a megfelelő helyen a szándék modell alkalmazásazonosítója.
 
-> [!NOTE]
-> Először szerezze be egy előfizetés kulcs. Más a kognitív beszéd SDK által támogatott szolgáltatásokkal, ellentétben a leképezés felismerés szolgáltatások adott előfizetés kulcs szükséges. [Itt](https://www.luis.ai) található a leképezési felismerés technológiával kapcsolatos további információk, valamint egy előfizetés kulcs beszerzésére vonatkozó információkat. Cserélje le a saját előfizetés kulcs a [előfizetése régiójában](regions.md), és az AppId a leképezési modell a mintában a megfelelő helyen.
+## <a name="top-level-declarations"></a>Legfelső szintű nyilatkozatok
 
-> [!NOTE]
-> Az összes, az alábbi minta a következő legfelső szintű nyilatkozatokat helyen kell lennie:
->
-> [!code-cpp[](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#toplevel)]
->
-> - - -
+Az összes, az alábbi minta a következő legfelső szintű nyilatkozatokat helyén kell lennie:
 
-## <a name="intent-recognition-using-microphone"></a>Leképezési nevéből felismert tartománynév használatával mikrofon
+[!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-Az alábbi kódrészlet bemutatja, hogyan ismeri fel az alapértelmezett nyelv a mikrofon bemeneti leképezés (`en-US`).
+[!code-cpp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#toplevel)]
 
-[!code-cpp[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithMicrophone)]
+[!code-java[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#toplevel)]
 
-- - -
+## <a name="intent-recognition-using-microphone"></a>Mikrofon használatával szándékfelismerés
 
-## <a name="intent-recognition-using-microphone-in-a-specified-language"></a>Leképezési felismerés mikrofon használatát egy megadott nyelv
+Az alábbi kódrészlet bemutatja, hogyan szándékfelismerés mikrofon bemeneti az alapértelmezett nyelven (`en-US`).
 
-Az alábbi kódrészlet bemutatja, hogyan ismeri fel ebben az esetben a megadott nyelven mikrofon bemeneti leképezés német (`de-de`).
+[!code-csharp[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithMicrophone)]
 
-[!code-cpp[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithLanguage)]
+[!code-cpp[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#IntentRecognitionWithMicrophone)]
 
-- - -
+[!code-java[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#IntentRecognitionWithMicrophone)]
 
-## <a name="intent-recognition-from-a-file"></a>Leképezési felismerés fájlból
+## <a name="intent-recognition-using-microphone-in-a-specified-language"></a>A megadott nyelvre a mikrofon használatával szándékfelismerés
 
-A következő kódrészletet felismeri az alapértelmezett nyelven hangfájl leképezés (`en-US`), a támogatott formátuma (monó) egyetlen-csatorna WAV / 16 kHz mintavételi sebességet PCM.
+Az alábbi kódrészlet bemutatja, hogyan szándékfelismerés mikrofon bemeneti a megadott nyelvre, ebben az esetben a német (`de-de`).
 
-[!include[Sample Audio](includes/sample-audio.md)]
+[!code-csharp[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithLanguage)]
 
-[!code-cpp[Intent Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithFile)]
+[!code-cpp[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#IntentRecognitionWithLanguage)]
 
-- - -
+[!code-java[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#IntentRecognitionWithLanguage)]
 
-## <a name="intent-recognition-using-events"></a>Leképezési nevéből felismert tartománynév használatával események
+## <a name="intent-recognition-from-a-file-using-events"></a>Egy fájlból, események használatával szándékfelismerés
 
-A kódrészletet ismeri fel a cél folyamatos mutatja be. Ez a kód lehetővé teszi, hogy a további adatok, például a köztes eredmények elérésére. 
+A kódrészlet azt mutatja be, hogyan szándékfelismerés az alapértelmezett nyelven (`en-US`) folyamatos. Ez a kód lehetővé teszi, hogy további információkhoz, például a köztes eredményeket. A hangfájl bemeneti forrása, a támogatott formátum: egyetlen csatornát (mono) WAV / 16 KHz mintavételi arány PCM.
 
-[!code-cpp[Intent Recognition Using Events](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentContinuousRecognitionUsingEvents)]
+[!code-csharp[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 
-- - -
+[!code-cpp[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#IntentContinuousRecognitionWithFile)]
 
-## <a name="sample-source-code"></a>Forrás mintakód
+[!code-java[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#IntentContinuousRecognitionWithFile)]
 
-A minták legújabb készletét, tekintse meg a [kognitív szolgáltatások beszéd SDK minta GitHub-tárházban](https://aka.ms/csspeech/samples).
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>További lépések
 

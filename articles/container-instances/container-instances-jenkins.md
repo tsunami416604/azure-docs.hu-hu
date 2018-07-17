@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 07/13/2018
 ms.author: marsma
-ms.openlocfilehash: ff94a250ca40aa546ebb07faa96563f49dea974a
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d8ac5850a61c1dec9daa508236ef56836876c3fe
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887691"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072075"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>A Jenkins használata Azure Container Instances szolgáltatásban az ügynök létrehozása
 
@@ -92,31 +92,21 @@ A Jenkins konfigurálva van, és készen áll létrehozása és kód üzembe hel
 
 ## <a name="create-a-build-job"></a>Hozzon létre a fordítási feladatot
 
-Használatakor egy, a Jenkins-tároló rendszerképét célja hozhat létre, meg kell adnia egy rendszerképet, amely tartalmazza az összes build sikeres létrehozása szükséges eszközöket. A kép megadása:
+Bemutatják a Jenkins épül, amely egy Azure Container Instances szolgáltatáshoz, egy Jenkins létrehozási feladatot kell létrehozni.
 
-1. Válassza ki **Jenkins kezelése** > **rendszer konfigurálása** görgessen le a a **felhőalapú** szakaszban. Ebben a példában a frissítés a Docker rendszerkép értéket **microsoft java-a-azure-a jenkins-alárendelt típusú**.
-
-   Ha elkészült, válassza ki a **mentése** a Jenkins-irányítópultra való visszatéréshez.
-
-   ![Jenkins-felhő konfigurálása](./media/container-instances-jenkins/jenkins-aci-image.png)
-
-2. Most hozzon létre egy Jenkins létrehozási feladatot. Válassza ki **új elem**, nevezze el a build project például **aci-java-demo**válassza **Freestyle project**, és válassza ki **OK**.
+1. Válassza ki **új elem**, nevezze el a build project például **aci-demo**válassza **Freestyle project**, és válassza ki **OK**.
 
    ![A fordítási feladatot, és a project-típusok listája a nevének mezőjében](./media/container-instances-jenkins/jenkins-new-job.png)
 
-3. A **általános**, ügyeljen arra, hogy **korlátozása, amelyben a projekt futtathatók** van kiválasztva. Adja meg **linux** a címke kifejezéshez. Ez a konfiguráció biztosítja, hogy fut-e a fordítási feladatot az ACI-felhőben.
+2. A **általános**, ügyeljen arra, hogy **korlátozása, amelyben a projekt futtathatók** van kiválasztva. Adja meg **linux** a címke kifejezéshez. Ez a konfiguráció biztosítja, hogy fut-e a fordítási feladatot az ACI-felhőben.
 
    ![Konfiguráció részletei az "Általános" lap](./media/container-instances-jenkins/jenkins-job-01.png)
 
-4. Alatt **Source Code Management**válassza **Git** , és adja meg **https://github.com/spring-projects/spring-petclinic.git** adattár URL-címe. A GitHub-adattár tartalmazza a mintakódot.
+3. Alatt **hozhat létre**, jelölje be **felépítési lépés hozzáadása** válassza **rendszerhéj végrehajtása**. Adja meg `echo "aci-demo"` parancsot.
 
-   ![Forrás információkat tartalmazó "Source Code Management" lap](./media/container-instances-jenkins/jenkins-job-02.png)
+   ![A létrehozási lépés választása esetén "Build" lap](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. Alatt **hozhat létre**válassza **felépítési lépés hozzáadása** válassza **meghívása a legfelső szintű Maven-cél**. Adja meg **csomag** buildelési lépést célként.
-
-   ![A létrehozási lépés választása esetén "Build" lap](./media/container-instances-jenkins/jenkins-job-03.png)
-
-6. Kattintson a **Mentés** gombra.
+5. Kattintson a **Mentés** gombra.
 
 ## <a name="run-the-build-job"></a>A build-feladat futtatása
 

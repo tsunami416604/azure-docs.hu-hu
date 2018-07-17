@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 42552fa09f0a433cf12b92e11531303a0d1bd6bb
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2ed00377db80849a8355ccc895db12d006bea642
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346511"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069927"
 ---
 # <a name="about-the-speech-to-text-api"></a>Tudnivalók a Speech to Text API
 
@@ -50,5 +50,5 @@ Bizonyos képességeit a **Speech to Text** API REST-en keresztül nem érhetők
 
 ## <a name="next-steps"></a>További lépések
 
-* [A beszédfelismerés próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-windows.md)
+* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-dotnet-windows.md)

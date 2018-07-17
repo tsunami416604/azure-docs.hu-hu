@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 69991a0b805b5502fc96fab4ce902b3d8bc77baf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 741b32f394ca2ce447826f7207f7fd9cbede9c51
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056358"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070860"
 ---
 # <a name="understand-load-balancer-probes"></a>Load Balancer vizsgálatok ismertetése
 
@@ -28,7 +28,7 @@ Az Azure Load Balancer állapot-mintavételei alapján határozza meg, melyik h�
 
 Állapot-mintavételei szabályozzák, hogy új folyamatok megfelelően működő háttér-példányok létrehozása történik. Ha az állapotfigyelő mintavételező nem sikerül, a terheléselosztó nem irányít, több új folyamatok a megfelelő nem megfelelő állapotú példányhoz.  Fennálló TCP-kapcsolatok állapot-mintavételi hiba után továbbra is.  Meglévő UDP-forgalom áthelyezi a háttérkészlet egy másik példányhoz a nem megfelelő állapotú példányból.
 
-Minden háttérkészlet-mintavételt sikertelen lesz, ha alapszintű Load Balancer Terheléselosztók megszűnik az összes meglévő TCP-adatfolyamok a háttérkészlethez, míg a Standard Load balancer lehetővé teszik a meghatározott folytatásához; TCP-adatfolyamok nincsenek új folyamatok küld a háttérkészlethez.
+Minden háttérkészlet-mintavételt sikertelen lesz, ha alapszintű Load Balancer Terheléselosztók megszűnik az összes meglévő TCP-adatfolyamok a háttérkészlethez, míg a Standard Load balancer lehetővé teszik a meghatározott folytatásához; TCP-adatfolyamok nincsenek új folyamatok küld a háttérkészlethez.  Az összes meglévő UDP-forgalom az alapszintű és standard szintű terheléselosztóhoz leáll, amikor egy háttér-mintavételt összes tárolókészlet sikertelen.
 
 A felhőszolgáltatásokhoz tartozó szerepkörök (a feldolgozói szerepkörök és a webes szerepkörök) használni egy vendégügynök mintavétel. TCP- vagy HTTP egyéni állapotmintákat úgy kell konfigurálni, ha Cloud Services használata az IaaS virtuális gépet terheléselosztó mögé.
 

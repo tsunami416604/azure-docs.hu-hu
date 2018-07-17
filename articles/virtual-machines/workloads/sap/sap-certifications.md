@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure tanúsítványaival kapcsolatban SAP |} Microsoft Docs
-description: Frissített listáját a jelen konfigurációkat és az Azure platformon az SAP minősítései közül.
+title: Az SAP a Microsoft Azure-minősítések |} A Microsoft Docs
+description: Frissített listája aktuális konfigurációkat és a tanúsítvánnyal az SAP, az Azure platformon.
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
@@ -14,56 +14,56 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 07/12/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: f2d342558e83c54e101e0ff9128611da9bec1e77
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d1d2bd74a5118b48f7ed79a77ca2d7b6545607c6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656958"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072380"
 ---
-# <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-tanúsítványokról és a Microsoft Azure-on futó konfigurációk
+# <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-tanúsítványok és a Microsoft Azure-on futó konfigurációk
 
-SAP és a Microsoft rendelkezik egy erős együttműködve, az ügyfelek számára, a kölcsönös előnyök rendelkező együttesen működő hosszú ideje. Microsoft folyamatosan frissíti a platformját, és új hitelesítő adatait az SAP elküldése a Microsoft Azure biztosítása érdekében a legjobb platform az SAP-munkaterhelések futtatására. A következő táblák vázlat Azure támogatott konfigurációk és a növekvő számú SAP-tanúsítványok listája. 
+SAP és a Microsoft rendelkezik, amely kölcsönös előnyt kínál az ügyfeleknek erős partnerséget együttműködése hosszú előzményeit. A Microsoft folyamatosan frissíti a hozzá tartozó platform és SAP új hitelesítő adatok elküldése a Microsoft Azure biztosítása érdekében a legjobb platform az SAP számítási feladatok futtatására. A következő táblák vázlat Azure támogatott konfigurációk és növekvő SAP-tanúsítványok listája. 
 
 ## <a name="sap-hana-certifications"></a>SAP HANA-minősítések
 Hivatkozások:
 
-- [SAP HANA hitelesített IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) SAP HANA támogatja a natív Azure virtuális gépek és HANA nagy példányok esetében.
+- [Az SAP HANA-tanúsítvánnyal rendelkező IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) támogatása az SAP HANA natív Azure virtuális gépekre és nagyméretű HANA-példányok számára.
 
 | SAP-termék | Támogatott operációs rendszer | Azure-ajánlatok |
 | --- | --- | --- |
-| SAP HANA Developer Edition (beleértve a HANA ügyfélszoftver áll SQLODBC, ODBO-csak Windows, ODBC, JDBC-illesztőprogramokat, HANA studio és a HANA-adatbázis) | Red Hat Enterprise Linux SUSE Linux Enterprise | D sorozatú virtuális gép termékcsalád |
+| SAP HANA Developer Edition (HANA-ügyfélszoftver komponensekkel SQLODBC, ODBO – Windows csak, ODBC, JDBC-illesztőprogramok, HANA studio és HANA database) | Red Hat Enterprise Linux, a SUSE Linux Enterprise | A D-sorozat Virtuálisgép-család |
 | Üzleti egy on HANA | SUSE Linux Enterprise | DS14_v2 |
-| SAP HANA-S VAGY 4 | Red Hat Enterprise Linux SUSE Linux Enterprise | Ellenőrzött rendelkezésre állásának GS5, M64s, M64ms, M128s, M128ms, SAP HANA Azure (nagy példány) |
-| Suite on HANA, OLTP | Red Hat Enterprise Linux SUSE Linux Enterprise | GS5 nem éles környezetben, M64s, M64ms, M128s, M128ms, SAP HANA Azure (nagy példány) |
-| HANA Enterprise BW-hez, OLAP-hoz | Red Hat Enterprise Linux SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA Azure (nagy példány) |
-| SAP BW/4 HANA | Red Hat Enterprise Linux SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA Azure (nagy példány) |
+| SAP S/4 HANA | Red Hat Enterprise Linux, a SUSE Linux Enterprise | Szabályozott elérhetőség a GS5, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) |
+| Suite on HANA, OLTP | Red Hat Enterprise Linux, a SUSE Linux Enterprise | Nem éles környezethez, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) a gs5 esetén |
+| HANA Enterprise BW-hez, OLAP-hoz | Red Hat Enterprise Linux, a SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) |
+| AZ SAP BW/4 HANA | Red Hat Enterprise Linux, a SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) |
 
-Minden Azure virtuális gépeken, amennyiben SAP HANA méretezett hitelesített.
+Minden Azure virtuális gépeket, amennyiben az SAP HANA vertikális felskálázás hitelesített.
 
 ## <a name="sap-netweaver-certifications"></a>SAP NetWeaver-minősítések
 A Microsoft Azure az alábbi SAP termékekhez rendelkezik minősítéssel és teljes körű támogatással a Microsoft és az SAP részéről.
 Hivatkozások:
 
-- [1928533 - SAP alkalmazások Azure: támogatott termékek és az Azure virtuális gép típusok](https://launchpad.support.sap.com/#/notes/1928533) összes SAP NetWeaver alapú alkalmazás, például a SAP TREX, SAP LiveCache és SAP-kiszolgálóhoz. És az összes adatbázis, kivéve a SAP HANA.
+- [1928533 - Azure-beli SAP alkalmazások: támogatott termékek és Azure-beli Virtuálisgép-típusok](https://launchpad.support.sap.com/#/notes/1928533) minden SAP NetWeaver-alapú alkalmazásokhoz, többek között az SAP TREX SAP LiveCache és SAP-kiszolgálóhoz. És az összes adatbázishoz, kivéve a SAP HANA.
 
 
-| SAP-termék | Vendég operációs rendszer | RDBMS | Virtuális gépek típusa |
+| SAP-termék | A vendég operációs rendszer | RDBMS | Virtuális gépek típusa |
 | --- | --- | --- | --- |
-| SAP Business Suite | A Windows, a SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, az Oracle (Windows, és csak az Oracle Linux), a DB2, SAP ASE |A A11, a D14, a DS14, a DS15_v2, a GS5, a D64s_v3, a E64s_v3, hogy M128ms M64s E2s_v3 D2s_v3 GS1 DS11_v2 DS11 D11 a5 csomag |
-| SAP Business All-in-One | A Windows, a SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, az Oracle (Windows, és csak az Oracle Linux), a DB2, SAP ASE |A A11, a D14, a DS14, a DS15_v2, a GS5, a D64s_v3, a E64s_v3, hogy M128ms M64s E2s_v3 D2s_v3 GS1 DS11_v2 DS11 D11 a5 csomag |
-| SAP BusinessObjects BI | Windows |– |A A11, a D14, a DS14, a DS15_v2, a GS5, a D64s_v3, a E64s_v3, hogy M128ms M64s E2s_v3 D2s_v3 GS1 DS11_v2 DS11 D11 a5 csomag |
-| SAP NetWeaver | A Windows, a SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, az Oracle (Windows, és csak az Oracle Linux), a DB2, SAP ASE |A A11, a D14, a DS14, a DS15_v2, a GS5, a D64s_v3, a E64s_v3, hogy M128ms M64s E2s_v3 D2s_v3 GS1 DS11_v2 DS11 D11 a5 csomag |
+| SAP Business Suite | Windows, SUSE Linux Enterprise, a Red Hat Enterprise Linux, Oracle Linux |Az SQL Server, Oracle (Windows és csak az Oracle Linux), a DB2, SAP ASE |A5 – A11, D11 – D14, DS11 – DS14, DS11_v2 DS15_v2, GS1 – GS5, D2s_v3 D64s_v3, E2s_v3 E64s_v3, hogy M128ms M64s, hogy a |
+| SAP Business All-in-One | Windows, SUSE Linux Enterprise, a Red Hat Enterprise Linux, Oracle Linux |Az SQL Server, Oracle (Windows és csak az Oracle Linux), a DB2, SAP ASE |A5 – A11, D11 – D14, DS11 – DS14, DS11_v2 DS15_v2, GS1 – GS5, D2s_v3 D64s_v3, E2s_v3 E64s_v3, hogy M128ms M64s, hogy a |
+| SAP BusinessObjects BI | Windows |– |A5 – A11, D11 – D14, DS11 – DS14, DS11_v2 DS15_v2, GS1 – GS5, D2s_v3 D64s_v3, E2s_v3 E64s_v3, hogy M128ms M64s, hogy a |
+| SAP NetWeaver | Windows, SUSE Linux Enterprise, a Red Hat Enterprise Linux, Oracle Linux |Az SQL Server, Oracle (Windows és csak az Oracle Linux), a DB2, SAP ASE |A5 – A11, D11 – D14, DS11 – DS14, DS11_v2 DS15_v2, GS1 – GS5, D2s_v3 D64s_v3, E2s_v3 E64s_v3, hogy M128ms M64s, hogy a |
 
-## <a name="other-sap-workload-supported-on-azure"></a>Egyéb Azure támogatott SAP munkaterhelés
+## <a name="other-sap-workload-supported-on-azure"></a>Más Azure-on támogatott SAP munkaterhelés
 
-| SAP-termék | Vendég operációs rendszer | RDBMS | Virtuális gépek típusa |
+| SAP-termék | A vendég operációs rendszer | RDBMS | Virtuális gépek típusa |
 | --- | --- | --- | --- |
-| SAP Business egy on SQL Server | Windows  | SQL Server | Virtuálisgép-típusokon hitelesített összes NetWeaver |
-| SAP CSATORNÁNKÉNT 10.01 MS SP08 | Windows és Linux | | Összes NetWeaver hitelesített VM típusa<br /> SAP Megjegyzés #2451795 |
-| SAP Business objektumok BI platform | Windows és Linux | | SAP Megjegyzés #2145537 |
-| SAP Data Services 4.2 | | | SAP Megjegyzés #2288344 |
-| SAP Hybris Commerce Platform 5.x és 6.x | Windows | SQL Server, Oracle | Virtuálisgép-típusokon hitelesített összes NetWeaver<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Business egy on SQL Server | Windows  | SQL Server | Az összes NetWeaver minősítéssel rendelkező virtuális gépek típusai<br /> [SAP-Jegyzetnek #928839](https://launchpad.support.sap.com/#/notes/928839) |
+| SAP CSATORNÁNKÉNT 10.01 MS SP08 | Windows és Linux | | Összes NetWeaver minősítéssel rendelkező virtuális gép típusa<br /> SAP-Jegyzetnek #2451795 |
+| SAP Business objektumok BI platform | Windows és Linux | | SAP-Jegyzetnek #2145537 |
+| SAP Data Services 4.2 | | | SAP-Jegyzetnek #2288344 |
+| Az SAP Hybris Commerce Platform 5.x és 6.x | Windows | SQL Server, Oracle | Az összes NetWeaver minősítéssel rendelkező virtuális gépek típusai<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |

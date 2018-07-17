@@ -6,14 +6,14 @@ author: MichaelHauss
 manager: vamshik
 ms.service: storage
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/15/2018
 ms.author: mihauss
-ms.openlocfilehash: fa933000ee08f16774c821e40d9a3c6fe5dbf353
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: a1c07350859d70b3ce6260b336419ddb2bd4aa66
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "35645542"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069352"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Helyreállítható Törlés az Azure Storage-BLOB
 Azure Storage blob-objektumok a helyreállítható Törlés most kínál, így könnyebben helyreállíthatja az adatokat próbál módosított vagy törölt egy alkalmazás vagy más storage-fiók felhasználó által.
@@ -176,6 +176,11 @@ Helyreállítható törlés engedélyezéséhez a blob-ügyfelet szolgáltatás 
 Set-AzureRmContext -Subscription "<subscription-name>"
 $MatchingAccounts = Get-AzureRMStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
 $MatchingAccounts | Enable-AzureStorageDeleteRetentionPolicy -RetentionDays 7
+```
+A helyreállítható törlés kapcsolta be a következő paranccsal ellenőrizheti:
+
+```powershell
+$MatchingAccounts | Get-AzureStorageServiceProperty -ServiceType Blob
 ```
 
 Véletlenül törölt blobok helyreállítása, hívható meg törölt azokat a blobokat. Ne feledje, hogy a hívó **Blob törlésének visszavonása**, mind az aktív és a helyreállíthatóan törölt blobok visszaállítja az összes társított helyreállíthatóan törölt pillanatképek aktívként. Az alábbi példa a törlés visszavonásának meghívja a minden helyreállíthatóan törölt és aktív tárolóban lévő blobokat:

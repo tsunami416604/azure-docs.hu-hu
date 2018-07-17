@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
-ms.date: 05/07/2018
-ms.openlocfilehash: 44093dfde926b92d1617b85d27e362a8e40e5c56
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.date: 07/13/2018
+ms.openlocfilehash: 60eecf134f067d68326fc23ade8ed2a5a7ae7ac4
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888670"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070338"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Hozhat létre, és az Azure Machine Learning előrejelzési modellek üzembe helyezése
 
@@ -36,7 +36,7 @@ Tekintse át a [csomag dokumentációja](https://aka.ms/aml-packages/forecasting
    - Az Azure Machine Learning Modellkezelés-fiók
    - Egy telepített Azure Machine Learning Workbenchre 
 
-    Ha három vannak létrehozott vagy még nincs telepítve, kövesse a [Azure Machine Learning gyors üzembe helyezés és a Workbench telepítési](../service/quickstart-installation.md) cikk.
+ Ha három vannak létrehozott vagy még nincs telepítve, kövesse a [Azure Machine Learning gyors üzembe helyezés és a Workbench telepítési](../service/quickstart-installation.md) cikk.
 
 1. Előrejelzés az Azure Machine Learning csomag telepítve kell lennie. Ismerje meg, hogyan [telepíti ezt a csomagot Itt](https://aka.ms/aml-packages/forecasting).
 
@@ -77,6 +77,7 @@ import pkg_resources
 from datetime import timedelta
 import matplotlib
 matplotlib.use('agg')
+%matplotlib inline
 from matplotlib import pyplot as plt
 
 from sklearn.linear_model import Lasso, ElasticNet
@@ -84,12 +85,12 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsRegressor
 
 from ftk import TimeSeriesDataFrame, ForecastDataFrame, AzureMLForecastPipeline
-from ftk.tsutils import last_n_periods_split
+from ftk.ts_utils import last_n_periods_split
 
 from ftk.transforms import TimeSeriesImputer, TimeIndexFeaturizer, DropColumns
 from ftk.transforms.grain_index_featurizer import GrainIndexFeaturizer
-from ftk.models import Arima, SeasonalNaive, Naive, RegressionForecaster, ETS
-from ftk.models.forecasterunion import ForecasterUnion
+from ftk.models import Arima, SeasonalNaive, Naive, RegressionForecaster, ETS, BestOfForecaster
+from ftk.models.forecaster_union import ForecasterUnion
 from ftk.model_selection import TSGridSearchCV, RollingOriginValidator
 
 from azuremltkbase.deployment import AMLSettings
@@ -502,12 +503,11 @@ A [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ft
 
 
 ```python
-%matplotlib inline
 whole_tsdf.ts_report()
 ```
 
     --------------------------------  Data Overview  ---------------------------------
-    <class 'ftk.dataframets.TimeSeriesDataFrame'>
+    <class 'ftk.time_series_data_frame.TimeSeriesDataFrame'>
     MultiIndex: 28947 entries, (1990-06-20 23:59:59, 2, dominicks) to (1992-10-07 23:59:59, 137, tropicana)
     Data columns (total 17 columns):
     week            28947 non-null int64
@@ -662,12 +662,6 @@ whole_tsdf.ts_report()
 
 
 ![PNG](./media/how-to-build-deploy-forecast-models/output_15_6.png)
-
-![PNG](./media/how-to-build-deploy-forecast-models/output_59_0.png)
-![png](./media/how-to-build-deploy-forecast-models/output_61_0.png)
-![png](./media/how-to-build-deploy-forecast-models/output_63_0.png)
-![png](./media/how-to-build-deploy-forecast-models/output_63_1.png)
- 
 
 
 ## <a name="integrate-with-external-data"></a>Külső adatok integrálása
@@ -892,7 +886,7 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Az adatok előfeldolgozása és a hiányzó értékeket imputálására
 
-Indítsa el az adatok gyakorlókészlethez és a egy csoportot az tesztelési halmazra a [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) segédprogram függvény. A létrejövő set tesztelés tartalmazza minden egyes utolsó 40 észrevételeit. 
+Indítsa el az adatok gyakorlókészlethez és a egy csoportot az tesztelési halmazra a [last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) segédprogram függvény. A létrejövő set tesztelés tartalmazza minden egyes utolsó 40 észrevételeit. 
 
 
 ```python
@@ -974,7 +968,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Láthatja, hogy a sorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) értékesítési mennyiség értékek a hiányzó szükséges. Többféleképpen imputálási, amíg az az alábbi mintakód egy lineáris interpolációs használ.
+Láthatja, hogy a sorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest) értékesítési mennyiség értékek a hiányzó szükséges. Többféleképpen imputálási, amíg az az alábbi mintakód egy lineáris interpolációs használ.
 
 
 ```python
@@ -1040,7 +1034,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Több modell egyesítése
 
-A [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) estimator lehetővé teszi, hogy több estimators egyesítése, és ezeket egyetlen sor kód segítségével a laphoz/előrejelzésével.
+A [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) estimator lehetővé teszi, hogy több estimators egyesítése, és ezeket egyetlen sor kód segítségével a laphoz/előrejelzésével.
 
 
 ```python
@@ -1205,10 +1199,10 @@ test_feature_tsdf = pipeline_ml.transform(test_tsdf)
 print(train_feature_tsdf.head())
 ```
 
-    F1 2018-05-04 11:00:54,308 INFO azureml.timeseries - pipeline fit_transform started. 
-    F1 2018-05-04 11:01:02,545 INFO azureml.timeseries - pipeline fit_transform finished. Time elapsed 0:00:08.237301
-    F1 2018-05-04 11:01:02,576 INFO azureml.timeseries - pipeline transforms started. 
-    F1 2018-05-04 11:01:19,048 INFO azureml.timeseries - pipeline transforms finished. Time elapsed 0:00:16.471961
+    F1 2018-06-14 23:10:03,472 INFO azureml.timeseries - pipeline fit_transform started. 
+    F1 2018-06-14 23:10:07,317 INFO azureml.timeseries - pipeline fit_transform finished. Time elapsed 0:00:03.845078
+    F1 2018-06-14 23:10:07,317 INFO azureml.timeseries - pipeline transforms started. 
+    F1 2018-06-14 23:10:16,499 INFO azureml.timeseries - pipeline transforms finished. Time elapsed 0:00:09.182314
                                            feat  price  AGE60  EDUC  ETHNIC  \
     WeekLastDay         store brand                                           
     1990-06-20 23:59:59 2     dominicks    1.00   1.59   0.23  0.25    0.11   
@@ -1370,13 +1364,16 @@ all_errors.sort_values('MedianAPE')
 
 Néhány gépi tanulási modelleket képes kihasználni az új funkciók és az a sorozat első jobb előrejelzések pontossága döntésünket is.
 
-**Kereszt-ellenőrzési és paraméter kezdik**    
+### <a name="cross-validation-parameter-and-model-sweeping"></a>Keresztellenőrzési, a paraméter és a modell kezdik    
 
-A csomag néhány hagyományos machine learning-függvény egy előrejelzési alkalmazáshoz alkalmazkodik.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator) kereszt-ellenőrzési ideiglenesen, does mi lenne, és nem lenne ismert előrejelzési keretrendszer lehetőségekből. 
+A csomag néhány hagyományos machine learning-függvény egy előrejelzési alkalmazáshoz alkalmazkodik.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator?view=azure-ml-py-latest) kereszt-ellenőrzési ideiglenesen, does mi lenne, és nem lenne ismert előrejelzési keretrendszer lehetőségekből. 
 
 Az alábbi ábra az egyes szögletes egy idő pontról adatokat jelöli. A kék négyzetes betanítási képviseli, és narancssárga négyzetes képviseli minden egyes modellrészek tesztelése. Tesztelési adatok későbbinek kell lennie az idő pontokról a legnagyobb képzési idő pont. Ellenkező esetben jövőbeli adatkezelési kiszivárgott való betanítási adatok, így a minta értékelés érvénytelenné válik. 
-
 ![PNG](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
+
+**A paraméter kezdik**  
+A [TSGridSearchCV](https://docs.microsoft.com/en-us/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) osztály teljes körűen keresztül megadott paraméterértékek keres, és használja `RollingOriginValidator` paraméter teljesítmény kiértékelése a legmegfelelőbb paraméterek megtalálása érdekében.
+
 
 ```python
 # Set up the `RollingOriginValidator` to do 2 folds of rolling origin cross-validation
@@ -1395,6 +1392,102 @@ print('Best paramter: {}'.format(randomforest_cv_fitted.best_params_))
 
     Best paramter: {'estimator__n_estimators': 100}
     
+
+**Modell kezdik**  
+A `BestOfForecaster` osztály kiválasztja a legjobb teljesítményt a modell listáját adott modellek. Hasonló `TSGridSearchCV`, a RollingOriginValidator közötti érvényesítése és a teljesítmény kiértékelése is használ.  
+Itt adjuk át való használatát mutatja be két modellek listáját `BestOfForecaster`
+
+
+```python
+best_of_forecaster = BestOfForecaster(forecaster_list=[('naive', naive_model), 
+                                                       ('random_forest', random_forest_model)])
+best_of_forecaster_fitted = best_of_forecaster.fit(train_feature_tsdf,
+                                                   validator=RollingOriginValidator(n_step=20, max_horizon=40))
+best_of_forecaster_prediction = best_of_forecaster_fitted.predict(test_feature_tsdf)
+best_of_forecaster_prediction.head()
+```
+
+
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>PointForecast</th>
+      <th>DistributionForecast</th>
+      <th>Mennyiség</th>
+    </tr>
+    <tr>
+      <th>WeekLastDay</th>
+      <th>tároló</th>
+      <th>márka</th>
+      <th>ForecastOriginTime</th>
+      <th>ModelName</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1992-01-08 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>9299.20</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>11712.00</td>
+    </tr>
+    <tr>
+      <th>1992-01-15 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>10259.20</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>4032.00</td>
+    </tr>
+    <tr>
+      <th>1992-01-22-es 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>6828.80</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>6336.00</td>
+    </tr>
+    <tr>
+      <th>1992-01-29 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>16633.60</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>13632.00</td>
+    </tr>
+    <tr>
+      <th>1992-02-05-23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>12774.40</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>45120.00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 **Az utolsó folyamat létrehozása**   
 Most, hogy azonosította a legoptimálisabb modellt, hozhat létre, és alkalmas az összes transzformátorok és a legjobb modellt a végső folyamatot. 
@@ -1416,9 +1509,62 @@ print('Median of APE of final pipeline: {0}'.format(final_median_ape))
     Median of APE of final pipeline: 42.54336821266968
     
 
-## <a name="operationalization-deploy-and-consume"></a>Operacionalizálás: üzembe helyezése és felhasználása
+## <a name="visualization"></a>Megjelenítés
+A `ForecastDataFrame` osztály megjelenítése és elemzése az előrejelzési eredmények ábrázolási funkciókat biztosít. A gyakran használt diagramok használata az adatok. További információt az alábbi minta notebook ábrázolási függvények a rendelkezésre álló összes funkció áttekintésével. 
 
-Ebben a szakaszban egy folyamat, az Azure Machine Learning webszolgáltatás üzembe helyezéséhez és felhasználását, a tanítási és pontozási folyamatokat. Az üzembe helyezett webszolgáltatáshoz pontozási retrains a modell, és előrejelzések az új adatokat generál.
+A `show_error` függvény jeleníti meg egy tetszőleges oszlop szerint összesítve teljesítmény-mérőszámon. Alapértelmezés szerint a `show_error` függvény úgy összesíti a `grain_colnames` , a `ForecastDataFrame`. Gyakran hasznos használatával azonosíthatók a magok és csoportokhoz a legjobb és legrosszabb teljesítmény, különösen akkor, ha a time series nagy számú rendelkezik. A `performance_percent` argumentumának `show_error` lehetővé teszi, hogy adjon meg egy időtartam, és jeleníti meg a hiba egy részének szemek és csoportokhoz.
+
+Jeleníti meg az utolsó 5 %-os teljesítményű a magok, azaz az első 5 %-os MedianAPE
+
+
+```python
+fig, ax = best_of_forecaster_prediction.show_error(err_name='MedianAPE', err_fun=calc_median_ape, performance_percent=(0.95, 1))
+```
+
+![PNG](./media/how-to-build-deploy-forecast-models/output_59_0.png)
+
+
+Jeleníti meg a magok teljesítményének felső 5 %-os, azaz az 5 %-os alsó MedianAPE.
+
+
+```python
+fig, ax = best_of_forecaster_prediction.show_error(err_name='MedianAPE', err_fun=calc_median_ape, performance_percent=(0, 0.05))
+```
+
+
+![PNG](./media/how-to-build-deploy-forecast-models/output_61_0.png)
+
+
+Miután átfogó teljesítményének ötlet, érdemes egyéni szemek, különösen rosszul végrehajtott megismerése. A `plot_forecast_by_grain` metódus jeleníti meg és előrejelzést a megadott szemek tényleges. Itt azt jeleníti meg a időfelbontási szint a legjobb teljesítményt és a felderített a legrosszabb Teljesítményfigyelő időfelbontási szint a `show_error` diagram.
+
+
+```python
+fig_ax = best_of_forecaster_prediction.plot_forecast_by_grain(grains=[(33, 'tropicana'), (128, 'minute.maid')])
+```
+
+
+![PNG](./media/how-to-build-deploy-forecast-models/output_63_0.png)
+
+
+
+![PNG](./media/how-to-build-deploy-forecast-models/output_63_1.png)
+
+
+
+## <a name="additional-notebooks"></a>További notebookok
+A legfontosabb funkcióit AMLPF részletesebben megismerni tekintse meg a következő notebookok további részletek és példák az egyes szolgáltatásokhoz:  
+[Notebook TimeSeriesDataFrame az](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Introduction_to_TimeSeriesDataFrames.ipynb)  
+[Notebook az adatok konvertálása](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Data_Wrangling_Sample.ipynb)  
+[Notebook transzformátorok az](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Forecast_Package_Transforms.ipynb)  
+[A modellek notebook](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/AMLPF_models_sample_notebook.ipynb)  
+[A notebook közötti érvényesítése](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Time_Series_Cross_Validation.ipynb)  
+[A Lag átalakító és OriginTime notebook](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Constructing_Lags_and_Explaining_Origin_Times.ipynb)  
+[A Functions küldik az ábrázolást notebook](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Plotting_Functions_in_AMLPF.ipynb)
+
+## <a name="operationalization"></a>Üzembe helyezés
+
+Ebben a szakaszban egy folyamat, az Azure Machine Learning webszolgáltatás üzembe helyezéséhez és felhasználását, a tanítási és pontozási folyamatokat.
+Jelenleg nincs egyetlen folyamatok nem szerelnek üzembe helyezés esetén támogatottak. Az üzembe helyezett webszolgáltatáshoz pontozási retrains a modell, és előrejelzések az új adatokat generál.
 
 ### <a name="set-model-deployment-parameters"></a>Modell üzembe helyezési paraméterek beállítása
 
@@ -1485,7 +1631,7 @@ aml_deployment = ForecastWebserviceFactory(deployment_name=deployment_name,
                                            aml_settings=aml_settings, 
                                            pipeline=pipeline_deploy,
                                            deployment_working_directory=deployment_working_directory,
-                                           ftk_wheel_loc='https://azuremlpackages.blob.core.windows.net/forecasting/azuremlftk-0.1.18055.3a1-py3-none-any.whl')
+                                           ftk_wheel_loc='https://azuremlftkrelease.blob.core.windows.net/dailyrelease/azuremlftk-0.1.18165.29a1-py3-none-any.whl')
 ```
 
 ### <a name="create-the-web-service"></a>A webszolgáltatás létrehozása

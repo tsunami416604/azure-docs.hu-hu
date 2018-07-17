@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: 5ed98bb4c4f40b23988a4f73778e715bfbea2505
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fb8730e9074624ba1b0f0162ebf9156b758b59c2
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004936"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068784"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése
 
@@ -54,9 +54,9 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
   
     A player használatával hozhat létre a [az Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
 
-    A tesztelési AES vagy CENC (Widevine + PlayReady) titkosított tartalmat használhatja [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Győződjön meg arról, kattintson a "Speciális beállítások", és ellenőrizze az AES, és meg kell adnia.
+    A tesztelési AES vagy CENC (Widevine és/vagy a PlayReady) titkosított tartalmat használhatja [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Győződjön meg arról, kattintson a "Speciális beállítások", és ellenőrizze a titkosítási beállításokat.
 
-    Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](http://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. Meg kell adnia a megfelelő böngésző különböző DRMs teszteléséhez: Chrome/Opera/Firefox Widevine, MS Edge/IE11 a PlayReady, a fairplay rendszerhez maOS a Safari.
+    Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](http://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. Meg kell adnia a megfelelő böngésző különböző DRMs teszteléséhez: Chrome/Opera/Firefox Widevine, MS Edge/IE11 a PlayReady, a Safari a fairplay rendszerhez macOS rendszeren.
 
 3. A biztonságos jogkivonat-szolgáltatás (STS), amely JSON webes jogkivonat (JWT), a hozzáférési jogkivonatot az háttérbeli erőforrások eléréséhez. Az AMS licenctovábbítási szolgáltatások a háttérerőforrásra is használhatja. Az STS szolgáltatással rendelkezik, az alábbiak megadásához:
 
@@ -122,18 +122,6 @@ A jogkivonattal korlátozott tartalom kulcs szabályzattal a tartalomkulcs van c
 
 A tokennel korlátozott szabályzatokhoz konfigurálásakor adjon meg, hogy az elsődleges ellenőrzőkulcs, a kibocsátó és a célközönség paramétereket. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e. A kibocsátó a biztonságos jogkivonat-szolgáltatás, amely a jogkivonatot. A célközönség, más néven a hatókör, ismerteti a token szándéka, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
 
-## <a name="streaming-urls"></a>Streamelési URL-ek
-
-Az eszköz titkosítva van az egynél több DRM, használjon egy titkosítási címke a streamelési URL-cím: (formátum = "m3u8-aapl" titkosítási = "xxx").
-
-A következő szempontokat kell figyelembe venni:
-
-* Titkosítási típus nem kell az URL-cím adható meg, ha csak az eszköz egy titkosítási lett alkalmazva.
-* Titkosítási típus megkülönbözteti a kis-és nagybetű nincs megkülönböztetve.
-* A következő titkosítási típusok adható meg:
-  * **cenc**: A PlayReady vagy Widevine (common encryption)
-  * **cbcs-aapl**: A FairPlay (AES-CBC titkosítás)
-  * **CBC**: az AES boríték-titkosítást
 
 ## <a name="next-steps"></a>További lépések
 

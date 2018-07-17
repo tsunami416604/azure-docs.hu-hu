@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: ghogen
-ms.openlocfilehash: c97f75e0a41a4bf314963dc26c6424a0b773822b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: eb9730f785b01a620e36a265216488c401eac63a
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38665233"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068488"
 ---
 # <a name="connect-to-the-text-analytics-service-by-using-connected-services-in-visual-studio"></a>Csatlakozás a Text Analytics szolgáltatással a Visual Studio csatlakoztatott szolgáltatásai segítségével
 
@@ -193,7 +193,7 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Text Analytics szolgált
     }
     ```
 
-1. Adja hozzá a nézetet, amely megjeleníti az elemzett szöveg, határozza meg a nyelvet és a pontszám, amely a megbízhatósági szint az elemzés jelöli.
+1. Adjon hozzá egy nézetet, hogy az elemzett szöveg, határozza meg a nyelvet és a pontszám, amely a megbízhatósági szint az elemzés jelöli. Ehhez kattintson a jobb gombbal a **nézetek** mappát, válassza a **Hozzáadás**, majd **nézet**. A megjelenő párbeszédpanelen adjon meg egy nevet _TextAnalyzeResult_, fogadja el az alapértelmezett érték hozzáadása egy új fájlt _TextAnalyzeResult.cshtml_ a a **nézetek** mappát és másolja az alábbi tartalmat a fájlba:
     
     ```cshtml
     @using System

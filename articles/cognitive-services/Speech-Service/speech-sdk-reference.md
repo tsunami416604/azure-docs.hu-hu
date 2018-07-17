@@ -1,6 +1,6 @@
 ---
-title: Beszéd SDK-dokumentáció |} Microsoft Docs
-description: A beszédfelismerés SDK a hivatkozásokat.
+title: Beszéd SDK-referencia |} A Microsoft Docs
+description: A beszédfelismerés SDK mutató hivatkozásokat.
 services: cognitive-services
 titleSuffix: Microsoft Cognitive Services
 author: v-jerkin
@@ -10,28 +10,21 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7e0037cc8701c88325c3d55f6b3ab0eccf2fbd28
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9ee7cc2db7ad6e2914d3916ad1aa578a9746e287
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348674"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072231"
 ---
-# <a name="speech-sdk-reference"></a>Beszéd SDK dokumentáció
+# <a name="speech-sdk-reference"></a>Beszéd SDK-referencia
 
-A beszédfelismerés Software Development Kit (SDK) a beszédfelismerés szolgáltatás funkcióit a alkalmazások hozzáférést biztosít, így könnyebben beszédfelismerő fejlesztésére. Jelenleg az SDK-k eléréséhez **szöveg beszédfelismerés** és **beszéd fordítási**. Szöveg-beszéd átalakítás alkalmazza [REST] (https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) POST hívások HTTP Protokollon keresztül.
+A beszédfelismerő szoftver Development Kit (SDK) a beszédfelismerési szolgáltatás funkcióit az alkalmazások hozzáférést biztosít, így könnyebben fejleszthet beszédfelismerő szoftver. Jelenleg az SDK-k hozzáférést biztosítanak **Speech to Text**, **beszédalapú fordítási**, és **szándékot felismerés**.
 
-Az alábbi táblázat ismerteti a jelenleg támogatott programozási nyelveket és operációs rendszereket.
-
-|Programozási nyelv|Platform|API-hivatkozás|
-|-|-|-|
-|C#|Windows|[Keresse meg](https://aka.ms/csspeech/csharpref)
-|C/C++|Windows, Linux|[Keresse meg](https://aka.ms/csspeech/cppref)
-|Java\*|Eszközök|[Keresse meg](https://aka.ms/csspeech/javaref)
-
-\* *A Java SDK része a [beszéd eszközök SDK](speech-devices-sdk.md).*
+[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-* [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [Lásd: how to a C# beszéd felismerésére](quickstart-csharp-windows.md)
+* [A beszédfelismerési szolgáltatás ingyenes kipróbálása](get-started.md)
+* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-dotnet-windows.md)

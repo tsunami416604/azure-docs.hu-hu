@@ -10,18 +10,18 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 90ea591137b306069c1a5c184aea07375c72ce5c
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 1352ccbcda35c693c5ac0b36156af199ae46bee9
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036540"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068668"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Oktatóanyag: Bontásához, a Bing Visual Search feltöltése
 
 Ebben az oktatóanyagban felszámolja kép feltöltése a Bing és az elemzések visszaállítani. Azt is bemutatja, hogyan eléréséhez, és az elemzések megjelennek a JSON-választ. A teljes HTML és JavaScript példa: [fejezze be a kódot](#complete-code).
 
-Ebben az oktatóanyagban, amely szeretne Fedezze fel a Bing válasz tartalmát a fejlesztő biztosítunk. Nem a alkalmazni minden használati és megjelenítési követelményeihez (például nem biztosítják a Microsoft adatvédelmi hivatkozás). Minden használati követelmények, lásd: [követelmények Bing használata és megjelenítése](./use-and-display-requirements.md).
+Ebben az oktatóanyagban, amely szeretne Fedezze fel a Bing Visual Search válasz tartalmát a fejlesztő biztosítunk. Nem a alkalmazni minden használati és megjelenítési követelményeihez (például nem biztosítják a Microsoft adatvédelmi hivatkozás). Minden használati követelmények, lásd: [követelmények Bing használata és megjelenítése](./use-and-display-requirements.md).
 
 
 ## <a name="where-to-start"></a>Hol kell elkezdeni?

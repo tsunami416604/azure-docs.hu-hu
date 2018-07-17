@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/08/2018
+ms.date: 07/16/2018
 ms.author: magoedte
-ms.openlocfilehash: a94f7289c75a4f4d466542c608d81cf5b954f4b1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 1fd5ac0f9994a4dbf4365c21ac4f31ba0eccbb15
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37917334"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069151"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Figyelje az Azure Kubernetes Service (AKS) tároló állapotát (előzetes verzió)
 
@@ -290,21 +290,41 @@ omsagent   2         2         2         2            2           beta.kubernete
 ```  
 
 ## <a name="view-performance-utilization"></a>Nézet teljesítmény kihasználtsága
-Amikor megnyitja a tároló állapotának, az oldal azonnal megadja a fürtcsomópontok teljesítményének kihasználását.  Az AKS-fürt adatainak megtekintése a következő szakaszokba három szempontok:
+Amikor megnyitja a tároló állapotának, az oldal azonnal megadja az egész fürt teljesítményének kihasználását.  Az AKS-fürt adatainak megtekintése a következő szakaszokba négy szempont:
 
+- Fürt
 - Csomópontok 
 - Vezérlők  
 - Containers
 
-A sor hierarchia kezdve a fürt egyik csomópontjához Kubernetes hálózatiobjektum-modelljét követi.  Bontsa ki a csomópontot, és láthatja, hogy a csomóponton futó egy vagy több podok, ha egynél több tároló podot szerint vannak csoportosítva, mint a hierarchiában lévő utolsó sora láthatók.<br><br> ![Kubernetes-csomópontot példahierarchia a teljesítmény nézet](./media/monitoring-container-health/container-performance-and-health-view-03.png)
+A fürt lapon a sor teljesítménydiagramok megjelenítése a fürt fő teljesítménymutatói.  
 
-Válassza ki a lap tetején tartományvezérlők vagy a tárolókat, és tekintse át az állapot- és erőforrás-felhasználást azokat az objektumokat.  Névtér, a szolgáltatás és a csomópont által szűréséhez használja a képernyő tetején a legördülő mezőkben. Ha ehelyett meg szeretné tekinteni a memóriahasználat, az a **metrika** legördülő listában válassza ki **memória RSS** vagy **memória-munkakészlet**.  **Memória RSS** csak a Kubernetes 1.8-as és újabb verziók esetében támogatott. Jelenik meg az értékeket **átlagos %** azt jelzi, hogy *NaN %*, amely egy nem definiált vagy ábrázolható értéket jelölő numerikus adatokat típusú érték. 
+![Példa teljesítménydiagramok fürt lapján](./media/monitoring-container-health/container-health-cluster-perfview.png)
 
-![Tároló teljesítmény csomópontok teljesítmény nézet](./media/monitoring-container-health/container-performance-and-health-view-04.png)
+A következő információkat a bemutatott teljesítmény-mérőszámait:
 
-Alapértelmezés szerint a teljesítményadatokat az elmúlt hat órán alapul, de az ablakban módosíthatja a **időtartomány** legördülő listából válassza ki a lap jobb felső sarkában található. Ilyenkor a lapon nem automatikus frissítés, így azt manuálisan frissítenie kell. 
+- Processzor kihasználtsága (%) - csomópont a diagram jelöli egy összesített szempontjából gyűjtik a CPU-kihasználtság az egész fürt számára.  Kijelölésével szűrheti az eredményeket a időtartományban *átlagos*, *Min*, *maximális*, *50*, *90*, és *95* a percentilisei választó a diagram felett, vagy külön-külön vagy kombinált. 
+- Csomópont memória kihasználtsági % - a diagram jelöli egy összesített szempontjából gyűjtik a memóriahasználat, az egész fürt számára.  Kijelölésével szűrheti az eredményeket a időtartományban *átlagos*, *Min*, *maximális*, *50*, *90*, és *95* a percentilisei választó a diagram felett, vagy külön-külön vagy kombinált. 
+- Csomópontok száma – Ez a diagram jelöli a csomópontok száma és az állapot a Kubernetes.  A fürtcsomópontok jelölt állapot *összes*, *készen*, és *nem áll készen* és szűrt külön-külön vagy összegzéséből származik a választó a diagram felett.    
+- Tevékenységnapló-pod száma – ezen a diagramon jelöli a podok száma és az állapot a Kubernetes.  A podok jelölt állapotát is *összes*, *függőben lévő*, *futó*, és *ismeretlen* és szűrt külön-külön vagy összegzéséből származik a a diagram felett választó.  
 
-A következő példában láthatja, hogy a csomópont *aks-agentpool-3402399-0*, értéke **tárolók** érték 10., amely egy összegző üzembe helyezett tárolókat teljes száma.<br><br> ![A tárolók száma példája összegzése](./media/monitoring-container-health/container-performance-and-health-view-07.png)<br><br> Ez segíthet gyorsan azonosíthatja, hogy nem kell a tárolókat a fürt csomópontjai közötti megfelelő egyensúly.  
+A csomópontok lapra vált, a sor hierarchia követi a Kubernetes hálózatiobjektum-modellt a fürtben egy csomópont kezdve.  Bontsa ki a csomópontot, és láthatja, hogy a csomóponton futó egy vagy több podok, ha egynél több tároló podot szerint vannak csoportosítva, mint a hierarchiában lévő utolsó sora láthatók. Ön is láthatja, hány nem pod kapcsolódó számítási feladatok futnak a gazdagépen, abban az esetben a processzor vagy a rendelkezésre álló memória mennyisége a gazdagép rendelkezik.
+
+![Kubernetes-csomópontot példahierarchia a teljesítmény nézet](./media/monitoring-container-health/container-health-nodes-view.png)
+
+Válassza ki a lap tetején tartományvezérlők vagy a tárolókat, és tekintse át az állapot- és erőforrás-felhasználást azokat az objektumokat.  Névtér, a szolgáltatás és a csomópont által szűréséhez használja a képernyő tetején a legördülő mezőkben. Ha ehelyett meg szeretné tekinteni a memóriahasználat, az a **metrika** legördülő listában válassza ki **memória RSS** vagy **memória-munkakészlet**.  **Memória RSS** csak a Kubernetes 1.8-as és újabb verziók esetében támogatott. Jelenik meg az értékeket **minimális %** azt jelzi, hogy *NaN %*, amely egy nem definiált vagy ábrázolható értéket jelölő numerikus adatokat típusú érték. 
+
+![Tároló csomópontok teljesítmény nézet](./media/monitoring-container-health/container-health-node-metric-dropdown.png)
+
+Alapértelmezés szerint a teljesítményadatokat az elmúlt hat órán alapul, de az ablakban módosíthatja a **időtartomány** legördülő listából válassza ki a lap jobb felső sarkában található. Ilyenkor a lapon nem automatikus frissítés, így azt manuálisan frissítenie kell. Kiválasztásával is szűrheti az eredményeket időtartományban *átlagos*, *Min*, *maximális*, *50*, *90*, és *95* származó a PERCENTILIS választó. 
+
+![Az adatok szűrésének. percentilis kiválasztása](./media/monitoring-container-health/container-health-metric-percentile-filter.png)
+
+A következő példában láthatja, hogy a csomópont *aks-nodepool-3977305*, értéke **tárolók** érték 5, amely egy összegző üzembe helyezett tárolókat teljes száma.
+
+![A tárolók száma példája összegzése](./media/monitoring-container-health/container-health-nodes-containerstotal.png)
+
+Ez segíthet gyorsan azonosíthatja, hogy nem kell a tárolókat a fürt csomópontjai közötti megfelelő egyensúly.  
 
 A következő táblázat ismerteti a csomópontok megtekintésekor megjelenő információkat.
 
@@ -312,54 +332,80 @@ A következő táblázat ismerteti a csomópontok megtekintésekor megjelenő in
 |--------|-------------|
 | Name (Név) | A gazdagép neve |
 | status | A csomópont állapota Kubernetes nézete |
-| ÁTLAGOS % | A csomópont átlagos százalékos adott időtartama alatt a kiválasztott metrika alapján. |
-| ÁTLAG | Csomópontok átlagos tényleges értéket a kijelölt időtartamot a kiválasztott metrika alapján.  Az átlagos érték mérése történik egy csomópont; beállítása CPU/memória felső korlátja podok és tárolók az értéke az avg a gazdagép által jelentett. |
+| ÁTLAGOS %, A MIN %, A MAXIMÁLIS SZÁMA: %, A 50 %, A 90 % | A csomópont átlagos százalékos során kiválasztott töltött idő százalékos érték alapján. |
+| AVG, MIN, MAX, 50, 90 | Csomópontok átlagos tényleges értéket során kiválasztott töltött idő százalékos érték alapján.  Az átlagos érték mérése történik egy csomópont; beállítása CPU/memória felső korlátja podok és tárolók az értéke az avg a gazdagép által jelentett. |
 | Containers | A tárolók száma. |
 | Hasznos üzemidő | Mivel a csomópont elindult, és újra lett indítva a idejét jelzi. |
-| Pod | Csak a tárolókat. Amely pods, a hozzá tartozó jeleníti meg. |
 | Vezérlők | Csak a tárolók és a podokat. Melyik, a hozzá tartozó tartományvezérlő jeleníti meg. Nem minden podok szerepelni fog egy vezérlőt, ezért néhány valószínűleg nincs. | 
-| Trend átlagos % | Oszlopdiagram trend tároló és a csomópont átlagos metrika % alapján. |
+| Átlagos %, a MIN %, a maximális száma: %, a 50 %, a 90 % trend | Oszlopdiagram trend PERCENTILIS mérőszám %-a vezérlő bemutatására. |
 
 
-Válassza ki a választó **tartományvezérlők**.<br><br> ![Kijelölés vezérlők megjelenítése](./media/monitoring-container-health/container-performance-and-health-view-08.png)
+Válassza ki a választó **tartományvezérlők**.
 
-Itt láthatja a tartományvezérlők teljesítménybeli állapotát.<br><br> ![< név > tartományvezérlők teljesítmény nézet](./media/monitoring-container-health/container-performance-and-health-view-05.png)
+![Kijelölés vezérlők megjelenítése](./media/monitoring-container-health/container-health-controllers-tab.png)
 
-A sor hierarchia vezérlő kezdődik, és a vezérlő bővül, és a egy vagy több podok és a egy vagy több tárolók láthatja.  Bontsa ki a pod, és az utolsó sor megjelenítése a tárolót a pod szerint vannak csoportosítva.  
+Itt láthatja a tartományvezérlők teljesítménybeli állapotát.
+
+![< név > tartományvezérlők teljesítmény nézet](./media/monitoring-container-health/container-health-controllers-view.png)
+
+A sor hierarchia vezérlő kezdődik, és a vezérlő bővül, és a egy, vagy egy vagy több tárolók láthatja.  Bontsa ki a pod, és az utolsó sor megjelenítése a tárolót a pod szerint vannak csoportosítva.  
 
 A következő táblázat ismerteti a tartományvezérlők megtekintésekor megjelenő információkat.
 
 | Oszlop | Leírás | 
 |--------|-------------|
 | Name (Név) | A vezérlő neve|
-| status | Ha befejeződött, például a futó állapotú, a tárolók állapotát *kilépett*, *sikertelen* *leállítva*, vagy *felfüggesztett*. Ha a tároló fut-e, de a állapota volt, vagy nem megfelelően jelenik meg vagy volt nem dolgozza fel az ügynök és a 30 percnél hosszabb ideig nem válaszolt, az állapota lesz *ismeretlen*. |
-| ÁTLAGOS % | Minden entitás, a kiválasztott metrika az átlagos %-os átlagos összesítő. |
-| ÁTLAG | Az átlagos CPU millicore vagy a memória teljesítményét a tároló összesítő.  Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
+| status | A tárolók, hogy végzett futó állapotú, mint például állapotát összesítő *OK*, *kilépett*, *sikertelen* *leállítva*, vagy  *Felfüggesztve*. Ha a tároló fut-e, de a állapota volt, vagy nem megfelelően jelenik meg vagy volt nem dolgozza fel az ügynök és a 30 percnél hosszabb ideig nem válaszolt, az állapot értéke *ismeretlen*. További részletek a állapot ikon az alábbi táblázatban szerepelnek.|
+| ÁTLAGOS %, A MIN %, A MAXIMÁLIS SZÁMA: %, A 50 %, A 90 % | Minden entitás, a kiválasztott metrika és PERCENTILIS átlagos % átlagos összesítő. |
+| AVG, MIN, MAX, 50, 90  | Az átlagos CPU millicore vagy a memória teljesítményét a kiválasztott PERCENTILIS tárolója összesítő.  Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
 | Containers | A vezérlő vagy a pod tárolók száma összesen. |
 | Újraindul | Összesítő újraindítás száma, a tárolók. |
 | Hasznos üzemidő | Egy tároló indítása óta idejét jelzi. |
-| Pod | Csak a tárolókat. Amely pods, a hozzá tartozó jeleníti meg. |
 | Csomópont | Csak a tárolók és a podokat. Melyik, a hozzá tartozó tartományvezérlő jeleníti meg. | 
-| Trend átlagos % | Oszlopdiagram trend bemutatja a tároló átlagos metrika %. |
+| Átlagos %, a MIN %, a maximális száma: %, a 50 %, a 90 % trend| Oszlopdiagram trend jelölő PERCENTILIS mérőszám, a vezérlő. |
 
-Válassza ki a választó **tárolók**.<br><br> ![Válassza ki a tárolók megtekintése](./media/monitoring-container-health/container-performance-and-health-view-09.png)
+Az ikonok az állapot mezőben a tárolók online állapotát jelzi:
+ 
+| Ikon | status | 
+|--------|-------------|
+| ![Készen áll, futó állapot ikon](./media/monitoring-container-health/container-health-ready-icon.png) | Fut (kész)|
+| ![Várakozás vagy szüneteltetett állapot ikon](./media/monitoring-container-health/container-health-waiting-icon.png) | Várakozás vagy fel van függesztve|
+| ![Utolsó jelentett futó állapotikon](./media/monitoring-container-health/container-health-grey-icon.png) | Utolsó jelentett fut, de 30 percnél hosszabb ideig nem válaszolt.|
+| ![Elbocsátott állapotikon](./media/monitoring-container-health/container-health-green-icon.png) | Sikeresen leállt vagy nem sikerült leállítani a|
 
-Itt látható a tárolókat teljesítménybeli állapotát.<br><br> ![< név > tartományvezérlők teljesítmény nézet](./media/monitoring-container-health/container-performance-and-health-view-06.png)
+Az állapotjelző ikon alapján a pod biztosít számát mutatja. Azt mutatja, az rosszabb kétállapotú, és ha az egérmutatót az állapot, minden podok állapota egy összesítése megjelenít a tárolóban.  Ha nincs kész állapotú, az állapot érték jelenik-e meg a **(0)**.  
+
+Válassza ki a választó **tárolók**.
+
+![Válassza ki a tárolók megtekintése](./media/monitoring-container-health/container-health-containers-tab.png)
+
+Itt látható a tárolókat teljesítménybeli állapotát.
+
+![< név > tartományvezérlők teljesítmény nézet](./media/monitoring-container-health/container-health-containers-view.png)
 
 A következő táblázat ismerteti a tárolók megtekintésekor megjelenő információkat.
 
 | Oszlop | Leírás | 
 |--------|-------------|
 | Name (Név) | A vezérlő neve|
-| status | A tárolók állapotát összesítő, ha van ilyen. |
-| ÁTLAGOS % | Minden entitás, a kiválasztott metrika az átlagos %-os átlagos összesítő. |
-| ÁTLAG | Az átlagos CPU millicore vagy a memória teljesítményét a tároló összesítő. Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
-| Containers | A vezérlő tárolók száma összesen.|
+| status | A tárolók, ha van ilyen állapotát. További részletek a állapot ikon az alábbi táblázatban szerepelnek.|
+| ÁTLAGOS %, A MIN %, A MAXIMÁLIS SZÁMA: %, A 50 %, A 90 % | Minden entitás, a kiválasztott metrika és PERCENTILIS átlagos % átlagos összesítő. |
+| AVG, MIN, MAX, 50, 90  | Az átlagos CPU millicore vagy a memória teljesítményét a kiválasztott PERCENTILIS tárolója összesítő.  Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
+| Pod | A pod tartalmazó tároló.| 
+| Csomópont |  Csomópont, amelyben a tároló található. | 
 | Újraindul | Egy tároló indítása óta idejét jelzi. |
 | Hasznos üzemidő | Mivel egy tároló volt elindítva vagy újraindítva idejét jelzi. |
-| Pod | Podok információk helyét. |
-| Csomópont |  Csomópont, amelyben a tároló található.  | 
-| Trend átlagos % | Oszlopdiagram trend bemutatja a tároló átlagos metrika %. |
+| Átlagos %, a MIN %, a maximális száma: %, a 50 %, a 90 % trend | Oszlopdiagram trend átlagos metrika %-át a tárolót. |
+
+Az ikonok az állapot mezőben a podok online állapotát jelzi:
+ 
+| Ikon | status | 
+|--------|-------------|
+| ![Készen áll, futó állapot ikon](./media/monitoring-container-health/container-health-ready-icon.png) | Fut (kész)|
+| ![Várakozás vagy szüneteltetett állapot ikon](./media/monitoring-container-health/container-health-waiting-icon.png) | Várakozás vagy fel van függesztve|
+| ![Utolsó jelentett futó állapotikon](./media/monitoring-container-health/container-health-grey-icon.png) | Utolsó jelentett fut, de 30 percnél hosszabb ideig nem válaszolt.|
+| ![Elbocsátott állapotikon](./media/monitoring-container-health/container-health-terminated-icon.png) | Sikeresen leállt vagy nem sikerült leállítani a|
+| ![Sikertelen állapotikon](./media/monitoring-container-health/container-health-failed-icon.png) | Hibás állapotban |
 
 ## <a name="container-data-collection-details"></a>Tároló adatainak gyűjtése részletei
 Tároló állapotának tároló-gazdagépek és -tárolók különböző mérőszámokban és naplófájlokban teljesítményadatokat gyűjt. Az adatgyűjtés percen át 3 percenként történik.
@@ -387,7 +433,9 @@ Az alábbi táblázat a tároló állapotának és az adattípusok, amely a napl
 ## <a name="search-logs-to-analyze-data"></a>Keresési naplókat az adatelemzéshez
 A log Analytics segítségével keresése trendek, diagnosztizálhatja a szűk keresztmetszeteket, előrejelzési vagy összevetését adatokat, amelyek segítségével határozza meg, hogy optimális működik-e az aktuális fürtbeállításokat.  Előre definiált naplókeresések biztosított rögtön használatba vagy biztosítása érdekében az adatokat a kívánt módon szabhatja testre. 
 
-Válassza a munkaterület az adatok interaktív elemzés céljából is végezhet a **napló megtekintése** beállítás érhető el, a jobb szélen bontsa ki a tárolót.  **Naplóbeli keresés** a lap jobb fent az oldalra, amelyen korábban volt a portálon.<br><br> ![Adatok elemzése a Log Analytics az](./media/monitoring-container-health/container-performance-and-health-view-logs-01.png)   
+Válassza a munkaterület az adatok interaktív elemzés céljából is végezhet a **napló megtekintése** beállítás érhető el, a jobb szélen bontsa ki a vezérlő vagy a tároló.  **Naplóbeli keresés** a lap jobb fent az oldalra, amelyen korábban volt a portálon.
+
+![Adatok elemzése a Log Analytics az](./media/monitoring-container-health/container-health-view-logs.png)   
 
 A tároló naplóinak kimenete a Log Analyticsnek továbbítják az STDOUT és STDERR. Tároló health által monitorozott Azure felügyelt Kubernetes (AKS), mert Kube rendszer nem gyűjti ma létrehozott adatok nagy mennyisége miatt.     
 
@@ -470,7 +518,9 @@ Ha úgy döntött, hogy az Azure parancssori felület használata, először tel
     }
     ```
 
-4. Az érték szerkesztése **aksResourceId** és **aksResourceLocation** az értékeket az AKS-fürtöt, amely a a **tulajdonságok** a kijelölt fürt lapján.<br><br> ![Tároló tulajdonságai lap](./media/monitoring-container-health/container-properties-page.png)<br>
+4. Az érték szerkesztése **aksResourceId** és **aksResourceLocation** az értékeket az AKS-fürtöt, amely a a **tulajdonságok** a kijelölt fürt lapján.
+
+    ![Tároló tulajdonságai lap](./media/monitoring-container-health/container-properties-page.png)
 
     Ha a **tulajdonságok** területén is átmásolja a **munkaterület erőforrás-azonosító**.  Az értéket kötelező megadni, ha úgy dönt, hogy törli a Log Analytics-munkaterület később, amely nem történik meg a folyamat részeként.  
 
@@ -549,7 +599,8 @@ Ha a tároló állapotának lett sikeresen engedélyezve és konfigurálva, de �
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-4. Ellenőrizze az ügynök bejegyzéseit. A tárolóalapú ügynök telepítésekor lekérdezi az OMI a következő parancsok futtatásával egy gyors ellenőrzés fut, és az ügynök és a Docker-szolgáltató verzióját jeleníti meg. Ha szeretné látni, hogy az ügynök sikeresen lett előkészítve, futtassa a következő parancsot: `kubectl logs omsagent-484hw --namespace=kube-system`
+4. Ellenőrizze az ügynök bejegyzéseit. A tárolóalapú ügynök telepítésekor, egy gyors ellenőrzés futtatásával OMI a következő parancsokat, és megjeleníti az ügynök verziója fut, és 
+5.  szolgáltató. Ha szeretné látni, hogy az ügynök sikeresen lett előkészítve, futtassa a következő parancsot: `kubectl logs omsagent-484hw --namespace=kube-system`
 
     Az állapot a következő kell hasonlítania:
 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 07/01/2018
+ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 56117953c6cd11b952a312e15cd4515895021e10
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342657"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069385"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
 
@@ -24,6 +24,16 @@ Az SQL Data Sync egy szolgáltatás, amely az Azure SQL Database, amely lehetőv
 ## <a name="architecture-of-sql-data-sync"></a>Az SQL Data Sync architektúrája
 
 Data Sync szinkronizálási csoport fogalma köré alapul. Szinkronizálási csoport, a szinkronizálni kívánt adatbázisok egy csoportját.
+
+Adatok szinkronizálása egy küllős topológia használatával adatok szinkronizálása. Megadhat egy adatbázis a szinkronizálási csoport, a központi adatbázis. Az adatbázisok a többi tag adatbázisok. Szinkronizálás csak a Hub és az egyes tagok között történik.
+-   A **központi adatbázis** kell lennie az Azure SQL Database.
+-   A **tag adatbázisok** lehet SQL-adatbázisok, a helyszíni SQL Server-adatbázisok vagy SQL Server-példányok Azure-beli virtuális gépeken.
+-   A **Sync-adatbázis** Data Sync a metaadatokat és a napló tartalmazza. A Sync-adatbázis nem lehet egy Azure SQL Database és a központi adatbázis ugyanabban a régióban található. A Sync-adatbázis létrehozása ügyfél és a vásárlói kezelésű.
+
+> [!NOTE]
+> Ha a-tag adatbázis-on helyi adatbázist használ, hogy [telepítése és konfigurálása egy helyi szinkronizálási ügynök](sql-database-get-started-sql-data-sync.md#add-on-prem).
+
+![Adatok szinkronizálása adatbázisok között](media/sql-database-sync-data/sync-data-overview.png)
 
 Szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
 
@@ -35,16 +45,6 @@ Szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
 
 -   A **ütközésfeloldási házirend** -szintű szabályzat, amely lehet van *Hub wins* vagy *tag wins*.
 
-Adatok szinkronizálása egy küllős topológia használatával adatok szinkronizálása. Megadhat egy adatbázis a csoportba, a központi adatbázis. Az adatbázisok a többi tag adatbázisok. Szinkronizálás csak a Hub és az egyes tagok között történik.
--   A **központi adatbázis** kell lennie az Azure SQL Database.
--   A **tag adatbázisok** lehet SQL-adatbázisok, a helyszíni SQL Server-adatbázisok vagy SQL Server-példányok Azure-beli virtuális gépeken.
--   A **Sync-adatbázis** Data Sync a metaadatokat és a napló tartalmazza. A Sync-adatbázis nem lehet egy Azure SQL Database és a központi adatbázis ugyanabban a régióban található. A Sync-adatbázis létrehozása ügyfél és a vásárlói kezelésű.
-
-> [!NOTE]
-> Ha a-tag adatbázis-on helyi adatbázist használ, hogy [telepítése és konfigurálása egy helyi szinkronizálási ügynök](sql-database-get-started-sql-data-sync.md#add-on-prem).
-
-![Adatok szinkronizálása adatbázisok között](media/sql-database-sync-data/sync-data-overview.png)
-
 ## <a name="when-to-use-data-sync"></a>Mikor érdemes használni az adatok szinkronizálása
 
 Adatszinkronizálás esetekben hasznos, ahol adatokat kell több Azure SQL Database-adatbázisok vagy SQL Server-adatbázisok között naprakészen kell tartani. Az alábbiakban a fő használati esetek Data Sync számára:
@@ -55,7 +55,7 @@ Adatszinkronizálás esetekben hasznos, ahol adatokat kell több Azure SQL Datab
 
 -   **Globálisan elosztott alkalmazások:** számos vállalat span számos régióban, és még több országban. Hálózati késés minimalizálása érdekében a legjobb, ha az adatok egy régióban Önhöz. Az adatszinkronizálás könnyedén tarthatja adatbázisok szinkronizálása a világ különböző pontjain található régiókban.
 
-Adatok szinkronizálása nem a legjobb megoldást a következő esetekben:
+Adatok szinkronizálása nem az előnyben részesített megoldás a következő forgatókönyvekhez:
 
 | Forgatókönyv | Néhány ajánlott megoldásokat |
 |----------|----------------------------|

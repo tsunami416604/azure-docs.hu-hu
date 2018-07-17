@@ -1,7 +1,7 @@
 ---
-title: A Bing Visual keresés API gyorsindítási C# |} Microsoft Docs
+title: A Bing Visual Search API rövid útmutatóban a C# |} A Microsoft Docs
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Bemutatja, hogyan lemezkép feltöltése a Bing Visual keresési API-hoz, és vissza a képet kaphat.
+description: Bemutatja, hogyan tölthet fel képeket a Bing Visual Search API, majd a kép információival.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,18 +10,18 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: dd7531004759cdaeb59f4706dc2650d0db3c0cdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 930a89e3b1996c44f12bd3773565eda40e93ca9c
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349370"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070926"
 ---
-# <a name="your-first-bing-visual-search-query-in-c"></a>Az első Bing Visual keresési lekérdezés C#
+# <a name="your-first-bing-visual-search-query-in-c"></a>Az első a Bing vizuális keresési lekérdezés, C#-ban
 
-Bing Visual Search API, amely megadja a képfájl információt ad vissza. A kép URL-címe, lexikális elem, vagy egy kép feltöltésével egy insights segítségével megadhatja a lemezképet. További információ a kapcsolókról: [Bing Visual Search API újdonságai?](../overview.md) Ez a cikk bemutatja, hogy egy kép feltöltésével. Egy kép feltöltésével olyan mobil forgatókönyveknél, ahol készíthet egy képet arról a jól ismert jellegzetes, és arra vonatkozó információval segítségnyújtáshoz hasznos lehet. Például a feltárása a jellegzetes kapcsolatos trivia tartalmazhatnak. 
+A Bing Visual Search API az Ön által megadott kép adatait adja vissza. Megadhatja a kép URL-címét a képet, egy jogkivonat, vagy egy kép feltöltésével insights használatával. Ezek a beállítások kapcsolatos információkért lásd: [Mi az a Bing Visual Search API?](../overview.md) Ez a cikk bemutatja a kép feltöltése. Kép feltöltése mobil forgatókönyveknél, ahol, egy jól ismert tereptárgyak egy képet, majd az információk hasznosak lehetnek. Az insights például magukban foglalhatják a tereptárgyak kapcsolatos trivia. 
 
-Ha feltölti egy helyi lemezképet, a következő jeleníti meg az űrlap adatait meg kell adni a FELADÁS egy vagy több törzsében. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejlécben. A `name` paraméter "kép" értékre kell állítani, és a `filename` paraméter bármilyen karakterlánc lehet beállítani. A képernyő tartalmát a bináris kép. A maximális kép lehet, hogy feltölti mérete 1 MB. 
+Ha a helyi rendszerképet tölt fel, az alábbiakban látható az űrlapadatok szerepelnie kell a bejegyzés törzse. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejléc. A `name` paraméter "image" értékre kell állítani, és a `filename` paraméter bármilyen karakterlánc lehet beállítani. A képernyő tartalmát a rendszerkép a bináris. A maximális képméret tölthet fel érték 1 MB. 
 
 ```
 --boundary_1234-abcd
@@ -32,27 +32,27 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-A cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing Visual keresési API-kérést küld, és a JSON-keresési eredményeit jeleníti meg. Az alkalmazás írása C# nyelven íródtak, amíg az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+Ez a cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing Visual Search API-kérést küld, és a JSON keresési eredményeit jeleníti meg. Ez az alkalmazás C# nyelven írt, míg a API-ját minden programozási nyelvet, amely HTTP-kérelmeket és elemezni a JSON-kompatibilis REST-alapú webszolgáltatás. 
 
-A példa program csak a .NET Core-osztályokat használja, és a .NET CLR használata Windows vagy Linux- vagy macOS használatával futtatja [monó](http://www.mono-project.com/).
+A példa program csak a .NET Core-osztályokat használja, és a .NET CLR-beli használatával Windows vagy Linux vagy macOS használata [Mono](http://www.mono-project.com/).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) Ez a kód futtatása Windows eléréséhez. (Az ingyenes közösségi Edition fog működni.)
+Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) lekérni ezt a kódot, a Windows rendszerű. (Az ingyenes közösségi kiadása fog működni.)
 
-A gyors üzembe helyezés, a segítségével egy [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetés vagy egy fizetős billentyűt.
+Használhatja az ebben a rövid útmutatóban egy [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcs vagy egy fizetős kulcsot.
 
 ## <a name="running-the-application"></a>Az alkalmazás futtatása
 
-A következő bemutatja, hogyan küldeni a HttpWebRequest használatával. Például HttpClient HttpRequestMessage és MultipartFormDataContent használó, [használatával HttpClient](#using-httpclient).
+Az alábbiakban látható a HttpWebRequest használatával üzenet küldése. Egy példa, amely a HttpClient HttpRequestMessage és MultipartFormDataContent használja, lásd: [használatával HttpClient](#using-httpclient).
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
-1. Új konzol megoldás létrehozása a Visual Studióban.
-1. Cserélje le a tartalmát `Program.cs` a gyors üzembe helyezés látható kóddal.
-2. Cserélje le a `accessKey` az Előfizetés kulcs értékének.
-2. Cserélje le a `imagePath` a kép töltse fel az elérési úttal rendelkező értékhez.
+1. Hozzon létre egy új konzol megoldást a Visual Studióban.
+1. Cserélje le a tartalmát `Program.cs` ebben a rövid útmutatóban látható kóddal.
+2. Cserélje le a `accessKey` az előfizetési kulcs-érték.
+2. Cserélje le a `imagePath` a Rendszerkép feltöltése az elérési úttal rendelkező értékhez.
 3. Futtassa a programot.
 
 
@@ -305,9 +305,9 @@ namespace VisualSearchUpload
 
 ## <a name="using-httpclient"></a>HttpClient használatával
 
-Ha HttpClient használ, használhatja a MultipartFormDataContent hozhat létre az űrlap adatait. Csak a következő részekben a kód felülírja az előző példában szereplő névvel ellátott ugyanazokat a módszereket.
+HttpClient használatakor MultipartFormDataContent használhatja az űrlapadatok hozhat létre. Csak a következő részekben kód cserélje le az előző példában elnevezett ugyanazokat a módszereket.
 
-A fő metódus cserélje le ezt a kódot:
+Cserélje le ezt a kódot a Main metódushoz:
 
 ```csharp
         static void Main()
@@ -347,7 +347,7 @@ A fő metódus cserélje le ezt a kódot:
         }
 ```
 
-A BingImageSearch metódus cserélje le ezt a kódot:
+Cserélje le ezt a kódot a BingImageSearch módszer:
 
 ```csharp
         /// <summary>
@@ -386,9 +386,10 @@ A BingImageSearch metódus cserélje le ezt a kódot:
 
 ## <a name="next-steps"></a>További lépések
 
-[Mélyebb betekintés insights token használatával kép](../use-insights-token.md)  
-[Bing Visual keresési alkalmazás oktatóanyag](../tutorial-bing-visual-search-single-page-app.md)
-[Bing Visual keresési áttekintése](../overview.md)  
+[Lemezkép insights token használatával kapcsolatos elemzések lekérése](../use-insights-token.md)  
+[A Bing Visual Search Rendszerkép feltöltése az oktatóanyag](../tutorial-visual-search-image-upload.md)
+[Bing Visual Search egyoldalas alkalmazás oktatóanyag](../tutorial-bing-visual-search-single-page-app.md)
+[Bing vizuális keresés áttekintése](../overview.md)  
 [Próbálja ki](https://aka.ms/bingvisualsearchtryforfree)  
-[Egy ingyenes próba hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Bing Visual keresési API-referencia](https://aka.ms/bingvisualsearchreferencedoc)
+[Ingyenes próba hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[A Bing Visual Search API-referencia](https://aka.ms/bingvisualsearchreferencedoc)

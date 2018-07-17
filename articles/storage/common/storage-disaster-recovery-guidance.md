@@ -1,6 +1,6 @@
 ---
-title: Mi a teendő az Azure Storage kimaradás esetén |} Microsoft Docs
-description: Mi a teendő az Azure Storage kimaradás esetén
+title: Mi a teendő az Azure Storage leállása esetén |} A Microsoft Docs
+description: Mi a teendő az Azure Storage leállása esetén?
 services: storage
 documentationcenter: .net
 author: tamram
@@ -12,62 +12,61 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 1/19/2017
+ms.date: 07/15/2018
 ms.author: tamram
-ms.openlocfilehash: 3c313025917bba06675d3b2d844a6740fab89fbc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 160fe756458e067125b9d696fd0cdb929774446e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323151"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072034"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Mi a teendő az Azure Storage leállása esetén?
-A Microsoft dolgozunk merevlemez annak biztosítását, hogy a szolgáltatások mindig elérhető. Egyes esetekben kényszeríti a vezérlő hatás túl velünk, melyek következtében a nem tervezett szolgáltatáskimaradások egy vagy több régióban. Segítséget az ilyen ritka események kezelésére, az Azure Storage szolgáltatás a következő magas szintű útmutatást nyújtunk.
+A Microsoft dolgozunk, hogy a szolgáltatásaink mindig elérhetők. Egyes esetekben kényszeríti a vezérlő hatás túli velünk a kapcsolatot, hogy a szolgáltatás nem tervezett leállások miatt egy vagy több régióban. Könnyebben kezelni ezeket ritkán fordul elő, az Azure Storage szolgáltatás a következő magas szintű útmutatást biztosítunk.
 
 ## <a name="how-to-prepare"></a>Előkészítése
-Minden ügyfél számára kritikus fontosságú, hogy előkészítse a saját vészhelyreállítási tervét. Általában egy tároló leállás helyreállítás részéről az erőfeszítés ahhoz, hogy az alkalmazások működőképes állapotban újraaktiválása műveleti személyzet és automatizált eljárások egyaránt magában foglalja. Tekintse meg az alábbi saját vész-helyreállítási terv létrehozása az Azure dokumentációja:
+Minden ügyfél számára kritikus fontosságú, hogy előkészítse a saját vészhelyreállítási tervét. Általában a társzolgáltatás kimaradása helyreállítás részéről az erőfeszítés annak érdekében, hogy az alkalmazások működőképes állapotban újraaktiválása műveleti személyzet és az automatikus folyamatokat foglalja magában. Tekintse meg a saját vész-helyreállítási terv készítése az alábbi Azure-dokumentáció:
 
 * [Rendelkezésre állási ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/availability)
 * [Rugalmas alkalmazások tervezése az Azure számára](https://docs.microsoft.com/azure/architecture/resiliency/)
-* [Az Azure Site Recovery szolgáltatásban](https://azure.microsoft.com/services/site-recovery/)
+* [Az Azure Site Recovery szolgáltatás](https://azure.microsoft.com/services/site-recovery/)
 * [Azure Storage replication (Azure Storage replikáció)](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
-* [Az Azure biztonsági mentési szolgáltatás](https://azure.microsoft.com/services/backup/)
+* [Az Azure Backup szolgáltatás](https://azure.microsoft.com/services/backup/)
 
-## <a name="how-to-detect"></a>Hogyan észlelése
-Az ajánlott módszer az Azure-szolgáltatások állapotának meghatározása, hogy fizessen elő a [Azure az állapotjelző irányítópulthoz](https://azure.microsoft.com/status/).
+## <a name="how-to-detect"></a>Észlelése
+Az Azure-szolgáltatás állapotának meghatározása ajánlott módja a Feliratkozás a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/).
 
-## <a name="what-to-do-if-a-storage-outage-occurs"></a>Mi a teendő, ha egy tárolási kimaradás során
-Ha egy vagy több tároló szolgáltatás átmenetileg nem érhető el egy vagy több régióban, két módon figyelembe kell venni. Ha az adatok közvetlen hozzáférést kívánnak, fontolja meg 2. lehetőség.
+## <a name="what-to-do-if-a-storage-outage-occurs"></a>Mi a teendő, ha a Társzolgáltatás kimaradása történik
+Ha egy vagy több tárolószolgáltatások átmenetileg nem érhető el egy vagy több régióban, két lehetőség van, érdemes figyelembe venni. Ha az adatok közvetlen hozzáférést kívánnak, fontolja meg a 2. lehetőség.
 
-### <a name="option-1-wait-for-recovery"></a>1. lehetőség: Várjon, amíg a helyreállítás
-Ebben az esetben a letöltés intézkedés nem szükséges. Jelenleg dolgozunk gondossággal visszaállítása az Azure szolgáltatás rendelkezésre állása. A szolgáltatás állapotát a figyelheti a [Azure az állapotjelző irányítópulthoz](https://azure.microsoft.com/status/).
+### <a name="option-1-wait-for-recovery"></a>1. lehetőség: Várjon a helyreállítás
+Ebben az esetben az Ön részéről semmit nem kell. Jelenleg is dolgozunk térségekre való kiterjesztésén az Azure-szolgáltatás rendelkezésre állásának visszaállítása érdekében. A szolgáltatás állapotát a figyelemmel kísérheti a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/).
 
-### <a name="option-2-copy-data-from-secondary"></a>2. lehetőség: Adatok másolása a másodlagos kiszolgálóról
-Ha úgy döntött, hogy [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (ajánlott) a storage-fiókok, akkor olvasási hozzáféréssel az adatokat másodlagos régióban. Használhatja például a [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md), és a [Azure adatok adatátviteli könyvtár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) használatával adatait átmásolhatja a másodlagos régióban lévő másik tárolási fiókot egy unimpacted régió, és jelzi az alkalmazások tárolási fiók mindkét és olvasási rendelkezésre állását.
+### <a name="option-2-copy-data-from-secondary"></a>2. lehetőség: Adatok másolása a másodlagos
+Ha úgy döntött [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (ajánlott) a storage-fiókok, olvasási hozzáférést kap az adatokhoz a másodlagos régióból. Eszközöket használhatja például [AzCopy](storage-use-azcopy.md), [Azure PowerShell-lel](storage-powershell-guide-full.md), és a [Azure Adatáthelyezés könyvtár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) adatokat másol a másodlagos régióban lévő egy másik tárfiókba történő egy unimpacted régióban, és ezután mutasson az alkalmazásokat, hogy a tárolási fiók is írási és olvasási.
 
-## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Mi történik, ha egy Storage feladatátvételt hajt végre
-Ha úgy döntött, hogy [georedundáns tárolás (GRS)](storage-redundancy-grs.md) vagy [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (ajánlott), Azure Storage akkor is megtartja az adatok tartósságát két régió (elsődleges és másodlagos). Azure Storage mindkét régió folyamatosan több replika adatait is kezeli.
+## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Mire számítson, ha a tárolási feladatátvétel történik
+Ha úgy döntött [georedundáns tárolás (GRS)](storage-redundancy-grs.md) vagy [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (ajánlott), az Azure Storage fogja megőrizni az adatok tartós két régióban (elsődleges és másodlagos). Mindkét régióban az Azure Storage folyamatosan megőrzi az adatok több replika.
 
-Ha egy regionális katasztrófa érinti az elsődleges régióban, először megpróbáljuk a szolgáltatást az adott régióban. A vészhelyreállítás és annak hatások, az egyes ritka esetekben jellegétől függ jelenleg nem lehet visszaállítani az elsődleges régióban. A földrajzi feladatátvétel ezen a ponton végezzük el. A kereszt-régió adatreplikáció egy aszinkron folyamattal, amely magába foglaló késleltetés, ezért lehetséges, hogy még nem replikálódott a másodlagos régióba módosítások elveszhetnek. Lekérheti a ["Utolsó szinkronizálásának időpontja". a tárfiók](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) a replikációs állapot kapcsolatban.
+Ha regionális katasztrófa hatással van az elsődleges régióban, azt először megpróbálja állítsa vissza a szolgáltatás az adott régióban. A vészhelyreállítási és annak hatással, egyes ritka esetekben jellegétől függ azt nem lehet visszaállítani az elsődleges régióba. Ezen a ponton fogunk földrajzi feladatátvételt végrehajtani. A régiók közötti adatreplikáció egy aszinkron folyamat, amely késéssel is magában foglalhat, így lehetséges, hogy módosításokat, amelyek még nem replikálódott a másodlagos régióba elveszhetnek. Lekérdezheti a ["Legutóbbi szinkronizálás időpontja" a tárfiók](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) úgy szerezheti be a replikációs állapot részletei.
 
-Pontokra vonatkozó tárolási földrajzi feladatátvételt élménye néhány:
+A tároló földrajzi feladatátvételt tapasztalatokra vonatkozó pontok néhány:
 
-* Tároló földrajzi feladatátvételt csak akkor is kiváltódik, az Azure Storage csapat – nincs nincs szükség felhasználói beavatkozásra.
-* A meglévő tárolási Szolgáltatásvégpontok blobokat, táblák, üzenetsorok és fájlok változatlan marad a feladatátvétel; a Microsoft által biztosított DNS-bejegyzést kell frissíteni, hogy az elsődleges régióban átvált a másodlagos régióba.  A Microsoft a frissítés automatikusan a földrajzi-feladatátvételi folyamat részeként fogja elvégezni.
-* Előtt, és a földrajzi feladatátvétel során nem rendelkezik írási engedéllyel a tárfiók, mert az a katasztrófa, de továbbra is elolvashatja a másodlagos adatbázisból, ha a tárfiók RA-GRS van konfigurálva.
-* Ha a földrajzi feladatátvétel befejeződött, és a DNS-módosítások propagálása, olvasási és írási hozzáférést a tárfiókhoz fog folytatható; Ez a másodlagos végpontot bizonyult használttól mutat. 
-* Vegye figyelembe, úgy kell írási hozzáférést Ha Georedundáns vagy RA-GRS a tárfiók konfigurálva. 
-* Lekérheti ["Utolsó földrajzi feladatátvételi idő" a tárfiókja](https://msdn.microsoft.com/library/azure/ee460802.aspx) további információkhoz juthat.
-* A feladatátvétel után a tárfiókhoz teljes körűen működik, de "csökkentett teljesítményű" állapota, ahogy ténylegesen tárolódik nem georeplikáció lehet önálló régióban. A kockázat csökkentése érdekében, rendszer-visszaállítás az eredeti elsődleges régióban és hajtsa végre a földrajzi-feladat-visszavétel visszaállítása az eredeti állapotra. Ha az eredeti elsődleges régió nem állítható helyre, hogy foglal le egy másik másodlagos régióba.
-  Az infrastruktúra az Azure Storage georeplikáció további részletekért tekintse meg a cikk a Storage csapat blogja a kapcsolatos [redundancia beállítások és az RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
+* Az Azure Storage csapata akkor csak tárolási földrajzi feladatátvételt aktiválódik – nem tartoznak felhasználói műveletek szükséges.
+* A meglévő tárolási Szolgáltatásvégpontok blobok, táblák, üzenetsorok és fájlok esetében ugyanaz marad a feladatátvétel; után a Microsoft által biztosított DNS-bejegyzést kell frissíteni, hogy az elsődleges régióból történő váltson a másodlagos régióba.  Ez a frissítés automatikusan a földrajzi feladatátvételt folyamat részeként a Microsoft végrehajtja.
+* Előtt, és a földrajzi feladatátvétel során a tárfiók a hatását a katasztrófa miatt nem kell írási hozzáférést, de továbbra is olvashat a másodlagos helyről, ha a tárfiók van konfigurálva, RA-GRS.
+* Ha a földrajzi feladatátvétel befejezése és a DNS-módosítások propagálása, olvasási és írási hozzáférést a tárfiókhoz fog folytatható; Mi a alkalmazni kell a másodlagos végpontra mutat ez. 
+* Vegye figyelembe, hogy írási hozzáférést kap, ha a GRS vagy RA-GRS a tárfiók számára beállított. 
+* Lekérdezheti ["Földrajzi feladatátvétel utoljára" a tárfiók](https://msdn.microsoft.com/library/azure/ee460802.aspx) további információért.
+* A feladatátvétel után a tárfiók teljes körűen működik, de "csökkentett teljesítményű" állapotban, mert van ténylegesen régióban üzemeltet egy önálló nincs georeplikáció útján lehet. A kockázat csökkentése érdekében, hogy visszaállítja az eredeti elsődleges régió és tegye a geo-feladat-visszavétel az eredeti állapot. Ha az eredeti elsődleges régióban nem állítható helyre, hogy foglal le egy másik másodlagos régióba.
+  Az Azure Storage georeplikációs infrastruktúrára további részletekért tekintse meg a Storage csapat blogja foglalkozó cikkel kapcsolatos [Redundanciabeállításokkal és RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
-## <a name="best-practices-for-protecting-your-data"></a>Ajánlott eljárások az adatok védelme
-Nincsenek adatok biztonsági mentésének a tárolási rendszeresen néhány ajánlott megközelítés.
+## <a name="best-practices-for-protecting-your-data"></a>Ajánlott eljárások az adatok védelmére
+Van néhány ajánlott megközelítéseket, az adatok biztonsági másolatát a storage rendszeres időközönként.
 
-* Virtuális gépek lemezei – használja a [Azure Backup szolgáltatás](https://azure.microsoft.com/services/backup/) biztonsági mentése a virtuális gép lemezeivel az Azure virtuális gépek által használt.
-* Blobok blokk – hozzon létre egy [pillanatkép](https://msdn.microsoft.com/library/azure/hh488361.aspx) minden egyes blob letiltása, vagy a BLOB másolása másik tárolási fiókot be egy másik régióban [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md), vagy a [Azure adatok adatátviteli könyvtár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
-* Táblázatok – használjon [AzCopy](storage-use-azcopy.md) exportálni a adatait egy másik régióban másik tárolási fiókot.
-* Fájlok – az [AzCopy](storage-use-azcopy.md) vagy [Azure PowerShell](storage-powershell-guide-full.md) a fájlok másolása egy másik régióban másik tárolási fiókot.
+* Virtuálisgép-lemezek – használja az [Azure Backup szolgáltatás](https://azure.microsoft.com/services/backup/) biztonsági mentése az Azure-beli virtuális gépek által használt virtuális gép lemezei.
+* Kapcsolja be – a blokkblobok használatát támogatják [helyreállítható törlési](../blobs/storage-blob-soft-delete.md) objektumszintű törlések ellen, és felülírja, vagy a blobokat másolja be egy másik régió egy másik tárfiókba [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md), vagy a [Azure Adatáthelyezés könyvtár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
+* Táblák – használata [AzCopy](storage-use-azcopy.md) táblák adatainak exportálása egy másik régióban egy másik tárfiókba.
+* Fájlok – az [AzCopy](storage-use-azcopy.md) vagy [Azure PowerShell-lel](storage-powershell-guide-full.md) a fájlok másolása egy másik régióban egy másik tárfiókba.
 
-Az alkalmazásokat, amelyek az RA-GRS szolgáltatás teljes körű kihasználása létrehozásával kapcsolatban vegye ki [tervezése magas rendelkezésre álló alkalmazások RA-GRS-tárolót](../storage-designing-ha-apps-with-ragrs.md)
-
+Az alkalmazásokat, amelyek teljes mértékben kihasználhatja az RA-GRS funkció létrehozásával kapcsolatos információkért tekintse meg [tervezése magas rendelkezésre álló alkalmazások RA-GRS tároló használatával](../storage-designing-ha-apps-with-ragrs.md)

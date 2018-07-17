@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76b2b1983cc5a6cedfcff204871e0b0f985fef95
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 897681cda31b2f187fca64e77621b7dc5ed4dfae
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900783"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072109"
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Az Azure Automation DSC konfigurációk fordítása
 
@@ -235,7 +235,7 @@ Az eszközintelligencia-hivatkozások ugyanazok az Azure Automation DSC-konfigur
 
 ### <a name="credential-assets"></a>Hitelesítő eszközök
 
-Bár az Azure Automation DSC-konfigurációk használatával hitelesítő eszközök hivatkozhat **Get-AutomationPSCredential**, hitelesítő eszközök is átadható paraméterekkel, ha szükséges. Ha egy konfigurációs paramétert **PSCredential** teljesítenie kell a az Azure Automation szolgáltatásbeli hitelesítőadat-eszköz karakterlánc neve a paraméter értéke, nem pedig egy PSCredential objektumot, majd írja be. A színfalak mögött az Azure Automation szolgáltatásbeli hitelesítőadat-eszköz ilyen nevű lekért és a konfiguráció átadott.
+Az Azure Automation DSC-konfigurációk is lehet hivatkozni az automatizálási hitelesítő eszközök használatával `Get-AutomationPSCredential`. Ha egy konfigurációs paraméter, amely rendelkezik egy **PSCredential** írja be, akkor a `Get-AutomationPSCredential` parancsmag a parancsmag hitelesítő adatainak lekérése az Azure Automation szolgáltatásbeli hitelesítőadat-eszköz karakterlánc nevét átadásával. Akkor használja, majd a paramétert, hogy az objektum használata a **PSCredential** objektum. A színfalak mögött az Azure Automation szolgáltatásbeli hitelesítőadat-eszköz ilyen nevű lekért és a konfiguráció átadott. Az alábbi példa ezt mutatja be a műveletet.
 
 Gondoskodik a hitelesítő adatok biztonságos, a csomópont-konfigurációk (MOF konfigurációs dokumentumok) van szükség a csomópont konfigurációs MOF-fájlban található a hitelesítő adatok titkosításához. Azonban jelenleg utasítsa PowerShell DSC nem probléma, a hitelesítő adatokat kell használt kimeneti adattípus szövegként csomópont konfigurációs MOF létrehozása során, mert a PowerShell DSC nem ismert, hogy Azure Automation fog kell titkosítása a teljes MOF-fájlt a létrehozás után keresztül egy fordítási feladat.
 

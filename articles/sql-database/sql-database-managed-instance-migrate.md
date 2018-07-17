@@ -1,6 +1,6 @@
 ---
-title: Azure SQL adatbázis felügyelt példány SQL Server-példány áttelepítése |} Microsoft Docs
-description: Ismerje meg, hogyan telepítheti át az SQL Server-példányt Azure SQL adatbázis felügyelt példányra.
+title: SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő |} A Microsoft Docs
+description: Ismerje meg, hogyan telepíthet át egy SQL Server-példányt az Azure SQL Database felügyelt példányába történő.
 keywords: adatbázis-áttelepítés,sql server-adatbázis áttelepítése,adatbázis-áttelepítési eszközök,adatbázis áttelepítése,sql database áttelepítése
 services: sql-database
 author: bonova
@@ -9,122 +9,123 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 07/16/2018
 ms.author: bonova
-ms.openlocfilehash: 1015600343886333655a921f2e0944ebb676f3e6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e0de9a1494641fef87d11545b99e5e7275f6b614
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050126"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069263"
 ---
-# <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL adatbázis felügyelt példány SQL Server példány áttelepítés
+# <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
-Ebből a cikkből megismerheti az Azure SQL Database felügyelt-példányt (előzetes verzió) történő áttelepítéséhez egy SQL Server 2005 vagy újabb verzió példány módszerekkel kapcsolatos. 
+Ebben a cikkben megismerkedhet a módszerek egy SQL Server 2005 vagy újabb verzió példány migrálása az Azure SQL Database felügyelt példányába (előzetes verzió). 
 
-Az SQL Database felügyelt példánya a meglévő SQL Database szolgáltatás kiegészítése, amely a különálló adatbázisok és a rugalmas adatbáziskészletek mellett egy harmadik üzembe helyezési lehetőséget is elérhetővé tesz.  Adatbázis növekedési-és-shift billentyű egy teljes körűen felügyelt PaaS engedélyezése nélkül az alkalmazás újratervezése tervezték. A felügyelt példány az SQL Server programozási modell funkcióival nagy mértékben kompatibilis, és emellett beépítetten támogatja az SQL Server legtöbb funkcióját is, valamint a hozzájuk kapcsolódó eszközöket és szolgáltatásokat.
+Az SQL Database felügyelt példánya a meglévő SQL Database szolgáltatás kiegészítése, amely a különálló adatbázisok és a rugalmas adatbáziskészletek mellett egy harmadik üzembe helyezési lehetőséget is elérhetővé tesz.  Adatbázis lift-and-shift teljes körűen felügyelt paas-megoldás, hogy ahhoz, hogy az alkalmazás újratervezése nélkül tervezték. A felügyelt példány az SQL Server programozási modell funkcióival nagy mértékben kompatibilis, és emellett beépítetten támogatja az SQL Server legtöbb funkcióját is, valamint a hozzájuk kapcsolódó eszközöket és szolgáltatásokat.
 
-A magas szintű áttelepítési folyamatának néz a következő diagramon:
+A magas szintű áttelepítési folyamatának hasonlóan néz ki az alábbi ábrán a:
 
-![áttelepítési folyamat](./media/sql-database-managed-instance-migration/migration-process.png)
+![Áttelepítési folyamat](./media/sql-database-managed-instance-migration/migration-process.png)
 
 - [Felügyelt példány kompatibilitási felmérése](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
-- [Válassza ki az alkalmazás kapcsolódási beállítást választja](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
-- [Központi telepítése optimálisan méretezett felügyelt példányhoz](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
+- [Válassza ki a kapcsolat lehetőséget](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
+- [Az optimálisan méretezett felügyelt példány üzembe helyezése](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
 - [Áttelepítési módszer kiválasztása és áttelepítése](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
 - [Alkalmazások figyelése](sql-database-managed-instance-migrate.md#monitor-applications)
 
 > [!NOTE]
-> Egy önálló adatbázis vagy a rugalmas készlet egy önálló adatbázis áttelepítéséhez lásd: [egy SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
+> Önálló adatbázis egy önálló adatbázis vagy a rugalmas készlet áttelepítéséhez lásd: [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
 
 ## <a name="assess-managed-instance-compatibility"></a>Felügyelt példány kompatibilitási felmérése
 
-Először határozza meg, hogy-e az adatbázis-követelmények az alkalmazás kompatibilis felügyelt példány. Felügyelt példány egyszerű növekedési és shift áttelepítési, a legtöbb meglévő alkalmazások használják a helyszíni SQL Server vagy a virtuális gépek számára készült. Azonban néha szolgáltatásokat vagy funkciókat nyújtanak, amelyek még nem támogatott és a megoldás megvalósításának költségét túl magas. 
+Először határozza meg, hogy-e az adatbázis-követelmények az alkalmazás kompatibilis felügyelt példány. Adja meg az egyszerű átemeléses migrálásra, a legtöbb a helyszíni SQL Servert használó meglévő alkalmazások vagy a virtuális gépek felügyelt példány szolgál. Azonban néha funkciók vagy képességeket, amelyek még nem támogatottak és a egy megkerülő megoldás megvalósítása túl magas. 
 
-Használjon [adatok áttelepítési Segéd (DMA-)](https://docs.microsoft.com/sql/dma/dma-overview) észleli a potenciális kompatibilitási problémák kiható az Azure SQL Database adatbázisokkal kapcsolatos funkciók. DMA egyelőre nem támogatják a felügyelt példány áttelepítési céljaként, de javasoljuk, hogy assessment futtassa az Azure SQL Database, és gondosan tekintse át a listában, a paritásos jelentett funkciót és a kompatibilitási problémák elleni termék dokumentációját. A legtöbb a akadályozza meg, hogy az Azure SQL Database-áttelepítés problémák elhárítását, felügyelt példánya el lettek távolítva. Példány, szolgáltatások, mint az adatbázisok közötti lekérdezéseket, a példányt, a csatolt kiszolgáló más SQL-forrás CLR, globális ideiglenes táblák, adatbázisok közötti tranzakciójának példány szintű nézetek, a Service Broker és a hasonló találhatók felügyelt példányok. 
+Használat [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) észleli a potenciális kompatibilitási problémák az Azure SQL Database érintő funkció. DMA még nem támogatja a felügyelt példány áttelepítési céljaként, de javasoljuk, hogy az értékelés futtatása az Azure SQL-adatbázison, és gondosan tekintse át a listában, jelentett funkció és kompatibilitási hibáit, szemben a termék dokumentációját. A legtöbb az olyan problémák elhárítását az Azure SQL Database-áttelepítés megakadályozza a felügyelt példány el lettek távolítva. Példány, szolgáltatások, mint az adatbázisközi lekérdezések, adatbázisközi tranzakciók belül ugyanazon, más SQL forrásokból, CLR, globális ideiglenes táblák, csatolt kiszolgáló példány szintű nézetek, a Service Broker és a hasonló érhetők el a felügyelt példányok. 
 
-Van azonban néhány esetben figyelembe kell vennie, mint egy másik lehetőség, ha [SQL Server Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/sql-server/). Néhány példa:
+Vannak azonban bizonyos esetekben, amikor egy másik lehetőség, mint például figyelembe kell [az Azure-beli virtuális gépeken futó SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/). Néhány példa:
 
-- Ha az operációs rendszer vagy a fájlrendszerben, például a telepítés harmadik féltől származó és egyéni ügynökökkel azonos virtuális gépen futó SQL Server közvetlen hozzáférést igényel.
-- Ha még nem támogatott funkciók, például a FileStream rendelkezik szigorú függőségi / filetable objektum, a PolyBase és a kereszt-példány tranzakciók.
-- Ha feltétlenül szükség maradjon egy SQL Server adott verziójának (2012, példány).
-- Ha a számítási követelményei sokkal alacsonyabb felügyelt példánynak kínál a nyilvános előzetes verziójában (egy vCore példányhoz) és az adatbázis összevonása nem elfogadható lehetőség.
+- Ha az operációs rendszer vagy a fájlrendszerben, például telepítés harmadik féltől származó és egyéni ugyanahhoz a virtuális géphez, az SQL Server-ügynökök közvetlen elérésére van szüksége.
+- Ha továbbra is nem támogatott funkciók, például a FileStream a szigorú függőségi / filetable objektum, a PolyBase és a kereszt-példány tranzakció.
+- Ha feltétlenül szükség maradjon az SQL Server egy adott verzióját (2012-példányhoz).
+- Ha a számítási követelményeket sokkal alacsonyabb, a felügyelt példány kínál a nyilvános előzetes verzióban érhető el (1 virtuális magot, példányhoz) és adatbázis-konszolidáció nem elfogadható megoldás.
 
-## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Központi telepítése optimálisan méretezett felügyelt példányhoz
+## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Az optimálisan méretezett felügyelt példány üzembe helyezése
 
-Felügyelt példány megfelelő helyszíni munkaterhelések esetén, amelyek tervezi, hogy helyezze át a felhőbe. Egy új alapjául szolgáló vásárlási modell nagyobb rugalmasságot biztosít a munkaterhelések erőforrások a megfelelő szintű kiválasztásával okozna. A helyszíni világ általában az ilyen terhelések méretezése fizikai mag használatával. Az új alapjául szolgáló vásárlási modell felügyelt példány alapul virtuális mag, vagy "vCores," a további tárhely és a rendelkezésre álló IO külön-külön. A vCore modell egy egyszerűbb megérthetik a valóban használt funkciókért és felhőbeli számítási igényeinek helyszíni ma. Az új modell lehetővé teszi a megfelelő méretének a cél környezetet a felhőben.
+Felügyelt példány személyre szabott tervezi, hogy a felhőbe helyezheti át a helyszíni számítási feladatokhoz. Azt mutatja be egy új vásárlási modell, amely nagyobb rugalmasságot biztosít a számítási feladatokat az erőforrások a megfelelő szint kiválasztása. A helyszíni világ Ön szokták méretezési ezeket a feladatokat a fizikai Processzormagok használatával. A felügyelt példány új vásárlási modell típusán alapuló virtuális maggal, vagy a "virtuális maggal," további tárterületet és i/o elérhető külön-külön. A Virtuálismag-modell egy egyszerűbb módszert és a használt felhőalapú számítási követelmények megértésére helyszíni még ma. Az új modell lehetővé teszi méretezése a cél-környezetet a felhőben.
 
-Kiválaszthatja a számítási és tárolási erőforrások telepítési idő, és módosítsa, ezt követően az alkalmazás leállása nélkül, anélkül.
+Választhat a számítási és tárolási erőforrások üzembe helyezéskor időt, és ezután módosítani ezt követően az alkalmazás leállása nélkül, anélkül.
 
 ![felügyelt példány méretezése](./media/sql-database-managed-instance-migration/managed-instance-sizing.png)
 
-A VNet-infrastruktúra és a felügyelt példány létrehozásával kapcsolatban lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md).
+Ismerje meg, hogyan hozhat létre a virtuális hálózati infrastruktúra és a egy felügyelt példányt, lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md).
 
 > [!IMPORTANT]
-> Fontos, hogy a cél VNet és alhálózat mindig összhangban tartsa [felügyelt példány VNET követelmények](sql-database-managed-instance-vnet-configuration.md#requirements). Bármely alkalmazással való inkompatibilitás előfordulhat, hogy új példányok létrehozása vagy a már létrehozott használatával.
+> Fontos, hogy a cél virtuális hálózatot és alhálózatot mindig összhangban [felügyelt példány a virtuális hálózat követelményei](sql-database-managed-instance-vnet-configuration.md#requirements). Bármilyen inkompatibilitás megakadályozhatja, új példányok jöjjenek létre, vagy azokkal, amelyek már létrehozott használatával.
 
 ## <a name="select-migration-method-and-migrate"></a>Áttelepítési módszer kiválasztása és áttelepítése
 
-A felügyelt helyszíni vagy infrastruktúra-szolgáltatási adatbázis megvalósítások tömeges adatbázis áttelepítés igénylő példány célok felhasználói forgatókönyvek. Amikor a növekedési és az eltolás mértékét megadó rendszeresen példányszintű és / vagy funkciók kereszt-adatbázis alkalmazások háttér kell azok optimális választás. Ha ez a forgatókönyv, áthelyezheti teljes példánya nem rearchitecture kell az Azure-ban a megfelelő környezet az alkalmazások. 
+A felügyelt példány céljainak felhasználói esetek igénylő tömeges adatbázis áttelepítése a helyszíni vagy IaaS adatbázis megvalósításokhoz. Ha a háttérrendszere által rendszeresen használja a példányszintű és / vagy adatbázisközi funkcióit alkalmazások átemelése kell azok optimális választás. Ha ez a forgatókönyv, áthelyezheti egy teljes példánya rearchitecture nélkül az Azure-ban a megfelelő környezet az alkalmazások. 
 
-Helyezze át az SQL Server-példányok, tervezze meg gondosan kell:
+Helyezze át az SQL Server-példányok, végezzen alapos tervezést kell:
 
--   Az áttelepítés összes adatbázis elhelyezésű (ők egyazon példányán fut) van szüksége
--   Az alkalmazás függ, többek között a bejelentkezéseket, hitelesítő adatokat, az SQL Agent-feladatok és operátorok és kiszolgálói szintű eseményindítók példányszintű objektumok áttelepítése. 
+-   Az áttelepítés összes adatbázis, kell lennie a elhelyezésű (azokat az azonos példányon futnak)
+-   Az alkalmazása függ, többek között a bejelentkezések, hitelesítő adatok, SQL-ügynök feladatait és a kezelők és kiszolgálói szintű eseményindítók példányszintű objektumok áttelepítése. 
 
-Felügyelt példány egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, és delegálja a platform rendszeres DBA tevékenységekről, azok be vannak építve. Ezért néhány szintű példányadatokat nem kell áttelepíteni, például a karbantartási feladatok rendszeres biztonsági mentést vagy mindig a konfigurációhoz, mint [magas rendelkezésre állású](sql-database-high-availability.md) részét.
+Felügyelt példány egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, hogy delegálása, a platform rendszeres DBA tevékenységekről, azok be vannak építve. Ezért bizonyos szintű példányadatok nem kell áttelepíteni kívánt, például a karbantartási feladatok rendszeres biztonsági mentést vagy mindig a konfigurációhoz, mint [magas rendelkezésre állású](sql-database-high-availability.md) jön létre.
 
-Felügyelt példányát támogatja a következő adatbázis áttelepítési lehetőségek (ezek jelenleg az egyetlen támogatott áttelepítési módszereinek):
+Felügyelt példány támogatja a következő adatbázis áttelepítési lehetőségek (ezek jelenleg az egyetlen támogatott áttelepítési módszereinek):
 
-- Az Azure adatbázis áttelepítési szolgáltatás - áttelepítési szinte nullára csökkenti állásidő
-- Az URL - natív VISSZAÁLLÍTÁSA az SQL Server natív biztonsági mentést használ, és bizonyos időre leállítást igényel
+- Azure Database Migration Service - migrálási észrevehető leállása nélkül
+- Az URL - natív VISSZAÁLLÍTÁSA az SQL Server natív biztonsági másolatait használja, és némi állásidővel kell
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
-A [Azure adatbázis áttelepítési szolgáltatás (DMS)](../dms/dms-overview.md) lehetővé minimális állásidővel adatok Azure platformon több adatbázis forrásból zökkenőmentes áttelepítés egy teljes körűen felügyelt szolgáltatás. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik féltől származó és az SQL Server-adatbázisok áthelyezése az Azure-bA szükséges feladatok. A nyilvános előzetes verzió központi telepítési lehetőségek között az Azure SQL Database, a példány által felügyelt és az SQL Server egy Azure virtuális gépen. DMS az ajánlott módszer az áttelepítés a vállalati alkalmazások. 
+A [Azure Database Migration Service (DMS)](../dms/dms-overview.md) egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes migrálást a több adatbázis-forrásokhoz, az Azure-adatplatformokra minimális állásidővel. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik féltől származó és az SQL Server-adatbázisok áthelyezése az Azure-bA szükséges feladatok. A nyilvános előzetes verzióban telepítési lehetőségek között az Azure SQL Database felügyelt példány és az SQL Server egy Azure virtuális gépet. A DMS az ajánlott módszer az áttelepítés a vállalati számítási feladatokat. 
 
-Ha az SQL Server, a helyszíni SQL Server Integration Services (SSIS) használ, DMS egyelőre nem támogatják a áttelepítése SSIS-katalógus (SSISDB) SSIS-csomagok tárolja, de megadhat Azure-SSIS integrációs futásidejű (IR) az Azure Data Factory (ADF), amely a rendszer Hozzon létre egy új SSISDB az Azure SQL-adatbázis/felügyelt példányt, és ezután telepítse újra a csomagok szoftverben: [létrehozása Azure-SSIS-IR az ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+Ha az SQL Server, a helyszíni SQL Server Integration Services (SSIS) használ, a DMS áttelepítése SSIS-katalógus (SSISDB), amely tárolja az SSIS-csomagok jelenleg nem támogatja, de is kioszthatja az Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF), amely lesz Hozzon létre egy új SSISDB az Azure SQL Database/Managed Instance, majd is ismételt üzembe helyezése a csomagok, lásd: [Azure-SSIS integrációs modul létrehozása az ADF-ben](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
 
-További információt ebben a forgatókönyvben és konfigurációs lépéseket a DMS, lásd: [áttelepítése a helyi adatbázis felügyelt példányhoz DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).  
+Ez a forgatókönyv és a konfigurációs lépéseket DMS-bővebben lásd: [Migrate a helyszíni adatbázis egy felügyelt példányra DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).  
 
-### <a name="native-restore-from-url"></a>URL-címről natív VISSZAÁLLÍTÁSA
+### <a name="native-restore-from-url"></a>Natív VISSZAÁLLÍTÁSI URL-címről
 
-Natív biztonsági másolatokat (.bak fájlok) a helyszíni SQL Server helyreállítása vagy [SQL Server virtuális gépeken](https://azure.microsoft.com/services/virtual-machines/sql-server/), elérhető [Azure Storage](https://azure.microsoft.com/services/storage/), egy SQL-példányon DB felügyelt főbb képességek, amelyek lehetővé teszi, hogy gyors és egyszerű offline áttelepítés adatbázis. 
+Natív biztonsági másolatokat (.bak-fájlokat) a helyszíni SQL Server helyreállítása vagy [virtuális gépeken futó SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/), elérhető [Azure Storage](https://azure.microsoft.com/services/storage/), az egyik legfontosabb képességei a SQL DB felügyelt példányainak, lehetővé teszi, hogy gyorsan és könnyen offline adatbázis-migrálás. 
 
-Az alábbi ábra a magas szintű folyamatát ismerteti:
+Az alábbi ábra magas szintű áttekintést nyújt az a folyamat:
 
-![áttelepítési folyamat](./media/sql-database-managed-instance-migration/migration-flow.png)
+![migrálási-folyamat](./media/sql-database-managed-instance-migration/migration-flow.png)
 
-A következő táblázat futtatja a forrás SQL Server verziójától függően módszerrel kapcsolatos további információk:
+Az alábbi táblázatban bővebb információt a forrás SQL Server verziójától függően használható módszereket futtatja:
 
-|Lépés|SQL-motor és verzió|Biztonsági mentése / visszaállítása módszer|
+|Lépés|SQL-kezelő és verzió|Biztonsági mentése / visszaállítása metódus|
 |---|---|---|
-|Helyezze a biztonsági mentési Azure Storage|Előzetes SQL 2012 SP1 CU2|Közvetlenül az Azure storage a .bak-fájl feltöltése|
-||2012 SP1 CU2 - 2016|Közvetlen biztonsági mentés használata elavult [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) szintaxis|
-||2016 vagy újabb verzió|Biztonsági másolat használatával közvetlen [az SAS-hitelesítő adatok](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
-|Állítsa vissza az Azure Storage felügyelt példányon|[Állítsa vissza az URL-cím elé SAS hitelesítő adatok](sql-database-managed-instance-restore-from-backup-tutorial.md)|
+|Helyezze az Azure Storage biztonsági mentés|Előzetes SQL 2012 SP1 CU2|Közvetlenül az Azure storage-bA a .bak-fájl feltöltése|
+||2012 SP1 CU2 – 2016|A közvetlen biztonsági mentési használata elavult [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) szintaxis|
+||2016 vagy újabb verzió|A közvetlen biztonsági másolat használatával [az SAS-hitelesítő adat](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
+|Felügyelt példány visszaállítása az Azure Storage-ból|[Állítsa vissza az URL-címet az SAS-hitelesítő adatot](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> Rendszer-adatbázisokat a visszaállítási nem támogatott. Példány szolgáltatásszint-objektumokhoz (master vagy msdb adatbázis tárolt) áttelepítéséhez ajánlott parancsfájl ki őket, és T-SQL-parancsfájlok a cél-példányon futnak.
+> - Által védett adatbázis áttelepítését [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) áttelepítendő előtt kell a megfelelő tanúsítványt a helyszíni vagy IaaS SQL Server Azure SQL felügyelt példány natív visszaállítási lehetőséggel adatbázis-visszaállítás. Részletes lépéseiért lásd: [áttelepítése TDE cert egy felügyelt példányra](sql-database-managed-instance-migrate-tde-certificate.md)
+> - Rendszer-adatbázisok visszaállítása nem támogatott. Példány szolgáltatásszint-objektumokhoz (master vagy msdb-adatbázisokban tárolt) áttelepítéséhez, javasoljuk, hogy parancsfájl, és T-SQL-szkriptek a cél-példányon futnak.
 
-A teljes oktatóanyag, amely tartalmazza az adatbázis biztonsági másolatának visszaállítása egy felügyelt példányhoz SAS hitelesítő adatok használatával, lásd: [felügyelt példányra állítsa vissza biztonsági másolatból](sql-database-managed-instance-restore-from-backup-tutorial.md).
+A teljes útmutató, amely tartalmazza az adatbázis biztonsági másolatának visszaállítása egy felügyelt példányhoz az SAS-hitelesítő adatot: [visszaállítása biztonsági másolatból egy felügyelt példányra](sql-database-managed-instance-restore-from-backup-tutorial.md).
 
 ## <a name="monitor-applications"></a>Alkalmazások figyelése
 
-Alkalmazás viselkedését és áttelepítés után a teljesítmény nyomon követése Felügyelt példányában módosításai csak akkor engedélyezett, egyszer a [adatbázis-kompatibilitási szint módosítása](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database). Az adatbázis áttelepítése az Azure SQL Database eredeti kompatibilitási szintje végleg a legtöbb esetben a. Ha egy felhasználói adatbázis kompatibilitási szintjének 100- nál nagyobb az áttelepítés előtt, akkor változatlan marad az áttelepítés után. Ha egy felhasználói adatbázis kompatibilitási szintje 90 áttelepítés előtt, a frissített adatbázis kompatibilitási szintjének értéke 100, amelyhez a legalacsonyabb támogatott kompatibilitási szintje felügyelt példányban. Rendszer-adatbázisokat kompatibilitási szintje nem 140.
+Nyomon követheti az alkalmazások működését és teljesítményét az áttelepítés után. A felügyelt példány néhány módosítást csak akkor engedélyezett, ha a [adatbázis kompatibilitási szintje módosítva lett](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database). Az Azure SQL Database-adatbázis-migrálás eredeti kompatibilitási szintje tartja a legtöbb esetben. Ha egy felhasználói adatbázis kompatibilitási szintje 100 vagy magasabb az áttelepítés előtt, akkor változatlan marad az áttelepítés után. Ha egy felhasználói adatbázis kompatibilitási szintje 90 a frissített adatbázis, az áttelepítés előtt volt a kompatibilitási szint értéke 100, amely a felügyelt példány a legalacsonyabb támogatott kompatibilitási szint. Rendszer-adatbázisok kompatibilitási szintje 140.
 
-Áttelepítési kockázatok csökkentése érdekében módosítsa az adatbázis kompatibilitási szintje csak a teljesítmény figyelése után. Optimális eszközként előtt és után az adatbázis kompatibilitási szint módosítása, alkalmazások és szolgáltatások teljesítményével kapcsolatos információk kapcsolódnak a leírtak szerint használja a Lekérdezéstár [teljesítmény stabilitását tartsa a frissítés során újabb SQL Server-verzióra](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
+A migrálás kockázatainak csökkentése érdekében módosítsa az adatbázis-kompatibilitási szint csak azután alkalmazásteljesítmény-figyelő. Használja Query Store előtt és után az adatbázis kompatibilitási szint módosítása, a számítási feladatok teljesítményére kapcsolatos információk lekérése, amint azt az optimális eszközként [teljesítmény stabilitását tartsa a frissítés során az SQL Server újabb verzióra](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 
-Miután a teljes körűen felügyelt, tegye meg a előnyeit, az SQL Database szolgáltatás részeként automatikusan biztosított. Például nem kell létrehoznia a biztonsági mentések felügyelt példányon, mert a szolgáltatás végez biztonsági mentést meg automatikusan. Ön már nem kell foglalkoznia az ütemezés, véve, és a biztonsági mentések kezelése. Felügyelt példány biztosít a megőrzési időszak használatával belül bármely visszaállításának [idő-helyreállítás (PITR) pont](sql-database-recovery-using-backups.md#point-in-time-restore). Nyilvános előzetes a megőrzési időtartam rögzített hét nap.
-Ezenkívül nem kell foglalkoznia beállítása a magas rendelkezésre állás mint [magas rendelkezésre állású](sql-database-high-availability.md) részét.
+Miután egy teljes körűen felügyelt platformon, igénybe az SQL Database szolgáltatás részeként automatikusan biztosított előnyöket. Például a biztonsági mentések létrehozását a felügyelt példány nincs – a szolgáltatás hajtja végre biztonsági mentés meg automatikusan. Ön már nem kell aggódnia a ütemezheti, véve, és felügyelheti a biztonsági mentések. Felügyelt példány lehetővé teszi a belül a megőrzési időszak segítségével bármely időpontra visszaállítása [mutasson az idő Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore). A nyilvános előzetes verzióban rögzítik a megőrzési időtartam hét nap.
+Ezenkívül nem kell aggódnia, magas rendelkezésre állás kialakítása [magas rendelkezésre állású](sql-database-high-availability.md) jön létre.
 
-Biztonsági megerősítésére, fontolja meg a rendelkezésre álló funkciók némelyike:
-- Az Azure Active Directory-hitelesítés az adatbázis szintjén
+A biztonság megszilárdítása, fontolja meg néhány elérhető funkcióját:
+- Az Azure Active Directory-hitelesítést az adatbázis szintjén
 - Naplózás és Fenyegetésészlelés tevékenységek figyelése
-- Adatok bizalmas és rendszerjogosultságú hozzáférés szabályozása ([sorszintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) és [dinamikus Adatmaszkolási](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)).
+- Bizalmas és a védett adatokhoz való hozzáférés szabályozása ([sorszintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) és [dinamikus Adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)).
 
 ## <a name="next-steps"></a>További lépések
 
-- Felügyelt példányaira vonatkozó információkért lásd: [Mi az, hogy a felügyelt példánya?](sql-database-managed-instance.md).
-- Ez az oktatóanyag magában foglalja a biztonsági másolat visszaállítása, lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md).
-- Az oktatóanyag ábrázoló áttelepítéshez DMS használatával, lásd: [áttelepítése a helyi adatbázis felügyelt példányhoz DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).  
+- További információ a felügyelt példányok: [mit jelent a felügyelt példány?](sql-database-managed-instance.md).
+- Biztonsági másolat visszaállítása tartalmazó oktatóanyagért lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md).
+- A DMS használatával bemutató oktatóanyag áttelepítéséhez lásd: [Migrate a helyszíni adatbázis egy felügyelt példányra DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).  

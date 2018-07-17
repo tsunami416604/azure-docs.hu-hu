@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: b9218600db8bd3e20528e61e411bb64c10dd9c84
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 011358e223db419f31e0181b05ce6f89479dba81
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917635"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070943"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -64,11 +64,11 @@ Hangfájlok a következőképpen kell készíteni. Más formátum nem támogatot
 | **Tulajdonság** | **Érték** |
 | ------------ | --------- |
 | Fájlformátum  | RIFF (WAV)|
-| Mintavételi ráta| legalább 16 000 Hz |
-| Minta formátumával| A PCM, 16-bit |
+| Mintavételezési frekvencia| legalább 16 000 Hz |
+| Minták formátuma| A PCM, 16-bit |
 | Fájlnév    | A numerikus `.wav` bővítmény |
-| Archív formátum| Zip      |
-| Maximális archívum mérete|200 MB|
+| Archívum formátuma| Irányítószám      |
+| Archívum maximális mérete|200 MB|
 
 Hangfájlok készletét helyezzen alkönyvtárak nélkül egyetlen mappát, és egyetlen ZIP-archívumot, állítsa be a teljes csomag.
 
@@ -235,5 +235,5 @@ Az egyéni végpont funkcionálisan megegyezik a standard szintű, szöveg-hang 
 
 ## <a name="next-steps"></a>További lépések
 
-- [A beszédfelismerés próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-- [A beszédfelismerést a C#-ban](quickstart-csharp-windows.md)
+- [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+- [A beszédfelismerést a C#-ban](quickstart-csharp-dotnet-windows.md)

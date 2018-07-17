@@ -1,48 +1,49 @@
 ---
-title: A C++ és a Linux beszéd SDK gyors üzembe helyezés |} Microsoft Docs
+title: 'Gyors útmutató: Ismeri fel a beszéd, a C++, a Cognitive Services beszédfelismerő SDK használatával Linux rendszeren |} A Microsoft Docs'
 titleSuffix: Microsoft Cognitive Services
-description: Get információkat és a kód minták segítségével gyorsan Ismerkedés a beszédfelismerés SDK használata a Linux és C++ kognitív szolgáltatásban.
+description: Ismerje meg, hogyan ismerhetik fel a beszéd, a C++ használatával a Cognitive Services beszédfelismerő SDK Linux rendszeren
 services: cognitive-services
 author: wolfma61
 manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: e5ea74f92eb91ff89f013a4ee9ef7cbe0f001db0
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 2c919040233226818505dbafc260d56d4d0e3c9e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111150"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070732"
 ---
-# <a name="quickstart-for-c-and-linux"></a>A C++ és a Linux gyors üzembe helyezés
+# <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Rövid útmutató: Ismeri fel a beszéd, a C++, a beszéd SDK használatával Linux rendszeren
 
-A szolgáltatások kognitív beszéd SDK aktuális verziója `0.4.0`.
-
-A Linux kognitív szolgáltatások beszéd SDK 64 bites és 32 bites alkalmazások kiépítését érhető el. A szükséges fájlokat a bont-fájlként is letölthetők https://aka.ms/csspeech/linuxbinary.
-
-> [!NOTE]
-> Ha a C++ és a Windows egy gyors üzembe helyezés van szüksége, lépjen [Itt](quickstart-cpp-windows.md).
-> Ha a C# és a Windows egy gyors üzembe helyezés van szüksége, lépjen [Itt](quickstart-csharp-windows.md).
-
-[!include[Get a Subscription Key](includes/get-subscription-key.md)]
-
-> [!NOTE]
-> Ezek az utasítások azt feltételezik, Ubuntu 16.04 (x86 vagy x64) a számítógépen futtatja.
-> Egy másik Ubuntu verziót, vagy egy másik Linux terjesztési akkor való igazításának lehetősége szükséges lépéseket.
+Ebből a cikkből elsajátíthatja, hogyan C++ Konzolalkalmazás létrehozása a linuxon (Ubuntu 16.04) alapuló átírás Beszédfelismerés a Cognitive Services beszédfelismerő SDK segítségével.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!include[Ubuntu Prerequisites](includes/ubuntu1604-prerequisites.md)]
+* A beszédfelismerési szolgáltatás egy előfizetési kulcsot. Lásd: [próbálja ki ingyenesen a speech service](get-started.md).
+* Egy Ubuntu 16.04 működő mikrofon PC.
+* Hozza létre és futtassa ezt a mintát, futtassa a következő szükséges csomagok telepítéséhez:
 
-## <a name="getting-the-binary-package"></a>A bináris csomag beolvasása
+  ```sh
+  sudo apt-get update
+  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+  ```
+
+## <a name="get-the-speech-sdk"></a>A beszédfelismerés SDK beszerzése
 
 [!include[License Notice](includes/license-notice.md)]
 
-1. Válasszon ki egy könyvtárat (abszolút elérési út), hol szeretné elhelyezni a beszédfelismerés SDK bináris fájljait és a fejlécek.
-   Válasszon az elérési út például `speechsdk` a kezdőkönyvtár alatt:
+A Cognitive Services beszédfelismerő SDK jelenlegi verziója `0.5.0`.
+
+A Cognitive Services beszédfelismerő SDK Linux rendszeren érhető el a 64 bites és 32-bit-es alkalmazások létrehozásához.
+A szükséges fájlokat a tar-fájlként letölthető https://aka.ms/csspeech/linuxbinary.
+SDK letöltése és telepítése az alábbiak szerint:
+
+1. Hol szeretné elhelyezni a Speech SDK bináris fájljait és a fejlécek válasszon egy könyvtárat (abszolút elérési utat).
+   Például válassza ki az elérési út `speechsdk` a kezdőkönyvtár alatt:
 
    ```sh
    export SPEECHSDK_ROOT="$HOME/speechsdk"
@@ -54,84 +55,82 @@ A Linux kognitív szolgáltatások beszéd SDK 64 bites és 32 bites alkalmazás
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Töltse le, és bontsa ki a `.tar.gz` a beszédfelismerés SDK bináris fájljait archív:
+1. Töltse le és csomagolja ki a `.tar.gz` a Speech SDK bináris fájljait az archívum:
 
    ```sh
    wget -O SpeechSDK-Linux.tar.gz https://aka.ms/csspeech/linuxbinary
    tar --strip 1 -xzf SpeechSDK-Linux.tar.gz -C "$SPEECHSDK_ROOT"
    ```
 
-1. A legfelső szintű könyvtár a kibontott csomag tartalmának ellenőrzése:
+1. A kibontott csomagot, a legfelső szintű könyvtár tartalmának ellenőrzése:
 
    ```sh
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Külső értesítés és licencfájlok, kell megjelennie, valamint egy `include` könyvtárhoz, fejlécek és egy `lib` a tárak könyvtárába.
+   Harmadik felekre vonatkozó megjegyzés és licencfájlok, kell megjelennie, valamint egy `include` fejlécek könyvtárat és a egy `lib` kódtárak címtárat.
 
    [!include[Linux Binary Archive Content](includes/linuxbinary-content.md)]
 
-## <a name="sample-code"></a>Mintakód
+## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
-A következő kódot a mikrofon az angol nyelvű beszéd felismeri.
-Elhelyezése nevű fájl `quickstart-linux.cpp`:
+1. Adja hozzá a következő kód egy fájlt `helloworld.cpp`:
 
-[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/Linux/quickstart-linux/quickstart-linux.cpp#code)]
+  [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-linux/helloworld.cpp#code)]
 
-> [!IMPORTANT]
-> Az Előfizetés kulcs cserélje le azt, amelyik kapott. <br>
-> Cserélje le a [régió](regions.md) az előfizetéshez tartozó találhatóval, például cserélje `westus` az ingyenes próba-előfizetést.
+1. Cserélje le a karakterláncot `YourSubscriptionKey` az előfizetési kulccsal végzett.
+
+1. Cserélje le a karakterláncot `YourServiceRegion` együtt a [régió](regions.md) az előfizetéséhez tartozó (például `westus` az ingyenes próba-előfizetésre).
 
 ## <a name="building"></a>Létrehozás
 
 > [!NOTE]
 > Ügyeljen arra, hogy másolja és illessze be a build parancsok alább, egy _egysoros_.
 
-* A következő parancsot hozhat létre az alkalmazást egy x64 a gépet:
+* Az egy **x64** a számítógépen, az alkalmazás a következő parancsot:
 
   ```sh
-  g++ quickstart-linux.cpp -o quickstart-linux -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
   ```
 
-* A következő parancsot hozhat létre az alkalmazást egy x86 a gépet:
+* Az egy **x86** a számítógépen, az alkalmazás a következő parancsot:
 
   ```sh
-  g++ quickstart-linux.cpp -o quickstart-linux -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
   ```
 
-## <a name="running"></a>Fut
+## <a name="run-the-sample"></a>Minta futtatása
 
-Az alkalmazás futtatásához lesz szüksége a betöltő könyvtárelérési utat, mutasson a beszédfelismerés SDK-könyvtár konfigurálása.
+1. A konfigurálás a betöltő könyvtárelérési utat átirányítása a Speech SDK-könyvtár konfigurálása.
 
-* Egy x64 a gépen, futtatja:
+   * Az egy **x64** gépen futtassa:
 
-  ```sh
-  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x64"
-  ```
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x64"
+     ```
 
-* Egy x86 a gépen, futtatja:
+   * Az egy **x86** gépen futtassa:
 
-  ```sh
-  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
-  ```
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
+     ```
 
-Az alkalmazás futtatásához a következőképpen:
+1. Futtassa az alkalmazást az alábbiak szerint:
 
-```sh
-./quickstart-linux
-```
+   ```sh
+   ./helloworld
+   ```
 
-Ha minden megfelelően működik, következőhöz hasonló kimenetnek kell megjelennie:
+1. Ehhez hasonló kimenetnek kell megjelennie:
 
-```text
-Say something...
-We recognized: What's the weather
-```
+   ```text
+   Say something...
+   We recognized: What's the weather
+   ```
 
-## <a name="downloading-the-sample"></a>A minta letöltése
-
-A minták legújabb készletét, tekintse meg a [kognitív szolgáltatások beszéd SDK minta GitHub-tárházban](https://aka.ms/csspeech/samples).
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+Keresse meg az ehhez a mintához a `quickstart/cpp-linux` mappát.
 
 ## <a name="next-steps"></a>További lépések
 
-* Látogasson el a [minták lap](samples.md) további példák.
+* Látogasson el a [oldala](samples.md) a további példákat.

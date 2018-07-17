@@ -10,18 +10,37 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 891206e88173d72a0bacf6694a331c4ad8cc9acc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867953"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069447"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
 Ez a cikk segít a Change Tracking megoldás használatával könnyedén azonosíthatja a változtatásokat a környezetben. A megoldás nyomon követi a módosításokat a Windows és Linux-szoftver, a Windows és Linux-fájlok, a Windows-beállításkulcsok, a Windows-szolgáltatások és a Linux-démonok. Konfigurációs módosítások azonosítása segíthet a felmerülő működési problémákat.
 
 Telepített szoftverek, Windows-szolgáltatások, Windows-beállításjegyzék és a fájlok és a figyelt kiszolgálókról a Linux-démonok változásokat küldi el a Log Analytics szolgáltatás a felhőben a feldolgozáshoz. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópultján található információk segítségével könnyen megtekintheti az a kiszolgáló-infrastruktúrájában elvégzett módosítások.
+
+## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
+
+A Windows-ügynök hivatalosan támogatott a Windows operációs rendszer következő verziói:
+
+* A Windows Server 2008 Service Pack 1 (SP1) vagy újabb
+* Windows 7 SP1 és újabb verziók.
+
+## <a name="supported-linux-operating-systems"></a>Támogatott Linux operációs rendszerek
+
+A következő Linux-disztribúciók hivatalosan támogatott. A Linux-ügynök azonban más disztribúció nem szerepel a listán is futhat. Ha másként nincs jelezve, az összes kisebb kiadásokban minden felsorolt főverzió támogatottak.  
+
+* Amazon Linux 2012.09 való 2015.09 (x86/x64)
+* CentOS Linux 5, 6 és 7 (x86/x64)  
+* Oracle Linux 5, 6 és 7 (x86/x64)
+* Red Hat Enterprise Linux Server 5, 6 és 7 (x86/x64)
+* Debian GNU/Linux 6, 7, és 8 (x86/x64)
+* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
+* SUSE Linux Enterprise Server 11 – 12 (x86/x64)
 
 ## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
@@ -57,7 +76,7 @@ A következő lépések segítségével nyomon követésének konfigurálása Li
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
 |Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Hagyja figyelmen kívül** – mellőzi a szimbolikus hivatkozásokat, és nem tartalmazza a hivatkozott fájlokat/címtárakat.<br>**Hajtsa végre a** – követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat.<br>**Kezelése** – követi a szimbolikus hivatkozásokat, és lehetővé teszi, hogy a visszaadott tartalom módosítása.     |
-|Töltse fel a fájlok tartalmát, hogy minden beállítás| Engedélyezi vagy letiltja az fájl tartalom feltöltése a nyomon követett módosításait. Az elérhető lehetőségek: **igaz** vagy **hamis**.|
+|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
 
 > [!NOTE]
 > A „Kezelés” használata nem ajánlott, mert a fájltartalom lekérése nem támogatott.
@@ -76,7 +95,7 @@ A következő lépéseket követve konfigurálja a fájlok nyomon követése a W
 |Elem neve     | A követendő fájl felhasználóbarát neve.        |
 |Csoport     | Fájlok logikai csoportosítására szolgáló csoportnév.        |
 |Elérési út megadása     | A fájl elérési útja, például: „c:\temp\myfile.txt”       |
-|Töltse fel a fájlok tartalmát, hogy minden beállítás| Engedélyezi vagy letiltja az fájl tartalom feltöltése a nyomon követett módosításait. Az elérhető lehetőségek: **igaz** vagy **hamis**.|
+|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
 
 ## <a name="configure-file-content-tracking"></a>Fájl tartalma követési konfigurálása
 

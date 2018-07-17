@@ -1,6 +1,6 @@
 ---
-title: A beszédfelismerés összefoglaló kódnyelv |} Microsoft Docs
-description: A beszédfelismerés összefoglaló kódnyelv segítségével vezérelheti, kiejtés és a szöveg-beszéd átalakítás prosody.
+title: A beszédfelismerés összefoglaló Markup Language |} A Microsoft Docs
+description: Használja a Speech összefoglaló Markup language írásmódja és a szöveg-hang transzformációs prosody szabályozásához.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,20 +10,20 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d955e7fd7805688ba103897c0d900c44f16514f8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4074ba91f5029d6c132982d1d81a4888a5e42721
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348923"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071215"
 ---
-# <a name="speech-synthesis-markup-language"></a>Beszéd összefoglaló kódnyelv
+# <a name="speech-synthesis-markup-language"></a>Beszéd összefoglaló Markup Language
 
-A beszédfelismerés összefoglaló Markup Language (SSML) egy XML-alapú kódnyelv, amelyek segítségével szabályozhatja a kiejtés és *prosody* a szöveg-beszéd átalakítás. (A ritmust és beszéd betűközű hivatkozik prosody – a zene, ha fogja). Adja meg a szavakat fonetikusan, javaslatokat tegyen számok értelmezése, szüneteltetése, vezérlő betűközű, kötet, és sebessége és több.
+A beszédfelismerés összefoglaló Markup Language (SSML) egy XML-alapú jelölőnyelv, amely lehetővé teszi a kiejtés szabályozhatja és *prosody* , szöveg-hang transzformációs. (A munkatevékenységhez és a terv lényegét beszéd prosody hivatkozik – a zene, ha az meg fog). Adja meg a szavak fonetikusan, tegyen számok értelmezéséhez, szünetel, vezérlőelem lényegét, kötet, és a sebesség és egyéb beszúrása.
 
-További információkért lásd: [beszéd összefoglaló Markup Language (SSML) 1.0-s verziója](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) , a W3C.
+További információkért lásd: [Speech összefoglaló Markup Language (SSML) 1.0-s verzió](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) a W3C címen.
 
-A következő példák szemléltetik a SSML közös beszéd összefoglaló kell használni.
+Az alábbi példák bemutatják, hogyan SSML használata közös speech összefoglaló igényei szerint.
 
 ## <a name="add-a-break"></a>Szünet
 ```xml
@@ -42,7 +42,7 @@ A következő példák szemléltetik a SSML közös beszéd összefoglaló kell 
 </prosody></voice> </speak>
 ```
 
-## <a name="pronunciation"></a>Kiejtés
+## <a name="pronunciation"></a>Kiejtése
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
@@ -59,7 +59,7 @@ A következő példák szemléltetik a SSML közös beszéd összefoglaló kell 
 </prosody></voice> </speak>
 ```
 
-## <a name="change-pitch"></a>Módosítsa a térköz
+## <a name="change-pitch"></a>Térköz módosítása
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
     <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
@@ -67,7 +67,7 @@ A következő példák szemléltetik a SSML közös beszéd összefoglaló kell 
 </voice> </speak>
 ```
 
-## <a name="change-pitch-contour"></a>Változás betűközű eloszlási
+## <a name="change-pitch-contour"></a>Lényegét kontúrt módosítása
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
@@ -78,5 +78,5 @@ A következő példák szemléltetik a SSML közös beszéd összefoglaló kell 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [Lásd: how to a C# beszéd felismerésére](quickstart-csharp-windows.md)
+* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-dotnet-windows.md)

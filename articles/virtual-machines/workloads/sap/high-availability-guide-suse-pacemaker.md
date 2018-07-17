@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 07/13/2018
 ms.author: sedusch
-ms.openlocfilehash: cac2f91a25907be824e3fd3517736d921c3fde64
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1fa69cc09772b9f90e6de05820c823f0409d926e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921506"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070339"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -38,6 +38,11 @@ A SBD eszköz, amely az iSCSI-tárolókiszolgáló funkcionál, és a egy SBD es
 Ha nem szeretné, hogy egy további virtuális gép be, használhatja az Azure időkorlát ügynök. A hátránya az, hogy a feladatátvétel eltarthat 10 – 15 perc között, ha egy erőforrás leállítása sikertelen, vagy a fürt csomópontjai nem tud kommunikálni amely egymáshoz többé.
 
 ![Támasztja a SLES áttekintése](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
+
+>[!IMPORTANT]
+> SBD eszköz használata a támasztja fürt számára elengedhetetlen az általános megbízhatóságot nyújt a teljes fürt, amely a virtuális gépek és a virtuális gép SBD őket üzemeltető közötti útválasztás nem továbbítja bármely más eszközök, például a [aznva-k](https://azure.microsoft.com/solutions/network-appliances/). Ellenkező esetben problémái az nva-t a stabilitás és megbízhatóság teljes fürtkonfiguráció negatív hatással lehet. Annak érdekében, hogy ezeket az akadályokat, vizsgálja meg az Nva-útválasztási szabályokat és [felhasználói meghatározott útválasztási szabályok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) tervezésekor és üzembe helyezése SBD eszközök.
+>
+
 
 ## <a name="sbd-fencing"></a>SBD szintaxiskiemeléshez
 
