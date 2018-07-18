@@ -1,0 +1,63 @@
+- name: A Service Fabric Mesh dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: A Service Fabric Mesh névjegye
+      href: service-fabric-mesh-overview.md
+- name: Gyors útmutatók
+  items:
+    - name: A Hello World üzembe helyezése
+      href: service-fabric-mesh-quickstart-deploy-container.md
+    - name: Webalkalmazás létrehozása és üzembe helyezése
+      href: service-fabric-mesh-quickstart-dotnet-core.md
+- name: Oktatóanyagok
+  items:
+    - name: Többszolgáltatású webalkalmazás létrehozása és üzembe helyezése
+      items:
+        - name: 1 – ASP.NET Core-alkalmazás összeállítása
+          href: service-fabric-mesh-tutorial-create-dotnetcore.md
+        - name: 2 – Az alkalmazás hibakeresése
+          href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
+        - name: 3 – Az alkalmazás telepítése
+          href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
+- name: Alapelvek
+  items:
+    - name: Terminológia
+      href: service-fabric-mesh-terminology.md
+    - name: Service Fabric-erőforrások
+      href: service-fabric-mesh-service-fabric-resources.md
+    - name: Monitorozás és diagnosztika
+      href: service-fabric-mesh-monitoring-diagnostics.md
+    - name: Tárolási állapot
+      href: service-fabric-mesh-storing-state.md
+- name: Útmutatók
+  items:
+    - name: A fejlesztési környezet beállítása
+      href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
+    - name: A Service Fabric Mesh parancssori felületének beállítása
+      href: service-fabric-mesh-howto-setup-cli.md
+    - name: .NET Core-alapú mikroszolgáltatás-alkalmazás üzembe helyezése
+      href: service-fabric-mesh-howto-deploy-app-template.md
+    - name: Alkalmazás üzembe helyezése privát regisztrációs adatbázisból
+      href: service-fabric-mesh-howto-deploy-app-private-registry.md
+    - name: Állapot tárolása Azure Files-kötettel
+      href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
+    - name: Alkalmazáson belüli mikroszolgáltatások független skálázása
+      href: service-fabric-mesh-howto-app-scale-out.md
+- name: További források
+  items:
+    - name: Gyakori kérdések
+      href: service-fabric-mesh-faq.md
+    - name: Mintaalkalmazások
+      href: 'https://github.com/Azure-Samples/service-fabric-mesh'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric-mesh'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=service-fabric-mesh'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'

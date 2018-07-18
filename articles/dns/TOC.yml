@@ -5,12 +5,13 @@
     - name: Mi az Azure DNS?
       href: dns-overview.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Névfeloldás – portál
       href: dns-getstarted-portal.md
-    - name: DNS-zónák és -rekordok létrehozása – PowerShell
+    - name: Névfeloldás – PowerShell
       href: dns-getstarted-powershell.md
-    - name: DNS-zónák és -rekordok létrehozása – CLI
+    - name: Névfeloldás – parancssori felület
       href: dns-getstarted-cli.md
 - name: Oktatóanyagok
   items:

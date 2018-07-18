@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7488bfbabaf2ce12d2f7315f5142ffea93f584c2
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 43a3458ba0f08d73931b5ecddf6a2c7b1ae259f4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001633"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044815"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Az Azure cloud Services számára egyéni tartománynév konfigurálása
 Amikor létrehoz egy felhőalapú szolgáltatás, az Azure hozzárendeli egy résztartományán **cloudapp.net**. Például, ha a Felhőszolgáltatás neve "contoso", a felhasználók tudják elérhetik az alkalmazást egy URL-címet, például a http://contoso.cloudapp.net. Az Azure hozzárendeli a virtuális IP-címet is.
@@ -124,7 +124,7 @@ Például a következő bejegyzés továbbítja érkező minden **contoso.com** 
 
 | Host name/Subdomain | IP-cím |
 | --- | --- |
-| @ |137.135.70.239 |
+| \@ |137.135.70.239 |
 
 Ez a példa bemutatja egy A rekordot a gyökértartomány létrehozása. Ha szeretné, hogy biztosítsák a altartományokkal helyettesítő bejegyzés létrehozása, kell beírnia "x", az altartomány.
 

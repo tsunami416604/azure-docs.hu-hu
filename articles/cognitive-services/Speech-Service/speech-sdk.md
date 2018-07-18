@@ -8,14 +8,14 @@ manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: bf37ffa9b5a185845c8eeafa7e00d352486fdce2
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ed523493f456e65f7aa5d3ad33914e3e52cd7044
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069464"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113392"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>A Cognitive Services beszédszolgáltatások SDK
 
@@ -23,7 +23,7 @@ A Cognitive Services beszédfelismerő szoftver Development Kit (SDK) az alkalma
 
 [!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!include[License Notice](includes/license-notice.md)]
+[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="get-the-windows-sdk"></a>A Windows SDK beszerzése
 
@@ -57,14 +57,19 @@ Alkalmazás létrehozása, másolja vagy a szükséges bináris fájlokat (és k
 
 Az Androidhoz készült Java SDK van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak, valamint a szükséges Android-engedélyek útmutatójához.
 A Maven adattárban található `https://csspeechstorage.blob.core.windows.net/maven/` csomagként `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0`.
+A felhasználás az Android Studio-projektek-csomagot a következő módosításokat:
 
-* Az Android Studio-projektben vegye fel
+* A projekt szintű `build.gradle` fájlt, adja hozzá a következő, a `repository` szakaszban:
+
+  ```text
+  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
+  ```
+
+* A modul szinten `build.gradle` fájlt, adja hozzá a következő, a `dependencies` szakaszban:
 
   ```text
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:0.5.0'
   ```
-
-  az a `dependencies` a modul szintű szakasza `build.gradle` fájlt.
 
 A Java SDK egyben része a [Speech Devices SDK-val](speech-devices-sdk.md).
 

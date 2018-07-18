@@ -164,6 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: Cégirányítás és megfelelőség
   items:
+    - name: FedRAMP
+      items:
+        - name: Adatelemzés
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: Adattárház
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: IaaS-webalkalmazás
+          href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: PaaS webalkalmazás
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       items:
         - name: Adatelemzés
@@ -184,20 +194,10 @@
           href: ./blueprints/gdpr-iaaswa-overview.md
         - name: PaaS webalkalmazás
           href: ./blueprints/gdpr-paaswa-overview.md
-    - name: FedRAMP
+    - name: HIPAA/HITRUST
       items:
-        - name: Adatelemzés
-          href: ./blueprints/fedramp-analytics-overview.md
-        - name: Adattárház
-          href: ./blueprints/fedramp-datawarehouse-overview.md
-        - name: IaaS-webalkalmazás
-          href: ./blueprints/fedramp-iaaswa-overview.md
-        - name: PaaS webalkalmazás
-          href: ./blueprints/fedramp-paaswa-overview.md
-    - name: TIC
-      items:
-        - name: Trusted Internet Connection az Azure-ral
-          href: ./compliance/compliance-tic.md
+        - name: Állapotadatok és mesterséges intelligencia
+          href: ./blueprints/azure-health.md
     - name: PCI DSS
       items:
         - name: Adatelemzés
@@ -208,6 +208,10 @@
           href: ./blueprints/pcidss-iaaswa-overview.md
         - name: PaaS webalkalmazás
           href: ./blueprints/pcidss-paaswa-overview.md
+    - name: TIC
+      items:
+        - name: Trusted Internet Connection az Azure-ral
+          href: ./compliance/compliance-tic.md
     - name: Az Egyesült Királyság Nemzeti Egészségügyi Szolgálata
       items:
         - name: Adatelemzés
@@ -222,8 +226,6 @@
       items:
         - name: IaaS-webalkalmazás
           href: ./blueprints/ukofficial-iaaswa-overview.md
-    - name: HIPAA/HITRUST-állapotadatok és mesterséges intelligencia
-      href: ./blueprints/azure-health.md
 - name: Tanulmányok
   href: security-white-papers.md
 - name: Azure biztonsági szolgáltatások

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: cd9b8eaf84ac4c1227c521628fd4156eec4506bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3c5746d0fd2c471f767bac4891178c63e21f0418
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38746267"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39094343"
 ---
 # <a name="enable-write-accelerator"></a>Írásgyorsító engedélyezése
 
@@ -67,7 +67,7 @@ Az alábbi előfeltételek ezen a ponton a időben történő alkalmazása Írá
 - Azure Write Accelerator ellen a alkalmazni kívánt lemezeket kell [Azure managed disks](https://azure.microsoft.com/services/managed-disks/) a Premium Storage.
 - Az M-sorozatú virtuális Gépet kell használnia
 
-### <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Azure PowerShell-lel az Azure Write Accelerator engedélyezése
+## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Azure PowerShell-lel az Azure Write Accelerator engedélyezése
 
 Az Azure PowerShell modul 5.5.0-s a változásokat a kapcsolódó parancsmagok engedélyezheti vagy tilthatja le az adott Azure Premium Storage-lemez Write Accelerator.
 Annak érdekében, hogy engedélyezi vagy támogatja Írásgyorsító lemezek üzembe helyezése, a következő PowerShell-parancsok módosítva, és fogadja el a paramétert a Írásgyorsító terjeszteni.
@@ -108,7 +108,7 @@ Get-AzureRmVmss | Update-AzureRmVmss -OsDiskWriteAccelerator:$false
 
 Az alábbiakban látható módon két fő forgatókönyv parancsfájlalapú lehet.
 
-#### <a name="adding-a-new-disk-supported-by-write-accelerator-using-powershell"></a>PowerShell-lel Írásgyorsító által támogatott új lemez hozzáadása
+### <a name="adding-a-new-disk-supported-by-write-accelerator-using-powershell"></a>PowerShell-lel Írásgyorsító által támogatott új lemez hozzáadása
 
 Ez a szkript használatával adjon hozzá egy új lemezt a virtuális gép. Az ezzel a parancsprogrammal létrehozva lemez Írásgyorsító használja.
 
@@ -133,9 +133,9 @@ Add-AzureRmVMDataDisk -CreateOption empty -DiskSizeInGB $size -Name $vmname-$dat
 Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
 ```
 
-#### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>Írásgyorsító engedélyezése a lemezen egy meglévő Azure PowerShell-lel
+### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>Írásgyorsító engedélyezése a lemezen egy meglévő Azure PowerShell-lel
 
-Ez a szkript használatával a meglévő lemez Írásgyorsító engedélyezése. Cserélje le `myVM`, `myWAVMs`, és `test-log001` az adott központi telepítés számára megfelelő értékekkel. A parancsfájl hozzáad Írásgyorsító egy meglévő lemezhez, amelyeknél $newstatus értéke "$true" értékre van állítva. Az érték "$false" használatával adott lemez Írásgyorsító letiltja.
+Ez a szkript használatával a meglévő lemez Írásgyorsító engedélyezése. Cserélje le `myVM`, `myWAVMs`, és `test-log001` az adott központi telepítés számára megfelelő értékekkel. A parancsfájl hozzáad Írásgyorsító egy meglévő lemezhez ahol értéke **$newstatus** "$true" értékre van állítva. Az érték "$false" használatával adott lemez Írásgyorsító letiltja.
 
 ```PowerShell
 #Specify your VM Name
@@ -157,15 +157,15 @@ Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
 > [!Note]
 > Hajtsa végre a fenti parancsprogramot fog a megadott lemez leválasztása Írásgyorsító engedélyezése a lemezt érintő és majd csatlakoztassa újra a lemezt
 
-### <a name="enabling-write-accelerator-using-the-azure-portal"></a>Az Azure portal használatával Írásgyorsító engedélyezése
+## <a name="enabling-write-accelerator-using-the-azure-portal"></a>Az Azure portal használatával Írásgyorsító engedélyezése
 
-A portálon, ahol meg kell adnia a lemezt gyorsítótárazási beállítások Írásgyorsító engedélyezheti: 
+A portálon, ahol meg kell adnia a lemezt gyorsítótárazási beállítások Írásgyorsító engedélyezheti:
 
 ![Az Azure Portalon írásgyorsító](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
-### <a name="enabling-write-accelerator-using-the-azure-cli"></a>Az Azure CLI-vel Írásgyorsító engedélyezése
+## <a name="enabling-write-accelerator-using-the-azure-cli"></a>Az Azure CLI-vel Írásgyorsító engedélyezése
 
-Használhatja a [Azure CLI-vel](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) Írásgyorsító engedélyezése. 
+Használhatja a [Azure CLI-vel](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) Írásgyorsító engedélyezése.
 
 Meglévő lemez Írásgyorsító engedélyezéséhez használja [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), használhatja az alábbi példák, ha a diskName VMName és ResourceGroup lecseréli a saját értékeire: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
@@ -173,11 +173,11 @@ Lemez csatolása írásgyorsítót engedélyezve a használati [az vm disk attac
 
 Írásgyorsító letiltásához használja [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), a tulajdonságok beállítása false értékre: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
-### <a name="enabling-through-rest-apis"></a>Rest API-kon keresztül engedélyezése
+## <a name="enabling-write-accelerator-using-rest-apis"></a>Rest API-k használatával Írásgyorsító engedélyezése
 
 Azure Rest API-n keresztüli üzembe helyezéséhez telepíteni szeretné az Azure armclient.
 
-#### <a name="install-armclient"></a>Armclient telepítése
+### <a name="install-armclient"></a>Armclient telepítése
 
 Armclient futtatásához szüksége telepítheti át a chocolatey-t. Telepítheti a cmd.exe vagy a powershellen keresztül. Használja az emelt szintű jogosultságokkal rendelkeznek a parancsokhoz ("Futtatás rendszergazdaként").
 
@@ -187,7 +187,7 @@ A Power Shell használata esetén futtassa a következő parancsot: `Set-Executi
 
 Most már telepítheti a armclient a következő parancsot a cmd.exe vagy a PowerShell használatával `choco install armclient`
 
-#### <a name="getting-your-current-vm-configuration"></a>Az aktuális virtuális gép konfigurációjának beolvasása
+### <a name="getting-your-current-vm-configuration"></a>Az aktuális virtuális gép konfigurációjának beolvasása
 
 Ha módosítani szeretné a lemezkonfigurációt attribútumait, először a jelenlegi konfiguráció beolvasása a JSON-fájlt. A jelenlegi konfiguráció kaphat a következő parancs végrehajtásával: `armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>`
 

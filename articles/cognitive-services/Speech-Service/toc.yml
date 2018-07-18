@@ -11,12 +11,18 @@
   items:
     - name: Próbálja ki ingyenesen a Beszédszolgáltatást
       href: get-started.md
-    - name: 'Beszéd felismerése C# nyelven'
-      href: quickstart-csharp-windows.md
+    - name: 'Beszéd felismerése C# nyelven (.NET Windows rendszeren)'
+      href: quickstart-csharp-dotnet-windows.md
+    - name: 'Beszéd felismerése C# nyelven (.NET Core Windows rendszeren)'
+      href: quickstart-csharp-dotnetcore-windows.md
+    - name: Beszéd felismerése UWP-alkalmazásban
+      href: quickstart-csharp-uwp.md
     - name: Beszéd felismerése Windows C++ nyelven
       href: quickstart-cpp-windows.md
     - name: Beszéd felismerése Linux C++ nyelven
       href: quickstart-cpp-linux.md
+    - name: Beszéd felismerése Androidhoz készült Javán
+      href: quickstart-java-android.md
     - name: A Beszédeszközök SDK használatának első lépései
       href: speech-devices-sdk-qsg.md
 - name: Útmutatók

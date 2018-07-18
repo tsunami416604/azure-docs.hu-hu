@@ -16,24 +16,10 @@
 ## [Eszköz vezérlése (Python)](quickstart-control-device-python.md)
 
 # Oktatóanyagok
-
-<!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [Útválasztási üzenetek](tutorial-routing.md)
 ## [Eszközök konfigurálása](tutorial-device-twins.md)
 ## [Belső vezérlőprogramok frissítéseinek kezelése](tutorial-firmware-update.md)
 ## [Eszközkapcsolatok tesztelése](tutorial-connectivity.md)
-## Üzenetküldés a felhőből az eszközökre
-### [.NET](iot-hub-csharp-csharp-c2d.md)
-### [Java](iot-hub-java-java-c2d.md)
-### [Node.js](iot-hub-node-node-c2d.md)
-### [Python](iot-hub-python-python-c2d.md)
-## Ismerkedés az eszközfelügyelettel
-### [Node.js](iot-hub-node-node-device-management-get-started.md)
-### [.NET](iot-hub-csharp-csharp-device-management-get-started.md)
-### [Java](iot-hub-java-java-device-management-getstarted.md)
-### [Python](iot-hub-python-python-device-management-get-started.md)
-
-### [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
 
 # Alapelvek
 ## [Az eszközfelügyelet áttekintése](iot-hub-device-management-overview.md)
@@ -42,6 +28,7 @@
 ## [Magas rendelkezésre állás és vészhelyreállítás](iot-hub-ha-dr.md)
 ## [További protokollok támogatása](iot-hub-protocol-gateway.md)
 ## [Üzenetek és események útválasztásának összehasonlítása](iot-hub-event-grid-routing-comparison.md)
+## [Az eszközkonfiguráció ajánlott eljárásai](iot-hub-configuration-best-practices.md)
 
 ## [Fejlesztői útmutató](iot-hub-devguide.md)
 ### [Eszközről a felhőbe – funkcióismertető](iot-hub-devguide-d2c-guidance.md)
@@ -58,6 +45,7 @@
 ### [Eszközidentitások kezelése](iot-hub-devguide-identity-registry.md)
 ### [IoT Hub-hozzáférés szabályozása](iot-hub-devguide-security.md)
 ### [Az ikereszközök áttekintése](iot-hub-devguide-device-twins.md)
+### [Az ikermodulok áttekintése](iot-hub-devguide-module-twins.md)
 ### [Közvetlen metódusok meghívása eszközökön](iot-hub-devguide-direct-methods.md)
 ### [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md)
 ### [IoT Hub-végpontok](iot-hub-devguide-endpoints.md)
@@ -65,89 +53,29 @@
 ### [Kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md)
 ### [Díjszabási példák](iot-hub-devguide-pricing.md)
 ### [Eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md)
-### [Fejlesztés korlátozott eszközökhöz](iot-hub-devguide-develop-for-constrained-devices.md)
-### [Fejlesztés mobileszközökhöz](iot-hub-how-to-develop-for-mobile-devices.md)
 ### [MQTT-támogatás](iot-hub-mqtt-support.md)
 ### [Szószedet](iot-hub-devguide-glossary.md)
 
-## Az eszköz beállítása
-### [Eszköz szimulálása a számítógépen](iot-hub-get-started-simulated.md)
-#### [.NET](iot-hub-csharp-csharp-getstarted.md)
-#### [Java](iot-hub-java-java-getstarted.md)
-#### [Node.js](iot-hub-node-node-getstarted.md)
-#### [Python](iot-hub-python-getstarted.md)
-## [A C IoT eszközoldali SDK-jának használata](iot-hub-device-sdk-c-intro.md)
-### [Az IoTHubClient használata](iot-hub-device-sdk-c-iothubclient.md)
-### [A szerializáló használata](iot-hub-device-sdk-c-serializer.md)
+## Biztonság
+### [Biztonság az alapoktól](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc)
+### [Ajánlott biztonsági eljárások](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc)
+### [Biztonsági architektúra](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc)
+### [Az IoT-környezet biztonságossá tétele](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc)
 
-## [Biztonság az alapoktól](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc)
-## [Ajánlott biztonsági eljárások](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc)
-## [Biztonsági architektúra](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc)
-## [Az IoT-környezet biztonságossá tétele](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc)
 ## Biztonságossá tétel X.509-es hitelesítésszolgáltatói tanúsítványokkal
 ### [X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](iot-hub-x509ca-overview.md)
-#### [X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági alapfogalmai](iot-hub-x509ca-concept.md)
-### [Bevezetés az X.509-es hitelesítésszolgáltatói tanúsítványok használatába](iot-hub-security-x509-get-started.md)
-#### [Tanúsítványok létrehozása – PowerShell](iot-hub-security-x509-create-certificates.md)
-
-
-### Bővített IoT-forgatókönyvek
-#### [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
-#### [IoT Hub-üzenetek mentése az Azure Blob Storage-ba](iot-hub-store-data-in-azure-table-storage.md)
-#### [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
-#### [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
-#### [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
-#### [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
-#### [Eszközfelügyelet az Azure CLI 2.0-hoz készült IoT-bővítménnyel](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
-#### [Távoli figyelés és értesítések a Logic Apps használatával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-
-### Az MXChip IoT DevKit használata
-#### [Hangüzenetek fordítása az Azure Cognitive Services használatával](iot-hub-arduino-iot-devkit-az3166-translator.md)
-#### [Twitter-üzenet lekérdezése az Azure Functions használatával](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
-#### [Üzenetek küldése MQTT-kiszolgálóra az Eclipse Paho API-jaival](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
-#### [A mágneses érzékelő monitorozása és e-mail-értesítések küldése az Azure Functions segítségével](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
-
-## [Az eszközkonfiguráció ajánlott eljárásai](iot-hub-configuration-best-practices.md)
+### [X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági alapfogalmai](iot-hub-x509ca-concept.md)
 
 # Útmutatók
-## Felkészülés
-### [Az IoT Hub és az Event Hubs összehasonlítása](iot-hub-compare-event-hubs.md)
-### [A megfelelő szint kiválasztása](iot-hub-scaling.md)
-### [Magas rendelkezésre állás és vészhelyreállítás](iot-hub-ha-dr.md)
-### [További protokollok támogatása](iot-hub-protocol-gateway.md)
-### [Üzenetek és események útválasztásának összehasonlítása](iot-hub-event-grid-routing-comparison.md)
-## [Fejlesztés](iot-hub-how-to.md)
-### [Fejlesztői útmutató](iot-hub-devguide.md)
-#### [Eszközről a felhőbe – funkcióismertető](iot-hub-devguide-d2c-guidance.md)
-#### [Felhőről az eszközre – funkcióismertető](iot-hub-devguide-c2d-guidance.md)
-#### [Üzenetek küldése és fogadása](iot-hub-devguide-messaging.md)
-##### [Az eszközről a felhőbe irányuló üzenetek küldése az IoT Hubra](iot-hub-devguide-messages-d2c.md)
-##### [Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról](iot-hub-devguide-messages-read-builtin.md)
-##### [Reagálás az IoT Hub eseményeire](iot-hub-event-grid.md)
-##### [Egyéni végpontok és útválasztási szabályok használata az eszközről a felhőbe irányuló üzenetekhez](iot-hub-devguide-messages-read-custom.md)
-##### [A felhőből az eszközökre irányuló üzenetek küldése az IoT Hubról](iot-hub-devguide-messages-c2d.md)
-##### [IoT Hub-üzenetek létrehozása és olvasása](iot-hub-devguide-messages-construct.md)
-##### [Kommunikációs protokoll kiválasztása](iot-hub-devguide-protocols.md)
-#### [Fájlok feltöltése eszközökről](iot-hub-devguide-file-upload.md)
-#### [Eszközidentitások kezelése](iot-hub-devguide-identity-registry.md)
-#### [IoT Hub-hozzáférés szabályozása](iot-hub-devguide-security.md)
-#### [Az ikereszközök áttekintése](iot-hub-devguide-device-twins.md)
-#### [Az ikermodulok áttekintése](iot-hub-devguide-module-twins.md)
-#### [Közvetlen metódusok meghívása eszközökön](iot-hub-devguide-direct-methods.md)
-#### [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md)
-#### [IoT Hub-végpontok](iot-hub-devguide-endpoints.md)
-#### [Lekérdezés nyelve](iot-hub-devguide-query-language.md)
-#### [Kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md)
-#### [Díjszabási példák](iot-hub-devguide-pricing.md)
-#### [Eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md)
-#### [MQTT-támogatás](iot-hub-mqtt-support.md)
-#### [Szószedet](iot-hub-devguide-glossary.md)
+
+## Fejlesztés
 ### [A C IoT eszközoldali SDK-jának használata](iot-hub-device-sdk-c-intro.md)
 #### [Az IoTHubClient használata](iot-hub-device-sdk-c-iothubclient.md)
 #### [A szerializáló használata](iot-hub-device-sdk-c-serializer.md)
 ### [Fejlesztés korlátozott eszközökhöz](iot-hub-devguide-develop-for-constrained-devices.md)
 ### [Fejlesztés mobileszközökhöz](iot-hub-how-to-develop-for-mobile-devices.md)
 ### [Avro-adatok lekérdezése központi útvonalról](iot-hub-query-avro-data.md)
+
 ### Üzenetküldés a felhőből az eszközökre
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
@@ -170,37 +98,47 @@
 #### [Python](iot-hub-python-python-module-twin-getstarted.md)
 #### [C](iot-hub-c-c-module-twin-getstarted.md)
 #### [Node](iot-hub-node-node-module-twin-getstarted.md)
-### Közvetlen metódusok használata
-#### [Node.js](iot-hub-node-node-direct-methods.md)
-#### [.NET](iot-hub-csharp-csharp-direct-methods.md)
-#### [Java](iot-hub-java-java-direct-methods.md)
-#### [Python](iot-hub-python-python-direct-methods.md)
+### Ismerkedés az eszközfelügyelettel
+#### [Node.js](iot-hub-node-node-device-management-get-started.md)
+#### [.NET](iot-hub-csharp-csharp-device-management-get-started.md)
+#### [Java](iot-hub-java-java-device-management-getstarted.md)
+#### [Python](iot-hub-python-python-device-management-get-started.md)
 ### Feladatok ütemezése és szórása
 #### [Node.js](iot-hub-node-node-schedule-jobs.md)
 #### [.NET](iot-hub-csharp-csharp-schedule-jobs.md)
 #### [Java](iot-hub-java-java-schedule-jobs.md)
 #### [Python](iot-hub-python-python-schedule-jobs.md)
-## Fájlok feltöltése eszközökről
-### [.NET](iot-hub-csharp-csharp-file-upload.md)
-### [Java](iot-hub-java-java-file-upload.md)
-### [Node.js](iot-hub-node-node-file-upload.md)
-### [Python](iot-hub-python-python-file-upload.md)
+### Az MXChip IoT DevKit használata
+#### [Hangüzenetek fordítása az Azure Cognitive Services használatával](iot-hub-arduino-iot-devkit-az3166-translator.md)
+#### [Twitter-üzenet lekérdezése az Azure Functions használatával](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+#### [Üzenetek küldése MQTT-kiszolgálóra az Eclipse Paho API-jaival](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
+#### [A mágneses érzékelő monitorozása és e-mail-értesítések küldése az Azure Functions segítségével](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
-## IoT Hub létrehozása 
-### [Az Azure Portal használata](iot-hub-create-through-portal.md)
-### [Azure PowerShell használata](iot-hub-create-using-powershell.md)
-### [Az Azure parancssori felület használata](iot-hub-create-using-cli.md)
-### [A CLI használata](iot-hub-create-using-cli-nodejs.md)
-### [A REST API használata](iot-hub-rm-rest.md)
-### [Az Azure PowerShell sablonjának használata](iot-hub-rm-template-powershell.md)
-### [A .NET-keretrendszer sablonjának használata](iot-hub-rm-template.md)
-## Fájlfeltöltés konfigurálása
-### [Az Azure Portal használata](iot-hub-configure-file-upload.md)
-### [Azure PowerShell használata](iot-hub-configure-file-upload-powershell.md)
-### [Az Azure parancssori felület használata](iot-hub-configure-file-upload-cli.md)
-## [Monitorozás a diagnosztikával](iot-hub-monitor-resource-health.md)
-### [Migrálás a diagnosztikai beállításokba](iot-hub-migrate-to-diagnostics-settings.md)
-### [Műveletek figyelése](iot-hub-operations-monitoring.md)
+## Kezelés
+### IoT Hub létrehozása 
+#### [Az Azure Portal használata](iot-hub-create-through-portal.md)
+#### [Azure PowerShell használata](iot-hub-create-using-powershell.md)
+#### [Az Azure parancssori felület használata](iot-hub-create-using-cli.md)
+#### [A CLI használata](iot-hub-create-using-cli-nodejs.md)
+#### [A REST API használata](iot-hub-rm-rest.md)
+#### [Az Azure PowerShell sablonjának használata](iot-hub-rm-template-powershell.md)
+#### [A .NET-keretrendszer sablonjának használata](iot-hub-rm-template.md)
+### Fájlfeltöltés konfigurálása
+#### [Az Azure Portal használata](iot-hub-configure-file-upload.md)
+#### [Azure PowerShell használata](iot-hub-configure-file-upload-powershell.md)
+#### [Az Azure parancssori felület használata](iot-hub-configure-file-upload-cli.md)
+### [Monitorozás a diagnosztikával](iot-hub-monitor-resource-health.md)
+#### [Migrálás a diagnosztikai beállításokba](iot-hub-migrate-to-diagnostics-settings.md)
+#### [Műveletek figyelése](iot-hub-operations-monitoring.md)
+### [A központ védelmének biztosítása X.509-tanúsítvánnyal](iot-hub-security-x509-get-started.md)
+### [IoT Hub frissítése](iot-hub-upgrade.md)
+### [Használati metrikák](iot-hub-metrics.md)
+### [IP-szűrés konfigurálása](iot-hub-ip-filtering.md)
+### Eszközök konfigurálása nagy mennyiségben
+#### [Az Azure Portal használata](iot-hub-auto-device-config.md)
+#### [Az Azure parancssori felület használata](iot-hub-auto-device-config-cli.md)
+### [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
+
 ## Valós eszközök használata
 ### [Első lépések](iot-hub-get-started.md)
 ### [Online szimulátor használata](iot-hub-raspberry-pi-web-simulator-get-started.md)
@@ -214,15 +152,17 @@
 #### [Adafruit Feather HUZZAH ESP8266 és Arduino](iot-hub-arduino-huzzah-esp8266-get-started.md)
 #### [Sparkfun ESP8266 Thing Dev és Arduino](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [Adafruit Feather M0 és Arduino](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
-## [IoT Hub frissítése](iot-hub-upgrade.md)
-## [Használati metrikák](iot-hub-metrics.md)
-## [IP-szűrés konfigurálása](iot-hub-ip-filtering.md)
-## Eszközök konfigurálása nagy mennyiségben
-### [Az Azure Portal használata](iot-hub-auto-device-config.md)
-### [Az Azure parancssori felület használata](iot-hub-auto-device-config-cli.md)
+### Bővített IoT-forgatókönyvek
+#### [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
+#### [IoT Hub-üzenetek mentése az Azure Blob Storage-ba](iot-hub-store-data-in-azure-table-storage.md)
+#### [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
+#### [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
+#### [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
+#### [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
+#### [Eszközfelügyelet az Azure CLI 2.0-hoz készült IoT-bővítménnyel](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
+#### [Távoli figyelés és értesítések a Logic Apps használatával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/resources/samples/?service=iot-hub)
 ## [Azure CLI](/cli/azure/iot)
 ## [.NET (Szolgáltatás)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (Eszközök)](/dotnet/api/microsoft.azure.devices.client)
@@ -232,15 +172,14 @@
 ## [Node.js (Szolgáltatás)](https://docs.microsoft.com/javascript/api/azure-iothub/)
 ## [C eszköz-SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
-## [REST (Erőforrás-szolgáltató)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
-## [REST (Eszközidentitások)](https://docs.microsoft.com/rest/api/iothub/deviceapi)
-## [REST (Ikereszközök)](https://docs.microsoft.com/rest/api/iothub/devicetwinapi)
-## [REST (Eszközök üzenetküldése)](https://docs.microsoft.com/rest/api/iothub/httpruntime)
-## [REST (Feladatok)](https://docs.microsoft.com/rest/api/iothub/jobapi)
+## [REST (eszköz)](https://docs.microsoft.com/rest/api/iothub/device)
+## [REST (szolgáltatás)](https://docs.microsoft.com/rest/api/iothub/service)
+## [REST (IoT Hub-erőforrás)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
+## [REST (tanúsítványok)](https://docs.microsoft.com/rest/api/iothub/certificates)
 
 # Kapcsolódó témakörök
 ## Megoldások 
-### [IoT-megoldásgyorsítók](/azure/iot-suite) 
+### [IoT-megoldásgyorsítók](/azure/iot-accelerators) 
 ### [IoT-központ](https://docs.microsoft.com/microsoft-iot-central/) 
 ## Platformszolgáltatások 
 ### [IoT Hub](/azure/iot-hub) 

@@ -48,8 +48,19 @@
 ### SAP több biztonsági azonosítóval
 #### [Windows közös lemezzel (A)SCS példányhoz](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [Windows SOFS fájlmegosztással (A)SCS példányhoz](sap-ascs-ha-multi-sid-wsfc-file-share.md)
-## [Üzembehelyezési útmutató](deployment-guide.md)
-## [DBMS üzembehelyezési útmutató](dbms-guide.md)
+## [SAP NetWeaver üzembehelyezési útmutató](deployment-guide.md)
+## DBMS üzembehelyezési útmutatók SAP számítási feladatokhoz
+### [Általános Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_general.md)
+### [SQL Server Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sqlserver.md)
+### [Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_oracle.md)
+### [IBM DB2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_ibm.md)
+### [SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sapase.md)
+### [SAP MaxDB, liveCache és tartalomkiszolgáló üzembe helyezése az Azure-ban](dbms_guide_maxdb.md)
+### [SAP HANA az Azure-műveletek útmutatójában](hana-vm-operations.md)
+#### Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
+##### [Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés](sap-hana-availability-overview.md)
+##### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)
+##### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
 ## [Azure Site Recovery az SAP-vészhelyreállításhoz](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # AAD SAP-identitásintegráció és egyszeri bejelentkezés
 ## [Integráció az SAP-felhővel](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f0ad879bb084a8d3a50a0934557eae64621c0160
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 68613b8613a2e5a9139b83eb23e66884659efc47
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054253"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Oktatóanyag: Azure Active Directory-integráció az Atlassian felhő
 
@@ -39,7 +39,7 @@ Az Azure ad-vel szoftverként (saas biztosított) alkalmazás integrációja szo
 Atlassian felhőalapú Azure AD-integráció konfigurálásához a következőkre van szükség:
 
 - Az Azure AD-előfizetés.
-- Engedélyezi a Security Assertion Markup Language (SAML) egyszeri bejelentkezést az Atlassian felhőalapú termékek, állítsa be a identitás Managert kell. Tudjon meg többet [Identity Manager]( https://www.atlassian.com/enterprise/cloud/identity-manager).
+- Engedélyezi a Security Assertion Markup Language (SAML) egyszeri bejelentkezést az Atlassian felhőalapú termékek, szüksége Atlassian hozzáférés beállítása. Tudjon meg többet [Atlassian hozzáférés]( https://www.atlassian.com/enterprise/cloud/identity-manager).
 
 > [!NOTE]
 > Ha ebben az oktatóanyagban a lépéseket, azt javasoljuk, hogy nem használja éles környezetben.
@@ -99,22 +99,27 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Atlassian felhő, te
 
     ![Egyszeri bejelentkezési ablak](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
-3. Az alkalmazás Identitásszolgáltató által kezdeményezett módban alatt konfigurálását **Atlassian felhőalapú tartomány és URL-címek**, tegye a következőket:
+3. Az alkalmazás konfigurálása **Identitásszolgáltató által kezdeményezett** mód alatt **Atlassian felhőalapú tartomány és URL-címek**, tegye a következőket:
 
     ![Atlassian felhőalapú tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
     
-    a. Az a **azonosító** mezőbe írja be **`https://auth.atlassian.com/saml/<unique ID>`**.
+    a. Az a **azonosító** mezőbe írja be egy URL-címet a következő mintával: `https://auth.atlassian.com/saml/<unique ID>`.
     
-    b. Az a **válasz URL-cím** mezőbe írja be **`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`**.
+    b. Az a **válasz URL-cím** mezőbe írja be egy URL-címet a következő mintával: `https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`.
 
-    c. Az a **továbbítási állapot** mezőbe írja be egy URL-címet a következő szintaxissal: **`https://<instancename>.atlassian.net`**.
+    c. Ellenőrizze **speciális URL-beállítások megjelenítése**.
 
-4. Az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban, jelölje be a **speciális URL-beállítások megjelenítése** , majd a **bejelentkezési URL-cím** mezőbe írja be egy URL-címet a következő szintaxissal: **`https://<instancename>.atlassian.net`** .
+    d. Az a **továbbítási állapot** mezőbe írja be egy URL-címet a következő mintával: `https://<instancename>.atlassian.net`.
+
+    > [!NOTE]
+    > Az előző értékek nem valódi. Az értékeket módosítsa a tényleges azonosítóval, és a válasz URL-címe. Valódi ezeket az értékeket az oktatóanyag későbbi részében ismertetett Atlassian felhőalapú SAML-konfigurációja képernyőről fog kapni.
+
+4. Az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban, jelölje be a **speciális URL-beállítások megjelenítése** , majd a **bejelentkezési URL-cím** mezőbe írja be egy URL-címet a következő mintával: `https://<instancename>.atlassian.net`.
 
     ![Atlassian felhőalapú tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
     > [!NOTE]
-    > Az előző értékek nem valódi. Frissítse azokat a tényleges azonosítóját, a válasz URL-cím és a bejelentkezési URL-cím értékeit. A valódi értékek kaphat a felhőalapú SAML-konfigurációja Atlassian képernyőről. Az értékeket az oktatóanyag későbbi részében ismertetjük.
+    > A fenti bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Atlassian felhőalapú ügyfél-támogatási csapatának](https://support.atlassian.com/) lekérni ezt az értéket.
 
 5. Alatt **SAML-aláíró tanúsítvány**válassza **Certificate(Base64)**, majd mentse a tanúsítványfájlt, a számítógépen.
 

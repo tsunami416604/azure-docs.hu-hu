@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: sedusch
-ms.openlocfilehash: 1fa69cc09772b9f90e6de05820c823f0409d926e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9ce95bcf15d0186c1baea3df407d0fc0c4200f45
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070339"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115476"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -40,7 +40,7 @@ Ha nem szeretné, hogy egy további virtuális gép be, használhatja az Azure i
 ![Támasztja a SLES áttekintése](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> SBD eszköz használata a támasztja fürt számára elengedhetetlen az általános megbízhatóságot nyújt a teljes fürt, amely a virtuális gépek és a virtuális gép SBD őket üzemeltető közötti útválasztás nem továbbítja bármely más eszközök, például a [aznva-k](https://azure.microsoft.com/solutions/network-appliances/). Ellenkező esetben problémái az nva-t a stabilitás és megbízhatóság teljes fürtkonfiguráció negatív hatással lehet. Annak érdekében, hogy ezeket az akadályokat, vizsgálja meg az Nva-útválasztási szabályokat és [felhasználói meghatározott útválasztási szabályok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) tervezésekor és üzembe helyezése SBD eszközök.
+> Tervezési és üzembe helyezése Linux támasztja fürtözött csomópontok és SBD eszközöket, amikor ez elengedhetetlen az általános megbízhatóságot nyújt, amely a virtuális gépek közötti útválasztást az érintett, és nem továbbítja a SBD őket üzemeltető virtuális gép teljes fürtkonfiguráció bármely más eszközök, például [nva-k](https://azure.microsoft.com/solutions/network-appliances/). Ellenkező esetben problémákat és az nva-t a karbantartási események negatív hatással lehet a stabilitás és megbízhatóság teljes fürtkonfiguráció. Annak érdekében, hogy ezeket az akadályokat, nem határoznak meg Nva-útválasztási szabályok vagy [felhasználói meghatározott útválasztási szabályok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) a fürtözött csomópontok és SBD eszközöknek az nva-k és hasonló eszközök tervezésekor és üzembe helyezése Linux közötti forgalom irányítása Fürtözött támasztja csomópontok és SBD eszközök. 
 >
 
 

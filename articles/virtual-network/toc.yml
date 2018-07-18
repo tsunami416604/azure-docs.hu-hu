@@ -35,7 +35,7 @@
       href: policy-samples.md
 - name: Alapelvek
   items:
-    - name: Biztonság
+    - name: Biztonsági csoportok
       href: security-overview.md
     - name: Útválasztás
       href: virtual-networks-udr-overview.md

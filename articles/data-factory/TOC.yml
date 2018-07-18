@@ -319,6 +319,10 @@
           href: transform-data-using-data-lake-analytics.md
         - name: Databricks-jegyzetfüzetek tevékenységei
           href: transform-data-databricks-notebook.md
+        - name: Databricks Jar-tevékenysége
+          href: transform-data-databricks-jar.md
+        - name: Databricks Python-tevékenységei
+          href: transform-data-databricks-python.md
         - name: Egyéni tevékenység
           href: transform-data-using-dotnet-custom-activity.md
         - name: Társított szolgáltatások számítása

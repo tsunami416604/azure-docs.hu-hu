@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: juliako
-ms.openlocfilehash: b62c528716d9386b9da6ddee260fd1ec382fb4a5
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 3e5de521570a587b049702dabd3e3692c4227796
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036785"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114793"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128, a dinamikus titkosítás és a kulcstovábbítást használata
 
@@ -40,7 +40,7 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 
 ## <a name="download-code"></a>Kód letöltése
 
-A teljes .NET-mintát tartalmazó GitHub-adattár klónozása tárgyalt ebben a témakörben a gépre a következő paranccsal:
+A teljes .NET-mintát tartalmazó GitHub-adattár klónozása a a gépre a következő paranccsal cikkben leírtak szerint:
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
@@ -53,13 +53,13 @@ A "titkosítani az AES-128" mintában található a [EncryptWithAES](https://git
 
 ## <a name="start-using-media-services-apis-with-net-sdk"></a>A Media Services API-k használatának megkezdése a .NET SDK-val
 
-Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre kell hoznia egy **AzureMediaServicesClient** objektumot. Az objektum létrehozásához meg kell adnia a hitelesítő adatokat, amelyekkel az ügyfél csatlakozhat az Azure-hoz az Azure AD használatával. A cikk elején klónozott kódban a **GetCredentialsAsync** függvény létrehozza a ServiceClientCredentials objektumot a helyi konfigurációs fájlban szereplő hitelesítési adatok alapján. 
+Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre kell hoznia egy **AzureMediaServicesClient** objektumot. Az objektum létrehozásához meg kell adnia a hitelesítő adatokat, amelyekkel az ügyfél csatlakozhat az Azure-hoz az Azure AD használatával. A kódban, a cikk elején klónozta a **GetCredentialsAsync** függvény létrehozza az ServiceClientCredentials objektumot a helyi konfigurációs fájlban megadott hitelesítő adatok alapján. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateMediaServicesClient)]
 
 ## <a name="create-an-output-asset"></a>Kimeneti objektum létrehozása  
 
-A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja a kódolási feladat eredményeit. A kódolás befejezését követően a kimeneti adategység van közzétéve, az AES (ClearKey) titkosítással.  
+A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja a kódolási feladat eredményeit.  
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateOutputAsset)]
  
@@ -87,27 +87,22 @@ A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Váróli
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
-## <a name="create-a-contentkey-policy"></a>ContentKey szabályzat létrehozása
+## <a name="create-a-contentkeypolicy"></a>Hozzon létre egy ContentKeyPolicy
 
-Tartalomkulcs biztonságos hozzáférést biztosít az eszközök. Tartalom kulcs szabályzat, amely beállítja a tartalomkulcsot a rendszer hogyan továbbítja az ügyfelek közötti létrehozásához szükséges. A tartalomkulcs StreamingLocator kapcsolódik. A Media Services emellett a legfontosabb licenctovábbítási szolgáltatása, amely a titkosítási kulcsokat biztosít a jogosult felhasználókra. 
+Tartalomkulcs biztonságos hozzáférést biztosít az eszközök. Szeretne létrehozni egy **ContentKeyPolicy** , amely beállítja a tartalomkulcsot a rendszer hogyan továbbítja az ügyfelek közötti. A tartalomkulcs társítva van **StreamingLocator**. A Media Services emellett a legfontosabb licenctovábbítási szolgáltatása, amely a titkosítási kulcsokat biztosít a jogosult felhasználókra. 
 
 Amikor egy adatfolyam-lejátszó kér, Media Services segítségével a megadott kulcs dinamikusan titkosítja a tartalom (ebben az esetben AES titkosítás segítségével.) A stream visszafejteni, az a Windows Media player a kulcs kér a kulcstovábbítást. Annak megállapításához, hogy a felhasználó jogosult kulcs lekérése, a szolgáltatás kiértékeli a tartalom a kulcshoz megadott kulcs házirend.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="get-a-token"></a>Egy token beszerzése
-        
-Ebben az oktatóanyagban adjuk meg a tartalom-szabályzat szeretné, hogy a jogkivonat korlátozás. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. A Media Services jogkivonatokat támogatja a [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) formátumú, és hogy rendszer milyen konfigurálnánk a mintában.
-
-A ContentKeyPolicy, ami azt jelenti, hogy a jogkivonat jelenik meg a kulcs-továbbítási szolgáltatást kell rendelkeznie a ContentKey azonosítóját, a ContentKeyIdentifierClaim használatban van. A mintában nem megadunk egy tartalomkulcsot, a StreamingLocator létrehozásakor, a rendszer létrehoz egy véletlenszerű számunkra. Annak érdekében, hogy a teszt létrehozása token, azt be kell szereznie a ContentKeyId a ContentKeyIdentifierClaim jogcím a helyezi.
-
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
-
 ## <a name="create-a-streaminglocator"></a>StreamingLocator létrehozása
 
-A kódolás befejezése után a következő lépés a kimeneti objektumban található videó elérhetővé tétele az ügyfelek számára lejátszásra. Ezt két lépésben teheti meg: először hozzon létre egy [StreamingLocatort](https://docs.microsoft.com/rest/api/media/streaminglocators), majd a streamelési URL-címeket, amelyeket az ügyfelek használhatnak. 
+Miután befejeződött a kódolást, és a tartalom kulcs szabályzat van beállítva, az a következő lépés, hogy a kimenetben, hogy a videó lejátszás céljából az ügyfelek számára elérhető eszköz. Ehhez két lépésben: 
 
-A **StreamingLocator** létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint a **StreamingLocator** azonnal érvényessé válik az API-hívás után, és a törléséig aktív marad. Ehelyett be lehet állítani indítási és befejeződési időpontokat is. 
+1. Hozzon létre egy [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)
+2. Hozhat létre, amellyel az ügyfelek streamelési URL-címeket. 
+
+Létrehozásának folyamatán a **StreamingLocator** közzététel nevezzük. Alapértelmezés szerint a **StreamingLocator** azonnal érvényessé válik az API-hívás után, és a törléséig aktív marad. Ehelyett be lehet állítani indítási és befejeződési időpontokat is. 
 
 A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása során meg kell adnia a kívánt **StreamingPolicyName** elemet. Ebben az oktatóanyagban a PredefinedStreamingPolicies, amely arra kéri a tartalom streameléshez közzététele az Azure Media Services egyik használjuk. Ebben a példában az AES-boríték a rendszer titkosítást alkalmaz (más néven ClearKey titkosítás, mert a rendszer továbbítja a kulcsot a lejátszás ügyfélnek HTTPS és a nem DRM-licenc használatával).
 
@@ -115,6 +110,14 @@ A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators
 > Egyéni [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) használata esetén érdemes korlátozott számú szabályzatot létrehoznia a Media Service-fiókhoz, és újra felhasználni őket a StreamingLocator használatakor, amikor ugyanolyan titkosítási beállításokra és protokollokra van szükség. A Media Service-fiókban korlátozva van a StreamingPolicy-bejegyzések száma. Nem érdemes új streamelési szabályzatot létrehozni minden egyes StreamingLocatorhöz.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
+
+## <a name="get-a-test-token"></a>Tesztjogkivonat lekérése
+        
+Ebben az oktatóanyagban adjuk meg a tartalom-szabályzat szeretné, hogy a jogkivonat korlátozás. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. A Media Services jogkivonatokat támogatja a [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) formátumú, és hogy rendszer milyen konfigurálnánk a mintában.
+
+A ContentKeyPolicy, ami azt jelenti, hogy a jogkivonat jelenik meg a kulcs-továbbítási szolgáltatást kell rendelkeznie a ContentKey azonosítóját, a ContentKeyIdentifierClaim használatban van. A mintában nem megadunk egy tartalomkulcsot, a StreamingLocator létrehozásakor, a rendszer létrehoz egy véletlenszerű számunkra. Annak érdekében, hogy a teszt létrehozása token, azt be kell szereznie a ContentKeyId a ContentKeyIdentifierClaim jogcím a helyezi.
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>A DASH-streamelési URL-cím létrehozása
 
@@ -130,4 +133,4 @@ Most, hogy a [StreamingLocator](https://docs.microsoft.com/rest/api/media/stream
 
 ## <a name="next-steps"></a>További lépések
 
-[Áttekintés](content-protection-overview.md)
+Tekintse meg, hogy miként [DRM védelme](protect-with-drm.md)

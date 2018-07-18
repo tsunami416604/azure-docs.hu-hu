@@ -10,6 +10,8 @@
   items:
     - name: Távoli monitorozási megoldás üzembe helyezése
       href: quickstart-remote-monitoring-deploy.md
+    - name: Csatlakoztatottgyár-megoldás üzembe helyezése
+      href: quickstart-connected-factory-deploy.md
     - name: Prediktív karbantartási megoldás üzembe helyezése
       href: quickstart-predictive-maintenance-deploy.md
     - name: Eszközszimulációs megoldás üzembe helyezése
@@ -141,8 +143,8 @@
           href: iot-accelerators-predictive-overview.md
     - name: Csatlakoztatott gyár
       items:
-        - name: Megoldásgyorsító üzembe helyezése
-          href: iot-accelerators-connected-factory-overview.md
+        - name: Az irányítópult használata
+          href: iot-accelerators-connected-factory-dashboard.md
         - name: Átjáró üzembe helyezése
           href: iot-accelerators-connected-factory-gateway-deployment.md
         - name: Az OPC-közzétevő használata

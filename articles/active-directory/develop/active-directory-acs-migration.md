@@ -1,6 +1,6 @@
 ---
-title: A hozzáférés-vezérlés Azure-szolgáltatás áttelepítésére |} Microsoft Docs
-description: Az alkalmazások és szolgáltatások áthelyezésére a hozzáférés-vezérlés Azure szolgáltatás beállításai
+title: Az Azure Access Control service át |} A Microsoft Docs
+description: Beállítások, alkalmazások és szolgáltatások áthelyezésére az Azure Access Control service-ből
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -16,81 +16,81 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 0b3e7d9b7a01767e44c7c59c7250808290a03c30
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 803dd69aed91f6e33c354d01d3f5419597d98de9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319224"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115884"
 ---
-# <a name="migrate-from-the-azure-access-control-service"></a>A hozzáférés-vezérlés Azure-szolgáltatás áttelepítése
+# <a name="migrate-from-the-azure-access-control-service"></a>A hozzáférés-vezérlés az Azure-szolgáltatás áttelepítése
 
-Az Azure hozzáférés-vezérlést, az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7. a rendszerből. Alkalmazások és szolgáltatások, amelyek jelenleg használják a hozzáférés-vezérlés kell teljesen áttelepíteni egy másik hitelesítési módszert, majd által. Ez a cikk ismerteti a javaslatok a jelenlegi felhasználó esetén, mivel azt tervezi, hogy Ön miként használja a hozzáférés-vezérlés érvényteleníthető. Ha hozzáférés-vezérlés jelenleg nem használ, nem kell tennie semmit.
+Az Azure hozzáférés-vezérlést, az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7 kivezetjük. Alkalmazások és szolgáltatások, amelyek jelenleg használják a hozzáférés-vezérlés kell teljes áttelepíteni meg egy másik hitelesítési mechanizmust. Ez a cikk ismerteti a javaslatok a jelenlegi ügyfelek tervezésekor kivezetjük a hozzáférés-vezérlés használatát. Ha hozzáférés-vezérlés jelenleg nem használja, akkor nem kell semmit sem.
 
 
 ## <a name="overview"></a>Áttekintés
 
-Hozzáférés-vezérlés egy hitelesítési felhőszolgáltatás, amely a webes alkalmazásokhoz és szolgáltatásokhoz való hozzáférés a felhasználók hitelesítéséhez és engedélyezéséhez egyszerű módszert kínál. Lehetővé teszi a hitelesítési és engedélyezési kívül a kódot kell figyelembe venni az egyes szolgáltatásai. Hozzáférés-vezérlés elsősorban a fejlesztők és a fejlesztők a Microsoft .NET-ügyfelek, az ASP.NET-webalkalmazások és a Windows Communication Foundation (WCF) webszolgáltatások.
+Hozzáférés-vezérlés egy hitelesítési felhőszolgáltatás, amely a webes alkalmazások és szolgáltatások elérését a felhasználók hitelesítése és engedélyezése egyszerű megoldást kínál a rendszer. Lehetővé teszi a hitelesítés és engedélyezés a kód kívül megosztani, számos funkcióját. Hozzáférés-vezérlés elsősorban a fejlesztői és tervezői számára a Microsoft .NET-ügyfelek, az ASP.NET-webalkalmazások és a Windows Communication Foundation (WCF) webszolgáltatások.
 
-Hozzáférés-vezérlés alkalmazási helyzetei három fő kategóriába sorolhatók:
+Hozzáférés-vezérlés alkalmazási helyzetei bonthatók három fő kategóriába sorolhatók:
 
-- Bizonyos Microsoft felhőszolgáltatásai, beleértve az Azure Service Bus és a Dynamics CRM-hez való hitelesítése. Ügyfélalkalmazások jogkivonatok szerzi be hozzáférés-vezérlést, hogy ezek a szolgáltatások különböző műveleteket végezhetnek hitelesítést.
-- Hozzáadását hitelesítés, egyéni mind előre csomagolt (például SharePoint), a webes alkalmazásokhoz. Hozzáférés-vezérlés "passzív" hitelesítést használ, webes alkalmazások támogathatják Bejelentkezés Microsoft-fiókjával (korábban Live ID), és a Google, a Facebook, a Yahoo, az Azure AD-fiókokkal és az Active Directory összevonási szolgáltatások (AD FS).
-- Egyéni webes szolgáltatások biztonságossá tétele a hozzáférés-vezérlés által kiállított jogkivonatokat. "Aktív" hitelesítéssel, a webszolgáltatások biztosítható, hogy azok engedélyezik a hozzáférést csak ismert ügyfeleik hitelesített hozzáférés-vezérléssel.
+- Bizonyos Microsoft felhőszolgáltatásai, beleértve az Azure Service Bus és a Dynamics CRM-hez való hitelesítése. Ügyfélalkalmazások számára a hitelesítést ezekhez a szolgáltatásokhoz, különféle műveleteket végezhet a hozzáférés-vezérlés jogkivonatok lekérésére.
+- Hozzáadásával hitelesítést a webes alkalmazásokhoz, egyéni és az előre összeállított (például SharePoint). "Passzív" hitelesítési hozzáférés-vezérlés használatával a webes alkalmazások támogathat, jelentkezzen be Microsoft-fiókhoz (korábban Live ID), és a Google, Facebook, a Yahoo!, az Azure AD-ben lévő fiókok és az Active Directory összevonási szolgáltatások (AD FS).
+- Egyéni webkiszolgáló-szolgáltatások biztosítása a hozzáférés-vezérlés által kiállított jogkivonatokban. Webszolgáltatások "aktív" hitelesítés használatával biztosítható, hogy azok engedélyezik a hozzáférést csak ismert, hitelesített ügyfelek a hozzáférés-vezérléssel.
 
-Az alábbi szakaszok ezen használja esetek és az ajánlott áttelepítési stratégiák ismertetése. 
+Minden egyes használatieset-forgatókönyveit és a javasolt migrálási stratégiák ismertetése a következő szakaszokban. 
 
 > [!WARNING]
-> A legtöbb esetben a jelentős kódmódosításokat szükségesek a meglévő alkalmazások és szolgáltatások áttelepítése újabb technológiák. Azt javasoljuk, hogy azonnal elkezdheti tervezni az és elkerülése érdekében minden lehetséges valamilyen okból kimaradás vagy leállás az áttelepítés végrehajtása.
+> A legtöbb esetben a jelentős kódmódosítás szükségesek a meglévő alkalmazások és szolgáltatások áttelepítése újabb technológiák. Azt javasoljuk, hogy azonnal kezdje el, és minden lehetséges valamilyen okból kimaradás lép, és az üzemkimaradások elkerülése érdekében a migrálás végrehajtása.
 
-Hozzáférés-vezérlés a következő részből áll:
+Hozzáférés-vezérlés a következő összetevőket tartalmazza:
 
-- A biztonságos biztonságijogkivonat-szolgáltatás (STS), amely fogadja a hitelesítési kérelmeket, és biztonsági jogkivonatokat bocsát ki ismét.
-- A klasszikus Azure portálra, ahol hoz létre, törlése, és engedélyezi, és tiltsa le a hozzáférés-vezérlés névterek.
-- Külön hozzáférés-vezérlés felügyeleti portált, amelyen testreszabása és hozzáférés-vezérlés névterek konfigurálása.
-- Felügyeleti szolgáltatás segítségével automatizálhatja a portálok funkcióit.
-- A token átalakítási szabály motort, amely segítségével kezelheti a hozzáférés-vezérlés kiállított jogkivonatokat a kimeneti formátum komplex logikai megadása.
+- A biztonságos jogkivonat-szolgáltatás (STS), amely megkapja a hitelesítési kéréseket, és biztonsági jogkivonatokat cserébe.
+- A klasszikus Azure portálra, ahol hoz létre, töröl, és engedélyezze, és tiltsa le a hozzáférés-vezérlés névterek.
+- Egy külön hozzáférés-vezérlési felügyeleti portálon, testre szabhatja, illetve konfigurálhatja a hozzáférés-vezérlés névterek.
+- Felügyeleti szolgáltatás segítségével automatizálható a portálok funkcióit.
+- Egy jogkivonatok átalakítását szabályalapú motor, amellyel a kimeneti formátum jogkivonatokat, amelyeket a hozzáférés-vezérlés kapcsolatos problémák kezelésére összetett logika definiálható.
 
-Ezeket az összetevőket használatához létre kell hoznia egy vagy több hozzáférés-vezérlés névtérbe. A *névtér* hozzáférés-vezérlés kommunikációt az alkalmazások és szolgáltatások egy dedikált példánya. Egy névtér el különítve a többi hozzáférés-vezérlés ügyfél. Hozzáférés-vezérlés letölthetővé saját névterek használja. A hozzáférés-vezérlés névtér rendelkezik egy dedikált URL-címet, amely a következőképpen néz ki:
+Ezeket az összetevőket használ, létre kell hoznia egy vagy több hozzáférés-vezérlés névtérbe. A *névtér* egy dedikált példánya, amely az alkalmazások és szolgáltatások kommunikálni hozzáférés-vezérlés. Egy névtér el különítve a többi hozzáférés-vezérlés ügyfél. Más hozzáférés-vezérlés saját névterüket használják. A hozzáférés-vezérlési névtér rendelkezik egy dedikált URL-címe a következőhöz hasonló:
 
 ```HTTP
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Az összes kommunikáció a STS és felügyeleti műveletek végzett az URL-címen. Elérési útja eltér más célra használhatja. Határozza meg, hogy az alkalmazások vagy szolgáltatások hozzáférés-vezérlés, megfigyeli https:// forgalom számára<namespace>. accesscontrol.windows.net. Ezen URL-adatforgalmat hozzáférés-vezérlés kezeli, és megszűnik a kell. 
+Az STS és felügyeleti műveletek folytatott minden kommunikáció zajlik az URL-címen. Különböző elérési különböző felhasználási célokra használhatja. Annak megállapításához, hogy az alkalmazások és szolgáltatások használja-e a hozzáférés-vezérlés, figyeli, hogy minden forgalom a https://&lt;névtér&gt;. accesscontrol.windows.net. Az URL-címet az összes bejövő forgalom hozzáférés-vezérlés kezeli, és meg kell szüntetni kell. 
 
-A kivételt a rendszer az összes bejövő forgalom `https://accounts.accesscontrol.windows.net`. Ezen URL-forgalmat már kezeli egy másik szolgáltatás és **nem** hatással a hozzáférés-vezérlés érvénytelenítése. 
+Ez a kivétel, az összes bejövő forgalom `https://accounts.accesscontrol.windows.net`. Az URL-címet a forgalmat egy másik szolgáltatás már kezeli és **nem** a hozzáférés-vezérlés elavulásának által érintett. 
 
 Hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Access Control Service 2.0 (archivált)](https://msdn.microsoft.com/library/hh147631.aspx).
 
-## <a name="retirement-schedule"></a>Használatból való kivonást ütemezése
+## <a name="retirement-schedule"></a>Kivezetési ütemezése
 
-Től November 2017 minden hozzáférés-vezérlés összetevői teljes mértékben támogatott és működik. Az egyetlen korlátozás, amely akkor [nem hozható létre új hozzáférés-vezérlés névterek, a klasszikus Azure portálon keresztül](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/).
+2017. November minden hozzáférés-vezérlés összetevői teljes körűen támogatott, és működik. Az egyetlen korlátozás, amely akkor [nem hozható létre új hozzáférés-vezérlés névterek, a klasszikus Azure portálon keresztül](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/).
 
-Ez a hozzáférés-vezérlés összetevői elavulttá ütemezése:
+A következő hozzáférés-vezérlés összetevői kivezetése ütemezése:
 
-- **2017. november**: az Azure AD rendszergazdai élmény a klasszikus Azure portálon [kivonják](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Ezen a ponton névtér felügyeleti hozzáférés-vezérlési érhető el egy új, dedikált URL-címen: `http://manage.windowsazure.com?restoreClassic=true`. Használja a meglévő névterek megtekintéséhez, engedélyezése, és tiltsa le a névterek, és törli a névterek, ha úgy dönt, hogy.
-- **2018. április 2**: az Azure klasszikus portál teljesen kivonják, ami azt jelenti, hozzáférés-vezérlés névtér felügyeleti bármely URL-CÍMEN keresztül már nem érhető el. Ezen a ponton nem letiltja vagy engedélyezi, törlése vagy a hozzáférés-vezérlés névterek számbavétele. Azonban a hozzáférés-vezérlés kezelési portál lesz teljesen működőképes és helye `https://\<namespace\>.accesscontrol.windows.net`. A hozzáférés-vezérlés összes többi összetevő továbbra is megfelelően működik.
-- **November 7 2018**: hozzáférés-vezérlés összetevői véglegesen állnak le. Ez magában foglalja a hozzáférés-vezérlés kezelési portálon, a felügyeleti szolgáltatás, STS és a token átalakítási jogcímszabály-motor. Ezen a ponton minden küldött kérelmeket a hozzáférés-vezérlés (helye: \<névtér\>. accesscontrol.windows.net) sikertelen. Kell áttelepített meglévő alkalmazások és szolgáltatások más technológiákat is a megadott idő előtti.
+- **2017 november**: az Azure AD-rendszergazda a klasszikus Azure portál felületét [kivonják a forgalomból](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Ezen a ponton a hozzáférés-vezérlési névtér-felügyelet érhető el egy új, dedikált URL-címen: `http://manage.windowsazure.com?restoreClassic=true`. Használja az URL-cím megtekintheti a meglévő névterekhez, engedélyezése és letiltása a névterek, és törli a névtereket, ha úgy dönt, hogy.
+- **2018. április 2.**: az Azure klasszikus portál teljesen kivonják, ami azt jelenti, hozzáférés-vezérlési névtér-felügyelet már nem érhető el minden olyan URL-CÍMEN keresztül. Ezen a ponton nem letiltása vagy engedélyezése, törlése, vagy a hozzáférés-vezérlés névterek számbavétele. Azonban a hozzáférés-vezérlési felügyeleti portálon lesz a teljes működési és a következő helyen található `https://\<namespace\>.accesscontrol.windows.net`. Továbbra is szokott hozzáférés-vezérlés összes összetevőjét.
+- **2018. november 7**: hozzáférés-vezérlés összetevői véglegesen állítsa le. Ez magában foglalja a hozzáférés-vezérlési felügyeleti portálon, a felügyeleti szolgáltatás, STS és a jogkivonatok átalakítását szabályalapú motor. Ezen a ponton minden olyan hozzáférés-vezérlés küldött kérelmek (található \<névtér\>. accesscontrol.windows.net) sikertelen. Kell áttelepítette az összes meglévő alkalmazások és szolgáltatások más technológiák is a megadott idő előtti.
 
 
 ## <a name="migration-strategies"></a>Migrálási stratégiák
 
-A következő szakaszok ismertetik a hozzáférés-vezérlés telepít át más Microsoft-technológiák magas szintű javaslatok.
+A következő szakaszok ismertetik a hozzáférés-vezérlés más Microsoft-technológiákhoz áttelepíthető magas szintű ajánlásokat.
 
-### <a name="clients-of-microsoft-cloud-services"></a>Az ügyfelek a Microsoft cloud services csomag
+### <a name="clients-of-microsoft-cloud-services"></a>Az ügyfelek a Microsoft cloud services
 
-Minden Microsoft felhőszolgáltatás, amely fogadja a hozzáférés-vezérlés által most kiadott jogkivonatokat, támogatja a hitelesítési legalább egy másik formája. A megfelelő hitelesítési módszert az egyes szolgáltatásokhoz függően változik. Azt javasoljuk, tekintse meg az egyes szolgáltatásokhoz hivatalos útmutatót adott dokumentációját. Kényelmi célokat szolgál minden készlete dokumentációját itt biztosítja:
+Minden Microsoft-felhőszolgáltatás, amely hozzáférés-vezérlés által most kiállított jogkivonatokat fogad legalább egy másik formája, hitelesítést támogatja. A megfelelő hitelesítési mechanizmus az egyes szolgáltatások változik. Azt javasoljuk, hogy az egyes szolgáltatásokhoz tartozó hivatalos útmutatást tartozó dokumentációra hivatkozik. Az egyszerűség kedvéért minden készlete dokumentáció biztosított itt:
 
 | Szolgáltatás | Útmutatás |
 | ------- | -------- |
-| Azure Service Bus | [Közös hozzáférésű jogosultságkód áttelepítése](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure Service Bus Relay | [Közös hozzáférésű jogosultságkód áttelepítése](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
+| Azure Service Bus | [Közös hozzáférésű jogosultságkódok áttelepítése](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
+| Azure Service Bus Relay | [Közös hozzáférésű jogosultságkódok áttelepítése](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
 | Azure Managed Cache | [Migrate to Azure Redis Cache (Áttelepítés Azure Redis Cache-re)](https://docs.microsoft.com/azure/redis-cache/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [A kognitív szolgáltatások API-k áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk Services | [Az Azure App Service Logic Apps szolgáltatás áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| Az Azure Media Services | [Telepítse át az Azure AD-alapú hitelesítés](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure Backup | [Az Azure Backup szolgáltatás ügynökének frissítése](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Azure DataMarket | [A Cognitive Services API-k áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| BizTalk Services | [Az Azure App Service Logic Apps funkcióját áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Az Azure Media Services | [Az Azure AD-hitelesítés áttelepítése](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
+| Azure Backup | [Az Azure Backup-ügynök frissítése](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: http://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -100,80 +100,80 @@ Minden Microsoft felhőszolgáltatás, amely fogadja a hozzáférés-vezérlés 
 <!-- Azure SiteRecovery: TODO -->
 
 
-### <a name="sharepoint-customers"></a>SharePoint-ügyfelek
+### <a name="sharepoint-customers"></a>SharePoint-ügyfelek számára
 
-A SharePoint 2013, 2016 és SharePoint Online ügyfelek hosszú használta ACS-felhő, helyszíni és hibrid forgatókönyvekben hitelesítési célokra. Egyes SharePoint-szolgáltatások és a használati esetek érinti ACS kivonása, míg mások számára nem lesz. Az alábbi táblázat foglalja össze az áttelepítési útmutató, a legnépszerűbb SharePoint némelyike szolgáltatással, hogy használja ki az ACS:
+A SharePoint 2013-hoz, 2016-ban, és a SharePoint Online ügyfelek hosszú használja az ACS a felhőbeli, helyszíni és hibrid forgatókönyvek hitelesítési célra. Egyes SharePoint-szolgáltatások és alkalmazási helyzetek hatálya alá ACS használatból való kivonást egyaránt, míg mások nem lesz. Az alábbi táblázat összefoglalja migrálási útmutató segítséget nyújt az egyes a legnépszerűbb SharePoint szolgáltatást, hogy használják az ACS:
 
 | Szolgáltatás | Útmutatás |
 | ------- | -------- |
-| Azure ad-felhasználók hitelesítéséhez | Korábban az Azure AD SAML 1.1 jogkivonatokat a hitelesítéshez szükséges SharePoint nem támogat, és ACS lett megadva, az Azure ad-val SharePoint compatibile token végrehajtott köztes formázza. Most, akkor [SharePoint közvetlen csatlakoztatása az Azure AD hitelesítési karakterlánc-kiállítási házirendek segítségével](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
-| [Alkalmazás hitelesítési & kiszolgáló kiszolgáló hitelesítés a helyszíni SharePoint](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Nem érinti az ACS használatból való kivonást; nem szükséges módosításokat. | 
-| [SharePoint-bővítmények (üzemeltetett szolgáltató és üzemeltetett SharePoint) alacsony megbízhatósági-engedélyezés](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Nem érinti az ACS használatból való kivonást; nem szükséges módosításokat. |
-| [A SharePoint felhő hibrid keresési](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Nem érinti az ACS használatból való kivonást; nem szükséges módosításokat. |
+| Az Azure AD-ből származó felhasználók hitelesítése | Korábban az Azure AD nem támogatja az SAML 1.1-es jogkivonatok SharePoint-hitelesítéshez szükséges, és az ACS lett megadva egy, hogy a SharePoint compatibile az Azure AD-jogkivonat közvetítői szerepet betöltő formázza. Mostantól [SharePoint közvetlenül csatlakozhat az Azure AD-bA a kiállítási szabályzatok](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
+| [Alkalmazás-hitelesítés és a kiszolgálók közötti hitelesítés a helyszíni SharePoint](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Nincs hatással az ACS kivezetési; nem szükséges módosításokat. | 
+| [A SharePoint-bővítmények (üzemeltetett szolgáltató és üzemeltetett SharePoint) alacsony megbízhatósági engedélyezése](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Nincs hatással az ACS kivezetési; nem szükséges módosításokat. |
+| [SharePoint cloud hybrid search](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Nincs hatással az ACS kivezetési; nem szükséges módosításokat. |
 
-### <a name="web-applications-that-use-passive-authentication"></a>Passzív hitelesítést használó webalkalmazások
+### <a name="web-applications-that-use-passive-authentication"></a>Passzív hitelesítést használó webalkalmazásokat
 
-A felhasználói hitelesítés hozzáférés-vezérlést használó webalkalmazásokat, hozzáférés-vezérlés a következő szolgáltatásokat és képességeket nyújt a webes alkalmazás fejlesztők és a fejlesztők:
+Webes alkalmazásokhoz, melyek hozzáférés-vezérlés használata felhasználói hitelesítéshez, hozzáférés-vezérlés a következő szolgáltatásokat és képességeket biztosít a webes alkalmazás fejlesztői és tervezői számára:
 
-- Szoros integrációja Windows Identity Foundation (WIF).
-- A Google, a Facebook, a Yahoo, a Azure Active Directory és az AD FS-fiókok és a Microsoft-fiókok összevonási.
-- A következő hitelesítési protokollok támogatása: OAuth 2.0 Vázlat 13, a WS-Trust és a Web Services összevonási (WS-Federation).
-- A következő token formátumok támogatása: JSON webes jogkivonat (JWT), a SAML 1.1, a SAML 2.0 és az egyszerű webes jogkivonat (SWT).
-- A hitelesítőtartomány feltárási folyamata, WIF, integrálva, amely lehetővé teszi a felhasználók számára azok való bejelentkezéshez használt fiók. Ez a felület üzemelteti a webes alkalmazás, és teljes mértékben testreszabható.
-- A token, amely lehetővé teszi a gazdag testreszabási a hozzáférés-vezérlés, a webes alkalmazás által fogadott jogcímek átalakítása többek között:
-    - Az identitás-szolgáltatóktól származó jogcímet továbbítani.
-    - További egyéni jogcímekként hozzáadása.
-    - Egyszerű a Ha-akkor logikai jogcímek bizonyos körülmények között kiadására.
+- Szoros integrációt a Windows Identity Foundation (WIF).
+- Összevonás a Google, Facebook, Yahoo, Azure Active Directory és az AD FS-fiókok és a Microsoft-fiókok.
+- Az alábbi hitelesítési protokollokat támogatja: az OAuth 2.0 Draft 13, a WS-Trust és a Web Services Federation (WS-Federation).
+- A következő token formátumok támogatását: JSON webes jogkivonat (JWT), a SAML 1.1-es, a SAML 2.0 és az egyszerű webes jogkivonat (SWT).
+- A hitelesítőtartomány felfedezési, WIF, integrálva, amely lehetővé teszi a felhasználók számára milyen típusú fiókkal való bejelentkezéshez használják. Ez a webalkalmazás által futtatott, és teljes mértékben testreszabható.
+- Jogkivonat-átalakítást, amely lehetővé teszi, hogy a jogcímek, a hozzáférés-vezérlés, a webes alkalmazás által fogadott gazdag testreszabási többek között:
+    - Identitás-szolgáltatóktól származó jogcímek továbbítása.
+    - További egyéni jogcímek hozzáadása.
+    - Bizonyos körülmények között jogcímeket kiadni, egyszerű if-majd logikai.
 
-Sajnos nem áll rendelkezésre egy szolgáltatás, amely minden a megfelelő képességet nyújt. Hozzáférés-vezérlés mely szolgáltatásait meg kell, és válassza a között kell kiértékelni [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/), [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) (az Azure AD B2C), vagy egy másik felhőalapú hitelesítés a szolgáltatás.
+Sajnos nem áll rendelkezésre egy mindezen egyenértékű képességeket nyújtó szolgáltatás. Ki kell értékelni melyik hozzáférés-vezérlés képességeinek meg kell, és válassza az között [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/), [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) (Azure AD B2C-vel), vagy egy másik felhőalapú hitelesítés a szolgáltatás.
 
 #### <a name="migrate-to-azure-active-directory"></a>Az Azure Active Directory áttelepítése
 
-Egy elérési utat kell figyelembe venni az alkalmazások és szolgáltatások van integrálható közvetlenül az Azure ad-val. Az Azure AD felhőalapú identitásszolgáltató a Microsoft munkahelyi vagy iskolai fiókok. Az Azure AD az identitásszolgáltató az Office 365, Azure és még sok más. Hasonló biztosít összevont hitelesítési képességeket a hozzáférés-vezérlést, de minden hozzáférés-vezérlés funkció nem támogatja. 
+Fontolja meg egy elérési útja van az alkalmazások és szolgáltatások közvetlenül az Azure AD integrálása. Az Azure AD a felhőalapú identitás-szolgáltató egy Microsoft munkahelyi vagy iskolai fiókokat. Azure ad-ben az identitásszolgáltató az Office 365, Azure és még sok más. Biztosít hasonló összevont hitelesítési képességek a hozzáférés-vezérlést, de minden hozzáférés-vezérlés funkció nem támogatja. 
 
-Az elsődleges példája közösségi Identitásszolgáltatók, például a Facebook, Google és Yahoo összevonásában. Ha a felhasználók jelentkezzen be az ilyen típusú hitelesítő adatokat, az Azure AD nincs a megoldás az Ön. 
+Az elsődleges például az összevonás a közösségi identitásszolgáltató – például a Facebook, a Google vagy a Yahoo!. Ha a felhasználók az ilyen típusú hitelesítő adatokkal jelentkezik be, Azure ad-ben, nem a megoldás az Ön számára. 
 
-Az Azure AD is feltétlenül nem támogatja a pontos azonos hitelesítési protokollok, hozzáférés-vezérlést. Például bár a hozzáférés-vezérlés és az Azure AD támogatja az OAuth, nincsenek finom eltérések vannak minden megvalósítása között. Különböző megvalósítások használatba áttelepítés részeként kód módosítása.
+Azure ad-ben is nem feltétlenül támogatja a pontos azonos hitelesítési protokollokat, hozzáférés-vezérlés. Például bár a hozzáférés-vezérlés és az Azure AD támogatja az OAuth, nincsenek finom eltérések minden implementáció között. Implementálható szükséges kód módosítása az áttelepítés részeként.
 
-Azonban az Azure AD lehetséges az alábbi előnyöket nyújtja hozzáférés-vezérlés ügyfelek. Az natív módon támogatja a Microsoft munkahelyi vagy iskolai fiókok felhőalapú, hozzáférés-vezérlés az ügyfelek által leggyakrabban használt. 
+Azonban az Azure AD több lehetséges az előnyöket biztosítják hozzáférés-vezérlés ügyfelek számára. Ezt natív módon támogatja a Microsoft munkahelyi vagy iskolai fiókok, felhőalapú hozzáférés-vezérlés ügyfelek által leggyakrabban használt. 
 
-Az Azure AD-bérlő is is összevonva a helyszíni Active Directory, AD FS szolgáltatás használatával egy vagy több példányára. Ezzel a módszerrel az alkalmazást felhőalapú felhasználókat hitelesítheti, és a felhasználók, akik a helyben tárolt. A WS-Federation protokoll, amely lehetővé teszi a viszonylag egyszerű webalkalmazás integrálása WIF használatával is támogatja.
+Az Azure AD-bérlő is is összevonva a helyszíni Active Directory, AD FS szolgáltatás használatával egy vagy több példányára. Ezzel a módszerrel az alkalmazás hitelesíteni tudja a felhőalapú felhasználók és a felhasználóknak, akik a helyszínen üzemeltetett. Ezenkívül támogatja a WS-Federation protokollt, ami lehetővé teszi egy webes alkalmazás integrálása a WIF viszonylag egyszerű.
 
-Az alábbi táblázat összehasonlítja a szolgáltatások hozzáférés-vezérlés, amely kapcsolódik a webes alkalmazásokat az Azure AD-ben elérhető szolgáltatások. 
+Az alábbi táblázat hasonlítja össze a szolgáltatások hozzáférés-vezérlést, amely a webes alkalmazások ezeket az Azure ad-ben elérhető funkciókat. 
 
-Magas szinten *Azure Active Directory oka valószínűleg az áttelepítéshez a legjobb választás, ha engedélyezi a felhasználóknak jelentkezzen az csak a Microsoft munkahelyi vagy iskolai fiókok*.
+Magas szinten *Azure Active Directory oka valószínűleg az áttelepítéshez a legjobb választás Ha engedélyezi a felhasználók bejelentkezését az csak a Microsoft a munkahelyi vagy iskolai fiókok*.
 
 | Képesség | Hozzáférés-vezérlés támogatása | Az Azure AD-támogatás |
 | ---------- | ----------- | ---------------- |
 | **Fiókok típusai** | | |
 | A Microsoft munkahelyi vagy iskolai fiókok | Támogatott | Támogatott |
-| Windows Server Active Directory és az Active Directory összevonási Szolgáltatásokkal fiókjai |-Támogatott összevonás az Azure AD-bérlő keresztül <br />-Támogatott közvetlen összevonás az AD FS segítségével | Összevonás az Azure AD-bérlő használatával csak támogatott | 
-| Egyéb vállalati identitás felügyeleti rendszerek fiókjai |– Összevonás az Azure AD-bérlő keresztül lehetséges <br />-Támogatott közvetlen összevonási keresztül | Összevonás az Azure AD-bérlő keresztül lehetséges |
-| Microsoft-fiókok személyes használatra | Támogatott | Az Azure AD v2.0 OAuth protokollt keresztül, de bármilyen más protokollokon keresztül nem támogatott | 
-| Facebook, Google, Yahoo-fiókok | Támogatott | Nem támogatott vállal |
+| Fiókok, a Windows Server Active Directory és az AD FS használatával |– Keresztül támogatott összevonás az Azure AD-bérlő <br />– Keresztül támogatott a közvetlen összevonás az AD FS-sel | Csak az Azure AD-bérlő összevonási keresztül támogatott | 
+| Egyéb vállalati identitáskezelő-rendszer fiókok |– Összevonás az Azure AD-bérlő keresztül lehetséges <br />– Keresztül támogatott a közvetlen összevonási | Összevonás az Azure AD-bérlő keresztül lehetséges |
+| Microsoft-fiókok személyes használatra | Támogatott | Az Azure AD v2.0 protokoll OAuth-n keresztül, de semmilyen más protokollt nem keresztül támogatott | 
+| A Facebook, Google, Yahoo-fiókok | Támogatott | Nem támogatott ajánlattevőről |
 | **Protokollok és SDK-kompatibilitási** | | |
-| WIF | Támogatott | Támogatott, de korlátozott útmutatás érhető el |
+| WIF | Támogatott | Támogatott, de korlátozott utasítások |
 | WS-Federation | Támogatott | Támogatott |
-| OAuth 2.0 | Vázlat 13 támogatása | RFC 6749, a legtöbb modern megadását támogatása |
+| OAuth 2.0 | Vázlat 13 támogatása | RFC 6749, a legtöbb modern specifikáció támogatása |
 | WS-Trust | Támogatott | Nem támogatott |
 | **Token formátumok** | | |
 | JWT | A béta támogatott | Támogatott |
 | SAML 1.1 | Támogatott | Előzetes verzió |
 | SAML 2.0 | Támogatott | Támogatott |
 | SWT | Támogatott | Nem támogatott |
-| **Testreszabások** | | |
-| Testre szabható hitelesítőtartomány felderítési/fiók-kiadási felhasználói felület | Alkalmazások integrálhatók letölthető kódot | Nem támogatott |
+| **A testreszabások** | | |
+| Testre szabható kezdőtartomány felderítése/fiók-kiadási felhasználói felület | Letölthető kódot, amely integrálható az alkalmazásokba | Nem támogatott |
 | Egyéni jogkivonat-aláíró tanúsítványok feltöltése | Támogatott | Támogatott |
-| Testre szabhatja a jogcímek jogkivonatokba |-Az identitás-szolgáltatóktól származó bemeneti jogcím továbbítása<br />-Juthatnak jogkivonat az identitásszolgáltatótól jogcímként<br />-Adja ki a kimenő jogcímeket a bemeneti jogcímek értékek alapján<br />-Kimenő jogcímeket kiadni az állandó értékek |-Az összevont identitás-szolgáltatóktól származó jogcím nem továbbítása<br />– Nem olvasható be hozzáférési jogkivonat az identitásszolgáltatótól jogcímként<br />-Nem ad a kimeneti jogcímeket a bemeneti jogcímek értékek alapján<br />-Adhatnak ki a kimeneti jogcímek állandó értékekkel<br />-Adhatnak ki a kimeneti jogcímek szinkronizálva az Azure AD-felhasználók tulajdonságai alapján |
+| A jogkivonatok jogcímek testreszabása |– Identitás-szolgáltatóktól származó bemeneti jogcímek továbbítása<br />-Hozzáférési jogkivonat beszerzése az identitásszolgáltató jogcímként<br />– A bemeneti jogcím értékei alapján kimenő jogcímeket kiadni<br />-Kimeneti jogcímeket kiadni az állandó értékek |-A nem összevont identitás-szolgáltatóktól származó jogcímek továbbítása<br />– Nem szükséges hozzáférési jogkivonat beszerzése az identitásszolgáltató jogcímként<br />– Nem adható ki a kimeneti jogcímek bemeneti jogcím értékei alapján<br />-Adhat ki a kimeneti jogcímek az állandó értékek<br />-Adhat ki a kimeneti jogcímek a felhasználók szinkronizálása az Azure AD-tulajdonságok alapján |
 | **Automatizálás** | | |
-| Konfigurációs és felügyeleti feladatok automatizálásához | Hozzáférés-vezérlési Management szolgáltatásban keresztül | A Microsoft Graph és az Azure AD Graph API használatával támogatott |
+| Konfigurációs és felügyeleti feladatok automatizálása | Access Control Management szolgáltatáson keresztül támogatott | A Microsoft Graph és az Azure AD Graph API-n keresztül támogatott |
 
-Ha úgy dönt, hogy az Azure AD-e a legjobb áttelepítési útvonal az alkalmazások és szolgáltatások, kell ügyelnie két módon integrálható az alkalmazás az Azure ad-val.
+Ha úgy dönt, hogy Azure ad-ben-e a legjobb áttelepítési útvonal az alkalmazások és szolgáltatások, az alkalmazás integrálása az Azure ad-ben kétféle módon tisztában kell lennie.
 
-A WS-Federation vagy a WIF az Azure AD integrálása, vegye figyelembe az alábbi megközelítés ismertetett [összevont egyszeri bejelentkezés nem galéria alkalmazások konfigurálása](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). A cikk az SAML-alapú egyszeri bejelentkezés az Azure AD konfigurálása hivatkozik, de is működik, WS-összevonás konfigurálása. Ezt a módszert használja a következő Azure AD Premium-licencre van szükség. Ez a módszer két előnyökkel jár:
+WS-Federation vagy WIF segítségével integrálhatja az Azure ad-vel, javasoljuk, hogy a megközelítés ismertetett alábbi [konfigurálni összevont egyszeri bejelentkezés nem katalógusból származó alkalmazásra](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). A cikk az SAML-alapú egyszeri bejelentkezés az Azure AD konfigurálása hivatkozik, de is használható a WS-összevonás konfigurálása. Ennek a módszernek egy prémium szintű Azure AD-licenc szükséges. Ez a módszer két előnnyel jár:
 
-- Az Azure AD-token testreszabás teljesen rugalmasan kap. A megfelelő hozzáférés-vezérlés által kiállított jogcímek az Azure AD által kiállított jogcímek testreszabása Ez különösen magában foglalja a felhasználói azonosító vagy név azonosító jogcímet. Továbbra is megjelenik a felhasználók számára egységes felhasználói azonosítók technológiák módosítása után, győződjön meg arról, hogy a felhasználói azonosítók ki az Azure AD-egyeztetés hozzáférés-vezérlés azokat.
-- A jogkivonat-aláíró tanúsítványt adott, az alkalmazáshoz, és vezérelt élettartamán konfigurálhatja.
+- Az Azure AD-token testreszabás teljesen rugalmasan kap. Testre szabhatja a jogcímek, az Azure AD megfelelő hozzáférés-vezérlés által kibocsátott jogcímek által kiállított. Ez különösen akkor tartalmazza a felhasználói azonosító vagy Névazonosító jogcímet. Továbbra is megjelenik a felhasználók egységes felhasználói azonosítók technológiák módosítása után, győződjön meg arról, hogy a felhasználói azonosítók által kiállított Azure AD-egyezés azokat, amelyeket a hozzáférés-vezérlés által.
+- Konfigurálhatja egy adott, az alkalmazáshoz, és Ön által megadott élettartamú jogkivonat-aláíró tanúsítványt.
 
 <!--
 
@@ -186,78 +186,78 @@ Possible nameIdentifiers from Access Control (via AAD or AD FS):
 -->
 
 > [!NOTE]
-> Ezt a módszert használja az Azure AD Premium-licencre van szükség. Ha az ügyfél egy hozzáférés-vezérlés és a premium licenc szükséges egyszeri bejelentkezést az alkalmazás beállítása, lépjen kapcsolatba velünk. A Microsoft örömmel adja meg a fejlesztői licenc használatára lesz.
+> Ez a megközelítés egy prémium szintű Azure AD-licencre van szükség. Ha az ügyfél egy hozzáférés-vezérlés és egyszeri bejelentkezést az alkalmazáshoz beállításának prémium licencre van szüksége, lépjen kapcsolatba velünk. Készséggel adja meg a fejlesztői licenc kell használni.
 
-Egy másik módszert is, hogy kövesse [kódmintában](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), ami a WS-Federation beállításának némileg eltérő utasításait. A fenti nem használja a WIF, de ehelyett az ASP.NET 4.5 OWIN köztes. Azonban az utasításokat az alkalmazás regisztrálása érvényes WIF használó alkalmazásokhoz, és nem igényel az Azure AD Premium licenchez. 
+Egy másik módszert, hogy [Ez a kódminta](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), WS-Federation beállításának némileg eltérő utasításait révén. Ez a kódminta nem használja a WIF, de ehelyett az ASP.NET 4.5-ös OWIN közbenső szoftvert. Azonban az utasításokat az alkalmazás regisztrációját a WIF használó alkalmazások esetében érvényesek, és nem egy prémium szintű Azure AD-licenc szükséges. 
 
-Ha úgy dönt, ezt a módszert használja, meg kell ismernie [kulcsváltás bejelentkezés az Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Ezt a módszert használja az Azure AD globális probléma jogkivonatok aláírókulcsot használja. Alapértelmezés szerint WIF nem frissíti automatikusan aláírási kulcsokat. Az Azure AD a globális aláírási kulcsokat forog, amikor a WIF-implementációjának szüksége van, a módosítások elfogadására irányuló elő kell készíteni.
+Ha ezt a módszert választja, tisztában kell [az Azure Active Directory aláírókulcs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Ez a megközelítés az Azure AD globális probléma jogkivonatok aláírókulcsot használja. Alapértelmezés szerint WIF nem frissül automatikusan aláírási kulcsokat. Az Azure AD globális aláíró kulcsai forog, amikor a WIF-implementációjának szüksége van, elő kell készíteni a módosítások elfogadásához.
 
-Ha integrálható az Azure AD keresztül az OpenID Connect vagy OAuth protokollt, javasoljuk, így. Tudunk kiterjedt dokumentáció és útmutatás az Azure AD integrálása a webes alkalmazás érhető el a [az Azure Active Directory fejlesztői útmutatója](https://aka.ms/aaddev).
+Ha integrálható az Azure AD-n keresztül az OpenID Connect vagy OAuth protokollt, javasoljuk, így. Széles körű dokumentációval és útmutatást az Azure AD integrálása a webes alkalmazások, elérhető a [az Azure AD fejlesztői útmutató](https://aka.ms/aaddev).
 
 <!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
-#### <a name="migrate-to-azure-active-directory-b2c"></a>Az Azure Active Directory B2C áttelepítése
+#### <a name="migrate-to-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel áttelepítése
 
-A más áttelepítési fontolja meg az elérési út az Azure AD B2C. Az Azure AD B2C egy felhőalapú hitelesítési szolgáltatást, például a hozzáférés-vezérlés lehetővé teszi a fejlesztők a hitelesítés és identitás felügyeleti logika egy felhőalapú szolgáltatás kihelyező. Egy fizetős szolgáltatás (rétegekkel szabad és a prémium szintű), amely a felhasználók felé néző alkalmazások, amelyen esetleg aktív felhasználók akár több millió szolgál.
+A más áttelepítési út kell figyelembe venni, ami az Azure AD B2C-t. Az Azure AD B2C egy felhőalapú hitelesítési szolgáltatás, amely, például hozzáférés-vezérlés lehetővé teszi a fejlesztők számára a hitelesítés és identitás felügyeleti logikai felhőszolgáltatás kiszervezik. (Az ingyenes és prémium szinten) egy fizetős szolgáltatás, amely előfordulhat, hogy akár több millió aktív felhasználóval érintkező alkalmazások számára tervezett.
 
-Hozzáférés-vezérlés, például az Azure AD B2C legtöbb vonzó szolgáltatások egyike, hogy az támogatja-e fiókok számos különböző típusú. Az Azure AD B2C-ben is használatával írja alá a felhasználók saját Microsoft-fiókjával, vagy a Facebook, Google, LinkedIn, GitHub vagy Yahoo fiókokat, és több. Az Azure AD B2C is támogatja a "helyi fiókoknak", vagy a felhasználónév és a felhasználói számára jelszavak kifejezetten az alkalmazáshoz. Az Azure AD B2C is, amelyek segítségével testre szabhatja a bejelentkezési adatfolyamok gazdag bővítési lehetőséget biztosít. 
+Hozzáférés-vezérlés, hasonlóan az a legvonzóbb Azure AD B2C-funkciók egyikét is, hogy számos különböző típusú fiókokat támogatja. Az Azure AD B2C is használatával írja alá a felhasználók saját Microsoft-fiókjával, vagy a Facebook, Google, LinkedIn, GitHub vagy a Yahoo!-fiókokat, és több. Az Azure AD B2C is támogatja a "helyi fiókoknak," vagy a felhasználónév és a, hogy a felhasználók csak ehhez az alkalmazáshoz. Az Azure AD B2C-t is biztosít, amelyek segítségével testre szabhatja a bejelentkezést folyamatok gazdag bővíthetőség. 
 
-Azonban az Azure AD B2C nem támogatja a hitelesítési protokollok megvalósítását végzi a hardverekről és az token formátumú lehet szükség a hozzáférés-vezérlést. Is használhatja az Azure AD B2C lekérése jogkivonatokat és a lekérdezés a felhasználó további információt az identitásszolgáltató, a Microsoft vagy más módon.
+Azonban az Azure AD B2C-vel nem támogatja a hitelesítési protokollok technológiai spektrumunk kihasználtságának növelését, és jogkivonat formázza az ügyfelek szükség lehet a hozzáférés-vezérlést. Még nem használhat az Azure AD B2C-vel jogkivonatok és lekérdezési kaphat a felhasználó további információt az identitásszolgáltató, a Microsoft vagy más módon.
 
-Az alábbi táblázat összehasonlítja a szolgáltatások hozzáférés-vezérlés, amely kapcsolódik a webes alkalmazások számára elérhető az Azure AD B2C. Magas szinten *az Azure AD B2C oka valószínűleg az áttelepítéshez a megfelelő választás irányuló fogyasztó alkalmazás esetén, vagy ha az támogatja-e fiókok számos különböző típusú.*
+Az alábbi táblázat a hozzáférés-vezérlés, amely a webes alkalmazásokhoz az Azure AD B2C-ben elérhető funkcióit hasonlítja össze. Magas szinten *Azure AD B2C-vel oka valószínűleg az áttelepítéshez a megfelelő választás, ha az alkalmazás felhasználói, vagy ha a számos különböző típusú fiókokat támogatja.*
 
-| Képesség | Hozzáférés-vezérlés támogatása | Azure AD B2C-támogatás |
+| Képesség | Hozzáférés-vezérlés támogatása | Az Azure AD B2C-támogatás |
 | ---------- | ----------- | ---------------- |
 | **Fiókok típusai** | | |
-| A Microsoft munkahelyi vagy iskolai fiókok | Támogatott | Egyéni házirendek keresztül  |
-| Windows Server Active Directory és az Active Directory összevonási Szolgáltatásokkal fiókjai | Az AD FS közvetlen összevonási keresztül | SAML összevonási keresztül támogatja egyéni házirendekkel |
-| Egyéb vállalati identitás felügyeleti rendszerek fiókjai | A WS-Federation közvetlen összevonási keresztül | SAML összevonási keresztül támogatja egyéni házirendekkel |
+| A Microsoft munkahelyi vagy iskolai fiókok | Támogatott | Egyéni szabályzatok keresztül támogatott  |
+| Fiókok, a Windows Server Active Directory és az AD FS használatával | Közvetlen összevonás az AD FS-n keresztül támogatott | Egyéni szabályzatok használatával SAML összevonási keresztül támogatott |
+| Egyéb vállalati identitáskezelő-rendszer fiókok | WS-Federation keresztül közvetlen összevonási keresztül támogatott | Egyéni szabályzatok használatával SAML összevonási keresztül támogatott |
 | Microsoft-fiókok személyes használatra | Támogatott | Támogatott | 
-| Facebook, Google, Yahoo-fiókok | Támogatott | Facebook-on és a Google támogatott natív módon, Yahoo OpenID Connect összevonási keresztül támogatja egyéni házirendekkel |
+| A Facebook, Google, Yahoo-fiókok | Támogatott | Facebook és a Google támogatott natív módon, Yahoo egyéni szabályzatok használatával összevonási OpenID Connect-n keresztül támogatott |
 | **Protokollok és SDK-kompatibilitási** | | |
-| A Windows Identity Foundation (WIF) | Támogatott | Nem támogatott |
+| Windows Identity Foundation (WIF) | Támogatott | Nem támogatott |
 | WS-Federation | Támogatott | Nem támogatott |
-| OAuth 2.0 | Vázlat 13 támogatása | RFC 6749, a legtöbb modern megadását támogatása |
+| OAuth 2.0 | Vázlat 13 támogatása | RFC 6749, a legtöbb modern specifikáció támogatása |
 | WS-Trust | Támogatott | Nem támogatott |
 | **Token formátumok** | | |
 | JWT | A béta támogatott | Támogatott |
 | SAML 1.1 | Támogatott | Nem támogatott |
 | SAML 2.0 | Támogatott | Nem támogatott |
 | SWT | Támogatott | Nem támogatott |
-| **Testreszabások** | | |
-| Testre szabható hitelesítőtartomány felderítési/fiók-kiadási felhasználói felület | Alkalmazások integrálhatók letölthető kódot | Teljes mértékben testreszabható felhasználói felületén keresztül egyéni CSS |
-| Egyéni jogkivonat-aláíró tanúsítványok feltöltése | Támogatott | Egyéni aláírási kulcsokat, nem a tanúsítványok keresztül egyéni házirendek |
-| Testre szabhatja a jogcímek jogkivonatokba |-Az identitás-szolgáltatóktól származó bemeneti jogcím továbbítása<br />-Juthatnak jogkivonat az identitásszolgáltatótól jogcímként<br />-Adja ki a kimenő jogcímeket a bemeneti jogcímek értékek alapján<br />-Kimenő jogcímeket kiadni az állandó értékek |-Az identitás-szolgáltatóktól; jogcím is továbbítása az egyes jogcímek szükséges egyéni házirendek<br />– Nem olvasható be hozzáférési jogkivonat az identitásszolgáltatótól jogcímként<br />-Állíthatnak ki kimeneti jogcímeket a bemeneti jogcímek keresztül egyéni házirendek értékek alapján<br />-Kimeneti jogcímek adhat ki az egyéni házirendek keresztül állandó értékek |
+| **A testreszabások** | | |
+| Testre szabható kezdőtartomány felderítése/fiók-kiadási felhasználói felület | Letölthető kódot, amely integrálható az alkalmazásokba | Egyéni CSS-n keresztül teljes mértékben testre szabható felhasználói felület |
+| Egyéni jogkivonat-aláíró tanúsítványok feltöltése | Támogatott | Egyéni aláírási kulcsokat, nem a tanúsítványok, egyéni szabályzatok keresztül támogatott |
+| A jogkivonatok jogcímek testreszabása |– Identitás-szolgáltatóktól származó bemeneti jogcímek továbbítása<br />-Hozzáférési jogkivonat beszerzése az identitásszolgáltató jogcímként<br />– A bemeneti jogcím értékei alapján kimenő jogcímeket kiadni<br />-Kimeneti jogcímeket kiadni az állandó értékek |-Tevékenységeken keresztül; identitás-szolgáltatóktól származó jogcímek egyéni szabályzatok egyes jogcímek megadása kötelező<br />– Nem szükséges hozzáférési jogkivonat beszerzése az identitásszolgáltató jogcímként<br />-Adhat ki a kimeneti jogcímek egyéni szabályzatok segítségével a bemeneti jogcím értékei alapján<br />-Adhat ki a kimeneti jogcímek az állandó értékek egyéni szabályzatok használatával |
 | **Automatizálás** | | |
-| Konfigurációs és felügyeleti feladatok automatizálásához | Hozzáférés-vezérlési Management szolgáltatásban keresztül |-Létrehozó felhasználó Azure AD Graph API-n keresztül<br />– Nem hozható létre B2C bérlő, alkalmazások és házirendek programozott módon |
+| Konfigurációs és felügyeleti feladatok automatizálása | Access Control Management szolgáltatáson keresztül támogatott |-Felhasználók Azure AD Graph API-n keresztül engedélyezett létrehozása<br />– Nem hozható létre B2C bérlő, alkalmazásokat és szabályzatokat programozott módon |
 
-Ha úgy dönt, hogy az Azure AD B2C-e a legjobb áttelepítési útvonal az alkalmazások és szolgáltatások, a következő erőforrások kezdődik:
+Ha úgy dönt, hogy az Azure AD B2C-vel-e a legjobb áttelepítési útvonal az alkalmazások és szolgáltatások, a következő erőforrások kezdődik:
 
 - [Az Azure AD B2C dokumentációja](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
-- [Az Azure AD B2C egyéni házirendek](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
-- [Az Azure AD B2C díjszabási](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+- [Az Azure AD B2C-vel egyéni szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Az Azure AD B2C díjszabása](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 
-#### <a name="migrate-to-ping-identity-or-auth0"></a>Ping identitás vagy Auth0 áttelepítése
+#### <a name="migrate-to-ping-identity-or-auth0"></a>A Ping Identity vagy Auth0 áttelepítése
 
-Bizonyos esetekben előfordulhat, hogy az Azure AD és az Azure AD B2C nem elegendő a hozzáférés-vezérlés cserélnie a webalkalmazások fő kód módosítása nélkül. Néhány gyakori példán állhatnak:
+Bizonyos esetekben előfordulhat, hogy az Azure AD és az Azure AD B2C-vel nem elegendő a hozzáférés-vezérlés cserélnie a webes alkalmazások főbb kódmódosítások nélkül. Néhány gyakori példa a következők lehetnek:
 
-- Jelentkezzen be például a Google vagy Facebook közösségi Identitásszolgáltatók a WIF vagy a WS-Federation használó webalkalmazásokat.
-- Webes alkalmazásokhoz, amelyek a vállalati identitásszolgáltató közvetlen összevonáshoz végre a WS-Federation protokollon keresztül.
-- A webes alkalmazásokat, amelyek a hozzáférés-vezérlés által kiállított jogkivonatokat a jogcím egy közösségi identitásszolgáltató (például a Google vagy Facebook-on) által kiállított jogkivonat van szükség.
-- Összetett token átalakítási szabályok, amelyek az Azure AD vagy az Azure AD B2C nem képesek alkalmazások.
-- Több-bérlős webes alkalmazásokhoz, amelyek ACS segítségével központilag kezelheti a sok különböző identitás-szolgáltatóktól összevonáshoz
+- A bejelentkezés közösségi Identitásszolgáltatók, például a Google vagy a Facebook-WIF vagy WS-Federation hitelesítést használó webalkalmazásokat.
+- Webes alkalmazások, amelyek a WS-Federation protokollt egy vállalati identitásszolgáltatóval való közvetlen összevonási végre.
+- Webes alkalmazások, mint a hozzáférés-vezérlés által kiállított jogkivonatokat a jogcím a egy közösségi identitásszolgáltatót (például a Google vagy a Facebook) által kiállított hozzáférési jogkivonat igénylő.
+- Webes alkalmazások, amelyek az Azure AD vagy az Azure AD B2C-vel nem képesek összetett token átalakítási szabályok.
+- Az ACS használatával központilag kezelhető az összevonási számos különböző identitás-szolgáltatóktól, több-bérlős webalkalmazások
 
-Ebben az esetben érdemes esetleg térjen át a webes alkalmazás egy másik hitelesítési felhőszolgáltatáshoz. Azt javasoljuk, hogy a következők feltárása. Hozzáférés-vezérlés hasonló képességeket kínál az alábbi beállításokat:
+Ezekben az esetekben érdemes megfontolni a felhő egy másik hitelesítési szolgáltatást a webes alkalmazásba való migrálás. Azt javasoljuk, hogy a következő opciók megismerését. Hozzáférés-vezérlés hasonló képességeket kínálnak az alábbi beállításokat:
 
 
 
 |     |     | 
 | --- | --- |
-| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú identitás-szolgáltatás által létrehozott [magas szintű áttelepítési útmutatója a hozzáférés-vezérlés ügyfeleknek](https://auth0.com/acs), és támogatja szinte minden, amelyet az ACS szolgáltatást. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping identitás](https://www.pingidentity.com) ACS hasonló két megoldásokat kínál. PingOne, amely támogatja a számos olyan funkciót ACS identitás felhőszolgáltatás, PingFederate pedig egy hasonló helyszíni identitás-terméket, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) kapcsolatban további részleteket a ezeket a termékeket. |
+| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy olyan rugalmas felhőalapú identitásszolgáltatás, által létrehozott [magas szintű áttelepítési útmutató az ügyfelek a hozzáférés-vezérlés](https://auth0.com/acs), és szinte az összes funkció, amely az ACS támogatja. |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [A ping Identity](https://www.pingidentity.com) hasonló az ACS-két megoldást kínál. PingOne olyan felhőalapú identitásszolgáltatás, amely támogatja a ugyanazokat a szolgáltatásokat, mint az ACS számos, a PingFederate pedig egy hasonló helyszíni identitás-termék, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást egyaránt útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) termékek használatával kapcsolatos további részletekért. |
 
-A végzett munka során Ping identitás- és Auth0 célja, hogy biztosítsa, hogy minden hozzáférés-vezérlés az ügyfelek áttelepítési elérési azok az alkalmazások és szolgáltatások számára való hozzáférés-vezérlés áthelyezése minimálisra csökkentse.
+A Ping Identity és az Auth0 használata a célja, hogy győződjön meg arról, hogy minden hozzáférés-vezérlés ügyfél rendelkezik egy áttelepítési útvonal az alkalmazások és szolgáltatások számára, hogy a hozzáférés-vezérlés áthelyezéséhez szükséges munka mennyiségét.
 
 <!--
 
@@ -268,59 +268,59 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 -->
 
-### <a name="web-services-that-use-active-authentication"></a>Webszolgáltatások aktív hitelesítést használó
+### <a name="web-services-that-use-active-authentication"></a>Aktív hitelesítést használó webszolgáltatások
 
-A hozzáférés-vezérlés által kiállított jogkivonatokat védett web Services a hozzáférés-vezérlés a következő szolgáltatásokat és képességeket nyújt:
+A webes szolgáltatásokat, amelyeket az hozzáférés-vezérlés által kiállított jogkivonatokban a hozzáférés-vezérlés a következő szolgáltatásokat és képességeket kínál:
 
-- Egy vagy több regisztrálása *identitások szolgáltatás* a hozzáférés-vezérlés névtérben. Szolgáltatás-identitások használható lekérni a jogkivonatokat.
-- Az OAuth BURKOLÁSA és az OAuth 2.0 Vázlat 13 jogkivonatokat, a következő típusú hitelesítő adatok használatával a kért protokollok támogatása:
-    - Egy egyszerű jelszót, amely a szolgáltatás identitásának jön létre
-    - A a szimmetrikus kulcs vagy X509 SWT aláírt tanúsítvány
-    - Egy megbízható identitásszolgáltató (jellemzően AD FS-példányt) által kiadott SAML-jogkivonatból
-- A következő token formátumok támogatása: jwt-t, a SAML 1.1, a SAML 2.0 és a SWT.
+- Egy vagy több regisztrálása *szolgáltatásidentitásokat* a hozzáférés-vezérlés névtérben. Szolgáltatás-identitások jogkivonatokat kérhet használható.
+- Támogatja az OAuth BURKOLÁSA és az OAuth 2.0-s Draft 13 protokollok a jogkivonatokat, kérése a következő típusú hitelesítő adatok használatával:
+    - Olyan egyszerű jelszavakat, amely jön létre a felügyeltszolgáltatás-identitás
+    - Egy aláírt SWT szimmetrikus kulcs vagy X509 tanúsítvány
+    - Egy megbízható identitásszolgáltatóra (általában az AD FS-példány) által kiállított SAML-jogkivonat
+- A következő token formátumok támogatását: JWT, a SAML 1.1-es, a SAML 2.0 és a SWT.
 - Egyszerű token átalakítási szabályok.
 
-A hozzáférés-vezérlés szolgáltatás-identitások általában használt kiszolgáló kiszolgáló hitelesítés megvalósításához. 
+Szolgáltatásidentitások a hozzáférés-vezérlés megvalósításához a kiszolgálók közötti hitelesítéshez jellemzően használják. 
 
 #### <a name="migrate-to-azure-active-directory"></a>Az Azure Active Directory áttelepítése
 
-Azt javasoljuk, az ilyen típusú hitelesítési folyamat, hogy át [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Az Azure AD felhőalapú identitásszolgáltató a Microsoft munkahelyi vagy iskolai fiókok. Az Azure AD az identitásszolgáltató az Office 365, Azure és még sok más. 
+Azt javasoljuk, az ilyen típusú hitelesítési folyamatát, hogy át [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Az Azure AD a felhőalapú identitás-szolgáltató egy Microsoft munkahelyi vagy iskolai fiókokat. Azure ad-ben az identitásszolgáltató az Office 365, Azure és még sok más. 
 
-Is használhatja az Azure AD kiszolgálók hitelesítéshez az OAuth ügyfél hitelesítő adatok megadása az Azure AD végrehajtásának használatával. Az alábbi táblázat összehasonlítja a kiszolgálók hitelesítés számára elérhető Azure AD-ben a hozzáférés-vezérlés képességei.
+Az OAuth ügyfélhitelesítő adatok megvalósítása az Azure AD használatával a kiszolgálók közötti hitelesítéshez is használható az Azure AD. Az alábbi táblázat összehasonlítja a hozzáférés-vezérlés a kiszolgálók közötti hitelesítés az Azure AD-ben elérhető képességeit.
 
 | Képesség | Hozzáférés-vezérlés támogatása | Az Azure AD-támogatás |
 | ---------- | ----------- | ---------------- |
-| Hogyan kell regisztrálni egy webszolgáltatás-bővítmény | A hozzáférés-vezérlés kezelési portálon hozzon létre egy függő entitás | Az Azure AD-webalkalmazás létrehozása az Azure-portálon |
-| Hogyan kell regisztrálni az ügyfél | Szolgáltatásidentitás létrehozása kezelési portál hozzáférés-vezérlés | Egy másik Azure AD-webalkalmazás létrehozása az Azure portálon |
-| Használt protokoll |-OAuth ÚJRAINDULÁS protokoll<br />-OAuth 2.0 Vázlat 13 ügyfél hitelesítő adatai megadják | OAuth 2.0-ügyfél hitelesítő adatainak megadása |
-| Ügyfél-hitelesítési módszer |-Egyszerű jelszó<br />-Aláírt SWT<br />-Egy összevont identitáskezelési szolgáltató SAML jogkivonat |-Egyszerű jelszó<br />-A JWT aláírt |
-| Token formátumok |-JWT<br />-SAML 1.1<br />-SAML 2.0<br />-SWT<br /> | Csak a JWT |
-| Token átalakítása |-Jogcímeket adhatnak hozzá egyéni<br />-Ha-akkor egyszerű jogcímek kiállítási logika | Egyéni jogcímeket adhatnak hozzá | 
-| Konfigurációs és felügyeleti feladatok automatizálásához | Hozzáférés-vezérlési Management szolgáltatásban keresztül | A Microsoft Graph és az Azure AD Graph API használatával támogatott |
+| Webszolgáltatás regisztrálása | A hozzáférés-vezérlési felügyeleti portálon hozzon létre egy függő entitás | Egy Azure AD-webalkalmazás létrehozása az Azure Portalon |
+| Egy ügyfél regisztrálása | Szolgáltatásidentitás létrehozása a hozzáférés-vezérlési felügyeleti portálon | Egy másik Azure AD-webalkalmazás létrehozása az Azure Portalon |
+| Használt protokoll |-OAuth ÚJRAINDULÁS protokoll<br />– OAuth 2.0-s Draft 13 ügyfél hitelesítő adatainak megadása | OAuth 2.0-ügyfél hitelesítő adatainak megadása |
+| Ügyfél-hitelesítési módszer |– Egyszerű jelszó<br />-Aláírt SWT<br />-Egy összevont identitásszolgáltatótól az SAML jogkivonat |– Egyszerű jelszó<br />-A JWT aláírt |
+| Token formátumok |-JWT<br />-SAML 1.1-ES<br />-SAML 2.0-S<br />-SWT<br /> | Csak a JWT |
+| Jogkivonatok átalakítását |– Az egyéni jogcímek hozzáadása<br />– Egyszerű if-majd jogcím-kiállítási logika | Adja hozzá az egyéni jogcímek | 
+| Konfigurációs és felügyeleti feladatok automatizálása | Access Control Management szolgáltatáson keresztül támogatott | A Microsoft Graph és az Azure AD Graph API-n keresztül támogatott |
 
-Végrehajtási kiszolgálók forgatókönyvekkel kapcsolatos útmutatásért lásd a következőket:
+Végrehajtási kiszolgálók-forgatókönyvekkel kapcsolatos útmutatásért lásd a következőket:
 
-- Szolgáltatások közötti szakasza a [az Azure Active Directory fejlesztői útmutatója](https://aka.ms/aaddev)
-- [Egyszerű jelszó ügyfél hitelesítő adatok használatával démon kódminta](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
-- [Kódminta démon tanúsítvány ügyfél hitelesítő adatok használatával](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
+- Szolgáltatások közötti szakaszában a [az Azure AD fejlesztői útmutató](https://aka.ms/aaddev)
+- [Egyszerű jelszó ügyfél-hitelesítő adatok használatával démon kódminta](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
+- [Kódminta démon tanúsítvány ügyfél-hitelesítő adatok használatával](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 
-#### <a name="migrate-to-ping-identity-or-auth0"></a>Ping identitás vagy Auth0 áttelepítése
+#### <a name="migrate-to-ping-identity-or-auth0"></a>A Ping Identity vagy Auth0 áttelepítése
 
-Bizonyos esetekben előfordulhat, hogy az Azure AD-ügyfél hitelesítő adatait, és az OAuth adjon megvalósítási nem elegendő az architektúrák fő kód módosítása nélkül hozzáférés-vezérlés lecseréli. Néhány gyakori példán állhatnak:
+Bizonyos esetekben előfordulhat, hogy az Azure AD-ügyfél hitelesítő adatait, és az OAuth biztosítson megvalósítása nem elegendő, cserélje le a hozzáférés-vezérlés az architektúra jelentős programkód módosítása nélkül. Néhány gyakori példa a következők lehetnek:
 
-- Kiszolgáló-kiszolgáló hitelesítési tokent formázza JWTs eltérő.
-- Kiszolgáló-kiszolgáló hitelesítési egy külső identitásszolgáltatótól megadott bemeneti token használatával.
-- Kiszolgáló-kiszolgáló hitelesítési jogkivonat átalakítási szabályok, amelyek az Azure AD nem képesek a.
+- Kiszolgálók közötti hitelesítés eltérő JWTs token formátumok használata.
+- Kiszolgálók közötti hitelesítéshez egy külső identitásszolgáltatónak által biztosított bemeneti token használatával.
+- Kiszolgálók közötti hitelesítési jogkivonatok átalakítását szabályok, amelyek nem képesek a Azure ad-ben.
 
-Ebben az esetben érdemes a webalkalmazást egy másik felhőalapú hitelesítési szolgáltatás áttelepítése. Azt javasoljuk, hogy a következők feltárása. Hozzáférés-vezérlés hasonló képességeket kínál az alábbi beállításokat:
+Ezekben az esetekben érdemes lehet egy másik felhőalapú hitelesítési szolgáltatást a webes alkalmazásba való migrálás. Azt javasoljuk, hogy a következő opciók megismerését. Hozzáférés-vezérlés hasonló képességeket kínálnak az alábbi beállításokat:
 
 |     |     | 
 | --- | --- |
-| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú identitás-szolgáltatás által létrehozott [magas szintű áttelepítési útmutatója a hozzáférés-vezérlés ügyfeleknek](https://auth0.com/acs), és támogatja szinte minden, amelyet az ACS szolgáltatást. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping identitás](https://www.pingidentity.com) ACS hasonló két megoldásokat kínál. PingOne, amely támogatja a számos olyan funkciót ACS identitás felhőszolgáltatás, PingFederate pedig egy hasonló helyszíni identitás-terméket, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) kapcsolatban további részleteket a ezeket a termékeket. |
+| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy olyan rugalmas felhőalapú identitásszolgáltatás, által létrehozott [magas szintű áttelepítési útmutató az ügyfelek a hozzáférés-vezérlés](https://auth0.com/acs), és szinte az összes funkció, amely az ACS támogatja. |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [A ping Identity](https://www.pingidentity.com) hasonló az ACS-két megoldást kínál. PingOne olyan felhőalapú identitásszolgáltatás, amely támogatja a ugyanazokat a szolgáltatásokat, mint az ACS számos, a PingFederate pedig egy hasonló helyszíni identitás-termék, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást egyaránt útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) termékek használatával kapcsolatos további részletekért. |
 
-A végzett munka során Ping identitás- és Auth0 célja, hogy biztosítsa, hogy minden hozzáférés-vezérlés az ügyfelek áttelepítési elérési azok az alkalmazások és szolgáltatások számára való hozzáférés-vezérlés áthelyezése minimálisra csökkentse.
+A Ping Identity és az Auth0 használata a célja, hogy győződjön meg arról, hogy minden hozzáférés-vezérlés ügyfél rendelkezik egy áttelepítési útvonal az alkalmazások és szolgáltatások számára, hogy a hozzáférés-vezérlés áthelyezéséhez szükséges munka mennyiségét.
 
-## <a name="questions-concerns-and-feedback"></a>Kérdéseit, problémákat és visszajelzés
+## <a name="questions-concerns-and-feedback"></a>Kérdések, a problémák és visszajelzés
 
-Tudjuk, hogy számos hozzáférés-vezérlés ügyfél a cikk elolvasása után nem található egy tiszta áttelepítési elérési út. Néhány segítséget és útmutatást meghatározni, hogy a megfelelő csomag szükséges. Ha azt szeretné, hogy milyen a áttelepítési forgatókönyvek és kérdések, hozzászólásban ezen a lapon.
+Tisztában vagyunk vele, hogy számos hozzáférés-vezérlés ügyfél nem találja meg egy tiszta áttelepítési út a cikk elolvasása után. Néhány segítséget és útmutatást a megfelelő terv meghatározásához szükséges. Ha szeretné megvitatni a áttelepítési forgatókönyvek és a kérdésekre, hozzászólásban ezen az oldalon.

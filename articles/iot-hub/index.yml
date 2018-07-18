@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/26/2018
   ms.author: dobett
-  ms.openlocfilehash: 35f60b4fef75c3eebb9ac203aaded26d32773c53
-  ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+  ms.openlocfilehash: 9a173ee72f909c8f516f321592efde639e3a3a08
+  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/05/2018
-  ms.locfileid: "37858347"
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39068246"
 abstract:
   description: Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszközök internetes hálózatához (IoT) csatlakozó eszközök millióit az IoT Hub használatával. Oktatóanyagok, API-referenciák, videók és egyéb dokumentációk segítik az IoT-eszközök és a megoldások háttérrendszere közötti megbízható, kétirányú kommunikáció kialakítását.
 sections:
@@ -69,4 +69,4 @@ sections:
     - title: Nyelvek
       html: <p><a href="/dotnet/api/microsoft.azure.devices">.NET (Szolgáltatás)</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (Eszközök)</a></p><p><a href="https://azure.github.io/azure-iot-sdk-c/index.html">C (eszközoldali SDK)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (Szolgáltatás)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (Eszközök)</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js (Szolgáltatás)</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js (Eszközök)</a></p>
     - title: REST
-      html: <p><a href="/rest/api/iothub/iothubresource">REST (Erőforrás-szolgáltató)</a></p><p><a href="/rest/api/iothub/deviceapi">REST (Eszközidentitások)</a></p><p><a href="/rest/api/iothub/devicetwinapi">REST (Ikereszközök)</a></p><p><a href="/rest/api/iothub/httpruntime">REST (Eszközök üzenetküldése)</a></p><p><a href="/rest/api/iothub/jobapi">REST (Feladatok)</a></p>
+      html: <p><a href="/rest/api/iothub/device">REST (eszköz)</a></p><p><a href="/rest/api/iothub/service">REST (szolgáltatás)</a></p><p><a href="/rest/api/iothub/iothubresource">REST (IoT Hub-erőforrás)</a></p><p><a href="/rest/api/iothub/certificates">REST (tanúsítványok)</a></p>

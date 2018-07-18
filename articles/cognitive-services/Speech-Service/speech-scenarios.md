@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 6ea55f5d329a037ef35984cb9276b27a532824ec
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1488f95296bcc11a55a45aff56cee83b7708a789
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347404"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072214"
 ---
 # <a name="speech-scenarios"></a>Beszédforgatókönyvek
 
@@ -32,11 +32,11 @@ Hány felhasználó alkalmazásaikat a beszédbemenetet engedélyezni szeretne. 
 
 ### <a name="voice-triggered-apps-with-baseline-models"></a>Hangalapú kiindulási modelleket alkalmazhatnak aktivált alkalmazások
 
-Ha az alkalmazás által használt nyilvános környezetekben nem túl nagy, a háttérzaj, egyszerűen tölt le a legkönnyebb és leggyorsabb Ennek módja a [beszéd SDK](speech-sdk.md) és követni a megfelelő [ A minták](quickstart-csharp-windows.md). Az SDK segítségével a [Azure-előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/) lehetővé teszi a fejlesztők számára, hogy az alapterv beszédfelismerési modelleket, melyek a Cortana és Skype hang feltöltése. A mdoels a legkorszerűbb, és a fent említett termékeket használják. Néhány perc alatt működőképes környezettel rendelkezik.
+Ha az alkalmazás által használt nyilvános környezetekben nem túl nagy, a háttérzaj, egyszerűen tölt le a legkönnyebb és leggyorsabb Ennek módja a [beszéd SDK](speech-sdk.md) és követni a megfelelő [ A minták](quickstart-csharp-dotnet-windows.md). Az SDK segítségével a [Azure-előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/) lehetővé teszi a fejlesztők számára, hogy az alapterv beszédfelismerési modelleket, melyek a Cortana és Skype hang feltöltése. A mdoels a legkorszerűbb, és a fent említett termékeket használják. Néhány perc alatt működőképes környezettel rendelkezik.
 
 ### <a name="voice-triggered-apps-with-custom-models"></a>Egyéni modellek hangalapú aktivált alkalmazások
 
-Ha az alkalmazás-címek egy adott tartományban, (például kémia, biológiai vagy speciális előrejelzéséhez igénylő), akkor érdemes lehet érdemes figyelembe venni, hogy alkalmazkodjanak a [nyelvi modell](how-to-customize-language-model.md). Nyelvi modell gyakorlatainak hogyan a leggyakrabban használt kifejezések és az alkalmazás által használt szavakat kapcsolatban a dekóder. A dekódoló tudják a hang, adjon meg a referenciakonfiguráció modell helyett az egyes tartományokhoz tartozó egyéni nyelvi modell pontosabb lefényképezze. Hasonlóképpen neves hol fog használni az alkalmazást a háttérzaj esetén érdemes az akusztikai modell igazíthatja. Fedezze fel az olyan esetekben, amely alatt a dokumentáció [nyelvi betanítás](how-to-customize-language-model.md) és [akusztikai betanítás](how-to-customize-acoustic-models.md) adjon meg értéket, és látogasson el a [betanítás portál](https://customspeech.ai) indító figyelmezteti a a modell-létrehozási folyamatának. Hasonló a kiindulási modelleket, egyéni modellek keresztül nevezzük az [beszéd SDK](speech-sdk.md) és követni a megfelelő [minták](quickstart-csharp-windows.md).
+Ha az alkalmazás-címek egy adott tartományban, (például kémia, biológiai vagy speciális előrejelzéséhez igénylő), akkor érdemes lehet érdemes figyelembe venni, hogy alkalmazkodjanak a [nyelvi modell](how-to-customize-language-model.md). Nyelvi modell gyakorlatainak hogyan a leggyakrabban használt kifejezések és az alkalmazás által használt szavakat kapcsolatban a dekóder. A dekódoló tudják a hang, adjon meg a referenciakonfiguráció modell helyett az egyes tartományokhoz tartozó egyéni nyelvi modell pontosabb lefényképezze. Hasonlóképpen neves hol fog használni az alkalmazást a háttérzaj esetén érdemes az akusztikai modell igazíthatja. Fedezze fel az olyan esetekben, amely alatt a dokumentáció [nyelvi betanítás](how-to-customize-language-model.md) és [akusztikai betanítás](how-to-customize-acoustic-models.md) adjon meg értéket, és látogasson el a [betanítás portál](https://customspeech.ai) indító figyelmezteti a a modell-létrehozási folyamatának. Hasonló a kiindulási modelleket, egyéni modellek keresztül nevezzük az [beszéd SDK](speech-sdk.md) és követni a megfelelő [minták](quickstart-csharp-dotnet-windows.md).
 
 ## <a name="transcribe-call-center-audio-calls"></a>Hívás center hang hívások alapuló átírás
 
@@ -62,5 +62,5 @@ Emellett a felhasználók számára, hogy több személy és egyediség hozzáad
 
 ## <a name="next-steps"></a>További lépések
 
-* [A beszédfelismerés próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 * [Első lépések a beszédfelismerő SDK](speech-sdk.md)

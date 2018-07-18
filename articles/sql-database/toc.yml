@@ -402,6 +402,8 @@
           href: sql-database-cloud-migrate.md
         - name: Migrálás felügyelt példányra
           href: sql-database-managed-instance-migrate.md
+        - name: TDE-tanúsítvány migrálása felügyelt példányra
+          href: sql-database-managed-instance-migrate-tde-certificate.md
         - name: SQL Database kezelése a migrálás után
           href: sql-database-manage-after-migration.md
     - name: Adatok betöltése és áthelyezése

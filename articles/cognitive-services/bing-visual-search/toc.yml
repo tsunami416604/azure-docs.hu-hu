@@ -28,7 +28,7 @@
       href: visual-search-sdk-python.md
 - name: Oktatóanyagok
   items:
-    - name: Vizuális keresési kép feltöltése
+    - name: Képfeltöltési webalkalmazás
       href: tutorial-visual-search-image-upload.md
     - name: Egyoldalas webalkalmazás
       href: tutorial-bing-visual-search-single-page-app.md
