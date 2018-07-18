@@ -61,8 +61,6 @@
           maintainContext: true
         - name: A Kafka használata az Azure Container Service-szel
           href: apache-kafka-azure-container-services.md
-        - name: Kafka és Azure Functions
-          href: apache-kafka-azure-functions.md
     - name: Fejlesztés
       items:
         - name: Üres élcsomópontok használata
