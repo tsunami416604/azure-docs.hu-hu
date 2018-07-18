@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/26/2018
   ms.author: ryanwi
-  ms.openlocfilehash: e5fc62d84ace2acd46816a7116ea1cf2198be63f
-  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+  ms.openlocfilehash: fccd805f6d4abcf7005fca0cc6f4d368ac5764f1
+  ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 07/17/2018
-  ms.locfileid: "39073687"
+  ms.locfileid: "39090043"
 abstract:
   description: Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára az üzletmenet szempontjából kritikus fontosságú alkalmazások készítését és üzembe helyezését infrastruktúra kezelése nélkül.  A Service Fabric Mesh használatával biztonságos, elosztott, igény szerint skálázható mikroszolgáltatás-alkalmazásokat készíthet és futtathat. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan használhatja a Service Fabric Mesh szolgáltatást.  További információkért olvassa el a <a href="/azure/service-fabric-mesh/service-fabric-mesh-overview">Service Fabric Mesh áttekintésével</a> kapcsolatos cikket.
 sections:
@@ -45,15 +45,3 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">.NET Core-alkalmazás üzembe helyezése</a>
-- title: Példák
-  items:
-  - type: paragraph
-    text: 'Windows és Linux rendszerhez készült .NET Core-mintaalkalmazások keresése:'
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/helloworld">Hello World!</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/azurefiles-volume">Azure Files-kötet</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/todolistapp">Feladatlista</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/visualobjects">Vizualizációs objektumok</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp">Szavazás</a>
