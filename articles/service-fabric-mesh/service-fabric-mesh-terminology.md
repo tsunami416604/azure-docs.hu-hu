@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: db7a89ffa4ff1a2eb271869c93b7beb088fd13b3
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 672e27bf53679c52dab8d42a52378aa90eba33cb
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076157"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114310"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric-háló terminológiája
 
@@ -57,14 +57,14 @@ Service Fabric, amely egy nyílt forráskódú platform technológia, amely szá
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>Környezet, keretrendszer és üzembe helyezési modell támogatási mátrix
 Különböző környezetek eltérő szintű támogatást keretrendszerek és üzembe helyezési modellel rendelkezik. A következő táblázat ismerteti a támogatott keretrendszer és az üzembe helyezési modellt kombinációját.
 
-|Frameworks\Deployment modell |Erőforrásmodell |Modell manifest | Összeállítás|
+|Frameworks\Deployment modell |Erőforrásmodell |Natív modell | Összeállítás|
 |---|---|---|---|
 |A Reliable Actors és a Reliable Services |Nem támogatott |Támogatott |Nem támogatott |
 |Bármely más keretrendszer és nyelv |Támogatja a tárolók |Támogatott a folyamatok és tárolók |Támogatja a tárolók |
 
 A következő táblázat ismerteti a támogatott környezet és az üzembe helyezési modellt kombinációját.
 
-|Environment\Deployment modell |Erőforrásmodell |Modell manifest |Összeállítás |
+|Environment\Deployment modell |Erőforrásmodell |Natív modell |Összeállítás |
 |---|---|---|---|
 |Az Azure Service Fabric háló |Támogatott |Nem támogatott|Nem támogatott |
 |Minden más környezetre |Támogatott (néhány erőforrás rendelkezik egy környezetben működni előfeltételei) |Támogatott |Korlátozott támogatás |

@@ -1,6 +1,6 @@
 ---
 title: Beépített szerepkörök az Azure-ban |} A Microsoft Docs
-description: A szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-ban a beépített szerepkörök ismerteti. A műveletek, notActions, dataActions vagy notDataActions sorolja fel.
+description: A szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-ban a beépített szerepkörök ismerteti. A műveletek, NotActions, DataActions vagy NotDataActions sorolja fel.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,20 +15,20 @@ ms.date: 06/28/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c5624de13d5d31320beb85aff67c61addaffcbea
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 8152a9934d6a280abfc75fdc74e0864053d82f45
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437926"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116078"
 ---
 # <a name="built-in-roles-in-azure"></a>Beépített szerepkörök az Azure-ban
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [egyéni szerepkörök](custom-roles.md).
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
 
 A beépített szerepkörök mindig folyamatosan fejlődik. A legújabb szerepkör-definíciókat használja [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) vagy [az role definition listájában](/cli/azure/role/definition#az-role-definition-list).
 
 ## <a name="built-in-role-descriptions"></a>Beépített szerepkör leírása
-A következő táblázat a beépített szerepkörök rövid leírása. A szerepkör nevét a listájának megtekintéséhez kattintson `actions`, `notActions`, `dataActions`, és `notDataActions` az egyes szerepkörökhöz.
+A következő táblázat a beépített szerepkörök rövid leírása. A szerepkör nevét a listájának megtekintéséhez kattintson `Actions`, `NotActions`, `DataActions`, és `NotDataActions` az egyes szerepkörökhöz.
 
 
 | Beépített szerepkör | Leírás |

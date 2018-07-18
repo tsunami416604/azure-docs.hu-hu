@@ -1,7 +1,7 @@
 ---
 title: Az Azure Service Fabric háló privát tárolójegyzékből származó alkalmazás üzembe helyezése |} A Microsoft Docs
 description: Megtudhatja, hogyan helyezhet üzembe egy alkalmazást, amely egy privát tárolójegyzékben használja a Service Fabric háló az Azure CLI használatával.
-services: service-fabric
+services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
 manager: jeconnoc
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/16/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0a70cd1bd8cd7df099250ca59b3f00b1cab29e5c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: af92d3c6ea881d00ec687a5560bf4db35aa431c5
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076142"
+ms.locfileid: "39089486"
 ---
 # <a name="deploy-a-service-fabric-mesh-app-from-a-private-container-image-registry"></a>Alkalmazás üzembe helyezése Service Fabric-háló egy privát rendszerkép tárolóregisztrációs adatbázisból
 
@@ -39,7 +39,7 @@ Telepítheti a Dockert a tárolóalapú Service Fabric-alkalmazások Service Fab
 
 Töltse le és telepítse a legújabb [a Docker Community Edition for Windows][download-docker]. 
 
-A telepítés során válasszon **helyett Linux-tárolók használata Windows-tárolók** Ha a rendszer kéri. Szüksége lesz, majd jelentkezzen ki, és jelentkezzen be újra. A bejelentkezés után vissza, ha korábban nem engedélyezte a Hyper-V, kérheti a Hyper-V engedélyezése. Engedélyezze a Hyper-V kell, és indítsa újra a számítógépet.
+A telepítés során válasszon **helyett Linux-tárolók használata Windows-tárolók** Ha a rendszer kéri. Szüksége lesz, majd jelentkezzen ki, és jelentkezzen be újra. A bejelentkezés után vissza, ha korábban nem engedélyezte a Hyper-V, kérheti a Hyper-V engedélyezése. Engedélyezze a Hyper-V, és indítsa újra a számítógépet.
 
 A számítógép újraindítása után a Docker felkéri, hogy engedélyezze a **tárolók** funkciót, az engedélyezéshez, és indítsa újra a számítógépet.
 
@@ -116,8 +116,7 @@ Result
 --------
 1.1-alpine
 ```
-
-Ez azt mutatja, hogy `azure-mesh-helloworld:1.1-alpine` kép szerepel a privát tárolóregisztrációs adatbázisba.
+A fenti kimeneti megerősíti, hogy a jelenléte `azure-mesh-helloworld:1.1-alpine` a privát beállításjegyzékben.
 
 ## <a name="retrieve-credentials-for-the-registry"></a>A beállításjegyzék hitelesítő adatainak lekérése
 
@@ -137,6 +136,7 @@ az acr credential show --name <acrName> --query "passwords[0].value"
 
 Az előző parancs által megadott értékeket hivatkozott `<acrLoginServer>`, `<acrUserName>`, és `<acrPassword>` az alábbi parancsban.
 
+
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 Az alkalmazás és a kapcsolódó erőforrások az alábbi paranccsal hozzon létre, és adja meg az előző lépésben a hitelesítő adatokat.
@@ -144,7 +144,7 @@ Az alkalmazás és a kapcsolódó erőforrások az alábbi paranccsal hozzon lé
 A `registry-password` paraméter a sablon egy `securestring`. Nem jelennek az üzembe helyezési állapot és `az mesh service show` parancsokat. Győződjön meg arról, hogy ezt helyesen van megadva a következő parancsban.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.private_registry.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}, \"registry-server\": {\"value\": \"<acrLoginServer>\"}, \"registry-username\": {\"value\": \"<acrUserName>\"}, \"registry-password\": {\"value\": \"<acrPassword>\"}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.private_registry.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}, \"registry-server\": {\"value\": \"<acrLoginServer>\"}, \"registry-username\": {\"value\": \"<acrUserName>\"}, \"registry-password\": {\"value\": \"<acrPassword>\"}}" 
 ```
 
 Néhány perc alatt a parancs a kell visszaadnia:
@@ -152,9 +152,9 @@ Néhány perc alatt a parancs a kell visszaadnia:
 `helloWorldPrivateRegistryApp has been deployed successfully on helloWorldPrivateRegistryNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>Nyissa meg az alkalmazás
-Miután sikeresen üzembe helyezte az alkalmazást, a nyilvános IP-cím beszerzése a szolgáltatási végpont, és a egy böngészőben nyissa meg. Ekkor megjelenik egy weblap, Service Fabric-háló emblémával.
+Miután sikeresen üzembe helyezte az alkalmazást, a nyilvános IP-cím beszerzése a szolgáltatási végpont, és a egy böngészőben nyissa meg. Service Fabric-háló emblémával weblap jeleníti meg.
 
-A telepítési parancs visszaadja a szolgáltatásvégpont nyilvános IP-címét. A hálózati erőforrás keresése a szolgáltatásvégpont nyilvános IP-címét is lekérdezheti.
+A telepítési parancs visszaadja a szolgáltatásvégpont nyilvános IP-címét. Igény szerint is lekérdezheti a hálózati erőforrás keresése a szolgáltatásvégpont nyilvános IP-címét. 
  
 Ez az alkalmazás a hálózati erőforrás neve nem `helloWorldPrivateRegistryNetwork`, beolvassa a következő paranccsal kapcsolatos információkat. 
 

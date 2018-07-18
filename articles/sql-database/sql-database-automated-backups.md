@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 05/25/2018
+ms.date: 07/16/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 558480d0e58a92277a0c56d0f197ee3b5c1c3f60
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: fcc860daddbaa0b3275116027136bcde9dbcf256
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "35645548"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092027"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>További információ az automatikus SQL-adatbázisok biztonsági mentése
 
@@ -42,7 +42,7 @@ Ezek a biztonsági mentések használhatók:
 > 
 
 ## <a name="how-long-are-backups-kept"></a>Mennyi ideig biztonsági mentések őrzi meg?
-Minden egyes SQL-adatbázis biztonsági mentése tartalmaz egy alapértelmezett megőrzési időtartamot, amely az adatbázis szolgáltatási szintjét alapul, és nem egyezik meg a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a [Virtuálismag-alapú vásárlási modellt (előzetes verzió)](sql-database-service-tiers-vcore.md). Az adatbázis biztonsági másolatának megőrzési ideje frissítheti. Lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-backup-retention-period) további részletekért.
+Minden egyes SQL-adatbázis biztonsági mentése tartalmaz egy alapértelmezett megőrzési időtartamot, amely az adatbázis szolgáltatási szintjét alapul, és nem egyezik meg a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Az adatbázis biztonsági másolatának megőrzési ideje frissítheti. Lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-backup-retention-period) további részletekért.
 
 Ha töröl egy adatbázist, az SQL Database biztosítják a biztonsági másolatok olvasásainál, online adatbázis megegyező módon. Például ha törli egy hét napos megőrzési idővel rendelkező alapszintű adatbázis, egy biztonsági másolatot, amely négy napnál régebbi mentése további három nappal.
 
@@ -61,11 +61,6 @@ A DTU-alapú vásárlási modell használatával létrehozott adatbázis alapér
 Ha csökkenti az aktuális PITR a megőrzési időszak, az összes meglévő biztonsági másolatok, az új megőrzési időszaknál korábbi már nem lesz elérhető. 
 
 Ha növeli a jelenlegi PITR a megőrzési időszak, az SQL Database megtartja a meglévő biztonsági másolatok mindaddig, amíg a hosszabb megőrzési időtartamot.
-
-### <a name="pitr-retention-for-the-vcore-based-service-tiers-preview"></a>A Virtuálismag-alapú szolgáltatásszintek (előzetes verzió) PITR a megőrzési ideje
-
-Az előzetes időszakban a Virtuálismag-alapú vásárlási modell használatával létrehozott adatbázisokra PITR a megőrzési időtartama 7 nap van beállítva. A társított tárolót ingyenes része.    
-
 
 ## <a name="how-often-do-backups-happen"></a>Milyen gyakran történjen a biztonsági mentéseket?
 ### <a name="backups-for-point-in-time-restore"></a>Biztonsági másolatok pont kötött visszaállításhoz

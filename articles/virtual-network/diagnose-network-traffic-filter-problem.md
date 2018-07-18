@@ -1,6 +1,6 @@
 ---
-title: A virtuális gép hálózati forgalom szűrő probléma diagnosztizálása |} Microsoft Docs
-description: Útmutató a hatékony biztonsági szabályok virtuális gép megtekintésével egy virtuális gép hálózati forgalom szűrő probléma diagnosztizálása érdekében.
+title: A virtuális gép hálózati forgalomszűrési problémáinak diagnosztizálása |} A Microsoft Docs
+description: Ismerje meg, hogyan egy virtuális gép hálózati forgalomszűrési problémáinak diagnosztizálása a virtuális gép érvényes biztonsági szabályok megtekintésével.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,68 +16,68 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
 ms.openlocfilehash: 1c33a75363eec2b4e338ba64e3d1ad877d8b1610
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
+ms.lasthandoff: 07/17/2018
 ms.locfileid: "34757227"
 ---
-# <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>A virtuális gép hálózati forgalom szűrő probléma diagnosztizálása
+# <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>A virtuális gép hálózati forgalomszűrési problémáinak diagnosztizálása
 
-Ebből a cikkből megismerheti, hogyan diagnosztizálhatja a hálózati forgalom szűrő hiba a hálózati biztonsági csoport (NSG) biztonsági szabályokat, amelyek a virtuális gép (VM) hatékony megtekintésével.
+Ebben a cikkben megismerheti, hogyan diagnosztizálhatja a hálózat forgalomszűrési a hálózati biztonsági csoport (NSG) biztonsági szabályok, amelyek a virtuális gép (VM) hatékony megtekintésével.
 
-Az NSG-k lehetővé teszik a típusú forgalom mindkét virtuális gép adott folyamatot. Egy Azure virtuális hálózatban, a hálózati adaptert egy virtuális Gépet, vagy mindkét alhálózat NSG lehet társítani. Egy adott hálózati csatoló a hatékony biztonsági szabályokat egy adott hálózati csatoló társítva összevonható a szabályokat, amelyek az NSG szerepel a, és az alhálózatot a hálózati illesztőt. Különböző NSG-ket szabályokat néha ütköznek egymással, és hatással lehet a virtuális gép hálózati kapcsolatot. A virtuális gép hálózati interfészeken alkalmazott NSG-ket a hatékony biztonsági szabályok tekintheti meg. Ha még nem ismeri a virtuális hálózat, a hálózati adapter vagy a NSG fogalmakat, lásd: [virtuális hálózat áttekintése](virtual-networks-overview.md), [hálózati illesztő](virtual-network-network-interface.md), és [hálózati biztonsági csoportok áttekintése](security-overview.md).
+Az NSG-k lehetővé teszik a típusú forgalom a virtuális gép adataikkal folyamatot. Egy Azure virtuális hálózaton, egy virtuális Gépet, vagy mindkét csatolt hálózati adapter egy alhálózati NSG-KET társíthat. A hálózati adapter érvényes biztonsági szabályokat egy hálózati adapterhez rendelt összesítést a szabályok, amelyek szerepelnek az NSG-t, és a hálózati adapter alhálózat. Különböző NSG-ket a szabályok néha ütköznek egymással, és hatással van a virtuális gép hálózati kapcsolat. Az NSG-ket a virtuális gép hálózati adapteren alkalmazott összes érvényben lévő biztonsági szabályok tekintheti meg. Ha még nem ismeri a virtuális hálózathoz, a hálózati adapter vagy a NSG fogalmakat, tanulmányozza [virtuális hálózatok áttekintése](virtual-networks-overview.md), [hálózati adapter](virtual-network-network-interface.md), és [hálózati biztonsági csoportok áttekintése](security-overview.md).
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Próbál csatlakozni a virtuális gépek 80-as porton keresztül az internetről, de a kapcsolódás sikertelen. Annak megállapításához, hogy miért nem férhet hozzá 80-as porton az internetről, megtekintheti a hatékony biztonsági szabályok egy adott hálózati csatoló az Azure használatával [portal](#diagnose-using-azure-portal), [PowerShell](#diagnose-using-powershell), vagy a [Azure CLI](#diagnose-using-azure-cli).
+Próbál kapcsolódni egy virtuális gép 80-as porton keresztül az internetről, de a kapcsolat hibája esetén. Annak megállapításához, hogy miért nem férhet hozzá 80-as porton az internetről, megtekintheti az Azure hálózati adapter érvényes biztonsági szabályok [portál](#diagnose-using-azure-portal), [PowerShell](#diagnose-using-powershell), vagy a [AzureCLI-vel](#diagnose-using-azure-cli).
 
-A következő lépések során feltételezzük, hogy egy meglévő virtuális gép megtekintéséhez a hatékony biztonsági szabályokat. Ha egy meglévő virtuális gép nem rendelkezik, először telepítsen egy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM ebben a cikkben szereplő feladatok elvégzéséhez. Ebben a cikkben szereplő példák vannak a virtuális gépek nevű *myVM* az egy adott hálózati csatoló nevű *myVMVMNic*. A virtuális gép és a hálózati adapter szerepelnek nevű erőforráscsoport *myResourceGroup*, és a *USA keleti régiója* régió. A lépéseket, hogy megfelelő értékének módosításához a virtuális gép vannak a probléma diagnosztizálásához.
+A következő lépések azt feltételezik, hogy rendelkezik egy meglévő virtuális Gépet, tekintse meg az érvényben lévő biztonsági szabályokat a. Ha egy meglévő virtuális gép nem rendelkezik, először telepítse a [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális Gépet ebben a cikkben a feladatok végrehajtásához. Ebben a cikkben szereplő példák vannak nevű virtuális gép *myVM* nevű hálózati adapter *myVMVMNic*. A virtuális gép és a hálózati adapter nevű erőforráscsoportban vannak *myResourceGroup*, és a *USA keleti RÉGIÓJA* régióban. Módosítsa az értékeket a megfelelő a lépéseket, a virtuális gép a probléma diagnosztizálása vannak.
 
-## <a name="diagnose-using-azure-portal"></a>Diagnosztizálja az Azure-portál használatával
+## <a name="diagnose-using-azure-portal"></a>Diagnosztika az Azure portal használatával
 
-1. Jelentkezzen be a Azure [portal](https://portal.azure.com) az Azure-fiókot, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
-2. Az Azure portál felső részén adja meg a virtuális gép nevét a keresőmezőbe. Ha a keresési eredmények között megjelenik a virtuális gép nevét, válassza ki azt.
-3. A **beállítások**, jelölje be **hálózati**, az alábbi ábrán látható módon:
+1. Jelentkezzen be az Azure [portál](https://portal.azure.com) egy Azure-fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
+2. Az Azure portal tetején adja meg a virtuális gép nevét a keresőmezőbe. Amikor a virtuális gép neve megjelenik a keresési eredmények között, kattintson rá.
+3. Alatt **beállítások**válassza **hálózatkezelés**, ahogy az alábbi képen is látható:
 
     ![Biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
-    Megjelenik az előző ábrán szereplő paraméterei egy adott hálózati csatoló nevű **myVMVMNic**. Láthatja, hogy nincsenek **PORT BEJÖVŐ szabályok** a hálózati adapter két különböző hálózati biztonsági csoportokból:- **mySubnetNSG**:, amely a hálózati adaptert az alhálózathoz társított.
-        - **myVMNSG**: a hálózati illesztő a virtuális gép nevű társított **myVMVMNic**.
+    A szabályokat, megjelenik az előző ábrán felsorolt kell nevű hálózati adapter **myVMVMNic**. Láthatja, hogy nincsenek **BEJÖVŐPORT-szabályok** a hálózati adapter két különböző hálózati biztonsági csoportokból:- **mySubnetNSG**: az alhálózatot, amelyet a hálózati adapterhez van társítva.
+        - **myVMNSG**: a virtuális gép nevű hálózati adapterhez társított **myVMVMNic**.
 
-    A szabály nevű **DenyAllInBound** van, mi megakadályozza az adatforgalmat a virtuális géphez, 80-as porton keresztül az internetről, lásd: a [forgatókönyv](#scenario). A szabály listák *0.0.0.0/0* a **forrás**, mely tartalmazza az interneten. Nincs más szabály, a magasabb prioritású (kevesebb) lehetővé teszi, hogy a 80-as portot a bejövő. Engedélyezi a 80-as portot a virtuális gép az internetről bejövő című [egy probléma megoldásához](#resolve-a-problem). A biztonsági szabályok és hogyan Azure alkalmazza azok kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](security-overview.md).
+    A nevű szabályt **DenyAllInBound** van, mi akadályozza bejövő kommunikációt a virtuális géphez, 80-as porton keresztül az internetről, leírtak szerint a [forgatókönyv](#scenario). A szabály listák *0.0.0.0/0* a **forrás**, amely tartalmazza az interneten. Nincs más szabály, a magasabb prioritású (alacsonyabb sorszámú) lehetővé teszi, hogy a 80-as porton bejövő. A 80-as port engedélyezése a virtuális géphez az internetről bejövő, lásd: [egy probléma megoldásához](#resolve-a-problem). Biztonsági szabályok, és hogyan Azure alkalmazza őket kapcsolatos további tudnivalókért lásd: [hálózati biztonsági csoportok](security-overview.md).
 
-    A kép alján látható is **kimenő PORT szabályok**. Az, hogy a hálózati illesztő a kimenő port szabályok vonatkoznak. A kép csak azt mutatja, négy bejövő szabályok egyes NSG-khez, bár az NSG-k sok négynél több szabályok is rendelkezhet. A képen látható **VirtualNetwork** alatt **forrás** és **cél** és **AzureLoadBalancer** alatt  **FORRÁS**. **VirtualNetwork** és **AzureLoadBalancer** vannak [címkék szolgáltatás](security-overview.md#service-tags). Szolgáltatás címkék IP-cím előtagokat minimálisra csökkentése összetettségét, a biztonsági szabály létrehozásához egy csoportját képviselik.
+    A kép alján látható is **kimenő PORT szabályok**. Amely alatt a hálózati adaptert a porton keresztüli kimenő szabályok vonatkoznak. A képen látható négy bejövő szabályok, csak egyes NSG-khez, de az NSG-k sok négynél több szabály előfordulhat, hogy rendelkezik. Az ábrán látható **VirtualNetwork** alatt **forrás** és **cél** és **AzureLoadBalancer** alatt  **FORRÁS**. **VirtualNetwork** és **AzureLoadBalancer** vannak [szolgáltatáscímkéket](security-overview.md#service-tags). Szolgáltatáscímkék IP-címelőtagokat a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége egy csoportját képviselik.
 
-4. Győződjön meg arról, hogy a virtuális gép futó állapotban, és adja **hatékony biztonsági szabályok**, megjelenítheti a hatékony biztonsági szabályt, a következő ábrán látható az előző ábrán látható módon:
+4. Győződjön meg arról, hogy a virtuális gép futó állapotban, és adja meg **érvényben lévő biztonsági szabályokat**az érvényben lévő biztonsági szabályokat, az alábbi képen is látható az előző képen látható módon:
 
-    ![Hatékony biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
+    ![Érvényes biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
-    A felsorolt paraméterei azonos ahogy azt a 3. lépés, bár a hálózati illesztő és az alhálózat társított NSG-t az egyes lapjainak. Mint a képen látható, csak az első 50 szabályokat jelennek meg. Töltse le az összes szabály tartalmazó .csv fájlt, jelölje be **letöltése**.
+    Felsorolt szabályokat kell, hogy azonos, ahogy azt a 3. lépés, abban az esetben, ha az a hálózati adapter és az alhálózathoz társított NSG különböző lap található. Ahogy az ábrán látható, csak az első 50 szabályokat jelennek meg. Válassza ki, amely tartalmazza az összes szabály .csv-fájl letöltésére, **letöltése**.
 
-    Megtekintéséhez, amely előtagok minden szolgáltatás címke jelöli, jelöljön ki egy szabályt, például nevű szabályt **AllowAzureLoadBalancerInbound**. Az alábbi képen látható előtagjait a **AzureLoadBalancer** címke szolgáltatás:
+    Megtekintéséhez, amely előtagjainak minden szolgáltatás címke jelöli, jelöljön ki egy szabályt, például a nevű szabályt **AllowAzureLoadBalancerInbound**. Az alábbi képen látható előtagjait a **AzureLoadBalancer** szolgáltatáscímke:
 
-    ![Hatékony biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
+    ![Érvényes biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
 
-    Bár a **AzureLoadBalancer** szolgáltatás címke csak egy előtagot jelöli, más szolgáltatás-címkék több előtagok képviseli.
+    Bár a **AzureLoadBalancer** csak jelölik, egy előtagot, további szolgáltatáscímkék több előtagok jelölik.
 
-4. Az előző lépések a biztonsági szabályok egy adott hálózati csatoló nevű bemutatta **myVMVMNic**, de is láthatta nevű hálózati illesztő **myVMVMNic2** egyes az előző képek. Ebben a példában a virtuális gép nem csatlakoztatható két hálózati adapterrel rendelkezik. A hatékony biztonsági szabályok mindegyik hálózati interfész eltérő lehet.
+4. Az előző lépések bemutatta a biztonsági szabályok nevű hálózati adapter **myVMVMNic**, de azt is bemutattuk nevű hálózati adapter **myVMVMNic2** néhány az előző képek. Ebben a példában a virtuális Géphez csatlakoztatott két hálózati adaptert tartalmaz. Az érvényben lévő biztonsági szabályokat minden egyes hálózati adapter esetén eltérők lehetnek.
 
-    A szabályok megtekintéséhez a **myVMVMNic2** hálózati adapter, válassza ki azt. Az alábbi képen látható, a hálózati illesztőnek ugyanazok a szabályok az alhálózaton társított a **myVMVMNic** hálózati adapter, mert mindkét hálózati adapterek ugyanabban az alhálózatban. Amikor társít egy NSG alhálózathoz, a szabályok érvényesek az alhálózatot a hálózati adaptereken.
+    A szabályok megtekintéséhez a **myVMVMNic2** hálózati adapter, jelölje ki azt. Ahogy az alábbi képen is látható, a hálózati adaptert, az alhálózathoz rendelt ugyanazokkal a szabályokkal rendelkezik-e a **myVMVMNic** hálózati adapter, mivel mindkét hálózati adapterek ugyanabban az alhálózatban. Társít egy NSG-t egy alhálózathoz, amikor a szabályok az alhálózat összes hálózati adapter érvényesek.
 
     ![Biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
 
-    Ellentétben a **myVMVMNic** hálózati kapcsolat a **myVMVMNic2** hálózati adapter nem rendelkezik a hálózati biztonsági csoport társítva. Minden hálózati illesztő és az alhálózati tartozhat nulla, vagy egy NSG társítva. Az NSG társított mindegyik hálózati interfész vagy alhálózat lehet azonos, vagy eltérő. Az azonos hálózati biztonsági csoport annyi hálózati adapterek és alhálózatokkal működik, amikor a társíthat.
+    Ellentétben a **myVMVMNic** hálózati kapcsolat a **myVMVMNic2** hálózati adapter nem rendelkezik egy hálózati biztonsági csoport társítva van hozzá. Minden egyes hálózati adapter és alhálózati rendelkezhet, nulla vagy egy, az NSG tartozik. Minden egyes hálózati adapterhez rendelt az NSG-t vagy alhálózat is változatlan marad, vagy eltérő. Az egyazon hálózati biztonsági csoport tetszőleges számú hálózati adapterek és alhálózatok, amikor a társíthat.
 
-Bár a hatékony biztonsági szabályok keresztül a virtuális gép is megtekinthetők, hatékony biztonsági szabályok segítségével is megtekintheti egy:
-- **Egyes hálózati adapter**: megtudhatja, hogyan [megtekintheti egy adott hálózati csatoló](virtual-network-network-interface.md#view-network-interface-settings).
-- **Az egyes NSG**: megtudhatja, hogyan [megtekintése az NSG](manage-network-security-group.md#view-details-of-a-network-security-group).
+Bár érvényben lévő biztonsági szabályokat is tekinthetők meg a virtuális gép, érvényes biztonsági szabályok segítségével is megtekintheti egy:
+- **Egyes hálózati adapter**: ismerje meg, hogyan [egy hálózati adapter megtekintésére](virtual-network-network-interface.md#view-network-interface-settings).
+- **Az egyes NSG**: ismerje meg, hogyan [megtekintése az NSG-KET](manage-network-security-group.md#view-details-of-a-network-security-group).
 
-## <a name="diagnose-using-powershell"></a>Diagnosztizálja a PowerShell használatával
+## <a name="diagnose-using-powershell"></a>Diagnosztizálhatja a PowerShell használatával
 
-A parancsok futtatása a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy futtassa a PowerShell a számítógépről. Az Azure-felhő rendszerhéj a szabad interaktív rendszerhéjat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha PowerShell a számítógépen futtatja, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió található. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtat PowerShell, is futtatásához szükséges `Login-AzureRmAccount` Azure bejelentkezni egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions)].
+A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-bA egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions)].
 
-A hatékony biztonsági szabályok lekérése a hálózati illesztő – [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup). Az alábbi példa lekérdezi a hatékony biztonsági szabályok egy adott hálózati csatoló nevű *myVMVMNic*, amely pedig erőforráscsoportban nevű *myResourceGroup*:
+Hálózati illesztő – esetén az érvényes biztonsági szabályainak lekérése [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup). Az alábbi példa lekéri az érvényben lévő biztonsági szabályokat nevű hálózati adapter *myVMVMNic*, azaz egy erőforráscsoportba tartozó nevű *myResourceGroup*:
 
 ```azurepowershell-interactive
 Get-AzureRmEffectiveNetworkSecurityGroup `
@@ -85,19 +85,19 @@ Get-AzureRmEffectiveNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-Kimeneti json formátumban ad vissza. A kimeneti ismertetése: [értelmezési parancs kimenetében](#interpret-command-output).
-Kimeneti csak akkor ad vissza, ha az NSG tartozik a hálózati adapter vagy az alhálózatot a hálózati adaptert. A virtuális gép futó állapotban kell lennie. A virtuális gépek több hálózati adapterrel rendelkezhet az alkalmazott különböző NSG-ket. Ha a hiba elhárításához, a parancsot mindegyik hálózati interfész.
+Kimenet json formátumban adja vissza. A kimenet ismertetése: [parancs eredményét értelmezik](#interpret-command-output).
+Kimeneti csak akkor ad vissza, ha az NSG-t a hálózati adapter vagy az alhálózatot a hálózati adapter van társítva. A virtuális gép futó állapotban kell lennie. Virtuális gép több hálózati adapterrel rendelkezhet a alkalmazni különböző NSG-ket. Hibaelhárítás, futtassa a parancsot minden egyes hálózati adapter.
 
-Ha még nem kapcsolathiba, lásd: [további elemzés céljából](#additional-diagnosis) és [szempontok](#considerations).
+Ha még nem kapcsolati probléma, lásd: [további elemzés céljából](#additional-diagnosis) és [szempontok](#considerations).
 
-Ha nem ismeri a hálózati kapcsolat neve, de tudja a virtuális Gépet, a hálózati adapter csatlakozik a nevét, a következő parancsokat egy virtuális géphez csatolt minden hálózati interfészen azonosítóit adja vissza:
+Ha nem ismeri a hálózati adapter nevét, de tudja a nevét, a virtuális gép a hálózati adapter csatlakoztatva van, az alábbi parancsokat a virtuális Géphez csatlakoztatott összes hálózati adapter azonosítóit adja vissza:
 
 ```azurepowershell-interactive
 $VM = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroup
 $VM.NetworkProfile
 ```
 
-Az alábbi példához hasonló kimenetet jelenhet meg:
+Az alábbi példához hasonló kimenetet kapja:
 
 ```powershell
 NetworkInterfaces
@@ -105,13 +105,13 @@ NetworkInterfaces
 {/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
 ```
 
-Az előző kimeneti, a hálózati kapcsolat neve: *myVMVMNic*.
+Az előző kimeneti hálózati adapter neve van *myVMVMNic*.
 
-## <a name="diagnose-using-azure-cli"></a>Diagnosztizálja az Azure parancssori felület használatával
+## <a name="diagnose-using-azure-cli"></a>Diagnosztika az Azure CLI-vel
 
-Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez a cikk igényel az Azure parancssori felület 2.0.32 verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` , és jelentkezzen be a Azure egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
+Ha használja az Azure parancssori felület (CLI) parancsai cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy a parancssori felület futtatásával a számítógépről. Ehhez a cikkhez az Azure CLI 2.0.32 verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` , és jelentkezzen be Azure-fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
 
-A hatékony biztonsági szabályok lekérése a hálózati illesztő – [az lista-hatályos-nsg hálózati adapter hálózati](/cli/azure/network/nic#az-network-nic-list-effective-nsg). Az alábbi példa lekérdezi a hatékony biztonsági szabályok egy adott hálózati csatoló nevű *myVMVMNic* nevű erőforráscsoport szerepel *myResourceGroup*:
+Hálózati illesztő – esetén az érvényes biztonsági szabályainak lekérése [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg). Az alábbi példa lekéri az érvényben lévő biztonsági szabályokat nevű hálózati adapter *myVMVMNic* nevű erőforráscsoportban ez *myResourceGroup*:
 
 ```azurecli-interactive
 az network nic list-effective-nsg \
@@ -119,12 +119,12 @@ az network nic list-effective-nsg \
   --resource-group myResourceGroup
 ```
 
-Kimeneti json formátumban ad vissza. A kimeneti ismertetése: [értelmezési parancs kimenetében](#interpret-command-output).
-Kimeneti csak akkor ad vissza, ha az NSG tartozik a hálózati adapter vagy az alhálózatot a hálózati adaptert. A virtuális gép futó állapotban kell lennie. A virtuális gépek több hálózati adapterrel rendelkezhet az alkalmazott különböző NSG-ket. Ha a hiba elhárításához, a parancsot mindegyik hálózati interfész.
+Kimenet json formátumban adja vissza. A kimenet ismertetése: [parancs eredményét értelmezik](#interpret-command-output).
+Kimeneti csak akkor ad vissza, ha az NSG-t a hálózati adapter vagy az alhálózatot a hálózati adapter van társítva. A virtuális gép futó állapotban kell lennie. Virtuális gép több hálózati adapterrel rendelkezhet a alkalmazni különböző NSG-ket. Hibaelhárítás, futtassa a parancsot minden egyes hálózati adapter.
 
-Ha még nem kapcsolathiba, lásd: [további elemzés céljából](#additional-diagnosis) és [szempontok](#considerations).
+Ha még nem kapcsolati probléma, lásd: [további elemzés céljából](#additional-diagnosis) és [szempontok](#considerations).
 
-Ha nem ismeri a hálózati kapcsolat neve, de tudja a virtuális Gépet, a hálózati adapter csatlakozik a nevét, a következő parancsokat egy virtuális géphez csatolt minden hálózati interfészen azonosítóit adja vissza:
+Ha nem ismeri a hálózati adapter nevét, de tudja a nevét, a virtuális gép a hálózati adapter csatlakoztatva van, az alábbi parancsokat a virtuális Géphez csatlakoztatott összes hálózati adapter azonosítóit adja vissza:
 
 ```azurecli-interactive
 az vm show \
@@ -132,7 +132,7 @@ az vm show \
   --resource-group myResourceGroup
 ```
 
-A visszaadott kimeneti belül a következőhöz hasonló információkat lásd:
+A visszaadott kimenetet belül jelenik meg az alábbi példához hasonló információkat:
 
 ```azurecli
 "networkProfile": {
@@ -146,58 +146,58 @@ A visszaadott kimeneti belül a következőhöz hasonló információkat lásd:
       },
 ```
 
-Az előző kimeneti, a hálózati kapcsolat neve: *myVMVMNic felület*.
+Az előző kimeneti hálózati adapter neve van *myVMVMNic felület*.
 
-## <a name="interpret-command-output"></a>Értelmezési parancs kimenete
+## <a name="interpret-command-output"></a>A parancs kimenete értelmezése
 
-Függetlenül attól, hogy használja a [PowerShell](#diangose-using-powershell), vagy a [Azure CLI](#diagnose-using-azure-cli) a probléma diagnosztizálása érdekében a következő információkat tartalmazó kimeneti kapni:
+Függetlenül attól, hogy használta a [PowerShell](#diangose-using-powershell), vagy a [Azure CLI-vel](#diagnose-using-azure-cli) kimenete, amely tartalmazza a következő információkat kap a probléma diagnosztizálása érdekében:
 
-- **Hálózati biztonsági csoporthoz tartozik**: a hálózati biztonsági csoport az azonosító.
-- **Társítás**: E a hálózati biztonsági csoport társítva egy *Kezdőértékről* vagy *alhálózati*. Ha is társítva egy NSG-t, a kimenetet visszaadja **hálózati biztonsági csoporthoz tartozik**, **társítás**, és **EffectiveSecurityRules**, egyes NSG-khez. Ha az NSG társított vagy hozzárendelésének megszüntetése előtt közvetlenül futtassa a parancsot, és tekintse meg a hatékony biztonsági szabályokat, szükség lehet a Várjon néhány másodpercet, hogy tükrözze a parancs kimenetében a változtatás.
-- **EffectiveSecurityRules**: az egyes tulajdonságok magyarázatot részleteit a [biztonsági szabály létrehozása](manage-network-security-group.md#create-a-security-rule). A nevek végrehajtásával kerüli meg a szabály *defaultSecurityRules /* és alapértelmezett biztonsági szabályok, amelyeket minden NSG szerepel. A nevek végrehajtásával kerüli meg a szabály *securityRules /* olyan szabályok, amelyek korábban létrehozott. Meghatározott szabályok egy [címke szolgáltatás](security-overview.md#service-tags), például a **Internet**, **VirtualNetwork**, és **AzureLoadBalancer** a a  **destinationAddressPrefix** vagy **sourceAddressPrefix** tulajdonságok is szerepel érték a **expandedDestinationAddressPrefix** tulajdonság. A **expandedDestinationAddressPrefix** tulajdonság a szolgáltatás címke által meghatározott összes címelőtagokat sorolja fel.
+- **NetworkSecurityGroup**: a hálózati biztonsági csoport azonosítója.
+- **Társítás**:-e a hálózati biztonsági csoport társítva egy *hálózati* vagy *alhálózati*. Ha is társítva egy NSG-t, a kimenetet visszaadja **NetworkSecurityGroup**, **társítás**, és **EffectiveSecurityRules**, minden NSG. Ha az NSG-hez kapcsolódó, vagy közvetlenül a tekintse meg az érvényben lévő biztonsági szabályokat, a parancs futtatása előtt le, szükség lehet Várjon néhány másodpercet a módosítás megjelenik a parancs kimenete.
+- **EffectiveSecurityRules**: részletes magyarázatát tartalmazza minden egyes tulajdonság [hozzon létre egy biztonsági szabályt](manage-network-security-group.md#create-a-security-rule). Szabály neve előtt a létrehozás *defaultSecurityRules /* vannak alapértelmezett biztonsági szabályokat, minden NSG-ben léteznek. Szabály neve előtt a létrehozás *securityRules /* létrehozott szabályok vonatkoznak. Meghatározott szabályok egy [szolgáltatáscímke](security-overview.md#service-tags), mint például **Internet**, **VirtualNetwork**, és **AzureLoadBalancer** számára a  **destinationAddressPrefix** vagy **sourceAddressPrefix** tulajdonságai között is szerepel érték a **expandedDestinationAddressPrefix** tulajdonság. A **expandedDestinationAddressPrefix** tulajdonság a szolgáltatáscímke által jelölt összes címelőtagok sorolja fel.
 
-Ismétlődő szabályok kimenetben szereplő megtekintéséhez esetén, mert egy NSG-t a hálózati illesztő és az alhálózati is társítva. Az NSG-ket van ugyanazon alapértelmezett szabályok, és előfordulhat, hogy további ismétlődő szabályokat, ha saját szabályokat, amelyek mindkét NSG-ket a hozott létre.
+A kimenetben szereplő duplikált szabályok megtekintéséhez, hogy mivel az NSG-t mind a hálózati adaptert, és az alhálózathoz van társítva. Mind az NSG-ket az ugyanazon alapértelmezett szabályokkal rendelkeznek, és további ismétlődő szabályokat, előfordulhat, ha saját szabályok, amelyek megegyeznek az NSG-ket is létrehozott.
 
-A szabály nevű **defaultSecurityRules/DenyAllInBound** van, mi megakadályozza az adatforgalmat a virtuális géphez, 80-as porton keresztül az internetről, lásd: a [forgatókönyv](#scenario). Nincs más szabály, a magasabb prioritású (kevesebb) lehetővé teszi, hogy a port 80 az internetről bejövő.
+A nevű szabályt **defaultSecurityRules/DenyAllInBound** van, mi akadályozza bejövő kommunikációt a virtuális géphez, 80-as porton keresztül az internetről, leírtak szerint a [forgatókönyv](#scenario). Nincs más szabály, a magasabb prioritású (alacsonyabb sorszámú) lehetővé teszi, hogy a port 80-as bejövő az internetről.
 
 ## <a name="resolve-a-problem"></a>A probléma megoldásához
 
-Hogy használ-e az Azure [portal](#diagnose-using-azure-portal), [PowerShell](#diagnose-using-powershell), vagy a [Azure CLI](#diagnose-using-azure-cli) jelenik meg a probléma diagnosztizálása érdekében a [forgatókönyv](#scenario) ezen a cikkben a a megoldás, hogy a hálózati biztonsági szabály létrehozása a következő tulajdonságokkal:
+Ha használja az Azure [portál](#diagnose-using-azure-portal), [PowerShell](#diagnose-using-powershell), vagy a [Azure CLI-vel](#diagnose-using-azure-cli) jelenik meg a probléma diagnosztizálása érdekében a [forgatókönyv](#scenario) a jelen a cikkben a megoldás az, ha egy hálózati biztonsági szabály létrehozása a következő tulajdonságokkal:
 
 | Tulajdonság                | Érték                                                                              |
 |---------                |---------                                                                           |
 | Forrás                  | Bármelyik                                                                                |
 | Forrásporttartományok      | Bármelyik                                                                                |
-| Cél             | A virtuális gép IP-címét, egy adott IP-címek vagy az alhálózaton levő összes cím. |
+| Cél             | A virtuális gép IP-címét, egy IP-címtartomány vagy az alhálózaton levő összes cím. |
 | Célporttartományok | 80                                                                                 |
 | Protocol (Protokoll)                | TCP                                                                                |
 | Műveletek                  | Engedélyezés                                                                              |
 | Prioritás                | 100                                                                                |
-| Name (Név)                    | Engedélyezése – HTTP-minden                                                                     |
+| Name (Név)                    | Lehetővé teszi a HTTP-All                                                                     |
 
-A szabály létrehozása után engedélyezett-e a 80-as porton az internetről bejövő, mert a szabály a prioritás értéke magasabb, mint az alapértelmezett biztonsági szabály nevű *DenyAllInBound*, amely megtagadja a forgalmat. Megtudhatja, hogyan [biztonsági szabály létrehozása](manage-network-security-group.md#create-a-security-rule). Különböző NSG-k legyenek társítva a hálózati illesztő és az alhálózatot, ha mindkét NSG-ket ugyanaz a szabály kell létrehoznia.
+Miután létrehozta a szabályt, a 80-as porton engedélyezve van-e az internetről bejövő, mert a szabály prioritása nagyobb, mint az alapértelmezett biztonsági szabály nevű *DenyAllInBound*, amely a forgalom megtagadásához. Ismerje meg, hogyan [hozzon létre egy biztonsági szabályt](manage-network-security-group.md#create-a-security-rule). Ha a hálózati adaptert, és az alhálózathoz társított különböző NSG-ket, létre kell hoznia ugyanaz a szabály a mindkét NSG-k.
 
-Azure folyamatok érkező bejövő forgalmat, ha dolgozza fel a szabályokat az alhálózat (ha van egy társított NSG) társított NSG-t, és a hálózati illesztő társított NSG-t szabályai feldolgozza majd. Ha a hálózati illesztő és az alhálózat társított NSG-t, a port elérni a virtuális gép forgalom mindkét NSG-ket nyitva kell lennie. Megkönnyítése érdekében a felügyeleti és kommunikációs problémák, azt javasoljuk, hogy társít egy NSG alhálózat, mint az egyes hálózati adapterek. Ha egy alhálózaton belüli virtuális gépek különböző biztonsági szabályokat, ellenőrizze a hálózati adapterek tagjai egy alkalmazás biztonsági csoport (ASG), és adja meg egy ASG, mint a forrás- és a biztonsági szabály. További információ [biztonsági csoportok](security-overview.md#application-security-groups).
+Azure által feldolgozott bejövő forgalmat, amikor feldolgozza a szabályokat az NSG az alhálózathoz (ha van egy társított NSG-t) rendelt, és majd dolgozza fel a szabályokat a hálózati adapterhez társított NSG-ben. Ha a hálózati adapter és az alhálózathoz társított NSG-t, a port mindkét NSG-t, a forgalom elérhesse a virtuális gép nyitva kell lennie. Megkönnyítése érdekében a felügyeleti és kommunikációs problémák, azt javasoljuk, hogy társít egy NSG-t egy alhálózathoz, mint az egyes hálózati adapterek. Egy alhálózaton belüli virtuális gépek különböző biztonsági szabályok van szüksége, ellenőrizze a hálózati adapterek tagjai egy alkalmazásbiztonsági csoportot (Alkalmazásbiztonsági), és adja meg a forrás- és egy biztonsági szabály egy Alkalmazásbiztonsági. Tudjon meg többet [az alkalmazásbiztonsági csoportok](security-overview.md#application-security-groups).
 
-Ha még nem kommunikációs problémák, lásd: [szempontok](#considerations) és [további elemzés céljából](#additional-dignosis).
+Ha továbbra is kommunikációs problémákat tapasztal, tekintse meg [szempontok](#considerations) és [további elemzés céljából](#additional-dignosis).
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Kapcsolódási problémák elhárításakor, vegye figyelembe a következő szempontokat:
+Kapcsolódási problémák elhárításához, vegye figyelembe a következőket:
 
-* Alapértelmezett biztonsági szabályok az internetről bejövő hozzáférésének letiltására, és csak engedélyezi a bejövő forgalom a virtuális hálózati. Bejövő adatforgalom engedélyezésére az internetről, adjon hozzá egy magasabb prioritású, mint az alapértelmezett szabályokat biztonsági szabályokat. További információ [alapértelmezett biztonsági szabályok](security-overview.md#default-security-rules), vagy hogyan [egy biztonsági szabály felvétele](manage-network-security-group.md#create-a-security-rule).
-* Ha rendelkezik nincsenek társviszonyban virtuális hálózatok, alapértelmezés szerint a **VIRTUAL_NETWORK** szolgáltatás címke automatikusan kiegészíthetjük előtagok társítottak, virtuális hálózatok. Minden virtuális hálózati társviszony-létesítés kapcsolatos problémák elhárításához, megtekintheti az előtagok a **ExpandedAddressPrefix** listája. További információ [virtuális hálózati társviszony-létesítés](virtual-network-peering-overview.md) és [címkék szolgáltatás](security-overview.md#service-tags).
-* Csak akkor jelennek meg az hatékony biztonsági szabályokat, ha van egy NSG-t a hálózati adaptert a virtuális hálózati adapter társított és, vagy alhálózat, és hogy a virtuális gép futó állapotban lévő.
-* Ha nem a hálózati adapter vagy az alhálózat társított NSG-ket, és van egy [nyilvános IP-cím](virtual-network-public-ip-address.md) egy virtuális Géphez rendelt, minden portjai nyitva a bejövő hozzáférést és kimenő hozzáférést tetszőleges helyre. Ha a virtuális gép egy nyilvános IP-címmel rendelkezik, ajánlott az NSG alkalmazása az alhálózat a hálózati illesztő.
+* Alapértelmezett biztonsági szabályok blokkolja az internetről bejövő hozzáférést, és csak a virtuális hálózatról a bejövő forgalom engedélyezése. Ahhoz, hogy a bejövő forgalom az internetről, adjon hozzá egy magasabb prioritású, mint az alapértelmezett szabályok biztonsági szabályokat. Tudjon meg többet [alapértelmezett biztonsági szabályokat](security-overview.md#default-security-rules), vagy a [biztonsági szabály hozzáadására](manage-network-security-group.md#create-a-security-rule).
+* Ha rendelkezik társviszonyban álló virtuális hálózatok alapértelmezés szerint a **VIRTUAL_NETWORK** szolgáltatáscímke automatikusan kiegészíthetjük társviszonyban lévő virtuális hálózatok előtagjait. Minden olyan virtuális hálózatok közötti társviszony létesítésével kapcsolatos problémák elhárítása, a címelőtagokat is megtekintheti a **ExpandedAddressPrefix** listája. Tudjon meg többet [virtuális hálózatok közötti társviszony](virtual-network-peering-overview.md) és [szolgáltatáscímkéket](security-overview.md#service-tags).
+* Érvényes biztonsági szabályok esetében ha van egy NSG-t egy hálózati adaptert a virtuális gép hálózati interfészhez társított csak látható és, vagy alhálózathoz, és ha a virtuális gép futó állapotba kerül.
+* Ha nincs a hálózati adapter vagy az alhálózathoz társított hálózati biztonsági csoportok, és rendelkezik egy [nyilvános IP-cím](virtual-network-public-ip-address.md) egy virtuális Géphez hozzárendelt, az összes portok nyitva a bejövő hozzáférést és a kimenő hozzáférést bárhonnan. Ha a virtuális gép nyilvános IP-címmel rendelkezik, azt javasoljuk alkalmazása egy NSG-t az alhálózathoz a hálózati adaptert.
 
 ## <a name="additional-diagnosis"></a>További elemzés céljából
 
-* Határozza meg, ha a forgalom engedélyezve van-e, vagy a virtuális gép gyors vizsgálat futtatásához használja a [IP folyamata ellenőrizze](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) Azure hálózati figyelőt képességét. IP-adatfolyam győződjön meg arról tájékoztat, ha a forgalom engedélyezett vagy megtagadott. Ha megtagadja, IP-adatfolyam ellenőrizze jelzi, hogy mely biztonsági szabály megtagadja a forgalmat.
-* Ha nincs biztonsági szabály, amely a virtuális gépek hálózati kapcsolattal sikertelen lesz, a probléma oka a következő lehet:
-  * A virtuális gép operációs rendszerben futó tűzfal szoftver
-  * A virtuális készülékek vagy a helyszíni forgalmi útvonalak. Internetes forgalmat a helyi hálózaton keresztül átirányíthatók [kényszerített bújtatás](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Kényszerített bújtatás internetes forgalmat a virtuális készülék, vagy a helyszíni, nem lehet csatlakozni a virtuális gép az internetről. Ami károsan befolyásolhatja a forgalmat a virtuális gép kívül útvonal problémák diagnosztizálásához, lásd: [egy virtuális gép hálózati forgalom útválasztási probléma diagnosztizálása](diagnose-network-routing-problem.md).
+* Határozza meg, ha a forgalom engedélyezve van, vagy egy virtuális gépről való gyors teszteléséhez használja a [IP-folyamat ellenőrzésével](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) Azure Network Watcher képességét. IP-folyamat ellenőrzésével arra kéri, ha engedélyezett vagy tiltott forgalmat. Ha megtagadja, IP-folyamat ellenőrzésével jelzi, hogy melyik biztonsági szabály megtagadja a forgalmat.
+* Ha nem okoz a virtuális gép hálózati kapcsolat sikertelen biztonsági szabályokat, a probléma előfordulhat, hogy a következő lehet:
+  * A virtuális gép operációs rendszerén belül futó tűzfalszoftverek
+  * Konfigurált virtuális berendezések vagy a helyszíni forgalom útválasztását. Internetes forgalom átirányítható a helyszíni hálózathoz keresztül [kényszerített bújtatást végez](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha kényszeríti alagút internetes forgalmat egy olyan virtuális berendezésre vagy a helyi, nem lehet tud csatlakozni a virtuális Géphez az internetről. Című cikk nyújt tájékoztatást, amelyek akadályozhatják az adatforgalom a virtuális gép útválasztási problémák diagnosztizálása, [virtuális gép hálózati forgalom útválasztási probléma diagnosztizálása](diagnose-network-routing-problem.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Minden feladatok, a tulajdonságok és a beállítások egy [hálózati biztonsági csoport](manage-network-security-group.md#work-with-network-security-groups) és [biztonsági szabályok](manage-network-security-group.md#work-with-security-rules).
-- További tudnivalók [alapértelmezett biztonsági szabályok](security-overview.md#default-security-rules), [címkék szolgáltatás](security-overview.md#service-tags), és [hogyan dolgozza fel a Azure a biztonsági szabályok a bejövő és kimenő forgalom](security-overview.md#network-security-groups) egy virtuális gép számára.
+- Ismerje meg az összes feladatok, tulajdonságai és beállításai egy [hálózati biztonsági csoport](manage-network-security-group.md#work-with-network-security-groups) és [biztonsági szabályok](manage-network-security-group.md#work-with-security-rules).
+- Ismerje meg [alapértelmezett biztonsági szabályokat](security-overview.md#default-security-rules), [szolgáltatáscímkéket](security-overview.md#service-tags), és [miként dolgozza fel a az Azure a biztonsági szabályok a bejövő és kimenő forgalmat](security-overview.md#network-security-groups) egy virtuális géphez.

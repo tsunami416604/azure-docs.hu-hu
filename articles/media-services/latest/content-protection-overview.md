@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: fb8730e9074624ba1b0f0162ebf9156b758b59c2
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068784"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115230"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése
 
@@ -45,8 +45,11 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
   > [!NOTE]
   > Minden eszközhöz több titkosítási típusok (AES-128, a PlayReady, Widevine, FairPlay) használatával titkosítsa. Lásd: [Streamelési protokollok és a titkosítási típusok](#streaming-protocols-and-encryption-types), mi értelme úgy, hogy megtekintéséhez.
   
-  A következő cikk lépései titkosítása AES tartalmak megjelenítése: [védelem az AES-titkosítás](protect-with-aes128.md)
- 
+  A következő cikkek az AES és/vagy DRM tartalmak megjelenítése az titkosításához lépéseket: 
+  
+  * [Az AES-titkosítással védeni](protect-with-aes128.md)
+  * [DRM védelme](protect-with-drm.md)
+
 2. A Player AES vagy DRM-ügyféllel. Egy videolejátszó alkalmazást, a lejátszó SDK-t (natív vagy böngészőalapú) alapján kell az alábbi követelményeknek:
   * A lejátszó SDK támogatja a szükséges DRM-ügyfelek
   * A lejátszó SDK támogatja a szükséges streamelési protokollok: Smooth, DASH vagy HLS
@@ -125,7 +128,10 @@ A tokennel korlátozott szabályzatokhoz konfigurálásakor adjon meg, hogy az e
 
 ## <a name="next-steps"></a>További lépések
 
-[Hogyan védi AES titkosítással a Media Services v3](protect-with-aes128.md)
+Tekintse meg a következő cikkeket:
+
+  * [Az AES-titkosítással védeni](protect-with-aes128.md)
+  * [DRM védelme](protect-with-drm.md)
 
 További információ található a [DRM hivatkozhat, tervezés és megvalósítás](../previous/media-services-cenc-with-multidrm-access-control.md)
 

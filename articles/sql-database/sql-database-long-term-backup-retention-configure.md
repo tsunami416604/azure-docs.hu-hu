@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 07/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f7125a18aa2496ebe8367443a67502a7a7dbac02
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 24d453dc705eb2d0ee7cb77f2ec247845247d0a8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969187"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113631"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
 
 Konfigurálhatja az Azure SQL database egy [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) házirend (LTR) automatikusan az Azure blob storage-biztonsági mentések megőrzési idejét, akár 10 évig. Ezt követően helyreállíthatja a segítségével ezeket a biztonsági másolatokat az Azure portal vagy a PowerShell használatával.
-
-> [!NOTE]
-> Részeként előzetes verziójának 2016 októberében Ez a szolgáltatás kezdeti verziójában a biztonsági mentések mentette az Azure-szolgáltatások Recovery Services-tárolóra. Ez a frissítés eltávolítja ezt a függőséget, de a visszamenőleges kompatibilitás érdekében az eredeti API támogatja a 2018. május 31-ig. Ha az Azure-szolgáltatások Recovery-tárolóban lévő biztonsági másolatok kezelése van szüksége, tekintse meg [Azure szolgáltatások Recovery Services-tároló használatával hosszú távú adatmegőrzés](sql-database-long-term-backup-retention-configure-vault.md). 
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Az Azure portal használatával konfigurálhatja a hosszú távú adatmegőrzési házirendek, és biztonsági mentések visszaállítása
 
@@ -32,29 +29,21 @@ A következő szakaszok bemutatják, hogyan a hosszú távú megőrzésének kon
 
 Konfigurálhatja az SQL Database [automatikus biztonsági másolatok megőrzésére](sql-database-long-term-retention.md) szolgáltatásszint megőrzési idejénél hosszabb időtartamra. 
 
-1. Az Azure Portalon válassza ki az SQL Servert, és kattintson a **hosszú távú adatmegőrzés**.
+1. Az Azure Portalon válassza ki az SQL Servert, és kattintson a **biztonsági másolatok kezelése**. Az a **szabályzatok konfigurálása** lapra, válassza ki az adatbázist, amelyen szeretné, vagy módosíthatja a hosszú távú biztonsági mentés megőrzési házirendeket.
 
-   ![biztonsági másolat hosszú távú megőrzése hivatkozás](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
+   ![biztonsági másolatokat kapcsolat kezelése](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-2. Az a **szabályzatok konfigurálása** lapra, válassza ki az adatbázist, amelyen szeretné, vagy módosíthatja a hosszú távú biztonsági mentés megőrzési házirendeket.
-
-   ![adatbázis kiválasztása](./media/sql-database-long-term-retention/ltr-configure-select-database.png)
-
-3. Az a **szabályzatok konfigurálása** ablaktábla, válassza ki, ha szeretné, heti, havi vagy éves biztonsági mentések megőrzési idejét, és adja meg a megőrzési időszak minden. 
+2. Az a **szabályzatok konfigurálása** ablaktábla, válassza ki, ha szeretné, heti, havi vagy éves biztonsági mentések megőrzési idejét, és adja meg a megőrzési időszak minden. 
 
    ![szabályzatok konfigurálása](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
-4. Amikor végzett, kattintson a **alkalmaz**.
+3. Amikor végzett, kattintson a **alkalmaz**.
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Biztonsági másolatok megtekintéséhez, és állítsa vissza biztonsági másolatból az Azure portal használatával
 
 Tekintse meg a biztonsági mentések, amelyek egy adott adatbázis egy LTR-szabályzat, és ezeket a biztonsági mentéseket való visszaállítása megmaradnak. 
 
-1. Az Azure Portalon válassza ki az SQL Servert, és kattintson a **hosszú távú adatmegőrzés**.
-
-   ![biztonsági másolat hosszú távú megőrzése hivatkozás](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
-
-2. Az a **elérhető biztonsági másolatok** lapra, válassza ki az adatbázist, amelynek meg szeretné tekinteni az elérhető biztonsági másolatok.
+1. Az Azure Portalon válassza ki az SQL Servert, és kattintson a **biztonsági másolatok kezelése**. Az a **elérhető biztonsági másolatok** lapra, válassza ki az adatbázist, amelynek meg szeretné tekinteni az elérhető biztonsági másolatok.
 
    ![adatbázis kiválasztása](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 

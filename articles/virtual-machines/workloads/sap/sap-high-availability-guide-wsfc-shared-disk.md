@@ -1,6 +1,6 @@
 ---
-title: SAP ASC/SCS példány fürtön egy Windows feladatátvevő fürt fürt megosztott lemezt használ az Azure-ban |} Microsoft Docs
-description: Megtudhatja, hogyan SAP ASC/SCS példány egy Windows feladatátvevő fürtre a fürt egy fürt megosztott lemez.
+title: Az SAP ASCS/SCS példányhoz fürt fürt megosztott lemezt használ az Azure-ban Windows feladatátvevő fürtön |} A Microsoft Docs
+description: Útmutató az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69071ef211e6787aa7bbae121cc4d55ccf2a6ef6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 91a72a4244e3cae081fe9a962bbb80d3ce19822d
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657754"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113222"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -72,7 +72,7 @@ ms.locfileid: "34657754"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állású konfiguráció)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP több biztonsági AZONOSÍTÓVAL magas rendelkezésre állású konfiguráció)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -183,99 +183,99 @@ ms.locfileid: "34657754"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Egy Windows rendszerű feladatátvevő fürtre a fürt megosztott lemezt használ az Azure-ban a fürt egy SAP ASCS/SCS példányhoz
+
 > ![Windows][Logo_Windows] Windows
 >
 
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>SAP ASC/SCS példány fürtben, a Windows rendszerű feladatátvevő fürtre a fürt megosztott lemezt az Azure-ban
+A Windows Server feladatátvételi fürtszolgáltatás az alapja egy magas rendelkezésre állású SAP ASCS/SCS telepítés és a Windows DBMS.
 
-Windows Server Feladatátvételi fürtszolgáltatást az alapja az egy magas rendelkezésre állású SAP ASC/SCS telepítése és a Windows DBMS.
-
-A feladatátvevő fürt olyan 1 + n független kiszolgálók (csomópontok), amelyek együttműködése az alkalmazások és szolgáltatások rendelkezésre állásának javítása. Ha egy csomópont meghibásodik, Windows Server Feladatátvételi fürtszolgáltatást a hibákat, és továbbra is a megfelelő fürt adja meg az alkalmazások és szolgáltatások is számítja ki. Választhat a különböző kvórummódok feladatátvételi fürtszolgáltatás eléréséhez.
+A feladatátvevő fürtök a kiszolgálók egy csoportja 1 + n független (csomópontok), amelyek együttműködése magasabb rendelkezésre állást az alkalmazások és szolgáltatások. Egy csomópont meghibásodása esetén a Windows Server feladatátvételi fürtszolgáltatás a hibák, amelyek fordulhat elő, és továbbra is biztosít az alkalmazások és szolgáltatások megfelelő fürt számítja ki. A Feladatátvételi fürtszolgáltatás eléréséhez különböző kvórummódok közül választhat.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ebben a cikkben a feladatok megkezdése előtt tekintse át a következő cikket:
+Mielőtt elkezdené a cikkben leírt feladatok, tekintse át a következő cikket:
 
-* [Azure virtuális gépek magas rendelkezésre állású architektúra és SAP NetWeaver forgatókönyvei][sap-high-availability-architecture-scenarios]
-
-
-## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server Feladatátvételi fürtszolgáltatást az Azure-ban
-
-Operációs rendszer nélküli vagy a privát felhőben történő alkalmazáshoz képest, Azure virtuális gépek konfigurálása a Windows Server feladatátvételi fürtszolgáltatás további lépéseket igényel. A fürtöt hozza létre, ha több IP-címek és az SAP ASC/SCS példány virtuális állomásnevek be kell.
-
-### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure-ban és a fürt virtuális állomásnév feloldása
-
-Az Azure felhőalapú platform nem teszi lehetővé a virtuális IP-címek, például csak fix IP-címek konfigurálásához. Hozzon létre egy virtuális IP-címet a felhőben fürterőforrás elérni egy másik megoldásra van szüksége. 
-
-Az Azure terheléselosztó szolgáltatás egy *belső terheléselosztó* az Azure-bA. A belső terheléselosztó rendelkező ügyfelek elérni a fürt keresztül a virtuális IP-címet. 
-
-Telepítse a belső terheléselosztó, amely tartalmazza a fürt csomópontjai az erőforráscsoportban. Ezt követően konfigurálja a belső terheléselosztó portok továbbítási szabályok a Hálózatfigyelő használatával az összes szükséges port. Az ügyfélszámítógépek csatlakozhatnak az virtuális állomás név. A DNS-kiszolgáló oldja fel a fürt IP-címét, és a belső terheléselosztó leírók port továbbítja a fürt aktív csomópontja.
-
-![1. ábra: A Windows feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban egy megosztott lemez nélkül][sap-ha-guide-figure-1001]
-
-_**1. ábra:** Windows Server feladatátvevő fürt egy megosztott lemez nélküli az Azure-ban konfigurációban_
-
-### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASC/SCS magas rendelkezésre ÁLLÁSÚ fürt megosztott lemezeket
-Windows SAP ASC/SCS példánya központi SAP-szolgáltatások, a SAP üzenet kiszolgáló, sorba helyezni server folyamatok és SAP globális állomás fájlok tartalmazza. SAP globális állomás fájlok az egész SAP rendszerhez központi fájlok tárolására.
-
-SAP ASC/SCS példánya a következő részből áll:
-
-* SAP központi szolgáltatások:
-    * Két folyamatok, egy üzenet és sorba helyezni kiszolgáló és egy < ASC/SCS virtuális állomás neve >, amely a két folyamatok elérésére szolgál.
-    * Struktúra fájlt: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<példány száma\>
+* [Az Azure virtuális gépek magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver számára][sap-high-availability-architecture-scenarios]
 
 
-* SAP globális állomás fájlok:
+## <a name="windows-server-failover-clustering-in-azure"></a>A Windows Server feladatátvevő fürt az Azure-ban
+
+Operációs rendszer nélküli vagy magánfelhő-telepítések képest, Azure Virtual Machines konfigurálása a Windows Server feladatátvételi fürtszolgáltatás további lépéseket igényel. Ha egy fürtöt hoz létre, több IP-címek és virtuális állomásnevek az SAP ASCS/SCS példányhoz be kell.
+
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>A névfeloldás az Azure és a fürt virtuális állomás neve
+
+Az Azure felhőalapú platformján nem teszi lehetővé a virtuális IP-címek, például a nem fix IP-címek konfigurálásához. Alternatív megoldásként elérni a fürt erőforrásai a felhőben egy virtuális IP-cím beállításához szüksége lesz. 
+
+Az Azure Load Balancer szolgáltatás biztosít egy *belső load balancer* az Azure-hoz. A belső terheléselosztó az ügyfelek a fürt a fürt virtuális IP-címen keresztül érhető el. 
+
+Helyezze üzembe a belső terheléselosztó, amely tartalmazza a fürt csomópontjai az erőforráscsoportban. Ezt követően konfigurálja a belső terheléselosztó portok továbbítási szabályok a mintavétel használatával minden szükséges port. Az ügyfelek csatlakozhatnak keresztül a virtuális gazdagép nevét. A DNS-kiszolgáló szünteti meg a fürt IP-címét, és a belső load balancer kezeli port továbbítja a fürt aktív csomópontja.
+
+![1. ábra: A Windows feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban anélkül, hogy egy megosztott lemez][sap-ha-guide-figure-1001]
+
+_**1. ábra:** Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban egy megosztott lemez nélkül_
+
+### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS a fürt megosztott lemezeket
+Windows az SAP ASCS/SCS példányhoz SAP central services, a SAP üzenetkiszolgáló, sorba kiszolgálói folyamatokat és SAP globális gazdagép fájlokat tartalmazza. SAP globális gazdagép fájlok esetében a teljes SAP-rendszer központi fájlok tárolására.
+
+Az SAP ASCS/SCS példányhoz a következő összetevőket tartalmazza:
+
+* Az SAP central services:
+    * Kétféle módon, egy üzenet és sorba kiszolgáló és a egy < ASCS/SCS virtuális gazdagép neve >, amely két folyamatok elérésére szolgál.
+    * Struktúra fájlt: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<példányok száma\>
+
+
+* SAP globális gazdagép fájlok:
     * Struktúra fájlt: S:\usr\sap\\&lt;SID&gt;\SYS\....
-    * A sapmnt fájlmegosztás, amely hozzáférést biztosít a globális S:\usr\sap\\&lt;SID&gt;\SYS\... a következő UNC elérési utat a fájlhoz:
+    * A sapmnt fájlmegosztásban, amely lehetővé teszi a hozzáférést a globális S:\usr\sap\\&lt;SID&gt;\SYS\... a következő UNC elérési utat a fájlhoz:
 
-     \\\\< ASC/SCS virtuális állomás neve > \sapmnt\\&lt;SID&gt;\SYS\....
+     \\\\< ASCS/SCS virtuális gazdagép neve > \sapmnt\\&lt;SID&gt;\SYS\....
 
 
-![2. ábra: Globális állomás sapmnt fájlmegosztás SAP ASC/SCS példány, folyamatok és a fájlstruktúra][sap-ha-guide-figure-8001]
+![2. ábra: Folyamatok, fájlstruktúra és globális gazdagép sapmnt fájlmegosztás, az SAP ASCS/SCS példányhoz][sap-ha-guide-figure-8001]
 
-_**2. ábra:** folyamatok fájlstruktúra és globális állomás sapmnt fájlmegosztást egy SAP ASC/SCS-példány_
+_**2. ábra:** folyamatok fájlstruktúra és globális gazdagép sapmnt fájlmegosztás, az SAP ASCS/SCS példányhoz_
 
-Egy magas rendelkezésre állású beállítást, a fürt SAP ASC/SCS példányok. Használjuk *megosztott lemez fürtözött* (meghajtó, a fenti példában), a SAP ASC/SCS és globális SAP-fájljainak tárolásához.
+Egy magas rendelkezésre állású beállítást, a fürt SAP ASCS/SCS-példányok. Használjuk a *fürtözött megosztott lemezeket* (meghajtó S, ebben a példában), helyezze az SAP ASCS/SCS és globális SAP fájlokat.
 
-![3. ábra: SAP ASC/SCS magas rendelkezésre ÁLLÁSÚ architektúra megosztott lemezzel][sap-ha-guide-figure-8002]
+![3. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel][sap-ha-guide-figure-8002]
 
-_**3. ábra:** SAP ASC/SCS magas rendelkezésre ÁLLÁSÚ architektúra megosztott lemezzel_
+_**3. ábra:** SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel_
 
 > [!IMPORTANT]
-> A két összetevő SAP ASC/SCS ugyanazon futni:
->* Az azonos < ASC/SCS virtuális állomás neve > az SAP üzenet és a sorba helyezni a kiszolgáló folyamat, és az SAP globális állomás fájlokat a sapmnt fájlmegosztáson keresztül elérésére szolgál.
->* Az azonos fürthöz megosztott meghajtó S van osztva közöttük.
+> Ez a két összetevő fusson a ugyanazt az SAP ASCS/SCS példányhoz:
+>* Az azonos < ASCS/SCS virtuális állomás neve > szolgál a SAP üzenet és a sorba helyezni a kiszolgálói folyamatokat, és az SAP globális gazdagép fájlok a sapmnt fájlmegosztás eléréséhez.
+>* Ugyanazon fürt megosztott lemezmeghajtó S megoszlik közöttük.
 >
 
 
-![4. ábra: SAP ASC/SCS magas rendelkezésre ÁLLÁSÚ architektúra megosztott lemezzel][sap-ha-guide-figure-8003]
+![4. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel][sap-ha-guide-figure-8003]
 
-_**4. ábra:** SAP ASC/SCS magas rendelkezésre ÁLLÁSÚ architektúra megosztott lemezzel_
+_**4. ábra:** SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel_
 
-### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Az Azure-ban lemezek megosztott SIOS DataKeeper
+### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Az SIOS DataKeeper megosztott lemezeket az Azure-ban
 
-A magas rendelkezésre állású SAP ASC/SCS példányához megosztott tárolót kell fürtbe.
+A magas rendelkezésre állású SAP ASCS/SCS példányhoz megosztott tárolót kell fürt.
 
-Harmadik féltől származó szoftverek SIOS DataKeeper Cluster Edition hozhat létre tükrözött tárolási funkciókat biztosító, amely a fürt megosztott tárolási szimulálja. A SIOS megoldást biztosít a valós idejű szinkron replikálása.
+Harmadik féltől származó szoftverek az SIOS DataKeeper Cluster Edition használatával hozzon létre egy tükrözött tárfiókot, amely szimulálja a fürt megosztott tárolójába. Az SIOS megoldás biztosítja a valós idejű szinkron adatreplikációt.
 
-A fürt megosztott lemez erőforrás létrehozása:
+Fürt megosztott erőforrás létrehozásához:
 
-1. További lemez csatolása a virtuális gépek Windows fürtkonfiguráció mindegyikének.
-2. Futtassa a SIOS DataKeeper Cluster Edition mindkét virtuális gép csomóponton.
-3. Konfigurálása SIOS DataKeeper Cluster Edition, hogy azt a tartalmat a csatlakoztatott lemezen kötet a forrás virtuális gép a cél virtuális gép további lemez méretével tükrözi. SIOS DataKeeper kivonatolja a forrás- és helyi köteteken, és majd azokat a Windows Server feladatátvevő fürt egy megosztott lemezként mutatja be.
+1. Windows fürtözött konfigurációban a virtuális gépek mindegyike csatolása egy további lemezt.
+2. Futtassa az SIOS DataKeeper Cluster Edition mindkét virtuális gép csomópontját.
+3. Állítsa az SIOS DataKeeper Cluster Edition, hogy azt a tartalom a további csatlakoztatott lemez kötet a forrás virtuális gép a cél virtuális gép további csatlakoztatott lemez mennyiségét tükrözi. Az SIOS DataKeeper kivonatolja a forrás- és helyi köteteken, és ezután jeleníti meg őket a Windows Server feladatátvételi fürtszolgáltatás egy megosztott lemez.
 
-További információk [SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
+További információk [az SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
 
-![5. ábra: A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban SIOS DataKeeper][sap-ha-guide-figure-1002]
+![5. ábra: A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban az SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**5. ábra:** Windows feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban SIOS DataKeeper_
+_**5. ábra:** Windows feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban az SIOS DataKeeper_
 
 > [!NOTE]
-> Nincs szükség a megosztott lemez néhány DBMS termékekkel, például az SQL Server magas rendelkezésre állásra. Az SQL Server AlwaysOn adatbázis-kezelő adatainak és naplókönyvtárainak fájlokat replikálja a helyi lemez egy másik csomópont a helyi lemez egy fürtcsomópont. A Windows-fürt konfigurációs ebben az esetben egy megosztott lemez nem szükséges.
+> Magas rendelkezésre állás az egyes DBMS-termékek, például az SQL Server már nincs szüksége megosztott lemezeket. Az SQL Server AlwaysOn replikálja az adatbázis-kezelő adathoz és naplófájlhoz a helyi lemez egy fürtcsomópont a helyi lemez egy másik fürtcsomópont. Ebben az esetben a Windows-fürt konfigurációját nem kell egy megosztott lemez.
 >
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure-infrastruktúra előkészítése az SAP magas rendelkezésre ÁLLÁSÚ egy Windows feladatátvevő fürt és a megosztott lemez egy SAP ASC/SCS példány használatával][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [Az Azure-infrastruktúra előkészítése az SAP magas rendelkezésre ÁLLÁS Windows feladatátvevő fürt és megosztott lemez használatával egy SAP ASCS/SCS példányhoz][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [SAP NetWeaver magas rendelkezésre ÁLLÁSÚ egy Windows feladatátvevő fürt és telepíthet egy SAP ASC/SCS példány megosztott lemez][sap-high-availability-installation-wsfc-shared-disk]
+* [Telepítse az SAP NetWeaver magas rendelkezésre ÁLLÁS egy Windows feladatátvevő fürt és megosztott lemez egy SAP ASCS/SCS példányhoz][sap-high-availability-installation-wsfc-shared-disk]

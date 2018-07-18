@@ -1,46 +1,51 @@
 ---
-title: Ismerkedés a rugalmas feladatok |} Microsoft Docs
-description: A rugalmas adatbázis-feladatok segítségével hajtható végre T-SQL-parancsfájlok, amelyek több adatbázis több.
+title: Ismerkedés a rugalmas adatbázis-feladatok |} A Microsoft Docs
+description: Rugalmas adatbázis-feladatok segítségével hajtsa végre a több adatbázisra kiterjedő T-SQL-parancsfájlok.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: 4f12c3353ca4949b3c1c031420ec5a0b8fdb2dbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 8b03d228464978995a7a97e2f245b629b52ed812
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649152"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093144"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Ismerkedés a rugalmas adatbázis-feladatok
-A rugalmas adatbázis feladataihoz (előzetes verzió) Azure SQL Database megbízhatóan hajtható végre T-SQL-parancsfájlok, amelyek több adatbázis több során automatikusan újrapróbálkozás és a végleges befejezési garanciák teszi lehetővé. A rugalmas adatbázis feladat szolgáltatással kapcsolatos további információkért lásd: [rugalmas feladatok](sql-database-elastic-jobs-overview.md).
 
-Ez a cikk bővíti a minta található [Ismerkedés a rugalmas adatbáziseszközöket](sql-database-elastic-scale-get-started.md). Amikor elkészült, megtanulhatja a kapcsolódó adatbázisok csoportja felügyelt feladatok létrehozásához és kezeléséhez. Nincs szükség a rugalmas bővítést eszközeit használja a rugalmas feladatok előnyeinek kihasználása érdekében.
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+Elastic Database-feladatok (előzetes verzió) az Azure SQL Database lehetővé teszi, hogy automatikusan újra próbálkozik, és a végleges befejezési garanciákat biztosít több adatbázisra kiterjedő T-SQL-parancsfájlok megbízhatóan futtathat. A rugalmas feladat szolgáltatással kapcsolatos további információkért lásd: [az Elastic jobs](sql-database-elastic-jobs-overview.md).
+
+Ez a cikk a található minta kibővíti [Ismerkedés az Elastic Database-eszközök](sql-database-elastic-scale-get-started.md). Amikor elkészült, megismerheti, hogyan hozhat létre és kezelhet, amelyek a kapcsolódó adatbázisok egy csoportjának kezelését feladatok. Nem kötelező a rugalmasan méretezhető eszközeivel az Elastic jobs előnyeinek kihasználása érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Töltse le és futtassa a [Ismerkedés a rugalmas adatbázis eszközök minta](sql-database-elastic-scale-get-started.md).
+Töltse le és futtassa a [Ismerkedés az Elastic Database-eszközök minta](sql-database-elastic-scale-get-started.md).
 
-## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Hozzon létre egy shard mintaalkalmazás térkép-kezelőt
-Itt létre shard térképre manager több szegmensben osztják, az adatok beszúrását követi azokat a szilánkok együtt. Ha már rendelkezik a bennük foglalt horizontálisan skálázott adatok állítsa be a szilánkok, hagyja ki a következő lépéseket, és helyezze át a következő szakaszban.
+## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Hozzon létre egy szegmens a mintaalkalmazással kezelő
+Itt létrehozhat horizontálispartíció-térkép manager több szegmensben, majd az adatok beszúrását a szegmensekre együtt. Ha már rendelkezik állítsa be őket a horizontálisan skálázott adatok szegmensek, hagyja ki a következő lépéseket, és helyezze át a következő szakaszra.
 
-1. Hozza létre, és futtassa a **Ismerkedés a rugalmas adatbáziseszközöket** mintaalkalmazást. Kövesse a lépéseket, amíg a szakasz a 7. lépés [töltse le és futtassa a mintaalkalmazást](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). 7. lépés végén tekintse meg a következő parancssort:
+1. Hozza létre és futtassa a **Ismerkedés az Elastic Database-eszközök** mintaalkalmazást. Kövesse a lépéseket, amíg a szakasz a 7. lépés [töltse le és futtassa a mintaalkalmazást](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). 7. lépés végén jelenik meg a következő parancssort:
 
    ![parancssor](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
-2. A parancsablakban írja be a "1", és nyomja le az ENTER **Enter**. Létrehozza a shard térkép manager, és két szilánkok hozzáadása a kiszolgálóhoz. Ezután írja be a "3", és nyomja le az ENTER **Enter**; Ez a művelet megismétlése négy alkalommal. Ez a szilánkok minta adatsorok szúrja be.
-3. A [Azure-portálon](https://portal.azure.com) három új adatbázist kell megjelenítenie:
+2. A parancssori ablakba írja be a "1", és nyomja le az **Enter**. Ez létrehozza a szegmens kezelő, és két szegmensek hozzáadása a kiszolgálóhoz. Ezután írja be a "3", és nyomja le az **Enter**; négyszer addig ismételje a műveletet. Ez a szegmensek minta adatsor szúr be.
+3. A [az Azure portal](https://portal.azure.com) három új adatbázisokat kell megjelennie:
 
-   ![A Visual Studio-jóváhagyás](./media/sql-database-elastic-query-getting-started/portal.png)
+   ![A Visual Studio megerősítése](./media/sql-database-elastic-query-getting-started/portal.png)
 
-   Ezen a ponton azt hozzon létre egy egyéni adatbázis-gyűjteményt, amely tükrözi a shard térkép összes adatbázisát. Ez lehetővé teszi, hogy létrehozni és végrehajtani egy feladatot, amely egy új tábla szilánkok között.
+   Ezen a ponton hozunk létre egy egyéni adatbázis-gyűjtemény, amely tükrözi a szegmenstérkép összes adatbázishoz. Ez lehetővé teszi számunkra, hogy hozzon létre, és hajtsa végre egy feladatot, amely hozzáad egy új táblát a szegmensek között.
 
-Itt azt kellene általában a shard térkép létrehozásához céloz, használja a **New-AzureSqlJobTarget** parancsmag. A szilánkok manager adatbázist be kell állítani egy adatbázis célként, és majd az adott shard térkép cél van megadva. Ehelyett fogjuk számba venni a kiszolgáló összes adatbázisát, és az adatbázisok a gyűjteményhez hozzáadni kívánt új egyéni fő adatbázis kivételével.
+Itt mi lenne általában horizontálispartíció-térkép létrehozása cél használata a **New-AzureSqlJobTarget** parancsmagot. A szegmenstérkép-kezelő adatbázis állítson be egy adatbázis célként, és majd a különleges szegmenstérkép célként van megadva. Ehelyett fogjuk enumerálni az összes adatbázist a kiszolgálón, és adja hozzá az adatbázisokat az új egyéni gyűjtemény kivételével a master adatbázisban.
 
-## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Létrehoz egy egyéni gyűjteményt, és adja hozzá a összes adatbázis a kiszolgálón a egyéni gyűjtemény cél fő kivételével.
+## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Egy egyéni gyűjteményt hoz létre, és minden adatbázisok hozzáadása a kiszolgálón a egyéni gyűjtemény cél fő kivételével.
    ```
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
@@ -105,7 +110,7 @@ Itt azt kellene általában a shard térkép létrehozásához céloz, használj
     $ErrorActionPreference = "Continue"
    }
    ```
-## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Az adatbázisok közötti végrehajtási T-SQL parancsfájl létrehozása
+## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Hozzon létre egy T-SQL parancsfájl végrehajtása több adatbázisban
    ```
     $scriptName = "NewTable"
     $scriptCommandText = "
@@ -124,7 +129,7 @@ Itt azt kellene általában a shard térkép létrehozásához céloz, használj
     Write-Output $script
    ```
 
-## <a name="create-the-job-to-execute-a-script-across-the-custom-group-of-databases"></a>A parancsprogram végrehajtása az egyéni csoport adatbázisok között feladat létrehozása
+## <a name="create-the-job-to-execute-a-script-across-the-custom-group-of-databases"></a>Az egyéni csoportot, az adatbázisok között parancsprogram végrehajtása a feladat létrehozása
 
    ```
     $jobName = "create on server dbs"
@@ -136,10 +141,10 @@ Itt azt kellene általában a shard térkép létrehozásához céloz, használj
     Write-Output $job
    ```
 
-## <a name="execute-the-job"></a>A feladat végrehajtása
-A következő PowerShell-parancsfájl segítségével egy meglévő feladat végrehajtása:
+## <a name="execute-the-job"></a>A feladat végrehajtására
+A következő PowerShell-parancsprogram egy meglévő feladat végrehajtására használhatók:
 
-Frissítse a következő változót a kívánt feladat neve végrehajtott megfelelően:
+A következő változót kell végrehajtani a kívánt feladat neve megfelelően frissítse:
 
    ```
     $jobName = "create on server dbs"
@@ -147,8 +152,8 @@ Frissítse a következő változót a kívánt feladat neve végrehajtott megfel
     Write-Output $jobExecution
    ```
 
-## <a name="retrieve-the-state-of-a-single-job-execution"></a>Egyetlen feladat-végrehajtási állapotának beolvasása
-Ugyanazon **Get-AzureSqlJobExecution** parancsmagot a **IncludeChildren** paraméter gyermek feladat végrehajtások, nevezetesen a minden feladat végrehajtása a feladat által megcélzott minden adatbázison meghatározott állapotban állapotának megtekintéséhez.
+## <a name="retrieve-the-state-of-a-single-job-execution"></a>Egy egyetlen feladat-végrehajtási állapotának lekérése
+Ugyanaz, mint **Get-AzureSqlJobExecution** parancsmagot a **IncludeChildren** paramétert gyermek feladatvégrehajtások, nevezetesen a meghatározott állapotban minden egyes adatbázison feladat-végrehajtási állapotának megtekintése a feladat által megcélzott.
 
    ```
     $jobExecutionId = "{Job Execution Id}"
@@ -156,29 +161,29 @@ Ugyanazon **Get-AzureSqlJobExecution** parancsmagot a **IncludeChildren** param�
     Write-Output $jobExecutions
    ```
 
-## <a name="view-the-state-across-multiple-job-executions"></a>Több feladat végrehajtások közötti a állapotának megtekintése
-A **Get-AzureSqlJobExecution** parancsmag több feladat végrehajtások, a megadott paramétereknek szűrt megjelenítéséhez használható több választható paraméterrel rendelkezik. A következő mutatja be a Get-AzureSqlJobExecution használatának lehetséges módjai közül:
+## <a name="view-the-state-across-multiple-job-executions"></a>Az állapot megtekintéséhez között több feladat-végrehajtások
+A **Get-AzureSqlJobExecution** parancsmag rendelkezik több választható paraméterek: több feladatvégrehajtások szűrt keresztül megadott paraméterek megjelenítéséhez használható. A következő mutat be néhányat. használja a Get-AzureSqlJobExecution lehetséges módja:
 
-Lekéri az összes aktív legfelső szintű feladat végrehajtások:
+Kérje le az összes aktív legfelső szintű feladat-végrehajtások:
 
    ```
     Get-AzureSqlJobExecution
    ```
 
-Lekéri az összes legfelső szintű feladat végrehajtások, beleértve az inaktív feladat végrehajtások:
+Minden felső szintű feladat-végrehajtások, beleértve az inaktív feladat-végrehajtások lekéréséhez:
 
    ```
     Get-AzureSqlJobExecution -IncludeInactive
    ```
 
-Lekéri az összes gyermek feladat végrehajtások inaktív feladat végrehajtások többek között a megadott feladat végrehajtási Azonosítóhoz:
+A megadott feladat végrehajtási Azonosítóhoz, beleértve az inaktív feladat-végrehajtások az összes gyermek feladatvégrehajtások lekéréséhez:
 
    ```
     $parentJobExecutionId = "{Job Execution Id}"
     Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId -IncludeInactive -IncludeChildren
    ```
 
-Ütemezés használatával létrehozott összes feladat végrehajtások beolvasása / feladat-kombináció, beleértve az inaktív feladatok:
+Egy ütemezés használatával létrehozott összes feladat-végrehajtások beolvasása / feladat-kombináció, beleértve az inaktív feladatok:
 
    ```
     $jobName = "{Job Name}"
@@ -186,7 +191,7 @@ Lekéri az összes gyermek feladat végrehajtások inaktív feladat végrehajtá
     Get-AzureSqlJobExecution -JobName $jobName -ScheduleName $scheduleName -IncludeInactive
    ```
 
-Lekéri az összes feladat megadott shard térképre, beleértve az inaktív feladatokat célcsoportkezelést:
+A megadott horizontális skálázási térképet, beleértve az inaktív feladatok célzó összes feladat beolvasása:
 
    ```
     $shardMapServerName = "{Shard Map Server Name}"
@@ -196,7 +201,7 @@ Lekéri az összes feladat megadott shard térképre, beleértve az inaktív fel
     Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
    ```
 
-Lekéri az összes feladat a megadott egyéni gyűjtemény, beleértve az inaktív feladatokat célcsoportkezelést:
+A megadott egyéni gyűjteményét, beleértve az inaktív feladatok célzó összes feladat beolvasása:
 
    ```
     $customCollectionName = "{Custom Collection Name}"
@@ -204,7 +209,7 @@ Lekéri az összes feladat a megadott egyéni gyűjtemény, beleértve az inakt�
     Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
    ```
 
-Feladat feladat végrehajtások belül egy adott feladat végrehajtási listájának beolvasása:
+Belül egy adott feladat-végrehajtási feladat feladat-végrehajtások listájának beolvasása:
 
    ```
     $jobExecutionId = "{Job Execution Id}"
@@ -212,17 +217,17 @@ Feladat feladat végrehajtások belül egy adott feladat végrehajtási listáj�
     Write-Output $jobTaskExecutions
    ```
 
-Feladat végrehajtási részlete beolvasása:
+Kérje le a feladat feladat-végrehajtási részleteit:
 
-A következő PowerShell-parancsfájl segítségével egy feladat a feladat a végrehajtás, amely akkor különösen hasznos, ha végrehajtási hibakeresésére részleteinek megtekintéséhez.
+A következő PowerShell-parancsfájl segítségével egy feladat a feladat a végrehajtás, amelyek akkor különösen hasznos, ha a hibakeresés végrehajtása érdekében részleteinek megtekintéséhez.
    ```
     $jobTaskExecutionId = "{Job Task Execution Id}"
     $jobTaskExecution = Get-AzureSqlJobTaskExecution -JobTaskExecutionId $jobTaskExecutionId
     Write-Output $jobTaskExecution
    ```
 
-## <a name="retrieve-failures-within-job-task-executions"></a>Sikertelen feladat feladat végrehajtások belül beolvasása
-A JobTaskExecution objektum tulajdonság az életciklus a feladat együtt egy üzenettulajdonságot tartalmaz. Ha egy feladat a feladat végrehajtása sikertelen volt, a életciklus tulajdonsága *sikertelen* és az üzenet tulajdonsága az eredményül kapott hibaüzenetet, és a verem. Ha egy feladat sikertelen volt, fontos, amely egy adott feladat sikertelen feladat-feladatok részletes adatainak megtekintéséhez.
+## <a name="retrieve-failures-within-job-task-executions"></a>Feladat feladat-végrehajtások belül hibáinak beolvasása
+A JobTaskExecution objektum a feladatot egy üzenet egyik tulajdonságát együtt életciklusának tulajdonság tartalmazza. Ha egy feladat a feladat végrehajtása sikertelen volt a életciklus tulajdonsága *sikertelen* és a Message tulajdonság értéke az eredményül kapott kivételre vonatkozó üzenet, és a stack. Ha egy feladat sikertelen volt, fontos, hogy egy adott feladat sikertelen feladatok részleteinek megtekintéséhez.
 
    ```
     $jobExecutionId = "{Job Execution Id}"
@@ -237,35 +242,35 @@ A JobTaskExecution objektum tulajdonság az életciklus a feladat együtt egy ü
    ```
 
 ## <a name="waiting-for-a-job-execution-to-complete"></a>Várakozás a feladat-végrehajtás befejeződésére
-A következő PowerShell-parancsfájl segítségével Várjon, amíg a feladat feladat elvégzéséhez:
+A következő PowerShell-parancsfájl segítségével várnia a feladat feladat végrehajtásához:
 
    ```
     $jobExecutionId = "{Job Execution Id}"
     Wait-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
 
-## <a name="create-a-custom-execution-policy"></a>Egyéni végrehajtási házirend létrehozása
-Rugalmas adatbázis-feladatok feladat indításakor alkalmazható egyéni végrehajtási házirendek létrehozását támogatja.
+## <a name="create-a-custom-execution-policy"></a>Hozzon létre egy egyéni végrehajtási házirend
+Elastic Database-feladatok feladatok indításakor alkalmazható egyéni végrehajtási házirendek létrehozását támogatja.
 
 Végrehajtási házirendek definiálása jelenleg engedélyezése:
 
-* Name: A végrehajtási házirend azonosítója.
-* Feladat időtúllépése: Teljes idő előtt rugalmas adatbázis-feladatok megszakította a feladatot.
-* Kezdeti újrapróbálkozási időköz: Intervallum várjon próbálkozik újra.
-* Maximális újrapróbálkozási időköz: Cap újrapróbálkozási intervallumok használatára.
-* Újrapróbálkozási időköz leállítási együttható: A következő intervallum próbálkozások közötti különbség kifejezésére szolgáló együttható.  Az alábbi képlet használható: (kezdeti újrapróbálkozási időközét) * Math.pow ((időköz leállítási együttható), (próbálkozások száma) - 2).
-* Kísérletek maximális száma: Az újrapróbálkozások maximális számát megkísérel végrehajtani egy feladatot belül.
+* Neve: A végrehajtási házirend azonosítója.
+* Feladat időtúllépése: Teljes idő előtt Elastic Database-feladatok által megszakított feladatok.
+* Kezdeti újrapróbálkozási időköz: Intervallum várjon első újrapróbálkozás előtt.
+* Maximális újrapróbálkozási időköz: Korlát az újrapróbálkozási időközök használatára.
+* Újrapróbálkozási időköz leállítási együttható: Együttható alapján számítja ki a következő esedékes újrapróbálkozások között.  Az alábbi képlet használható: (kezdeti csolódási újrapróbálkozási időköz) * Math.pow ((intervallum leállítási együttható) (próbálkozások száma) – 2).
+* Kísérletek maximális száma: A maximális újrapróbálkozási kísérletek száma a feladatokon belül végrehajtani.
 
 Az alapértelmezett végrehajtási házirendet a következő értékeket használja:
 
-* Name: Alapértelmezett végrehajtási házirend
+* Név: Alapértelmezett végrehajtási házirend
 * Feladat időtúllépése: 1 hét
-* Kezdeti újrapróbálkozási időköz: 100 milliomod másodperc
+* Kezdeti újrapróbálkozási időköz: 100 ezredmásodpercben
 * Maximális újrapróbálkozási időköz: 30 perc
-* Ismételje meg a időköz együttható: 2. régiója
+* Ismételje meg a időköz együttható: 2
 * Kísérletek maximális száma: 2 147 483 647
 
-A kívánt végrehajtási szabályzat létrehozása:
+A kívánt végrehajtási házirend létrehozása:
 
    ```
     $executionPolicyName = "{Execution Policy Name}"
@@ -279,7 +284,7 @@ A kívánt végrehajtási szabályzat létrehozása:
    ```
 
 ### <a name="update-a-custom-execution-policy"></a>Egy egyéni végrehajtási házirend frissítése
-A frissíteni kívánt végrehajtási házirend frissítése:
+A frissíteni kívánt végrehajtási szabályzat frissítése:
 
    ```
     $executionPolicyName = "{Execution Policy Name}"
@@ -293,28 +298,28 @@ A frissíteni kívánt végrehajtási házirend frissítése:
    ```
 
 ## <a name="cancel-a-job"></a>Feladatok megszakítása
-Rugalmas adatbázis-feladatok feladatok megszakítását kérelmeket támogatja.  Ha a rugalmas adatbázis-feladatok jelenleg végrehajtás alatt álló feladat a lemondási kérelmet észlel, megkísérli a feladat leállítása.
+Elastic Database-feladatok feladatok megszakítási kérések támogatja.  Elastic Database-feladatok egy jelenleg végrehajtás alatt feladat megszakítási kérelmet észleli, ha megkísérli leállítani a feladatot.
 
-Rugalmas adatbázis-feladatok is hajtsa végre a megszakítási két különböző módja van:
+Elastic Database-feladatok is hajtsa végre a megszakítási két különböző módja van:
 
-1. Megszakítása jelenleg feldolgozás alatt álló feladatok: törlése közben jelenleg fut egy feladat észleli, ha a jelenleg végrehajtás alatt álló szempontja, hogy a feladat belül törlése megkísérlése.  Példa: Ha egy hosszú ideig tartó jelenleg végrehajtás alatt álló lekérdezés során a törlése megkísérlése, van-e a lekérdezés megszakításához tett kísérlet.
-2. Zároló feladat újrapróbálkozások: Törlése a vezérlő szál észlelésekor feladat a végrehajtás elindítása előtt, a vezérlő szál Ezzel elkerülheti a feladat futtatására és a kérelem deklarálható megszakítottként.
+1. Megszakítása jelenleg végrehajtás alatt álló feladatokat: lemondás észlel, amíg egy tevékenység fut, ha a lemondás kísérlet történik a feladat jelenleg végrehajtás alatt aspektusa belül.  Példa: Ha jelenleg lemondás megkísérelt végrehajtani egy hosszan futó lekérdezést, van-e a lekérdezés ismételt megkísérléséhez.
+2. Megszakítás alatt álló tevékenység-újrapróbálások: Lemondás végrehajtási feladat konfigurálása előtt a vezérlő szál észlelése esetén a vezérlőelem szál elkerülhető, hogy a feladat elindítása és deklarálja a kérelmet, mert meg lett szakítva.
 
-A feladat megszakításának szülő-feladat van szükség, ha a lemondási kérelmet a szülő feladat és összes a gyermek-feladatokkal figyelembe véve.
+Ha egy feladat törlése a szülőfeladat van szükség, a szülő feladat és az összes hozzá tartozó gyermekfeladatok a megszakítási kérelemre váró figyelembe véve.
 
-Megszakítási kérelmet küldeni, használja a **Stop-AzureSqlJobExecution** parancsmag és állítsa be a **JobExecutionId** paraméter.
+Megszakítási kérelmet küldeni, használja a **Stop-AzureSqlJobExecution** parancsmagot, és állítsa a **JobExecutionId** paraméter.
 
    ```
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
 
-## <a name="delete-a-job-by-name-and-the-jobs-history"></a>A feladat nevét és a feladatelőzmények törlése
-Rugalmas adatbázis-feladatok támogatja az aszinkron feladatok törlése. Egy feladat is törlésre, és a rendszer törli a feladatot, és a feladatelőzményekben az összes feladat végrehajtások a feladat befejezése után. A rendszer automatikusan szakítsa meg a aktív feladat végrehajtások.  
+## <a name="delete-a-job-by-name-and-the-jobs-history"></a>Feladat neve és a feladatelőzmények törlése
+Elastic Database-feladatok támogatja az aszinkron feladatok törlése. Egy feladat is törlésre, és a rendszer törli a feladatot és annak feladatelőzmények összes feladat-végrehajtások a feladat befejezése után. A rendszer nem automatikusan szünteti meg az aktív feladat-végrehajtások.  
 
-Ehelyett Stop-AzureSqlJobExecution megszakítja az aktív feladat végrehajtások lehet meghívni.
+Ehelyett Stop-AzureSqlJobExecution megszakítja az aktív feladat-végrehajtások lehet meghívni.
 
-Törlési feladat indításához használja a **Remove-AzureSqlJob** parancsmag és állítsa be a **JobName** paraméter.
+A törlési feladat indításához használja a **Remove-AzureSqlJob** parancsmagot, és állítsa a **JobName** paraméter.
 
    ```
     $jobName = "{Job Name}"
@@ -322,9 +327,9 @@ Törlési feladat indításához használja a **Remove-AzureSqlJob** parancsmag 
    ```
 
 ## <a name="create-a-custom-database-target"></a>Hozzon létre egy egyéni adatbázis-cél
-Egyéni adatbázis célok meghatározása a rugalmas adatbázis-feladatokhoz, amelyek a végrehajtás közvetlenül vagy egy egyéni adatbázis csoportban foglalható is használható. Mivel a **rugalmas készletek** nem még közvetlenül támogatottak a PowerShell API-k segítségével egyszerűen létrehozhat egy egyéni adatbázis célként és egy egyéni adatbázis gyűjtemény célként, ami magában foglalja a készlet összes adatbázisát.
+Rugalmas adatbázis-feladatok végrehajtási közvetlenül vagy egy egyéni adatbázis csoportban belefoglalási használható egyéni adatbázis célok lehet definiálni. Mivel **rugalmas készletek** nem még közvetlenül használhatók a PowerShell API-kon keresztül egyszerűen létrehozhat egy egyéni adatbázis célként és egy egyéni adatbázis gyűjtemény cél számára, amely magában foglalja a készletben található összes adatbázishoz.
 
-Állítsa be a következő változókat, hogy tükrözze a kívánt adatbázis adatait:
+Állítsa be a kívánt adatbázis adatait tükrözik a következő változókat:
 
    ```
     $databaseName = "{Database Name}"
@@ -332,20 +337,20 @@ Egyéni adatbázis célok meghatározása a rugalmas adatbázis-feladatokhoz, am
     New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName
    ```
 
-## <a name="create-a-custom-database-collection-target"></a>Hozzon létre egy egyéni adatbázis-gyűjtemény célja
-Egyéni adatbázis gyűjtemény célja végrehajtásának engedélyezéséhez több meghatározott adatbázis cél között definiálhatók. Egy adatbázis-csoport létrehozása után adatbázisok társítható egyéni gyűjtemény célja.
+## <a name="create-a-custom-database-collection-target"></a>Hozzon létre egy egyéni adatbázis-gyűjtemény cél
+Egy egyéni adatbázis-gyűjtemény cél között több meghatározott adatbázis-cél végrehajtásának engedélyezéséhez lehet definiálni. Egy adatbázis-csoport létrehozása után adatbázisok társíthatók a cél-egyéni gyűjtemény.
 
-Állítsa be a kívánt egyéni gyűjtemény konfigurációjához megfelelően a következő változókat:
+Állítsa be az alábbi változókat, hogy a kívánt egyéni gyűjtemény cél konfigurációját tükrözzék:
 
    ```
     $customCollectionName = "{Custom Database Collection Name}"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
    ```
 
-### <a name="add-databases-to-a-custom-database-collection-target"></a>Adatbázisok hozzáadása egy egyéni adatbázis-gyűjtemény célja
-Egyéni adatbázis gyűjtemény célok hozzon létre egy csoportot az adatbázisok adatbázis célok társítható. Egy feladat jön létre, amely egyéni adatbázis gyűjtemény céloz, amikor ki van bontva, amelyekre a végrehajtás időpontjában a csoporthoz tartozó adatbázisok.
+### <a name="add-databases-to-a-custom-database-collection-target"></a>Egy egyéni adatbázis-gyűjtemény cél-adatbázisok hozzáadása
+Egyéni adatbázis gyűjtemény célozza, hozzon létre egy csoportot az adatbázisok adatbázis-tárolók társítható. Minden alkalommal, amikor egy feladat jön létre, amely az egyéni adatbázis gyűjtemény céloz, ki van bontva, amelyekre a végrehajtás időpontjában a csoporthoz tartozó adatbázisok.
 
-Vegye fel a kívánt adatbázist egy adott egyéni gyűjtemény:
+A kívánt adatbázis hozzáadása egy adott egyéni gyűjtemény:
 
    ```
     $serverName = "{Database Server Name}"
@@ -354,8 +359,8 @@ Vegye fel a kívánt adatbázist egy adott egyéni gyűjtemény:
     Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName
    ```
 
-#### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Tekintse át az adatbázisokat egy egyéni adatbázis gyűjtemény a cél
-Használja a **Get-AzureSqlJobTarget** parancsmag egyéni adatbázis gyűjtemény célja a gyermek adatbázis beolvasása.
+#### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Tekintse át az adatbázisok egy egyéni adatbázis-gyűjtemény célon belül
+Használja a **Get-AzureSqlJobTarget** beolvasásához a gyermek adatbázisok egy egyéni adatbázis-gyűjtemény célon belül maradjon.
 
    ```
     $customCollectionName = "{Custom Database Collection Name}"
@@ -364,8 +369,8 @@ Használja a **Get-AzureSqlJobTarget** parancsmag egyéni adatbázis gyűjtemén
     Write-Output $childTargets
    ```
 
-### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Hozzon létre egy feladatot, a parancsfájl végrehajtása egy egyéni adatbázis-gyűjtemény célja között
-Használja a **New-AzureSqlJob** parancsmag segítségével hozzon létre egy feladatot, egy egyéni adatbázis gyűjtemény tároló által definiált adatbázisok csoportja ellen. Rugalmas adatbázis-feladatok kibontja a feladat több gyermek feladat minden egyes adatbázis megfelelő társított egyéni adatbázis gyűjtemény célja, és győződjön meg arról, hogy a parancsfájl végrehajtása minden egyes adatbázison. Ebben az esetben fontos, hogy-e parancsfájlokat idempotent való ismételt próbálkozás rugalmasak lehetnek.
+### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Hozzon létre egy feladatot, amely egy szkript végrehajtása egy egyéni adatbázis-gyűjtemény cél között
+Használja a **New-AzureSqlJob** parancsmaggal hozzon létre egy feladatot egy egyéni adatbázis-gyűjtemény cél által meghatározott adatbázisok csoportjain. Elastic Database-feladatok kibővíti a feladat be több, az egyéni adatbázis-gyűjtemény cél társított minden egyes adatbázishoz tartozó gyermekfeladatok, és győződjön meg arról, hogy a parancsfájl végrehajtása minden adatbázison. Újra fontos, hogy a parancsfájlok idempotens rugalmas való próbálkozások.
 
    ```
     $jobName = "{Job Name}"
@@ -377,14 +382,14 @@ Használja a **New-AzureSqlJob** parancsmag segítségével hozzon létre egy fe
     Write-Output $job
    ```
 
-## <a name="data-collection-across-databases"></a>Az adatbázisok közötti adatok gyűjtése
-**Rugalmas adatbázis-feladatok** támogatja, a lekérdezés végrehajtása adatbázisok csoportja között, és a megadott adatbázis tábla történő küldése. A tábla minden egyes adatbázisból a lekérdezési eredmények megtekintése érdekében bekövetkeztek kérdezhetők le. Ez a lekérdezés végrehajtása több adatbázis közötti egy aszinkron mechanizmust biztosít. Hiba esetben, például egy adatbázis átmenetileg elérhetetlenné újrapróbálkozások keresztül automatikusan kezeli.
+## <a name="data-collection-across-databases"></a>Adatgyűjtés több adatbázisban
+**Elastic Database-feladatok** adatbáziscsoportok közötti a lekérdezés végrehajtása támogatja, és elküldi az eredményeket egy megadott adatbázistáblába. A táblázat az egyes adatbázisok a lekérdezés eredményeinek megtekintéséhez utólag kérdezhetők le. Ez itt egy mechanizmust, az aszinkron lekérdezés végrehajtása több adatbázis közötti. Hiba eseteket, például egy adatbázis ideiglenesen elérhetetlenné automatikusan kezeli, az újrapróbálkozások keresztül.
 
-A megadott célhely tábla automatikusan jön létre, ha még nincs, a séma, a visszaadott eredményhalmaz megfelelő. A parancsfájl végrehajtása több eredménykészlet adja vissza, ha a rugalmas adatbázis-feladatok csak akkor küldi el az első sablon kiválasztásával megadott céltábla.
+A megadott célpartícióra tábla automatikusan létrejön, ha ezt még nem létezik, a visszaadott eredményhalmaz sémájának megfelelő. A parancsfájl végrehajtása több eredménykészletet adja vissza, ha a rugalmas adatbázis-feladatok csak küld a megadott cél tábla első alkalommal.
 
-A következő PowerShell-parancsfájl segítségével egy parancsfájlt, az eredmények gyűjtése egy megadott táblába. Ez a parancsfájl feltételezi, hogy egy T-SQL parancsfájl létrehozva a következő amelyek kimenete egy eredményhalmaz és létrehoztak egy egyéni adatbázis gyűjtemény célhelyet.
+A következő PowerShell-parancsfájl segítségével futtathat egy olyan parancsprogramot, az eredmények gyűjtése a megadott táblába. Ez a parancsfájl feltételezi, hogy egyetlen eredményhalmaz adja vissza, amely egy T-SQL-szkript létrejött, és a egy egyéni adatbázis-gyűjtemény cél jött létre.
 
-Állítsa be a kívánt parancsfájl, a hitelesítő adatokat, és a végrehajtási célját megfelelően a következő:
+Állítsa be a kívánt parancsfájlt, a hitelesítő adatok és a végrehajtási célként a következőket:
 
    ```
     $jobName = "{Job Name}"
@@ -399,7 +404,7 @@ A következő PowerShell-parancsfájl segítségével egy parancsfájlt, az ered
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
    ```
 
-### <a name="create-and-start-a-job-for-data-collection-scenarios"></a>Hozzon létre, és elindíthat egy feladatot a adatáttelepítések gyűjtemény esetében
+### <a name="create-and-start-a-job-for-data-collection-scenarios"></a>Hozzon létre, és a gyűjtemény adatforgatókönyvek feladat indítása
    ```
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $executionCredentialName -ContentName $scriptName -ResultSetDestinationServerName $destinationServerName -ResultSetDestinationDatabaseName $destinationDatabaseName -ResultSetDestinationSchemaName $destinationSchemaName -ResultSetDestinationTableName $destinationTableName -ResultSetDestinationCredentialName $destinationCredentialName -TargetId $target.TargetId
     Write-Output $job
@@ -407,8 +412,8 @@ A következő PowerShell-parancsfájl segítségével egy parancsfájlt, az ered
     Write-Output $jobExecution
    ```
 
-## <a name="create-a-schedule-for-job-execution-using-a-job-trigger"></a>A feladat végrehajtását egy feladat eseményindító ütemezés létrehozása
-A következő PowerShell-parancsfájl segítségével hozzon létre egy feladatról ütemezést. A parancsfájl egy percen, de a New-AzureSqlJobSchedule is támogat - DayInterval, - HourInterval, - MonthInterval, és - WeekInterval paraméterek. Csak egyszer hajtható végre ütemezéseket is létrehozható, hogy - alkalommal.
+## <a name="create-a-schedule-for-job-execution-using-a-job-trigger"></a>A feladat-végrehajtási feladat trigger használatával ütemezés létrehozása
+A következő PowerShell-parancsfájl segítségével egy ismétlődő ütemezés létrehozásához. Ez a szkript egy egy perces időközt, de a New-AzureSqlJobSchedule is támogatja a - DayInterval, - HourInterval, - MonthInterval, és - WeekInterval paraméterek. Hozható létre ütemezés, amely csak egyszer hajtható végre az átadott - Item parancsot.
 
 Új ütemezés létrehozása:
    ```
@@ -419,10 +424,10 @@ A következő PowerShell-parancsfájl segítségével hozzon létre egy feladatr
     Write-Output $schedule
    ```
 
-### <a name="create-a-job-trigger-to-have-a-job-executed-on-a-time-schedule"></a>Szeretné, hogy a feladat végrehajtása ütemezéssel feladat eseményindító létrehozása
-Egy feladat eseményindító szeretné, hogy a feladat végrehajtása idő ütemezés szerint lehet megadni. A következő PowerShell-parancsfájl segítségével hozzon létre egy feladat eseményindító.
+### <a name="create-a-job-trigger-to-have-a-job-executed-on-a-time-schedule"></a>Szeretné, hogy egy feladat megadott idő ütemezés szerint elvégzendő feladat eseményindító létrehozása
+Egy feladat eseményindító szeretné, hogy a feladat végrehajtása egy ideje ütemezés szerint lehet definiálni. A következő PowerShell-parancsfájl segítségével hozzon létre egy feladatot az eseményindító.
 
-Állítsa be a következő változókat, hogy a kívánt feladat és ütemezése:
+Állítsa be az alábbi változókat, hogy a kívánt feladatot és ütemezése:
 
    ```
     $jobName = "{Job Name}"
@@ -431,9 +436,9 @@ Egy feladat eseményindító szeretné, hogy a feladat végrehajtása idő ütem
     Write-Output $jobTrigger
    ```
 
-### <a name="remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>A feladat ütemezés futtatásának leállítása ütemezett társításának megszüntetése
-Megszüntetheti a feladatról feladat végrehajtása a feladat indítási keresztül, a feladat indítási távolíthatja el.
-Távolítsa el a feladat eseményindító megfelelően egy ütemezés használatával végrehajtott egy feladatot leállítja a **Remove-AzureSqlJobTrigger** parancsmag.
+### <a name="remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>Egy ütemezett feladat ütemezés futtatásának leállítása társításának megszüntetése
+Ismétlődő feladat-végrehajtási feladat eseményindító keresztül lemondásához, a feladat eseményindító távolíthatja el.
+Egy feladat a végrehajtás alatt egy ütemezés használatával megfelelően leállítása feladat eseményindító távolítsa el a **Remove-AzureSqlJobTrigger** parancsmagot.
 
    ```
     $jobName = "{Job Name}"
@@ -441,29 +446,29 @@ Távolítsa el a feladat eseményindító megfelelően egy ütemezés használat
     Remove-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
    ```
 
-## <a name="import-elastic-database-query-results-to-excel"></a>A rugalmas adatbázis-lekérdezések eredményének Excel importálása
- Importálhatja az eredményeket a lekérdezés egy Excel-fájlhoz.
+## <a name="import-elastic-database-query-results-to-excel"></a>Rugalmas adatbázis-lekérdezés eredményei importálása Excelbe
+ A lekérdezés eredményeit, egy Excel-fájlba importálhatja.
 
-1. Indítsa el az Excel 2013.
-2. Keresse meg a **adatok** menüszalagján.
+1. Indítsa el az Excel 2013-hoz.
+2. Keresse meg a **adatok** menüszalagon.
 3. Kattintson a **egyéb forrásokból származó** kattintson **az SQL Server**.
 
-   ![Excel importálása más forrásokból](./media/sql-database-elastic-query-getting-started/exel-sources.png)
+   ![Az Excel import más forrásokból](./media/sql-database-elastic-query-getting-started/exel-sources.png)
 
-4. Az a **Adatkapcsolat varázsló** írja be a kiszolgáló nevét és a bejelentkezési hitelesítő adatokat. Ezután kattintson a **Next** (Tovább) gombra.
-5. A párbeszédpanelen **válassza ki a kívánt adatokat tartalmazó adatbázis**, jelölje be a **ElasticDBQuery** adatbázis.
-6. Válassza ki a **ügyfelek** táblázatban a lista nézetben, majd kattintson **következő**. Kattintson a **Befejezés**.
-7. Az a **és adatokat importálhat** űrlap **válassza ki, hogy az adatok megtekintéséhez a munkafüzet**, jelölje be **tábla** kattintson **OK**.
+4. Az a **Adatkapcsolat varázsló** írja be a kiszolgáló nevét és bejelentkezési hitelesítő adatokat. Ezután kattintson a **Next** (Tovább) gombra.
+5. A párbeszédpanel **válassza ki a kívánt adatokat tartalmazó adatbázisban**, jelölje be a **ElasticDBQuery** adatbázis.
+6. Válassza ki a **ügyfelek** a listanézet táblát, és kattintson a **tovább**. Kattintson a **Befejezés**.
+7. Az a **adatok importálása** űrlap **válassza ki, hogyan szeretné az adatok megtekintéséhez a munkafüzetet a**válassza **tábla** kattintson **OK**.
 
-Összes sorát **ügyfelek** tábla különböző szilánkok tárolt feltölti az Excel-táblában.
+Az összes sort **ügyfelek** a különböző szegmensekben tárolt tábla, töltse fel az Excel-munkalapot.
 
 ## <a name="next-steps"></a>További lépések
-Most már használhatja az Excel adatok funkciók. A kapcsolati karakterláncot használ a kiszolgáló nevét, az adatbázisnév és a hitelesítő adatok adatbázishoz való kapcsolódáshoz a BI és az integráció eszközök a rugalmas lekérdezés. Győződjön meg arról, hogy az SQL Server támogatja-e az eszköz adatforrásként. Tekintse meg a lekérdezés rugalmas adatbázis és a külső táblák csakúgy, mint bármely más SQL Server-adatbázis és SQL Server-táblázatot, amely az eszköz kíván csatlakozni.
+Mostantól használhatja az Excel-adatok funkciók. A kapcsolati karakterlánc használata a kiszolgáló nevét, az adatbázis nevét és a hitelesítő adatok adatbázishoz való csatlakozáshoz a BI-ban és integrációs eszközök a rugalmas lekérdezés. Győződjön meg arról, hogy az SQL Server támogatott-e az eszköz adatforrásként. Tekintse meg a rugalmas lekérdezés adatbázis és a külső táblák csakúgy, mint bármely más SQL Server-adatbázis és kíván csatlakozni, az eszköz az SQL Server-táblákra.
 
 ### <a name="cost"></a>Költségek
-Nem kell külön fizetni a rugalmas adatbázis-lekérdezés szolgáltatása van. Jelenleg ez a szolgáltatás azonban csak a prémium szintű és kritikus üzleti (előzetes verzió) érhető el adatbázisokat és egy végpontot, de a szilánkok rugalmas készletek bármely szolgáltatásréteg lehet.
+Nem jár további költségekkel az Elastic Database query funkciójával. Azonban jelenleg ez a funkció csak a prémium és üzletileg kritikus adatbázisok és rugalmas készletekhez elérhető teljes pontként, de a szegmensek lehet bármely szolgáltatási rétegben.
 
-Díjszabási információkért lásd: [SQL adatbázis díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
+Díjszabási információkért tekintse meg a [SQL Database szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

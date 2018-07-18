@@ -1,45 +1,48 @@
 ---
-title: Azure SQL-adatbázisok kezelése |} Microsoft Docs
-description: Végezze el a létrehozását és kezelését egy rugalmas feladat.
+title: Csoportok az Azure SQL Database-adatbázisok kezelése |} A Microsoft Docs
+description: Végig-rugalmas feladat létrehozása és kezelése.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: 4a25543fd9cbcd0928f06419c6ddb9b5ed2e2488
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: b367ddafc659db4dc4b8d658ac9dc007c4671b8c
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645283"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093139"
 ---
-# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Létrehozásához és kezeléséhez méretezett kimenő Azure SQL Database-adatbázisok rugalmas feladat (előzetes verzió)
+# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Létrehozása és kezelése az Azure SQL Database rugalmas feladatok (előzetes verzió) használatával horizontálisan
 
 
-**Rugalmas adatbázis-feladatok** egyszerűbbé teheti az adatbázisok csoportok kezelését a következő felügyeleti műveletek, például a sémamódosítások, a hitelesítő adatok kezelése, a hivatkozás frissítéseket, a teljesítményadat-gyűjtés vagy a bérlő (ügyfél) telemetriai futtatásával gyűjtemény. Rugalmas adatbázis-feladatok érhető el jelenleg az Azure portál és a PowerShell-parancsmagok használatával. Azonban az Azure portál felületek csökkenteni az összes adatbázis között a végrehajtás során korlátozott funkciók egy [rugalmas készlet (előzetes verzió)](sql-database-elastic-pool.md). Keresztül férhetnek hozzá a további funkciók és a parancsprogramok végrehajtását egyénileg definiált gyűjteményét, illetve a shard például adatbázisok csoportja beállítása (használatával létrehozott [Elastic Database ügyféloldali kódtárának](sql-database-elastic-scale-introduction.md)), lásd: [létrehozása és kezelése a PowerShell használatával feladatok](sql-database-elastic-jobs-powershell.md). További információ a feladatok: [rugalmas adatbázis-feladatok áttekintése](sql-database-elastic-jobs-overview.md). 
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+**Elastic Database-feladatok** úgy, hogy felügyeleti műveleteket, mint a sémamódosítások, a hitelesítő adatok kezelése, a referenciaadatok frissítése, a teljesítményadat-gyűjtés vagy a bérlő (ügyfél) telemetriai végrehajtja az adatbázisok csoportok kezelésének egyszerűsítéséhez gyűjtemény. Elastic Database-feladatok az Azure portal és a PowerShell-parancsmagok jelenleg érhető el. Azonban az Azure portal felületek csökkenteni a funkciók között található összes adatbázis végrehajtási legfeljebb egy [rugalmas készlet](sql-database-elastic-pool.md). Keresztül férhetnek hozzá a további funkciók és parancsprogramok egyénileg definiált gyűjteménye vagy egy szegmens például adatbáziscsoportok beállítása (használatával létrehozott [Elastic Database-ügyfélkódtár](sql-database-elastic-scale-introduction.md)), lásd: [létrehozása és kezelése PowerShell-lel projektek](sql-database-elastic-jobs-powershell.md). -Feladatokkal kapcsolatos további információkért lásd: [Elastic Database-feladatok áttekintése](sql-database-elastic-jobs-overview.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure-előfizetés. Ingyenes próbaverzió, lásd: [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
-* Egy rugalmas készlet. Lásd: [kapcsolatos rugalmas készletek](sql-database-elastic-pool.md).
-* Rugalmas feladat szolgáltatás-összetevők telepítését. Lásd: [a rugalmas adatbázis feladat szolgáltatás telepítése](sql-database-elastic-jobs-service-installation.md).
+* Azure-előfizetés. Az ingyenes próbaverzióra, lásd: [az ingyenes próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
+* Rugalmas készlet. Lásd: [készletekkel kapcsolatos](sql-database-elastic-pool.md).
+* A rugalmas feladat szolgáltatás-összetevők telepítése. Lásd: [a rugalmas feladatokat végző szolgáltatás telepítése](sql-database-elastic-jobs-service-installation.md).
 
-## <a name="creating-jobs"></a>Feladat létrehozása
-1. Használja a [Azure-portálon](https://portal.azure.com), a meglévő rugalmas feladat adatbáziskészlet, kattintson az **létrehozása feladat**.
-2. Írja be a felhasználónevét és jelszavát (létre telepítési feladatok) adatbázis-rendszergazda a feladatok vezérlő adatbázis (metaadat-tároló-feladatok).
+## <a name="creating-jobs"></a>Feladatok létrehozása
+1. Használatával a [az Azure portal](https://portal.azure.com), a meglévő rugalmas feladat adatbáziskészlet, kattintson az **létrehozása feladat**.
+2. Írja be a felhasználónevet és jelszót az adatbázis-rendszergazda (a feladatok a telepítés során létrehozott), a feladatok adatbázis vezérlése (metaadat-tároló-feladatok).
    
-    ![A feladat neve, írja be vagy illessze be a kódját, majd kattintson a Futtatás][1]
-3. Az a **feladat létrehozása** panelen adja meg a feladat nevét.
+    ![Nevezze el a feladatot, írja be vagy illessze be a kódot, és kattintson a Futtatás][1]
+3. Az a **feladat létrehozása** panelen írja be a feladat nevét.
 4. Írja be a felhasználónevet és jelszót a céladatbázisokhoz parancsfájl végrehajtása sikeres végrehajtásához szükséges engedélyekkel.
-5. Illessze be, vagy írja be a T-SQL-parancsfájlt.
+5. Illessze be, vagy írja be a T-SQL parancsfájl.
 6. Kattintson a **mentése** majd **futtatása**.
    
     ![Feladatok létrehozása és futtatása][5]
 
-## <a name="run-idempotent-jobs"></a>Az idempotent feladatok futtatása
-Egy parancsfájl-adatbázisok való összevetéssel futtatásakor meg arról, hogy a parancsfájl az idempotent kell lennie. Ez azt jelenti, hogy a parancsfájl kell lesz futtatható többször, még akkor is, ha nem tudott előtt állapotban. Például, ha a parancsfájl futása sikertelen, a feladat automatikusan megpróbálja replikációig (határértékek közé essen, az újra gombra, logika végül megszűnik az újrapróbálkozás). Ennek módja a egy "IF létezik-e" záradék és az új objektum létrehozása előtt törölje annak példányban sem található. Példa itt:
+## <a name="run-idempotent-jobs"></a>Idempotens feladatok futtatása
+Adatbázisok összevetéssel parancsfájl futtatásakor a arról, hogy a parancsfájl idempotensnek kell lennie. Azt jelenti a parancsfájl kell futtatható többször, még akkor is, ha nem tudott előtt hiányos állapotban. Például, ha a parancsfájl futása sikertelen, a feladat automatikusan megpróbálja replikációig (határokon belül, mint az újrapróbálkozási logika végül megszűnik az újrapróbálkozás). Ennek a legegyszerűbb módja a egy "IF létezik" záradékkal és a egy új objektum létrehozása előtt minden található példány törlése. Itt egy példa látható:
 
     IF EXISTS (SELECT name FROM sys.indexes
             WHERE name = N'IX_ProductVendor_VendorID')
@@ -48,7 +51,7 @@ Egy parancsfájl-adatbázisok való összevetéssel futtatásakor meg arról, ho
     CREATE INDEX IX_ProductVendor_VendorID
     ON Purchasing.ProductVendor (VendorID);
 
-Másik megoldásként használhatja az "IF nem létezik" záradék előtt egy új példányának létrehozásakor:
+Másik megoldásként használhatja az "IF NOT EXISTS" záradék előtt hozzon létre egy új példányt:
 
     IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'TestTable')
     BEGIN
@@ -62,7 +65,7 @@ Másik megoldásként használhatja az "IF nem létezik" záradék előtt egy ú
     INSERT INTO TestTable(InsertionTime) VALUES (sysutcdatetime());
     GO
 
-Ez a parancsfájl frissíti a korábban létrehozott táblát.
+Ez a szkript frissíti a korábban létrehozott táblát.
 
     IF NOT EXISTS (SELECT columns.name FROM sys.columns INNER JOIN sys.tables on columns.object_id = tables.object_id WHERE tables.name = 'TestTable' AND columns.name = 'AdditionalInformation')
     BEGIN
@@ -78,19 +81,19 @@ Ez a parancsfájl frissíti a korábban létrehozott táblát.
 
 
 ## <a name="checking-job-status"></a>Feladat állapotának ellenőrzése
-Miután egy feladat elindult, akkor is ellenőrizhesse a telepítés előrehaladását.
+Miután a feladat elindult, a folyamat előrehaladását ellenőrzéséhez.
 
-1. A rugalmas készlet lapon kattintson **feladatok kezelése**.
+1. A rugalmas készlet oldalon kattintson **feladatok kezelése**.
    
-    ![Kattintson a "Kezelése feladatok"][2]
-2. Kattintson a nevére (a) a feladatok. A **állapot** "Kész" vagy "Sikertelen". A feladat részletei (b) a dátum és idő létrehozása és futtatása jelennek meg. A lista (c) alatt a végrehajtási állapotát tartalmazza a parancsfájl minden adatbázison a tárolókészletben, a dátum és idő adatait.
+    ![Kattintson a "Kezelés jobs"][2]
+2. Kattintson a nevére (a) a feladat. A **állapot** lehet "Completed" vagy "Nem sikerült." A feladat részletei (b) a dátumot és időt létrehozását és futtatását a jelennek meg. Az alábbi listán (c) az, hogy a készlet jogosultságot ad a dátum és idő részletek a parancsfájl minden adatbázison a folyamatot mutatja meg.
    
-    ![A befejezett feladatok ellenőrzése][3]
+    ![Egy befejezett feladat ellenőrzése][3]
 
-## <a name="checking-failed-jobs"></a>Feladatok ellenőrzése nem sikerült.
-Ha egy feladat sikertelen lesz, a napló, a futtatása is található. Kattintson a nevére, a sikertelen feladat a részletek megtekintéséhez.
+## <a name="checking-failed-jobs"></a>Feladat ellenőrzése nem sikerült.
+Ha egy feladat sikertelen, a végrehajtási napló tekintheti meg. Kattintson a nevére, a sikertelen feladatot, a részletek megtekintéséhez.
 
-![Ellenőrizze a sikertelen feladat adatait][4]
+![Tekintse meg a sikertelen feladat][4]
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

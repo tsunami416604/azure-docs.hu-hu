@@ -8,30 +8,29 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 07/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: db5941528eedd10cf252607dbe2160bd498a70de
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 3a43c0cd13300918979ae03c7f6c703796b65dc9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951967"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114225"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>A végrehajtás SSIS csomag tevékenységgel rendelkező Azure Data Factory SSIS-csomag futtatása
 Ez a cikk ismerteti az Azure Data Factory-folyamatot egy SSIS-csomag futtatása SSIS-csomag végrehajtása tevékenységek segítségével. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
-Ebben a cikkben található útmutatások követéséhez használja az Azure SQL database, amelyen az SSIS-katalógus. Egy Azure SQL felügyelt példány (előzetes verzió) is használhatja.
+**Azure SQL Database** Ebben a cikkben található útmutatások követéséhez használja az Azure SQL database, amelyen az SSIS-katalógus. Egy Azure SQL felügyelt példány (előzetes verzió) is használhatja.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul létrehozása
 Hozzon létre egy Azure-SSIS integrációs modult, ha még nincs fiókja, a részletes utasításokat a következő a [oktatóanyag: üzembe SSIS-csomagok](tutorial-create-azure-ssis-runtime-portal.md).
 
-## <a name="data-factory-ui-azure-portal"></a>Data Factory felhasználói felülete (Azure portal)
+## <a name="run-a-package-in-the-azure-portal"></a>A csomag futtatása az Azure Portalon
 Ebben a szakaszban a Data Factory felhasználói felülete egy SSIS-csomag végrehajtása tevékenységgel, amely SSIS-csomag létrehozása a Data Factory-folyamatok használhatja.
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
@@ -76,7 +75,7 @@ Ebben a lépésben a Data Factory felhasználói felülete létrehoz egy folyama
     ![Első lépések lap](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 2. Az a **tevékenységek** eszközkészletben bontsa ki a **általános**, és áthúzása a **SSIS-csomag végrehajtása** tevékenységet a folyamat tervezőfelületére. 
 
-   ![Húzza a Tervező felületére az SSIS-tevékenység](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
+   ![A Tervező felületére az SSIS-csomag végrehajtása tevékenység húzása](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
 3. Az a **általános** fülre az SSIS-csomag végrehajtása tevékenység tulajdonságai, adjon meg egy nevet és leírást a tevékenység. Állítsa be a választható időkorlátja, és ismételje meg a értékeket.
 
@@ -98,7 +97,7 @@ Szükség esetén értékek, kifejezések és függvények, amelyek a Data Facto
 
 ![Paraméterek hozzáadása az SSIS-csomag végrehajtása tevékenység](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
-### <a name="run-and-monitor-the-pipeline"></a>Futtassa a és a folyamat figyelése
+### <a name="run-the-pipeline"></a>A folyamat futtatása
 Ebben a szakaszban a folyamat futásának aktiválásához, és megfigyeli azt. 
 
 1. Folyamat futásának aktiválásához kattintson **eseményindító** az eszköztáron, majd kattintson a **Aktiválás most**. 
@@ -107,15 +106,17 @@ Ebben a szakaszban a folyamat futásának aktiválásához, és megfigyeli azt.
 
 2. A **Folyamatfuttatás** ablakban kattintson a **Befejezés** gombra. 
 
-3. Váltson a bal oldali **Monitorozás** lapra. Megjelenik a folyamat futtatása és egyéb információk (például a Futtatás kezdő időpont) és annak állapotát. A nézet frissítéséhez kattintson a **Frissítés** parancsra.
+### <a name="monitor-the-pipeline"></a>A folyamat figyelése
+
+1. Váltson a bal oldali **Monitorozás** lapra. Megjelenik a folyamat futtatása és egyéb információk (például a Futtatás kezdő időpont) és annak állapotát. A nézet frissítéséhez kattintson a **Frissítés** parancsra.
 
     ![Folyamatfuttatások](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-4. Kattintson az **Actions** (Műveletek) oszlopban található **View Activity Runs** (Tevékenységfuttatások megtekintése) hivatkozásra. Láthatja, hogy csak egy tevékenységfuttatás, a folyamat egyetlen tevékenységet (SSIS-csomag végrehajtása tevékenység) tartalmaz.
+2. Kattintson az **Actions** (Műveletek) oszlopban található **View Activity Runs** (Tevékenységfuttatások megtekintése) hivatkozásra. Láthatja, hogy csak egy tevékenységfuttatás, a folyamat egyetlen tevékenységet (SSIS-csomag végrehajtása tevékenység) tartalmaz.
 
     ![Tevékenységfuttatások](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-5. Futtathatja a következő **lekérdezés** szemben az SSISDB adatbázis-az Azure SQL Serveren, ellenőrizze, hogy a csomag végrehajtása. 
+3. Futtathatja a következő **lekérdezés** szemben az SSISDB adatbázis-az Azure SQL Serveren, ellenőrizze, hogy a csomag végrehajtása. 
 
     ```sql
     select * from catalog.executions
@@ -123,20 +124,21 @@ Ebben a szakaszban a folyamat futásának aktiválásához, és megfigyeli azt.
 
     ![Csomag végrehajtásának ellenőrzése](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-6. Az SSISDB végrehajtási azonosító beszerzése a folyamatfuttatás tevékenység kimenetét, és átfogóbb feladatvégrehajtási naplók és hibaüzenetek az ssms-ben az azonosító használatával is.
+4. Az SSISDB végrehajtási azonosító beszerzése a folyamatfuttatás tevékenység kimenetét, és átfogóbb feladatvégrehajtási naplók és hibaüzenetek az ssms-ben az azonosító használatával is.
 
     ![A végrehajtási azonosító lekérése](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
-> [!NOTE]
-> Is létrehozhat ütemezett eseményindítóként a folyamathoz, hogy a folyamat fut egy ütemezés szerint (óránként, naponta stb.). Egy vonatkozó példáért lásd: [- adat-előállító létrehozása a Data Factory felhasználói felülete](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
+### <a name="schedule-the-pipeline-with-a-trigger"></a>Ütemezés a folyamat egy eseményindítóval
 
-## <a name="azure-powershell"></a>Azure PowerShell
-Ebben a szakaszban az Azure PowerShell használatával hozzon létre egy Data Factory-folyamatot egy SSIS-tevékenység, amely SSIS-csomag. 
+Is létrehozhat ütemezett eseményindítóként a folyamathoz, hogy a folyamat fut egy ütemezés szerint (óránként, naponta stb.). Egy vonatkozó példáért lásd: [- adat-előállító létrehozása a Data Factory felhasználói felülete](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
+
+## <a name="run-a-package-with-powershell"></a>A csomag futtatása a PowerShell-lel
+Ebben a szakaszban az Azure PowerShell használatával hozzon létre egy Data Factory-folyamatot egy SSIS-csomag végrehajtása tevékenység, amely SSIS-csomag. 
 
 Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez. 
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
-Az azonos adat-előállítót, amely rendelkezik az Azure-SSIS integrációs modul használata, vagy egy különálló adat-előállító létrehozásához. Az alábbi eljárás lépéseit egy adat-előállító létrehozásához. Az SSIS-tevékenység az adat-előállító folyamatot hoz létre. Az SSIS-tevékenység fut, az SSIS-csomag. 
+Az azonos adat-előállítót, amely rendelkezik az Azure-SSIS integrációs modul használata, vagy egy különálló adat-előállító létrehozásához. Az alábbi eljárás lépéseit egy adat-előállító létrehozásához. Egy SSIS-csomag végrehajtása tevékenysége az adat-előállító folyamatot hoz létre. Az SSIS-csomag végrehajtása tevékenységfuttatások az SSIS-csomag. 
 
 1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
    
@@ -176,10 +178,10 @@ Vegye figyelembe a következő szempontokat:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie.
-* Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [ Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
-### <a name="create-a-pipeline-with-an-ssis-activity"></a>Az SSIS-tevékenységgel rendelkező folyamat létrehozása 
-Ebben a lépésben létrehoz egy folyamatot az SSIS-tevékenység. A tevékenység futtatása az SSIS-csomag. 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Az SSIS-csomag végrehajtása tevékenységgel rendelkező folyamat létrehozása 
+Ebben a lépésben létrehoz egy folyamatot egy SSIS-csomag végrehajtása tevékenységgel. A tevékenység futtatása az SSIS-csomag. 
 
 1. Hozzon létre egy JSON-fájlt **RunSSISPackagePipeline.json** a a **C:\ADF\RunSSISPackage** mappában az alábbi példához hasonló tartalommal:
 
@@ -279,7 +281,7 @@ Ebben a lépésben létrehoz egy folyamatot az SSIS-tevékenység. A tevékenys�
     Parameters        : {[inputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification], [outputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
     ```
 
-### <a name="create-a-pipeline-run"></a>Folyamat futásának létrehozása
+### <a name="run-the-pipeline"></a>A folyamat futtatása
 Használja a **Invoke-AzureRmDataFactoryV2Pipeline** parancsmagot futtathatja a folyamatot. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
 ```powershell
@@ -288,7 +290,7 @@ $RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataF
                                              -PipelineName $DFPipeLine.Name
 ```
 
-### <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
+### <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
 A folyamat futási állapotának folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez futtassa az alábbi PowerShell-szkriptet. Másolja/illessze be az alábbi szkriptet a PowerShell-ablakba, majd nyomja le az Enter billentyűt. 
 
@@ -313,7 +315,7 @@ while ($True) {
 
 Is figyelemmel kísérheti a folyamat az Azure portal használatával. Lépésenkénti útmutatásért lásd: [a folyamat figyelése](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
-### <a name="create-a-trigger"></a>Eseményindító létrehozása
+### <a name="schedule-the-pipeline-with-a-trigger"></a>Ütemezés a folyamat egy eseményindítóval
 Az előző lépésben a folyamat igény szerinti futtatta. A folyamatok futtatása ütemezés szerint (óránként, naponta stb.) az ütemezési eseményindító is létrehozhat.
 
 1. Hozzon létre egy JSON-fájlt **MyTrigger.json** a **C:\ADF\RunSSISPackage** mappában az alábbi tartalommal: 
@@ -379,7 +381,6 @@ Az előző lépésben a folyamat igény szerinti futtatta. A folyamatok futtatá
     ```sql
     select * from catalog.executions
     ```
-
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a következő blogbejegyzésben található:

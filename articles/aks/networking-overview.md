@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/15/2018
+ms.date: 07/16/2018
 ms.author: marsma
-ms.openlocfilehash: da78d388c8e9fc9684942342f48902c2a248e3b1
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: cb7b27b178197cde040e1d106ed5a5ee20905823
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072299"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115795"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Hálózati konfiguráció az Azure Kubernetes Service (AKS)
 
@@ -27,8 +27,7 @@ Alapszintű hálózatkezelési használatra konfigurált egy AKS-fürt csomópon
 
 ## <a name="advanced-networking"></a>Speciális hálózatkezelés
 
-**Speciális** hálózatkezelés helyezi a podokat megszünteti egy Azure Virtual Network (VNet), amely konfigurál, VNet-erőforrások automatikus kapcsolatot biztosító őket, és a a gazdag integrációs képességeket állítsa be a virtuális hálózatok ajánlat.
-Ha üzembe AKS-fürt a érhető el a speciális hálózati a [az Azure portal][portal], Azure CLI-vel, vagy a Resource Manager-sablonnal.
+**Speciális** hálózatkezelés helyezi a podokat megszünteti egy Azure Virtual Network (VNet), amely konfigurál, VNet-erőforrások automatikus kapcsolatot biztosító őket, és a a gazdag integrációs képességeket állítsa be a virtuális hálózatok ajánlat. Ha üzembe AKS-fürt a érhető el a speciális hálózati a [az Azure portal][portal], Azure CLI-vel, vagy a Resource Manager-sablonnal.
 
 A speciális hálózati használatra konfigurált egy AKS-fürt csomópontjain a [Azure Container hálózati adapter (CNI)] [ cni-networking] Kubernetes beépülő modult.
 
@@ -45,9 +44,6 @@ Speciális hálózatkezelés az alábbi előnyöket nyújtja:
 * Podok alhálózatán, amelyeken engedélyezve a Szolgáltatásvégpontok Azure-szolgáltatások, például az Azure Storage és SQL DB biztonságosan csatlakozhat.
 * Használja a felhasználó által megadott útvonalak (UDR) forgalom irányítására a podok egy hálózati virtuális berendezésre.
 * Podok a nyilvános interneten lévő erőforrások eléréséhez. Emellett szolgáltatása alapszintű hálózatkezelési.
-
-> [!IMPORTANT]
-> Speciális hálózatkezelés üzemeltethet maximális konfigurált egy AKS-fürt egyes csomópontjaihoz **30 podok** konfigurálásakor az Azure portal használatával.  Módosíthatja a maximális érték csak a maxPods tulajdonság módosításával, a fürt Resource Manager-sablonnal üzembe helyezésekor. Minden egyes virtuális hálózat használata az Azure CNI beépülő modullal korlátozódik számára kiosztott **4096 konfigurált IP-címek**.
 
 ## <a name="advanced-networking-prerequisites"></a>Speciális hálózatkezelési Előfeltételek
 
@@ -67,19 +63,36 @@ AKS-fürt IP-cím tervezése áll egy virtuális hálózathoz, a csomópontok é
 
 | Címtartomány / Azure erőforrás | Korlátok és méretezés |
 | --------- | ------------- |
-| Virtuális hálózat | Azure virtuális hálózat, /8 méretűek is lehetnek, de előfordulhat, hogy csak 4096 konfigurált IP-címek. |
-| Alhálózat | Elég nagy a csomópontok és a Podok kell lennie. A minimális alhálózat méretének kiszámításához: (a csomópontok száma) + (a csomópontok száma * Podok száma csomópontonként). Egy 50 csomópontot tartalmazó fürtben: (legfeljebb 50) + (50 * 30) = 1,550, az alhálózaton kell lennie a /21 vagy nagyobb. |
+| Virtuális hálózat | Azure virtuális hálózat, /8 méretűek is lehetnek, de előfordulhat, hogy csak 16000 konfigurált IP-címek. |
+| Alhálózat | Elég nagy a csomópontok, a podok és a Kubernetes és az Azure-erőforrások, előfordulhat, hogy építhető ki a fürtben kell lennie. Például ha telepít egy belső Azure Load Balancert, az előtérbeli IP-címek vannak lefoglalva a fürt alhálózatról, nem a nyilvános IP-címek. <p/>Kiszámításához *minimális* alhálózat mérete: `(number of nodes) + (number of nodes * pods per node)` <p/>Példa egy 50 csomópontot tartalmazó fürtben: `(50) + (50 * 30) = 1,550` (/ 21, vagy nagyobb) |
 | Kubernetes szolgáltatás címtartomány | Ezt a tartományt nem kell az összes hálózati elem által használt vagy a virtuális hálózat csatlakozik. Szolgáltatás címének CIDR /12 kisebbnek kell lennie. |
 | Kubernetes DNS szolgáltatás IP-címe | IP-címnek a Kubernetes-címtartományt, amely a fürtszolgáltatás felderítése (kube-dns) által használt szolgáltatás. |
 | Docker híd címe | IP-címet (a CIDR-jelölés) használja a Docker-hidat, IP-cím csomópontokon. Alapértelmezés szerint 172.17.0.1/16. |
 
-Ahogy korábban említett egyes virtuális hálózatok használata az Azure CNI beépülő modullal korlátozódik számára kiosztott **4096 konfigurált IP-címek**. Speciális hálózatkezelés üzemeltethet maximális konfigurált egy fürtben lévő mindegyik csomópont **30 podok**.
+Minden egyes virtuális hálózat használata az Azure CNI beépülő modullal korlátozódik számára kiosztott **16000 konfigurált IP-címek**.
+
+## <a name="maximum-pods-per-node"></a>Csomópontonkénti maximális podok
+
+Podok száma csomópontonként az AKS-fürt alapértelmezett maximális száma alapszintű és speciális hálózatkezelés és a fürt telepítése közé esik.
+
+### <a name="default-maximum"></a>Az alapértelmezett maximális
+
+* Alapszintű hálózatkezelési: **110 podok száma csomópontonként**
+* Speciális hálózatkezelés **30 podok száma csomópontonként**
+
+### <a name="configure-maximum"></a>Maximális konfigurálása
+
+Az a központi telepítési módszernél függően tudja módosítani a podok egy AKS-fürtöt a csomópontonkénti maximális számát.
+
+* **Az Azure CLI**: Adja meg a `--max-pods` argumentum, a fürt telepítésekor a [az aks létrehozása] [ az-aks-create] parancsot.
+* **Resource Manager-sablon**: Adja meg a `maxPods` tulajdonságot a [ManagedClusterAgentPoolProfile] objektum a fürt Resource Manager-sablonnal üzembe.
+* **Az Azure portal**: egy fürtöt az Azure Portal központi telepítésekor nem módosítható a podok csomópontonkénti maximális számát. A speciális hálózati fürtök 30 podok száma csomópontonként, ha az Azure Portalon üzembe helyezett korlátozódnak.
 
 ## <a name="deployment-parameters"></a>Üzembe helyezési paraméterek
 
-Amikor az AKS-fürt létrehozása, a következő paraméterek a speciális hálózati konfigurálható:
+AKS-fürt létrehozásakor konfigurálható speciális hálózati a következő paraméterekkel:
 
-**Virtuális hálózat**: A virtuális hálózatot, amelybe át szeretné a Kubernetes-fürt üzembe helyezéséhez. Ha szeretne létrehozni egy új virtuális hálózat a fürt számára, jelölje be *új létrehozása* kövesse a lépéseket a *virtuális hálózat létrehozása* szakaszban.
+**Virtuális hálózat**: A virtuális hálózatot, amelybe át szeretné a Kubernetes-fürt üzembe helyezéséhez. Ha szeretne létrehozni egy új virtuális hálózat a fürt számára, jelölje be *új létrehozása* kövesse a lépéseket a *virtuális hálózat létrehozása* szakaszban. A virtuális hálózat korlátozódik 16 000 IP-címeit.
 
 **Alhálózat**: az alhálózaton, ahol szeretné a fürt üzembe helyezése a Vneten belül. Ha azt szeretné, hozzon létre egy új alhálózatot a virtuális hálózat a fürt számára, válassza *új létrehozása* kövesse a lépéseket a *alhálózat létrehozásához* szakaszban.
 
@@ -135,7 +148,7 @@ A alkalmazni az alábbi kérdések és válaszok a **speciális** hálózati kon
 
 * *Az üzembe helyezhető, amely konfigurálható a csomópontra a podok maximális számát?*
 
-  Alapértelmezés szerint minden csomópont legfeljebb 30 podok is üzemeltethet. A maximális érték csak módosításával módosíthatja a `maxPods` tulajdonság egy fürtöt egy Resource Manager-sablon üzembe helyezésekor.
+  Igen, a fürt az Azure CLI vagy a Resource Manager-sablonnal üzembe. Lásd: [csomópontonkénti maximális podok](#maximum-pods-per-node).
 
 * *Hogyan konfigurálhatom az alhálózatot, amelyet az AKS-fürt létrehozása során létrehozott további tulajdonságok? Ha például a Szolgáltatásvégpontok.*
 
@@ -173,3 +186,4 @@ ACS Engine használatával létrehozott Kubernetes-fürtök támogatják mind a 
 <!-- LINKS - Internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: aks-ssh.md
+[ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object

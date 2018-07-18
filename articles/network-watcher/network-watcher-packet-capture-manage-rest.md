@@ -1,6 +1,6 @@
 ---
-title: Csomag rögzíti az Azure hálózati figyelőt - REST API kezelése |} Microsoft Docs
-description: Ezen a lapon ismerteti, hogyan kezelheti a csomag rögzítési szolgáltatása hálózati figyelőt Azure REST API használatával
+title: Csomagrögzítés kezelése az Azure Network Watcher – REST API-val |} A Microsoft Docs
+description: Jelen lap bemutatja, hogyan kezelheti az Azure REST API használatával a Network Watcher packet rögzítési funkciója
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,40 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: ba0cd9c8aaa797e850827484c76103d1b829d6b4
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a429bfae001cad044da9ef729c021c8128cbfefe
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23863383"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090010"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Csomag rögzítésekre kezelése Azure hálózati figyelőt Azure REST API használatával
+# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>A csomagrögzítés kezelése az Azure Network Watcher Azure REST API használatával
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
-> - [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
-> - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
-> - [Az Azure REST API-n](network-watcher-packet-capture-manage-rest.md)
+> - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
+> - [Az Azure REST API-val](network-watcher-packet-capture-manage-rest.md)
 
-Hálózati figyelő csomagrögzítéssel rögzítési munkamenetek nyomon követéséhez forgalma és a virtuális gép létrehozását teszi lehetővé. Annak érdekében, hogy csak a kívánt forgalom rögzíti a rögzítési munkamenet szűrők célokat szolgálnak. Csomagrögzítéssel segít diagnosztizálni hálózati rendellenességeket proaktív és reaktív is. Egyéb felhasználásra tartalmazzák a hálózati statisztikákat, hálózati behatolások, ügyfél-kiszolgáló közötti kommunikációt, és még sok más hibakeresési információkat való összegyűjtéséhez. Őket távolról elindítása csomag rögzíti, ez a funkció megkönnyíti a csomagrögzítéssel fut, manuálisan, a kívánt számítógépet, amely értékes időt takaríthat meg okozta terheket.
+Network Watcher csomagrögzítés nyomon követésére, és a virtuális gépről érkező forgalom rögzítése-munkamenetek létrehozását teszi lehetővé. Szűrők annak érdekében, hogy csak a kívánt forgalmat rögzíti a rögzítési munkamenet-okat. A csomagrögzítés segítségével diagnosztizálhatja a hálózat rendellenességeket, proaktív és reaktív is. Más használati módjai többek között, hálózati statisztika, azonosítsa a hálózati behatolásokat, hibakeresése, ügyfél-kiszolgáló közötti kommunikációt, és még sok más információk összegyűjtéséhez. Képes lesz távolról indításához csomagrögzítés, ez a funkció egyszerűsíti a csomagrögzítés fut, manuálisan, a kívánt számítógépre, amelyen értékes időt takarít meg terhe.
 
-Ez a cikk végigvezeti Önt a különböző felügyeleti feladatok, amelyek jelenleg a csomagrögzítéssel.
+Ez a cikk végigvezeti a különböző felügyeleti feladatok csomagrögzítés jelenleg elérhető.
 
-- [**A csomagrögzítéssel beolvasása**](#get-a-packet-capture)
-- [**Összes csomag rögzítésekre felsorolása**](#list-all-packet-captures)
-- [**A csomagrögzítéssel állapotának lekérdezése**](#query-packet-capture-status)
-- [**A csomagrögzítéssel indítása**](#start-packet-capture)
-- [**A csomagrögzítéssel leállítása**](#stop-packet-capture)
-- [**A csomagrögzítéssel törlése**](#delete-packet-capture)
+- [**Csomagrögzítés beolvasása**](#get-a-packet-capture)
+- [**Az összes csomagrögzítés listázása**](#list-all-packet-captures)
+- [**Csomagrögzítés állapotának lekérdezése**](#query-packet-capture-status)
+- [**Csomagrögzítés indítása**](#start-packet-capture)
+- [**Csomagrögzítés leállítása**](#stop-packet-capture)
+- [**Csomagrögzítés törlése**](#delete-packet-capture)
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ebben az esetben hívható meg a hálózati figyelő Rest API-t IP Flow ellenőrzéséhez futtassa. A PowerShell használatával REST API hívása ARMclient szolgál. ARMClient verziója van telepítve, chocolatey [a Chocolatey ARMClient](https://chocolatey.org/packages/ARMClient)
+Ebben a forgatókönyvben a Network Watcher Rest API-t IP Flow ellenőrzéséhez futtassa hívható meg. ARMclient hívás a REST API, PowerShell-lel történik. ARMClient megtalálható a chocolatey [ARMClient a chocolatey-t](https://chocolatey.org/packages/ARMClient)
 
-Ez a forgatókönyv azt feltételezi, hogy már követte lépéseit [hozzon létre egy hálózati figyelőt](network-watcher-create.md) létrehozása egy hálózati figyelőt.
+Ez a forgatókönyv azt feltételezi, hogy már követte a lépéseket a [hozzon létre egy Network Watcher](network-watcher-create.md) egy Network Watcher létrehozásához.
 
-> Csomagrögzítéssel van szükség a virtuálisgép-bővítmény `AzureNetworkWatcherExtension`. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md).
+> A csomagrögzítés szükséges virtuálisgép-bővítmények `AzureNetworkWatcherExtension`. A bővítmény telepítését egy Windows virtuális gépen látogasson el [Azure Network Watcher-ügynök virtuálisgép-bővítmény Windows](../virtual-machines/windows/extensions-nwa.md) és Linux rendszerű virtuális gép látogasson el a [Azure Network Watcher-ügynök virtuálisgép-bővítmény Linuxhoz](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="log-in-with-armclient"></a>Jelentkezzen be ARMClient
 
@@ -55,14 +54,14 @@ Ez a forgatókönyv azt feltételezi, hogy már követte lépéseit [hozzon lét
 armclient login
 ```
 
-## <a name="retrieve-a-virtual-machine"></a>A virtuális gép beolvasása
+## <a name="retrieve-a-virtual-machine"></a>Virtuális gép beolvasása
 
-Futtassa a következő parancsfájl egy virtuális gép visszaállítására. Ezek az információk szükségesek a csomagrögzítéssel indításához.
+Futtassa a következő szkriptet egy virtuális gép adja vissza. Ez az információ szükség van egy csomagrögzítés indítása.
 
-Az alábbi kódra van szüksége a változók:
+A következő kódot a változók van szüksége:
 
-- **a subscriptionId** -előfizetés-azonosító is lehet beolvasni a a **Get-AzureRMSubscription** parancsmag.
-- **resourceGroupName** -virtuális gépeket tartalmazó erőforráscsoport nevét.
+- **subscriptionId** – az előfizetés-azonosítót is lekérhető az a **Get-AzureRMSubscription** parancsmagot.
+- **resourceGroupName** -egy virtuális gépeket tartalmazó erőforráscsoport nevét.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -71,7 +70,7 @@ $resourceGroupName = "<resource group name>"
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-A következő kimenet a virtuális gép azonosítóját a következő példában használják.
+A virtuális gép azonosítóját a következő kimenet a következő példában használják.
 
 ```json
 ...
@@ -87,9 +86,9 @@ A következő kimenet a virtuális gép azonosítóját a következő példában
 ```
 
 
-## <a name="get-a-packet-capture"></a>A csomagrögzítéssel beolvasása
+## <a name="get-a-packet-capture"></a>Csomagrögzítés beolvasása
 
-A következő példa egy egyetlen csomagrögzítéssel állapotát olvassa be
+Az alábbi példa egy egyetlen csomagrögzítés állapotát olvassa be.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -98,7 +97,7 @@ $networkWatcherName = "NetworkWatcher_westcentralus"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/querystatus?api-version=2016-12-01"
 ```
 
-A következő válaszok példák tipikus választ adott vissza, amikor egy csomagrögzítéssel állapotának lekérdezése.
+Példák a következő válaszok egy tipikus választ adja vissza, ha a csomagrögzítés állapotának lekérdezése.
 
 ```json
 {
@@ -121,9 +120,9 @@ A következő válaszok példák tipikus választ adott vissza, amikor egy csoma
 }
 ```
 
-## <a name="list-all-packet-captures"></a>Összes csomag rögzítésekre felsorolása
+## <a name="list-all-packet-captures"></a>Az összes csomagrögzítés listázása
 
-Az alábbi példa lekérdezi összes csomagot rögzítési munkamenet régióban.
+Az alábbi példa lekéri az összes csomagrögzítési munkamenetet egy régióban.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -132,7 +131,7 @@ $networkWatcherName = "NetworkWatcher_westcentralus"
 armclient get "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures?api-version=2016-12-01"
 ```
 
-A rendszer a következő választ rögzíti egy példa egy tipikus válasza, az összes csomag beolvasásakor.
+A következő választ például egy tipikus választ adja vissza, ha az összes csomag első rögzíti
 
 ```json
 {
@@ -195,9 +194,9 @@ ture_17_23_15_364.cap",
 }
 ```
 
-## <a name="query-packet-capture-status"></a>Lekérdezés csomag rögzítési állapota
+## <a name="query-packet-capture-status"></a>Lekérdezés packet capture állapota
 
-Az alábbi példa lekérdezi összes csomagot rögzítési munkamenet régióban.
+Az alábbi példa lekéri az összes csomagrögzítési munkamenetet egy régióban.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -207,7 +206,7 @@ $packetCaptureName = "TestPacketCapture5"
 armclient get "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/querystatus?api-version=2016-12-01"
 ```
 
-A következő válasz példája egy tipikus válasz egy csomagrögzítéssel állapotának lekérdezése adott vissza.
+A következő választ, amelyek egy tipikus válasz adja vissza, ha a csomagrögzítés állapotának lekérdezése.
 
 ```json
 {
@@ -219,9 +218,9 @@ A következő válasz példája egy tipikus válasz egy csomagrögzítéssel ál
 }
 ```
 
-## <a name="start-packet-capture"></a>Indítsa el a csomagrögzítéssel
+## <a name="start-packet-capture"></a>Elindítani a csomagrögzítést
 
-Az alábbi példakód létrehozza a csomagrögzítéssel virtuális gépen.  A példa van paraméteres rugalmasság például létrehozása érdekében.
+A következő példában létrehozunk egy csomagrögzítés virtuális gépen.  A példában a paraméteres létrehozása egy példa a rugalmasság érdekében.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -271,9 +270,9 @@ $requestBody = @"
 armclient PUT "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}?api-version=2016-07-01" $requestbody
 ```
 
-## <a name="stop-packet-capture"></a>Állítsa le a csomagrögzítéssel
+## <a name="stop-packet-capture"></a>Leállítani a csomagrögzítést
 
-A következő példa egy csomagrögzítéssel leállítja a virtuális gépen.  A példa van paraméteres rugalmasság például létrehozása érdekében.
+A következő példa leállítja a csomagrögzítés virtuális gépen.  A példában a paraméteres létrehozása egy példa a rugalmasság érdekében.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -283,9 +282,9 @@ $packetCaptureName = "TestPacketCapture5"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/stop?api-version=2016-12-01"
 ```
 
-## <a name="delete-packet-capture"></a>Csomagrögzítéssel törlése
+## <a name="delete-packet-capture"></a>Csomagrögzítés törlése
 
-A következő példa egy olyan virtuális gépen csomagrögzítéssel törli.  A példa van paraméteres rugalmasság például létrehozása érdekében.
+Az alábbi példa egy virtuális gépen csomagrögzítés törlése.  A példában a paraméteres létrehozása egy példa a rugalmasság érdekében.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -297,13 +296,13 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 ```
 
 > [!NOTE]
-> A csomagrögzítéssel törlése nem érinti a tárfiókban lévő fájl
+> Csomagrögzítés törlése nem törli a fájlt a tárfiókban
 
 ## <a name="next-steps"></a>További lépések
 
-A fájlok letöltését az azure storage-fiókok útmutatásért tekintse meg [az Azure Blob storage .NET használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz, amely használható a Tártallózó. Tártallózó további információt itt található: a következő hivatkozásra: [Tártallózó](http://storageexplorer.com/)
+Fájlok letöltése az azure storage-fiókokra vonatkozó utasításokért tekintse meg [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz használható a Storage Explorer. További információ a Storage Explorer itt található, a következő hivatkozásra: [Storage Explorerrel](http://storageexplorer.com/)
 
-Csomag rögzíti a virtuális gép a riasztások megtekintésével automatizálása [riasztási kiváltott csomagrögzítéssel létrehozása](network-watcher-alert-triggered-packet-capture.md)
+Ismerje meg, hogyan automatizálhatja a virtuális gép riasztások csomagrögzítés megtekintésével [hozzon létre egy aktivált riasztás csomagrögzítés](network-watcher-alert-triggered-packet-capture.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Bing videó keresési egyoldalas webalkalmazást (forráskód) |} Microsoft Docs
-description: Az oktatóanyag bemutatja, hogyan használja a videó Bing keresési API egy egyoldalas webalkalmazást forráskódja.
+title: A Bing Video Search egyoldalas webalkalmazást (forráskód) |} A Microsoft Docs
+description: A Bing Videókeresési API használata egy egyoldalas webalkalmazást a bemutató oktatóanyag forráskódját.
 services: cognitive-services
 author: mikedodaro
 manager: rosh
@@ -9,18 +9,18 @@ ms.component: bing-video-search
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: v-gedod
-ms.openlocfilehash: c0842e53cbc297c1980a9d08733d838def073835
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347067"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112460"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas videó fájlkeresés alkalmazás
+# <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Videókeresési alkalmazás
 
-Ez az a teljes forráskód ismertet a [alkalmazás oktatóanyag](tutorial-bing-video-search-single-page-app.md) Bing videó kereséshez. Az alkalmazás futtatásához, a forrás kódot bemásolhatja a Jegyzettömbben vagy más szövegszerkesztőben, és mentse a fájt `bing.html`. Ezután nyissa meg a mentett fájlt a Microsoft Edge vagy egy másik népszerű böngésző.
+Ez az a teljes forráskódot tárgyalt a [egyoldalas alkalmazás oktatóanyag](tutorial-bing-video-search-single-page-app.md) a Bing Videókeresés. Az alkalmazás futtatásához, a forráskód másolja a Jegyzettömbbe vagy más szövegszerkesztőben, és mentse `bing.html`. Ezután nyissa meg a mentett fájlt a Microsoft Edge vagy más népszerű böngésző.
 
-````html
+```html
 <!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
 <!-- the above Mark of the Web lets IE run this page in the Internet security zone,
@@ -615,3 +615,4 @@ function doPrevSearchPage() {
 
 </body>
 </html>
+```

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2018
+ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7313ea1ff26d9c732d04b02f8b88f14e2aa4dd2f
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 562e8e49d769f15ba0b965bfb03c0d56076c78f1
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072051"
+ms.locfileid: "39091322"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli hibák az Azure Resource Manager hibaelhárítása
 
@@ -104,7 +104,21 @@ Válassza ki az üzenetet, további részletekért. Az alábbi ábrán látható
 
 ### <a name="deployment-errors"></a>Telepítési hibák
 
-A művelet ellenőrzése sikeres, de a telepítés során nem sikerül, tekintse meg a hiba az értesítéseket a. Válassza ki az értesítést.
+A művelet átmennek az ellenőrzésen, de a telepítés során nem sikerül, kap egy központi telepítési hiba.
+
+Alkalmazástelepítési hibakódok és üzenetek a PowerShell-lel megjelenítéséhez használja:
+
+```azurepowershell-interactive
+(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
+```
+
+Alkalmazástelepítési hibakódok és üzenetek az Azure CLI-vel megjelenítéséhez használja:
+
+```azurecli-interactive
+az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+```
+
+A portálon válassza ki az értesítést.
 
 ![által okozott hiba](./media/resource-manager-common-deployment-errors/notification.png)
 

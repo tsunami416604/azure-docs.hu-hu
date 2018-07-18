@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 5eb0839cb973ba2f8bc56dc240fc60817b24b3b6
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 5e278d622557626068618d03eba221b9609d4969
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068862"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115748"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Használja a "Szöveg-beszéd átalakítás" Speech service-ben
 
@@ -25,7 +25,7 @@ Szöveg-beszéd átalakítás lehet egyszerű szöveges (ASCII vagy UTF8), vagy 
 
 A regionális szöveg-beszéd átalakítás végpontok Itt jelennek meg. Használja az egyik szükséges az előfizetéshez.
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 ## <a name="specify-a-voice"></a>Adjon meg egy hang
 

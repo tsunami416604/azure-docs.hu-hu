@@ -1,6 +1,6 @@
 ---
-title: Egyesített riasztásait az Azure-figyelő
-description: Az Azure-ban egyesített olyan riasztásokat, amelyek lehetővé teszik kezelését leírása riasztást, és szabályok riasztást Azure-szolgáltatásokhoz.
+title: Az Azure monitorban egységes riasztások
+description: Leírás egységes Azure-ban, hogy milyen riasztások kezelését teszi lehetővé riasztást, és a szabályok riasztásokat az Azure-szolgáltatás.
 author: manishsm-msft
 services: monitoring
 ms.service: azure-monitor
@@ -8,221 +8,223 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: mamit
 ms.component: alerts
-ms.openlocfilehash: ff2650ec7d4c2c1fffd57176327b56199335fa9d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c4c8279a1d4638a1c5d889b53e2d9e89e458cc37
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264816"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117615"
 ---
-# <a name="unified-alerts-in-azure-monitor"></a>Egyesített riasztásait az Azure-figyelő
+# <a name="unified-alerts-in-azure-monitor"></a>Az Azure monitorban egységes riasztások
 
 ## <a name="overview"></a>Áttekintés
 
 > [!NOTE]
->  Egy új, egységes riasztási kezelőfelülettel, amellyel felügyelheti a több előfizetéssel riasztást, és bemutatja a riasztás állapota és intelligens csoportok nyilvános előzetes verziójában jelenleg rendelkezésre áll. Tekintse meg a [utolsó szakaszban ismertetett](#enhanced-unified-alerts-experience-public-preview) leírását ez fokozott élményt, és a folyamat engedélyezve van.
+>  Egy új egyesített riasztási megoldást, amellyel kezelheti a több előfizetést riasztást, és bemutatja a riasztás Államokban és intelligens csoportok jelenleg nyilvános előzetes verzióban érhető el. Tekintse meg a leírását ez a cikk utolsó szakaszában fokozott élményt, és engedélyezheti azt.
 
 
-Ez a cikk az Azure-figyelő riasztási egységes élményt ismerteti. A [előző riasztási élmény](monitoring-overview-alerts.md) érhető el a **riasztások (klasszikus)** beállítást az Azure-figyelő menüből. 
+Ez a cikk az Azure Monitor riasztási egységes élményt ismerteti. A [korábbi riasztási élmény](monitoring-overview-alerts.md) érhető el a **riasztások (klasszikus)** lehetőség az Azure figyelő menü. 
 
-## <a name="features-of-the-unified-alert-experience"></a>A riasztási egységes élmény jellemzői
+## <a name="features-of-the-unified-alert-experience"></a>A riasztási egységes felhasználói élményt funkciói
 
-Az egységes felhasználói élmény a klasszikus felhasználói élmény van a következő előnyöket biztosítja:
+Az egységes felhasználói élményt a klasszikus élmény felett az alábbi előnyökkel jár:
 
--   **Értesítési rendszer jobb**: riasztások használata az egységes [művelet csoportok]( https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), amely megnevezett értesítések és a műveletek a több riasztás is használhatnak. 
-- **Az egységes jelentéskészítő környezetét** - kezelheti a riasztásokat, és a naplókat riasztás szabályainak metrikákat, és tevékenységet naplózni Azure figyelő, Naplóelemzés és az Application Insights egy helyen. 
-- **Nézet indította Naplóelemzési riasztásait az Azure portálon** -Naplóelemzési riasztásai más, a más forrásokból származó riasztások megtekintéséhez az Azure portálon. Korábban ezek volt külön portált.
-- **Fired riasztások és a riasztási szabályok** -riasztási szabályok most különböztetni a riasztásokat. Riasztási szabály olyan feltétel, amely riasztást meghatározását. Riasztást egy riasztási szabály indítási példánya.
-- **Jobb munkafolyamat** -a jelentéskészítő környezetét egyesített riasztás végigvezeti Önt a riasztási szabály konfigurálásának lépésein.
+-   **Értesítési rendszer jobb**: [Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) nevesített csoportok vagy értesítési és műveleteket, amelyeket több riasztás felhasználható. 
+- **Egyesített jelentéskészítési funkciók**: riasztásokat és metrikákat, naplókat és tevékenységeket tartalmazó naplók az Azure Monitor, a Log Analytics és az Application Insights riasztási szabályokat egy helyen kezelhető. 
+- **Megtekintése az Azure Portal Log Analytics-riasztások aktivált**: Log Analytics-riasztásokkal mostantól a riasztások más forrásokból, az Azure Portalon lehet megtekinteni. Korábban a riasztások más forrásokból is külön portált.
+- **Aktivált riasztások és a riasztási szabályok szétválasztása**: riasztási szabályok most megkülönböztetett riasztásokból. Riasztási szabályok egy feltételt, amely a riasztás definíciója. Riasztást egy riasztási szabályt elsőre példánya.
+- **Jobb munkafolyamat**: A jelentéskészítési funkciók egységes riasztás végigvezeti Önt a riasztási szabályok konfigurálásának folyamatán.
  
-Metrika riasztások klasszikus metrika riasztások rendelkezik a következő fejlesztéseket kínálja:
+Metrikákhoz kapcsolódó riasztások a következő fejlesztéseket szabályozhatják a klasszikus metrikariasztásokat:
 
--   **Továbbfejlesztett késés**: metrika riasztások egy percenként gyakorisággal futtatható. Klasszikus metrika riasztások, 5 perces gyakorisággal végezni. Napló riasztásokat továbbra is hosszabb idő miatt egy percet vesz igénybe tölti be a naplók késleltetés van. 
--   **A többdimenziós metrikák támogatása**: figyelmeztetik a dimenzionális mérőszámokat, hogy lehetővé teszi a figyelheti a metrika egy adott példányához.
--   **Metrika feltételek teljesebb körű vezérlése**: gazdagabb riasztási szabályok, amelyek támogatják a maximális, minimális, átlagos, és az összes érték a mérőszámok figyelési adhat meg.
--   **Egyszerre több metrikák figyelését**: legfeljebb két metrikák kezelhető egyetlen szabállyal figyelheti. Riasztást vált ki, ha mindkét metrikák megsértik a megfelelő küszöbértéket a megadott időszakban.
--   **A naplók metrikák** (korlátozott nyilvános előzetes verzió): bizonyos adatokat, amelyek Log Analytics mostantól napló kicsomagolja és Azure figyelő metrikák alakítja át és más metrikákkal hasonlóan a majd riasztást. 
+-   **Továbbfejlesztett késés**: metrikákhoz kapcsolódó riasztások gyakorisággal percenként egyszer futtatható. Klasszikus metrikariasztásokat mindig gyakoriságot, 5 percenként egyszer futtatni. Riasztások továbbra is fennáll, hogy a naplók szükséges idő miatt egy percnél hosszabb késleltetést. 
+-   **Többdimenziós metrikák támogatása**:, riasztja Önt a többdimenziós metrikák, ami azt jelenti, hogy egy adott példányán, a metrika figyelheti.
+-   **Metrikai feltétel több felügyeleti**: gazdagabb riasztási szabályok, amelyek támogatják a mérőszámok maximális, minimális, átlagos és teljes értékek figyelési definiálhat.
+-   **Több metrika figyelése kombinált**: egyetlen szabállyal legfeljebb két mérőszám figyelheti. Egy riasztás akkor aktiválódik, ha mindkét metrikák megsértik a megfelelő mértékben a küszöbértékeket a megadott időszakra vonatkozó.
+-   **Naplók, metrikák** (korlátozott nyilvános előzetes verzió): bizonyos adatok kerülnek a Log Analytics mostantól log ki kell olvasni, és az Azure Monitor-metrikák alakítani, és ezután kapni a hasonlóan más metrikákkal. 
 
 
 ## <a name="alert-rules"></a>Riasztási szabályok
-A riasztások egységes élmény használja a következő fogalmakat riasztási szabályok külön riasztásaiból közben egységes a szerzői műveletekhez élmény különböző riasztástípusok között.
+Egyesített riasztásainak használja a következő fogalmak riasztási szabályok elkülönítése riasztások közben a szerkesztőfelületen egységes különböző riasztástípusok között.
 
 | Elem | Meghatározás |
 |:---|:---|
-| Riasztási szabály | Riasztás létrehozása a feltétel meghatározása. Kártyából álló egy _célerőforrás_, _jel_, _feltételek_, és _logika_. Riasztási szabály csak akkor aktív, ha van egy _engedélyezett_ állapotát.
-| Célzott erőforrás | Határozza meg a konkrét erőforrásokat, és jelzi a riasztások érhető el. A cél lehet az Azure-erőforrásokkal.<br>Példák: virtuális gép, tárfiókot, virtuálisgép-méretezési csoport, a Naplóelemzési munkaterület, Application Insights-erőforrás |
-| Jel | A célerőforrás által kibocsátott adatainak forrását. Támogatott jel típusok *metrika*, *tevékenységnapló*, *Application Insights*, és *napló*. |
-| Feltételek | Kombinációja _jel_ és _logika_ alkalmazza a cél erőforráson.<br>Példák: Százalékos CPU > 70 % kiszolgáló válaszideje > 4 ms, a napló eredményszám lekérdezése a > 100 stb. |
-| Logika | Felhasználó által meghatározott logikát, ellenőrizze, hogy a jel belül-e a tartomány és-értékek várt. |
-| Műveletek | A riasztás nézetnek indításakor végrehajtandó művelet. Több művelet akkor fordulhat elő, ha egy riasztás akkor következik be. Ezek a riasztások művelet csoportokat támogatja.<br>Példák: e egy e-mail címet, hívja a webhook URL-CÍMÉT. |
-| A figyelőre érvényes feltétel | Azt jelzi, hogy a feltétellel, hogy létrehozott egy metrika riasztást később megoldódott. Metrika riasztási szabályok egy adott metrika rendszeres időközönként mintát. Ha a riasztási szabályban megadott feltétele teljesül, majd egy új riasztás hozza létre Fired feltétele.  Amikor a metrika van mintát újra, ha a megadott továbbra is feltétele teljesül, akkor semmi nem történik.  Ha azonban a feltétel nem teljesül, a riasztás Megoldva esetén megváltozik. A megadott feltétele teljesül, majd egy másik riasztás jön létre Fired feltétele a következő újraindításkor. |
+| Riasztási szabály | Riasztás létrehozása a feltétel meghatározása. Riasztási szabály áll, amelyek egy _célerőforrásnál_, _jel_, _feltételek_, és _logikai_. Riasztási szabály csak akkor aktív, ha van egy _engedélyezve_ állapota.
+| Célerőforrás | Határozza meg az adott erőforrásokat és azt jelzi, hogy a riasztás érhető el. A cél lehet Azure-erőforrásokkal.<br><br>Példák: virtuális gép, tárfiók, virtuálisgép-méretezési csoportot, Log Analytics-munkaterületet, Application Insights-erőforrás |
+| Jel | A célerőforrás által kibocsátott adatok forrását. Jel támogatott típusok a következők *metrika*, *tevékenységnapló*, *Application Insights*, és *Log*. |
+| Feltételek | Kombinációja _jel_ és _logikai_ egy cél-erőforrásra a alkalmazni.<br><br>Példák: Százalékos Processzorhasználat > 70 %-os, a kiszolgáló válaszideje > 4 ms, a napló eredményszámot lekérdezés > 100, és így tovább |
+| Logika | Felhasználó által definiált logikai annak ellenőrzéséhez, hogy a jel belül a tartományértékeknek várható. |
+| Műveletek | A riasztás akkor aktiválódik, amikor végrehajtandó művelet. Több művelet akkor fordulhat elő, riasztások aktiválódásakor. Ezek a riasztások Műveletcsoportok támogatja.<br><br>Példák: e-mailben való e-mail-cím, egy webhook URL-Címének meghívása |
+| Figyelési feltétel | Azt jelzi, hogy megoldódott-e a feltétellel, hogy metrikariasztás létrehozása. Metrikaalapú riasztási szabályok egy adott mérőszám minta rendszeres időközönként. Ha a riasztási szabályban megadott feltétele teljesül, akkor egy új riasztás jön létre olyan feltétellel, az "aktiválás".  A metrika feladata újra, ha a feltétel teljesülése továbbra is majd nem történik semmi.  Ha a feltételek nem teljesülnek, majd a riasztás módosul, amelyikben "megoldódott". A megadott feltétele teljesül, a következő futtatáskor egy másik riasztást hoz létre olyan feltétellel, az "aktiválás". |
 
 
-## <a name="alert-pages"></a>Riasztások lap
-Egyesített riasztások megtekintése és kezelése az Azure riasztások egy helyen adja meg. A következő szakaszok ismertetik az egységes élmény egyes lapjainak funkcióit.
+## <a name="alert-pages"></a>Riasztási oldalak
+Egyesített riasztások adja meg az összes Azure-riasztások megtekintése és kezelése egy helyen. A következő szakaszok ismertetik a Funkciók, az egyesített felület minden egyes laphoz.
 
 ### <a name="alerts-overview-page"></a>Riasztások – áttekintés oldalra
-**Riasztások** – Áttekintés lapon látható az összes égetett riasztások összesített összegzését, és az összes engedélyezett riasztási szabályok. Az előfizetések, illetve a szűrő paramétereit frissíti az összesítések, és a riasztások listája következik be.
+A **riasztások** Áttekintés lapján az összes aktivált riasztások összesített összegzését jeleníti meg, és a teljes száma a riasztási szabályok engedélyezve van. Az összesítések módosítása az előfizetés vagy szűrési paraméterekhez frissíti, és a riasztások aktivált listája.
 
  ![riasztások – áttekintés](./media/monitoring-overview-unified-alerts/alerts-preview-overview2.png) 
 
-### <a name="alert-rules-management"></a>A riasztási szabályok kezelése
-**Szabályok** egy egyetlen lap minden riasztási szabályok kezelése az Azure-előfizetések között. Minden riasztási szabályokat sorolja fel, és tároló erőforrásait, az erőforráscsoportok, a szabály neve vagy a állapota alapján rendezhető. A riasztási szabályok is szerkesztett nd engedélyezve van vagy le van tiltva ezen a lapon.
+### <a name="alert-rules-management"></a>Riasztási szabályok kezelése
+**Szabályok** egyetlen lapon az összes riasztási szabályok kezelése az Azure-előfizetések között van. Ez felsorolja az összes riasztási szabályt, és a céloldali erőforrások, erőforráscsoportok, szabálynév vagy állapot alapján lehet rendezni. Riasztási szabályok is kell szerkeszteni, engedélyezve van, vagy le van tiltva ezen a lapon.
 
- ![riasztások-szabályok](./media/monitoring-overview-unified-alerts/alerts-preview-rules.png)
+ ![riasztások – szabályok](./media/monitoring-overview-unified-alerts/alerts-preview-rules.png)
 
 
-## <a name="creating-an-alert-rule"></a>Riasztási szabály létrehozása
-Riasztások függetlenül a figyelőszolgáltatás egységes módon hozhat létre, vagy a típus azt. Összes következik be, riasztások, és a kapcsolódó részletes adatok találhatók egylapos.
+## <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
+Riasztásokat hozhat létre egységes módon végrehajtott, függetlenül a figyelési szolgáltatás, vagy jel típusa. Az összes aktivált riasztások, és a kapcsolódó részletes adatokat egyetlen lapon érhető el.
  
-Egy új riasztási szabályt hoz létre a következő három lépést:
+Akkor hozzon létre egy új riasztási szabály az alábbi három lépést:
 1. Válassza ki a _cél_ a riasztás.
-1. Válassza ki a _jel_ a rendelkezésre álló jeleket a cél a.
-1. Adja meg a _logika_ a Signal adatok alkalmazandó.
+1. Válassza ki a _jel_ az a cél a rendelkezésre álló jelek.
+1. Adja meg a _logikai_ kinyert adatok alkalmazandó.
  
-Az egyszerűsített létrehozási folyamat már nem szükséges tudni, hogy a figyelési forrás- vagy egy Azure-erőforrás kiválasztása előtt támogatott jelek a felhasználó. A lista elérhető jelek automatikusan kijelölt tároló-erőforrás alapján szűri, és végigvezeti a riasztási szabály logikája meghatározása.
+Ez a szerzői műveletekhez részben egyszerűsített folyamat többé nem kell, hogy tudja, hogy a monitorozási forrás vagy azt jelzi, hogy egy Azure-erőforrás kiválasztása előtt támogatottak. A rendelkezésre álló jelek automatikusan a szűrt lista a célként megadott erőforrás kiválasztott alapján, és ez végigvezeti Önt a riasztási szabály a logikai meghatározása.
 
-A riasztási szabályok létrehozásával kapcsolatos részletesebb [létrehozása, megtekintése és kezelése az Azure-figyelővel riasztások](monitor-alerts-unified-usage.md).
+A riasztási szabályok létrehozásával kapcsolatos többet is megtudhat [, létrehozás, riasztások megtekintése és kezelése az Azure Monitor használatával](monitor-alerts-unified-usage.md).
 
-Riasztások több Azure-szolgáltatások figyelésének keresztül érhetők el. Információk és mikor érdemes használni ezeket a szolgáltatásokat mindegyikének: [figyelése Azure-alkalmazások és erőforrások](./monitoring-overview.md). A következő táblázat felsorolja a riasztási szabályok elérhető típusú Azure, és mi jelenleg a riasztás egységes élmény támogatja.
+Riasztások számos Azure-szolgáltatások figyelésének érhetők el. Információ és mikor érdemes használni, az ilyen szolgáltatásokkal: [figyelése az Azure-alkalmazások és erőforrások](./monitoring-overview.md). A következő táblázat a riasztási szabályok Azure-ban rendelkezésre álló típusok listája. Azt is megjeleníti, mi a riasztási egységes felhasználói élményt az jelenleg támogatja.
 
 | **Forrás figyelése** | **Jel típusa**  | **Leírás** | 
 |-------------|----------------|-------------|
-| Az Azure-figyelő | Metrika  | Más néven [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md), 1 perces gyakorisággal metrika feltételek kiértékelése támogatja, és lehetővé teszik a több metrika és többdimenziós metrika szabályokat. A támogatott típusok listája érhető [újabb metrika értesítések az Azure-szolgáltatásokat az Azure portálon](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).<br>[Klasszikus metrika riasztások](monitoring-overview-alerts.md) nem támogatottak az új riasztások felületet. Megtalálja azokat a riasztásokat (klasszikus) Azure-portálon. A klasszikus riasztások néhány metrikák típusokat, amelyek még nem lettek áthelyezve az újabb riasztások támogatja. Teljes listájáért lásd: [metrikák támogatott](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics). |
-| Log Analytics | Logs  | Értesítéseket, vagy futtassa az automatikus műveleteket, ha a napló keresési lekérdezés meghatározott feltételeknek eleget. A Naplóelemzési riasztások [az új felületre való másolásának](monitoring-alerts-extend.md). A [az előzetes *Naplóelemzési naplók, metrikák* ](monitoring-alerts-extend-tool.md) érhető el. Az előzetes lehetővé teszi bizonyos naplók típusait és alakíthatja át őket metrika, ahol meg tudja majd riasztás őket az Új riasztási felület használatával. Az előzetes akkor hasznos, ha le szeretné kérdezni natív Azure figyelő metrikák együtt az Azure-naplók. |
-| Tevékenységnaplók | Tevékenységnapló | A kijelölt tároló által létrehozott összes létrehozási, frissítési és törlési műveletek rekordokat tartalmazza. |
-| Service Health | Tevékenységnapló  | Egyesített riasztások nem támogatott. Lásd: [napló riasztások tevékenység létrehozása a szolgáltatás értesítések](monitoring-activity-log-alerts-on-service-notifications.md).  |
-| Application Insights | Logs  | Naplók és az alkalmazás teljesítményének részleteit tartalmazza. Analytics query használatával, az alkalmazásadatok alapján végrehajtandó műveletek feltételeinek megadása. |
-| Application Insights | Metrika | Egyesített riasztások nem támogatott. [Metrika riasztások] megtekintéséhez. (.. /Application-insights/App-insights-alerts.MD) |
-| Application Insights | Webalkalmazás-rendelkezésreállás figyelésére szolgáló tesztek | Egyesített riasztások nem támogatott.  Lásd: [webes teszt riasztások](../application-insights/app-insights-monitor-web-app-availability.md). Bármely szeretnék adatokat küldeni a Application Insights tagolva webhelyen érhető el. Értesítést kaphat, ha a rendelkezésre állás vagy a webhely válaszképesség nem éri el elvárásainak. |
+| Azure Monitor | Metrika  | Más néven [közel valós idejű metrikákhoz kapcsolódó riasztások](monitoring-near-real-time-metric-alerts.md), azok metrika feltételek kiértékelése, percenként egyszer gyakran támogatja, és lehetővé teszik a több metrika és többdimenziós metrika szabályokat. A támogatott erőforrástípusok listája megtalálható [újabb metrikákhoz kapcsolódó riasztások az Azure-szolgáltatásokhoz az Azure Portalon](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).<br>[Klasszikus metrikariasztásokat](monitoring-overview-alerts.md) a riasztások új kezelőfelülete nem támogatottak. Ezeket megtalálhatja riasztások (klasszikus) alatt az Azure Portalon. A klasszikus riasztások bizonyos metrika van még nem lett áthelyezve a újabb riasztások típusait támogatja. A teljes listát lásd: [támogatott mérőszámok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics). |
+| Log Analytics | Logs  | Értesítések fogadása, vagy automatikus műveleteket futtatni, ha egy naplóbeli keresési lekérdezés megfelel bizonyos feltételeknek. A riasztások a Log Analytics [az új felhasználói felületre való másolásakor](monitoring-alerts-extend.md). A [előzetes verziója *Log Analytics-naplók, metrikák* ](monitoring-alerts-extend-tool.md) érhető el. Az előzetes verzió lehetővé teszi bizonyos típusú, naplók és alakíthatja át őket a metrikák, ahol, majd riasztja Önt őket az Új riasztási funkció használatával. Az előzetes verzió akkor hasznos, ha szeretne kapni, valamint a natív Azure Monitor-metrikák az Azure-naplók. |
+| Tevékenységnaplók | Tevékenységnapló | Tartalmazza a rekordokat az összes létrehozása, frissítése és törlése a kijelölt tároló által létrehozott műveleteket. |
+| Szolgáltatások állapota | Tevékenységnapló  | Egyesített riasztások nem támogatott. Lásd: [tevékenységnapló-riasztások létrehozása a szolgáltatási értesítések](monitoring-activity-log-alerts-on-service-notifications.md).  |
+| Application Insights | Logs  | Naplók az alkalmazás teljesítményének részleteit tartalmazza. Az elemzési lekérdezés segítségével meghatározhatja a műveletek végrehajtását alapján az alkalmazásadatok feltételeit. |
+| Application Insights | Metrika | Egyesített riasztások nem támogatott. Lásd: [metrikákhoz kapcsolódó riasztások](../application-insights/app-insights-alerts.md). |
+| Application Insights | Webalkalmazás rendelkezésre állási tesztek | Egyesített riasztások nem támogatott.  Lásd: [webtesztriasztást](../application-insights/app-insights-monitor-web-app-availability.md). Rendelkezésre álló webhelyre, hogy az Application insights szolgáltatásnak van kialakítva. Értesítés küldése, amikor a rendelkezésre állás vagy a webhely válaszképesség nem éri el elvárásainak. |
 
-## <a name="enhanced-unified-alerts-public-preview"></a>Továbbfejlesztett egyesített riasztások (nyilvános előzetes verzió)
-> [!NOTE]
->  Ebben a szakaszban a funkció hamarosan elérhető. Azt nem szerepelhet a által használt még. 
+## <a name="enhanced-unified-alerts-public-preview"></a>Továbbfejlesztett egységes riasztások (nyilvános előzetes verzió)
 
-Továbbfejlesztett egyesített riasztások élményt 2018. június 1 Azure figyelő nyilvános előzetes verziójában lett szabadítva. Ez a felület épít, előnyeit [riasztások egyesített](#overview) március 2018 kiadott, és lehetővé teszi a kezelése, és módosítja a riasztás állapota mellett az egyes riasztások összesítése. Ez a szakasz az új szolgáltatásokat és az Azure portálon Új riasztási lapok közötti váltáshoz ismerteti.
+Egy egységes riasztások továbbfejlesztett élmény az Azure Monitor nyilvános előzetes verziója 2018. június 1. jelent meg. Ez a tapasztalat épül, amely előnyeinek [riasztások egyesített](#overview), amely 2018 március nem régebbi, és amely lehetővé teszi, hogy kezelheti és az egyes riasztások összesítése, valamint a riasztás állapotának módosítása. Ez a szakasz ismerteti az új funkciók és az új riasztás lapok az Azure Portalon.
 
-### <a name="features-enhanced-unified-alerts"></a>Továbbfejlesztett funkciók egyesített riasztások
+### <a name="enhanced-unified-alerts"></a>Továbbfejlesztett egységes riasztások
 
-Az új felület nem érhetők el a klasszikus egységes élmény a következő szolgáltatásokat biztosítja:
+Az új felhasználói felület nem érhetők el a klasszikus egységes felhasználói élményt a következő szolgáltatásokat biztosítja:
 
-- **Megtekintheti a riasztásokat a különböző előfizetéseknél** -most már megtekintheti és kezeli a riasztások egyes példányai egyetlen nézetben több előfizetéssel.
-- **Az állapot a riasztások kezelése** -riasztások most már rendelkezik olyan állapotban, amely azt jelzi, hogy a lett zárva a nyugtázott.
-- **Intelligens csoportok riasztások rendezése** -intelligens csoportok automatikusan csoportba foglalásához kapcsolatos riasztásokat, így külön-külön helyett készletként kezelheti azokat.
+- **Megtekintheti a riasztásokat több előfizetés**: most már megtekintheti és kezelheti a riasztásokat az egyes példányai több előfizetést egyetlen nézetben.
+- **Az állapot a riasztások kezelése**: riasztások most már olyan állapotban, amely azt jelzi, hogy azok már nyugtázták zárva.
+- **Riasztások rendszerezése az intelligens csoportok**: intelligens csoportok automatikusan csoportosíthatja kapcsolatos riasztásokat, így külön-külön helyett csoportként kezelheti azokat.
 
-### <a name="enable-enhanced-unified-alerts"></a>Továbbfejlesztett egyesített értesítések engedélyezése
-A szalagcím a riasztások lap tetején kattintson az új, egységes riasztási kezelőfelület engedélyezése Ez a folyamat létrehoz egy riasztási tároló, amely tartalmazza az égetett riasztások az elmúlt 30 nap között támogatott szolgáltatások. Az új felület engedélyezése után válthat oda-vissza a régi és új felhasználói élmény a szalagcím kattintva.
+### <a name="enable-enhanced-unified-alerts"></a>Továbbfejlesztett egységes riasztások engedélyezése
+Egyesített riasztások új kezelőfelülete engedélyezze a riasztások lap felső szalagja kiválasztásával. Ez a folyamat létrehoz egy riasztási tároló, amely tartalmazza az aktivált riasztások az elmúlt 30 nap között támogatott szolgáltatások. Az új funkció engedélyezését követően válthat oda-vissza a régi és új felhasználói élményt a szalagcím kiválasztásával között.
 
 > [!NOTE]
->  Először engedélyezni kell az új felület néhány percig is eltarthat.
+>  Eltarthat néhány percig, először engedélyezni kell az új felhasználói felületre.
 
-![Transzparens](media/monitoring-overview-unified-alerts/opt-in-banner.png)
+![Szalagcím](media/monitoring-overview-unified-alerts/opt-in-banner.png)
 
-Ha engedélyezi az új felület fogja regisztrálni, amely rendelkezik hozzáféréssel előfizetéseken. Bár a teljes előfizetés engedélyezve van, csak az új felület kiválasztott felhasználók lesz tudja majd tekinteni azt. Az előfizetés hozzáféréssel rendelkező más felhasználók külön-külön engedélyeznie kell a felhasználói élmény.
+Az összes előfizetés, hogy regisztrált az új funkció engedélyezése esetén a hozzáférést. Bár a teljes előfizetés engedélyezve van, csak azok a felhasználók, válassza ki az új funkció is megtekinthetik azokat. Az előfizetés-hozzáféréssel rendelkező más felhasználók külön-külön engedélyeznie kell a felhasználói élményt.
 
-Az Új riasztási élmény engedélyezése nem befolyásolja a művelet csoportok vagy értesítést küld a riasztási szabályok a konfigurációja. Ez csak módosítja, hogy megtekinthető és kezelhető az Azure portálon riasztásokat égetett példányai.
+Az új riasztás használatát teszi lehetővé a Műveletcsoportok vagy -értesítések a riasztási szabályok konfigurációja nem érinti. Csak a módon, hogy megtekinthető és kezelhető a riasztások az Azure Portalon aktivált példányok változik.
 
-### <a name="smart-groups"></a>Intelligens csoportok
-Intelligens csoportok zaj csökkentésére azáltal, hogy az egyes riasztások kezelése, hanem egyetlen kapcsolódó riasztások kezelése. Intelligens csoportok részleteinek megtekintése, és a beállítani egy riasztáshoz hasonló. Minden riasztás egy intelligens csoport tagja.
+### <a name="smart-groups"></a>Az intelligens csoportok
+Az intelligens csoportok zaj csökkentésére azáltal, hogy a kapcsolódó riasztások egyetlen egységként helyett, a riasztásokat egyenként kezelheti. Intelligens csoportok adatait tekintheti meg, és az állapot beállítása hasonlóan történik, hogyan zajlik a riasztások. Minden riasztás pontosan egy intelligens csoport tagja.
 
-Intelligens csoportok automatikusan létrejönnek a gépi tanulási kapcsolódó riasztásokat, amelyek megfelelnek egy probléma egyesítése használatával. Ha riasztás jön létre, az algoritmus hozzáad egy új intelligens vagy egy meglévő intelligens csoportok olyan adatokat, mint a korábbi minták, a hasonlóság tulajdonságok és a hasonló struktúrával alapján. Az algoritmus jelenleg csak egy előfizetésen belül az azonos figyelő szolgáltatásból riasztások figyelembe veszi. Intelligens csoportok csökkentheti az összevonás keresztül riasztási zaj 99 %-kal. Az oka, hogy riasztások foglalt egy csoportot az intelligens csoport részletei lapon tekintheti meg.
+Intelligens csoportok használatával a gépi tanulási úgy, hogy egyetlen problémára képviselő kapcsolódó riasztások automatikusan jönnek létre. Ha riasztás jön létre, az algoritmus hozzáad egy új intelligens csoportot vagy egy meglévő, például a korábbi minták, hasonló tulajdonságok és hasonló szerkezet információi alapján intelligens csoporthoz. 
 
-Egy intelligens csoport nevét az első riasztás esetén. Nem hozható létre, vagy intelligens csoport átnevezése.
+Az algoritmus jelenleg csak egy előfizetésen belül ugyanaz a figyelő a szolgáltatás riasztásai figyelembe veszi. Intelligens csoportok akár 99 %-a-összevonás keresztül riasztási zaj csökkentéséhez. Az oka, hogy a riasztások Rendszeríró egy csoporthoz az intelligens csoport részletek lapon tekintheti meg.
+
+Egy intelligens csoport nevét az első riasztás neve. Nem hozható létre, vagy intelligens csoport átnevezése.
 
 
-### <a name="alert-states"></a>Riasztás állapota
-Továbbfejlesztett egyesített riasztások, akkor a riasztás állapota fogalmát. Beállíthatja, hogy riasztást adjon meg, hol helyezkedik el a feloldási folyamat állapotát.  Ha riasztás jön létre, állapotba került *új*. Ha korábban a nyugtázott egy riasztást, és lezárt már módosíthatja állapotát. A riasztás előzményeihez módosításokat állam tárolja.
+### <a name="alert-states"></a>Riasztási állapotok
+Továbbfejlesztett egységes riasztások a riasztás állapotának fogalmát vezetnek be. Beállíthatja, hogy riasztást adjon meg, hol helyezkedik el a feloldási folyamat állapotát. Ha riasztás jön létre, állapotba került *új*. Miután nyugtázta a riasztást, és ha bezárja az állapot módosíthatja. Az összes állapotváltozások előzményeit, a riasztás vannak tárolva.
 
 A következő riasztási állapotok támogatottak.
 
 | Állapot | Leírás |
 |:---|:---|
-| Új | A problémát most már észlelt, és még nem ellenőrzi. |
-| Visszaigazolva | A rendszergazda tekintse át a figyelmeztető és megkezdte működését rajta. |
-| Lezárva | A probléma megoldódott. Miután egy riasztás be lett zárva, akkor nyithatja meg a módosítás egy másik állapotba. |
+| Új | A probléma csak észlelt, és még nem lett felülvizsgálva. |
+| Visszaigazolva | A rendszergazda tekintse át a figyelmeztető és a munka megkezdése. |
+| Lezárva | A probléma megoldódott. Riasztás lezárása után nyissa meg újra egy másik állapotának módosításával. |
 
-Egy riasztás állapota eltér a figyelési feltétel. Metrika riasztási szabályok riasztást állíthat be feltétele _feloldva_ Ha a hibát kiváltó feltétel nem teljesül. A riasztás állapota a felhasználó állítja be, és a figyelési feltétel független. Annak ellenére, hogy a rendszer a feloldani a figyelési feltétel lehet beállítva, a riasztás állapota nem változik, amíg a felhasználó módosítja azt.
+A riasztás állapotát a figyelési feltétel eltér. Metrikaalapú riasztási szabályok riasztást értékre a feltételben _megoldott_ Ha a hibajelzést kiváltó körülmény már nem teljesül. Riasztás állapota a felhasználó állítja be, és független a figyelési feltétel. Bár a rendszer a figyelési feltétel, a "megoldódott" beállíthatók, a riasztás állapota nem változik, amíg a felhasználó megváltoztatná.
 
-#### <a name="changing-the-state-of-an-alert-or-smart-group"></a>Egy riasztás vagy intelligens csoport állapotának módosítása
-Az egyes riasztási állapot módosítására, vagy több riasztás együtt kezelheti úgy, hogy egy intelligens csoport állapotát.
+#### <a name="change-the-state-of-an-alert-or-smart-group"></a>Egy riasztás vagy intelligens csoport állapotának módosítása
+Egy adott riasztás állapotának módosítása vagy az intelligens csoport állapotának beállításával együtt kezelheti a több riasztás is.
 
-A riasztás állapotának módosítása kattintva **módosítsa a riasztás állapota** a Részletek nézetben a riasztást, vagy állítsa az intelligens állapotának kattintva **intelligens csoport Állapotváltozáshoz** Részletek nézetben. Egyszerre több elem állapotának módosíthatja lista nézetben jelölje ki őket, kattintson **állapotváltoztatási** az oldal tetején. Mindkét esetben válassza ki az új állapot a legördülő listából, és megadhat egy megjegyzést. Ha csak egy elemet, akkor is rendelkezik egy lehetőség, hogy a módosítások alkalmazása az intelligens csoportban lévő összes riasztást.
+Egy riasztás állapotának módosítása kiválasztásával **riasztás állapotának módosítása** a riasztás a Részletek nézetben. Módosítsa az intelligens csoport kiválasztásával vagy **intelligens állapot módosítása** a részletes nézetben. Egyszerre több elemek állapotának módosításához először válassza ki azokat a listanézet, és válassza **állapot módosítása** az oldal tetején. 
+
+Mindkét esetben válassza ki az új állapot a legördülő menüből. Adja meg a megjegyzést. Ha módosítja egy elem, lehetősége is van a alkalmazni a módosításokat az intelligens csoportban található összes riasztást.
 
 ![Állapot módosítása](media/monitoring-overview-unified-alerts/change-tate.png)
 
 ### <a name="alerts-page"></a>Riasztások lap
-Az alapértelmezett riasztások lapon belül egy adott időkerete létrehozott riasztások összegzését tartalmazza. Minden súlyossági teljes riasztásait az oszlopokat azonosítja az egyes minden súlyossági a riasztások teljes számát jeleníti meg. Kattintson bármelyik elemre a nyomkövetés alapjául szolgáló a [minden riasztás](#all-alerts-page) oldalon a súlyosság szerint szűrve.
+Az alapértelmezett riasztások oldal, amely egy adott időtartományon belül jönnek létre riasztások összegzését tartalmazza. Megjeleníti a riasztások esetében minden egyes oszlopokat, amelyek azonosítják az egyes állapotokban esetében minden egyes riasztások száma összesen. Válassza ki valamelyik megnyitásához a súlyossági szinten pedig a [minden riasztás](#all-alerts-page) oldalon a súlyosság szerint szűrve.
 
 ![Riasztások lap](media/monitoring-overview-unified-alerts/alerts-page.png)
 
-Ez a nézet a legördülő lista az oldal tetején érték alapján szűrhetők.
+Ez a nézet legördülő listák az oldal tetején lévő értékek kijelölésével szűrheti.
 
 | Oszlop | Leírás |
 |:---|:---|
-| Előfizetés | Válassza ki a legfeljebb 5 Azure-előfizetések. Csak a kijelölt előfizetésekben riasztások szerepelnek a nézetet. |
-| Erőforráscsoport | Válasszon egy erőforráscsoportot. Csak azokat a riasztásokat, amelyek céljai a kijelölt erőforráscsoporthoz tartozik, szerepel a nézet. |
-| Időtartomány | Csak a kijelölt időszak belül következik riasztásokat fognak szerepelni a nézetet. Támogatott értékei óránként túlra, elmúlt 24 órában, elmúlt 7 napban és 30 nap alatt. |
+| Előfizetés | Legfeljebb öt Azure-előfizetések kiválasztása. Csak a kijelölt előfizetésekben riasztások nézetében megtalálhatók. |
+| Erőforráscsoport | Válasszon egy erőforráscsoportot. Csak azon riasztások t a kiválasztott erőforráscsoportban megtalálhatók a nézetet. |
+| Időtartomány | Csak az adott időtartamon belül aktivált riasztások nézetében megtalálhatók. Támogatott értékei a következők: az elmúlt egy órában, az elmúlt 24 órában, az elmúlt 7 napban és az elmúlt 30 napban. |
 
-Kattintson a következő értékeket a riasztások lapon nyissa meg a másik oldal tetején.
+Válassza ki a következő értékeket felső részén egy másik nyissa meg a riasztások oldaláról.
 
 | Érték | Leírás |
 |:---|:---|
-| Riasztások összesen | A kijelölt feltételeknek megfelelő riasztások teljes számát. Kattintson az értékre nincs szűrő nyissa meg az összes riasztás megtekintése. |
-| Intelligens csoportok | A kijelölt feltételeknek megfelelő riasztások alapján létrehozott intelligens csoportok száma. Ezt az értéket az összes riasztás nézetben intelligens csoportok listájának megnyitásához kattintson.
-| Riasztási szabályok száma | A kijelölt előfizetés és az erőforrás csoport riasztási szabályok száma. Kattintson a szabályok megtekintése a kiválasztott előfizetés és az erőforráscsoport szűrve nyissa meg ezt az értéket.
+| Riasztások összesen | A kiválasztott feltételeknek megfelelő riasztások teljes száma. Válassza ki ezt az értéket az összes riasztás megtekintése nyissa meg a szűrő sincs. |
+| Az intelligens csoportok | A kiválasztott feltételeknek a riasztások alapján létrehozott intelligens csoportok teljes száma. Válassza ki ezt az értéket az összes riasztás nézetben az intelligens csoportok listájának megnyitásához.
+| Riasztási szabályok száma | A kijelölt előfizetésben és erőforráscsoportban csoport riasztási szabályok teljes száma. Válassza ki ezt az értéket a szűrés alapjául a kijelölt előfizetésben és erőforráscsoportban szabályok nézet megnyitásához.
 
 
-### <a name="all-alerts-page"></a>Minden riasztások lap 
-Az összes értesítés lap lehetővé teszi a kijelölt időszak belül létrehozott riasztások listájának megtekintése. Vagy megtekintheti az egyes riasztások listája vagy az intelligens a figyelmeztetéseket tartalmazó csoportok listája. Kattintson a szalagcím nézetek közötti váltáshoz a lap tetején.
+### <a name="all-alerts-page"></a>Az összes riasztások oldal 
+Az összes riasztás oldal használatával megtekintheti a kiválasztott időtartományon belül létrehozott riasztások listáját. Megtekintheti az egyes riasztások listája vagy az intelligens csoportok, amelyek tartalmazzák a riasztások listája. Válassza ki a szalagcím Váltás a nézetek között az oldal tetején.
 
-![Minden riasztások lap](media/monitoring-overview-unified-alerts/all-alerts-page.png)
+![Az összes riasztások oldal](media/monitoring-overview-unified-alerts/all-alerts-page.png)
 
-A nézet a legördülő lista az oldal tetején a következő érték alapján szűrhetők.
+Válassza ki a következő értékeket a lap tetején lévő legördülő listák szűrheti a nézetet.
 
 | Oszlop | Leírás |
 |:---|:---|
-| Előfizetés | Válassza ki a legfeljebb 5 Azure-előfizetések. Csak a kijelölt előfizetésekben riasztások szerepelnek a nézetet. |
-| Erőforráscsoport | Válasszon egy erőforráscsoportot. Csak azokat a riasztásokat, amelyek céljai a kijelölt erőforráscsoporthoz tartozik, szerepel a nézet. |
-| Erőforrás típusa | Válasszon egy vagy több erőforrástípusok esetében. Csak azokat a riasztásokat, amelyek céljai a kiválasztott típus szerepel a nézetet. Ebben az oszlopban csak érhető el, miután egy erőforráscsoport van megadva. |
-| Erőforrás | Válasszon ki egy erőforrástípust. Csak azon riasztások célként adott erőforrásaival szerepelnek a nézetet. Ez az oszlop csak érhető el, amennyiben az erőforrás-típus lett megadva. |
-| Severity | Jelöljön ki egy riasztás súlyossága vagy *összes* összes súlyossági szintet használja riasztásokat tartalmazza. |
-| A figyelőre érvényes feltétel | Jelöljön ki egy figyelési feltétel vagy *összes* feltételek riasztásokat tartalmazza. |
-| Riasztás állapota | Válasszon ki egy riasztást állapotú vagy select *összes* állapotok riasztásokat tartalmazza. |
-| Szolgáltatás figyelése | Jelöljön ki egy szolgáltatás vagy *összes* tartalmazza az összes szolgáltatás. Csak a cél, hogy a szolgáltatás használatával szabályok által létrehozott riasztásokat tartoznak. |
-| Időtartomány | Csak a kijelölt időszak belül következik riasztásokat fognak szerepelni a nézetet. Támogatott értékei óránként túlra, elmúlt 24 órában, elmúlt 7 napban és 30 nap alatt. |
+| Előfizetés | Legfeljebb öt Azure-előfizetések kiválasztása. Csak a kijelölt előfizetésekben riasztások nézetében megtalálhatók. |
+| Erőforráscsoport | Válasszon egy erőforráscsoportot. Csak azon riasztások t a kiválasztott erőforráscsoportban megtalálhatók a nézetet. |
+| Erőforrás típusa | Válassza ki egy vagy több erőforrás-típus. Csak azon riasztások t a kiválasztott típusú megtalálhatók a nézetet. Ez az oszlop csak akkor használható, miután lett megadva egy erőforráscsoportot. |
+| Erőforrás | Válasszon ki egy erőforrást. Csak azon riasztások t célként adott erőforrásra a nézet szerepelnek. Ez az oszlop csak akkor használható, miután egy erőforrás-típus lett megadva. |
+| Severity | Egy riasztás súlyosságának kiválasztása, vagy válasszon *összes* minden súlyossági szint esetében riasztásokat tartalmazza. |
+| Figyelési feltétel | Válasszon figyelőre érvényes feltételt, vagy válasszon *összes* feltételek riasztásokat tartalmazza. |
+| Riasztás állapota | Válasszon egy riasztási állapotot, vagy válasszon *összes* állapotok riasztásokat tartalmazza. |
+| Szolgáltatás monitorozása | Válasszon ki egy szolgáltatást, vagy válasszon *összes* tartalmazza az összes szolgáltatás. Csak a szolgáltatási cél használó szabályok által létrehozott riasztásokat is. |
+| Időtartomány | Csak az adott időtartamon belül aktivált riasztások nézetében megtalálhatók. Támogatott értékei a következők: az elmúlt egy órában, az elmúlt 24 órában, az elmúlt 7 napban és az elmúlt 30 napban. |
 
-Kattintson a **oszlopok** megjelenítendő oszlopok kiválasztása a lap tetején. Kivételével az összes oszlop eltávolítása 
+Válassza ki **oszlopok** jelölje be a megjelenítendő oszlopokat az oldal tetején. 
 
 ### <a name="alert-detail-page"></a>Riasztás részletei lap
-A riasztás információs lapját kattintva egy riasztás jelenik meg. A riasztás részleteit, és módosíthatja az állapotát.
+A riasztás részletei lap jelenik meg, válasszon ki egy riasztást. A riasztás részleteinek biztosít, és lehetővé teszi az állapot módosítását.
 
 ![Riasztás részletei](media/monitoring-overview-unified-alerts/alert-detail.png)
 
-A riasztás részletei lapon az alábbi szakaszokat tartalmazza.
+A riasztás részletei lap az alábbi szakaszokat tartalmazza.
 
 | Section | Leírás |
 |:---|:---|
-| Alapvető erőforrások | A tulajdonságok és a riasztás egyéb jelentős adatait jeleníti meg. |
-| Előzmények | A riasztás által végrehajtott minden műveletet és a riasztás módosításai sorolja fel. Ez az állapot változásainak jelenleg csak. |
-| Intelligens csoport | A riasztás intelligens-csoport információit tartalmazza. A **riasztások számát** hivatkozik a intelligens csoportban levő értesítések száma. Ez magában foglalja a más riasztások ugyanabban a azonos intelligens csoportban található, amelyek az elmúlt 30 napban lettek létrehozva.  Ez az az idő szűrő a riasztásokat a lista lapon függetlenül. Kattintson a riasztás a részletek megtekintéséhez. |
-| További részletekért | További általában jellemző a riasztást létrehozó adatforrás típusú riasztás környezetfüggő információk megjelenítése. |
+| Alapvető erőforrások | A tulajdonságok és más jelentős a riasztásra vonatkozó információk megjelenítése. |
+| Előzmények | Minden egyes a riasztás által végrehajtott műveletek és a riasztás végzett módosítások sorolja fel. Ez a jelenleg csak az állapotváltozásokat. |
+| Az intelligens csoport | Információk az intelligens csoport tartalmazza a riasztás. A *riasztások száma* hivatkozik, amely az intelligens csoportban levő értesítések száma. Ez magában foglalja a más riasztások az elmúlt 30 napban létrehozott ugyanabba az intelligens csoportba.  Ettől függetlenül az Időszűrő a riasztások lista lapon. Válasszon ki egy riasztást, a részletek megtekintéséhez. |
+| További részletek | A további környezeti információkat a riasztás, a riasztást létrehozó adatforrás típusa általában jellemző megjelenítése. |
 
 
-### <a name="smart-group-detail-page"></a>Csoport intelligens részletei lap
-A csoport intelligens részletei lap jelenik meg, amikor rákattint az intelligens csoport. Részletesen bemutatja az intelligens csoport, beleértve a csoport létrehozásához használt indoklást, és módosíthatja az állapotát.
+### <a name="smart-group-detail-page"></a>Az intelligens csoport részletei lap
+Az intelligens Részletek lapján jelenik meg, válasszon ki egy intelligens csoportot. Az intelligens csoport, beleértve az indoklást, amely a csoport létrehozásához használt, és lehetővé teszi, hogy az állapotváltozáshoz. részleteket biztosít.
  
-![Intelligens csoport részletei](media/monitoring-overview-unified-alerts/smart-group-detail.png)
+![Az intelligens csoport részletei](media/monitoring-overview-unified-alerts/smart-group-detail.png)
 
 
-A csoport intelligens részletei lap az alábbi szakaszokat tartalmazza.
+Az intelligens Részletek lapján az alábbi szakaszokat tartalmazza.
 
 | Section | Leírás |
 |:---|:---|
-| Riasztások | Az intelligens csoportban levő az egyes riasztások listája. Kattintson a riasztás részletei lap megnyitásához. |
-| Előzmények | Minden intelligens csoport által végrehajtott műveletet és végzett változtatásokat sorolja fel. Ez az állapotváltozások és riasztási csoporttagsági változások jelenleg korlátozott. |
+| Riasztások | Az intelligens csoportban levő egyes riasztások listája. Válasszon ki egy riasztást a riasztás részletei lap megnyitásához. |
+| Előzmények | Felsorolja az egyes műveletet, amelyet az intelligens csoport és a hozzá végrehajtott módosításokat. Ez az állapot és riasztási tagsági változás jelenleg korlátozott. |
 
 ## <a name="next-steps"></a>További lépések
-- [Az új riasztások felület használata létrehozása, megtekintése és riasztások kezelése](monitor-alerts-unified-usage.md)
-- [További tudnivalók a napló riasztásokat a riasztások élmény](monitor-alerts-unified-log.md)
-- [További tudnivalók a metrika riasztásokat a riasztások élmény](monitoring-near-real-time-metric-alerts.md)
-- [További tudnivalók a tevékenység napló riasztásokat a riasztások élmény](monitoring-activity-log-alerts-new-experience.md)
+- [Ismerje meg, hogyan használható a riasztások új kezelőfelülete létrehozása, megtekintése és riasztások kezelése](monitor-alerts-unified-usage.md)
+- [További információ a riasztások felületen riasztások](monitor-alerts-unified-log.md)
+- [További információ a riasztások felületen metrikákhoz kapcsolódó riasztások](monitoring-near-real-time-metric-alerts.md)
+- [További információ a riasztások élményt a tevékenységnapló-riasztások](monitoring-activity-log-alerts-new-experience.md)

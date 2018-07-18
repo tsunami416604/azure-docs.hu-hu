@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.workload: identity
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 9f9ae52c5dbdf655190caaceeaa03c444526e4f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b7ea8a755f1f23c76bb0f7d8120970bb7795e95b
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044621"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091833"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?
 Egyszeri bejelentkezés azt jelenti, nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat kell tennie az üzleti, csak egyszer, egyetlen felhasználói fiókkal jelentkezzen be. Miután bejelentkezett, elérheti összes alkalmazás hitelesítéséhez szükséges nélkül (például adjon meg egy jelszót) egy második alkalommal.
@@ -45,8 +45,7 @@ Amikor a felhasználók bejelentkeznek egy alkalmazást, azok lépjen egy hitele
 Az Azure AD három különböző módon való bejelentkezéshez alkalmazásokat támogatja:
 
 * **Összevont egyszeri bejelentkezés** lehetővé teszi az alkalmazások átirányítása az Azure AD-felhasználói hitelesítés helyett egy saját jelszót kér. Összevont egyszeri bejelentkezés alkalmazásokhoz, hogy támogatási protokollok, például a SAML 2.0, WS-Federation, vagy az OpenID Connect, és az egyszeri bejelentkezés richest mód esetén támogatott.
-* **Jelszavas egyszeri bejelentkezés** lehetővé teszi a biztonságos tárolását és visszajátszani egy webböngésző-bővítmény vagy mobilalkalmazás segítségével. Jelszavas egyszeri bejelentkezést használ, a meglévő 
-*  folyamat az alkalmazás által biztosított, de lehetővé teszi, hogy egy rendszergazda kezelje a jelszavakat, és nem igényel a felhasználót, hogy ismeri a jelszavát.
+* **Jelszavas egyszeri bejelentkezés** lehetővé teszi a biztonságos tárolását és visszajátszani egy webböngésző-bővítmény vagy mobilalkalmazás segítségével. Jelszavas egyszeri bejelentkezés az alkalmazás által biztosított a meglévő folyamat használja, de lehetővé teszi, hogy egy rendszergazda kezelje a jelszavakat, és nem igényel a felhasználót, hogy ismeri a jelszavát.
 * **Meglévő egyszeri bejelentkezés** lehetővé teszi bármely meglévő egyszeri bejelentkezésre van beállítva az alkalmazás, de lehetővé teszi, hogy ezeket az alkalmazásokat lehet kapcsolódni az Office 365 vagy az Azure AD hozzáférési panel portálok kihasználhatja az Azure AD, és lehetővé teszi a további jelentéskészítés az Azure ad-ben, amikor az alkalmazások elindítása van.
 
 Egy felhasználó egy alkalmazással rendelkezik hitelesítést követően is szükségük van üzembe helyezve, amely arra utasítja az alkalmazás az alkalmazáson belüli engedélyeit és hozzáférési szintet, amelyeknél az alkalmazás egy ügyfélrekordot. A kiépítés, a fiók rekord vagy automatikusan történik, vagy akkor fordulhat elő, manuálisan egy rendszergazda előtt áll rendelkezésre a felhasználó egyszeri bejelentkezéses hozzáférést.
@@ -194,7 +193,7 @@ Ezeket a hivatkozásokat használja ugyanazt a hozzáférési vezérlési mechan
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](../saas-apps/tutorial-list.md)
-* [Cloud Discovery beállítása](/cloud-app/security/set-up-cloud-discovery)
+* [Cloud Discovery beállítása](/cloud-app-security/set-up-cloud-discovery)
 * [Bevezetés az alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)
 * [Az Azure AD külső identitások kezelésére szolgáló képességek összehasonlítása](../active-directory-b2b-compare-b2c.md)
 

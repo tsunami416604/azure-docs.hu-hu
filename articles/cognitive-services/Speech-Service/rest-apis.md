@@ -1,6 +1,6 @@
 ---
-title: Beszéd szolgáltatás REST API-k |} Microsoft Docs
-description: A beszédfelismerés szolgáltatás REST API-k hivatkozását.
+title: Beszédszolgáltatás REST API-k |} A Microsoft Docs
+description: A beszédfelismerési szolgáltatás REST API-hivatkozás.
 services: cognitive-services
 author: v-jerkin
 manager: noellelacharite
@@ -9,33 +9,33 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 53560fd4f8240c4446898f58992a9319e5177435
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 311d0cb7f208c0f720b8611510fb65efc65c12bc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085371"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112873"
 ---
-# <a name="speech-service-rest-apis"></a>Beszéd szolgáltatás REST API-k
+# <a name="speech-service-rest-apis"></a>Beszédszolgáltatás REST API-k
 
-Az egyesített beszéd szolgáltatás REST API-k által nyújtott API-kat hasonlóak a [Diktálásfelismerési API](https://docs.microsoft.com/azure/cognitive-services/Speech) (korábbi nevén a Bing Diktálásfelismerési szolgáltatás). A végpontok különböznek az előző beszéd szolgáltatás által használt végpontok.
+A REST API-k, az egyesített beszédszolgáltatás hasonlóak az API-k által biztosított a [Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech) (korábbi nevén a Bing Speech Service). A végpontok különböznek az előző beszédfelismerési szolgáltatás által használt a végpontok.
 
 ## <a name="speech-to-text"></a>Diktálás
 
-A szöveg API beszéd átalakítás csak a használt végpontok térnek el egymástól, az előző beszéd szolgáltatásból Beszéd felismerés API. Az új végpontok az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetése régiójában.
+A Speech to Text API, a használt végpontokat különböznek az előző beszédszolgáltatás Speech Recognition API. Az új végpontok az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót.
 
-[!include[](includes/endpoints-speech-to-text.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
-A beszédfelismerés szöveg API hasonlít ellenkező esetben a [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) az előző Diktálásfelismerési API-hoz.
+A Speech to Text API hasonlít ellenkező esetben a [REST API-val](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) az előző Speech API-hoz.
 
-A beszédfelismerés szöveg REST API támogatja a csak rövid utterances. Kérelmek legfeljebb 10 másodpercnyi és tartalmazhat utolsó legfeljebb általános 14 másodpercig. A REST API-t csak végső eredményeket, nem részleges vagy köztes eredményeket ad vissza.
+A Speech to Text REST API csak rövid beszédet támogat. Kérelmek legfeljebb 10 másodpercet, hang és tartalmazhat az elmúlt 14 másodperc teljes legfeljebb. A REST API-t csak a végső eredmények, nem átmeneti vagy részleges eredményt adja vissza.
 
 > [!NOTE]
-> Ha testreszabta a akusztikus modell vagy a nyelvi modell, vagy a kiejtés, használja az egyéni végpontot.
+> Ha testre szabta az akusztikai modell vagy a nyelvi modell, vagy a írásmódja, használja az egyéni végpontra.
 
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 
-Az új szöveg-hang transzformációs API 24-KHz hangkimeneti támogatja. A `X-Microsoft-OutputFormat` most fejlécében a következő értékeket.
+Az új Text to Speech API 24-KHz hangkimeneti támogatja. A `X-Microsoft-OutputFormat` fejléc most már előfordulhat, hogy a következő értékeket tartalmaznak.
 
 |||
 |-|-|
@@ -46,32 +46,32 @@ Az új szöveg-hang transzformációs API 24-KHz hangkimeneti támogatja. A `X-M
 `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
-A beszédfelismerés szolgáltatás most két 24-KHz hangok biztosítja:
+A beszédfelismerési szolgáltatás most már két 24-KHz beszédhangot biztosítja:
 
-Területi beállítás | Nyelv   | Nem | Szolgáltatás felhasználónevek hozzárendelése
+Területi beállítás | Nyelv   | Nem | A felhasználónév-leképezés
 -------|------------|--------|------------
-hu-HU  | Amerikai angol | Nő | "Microsoft Server beszéd szöveg beszéd hang (en-US, Jessa24kRUS)" 
-hu-HU  | Amerikai angol | Férfi   | "Microsoft Server beszéd szöveg beszéd hang (en-US, Guy24kRUS)"
+hu-HU  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" 
+hu-HU  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)"
 
-Az alábbiakban a REST-végpontok az egyesített beszéd szolgáltatás szöveg-hang transzformációs API számára. A végpontot, amely megfelel az előfizetése régiójában használni.
+Az alábbiakban az egyesített Speech service Text to Speech API a REST-végpontokat. A végpont, amely megfelel az előfizetés régiót használni.
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-Ezek a különbségek szem előtt tartani, akkor tekintse meg a [REST API-dokumentáció](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) az előző Diktálásfelismerési API-hoz.
+Tartsa szem előtt a különbségeket, mivel, tekintse meg a [REST API-dokumentáció](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) az előző Speech API-hoz.
 
 ## <a name="authentication"></a>Hitelesítés
 
-Olyan hozzáférési jogkivonatot egy kérést küld a beszédfelismerés szolgáltatás REST API szükséges. Ön jogkivonat beszerzése az Előfizetés kulcs regionális beszéd szolgáltatás megadásával `issueToken` végpont, az alábbi táblázatban látható. A végpontot, amely megfelel az előfizetése régiójában használni.
+Hozzáférési jogkivonat egy kérést küld a beszédfelismerési szolgáltatás REST API-t igényel. Azáltal, hogy az előfizetési kulcs egy regionális Speech Service jogkivonat beszerzése, `issueToken` végponton, az alábbi táblázatban látható. A végpont, amely megfelel az előfizetés régiót használni.
 
-[!include[](includes/endpoints-token-service.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
-A hozzáférési tokenek 10 percig érvényes. Előfordulhat, hogy megszerezzen egy olyan új jogkivonatot, bármikor – Ha kívánja, beleértve, közvetlenül az előtt minden beszéd REST API-kérelem. Hálózati forgalom és a Késleltetés minimalizálása érdekében azonban javasoljuk ugyanezt a tokent kilenc percig.
+Minden hozzáférési jogkivonatot a 10 percig érvényes. Egy új jogkivonatot bármikor szerezheti be – Ha kívánja, többek között a következők csak előtt minden Speech REST API-kérelem. A hálózati forgalom és a késés minimalizálása érdekében azonban javasoljuk hogy ugyanezt a tokent kilenc perc.
 
-A következő szakaszok bemutatják a szolgáltatáshitelesítést egy token és történő használatát egy kérelmet.
+A következő szakaszok bemutatják egy token beszerzése és hogyan használható a kérelemben.
 
-### <a name="getting-a-token-http"></a>A token első: HTTP
+### <a name="getting-a-token-http"></a>Jogkivonatok: HTTP
 
-Alatt van egy minta HTTP-kérelem jogkivonat megszerzéséhez. Cserélje le `YOUR_SUBSCRIPTION_KEY` a beszédfelismerés szolgáltatás előfizetés kulccsal. Ha az előfizetés nincs USA nyugati régiója régióban, cserélje le a `Host` a régió állomásnév fejléc.
+Alább egy mintát egy token beszerzése a HTTP-kérelem van. Cserélje le `YOUR_SUBSCRIPTION_KEY` az Speech service előfizetési kulccsal végzett. Ha az előfizetés nem szerepel az USA nyugati régiója, cserélje le a `Host` saját régiójában gazdanevű fejléc.
 
 ```
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -81,11 +81,11 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-A a irányuló kérelemre adott válasz törzse a hozzáférési jogkivonat Java webes jogkivonat (JWT) formátumú.
+A kérés adott válasz törzse a hozzáférési jogkivonat Java webes jogkivonat (JWT) formátumú.
 
-### <a name="getting-a-token-powershell"></a>A token első: PowerShell
+### <a name="getting-a-token-powershell"></a>Jogkivonatok: PowerShell
 
-Az alábbi Windows PowerShell-parancsfájl bemutatja, hogyan egy hozzáférési jogkivonat beszerzése. Cserélje le `YOUR_SUBSCRIPTION_KEY` a beszédfelismerés szolgáltatás előfizetés kulccsal. Az előfizetés nincs USA nyugati régiója régióban, a megadott URI állomásnevét megfelelően módosítja.
+Az alábbi Windows PowerShell-parancsprogram mutatja be a hozzáférési jogkivonat beszerzése. Cserélje le `YOUR_SUBSCRIPTION_KEY` az Speech service előfizetési kulccsal végzett. Az előfizetés nem szerepel az USA nyugati régiója, az adott URI állomásnevét megfelelően módosítja.
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -102,12 +102,12 @@ $OAuthToken
 
 ```
 
-### <a name="getting-a-token-curl"></a>A token első: cURL
+### <a name="getting-a-token-curl"></a>Jogkivonatok: cURL
 
-cURL Linux (és a Linux Windows alrendszere) parancssori eszköz. Az alábbi cURL-parancsot a hozzáférési token beszerzése mutatja be. Cserélje le `YOUR_SUBSCRIPTION_KEY` a beszédfelismerés szolgáltatás előfizetés kulccsal. Az előfizetés nincs USA nyugati régiója régióban, a megadott URI állomásnevét megfelelően módosítja.
+a cURL egy Linux (és a Linux Windows alrendszere) elérhető parancssori eszköz. Az alábbi cURL-parancs bemutatja, hogyan hozzáférési jogkivonat beszerzése. Cserélje le `YOUR_SUBSCRIPTION_KEY` az Speech service előfizetési kulccsal végzett. Az előfizetés nem szerepel az USA nyugati régiója, az adott URI állomásnevét megfelelően módosítja.
 
 > [!NOTE]
-> A parancs az olvashatóság érdekében több sorban jelenik meg, de rendszerhéj a parancssorból egy sorba kell megadott.
+> A parancs az olvashatóság érdekében több sorban jelenik meg, de meg kell egy shell parancssornál ugyanabban a sorban.
 
 ```
 curl -v -X POST 
@@ -117,9 +117,9 @@ curl -v -X POST
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-### <a name="getting-a-token-c"></a>A token első: C#
+### <a name="getting-a-token-c"></a>Jogkivonatok: C#
 
-A C# osztály alábbi mutatja be a hozzáférési token beszerzése. Át a beszédfelismerés szolgáltatás előfizetés kulcs, a osztály példányának létrehozásakor. Ha az előfizetés nincs USA nyugati régiója régióban, módosítsa a `FetchTokenUri` megfelelően.
+A C# osztály az alábbi mutatja be a hozzáférési jogkivonat beszerzése. Adja át a Speech service előfizetési kulcs, az osztály hárítható el. Ha az előfizetés nem szerepel az USA nyugati régiója, módosítsa a állomásnevét `FetchTokenUri` megfelelően.
 
 ```cs
     /*
@@ -158,9 +158,9 @@ A C# osztály alábbi mutatja be a hozzáférési token beszerzése. Át a besz�
     }
 ```
 
-### <a name="using-a-token"></a>Egy tokent
+### <a name="using-a-token"></a>Egy jogkivonat használatával
 
-REST API-kérelem jogkivonat használatához adja meg azt a a `Authorization` fejléc a következő a word `Bearer`. Itt például van egy minta szöveges jogkivonatot tartalmazó beszéd REST-kérelemre. Helyettesítse be a tényleges lexikális eleme `YOUR_ACCESS_TOKEN` , és használja a megfelelő állomásnév a `Host` fejléc.
+Szeretne használni egy tokent a REST API-kérelem, adja meg azt a a `Authorization` fejléc a következő szót `Bearer`. Például Íme egy példa szöveget a Speech REST-kérelmet, amely tartalmazza a jogkivonatot. Helyettesítse be a tényleges token `YOUR_ACCESS_TOKEN` és a helyes állomásnevet használja a `Host` fejléc.
 
 ```xml
 POST /cognitiveservices/v1 HTTP/1.1
@@ -176,16 +176,16 @@ Connection: Keep-Alive
 </voice></speak>
 ```
 
-### <a name="renewing-authorization"></a>Engedélyezési megújítása
+### <a name="renewing-authorization"></a>Engedély megújítása
 
-Az engedélyezési jogkivonat 10 perc múlva lejár. Az engedélyezési megújítani megszerezni egy új jogkivonatot, ameddig – például kilenc perc múlva. 
+Az engedélyezési jogkivonatot 10 perc múlva lejár. Az engedély megújítása szerint egy új token beszerzése után járjon le – például a következő kilenc perc múlva. 
 
-A következő C#-kódban Esőcsepp helyettesíti a korábban bemutatott osztály. A `Authentication` osztály automatikusan kap egy új hozzáférési jogkivonat időzítő segítségével kilenc percenként. Ez a megközelítés biztosítja, hogy egy érvényes tokent mindig rendelkezésre áll a program futása közben.
+Az alábbi C#-kódot az osztály korábban bemutatott protokollkompatibilitását. A `Authentication` osztály automatikusan kap egy új hozzáférési jogkivonat egy időzítő segítségével kilenc percenként. Ez a megközelítés biztosítja, hogy érvényes token mindig elérhető legyen a program futása közben.
 
 > [!NOTE]
-> Egy időzítő helyett tárolhatja a timestamp, ha az aktuális jogkivonatot kapott, akkor kérjen egy új, csak ha az aktuális jogkivonat hamarosan lejár. Ez a megközelítés új jogkivonatok feleslegesen kérő elkerülhető, és több alkalmasak lehetnek a programok, amelyek alkalomszerű beszéd kérelmeket.
+> Időzítő helyett tárolhatja egy időbélyeg, ha a jelenlegi token lett lekérve, majd egy új kérelem csak akkor, ha a jelenlegi token hamarosan lejár. Ezt a módszert elkerülhető, hogy új jogkivonatok feleslegesen kér, és a programok, amelyek ritkán beszédalapú kéréseket a megfelelőbb lehet.
 
-Mint korábban, győződjön meg arról, hogy a `FetchTokenUri` értéke megegyezik az előfizetése régiójában. Az Előfizetés kulcs továbbítja, a osztály példányának létrehozásakor.
+Ahogy korábban is, győződjön meg arról, hogy a `FetchTokenUri` értéke megegyezik az előfizetés régiót. Az osztály hárítható el, adja át az előfizetési kulcs.
 
 ```cs
     /*
@@ -265,7 +265,7 @@ Mint korábban, győződjön meg arról, hogy a `FetchTokenUri` értéke megegye
 
 ## <a name="next-steps"></a>További lépések
 
-- [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-- [Akusztikus modellek testreszabása](how-to-customize-acoustic-models.md)
-- [Nyelvi modellek testreszabása](how-to-customize-language-model.md)
+- [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+- [Akusztikai modell testreszabása](how-to-customize-acoustic-models.md)
+- [Nyelvi modell testreszabása](how-to-customize-language-model.md)
 

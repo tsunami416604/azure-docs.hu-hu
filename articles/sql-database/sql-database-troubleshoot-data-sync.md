@@ -1,422 +1,376 @@
 ---
-title: Az Azure SQL adatszinkronizálás hibaelhárítása |} Microsoft Docs
-description: További tudnivalók az Azure SQL adatszinkronizálás kapcsolatos gyakori hibák elhárítása.
+title: Az Azure SQL Data Synch hibaelhárítása |} A Microsoft Docs
+description: Ismerje meg az Azure SQL Data Sync szolgáltatással kapcsolatos gyakori problémák elhárítása.
 services: sql-database
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: daa4ecd3ddf0e770049a81c771a8da52bac5be7f
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 2be6d0321db41772116078d5308824fe8e1b64fd
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021391"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113899"
 ---
-# <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL adatszinkronizálás problémák elhárítása
+# <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása
 
-Ez a cikk ismerteti az Azure SQL adatszinkronizálás kapcsolatos ismert problémák elhárítása. Ha a probléma megoldása, azt itt biztosítja.
+Ez a cikk ismerteti az Azure SQL Data Sync szolgáltatással kapcsolatos ismert problémák elhárítása. Ha a probléma megoldása, azt itt biztosítja.
 
-SQL adatszinkronizálás áttekintését lásd: [adatok szinkronizálásának több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](sql-database-sync-data.md).
+Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helyszíni adatbázis közötti, az Azure SQL Data Sync segítségével végzett adatszinkronizálást](sql-database-sync-data.md) ismertető cikket.
 
-## <a name="sync-issues"></a>Szinkronizációs problémák
+## <a name="sync-issues"></a>Szinkronizálási hibák
 
-### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a>Szinkronizálás nem sikerül, a portál felhasználói felület az ügyfélügynök társított helyszíni adatbázisokhoz
+- [A portál felhasználói Felületét a helyszíni adatbázisok az ügyfélügynök társított sikertelen szinkronizálás](#sync-fails)
 
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
+- [A szinkronizálási csoport Beragadt a feldolgozási állapot](#sync-stuck)
 
-Szinkronizálás a helyszíni adatbázisokhoz, az ügynök társított SQL adatszinkronizálás portál felhasználói felület sikertelen lesz. A helyi számítógépen, hogy az ügynök fut System.IO.IOException hibákat az eseménynaplóban talál. A hibák tegyük fel például, hogy rendelkezik-e elegendő hely a lemezen.
+- [Hibás adatok láthatók a az általam használt táblák](#sync-baddata)
 
-#### <a name="resolution"></a>Megoldás:
+- [Elsődleges kulcs inkonzisztens adatok sikeres szinkronizálás után láthatók](#sync-pkdata)
 
-Hozzon létre több helyet az a meghajtó, amelyen a % TEMP % könyvtárban található.
+- [A teljesítmény jelentős csökkenéséhez láthatók](#sync-perf)
 
-### <a name="my-sync-group-is-stuck-in-the-processing-state"></a>A szinkronizálás csoportomnak Beragadt feldolgozási állapotát
+- [Ez az üzenet látható: "nem lehet beszúrni a NULL érték az az oszlop <column>. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt?](#sync-nulls)
 
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
+- [Hogyan kezeli a Data Syncet. a körkörös hivatkozások? Azt jelenti, amikor ugyanazokat az adatokat több szinkronizálási csoportban szinkronizálva van, és ennek eredményeképpen tartja módosítása?](#sync-circ)
 
-Egy szinkronizálási csoporthoz, az SQL-adatok szinkronizálása hosszú ideig le lett feldolgozási állapotát. Nem válaszol a **leállítása** parancsot, és a naplók megjelenítése nem új bejegyzés.
+### <a name="sync-fails"></a> A portál felhasználói Felületét a helyszíni adatbázisok az ügyfélügynök társított sikertelen szinkronizálás
 
-#### <a name="cause"></a>Ok
+Szinkronizálás a helyszíni adatbázisokhoz társított az ügyfélügynök az SQL Data Sync portal felhasználói felületén sikertelen lesz. A helyi számítógépen, amelyen az ügynök fut System.IO.IOException hibákat az eseménynaplóban talál. A hibák tegyük fel, hogy a lemez nincs elegendő lemezterület.
 
-A következő feltételek eredményezhet a szinkronizálási csoport alatt Beragadt feldolgozási állapotát:
+- **OK**. A meghajtó nincs elegendő lemezterület.
 
--   **Az ügyfélügynök offline állapotban**. Ellenőrizze, hogy az ügyfélügynök online-e, és próbálkozzon újra.
+- **Feloldási**. Hozzon létre több helyet az a meghajtó, amelyre a % TEMP % könyvtárban található.
 
--   **Az ügyfélügynök telepítve, vagy hiányzó**. Ha az ügyfél-ügynök telepítve vagy egyéb hiányzik:
+### <a name="sync-stuck"></a> A szinkronizálási csoport Beragadt a feldolgozási állapot
 
-    1. Az ügynök XML-fájl eltávolítása az SQL Data Sync telepítési mappáját, ha a fájl létezik-e.
-    2. Telepítse az ügynököt a helyi számítógépen (az azonos vagy eltérő számítógépen is lehet). Majd küldje el a az ügynök, amely offline állapotúként jelenik a portálon létrehozott ügynök kulcsot.
+Az SQL Data Sync szinkronizálási csoport lett a feldolgozási állapot a hosszú ideig. Nem válaszol a **leállítása** parancsot, és a naplók megjelenítése nincs új bejegyzés.
 
--   **Az adatszinkronizálás SQL szolgáltatás leáll**.
+Az alábbi feltételek bármelyike azt eredményezheti, hogy a szinkronizálási csoport éppen kerültek a feldolgozási állapot:
 
-    1. Az a **Start** menü, keressen a **szolgáltatások**.
+- **OK**. Az ügyfélügynök offline állapotban.
+
+- **Feloldási**. Ellenőrizze, hogy az ügyfél ügynökéhez online-e, és próbálkozzon újra.
+
+- **OK**. Az ügyfélügynök telepítve, vagy hiányzik.
+
+- **Feloldási**. Ha az ügyfél ügynöke telepítve vagy egyéb hiányzó:
+
+    1. Ha a fájl létezik, távolítsa el az ügynök XML-fájlt az SQL Data Sync telepítési mappájából.
+    2. Telepítse az ügynököt a helyi számítógépen. (Ez ugyanaz vagy egy másik számítógépen is lehet). Ezután küldje el a rendszer által létrehozott a portálon az ügynök offline állapotúként jelenik ügynökkulcs.
+
+- **OK**. Az SQL Data Sync szolgáltatás le van állítva.
+
+- **Feloldási**. Indítsa újra az SQL Data Sync szolgáltatást.
+
+    1. Az a **Start** menüt, és keressen **szolgáltatások**.
     2. A keresési eredmények között, válassza ki a **szolgáltatások**.
-    3. Keresés a **SQL adatszinkronizálás** szolgáltatás.
-    4. Ha a szolgáltatás állapota **leállítva**, kattintson a jobb gombbal a szolgáltatás nevét, majd válassza ki **Start**.
+    3. Keresse meg a **SQL Data Sync** szolgáltatás.
+    4. Ha a szolgáltatás állapota **leállítva**, és kattintson a jobb gombbal a szolgáltatás nevét, majd válassza ki **Start**.
 
-#### <a name="resolution"></a>Megoldás:
+> [!NOTE]
+> Ha a fenti információ nem helyezi át a szinkronizálási csoport a feldolgozási állapotát, a Microsoft Support alaphelyzetbe állíthatja a szinkronizálási csoport állapotát. Szeretné, hogy a szinkronizálási csoport állapotának alaphelyzetbe állítása, az a [Azure SQL Database fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted), létrehoz egy bejegyzést. A bejegyzésben található tartalmazza az előfizetés-Azonosítóját és a csoport, amely alaphelyzetbe kell állítani a szinkronizálási csoport azonosítója. A Microsoft Support hozzászólása fog válaszolni, és értesíti, amikor az állapot vissza lett állítva.
 
-Ha a fenti adatokat a szinkronizálási csoport nem kilépni a feldolgozási állapotát, a Microsoft Support alaphelyzetbe állíthatja a szinkronizálási csoport állapotát. Szeretné, hogy a szinkronizálás csoport állapotának alaphelyzetbe állítása, az a [Azure SQL Database fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted), hozzon létre egy post. A feladás egy vagy több az előfizetés-Azonosítóval és a csoport, amely alaphelyzetbe kell állítani a szinkronizálási Csoportazonosító tartalmaznak. A Microsoft Support engineer a feladás egy vagy több válaszol, és lehetővé teszi, hogy tudja, amikor az állapot alaphelyzetbe lett állítva.
+### <a name="sync-baddata"></a> Hibás adatok láthatók a az általam használt táblák
 
-### <a name="i-see-erroneous-data-in-my-tables"></a>A táblázatban látható hibás adatot
+Ha táblákat, amelyek ugyanazzal a névvel, de amelyek a különböző adatbázissémák szinkronizálást is szerepel, a szinkronizálás után látható hibás a táblákban lévő adatokat.
 
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
+- **OK**. Az SQL Data Sync létesítésének folyamatát kell használnia az azonos nyomkövetési táblát, amely ugyanazzal a névvel, de amelyek a különböző sémákkal táblák használ. Emiatt a változásokat a mindkét táblázatot követési ugyanabban a táblában is megjelennek. Ennek hatására a hibás adatváltozásokat szinkronizálás során.
 
-Ha táblákat, amelyek ugyanazon névvel rendelkeznek, de ezek a különböző adatbázis sémák szinkronizálási szerepelnek, a szinkronizálás után látható táblázatokban hibás adatot.
+- **Feloldási**. Győződjön meg arról, hogy, amelyek szerepet játszanak szinkronizálást táblák nevének különböző, még akkor is, ha a táblák egy adatbázisban eltérő sémákkal tartoznak.
 
-#### <a name="cause"></a>Ok
+### <a name="sync-pkdata"></a> Elsődleges kulcs inkonzisztens adatok sikeres szinkronizálás után láthatók
 
-Az SQL-adatszinkronizálás létesítésének folyamatát kell használnia, amelyek ugyanazon névvel rendelkeznek, de amelyek eltérő sémákban táblák a azonos nyomkövetési táblát használ. Ebből kifolyólag a táblákban is tükröződnek követési ugyanabban a táblában. Ennek hatására a hibás adatot módosítások szinkronizálása során.
+Szinkronizálási az elvártnak megfelelően sikeres, és a napló nem sikertelen vagy kihagyott sorok jeleníti meg, de, ellenőrizze, hogy elsődleges kulcs adatok inkonzisztens a szinkronizálási csoport az adatbázisok között.
 
-#### <a name="resolution"></a>Megoldás:
+- **OK**. Ezt az eredményt a rendszer kialakításából fakad. Minden elsődlegeskulcs-oszlopot a módosításokat az elsődleges kulcs módosított sorok inkonzisztens adatokat eredményez.
 
-Győződjön meg arról, hogy a táblákat, amelyek szerepet játszanak a szinkronizálás nevei eltérőek, akkor is, ha a táblák egy adatbázis különböző sémák tartozik.
+- **Feloldási**. Ez a probléma elkerülése érdekében győződjön meg arról, hogy az elsődleges kulcsot tartalmazó adatok nem változik. A probléma megoldásához, végrehajtása után törölje a sort, a szinkronizálási csoportban lévő összes végpont inkonzisztens adatokat. Ezután helyezze vissza a sort.
 
-### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a>Inkonzisztens elsődleges kulcs adatok látom sikeres szinkronizálás után
+### <a name="sync-perf"></a> A teljesítmény jelentős csökkenéséhez láthatók
 
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
+A teljesítmény replikákban jelentősen megnő, valószínűleg a pont, ahol még nem lehet megnyitni a Data Sync felhasználói felületén.
 
-A szinkronizálás az elvártnak megfelelően sikeres, és a napló sikertelen vagy kihagyott sorok jeleníti meg, de azt láthatja, hogy elsődleges kulcs adatok inkonzisztens a szinkronizálási csoportban található adatbázisok között.
+- **OK**. A legvalószínűbb oka egy szinkronizálási ciklust. Egy szinkronizálási ciklust akkor fordul elő, A sync által szinkronizálási csoport szinkronizálási által szinkronizálási csoport B, amely majd elindítják a sync által szinkronizálási csoport A. aktiválásakor A tényleges helyzet előfordulhat, hogy nem elég bonyolult, és azt is járhat, a hurok több mint két szinkronizálási csoportok. A probléma okozza, hogy van egy kör alakú elindítása, amely a szinkronizálás egymással átfedésben lévő, egy másik szinkronizálási csoportok.
 
-#### <a name="cause"></a>Ok
+- **Feloldási**. A legjobb javítás megelőzési. Győződjön meg arról, hogy a szinkronizálási csoport nem rendelkezik. a körkörös hivatkozás. Minden sor egy szinkronizálási csoport által szinkronizálva van egy másik szinkronizálási csoport nem szinkronizálható.
 
-Ez az eredmény az elvárt működés. Bármely elsődleges kulcsként megadott oszlop eredménye a sorok, ahol az elsődleges kulcs megváltozott inkonzisztens adatok változásairól.
-
-#### <a name="resolution"></a>Megoldás:
-
-A probléma megelőzése érdekében győződjön meg arról, hogy megváltozott-e az elsődleges kulcsként megadott oszlop nincsenek adatok.
-
-A probléma kijavítása után azt, a sort, végpontjai inkonzisztens adatokat a szinkronizálási csoport törlése. Ezután helyezze vissza a sort.
-
-### <a name="i-see-a-significant-degradation-in-performance"></a>A jelentős akár teljesítménycsökkenés látható
-
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
-
-A teljesítmény csökkenti jelentősen, valószínűleg a pont, ahol még nem tudja megnyitni az adatok szinkronizálása felhasználói felületén.
-
-#### <a name="cause"></a>Ok
-
-A legvalószínűbb ok az szinkronizálási ciklust. Szinkronizálási ciklust akkor fordul elő, amikor A sync által szinkronizálási csoport elindítja a egy szinkronizálás által szinkronizálási csoport a B kiszolgálóra, majd elindítja a szinkronizálási által szinkronizálású csoport A. Lehet, hogy a tényleges helyzet összetettebb, és a hurok kettőnél több szinkronizálási csoportok vonatkozhat. A problémát az okozza, hogy nincs körkörös kiváltó feladatai, amelyek egymással átfedésben lévő szinkronizálási csoportok.
-
-#### <a name="resolution"></a>Megoldás:
-
-A legjobb javítás megelőzési. Győződjön meg arról, hogy a szinkronizálási csoportok nem rendelkezik. a körkörös hivatkozás. Egy másik szinkronizálási csoport által nem szinkronizálható, minden sor egy szinkronizálási csoport van-e szinkronizálva.
-
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a>Ez az üzenet látható: "NULL érték nem lehet beszúrni az oszlop \<oszlop\>. Oszlop nem szerepelhet nulls érték." Ez mit jelent, és hogyan lehet megoldani ezt a problémát? 
-Az üzenet azt jelzi, hogy a két alábbi problémák egyike történt:
--  Egy táblázat nem rendelkezik elsődleges kulccsal. A probléma megoldásához, most szinkronizálása összes táblának elsődleges kulcs hozzáadása.
--  A CREATE INDEX utasítás WHERE záradék található. Adatszinkronizálás nem tud kezelni ezt az állapotot. A probléma megoldásához távolítsa el a WHERE záradékot, vagy manuálisan végezze el a módosításokat az összes adatbázisra. 
+### <a name="sync-nulls"></a> Ez az üzenet látható: "nem lehet beszúrni a NULL érték az az oszlop <column>. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt? 
+Ez a hibaüzenet azt jelzi, hogy a két alábbi problémák egyike történt:
+-  Egy táblázat nem rendelkezik elsődleges kulccsal. A probléma megoldásához adja hozzá az elsődleges kulcs szinkronizál az összes táblákhoz való.
+-  A CREATE INDEX utasítás WHERE záradék szerepel. Ez az állapot nem kezeli az adatok szinkronizálása. A probléma megoldásához távolítsa el a WHERE záradékban, vagy manuálisan végezze el a módosításokat az összes adatbázishoz. 
  
-### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>Hogyan adatszinkronizálás körkörös hivatkozásokat kezelni? Ez azt jelenti, ha ugyanazokat az adatokat több szinkronizálási csoportban van-e szinkronizálva, és emiatt tartja módosítása?
-Adatszinkronizálás. a körkörös hivatkozások nem tud kezelni. Feltétlenül elkerüljék azokat. 
+### <a name="sync-circ"></a> Hogyan kezeli a Data Syncet. a körkörös hivatkozások? Azt jelenti, amikor ugyanazokat az adatokat több szinkronizálási csoportban szinkronizálva van, és ennek eredményeképpen tartja módosítása?
+Adatok szinkronizálása. a körkörös hivatkozások nem kezeli. Mindenképpen kerülje azokat. 
 
-## <a name="client-agent-issues"></a>Ügyfél ügynökökkel kapcsolatos problémák
+## <a name="client-agent-issues"></a>Ügyfél ügynök kapcsolatos problémák
 
-### <a name="the-client-agent-install-uninstall-or-repair-fails"></a>Az ügyfél-ügynök telepítése, eltávolítása vagy javítása sikertelen
+- [Az ügyfél-ügynök telepítése, eltávolítása vagy javítása sikertelen](#agent-install)
 
-#### <a name="cause"></a>Ok
+- [Az ügyfélügynök megszakítom az Eltávolítás után nem működik.](#agent-uninstall)
 
-Számos forgatókönyv ezt a hibát okozhatja. Ez a hiba az adott hiba okának megállapításához tekintse meg a naplókat.
+- [Az adatbázis nem szerepel a listán az ügynök listában](#agent-list)
 
-#### <a name="resolution"></a>Megoldás:
+- [Ügyfélügynök nem indul el (Hiba 1069)](#agent-start)
 
-Található a meghatározott a hiba okát, létrehozni, és tekintse meg a Windows Installer-naplókat. Ha bekapcsolja a naplózást, a parancssorba. Például LocalAgentHost.msi AgentServiceSetup.msi letöltött fájl esetén létrehozni, és vizsgálja meg a naplófájlokat a következő parancssor használatával:
+- [Az ügynök kulcs nem küldhető be](#agent-key)
 
--   Telepítések: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
--   Az eltávolítása: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+- [Az ügyfélügynök nem törölhető a portálról, ha annak társított helyszíni adatbázis nem érhető el](#agent-delete)
 
-A Windows Installer által elvégzett összes telepítések naplózást is kapcsolhatja. A Microsoft Tudásbázis [Windows Installer naplózásának engedélyezéséről](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) bekapcsolja a naplózást, a Windows Installer egy kattintással megoldást biztosít. A naplók helye is tartalmazza.
+- [Szinkronizációs ügynök helyi alkalmazás nem tud kapcsolódni a helyi szinkronizálási szolgáltatás](#agent-connect)
 
-### <a name="my-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a>Az ügyfélügynök I szakítsa meg az Eltávolítás után nem működik.
+### <a name="agent-install"></a> Az ügyfél-ügynök telepítése, eltávolítása vagy javítása sikertelen
 
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
+- **OK**. Számos forgatókönyv ezt a hibát okozhatja. Ez a hiba az adott hiba okának megállapításához tekintse meg a naplókat.
 
-Az ügyfélügynök nem működik, ha megszakítja az eltávolítást.
+- **Feloldási**. Keresse meg a konkrét okát, hozzon létre, és tekintse meg a Windows-telepítési naplókat. Bekapcsolhatja a naplózást, a parancssorba. LocalAgentHost.msi AgentServiceSetup.msi letöltött fájl esetén például hozzon létre, és vizsgálja meg a naplófájlokat a következő parancssorok használatával:
 
-#### <a name="cause"></a>Ok
+    -   Telepítések: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+    -   Az eltávolítása: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
 
-Ennek oka az, hogy az SQL adatszinkronizálás ügyfélügynök nem tárolja a hitelesítő adatokat.
+    Windows Installer által végzett összes telepítés naplózását is bekapcsolhatja. A Microsoft Tudásbázis megfelelő cikkében [Windows Installer-naplózás engedélyezése](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) kapcsolja be a naplózást, a Windows Installer egykattintásos megoldást kínál. A naplók helye is tartalmazza.
 
-#### <a name="resolution"></a>Megoldás:
+### <a name="agent-uninstall"></a> Az ügyfélügynök megszakítom az Eltávolítás után nem működik.
 
-E két megoldásokkal próbálkozhat:
+Az ügyfélügynök nem működik, akár az eltávolítási megszüntetése után.
 
--   A services.msc használatával adja meg újra a hitelesítő adatokat, az ügyfél ügynökének.
--   Távolítsa el az ügyfél ügynökprogramjának, és telepítse a egy újat. Töltse le és telepítse a legújabb ügyfélügynök a [letöltőközpontból](http://go.microsoft.com/fwlink/?linkid=221479).
+- **OK**. Ennek oka az, hogy az SQL Data Sync ügyfélügynök nem tárolja a hitelesítő adatokat.
 
-### <a name="my-database-isnt-listed-in-the-agent-list"></a>Az adatbázis nem szerepel-e az ügynök
+- **Feloldási**. E két megoldásokkal próbálkozhat:
 
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
+    -   Írja be újra a hitelesítő adatokat, az ügyfél ügynökének a services.msc használatával.
+    -   Távolítsa el az ügyfél ügynökprogramjának, és a egy új telepítését. Töltse le és telepítse a legújabb ügyfél ügynököt [letöltőközpontból](http://go.microsoft.com/fwlink/?linkid=221479).
 
-Kísérel meg hozzáadni egy meglévő SQL Server-adatbázis szinkronizálási csoporthoz, az ügynökök listája az adatbázis nem jelenik meg
+### <a name="agent-list"></a> Az adatbázis nem szerepel a listán az ügynök listában
 
-#### <a name="cause"></a>Ok
+Meglévő SQL Server-adatbázis hozzáadása a szinkronizálási csoport kísérli meg, amikor nem ügynökök listája jelenik meg az adatbázis.
 
-Ezek a forgatókönyvek probléma okozhatja:
+Ezekben az esetekben előfordulhat, hogy a probléma:
 
--   Az ügynök és a szinkronizálási ügyfélcsoport különböző adatközpontokban van.
--   Az ügyfélügynök az adatbázisok listája nem érvényes.
+- **OK**. Az ügyfél-ügynök és a szinkronizálási csoport különböző adatközpontokban találhatók.
 
-#### <a name="resolution"></a>Megoldás:
+- **Feloldási**. Az ügyfél-ügynök és a szinkronizálási csoport ugyanabban az adatközpontban kell lennie. Beállítására, két lehetősége van:
 
-A megoldás a OK függ.
+    -   Hozzon létre egy új ügynököt az adatközpont, ahol a szinkronizálási csoport is található. Az ügynök ezután regisztrálja az adatbázisban.
+    -   A jelenlegi szinkronizálási csoport törlése. Majd hozza létre a szinkronizálási csoport az adatközpont, ahol az ügynök nem található.
 
-- **Különböző adatközpontokban van az ügynök és a szinkronizálás. ügyfélcsoport**
+- **OK**. Az ügyfélügynök-adatbázisok listája nem aktuális.
 
-    Az ügyfélügynök és a szinkronizálási csoport ugyanabban az adatközpontban kell lennie. Beállítására, két lehetőség közül választhat:
+- **Feloldási**. Állítsa le és indítsa újra az ügyfélügynök-szolgáltatás.
 
-    -   Hozzon létre egy új ügynök az adatközpontban, ahol a szinkronizálási csoport. Az ügynök ezután regisztrálja az adatbázis.
-    -   A jelenlegi szinkronizálási csoport törlése. Ezt követően hozza létre az adatközpont, amelyen az ügynök nem található a szinkronizálású csoport.
+    A helyi ügynök letölti az ügynökkulcs első benyújtása csak a társított adatbázisok listája. Nem sikerül letölteni a későbbi ügynök kulcs beküldés a társított adatbázisok listája. Adatbázisok, amelyek regisztrálva vannak az ügynök áthelyezés ideje alatt nem jelenik meg az eredeti példány.
 
-- **Az ügyfélügynök az adatbázisok listája nem érvényes**
+### <a name="agent-start"></a> Ügyfélügynök nem indul el (Hiba 1069)
 
-    Állítsa le és indítsa újra az ügyfélügynök-szolgáltatás.
-
-    A helyi ügynök letölti a társított adatbázisokban csak a az ügynök kulcs első benyújtása listáját. Nem sikerül letölteni a társított adatbázisokban az ezt követő ügynök kulcs elküldött javaslatokra listáját. Egy ügynök áthelyezés során regisztrált adatbázisok eredeti agent-példány nem jelennek meg.
-
-### <a name="client-agent-doesnt-start-error-1069"></a>Ügyfélügynök nem indul el (Hiba 1069)
-
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
-
-Azt tapasztalja, hogy a az ügynök nem fut az SQL-kiszolgálót futtató számítógépen. Ha megpróbálja manuálisan elindítani az ügynököt, megjelenik egy párbeszédpanel, amely megjeleníti az üzenet "1069 hiba: A szolgáltatás nem indult el a bejelentkezési hiba miatt."
+Tudomására jut, hogy az ügynök nem fut SQL Servert futtató számítógépre. Amikor megpróbálja manuálisan elindítani az ügynököt, megjelenik egy párbeszédpanel, amely a következő üzenetet jeleníti meg "1069. hiba: A szolgáltatás nem indult el a bejelentkezési hiba miatt."
 
 ![Szinkronizálási hiba 1069 párbeszédpanel](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
-#### <a name="cause"></a>Ok
+- **OK**. Egy valószínűleg ez a hiba oka, hogy a jelszót a helyi kiszolgálón módosult-e, mivel az ügynök és az ügynök jelszót hozott létre.
 
-A hiba legvalószínűbb oka az, hogy a jelszót a helyi kiszolgálón az ügynök és az ügynök jelszó létrehozása óta megváltozott-e.
+- **Feloldási**. Az ügynök jelszó frissítése a kiszolgáló jelenlegi jelszavát:
 
-#### <a name="resolution"></a>Megoldás:
-
-Frissítse az ügynök jelszó a jelenlegi kiszolgáló jelszavát:
-
-1. Keresse meg az SQL adatszinkronizálás ügyfélügynök-szolgáltatás.  
+  1. Keresse meg az SQL Data Sync ügyfélügynök-szolgáltatás.  
     a. Válassza ki **Start**.  
-    b. A keresési mezőbe, írja be a **services.msc**.  
+    b. A Keresés mezőbe írja be a **services.msc**.  
     c. A keresési eredmények között, válassza ki a **szolgáltatások**.  
-    d. Az a **szolgáltatások** ablakban, keresse meg a bejegyzés **SQL adatok szinkronizálási ügynök**.  
-2. Kattintson a jobb gombbal **SQL adatok szinkronizálási ügynök**, majd válassza ki **leállítása**.
-3. Kattintson a jobb gombbal **SQL adatok szinkronizálási ügynök**, majd válassza ki **tulajdonságok**.
-4. A **SQL adatok szinkronizálási ügynök tulajdonságainak**, jelölje be a **jelentkezzen be** fülre.
-5. Az a **jelszó** mezőbe írja be a jelszót.
-6. Az a **jelszó megerősítése** mezőbe írja be újból a jelszót.
-7. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
-8. Az a **szolgáltatások** ablak, kattintson a jobb gombbal a **SQL adatok szinkronizálási ügynök** szolgáltatásra, és kattintson a **Start**.
-9. Zárja be a **szolgáltatások** ablak.
+    d. Az a **szolgáltatások** ablakban görgessen a bejegyzés **SQL Data Sync-ügynök**.  
+  2. Kattintson a jobb gombbal **SQL Data Sync-ügynök**, majd válassza ki **leállítása**.
+  3. Kattintson a jobb gombbal **SQL Data Sync-ügynök**, majd válassza ki **tulajdonságok**.
+  4. A **SQL Data Sync ügynök tulajdonságainak**, jelölje be a **bejelentkezés** fülre.
+  5. Az a **jelszó** mezőbe írja be a jelszót.
+  6. Az a **jelszó megerősítése** mezőbe írja be újból a jelszót.
+  7. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
+  8. Az a **szolgáltatások** ablakban kattintson a jobb gombbal a **SQL Data Sync-ügynök** szolgáltatásra, és kattintson a **Start**.
+  9. Zárja be a **szolgáltatások** ablak.
 
-### <a name="i-cant-submit-the-agent-key"></a>Nem küldhető be az ügynök kulcs
+### <a name="agent-key"></a> Az ügynök kulcs nem küldhető be
 
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
+Miután hoz létre, vagy hozza létre a kulcsot egy ügynöknek, küldje el a kulcs az SqlAzureDataSyncAgent alkalmazáson keresztül próbál. A küldés nem lehetett végrehajtani.
 
-Miután hoz létre, vagy hozza létre újból a kulcsot az ügynökök, megpróbálja küldje el a kulcsot a SqlAzureDataSyncAgent alkalmazáson keresztül. A küldése nem teljes.
+![Hiba-párbeszédpanel szinkronizálása – nem küldhetnek ügynökkulcs](media/sql-database-troubleshoot-data-sync/sync-error-cant-submit-agent-key.png)
 
-![Hiba-párbeszédpanel szinkronizálása - ügynök kulcs nem tudja elküldeni](media/sql-database-troubleshoot-data-sync/sync-error-cant-submit-agent-key.png)
+- **Előfeltételek**. Mielőtt folytatná, ellenőrizze a következő előfeltételek vonatkoznak:
 
-Mielőtt folytatná, ellenőrizze az alábbi feltételek:
+  - Az SQL Data Sync Windows-szolgáltatás fut.
 
--   Az SQL Data Sync Windows-szolgáltatás fut.  
--   SQL Data Sync Windows-szolgáltatás szolgáltatásfiókjának hálózati hozzáfér.    
--   A kimenő 1433-as port meg nyitva, a helyi tűzfalszabályban.
--   A helyi ip-kiszolgálóhoz vagy a szinkronizálási metaadatokat tároló adatbázis az adatbázishoz tartozó tűzfalszabály kerül.
+  - A szolgáltatás az SQL Data Sync Windows-szolgáltatásfiókot hálózati hozzáféréssel rendelkezik.
 
-#### <a name="cause"></a>Ok
+  - A kimenő 1433-as port meg nyitva, a helyi tűzfalszabály.
 
-Az ügynök kulcs egyedileg azonosítja az egyes helyi ügynök. A kulcs két feltételeknek kell megfelelniük:
+  - A helyi IP-cím hozzáadódik a kiszolgáló vagy adatbázis tűzfalszabályt a szinkronizálási metaadat-adatbázisként.
 
--   Az adatszinkronizálás SQL server és a helyi számítógép ügynök ügyfélkulcsot azonosnak kell lennie.
--   Az ügynök ügyfélkulcsot csak egyszer használható.
+- **OK**. Az ügynökkulcs egyedileg azonosítja az egyes helyi ügynök. A kulcs két feltételeknek kell megfelelniük:
 
-#### <a name="resolution"></a>Megoldás:
+  -   Az SQL Data Sync-kiszolgáló és a helyi számítógépen az ügynök ügyfélkulcsot azonosnak kell lennie.
+  -   Az ügyfél ügynökkulcs csak egyszer használható.
 
-Az ügynök nem működik, ha van, mert az egyik vagy mindkét ezek a feltételek nem teljesülnek. Az ügynököt újra beolvasása:
+- **Feloldási**. Az ügynök nem működik, ha, mert az egyik vagy mindkét ezek a feltételek nem teljesülnek. Az ügynök újra működéséhez lekérése:
 
-1. Hozzon létre egy új kulcsot.
-2. Az ügynök az új kulcsot alkalmazni.
+  1. Hozzon létre egy új kulcsot.
+  2. Az ügynök az új kulcs érvényesek.
 
-Az új kulcs alkalmazása az ügynököt:
+  A alkalmazni az ügynököt az új kulcs:
 
-1. A Fájlkezelőben nyissa meg az ügynök telepítési könyvtárába. Az alapértelmezett telepítési mappát a C:\\Program Files (x86)\\Microsoft SQL adatszinkronizálás.
-2. Kattintson duplán a bin alkönyvtárat.
-3. Indítsa el a SqlAzureDataSyncAgent alkalmazást.
-4. Válassza ki **küldje el az ügynököt kulcs**.
-5. A rendelkezésre álló helyen illessze be a vágólapra másolt kulcsot.
-6. Kattintson az **OK** gombra.
-7. Zárja be a program.
+  1. A Fájlkezelőben nyissa meg az ügynöktelepítési könyvtár. Az alapértelmezett telepítési könyvtárra a C:\\Program Files (x86)\\Microsoft SQL Data Sync szolgáltatással.
+  2. Kattintson duplán a bin alkönyvtárat.
+  3. Nyissa meg a SqlAzureDataSyncAgent alkalmazást.
+  4. Válassza ki **Ügynökkulcs elküldése**.
+  5. A rendelkezésre álló illessze be a vágólapra másolt kulcsot.
+  6. Kattintson az **OK** gombra.
+  7. Zárja be a program.
 
-### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a>Az ügyfélügynök nem törölhető a portálról, ha a kapcsolódó helyszíni adatbázis nem érhető el.
+### <a name="agent-delete"></a> Az ügyfélügynök nem törölhető a portálról, ha annak társított helyszíni adatbázis nem érhető el
 
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
+Ha a helyi végpont (azaz egy adatbázis), amely regisztrálva van egy SQL Data Sync ügyfélügynök elérhetetlenné válik, az ügyfél ügynöke nem lehet törölni.
 
-Ha a helyi végpont (Ez azt jelenti, hogy egy adatbázis), amely regisztrálva van az SQL adatszinkronizálás ügyféloldali ügynök nem érhető el, az ügyfél ügynökéhez nem lehet törölni.
+- **OK**. A helyi ügynök nem törölhető, mert az nem érhető el adatbázis továbbra is regisztrálva van az ügynök. Ha törli az ügynököt próbál, a törlési folyamat megpróbálja elérni az adatbázist, amelyet nem sikerül.
 
-#### <a name="cause"></a>Ok
-
-A helyi ügynök nem törölhető, mert az nem érhető el adatbázis továbbra is regisztrálva van az ügynök. Az ügynök törlését kísérli meg, a törlési folyamat megpróbálja elérni az adatbázist, amely nem sikerül.
-
-#### <a name="resolution"></a>Megoldás:
-
-Használja a "Törlés force" törli a nem érhető el az adatbázist.
+- **Feloldási**. Használja a "kényszerítéséhez delete" törli nem érhető el az adatbázist.
 
 > [!NOTE]
-> Szinkronizálási metaadat-táblát "kényszerítése delete" követően is, ha a deprovisioningutil.exe segítségével tisztítása őket.
+> Ha a szinkronizálási metaadat-táblát egy "kényszerítéséhez delete" után továbbra is használható `deprovisioningutil.exe` karbantartása őket.
 
-### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a>Helyi szinkronizálási ügynök alkalmazást nem lehet kapcsolódni a helyi szinkronizálási szolgáltatás
+### <a name="agent-connect"></a> Szinkronizációs ügynök helyi alkalmazás nem tud kapcsolódni a helyi szinkronizálási szolgáltatás
 
-#### <a name="resolution"></a>Megoldás:
+- **Feloldási**. Próbálja meg a következőket:
 
-Próbálja meg a következőket:
-
-1. Bezárhatja az alkalmazást.  
-2. Az összetevő-szolgáltatások Panel megnyitásához.  
-    a. Adja meg a keresési mezőbe, a tálcán, **services.msc**.  
+  1. Lépjen ki az alkalmazást.  
+  2. Az összetevő-szolgáltatások Panel megnyitásához.  
+    a. A tálcán a Keresés mezőbe írja be **services.msc**.  
     b. A keresési eredmények között kattintson duplán a **szolgáltatások**.  
-3. Állítsa le a **SQL adatszinkronizálás** szolgáltatás.
-4. Indítsa újra a **SQL adatszinkronizálás** szolgáltatás.  
-5. Nyissa meg újra az alkalmazást.
+  3. Állítsa le a **SQL Data Sync** szolgáltatás.
+  4. Indítsa újra a **SQL Data Sync** szolgáltatás.  
+  5. Nyissa meg újra az alkalmazást.
 
 ## <a name="setup-and-maintenance-issues"></a>Telepítési és karbantartási kapcsolatos problémák
 
-### <a name="i-get-a-disk-out-of-space-message"></a>"Nincs elegendő lemezterület lemez" üzenet jelenik meg
+- ["Lemezterületét lemez" üzenet jelenik meg](#setup-space)
 
-#### <a name="cause"></a>Ok
+- [A szinkronizálási csoport nem lehet törölni](#setup-delete)
 
-Ha vissza fájlok akkorról törölni kell a "lemez szabad terület" üzenet jelenhet meg. Ennek az oka lehet a víruskereső szoftver, vagy a fájl nyitva, ha próbálkozások törlése.
+- [Tudok egy helyszíni SQL Server-adatbázis regisztrációja nem törölhető](#setup-unreg)
 
-#### <a name="resolution"></a>Megoldás:
+- [Nem rendelkezem a megfelelő jogosultsággal a rendszerszolgáltatások indításához](#setup-perms)
 
-Törölje kézzel a szinkronizálási fájlokat, amelyek a % temp % mappában (`del \*sync\* /s`). Törölje a alkönyvtárai a % temp % mappában.
+- [Egy adatbázis állapota "Elavult"](#setup-date)
+
+- [Szinkronizálási csoport tartalmaz egy "Elavult" állapota](#setup-date2)
+
+- [Szinkronizálási csoport nem lehet törölni, eltávolítása vagy leállítása folyamatban van az ügynök három percen belül](#setup-delete2)
+
+- [Mi történik, ha vissza tudok állítani egy elveszett vagy sérült adatbázis?](#setup-restore)
+
+### <a name="setup-space"></a> "Lemezterületét lemez" üzenet jelenik meg
+
+- **OK**. Ha vissza fájlok akkorról törölni kell a "lemezterületét lemez" üzenet jelenhet meg. Ennek oka lehet a víruskereső szoftver, vagy a fájl nyitva, amikor próbálkozások törlése.
+
+- **Feloldási**. Törölje kézzel a % temp % mappában lévő fájlok szinkronizálása (`del \*sync\* /s`). Törölje az alkönyvtárak a % temp % mappában.
 
 > [!IMPORTANT]
 > Ne törölje a fájlokat, amíg a szinkronizálás folyamatban van.
 
-### <a name="i-cant-delete-my-sync-group"></a>Nem lehet törölni a Szinkronizáló csoport
+### <a name="setup-delete"></a> A szinkronizálási csoport nem lehet törölni
 
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
+A szinkronizálási csoport törlése sikertelen. Az alábbi esetekben azt eredményezheti, hogy a szinkronizálási csoport törlése sikertelen:
 
-A szinkronizálás csoport törlése sikertelen.
+- **OK**. Az ügyfélügynök offline állapotban.
 
-#### <a name="causes"></a>Okok
+- **Feloldási**. Győződjön meg arról, hogy az ügyfél ügynökéhez online állapotban, és próbálkozzon újra.
 
-A következő esetekben előfordulhat, a szinkronizálási csoport törlése sikertelen:
+- **OK**. Az ügyfélügynök telepítve, vagy hiányzik.
 
--   Az ügyfélügynök offline állapotban.
--   Az ügyfélügynök telepítve, vagy hiányzik. 
--   Egy adatbázis offline állapotban. 
--   Kiépítés vagy szinkronizálása a szinkronizálási csoportot. 
+- **Feloldási**. Ha az ügyfél ügynöke telepítve vagy egyéb hiányzó:  
+    a. Ha a fájl létezik, távolítsa el az ügynök XML-fájlt az SQL Data Sync telepítési mappájából.  
+    b. Telepítse az ügynököt a helyi számítógépen. (Ez ugyanaz vagy egy másik számítógépen is lehet). Ezután küldje el a rendszer által létrehozott a portálon az ügynök offline állapotúként jelenik ügynökkulcs.
 
-#### <a name="resolution"></a>Megoldás:
+- **OK**. Egy adatbázis offline állapotban.
 
-Szinkronizálási csoport törlése nem sikerült feloldani:
+- **Feloldási**. Győződjön meg arról, hogy az SQL Database-adatbázisok és az SQL Server-adatbázisok az összes online állapotban.
 
--   Győződjön meg arról, hogy online állapotban-e az ügyfélügynök, és próbálkozzon újra.
--   Ha az ügyfél-ügynök telepítve vagy egyéb hiányzik:  
-    a. Az ügynök XML-fájl eltávolítása az SQL Data Sync telepítési mappáját, ha a fájl létezik-e.  
-    b. Telepítse az ügynököt a helyi számítógépen (az azonos vagy eltérő számítógépen is lehet). Majd küldje el a az ügynök, amely offline állapotúként jelenik a portálon létrehozott ügynök kulcsot.
--   Győződjön meg arról, hogy fut-e az SQL Data szinkronizálási szolgáltatás:  
-    a. Az a **Start** menü, keressen a **szolgáltatások**.  
-    b. A keresési eredmények között, válassza ki a **szolgáltatások**.  
-    c. Keresés a **SQL adatszinkronizálás** szolgáltatás.  
-    d. Ha a szolgáltatás állapota **leállítva**, kattintson a jobb gombbal a szolgáltatás nevét, majd válassza ki **Start**.
--   Győződjön meg arról, hogy az SQL-adatbázisok és SQL Server-adatbázisok mind online állapotban.
--   Várjon, amíg a kiépítési vagy a szinkronizálási folyamat befejeződik, és ismételje meg a szinkronizálási csoport törlése.
+- **OK**. A szinkronizálási csoport kiépítési vagy szinkronizálása.
 
-### <a name="i-cant-unregister-an-on-premises-sql-server-database"></a>A helyszíni SQL Server adatbázis I nem törölhető
+- **Feloldási**. Várjon, amíg a kiépítési vagy a szinkronizálási folyamat befejeződik, és ismételje meg a szinkronizálási csoport törlése.
 
-#### <a name="cause"></a>Ok
+### <a name="setup-unreg"></a> Tudok egy helyszíni SQL Server-adatbázis regisztrációja nem törölhető
 
-Nagy valószínűséggel kívánt regisztrációjának törlése egy adatbázist, amelyet már töröltek.
+- **OK**. Nagy valószínűséggel kívánt regisztrációját egy adatbázist, amelyet már töröltek.
 
-#### <a name="resolution"></a>Megoldás:
+- **Feloldási**. Egy helyszíni SQL Server-adatbázis regisztrációjának törléséhez válassza ki az adatbázist, majd **törlésének kényszerítése**.
 
-A helyszíni SQL Server adatbázis regisztrációjának törléséhez válassza ki az adatbázist, és válassza ki **kényszerített törlése**.
+  Ha ez a művelet nem tudja törölni az adatbázist a a szinkronizálási csoport:
 
-Ha ez a művelet sikertelen az adatbázis eltávolítása a szinkronizálási csoportból:
-
-1. Állítsa le és indítsa újra az ügyfél ügynök gazdaszolgáltatása:  
+  1. Állítsa le és indítsa újra az ügyfél ügynök gazdaszolgáltatása:  
     a. Válassza ki a **Start** menü.  
-    b. A keresési mezőbe, írja be a **services.msc**.  
-    c. Az a **programok** szakasza a keresési eredmények ablaktáblán kattintson duplán a **szolgáltatások**.  
-    d. Kattintson a jobb gombbal a **SQL adatszinkronizálás** szolgáltatás.  
+    b. A Keresés mezőbe írja be a **services.msc**.  
+    c. Az a **programok** szakasz a keresési eredmények ablaktáblán kattintson duplán a **szolgáltatások**.  
+    d. Kattintson a jobb gombbal a **SQL Data Sync** szolgáltatás.  
     e. Ha a szolgáltatás fut, állítsa le.  
-    f. Kattintson a jobb gombbal a szolgáltatás, és válassza ki **Start**.  
-    g. Ellenőrizze, hogy az adatbázis továbbra is regisztrálva lesz. Ha már nincs regisztrálva, az elkészült. Ellenkező esetben folytassa a következő lépéssel.
-2. Nyissa meg az ügynök-ügyfélalkalmazás (SqlAzureDataSyncAgent).
-3. Válassza ki **hitelesítő adatok szerkesztése**, és adja meg a hitelesítő adatokat az adatbázisban.
-4. Regisztráció megszüntetése folytatásához.
+    f. Kattintson jobb gombbal a szolgáltatásra, és válassza **Start**.  
+    g. Ellenőrizze, hogy az adatbázis továbbra is regisztrálva van. Ha már nincs regisztrálva, akkor végzett. Egyéb esetben folytassa a következő lépéssel.
+  2. Nyissa meg az ügynök-ügyfélalkalmazás (SqlAzureDataSyncAgent).
+  3. Válassza ki **hitelesítő adatok szerkesztése**, majd adja meg a hitelesítő adatait az adatbázis.
+  4. Regisztráció megszüntetésének folytatásához.
 
-### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a>Nincs elegendő jogosultsággal a rendszerszolgáltatások indításához
+### <a name="setup-perms"></a> Nem rendelkezem a megfelelő jogosultsággal a rendszerszolgáltatások indításához
 
-#### <a name="cause"></a>Ok
+- **OK**. Ez a hiba akkor fordul elő, két helyzetekben:
+  -   A felhasználónév és/vagy a jelszó nem megfelelő.
+  -   A megadott felhasználói fiók nem rendelkezik elegendő jogosultságokkal a szolgáltatás.
 
-Két esetben ez a hiba akkor fordul elő:
--   A felhasználónév és/vagy a jelszó nem megfelelő.
--   A megadott felhasználói fiók nem rendelkezik elegendő jogosultságokkal a szolgáltatás.
+- **Feloldási**. Megadja a naplófájl-a--szolgáltatásként hitelesítő adatokat ahhoz a felhasználói fiókhoz:
 
-#### <a name="resolution"></a>Megoldás:
+  1. Lépjen a **Start** > **vezérlőpultot** > **felügyeleti eszközök** > **helyi biztonsági házirend**  >  **Helyi házirend** > **felhasználói Rights Management**.
+  2. Válassza ki **szolgáltatásként jelentkezzen be**.
+  3. Az a **tulajdonságok** párbeszédpanelen adjon hozzá a felhasználói fiókot.
+  4. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
+  5. Zárjon be minden ablakot.
 
-Megadja a naplófájl---a-szolgáltatásként hitelesítő adatok a felhasználói fiókhoz:
+### <a name="setup-date"></a> Egy adatbázis állapota "Elavult"
 
-1. Ugrás a **Start** > **vezérlőpultot** > **felügyeleti eszközök** > **helyi biztonsági házirend**  >  **Helyi házirend** > **felhasználó tartalomvédelem**.
-2. Válassza ki **jelentkezzen be a szolgáltatás**.
-3. Az a **tulajdonságok** párbeszédpanel mezőben adja meg a felhasználói fiók.
-4. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
-5. Zárjon be minden ablakot.
+- **OK**. SQL Data Sync eltávolítja az adatbázisok offline 45 napon, vagy több (a számít az idő, az adatbázis offline állapotba került a) a szolgáltatásból is. Ha egy adatbázis 45 nap vagy több kapcsolat nélküli üzemmódban, és visszatér online állapotba, állapotú-e **elavult**.
 
-### <a name="a-database-has-an-out-of-date-status"></a>Egy adatbázis állapota "Elavult"
+- **Feloldási**. Elkerülheti az **elavult** biztosításával, hogy az adatbázisok egyike kapcsolat nélküli módba 45 nap vagy több állapota.
 
-#### <a name="cause"></a>Ok
+  Ha egy adatbázis állapota **elavult**:
 
-SQL adatszinkronizálás eltávolítja a szolgáltatásból 45 nap vagy több (a számítanak a óta, az adatbázis offline állapotba került) kapcsolat nélküli adatbázisok. Ha egy adatbázis 45 nap vagy több offline állapotban, és ezután a ismét online elérhető lesz, állapotú-e **elavult**.
+  1. Távolítsa el az adatbázist, amely rendelkezik egy **elavult** a szinkronizálási csoport állapotát.
+  2. Vegye fel az adatbázist újra, és a szinkronizálási csoport.
 
-#### <a name="resolution"></a>Megoldás:
+  > [!WARNING]
+  > Ez az adatbázis offline közben végrehajtott valamennyi módosítás elvész.
 
-Elkerülheti a egy **elavult** biztosításával, hogy nincs adatbázis kapcsolat nélküli módba 45 nap vagy több állapotát.
+### <a name="setup-date2"></a> Szinkronizálási csoport tartalmaz egy "Elavult" állapota
 
-Ha egy adatbázis állapota **elavult**:
+- **OK**. Ha egy vagy több módosítás nem sikerül a teljes megőrzési időszak 45 napot a alkalmazni, a szinkronizálási csoport is elavulttá válnak.
 
-1. Távolítsa el az adatbázist, amely rendelkezik egy **elavult** a szinkronizálási csoport állapotát.
-2. Az adatbázis hozzáadása a szinkronizálási csoporthoz újból.
+- **Feloldási**. Elkerülése érdekében egy **elavult** a szinkronizálási csoport állapotát, vizsgálja meg az eredményeket a szinkronizálási feladatok rendszeresen az előzménymegjelenítőben. Vizsgálja meg, és hárítsa el a módosításokat, amelyek nem érvényesek.
 
-> [!WARNING]
-> Miközben offline állapotban volt ehhez az adatbázishoz való végrehajtott valamennyi módosítást elvesznek.
+  Ha a szinkronizálási csoport állapota **elavult**a szinkronizálási csoport törlése., majd hozza létre újból.
 
-### <a name="a-sync-group-has-an-out-of-date-status"></a>A szinkronizálás csoport állapota "Elavult"
+### <a name="setup-delete2"></a> Szinkronizálási csoport nem lehet törölni, eltávolítása vagy leállítása folyamatban van az ügynök három percen belül
 
-#### <a name="cause"></a>Ok
+Három eltávolítása vagy leállítása folyamatban van az SQL Data Sync társított ügyfélügynök percen belül szinkronizálási csoport nem törölhető.
 
-Ha egy vagy több módosítások nem alkalmazza a teljes megőrzési időszak 45 napot, a szinkronizálási csoport is elavulttá válnak.
+- **Feloldási**.
 
-#### <a name="resolution"></a>Megoldás:
+  1. Távolítsa el a szinkronizálási csoport, amíg a kapcsolódó szinkronizálási ügynököket online (javasolt).
+  2. Ha az ügynök offline állapotban, de van telepítve, is online állapotba kerüljön a helyi számítógépen. Várjon, amíg jelennek meg az ügynök állapotát **Online** az SQL Data Sync portálon. Ezt követően távolítsa el a szinkronizálási csoport.
+  3. Ha az ügynök offline állapotban, mert el lett távolítva:  
+    a.  Ha a fájl létezik, távolítsa el az ügynök XML-fájlt az SQL Data Sync telepítési mappájából.  
+    b.  Telepítse az ügynököt a helyi számítógépen. (Ez ugyanaz vagy egy másik számítógépen is lehet). Ezután küldje el a rendszer által létrehozott a portálon az ügynök offline állapotúként jelenik ügynökkulcs.  
+    c. Próbálja ki a szinkronizálási csoport törlése.
 
-Elkerülése érdekében egy **elavult** szinkronizálási csoportjának, állapotát, vizsgálja meg a szinkronizálási feladatok az előzménymegjelenítőben, rendszeresen eredményeit. Vizsgálja meg és hárítsa el a módosításokat alkalmazni.
+### <a name="setup-restore"></a> Mi történik, ha vissza tudok állítani egy elveszett vagy sérült adatbázis?
 
-Ha a szinkronizálás csoport állapota **elavult**a sync-csoport törléséhez, majd hozza létre újból.
-
-### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a>A szinkronizálás csoportot nem lehet törölni, eltávolítása vagy az ügynök leállítása három percen belül
-
-#### <a name="description-and-symptoms"></a>Leírás és jelenségek
-
-A szinkronizálás csoport eltávolítása vagy leállítja a társított SQL adatszinkronizálás ügyfélügynök három percen belül nem törölhető.
-
-#### <a name="resolution"></a>Megoldás:
-
-1. Távolítsa el a szinkronizálási csoportot, amíg kapcsolódik az internethez kapcsolódó szinkronizálási ügynökök (ajánlott).
-2. Ha az ügynök offline állapotban, de van telepítve, is online állapotba kerüljön a helyi számítógépen. Várjon, amíg az állapot, hogy az ügynök frissítésként jelenik meg **Online** az SQL adatszinkronizálás portálon. Ezután távolítsa el a szinkronizálási csoportot.
-3. Ha az ügynök offline állapotban, mert el lett távolítva:  
-    a.  Az ügynök XML-fájl eltávolítása az SQL Data Sync telepítési mappáját, ha a fájl létezik-e.  
-    b.  Telepítse az ügynököt a helyi számítógépen (az azonos vagy eltérő számítógépen is lehet). Majd küldje el a az ügynök, amely offline állapotúként jelenik a portálon létrehozott ügynök kulcsot.  
-    c. Próbálja meg törölni a szinkronizálású csoport.
-
-### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a>Mi történik, ha szeretnék elveszett vagy sérült adatbázis visszaállítása?
-
-Ha elveszett vagy sérült adatbázis visszaállítása egy biztonsági másolatból, valószínűleg egy nonconvergence az adatok a szinkronizálási csoportok, amelyhez az adott adatbázis is tartozik.
+Elveszett vagy sérült adatbázis egy biztonsági másolatból állítsa vissza, ha van egy nem okozott összetartási az adatok a szinkronizálási csoport, amelyhez tartozik az adatbázis.
 
 ## <a name="next-steps"></a>További lépések
-SQL adatszinkronizálás kapcsolatos további információkért lásd:
+Az SQL Data Sync szolgáltatással kapcsolatos további információkért lásd:
 
 -   [Több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás az Azure SQL Data Synckel](sql-database-sync-data.md)  
 -   [Az Azure SQL Data Sync beállítása](sql-database-get-started-sql-data-sync.md)  
@@ -427,7 +381,7 @@ SQL adatszinkronizálás kapcsolatos további információkért lásd:
     -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Az SQL Data Sync REST API dokumentációjának letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
-SQL-adatbázis kapcsolatos további információkért lásd:
+Az SQL Database kapcsolatos további információkért lásd:
 
 -   [Az SQL Database áttekintése](sql-database-technical-overview.md)
 -   [Az adatbázis életciklusának felügyelete](https://msdn.microsoft.com/library/jj907294.aspx)

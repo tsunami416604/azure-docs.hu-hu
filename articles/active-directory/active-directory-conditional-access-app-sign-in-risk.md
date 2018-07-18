@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/03/2018
+ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 98e2f88c85d21cde2ecc7196f93d531a80b14d13
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f1a6a11f827248d098c018390e9ae5557d9c22d1
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450157"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113376"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Letiltja a hozzáférést, az Azure Active Directory feltételes hozzáférés a munkamenet kockázata észlelésekor  
 
@@ -62,7 +62,7 @@ Ez a lépés célja, győződjön meg arról, hogy a teszt fiók hozzáférhesse
 
 ## <a name="create-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat létrehozása 
 
-Ebben a rövid útmutatóban a forgatókönyvet használja a bejelentkezési Tor böngészőből létrehozni egy észlelt **névtelen IP-címekről történő bejelentkezések** kockázati esemény. A kockázati esemény kockázati szintje közepes.   
+Ebben a rövid útmutatóban a forgatókönyvet használja a bejelentkezési Tor böngészőből létrehozni egy észlelt **névtelen IP-címekről történő bejelentkezések** kockázati esemény. A kockázati esemény kockázati szintje közepes. A kockázati esemény válaszolni a bejelentkezési kockázati feltétellel közepes beállítása. Éles környezetben a bejelentkezési kockázati feltétellel kell beállítania, vagy a magas, közepes és magas.     
 
 Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabályzat. Állítsa be a szabályzat:
 
@@ -70,10 +70,11 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 |---     | --- |
 | Felhasználók és csoportok | Alain Charon  |
 | Felhőalkalmazások | Minden felhőalkalmazás |
+| Bejelentkezési kockázat | Közepes |
 | Hozzáférés | Hozzáférés letiltása |
  
 
-![Szabályzat létrehozása](./media/active-directory-conditional-access-app-sign-in-risk/115.png)
+![Szabályzat létrehozása](./media/active-directory-conditional-access-app-sign-in-risk/130.png)
 
  
 
@@ -125,6 +126,26 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
     a. Kattintson a **az összes felhőalapú alkalmazások**.
 
     b. Kattintson a **Done** (Kész) gombra.
+
+10. Kattintson a **feltételek**. 
+
+    ![Hozzáférés-szabályozás](./media/active-directory-conditional-access-app-sign-in-risk/19.png)
+
+11. Az a **feltételek** oldalon:
+
+    ![Bejelentkezési kockázati szint](./media/active-directory-conditional-access-app-sign-in-risk/21.png)
+
+    a. Kattintson a **bejelentkezési kockázat**.
+ 
+    b. Mint **konfigurálása**, kattintson a **Igen**.
+
+    c. Bejelentkezési kockázati szintet, válassza ki a **Közepes**.
+
+    d. Kattintson a **Kiválasztás** gombra.
+
+    e. Az a **feltételek** kattintson **kész**.
+
+
 
 10. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
 

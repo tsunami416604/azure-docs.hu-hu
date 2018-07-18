@@ -1,41 +1,41 @@
 ---
-title: Több tárolócsoportok Azure tároló példányát az Azure CLI és YAM telepítése
-description: Útmutató egy tárolócsoport az Azure-tároló esetekben több tároló telepítését az Azure CLI és YAM-fájl.
+title: Az Azure Container Instances szolgáltatásban az Azure CLI és a YAML többtárolós csoportok üzembe helyezése
+description: Ismerje meg, hogyan helyezhet üzembe egy tárolócsoportot több tárolót az Azure Container Instances szolgáltatásban az Azure CLI és a egy YAML-fájl használatával.
 services: container-instances
 author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: 5dfee15e978d2dba0f50d1dc4b78953698389950
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1d1885112b8e7f7b1e187073c86d561eb57fd23f
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851274"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114463"
 ---
-# <a name="deploy-a-multi-container-container-group-with-yaml"></a>A több tároló tároló csoport a YAM telepítése
+# <a name="deploy-a-multi-container-container-group-with-yaml"></a>Egy többtárolós tárolócsoportot YAML üzembe helyezése
 
-Azure tároló-példányokon támogatja egyetlen állomás alakzatot több tároló telepítését egy [a tárolócsoport](container-instances-container-groups.md). Több tároló tárolócsoportok hasznosak, ha egy alkalmazás oldalkocsi naplózási, figyelési vagy bármely egyéb konfigurációs felépítése amikor egy szolgáltatás kell egy második csatolt folyamat.
+Az Azure Container Instances használatával helyezheti egyetlen gazdagépre több tároló telepítését támogatja egy [tárolócsoport](container-instances-container-groups.md). Többtárolós tárolócsoportok akkor hasznos, ha egy alkalmazás oldalkocsi, naplózás, figyelés vagy bármely egyéb konfigurációs létrehozásához, egy szolgáltatást kell-e egy második csatolt folyamat.
 
-Az Azure parancssori felület használatával több tárolócsoportok telepítéséhez két módszer áll rendelkezésre:
+Az Azure CLI használatával többtárolós csoportok üzembe helyezésének két módja van:
 
-* YAM fájl telepítése (Ez a cikk)
-* [Erőforrás-kezelő sablon-üzembehelyezés](container-instances-multi-container-group.md)
+* YAML-fájl üzembe helyezés (Ez a cikk)
+* [Resource Manager-sablon üzembe helyezése](container-instances-multi-container-group.md)
 
-Miatt a YAM formátum tömörebb természetétől YAM fájl központi telepítése tartalmazza a központi telepítés esetén ajánlott *csak* tároló példányok. Ha további Azure-szolgáltatások erőforrások (például egy Azure fájlok megosztás) tároló példány központi telepítés alkalmával telepítendő kell, a Resource Manager sablon-üzembehelyezés ajánlott.
+Miatt a YAML formátumú tömörebb jellegű, üzembe helyezés egy YAML-fájlt a ajánlott, amikor a telepítés magában foglalja az *csak* container Instances szolgáltatásban. Ha további Azure-szolgáltatási erőforrások (például egy Azure-fájlmegosztással) telepítése a tárolópéldány üzembe helyezésének idején van szüksége, ajánlott Resource Manager-sablon üzembe helyezése.
 
 > [!NOTE]
-> Több tárolócsoportok jelenleg csak Linux tárolók. Dolgozunk, hogy minden funkció Windows tárolók, amíg a jelenlegi platform különbségek található [kvótái és az Azure-tároló példányok régiónkénti elérhetőség](container-instances-quotas.md).
+> Többtárolós csoportok olyan Linux-tárolókhoz való hozzáférés jelenleg korlátozott. Idővel az összes funkció a Windows-tárolók dolgozunk, miközben Ön aktuális eltérésekről platform a [kvóták és régiók rendelkezésre állása az Azure Container Instances](container-instances-quotas.md).
 
-## <a name="configure-the-yaml-file"></a>A YAM-fájljának konfigurálása
+## <a name="configure-the-yaml-file"></a>A YAML-fájl konfigurálása
 
-Több tároló tároló csoport központi telepítése a [az tároló létrehozása] [ az-container-create] kell adja meg a tároló konfigurációjának YAM fájlba, majd továbbítja a YAM fájlt az Azure parancssori felület, a parancsot egy paramétert a parancshoz.
+Egy többtárolós tárolócsoportot üzembe helyezéséhez a [az tároló létrehozása] [ az-container-create] kell adja meg a tároló konfigurációjának egy YAML-fájlt, majd a YAML-fájlt, mint az Azure CLI-parancs egy paramétert a parancshoz.
 
-Indítsa el a következő YAM másolásával egy új fájlba nevű **telepítése aci.yaml**.
+Első lépésként másolja ki a következő yaml-kódot egy új fájlba nevű **üzembe helyezése aci.yaml**.
 
-A YAM fájl határozza meg, a tárolócsoport két tárolókhoz, egy nyilvános IP-cím és két kitett portok. A csoportban lévő első tároló fut az internet felé néző webes alkalmazást. A második tároló, a oldalkocsi rendszeresen hajt végre a tárolócsoport helyi hálózaton keresztül az első tárolóban futó webalkalmazás HTTP-kérelmekre.
+A YAML-fájl határozza meg egy tárolócsoport neve "myContainerGroup" két tárolókkal, a nyilvános IP-cím és a két elérhetővé tett port. A csoportban az első tároló egy internetre irányuló webes alkalmazást futtat. A második tárolót, az oldalkocsi rendszeres időközönként HTTP-kéréseket hajt végre a webalkalmazás első a tárolóban fut, a tárolócsoport helyi hálózaton keresztül.
 
 ```YAML
 apiVersion: 2018-06-01
@@ -72,31 +72,31 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-## <a name="deploy-the-container-group"></a>A tároló csoport központi telepítése
+## <a name="deploy-the-container-group"></a>A tároló-csoport központi telepítése
 
-Hozzon létre egy erőforráscsoportot a a [az csoport létrehozása] [ az-group-create] parancs:
+Hozzon létre egy erőforráscsoportot a [az csoport létrehozása] [ az-group-create] parancsot:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-A tároló-csoport központi telepítését a [az tároló létrehozása] [ az-container-create] parancs, átadja a YAM fájlt, amelynek argumentuma:
+Üzembe helyezése az a tárolócsoportot a [az tároló létrehozása] [ az-container-create] parancs, a YAML-fájl átadása argumentumként:
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name myContainerGroup -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --file deploy-aci.yaml
 ```
 
 Néhány másodpercen belül meg kell kapnia az Azure kezdeti válaszát.
 
 ## <a name="view-deployment-state"></a>Központi telepítés állapotának megtekintése
 
-A központi telepítési állapotának megtekintéséhez használja a következő [az tároló megjelenítése] [ az-container-show] parancs:
+Az üzembe helyezés állapotának megtekintéséhez használja a következő [az container show] [ az-container-show] parancsot:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Ha azt szeretné, a futó alkalmazást, keresse meg az IP-címét a böngésző. Például az IP-cím `52.168.26.124` a Ez egy példa a kimenetre:
+Ha szeretné a futó alkalmazás megtekintéséhez navigáljon az IP-címét a böngészőben. Ha például az IP-címe `52.168.26.124` a következő példakimenetben:
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location
@@ -106,7 +106,7 @@ myContainerGroup  myResourceGroup  Succeeded            microsoft/aci-helloworld
 
 ## <a name="view-logs"></a>Naplók megtekintése
 
-A kimenet egy tároló használatával megtekintheti a [az tároló naplók] [ az-container-logs] parancsot. A `--container-name` argumentum meghatározza a tároló, amelyből való lekérésére naplókat. Ebben a példában az első tároló van megadva.
+Egy tároló a napló kimenetének megtekintéséhez a [az tárolónaplók] [ az-container-logs] parancsot. A `--container-name` argumentum, adja meg a tároló, amelyből a naplók lekérése. Ebben a példában az első tároló meg van adva.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -121,7 +121,7 @@ listening on port 80
 ::1 - - [09/Jan/2018:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-A kiszolgálóoldali-car tároló a naplók megtekintéséhez futtassa a ugyanazzal a paranccsal a második tároló nevének megadását.
+A naplók a kiszolgálóoldali autós tároló megtekintéséhez futtassa ugyanezt a parancsot a második tároló nevének megadása.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -147,11 +147,11 @@ Date: Tue, 09 Jan 2018 23:25:11 GMT
 Connection: keep-alive
 ```
 
-Ahogy látja, a oldalkocsi HTTP-kérelem, hogy így rendszeres időközönként a fő webalkalmazásnak a csoporthoz tartozó helyi hálózaton keresztül annak érdekében, hogy fut-e. Ebben a példában oldalkocsi figyelmeztetést jelenít meg, ha egy HTTP-válaszkód eltérő 200 OK kapott lehetett kibontani.
+Amint látható, az oldalkocsi egy HTTP-kérelem, hogy így rendszeres időközönként annak érdekében, hogy fut-e a csoport helyi hálózaton keresztül a fő webes alkalmazásba való. Ebben a példában az oldalkocsi figyelmeztetést jelenít meg, ha egy HTTP-válaszkód eltérő 200-as rendben kapott lehetett kibontani.
 
-## <a name="deploy-from-private-registry"></a>A privát beállításjegyzékből telepítése
+## <a name="deploy-from-private-registry"></a>A privát regisztrációs adatbázis üzembe helyezése
 
-Egy tároló titkos kép beállításjegyzék használatához tartalmaz a következő YAM értékek környezetnek módosította:
+Egy privát tárolójegyzékben rendszerkép használatához a következők a következő yaml-kódot a környezet módosított értékekkel:
 
 ```YAML
   imageRegistryCredentials:
@@ -160,7 +160,7 @@ Egy tároló titkos kép beállításjegyzék használatához tartalmaz a követ
     password: imageRegistryPassword
 ```
 
-A következő YAM például egy a tárolócsoport, amelynek kép "myregistry" nevű titkos Azure tároló beállításjegyzékbeli van lekért egyetlen tárolóval telepíti:
+Például a következő yaml-kódot egy tárolócsoportot amelynek rendszerképet egy privát Azure Container Registry "myregistry" nevű lehívja egyetlen tároló helyezi üzembe:
 
 ```YAML
 apiVersion: 2018-06-01
@@ -191,23 +191,24 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-## <a name="export-container-group-to-yaml"></a>A tárolócsoport YAM exportálása
+## <a name="export-container-group-to-yaml"></a>Tárolócsoport YAML exportálása
 
-Exportálhatja egy meglévő tároló csoport konfigurációs YAM fájlba az Azure CLI paranccsal [az tároló exportálás][az-container-export].
+Egy YAML-fájlt tároló meglévő csoport konfigurációját a az Azure CLI-paranccsal exportálhatja [az tároló exportálási][az-container-export].
 
-Hasznos, ha meg kell őrizni egy tárolócsoport konfigurációs, exportálás lehetővé teszi a tároló csoportot használó konfigurációk tárolhatnak verziókezelést "kódú konfiguráció". Másik lehetőségként az exportált fájl kiindulási pontként YAM az új konfigurációt ajánlunk.
+Hasznos meg kell őrizni egy tárolócsoport konfigurálása, exportálás lehetővé teszi a tároló csoport konfigurációk tárolása verziókövetés "konfiguráció kódként." Másik lehetőségként használhatja kiindulási pontként az exportált fájlt, egy új konfigurációt a YAML fejlesztése során.
 
-A tároló csoport a következő kiállításával korábban létrehozott konfigurációjának exportálása [az tároló exportálás] [ az-container-export] parancs:
+A tárolócsoport, a következő kiállításával korábban létrehozott konfigurációjának exportálása [az tároló exportálási] [ az-container-export] parancsot:
 
 ```azurecli-interactive
-az container export --resource-group rg604 --name myContainerGroup --file deployed-aci.yaml
+az container export --resource-group myResourceGroup --name myContainerGroup --file deployed-aci.yaml
 ```
 
-Nincs kimenet jelenik meg, ha a parancs végrehajtása sikeres, de megtekintheti az eredményt a fájl tartalmát. Például az első néhány sor a `head`:
+Nincs kimenet nem jelenik meg a parancs végrehajtása sikeres, de az eredmény megjelenítéséhez a fájl tartalmát is megtekintheti. Ha például az első néhány sorának a `head`:
 
 ```console
 $ head deployed-aci.yaml
-apiVersion: 2018-02-01-preview
+additional_properties: {}
+apiVersion: '2018-06-01'
 location: eastus
 name: myContainerGroup
 properties:
@@ -216,15 +217,11 @@ properties:
     properties:
       environmentVariables: []
       image: microsoft/aci-helloworld:latest
-      ports:
 ```
-
-> [!NOTE]
-> Az Azure parancssori felület verzió 2.0.34 van egy [ismert probléma] [ cli-issue-6525] amely exportált tárolócsoportok adja meg a régebbi API verziója **2018-02-01. dátumú előnézeti** (látható az előző JSON kimeneti példát). Ha szeretné telepíteni az exportált YAM fájllal, biztonságosan frissítheti a `apiVersion` értékét az exportált YAM fájlban **2018-06-01**.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk a több tároló Azure tároló példánya telepítéséhez szükséges lépéseket mutatja be. A végpont Azure tároló példányok élményt, beleértve a saját Azure-tárolót beállításjegyzékkel tekintse meg az Azure-tároló példányok.
+Ez a cikk bemutatta, egy többtárolós az Azure container instance-példány üzembe helyezéséhez szükséges lépéseket. És a teljes körű Azure Container Instances szolgáltatással, beleértve egy privát Azure container registry használatával tekintse meg az Azure Container Instances oktatóanyagával.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga][aci-tutorial]

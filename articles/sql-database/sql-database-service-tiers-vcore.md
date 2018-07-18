@@ -1,20 +1,20 @@
 ---
 title: Az Azure SQL Database szolgáltatás – a virtuális mag |} A Microsoft Docs
-description: A Virtuálismag-alapú vásárlási modellt (előzetes verzió) lehetővé teszi, hogy egymástól függetlenül méretezheti a számítási és tárolási erőforrások, a helyszíni teljesítmény és optimalizálás ár.
+description: A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól függetlenül méretezheti a számítási és tárolási erőforrások, a helyszíni teljesítmény és optimalizálás ár.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/15/2018
+ms.date: 07/16/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: cc69d2f195006fa196491fe9bed53db499eed11f
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d18076486704d5f03acd2253650762c3bd24b0af
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069978"
+ms.locfileid: "39091492"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Virtuális mag szolgáltatásszint kiválasztása, számítási, memória, tárolási és i/o-erőforrások
 
@@ -30,11 +30,9 @@ Az alábbi táblázat segít a két szintek közötti különbségeket:
 |Storage|Prémium szintű távtároló, 5 GB – 4 TB-ig|Helyi SSD-tárolóval, 5 GB – 4 TB-ig|
 |IO-átviteli sebesség (becsült)|A 7000-es maximális IOPS / virtuális mag 500 IOPS|5000 IOPS magonként 200000 maximális iops|
 |Rendelkezésre állás|1 replika, nincs olvasási szintű|3 replika, 1 [olvasási szintű](sql-database-read-scale-out.md), redundáns magas rendelkezésre ÁLLÁSÚ. zóna|
-|Biztonsági másolatok|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap) *|
+|Biztonsági másolatok|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)|
 |A memóriában|–|Támogatott|
 |||
-
-\* Az előzetes időszakban a biztonsági mentések megőrzési időtartam nem konfigurálható, és 7 nap rögzített.
 
 > [!IMPORTANT]
 > Ha a számítási kapacitás kevesebb mint 1 virtuális magra van szüksége, használja a DTU-alapú vásárlási modell.
@@ -67,7 +65,7 @@ Az adatbázis biztonsági másolatait lefoglalta a pont támogatja az SQL Databa
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 
-A Virtuálismag-alapú vásárlási modellt (előzetes verzió), az exchange is a kedvezményes díjszabást kínál az SQL Database-adatbázishoz a meglévő licenceit a [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Az Azure-értékelemek lehetővé teszi, hogy a helyszíni SQL Server-licenceivel akár 30 %-os mentése az Azure SQL Database használatával a helyszíni SQL Server-licenceit frissítési garanciával rendelkező.
+A Virtuálismag-alapú vásárlási modell, az exchange is kedvezményes díjszabást kínál az SQL Database-adatbázishoz a meglévő licenceit a [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Az Azure-értékelemek lehetővé teszi, hogy a helyszíni SQL Server-licenceivel akár 30 %-os mentése az Azure SQL Database használatával a helyszíni SQL Server-licenceit frissítési garanciával rendelkező.
 
 ![díjszabás](./media/sql-database-service-tiers/pricing.png)
 

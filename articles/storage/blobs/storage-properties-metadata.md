@@ -1,6 +1,6 @@
 ---
-title: Az objektum tulajdonságai és az Azure Storage metaadatok beolvasása és beállítása |} Microsoft Docs
-description: Egyéni metaadat tárolásához az Azure Storage-objektumokhoz, és állítsa be, és Rendszertulajdonságok lekéréséhez.
+title: Objektum tulajdonságai és az Azure Storage-metaadatok beállítása és lekérése |} A Microsoft Docs
+description: Egyéni metaadatok Store az Azure Storage, az objektumokon, majd állítsa be, és Rendszertulajdonságok lekéréséhez.
 services: storage
 documentationcenter: ''
 author: tamram
@@ -12,37 +12,37 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 07/16/2018
 ms.author: tamram
-ms.openlocfilehash: a3eb598b2dabd4986c72b8814926eb0944707050
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2c95139d42f42e43e2fa6e587d5b1b13afdf1e9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873029"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112443"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Tulajdonságok és metaadatok beállítása és lekérése
 
-Az objektumok Azure Storage támogatási rendszer tulajdonságok felhasználó által definiált metaadatok, hogy milyen adatokat tartalmaznak mellett. Ez a cikk ismerteti, amelyek kezelése rendszer tulajdonságai és a felhasználó által definiált metaadatok a [Azure Storage ügyféloldali kódtára a .NET](https://www.nuget.org/packages/WindowsAzure.Storage/).
+Azure Storage támogatási Rendszertulajdonságok és a felhasználó által definiált metaadatok mellett az adatokat tartalmazó objektumot. Ez a cikk ismerteti a kezelését Rendszertulajdonságok és a felhasználó által definiált metaadatok a [Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/).
 
-* **A Rendszertulajdonságok**: Rendszertulajdonságok egyes tárolási erőforrások léteznek. Némelyikük olvasása vagy beállítása, míg mások csak olvasható. A színfalak néhány Rendszertulajdonságok megfelelnek bizonyos szabványos HTTP-fejlécek. Az Azure storage ügyféloldali kódtár megőrzi ezeket Önnek.
+* **A Rendszertulajdonságok**: rendszer tulajdonságai az egyes tárolási erőforrás létezik. Némelyike olvasása vagy beállítása, míg mások csak olvasható. A háttérben néhány Rendszertulajdonságok bizonyos szabványos HTTP-fejlécek felelnek meg. Az Azure Storage ügyfélkódtáraival ezeket a tulajdonságokat fenntartani az Ön számára.
 
-* **Felhasználó által definiált metaadatok**: felhasználói metaadatai metaadatokat, amelyek egy adott erőforráshoz név-érték pár formájában ad meg. Metaadatok segítségével tárolja a tároló egyik erőforrásához további értékeket. Ezek további metaadatokat az értékek csak a saját célokra, és nincsenek hatással az erőforrás működését.
+* **Felhasználó által definiált metaadatok**: egy vagy több név-érték párok, amely egy Azure Storage-erőforrást a megadott felhasználó által definiált metaadatok áll. Metaadatok segítségével tárolja az erőforrás további értékeket. Metaadatértékeket csak a saját célokat szolgálnak, és nincsenek hatással az erőforrások működését.
 
-A tároló egyik erőforrásához tulajdonság és metaadatok értékeinek beolvasásakor két lépésből áll. Olvasása előtt hasznos lehet ezeket az értékeket, akkor kell explicit módon fetch őket meghívásával a **FetchAttributesAsync** metódust.
+Tulajdonság és a metaadatok értékek tárolási erőforrás beolvasásakor két lépésből áll. Mielőtt el tudja olvasni ezeket az értékeket, meg kell explicit módon beolvassa őket meghívásával a **FetchAttributes** vagy **FetchAttributesAsync** metódust. Kivételt jelent, ha a hívás a **Exists** vagy **ExistsAsync** erőforrás metódust. Ha felhívja a következők egyikét, az Azure Storage meghívja a megfelelő **FetchAttributes** valójában metódus hívása részeként a **Exists** metódus.
 
 > [!IMPORTANT]
-> A tároló egyik erőforrásához tulajdonság és a metaadat értéke nincs feltöltve, kivéve, ha meghívja a egyikét a **FetchAttributesAsync** módszerek.
+> Ha azt tapasztalja, hogy vlastnost nebo metaadatok értékek tárolási erőforrás nem lett feltöltve, ellenőrizze, hogy a kód meghívja a **FetchAttributes** vagy **FetchAttributesAsync** metódust.
 >
-> Kapni fog egy `400 Bad Request` , ha a név/érték párok nem ASCII-karaktereket tartalmaznak. Metaadatok név/érték párok érvényes HTTP-fejlécek, és ezért meg kell felelnie minden HTTP-fejlécek vonatkozó korlátozások. Ezért ajánlott URL-kódolást vagy a Base64 kódolás neveit és értékeit tartalmazó, nem ASCII-karaktereket használja.
+> Metaadatok név/érték párok csak ASCII-karaktereket tartalmazhat. Metaadatok név/érték párok érvényes HTTP-fejléceket, és ezért meg kell felelnie a HTTP-fejlécek vonatkozó összes korlátozás. URL-Címének kódolása vagy a Base64 kódolás neveket és értékeket tartalmazó-ASCII karakterek használata ajánlott.
 >
 
-## <a name="setting-and-retrieving-properties"></a>És tulajdonságainak beolvasása
-Tulajdonságértékei olvashatók, hívja meg a **FetchAttributesAsync** módszer a blob vagy a tároló a tulajdonságok, olvassa el az értékeket.
+## <a name="setting-and-retrieving-properties"></a>Beállítási és lekérési tulajdonságai
+Tulajdonságértékek lekéréséhez hívja meg a **FetchAttributesAsync** metódust a blob vagy a tároló feltöltéséhez a tulajdonságait, majd olvassa el az értékeket.
 
-Az objektum tulajdonságainak beállításához adja meg a tulajdonság értékét, majd hívja a **SetProperties metódus** metódust.
+Állítsa be az objektum tulajdonságait, adja meg a tulajdonság értékét, majd hívja a **SetProperties metódus** metódust.
 
-Az alábbi példakód létrehoz egy tárolót, majd a konzolablakban a tulajdonságértékek némelyike ír.
+Az alábbi példakód létrehoz egy tárolót, majd kiírja a tulajdonságértékek némelyike a konzolablakban.
 
 ```csharp
 //Parse the connection string for the storage account.
@@ -67,14 +67,14 @@ Console.WriteLine();
 ```
 
 ## <a name="setting-and-retrieving-metadata"></a>És metaadatok beolvasása
-Egy vagy több név-érték párként blob vagy tároló erőforrásra vonatkozó metaadatok is megadhat. Metaadatok beállításához vegye fel a név-érték párok a **metaadatok** az erőforrás-, gyűjtemény, majd hívja a **SetMetadata** metódus értékek mentéséhez a szolgáltatást.
+Megadhatja egy vagy több név-érték párok blobon vagy tárolón erőforrásra vonatkozó metaadatok. Metaadatok, adja hozzá a név-érték párokat a **metaadatok** gyűjtemény az erőforráson, majd hívja meg a **SetMetadata** vagy **SetMetadataAsync** mentse az értékeket a metódust a a szolgáltatás.
 
 > [!NOTE]
-> A metaadatok nevét meg kell felelnie a C# azonosítók elnevezési szabályai.
+> A metaadatok nevét meg kell felelnie az elnevezési konvencióinak C#-azonosítók.
 >
 >
 
-Az alábbi példakód egy tároló metaadatainak beállítása. Egy érték van beállítva, a gyűjtemény használata **Hozzáadás** metódust. A többi beállítás értéke implicit kulcs/érték-szintaxis használatával. Egyaránt érvényesek.
+Az alábbi példakód metaadatokat tároló beállítása. Egy érték van beállítva, a gyűjtemény használatával **Hozzáadás** metódust. A többi beállítás értéke implicit kulcs/érték-szintaxis használatával. Egyaránt érvényesek.
 
 ```csharp
 public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
@@ -88,7 +88,7 @@ public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 }
 ```
 
-Metaadatok lekérése céljából hívható meg a **FetchAttributes** módszer a blob vagy a tároló feltöltése a **metaadatok** gyűjtemény, majd olvassa el az értékeket az alábbi példában látható módon.
+Metaadatok lekérése céljából, hívja a **FetchAttributes** vagy **FetchAttributesAsync** metódust a blob vagy a tároló feltöltéséhez a **metaadatok** gyűjteményt, majd olvassa el a értékek, az alábbi példában látható módon.
 
 ```csharp
 public static async Task ListContainerMetadataAsync(CloudBlobContainer container)
@@ -106,6 +106,6 @@ public static async Task ListContainerMetadataAsync(CloudBlobContainer container
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Storage ügyféloldali kódtára a .NET-referencia](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
 * [Az Azure Storage ügyféloldali kódtára a .NET NuGet-csomag](https://www.nuget.org/packages/WindowsAzure.Storage/)

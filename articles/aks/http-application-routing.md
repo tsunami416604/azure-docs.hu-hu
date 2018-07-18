@@ -1,6 +1,6 @@
 ---
-title: A HTTP Application útválasztási bővítmény Azure tároló szolgáltatás (AKS)
-description: Használja a HTTP-kérelem útválasztási bővítmény Azure tároló szolgáltatás (AKS)
+title: HTTP útválasztási bővítmény az Azure Kubernetes Service (AKS)
+description: A HTTP-alkalmazás útválasztási bővítmények használatát az Azure Kubernetes Service (AKS).
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -8,45 +8,64 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 6e5a81742b4a6b21e5cfa28d8e772430f8ae30ba
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4484031b20e625f81ba8b3869110e90df189323e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117426"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
-A HTTP-kérelem útválasztási megoldás megkönnyíti a AKS fürt központilag telepített alkalmazásokat. Ha engedélyezve van, a megoldás az érkező vezérlőhöz konfigurálja a AKS fürt. Emellett alkalmazások vannak telepítve, mint a megoldás is hoz alkalmazási végpontokat a nyilvánosan elérhető DNS-neveit.
+A HTTP-kérelem útválasztási megoldás megkönnyíti az Azure Kubernetes Service (AKS) fürtön üzembe helyezett alkalmazások eléréséhez. A megoldás engedélyezésekor a Bejövőforgalom-vezérlőt az AKS-fürt azt konfigurálja. Alkalmazások vannak telepítve, mint a megoldás létrehoz végpontjainak nyilvánosan elérhető DNS-neveit is.
 
-Az előfizetés engedélyezése a bővítmény hoz létre egy DNS-zónát. További információ a DNS költség: [DNS árképzési][dns-pricing].
+Ha a bővítmény engedélyezve van, az előfizetésben hoz létre egy DNS-zónát. További információ a DNS-költség: [DNS díjszabási][dns-pricing].
 
-## <a name="http-routing-solution-overview"></a>HTTP-útválasztási megoldási áttekintés
+## <a name="http-routing-solution-overview"></a>HTTP-útválasztási megoldás áttekintése
 
-A bővítmény két összetevőket telepít egy [Kubernetes érkező vezérlő] [ ingress] és egy [külső-DNS] [ external-dns] vezérlő.
+A bővítmény üzembe helyezi a két összetevőt: egy [Kubernetes Bejövőforgalom-vezérlőjéhez] [ ingress] és a egy [külső DNS-] [ external-dns] vezérlő.
 
-- **Érkező vezérlő** – a bejövő adatok vezérlő terheléselosztó típusú Kubernetes szolgáltatás használatával az interneten van kitéve. A bejövő adatok vezérlő figyeli, és megvalósítja az [Kubernetes érkező erőforrások][ingress-resource], alkalmazási végpontokat útvonalakat hoz létre, amely.
-- **Külső-DNS vezérlő** - Kubernetes érkező erőforrások figyeli, és létrehozza a DNS A rekordokat a fürt-specifikus DNS-zónában.
+- **Bejövőforgalom-vezérlőjéhez**: A Bejövőforgalom-vezérlőjéhez típusú terheléselosztó Kubernetes szolgáltatás használatával közvetlenül csatlakozik az internethez. A Bejövőforgalom-vezérlőjéhez figyeli, és implementálja [Kubernetes bejövő erőforrások][ingress-resource], alkalmazás-végpontokra irányuló útvonalakat hoz létre, amely.
+- **Külső DNS-vezérlő**: Kubernetes bejövő erőforrások figyeli, és létrehozza a DNS A rekordokat a fürtre jellemző DNS-zónában.
 
-## <a name="deploy-http-routing"></a>HTTP-útválasztás telepítése
+## <a name="deploy-http-routing-cli"></a>Üzembe helyezése a HTTP-útválasztás: parancssori felület
 
-A HTTP-kérelem útválasztási bővítményt az Azure portálon keresztül engedélyezhető, ha AKS fürt telepítése.
+A HTTP-kérelem útválasztási bővítmény engedélyezhető az Azure CLI-vel egy AKS-fürt üzembe helyezésekor. Ehhez használja a [az aks létrehozása] [ az-aks-create] parancsot a `--enable-addons` argumentum.
 
-![A HTTP-útválasztási funkció engedélyezése](media/http-routing/create.png)
+```azurecli
+az aks create --resource-group myAKSCluster --name myAKSCluster --enable-addons http_application_routing
+```
 
-Miután a fürt van telepítve, keresse meg az automatikusan létrehozott AKS erőforráscsoportot, és válassza ki a DNS-zónát. Jegyezze fel a DNS-zóna nevét. Ez a név van szükség, ha a AKS fürt-alkalmazások telepítése.
+Miután a fürt üzembe lesz helyezve, a [az aks show] [ az-aks-show] parancs használatával kérje le a DNS-zóna nevét. Ez a név szükséges alkalmazások üzembe helyezésére az AKS-fürtöt.
+
+```azurecli
+$ az aks show --resource-group myAKSCluster --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
+
+Result
+-----------------------------------------------------
+9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+```
+
+## <a name="deploy-http-routing-portal"></a>Üzembe helyezése a HTTP-útválasztás: Portal
+
+A HTTP-kérelem útválasztási bővítmény engedélyezhető az Azure Portalon keresztül, egy AKS-fürt üzembe helyezésekor.
+
+![A HTTP-útválasztási szolgáltatás engedélyezése](media/http-routing/create.png)
+
+Miután a fürt üzembe lesz helyezve, az automatikusan létrehozott AKS erőforráscsoport keresse meg, és válassza ki a DNS-zóna. Jegyezze fel a DNS-zóna nevét. Ez a név szükséges alkalmazások üzembe helyezésére az AKS-fürtöt.
 
 ![A DNS-zóna neve beolvasása](media/http-routing/dns.png)
 
 ## <a name="use-http-routing"></a>Használja a HTTP-Útválasztás
 
-A HTTP-alkalmazások útválasztási megoldás lehet, hogy csak az alábbiak szerint vannak feliratozva érkező erőforrásokat is kiváltódik:
+A HTTP útválasztási megoldást csak indítható el, amely a következőképpen vannak feliratozva bejövő erőforrásokon:
 
 ```
 annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Hozzon létre egy fájlt `samples-http-application-routing.yaml` és a következő YAM másolja. Sor 43, frissítése `<CLUSTER_SPECIFIC_DNS_ZONE>` DNS-zóna nevének gyűjtése a jelen dokumentum az előző lépésben.
+Hozzon létre egy fájlt **minták – http-kérelem-routing.yaml** másolja be a következő yaml-kódot. 43. sorban, frissítse `<CLUSTER_SPECIFIC_DNS_ZONE>` Ez a cikk az előző lépésben gyűjtött és a DNS-zóna nevét.
 
 
 ```yaml
@@ -98,7 +117,7 @@ spec:
         path: /
 ```
 
-Használja a [kubectl alkalmazása] [ kubectl-apply] parancsot az erőforrások létrehozásához.
+Használja a [a kubectl a alkalmazni] [ kubectl-apply] parancsot az erőforrások létrehozásához.
 
 ```
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -108,7 +127,7 @@ service "party-clippy" created
 ingress "party-clippy" created
 ```
 
-Keresse meg a gazdagép szakaszában megadott állomásnév cURL vagy egy böngésző segítségével a `samples-http-application-routing.yaml` fájlt. Az alkalmazás ahhoz, hogy az interneten keresztül elérhető legfeljebb egy percet is igénybe vehet.
+A cURL vagy a böngésző használatával navigáljon az állomásnév-minták – http-kérelem-routing.yaml fájl gazdagép szakaszában megadott. Az alkalmazás előtt az interneten keresztül elérhető legfeljebb egy percig is eltarthat.
 
 ```
 $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
@@ -131,9 +150,9 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshoot"></a>Hibaelhárítás
 
-Használja a [kubectl naplók] [ kubectl-logs] parancs használatával megtekintheti a külső-DNS-alkalmazás az alkalmazás naplóiban. A naplók kell győződjön meg arról, hogy az A és a TXT DNS rekord létrehozása sikeresen befejeződött.
+Használja a [kubectl naplók] [ kubectl-logs] paranccsal tekintheti meg az alkalmazásnaplókat a külső DNS-alkalmazáshoz. A naplók kell győződjön meg arról, hogy az A és a txt típusú DNS-rekord sikeresen létrejöttek-e.
 
 ```
 $ kubectl logs -f deploy/addon-http-application-routing-external-dns -n kube-system
@@ -142,11 +161,11 @@ time="2018-04-26T20:36:19Z" level=info msg="Updating A record named 'party-clipp
 time="2018-04-26T20:36:21Z" level=info msg="Updating TXT record named 'party-clippy' to '"heritage=external-dns,external-dns/owner=default"' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
 ```
 
-Ezeket a rekordokat a DNS-zóna erőforrás az Azure portálon is láthatóak.
+Ezeket a rekordokat a DNS-zóna erőforrásai az Azure Portalon is láthatók.
 
 ![A DNS-rekordok beolvasása](media/http-routing/clippy.png)
 
-Használja a [kubectl naplók] [ kubectl-logs] parancsot az alkalmazás naplóiban megtekintéséhez az Nginx érkező tartományvezérlő. A naplók kell erősítse meg, egy érkező erőforrás létrehozása és a vezérlő betöltésére. Az összes HTTP-tevékenység lesz naplózva.
+Használja a [kubectl naplók] [ kubectl-logs] parancsot az alkalmazásnaplókat az Nginx Bejövőforgalom-vezérlőjéhez tartozó megtekintéséhez. Ellenőrizze a naplókat a `CREATE` egy bejövő erőforrás és a vezérlő a töltse be újra. Az összes HTTP-tevékenységet a rendszer naplózza.
 
 ```
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
@@ -185,9 +204,9 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-party-clippy-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="cleanup"></a>Felesleges tartalmak törlése
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Távolítsa el az ebben a lépésben létrehozott társított Kubernetes objektumokat.
+Távolítsa el a jelen cikkben létrehozott kapcsolódó Kubernetes-objektumokat.
 
 ```
 $ kubectl delete -f samples-http-application-routing.yaml
@@ -199,10 +218,13 @@ ingress "party-clippy" deleted
 
 ## <a name="next-steps"></a>További lépések
 
-Egy HTTPS telepítéséről védett AKS érkező tartományvezérlőre, lásd: [HTTPS érkező Azure tároló szolgáltatás (AKS)][ingress-https]
+Az aks-ben egy biztonságos HTTPS Bejövőforgalom-vezérlőjéhez telepítésével kapcsolatos információkért lásd: [HTTPS bejövő forgalom az Azure Kubernetes Service (AKS)][ingress-https].
 
 <!-- LINKS - internal -->
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress.md
+
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/

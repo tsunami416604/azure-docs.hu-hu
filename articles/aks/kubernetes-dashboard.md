@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e197a251df3f34e5416bafacfd54a3fc7f51d503
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928216"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091138"
 ---
 # <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Hozzáférés a Kubernetes-irányítópultot az Azure Kubernetes Service (AKS)
 
@@ -38,41 +38,18 @@ Ez a parancs létrehoz egy proxy között a fejlesztői rendszerhez, és a Kuber
 
 ### <a name="for-rbac-enabled-clusters"></a>A fürtök RBAC-kompatibilis
 
-Ha az AKS-fürtöt használ, az RBAC- *ClusterRoleBinding* léteznie kell az irányítópult eléréséhez. Egy szerepkör-kötés nélkül az Azure CLI hibát ad vissza a következő példához hasonló:
+Ha az AKS-fürtöt használ, az RBAC- *ClusterRoleBinding* megfelelően az irányítópult elérése előtt kell létrehozni. A kötés létrehozásához használja a [kubectl létrehozása clusterrolebinding] [ kubectl-create-clusterrolebinding] parancsot az alábbi példában látható módon. 
 
-```
-error: unable to forward port because pod is not running. Current status=Pending
-```
+> [!WARNING]
+> Ez a minta kötés nem vonatkozik minden további hitelesítés összetevői, és nem biztonságos használat vezethet. A Kubernetes-irányítópult meg nyitva, bárki hozzáférhet az URL-cím hozzáférést. Nem teszik elérhetővé a Kubernetes-irányítópult nyilvánosan.
+>
+> Használhatja a mechanizmusokkal, mint például a tulajdonosi jogkivonatokat vagy férhet hozzá az irányítópultot, és mi felhasználónév/jelszó engedélyekkel rendelkeznek. Ez lehetővé teszi az irányítópult biztonságosabb használatát. A különböző hitelesítési módszerekkel további információkért tekintse meg a Kubernetes-irányítópult wiki [hozzáférés-vezérlés][dashboard-authentication].
 
-Hozzon létre egy kötést, hozzon létre egy fájlt *irányítópult-admin.yaml* , és illessze be a következő mintát. Ez a minta kötés nem vonatkozik minden további hitelesítés összetevői. Használhatja a mechanizmusokkal, mint például a tulajdonosi jogkivonatokat vagy férhet hozzá az irányítópultot, és mi felhasználónév/jelszó engedélyekkel rendelkeznek. Hitelesítési módszerekkel kapcsolatos további információkért tekintse meg a Kubernetes-irányítópult wiki [hozzáférés-vezérlés][dashboard-authentication].
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: kubernetes-dashboard
-  labels:
-    k8s-app: kubernetes-dashboard
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: kubernetes-dashboard
-  namespace: kube-system
-```
-
-A kötés a alkalmazni [a kubectl a alkalmazni] [ kubectl-apply] , és adja meg a *irányítópult-admin.yaml*, az alábbi példában látható módon:
-
-```
-$ kubectl apply -f dashboard-admin.yaml
-
-clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+```console
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 ```
 
 Most már elérheti a Kubernetes-irányítópultot az RBAC-t fürtben. A Kubernetes-irányítópult indításához használja a [az aks browse] [ az-aks-browse] parancsot az előző lépésben leírt módon.
-
 
 ## <a name="run-an-application"></a>Alkalmazás futtatása
 
@@ -120,6 +97,7 @@ A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse 
 <!-- LINKS - external -->
 [kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
+[kubectl-create-clusterrolebinding]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-clusterrolebinding-em-
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->

@@ -8,14 +8,14 @@ manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/17/2018
 ms.author: wolfma
-ms.openlocfilehash: 71a5edfbe388f2d4bfb48255b901cb0037665252
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 50a8c183bd7f2711847ce6d0acade4cb498ef2fc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069430"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116095"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -42,12 +42,22 @@ ms.locfileid: "39069430"
 
 * Elismerés események: NoMatch eseménytípus hibaesemény van egyesítve.
 * C# nyelven SpeechOutputFormat OutputFormat, hogy a c++ igazított új neve.
+* A visszatérési típus az egyes módszerek a `AudioInputStream` felület kis mértékben módosítani:
+   * A Java a `read` metódus most visszatért `long` helyett `int`.
+   * A C# a `Read` metódus most visszatért `uint` helyett `int`.
+   * A C++ a `Read` és `GetFormat` most visszatérési módszerek `size_t` helyett `int`.
+* C++: audio bemeneti streamekhez példányai most már csak argumentumként átadhatók egy `shared_ptr`.
 
 **Hibajavítások**
 
 * Rögzített helytelen visszatérési értékek eredményben amikor `RecognizeAsync()` túllépi az időkorlátot.
 * A Windows media foundation kódtárak függőség eltávolítása. Az SDK alapvető hang API-kat használ.
 * Dokumentációs javítás: hozzáadott egy régió oldal írja le, melyek a támogatott régiók.
+
+**Ismert problémák**
+
+* A beszédfelismerés SDK for Android nem készít jelentést speech összefoglaló eredmények a fordítás.
+  Ez a következő kiadás javítja.
 
 ## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Cognitive Services beszédfelismerő SDK 0.4.0: 2018 június kiadás
 

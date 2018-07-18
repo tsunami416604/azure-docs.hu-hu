@@ -1,125 +1,125 @@
 ---
-title: Az Azure SQL adatbázis memórián belüli technológiák |} Microsoft Docs
-description: Az Azure SQL adatbázis memórián belüli technológiák jelentősen javítja a tranzakciós teljesítményét és elemzés munkaterhelések.
+title: Az Azure SQL Database In-Memory technologies |} A Microsoft Docs
+description: Az Azure SQL Database In-Memory technologies jelentősen javíthatja a tranzakciós teljesítményét és elemzési számítási feladatok.
 services: sql-database
 author: jodebrui
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 07/16/2018
 ms.author: jodebrui
-ms.openlocfilehash: a21ce5c9cbf5517733a6b491124e51b163f6c2b9
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: f4e056e9f8461085df6ae447672e2c9ec91aa3ca
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309299"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092403"
 ---
-# <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>A memórián belüli technológiái az SQL-adatbázis teljesítményének optimalizálása
+# <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Teljesítmény optimalizálása, memóriabeli technológiákat az SQL Database használatával
 
-A memórián belüli technológiái az Azure SQL Database, a különböző munkaterhelések teljesítménynövekedést érhet el: tranzakciós (online tranzakciós feldolgozási (OLTP)), elemzés (online analitikus feldolgozási (OLAP)), és a vegyes (hibrid tranzakció / analitikus feldolgozási (HTAP)). Hatékonyabb lekérdezés és a tranzakció-feldolgozást memórián belüli technológiák is segítséget költségeinek csökkentése. Általában nem kell teljesítménynövekedéshez eléréséhez az adatbázis árképzési szintjének frissítése. Néhány esetben is előfordulhat közben továbbra sem szűnik meg a memórián belüli szolgáltatáshoz. a teljesítménnyel kapcsolatos fejlesztések az árképzési szint csökkentése.
+Memóriabeli technológiákat az Azure SQL Database használatával érheti el a különböző számítási feladatokat a teljesítménnyel kapcsolatos fejlesztések: (online tranzakciós tranzakciófeldolgozás (OLTP)), elemzés (online analitikus feldolgozási (OLAP)), és a vegyes (hibrid tranzakció / analitikus feldolgozás (HTAP)). Hatékonyabb lekérdezési és tranzakciós feldolgozást memóriabeli technológiákat is segítenek költségek csökkentése érdekében. Általában nem kell a teljesítménynövekedést érhet el az adatbázis tarifacsomagjának frissítése. Bizonyos esetekben is lehet csökkenteni a a tarifacsomagot, miközben továbbra is megjelenik a teljesítménnyel kapcsolatos fejlesztések a memóriabeli technológiák.
 
-Az alábbiakban a két példa hogyan segített a memórián belüli online Tranzakciófeldolgozási jelentősen fejleszti a teljesítményt:
+Az alábbiakban két példát, hogyan segített a In-Memory OLTP jelentősen javíthatja a teljesítményt:
 
-- A memórián belüli online Tranzakciófeldolgozási, [kvórum üzleti megoldások tudta 70 %-kal dtu-k fokozása mellett az alkalmazások és szolgáltatások duplán](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
-    - DTU azt jelenti, hogy *adatbázis tranzakciós egység*, és az erőforrás-felhasználás mérték tartalmazza.
-- A következő videó bemutatja az erőforrás-felhasználást egy példa munkaterhelés jelentős fejlesztéseket: [memórián belüli online Tranzakciófeldolgozási az Azure SQL adatbázis Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
-    - További információkért lásd a következő blogbejegyzésben: [memórián belüli online Tranzakciófeldolgozási az Azure SQL adatbázis Blog utáni](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+- Az In-Memory OLTP, [kvórum üzleti megoldások, miközben nő a dtu-k 70 %-kal munkaterhelési duplán képes volt](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+    - Azt jelenti, hogy a dtu-k *adatbázis-tranzakciós egységek*, és a egy erőforrás-használat mértéke tartalmazza.
+- A következő videó bemutatja a jelentős fejlesztéseket tartalmaz az erőforrás-használat az egy mintául szolgáló számítási feladatok: [In-Memory OLTP az Azure SQL Database Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
+    - További információkért tekintse meg a következő blogbejegyzésben:: [az Azure SQL Database ebben a blogbejegyzésben In-Memory OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-A memóriában technológiák minden adatbázisa prémium tarifacsomagra, beleértve az adatbázisok prémium rugalmas készletek érhetők el.
+A prémium szintű, beleértve az prémium szintű rugalmas készletek minden adatbázis, memóriabeli technológiákat érhetők el.
 
-A következő videó ismerteti a lehetséges teljesítménynövekedést érhet el, a memórián belüli szolgáltatáshoz. az Azure SQL-adatbázis. Ne feledje, hogy jobb a teljesítménye, hogy mindig számos tényezőtől függ, többek között a munkaterhelés és adatok, az adatbázis minták, és így tovább.
+Az alábbi videó az Azure SQL Database-ben a memóriabeli technológiák lehetséges teljesítménynövekedést ismerteti. Ne feledje, hogy az mindig látható teljesítményt nyereség függ, hogy sok tényező befolyásolja, többek között a számítási feladatok és az adatokat, az adatbázis-hozzáférési minta jellegét, és így tovább.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-In-Memory-Technologies/player]
 >
 >
 
-Az Azure SQL-adatbázis a következő memórián belüli technológiákat rendelkezik:
+Az Azure SQL Database In-Memory technologies alábbi rendelkezik:
 
-- *A memórián belüli online Tranzakciófeldolgozási* tranzakció nő, és csökkenti a késést tranzakció feldolgozásra. A memórián belüli online Tranzakciófeldolgozási előnyeit kihasználó forgatókönyvek a következők: nagy átviteli tranzakció, például kereskedelmi és játékokban, adatfeldolgozást események vagy az IoT-eszközök, gyorsítótárazás, az adatok betöltését, és az ideiglenes tábla és a tábla változó forgatókönyvek feldolgozása.
-- *Fürtözött oszlopcentrikus indexek* csökkenti a tárolási erőforrásigényét (legfeljebb 10-szer) és a jelentéskészítési és elemzési lekérdezések teljesítményének javítása. Segítségével azt a ténytáblák az adatpiac jelenti az igényei több adatot az adatbázishoz, és javíthatja a teljesítményt. Is segítségével, és az előzmények az operatív adatbázis archivált, és akár 10-szer több adat lekérdezése.
-- *Nem fürtözött oszloptárindex* HTAP segítséget kaphat a valós idejű az operatív adatbázis közvetlen lekérdezése, olcsóbbá kivonatot futtatásának szükségessége nélkül a vállalatra vonatkozó átalakító, és (ETL) folyamat betölteni, és várja meg a az adatraktár kell feltöltenie. Nem fürtözött oszloptárindex OLTP adatbázis nagyon gyorsan elemzési lekérdezések végrehajtása közben csökkenti a működési munkaterhelés gyakorolt hatás engedélyezése.
-- A oszlopcentrikus indexszel rendelkező memóriaoptimalizált táblák kombinációja is lehet. Ez a kombináció lehetővé teszi a rendkívül gyors tranzakció-feldolgozást, és a *egyidejűleg* elemzési lekérdezések nagyon gyorsan futtatnak ugyanazokat az adatokat.
+- *Memóriabeli OLTP* tranzakció növeli és csökkenti a késést, tranzakció-feldolgozás. Memóriabeli OLTP előnyeit kihasználó forgatókönyvek: nagy átviteli sebességű tranzakció-feldolgozási, például a kereskedelmi és a játékok, adatbetöltést események vagy IoT-eszközök, gyorsítótárazás, az adatok betöltése, és az ideiglenes tábla és a tábla változó forgatókönyvek.
+- *Fürtözött oszlopcentrikus indexek* csökkentheti a storage erőforrás-igényű (legfeljebb 10 alkalommal), és javíthatja a teljesítményt, jelentéskészítési és elemzési lekérdezések. Használhatja azt a ténytáblák adatközpontjait a további adatok elfér az adatbázis és a teljesítmény javítása. Is használhatja azt az előzményadatok az operatív adatbázis archiválása, és a legfeljebb 10-szer több adat lekérdezésére.
+- *Nem fürtözött oszlopcentrikus indexek* a HTAP segítséget nyújtanak a valós idejű betekintést az üzleti keresztül az operatív adatbázis közvetlen lekérdezése nélkül kell futtatni a költséges kinyerési, átalakítási, és load (ETL) folyamat, és várjon, amíg a adatraktár kell feltöltenie. Fürtözetlen oszlopcentrikus indexek az OLTP adatbázis csökkenti a működési munkaterhelés gyakorolt elemzési lekérdezések nagyon gyors végrehajtásának engedélyezése.
+- Oszlopcentrikus indexszel rendelkező memóriaoptimalizált tábla kombinációját is rendelkezhet. Ez a kombináció lehetővé teszi, hogy nagyon gyors tranzakció-feldolgozás, és a *egyidejűleg* elemzési lekérdezések futtatása nagyon gyorsan ugyanazokat az adatokat.
 
-Oszlopcentrikus indexek és a memórián belüli online Tranzakciófeldolgozási óta SQL Server termékhez 2012 és a 2014, illetve. Az Azure SQL Database és SQL Server megosztani a memórián belüli technológiák azonos végrehajtására. Következő lépésként ezek a technológiák új lehetőségek kiadott az Azure SQL Database először előtt a SQL Server.
+Oszlopcentrikus indexek és az In-Memory OLTP óta része az SQL Server-termék 2012 és a 2014-es, illetve. Az Azure SQL Database és az SQL Server megosztani, memóriabeli technológiákat azonos megvalósítását. Továbbítja, ezek a technológiák az új képességek jelennek meg az Azure SQL Database először előtt a az SQL Server.
 
-Ez a cikk memórián belüli online Tranzakciófeldolgozási és oszlopcentrikus indexek, az Azure SQL Database vonatkozó szempontokat ismerteti, és minták is tartalmazza:
-- A tárolási és adatok méretkorlátait látni fogja, ezek a technológiák hatását.
-- Láthatja, hogy ezek a technológiák között a különböző árképzési szinteket használó adatbázisok mozgása kezelése.
-- Látni fogja, hogy bemutassa a memórián belüli online Tranzakciófeldolgozási, valamint az Azure SQL Database oszlopcentrikus indexek használata két minta.
+Ez a cikk írja le In-Memory OLTP és oszloptár-indexek konkrétan az Azure SQL Database aspektusait, és mintát is tartalmazza:
+- Ezek a technológiák hatását a tárolás és adatok méretkorlátozások megjelenik.
+- Látni fogja, hogyan kezelheti a ezeknek a technológiáknak a különböző árképzési szintek közötti használó adatbázisok áthelyezését.
+- Látni fogja a két minta, amelyek In-Memory OLTP, valamint az oszlopcentrikus indexek az Azure SQL Database használatát mutatják be.
 
 További információ a következő forrásanyagokban talál.
 
-A technológiákkal kapcsolatos részletesebb információk:
+A technológiák részletes információit:
 
-- [Memórián belüli online Tranzakciófeldolgozási áttekintése és a használati forgatókönyvek](https://msdn.microsoft.com/library/mt774593.aspx) (tartalmazza a felhasználói esettanulmányok és információk első lépések)
-- [A memórián belüli online Tranzakciófeldolgozási dokumentációja](http://msdn.microsoft.com/library/dn133186.aspx)
-- [Oszlopcentrikus indexek útmutató](https://msdn.microsoft.com/library/gg492088.aspx)
-- Hibrid tranzakciós/analitikus feldolgozási (HTAP), más néven [valós idejű működési elemzés](https://msdn.microsoft.com/library/dn817827.aspx)
+- [A memóriában tárolt OLTP-k áttekintése és a használati forgatókönyvek](https://msdn.microsoft.com/library/mt774593.aspx) (hivatkozások ügyféleset-tanulmányok és a kezdéshez információkat tartalmazza)
+- [Memóriabeli OLTP dokumentációja](http://msdn.microsoft.com/library/dn133186.aspx)
+- [Oszlopcentrikus indexek áttekintésével](https://msdn.microsoft.com/library/gg492088.aspx)
+- Hibrid tranzakciós/analitikus feldolgozás (HTAP), más néven [valós idejű működési elemzések](https://msdn.microsoft.com/library/dn817827.aspx)
 
-Gyors segítséget nyújthat a memórián belüli online Tranzakciófeldolgozási: [Quick Start 1: memórián belüli online Tranzakciófeldolgozási technológiák gyorsabb a T-SQL teljesítmény](http://msdn.microsoft.com/library/mt694156.aspx) (segítségével egy másik cikkben első lépések)
+Az In-Memory OLTP gyors alapozó: [Quick Start 1: In-Memory OLTP technológiák gyorsabb a T-SQL-teljesítmény](http://msdn.microsoft.com/library/mt694156.aspx) (egy másik cikkben segítséget első lépések)
 
-Részletes videók technológiákkal kapcsolatos:
+A technológiák részletes szolgáltatásról:
 
-- [Memórián belüli online Tranzakciófeldolgozási az Azure SQL Database](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (amely tartalmazza a bemutató jobb teljesítményt nyújt, és ezekkel az eredményekkel saját kezűleg reprodukálásához szükséges lépések)
-- [Memórián belüli online Tranzakciófeldolgozási videók: Mi van, és ha/hogyan a használatára](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
-- [Az Oszloptárindex: A memórián belüli Analytics videók Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Az Azure SQL Database in-Memory OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (amely tartalmaz egy bemutatót a teljesítménybeli előnyei és saját kezűleg ezekkel az eredményekkel reprodukálás lépései)
+- [Memóriabeli OLTP videók: Mi és mikor és hogyan lehet a használatára](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [Az Oszlopcentrikus Index: Memórián belüli Analytics videóit Ignite 2016-ra](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
-## <a name="storage-and-data-size"></a>Tárolás és az adatok mérete
+## <a name="storage-and-data-size"></a>Tárolás és adatok mérete
 
-### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>A memórián belüli online Tranzakciófeldolgozási az adatok méretét és a tárolási cap
+### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Adatok mérete és a tárolási korlátot In-Memory OLTP-hez
 
-A memórián belüli online Tranzakciófeldolgozási memóriaoptimalizált táblákkal, felhasználói adatok tárolásához használt tartalmazza. Ezek a táblázatok memóriában szükségesek. Kezelheti a memória közvetlenül az SQL Database szolgáltatásban, mert a felhasználói adatok egy kvótát fogalmát van. Ezzel az ötlettel nevezzük *memórián belüli online Tranzakciófeldolgozási tárolási*.
+In-Memory OLTP magában foglalja a memóriaoptimalizált táblákhoz, amelyeken a felhasználói adatok tárolására szolgálnak. Ezek a táblák férnek el a memóriában van szükség. Mivel Ön kezeli az SQL Database szolgáltatás közvetlenül a memória, kell, hogy a felhasználói adatok kvóta fogalmát. Ezt az elképzelést nevezzük *In-Memory OLTP storage*.
 
-Minden tarifacsomag és minden rugalmas készlet árképzési szint támogatott önálló adatbázis bizonyos mennyiségű memórián belüli online Tranzakciófeldolgozási tárolási tartalmazza. Lásd: [DTU-alapú erőforrás korlátok - egyetlen adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforrás korlátok - rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[vCore-alapú erőforrás korlátok - önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [vCore-alapú erőforrás korlátok - rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
+Mindegyik tarifacsomag és minden rugalmas készletet tarifacsomag támogatott önálló adatbázis bizonyos mennyiségű In-Memory OLTP-tár tartalmazza. Lásd: [DTU-alapú erőforráskorlátok – önálló adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforráskorlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
-A következő elemek felé a memórián belüli online Tranzakciófeldolgozási tároló maximális száma:
+A következő elemek beleszámítanak az In-Memory OLTP Tárhelykorlát:
 
-- A memóriaoptimalizált táblák és Táblaváltozók adatsorok aktív felhasználónként. Vegye figyelembe, hogy a régi sor verziók száma nem a kap felé.
+- A memóriaoptimalizált táblák és Táblaváltozók adatsor aktív felhasználó. Vegye figyelembe, hogy a régi sor verziók nem számítanak bele a napi korlát felé.
 - A memóriaoptimalizált táblák indexei.
-- Az ALTER TABLE műveletek működési munkaterhelés.
+- Az ALTER TABLE műveletek üzemeltetési terheit.
 
-Elérte a kap, ha ki a kvóta hibaüzenetet kap, és már nem tudunk beszúrásához vagy frissítéséhez adatokat. Ez a hiba elhárítása érdekében, törli az adatokat, vagy növelje az adatbázis vagy a készlet tarifacsomagját.
+Ha eléri a korlátot, ki a kvótát, hibaüzenetet kap, és mostantól nem Ön beszúrása vagy frissítheti az adatokat. Ez a hiba elhárításához, törli az adatokat, vagy növelje az adatbázis vagy készlet tarifacsomagját.
 
-További információk a tárhely kihasználtságát a memórián belüli online Tranzakciófeldolgozási figyelése és a riasztások konfigurálása, ha majdnem elérte a maximális: [figyelő memórián belüli tároló](sql-database-in-memory-oltp-monitoring.md).
+További információk a In-Memory OLTP tárterület kihasználtsága figyelés és riasztások konfigurálása, ha szinte eléri a korlátot: [memóriabeli megfigyelés tárolási](sql-database-in-memory-oltp-monitoring.md).
 
 #### <a name="about-elastic-pools"></a>Tudnivalók a rugalmas készletek
 
-A rugalmas készletek a memórián belüli online Tranzakciófeldolgozási tárolási a készletben lévő összes adatbázisok által megosztott. Ezért a használata egy adatbázis hatással lehet más adatbázisok. Ez a két megoldást a következők:
+A rugalmas készletekkel az In-Memory OLTP storage közösen használja a készletben található összes adatbázishoz. Ezért a használat egy adott adatbázis hatással lehet más adatbázisok. A két megoldások a következők:
 
-- Konfigurálja a `Max-eDTU` vagy `MaxvCore` adatbázisokhoz, amely kisebb, mint egy teljes készlet edtu-ra vagy vCore számát. A maximális caps a memórián belüli online Tranzakciófeldolgozási tárhely kihasználtságát, a készlet méretét, amely megfelel az edtu-k száma bármely adatbázisban.
-- Konfigurálja a `Min-eDTU` vagy `MinvCore` 0-nál nagyobb. Ez a minimum garantálja, hogy a készlet minden egyes adatbázis rendelkezik-e elérhető a memórián belüli online Tranzakciófeldolgozási tárolókapacitást, amely megfelel a konfigurált `Min-eDTU` vagy `vCore`.
+- Konfigurálja a `Max-eDTU` vagy `MaxvCore` adatbázisok, alacsonyabb, mint a teljes készlet edtu-k vagy virtuális mag száma. Ez a maximális érték caps a memórián belüli online Tranzakciófeldolgozási tárterület kihasználtsága, a készlet mérete, amely megfelel az edtu-k száma minden adatbázisban.
+- Konfigurálja a `Min-eDTU` vagy `MinvCore` 0-nál nagyobb. Ez a minimum garantálja, hogy a készletben lévő minden egyes adatbázishoz rendelkezik, amely megfelel a konfigurált elérhető In-Memory OLTP-tárhely `Min-eDTU` vagy `vCore`.
 
-### <a name="data-size-and-storage-for-columnstore-indexes"></a>Adatok mérete és az oszlopcentrikus indexek tároló
+### <a name="data-size-and-storage-for-columnstore-indexes"></a>Adatok mérete és az oszlopcentrikus indexek
 
-Oszlopcentrikus indexek nem szükséges a memóriában. A csak kap az indexek mérete ezért a maximális általános adatbázis méretet, amelyet dokumentációja a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) cikkeket.
+Az Oszlopcentrikus indexek nem férnek el a memóriában szükséges. A csak kap az indexek mérete ezért a maximális általános adatbázis méret, amely ismerteti a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) cikkeket.
 
-Fürtözött oszlopcentrikus indexek használata esetén a oszlopos tömörítési alaptábla tárolására szolgál. Ez a fajta tömörítés jelentősen csökkenti a tárolási kezdjen a felhasználói adatok, ami azt jelenti, hogy több adatot elfér az adatbázisban. A tömörítés további növelni a [oszlopos archiválási tömörítési](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression). Az adatok jellegétől függ érhet el tömörítés mértéke, de 10-szer a tömörítés nem ritka.
+Fürtözött oszlopcentrikus indexek használata esetén a Oszlopalapú tömörítés alaptábla tárolására szolgál. Ez a fajta tömörítés jelentősen csökkentheti a felhasználói adatokat, ami azt jelenti, hogy további adatokat is elférjen az adatbázisban a storage erőforrás-igényű. A tömörítés tovább növelhető az és [Oszlopalapú archiválási tömörítési](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression). Az adatok természetétől függ, amely akkor érhető el, tömörítés mértéke, de 10 alkalommal a tömörítés nem ritka.
 
-Például ha egy adatbázist, mely legfeljebb 1 terabájtnál (TB) és a tömörítést 10-szer oszlopcentrikus indexek használatával érhetők el, is elférjen összesen 10 TB-nyi felhasználói adatokat az adatbázisban.
+Például ha egy adatbázis maximális mérete 1 terabájt (TB) és 10 alkalommal a tömörítés elérése érdekében az oszlopcentrikus indexek, elhelyezhessen összesen 10 TB-os felhasználói adatokat az adatbázisban.
 
-Fürtözetlen oszlopcentrikus indexek használata esetén a következő alaptáblában továbbra is a hagyományos sortárindex formátum tárolódik. Ezért a tárhely-megtakarítást, nagy, mint a fürtözött oszlopcentrikus indexek nem. Azonban ha egy hagyományos fürtözött indexek száma a egyetlen oszlopcentrikus indexszel rendelkező, továbbra is láthatja a tárolási kezdjen a következő táblázatban található az általános megtakarítások.
+Nem fürtözött oszlopcentrikus indexek használata esetén az alaptábla továbbra is a hagyományos sortárindex formátumban tárolódik. Ezért a tárhely-megtakarítás nem, big Data típusú, a fürtözött oszloptár-indexekben. Azonban ha hagyományos fürtözetlen index számos egyetlen oszlopcentrikus indexszel rendelkező, továbbra is megjelenik egy átfogó, akár a storage erőforrás-igényű táblához.
 
-## <a name="moving-databases-that-use-in-memory-technologies-between-pricing-tiers"></a>A memóriában technológiák közötti árképzési szinteket használó adatbázisok áthelyezése
+## <a name="moving-databases-that-use-in-memory-technologies-between-pricing-tiers"></a>Árképzési szintek közötti, memóriabeli technológiákat használó adatbázisok áthelyezése
 
-Nincsenek soha nem azonosított inkompatibilitásokat vagy egyéb problémák történő frissítésekor egy magasabb szintű tarifacsomagban használható, többek között a Premium szabvány. Az elérhető funkciókat és erőforrások csak növelni.
+Nincsenek soha nem inkompatibilitásokat vagy egyéb probléma Amikor frissít egy magasabb díjszabási csomagot, például a standardról prémium szintre. A rendelkezésre álló funkciók és erőforrások csak növelni.
 
-De alacsonyabb verziójúra változtatása az árképzési szint negatív hatással lehet az adatbázis. A hatás különösen kétségtelenül, amikor Ön visszaminősítését prémiumról alapszintű vagy Standard amikor az adatbázis memórián belüli online Tranzakciófeldolgozási objektumokat tartalmaz. A memóriaoptimalizált táblák nem érhetők el az alacsonyabb szintre való visszalépést után (még akkor is, ha akkor is látható maradjon,). Ugyanazok a feltételek vonatkoznak, amikor egy rugalmas készlet árképzési szintjének csökkentése, vagy egy adatbázis áthelyezése a szolgáltatáshoz. A memóriában, alapszintű vagy Standard rugalmas készlet.
+De alacsonyabb verziójúra változtatása a tarifacsomag negatívan befolyásolhatja az adatbázishoz. A hatás akkor nyilvánvaló, különösen akkor, ha, Visszaléptetés a prémium szintű Standard vagy Alapszintűre amikor az adatbázis-In-Memory OLTP objektumokat tartalmazza. Memóriaoptimalizált táblák nem érhetők el az alacsonyabb szintű után (még akkor is, ha azok továbbra is látható). A fenti szempontok érvényesek, amikor csökkentése a rugalmas készlet tarifacsomagját, vagy áthelyezi, memóriabeli technológiákat, az adatbázis egy standard szintű vagy alapszintű rugalmas készlet.
 
 ### <a name="in-memory-oltp"></a>Memóriabeli OLTP
 
-*A Basic vagy Standard alacsonyabb verziójúra változtatása*: memórián belüli online Tranzakciófeldolgozási a Standard vagy alapszintű rétegben adatbázisokban nem támogatott. Emellett nem lehet áthelyezni egy adatbázist, amelynek a Standard vagy Basic réteghez memórián belüli online Tranzakciófeldolgozási objektumokat.
+*Alapszintű/standard alacsonyabb verziójúra változtatása*: In-Memory OLTP-adatbázisok a Standard vagy alapszintű csomagra nem támogatott. Emellett nem lehet áthelyezni egy adatbázist, amelynek a standard szintű vagy alapszintű csomagra In-Memory OLTP objektumokat.
 
-Nincs olyan tudni, hogy egy adott adatbázisnak támogatja-e a memórián belüli online Tranzakciófeldolgozási programozott módon. A következő Transact-SQL-lekérdezés hajthat végre:
+Nincs a megismeréséhez, hogy támogatja-e egy adott adatbázishoz In-Memory OLTP programozott módon. A következő Transact-SQL-lekérdezést futtathat:
 
 ```
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
-Ha a lekérdezés visszaadja az **1**, a memórián belüli online Tranzakciófeldolgozási támogatott ebben az adatbázisban.
+Ha a lekérdezés visszaadja az **1**, In-Memory OLTP támogatott ebben az adatbázisban.
 
-Előtt visszaminősítését az adatbázis Standard/egyszerű, távolítsa el az összes memóriaoptimalizált táblák és táblatípusokban, valamint a T-SQL minden natív módon lefordított modulok. Az alábbi lekérdezéseket azonosítsa az összes objektum, amely egy adatbázis is csökkenthető a Standard/egyszerű előtt el kell távolítani:
+Mielőtt Visszaléptetés a Standard és alapszintű az adatbázist, távolítsa el az összes memóriaoptimalizált táblák és táblatípusok, valamint a T-SQL natív módon lefordított modulok. A következő lekérdezéseket azonosítsa az összes objektum, amely előtt az adatbázis is lehet visszaminősíteni, Standard és alapszintű, el kell távolítani:
 
 ```
 SELECT * FROM sys.tables WHERE is_memory_optimized=1
@@ -127,39 +127,39 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-*Egy alacsonyabb prémium csomagra alacsonyabb verziójúra változtatása*: memóriaoptimalizált táblázatok adatait hozzá kell férnie a memórián belüli online Tranzakciófeldolgozási tárolóban, amely az adatbázis árképzési szintjének társított vagy érhető el a rugalmas készletben. Ha kísérli meg az árképzési szint csökkentése, vagy az adatbázist áthelyezi az a készletbe, amely nem rendelkezik elegendő memórián belüli online Tranzakciófeldolgozási tárolóhellyel, a művelet sikertelen lesz.
+*Egy alacsonyabb prémium szintjének alacsonyabb verziójúra változtatása*: a memóriaoptimalizált táblákban lévő adatokat hozzá kell férnie az In-Memory OLTP storage társítva a tarifacsomagot az adatbázis vagy a rugalmas készlet érhető el. Ha megpróbálja csökkentheti a tarifacsomagot, vagy az adatbázis egy készletbe, amely nem rendelkezik elegendő rendelkezésre álló In-Memory OLTP-tár áthelyezése a művelet sikertelen lesz.
 
 ### <a name="columnstore-indexes"></a>Oszlopcentrikus indexek
 
-*Basic vagy Standard visszaminősítése*: Oszlopcentrikus indexek használata támogatott, csak a prémium tarifacsomag és a normál rétegben, S3 és felett, és nem az alapszintű rétegben. Amikor visszaminősítését az adatbázis egy nem támogatott réteg vagy szint, az oszlopcentrikus index nem érhető el. A rendszer megőrzi az oszlopcentrikus index, de soha ne használja a az index. Ha később frissíteni egy támogatott réteg vagy szint, az oszlopcentrikus index azonnal készen áll a újra javítható.
+*Alapszintű vagy Standard alacsonyabb verziójúra változtatása*: az Oszlopcentrikus indexek csak a prémium tarifacsomag és a Standard szintű, S3 és fent, és nem az alapszintű csomag támogatja. Ha az adatbázis egy nem támogatott szint vagy a szintet, csomagok, az oszlopcentrikus index nem érhető el. A rendszer megőrzi az oszlopcentrikus index, de a modul soha nem az index. Ha később frissít, térjen vissza a támogatott szint vagy a szintet, újra adatbáziscsoportok azonnal készen áll az oszlopcentrikus index.
 
-Ha rendelkezik egy **fürtözött** oszlopcentrikus indexet, az egész tábla nem érhető el az alacsonyabb szintre való visszalépést után. Ezért ajánlott minden drop *fürtözött* oszlopcentrikus indexeket, mielőtt az adatbázis egy nem támogatott réteg vagy szintje alacsonyabb.
+Ha rendelkezik egy **fürtözött** oszlopcentrikus index, az egész tábla elérhetetlenné válik a visszalépés után. Ezért azt javasoljuk, hogy törölte-e az összes *fürtözött* oszlopcentrikus indexek előtt egy nem támogatott szint vagy a szintet az adatbázisról.
 
-*Egy alacsonyabb támogatott réteg vagy szintje alacsonyabb verziójúra változtatása*: az alacsonyabb szintre való visszalépést sikeres lesz, ha a teljes adatbázis megfelel a cél IP-címek a maximális méretét, vagy a rendelkezésre álló tár az a rugalmas készlet belül. Nincs az oszlopcentrikus indexek az adott hatással.
+*Egy támogatott alacsonyabb szintre vagy szint alacsonyabb verziójúra változtatása*: A Visszalépés sikeres lesz, abban az esetben, ha a teljes adatbázis megfelel a cél tarifacsomag az adatbázis maximális méretét, vagy a rendelkezésre álló tár az a rugalmas készlet belül. Az oszlopcentrikus indexek nem adott hatással van.
 
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. A memórián belüli online Tranzakciófeldolgozási minta telepítése
+## <a name="1-install-the-in-memory-oltp-sample"></a>1. Az In-Memory OLTP-minta telepítése
 
-A AdventureWorksLT mintaadatbázis mindössze néhány kattintással hozhatja létre a [Azure-portálon](https://portal.azure.com/). A jelen szakaszban szereplő lépéseket, majd azt ismertetik, hogyan a memórián belüli online Tranzakciófeldolgozási objektumok AdventureWorksLT adatbázis kiegészítése, és bemutatják a teljesítménybeli előnyökben.
+Néhány kattintással hozhat létre az AdventureWorksLT mintaadatbázis az [az Azure portal](https://portal.azure.com/). Ezt követően a jelen szakaszban ismertetett lépések azt ismertetik, hogyan In-Memory OLTP-objektumot az AdventureWorksLT adatbázis bővítését, és bemutatják a verziófrissítéssel.
 
-A több simplistic, de több tetszetős teljesítmény bemutató a memórián belüli online Tranzakciófeldolgozási lásd:
+Egy több egyszerűsített, de több tetszetős teljesítmény bemutató In-Memory OLTP-hez lásd:
 
-- Kiadás: [a-memória-oltp-bemutató-1.0-s verzió](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
+- Verzió: [a-memória-oltp-demo-1.0-s verzió](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
 - Forráskód: [in-memory-oltp-demo-source-code](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/in-memory/ticket-reservations)
 
-#### <a name="installation-steps"></a>Telepítés lépései
+#### <a name="installation-steps"></a>Telepítési lépések
 
-1. Az a [Azure-portálon](https://portal.azure.com/), létrehoz egy prémium szintű vagy fontos üzleti (előzetes verzió) adatbázis a kiszolgálón. Állítsa be a **forrás** AdventureWorksLT minta adatbázisba. Részletes útmutatásért lásd: [az első Azure SQL-adatbázis létrehozása](sql-database-get-started-portal.md).
+1. Az a [az Azure portal](https://portal.azure.com/), a prémium és üzletileg kritikus fontosságú adatbázis létrehozása a kiszolgálón. Állítsa be a **forrás** az AdventureWorksLT mintaadatbázist. Részletes útmutatásért lásd: [hozzon létre az első Azure SQL database](sql-database-get-started-portal.md).
 
-2. Kapcsolódni az adatbázishoz az SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
+2. Csatlakozzon az adatbázishoz az SQL Server Management Studióval [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
 
-3. Másolás a [memórián belüli online Tranzakciófeldolgozási Transact-SQL parancsfájl](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) a vágólapra. A T-SQL parancsfájlt a szükséges memórián belüli objektumok a AdventureWorksLT mintaadatbázis az 1. lépésben létrehozott hoz létre.
+3. Másolás a [In-Memory OLTP Transact-SQL parancsfájl](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) a vágólapra. A T-SQL parancsfájlt a szükséges memórián belüli objektumok az AdventureWorksLT mintaadatbázis az 1. lépésben létrehozott hoz létre.
 
-4. Illessze be a T-SQL parancsfájl SSMS, és majd végrehajtani a parancsprogramot. A `MEMORY_OPTIMIZED = ON` záradék CREATE TABLE utasítás fontosságúak. Példa:
+4. Illessze be a T-SQL parancsfájl ssms-ben, és ezután hajtsa végre a parancsfájlt. A `MEMORY_OPTIMIZED = ON` záradék CREATE TABLE utasítás alapvető fontosságúak. Példa:
 
 
 ```
@@ -170,10 +170,10 @@ CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
 ```
 
 
-#### <a name="error-40536"></a>Hiba 40536
+#### <a name="error-40536"></a>40536 hiba
 
 
-Ha hiba 40536 a T-SQL parancsfájl futtatásakor, futtassa a következő T-SQL parancsfájlt, és győződjön meg arról, hogy az adatbázis támogatja-e a memóriában lévő:
+Ha hiba 40536 a T-SQL parancsfájl futtatásakor, futtassa a következő T-SQL parancsfájlt, és győződjön meg arról, hogy az adatbázis támogatja a memóriabeli:
 
 
 ```
@@ -181,10 +181,10 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-Eredménye **0** azt jelenti, hogy a memóriában nem támogatott, és **1** azt jelenti, hogy esetén támogatott. A probléma diagnosztizálása érdekében győződjön meg arról, hogy az adatbázis, a prémium szolgáltatásszintet.
+Eredménye **0** azt jelenti, hogy a memóriában nem támogatott, és **1** azt jelenti, hogy támogatott. A probléma diagnosztizálása érdekében győződjön meg arról, hogy az adatbázis a prémium szolgáltatásszinten.
 
 
-#### <a name="about-the-created-memory-optimized-items"></a>A létrehozott memóriaoptimalizált elemek kapcsolatos
+#### <a name="about-the-created-memory-optimized-items"></a>A létrehozott memóriaoptimalizált elemekre vonatkozó
 
 **Táblák**: A minta a következő memóriaoptimalizált táblákat tartalmaz:
 
@@ -195,10 +195,10 @@ Eredménye **0** azt jelenti, hogy a memóriában nem támogatott, és **1** azt
 - Demo.DemoSalesOrderDetailSeed
 
 
-A memóriaoptimalizált táblák keresztül vizsgálhatja meg a **Object Explorer** szolgáltatáshoz az ssms. Kattintson a jobb gombbal **táblák** > **szűrő** > **beállítások szűrése** > **Memóriaoptimalizált**. Az érték 1.
+A memóriaoptimalizált táblák használatával vizsgálhatja meg a **Object Explorer** az ssms-ben. Kattintson a jobb gombbal **táblák** > **szűrő** > **szűrőbeállítások** > **Memóriaoptimalizált**. Az érték egyenlő 1.
 
 
-Vagy a katalógus nézetek, például:
+Vagy lekérdezheti, ha a Rendszerkatalógus-nézetek, például:
 
 
 ```
@@ -208,7 +208,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**Natív módon lefordított tárolt eljárás**: SalesLT.usp_InsertSalesOrder_inmem vizsgálhatja lekérdezéssel-katalógus megtekintése:
+**Natív módon lefordított tárolt eljárás**: SalesLT.usp_InsertSalesOrder_inmem katalógus megtekintése lekérdezéssel ellenőrizheti:
 
 
 ```
@@ -220,33 +220,33 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 &nbsp;
 
-### <a name="run-the-sample-oltp-workload"></a>A minta OLTP-munkaterhelés futtatása
+### <a name="run-the-sample-oltp-workload"></a>A minta OLTP számítási feladatok futtatásához
 
-Az egyetlen különbség a következő két *tárolt eljárások* , hogy az első eljárás használja verziók memóriaoptimalizált táblák esetén a második eljárás a lemezen tábláit használja:
+Az egyetlen különbség a következő két *tárolt eljárások* , hogy az első eljárás verziók a memóriaoptimalizált táblák használ, a második eljárás használja a normál lemezen lévő táblák:
 
 - SalesLT **.** usp_InsertSalesOrder **_inmem**
 - SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
 
-Ez a szakasz használata a hasznos látható **ostress.exe** segédprogram stressful szinten két tárolt eljárások végrehajtása. Összehasonlíthatja mennyi ideig tart a két magas terhelés kísérletekhez befejezéséhez.
+Ebben a szakaszban bemutatjuk, hogyan használhatja a praktikus **ostress.exe** segédprogram megterhelő feladatot szinten két tárolt eljárást végrehajtani. Összehasonlíthatja mennyi ideig tart a két stress futtatások befejezéséhez.
 
 
-Ostress.exe futtatásakor azt javasoljuk, hogy sikeresen lezajlott-e az alábbi tervezett paraméterértékek:
+Ostress.exe futtatásakor azt javasoljuk, hogy adja meg a paraméterértékeket a következő két készült:
 
-- Futtassa a nagyszámú egyidejű kapcsolatok segítségével - n100.
-- Minden kapcsolat hurok több száz időpontokban, a rendelkezik használatával - r500.
-
-
-Érdemes azonban, például - n10 és - r 50 sokkal kisebb értékekkel indítására győződjön meg arról, hogy minden működik.
+- Futtassa a nagyszámú egyidejű kapcsolatok használatával – n100.
+- Minden kapcsolat hurok több száz időpontokban, a rendelkezik használatával – r500.
 
 
-### <a name="script-for-ostressexe"></a>Ostress.exe parancsfájl
+Azonban érdemes például - n10 és - r 50 sokkal kisebb értékek kezdje annak érdekében, hogy minden működik.
 
 
-Ez a szakasz a T-SQL-parancsfájl a ostress.exe parancssori beágyazott jeleníti meg. A parancsfájl a korábban telepített a T-SQL-parancsfájl által létrehozott elemek.
+### <a name="script-for-ostressexe"></a>Ostress.exe parancsfájlja
 
 
-A következő parancsfájl egy minta értékesítési sorrendben öt sor elemekhez szúr be a következő memóriaoptimalizált *táblák*:
+Ez a szakasz a T-SQL parancsfájl a ostress.exe parancssori beágyazott jeleníti meg. A szkript, amelyet korábban telepített a T-SQL-parancsfájl által létrehozott elemek.
+
+
+A következő parancsfájl értékesítési rendelés sablonja az öt sorban elemet szúr be a következő memóriaoptimalizált *táblák*:
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -276,21 +276,21 @@ end
 ```
 
 
-Annak a *_ondisk* az előző T-SQL-parancsfájlt ostress.exe verziója, cserélje a mindkét előfordulását a *_inmem* a karakterláncrészletre *_ondisk*. A csere hatással a táblák és tárolt eljárások neve.
+Győződjön meg arról, hogy a *_ondisk* ostress.exe az előző T-SQL parancsfájl verziója cserélje a mindkét előfordulását a *_inmem* a karakterláncrészletre *_ondisk*. Ezek a lecserélendő hatással táblák és tárolt eljárások neve.
 
 
 ### <a name="install-rml-utilities-and-ostress"></a>RML segédprogramok és ostress telepítése
 
 
-Ideális esetben tenné szeretné futtatni ostress.exe egy Azure virtuális gépen (VM). Akkor kell létrehoznia egy [Azure virtuális gép](https://azure.microsoft.com/documentation/services/virtual-machines/) a azonos Azure földrajzi régióban, ahol a AdventureWorksLT adatbázis található. De futtathatja ostress.exe inkább a laptopján.
+Ideális esetben szeretné futtatni tervezett ostress.exe-beli virtuális gépen (VM). Akkor kell létrehoznia egy [Azure virtuális gép](https://azure.microsoft.com/documentation/services/virtual-machines/) az azonos Azure földrajzi régióban, ahol az AdventureWorksLT adatbázisban található. De futtathatja ostress.exe inkább a laptopján.
 
 
-A virtuális Gépet, vagy bármilyen üzemeltetéséhez, akkor válassza, a visszajátszás Markup Language (RML) segédprogramokat telepíthet. A segédprogramok ostress.exe tartalmazza.
+A virtuális gép vagy a gazdagép bármilyen, válassza ki, telepítse a visszajátszás Markup Language (RML) segédeszközöket. A segédprogramok ostress.exe tartalmazza.
 
 További információkért lásd:
-- A ostress.exe vitafórum [memórián belüli online Tranzakciófeldolgozási adatbázist](http://msdn.microsoft.com/library/mt465764.aspx).
-- [A memórián belüli online Tranzakciófeldolgozási adatbázis minta](http://msdn.microsoft.com/library/mt465764.aspx).
-- A [ostress.exe telepítésének blog](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
+- A hozzászólás ostress.exe [In-Memory OLTP adatbázist](http://msdn.microsoft.com/library/mt465764.aspx).
+- [Az In-Memory OLTP adatbázis minta](http://msdn.microsoft.com/library/mt465764.aspx).
+- A [blog ostress.exe telepítéséhez](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
 
 
 
@@ -306,13 +306,13 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>Futtassa a *_inmem* emelje ki először munkaterhelés
+### <a name="run-the-inmem-stress-workload-first"></a>Futtassa a *_inmem* számítási feladatok terhelési először
 
 
-Használhat egy *RML Cmd Rákérdezés* ablakban a ostress.exe parancssort futtathat. A parancssori paraméterek ostress való közvetlen:
+Használhat egy *RML Cmd Rákérdezés* ablak a ostress.exe parancssort futtathat. A parancssori paraméterek ostress való közvetlen:
 
-- 100 kapcsolatok egyidejű futtatását (-n100).
-- Minden kapcsolat 50 alkalommal a T-SQL-parancsfájl futtatása (-r 50).
+- 100 kapcsolat egyidejű futtatását (-n100).
+- Minden kapcsolat, a T-SQL parancsfájl futtatása 50 alkalommal (-r 50).
 
 
 ```
@@ -323,103 +323,103 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 A fenti ostress.exe parancssor futtatása:
 
 
-1. Alaphelyzetbe állítja az adatbázis az adatok tartalmának szolgáltatáshoz az ssms, az minden korábbi futtatása által beszúrt adatok törléséhez a következő parancs futtatásával:
+1. Az adatbázis-adatok tartalom visszaállítása az ssms-ben, az előző futtatásokat által beszúrt adatok törléséhez a következő parancs futtatásával:
 
     ``` tsql
     EXECUTE Demo.usp_DemoReset;
     ```
 
-2. A fenti ostress.exe parancssor szövegét másolja a vágólapra.
+2. A fenti ostress.exe parancssor szöveg másolása a vágólapra.
 
 3. Cserélje le a `<placeholders>` a paraméterek -S - U -P - d a megfelelő valós értékekkel.
 
 4. A szerkesztett parancssor futtatása a egy RML Cmd ablakot.
 
 
-#### <a name="result-is-a-duration"></a>Eredménye egy időtartam
+#### <a name="result-is-a-duration"></a>Eredmény egy időtartam
 
 
-Ostress.exe befejezése után, a kimenet a végső sorként futtatási időtartama ír a RML Cmd ablakot. Például egy rövidebb vizsgálat tartott körülbelül 1,5 percet:
+Ha ostress.exe befejezését követően a Futási időtartam alatt a végső kimenet üzletági ír a RML Cmd ablakot. Ha például egy rövidebb teszt futtatása tartott körülbelül 1,5 percet:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>Alaphelyzetbe állítja, a Szerkesztés *_ondisk*, majd futtassa újra a
+#### <a name="reset-edit-for-ondisk-then-rerun"></a>Alaphelyzetbe állítása, a Szerkesztés *_ondisk*, majd futtassa újra a
 
 
-Miután kapott eredmény az *_inmem* futnak, hajtsa végre az alábbi lépéseket a *_ondisk* futtatása:
+Az eredmény, miután a *_inmem* futnak, hajtsa végre az alábbi lépéseket a *_ondisk* futtatása:
 
 
-1. Az adatbázis visszaállítása a szolgáltatáshoz az ssms az adatok törléséhez a korábbi futtatás által beszúrt a következő parancs futtatásával:
+1. Az adatbázis visszaállítása az ssms-ben minden adatot törölnie kell, hogy az előző futtatásból állapotszolgáltatást nem a következő parancs futtatásával:
 ```
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. Szerkessze a ostress.exe parancs cseréjét *_inmem* rendelkező *_ondisk*.
+2. Cserélje le az összes ostress.exe parancssori szerkesztése *_inmem* a *_ondisk*.
 
-3. Futtassa újra a második ostress.exe, és rögzítse a duration eredménye.
+3. Futtassa újra a második alkalommal ostress.exe, és az időtartam eredményt.
 
-4. Ebben az esetben alaphelyzetbe állítása az adatbázis (az osztott törlése, mi is vizsgálati adatok nagy mennyiségű lehet).
+4. Újra állítsa vissza az adatbázist (a Mi lehet Tesztadatok nagy mennyiségű osztott törlése).
 
 
 #### <a name="expected-comparison-results"></a>Várt összehasonlítás eredménye
 
-A memóriában tesztek kimutatták, hogy javítja a teljesítményt **kilenc alkalommal** a simplistic munkaterhelés, a ostress ugyanabban a régióban Azure-adatbázisként egy Azure virtuális gépen.
+Memóriabeli tesztek kimutatták, hogy a javítja a teljesítményt **kilenc alkalommal** ostress egy Azure virtuális gépen ugyanabban a régióban az Azure-adatbázisként a az egyszerűsített számítási feladatokhoz.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. A memórián belüli Analytics minta telepítése
+## <a name="2-install-the-in-memory-analytics-sample"></a>2. Telepítse a memóriabeli elemzési minta
 
 
-Ebben a szakaszban összehasonlítja az IO és a statisztika eredményeket oszlopcentrikus index és egy hagyományos b-fa index használatakor.
+Ebben a szakaszban összehasonlítjuk az i/o- és statisztikai eredményeket és a egy hagyományos b-fa indexet oszlopcentrikus index használatakor.
 
 
-Az OLTP-munkaterhelés valós idejű elemzés célszerű gyakran egy nem fürtözött oszloptárindex használatára. További információkért lásd: [Oszlopcentrikus indexek leírt](http://msdn.microsoft.com/library/gg492088.aspx).
+Az OLTP-munkaterhelés valós idejű elemzését célszerű gyakran egy fürtözetlen oszlopcentrikus indexet használni. További információkért lásd: [Oszlopcentrikus indexek leírt](http://msdn.microsoft.com/library/gg492088.aspx).
 
 
 
-### <a name="prepare-the-columnstore-analytics-test"></a>Készítse elő a oszlopcentrikus analytics teszt
+### <a name="prepare-the-columnstore-analytics-test"></a>Az oszlopcentrikus analytics tesztelés előkészítése
 
 
-1. Az Azure-portál használatával hozható létre a minta egy friss AdventureWorksLT adatbázis.
- - Használja ezt a teljes nevet.
- - Válassza ki a prémium szolgáltatásszintet.
+1. Az Azure portal segítségével hozzon létre egy új AdventureWorksLT adatbázis a mintát.
+ - A pontos nevét használja.
+ - Válassza ki bármelyik prémium szolgáltatásszint.
 
 2. Másolás a [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) a vágólapra.
- - A T-SQL parancsfájlt a szükséges memórián belüli objektumok a AdventureWorksLT mintaadatbázis az 1. lépésben létrehozott hoz létre.
- - A parancsfájl a dimenziótáblában és két ténytáblák hoz létre. A ténytáblák feltöltött 3.5 millió sort.
- - A parancsfájl elvégzéséhez 15 percig is eltarthat.
+ - A T-SQL parancsfájlt a szükséges memórián belüli objektumok az AdventureWorksLT mintaadatbázis az 1. lépésben létrehozott hoz létre.
+ - A parancsfájl a dimenziótáblában és két ténytáblák hoz létre. A ténytáblák 3,5 millió sort is megjelenik.
+ - A parancsfájl 15 percet is igénybe vehet.
 
-3. Illessze be a T-SQL parancsfájl SSMS, és majd végrehajtani a parancsprogramot. A **OSZLOPCENTRIKUS** kulcsszót a **a CREATE INDEX** utasítás elengedhetetlen, mint:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. Illessze be a T-SQL parancsfájl ssms-ben, és ezután hajtsa végre a parancsfájlt. A **OSZLOPCENTRIKUS** kulcsszó a **a CREATE INDEX** utasítás elengedhetetlen, mint:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
-4. Állítsa be AdventureWorksLT 130 kompatibilitási szintje:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
+4. Kompatibilitási szint 130 AdventureWorksLT beállítani:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
-    Szint 130 nem közvetlenül kapcsolódik a memóriával kapcsolatos szolgáltatásainak. De szint 130 általában gyorsabb lekérdezési teljesítményt, mint 120.
-
-
-#### <a name="key-tables-and-columnstore-indexes"></a>Kulcs táblák és az oszlopcentrikus indexek
+    Szint 130 nem kapcsolódik közvetlenül a memóriával kapcsolatos szolgáltatásainak. De 130 szint általánosan biztosít, mint 120 gyorsabb lekérdezési teljesítmény.
 
 
-- dbo. FactResellerSalesXL_CCI fürtözött oszlopcentrikus index, amely továbbfejlesztett tömörítés a táblának a *adatok* szintjét.
-
-- dbo. FactResellerSalesXL_PageCompressed táblának egyenértékű rendszeres fürtözött indexet, amely csak a rendszer tömöríti a *lap* szintjét.
+#### <a name="key-tables-and-columnstore-indexes"></a>Kulcs táblákat és az oszlopcentrikus indexek
 
 
-#### <a name="key-queries-to-compare-the-columnstore-index"></a>Az oszloptárindex összehasonlítandó kulcs lekérdezések
+- dbo. FactResellerSalesXL_CCI, amelyek a továbbfejlesztett tömörítés, fürtözött oszlopcentrikus indexszel rendelkező táblában a *adatok* szintjét.
+
+- dbo. FactResellerSalesXL_PageCompressed egy táblát, amely egyenértékű rendszeres fürtözött index tartozik, amely csak tömörített a *oldal* szintjét.
 
 
-Nincsenek [T-SQL lekérdezés számos különböző futtatható](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) teljesítménnyel kapcsolatos fejlesztések megjelenítéséhez. A 2 a T-SQL parancsfájl a lekérdezések pár figyelmet fordítania. Csak egy sorban különböznek:
+#### <a name="key-queries-to-compare-the-columnstore-index"></a>Az oszlopcentrikus index összehasonlítására elsődlegeskulcs-lekérdezések
+
+
+Nincsenek [számos futtathatja a T-SQL lekérdezés különböző](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) teljesítménnyel kapcsolatos fejlesztések megtekintéséhez. A 2. lépésben a T-SQL parancsfájl a lekérdezések párjai figyelmet fordítania. Csak egy sorban különböznek:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Fürtözött oszlopcentrikus index szerepel a FactResellerSalesXL\_közösségi koordináló intézet tábla.
+Fürtözött oszlopcentrikus index van a FactResellerSalesXL\_CCI tábla.
 
-A következő T-SQL parancsfájl cikkből statisztika IO és a lekérdezés minden tábla idő nyomtatása.
+A következő T-SQL parancsfájl cikkből szerint i/o-és a lekérdezés minden tábla idő jelenít meg statisztikákat.
 
 
 ```
@@ -484,40 +484,40 @@ SET STATISTICS TIME OFF
 GO
 ```
 
-A P2 tarifacsomag adatbázisban körülbelül kilenc alkalommal a jobb teljesítménye ehhez a lekérdezéshez számíthat a fürtözött oszlopcentrikus index összehasonlítja a hagyományos index használatával. P15, a várhatóan hamarosan 57 alkalommal a jobb teljesítménye az oszlopcentrikus index használatával.
+A P2 tarifacsomag adatbázist, a várható nagyjából kilenc alkalommal a teljesítmény nyereség ehhez a lekérdezéshez a fürtözött oszlopcentrikus indexet, mint a hagyományos indexszel rendelkező használatával. P15, a várható 57 alkalommal készül a teljesítmény nyereség az oszlopcentrikus index használatával.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Gyors üzembe helyezési 1: A memórián belüli online Tranzakciófeldolgozási technológiák a T-SQL jobb teljesítmény](http://msdn.microsoft.com/library/mt694156.aspx)
+- [Gyors üzembe helyezési 1: In-Memory OLTP technológiák gyorsabb a T-SQL-teljesítmény](http://msdn.microsoft.com/library/mt694156.aspx)
 
-- [Használja a memórián belüli online Tranzakciófeldolgozási egy meglévő Azure SQL-alkalmazásban](sql-database-in-memory-oltp-migration.md)
+- [Egy meglévő Azure SQL-alkalmazásban használható In-Memory OLTP](sql-database-in-memory-oltp-migration.md)
 
-- [A figyelő a memórián belüli online Tranzakciófeldolgozási tárolási](sql-database-in-memory-oltp-monitoring.md) a memórián belüli online Tranzakciófeldolgozási
+- [A figyelő In-Memory OLTP storage](sql-database-in-memory-oltp-monitoring.md) In-Memory OLTP-hez
 
 
 ## <a name="additional-resources"></a>További források
 
-#### <a name="deeper-information"></a>Mélyebb információk
+#### <a name="deeper-information"></a>Részletesebb információhoz juthat
 
-- [Ismerje meg, hogyan kvórum megduplázódik miközben DTU csökkenti a memórián belüli online Tranzakciófeldolgozási az SQL-adatbázis 70 %-kal kulcsának adatbázis munkaterhelés](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Ismerje meg, hogy kvórum megduplázódik DTU takarítható meg és az SQL Database In-Memory OLTP 70 %-kal kulcsának adatbázis-munkaterhelés](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
-- [Memórián belüli online Tranzakciófeldolgozási Azure SQL adatbázis blogbejegyzésben](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+- [Ebben a blogbejegyzésben az Azure SQL Database in-Memory OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [További tudnivalók a memórián belüli online Tranzakciófeldolgozási](http://msdn.microsoft.com/library/dn133186.aspx)
+- [További információ a memóriában tárolt OLTP-k](http://msdn.microsoft.com/library/dn133186.aspx)
 
-- [További tudnivalók az oszlopcentrikus indexek](https://msdn.microsoft.com/library/gg492088.aspx)
+- [Ismerje meg az oszlopcentrikus indexek](https://msdn.microsoft.com/library/gg492088.aspx)
 
-- [További információk a valós idejű működési elemzés](http://msdn.microsoft.com/library/dn817827.aspx)
+- [Ismerje meg a valós idejű működési elemzések](http://msdn.microsoft.com/library/dn817827.aspx)
 
-- Lásd: [közös terhelési mintázatok és az áttelepítés szempontjai](http://msdn.microsoft.com/library/dn673538.aspx) (amely ismerteti, ahol a memórián belüli online Tranzakciófeldolgozási gyakran biztosít teljesítménynövekedéshez munkaterhelés minták)
+- Lásd: [közös munkaterhelési mintákat és az áttelepítés szempontjai](http://msdn.microsoft.com/library/dn673538.aspx) (amely azt ismerteti, ahol In-Memory OLTP gyakran biztosít jelentős teljesítménynövekedést munkaterhelési mintákat)
 
-#### <a name="application-design"></a>Alkalmazás tervezése
+#### <a name="application-design"></a>Alkalmazás-tervezés
 
-- [Memórián belüli online Tranzakciófeldolgozási (a memóriában optimalizálása)](http://msdn.microsoft.com/library/dn133186.aspx)
+- [Memóriában tárolt OLTP-k (memóriabeli optimalizálás)](http://msdn.microsoft.com/library/dn133186.aspx)
 
-- [Használja a memórián belüli online Tranzakciófeldolgozási egy meglévő Azure SQL-alkalmazásban](sql-database-in-memory-oltp-migration.md)
+- [Egy meglévő Azure SQL-alkalmazásban használható In-Memory OLTP](sql-database-in-memory-oltp-migration.md)
 
 #### <a name="tools"></a>Eszközök
 

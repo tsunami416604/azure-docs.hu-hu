@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: fc978c6ad9776271c790796f26912c63f9edcf74
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a1ff4364e394b3807cf767722ee934ae024399b0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009384"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114344"
 ---
 # <a name="configure-virtual-wan-automation---for-virtual-wan-partners-preview"></a>Virtuális WAN automation – a virtuális WAN-partnerek számára (előzetes verzió) konfigurálása
 
-Ezen cikk segítségével megismerheti, hogyan állítható be az automation envorionment csatlakozhat, és az Azure virtuális WAN ág eszközök (ügyfél helyi VPN-eszközt vagy SDWAN) konfigurálása. Ha Ön egy szolgáltató által biztosított ág eszközöket képes kezelni a VPN-kapcsolat IPsec vagy IKEv2 keresztül, ez a cikk Önnek szól.
+Ez a cikk segít megérteni az automation-környezetet csatlakozhat, és az Azure virtuális WAN ág eszközök (ügyfél helyi VPN-eszközt vagy SDWAN) konfigurálása. Ha Ön egy szolgáltató által biztosított ág eszközöket képes kezelni a VPN-kapcsolat IPsec vagy IKEv2 keresztül, ez a cikk Önnek szól.
 
 Szoftver-meghatározott csatlakozási megoldásokat általában egy vezérlőt, vagy egy eszköz-üzembehelyezési center kezelésére használja ág eszközeiket. A vezérlő Azure API-k segítségével automatizálhatja az Azure virtuális WAN kapcsolódni. Ez a kapcsolattípus SDWAN vagy VPN-eszközre helyszíni, amely rendelkezik egy kifelé irányuló nyilvános IP-cím rendelve van szükség.
 

@@ -1,66 +1,66 @@
 ---
-title: Figyelési & teljesítményhangolás - Azure SQL Database |} Microsoft Docs
-description: Tippek az teljesítményhangolás, az Azure SQL Database keresztül értékelése és javítása.
+title: Monitorozás és teljesítményhangolás – Azure SQL Database |} A Microsoft Docs
+description: Tippek a teljesítmény-finomhangolási az Azure SQL Database révén értékelése és javítása.
 services: sql-database
 author: v-shysun
 manager: craigg
 editor: ''
-keywords: SQL teljesítményének hangolása, adatbázis teljesítményének hangolása, ötleteket hangolás sql teljesítmény sql adatbázis teljesítményének hangolása
+keywords: teljesítmény-finomhangolási, adatbázis teljesítmény-finomhangolási, sql teljesítmény-finomhangolási tippek SQL az sql database teljesítményének hangolása
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: v-shysun
-ms.openlocfilehash: a20d198c64bfc6aeaa42f310ee533626c2b1409c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 79f41ab133cba539e5f855b3ab8fa21723694acb
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649618"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092562"
 ---
-# <a name="monitoring-and-performance-tuning"></a>Figyelés és teljesítményének hangolása
+# <a name="monitoring-and-performance-tuning"></a>Figyelés és a teljesítmény hangolása
 
-Az Azure SQL Database automatikusan kezeli, és rugalmas adatszolgáltatás, ahol egyszerűen megfigyeléséhez, vegye fel vagy távolítsa el az erőforrások (Processzor, memória, io), található, amely az adatbázis teljesítményének növelése, vagy lehetővé teszik a munkaterhelés igazítja adatbázis javaslatok és automatikusan teljesítményének optimalizálásához.
+Az Azure SQL Database automatikusan kezeli, és a szolgáltatás rugalmas, ahol Ön is egyszerűen figyelheti, erőforrásainak hozzáadása vagy eltávolítása (CPU, memória, i/o), keresse meg a javaslatok, amelyek javítani az adatbázis teljesítményét, vagy lehetővé teszik az adatbázis alkalmazkodik számítási feladatához és automatikusan optimalizálhatja a teljesítményt.
 
-Ez a cikk áttekintést nyújt a figyelési és teljesítményének hangolása lehetőségek állnak rendelkezésre az Azure SQL-adatbázis.
+Ez a cikk áttekintést nyújt az figyelési és teljesítményhangolási lehetőségekről az Azure SQL Database által biztosított.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="monitoring-and-troubleshooting-database-performance"></a>Figyelés és hibaelhárítás céljából az adatbázis teljesítménye
+## <a name="monitoring-and-troubleshooting-database-performance"></a>Megfigyelés és hibaelhárítás az adatbázis-teljesítmény
 
-Az Azure SQL Database lehetővé teszi, hogy egyszerűen figyelheti az adatbázis-használat, és azonosíthatja a lekérdezések, amelyek a teljesítménnyel kapcsolatos problémákat okozhatnak. Adatbázis teljesítménye az Azure portál vagy a rendszer nézetek használatával figyelheti. Lehetősége van a következő figyelés és hibaelhárítás céljából az adatbázis teljesítményét:
+Az Azure SQL Database lehetővé teszi, hogy egyszerűen monitorozhatja az adatbázis-használat, és azonosíthatja a lekérdezések, amelyek teljesítményproblémákat okozhatnak. Adatbázis teljesítménye az Azure portal vagy a rendszer nézetek használatával követheti nyomon. A megfigyelés és hibaelhárítás az adatbázis teljesítményét a következő lehetőségek állnak rendelkezésére:
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **SQL-adatbázisok**, és válassza ki az adatbázist, majd használja a figyelés diagramra hamarosan eléri a maximális erőforrások kereséséhez. DTU-használat alapértelmezés szerint megjelenik. Kattintson a **szerkesztése** időtartomány és látható értékek módosításához.
-2. Használjon [lekérdezési Terheléselemző](sql-database-query-performance.md) azonosítására, hogy a legtöbb az erőforrások töltött lekérdezéseket.
-3. Dinamikus felügyeleti nézetek (dinamikus felügyeleti nézetek) bővített eseményektől (`XEvents`), és a Lekérdezéstár szolgáltatáshoz az ssms valós idejű teljesítményparaméterek eléréséhez.
+1. Az a [az Azure portal](https://portal.azure.com), kattintson a **SQL-adatbázisok**, és válassza ki az adatbázist, majd használja a figyelés diagramra a hamarosan eléri a maximális erőforrások kereséséhez. DTU-fogyasztásának alapértelmezés szerint jelenik meg. Kattintson a **szerkesztése** módosíthatja az időtartományt és látható értékeket.
+2. Használat [lekérdezési Terheléselemző](sql-database-query-performance.md) azonosítására, hogy a legtöbbet az erőforrások költségek lekérdezéseket.
+3. Használhatja a dinamikus felügyeleti nézetekkel (DMV-kkel), bővített események (`XEvents`), és a Query Store az ssms-ben a valós idejű teljesítmény paraméterek kaphat.
 
-Tekintse meg a [teljesítmény útmutató témakör](sql-database-performance-guidance.md) használó Azure SQL adatbázis teljesítményének növelése, ha néhány problémát, használja a következő jelentéseket, illetve nézetek azonosítani kereséséhez.
+Tekintse meg a [teljesítmény-útmutató témakör](sql-database-performance-guidance.md) módszereket, amelyek segítségével az Azure SQL Database teljesítményének növelése, ha néhány problémát, ezek a jelentések vagy nézetek segítségével azonosítani tudja.
 
 > [!IMPORTANT] 
 > Javasoljuk, hogy mindig a Management Studio legfrissebb verzióját használja, hogy kihasználhassa a Microsoft Azure és az SQL Database legújabb frissítései által nyújtott előnyöket. [Az SQL Server Management Studio frissítése](https://msdn.microsoft.com/library/mt238290.aspx).
 >
 
-## <a name="optimize-database-to-improve-performance"></a>Optimalizálása teljesítményének javítása érdekében
+## <a name="optimize-database-to-improve-performance"></a>Optimalizálja teljesítményének javítása érdekében
 
-Az Azure SQL Database lehetővé teszi, hogy azonosítsa a finomhangolási lehetőségeket javítása és a lekérdezési teljesítmény optimalizálása érdekében erőforrások megtekintésével módosítása nélkül [teljesítményének hangolása javaslatok](sql-database-advisor.md). A hiányzó indexek és rosszul optimalizált lekérdezések az adatbázis gyenge teljesítményének gyakori okai. Ezek a számítási feladatok teljesítményének javítása érdekében a hangolási javaslatok is alkalmazhatja.
-Is lehetővé Azure SQL-adatbázis [automatikusan a a lekérdezések teljesítményének optimalizálásához](sql-database-automatic-tuning.md) alkalmazásával az összes azonosított javaslatok és, hogy azokat teljesítménynövelés adatbázis ellenőrzése. Az adatbázis teljesítményének javításával használhatja a következő beállításokat:
+Az Azure SQL Database lehetővé teszi, azokat a lehetőségeket és a lekérdezési teljesítmény optimalizálása áttekintésével erőforrások módosítása nélkül [teljesítmény-finomhangolási ajánlásait](sql-database-advisor.md). A hiányzó indexek és rosszul optimalizált lekérdezések az adatbázis gyenge teljesítményének gyakori okai. Ezeket a számítási feladat teljesítményét a hangolási javaslatokat is alkalmazható.
+Is tegye lehetővé, Azure SQL database [automatikus optimalizálása a lekérdezések teljesítményének](sql-database-automatic-tuning.md) alkalmazásával az összes azonosított javaslatok és adatbázis-teljesítmény javítása ellenőrzése. A következő beállítások segítségével javíthatja az adatbázis teljesítményét:
 
-1. Használjon [SQL Database Advisor](sql-database-advisor-portal.md) létrehozása és az indexek eldobását, a lekérdezések paraméterezése és a séma problémák kijavítása javaslatok megtekintéséhez.
-2. [Engedélyezze az automatikus hangolással](sql-database-automatic-tuning-enable.md) és lehetővé teszik az Azure SQL adatbázis automatikus javítás azonosított teljesítményproblémákat.
+1. Használat [az SQL Database Advisor](sql-database-advisor-portal.md) létrehozása és az indexek elvetését, a lekérdezések paraméterezése és a séma problémáinak javítása javaslatok megtekintése.
+2. [Automatikus hangolás engedélyezése](sql-database-automatic-tuning-enable.md) , és lehetővé teszik az Azure SQL database automatikusan javítja az azonosított teljesítménybeli problémák.
 
 ## <a name="improving-database-performance-with-more-resources"></a>További erőforrások az adatbázis teljesítményének növelése
 
-Végezetül végrehajtható elem, amely az adatbázis teljesítményének esetén módosíthatja az Azure SQL-adatbázis elérhető erőforrások mennyisége. További erőforrások hozzárendeléséhez módosítása a [DTU szolgáltatásréteg](sql-database-service-tiers-dtu.md) egy önálló adatbázis vagy a bármikor a rugalmas készlet edtu-inak növelését. Másik lehetőségként használata a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md), módosíthatja a szolgáltatási rétegben, vagy növelje az adatbázis számára elkülönített erőforrások. 
-1. Az önálló adatbázisok esetén is [szolgáltatásszintek módosítása](sql-database-service-tiers-dtu.md) vagy [számítási erőforrásokat](sql-database-service-tiers-vcore.md)igény szerinti adatbázis teljesítményének javítása érdekében.
-2. Több adatbázis esetén érdemes [rugalmas készletek](sql-database-elastic-pool-guidance.md) erőforrások automatikus méretezése.
+Végül ha nem találhatók gyakorlatban hasznosítható elemek, amelyek javíthatja az adatbázis teljesítményét, módosíthatja az Azure SQL Database-ben rendelkezésre álló erőforrások mennyiségét. Hozzárendelhet további erőforrások módosításával a [szolgáltatási szint dtu-k](sql-database-service-tiers-dtu.md) egy önálló adatbázis vagy növelje az egy rugalmas készlet edtu-k tetszőleges időpontban. Azt is megteheti Ha használja a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md), módosíthatja a szolgáltatási rétegben, vagy növelje az adatbázis számára elkülönített erőforrások. 
+1. Az önálló adatbázisokhoz is [szolgáltatásszintek módosítása](sql-database-service-tiers-dtu.md) vagy [számítási erőforrások](sql-database-service-tiers-vcore.md)igény szerinti adatbázis-teljesítmény javítása érdekében.
+2. Több adatbázis esetén fontolja meg [rugalmas készletek](sql-database-elastic-pool-guidance.md) erőforrások automatikus méretezése.
 
-## <a name="tune-and-refactor-application-or-database-code"></a>Finomhangolja és azonosítóterületen alkalmazás vagy adatbázis-kód
+## <a name="tune-and-refactor-application-or-database-code"></a>Hangolás és újrabontása alkalmazás vagy adatbázis-kód
 
-Módosíthatja az alkalmazás kódjában, hogy több optimálisan használja a-adatbázist, indexek módosítása, tervek kényszerített vagy mutatók segítségével manuálisan alkalmazkodnak az adatbázis, a munkaterhelés. Néhány útmutatás és tippek található manuális beállítás, és írja át a kódot a [teljesítmény útmutató témakör](sql-database-performance-guidance.md) cikk.
+Módosíthatja az alkalmazás kódjában, hogy több optimálisan az adatbázist, módosítsa az indexek, tervek kényszerített vagy mutatók segítségével manuálisan alkalmazkodik a számítási feladatok az adatbázis. Keresse meg az egyes tanácsokat és javaslatokat manuális finomhangolásához és a kód újraírását a [teljesítmény-útmutató témakör](sql-database-performance-guidance.md) cikk.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Engedélyezze az automatikus hangolással az Azure SQL Database és az automatikus, teljes mértékben felügyelhesse a számítási feladatok hangolási szolgáltatás segítségével [engedélyezze az automatikus hangolással](sql-database-automatic-tuning-enable.md).
-- Manuális hangolása használatához tekintse át [javaslatok az Azure-portálon hangolása](sql-database-advisor-portal.md) és alkalmazza manuálisan a gazdarendszerhez a lekérdezések teljesítményének javítása.
-- Ha megváltoztatja az adatbázis rendelkezésre álló erőforrások módosítása [Azure SQL Database szolgáltatási szinteket](sql-database-performance-guidance.md)
+- Engedélyezze az Azure SQL Database automatikus finomhangolása és lehetővé teszik a számítási feladat teljes mértékben kezelése, automatikus finomhangolási funkció: [automatikus hangolás engedélyezése](sql-database-automatic-tuning-enable.md).
+- Manuális hangolás használatához áttekintheti [finomhangolási javaslatai az Azure Portalon](sql-database-advisor-portal.md) , és manuálisan a alkalmazni azokat, amelyek javítják a lekérdezések teljesítményét.
+- Módosítsa úgy módosítja az adatbázist a rendelkezésre álló erőforrások [Azure SQL Database-szolgáltatásszintek](sql-database-performance-guidance.md)

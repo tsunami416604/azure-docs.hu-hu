@@ -1,61 +1,69 @@
 ---
-title: Azure Import/Export használatával az adatok átviteléhez az Azure Fileshoz |} Microsoft Docs
-description: Megtudhatja, hogyan importálási feladatok létrehozására az Azure portálon adatok átviteléhez az Azure Fileshoz.
+title: Az Azure Import/Export használatával az adatok átviteléhez az Azure Files |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre az importálási feladatokhoz az Azure Files adatok átviteléhez az Azure Portalon.
 author: alkohli
 manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 4349b471f960e7844511c473bffcd2177a34e055
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f48097fa1ece66dd9e20a7a7939ac43cb0f48b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660883"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113477"
 ---
-# <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Adatok importálása az Azure Fileshoz Azure Import/Export szolgáltatás használata
+# <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Adatok importálása az Azure Files Azure Import/Export szolgáltatás használata
 
-Ez a cikk részletes útmutatást nyújt az Azure Import/Export szolgáltatás használatával biztonságosan rendszerbe való importálás nagy mennyiségű adat Azure fájlokat. Adatok importálása a szolgáltatás megköveteli, hogy küldje el az adatokat, hogy egy Azure-adatközpontban tartalmazó támogatott lemezmeghajtókat.  
+Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás biztonságosan nagy mennyiségű adatot importálni az Azure Files használatával. Adatok importálása a szolgáltatás megköveteli, hogy az adatok az Azure-adatközpont tartalmazó támogatott lemezmeghajtók szállításra.  
 
-Az Import/Export szolgáltatás támogatja csak importálása Azure fájlok az Azure Storage. Azure-fájlok exportálása nem támogatott.
+Az Import/Export szolgáltatás támogatja az importálás kizárólag az Azure Files Azure Storage-bA. Az Azure-fájlok exportálása nem támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az importálási feladat adatok átviteléhez az Azure-fájlok létrehozása előtt gondosan tekintse át, és végezze el az alábbi listán szereplő előfeltételek. A következők szükségesek:
+Adatok átviteléhez az Azure Files importálási feladat létrehozása, előtt gondosan tekintse át, és hajtsa végre az alábbi listában szereplő előfeltételek. Tegye a következőket:
 
-- Import/Export szolgáltatás használata az Azure előfizetéssel rendelkezik.
-- Rendelkeznie kell legalább egy Azure Storage-fiók. A lista [storage-fiókok és a tárolási típusok támogatott Import/Export szolgáltatás](storage-import-export-requirements.md). Új tárfiók létrehozásával kapcsolatos további információkért lásd: [a Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
+- Import/Export szolgáltatás használata egy aktív Azure-előfizetéssel rendelkezik.
+- Legalább egy Azure Storage-fiók rendelkezik. Listájának megtekintéséhez [az Import/Export szolgáltatás által támogatott storage-fiókok és a tárolási típusok](storage-import-export-requirements.md). Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
 - A lemezek elegendő számú [támogatott típusok](storage-import-export-requirements.md#supported-disks). 
-- Windows operációs rendszert futtató rendelkezik egy [támogatott operációsrendszer-verzió](storage-import-export-requirements.md#supported-operating-systems).
-- [Töltse le a 2-es WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) a Windows rendszeren. Bontsa ki az alapértelmezett mappába `waimportexport`. Például: `C:\WaImportExport`.
+- A Windows rendszert futtató egy [támogatott operációsrendszer-verzió](storage-import-export-requirements.md#supported-operating-systems).
+- [Töltse le a 2. verzió WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) a Windows rendszeren. Csomagolja ki az alapértelmezett mappába kívánja `waimportexport`. Például: `C:\WaImportExport`.
+- FedEx/DHL fiókkal rendelkeznie. 
+    - A fiók érvényesnek kell lennie, kell rendelkeznie az egyenleg és visszaszállítási képességek kell rendelkeznie.
+    - Követési szám az exportálási feladat létrehozása.
+    - Minden feladat rendelkeznie kell egy külön követési szám. Több feladat egy követési szám nem támogatottak.
+    - Ha nem rendelkezik egy szállítmányozói fiókjára, Ugrás:
+        - [Hozzon létre egy FedEX fiókot](https://www.fedex.com/en-us/create-account.html), vagy 
+        - [Hozzon létre egy DHL fiókot](http://www.dhl-usa.com/en/express/shipping/open_account.html).
+ 
 
 
-## <a name="step-1-prepare-the-drives"></a>1. lépés: Felkészülés a meghajtók
+## <a name="step-1-prepare-the-drives"></a>1. lépés: Készítse elő a meghajtók
 
-Ebben a lépésben létrehoz egy napló fájlt. A napló fájl például meghajtó sorozatszáma, a titkosítási kulcs és a tárfiókadatok alapvető információkat tárolja.
+Ebben a lépésben létrehoz egy naplót fájlt. A naplófájl alapvető információkat, például a meghajtó sorozatszáma, a titkosítási kulcsot és a storage-fiók adatait tárolja.
 
-Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajtók.
+Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajtókat.
 
-1. A lemezmeghajtók csatlakozni a Windows rendszer SATA összekötők használatával.
-2. Minden olyan meghajtó egy NTFS-kötet létrehozása A meghajtóbetűjelet rendelje a köteten. Ne használjon akkor csatlakozási.
-3. Módosítsa a *dataset.csv* fájl a gyökérmappában található, amelyen telepítve van. Attól függően, hogy importálása egy fájl vagy mappa vagy mindkettőt, adja hozzá a bejegyzést a *dataset.csv* fájlt az alábbi példák hasonló.  
+1. A lemezmeghajtók kapcsolódni a Windows rendszer SATA-összekötők használatával.
+2. Hozzon létre egy NTFS-kötetet egyes meghajtókon. A kötet rendeljen hozzá meghajtóbetűjelet. Ne használjon akkor csatlakozási.
+3. Módosítsa a *dataset.csv* fájl a gyökérmappában található, ahol az eszköz található. Attól függően, hogy importálása egy fájl vagy mappa vagy mindkettő, a tételek hozzáadása a *dataset.csv* fájlt a következő példákhoz hasonló.  
 
-    - **A fájl importálásához**: a következő példában az adatok másolása a C: meghajtón található. A fájl *MyFile1.txt* gyökérmappájában a rendszer átmásolja a *MyAzureFileshare1*. Ha a *MyAzureFileshare1* nem létezik, az Azure Storage-fiók létrehozták. Gyökérmappa-szerkezetében megmarad.
+    - **Fájl importálása**: a következő példában az adatok másolása a C: meghajtón található. A fájl *MyFile1.txt* gyökerében másolja a *MyAzureFileshare1*. Ha a *MyAzureFileshare1* nem létezik, az Azure Storage-fiókot létrehozták. Gyökérmappa-szerkezetében változatlan marad.
 
         ```
             BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
             "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
         ```
-    - **A mappa importálása**: összes fájlt és mappát *MyFolder2* rekurzív módon másolja a fájlmegosztási. Gyökérmappa-szerkezetében megmarad.
+    - **Importálásához**: összes fájl és mappa alatt *MyFolder2* rekurzív módon másolja fájlmegosztás. Gyökérmappa-szerkezetében változatlan marad.
 
         ```
             "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
             
         ```
-    Több bejegyzés is végezhető mappáját vagy fájlját importált megfelelő ugyanabban a fájlban. 
+    Több bejegyzés lehet kapcsolódni a megfelelő mappákat vagy fájlokat importált ugyanebben a fájlban. 
 
         ```
             "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
@@ -63,129 +71,136 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
             "F:\MyFolder3\MyFile3.txt","MyAzureFileshare2/",file,rename,"None",None 
             
         ```
-    További információ [a dataset CSV-fájl előkészítése](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
+    Tudjon meg többet [az adatkészlet CSV-fájl előkészítése](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
     
 
-4. Módosítsa a *driveset.csv* fájl a gyökérmappában található, amelyen telepítve van. Adja hozzá a bejegyzést a *driveset.csv* fájlt az alábbi példák hasonló. A driveset fájl rendelkezik a megfelelő meghajtóbetűjeleket és lemezek listáját, úgy, hogy az eszköz megfelelően ki tudja választani készüljön lemezek listáját.
+4. Módosítsa a *driveset.csv* fájl a gyökérmappában található, ahol az eszköz található. Adjon hozzá bejegyzéseket az *driveset.csv* fájlt a következő példákhoz hasonló. A driveset fájl rendelkezik a megfelelő meghajtóbetűjeleket és lemezek listáját, úgy, hogy az eszköz megfelelően válassza ki a készüljön fel a lemezek listája.
 
-    Ez a példa feltételezi, hogy két lemezek vannak csatolva hozzá, és alapvető NTFS-kötet G:\ és H:\ jönnek létre. H:\is G: már titkosítva van nem titkosítja. Az eszköz formázza, és titkosítja a lemez, amelyen csak H:\ (és nem G:\).
+    Ez a példa feltételezi, hogy két lemezekkel rendelkezik, és alapszintű NTFS-kötet G:\ és H:\ jönnek létre. H:\is nincs titkosítva, miközben G: már titkosítva van. Az eszköz formázza és titkosítja a lemezen, amelyen csak a H:\ (és nem G:\).
 
-    - **Nem titkosított lemezek esetében**: Adja meg *titkosítása* engedélyezheti a BitLocker titkosítást a lemezen.
+    - **Nem titkosított lemezek esetében**: Adja meg *titkosítása* ahhoz, hogy a lemez BitLocker-titkosítást.
 
         ```
         DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
         H,Format,SilentMode,Encrypt,
         ```
     
-    - **A lemez már titkosított**: Adja meg *AlreadyEncrypted* és adja meg a BitLocker-kulcsot.
+    - **Titkosított lemezek esetében**: Adja meg *AlreadyEncrypted* , és adja meg a BitLocker-kulcsot.
 
         ```
         DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
         G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
         ```
 
-    Több bejegyzés is végezhető el több meghajtó megfelelő ugyanabban a fájlban. További információ [driveset CSV-fájl előkészítése](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
+    Több bejegyzés is végezhető el több meghajtó megfelelő ugyanebben a fájlban. Tudjon meg többet [driveset CSV-fájl előkészítése](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
 
-5.  Használja a `PrepImport` lehetőség, hogy másolja, és készítse elő az adatokat a meghajtón. Az első másolás munkamenet könyvtárak és/vagy egy új példány munkamenet-fájlok másolása futtassa a következő parancsot:
+5.  Használja a `PrepImport` másolja, és előkészíti az adatokat a meghajtón. Az első másolás munkamenet könyvtárak és/vagy egy új példányt munkamenettel fájlokat másolni futtassa a következő parancsot:
 
         ```
         .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
         ```
 
-    Importálás példát alább láthatók.
+    Importálás példát alább látható.
   
         ```
         .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
         ```
  
-6. A megadott nevű naplófájl `/j:` paraméter, a parancssor minden Futtatás jön létre. Minden olyan meghajtó előkészíti a napló fájlt fel kell tölteni, az importálási feladat létrehozásakor rendelkezik. -Meghajtók nélkül napló fájlok nincsenek feldolgozva.
+6. A megadott nevű naplófájl `/j:` paraméter, minden egyes futtatáskor a parancssor jön létre. Minden olyan meghajtó előkészítése rendelkezik egy journal-fájlt, amely fel kell tölteni az importálási feladat létrehozásakor. Meghajtók fájlok feldolgozása nem napló nélkül.
 
     > [!IMPORTANT]
-    > - Ne módosítsa a merevlemez-meghajtók vagy a napló fájlban lévő adatok lemezét befejezése után.
+    > - Ne módosítsa a lemezmeghajtókat vagy a naplófájl található adatokat lemezre előkészítés befejezése után.
 
-További példák Ugrás [Adatbázisnapló-fájlok minták](#samples-for-journal-files).
+További példákat talál [-minták az adatbázisnapló-fájlok](#samples-for-journal-files).
 
 ## <a name="step-2-create-an-import-job"></a>2. lépés: Az importálási feladat létrehozása 
 
-A következő lépésekkel importálási feladat létrehozása az Azure portálon.
+A következő lépésekkel importálási feladat létrehozása az Azure Portalon.
 1. Jelentkezzen be https://portal.azure.com/.
-2. Ugrás a **minden szolgáltatás > tárolás > importálási/exportálási feladatok**. 
+2. Lépjen a **minden szolgáltatás > tárolás > importálási/exportálási feladatok**. 
 
-    ![Ugrás az importálási/exportálási](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Ugrás az Import/export](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. Kattintson a **létrehozás importálási/exportálási feladatok**.
+3. Kattintson a **importálási/exportálási feladat létrehozása**.
 
-    ![Kattintson az importálási/exportálási feladatok](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Kattintson az importálási/exportálási feladat](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
 4. A **alapjai**:
 
-    - Válassza ki **az Azure importálási**.
-    - Adjon meg egy leíró nevet az importálási feladatnak. Ez a név segítségével nyomon követheti a feladatok, amikor folyamatban van, és azok befejezése után.
-        -  A név csak kisbetűket, számokat, kötőjeleket és aláhúzásjeleket tartalmazhat.
-        -  A nevének betűvel kell kezdődnie, és nem tartalmazhat szóközt. 
+    - Válassza ki **Azure-ba való importálásuk**.
+    - Adjon meg egy leíró nevet az importálási feladatot. Ez a név segítségével nyomon követheti a feladatok, amikor a folyamatban, és miután a rendszer.
+        -  Ez a név csak kisbetűket, számokat, kötőjeleket és aláhúzásjeleket tartalmazhat.
+        -  A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt. 
     - Válasszon egy előfizetést.
     - Válasszon erőforráscsoportot. 
 
-        ![Hozzon létre importálási feladat - 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+        ![Importálási feladat létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. A **feladat részletei**:
     
-    - Az előző során létrehozott Adatbázisnapló-fájlok feltöltése [1. lépés: készítse elő a meghajtók](#step-1-prepare-the-drives). 
-    - Válassza ki a tárfiók, amelyek az adatok importálva. 
-    - A gyűjtőtár helyre automatikusan a kiválasztott tárfiók régió alapján van feltöltve.
+    - A naplófájlok az előző során létrehozott feltöltése [1. lépés: készítse elő a meghajtók](#step-1-prepare-the-drives). 
+    - Válassza ki a tárfiókot, amely az adatokat importálja a rendszer. 
+    - A gyűjtőhely automatikusan kitölti a rendszer a kiválasztott tárfiók a régióhoz igazodik.
    
-       ![Hozzon létre importálási feladat - 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+       ![Importálási feladat létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. A **szállítási információ vissza**:
+4. A **szállítási adatok visszaadása**:
 
-    - A legördülő listából válassza ki a szolgáltatói.
-    - Adjon meg egy érvényes vivőjel-szám, amely adott szolgáltatónként hozott létre. Microsoft küldje el azt a meghajtókat, az importálási feladat befejezése után ezt a fiókot használja. 
-    - Adjon teljes és érvényes kapcsolattartójának a neve, telefon, e-mail, utca, házszám, város, zip, az állam/megye ország vagy régió.
+    - A legördülő listából válassza ki a szolgáltató.
+    - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. 
+    - Adja meg a kész, érvényes ügyfél nevét, telefonszám, e-mail, utca, házszám, város, zip, államot/megyét és ország/régió.
 
-       ![Hozzon létre importálási feladat - 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+        > [!TIP] 
+        > Helyett adjon meg egy e-mail címet, egy-egy felhasználóhoz, adjon meg egy csoport e-mail-címet. Ez biztosítja, értesítések fogadására, még akkor is, ha egy rendszergazda hagyja.
+
+       ![Importálási feladat létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
    
-5. Az a **összegzés**:
+5. Az a **összefoglalás**:
 
-    - Adja meg a szállítási cím szállítási lemezek vissza az Azure-bA az Azure-adatközpontban. Győződjön meg arról, hogy a feladat neve és a teljes címe szerepelnek a szállítási címkén.
+    - Adja meg a szállítási cím a szállítási lemezeket az Azure-bA az Azure-adatközpontba. Győződjön meg arról, hogy a feladat nevét és a teljes cím a szállítási címkét a szerepelnek.
     - Kattintson a **OK** importálási feladat létrehozásának befejezéséhez.
 
-        ![Hozzon létre importálási feladat - 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![Importálási feladat létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>3. lépés: Küldje el a meghajtókat, az Azure-adatközpontban 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>3. lépés: Az Azure-adatközpontba a meghajtók szállításra 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>4. lépés: A feladat frissíti a nyomkövetési adatokat
+## <a name="step-4-update-the-job-with-tracking-information"></a>4. lépés: A feladat frissítése a nyomkövetési adatokat
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="samples-for-journal-files"></a>A napló fájlok minták
+## <a name="step-5-verify-data-upload-to-azure"></a>5. lépés: Ellenőrizze az adatok feltöltése az Azure-bA
 
-A **további meghajtók hozzáadása**, hozzon létre egy új driveset fájlt, és futtassa a parancsot az alábbi. 
+Nyomon követheti a feladat befejezését. A feladat befejeződése után győződjön meg arról, hogy az adatok feltöltötte-e az Azure-bA. Törli a helyszíni adatokat, csak azt követően, ha megbizonyosodott arról, hogy a feltöltés sikeres volt.
 
-A különböző, mint a megadott merevlemez-meghajtók későbbi másolási munkamenetek *InitialDriveset .csv* fájlt, adja meg egy új driveset *.csv* fájlt, és adja meg a paraméter értékeként `AdditionalDriveSet`. Használja a **azonos naplófájl** nevet, és adjon meg egy **új munkamenet-azonosító**. Ugyanaz, mint a InitialDriveSet formátum AdditionalDriveset CSV-fájl formátuma.
+## <a name="samples-for-journal-files"></a>Naplófájl-minták
+
+A **további meghajtók hozzáadása**, hozzon létre egy új driveset fájlt, és futtassa a parancsot az alábbiak szerint. 
+
+Az ezt követő másolási munkamenetek a különböző merevlemez-meghajtók, mint a megadott *InitialDriveset .csv* fájlt, adja meg egy új driveset *.csv* fájlt, és adja meg a paraméter értékeként `AdditionalDriveSet`. Használja a **azonos naplófájl** nevet, és adjon meg egy **új munkamenet-azonosító**. Ugyanaz, mint a InitialDriveSet formátum AdditionalDriveset CSV-fájl formátuma.
 
     ```
     WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
     ```
 
-Importálás példát alább láthatók.
+Importálás példát alább látható.
 
     ```
     WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDriveSet:driveset-2.csv
     ```
 
 
-További adatok hozzáadása a azonos driveset, a paranccsal PrepImport későbbi másolási munkamenetek másolása további fájlokat vagy könyvtár.
+További adatok hozzáadása az azonos driveset, a paranccsal PrepImport másolás későbbi munkamenet során további fájlokat/címtár másolásához.
 
-Az azonos merevlemez-meghajtókra megadott későbbi másolási munkamenetek *InitialDriveset.csv* fájlt, adja meg a **azonos naplófájl** nevet, és adjon meg egy **új munkamenet-azonosító**; nincs szükség arra, hogy a tárfiók kulcsára.
+Másolás későbbi munkamenet során az azonos merevlemez-meghajtókra megadott *InitialDriveset.csv* fájlt, adja meg a **azonos naplófájl** nevet, és adjon meg egy **új munkamenet-azonosító**; Hiba esetén nem kell adnia a tárfiók-kulcsot.
 
     ```
     WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
     ```
 
-Importálás példát alább láthatók.
+Importálás példát alább látható.
 
     ```
     WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv

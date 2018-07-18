@@ -1,43 +1,44 @@
-
-<!--
-includes/sql-database-include-ip-address-22-v12portal.md
-
-Latest Freshness check:  2016-03-21 , daleche.
-
-As of circa 2015-09-04, the following topics might include this include:
-articles/sql-database/sql-database-configure-firewall-settings.md
-articles/sql-database/sql-database-connect-query.md
-
-
-## Server-level firewall rules
-
-### Add a server-level firewall rule through the new Azure portal
--->
-
-
+---
+title: Kiszolgálószintű tűzfalszabályok
+description: Kiszolgálószintű tűzfalszabályok
+keywords: SQL-kapcsolatot, a kapcsolati karakterlánc
+services: sql-database
+author: dalechen
+manager: craigg
+ms.service: sql-database
+ms.custom: develop apps
+ms.topic: include
+ms.date: 07/13/2018
+ms.author: ninarn
+ms.openlocfilehash: 07bbba28b7e1b048ef3a4e1afa4db255967dc093
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117273"
+---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. A bal oldali listában válassza ki a **minden szolgáltatás**. 
+2. Válassza a bal oldali lista **minden szolgáltatás**.
 
-3. Görgessen és válassza ki **SQL Server-kiszolgálók**. 
-   
-    ![Az Azure SQL adatbázis-kiszolgáló található a portálon][b21-FindServerInPortal]
-5. A Szűrő mezőbe írja be annak a kiszolgálónak a nevét elindításához. A sor jelenik meg.
+3. Görgessen és válassza ki **SQL Server-kiszolgálók**.
 
-6. Jelölje ki a kiszolgáló sort. A kiszolgáló egy panel jelenik meg.
+    ![Keresse meg az Azure SQL Database-kiszolgáló a portálon][b21-FindServerInPortal]
+5. A szűrő szövegmezőbe elindításához írja be a kiszolgáló nevét. A sor jelenik meg.
 
-7. Válassza ki a kiszolgálójuk paneljéről **beállítások**. 
+6. Válassza ki a kiszolgáló a sort. Megjelenik egy panel, a kiszolgáló számára.
 
-8. Válassza ki **tűzfal**. 
-   
+7. Az a kiszolgáló panelen válassza ki a **beállítások**.
+
+8. Válassza ki **tűzfal**.
+
     ![Válassza ki a beállítások > tűzfal][b31-SettingsFirewallNavig]
-9. Válassza ki **adja hozzá ügyfél IP**. Az első szövegmezőbe írja be az új szabály nevét.
+9. Válassza ki **adja hozzá ügyfél IP**. Az első szövegbeviteli mezőbe írja be az új szabály nevét.
 
-10. Adja meg a kis és nagy IP cím a tartomány értékeinek engedélyezni szeretné.
-    
-    * Azok az alacsony érték end jöhet **.0** és a nagy értékű végződhet **.255**.
-    
-    ![Engedélyezi az IP-címtartomány hozzáadása][b41-AddRange]
+10. Írja be az alacsony és magas IP cím értékeit engedélyezni kívánja a tartományon.
+
+    * Alacsony érték end jöhet lehet **.0** és a magas érték végén **.255**.
+
 11. Kattintson a **Mentés** gombra.
 
 <!-- Image references. -->

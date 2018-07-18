@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 80d06a6c40fa804c543a1cee9dc75b57b293beaf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 89544ea72a4356fb8d4f3a192e6fc546eb6b3cff
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446877"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092010"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek 
 
@@ -267,7 +267,7 @@ A HDFS- vagy Azure blob Storage-fájlok hivatkozó külső táblák nem támogat
 
 ### <a name="replication"></a>Replikáció 
  
-Replikációs még nem támogatott. A replikációval kapcsolatos további információkért lásd: [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication).
+Felügyelt példány replikáció esetén támogatott. A replikációval kapcsolatos további információkért lásd: [SQL Server-replikáció](http://review.docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
  
 ### <a name="restore-statement"></a>Utasítás VISSZAÁLLÍTÁSA 
  
@@ -371,11 +371,11 @@ Az SQL Server Agent kapcsolatos információkért lásd: [SQL Server Agent](http
 A következők nem támogatottak: 
 - `FILESTREAM` 
 - `FILETABLE` 
-- `EXTERNAL TABLE` 
+- `EXTERNAL TABLE`
 - `MEMORY_OPTIMIZED`  
 
 További információ a létrehozása és módosítása a táblák: [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) és [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
- 
+
 ## <a name="Changes"></a> Viselkedésbeli változások 
  
 A következő változók, functions és a nézetek különböző eredményeket adja vissza:  

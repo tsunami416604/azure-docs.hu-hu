@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: 46e93953ba8db141b99b14aa78674e85b343adbc
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 4a592a20d009b269f1e8f7079311caa4c33cf613
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903395"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113106"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Docker CE-fürt üzembe helyezése
 
@@ -30,10 +30,10 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik.
 
-A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *ukwest* helyen.
+A következő példában létrehozunk egy erőforráscsoportot, nevű *myResourceGroup* a a *westus2* helyét.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location ukwest
+az group create --name myResourceGroup --location westus2
 ```
 
 Kimenet:
@@ -41,7 +41,7 @@ Kimenet:
 ```json
 {
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
-  "location": "ukwest",
+  "location": "westus2",
   "managedBy": null,
   "name": "myResourceGroup",
   "properties": {
@@ -53,12 +53,12 @@ Kimenet:
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm-fürt létrehozása
 
-Az Azure Container Service-ben az [az acs create](/cli/azure/acs#az_acs_create) paranccsal hozhat létre Docker CE-fürtöt. 
+Az Azure Container Service-ben az [az acs create](/cli/azure/acs#az_acs_create) paranccsal hozhat létre Docker CE-fürtöt. A Docker CE-régió availaiblity információkért lásd: [Docker CE az ACS-régiók](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
 A következő példa egy *mySwarmCluster* nevű fürtöt hoz létre egy Linux-főcsomóponttal és három Linux-ügyfélcsomóponttal.
 
 ```azurecli-interactive
-az acs create --name mySwarmCluster --orchestrator-type swarm --resource-group myResourceGroup --generate-ssh-keys
+az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 Egyes esetekben – például korlátozott próbaverziónál – az Azure-előfizetés korlátozott hozzáféréssel rendelkezik az Azure-erőforrásokhoz. Ha az üzembe helyezés az elérhető magok korlátozott száma miatt hiúsul meg, csökkentse az alapértelmezett ügynökök számát az `--agent-count 1` az [az acs create](/cli/azure/acs#az_acs_create) parancshoz történő hozzáadásával. 

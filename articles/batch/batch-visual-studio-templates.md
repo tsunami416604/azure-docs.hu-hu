@@ -1,6 +1,6 @@
 ---
-title: A Visual Studio sablonokkal - Azure Batch megoldások |} Microsoft Docs
-description: Ismerje meg, hogyan Visual Studio projektsablonjai segítségével valósítja meg, és futtassa a számítási-igényes munkaterhelések Azure Batch.
+title: A Visual Studio-sablonok – Azure Batch-megoldások létrehozása |} A Microsoft Docs
+description: Ismerje meg, hogyan Visual Studio-projektsablonok segíthet megvalósítása és nagy számítási igényű számítási feladatok futtatása Azure Batch.
 services: batch
 documentationcenter: .net
 author: dlepow
@@ -15,120 +15,120 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98a5af1c0b321b7f9acf2bfd936a16d22088babf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128860"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114096"
 ---
-# <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio projektsablonjai segítségével jump-start kötegelt megoldások
+# <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>A Visual Studio-projektsablonok segítségével gyorsan elindíthatja a Batch-megoldások
 
-A **Feladatkezelő** és **feladat processzor Visual Studio sablonok** köteg adja meg a kódot valósítja meg, és futtassa a számítási-igényes munkaterhelések kötegelt a legkisebb erőfeszítéssel alapján. Ez a dokumentum ismerteti ezeket a sablonokat és útmutatást is használhatja őket.
+A **Feladatkezelő** és **feladat processzor Visual Studio-sablonok** Batch adja meg annak érdekében, hogy megvalósítása és nagy számítási igényű számítási feladatok futtatása a Batch a lehető legkevesebb erőfeszítés-kódot. Ez a dokumentum ismerteti ezeket a sablonokat, és útmutatást kínál a használatukat.
 
 > [!IMPORTANT]
-> Ez a cikk ismerteti, amelyek csak ez a két sablon vonatkozó információkat, és feltételezi, hogy Ön ismeri a Batch szolgáltatás és a hozzá kapcsolódó főbb fogalmait a:-készletek, a számítási csomópontok, feladatok és feladatokat, feladat manager feladatok, környezeti változók és más releváns információ. További információt a [alapjai az Azure Batch](batch-technical-overview.md), [Batch funkcióinak áttekintése a fejlesztők](batch-api-basics.md), és [Ismerkedés az Azure Batch könyvtár a .NET-hez](batch-dotnet-get-started.md).
+> Ez a cikk ismerteti, csak ez a két sablon vonatkozó információkat, és feltételezi, hogy Ön ismeri a Batch szolgáltatás és a hozzá kapcsolódó alapfogalmakat: készletek, számítási csomópontok, feladatok és a feladatok, Feladatkezelő tevékenységekről, a környezeti változók és más releváns információk. További információkat a [az Azure Batch alapjai](batch-technical-overview.md) és [Batch szolgáltatás áttekintése fejlesztők számára](batch-api-basics.md).
 > 
 > 
 
 ## <a name="high-level-overview"></a>Áttekintés
-A Feladatkezelő és a feladat processzor sablonok segítségével hozzon létre két hasznos összetevői:
+A Feladatkezelő és a feladat processzor-sablonok segítségével két hasznos összetevőket hozhat létre:
 
-* Egy feladat manager feladat, amely egy, amely képes felosztása a feladat több feladat is önállóan, párhuzamosan futó feladat elválasztó.
-* Egy feladat processzor előzetesen feldolgozni, és egy alkalmazás parancs sora környékén utófeldolgozási végrehajtásához használható.
+* A feladatkezelői tevékenység, amely egy feladat felosztó tönkretehetik több feladatokra, amelyek egymástól függetlenül, párhuzamosan futtathatók egy feladatot, amely megvalósítja.
+* Egy feladat processzor előtti és utáni feldolgozási egy alkalmazás parancs sora környékén végrehajtásához használható.
 
-Például movie megjelenítés esetén, a feladat elválasztó volna ikonná egy egyetlen movie feladat több száz vagy ezer a különböző feladatokhoz, amelyek feldolgozzák egyes keretek külön-külön kellene. Ennek megfelelően a feladat processzor volna el a megjelenítési alkalmazás és minden függő folyamatok, amelyek szükségesek ahhoz, hogy mindegyik leképezési keret, valamint minden további műveleteket (például a megjelenített keret tárolóhelyre másolása).
+Például a film renderelési forgatókönyvekben a feladat felosztó lenne alakítsa egyetlen movie feladat több száz vagy ezer arról, hogy külön-külön kellene folyamat egyes keretek különböző feladatokhoz. Ennek megfelelően a feladat processzor lenne indítja el a renderelési alkalmazások, és minden függő folyamatokat, melyek szükségesek ahhoz, hogy mindegyik leképezési kerete, valamint végezze el a további műveleteket (például a renderelt kép a tárolóhely másolása).
 
 > [!NOTE]
-> A Feladatkezelő és a feladat processzor sablonok függetlenek egymástól, dönthet úgy is, vagy csak az egyik, a számítási feladatok és preferenciák követelményeitől függően.
+> A Feladatkezelő és a feladat processzor-sablonok függetlenek egymástól, így lehet váltani, mindkettő, vagy csak az egyiket, a számítási feladat és a saját beállítások követelményeitől függően.
 > 
 > 
 
-Ahogy az alábbi ábrán is látható, a számítási feladat által használt ezeket a sablonokat végighaladnia három fázisból áll:
+Az alábbi ábrán látható, a számítási feladat, ezeket a sablonokat használó három lépésben hajtaná fog áthaladni:
 
-1. Az Ügyfélkód (pl. alkalmazások, webes szolgáltatás, stb.) küldi el egy feladatot, amely a Batch szolgáltatás a Azure-ban, a Feladatkezelő tevékenység a feladat manager program megadása.
-2. A Batch szolgáltatás a feladat manager feladatot futtatja egy számítási csomóponton, és a feladat elválasztó a elindítja a megadott számú feladat processzor feladatok, a különböző számítási csomópontokkal szükséges, a paraméterek és a feladat elválasztó kód specifikációk alapján.
-3. A feladat processzor feladatok egymástól függetlenül, a bemeneti adatok feldolgozása és a kimeneti adatok létrehozása ezzel párhuzamosan futnak.
+1. Az Ügyfélkód (pl. alkalmazások, webszolgáltatás, stb.) elküld egy feladatot, amely a Batch szolgáltatás az Azure-ban, adja meg, a Feladatkezelő tevékenység a feladat manager programot.
+2. A Batch szolgáltatás a Feladatkezelő tevékenység fut egy számítási csomóponton, és a feladat felosztó a betölti a megadott számú feladat processzor feladatokat, az a számos számítási csomópontokkal szükség szerint a paraméterek és a feladat felosztó kód specifikációk alapján.
+3. A feladat processzor feladatok futtatása függetlenül, párhuzamosan dolgozza fel a bemeneti adatokat, és a kimeneti adatokat hozzon létre.
 
-![Hogyan kommunikál az ügyfélkód a Batch szolgáltatás ábrája][diagram01]
+![Hogyan kommunikál az ügyfélkód a Batch szolgáltatás bemutató ábra.][diagram01]
 
 ## <a name="prerequisites"></a>Előfeltételek
-A kötegelt sablonok használatához a következőkre lesz szüksége:
+A Batch-sablonjainak használatához a következőkre lesz szüksége:
 
-* Egy számítógép, amelyen telepítve a Visual Studio 2015. Kötegelt sablonok jelenleg csak a Visual Studio 2015 esetében támogatott.
-* A kötegelt sablonok, amely elérhető a [Visual Studio galériában] [ vs_gallery] Visual Studio kiterjesztéseket. A sablonok beszerzését két módja van:
+* Egy számítógép, amelyen telepítve van a Visual Studio 2015. Batch-sablonok jelenleg csak a Visual Studio 2015 esetében támogatott.
+* A Batch-sablonokat, amelyek érhetők el a [Visual Studio-galéria] [ vs_gallery] Visual Studio-bővítményként. A sablon beszerzését két módja van:
   
-  * A sablonok használatával telepítse a **bővítmények és frissítések** párbeszédpanel a Visual Studio (további információkért lásd: [keresés és a Visual Studio-bővítmények használatával][vs_find_use_ext]). Az a **bővítmények és frissítések** párbeszédpanel mezőben keressen, és töltse le a következő két kiterjesztések:
+  * A sablonok használatával telepítse a **bővítmények és frissítések** párbeszédpanel a Visual Studióban (további információkért lásd: [keresés és a Visual Studio-bővítmények használatával][vs_find_use_ext]). Az a **bővítmények és frissítések** párbeszédpanel mezőbe, keresése, és töltse le a következő két bővítményeket:
     
-    * A feladat elválasztó Azure Batch Feladatkezelő
-    * Az Azure Batch feladat processzor
-  * A sablonok letöltésére az online katalógusból a Visual Studio: [Projektsablonjai a Microsoft Azure Batch][vs_gallery_templates]
-* Ha szeretné használni a [alkalmazáscsomagok](batch-application-packages.md) beállítást, a Feladatkezelő telepítéséhez és a kötegelt feladat processzor számítási csomópontok, össze kell kapcsolni egy tárfiókot a Batch-fiókhoz.
+    * Az Azure Batch Feladatkezelő a feladat felosztó
+    * Az Azure Batch-feladat processzor
+  * A sablonok letöltésére az online katalógusból a Visual Studióhoz: [a Microsoft Azure Batch projektsablonok][vs_gallery_templates]
+* Ha azt tervezi, használja a [alkalmazáscsomagok](batch-application-packages.md) üzembe helyezéséhez a Feladatkezelő funkció és a processzor-feladat a Batch számítási csomópontokon kell, hogy egy storage-fiókot kapcsol a Batch-fiókhoz.
 
-## <a name="preparation"></a>Előkészítése
-Azt javasoljuk, hogy a Feladatkezelő, valamint a feladat processzor tartalmazó megoldás létrehozásával, mert ez segítségével egyszerűbb megosztani a kód a Feladatkezelőt és a feladat feldolgozó programok között. Ez a megoldás létrehozásához kövesse az alábbi lépéseket:
+## <a name="preparation"></a>Előkészítés
+Javasolt létrehozni egy megoldás, amely a Feladatkezelő, valamint a feladat processzor tartalmazhat, mivel ez még könnyebbé teheti a Feladatkezelő és a feladat processzor programok között kódmegosztáshoz. Ez a megoldás létrehozásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a Visual Studio, és válassza ki **fájl** > **új** > **projekt**.
-2. A **sablonok**, bontsa ki a **egyéb projekttípusok**, kattintson **Visual Studio megoldás**, majd válassza ki **üres megoldás**.
+1. Nyissa meg a Visual Studiót, és válassza ki **fájl** > **új** > **projekt**.
+2. A **sablonok**, bontsa ki a **egyéb projekttípusok**, kattintson a **Visual Studio-megoldások**, majd válassza ki **üres megoldás**.
 3. Írja be az alkalmazás és a megoldás (például "LitwareBatchTaskPrograms") célját leíró nevet.
 4. Az új megoldás létrehozásához kattintson a **OK**.
 
-## <a name="job-manager-template"></a>Feladatkezelő sablon
-A Feladatkezelő sablon segítségével valósítja meg a kezelő feladata, hogy a következő műveleteket hajthatja végre:
+## <a name="job-manager-template"></a>Feladatkezelő-sablon
+A feladat Manager-sablon segítségével megvalósítani a feladatkezelői tevékenység, amely a következő műveleteket hajthatja végre:
 
-* A feladatok felosztása több feladat.
-* Küldje el ezeket a feladatokat a kötegelt futtatásához.
+* Feladat felosztása több feladatot.
+* Küldje el ezeket a feladatokat a Batch futtathatók.
 
 > [!NOTE]
-> Feladat manager feladatokkal kapcsolatos további információkért lásd: [Batch funkcióinak áttekintése a fejlesztők](batch-api-basics.md#job-manager-task).
+> További információ a Feladatkezelő tevékenységekről: [Batch szolgáltatás áttekintése fejlesztők számára](batch-api-basics.md#job-manager-task).
 > 
 > 
 
-### <a name="create-a-job-manager-using-the-template"></a>A feladat-kezelőt a sablon létrehozása
-A Feladatkezelő hozzáadása a megoldás, amely a korábban létrehozott, kövesse az alábbi lépéseket:
+### <a name="create-a-job-manager-using-the-template"></a>Hozzon létre egy feladatot Manager-sablonnal
+-Feladat hozzáadása a megoldáshoz, amelyet korábban hozott létre, kövesse az alábbi lépéseket:
 
-1. Nyissa meg a meglévő megoldást a Visual Studio.
+1. Nyissa meg a meglévő megoldást a Visual Studióban.
 2. A Megoldáskezelőben kattintson a jobb gombbal a megoldás, kattintson a **Hozzáadás** > **új projekt**.
-3. A **Visual C#**, kattintson a **felhő**, és kattintson a **Azure Batch Job Manager használatát a feladat elválasztó**.
-4. Adjon meg egy nevet, amely ismerteti az alkalmazást, és úgy azonosítja a projektet, a Feladatkezelő (pl. "LitwareJobManager").
+3. A **Visual C#**, kattintson a **felhőalapú**, és kattintson a **Azure Batch-feladat felosztó Feladatkezelő**.
+4. Adjon meg egy nevet, amely ismerteti az alkalmazást, és a projekt azonosítja, a Feladatkezelő (például) "LitwareJobManager").
 5. A projekt létrehozásához kattintson a **OK**.
-6. Végezetül fordítsa le a projekt azzal kényszerítheti a Visual Studio betölteni az összes hivatkozott NuGet-csomagok, és győződjön meg arról, hogy a projekt érvényes módosításához megkezdése előtt.
+6. Végezetül állítsa össze a projektet, azzal kényszerítheti a Visual Studio betölteni a hivatkozott NuGet-csomagok, és győződjön meg arról, hogy a projekt érvényes módosítás előtt.
 
-### <a name="job-manager-template-files-and-their-purpose"></a>Feladatkezelő sablonfájlokat és célját
-A Feladatkezelő sablonnal projekt létrehozásakor három fájlcsoportok kódot állít elő:
+### <a name="job-manager-template-files-and-their-purpose"></a>Feladatkezelő-sablonfájlokat és azok célja
+A Feladatkezelő sablonnal projektet hoz létre, amikor kódfájlok három csoportjait hoz létre:
 
-* A fő programfájl (Program.cs). A program a belépési pont és a legfelső szintű kivételkezelést tartalmazza. Ezt általában nem szükséges.
-* A keretrendszer könyvtára. Ez a feladat manager program – a paraméterek, a a kötegelt feladatok hozzáadása kicsomagolása "bolierplate" dolgozott felelős fájlokat tartalmazza. Módosítani ezeket a fájlokat általában nem szükséges.
-* A feladat elválasztó fájlt (JobSplitter.cs). Ez azért, ahol az alkalmazás-specifikus logika vágását meghatározó egy feladatot a feladatok helyezzük el.
+* A fő program fájl (Program.cs). A program a belépési pont és a legfelső szintű kivételkezelés tartalmazza. A beállítás módosítása általában nem kell.
+* A keretrendszer könyvtárába. Ez a feladat manager program – a kicsomagolás paraméterek, tevékenységeket ad a Batch-feladat stb "bolierplate" elvégzett felelős fájlokat tartalmazza. Nem megfelelően kell módosítani ezeket a fájlokat.
+* A feladat felosztó fájlt (JobSplitter.cs). Ez a meg, ahová az alkalmazás-specifikus logika egy feladat felosztása feladatokra lesz.
 
-Természetesen a feladat elválasztó kódot, attól függően, hogy a feladat a felosztás logika összetettsége támogatásához szükséges további fájlokat is hozzáadhat.
+Természetesen a feladat felosztó kód a logika felosztása feladat összetettségétől függően támogatásához szükséges további fájlokat is hozzáadhat.
 
-A sablon is létrehoz a szabványos .NET project fájlok például .csproj fájlhoz, app.config, packages.config, stb.
+A sablon is létrehoz a standard .NET projektfájlokat, például a .csproj fájlban, app.config, packages.config stb.
 
-A többi Ez a szakasz ismerteti a különböző fájlok és a kód szerkezete, és ismerteti a osztályra funkciója.
+A többi Ez a szakasz ismerteti a különböző fájlok és a kód szerkezete, és bemutatja, mire minden egyes osztály használható.
 
 ![A Visual Studio Megoldáskezelőben a Feladatkezelő sablon megoldás][solution_explorer01]
 
 **Keretrendszer fájlok**
 
-* `Configuration.cs`: A feladat konfigurációs adatok, például a Batch-fiók adatait, a csatolt tárfiók hitelesítő adatainak, a feladat és a feladat adatainak és a feladat paramétereit betöltésének magában foglalja. Kötegelt által definiált környezeti változók (lásd a feladatokat, a Batch-dokumentáció környezeti beállításai) a Configuration.EnvironmentVariable osztály keresztül hozzáférést is biztosít.
-* `IConfiguration.cs`: A Configuration osztály végrehajtásának kivonatolja a egységteszt a feladat elválasztó egy hamis vagy utánzatait konfigurációs objektuma használja.
-* `JobManager.cs`: A feladat manager program összetevői koordinálja. Ez felelős inicializálása a feladat elválasztó, a feladat elválasztó meghívása, és a feladatokat, a feladat küldőtől a feladat elválasztó által visszaadott terjesztéséhez.
-* `JobManagerException.cs`: A Feladatkezelő leáll igénylő hiba jelöli. JobManagerException burkolása "várt" hibák, ahol a diagnosztikai információk lezárást részeként megadható szolgál.
-* `TaskSubmitter.cs`: Ez az osztály felelős való hozzáadásakor a kötegelt a feladat elválasztó által visszaadott feladatok. A JobManager osztály összesítések kötegek hatékony, de időben történő betöltésére ide a feladatot a feladatok sorozatát majd meghívja a TaskSubmitter.SubmitTasks a háttérszálon az egyes kötegekben.
+* `Configuration.cs`: A feladat konfigurációs adatok, például a Batch-fiók adatait, társított storage-fiók hitelesítő adatait, feladat és a feladatok adataihoz és feladatparaméter betöltését magában foglalja. A Batch által definiált környezeti változót (lásd a környezeti beállítások tevékenységekhez, a Batch dokumentációjában) a Configuration.EnvironmentVariable osztállyal hozzáférést is biztosít.
+* `IConfiguration.cs`: A konfigurációs osztály végrehajtásának kivonatolja a feladat felosztó használatával egy hamis vagy utánzatként funkcionáló konfigurációs objektum segítségével test jednotky.
+* `JobManager.cs`: A feladat manager program összetevői hangolja össze. Ez felelős az feladat elválasztó, a feladat felosztó meghívása és a feladatokat a tárfeladat küldője a feladat felosztó által visszaadott zahájeno inicializálása.
+* `JobManagerException.cs`: Leállítja a Feladatkezelő igénylő hiba jelöli. JobManagerException segítségével burkolása "várt" hibák, ahol adott diagnosztikai adatokat lezárást részeként adható meg.
+* `TaskSubmitter.cs`: Ez az osztály a Batch-feladat a feladat felosztó által visszaadott feladatok hozzáadása a feladata. A JobManager osztály összesítések feladatok sorozatát kötegekbe hatékony, de a megfelelő időben is a feladat ekkor meghívja a TaskSubmitter.SubmitTasks a háttérbeli szálon az egyes kötegek.
 
-**Feladat elválasztó**
+**Feladat-elválasztó**
 
-`JobSplitter.cs`: Ez az osztály tartalmazza az alkalmazás-specifikus logika vágását meghatározó a feladatot a feladatok. A keretrendszer meghívja az beszerzése egy feladatot, amely hozzáadja a feladathoz, a metódus visszaadja azokat feladatütemezési JobSplitter.Split metódus. Ez az osztály hol fogja tölteni a feladat a programot. Valósítja meg a vegyes vissza a feladatokat, amelybe a feladat particionálásához képviselő CloudTask példányok sorozata.
+`JobSplitter.cs`: Ez az osztály a vágását meghatározó a feldolgozás feladatokat az alkalmazás-specifikus logikáját tartalmazza. A keretrendszer beszerzése sorozata, feladatok, amely hozzáadja a feladathoz, a metódus visszaadja azokat a JobSplitter.Split módszert hívja meg. Ez az osztály hol fogja tölteni a feladat logikáját. A felosztás metódus CloudTask példányok, amelybe át szeretné particionálni a feladat a feladatokat képviselő sorozatát visszaadandó megvalósításához.
 
-**Standard szintű .NET parancssori project fájlok**
+**Standard szintű .NET parancssori soubory projektu**
 
-* `App.config`: Standard .NET alkalmazás konfigurációs fájljában.
+* `App.config`: Standard .NET alkalmazás-konfigurációs fájl.
 * `Packages.config`: Standard NuGet csomag függőségi fájlt.
-* `Program.cs`: A program a belépési pont és a legfelső szintű kivételkezelést tartalmazza.
+* `Program.cs`: A program belépési pont és a legfelső szintű kivételkezelés tartalmazza.
 
-### <a name="implementing-the-job-splitter"></a>A feladat elválasztó megvalósítása
-A Feladatkezelő sablonprojekt megnyitásakor a projekt alapértelmezés szerint a JobSplitter.cs fájlt fog rendelkezni. A Split() módszer megjelenítése az alábbi használatával a feladatok felosztása logikáját a terhelést a valósíthatja meg:
+### <a name="implementing-the-job-splitter"></a>A feladat felosztó megvalósítása
+Amikor megnyitja a Feladatkezelő sablonprojektjét, a projekt lesz alapértelmezés szerint a JobSplitter.cs fájlt. Meg lehet valósítani a felosztási logika, a feladatok a számítási feladatok a Split() metódus megjelenítése az alábbi használatával:
 
 ```csharp
 /// <summary>
@@ -157,56 +157,56 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> A jegyzettel ellátott részt a `Split()` módszer a következő: a Feladatkezelő sablon kódot, amelyet logika hozzáadásával módosíthatja a feladatok ossza fel a különböző feladatok csak szakasza. Ha a sablon egy másik szakasz módosítani szeretné, győződjön meg arról, amelyek familiarized kötegelt működése, a és néhány kipróbálhatja a [Batch-Kódminták][github_samples].
+> A jegyzettel ellátott szakaszában a `Split()` módszer a következő: a Feladatkezelő sablonban lévő kód, amely a logikai hozzáadásával módosíthatja célja, hogy a feladatok felosztása a különböző feladatok csak szakaszában. Ha azt szeretné, módosíthatja a sablon egy másik szakaszában, győződjön meg arról, akkor is meg Batch működését, és próbálja ki néhány a [Kódminták Batch][github_samples].
 > 
 > 
 
-A Split() megvalósítás hozzáféréssel rendelkezik:
+A Split() megvalósítás férhet hozzá:
 
 * A feladat paramétereit keresztül a `_parameters` mező.
 * A feladat képviselő keresztül CloudJob objektum a `_job` mező.
-* A feladat-kezelő feladat képviselő keresztül CloudTask objektum a `_jobManagerTask` mező.
+* A feladatkezelői tevékenység, képviselő keresztül CloudTask objektum a `_jobManagerTask` mező.
 
-A `Split()` megvalósítása nem kell közvetlenül tevékenységek hozzáadása a feladatot. Ehelyett a kód CloudTask objektumok sorozatát kell visszaadnia, és ezek nem kerülnek be a feladat automatikusan által a feladat elválasztó meghívása keretrendszer osztályait. Gyakori megoldás, hogy a C# tartozó iterátor (`yield return`) szolgáltatás feladat elválasztókat végrehajtásához, mivel ez teszi lehetővé a feladatokat, hogy fut a lehető leghamarabb, nem pedig ki kell számítani az összes tevékenység vár.
+A `Split()` megvalósítása nem kell közvetlenül tevékenységek hozzáadása a feladathoz. Ehelyett a kód CloudTask objektumok sorozatát adja vissza, és ezek hozzáadódik a feldolgozás automatikusan a keretrendszer osztályokat, amelyek aktiválják az feladat elválasztó alapján. Használja a C# a iterátor szokás (`yield return`) funkció megvalósítása a feladat elválasztókat, mert lehetővé teszi a feladatokat, hogy minél hamarabb futó összes tevékenység ki kell tartó várakozás helyett.
 
-**A feladat elválasztó sikertelen**
+**A feladat felosztó sikertelen**
 
-Ha a feladat elválasztó hibát észlel, azt kell vagy:
+Ha a feladat felosztó hibát észlel, azt kell vagy:
 
-* Állítsa le a folyamat a C# `yield break` utasítást, amelyben a Feladatkezelő eset kezeli a program sikeres; vagy
-* Kivételt jelez, a Feladatkezelő számít eset nem sikerült és attól függően, hogy az ügyfél konfigurálta, előfordulhat, hogy ismételhető).
+* Leállítja a feladatütemezés, a C# használatával `yield break` utasítással, amely esetben a Feladatkezelő lesz kezelve sikeres; vagy
+* Kivételt, amely esetben a Feladatkezelő throw sikertelenként lesz kezelve, és attól függően, hogy az ügyfél konfigurálta, előfordulhat, hogy újra megpróbálja).
 
-Mindkét esetben bármilyen már a feladat elválasztó által visszaadott, és hozzáadja a kötegelt feladatok futtatására alkalmas lesz. Ha nem szeretné, hogy ez, majd meg a következőket teheti:
+Mindkét esetben bármilyen már a feladat felosztó által visszaadott, és hozzáadja a kötegelt feladatok futtatására alkalmas lesz. Ha nem szeretné, hogy ez, majd próbálja meg:
 
-* A feladat leáll a feldolgozás elválasztó visszatérése előtt
-* A feladat teljes gyűjteményhez való visszaküldés előtt állítson össze (Ez azt jelenti, hogy vissza egy `ICollection<CloudTask>` vagy `IList<CloudTask>` helyett a feladat felosztó használatával egy C# iterátor megvalósítása)
-* Feladat függőségek segítségével minden feladat függ, a Feladatkezelő sikeres befejezése
+* A feladat felosztó visszatérése előtt a feladat leállítása
+* Állítson össze a teljes feladat gyűjtemény visszaküldés előtt. (azaz adja vissza egy `ICollection<CloudTask>` vagy `IList<CloudTask>` a feladat felosztó használatával egy C# iterátor megvalósítása helyett)
+* A feladat-függőségek használatára, hogy minden feladat függ, a Feladatkezelő sikeres befejezése
 
 **Feladat manager újrapróbálkozások**
 
-A Feladatkezelő nem sikerül, ha ez lehetséges, hogy újra megpróbálja a Batch szolgáltatás attól függően, hogy az ügyfél újrapróbálkozási beállításainak. Ez általában biztonságos, mert a keretrendszer feladatok ad hozzá a feladatot, akkor figyelmen kívül hagyja minden feladatot, amely már létezik. Azonban ha feladatok kiszámítása költséges, előfordulhat, hogy nem kívánja fel Önnek a feladatokat, amelyek a feladat már hozzáadott újraszámítása költsége Ezzel szemben ha ismételt futtatása nem biztos, hogy ugyanazon feladathoz azonosítók készítése majd a "Mellőzés ismétlődő" viselkedését fogja nem indítsa. Ezekben az esetekben akkor tervezzen a feladat elválasztó már megtörtént, és ismétlődik, például hogy feladatok megkezdése előtt egy CloudJob.ListTasks elvégzésével munkáját észleléséhez.
+A Feladatkezelő nem sikerül, ha azt a Batch szolgáltatás az ügyfél újrapróbálkozási beállításoktól függően előfordulhat, hogy próbálkozik. Ez általában biztonságos, mivel ha a keretrendszer tevékenységeket ad a feladathoz, figyelmen kívül hagyja minden feladatot, amely már létezik. Azonban ha feladatok kiszámítása költséges, nem célszerű történő újraszámítása feladatot, amely már hozzá lett adva a feladatot; költsége Ezzel szemben ha ismételt futtatása nem garantált, hogy ugyanazt a feladatot azonosítókat létrehozni az "ismétlődések figyelmen kívül" viselkedésének fog nem Dőljön. Ezekben az esetekben a munkát, már megtörtént, és nem a műveletet, például egy CloudJob.ListTasks elvégzésével az eddig is számtalan előnyét feladatok megkezdése előtt észleli a feladat felosztó tervezzen.
 
-### <a name="exit-codes-and-exceptions-in-the-job-manager-template"></a>Olyan kilépési kódot és a Feladatkezelő sablonban kivételek
-Olyan kilépési kódot, és kivételeket egy olyan mechanizmus biztosítása meghatározására a program futtatása eredményeit, és segíthetnek a program végrehajtásának problémákat azonosítása. A Feladatkezelő sablon valósítja meg a kilépési kódot és a jelen szakaszban ismertetett kivételek.
+### <a name="exit-codes-and-exceptions-in-the-job-manager-template"></a>Kilépési kódot és a kivételeket a Feladatkezelő sablonban
+Kilépési kódot és a kivételeket határozza meg a program futtatásának eredménye egy olyan mechanizmust biztosítanak, és segíthetnek az esetleges problémák felismeréséhez, a program végrehajtásával. A Feladatkezelő sablon valósítja meg a kilépési kódot és a jelen szakaszban bemutatott kivételek.
 
-A Feladatkezelő sablonnal megvalósítása manager feladat visszatérhessen három lehetséges kilépési kód:
+A feladatkezelői tevékenység, amely a Feladatkezelő sablon implementálása adhat vissza három lehetséges kilépési kód:
 
 | Kód | Leírás |
 | --- | --- |
-| 0 |A feladat-kezelő sikeresen befejeződött. A feladat elválasztó kódot befejezési futott, és a feladat bekerült az összes feladat. |
-| 1 |A kezelő feladata a program "várt" részében kivételhiba miatt sikertelen. A kivétel volt lefordítani a diagnosztikai adatokkal JobManagerException és, ha lehetséges, a hiba elhárításához javaslatokat. |
-| 2 |A kezelő feladat egy "nem várt" kivétel miatt sikertelen volt. A kivétel a normál a kimenetbe naplózott, de a Feladatkezelő nem tudta hozzáadni a további diagnosztikai vagy javítási adatokat. |
+| 0 |A feladat-kezelő sikeresen befejeződött. A feladat felosztó kódot futtatta befejezését, és minden feladat lettek hozzáadva a feladathoz. |
+| 1 |A Feladatkezelő tevékenység egy "várt" részében a program kivételt okozott. A kivétel lett lefordítva meghaladja a diagnosztikai adatokban JobManagerException, és ahol lehetséges, javaslatokat, a hiba megoldásához. |
+| 2 |A Feladatkezelő tevékenység egy "nem várt" kivétel miatt meghiúsult. A kivétel a normál a kimenetbe naplózott, de a Feladatkezelő nem tudta hozzáadni a további diagnosztikai vagy szervizelési adatokat. |
 
-Feladat manager feladat sikertelensége esetén néhány feladatot előfordulhat, hogy továbbra is érhetőek el a szolgáltatást a hiba bekövetkezése előtt. Ezek a feladatok szokásos módon indul el. "Feladat elválasztó sikertelen" fent látható kód elérési út leírását.
+Feladat kezelő feladat sikertelensége esetén néhány feladatot előfordulhat, hogy továbbra is lettek hozzáadva a szolgáltatásnak a hiba bekövetkezése előtt. Ezeket a feladatokat a szokásos módon fog futni. "A feladat felosztó sikertelen" fent találja a kódelérési út veszik górcső alá.
 
-Kivételek által visszaadott összes információt stdout.txt és stderr.txt fájlok íródtak. További információkért lásd: [hiba kezelése](batch-api-basics.md#error-handling).
+Kivételek által visszaadott összes információ íródik a stdout.txt és stderr.txt fájlokba. További információkért lásd: [hibakezelés](batch-api-basics.md#error-handling).
 
 ### <a name="client-considerations"></a>Az ügyfelek szempontjai
-Ez a szakasz ismerteti a végrehajtása néhány ügyfélkövetelmények, a Feladatkezelő, ez a sablon alapján való meghívásakor. Lásd: [hogyan paraméterek és a környezeti változók adhatók át az Ügyfélkód](#pass-environment-settings) paraméterek-környezet beállításait, és leírását.
+Ez a szakasz ismerteti az egyes ügyfélkövetelmények végrehajtása a sablon alapján Feladatkezelő meghívásakor. Lásd: [hogyan átadása paramétereket és a környezeti változókat az Ügyfélkód](#pass-environment-settings) átadása paramétereket és a környezeti beállítások részleteiért.
 
 **Kötelező hitelesítő adatok**
 
-Ahhoz, hogy az Azure kötegelt feladatok hozzáadásához a feladat manager feladathoz az Azure Batch-fiók URL-címe és a kulcsot. Át kell adnia ezeket a környezeti változók neve YOUR_BATCH_URL és YOUR_BATCH_KEY. Meg a Feladatkezelő tevékenység környezeti beállításokat. Például a C# ügyfél:
+Annak érdekében, hogy a tevékenységek hozzáadása az Azure Batch-feladatot, a Feladatkezelő tevékenység az Azure Batch-fiók URL-címe és a kulcs van szükség. Át kell adnia ezeket a környezeti változók YOUR_BATCH_URL és YOUR_BATCH_KEY nevű. Ezek a Feladatkezelő tevékenység környezet beállításait beállíthatja. Ha például az egy C#-ügyfél:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -214,9 +214,9 @@ job.JobManagerTask.EnvironmentSettings = new [] {
     new EnvironmentSetting("YOUR_BATCH_KEY", "{your_base64_encoded_account_key}"),
 };
 ```
-**Tároló hitelesítő adatait**
+**Storage hitelesítő adatai**
 
-Általában az ügyfél nem kell megadnia a csatolt tárfiók hitelesítő adatainak a feladat manager feladathoz (a) a legtöbb feladatot kezelők nem kell explicit módon hozzáférni a kapcsolt tárfiókra, és (b) a kapcsolt tárfiókra gyakran megadott összes feladatot, mert egy a feladat általános környezet beállítása. Ha nem tartalmazza a kapcsolt tárfiókra keresztül környezet általános beállításait, és a Feladatkezelő csatolt tároló hozzáférésre van szüksége, majd meg kell adnia a csatolt tároló hitelesítő adatokat az alábbiak szerint:
+Általában az ügyfél nem kell megadnia a társított storage-fiók hitelesítő adatait a Feladatkezelő tevékenység (a) a legtöbb feladat kezelők nem kell explicit módon a társított storage-fiókja eléréséhez, és (b) a társított storage-fiók gyakran megadott összes feladatot, mert egy a feladat közös környezet beállítása. Ha nem tartalmazza a közös környezet beállításainál a társított storage-fiókban, és a Feladatkezelő társított storage hozzáférésre van szüksége, majd kell megadni a társított storage hitelesítő adatai a következő:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -226,83 +226,83 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 };
 ```
 
-**Feladat manager feladatbeállítások**
+**Feladat manager tevékenység beállításai**
 
 Az ügyfél kell beállítania a Feladatkezelő *killJobOnCompletion* jelzőt **hamis**.
 
-Az ügyfél beállítása általában biztonságosan *runExclusive* való **hamis**.
+Állítsa be az ügyfél általában biztonságos *runExclusive* való **hamis**.
 
-Az ügyfélnek használnia kell a *resourceFiles* vagy *applicationPackageReferences* gyűjtemény szeretné, hogy a feladat végrehajtható kezelő (és a szükséges DLL-ek) központilag telepített a számítási csomópont.
+Az ügyfélnek használnia kell a *resourceFiles* vagy *applicationPackageReferences* gyűjtemény szeretné, hogy a feladat a számítási csomópontra üzembe helyezett manager végrehajtható (és a szükséges DLL-ek).
 
-Alapértelmezés szerint a Feladatkezelő nem úja sikertelen. Attól függően, hogy a feladat manager programot, az ügyfél előfordulhat, hogy engedélyezni szeretné az újrapróbálkozások keresztül *megkötések*/*maxTaskRetryCount*.
+Alapértelmezés szerint a feladat-kezelő rendszer nem próbálkozik, ha nem sikerül. A feladat manager logikai függően az ügyfél érdemes keresztül újrapróbálkozások engedélyezése *megkötések*/*maxTaskRetryCount*.
 
 **Feladatbeállítások**
 
-Ha a feladat elválasztó függőségekkel rendelkező feladatok bocsát ki, az ügyfél a feladat usesTaskDependencies kell értéke igaz.
+A feladat felosztó függőségekkel rendelkező feladatok bocsát ki, ha az ügyfélnek be kell állítania a feladat usesTaskDependencies igaz.
 
-A feladat elválasztó modellben szokatlan, az ügyfelek számára a feladatok bővítéséhez feladatok felül a feladat elválasztó hoz létre. Az ügyfél ezért kell megfelelően beállítva a feladat *onAllTasksComplete* való **terminatejob**.
+A feladat felosztó modellben szokatlan, az ügyfelek szeretne tevékenységek hozzáadása a feladatok túlmenő a feladat felosztó hoz létre. Az ügyfél ezért kell normális esetben állítsa a feladat *onAllTasksComplete* való **terminatejob**.
 
-## <a name="task-processor-template"></a>Processzor sablon
-Egy feladat processzor sablon valósítja meg a következő műveleteket tudják végrehajtani a feladat processzor nyújt segítséget:
+## <a name="task-processor-template"></a>A feladat processzor sablon
+Egy feladat processzor sablon segítségével megvalósítani egy feladat a processzor, a következő műveleteket hajthatja végre:
 
-* Állítson be minden kötegelt feladat futtatásához szükséges adatokat.
-* Minden kötegelt feladat által igényelt összes műveletek futtatása.
-* Mentse a feladat kimenetének állandó tároló.
+* Állítsa be az egyes Batch-feladat futtatásához szükséges adatokat.
+* Minden egyes Batch-feladat által igényelt minden művelet fusson.
+* Mentse a feladat kimeneti adattárolásra.
 
-Bár egy feladat processzor nem szükséges a kötegelt feladatok futtatásához, a feladat processzor használatának legfontosabb előnye, biztosítja a burkoló egy helyen az összes feladatütemezés végrehajtási műveletek végrehajtásához. Ha például minden feladat keretében több alkalmazás futtatásához szükséges, vagy ha másolja adatok állandó tároló befejezése után minden feladat.
+Egy feladat a processzor nem kötelező, a Batch a feladatok futtatásához, de a fő feladat processzort használ előnye, hogy az összes feladat-végrehajtási művelet megvalósítása az egyik helyről egy burkolót biztosít. Például ha minden olyan feladatnak a környezetben futtathat több alkalmazás van szüksége, vagy ha át kell másolnia az adatokat állandó tároló befejezése után minden feladat.
 
-A feladat-feldolgozó által végrehajtott műveletekről lehet egyszerű vagy összetett, és annyi, vagy kevés a munkaterhelés szerint szükség szerint. Emellett egy feladat processzor az összes feladat műveletek alkalmazásával könnyen frissítése vagy is műveletek alkalmazások és munkaterhelések követelményeinek végbement változások alapján. Azonban bizonyos esetekben egy feladat processzor előfordulhat, hogy nem lehet az ideális megoldás a példányhoz, adhat hozzá a szükségtelen összetettségét, például amikor fut, amely egy egyszerű parancssorból gyorsan indítható feladatok.
+A feladat-feldolgozó által végrehajtott műveleteket lehet egyszerű vagy összetett, és több vagy frissítésre, a számítási feladat igényeinek megfelelően. Ezenkívül egy feladatot a processzor, az összes feladat műveletek alkalmazásával azonnal frissíteni vagy is műveletek alapuló alkalmazások és számítási feladatok követelményeit módosítása. Azonban bizonyos esetekben egy feladatot a processzor nem feltétlenül a megvalósítás az optimális megoldást, azt hozzáadhatja a szükségtelen összetettséget, például ha futnak a feladatok, amely gyorsan elindítható egy egyszerű parancssori paranccsal futtathatja.
 
-### <a name="create-a-task-processor-using-the-template"></a>Hozzon létre egy feladat processzor, a sablon használatával
-Egy feladat processzor hozzáadása a megoldás, amely a korábban létrehozott, kövesse az alábbi lépéseket:
+### <a name="create-a-task-processor-using-the-template"></a>Hozzon létre egy feladatot processzor, a sablon használatával
+A megoldás, amely a korábban létrehozott ad hozzá egy feladatot a processzor, kövesse az alábbi lépéseket:
 
-1. Nyissa meg a meglévő megoldást a Visual Studio.
+1. Nyissa meg a meglévő megoldást a Visual Studióban.
 2. A Megoldáskezelőben kattintson a jobb gombbal a megoldás, kattintson a **Hozzáadás**, és kattintson a **új projekt**.
-3. A **Visual C#**, kattintson a **felhő**, és kattintson a **Azure kötegelt feladat processzor**.
-4. Adjon meg egy nevet, amely ismerteti az alkalmazást, és úgy azonosítja a projektet, a feladat processzor (pl. "LitwareTaskProcessor").
+3. A **Visual C#**, kattintson a **felhőalapú**, és kattintson a **Azure Batch-feladat processzor**.
+4. Adjon meg egy nevet, amely ismerteti az alkalmazást, és ez a projekt azonosítja, a feladat processzor (például) "LitwareTaskProcessor").
 5. A projekt létrehozásához kattintson a **OK**.
-6. Végezetül fordítsa le a projekt azzal kényszerítheti a Visual Studio betölteni az összes hivatkozott NuGet-csomagok, és győződjön meg arról, hogy a projekt érvényes módosításához megkezdése előtt.
+6. Végezetül állítsa össze a projektet, azzal kényszerítheti a Visual Studio betölteni a hivatkozott NuGet-csomagok, és győződjön meg arról, hogy a projekt érvényes módosítás előtt.
 
-### <a name="task-processor-template-files-and-their-purpose"></a>Feladat processzor sablonfájlokat és célját
-A feladat processzor sablonnal projekt létrehozásakor három fájlcsoportok kódot állít elő:
+### <a name="task-processor-template-files-and-their-purpose"></a>Processzor sablon feladatfájlok és azok célja
+Ha a feladat processzor sablonnal projektet hoz létre, kódfájlok három csoportjait hoz létre:
 
-* A fő programfájl (Program.cs). A program a belépési pont és a legfelső szintű kivételkezelést tartalmazza. Ezt általában nem szükséges.
-* A keretrendszer könyvtára. Ez a feladat manager program – a paraméterek, a a kötegelt feladatok hozzáadása kicsomagolása "bolierplate" dolgozott felelős fájlokat tartalmazza. Módosítani ezeket a fájlokat általában nem szükséges.
-* A feladat processzor fájlt (TaskProcessor.cs). Ez az meg, ahová a az alkalmazás-specifikus logika egy feladat végrehajtása (általában által létesítő egy létező végrehajtható fájl) a rendszer. Előtti és utáni feldolgozási kódok, például a további adatok letöltése vagy eredmény fájlok feltöltése is ide kerül.
+* A fő program fájl (Program.cs). A program a belépési pont és a legfelső szintű kivételkezelés tartalmazza. A beállítás módosítása általában nem kell.
+* A keretrendszer könyvtárába. Ez a feladat manager program – a kicsomagolás paraméterek, tevékenységeket ad a Batch-feladat stb "bolierplate" elvégzett felelős fájlokat tartalmazza. Nem megfelelően kell módosítani ezeket a fájlokat.
+* A feladat processzor fájlt (TaskProcessor.cs). Ez a meg, ahová az alkalmazás-specifikus logika egy feladat végrehajtása (általában meghívásával a meglévő végrehajtható) lesz. Előzetes és utólagos feldolgozási kódot, mint például a további adatokat tölti le, vagy eredmény-fájlok feltöltésével is ide kerül.
 
-Természetesen a processzor feladatkód, attól függően, hogy a feladat a felosztás logika összetettsége támogatásához szükséges további fájlokat is hozzáadhat.
+Természetesen a feladat processzor kód a logika felosztása feladat összetettségétől függően támogatásához szükséges további fájlokat is hozzáadhat.
 
-A sablon is létrehoz a szabványos .NET project fájlok például .csproj fájlhoz, app.config, packages.config, stb.
+A sablon is létrehoz a standard .NET projektfájlokat, például a .csproj fájlban, app.config, packages.config stb.
 
-A többi Ez a szakasz ismerteti a különböző fájlok és a kód szerkezete, és ismerteti a osztályra funkciója.
+A többi Ez a szakasz ismerteti a különböző fájlok és a kód szerkezete, és bemutatja, mire minden egyes osztály használható.
 
 ![A Visual Studio Megoldáskezelőben a feladat processzor sablon megoldás][solution_explorer02]
 
 **Keretrendszer fájlok**
 
-* `Configuration.cs`: A feladat konfigurációs adatok, például a Batch-fiók adatait, a csatolt tárfiók hitelesítő adatainak, a feladat és a feladat adatainak és a feladat paramétereit betöltésének magában foglalja. Kötegelt által definiált környezeti változók (lásd a feladatokat, a Batch-dokumentáció környezeti beállításai) a Configuration.EnvironmentVariable osztály keresztül hozzáférést is biztosít.
-* `IConfiguration.cs`: A Configuration osztály végrehajtásának kivonatolja a egységteszt a feladat elválasztó egy hamis vagy utánzatait konfigurációs objektuma használja.
-* `TaskProcessorException.cs`: A Feladatkezelő leáll igénylő hiba jelöli. TaskProcessorException burkolása "várt" hibák, ahol a diagnosztikai információk lezárást részeként megadható szolgál.
+* `Configuration.cs`: A feladat konfigurációs adatok, például a Batch-fiók adatait, társított storage-fiók hitelesítő adatait, feladat és a feladatok adataihoz és feladatparaméter betöltését magában foglalja. A Batch által definiált környezeti változót (lásd a környezeti beállítások tevékenységekhez, a Batch dokumentációjában) a Configuration.EnvironmentVariable osztállyal hozzáférést is biztosít.
+* `IConfiguration.cs`: A konfigurációs osztály végrehajtásának kivonatolja a feladat felosztó használatával egy hamis vagy utánzatként funkcionáló konfigurációs objektum segítségével test jednotky.
+* `TaskProcessorException.cs`: Leállítja a Feladatkezelő igénylő hiba jelöli. TaskProcessorException segítségével burkolása "várt" hibák, ahol adott diagnosztikai adatokat lezárást részeként adható meg.
 
 **A feladat processzor**
 
-* `TaskProcessor.cs`: A feladat fut. A keretrendszer meghívja a TaskProcessor.Run metódust. Ez az adott fogja tölteni a feladat az alkalmazás-specifikus logika. Valósítsa meg a Futtatás metódust:
-  * Elemzése és a tevékenység paramétereket ellenőrzése
-  * A meghívni kívánt külső program parancssorának összeállítása
-  * A diagnosztikai adatok lehet szükség a hibakereséshez
-  * A folyamat a parancssor használatával
+* `TaskProcessor.cs`: A feladat fut. A keretrendszer a TaskProcessor.Run metódust hív meg. Ez az osztály hol fogja tölteni az alkalmazás-specifikus logika, a feladat. A Run metódus megvalósításához:
+  * Elemezheti és ellenőrzése minden olyan feladat paraméterei
+  * Compose bármely szeretne meghívni a külső program parancssora
+  * Bármely lehet szükség a hibakereséshez diagnosztikai információk naplózása
+  * Elindítani a folyamatot, a parancssor használatával
   * Várjon, amíg a folyamat leállását
-  * A kilépési kódot annak meghatározásához, hogy sikeres volt, vagy nem sikerült a folyamat rögzítése
-  * Mentse a kimeneti fájlokat szeretné megőrizni az állandó tároló
+  * A folyamat határozza meg, hogy azt a sikeres vagy sikertelen volt a kilépési kód rögzítése
+  * Mentse a kimeneti fájlokat szeretné megőrizni az állandó tárolóból
 
-**Standard szintű .NET parancssori project fájlok**
+**Standard szintű .NET parancssori soubory projektu**
 
-* `App.config`: Standard .NET alkalmazás konfigurációs fájljában.
+* `App.config`: Standard .NET alkalmazás-konfigurációs fájl.
 * `Packages.config`: Standard NuGet csomag függőségi fájlt.
-* `Program.cs`: A program a belépési pont és a legfelső szintű kivételkezelést tartalmazza.
+* `Program.cs`: A program belépési pont és a legfelső szintű kivételkezelés tartalmazza.
 
 ## <a name="implementing-the-task-processor"></a>A feladat processzor megvalósítása
-A feladat processzor sablonprojekt megnyitásakor a projekt alapértelmezés szerint a TaskProcessor.cs fájlt fog rendelkezni. A munkaterhelésnek a feladatok futtatása logikáját valósíthatja meg a Run() metódussal a lent látható módon:
+A feladat processzor sablonprojekt megnyitásakor a projekt lesz alapértelmezés szerint a TaskProcessor.cs fájlt. Meg lehet valósítani a feladatokat a futtatási logikát a számítási feladatok Run() alább látható módon:
 
 ```csharp
 /// <summary>
@@ -348,44 +348,44 @@ public async Task<int> Run()
 }
 ```
 > [!NOTE]
-> A jegyzettel ellátott szakasz Run() metódus módosíthatja a feladatok futtatása logikáját hozzáadásával a munkaterhelés számára készült feladat processzor sablon kódot csak része. A sablon egy másik szakasz módosítani szeretné, ha adjon először megismerje a kötegelt működése a kötegelt dokumentációja, illetve próbálhatja ki a kötegelt mintakódok néhány által.
+> A Run() metódus a jegyzettel ellátott szakasz célja, hogy a számítási feladatok számára a futtatási logika hozzáadásával módosítsa a feladat processzor sablon kódot csak szakaszában. Ha azt szeretné, módosíthatja a sablon egy másik szakasz,. először ismerkedjen meg a Batch – dokumentáció áttekintése, és próbálja ki a Batch-kódminta néhány Batch működése.
 > 
 > 
 
-A Run() metódus felelős kezdődően egy vagy több folyamatok, az összes folyamat befejezésére történő várakozáskor befejeződik, a parancssor megnyitása az eredmények mentése, és végül a kilépési kóddal vissza. A Run() módszer, ahol a feldolgozó logika megvalósítása a feladatokhoz. A feladat processzor keretrendszer Run() metódus hív meg; nem kell neki magának.
+A Run() metódus felelős indítása a háttérfolyamatok egy vagy több, az összes folyamat végrehajtásához, Várakozás a parancssor mentése folyamatban van az eredményeket, és végül visszaadó kilépési kóddal. A Run() módszer, ahol a feladatok feldolgozási a logikát alkalmazzák. A feladat processzor keretrendszer meg; a Run() metódust hív meg nem kell saját kezűleg meghívására.
 
-A Run() megvalósítás hozzáféréssel rendelkezik:
+A Run() megvalósítás férhet hozzá:
 
-* A tevékenység-paraméterek segítségével a `_parameters` mező.
-* A feladat- és azonosító keresztül a `_jobId` és `_taskId` mezőket.
+* A tevékenység-paraméterek használatával a `_parameters` mező.
+* A feladatok és tevékenységek azonosítók keresztül a `_jobId` és `_taskId` mezőket.
 * A feladat konfigurációja keresztül a `_configuration` mező.
 
 **A feladat sikertelen**
 
-Hiba, esetén kiléphet a Run() metódus által egy kivétel kiváltása, de ez hagyja a legfelső szintű kivételkezelő ellenőrzése a feladat kilépési kódot. Ha a kilépési kód szabályozhatja, hogy a különböző típusú hiba, például képes megkülönböztetni, diagnosztikai célokra, vagy mert függően néhány kell leállítani a feladatot, és mások számára nem kell módosítania, majd kell kilép a Run() metódus vissza egy nem nulla a kilépési kód. Ez lesz a feladat kilépési kódot.
+Sikertelenség esetén a kilépéshez a Run() metódus hívása kivétel, de a felső szintű kivételkezelő vezérlése alatt a tevékenység kilépési kód kihasználatlan marad. Szabályozhatja a kilépési kódot úgy, hogy megkülönböztethesse különböző típusú hibák, például diagnosztikai célokra, vagy mert az egyes hibaállapot kell megszüntesse a feladatot, másokat pedig nem kell, ha meg kell zárja be a Run() metódus egy nem nulla értékű felismerésével kilépési kód. Ez lesz a tevékenységek kilépési kódját.
 
-### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Olyan kilépési kódot és a feladat processzor sablonban kivételek
-Olyan kilépési kódot, és kivételeket egy olyan mechanizmus biztosítása meghatározására a program futtatása eredményeit, és segíthetnek, hogy a program végrehajtásának problémákat azonosítása. A feladat processzor sablon valósítja meg a kilépési kódot és a jelen szakaszban ismertetett kivételek.
+### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Kilépési kódot és a feladat processzor sablonban kivételek
+Kilépési kódot és a kivételeket határozza meg a program futtatásának eredménye egy olyan mechanizmust biztosítanak, és segíthetnek a program végrehajtása során problémákat. A feladat processzor sablon valósítja meg a kilépési kódot és a jelen szakaszban bemutatott kivételek.
 
-Egy feladat processzor feladat feladat processzor sablonnal megvalósított visszatérhessen három lehetséges kilépési kód:
+Egy feladat processzor feladat, amely a feladat processzor sablon implementálása adhat vissza három lehetséges kilépési kód:
 
 | Kód | Leírás |
 | --- | --- |
-| [Process.ExitCode][process_exitcode] |A feladat processzor befejezési futott. Vegye figyelembe, hogy ez nem feltétlenül jelenti azt, hogy a program indításakor sikeres volt – csak, hogy a feladat-feldolgozó sikeresen elindítva, és végre semmilyen utófeldolgozás kivételek nélkül. A kilépési kód pontos jelentése attól függ a meghívott programmal – általában kilépési kód 0 azt jelenti, hogy a program sikeres volt, és bármely más kilépési kód azt jelenti, hogy a program futása meghiúsult. |
-| 1 |A feladat processzor a program "várt" részében kivételhiba miatt sikertelen. A kivétel lefordítani a `TaskProcessorException` diagnosztikai információkat, és ha lehetséges, javaslatokat a hiba elhárításához. |
-| 2 |A feladat processzor "Váratlan" kivételhiba miatt sikertelen. A kivétel a normál a kimenetbe naplózott, de a feladat-feldolgozó nem tudta hozzáadni a további diagnosztikai vagy javítási adatokat. |
+| [Process.ExitCode][process_exitcode] |A feladat processzor futott befejezését. Vegye figyelembe, hogy ez nem jelenti azt, hogy hívta meg a program sikeres volt – csak, hogy a feladat-feldolgozó sikeresen elindítva, és elvégzett bármilyen utófeldolgozás kivételek nélkül. A kilépési kód értelmében a meghívott programtól függ – általában a 0 kilépési kódot azt jelenti, hogy a program sikeres volt, és bármely más kilépési kód azt jelenti, hogy a program futása meghiúsult. |
+| 1 |A feladat processzor a program "várt" részében kivétel miatt nem sikerült. A kivétel lett lefordítva egy `TaskProcessorException` diagnosztikai adatokban, és ahol lehetséges, javaslatokat, a hiba megoldásához. |
+| 2 |A feladat processzor: Váratlan"kivétel miatt nem sikerült. A kivétel a normál a kimenetbe naplózott, de a feladat-feldolgozó nem tudta hozzáadni a további diagnosztikai vagy szervizelési adatokat. |
 
 > [!NOTE]
-> Ha a program indításakor 1 és 2 kilépési kód jelzi az adott meghibásodás használ, a feladat processzor hibákat 1 és 2 kilépési kód használata nem egyértelmű. A feladat processzor hibakódok a kivétel esetekben a Program.cs fájl szerkesztésével módosíthatja megkülönböztető kilépési kódot.
+> Ha a program hívhat meg jelzi az adott hibaállapot 1. és 2 kilépési kódot használ, majd használja az 1. és 2 kilépési kódot a feladat processzor hibákat nem egyértelmű. A feladat processzor hibakódok a kivétel esetekben a Program.cs fájl szerkesztésével módosíthatja megkülönböztető kilépési kódot.
 > 
 > 
 
-Kivételek által visszaadott összes információt stdout.txt és stderr.txt fájlok íródtak. További információ: hiba kezelése, a Batch-dokumentáció.
+Kivételek által visszaadott összes információ íródik a stdout.txt és stderr.txt fájlokba. További információkért lásd a hibakezelés képességével is, a Batch dokumentációjában.
 
 ### <a name="client-considerations"></a>Az ügyfelek szempontjai
-**Tároló hitelesítő adatait**
+**Storage hitelesítő adatai**
 
-Ha a feladat processzor használja az Azure blob storage megőrizni a kimenet, például a fájl egyezmények segítő szalagtár használata esetén, akkor azt hozzá kell férnie *vagy* a felhő tárfiók hitelesítő adatainak *vagy* blob tároló URL-cím tartalmaz egy közös hozzáférésű jogosultságkód (SAS). A sablon közös környezeti változók hitelesítő adatokat biztosító támogatását is magában foglalja. Az ügyfél az alábbiak szerint a tároló hitelesítő adatait adja át:
+Ha a feladat processzor használja az Azure blob storage-bA megőrizni a kimeneteket, például az file conventions segédkódtárba helyezni, akkor azt hozzá kell férnie *vagy* a felhőalapú tárfiók hitelesítő adatainak *vagy* blob tároló URL-címe, amely tartalmazza a közös hozzáférésű jogosultságkód (SAS). A sablon keresztül közös környezeti változókat a hitelesítő adatokkal támogatását tartalmazza. Az ügyfél módon a tároló hitelesítő adatait adja át:
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {
@@ -394,50 +394,50 @@ job.CommonEnvironmentSettings = new [] {
 };
 ```
 
-A tárfiók majd érhető el a TaskProcessor osztály keresztül a `_configuration.StorageAccount` tulajdonság.
+A tárfiók majd a TaskProcessor osztály keresztül érhető el a `_configuration.StorageAccount` tulajdonság.
 
-Ha inkább a SAS használatával tároló URL-címet használja, is átadhatja a feladat közös környezeti beállításokat keresztül, de a feladat processzor sablon jelenleg nem tartalmaz ez beépített támogatása.
+Ha inkább egy tároló URL-cím használata SAS, is átadhat a keresztül feladat közös környezeti beállításokat, de a feladat processzor sablon jelenleg nem tartalmaz beépített támogatást nyújt, ez a.
 
 **Tárolás beállítása**
 
-Javasoljuk, hogy az ügyfél vagy a feladatot manager feladat létrehozása a feladatok a feladatok hozzáadása a projekthez szükséges tárolókkal. Ez a kötelező SAS tároló URL-címet használja, ha ilyen URL-címet az engedély nem vonatkozik a tároló létrehozása. Minden tevékenység CloudBlobContainer.CreateIfNotExistsAsync felhívását tárolón menti, ajánlott akkor is, ha a tárfiók hitelesítő adatait, adja meg.
+Javasoljuk, hogy az ügyfél vagy a feladat tevékenység létrehozása előtt a feladatok hozzáadása a feladathoz szükséges feladatok tárolókat. Ez a kötelező SAS egy tároló URL-címet használja, ha ilyen egy URL-cím nem tartalmazza a tároló létrehozásához szükséges engedéllyel. Ajánlott még akkor is, ha a tárfiók hitelesítő adatait, felhasználó, minden egyes feladathoz, hogy ehhez fel kellene CloudBlobContainer.CreateIfNotExistsAsync a tárolón menti.
 
-## <a name="pass-parameters-and-environment-variables"></a>Paraméterek és a környezeti változók
-### <a name="pass-environment-settings"></a>Pass-környezet beállításaiban
-Egy ügyfél is át adatokat a kezelő feladat környezeti beállítások formájában. Ez az információ majd használhatják a kezelő feladat a számítási feladat részeként futó feladat processzor feladatok létrehozásakor. A létrejövő átadhatók környezeti beállításokat, például a következők:
+## <a name="pass-parameters-and-environment-variables"></a>Adja át a paramétereket, és a környezeti változók
+### <a name="pass-environment-settings"></a>Pass környezeti beállítások
+Egy ügyfél is át adatokat a Feladatkezelő tevékenység környezeti beállítások formájában. Ez az információ majd használhatják a Feladatkezelő tevékenység fog futni, a számítási feladat részeként feladat processzor feladatok létrehozásakor. Példák az információ, amelyet továbbíthat, a környezeti beállítások a következők:
 
-* Név és fiókkulcs tárfiókkulcsok
+* Tárfióknév és tárfiókkulcsok
 * Batch-fiók URL-címe
-* Kötegelt fiókkulcs
+* Batch-fiók kulcsa
 
-A Batch szolgáltatás környezeti beállítások átadása egy kezelő feladat használatával egyszerű mechanizmussal rendelkezik a `EnvironmentSettings` tulajdonság [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask].
+A Batch szolgáltatás környezeti beállítások átadása a feladatkezelői tevékenység használatával egyszerű mechanizmussal rendelkezik a `EnvironmentSettings` tulajdonság [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask].
 
-Ahhoz például, hogy az beszerzése a `BatchClient` példány, a környezeti változókat az ügyféltől a kód az URL-cím és a megosztott kulcs hitelesítő adatai, a Batch-fiókhoz is át a Batch-fiókhoz. Hasonlóképpen a Batch-fiókhoz kapcsolódó tárfiók eléréséhez átadhatók a tárfiók nevét és a tárfiók hívóbetűjét környezeti változóként.
+Például lekérése a `BatchClient` példány egy Batch-fiókhoz, a környezeti változókat az ügyfél a kód az URL-cím és a megosztott kulcsos hitelesítő adatok, a Batch-fiók adhat át. Hasonlóképpen a tárfiók eléréséhez, amely a Batch-fiókhoz van csatolva, adhat át a tárfiók nevét és a tárfiók kulcsát környezeti változókként.
 
-### <a name="pass-parameters-to-the-job-manager-template"></a>A Feladatkezelő sablont paraméterekkel
-A legtöbb esetben célszerű Feladatonkénti paramétereket át a feladat manager feladat, a folyamat a felosztás feladat ellenőrzése vagy a feladatot a feladatok konfigurálása. Ehhez a parameters.json nevű kezelő feladata az erőforrás-fájlként JSON-fájl feltöltésével. A paraméterek tudja majd válnak elérhetővé a `JobSplitter._parameters` mezőt a Feladatkezelő sablonban.
+### <a name="pass-parameters-to-the-job-manager-template"></a>Adja át a paramétereket a feladat Manager-sablon
+Sok esetben hasznos lehet a feladatkezelői tevékenység, szabályozhatja a feladat felosztása folyamat, vagy konfigurálhatja a tevékenységek a feladat feladat paraméterek átadása. Ehhez egy parameters.json nevű erőforrásfájlként a Feladatkezelő tevékenység a JSON-fájl feltöltése. A paraméterek is majd válnak elérhetővé a `JobSplitter._parameters` mezőt a Feladatkezelő sablonban.
 
 > [!NOTE]
-> A beépített paraméter kezelő csak karakterlánc-karakterlánc szótárak támogatja. Ha a paraméter értékeként összetett JSON-értéket átadni kívánt, szüksége lesz, ezek karakterláncként és a feladat elválasztó elemzett őket, vagy módosíthatja a keretrendszer `Configuration.GetJobParameters` metódust.
+> A beépített paraméter-kezelő csak karakterlánc-karakterlánc szótárak támogatja. Ha azt szeretné, a komplex JSON-értékeit adja át a paraméter értékeként, kell adja át ezeket, mint a karakterláncok és a feladat felosztó elemzett őket, vagy módosítsa a keretrendszert `Configuration.GetJobParameters` metódust.
 > 
 > 
 
-### <a name="pass-parameters-to-the-task-processor-template"></a>A feladat processzor sablont paraméterekkel
-A paramétereket is át az egyes feladatok megvalósítva, a feladat processzor sablonnal. Ahogy a feladat manager sablon, a processzor sablon keresi nevű erőforrásfájl
+### <a name="pass-parameters-to-the-task-processor-template"></a>Adja át a paramétereket a tevékenység processzor-sablon
+Az egyes tevékenységek a feladat processzor-sablon használatával implementált paramétereket is átadhat. Ugyanúgy, mint a feladat manager-sablonnal, a feladat processzor sablon keres egy erőforrás-fájlt
 
-Parameters.JSON, és ha úgy találta, a paraméterek szótár betölti azt. Többféle arról, hogyan adhatók át a feladat processzor feladatok paraméterek közül:
+Parameters.JSON, és ha találhatók, mint a paraméterek szótár betölti azt. Van néhány lehetőség a paramétereket adhat át a feladat processzor feladatokat:
 
-* A feladat paramétereit JSON felhasználhatja. Ez a módszer jól, ha csak paraméterei feladat kiterjedő (például a leképezési magassága és szélessége) is. Ehhez a feladathoz elválasztó egy CloudTask létrehozásakor, a kezelő feladata ResourceFiles a parameters.json fájl objektum mutató hivatkozás hozzáadása (`JobSplitter._jobManagerTask.ResourceFiles`) a CloudTask ResourceFiles gyűjteményhez.
-* Készítése és feladatspecifikus parameters.json dokumentum feltöltése feladatok elválasztó végrehajtásának részeként, és hivatkozni, hogy a blob, a feladat erőforrás fájlok gyűjteményben. Ez azért szükséges, ha a különböző feladatok más paraméterekkel rendelkeznek. Például lehet egy 3D megjelenítés forgatókönyv, ahol a keret index átadott paraméterként a feladatot.
+* Újból felhasználhatja a feladat paramétereit JSON. Ez jól működik, ha csak paraméterei feladatokra (például egy renderelési magasság és szélesség) is. Ehhez a feladathoz felosztó egy CloudTask létrehozásakor, adjon hozzá egy hivatkozást a parameters.json fájl objektum, a Feladatkezelő ResourceFiles (`JobSplitter._jobManagerTask.ResourceFiles`) a CloudTask ResourceFiles gyűjtemény.
+* Hozzon létre és feladatspecifikus parameters.json dokumentum feltöltése a felosztó végrehajtási feladat részeként, és hivatkozni, hogy a blob, a feladat erőforrás fájlok gyűjteményben. Ez azért szükséges, ha különböző feladatok más paraméterekkel rendelkezik. Például egy 3D renderelési forgatókönyv, ahol a keret index átadott paraméterként. a feladat lehet.
 
 > [!NOTE]
-> A beépített paraméter kezelő csak karakterlánc-karakterlánc szótárak támogatja. Ha a paraméter értékeként összetett JSON-értéket átadni kívánt, szüksége lesz, ezek karakterláncként és azokat a feladat processzor elemezni, vagy módosíthatja a keretrendszer `Configuration.GetTaskParameters` metódust.
+> A beépített paraméter-kezelő csak karakterlánc-karakterlánc szótárak támogatja. Ha azt szeretné, a komplex JSON-értékeit adja át a paraméter értékeként, szüksége lesz adja át ezeket, mint a karakterláncok és értelmezni őket a feladat processzor, vagy módosítsa a keretrendszert `Configuration.GetTaskParameters` metódust.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-### <a name="persist-job-and-task-output-to-azure-storage"></a>Feladat- és kimeneti Azure Storage megőrzése
-Egy másik hasznos eszköz a kötegelt megoldás fejlesztési [Azure Batch fájl egyezmények][nuget_package]. A .NET osztálykönyvtár (jelenleg előzetes verzió) az Ön Batch .NET-alkalmazások segítségével könnyen tárolja, és Azure Storage érkező vagy oda irányuló feladat kimenetének beolvasása. [Azure Batch feladat- és kimeneti megőrzéséhez](batch-task-output.md) a szalagtár és a használati ismertetését tartalmazza.
+### <a name="persist-job-and-task-output-to-azure-storage"></a>Az Azure Storage-feladatok és tevékenységek kimenetének megőrzése
+Egy másik hasznos eszköz a Batch-megoldások fejlesztését [Azure Batch File Conventions][nuget_package]. A .NET osztálytár (jelenleg előzetes verzióban érhető el) a Batch .NET-alkalmazásokban segítségével könnyen tárolása és beolvasása a feladat kimeneti Azure Storage szolgáltatásba vagy onnan. [Azure Batch-feladat és tevékenységek kimenetének megőrzése](batch-task-output.md) tartalmazza a teljes hatásának a megbeszélését a könyvtárban, és azok használatát.
 
 
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx

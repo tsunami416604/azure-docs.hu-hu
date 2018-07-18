@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: be94a508a10fdbbed194fb71e28fd7c3b72a080c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 8b32b241c4122893bb07993402a22d2223053f3d
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989478"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115177"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -84,22 +84,13 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |privacyMode|A részletezése a következő módok egyike lehet: **privát**, **nyilvános**. **Nyilvános** – a videót a fiókját, és bárki, amely rendelkezik a videóra mutató hivatkozást mindenki számára látható-e. **Privát** – a videót a fiókjában mindenki számára látható-e.|
 |időtartam|Egy időtartam, amely leírja a időpontja egy elemzést tartalmaz. Időtartam másodpercen belül van.|
 |thumbnailUrl|A videó miniatűrje teljes URL-CÍMÉT. Például "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Figyelje meg, hogy a videó nem nyilvános, ha az URL-cím egy egy órás hozzáférési jogkivonatot tartalmazza. Egy óra elteltével az URL-cím már nem érvényes, és kérje le újra az új url-táblázat összefoglalja, vagy hívja Getaccesstokenhez új hozzáférési jogkivonatot, és manuálisan hozza létre a teljes URL-címet kell ("https://www.videoindexer.ai/api/Thumbnail/[shortId] / [ThumbnailId]? accessToken = [ a hozzáférési tokent] ").|
-|arcok|Tartalmazhat egy vagy több arcokat. További információkért lásd: [arcok](#faces).|
-|kapcsolatos témakörök|Tartalmazhat egy vagy több témaköröket. További információkért lásd: [témakörök](#topics).|
-|hangulati|Tartalmazhat egy vagy több hangulati. További információkért lásd: [hangulati](#sentiments).|
-|audioEffects| Tartalmazhat egy vagy több audioEffects. További információkért lásd: [audioEffects](#audioeffects).|
-|márka| Nulla vagy több márkái tartalmazhat. További információkért lásd: [márkái](#brands).|
-|statisztika | További információkért lásd: [statisztika](#statistics).|
-
-### <a name="statistics"></a>statisztika
-
-|Name (Név)|Leírás|
-|---|---|
-|CorrespondenceCount|A videóban megfelelések száma.|
-|WordCount|A speaker kiszolgálónként szavak számát.|
-|SpeakerNumberOfFragments|A videó szerepel a beszélő töredék mennyisége.|
-|SpeakerLongestMonolog|A beszélő leghosszabb monolog. Ha a beszélő belül a monolog silences része. Csend elején és végén a monolog törlődik.| 
-|SpeakerTalkToListenRatio|A számítás időt a speaker monolog (nélkül a csend köztes) elosztva a videó teljes időtartama alapján. Az idő a harmadik tizedesvesszőtől lesz kerekítve.|
+|arcok|Nulla vagy több arcokat is tartalmazhat. Részletesebb információkért lásd: [arcok](#faces).|
+|a kulcsszavak|Nulla vagy több kulcsszavak tartalmazhat. Részletesebb információkért lásd: [kulcsszavak](#keywords).|
+|hangulati|Nulla vagy több hangulati tartalmazhat. Részletesebb információkért lásd: [hangulati](#sentiments).|
+|audioEffects| Nulla vagy több audioEffects tartalmazhat. Részletesebb információkért lásd: [audioEffects](#audioeffects).|
+|címkék| Nulla vagy több címkéket tartalmazhat. További információ részletes: [címkék](#labels).|
+|márka| Nulla vagy több márkái tartalmazhat. Részletesebb információkért lásd: [márkái](#brands).|
+|statisztika | Részletesebb információkért lásd: [statisztika](#statistics).|
 
 ## <a name="videos"></a>videók
 
@@ -116,7 +107,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |externalUrl|A videó külső URL-cím (Ha a felhasználó által megadott).|
 |metaadatok|A videó külső metaadat (Ha a felhasználó által megadott).|
 |isAdult|Jelzi, hogy manuálisan lett-e felül a videót, és azonosította az eseményt egy felnőtteknek szóló videót.|
-|megállapítások|Az insights objektum.|
+|megállapítások|Az insights objektum. További információkért lásd: [insights](#insights).|
 |thumbnailUrl|A videó miniatűrje teljes URL-CÍMÉT. Például "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Figyelje meg, hogy a videó nem nyilvános, ha az URL-cím egy egy órás hozzáférési jogkivonatot tartalmazza. Egy óra elteltével az URL-cím már nem érvényes, és kérje le újra az új url-táblázat összefoglalja, vagy hívja Getaccesstokenhez új hozzáférési jogkivonatot, és manuálisan hozza létre a teljes URL-címet kell ("https://www.videoindexer.ai/api/Thumbnail/[shortId] / [ThumbnailId]? accessToken = [ a hozzáférési tokent] ").|
 |publishedUrl|A Videó-URL-címe.|
 |publishedUrlProxy|(Az Apple-eszközök esetén), a Videó-URL-címe.|
@@ -166,7 +157,7 @@ Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadato
 |a szövegben|A [átirat](#transcript) dimenzió.|
 |optikai karakterfelismerés|A [ocr](#ocr) dimenzió.|
 |a kulcsszavak|A [kulcsszavak](#keywords) dimenzió.|
-| blokkok|Tartalmazhat egy vagy több [blokkok](#blocks)|
+|blokkok|Tartalmazhat egy vagy több [blokkok](#blocks)|
 |arcok|A [arcok](#faces) dimenzió.|
 |címkék|A [címkék](#labels) dimenzió.|
 |helyességének|A [helyességének](#shots) dimenzió.|
@@ -201,16 +192,8 @@ Példa:
 
 Attribútum | Leírás
 ---|---
-id|A blokk-azonosítója.
-sorok|Tartalmazhat egy vagy több [sorok](#lines)
-sentimentIds|A **sentimentIds** attribútum későbbi használatra van fenntartva.
-thumbnailIds|A **thumbnailIds** attribútum későbbi használatra van fenntartva.
-vélemények|A blokk (0 – 1, negatív, pozitív) a róluk szóló véleményeket.
-arcok|Tartalmazhat egy vagy több [arcok](#faces).
-felismerése|Tartalmazhat egy vagy több [felismerése](#ocrs).
-audioEffectInstances|Tartalmazhat egy vagy több [audioEffectInstances](#audioEffectInstances).
-Jelenetek|Tartalmazhat egy vagy több [jelenetek](#scenes).
-jegyzetek|Nulla vagy több tartalmazhat [jegyzetek](#annotations).
+id|A blokk-azonosítója.|
+példányok|A blokk időtartományok listája.|
 
 #### <a name="transcript"></a>a szövegben
 
@@ -563,6 +546,16 @@ Példa:
 ]
 ```
 
+#### <a name="statistics"></a>statisztika
+
+|Name (Név)|Leírás|
+|---|---|
+|CorrespondenceCount|A videóban megfelelések száma.|
+|WordCount|A speaker kiszolgálónként szavak számát.|
+|SpeakerNumberOfFragments|A videó szerepel a beszélő töredék mennyisége.|
+|SpeakerLongestMonolog|A beszélő leghosszabb monolog. Ha a beszélő belül a monolog silences része. Csend elején és végén a monolog törlődik.| 
+|SpeakerTalkToListenRatio|A számítás időt a speaker monolog (nélkül a csend köztes) elosztva a videó teljes időtartama alapján. Az idő a harmadik tizedesvesszőtől lesz kerekítve.|
+
 #### <a name="audioeffects"></a>audioEffects
 
 |Name (Név)|Leírás|
@@ -599,12 +592,14 @@ Példa:
 |id|A róluk szóló véleményeket azonosítója.|
 |Átlag |Az összes pontszámok szoftverpéldányok száma a róluk szóló véleményeket típusa – pozitív/Neutral/negatív átlaga|
 |példányok|Amikor a véleményt jelent meg időt a tartományok listája.|
+|sentimentType |A típus "Pozitív", "Semleges" vagy "Negatív" lehet.|
 
 ```json
 "sentiments": [
 {
     "id": 0,
     "averageScore": 0.87,
+    "sentimentType": "Positive",
     "instances": [
     {
         "start": "00:00:23",
@@ -614,6 +609,7 @@ Példa:
 }, {
     "id": 1,
     "averageScore": 0.11,
+    "sentimentType": "Positive",
     "instances": [
     {
         "start": "00:00:13",

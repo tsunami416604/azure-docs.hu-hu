@@ -2,18 +2,18 @@
 title: Az Azure Import/Export segítségével exportál adatokat az Azure-Blobok |} A Microsoft Docs
 description: Ismerje meg, hogyan export-feladatok létrehozása az Azure Portalon adatok átviteléhez az Azure-Blobokból.
 author: alkohli
-manager: jeconnoc
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: eb41708c7446b3139758678c9247ffbb11da8b40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eb714086a0142d9780bd018d77dc880a430f240e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969265"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113758"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Adatok exportálása az Azure Blob storage-ból az Azure Import/Export szolgáltatás használata
 Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat biztonságosan exportálása az Azure Blob storage-ból. A szolgáltatás megköveteli, hogy az Azure-adatközpontba üres meghajtókon szállításra. A szolgáltatás adatokat exportál a tárfiók a meghajtók, és vissza a meghajtók majd tartalmaz.
@@ -25,6 +25,13 @@ Viheti át az adatokat az Azure Blob Storage exportálási feladat létrehozása
 - Egy aktív Azure-előfizetéssel rendelkezik az Import/Export szolgáltatás használható.
 - Legalább egy Azure Storage-fiók rendelkezik. Listájának megtekintéséhez [az Import/Export szolgáltatás által támogatott storage-fiókok és a tárolási típusok](storage-import-export-requirements.md). Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
 - A lemezek elegendő számú [támogatott típusok](storage-import-export-requirements.md#supported-disks).
+- FedEx/DHL fiókkal rendelkeznie.  
+    - A fiók érvényesnek kell lennie, kell rendelkeznie az egyenleg és visszaszállítási képességek kell rendelkeznie.
+    - Követési szám az exportálási feladat létrehozása.
+    - Minden feladat rendelkeznie kell egy külön követési szám. Több feladat egy követési szám nem támogatottak. 
+    - Ha nem rendelkezik egy szállítmányozói fiókjára, Ugrás:
+        - [Hozzon létre egy FedEX fiókot](https://www.fedex.com/en-us/create-account.html), vagy 
+        - [Hozzon létre egy DHL fiókot](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>1. lépés: Exportálási feladat létrehozása
 
@@ -52,7 +59,7 @@ A következő lépésekkel exportálási feladat létrehozása az Azure Portalon
     
 3. A **feladat részletei**:
 
-    - Válassza ki a tárfiókot, ahol az adatok exportálásának találhatók. 
+    - Válassza ki a tárfiókot, ahol az adatok exportálásának találhatók. Közel elhelyezkedő egy storage-fiókot használni.
     - A gyűjtőhely automatikusan kitölti a rendszer a kiválasztott tárfiók a régióhoz igazodik. 
     - Adja meg a kívánt exportálja az Ön tárfiókjából az üres meghajtó vagy meghajtókat Blobadatok. 
     - Válassza ki a **minden kiviteli** a tárfiókban lévő blobadatokat.
@@ -78,11 +85,18 @@ A következő lépésekkel exportálási feladat létrehozása az Azure Portalon
     - A legördülő listából válassza ki a szolgáltató.
     - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. 
     - Adja meg a kész, érvényes ügyfél nevét, telefonszám, e-mail, utca, házszám, város, zip, államot/megyét és ország/régió.
+
+        > [!TIP] 
+        > Helyett adjon meg egy e-mail címet, egy-egy felhasználóhoz, adjon meg egy csoport e-mail-címet. Ez biztosítja, értesítések fogadására, még akkor is, ha egy rendszergazda hagyja.
    
 5. A **összefoglalás**:
 
     - Tekintse át a feladat részleteit.
-    - Megjegyzés: a feladat nevét és a megadott Azure-adatközpont szállítási cím a szállítási lemezeket az Azure-bA. 
+    - Jegyezze fel a feladat neve és a szállítási cím a szállítási lemezeket az Azure-ban megadott Azure-adatközpontban. 
+
+        > [!NOTE] 
+        > A lemezek elküldése mindig az adatközpontba, jelezve, az Azure Portalon. A lemezek a nem megfelelő adatközpontba tartalmazza a szükséges, ha a feladat nem fogja feldolgozni.
+
     - Kattintson a **OK** exportálási feladat létrehozásának befejezéséhez.
 
 ## <a name="step-2-ship-the-drives"></a>2. lépés: A meghajtók szállításra

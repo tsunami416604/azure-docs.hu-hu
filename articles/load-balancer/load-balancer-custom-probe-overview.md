@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 741b32f394ca2ce447826f7207f7fd9cbede9c51
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070860"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112722"
 ---
 # <a name="understand-load-balancer-probes"></a>Load Balancer vizsgálatok ismertetése
 
 Az Azure Load Balancer állapot-mintavételei alapján határozza meg, melyik háttérkészletpéldányt új folyamatok kell kapnia.   Állapot-mintavételei használatával észleli a hibát egy alkalmazás egy háttér-példányon.  A health mintavételi választ az alkalmazásból használhatja, hogy jelezze a Load Balancer-e a folytatáshoz küldjön új folyamatok vagy leállítani a új folyamatok kezeléséhez a terhelés és a tervezett leállás háttér-példányra is.
 
-Állapot-mintavételei szabályozzák, hogy új folyamatok megfelelően működő háttér-példányok létrehozása történik. Ha az állapotfigyelő mintavételező nem sikerül, a terheléselosztó nem irányít, több új folyamatok a megfelelő nem megfelelő állapotú példányhoz.  Fennálló TCP-kapcsolatok állapot-mintavételi hiba után továbbra is.  Meglévő UDP-forgalom áthelyezi a háttérkészlet egy másik példányhoz a nem megfelelő állapotú példányból.
+Állapot-mintavételei szabályozzák, hogy új folyamatok megfelelően működő háttér-példányok létrehozása történik. Ha az állapotfigyelő mintavételező nem sikerül, a terheléselosztó nem irányít, több új folyamatok a megfelelő nem megfelelő állapotú példányhoz.  Fennálló TCP-kapcsolatok állapot-mintavételi hiba után továbbra is.  Meglévő UDP-forgalom egy másik megfelelő példány a háttérkészletben át a nem megfelelő állapotú példányból.
 
 Minden háttérkészlet-mintavételt sikertelen lesz, ha alapszintű Load Balancer Terheléselosztók megszűnik az összes meglévő TCP-adatfolyamok a háttérkészlethez, míg a Standard Load balancer lehetővé teszik a meghatározott folytatásához; TCP-adatfolyamok nincsenek új folyamatok küld a háttérkészlethez.  Az összes meglévő UDP-forgalom az alapszintű és standard szintű terheléselosztóhoz leáll, amikor egy háttér-mintavételt összes tárolókészlet sikertelen.
 

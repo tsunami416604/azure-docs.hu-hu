@@ -1,7 +1,7 @@
 ---
-title: Alkalmazás üzembe helyezése Service Fabric-háló által használt Azure Files kötet |} A Microsoft Docs
-description: Ismerje meg, hogyan helyezhet üzembe Service Fabric háló az Azure CLI használatával az Azure Files kötet használó alkalmazások.
-services: service-fabric
+title: Állapot Store csatlakoztatja az Azure Files-alapú mennyiségi alkalmazás Service Fabric-háló tárolón belül |} A Microsoft Docs
+description: Ismerje meg, hogyan-állapot tárolása az Azure Files-alapú mennyiségi a tárolóban, a Service Fabric-háló alkalmazás az Azure CLI használatával csatlakoztatja.
+services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
 manager: timlt
@@ -15,84 +15,82 @@ ms.workload: NA
 ms.date: 06/26/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fb9740efaa9a1033d6602180f5750f6fb550c048
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 94a4e17e6285893520a2f6482b32a69b1229e2fa
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076103"
+ms.locfileid: "39090632"
 ---
-# <a name="deploy-a-service-fabric-mesh-application-that-uses-the-azure-files-volume"></a>Az Azure Files kötet használó Service Fabric-háló-alkalmazás üzembe helyezése
-Ez a példa bemutatja egy tárolóban, az Azure Service Fabric-háló futtató tároló kötetek használatát. Ez a minta részeként:
+# <a name="store-state-by-mounting-azure-files-based-volume-in-service-fabric-mesh-application"></a>Store állapot csatlakoztatja az Azure Files-alapú Service Fabric-háló alkalmazásban kötet
 
-- A fájlmegosztás létrehozása [Azure Files](/azure/storage/files/storage-files-introduction) 
-- Tárolópéldány helyezünk üzembe egy kötet, megosztás hivatkozás
-  - A tároló elindult, amikor azt csatlakoztatja, egy adott helyen belül a tároló megosztáson lévő
-- A tárolón belül futó kódot egy szövegfájlba írja az adott helyhez
-- Ellenőrizze, hogy a fájl megfelelően írták, amely a kötet a megosztásban
+Ez a cikk bemutatja, hogyan állapot tárolásához az Azure Files egy Service Fabric-háló alkalmazás a tároló kötetek csatlakoztatja. Ebben a példában a számláló alkalmazásnak egy ASP.NET Core-szolgáltatás, amely egy weblap, amelyen a teljesítményszámláló értéke látható a böngészőben. 
 
-## <a name="example-json-templates"></a>Példa JSON-sablonok
+A `counterService` perodically növeli fájlból, egy számláló értékét olvassa be, és az írási vissza a fájlt. A fájl, amely az Azure-fájlmegosztási alapját a kötet csatlakoztatva van egy mappában tárolódik. 
 
-Linux: [https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.linux.json](https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.linux.json)
+## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric háló parancssori felület beállítása 
+Ez a feladat végrehajtásához használhatja az Azure Cloud Shell vagy az Azure parancssori felület helyi telepítése. Az Azure Service Fabric háló parancssori bővítmény modul telepítése a következő [utasításokat](service-fabric-mesh-howto-setup-cli.md).
 
-Windows: [https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.windows.json](https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.windows.json)
-
-## <a name="create-the-azure-files-file-share"></a>Az Azure Files-fájlmegosztás létrehozása
-
-Kövesse az utasításokat a [dokumentáció az Azure Files](/azure/storage/files/storage-how-to-create-file-share) hozhat létre az alkalmazáshoz használandó fájlmegosztás.
-
-## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric háló parancssori felület beállítása
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
-
-A lépések végrehajtásához használhatja az Azure Cloud Shell vagy az Azure parancssori felület helyi telepítése. Ha helyi telepítése és használata a parancssori felület, telepítenie kell az Azure CLI verziója 2.0.35 vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Telepíteni, vagy frissítse a CLI legújabb verzióját, lásd: [Azure CLI 2.0 telepítése] [azure-cli-telepítés].
-
-Az Azure Service Fabric háló parancssori bővítmény modul telepítése. Az előzetes verzióra az Azure Service Fabric háló parancssori írása bővítményeként Azure parancssori felület.
-
-```azurecli-interactive
-az extension add --source https://sfmeshcli.blob.core.windows.net/cli/mesh-0.8.1-py2.py3-none-any.whl
-```
-
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure-ba, és állítsa be az előfizetést.
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+Jelentkezzen be az Azure-ba, és állítsa be az előfizetés.
 
 ```azurecli-interactive
 az login
-az account set --subscription "<subscriptionName>"
+az account set --subscription "<subscriptionID>"
 ```
 
+## <a name="create-file-share"></a>Fájlmegosztás létrehozása 
+Az Azure-fájlmegosztás létrehozása a következő [utasításokat](/azure/storage/files/storage-how-to-create-file-share). A tárfiók nevét, a tárfiók-kulcsot és a fájlmegosztás nevét néven hivatkozott `<storageAccountName>`, `<storageAccountKey>`, és `<fileShareName>` az az alábbi utasításokat.
+
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
-Hozzon létre egy erőforráscsoportot (RG) ebben a példában üzembe helyezéséhez, vagy használjon egy meglévő erőforráscsoportot, és ezt a lépést kihagyhatja. Az előzetes verzió érhető el, csak a `eastus` helyét.
+Hozzon létre egy erőforráscsoportot, amelybe az alkalmazás üzembe helyezése. Használjon egy meglévő erőforráscsoportot, és ezt a lépést kihagyhatja. 
 
 ```azurecli-interactive
-az group create --name <resourceGroupName> --location eastus
+az group create --name myResourceGroup --location eastus 
 ```
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
-Hozzon létre az alkalmazás és a kapcsolódó erőforrások az alábbi parancsok egyikével.
 
-Linux esetén:
+Az alkalmazás és a kapcsolódó erőforrások az alábbi paranccsal hozzon létre, és adja meg a tartozó értékeket `storageAccountName`, `storageAccountKey` és `fileShareName` az előző lépésben.
 
-```azurecli-interactive
-az mesh deployment create --resource-group <resourceGroupName> --template-uri https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.linux.json
-```
-
-Windows esetén:
+A `storageAccountKey` paraméter a sablon egy `securestring`. Nem jelennek az üzembe helyezési állapot és `az mesh service show` parancsokat. Győződjön meg arról, hogy ezt helyesen van megadva a következő parancsban.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group <resourceGroupName> --template-uri https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.windows.json
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
 ```
 
-Kövesse az utasításokat követve adja meg a fájlmegosztás neve, a fiók nevét és a fiókkulcsot az Azure-fájlmegosztás, amely a kötet biztosít. Egy percen belül erre, a parancshoz adja vissza a `"provisioningState": "Succeeded"`.
+Az előző parancs helyez üzembe egy Linux használó [mesh_rp.linux.json sablon](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json). Ha szeretne Windows-alkalmazás üzembe helyezése, [mesh_rp.windows.json sablon](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.windows.json). Windows-tárolórendszerképeket nagyobb, mint a Linuxos tárolólemezképek és központi telepítése több időt is igénybe vehet.
 
-A jelszó paraméter a sablonban `string` írja be a használat megkönnyítése érdekében. Megjelenik a képernyőn a tiszta szöveges és a központi telepítés állapota.
+Néhány perc alatt a parancs a kell visszaadnia:
+
+`counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>` 
+
+## <a name="open-the-application"></a>Nyissa meg az alkalmazás
+Miután sikeresen üzembe helyezte az alkalmazást, a nyilvános IP-cím beszerzése a szolgáltatási végpont, és a egy böngészőben nyissa meg. A számláló értéke másodpercenként frissítése a weblap jeleníti meg.
+
+A telepítési parancs visszaadja a szolgáltatásvégpont nyilvános IP-címét. Igény szerint is lekérdezheti a hálózati erőforrás keresése a szolgáltatásvégpont nyilvános IP-címét. 
+ 
+Ez az alkalmazás a hálózati erőforrás neve nem `counterAppNetwork`, beolvassa a következő paranccsal kapcsolatos információkat. 
+
+```azurecli-interactive
+az mesh network show --resource-group myResourceGroup --name counterAppNetwork
+```
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Győződjön meg arról, hogy az alkalmazás használhatja a kötet
-Az alkalmazás létrehoz egy fájlt _data.txt_ a fájlmegosztásban (Ha még nem létezik már). Ez a fájl tartalma egy szám, amely 30 másodpercenként az alkalmazás növekszik. Győződjön meg arról, hogy a példában megfelelően működik-e, nyissa meg a _data.txt_ rendszeres időközönként fájlt, és győződjön meg arról, hogy hány frissítése folyamatban van.
+Az alkalmazás létrehoz egy fájlt `counter.txt` a fájl megosztása belül `counter/counterService` mappát. Ez a fájl tartalma a számláló értéke nem szeretné megjeleníteni a weblapot.
 
 A fájl letöltődik minden olyan eszköz, amely lehetővé teszi egy fájlmegosztás az Azure Files-böngészés használatával. A [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) ilyen eszköz például.
 
+## <a name="delete-the-resources"></a>Az erőforrások törlése
+
+Erőforrásokkal való takarékoskodáshoz a korlátozott előzetes programjában hozzárendelni, gyakran törölje az erőforrásokat. Ebben a példában kapcsolódó erőforrások törléséhez törölje az erőforráscsoportot, amelyben üzembe lett helyezve.
+
+```azurecli-interactive
+az group delete --resource-group myResourceGroup 
+```
+
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure Files kötet mintaalkalmazás megtekintése [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/azurefiles-volume).
+- Az Azure Files kötet mintaalkalmazás megtekintése [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - Service Fabric Erőforrásmodell kapcsolatos további információkért lásd: [Service Fabric háló Erőforrásmodell](service-fabric-mesh-service-fabric-resources.md).
 - Service Fabric-háló kapcsolatos további információkért olvassa el a [Service Fabric-háló áttekintése](service-fabric-mesh-overview.md).

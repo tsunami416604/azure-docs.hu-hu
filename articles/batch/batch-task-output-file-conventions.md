@@ -1,6 +1,6 @@
 ---
-title: Feladat- és kimeneti, a fájl egyezmények könyvtárhoz Azure Storage .NET - Azure Batch fennállnak |} Microsoft Docs
-description: Útmutató Azure Batch fájl egyezmények .NET-keretrendszerhez készült Azure Storage feladat és a feladat kimenete kötegelt, és a megőrzött eredményének megtekintéséhez az Azure portálon.
+title: A File Conventions-könyvtárral az Azure Storage-feladatok és tevékenységek kimenetének megőrzése a .NET-keretrendszerhez – Azure Batch |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure Batch File Conventions .NET-kódtára kötegelt feladat és a feladat kimenetének az Azure Storage megőrzése, és a megőrzött kimenet megtekintéséhez az Azure Portalon.
 services: batch
 documentationcenter: .net
 author: dlepow
@@ -15,71 +15,71 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bbfb40b3740f9ea43df327a01ba6f4cf52d80457
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4d86a8fcd1dc85ccacea91afe36cb39dabe10464
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30314146"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117594"
 ---
-# <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>A kötegelt fájl egyezmények könyvtárhoz megőrizni a .NET-keretrendszerhez készült Azure Storage feladat- és adatok megőrzése 
+# <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>A Batch File Conventions-könyvtárral az Azure Storage-feladatok és tevékenységek adatok megőrzése a .NET-hez 
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-Egy módja feladat adatok megőrzéséhez a [Azure Batch fájl egyezmények .NET-keretrendszerhez készült][nuget_package]. A fájl egyezmények könyvtár egyszerűbbé teszi a tevékenység kimeneti adatok Azure Storage tárolására és beolvasására azt. Használhatja a fájl egyezmények könyvtárra, a feladat- és ügyfél-kód &mdash; tárolásakor fájlok feladat kódját, és a Ügyfélkód listában, és kérheti le azokat. A feladat kódot is használatával a szalagtár fölérendelt feladatot, kimeneti többek között a egy [függőségek feladat](batch-task-dependencies.md) forgatókönyv. 
+Feladat adatmegőrzésre egyik módja a [Azure Batch File Conventions .NET-kódtára][nuget_package]. A File Conventions-könyvtárral egyszerűsíti az Azure Storage-feladat kimeneti adatok tárolásához és lekéréséhez. A feladat és az ügyfél code File Conventions-könyvtárral is használhat &mdash; feladat kódot a fájlokat, és az Ügyfélkód listázása, és kérheti le azokat. A feladat kód segítségével is a tár felsőbb rétegbeli feladatok kimenetének lekéréséhez például a egy [tevékenységfüggőségek](batch-task-dependencies.md) forgatókönyv. 
 
-A fájl egyezmények könyvtárhoz kimenete fájlok lekéréséhez, keresse meg a fájlok egy adott feladat vagy tevékenység ehhez listázza azokat azonosítója és a cél. Nem kell tudja, hogy a nevek vagy a fájlok helyét. Például a fájl egyezmények könyvtár használata egy adott tevékenység köztes fájlok listáját, vagy egy adott feladat preview fájl.
+A File Conventions-könyvtárral kimeneti fájlok lekérése, keresse meg a fájlok egy adott feladat vagy tevékenység azonosítója és célú listázásával. Ön nem ismernie kell a neveket vagy a fájlok helyét. Például használhatja a File Conventions-könyvtárral köztes fájlok egy adott tevékenység listáját, vagy egy adott feladat egy előzetes fájlt.
 
 > [!TIP]
-> 2017-05-01 verziójától kezdve, a Batch szolgáltatás API támogatja tárolásakor kimeneti adatok Azure Storage és a virtuálisgép-konfiguráció létre készletek futó feladat manager feladatok. A Batch szolgáltatás API megőrizni a kimenet a kód, amely feladatot hoz létre, és a fájl egyezmények könyvtár alternatívájaként szolgál egyszerű módszert kínál. A kötegelt ügyfélalkalmazások megőrizni a kimenet anélkül, hogy frissítse az alkalmazást, amely a feladat futásának módosíthatja. További információkért lásd: [megőrző feladat adatok Azure Storage a kötegelt API szolgáltatás](batch-task-output-files.md).
+> 2017-05-01-es verzióval kezdődően a Batch szolgáltatás API támogatja a kimeneti adatok megtartását az Azure Storage-feladatok és a Feladatkezelő tevékenységekről, amely a virtuálisgép-konfigurációval létrehozott készletek futtassa. A Batch szolgáltatás API megőrizni a kód, amely létrehoz egy feladatot, és a File Conventions-könyvtárral alternatívájaként funkcionál kimenete egyszerű módszert kínál. Kimenet megőrzése anélkül, hogy az alkalmazást, amelyet a tevékenység fut. frissítse a Batch ügyfélalkalmazások módosíthatja. További információkért lásd: [megőrzése feladat adatokat az Azure Storage a Batch szolgáltatás API](batch-task-output-files.md).
 > 
 > 
 
-## <a name="when-do-i-use-the-file-conventions-library-to-persist-task-output"></a>Ha használja a fájl egyezmények könyvtár megőrizni a feladat kimenete?
+## <a name="when-do-i-use-the-file-conventions-library-to-persist-task-output"></a>Mikor használni, feladat kimenet megőrzése File Conventions-könyvtárral?
 
-Az Azure Batch megőrizni a feladat kimenete egynél több módot nyújt. A fájl egyezmények ezekkel az esetekkel a legmegfelelőbb:
+Az Azure Batch segítségével több feladat kimenetének megőrzése. A File Conventions el ezekben a forgatókönyvekben a legmegfelelőbb:
 
-- A feladat futásának megőrizni a fájlok a fájl egyezmények szalagtárat használó alkalmazás számára a kód könnyen módosíthatja.
-- A feladat futása közben szeretné adatfolyam adatok Azure Storage.
-- Szeretné megőrizni a készletek a felhőalapú szolgáltatás konfigurációja vagy a virtuálisgép-konfiguráció adatait.
-- Keresse meg és töltse le a tevékenység kimeneti fájlok azonosító vagy célú kell az ügyfélalkalmazás vagy egyéb feladatok, a feladat. 
-- A feladat kimenetének megtekintése az Azure portálon szeretné.
+- Egyszerűen módosíthatja a kódot, amely a feladat fut, a File Conventions-könyvtárral használ a fájlok megőrzéséhez.
+- Érdemes az Azure Storage-adatok streamelése a feladat futása közben.
+- Szeretné megőrizni az adatokat a felhőszolgáltatás-konfigurációt vagy a virtuálisgép-konfiguráció létrehozott készletek.
+- Keresse meg és töltse le a feladat kimeneti fájlok azonosítója vagy célú kell az ügyfélalkalmazás vagy egyéb feladatok, a feladat. 
+- Feladat kimenetének megtekintése az Azure Portalon szeretné.
 
-Ha adott esetben eltér a fent felsorolt, esetleg érdemes lehet egy másik módszert. Más beállításokat a tárolásakor feladat kimenetének további információkért lásd: [megőrizni a feladat- és kimeneti Azure Storage](batch-task-output.md). 
+Ha a forgatókönyv eltér a fent felsoroltak, szükség lehet érdemes lehet eltérő megközelítést. További megőrzése tevékenység kimenetének lehetőségekről további információkért lásd: [az Azure Storage-feladatok és tevékenységek kimenetének megőrzése](batch-task-output.md). 
 
-## <a name="what-is-the-batch-file-conventions-standard"></a>Mi az a kötegelt fájl egyezmények szabványos?
+## <a name="what-is-the-batch-file-conventions-standard"></a>Mi a standard szintű Batch File Conventions?
 
-A [kötegelt fájl egyezmények standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) egy elnevezési sémát biztosít a cél-tárolók és a blob elérési utak, amelyhez a kimeneti fájlok készültek. Azure Storage, amely igazodik fájl egyezmények normál megőrzött fájlok automatikusan elérhető megtekinthető az Azure portálon. A portál tudomást az elnevezési konvenciót, és így megjeleníthetik a fájlokat, csatlakozhat hozzá.
+A [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) egy elnevezési sémát kínál a cél-tárolók és a blob elérési útjának, amelyhez írja a kimeneti fájlt. Az Azure Storage, amelyek igazodnak a File Conventions standard megőrzött fájlok megtekintése az Azure Portalon automatikusan elérhető. A portál felismeri az elnevezési konvenciót, és így tudja megjeleníteni, amelyek igazodnak, fájlok.
 
-A fájl egyezmények .NET-keretrendszerhez készült automatikusan nevet, a tároló- és tevékenység kimeneti fájlokat a szabványos fájl konvenciók szerint. A fájl egyezmények könyvtár is lekérdezése az Azure Storage megfelelően Feladatazonosító, Tevékenységazonosító vagy célja a kimenő fájlok metódusokat biztosít.   
+A .NET-keretrendszerhez készült File Conventions-könyvtárral automatikusan nevet, a storage-tárolók és a feladat kimeneti fájlokat a File Conventions szabvány szerint. A File Conventions-könyvtárral is biztosít metódusokat lekérdezni a kimeneti fájlok megfelelően Feladatazonosító, tevékenység azonosítója vagy célú Azure Storage-ban.   
 
-Ha .NET eltérő nyelvű fejleszt, is létrehozható fájl egyezmények normál saját magának az alkalmazásban. További információkért lásd: [kapcsolatos a kötegelt fájl egyezmények standard](batch-task-output.md#about-the-batch-file-conventions-standard).
+Ha .NET eltérő nyelvű fejleszt, is meg lehet valósítani a File Conventions standard saját maga az alkalmazás. További információkért lásd: [kapcsolatban a Batch File Conventions standard](batch-task-output.md#about-the-batch-file-conventions-standard).
 
-## <a name="link-an-azure-storage-account-to-your-batch-account"></a>Egy Azure Storage-fiók összekapcsolása a Batch-fiók
+## <a name="link-an-azure-storage-account-to-your-batch-account"></a>Azure Storage-fiókot kapcsol a Batch-fiókhoz
 
-Megőrizni a kimeneti adatok Azure Storage a fájl egyezmények kódtár használatával, először a Batch-fiókhoz kell kapcsolni egy Azure Storage-fiókot. Még nem tette meg, ha egy Storage-fiók összekötése a Batch-fiók használatával a [Azure-portálon](https://portal.azure.com):
+Megőrizheti a kimeneti adatokat az Azure Storage használatával a File Conventions-könyvtárral, először a Batch-fiókhoz kell kapcsolni egy Azure Storage-fiókot. Ha még nem tette meg, összekapcsolása egy Storage-fiókot a Batch-fiók használatával a [az Azure portal](https://portal.azure.com):
 
 1. Az Azure portálon lépjen Batch-fiókjára. 
-2. A **beállítások**, jelölje be **Tárfiók**.
-3. Ha még nem rendelkezik egy tárfiókot, a Batch-fiókhoz társított, kattintson a **(nincs) Storage-fiók**.
-4. Válasszon egy tárfiókot a listából az előfizetéséhez. A legjobb teljesítmény érdekében használjon egy Azure Storage-fiókot, amely ugyanabban a régióban a Batch-fiók, amelyen fut a feladat.
+2. A **beállítások**válassza **Tárfiók**.
+3. Ha Ön még nem rendelkezik a Batch-fiókhoz társított Storage-fiókot, kattintson a **Storage-fiók (nincs)**.
+4. Tárfiók kiválasztása a listából az előfizetéshez. A legjobb teljesítmény érdekében használja az Azure Storage-fiók, amely ugyanabban a régióban a Batch-fiókot, ahol a feladatok futnak.
 
 ## <a name="persist-output-data"></a>Kimeneti adatok megőrzése
 
-Megőrizni a feladat- és kimeneti adatokat a fájl egyezmények könyvtárhoz, az Azure Storage tárolókat hozhat létre, majd kimenetét mentse a tárolóhoz. Használja a [Azure Storage ügyféloldali kódtára a .NET](https://www.nuget.org/packages/WindowsAzure.Storage) a feladat kódban a feladat kimenete feltölteni a tárolóba. 
+Feladatok és tevékenységek kimeneti adatok a File Conventions-könyvtárral is fennállnak, hozzon létre egy tárolót az Azure Storage-ban, majd kimenetét mentse el a tárolóhoz. Használja a [Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage) a feladat kódban, hogy a tevékenység kimenetének feltöltése a tárolóba. 
 
-A tárolók és blobok az Azure Storage használatáról további információk: [az Azure Blob storage .NET használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+Tárolók és blobok az Azure Storage használatával kapcsolatos további információkért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
 > [!WARNING]
-> Feladat- és mindegyikhez állandó, a fájl egyezmények könyvtárban tárolják ugyanabban a tárolóban. Ha nagyszámú feladatok megőrizni a fájlok egy időben, próbálja [szabályozás korlátok tárolási](../storage/common/storage-performance-checklist.md#blobs) is kényszeríthető.
+> Összes feladatok és tevékenységek kimenetének a File Conventions könyvtár ugyanabban a tárolóban tárolják az állandó. Feladatok nagy számú megpróbál egy időben, a fájlok megőrzéséhez [szabályozási korlátait tárolási](../storage/common/storage-performance-checklist.md#blobs) is kényszeríthető.
 > 
 > 
 
-### <a name="create-storage-container"></a>A tároló létrehozása
+### <a name="create-storage-container"></a>Storage-tároló létrehozása
 
-A feladat kimenetének Azure Storage megőrizni, először létre kell hoznia egy tárolót meghívásával [CloudJob][net_cloudjob].[ PrepareOutputStorageAsync][net_prepareoutputasync]. A bővítmény metódus egy [CloudStorageAccount] [ net_cloudstorageaccount] objektum paraméterként. Hoz, hogy a tartalma az Azure portál által felderíthető fájl egyezmények szabvány szerinti nevű tárolót, és az a cikk későbbi részében ismertetett lekérdezési módszerek.
+Az Azure Storage-feladat kimenetének megőrzése, először hozzon létre egy tárolót meghívásával [CloudJob][net_cloudjob].[ PrepareOutputStorageAsync][net_prepareoutputasync]. Ez a bővítmény metódus egy [CloudStorageAccount] [ net_cloudstorageaccount] paraméterként objektum. Létrehoz egy tárolót a File Conventions szabvány szerint, hogy a tartalmát az Azure portal által felderíthető és a cikk későbbi részében ismertetett lekérés módszerek.
 
-Általában helyezi-e a kód egy tároló létrehozásához az ügyfélalkalmazás az &mdash; az a készletek, a feladatok és a feladatok létrehozó alkalmazást.
+Általában helyezni a kódot egy tároló létrehozásához az ügyfélalkalmazásban található &mdash; az alkalmazás, amely létrehozza a készletek, feladatok és tevékenységek.
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob(
@@ -94,11 +94,11 @@ CloudStorageAccount linkedStorageAccount =
 await job.PrepareOutputStorageAsync(linkedStorageAccount);
 ```
 
-### <a name="store-task-outputs"></a>Tárolási feladatok kimenete
+### <a name="store-task-outputs"></a>Store feladatok kimenete
 
-Most, hogy az Azure Storage tárolója előkészítése után, feladatokat is mentése kimeneti a tároló segítségével a [TaskOutputStorage] [ net_taskoutputstorage] osztály a fájl egyezmények könyvtárban található.
+Most, hogy előkészítette az Azure Storage-tároló, feladatok mentheti kimeneti a tároló használatával a [TaskOutputStorage] [ net_taskoutputstorage] osztály a File Conventions-könyvtárral található.
 
-A feladat kódban, először létre kell hoznia egy [TaskOutputStorage] [ net_taskoutputstorage] objektumot, majd a tevékenységeket a feladat befejezése után hívja a [TaskOutputStorage][net_taskoutputstorage].[ SaveAsync] [ net_saveasync] mentése az Azure Storage metódust.
+A feladat-kódba először hozzon létre egy [TaskOutputStorage] [ net_taskoutputstorage] objektumot, majd amikor a feladat befejezését a munkahelyi hívja a [TaskOutputStorage] [ net_taskoutputstorage]. [SaveAsync] [ net_saveasync] kimenetét mentése az Azure Storage-metódus.
 
 ```csharp
 CloudStorageAccount linkedStorageAccount = new CloudStorageAccount(myCredentials);
@@ -114,20 +114,20 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-A `kind` paramétere a [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[ SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx) metódus kategorizálja a megőrzött fájlok. Nincsenek négy előre definiált [TaskOutputKind] [ net_taskoutputkind] típusok: `TaskOutput`, `TaskPreview`, `TaskLog`, és `TaskIntermediate.` kimeneti egyéni kategóriáinak is meghatározhat.
+A `kind` paraméterében a [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[ SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx) metódus kategorizálja a megőrzött fájlok. Az előre meghatározott négy [TaskOutputKind] [ net_taskoutputkind] típusok: `TaskOutput`, `TaskPreview`, `TaskLog`, és `TaskIntermediate.` azt is megadhatja a kimeneti egyéni kategóriákkal.
 
-Kimeneti típusaival engedélyezi, hogy adja meg, milyen típusú kimenetek előfordulhat, hogy később kötegelt a megőrzött egy adott feladat kimenetének a listát. Ez azt jelenti Ha egy feladat kimenetének felsorolja, végezhet listáról a kimeneti típusú. Például ", adja meg a *előzetes* tevékenység kimeneti *109*." Több listázása és kimenetének beolvasása megjelenik [lekérnie a kimenetet](#retrieve-output) a cikk későbbi.
+Ezek a típusok kimeneti adja meg, milyen típusú listázásához, előfordulhat, hogy később a Batch a megőrzött egy adott feladat kimenetének a kimenetek teszi lehetővé. Más szóval amikor a tevékenység kimeneti listázza, szűrheti listájában a kimeneti típus egyikét. Például ", adja meg a *előzetes* tevékenység kimeneti *109*." További információ az ajánlati és kimenetek beolvasása megjelenik [beolvasni a kimeneti](#retrieve-output) a cikkben.
 
 > [!TIP]
-> A kimeneti típust is meghatározza, hogy az Azure portálon egy adott fájl helyére: *TaskOutput*-kategorizált fájlok alatt szerepelhet **tevékenység kimeneti fájlok**, és *TaskLog* fájlok jelennek meg a **naplók feladat**.
+> A kimenet típusa is meghatározza, hogy az Azure Portalon egy adott fájl helyére: *TaskOutput*-kategorizált fájlok meg fog jelenni **tevékenység kimeneti fájlok**, és *TaskLog* fájlok meg fog jelenni **naplók feladat**.
 > 
 > 
 
-### <a name="store-job-outputs"></a>Feladat kimenetének tárolásához
+### <a name="store-job-outputs"></a>Feladatkimenetek Store
 
-Tárolás, a feladat kimenetének létrehozása mellett egy teljes feladattal társított kimenetek is tárolhatja. Például az egyesítés a feladatban movie megjelenítési feladat, sikerült megőrizni a teljes megjelenített movie a feladat kimenete. Ha a feladat befejeződött, az ügyfélalkalmazás listában, és a feladat kimenetének beolvasása, és nem kell az egyes feladatok lekérdezni.
+Tárolás, a feladat kimeneti mellett a kimeneteket, egy teljes feladathoz hozzárendelt is tárolhatja. Például az egyesítés a feladatban movie renderelési feladat sikerült arcot a teljes körűen megjelenített filmet a feladat kimeneteként. Amikor a feladat befejeződött, az ügyfélalkalmazás listában, és beolvasni a feladat a kimeneteket, és nem kell az egyes feladatok lekérdezése.
 
-Tárolja a feladat kimenetére meghívásával a [JobOutputStorage][net_joboutputstorage].[ SaveAsync] [ net_joboutputstorage_saveasync] metódust, és adja meg a [JobOutputKind] [ net_joboutputkind] és fájlnév:
+Feladat kimenetének Store meghívásával a [JobOutputStorage][net_joboutputstorage].[ SaveAsync] [ net_joboutputstorage_saveasync] metódust, és adja meg a [JobOutputKind] [ net_joboutputkind] és fájlnév:
 
 ```csharp
 CloudJob job = new JobOutputStorage(acct, jobId);
@@ -137,13 +137,13 @@ await jobOutputStorage.SaveAsync(JobOutputKind.JobOutput, "mymovie.mp4");
 await jobOutputStorage.SaveAsync(JobOutputKind.JobPreview, "mymovie_preview.mp4");
 ```
 
-Például a **TaskOutputKind** típus feladatot kimenetek, használja a [JobOutputKind] [ net_joboutputkind] kategorizálásának egy feladat típusa a megőrzött fájlok. Ez a paraméter lehetővé teszi később (lista) egy adott típusú kimeneti. A **JobOutputKind** típusú kimeneti és a kép tartalmazza, és támogatja az egyéni kategóriák.
+A a **TaskOutputKind** írja be a feladat kimeneti, használja a [JobOutputKind] [ net_joboutputkind] írja be a projekt csoportosítását a megőrzött fájlok. Ez a paraméter lehetővé teszi újabb lekérdezés (lista) egy adott típusú kimenet. A **JobOutputKind** típusú kimenet és az előzetes verzió is beleértve, és egyéni kategóriákkal létrehozását támogatja.
 
-### <a name="store-task-logs"></a>A feladat naplók tárolására
+### <a name="store-task-logs"></a>A feladat naplók Store
 
-Mellett megőrzése a tartós tárolási egy fájlt egy feladat vagy a feladat befejezését, szükség lehet megőrizni a feladat végrehajtása közben fájlok &mdash; naplófájlok vagy `stdout.txt` és `stderr.txt`, például. Erre a célra az Azure Batch fájl egyezmények kódtár biztosít a [TaskOutputStorage][net_taskoutputstorage].[ SaveTrackedAsync] [ net_savetrackedasync] metódust. A [SaveTrackedAsync][net_savetrackedasync], nyomon követheti a frissítések a csomópont (a megadott időközönként) fájlba, és ezek a frissítések Azure Storage megőrzéséhez.
+Mellett megőrzése egy fájlt a tartós tárolási, a feladat vagy a feladat befejezésekor, szükség lehet egy feladat végrehajtása közben frissített fájlok megtartása &mdash; naplófájlok vagy `stdout.txt` és `stderr.txt`, például. Erre a célra az Azure Batch File Conventions-könyvtárral biztosít a [TaskOutputStorage][net_taskoutputstorage].[ SaveTrackedAsync] [ net_savetrackedasync] metódust. A [SaveTrackedAsync][net_savetrackedasync], frissítések nyomon követése egy fájlba a csomóponton (időközönként egy Ön által megadott), és ezeket a frissítéseket az Azure Storage megőrzése.
 
-A következő kódrészletet használjuk [SaveTrackedAsync] [ net_savetrackedasync] frissítése `stdout.txt` az Azure Storage 15 másodpercenként a feladat végrehajtása során:
+A következő kódrészletet a használunk [SaveTrackedAsync] [ net_savetrackedasync] frissíteni `stdout.txt` az Azure Storage-15 másodpercenként a feladat végrehajtása közben:
 
 ```csharp
 TimeSpan stdoutFlushDelay = TimeSpan.FromSeconds(3);
@@ -168,20 +168,20 @@ using (ITrackedSaveOperation stdout =
 }
 ```
 
-A megjegyzésként szakasz `Code to process data and produce output file(s)` helyőrzőjeként szolgál a kódot, amely a feladat általában hajtaná végre. Például lehetséges, hogy kódot, amely letölti az adatokat az Azure Storage és átalakítás vagy számítási végez azt. A fontos része a részlet van bemutatásához, hogyan akkor futtathatja a kódok egy `using` blokk rendszeresen frissíteni a fájl [SaveTrackedAsync][net_savetrackedasync].
+A megjegyzésekkel szakasz `Code to process data and produce output file(s)` a kódot, amely a feladat általában végre helyőrzője. Előfordulhat például, hogy kódot, amely letölti az adatokat az Azure Storage-ból, és hajtja végre az átalakítási mód vagy a számítási rajta. Ez a kódrészlet fontos része a bemutatásához, hogyan futtathatja az ilyen kód egy `using` rendszeresen frissíteni az olyan fájlt blokk [SaveTrackedAsync][net_savetrackedasync].
 
-A csomópont-ügynök egy olyan program, a készlet minden egyes csomópontján fut, és a parancs-és-ellenőrzés felületet, a csomópont és a Batch szolgáltatás között. A `Task.Delay` tekintendő, amely szükséges a végén `using` blokk ellenőrizze, hogy a csomópont-ügynök van-e az idő a standard out tartalmát kiüríteni a stdout.txt fájlba a csomóponton. Ez a késleltetés nélkül is lehet, amelyeken a kimenet utolsó néhány másodpercig. Ez a késés nem lehet szükség az összes fájl.
+A csomóponti ügynök egy olyan program, a készlet minden csomópontján lefut, és a csomópont és a Batch szolgáltatás között a parancs és vezérlés felületet biztosít. A `Task.Delay` hívás szükség a végén `using` letiltása, hogy a csomóponti ügynök idő standard kimeneti tartalmának ürítése a csomóponton a stdout.txt fájl legyen-e. Ez a késleltetés nélkül, hagyja ki a kimenet az elmúlt pár másodperc. Ez a késleltetés nem lehet szükség az összes fájl.
 
 > [!NOTE]
-> Ha engedélyezi a nyomkövetési fájl **SaveTrackedAsync**, csak *hozzáfűzi* a nyomon követett fájl megmaradnak az Azure-tárhelyre. Ezt a módszert csak a nyomkövetési naplófájlok nem elforgatása vagy egyéb fájlok, a műveletek hozzáfűzésére a fájl végére írni.
+> Ha engedélyezi a nyomkövetési fájl **SaveTrackedAsync**, csak *hozzáfűzi* a nyomon követett fájl tárolja az Azure Storage. Ezt a módszert csak a naplófájlok nem forgó vagy egyéb fájlok, a fájl végén műveletek hozzáfűzésére írt nyomon követése.
 > 
 > 
 
 ## <a name="retrieve-output-data"></a>Kimeneti adatainak beolvasása
 
-Beolvasni a megőrzött kimeneti az Azure Batch fájl egyezmények kódtár használatával, ha ezt teszi feladat - és a feladat-központú módon. A kimeneti kérhet a megadott feladat vagy a feladatot anélkül, hogy az elérési Azure Storage, vagy még a fájl nevét. Ehelyett kérheti a kimeneti fájlok feladat, vagy sikertelen feladat-azonosítót.
+A megőrzött kimenet az Azure Batch File Conventions-könyvtárral használatával kérheti le, ha mégis így a feladat - és feladat-központú módon. A kimenet kérheti a megadott feladat vagy a feladat nem ismeri az Azure Storage, vagy még a fájl nevét a elérési útvonalát. Ehelyett kérheti a kimeneti fájlok feladat vagy feladat-azonosítót.
 
-A következő kódrészletet telepítéseket egy feladat tevékenységeit, kiírja a kimeneti fájlok a következő feladathoz kapcsolatos információkat és tölti le a fájlok a tároló.
+Az alábbi kódrészlet végighalad a feladatok, a feladat kimeneti fájljait némi információt jelenít meg, és ezután letölti a fájlokat a Storage-ból.
 
 ```csharp
 foreach (CloudTask task in myJob.ListTasks())
@@ -199,42 +199,42 @@ foreach (CloudTask task in myJob.ListTasks())
 }
 ```
 
-## <a name="view-output-files-in-the-azure-portal"></a>Az Azure portálon kimeneti fájlok megtekintése
+## <a name="view-output-files-in-the-azure-portal"></a>Kimeneti fájlok megtekintése az Azure Portalon
 
-Az Azure-portálon jeleníti meg a tevékenység kimeneti fájlok és a naplófájlokat, amelyek megmaradnak a kapcsolt Azure Storage használatával a [kötegelt fájl egyezmények standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Megvalósíthat szabályoknak saját kezűleg a a egy nyelvet a választott, vagy a fájl egyezmények könyvtár a .NET-alkalmazásokban használható.
+Az Azure portal megjeleníti a feladat kimeneti fájljait, és naplóival, amelyeket a rendszer megőrzi a egy társított Azure Storage-fiók használatával a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Meg lehet valósítani a konvenciók saját maga a nyelv az Ön által választott, vagy használhatja a File Conventions-könyvtárral, a .NET-alkalmazásokban.
 
-Ahhoz, hogy a kimeneti fájlok, a portál megjelenését, az alábbi követelményeknek kell megfelelnie:
+Ahhoz, hogy a megjelenített, a kimeneti fájlok a portálon, akkor a következő követelményeknek kell megfelelnie:
 
-1. [Egy Azure Storage-fiók csatolása](#requirement-linked-storage-account) a Batch-fiókhoz.
-2. Előre definiált tároló- és a fájlok elnevezési szabályai csatlakozhat, ha kimenetek megőrzése. Ezek egyezmények meghatározása a fájl egyezmények könyvtárban található [információs][github_file_conventions_readme]. Ha használja a [Azure Batch fájl egyezmények] [ nuget_package] megőrizni a kimeneti könyvtár fájl egyezmények szabvány szerinti őrződnek meg a fájlok.
+1. [Az Azure Storage-fiókot kapcsol](#requirement-linked-storage-account) a Batch-fiókjához.
+2. Amikor kimenetek megőrzése tartaniuk az előre meghatározott, a Storage-tárolók és a fájlok elnevezési konvencióinak. A File Conventions-könyvtárral találhatja meg a definíció az alábbi egyezmények [információs][github_file_conventions_readme]. Használatakor a [Azure Batch File Conventions] [ nuget_package] kódtárat a kimenet megőrzése File Conventions szabvány szerinti tárolja a fájlokat.
 
-Az Azure portálon tevékenység kimeneti fájlok és a naplók megtekintéséhez nyissa meg a tevékenység, amelynek kimenete érdekli, majd kattintson **mentett kimeneti fájlok** vagy **mentett naplókat**. A képen látható a **mentett kimeneti fájlok** "007" azonosítójú feladat számára:
+A feladat kimeneti fájljait és naplók megtekintése az Azure Portalon, keresse meg a feladat kimenete is érdeklik, majd kattintson vagy **mentett kimeneti fájlok** vagy **mentett naplók**. Az ábra a **mentett kimeneti fájlok** "007" Azonosítójú feladat számára:
 
-![A feladat kimenetének panel az Azure-portálon][2]
+![A feladat kimenetek panel az Azure Portalon][2]
 
 ## <a name="code-sample"></a>Kódminta
 
-A [PersistOutputs] [ github_persistoutputs] mintaprojektet egyike a [Azure Batch-Kódminták] [ github_samples] a Githubon. A Visual Studio megoldás bemutatja, hogyan használható az Azure Batch fájl egyezmények könyvtár továbbra is fennáll feladatkimenet tartós tárhelyre. A minta futtatásához kövesse az alábbi lépéseket:
+A [PersistOutputs] [ github_persistoutputs] mintaprojektet az egyik a [Azure Batch-kódminta] [ github_samples] a Githubon. A Visual Studio-megoldás bemutatja, hogyan használhatja az Azure Batch File Conventions-könyvtárral tartós tárolási, a feladat kimenetének megőrzése. A minta futtatásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a projektet a **Visual Studio 2015-ös vagy újabb**.
-2. A kötegelt és a tárolási **fiók hitelesítő adatait** való **AccountSettings.settings** a Microsoft.Azure.Batch.Samples.Common projektben.
+1. Nyissa meg a projektet a **Visual Studio 2017**.
+2. Adja hozzá a Batch- és Storage **fiók hitelesítő adatai** való **AccountSettings.settings** Microsoft.Azure.Batch.Samples.Common projektben.
 3. **Build** (de ne futtassa) a megoldás. Ha a rendszer kéri, állítsa vissza a NuGet-csomagok.
-4. Töltse fel az Azure-portál használatával egy [alkalmazáscsomag](batch-application-packages.md) a **PersistOutputsTask**. Tartalmazza a `PersistOutputsTask.exe` és a függő szerelvényeket a .zip-csomagja "PersistOutputsTask" az alkalmazás-Azonosítót, és az alkalmazáscsomag verzióját "1.0".
-5. **Start** (Futtatás) a **PersistOutputs** projekt.
-6. Amikor a rendszer kéri a minta futtatásához használni, adja meg a adatmegőrzési technológiát válasszon **1** megőrizni a feladat kimenete a fájl egyezmények könyvtár használata a minta futtatásához. 
+4. Töltse fel az Azure portal használatával egy [alkalmazáscsomag](batch-application-packages.md) a **PersistOutputsTask**. Tartalmazza a `PersistOutputsTask.exe` és annak függő szerelvényei a .zip csomag "PersistOutputsTask" kívánt alkalmazás Azonosítóját és az "1.0" alkalmazáscsomag-verzió.
+5. **Indítsa el** (Futtatás) a **PersistOutputs** projekt.
+6. Amikor a rendszer kéri, válassza ki a minta futtatásához használni, adja meg a megőrzést technológiát **1** , futtassa a mintát, feladat kimenet megőrzése File Conventions-könyvtárral segítségével. 
 
 ## <a name="next-steps"></a>További lépések
 
-### <a name="get-the-batch-file-conventions-library-for-net"></a>A kötegelt fájl egyezmények könyvtár beolvasása a .NET-hez
+### <a name="get-the-batch-file-conventions-library-for-net"></a>A Batch File Conventions-könyvtárral lekérése a .NET-hez
 
-A kötegelt fájl egyezmények .NET-keretrendszerhez készült érhető el a [NuGet][nuget_package]. A könyvtár bővíti a [CloudJob] [ net_cloudjob] és [CloudTask] [ net_cloudtask] osztályok új metódusával. Lásd még: a [dokumentáció](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files) a fájl egyezmények könyvtára.
+A .NET-hez készült Batch File Conventions-könyvtárral érhető el az [NuGet][nuget_package]. A könyvtár kibővíti a [CloudJob] [ net_cloudjob] és [CloudTask] [ net_cloudtask] osztályok új módszerekkel. További tájékoztatás a [referenciadokumentációt](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files) for File Conventions-könyvtárral.
 
-A [forráskód] [ github_file_conventions] a fájl egyezmények könyvtár érhető el a Microsoft Azure SDK for .NET tárház a githubon. 
+A [forráskódját] [ github_file_conventions] a File Conventions számára érhető el kódtár a Microsoft Azure SDK for .NET tárházban a githubon. 
 
-### <a name="explore-other-approaches-for-persisting-output-data"></a>Más megoldások tárolásakor kimeneti adatok felfedezése
+### <a name="explore-other-approaches-for-persisting-output-data"></a>Egyéb megközelítések megőrzése kimeneti adatainak felfedezése
 
-- Lásd: [megőrizni a feladat- és kimeneti Azure Storage](batch-task-output.md) áttekintését a feladat és a feladat adatait.
-- Lásd: [megőrző feladat adatok Azure Storage a kötegelt API szolgáltatás](batch-task-output-files.md) a kimeneti adatok megőrzéséhez a Batch szolgáltatás API használata.
+- Lásd: [az Azure Storage-feladatok és tevékenységek kimenetének megőrzése](batch-task-output.md) áttekintését, feladat és a feladat adatait.
+- Lásd: [megőrzése feladat adatokat az Azure Storage a Batch szolgáltatás API](batch-task-output-files.md) megtudhatja, hogyan a Batch szolgáltatás API-ja segítségével megőrizheti a kimeneti adatokat.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Batch/FileConventions
@@ -260,5 +260,5 @@ A [forráskód] [ github_file_conventions] a fájl egyezmények könyvtár érhe
 [portal]: https://portal.azure.com
 [storage_explorer]: http://storageexplorer.com/
 
-[1]: ./media/batch-task-output/task-output-01.png "Mentett kimeneti fájlokat és mentett naplókat választók portálon"
-[2]: ./media/batch-task-output/task-output-02.png "A feladat kimenetének panel az Azure-portálon"
+[1]: ./media/batch-task-output/task-output-01.png "Mentett kimeneti fájlok és a mentett naplókat választók portálon"
+[2]: ./media/batch-task-output/task-output-02.png "A feladat kimenetek panel az Azure Portalon"

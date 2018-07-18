@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: bbbfc495f1ec262ccc067f3cd00b75e1a3e0c178
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: f1d85b031abda73c6ca41d6d2551db9d9cd36f1f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990193"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092154"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS-alkalmazás integráció az Azure Active Directoryval
 
@@ -139,7 +139,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-ciscocloud-tutorial.png)| [Cisco felhő](ciscocloud-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-ciscocloudlock-tutorial.png)| [Cisco Cloudlock](ciscocloudlock-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|[Cisco Spark - felhasználók átadása](cisco-spark-provisioning-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|)|[Cisco Webex - felhasználók átadása](cisco-webex-provisioning-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex - felhasználók átadása](cisco-webex-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [A Citrix ShareFile](sharefile-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen - felhasználók átadása](clarizen-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Felülvizsgálat törlése](clearreview-tutorial.md)|

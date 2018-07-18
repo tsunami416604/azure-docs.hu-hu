@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: b4c5bf3b11c2ee661d95dc50f5c93e12fe2d56bf
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1ad2dc9d826ec42dfca8547a73117a6c967a8ae7
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901041"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113648"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
@@ -59,9 +59,9 @@ A támogatott képességek közötti különbség az alapszintű és standard cs
 | Modul beolvasása | Igen | Igen |
 | [Beállításjegyzék statisztikájának beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Igen | Igen |
 | [Szolgáltatások statisztikájának beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Igen | Igen |
-| [A PUT eszköz](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Igen | Igen |
+| [Hozzon létre vagy az eszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Igen | Igen |
 | A PUT-modul | Igen | Igen |
-| [Eszközök lekérdezése](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Igen | Igen |
+| [Az IoT Hub lekérdezése](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Igen | Igen |
 | Lekérdezés-modulok | Igen | Igen |
 | [Fájl feltöltése SAS URI létrehozása](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Igen | Igen |
 | [Értesítés e kötve eszköz](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Igen | Igen |

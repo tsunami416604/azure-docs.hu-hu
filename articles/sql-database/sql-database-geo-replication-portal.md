@@ -1,92 +1,92 @@
 ---
-title: 'Azure-portálon: SQL Database georeplikációja |} Microsoft Docs'
-description: A georeplikáció konfigurálása az Azure SQL Database az Azure-portálon és kezdeményezhet feladatátvételi
+title: 'Az Azure portal: SQL Database georeplikációja |} A Microsoft Docs'
+description: Georeplikáció konfigurálása az Azure SQL Database az Azure Portalon és kezdeményezhet feladatátvételt
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: e6c699fdd57eecc31c51b26ccb7c06c6edbcfd03
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 27fb8f369ad23592902c05fe5275fc54bc6cf148
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646898"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090469"
 ---
-# <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Aktív georeplikáció konfigurálása az Azure SQL Database az Azure-portálon és kezdeményezhet feladatátvételi
+# <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Aktív georeplikáció konfigurálása az Azure SQL Database az Azure portal és a feladatátvétel kezdeményezése
 
-Ez a cikk bemutatja, hogyan aktív georeplikáció konfigurálja az SQL-adatbázis a [Azure-portálon](http://portal.azure.com) és a feladatátvétel kezdeményezése.
+Ez a cikk bemutatja, hogyan aktív georeplikáció konfigurálása az SQL Database-be a [az Azure portal](http://portal.azure.com) és, hogy feladatátvételt kezdeményezzen.
 
-Kezdeményezze a feladatátvételt az Azure portálon, lásd: [kezdeményezzen tervezett vagy nem tervezett feladatátvételt az Azure SQL Database és az Azure portál](sql-database-geo-replication-portal.md).
+Kezdeményezzen feladatátvételt az Azure portal használatával, lásd: [tervezett vagy nem tervezett feladatátvételt kezdeményezni az Azure SQL Database és az Azure portal](sql-database-geo-replication-portal.md).
 
-Aktív georeplikáció konfigurálása az Azure-portál használatával, a következő erőforrás van szükség:
+Aktív georeplikáció konfigurálása az Azure portal használatával, a következő erőforrás van szükség:
 
-* Azure SQL-adatbázis: az elsődleges adatbázis egy másik földrajzi régióban replikálni kívánt.
+* Az Azure SQL database: az elsődleges adatbázis, amely egy másik földrajzi régióba replikálni szeretne.
 
 > [!Note]
-Aktív georeplikáció ugyanahhoz az előfizetéshez adatbázisok között kell lennie.
+Aktív georeplikáció azonos előfizetésben található adatbázisok között kell lennie.
 
-## <a name="add-a-secondary-database"></a>A másodlagos adatbázis hozzáadása
-Az alábbi lépéseket a georeplikáció együttműködve hozzon létre egy új másodlagos adatbázis.  
+## <a name="add-a-secondary-database"></a>Egy másodlagos adatbázis hozzáadása
+Az alábbi lépéseket egy új másodlagos adatbázis georeplikációs partnerséget létrehozni.  
 
-Vegye fel a másodlagos adatbázist, az előfizetés tulajdonosa vagy a társtulajdonos kell lennie.
+Szeretne hozzáadni egy másodlagos adatbázist, az előfizetés tulajdonosa vagy társtulajdonosa kell lennie.
 
-A másodlagos adatbázis ugyanaz a neve, mint az elsődleges adatbázissal, és alapértelmezés szerint rendelkezik ugyanazt a szolgáltatási szint. A másodlagos adatbázis egy adatbázis vagy a rugalmas készletekben található adatbázis lehet. További információkért lásd: [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md).
-Miután a másodlagos létrehozták, és a rendezés, adatok kezdődik, az új másodlagos adatbázis replikálása az elsődleges adatbázisból.
+A másodlagos adatbázis neve megegyezik az elsődleges adatbázissal rendelkezik, és rendelkezik, alapértelmezés szerint a azonos szolgáltatási szint. A másodlagos adatbázis egy önálló adatbázis és a egy adatbázist a rugalmas készlet is lehetnek. További információkért lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
+Miután létrehozott és áttöltésekor a másodlagos, elindul az adatok az új másodlagos adatbázis replikálása az elsődleges adatbázisból.
 
 > [!NOTE]
-> A parancs futása sikertelen, ha a partner adatbázis már létezik (például miatt leállítja egy előző georeplikáció kapcsolat).
+> Ha a partner adatbázis már létezik (például eredményeként egy előző georeplikációs kapcsolatban megszakítást okozó) a parancs sikertelen lesz.
 > 
 
-1. Az a [Azure-portálon](http://portal.azure.com), keresse meg az adatbázis, amelyet a georeplikációért beállítása.
-2. Az SQL-adatbázis oldalon válassza ki a **georeplikáció**, majd válassza ki a régiót, a másodlagos adatbázis létrehozásához. Kiválaszthatja a régió eltérő a régió, az elsődleges adatbázist üzemeltető, de ajánlott a [párosított régió](../best-practices-availability-paired-regions.md).
+1. Az a [az Azure portal](http://portal.azure.com), tallózással keresse meg az adatbázis, amelyet szeretne georeplikáció beállítása.
+2. Az SQL database oldalon válassza ki a **georeplikációs**, majd válassza ki a régiót, a másodlagos adatbázis létrehozásához. Választhat bármelyik régióban más, a régiót az elsődleges adatbázis üzemeltetéséhez, de javasoljuk, hogy a [párosított régióra](../best-practices-availability-paired-regions.md).
    
     ![Aktív georeplikáció konfigurálása](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
-3. Válasszon, vagy adja meg a kiszolgáló és a másodlagos adatbázis tarifacsomagjának.
+3. Válassza ki, vagy a kiszolgáló és a másodlagos adatbázis tarifacsomagjának beállításához.
    
     ![Másodlagos konfigurálása](./media/sql-database-geo-replication-portal/create-secondary.png)
-4. Opcionálisan hozzáadhat egy másodlagos adatbázis rugalmas készlethez. A másodlagos adatbázis létrehozása a készletben, kattintson a **rugalmas készlet** , és válasszon ki egy készletet, a célkiszolgálón. Egy készlet már léteznie kell a célkiszolgálón. Ez a munkafolyamat nem hoz létre a készletet.
-5. Kattintson a **létrehozása** hozzáadása a másodlagos.
-6. A másodlagos adatbázis jön létre, és az index-összehangolási folyamat megkezdése.
+4. Igény szerint hozzáadhat egy másodlagos adatbázist egy rugalmas készlet. A másodlagos adatbázis a készlet létrehozásához kattintson a **rugalmas készlet** , és válassza ki a készlet a célkiszolgálón. Egy készlet már léteznie kell a célkiszolgálón. Ez a munkafolyamat nem hoz létre egy készletet.
+5. Kattintson a **létrehozás** a másodlagos hozzáadásához.
+6. A másodlagos adatbázis jön létre, és a kiindulási megkezdődik.
    
     ![Másodlagos konfigurálása](./media/sql-database-geo-replication-portal/seeding0.png)
-7. Ha az index-összehangolási folyamat befejeződik, a másodlagos adatbázis állapotát jeleníti meg.
+7. A kiindulási folyamat befejeződése után a másodlagos adatbázis állapotát jeleníti meg.
    
-    ![Teljes összehangolása](./media/sql-database-geo-replication-portal/seeding-complete.png)
+    ![Teljes beültetés](./media/sql-database-geo-replication-portal/seeding-complete.png)
 
 ## <a name="initiate-a-failover"></a>Kezdeményezzen feladatátvételt
 
-A másodlagos adatbázist már kapcsolható legyen, az elsődleges.  
+A másodlagos adatbázist elsődlegessé mostantól átválthat.  
 
-1. Az a [Azure-portálon](http://portal.azure.com), keresse meg az elsődleges adatbázis a georeplikáció együttműködve.
-2. SQL-adatbázis paneljén válassza **összes beállítás** > **georeplikáció**.
-3. Az a **másodlagos** listára, válassza ki az adatbázist az új elsődleges válik, és kattintson a kívánt **feladatátvételi**.
+1. Az a [az Azure portal](http://portal.azure.com), tallózással keresse meg az elsődleges adatbázis georeplikációs partnerségben.
+2. Az SQL Database panelen válassza ki a **minden beállítás** > **georeplikációs**.
+3. Az a **másodlagos példány hozható létre** listájához, válassza ki az adatbázist az új elsődleges válnak, és kattintson a kívánt **feladatátvételi**.
    
-    ![feladatátvétel](./media/sql-database-geo-replication-failover-portal/secondaries.png)
-4. Kattintson a **Igen** megkezdéséhez a feladatátvételt.
+    ![Feladatátvétel](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+4. Kattintson a **Igen** , a feladatátvételi művelet elindításához.
 
-A parancs azonnal vált, a másodlagos adatbázist az elsődleges szerepkör. 
+A parancs azonnal átvált a másodlagos adatbázis, az elsődleges szerepre. 
 
-Egy rövid időre időintervalluma (terabájtok rendelése 0-25 másodpercig) nem érhető el, amíg a szerepkörök bekapcsolt állapotban van. Ha az elsődleges adatbázis több másodlagos adatbázist, a parancs automatikusan újrakonfigurálja a más másodlagos adatbázist az új elsődleges való kapcsolódáshoz. A teljes műveletet kell végrehajtani egy percen belül befejeződik normál körülmények között. 
+Egy rövid ideig, mely során nem érhető el (0 – 25 másodpercig) sorrendje lesz, amíg a szerepkörök bekapcsolt állapotban van. Ha az elsődleges adatbázis több másodlagos adatbázis, a parancs automatikusan újrakonfigurálja a többi másodlagos példány hozható létre az új elsődleges csatlakozni. A teljes művelet végrehajtásához a normál körülmények között kevesebb mint egy percet vesz igénybe. 
 
 > [!NOTE]
-> Ez a parancs a gyors helyreállítás az adatbázis egy esetleges leállás esetén szolgál. Elindítja a feladatátvétel (kényszerített feladatátvételi) adatok szinkronizálás nélkül.  Ha az elsődleges online állapotban, és a tranzakciók végrehajtása, ha a parancs kiadása adatvesztést fordulhat elő. 
+> Ez a parancs az adatbázis egy esetleges leállás gyors helyreállítás lett tervezve. Feladatátvételi elindítja az adatok szinkronizálásának (kényszerített feladatátvétel) nélkül.  Ha az elsődleges online állapotban, és a tranzakciók véglegesítése, ha a parancs kiadása adatvesztés fordulhat elő. 
 > 
 > 
 
-## <a name="remove-secondary-database"></a>Távolítsa el a másodlagos adatbázis
-Ez a művelet végleg leáll a replikálás, a másodlagos adatbázishoz, és a szerepkör a másodlagos vált rendszeres írható-olvasható adatbázis. Ha a másodlagos adatbázis-kapcsolata megszakad, a parancs végrehajtása sikeres, de a másodlagos nem írható-olvasható kapcsolat után nem lett helyreáll.  
+## <a name="remove-secondary-database"></a>Másodlagos adatbázis eltávolítása
+Ez a művelet véglegesen leáll a replikálás a másodlagos adatbázishoz, illetve a szerepkör a másodlagos módosításokat egy rendszeres írható és olvasható adatbázis. A másodlagos adatbázis-kapcsolata megszakad, ha a parancs végrehajtása sikeres, de nem válik az olvasási és írási csatlakozási után a másodlagos nem helyreáll.  
 
-1. Az a [Azure-portálon](http://portal.azure.com), keresse meg az elsődleges adatbázis a georeplikáció együttműködve.
-2. Az SQL-adatbázis oldalon válassza ki a **georeplikáció**.
-3. Az a **másodlagos** listára, válassza ki a georeplikáció partnerség eltávolítása kívánt adatbázist.
-4. Kattintson a **állítsa le a replikációt**.
+1. Az a [az Azure portal](http://portal.azure.com), tallózással keresse meg az elsődleges adatbázis georeplikációs partnerségben.
+2. Az SQL database oldalon válassza ki a **georeplikációs**.
+3. Az a **másodlagos példány hozható létre** listában, válassza ki a el kívánja távolítani a georeplikáció partnerség az adatbázist.
+4. Kattintson a **Replikációleállítás**.
    
     ![Távolítsa el a másodlagos](./media/sql-database-geo-replication-portal/remove-secondary.png)
-5. Megnyílik egy ablak. Kattintson a **Igen** az adatbázis eltávolítása a georeplikáció partneri kapcsolat áll fenn. (Állítsa írható-olvasható adatbázis nem része semmilyen replikációs.)
+5. A megerősítési ablakban nyílik meg. Kattintson a **Igen** a georeplikáció partnerség az adatbázis eltávolítása. (Állítsa írható-olvasható adatbázis nem része semmilyen replikációs.)
 
 ## <a name="next-steps"></a>További lépések
 * Aktív georeplikáció kapcsolatos további információkért lásd: [aktív georeplikáció](sql-database-geo-replication-overview.md).
