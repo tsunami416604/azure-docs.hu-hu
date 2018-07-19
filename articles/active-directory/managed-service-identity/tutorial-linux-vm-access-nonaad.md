@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 16b715261329544687fd78ed9c022d7392cc32d9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: e775ed9d918e53b8381a010691c679d80e7dd216
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901476"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044050"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Oktatóanyag: Az Azure Key Vault elérése Linux VM-beli felügyeltszolgáltatás-identitással (MSI) 
 
@@ -51,7 +51,7 @@ Ebben az oktatóanyagban egy új linuxos virtuális gépet hozunk létre. A megl
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
 3. Adja meg a virtuális gép adatait. A **Hitelesítés típusa** résznél válassza az **SSH nyilvános kulcs** vagy a **Jelszó** lehetőséget. A létrehozott hitelesítő adatokkal jelentkezhet be a virtuális gépre.
 
-    ![Helyettesítő képszöveg](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Helyettesítő képszöveg](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. Válasszon ki egy **előfizetést** a legördülő menüben a virtuális gép számára.
 5. Ha a virtuális gépet egy új **Erőforráscsoportban** szeretné létrehozni, válassza az **Új létrehozása** elemet. Amikor végzett, kattintson az **OK** gombra.
@@ -66,7 +66,7 @@ A virtuális gép MSI-vel anélkül kérhet le hozzáférési jogkivonatokat az 
 3. Megjelenik a **felügyeltszolgáltatás-identitás**. Az MSI regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra.
 4. Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.
 
-    ![Helyettesítő képszöveg](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Helyettesítő képszöveg](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Hozzáférés engedélyezése a VM számára a Key Vaultban tárolt titkos kódokhoz  
 
@@ -83,7 +83,7 @@ Először létre kell hozni egy Key Vaultot, és gondoskodni kell róla, hogy a 
 7. Az új hozzáférési szabályzat hozzáadásának befejezéshez kattintson az **OK**, majd a hozzáférési szabályzat kiválasztásának befejezéséhez ugyanúgy az **OK** gombra. 
 8. Kattintson a **Létrehozás** gombra a Key Vault létrehozásának befejezéséhez. 
 
-    ![Helyettesítő képszöveg](../media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Helyettesítő képszöveg](../managed-service-identity/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 Ezután adjon hozzá egy titkos kódot a Key Vaulthoz, hogy később le tudja kérni a VM-ben futó titkos kódot: 
 

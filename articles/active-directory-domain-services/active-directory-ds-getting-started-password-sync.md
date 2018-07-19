@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 701fe17869d6e7744751d80330422ea47361b411
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ff2659ed7dbdb21bccb8b5858d946b47951e40cc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216140"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048933"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Az Azure Active Directory Domain Servicesre történő jelszókivonat-szinkronizálás engedélyezése
 Az előző feladatokban engedélyezte az Active Directory Domain Servicest az Azure Active Directory (Azure AD) bérlő számára. A következő feladat a jelszókivonatok szinkronizálásának engedélyezése, amely az Azure AD Domain Servicesszel való NT LAN Manager- (NTLM) és Kerberos-hitelesítéshez szükséges. A jelszókivonat-adatok szinkronizálásának beállítása után a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
@@ -78,7 +78,7 @@ Az alábbi utasításokat küldje el a végfelhasználóknak a jelszavuk módos�
 Néhány perccel azután, hogy módosította a jelszavát, az új jelszó használható lesz az Active Directory Domain Servicesben. Körülbelül 20 perc múlva az új jelszavával bejelentkezhet a felügyelt tartományhoz kapcsolódó számítógépekre.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Saját jelszó frissítése](../active-directory/active-directory-passwords-update-your-own-password.md)
+* [Saját jelszó frissítése](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 * [A jelszókezelés első lépései az Azure AD-ben](../active-directory/authentication/quickstart-sspr.md)
 * [Azure Active Directory Domain Servicesre történő jelszókivonat-szinkronizálás engedélyezése szinkronizált Azure AD-bérlő esetén](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok adminisztrációja](active-directory-ds-admin-guide-administer-domain.md)

@@ -10,21 +10,21 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c99ae755705dddf501609c8f199d1977d0bde415
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33870022"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057361"
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Az Azure AD-beli önkiszolgáló jelszómódosítás gyors üzembe helyezése
 
 > [!IMPORTANT]
-> **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, tekintse meg a következő cikket: [Segítség, elfelejtettem Azure AD-jelszavamat](../active-directory-passwords-update-your-own-password.md).
+> **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, tekintse meg a következő cikket: [Segítség, elfelejtettem Azure AD-jelszavamat](../user-help/active-directory-passwords-update-your-own-password.md).
 
 Az önkiszolgáló jelszó-visszaállítás (SSPR) egyszerű módot kínál a rendszergazdáknak arra, hogy felhatalmazzák a felhasználókat jelszavuk és fiókjuk visszaállítására vagy zárolásának feloldására. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhozzáféréséről, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
 
-Ez az útmutató feltételezi, hogy már rendelkezik egy Azure Active Directory-bérlő (Azure AD-bérlő) érvényes próbaverziójával vagy licencével. Ha segítségre van szüksége az Azure AD beállításához, tekintse meg az [Ismerkedés az Azure AD szolgáltatással](../get-started-azure-ad.md) című részt.
+Ez az útmutató feltételezi, hogy már rendelkezik egy Azure Active Directory-bérlő (Azure AD-bérlő) érvényes próbaverziójával vagy licencével. Ha segítségre van szüksége az Azure AD beállításához, tekintse meg az [Ismerkedés az Azure AD szolgáltatással](../fundamentals/get-started-azure-ad.md) című részt.
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Az SSPR engedélyezése az Azure AD-bérlő számára
 
@@ -62,7 +62,7 @@ Ez az útmutató feltételezi, hogy már rendelkezik egy Azure Active Directory-
    * Felhasználók értesítése új jelszó kérésekor.
    * Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek.
 
-Most már konfigurálta az SSPR funkciót Azure AD-bérlője számára. A felhasználók most a [Regisztráció új jelszó önkiszolgáló kérésére](../active-directory-passwords-reset-register.md) és az [Új jelszó kérése vagy jelszó módosítása](../active-directory-passwords-update-your-own-password.md) cikkekben található utasítások szerint frissíthetik a jelszavukat a rendszergazda beavatkozása nélkül. Ha csak felhőalapú szolgáltatást használ, megállhat itt. Vagy továbbléphet a következő szakaszhoz, ahol konfigurálhatja a jelszavak helyi Active Directory-tartományra való szinkronizálását.
+Most már konfigurálta az SSPR funkciót Azure AD-bérlője számára. A felhasználók most a [Regisztráció új jelszó önkiszolgáló kérésére](../user-help/active-directory-passwords-reset-register.md) és az [Új jelszó kérése vagy jelszó módosítása](../user-help/active-directory-passwords-update-your-own-password.md) cikkekben található utasítások szerint frissíthetik a jelszavukat a rendszergazda beavatkozása nélkül. Ha csak felhőalapú szolgáltatást használ, megállhat itt. Vagy továbbléphet a következő szakaszhoz, ahol konfigurálhatja a jelszavak helyi Active Directory-tartományra való szinkronizálását.
 
 > [!TIP]
 > Az SSPR-t egy felhasználóval tesztelje, ne egy rendszergazdával, mert a Microsoft szigorú hitelesítési előírásokat tartat be az Azure rendszergazdai fiókjaihoz. A rendszergazdai jelszavakra vonatkozó szabályzatról a [jelszóházirendről szóló cikkünkben](concept-sspr-policy.md#administrator-password-policy-differences) talál további információt.
@@ -95,8 +95,8 @@ Az önkiszolgáló jelszóátállítás letiltása egyszerű feladat. Nyissa meg
 Az alábbi cikkekben az Azure AD jelszóátállításáról olvashat további információkat:
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
-* [Jelszó visszaállítása vagy módosítása](../active-directory-passwords-update-your-own-password.md)
-* [Regisztráció önkiszolgáló jelszó-visszaállításra](../active-directory-passwords-reset-register.md)
+* [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Regisztráció önkiszolgáló jelszó-visszaállításra](../user-help/active-directory-passwords-reset-register.md)
 * [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)

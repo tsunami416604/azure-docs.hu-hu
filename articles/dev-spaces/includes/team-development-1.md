@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 2a6118bd23c6e8319ad4fa26a266948a4dad1b9f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
-ms.translationtype: MT
+ms.openlocfilehash: 23b5373f4986c4a3d113baebe9e04ce65b9a9df0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934471"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39063103"
 ---
 Eddig úgy futtatta alkalmazása kódját, mintha csak Ön dolgozna fejlesztőként az alkalmazáson. Ebben a szakaszban megismerheti, hogyan teszi zökkenőmentessé az Azure Dev Spaces a csapatban végzett fejlesztést:
 * Lehetővé teszi, hogy egy fejlesztőcsapat ugyanabban a környezetben dolgozhasson. Ez lehet egy megosztott Dev Spaces-tér, vagy igény szerint több különálló Dev Spaces-tér.
@@ -45,7 +45,7 @@ A szolgáltatás kódjának fejlesztése során, de még leadás előtt a kód s
 > [!Note]
 > A folytatás előtt zárja be az összes VS Code-ablakot mindkét szolgáltatásban, majd futtassa az `azds up -d` parancsot a szolgáltatások gyökérmappájában. (Ez egy előzetes verziójú korlátozás.)
 
-Tekintsük meg, hogy hol futnak jelenleg a szolgáltatások. Futtassa az `azds list` parancsot. A következőhöz hasonló kimenet fog megjelenni:
+Tekintsük meg, hogy hol futnak jelenleg a szolgáltatások. Futtassa az `azds list-up` parancsot. A következőhöz hasonló kimenet fog megjelenni:
 
 ```
 Name         Space     Chart              Ports   Updated     Access Points
