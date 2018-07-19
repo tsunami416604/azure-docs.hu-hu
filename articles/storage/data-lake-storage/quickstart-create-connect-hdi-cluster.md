@@ -2,24 +2,24 @@
 title: Hadoop, Spark, Kafka, HBase és az R Server – Azure HDInsight-fürt beállítása
 description: Beállítását Hadoop, a Kafka, a Spark, HBase, R Server vagy Storm-fürtök HDInsight a böngészőben, az Azure CLI, Azure PowerShell, REST vagy SDK-t.
 keywords: hadoop-fürt beállítása, a kafka-fürt beállítása, a spark-fürt beállítása, mi a hadoop-fürt
-services: hdinsight
+services: storage
 documentationcenter: ''
 author: jamesbak
 manager: jahogg
 tags: azure-portal
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 9c037b35af19b94b6655cf7d1d45ba6b6182879c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 725e79596a919cba4214dba8b3cc86e9bb48cc79
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346586"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136638"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Gyors útmutató: A HDInsight-fürtök beállítása
 
@@ -258,7 +258,7 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Data Lake Storage Gen2 ABFS Hadoop-fájlrendszer illesztőprogramja](abfs-driver.md)
-- [Oktatóanyag: Kinyerése, átalakítása és az Apache Hive használata az Azure HDInsight az adatok betöltése](tutorial-extract-transform-load-hive.md)
+- [Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](tutorial-extract-transform-load-hive.md)
 - [Mi a HDInsight, a Hadoop-ökoszisztéma és Hadoop-fürtök?](../../hdinsight/hadoop/apache-hadoop-introduction.md)
 - [A Hadoop első lépései a HDInsightban](../../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 - [Hadoop on HDInsight az olyan Windows PC-s verziójában](../../hdinsight/hdinsight-hadoop-windows-tools.md)

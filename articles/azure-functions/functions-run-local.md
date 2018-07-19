@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: 44485d04dad3ff9dfc6067a3737989c5d273541f
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c7be9079da6be8d9d7f25b910ab07e905e8ac449
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116180"
+ms.locfileid: "39126214"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -121,7 +121,7 @@ Az alábbi lépések az [APT](https://wiki.debian.org/Apt) Core Tools telepíté
 
 ## <a name="create-a-local-functions-project"></a>Egy helyi Functions-projekt létrehozása
 
-A functions projektkönyvtár fájlokat tartalmazza [host.json](functions-host-json.md) és [local.settings.json](#local-settings-file), a kód az egyes funkciók almappáit mentén. Ez a könyvtár megegyezik egy függvényalkalmazást az Azure-ban. A Functions mappastruktúra kapcsolatos további információkért tekintse meg a [Azure Functions fejlesztői útmutató](functions-reference.md#folder-structure).
+A functions projektkönyvtár fájlokat tartalmazza [host.json](functions-host-json.md) és [local.settings.json](#local-settings-file), a kód az egyes funkciók almappáit együtt. Ez a könyvtár megegyezik egy függvényalkalmazást az Azure-ban. A Functions mappastruktúra kapcsolatos további információkért tekintse meg a [Azure Functions fejlesztői útmutató](functions-reference.md#folder-structure).
 
 Verzió 2.x kell inicializálva van, és minden függvény hozzáadja az alapértelmezett nyelv sablonjainak, válassza ki a projekt alapértelmezett nyelvét. A verzió 1.x, akkor válassza ki a nyelvet minden alkalommal, amikor létrehoz egy függvényt.
 
@@ -137,6 +137,7 @@ A verzió 2.x, ha a parancs futtatása választania kell egy modult a projekthez
 Select a worker runtime:
 dotnet
 node
+java
 ```
 
 A felfelé és lefelé nyíl billentyűk, válasszon egy nyelvet, majd nyomja le az Enter. A kimenet egy JavaScript-projekt az alábbi példához hasonlóan néz ki:
@@ -151,6 +152,9 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
 Helyi Git-tárház nélkül a projekt létrehozásához használja a `--no-source-control [-n]` lehetőséget.
+
+> [!IMPORTANT]
+> Alapértelmezés szerint verzió 2.x verzióját az Core Tools hoz létre a funkció a .NET-futtatókörnyezet, az alkalmazás projektek [C# osztály projektek](functions-dotnet-class-library.md) (.csproj). Ezek a C# a projektek, amely használható a Visual Studio 2017 vagy Visual Studio Code-ot, összeállítása tesztelése során, és az Azure-ba való közzétételekor. Ha inkább a az azonos C#-szkript (.csx) létrehozását és használatát a fájlok verziójában létrehozott 1.x és a portálon, meg kell adni a `--csx` paraméter létrehozása és központi telepítésekor a funkciók.
 
 ## <a name="register-extensions"></a>Bővítmények regisztrálása
 
@@ -177,7 +181,7 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
     "CORS": "*"
   },
   "ConnectionStrings": {
-    "SQLConnectionString": "Value"
+    "SQLConnectionString": "<sqlclient-connection-string>"
   }
 }
 ```
@@ -189,7 +193,7 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
 | **Gazdagép** | Ebben a szakaszban beállítások testre szabhatja a Functions gazdafolyamat helyi futtatás során. |
 | **LocalHttpPort** | Beállítja az alapértelmezett portot használja, amikor a függvények helyi állomás (`func host start` és `func run`). A `--port` parancssori kapcsoló elsőbbséget élvez ezt az értéket. |
 | **CORS** | Meghatározza az engedélyezett eredetek [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források szóközök nélküli szövegláncként egy vesszővel tagolt lista formájában vannak megadva. A helyettesítő karaktert tartalmazó értéket (\*) támogatott, amely lehetővé teszi a kérelmek bármilyen forrásból. |
-| **Kapcsolati Sztringjei** | Ne használja a gyűjtemény a kapcsolati karakterláncokat a függvénykötésnek használják. Ez a gyűjtemény csak használják keretrendszerek, a kapcsolati karakterláncok be kell szereznie a **kapcsolati Sztringjei** szakaszában egy konfigurációs fájlba, például [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Kapcsolati karakterláncok ezt az objektumot a rendszer felveszi a környezetbe, a szolgáltató típusát [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Ebben a gyűjteményben lévő elemek az Azure-ban nincs közzétéve a többi alkalmazás beállításokkal. Ezekre az értékekre, explicit módon kell hozzáadnia a **kapcsolati karakterláncok** szakaszában a **Alkalmazásbeállítások** a függvényalkalmazás számára. |
+| **Kapcsolati Sztringjei** | Ne használja a gyűjtemény a kapcsolati karakterláncokat a függvénykötésnek használják. Ez a gyűjtemény csak használják, amely általában a kapcsolati karakterláncok keretrendszereket a **kapcsolati Sztringjei** szakaszában egy konfigurációs fájlba, például [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Kapcsolati karakterláncok ezt az objektumot a rendszer felveszi a környezetbe, a szolgáltató típusát [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Ebben a gyűjteményben lévő elemek az Azure-ban nincs közzétéve a többi alkalmazás beállításokkal. Ezekre az értékekre, explicit módon kell hozzáadnia a **kapcsolati karakterláncok** gyűjteménye, a függvényalkalmazás-beállításokat. Létrehozásakor egy [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) a függvénykódban, tárolja a kapcsolati karakterlánc értékét a **Alkalmazásbeállítások** a kapcsolatokkal. |
 
 A függvény alkalmazás beállítások értékeit is elolvashatja a kódban környezeti változókként. További információkért tekintse meg a környezeti változók szakaszban az alábbi nyelvspecifikus referencia-témakörök:
 
@@ -271,8 +275,9 @@ A parancs az alábbi argumentumok használatával is megadhatja ezeket a beáll�
 | Argumentum     | Leírás                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--language -l`**| A sablon programozási nyelvet, például C#, F # vagy JavaScript. Ez a beállítás szükséges verzió 1.x. A verzió 2.x, nem használja ezt a beállítást, vagy válassza ki a projekt alapértelmezett nyelvet. |
-| **`--template -t`** | A sablon nevét, amely az értékek egyike lehet:<br/><ul><li>`Blob trigger`</li><li>`Cosmos DB trigger`</li><li>`Event Grid trigger`</li><li>`HTTP trigger`</li><li>`Queue trigger`</li><li>`SendGrid`</li><li>`Service Bus Queue trigger`</li><li>`Service Bus Topic trigger`</li><li>`Timer trigger`</li></ul> |
+| **`--template -t`** | Használja a `func templates list` parancsot minden támogatott nyelven elérhető sablonok teljes listájának megtekintéséhez.   |
 | **`--name -n`** | A függvény nevét. |
+| **`--csx`** | (Verzió 2.x) Állít elő, ugyanazt a C#-szkript (.csx) használt sablonok verzióban 1.x és a portálon. |
 
 Ha például egyetlen paranccsal hozzon létre egy JavaScript HTTP-eseményindító, futtassa:
 

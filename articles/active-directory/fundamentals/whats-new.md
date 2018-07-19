@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 480bbd543ddef60dc8dd84d4b454ef5a8c742636
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 76f2bed22d62895e1c537a807ff729c0ba56fbf6
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008392"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136757"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -35,7 +35,33 @@ Az Azure AD folyamatosan fejlesztései kap. Naprakész a legújabb fejlemények,
 
 Ezen a lapon havonta frissül, így rendszeresen ellenőrizni.
 
+---
+
 ## <a name="july-2018"></a>2018. július
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Fejlesztések az Azure Active Directoryhoz e-mail-értesítések
+
+**Típus:** tervezett változtatás  
+**Szolgáltatási kategóriához:** más  
+**A termék funkció:** identitás-életciklus-felügyelet
+ 
+Jelenleg a **2018 július végén**, Azure Active Directory (Azure AD) e-maileket fog funkciót, egy új megjelenés, valamint a feladó e-mail címe módosításait, és a feladó megjelenített nevet, amikor a következő szolgáltatások által küldött:
+ 
+- Az Azure AD hozzáférési felülvizsgálatok
+- Azure AD Connect Health 
+- Azure AD Identity Protection 
+- Azure AD Privileged Identity Management
+- Vállalati alkalmazás lejáró Tanúsítványértesítéseket
+- Vállalati alkalmazás-kiépítés szolgáltatási értesítések
+ 
+Az e-mail-értesítések, a következő e-mail címre küldi, és a megjelenített neve:
+
+- E-mail-cím: azure-noreply@microsoft.com
+- Megjelenített név: Microsoft Azure
+ 
+Egy vonatkozó példáért egyes új e-mail mintákra és további információkat lásd: [E-mail-értesítések az Azure AD PIM-ben](https://go.microsoft.com/fwlink/?linkid=2005832).
+
+---
 
 ### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>A régi hitelesítések megtekintése a bejelentkezések tevékenységnaplói révén
 
@@ -49,7 +75,7 @@ Bevezetésével a **ügyfélalkalmazás** -naplókat a bejelentkezési tevékeny
 
 ## <a name="june-2018"></a>2018. június
 
-### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Módosítsa az értesítés: a delegált engedélyezési folyamat használata az Azure AD tevékenység naplók API-alkalmazások biztonsági javítás
+### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Változással kapcsolatos értesítés: biztonsági javítás az Azure AD Activity Logs API-t használó alkalmazások delegált engedélyezési folyamatához
 
 **Típus:** tervezett változtatás  
 **Szolgáltatási kategóriához:** jelentéskészítés  
@@ -73,7 +99,7 @@ További információkért lásd: a [engedélyeket](https://docs.microsoft.com/a
 
 ---
 
-### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>Az Azure AD-szolgáltatásokhoz, a PCI DSS TLS-beállítások konfigurálása
+### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>A TLS-beállítások konfigurálása annak érdekében, hogy az Azure Active Directory-szolgáltatásokhoz való csatlakozás megfeleljen a PCI DSS-előírásoknak
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** N/A  
@@ -113,7 +139,7 @@ Elavult böngészők nem támogatja a TLS újabb verziók, például a TLS 1.2. 
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény – 2018. június
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>2018 júniusától új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** vállalati alkalmazások  
@@ -127,7 +153,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrá
 
 ---
 
-### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>Nyilvános előzetes verzióban érhető el az Azure AD jelszóvédelem
+### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>Elérhető az Azure AD Password Protection nyilvános előzetes verziója
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** Identity Protection  
@@ -145,7 +171,7 @@ Az Azure AD jelszóvédelem kapcsolatos további információkért lásd: [rossz
 
 ---
 
-### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Új "az összes vendégek" feltételes hozzáférési házirend sablon használati feltételek (feltételek) létrehozása során létrehozott
+### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Új feltételes hozzáférési szabályzatsablon jön létre az „összes vendég” számára a használati feltételek létrehozása közben
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** használati feltételek  
@@ -157,7 +183,7 @@ További információkért lásd: [Azure Active Directory használati feltétele
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Új "egyéni" feltételes hozzáférési szabályzat sablon létrehozása a használati feltételek (feltételek) létrehozása közben
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Új „egyéni” feltételes hozzáférési szabályzatsablon jön létre a használati feltételek létrehozása közben
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** használati feltételek  
@@ -169,7 +195,7 @@ További információkért lásd: [Azure Active Directory használati feltétele
 
 ---
 
-### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Üzembe helyezése az Azure multi-factor Authentication az új és átfogó útmutatást
+### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Új és átfogó útmutató az Azure Multi-Factor Authentication üzembe helyezéséhez
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** más  
@@ -181,7 +207,7 @@ Az MFA üzembe helyezési útmutató megtekintéséhez nyissa meg a [identitás 
 
 ---
 
-### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>Az Azure AD delegált felügyeleti szerepkör a nyilvános előzetes verzióban érhető el
+### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>Megjelent az Azure AD-beli delegált alkalmazásfelügyeleti szerepkörök nyilvános előzetes verziója
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** vállalati alkalmazások  
@@ -209,7 +235,7 @@ További információ a nyilvános előzetes verzióban: a [Azure ad-ben delegá
 
 ## <a name="may-2018"></a>2018. május
 
-### <a name="expressroute-support-changes"></a>Az ExpressRoute-támogatás módosításai
+### <a name="expressroute-support-changes"></a>Módosult az ExpressRoute támogatása
 
 **Típus:** tervezett változtatás  
 **Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
@@ -335,7 +361,7 @@ Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kap
 
 ---
  
-### <a name="new-step-by-step-deployment-guides-for-azure-active-directory"></a>Az Azure Active Directory új részletes üzembe helyezési útmutatók
+### <a name="new-step-by-step-deployment-guides-for-azure-active-directory"></a>Azure Active Directory – új részletes üzembe helyezési útmutatók
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** más  
@@ -506,7 +532,7 @@ Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kap
 
 ---
  
-### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>Vállalatközi felhasználók helyi alkalmazásokhoz való hozzáférésének biztosítása az Azure AD-ben (nyilvános előzetes verzió)
+### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>Vállalatközi felhasználók helyszíni alkalmazásokhoz való hozzáférésének biztosítása az Azure AD-ben (nyilvános előzetes verzió)
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** B2B  
@@ -558,7 +584,7 @@ További információkért lásd: [az Azure AD-jelszó visszaállítása a bejel
 
 ## <a name="march-2018"></a>2018. március
  
-### <a name="certificate-expire-notification"></a>Tanúsítványlejárati értesítés
+### <a name="certificate-expire-notification"></a>Tanúsítvány lejárati értesítés
 
 **Típus:** kijavítva  
 **Szolgáltatási kategóriához:** vállalati alkalmazások  
@@ -575,7 +601,7 @@ További információkért lásd:
  
 ---
  
-### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Twitter- és GitHub-identitásszolgáltatók az Azure AD B2C-ben
+### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Azure AD B2C-vel a Twitter és a GitHub Identitásszolgáltatók
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** B2C - felhasználói identitás kezelése  
@@ -587,7 +613,7 @@ További információkért lásd: [Mi az Azure AD B2B együttműködés?](https:
  
 ---
 
-### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>A böngészőalapú hozzáférés korlátozása az Intune Managed Browserrel és az Azure AD-alkalmazás-alapú feltételes hozzáféréssel (iOS és Android)
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Az Azure AD-beli alkalmazásalapú feltételes hozzáférési iOS és Android rendszerhez készült Intune Managed Browser használatával böngésző-hozzáférés korlátozása
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** feltételes hozzáférés  
@@ -621,7 +647,7 @@ További információkért lásd: [AzureAD](https://docs.microsoft.com/powershel
  
 ---
  
-### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>A Seamless SSO egy nem interaktív protokoll segítségével támogatja a natív Office 365-ügyfeleket
+### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Közvetlen egyszeri bejelentkezés használatával nem interaktív protokoll által támogatott natív Office 365-ügyfelek
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
@@ -645,7 +671,7 @@ További információkért lásd: [Azure Active Directory zökkenőmentes egysze
 
 ---
  
-### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>A Seamless SSO bevezetéséhez a korábbi kettő helyett csak egy Azure AD-beli URL-címet kell hozzáadni az intranetes zóna beállításaihoz
+### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>Közvetlen egyszeri bejelentkezés bevezetése felhasználók Intranet zóna beállítását csak egy Azure ad-ben URL-cím helyett a korábban a két URL-címet hozzá kell adnia
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
