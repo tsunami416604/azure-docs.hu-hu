@@ -1,6 +1,6 @@
 ---
-title: C# gyors üzembe helyezés az Azure kognitív szolgáltatások, Szövegelemzések API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a szöveg Analytics API-t a Microsoft Azure kognitív Services.
+title: Az Azure Cognitive Services Text Analytics API rövid útmutatóban a C# |} A Microsoft Docs
+description: Get information és kód minták segítségével gyorsan használatának első lépései a szövegelemzési API-t a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 documentationcenter: ''
 author: luiscabrer
@@ -9,46 +9,46 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: d9c61a83450844461f621ff16354881a029f7ad6
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 94847adf761652a25fd3e2d594c7169776fefc89
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266294"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125125"
 ---
-# <a name="quickstart-for-text-analytics-api-with-c"></a>Szövegelemzések a C# API a gyors üzembe helyezés 
+# <a name="quickstart-for-text-analytics-api-with-c"></a>Szövegelemzési API-t C# Gyorsútmutató 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan észleli a nyelv, véleményeket elemzése és bontsa ki a legfontosabb kifejezések használata a [szöveg Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a C#. A kód írása volt működik a .net Core alkalmazás minimális hivatkozó külső szalagtárak, Linux vagy MacOS is futtathat.
+Ez a cikk bemutatja, hogyan nyelv felismerése, vélemények elemzése és kinyerheti a kulcsfontosságú kifejezéseket, használja a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a C# használatával. A kód írása volt működik a .net Core-alkalmazást, minimális hivatkozó külső kódtáraiban, így Linux vagy MacOS rendszeren is futhat.
 
-Tekintse meg a [API-definíciók](//go.microsoft.com/fwlink/?LinkID=759346) az API-k műszaki dokumentációját.
+Tekintse meg a [API-definíciók](//go.microsoft.com/fwlink/?LinkID=759346) technikai dokumentációját az API-kat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **szöveg Analytics API**. Használhatja a **5000 tranzakciók/hónapban ingyenes szint** a gyors üzembe helyezés befejeződik.
+Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Text Analytics API**. Használhatja a **összesen 5 000 tranzakció/hó ingyenes szintet** a rövid útmutató elvégzéséhez.
 
-Rendelkeznie kell a [végpont és a hozzáférési kulcsot](../How-tos/text-analytics-how-to-access-key.md) meg során létrehozott jelentkezzen be. 
+Rendelkeznie kell a [végpontját és hozzáférési kulcsát](../How-tos/text-analytics-how-to-access-key.md) , amely az Ön számára közben létrehozott jelentkezzen be. 
 
 
-## <a name="install-the-nuget-sdk-package"></a>Telepítse az Nuget SDK-csomagot
-1. Új konzol megoldás létrehozása a Visual Studióban.
-1. A megoldás, majd kattintson a jobb gombbal **NuGet-csomagok kezelése megoldáshoz**
-1. Be van jelölve a **tartalmaznak Prerelease** jelölőnégyzetet.
-1. Válassza ki a **Tallózás** lapot, és keresse meg **Microsoft.Azure.CognitiveServices.Language**
+## <a name="install-the-nuget-sdk-package"></a>Az Nuget SDK-csomag telepítése
+1. Hozzon létre egy új konzol megoldást a Visual Studióban.
+1. A jobb gombbal a megoldásra, majd kattintson a **NuGet-csomagok kezelése megoldáshoz**
+1. Mark az **tartalmaznak Prerelease** jelölőnégyzetet.
+1. Válassza ki a **Tallózás** lapra, és keressen rá a **Microsoft.Azure.CognitiveServices.Language**
 1. Válassza ki a Nuget-csomagot, és telepítse.
 
 > [!Tip]
->  Amíg hívhatja a [HTTP-végpontokról](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) közvetlenül a C#, a Microsoft.Azure.CognitiveServices.Language SDK sokkal egyszerűbbé teszi a hívó nem kell aggódnia szerializálása és deszerializálása JSON.
+>  Miközben hívhatja a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) közvetlenül a C#, a Microsoft.Azure.CognitiveServices.Language SDK megkönnyíti a szolgáltatás hívása nélkül szerializálásához és deszerializálásához JSON aggódnia kellene.
 >
-> Néhány hasznos hivatkozások:
-> - [SDK Nuget lap](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> Néhány hasznos hivatkozásokat:
+> - [SDK Nuget-oldalon](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 > - [SDK-kód ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 
-## <a name="call-the-text-analytics-api-using-the-sdk"></a>Az SDK használatával szöveg Analytics API
-1. Cserélje le a program.cs fájlt az alábbi kódra. A program az a szöveg Analytics API (nyelvi kinyerési, kulcs-kifejezés kinyerésére és véleményeket elemzés) 3 szakaszokban képességeit mutatja be.
-1. Cserélje le a `Ocp-Apim-Subscription-Key` Fejlécérték egy előfizetési érvényes elérési kulcsával.
-1. Cserélje le a hely a `client.AzureRegion` (jelenleg `AzureRegions.Westus`) a regisztrált a régióban.
+## <a name="call-the-text-analytics-api-using-the-sdk"></a>Az SDK-val a szövegelemzési API hívása
+1. Cserélje le a program.cs fájlban az alábbi kódra. Ez a program a szövegelemzési API (nyelv kinyerés, kulcs-kifejezések kinyerése és hangulatelemzés) 3 szakaszokban képességeit mutatja be.
+1. Cserélje le a `Ocp-Apim-Subscription-Key` Fejlécérték egy hozzáférési kulccsal rendelkező érvényes az előfizetéshez.
+1. Cserélje le a hely a `client.BaseUri` a regisztrált a végponthoz. Az Azure Portal resource találja a végpont. A végpont általában a "https://[region].api.cognitive.microsoft.com/text/analytics/v2.0" tűnik.
 1. Futtassa a programot.
 
 ```csharp
@@ -81,8 +81,8 @@ namespace ConsoleApp1
         {
 
             // Create a client.
-            ITextAnalyticsAPI client = new TextAnalyticsAPI(new ApiKeyServiceClientCredentials());
-            client.AzureRegion = AzureRegions.Westus;
+            ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials());
+            client.BaseUri = new Uri("https://westus.api.cognitive.microsoft.com/text/analytics/v2.0");
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
@@ -155,10 +155,10 @@ namespace ConsoleApp1
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Power BI Szövegelemzések](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Szövegelemzés a Power bi-ban](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [Szöveg elemzés áttekintése](../overview.md)  
+ [Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
 
