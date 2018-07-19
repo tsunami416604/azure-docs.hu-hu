@@ -1,4 +1,0 @@
-- name: Virtuális gép MSI használata egy Azure-tároló eléréséhez
-  items:
-    - name: Linux rendszerű virtuális gépről hozzáférési kulccsal
-      href: msi-tutorial-linux-vm-access-storage.md
