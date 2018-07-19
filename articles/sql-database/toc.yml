@@ -135,7 +135,7 @@
         - name: Adatbázisok biztonsági mentése
           href: sql-database-automated-backups.md
         - name: Biztonsági mentés hosszú távú megőrzése
-          itmes:
+          items:
             - name: Biztonsági mentés hosszú távú megőrzése
               href: sql-database-long-term-retention.md
             - name: A biztonsági másolatok hosszú távú megőrzésének konfigurálása – SQL-tároló

@@ -101,7 +101,7 @@
     - name: Ügyfelek adatkérései
       href: time-series-insights-customer-data-requests.md
     - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
     - name: Díjkalkulátor

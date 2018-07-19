@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/18/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 2c744866bdec3ebc3ebb336d42c2b837fc888149
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: b889c77bbbcff31aa84cb0df5d06de487ba91d8e
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093108"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136553"
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Áttekintés: A feladatátvételi csoportok és az aktív georeplikáció
 Aktív georeplikáció lehetővé teszi, hogy az azonos vagy eltérő data center helyek (régiók) legfeljebb négy olvasható másodlagos adatbázis beállításához. Másodlagos adatbázisok áll rendelkezésre, lekérdezéséhez és a feladatátvétel, ha egy adatközpont-meghibásodás után, vagy megakadályozhatják az elsődleges adatbázishoz való csatlakozáshoz. A feladatátvétel kell kezdeményeznie manuálisan az alkalmazás a felhasználó. A feladatátvételt követően az új elsődleges rendelkezik egy másik kapcsolat végpontját. 
@@ -89,8 +89,9 @@ Automatikus feladatátvételi csoportok funkció biztosítja, hogy az aktív geo
    >
 
 * **Feladatátvételi csoport olvasási és írási figyelőjének**: egy DNS CNAME-rekordot formázott  **&lt;feladatátvételi csoportnév&gt;. database.windows.net** , amely a jelenlegi elsődleges kiszolgáló URL-címre mutat. Lehetővé teszi az olvasási és írási SQL alkalmazásokat az elsődleges változásakor a feladatátvételt követően az elsődleges adatbázis transzparens módon csatlakoznak. 
-* **Feladatátvételi csoport csak olvasási figyelői**: egy DNS CNAME-rekordot formázott  **&lt;feladatátvételi csoportnév&gt;. secondary.database.windows.net** , amely a másodlagos kiszolgáló URL-címre mutat. A csak olvasható SQL alkalmazások számára transzparens módon a másodlagos adatbázishoz a megadott terheléselosztási szabályok használatával lehetővé teszi. Opcionálisan megadhatja, ha azt szeretné, a csak olvasható forgalom automatikusan átirányítja az elsődleges kiszolgáló, ha a másodlagos kiszolgáló nem érhető el.
+* **Feladatátvételi csoport csak olvasási figyelői**: egy DNS CNAME-rekordot formázott  **&lt;feladatátvételi csoportnév&gt;. secondary.database.windows.net** , amely a másodlagos kiszolgáló URL-címre mutat. A csak olvasható SQL alkalmazások számára transzparens módon a másodlagos adatbázishoz a megadott terheléselosztási szabályok használatával lehetővé teszi. 
 * **Az automatikus feladatátvételi szabályzat**: alapértelmezés szerint a feladatátvételi csoporthoz egy automatikus feladatátvételi szabályzat van konfigurálva. A rendszer elindítja a feladatátvétel, amint az hiba észlelése. Ha szeretné szabályozni a feladatátvételi munkafolyamat az alkalmazásból, kikapcsolhatja az automatikus feladatátvételt. 
+* **Csak olvasási feladatátvételi szabályzat**: alapértelmezés szerint a feladatátvétel, a csak olvasható figyelő le van tiltva. Ez biztosítja, hogy az elsődleges teljesítményének nem változik, ha a másodlagos offline állapotban. Azonban azt is jelenti a csak olvasható munkamenetek nem lesz képes csatlakozni, amíg a másodlagos helyre van. Ha állásidő zavarják meg a csak olvasható munkamenetek és az OK gombra a átmenetileg egyaránt csak olvasható és írható-olvasható forgalomhoz a teljesítménycsökkenés az elsődleges rovására használja az elsődleges, a csak olvasási figyelői a feladatátvételi engedélyezheti. Ebben az esetben a csak olvasható forgalom automatikusan irányítja az elsődleges kiszolgáló, ha a másodlagos kiszolgáló nem érhető el.  
 * **Manuális feladatátvétel**: feladatátvétel manuálisan is kezdeményezhető, tetszőleges időpontban, függetlenül attól, automatikus feladatátvételi konfigurációjának. Az automatikus feladatátvételi szabályzat nem történik meg, ha manuális feladatátvételt a feladatátvételi csoport az adatbázisok helyreállításához szükséges. (A teljes adatszinkronizálás) kényszerített vagy rövid feladatátvételt kezdeményezhet. Az utóbbi használható helyezze át az aktív kiszolgáló az elsődleges régióba. Feladatátvétel befejezése után a DNS-rekordok automatikusan frissülnek annak biztosítása érdekében a megfelelő kiszolgálóhoz való kapcsolódás.
 * **Türelmi időszak adatvesztéssel**: az elsődleges és másodlagos adatbázis szinkronizálva van, az aszinkron replikáció használatával, mert a feladatátvétel az adatvesztést eredményezhet. Az automatikus feladatátvételi szabályzat adatvesztés funkciót biztosít az alkalmazás megfelelően testre szabhatja. Konfigurálásával **Leváltó**, szabályozhatja, hogy a rendszer mennyi ideig vár, amely nagy eséllyel eredmény adatvesztés a feladatátvétel kezdeményezése előtt. 
 

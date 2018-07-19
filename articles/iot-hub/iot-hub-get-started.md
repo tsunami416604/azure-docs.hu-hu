@@ -1,45 +1,38 @@
 ---
-title: Az Azure IoT Hub - első lépések az IoT-eszközök felhőhöz történő csatlakoztatásának |} Microsoft Docs
-description: 'Útmutató: Azure IoT-központ az IoT-modulok és a starter Kit csatlakozni. Az eszközök küldhet az IoT-központ és az IoT-központ telemetriai figyelheti és az eszközök kezeléséhez.'
+title: Az Azure IoT Hub – Ismerkedés az IoT-eszközök csatlakoztatása a felhőhöz |} A Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat az Azure IoT Hub az IoT-kártyák és a starter Kit. Az eszközök küldhet telemetriát az IoT Hub és az IoT Hub monitorozni és kezelni az eszközöket.
 author: dominicbetts
 manager: timlt
-keywords: az Azure iot hub oktatóanyag
+keywords: az Azure iot hub-oktatóanyag
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 76f427204f0ad31196ce8b995b9e4ed9676209ca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 77abe7e2187a3cb28b326ffa833a856625d6c33d
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634702"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125192"
 ---
-# <a name="azure-iot-hub-get-started-with-real-devices"></a>Az Azure IoT Hub valós eszközök az első lépései
+# <a name="azure-iot-hub-get-started-with-real-devices"></a>Az Azure IoT Hub – első lépések valódi eszközön
 
-Azure IoT-központ és az Azure IoT-eszközök SDK-k segítségével az eszközök internetes hálózatát (IoT) megoldások:
-
-* Az Azure IoT-központot egy olyan teljes körűen felügyelt szolgáltatás a felhőben, amelyek biztonságosan csatlakozik, figyeli, és kezeli az IoT-eszközök. Az Azure IoT eszközoldali SDK-k segítségével valósítja meg az IoT-eszközök.
-* Az IoT-átjáró összetettebb IoT-forgatókönyvek esetén használható. Például, ha szeretné például az örökölt eszközök, a sávszélességgel kapcsolatos költségek, a biztonsági és adatvédelmi szabályzatok vagy a biztonsági adatok feldolgozása tényezőket kell figyelembe venni. Ezekben az esetekben használható [Azure IoT peremhálózati](https://docs.microsoft.com/azure/iot-edge/) egy átjáró, amely az eszköz csatlakozik az IoT hub végrehajtásához.
-
-## <a name="what-the-how-to-articles-cover"></a>Az útmutatók vonatkozik
-
-Ezek a cikkek bemutatják a Azure IoT-központ és az eszköz SDK-k. A cikk foglalkozik általános IoT-forgatókönyvek esetén az IoT-központ funkcióinak bemutatása. A cikkek is bemutatják, hogyan kombinálhatók az IoT-központ más Azure-szolgáltatások és eszközök nagyobb teljesítményű az IoT-megoldások létrehozásához. A cikkekben használja valódi az IoT-eszközök.
+Ezek az útmutatók ismerkedjenek meg az Azure IoT Hub és az eszköz SDK-k valódi eszközökön futó.
 
 ## <a name="set-up-your-device"></a>Az eszköz beállítása
 
-Csatlakozás az IoT-eszközön vagy Azure IoT Hub-átjáró:
+Csatlakozás az IoT-eszköz vagy az Azure IoT Hub-átjáró:
 
-| IoT-eszközök                       | Programozási nyelv |
+| IoT-eszköz                       | Programozási nyelv |
 |----------------------------------|----------------------|
 | Raspberry Pi                     | [Python][Pi_Py], [Node.js][Pi_Nd], [C][Pi_C]  |
-| Az IoT-DevKit                       | [A VSCode Arduino][DevKit]     |
+| IoT fejlesztői készlet                       | [Arduino a vscode-ban][DevKit]     |
 | Intel Edison                     | [NODE.js][Ed_Nd], [C][Ed_C]    |
-| Adafruit lágyított HUZZAH ESP8266  | [Arduino][Hu_Ard]              |
-| Sparkfun ESP8266 dolog fejlesztői       | [Arduino][Th_Ard]              |
-| Adafruit lágyított M0              | [Arduino][M0_Ard]              |
-| Online eszköz szimulátor         | [Raspberry Pi (Node.js)][Ol_Sim] |
+| Adafruit Feather HUZZAH ESP8266  | [Arduino][Hu_Ard]              |
+| Sparkfun ESP8266 Thing Dev       | [Arduino][Th_Ard]              |
+| Adafruit Feather M0              | [Arduino][M0_Ard]              |
+| Online készülékszimulátort         | [Raspberry Pi (Node.js)][Ol_Sim] |
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
 

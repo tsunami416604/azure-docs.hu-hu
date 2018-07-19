@@ -1,115 +1,115 @@
 ---
-title: Azure IoT-központok végpontjai megértése |} Microsoft Docs
-description: Fejlesztői útmutató - információk az IoT-központ eszköz számára is elérhető, és a szolgáltatás felé néző végpontok.
+title: Megismerheti az Azure IoT Hub-végpontok |} A Microsoft Docs
+description: Fejlesztői útmutató – az IoT Hub információk rendelkező eszköz és szolgáltatás felé néző végpontok.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 37e1bd0b479e27f0d871495c0725fc865cbb8572
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf23046b8a80b02bc1667f647cb1d475503a8feb
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632577"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125776"
 ---
-# <a name="reference---iot-hub-endpoints"></a>Referencia - IoT-központok végpontjai
+# <a name="reference---iot-hub-endpoints"></a>Referencia – IoT Hub-végpontok
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="iot-hub-names"></a>Az IoT-központ nevét
+## <a name="iot-hub-names"></a>Az IoT Hub nevét
 
-A neve, amelyen a végpontokat a portálon az IoT-központ megtalálhatja a **áttekintése** panelen. Alapértelmezés szerint a DNS-neve az IoT-központ néz: `{your iot hub name}.azure-devices.net`.
+Annak az állomásneve, amelyen a végpontok a hubhoz a portálon az IoT hub a **áttekintése** lapot. Alapértelmezés szerint a DNS-neve az IoT hub néz ki: `{your iot hub name}.azure-devices.net`.
 
-Azure DNS használatával hozzon létre egy egyéni DNS-nevet az IoT hub. További információkért lásd: [használata Azure DNS számára adja meg az egyéni tartomány beállításait az Azure-szolgáltatások](../dns/dns-custom-domain.md).
+Az Azure DNS használatával hozzon létre egy egyéni DNS-nevet az IoT hub. További információt az [egyéni tartománybeállítások egy Azure-szolgáltatáshoz az Azure DNS használatával történő megadását](../dns/dns-custom-domain.md) ismertető cikkben talál.
 
-## <a name="list-of-built-in-iot-hub-endpoints"></a>Beépített IoT-központok végpontjai listája
+## <a name="list-of-built-in-iot-hub-endpoints"></a>Beépített IoT Hub-végpontok listája
 
-Az Azure IoT Hub egy több-bérlős szolgáltatást, amely elérhetővé teszi a funkció különböző szereplője. Az alábbi ábrán látható, hogy az IoT-központ elérhetővé teszi a különböző végpontok.
+Az Azure IoT Hub egy több-bérlős szolgáltatás, amely a funkció különböző actors. Az alábbi ábrán látható, hogy az IoT Hub tesz a különböző végpontok.
 
 ![IoT Hub-végpontok][img-endpoints]
 
 Az alábbi lista ismerteti a végpontok:
 
-* **Erőforrás-szolgáltató**. Az IoT-központ erőforrás-szolgáltató közzétesz egy [Azure Resource Manager] [ lnk-arm] felületet. Ez az interfész lehetővé teszi, hogy az Azure-előfizetések tulajdonosai létrehozására és törlésére az IoT-központok, és az IoT hub tulajdonságainak módosítása. Az IoT Hub tulajdonságainak szabályozására [hub szintű biztonsági házirendek][lnk-accesscontrol], eszközszintű hozzáférés-vezérlés, és működési beállításainak felhő eszköz és eszköz-felhő üzenetküldési szemben. Az IoT-központ erőforrás-szolgáltató azt is lehetővé teszi, hogy [eszköz identitások exportálása][lnk-importexport].
-* **Eszköz Identitáskezelés**. Minden egyes IoT-központ tesz elérhetővé a HTTPS REST-végpontok eszköz identitások kezeléséhez (létrehozása, beolvasása, frissítése és törlése). [Eszköz identitások] [ lnk-device-identities] eszköz hitelesítési és hozzáférés-vezérlés használhatók.
-* **A két kezelés**. Minden egyes IoT-központ tesz elérhetővé, lekérdezés és a frissítési szolgáltatás irányuló HTTPS REST-végpont [eszköz twins] [ lnk-twins] (címkék és a tulajdonságok frissítése).
-* **Felügyeleti feladatok**. Minden egyes IoT-központ tesz elérhetővé, lekérdezését és kezelését szolgáltatás irányuló HTTPS REST-végpont [feladatok][lnk-jobs].
-* **Eszköz végpontok**. Az egyes eszközök a identitás beállításjegyzék az IoT-központ tesz elérhetővé, végpontok:
+* **Erőforrás-szolgáltató**. Az IoT Hub erőforrás-szolgáltató tesz közzé egy [Azure Resource Manager] [ lnk-arm] felületet. Ez az interfész lehetővé teszi, hogy az Azure-előfizetéssel rendelkező létrehozására és törlésére az IoT hub és az IoT hub tulajdonságainak frissítése. Az IoT Hub tulajdonságai szabályozzák [eseményközpont-szintű biztonsági házirendek][lnk-accesscontrol], ellentétben az eszközszintű hozzáférés-vezérlés és funkcionális beállításainak üzenetküldés felhőből az eszközre és eszközről a felhőbe. Az IoT Hub erőforrás-szolgáltató lehetővé teszi, hogy [eszközidentitások exportálása][lnk-importexport].
+* **Eszköz Identitáskezelés**. Minden IoT-központ megjelenít egy HTTPS-REST-végpontok eszközidentitások kezelése (létrehozása, beolvasása, frissítése és törlése). [Eszközidentitások] [ lnk-device-identities] eszköz-hitelesítés és hozzáférés-vezérlés szolgálnak.
+* **Ikereszköz kezelés**. Minden IoT-központ megjelenít egy lekérdezést és a frissítési szolgáltatás által használt HTTPS REST-végpont [ikereszközök] [ lnk-twins] (címkék és tulajdonságok frissítése).
+* **Felügyeleti feladatok**. Minden IoT-központ megjelenít egy szolgáltatás által használt HTTPS REST-végpont lekérdezését és kezelését [feladatok][lnk-jobs].
+* **Eszköz végpontok**. Az eszközidentitás-jegyzékben lévő minden egyes eszközhöz az IoT Hub végpontok tünteti fel:
 
-  * *Eszköz-felhő üzenetek küldéséhez*. Egy eszköz használja ezt a végpontot a [eszközről a felhőbe üzenetek küldéséhez][lnk-d2c].
-  * *Felhő-eszközre küldött üzenetek fogadására*. Egy eszköz használja ehhez a végponthoz fogadásához célzott [felhő-eszközre küldött üzenetek][lnk-c2d].
-  * *Fájlfeltöltési kezdeményezése*. Egy eszköz használja ezt a végpontot egy Azure Storage SAS URI-t fogadni az IoT-központ [-fájl feltöltése][lnk-upload].
-  * *A lekérésére és frissítésére iker eszköztulajdonságok*. Egy eszköz elérésére használja ezt a végpontot a [eszköz iker][lnk-twins]tartozó tulajdonságok.
-  * *Közvetlen módszer kérések fogadásához*. Egy eszköz használja ehhez a végponthoz tartozó [közvetlen módszer][lnk-methods]a kérelmeket.
+  * *Eszköz – felhő üzeneteket küldhet*. Az eszköz használja ennek a végpontnak a [eszközt a felhőbe irányuló üzenetek küldése][lnk-d2c].
+  * *Felhőből az eszközre irányuló üzenetek fogadása*. Az eszköz használja ezt a végpontot fogadásához célzott [felhőből az eszközre irányuló üzenetek][lnk-c2d].
+  * *Fájlfeltöltés kezdeményezése*. Az eszköz használja ezt a végpontot egy Azure Storage SAS URI-t fogadni az IoT Hub segítségével [töltsön fel egy fájlt][lnk-upload].
+  * *A lekérésére és frissítésére, eszköz-ikertulajdonságok*. Egy eszköz elérésére használja ezt a végpontot a [ikereszköz][lnk-twins]a tulajdonságai.
+  * *Közvetlen metódus kérések fogadására*. Eszköz ezt a végpontot használja, figyeljen a [közvetlen metódus][lnk-methods]a kérelmeket.
 
-    Ezeket a végpontokat feltárt használatával [MQTT v3.1.1][lnk-mqtt], HTTPS 1.1-es és [AMQP 1.0] [ lnk-amqp] protokollokat. AMQP is rendelkezésre áll, keresztül [websocket elemek] [ lnk-websockets] a 443-as porton.
+    Ezeket a végpontokat használatával érhetők el [MQTT v3.1.1][lnk-mqtt], HTTPS 1.1-es és [AMQP 1.0] [ lnk-amqp] protokollokat. Az AMQP is keresztül érhető el [WebSockets] [ lnk-websockets] 443-as porton.
 
-* **Szolgáltatás végpontjait**. Minden egyes IoT-központ a megoldás háttérrendszeréhez kommunikálnak az eszközök végpontjainak tesz elérhetővé. Egy kivétellel ezeket a végpontokat csak akkor jelennek meg használatával a [AMQP] [ lnk-amqp] protokoll. A metódus meghívása végpont a HTTPS protokollon keresztül kommunikál.
+* **Szolgáltatásvégpontokat**. Minden IoT-központ megjelenít egy végpontokat a megoldás háttérrendszerének, és az eszközök közötti kommunikációt. Egy kivétellel ezeket a végpontokat csak akkor érhetők el használatával a [AMQP] [ lnk-amqp] protokollt. A metódus meghívása végpont a HTTPS protokoll használatával van közzétéve.
   
-  * *Eszköz-felhő üzeneteket fogadni*. Ez a végpont összeegyeztethető [Azure Event Hubs][lnk-event-hubs]. A háttér-szolgáltatás segítségével, olvassa el a [eszköz a felhőbe küldött üzeneteket] [ lnk-d2c] az eszközök által küldött. Egyéni végpontokat létrehozhat az IoT hub mellett a beépített végpont.
-  * *Felhő-eszközre küldött üzenetek küldésére és fogadására a kézbesítési visszaigazolások*. Ezeket a végpontokat engedélyezése a megoldás háttérrendszeréhez küldése megbízható [felhő-eszközre küldött üzenetek][lnk-c2d], és a megfelelő kézbesítési vagy lejárati nyugták fogadásához.
-  * *Fájl értesítéseket*. Az üzenetkezelési végpont értesítést kapjon, ha az eszközök a fájl feltöltése sikeresen teszi lehetővé. 
-  * *A metódushívás közvetlen*. Ehhez a végponthoz, lehetővé teszi egy háttér-szolgáltatás meghívni egy [közvetlen módszer] [ lnk-methods] az eszközön.
-  * *Fogadási műveletek események figyelése*. Ehhez a végponthoz lehetővé teszi a fogadási műveletek események figyelése, ha konfigurálva van az IoT hub hozható létre őket. További információkért lásd: [IoT-központ műveletek figyelési][lnk-operations-mon].
+  * *Eszköz – felhő üzeneteket fogadni*. Ez a végpont kompatibilis [Azure Event Hubs][lnk-event-hubs]. A háttérszolgáltatás segítségével, olvassa el a [eszköz – felhő üzeneteket] [ lnk-d2c] az eszközök által küldött. Az egyedi végpontok is létrehozhat az IoT hub mellett a beépített végpont.
+  * *Felhőből az eszközre irányuló üzenetek küldése és fogadása kézbesítési visszaigazolások*. A végpontok engedélyezése a megoldás háttérrendszerén küldése megbízható [felhőből az eszközre irányuló üzenetek][lnk-c2d], és a megfelelő kézbesítési vagy lejárati nyugták fogadásához.
+  * *Fájl értesítések fogadása*. Ezen a végponton üzenetküldési lehetővé teszi az értesítéseket kaphat, amikor az eszközök a fájl feltöltése sikeresen megtörtént. 
+  * *A közvetlen metódus meghívásának*. Ez a végpont lehetővé teszi, hogy a háttérszolgáltatás meghívni egy [közvetlen metódus] [ lnk-methods] az eszközön.
+  * *Műveletek figyelése események fogadásához*. Ez a végpont lehetővé teszi, hogy megkaphatja a műveleti események figyelését, ha konfigurálva van az IoT hub kibocsátható őket. További információkért lásd: [IoT Hub-műveletek monitorozása][lnk-operations-mon].
 
-A [Azure IoT SDK-k] [ lnk-sdks] a cikk ismerteti a különböző módszereket ezeket a végpontokat eléréséhez.
+A [Azure IoT SDK-k] [ lnk-sdks] cikk elérni ezeket a végpontokat különböző módjait ismerteti.
 
-Minden IoT-központok végpontjai használja a [TLS] [ lnk-tls] protokoll, és nincs végpont legalább egyszer fel van fedve titkosítatlanul/titkosítatlan csatornán.
+Minden IoT Hub-végpontok használata a [TLS] [ lnk-tls] protokoll és a nem figyelt olyan végpont minden eddiginél elérhetővé titkosítatlan/titkosítatlan csatornán.
 
 ## <a name="custom-endpoints"></a>Egyéni végpontok
 
-Az előfizetésében szereplő meglévő Azure-szolgáltatások társíthatja az IoT hub üzenet irányításához végpontok nevében járhasson el. Ezeket a végpontokat Szolgáltatásvégpontok összekötőként és üzenet útvonalak mosdók használják. Eszközök közvetlenül a további végpontok nem írható. Üzenet útvonalakkal kapcsolatban további tudnivalókért tekintse meg a fejlesztői útmutató bejegyzés [IoT hubbal üzenetek küldése és fogadása][lnk-devguide-messaging].
+Meglévő Azure-szolgáltatások az előfizetésben az IoT hubhoz való működésre üzenet-útválasztása végpontjaiként kapcsolat. Ezeket a végpontokat Szolgáltatásvégpontok-kiszolgálóként, amely fogadóként üzenet útvonalak. Eszközök közvetlenül a további végpontok nem lehet írni. Üzenet útvonalakkal kapcsolatos további tudnivalókért tekintse meg a fejlesztői útmutató a [az IoT hub-üzenetek küldése és fogadása][lnk-devguide-messaging].
 
-Az IoT-központ jelenleg a további végpontként támogatja az Azure-szolgáltatásokat:
+Az IoT Hub a következő Azure-szolgáltatások jelenleg további végpontokat támogatja:
 
-* Az Azure Storage tárolók
+* Az Azure Storage-tárolók
 * Event Hubs
 * Service Bus által kezelt üzenetsorok
 * Service Bus-üzenettémák
 
-Az IoT-központ üzenet irányításához működéséhez ezeket Szolgáltatásvégpontok írási engedéllyel kell rendelkeznie. Konfigurálja a végpontokat az Azure portálon keresztül, ha a szükséges engedélyek hozzáadásakor meg. Ügyeljen arra, hogy a szolgáltatásokat, hogy a várt átviteli támogatja-e. Amikor először konfigurálja az IoT-megoldásból, szükség lehet a figyelheti a további végpontokat, majd végezze el a szükséges módosításokat a tényleges betöltést az.
+Az IoT Hub szolgáltatás a végpontokkal való írási hozzáférés van szüksége üzenet-útválasztása működjön. Ha a konfigurálja a végpontokat az Azure Portalon keresztül, a szükséges engedélyekkel meg lesz hozzáadva. Ellenőrizze, hogy konfigurálja a szolgáltatások, a várt teljesítményről támogatásához. Amikor először konfigurálja az IoT-megoldás, szükség lehet a további végpontok monitorozása és a tényleges betöltést a szükséges módosításokat.
 
-Ha egy üzenet megfelel több irányítja, hogy az összes mutasson a azonos végpont, IoT-központ kézbesíti üzenetet az adott végpontra csak egyszer. Emiatt nem kell a deduplikáció konfigurálása a Service Bus-üzenetsorba vagy témakör. A particionált várólisták partíció affinitás biztosítja, hogy az üzenet rendezés.
+Ha egy üzenet egyezést több irányítja, hogy az összes mutasson egyazon végpont, az IoT Hub továbbítja az üzenet, hogy a végpont csak egyszer. Így nem kell a deduplikáció konfigurálása a Service Bus-üzenetsor vagy témakör. A particionált üzenetsorok a partíció affinitás üzenetrendezés garantálja.
 
-Hozzáadhat végpontok számának használati korlátait, lásd: [kvóták és sávszélesség-szabályozási][lnk-devguide-quotas].
+Hozzáadhat végpontok számának korlátozásairól lásd: [kvóták és szabályozás][lnk-devguide-quotas].
 
-### <a name="when-using-azure-storage-containers"></a>Azure Storage tárolók használata
+### <a name="when-using-azure-storage-containers"></a>Az Azure Storage-tárolók használata esetén
 
-Az IoT-központ csak támogatja az írás a Azure-tárolókban lévő blobokat, a [Apache Avro](http://avro.apache.org/) formátumban. Az IoT-központ kötegek üzeneteket, és írja az adatokat a blob amikor:
+IoT Hub által támogatott csak, írja az adatokat az Azure Storage-tárolók, blobok a [Apache Avro](http://avro.apache.org/) formátumban. Az IoT Hub kötegeli az üzeneteket, és abba adatokat író egy blobot, ha:
 
-* A kötegelt elér egy adott méretet.
-* Vagy egy bizonyos idő eltelte.
+* A köteg bizonyos méretet elér.
+* Vagy egy bizonyos mennyi idő telt el.
 
-Az IoT-központ üres blob fognak írni, ha nincsenek adatok írása.
+Az IoT Hub üres blob fog írni, ha ott nem szerepel megjeleníthető adat írni.
 
-Az IoT-központ alapértelmezett értéke a következő fájl elnevezési konvenció:
+Az IoT Hub az alapértelmezett fájl alábbi elnevezési szabályt követik:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
-Használhat bármilyen fájlelnevezési, kívánja, azonban kell használnia minden felsorolt jogkivonatokat.
+Használhat bármilyen fájlelnevezési, szeretné, azonban kell használnia minden felsorolt jogkivonatokat.
 
 ### <a name="when-using-service-bus-queues-and-topics"></a>Service Bus-üzenetsorok és témakörök használata esetén
 
-Service Bus-üzenetsorok és témakörök használatos az IoT-központok végpontjai nem lehet **munkamenetek** vagy **ismétlődő észlelési** engedélyezve van. Ha ezek a lehetőségek valamelyikét engedélyezve vannak, a végpont megjelenik **Unreachable** az Azure portálon.
+Service Bus-üzenetsorok és témakörök használt IoT Hub-végpontok nesmí mít **munkamenetek** vagy **duplikáltelem-észlelési** engedélyezve van. Ha ezek a lehetőségek valamelyikét engedélyezve vannak, a végpont megjelenik **nem elérhető** az Azure Portalon.
 
-## <a name="field-gateways"></a>A mező átjárók
+## <a name="field-gateways"></a>Helyszíni átjárók
 
-Az IoT-megoldás egy *mező átjáró* között az eszközök és az IoT-központok végpontjai helyezkedik el. Általában megtalálható, az eszközök közelében. Az eszközök közvetlenül a mező átjáró használatával kommunikálnak az eszközök által támogatott protokoll. A mező átjáró csatlakozik az IoT-központ végpontjának IoT-központ által támogatott protokoll használatát. Egy mező átjáró egy dedikált hardvereszköz, vagy az alacsony futtató egyéni átjáró szoftverének lehet.
+IoT-megoldások egy *helyszíni átjáró* az eszközök és az IoT Hub-végpontok között helyezkedik el. Általában megtalálható, az eszközök közelében. Az eszközök közvetlenül a helyszíni átjáró használatával kommunikálnak az eszközök által támogatott protokoll. A helyszíni átjáró csatlakozik az IoT Hub-végponton egy IoT Hub által támogatott protokoll használatával. Helyszíni átjáró egy dedikált hardvereszköz, vagy az alacsony egyéni gateway szoftvert futtató számítógép lehet.
 
-Használhat [Azure IoT peremhálózati] [ lnk-iot-edge] mező átjáró végrehajtásához. IoT biztonsági funkciók, például multiplex folytatott kommunikáció több eszközön, ugyanazt az IoT-központ kapcsolatot biztosít.
+Használhat [Azure IoT Edge] [ lnk-iot-edge] helyszíni átjáró megvalósításához. IoT Edge funkciók, például több eszközről az IoT Hub ugyanazt a kapcsolatot az alakzatot multiplex kommunikációt biztosít.
 
 ## <a name="next-steps"></a>További lépések
 
-Az IoT Hub fejlesztői útmutató egyéb témaköröket tartalmazza:
+Ez az IoT Hub fejlesztői útmutató más referencia témaköröket tartalmazza:
 
-* [Az IoT-központ lekérdezési nyelv eszköz twins, a feladatok és az üzenet-útválasztás][lnk-devguide-query]
-* [Kvóták és sávszélesség-szabályozás][lnk-devguide-quotas]
-* [Az IoT Hub MQTT támogatása][lnk-devguide-mqtt]
+* [Az IoT Hub lekérdezési nyelv az ikereszközökhöz, feladatokkal és üzenet-útválasztása][lnk-devguide-query]
+* [Kvóták és szabályozás][lnk-devguide-quotas]
+* [IoT Hub MQTT-támogatás][lnk-devguide-mqtt]
 
 [lnk-iot-edge]: https://github.com/Azure/iot-edge
 

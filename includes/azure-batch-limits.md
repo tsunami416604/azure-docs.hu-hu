@@ -3,8 +3,8 @@
 | Az előfizető számára régiónként rendelkezésre álló Batch-fiókok | 1 - 3 |50 |
 | Batch-fiókonkénti dedikált magok | 10 - 100 | N/A<sup>1</sup> |
 | Alacsony prioritású magok száma Batch-fiókonként | 10 - 100 | N/A<sup>2</sup> |
-| Aktív feladatok és feladatütemezések<sup>3</sup> Batch-fiókonként | 100 – 300 | 5000<sup>4</sup> |
-| Készletek száma Batch-fiókonként | 20 - 100 | 2500 |
+| Aktív feladatok és feladatütemezések<sup>3</sup> Batch-fiókonként | 100 – 300 | 2500<sup>4</sup> |
+| Készletek száma Batch-fiókonként | 20 - 100 | 500 |
 
 > [!NOTE]
 > Alapértelmezett korlátai szerint hozhat létre Batch-fiók előfizetés típusától függően eltérőek lehetnek. Batch-fiókok a Batch szolgáltatás módban látható magkvóták vonatkoznak. [A kvóták megtekintése a Batch-fiókban](../articles/batch/batch-quota-limit.md#view-batch-quotas). 

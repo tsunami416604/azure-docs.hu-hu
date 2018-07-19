@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/28/2018
+ms.date: 07/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 8152a9934d6a280abfc75fdc74e0864053d82f45
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 42a11607c46f77840b14973dd5b7faf4b1734fdc
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116078"
+ms.locfileid: "39136842"
 ---
 # <a name="built-in-roles-in-azure"></a>Beépített szerepkörök az Azure-ban
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -78,6 +78,8 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Logikai alkalmazás operátora](#logic-app-operator) | Lehetővé teszi logikai alkalmazások olvasását, engedélyezését és letiltását. |
 | [Felügyelt identitások Közreműködője](#managed-identity-contributor) | A felhasználóhoz hozzárendelt identitás létrehozása, olvasása, frissítése és törlése |
 | [Felügyelt identitások üzemeltetője](#managed-identity-operator) | A felhasználóhoz hozzárendelt identitás olvasása és hozzárendelése |
+| [A felügyeleti csoport Közreműködője](#management-group-contributor) | Felügyeleti csoport közreműködői szerepköre |
+| [A felügyeleti csoport olvasó](#management-group-reader) | Felügyeleti csoport olvasói szerepköre |
 | [Közreműködő figyelése](#monitoring-contributor) | Az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
 | [Olvasó figyelése](#monitoring-reader) | Olvashatja az összes figyelési adatot (metrikákat, naplókat, stb.). Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
 | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
@@ -617,7 +619,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.ClassicNetwork/virtualNetworks/join/action | Csatlakozás a virtuális hálózathoz. |
 > | Microsoft.ClassicNetwork/virtualNetworks/read | Virtuális hálózat beolvasása. |
 > | Microsoft.ClassicStorage/storageAccounts/disks/read | A tárfióklemez beolvasása. |
-> | Microsoft.ClassicStorage/storageAccounts/images/read | A tárfióklemezkép adja vissza. |
+> | Microsoft.ClassicStorage/storageAccounts/images/read | A tárfióklemezkép adja vissza. (Elavult. Használja a "Microsoft.ClassicStorage/storageAccounts/vmImages") |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Tárfiókok elérési kulcsainak listázása. |
 > | Microsoft.ClassicStorage/storageAccounts/read | Tárfiók visszaadása az adott fiókhoz. |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
@@ -826,6 +828,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | Labor létrehozása a lab-fiókokban. |
+> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | Tesztlabor-fiókja alatt mérete kategóriákhoz tartozó régiónkénti rendelkezésre állás információ |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
@@ -947,6 +950,28 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
+## <a name="management-group-contributor"></a>Felügyeleti csoport közreműködője
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Felügyeleti csoport közreműködői szerepköre |
+> | **Azonosító** | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
+> | **Műveletek** |  |
+> | Microsoft.Management/managementGroups/delete | Felügyeleti csoport törlése. |
+> | Microsoft.Management/managementGroups/read | A hitelesített felhasználó felügyeleti csoportok listája. |
+> | Microsoft.Management/managementGroups/subscriptions/delete | A felügyeleti csoportból előfizetés megszüntetéséhez társítja. |
+> | Microsoft.Management/managementGroups/subscriptions/write | Hozzárendeli a meglévő előfizetés a felügyeleti csoporttal. |
+> | Microsoft.Management/managementGroups/write | Hozzon létre, vagy a felügyeleti csoport frissítése. |
+
+## <a name="management-group-reader"></a>Felügyeleti csoport olvasója
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Felügyeleti csoport olvasói szerepköre |
+> | **Azonosító** | ac63b705-f282-497d-ac71-919bf39d939d |
+> | **Műveletek** |  |
+> | Microsoft.Management/managementGroups/read | A hitelesített felhasználó felügyeleti csoportok listája. |
+
 ## <a name="monitoring-contributor"></a>Közreműködő figyelése
 > [!div class="mx-tableFixed"]
 > | | |
@@ -957,18 +982,18 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | * / olvasási | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
 > | Microsoft.AlertsManagement/alerts/* |  |
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
+> | Microsoft.Insights/actiongroups/* |  |
 > | Microsoft.Insights/AlertRules/* | Olvasási, írási és törlési riasztási szabályok. |
 > | Microsoft.Insights/components/* | Olvasási, írási és törlési Application Insights-összetevők. |
 > | Microsoft.Insights/DiagnosticSettings/* | Diagnosztikai beállítások olvasása/írása/törlése. |
 > | Microsoft.Insights/eventtypes/* | Tevékenységnapló eseményei (felügyeleti események) egy adott előfizetés listázása. Ezzel az engedéllyel csak a tevékenységnaplóban a szoftveres és a portál hozzáférést alkalmazható. |
 > | Microsoft.Insights/LogDefinitions/* | Erre az engedélyre szükség a felhasználók számára, akik hozzáférhetnek a vizsgálati naplók a portálon keresztül. Lista naplókategóriák a tevékenységnaplóban. |
+> | Microsoft.Insights/metricalerts/* |  |
 > | Microsoft.Insights/MetricDefinitions/* | (Erőforrás rendelkezésre álló metrika típusok listája) metrikadefiníciók olvasása. |
 > | Microsoft.Insights/Metrics/* | Olvassa el a erőforrás metrikáit. |
 > | Microsoft.Insights/Register/Action | A Microsoft Insights-szolgáltató regisztrálása |
-> | Microsoft.Insights/webtests/* | Olvasási, írási és törlési Application Insights webes teszteket. |
-> | Microsoft.Insights/actiongroups/* |  |
-> | Microsoft.Insights/metricalerts/* |  |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
+> | Microsoft.Insights/webtests/* | Olvasási, írási és törlési Application Insights webes teszteket. |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Olvasási, írási és törlési Log Analytics megoldás csomagok. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | A Log Analytics olvasási, írási és törlési mentett keresések. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Végrehajt egy keresési lekérdezést |
@@ -976,6 +1001,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Olvasási, írási és törlési Log Analytics storage insight konfigurációkat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | Microsoft.WorkloadMonitor/workloads/* |  |
+> | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-reader"></a>Olvasó figyelése
 > [!div class="mx-tableFixed"]

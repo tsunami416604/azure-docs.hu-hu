@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 43eb988915fb917923ab968d22b9b7f0ee36c0f5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 754449dcf759820c8bb99d082c3a5ba2792f02c8
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444395"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126323"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -35,7 +35,7 @@ Az IoT Hub-végpontok bármelyikét eléréséhez szükséges engedélyekkel kel
 
 Biztosítani [engedélyek](#iot-hub-permissions) a következő módon:
 
-* **IoT hub-szintű megosztott hozzáférési házirendek**. Megosztott elérési házirendeket is biztosítson tetszőleges kombinációját [engedélyek](#iot-hub-permissions). A szabályzatokat definiálhat a [az Azure portal][lnk-management-portal], vagy programozott módon használatával a [az IoT Hub erőforrás-szolgáltató REST API-k][lnk-resource-provider-apis]. Egy újonnan létrehozott IoT hub a következő alapértelmezett szabályzatokkal rendelkezik:
+* **IoT hub-szintű megosztott hozzáférési házirendek**. Megosztott elérési házirendeket is biztosítson tetszőleges kombinációját [engedélyek](#iot-hub-permissions). A szabályzatokat definiálhat a [az Azure portal][lnk-management-portal], programozott módon használatával a [IoT Hub erőforrás REST API-k][lnk-resource-provider-apis], vagy a használatával[az iot hub házirend](https://docs.microsoft.com/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI. Egy újonnan létrehozott IoT hub a következő alapértelmezett szabályzatokkal rendelkezik:
   
   | Megosztott elérési házirend | Engedélyek |
   | -------------------- | ----------- |
@@ -91,7 +91,9 @@ HTTPS érvényes token felvételével hitelesítést valósít meg a **engedély
 
 Felhasználónév (az Eszközanosító megkülönbözteti a kis-és nagybetűket): `iothubname.azure-devices.net/DeviceId`
 
-Jelszó (token SAS létrehozása a [device explorer] [ lnk-device-explorer] eszköz): `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
+Jelszó (is létrehozhat egy SAS-token az a [device explorer] [ lnk-device-explorer] eszközzel vagy a CLI-bővítmény paranccsal [az iot hub létrehozása sas-jogkivonat](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)):
+
+`SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
 > [!NOTE]
 > A [Azure IoT SDK-k] [ lnk-sdks] automatikusan a szolgáltatáshoz való csatlakozáskor jogkivonatokat hoz létre. Bizonyos esetekben az Azure IoT SDK-k nem támogatják, minden protokoll, vagy a hitelesítési módszereket.
@@ -268,7 +270,7 @@ Az eredmény, amely hozzáférést biztosít minden funkció esetében device1, 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Lehetséges egy SAS-jogkivonatot a .NET használatával [device explorer] [ lnk-device-explorer] eszközzel vagy a platformfüggetlen Python-alapú [Azure CLI 2.0 az IoT-bővítmény] [ lnk-IoT-extension-CLI-2.0] parancssori segédprogramot.
+> Lehetséges egy SAS-jogkivonatot a .NET használatával [device explorer] [ lnk-device-explorer] eszközzel vagy a platformfüggetlen Python-alapú [Azure CLI 2.0 az IoT-bővítmény] [ lnk-IoT-extension-CLI-2.0] parancssori eszközzel vagy a [Azure IoT-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ### <a name="use-a-shared-access-policy"></a>Megosztott elérési házirendet használja
 
@@ -308,7 +310,7 @@ A protokoll-átjáró használhatja ugyanezt a tokent az összes olyan eszközt,
 
 Szolgáltatás-összetevők csak hozhatja létre a megfelelő engedélyek megadása a korábbiakban leírtak megosztott elérési házirendeket használó biztonsági jogkivonatokat.
 
-Itt látható az elérhetővé tett végpontokon funkciói:
+Az elérhetővé tett végpontokon funkciói a következők:
 
 | Végpont | Funkció |
 | --- | --- |
@@ -348,11 +350,13 @@ Támogatott a tanúsítványok tartalmaznak:
 
 Egy eszköz előfordulhat, hogy használja egy X.509 tanúsítvány, vagy egy biztonsági jogkivonatot a hitelesítés, de nem mindkettőt.
 
-Hitelesítés hitelesítésszolgáltató használatával kapcsolatos további információkért lásd: [x.509-es Hitelesítésszolgáltatói tanúsítványok fogalmi ismeretekkel](iot-hub-x509ca-concept.md).
+Hitelesítés hitelesítésszolgáltató használatával kapcsolatos további információkért lásd: [X.509 Hitelesítésszolgáltatói tanúsítványok használatával Eszközhitelesítés](iot-hub-x509ca-overview.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Egy X.509 tanúsítvány, az eszköz regisztrálása
 
 A [Azure IoT Service SDK használata a C#] [ lnk-service-sdk] (verzió 1.0.8+) támogatja egy X.509-tanúsítványt használ a hitelesítéshez eszköz regisztrálása. Más API-k, például az eszközök importálása és exportálása az X.509-tanúsítványokat is támogatják.
+
+A CLI-bővítmény parancs is használható [az iot hub-eszközidentitást](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) eszközök X.509-tanúsítványok konfigurálása.
 
 ### <a name="c-support"></a>C\# támogatása
 

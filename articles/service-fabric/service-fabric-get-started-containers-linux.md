@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5f1d71db70bbaa6e569ad6f9a6f51bca4c5dc220
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 657e4b212b79fec40299e639c3818fd97a339579
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213124"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126728"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]
@@ -171,11 +171,11 @@ Mivel ez a rendszerkép meghatározott számításifeladat-belépési ponttal re
 
 Adja meg az „1” példányszámát.
 
-A megfelelő formátumban adja meg a port hozzárendelését. Ebben a cikkben, meg kell adnia ```80:4000``` port leképezésként. Ezzel konfigurálta, hogy a gazdaszámítógépen 4000 portra érkező bejövő minden kérelmet a rendszer átirányítja a tárolót a 80-as porton.
+A megfelelő formátumban adja meg a portleképezést. Ez a cikk meg kell adnia ```80:4000``` a port-hozzárendeléséhez. Ezzel konfigurálta, hogy minden olyan bejövő kérések várható a 4000-es portot a gazdagépen a rendszer átirányítja a tárolón a 80-as porton.
 
 ![Tárolókhoz készült Service Fabric Yeoman-generátor][sf-yeoman]
 
-## <a name="configure-container-repository-authentication"></a>Tároló tárház hitelesítés konfigurálása
+## <a name="configure-container-repository-authentication"></a>Tároló tárolóadattár hitelesítésének konfigurálása
  Ha a tárolót hitelesíteni kell egy magántárolóval, adja hozzá a `RepositoryCredentials` elemet. Ebben a cikkben a myregistry.azurecr.io tárolóregisztrációs adatbázis fióknevét és jelszavát adja meg. Ügyeljen arra, hogy a szabályzat hozzá legyen adva a „ServiceManifestImport” címke alatt, és a megfelelő szervizcsomagra vonatkozzon.
 
 ```xml
@@ -189,6 +189,39 @@ A megfelelő formátumban adja meg a port hozzárendelését. Ebben a cikkben, m
     </Policies>
    </ServiceManifestImport>
 ``` 
+
+
+## <a name="configure-isolation-mode"></a>Az elkülönítési mód konfigurálása
+A 6.3 runtime kiadása, virtuális gépek elkülönítés Linux-tárolók, ezáltal támogatása a tárolók két elkülönítési módok esetén támogatott: folyamata, és a Hyper-v. A Hyper-v folyamatelkülönítési módban az kernelei elkülönülnek a tárolók és a tároló gazdagép között. A Hyper-v-elkülönítés használatával lett megvalósítva [egyértelmű tárolók](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Az elkülönítési mód van megadva, a Linux-fürtök a `ServicePackageContainerPolicy` eleme az Alkalmazásjegyzék-fájl. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték folyamatelkülönítési módban. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0"/>
+      <Policies>
+        <ServicePackageContainerPolicy Hostname="votefront" Isolation="hyperv">
+          <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
+        </ServicePackageContainerPolicy>
+    </Policies>
+  </ServiceManifestImport>
+```
+
+
+## <a name="configure-resource-governance"></a>Az erőforrás-szabályozás konfigurálása
+Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozza a tároló által a gazdagépen használható erőforrásokat. Az alkalmazásjegyzékben megadott `ResourceGovernancePolicy` elemmel határozhatók meg erőforráskorlátok a szolgáltatások kódcsomagjaihoz. A következő erőforrásokhoz állíthatók be erőforráskorlátok: Memory, MemorySwap, CpuShares (CPU relatív súlya), MemoryReservationInMB, BlkioWeight (BlockIO relatív súlya). Ebben a példában a Guest1Pkg szolgáltatáscsomag egy magot kap a fürtcsomópontokon, amelyekre el van helyezve. A memóriakorlátok abszolútak, ezért a kódcsomag 1024 MB memóriára van korlátozva (és ugyanennyi a gyenge garanciás foglalás). A kódcsomagok (tárolók vagy folyamatok) nem tudnak ennél a korlátnál több memóriát lefoglalni, és ennek megkísérlése memóriahiány miatti kivételt eredményez. Az erőforráskorlát érvényesítéséhez a szolgáltatáscsomagokban lévő minden kódcsomaghoz memóriakorlátokat kell meghatároznia.
+
+```xml
+<ServiceManifestImport>
+  <ServiceManifestRef ServiceManifestName="MyServicePKg" ServiceManifestVersion="1.0.0" />
+  <Policies>
+    <ServicePackageResourceGovernancePolicy CpuCores="1"/>
+    <ResourceGovernancePolicy CodePackageRef="Code" MemoryInMB="1024"  />
+  </Policies>
+</ServiceManifestImport>
+```
+
+
+
+
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK konfigurálása 
 A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) eseményeket a rendszerállapot-jelentésbe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK**, a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). A tároló állapotának monitorozása céljából ténylegesen elvégzett ellenőrzésre mutató **HEALTHCHECK** utasításnak szerepelnie kell a tárolórendszerkép létrehozásához használt Docker-fájlban. 
 

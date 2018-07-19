@@ -9,12 +9,12 @@ editor: cgronlun
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.openlocfilehash: d38148181aa18404e45f6efc029117573570e6bc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 45cb9590e6dd0d8260f6e63b80caeca894f0fd44
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115425"
+ms.locfileid: "39126034"
 ---
 # <a name="configure-a-domain-joined-hdinsight-cluster-by-using-azure-active-directory-domain-services"></a>A tartományhoz csatlakoztatott HDInsight-fürt konfigurálása Azure Active Directory Domain Services használatával
 
@@ -52,7 +52,7 @@ Az Azure AD DS-példány és a HDInsight-fürt is helyezni, az azonos Azure virt
 Amikor létrehoz egy tartományhoz csatlakoztatott HDInsight-fürtöt, meg kell adnia a következő paraméterekkel:
 
 - **Tartománynév**: A tartomány nevét, amely az Azure Active Directory tartományi szolgáltatások van társítva. Az alkalmazás például contoso.onmicrosoft.com.
-- **Tartományi felhasználónév**: A fiók, amely az előző szakaszban létrehozott a felügyelt tartományban. Például: hdiadmin@contoso.onmicrosoft.com. A tartományi felhasználó a rendszergazda a HDInsight-fürt lesz.
+- **Tartományi felhasználónév**: A fiók az Azure ad hozzá a tartományvezérlő a tartományhoz, amely az előző szakaszban létrehozott felügyelt. Például: hdiadmin@contoso.onmicrosoft.com. A tartományi felhasználó a rendszergazda a HDInsight-fürt lesz.
 - **Tartományi jelszó**: a szolgáltatásfiók jelszava.
 - **Szervezeti egység**: a HDInsight-fürt a használni kívánt szervezeti egység megkülönböztető nevére. Például, szervezeti egység HDInsightOU, DC = contoso, DC = = onmicrosoft, DC = com. Ha a szervezeti egység nem létezik, a HDInsight-fürt próbálja meg a szervezeti egység létrehozása a jogosultságokat, amely a szolgáltatás fiókja rendelkezik használatával. Például ha a fiók az Azure AD DS-rendszergazdák csoportban, rendelkezik a megfelelő engedélyekkel a szervezeti egység létrehozása. Ellenkező esetben előfordulhat, hogy kell először hozza létre a szervezeti Egységet, és a szolgáltatás fiók teljes, amelynek felügyeleti lehetőséget biztosítanak. További információkért lásd: [létrehozása az Azure Active Directory tartományi szolgáltatások által felügyelt tartományokhoz a szervezeti egység](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
 

@@ -145,6 +145,8 @@
           href: functions-develop-vs.md
         - name: A Core Tools fejlesztése
           href: functions-run-local.md
+        - name: IntelliJ IDEA fejlesztése
+          href: functions-create-maven-intellij.md
         - name: Kapcsolatok kezelése
           href: manage-connections.md
         - name: Hibakezelés

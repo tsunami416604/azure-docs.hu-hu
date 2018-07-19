@@ -1,6 +1,6 @@
 ---
-title: Keresés használata az Azure Application Insightsban |} Microsoft Docs
-description: Keresés és szűrés nyers telemetriaadatok küldött a webes alkalmazást.
+title: Keresés használata az Azure Application Insights |} A Microsoft Docs
+description: Keresés és szűrés nyers által küldött telemetriát a webalkalmazás.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,176 +11,160 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/18/2018
 ms.author: mbullwin
-ms.openlocfilehash: c6a94fd1cebff4aa657ad5293715550161003d21
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294384"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39137376"
 ---
-# <a name="using-search-in-application-insights"></a>Az Application Insightsban keresés használata
-Keresés csak a [Application Insights](app-insights-overview.md) található és egyéni telemetriai elemek, például Lapmegtekintések, kivételek, így megismerkedhet vagy kérelmek használható. És naplókivonatokat és eseményeket, amelyek rendelkeznek a kódolt megtekintéséhez.
+# <a name="using-search-in-application-insights"></a>Az Application Insights keresés használata
+Keresés az egyik szolgáltatása [Application Insights](app-insights-overview.md) keresse meg és Fedezze fel a telemetriai elem, például a lapmegtekintések, kivételek, vagy webes kérelmek küldéséhez használt. És megtekintheti a nyomkövetési naplók és eseményeket, amelyek van kódolva.
 
-(Az adatok a összetettebb lekérdezések, használjon [Analytics](app-insights-analytics-tour.md).)
+(Az adatok összetettebb lekérdezésekhez használja [Analytics](app-insights-analytics-tour.md).)
 
-## <a name="where-do-you-see-search"></a>Ha látja keresési?
-### <a name="in-the-azure-portal"></a>Az Azure-portálon
-Az Application Insights – áttekintés panel az alkalmazás a explicit módon nyithatja diagnosztikai keresés:
+## <a name="where-do-you-see-search"></a>Ahol látható keresési?
 
-![Diagnosztikai keresés megnyitása](./media/app-insights-diagnostic-search/01-open-Diagnostic.png)
+### <a name="in-the-azure-portal"></a>Az Azure Portalon
 
-Néhány diagramok és a rács elemek kattintva is megnyílik. Ebben az esetben a szűrők vannak előre beállított összpontosítani a kijelölt elem típusát. 
+Diagnosztikai keresés explicit módon is megnyithatja az alkalmazás az Application Insights áttekintése panelen:
 
-Például az Áttekintés panel nincs kérelmek válaszideje által besorolt sávdiagram. Kattintson a teljesítmény széles egyedi adott válasz időtartományba esik tartalmazó lista megtekintéséhez:
+![Nyissa meg a diagnosztikai keresés](./media/app-insights-diagnostic-search/001.png)
 
-![Kattintson a kérelem teljesítmény](./media/app-insights-diagnostic-search/07-open-from-filters.png)
+![Képernyőkép a diagnosztikai keresés diagramok](./media/app-insights-diagnostic-search/002.png)
 
-A fő diagnosztikai keresési szövegtörzse listáját telemetriai elemek - kiszolgálói kérelmek lapon a nézetek, egyéni események, amelyek rendelkeznek a kódolt és így tovább. A lista tetején van egy összefoglaló táblázat időbeli események száma.
+Diagnosztikai keresés törzse a lista lapon telemetriai elem - kiszolgálói kérelmek, a nézeteket, egyéni eseményeket, amelyek van kódolva, és így tovább. A lista elején van egy összefoglaló táblázat eseményszámok idővel.
 
-Kattintson a frissítés gombra új esemény lekérdezésekor.
+Kattintson a frissítés gombra új események beolvasása.
 
 ### <a name="in-visual-studio"></a>Visual Studióban
 
-A Visual Studio esetében is az Application Insights keresési ablak. Legtöbb célszerű akkor hibakeresése alkalmazás által generált telemetriai események megjelenítése. Azonban akkor is megjelenhet a közzétett alkalmazást az Azure-portálon az összegyűjtött események.
+A Visual Studióban is van egy Application Insights keresés ablakában. Ez leginkább hasznos hibakeresése az alkalmazás által generált telemetriai események megjelenítése. De azt is megjelenítheti az események gyűjtését a közzétett alkalmazást az Azure Portalon.
 
-Nyissa meg a keresési ablak a Visual Studio:
+A Visual Studióban nyissa meg a keresési ablakban:
 
 ![A Visual Studio Application Insights keresés megnyitása](./media/app-insights-diagnostic-search/32.png)
 
 A keresési ablak a webes portálhoz hasonló jellemzőkkel rendelkezik:
 
-![Visual Studio Application Insights – keresési ablak](./media/app-insights-diagnostic-search/34.png)
+![A Visual Studio Application Insights keresőablakában](./media/app-insights-diagnostic-search/34.png)
 
-A Track művelet lapon érhető el egy kérelem vagy egy nézet megnyitásakor. Egy "művelet" egyetlen kérelemmel vagy a lap nézetre kapcsolódó események sorozata. Például függőségi hívások esetében, kivételek, nyomkövetési naplókat és egyéni események része lehet egyetlen művelettel. A művelet nyomon követése lap grafikonját időzítése és ezeket az eseményeket a kérelem vagy a lap nézet viszonyítva időtartama. 
+A nyomon követheti a művelet lapon érhető el egy kérelmet, vagy egy oldal nézet megnyitása. Egy "művelet" egyetlen kérelem vagy oldalmegtekintés nézet a kapcsolódó események sorozata. Függőségi hívások, a kivételek, a nyomkövetési naplókat és az egyéni események például lehet az egyetlen művelet részeként. A művelet nyomon követése lap grafikonját ütemét és ezeket az eseményeket a kérelem vagy oldalmegtekintés nézet viszonyítva időtartama. 
 
 ## <a name="inspect-individual-items"></a>Vizsgálja meg az egyes elemek
-Válassza ki bármelyik telemetriai elemre kulcsmezők megtekintéséhez és a kapcsolódó elemek. Ha meg szeretné tekinteni a mezők teljes készletét, kattintson a "...". 
 
-![Kattintson az új munkaelemre vonatkozóan, módosítsa a mezőket, és kattintson az OK gombra.](./media/app-insights-diagnostic-search/10-detail.png)
+Jelölje ki bármely szereplő telemetriai elem kulcsmezők megtekintéséhez és a kapcsolódó elemek.
 
-## <a name="filter-event-types"></a>Szűrő eseménytípusok
-Nyissa meg a szűrő panelre, és válassza ki a megjeleníteni kívánt típusait. (Ha később szeretné visszaállítani a szűrőket, amellyel megnyitni a panelt, kattintson a visszaállítás elemre.)
+![Képernyőkép egy egyéni függőség-kérelem](./media/app-insights-diagnostic-search/003.png)
 
-![Kattintson a szűrő és telemetriai kijelölve](./media/app-insights-diagnostic-search/02-filter-req.png)
+Ez elindítja a végpontok közötti tranzakció részletei nézet:
 
-Az esemény típusok a következők:
+![Képernyőfelvétel a végpontok közötti tranzakció részletei nézet.](./media/app-insights-diagnostic-search/004.png)
 
-* **Nyomkövetési** - [diagnosztikai naplók](app-insights-asp-net-trace-logs.md) TrackTrace, log4Net, NLog és System.Diagnostic.Trace hívások beleértve.
-* **Kérelem** -HTTP-kérések a kiszolgálóalkalmazás, beleértve a lapok, parancsfájlok, képek, stílus fájlokat és adatokat fogadja. Ezek az események létrehozásához használt a kérelem-válasz áttekintő diagramok.
-* **Lapmegtekintés** - [a webes ügyfél által küldött Telemetriai](app-insights-javascript.md), felhasznált lap megtekintése jelentések létrehozásához. 
-* **Egyéni esemény** – Ha a trackevent() függvény annak érdekében, hogy hívásainak beszúrt [megfigyeléséhez](app-insights-api-custom-events-metrics.md), Itt kereshet bennük.
-* **Kivétel** – fellépő nem kezelt [kivételek a kiszolgálón](app-insights-asp-net-exceptions.md), valamint azokat, amelyeket a TrackException() használatával jelentkezik.
-* **A függőségi** - [a kiszolgálóalkalmazás hívásait](app-insights-asp-net-dependencies.md) más szolgáltatások, például REST API-k vagy adatbázisok és AJAX hívásait a [Ügyfélkód](app-insights-javascript.md).
-* **Rendelkezésre állási** -eredményeinek [rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md).
+## <a name="filter-event-types"></a>Eseménytípusok szűrése
+A szűrő panel megnyitásához, és válassza ki az eseménytípusok meg szeretné tekinteni. (Ha később szeretné visszaállítani a szűrőket, amellyel megnyitotta a panelt, kattintson az Alaphelyzet.)
+
+![Válasszon szűrőt, és válassza ki a telemetriai adatok típusa](./media/app-insights-diagnostic-search/02-filter-req.png)
+
+Az esemény-típusok a következők:
+
+* **Nyomkövetési** - [diagnosztikai naplók](app-insights-asp-net-trace-logs.md) TrackTrace, log4Net, NLog és System.Diagnostic.Trace hívások többek között.
+* **Kérelem** -lapok, parancsfájlok, képek, stílusfájljait és adatok többek között a kiszolgálóalkalmazás által fogadott HTTP-kérelmekre. Ezeket az eseményeket létrehozásához a kérések és válaszok áttekintés diagramokon szolgálnak.
+* **Oldal nézet** - [a webes ügyfél által küldött telemetriai adatok](app-insights-javascript.md)oldal nézet jelentések létrehozására szolgál. 
+* **Egyéni esemény** – ha annak érdekében, hogy a TrackEvent() hívásainak beszúrt [figyelheti](app-insights-api-custom-events-metrics.md), itt megkeresheti azokat.
+* **Kivétel** – nem kezelt [kivételek a kiszolgálón](app-insights-asp-net-exceptions.md), valamint azokat, amelyeket a trackexception() hívásait használatával jelentkezik.
+* **Függőségi** - [a kiszolgálóalkalmazás hívásait](app-insights-asp-net-dependencies.md) más szolgáltatásokba, például REST API-k vagy adatbázisok és az AJAX-hívások a a [ügyfélalkalmazás](app-insights-javascript.md).
+* **Rendelkezésre állási** -eredményeit [rendelkezésre állási tesztek](app-insights-monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>A tulajdonságértékek szűrése
-A tulajdonságok értékeit események jeleníthetők meg. A rendelkezésre álló tulajdonságok a kijelölt esemény típusoktól függnek. 
+Szűrhet események tulajdonságaik értékeiből. A rendelkezésre álló tulajdonságok a kiválasztott eseménytípusok függ. 
 
-Válasszon például adott válaszkód kéréseket. 
+Ha például kérelmek egy adott válaszkóddal választhat. 
 
-![Bontsa ki a tulajdonságot, és adjon meg értéket](./media/app-insights-diagnostic-search/03-response500.png)
+![Bontsa ki a tulajdonságot, és válasszon egy értéket](./media/app-insights-diagnostic-search/03-response500.png)
 
-Ugyanaz a hatása, mint minden érték kiválasztása nem egy adott tulajdonság értékének rendelkezik. Vált ki a a tulajdonságon alapuló szűrőt.
+Az azonos hatása, mint minden érték kiválasztása nem egy adott tulajdonság értékét nem. Vált ki a tulajdonságon alapuló szűrőt.
 
 ### <a name="narrow-your-search"></a>A keresés szűkítéséhez
-Figyelje meg, hogy a számlálás szűrőértékek jobb mutatja hány előfordulások nincs aktuális szűrt készletében. 
+Figyelje meg, hogy a számlálás szűrőértékeket jobb megjelenítése hány előfordulások létezik az aktuális szűrt csoportjának szerepelnek. 
 
-Az ebben a példában is egyértelmű, hogy a "Rpt/alkalmazottak" kérése az "500" hibák többségét eredményezi:
+Ebben a példában nincs bejelölve, hogy a "Rpt/alkalmazottak" kérelem eredménye a legtöbb, a "500" hibák:
 
-![Bontsa ki a tulajdonságot, és adjon meg értéket](./media/app-insights-diagnostic-search/04-failingReq.png)
+![Bontsa ki a tulajdonságot, és válasszon egy értéket](./media/app-insights-diagnostic-search/04-failingReq.png)
 
-
-
-
-## <a name="find-events-with-the-same-property"></a>Az ugyanahhoz a tulajdonsághoz olyan esemény megkeresése
-Keresse meg elemeinek tulajdonság ugyanarra az értékre:
+## <a name="find-events-with-the-same-property"></a>Az ugyanahhoz a tulajdonsághoz események
+Keresse meg az azonos tulajdonság értéke az összes elemet:
 
 ![Kattintson a jobb gombbal egy tulajdonság](./media/app-insights-diagnostic-search/12-samevalue.png)
-
 
 ## <a name="search-the-data"></a>Az adatok keresése
 
 > [!NOTE]
-> Összetett lekérdezéseket írhat, nyissa meg a [ **Analytics** ](app-insights-analytics-tour.md) a keresési panel tetején.
+> Összetettebb lekérdezéseket írni, nyissa meg a [ **Analytics** ](app-insights-analytics-tour.md) a keresés panel tetején.
 > 
 
-A feltételek bármelyike tulajdonságértéket kereshet. Ez különösen akkor hasznos, ha írt az [egyéni események](app-insights-api-custom-events-metrics.md) tulajdonság értékekkel. 
+A tulajdonságértékek bármelyikét feltételek kereshet. Ez különösen hasznos adatszolgáltatót [egyéni események](app-insights-api-custom-events-metrics.md) és a tulajdonságértékek. 
 
-Előfordulhat, hogy be szeretné állítani a tartományon, mint rövidebb tartományban keresések gyorsabbak időpontot. 
+Érdemes egy tartományt, mint keresések időbeli rövidebb széles gyorsabbak idő beállítása. 
 
-![Diagnosztikai keresés megnyitása](./media/app-insights-diagnostic-search/appinsights-311search.png)
+![Nyissa meg a diagnosztikai keresés](./media/app-insights-diagnostic-search/appinsights-311search.png)
 
-Teljes szavak, nem karakterláncrész keresése. Tegye idézőjelek közé tegye a speciális karaktereket.
+Teljes szavakat, nem a karakterláncrész keresése. Speciális karakterek adni tegye idézőjelek közé.
 
-| sztring | van *nem* által talált | Ezek találja |
+| sztring | van *nem* által észlelt | Ezek találja |
 | --- | --- | --- |
-| HomeController.About |kezdőlap<br/>Tartományvezérlő<br/>Kimenő | homecontroller<br/>névjegy<br/>"homecontroller.about"|
-|Egyesült Államok|UNI<br/>TED|Egyesült<br/>állapotok<br/>Egyesült Államok és<br/>"az Amerikai Egyesült Államok"
+| HomeController.About |kezdőlap<br/>tartományvezérlő<br/>ki | homecontroller<br/>névjegy<br/>"homecontroller.about"|
+|Egyesült Államok|UNI<br/>TED|Egyesült<br/>állapotok<br/>Egyesült Államok és<br/>"Egyesült Államok"
 
-Az alábbiakban a keresési kifejezésre:
+Az alábbiakban a keresési kifejezéseket is használhatja:
 
 | Mintalekérdezés | Következmény |
 | --- | --- |
-| `apple` |Összes esemény található egyéb mezőjének tartalmaznia a word "apple" időtartomány |
-| `apple AND banana` |Megkeresése, amelynek mindkét szavakat tartalmaznak. A tőkéhez "és", nem használható "és". |
-| `apple OR banana`<br/>`apple banana` |Megkeresése, amelynek vagy szót tartalmaz. "Vagy", nem használható "vagy".<br/>Rövid alak. |
-| `apple NOT banana` |Esemény megkeresése, amelyek tartalmaznak egy szót, de a másik nem. |
-
-
+| `apple` |Az időtartomány, amelynek mezői tartalmazzák az "apple" szó az összes esemény keresése |
+| `apple AND banana` |Mindkét szót tartalmazó események keresése. Használja a tőke "és" nem "és". |
+| `apple OR banana`<br/>`apple banana` |Keresse meg vagy szót tartalmazó események. Használja a "Vagy", sem "vagy".<br/>Rövid űrlapot. |
+| `apple NOT banana` |Események, amelyek tartalmaznak egy szót, míg a másikon nem található. |
 
 ## <a name="sampling"></a>Mintavételezés
-Ha az alkalmazás nagy mennyiségű telemetriai adatokat hoz létre (és az ASP.NET SDK verzió 2.0.0-beta3 használ vagy újabb), a adaptív mintavételi modul automatikusan csökkenti a Portal reprezentatív része események küldése által küldött. Azonban a kérésben kapcsolódó események kiválasztva, vagy nincs kijelölve csoportosan, hogy a kapcsolódó események közti léphet. 
+Ha az alkalmazása sok telemetriát hoz létre (és használ, akkor a verzió az ASP.NET SDK 2.0.0-beta3 vagy újabb), az adaptív mintavételezési modul automatikusan csökkenti a által csak töredékeket az események elküldése a portálra küldött kötetet. Azonban az azonos kéréshez kapcsolódó eseményeket kiválasztva, vagy a jelölésük, úgy, hogy lehessen mozogni a kapcsolódó események között. 
 
 [Ismerkedés a mintavételezéssel](app-insights-sampling.md).
 
-
-
 ## <a name="create-work-item"></a>Munkaelem létrehozása
-A Githubból vagy a Visual Studio Team Services programhiba bármely telemetriai eleme az adatokkal hozhat létre. 
+A részleteket az összes telemetriai elem hibát hozhat létre a GitHub vagy a Visual Studio Team Services. 
 
-![Kattintson az új munkaelemre vonatkozóan, módosítsa a mezőket, és kattintson az OK gombra.](./media/app-insights-diagnostic-search/42.png)
+![Kattintson az új munkaelem, módosítsa a mezőket, és kattintson az OK gombra.](./media/app-insights-diagnostic-search/42.png)
 
-Ebben az esetben először a rendszer felkéri a Team Services-fiók és a projekt kapcsolat konfigurálásához.
+Ebben az esetben először a rendszer felkéri egy hivatkozást a Team Services-fiók és a projekt konfigurálásához.
 
-![Töltse ki az URL-CÍMÉT a Team Services-kiszolgáló és a projekt nevét, majd kattintson az Engedélyezés parancsra](./media/app-insights-diagnostic-search/41.png)
+![Töltse ki az URL-címét a Team Services-kiszolgáló és a projekt nevére, majd kattintson az Engedélyezés parancsra](./media/app-insights-diagnostic-search/41.png)
 
-(Beállíthatja úgy is a hivatkozás a munkaelemek panelen.)
+(Is konfigurálhat a hivatkozás a munkaelemek panelen.)
 
-## <a name="save-your-search"></a>A Keresés mentése
-Ha azt szeretné, az összes szűrő beállítása, a Kedvencek közé mentheti a keresést. Ha a szervezeti fiók dolgozunk, is eldöntheti, hogy az azt megosztása más csoport tagjai.
+## <a name="send-more-telemetry-to-application-insights"></a>További telemetriát küldjön az Application Insights
+Az Application Insights SDK által küldött-a-beépített telemetriát, valamint a következőket teheti:
 
-![Kattintson a kedvenc, állítson be a nevet és kattintson a Mentés gombra](./media/app-insights-diagnostic-search/08-favorite-save.png)
+* Rögzítheti a naplóbejegyzéseket a a kedvenc naplózási keretrendszeréből [.NET](app-insights-asp-net-trace-logs.md) vagy [Java](app-insights-java-trace-logs.md). Ez azt jelenti, hogy a nyomkövetési naplók kereshet, és összefüggésbe hozva azokat az oldalmegtekintéseket, kivételeket és eseményeket. 
+* [Kód írása](app-insights-api-custom-events-metrics.md) küldhet egyéni eseményeket, a lapmegtekintések és a kivételek. 
 
-A Keresés újra, hogy **keresse fel a áttekintése panel** , és nyissa meg a Kedvencek:
+[Ismerje meg, hogyan naplók és egyéni telemetriai adatokat küldhet az Application Insights](app-insights-asp-net-trace-logs.md).
 
-![Kedvencek csempe](./media/app-insights-diagnostic-search/09-favorite-get.png)
-
-Ha mentett relatív időtartomány, újra megnyitni a panelt a legfrissebb adatokat tartalmaz. Ha mentett abszolút időtartomány, látni ugyanazokhoz az adatokhoz minden alkalommal. ("Relatív" nem használható kedvenc menteni szeretné, ha az időtartományt kattintson a fejléc, és a beállítása egy időtartományt, amely nem egy egyéni tartományt.)
-
-## <a name="send-more-telemetry-to-application-insights"></a>További telemetriai adatokat küldhet az Application Insights részére
-Az Application Insights SDK által küldött out-of-az-box telemetriai, mellett a következő műveletek végezhetők el:
-
-* A kedvenc naplózási keretrendszer a naplózási nyomkövetés rögzítése a [.NET](app-insights-asp-net-trace-logs.md) vagy [Java](app-insights-java-trace-logs.md). Ez azt jelenti, hogy a naplókivonatokat közötti keresésre, és a kivizsgált Lapmegtekintések, kivételeket és eseményeket. 
-* [Kód írása](app-insights-api-custom-events-metrics.md) egyéni események, a lapmegtekintések és a kivételeket. 
-
-[Útmutató a naplók és egyéni telemetriai adatokat küldhet az Application Insights](app-insights-asp-net-trace-logs.md).
-
-## <a name="questions"></a>A KÉRDÉSEK ÉS VÁLASZOK
+## <a name="questions"></a>A Q &AMP; A
 ### <a name="limits"></a>Mennyi adatot megmarad?
 
-Tekintse meg a [korlátok összegzés](app-insights-pricing.md#limits-summary).
+Tekintse meg a [korlátozások összegzése](app-insights-pricing.md#limits-summary).
 
-### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Honnan látom POST-adatokat a saját kiszolgáló kérések?
-Automatikusan azt ne naplózza a POST-adatokat, de használhat [TrackTrace vagy a napló hívások](app-insights-asp-net-trace-logs.md). Az üzenet paraméter helyezze el a POST-adatokat. Nem lehet szűrést végezni az üzenet tulajdonságai alapján szűrhet ugyanúgy, de a méretkorlátot hosszabb.
+### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Hogyan tekinthetem meg POST data a kiszolgálói kérelmekre a?
+Automatikusan azt ne naplózza a POST data, de használhat [TrackTrace vagy a naplóhoz hívások](app-insights-asp-net-trace-logs.md). Az üzenet-paraméter a POST data helyezze el. Nem lehet szűrni az üzenet tulajdonságait szűrésével ugyanúgy, de a méretkorlátot hosszabb.
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>Következő lépések
-* [Összetett lekérdezések írás Analytics](app-insights-analytics-tour.md)
-* [Naplók és egyéni telemetriai adatokat küldhet az Application Insights](app-insights-asp-net-trace-logs.md)
-* [Rendelkezésre állási és reakcióidőt tesztek beállítása](app-insights-monitor-web-app-availability.md)
+* [Összetett lekérdezéseket írni az Analyticsben](app-insights-analytics-tour.md)
+* [Naplók és egyéni telemetriát küldjön az Application Insightsba](app-insights-asp-net-trace-logs.md)
+* [Állítsa be a rendelkezésre állás és a válaszképesség tesztek](app-insights-monitor-web-app-availability.md)
 * [hibaelhárítással](app-insights-troubleshoot-faq.md)

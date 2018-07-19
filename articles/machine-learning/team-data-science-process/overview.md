@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: 474efbf3a9255e4699c27c6b0bfcc30ff54c4b45
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e44b21530cb3db8a2ba354ef19ebb3d2c557ecae
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971451"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125759"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 
@@ -67,7 +67,7 @@ A célok, feladatok és az egyes fázisokat a TDSP-életciklus dokumentációs �
 
 A következő ábra összetevőkről (zöld) (a vízszintes tengely) életciklusának minden egyes fázisa társított ezen szerepkörök (a függőleges tengely) és (a kék) feladatok rács nézetét jeleníti meg. 
 
-![TDSP-szerepkörök – és-feladatok](./media/overview/tdsp-tasks-by-roles.png)
+[ ![TDSP-szerepkörök – és-feladatok](./media/overview/tdsp-tasks-by-roles.png) ](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>Szabványos projektstruktúra
 
@@ -81,7 +81,7 @@ Sablonok a mappastruktúrát és a nem szabványos helyekre szükséges dokument
 - például ROC-görbét vagy MSE modell teljesítmény-mérőszámok
 
 
-![TDSP-könyvtárak](./media/overview/tdsp-dir-structure.png)
+[ ![TDSP-könyvtárak](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
 
 A könyvtárstruktúra is lehet klónozni a [Github](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
@@ -98,7 +98,7 @@ Az elemzési és tárolási infrastruktúrájában a felhőben vagy a helyszíne
 
 Íme egy példa egy csoport több projekten dolgozik, és a megosztási különböző felhőalapú elemzési infrastruktúra-összetevőket.
 
-![TDSP-infrastruktúra](./media/overview/tdsp-analytics-infra.png)
+[ ![TDSP-infrastruktúra](./media/overview/tdsp-analytics-infra.png) ](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Eszközöket és segédprogramokat tehet projekt végrehajtása

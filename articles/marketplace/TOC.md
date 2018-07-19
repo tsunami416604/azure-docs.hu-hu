@@ -28,14 +28,6 @@
 ### Támogatás  
 #### [Azure Marketplace- és AppSource-támogatás](./support-azure-marketplace.md)  
 
-### Közzétételi útmutatók  
-#### [Azure Marketplace tanácsadási szolgáltatás](consulting-services.md)  
-#### [Azure Marketplace SaaS alkalmazás – műszaki közzétételi útmutató](marketplace-saas-applications-technical-publishing-guide.md) 
-#### [A Marketplace próbaverziójának engedélyezése az Azure Active Directory használatával](./enable-trial-using-azure-ad.md)  
-
-### [Vállalatfejlesztés a piactéren](./grow-your-business-with-azure-marketplace.md)  
-#### [Előnyben részesített megoldások](./preferred-solutions.md) 
-
 ## [Felhőpartnerportál](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 
 ## További források  

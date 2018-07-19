@@ -1,75 +1,75 @@
 ---
-title: Azure IoT Hub üzenetformátum megértése |} Microsoft Docs
-description: Fejlesztői útmutató - descibes a formátum és az IoT-központ üzenetek várt tartalom.
+title: Megismerheti az Azure IoT Hub üzenet formátuma |} A Microsoft Docs
+description: Fejlesztői útmutató – descibes formátuma és az IoT Hub-üzenetek várt tartalom.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 1d84fa5ca580a1e56ba9ce17dece9ad9680c74c6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a1296565384e60117d883a1f1407362482ba1a3e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633927"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125013"
 ---
-# <a name="create-and-read-iot-hub-messages"></a>Hozzon létre, és az IoT-központ üzenet olvasása
+# <a name="create-and-read-iot-hub-messages"></a>Hozzon létre, és az IoT Hub-üzenetek olvasása
 
-Zökkenőmentes együttműködés támogatására biztosíthat a protokollokon, IoT-központ az összes eszköz számára is elérhető protokollhoz közös üzenetformátum határozza meg. Mindkét használt üzenetformátuma [eszközről a felhőbe] [ lnk-d2c] és [felhő eszközre] [ lnk-c2d] üzeneteket. 
+Zökkenőmentes együttműködés támogatására protokollok között, az IoT Hub egy közös üzenetformátum minden eszköz által használt protokollra határozza meg. Az üzenet formátuma is szolgál [eszközről a felhőbe] [ lnk-d2c] és [felhőből az eszközre] [ lnk-c2d] üzeneteket. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Egy [IoT-központ üzenet] [ lnk-messaging] áll:
+Egy [az IoT Hub üzenet] [ lnk-messaging] áll:
 
-* Egy *Rendszertulajdonságok*. Az IoT-központ értelmezi, vagy beállítja a tulajdonságokat. A csoportok pedig előre meghatározott.
-* Egy *alkalmazástulajdonságok*. Az alkalmazás meghatározó karakterlánc-tulajdonságok és a hozzáférés, anélkül, hogy az üzenet törzsének deszerializálása dictionary. Az IoT-központ soha nem módosítja ezeket a tulajdonságokat.
-* Nem átlátszó bináris törzsében.
+* Egy *Rendszertulajdonságok*. Az IoT Hub értelmezi, és beállítja a tulajdonságokat. Ez rendkívül előre meghatározott.
+* Egy *alkalmazástulajdonságok*. Egy szótárt az alkalmazás meghatározó karakterlánc-tulajdonságok és a hozzáférés, anélkül, hogy az üzenet törzse deszerializálni. Az IoT Hub soha nem módosítja ezeket a tulajdonságokat.
+* Egy nem átlátszó bináris törzse.
 
-Nevét és értékeit csak ASCII alfanumerikus karaktereket tartalmazhat, valamint ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``` amikor Ön:  
+Nevét és értékeit csak ASCII alfanumerikus karaktereket tartalmazhat, emellett ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``` amikor Ön:  
 
-* A HTTPS protokoll használatával eszközről a felhőbe üzeneteket küldeni.
-* Felhő-eszközre küldött üzenetek küldése.
+* A HTTPS protokoll használatával eszköz a felhőbe irányuló üzenetek küldéséhez.
+* Üzenetküldés a felhőből az eszközre.
 
-Kódolására, és különböző protokollok használatával küldött üzenetek dekódolási kapcsolatos további információkért lásd: [Azure IoT SDK-k][lnk-sdks].
+Kódolhat és dekódolhat különböző protokollok használatával küldött üzenetek kapcsolatos további információkért lásd: [Azure IoT SDK-k][lnk-sdks].
 
-A következő táblázat az IoT Hub-kezelő üzeneteinek tulajdonságainak listája.
+Az alábbi táblázat az IoT Hub-üzenetek a rendszer tulajdonságai készletét.
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| MessageId |Az üzenet kérelem-válasz minták használt felhasználói állítható be azonosítója. Formátum: A kis-és nagybetűket (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterekből álló karakterlánc + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
-| Sorozat száma |Minden felhő eszközre üzenetet az IoT-központ által hozzárendelt szám (eszköz-várólista minden egyedi). |
-| Művelet |A megadott célhelyre [felhő eszközre] [ lnk-c2d] üzeneteket. |
-| ExpiryTimeUtc |Dátum és az üzenet lejárati idejét. |
-| EnqueuedTime |Dátum és idő a [felhő eszközre] [ lnk-c2d] üzenet érkezett az IoT-központot. |
-| CorrelationId |A kérelem a kérelem-válasz minták MessageId általában tartalmazó válaszüzenetet a karakterlánc típusú tulajdonság. |
-| Felhasználói azonosító |Adja meg az üzenetek eredeti használt azonosító. Az IoT-központ által előállított üzeneteket, ha van-e beállítva `{iot hub name}`. |
-| Nyugtázási |A visszajelzési üzenet generátor. Ezt a tulajdonságot használják a felhő-eszközre küldött üzenetek igényelni az IoT-központ létrehozhat visszajelzés üzeneteket a felhasználás az üzenet miatt az eszköz. A lehetséges értékek: **nincs** (alapértelmezett): Nincs visszajelzés üzenet jön létre, **pozitív**: visszajelzés üzenetet kap, ha az üzenet befejeződött, **negatív**: visszajelzés üzenetet kap, ha nélkül végzi az eszközt, az üzenet lejárt (vagy elérte a maximális száma) vagy **teljes**: pozitív és negatív. További információkért lásd: [visszajelzés üzenet][lnk-feedback]. |
-| ConnectionDeviceId |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított azonosító. Tartalmazza a **deviceId** az eszközt, az üzenetet küldő. |
-| ConnectionDeviceGenerationId |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított azonosító. Tartalmazza a **generationId** (megfelelően [identitás eszköztulajdonságok][lnk-device-properties]) az eszköz az üzenetet küldő. |
-| ConnectionAuthMethod |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított hitelesítési módszert. Ez a tulajdonság a üzenetet küld az eszköz hitelesítésére használt hitelesítési módszert információkat tartalmaz. További információkért lásd: [hamisításszűrés felhőbe eszköz][lnk-antispoofing]. |
-| CreationTimeUtc | Dátum és idő, az üzenet az eszközön jött létre. Egy eszköz explicit módon a értékre kell állítani. |
+| MessageId |Egy felhasználó állítható kérés-válasz mintákat keressen az üzenet azonosítója. Formátum: A kis-és nagybetűket (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterekből álló karakterlánc + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
+| Sorozat száma |Minden egyes felhőből az eszközre irányuló üzenetek IoT Hub által hozzárendelt szám (soronként eszköz egyedi). |
+| Művelet |A megadott cél [felhőből az eszközre] [ lnk-c2d] üzeneteket. |
+| ExpiryTimeUtc |Dátum és idő, az üzenetek lejáratkor. |
+| EnqueuedTime |Dátum és idő a [felhőből az eszközre] [ lnk-c2d] által az IoT Hub-üzenet érkezett. |
+| CorrelationId |A válaszüzenetben általában az üzenetazonosító, a kérelem, a kérés-válasz mintákat tartalmazó karakterlánc típusú tulajdonság. |
+| Felhasználói azonosító |Adja meg a forrás, az üzenetek használt azonosító. Az IoT Hub által előállított üzeneteket, ha van-e állítva `{iot hub name}`. |
+| Nyomon követés |Egy visszajelzés üzenet generátort. Ez a tulajdonság használják a felhőből az eszközre irányuló üzenetek létrehozni az üzenet a használatalapú eredményeként visszajelzés üzeneteket az IoT Hub kérése az eszköz. A lehetséges értékek: **nincs** (alapértelmezett): Nincs visszajelzés üzenet jön létre, **pozitív**: visszajelzés üzenetet kap, ha az üzenet fejeződött be, **negatív**: kap egy visszajelzési üzenetek anélkül, hogy az eszköz végzi üzenet lejárt (vagy kézbesítések maximális száma elérte a) Ha vagy **teljes**: pozitív és negatív. További információkért lásd: [visszajelzés üzenet][lnk-feedback]. |
+| ConnectionDeviceId |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított azonosító. Tartalmazza a **deviceId** az eszköz, amely elküldte az üzenetet. |
+| ConnectionDeviceGenerationId |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított azonosító. Tartalmazza a **generationId** (megfelelően [identitás eszköztulajdonságok][lnk-device-properties]) az eszköz, amely elküldte az üzenetet. |
+| ConnectionAuthMethod |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított hitelesítési módszert. Ez a tulajdonság az üzenet elküldésekor az eszköz hitelesítésére használt hitelesítési módszert kapcsolatos információt tartalmazza. További információkért lásd: [eszköz – felhő hamisításszűrés][lnk-antispoofing]. |
+| CreationTimeUtc | Létrehozásának dátuma és időpontja az üzenet az eszközön. Egy eszköz explicit módon be kell ezt az értéket. |
 
 ## <a name="message-size"></a>Üzenet mérete
 
-Az IoT-központ méri üzenet mérete protokoll-független módon annak eldöntéséhez, hogy csak a tényleges tartalmat. A mérete bájtban a következő összegeként számítható ki:
+Az IoT Hub méri üzenet mérete a protokoll-független módon csak a tényleges tartalom a mérlegeli. A mérete (bájt) a következő összegeként számítható ki:
 
-* A törzs mérete bájtban.
-* A mérete bájtban megadva az üzenet tulajdonságainak értékek.
-* A mérete bájtban minden felhasználó nevét és értékeit.
+* A törzs mérete (bájt).
+* A mérete (bájt) összes értékét a üzenet tulajdonságai.
+* A mérete (bájt) az összes felhasználó nevét és értékeit.
 
-Nevét és értékeit korlátozódnak ASCII-karaktereket, így a karakterlánc hosszát eredménye a mérete bájtban.
+Nevét és értékeit pedig csak ASCII-karaktereket, így az a karakterlánc hosszának értéke a mérete (bájt).
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a méretkorlátozásokról üzenetet az IoT hubon: [IoT-központ kvóták és sávszélesség-szabályozási][lnk-quotas].
+Az IoT Hub üzenetek méretkorlátjának kapcsolatos információkért lásd: [IoT Hub kvótái és szabályozása][lnk-quotas].
 
-Megtudhatja, hogyan hozhat létre, és az IoT-központ különböző programnyelveken üzenet olvasása, tekintse meg a [Ismerkedés] [ lnk-get-started] oktatóanyagok.
+Ismerje meg, hogyan hozhat létre, és az IoT Hub, az üzenetek olvasásakor a különböző programozási nyelvek, tekintse meg a [útmutatóink][lnk-get-started].
 
 [lnk-messaging]: iot-hub-devguide-messaging.md
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-get-started]: iot-hub-get-started.md
+[lnk-get-started]: quickstart-send-telemetry-node.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 [lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-d2c]: iot-hub-devguide-messages-d2c.md

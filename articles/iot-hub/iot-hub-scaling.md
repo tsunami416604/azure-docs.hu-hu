@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 1ad2dc9d826ec42dfca8547a73117a6c967a8ae7
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 446fe139e3d1abe79b877d663842f7c7c6168f19
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113648"
+ms.locfileid: "39126694"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
@@ -53,34 +53,34 @@ A támogatott képességek közötti különbség az alapszintű és standard cs
 
 | API | Alapszintű csomag | Standard csomag |
 | --- | ---------- | ------------- |
-| [Eszköz törlése](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/deletedevice) | Igen | Igen |
-| [Eszköz](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdevice) | Igen | Igen |
+| [Eszköz törlése](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Igen | Igen |
+| [Eszköz](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Igen | Igen |
 | Modul törlése | Igen | Igen |
 | Modul beolvasása | Igen | Igen |
-| [Beállításjegyzék statisztikájának beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Igen | Igen |
-| [Szolgáltatások statisztikájának beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Igen | Igen |
-| [Hozzon létre vagy az eszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Igen | Igen |
+| [Beállításjegyzék statisztikájának beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | Igen | Igen |
+| [Szolgáltatások statisztikájának beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Igen | Igen |
+| [Hozzon létre vagy az eszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Igen | Igen |
 | A PUT-modul | Igen | Igen |
-| [Az IoT Hub lekérdezése](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Igen | Igen |
+| [Az IoT Hub lekérdezése](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Igen | Igen |
 | Lekérdezés-modulok | Igen | Igen |
-| [Fájl feltöltése SAS URI létrehozása](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Igen | Igen |
-| [Értesítés e kötve eszköz](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Igen | Igen |
-| [Esemény küldése](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/senddeviceevent) | Igen | Igen |
+| [Fájl feltöltése SAS URI létrehozása](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Igen | Igen |
+| [Értesítés e kötve eszköz](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Igen | Igen |
+| [Esemény küldése](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Igen | Igen |
 | A modul esemény küldése | Igen | Igen |
-| [Fájlfeltöltés állapota frissítése](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/updatefileuploadstatus) | Igen | Igen |
-| [A tömeges eszköz művelet](https://docs.microsoft.com/en-us/rest/api/iot-dps/deviceenrollment/bulkoperation) | Igen, kivéve az IoT Edge-képességek | Igen | 
-| [A parancs üzenetsor kiürítése](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/purgecommandqueue) |   | Igen |
-| [Ikereszköz beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/gettwin) |   | Igen |
+| [Fájlfeltöltés állapota frissítése](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Igen | Igen |
+| [A tömeges eszköz művelet](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/bulkoperation) | Igen, kivéve az IoT Edge-képességek | Igen | 
+| [A parancs üzenetsor kiürítése](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Igen |
+| [Ikereszköz beolvasása](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Igen |
 | Ikermodul beolvasása |   | Igen |
-| [Eszközmetódus meghívása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/invokedevicemethod) |   | Igen |
-| [Ikereszköz frissítése](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/updatetwin) |   | Igen | 
+| [Eszközmetódus meghívása](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | Igen |
+| [Ikereszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Igen | 
 | Ikermodul frissítése |   | Igen | 
-| [Értesítési eszköz kötött Abandon](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/abandondeviceboundnotification) |   | Igen |
-| [Teljes eszközhöz kötött értesítés](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/completedeviceboundnotification) |   | Igen |
-| [Feladat megszakítása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/canceljob) |   | Igen |
-| [Feladat létrehozása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/createjob) |   | Igen |
-| [Feladat beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getjob) |   | Igen |
-| [Lekérdezés feladatok](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/queryjobs) |   | Igen |
+| [Értesítési eszköz kötött Abandon](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Igen |
+| [Teljes eszközhöz kötött értesítés](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Igen |
+| [Feladat megszakítása](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | Igen |
+| [Feladat létrehozása](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | Igen |
+| [Feladat beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getjob) |   | Igen |
+| [Lekérdezés feladatok](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | Igen |
 
 ## <a name="message-throughput"></a>Üzeneteinek átviteli sebessége
 

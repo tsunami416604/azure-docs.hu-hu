@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 899e5dc13dfaf7d7545955e7b4b73939c3275d3f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cd2578f2fd8217d513a693ef348a5c26a4b18623
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930307"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126507"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
@@ -160,9 +160,69 @@ Mentse a *Export-RunAsCertificateToHybridWorker* runbookot, hogy a számítógé
 
 Feladatok kezelése némileg eltérő hibrid Runbook-feldolgozók mint Azure próbakörnyezetbe lefordítja a futtatás esetén. Egy fő különbséggel, hogy nincs korlátozva a hibrid Runbook-feldolgozók feladat időtartama. Az Azure-ban futtatott Runbookok próbakörnyezetbe lefordítja korlátozva, 3 óra, mert a [igazságos elosztás](automation-runbook-execution.md#fair-share). Ha rendelkezik egy hosszú ideig futó runbook érdekében, hogy rugalmas lehetséges újraindítja a számítógépet, például ha a gép, amelyen a hibrid feldolgozó újraindítja a számítógépet szeretné. Ha a hibrid feldolgozói gazdagép gép újraindul, majd minden futó runbook-feladat újraindítja az elejéről, vagy a PowerShell-munkafolyamati runbookok az utolsó ellenőrzőponttól. Ha egy runbook-feladat több mint 3 alkalommal újraindul, majd fel van függesztve.
 
+## <a name="run-only-signed-runbooks"></a>Csak aláírt Runbookok futtatása
+
+Hibrid Runbook-feldolgozók beállítható úgy, hogy csak aláírt runbookok futtatása a konfigurálást. A következő szakasz azt ismerteti, hogyan állíthatja be a hibrid Runbook-feldolgozók aláírt runbookok futtatására, és arról, hogyan jelentkezhet a runbookok.
+
+> [!NOTE]
+> Miután konfigurálta a csak aláírt runbookok futtatása hibrid Runbook-feldolgozók, runbookok, amely rendelkezik **nem** lett lesz aláírva a feldolgozón végrehajtása sikertelen.
+
+### <a name="create-signing-certificate"></a>Aláíró tanúsítvány létrehozása
+
+Az alábbi példa runbookokat az aláíráshoz használt önaláírt tanúsítványt hoz létre. A minta létrehozza a tanúsítványt, és exportálja azt. A tanúsítványt később importálja az a hibrid Runbook-feldolgozók. Az ujjlenyomat adja vissza, a rendszer később hivatkozik a tanúsítványra.
+
+```powershell
+# Create a self signed runbook that can be used for code signing
+$SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
+                                        -Subject "CN=contoso.com" `
+                                        -KeyAlgorithm RSA `
+                                        -KeyLength 2048 `
+                                        -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+                                        -KeyExportPolicy Exportable `
+                                        -KeyUsage DigitalSignature `
+                                        -Type CodeSigningCert
+
+
+# Export the certificate so that it can be imported to the hybrid workers
+Export-Certificate -Cert $SigningCert -FilePath .\hybridworkersigningcertificate.cer
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Retrieve the thumbprint for later use
+$SigningCert.Thumbprint
+```
+
+### <a name="configure-the-hybrid-runbook-workers"></a>A hibrid Runbook-feldolgozók konfigurálása
+
+Másolja ki a létrehozott csoport minden egyes hibrid Runbook-feldolgozó tanúsítványt. Futtassa a következő szkriptet, importálja a tanúsítványt, és a hibrid feldolgozó használnak aláírás-ellenőrzést a runbookok konfigurálása.
+
+```powershell
+# Install the certificate into a location that will be used for validation.
+New-Item -Path Cert:\LocalMachine\AutomationHybridStore
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\AutomationHybridStore
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Configure the hybrid worker to use signature validation on runbooks.
+Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
+```
+
+### <a name="sign-your-runbooks-using-the-certificate"></a>A Runbookok a tanúsítvány aláírása
+
+A hibrid Runbook-feldolgozók használatára konfigurált csak aláírt runbookok. A runbookok, amelyek a hibrid Runbook-feldolgozón használandó be kell jelentkeznie. Az alábbi minta PowerShell használatával a runbookok aláírásához.
+
+```powershell
+$SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)
+Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
+```
+
+Után a runbook rendelkezik, azt kell importálja az Automation-fiók, és közzéteheti az aláírásblokkot. Megtudhatja, hogyan importálhatja a runbookok, lásd: [runbook importálása egy fájlból az Azure Automationbe](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha a runbookok nem sikeresen elvégezte, és a feladat összegzésében egy állapotát jeleníti meg a **felfüggesztett**, tekintse át a hibaelhárítási útmutató [runbook végrehajtási hibák](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
+Ha a runbookok nem sikeresen elvégezte, tekintse át a hibaelhárítási útmutató az [runbook végrehajtási hibák](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 
 ## <a name="next-steps"></a>További lépések
 

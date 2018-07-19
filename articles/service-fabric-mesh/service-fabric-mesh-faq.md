@@ -9,15 +9,19 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 849f8e4f961bcfde2bb4984185d571601060d957
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 07c0347793f6541a3e047f3f357d0d1b05dc3bca
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076461"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136181"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric-háló
 Az Azure Service Fabric háló egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a mikroszolgáltatás-alapú alkalmazások üzembe helyezése nélkül kezelése virtuális gépek, tároló, vagy a hálózat. Ez a cikk gyakori kérdésekre adott válaszokat tartalmaz.
+
+## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Hogyan probléma jelentéséhez vagy tegyen fel kérdést?
+
+Kérdések, válaszok a Microsoft mérnökei és a problémák jelentése a [service-fabric-háló-preview GitHub-adattárat](https://aka.ms/sfmeshissues).
 
 ## <a name="quota-and-cost"></a>Kvóta- és költség
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: f305f552d576f58914bc33351331f1da3c68bc23
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c2100ee2388ae09bd309167b1be77f7bdbe32f69
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951648"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126017"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációjával kapcsolatos problémák elhárítása
 
@@ -74,25 +74,7 @@ Ha Ön nem lehet kapcsolódni, majd ellenőrizze, ha a hozzáférési probléma 
 
 * **Ellenőrizze, hogy ha a folyamatkiszolgáló URL-alapú tűzfal nem blokkolja a hozzáférést**: Ha a kiszolgáló URL-alapú tűzfalszabályokat használ, győződjön meg arról, a következő URL-címek bekerülnek tűzfal-konfiguráció.
 
-  `*.accesscontrol.windows.net:` hozzáférés-vezérléshez és identitáskezeléshez
-
-  `*.backup.windowsazure.com:` replikációs adatátvitelhez és vezényléshez
-
-  `*.blob.core.windows.net:` A replikált adatokat tároló tárfiókhoz való hozzáféréshez
-
-  `*.hypervrecoverymanager.windowsazure.com:` replikációkezelési műveletekhez és vezényléshez
-
-  `time.nist.gov` és `time.windows.com`: rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
-
-Az URL-címek **az Azure Government Cloud**:
-
-`* .ugv.hypervrecoverymanager.windowsazure.us`
-
-`* .ugv.backup.windowsazure.us`
-
-`* .ugi.hypervrecoverymanager.windowsazure.us`
-
-`* .ugi.backup.windowsazure.us`
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 * **Ellenőrizze, hogy ha a proxykiszolgáló beállításait a folyamatkiszolgálón nem blokkolja-e hozzáférési**.  Ha proxykiszolgálót használ, győződjön meg arról, a DNS-kiszolgáló megoldása, a proxykiszolgáló nevét.
 Ellenőrizze, hogy a konfigurációs kiszolgáló telepítése időpontjában van megadva. Ugrás a beállításkulcs

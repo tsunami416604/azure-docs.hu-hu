@@ -1,43 +1,43 @@
 ---
-title: Python gyors üzembe helyezés az Azure kognitív szolgáltatások esetében a Microsoft Translator Diktálásfelismerési API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan Ismerkedés a Microsoft Translator Diktálásfelismerési API használatával a Microsoft Azure kognitív Services.
+title: Python a rövid útmutató az Azure Cognitive Services, a Microsoft Translator Speech API |} A Microsoft Docs
+description: Get information és kód minták segítségével gyorsan használatának első lépései a Microsoft Translator Speech API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 documentationcenter: ''
 author: v-jaswel
 ms.service: cognitive-services
 ms.component: translator-speech
 ms.topic: article
-ms.date: 3/5/2018
+ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 29722b3fa7fe61aff0b2406002453020d999ea41
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 40535f400bc5359019e89320489721bf481c1210
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347411"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124827"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>A Microsoft Translator Diktálásfelismerési API-t Python gyors üzembe helyezés 
+# <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>Gyors útmutató: a Microsoft Translator Speech API a Pythonnal 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan használja a Microsoft Translator Diktálásfelismerési API lefordítani a WAV-fájlokban szóbeli szavakat.
+Ez a cikk bemutatja, hogyan .wav fájl a kimondott szavakat lefordítása a Microsoft Translator Speech API használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Python 3.x](https://www.python.org/downloads/) futtatásához ezt a kódot.
+Szüksége lesz [Python 3.x](https://www.python.org/downloads/) Ez a kód futtatásához.
 
-Telepíteni kell a [websocket-ügyfélcsomag](https://pypi.python.org/pypi/websocket-client) a Python.
+Telepítenie kell a [websocket-client csomagot](https://pypi.python.org/pypi/websocket-client) Pythonhoz készült.
 
-Szüksége lesz egy .wav fájlt "speak.wav" a végrehajtható fájl az alábbi kód fordítása ugyanabban a mappában. A WAV-fájl szabványos PCM, 16 bites, 16kHz Monó formátumban kell megadni. Ezt úgy szerezheti be ilyen .wav fájl a [fordító szöveg-beszéd API](http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak).
+Szüksége lesz egy .wav "speak.wav" ugyanabban a mappában az alábbi kód fordítása futtatható fájlt. Ezt a fájlt .wav standard PCM, 16 bites, 16kHz Monó formátumban kell lennie.
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Microsoft Translator Diktálásfelismerési API**. Szüksége lesz egy fizetős kulcsot a [Azure irányítópult](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Microsoft Translator Speech API**. Szüksége lesz egy fizetős kulcs a [Azure irányítópultján](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 ## <a name="translate-speech"></a>Beszéd fordítása
 
-A következő kódot az eszköz beszédfelismerés egyik nyelvről a másikra.
+A következő kódot a speech egyik nyelvről a másikra fordítja le.
 
-1. A kedvenc IDE egy új Python-projekt létrehozása
+1. Hozzon létre egy új Python-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```python
@@ -120,16 +120,16 @@ client.run_forever()
 
 **Beszéd válasz fordítása**
 
-Egy sikeres eredménye "speak2.wav" nevű fájl létrehozása. A fájl tartalmazza a fordítás szóbeli a "speak.wav" szó.
+Egy sikeres eredménye "speak2.wav" nevű fájl létrehozása. A fájl tartalmazza a fordítás beszélt "speak.wav" szó.
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A fordító beszéd oktatóanyag](../tutorial-translator-speech-csharp.md)
+> [Translator Speech oktatóanyag](../tutorial-translator-speech-csharp.md)
 
 ## <a name="see-also"></a>Lásd még 
 
-[A fordító beszéd áttekintése](../overview.md)
+[Translator Speech áttekintése](../overview.md)
 [API-referencia](http://docs.microsofttranslator.com/speech-translate.html)

@@ -1,78 +1,78 @@
 ---
-title: Az Azure IoT Hub beépített végpont megértése |} Microsoft Docs
-description: Fejlesztői útmutató - a beépített, Event Hub-kompatibilis végpont toread eszközről a felhőbe üzenetek használatát ismerteti.
+title: Megismerheti az Azure IoT Hub beépített végpont |} A Microsoft Docs
+description: Fejlesztői útmutató – ismerteti, hogyan használható a beépített, Event Hub-kompatibilis végpont toread eszköz – felhő üzeneteket.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: a09cc42763787890a4dabf17b1a1a87e7427ba37
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 912bb0dd3e48e53134ad848119ae7428b380b88d
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808536"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124936"
 ---
-# <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Eszköz a felhőbe küldött üzeneteket beolvasni a beépített végpont
+# <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>A beépített végpontról eszköz – felhő üzenetek olvasása
 
-Alapértelmezés szerint üzenetek átirányítja a beépített service felé néző végpont (**üzenetek/események**), amely kompatibilis a rendszer [Event Hubs][lnk-event-hubs]. Ehhez a végponthoz jelenleg csak kitett használja a [AMQP] [ lnk-amqp] protokoll az 5671-es port. Az IoT-központ mutatja meg a következő tulajdonságok lehetővé teszik a beépített Event Hub-kompatibilis üzenetkezelési végpont **üzenetek/események**.
+Alapértelmezés szerint üzenetek irányíthatók át a beépített szolgáltatás felé néző végpont (**üzenetek/események**), amely kompatibilis a rendszer [az Event Hubs][lnk-event-hubs]. Ez a végpont a jelenleg csak közzétett használja a [AMQP] [ lnk-amqp] 5671-es port-protokoll. Az IoT hub mutatja meg, hogy szabályozza a beépített üzenetkezelési Event Hub-kompatibilis végpont a következő tulajdonságok **üzenetek/események**.
 
 | Tulajdonság            | Leírás |
 | ------------------- | ----------- |
-| **Partíciók száma** | Ez a tulajdonság beállítása a létrehozásakor meghatározhatja a számát [partíciók] [ lnk-event-hub-partitions] eszközről a felhőbe esemény szempontjából. |
-| **Megőrzési idő**  | Ez a tulajdonság meghatározza, hogy az üzenetek megmaradnak az IoT-központ által nap. Az alapértelmezett érték egy nap, de hét napos növelhető. |
+| **Partíciók száma** | Ez a tulajdonság beállítva a létrehozáskor számának meghatározásához [partíciók] [ lnk-event-hub-partitions] az eszközről a felhőbe eseményfeldolgozást. |
+| **Megőrzési idő**  | Ez a tulajdonság határozza meg, mennyi ideig maradnak, üzeneteket az IoT Hub napban. Az alapértelmezett érték egy nap, de a hét nap növelhető. |
 
-Az IoT-központ is lehetővé teszi kezelését a beépített eszközről-a-felhőbe a fogyasztói csoportok végpont fogadására.
+Az IoT Hub lehetővé teszi olyan kezelése a beépített eszköz-felhő a felhasználói csoportok végpont kap.
 
-Alapértelmezés szerint minden üzenetet, amely explicit módon a szabálynak üzenet útválasztási a beépített végpont kerülnek. Ha letiltja ezt a tartalék útvonalat, eldobott üzenetek, amely explicit módon nem egyezik a minden üzenet útválasztási szabályokat.
+Alapértelmezés szerint a beépített végpont írt összes üzenetet, egy üzenet-útválasztási szabály explicit módon nem megfelelő. Ha letiltja ezt az útvonalat tartalék, bármely üzenet-útválasztási szabályok nem kifejezetten megfelelő üzeneteket a rendszer elveti.
 
-Módosíthatja a megőrzési időtartam vagy programozott módon, a [IoT-központ erőforrás-szolgáltató REST API-k][lnk-resource-provider-apis], vagy a [Azure-portálon] [ lnk-management-portal].
+Módosíthatja a megőrzési időtartam vagy programozott módon használja a [az IoT Hub erőforrás-szolgáltató REST API-k][lnk-resource-provider-apis], vagy a [az Azure portal] [ lnk-management-portal].
 
-Az IoT-központ elérhetővé teszi a **üzenetek/események** olvashatja az eszközről a felhőbe a központ fogadja a háttér-szolgáltatások beépített végpont. Ezt a végpontot az esemény lehetővé teszi, hogy mechanizmusok az Event Hubs szolgáltatás Hub-kompatibilis támogatja az üzenetek olvasásához.
+Az IoT Hub tesz a **üzenetek/események** beépített végpont a háttérbeli szolgáltatásokhoz a hub által fogadott eszköz a felhőbe irányuló üzenetek olvasásához. Ez a végpont az Event Hub-kompatibilis, amely lehetővé teszi, hogy az módszerek bármelyikét használhatja az Event Hubs szolgáltatás támogatja az üzenetek olvasásához.
 
-## <a name="read-from-the-built-in-endpoint"></a>A beépített végpont olvasásakor
+## <a name="read-from-the-built-in-endpoint"></a>Olvassa el a beépített végpontról
 
-Használatakor a [Azure Service Bus SDK for .NET] [ lnk-servicebus-sdk] vagy a [Event Hubs - Event Processor Host][lnk-eventprocessorhost], minden IoT-központ kapcsolati karakterláncok használatával a megfelelő engedélyekkel. Ezután **üzenetek/események** az Eseményközpont neveként.
+Használatakor a [Azure Service Bus SDK for .NET] [ lnk-servicebus-sdk] vagy a [az Event Hubs - Event Processor Host][lnk-eventprocessorhost], használhat bármilyen az IoT Hub-kapcsolat karakterláncok a megfelelő engedélyekkel. Ezután **üzenetek/események** Eseményközpont nevével.
 
-Amikor az SDK-k (vagy a termék integrációja), amely nem tudnak a IoT-központot, be kell olvasni, az Event Hub-kompatibilis végpont és Event Hub-kompatibilis nevét:
+Amikor az SDK-k (vagy termékintegrációk), amely észleli az IoT Hub, le kell kérnie egy Event Hub-kompatibilis végpont és az Event Hub-kompatibilis nevet:
 
-1. Jelentkezzen be a [Azure-portálon] [ lnk-management-portal] , és keresse meg az IoT hub.
+1. Jelentkezzen be a [az Azure portal] [ lnk-management-portal] , és keresse meg az IoT hubot.
 1. Kattintson a **Végpontok** elemre.
-1. Az a **beépített végpontok** kattintson **események**. 
-1. Megnyílik egy tulajdonságok oldal, amely tartalmazza a következő értékek: **Event Hub-kompatibilis végpont**, **Event Hub-kompatibilis neve**, **partíciók**,  **Megőrzési idő**, és **fogyasztói csoportok**.
+1. Az a **beépített végpontokról** területén kattintson **események**. 
+1. Megnyílik egy tulajdonságok oldal, amely tartalmazza a következő értékeket: **Event Hub-kompatibilis végpont**, **Event Hub-kompatibilis nevet**, **partíciók**,  **Megőrzési idő**, és **fogyasztói csoportok**.
 
     ![Eszközről-a-felhőbe típusú üzenetek beállításai][img-eventhubcompatible]
 
-Az IoT Hub SDK igényel az IoT-központ végpont neve, amely **üzenetek/események** alatt látható **végpontok**.
+Az IoT Hub SDK-t igényel az IoT Hub végpont neve, amely **üzenetek/események** alatt látható módon **végpontok**.
 
-Ha az SDK-t használ a **állomásnév** vagy **Namespace** értékét, akkor távolítsa el a rendszer a **Event Hub-kompatibilis végpont**. Például, ha az Event Hub-kompatibilis végpont **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**, a **állomásnév** lenne  **IOT hubbal-ns-myiothub-1234.servicebus.windows.net**. A **Namespace** lenne **IOT hubbal-ns-myiothub-1234**.
+Ha az SDK-t használ van szüksége egy **állomásnév** vagy **Namespace** értéket, távolítsa el a rendszer a a **Event Hub-kompatibilis végpont**. Például, ha az Event Hub-kompatibilis végpont **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**, a **állomásnév** lenne  **iothub-ns-myiothub-1234.servicebus.windows.net**. A **Namespace** lenne **iothub-ns-myiothub-1234**.
 
-Ezután használhatja a minden megosztott elérési házirendet, amely rendelkezik a **ServiceConnect** engedéllyel a megadott Eseményközpontba való kapcsolódáshoz.
+Minden megosztott elérési házirendet, amely rendelkezik használhatja a **ServiceConnect** engedélyeket a megadott Event hubhoz való csatlakozáshoz.
 
-Ha egy Eseményközpontba kapcsolati karakterlánc összeállítása a korábbi információk segítségével van szüksége, használja a következő mintát:
+Ha hozhat létre egy Eseményközpont kapcsolati sztringjének korábbi információk segítségével van szüksége, használja a következő mintának:
 
 `Endpoint={Event Hub-compatible endpoint};SharedAccessKeyName={iot hub policy name};SharedAccessKey={iot hub policy key}`
 
-Az SDK-k és az IoT-központ elérhetővé tévő Event Hub-kompatibilis végpontokon használható Integrációk tartalmazza az alábbi listában szereplő elemeket:
+SDK-k és integrációk használható, amely közzéteszi az IoT Hub Event Hub-kompatibilis végpontokkal rendelkező tartalmazza az elemek a következők:
 
 * [Az Event Hubs Java ügyfél](https://github.com/Azure/azure-event-hubs-java).
-* [Apache Storm spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). Megtekintheti a [forrás spout](https://github.com/apache/storm/tree/master/external/storm-eventhubs) a Githubon.
-* [Apache Spark-integráció](../hdinsight/spark/apache-spark-eventhub-streaming.md).
+* [Az Apache Storm spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). Megtekintheti a [forrás spout](https://github.com/apache/storm/tree/master/external/storm-eventhubs) a Githubon.
+* [Az Apache Spark-integráció](../hdinsight/spark/apache-spark-eventhub-streaming.md).
 
 ## <a name="next-steps"></a>További lépések
 
-IoT-központok végpontjai kapcsolatos további információkért lásd: [IoT-központok végpontjai][lnk-endpoints].
+IoT Hub-végpontok kapcsolatos további információkért lásd: [IoT Hub-végpontok][lnk-endpoints].
 
-A [Ismerkedés] [ lnk-get-started] oktatóprogramok bemutatják a eszközről a felhőbe üzeneteket küldhet a szimulált eszköz és az üzenetek olvasásakor a beépített végpont. További részletekért tekintse meg a [folyamat IoT Hub eszközről a felhőbe üzenetek útvonalak] [ lnk-d2c-tutorial] oktatóanyag.
+A [útmutatóink] [ lnk-get-started] bemutatják, hogyan eszköz – felhő üzeneteket küldhet a szimulált eszközök és a beépített végpont érkező üzenetek olvasásához. További részletekért tekintse meg a [folyamat az IoT Hub eszköz – felhő üzenetek útvonalak] [ lnk-d2c-tutorial] oktatóanyag.
 
-Ha szeretné továbbítani az eszközről a felhőbe üzenetek egyéni végpontokat, lásd: [üzenet útvonalak és egyéni végpontokat eszközről a felhőbe üzeneteiben használt][lnk-custom].
+Ha szeretné az eszköz a felhőbe irányuló üzenetek átirányítása egyéni végpontok, [üzenet útvonalak és az egyedi végpontok használata az eszköz – felhő üzeneteket][lnk-custom].
 
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png
 
 [lnk-custom]: iot-hub-devguide-messages-read-custom.md
-[lnk-get-started]: iot-hub-get-started.md
+[lnk-get-started]: quickstart-send-telemetry-node.md
 [lnk-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/

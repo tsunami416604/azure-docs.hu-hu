@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 928bd4dcc51391e3832b5fea26ff8c665f768cdb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 10d6b81915432d9f41c0d4751f98cbf380ff2d13
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005672"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136570"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -100,6 +100,11 @@ A régebbi verziójú Windows operációs rendszerekről, amelyek a helyszíni A
 **K: a felhasználók nem tud keresni, nyomtatók, az Azure AD-csatlakoztatott eszközök. Hogyan lehet engedélyezni, hogy az Azure AD-csatlakoztatott eszközök nyomtatás?**
 
 **V:** nyomtatók az Azure AD-csatlakoztatott eszközök telepítése, lásd: [hibrid felhőbeli nyomtatás](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Szüksége lesz egy helyszíni Windows Server üzembe helyezéséhez a hibrid felhőbeli nyomtatás. Nyomtatási szolgáltatás felhőalapú jelenleg nem áll rendelkezésre. 
+
+---
+
+**K: hogyan létesíthetek kapcsolatot egy távoli Azure ad-hez csatlakoztatott eszközök? ** 
+ **V:** a cikkben https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc részleteiről.
 
 ---
 

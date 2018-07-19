@@ -26,6 +26,10 @@
   items:
     - name: Event Processor Host-áttekintés
       href: event-hubs-event-processor-host.md
+    - name: IP-kapcsolat szűrői
+      href: event-hubs-ip-filtering.md
+    - name: Virtuális hálózati szolgáltatásvégpontok
+      href: event-hubs-service-endpoints.md
     - name: Programozási útmutató
       href: event-hubs-programming-guide.md
     - name: Integrálás az Event Griddel
@@ -150,7 +154,7 @@
     - name: GYIK
       href: event-hubs-faq.md
     - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Képzési terv
       href: 'https://azure.microsoft.com/documentation/learning-paths/event-hubs/'
     - name: Díjszabás

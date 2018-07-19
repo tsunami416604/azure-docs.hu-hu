@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 672e27bf53679c52dab8d42a52378aa90eba33cb
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 7c3ce5571c54d6c613114ea49999e450934c8ff4
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114310"
+ms.locfileid: "39136198"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric-háló terminológiája
 
@@ -57,17 +57,17 @@ Service Fabric, amely egy nyílt forráskódú platform technológia, amely szá
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>Környezet, keretrendszer és üzembe helyezési modell támogatási mátrix
 Különböző környezetek eltérő szintű támogatást keretrendszerek és üzembe helyezési modellel rendelkezik. A következő táblázat ismerteti a támogatott keretrendszer és az üzembe helyezési modellt kombinációját.
 
-|Frameworks\Deployment modell |Erőforrásmodell |Natív modell | Összeállítás|
-|---|---|---|---|
-|A Reliable Actors és a Reliable Services |Nem támogatott |Támogatott |Nem támogatott |
-|Bármely más keretrendszer és nyelv |Támogatja a tárolók |Támogatott a folyamatok és tárolók |Támogatja a tárolók |
+| Az alkalmazás | Leírtak szerint | Az Azure Service Fabric háló | Az Azure Service-fürtök (bármely operációs rendszeren)| Helyi fürt – Windows | Helyi fürt – Linux | Helyi fürt - Mac | Önálló fürt (Windows)
+|---|---|---|---|---|---|---|---|---|---|
+| Service Fabric-háló alkalmazások | Erőforrásmodell (YAML & JSON) | Támogatott |Nem támogatott | Támogatott |Nem támogatott | Nem támogatott | Nem támogatott |
+|Service Fabric natív alkalmazások | Natív alkalmazás modellezése (XML) | Nem támogatott| Támogatott|Támogatott|Támogatott|Támogatott|Támogatott|
 
-A következő táblázat ismerteti a támogatott környezet és az üzembe helyezési modellt kombinációját.
+A következő táblázat ismerteti a különböző alkalmazás-modellek és azokat az eszközöket, hogy a Service Fabric elleni őket létezik.
 
-|Environment\Deployment modell |Erőforrásmodell |Natív modell |Összeállítás |
-|---|---|---|---|
-|Az Azure Service Fabric háló |Támogatott |Nem támogatott|Nem támogatott |
-|Minden más környezetre |Támogatott (néhány erőforrás rendelkezik egy környezetben működni előfeltételei) |Támogatott |Korlátozott támogatás |
+| Az alkalmazás | Leírtak szerint | Visual Studio 2017 | Visual Studio 2015 | Eclipse | VS Code | SFCTL | AZ CLI | PowerShell
+|---|---|---|---|---|---|---|---|---|---|
+| Service Fabric-háló alkalmazások | Erőforrásmodell (YAML & JSON) | Támogatott |Nem támogatott |Nem támogatott |Nem támogatott |Nem támogatott | Támogatott – csak a háló környezet | Nem támogatott
+|Service Fabric natív alkalmazások | Natív alkalmazás modellezése (XML) | Támogatott| Támogatott|Támogatott|Támogatott|Támogatott|Támogatott|Támogatott|
 
 ## <a name="next-steps"></a>További lépések
 

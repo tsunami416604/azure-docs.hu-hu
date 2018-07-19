@@ -22,8 +22,16 @@
   items:
     - name: Nagyítási szintek és csemperács
       href: zoom-levels-and-tile-grid.md
-    - name: Támogatott keresési kategóriák
-      href: supported-search-categories.md
+    - name: Szolgáltatásbiztosítás
+      items:
+        - name: Geokódolás
+          href: geocoding-coverage.md
+        - name: Adatforgalom
+          href: traffic-coverage.md
+        - name: Megjelenítés
+          href: render-coverage.md
+        - name: Útválasztás
+          href: routing-coverage.md
     - name: Támogatott nyelvek
       href: supported-languages.md
 - name: Útmutatók
@@ -64,22 +72,14 @@
           href: map-accessibility.md
 - name: Referencia
   items:
-    - name: Szolgáltatásbiztosítás
-      items:
-        - name: Geokódolás
-          href: geocoding-coverage.md
-        - name: Adatforgalom
-          href: traffic-coverage.md
-        - name: Megjelenítés
-          href: render-coverage.md
-        - name: Útválasztás
-          href: routing-coverage.md
     - name: API- és paraméterbővítmények
       items:
         - name: Járműhasználati modell
           href: consumption-model.md
         - name: GeoJSON formátum kiterjesztése
           href: extend-geojson.md
+        - name: Támogatott keresési kategóriák
+          href: supported-search-categories.md
     - name: REST
       items:
         - name: Megjelenítő szolgáltatás
@@ -129,7 +129,7 @@
     - name: Azure IoT fejlesztői központ
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: MSDN-fórum
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Díjszabás

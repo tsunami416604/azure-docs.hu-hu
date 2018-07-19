@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 07/16/2018
+ms.date: 07/18/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: fcc860daddbaa0b3275116027136bcde9dbcf256
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cedad5f48769ed864fef10cfd7059111a4502fd3
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092027"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136604"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>További információ az automatikus SQL-adatbázisok biztonsági mentése
 
@@ -26,7 +26,7 @@ SQL Database automatikusan létrehozza és Azure írásvédett georedundáns tá
 
 ## <a name="what-is-a-sql-database-backup"></a>Mi az SQL-adatbázis biztonsági másolatát?
 
-Az SQL Database az SQL Server-technológia segítségével hozza létre [teljes](https://msdn.microsoft.com/library/ms186289.aspx), [különbözeti](http://msdn.microsoft.com/library/ms175526.aspx), és [tranzakciónapló](https://msdn.microsoft.com/library/ms191429.aspx) a jelen időponthoz – biztonsági másolatok visszaállítása (PITR). A tranzakciónapló biztonsági mentései általában 5 – 10 percenként történik meg a gyakoriságot, a teljesítményszintet és az adatbázis-tevékenység mennyisége alapján. Tranzakciónapló biztonsági mentéseivel, teljes és különbségi biztonsági másolatok, az adatbázis visszaállítása egy adott – időponthoz ugyanarra a kiszolgálóra, amelyen az adatbázis teszi lehetővé. Ha az adatbázis visszaállításához a a szolgáltatás kitalálja, hogy melyik teljes, különbségi és a tranzakciós napló biztonsági mentéseket kell állítani.
+Az SQL Database az SQL Server-technológia segítségével hozza létre [teljes](https://msdn.microsoft.com/library/ms186289.aspx), [különbözeti](http://msdn.microsoft.com/library/ms175526.aspx), és [tranzakciónapló](https://msdn.microsoft.com/library/ms191429.aspx) a jelen időponthoz – biztonsági másolatok visszaállítása (PITR). A tranzakciónapló biztonsági mentései általában 5 – 10 percenként történik, és a különbözeti biztonsági mentések általánosan 12 óránként akkor is a gyakoriságot, a teljesítményszintet és az adatbázis-tevékenység mennyisége alapján. Tranzakciónapló biztonsági mentéseivel, teljes és különbségi biztonsági másolatok, az adatbázis visszaállítása egy adott – időponthoz ugyanarra a kiszolgálóra, amelyen az adatbázis teszi lehetővé. Ha az adatbázis visszaállításához a a szolgáltatás kitalálja, hogy melyik teljes, különbségi és a tranzakciós napló biztonsági mentéseket kell állítani.
 
 
 Ezek a biztonsági mentések használhatók:
@@ -46,7 +46,7 @@ Minden egyes SQL-adatbázis biztonsági mentése tartalmaz egy alapértelmezett 
 
 Ha töröl egy adatbázist, az SQL Database biztosítják a biztonsági másolatok olvasásainál, online adatbázis megegyező módon. Például ha törli egy hét napos megőrzési idővel rendelkező alapszintű adatbázis, egy biztonsági másolatot, amely négy napnál régebbi mentése további három nappal.
 
-Ha kell, hogy hosszabb a maximális PITR a megőrzési idő a biztonsági másolatok, módosíthatja a biztonsági másolat tulajdonságai egy vagy több hosszú távú retetion időszakok hozzáadása az adatbázishoz. Lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) további részletekért.
+Ha szeretné megőrizni a biztonsági mentéseket hosszabb a maximális PITR a megőrzési időszak, módosíthatja az adatbázis hozzáadása egy vagy több hosszú távú megőrzési időtartamú biztonsági másolat tulajdonságai. Lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) további részletekért.
 
 > [!IMPORTANT]
 > Ha törli az Azure SQL server, SQL-adatbázisokat üzemeltető, az összes rugalmas készletek és adatbázisok, a kiszolgálóhoz tartozó is törlődik, és nem állítható helyre. Kiszolgáló törlése nem állítható vissza. De ha konfigurálta a hosszú távú adatmegőrzés, az adatbázisok LTR biztonsági másolatainak nem törlődik, és ezeket az adatbázisokat vissza tudja állítani.
@@ -64,7 +64,7 @@ Ha növeli a jelenlegi PITR a megőrzési időszak, az SQL Database megtartja a 
 
 ## <a name="how-often-do-backups-happen"></a>Milyen gyakran történjen a biztonsági mentéseket?
 ### <a name="backups-for-point-in-time-restore"></a>Biztonsági másolatok pont kötött visszaállításhoz
-Az SQL Database időponthoz visszaállítást (PITR) önkiszolgáló automatikusan létrejön egy teljes biztonsági mentés, a különbségi biztonsági mentés és a tranzakciónaplók biztonsági mentését támogatja. Adatbázis teljes biztonsági mentését hetente jön létre, adatbázis különbözeti biztonsági mentések néhány óránként jönnek létre, és a tranzakciónapló biztonsági mentései jönnek létre 5-10 percenként. Az első teljes biztonsági mentés van ütemezve, egy adatbázis létrehozása után azonnal. Ez általában 30 percen belül befejeződik, de eltarthat hosszabb, amikor az adatbázis jelentős méretű. Ha például a kezdeti biztonsági mentés több időt vesz igénybe a visszaállított adatbázis vagy az adatbázis-másolat. Az első teljes biztonsági mentés után minden további biztonsági mentés ütemezett automatikus és csendes a háttérben kezeli. A pontos időzítés az összes adatbázis biztonsági mentés az SQL Database szolgáltatás határozza meg, a rendszer teljes számítási feladatnak egyenlegének.
+Az SQL Database időponthoz visszaállítást (PITR) önkiszolgáló automatikusan létrejön egy teljes biztonsági mentés, a különbségi biztonsági mentés és a tranzakciónaplók biztonsági mentését támogatja. Teljes adatbázis biztonsági mentését hetente jön létre, adatbázis különbözeti biztonsági mentések általánosan 12 óránként jön létre, és tranzakciós naplók biztonsági másolatát általában jönnek létre 5-10 percenként az a gyakoriságot, a teljesítményszintet és az adatbázis-tevékenység mennyisége alapján. Az első teljes biztonsági mentés van ütemezve, egy adatbázis létrehozása után azonnal. Ez általában 30 percen belül befejeződik, de eltarthat hosszabb, amikor az adatbázis jelentős méretű. Ha például a kezdeti biztonsági mentés több időt vesz igénybe a visszaállított adatbázis vagy az adatbázis-másolat. Az első teljes biztonsági mentés után minden további biztonsági mentés ütemezett automatikus és csendes a háttérben kezeli. A pontos időzítés az összes adatbázis biztonsági mentés az SQL Database szolgáltatás határozza meg, a rendszer teljes számítási feladatnak egyenlegének.
 
 A PITR a biztonsági mentések georedundáns és által védett [Azure Storage-régiók közti replikáció](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
@@ -83,7 +83,7 @@ Ha az adatbázis a TDE van titkosítva, a biztonsági másolatok titkosítása a
 
 ## <a name="how-do-automated-backups-impact-my-compliance"></a>Hogyan tegye automatikus biztonsági másolatok hatással van a megfelelőség?
 
-Ha az adatbázis telepít át az alapértelmezett PITR a megőrzési 35 nap a DTU-alapú szolgáltatási szintről a Virtuálismag-alapú szolgáltatásréteghez, PITR a megőrzési megőrzi a rendszer győződjön meg arról, hogy az alkalmazás adat-helyreállítási házirend nem compromized. Ha az alapértelmezett megőrzési sem felel meg a megfelelőségi előírásokat, módosíthatja a PITR a megőrzési időszak a PowerShell vagy REST API használatával. Lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-backup-retention-period) további részletekért.
+Ha az adatbázis telepít át az alapértelmezett PITR a megőrzési 35 nap a DTU-alapú szolgáltatási szintről a Virtuálismag-alapú szolgáltatásréteghez, PITR a megőrzési megőrzi a rendszer győződjön meg arról, hogy az alkalmazás adat-helyreállítási házirend nem sérül. Ha az alapértelmezett megőrzési sem felel meg a megfelelőségi előírásokat, módosíthatja a PITR a megőrzési időszak a PowerShell vagy REST API használatával. Lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-backup-retention-period) további részletekért.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 

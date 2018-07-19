@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/29/2018
+ms.date: 07/18/2018
 ms.author: rolyon
-ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856416"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136655"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk az Azure AD Használati feltételek funkcióval kapcsolatos kezdeti lépéseket ismerteti.
@@ -86,7 +86,7 @@ A használati feltételek dokumentum véglegesítése után a hozzáadáshoz kö
 
     ![Használati feltételek hozzáadása](media/active-directory-tou/create-tou.png)
 
-## <a name="view-who-has-accepted-and-declined"></a>A használati feltételeket elfogadó és elutasító felhasználók megtekintése
+## <a name="view-report-of-who-has-accepted-and-declined"></a>Jelentés megtekintése, akik elfogadó és elutasító
 A használati feltételek panel megjeleníti a feltételeket elfogadó, illetve elutasító felhasználók számát. A rendszer mindaddig megőrzi ezeket az eredményeket, illetve az elfogadó/elutasító felhasználók adatait, amíg a használati feltételek léteznek.
 
 1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
@@ -97,10 +97,10 @@ A használati feltételek panel megjeleníti a feltételeket elfogadó, illetve 
 
     ![Esemény naplózása](media/active-directory-tou/accepted-tou.png)
 
-## <a name="view-audit-logs"></a>Auditnaplók megtekintése
+## <a name="view-azure-ad-audit-logs"></a>Naplók megtekintése az Azure AD
 Az Azure AD Használati feltételek auditnaplókkal is rendelkezik, ha megtekintené a feltételekkel kapcsolatos további tevékenységeket is. Minden egyes felhasználói beleegyezés elindít egy eseményt az auditnaplókban tárolt 30 napig. Ezeket a naplókat megtekintheti a portálon, vagy letöltheti egy .csv fájlban.
 
-Az auditnaplók használatának megkezdéséhez kövesse az alábbi eljárást:
+Ismerkedés az Azure AD-naplók, kövesse az alábbi eljárást:
 
 1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
 
@@ -167,10 +167,19 @@ A feltételes hozzáférési szabályzatok azonnal hatályba lépnek. Ha ez tör
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **K: Hogyan ellenőrizhetem, hogy egy felhasználó elfogadta-e a használati feltételeket (és ha igen, mikor)?**</br>
-V: a használati panel a feltételeket, kattintson a számra **elfogadva**. Is megtekintése vagy keressen az elfogadás tevékenység a naplók. További információkért lásd: [nézet, aki rendelkezik elfogadó és elutasító](#view-who-has-accepted-and-declined) és [naplók megtekintése](#view-audit-logs).
+V: a használati panel a feltételeket, kattintson a számra **elfogadva**. Is megtekintése vagy keressen a elfogadás tevékenység az Azure AD-ben a naplók. További információkért lásd: [megtekintheti a jelentést, akik elfogadó és elutasító](#view-who-has-accepted-and-declined) és [naplók megtekintése az Azure AD](#view-azure-ad-audit-logs).
+ 
+**K: Mennyi ideig tárolódnak az információk?**</br>
+V: a felhasználó-adatokra is használja a jelentés és aki elfogadott/nem fogadta el a használati feltételeket élettartama tárolt feltételeit. Az Azure AD naplózási naplót 30 napig tárol.
 
-**K: Ha megváltoznak a használati feltételeket, azt igényel a felhasználóknak újra el kell fogadniuk?**</br>
+**K: Miért láthatók a feltételeit, és az Azure AD használati jelentés címtárbérlőhöz különböző számú naplók?**</br>
+V: a használati jelentés használati tárolja a használati feltételeket, miközben a naplót 30 napig tárol az Azure AD naplózási élettartama. A használati jelentés használatát is, csak a felhasználók aktuális jóváhagyási állapotot jeleníti meg. Például ha egy felhasználó elutasítja, és majd elfogadja a használati jelentés használata csak akkor jelenik meg, hogy a felhasználó fogadja el. Ha szeretne látni a korábbi, használhatja az Azure AD auditnaplóinak.
+
+**K: Ha a használati feltételeket, módosításához, igényel a felhasználóknak újra el kell fogadniuk?**</br>
 V: Igen, rendszergazda módosíthatja a használati feltételeket, és ez megköveteli a felhasználóktól az új feltételeket hatókörébe.
+
+**K: Ha a hivatkozások a használati feltételek PDF dokumentuma van, a végfelhasználók fogja tudni azokra kattint?**</br>
+V: a PDF-fájl jelenik meg alapértelmezés szerint, JPEG, így nem kattintható hivatkozások állnak. Felhasználók rendelkeznek a kívánt **megtekintéssel? Kattintson ide a**, amely a PDF-fájl rendereli natív módon, a hivatkozások támogatottak.
 
 **K: A használati feltételek több nyelv használatát is támogatják?**</br>
 V: Igen.  A rendszergazdák jelenleg 18 különböző nyelven konfigurálhatják a használati feltételeket. 
@@ -189,6 +198,7 @@ V: Ebben az esetben a felhasználón nem kaphat hozzáférést az alkalmazáshoz
  
 **K: van unaccept a korábban elfogadott használati feltételeket?**</br>
 V: is [felülvizsgálati korábban elfogadott használati feltételeket tartalmazó fájl](#how-users-can-review-their-terms-of-use), de jelenleg nincs unaccept lehetővé.
- 
-**K: Mennyi ideig tárolódnak az információk?**</br>
-V: A rendszer addig őrzi meg a felhasználók számát, illetve az elfogadó/elutasító felhasználók adatait, amíg a használati feltételek léteznek. Az auditnaplók 30 napon keresztül érhetők el.
+
+## <a name="next-steps"></a>További lépések
+
+- [A feltételes hozzáféréssel kapcsolatos ajánlott eljárások az Azure Active Directoryban](active-directory-conditional-access-best-practices.md)

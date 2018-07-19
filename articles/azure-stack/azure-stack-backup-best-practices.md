@@ -3,7 +3,7 @@ title: Infrastruktúra biztonsági mentési szolgáltatás ajánlott eljárások
 description: Ajánlott eljárásokat is követheti, ha telepíti és kezeli az Azure Stack segítségével mérsékelhetik az adatvesztést egy Katasztrofális hiba esetén az adatközpontban.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 221FDE40-3EF8-4F54-A075-0C4D66EECE1A
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
-ms.author: mabrigg
+ms.date: 7/18/2018
+ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 06a2d4ab12d2a7e03a538a98f5232a417fb39e4f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0b6153a863b0637f314b4f333b255ec8d24b5b0c
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969469"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136434"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Infrastruktúra Backup szolgáltatás – ajánlott eljárások
 
@@ -34,7 +34,7 @@ Az ajánlott eljárásokat, győződjön meg arról, hogy a telepítés még a m
 
 ### <a name="deployment"></a>Környezet
 
-Infrastruktúra biztonsági mentésének engedélyezése az egyes Azure Stack-felhő üzembe helyezés után. Az operátor felügyeleti API-végpont a hozzáférést minden olyan ügyfél-kiszolgáló biztonsági mentések ütemezheti AzureStack-eszközök használatával.
+Infrastruktúra biztonsági mentésének engedélyezése az egyes Azure Stack-felhő üzembe helyezés után. Azure Stack PowerShell-lel az operátor felügyeleti API-végpont a hozzáférést minden olyan ügyfél-kiszolgáló biztonsági mentés is ütemezhető.
 
 ### <a name="networking"></a>Hálózat
 
