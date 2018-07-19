@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: 954a67ed126b505c9ba0da81b3ace0d25e840adb
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f07b3ce85641f34462c97d16bbed8cf9e2e50652
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128588"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114541"
 ---
 # <a name="get-started-with-batch-rendering"></a>A Batch Rendering használatának első lépései 
 
@@ -123,7 +123,7 @@ A 3ds Maxszel a következőket használhatja:
 
 A 3ds Max Batch Labs-sablonok segítségével VRay- és Arnold-jeleneteket renderelhet a Batch Renderinggel. A VRay- és Arnold-sablonnak két változata létezik, az egyik a standard jelenetekhez, a másik pedig az olyan összetett jelenetekhez, amelyekhez egy 3ds Max-útvonalfájl szükséges az objektumokhoz és a textúrákhoz (.mxp fájl). A 3ds Max Batch Labs-sablonokkal kapcsolatos további információkért lásd a [BatchLabs-adatok](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) adattárat a GitHubon.
 
-Emellett használhatja a [Batch Python SDK-t](https://docs.microsoft.com/azure/batch/batch-python-tutorial) is, hogy a renderelést integrálni tudja a meglévő folyamattal.
+Emellett használhatja a [Batch Python SDK-t](/python/api/overview/azure/batch) is, hogy a renderelést integrálni tudja a meglévő folyamattal.
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Renderelési feladat elküldése a Maya alkalmazáshoz készült Batch beépülő modul használatával
