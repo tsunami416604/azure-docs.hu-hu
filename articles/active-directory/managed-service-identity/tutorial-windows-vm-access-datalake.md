@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: afd35c963c2c1c4badb32f7e8f7dba1dce87481c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: a7935aa245239ed32527d2c22fd41845c6da2ae1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904288"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007967"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Oktatóanyag: Az Azure Data Lake Store elérése Windows VM-beli felügyeltszolgáltatás-identitással (MSI)
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban egy új Windows VM-et fog létrehozni.  A meglévő vir
 5. A virtuális gép létrehozásához használni kívánt új **erőforráscsoport** kiválasztásához válassza az **Új létrehozása** lehetőséget. Amikor végzett, kattintson az **OK** gombra.
 6. Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. A Beállítások lapon hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-   ![Helyettesítő képszöveg](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+   ![Helyettesítő képszöveg](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>MSI engedélyezése a virtuális gépen 
 
@@ -63,11 +63,11 @@ A VM MSI-vel anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből
 2. A bal oldali navigációs sávban kattintson a **Konfigurálás** elemre. 
 3. Megjelenik a **felügyeltszolgáltatás-identitás**. Az MSI regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra. 
 4. Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.  
-   ![Helyettesítő képszöveg](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![Helyettesítő képszöveg](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 5. Ha ellenőrizni szeretné, hogy milyen bővítmények találhatók meg ezen a virtuális gépen, kattintson a **Bővítmények** lehetőségre. Ha az MSI engedélyezett, akkor a **ManagedIdentityExtensionforWindows** megjelenik a listában.
 
-   ![Helyettesítő képszöveg](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+   ![Helyettesítő képszöveg](media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure Data Lake Store-hoz
 

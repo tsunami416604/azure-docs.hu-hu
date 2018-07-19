@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 92bd7190832da6ee9da7d1679b9f27b66a15e3a4
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ce38dabbe9aa69f7c54bb49888ad83e01a7c9522
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904305"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004880"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Oktatóanyag: A Managed Service Identity használata Linux rendszerű virtuális géphez az Azure Data Lake Store eléréséhez
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban egy új linuxos virtuális gépet hozunk létre. A megl
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
 3. Adja meg a virtuális gép adatait. A **Hitelesítés típusa** résznél válassza az **SSH nyilvános kulcs** vagy a **Jelszó** lehetőséget. A létrehozott hitelesítő adatokkal jelentkezhet be a virtuális gépre.
 
-   ![A virtuális gép létrehozásának „Alapvető beállítások” panelje](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+   ![A virtuális gép létrehozásának „Alapvető beállítások” panelje](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. Válasszon ki egy előfizetést az **Előfizetés** listából a virtuális géphez.
 5. Ha a virtuális gépet egy új erőforráscsoportban szeretné létrehozni, válassza az **Erőforráscsoport** > **Új létrehozása** lehetőséget. Ha elkészült, kattintson az **OK** gombra.
@@ -65,7 +65,7 @@ A VM MSI-vel anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből
 1. A **Virtuális gép** területen válassza ki a virtuális gépet, amelyen engedélyezni szeretné az MSI-t.
 2. A bal oldali panelen válassza ki a **Konfiguráció** elemet.
 3. Megjelenik a **felügyeltszolgáltatás-identitás**. Az MSI regisztrálásához és engedélyezéséhez kattintson az **Igen** gombra. Ha le szeretné tiltani, válassza a **Nem** lehetőséget.
-   ![„Regisztrálás az Azure Active Directoryval” kiválasztása](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![„Regisztrálás az Azure Active Directoryval” kiválasztása](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. Kattintson a **Mentés** gombra.
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure Data Lake Store-hoz
