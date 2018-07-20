@@ -17,12 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7d9b8a740c331a73ac66398be801ba3878312969
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7aa48b65423db2a3af032ed64d9d571fa603668d
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969078"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144754"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Ismerkedés az Azure AD Node.js webalkalmazás
 Jelen példában használjuk a Passport:
@@ -62,7 +62,10 @@ A kész alkalmazáshoz, valamint ez az oktatóanyag végén van megadva.
 
 6. Miután regisztrálta, az Azure AD rendeli hozzá az alkalmazás egy egyedi azonosítót. Ez az érték szükséges a következő szakaszokban, ezért másolja ki az alkalmazás oldaláról.
 7. Az a **beállítások** -> **tulajdonságok** oldalon az alkalmazás, frissítse az Alkalmazásazonosító URI-t. A **Alkalmazásazonosító URI-t** az alkalmazás egyedi azonosítója. Az egyezmény az, hogy használja a következő formátumot `https://<tenant-domain>/<app-name>`, például: `https://contoso.onmicrosoft.com/my-first-aad-app`.
-8. Titkos kulcs létrehozásához kövesse a 4. lépés [alkalmazás hitelesítő adatait, vagy a webes API-k elérésére jogosult hozzáadandó](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
+
+8. Az a **beállítások** -> **válasz URL-címek** oldalon az alkalmazás a bejelentkezési URL-az 5. lépésben hozzáadott URL-címet, majd kattintson a mentés.
+
+9. Titkos kulcs létrehozásához kövesse a 4. lépés [alkalmazás hitelesítő adatait, vagy a webes API-k elérésére jogosult hozzáadandó](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
 
    > [!IMPORTANT]
    > Másolja az alkalmazás kulcs értékét. Ez az az érték a `clientSecret`, amelyre szüksége **3. lépés** alatt. 
@@ -91,7 +94,7 @@ Itt Express, az OpenID Connect hitelesítési protokoll használatára konfigur�
 
   * A `clientID` van a **alkalmazásazonosító** az alkalmazáshoz a regisztrációs portálon rendelt.
 
-  * A `returnURL` van a **átirányítási URI-t** , amely a portálon megadott.
+  * A `returnURL` van a **válasz URL-cím** , amely a portálon megadott.
 
   * A `clientSecret` a portálon létrehozott titkos kulcs.
 

@@ -8,13 +8,13 @@
       href: about-iot-accelerators.md
 - name: Gyors útmutatók
   items:
-    - name: Távoli monitorozási megoldás üzembe helyezése
+    - name: Távoli monitorozási megoldás kipróbálása
       href: quickstart-remote-monitoring-deploy.md
-    - name: Csatlakoztatottgyár-megoldás üzembe helyezése
+    - name: Csatlakoztatottgyár-megoldás kipróbálása
       href: quickstart-connected-factory-deploy.md
-    - name: Prediktív karbantartási megoldás üzembe helyezése
+    - name: Prediktív karbantartási megoldás kipróbálása
       href: quickstart-predictive-maintenance-deploy.md
-    - name: Eszközszimulációs megoldás üzembe helyezése
+    - name: Eszközszimulációs megoldás kipróbálása
       href: quickstart-device-simulation-deploy.md
 - name: Oktatóanyagok
   items:
@@ -137,10 +137,6 @@
               href: ../iot-suite/iot-suite-v1-custom-rule.md
             - name: Eszközinformációk a távoli monitorozási megoldásban
               href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
-    - name: Prediktív karbantartás
-      items:
-        - name: Megoldásgyorsító üzembe helyezése
-          href: iot-accelerators-predictive-overview.md
     - name: Csatlakoztatott gyár
       items:
         - name: Az irányítópult használata

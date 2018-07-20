@@ -1,21 +1,21 @@
 ---
-title: Az önkiszolgáló jelszó-visszaállítási testreszabása – Azure Active Directory
+title: Testreszabása az Azure AD önkiszolgáló jelszó-visszaállítási
 description: Az Azure AD önkiszolgáló jelszó-testreszabási beállítások alaphelyzetbe állítása
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 23a2897142f5cba90513e8b79e4cd461f1dd25b7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 70f36447270199545ac27cf27f87f971e34ef424
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054590"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162126"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az Azure AD-funkciókról, önkiszolgáló jelszó-visszaállítás testreszabása
 
@@ -24,8 +24,9 @@ Informatikai szakemberek számára, akik önkiszolgáló jelszó-visszaállítá
 ## <a name="customize-the-contact-your-administrator-link"></a>A "Forduljon a rendszergazdához" hivatkozást testreszabása
 
 Akkor is, ha az SSPR nincs engedélyezve, a felhasználók továbbra is rendelkezik egy "Forduljon a rendszergazdához" hivatkozást a jelszó-visszaállítási portál. Ha egy felhasználó kijelöli ezt a hivatkozást, vagy:
-   * E-mailt küld a rendszergazdákkal, és megkéri, ha segítségre van szüksége a felhasználó jelszavának módosítása. 
-   * A felhasználók küld egy Ön által megadott segítségért URL-címet. 
+
+   * E-mailt küld a rendszergazdákkal, és megkéri, ha segítségre van szüksége a felhasználó jelszavának módosítása.
+   * A felhasználók küld egy Ön által megadott segítségért URL-címet.
 
 Azt javasoljuk, hogy állítsa a kapcsolattartó valami például egy e-mail címre vagy webhelyre, hogy a felhasználók már használnak.
 
@@ -45,9 +46,7 @@ Tudjon meg többet a különböző rendszergazdai szerepkörökről és való ho
 
 Ha a szervezet nem szeretné, értesítse a rendszergazdákat a jelszó-átállítási kérelmet, engedélyezheti a következő konfigurációt:
 
-* Engedélyezze az önkiszolgáló jelszó-visszaállítás összes végfelhasználók számára. Ez a beállítás akkor alatt **új jelszó kérésére vonatkozó** > **tulajdonságok**.
-  
-  Ha nem szeretné, hogy a felhasználók visszaállíthassák a saját jelszavukat, gazdagépcsoportjaira üres csoport elérését. *Ezt a beállítást nem ajánlott.*
+* Engedélyezze az önkiszolgáló jelszó-visszaállítás összes végfelhasználók számára. Ez a beállítás akkor alatt **új jelszó kérésére vonatkozó** > **tulajdonságok**. Ha nem szeretné, hogy a felhasználók visszaállíthassák a saját jelszavukat, gazdagépcsoportjaira üres csoport elérését. *Ezt a beállítást nem ajánlott.*
 * Egy webes URL-címe vagy mailto az ügyfélszolgálati hivatkozás testreszabása: címet, amelyen a felhasználók juthat. Ez a beállítás akkor alatt **új jelszó kérésére vonatkozó** > **testreszabási** > **egyéni ügyfélszolgálati e-mail cím vagy URL-cím**.
 
 ## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Az AD FS bejelentkezési oldal testreszabása az SSPR

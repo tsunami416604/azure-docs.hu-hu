@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 64b94baeaede9b05e953b69324648c63d97cea8e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a453e2d16edecda9753c2940a745b260a3a2b893
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045438"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Oktatóanyag: Azure Active Directory-integráció a Salesforce-szal
 
@@ -60,14 +60,14 @@ Konfigurálhatja az Azure AD integrálása a Salesforce, hozzá kell Salesforce 
 
 **Adja hozzá a Salesforce-hoz a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb][1]
 
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
-    
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
@@ -103,26 +103,26 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
+
     ![Egyszeri bejelentkezési párbeszédpanel](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
 
 3. Az a **Salesforce tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Salesforce-tartománnyal és URL-címek egyszeri bejelentkezési adatait](./media/salesforce-tutorial/tutorial_salesforce_url.png)
-    
+
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be az értéket a következő minta használatával:
-    
+
     Vállalati fiók: `https://<subdomain>.my.salesforce.com`
 
     Fejlesztői fiók: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
+
     b. Az a **azonosító** szövegmezőbe írja be az értéket a következő minta használatával:
-    
+
     Vállalati fiók: `https://<subdomain>.my.salesforce.com`
 
     Fejlesztői fiók: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
-    > [!NOTE] 
+
+    > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-cím és azonosító. Kapcsolattartó [a Salesforce-ügyfél-támogatási csapatának](https://help.salesforce.com/support) beolvasni ezeket az értékeket.
 
 4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány** , és mentse a tanúsítványfájlt, a számítógépen.
@@ -170,14 +170,14 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **kibocsátó** mezőbe illessze be az értéket a **SAML Entitásazonosító**, az Azure Portalról másolt.
 
     c. Az a **entitásazonosító szövegmező**, írja be a Salesforce-tartomány nevét, a következő minta használatával:
-      
+
       * Vállalati fiók: `https://<subdomain>.my.salesforce.com`
       * Fejlesztői fiók: `https://<subdomain>-dev-ed.my.salesforce.com`
-      
+
     d. Feltölteni a **Identitástanúsítványt szolgáltató**, kattintson a **fájl kiválasztása** keresse meg és válassza ki a tanúsítványfájlt, amely már letöltötte az Azure Portalról.
 
     e. Mint **SAML identitástípus**, a következő lehetőségek közül választhat:
-    
+
       * Válassza ki **helyességi feltétel tartalmaz a Salesforce felhasználónév**, ha a felhasználó Salesforce felhasználónév kerül átadásra a SAML helyességi feltétel
 
       * Válassza ki **helyességi feltétel tartalmazza a felhasználói objektum összevonási Azonosítójára**, ha az összevonási Azonosítót a felhasználói objektum a kerül átadásra a SAML helyességi feltétel
@@ -189,7 +189,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     g. A **szolgáltató által kezdeményezett kérelem Szolgáltatáskötést**válassza **HTTP-átirányítás**.
 
     h. A **Identity Provider bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt
-    
+
     i. Végül kattintson **mentése** a SAML egyszeri bejelentkezési beállítások alkalmazásához.
 
 14. Kattintson a bal oldali navigációs ablaktáblán, a Salesforce-ban, **vállalati beállítások** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány**.
@@ -200,7 +200,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-16. Az a **hitelesítési konfiguráció** szakaszt, ellenőrizze a **bejelentkezési oldal** , **hitelesítés hogyan listázhatja** a SAML SSO-konfigurációt, és kattintson a  **Mentés**.
+16. Az a **hitelesítési konfiguráció** szakaszt, ellenőrizze a **AzureSSO** , **hitelesítés hogyan listázhatja** a SAML SSO-konfigurációt, és kattintson a **mentése** .
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-auth-config.png)
 

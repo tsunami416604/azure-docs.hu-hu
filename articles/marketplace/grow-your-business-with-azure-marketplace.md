@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: edafc2e0c11f4395540081e4b09614f2beb70696
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f1616f7a20fdd55b98b3bfb37973a783997e2eb0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115925"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145240"
 ---
 # <a name="grow-your-business-on-marketplace"></a>Növelje üzletét a marketplace-en 
 Miután közzétette az ajánlat az appsource-on vagy az Azure Marketplace-en, a Microsofttal közös piaci megjelenést (GTM) tevékenységek használhatja a lista egy kezdőpanele. Vezetői forgalom, a Piactéri ajánlat és gondozásának biztosításáig a Marketplace-en az érdeklődők, például módon nagyszerű felgyorsíthatja az üzlet növekedésének megfelelően. Ebben a cikkben számos marketing ajánlott eljárásokat, és növelje üzletét a marketplace-en nyújtunk.
@@ -215,7 +215,7 @@ Az ajánlat vagy az előléptetni, használja a következő táblázat további 
 | IP-közös értékesítési kész legyen | Előfordulhat, hogy jogosult az IP-közös értékesítési program készen programot, amely lehetővé teszi a közvetlenül a Microsoft-értékesítőkkel közösen és a cél ügyfél lehetőségeket és a fiók tervezési más partnerekkel közösen dolgozzon. A megoldás lesz látható a Microsoft-értékesítőkkel közösen az értékesítői megoldás-katalógusban. Microsoft-értékesítőkkel közösen van jutalmakat a beküldött fordításaiért együttműködés és a winning with meg.<br /> További információ a közös értékesítésben jogosultsági követelményeket, ideértve a Microsoft [elősegítik az üzleti](https://partner.microsoft.com/reach-customers/promote-your-business). |
 
 
-# <a name="azure-partner-revenue-attribution"></a>Azure-partneri bevétel megnevezése
+## <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
 Az Azure-szoftverek partnerként a megoldások Azure-összetevőket kell, vagy közvetlenül az Azure-infrastruktúrán üzemel.  Amikor egy partneri megoldás az ügyfél által telepített, és az ügyfél által üzembe helyezett Azure-erőforrást használ, jelenleg a partner számára ezen központi telepítések állapotát a bonyolult és nehezen optika kaphat Azure növekedés igazítását a gyakorolt hatása a Microsoft értékesítői csapatok és-kredit a Microsoft partner programok.   
 
@@ -291,8 +291,6 @@ client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
 
 >Ez az egyes ügyfelek elvégezni, akkor nem tartozik globális statikus konfiguráció (Előfordulhat, hogy választja egy ügyfél-előállítót, és ellenőrizze, hogy minden ügyfél állapotát. 
 >[További információk](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
-
-## <a name="registering-a-guid"></a>Regisztrálás egy GUID Azonosítót: 
 
 Az Azure PowerShell vagy az Azure CLI használatával központi telepítés címkézése: AzurePowerShell erőforrásai telepít a GUID hozzáfűzheti a következő módon:
 
@@ -398,11 +396,14 @@ A Microsoft-szoftverek üzembe helyezésére tudnak azonosítja a [insert partne
 
 Segítségét kérjük, kövesse az alábbi lépéseket:
  1. Látogasson el a támogatási oldalon található [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)
- 2. Használati társítása – problémáinak válassza a Problem type: **Marketplace bevezetési** és kategória: **más** majd **kérelem indítása.**
-
-Problémák az Azure Marketplace-en Cloud Partner Portalon – válassza a Problem type elérése: **Marketplace bevezetési** és kategória: **hozzáférési probléma** majd **kérelem indítása.**
+ 2. Használati társítása – problémáinak válassza a Problem type: **Marketplace bevezetési** és kategória: **más** majd **kérelem indítása.** 
+>[!Note]
+>Problémák az Azure Marketplace-en Cloud Partner Portalon – válassza a Problem type elérése: **Marketplace bevezetési** és kategória: **hozzáférési probléma** majd **kérelem indítása.**
  3. Töltse ki a kötelező mezőket a következő oldalon, és kattintson a **tovább.**
  4. Fejezze be a következő oldalon a szabad szöveges mezők.  
+ 
+
+
  
 >[!Important] 
 >Adja meg az esemény címe **"ISV használat követése"** és ismertesse a problémát a nagy méretű szabad szöveges mező után részletesen ismertetjük.  Fejezze be az űrlapot, és kattintson a **küldés**.
