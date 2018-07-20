@@ -40,6 +40,8 @@
       href: ../azure-resource-manager/resource-group-overview.md
 - name: További források
   items:
+    - name: GYIK
+      href: firewall-faq.md
     - name: Szerzői sablonok
       href: ../azure-resource-manager/resource-group-authoring-templates.md
     - name: Azure-ütemterv

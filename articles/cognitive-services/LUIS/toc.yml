@@ -230,9 +230,9 @@
     - name: Régió megkeresése programozott módon
       items:
         - name: 'A C# használata'
-          href: find-region-csharp.md
+          href: luis-find-region-csharp.md
         - name: A Node.js használata
-          href: find-region-nodejs.md
+          href: luis-find-region-nodejs.md
 - name: Referencia
   items:
     - name: Felhasználói adatvédelem
