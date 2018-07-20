@@ -121,18 +121,14 @@
           href: batch-get-resource-counts.md
         - name: Az erőforrások hatékony lekérdezése
           href: batch-efficient-list-queries.md
-    - name: Fejlesztői eszközök használata
+    - name: Szkriptelési eszközök használata
       items:
-        - name: Batch .NET használata
-          href: batch-dotnet-get-started.md
-        - name: Batch Python használata
-          href: batch-python-tutorial.md
-        - name: Batch Node.js használata
-          href: batch-nodejs-get-started.md
         - name: PowerShell-parancsmagok használata
           href: batch-powershell-cmdlets-get-started.md
         - name: Az Azure parancssori felület használatával
           href: batch-cli-get-started.md
+    - name: A Batch Node.js SDK használata
+      href: batch-nodejs-get-started.md
 - name: Referencia
   items:
     - name: Azure CLI

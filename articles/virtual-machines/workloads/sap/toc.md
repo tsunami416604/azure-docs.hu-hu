@@ -24,7 +24,8 @@
 ## [SAP HANA biztonsági mentés áttekintése](sap-hana-backup-guide.md)
 ## [SAP HANA fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)
 ## [SAP HANA-tárhely pillanatképes biztonsági mentései](sap-hana-backup-storage-snapshots.md)
-# SAP NetWeaver az Azure-beli virtuális gépeken
+# SAP NetWeaver és Business One az Azure Virtual Machinesban
+## [SAP Business One az Azure Virtual Machinesban](business-one-azure.md)
 ## [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](cal-ides-erp6-erp7-sp3-sql.md)
 ## [SAP NetWeaver a Linux rendszerű, Azure-beli virtuális gépeken](suse-quickstart.md)
 ## [SAP NetWeaver tervezése és megvalósítása Azure-ban](planning-guide.md)

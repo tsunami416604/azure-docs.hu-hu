@@ -9,17 +9,17 @@
   items:
     - name: A Hello World üzembe helyezése
       href: service-fabric-mesh-quickstart-deploy-container.md
-    - name: Webalkalmazás létrehozása és üzembe helyezése
+    - name: Webalkalmazás létrehozása és üzembe helyezése az Azure Service Fabric Mesh-ben
       href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: Oktatóanyagok
   items:
-    - name: Többszolgáltatású webalkalmazás létrehozása és üzembe helyezése
+    - name: 'Többszolgáltatású Service Fabric Mesh-webalkalmazás létrehozása, hibaelhárítása és üzembe helyezése'
       items:
-        - name: 1 – ASP.NET Core-alkalmazás összeállítása
+        - name: 1 – Service Fabric Mesh-webalkalmazás összeállítása
           href: service-fabric-mesh-tutorial-create-dotnetcore.md
-        - name: 2 – Az alkalmazás hibakeresése
+        - name: 2 – Service Fabric Mesh-webalkalmazás hibaelhárítása
           href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
-        - name: 3 – Az alkalmazás telepítése
+        - name: 3 – Service Fabric Mesh-webalkalmazás üzembe helyezése
           href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
 - name: Alapelvek
   items:

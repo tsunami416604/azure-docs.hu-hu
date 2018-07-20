@@ -59,6 +59,9 @@
 #### [Egyéni kód](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [Helyi futtatás és hibakeresés](data-lake-tools-for-vscode-local-run-and-debug.md)
 
+## U-SQL-feladatok ütemezése
+### [Feladatok üzemelése az SSIS használatával](data-lake-analytics-schedule-jobs-ssis.md)
+
 ## Folyamatos integráció és folyamatos üzembe helyezés
 ### [Áttekintés](data-lake-analytics-cicd-overview.md)
 ### [Tesztek beállítása](data-lake-analytics-cicd-test.md)

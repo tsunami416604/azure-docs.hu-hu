@@ -41,6 +41,8 @@
           href: automation-update-management.md
         - name: Frissítések kezelése több virtuális gép esetén
           href: manage-update-multi.md
+        - name: Üzembe helyezett OMS-frissítések migrálása az Azure-ba
+          href: migrate-oms-update-deployments.md
         - name: SCCM-integráció frissítéskezeléssel
           href: oms-solution-updatemgmt-sccmintegration.md
     - name: Változások követése
