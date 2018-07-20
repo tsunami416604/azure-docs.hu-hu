@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ea7fb5951cd0b2925aa3dd5ae14b452292ba582c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 48710bc10a57854fcbd4ffbe44bc426333baddc0
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917992"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159229"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása
 
@@ -156,7 +156,7 @@ Annak érdekében, hogy az átmenő hitelesítés működés közben biztonságb
 
 Az Azure AD-hitelesítési ügynök megbízhatósági megújítása:
 
-1. A hitelesítési ügynök pingeli rendszeres időközönként az Azure AD-e a tanúsítvány megújításához idő néhány óránként. 
+1. A hitelesítési ügynök pingeli rendszeres időközönként az Azure AD-e a tanúsítvány megújításához idő néhány óránként. A tanúsítvány van újítani a lejárata előtt 30 nappal.
     - Ez az ellenőrzés kölcsönösen hitelesített HTTPS-csatornán keresztül történik, és a regisztráció során korábban kiadott tanúsítványt használja.
 2. Ha a szolgáltatás jelzi, hogy újítsa meg időt, a hitelesítési ügynök új kulcspárt generál: egy nyilvános kulcs és titkos kulcsot.
     - Ezek a kulcsok akkor jönnek létre standard RSA 2048-bites titkosítás révén.

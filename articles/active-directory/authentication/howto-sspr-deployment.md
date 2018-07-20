@@ -4,18 +4,18 @@ description: Tippek az Azure AD önkiszolgáló jelszóátállítás sikeres bev
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3e14c51d644a29985e759da7c8a29927680d3891
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
-ms.translationtype: HT
+ms.openlocfilehash: 2371ad00728a47af9e96e8e711aa07cc5170266c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048951"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158862"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 
@@ -23,35 +23,32 @@ Az Azure Active Directory (Azure AD) önkiszolgáló jelszóváltoztatási (SSPR
 
 > [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
 
-1. [Az új jelszavak kérésének engedélyezése a címtárban](quickstart-sspr.md).
-2. [A helyszíni Active Directory-engedélyek konfigurálása a jelszóvisszaíró számára](howto-sspr-writeback.md#active-directory-permissions).
-3. [Jelszóvisszaíró konfigurálása](howto-sspr-writeback.md#configure-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához.
-4. [A szükséges licencek hozzárendelése és ellenőrzése](concept-sspr-licensing.md).
-5. Annak meghatározása, hogy fokozatos bevezetést szeretne-e végezni. Ha az SSPR bevezetését fokozatosan szeretné elvégezni, a hozzáférést a felhasználók egy csoportjára korlátozhatja, így egy adott csoporttal kísérletezhet a programban. Ha egy adott csoportra szeretné korlátozni a bevezetést, állítsa az **Új jelszó önkiszolgáló kérése engedélyezve** beállítást a **Kiválasztva** értékre, majd válassza ki azt a biztonsági csoportot, amelynek engedélyezni szeretné az új jelszavak kérését.  Ebben az esetben támogatott a biztonsági csoportok beágyazása.
-6. Töltse ki a felhasználók regisztrálásához szükséges [hitelesítési adatokat](howto-sspr-authenticationdata.md), például az irodai telefonszámukat, a mobiltelefonszámukat és a másodlagos e-mail-címüket.
-7. [Az Azure AD bejelentkezési felület testreszabása a vállalat márkajelzésének megjelenítésével](concept-sspr-customization.md).
-8. Az SSPR használatának megtanítása a felhasználóinak. Útmutatást küldhet nekik arról, hogyan regisztrálhatnak, és hogyan állíthatják át a jelszavukat.
-9. A regisztráció kényszerítésének meghatározása. Bármikor dönthet úgy, hogy kényszeríti a regisztrációt. Azt is megkövetelheti a felhasználóktól, hogy bizonyos idő elteltével újra erősítsék meg a hitelesítési adataikat.
-10. A jelentéskészítő képesség használata. Áttekintheti a felhasználók regisztrációra vonatkozó és használati adatait az [Azure AD által nyújtott jelentéskészítő képességgel](howto-sspr-reporting.md).
-11. Az új jelszó kérésének engedélyezése. Amikor elkészült, engedélyezze az új jelszó kérését az összes felhasználónak: állítsa az **Új jelszó önkiszolgáló kérése engedélyezve** beállítást a **Mindenki** értékre. 
+1. Fejezze be a szervezet egy szűk részhalmaza érhető el egy kísérleti összesítő.
+   * Próbaüzem információk megtalálhatók a [oktatóanyag: teljes egy Azure AD önkiszolgáló jelszó-visszaállítás próbaüzem bevezetése](tutorial-sspr-pilot.md).
+1. Tájékoztassa a segélyszolgálathoz.
+   * Hogyan fogja segítenek, hogy a felhasználók számára?
+   * Kényszeríti a felhasználó használhatja az SSPR, és engedélyezi a felhasználók segítséget az ügyfélszolgálattól?
+   * Adta nekik a regisztrációs URL-címeket és visszaállítása?
+      * Regisztráció:  https://aka.ms/ssprsetup
+      * Gyári beállítások visszaállítása: https://aka.ms/sspr
+1. Tájékoztassa a felhasználókat.
+   * Ez a dokumentum az alábbi szakaszok a haladnak át minta közötti kommunikáció, jelszó portálok, a regisztráció kényszerítése, és a hitelesítési adatok feltöltése.
+   * Az Azure Active Directory termékcsoport egy olyan [részletes üzembehelyezési tervet](https://aka.ms/SSPRDeploymentPlan) hozott létre, amelyet a cégek az ezen az oldalon található dokumentációval együtt használva létrehozhatnak egy üzleti tervet, és megtervezhetik egy önkiszolgáló jelszó-visszaállítási szolgáltatás üzembe helyezését.
+1. Engedélyezze az önkiszolgáló jelszó-visszaállítást a teljes cég számára.
+   * Amikor elkészült, engedélyezze az új jelszó kérését az összes felhasználónak: állítsa az **Új jelszó önkiszolgáló kérése engedélyezve** beállítást a **Mindenki** értékre.
 
-   > [!NOTE]
-   > Ha a beállítást egy kiválasztott csoportról mindenkire módosítja, a felhasználók által egy tesztcsoport tagjaként regisztrált meglévő hitelesítési adatok nem vesztik érvényüket. A konfigurált felhasználók, akik érvényes hitelesítési adatokat regisztráltak, továbbra is működni fognak.
+## <a name="sample-communication"></a>Minta kommunikáció
 
-12. [Az új jelszó kérésének engedélyezése a Windows 10-felhasználók számára a bejelentkezési képernyőn](tutorial-sspr-windows.md).
-
-   > [!IMPORTANT]
-   > Az SSPR-t egy felhasználóval tesztelje, ne egy rendszergazdával, mert a Microsoft szigorú hitelesítési előírásokat tartat be az Azure rendszergazdai fiókjaihoz. A rendszergazdai jelszavakra vonatkozó szabályzatról a [jelszóházirendről szóló cikkünkben](concept-sspr-policy.md#administrator-password-policy-differences) talál további információt.
-
-## <a name="email-based-rollout"></a>E-mailes alapú bevezetés
-
-Számos ügyfél szerint egy egyszerűen követhető útmutatással ellátott e-mailes kampánnyal lehet a legkönnyebben rávenni a felhasználókat az SSPR használatára. [Három egyszerű e-mailt hoztunk létre, amelyeket sablonként használhat a bevezetés során](https://www.microsoft.com/download/details.aspx?id=56768):
+Számos ügyfél szerint egy egyszerűen követhető útmutatással ellátott e-mailes kampánnyal lehet a legkönnyebben rávenni a felhasználókat az SSPR használatára. [Hoztunk létre egyszerű e-mailek és más, amely sablonként használhatja a bevezetés során biztosíték](https://www.microsoft.com/download/details.aspx?id=56768):
 
 * **Hamarosan elérhető**: Olyan e-mail-sablon, amelyet a bevezetést megelőző hetekben vagy napokban érdemes használni, hogy a felhasználók tisztában legyenek azzal, hogy hamarosan tenniük kell valamit.
 * **Már elérhető**: Olyan e-mail-sablon, amelyet a program indulásának napján érdemes használni, hogy a felhasználók regisztráljanak, és megerősítsék a hitelesítési adataikat. Ha a felhasználók ilyenkor regisztrálnak, szükség esetén már használatba tudják venni az SSPR-t.
 * **Regisztrációs emlékeztető**: Olyan e-mail-sablon, amelyet pár nappal vagy héttel az üzembe helyezés után érdemes használni, hogy a felhasználók emlékeztetőt kapjanak a regisztrációról és hitelesítési adataik megerősítéséről.
+* **SSPR poszterek**: poszterek testre szabhatja és a nap és a hét, akár kezdő, és a bevezetés után a szervezet köré megjelenítéséhez.
+* **SSPR tábla sátrak**: tábla kártyák elhelyezhet a helyiségben ebéd konferenciahívások, vagy az asztalok arra bátorítsák a felhasználókat, hogy a regisztráció befejezéséhez.
+* **SSPR matricákat**: matricát sablonok testreszabása és a nyomtatási laptopok, monitorok, billentyűzetek vagy mobiltelefonok, ne felejtse el az SSPR eléréséhez hogyan helyezhető el.
 
-![E-mail][Email]
+![SSPR E-mail minták][Email]
 
 ## <a name="create-your-own-password-portal"></a>Saját jelszókezelő portál létrehozása
 
@@ -64,10 +61,6 @@ Sok ügyfél dönt webhelyek üzemeltetése és gyökérszintű DNS-bejegyzések
 
 A kiküldött e-mailekben vagy közleményekben feltüntethet egy márkaüzenettel ellátott, könnyen megjegyezhető URL-címet, amelyre a felhasználók ellátogathatnak, amikor szükségük van a szolgáltatásokra. Létrehoztunk Önnek egy [új jelszó létrehozására szolgáló mintaoldalt](https://github.com/ajamess/password-reset-page), amelyet a szervezet igényei szerint használhat és szabhat testre.
 
-## <a name="step-by-step-deployment-plan"></a>Részletes üzembehelyezési terv
-
-Az Azure Active Directory termékcsoport egy olyan [részletes üzembehelyezési tervet](https://aka.ms/SSPRDeploymentPlan) hozott létre, amelyet a cégek az ezen az oldalon található dokumentációval együtt használva létrehozhatnak egy üzleti tervet, és megtervezhetik egy önkiszolgáló jelszó-visszaállítási szolgáltatás üzembe helyezését.
-
 ## <a name="use-enforced-registration"></a>Kényszerített regisztráció használata
 
 Ha azt szeretné, hogy a felhasználók regisztráljanak a jelszóátállításra, ezt megkövetelheti, amikor bejelentkeznek az Azure AD használatával. Ezt a beállítást a címtár **Jelszóátállítás** panelén engedélyezheti úgy, hogy a **Regisztráció** panelen engedélyezi a **Felhasználói regisztráció megkövetelése a hozzáférési panelen történő bejelentkezéskor** beállítást.
@@ -78,11 +71,11 @@ Miután engedélyezi ezt a beállítást, a bejelentkező felhasználókat egy �
 
 ## <a name="populate-authentication-data"></a>Hitelesítési adatok feltöltése
 
-Érdemes [feltöltenie a felhasználók hitelesítési adatait](howto-sspr-authenticationdata.md). Így a felhasználóknak az SSPR használatához nem lesz kötelező regisztrálniuk a jelszóátállításra. Mindaddig, amíg a felhasználók hitelesítési adatai meg vannak adva, és megfelelnek az Ön által definiált jelszóátállítási szabályzatban foglaltaknak, a felhasználók átállíthatják a jelszavaikat.
+Érdemes lehet [előre feltöltése az egyes hitelesítési adatokat a felhasználók számára](howto-sspr-authenticationdata.md). Így a felhasználóknak az SSPR használatához nem lesz kötelező regisztrálniuk a jelszóátállításra. Mindaddig, amíg a felhasználók hitelesítési adatai meg vannak adva, és megfelelnek az Ön által definiált jelszóátállítási szabályzatban foglaltaknak, a felhasználók átállíthatják a jelszavaikat.
 
 ## <a name="disable-self-service-password-reset"></a>Önkiszolgáló jelszóátállítás letiltása
 
-Az önkiszolgáló jelszóátállítás letiltása egyszerű feladat. Nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása** > **Tulajdonságok** elemet, majd válassza a **Senki** elemet az **Önkiszolgáló jelszóátállítás engedélyezve** rész alatt.
+Ha a szervezet úgy dönt, hogy az önkiszolgáló jelszóátállítás letiltása egyszerű folyamat. Nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása** > **Tulajdonságok** elemet, majd válassza a **Senki** elemet az **Önkiszolgáló jelszóátállítás engedélyezve** rész alatt. Felhasználók továbbra is megőrzi a
 
 ## <a name="next-steps"></a>További lépések
 

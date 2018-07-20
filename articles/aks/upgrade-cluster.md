@@ -1,24 +1,24 @@
 ---
-title: Az Azure Kubernetes szolgáltatás (AKS) fürt frissítése
-description: Az Azure Kubernetes szolgáltatás (AKS) fürt frissítése
+title: Az Azure Kubernetes Service (AKS) fürt frissítése
+description: Az Azure Kubernetes Service (AKS) fürt frissítése
 services: container-service
 author: gabrtv
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/18/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: f6b8e964f4277150e104cd6d77db092aaa8553b4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9557311c97ea0fde66790c37b08d1a22d1197405
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933274"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144584"
 ---
-# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Az Azure Kubernetes szolgáltatás (AKS) fürt frissítése
+# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Az Azure Kubernetes Service (AKS) fürt frissítése
 
-Az Azure Kubernetes szolgáltatás (AKS) megkönnyíti a Kubernetes fürtök frissítése beleértve közös felügyeleti feladatok elvégzésére.
+Az Azure Kubernetes Service (AKS) megkönnyíti a Kubernetes-fürtök frissítése például gyakori felügyeleti feladatok végrehajtása.
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS-fürt frissítése
 
@@ -36,10 +36,10 @@ Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
 ```
 
-Három verzióra frissítéshez tudunk: 1.9.1, 1.9.2 és 1.9.6. Az `az aks upgrade` paranccsal frissíthetünk a legújabb elérhető verzióra.  A frissítési folyamat során csomópontra van közé tartoznak gondosan [cordoned és merül le] [ kubernetes-drain] minimalizálása érdekében a legkisebb mértékű akadályozása érdekében a futó alkalmazások.  A fürtfrissítések indítása előtt bizonyosodjon meg arról, hogy rendelkezésre áll elegendő további számítási kapacitás a számítási feladatok a fürtcsomópontok hozzáadása és eltávolítása során történő kezeléséhez.
+Három verzió érhető el a frissítéshez: 1.9.1, 1.9.2-es és 1.9.6. Az `az aks upgrade` paranccsal frissíthetünk a legújabb elérhető verzióra.  A frissítési folyamat során az AKS lesz új csomópont hozzáadása a fürthöz, majd gondosan [Ez a három csomópontunk, és a kiürítési] [ kubernetes-drain] futó alkalmazások egyszerre egy csomóponton.
 
 > [!NOTE]
-> Egy AKS fürt frissítésekor, Kubernetes alverziót nem hagyhatók ki. Például frissíti közötti 1.7.x > 1.8.x vagy 1.8.x > 1.9.x engedélyezettek, azonban 1.7 > 1.9 nincs.
+> AKS-fürt frissítésekor Kubernetes alverziót nem hagyhatók ki. Például frissítések között 1.8.x -> 1.9.x vagy 1.9.x -> 1.10.x engedélyezett, azonban az 1.8-as 1.10 -> nincs.
 
 ```azurecli-interactive
 az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6

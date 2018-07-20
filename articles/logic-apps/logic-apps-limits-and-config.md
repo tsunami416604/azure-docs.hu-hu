@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8baca0fc46489a22d587ba6e742615b1da79c19a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7726d7eae2d9b3a37ffc141e4a4cbdc9a1af459c
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970227"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145037"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -79,9 +79,9 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | UNTIL-iterációk | 5000 | | 
-| ForEach-elemek | 100,000 | Használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md) szűrhet nagyobb tömböket igény szerint. | 
+| ForEach-elemek | 100 000 | Használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md) szűrhet nagyobb tömböket igény szerint. | 
 | ForEach-párhuzamosság | 50 | Az alapértelmezett érték 20. <p>Ez a ForEach ciklus az alapértelmezett szint módosításához állítsa a `runtimeConfiguration` tulajdonságot a `foreach` művelet. <p>Egymás után futtatja a ForEach ciklus, állítsa be a `operationOptions` "Szekvenciális" tulajdonságot a `foreach` művelet. | 
-| SplitOn-elemek | 100,000 | | 
+| SplitOn-elemek | 100 000 | | 
 |||| 
 
 <a name="throughput-limits"></a>
@@ -92,7 +92,7 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ----- | ----- | ----- | 
-| Művelet-végrehajtások száma 5 percenként | 100,000 | A 300,000 korlátjának növelését, futtathatja a logikai alkalmazás `High Throughput` mód. A magas átviteli mód, konfigurálása a `runtimeConfiguration` a munkafolyamat-erőforrás beállítása a `operationOptions` tulajdonságot `OptimizedForHighThroughput`. <p>**Megjegyzés:**: magas átviteli mód előzetes verzióban érhető el. Ezenkívül juttathatja el a munkaterhelés egynél több alkalmazás között igény szerint. | 
+| Művelet-végrehajtások száma 5 percenként | 100 000 | A 300,000 korlátjának növelését, futtathatja a logikai alkalmazás `High Throughput` mód. A magas átviteli mód, konfigurálása a `runtimeConfiguration` a munkafolyamat-erőforrás beállítása a `operationOptions` tulajdonságot `OptimizedForHighThroughput`. <p>**Megjegyzés:**: magas átviteli mód előzetes verzióban érhető el. Ezenkívül juttathatja el a munkaterhelés egynél több alkalmazás között igény szerint. | 
 | Műveletek egyidejű kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek számát, vagy igény szerint időtartamának csökkentése érdekében. | 
 | Futásidejű végpont: egyidejű beérkező hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy igény szerint időtartamának csökkentése érdekében. | 
 | Futásidejű végpont: olvassa el a hívások száma 5 percenként  | 60,000 | Is szét a számítási feladatok több alkalmazás igény szerint. | 
@@ -302,8 +302,8 @@ A hívások támogatására, amely [összekötők](../connectors/apis-list.md) m
 | Kelet-Ausztrália | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 | 
 | Délkelet-Ausztrália | 13.77.50.240 - 13.77.50.255, 13.70.136.174, 40.127.80.34 | 
 | Dél-Brazília | 191.233.203.192 - 191.233.203.207, 104.41.59.51, 191.232.38.129 | 
-| Közép-Kanada | -13.71.170.223, 13.71.170.224 - 13.71.170.208 13.71.170.239, 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 | 
-| Kelet-Kanada | 40.69.106.240 - 40.69.106.255, 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 | 
+| Közép-Kanada | -13.71.170.223, 13.71.170.224 - 13.71.170.208 13.71.170.239, 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13, 52.233.26.83 | 
+| Kelet-Kanada | 40.69.106.240 - 40.69.106.255, 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52, 52.229.120.131 | 
 | Közép-India | 104.211.81.192 - 104.211.81.207, 52.172.211.12, 104.211.98.164 | 
 | USA középső régiója | 13.89.171.80 - 13.89.171.95, 52.173.245.164, 40.122.49.51 | 
 | Kelet-Ázsia | 13.75.36.64 - 13.75.36.79, 52.175.23.169, 23.99.116.181 | 
@@ -316,13 +316,13 @@ A hívások támogatására, amely [összekötők](../connectors/apis-list.md) m
 | USA déli középső régiója | 104.214.19.48 - 104.214.19.63, 13.65.86.57, 104.214.70.191 | 
 | Dél-India | 40.78.194.240 - 40.78.194.255, 13.71.125.22, 104.211.227.225 | 
 | Délkelet-Ázsia | 13.67.8.240 - 13.67.8.255, 52.187.68.19, 13.76.231.68 | 
-| USA nyugati középső régiója | 13.71.195.32 - 13.71.195.47, 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212 | 
+| USA nyugati középső régiója | 13.71.195.32 - 13.71.195.47, 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212, 52.161.128 | 
 | Nyugat-Európa | 13.69.64.208 - 13.69.64.223, 52.174.88.118, 40.115.50.13 | 
 | Nyugat-India | 104.211.146.224 - 104.211.146.239, 104.211.189.218, 104.211.161.203 | 
 | USA nyugati régiója | 40.112.243.160 - 40.112.243.175, 104.42.122.49, 104.40.51.248 | 
-| USA nyugati régiója, 2. | 13.66.140.128 - 13.66.140.143, 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14 | 
-| Az Egyesült Királyság déli régiója | 51.140.148.0 - 51.140.148.15, 51.140.80.51, 51.140.80.51 | 
-| Az Egyesült Királyság nyugati régiója | 51.140.211.0 - 51.140.211.15, 51.141.47.105, 51.141.47.105 | 
+| USA nyugati régiója, 2. | 13.66.140.128 - 13.66.140.143, 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14, 13.66.221.19 | 
+| Az Egyesült Királyság déli régiója | 51.140.148.0 - 51.140.148.15, 51.140.80.51 | 
+| Az Egyesült Királyság nyugati régiója | 51.140.211.0 - 51.140.211.15, 51.141.47.105 | 
 | | | 
 
 ## <a name="next-steps"></a>További lépések  

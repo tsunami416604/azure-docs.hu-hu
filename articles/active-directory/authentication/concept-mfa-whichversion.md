@@ -1,33 +1,35 @@
 ---
-title: Az Azure MFA-felhő vagy -kiszolgáló kiválasztása | Microsoft Docs
-description: Az Önnek legmegfelelőbb többtényezős hitelesítési biztonsági megoldás kiválasztásához döntse el, mit szeretne biztonságossá tenni, és hol tárolja a rendszer a felhasználóit.
+title: Az Azure MFA-kiszolgáló vagy szolgáltatás, a helyszíni vagy a felhőben?
+description: Mint Azure AD-rendszergazda, kell megérteni a többtényezős hitelesítés melyik verzióját szeretnék üzembe kell helyeznie?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 8314d72aa2cc6787d3f65dd48cd693a0ac332c0a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: 0d68c88bdad63bb022babcc4a6ee4ee7c59ce58a
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866352"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158454"
 ---
-# <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Az Azure Multi-Factor Authentication-megoldás kiválasztása
-Mivel az Azure Multi-Factor Authentication (MFA) számos változata használható, meg kell válaszolni néhány kérdést annak eldöntéséhez, hogy melyiket érdemes használni.  A kérdések a következők:
+# <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>Az Azure MFA melyik verziója a szervezetem számára megfelelő?
+
+Mielőtt eldöntheti, hol és hogyan multi-factor Authentication (MFA) üzembe helyezéséhez három alapvető kérdésre válaszolnia kell.
 
 * [Mit próbálok biztonságossá tenni?](#what-am-i-trying-to-secure)
 * [Hol tárolja a rendszer a felhasználókat?](#where-are-the-users-located)
 * [Mely szolgáltatásokra van szükségem?](#what-features-do-i-need)
 
-A következő szakaszok útmutatást nyújtanak az egyes kérdések megválaszolásához.
+Minden, az alábbi szakaszokban részletesen segítséget nyújtanak az előző kérdésre.
 
 ## <a name="what-am-i-trying-to-secure"></a>Mit próbálok biztonságossá tenni?
-A megfelelő kétlépéses ellenőrzési megoldás meghatározásához először meg kell válaszolni azt a kérdést, hogy mit szeretnénk biztonságossá tenni egy második hitelesítési módszerrel.  Egy alkalmazást az Azure-ban?  Vagy egy távelérésű rendszert?  Annak meghatározásával, hogy mit szeretne biztonságossá tenni, választ kap arra a kérdésre, hogy hol szükséges engedélyezni a többtényezős hitelesítést.  
+
+A megfelelő kétlépéses ellenőrzési megoldás meghatározásához először kérdésre válaszolnia kell az, hogy mit szeretne biztonságossá tenni egy további hitelesítési tényezővel az. Egy alkalmazást az Azure-ban? Vagy egy távelérésű rendszert? Azzal, hogy megállapítjuk, mit szeretne biztonságossá tételéhez, tudja válaszolni, ahol a multi-factor Authentication szolgáltatás engedélyeznie kell a kérdésre.
 
 | Mit próbál biztonságossá tenni? | MFA a felhőben | MFA-kiszolgáló |
 | --- |:---:|:---:|
@@ -38,17 +40,19 @@ A megfelelő kétlépéses ellenőrzési megoldás meghatározásához először
 | Távelérés, például VPN vagy RDG | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>Hol tárolja a rendszer a felhasználókat?
-Ezután annak alapján, hogy a rendszer hol tárolja a felhasználókat, meghatározhatja a megfelelő megoldást, legyen az a felhőben, vagy a helyszínen az MFA-kiszolgálót használva.
+
+Következő lépésként állapítsa meg, ahol a szervezet felhasználói található segít meghatározni a megfelelő megoldást, a felhőben vagy a helyszínen az MFA-kiszolgáló használatával.
 
 | Felhasználó helye | MFA a felhőben | MFA-kiszolgáló |
 | --- |:---:|:---:|
 | Azure Active Directory |● | |
 | Azure AD és helyszíni AD összevonással az AD FS-sel |● |● |
-| DirSync, Azure AD Sync és Azure AD Connect szolgáltatást használó Azure AD és helyszíni AD – jelszókivonat-szinkronizálás vagy átmenő hitelesítés nélkül |● |● |
-| DirSync, Azure AD Sync és Azure AD Connect szolgáltatást használó Azure AD és helyszíni AD – jelszókivonat-szinkronizálással vagy átmenő hitelesítéssel |● | |
+| Az Azure AD és helyszíni AD-bA az Azure AD Connect - nincs Jelszókivonat-szinkronizálás és átmenő hitelesítés |● |● |
+| Az Azure AD és helyszíni AD-bA az Azure AD Connect - jelszó Jelszókivonat szinkronizálása vagy átmenő hitelesítéssel |● | |
 | Helyszíni Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>Mely szolgáltatásokra van szükségem?
+
 A következő táblázat a felhőbeli Multi-Factor Authentication és a Multi-Factor Authentication-kiszolgáló szolgáltatásait hasonlítja össze.
 
 | Szolgáltatás | MFA a felhőben | MFA-kiszolgáló |
@@ -57,13 +61,12 @@ A következő táblázat a felhőbeli Multi-Factor Authentication és a Multi-Fa
 | Mobilalkalmazásos ellenőrzőkód második tényezőként | ● | ● |
 | Telefonhívás második tényezőként | ● | ● |
 | Egyirányú SMS második tényezőként | ● | ● |
-| Kétirányú SMS második tényezőként | | ●  (Elavult)| 
 | Hardvertokenek második tényezőként | | ● |
 | Alkalmazásjelszavak az MFA-t nem támogató Office 365-ügyfelekhez | ● | |
 | A hitelesítési módszerek rendszergazdai szabályozása | ● | ● |
 | PIN-mód | | ● |
-| Csalási riasztás |● | ● |
-| MFA-jelentések |● | ● |
+| Csalási riasztás | ● | ● |
+| MFA-jelentések | ● | ● |
 | Egyszeri mellőzés | | ● |
 | Egyéni üdvözlések a telefonhívásokhoz | ● | ● |
 | Testreszabható hívóazonosító a telefonhívásokhoz | ● | ● |

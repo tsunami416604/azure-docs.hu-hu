@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 754449dcf759820c8bb99d082c3a5ba2792f02c8
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 227723ecea1401247f0df87bccfe058fb2273647
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126323"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145349"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -91,7 +91,7 @@ HTTPS érvényes token felvételével hitelesítést valósít meg a **engedély
 
 Felhasználónév (az Eszközanosító megkülönbözteti a kis-és nagybetűket): `iothubname.azure-devices.net/DeviceId`
 
-Jelszó (is létrehozhat egy SAS-token az a [device explorer] [ lnk-device-explorer] eszközzel vagy a CLI-bővítmény paranccsal [az iot hub létrehozása sas-jogkivonat](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)):
+Jelszó (is létrehozhat egy SAS-token az a [device explorer] [ lnk-device-explorer] eszközzel, a CLI-bővítmény parancs [az iot hub létrehozása sas-jogkivonat](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), vagy a [Azure IoT A Visual Studio Code-eszközkészlet bővítmény](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -270,7 +270,7 @@ Az eredmény, amely hozzáférést biztosít minden funkció esetében device1, 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Lehetséges egy SAS-jogkivonatot a .NET használatával [device explorer] [ lnk-device-explorer] eszközzel vagy a platformfüggetlen Python-alapú [Azure CLI 2.0 az IoT-bővítmény] [ lnk-IoT-extension-CLI-2.0] parancssori eszközzel vagy a [Azure IoT-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+> Lehetséges, az SAS-token létrehozásához a [device explorer] [ lnk-device-explorer] eszközzel, a CLI-bővítmény parancs [az iot hub létrehozása sas-jogkivonat](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), vagy a [Azure IoT A Visual Studio Code-eszközkészlet bővítmény](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ### <a name="use-a-shared-access-policy"></a>Megosztott elérési házirendet használja
 
@@ -415,7 +415,7 @@ A jogkivonat-szolgáltatás minta fő lépései a következők:
 
 A jogkivonat-szolgáltatás igény szerint állíthatja be a token elévülési idejénél. Ha a jogkivonat lejár, az IoT hub adatbázisai az eszköz/modul kapcsolat. Ezt követően az eszköz/modul egy új jogkivonatot kell kérhet a jogkivonat-szolgáltatás. Egy rövid lejárati idő az eszköz/modul és a jogkivonat-szolgáltatás terhelését növeli.
 
-Egy eszköz/modul a hubhoz való csatlakozáshoz, hozzá kell adnia továbbra is azt az IoT Hub-identitásjegyzék – annak ellenére, hogy az informatikai használ egy jogkivonatot, és nem kulcs való csatlakozáshoz. Így továbbra is engedélyezi vagy letiltja az eszköz/modul identitások /-eszköz / /-module hozzáférés-vezérlés használata a [eszközidentitás-jegyzék][lnk-identity-registry]. Ez a megközelítés csökkenti a jogkivonatok használata hosszú lejárati idő kockázatát.
+Egy eszköz/modul a hubhoz való csatlakozáshoz, hozzá kell adnia továbbra is azt az IoT Hub-identitásjegyzék – annak ellenére, hogy használ egy jogkivonatot, és nem kulcs való csatlakozáshoz. Így továbbra is engedélyezi vagy letiltja az eszköz/modul identitások /-eszköz / /-module hozzáférés-vezérlés használata a [eszközidentitás-jegyzék][lnk-identity-registry]. Ez a megközelítés csökkenti a jogkivonatok használata hosszú lejárati idő kockázatát.
 
 ### <a name="comparison-with-a-custom-gateway"></a>Egyéni átjáróval összehasonlítása
 
@@ -492,8 +492,6 @@ Ha szeretné, és próbálja ki azokat a jelen cikkben ismertetett fogalmakat, a
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer
-[lnk-IoT-extension-CLI-2.0]: https://github.com/Azure/azure-iot-cli-extension
-
-[lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
+[lnk-getstarted-tutorial]: quickstart-send-telemetry-node.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: tutorial-routing.md

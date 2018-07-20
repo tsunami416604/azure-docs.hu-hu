@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 1c33a75363eec2b4e338ba64e3d1ad877d8b1610
-ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
+ms.openlocfilehash: 82a7449bf75cd31f8da5bb93618c4e6977ed312b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "34757227"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144934"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>A virtuális gép hálózati forgalomszűrési problémáinak diagnosztizálása
 
@@ -40,38 +40,40 @@ A következő lépések azt feltételezik, hogy rendelkezik egy meglévő virtu�
 2. Az Azure portal tetején adja meg a virtuális gép nevét a keresőmezőbe. Amikor a virtuális gép neve megjelenik a keresési eredmények között, kattintson rá.
 3. Alatt **beállítások**válassza **hálózatkezelés**, ahogy az alábbi képen is látható:
 
-    ![Biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
+   ![Biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
-    A szabályokat, megjelenik az előző ábrán felsorolt kell nevű hálózati adapter **myVMVMNic**. Láthatja, hogy nincsenek **BEJÖVŐPORT-szabályok** a hálózati adapter két különböző hálózati biztonsági csoportokból:- **mySubnetNSG**: az alhálózatot, amelyet a hálózati adapterhez van társítva.
-        - **myVMNSG**: a virtuális gép nevű hálózati adapterhez társított **myVMVMNic**.
+   A szabályokat, megjelenik az előző ábrán felsorolt kell nevű hálózati adapter **myVMVMNic**. Láthatja, hogy nincsenek **BEJÖVŐPORT-szabályok** a hálózati adapter két különböző hálózati biztonsági csoportokból:
+   
+   - **mySubnetNSG**: az alhálózatot, amelyet a hálózati adapterhez van társítva.
+   - **myVMNSG**: a virtuális gép nevű hálózati adapterhez társított **myVMVMNic**.
 
-    A nevű szabályt **DenyAllInBound** van, mi akadályozza bejövő kommunikációt a virtuális géphez, 80-as porton keresztül az internetről, leírtak szerint a [forgatókönyv](#scenario). A szabály listák *0.0.0.0/0* a **forrás**, amely tartalmazza az interneten. Nincs más szabály, a magasabb prioritású (alacsonyabb sorszámú) lehetővé teszi, hogy a 80-as porton bejövő. A 80-as port engedélyezése a virtuális géphez az internetről bejövő, lásd: [egy probléma megoldásához](#resolve-a-problem). Biztonsági szabályok, és hogyan Azure alkalmazza őket kapcsolatos további tudnivalókért lásd: [hálózati biztonsági csoportok](security-overview.md).
+   A nevű szabályt **DenyAllInBound** van, mi akadályozza bejövő kommunikációt a virtuális géphez, 80-as porton keresztül az internetről, leírtak szerint a [forgatókönyv](#scenario). A szabály listák *0.0.0.0/0* a **forrás**, amely tartalmazza az interneten. Nincs más szabály, a magasabb prioritású (alacsonyabb sorszámú) lehetővé teszi, hogy a 80-as porton bejövő. A 80-as port engedélyezése a virtuális géphez az internetről bejövő, lásd: [egy probléma megoldásához](#resolve-a-problem). Biztonsági szabályok, és hogyan Azure alkalmazza őket kapcsolatos további tudnivalókért lásd: [hálózati biztonsági csoportok](security-overview.md).
 
-    A kép alján látható is **kimenő PORT szabályok**. Amely alatt a hálózati adaptert a porton keresztüli kimenő szabályok vonatkoznak. A képen látható négy bejövő szabályok, csak egyes NSG-khez, de az NSG-k sok négynél több szabály előfordulhat, hogy rendelkezik. Az ábrán látható **VirtualNetwork** alatt **forrás** és **cél** és **AzureLoadBalancer** alatt  **FORRÁS**. **VirtualNetwork** és **AzureLoadBalancer** vannak [szolgáltatáscímkéket](security-overview.md#service-tags). Szolgáltatáscímkék IP-címelőtagokat a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége egy csoportját képviselik.
+   A kép alján látható is **kimenő PORT szabályok**. Amely alatt a hálózati adaptert a porton keresztüli kimenő szabályok vonatkoznak. A képen látható négy bejövő szabályok, csak egyes NSG-khez, de az NSG-k sok négynél több szabály előfordulhat, hogy rendelkezik. Az ábrán látható **VirtualNetwork** alatt **forrás** és **cél** és **AzureLoadBalancer** alatt  **FORRÁS**. **VirtualNetwork** és **AzureLoadBalancer** vannak [szolgáltatáscímkéket](security-overview.md#service-tags). Szolgáltatáscímkék IP-címelőtagokat a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége egy csoportját képviselik.
 
 4. Győződjön meg arról, hogy a virtuális gép futó állapotban, és adja meg **érvényben lévő biztonsági szabályokat**az érvényben lévő biztonsági szabályokat, az alábbi képen is látható az előző képen látható módon:
 
-    ![Érvényes biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
+   ![Érvényes biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
-    Felsorolt szabályokat kell, hogy azonos, ahogy azt a 3. lépés, abban az esetben, ha az a hálózati adapter és az alhálózathoz társított NSG különböző lap található. Ahogy az ábrán látható, csak az első 50 szabályokat jelennek meg. Válassza ki, amely tartalmazza az összes szabály .csv-fájl letöltésére, **letöltése**.
+   Felsorolt szabályokat kell, hogy azonos, ahogy azt a 3. lépés, abban az esetben, ha az a hálózati adapter és az alhálózathoz társított NSG különböző lap található. Ahogy az ábrán látható, csak az első 50 szabályokat jelennek meg. Válassza ki, amely tartalmazza az összes szabály .csv-fájl letöltésére, **letöltése**.
 
-    Megtekintéséhez, amely előtagjainak minden szolgáltatás címke jelöli, jelöljön ki egy szabályt, például a nevű szabályt **AllowAzureLoadBalancerInbound**. Az alábbi képen látható előtagjait a **AzureLoadBalancer** szolgáltatáscímke:
+   Megtekintéséhez, amely előtagjainak minden szolgáltatás címke jelöli, jelöljön ki egy szabályt, például a nevű szabályt **AllowAzureLoadBalancerInbound**. Az alábbi képen látható előtagjait a **AzureLoadBalancer** szolgáltatáscímke:
 
-    ![Érvényes biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
+   ![Érvényes biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
 
-    Bár a **AzureLoadBalancer** csak jelölik, egy előtagot, további szolgáltatáscímkék több előtagok jelölik.
+   Bár a **AzureLoadBalancer** csak jelölik, egy előtagot, további szolgáltatáscímkék több előtagok jelölik.
 
-4. Az előző lépések bemutatta a biztonsági szabályok nevű hálózati adapter **myVMVMNic**, de azt is bemutattuk nevű hálózati adapter **myVMVMNic2** néhány az előző képek. Ebben a példában a virtuális Géphez csatlakoztatott két hálózati adaptert tartalmaz. Az érvényben lévő biztonsági szabályokat minden egyes hálózati adapter esetén eltérők lehetnek.
+5. Az előző lépések bemutatta a biztonsági szabályok nevű hálózati adapter **myVMVMNic**, de azt is bemutattuk nevű hálózati adapter **myVMVMNic2** néhány az előző képek. Ebben a példában a virtuális Géphez csatlakoztatott két hálózati adaptert tartalmaz. Az érvényben lévő biztonsági szabályokat minden egyes hálózati adapter esetén eltérők lehetnek.
 
-    A szabályok megtekintéséhez a **myVMVMNic2** hálózati adapter, jelölje ki azt. Ahogy az alábbi képen is látható, a hálózati adaptert, az alhálózathoz rendelt ugyanazokkal a szabályokkal rendelkezik-e a **myVMVMNic** hálózati adapter, mivel mindkét hálózati adapterek ugyanabban az alhálózatban. Társít egy NSG-t egy alhálózathoz, amikor a szabályok az alhálózat összes hálózati adapter érvényesek.
+   A szabályok megtekintéséhez a **myVMVMNic2** hálózati adapter, jelölje ki azt. Ahogy az alábbi képen is látható, a hálózati adaptert, az alhálózathoz rendelt ugyanazokkal a szabályokkal rendelkezik-e a **myVMVMNic** hálózati adapter, mivel mindkét hálózati adapterek ugyanabban az alhálózatban. Társít egy NSG-t egy alhálózathoz, amikor a szabályok az alhálózat összes hálózati adapter érvényesek.
 
-    ![Biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
+   ![Biztonsági szabályok megtekintése](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
 
-    Ellentétben a **myVMVMNic** hálózati kapcsolat a **myVMVMNic2** hálózati adapter nem rendelkezik egy hálózati biztonsági csoport társítva van hozzá. Minden egyes hálózati adapter és alhálózati rendelkezhet, nulla vagy egy, az NSG tartozik. Minden egyes hálózati adapterhez rendelt az NSG-t vagy alhálózat is változatlan marad, vagy eltérő. Az egyazon hálózati biztonsági csoport tetszőleges számú hálózati adapterek és alhálózatok, amikor a társíthat.
+   Ellentétben a **myVMVMNic** hálózati kapcsolat a **myVMVMNic2** hálózati adapter nem rendelkezik egy hálózati biztonsági csoport társítva van hozzá. Minden egyes hálózati adapter és alhálózati rendelkezhet, nulla vagy egy, az NSG tartozik. Minden egyes hálózati adapterhez rendelt az NSG-t vagy alhálózat is változatlan marad, vagy eltérő. Az egyazon hálózati biztonsági csoport tetszőleges számú hálózati adapterek és alhálózatok, amikor a társíthat.
 
-Bár érvényben lévő biztonsági szabályokat is tekinthetők meg a virtuális gép, érvényes biztonsági szabályok segítségével is megtekintheti egy:
-- **Egyes hálózati adapter**: ismerje meg, hogyan [egy hálózati adapter megtekintésére](virtual-network-network-interface.md#view-network-interface-settings).
-- **Az egyes NSG**: ismerje meg, hogyan [megtekintése az NSG-KET](manage-network-security-group.md#view-details-of-a-network-security-group).
+Bár érvényben lévő biztonsági szabályokat is tekinthetők meg a virtuális gép, érvényes biztonsági szabályok egyéni keresztül is megtekintheti:
+- **Hálózati adapter**: ismerje meg, hogyan [egy hálózati adapter megtekintésére](virtual-network-network-interface.md#view-network-interface-settings).
+- **NSG-t**: ismerje meg, hogyan [megtekintése az NSG-KET](manage-network-security-group.md#view-details-of-a-network-security-group).
 
 ## <a name="diagnose-using-powershell"></a>Diagnosztizálhatja a PowerShell használatával
 

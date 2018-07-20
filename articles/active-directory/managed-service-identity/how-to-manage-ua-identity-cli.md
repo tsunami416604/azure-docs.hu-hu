@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 23567c985f4f9df46ee7d80051c15dc5910a1ea8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1989017361c148f9a6c8fcb73537be78555fd650
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904062"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160590"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-the-azure-cli"></a>Lista létrehozása vagy törlése egy a felhasználóhoz hozzárendelt identitás, az Azure CLI használatával
 
@@ -32,7 +32,7 @@ Ebből a cikkből megismerheti, hogyan hozhatók létre, lista és a egy felhasz
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség egy rendszer által hozzárendelt, és a felhasználóhoz hozzárendelt identitás](overview.md#how-does-it-work)**.
-- Ha még nem rendelkezik Azure-fiók [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a folytatás előtt.
+- Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 
 - Három lehetősége van a CLI-példaszkriptek futtatásához:
 
@@ -44,7 +44,7 @@ Ebből a cikkből megismerheti, hogyan hozhatók létre, lista és a egy felhasz
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Hozzon létre egy felügyelt identitás hozzárendelt felhasználó 
 
-A felhasználóhoz hozzárendelt identitás létrehozása, használja a [az identitás létrehozása](/cli/azure/identity#az-identity-create) parancsot. A `-g` paraméter adja meg az erőforráscsoport helyét a felhasználóhoz hozzárendelt identitás létrehozása és a `-n` paraméter adja meg a nevét. Cserélje le a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterértékeket a saját értékeire:
+A felhasználóhoz hozzárendelt identitás létrehozása, használja a [az identitás létrehozása](/cli/azure/identity#az-identity-create) parancsot. A `-g` paraméter adja meg az erőforráscsoport helyét a felhasználóhoz hozzárendelt identitás létrehozása és a `-n` paraméter adja meg a nevét. Legalább a fióknak rendelkeznie kell rendelni a [felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkört a felhasználóhoz hozzárendelt identitás létrehozása. Cserélje le a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterértékeket a saját értékeire:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -53,7 +53,7 @@ az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
 ## <a name="list-user-assigned-identities"></a>Listát a felhasználóhoz hozzárendelt identitás
 
-Felhasználó által hozzárendelt identitások listán, használja a [az identitás lista](/cli/azure/identity#az-identity-list) parancsot.  A `-g` paraméter adja meg az erőforráscsoport, ahol a felhasználóhoz hozzárendelt identitás létrehozták.  Cserélje le a `<RESOURCE GROUP>` saját értékét:
+Felhasználó által hozzárendelt identitások listán, használja a [az identitás lista](/cli/azure/identity#az-identity-list) parancsot.  A `-g` paraméter adja meg az erőforráscsoport, ahol a felhasználóhoz hozzárendelt identitás létrehozták. Legalább a fióknak rendelkeznie kell rendelni a [felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkört egy felhasználóhoz hozzárendelt identitás a tulajdonságok listázásához.  Cserélje le a `<RESOURCE GROUP>` saját értékét:
 
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
@@ -64,7 +64,7 @@ A json-válasz, a felhasználói identitások van `"Microsoft.ManagedIdentity/us
 
 ## <a name="delete-a-user-assigned-identity"></a>A felhasználóhoz hozzárendelt identitás törlése
 
-Egy felhasználóhoz hozzárendelt identitás törléséhez használja a [az identitás törlése](/cli/azure/identity#az-identity-delete) parancsot.  A - n paraméter adja meg a nevét, és a – g paraméter adja meg az erőforráscsoport, ahol a felhasználóhoz hozzárendelt identitás létrehozták.  Cserélje le a `<USER ASSIGNED IDENTITY NAME>` és `<RESOURCE GROUP>` paraméterek értékét a saját értékeire:
+Egy felhasználóhoz hozzárendelt identitás törléséhez használja a [az identitás törlése](/cli/azure/identity#az-identity-delete) parancsot.  A - n paraméter adja meg a nevét, és a – g paraméter adja meg az erőforráscsoport, ahol a felhasználóhoz hozzárendelt identitás létrehozták.  Legalább a fióknak rendelkeznie kell rendelni a [felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör törlése a felhasználóhoz hozzárendelt identitás. Cserélje le a `<USER ASSIGNED IDENTITY NAME>` és `<RESOURCE GROUP>` paraméterek értékét a saját értékeire:
 
  ```azurecli-interactive
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>

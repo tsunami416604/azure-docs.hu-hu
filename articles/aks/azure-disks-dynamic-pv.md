@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 14617b57f59c068aa015c9bfea9b4d18520b4152
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 34d3a5dbccf2cad7873bf6166e406c7c4817ac09
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473682"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158709"
 ---
 # <a name="create-persistent-volumes-with-azure-disks-for-azure-kubernetes-service-aks"></a>Állandó kötetek létrehozása az Azure-lemezek az Azure Kubernetes Service (AKS)
 
@@ -62,6 +62,9 @@ spec:
     requests:
       storage: 5Gi
 ```
+
+> [!TIP]
+> Hozzon létre egy lemezt, amely a standard szintű tárolást használ, használja a `storageClassName: default` helyett *felügyelt prémium szintű*.
 
 Hozzon létre a tartós kötet jogcímet a [a kubectl a alkalmazni] [ kubectl-apply] parancsot, majd adja meg a *azure-premium.yaml* fájlt:
 

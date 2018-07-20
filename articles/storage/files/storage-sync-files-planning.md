@@ -1,6 +1,6 @@
 ---
-title: Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése |} Microsoft Docs
-description: További tudnivalók az Azure-fájlok központi telepítésének tervezése során megfontolandó tényezőkről.
+title: Az Azure File Sync üzembe helyezésének megtervezése |} A Microsoft Docs
+description: Ismerje meg az Azure Files üzembe helyezésének tervezése során megfontolandó szempontokat.
 services: storage
 documentationcenter: ''
 author: wmgries
@@ -12,101 +12,101 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 1927ab29e82836c60b2ba36c3eec0acf49778082
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 77ccfccc0a575cb64272b634b11e80f9e07280f1
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335839"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160031"
 ---
-# <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
-Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
+# <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
+Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
 
-Ez a cikk egy Azure fájlszinkronizálás telepítését fontos szempontokat ismerteti. Azt javasoljuk, hogy akkor is olvassa el [Azure fájlok központi telepítésének tervezésében](storage-files-planning.md). 
+Ez a cikk az Azure File Sync üzembe helyezésének fontos szempontokat ismerteti. Azt javasoljuk, hogy Ön is olvashatja [Azure Files üzembe helyezésének megtervezése](storage-files-planning.md). 
 
-## <a name="azure-file-sync-terminology"></a>Az Azure fájlszinkronizálás terminológia
-Beolvasása fájlszinkronizálás Azure központi telepítésének tervezésében az részleteinek, előtt fontos tudni, hogy a terminológia.
+## <a name="azure-file-sync-terminology"></a>Azure File Sync-terminológia
+Első adatait, az Azure File Sync üzembe helyezésének megtervezése, mielőtt fontos terminológia ismertetése.
 
 ### <a name="storage-sync-service"></a>Társzinkronizálási szolgáltatás
-A tároló szinkronizálási szolgáltatás az Azure-fájl szinkronizálás a legfelső szintű Azure-erőforrás. A tároló szinkronizálási szolgáltatás erőforrás, a tárolási fiók erőforrás társa, és hasonló módon léptethetők hatályba Azure erőforráscsoport-sablonok. A tárolási fiók erőforrások különálló legfelső szintű erőforrás kell adni, mert a tároló szinkronizálási szolgáltatás szinkronizálási kapcsolat több tárfiókot több szinkronizálási csoportok segítségével hozhatja létre. Előfizetés rendelkezhet több tároló szinkronizálási szolgáltatás források.
+A Storage Sync Service az Azure File Sync legfelső szintű Azure-erőforrás. A Storage Sync Service erőforrás társa a tárfiók típusú erőforrást, és az Azure-erőforráscsoportok hasonló módon telepíthető. A tárfiók típusú erőforrást a distinct legfelsőbb szintű erőforráshoz szükség, mert a Storage Sync Service hozhat létre szinkronizálási kapcsolatot több tárfiókon keresztül több szinkronizálási csoporttal. Egy előfizetéshez tartozhat több Társzinkronizálási szolgáltatás forrásokkal.
 
 ### <a name="sync-group"></a>Szinkronizálási csoport
-A szinkronizálás csoport adja meg a sync-topológiát a fájlokat. A szinkronizálási csoporton belüli végpontok tartják szinkronban vannak egymással. Ha például van két különálló Azure fájlszinkronizálás felügyelni kívánt fájlokat, ehhez két szinkronizálási csoportok létrehozása, és különböző végpontokhoz hozzá minden egyes szinkronizálás csoporthoz. Egy tároló szinkronizálási szolgáltatás kell szinkronizálási csoportok tárolhatja.  
+Szinkronizálási csoport határozza meg, hogy a fájlokat a sync-topológiát. Végpontok egy szinkronizálási csoportban vannak szinkronban egymással. Ha például van két külön csoportja, amely az Azure File Sync használatával kezelni kívánt fájlokat, lenne, két szinkronizálási csoport létrehozása, és különböző végpontok hozzáadása az összes szinkronizálási csoportból. Társzinkronizálási szolgáltatás tetszőleges számú szinkronizálási csoportok igény szerint is üzemeltethet.  
 
 ### <a name="registered-server"></a>Regisztrált kiszolgáló
-A regisztrált kiszolgáló objektum által jelképezett a kiszolgáló (vagy a fürt) közötti megbízhatósági kapcsolat és a tároló szinkronizálási szolgáltatást. Regisztrálhatja annyi kiszolgálókat egy tárolási szinkronizálási szolgáltatáspéldány, ahányat csak szeretne. Azonban a kiszolgáló (vagy a fürt) regisztrálhatók csak egy tároló szinkronizálási szolgáltatás egyszerre.
+A regisztrált kiszolgáló objektum képviseli a kiszolgáló (vagy fürt) közötti megbízhatósági kapcsolat, és a Storage Sync Service. A Storage Sync Service-példányhoz annyi kiszolgálót a kívánt regisztrálhat. Azonban a kiszolgáló (vagy fürt) regisztrálhatók csak egy Társzinkronizálási szolgáltatást egyszerre.
 
-### <a name="azure-file-sync-agent"></a>Azure fájl Sync-ügynök
-Az Azure fájlszinkronizálás ügynök csomag egy letölthető, amely lehetővé teszi a Windows Server az Azure fájlmegosztások szinkronizálhatóak. Az Azure fájlszinkronizálás ügynök három fő részből áll: 
-- **FileSyncSvc.exe**: A háttérben történő Windows-szolgáltatás, amelyet figyeli a változásokat server végponton, és a szinkronizálási munkamenetek Azure kezdeményezése felelős.
-- **StorageSync.sys**: az Azure fájlszinkronizálás fájlrendszerszűrő, amely az Azure Fileshoz rétegezési fájlok felelős (amikor a felhő rétegezéséhez engedélyezve van).
-- **PowerShell parancsmagokat**: PowerShell-parancsmagok használata interaktív Microsoft.StorageSync Azure erőforrás-szolgáltató. Ezek a következő (alapértelmezett) helyen található:
+### <a name="azure-file-sync-agent"></a>Az Azure File Sync ügynök
+Az Azure File Sync ügynök csomag egy letölthető, amely lehetővé teszi a Windows Serverről az Azure-fájlmegosztások való szinkronizálása megtörténik. Az Azure File Sync ügynök három fő részből áll: 
+- **FileSyncSvc.exe**: A háttérben futó Windows-szolgáltatás, amely figyeli a változásokat a kiszolgálói végpontot, és az Azure-bA szinkronizálási munkamenetek kezdeményezése a felelős.
+- **StorageSync.sys**: az Azure File Sync fájlrendszerszűrő, amelynek feladata rétegezési fájlokat az Azure Files (ha felhőbeli rétegezés engedélyezve van).
+- **PowerShell-parancsmagok felügyeleti**: Microsoft.StorageSync Azure erőforrás-szolgáltatóval való kommunikációhoz használható PowerShell-parancsmagokkal. Ezek a következő helyeken (alapértelmezett) találhatja meg:
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
-### <a name="server-endpoint"></a>Kiszolgáló-végpont
-Egy kiszolgáló végpont képviseli regisztrált kiszolgálón, például egy mappát egy olyan kiszolgáló köteten egy konkrét helyre. Több kiszolgáló végpont ugyanazon a köteten található is, ha a névterek nem lehetnek átfedésben (például `F:\sync1` és `F:\sync2`). Beállíthatja felhő rétegezési egyenként az egyes kiszolgáló-végpont esetében. 
+### <a name="server-endpoint"></a>Kiszolgálói végpont
+Kiszolgálói végpont egy adott helyen, egy regisztrált kiszolgálón, például az egyik mappájába, egy kötetet jelöl. Ha a névterek ne legyenek átfedésben több kiszolgálói végpontot létezhet ugyanazon a köteten (például `F:\sync1` és `F:\sync2`). Külön-külön az egyes kiszolgálói végpontot a felhőalapú rétegezési házirendeket konfigurálhat. 
 
-A kiszolgáló végpont a csatlakoztatási pont használatával hozhat létre. Jegyezze fel, akkor a kiszolgáló végpont belül csatlakozási kimarad.  
+Kiszolgálói végpont a csatlakoztatási pont használatával is létrehozhat. Vegye figyelembe, hogy akkor csatlakozási belül a kiszolgálói végpontot a rendszer kihagyja.  
 
-Létrehozhat egy végpontját a rendszerkötet, de nincsenek két korlátozások vonatkoznak, ha ezt teszi:
-* Felhő rétegezéséhez nem engedélyezhető.
-* Gyors névtér visszaállítást (ahol a rendszer gyorsan számos lehetőséget kínál a teljes névteret le, majd elindítja tartalom visszahívásához) a rendszer nem végez.
+Kiszolgálói végpont a rendszerköteten hozhat létre, de korlátozottak két ekkor:
+* Felhőbeli rétegezés nem lehet engedélyezni.
+* (Ahol a rendszer gyorsan vonja le a teljes névteret, majd elindítja visszaírásához tartalom) gyors névtér visszaállítása nem történik meg.
 
 
 > [!Note]  
-> Csak nem cserélhető kötetek támogatottak.  Távoli megosztásból csatlakoztatott meghajtók nem támogatottak a kiszolgáló végpont elérési útvonalat.  A kiszolgáló végpont elhelyezhető továbbá a rendszerkötet, ha felhőalapú Windows rétegezéséhez nem támogatott a rendszerköteten.
+> Csak nem cserélhető kötetek használata támogatott.  Egy távoli megosztásban található csatlakoztatott meghajtók nem támogatottak a kiszolgálói végpont elérési útja.  Emellett a kiszolgálói végpont is található, a rendszerkötet, ha a felhő Windows rétegezést nem támogatják a rendszerköteten.
 
-Ha egy kiszolgálón, amelyen egy meglévő fájlokat egy server végpontként szinkronizálási csoporthoz ad hozzá, azokat a fájlokat egyesítve lesznek az egyéb fájlokat, amelyek már megtalálhatók a szinkronizálási csoport végpontja.
+Ha hozzáad egy kiszolgálón található, amely a szinkronizálási csoport kiszolgálói végpont fájlok meglévő készletének rendelkezik, ezeket a fájlokat az egyéb fájlokat, amelyek már a szinkronizálási csoport más végpontok összefésülése megtörténjen.
 
-### <a name="cloud-endpoint"></a>Felhő végpont
-A felhő-végpont esetében az Azure fájlmegosztások, amely a szinkronizálási csoport része. A teljes fájl Azure fájlmegosztás szinkronizálások és az Azure fájlmegosztások csak egy felhőhöz végpont tagja lehet. Ezért az Azure fájlmegosztások lehet csak egyetlen szinkronizálási csoport tagja. Ha az Azure fájlmegosztások, amely rendelkezik egy meglévő fájlkészlet a felhővégpontnak szinkronizálási csoporthoz ad hozzá, a meglévő fájlokat egyesítve lesznek az egyéb fájlokat, amelyek már megtalálhatók a szinkronizálási csoport végpontja.
+### <a name="cloud-endpoint"></a>Felhőbeli végpont
+Felhőbeli végpont egy Azure-fájlmegosztás, amely a szinkronizálási csoport része. Az Azure file teljes megosztás szinkronizálásokat, és Azure-fájlmegosztások csak egy felhőbeli végpont tagja lehet. Ezért Azure-fájlmegosztások lehet csak egyetlen szinkronizálási csoport tagja. Ha hozzáad egy Azure-fájlmegosztás, amely rendelkezik egy meglévő készlet fájlokat a szinkronizálási csoport felhőbeli végpont, a meglévő fájlokat összevonásra kerülnek, amelyek már más végpontok a szinkronizálási csoport többi fájlt.
 
 > [!Important]  
-> Az Azure fájlszinkronizálás támogatja közvetlenül az Azure fájlmegosztások hajt végre módosításokat. Azonban a Azure fájlmegosztás végrehajtott módosítások először kell egy Azure fájlszinkronizálás módosítás észlelése észlelhetők. A módosítás észlelése a felhőbeli végpont 24 óránként csak egyszer indítható. Ezenkívül az Azure fájlmegosztások a többi protokollon keresztül végzett módosítások nem fogja frissíteni az SMB-utolsó módosítás időpontja, és nem látható, a módosítás szinkronizálás által. További információkért lásd: [Azure fájlok gyakran ismételt kérdések](storage-files-faq.md#afs-change-detection).
+> Az Azure File Sync közvetlenül támogatja az Azure-fájlmegosztás módosítását. Az Azure-fájlmegosztás végzett módosítások azonban először kell deríteni az az Azure File Sync módosítása észlelése. A módosítás észlelési feladat csak egyszer 24 óránként indul a felhőbeli végpont. Emellett az Azure-fájlmegosztások a REST protokoll használatával végrehajtott módosítások nem fogja frissíteni az SMB-utolsó módosítás időpontja, és nem látható, a módosítás az sync. További információkért lásd: [– gyakori kérdések az Azure Files](storage-files-faq.md#afs-change-detection).
 
 ### <a name="cloud-tiering"></a>Felhőbeli rétegzés 
-A felhő rétegezéséhez választható szolgáltatás Azure fájlszinkronizálás, amelyben a ritkán használt, vagy nagyobb, mint 64 KiB méretű képes helyezhető el a az Azure Fileshoz érhető el. Ha egy fájl többszintű, Azure fájlszinkronizálás fájlrendszerszűrő (StorageSync.sys) lecseréli a fájlt helyileg mutatót, vagy újraelemzési pont. Az újraelemzési pont Azure fájlok a fájl URL-címet jelöli. A rétegzett fájl beállítani az NTFS-sel, harmadik féltől származó alkalmazások azonosíthassa a rétegzett fájlokat a "kapcsolat nélküli" attribútummal rendelkezik. Ha a felhasználó megnyit egy rétegzett fájlt, Azure fájlszinkronizálás zökkenőmentesen visszahívja az Azure-fájlokból a fájladatok anélkül, hogy a felhasználó ismeri az, hogy a fájl nem található helyileg a rendszeren. Ez a funkció hierarchikus tárolás (HSM) is nevezik.
+Felhőbeli rétegezés választható szolgáltatás az Azure File Sync, amelyben a ritkán használt vagy nagyobb méretű 64 KiB helyezhető el az Azure Files fájlok érhető el. A rétegzett egy fájlt, az Azure File Sync fájlrendszerszűrő (StorageSync.sys) helyettesíti a fájlt helyileg egy mutatót, vagy az újraelemzési pont. Az újraelemzési pontot az Azure Files-fájlra mutató URL-címet jelöli. Egy rétegzett fájlt a harmadik féltől származó alkalmazások azonosíthatja a rétegzett fájlokhoz, az NTFS beállítása "offline" attribútummal rendelkezik. Amikor egy felhasználó megnyit egy rétegzett fájlt, az Azure File Sync zökkenőmentesen visszahívja a fájl adatait az Azure Files a ismerete, hogy a fájl nem található helyileg a rendszer a felhasználó nélkül. Ez a funkció hierarchikus tárolás (HSM) is nevezik.
 
 > [!Important]  
-> Felhő server végpontok a Windows rendszert tartalmazó kötetek adatdeduplikációval esetén nem támogatott.
+> Felhőbeli rétegezés esetén nem támogatott a Windows rendszer köteteken kiszolgálói végpontot.
 
-## <a name="azure-file-sync-interoperability"></a>Az Azure fájlszinkronizálás együttműködés 
-Ez a fejezet a Windows Server szolgáltatásaival és a szerepkörök és a külső megoldások Azure fájlszinkronizálás együttműködés.
+## <a name="azure-file-sync-interoperability"></a>Az Azure File Sync-együttműködés 
+Ez a szakasz ismerteti az Azure File Sync együttműködés a Windows Server szolgáltatásaival és a szerepkörök és a külső felek megoldásaival.
 
-### <a name="supported-versions-of-windows-server"></a>Windows Server támogatott verziói
-Jelenleg a Windows Server által Azure fájlszinkronizálás verziók a következők:
+### <a name="supported-versions-of-windows-server"></a>A Windows Server támogatott verziói
+Jelenleg a Windows Server az Azure File Sync verziók a következők:
 
-| Verzió | Támogatott termékváltozat | Támogatott üzembe helyezési lehetőségei |
+| Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
 |---------|----------------|------------------------------|
-| Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felület server) |
-| Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felület server) |
+| Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
+| Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
 
-Vannak a Windows Server későbbi verzióiban lesz hozzáadva. A Windows korábbi verzióiban előfordulhat, hogy a felhasználói visszajelzések alapján adható hozzá.
+A Windows Server későbbi verzióiban bekerül vannak. Windows korábbi verzióiban előfordulhat, hogy a felhasználói visszajelzések alapján adható hozzá.
 
 > [!Important]  
-> Azt javasoljuk, hogy naprakészen a legújabb frissítéseket a Windows Update-ről az Azure-fájl szinkronizálással használt összes kiszolgálónak. 
+> Azt javasoljuk, hogy minden kiszolgáló, amelyet az Azure File Sync mindig naprakészek lehetnek az a legújabb frissítéseket a Windows Update gondoskodik. 
 
-### <a name="file-system-features"></a>Fájlrendszer szolgáltatásokat
-| Szolgáltatás | Támogatási állapota | Megjegyzések |
+### <a name="file-system-features"></a>Fájlrendszer-szolgáltatásokat
+| Szolgáltatás | Támogatás állapota | Megjegyzések |
 |---------|----------------|-------|
-| Hozzáférés-vezérlési listák (ACL) | Teljes mértékben támogatott. | Windows ACL-ek által Azure fájlszinkronizálás megmaradnak, és kikényszeríti a Windows Server server végpontokon. A Windows hozzáférés-vezérlési listák (még nem) Azure-fájlokat támogatja, ha a fájlok érhetők el közvetlenül a felhőben. |
+| Hozzáférés-vezérlési listák (ACL) | Teljes mértékben támogatott. | Windows hozzáférés-vezérlési listák az Azure File Sync megmaradnak, és kényszeríti a Windows Server server végpontokon. Windows hozzáférés-vezérlési listák (még nem) támogatja az Azure Files, ha a fájlok érhetők el közvetlenül a felhőben. |
 | Rögzített hivatkozások | Kihagyva | |
-| Szimbolikus hivatkozásokat | Kihagyva | |
-| Csatlakoztatási pontok | Részlegesen támogatott | Csatlakoztatási pontok lehet, hogy a legfelső szintű egy kiszolgáló végpont, de ha egy kiszolgáló végpont névtérben található kimarad. |
-| Elhelyezni pontokra | Kihagyva | Például elosztott fájl rendszer DfrsrPrivate és DFSRoots mappák. |
+| Szimbolikus hivatkozások | Kihagyva | |
+| Csatlakoztatási pontok | Részben támogatott | Csatlakoztatási pontok lehet, hogy a kiszolgálói végpont gyökerében, de a rendszer kihagyja őket, ha a kiszolgálói végpont névtér szerepel. |
+| Elhelyezni pontokra | Kihagyva | Ha például Distributed File System DfrsrPrivate és DFSRoots mappákat. |
 | Újraelemzési pontok | Kihagyva | |
-| NTFS-tömörítése | Teljes mértékben támogatott. | |
-| Ritka fájlok | Teljes mértékben támogatott. | Ritka fájlok szinkronizálási (nem zárolt), de a szinkronizálás a felhőbe egy teljes fájlként. Ha a fájl tartalmának módosítása a felhőben (vagy egy másik kiszolgálón), a fájl már nem ritka, amikor a módosítás. |
-| Alternatív adatfolyamok (ADS) | Megmarad, de nem szinkronizált | Például hozta létre a fájlbesorolási infrastruktúra besorolási címkék nem lett szinkronizálva. Az egyes server végpontjainak a meglévő besorolási címkék balra hagyása. |
+| Az NTFS-tömörítés | Teljes mértékben támogatott. | |
+| Ritka fájlok | Teljes mértékben támogatott. | Ritka fájlok szinkronizálása (nincs letiltva), de azok szinkronizálása a felhőbe teljes-fájlként. Ha a fájl tartalmát megváltoztatja a felhőben (vagy egy másik kiszolgálón), a fájl már nem ritka, amikor a módosítást. |
+| Alternatív Adatstreamek (ADS) | Megmarad, de nincs szinkronizálva | Ha például létrehozta a fájlbesorolási infrastruktúra besorolási címkék nem lett szinkronizálva. Az egyes a kiszolgálói végpontot a meglévő besorolási címkék balra változatlanul. |
 
 > [!Note]  
-> Csak az NTFS-köteteket támogatottak. A refs fájlrendszer, FAT, FAT32 és más fájlrendszerek nem támogatottak.
+> Csak az NTFS-kötetekről támogatottak. Az reFS, FAT, FAT32 és más fájlrendszereket nem támogatottak.
 
-### <a name="files-skipped"></a>Kimaradt fájlok
-| File/Folder | Megjegyzés |
+### <a name="files-skipped"></a>Kihagyott fájlok
+| Fájl vagy mappa | Megjegyzés |
 |-|-|
 | Desktop.ini | A fájl adott rendszerhez |
 | ethumbs.db$ | Ideiglenes fájlt a miniatűrök |
@@ -114,79 +114,79 @@ Vannak a Windows Server későbbi verzióiban lesz hozzáadva. A Windows korább
 | \*.tmp | Ideiglenes fájl |
 | \*.laccdb | DB hozzáférés a zárolási fájl|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Belső szinkronizálási fájl|
-| \\A System Volume Information | Adott kötetre mappa |
-| $RECYCLE. BIN| Mappa |
-| \\SyncShareState | Mappa-szinkronizáláshoz |
+| \\Rendszerkötet-információkat | A kötet adott mappa |
+| $RECYCLE. DOBOZ| Mappa |
+| \\SyncShareState | Szinkronizálási mappa |
 
-### <a name="failover-clustering"></a>Feladatátvételi fürtszolgáltatás
-Windows Server feladatátvételi fürtszolgáltatás támogatott Azure fájl szinkronizálás által "Általános felhasználású fájlkiszolgáló" rendszerbe állítási beállításként. Feladatátvételi fürtszolgáltatás nem támogatott a "Kibővített fájlkiszolgáló az alkalmazásadatokhoz" (SOFS) vagy a megosztott fürtkötetek (CSV).
+### <a name="failover-clustering"></a>A Feladatátvételi fürtszolgáltatás
+A Windows Server feladatátvételi fürtszolgáltatás támogatott az Azure File Sync "Általános felhasználású fájlkiszolgáló" beállítás. A Feladatátvételi fürtszolgáltatás nem támogatott a "Kibővített fájlkiszolgáló az alkalmazásadatokhoz" (SOFS) vagy a megosztott fürtkötetek (CSV).
 
 > [!Note]  
-> Az Azure fájlszinkronizálás ügynököt telepíteni kell egy feladatátvevő fürtben való szinkronizálás megfelelő működéséhez minden csomóponton.
+> Az Azure File Sync ügynök megfelelő működéséhez szinkronizálási egy feladatátvevő fürt minden csomópontján telepítve kell lennie.
 
-### <a name="data-deduplication"></a>Adatdeduplikáció
-A kötetek adatdeduplikációval engedélyezett felhő nem rendelkezik Azure fájlszinkronizálás támogatja a Windows Server az Adatdeduplikáció engedélyezése a köteten. Jelenleg nem támogatjuk Azure fájlszinkronizálás rétegezéséhez engedélyezve van a felhő és az Adatdeduplikáció közötti együttműködés.
+### <a name="data-deduplication"></a>Az Adatdeduplikáció
+Olyan kötetek, amelyek nem rendelkeznek a felhőbeli rétegezés engedélyezve van, az Azure File Sync támogatja a Windows Server Adatdeduplikáció engedélyezése a köteten. Jelenleg nem támogatjuk együttműködés a felhőbeli rétegezés engedélyezve van az Azure File Sync és az Adatdeduplikáció között.
 
-### <a name="distributed-file-system-dfs"></a>Elosztott fájlrendszer (DFS)
-Azure fájlszinkronizálás támogatja az elosztott Fájlrendszerbeli névterek (DFS-N) és az Elosztott fájlrendszer replikációs szolgáltatása (DFS-R) kezdődő, és együttműködési [Azure fájlszinkronizálás ügynök 1.2](https://go.microsoft.com/fwlink/?linkid=864522).
+### <a name="distributed-file-system-dfs"></a>Az elosztott fájlrendszer (DFS)
+Az Azure File Sync támogatja az elosztott Fájlrendszerbeli névtereket (DFS-N) és az elosztott fájlrendszer replikációs szolgáltatása (DFS-R) kezdődő együttműködési [Azure File Sync ügynök 1.2](https://go.microsoft.com/fwlink/?linkid=864522).
 
-**Az elosztott Fájlrendszerbeli névterek (DFS-N)**: Azure fájlszinkronizálás teljes mértékben támogatja a DFS-N kiszolgálókon. Az Azure fájlszinkronizálás ügynök telepíthető a server-végpontokat és a felhőbeli végpont között szinkronizálja az adatokat egy vagy több DFS-N tagokat. További információkért lásd: [az elosztott Fájlrendszerbeli névterek – áttekintés](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**Az elosztott Fájlrendszerbeli névtereket (DFS-N)**: az Azure File Sync teljes mértékben támogatott a DFS-N-kiszolgálókon. Egy vagy több DFS-N tagokat a kiszolgálói végpontot és a felhőbeli végpont közötti adatszinkronizálás az Azure File Sync ügynök telepíthető. További információkért lásd: [az elosztott Fájlrendszerbeli névterek áttekintése](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**Elosztott fájlrendszer replikációs szolgáltatása (DFS-R)**: mivel a DFS-R és Azure fájlszinkronizálás mindkét replikációs megoldás, a legtöbb esetben, javasoljuk, hogy a DFS-R lecserélését Azure fájlszinkronizálás. Van, de több forgatókönyv szerint, ha meg szeretné használni a DFS-R és Azure fájlszinkronizálás együtt:
+**Elosztott fájlrendszer replikációs szolgáltatása (DFS-R)**: mivel DFS-R és az Azure File Sync, a legtöbb esetben a két replikációs megoldás, azt javasoljuk, hogy a DFS-R cserélje le az Azure File Sync. Van azonban számos forgatókönyv, ahol szeretne, használja a DFS-R és az Azure File Sync együtt:
 
-- Egy Azure fájlszinkronizálás telepítésre a DFS-R-telepítés telepít. További információkért lásd: [egy Elosztott fájlrendszer replikációs szolgáltatása (DFS-R) központi telepítés át Azure fájlszinkronizálás](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
-- Nem minden a helyi kiszolgálót, amely az adatokat egy példányát kell csatlakoztatható közvetlenül az internethez.
-- Fiókirodai kiszolgáló összevonni az adatokat, amelyhez Azure fájl Sync szolgáltatás használatával szeretné egy központi kiszolgálóval.
+- Az Azure File Sync üzembe helyezésének áttelepítése a DFS-R-telepítésből. További információkért lásd: [áttelepítheti egy elosztott fájlrendszer replikációs szolgáltatása (DFS-R) környezetet az Azure File Sync](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
+- Nem minden helyszíni kiszolgáló, amelyekre szüksége van egy példányát az adatokat közvetlenül az internethez való csatlakoztathatók.
+- Fiókirodai kiszolgáló összevonni az adatokat az alakzatot, amelyhez szeretné használni az Azure File Sync egy központi kiszolgálóval.
 
-Az Azure fájlszinkronizálás és DFS-R egymás melletti működéséhez:
+Az Azure File Sync és a DFS-R egymás mellett működik:
 
-1. Azure fájl szinkronizálása a felhőalapú rétegezési kell letiltani a DFS-R replikált mappák rendelkező köteteket.
-2. Kiszolgáló végpontok nem csak olvasható replikációs mappák a DFS-R kell beállítani.
+1. Az Azure File Sync felhőbeli rétegezési kell letiltani a DFS-R replikált mappákat tartalmazó kötet.
+2. A csak olvasható replikációs mappák a DFS-R kiszolgálóvégpontok nem kell konfigurálni.
 
-További információkért lásd: [Elosztott fájlrendszer replikációs szolgáltatása áttekintése](https://technet.microsoft.com/library/jj127250).
+További információkért lásd: [elosztott fájlrendszer replikációs szolgáltatása áttekintése](https://technet.microsoft.com/library/jj127250).
 
 ### <a name="sysprep"></a>A Sysprep
-A kiszolgálón, amely az Azure fájl Sync-ügynök van telepítve a sysprep használata nem támogatott, és váratlan eredményekhez vezethet. Az ügynök telepítése és a kiszolgáló regisztrálása a kiszolgálói lemezkép telepítése és a sysprep minitelepítő befejezése után kell végrehajtani.
+A kiszolgálón, amely az Azure File Sync-ügynök van telepítve a sysprep használata nem támogatott, és váratlan eredményekhez vezethet. Az ügynök telepítése és a kiszolgáló regisztrálása a kiszolgálói lemezkép központi telepítése és a sysprep minitelepítő befejezése után történjen.
 
 ### <a name="windows-search"></a>A Windows Search
-Ha felhőalapú rétegezéséhez engedélyezve van a kiszolgáló végponton, a fájlokat, amelyek Unja már kihagyva, és nem indexelik a Windows Search. A fájlok nem rétegű indexelt megfelelően.
+Ha a felhőbeli rétegezés engedélyezve van a kiszolgálóvégponton, fájlokat, a rendszer tengerében. könnyebben kihagyva, és nem indexeli a Windows Search. A nem rétegzett fájlok megfelelően vannak indexelve.
 
-### <a name="antivirus-solutions"></a>Víruskereső megoldások
-A víruskereső vizsgálja a fájlokat az ismert rosszindulatú kódot úgy működik, mert egy víruskereső szoftver a rétegzett fájlok visszahívása okozhatja. Mivel rétegzett fájlokat a "kapcsolat nélküli" attribútummal rendelkezik, ajánlott a szoftver gyártójához annak megismerése, hogyan konfigurálhatja a kapcsolat nélküli fájlok olvasásának kihagyását megoldás egyeztetett. 
+### <a name="antivirus-solutions"></a>A víruskereső megoldásokkal
+Víruskereső ismert kártevő kódja fájlok vizsgálata úgy működik, mert egy víruskereső előfordulhat, hogy a rétegzett fájlok visszahívása. Mert rétegzett fájlok beállítása "offline" attribútuma, javasoljuk, hogy a szoftver gyártójával megtudhatja, hogyan konfigurálhatja a kapcsolat nélküli fájlok olvasásakor kihagyandó megoldás egyeztetett. 
 
-A következő megoldásokat ismert, hogy támogatja a rendszer kihagyja a kapcsolat nélküli fájlok:
+A következő megoldások ismert támogatására, a rendszer kihagyja a kapcsolat nélküli fájlok:
 
-- [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
-- [McAfee végpont biztonsági](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (lásd a "Vizsgálata csak mit kell" a PDF 90 lapján)
+- [A Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
+- [McAfee EndPoint Security](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (lásd a "Vizsgálat csak szükséges" 90 oldalán a PDF-fájl)
 - [Kaspersky Anti-Virus](https://support.kaspersky.com/4684)
-- [Sophos az Endpoint Protection](https://community.sophos.com/kb/en-us/40102)
+- [A Sophos az Endpoint Protection](https://community.sophos.com/kb/en-us/40102)
 - [TrendMicro OfficeScan](https://success.trendmicro.com/solution/1114377-preventing-performance-or-backup-and-restore-issues-when-using-commvault-software-with-osce-11-0#collapseTwo) 
 
-### <a name="backup-solutions"></a>Biztonsági mentési megoldás
-Víruskereső megoldások, például a biztonsági mentési megoldás a rétegzett fájlok visszahívása okozhat. Azt javasoljuk, hogy a felhő biztonsági mentési megoldás segítségével készítsen biztonsági másolatot az Azure-fájlmegosztáshoz egy helyszíni biztonsági mentési termék helyett.
+### <a name="backup-solutions"></a>Biztonsági mentési megoldások
+Például a víruskereső megoldások biztonsági mentési megoldások okozhat a rétegzett fájlok visszahívása. Azt javasoljuk, hogy biztonsági mentése az Azure-fájlmegosztás helyett egy a helyszíni biztonsági mentési termék egy felhőalapú biztonsági mentési megoldás használatával.
 
-Ha egy helyszíni biztonsági mentési megoldás használata esetén biztonsági mentések felhő rétegezéséhez letiltott a szinkronizálási csoportba a kiszolgálón kell elvégezni. Fájlok belül a kiszolgáló végponthelyét visszaállításakor szintű visszaállítási beállítást használja. A szinkronizálás csoportban található összes végpontok visszaállított fájlok lesznek szinkronizálva, és meglévő fájlok váltja fel a biztonsági másolatból történt visszaállítása verziót.
+Ha egy a helyszíni biztonsági mentési megoldást használ, az adott kiszolgálón a szinkronizálási csoport, amely rendelkezik a felhőbeli rétegezés letiltott az biztonsági mentések kell végezni. A kiszolgálói végpont helye tanúsítványfájljai visszaállításakor visszaállítás beállítást használja. Helyreállított fájlok lesznek szinkronizálva a szinkronizálási csoportban lévő összes végpontokra, és a meglévő fájlok váltja fel a biztonsági másolatból visszaállított verziót.
 
 > [!Note]  
-> Alkalmazás-kompatibilis, kötetszintű és az operációs rendszer nélküli (BMR) visszaállítási lehetőségek várt következményekhez vezethet, és jelenleg nem támogatottak. A visszaállítási lehetőségek egy későbbi kiadásban támogatott.
+> Alkalmazásbarát, kötetszintű és az operációs rendszer nélküli (BMR) visszaállítási beállítások pedig váratlan helyzeteket eredményezhet, és jelenleg nem támogatottak. A visszaállítási lehetőségek egy későbbi kiadásban támogatott.
 
 ### <a name="encryption-solutions"></a>Titkosítási megoldások
-Titkosítási megoldások támogatása attól függ, hogyan használják azokat. Az Azure fájlszinkronizálás ismert használható:
+Titkosítási megoldások támogatása attól függ, hogyan használják azokat. Az Azure File Sync ismert használata:
 
-- A BitLocker titkosítást
-- Azure Information Protection, Azure Rights Management Services (az Azure RMS), és az Active Directory RMS
+- BitLocker-titkosítást
+- Az Azure Information Protection, az Azure Rights Management Services (Azure RMS), és az Active Directory RMS
 
-Azure fájl szinkronizálása nem működik az ismert:
+Az Azure File Sync nem működik az ismert:
 
-- NTFS titkosított fájlrendszer (EFS)
+- Az NTFS fájlrendszer (EFS) titkosított
 
-Általában Azure fájlszinkronizálás támogatnia kell az együttműködési képesség, amely alatt a fájlrendszerben, például a BitLocker, elhelyezkedik titkosítási megoldásokkal és, amelyeket a rendszer a fájlformátumban, például a BitLocker megoldásokkal. Nincsenek speciális együttműködési megoldások, amelyek fölött a fájlrendszer (például NTFS EFS) elhelyezkedik azt.
+Általánosságban véve az Azure File Sync támogatnia kell a titkosítási megoldásokkal, a fájlrendszer, a BitLocker, például az alább található, és fájlformátumban, például a BitLocker megvalósított megoldások együttműködési. Nincsenek speciális együttműködési megoldások, a fájlrendszer, (például NTFS EFS) felett található lett végrehajtva.
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Egyéb hierarchikus tárolás (HSM) megoldások
-Egyéb HSM-megoldások Azure fájl szinkronizálással használható.
+Nincs más HSM-megoldások az Azure File Sync használatával kell használni.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
-Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető el:
+Az Azure File Sync csak az alábbi régiókban érhető el:
 
 | Régió | Adatközpont helye |
 |--------|---------------------|
@@ -195,9 +195,9 @@ Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető e
 | Közép-Kanada | Toronto |
 | Kelet-Kanada | Quebec City |
 | USA középső régiója | Iowa |
-| Kelet-Ázsia | Hongkong |
+| Kelet-Ázsia | Hongkong KKT |
 | USA keleti régiója | Virginia |
-| Kelet-US2 | Virginia |
+| 2. keleti régiója | Virginia |
 | Észak-Európa | Írország |
 | Délkelet-Ázsia | Szingapúr |
 | Az Egyesült Királyság déli régiója | London |
@@ -205,13 +205,35 @@ Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető e
 | Nyugat-Európa | Hollandia |
 | USA nyugati régiója | Kalifornia |
 
-A képen támogatjuk a szinkronizálás csak a az Azure fájlmegosztások, amely ugyanabban a régióban, mint a tároló szinkronizálási szolgáltatás.
+Az Azure File Sync támogatja, és a Storage Sync Service ugyanabban a régióban található Azure-fájlmegosztások csak való szinkronizálását.
+
+### <a name="azure-disaster-recovery"></a>Azure-beli vészhelyreállításához
+Egy Azure-régióban, adatvesztés elleni védelme érdekében az Azure File Sync integrálható a [georedundáns tárhely-redundancia](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) lehetőséget. GRS tároló működéséről a párosított másodlagos régióban aszinkron blokkreplikációt az elsődleges régióban, amellyel normál esetben kezelheti, storage és a storage használatával. Egy katasztrófa, amely egy Azure-régió ideiglenesen vagy véglegesen offline állapotba a Microsoft feladatátvételt hajt végre a párosított régióban a storage. 
+
+Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjával támogatása érdekében minden Azure-fájlszinkronizálás régió egy másodlagos régióba, amely megfelel a másodlagos régióba storage által használt rendszer párban. A párok a következők:
+
+| Elsődleges régió      | Párosított régió      |
+|---------------------|--------------------|
+| Kelet-Ausztrália      | Ausztrália Southest |
+| Délkelet-Ausztrália | Kelet-Ausztrália     |
+| Közép-Kanada      | Kelet-Kanada        |
+| Kelet-Kanada         | Közép-Kanada     |
+| USA középső régiója          | USA 2. keleti régiója          |
+| Kelet-Ázsia           | Délkelet-Ázsia     |
+| USA keleti régiója             | USA nyugati régiója            |
+| USA 2. keleti régiója           | USA középső régiója         |
+| Észak-Európa        | Nyugat-Európa        |
+| Délkelet-Ázsia      | Kelet-Ázsia          |
+| Az Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |
+| Az Egyesült Királyság nyugati régiója             | Az Egyesült Királyság déli régiója           |
+| Nyugat-Európa         | Észak-Európa       |
+| USA nyugati régiója             | USA keleti régiója            |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>További lépések
-* [Fontolja meg a tűzfal és a proxykiszolgáló beállításait](storage-sync-files-firewall-and-proxy.md)
+* [Vegye figyelembe a tűzfal és proxy-beállítások](storage-sync-files-firewall-and-proxy.md)
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-* [Az Azure Files telepítése](storage-files-deployment-guide.md)
-* [Az Azure File-szinkronizálás telepítése](storage-sync-files-deployment-guide.md)
+* [Az Azure Files üzembe helyezése](storage-files-deployment-guide.md)
+* [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

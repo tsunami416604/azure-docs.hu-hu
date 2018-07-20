@@ -1,45 +1,47 @@
 ---
-title: Licenc önkiszolgáló jelszó-visszaállítási – Azure Active Directory
+title: Licenc Azure Active Directory önkiszolgáló jelszó-
 description: Az Azure AD önkiszolgáló jelszó-visszaállítási licencelési követelményeket
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e185b67ae73b86b5f1c3b6cda884de05eb89c6fd
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 83054c505689768c14d168841764a4557c3e1f8b
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049084"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158998"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Az Azure AD önkiszolgáló jelszó-licencelési követelményei alaphelyzetbe állítása
 
-Ahhoz, hogy az Azure Active Directory (Azure AD) jelszó kéréséhez hogy *rendelkeznie kell legalább egy, a szervezet licenccel* az adott felhasználó. A megfelelő licencre van szükség, ha a felhasználó akár közvetlen, akár közvetett módon egy adott licenchez tartozó funkció előnyeihez jut.
+Az Azure Active Directory (Azure AD) négy változatban érhető el: ingyenes, alap-, prémium P1 és prémium P2 szintű. Számos különböző szolgáltatásokat, amelyek be új jelszó önkiszolgáló kérésének, módosítás, például alaphelyzetbe állítása, zárolásának feloldásához és a jelszóvisszaíró, az Azure AD különböző kiadásai által biztosított vannak. Ez a cikk próbál szemléltetik az eltéréseket. Mindegyik Azure AD-kiadás szolgáltatásait, további részletek találhatók a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
 
-* **Csak felhőalapú felhasználói**: Office 365 fizetős Termékváltozat vagy alapszintű Azure AD
-* **Felhőalapú** vagy **a helyszíni felhasználók**: Azure AD Premium P1 vagy P2, Enterprise Mobility + Security (EMS) vagy a Microsoft 365
+## <a name="compare-editions-and-features"></a>Kiadások és szolgáltatások összehasonlítása
 
-## <a name="licensing-requirements-for-password-writeback"></a>Jelszóvisszaíró licencelési követelményeket
+Az Azure AD önkiszolgáló jelszó-visszaállítás van licenccel rendelkezniük, a jövőben is megfelel a szervezetek a megfelelő licenc hozzárendelése a felhasználók szükségesek.
 
-**Az önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással a rendszer egy Azure ad premium-funkció**. Licenceléssel kapcsolatos további információkért lásd: a [Azure Active Directory díjszabását ismertető a hely](https://azure.microsoft.com/pricing/details/active-directory/).
+* Önkiszolgáló jelszómódosítás felhőfelhasználók számára
+   * Én vagyok egy **csak felhőalapú felhasználói** és ismernie kell a jelszót.
+      * Szeretném, ha **módosítása** egy új jelszó.
+   * Ez a funkció az Azure AD minden kiadása tartalmazza.
 
-A jelszóvisszaíró használandó kell rendelkeznie a következő licenccel, a bérlő egyik:
+* Önkiszolgáló jelszóátállítás felhőfelhasználók számára
+   * Én vagyok egy **csak felhőalapú felhasználói** és elfelejtette a jelszót.
+      * Szeretném, ha **alaphelyzetbe** valami tudom a jelszavam.
+   * Ez a funkció az alapszintű Azure AD, prémium P1 vagy P2 kiadás része.
 
-* Prémium szintű Azure AD P1
-* Prémium szintű Azure AD P2
-* Enterprise Mobility + Security E3 vagy A3
-* Enterprise Mobility + Security E5 vagy a5 csomag
-* A Microsoft 365 E3 vagy A3
-* A Microsoft 365 E5 vagy a5 csomag
-* A Microsoft 365 F1 csomag
+* Az önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás **a helyszíni visszaírással**
+   * Én vagyok egy **hibrid felhasználói** saját helyszíni Active Directory felhasználói fiók szinkronizálva van az Azure AD-fiókot az Azure AD Connect használatával. Szeretnék saját jelszó módosítása, elfelejti a jelszót, vagy zárolva lett.
+      * Szeretném, ha a jelszó módosítása vagy visszaállítása, valami I ismeri, vagy saját fiók feloldása **és** , hogy szinkronizálja vissza módosítása a helyi Active Directoryban.
+   * Ez a funkció Azure AD Premium P1 vagy Premium P2 kiadás tartalmazza.
 
 > [!WARNING]
-> Önálló Office 365 licencelési csomagok *nem támogatják a jelszóvisszaírást* , és rendelkezik a fenti csomagok keretében, az a funkciók működéséhez szükséges.
+> Önálló Office 365 licencelési csomagok **nem támogatják a jelszóvisszaírást** , és az Azure AD Premium P1 vagy Premium P2 kiadás esetében ez a funkció működéséhez szükséges.
 >
 
 További licencelési információk, beleértve a költségek, a következő lapokon található:

@@ -4,18 +4,18 @@ description: A távoli asztali átjáró infrastruktúra integrálása az Azure 
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 08/15/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 74e56480c5bbf86ee6cbc059431d7d5a328dfcec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: michmcla
+ms.openlocfilehash: e22fedda4861e68f2318aff89bc3fe5a15cb6ede
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049065"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160103"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
 
@@ -293,7 +293,7 @@ Ne felejtse el, hogy az Azure MFA-bővítménnyel a hálózati házirend-kiszolg
  ![Hálózati házirendek](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>Konfiguráció ellenőrzése
-A konfiguráció ellenőrzéséhez jelentkezzen be a távoli asztali átjáró megfelelő RDP-ügyféllel kell. Győződjön meg arról, fiók, amely a házirendek által engedélyezett, és engedélyezve van az Azure MFA-kiszolgáló használatára. 
+A konfiguráció ellenőrzéséhez jelentkezzen be a távoli asztali átjáró-megfelelő RDP-ügyfelet kell. Győződjön meg arról, fiók, amely a házirendek által engedélyezett, és engedélyezve van az Azure MFA-kiszolgáló használatára. 
 
 Az alábbi képen show, használhatja a **távoli asztali webes elérés** lapot.
 

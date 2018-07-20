@@ -1,46 +1,64 @@
 ---
-title: Azure-tárolót példányok hibaelhárítása
-description: Ismerje meg az Azure-tároló példányaival kapcsolatos problémák elhárítása
+title: Hibaelhárítás az Azure Container Instances szolgáltatásban
+description: Ismerje meg, az Azure Container Instances szolgáltatással kapcsolatos problémák elhárítása
 services: container-instances
 author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 39c43c079ea4d10686bd656ba2d451ff42aac9f6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 550b53cf40133c8a67306c61cbfa7dae21be4648
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700230"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39163973"
 ---
-# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure tároló példányát kapcsolatos gyakori hibák elhárítása
+# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gyakori problémáinak elhárítása
 
-Ez a cikk bemutatja, hogyan kezelése vagy tárolók telepítése Azure tároló példányokhoz kapcsolatos gyakori hibák elhárítása.
+Ez a cikk bemutatja, hogyan háríthatók el a gyakori problémák kezeléséhez, vagy az Azure Container Instances a tárolók üzembe helyezése.
 
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 
-A tároló specification meghatározásakor bizonyos paraméterek szükséges elnevezési korlátozásairól megfelelést. Tároló konkrét követelmények tartalmazó tábla van alatt a csoport tulajdonságai.
-Az Azure elnevezési konvenciókat további információkért lásd: [elnevezési konvenciói](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) Azure architektúra közepén.
+A tároló specifikáció meghatározásakor bizonyos paraméterek betartásának elnevezési korlátozásairól van szükség. Alább van konkrét követelmények tárolót tartalmazó tábla tulajdonságai. Az Azure elnevezési konvenciók további információkért lásd: [elnevezési konvenciók] [ azure-name-restrictions] a az Azure Architecture Centert.
 
-| Hatókör | Hossz | Kis- és nagybetűk | Érvényes karaktereket | Javasolt minta | Példa |
+| Hatókör | Hossz | Kis- és nagybetűk | Érvényes karakterek | Javasolt minta | Példa |
 | --- | --- | --- | --- | --- | --- | --- |
-| A tárolócsoport nevét | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, kivéve az első vagy utolsó karaktere |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Tárolónév | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, kivéve az első vagy utolsó karaktere |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Tároló portok | 1 és 65535 között |Egész szám |1 és 65535 közötti egész szám |`<port-number>` |`443` |
-| DNS-névcímke | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, kivéve az első vagy utolsó karaktere |`<name>` |`frontend-site1` |
-| Környezeti változó | 1–63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és a "_" chracter bárhol, kivéve az első vagy utolsó karaktere |`<name>` |`MY_VARIABLE` |
-| Kötet neve | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Kisbetűket, számokat és kötőjeleket bárhol, kivéve az első vagy utolsó karaktere. Nem tartalmazhat két egymást követő kötőjelet. |`<name>` |`batch-output-volume` |
+| Tároló csoport neve | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Tárolónév | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Tárolóportok | 1 és 65535 közötti |Egész szám |1 és 65535 közötti egész szám |`<port-number>` |`443` |
+| DNS-névcímke | 5 – 63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>` |`frontend-site1` |
+| Környezeti változó | 1–63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és aláhúzásjelet (_) bárhol, kivéve az első vagy utolsó karakter |`<name>` |`MY_VARIABLE` |
+| Kötet neve | 5 – 63 |Kis- és nagybetűk megkülönböztetése nélkül |Kisbetűket és számokat és kötőjeleket tartalmazhat, bárhol, kivéve az első vagy utolsó karakter. Nem tartalmazhat két egymást követő kötőjelet. |`<name>` |`batch-output-volume` |
 
-## <a name="image-version-not-supported"></a>Lemezkép-verziója nem támogatott
+## <a name="os-version-of-image-not-supported"></a>A kép nem támogatott operációsrendszer-verzió
 
-Ha megad egy olyanra, amely nem támogatja az Azure tároló példányok, egy `ImageVersionNotSupported` hibát ad vissza. A hiba az érték `The version of image '{0}' is not supported.`, és a jelenleg Windows 1709 lemezképbe vonatkozik. A probléma orvoslása érdekében LTS Windows-lemezkép használata. Windows 1709 képek támogatása a feldolgozása folyamatban van.
+Ha olyan lemezképet, amely nem támogatja az Azure Container Instances, adja meg egy `OsVersionNotSupported` hibát akkor adja vissza. A hiba: hasonló, ahol a következő `{0}` a telepíteni próbált rendszerkép neve:
 
-## <a name="unable-to-pull-image"></a>Nem sikerült lekéréses kép
+```json
+{
+  "error": {
+    "code": "OsVersionNotSupported",
+    "message": "The OS version of image '{0}' is not supported."
+  }
+}
+```
 
-Nem sikerült a lemezkép kezdetben lekéréses Azure tároló példányok esetén újrapróbálja valamennyi ideje előtt esetleg sikertelenek lesznek. Ha nem kell húzni a lemezképet, a következő események jelennek meg kimenete [az tároló megjelenítése][az-container-show]:
+Ez a hiba a rendszer leggyakrabban észlelt, amikor üzembe helyezése Windows-rendszerképek a féléves csatorna (SAC) alapuló kiadási. Például Windows verziók 1709-es és 1803 SAC kiadások, és ezt követően a központi telepítési hiba jön létre.
+
+Az Azure Container Instances támogatja a Windows-rendszerképek alapján csak hosszú távú karbantartási csatorna (LTSC). Ha Windows-tárolók üzembe helyezése a probléma megoldásához, mindig üzembe LTSC-alapú rendszerképekhez.
+
+A Windows LTSC és SAC verzióival kapcsolatos részletekért lásd: [áttekintése a Windows Server féléves csatorna][windows-sac-overview].
+
+## <a name="unable-to-pull-image"></a>Nem lehet lekéréses kép
+
+Ha az Azure Container Instances első próbálkozásra nem sikerült lekérni a rendszerképet, újra megpróbálja egy ideig. Ha a kép lekérési továbbra is fennáll, az ACI idővel az üzembe helyezés sikertelen lesz, és látni egy `Failed to pull image` hiba.
+
+A probléma megoldásához, törölje a tároló-példányt, és ismételje meg a központi telepítés. Győződjön meg arról, hogy létezik-e a képet a beállításjegyzékben, és hogy már helyesen írta be a rendszerkép nevének.
+
+Ha a kép nem kell lekérni, az alábbihoz hasonló események kimenete látható [az container show][az-container-show]:
 
 ```bash
 "events": [
@@ -71,13 +89,11 @@ Nem sikerült a lemezkép kezdetben lekéréses Azure tároló példányok eset�
 ],
 ```
 
-Oldja meg, a tároló törlése, és ismételje meg a központi telepítés, fizető zárja be a figyelmet, hogy a lemezkép nevét helyesen adta.
-
 ## <a name="container-continually-exits-and-restarts"></a>Tároló folyamatosan kilép, és újraindul
 
-Ha a tároló létrehozása után futtatott, és automatikusan újraindul, szükség lehet beállítani a [indítsa újra a házirend](container-instances-restart-policy.md) a **OnFailure** vagy **soha**. Ha megad **OnFailure** és továbbra is folyamatosan lásd újraindul, előfordulhat, hogy az alkalmazás vagy a parancsfájl végrehajtása a tárolóban kapcsolatos problémát.
+Ha a tároló befejeződjön, és automatikusan újraindul, szüksége lehet beállítani egy [újraindítási házirend](container-instances-restart-policy.md) , **OnFailure** vagy **soha**. Ha megad **OnFailure** , és továbbra is folyamatos lásd újraindul, előfordulhat, hogy egy probléma a alkalmazás vagy a parancsfájl végrehajtása a tárolóban.
 
-A tároló példányok API tartalmaz egy `restartCount` tulajdonság. Egy tároló újraindítások számát ellenőrzéséhez használja a [az tároló megjelenítése] [ az-container-show] az Azure CLI 2.0 parancsot. A következő egy példa a kimenetre (amely kivonatosan mutatja csonkolódtak), hogy a `restartCount` tulajdonság a kimeneti végén.
+A Container Instances API tartalmaz egy `restartCount` tulajdonság. Ellenőrizze a tárolóhoz újraindítások számát, használhatja a [az container show] [ az-container-show] parancsot az Azure CLI-ben. A következő példa a kimenetre (amely kivonatosan csonkolta), megtekintheti a `restartCount` tulajdonság kimenetének a végén.
 
 ```json
 ...
@@ -118,22 +134,22 @@ A tároló példányok API tartalmaz egy `restartCount` tulajdonság. Egy tárol
 ```
 
 > [!NOTE]
-> A legtöbb tároló képek Linux terjesztésekről, bash, például a rendszerhéj állítja be az alapértelmezett parancs. Mivel a rendszerhéj önmagában nem hosszan futó szolgáltatás, ezekhez a tárolókhoz azonnal való kilépéshez és az alapértelmezett konfigurálásakor újraindítás hurok sorolhatók **mindig** indítsa újra a házirendet.
+> Linux-disztribúciókra vonatkozó legtöbb tárolórendszerképeket egy shell bash, például az alapértelmezett parancs állítja be. Mivel egy önállóan rendszerhéj nem egy hosszú ideig futó szolgáltatás, ezek a tárolók azonnal lépjen ki, és az alapértelmezett konfigurálásakor újraindítás hurkot sorolhatók **mindig** újraindítási házirend.
 
-## <a name="container-takes-a-long-time-to-start"></a>Tároló start hosszú időt vesz igénybe.
+## <a name="container-takes-a-long-time-to-start"></a>Tároló indítása hosszú időt vesz igénybe.
 
-A két elsődleges tényező Azure tároló példányát tároló indítási ideje befolyásolja a következők:
+A két elsődleges olyan tényezőt, amelyek hozzájárulnak a tároló indítási ideje az Azure Container Instances szolgáltatásban a következők:
 
 * [A kép mérete](#image-size)
-* [Kép](#image-location)
+* [Lemezkép helyét](#image-location)
 
-Windows-lemezképek rendelkezik [további szempontok](#cached-windows-images).
+Windows-rendszerképek [további szempontok](#cached-windows-images).
 
 ### <a name="image-size"></a>A kép mérete
 
-Ha a tároló indítása, de végül hosszú ideig tart a sikeres, indítsa el a tároló-lemezkép mérete alapján. Azure tároló példányok az igény szerinti kéri le a tároló lemezképet, mert az indítási idő tapasztal közvetlenül kapcsolódik a méretét.
+Ha a tároló indítása, de idővel hosszú ideig tart, sikeres indítása azáltal, hogy megtekinti a tárolórendszerkép méretben. Azure Container Instances szolgáltatásban az igény szerinti kér le a tárolórendszerkép, mert az indítási idő látja közvetlenül kapcsolódik ahhoz a méretét.
 
-A tároló-lemezkép mérete használatával megtekintheti a `docker images` a Docker parancssori parancsot:
+Megtekintheti a tároló rendszerképének mérete használatával a `docker images` a Docker parancssori parancsot:
 
 ```console
 $ docker images
@@ -141,42 +157,48 @@ REPOSITORY                  TAG       IMAGE ID        CREATED        SIZE
 microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 ```
 
-A kulcsot a lemezkép mérete kisebb tartása annak ellenőrzése, hogy a végső kép nem tartalmaz semmit, amelyre nincs szükség a futási időben. Ehhez a egyirányú azt a [többlépcsős buildek][docker-multi-stage-builds]. Többlépcsős épít, ellenőrizze, hogy a végső kép csak az alkalmazás van szüksége az összetevők tartalmazza, és nem egy, az új tartalom, amely egyszerűen volt szükség összeállítása során.
+A kulcs gondoskodik a lemezkép mérete kisebb, ellenőriznie kell, hogy a végső lemezkép nem tartalmaz semmit, amely nem szükséges futásidőben. Ehhez a egyirányú Ez az a [többlépcsős buildek][docker-multi-stage-builds]. Többlépcsős épít fel, ellenőrizze, hogy a végső rendszerkép csak azokat az összetevőket, szüksége lesz az alkalmazás tartalmaz, és nem egy, az új tartalom, amely egyszerűen volt szükség összeállítás során.
 
-### <a name="image-location"></a>Kép
+### <a name="image-location"></a>Lemezkép helyét
 
-Egy másik, csökken a kép lekéréses a tároló indítási idővel módja a tároló lemezkép a gazdagép [Azure tároló beállításjegyzék](/azure/container-registry/) ugyanabban a régióban, ahol szeretné telepíteni a tároló példányok. Ez lerövidíti a hálózati elérési útját, amelyet a tároló kép utaznak, jelentősen lerövidíteni a letöltési időt.
+A kép lekérési a tároló indítási idő csökkentésében is, hogy a tároló rendszerképét az üzemelteti [Azure Container Registry](/azure/container-registry/) ugyanabban a régióban, ahol szeretné telepíteni a container Instances szolgáltatásban. Ez lerövidíti a hálózati elérési útját, amelyet a tároló rendszerképét az utazás jelentősen lerövidíteni a letöltési időt.
 
-### <a name="cached-windows-images"></a>Gyorsítótárazott Windows-lemezképek
+### <a name="cached-windows-images"></a>Windows-rendszerképek gyorsítótárazott
 
-Az Azure tároló példányok gyorsítótárazást a sebesség tároló indítási idő alapján a bizonyos Windows-telepítési lemezképek használja.
+Az Azure Container Instances egy gyorsítótárazási mechanizmust a tároló az egyes Windows-rendszerképek alapján indítási idő csökkentéséhez használja.
 
-Ahhoz, hogy a legjobb Windows tároló indítási idő, valamelyikével a **legutóbbi három** a következő verziói **két lemezképet** az alapjául szolgáló lemezképhez:
+Ahhoz, hogy a leggyorsabb Windows tároló indítási ideje, használja az egyik a **legutóbbi három** verziók a következők **két lemezképet** , az alap rendszerképet:
 
-* [Windows Server 2016] [ docker-hub-windows-core] (csak LTS)
-* [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+* [A Windows Server 2016] [ docker-hub-windows-core] (csak LTS)
+* [A Windows Server 2016 Nano Server][docker-hub-windows-nano]
 
-### <a name="windows-containers-slow-network-readiness"></a>Windows tárolók lassú hálózati készültségi
+### <a name="windows-containers-slow-network-readiness"></a>Windows-tárolók lassú hálózati készültségi
 
-Windows-tárolók járhat a bejövő vagy kimenő kapcsolat számára a kezdeti létrehozásakor legfeljebb 5 másodperc. Kezdeti telepítés után a tároló hálózatkezelés az megfelelően kell folytatni.
+Windows-tárolók felszámítunk nincs bejövő vagy kimenő kapcsolat első létrehozáskor akár 5 másodpercre. Kezdeti telepítés után a tárolóalapú hálózatkezelés az megfelelően kell folytatódik.
 
 ## <a name="resource-not-available-error"></a>Erőforrás nem érhető el hiba
 
-Különböző területi erőforrás miatt betöltése az Azure-ban, és a következő hiba akkor fordulhat elő, amikor egy tároló-példány telepítése:
+Különböző regionális erőforrás miatt betöltése az Azure-ban, előfordulhat, hogy a következő hibaüzenetet kapja, amikor próbál üzembe helyezéséhez:
 
 `The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
 
-Ez a hiba azt jelzi, hogy a régióban, amelyben telepíteni kívánt túl nagy terhelés miatt a tároló megadott erőforrások nem rendelhető hozzá jelenleg. Legalább egy, a megoldás lépések segítségével a probléma megoldása érdekében.
+Ez a hiba azt jelzi, hogy a régióban, amelyben telepíteni kívánt nagy terhelés miatt az a tároló megadott erőforrások nem osztható ki jelenleg. Egy vagy több, a következő kockázatcsökkentési lépések segítségével a probléma megoldása érdekében.
 
-* Ellenőrizze a definiált paraméterek tartoznak a tároló központi telepítési beállítások [kvótái és az Azure-tároló példányok régiónkénti elérhetőség](container-instances-quotas.md#region-availability)
-* A tároló alacsonyabb CPU és memória beállításainak megadása
-* Egy másik Azure-régiót telepítése
-* Egy későbbi időpontban telepítése
+* Ellenőrizze a definiált paraméterek tartoznak a tároló üzembe helyezési beállítások [kvóták és régiók rendelkezésre állása az Azure Container Instances szolgáltatásban](container-instances-quotas.md#region-availability)
+* Adja meg alacsonyabb Processzor- és a tároló beállításait
+* Más Azure-régióban való üzembe helyezése
+* Egy későbbi időpontban központi telepítése
+
+## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nem lehet alapul szolgáló Docker API-t kapcsolódás vagy futtassa emelt szintű tároló
+
+Az Azure Container Instances nem az alapul szolgáló infrastruktúra, amely futtatja a tárolócsoportok közvetlen hozzáférést biztosít. Ez magában foglalja a Docker API-nak a tároló-gazdagépen futó és a futó tárolók emelt szintű hozzáférés. Ha a Docker-interakció van szüksége, ellenőrizze a [REST dokumentációja](https://aka.ms/aci/rest) megtekintéséhez az ACI API támogatja. Ha valami hiányzik, a vonatkozó kérelem küldése a [ACI visszajelzés – fórumok](https://aka.ms/aci/feedback).
 
 ## <a name="next-steps"></a>További lépések
-Megtudhatja, hogyan [beolvasni a tároló naplók és események](container-instances-get-logs.md) segítségére hibakeresésben a tárolók számára.
+Ismerje meg, hogyan [beolvasni a tároló naplóinak és események](container-instances-get-logs.md) hibakeresése a tárolók segítségével.
 
 <!-- LINKS - External -->
+[azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
+[windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/

@@ -14,12 +14,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 658ec5bb2aa7c15fb1d38da5249ff9b13973cf41
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 9e065b04083cce958bc42f2efade0038bf137f8a
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867997"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145111"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 Ez a cikk útmutatást az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával hozhat létre, és a csoportokat. Ez a tartalom csak az Office 365-csoportok (más néven egyesített csoportok) vonatkozik. 
@@ -96,7 +96,8 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállítások. Hiány
 |  <ul><li>EnableGroupCreation<li>Típus: logikai<li>Alapértelmezett: igaz |A jelzőt, amely azt jelzi, hogy az Office 365-csoport létrehozása engedélyezett-e a címtárban nem rendszergazdai felhasználók által. Ezt a beállítást nem szükséges egy Azure Active Directory Premium P1-licencet.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Típus: Sztring<li>Alapértelmezett érték: "" |A biztonsági csoport, amelynek a tagjai hozhatnak létre az Office 365-csoportok GUID akkor is, ha EnableGroupCreation == false. |
 |  <ul><li>UsageGuidelinesUrl<li>Típus: Sztring<li>Alapértelmezett érték: "" |A Csoporthasználati mutató hivatkozást. |
-|  <ul><li>ClassificationDescriptions<li>Típus: Sztring<li>Alapértelmezett érték: "" | Besorolási leírások vesszővel tagolt listája. |
+|  <ul><li>ClassificationDescriptions<li>Típus: Sztring<li>Alapértelmezett érték: "" | Besorolási leírások vesszővel tagolt listája. ClassificationDescriptions értéke csak érvényes a következő formátumban:
+  $setting ["ClassificationDescriptions"] = "Besorolást: leírás, besorolási: Description", ahol a besorolás megegyezik a ClassificationList a karakterláncokat.|
 |  <ul><li>DefaultClassification<li>Típus: Sztring<li>Alapértelmezett érték: "" | A besorolás, amely használható az alapértelmezett besorolást egy csoportot, ha nem.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Típus: Sztring<li>Alapértelmezett érték: "" | Egy legfeljebb 64 karakter hosszúságú, amely meghatározza az Office 365-csoportok konfigurált elnevezési karakterlánc. További információkért lásd: [Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Típus: Sztring<li>Alapértelmezett érték: "" | Vesszővel tagolt karakterláncot, amely a felhasználók csoport a nevek és aliasok használata nem fog tudni kifejezések közül. További információkért lásd: [Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md). |

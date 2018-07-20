@@ -4,18 +4,18 @@ description: Hibaelhárítás az Azure AD önkiszolgáló jelszó-visszaállít�
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e24f5070a793f62481bdc80044c97163c5b5c79f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 95ec87d2fdc34864b90a6596e7100cc6c1387631
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045189"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161990"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás hibaelhárítása
 
@@ -80,7 +80,7 @@ Az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (S
 
 | Hiba | Megoldás |
 | --- | --- |
-| A jelszó-átállítási szolgáltatás nem indul el a helyszíni. Az Azure AD Connect gép alkalmazás eseménynaplója 6800 hiba jelenik meg. <br> <br> Az előkészítés, összevont, után átmenő hitelesítés vagy a jelszó-kivonat-szinkronizált felhasználók nem visszaállíthassák a jelszavukat. | Ha engedélyezve van a jelszóvisszaírás, a szinkronizálási motor meghívja a jelszóvisszaíró könyvtár végezheti el a konfigurálást (előkészítés) által a bevezetési felhőszolgáltatáshoz való kommunikációhoz. Az előkészítés során vagy a Windows Communication Foundation (WCF) végpontot, a jelszó-visszaírási eredmények elindítása a hibák során észlelt hibákat az eseménynaplóban jelentkezzen be az Azure AD Connect-gépen. <br> <br> Során az Azure AD-Szinkronizálóról (ADSync) szolgáltatás újraindítása Ha visszaírási lett konfigurálva, a WCF-végpont indítása. Azonban ha a végpont a indítása sikertelen, azt fogja 6800 eseményt, és lehetővé teszik a szinkronizáló szolgáltatás indítása. Ez az esemény jelenlétét, az azt jelenti, hogy a jelszó-visszaírási végpont nem indult el. Eseménynapló részletei eseménynapló-bejegyzéseket létrehozni az PasswordResetService összetevő, valamint az esemény 6800, adja meg, miért nem lehet elindítani a végpontot. Tekintse át a Eseménynapló hibák, és próbálja meg újraindítani az Azure AD Connect, ha a jelszóvisszaíró még mindig nem működik. Ha a probléma tartósan fennáll, próbálja meg letiltani és újra engedélyezni a jelszóvisszaíró.
+| A jelszó-átállítási szolgáltatás nem indul el a helyszíni. Az Azure AD Connect gép alkalmazás eseménynaplója 6800 hiba jelenik meg. <br> <br> Az előkészítés, összevont, után átmenő hitelesítés vagy a jelszó-kivonat-szinkronizált felhasználók nem visszaállíthassák a jelszavukat. | Ha engedélyezve van a jelszóvisszaírás, a szinkronizálási motor meghívja a jelszóvisszaíró könyvtár végezheti el a konfigurálást (előkészítés) által a bevezetési felhőszolgáltatáshoz való kommunikációhoz. Hibákat észlelt az előkészítés során vagy a hibákat az eseménynaplóban, az Azure AD Connect gépen a Windows Communication Foundation (WCF) végpontot, a jelszó-visszaírási eredmények elindítása során. <br> <br> Során az Azure AD-Szinkronizálóról (ADSync) szolgáltatás újraindítása Ha visszaírási lett konfigurálva, a WCF-végpont indítása. Azonban ha a végpont a indítása sikertelen, azt fogja 6800 eseményt, és lehetővé teszik a szinkronizáló szolgáltatás indítása. Ez az esemény jelenlétét, az azt jelenti, hogy a jelszó-visszaírási végpont nem indult el. Eseménynapló részletei eseménynapló-bejegyzéseket létrehozni az PasswordResetService összetevő, valamint az esemény 6800, adja meg, miért nem lehet elindítani a végpontot. Tekintse át a Eseménynapló hibák, és próbálja meg újraindítani az Azure AD Connect, ha a jelszóvisszaíró még mindig nem működik. Ha a probléma tartósan fennáll, próbálja meg letiltani és újra engedélyezni a jelszóvisszaíró.
 | Amikor egy felhasználó megpróbál jelszó alaphelyzetbe állítása, vagy egy fiók feloldása a jelszóvisszaíró engedélyezve van, a művelet sikertelen lesz. <br> <br> Emellett tekintse meg az Azure AD Connect eseménynaplójában, amely tartalmazza az esemény: "Szinkronizáló visszaadott-hibakód: hr = 800700CE, üzenet a filename = bővítmény túl hosszú, vagy" után akkor fordul elő, a feloldási műveletet. | Keresse meg az Active Directory-fiókot az Azure AD Connect, és legfeljebb 127 karakter hosszú lehet benne, hogy új jelszót kérhet. Nyissa meg a **szinkronizálási szolgáltatás** származó a **Start** menü. Keresse meg a **összekötők** , és keresse meg a **Active Directory-összekötő**. Válassza ki, majd **tulajdonságok**. Keresse meg a **hitelesítő adatok** lapon, és adja meg az új jelszót. Válassza ki **OK** a lap bezárásához. |
 | Az utolsó lépés az Azure AD Connect telepítési eljárása nem sikerült konfigurálni a jelszóvisszaírást jelző hibaüzenet jelenik meg. <br> <br> Az Azure AD Connect alkalmazás eseménynaplója tartalmaz 32009 hiba a szöveg a "Hiba első hitelesítési token." | Ez a hiba akkor fordul elő, az alábbi két esetben: <br><ul><li>A globális rendszergazdai fiók megadva, az Azure AD Connect telepítési folyamat elején helytelen jelszót adott meg.</li><li>A globális rendszergazdai fiók megadva, az Azure AD Connect telepítési folyamat elején egy összevont felhasználó használatára történt kísérlet.</li></ul> A probléma megoldásához, győződjön meg arról, hogy nem használ-e be a pedig összevont fiók a globális rendszergazda, a telepítési folyamat elején megadott. Emellett győződjön meg arról, hogy a megadott jelszó helyességéről. |
 | Az Azure AD Connect gép Eseménynapló PasswordResetService futtatásával fordul elő hiba 32002 tartalmazza. <br> <br> Beolvassa a hiba: "hiba történt a ServiceBus csatlakozás. A jogkivonat-szolgáltató nem tudta meg egy biztonsági jogkivonatot." | A helyszíni környezet nem tud csatlakozni az Azure Service Bus-végponttal, a felhőben. Ez a hiba általában egy tűzfalszabály blokkolja-e egy adott porton vagy webes címet egy kimenő kapcsolatot okozza. Lásd: [kapcsolat Előfeltételek](./../connect/active-directory-aadconnect-prerequisites.md) további információ. Ezek a szabályok frissítése után az Azure AD Connect újraindítás, és a jelszóvisszaíró kell ismét dolgozni. |

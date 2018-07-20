@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: aab03c92bee0d3b69062cdcb179eebbb5c0fc8f8
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971074"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160246"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon
 
@@ -59,6 +59,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 
 |Hiba|Leírás|
 |---|---|
+|16000|Ez az egy belső megvalósítási részletei, és nem hiba történik. Biztonságosan figyelmen kívül hagyhatja ezt a hivatkozást.|
 |20001|Probléma lépett fel az összevont identitásszolgáltatóval kapcsolatban. A probléma megoldásához lépjen kapcsolatba az identitásszolgáltatójával.|
 |20012|Probléma lépett fel az összevont identitásszolgáltatóval kapcsolatban. A probléma megoldásához lépjen kapcsolatba az identitásszolgáltatójával.|
 |20033|Probléma lépett fel az összevont identitásszolgáltatóval kapcsolatban. A probléma megoldásához lépjen kapcsolatba az identitásszolgáltatójával.|
@@ -174,6 +175,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |81001|A felhasználó Kerberos-jegye túl nagy. Ez akkor fordulhat elő, ha a felhasználó túl sok csoportban szerepel, és így a Kerberos-jegy túl sok csoporttagságot tartalmaz. Csökkentse a felhasználó csoporttagságait, majd próbálkozzon újra.|
 |81005|A hitelesítési csomag nem támogatott|
 |81007|A bérlőn nincs engedélyezve a Seamless SSO|
+|81012|Ez nem hiba történik. Ez azt jelzi, hogy az Azure AD bejelentkezni próbáló felhasználó különbözik az eszközbe jelentkezett felhasználótól. Biztonságosan figyelmen kívül hagyhatja ezt a kódot a naplókat.|
 |90010|A kérelem nem támogatott különböző okok miatt. Például a kérés használatával jön létre egy nem támogatott kérelmi metódus (csak POST metódus támogatott), vagy az, hogy a kért jogkivonatot aláíró algoritmus nem támogatott. Lépjen kapcsolatba az alkalmazás fejlesztőjével.|
 |90014| Hiányzik egy kötelező mező protokoll üzenet, forduljon az alkalmazás tulajdonosa. Ha az alkalmazás tulajdonosa, győződjön meg arról, hogy rendelkezik-e a szükséges paramétereket, a bejelentkezési kérelem számára. |
 |90072| A fióknak rendelkeznie kell adni a bérlőn külső felhasználóként először. Kijelentkezés és bejelentkezés újra egy másik Azure AD-fiókot.|

@@ -4,18 +4,18 @@ description: Gyakori kérdések az Azure AD önkiszolgáló jelszó alaphelyzetb
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: c006e448b8da1acaf51c8339cbcd0b6170f29874
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 92f9732adadc4eb580d89f8a43cf76177450aeb7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054811"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160742"
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés – gyakori kérdések
 
@@ -115,7 +115,7 @@ Ez a GYIK a következő részekre van felosztva:
   >
 * **K: hogyan is tájékoztassa arról, hogy hová lépjen a felhasználók visszaállíthassák a jelszavukat?**
 
-  > **V:** próbálja meg a javaslatok némelyike a [SSPR üzembehelyezési](howto-sspr-deployment.md#email-based-rollout) cikk.
+  > **V:** próbálja meg a javaslatok némelyike a [SSPR üzembehelyezési](howto-sspr-deployment.md#sample-communication) cikk.
   >
   >
 * **K: Használhatom ezt oldal mobileszközt?**
@@ -170,7 +170,7 @@ Ez a GYIK a következő részekre van felosztva:
   >
 * **Kérdés a szabályzat a felhasználók a biztonsági kérdések-visszaállítás konfigurálva, de az Azure-rendszergazdák a Microsoft-eltérően kell konfigurálni.**
 
-  > **V:** Ez az az elvárt működés. A Microsoft érvényesíti a alapértelmezés szerint két-kapu jelszó kérésére vonatkozó szabályzat minden olyan Azure-rendszergazdai szerepkörhöz. Ez megakadályozza, hogy a rendszergazdák biztonsági kérdések használatával. További információ a jelen szabályzatban foglaltak annak a [jelszóházirendek és -korlátozások az Azure Active Directoryban](concept-sspr-policy.md#administrator-password-policy-differences) cikk.
+  > **V:** Ez az az elvárt működés. A Microsoft érvényesíti a alapértelmezés szerint két-kapu jelszó kérésére vonatkozó szabályzat minden olyan Azure-rendszergazdai szerepkörhöz. Ez megakadályozza, hogy a rendszergazdák biztonsági kérdések használatával. További információ a jelen szabályzatban foglaltak annak a [jelszóházirendek és -korlátozások az Azure Active Directoryban](concept-sspr-policy.md) cikk.
   >
   >
 * **K: Ha a felhasználó több, mint a maximális új jelszó kéréséhez szükséges kérdések száma regisztrálva van, hogyan vannak a biztonsági kérdéseket a kijelölt alaphelyzetbe állítása során?**
@@ -274,7 +274,7 @@ Ez a GYIK a következő részekre van felosztva:
   >
 * **K: van a jelszóvisszaíró biztonságos?  Hogyan lehet arról szeretnék nem get lesznek?**
 
-  > **V:** Igen, a jelszóvisszaíró biztonságos-e. Olvassa el a jelszóvisszaíró szolgáltatás implementálja további információt a négy biztonsági réteget, tekintse át a [jelszóvisszaírás biztonsági modelljéről](howto-sspr-writeback.md#password-writeback-security-model) című rész a [jelszó-visszaírás áttekintése](howto-sspr-writeback.md) cikk.
+  > **V:** Igen, a jelszóvisszaíró biztonságos-e. Olvassa el a jelszóvisszaíró szolgáltatás implementálja további információt a több rétegű biztonság, tekintse át a [jelszó-visszaírás biztonsági](concept-sspr-writeback.md#password-writeback-security) című rész a [jelszó-visszaírás áttekintése](howto-sspr-writeback.md) cikk.
   >
   >
 

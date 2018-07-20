@@ -1,21 +1,21 @@
 ---
-title: Útmutató az Azure Monitor riasztások és Műveletcsoportok összetett műveletek indítása
+title: Hogyan összetett műveletek indítása az Azure Monitor riasztások
 description: Ismerje meg, hogyan hozhat létre egy logikaialkalmazás-művelet feldolgozásához Azure Monitor-riasztásokat.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 51d47b87f898aa65fe4ee76c312240a50d45231d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 034e708b79bbdf15d7fa628f388402998f49c0d9
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049187"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161506"
 ---
-# <a name="create-a-logic-app-action"></a>Hozzon létre egy logikaialkalmazás-művelet
+# <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Hogyan összetett műveletek indítása az Azure Monitor riasztások
 
 Ez a cikk bemutatja, hogyan beállítását, és aktiválja a Logic Apps-alkalmazás, a beszélgetés létrehozása a Microsoft Teams, riasztások aktiválódásakor.
 
@@ -290,6 +290,9 @@ A metrikariasztás létrehozása a folyamat hasonlít a [tevékenységnapló-ria
        !["Riasztás false (hamis) metrikai feltétel post művelet"](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "Metrikaalapú riasztási hamis feltétel post művelet")
 
 - 15. lépés megegyezik. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveletcsoport frissítéséhez.
+
+## <a name="calling-other-applications-besides-microsoft-teams"></a>Más alkalmazások mellett a Microsoft Teams hívása
+A Logic Apps rendelkezik, amelyekkel az eseményindító műveletek számos az alkalmazások és adatbázisok különböző összekötőket. A Slack, az SQL Server, Oracle, a Salesforce, néhány példa azt szemlélteti. Összekötők kapcsolatos további információkért lásd: [logikai alkalmazás-összekötők](../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>További lépések
 * Get- [Azure tevékenységnapló-riasztások áttekintése](monitoring-overview-alerts.md) és riasztások fogadása.  

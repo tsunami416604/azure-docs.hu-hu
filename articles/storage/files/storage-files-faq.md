@@ -11,17 +11,17 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: d11ddb0bc15798187ccea22fe1a80a9c86162dcd
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866470"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160229"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
-[Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync (előzetes verzió) használatával képes gyorsítótárazni.
+[Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
 
 Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File Sync az Azure Files kapcsolatos gyakori kérdésekre ad választ. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a eszkalálásáról rendelésben) a következő csatornákon keresztül:
 
@@ -90,8 +90,8 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
-**Mely régiókban érhető el az Azure File Sync (előzetes verzió)?**  
-    Az Azure File Sync jelenleg Ausztrália keleti régiója, Délkelet-Ausztrália, közép-Kanada, kelet-Kanada, USA középső RÉGIÓJA, Kelet-Ázsia, USA keleti RÉGIÓJA, USA 2. keleti régiója, Észak-Európa, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa és USA nyugati Régiójában érhető el. Több régió támogatása bekerül, dolgozunk az általános elérhetőség felé. További információkért lásd: [régiók rendelkezésre állása](storage-sync-files-planning.md#region-availability).
+**Mely régiókban érhető el az Azure File Sync?**  
+    A rendelkezésre álló régiók listájának találhatók a [régiók rendelkezésre állása](storage-sync-files-planning.md#region-availability) szakaszban az Azure File Sync tervezési útmutató. Folyamatosan hozzáadjuk a további régiók, beleértve a nem nyilvános régió támogatása.
 
 * <a id="cross-domain-sync"></a>
 **Tartalmazhat tartományhoz csatlakoztatott és a nem tartományhoz csatlakoztatott kiszolgálók ugyanazt a szinkronizálási csoportot?**  
@@ -367,4 +367,4 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 ## <a name="see-also"></a>Lásd még
 * [A Windows Azure-fájlok hibaelhárítása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure-fájlok hibaelhárítása](storage-troubleshoot-linux-file-connection-problems.md)
-* [Hibaelhárítás az Azure File Sync (előzetes verzió)](storage-sync-files-troubleshoot.md)
+* [Az Azure File Sync hibaelhárítása](storage-sync-files-troubleshoot.md)

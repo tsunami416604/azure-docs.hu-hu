@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ddc9941792b0c5d8fbf29bfdc698b16a999a3858
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: c239f2b04d8aad621adb4d31146cdc105b439889
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971040"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159808"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -175,8 +175,11 @@ Ha az alkalmazás nagy mennyiségű adatot küld el, és használja az Applicati
 
 Bármikor letilthatja azt, de ez nem ajánlott. Mintavételi célja, hogy a kapcsolódó telemetriai adatokat megfelelően továbbítani, diagnosztikai célokra. 
 
+## <a name="client-ip-address-is-0000"></a>Ügyfél IP-cím 0.0.0.0 
+A 2018 február azt [bejelentett](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/) , hogy az ügyfél IP-cím naplózása eltávolítottuk. Ez nincs hatással a földrajzi helyet.
+
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Nem megfelelő földrajzi adatokat a felhasználó telemetria
-Az városa, régió és ország dimenziók IP-címek vannak származtatva, és nem minden esetben pontosak.
+Az városa, régió és ország dimenziók IP-címek vannak származtatva, és nem minden esetben pontosak. Ezen IP-címek hely elsőként feldolgozva, és a 0.0.0.0 kell tárolni, majd módosítani.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>„A metódus nem található” kivétel az Azure Cloud Servicesben futó rendszeren
 A .NET 4.6-os verziójára készítette el az alkalmazást? Az Azure Cloud Services szerepkörei nem támogatják automatikusan a 4.6-os verziót. [Telepítse a 4.6-os verziót mindegyik szerepkörön](../cloud-services/cloud-services-dotnet-install-dotnet.md), mielőtt futtatná az alkalmazást.

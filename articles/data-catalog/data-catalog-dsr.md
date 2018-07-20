@@ -1,40 +1,39 @@
 ---
-title: "Azure Data Catalog támogatott adatforrások |} Microsoft Docs"
-description: "Ez a cikk felsorolja a jelenleg támogatott adatforrások előírásainak."
+title: Támogatott adatforrások az Azure Data Catalog |} A Microsoft Docs
+description: Ez a cikk felsorolja a jelenleg támogatott adatforrások előírásainak.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: jstevens
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: b76f3cc3d8538a50895f5be32a800cb469c81203
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f8d24b896e6cdb39262f2c8a7f93c86f5e79fd33
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39146192"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog támogatott adatforrások
 
-Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regisztrációs eszköz, vagy közvetlenül az Azure Data Catalog az információk manuális megadásával webes portál. Az alábbi táblázat foglalja össze az egyes ma a katalógusban, és a közzétételi lehetőségeket által támogatott összes adatforrás. A külső adatok eszközök, amelyek az egyes adatforrások is elindíthatja a "Megnyitás a következőben" portal tapasztalatunkat is listában megtalálhatók. A második tábla minden egyes adatforrás kapcsolat tulajdonság olyan további technikai meghatározást tartalmaz.
+Nyilvános API-t és a egy kattintással közzéteheti metaadat-egyszer regisztrációs eszközt, vagy közvetlenül az Azure Data Catalog az információk manuális megadásával webes portálján. A következő táblázat összefoglalja az egyes a katalógusban még ma, és a közzétételi funkciók által támogatott adatforrásokat. Minden adatforrás indíthatják el az portal "Megnyitás a következőben" funkciót a külső eszközöket is megtalálható vannak. A második tábla minden adatforrás-kapcsolati tulajdonság egy további technikai specifikációt tartalmaz.
 
 
-## <a name="list-of-supported-data-sources"></a>A támogatott adatforrások listája
+## <a name="list-of-supported-data-sources"></a>Támogatott adatforrások listája
 
 <table>
     <tr>
        <td><b>Adatforrás-objektum</b></td>
        <td><b>API</b></td>
-       <td><b>Kézi bevitele</b></td>
-       <td><b>Regisztrációs eszköz</b></td>
-       <td><b>Nyissa meg az eszközök</b></td>
+       <td><b>Manuális bejegyzés</b></td>
+       <td><b>Frissítésregisztráló eszköz</b></td>
+       <td><b>Megnyitás a következőben eszközök</b></td>
        <td><b>Megjegyzések</b></td>
     </tr>
     <tr>
@@ -46,7 +45,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store file</td>
+      <td>Az Azure Data Lake Store-fájl</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -58,19 +57,19 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>A Power BI Desktop</td>
+      <td>A Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
-      <td>Azure Storage directory</td>
+      <td>Az Azure Storage directory</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>A Power BI Desktop</td>
+      <td>A Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
-      <td>Azure Storage-tábla</td>
+      <td>Az Azure Storage-táblából</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -98,7 +97,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>Hive tábla</td>
+      <td>Hive-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -106,7 +105,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>Hive nézete</td>
+      <td>Hive-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -118,7 +117,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop</td>
+      <td>Az Excel, a Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
@@ -126,7 +125,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop</td>
+      <td>Az Excel, a Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
@@ -134,19 +133,19 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop</td>
+      <td>Az Excel, a Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
-      <td>Oracle Database megtekintése</td>
+      <td>Oracle Database-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop</td>
+      <td>Az Excel, a Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
-      <td>Más (általános eszköz)</td>
+      <td>Egyéb (általános eszköz)</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
@@ -158,23 +157,23 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop, SQL Server data Tools összetevővel</td>
+      <td>Az Excel, a Power BI Desktopban, SQL Server-adatok eszközök</td>
       <td></td>
     </tr>
     <tr>
-      <td>Az SQL Data Warehouse megtekintése</td>
+      <td>Az SQL Data Warehouse-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop, SQL Server data Tools összetevővel</td>
+      <td>Az Excel, a Power BI Desktopban, SQL Server-adatok eszközök</td>
       <td></td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services dimension</td>
+      <td>SQL Server Analysis Services-dimenzió</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop</td>
+      <td>Az Excel, a Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
@@ -182,23 +181,23 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop</td>
+      <td>Az Excel, a Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services mérték</td>
+      <td>SQL Server Analysis Services-mérték</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop</td>
+      <td>Az Excel, a Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services tábla</td>
+      <td>SQL Server Analysis Services-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop</td>
+      <td>Az Excel, a Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
@@ -207,26 +206,26 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>Böngésző</td>
-      <td>Csak natív üzemmódú kiszolgálók esetén. SharePoint-módban nem támogatott.</td>
+      <td>Natív üzemmódú kiszolgálók csak. SharePoint-módban nem támogatott.</td>
     </tr>
     <tr>
       <td>SQL Server-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop, SQL Server data Tools összetevővel</td>
+      <td>Az Excel, a Power BI Desktopban, SQL Server-adatok eszközök</td>
       <td></td>
     </tr>
     <tr>
-      <td>SQL Server megtekintése</td>
+      <td>Az SQL Server-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Az Excel, a Power BI Desktop, SQL Server data Tools összetevővel</td>
+      <td>Az Excel, a Power BI Desktopban, SQL Server-adatok eszközök</td>
       <td></td>
     </tr>
     <tr>
-      <td>Teradata tábla</td>
+      <td>Teradata-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -234,7 +233,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>Teradata megtekintése</td>
+      <td>Teradata-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -246,19 +245,11 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>A Power BI Desktop</td>
+      <td>A Power BI Desktopban</td>
       <td></td>
     </tr>
     <tr>
-      <td>DB2 tábla</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>DB2 megtekintése</td>
+      <td>DB2-táblába</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -266,7 +257,15 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>Rendszer-fájl</td>
+      <td>DB2-nézet</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>A fájlrendszerben található fájl</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -314,7 +313,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>OData entitáskészlet</td>
+      <td>OData-entitáskészlet</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -322,7 +321,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>Az OData-funkció</td>
+      <td>OData-függvény</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -330,7 +329,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>PostgreSQL table</td>
+      <td>PostgreSQL-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -338,7 +337,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>PostgreSQL view</td>
+      <td>PostgreSQL-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -370,7 +369,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>Az Azure Cosmos DB gyűjtemény</td>
+      <td>Az Azure Cosmos DB-gyűjtemények</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -378,7 +377,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>Általános ODBC tábla</td>
+      <td>Általános ODBC-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -386,7 +385,7 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>Általános ODBC megtekintése</td>
+      <td>Általános ODBC-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -399,26 +398,18 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Általános eszközként ODBC közzététele</td>
+      <td>Általános ODBC eszközként közzététele</td>
     </tr>
     <tr>
-      <td>Cassandra megtekintése</td>
+      <td>Cassandra-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Általános eszközként ODBC közzététele</td>
+      <td>Általános ODBC eszközként közzététele</td>
     </tr>
     <tr>
-      <td>Sybase tábla</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Sybase megtekintése</td>
+      <td>Sybase-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -426,29 +417,37 @@ Egy nyilvános API-t vagy a kattintson a metaadatok közzététele-egyszer regis
       <td></td>
     </tr>
     <tr>
-      <td>MongoDB tábla</td>
+      <td>Sybase-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Általános eszközként ODBC közzététele</td>
+      <td></td>
     </tr>
     <tr>
-      <td>MongoDB megtekintése</td>
+      <td>MongoDB-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Általános eszközként ODBC közzététele</td>
+      <td>Általános ODBC eszközként közzététele</td>
+    </tr>
+    <tr>
+      <td>MongoDB-nézet</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td></td>
+      <td>Általános ODBC eszközként közzététele</td>
     </tr>
 </table>
 
-Ha azt szeretné, tekintse meg a támogatott adott adatforrásra, azt javasoljuk (vagy hangos támogatásához, ha már javasolt) nyissa meg a [visszajelzés fórumbejegyzést Azure Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
+Ha szeretne egy adott adatforrás támogatott lásd, javasolja azt (vagy a támogatási hangtípus, ha már javasolt) nyissa meg a [az Azure visszajelzés – fórumok a Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
 
 
-## <a name="data-source-reference-specification"></a>Adatforrás hivatkozás megadása
+## <a name="data-source-reference-specification"></a>Adatforrás-hivatkozás megadása
 > [!NOTE]
-> A **DSL struktúra** oszlop a következő táblázat felsorolja a csak a csatlakozási tulajdonságokat az "address" tulajdonságcsomag Azure Data Catalog által használt. Ez azt jelenti, hogy a "address" tulajdonságcsomag tartalmazhat az adatforrás, amely az Azure Data Catalog továbbra is fennáll, de nem használ más kapcsolat tulajdonságai.
+> A **DSL struktúra** oszlop a következő táblázat csak a csatlakozási tulajdonságokat az "address" tulajdonságcsomagot Azure Data Catalog által használt sorolja fel. "Cím" tulajdonságcsomagot, hogy az adatforrás, amely az Azure Data Catalog továbbra is fennáll, de nem használ más kapcsolat tulajdonságai is tartalmazhat.
 
 <table>
     <tr>
@@ -1396,8 +1395,8 @@ Ha azt szeretné, tekintse meg a támogatott adott adatforrásra, azt javasoljuk
     </tr>
     <tr>
       <td>Other (none of the above)</td>
-      <td>\*</td>
-      <td>\*</td>
+      <td>&#10033;</td>
+      <td>&#10033;</td>
       <td>
         
             Protocol: generic-asset

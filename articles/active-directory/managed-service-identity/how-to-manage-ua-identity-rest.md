@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: daveba
-ms.openlocfilehash: afeac0cdb24593f5b7614a145021eefd7b376be9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 7a7c4bd7ba8afe20732f092126820fb821c42195
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904025"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162184"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-rest-api-calls"></a>Lista létrehozása, és a egy felhasználóhoz hozzárendelt identitás használatával REST API-hívások törlése
 
@@ -32,7 +32,7 @@ Ebből a cikkből megismerheti, hogyan hozhatók létre, lista, és a REST API-h
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség egy rendszer által hozzárendelt, és a felhasználóhoz hozzárendelt identitás](overview.md#how-does-it-work)**.
-- Ha még nem rendelkezik Azure-fiók [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a folytatás előtt.
+- Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ha Windows használ, telepítse a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/about) vagy használja a [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon.
 - Ha használja a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/about) vagy egy [linuxos](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [a helyi Azure CLI-konzol telepítése](/azure/install-azure-cli).
 - Ha a helyi Azure CLI-konzolt használ, jelentkezzen be Azure-bA `az login` egy olyan fiókkal, amely az Azure-előfizetést, amelyet szeretne telepíteni, vagy a társított felhasználóhoz felügyelt azonosító adatokat.
@@ -42,7 +42,7 @@ Ebből a cikkből megismerheti, hogyan hozhatók létre, lista, és a REST API-h
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Hozzon létre egy felügyelt identitás hozzárendelt felhasználó 
 
-A felhasználóhoz rendelt felügyelt identitás létrehozásához használja a következő CURL-kérést az Azure Resource Manager API. Cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>`, és `<ACCESS TOKEN>` értékeket a saját értékeire:
+A felhasználóhoz rendelt felügyelt identitás létrehozásához használja a következő CURL-kérést az Azure Resource Manager API. Legalább a fióknak rendelkeznie kell rendelni a [felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkört a felhasználóhoz hozzárendelt identitás létrehozása. Cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>`, és `<ACCESS TOKEN>` értékeket a saját értékeire:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -54,14 +54,14 @@ ation": "<LOCATION>"}' -H "Content-Type: application/json" -H "Authorization: Be
 
 ## <a name="list-user-assigned-managed-identities"></a>Lista felhasználóhoz felügyelt identitásokból
 
-Felügyelt identitások a felhasználói listán, használja a következő CURL-kérést az Azure Resource Manager API.  Cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, és `<ACCESS TOKEN>` értékeket a saját értékeire:
+Felügyelt identitások a felhasználói listán, használja a következő CURL-kérést az Azure Resource Manager API. Legalább a fióknak rendelkeznie kell rendelni a [felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkört egy felhasználóhoz hozzárendelt identitás a tulajdonságok listázásához. Cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, és `<ACCESS TOKEN>` értékeket a saját értékeire:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 ## <a name="delete-a-user-assigned-managed-identity"></a>Hozzárendelt felügyelt identitás felhasználó törlése
 
-A felhasználóhoz rendelt felügyelt identitás törléséhez használja a következő CURL-kérést az Azure Resource Manager API. Cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, és `<ACCESS TOKEN>` paraméterek értékét a saját értékeire:
+A felhasználóhoz rendelt felügyelt identitás törléséhez használja a következő CURL-kérést az Azure Resource Manager API. Legalább a fióknak rendelkeznie kell rendelni a [felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör törlése a felhasználóhoz hozzárendelt identitás. Cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, és `<ACCESS TOKEN>` paraméterek értékét a saját értékeire:
 
 > [!NOTE]
 > Egy felhasználóhoz hozzárendelt identitás törlése nem távolítja el a referencia a hozzá rendelt összes erőforrást. Hozzárendelt felhasználó eltávolítása a virtuális gép lásd a CURL használatával felügyelt [távolítsa el a felhasználóhoz hozzárendelt identitás az Azure virtuális](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).

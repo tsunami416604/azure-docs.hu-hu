@@ -4,24 +4,25 @@ description: Gyakori kérdések és válaszok az Azure multi-factor Authenticati
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 06/16/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 00eab947120cdfa76de64536ddaa0600c2dff2ec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: michmcla
+ms.openlocfilehash: b4fc67acae83573db772923a94cdbb6b1c4a301f
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049411"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159841"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication – gyakran ismételt kérdések
 
 Ez a GYIK az Azure multi-factor Authentication és a multi-factor Authentication szolgáltatás használatával kapcsolatos gyakori kérdésekre ad választ. Azt bontani a szolgáltatással kapcsolatos kérdéseit általában számlázási modellek, felhasználói élményt, és a hibaelhárítás.
 
 ## <a name="general"></a>Általános kérdések
+
 **K: hogyan kezeli az Azure multi-factor Authentication kiszolgáló felhasználói adatok?**
 
 A multi-factor Authentication kiszolgáló felhasználói adatok csak a helyszíni kiszolgálókon tárolt. A felhőben nincsenek állandó felhasználói adatok. Amikor a felhasználó kétlépéses ellenőrzést végez, a multi-factor Authentication kiszolgáló adatokat küld az Azure multi-factor Authentication hitelesítés felhőalapú szolgáltatás. Multi-factor Authentication-kiszolgáló és a felhőbeli multi-factor Authentication szolgáltatás közötti kommunikációhoz használ Secure Sockets Layer (SSL) vagy Transport Layer Security (TLS) 443-as kimenő porton keresztül.
@@ -60,6 +61,7 @@ A kanadai Microsoft használja a következő rövid SMS-kódok:
 A Microsoft nem garantálja konzisztens SMS-ben vagy a multi-factor Authentication Voice-alapú Rákérdezés az azonos számát. Léptethetünk, hogy a felhasználók Microsoft adhatók hozzá, vagy rövid kód azt módosításokat útvonal SMS mailek kézbesítési eredményességét javítása érdekében bármikor eltávolíthatja. A Microsoft nem támogatja a rövid kód országok mellett az Egyesült Államok és Kanada
 
 ## <a name="billing"></a>Számlázás
+
 A legtöbb számlázási kérdésekhez választ vagy hivatkozással a [multi-factor Authentication díjszabása oldalon](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) vagy ismertető dokumentációban [beszerzése az Azure multi-factor Authentication](concept-mfa-licensing.md).
 
 **K: van saját szervezet díjat számítunk fel a telefonhívások és a hitelesítéshez használt szöveges üzenetek küldéséhez?**
@@ -119,7 +121,6 @@ Az Azure Active Directory szükség a licencelési modell, mert licenceket hozz�
 Remélhetőleg minden felhasználó konfigurálva egynél több ellenőrzési módszert. Tanácsolja nekik, hogy próbáljanak újra bejelentkeznie, ezúttal azonban válasszanak egy másik ellenőrzési módszert a bejelentkezési oldalon.
 
 A felhasználók mutathat a [végfelhasználói – hibaelhárítási útmutató](../user-help/multi-factor-authentication-end-user-troubleshoot.md).
-
 
 **K: Mit tegyek, ha az egyik nem kérhető le fiókjához?**
 
@@ -196,8 +197,8 @@ Több oka, hogy sikerült a rendszer kérni fogja a biztonsági adatok regisztr�
 - A szervezet által létrehozott és a egy MFA regisztrációs szabályzattal, amely a telepítve van a felhasználó engedélyezve van.
 - A felhasználó korábban regisztrálva a többtényezős hitelesítés, de úgy döntött, hogy mivel a rendszergazda letiltotta egy ellenőrzési módszert. A felhasználó ezért haladjon át MFA-regisztráción, újra egy új alapértelmezett ellenőrzési módszert.
 
-
 ## <a name="errors"></a>Hibák
+
 **K: Mi felhasználók tegye, ha azok egy "hitelesítési kérelmet nem egy aktivált fiókhoz" hibaüzenet jelenik meg mobilapp-értesítések használata esetén?**
 
 Tanácsolja nekik, hogy az alábbi eljárás segítségével eltávolíthatja a fiókját a mobilalkalmazásból, majd adja hozzá újra:
@@ -214,6 +215,7 @@ A 0x800434D4L hiba akkor fordul elő, amikor megpróbál bejelentkezni egy böng
 Megoldás esetében ez a hiba, hogy rendelkezzen külön felhasználói fiókok rendszergazdai kapcsolatos és a nem rendszergazdai műveletek. Később a rendszergazdai fiókot és a nem rendszergazdai fiókban között postaládák kapcsolat, így bejelentkezhet az Outlookot a nem rendszergazdai fiók használatával. Ez a megoldás kapcsolatos további információkért tekintse meg, hogyan [lehetővé teheti a rendszergazda megnyithatja és megtekintheti a felhasználók postaládáihoz tartalmát](http://help.outlook.com/141/gg709759.aspx?sl=1).
 
 ## <a name="next-steps"></a>További lépések
+
 Ha a kérdését itt nem válaszolt, hagyja a megjegyzések, az oldal alján. Vagy a segítségkéréshez néhány további lehetőség:
 
 * Keresés a [Microsoft támogatási tudásbázisát](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) megoldások gyakori technikai problémákra.

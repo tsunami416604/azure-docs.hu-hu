@@ -1,64 +1,64 @@
 ---
-title: Hogyan jelszavakat az Azure AD-bA
-description: A envirionment dinamikusan tiltani az Azure AD passwrords a gyenge jelszavakat bA
+title: Hogyan jelszavak letiltása az Azure ad-ben
+description: Az Azure ad-ben dinamikusan letiltott passwrords a envirionment a gyenge jelszavakat letiltása
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 0c1517f94d4a6d59077b62614eec8fef665b1529
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 30d8260d78b3b46a9f4caea63f6bed818935a9a1
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296140"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158743"
 ---
-# <a name="configuring-the-custom-banned-password-list"></a>A tiltott egyénijelszó-lista konfigurálása
+# <a name="configuring-the-custom-banned-password-list"></a>A letiltott jelszavak egyéni lista konfigurálása
 
 |     |
 | --- |
-| Az Azure AD-jelszó protection és a tiltott egyénijelszó listájának az Azure Active Directory nyilvános előzetes verziójú funkciók. Az előzetes verziójú funkciók kapcsolatos további információkért lásd: [kiegészítő használati feltételek Microsoft Azure előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Az Azure AD jelszóvédelem és a letiltott jelszavak egyéni lista a nyilvános előzetes verziójú funkciók az Azure Active Directory. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-Számos szervezet található, a felhasználók közös helyi szavakat, például iskolai, csapatának vagy famous személy, így könnyű kitalálni a jelszavak létrehozása. A Microsoft egyéni tiltott jelszó lista lehetővé teszi a szervezetek értékelje ki és letiltásához karakterláncok hozzáadása, mellett a globális tiltott jelszó lista, amikor a felhasználók és rendszergazdák próbálnak módosítása vagy a jelszó alaphelyzetbe állítása.
+Számos szervezet található, a felhasználók létre közös helyi szavakat, például egy iskolai, focicsapata vagy híres személy, így könnyen kitalálható jelszavakat. A Microsoft egyéni letiltott jelszavak lista lehetővé teszi a szervezetek számára, hogy adja hozzá a karakterláncok kiértékelése és letiltására, mellett a globális le van tiltva jelszólista, ha a felhasználók és rendszergazdák próbál módosítani vagy a jelszó alaphelyzetbe állítása.
 
 ## <a name="add-to-the-custom-list"></a>Az egyéni lista hozzáadása
 
-A tiltott egyénijelszó-lista konfigurálása az Azure Active Directory Premium P1 és P2-licencre van szükség. Részletes információkat az Azure Active Directory licencelésével kapcsolatban, tekintse meg a [Azure Active Directory árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/active-directory/). |}
+A letiltott jelszavak egyéni lista konfigurálása egy Azure Active Directory Premium P1 vagy P2-licenc szükséges. Részletes információkat az Azure Active Directory licenceléssel kapcsolatos, tekintse meg a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/). |}
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) és keresse meg a **Azure Active Directory**, **hitelesítési módszerek**, majd **jelszó protection (előzetes verzió)**.
-1. A beállítás **érvényesítése egyéni lista**található **Igen**.
-1. Adja hozzá a karakterláncok a **egyéni tiltott jelszó lista**, soronként egy karakterlánc
-   * A tiltott egyénijelszó lista legfeljebb 1000 szavak tartalmazhat.
-   * Az egyéni tiltott jelszó lista azonban nem.
-   * Az egyéni tiltott jelszó lista közös karakter helyettesítő figyelembe veszi.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory**, **hitelesítési módszerek**, majd **jelszavas védelem (előzetes verzió)**.
+1. A beállítás **érvényesítése egyéni lista**, az **Igen**.
+1. Adja hozzá a karakterláncok a **egyéni le van tiltva a jelszó lista**, soronként egy karakterlánc
+   * A letiltott jelszavak egyéni lista legfeljebb 1000 szavakat is tartalmazhat.
+   * A letiltott jelszavak egyéni lista egy kis-és nagybetűket.
+   * A letiltott jelszavak egyéni lista közös karaktert helyettesítő figyelembe veszi.
       * Példa: "o" és "0" vagy "a" és "@"
-   * A minimális karakterlánc hossza 4 karakter, de legfeljebb 16 karakter hosszúságú lehet.
-1. Ha minden karakterlánc hozzáadását, kattintson **mentése**.
+   * A karakterlánc minimális hosszának 4 karakter, a maximális 16 karakternél.
+1. Minden karakterláncok hozzáadásakor kattintson **mentése**.
 
 > [!NOTE]
-> Az egyéni tiltott jelszó lista alkalmazni kívánt frissítések több óráig is tarthat.
+> A alkalmazni egyéni letiltott jelszavak lista frissítések több óráig is tarthat.
 
-![Az Azure-portálon a hitelesítési módszerek egyéni tiltott jelszó listájának módosítása](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
+![Az Azure Portalon a hitelesítési módszerek egyéni letiltott jelszavak listájának módosítása](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
 
 ## <a name="how-it-works"></a>Működés
 
-Minden alkalommal, amikor egy felhasználó vagy rendszergazda visszaállítja, vagy egy Azure AD-jelszó módosítja azt áthaladó annak ellenőrzéséhez, hogy nincs a listán a tiltott jelszavak listája. Ez az ellenőrzés beállítása és módosítása az Azure AD jelszavakat tartalmazza.
+Minden alkalommal, amikor egy felhasználó vagy rendszergazda visszaállítja, vagy egy Azure AD-jelszó megváltozik, végig a letiltott jelszavak listáit, győződjön meg arról, hogy nem szerepel a listában. Ez az ellenőrzés beállítása és módosítása az Azure AD-vel jelszavakat tartalmazza.
 
 ## <a name="what-do-users-see"></a>Mit látnak a felhasználók?
 
-Amikor a felhasználó megkísérli a jelszó alaphelyzetbe állítása, amelyet akkor kell tiltani, akkor a következő hibaüzenet jelenik:
+Amikor egy felhasználó megpróbál úgy, hogy az lenne le van tiltva a jelszó alaphelyzetbe állítása, megjelenik a következő hibaüzenetet kapja:
 
-Sajnos a jelszó egy szó, kifejezés vagy mintát, amely alapján a jelszó könnyen kitalálható tartalmaz. Próbálkozzon újra egy másik jelszót.
+Sajnos a jelszó tartalmaz egy szót, kifejezést vagy mintát, amely lehetővé teszi a jelszó könnyen kitalálható. Próbálkozzon újra egy másik jelszóval.
 
 ## <a name="next-steps"></a>További lépések
 
-[A tiltott jelszó listák elméleti áttekintése](concept-password-ban-bad.md)
+[A letiltott jelszavak listáit fogalmi áttekintése](concept-password-ban-bad.md)
 
-[Az Azure AD jelszóvédelem elméleti áttekintése](concept-password-ban-bad-on-premises.md)
+[Az Azure AD jelszóvédelem fogalmi áttekintése](concept-password-ban-bad-on-premises.md)
 
-[A helyszíni integrációjának engedélyezése az a tiltott jelszavak listája](howto-password-ban-bad-on-premises.md)
+[A letiltott jelszavak listáit a helyszíni integráció engedélyezése](howto-password-ban-bad-on-premises.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 11af7a7a8acde263ad278239546e145245343581
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 067404193507f9787c994e82267679737ebe4832
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437195"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145417"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az Azure-beli virtuális hálózatok Kezdje itt az adatokat további: [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -111,7 +111,7 @@ Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szó
 | * / 80, 443 |Bejövő |TCP |AZ INTERNET / VIRTUAL_NETWORK|Ügyfél-kommunikációt és az API Management|Külső |
 | * / 3443 |Bejövő |TCP |AZ INTERNET / VIRTUAL_NETWORK|Az Azure portal, Powershell felügyeleti végponthoz |Belső |
 | * / 80, 443 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Az Azure Storage függőségi**, Azure Service Bus és az Azure Active Directory (ha vannak ilyenek).|Külső és belső |
-| * / 1433 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Hozzáférés az Azure SQL-végpontokra** |Külső és belső |
+| * / 1433 |Kimenő |TCP |VIRTUAL_NETWORK / SQL|**Hozzáférés az Azure SQL-végpontokra** |Külső és belső |
 | * / 5672 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Eseményközpont-szabályzat és a monitorozási ügynök a napló függőséget |Külső és belső |
 | * / 445 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|A git Azure-fájlmegosztás függőség |Külső és belső |
 | * / 1886 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|A Resource Health állapot közzététele szükséges |Külső és belső |

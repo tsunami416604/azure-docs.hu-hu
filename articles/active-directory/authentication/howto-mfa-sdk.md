@@ -1,76 +1,76 @@
 ---
-title: Az egyéni alkalmazások az Azure MFA szoftverfejlesztői
-description: Ez a cikk bemutatja, hogyan töltse le és engedélyezze a kétlépéses ellenőrzést, az egyéni alkalmazások az Azure MFA SDK segítségével.
+title: Az Azure MFA software development Kitet, az egyéni alkalmazások
+description: Ez a cikk bemutatja, hogyan tölthet le és engedélyezze a kétlépéses ellenőrzést, az egyéni alkalmazások az Azure MFA SDK használatával.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 11/29/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 28b48df27bf9b2f7176b886ef684f9281b3c4f37
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: 6b82ba53e7a469b01d77865831c2f5fb37f71044
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866037"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160841"
 ---
-# <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Building a multi-factor Authentication egyéni alkalmazásokba (SDK)
+# <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Az egyéni alkalmazásokba (SDK) Building többtényezős hitelesítés
 
 > [!IMPORTANT]
-> Bejelentettük az Azure Multi-Factor Authentication szoftverfejlesztői készlet (SDK) elavulását. Ez a funkció már nem lesz támogatott új ügyfelek esetén. A jelenlegi ügyfelek 2018. november 14-ig használhatják az SDK-t. Ezután az SDK felé indított hívások meghiúsulnak. 
+> Bejelentettük az Azure Multi-Factor Authentication szoftverfejlesztői készlet (SDK) elavulását. Ez a funkció már nem lesz támogatott az új ügyfelek. A jelenlegi ügyfelek 2018. november 14-ig használhatják az SDK-t. Ezután az SDK felé indított hívások meghiúsulnak. 
 
-Az Azure multi-factor Authentication Software Development Kit (SDK) lehetővé teszi a kétlépéses ellenőrzést közvetlenül folyamatokba a bejelentkezés vagy a tranzakció alkalmazásai az Azure AD-bérlő létrehozása.
+Az Azure multi-factor Authentication Software Development Kit (SDK) lehetővé teszi, hogy hozhat létre a kétlépéses ellenőrzést közvetlenül a bejelentkezési vagy tranzakciós folyamatokat az alkalmazások az Azure AD-bérlőben.
 
-A multi-factor Authentication SDK C#, Visual Basic (.NET), Java, Perl, PHP és Ruby érhető el. Az SDK-t kínál egy vékony kétlépéses ellenőrzést. Minden kell írnia a kódot, beleértve a megjegyzésként forráskódfájl, például fájlok és a részletes információs fájl tartalmazza. Minden SDK a tanúsítvány és titkos kulcsot, a többtényezős hitelesítési szolgáltató egyedi tranzakciók is tartalmaz. Mindaddig, amíg még meg olyan szolgáltatót, letöltheti az SDK legtöbb nyelveket és formátumban, szükség szerint.
+A multi-factor Authentication SDK C#, Visual Basic (.NET), a Java, Perl, a PHP és Ruby érhető el. Az SDK-t kínál egy dinamikus kiosztású kétlépéses ellenőrzést. Minden kell írnia a kódot, beleértve a megjegyzésekkel forráskódfájljait, példa fájlt és a egy részletes információs fájl tartalmazza. Az SDK is tartalmaz, egy tanúsítvány és titkos kulcsot, a multi-factor Authentication-szolgáltató egyedi. Mindaddig, amíg a szolgáltató rendelkezik, letöltheti az SDK legtöbb nyelvek és formátumban, igény szerint.
 
-A multi-factor Authentication SDK API-k szerkezete felettébb egyszerű. Győződjön meg a multi-factor Authentication beállítás paraméterek (például a hitelesítési mód) és a felhasználói adatokat (például a telefonszám vagy a PIN-kód érvényesítése) API hívása egy funkcióval. Az API-k lefordítani a felhőalapú Azure multi-factor Authentication szolgáltatást a webes szolgáltatások kérelmek függvény hívása. Az összes hívás tartalmaznia kell egy hivatkozás, amely minden SDK megtalálható titkos tanúsítványra.
+A multi-factor Authentication SDK-t az API-k szerkezete használata egyszerű. Győződjön meg a multi-factor Authentication beállítás paraméterek (például a hitelesítési mód) és a felhasználói adatok (például a telefonszám vagy érvényesíteni a PIN-kódot) API-hívás egy funkcióval. Az API-k fordítja le a függvény hívása a felhőalapú Azure multi-factor Authentication szolgáltatás webes szolgáltatások kérelmeivel be. Összes hívás tartalmaznia kell egy hivatkozást a privát tanúsítványt, amely minden SDK része.
 
-Mivel az API-k nincs hozzáférése a felhasználók számára az Azure Active Directoryban regisztrálva, meg kell adni egy fájl vagy az adatbázis felhasználói adatokat. Is az API-k nem tartalmaz regisztrációs vagy a felhasználó felügyeleti funkciókat, ezért kell ezeket a folyamatokat az alkalmazásba.
+Mivel az API-k nem rendelkeznek hozzáféréssel az Azure Active Directoryban regisztrált felhasználók, meg kell adnia egy fájl vagy az adatbázis felhasználói adatokat. Emellett az API-k nem biztosítanak regisztrációs vagy a felhasználó-felügyeleti funkciókat, így kell ezeket a folyamatokat építve az alkalmazásba.
 
 > [!IMPORTANT]
-> Az SDK letöltéséhez létre kell hoznia egy Azure Multi-Factor Auth szolgáltatót, akkor is, ha rendelkezik Azure MFA, AAD Premium vagy EMS licencekkel. Ha erre a célra az Azure többtényezős hitelesítésszolgáltató létrehozása, és már rendelkezik licenccel, ügyeljen arra, hogy a szolgáltató létrehozása a **Per Enabled User** modell. Ezt követően kapcsolja a szolgáltatót az Azure MFA, Azure AD Premium vagy EMS licenceket tartalmazó könyvtárhoz. Ez a konfiguráció biztosítja, hogy Ön csak számlázása Amennyiben több egyedi felhasználók, mint a saját licencek száma a SDK használatával.
+> Az SDK letöltéséhez létre kell hoznia egy Azure Multi-Factor Auth szolgáltatót, akkor is, ha rendelkezik Azure MFA, AAD Premium vagy EMS licencekkel. Ha erre a célra az Azure multi-factor Auth szolgáltató létrehozása, és már rendelkezik licencekkel, ügyeljen arra, hogy a szolgáltató létrehozása a **engedélyezett felhasználónként** modell. Ezt követően kapcsolja a szolgáltatót az Azure MFA, Azure AD Premium vagy EMS licenceket tartalmazó könyvtárhoz. Ez a konfiguráció biztosítja, hogy csak a számlázás Ha több egyedi felhasználója használja az SDK-t, mint a saját licencek száma.
 
 
 ## <a name="download-the-sdk"></a>Az SDK letöltése
-Az Azure multi-factor Authentication SDK letöltése szükséges egy [Azure többtényezős hitelesítésszolgáltató](concept-mfa-authprovider.md).  Ehhez a teljes Azure-előfizetéssel, akkor is, ha az Azure MFA, az Azure AD Premium vagy a nagyvállalati mobilitási csomag licencek a tulajdonosa. A nyilvános módszerek az SDK letöltése leszerelését lett, mert az SDK elavult. Ha le kell töltenie az SDK nyisson meg egy támogatási esetet a Microsofttal. Az SDK-t, amely már használja az SDK-ügyfél számára csak valósul meg. Új ügyfelek nem lesznek előkészítve.
+Az Azure multi-factor Authentication SDK letöltése szükséges egy [Azure multi-factor Auth szolgáltató](concept-mfa-authprovider.md).  Ehhez egy teljes körű Azure-előfizetéssel, akkor is, ha az Azure MFA, Azure AD prémium vagy nagyvállalati mobilitási csomag licenceket a tulajdonosa. A nyilvános módszerek az SDK letöltése rendelkezik már leszerelt, mivel az SDK elavult. A Microsoft kell nyitnia egy támogatási esetet, ha le kell töltenie az SDK-t. Az SDK-t csak az SDK-t már használó ügyfelek számára megadott. Új ügyfeleknek nem lesz regisztrálva.
 
 ## <a name="whats-in-the-sdk"></a>Mi az az SDK-ban
-Az SDK-t a következőket tartalmazza:
+Az SDK a következőket tartalmazza:
 
-* **INFORMÁCIÓS**. Új vagy meglévő alkalmazásokban a multi-factor Authentication API-k használatát ismerteti.
-* **Forrásfájlokat** a többtényezős hitelesítés
-* **Ügyféltanúsítvány** , amelyekkel a multi-factor Authentication szolgáltatással folytatott kommunikációhoz
+* **INFORMÁCIÓS**. Ismerteti, hogyan használhatja a multi-factor Authentication hitelesítés API-k egy új vagy meglévő alkalmazásban.
+* **Forrásfájlokat** a multi-factor Authentication
+* **Ügyféltanúsítvány** , amellyel a multi-factor Authentication szolgáltatással folytatott kommunikációhoz
 * **Titkos kulcs** a tanúsítvány
-* **Hívás eredményeit.** Hívási eredménykódok listáját. Ez a fájl megnyitásához egy alkalmazás használatát formázás, például a WordPad szóra. A hívási eredménykódok segítségével tesztelése és hibakeresése a multi-factor Authentication végrehajtása az alkalmazásban. Nincsenek hitelesítési állapotkódok.
-* **Példák.** A multi-factor Authentication használatának megvalósítási mintakód.
+* **Hívás eredménye.** Hívási eredménykódok listája. Szöveg formázása, például a WordPad alkalmazás használata a fájl megnyitásához. A hívási eredménykódok használatával tesztelése és hibakeresése a multi-factor Authentication végrehajtása az alkalmazásban. Azok nem hitelesítési állapotkódok.
+* **Példák.** A multi-factor Authentication szolgáltatás egy alapszintű működő megvalósítását mintakód.
 
 > [!WARNING]
-> Az ügyféltanúsítvány akkor egyedi személyes tanúsítványt, amelyik kifejezetten jött létre. Ne ossza, vagy elveszíti a fájl. A kulcs biztonsága érdekében a multi-factor Authentication szolgáltatással folytatott kommunikáció biztosításához is.
+> Az ügyféltanúsítvány nem kifejezetten az Ön számára létrehozott egyedi privát tanúsítvány. Ne ossza, vagy elveszíti a fájl. Fontos a fiókkulcsot, hogy a multi-factor Authentication szolgáltatással folytatott kommunikáció biztonságát.
 
 ## <a name="code-sample"></a>Kódminta
-A fenti jeleníti meg az API-k használata az Azure multi-factor Authentication SDK a szabványos mód hang hívás ellenőrzési hozzá az alkalmazáshoz. Szabványos módban a telefonhívások, amely a # billentyűt lenyomásával válaszol a felhasználó.
+A mintakód bemutatja, hogyan az Azure multi-factor Authentication SDK-t az API-k használatával adja hozzá az alkalmazáshoz szabványos mód hangalapú alapuló ellenőrzést kezdeményez. Normál módban, amely a # billentyűt lenyomásával válaszol a felhasználó telefonhívást.
 
-Ez a példa a C# .NET 2.0 multi-factor Authentication SDK a C# kiszolgálóoldali logika egy egyszerű ASP.NET-alkalmazások, de a folyamat hasonlít más nyelveken. Az SDK tartalmaz forrásfájlokat, nem végrehajtható fájlok, mert a fájlok létrehozása és azok hivatkozik, vagy közé tartozik az azokat közvetlenül a.
+Ebben a példában egy egyszerű ASP.NET-alkalmazás a C# kiszolgálóoldali logikát a C# .NET 2.0 multi-factor Authentication SDK-t használ, de a folyamat hasonlít az egyéb nyelveken. Az SDK tartalmaz forrásfájlokat, nem a végrehajtható fájlokat, mert a fájlok fejlesztését és hivatkozni tudjon rájuk, és belefoglalhatja őket közvetlenül az alkalmazás.
 
 > [!NOTE]
-> Többtényezős hitelesítés megvalósításához, a további módszer segítségével (telefonhívást vagy SMS-t), másodlagos vagy harmadlagos ellenőrzési kiegészíti az elsődleges hitelesítési módszert (felhasználónév és jelszó). Ezek a módszerek nem elsődleges hitelesítési módszerek tervezték.
+> Multi-factor Authentication implementálásakor módokat kell használnia további (telefonhívás vagy SMS-t), a másodlagos vagy harmadlagos ellenőrzési az elsődleges hitelesítési módszert (felhasználónév és jelszó) lehetőséget. Ezek a módszerek nem lett kialakítva, elsődleges hitelesítési módszereként.
 
-### <a name="code-sample-overview"></a>Kód a minta áttekintése
-A mintakód egyszerű bemutató webalkalmazás # kulcs választ a telefonhívások segítségével ellenőrzi a felhasználó hitelesítése. A telefonhívás tényező szabványos mód néven a multi-factor Authentication szolgáltatásra.
+### <a name="code-sample-overview"></a>Kód minta áttekintése
+A mintakód egy egyszerű bemutató webalkalmazás telefonhívást az # kulcs választ ad a felhasználói hitelesítés segítségével. Ez a hívás tényező a multi-factor Authentication szabványos mód néven ismert.
 
-Az ügyféloldali kódot nem tartalmazza a multi-factor Authentication-specifikus elemeket. A további hitelesítési tényezők függetlenek az elsődleges hitelesítés, mert a meglévő bejelentkezési felületen módosítása nélkül is hozzá. Az a multi-factor Authentication SDK API-k lehetővé teszik, hogy a felhasználói élmény testreszabásáról, de előfordulhat, hogy nem kell minden bármit módosíthat.
+Az ügyféloldali kódot nem tartalmazza a multi-factor Authentication-specifikus elemeket. Mivel a további hitelesítési tényezők független az elsődleges hitelesítés, felveheti őket a meglévő bejelentkezési felület módosítása nélkül. A multi-factor Authentication SDK-t az API-k segítségével testre szabhatja a felhasználói élményt, de előfordulhat, hogy nem kell minden bármin változtatni.
 
-A kiszolgálóoldali kódot normál módú hitelesítést hozzáadja a 2. lépés. Létrehoz egy PfAuthParams objektum normál módú ellenőrzéshez szükséges paraméterekkel rendelkező: felhasználónév, telefon számát, és a mód és az elérési útját az ügyféltanúsítvány (CertFilePath), amelyre azonban szükség van minden egyes hívásban. Minden paraméterek PfAuthParams bemutatásához tekintse meg a példa az SDK-ban.
+A kiszolgálóoldali kód hozzáadja a normál módú hitelesítést a 2. lépés. Azt PfAuthParams objektumot hoz létre, amelyek a normál módú ellenőrzéshez szükséges paraméterekkel: felhasználónév, telefon, számot, és mód és az ügyféltanúsítvány (CertFilePath), amely azonban szükséges minden egyes hívásban elérési útját. Minden paraméter PfAuthParams bemutatójáért tekintse meg a példafájl az SDK-ban.
 
-A következő kódot a PfAuthParams objektum átadása pf_authenticate() függvény. A visszatérési érték azt jelzi, a sikeres vagy sikertelen volt, a hitelesítés. A kimenő paraméterek callStatus és errorID, további hívás eredménye információkat tartalmaznak. A hívási eredménykódok szerepelnek a hívás eredménye fájlban az SDK-ban.
+Ezután a kód a PfAuthParams objektum továbbítja a pf_authenticate() függvény. A visszaadott érték azt jelzi, hogy a sikeres vagy sikertelen a hitelesítés. A paraméterek, callStatus és errorID, további hívás eredménye információkat tartalmaznak. A hívási eredménykódok szerepelnek a hívási eredmények fájlban az SDK-ban.
 
-A minimális végrehajtása néhány sor is beírhatók. Azonban az éles kódban, hogy tartalmazhat kifinomultabb hibakezelés, az adatbázis további kódot és jobb felhasználói élményt.
+Ez a minimális megvalósítás megírható néhány sort. Azonban az éles kódban, tartalmazhat kifinomultabb hibakezelés, az adatbázis további kódot és továbbfejlesztett felhasználói felületet.
 
 ### <a name="web-client-code"></a>Webalkalmazás ügyféloldali kódot
-Webes ügyfél kódja egy bemutató lap a következő:
+Az alábbiakban látható a webes ügyfél kód bemutató lapon.
 
     <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="\_Default" %>
 
@@ -104,7 +104,7 @@ Webes ügyfél kódja egy bemutató lap a következő:
 
 
 ### <a name="server-side-code"></a>Kiszolgálóoldali kódolás
-Az alábbi kiszolgálóoldali kódban a multi-factor Authentication konfigurálva és futtassa a 2. Standard (MODE_STANDARD) módja a telefonhívások, amelyhez a felhasználó a # billentyűt lenyomásával válaszol.
+A következő szerveroldali kódot, a multi-factor Authentication konfigurálja és futtassa a 2. lépésben. Standard mód (MODE_STANDARD), amelyhez a felhasználó válaszol a # billentyűt lenyomásával telefonhívást.
 
     using System;
     using System.Collections.Generic;

@@ -3,7 +3,7 @@ title: Linux rendszerű virtuális gép létrehozása az Azure-ban több hálóz
 description: Ismerje meg, hogyan hozhat létre Linux rendszerű virtuális gép több hálózati adapter csatlakozik az Azure CLI 2.0-s vagy a Resource Manager-sablonok használatával.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
@@ -12,19 +12,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2017
-ms.author: cynthn
-ms.openlocfilehash: 257b80c30823be41893be8659845d4fcbc922da3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.date: 06/07/2018
+ms.author: iainfou
+ms.openlocfilehash: aae71dafd3685e44975049c4287c083abc2330bc
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932272"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144856"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Hogyan hozhat létre Linux rendszerű virtuális gép az Azure-ban több hálózati kártyák
 Létrehozhat egy virtuális gépet (VM) az Azure-ban, amely rendelkezik csatlakoztatott több virtuális hálózati adapter (NIC). Gyakran előfordul, hogy az előtér- és háttér-kapcsolat vagy egy figyelési vagy biztonsági mentési megoldás számára kijelölt hálózat különböző alhálózatokon. Ez a cikk részletesen csatlakozik, több hálózati adapterrel rendelkező virtuális gép létrehozása és hozzáadása, vagy távolítsa el a hálózati adapterek meglévő virtuális gépről. Különböző [Virtuálisgép-méretek](sizes.md) támogatja a hálózati adapterek különböző számú, tehát ennek megfelelően az a virtuális gép méretezéséhez.
 
-Ez a cikk részletesen bemutatja az Azure CLI 2.0 használatával több hálózati adapterrel rendelkező virtuális gép létrehozásához. 
+Ez a cikk részletesen bemutatja az Azure CLI 2.0 használatával több hálózati adapterrel rendelkező virtuális gép létrehozásához. Az [Azure CLI 1.0-s](multiple-nics-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
 
 
 ## <a name="create-supporting-resources"></a>Hozzon létre a támogató erőforrások
@@ -44,9 +44,9 @@ Hozzon létre a virtuális hálózatba a [az network vnet létrehozása](/cli/az
 az network vnet create \
     --resource-group myResourceGroup \
     --name myVnet \
-    --address-prefix 192.168.0.0/16 \
+    --address-prefix 10.0.0.0/16 \
     --subnet-name mySubnetFrontEnd \
-    --subnet-prefix 192.168.1.0/24
+    --subnet-prefix 10.0.1.0/24
 ```
 
 Hozzon létre egy alhálózatot a háttér-forgalom [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). A következő példában létrehozunk egy nevű alhálózatot *mySubnetBackEnd*:
@@ -56,7 +56,7 @@ az network vnet subnet create \
     --resource-group myResourceGroup \
     --vnet-name myVnet \
     --name mySubnetBackEnd \
-    --address-prefix 192.168.2.0/24
+    --address-prefix 10.0.2.0/24
 ```
 
 Hozzon létre egy hálózati biztonsági csoport [az network nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). A következő példa a *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot hozza létre:
@@ -86,7 +86,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Hozzon létre egy virtuális Gépet, és a hálózati adapter csatolása
-A virtuális gép létrehozásakor adja meg a hálózati adapterek segítségével létrehozott `--nics`. Is kell körültekintően járjon el a virtuális gép méretének kiválasztásakor. A hálózati adapterrel is hozzáadhat egy virtuális gép teljes száma korlátozva van. Tudjon meg többet [Linux Virtuálisgép-méretek](sizes.md). 
+A virtuális gép létrehozásakor adja meg a hálózati adapterek segítségével létrehozott `--nics`. Is kell körültekintően járjon el a virtuális gép méretének kiválasztásakor. A hálózati adapterrel is hozzáadhat egy virtuális gép teljes száma korlátozva van. Tudjon meg többet [Linux Virtuálisgép-méretek](sizes.md).
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
 
@@ -187,75 +187,68 @@ Teljes példát olvashat [létrehozása a Resource Manager-sablonokkal több há
 Útválasztási táblázatok hozzáadása a vendég operációs rendszer által ismertetett lépéseket követve [a vendég operációs rendszer konfigurálása több hálózati adapterrel](#configure-guest-os-for- multiple-nics).
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>Több hálózati adapterrel a vendég operációs rendszer konfigurálása
-Linux virtuális géphez több hálózati adapter hozzáadásakor meg kell hozzon létre útválasztási szabályokat. Ezek a szabályok lehetővé teszik a virtuális gép küldjön és fogadjon forgalmat, amelyhez tartozik egy adott hálózati adapterhez. Egyébként, forgalom, amelyhez tartozik *eth1*, például nem tudja feldolgozni a megfelelően definiált alapértelmezett útvonalát.
 
-Útválasztási probléma kijavításához először adjon hozzá két útválasztási táblázatokat */etc/iproute2/rt_tables* módon:
+Az előző lépésekben létrehozott egy virtuális hálózatot és alhálózatot, csatolt hálózati adapter, majd létrehozott egy virtuális Gépet. Egy nyilvános IP cím és hálózati biztonsági csoport szabályai, amelyek lehetővé teszik az SSH-forgalmat nem jöttek létre. A vendég operációs rendszer konfigurálása több hálózati adapterrel, meg kell távoli kapcsolatok engedélyezése, és helyileg futtasson parancsokat a virtuális gépen.
 
-```bash
-echo "200 eth0-rt" >> /etc/iproute2/rt_tables
-echo "201 eth1-rt" >> /etc/iproute2/rt_tables
+SSH-forgalom engedélyezéséhez hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt az [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) módon:
+
+```azurecli
+az network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name allow_ssh \
+    --priority 101 \
+    --destination-port-ranges 22
 ```
 
-A módosításnak állandó és alkalmazott hálózati verem aktiválása során, a Szerkesztés */etc/sysconfig/network-scripts/ifcfg-eth0* és */etc/sysconfig/network-scripts/ifcfg-eth1*. A sor ALTER *"NM_CONTROLLED = yes"* való *"NM_CONTROLLED = nem"*. Ebben a lépésben nélkül további szabályok/útválasztását rendszer nem alkalmazza automatikusan.
- 
-Ezután kiterjesztheti az útválasztási táblázatok. Tegyük fel, a következő beállítás van érvényben:
+Hozzon létre egy nyilvános IP-címet [az network public-ip létrehozása](/cli/azure/network/public-ip#az-network-public-ip-create) és rendelje hozzá az első hálózati adapter [az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update):
 
-*Útválasztás*
+```azurecli
+az network public-ip-address create --resource-group myResourceGroup --name myPublicIP
 
-```bash
-default via 10.0.1.1 dev eth0 proto static metric 100
-10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.4 metric 100
-10.0.1.0/24 dev eth1 proto kernel scope link src 10.0.1.5 metric 101
-168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
-169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
+az network nic ip-config update \
+    --resource-group myResourceGroup \
+    --nic-name myNic1 \
+    --name ipconfig1 \
+    --public-ip-addres myPublicIP
 ```
 
-*Felületek*
+A nézet nyilvános IP-cím a virtuális gép megtekintéséhez használja [az vm show](/cli/azure/vm#az-vm-show) módon:
 
-```bash
-lo: inet 127.0.0.1/8 scope host lo
-eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
-eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
+```azurecli
+az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Meg szeretné majd hozza létre a következő fájlokat, és adja hozzá a megfelelő szabályok és útvonalak minden egyes:
-
-- */etc/sysconfig/network-scripts/rule-eth0*
-
-    ```bash
-    from 10.0.1.4/32 table eth0-rt
-    to 10.0.1.4/32 table eth0-rt
-    ```
-
-- */etc/sysconfig/network-scripts/route-eth0*
-
-    ```bash
-    10.0.1.0/24 dev eth0 table eth0-rt
-    default via 10.0.1.1 dev eth0 table eth0-rt
-    ```
-
-- */etc/sysconfig/network-scripts/rule-eth1*
-
-    ```bash
-    from 10.0.1.5/32 table eth1-rt
-    to 10.0.1.5/32 table eth1-rt
-    ```
-
-- */etc/sysconfig/network-scripts/route-eth1*
-
-    ```bash
-    10.0.1.0/24 dev eth1 table eth1-rt
-    default via 10.0.1.1 dev eth1 table eth1-rt
-    ```
-
-A módosítások életbe léptetéséhez indítsa újra a *hálózati* szolgáltatást az alábbiak szerint:
+Most már ssh-KAPCSOLATOT a virtuális gép nyilvános IP-címét. Az alapértelmezett felhasználónév az előző lépésben megadott volt *azureuser*. Adja meg a saját felhasználónevét és a nyilvános IP-cím:
 
 ```bash
-systemctl restart network
+ssh azureuser@137.117.58.232
 ```
 
-Az útválasztási szabályokat, most már megfelelően és léphet vagy felület igény szerint.
+Küldjön, vagy a másodlagos hálózati adapterre, akkor manuálisan adja hozzá az állandó útvonalakat, az operációs rendszer minden egyes másodlagos hálózati adapter. Ebben a cikkben *eth1* a másodlagos felület. Állandó útvonalak hozzáadására az operációs rendszerre vonatkozó utasításokat disztribúció változhat. Útmutatás a disztribúció dokumentációjában talál.
 
+Az útvonal hozzáadása az operációs rendszer, amikor az átjáró címe az *ikonra.1* bármelyik alhálózatot a hálózati adapter van. Például, ha a hálózati adapterhez van hozzárendelve a cím *10.0.2.4 cím*, az átjáró adja meg az útvonal *10.0.2.1*. Az útvonal célállomása egy adott hálózat meghatározása, vagy adja meg a cél *0.0.0.0*, ha azt szeretné, hogy minden forgalom a megadott-átjárón nyissa meg az interfész. Az átjáró az egyes alhálózatokon kezeli a virtuális hálózat.
+
+Miután hozzáadott egy másodlagos felületen az útvonalat, győződjön meg arról, hogy az útvonal az útvonaltáblában a `route -n`. Az alábbi példa kimenetében szól az útvonaltábla, amely az ebben a cikkben a virtuális géphez hozzáadott két hálózati adapterrel rendelkezik:
+
+```bash
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.0.1.1        0.0.0.0         UG    0      0        0 eth0
+0.0.0.0         10.0.2.1        0.0.0.0         UG    0      0        0 eth1
+10.0.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+10.0.2.0        0.0.0.0         255.255.255.0   U     0      0        0 eth1
+168.63.129.16   10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+169.254.169.254 10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+```
+
+Győződjön meg arról, hogy az útvonal hozzáadott továbbra is fennáll újraindítások között újraindítás után újra az útvonaltábla ellenőrzésével. Kapcsolat tesztelése adhatja meg a következő parancsot, például, ahol *eth1* egy másodlagos hálózati adapter neve:
+
+```bash
+ping bing.com -c 4 -I eth1
+```
 
 ## <a name="next-steps"></a>További lépések
-Felülvizsgálat [Linux Virtuálisgép-méretek](sizes.md) több hálózati adapterrel rendelkező virtuális gép létrehozása közben. Az egyes Virtuálisgép-méretet támogatja a hálózati adapterek maximális száma figyelmet fordítania. 
+Felülvizsgálat [Linux Virtuálisgép-méretek](sizes.md) több hálózati adapterrel rendelkező virtuális gép létrehozása közben. Az egyes Virtuálisgép-méretet támogatja a hálózati adapterek maximális száma figyelmet fordítania.
+
+További biztonságos a virtuális gépek használatával csak a time VM access. Ez a funkció a hálózati biztonsági csoportszabályok SSH-forgalmat, ha szükséges, és a egy meghatározott ideig nyílik meg. További információk: [Manage virtual machine access using just in time](../../security-center/security-center-just-in-time.md) (A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáférés használata esetén).

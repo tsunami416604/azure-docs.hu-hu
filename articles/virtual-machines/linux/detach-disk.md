@@ -1,6 +1,6 @@
 ---
-title: Válassza le a Linux virtuális gép - Azure adatlemezét |} Microsoft Docs
-description: Ismerje meg, egy data lemezt leválasztani a virtuális gépen az Azure CLI 2.0 vagy az Azure-portálon.
+title: Linux virtuális gépek – az Azure data lemez leválasztása |} A Microsoft Docs
+description: Ismerje meg, leválasztása adatlemez egy virtuális gépről az Azure CLI 2.0-t vagy az Azure portal használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -13,27 +13,95 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: 572fe5bd4d6d79bb9dd94353732e273282e2a0af
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0225c6605109489c4b9b599918dc09983ae25ac8
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30903683"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144074"
 ---
-# <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Hogyan egy Linux virtuális gép adatlemez leválasztása
+# <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gépről adatlemez leválasztása
 
-Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén leválaszthatja. Ez a lemez eltávolítása a virtuális gépről, de ez nem távolítja el a tárolóból. 
+Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén leválaszthatja. Ez eltávolítja a lemezt a virtuális gépről, de ez nem távolítja el a storage-ból. Ebben a cikkben egy Ubuntu LTS 16.04 elosztásáról dolgozunk. Ha egy másik terjesztési használ, a következő útmutatót: a lemez leválasztása ettől eltérő lehet.
 
 > [!WARNING]
-> A lemez leválasztása esetén nem automatikusan törlődik. Ha prémium szintű Storage, a lemez tárolási költségek továbbra. További információt talál [árak és számlázás prémium szintű Storage használatakor](../windows/premium-storage.md#pricing-and-billing). 
+> Ha leválaszt egy lemezt, nem törlődnek automatikusan. Ha prémium szintű storage, amelyre Ön feliratkozott, továbbra is a lemez tárolási költségeket fizetni. További információkért lásd: [árak és számlázás a Premium Storage használatakor](../windows/premium-storage.md#pricing-and-billing). 
 > 
 > 
 
 Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ugyanahhoz vagy egy másik virtuális géphez.  
 
-## <a name="detach-a-data-disk-using-cli-20"></a>Parancssori felület 2.0 használatával adatlemez leválasztása
+
+## <a name="connect-to-the-vm-to-unmount-the-disk"></a>Csatlakozzon a virtuális Géphez, a lemez leválasztása
+
+Mielőtt leválaszthatna a lemez CLI vagy a portál használatával, meg kell választanunk a lemez és mutató hivatkozásokat Ha a az fstab fájlról.
+
+Csatlakozzon a virtuális géphez. Ebben a példában a virtuális gép nyilvános IP-cím áll *10.0.1.4 cím – ez* , amelynek *azureuser*: 
+
+```bash
+ssh azureuser@10.0.1.4
+```
+
+Először keresse meg az adatlemezt, amely a leválasztani kívánt. Az alábbi példában dmesg szűrjön az SCSI-lemezek:
+
+```bash
+dmesg | grep SCSI
+```
+
+A kimenet a következő példához hasonló:
+
+```bash
+[    0.294784] SCSI subsystem initialized
+[    0.573458] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
+[    7.110271] sd 2:0:0:0: [sda] Attached SCSI disk
+[    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
+[ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
+```
+
+Itt *sdc* a lemez, amely a leválasztani kívánt. A lemez UUID is kell helyezésre.
+
+```bash
+sudo -i blkid
+```
+
+A kimenet a következő példához hasonlóan néz ki:
+
+```bash
+/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
+/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+```
+
+
+Szerkessze a */etc/fstab* fájlt a lemezre mutató hivatkozások eltávolításához. 
+
+> [!NOTE]
+> Nem megfelelően szerkesztése a **/etc/fstab** fájl meghiúsulását eredményezheti. Ha nem tudja biztosan, tekintse meg a telepítési dokumentációban talál információkat megfelelően szerkesztése ezt a fájlt. Emellett javasoljuk, hogy a /etc/fstab fájl biztonsági másolata jön létre szerkesztése előtt.
+
+Nyissa meg a */etc/fstab* módon fájlt egy szövegszerkesztőben:
+
+```bash
+sudo vi /etc/fstab
+```
+
+Ebben a példában a következő sort kell törölni kell a */etc/fstab* fájlt:
+
+```bash
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
+```
+
+Használat `umount` leválasztani a lemezt. Az alábbi példa leválasztja a */dev/sdc1* történő particionálása a */datadrive* csatlakoztatási pont:
+
+```bash
+sudo umount /dev/sdc1 /datadrive
+```
+
+
+## <a name="detach-a-data-disk-using-cli-20"></a>A CLI 2.0-val adatlemez leválasztása
+
+Ez a példa leválasztja a *myDataDisk* nevű virtuális gép lemeze *myVM* a *myResourceGroup*.
 
 ```azurecli
 az vm disk detach \
@@ -42,21 +110,23 @@ az vm disk detach \
     -n myDataDisk
 ```
 
-A lemez a tárolóban marad, de már nincs virtuális géphez csatlakoztatva.
+A lemez storage-ban marad, de már nincs csatolva egy virtuális géphez.
 
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Adatlemez leválasztása a portállal
-1. A bal oldali menüben válassza ki a **virtuális gépek**.
-2. Válassza ki a virtuális gépet, amely rendelkezik a adatlemez leválasztása, és kattintson a kívánt **leállítása** felszabadítani a virtuális Gépet.
-3. Jelölje ki a virtuális gép ablaktáblán **lemezek**.
-4. Felső részén a **lemezek** ablaktáblán válassza előbb **szerkesztése**.
-5. Az a **lemezek** ablaktáblán, a adatlemez, amelyeket szeretne leválasztani, kattintson a jobb a ![leválasztási gomb képe](./media/detach-disk/detach.png) leválasztani gombra.
-5. A lemez eltávolítása után kattintson a Mentés az ablaktábla tetején.
-6. A virtuális gép ablaktáblán kattintson **áttekintése** , majd a **Start** gombra, ha a virtuális gép újraindítására a panel tetején.
 
-A lemez a tárolóban marad, de már nincs virtuális géphez csatlakoztatva.
+1. A bal oldali menüben válassza ki a **virtuális gépek**.
+2. Válassza ki a virtuális gépen, amelyen az adatlemezt, leválasztja, majd kattintson a kívánt **leállítása** felszabadítani a virtuális Gépet.
+3. A virtuális gép panelén válassza **lemezek**.
+4. Felső részén a **lemezek** ablaktáblán válassza előbb **szerkesztése**.
+5. Az a **lemezek** ablaktáblán az adatlemezt, amelyeket szeretne leválasztása, kattintson a jobb szélén a ![leválasztási gomb képe](./media/detach-disk/detach.png) Leválasztás gombra.
+5. Miután a lemez el lett távolítva, kattintson a Mentés gombra a panel felső részén.
+6. A virtuális gép paneljén kattintson **áttekintése** és kattintson a **Start** gombra a virtuális gép újraindítása a panel tetején.
+
+A lemez storage-ban marad, de már nincs csatolva egy virtuális géphez.
+
 
 
 ## <a name="next-steps"></a>További lépések
-Ha szeretné ismét felhasználni a adatlemez, most [csatlakoztassa azt egy másik virtuális gép](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ha szeretné újra felhasználhatja az adatlemezt, csak [csatlakoztassa azt egy másik virtuális Géphez](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: eb3487a304ec2e4045ff76253c456dc4b6ee19b5
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 083169b300cc2714da3921c3abeee68d52444b9b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888622"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145706"
 ---
 # <a name="keys-in-luis"></a>A LUIS kulcsok
 A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endpoint-key). Az Authoring Tool kulcs az Ön számára automatikusan létrejön a LUIS-fiók létrehozásakor. Amikor készen áll a LUIS-alkalmazás közzététele, meg kell [a végpont kulcs létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [rendelje hozzá](luis-how-to-manage-keys.md#assign-endpoint-key) , a LUIS-alkalmazás és [használhatja a végpont lekérdezés](#use-endpoint-key-in-query). 
@@ -56,8 +56,10 @@ A LUIS-végpont lekérdezés két stílusok fogad el, a végpont kulcs, de mindk
 
 |művelet|Példa URL-cím és a kulcs helyét|
 |--|--|
-|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/98998dcf-66d2-468e-840a-7c7c57549b5a?subscription-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn az a jelzőfény<br><br>a lekérdezési karakterlánc értéke `subscription-key`<br><br>A végpont lekérdezés értékének módosításához a `subscription-key` kulcsból a szerzői műveletekhez részben (alapszintű), az új végpont kulcs a LUIS végponti kulcs kvóta arány használatához. Ha, hozza létre a kulcsot, és rendelje hozzá a kulcsot, de nem módosítja az előfizetői végpont lekérdezés értéke ", nem használja a végpont-kvótát.|
-|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/98998dcf-66d2-468e-840a-7c7c57549b5a<br><br> a fejléc értéke `Ocp-Apim-Subscription-Key`<br><br>A végpont lekérdezés értékének módosításához a `Ocp-Apim-Subscription-Key` kulcsból a szerzői műveletekhez részben (alapszintű), az új végpont kulcs a LUIS végponti kulcs kvóta arány használatához. Ha a kulcs létrehozása és hozzárendelése a kulcs, de ne módosítsa a lekérdezés végpontértéknek `Ocp-Apim-Subscription-Key`, nem használja a végpont-kvótát.|
+|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>a lekérdezési karakterlánc értéke `subscription-key`<br><br>A végpont lekérdezés értékének módosításához a `subscription-key` kulcsból a szerzői műveletekhez részben (alapszintű), az új végpont kulcs a LUIS végponti kulcs kvóta arány használatához. Ha, hozza létre a kulcsot, és rendelje hozzá a kulcsot, de nem módosítja az előfizetői végpont lekérdezés értéke ", nem használja a végpont-kvótát.|
+|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> a fejléc értéke `Ocp-Apim-Subscription-Key`<br><br>A végpont lekérdezés értékének módosításához a `Ocp-Apim-Subscription-Key` kulcsból a szerzői műveletekhez részben (alapszintű), az új végpont kulcs a LUIS végponti kulcs kvóta arány használatához. Ha a kulcs létrehozása és hozzárendelése a kulcs, de ne módosítsa a lekérdezés végpontértéknek `Ocp-Apim-Subscription-Key`, nem használja a végpont-kvótát.|
+
+Az Alkalmazásazonosító, az előző URL-címeket, a használt `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, a használt nyilvános IoT-alkalmazás a [interaktív bemutató](https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/). 
 
 ## <a name="api-usage-of-ocp-apim-subscription-key"></a>API-használat az Ocp-Apim-Subscription-Key
 Az intelligens HANGFELISMERÉSI API-k használata a fejléc `Ocp-Apim-Subscription-Key`. A fejléc neve nem változik alapján mely kulcs- és API-k készlete használ. A fejléc beállítása a szerzői műveletekhez részben kulcsot az Authoring Tool API-k. A végpontot használja, ha a végpont kulcs beállítása a fejlécet. 

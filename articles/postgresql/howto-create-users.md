@@ -1,6 +1,6 @@
 ---
-title: Felhasználók létrehozása az Azure Database PostgreSQL-kiszolgáló
-description: Ez a cikk ismerteti, hogyan hozhat létre új felhasználói fiókokat egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis kommunikál.
+title: Felhasználók létrehozása az Azure Database for PostgreSQL-kiszolgáló
+description: Ez a cikk bemutatja, hogyan kommunikálhat egy Azure Database for PostgreSQL-kiszolgáló új felhasználói fiókokat hozhat létre.
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -9,38 +9,38 @@ manager: jhubbard
 ms.service: postgresql-database
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 87a73929185112190d5dd6698e014db225ebc08e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: be3be5769f1d9ad6138fcef851179ddc5cf6c0da
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
-ms.locfileid: "29575638"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144737"
 ---
-# <a name="create-users-in-azure-database-for-postgresql-server"></a>Felhasználók létrehozása az Azure Database PostgreSQL-kiszolgáló 
-Ez a cikk ismerteti, hogyan hozhat létre felhasználók PostgreSQL-kiszolgáló egy Azure-adatbázis.
+# <a name="create-users-in-azure-database-for-postgresql-server"></a>Felhasználók létrehozása az Azure Database for PostgreSQL-kiszolgáló 
+Ez a cikk bemutatja, hogyan hozhat létre felhasználókat az Azure Database for PostgreSQL-kiszolgálóhoz.
 
 ## <a name="the-server-admin-account"></a>A kiszolgálói rendszergazdai fiók
-A PostgreSQL a az Azure-adatbázis kezdeti létrehozásakor megadott egy kiszolgálói rendszergazda felhasználónevet és jelszót. További információkért kövesse a [gyors üzembe helyezés](quickstart-create-server-database-portal.md) a megközelítésnek megjelenítéséhez. Mivel a kiszolgáló-Rendszergazda felhasználóneve egy egyéni nevet, megkeresheti az Azure-portálon választott kiszolgáló rendszergazdai felhasználónév.
+Első létrehozásakor az Azure Database for postgresql-hez, a megadott egy kiszolgáló-rendszergazdai felhasználói nevet és jelszót. További információkért kövesse a [rövid](quickstart-create-server-database-portal.md) a lépésekre bontott eljárással megtekintéséhez. Mivel a kiszolgáló-rendszergazdai felhasználónév egy egyéni nevet, a kiválasztott kiszolgálóra rendszergazdai felhasználónév az Azure Portalon találja.
 
-Az 3 alapértelmezett szerepköröket, meghatározott PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis jön létre. Ezek a szerepkörök láthatja a parancs futtatásával: `SELECT rolname FROM pg_roles;`
+Az Azure Database for PostgreSQL-kiszolgálóhoz megadott 3 alapértelmezett szerepkör jön létre. Ezek a szerepkörök a parancs futtatásával tekintheti meg: `SELECT rolname FROM pg_roles;`
 - azure_pg_admin
 - azure_superuser
 - a kiszolgálói rendszergazda felhasználó
 
-A kiszolgálói rendszergazda felhasználó a azure_pg_admin szerepkör tagja. Azonban a kiszolgáló rendszergazdai fiók nincs a azure_superuser szerepkör részét. Mivel ez a szolgáltatás egy felügyelt PaaS-szolgáltatás, akkor csak a Microsoft a felügyelő szerepkör részét képezi. 
+A kiszolgálói rendszergazda felhasználó a azure_pg_admin szerepkör tagja. Azonban a kiszolgálói rendszergazdai fiók nem szerepel a azure_superuser szerepkör. Mivel ez a szolgáltatás egy felügyelt PaaS-szolgáltatás, akkor csak a Microsoft a felügyelő szerepkör részét képezi. 
 
-A PostgreSQL motor által jogosultságokkal adatbázis-objektumok való hozzáférés szabályozása leírtaknak megfelelően a [PostgreSQL termékdokumentációjának](https://www.postgresql.org/docs/current/static/sql-createrole.html). Azure-adatbázisban PostgreSQL, a kiszolgálói rendszergazda felhasználó ezeket a jogokat kap: bejelentkezés, NOSUPERUSER, ÖRÖKLÉSI, CREATEDB, CREATEROLE, NOREPLICATION
+A PostgreSQL motor által jogosultsággal férhet hozzá az adatbázis-objektumok, az a [PostgreSQL termékdokumentáció](https://www.postgresql.org/docs/current/static/sql-createrole.html). Az Azure Database for postgresql-hez, a kiszolgálói rendszergazda felhasználó ezeket a jogosultságokat kap: bejelentkezés, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, NOREPLICATION
 
-A kiszolgáló-rendszergazda felhasználói fiók segítségével további felhasználók létrehozása, és adja meg azoknak a felhasználóknak a azure_pg_admin szerepkörhöz. A kiszolgáló-rendszergazdai fiókot is, korlátozott engedélyekkel rendelkező felhasználók és az egyes adatbázisok és -sémákat hozzáféréssel rendelkező szerepkörök létrehozására használható.
+A kiszolgálói rendszergazdai felhasználói fiókkal használható további felhasználók létrehozása, és biztosítson számára ezek a felhasználók a azure_pg_admin szerepkörhöz. A kiszolgálói rendszergazdai fiók is, kevesebb jogosultsággal rendelkező felhasználók és szerepkörök, amelyek hozzáférhetnek a különálló adatbázisok és sémák létrehozásához használható.
 
-## <a name="how-to-create-additional-admin-users-in-azure-database-for-postgresql"></a>További rendszergazda felhasználóknak PostgreSQL Azure-adatbázis létrehozása
-1. A kapcsolat információkat és a rendszergazda felhasználónév olvasható be.
-   Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. Könnyedén megtalálhatja a kiszolgáló nevét és a bejelentkezési adatait a kiszolgálóról **áttekintése** lap vagy az **tulajdonságok** oldal az Azure portálon. 
+## <a name="how-to-create-additional-admin-users-in-azure-database-for-postgresql"></a>Hogyan lehet további rendszergazda felhasználóknak az Azure Database for PostgreSQL létrehozása
+1. Kérje le a kapcsolati információkat és a rendszergazdai felhasználó nevét.
+   Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. Megtalálhatja a kiszolgáló nevét és bejelentkezési adatait a kiszolgálóról **áttekintése** lap vagy az **tulajdonságok** oldal az Azure Portalon. 
 
-2. A rendszergazdai fiókot és jelszót használja az adatbázis-kiszolgálóhoz való csatlakozáshoz. Az ügyfél előnyben részesített eszköz, például pgAdmin vagy psql használható.
-   Ha biztos benne, hogy hogyan csatlakoztathat, lásd: [psql felhő rendszerhéj használatával PostgreSQL-adatbázishoz való kapcsolódás](./quickstart-create-server-database-portal.md#connect-to-the-postgresql-database-by-using-psql-in-cloud-shell)
+2. A rendszergazdai fiókot és jelszót használja az adatbázis-kiszolgálóhoz való kapcsolódáshoz. A preferált ügyfél eszköz, például a pgAdmin vagy psql használható.
+   Ha biztos benne, hogy hogyan kapcsolódhat, [csatlakozhat a PostgreSQL-adatbázishoz a psql használatával a Cloud Shellben](./quickstart-create-server-database-portal.md#connect-to-the-postgresql-database-by-using-psql-in-cloud-shell)
 
-3. Szerkessze, és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét < új_felhasználó_jelszava > új felhasználónevét, és cserélje le a helyőrző jelszó erős jelszót. 
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét < új_felhasználó_jelszava > az új felhasználó nevét, és cserélje le a helyőrző jelszót a saját erős jelszót. 
 
    ```sql
    CREATE ROLE <new_user> WITH LOGIN NOSUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION PASSWORD '<StrongPassword!>';
@@ -48,37 +48,37 @@ A kiszolgáló-rendszergazda felhasználói fiók segítségével további felha
    GRANT azure_pg_admin TO <new_user>;
    ```
 
-## <a name="how-to-create-database-users-in-azure-database-for-postgresql"></a>Adatbázis-felhasználók PostgreSQL Azure-adatbázis létrehozása
+## <a name="how-to-create-database-users-in-azure-database-for-postgresql"></a>Hogyan lehet az Azure Database for PostgreSQL adatbázis-felhasználók létrehozása
 
-1. A kapcsolat információkat és a rendszergazda felhasználónév olvasható be.
-   Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. Könnyedén megtalálhatja a kiszolgáló nevét és a bejelentkezési adatait a kiszolgálóról **áttekintése** lap vagy az **tulajdonságok** oldal az Azure portálon. 
+1. Kérje le a kapcsolati információkat és a rendszergazdai felhasználó nevét.
+   Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. Megtalálhatja a kiszolgáló nevét és bejelentkezési adatait a kiszolgálóról **áttekintése** lap vagy az **tulajdonságok** oldal az Azure Portalon. 
 
-2. A rendszergazdai fiókot és jelszót használja az adatbázis-kiszolgálóhoz való csatlakozáshoz. Az ügyfél előnyben részesített eszköz, például pgAdmin vagy psql használható.
+2. A rendszergazdai fiókot és jelszót használja az adatbázis-kiszolgálóhoz való kapcsolódáshoz. A preferált ügyfél eszköz, például a pgAdmin vagy psql használható.
 
-3. Szerkessze, és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét `<db_user>` a kívánt új felhasználó nevét, és a helyőrző értékét `<newdb>` a saját adatbázis nevével. Cserélje le a helyőrző jelszó erős jelszót. 
+3. Szerkessze és futtassa a következő SQL-kódot. A helyőrző értékét cserélje le `<db_user>` a kívánt új felhasználónevet és a helyőrző értékét `<newdb>` a saját adatbázis nevére. A helyőrző jelszót cserélje le a saját erős jelszót. 
 
-   Az sql-kódot szintaxis létrehoz egy új adatbázist nevű testdb, például célokra. Ezután a PostgreSQL szolgáltatás hoz létre egy új felhasználót, és biztosít jogosultsága csatlakozni az adott felhasználó az új adatbázis. 
+   Az sql-kódot szintaxis egy új adatbázist hozunk testdb, példa célokra. Ezután létrehoz egy új felhasználót a PostgreSQL szolgáltatás, és biztosít jogosultságokkal csatlakozhat az új adatbázisnak, hogy a felhasználó számára. 
 
    ```sql
    CREATE DATABASE <newdb>;
    
    CREATE ROLE <db_user> WITH LOGIN NOSUPERUSER INHERIT CREATEDB NOCREATEROLE NOREPLICATION PASSWORD '<StrongPassword!>';
    
-   GRANT CONNECT ON DATABASE testdb TO <db_user>;
+   GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Egy rendszergazda fiók használatával, szükség lehet további jogosultságokat az objektumok az adatbázis védelmét. Tekintse meg a [PostgreSQL-dokumentáció](https://www.postgresql.org/docs/current/static/ddl-priv.html) további tájékoztatást talál a adatbázis-szerepkörök és a jogosultságokat. Példa: 
+4. Egy rendszergazdai fiók használatával, szükség lehet további jogosultságokat az objektumokat az adatbázis védelmét. Tekintse meg a [PostgreSQL dokumentációja](https://www.postgresql.org/docs/current/static/ddl-priv.html) további tudnivalók az adatbázis-szerepkörök és jogosultságok. Példa: 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```
 
-5. Jelentkezzen be a kiszolgálóra, adja meg a kijelölt adatbázis, az új felhasználónevet és jelszót használja. Ez a példa bemutatja a psql parancssorban. Ezzel a paranccsal kéri a jelszót a felhasználónévvel. Cserélje le a saját kiszolgáló neve, az adatbázisnév és a felhasználó neve.
+5. Jelentkezzen be a kiszolgálóra, adja meg a kijelölt adatbázis, az új felhasználónévvel és jelszóval. Ez a példa bemutatja a psql parancssor. Ezzel a paranccsal kéri a felhasználónévhez tartozó jelszót. Cserélje le a saját kiszolgáló nevét, az adatbázis neve és a felhasználó neve.
 
    ```azurecli-interactive
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=db_user@mydemoserver --dbname=newdb
    ```
 
 ## <a name="next-steps"></a>További lépések
-Nyissa meg a tűzfalon a IP-címekhez, hogy azok tudjanak csatlakozni az új felhasználók gépek: [hozzon létre és kezelheti az Azure-adatbázis PostgreSQL tűzfalszabályokat az Azure portál használatával](howto-manage-firewall-using-portal.md) vagy [Azure CLI](howto-manage-firewall-using-cli.md).
+Az új felhasználók gépek, hogy azok tudjanak csatlakozni az IP-címek számára megnyitja a tűzfalat: [hozzon létre és kezelhető az Azure Database for PostgreSQL tűzfalszabályok az Azure portal használatával](howto-manage-firewall-using-portal.md) vagy [Azure CLI-vel](howto-manage-firewall-using-cli.md).
 
-Felhasználóifiók-kezelés kapcsolatos további információkért tekintse meg a termékhez tartozó dokumentáció PostgreSQL [adatbázis-szerepkörök és a jogosultságok](https://www.postgresql.org/docs/current/static/user-manag.html), [ADJON szintaxis](https://www.postgresql.org/docs/current/static/sql-grant.html), és [jogosultságokkal](https://www.postgresql.org/docs/current/static/ddl-priv.html).
+Fiókkezeléssel kapcsolatos további információkért tekintse meg a termékhez tartozó dokumentáció PostgreSQL [adatbázis-szerepkörök és jogosultságok](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT szintaxis](https://www.postgresql.org/docs/current/static/sql-grant.html), és [jogosultságokkal](https://www.postgresql.org/docs/current/static/ddl-priv.html).

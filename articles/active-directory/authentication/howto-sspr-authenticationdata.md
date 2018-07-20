@@ -4,18 +4,18 @@ description: Adatok követelményei az Azure AD önkiszolgáló jelszó-visszaá
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ea6bf503eeba9e904c492a858139490b523a10cc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044175"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159566"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó-visszaállítás anélkül, hogy a végfelhasználói regisztrációs üzembe helyezése
 
@@ -47,20 +47,19 @@ Globális rendszergazda manuálisan is állíthat be a hitelesítési kapcsolatt
 
 ![Contact][Contact]
 
-Ha a telefonszám mező fel van töltve, és az SSPR-házirendben engedélyezve van a mobiltelefon, a felhasználó jelenik meg, hogy a szám, a jelszó alaphelyzetbe állítása való regisztrációhoz, és közben a jelszó alaphelyzetbe állítása munkafolyamat. 
+Ha a telefonszám mező fel van töltve, és az SSPR-házirendben engedélyezve van a mobiltelefon, a felhasználó jelenik meg, hogy a szám, a jelszó alaphelyzetbe állítása való regisztrációhoz, és közben a jelszó alaphelyzetbe állítása munkafolyamat.
 
 A másodlagos telefonszám mező nem használatos a jelszó-visszaállításhoz.
 
 Ha az E-mail mező fel van töltve, és e-mailt az SSPR-házirendben engedélyezve van, a felhasználó jelenik meg, hogy e-mailt a jelszó alaphelyzetbe állítása való regisztrációhoz, és közben a jelszó alaphelyzetbe állítása a munkafolyamatot.
 
-Ha a másodlagos e-mail-cím mező fel van töltve, és e-mailt az SSPR-házirendben engedélyezve van, a felhasználó fog **nem** tekintse meg, hogy e-mailjeit a jelszó-visszaállítási regisztrációs oldal, de akkor fogja látni az során a jelszó alaphelyzetbe állítása a munkafolyamatot. 
-
+Ha a másodlagos e-mail-cím mező fel van töltve, és e-mailt az SSPR-házirendben engedélyezve van, a felhasználó fog **nem** tekintse meg, hogy e-mailjeit a jelszó-visszaállítási regisztrációs oldal, de akkor fogja látni az során a jelszó alaphelyzetbe állítása a munkafolyamatot.
 
 ## <a name="security-questions-and-answers"></a>Biztonsági kérdések és válaszok
 
-Biztonsági kérdések és válaszok az Azure AD-bérlő biztonságosan tárolódnak, és csak keresztül a felhasználók a [önkiszolgáló jelszó-változtatási](https://aka.ms/ssprsetup). A rendszergazdák nem tekintse meg, vagy egy másik felhasználói kérdések és válaszok tartalmát módosítjuk.
+Biztonsági kérdések és válaszok az Azure AD-bérlő biztonságosan tárolódnak, és csak keresztül a felhasználók a [önkiszolgáló jelszó-változtatási](https://aka.ms/ssprsetup). A rendszergazdák nem láthatják, állítsa be, vagy egy másik felhasználói kérdések és válaszok tartalmát módosítjuk.
 
-### <a name="what-happens-when-a-user-registers"></a>Mi történik, ha a felhasználó regisztrálása
+## <a name="what-happens-when-a-user-registers"></a>Mi történik, ha a felhasználó regisztrálása
 
 Amikor egy felhasználó regisztrálja magát, a regisztrációs oldalhoz beállítja a következő mezőket:
 

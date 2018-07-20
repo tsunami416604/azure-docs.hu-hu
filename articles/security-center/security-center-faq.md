@@ -1,9 +1,9 @@
 ---
-title: Gyakori kérdések (GYIK) az Azure Security Center |} Microsoft Docs
-description: Ez a GYIK az Azure Security Center kapcsolatos kérdésekre ad választ.
+title: Az Azure Security Center – gyakori kérdések (GYIK) |} A Microsoft Docs
+description: Ez a GYIK az Azure Security Centerrel kapcsolatos kérdésekre ad választ.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2018
-ms.author: terrylan
-ms.openlocfilehash: d5a9f2ba68574ba8cb99b01ce426ec77a5eecd3d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 07/19/2018
+ms.author: rkarlin
+ms.openlocfilehash: 320c7c483e865c85948d32ee2b5b70a92181920f
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363961"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160069"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
-Ez a GYIK az Azure Security Center, egy szolgáltatás, amely segít a megakadályozása, észlelésében és kezelésében fenyegetések láthatóság növelésével és a Microsoft Azure-erőforrások védelmét kapcsolatos kérdésekre ad választ.
+Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
 
 > [!NOTE]
-> 2017 júniusának elejétől kezdve a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További tudnivalókért lásd: [Azure Security Center Platform áttelepítési](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
+> 2017 júniusának elejétől kezdve a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További tudnivalókért lásd: [Azure Security Center Platform Migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
 >
 >
 
@@ -33,116 +33,119 @@ Ez a GYIK az Azure Security Center, egy szolgáltatás, amely segít a megakadá
 ### <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 Az Azure Security Center magasabb fokú betekintést és szélesebb körű vezérlést tesz lehetővé az Azure-erőforrások fölött, így segít a fenyegetések megelőzésében, észlelésében és kezelésében. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
 
-### <a name="how-do-i-get-azure-security-center"></a>Hogyan szerezhetek az Azure Security Center?
-Az Azure Security Center a Microsoft Azure-előfizetés engedélyezve van, és elérhető a [Azure-portálon](https://azure.microsoft.com/features/azure-portal/). ([Jelentkezzen be a portálra](https://portal.azure.com), jelölje be **Tallózás**, és görgessen a **Security Center**).  
+### <a name="how-do-i-get-azure-security-center"></a>Hogyan szerezhetem be az Azure Security Center?
+Az Azure Security Center a Microsoft Azure-előfizetéshez engedélyezve van, és elérhető a [az Azure portal](https://azure.microsoft.com/features/azure-portal/). ([Jelentkezzen be a portálra](https://portal.azure.com), jelölje be **Tallózás**, és görgessen a **a Security Center**).  
 
 ## <a name="billing"></a>Számlázás
-### <a name="how-does-billing-work-for-azure-security-center"></a>Hogyan működik az Azure Security Center számlázási tevékenységeket?
-A Security Center érhető el, a két réteg:
+### <a name="how-does-billing-work-for-azure-security-center"></a>Hogyan történik az elszámolás az Azure Security Center?
+A Security Center két szinten érhető el:
 
-A **ingyenes szint** biztosít a biztonsági állapotát az Azure-erőforrások, az alapvető biztonsági házirend, a biztonsági javaslatok és a integrációs láthatósága biztonsági termékeinek és szolgáltatásainak partnertől.
+A **ingyenes szint** biztonsági állapotát az Azure-erőforrások, az alapszintű biztonsági házirend, a biztonsági javaslatok és a integrációs rálátást biztosít a biztonsági termékeket és szolgáltatásokat partnereinktől.
 
-A **Standard csomagra** hozzáadja az advanced threat az észlelési képességek, beleértve az eszközintelligencia, viselkedéssel összefüggő elemzésekkel, anomáliadetektálás, biztonsági incidensek fenyegetés, és a fenyegetés szolgáló jelentések. A Standard szint az első 60 napban ingyenesen használható. Választja 60 napon túl a szolgáltatás használatának folytatásához, automatikusan először a szolgáltatás igénybe.  Frissítéséhez válassza [Tarifacsomagot](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági házirendben.
+A **Standard szintű** hozzáadja a komplex veszélyforrások elleni képességeket tartalmaz, beleértve a fenyegetésészlelési intelligencia, a viselkedés-elemzés, a rendellenességek észlelése, a biztonsági incidensek és tesznek elérhetővé; ilyenek jelentések fenyegetés. A Standard szint az első 60 napban ingyenesen használható. Válasszák 60 napos időszak letelte után a szolgáltatás használatát, automatikusan megkezdjük a megfelelő díj felszámítását.  Szeretné frissíteni, válassza ki a [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági szabályzatban.
 
 ## <a name="permissions"></a>Engedélyek
-Az Azure Security Center által használt [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md), amely biztosítja [beépített szerepkörök](../role-based-access-control/built-in-roles.md) , hogy a felhasználók, csoportok és az Azure rendelhető.
+Használja az Azure Security Center [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md), amely biztosítja [beépített szerepkörök](../role-based-access-control/built-in-roles.md) , hogy a felhasználók, csoportok és Azure-szolgáltatások rendelhetők.
 
-A Security Center értékeli a konfigurációs az erőforrások biztonsági problémák és biztonsági rések azonosítása. A biztonsági központban csak akkor jelenik meg egy erőforrás tulajdonos, közreműködő vagy olvasó szerepkört az előfizetés vagy az erőforráscsoportot, amelyhez tartozik egy erőforrás hozzárendelése esetén kapcsolatos adatokat.
+A Security Center a biztonsági problémák és biztonsági rések azonosításához erőforrásán konfiguráció értékeli. A Security Centerben csak láthatja az előfizetés vagy az erőforráscsoport, amely egy erőforrás tartozik, a tulajdonos, közreműködő vagy olvasó a szerepkör hozzárendelése esetén egy erőforráshoz kapcsolódó információkat.
 
-Lásd: [engedélyek az Azure Security Centerben](security-center-permissions.md) tudhat meg többet a szerepkörök és a Security Center engedélyezett műveletek.
+Lásd: [engedélyek az Azure Security Centerben](security-center-permissions.md) tudhat meg többet a szerepkörök és a Security Centerben engedélyezett műveletek.
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A Security Center az Azure virtuális gépek (VM) és a nem Azure számítógépek számára figyeli, hogy a biztonsági réseket és a fenyegetések adatait gyűjti. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére.
+A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére.
 
-### <a name="how-do-i-disable-data-collection"></a>Hogyan tiltsa le az adatgyűjtő?
-Automatikus kiépítés alapértelmezés szerint van kapcsolva. Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a biztonsági szabályzatban kikapcsolásával letilthatja. Automatikus kiépítés erősen ajánlott biztonsági riasztások és javaslatok Rendszerfrissítések, az operációs rendszer biztonsági réseket és az endpoint protection eléréséhez.
+### <a name="how-do-i-disable-data-collection"></a>Hogyan tilthatom le az adatgyűjtést?
+Alapértelmezés szerint az Automatikus kiépítés le van. Letilthatja az Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a biztonsági szabályzatban kikapcsolásával. Az Automatikus kiépítés erősen ajánlott biztonsági riasztások és javaslatok Rendszerfrissítések, az operációs rendszer biztonsági rések és az endpoint protection információk lekérése érdekében.
 
-Adatok gyűjtésének a letiltása [jelentkezzen be az Azure-portálon](https://portal.azure.com), jelölje be **Tallózás**, jelölje be **Security Center**, és válassza ki **-szabályzat kiválasztásával**. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést. Ha bejelöli előfizetés **biztonsági házirend - adatok gyűjtése** megnyitása. A **automatikus kiépítés**, jelölje be **ki**.
+Tiltsa le az adatgyűjtést, hogy [jelentkezzen be az Azure Portalon](https://portal.azure.com), jelölje be **Tallózás**, jelölje be **a Security Center**, válassza ki **válassza ki a szabályzat**. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést. Amikor kiválaszt egy előfizetés **biztonsági szabályzat – adatgyűjtés** nyílik meg. A **automatikus kiépítés**válassza **ki**.
 
-### <a name="how-do-i-enable-data-collection"></a>Hogyan engedélyezhető az adatok gyűjtését?
-Adatgyűjtés engedélyezheti a biztonsági szabályzatban Azure-előfizetése. Szeretné az adatgyűjtést. [Jelentkezzen be az Azure-portálon](https://portal.azure.com), jelölje be **Tallózás**, jelölje be **Security Center**, és válassza ki **biztonsági házirend**. Válassza ki az előfizetést, amely automatikus kiépítés engedélyezéséhez. Ha bejelöli előfizetés **biztonsági házirend - adatok gyűjtése** megnyitása. A **automatikus kiépítés**, jelölje be **a**.
+### <a name="how-do-i-enable-data-collection"></a>Hogyan engedélyezhetem az adatgyűjtés?
+Engedélyezheti az adatgyűjtést az Azure-előfizetés biztonsági szabályzatában. Az adatgyűjtés engedélyezéséhez. [Jelentkezzen be az Azure Portalon](https://portal.azure.com), jelölje be **Tallózás**, jelölje be **a Security Center**, és válassza ki **biztonsági házirend**. Automatikus kiépítés engedélyezése kívánt előfizetés kiválasztásához. Amikor kiválaszt egy előfizetés **biztonsági szabályzat – adatgyűjtés** nyílik meg. A **automatikus kiépítés**válassza **a**.
 
-### <a name="what-happens-when-data-collection-is-enabled"></a>Mi történik, ha engedélyezve van az adatok gyűjtését?
-Ha automatikus kiépítés engedélyezve van, a Security Center kiosztja a Microsoft Monitoring Agent összes támogatott Azure virtuális gépek és bármely újakat létrehozott. Automatikus kiépítés erősen ajánlott, de a kézzel történő ügynöktelepítést is rendelkezésre áll. [Megtudhatja, hogyan telepítse a Microsoft Monitoring Agent bővítmény](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
+### <a name="what-happens-when-data-collection-is-enabled"></a>Mi történik, ha az adatgyűjtés engedélyezve van?
+Ha az Automatikus kiépítés engedélyezve van, a Security Center létrehozza a Microsoft Monitoring Agentet az összes támogatott Azure-beli és újonnan létrehozott. Az Automatikus kiépítés használata erősen ajánlott, de a manuális ügynöktelepítések is rendelkezésre áll. [Ismerje meg, hogyan telepítse a Microsoft Monitoring Agent bővítményt](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
-Az ügynök lehetővé teszi, hogy a folyamat létrehozásának esemény 4688 és a *CommandLine* eseményből 4688 mezőjét. A virtuális Gépre létrehozott új folyamatok EventLog által rögzített, és a Security Center észlelési szolgáltatások által figyelendő. Információk a részletes adatait rögzíti az összes új folyamat: [4688 leírás mezőiben](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Az ügynök is létre a virtuális gép 4688 eseményeit, és tárolja őket a keresés.
+Az ügynök lehetővé teszi, hogy a folyamat-létrehozási esemény 4688 és a *CommandLine* mezőt 4688-as belül. A virtuális gépen új folyamatok EventLog által rögzített és a Security Center észlelési szolgáltatások által figyelt. Információk a rögzített minden új folyamathoz részleteire: [4688 leírás mezőiben](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Az ügynök is a virtuális gépen 4688 eseményeit, és tárolja a keresés.
 
-Ha a Security Center a virtuális gép gyanús tevékenységet észlel, az ügyfél értesítést e-mailben, ha a [biztonsági kapcsolattartási adatokat](security-center-provide-security-contact-details.md) adtak meg. Riasztás egyben a Security Center biztonsági riasztások irányítópulton látható.
+Ha a Security Center a virtuális gép gyanús tevékenységet észlel, az ügyfél értesítést e-mailben, ha a [biztonsági kapcsolattartási adatok](security-center-provide-security-contact-details.md) lett megadva. Egy riasztás akkor is a Security Center biztonsági riasztások irányítópult látható.
 
-### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Hatással lehet a kiszolgáló teljesítményét a Figyelőügynök?
-Az ügynök névleges mennyisége rendszererőforrásokat fogyaszt, és teljesítményére gyakorolt minimális hatás kell rendelkeznie. A teljesítményre gyakorolt hatás és az ügynök és a bővítmény további információkért lásd: a [tervezési és műveletek útmutató](security-center-planning-and-operations-guide.md#data-collection-and-storage).
+> [!NOTE]
+> - Adatgyűjtés engedélyezése [adaptív Alkalmazásvezérlők](security-center-adaptive-application.md), konfigurálja a helyi AppLocker-házirend rendszervizsgálati módban, hogy az összes alkalmazást. Ennek hatására az AppLocker események, amelyeket gyűjteni, és a Security Center által használható létrehozása. Fontos megjegyezni, hogy ez a szabályzat minden olyan gépeken, amelyeken már van egy konfigurált AppLocker-házirendek nem lesznek konfigurálva. 
+
+### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>A Monitoring Agent befolyásolja a kiszolgáló teljesítményét?
+Az ügynök egy névleges mennyiségű rendszer-erőforrásokat használ fel, és teljesítményére gyakorolt minimális hatás kell rendelkeznie. További információ a teljesítményt és az ügynök és a bővítmény: az [tervezéséhez és útmutató](security-center-planning-and-operations-guide.md#data-collection-and-storage).
 
 ### <a name="where-is-my-data-stored"></a>Hol tárolják az adataimat?
-Ez az ügynök gyűjtött adatokat vagy egy meglévő Naplóelemzési munkaterület az Ön előfizetéséhez rendelve, vagy új munkaterület tárolja. További információkért lásd: [adatbiztonság](security-center-data-security.md).
+Ettől az ügynöktől gyűjtött adatok tárolva van vagy egy meglévő Log Analytics-munkaterületet az Ön előfizetéséhez rendelve, vagy egy új munkaterületet. További információkért lásd: [adatbiztonság](security-center-data-security.md).
 
-## <a name="using-azure-security-center"></a>Az Azure Security Centerben
-### <a name="what-is-a-security-policy"></a>Mi az az olyan biztonsági házirenddel?
-A biztonsági házirend határozza meg az adott előfizetésen belüli erőforrásokon ajánljuk, hogy meg. Az Azure Security Centerben, szabályzatok készítése az Azure-előfizetések a vállalat biztonsági követelményeinek, és az alkalmazások típusának vagy az egyes előfizetések adatainak érzékenysége alapján.
+## <a name="using-azure-security-center"></a>Az Azure Security Center használatával
+### <a name="what-is-a-security-policy"></a>Mi az a biztonsági szabályzatot?
+Biztonsági szabályzat határozza meg, az adott előfizetésen belüli erőforrások ajánlott szabályozza. Az Azure Security Centerben szabályzatokat az Azure-előfizetést a vállalat biztonsági elvárásainak és az alkalmazások típusához vagy az egyes előfizetések adatainak érzékenysége tartozó meghatározása.
 
-A biztonsági házirendek az Azure Security Center meghajtó biztonsági javaslatok és figyelésének engedélyezve van. Biztonsági házirendek kapcsolatos további információkért lásd: [biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md).
+Az Azure Security Center meghajtó biztonsági javaslatok és a figyelés az engedélyezett biztonsági szabályzatok. Biztonsági szabályzatok kapcsolatos további információkért lásd: [biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md).
 
-### <a name="who-can-modify-a-security-policy"></a>Ki módosíthatja a biztonsági házirend?
-Módosíthatja a biztonsági szabályzatot, a biztonsági rendszergazda vagy a tulajdonosának vagy Közreműködőjének előfizetésben kell lennie.
+### <a name="who-can-modify-a-security-policy"></a>Ki módosíthatja a biztonsági szabályzatot?
+Biztonsági szabályzat módosításához a rendszergazda vagy a tulajdonosának vagy Közreműködőjének előfizetésben kell lennie.
 
-A biztonsági házirend konfigurálási módjával kapcsolatban a [biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md).
+Biztonsági szabályzat konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md).
 
-### <a name="what-is-a-security-recommendation"></a>Mi az a biztonsági ajánlás olyan környezetekben?
-Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Amikor a potenciális biztonsági hiányosságokat azonosít, javaslatok jönnek létre. A javaslatok végigvezeti Önt a szükséges ellenőrzési folyamatán. Például a következők:
+### <a name="what-is-a-security-recommendation"></a>Mi az a biztonsági javaslatok?
+Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha az azonosított potenciális biztonsági réseket, javaslatok jönnek létre. A javaslatok végigvezetik a szükséges vezérlőt konfigurálásának folyamatán. Példák:
 
-* Kártevőirtó azonosításához, és távolítsa el a kártevő szoftverek telepítése
+* Kiépítés kártevőirtó szoftverek azonosításához és kártevő szoftverek eltávolítása
 * [Hálózati biztonsági csoportok](../virtual-network/security-overview.md) és a virtuális gépek forgalmának ellenőrzésére vonatkozó szabályok
-* A webes alkalmazások célzó támadások elleni védelemre a webalkalmazási tűzfal kiépítését
+* A webalkalmazások célzó támadások elleni segítségével webalkalmazási tűzfal kiépítése
 * Hiányzó rendszerfrissítések telepítése
 * Az operációs rendszer azon konfigurációinak kezelése, amelyek nem felelnek meg a javasolt alapkonfigurációknak
 
-Itt csak azok a javaslatok, amelyek engedélyezve vannak a biztonsági házirend látható.
+Csak azok a javaslatok, amelyek engedélyezve vannak a biztonsági szabályzatok Itt jelennek meg.
 
-### <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Hogyan tekinthető meg a saját Azure-erőforrások aktuális biztonsági állapotát?
-A **Security Center áttekintése** panel megjeleníti a számítási, hálózati, tárolási és adatok és alkalmazások szerinti bontásban környezet általános biztonsági állapotát. Minden erőforrás rendelkezik egy kijelző ábrázoló Ha azonosított potenciális biztonsági hiányosságok. Mindegyik mozaiknál kattintva megjelenik az erőforrást az előfizetésében leltárt együtt Security Center által azonosított biztonsági problémák listáját.
+### <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Hogyan tekinthetem meg a saját Azure-erőforrások aktuális biztonsági állapotát?
+A **Security Center – áttekintés** panelen jelenik meg a számítási, hálózati, tárolási és adatok és alkalmazások szerinti bontásban környezet általános biztonsági állapotát. Egyes erőforrástípusok-kijelző ábrázoló van, ha a potenciális biztonsági hiányosságok azonosított. Minden egyes csempére kattintva azonosítja az erőforrást az előfizetésében leltára együtt a Security Center, biztonsági problémák listáját jeleníti meg.
 
-### <a name="what-triggers-a-security-alert"></a>Mi elindítja a biztonsági riasztások?
+### <a name="what-triggers-a-security-alert"></a>Mi a biztonsági riasztást aktivál?
 Az Azure Security Center automatikusan gyűjti, elemzi és biztosítók az Azure-erőforrások, a hálózati és a partneri megoldások, például kártevőirtó- és tűzfalak naplóadatait. Fenyegetések észlelése esetén a központ biztonsági riasztást hoz létre. Példák fenyegetés észlelésére:
 
 * Feltört virtuális gépek, amelyek kártékonyként azonosított IP-címekkel kommunikálnak
-* Windows hibajelentés észlelt speciális kártevő
+* Használatával a Windows hibajelentés észlelt speciális kártevő
 * Virtuális gépek elleni, a teljes kipróbálás módszerén alapuló támadások
-* Integrált biztonsági partnermegoldások például kártevőirtó vagy webalkalmazási tűzfalak biztonsági riasztásai
+* Integrált partneri biztonsági megoldások, például a kártevő- vagy webalkalmazás-tűzfalak biztonsági riasztásai
 
-### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Mi az a különbség a között fenyegetéseket észlelt, és riasztást kap a Microsoft Security Response Center és az Azure Security Center által?
-A Microsoft biztonsági válasz Center (MSRC) hajtja végre, válassza ki a biztonság ellenőrzése az Azure-hálózatot és az infrastruktúra, és fenyegetést eszközintelligencia és visszaélés panaszokat kapott harmadik felek számára. Ha MSRC elérhetővé válik, hogy az ügyféladatok egy törvénybe ütköző vagy jogosulatlan félnek elérhető-e, vagy az, hogy az ügyfél általi használata Azure nem felel meg a feltételeket az elfogadható használ, egy biztonsági incidens manager értesíti az ügyfél. Értesítési rendszerint azért fordul elő, egy e-mailt küld a biztonsági kapcsolatba lép, ha nincs megadva a biztonsági lépjen kapcsolatba az Azure Security Center vagy az Azure-előfizetés tulajdonosának megadott.
+### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Mi a különbség a fenyegetéseket észlelt, és kapni a Microsoft Security Response Center és az Azure Security Center által?
+A Microsoft Security Response Center (MSRC) hajt végre, válassza ki a biztonsági figyelése az Azure-hálózat és az infrastruktúra, és harmadik felektől származó threat intelligence és visszaélések panaszok kap. MSRC tudomására jut, hogy vásárlói adatokat egy jogosulatlan vagy illetéktelen fél hozzáfért-e, illetve, hogy az Azure használatát az ügyfél nem felel meg a feltételeket az elfogadható használja, amikor egy biztonsági incidens manager értesíti a. Értesítés általában akkor fordul elő, a biztonsági felelősök kapcsolati adatait meg az Azure Security Center vagy az Azure-előfizetés tulajdonosa, ha nincs megadva a biztonsági kapcsolattartó e-mail elküldésével.
 
-A Security Center az Azure-szolgáltatások, amely folyamatosan figyeli az ügyfél Azure-környezetéhez, és alkalmazza a analytics automatikus észlelése az esetlegesen kártékony tevékenység számos. Ezek az észlelések a Security Center irányítópultjának biztonsági riasztásként illesztett.
+A Security Center egy Azure-szolgáltatás, amely folyamatosan figyeli az ügyfél Azure-környezetben, és automatikusan észlelni a potenciálisan kártékony tevékenységek számos elemzési vonatkozik. Ezek az észlelések illesztett biztonsági riasztásai a Security Center irányítópultján.
 
-### <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Mely Azure-erőforrások az Azure Security Center által figyelt?
+### <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Melyik Azure-erőforrásokat az Azure Security Center által figyelt?
 Az Azure Security Center figyeli a következő Azure-erőforrások:
 
-* Virtuális gépek (VM) (beleértve a [Felhőszolgáltatások](../cloud-services/cloud-services-choose-me.md))
+* Virtuális gépek (VM) (beleértve a [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Azure virtuális hálózatok
 * Azure SQL service
 * Azure Storage-fiók
 * Az Azure Web Apps (a [App Service Environment-környezet](../app-service/environment/intro.md))
-* Például a webalkalmazási tűzfal virtuális gépek és az App Service Environment-környezet az Azure-előfizetésében integrált partneri megoldások
+* Például a webalkalmazási tűzfal a virtuális gépek és az App Service Environment az Azure-előfizetésében integrált partnermegoldások
 
 ## <a name="virtual-machines"></a>Virtuális gépek
 ### <a name="what-types-of-virtual-machines-are-supported"></a>Milyen típusú virtuális gépek támogatottak?
-Figyelés és javaslatok érhetők el a virtuális gépek (VM) használatával is létre a [klasszikus és Resource Manager üzembe helyezési modell](../azure-classic-rm.md).
+Figyelés és javaslatok érhetők el a virtuális gépek (VM) használatával is létrehozott a [klasszikus és Resource Manager üzembe helyezési modellek](../azure-classic-rm.md).
 
-Lásd: [az Azure Security Center által támogatott platformok](security-center-os-coverage.md) a támogatott platformok listáját.
+Lásd: [az Azure Security Center által támogatott platformok](security-center-os-coverage.md) által támogatott platformok listáját.
 
-### <a name="why-doesnt-azure-security-center-recognize-the-antimalware-solution-running-on-my-azure-vm"></a>Miért nem az Azure Security Center ismeri fel a kártevőirtó megoldást az Azure virtuális gépen?
-Az Azure Security Center rendelkezik Azure-bővítményeket keresztül telepített kártevőirtó láthatósága. Például az a Security Center nincs, de a megadott lemezkép, vagy ha a saját folyamatok (például a konfigurációs felügyeleti rendszerekhez) használata a virtuális gépek telepített kártevőirtó előre telepített kártevőirtó észleli.
+### <a name="why-doesnt-azure-security-center-recognize-the-antimalware-solution-running-on-my-azure-vm"></a>Miért nem az Azure Security Center ismeri fel a kártevőirtó megoldást, az Azure virtuális gépen?
+Az Azure Security Center az Azure-bővítmények segítségével telepítve kártevőirtó láthassa. Például nem sikerül, amely előre telepítve van a megadott képet, vagy ha a virtuális gépeken a saját folyamatok (például konfigurációs rendszerek) segítségével telepítve kártevőirtó kártevőirtó észleli a Security Center.
 
-### <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>Miért jelenik meg az üzenet "Hiányzó vizsgálati adatok" a virtuális géphez?
-Ez az üzenet akkor jelenik meg, amikor nincs a virtuális gépek vizsgálat adat. Ellenőrző adatok feltöltése után az Azure Security Centerben engedélyezett adatgyűjtés némi időbe (kevesebb mint egy óra) is igénybe vehet. Ellenőrző adatok kezdeti sokaságát után jelenhet meg ezt az üzenetet, mert nincs minden vizsgálat adat, vagy nincs legutóbbi vizsgálat adat. Vizsgálat nem sikerült adatokkal feltölteni a virtuális gép leállított állapotban. Ezt az üzenetet is jelennek meg, ha az ellenőrző adatok nem nemrég (a Windows-ügynök, amely alapértelmezett értéke 30 napos adatmegőrzési) megfelelően van feltöltve.
+### <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>Miért jelenik meg az üzenet "Hiányzó vizsgálati adatok" virtuális gép?
+Ez az üzenet jelenik meg, ha nem szerepel megjeleníthető vizsgálat adat egy virtuális gép. Ez eltarthat egy ideig (kevesebb mint egy óra) feltöltése után az adatgyűjtés engedélyezése az Azure Security Center vizsgálati adatok számára. Vizsgálati adatok kezdeti sokasága, miután ezt az üzenetet, mert egyáltalán nem tartoznak vizsgálat adatok, vagy nem szerepel megjeleníthető legutóbbi vizsgálat adat jelenhet meg. Vizsgálatok nem adja meg a virtuális gép leállított állapotban. Ez az üzenet volt is megjelenhet, ha vizsgálati adatok nem nemrég (a megtartási házirend a Windows-ügynök, amely rendelkezik az alapértelmezett érték 30 nap) megfelelően van feltöltve.
 
-### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Milyen gyakran nem Security Center operációs rendszer biztonsági rések, rendszerfrissítések és vizsgálatára végpontvédelmi problémákkal?
-A Tiltás késése a Security Center ellenőrzi a biztonsági frissítések, és problémákat:
+### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>A Security Center milyen gyakran nem vizsgálata az operációs rendszer biztonsági réseivel, a rendszerfrissítésekkel és a végpontvédelem?
+A késés, a Security Center átvizsgálja a biztonsági réseket, frissítések, és problémák:
 
-- Operációs rendszer biztonsági beállításokkal – adatok frissül 48 órán belül
-- Rendszerfrissítések – adatok frissül 24 órában
-- Az Endpoint Protection állít – 8 órán belül adatok frissítése
+- Operációs rendszer biztonsági konfigurációk – adatok 48 órán belül frissült
+- Rendszerfrissítések – adatok 24 órán belül frissült
+- Az Endpoint Protection kapcsolatos problémák – 8 órán belül adatainak frissítése
 
-A Security Center általában megvizsgálja az új adatokat óránként. A késés fenti értékei a legrosszabb esetben ha nincs a legutóbbi vizsgálat vagy a vizsgálat nem sikerült.
+A Security Center általában figyeli az új adatokat óránként. A késés a fenti értékek a legrosszabb esetben ahol nem áll a legutóbbi vizsgálat vagy a vizsgálat nem sikerült.
 
-### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Miért jelenik meg az üzenet "Virtuálisgép-ügynök hiányzó?"
-A virtuális gép ügynököt telepíteni kell a virtuális gépeken szeretné az adatgyűjtést. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. A Virtuálisgép-ügynök telepítésével más virtuális gépeken információkért lásd: a következő blogbejegyzésben található [ügynök és Virtuálisgép-bővítmények](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).
+### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Miért jelenik meg az üzenet "Virtuálisgép-ügynök hiányzik?"
+Virtuális gépek az adatgyűjtés engedélyezése a Virtuálisgép-ügynököt kell telepíteni. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. Más virtuális gépeken a Virtuálisgép-ügynök telepítésével kapcsolatos információkért lásd: a következő blogbejegyzésben: [Virtuálisgép-ügynök és -bővítmények](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).

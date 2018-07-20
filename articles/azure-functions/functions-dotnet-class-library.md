@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 2308419ba79f6b482df6f68e865aafd0152ae090
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 542e3563a31a181db8eb7c97a90b61e1a503f2cb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001888"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162201"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
 
@@ -262,6 +262,8 @@ public static class AsyncExample
     }
 }
 ```
+
+Nem használhat `out` aszinkron funkciók paramétereket. A kimeneti kötések, használja a [függvény visszatérési értéke](#binding-to-method-return-value) vagy egy [gyűjtő objektum](#writing-multiple-output-values) helyette.
 
 ## <a name="cancellation-tokens"></a>Megszakítási tokeneket
 

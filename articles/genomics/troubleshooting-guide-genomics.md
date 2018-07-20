@@ -11,13 +11,13 @@ ms.author: grhuynh
 ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
-ms.date: 04/13/2018
-ms.openlocfilehash: d3991bdbcd9c3dcd08572dc92cc75aaebb02b133
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.date: 07/18/2018
+ms.openlocfilehash: 9bd1690003fd37b6c2edd0f0421cf8d0e74f8cb5
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34627364"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144176"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 Ez az Áttekintés a Microsoft Genomics szolgáltatással gyakori hibáinak megoldásához stratégiákat ismerteti. Általános – gyakori kérdések, lásd: [gyakori kérdésekre](frequently-asked-questions-genomics.md). 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/16/2018
+ms.date: 07/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 1fd5ac0f9994a4dbf4365c21ac4f31ba0eccbb15
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6658eeb70e31593da5f3612ccac8685ecbb976b9
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069151"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161588"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Figyelje az Azure Kubernetes Service (AKS) tároló állapotát (előzetes verzió)
 
@@ -78,7 +78,7 @@ A következő lépésekkel engedélyezze a monitorozást az AKS-tároló az Azur
 4. Az a **tároló állapotának és a naplók bevezetési** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben a fürttel, válassza a legördülő listából.  A lista preselects az alapértelmezett munkaterületre, és az AKS-tároló helye telepítve van az előfizetésben.<br><br> ![AKS-tároló állapotfigyelésének engedélyezése](./media/monitoring-container-health/container-health-enable-brownfield-02.png) 
 
 >[!NOTE]
->Ha szeretne létrehozni egy új Log Analytics-munkaterület a fürtből a monitorozási adatok tárolásához, kövesse a [Cretae Log Analytics-munkaterület](../log-analytics/log-analytics-quick-create-workspace.md) , és ügyeljen arra, hogy ugyanahhoz az előfizetéshez tartozik, amely az AKS-tároló a munkaterület létrehozása üzembe helyezését.  
+>Ha szeretne létrehozni egy új Log Analytics-munkaterület a fürtből a monitorozási adatok tárolásához, kövesse a [hozzon létre egy Log Analytics-munkaterület](../log-analytics/log-analytics-quick-create-workspace.md) , és ügyeljen arra, hogy a munkaterület létrehozásához, amely az AKS tároló ugyanabban az előfizetésben üzembe helyezését.  
 >
  
 Figyelés engedélyezését követően eltarthat körülbelül 15 perc elteltével megtekintheti a fürt működési adatokat. 
@@ -371,7 +371,7 @@ Az ikonok az állapot mezőben a tárolók online állapotát jelzi:
 | ![Készen áll, futó állapot ikon](./media/monitoring-container-health/container-health-ready-icon.png) | Fut (kész)|
 | ![Várakozás vagy szüneteltetett állapot ikon](./media/monitoring-container-health/container-health-waiting-icon.png) | Várakozás vagy fel van függesztve|
 | ![Utolsó jelentett futó állapotikon](./media/monitoring-container-health/container-health-grey-icon.png) | Utolsó jelentett fut, de 30 percnél hosszabb ideig nem válaszolt.|
-| ![Elbocsátott állapotikon](./media/monitoring-container-health/container-health-green-icon.png) | Sikeresen leállt vagy nem sikerült leállítani a|
+| ![A sikeres állapot ikon](./media/monitoring-container-health/container-health-green-icon.png) | Sikeresen leállt vagy nem sikerült leállítani a|
 
 Az állapotjelző ikon alapján a pod biztosít számát mutatja. Azt mutatja, az rosszabb kétállapotú, és ha az egérmutatót az állapot, minden podok állapota egy összesítése megjelenít a tárolóban.  Ha nincs kész állapotú, az állapot érték jelenik-e meg a **(0)**.  
 
@@ -489,9 +489,7 @@ Ha úgy döntött, hogy az Azure parancssori felület használata, először tel
           "addonProfiles": {
             "omsagent": {
               "enabled": false,
-              "config": {
-                "logAnalyticsWorkspaceResourceID": null
-              }
+              "config": null
             }
            }
          }

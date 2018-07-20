@@ -1,61 +1,59 @@
 ---
-title: Olvasási és írási adatok a HBase - Azure HDInsight Spark használatával |} Microsoft Docs
-description: A Spark HBase-összekötő segítségével olvashatja és Spark-fürt adatokat írhat HBase-fürtöt.
+title: Írási és olvasási HBase-adatok – Azure HDInsight Spark használata
+description: A Spark a HBase-összekötő használatával olvasási és írási adatokat egy Spark-fürtöt a HBase-fürtöt.
 services: hdinsight
-documentationcenter: ''
 author: maxluk
+ms.author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/11/2018
-ms.author: maxluk
-ms.openlocfilehash: 7cfc7f586e8a92c29736a7c4cff0b12796be430a
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.topic: conceptual
+ms.date: 07/18/2018
+ms.openlocfilehash: 5123a95852fae58adf0b4a4684b012d3b9c71e3b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161175"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144771"
 ---
 # <a name="use-spark-to-read-and-write-hbase-data"></a>A Spark használata HBase-adatok írására és olvasására
 
-Apache HBase jellemzően az alacsony szintű API (vizsgálatokat, lekérdezi és visszahelyezi) vagy egy SQL-szintaxis használatával Phoenix lekérik. Apache Spark HBase összekötő, amely kényelmes és performant alternatív lekérdezése, és módosítsa a HBase tárolt adatokat is mutatja.
+Apache HBase jellemzően az alacsony szintű API (vizsgálatokat, lekérdezi és helyez) vagy egy SQL-szintaxis használatával Phoenix lekérdezése követi. Az Apache is biztosít a Spark HBase összekötőt, ami egy kényelmes és nagy teljesítményű alternatív HBase által tárolt adatok lekérdezéséhez és módosításához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Spark, a HDInsight fürtök és a HBase egy két különálló telepítve (HDInsight 3.6) Spark 2.1-es verzióját.
-* A Spark-fürt kommunikálnia kell közvetlenül a HBase-fürtöt és minimális késéssel, ezért az ajánlott konfiguráció telepít, az azonos virtuális hálózatban lévő mindkét fürt. További információkért lásd: [az Azure portál használatával hdinsight létrehozása Linux-alapú fürtökön](hdinsight-hadoop-create-linux-clusters-portal.md).
-* SSH hozzáférés az egyes csoportokban.
-* Az egyes fürtökön alapértelmezett tároló elérésére.
+* Egy Spark, a HDInsight fürtök és a egy HBase két különálló Spark 2.1 (HDInsight 3.6) telepítve van.
+* A Spark-fürt közvetlenül kommunikálhat a HBase-fürt minimális késéssel, így az ajánlott konfiguráció az azonos virtuális hálózatba mindkét fürt üzembe helyezése kell. További információkért lásd: [a HDInsight az Azure portal használatával Linux-alapú fürtök](hdinsight-hadoop-create-linux-clusters-portal.md).
+* Minden egyes fürt SSH-hozzáférést.
+* Minden egyes fürt alapértelmezett tárolója való hozzáférést.
 
-## <a name="overall-process"></a>Teljes folyamata
+## <a name="overall-process"></a>Általános folyamata
 
-A Spark-fürt a HDInsight-fürt lekérdezni engedélyezése folyamata a következőképpen történik:
+A Spark-fürt lekérdezni a HDInsight-fürt engedélyezése magas szintű folyamata a következőképpen történik:
 
-1. Készítse elő a HBase néhány adatot.
-2. Szerezzen be a hbase-site.xml fájl módosítása a HBase fürt konfigurációs mappából (/ etc/hbase/conf).
-3. A hbase-site.xml másolatát helyezze el, a Spark 2 konfigurációs mappában (/ etc/spark2/conf).
-4. Futtassa `spark-shell` a hivatkozik a Spark HBase-összekötő által a Maven koordinálja a `packages` lehetőséget.
-5. Adja meg egy katalógust, amely leképezhető a HBase a Spark sémáját.
-6. A HBase adatok RDD vagy DataFrame API-k segítségével kommunikál.
+1. Készítse elő a HBase mintaadatokat.
+2. A hbase-site.xml fájlt, a HBase-fürt konfigurációs mappa (/ etc/hbase/conf) beszerzése.
+3. Hbase-site.xml másolatát helyezze el, a Spark 2 configuration mappában (/ etc/spark2/conf).
+4. Futtassa `spark-shell` a hivatkozó a Spark a HBase-összekötő által a Maven koordinálja a `packages` lehetőséget.
+5. Adjon meg egy katalógus, amely leképezi a sémát, Spark, HBase.
+6. A HBase-adatok az RDD vagy DataFrame API-k használatával kommunikálhat.
 
-## <a name="prepare-sample-data-in-hbase"></a>A HBase mintaadatok előkészítése
+## <a name="prepare-sample-data-in-hbase"></a>A HBase mintaadatok létrehozása
 
-Ebben a lépésben hozzon létre, és a HBase, majd lekérheti a Spark használatával egy egyszerű táblázat feltöltéséhez.
+Ebben a lépésben létrehozásához és a egy egyszerű, amely ezután lekérdezheti a Spark használata HBase tábla feltöltéséhez.
 
-1. Az SSH használatával a HBase-fürt átjárócsomópontjához csatlakozik. További információkért lásd: [HDInsight SSH használatával csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
-2. Indítsa el a HBase:
+1. Csatlakozzon az SSH-val HBase-fürt főcsomópontjához. További információkért lásd: [HDInsight SSH használatával csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
+2. A HBase rendszerhéj futtassa:
 
         hbase shell
 
-3. Hozzon létre egy `Contacts` a oszlopcsaláddal tábla `Personal` és `Office`:
+3. Hozzon létre egy `Contacts` tábla a oszlopcsaláddal `Personal` és `Office`:
 
         create 'Contacts', 'Personal', 'Office'
 
-4. A minta néhány sornyi adatot betöltése:
+4. Minta néhány sornyi adatot betöltése:
 
         put 'Contacts', '1000', 'Personal:Name', 'John Dole'
         put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
@@ -66,89 +64,89 @@ Ebben a lépésben hozzon létre, és a HBase, majd lekérheti a Spark használa
         put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
         put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
 
-## <a name="acquire-hbase-sitexml-from-your-hbase-cluster"></a>Szerezzen be a hbase-site.xml a HBase fürtök
+## <a name="acquire-hbase-sitexml-from-your-hbase-cluster"></a>A HBase-fürtöt a hbase-site.xml beszerzése
 
-1. Az SSH használatával a HBase-fürt átjárócsomópontjához csatlakozik.
-2. Másolja a hbase-site.xml helyi tárolóról a HBase-fürtöt alapértelmezett tároló:
+1. Csatlakozzon az SSH-val HBase-fürt főcsomópontjához.
+2. A hbase-site.xml másolja a helyi tárolóból a HBase-fürt alapértelmezett tárolója gyökérmappájában:
 
         hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml /
 
-3. A HBase fürt használatával keresse meg a [Azure-portálon](https://portal.azure.com).
+3. A HBase fürt használatával keresse meg a [az Azure portal](https://portal.azure.com).
 4. Válassza ki a Storage-fiókok. 
 
     ![Tárfiókok](./media/hdinsight-using-spark-query-hbase/storage-accounts.png)
 
-5. Válassza ki a tárfiókot, amely rendelkezik az alapértelmezett oszlopban jelölje a listában.
+5. Válassza ki a tárfiókot, amelynek az alapértelmezett oszlop alatt jelölje be a listában.
 
     ![Alapértelmezett tárfiók](./media/hdinsight-using-spark-query-hbase/default-storage.png)
 
-6. A tárolási fiók panelen válassza ki a Blobok csempén.
+6. A tárolási fiók panelen válassza ki a Blobok csempét.
 
     ![Blobok csempe](./media/hdinsight-using-spark-query-hbase/blobs-tile.png)
 
-7. A tárolók, jelölje ki a tárolóhoz, amelybe a HBase fürt által használt.
-8. A fájl listában válassza ki a `hbase-site.xml`.
+7. A tárolók listájában válassza ki a tárolót, a HBase-fürt által használt.
+8. Jelölje ki a fájl listában `hbase-site.xml`.
 
-    ![A HBase-site.xml](./media/hdinsight-using-spark-query-hbase/hbase-site-xml.png)
+    ![HBase-site.xml](./media/hdinsight-using-spark-query-hbase/hbase-site-xml.png)
 
-9. A Blob tulajdonságai panelen válassza ki töltse le és mentse `hbase-site.xml` a helyi számítógépen lévő helyre.
+9. A Blob tulajdonságai panelen válassza ki és mentse `hbase-site.xml` egy olyan helyre, a helyi gépen.
 
     ![Letöltés](./media/hdinsight-using-spark-query-hbase/download.png)
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>A hbase-site.xml elhelyezése a Spark-fürt
+## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Hbase-site.xml helyezi a Spark-fürthöz
 
-1. A Spark fürt használatával keresse meg a [Azure-portálon](https://portal.azure.com).
+1. Keresse meg a Spark-fürtöt hozhat az [az Azure portal](https://portal.azure.com).
 2. Válassza ki a Storage-fiókok.
 
     ![Tárfiókok](./media/hdinsight-using-spark-query-hbase/storage-accounts.png)
 
-3. Válassza ki a tárfiókot, amely rendelkezik az alapértelmezett oszlopban jelölje a listában.
+3. Válassza ki a tárfiókot, amelynek az alapértelmezett oszlop alatt jelölje be a listában.
 
     ![Alapértelmezett tárfiók](./media/hdinsight-using-spark-query-hbase/default-storage.png)
 
-4. A tárolási fiók panelen válassza ki a Blobok csempén.
+4. A tárolási fiók panelen válassza ki a Blobok csempét.
 
     ![Blobok csempe](./media/hdinsight-using-spark-query-hbase/blobs-tile.png)
 
-5. A tárolók, jelölje ki a tárolóhoz, amelybe a Spark-fürt által használt.
-6. Válassza ki a feltöltés.
+5. A tárolók listájában válassza ki a tárolót, a Spark-fürt által használt.
+6. Feltöltés kiválasztása.
 
     ![Feltöltés](./media/hdinsight-using-spark-query-hbase/upload.png)
 
-7. Válassza ki a `hbase-site.xml` fájl korábban letöltötte a helyi számítógépre.
+7. Válassza ki a `hbase-site.xml` a helyi gépen korábban letöltött fájl.
 
-    ![A hbase-site.xml feltöltése](./media/hdinsight-using-spark-query-hbase/upload-selection.png)
+    ![Hbase-site.xml feltöltése](./media/hdinsight-using-spark-query-hbase/upload-selection.png)
 
-8. Válassza ki a feltöltés.
-9. Az SSH használatával a Spark-fürt átjárócsomópontjához csatlakozik.
-10. Másolás `hbase-site.xml` helyi fürttároló Spark 2 konfigurációs mappájába a Spark-fürt alapértelmezett tárolóból:
+8. Feltöltés kiválasztása.
+9. Csatlakozzon SSH-val a Spark-fürt főcsomópontjához.
+10. Másolás `hbase-site.xml` a Spark 2 konfigurációt tartalmazó mappa a helyi tárban a fürtön a Spark-fürt alapértelmezett storage-ból:
 
         sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
 
-## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Indítsa el a Spark hivatkozik a Spark HBase-összekötő
+## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Futtassa a Spark-Shell hivatkozik a Spark a HBase-összekötő
 
-1. Az SSH használatával a Spark-fürt átjárócsomópontjához csatlakozik.
-2. Indítsa el a spark felületet, adja meg a Spark HBase összekötő csomag:
+1. Csatlakozzon SSH-val a Spark-fürt főcsomópontjához.
+2. Indítsa el a spark shell, a Spark-összekötő HBase csomag megadása:
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/coroups/public/
+        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/content/groups/public/
 
-3. A Spark rendszerhéj példány nyitva hagyja, és folytassa a következő lépéssel.
+3. Ne zárja be ezt a Spark-Shell-példányt, és folytassa a következő lépéssel.
 
-## <a name="define-a-catalog-and-query"></a>A katalógus és a lekérdezés megadása
+## <a name="define-a-catalog-and-query"></a>Katalógus- és a lekérdezés definiálása
 
-Ebben a lépésben adja meg a katalógus objektum, amely leképezhető a HBase a Spark sémáját. 
+Ebben a lépésben megadhat egy katalógus objektum, amely leképezi a sémát, Spark, HBase. 
 
-1. A nyitott Spark rendszerhéj, futtassa a következő `import` utasításokat:
+1. A Spark nyílt rendszerhéjban futtassa a következő `import` utasításokat:
 
         import org.apache.spark.sql.{SQLContext, _}
         import org.apache.spark.sql.execution.datasources.hbase._
         import org.apache.spark.{SparkConf, SparkContext}
         import spark.sqlContext.implicits._
 
-2. Adja meg a HBase-ben létrehozott kapcsolatok táblához tartozó katalógus:
-    1. Adja meg a HBase táblában katalógus sémát `Contacts`.
-    2. Azonosítsa a rowkey, `key`, és képezze le az oszlopok neveit, a Spark segítségével a oszlop termékcsalád, az oszlop neve, valamint a HBase-ben használt oszlop típusa.
-    3. A rowkey is rendelkezik egy elnevezett oszlopot, részletesen meghatározva (`rowkey`), amely tartalmaz egy adott oszlopban termékcsalád `cf` a `rowkey`.
+2. Adja meg a HBase létrehozott kapcsolatok táblához tartozó katalógus:
+    1. A HBase-táblára nevű katalógus sémát `Contacts`.
+    2. Azonosítsa a rowkey tulajdonságok esetén, mint `key`, és a Spark a oszlopcsalád, az oszlop neve, és a típusú oszlop, a HBase használt oszlopnevek leképezése.
+    3. A rowkey tulajdonságok esetén is rendelkezik egy elnevezett oszlopot, részletesen meghatározott (`rowkey`), amely rendelkezik egy adott oszlopcsalád `cf` , `rowkey`.
 
             def catalog = s"""{
                 |"table":{"namespace":"default", "name":"Contacts"},
@@ -162,7 +160,7 @@ Ebben a lépésben adja meg a katalógus objektum, amely leképezhető a HBase a
                 |}
             |}""".stripMargin
 
-3. Adja meg egy módszer, amely körül a DataFrame a `Contacts` tábla HBase-ben:
+3. Adja meg egy metódust, amely körül a DataFrame biztosít a `Contacts` HBase táblájába:
 
             def withCatalog(cat: String): DataFrame = {
                 spark.sqlContext
@@ -172,11 +170,11 @@ Ebben a lépésben adja meg a katalógus objektum, amely leképezhető a HBase a
                 .load()
             }
 
-4. A DataFrame példányának létrehozása:
+4. Hozzon létre egy példányt az adathalmaz:
 
         val df = withCatalog(catalog)
 
-5. A lekérdezés a DataFrame:
+5. Az adathalmaz-lekérdezés:
 
         df.show()
 
@@ -189,16 +187,16 @@ Ebben a lépésben adja meg a katalógus objektum, amely leképezhető a HBase a
         |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
         +------+--------------------+--------------+-------------+--------------+
 
-7. Regisztráljon az ideiglenes táblából, a HBase táblában Spark SQL használatával kérdezheti:
+7. Regisztrálja az ideiglenes táblát, így lekérdezheti a HBase-táblára Spark SQL-lel:
 
         df.registerTempTable("contacts")
 
-8. Egy SQL-lekérdezést, szemben a `contacts` tábla:
+8. Kiadása egy SQL-lekérdezést a `contacts` tábla:
 
         val query = spark.sqlContext.sql("select personalName, officeAddress from contacts")
         query.show()
 
-9. Hasonló eredményeket kell megjelennie:
+9. Az alábbiakhoz hasonló eredményt kell látnia:
 
         +-------------+--------------------+
         | personalName|       officeAddress|
@@ -207,9 +205,9 @@ Ebben a lépésben adja meg a katalógus objektum, amely leképezhető a HBase a
         |  Calvin Raji|5415 San Gabriel Dr.|
         +-------------+--------------------+
 
-## <a name="insert-new-data"></a>Új adatok beszúrása
+## <a name="insert-new-data"></a>Szúrjon be új adatokat
 
-1. Ügyfél új rekord beszúrásához definiálni kell egy `ContactRecord` osztály:
+1. Egy új kapcsolattartó rekord beszúrásához definiálni kell egy `ContactRecord` osztály:
 
         case class ContactRecord(
             rowkey: String,
@@ -219,14 +217,14 @@ Ebben a lépésben adja meg a katalógus objektum, amely leképezhető a HBase a
             personalPhone: String
             )
 
-2. Hozzon létre egy példánya `ContactRecord` , és egy tömb:
+2. Hozzon létre egy példányt `ContactRecord` , és tegye egy tömb:
 
         val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
 
         var newData = new Array[ContactRecord](1)
         newData(0) = newContact
 
-3. Mentse az új adatokat tartalmazó tömb HBase:
+3. A HBase mentése új adatokkal tömbjét:
 
         sc.parallelize(newData).toDF.write
         .options(Map(HBaseTableCatalog.tableCatalog -> catalog))
@@ -248,4 +246,4 @@ Ebben a lépésben adja meg a katalógus objektum, amely leképezhető a HBase a
 
 ## <a name="next-steps"></a>További lépések
 
-* [Spark HBase összekötő](https://github.com/hortonworks-spark/shc)
+* [Spark-HBase-összekötő](https://github.com/hortonworks-spark/shc)

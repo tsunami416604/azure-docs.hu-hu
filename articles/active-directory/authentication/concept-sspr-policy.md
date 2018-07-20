@@ -1,31 +1,31 @@
 ---
-title: Az önkiszolgáló jelszó-visszaállítási házirendek – Azure Active Directory
-description: Az Azure AD önkiszolgáló jelszó alaphelyzetbe állítása a házirend-beállítások
+title: Az Azure AD önkiszolgáló jelszó alaphelyzetbe állítása házirendek
+description: Az Azure AD önkiszolgáló jelszó-visszaállítási házirend-beállítások konfigurálása
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: a851b3842e44dbb81ef80bacde645ebafdb48d86
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054760"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162048"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
 Ez a cikk ismerteti a jelszóházirendek és -összetettségi követelményeknek társított felhasználói fiókok az Azure Active Directory (Azure AD) bérlő tárolja.
 
-## <a name="administrator-password-policy-differences"></a>Rendszergazdai jelszó házirend különbségek
+## <a name="administrator-reset-policy-differences"></a>Rendszergazda, alaphelyzetbe állítása házirend különbségek
 
-Microsoft erős alapértelmezett szigorú *két-kapu* jelszó-visszaállítási házirendjének minden olyan Azure-rendszergazdai szerepkörhöz. 
+**Microsoft erős alapértelmezett szigorú *két-kapu* jelszó-visszaállítási házirendjének minden olyan Azure-rendszergazdai szerepkörhöz** ez polciy eltérhet a felhasználók számára megadott, és nem módosítható. Mindig tesztelje felhasználói jelszó-átállítási funkcióra nélkül bármely Azure-rendszergazdai szerepkörök rendelve.
 
-Két-kapu szabályzattal a rendszergazdák biztonsági kérdések használata nem rendelkezik.
+Az a két-kezdő szabályzat **rendszergazdák nem rendelkezik a biztonsági kérdések használata**.
 
  A két-kezdő szabályzat hitelesítési adatok, például egy e-mail-cím két adatokra van szükség *és* telefonszám. A két-kezdő szabályzat érvényesül, a következő körülmények között:
 
@@ -49,7 +49,7 @@ Két-kapu szabályzattal a rendszergazdák biztonsági kérdések használata ne
   * Alkalmazásproxy szolgáltatásadminisztrátora
   * CRM-szolgáltatásadminisztrátor
   * A Power BI-szolgáltatásadminisztrátor
-  
+
 * Ha a 30 nap eltelt a próba-előfizetés
 
   vagy
@@ -61,18 +61,18 @@ Két-kapu szabályzattal a rendszergazdák biztonsági kérdések használata ne
 * Az Azure AD Connect visszaszinkronizálja identitásokat a helyszíni címtárból
 
 ### <a name="exceptions"></a>Kivételek
+
 Egy egy-kezdő szabályzat megköveteli a hitelesítési adatok, például egy e-mail-cím, egy darab *vagy* telefonszám. Egy egy-kezdő szabályzat érvényesül, a következő körülmények között:
 
 * A próba-előfizetés első 30 napján belül
 
   vagy
 
-* Egy személyes tartomány nem lesznek jelen (*. onmicrosoft.com) 
+* Egy személyes tartomány nem lesznek jelen (*. onmicrosoft.com)
 
-  és 
+  és
 
   Az Azure AD Connect nem szinkronizál identitásokat
-
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName házirendek vonatkoznak az összes felhasználói fiók
 
@@ -109,13 +109,13 @@ Ez az útmutató más szolgáltatók, például az Intune és az Office 365, Azu
 > [!NOTE]
 > Csak a címtár-szinkronizálás – nem szinkronizált felhasználói fiókok jelszavainak beállítható úgy, hogy nem járnak le. További információ a címtár-szinkronizálás: [AD az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 >
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Állítsa be, vagy ellenőrizze a jelszóházirendek PowerShell-lel
 
 Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Ha már van telepítve, a következő lépéseket segítségével konfigurálhatja az egyes mezők.
 
-### <a name="how-to-check-the-expiration-policy-for-a-password"></a>A jelszó-elévülési szabályzatának ellenőrzése
+### <a name="check-the-expiration-policy-for-a-password"></a>A jelszó-elévülési szabályzatának ellenőrzése
+
 1. A vállalati rendszergazda hitelesítő adataival csatlakozhat Windows PowerShell.
 2. Hajtsa végre a következő parancsok egyikét:
 

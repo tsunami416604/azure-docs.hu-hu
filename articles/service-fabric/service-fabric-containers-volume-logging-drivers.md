@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: subramar
-ms.openlocfilehash: a5b75a7069375f503cbe25554eb7c04cba868413
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9bd370e8070816d62b22c1e3d5ad4b6cdd2da30a
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969605"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144951"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric az Azure Files kötet illesztőprogram (előzetes verzió)
 Az Azure Files kötet beépülő modul van egy [Docker kötet beépülő modul](https://docs.docker.com/engine/extend/plugins_volume/) biztosít [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) köteteket a Docker-tárolók alapján. A Docker-kötet beépülő modult, a Service Fabric-alkalmazás telepítését követően a Service Fabric-fürtök van csomagolva. Ez azt szolgál az Azure Files-alapú más Service Fabric-tárolóalkalmazások a fürtön üzembe helyezett köteteket.
@@ -36,6 +36,33 @@ Az Azure Files kötet beépülő modul van egy [Docker kötet beépülő modul](
 * Kövesse az utasításokat a [dokumentáció az Azure Files](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) kötetként használata a Service Fabric tárolóalkalmazását a fájlmegosztás létrehozásához.
 
 * Szüksége lesz [Powershell használata a Service Fabric modul](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) vagy [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) telepítve.
+
+* Ha a Hyper-v-tárolókat használ, az alábbi kódrészletek hozzá kell adni a clustermanifest jegyzékben (helyi fürt) vagy az ARM-sablon (Azure-fürtön) vagy ClusterConfig.json (önálló fürt) fabricSettings szakaszát. A kötet nevét és a portot, amelyet a fürt figyeli a kötetet kell. 
+
+A a clustermanifest jegyzékben, a következő hozzá kell adnia az üzemeltetési szakaszban. Ebben a példában a kötet neve a következő **sfazurefile** és a portot figyeli a fürtön, **19300**.  
+
+``` xml 
+<Section Name="Hosting">
+  <Parameter Name="VolumePluginPorts" Value="sfazurefile:19300" />
+</Section>
+```
+
+Az alábbi kódrészletet az ARM-sablon (az Azure-környezetekben) vagy (az önálló verziója telepítéseinek) ClusterConfig.json fabricSettings szakaszának, hozzá kell adnia. 
+
+```json
+"fabricSettings": [
+  {
+    "name": "Hosting",
+    "parameters": [
+      {
+          "name": "VolumePluginPorts",
+          "value": "sfazurefile:19300"
+      }
+    ]
+  }
+]
+```
+
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>A Service Fabric Azure Files üzembe helyezése
 

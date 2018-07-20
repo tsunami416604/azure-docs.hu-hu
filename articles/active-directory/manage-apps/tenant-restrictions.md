@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: abf7d571097aefd47c90cbd0ce4aab941c4e24c4
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: b89ab77b1cd97fd501a754dbf41d1aa74ef118d9
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126660"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144992"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A felhőalapú alkalmazások használati Bérlőkorlátozások SaaS való hozzáférés kezelése
 
@@ -97,7 +97,7 @@ Példa felhasználóként a Contoso hálózatán lévő, de próbál meg hozzáf
 
 Bérlői korlátozások konfigurálása történik a vállalati proxy infrastruktúra, míg a rendszergazdák hozzáférhetnek a bérlői korlátozások jelentések az Azure Portalon közvetlenül. A jelentések megtekintéséhez lépjen az Azure Active Directory – áttekintés lapra, majd keresse meg a más képességet.
 
-A rendszergazda a bérlő, a Tiltott helyek-Access-környezet bérlői e jelentés segítségével tekintse meg az összes bejelentkezés letiltva, bérlői korlátozások házirend, beleértve az identitásnak miatt a megadott és a céloldali könyvtár-azonosító.
+A rendszergazda a bérlő, a Tiltott helyek-Access-környezet bérlői használható ez a jelentés megtekintéséhez a bejelentkezések Bérlőkorlátozások házirend, beleértve az identitásnak miatt blokkolva a megadott és a céloldali könyvtár-azonosító. Bejelentkezések szerepelnek, ha a bérlői beállítások a korlátozás a felhasználó bérlői vagy az erőforrás-bérlő számára a bejelentkezés.
 
 ![Korlátozott bejelentkezési kísérletek megtekintéséhez az Azure portal használatával](./media/tenant-restrictions/portal-report.png)
 

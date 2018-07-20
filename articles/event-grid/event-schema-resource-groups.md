@@ -1,126 +1,198 @@
 ---
-title: Az Azure Event rács erőforrás csoport esemény séma
-description: Erőforrás események csoportosítása Azure esemény rácshoz tartozó tulajdonságait ismerteti
+title: Az Azure Event Grid erőforrás csoport eseménysémája
+description: Ismerteti a szolgáltatást az Azure Event Grid erőforrás-csoport események tulajdonságait
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 07/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 163c32bdb8a3fdc278404b9e26fdc3097797d16c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: a195f5c20a9e2b525e683c8b9e2480b83c83207a
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301950"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159246"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Erőforráscsoportok Azure esemény rács esemény séma
+# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Az erőforráscsoportok az Azure Event Grid eseménysémája
 
-Ez a cikk a tulajdonságok és a séma biztosít erőforrás események csoportosítása. Egy esemény sémák bemutatása, lásd: [Azure esemény rács esemény séma](event-schema.md).
+Ez a cikk a tulajdonságok és a séma biztosít erőforrás-csoport események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
 
-Azure-előfizetések és -erőforráscsoportok hozható létre az azonos esemény típusú. A eseménytípusok kapcsolódó erőforrások változásairól. Az elsődleges különbség az, hogy erőforráscsoportok események erőforrások az erőforráscsoportban hozható létre, és az Azure-előfizetések létrehozása események erőforrások az előfizetésből. 
+Az Azure-előfizetések és -erőforráscsoportok gridre bocsáthatja ki az azonos esemény típusú. Az esemény típusú erőforrások módosításához kapcsolódó. Az elsődleges különbség, hogy erőforráscsoportok gridre bocsáthatja ki az eseményeket az erőforrások az erőforráscsoporton belül, és az Azure-előfizetések eseményeire a PowerShell erőforrások küldik az előfizetésből. 
 
-## <a name="available-event-types"></a>Rendelkezésre álló eseményoszlopok típusok
+## <a name="available-event-types"></a>Rendelkezésre álló események típusai
 
-Erőforráscsoportok az Azure erőforrás-kezelő felügyeleti események hozható létre, például egy virtuális gép létrehozásakor, vagy a tárfiók törlődik.
+Erőforráscsoportok gridre bocsáthatja ki felügyeleti események Azure Resource Manager, például egy virtuális gép létrehozásakor, vagy a tárfiókot törölték.
 
 | Esemény típusa | Leírás |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceWriteSuccess | Jelenik meg, ha egy erőforrás létrehozása vagy frissítése a művelet sikeres lesz. |
-| Microsoft.Resources.ResourceWriteFailure | Következik be, amikor az erőforrás létrehozása vagy frissítési művelet sikertelen lesz. |
-| Microsoft.Resources.ResourceWriteCancel | Jelenik meg, ha egy erőforrás létrehozása vagy frissítése a művelet megszakadt. |
+| Microsoft.Resources.ResourceWriteSuccess | Meg, ha egy erőforrás létrehozása vagy a frissítés sikeres. |
+| Microsoft.Resources.ResourceWriteFailure | Jelenik meg, ha egy erőforrás-létrehozás vagy frissítés művelet sikertelen lesz. |
+| Microsoft.Resources.ResourceWriteCancel | Meg, ha egy erőforrás létrehozása vagy frissítési művelet meg lett szakítva. |
 | Microsoft.Resources.ResourceDeleteSuccess | Ha egy erőforrás-törlési művelet sikeres következik be. |
 | Microsoft.Resources.ResourceDeleteFailure | Jelenik meg, ha egy erőforrás-törlési művelet sikertelen lesz. |
-| Microsoft.Resources.ResourceDeleteCancel | Jelenik meg, ha egy erőforrás-törlési művelet megszakadt. Ez az esemény történik, ha a sablon telepítése megszakadt. |
+| Microsoft.Resources.ResourceDeleteCancel | Jelenik meg, ha egy erőforrás-törlési művelet meg lett szakítva. Ez az esemény történik, ha a sablon központi telepítés meg lett szakítva. |
 
 ## <a name="example-event"></a>Példa esemény
 
-A következő példa bemutatja a séma, esemény létrehozott erőforrás: 
-
-```json
-[
-  {
-    "topic":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
-    "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "eventType":"Microsoft.Resources.ResourceWriteSuccess",
-    "eventTime":"2017-08-16T03:54:38.2696833Z",
-    "id":"25b3b0d0-d79b-44d5-9963-440d4e6a9bba",
-    "data": {
-        "authorization":"{azure_resource_manager_authorizations}",
-        "claims":"{azure_resource_manager_claims}",
-        "correlationId":"54ef1e39-6a82-44b3-abc1-bdeb6ce4d3c6",
-        "httpRequest":"{request-operation}",
-        "resourceProvider":"Microsoft.EventGrid",
-        "resourceUri":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-        "operationName":"Microsoft.EventGrid/eventSubscriptions/write",
-        "status":"Succeeded",
-        "subscriptionId":"{subscription-id}",
-        "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-    },
-    "dataVersion": "",
-    "metadataVersion": "1"
-  }
-]
-```
-
-A séma erőforrás törlése esemény hasonlít:
+Az alábbi példa bemutatja a séma, esemény létrehozott erőforrás: 
 
 ```json
 [{
-  "topic":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
-  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicApp0ecd6c02-2296-4d7c-9865-01532dc99c93",
-  "eventType": "Microsoft.Resources.ResourceDeleteSuccess",
-  "eventTime": "2017-11-07T21:24:19.6959483Z",
-  "id": "7995ecce-39d4-4851-b9d7-a7ef87a06bf5",
+  "subject": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+  "eventType": "Microsoft.Resources.ResourceWriteSuccess",
+  "eventTime": "2018-07-19T18:38:04.6117357Z",
+  "id": "4db48cba-50a2-455a-93b4-de41a3b5b7f6",
   "data": {
-    "authorization": "{azure_resource_manager_authorizations}",
-    "claims": "{azure_resource_manager_claims}",
-    "correlationId": "7995ecce-39d4-4851-b9d7-a7ef87a06bf5",
-    "httpRequest": "{request-operation}",
-    "resourceProvider": "Microsoft.EventGrid",
-    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "operationName": "Microsoft.EventGrid/eventSubscriptions/delete",
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/write",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "{expiration}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/write",
     "status": "Succeeded",
     "subscriptionId": "{subscription-id}",
-    "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    "tenantId": "{tenant-id}"
   },
-  "dataVersion": "",
-  "metadataVersion": "1"
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}"
+}]
+```
+
+Egy erőforrás törölve esemény sémája hasonlít:
+
+```json
+[{
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+  "eventType": "Microsoft.Resources.ResourceDeleteSuccess",
+  "eventTime": "2018-07-19T19:24:12.763881Z",
+  "id": "19a69642-1aad-4a96-a5ab-8d05494513ce",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/delete",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "262800",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "DELETE",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2018-02-01"
+    },
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/delete",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}"
 }]
 ```
 
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
-Az esemény a következő legfelső szintű adatokat tartalmaz:
+Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| A témakör | karakterlánc | A forrás teljes erőforrás elérési útja. Ez a mező nincs írható. Esemény rács biztosítja ezt az értéket. |
-| Tulajdonos | karakterlánc | Az esemény tulajdonos közzétevő által megadott elérési útja. |
-| eventType | karakterlánc | Az esemény adatforrás regisztrált esemény típusok egyike. |
-| eventTime | karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
-| id | karakterlánc | Az esemény egyedi azonosítója. |
-| adat | objektum | Erőforrás-csoport eseményadatok. |
-| dataVersion | karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | karakterlánc | Az esemény-metaadatok sémaverziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
+| témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| Tulajdonos | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| adatok | objektum | Erőforrás-csoport eseményadatokat. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
-Az objektum tulajdonságai a következők:
+Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| Engedélyezési | karakterlánc | A kért engedélyezése a művelethez. |
-| Jogcímek | karakterlánc | A jogcímek tulajdonságait. |
-| correlationId | karakterlánc | Hibaelhárítási művelet azonosítója. |
-| httpRequest | karakterlánc | A művelet részleteit. |
-| resourceProvider | karakterlánc | Az erőforrás-szolgáltató a művelet végrehajtása. |
-| resourceUri | karakterlánc | A műveletet az erőforrás URI. |
-| operationName | karakterlánc | A műveletet, hogy végre lett hajtva. |
-| status | karakterlánc | A művelet állapotát. |
-| subscriptionId | karakterlánc | Az erőforrás előfizetés-azonosítója. |
-| tenantId | karakterlánc | A bérlő azonosítója, az erőforrás. |
+| Engedélyezési | sztring | A kért hitelesítést biztosít a műveletet. |
+| jogcímek | sztring | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| correlationId | sztring | A hibaelhárítási művelet azonosítója. |
+| Törzsparaméterei | sztring | A művelet részleteit. |
+| ResourceProvider | sztring | Az erőforrás-szolgáltató a művelet végrehajtása. |
+| resourceUri | sztring | A műveletet az erőforrás URI azonosítója. |
+| operationName | sztring | A végrehajtott műveletet. |
+| status | sztring | A művelet állapotát. |
+| subscriptionId | sztring | Az erőforrás előfizetés-azonosítója. |
+| tenantId | sztring | Az erőforrás Bérlőazonosítója. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Megismerkedhet az Azure Event rács, lásd: [Mi az az esemény rács?](overview.md)
-* Egy esemény rács Azure-előfizetés létrehozásával kapcsolatos további információkért lásd: [esemény rács előfizetés séma](subscription-creation-schema.md).
+* Azure Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md)
+* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).

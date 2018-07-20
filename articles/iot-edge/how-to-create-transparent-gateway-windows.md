@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96a0443a66bb826496c6af42fe6479c0a53ac964
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 2a9364d77af42623946b25506e504bf0f9a3f3e3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036084"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160817"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Hozzon létre egy Windows IoT Edge-eszköz, amely transzparens átjáróként
 
@@ -54,7 +54,7 @@ A következő lépések végigvezetik a folyamat a tanúsítványok létrehozás
          ```PowerShell
          .\vcpkg install openssl:x64-windows
          ```
-      1. Adja hozzá `$VCPKGDIR\vcpkg\packages\openssl_x64-windows\tools\openssl` , a `PATH` környezeti változót, hogy a `openssl.exe` fájl elindításaihoz érhető el.
+      1. Adja hozzá `$VCPKGDIR\installed\x64-windows\tools\openssl` , a `PATH` környezeti változót, hogy a `openssl.exe` fájl elindításaihoz érhető el.
 
 1. Lépjen abba a könyvtárba, amelyben a használni kívánt. Az itt azt fog hivatkozni, ez $WRKDIR szerint.  Minden fájl ebben a címtárban létrejön.
    
