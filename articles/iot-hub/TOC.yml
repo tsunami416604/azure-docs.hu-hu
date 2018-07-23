@@ -1,0 +1,405 @@
+- name: Azure IoT – alapok
+  href: /azure/iot-fundamentals
+- name: IoT Hub – dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az Azure IoT Hub?
+      href: about-iot-hub.md
+- name: Gyors útmutatók
+  items:
+    - name: Telemetria küldése (Node.js)
+      href: quickstart-send-telemetry-node.md
+    - name: Telemetria küldése (.NET)
+      href: quickstart-send-telemetry-dotnet.md
+    - name: Telemetria küldése (Java)
+      href: quickstart-send-telemetry-java.md
+    - name: Telemetria küldése (Python)
+      href: quickstart-send-telemetry-python.md
+    - name: Telemetria küldése (iOS)
+      href: quickstart-send-telemetry-ios.md
+    - name: Eszköz vezérlése (Node.js)
+      href: quickstart-control-device-node.md
+    - name: Eszköz vezérlése (.NET)
+      href: quickstart-control-device-dotnet.md
+    - name: Eszköz vezérlése (Java)
+      href: quickstart-control-device-java.md
+    - name: Eszköz vezérlése (Python)
+      href: quickstart-control-device-python.md
+- name: Oktatóanyagok
+  items:
+    - name: Útválasztási üzenetek
+      href: tutorial-routing.md
+    - name: Eszközök konfigurálása
+      href: tutorial-device-twins.md
+    - name: Belső vezérlőprogramok frissítéseinek kezelése
+      href: tutorial-firmware-update.md
+    - name: Eszközkapcsolatok tesztelése
+      href: tutorial-connectivity.md
+- name: Alapelvek
+  items:
+    - name: Az eszközfelügyelet áttekintése
+      href: iot-hub-device-management-overview.md
+    - name: Az IoT Hub és az Event Hubs összehasonlítása
+      href: iot-hub-compare-event-hubs.md
+    - name: A megfelelő szint kiválasztása
+      href: iot-hub-scaling.md
+    - name: Magas rendelkezésre állás és vészhelyreállítás
+      href: iot-hub-ha-dr.md
+    - name: További protokollok támogatása
+      href: iot-hub-protocol-gateway.md
+    - name: Üzenetek és események útválasztásának összehasonlítása
+      href: iot-hub-event-grid-routing-comparison.md
+    - name: Az eszközkonfigurálás ajánlott eljárásai
+      href: iot-hub-configuration-best-practices.md
+    - name: Fejlesztői útmutató
+      href: iot-hub-devguide.md
+      items:
+        - name: Eszközről a felhőbe – funkcióismertető
+          href: iot-hub-devguide-d2c-guidance.md
+        - name: Felhőről az eszközre – funkcióismertető
+          href: iot-hub-devguide-c2d-guidance.md
+        - name: Üzenetek küldése és fogadása
+          href: iot-hub-devguide-messaging.md
+          items:
+            - name: Az eszközről a felhőbe irányuló üzenetek küldése az IoT Hubra
+              href: iot-hub-devguide-messages-d2c.md
+            - name: Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
+              href: iot-hub-devguide-messages-read-builtin.md
+            - name: Reagálás az IoT Hub eseményeire
+              href: iot-hub-event-grid.md
+            - name: Egyéni végpontok és útválasztási szabályok használata az eszközről a felhőbe irányuló üzenetekhez
+              href: iot-hub-devguide-messages-read-custom.md
+            - name: A felhőből az eszközökre irányuló üzenetek küldése az IoT Hubról
+              href: iot-hub-devguide-messages-c2d.md
+            - name: IoT Hub-üzenetek létrehozása és olvasása
+              href: iot-hub-devguide-messages-construct.md
+            - name: Kommunikációs protokoll kiválasztása
+              href: iot-hub-devguide-protocols.md
+        - name: Fájlok feltöltése eszközökről
+          href: iot-hub-devguide-file-upload.md
+        - name: Eszközidentitások kezelése
+          href: iot-hub-devguide-identity-registry.md
+        - name: IoT Hub-hozzáférés szabályozása
+          href: iot-hub-devguide-security.md
+        - name: Az ikereszközök áttekintése
+          href: iot-hub-devguide-device-twins.md
+        - name: Az ikermodulok áttekintése
+          href: iot-hub-devguide-module-twins.md
+        - name: Közvetlen metódusok meghívása eszközökön
+          href: iot-hub-devguide-direct-methods.md
+        - name: Feladatok ütemezése több eszközön
+          href: iot-hub-devguide-jobs.md
+        - name: IoT Hub-végpontok
+          href: iot-hub-devguide-endpoints.md
+        - name: Lekérdezés nyelve
+          href: iot-hub-devguide-query-language.md
+        - name: Kvóták és szabályozás
+          href: iot-hub-devguide-quotas-throttling.md
+        - name: Díjszabási példák
+          href: iot-hub-devguide-pricing.md
+        - name: Eszköz és szolgáltatás SDK-k
+          href: iot-hub-devguide-sdks.md
+        - name: MQTT-támogatás
+          href: iot-hub-mqtt-support.md
+        - name: Szószedet
+          href: iot-hub-devguide-glossary.md
+    - name: Biztonság
+      items:
+        - name: Biztonság az alapoktól
+          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
+        - name: Ajánlott biztonsági eljárások
+          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc
+        - name: Biztonsági architektúra
+          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
+        - name: Az IoT üzemelő példányának védelme
+          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+    - name: Biztonságossá tétel X.509-es hitelesítésszolgáltatói tanúsítványokkal
+      items:
+        - name: X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése
+          href: iot-hub-x509ca-overview.md
+        - name: X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági alapfogalmai
+          href: iot-hub-x509ca-concept.md
+- name: Útmutatók
+  items:
+    - name: Fejlesztés
+      items:
+        - name: A C IoT eszközoldali SDK-jának használata
+          href: iot-hub-device-sdk-c-intro.md
+          items:
+            - name: Az IoTHubClient használata
+              href: iot-hub-device-sdk-c-iothubclient.md
+            - name: A szerializáló használata
+              href: iot-hub-device-sdk-c-serializer.md
+        - name: Fejlesztés korlátozott eszközökhöz
+          href: iot-hub-devguide-develop-for-constrained-devices.md
+        - name: Fejlesztés mobileszközökhöz
+          href: iot-hub-how-to-develop-for-mobile-devices.md
+        - name: Csatlakozás és megbízható üzenetküldés kezelése
+          href: iot-hub-reliability-features-in-sdks.md
+        - name: Avro-adatok lekérdezése központi útvonalról
+          href: iot-hub-query-avro-data.md
+        - name: Üzenetküldés a felhőből az eszközökre
+          items:
+            - name: .NET
+              href: iot-hub-csharp-csharp-c2d.md
+            - name: Java
+              href: iot-hub-java-java-c2d.md
+            - name: Node.js
+              href: iot-hub-node-node-c2d.md
+            - name: Python
+              href: iot-hub-python-python-c2d.md
+            - name: iOS
+              href: iot-hub-ios-swift-c2d.md
+        - name: Fájlok feltöltése eszközökről
+          items:
+            - name: .NET
+              href: iot-hub-csharp-csharp-file-upload.md
+            - name: Java
+              href: iot-hub-java-java-file-upload.md
+            - name: Node.js
+              href: iot-hub-node-node-file-upload.md
+            - name: Python
+              href: iot-hub-python-python-file-upload.md
+        - name: Ikereszközök – első lépések
+          items:
+            - name: Node.js
+              href: iot-hub-node-node-twin-getstarted.md
+            - name: .NET
+              href: iot-hub-csharp-csharp-twin-getstarted.md
+            - name: Java
+              href: iot-hub-java-java-twin-getstarted.md
+            - name: Python
+              href: iot-hub-python-twin-getstarted.md
+        - name: Ismerkedés az ikermodulokkal
+          items:
+            - name: Portál
+              href: iot-hub-portal-csharp-module-twin-getstarted.md
+            - name: .NET
+              href: iot-hub-csharp-csharp-module-twin-getstarted.md
+            - name: Python
+              href: iot-hub-python-python-module-twin-getstarted.md
+            - name: 'C#'
+              href: iot-hub-c-c-module-twin-getstarted.md
+            - name: Csomópont
+              href: iot-hub-node-node-module-twin-getstarted.md
+        - name: Ismerkedés az eszközfelügyelettel
+          items:
+            - name: Node.js
+              href: iot-hub-node-node-device-management-get-started.md
+            - name: .NET
+              href: iot-hub-csharp-csharp-device-management-get-started.md
+            - name: Java
+              href: iot-hub-java-java-device-management-getstarted.md
+            - name: Python
+              href: iot-hub-python-python-device-management-get-started.md
+        - name: Feladatok ütemezése és szórása
+          items:
+            - name: Node.js
+              href: iot-hub-node-node-schedule-jobs.md
+            - name: .NET
+              href: iot-hub-csharp-csharp-schedule-jobs.md
+            - name: Java
+              href: iot-hub-java-java-schedule-jobs.md
+            - name: Python
+              href: iot-hub-python-python-schedule-jobs.md
+    - name: Kezelés
+      items:
+        - name: IoT Hub létrehozása
+          items:
+            - name: Az Azure Portal használata
+              href: iot-hub-create-through-portal.md
+            - name: Azure PowerShell használatával
+              href: iot-hub-create-using-powershell.md
+            - name: Az Azure parancssori felület használatával
+              href: iot-hub-create-using-cli.md
+            - name: A CLI használata
+              href: iot-hub-create-using-cli-nodejs.md
+            - name: A REST API használata
+              href: iot-hub-rm-rest.md
+            - name: Az Azure PowerShell sablonjának használata
+              href: iot-hub-rm-template-powershell.md
+            - name: A .NET-keretrendszer sablonjának használata
+              href: iot-hub-rm-template.md
+        - name: Fájlfeltöltés konfigurálása
+          items:
+            - name: Az Azure Portal használata
+              href: iot-hub-configure-file-upload.md
+            - name: Azure PowerShell használatával
+              href: iot-hub-configure-file-upload-powershell.md
+            - name: Az Azure parancssori felület használatával
+              href: iot-hub-configure-file-upload-cli.md
+        - name: Monitorozás a diagnosztikával
+          href: iot-hub-monitor-resource-health.md
+          items:
+            - name: Migrálás a diagnosztikai beállításokba
+              href: iot-hub-migrate-to-diagnostics-settings.md
+            - name: Műveletek figyelése
+              href: iot-hub-operations-monitoring.md
+        - name: A központ védelmének biztosítása X.509-tanúsítvánnyal
+          href: iot-hub-security-x509-get-started.md
+        - name: IoT Hub frissítése
+          href: iot-hub-upgrade.md
+        - name: Használati metrikák
+          href: iot-hub-metrics.md
+        - name: IP-szűrés konfigurálása
+          href: iot-hub-ip-filtering.md
+        - name: Eszközök konfigurálása nagy mennyiségben
+          items:
+            - name: Az Azure Portal használata
+              href: iot-hub-auto-device-config.md
+            - name: Az Azure parancssori felület használatával
+              href: iot-hub-auto-device-config-cli.md
+        - name: IoT-eszközök tömeges felügyelete
+          href: iot-hub-bulk-identity-mgmt.md
+    - name: Valós eszközök használata
+      items:
+        - name: Online szimulátor használata
+          href: iot-hub-raspberry-pi-web-simulator-get-started.md
+        - name: Fizikai eszköz használata
+          href: iot-hub-get-started-physical.md
+          items:
+            - name: Raspberry Pi és Python
+              href: iot-hub-raspberry-pi-kit-python-get-started.md
+            - name: Raspberry Pi és Node.js
+              href: iot-hub-raspberry-pi-kit-node-get-started.md
+            - name: Raspberry Pi és C
+              href: iot-hub-raspberry-pi-kit-c-get-started.md
+            - name: MXChip IoT fejlesztői készlet és Arduino
+              href: iot-hub-arduino-iot-devkit-az3166-get-started.md
+            - name: Intel Edison és Node.js
+              href: iot-hub-intel-edison-kit-node-get-started.md
+            - name: Intel Edison és C
+              href: iot-hub-intel-edison-kit-c-get-started.md
+            - name: Adafruit Feather HUZZAH ESP8266 és Arduino
+              href: iot-hub-arduino-huzzah-esp8266-get-started.md
+            - name: Sparkfun ESP8266 Thing Dev és Arduino
+              href: iot-hub-sparkfun-esp8266-thing-dev-get-started.md
+            - name: Adafruit Feather M0 és Arduino
+              href: iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md
+        - name: Az MXChip IoT DevKit használata
+          items:
+            - name: Hangüzenetek fordítása az Azure Cognitive Services használatával
+              href: iot-hub-arduino-iot-devkit-az3166-translator.md
+            - name: Twitter-üzenet lekérdezése az Azure Functions használatával
+              href: iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md
+            - name: Üzenetek küldése MQTT-kiszolgálóra az Eclipse Paho API-jaival
+              href: iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md
+            - name: A mágneses érzékelő monitorozása és e-mail-értesítések küldése az Azure Functions segítségével
+              href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
+        - name: Bővített IoT-forgatókönyvek
+          items:
+            - name: Eszközök felhőalapú üzenetkezelése az iothub-explorerrel
+              href: iot-hub-explorer-cloud-device-messaging.md
+            - name: IoT Hub-üzenetek mentése az Azure Blob Storage-ba
+              href: iot-hub-store-data-in-azure-table-storage.md
+            - name: Adatmegjelenítés a Power BI-ban
+              href: iot-hub-live-data-visualization-in-power-bi.md
+            - name: Adatmegjelenítés a Web Apps használatával
+              href: iot-hub-live-data-visualization-in-web-apps.md
+            - name: Időjárás-előrejelzés az Azure Machine Learning használatával
+              href: iot-hub-weather-forecast-machine-learning.md
+            - name: Eszközkezelés az iothub-explorerrel
+              href: iot-hub-device-management-iothub-explorer.md
+            - name: Eszközfelügyelet az Azure CLI 2.0-hoz készült IoT-bővítménnyel
+              href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
+            - name: Távoli figyelés és értesítések a Logic Apps használatával
+              href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/iot
+    - name: .NET (Szolgáltatás)
+      href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (Eszközök)
+      href: /dotnet/api/microsoft.azure.devices.client
+    - name: Java (Szolgáltatás)
+      href: /java/api/com.microsoft.azure.sdk.iot.service
+    - name: Java (Eszközök)
+      href: /java/api/com.microsoft.azure.sdk.iot.device
+    - name: Node.js (Eszközök)
+      href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
+    - name: Node.js (Szolgáltatás)
+      href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+    - name: C eszköz SDK
+      href: 'https://azure.github.io/azure-iot-sdk-c/index.html'
+    - name: Azure IoT Edge
+      href: 'http://azure.github.io/iot-edge/'
+    - name: REST (eszköz)
+      href: 'https://docs.microsoft.com/rest/api/iothub/device'
+    - name: REST (szolgáltatás)
+      href: 'https://docs.microsoft.com/rest/api/iothub/service'
+    - name: REST (IoT Hub-erőforrás)
+      href: 'https://docs.microsoft.com/rest/api/iothub/iothubresource'
+    - name: REST (tanúsítványok)
+      href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
+- name: Kapcsolódó témakörök
+  items:
+    - name: Megoldások
+      items:
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-accelerators
+        - name: IoT-központ
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT szolgáltatásoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: További források
+  items:
+    - name: 'Azure IoT-minták C#-hoz (.NET)'
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+    - name: Azure IoT-minták Node.js-hez
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+    - name: Azure IoT-minták Javához
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+    - name: Azure IoT-minták Pythonhoz
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+    - name: Azure IoT-minták iOS platformhoz
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure Certified for IoT eszközkatalógus
+      href: 'https://catalog.azureiotsuite.com/'
+    - name: Azure IoT fejlesztői központ
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Ügyfelek adatkérései
+      href: iot-hub-customer-data-requests.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Azure IoT-eszközkészlet
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
+    - name: DeviceExplorer eszköz
+      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: iothub-diagnostics eszköz
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: iothub-explorer eszköz
+      href: 'https://github.com/Azure/iothub-explorer'
+    - name: Képzési terv
+      href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-iot-hub'
+    - name: Műszaki esettanulmányok
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

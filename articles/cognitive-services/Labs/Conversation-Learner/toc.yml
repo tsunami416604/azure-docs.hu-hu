@@ -48,6 +48,8 @@
       href: tutorials/15-branching-and-undo.md
     - name: Verziókezelés és címkézés
       href: tutorials/16-versioning-and-tagging.md
+    - name: Hibrid robotok
+      href: tutorials/17-hybrid-bots.md
     - name: Bemutató – jelszó-visszaállítás
       href: tutorials/demo-password-reset.md
     - name: Bemutató – pizzarendelés

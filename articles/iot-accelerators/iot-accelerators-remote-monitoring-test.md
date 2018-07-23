@@ -1,6 +1,6 @@
 ---
-title: Eszköz szimulálása a távoli felügyeleti megoldás - Azure |} Microsoft Docs
-description: Az oktatóanyag bemutatja, az eszköz szimulátor használata a távoli felügyeleti megoldásgyorsító.
+title: Eszköz szimulálása a távoli figyelési megoldás – Azure |} A Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan a készülékszimulátort a távoli figyelési megoldásgyorsító használandó.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,43 +8,43 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088650"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187723"
 ---
 # <a name="create-a-new-simulated-device"></a>Új szimulált eszköz létrehozása
 
-Az oktatóanyag bemutatja, hogyan szabhatja testre az eszköz szimulátor mikroszolgáltatási a távoli megfigyelési megoldásgyorsító. Ez az oktatóanyag két esetben használja a Contoso IoT alkalmazásban megjelenítése az eszköz szimulátor képességeit.
+Ez az oktatóanyag bemutatja, hogyan szabhatja testre az eszköz szimulátor mikroszolgáltatás a távoli figyelési megoldásgyorsító. Ez az oktatóanyag két forgatókönyvet használja az Contoso IoT alkalmazás megjelenítése az készülékszimulátort képességeit.
 
-A következő videó bemutatja az eszköz szimulátor mikroszolgáltatási testreszabására szolgáló beállítások áttekintése:
+Az alábbi videó az eszköz szimulátor mikroszolgáltatás testreszabása a lehetőségeket mutatja be:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
-Az első esetben Contoso szeretné egy új intelligens villanykörte eszközt. A tesztek kerülnek végrehajtásra, létrehozhat egy új szimulált eszköz a következő jellemzőkkel:
+Az első esetben a Contoso biztosítani szeretné egy új intelligens villanykörte eszköz teszteléséhez. A teszteket hajt végre, létrehozhat új szimulált eszköz a következő jellemzőkkel:
 
 *Tulajdonságok*
 
 | Name (Név)                     | Értékek                      |
 | ------------------------ | --------------------------- |
-| Szín                    | Fehér, a piros, kék            |
-| Fényerő               | 0 – 100                    |
-| Becsült hátralévő élettartamát | 10 000 óra visszaszámlálási |
+| Szín                    | Fehér, a vörös, kék            |
+| Brightness               | 0 – 100                    |
+| Becsült hátralévő élettartamának | Visszaszámlálás 10 000 óra |
 
 *Telemetria*
 
-A következő táblázat a villanykörte a felhőbe, mint egy adatfolyam jelentések adatainak megjelenítése:
+Az alábbi táblázat mutatja az adatok a villanykörte a felhőbe, mint egy adatfolyam-jelentések:
 
 | Name (Név)   | Értékek      |
 | ------ | ----------- |
-| status | "a" "off" |
+| status | "on" "off" |
 | Hőmérséklet | F fok |
 | online | IGAZ, hamis |
 
 > [!NOTE]
-> A **online** telemetriai értéke összes szimulált esetében kötelező.
+> A **online** telemetriaérték minden szimulált típusok megadása kötelező.
 
 *Módszerek*
 
@@ -52,34 +52,34 @@ Az alábbi táblázat a műveletek az új eszköz támogatja:
 
 | Name (Név)        |
 | ----------- |
-| Kapcsoló   |
+| Váltás   |
 | Kikapcsolás  |
 
 *Kezdeti állapot*
 
-A következő táblázat az eszköz kezdeti állapotának megjelenítése:
+Az alábbi táblázat az eszköz kezdeti állapotát jeleníti meg:
 
 | Name (Név)                     | Értékek |
 | ------------------------ | -------|
-| Kezdeti szín            | Fehér  |
-| Kezdeti fényerő       | 75     |
+| Kezdeti színe            | Fehér  |
+| Kezdeti fényereje       | 75     |
 | Kezdeti fennmaradó élettartama   | 10,000 |
 | Kezdeti telemetriai állapota | "a"   |
 | Kezdeti telemetriai hőmérséklet | 200   |
 
-A második forgatókönyvben hozzáadhat egy új telemetriai típus contoso meglévő **hűtő** eszköz.
+A második esetben hozzáadhat egy új telemetriatípus contoso meglévő **hűtő** eszköz.
 
-Az oktatóanyag bemutatja, az eszköz szimulátor használata a távoli megfigyelési megoldásgyorsító:
+Az oktatóanyag bemutatja, hogyan használható a távoli figyelési megoldásgyorsító a készülékszimulátort:
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 >[!div class="checklist"]
-> * Hozzon létre egy új eszköz típusa
-> * Egyéni eszközviselkedés szimulálása
-> * Új eszköz-típus hozzáadása az irányítópulton
-> * Egyéni telemetriai adatokat küldhet egy meglévő eszközt típusból
+> * Hozzon létre egy új eszköztípus
+> * Egyéni eszköz viselkedésének szimulálása
+> * Egy új eszköztípus hozzáadása az irányítópulthoz
+> * Egyéni telemetriát küld egy meglévő eszköz típusa
 
-A következő videó bemutatja a forgatókönyv szimulált és valós eszközök kapcsolódni a távoli figyelésére szolgáló megoldás:
+A következő videó bemutatja egy valódi, és szimulált eszközök csatlakoztatása a távoli figyelési megoldás bemutatója:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-38-Customizing-Azure-IoT-Suite-solution-and-connect-a-real-device/Player]
 
@@ -87,41 +87,41 @@ A következő videó bemutatja a forgatókönyv szimulált és valós eszközök
 
 Ez az oktatóanyag az alábbiak szükségesek:
 
-* A távoli figyelésére szolgáló megoldás az Azure-előfizetése telepített példányát. Ha a távoli figyelésére szolgáló megoldás még nem telepítette még, el kell végeznie a [telepíteni a távoli megfigyelési megoldásgyorsító](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
+* A távoli figyelési megoldás az Azure-előfizetésben üzembe helyezett példánya. Ha még nem telepítette a távoli figyelési megoldás, még, hajtsa végre a [a távoli figyelési megoldásgyorsító üzembe helyezése](../iot-accelerators/quickstart-remote-monitoring-deploy.md) oktatóanyag.
 
-* Visual Studio 2017. Ha nincs telepítve a Visual Studio 2017, érdemes letöltenie a szabad [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) kiadását.
+* Visual Studio 2017. Ha még nincs telepítve a Visual Studio 2017, akkor letöltheti az ingyenes [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
 
-* [Cloud Explorerben a Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVS15Preview) Visual Studio bővítmény.
+* [Cloud Explorer Pro Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVS15Preview) Visual Studio-bővítmény.
 
-* A fiók [Docker Hub](https://hub.docker.com/). Regisztrálhat az ingyenes a kezdéshez.
+* A fiók [Docker Hub](https://hub.docker.com/). Iratkozzon fel az ingyenes kezdéshez.
 
-* [Git](https://git-scm.com/downloads) a asztali gépen telepítve van.
+* [A Git](https://git-scm.com/downloads) az asztali gépekre telepíthető.
 
 ## <a name="prepare-your-development-environment"></a>A fejlesztőkörnyezet előkészítése
 
-Fejezze be a fejlesztési környezetet az új szimulált eszköz hozzáadása a távoli figyelésére szolgáló megoldás előkészítéséhez a következő feladatokat:
+Hajtsa végre a következő feladatokat, hogyan adhat hozzá a távoli figyelési megoldás új szimulált eszköz a fejlesztőkörnyezet előkészítése:
 
-### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>A megoldás virtuális gép SSH elérésének konfigurálása az Azure-ban
+### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>A megoldás virtuális géphez SSH-hozzáférés konfigurálása az Azure-ban
 
-A távoli figyelési megoldást a következő létrehozásakor [www.azureiotsolutions.com](https://www.azureiotsolutions.com), úgy döntött, hogy a megoldás neve. A megoldás neve, amely a különböző telepített olyan erőforrásokat tartalmaz, a megoldás az Azure erőforráscsoport neve lesz. Az alábbi parancsokat használja nevű erőforráscsoport **Contoso-01**, le kell cserélni **Contoso-01** az erőforráscsoport nevét.
+A távoli figyelési megoldást a következő létrehozásakor [www.azureiotsolutions.com](https://www.azureiotsolutions.com), választotta, a megoldás nevét. A megoldás neve lesz az Azure-erőforráscsoportot, amely tartalmazza a különféle üzembe helyezett erőforrások, amelyek a megoldás nevét. A következő parancsokat használja egy nevű erőforráscsoportot **Contoso-01**, kell cserélni, **Contoso-01** az erőforráscsoport nevét.
 
-Az alábbi parancsokat használja a `az` parancsot [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Az Azure CLI 2.0 telepítése a fejlesztői számítógépén, vagy használja a [felhő rendszerhéj](https://docs.microsoft.com/azure/cloud-shell/overview) a a [Azure-portálon](http://portal.azure.com). Az Azure CLI 2.0 előre telepített, a felhő rendszerhéj.
+A következő parancsokat használja a `az` parancsot a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Az Azure CLI 2.0 telepítése a fejlesztői gépen, vagy használja a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) a a [az Azure portal](http://portal.azure.com). Az Azure CLI 2.0 használatával a Cloud shellben előre telepítve.
 
-1. Ha ellenőrizni szeretné a távoli megfigyelési erőforrásokat tartalmazó erőforráscsoport nevét, a következő parancsot:
+1. Ellenőrizze a távoli figyelési erőforrásokat tartalmazó erőforráscsoport nevét, futtassa a következő parancsot:
 
     ```sh
     az group list | grep "name"
     ```
 
-    Ez a parancs felsorolja az előfizetésében szereplő összes erőforráscsoport. A lista tartalmazza a távoli figyelésére szolgáló megoldás azonos nevű erőforráscsoport.
+    Ez a parancs felsorolja az előfizetés összes erőforráscsoportjában. A listában szerepelnie kell egy erőforráscsoportot a neve megegyezik a távoli figyelési megoldás.
 
-1. Ahhoz, hogy a csoport alapértelmezett csoport a következő parancsok erőforrás, a következő parancsot az erőforráscsoport neve helyett használatával **Contoso-01**:
+1. Ahhoz, hogy az erőforrás-csoport az alapértelmezett csoport további parancsokhoz, futtassa a következő parancsot, az erőforráscsoport neve helyére használatával **Contoso-01**:
 
     ```sh
     az configure --defaults group=Contoso-01
     ```
 
-1. Az erőforrások az erőforráscsoportban listájának, futtassa a következő parancsot:
+1. A listában az erőforráscsoportban lévő erőforrásokat, futtassa a következő parancsot:
 
     ```sh
     az resource list -o table
@@ -129,7 +129,7 @@ Az alábbi parancsokat használja a `az` parancsot [Azure CLI 2.0](https://docs.
 
     Jegyezze fel a virtuális gép és a hálózati biztonsági csoport nevét. A későbbi lépésekben használhatja ezeket az értékeket.
 
-1. A virtuális gép SSH-hozzáférés engedélyezéséhez a következő parancsot az előző lépésben a hálózati biztonsági csoport neve:
+1. A virtuális gép SSH-hozzáférés engedélyezéséhez futtassa a következő parancsot az előző lépésben, a hálózati biztonsági csoport neve:
 
     ```sh
     az network nsg rule create --name SSH --nsg-name YOUR-NETWORK-SECURITY-GROUP --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
@@ -141,34 +141,34 @@ Az alábbi parancsokat használja a `az` parancsot [Azure CLI 2.0](https://docs.
     az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
 
-1. A következő parancsot a virtuális gép jelszavát tudja jelszó módosításához. A korábban feljegyzett virtuális gép nevét, és egy tetszőleges jelszót használja:
+1. Virtuális gép jelszómódosítás ismeri a jelszóra, futtassa a következő parancsot. Használja a korábban feljegyzett virtuális gép nevét és a egy tetszőleges jelszót:
 
     ```sh
     az vm user update --name YOUR-VM-NAME --username azureuser --password YOUR-PASSWORD
     ```
-1. Az IP-címet a virtuális gép található, használja a következő parancsot, és jegyezze fel a nyilvános IP-cím:
+1. A virtuális gép IP-cím megkereséséhez használja a következő parancsot, és jegyezze fel a nyilvános IP-cím:
 
     ```sh
     az vm list-ip-addresses --name YOUR-VM-NAME
     ```
 
-1. A virtuális géphez történő csatlakozáshoz SSH használhatja. A `ssh` parancs a felhő rendszerhéj előre telepített. Az előző lépésben a nyilvános IP-címet, és amikor a rendszer kéri, a jelszót, a virtuális géphez konfigurált:
+1. SSH használatával csatlakozhat a virtuális gép most. A `ssh` parancsot a Cloud shellben előre telepítve. Az előző lépésben szereplő nyilvános IP-címet használja, és amikor a rendszer kéri, a jelszó konfigurálta a virtuális gép számára:
 
     ```sh
     ssh azureuser@public-ip-address
     ```
 
-    Most már rendelkezik hozzáféréssel a rendszerhéj a Docker-tárolókban a távoli figyelésére szolgáló megoldás futó virtuális gépen. A futó tárolók megtekintéséhez használja a következő parancsot:
+    Most már rendelkezik hozzáféréssel a rendszerhéj a virtuális gépet, amely a Docker-tárolókat a távoli figyelési megoldásban. A futó tárolók megtekintéséhez használja a következő parancsot:
 
     ```sh
     docker ps
     ```
 
-### <a name="find-the-service-connection-strings"></a>A szolgáltatás kapcsolati karakterláncok keresése
+### <a name="find-the-service-connection-strings"></a>Keresse meg a szolgáltatás-kapcsolati karakterláncok
 
-Az oktatóanyag használata Visual Studio megoldás, amely a megoldás Cosmos DB és az IoT-központ szolgáltatáshoz csatlakozik. Az alábbi lépéseket a kapcsolat egyik módja kell karakterlánc-értékek megjelenítése:
+Az oktatóanyagban dolgozik, Visual Studio-megoldás, amely a megoldás Cosmos DB és az IoT Hub-szolgáltatásokhoz kapcsolódik. A következő lépések bemutatják, keresse meg a kapcsolati karakterlánc-értékeket kell egyik módja:
 
-1. Keresse meg a Cosmos DB kapcsolati karakterláncot, a következő parancsot a kapcsolódik a virtuális gép SSH-munkamenetet:
+1. A Cosmos DB kapcsolati sztring megkereséséhez futtassa a következő parancsot az SSH-munkamenetből a virtuális gép csatlakozik:
 
     ```sh
     sudo grep STORAGEADAPTER_DOCUMENTDB /app/env-vars
@@ -176,7 +176,7 @@ Az oktatóanyag használata Visual Studio megoldás, amely a megoldás Cosmos DB
 
     Jegyezze fel a kapcsolati karakterlánc. Ezt az értéket az oktatóanyag későbbi részében még használni fogja.
 
-1. Keresse meg az IoT-központ kapcsolati karakterláncot, a következő parancsot a kapcsolódik a virtuális gép SSH-munkamenetet:
+1. Keresse meg az IoT Hub kapcsolati karakterláncot, csatlakozik a virtuális gép SSH-munkamenetben futtassa a következő parancsot:
 
     ```sh
     sudo grep IOTHUB_CONNSTRING /app/env-vars
@@ -185,77 +185,77 @@ Az oktatóanyag használata Visual Studio megoldás, amely a megoldás Cosmos DB
     Jegyezze fel a kapcsolati karakterlánc. Ezt az értéket az oktatóanyag későbbi részében még használni fogja.
 
 > [!NOTE]
-> Is található a kapcsolati karakterláncok az Azure portálon vagy a `az` parancsot.
+> Is megtalálhatja a kapcsolati karakterláncok az Azure Portalon vagy a használatával a `az` parancsot.
 
-### <a name="stop-the-device-simulation-service-in-the-virtual-machine"></a>Állítsa le a virtuális gép az eszköz szimuláció szolgáltatást
+### <a name="stop-the-device-simulation-service-in-the-virtual-machine"></a>Az eszköz szimuláció szolgáltatás a virtuális gép leállítása
 
-Ha módosítja az szimuláció szolgáltatást, futtathatja úgy, hogy helyben tesztelheti a módosításokat. Mielőtt az eszköz szimuláció szolgáltatás helyileg futtatta, le kell állítania a következőképpen a virtuális gépen futó példány:
+Amikor módosítja az eszköz szimulálása szolgáltatást, futtathatja helyileg, tesztelheti a módosításokat. Ahhoz, hogy az eszköz szimulálása szolgáltatás helyileg futtatni, le kell állítania a következők szerint a virtuális gépen futó példány:
 
-1. Található a **TÁROLÓAZONOSÍTÓ:** , a **eszköz-szimuláció-dotnet** szolgáltatás, a következő parancsot az SSH-munkamenetet, a virtuális gép csatlakozik:
+1. Keresése a **Tárolóazonosító** , a **eszköz-szimuláció-dotnet** szolgáltatás, az alábbi parancsot az SSH-munkamenetből a virtuális gép csatlakozik:
 
     ```sh
     docker ps
     ```
 
-    Jegyezze fel a tároló Azonosítóját a **eszköz-szimuláció-dotnet** szolgáltatás.
+    Jegyezze fel a tároló azonosítója a **eszköz-szimuláció-dotnet** szolgáltatás.
 
-1. Leállítja a **eszköz-szimuláció-dotnet** tároló, a következő parancsot:
+1. Leállítja a **eszköz-szimuláció-dotnet** tárolót, futtassa a következő parancsot:
 
     ```sh
     docker stop container-id-from-previous-step
     ```
 
-### <a name="clone-the-github-repositories"></a>A GitHub-adattárak klónozása
+### <a name="clone-the-github-repositories"></a>Klónozza a GitHub-adattárak
 
-Ebben az oktatóanyagban, akivel együttműködik a **eszköz-szimuláció** és **tárolóadapter** Visual Studio-projektek. A forráskódú adattárakban a Githubból is klónozhatja. Ez a lépés végrehajtásához a helyi fejlesztési számítógépén, ahol telepítve a Visual Studio:
+Ebben az oktatóanyagban, akivel együttműködik a **eszközszimuláció** és **tárolóadaptert** Visual Studio-projektek. A Githubról forráskódtárházak klónozhat. Végezze el az ebben a lépésben a helyi fejlesztői gépen, amelyen telepítve a Visual Studio:
 
-1. Nyisson meg egy parancssort, és lépjen abba a mappába, ahová menteni a **eszköz-szimuláció** és **tárolóadapter** GitHub-adattárak.
+1. Nyisson meg egy parancssort, és lépjen abba a mappába, ahová menteni a **eszközszimuláció** és **tárolóadaptert** GitHub-adattárak.
 
-1. A .NET-verziója, a Klónozás a **eszköz-szimuláció** -tárházban, futtassa a következő parancsot:
+1. .NET verziója klónozásához a **eszközszimuláció** tárházban, futtassa a következő parancsot:
 
     ```cmd
     git clone https://github.com/Azure/device-simulation-dotnet.git
     ```
 
-    Az eszköz szimuláció szolgáltatás a távoli figyelésére szolgáló megoldás lehetővé teszi, módosíthatja a beépített szimulált eszköz típusa, és új szimulált eszköz típusa. Egyéni eszköztípus segítségével tesztelheti a működését a távoli figyelésére szolgáló megoldás a fizikai eszközök csatlakoztatása előtt.
+    A távoli figyelési megoldásban az eszköz szimuláció szolgáltatás lehetővé teszi, hogy módosítja a beépített szimulált eszköz típusa, és létrehozhat új szimulált eszköz típusa. Egyéni eszköztípus használatával tesztelje a távoli figyelési megoldás működését, mielőtt a fizikai eszközök csatlakoztatása.
 
-1. A .NET-verziója, a Klónozás a **tárolóadapter** -tárházban, futtassa a következő parancsot:
+1. .NET verziója klónozásához a **tárolóadaptert** tárházban, futtassa a következő parancsot:
 
     ```cmd
     git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
-    Az eszköz szimuláció szolgáltatás a társzolgáltatás adapter használja az Azure-ban a Cosmos DB szolgáltatásához. A távoli figyelésére szolgáló megoldás a szimulált eszköz konfigurációs adatok Cosmos DB adatbázisban tárolja.
+    Az eszköz szimulálása szolgáltatás a társzolgáltatás adapter a Cosmos DB szolgáltatást az Azure-ban való kapcsolódáshoz használ. A távoli figyelési megoldás a szimulált eszköz konfigurációs adatokat tárol egy Cosmos DB-adatbázisban.
 
-### <a name="run-the-storage-adapter-service-locally"></a>Futtassa helyben a társzolgáltatás adapter
+### <a name="run-the-storage-adapter-service-locally"></a>A társzolgáltatás adapter helyileg történő futtatása
 
-Az eszköz szimuláció szolgáltatás a társzolgáltatás adapter használja, a megoldás Cosmos DB adatbázishoz való kapcsolódáshoz. Ha az eszköz szimuláció szolgáltatás helyileg futtatta, is futtatnia kell a társzolgáltatás adapter helyileg. A következő lépések bemutatják a Visual Studio-ről futtatva a társzolgáltatás adapter:
+Az eszköz szimulálása szolgáltatás a társzolgáltatás adapter a megoldás Cosmos DB-adatbázishoz való kapcsolódáshoz használ. Ha helyileg futtatja az eszköz szimulálása szolgáltatás, is futtatnia kell a társzolgáltatás adapter helyileg. A következő lépések bemutatják, hogyan a társzolgáltatás adapter futtatni a Visual Studióból:
 
-1. A Visual Studióban nyissa meg a **számítógépek-storage-adapter.sln** a helyi klónja a megoldásfájlt a **tárolóadapter** tárház.
+1. A Visual Studióban nyissa meg a **számítógépek-storage-adapter.sln** megoldásfájlt a helyszíni klónjának a **tárolóadaptert** tárház.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **WebService** projektre, válassza a **tulajdonságok**, és válassza a **Debug**.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **webszolgáltatás** projektre, válassza a **tulajdonságok**, és válassza a **Debug**.
 
-1. Az a **környezeti változók** területen értékét a **számítógépek\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** változó a Cosmos DB kapcsolat legyen a karakterlánc korábban feljegyzett. Mentse a módosításokat.
+1. Az a **környezeti változók** részen szerkessze az értékét a **számítógépek\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** változó legyen a Cosmos DB-kapcsolat a karakterlánc a korábban feljegyzett. Mentse a módosításokat.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **WebService** projektre, válassza a **Debug**, és válassza a **Start új példány**.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **webszolgáltatás** projektre, válassza a **Debug**, és válassza a **új példány indítása**.
 
-1. A szolgáltatás elindul a helyben fut, és megnyitja `http://localhost:9022/v1/status` az alapértelmezett böngészőben. Ellenőrizze, hogy a **állapot** értéke "OK: Alive és jól."
+1. A szolgáltatás elindul a helyileg futtatott, és megnyitja `http://localhost:9022/v1/status` az alapértelmezett böngészőben. Ellenőrizze, hogy a **állapot** értéke "OK: tartási és jól."
 
-1. Hagyja meg a tároló adapter szolgáltatás helyben fut, az oktatóanyag befejezése után.
+1. Hagyja meg a tároló adapter szolgáltatás helyben fut, amíg el nem végezte az oktatóanyagot.
 
-Most már rendelkezik minden helyen, és készen áll a távoli figyelésére szolgáló megoldás szeretne hozzáadni a egy új szimulált eszköz típusa.
+Most már minden helyen, és kezdje el hozzáadni a távoli figyelési megoldás új szimulált eszköz típus készen áll.
 
 ## <a name="create-a-simulated-device-type"></a>Hozzon létre egy szimulált eszköz típusa
 
-A legegyszerűbben úgy, hogy az eszköz szimuláció szolgáltatásban hozzon létre egy új eszköz típusa, másolása és egy már meglevő típus módosítása. A következő lépések bemutatják, hogyan másolhatja a beépített **hűtő** hozzon létre egy új eszköz **villanykörte** eszköz:
+A legegyszerűbb módja az eszköz szimulálása szolgáltatásban hozzon létre egy új eszköztípus, hogy másolja ki és a egy már meglévő típus módosítása. A következő lépések bemutatják, hogyan másolhat át a beépített **hűtő** hozzon létre egy új eszköz **villanykörte** eszköz:
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **WebService** projektre, válassza a **tulajdonságok**, és válassza a **Debug**.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **webszolgáltatás** projektre, válassza a **tulajdonságok**, és válassza a **Debug**.
 
-1. Az a **környezeti változók** területen értékét a **számítógépek\_IOT HUBBAL\_CONNSTRING** változó az IoT-központ kapcsolati karakterláncot kell azt korábban említettük. Mentse a módosításokat.
+1. Az a **környezeti változók** részen szerkessze az értékét a **számítógépek\_IOTHUB\_CONNSTRING** változót az IoT Hub kapcsolati karakterláncra kell korábban feljegyzett. Mentse a módosításokat.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **eszköz-szimuláció** megoldás válassza **indítási projektek beállítása**. Válasszon **egyetlen kezdőprojekt** válassza **WebService**. Ezután kattintson az **OK** gombra.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **eszközszimuláció** megoldást, és válassza a **indítási projektek beállítása**. Válasszon **egyetlen kezdőprojekt** válassza **webszolgáltatás**. Ezután kattintson az **OK** gombra.
 
-1. Minden eszköz rendelkezik a modell JSON-fájl és a kapcsolódó parancsprogramokat a **szolgáltatások/data/devicemodels** mappa. A Megoldáskezelőben, másolja a **hűtő** fájlokat, hogy a **villanykörte** fájlok az alábbi táblázatban látható módon:
+1. Minden eszköz rendelkezik modell JSON-fájlt, és a kapcsolódó parancsprogramokat a **szolgáltatások/data/devicemodels** mappát. A Megoldáskezelőben, másolja a **hűtő** fájlok létrehozásához a **villanykörte** fájlok az alábbi táblázatban látható módon:
 
     | Forrás                      | Cél                   |
     | --------------------------- | ----------------------------- |
@@ -263,11 +263,11 @@ A legegyszerűbben úgy, hogy az eszköz szimuláció szolgáltatásban hozzon l
     | scripts/chiller-01-state.js | scripts/lightbulb-01-state.js |
     | scripts/reboot-method.js    | scripts/SwitchOn-method.js    |
 
-### <a name="define-the-characteristics-of-the-new-device-type"></a>Adja meg az új eszköztípus jellemzői
+### <a name="define-the-characteristics-of-the-new-device-type"></a>Az új eszköztípus jellemzőinek definiálása
 
-A **villanykörte-01.json** fájl határozza meg a típus jellemzői, például a telemetriai adatokat hoz létre, és a módszereket támogatja. Az alábbi lépéseket a frissítés a **villanykörte-01.json** fájlt adja meg a **villanykörte** eszköz:
+A **villanykörte-01.json** fájl határozza meg a típus jellemzői, például a telemetriai adatokat állít elő, és a módszereket támogatja. Az alábbi lépések a frissítés a **villanykörte-01.json** fájl meghatározásához a **villanykörte** eszköz:
 
-1. Az a **villanykörte-01.json** fájlt, az eszköz metaadatainak frissítéséhez, ahogy az a következő kódrészletet:
+1. Az a **villanykörte-01.json** fájlt, frissítse az eszköz metaadatait, az alábbi kódrészletben látható módon:
 
     ```json
     "SchemaVersion": "1.0.0",
@@ -278,7 +278,7 @@ A **villanykörte-01.json** fájl határozza meg a típus jellemzői, például 
     "Protocol": "MQTT",
     ```
 
-1. Az a **villanykörte-01.json** fájl, a szimuláció definition frissítése, ahogy az a következő kódrészletet:
+1. Az a **villanykörte-01.json** fájlt, frissítse a szimuláció definíciója az alábbi kódrészletben látható módon:
 
     ```json
     "Simulation": {
@@ -298,7 +298,7 @@ A **villanykörte-01.json** fájl határozza meg a típus jellemzői, például 
     },
     ```
 
-1. Az a **villanykörte-01.json** fájlt, az eszköz típus tulajdonságainak frissítéséhez látható módon a következő kódrészletet:
+1. Az a **villanykörte-01.json** fájlt, frissítse a eszköz tulajdonságait az alábbi kódrészletben látható módon:
 
     ```json
     "Properties": {
@@ -309,7 +309,7 @@ A **villanykörte-01.json** fájl határozza meg a típus jellemzői, például 
     },
     ```
 
-1. Az a **villanykörte-01.json** fájl, a eszköz típusa telemetriai definíciók frissítése, ahogy az a következő kódrészletet:
+1. Az a **villanykörte-01.json** fájlt, az eszköz telemetriai típusdefiníciók frissítse az alábbi kódrészletben látható módon:
 
     ```json
     "Telemetry": [
@@ -329,7 +329,7 @@ A **villanykörte-01.json** fájl határozza meg a típus jellemzői, például 
     ],
     ```
 
-1. Az a **villanykörte-01.json** fájlt, az eszköz metódusai frissítése, ahogy az a következő kódrészletet:
+1. Az a **villanykörte-01.json** fájlt, az eszköz adattípusú metódusok frissítse az alábbi kódrészletben látható módon:
 
     ```json
     "CloudToDeviceMethods": {
@@ -346,11 +346,11 @@ A **villanykörte-01.json** fájl határozza meg a típus jellemzői, például 
 
 1. Mentse a **villanykörte-01.json** fájlt.
 
-### <a name="simulate-custom-device-behavior"></a>Egyéni eszközviselkedés szimulálása
+### <a name="simulate-custom-device-behavior"></a>Egyéni eszköz viselkedésének szimulálása
 
-A **parancsfájlok/villanykörte-01-state.js** fájl szimuláció viselkedését határozza meg a **villanykörte** típusa. Az alábbi lépéseket a frissítés a **parancsfájlok/villanykörte-01-state.js** viselkedésének meghatározása a fájl a **villanykörte** eszköz:
+A **parancsfájlok/villanykörte-01-state.js** fájl határozza meg a szimuláció viselkedését a **villanykörte** típusa. Az alábbi lépések a frissítés a **parancsfájlok/villanykörte-01-state.js** viselkedésének megadása a fájl a **villanykörte** eszköz:
 
-1. Az állapot definíciójának szerkesztése a **parancsfájlok/villanykörte-01-state.js** fájl, ahogy az a következő kódrészletet:
+1. Az állapot definíciójának szerkesztése a **parancsfájlok/villanykörte-01-state.js** fájlt az alábbi kódrészletben látható módon:
 
     ```js
     // Default state
@@ -362,7 +362,7 @@ A **parancsfájlok/villanykörte-01-state.js** fájl szimuláció viselkedését
     };
     ```
 
-1. Adja hozzá a **tükrözés** után működik a **eltérő** függvény a következő definícióját:
+1. Adjon hozzá egy **tükrözés** függvény után a **eltérőek lehetnek** függvényt a következő definíciót:
 
     ```js
     /**
@@ -376,7 +376,7 @@ A **parancsfájlok/villanykörte-01-state.js** fájl szimuláció viselkedését
     }
     ```
 
-1. Szerkessze a **fő** funkció viselkedését végrehajtásához, ahogy az az alábbi kódrészletet:
+1. Szerkessze a **fő** függvény viselkedésének megvalósítása az alábbi kódrészletben látható módon:
 
     ```js
     function main(context, previousState, previousProperties) {
@@ -399,9 +399,9 @@ A **parancsfájlok/villanykörte-01-state.js** fájl szimuláció viselkedését
 
 1. Mentse a **parancsfájlok/villanykörte-01-state.js** fájlt.
 
-A **parancsfájlok/SwitchOn-method.js** valósít meg fájlt a **kapcsoló a** metódust egy **villanykörte** eszköz. Az alábbi lépéseket a frissítés a **parancsfájlok/SwitchOn-method.js** fájlt:
+A **parancsfájlok/SwitchOn-method.js** valósítja meg a fájl a **kapcsoló a** metódus az egy **villanykörte** eszköz. Az alábbi lépések a frissítés a **parancsfájlok/SwitchOn-method.js** fájlt:
 
-1. Az állapot definíciójának szerkesztése a **parancsfájlok/SwitchOn-method.js** fájl, ahogy az a következő kódrészletet:
+1. Az állapot definíciójának szerkesztése a **parancsfájlok/SwitchOn-method.js** fájlt az alábbi kódrészletben látható módon:
 
     ```js
     var state = {
@@ -409,7 +409,7 @@ A **parancsfájlok/SwitchOn-method.js** valósít meg fájlt a **kapcsoló a** m
     };
     ```
 
-1. A villanykörte váltani, szerkesztheti a **fő** működéséhez az alábbiak szerint:
+1. A villanykörte váltani, szerkesztheti a **fő** függvényt az alábbiak szerint:
 
     ```js
     function main(context, previousState) {
@@ -423,7 +423,7 @@ A **parancsfájlok/SwitchOn-method.js** valósít meg fájlt a **kapcsoló a** m
 
 1. Készítsen másolatot a **parancsfájlok/SwitchOn-method.js** nevű **parancsfájlok/SwitchOff-method.js**.
 
-1. Kapcsolja ki a villanykörte, szerkessze a **fő** működni a **parancsfájlok/SwitchOff-method.js** fájlt az alábbiak szerint:
+1. Kapcsolja ki a villanykörtére, szerkessze a **fő** működni a **parancsfájlok/SwitchOff-method.js** fájlt az alábbiak szerint:
 
     ```js
     function main(context, previousState) {
@@ -435,80 +435,70 @@ A **parancsfájlok/SwitchOn-method.js** valósít meg fájlt a **kapcsoló a** m
 
 1. Mentse a **parancsfájlok/SwitchOff-method.js** fájlt.
 
-1. A Megoldáskezelőben válassza ki a négy új fájlokat pedig. Az a **tulajdonságok** minden ablakot, ellenőrizze, hogy **másolása a kimeneti könyvtárba** értéke **másolhatja, ha újabb**.
+1. A Megoldáskezelőben válassza ki a négy új fájlok mindegyike viszont. Az a **tulajdonságok** minden ablakot, ellenőrizze, hogy **Másolás a kimeneti könyvtár** értékre van állítva **másolás, ha újabb**.
 
-### <a name="configure-the-device-simulation-service"></a>Az eszköz szimuláció szolgáltatás konfigurálása
+### <a name="configure-the-device-simulation-service"></a>Az eszköz szimulálása szolgáltatás konfigurálása
 
-A szimulált tesztelés során a megoldás csatlakozó eszközök számának korlátozásához, konfigurálja a szolgáltatás futtatásához egy egyetlen hűtő és egy egyetlen villanykörte eszköz. A konfigurációs adatok tárolódik a Cosmos DB példány a megoldás erőforráscsoportban. A konfigurációs adatok szerkesztéséhez használja a **Cloud Explorer** a Visual Studio megtekintése:
+Ahhoz, hogy a tesztelés során a megoldáshoz történő csatlakoztatásáról szimulált eszközök számának korlátozásához konfigurálnia a egyetlen hűtő és a egy egyetlen villanykörte eszköz futtatásához. A konfigurációs adatokat a Cosmos DB-példányra, a megoldás az erőforráscsoportban van tárolva. A konfigurációs adatok szerkesztéséhez használja a **Cloud Explorer** megtekintése a Visual Studióban:
 
-1. Lehetőségre a **Cloud Explorer** Visual Studio megtekintéséhez válasszon **nézet** , majd **Cloud Explorer**.
+1. Megnyitásához a **Cloud Explorer** megtekintése a Visual Studióban, válassza a **nézet** , majd **Cloud Explorer**.
 
-1. A szimuláció konfigurációs dokumentum, a található **erőforrás keresése** meg **simualtions.1**.
+1. A szimuláció konfigurációs dokumentum lévő keresése **erőforrás keresése** adja meg **simualtions.1**.
 
-1. Kattintson duplán a **simulations.1** dokumentum nyissa meg szerkesztésre.
+1. Kattintson duplán a **simulations.1** a dokumentumot, nyissa meg szerkesztésre.
 
-1. Értékének **adatok**, keresse meg a **DeviceModels** tömb, amely hasonlít a következő kódrészletet:
+1. Értéke **adatok**, keresse meg a **DeviceModels** tömb, amely a következő kódrészletre hasonlít:
 
     ```json
     [{\"Id\":\"chiller-01\",\"Count\":1},{\"Id\":\"chiller-02\",\"Count\":1},{\"Id\":\"elevator-01\",\"Count\":1},{\"Id\":\"elevator-02\",\"Count\":1},{\"Id\":\"engine-01\",\"Count\":1},{\"Id\":\"engine-02\",\"Count\":1},{\"Id\":\"prototype-01\",\"Count\":1},{\"Id\":\"prototype-02\",\"Count\":1},{\"Id\":\"truck-01\",\"Count\":1},{\"Id\":\"truck-02\",\"Count\":1}]
     ```
 
-1. Egyetlen hűtő és egy egyetlen villanykörte szimulált eszköz megadásához cserélje le a **DeviceModels** tömb a következő kóddal:
+1. Egyetlen hűtő és a egy egyetlen villanykörte szimulált eszköz megadásához cserélje le a **DeviceModels** tömb az alábbi kódra:
 
     ```json
     [{\"Id\":\"chiller-01\",\"Count\":1},{\"Id\":\"lightbulb-01\",\"Count\":1}]
     ```
 
-    A változtatás mentése a **simulations.1** dokumentum.
+    A változtatás mentése a **simulations.1** dokumentumot.
 
 > [!NOTE]
-> Is használhatja a Cosmos DB adatkezelő az Azure portálon szerkesztése a **simulations.1** dokumentum.
+> Használhatja a Cosmos DB adatkezelő az Azure Portalon szerkesztheti az **simulations.1** dokumentumot.
 
 ### <a name="test-the-lightbulb-device-type-locally"></a>A villanykörte eszköztípus helyi tesztelése
 
-Most már készen áll az új szimulált villanykörte típusának tesztelése eszköz szimuláció-projektek futtatásával foglalkozik helyileg.
+Most már készen áll az új szimulált villanykörte típusát tesztelheti az eszköz szimulálása projekt helyi futtatásával.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal **WebService**, válassza a **Debug** majd **Start új példányt**.
+1. A Megoldáskezelőben kattintson a jobb gombbal **webszolgáltatás**, válassza a **Debug** majd **új példány indítása**.
 
-1. Ellenőrizze, hogy a két szimulált eszköz csatlakozik az IoT Hub, az Azure-portál megnyitása a böngészőben.
+1. Ellenőrizze, hogy a két szimulált eszköz csatlakozik az IoT Hub, a böngészőben nyissa meg az Azure Portalon.
 
-1. Nyissa meg az IoT-központ, amely tartalmazza a távoli figyelésére szolgáló megoldás az erőforráscsoportban.
+1. Keresse meg az IoT hubot az erőforráscsoportban, amely tartalmazza a távoli figyelési megoldás.
 
-1. Az a **figyelés** területen válasszon **metrikák**. Ellenőrizze, hogy hány **csatlakoztatott eszközök** kettő:
+1. Az a **figyelés** válassza **metrikák**. Ellenőrizze, hogy hány **csatlakoztatott eszközök** kettőt:
 
     ![Csatlakoztatott eszközök száma](./media/iot-accelerators-remote-monitoring-test/connecteddevices.png)
 
-1. A böngészőben navigáljon a **irányítópult** távoli figyelési megoldást. A telemetriai adatok panelen a **irányítópult**, jelölje be **hőmérséklet**. A diagramon az összes a szimulált eszköz hőmérséklete jeleníti meg:
+1. A böngészőben navigáljon a **irányítópult** a távoli figyelési megoldáshoz. A telemetriai adatok panelen a a **irányítópult**válassza **hőmérséklet**. Az összes szimulált eszközt a hőmérséklet a diagramon jeleníti meg:
 
-    ![Hőmérséklet-telemetria](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
+    ![Hőmérsékleti telemetria](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
-A villanykörte eszköz szimuláció helyileg futó most már rendelkezik. A következő lépés, hogy telepítse a frissített szimulátor kódját a virtuális géphez, futtatja a távoli megfigyelési mikroszolgáltatások létrehozására az Azure-ban.
+Most már a villanykörte eszköz szimuláció futtatása helyileg történik. A következő lépés, hogy a frissített szimulátor kód üzembe helyezése a virtuális gépet, amely a távoli figyelési mikroszolgáltatásokat az Azure-ban.
 
-A folytatás előtt állítsa le a szimuláció eszköz és a tárolási adapter projekteket a Visual Studio hibakeresési.
+A folytatás előtt állítsa le az eszközszimuláció és a tárolási adapter projekteket a Visual Studio-hibakeresés.
 
-### <a name="deploy-the-updated-simulator-to-the-cloud"></a>Telepítse a frissített szimulátor a felhőben
+### <a name="deploy-the-updated-simulator-to-the-cloud"></a>A frissített szimulátor üzembe helyezése a felhőben
 
-A távoli figyelésére szolgáló megoldás a mikroszolgáltatások docker-tárolókban lévő futtatásához. A tárolók a megoldás virtuális gépet az Azure-ban tárolt. Ebben a szakaszban:
+A távoli figyelési megoldásban a mikroszolgáltatások docker-tárolókat futtathat. A tárolók a megoldás virtuális gépen az Azure-ban üzemel. Ebben a szakaszban:
 
-* Hozzon létre egy új eszköz szimuláció docker-lemezképet.
-* A docker hub tárházhoz feltölti a lemezképet.
-* A kép importálnia kell a megoldás virtuális gépet.
+* Hozzon létre egy új eszköz szimulálása docker-rendszerképet.
+* Töltse fel a rendszerképet a docker hub adattárából.
+* A kép importálása a megoldás virtuális gépet.
 
-A következő lépések azt feltételezik, hogy rendelkezik-e a tárház nevű **villanykörte** Docker Hub-fiókjában.
+A következő lépések feltételezik, hogy rendelkezik-e egy tárház nevű **villanykörte** a Docker Hub-fiókban.
 
-1. A Visual Studio a a **eszköz-szimuláció** projektre, nyissa meg a fájlt **solution\scripts\docker\build.cmd**.
+1. A Visual Studióban az a **eszközszimuláció** projekt, nyissa meg a fájlt **solution\scripts\docker\build.cmd**.
 
-1. Módosítsa a sort, amely beállítja a **DOCKER_IMAGE** környezeti változót a Docker központ tárház nevét:
-
-    ```cmd
-    SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
-    ```
-
-    A módosítás mentéséhez.
-
-1. A Visual Studio a a **eszköz-szimuláció** projektre, nyissa meg a fájlt **solution\scripts\docker\publish.cmd**.
-
-1. Módosítsa a sort, amely beállítja a **DOCKER_IMAGE** környezeti változót a Docker központ tárház nevét:
+1. Módosítsa a sort, amely beállítja a **DOCKER_IMAGE** környezeti változót, a Docker Hub-adattár neve:
 
     ```cmd
     SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
@@ -516,40 +506,50 @@ A következő lépések azt feltételezik, hogy rendelkezik-e a tárház nevű *
 
     A módosítás mentéséhez.
 
-1. Nyisson meg egy parancssort rendszergazdaként. Ezután lépjen abba a mappába **scripts\docker** , a Klónozás a **eszköz-szimuláció** GitHub-tárházban.
+1. A Visual Studióban az a **eszközszimuláció** projekt, nyissa meg a fájlt **solution\scripts\docker\publish.cmd**.
 
-1. A docker-lemezkép létrehozásához a következő parancsot:
+1. Módosítsa a sort, amely beállítja a **DOCKER_IMAGE** környezeti változót, a Docker Hub-adattár neve:
+
+    ```cmd
+    SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
+    ```
+
+    A módosítás mentéséhez.
+
+1. Nyisson meg egy parancssort rendszergazdaként. Majd lépjen abba a mappába **scripts\docker** , a Klónozás a **eszközszimuláció** GitHub-adattárban.
+
+1. A docker-rendszerkép létrehozásához futtassa a következő parancsot:
 
     ```cmd
     build.cmd
     ```
 
-1. Jelentkezzen be a Docker központ fiókjához, futtassa a következő parancsot:
+1. Jelentkezzen be a Docker Hub-fiókjához, futtassa a következő parancsot:
 
     ```cmd
     docker login
     ```
 
-1. Töltse fel az új lemezképet a Docker központ fiókjához, futtassa a következő parancsot:
+1. Töltse fel az új rendszerképet a Docker Hub-fiókjába, futtassa a következő parancsot:
 
     ```cmd
     publish.cmd
     ```
 
-1. A feltöltés ellenőrzéséhez navigáljon [ https://hub.docker.com/ ](https://hub.docker.com/). Keresse meg a **villanykörte** tárház válassza **részletek**. Válassza a **címkék**:
+1. A feltöltés ellenőrzéséhez lépjen [ https://hub.docker.com/ ](https://hub.docker.com/). Keresse meg a **villanykörte** tárházat, és válassza a **részletek**. Válassza a **címkék**:
 
-    ![Docker központ](./media/iot-accelerators-remote-monitoring-test/dockerhub.png)
+    ![A docker hub](./media/iot-accelerators-remote-monitoring-test/dockerhub.png)
 
-    A hozzáadott parancsfájlok a **tesztelés** címkén belül, hogy a lemezképet.
+    A parancsfájlok hozzáadva a **tesztelés** címke a rendszerkép.
 
-1. Az SSH használata a megoldás az Azure virtuális géphez való kapcsolódáshoz. Keresse meg a **App** mappa és szerkesztése a **docker-compose.yml** fájlt:
+1. Az SSH használatával csatlakozhat a megoldás virtuális géphez az Azure-ban. Keresse meg a **alkalmazás** mappa és a Szerkesztés a **docker-compose.yml** fájlt:
 
     ```sh
     cd /app
     sudo nano docker-compose.yml
     ```
 
-1. Az eszköz szimuláció szolgáltatást a docker-lemezkép a bejegyzés szerkesztése:
+1. A bejegyzés a docker-rendszerkép használata az eszköz szimulálása szolgáltatás szerkesztése:
 
     ```yaml
     devicesimulation:
@@ -564,75 +564,75 @@ A következő lépések azt feltételezik, hogy rendelkezik-e a tárház nevű *
     sudo ./start.sh
     ```
 
-1. Tekintse meg a naplófájlt, az új eszköz szimuláció tárolóból, futtassa a tárolóhely-azonosító található a következő parancsot:
+1. A naplófájlban talál az új eszköz szimulálása a tárolóból, futtassa a következő parancsot a tároló-azonosító található:
 
     ```sh
     docker ps
     ```
 
-    Ezután futtassa a következő parancs használatával a tárolóhely-azonosító:
+    Ezután futtassa a következő parancsot a tároló azonosítója alapján:
 
     ```sh
     docker logs {container ID}
     ```
 
-Ezzel befejezte az eszköz szimuláció szolgáltatás frissített verziójának telepítése a távoli figyelésére szolgáló megoldás lépéseit.
+Ezennel befejezte a lépéseket az eszköz szimulálása szolgáltatás frissített verziójának telepítése a távoli figyelési megoldáshoz.
 
-A böngészőben navigáljon a **irányítópult** távoli figyelési megoldást. A telemetriai adatok panelen a **irányítópult**, jelölje be **hőmérséklet**. A két szimulált eszköz hőmérséklete a diagram jelenik meg:
+A böngészőben navigáljon a **irányítópult** a távoli figyelési megoldáshoz. A telemetriai adatok panelen a a **irányítópult**válassza **hőmérséklet**. A két szimulált eszköz hőmérséklete a diagramon jeleníti meg:
 
-![Hőmérséklet-telemetria](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
+![Hőmérsékleti telemetria](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
-Az a **eszközök** lapon megadhat az új típusú példányok:
+Az a **eszközök** oldalon telepíthet az új típusú példányok:
 
-![Rendelkezésre álló szimulációja listájának megtekintése](./media/iot-accelerators-remote-monitoring-test/devicesmodellist.png)
+![Rendelkezésre álló szimulációk listájának megtekintése](./media/iot-accelerators-remote-monitoring-test/devicesmodellist.png)
 
-A szimulált eszköz telemetriai tekintheti meg:
+A szimulált eszközről érkező telemetriai adatok tekintheti meg:
 
-![Nézet villanykörte telemetriai adat](./media/iot-accelerators-remote-monitoring-test/devicestelemetry.png)
+![Villanykörte telemetria megtekintése](./media/iot-accelerators-remote-monitoring-test/devicestelemetry.png)
 
 Hívása a **SwitchOn** és **SwitchOff** módszerek az eszközön:
 
-![Hívás villanykörte módszerek](./media/iot-accelerators-remote-monitoring-test/devicesmethods.png)
+![Villanykörte metódusok meghívása](./media/iot-accelerators-remote-monitoring-test/devicesmethods.png)
 
-## <a name="add-a-new-telemetry-type"></a>Új telemetria-típus hozzáadása
+## <a name="add-a-new-telemetry-type"></a>Adjon hozzá egy új telemetria típusa
 
-Ez a szakasz ismerteti, hogyan lehet módosítani egy meglévő szimulált eszköz típusa egy új telemetriai típus támogatásához.
+Ez a szakasz ismerteti, hogyan módosíthatja egy meglévő szimulált eszköz típusa támogatásához új telemetriai típus.
 
 ### <a name="locate-the-chiller-device-type-files"></a>Keresse meg a hűtő eszköz típusú fájlok
 
-A következő lépések bemutatják, hol találhatók a fájlok, amelyek meghatározzák a beépített **hűtő** eszköz:
+A következő lépések bemutatják, hogyan találhatja meg a fájlokat, amelyek meghatározzák a beépített **hűtő** eszköz:
 
-1. Ha még nem tette meg, a következő paranccsal klónozásához a **eszköz-szimuláció-dotnet** GitHub-tárházban a helyi számítógépen:
+1. Ha még nem tette meg, a következő paranccsal klónozásához a **eszköz-szimuláció-dotnet** GitHub-adattár helyi számítógépre:
 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
     ```
 
-1. Minden eszköz rendelkezik a modell JSON-fájl és a kapcsolódó parancsprogramokat a `data/devicemodels` mappát. A fájlokat, amelyek meghatározzák a szimulált **hűtő** eszköz típusa:
+1. Minden eszköz rendelkezik modell JSON-fájlt, és a kapcsolódó parancsprogramokat a `data/devicemodels` mappát. A fájlokat, amelyek meghatározzák a szimulált **hűtő** eszköz típusa:
 
     * **data/devicemodels/chiller-01.json**
     * **data/devicemodels/scripts/chiller-01-state.js**
 
-### <a name="specify-the-new-telemetry-type"></a>Adja meg azt az új telemetriai adat
+### <a name="specify-the-new-telemetry-type"></a>Adja meg az új telemetria típusa
 
-A következő lépések bemutatják a adjon hozzá egy új **belső hőmérséklet** típus a **hűtő** eszköz típusa:
+A következő lépések bemutatják, hogyan adhat hozzá egy új **belső hőmérséklet** írja be a **hűtő** eszköz típusa:
 
 1. Nyissa meg a **hűtő-01.json** fájlt.
 
-1. Frissítés a **sémaverzióval** érték az alábbiak szerint:
+1. Frissítés a **sémaverzióval** értékét az alábbiak szerint:
 
     ```json
     "SchemaVersion": "1.1.0",
     ```
 
-1. Az a **InitialState** területen írja be a következő két definíciók:
+1. Az a **InitialState** területen adja hozzá a feloldását két kérte definíciókat:
 
     ```json
     "internal_temperature": 65.0,
     "internal_temperature_unit": "F",
     ```
 
-1. Az a **Telemetriai** tömb, adja hozzá a következő definícióját:
+1. Az a **Telemetriai** tömböt, adja hozzá a következő-definíciót:
 
     ```json
     {
@@ -670,34 +670,34 @@ A következő lépések bemutatják a adjon hozzá egy új **belső hőmérsékl
 
 ### <a name="test-the-chiller-device-type"></a>Tesztelje a hűtő eszköz típusa
 
-A frissített teszteléséhez **hűtő** eszköztípus, először futtassa a helyi másolat készítése a **eszköz-szimuláció-dotnet** szolgáltatást, hogy az eszköz típusának tesztelése viselkedik a várt módon. Ha tesztelni, és helyileg a frissített eszköztípus indítja, építse újra a tárolót, és telepítse újra a **eszköz-szimuláció-dotnet** szolgáltatás az Azure-bA.
+A frissített teszteléséhez **hűtő** eszköztípus, először futtassa a helyi példányának a **eszköz-szimuláció-dotnet** szolgáltatást, hogy az eszköz típusának vizsgálati várt módon viselkedik. Ha tesztelése és hibakeresése helyileg a frissített eszköz típusa, a tároló újraépítése és ismételt üzembe helyezése a **eszköz-szimuláció-dotnet** szolgáltatást az Azure-bA.
 
-Amikor futtatja a **eszköz-szimuláció-dotnet** szolgáltatás helyileg küld telemetriai adatokat a távoli figyelésére szolgáló megoldás. Az a **eszközök** lap, a frissített típusú példányok létesíthet.
+Ha futtatja a **eszköz-szimuláció-dotnet** szolgáltatás helyi, telemetriai adatokat küld a távoli figyelési megoldáshoz. Az a **eszközök** lapon is üzembe helyezi a frissített típusú példányok.
 
-Tesztelése és hibakeresése a módosítások helyileg, tekintse meg az előző szakaszban [helyileg a villanykörte eszköztípus tesztelése](#test-the-lightbulb-device-type-locally).
+Tesztelése és hibakeresése helyileg a módosításokat, lásd az előző szakaszban [tesztelje helyben a villanykörte eszköztípus](#test-the-lightbulb-device-type-locally).
 
-A frissített eszköz szimuláció szolgáltatás telepítése a megoldás virtuális gépet az Azure-ban, tekintse meg az előző szakaszban [telepíti a felhőbe a frissített szimulátor](#deploy-the-updated-simulator-to-the-cloud).
+A frissített eszköz szimulálása szolgáltatáshoz a megoldás virtuális géphez az Azure-beli üzembe helyezéséhez lásd az előző szakaszban [a felhőben üzembe helyezni a frissített szimulátor](#deploy-the-updated-simulator-to-the-cloud).
 
-Az a **eszközök** lapon létesíthet a frissített típusú példányok:
+Az a **eszközök** lapon is üzembe helyezi a frissített típusú példányok:
 
-![Vegye fel a frissített hűtő](./media/iot-accelerators-remote-monitoring-test/devicesupdatedchiller.png)
+![Adja hozzá a frissített hűtő](./media/iot-accelerators-remote-monitoring-test/devicesupdatedchiller.png)
 
-Megtekintheti az új **belső hőmérséklet** a szimulált eszköz telemetriai adatokat.
+Megtekintheti, hogy az új **belső hőmérséklet** szimulált eszközről érkező telemetriai adatok.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan számára:
+Ez az oktatóanyag bemutatta, hogyan való:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Hozzon létre egy új eszköz típusa
-> * Egyéni eszközviselkedés szimulálása
-> * Új eszköz-típus hozzáadása az irányítópulton
-> * Egyéni telemetriai adatokat küldhet egy meglévő eszközt típusból
+> * Hozzon létre egy új eszköztípus
+> * Egyéni eszköz viselkedésének szimulálása
+> * Egy új eszköztípus hozzáadása az irányítópulthoz
+> * Egyéni telemetriát küld egy meglévő eszköz típusa
 
-Most már rendelkezik megtanulta, hogyan szabhatja testre az szimuláció szolgáltatást. A javasolt következő lépésre megtudhatja, hogyan [egy fizikai eszköz csatlakozni a távoli figyelésére szolgáló megoldás](iot-accelerators-connecting-devices-node.md).
+Most már megtanulhatta, hogyan szabhatja testre az eszköz szimulálása szolgáltatás. A javasolt következő lépésre az, hogy ismerje meg, hogyan [egy fizikai eszköz csatlakoztatása a távoli figyelési megoldás](iot-accelerators-connecting-devices-node.md).
 
-A távoli figyelésére szolgáló megoldás fejlesztői ismertetését lásd:
+A távoli figyelési megoldás fejlesztői ismertetését lásd:
 
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

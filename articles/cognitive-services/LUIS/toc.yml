@@ -79,6 +79,10 @@
           href: luis-tutorial-batch-testing.md
         - name: Mintákkal
           href: luis-tutorial-pattern.md
+        - name: Szerepkörökkel
+          href: luis-tutorial-pattern-roles.md
+        - name: A Pattern.any entitással
+          href: luis-tutorial-pattern-any.md
 - name: Példák
   items:
     - name: Kódminták
@@ -194,7 +198,7 @@
     - name: Tesztelés
       items:
         - name: Interaktív tesztelés
-          href: interactive-test.md
+          href: luis-interactive-test.md
         - name: Kötegelt tesztelés
           href: luis-how-to-batch-test.md
     - name: Alkalmazás közzététele
@@ -226,7 +230,7 @@
             - name: Végpontkvóta elosztása a kulcsok között a Traffic Managerrel
               href: luis-traffic-manager.md
     - name: Áttérés az API 2-es verziójára
-      href: migration-v1-to-v2.md
+      href: luis-migration-api-v1-to-v2.md
     - name: Régió megkeresése programozott módon
       items:
         - name: 'A C# használata'

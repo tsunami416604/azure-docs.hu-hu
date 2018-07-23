@@ -140,33 +140,13 @@
 #### [Bejelentkezési minták](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Tanúsítványok használata](active-directory-reporting-api-with-certificates.md)
 
-## Jelszavak kezelése
-### [Jelszavak áttekintése](authentication/active-directory-passwords-overview.md)
+## Jelszavak kezelése (active-directory/authentication/concept-sspr-howitworks.md)
 ### Felhasználói dokumentumok
 #### [Jelszó visszaállítása vagy módosítása](user-help/active-directory-passwords-update-your-own-password.md)
 #### [Ajánlott eljárások a jelszavakhoz](active-directory-secure-passwords.md)
 #### [Regisztráció önkiszolgáló jelszó-visszaállításra](user-help/active-directory-passwords-reset-register.md)
-### [Az SSPR működése](authentication/concept-sspr-howitworks.md)
-### [SSPR üzembehelyezési útmutató](authentication/howto-sspr-deployment.md)
-### [SSPR és Windows 10](authentication/tutorial-sspr-windows.md)
-### [SSPR-házirendek ](authentication/concept-sspr-policy.md)
-### [SSPR-testreszabás](authentication/concept-sspr-customization.md)
-### [SSPR-adatkövetelmények](authentication/howto-sspr-authenticationdata.md)
-### [SSPR-jelentéskészítés](authentication/howto-sspr-reporting.md)
-### [Intelligens zárolás](authentication/howto-password-smart-lockout.md)
-### [A gyenge jelszavak megszüntetése](authentication/concept-password-ban-bad.md)
-### [A tiltott jelszavak listájának konfigurálása](authentication/howto-password-ban-bad.md)
-### [Helyszíni integráció](authentication/concept-password-ban-bad-on-premises.md)
-### [Azure AD jelszóvédelem üzembe helyezése](authentication/howto-password-ban-bad-on-premises.md)
-### [Azure AD jelszóvédelem konfigurálása](authentication/howto-password-ban-bad-on-premises-operations.md)
-### [Azure AD jelszóvédelem monitorozása](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### Informatikai rendszergazdák: Új jelszavak kérése
 #### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [SSPR licenc](authentication/concept-sspr-licensing.md)
-### [Jelszóvisszaíró](authentication/howto-sspr-writeback.md)
-### [Hibaelhárítás](authentication/active-directory-passwords-troubleshoot.md)
-### [GYIK](authentication/active-directory-passwords-faq.md)
-
 
 ## Eszközök kezelése
 ### [Bevezetés](device-management-introduction.md)

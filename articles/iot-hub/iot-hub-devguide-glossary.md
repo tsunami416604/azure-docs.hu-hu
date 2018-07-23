@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 91a89d5db7c763fc3fe275d6c01f5fe9dd9af3af
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 1dae926a3a368e518877b210fb1caf487688750c
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125919"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187366"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezések.
@@ -151,7 +151,7 @@ Az IoT hub tesz több [végpontok](iot-hub-devguide-endpoints.md) , amely enged�
 Olvassa el a [eszközről a felhőbe](#device-to-cloud) küldi az üzeneteket az IoT hub a hub végpont csatlakozni, és bármely Event Hub-kompatibilis módszer használatával olvassa el ezeket az üzeneteket. Event Hub-kompatibilis módszerek közé tartozik a használatával a [Event Hubs SDK-k](../event-hubs/event-hubs-programming-guide.md) és [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 
 ## <a name="field-gateway"></a>Helyszíni átjáró
-Helyszíni átjáró lehetővé teszi, hogy a kapcsolatok közvetlenül a nem csatlakozó eszközökön [az IoT Hub](#iot-hub) , és általában telepítve helyben, az eszközökkel. További információkért lásd: [Mi az Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
+Helyszíni átjáró lehetővé teszi, hogy a kapcsolatok közvetlenül a nem csatlakozó eszközökön [az IoT Hub](#iot-hub) , és általában telepítve helyben, az eszközökkel. További információkért lásd: [Mi az Azure IoT Hub?](about-iot-hub.md)
 
 ## <a name="free-account"></a>Ingyenes fiók
 Létrehozhat egy [ingyenes Azure-fiók](https://azure.microsoft.com/pricing/free-trial/) végezze el az IoT Hub-oktatóanyagok, és kísérletezzen az IoT Hub szolgáltatásból (és más Azure-szolgáltatásokhoz).
@@ -168,7 +168,7 @@ Egy interaktív az üzenet egy [felhőből az eszközre](#cloud-to-device) üzen
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>IoT Hub
-Az IoT Hub egy teljes körűen felügyelt Azure-szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió eszköz között, és a megoldás háttérrendszere. További információkért lásd: [Mi az Azure IoT Hub?](iot-hub-what-is-iot-hub.md) Használatával a [Azure-előfizetés](#subscription), IoT hub az üzenetküldési feladatokhoz IoT kezelésére is létrehozhat.
+Az IoT Hub egy teljes körűen felügyelt Azure-szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió eszköz között, és a megoldás háttérrendszere. További információkért lásd: [Mi az Azure IoT Hub?](about-iot-hub.md) Használatával a [Azure-előfizetés](#subscription), IoT hub az üzenetküldési feladatokhoz IoT kezelésére is létrehozhat.
 
 ## <a name="iot-hub-metrics"></a>Az IoT Hub-metrikák
 [Az IoT Hub-metrikák](iot-hub-metrics.md) az IoT hubra állapotával kapcsolatos adatokat biztosítanak a [Azure-előfizetés](#subscription). Az IoT Hub-metrikák lehetővé teszi felmérheti a szolgáltatás és a hozzá csatlakozó eszközök általános állapotát. Az IoT Hub mérőszámok segítségével tekintse meg, mi történik az IoT hubbal és a kiváltó problémák kivizsgálásában anélkül, hogy forduljon az Azure ügyfélszolgálatához.
@@ -180,7 +180,7 @@ A [IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy SQL-szer
 Használhatja a [IoT Hub erőforrás REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) kezelheti az IoT hubra a [Azure-előfizetés](#subscription) például létrehozása, frissítése és törlése hubs műveleteket végez.
 
 ## <a name="iot-solution-accelerators"></a>IoT-megoldásgyorsítók
-Az Azure IoT-megoldásgyorsítók csomagot több Azure-szolgáltatások megoldásokban. Ezek a megoldások gyors használatbavétele az általános IoT-forgatókönyveket teljes körű megvalósítását teszi lehetővé. További információkért lásd: [Mik az Azure IoT-megoldásgyorsítók?](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
+Az Azure IoT-megoldásgyorsítók csomagot több Azure-szolgáltatások megoldásokban. Ezek a megoldások gyors használatbavétele az általános IoT-forgatókönyveket teljes körű megvalósítását teszi lehetővé. További információkért lásd: [Mik az Azure IoT-megoldásgyorsítók?](../iot-accelerators/about-iot-accelerators.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Az IoT-bővítmény, az Azure CLI 2.0 használatával
 [Az IoT-bővítmény, az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) többplatformos, a parancssori eszköz. Az eszköz lehetővé teszi az eszközök kezelését a [eszközidentitás-jegyzék](#identity-registry), küldéséhez és üzenetek és fájlok fogadjon az eszközökről és az IoT hub-műveletek monitorozása.
@@ -201,7 +201,7 @@ Fizikai eszköz, amely csatlakozik az IoT hub Raspberry Pi például valós eszk
 Egy eszköz- vagy service néző végpont egy IoT hubhoz való csatlakozáskor a [kapcsolati karakterlánc](#connection-string) hozzáférési kulcsot tartalmaz. Amikor hozzáad egy eszközt, hogy a [eszközidentitás-jegyzék](#identity-registry) , vagy adja hozzá a [megosztott hozzáférési szabályzat](#shared-access-policy) a hubon, a szolgáltatás létrehoz egy elsődleges és másodlagos kulcsot. Két kulcs lehetővé teszi, hogy vihetők át az egyik kulcsról a másikra az IoT hubon való hozzáférés elvesztése nélkül a kulcs frissítésekor.
 
 ## <a name="protocol-gateway"></a>Protokoll-átjáró
-A protokoll-átjáró általában a felhőben telepített, és a kapcsolódó eszközök fordítási szolgáltatásokat nyújt a protokoll [az IoT Hub](#iot-hub). További információkért lásd: [Mi az Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
+A protokoll-átjáró általában a felhőben telepített, és a kapcsolódó eszközök fordítási szolgáltatásokat nyújt a protokoll [az IoT Hub](#iot-hub). További információkért lásd: [Mi az Azure IoT Hub?](about-iot-hub.md)
 
 ## <a name="quotas-and-throttling"></a>Kvóták és szabályozás
 Nincsenek a különböző [kvóták](iot-hub-devguide-quotas-throttling.md) használatát, amely érvényes [az IoT Hub](#iot-hub), számos, a kvótákat a réteg az IoT hub függően változnak. [Az IoT Hub](#iot-hub) is érvényes [szabályozza](iot-hub-devguide-quotas-throttling.md) futási időben a szolgáltatás használatára.

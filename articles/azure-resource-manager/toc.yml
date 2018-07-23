@@ -15,6 +15,13 @@
       href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
     - name: Sablonok létrehozása – Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+- name: Oktatóanyagok
+  expanded: true
+  items:
+    - name: Titkosított tárfiók létrehozása
+      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+    - name: Több erőforrás létrehozása
+      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
 - name: Alapelvek
   items:
     - name: Erőforrás-szolgáltatók és típusaik

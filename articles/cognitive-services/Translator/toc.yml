@@ -105,6 +105,10 @@
           href: quickstart-ruby-languages.md
         - name: Mondathosszok lekérése a szövegből
           href: quickstart-ruby-sentences.md
+- name: Oktatóanyagok
+  items:
+    - name: Translator Textet használó WPF-alkalmazás létrehozása
+      href: tutorial-wpf-translation-csharp.md
 - name: Alapelvek
   items:
     - name: Támogatott nyelvek
@@ -125,8 +129,6 @@
       href: word-alignment.md
     - name: A dinamikus szótár funkció használata
       href: dynamic-dictionary.md
-    - name: Translator Text alkalmazás létrehozása a WPF segítségével
-      href: tutorial-wpf-translation-csharp.md
 - name: Referencia
   items:
     - name: 3-as verziójú Translator Text API-referencia

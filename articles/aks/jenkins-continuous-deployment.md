@@ -1,6 +1,6 @@
 ---
-title: Az Azure Kubernetes szolgáltatásban Kubernetes Jenkins folyamatos üzembe helyezés
-description: A folyamatos üzembe helyezés folyamat telepítésének és frissítésének a tárolóalapú alkalmazást az Azure Kubernetes szolgáltatásban Kubernetes Jenkins automatizálása
+title: A Jenkins folyamatos üzembe helyezés a Kubernetes Azure Kubernetes Service-ben
+description: A jenkins üzembe helyezése és frissítése az Azure Kubernetes Service-ben a Kubernetes tárolóalapú alkalmazás folyamatos üzembe helyezés folyamat automatizálása
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,50 +9,50 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 84baf01ce6eeed8dc569d7a856189aefba788126
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 246943b7e3df955394a6a79f9b3130633fe4ec50
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096475"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186613"
 ---
-# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Folyamatos üzembe helyezés a Jenkins és Azure Kubernetes Service szolgáltatással
+# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Folyamatos üzembe helyezés a Jenkins és az Azure Kubernetes Service-ben
 
-Ez a dokumentum bemutatja, hogyan állíthat be egy alapszintű folyamatos üzembe helyezés munkafolyamat Jenkins és az Azure Kubernetes szolgáltatás (AKS) fürt között.
+Ez a dokumentum bemutatja, hogyan állíthat be egy alapszintű folyamatos üzembe helyezést megvalósító munkafolyamat a Jenkins és a egy Azure Kubernetes Service (AKS)-fürt.
 
-A példa-munkafolyamat a következő lépésekből áll:
+Példa-munkafolyamat a következő lépésekből áll:
 
 > [!div class="checklist"]
-> * Az Azure szavazattal alkalmazás Kubernetes fürthöz való telepítéséhez.
-> * Az Azure szavazattal alkalmazáskód frissítése, és küldje le a GitHub-adattár, amely a folyamatos üzembe helyezési folyamat elindítja.
-> * Jenkins a tárház klónokat, és a frissített kód új tároló képet alkot.
-> * Ez a rendszerkép fejlesztőre Azure tároló beállításjegyzék (ACR).
-> * A AKS fürtben futó alkalmazás frissül az új tároló lemezkép.
+> * Kubernetes-fürthöz az Azure vote-alkalmazás üzembe helyezése.
+> * Az Azure vote alkalmazás kódjának frissítése, és leküldése egy GitHub-adattár, amely elindítja a folyamatos üzembe helyezési folyamatot.
+> * Jenkins klónozza az adattárat, és a egy új tárolórendszerképet a frissített kóddal épít.
+> * Ez a rendszerkép Azure Container Registry (ACR) leküldésekor.
+> * Az alkalmazás fut az AKS-fürtöt a frissül az új tárolórendszerképet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a cikkben szereplő lépések végrehajtásához a következőkre van szüksége.
+Ebben a cikkben szereplő lépések végrehajtásához a következő elemeket kell.
 
-- Alapvető ismeretekkel Kubernetes, Git, CI/CD és Azure tároló beállításjegyzék (ACR).
-- Egy [Azure Kubernetes szolgáltatás (AKS) fürt] [ aks-quickstart] és [AKS hitelesítő adatok a konfigurált] [ aks-credentials] a fejlesztői rendszeren.
-- Egy [Azure tároló beállításjegyzék (ACR) beállításjegyzékbeli][acr-quickstart], a ACR bejelentkezési kiszolgáló nevét, és [ACR hitelesítő adatok] [ acr-authentication] leküldéses és lekéréses hozzáféréssel.
-- Az Azure CLI-t a fejlesztői rendszeren telepítve.
-- A docker a fejlesztői rendszeren telepítve.
-- GitHub-fiók [GitHub személyes hozzáférési jogkivonat][git-access-token], és a fejlesztői rendszeren Git-ügyféllel.
+- Kubernetes, a Git, a CI/CD és az Azure Container Registry (ACR) alapszintű ismerete.
+- Egy [Azure Kubernetes Service (AKS)-fürt] [ aks-quickstart] és [konfigurálni az AKS hitelesítő adatok] [ aks-credentials] a fejlesztői rendszeren.
+- Egy [Azure Container Registry (ACR) beállításjegyzék][acr-quickstart], az ACR bejelentkezési kiszolgáló nevét, és [ACR hitelesítő adatok] [ acr-authentication] lekérést és a hozzáférést.
+- Az Azure CLI telepítve van a fejlesztői rendszeren.
+- A docker telepítve van a fejlesztői rendszeren.
+- GitHub-fiók [Githubhoz használt személyes hozzáférési tokent][git-access-token], és a Git-ügyfél telepítve van a fejlesztői rendszeren.
 
 ## <a name="prepare-application"></a>Alkalmazás előkészítése
 
-Ez a dokumentum használt Azure szavazat-alkalmazás egy vagy több három munkaállomás-csoporttal, és egy második pod Redis üzemeltető ideiglenes tárolására tárolt webes felületet tartalmazza.
+Az Azure vote alkalmazást a dokumentumban az egy vagy több podok és a egy második pod Redis üzemeltető ideiglenes adattárolásra üzemeltetett webes felületet tartalmaz.
 
-A Jenkins létrehozása előtt / AKS integráció, előkészítése, és az Azure szavazattal alkalmazás AKS fürthöz való telepítéséhez. Használjon egy, az alkalmazás verziója.
+A Jenkins építése előtt / AKS-integráció, előkészítése és üzembe helyezése az Azure vote alkalmazást, az AKS-fürt. Gondoljon erre úgy, mint az alkalmazás első verziója.
 
-Elágazás a következő GitHub-tárházban.
+A következő GitHub-tárház elágaztatása.
 
 ```
 https://github.com/Azure-Samples/azure-voting-app-redis
 ```
 
-Miután létrejött a elágazás, klónozza a fejlesztői rendszerhez. Győződjön meg arról, hogy az URL-CÍMÉT az elágazáshoz használunk, ha a tárház klónozása.
+Miután létrejött az elágazást, klónozza a fejlesztői rendszerhez. Győződjön meg arról, hogy az URL-címét az elágazásában használunk, ha a tárház klónozása.
 
 ```bash
 git clone https://github.com/<your-github-account>/azure-voting-app-redis.git
@@ -64,13 +64,13 @@ Módosítsa a könyvtárakat, hogy a klónozott könyvtárból dolgozzon.
 cd azure-voting-app-redis
 ```
 
-Futtassa a `docker-compose.yaml` fájlt, hogy létrehozza a `azure-vote-front` tároló lemezképet és az alkalmazás elindítása.
+Futtassa a `docker-compose.yaml` fájlt, hogy létrehozza a `azure-vote-front` tárolórendszerképet, és az alkalmazás indítása.
 
 ```bash
 docker-compose up -d
 ```
 
-Befejezése után használja a [docker képek] [ docker-images] parancs a létrehozott kép megtekintéséhez.
+Amikor elkészült, a [docker-rendszerképek] [ docker-images] paranccsal megtekintheti a létrehozott rendszerképet.
 
 Figyelje meg, hogy három rendszerkép lett letöltve vagy jött létre. Az `azure-vote-front` rendszerkép tartalmazza az alkalmazást, és a `nginx-flask` rendszerképet használja alapként. A `redis` rendszerkép használatával indítható el egy Redis-példány.
 
@@ -83,29 +83,29 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Az ACR bejelentkezési kiszolgáló és a [az acr lista] [ az-acr-list] parancsot. Ügyeljen arra, hogy frissítse az erőforráscsoport neve az erőforráscsoportot, a ACR rendszerleíró adatbázis üzemeltetéséhez.
+Az ACR bejelentkezési kiszolgáló az első a [az acr list] [ az-acr-list] parancsot. Ellenőrizze, hogy frissítse az erőforráscsoport nevét az erőforráscsoportot az ACR regisztrációs adatbázis üzemeltetéséhez.
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Használja a [docker címke] [ docker-tag] parancs használatával címkézhesse a kép és a kiszolgálói bejelentkezési nevet és egy verziószáma `v1`.
+Használja a [docker címke] [ docker-tag] fel a rendszerképet a bejelentkezési kiszolgáló nevét és a egy verziószáma parancs `v1`.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Frissítse az ACR bejelentkezési kiszolgáló értéket a ACR bejelentkezési kiszolgáló nevét, és leküldéses a `azure-vote-front` kép a beállításjegyzékhez.
+Frissítse az ACR bejelentkezési kiszolgáló értéke az ACR bejelentkezési kiszolgálójának nevét, és leküldéses a `azure-vote-front` rendszerképet a regisztrációs adatbázisba.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:v1
 ```
 
-## <a name="deploy-application-to-kubernetes"></a>Kubernetes alkalmazás telepítése
+## <a name="deploy-application-to-kubernetes"></a>Kubernetes-alkalmazás üzembe helyezése
 
-A jegyzékfájl lehet Kubernetes az Azure szavazattal tárház gyökérkönyvtárában található, és az alkalmazás Kubernetes fürthöz való telepítéséhez használható.
+Egy Kubernetes-jegyzékfájl lehet az Azure vote-tárház gyökérkönyvtárában található, és helyezze üzembe az alkalmazást a Kubernetes-fürt segítségével.
 
-Először frissítse a **azure-vote-all-in-one-redis.yaml** jegyzékfájl a ACR beállításjegyzék helyét. Szövegszerkesztőben nyissa meg a fájlt, és cserélje le `microsoft` az ACR bejelentkezési kiszolgáló nevével. Ez az érték a jegyzékfájl **47**. sorában található.
+Először frissítse a **azure-vote-all-in-one-redis.yaml** Alkalmazásjegyzék-fájl helyét, az ACR-beállításjegyzékbe. Nyissa meg a fájlt bármilyen szövegszerkesztőben, és cserélje le `microsoft` az ACR bejelentkezési kiszolgálójának nevét. Ez az érték a jegyzékfájl **47**. sorában található.
 
 ```yaml
 containers:
@@ -113,13 +113,13 @@ containers:
   image: microsoft/azure-vote-front:v1
 ```
 
-Ezután használhatja a [kubectl alkalmazása] [ kubectl-apply] parancsot kell futtatni az alkalmazást. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat.
+Ezután a [a kubectl a alkalmazni] [ kubectl-apply] parancsot az alkalmazás futtatásához. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat.
 
 ```bash
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-A [Kubernetes szolgáltatás] [ kubernetes-service] teszi közzé az alkalmazást az interneten jön létre. Ez eltarthat pár percig.
+A [Kubernetes-szolgáltatást] [ kubernetes-service] hoz létre, tegye elérhetővé az alkalmazást az interneten. Ez eltarthat pár percig.
 
 A folyamat állapotának monitorozásához használja [kubectl get service][kubectl-get] parancsot a `--watch` argumentummal.
 
@@ -143,18 +143,21 @@ Az alkalmazás megtekintéséhez navigáljon a külső IP-címhez.
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/aks-jenkins/azure-vote-safari.png)
 
-## <a name="deploy-jenkins-to-vm"></a>Virtuális gép Jenkins telepítése
+## <a name="deploy-jenkins-to-vm"></a>A Jenkins virtuális gép üzembe helyezése
 
-Egy parancsfájl volt előre létrehozott, a virtuális gép telepítése, konfigurálja a hálózati hozzáférést, fejezze be a Jenkins alapszintű telepítését. Emellett a parancsfájl másolja át a Kubernetes konfigurációs fájl a fejlesztői rendszerhez a Jenkins rendszerhez. Ez a fájl Jenkins és a AKS fürt közötti hitelesítéshez használt.
+A parancsfájl lett előre létrehozott virtuális gép üzembe helyezése, a hálózati hozzáférés konfigurálása és a egy alapszintű Jenkins-telepítés befejezéséhez. Ezenkívül a szkript átmásolja a Kubernetes konfigurációs fájl a fejlesztői rendszerhez a Jenkins rendszer. Ezt a fájlt használja a Jenkins és az AKS-fürt közötti hitelesítéshez.
 
-Töltse le és futtassa a parancsfájlt a következő parancsok futtatásával. Az alábbi URL-cím is használható tekintse át a parancsfájl tartalmát.
+Töltse le és futtassa a parancsfájlt a következő parancsok futtatásával. Az alábbi URL-címet is használható a parancsfájl tartalmát.
+
+> [!WARNING]
+> Ez a példaszkript bemutató céljából a gyors üzembe helyezése a Jenkins-környezet egy Azure-beli virtuális gépen futó van. Az Azure egyéni szkriptek futtatására szolgáló bővítmény használatával konfiguráljon egy virtuális Gépet, és jelenítheti meg a szükséges hitelesítő adatokat. A *~/.kube/config* a Jenkins virtuális gép másolja.
 
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
 sh azure-jenkins.sh
 ```
 
-A parancsfájl befejezése után kulcsként jól Jenkins feloldásához kiírja a Jenkins kiszolgáló címét. Keresse meg az URL-címet, adja meg a kulcsot, és a következő a képernyőn megjelenő kérni fogja a Jenkins konfigurálásának befejezéséhez.
+A szkript befejezése után azt jelenít meg a Jenkins-kiszolgáló címének kulcsként jól Jenkins zárolásának feloldásához. Tallózással keresse meg az URL-címet, adja meg a kulcsot, és a következő a képernyőn megjelenő utasításokat követve fejezze be a Jenkins konfigurációja.
 
 ```console
 Open a browser to http://52.166.118.64:8080
@@ -162,71 +165,71 @@ Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
 
-## <a name="jenkins-environment-variables"></a>Jenkins környezeti változók
+## <a name="jenkins-environment-variables"></a>A Jenkins környezeti változók
 
-Egy Jenkins környezeti változó Azure tároló beállításjegyzék (ACR) bejelentkezési kiszolgálónév tárolására szolgál. Ez a változó a Jenkins folyamatos üzembe helyezés feladat során hivatkozik.
+A Jenkins környezeti változó segítségével tárolásához az Azure Container Registry (ACR) bejelentkezési kiszolgálójának nevét. Ez a változó hivatkozik a Jenkins folyamatos üzembe helyezés során.
 
-Kattintson a Jenkins felügyeleti portálon, a **kezelése Jenkins** > **rendszer konfigurálása**.
+A Jenkins-felügyeleti portálon, a kattintson **Jenkins kezelése** > **rendszer konfigurálása**.
 
-A **globális tulajdonságok**, jelölje be **környezeti változók**, és adja hozzá a nevű változó `ACR_LOGINSERVER` érték esetén a ACR bejelentkezési kiszolgáló.
+Alatt **globális tulajdonságok**, jelölje be **környezeti változók**, és adja hozzá a nevű változó `ACR_LOGINSERVER` és a egy értéke az ACR bejelentkezési kiszolgálójának.
 
-![Jenkins környezeti változók](media/aks-jenkins/env-variables.png)
+![A Jenkins környezeti változók](media/aks-jenkins/env-variables.png)
 
-Amikor végzett, kattintson **mentése** az Jenkins-konfiguráció lapon.
+Amikor végzett, kattintson a **mentése** a Jenkins lapon.
 
-## <a name="jenkins-credentials"></a>Jenkins hitelesítő adatok
+## <a name="jenkins-credentials"></a>A Jenkins hitelesítő adatok
 
-Most tárolja egy Jenkins hitelesítő objektum ACR hitelesítő adatait. Ezeket a hitelesítő adatokat a Jenkins összeállítási feladat során hivatkozott.
+Most már az ACR hitelesítő adatok tárolása a Jenkins hitelesítő objektumot. A Jenkins létrehozási feladatot során hivatkozott ezeket a hitelesítő adatokat.
 
-Vissza a Jenkins felügyeleti portálon, kattintson **hitelesítő adatok** > **Jenkins** > **globális hitelesítő adatok (korlátlan)**  >   **Adja hozzá a hitelesítő adatok**.
+A Jenkins-felügyeleti portálon, azon kattintson **hitelesítő adatok** > **Jenkins** > **globális hitelesítő adatokat (korlátlan)**  >   **Hitelesítő adatok hozzáadása**.
 
-Győződjön meg arról, hogy a hitelesítő adat típusú **felhasználónév és jelszó** , és írja be a következő elemek:
+Győződjön meg arról, hogy a hitelesítő adatok típusa **felhasználónév, jelszó** , és adja meg a következő elemek:
 
-- **Felhasználónév** – a szolgáltatás egyszerű használjanak a hitelesítéshez a ACR rendszerleíró azonosítója.
-- **Jelszó** -ügyfélkulcs a szolgáltatás egyszerű használat a ACR beállításjegyzék-val történő hitelesítéshez.
-- **Azonosító** -azonosító például a hitelesítőadat- `acr-credentials`.
+- **Felhasználónév** -szolgáltatás egyszerű használjanak a hitelesítéshez, az ACR-beállításjegyzék azonosítója.
+- **Jelszó** -ügyfélkulcsot hitelesítés az ACR-beállításjegyzék egyszerű szolgáltatás használatával.
+- **ID** -Hitelesítőadat-azonosító például `acr-credentials`.
 
-Amikor végzett, a hitelesítő adatok űrlap a lemezkép hasonlóan kell kinéznie:
+Amikor végzett, a hitelesítő adatok képernyőn ábrán láthatóhoz hasonlónak kell kinéznie:
 
 ![ACR hitelesítő adatok](media/aks-jenkins/acr-credentials.png)
 
-Kattintson a **OK** és térjen vissza a Jenkins felügyeleti portálra.
+Kattintson a **OK** és térjen vissza a Jenkins-felügyeleti portálon.
 
-## <a name="create-jenkins-project"></a>Jenkins projekt létrehozása
+## <a name="create-jenkins-project"></a>A Jenkins-projekt létrehozása
 
-A Jenkins felügyeleti portálon, kattintson **új elem**.
+A Jenkins-felügyeleti portálon kattintson a **új elem**.
 
-Nevezze el a projekt, például `azure-vote`, jelölje be **Freestyle projekt**, és kattintson a **OK**.
+Adja meg a projekt nevét, például `azure-vote`válassza **Freestyle Project**, és kattintson a **OK**.
 
-![Jenkins projekt](media/aks-jenkins/jenkins-project.png)
+![Jenkins-projekt](media/aks-jenkins/jenkins-project.png)
 
-A **általános**, jelölje be **GitHub-projekt** , és írja be az URL-címet az elágazáshoz, az Azure szavazattal GitHub-projekthez tartozó.
+A **általános**válassza **GitHub-projekt** , és adja meg az Azure vote GitHub-projekt elágazása URL-CÍMÉT.
 
 ![GitHub-projekt](media/aks-jenkins/github-project.png)
 
-A **forrás kód felügyeleti**, jelölje be **Git**, adja meg az URL-címet az elágazáshoz, az Azure szavazattal GitHub-tárház.
+A **Source Code Management**válassza **Git**, adja meg az Azure Vote GitHub-tárház elágazása URL.
 
-A hitelesítő adatokat, kattintson az és **Hozzáadás** > **Jenkins**. A **jellegű**, jelölje be **titkos szöveg** , és írja be a [GitHub személyes hozzáférési jogkivonat] [ git-access-token] , a titkos kulcsot.
+A hitelesítő adatait, kattintson a és **Hozzáadás** > **Jenkins**. Alatt **típusú**válassza **titkos szöveg** , és adja meg a [Githubhoz használt személyes hozzáférési tokent] [ git-access-token] , a titkos kulcsot.
 
-Válassza ki **Hozzáadás** végzett.
+Válassza ki **Hozzáadás** végeztével.
 
 ![GitHub hitelesítő adatok](media/aks-jenkins/github-creds.png)
 
-A **Build eseményindítók**, jelölje be **GitHub hook eseményindítója a következőnek: GITScm lekérdezési**.
+A **hozhat létre eseményindítókat**válassza **GitHub hook trigger for GITScm lekérdezés**.
 
-![Jenkins eseményindítók létrehozása](media/aks-jenkins/build-triggers.png)
+![A Jenkins triggerek létrehozását.](media/aks-jenkins/build-triggers.png)
 
-A **telepítési környezet**, jelölje be **titkos szövegek vagy fájlok**.
+A **környezetet hozhat létre**válassza **használjon titkos szövegek vagy**.
 
-![Jenkins összeállító környezetet](media/aks-jenkins/build-environment.png)
+![A Jenkins-összeállító környezetet](media/aks-jenkins/build-environment.png)
 
-A **kötések**, jelölje be **Hozzáadás** > **felhasználónév és jelszó (elválasztott)**.
+Alatt **kötések**, jelölje be **Hozzáadás** > **felhasználónév és jelszó (vesszővel)**.
 
-Adja meg `ACR_ID` a a **tartozó felhasználónév változójának**, és `ACR_PASSWORD` a a **jelszó változót**.
+Adja meg `ACR_ID` számára a **felhasználónév-változó**, és `ACR_PASSWORD` számára a **Jelszóváltozó**.
 
-![Jenkins kötések](media/aks-jenkins/bindings.png)
+![A Jenkins-kötések](media/aks-jenkins/bindings.png)
 
-Adja hozzá a **összeállítása lépés** típusú **hajtható végre a rendszerhéj** és használja a következő szöveget. Ezt a parancsfájlt hoz létre egy új tároló lemezképet, és leküldéses értesítések azt a ACR beállításjegyzék.
+Adjon hozzá egy **összeállítása lépés** típusú **hajtsa végre a rendszerhéj** és használja a következő szöveget. Ez a szkript összeállít egy új tárolórendszerképet, majd leküldi azt az ACR-beállításjegyzékbe.
 
 ```bash
 # Build new image and push to ACR.
@@ -236,7 +239,7 @@ docker login ${ACR_LOGINSERVER} -u ${ACR_ID} -p ${ACR_PASSWORD}
 docker push $WEB_IMAGE_NAME
 ```
 
-Adja hozzá egy másik **összeállítása lépés** típusú **hajtható végre a rendszerhéj** és használja a következő szöveget. A parancsfájl a Kubernetes központi telepítést frissíti.
+Adjon hozzá egy másik **összeállítása lépés** típusú **hajtsa végre a rendszerhéj** és használja a következő szöveget. Ez a szkript frissíti a Kubernetes üzemelő példányt.
 
 ```bash
 # Update kubernetes deployment with new image.
@@ -244,39 +247,38 @@ WEB_IMAGE_NAME="${ACR_LOGINSERVER}/azure-vote-front:kube${BUILD_NUMBER}"
 kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME --kubeconfig /var/lib/jenkins/config
 ```
 
-Ezt követően kattintson **mentése**.
+Ha befejeződött, kattintson a **mentése**.
 
-## <a name="test-the-jenkins-build"></a>Tesztelje a Jenkins összeállítása
+## <a name="test-the-jenkins-build"></a>A Jenkins-buildelés tesztelése
 
-A folytatás előtt tesztelje a Jenkins összeállítása. Ez azt ellenőrzi, hogy az összeállítási feladat megfelelően van konfigurálva, illetve a megfelelő Kubernetes hitelesítési fájlt helyben, és, hogy vannak-e megadva ACR szükséges hitelesítő adatokat.
+A folytatás előtt tesztelje a Jenkins-buildelés. Ez igazolja, hogy a fordítási feladatot megfelelően van konfigurálva, a megfelelő Kubernetes hitelesítési fájl van beállítva, és hogy a megfelelő ACR hitelesítő adatokat adtak meg.
 
-Kattintson a **Build most** a projekt a bal oldali menüben.
+Kattintson a **hozhat létre most** a projekt a bal oldali menüben.
 
-![Jenkins build tesztelése](media/aks-jenkins/test-build.png)
+![A Jenkins létrehozási tesztelése](media/aks-jenkins/test-build.png)
 
-A folyamat során a GitHub-tárházban klónozták a Jenkins build kiszolgálóra. Új tároló-lemezkép összeállítása és a ACR beállításjegyzék leküldve. Végül az Azure szavazattal alkalmazás AKS fürtben futó frissül az új rendszerképet használja. Az alkalmazás kódja nem módosult, mert az alkalmazás nem változik.
+Ez a folyamat során a GitHub-adattárat a Jenkins-buildkiszolgáló van klónozni. Egy új tárolórendszerkép összeállítása és leküldött az ACR-beállításjegyzékbe. Végül az Azure vote alkalmazást, az AKS-fürtön futó frissül, és az új rendszerképet használja. Az alkalmazás kódja nem módosultak, mivel az alkalmazás nem változik.
 
-Ha a folyamat befejeződött, kattintson a **#1 build** az előzmények építsenek, és válassza ki **konzol kimeneti** a felépítési folyamat összes eredményének megtekintéséhez. Utolsó sorának sikeres build jelzi.
+A folyamat befejeződése után kattintson a **összeállítása #1** alatt hozhat létre előzmények, és válassza ki **konzolkimenet** az összeállítási folyamat során az összes kimenetének megtekintése. A végső vonal jelzi a build sikeres létrehozása.
 
 ## <a name="create-github-webhook"></a>GitHub-webhook létrehozása
 
-A következő környezet igénybe vételét az alkalmazás tárház a Jenkins build kiszolgálóra, hogy bármely-érvényesítés: az új buildverziót elindul.
+Ezután környezet igénybe vételét az alkalmazás-adattárat a Jenkins-build kiszolgálóhoz, hogy minden véglegesítés az új build aktiválódik.
 
-1. Tallózással keresse meg a villás GitHub-tárházban.
-2. Válassza a **Settings** (Beállítások) lehetőséget, majd az **Integrations & services** (Integrációk és szolgáltatások) lehetőséget a bal oldalon.
-3. Válasszon **hozzáadása szolgáltatás**, adja meg `Jenkins (GitHub plugin)` a Szűrő mezőbe, és válasszon a beépülő modul.
-4. Az a Jenkins hook URL-CÍMÉT, írja be a `http://<publicIp:8080>/github-webhook/` ahol `publicIp` Jenkins kiszolgáló IP-címét. Győződjön meg arról, hogy tartalmazzák a záró /.
-5. Válassza ki a bővítmény szolgáltatást.
+1. Keresse meg az elágaztatott GitHub-adattárában.
+2. Válassza ki **beállítások**, majd **Webhookok** a bal oldalon.
+3. Válassza ki a **webhook hozzáadása**. Az a *hasznos adat URL-cím*, adja meg `http://<publicIp:8080>/github-webhook/` ahol `publicIp` a Jenkins-kiszolgáló IP-címe. Győződjön meg arról, hogy tartalmazza a záró /. Az alapértelmezett tartalom típusa és az eseményindító meghagyása *leküldéses* eseményeket.
+4. Válassza ki **webhook hozzáadása**.
 
-![GitHub-webhook](media/aks-jenkins/webhook.png)
+    ![GitHub-webhook](media/aks-jenkins/webhook.png)
 
-## <a name="test-cicd-process-end-to-end"></a>CI/CD folyamat teljes körű tesztelése
+## <a name="test-cicd-process-end-to-end"></a>Teljes körű CI/CD-folyamat tesztelése
 
-A fejlesztői számítógépén nyissa meg a klónozott bejelentést a kód szerkesztése.
+A fejlesztői gépén nyissa meg a klónozott alkalmazás egy Kódszerkesztő.
 
-Az a **/azure-vote/azure-vote** directory, a nevű fájlban található **config_file.cfg**. Módosítsa szavazás a fájl egy eltérő macska és kutya.
+Alatt a **/azure-vote/azure-vote** könyvtárban keresse meg a fájlnevet nevű **config_file.cfg**. Frissítse a szavazási ebben a fájlban valami eltérő macskák és kutyájával lenni.
 
-Az alábbi példában látható, és frissítve **config_file.cfg** fájlt.
+Az alábbi példa bemutatja, és a frissített **config_file.cfg** fájlt.
 
 ```bash
 # UI Configurations
@@ -286,13 +288,13 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Amikor végzett, mentse a fájlt, a változtatások véglegesítése a határidő, és ezek az elágazáshoz, a GitHub-tárház leküldéses... A véglegesítési befejezése után a GitHub webhook új Jenkins build, frissül a tároló lemezképet, és a AKS telepítési váltja ki. A Jenkins felügyeleti konzol a folyamat figyelése.
+Amikor végzett, mentse a fájlt, a módosítások véglegesítéséhez és azokat a GitHub-adattár az elágazásában leküldéses... A véglegesítés befejezése után a GitHub-webhook eseményindítók új Jenkins-buildelés, amely frissíti a tárolórendszerképet, és az AKS üzembe helyezés. A létrehozási folyamat a Jenkins felügyeleti konzolon figyelheti.
 
-A létrehozás befejezése után újra keresse meg az alkalmazás végpontjának és figyelje meg a módosításokat.
+A létrehozás befejezése után újra keresse meg a kérelem végpontot, hogy figyelje meg a változásokat.
 
-![Az Azure szavazattal frissítése](media/aks-jenkins/azure-vote-updated-safari.png)
+![Az Azure vote frissítve](media/aks-jenkins/azure-vote-updated-safari.png)
 
-Ezen a ponton egy egyszerű folyamatos üzembe helyezés folyamat befejezése. A lépéseket és a konfigurációkat az alábbi példa mutatja egy megbízhatóbb és éles használatra kész folyamatos build automation felé használható.
+Ezen a ponton egy egyszerű folyamatos üzembe helyezési folyamat befejeződött. A lépéseket, és ebben a példában bemutatott konfigurációk használható egy megbízhatóbb és éles használatra kész buildelési automation fejlesztéséhez.
 
 <!-- LINKS - external -->
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/

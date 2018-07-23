@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/30/2017
   ms.author: v-jansko
-  ms.openlocfilehash: 5d321a533ee6194492e5f0b25a8ef78951ac188a
-  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+  ms.openlocfilehash: 85ef860a742c114d01696b9189f57ac9207c0bc5
+  ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/02/2018
-  ms.locfileid: "37340889"
+  ms.lasthandoff: 07/20/2018
+  ms.locfileid: "39185873"
 abstract:
   description: A Microsoft Translator Text API egy felhőalapú gépi fordítási szolgáltatás. Az API segítségével közel valós időben fordíthat le szövegeket bármely alkalmazásból vagy szolgáltatásból egy egyszerű REST API-hívással. Az API a legmodernebb idegi gépi fordítási technológiát használja, emellett pedig statisztikai gépi fordító technológiával is rendelkezik. A neurális és a statisztikai gépi fordítás által támogatott nyelvek listáját a <a href="languages.md">Támogatott nyelvek</a> dokumentumban találja.
 sections:
@@ -73,6 +73,12 @@ sections:
       - href: quickstart-nodejs-dictionary
       - href: quickstart-python-dictionary
       - href: quickstart-go-dictionary
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: 'További információ a Translator Text API-t használó alkalmazások fejlesztéséről:'
+  - type: paragraph
+    text: <a href="tutorial-wpf-translation-csharp.md">Translator Textet használó WPF-alkalmazás írása C# nyelven</a>
 - title: Referencia
   items:
   - type: paragraph
