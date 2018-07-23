@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5597d75da50853e85d6e94f1a5c7b5114068f671
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.openlocfilehash: 4bba72e0761553c81acda7609898c1b032bdf28a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916996"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044419"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelés és testreszabás Active Directory összevonási szolgáltatások az Azure AD Connect használatával
 Ez a cikk bemutatja, hogyan kezelheti, és testre szabhatja az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Más általános az AD FS-feladatokat, amelyeket az AD FS-farm teljes konfiguráció megtenni, előfordulhat, hogy is tartalmaz.
@@ -81,15 +81,15 @@ Alternatív bejelentkezési azonosító konfigurálása az AD FS-hez két fő l�
 
     ![Hiányzó KB-os 2012R2 kapcsolatos figyelmeztetés](media/active-directory-aadconnect-federation-management/kbwarning.png)
 
-    Több tartomány az Azure AD Connect használatával leírtak szerint adhat hozzá [adjon hozzá egy új összevont tartományt](http://go.microsoft.com/fwlink/?LinkID=396590).
+    A konfiguráció esetén a hiányzó KB válhat, telepítse a szükséges [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590) , majd javítsa a bizalmi kapcsolat használatával [AAD javítása és az AD FS-megbízhatóság](#repairthetrust).
 
 > [!NOTE]
-> Az Azure AD Connect verziója 1.1.553.0 és a legújabb automatikusan létrehozza a megfelelő jogcímszabály issuerID számára.](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
+> A alternateID és manuális konfigurálásához szükséges lépésekről további információért olvassa el [másik bejelentkezési azonosító konfigurálása](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
 
 ## <a name="addadfsserver"></a>Az AD FS-kiszolgáló hozzáadása 
 
 > [!NOTE]
-> Ha nem használhatja az Azure AD Connect verziója 1.1.553.0 vagy legújabb, javasoljuk, hogy Azure AD RPT Jogcímszabályok eszköz létrehozásához, és állítsa be az Azure AD függő entitás megbízhatóságához a megfelelő jogcímszabályok segítségével. Tudjon meg többet felhasználói bejelentkezési lehetőségek.
+> Az AD FS kiszolgáló hozzáadása az Azure AD Connect a PFX-tanúsítvány szükséges. Ezért a művelet végrehajtása, csak akkor, ha az AD FS-farm konfigurálta az Azure AD Connect használatával.
 
 1. Válassza ki **további összevonási kiszolgáló telepítése**, és kattintson a **tovább**.
 
@@ -189,7 +189,7 @@ Az alábbiakban néhány gyakori feladatot, amelyet lehetséges, hogy az AD FS b
 A megjelenő vállalatembléma módosításához a **bejelentkezési** lapon, a következő Windows PowerShell-parancsmagot és szintaxist.
 
 > [!NOTE]
-> Az emblémát a javasolt dimenziók 260 x 35 pixel, legfeljebb 10 KB-os fájlméretben mérete 96 dpi.
+> Az emblémát a javasolt dimenziók 260 x 35 \@ 96 dpi 10 KB-nál nem nagyobb mérete.
 
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 
