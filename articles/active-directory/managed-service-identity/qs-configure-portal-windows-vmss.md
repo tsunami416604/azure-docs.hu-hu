@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 8779600f2c85a8bb309f7b2a8874608170de8877
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 34911c6133a6a2549a98db426f979b0c3c85dbd7
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035241"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185297"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>A virtuális gép konfigurálása méretezési Felügyeltszolgáltatás-identitás (MSI) az Azure portal használatával
 
@@ -30,13 +30,14 @@ Felügyeltszolgáltatás-identitás az Azure-szolgáltatásokat az Azure Active 
 Ebben a cikkben, megtudhatja, hogyan engedélyezheti és tilthatja le a hozzárendelt identitás egy virtuálisgép-méretezési csoportot, a rendszer az Azure portal használatával. Hozzárendelése, illetve a felhasználó által hozzárendelt identitások egy Azure-beli virtuálisgép-méretezési készlet eltávolítása jelenleg nem támogatott az Azure Portalon keresztül.
 
 > [!NOTE]
-> A felhasználóhoz hozzárendelt identitás műveletek jelenleg nem támogatottak az Azure Portalon keresztül. Biztonsági frissítések keresése.
+> A felhasználóhoz hozzárendelt identitás műveletek jelenleg nem támogatottak az Azure Portalon keresztül. Térjen vissza frissítésekért.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-
 - Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md).
-- Ha még nem rendelkezik Azure-fiók [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a folytatás előtt.
+- Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
+- Ebben a cikkben a kezelési műveletek végrehajtásához a fióknak rendelkeznie kell a következő szerepkör-hozzárendelés:
+    - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) engedélyezése és a egy virtuálisgép-méretezési csoportot a Felügyeltszolgáltatás-identitást eltávolítása.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Felügyeltszolgáltatás-identitás létrehozása az Azure-beli virtuálisgép-méretezési csoportot
 

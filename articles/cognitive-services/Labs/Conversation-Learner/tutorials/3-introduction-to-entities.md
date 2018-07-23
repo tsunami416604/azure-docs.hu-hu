@@ -1,7 +1,7 @@
 ---
-title: A beszélgetés tanuló alkalmazás – Microsoft kognitív szolgáltatások entitások használata |} Microsoft Docs
+title: Entitások használata Beszélgetéstanuló modell – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Útmutató entitások beszélgetést tanuló alkalmazással.
+description: Ismerje meg, hogyan használhatja az entitásokat egy Beszélgetéstanuló modellel.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,83 +10,88 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 85df31c2e2ff3ca81698921a1f17f415daefb6c5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f851d43d69999a848dea01c9457a379adb63353b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348619"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172381"
 ---
 # <a name="introduction-to-entities"></a>Az entitások bemutatása
 
-Ez az oktatóanyag bemutatja a entitásokat, és bemutatja, hogyan használja a "Disqualifying entitások" és "Entitások kötelező" mezőket a műveletek.
+Ez az oktatóanyag bemutatja a entitásokat, és bemutatja, hogyan használhatja a "Disqualifying entitások" és "Entitások kötelező" mezőket a műveletek.
+
+## <a name="video"></a>Videó
+
+[![3. oktatóanyag előzetes verzió](http://aka.ms/cl-tutorial-03-preview)](http://aka.ms/blis-tutorial-03)
 
 ## <a name="requirements"></a>Követelmények
 
-Ez az oktatóanyag megköveteli, hogy fut-e az általános útmutató botot
+Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
 
-Ez az oktatóanyag azt mutatja be két gyakori használati entitások.  Első lépésként entitások nyerhet ki karakterláncrészletek felhasználói üzenetből, például a város, az "Mi az budapesti időjárási?" azonosító.  Második entitásokat is megkötése, ha műveletek érhetők el.  Pontosabban a művelet folyamatban "kötelező" vagy "kizárásának" entitás készíthetünk:
-- Egy művelet kötelező entitások a botot memória ahhoz, hogy a művelet csak akkor érhető el a jelen kell lennie.
-- Entitások kizárásának kell *nem* megtalálható a botot memória ahhoz, hogy a művelet csak akkor érhető el
+Ebben az oktatóanyagban két gyakori használati entitások mutatja be.  Először entitásokat is nyerje ki oszt fel egy felhasználó üzenetben, például a "Mi az az időjárás, a Seattle?" város azonosítása.  Entitások kijelölhetjük másodszor, amikor műveletek érhetők el.  Pontosabban a művelet folyamatban "kötelező" vagy "kizárásának" entitás listázhatja:
+- Egy műveletet kötelező entitások szerepelnie kell a robot a memóriában ahhoz, hogy a művelet csak akkor érhető el
+- Entitások kizárásának kell *nem* jelen a robot a memóriában ahhoz, hogy a művelet csak akkor érhető el
 
-Egyéb oktatóanyagok egyéb entitások, például az előre elkészített entitások, többértékű negálható entitások, programozott entitásokat, és testreszabhatóvá entitásokat, illetve a kódban aspektusainak foglalkozik.
+Egyéb oktatóanyagok más aspektusait entitások, például az előre összeállított entitások, többértékű negálható entitások, programozott és az entitások kódban adatműveletekkel entitások terjed ki.
 
 ## <a name="steps"></a>Lépések
 
-### <a name="create-the-application"></a>Az alkalmazás létrehozása
+### <a name="create-the-model"></a>A modell létrehozása
 
-1. A webes felhasználói felületén kattintson az új alkalmazás
-2. A név megadása IntroToEntities. Majd kattintson a Létrehozás gombra.
+1. A webes felhasználói felületén kattintson az új modell
+2. A nevet írja be a IntroToEntities. Ezután kattintson a Létrehozás gombra.
 
 ### <a name="create-entity"></a>Entitás létrehozása
 
-1. Kattintson az entitásokat, majd új entitás.
+1. Kattintson az entitásokat, majd az új entitás.
 2. Az entitás nevét adja meg a város.
 3. Kattintson a Létrehozás gombra
 
-Vegye figyelembe a entitás típusa nem "egyéni" – Ez azt jelenti, hogy az entitás lehet szükség.  Előre elkészített entitások, ami azt jelenti, hogy azok viselkedését nem állítható be – ezekre vonatkozik-e egy másik oktatóprogram is vannak.
+> [!NOTE]
+> Az entitástípus "egyéni" – Ez azt jelenti, hogy az entitás is kell betanítani.  Előre összeállított entitások, ami azt jelenti, hogy azok viselkedése nem módosítható – ezek terjed ki az oktatóanyagban egy másik is vannak.
 
-### <a name="create-two-actions"></a>Két tevékenység
+### <a name="create-two-actions"></a>Hozzon létre két műveletet
 
 1. Kattintson a műveletek, majd az új művelet
-2. Válasz írja be a "Nem tudom kívánt városban".
-3. Entitások kizárásának $city meg. Kattintson a Mentés gombra.
-    - Ez azt jelenti, hogy ha ezt az entitást botot tartozó memória van definiálva, majd a művelet hatására *nem* érhető el.
-2. Kattintson a műveletek, majd új művelet egy második művelet létrehozásához.
-3. Válasz írja be a "a a $city nem valószínűleg moziba".
-4. Szükséges entitások jegyezze fel, hogy város entitás hozzáadta automatikusan óta elé.
+2. Válaszként írja be a "Nem tudom, melyik városban szeretne".
+3. Adja meg $city kizárásának entitásokat. Kattintson a Mentés gombra.
+    - Ez azt jelenti, hogy ha ehhez az entitáshoz van definiálva a robot a memóriában, majd ezt a műveletet a rendszer *nem* érhető el.
+2. Kattintson a műveletek, majd új műveletet egy másik művelet létrehozása.
+3. A válasz írja be a "a $city az időjárás is valószínűleg sunny".
+4. Szükséges entitások, az városa entitás lett hozzáadva automatikusan óta elé.
 5. Kattintson a Save (Mentés) gombra.
 
-Most, két műveletet kell végrehajtani.
+Most már két műveletet.
 
 ![](../media/tutorial3_actions.PNG)
 
-### <a name="train-the-bot"></a>A botot képzése
+### <a name="train-the-bot"></a>A robot betanítása
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
-2. Írja be a "Hello szövegrészt".
-3. Kattintson a pontszám műveleteket, majd válassza a "Nem tudom kívánt városban?"
-    - Vegye figyelembe, hogy a válasz, ahol szükség-e a város entitás nem választható, mert a város entitás nincs definiálva a botot a memória.
-2. Válassza ki a "Nem tudom kívánt városban".
-4. Adja meg a "seattle". Jelölje ki a budapesti, majd kattintson a város.
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
+2. Írja be a "hello".
+3. Kattintson a pontszám műveletek, és válassza a "Nem tudom, melyik városban szeretne?"
+    - Ha az városa entitás szükség a válasz nem választható, mert az városa entitás nincs definiálva a robot a memóriában.
+2. Válassza ki a "Nem tudom, melyik városban szeretne".
+4. Adja meg a "seattle". Jelölje ki a seattle, majd kattintson az városa.
 5. Kattintson a pontszám műveletek
-    - Megjegyzés: Város értéke most már a botot memóriában.
-    - "A $city időjárási is valószínűleg moziba" már elérhető válaszként. 
-6. Válassza az "a $city időjárási valószínűleg moziba".
+    - Város értéke most a robot a memóriában.
+    - "A $city időjárási is valószínűleg sunny" már elérhető adott válaszként. 
+6. Jelölje ki a "$city az időjárás valószínűleg sunny".
 
-Tegyük fel a felhasználó megadja a "repeat". 
-1. Írja be, és adja meg. Vegye figyelembe, hogy város entitás és az értékét a memóriában, és elérhető.
-2. Válassza az "a $city időjárási valószínűleg moziba".
+Vegyük például a felhasználó beírja a "repeat". 
+1. Írja be, és adja meg. Város entitás és az értékét a memóriában van és elérhető.
+2. Jelölje ki a "$city az időjárás valószínűleg sunny".
 
 ![](../media/tutorial3_entities.PNG)
 
-Most létrehozott egy entitás és példányai azt a felhasználói üzenetek címkével.  Is használta az entitás jelenléte vagy hiánya szabályozhatja a botot memóriában Ha műveletek érhetők el, a művelet kizárásának és a szükséges entitások mezők keresztül.
+Ezzel létrehozott egy entitás és példányát, a felhasználó üzenetek címkével.  Is használt az entitás jelenléte vagy hiánya a robot a memóriában ellenőrzési műveletek keresztül érhető el, a művelet kizárásának, és a szükséges entitások mezőt.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Várt](./4-expected-entity.md)
+> [Várt entitás](./4-expected-entity.md)

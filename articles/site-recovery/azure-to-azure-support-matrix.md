@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: 3825183fa7e8ca15a86935b5b96ff8d25d7bef14
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070874"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173050"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -27,34 +27,21 @@ Ez a cikk összefoglalja a támogatott konfigurációk és replikálásakor öss
 **Felhasználói felület** |  **Támogatott / nem támogatott**
 --- | ---
 **Azure Portal** | Támogatott
-**Klasszikus portál** | Nem támogatott
 **PowerShell** | [Azure-bA replikáció a PowerShell-lel](azure-to-azure-powershell.md)
 **REST API** | Jelenleg nem támogatott
 **Parancssori felület** | Jelenleg nem támogatott
 
 
-## <a name="resource-move-support"></a>Erőforrás-áthelyezés támogatása
+## <a name="resource-support"></a>Erőforrások támogatása
 
-**Erőforrás-áthelyezési típusa** | **Támogatott / nem támogatott** | **Megjegyzések**  
+**Erőforrás-áthelyezési típusa** | **Részletek** 
 --- | --- | ---
-**Tároló áthelyezése erőforráscsoportok közt** | Nem támogatott |A Recovery services-tároló nem helyezhetők át erőforráscsoportok közt.
-**Helyezze át a számítási, tárolási és hálózati erőforráscsoportok közt** | Nem támogatott |Ha áthelyezi a virtuális gép (vagy a kapcsolódó összetevőit, például a tárolási és hálózati) replikáció engedélyezése után, tiltsa le a replikációt, és engedélyezze a replikációt a virtuális gép újra szüksége.
+**Tároló áthelyezése erőforráscsoportok közt** | Nem támogatott<br/><br/> Recovery services-tároló nem helyezhetők át erőforráscsoportok közt.
+**Számítási és tárolási és hálózati erőforrások áthelyezése erőforráscsoportok közt** | Nem támogatott.<br/><br/> Ha egy virtuális gép vagy a kapcsolódó összetevők, például a tárolási és hálózati után végez, replikáció letiltása és a virtuális gép újraengedélyezni szüksége.
+**Azure virtuális gépek replikálása egy előfizetésből egy másikba vész-helyreállítási** | Nem támogatott.
+**Virtuális gépek áttelepítése az előfizetések között** | Nem támogatott.
+**Az azonos régión belüli virtuális gépek áttelepítése** | Nem támogatott.
 
-
-
-## <a name="support-for-deployment-models"></a>Üzembe helyezési modellek támogatása
-
-**Üzemi modell** | **Támogatott / nem támogatott** | **Megjegyzések**  
---- | --- | ---
-**Klasszikus** | Támogatott | Csak egy klasszikus virtuális gép replikálása és helyreállítása, mint egy klasszikus virtuális gép. Nem állítható helyre, Resource Manager virtuális gépként. Ha egy klasszikus virtuális gép virtuális hálózat nélkül, és közvetlenül az Azure-régióba telepít, nem támogatott.
-**Resource Manager** | Támogatott |
-
->[!NOTE]
->
-> 1. Azure-beli virtuális gépek replikálása egy előfizetésből egy másikba vész-helyreállítási helyzetekben nem támogatott.
-> 2. Áttelepítés Azure virtuális gépek előfizetések között nem támogatott.
-> 3. Áttelepítés Azure virtuális gépek ugyanazon a régión belül nem támogatott.
-> 4. Azure-beli virtuális gépek áttelepítése klasszikus üzemi modellből a Resource manager üzemi modell nem támogatott.
 
 ## <a name="support-for-replicated-machine-os-versions"></a>A replikált gép operációsrendszer-verziók támogatása
 
@@ -145,6 +132,13 @@ Kína | Kelet-Kína, Észak-Kína
 >[!NOTE]
 >
 > Dél-brazíliai régióban csak replikálni, és az USA déli középső Régiója, USA nyugati középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA és USA északi középső Régiója régiók egyik feladatátvétel és feladat-visszavételt.
+
+## <a name="support-for-vmdisk-management"></a>Virtuálisgép-lemez felügyelet támogatása
+
+**Művelet** | **Részletek**
+-- | ---
+A replikált virtuális gép lemez átméretezése | Támogatott
+Lemez hozzáadása a replikált virtuális gép | Nem támogatott. Meg kell letiltani a virtuális gép adja hozzá a lemezt, és majd újból engedélyezze a replikációt.
 
 
 ## <a name="support-for-compute-configuration"></a>A számítási konfiguráció támogatása

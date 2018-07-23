@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub magas rendelkezésre állási és vészhelyreállítási recovery |} Microsoft Docs
-description: Az Azure és az IoT-központ szolgáltatásait ismerteti, hozhat létre magas rendelkezésre állású Azure IoT-megoldások a vész helyreállítási képességek segítségével.
+title: Az Azure IoT Hub magas rendelkezésre állás és vészhelyreállítás recovery |} A Microsoft Docs
+description: Az Azure és az IoT Hub szolgáltatásokat, amelyek segítségével hozhat létre magas rendelkezésre állású Azure IoT-megoldások vész-helyreállítási funkciókat ismerteti.
 author: fsautomata
 manager: ''
 ms.service: iot-hub
@@ -8,45 +8,45 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: elioda
-ms.openlocfilehash: 428209defa554599c01789e6f2a8b62f155b0f2f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 992c42511f7bc9e9af71ff552ee91bc2472ebcf8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633706"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185703"
 ---
-# <a name="iot-hub-high-availability-and-disaster-recovery"></a>Az IoT-központ magas rendelkezésre állás és katasztrófa-helyreállítás
-Az Azure-szolgáltatások, mint az IoT-központ biztosítja a magas rendelkezésre ÁLLÁS létszámcsökkentések használata az Azure-régiót szinten bármit tennie kellene a megoldás által igényelt nélkül. A Microsoft Azure platform olyan vész-helyreállítási képességek vagy kereszt-régiónkénti elérhetőség megoldások létrehozásához szolgáltatásokat is tartalmaz. Ha lehetővé szeretné tenni globális, kereszt-régió eszközöket vagy felhasználókat, a magas rendelkezésre állású Azure vész-Helyreállítási felhasználásokhoz előnyeit. A cikk [Azure üzleti folytonossági műszaki útmutatót](../resiliency/resiliency-technical-guidance.md) az Azure-ban az üzletmenet folytonosságát és vész-Helyreállítási beépített funkcióit mutatja be. A [vész-helyreállítási és magas rendelkezésre állás a Azure-alkalmazások] [ Disaster recovery and high availability for Azure applications] papír architektúra-útmutatót biztosít az Azure-alkalmazások elérése a magas rendelkezésre ÁLLÁSÚ és vész-Helyreállítási stratégiát.
+# <a name="iot-hub-high-availability-and-disaster-recovery"></a>Az IoT Hub magas rendelkezésre állás és vészhelyreállítás helyreállítási
+Azure-szolgáltatásként az IoT Hub magas rendelkezésre ÁLLÁS az Azure-régió szintjén, a megoldás által igényelt minden további munka nélkül használatával redundanciát biztosít. A Microsoft Azure platform olyan funkciókat, hozzon létre megoldásokat a vész-helyreállítási lehetőségei vagy régiók rendelkezésre állása érdekében is. Ha azt szeretné, adja meg a globális, régiók közötti magas rendelkezésre állás az eszközöket vagy felhasználókat, ezeket az Azure-beli Vészhelyreállítási funkciók előnyeit. A cikk [Azure üzleti folytonossági műszaki útmutatóját](../resiliency/resiliency-technical-guidance.md) üzletmenet-folytonosság és Vészhelyreállítás az Azure-ban a beépített szolgáltatásait ismerteti. A [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások] [ Disaster recovery and high availability for Azure applications] tanulmány architektúra útmutatást nyújt az Azure-alkalmazások magas rendelkezésre ÁLLÁS és Vészhelyreállítás megvalósítása stratégiák.
 
 ## <a name="azure-iot-hub-dr"></a>Azure IoT Hub DR
-Mellett intra-régió magas rendelkezésre ÁLLÁSÚ az IoT-központ feladatátvételi mechanizmusok, felhasználói beavatkozás nélküli igénylő vész-helyreállítási valósítja meg. Az IoT Hub vész-Helyreállítási önálló kezdeményezett, és a helyreállítási idő célkitűzése (RTO) 2 – 26 óra, és a következő helyreállítási helyreállításipont-céljai (Rpo):
+Mellett intra-régió magas rendelkezésre ÁLLÁSÚ az IoT Hub feladatátvételi mechanizmusok, felhasználói beavatkozás nélküli igénylő vész-helyreállítási valósítja meg. IoT Hub DR önálló indul, és a egy helyreállítási időre vonatkozó célkitűzés (RTO) 2 – 26 óra és a következő helyreállításipont-célkitűzések (Rpo):
 
-| Funkció | A HELYREÁLLÍTÁSI IDŐKORLÁT |
+| Funkció | HELYREÁLLÍTÁSI IDŐKORLÁT |
 | --- | --- |
-| A beállításjegyzék és a kommunikációs műveletek a szolgáltatás rendelkezésre állása |CName adatvesztés |
-| Azonosító adataihoz az identitásjegyzékhez |0-5 perc adatvesztés |
+| A beállításjegyzék és kommunikációs műveleteket a szolgáltatás rendelkezésre állása |CName adatvesztés |
+| Azonosító adataihoz az eszközidentitás-jegyzék |0 – 5 perc az adatvesztést |
 | Az eszközről a felhőbe irányuló üzenetek |Az összes olvasatlan üzenetek elvesznek. |
-| Műveletek üzenetek figyelése |Az összes olvasatlan üzenetek elvesznek. |
-| Felhő-eszközre küldött üzenetek |0-5 perc adatvesztés |
-| Felhő eszközre a visszajelzési üzenetsor |Az összes olvasatlan üzenetek elvesznek. |
-| A két eszközadatok |0-5 perc adatvesztés |
-| Szülő- és eszköz feladatok |0-5 perc adatvesztés |
+| Műveletek figyelése üzenetek |Az összes olvasatlan üzenetek elvesznek. |
+| Felhőből az eszközre irányuló üzenetek |0 – 5 perc az adatvesztést |
+| Felhőből az eszközre visszajelzési üzenetsort |Az összes olvasatlan üzenetek elvesznek. |
+| Eszközadatok ikereszköz |0 – 5 perc az adatvesztést |
+| Feladatok szülő és eszköz |0 – 5 perc az adatvesztést |
 
-## <a name="regional-failover-with-iot-hub"></a>Az IoT-központ regionális feladatátvétel
-Az IoT-megoldások üzembe helyezési topológiájához teljes kezelés van ez a cikk hatókörén kívül. A cikk ismerteti a *regionális feladatátvétel* üzembe helyezési modellel magas rendelkezésre állás és a katasztrófa utáni helyreállítás céljából.
+## <a name="regional-failover-with-iot-hub"></a>Az IoT Hub regionális feladatátvétel
+Egy teljes körű IoT-megoldások üzembe helyezési topológiák kezelése nem ez a cikk foglalkozik. A cikk ismerteti a *regionális feladatátvétel* üzemi modell magas rendelkezésre állás és vészhelyreállítás helyreállítás céljából.
 
-Regionális feladatátvétel modellben a megoldás elsősorban az egyik datacenter helyen end futtatása biztonsági másolatot. Egy másodlagos IoT-központ és háttér datacenter egy másik helyen vannak telepítve. Az IoT-központ az elsődleges adatközpont kimaradás szenved, vagy az elsődleges adatközpont az eszközről a hálózati kapcsolat megszakad, ha az eszközök másodlagos szolgáltatásvégpont használnak. A megoldás rendelkezésre állási javíthatja a alkalmazásával segítse a kereszt-régió feladatátvételi modell helyett egyetlen régión belül marad. 
+Egy regionális feladatátvétel modellben a megoldás biztonsági célból futtatások elsősorban az egyik adatközpont-helyen. Egy másodlagos IoT hubot és a háttérrendszer egy másik adatközpontba helyen vannak telepítve. Az IoT hub az elsődleges adatközpont romlik a kimaradás vagy a hálózati kapcsolat az eszköz és az elsődleges adatközpont megszakad, ha az eszközök egy másodlagos végpontot használja. A megoldás rendelkezésre állási helyett egy adott régión belül tartózkodó régiók közötti feladatátvétel modell alkalmazásával növelheti. 
 
-Magas szinten az IoT-központ, egy regionális feladatátvétel modell megvalósításához szüksége a következők:
+Magas szintű, az IoT hubbal, egy regionális feladatátvétel modell megvalósításához a következők szükségesek:
 
-* **Egy másodlagos IoT hub és útválasztási logikai eszköz**: Ha az elsődleges régióban szolgáltatás megszakad, eszközöket kell elindítania, a másodlagos régióba csatlakozik. A legtöbb szolgáltatások állapot-kompatibilis jellegéből, esetében gyakori, a megoldás rendszergazdák a helyek közötti régió feladatátvételi folyamat indításához. A legjobb módszer az eszközökre, az új végpont kommunikáció során a folyamat irányítás megőrzéséhez, hogy rendszeresen ellenőrzi azokat egy *segítõ* szolgáltatás az aktuális active végpont. A segítõ szolgáltatás lehet van replikálva, és elérhető-e tartani webalkalmazás DNS-átirányítás technikák segítségével (például az [Azure Traffic Manager][Azure Traffic Manager]).
-* **Identitás beállításjegyzék replikációs**: is használható, a másodlagos IoT-központ tartalmaznia kell az összes eszköz identitást, amely csatlakozni tudna a megoldás. A megoldás kell tartani a biztonsági mentések georeplikált eszköz identitások, és a másodlagos IoT hub előtti feltöltésükhöz Váltás az eszközök aktív végpontja. Az IoT Hub eszköz identitása exportálási funkció akkor hasznos, ebben a környezetben. További információkért lásd: [IoT Hub fejlesztői útmutató - identitásjegyzékhez][IoT Hub developer guide - identity registry].
-* **Az egyesítés logika**: Ha az elsődleges régióban ismét elérhetővé válik, állapotának és adatainak a másodlagos helyen létrehozott kell áttelepíteni az összes biztonsági az elsődleges régióban. Ez állapotának és adatainak többnyire kapcsolódnak eszköz identitások és az alkalmazás metaadatait, amelyet egyesíteni kell az elsődleges IoT hub és más alkalmazás-specifikus tárolja az elsődleges régióban. Ez a lépés leegyszerűsítése idempotent műveletek kell használnia. Az Idempotent műveletek minimalizálása érdekében a mellékhatással működő a végleges konzisztens terjesztési események, illetve a duplikálás vagy események soron kézbesítését. Emellett az alkalmazáslogikát úgy kell megtervezni, tűrését lehetséges inkonzisztenciát vagy "némileg" elavult állapotban. Ez a helyzet akkor fordulhat elő, miatt a további szükséges időt a rendszer "javítandó" helyreállításipont-céljai (RPO) alapján.
+* **Egy másodlagos IoT hub és az Útválasztás logikai eszköz**: Ha az elsődleges régióban szolgáltatás megszakad, eszközöket kell elindítania, csatlakozás a másodlagos régióhoz. A legtöbb szolgáltatások állapotközpontú természetéből szokás megoldás segítségével a rendszergazdák a régiók közötti feladatátvétel folyamat aktiválásához. A folyamat kézben tarthassa az eszközökre, az új végpont kommunikálni a legjobb módszer az, hogy rendszeresen ellenőrzi őket egy *recepciószolgálata* szolgáltatásba az aktuális aktív végpontot. A recepciószolgálata szolgáltatás lehet egy webalkalmazást, amely replikálja, és elérhető marad DNS-átirányítás módszerrel (például [Azure Traffic Manager][Azure Traffic Manager]).
+* **Identitás adatbázis replikációja**: használhatóvá válik, a másodlagos IoT hub tartalmaznia kell az összes eszközidentitások, amely a megoldás képes kapcsolódni. A megoldás kell megőrizni a biztonsági mentések georeplikált eszközidentitások, és feltölti őket a másodlagos IoT hub az eszközök aktív végpontja váltása előtt. Az IoT Hub eszköz identitás exportálási funkció akkor hasznos, ebben a környezetben. További információkért lásd: [az IoT Hub fejlesztői útmutató – eszközidentitás-jegyzék][IoT Hub developer guide - identity registry].
+* **Logikai egyesítésével**: Ha az elsődleges régió újra elérhetővé válik, állapota és adatai, a másodlagos helyen létrehozott kell áttelepíteni az összes biztonsági másolatot az elsődleges régióba. Ez állapota és adatai többnyire kapcsolódnak eszközidentitások és -alkalmazás metaadatait, amelyet egyesíteni kell az elsődleges IoT hub és egyéb alkalmazásspecifikus tárolja az elsődleges régióban. Ebben a lépésben leegyszerűsítése idempotens műveleteket kell használnia. Idempotens műveletek minimalizálása érdekében a mellékhatásai modul, az események a végleges konzisztens terjesztési, illetve az ismétlődések vagy out soron kívüli kézbesíti az eseményeket. Emellett az alkalmazáslogika úgy kell megtervezni, elviselni esetleges inkonzisztenciákat vagy elavult "némileg" állapotú. Ez a helyzet akkor fordulhat elő, miatt a további szükséges időt a rendszer "javítandó" helyreállításipont-célkitűzések (RPO) alapján.
 
 ## <a name="next-steps"></a>További lépések
-Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub:
+Az alábbi hivatkozásokból tudhat meg többet az Azure IoT hubbal:
 
-* [Ismerkedés az IoT-központok (Útmutató)][lnk-get-started]
+* [Ismerkedés az IoT hubok (oktatóanyag)][lnk-get-started]
 * [Mi az Azure IoT Hub?][What is Azure IoT Hub?]
 
 [Disaster recovery and high availability for Azure applications]: ../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md
@@ -54,5 +54,5 @@ Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub:
 [Azure Traffic Manager]: https://azure.microsoft.com/documentation/services/traffic-manager/
 [IoT Hub developer guide - identity registry]: iot-hub-devguide-identity-registry.md
 
-[lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
-[What is Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
+[lnk-get-started]: quickstart-send-telemetry-dotnet.md
+[What is Azure IoT Hub?]: about-iot-hub.md

@@ -7,14 +7,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.author: manayar
-ms.openlocfilehash: e8094c582af6ea03f5ffcc4f61914488891cb556
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3a2ad35a5382394a6886ed14dcc4f659762f2833
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920889"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172238"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Active Directory és DNS védelme az Azure Site Recovery használatával
 
@@ -31,13 +31,10 @@ Ez a cikk bemutatja, hogyan hozhat létre vészhelyreállítási megoldást az A
 
 ## <a name="replicate-the-domain-controller"></a>A tartományvezérlő replikálása
 
-Be kell állítania [Site Recovery replikációs](#enable-protection-using-site-recovery), legalább egy virtuális gépen, amelyen egy tartományvezérlő vagy a DNS. Ha rendelkezik [több tartományvezérlő](#environment-with-multiple-domain-controllers) környezete is be kell állítania egy [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen. A további tartományvezérlő lehet az Azure-ban, vagy egy másodlagos helyszíni adatközpontba.
-
-### <a name="single-domain-controller"></a>Egyetlen tartományvezérlő
-Ha csak néhány alkalmazások és a egy tartományvezérlő, érdemes lehet, hogy feladatátvételt együtt a teljes helyre. Ebben az esetben ajánlott a Site Recovery használatával a tartományvezérlő replikálja a célhely (vagy egy másodlagos helyszíni adatközpontba vagy az Azure-ban). Az azonos replikált tartományvezérlőt vagy a DNS virtuális gép [feladatátvételi teszt](#test-failover-considerations).
-
-### <a name="multiple-domain-controllers"></a>Több tartományvezérlőn
-Ha több alkalmazás és több tartományvezérlő van a környezetben, vagy ha azt tervezi, hogy átadja a feladatokat néhány alkalmazások egyszerre, továbbá a tartományt vezérlő virtuális gépet a Site Recovery replikálja azt javasoljuk, hogy beállította- [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen (vagy egy másodlagos helyszíni adatközpontba vagy az Azure-ban). A [feladatátvételi teszt](#test-failover-considerations), használhatja a Site Recovery által replikált tartományvezérlőt. A feladatátvételhez használhatja a további tartományvezérlő a célként megadott helyen.
+- Be kell állítania [Site Recovery replikációs](#enable-protection-using-site-recovery), legalább egy virtuális gépen, amelyen egy tartományvezérlő vagy a DNS.
+- Ha rendelkezik [több tartományvezérlő](#environment-with-multiple-domain-controllers) környezete is be kell állítania egy [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen. A további tartományvezérlő lehet az Azure-ban, vagy egy másodlagos helyszíni adatközpontba.
+- Ha csak néhány alkalmazások és a egy tartományvezérlő, érdemes lehet, hogy feladatátvételt együtt a teljes helyre. Ebben az esetben ajánlott a Site Recovery használatával a tartományvezérlő replikálja a célhely (vagy egy másodlagos helyszíni adatközpontba vagy az Azure-ban). Az azonos replikált tartományvezérlőt vagy a DNS virtuális gép [feladatátvételi teszt](#test-failover-considerations).
+- - Ha több alkalmazás és több tartományvezérlő van a környezetben, vagy ha azt tervezi, hogy átadja a feladatokat néhány alkalmazások egyszerre, továbbá a tartományt vezérlő virtuális gépet a Site Recovery replikálja azt javasoljuk, hogy beállította- [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen (vagy egy másodlagos helyszíni adatközpontba vagy az Azure-ban). A [feladatátvételi teszt](#test-failover-considerations), használhatja a Site Recovery által replikált tartományvezérlőt. A feladatátvételhez használhatja a további tartományvezérlő a célként megadott helyen.
 
 ## <a name="enable-protection-with-site-recovery"></a>Engedélyezze a Site recoveryvel
 
@@ -186,9 +183,11 @@ Ha az előző feltételek teljesülnek, akkor valószínű, hogy a tartományvez
     További információkért lásd: [tiltsa le a követelmény, hogy elérhetők-e egy globáliskatalógus-kiszolgáló felhasználói bejelentkezések ellenőrzése](http://support.microsoft.com/kb/241789).
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS és a tartományvezérlő különböző gépeken
-Ha a DNS nem az azonos virtuális gépen a tartományvezérlő, DNS virtuális gép feladatátvételi teszthez kell létrehoznia. Ha a DNS és a tartományvezérlő nem ugyanazon a virtuális gépen, ez a szakasz kihagyhatja.
 
-Friss DNS-kiszolgálóra, és hozhat létre a szükséges zónákat. Például az Active Directory-tartománya a contoso.com, létrehozhat egy DNS-zóna neve Contoso.com. A bejegyzéseket, amelyek megfelelnek az Active Directory frissíteni kell a DNS-ben a következő:
+Ha a tartományvezérlő és DNs ugyanazon a virtuális Gépen futtatja, kihagyhatja ezt az eljárást.
+
+
+Ha DNS ugyanarról a virtuális gépről, ahol a tartományvezérlő nem, a teszt feladatátvételhez DNS virtuális gép létrehozásához szüksége. Friss DNS-kiszolgálóra, és hozhat létre a szükséges zónákat. Például az Active Directory-tartománya a contoso.com, létrehozhat egy DNS-zóna neve Contoso.com. A bejegyzéseket, amelyek megfelelnek az Active Directory frissíteni kell a DNS-ben a következő:
 
 1. Győződjön meg arról, hogy ezek a beállítások vannak, a helyreállítási tervben szereplő bármely más virtuális gép elindítása előtt:
    * A zóna névvel kell rendelkeznie az erdő gyökér neve után.

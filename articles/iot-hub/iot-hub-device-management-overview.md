@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: c4d0b5d5ba429dc5d839fa054476461f96a52143
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 55c28b9ec39ffd617c816d76f67ff6f9853d7012
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030733"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185914"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Az IoT Hub-eszközfelügyelet áttekintése
 
@@ -51,16 +51,16 @@ A teljes megoldás megvalósításához számos eszközkezelői követelménynek
 
 * **Tervezés**: Lehetővé teszi a kezelők számára olyan eszközmetaadat-séma létrehozását, amellyel egyszerű és pontos lekérdezés végezhető el egy adott eszközcsoporton a tömeges felügyeleteken. Az ikereszközök használatával e metaadatokat címkék és tulajdonságok formájában tárolhatja.
   
-    *A további olvasási*: [Ismerkedés az eszköz twins][lnk-twins-getstarted], [eszköz twins ismertetése][lnk-twins-devguide], [hogyan használja a két eszköztulajdonságok][lnk-twin-properties], [ajánlott eljárások az eszköz konfigurációs belül egy IoT-megoldás][lnk-adm-best-practices].
+    *További információk*: [ikereszközök – első lépések][lnk-twins-getstarted], [Ikereszközök][lnk-twins-devguide], [hogyan eszköz-ikertulajdonságok használata][lnk-twin-properties], [ajánlott eljárások az IoT-megoldás belül eszközkonfiguráció][lnk-adm-best-practices].
 * **Üzembe helyezés**: Lehetővé teszi az új IoT Hub-eszközök biztonságos üzembe helyezését, valamint a kezelők számára az eszközök képességeinek azonnali elsajátítását.  Az IoT Hub-identitásjegyzék alkalmazásával rugalmas eszközidentitások és -hitelesítő adatok hozhatók létre, illetve egy feladat használatával ez a művelet tömegesen is végrehajtható. Az eszközök felépítését úgy végezze el, hogy azok képességei és állapotai az ikereszköz tulajdonságaiban nyomon követhetőek legyenek.
   
-    *A további olvasási*: [eszköz Identitáskezelést][lnk-identity-registry], [felügyeleti eszköz identitások tömeges][lnk-bulk-identity], [Iker eszköztulajdonságok használata][lnk-twin-properties], [ajánlott eljárások az eszköz konfigurációs belül egy IoT-megoldás][lnk-adm-best-practices], [Azure IoT Hub eszköz-üzembehelyezési szolgáltatás][lnk-dps].
+    *További információk*: [eszközidentitások kezelése][lnk-identity-registry], [tömeges eszközidentitások kezelése][lnk-bulk-identity], [Eszköz-ikertulajdonságok használata][lnk-twin-properties], [ajánlott eljárások az IoT-megoldás belül eszközkonfiguráció][lnk-adm-best-practices], [Az azure IoT Hub Device Provisioning Service][lnk-dps].
 * **Konfigurálás**: az eszközök kötegelt konfigurációmódosításainak és belső vezérlőprogramjuk frissítéseinek megkönnyítése üzemi állapotuk és biztonságuk megőrzésével. A kívánt tulajdonságok, illetve közvetlen módszerek és szórásos feladatok használatával ezek az eszközfelügyeleti műveletek tömegesen is végrehajthatók.
   
-    *A további olvasási*: [iker eszköztulajdonságok használata][lnk-twin-properties], [konfigurálása és figyelheti az IoT-eszközök léptékű][lnk-adm-how-to], [ Ajánlott eljárások az eszköz konfigurációs belül egy IoT-megoldás][lnk-adm-best-practices].
+    *További információk*: [eszköz-ikertulajdonságok használata][lnk-twin-properties], [konfigurálása és figyelése a nagy mennyiségű IoT-eszközök][lnk-adm-how-to], [ Ajánlott eljárások az IoT-megoldás belül eszközkonfiguráció][lnk-adm-best-practices].
 * **Figyelés**: A teljes eszközgyűjtemény és a folyamatban lévő műveletek állapotának figyelése, valamint a kezelők riasztása az esetlegesen figyelmet érdemlő problémák kapcsán.  Az ikereszközök alkalmazásával az eszközök képesek a valós idejű működési feltételek és a frissítési műveletek állapotának jelentésére. Nagyteljesítményű irányítópulti jelentések hozhatók létre, amelyek az ikereszköz-lekérdezések használatával felszínre hozzák az azonnali intézkedést igénylő problémákat.
   
-    *A további olvasási*: [iker eszköztulajdonságok használata][lnk-twin-properties], [IoT-központ lekérdezési nyelv eszköz twins, a feladatok és az üzenet-útválasztás] [ lnk-query-language], [Konfigurálása és figyelheti az IoT-eszközök léptékű][lnk-adm-how-to], [ajánlott eljárások az eszköz konfigurációs belül egy IoT-megoldás] [lnk-adm-best-practices].
+    *További információk*: [eszköz-ikertulajdonságok használata][lnk-twin-properties], [az IoT Hub lekérdezési nyelv az ikereszközökhöz, feladatokkal és üzenet-útválasztása] [ lnk-query-language], [Konfigurálása és figyelése a nagy mennyiségű IoT-eszközök][lnk-adm-how-to], [ajánlott eljárások az IoT-megoldás belül eszközkonfiguráció] [lnk-adm-best-practices].
 * **Kivonás**: az eszközök lecserélése vagy leszerelése meghibásodás vagy frissítési ciklus után, illetve a szolgáltatás élettartamának végén.  Az ikereszközök használatával az eszközinformációk abban az esetben is megőrizhetők, ha a fizikai eszközt kicserélik vagy a kivonás során archiválják. Az IoT Hub-identitásjegyzék alkalmazásával lehetséges az eszközidentitások és -hitelesítő adatok biztonságos visszahívása.
   
     *További információk*: [Az ikertulajdonságok használata][lnk-twin-properties], [Eszközidentitások kezelése][lnk-identity-registry]
@@ -77,7 +77,7 @@ Az IoT Hub az alábbi eszközfelügyeleti mintákat engedélyezi.  Az [eszközfe
 * **Konfigurálás** – A háttéralkalmazás az eszköz kívánt tulajdonságait felhasználva konfigurálja az eszközön futó szoftvert.  Az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz konfigurálási állapotát.
   
     ![Az eszközfelügyelet konfigurációs mintájának ábrája][img-config_pattern]
-* **Belső vezérlőprogram frissítési** -a háttér-alkalmazás az automatikus Eszközkezelési konfiguráció segítségével válassza ki a eszközöket kapja meg, hogy az eszközök hol keresse meg a frissítést, és a frissítési folyamat figyelésére, a frissítést. Az eszköz letöltéséhez, győződjön meg arról, és alkalmazza a belső vezérlőprogram lemezképet, és indítsa újra az eszközt az IoT-központ szolgáltatáshoz újracsatlakozás előtt a többlépéses folyamatot indít el.  A több lépésből álló folyamat során az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz előrehaladását és állapotát.
+* **Belső vezérlőprogram frissítésének** – a háttéralkalmazás egy automatikus Eszközkezelési konfiguráció segítségével válassza ki az eszközöket fogadja a frissítést, hogy az eszközök helyét keresse meg a frissítést, és a frissítési folyamat figyelésére. Az eszköz többlépéses folyamatot kezdeményez, tölthet le, győződjön meg arról, és alkalmazza a belsővezérlőprogram-lemezképet, és majd indítsa újra az eszközt az IoT Hub szolgáltatást újracsatlakozás előtt.  A több lépésből álló folyamat során az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz előrehaladását és állapotát.
   
     ![Az eszközfelügyelet belsővezérlőprogram-frissítési mintájának ábrája][img-fwupdate_pattern]
 * **Előrehaladási és állapotjelentések** – A megoldás a háttérben ikereszköz-lekérdezéseket futtat több eszközön, így képes az eszközökön futó műveletek állapotának és előrehaladásának jelentésére.
@@ -101,12 +101,12 @@ Ha szeretne részletesebben is megismerkedni az IoT Hub eszközfelügyeleti funk
 [lnk-twins-devguide]: iot-hub-devguide-device-twins.md
 [lnk-get-started]: iot-hub-node-node-device-management-get-started.md
 [lnk-twins-getstarted]: iot-hub-node-node-twin-getstarted.md
-[lnk-twin-properties]: iot-hub-node-node-twin-how-to-configure.md
-[lnk-hub-getstarted]: iot-hub-csharp-csharp-getstarted.md
+[lnk-twin-properties]: tutorial-device-twins.md
+[lnk-hub-getstarted]: quickstart-send-telemetry-dotnet.md
 [lnk-identity-registry]: iot-hub-devguide-identity-registry.md
 [lnk-bulk-identity]: iot-hub-bulk-identity-mgmt.md
 [lnk-query-language]: iot-hub-devguide-query-language.md
-[lnk-c2d-methods]: iot-hub-node-node-direct-methods.md
+[lnk-c2d-methods]: quickstart-control-device-node.md
 [lnk-methods-devguide]: iot-hub-devguide-direct-methods.md
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 3ac5c00aa0c617659f7ac5d386003b8bc34aac81
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c5621d5e16e31104ee28cc521386a5c0ca290a8b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076099"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187699"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakori kérdések az IoT-megoldásgyorsítók
 
@@ -86,7 +86,7 @@ Lásd Eric Golpe blogbejegyzését [bemutatója az Azure AD-bérlő törlése](h
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A távoli figyelési megoldásgyorsító funkcióinak megismerése](iot-accelerators-remote-monitoring-explore.md)
+* [A távoli figyelési megoldásgyorsító funkcióinak megismerése](quickstart-remote-monitoring-deploy.md)
 * [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
 * [Okosgyár-megoldásgyorsító üzembe helyezése](quickstart-connected-factory-deploy.md)
 * [IoT-biztonság létrehozása az alapoktól](/azure/iot-fundamentals/iot-security-ground-up)

@@ -1,95 +1,86 @@
 ---
-title: Azure Import/Export szolgáltatás követelményei |} Microsoft Docs
+title: Az Azure Import/Export szolgáltatás követelményei |} A Microsoft Docs
 description: Ismerje meg az Azure Import/Export szolgáltatás szoftveres és hardveres követelményekkel.
 author: alkohli
 manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 07/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 4c6e22f50f4550cb4a6e25960bcc13a4d92e9819
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 68e31f6b88a772ad67e3c58e11925f46f1cc37e9
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825067"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188805"
 ---
-# <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerkövetelményei
+# <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerre vonatkozó követelmények
 
-Ez a cikk ismerteti a fontos követelmények az Azure Import/Export szolgáltatás. Javasoljuk, hogy tekintse át az információkat gondosan majd hivatkozik vissza rá szükség esetén a művelet során és az Import/Export szolgáltatás használata előtt.
+Ez a cikk ismerteti az Azure Import/Export szolgáltatás a fontos követelmények. Azt javasoljuk, hogy mielőtt, tekintse át az információkat gondosan meg az Import/Export szolgáltatás használata, majd vissza, szükség esetén a művelet során.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A merevlemez-meghajtókat a WAImportExport eszközzel, a következő előkészítéséhez **64 bites operációs rendszer, amely támogatja a BitLocker meghajtótitkosítás** támogatottak.
+A merevlemez-meghajtókat a WAImportExport eszközzel, a következő előkészítése **64 bites operációs rendszer, amely támogatja a BitLocker meghajtótitkosítás** támogatottak.
 
 
 |Platform |Verzió |
 |---------|---------|
 |Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise <br> Windows 10        |
-|Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
+|Windows Server     |Windows Server 2008 R2 <br> A Windows Server 2012, Windows Server 2012 R2         |
 
 
 
-## <a name="supported-storage-accounts"></a>Támogatott storage-fiókok
+## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
-Az Azure Import/Export szolgáltatás támogatja a következő Azure storage-fiókok.
+Az Azure Import/Export szolgáltatás a következő az Azure storage-fiókokat támogat.
 - Klasszikus
 - Blob Storage-fiókok
-- Általános célú v1 tárfiókok. 
+- Általános célú v1-tárfiókok. 
 
-Minden feladat adatátvitel vagy a csak egy tárfiókot is használható. Más szóval egy egyetlen importálási/exportálási feladatok nem terjedhetnek ki több tárfiókok között. Új tárfiók létrehozásával kapcsolatos további információkért lásd: [a Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
+Minden egyes feladat előfordulhat, hogy használható-adatok áthelyezésénél csak egy storage-fiókból. Más szóval egy egyetlen importálási/exportálási feladat terjedhetnek ki több tárfiókon keresztül. Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
 
 > [!IMPORTANT] 
-> Az Azure importálási exportálása szolgáltatás nem támogatja a storage-fiókok ahol a [virtuális hálózati Szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) szolgáltatás engedélyezve van. 
+> Az Azure importálási exportálása szolgáltatás nem támogatja a storage-fiókok, a [virtuális hálózati Szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) funkció engedélyezve van. 
 
-## <a name="supported-storage-types"></a>Támogatott tárolási típusok
+## <a name="supported-storage-types"></a>Támogatott tárolási típus
 
-Az alábbi lista a tárolási típusok Azure Import/Export szolgáltatás használata támogatott.
+A tárolási típusok a következők közül az Azure Import/Export szolgáltatás használata támogatott.
 
 
 |Feladat  |Storage  |Támogatott  |Nem támogatott  |
 |---------|---------|---------|---------|
-|Importálás     |  Az Azure Blob storage. <br>Blokkblobokat, lapblobokat támogatott. <br> Az Azure Files támogatott.       |         |
-|Exportálás     |   Az Azure Blob storage. <br>Blokkblobokat, lapblobokat és hozzáfűző blobok támogatott.       | Az Azure Files nem támogatott.        |
+|Importálás     |  Az Azure Blob storage. <br>Blokkblobok, lapblobok támogatott. <br> Az Azure Files támogatott.       |         |
+|Exportálás     |   Az Azure Blob storage. <br>A blokkblobok, lapblobok és hozzáfűző blobok támogatott.       | Az Azure Files nem támogatott.        |
 
 
-## <a name="supported-hardware"></a>A támogatott hardverek 
+## <a name="supported-hardware"></a>Támogatott hardveres 
 
-Az Azure Import/Export szolgáltatás támogatott lemez szükséges, és támogatja az adatok másolása SATA-összekötőt.
+Az Azure Import/Export szolgáltatás az adatok másolása támogatott lemez szükséges.
 
 ### <a name="supported-disks"></a>Támogatott lemezek
 
-Az alábbi listán szereplő lemezek az Import/Export szolgáltatás használata támogatott.
+Lemezek a következők közül az Import/Export szolgáltatás használata támogatott.
 
 
 |Lemez típusa  |Méret  |Támogatott |Nem támogatott  |
 |---------|---------|---------|---------|
-|SSD    |   2.5"      |         |         |
-|HDD     |  2.5"<br>3.5-ös "       |SATA II, SATA III.         |Beépített USB-adapterrel rendelkező külső HDD <br> A kis-és nagybetűhasználat egy külső HDD lemezt         |
+|SSD    |   2,5"      |         |         |
+|HDD     |  2,5"<br>3,5"       |SATA II, SATA III.         |Beépített USB-adapterrel rendelkező külső HDD <br> A kis-és a egy külső HDD belül a lemez         |
 
 
-Egy egyetlen importálási/exportálási feladatok veheti fel:
-- Legfeljebb 10 HDD/SSD-k.
-- A HDD/SSD bármilyen méretű kombinációját.
+Egy egyetlen importálási/exportálási feladat veheti fel:
+- Legfeljebb 10 HDD és SSD-kkel.
+- HDD és SSD és méretű vegyesen.
 
-Nagy számú meghajtókat is elosztva több feladat és a nem hozható létre feladatok száma korlátozza. 
+Nagy számú meghajtók oszlik el több feladat között, és ott nem hozható létre a feladatok száma korlátlan. Az importálási feladatokhoz csak az első adatmennyiség a meghajtón dolgoz fel. Az adatmennyiség NTFS fájlrendszerrel kell formázni.
 
-Az importálási feladatok csak az első adatmennyiség a meghajtón dolgoz fel. Az adatmennyiség NTFS fájlrendszerrel kell formázni.
-
-### <a name="supported-external-usb-adaptors"></a>Támogatott külső USB-adapterek
-
-Amikor előkészíti a merevlemez-meghajtókat, és másolja az adatokat a WAImportExport eszközzel, használhatja (ki-a-shelp) külső USB adapter a következő: 
-- Anker 68UPSATAA - 02BU
-- Anker 68UPSHHDS-BU
-- Startech SATADOCK22UE
-- 6628SUS3-C-fekete Orico (6628 sorozat)
-- Thermaltake BlacX gyakran használt adatok-csere SATA külső merevlemez meghajtó rögzített állomás (USB 2.0-s & eSATA)
+Ha a merevlemez-meghajtók előkészítése, és a WAImportExport eszköz használata az adatok másolásának, külső USB-adaptereket is használhat. Legtöbb megoldásszolgáltatóknál USB 3.0-s vagy újabb adaptereket működnie kell. 
 
 
 ## <a name="next-steps"></a>További lépések
 
 * [A WAImportExport eszköz beállítása](storage-import-export-tool-how-to.md)
 * [Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)
-* [Az Azure importálási exportálása REST API minta](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
+* [Az Azure importálási exportálása REST API-minta](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
 

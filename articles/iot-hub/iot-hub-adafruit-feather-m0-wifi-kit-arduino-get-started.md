@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 2a6899bbd294a16dee3a767e976a92deaa00f0e2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 46763cbc53f70e25810a9849b71429a315a6fb7d
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676692"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185363"
 ---
 # <a name="connect-adafruit-feather-m0-wifi-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather M0 WiFi csatlakoztatása Azure IoT hubhoz a felhőben
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 ![Egy BME280 Feather M0 WiFi és az IoT Hub közötti kapcsolat](media/iot-hub-adafruit-feather-m0-wifi-get-started/1_connection-m0-feather-m0-iot-hub.png)
 
-Ez az oktatóanyag első lépésként, tanulás a az Arduino táblához való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe az eszközök [Azure IoT Hub](iot-hub-what-is-iot-hub.md).
+Ez az oktatóanyag első lépésként, tanulás a az Arduino táblához való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe az eszközök [Azure IoT Hub](about-iot-hub.md).
 
 ## <a name="what-you-do"></a>TEENDŐ
 

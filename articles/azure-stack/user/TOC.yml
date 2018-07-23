@@ -23,25 +23,25 @@
   items:
     - name: Alkalmazások üzembe helyezése az Azure-ban és az Azure Stacken
       href: azure-stack-solution-pipeline.md
-    - name: Hibrid felhő identitás konfigurálása
+    - name: A hibrid felhőbeli identitás konfigurálása
       href: azure-stack-solution-hybrid-identity.md
-    - name: Hibrid felhő kapcsolat konfigurálása
+    - name: Hibrid felhő-kapcsolat konfigurálása
       href: azure-stack-solution-hybrid-connectivity.md
     - name: Előfizetés egy ajánlatra
       href: azure-stack-subscribe-services.md
-    - name: A virtuális gép létrehozása sablonból
+    - name: Virtuális gép létrehozása sablonból
       href: azure-stack-create-vm-template.md
 - name: Útmutatók
   items:
     - name: Az Azure Stack Portal használata
       href: azure-stack-use-portal.md
-    - name: Az Azure verem API használata
+    - name: Az Azure Stack API használata
       href: azure-stack-rest-api-use.md
     - name: Biztonság és megfelelőség
       items:
         - name: Szerepköralapú hozzáférés-vezérlés alkalmazása
           href: azure-stack-manage-permissions.md
-        - name: Használja a szolgáltatás rendszerbiztonsági tagok
+        - name: Szolgáltatásnevek használata
           href: Azure-stack-create-service-principals.md
     - name: Szolgáltatások használata
       items:
@@ -59,7 +59,7 @@
               href: azure-stack-manage-vm-disks.md
             - name: A virtuális gépek védelme
               href: azure-stack-manage-vm-protect.md
-            - name: SQL Server virtuális gép kapcsolatos szempontok
+            - name: Az SQL Server virtuális gépekkel kapcsolatos szempontok
               href: azure-stack-sql-server-vm-considerations.md
         - name: Storage
           items:
@@ -99,9 +99,9 @@
               href: azure-stack-kv-sample-app.md
         - name: Megoldássablonok
           items:
-            - name: A Service Fabric-fürt telepítése
+            - name: A Service Fabric-fürt üzembe helyezése
               href: azure-stack-solution-template-service-fabric-cluster.md
-            - name: Kubernetes fürt központi telepítése
+            - name: Kubernetes-fürt üzembe helyezése
               href: azure-stack-solution-template-kubernetes-deploy.md
     - name: Alkalmazások készítése
       items:
@@ -110,29 +110,30 @@
         - name: Fejlesztési környezet beállítása
           items:
             - name: Az Azure Stack PowerShell telepítése
-              href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
-            - name: Töltse le az Azure-verem eszközök
+              href: ../azure-stack-powershell-install.md
+              maintainContext: true
+            - name: Azure Stack-eszközök letöltése
               href: azure-stack-powershell-download.md
             - name: A PowerShell konfigurálása – Felhasználó
               href: azure-stack-powershell-configure-user.md
             - name: A Visual Studio telepítése
               href: azure-stack-install-visual-studio.md
-            - name: API-verzió profilok használatával
+            - name: API-verzióprofilok használatával
               href: azure-stack-version-profiles.md
               items:
                 - name: PowerShell
                   href: azure-stack-version-profiles-powershell.md
                 - name: Azure CLI 2.0
                   href: azure-stack-version-profiles-azurecli2.md
-                - name: NYISSA MEG
+                - name: UGRÁS
                   href: azure-stack-version-profiles-go.md
                 - name: Ruby
                   href: azure-stack-version-profiles-ruby.md
                 - name: Python
                   href: azure-stack-version-profiles-python.md
-                - name: Erőforrás-szolgáltató profilok által támogatott API-k
+                - name: Erőforrás-szolgáltató profil által támogatott API-k
                   href: azure-stack-profiles-azure-resource-manager-versions.md
-        - name: Az Azure verem házirend modul használata
+        - name: Az Azure Stack házirendmodul használata
           href: azure-stack-policy-module.md
         - name: Sablonok használata
           items:
@@ -148,7 +149,7 @@
               href: azure-stack-deploy-template-powershell.md
             - name: Üzembe helyezés a Visual Studióval
               href: azure-stack-deploy-template-visual-studio.md
-    - name: A Felhőbeli szolgáltatás szolgáltatója engedélyezése
+    - name: Felhőszolgáltató engedélyezése
       href: azure-stack-csp-enable-billing-usage-tracking.md
 - name: Leírások
   items:
@@ -160,15 +161,15 @@
   items:
     - name: Az Azure Stack operátori dokumentációja
       href: /azure/azure-stack/
-    - name: ASDK dokumentáció
+    - name: ASDK dokumentációja
       href: /azure/azure-stack/asdk/
 - name: További források
   items:
-    - name: Azure verem menetrend
+    - name: Azure Stack-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
-    - name: Azure verem MSDN fórum
+    - name: Az Azure Stack MSDN-fórum
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
-    - name: Az Azure verem dokumentációra vonatkozó visszajelzés
+    - name: Az Azure Stack-dokumentáció visszajelzés
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: Díjszabási információk
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'

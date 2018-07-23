@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: af5079e8c448a0df6b1109f5f23e3e3a2871a167
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: f666b59db978774cd299cb91eccdfac99e66ae76
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887266"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172051"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Webes alkalmazás robot a LUIS-sablon használatával a C#
 
@@ -80,7 +80,7 @@ Nyissa meg **Alkalmazásbeállítások** és szerkesztheti a **LuisAppId** mező
 > Ha nem rendelkezik a LUIS alkalmazás Azonosítóját a [kezdőlap Automation alkalmazás](luis-get-started-create-app.md), jelentkezzen be a [LUIS](luis-reference-regions.md) webhelyen, amellyel belép Azure-bA ugyanazzal a fiókkal. 
 > 1. Kattintson a **saját alkalmazások**. 
 > 2. Keresse meg a korábban létrehozott, LUIS alkalmazást, amely tartalmazza a szándékok és entitások HomeAutomation tartományból.
-> 3. Az a **beállítások** a LUIS alkalmazás lapon keresse meg és másolja az alkalmazás azonosítóját. Győződjön meg arról, hogy [betanított](interactive-test.md) és [közzétett](luis-how-to-publish-app.md). 
+> 3. Az a **beállítások** a LUIS alkalmazás lapon keresse meg és másolja az alkalmazás azonosítóját. Győződjön meg arról, hogy [betanított](luis-interactive-test.md) és [közzétett](luis-how-to-publish-app.md). 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
@@ -145,7 +145,7 @@ Az Azure Portalon kattintson a **tesztelni, webes csevegési** a robot tesztelé
    ![A webes csevegési HomeAutomation bot tesztelése](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> A LUIS-alkalmazás a robot kód módosítás nélkül ténytábláknál. Lásd: [példa beszédmódok hozzáadása](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) és [taníthat vagy tesztelhet a LUIS-alkalmazás](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
+> A LUIS-alkalmazás a robot kód módosítás nélkül ténytábláknál. Lásd: [példa beszédmódok hozzáadása](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) és [taníthat vagy tesztelhet a LUIS-alkalmazás](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Töltse le a robot hibakeresése
 A robot nem működik, ha a helyi gépre töltse le a projektet, és továbbra is [hibakeresés](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 

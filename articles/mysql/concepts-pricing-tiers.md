@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 07/11/2018
-ms.openlocfilehash: 547839234e15455f3e268bad4d92972ea1f47e4c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 70891e4c1425badb43dac66ada9c0b3a43b8fb0d
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971937"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173673"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL-hez tarifacsomagok
 
@@ -94,6 +94,8 @@ Az i/o-használat az Azure Portalon vagy Azure CLI-parancsok használatával kö
 A kiszolgáló van megjelölve csak olvasható, amikor szabad tárterület mérete eléri a kisebb, mint 5 GB-os vagy a felhasznált tárterület 5 %-át, amelyik érték kisebb. Ha például 100 GB tárhelyet kiépítése, és a tényleges használat halad 95 GB, a kiszolgáló van megjelölve, csak olvasható. Azt is megteheti, ha 5 GB adattárolás kiépítése, a kiszolgáló van megjelölve csak olvasható, ha a szabad tárhely eléri a 250 MB-nál kevesebb.  
 
 A szolgáltatás megpróbál, hogy a kiszolgáló írásvédett, amíg minden új írási tranzakció kérés le vannak tiltva, és továbbra is meglévő aktív tranzakciók végrehajtása. Ha a kiszolgáló értékre van állítva, csak olvasható, minden ezt követő írási műveletek és a tranzakciós érvényesítése sikertelen. Olvasási lekérdezések továbbra is zavartalanul működni fog. Miután megnöveli a felhasznált tárterület, a kiszolgáló készen áll majd újra el kell fogadniuk írási tranzakciók.
+
+Azt javasoljuk, hogy beállította egy riasztás arra az esetre, ha a kiszolgáló tárhelyét hamarosan eléri a küszöbértéket a csak olvasható állapotba első elkerülése érdekében. További információkért lásd a dokumentációt [riasztást beállítása](howto-alert-on-metric.md).
 
 ## <a name="backup"></a>Backup
 

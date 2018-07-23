@@ -1,7 +1,7 @@
 ---
-title: A beszélgetés tanuló alkalmazás – Microsoft kognitív szolgáltatások párbeszédpanelek bejelentkezés |} Microsoft Docs
+title: Bejelentkezés párbeszédpanelek Beszélgetéstanuló modell – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Megtudhatja, hogyan párbeszédpanelek jelentkezzen be a beszélgetés tanuló alkalmazás.
+description: Ismerje meg, hogyan párbeszédpanelek jelentkezzen be egy Beszélgetéstanuló modellt.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,125 +10,129 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 477545c48aeca05d56fdae28ac65a8f381a482fe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6ceeb9683a979256a8a52347fc74ab758fd1d348
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348694"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171435"
 ---
-# <a name="how-to-log-dialogs-in-a-conversation-learner-application"></a>Bejelentkezés a beszélgetés tanuló alkalmazás párbeszédpanelek
+# <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Bejelentkezés párbeszédpanelek Beszélgetéstanuló modell
 
-Ez az oktatóanyag bemutatja, hogyan hajtsa végre a beszélgetés tanuló felületen; tesztelés végfelhasználói milyen párbeszédpanelek bejelentkezett; és hogyan végezheti el a javításokat párbeszédpanelek naplózza a modell javítása érdekében.
+Ez az oktatóanyag bemutatja, hogyan hajtsa végre a végfelhasználói az Beszélgetéstanuló felületén belül tesztelése Hogyan naplózza a párbeszédpanelek; és hogyan javíthatja a megadottakat a párbeszédpanelek a modell javítása érdekében.
+
+## <a name="video"></a>Videó
+
+[![Az oktatóanyag 9 előzetes verzió](http://aka.ms/cl-tutorial-09-preview)](http://aka.ms/blis-tutorial-09)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e az általános útmutató botot
+Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
-A napló párbeszédpanelek segítségével tekintse át, és a párbeszédpanelek a végfelhasználókkal végzett javításokat.  Pontosabban megoldhatja entitás címkék és a műveleti beállításokat a betanított modell és a rendszer általános teljesítményének javítása érdekében. 
+A napló párbeszédpanelek használatával tekintse át, és a párbeszédpanelek a végfelhasználókkal végzett javításokat.  Pontosabban a megoldásához entitás címkék és a műveleti beállításokat a betanított modell és a teljes rendszer teljesítményét. 
 
 ## <a name="steps"></a>Lépések
 
-### <a name="create-the-application"></a>Az alkalmazás létrehozása
+### <a name="create-the-model"></a>A modell létrehozása
 
-1. A webes felhasználói felületén kattintson az új alkalmazás
-2. A név megadása LogDialogs. Majd kattintson a Létrehozás gombra.
+1. A webes felhasználói felületén kattintson az új modell
+2. A nevet írja be a LogDialogs. Ezután kattintson a Létrehozás gombra.
 
 ### <a name="create-an-entity"></a>Entitás létrehozása
 
-1. Kattintson az entitásokat, majd új entitás.
+1. Kattintson az entitásokat, majd az új entitás.
 2. Az entitás nevét adja meg a város.
 3. Kattintson a Létrehozás gombra.
 
-### <a name="create-two-actions"></a>Két tevékenység
+### <a name="create-two-actions"></a>Hozzon létre két műveletet
 
 1. Kattintson a műveletek, majd az új művelet
-2. A válasz írja be a "Melyik városban?".
-3. Entitások kizárásának $city meg.
+2. A választ írja be a "Melyik városban?".
+3. Adja meg $city kizárásának entitásokat.
 3. Kattintson a Létrehozás gombra
 
-A második művelet majd létrehozása:
+Ezután hozzon létre a második műveletet:
 
-1. Kattintson a műveletek, majd új művelet.
-3. Válasz írja be a "a $city nem valószínűleg moziba".
+1. Kattintson a műveletek, majd az új művelet.
+3. A válasz írja be a "$city az időjárás is valószínűleg sunny".
 4. Szükséges entitások $city adja meg.
 4. Kattintson a Létrehozás gombra.
 
-Most már két műveletet kell.
+Most már két műveletet.
 
-### <a name="train-the-bot"></a>A botot képzése
+### <a name="train-the-bot"></a>A robot betanítása
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
-2. Írja be a "Mi az az időjárási".
-3. Kattintson a pontszám műveleteket, majd válassza a "Melyik városban?"
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
+2. Írja be a "Mi is az időjárás".
+3. Kattintson a pontszám műveletek, és válassza a "Melyik városban?"
 2. Adja meg a "Seattle".
-3. Kattintson duplán arra a "Seattle", és válassza ki a város.
-    - Ez jelzi a város egységként.
+3. Kattintson duplán a "Seattle", és válassza ki az városa.
+    - Ez jelzi a város entitásként.
 5. Kattintson a pontszám műveletek
-6. Válassza az "a $city időjárási valószínűleg moziba".
-7. Kattintson a tanítási végezhető el.
+6. Jelölje ki a "$city az időjárás valószínűleg sunny".
+7. Kattintson a tanítási kész gombra.
 
-Adja hozzá egy másik példa párbeszédpanel:
+Adjon hozzá egy másik példa párbeszédpanel:
 
-1. Kattintson az új művelet, majd az új vonat párbeszédpanel.
-2. Írja be a "Mi az budapesti időjárási?". Figyelje meg, Seattle van megjelölve, entitás.
+1. Kattintson az új művelet, majd új Train párbeszédpanel.
+2. Írja be a "Mi az az időjárás, a Seattle?". Figyelje meg, Seattle egy entitás van megjelölve.
 5. Kattintson a pontszám műveletek 
-6. Válassza az "a $city időjárási valószínűleg moziba".
-7. Kattintson a tanítási végezhető el.
+6. Jelölje ki a "$city az időjárás valószínűleg sunny".
+7. Kattintson a tanítási kész gombra.
 
-### <a name="try-the-bot-as-the-user"></a>Próbálja meg a botot felhasználóként
-Most tegyük fel, hogy jelenleg telepített ez botot a felhasználók számára.
+### <a name="try-the-bot-as-the-user"></a>Próbálja ki a robot a felhasználóként
+Tegyük fel, hogy ez a robot a felhasználók számára helyeztük.
 
 1. Kattintson a napló párbeszédpanelek.
 2. Kattintson az új Csevegés.
-    - Ez megadja a botot, a webes Csevegés vezérlő bal oldalán a felhasználói felület a felhasználó akkor számára. Az üres területen kattintson a jobb figyelmen kívül hagyhatja.
-3. Írja be a "Hello szövegrészt".
-4. Botot válasz: "melyik városban?"
-4. "Boston" típusú.
-5. Botot válasz: "melyik városban?"
-    - Ez nem tűnik megfelelő. Most mentse ezt a párbeszédpanelt.
-2. Kattintson a végzett tesztelése.
+    - Ez megadja a robot, a felhasználói élmény lenne, a webes csevegési vezérlőelem bal oldalán a felhasználói felületen. Az üres területen, a jobb oldali figyelmen kívül hagyhatja.
+3. Írja be a "hello".
+4. A robot választ: "melyik városban?"
+4. Írja be a "Boston".
+5. A robot választ: "melyik városban?"
+    - Ez nem tűnik megfelelő. Ezért mentse el ezt a párbeszédpanelt.
+2. Kattintson a kész tesztelése.
 
-Kezdjük egy új munkamenetben:
+Kezdjük egy új munkamenetet:
 
 2. Kattintson az új Csevegés.
-3. "Boston előrejelzésének" típusú.
-4. Botot válasz: "melyik városban?"
-2. Kattintson a tanítási végezhető el.
+3. Írja be a "Boston előrejelzésének".
+4. A robot választ: "melyik városban?"
+2. Kattintson a tanítási kész gombra.
 
-Most már most Meggyőződünk javításokat a második párbeszédpanel:
+Most tekintsük meg a második párbeszédpanel javításokat:
 
-1. Kattintson a "előrejelzést Boston" alatt napló párbeszédpanel.
+1. Kattintson a "előrejelzés Boston a" Log-párbeszédpanelekhez alatt.
     - Ekkor megnyílik a beszélgetést.
-    - Ha a felhasználó oldalon a beszélgetés kattintson (ide "Boston az előrejelzés"), entitás címkéket módosíthatja.
-    - Ha a rendszer oldalon (Itt a "melyik városban"), módosíthatja a kiválasztott végrehajtandó művelet.
-5. Kattintson a "Boston előrejelzést". 
-    - Itt okozza-e, hogy Boston nem lett megjelölve egy egységként. Amely módosítani kell.
-    - Kattintson duplán arra a "Boston", majd válassza ki a város.
-    - Kattintson a módosítások küldje el, és kattintson a Mentés gombra. Ez létrehoz egy képzési párbeszédpanelen végrehajtott módosítások alapján, és dobja el, a képzési párbeszédpanelek helyén a módosítások.
-6. Válassza az "a $city időjárási valószínűleg moziba."
-7. Kattintson a tanítási végezhető el. Ha vonat párbeszédek most, látni fogja az új művelet jelenik meg.
+    - A témakör a felhasználói oldalon kattint (a "bostonra vonatkozó előrejelzést" Itt), entitás címkéket módosíthatja.
+    - Ha a rendszer oldalon kattint (Itt a melyik városban) módosíthatja a végrehajtandó művelet van kiválasztva.
+5. Kattintson a "bostonra vonatkozó előrejelzést". 
+    - Itt okozza-e, hogy Boston nem lett megjelölve egy egységként. Módosíthatja, hogy kell.
+    - Kattintson duplán a "Boston", majd válassza ki az városa.
+    - Módosítások elküldése gombra, és kattintson a Mentés gombra. Ezzel a végzett módosítások alapján képzési párbeszéd létrehozása, és akkor betett képzési párbeszédpanelek elvégzett módosítás ponton kell megadni.
+6. Válassza a "$city az időjárás valószínűleg napsütéses is."
+7. Kattintson a tanítási kész gombra. Ha Train-párbeszédpanelekhez mostantól, látni fogja az új művelet kerül.
 
 ![](../media/tutorial9_logdiag1.PNG)
 
-Most már most Meggyőződünk más párbeszédpanel javításokat:
+Most tekintsük meg a többi párbeszédpanel javításokat:
 
-1. Kattintson a "hello" alatt napló párbeszédpanel.
+1. Kattintson a "hello" Log-párbeszédpanelekhez alatt.
     - Ekkor megnyílik a beszélgetést.
-3. Megjegyzés: a "hello" válasz melyik városban. De biztosak szeretnénk módosíthatja, hogy egy több legcélszerűbb. Jobb válasz lenne valami például a "hello, én vagyok a időjárási bot". Azonban nincs olyan művelet, amelyet, hogy, hogy a létrehozáshoz.
-4. Kattintson a művelet.
-    - Írja be a válasz "a időjárási botot vagyok. I elősegíti az előrejelzések. "
-6. A válasz jelölőnégyzetet, várjon egy nem várja meg a művelet végrehajtásához UN-ellenőrzése.
+3. A "hello" válasz melyik városban. Most azonban módosíthatja, hogy úgy, hogy több értelme. Még jobb válasz lenne valami, például "hello, vagyok az időjárás bot". De nem tartoznak, amely, hogy ne hozzon létre egyet a műveletek.
+4. Kattintson a műveletet.
+    - A választ, írja be "az időjárás bot vagyok. Az előrejelzések segíthetünk. "
+6. A válasz a jelölőnégyzetet, várja meg, hogy egy nem várja meg a művelet megszünteti-ellenőrzése.
 7. Kattintson a Létrehozás gombra.
-8. Kattintással jelölje be ezt a műveletet. Ezután kattintson a Save (Mentés) gombra.
-    - Ekkor meg vissza az adott pontra a képzés munkamenetben.
-6. Válassza ki, kattintson a "melyik városban?"
-7. A "Boston" típusú. Kattintson duplán egy entitás, ha még nem Boston címkéhez.
+8. Kattintással jelölje ki az új művelet. Ezután kattintson a Save (Mentés) gombra.
+    - Ekkor azt vissza az adott pont a betanítási munkamenetben.
+6. Ide kattintva válassza ki melyik városban?"
+7. Írja be a "Boston". Kattintson duplán a címkéhez Boston entitásokban, ha még nem tette.
 8. Kattintson a pontszám műveletek.
-9. Jelölje be a "a $city nem valószínűleg moziba."
-10. Kattintson a tanítási végezhető el.
+9. Jelölje be a "$city az időjárás valószínűleg napsütéses is."
+10. Kattintson a tanítási kész gombra.
 
 ![](../media/tutorial9_addnewaction.PNG)
 

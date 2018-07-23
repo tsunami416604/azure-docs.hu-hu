@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: eebaf679ada9da554f8582ad89db4e7491dcc134
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b5028010953b9dbe2386c30e6fa05cc4a94cb971
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004353"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185492"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Eszközhitelesítés X.509 Hitelesítésszolgáltatói tanúsítványok használatával
 
@@ -30,7 +30,7 @@ Az x.509-es Hitelesítésszolgáltatói funkciója lehetővé teszi az IoT hubra
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Az x.509-es Hitelesítésszolgáltatói funkció használatával, hogy egy IoT Hub-fiók szükséges.  [Ismerje meg, hogyan hozhat létre egy IoT Hub-példány](iot-hub-csharp-csharp-getstarted.md) Ha még nem rendelkezik.
+Az x.509-es Hitelesítésszolgáltatói funkció használatával, hogy egy IoT Hub-fiók szükséges.  [Ismerje meg, hogyan hozhat létre egy IoT Hub-példány](quickstart-send-telemetry-dotnet.md) Ha még nem rendelkezik.
 
 ## <a name="how-to-get-an-x509-ca-certificate"></a>X.509 Hitelesítésszolgáltatói tanúsítvány beszerzése
 

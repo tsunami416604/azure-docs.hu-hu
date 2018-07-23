@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: dc316df754ea0b8630abe341dc5ce6b0adffa685
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1c52a97bce1b18e16cb5109049f36e146165dff4
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920035"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172129"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -95,8 +95,12 @@ Igen, kizárhat lemezeket a replikációból.
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Virtuális gépek replikálhatok dinamikus lemezeken?
 A dinamikus lemezek lehet replikálni. Az operációsrendszer-lemez alaplemeznek kell lennie.
 
-### <a name="can-i-add-a-new-vm-to-an-existing-replication-group"></a>Egy meglévő replikációs csoporthoz is hozzáadhatok egy új virtuális Gépet?
-Igen.
+### <a name="if-i-use-replication-groups-for-multi-vm-consistency-can-i-add-a-new-vm-to-an-existing-replication-group"></a>A virtuális gépre kiterjedő konzisztencia replikációs csoportok használata esetén is hozzáadhatok egy új virtuális gép egy meglévő replikációs csoporthoz?
+Igen, adhat hozzá új virtuális gépek egy meglévő replikációs csoporthoz. Ha engedélyezi azok replikációját. Nem adhat egy virtuális Gépet egy meglévő replikációs csoporthoz, miután replikációs indul, és a meglévő virtuális gépek egy replikációs csoport nem hozható létre.
+
+### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Módosíthatja a hozzáadásával vagy a lemezek átméretezése replikáló virtuális gépek?
+
+A VMware – Azure replikálás módosíthatja a lemez méretét. Ha azt szeretné, adjon hozzá új lemezeket kell a lemezt adja hozzá, és engedélyezheti a virtuális gép védelmét.
 
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 

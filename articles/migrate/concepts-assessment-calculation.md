@@ -4,14 +4,14 @@ description: Értékelési számítások az Azure Migrate szolgáltatás átteki
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/20/2018
 ms.author: raynew
-ms.openlocfilehash: 6d5a0b959b25c0ee294b22b3f4066d006806b524
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 890614133649762788418c538bd22bb6ffc425bf
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920924"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173758"
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -106,10 +106,9 @@ Teljesítményalapú méretezéshez az Azure Migrate kezdődik a lemezeket, a vi
 Ha a méretezési feltétel teljesítményalapú *helyszíni méretezési*, az Azure Migrate nem veszi figyelembe a lemezek és virtuális gépek korábbi teljesítménye és a egy Virtuálisgép-Termékváltozatra, az Azure-ban a helyszínen lefoglalt méret alapján foglalja le. Ehhez hasonlóan az lemez méretezés, azt a tárolótípus (Standard vagy prémium) értékelés tulajdonságaiban megadott megvizsgál, és javasolja a lemez típusát ennek megfelelően. Alapértelmezett tárolási típus prémium szintű lemezeket.
 
 ### <a name="confidence-rating"></a>Megbízhatósági minősítés
+Az Azure Migrate minden teljesítményalapú értékelése olyan megbízhatósági minősítéssel, amely 1 csillagtól az 5 csillagig terjed (1 csillag a legalacsonyabb, 5 csillag a legmagasabb) kapcsolódik. A megbízhatósági minősítés az értékelések kiszámításához szükséges adatpontok rendelkezésre állása alapján vannak az értékelésekhez rendelve. Az értékelés megbízhatósági minősítése segít megbecsülni az Azure Migrate által nyújtott méretjavaslatok megbízhatóságát. Megbízhatósági minősítés esetében nem érvényes a helyszíni értékeléseket.
 
-Az Azure Migrate minden értékelése olyan megbízhatósági minősítéssel van társítva, amely 1 csillagtól az 5 csillagig terjed (az 1 csillag a legalacsonyabb, az 5 csillag pedig a legmagasabb). A megbízhatósági minősítés az értékelések kiszámításához szükséges adatpontok rendelkezésre állása alapján vannak az értékelésekhez rendelve. Az értékelés megbízhatósági minősítése segít megbecsülni az Azure Migrate által nyújtott méretjavaslatok megbízhatóságát.
-
-A megbízhatósági minősítés különösen olyan értékelések esetében hasznos, ahol a méretezési feltétel a teljesítményalapú méretezés. A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virtuális gép processzorának és memóriájának kihasználtsági adataira. Emellett szükség van a lemez IOPS-értékére és az adatátviteli teljesítményre is a virtuális géphez csatlakoztatott minden lemezre vonatkozóan. Ugyanígy az Azure Migrate-nek a virtuális géphez csatlakoztatott összes hálózati adapterre vonatkozóan szüksége van a bejövő és kimenő hálózati forgalom adataira a teljesítményalapú méretezés elvégzéséhez. Ha a fenti kihasználtsági számok valamelyike nem érhető el a vCenter Serveren, lehet, hogy az Azure Migrate által adott méretjavaslat nem megbízható. Az elérhető adatpontok százalékától függően meg van adva a megbízhatósági minősítés az értékeléshez az alábbiak szerint:
+A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virtuális gép processzorának és memóriájának kihasználtsági adataira. Emellett szükség van a lemez IOPS-értékére és az adatátviteli teljesítményre is a virtuális géphez csatlakoztatott minden lemezre vonatkozóan. Ugyanígy az Azure Migrate-nek a virtuális géphez csatlakoztatott összes hálózati adapterre vonatkozóan szüksége van a bejövő és kimenő hálózati forgalom adataira a teljesítményalapú méretezés elvégzéséhez. Ha a fenti kihasználtsági számok valamelyike nem érhető el a vCenter Serveren, lehet, hogy az Azure Migrate által adott méretjavaslat nem megbízható. Az elérhető adatpontok százalékától függően meg van adva a megbízhatósági minősítés az értékeléshez az alábbiak szerint:
 
    **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---

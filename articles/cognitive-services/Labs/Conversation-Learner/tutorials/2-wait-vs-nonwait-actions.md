@@ -1,7 +1,7 @@
 ---
-title: Várja meg, és nem várakozási műveletek használata a beszélgetés tanuló alkalmazás – Microsoft kognitív szolgáltatások |} Microsoft Docs
+title: Várja meg és nem várja meg műveletek használata Beszélgetéstanuló modell – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, várja meg, és nem várakozási műveletek használata a beszélgetés tanuló alkalmazás.
+description: Ismerje meg, hogyan használja a wait és nem várja meg műveleteket Beszélgetéstanuló modell.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,74 +10,79 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bb2cbd55b6c8be51213095926bb592169613d1fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a8f7ccf79e750c9f3c21c25c50c3e275db7e4195
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348582"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173084"
 ---
-# <a name="wait-and-non-wait-actions"></a>Várjon, és nem várakozási műveletek
+# <a name="wait-and-non-wait-actions"></a>Várjon, és nem várakozási művelet
 
-Ez az oktatóanyag a beszélgetés tanuló várakozási műveletek és nem várja meg műveletek közötti különbséget mutatja.
+Ebben az oktatóanyagban a Beszélgetéstanuló várakozási műveletek és nem várja meg műveletek közötti különbséget mutatja.
+
+## <a name="video"></a>Videó
+
+[![Az oktatóanyag 2 előzetes verzió](http://aka.ms/cl-tutorial-02-preview)](http://aka.ms/blis-tutorial-02)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e az általános útmutató botot
+Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
 
-- Várjon, amíg a művelet: a rendszer végrehajtja a "Várakozás" műveletet, miután az leállítja műveletek végrehajtása és várnak felhasználói bevitelre.
-- Nem-wait művelet: a rendszer végrehajtja a "nem várakozási" műveletet, miután azt azonnal lehetőség egy másik művelet (nélkül Várakozás a felhasználói inpu először).
+- Várjon a művelet: Miután a rendszer a "wait" művelet vesz igénybe, azt műveletekkel leáll, és várnak felhasználói bevitelre.
+- Nem-wait művelet: után a rendszer egy "nem-wait" művelet vesz igénybe, azt közvetlenül lehetőség egy másik műveletet (jóváhagyású felhasználói inpu először).
 
 ## <a name="steps"></a>Lépések
 
-### <a name="create-a-new-app"></a>Új alkalmazás létrehozása
+### <a name="create-a-new-model"></a>Új modell létrehozása
 
-1. A webes felhasználói felületén kattintson az új alkalmazás
-2. A név megadása WaitNonWait. Majd kattintson a Létrehozás gombra.
+1. A webes felhasználói felületén kattintson az új modell
+2. A nevet írja be a WaitNonWait. Ezután kattintson a Létrehozás gombra.
 
 ### <a name="create-the-first-wait-action"></a>Az első várakozási művelet létrehozása
 
-1. Kattintson a műveletek, majd új művelet.
-2. Választ adja meg "mely állat van szüksége?".
-    - Ez egy Várjon, amíg a művelet, így hagyja az be van jelölve, a válasz mezőbe való várakozás.
-3. a Kész gombra.
+1. Kattintson a műveletek, majd az új művelet.
+2. A választ adja meg a "melyik szolgáltatást szeretne?".
+    - A várakozási művelet, ezért ne be van jelölve, a válasz mező várja.
+3. Kattintson a Létrehozás gombra.
 
 ### <a name="create-a-non-wait-action"></a>Nem-Wait művelet létrehozása
 
 1. Kattintson az új művelet
-2. Válasz írja be a "Tehenek tegyük fel például, moo".
-3. Válasz jelölőnégyzet való várakozás UN-ellenőrzést.
+2. Válaszként írja be a "Tehenek tegyük fel, hogy moo".
+3. A válasz a jelölőnégyzetet, várja meg, UN-ellenőrzése.
 4. Kattintson a Létrehozás gombra
 
-### <a name="create-a-second-non-wait-action"></a>Hozzon létre egy második nem-Wait-művelet
+### <a name="create-a-second-non-wait-action"></a>Hozzon létre egy második nem-Wait művelet
 
 1. Kattintson az új művelet
-2. Válasz írja be a "Kacsa mondja ki quack".
-3. Válasz jelölőnégyzet való várakozás UN-ellenőrzést.
+2. Válaszként írja be a "Kacsa tegyük fel, hogy quack".
+3. A válasz a jelölőnégyzetet, várja meg, UN-ellenőrzése.
 4. Kattintson a Létrehozás gombra
 
 ![](../media/tutorial2_actions.PNG)
 
-### <a name="train-the-bot"></a>A botot képzése
+### <a name="train-the-bot"></a>A robot betanítása
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
-2. Típus: "hello"
-3. Kattintson a pontszám műveleteket, majd válassza a "mely állat van szüksége?".
-4. Adja meg a "vonatkozó"
-5. Kattintson a pontszám műveleteket, majd válassza a "Tehenek tegyük fel például, moo".
-    - Vegye figyelembe, hogy a botot bemeneti nem várakozik, és a következő műveletet nem hajt végre.
-2. Válassza ki a "mely állat van szüksége?".
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
+2. Írja be "hello"
+3. Kattintson a pontszám műveletek, és válassza a "melyik szolgáltatást szeretne?".
+4. Adja meg a vonatkozó"
+5. Kattintson a pontszám műveletek, és válassza a "Tehenek tegyük fel, hogy moo".
+    - A robot bemenet nem várakozik, és megteszi a következő lépéseket.
+2. Válassza ki a "melyik szolgáltatást szeretne?".
 3. Adja meg a "kacsa"
-5. Kattintson a pontszám műveleteket, majd válassza a "Kacsa mondja ki quack".
+5. Kattintson a pontszám műveletek, és válassza a "Kacsa tegyük fel, hogy quack".
 
 ![](../media/tutorial2_dialogs.PNG)
 
-Vegye figyelembe a botot válaszok jelenítik várja meg, és nem várakozási műveletek sorrendjét.
+> [!NOTE]
+> A robot válaszok várakozási és nem várja meg műveleteket érdemes sorrendjét.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az entitások bemutatása](./3-introduction-to-entities.md)
+> [Entitások bemutatása](./3-introduction-to-entities.md)

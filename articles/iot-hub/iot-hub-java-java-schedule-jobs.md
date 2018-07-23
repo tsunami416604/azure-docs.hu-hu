@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: cb25ae0e90189f0c808f561b20e45f08b49df0d6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3161715ac2ff212e2de8a27ff8f8eb53fb858b92
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299161"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186805"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Feladatok ütemezése és kiküldése (Java)
 
@@ -31,7 +31,7 @@ Egy feladat burkolja az alábbi műveletek egyikét, és nyomon követi az eszk�
 Az egyes képességek kapcsolatos további információkért lásd:
 
 * Ikereszköz és tulajdonságok: [ikereszközök – első lépések](iot-hub-java-java-twin-getstarted.md)
-* Közvetlen metódusok: [az IoT Hub fejlesztői útmutató – közvetlen metódusok](iot-hub-devguide-direct-methods.md) és [oktatóanyag: közvetlen metódusok használata](iot-hub-java-java-direct-methods.md)
+* Közvetlen metódusok: [az IoT Hub fejlesztői útmutató – közvetlen metódusok](iot-hub-devguide-direct-methods.md) és [oktatóanyag: közvetlen metódusok használata](quickstart-control-device-java.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -482,5 +482,5 @@ Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd
 
 Az alábbi forrásanyagokból megtudhatja, hogyan lehet:
 
-* Telemetriát az eszközökről a [IoT Hub használatának első lépései](iot-hub-java-java-getstarted.md) oktatóanyag.
-* Az eszközök, interaktív módon (például egy felhasználó által felügyelt alkalmazásból ventilátor bekapcsolása) szabályozhatja a [közvetlen metódusok használata](iot-hub-java-java-direct-methods.md) oktatóanyag.
+* Telemetriát az eszközökről a [IoT Hub használatának első lépései](quickstart-send-telemetry-java.md) oktatóanyag.
+* Az eszközök, interaktív módon (például egy felhasználó által felügyelt alkalmazásból ventilátor bekapcsolása) szabályozhatja a [közvetlen metódusok használata](quickstart-control-device-java.md) oktatóanyag.

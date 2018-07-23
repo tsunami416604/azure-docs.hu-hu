@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 07/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1ee6bf2f358a24d1f36d0b5e10f3556e7037cad2
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3303050311a30473bb973ac4f49bbeb707c16a33
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159032"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173809"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Az előfizetések az Azure Event Grid eseménysémája
 
@@ -181,10 +181,10 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| Engedélyezési | sztring | A kért hitelesítést biztosít a műveletet. |
-| jogcímek | sztring | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| Engedélyezési | objektum | A kért hitelesítést biztosít a műveletet. |
+| jogcímek | objektum | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | sztring | A hibaelhárítási művelet azonosítója. |
-| Törzsparaméterei | sztring | A művelet részleteit. |
+| Törzsparaméterei | objektum | A művelet részleteit. |
 | ResourceProvider | sztring | Az erőforrás-szolgáltató a művelet végrehajtása. |
 | resourceUri | sztring | A műveletet az erőforrás URI azonosítója. |
 | operationName | sztring | A végrehajtott műveletet. |

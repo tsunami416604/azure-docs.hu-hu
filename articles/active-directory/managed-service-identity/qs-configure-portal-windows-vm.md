@@ -1,6 +1,6 @@
 ---
-title: Az MSI konfigurálása az Azure virtuális Gépekhez az Azure portal használatával
-description: Lépés útmutató konfigurálásához a Felügyeltszolgáltatás-identitás (MSI)-beli virtuális gépen, az Azure portal használatával.
+title: Felügyeltszolgáltatás-identitás konfigurálása az Azure virtuális Gépekhez az Azure portal használatával
+description: Lépés útmutató konfigurálásához a Felügyeltszolgáltatás-identitás-beli virtuális gépen az Azure portal használatával.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 27ecb00bddb41ae45e790a54702c058ff3f1d24b
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 81aa8153198f69abd1722f97462927a0c242d4e7
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035941"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186159"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás (MSI) az Azure portal használatával
+# <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás az Azure portal használatával
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -30,12 +30,14 @@ Felügyeltszolgáltatás-identitás az Azure-szolgáltatásokat az Azure Active 
 Ebben a cikkben, megtudhatja, hogyan engedélyezheti és tilthatja le a rendszer hozzárendelt identitás egy Azure virtuális gép, az Azure portal használatával. Hozzárendelése és eltávolítása, felhasználó által hozzárendelt identitások az Azure virtuális gépekről jelenleg nem támogatott az Azure Portalon keresztül.
 
 > [!NOTE]
-> A felhasználóhoz hozzárendelt identitás műveletek jelenleg nem támogatottak az Azure Portalon keresztül. Biztonsági frissítések keresése. 
+> A felhasználóhoz hozzárendelt identitás műveletek jelenleg nem támogatottak az Azure Portalon keresztül. Térjen vissza frissítésekért. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md).
-- Ha még nem rendelkezik Azure-fiók [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a folytatás előtt.
+- Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
+- Ebben a cikkben a kezelési műveletek végrehajtásához a fióknak rendelkeznie kell a következő szerepkör-hozzárendelés:
+    - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) engedélyezéséhez, és távolítsa el a Felügyeltszolgáltatás-identitását egy Azure virtuális gépből.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Felügyeltszolgáltatás-identitás az Azure-beli virtuális gép létrehozása során
 
@@ -50,14 +52,14 @@ Majd folytassa a következő szakaszban részleteiért engedélyezi a Felügyelt
 
 Ahhoz, hogy a rendszer hozzárendelt identitás eredetileg anélkül, hogy üzembe helyezett virtuális gépen:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely tartalmazza a virtuális gép Azure-előfizetés társítva. Ügyeljen arra, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi a virtuális gép, például a "Virtuális gép közreműködő" írási engedéllyel.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely tartalmazza a virtuális gép Azure-előfizetés társítva.
 
 2. Keresse meg a használni kívánt virtuális gépet, és válassza a "Konfiguráció" lapot.
 
 3. A virtuális gépen a rendszer által hozzárendelt identitással engedélyezése "Igen" kiválasztásával "Managed service identity" alatt, és kattintson a **mentése**. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
 
-    > [!NOTE]
-    > Egy felhasználóhoz hozzárendelt identitás hozzáadása egy virtuális gép jelenleg nem támogatott az Azure Portalon keresztül.
+   > [!NOTE]
+   > Egy felhasználóhoz hozzárendelt identitás hozzáadása egy virtuális gép jelenleg nem támogatott az Azure Portalon keresztül.
 
    ![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
@@ -65,7 +67,7 @@ Ahhoz, hogy a rendszer hozzárendelt identitás eredetileg anélkül, hogy üzem
 
 Ha egy virtuális gépet, amely már nincs szüksége a rendszer által hozzárendelt identitással rendelkezik:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely tartalmazza a virtuális gép Azure-előfizetés társítva. Ügyeljen arra, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi a virtuális gép, például a "Virtuális gép közreműködő" írási engedéllyel.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely tartalmazza a virtuális gép Azure-előfizetés társítva. 
 
 2. Keresse meg a használni kívánt virtuális gépet, és válassza a "Konfiguráció" lapot.
 
@@ -82,5 +84,5 @@ Ha egy virtuális gépet, amely már nincs szüksége a rendszer által hozzáre
 
 ## <a name="next-steps"></a>További lépések
 
-- Egy Azure virtuális gép MSI használata az Azure Portalon adjon [egy másik Azure-erőforrásokhoz való hozzáférés](howto-assign-access-portal.md).
+- Az Azure portal használatával egy Azure virtuális gépek Felügyeltszolgáltatás-identitást biztosíthat [egy másik Azure-erőforrásokhoz való hozzáférés](howto-assign-access-portal.md).
 

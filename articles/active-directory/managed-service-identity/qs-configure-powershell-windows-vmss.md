@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 61fa6c94c0d717fe1e71bf8929f2e3b4a0982562
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d5071a55c49a0749d91ec9617558ced76ebb007e
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903879"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188097"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurálja a VMSS Felügyeltszolgáltatás-identitás (MSI) PowerShell-lel
 
@@ -34,7 +34,11 @@ Ez a cikk ismerteti a Felügyeltszolgáltatás-identitás műveleteket a egy vir
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség egy rendszer által hozzárendelt, és a felhasználóhoz hozzárendelt identitás](overview.md#how-does-it-work)**.
-- Ha még nem rendelkezik Azure-fiók [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a folytatás előtt.
+- Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
+- Ez a cikk a felügyeleti műveleteket hajt végre, a fiók az alábbi szerepkör-hozzárendelések van szüksége:
+    - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) egy virtuálisgép-méretezési csoport létrehozása és engedélyezése, és távolítsa el a rendszer felügyelt identitás hozzárendelt virtuálisgép-méretezési csoportot.
+    - [Felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkört a felhasználóhoz hozzárendelt identitás létrehozása.
+    - [Felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör hozzárendelése, és távolítsa el a felhasználóhoz hozzárendelt identitás, a kezdő és a egy virtuálisgép-méretezési csoportot.
 - Telepítés [az Azure PowerShell legújabb verzióját](https://www.powershellgallery.com/packages/AzureRM) Ha még nem tette. 
 
 ## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
@@ -108,7 +112,7 @@ Ebben a szakaszban megismerheti, hogyan adhat hozzá és távolíthat el egy fel
 
 ### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-vmss"></a>Rendelje hozzá egy a felhasználóhoz hozzárendelt identitás létrehozása az Azure VMSS során
 
-Egy új VMSS egy felhasználóhoz hozzárendelt identitás létrehozása jelenleg nem támogatott Powershellen keresztül. Tekintse át a következő szakaszban, a felhasználóhoz hozzárendelt identitás hozzáadása egy meglévő vmss-hez. Biztonsági frissítések keresése.
+Egy új VMSS egy felhasználóhoz hozzárendelt identitás létrehozása jelenleg nem támogatott Powershellen keresztül. Tekintse át a következő szakaszban, a felhasználóhoz hozzárendelt identitás hozzáadása egy meglévő vmss-hez. Térjen vissza frissítésekért.
 
 ### <a name="assign-a-user-identity-to-an-existing-azure-vmss"></a>A felhasználói identitás hozzárendelése egy meglévő Azure vmss-hez
 
@@ -133,9 +137,9 @@ Felhasználó hozzárendelése hozzárendelt identitás egy meglévő Azure vmss
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Az Azure VMSS identitás hozzárendelt felhasználó eltávolítása
 
 > [!NOTE]
-> Az összes felhasználó által hozzárendelt identitások eltávolítása egy virtuálisgép-méretezési csoportban jelenleg nem támogatott, kivéve, ha a rendszerhez rendelt identitáshoz. Biztonsági frissítések keresése.
+> Az összes felhasználó által hozzárendelt identitások eltávolítása egy virtuálisgép-méretezési csoportban jelenleg nem támogatott, kivéve, ha a rendszerhez rendelt identitáshoz. Térjen vissza frissítésekért.
 
-Ha a VMSS több felhasználó által hozzárendelt identitások, az alábbi parancsokkal az utolsót kivételével az összes eltávolíthatja. Ne felejtse el a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterértékeket a saját értékeire. A `<MSI NAME>` marad, és a VMSS a felhasználóhoz hozzárendelt identitás name tulajdonság. Ez az információ található a VMSS használatával identitás szakaszában `az vmss show`:
+Ha a VMSS több felhasználó által hozzárendelt identitások, az alábbi parancsokkal az utolsót kivételével az összes eltávolíthatja. Ne felejtse el a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterek értékeit a saját értékeire cserélni. A `<MSI NAME>` marad, és a VMSS a felhasználóhoz hozzárendelt identitás name tulajdonság. Ez az információ található a VMSS használatával identitás szakaszában `az vmss show`:
 
 ```powershell
 $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss

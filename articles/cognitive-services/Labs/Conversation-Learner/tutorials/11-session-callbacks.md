@@ -1,7 +1,7 @@
 ---
-title: A beszélgetés tanuló alkalmazás – Microsoft kognitív szolgáltatások munkamenet-visszahívások használata |} Microsoft Docs
+title: Munkamenet-visszahívások használata Beszélgetéstanuló modell – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg a munkamenet-visszahívások használata a beszélgetés tanuló alkalmazás.
+description: Ismerje meg, hogyan használja a munkamenet-visszahívások Beszélgetéstanuló modell.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,99 +10,103 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f8970620c1f0f87ccae13d031092a048144ffb19
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0f51b232470e4e4da3f25d40d025dd3b09dd1204
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348630"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171915"
 ---
-# <a name="how-to-use-session-callbacks-with-a-conversation-learner-application"></a>A beszélgetés tanuló alkalmazások munkamenet visszahívások használata
+# <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Munkamenet-visszahívások Beszélgetéstanuló modell használatával
 
-Ez az oktatóanyag azt mutatja be a onSessionStart és onSessionEnd visszahívások.
+Ez az oktatóanyag azt mutatja be, a onSessionStart és onSessionEnd visszahívásokat.
+
+## <a name="video"></a>Videó
+
+[![Az oktatóanyag 11 előzetes verzió](http://aka.ms/cl-tutorial-11-preview)](http://aka.ms/blis-tutorial-11)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e a "tutorialSessionCallbacks.ts" bot.
+Ehhez az oktatóanyaghoz, amely a `tutorialSessionCallbacks` bot fut-e.
 
     npm run tutorial-session-callbacks
 
 ## <a name="details"></a>Részletek
-Ez az oktatóanyag egy munkamenet, alapértelmezés szerint munkamenetek kezelésének és hogyan lehet felülbírálni viselkedésmódot fogalma magában foglalja.
+Ez az oktatóanyag bemutatja a munkamenet, milyen munkamenetek alapértelmezett kezel, és hogyan adott viselkedést felülírhatja fogalmát.
 
-A munkamenet egy beszélgetést a botot. Több viszont rendelkezhet, de nincsenek hosszú szünetek a téma (például 30 perc).  Lásd a Súgó "Korlátozások" alapértelmezett munkamenet időtúllépési időtartama.
+Egy témakör-a robot neve. Több hellyé rendelkezhet, de nincsenek hosszú szünetek a beszélgetésben (például 30 percig).  Tekintse meg a "Korlátok" az alapértelmezett munkamenet időtúllépési időtartam a következő súgóoldalt.
 
-Ha hosszú oldaltörések, majd a botot halad át a következő munkamenet.  Ismétlődő Neurális hálózat egy új munkamenet indítása elhelyezi a kezdeti állapotot.  Alapértelmezés szerint azt is törli az összes entitás értéket, bár ez a viselkedés akkor módosítható (illusztrált alatt).
+Ha hosszú oldaltörések, majd a bot halad át a következő munkamenet.  Új munkamenet indítása a ütemezhetők Neurális hálózat beteszi a kezdeti állapotában.  Alapértelmezés szerint, is törli az összes entitás értéket, bár ez a viselkedés megváltoztatható (illusztrált alább).
 
-### <a name="open-the-demo"></a>Nyissa meg a bemutató
+### <a name="open-the-demo"></a>Nyissa meg a bemutatót
 
-Az alkalmazás listájában kattintson a oktatóanyag-11-SessionCallbacks. 
+A modell-lista kattintson az oktatóanyag-11-SessionCallbacks. 
 
 ### <a name="entities"></a>Entitások
 
-Négy entitások definiáltuk az alkalmazásban.
+Négy entitások határozzák meg a modellben.
 
 ![](../media/tutorial11_entities.PNG)
 
-Egy dolog, ami arról értesít az, hogy BotName programozott entitás.  Ez lesz beállítva, a botot által munkamenet kezdési időpontban.
+Megjegyzés: az egyik dolog, hogy BotName programozott entitás.  Ehhez az entitáshoz munkamenet kezdési időpontban a robot szerint lesz beállítva.
 
 ### <a name="actions"></a>Műveletek
 
-Létrehoztunk négy művelet közül választhat. 
+Négy művelet a modellben vannak meghatározva.
 
 ![](../media/tutorial11_actions.PNG)
 
-Először, ez az oktatóanyag bemutatja vezérlése entitás értékek elején. a munkamenet – például a felhasználó szerint semmit a BotName entitás beállítást.
+Először ez az oktatóanyag bemutatja a munkamenet--elején entitásértékek vezérlése például BotName entitás beállítása előtt a felhasználó szerint bármit.
 
-Ez az oktatóanyag bemutatja, hogyan megőrizni a egy munkamenet a következő értékek.  Ebben az oktatóanyagban feltételezzük, hogy a felhasználó nevét és a telefonszámot változatlanok, és a következő egy munkamenet azonban, hogy azok helye változhat.  A Microsoft ezért után is nevét és telefonszámát munkamenetek, de egyszerű felhasználó helye.
+Ez az oktatóanyag bemutatja, a második történő megőrzésére egy munkamenet a következő értékeket.  Ebben az oktatóanyagban feltételezzük a felhasználó nevét és telefonszámát egyik munkamenetből a következő változatlanok maradnak, de, hogy azok helyétől változhat.  A Microsoft ezért megőrzése nevét és telefonszámát munkamenetek, de világos felhasználói hely között.
 
-### <a name="train-dialog"></a>Vonat párbeszédpanel
+### <a name="train-dialog"></a>Train párbeszédpanel
 
-Íme egy példa párbeszédpanel. Ez az egy munkamenet - Ez azt jelenti, hogy nincsenek hosszú szünetek ezen a párbeszédpanelen.
+Íme egy példa párbeszédpanel. Ez az egy munkamenet -, nincsenek hosszú szünetek ezen a párbeszédpanelen.
 
 ![](../media/tutorial11_traindialog.PNG)
 
-### <a name="code-for-the-callbacks"></a>A visszahívások kódja
+### <a name="code-for-the-callbacks"></a>A visszahívások programkódja
 
-A fájl a kódot a visszahívási módszer van: c:\<installedpath > \src\demos\tutorialSessionCallbacks.ts.
+A kód a visszahívás módszer van a fájlban: c:\<installedpath > \src\demos\tutorialSessionCallbacks.ts.
 
 ![](../media/tutorial11_code.PNG)
 
-Mindkét módszer opcionálisak.
+Mindkét módszer sem kötelező.
 
 - OnSessionStartCallback: Ez a módszer a BotName entitás állítja be.
-- OnSessionEndCallback: megadhatja a kívánt törölje. Ezzel törli a felhasználónév és a felhasználó telefont kivételével valamennyi entitást.
+- OnSessionEndCallback: megadhatja a szeretné megőrizni. Ezzel törli a felhasználónév és a felhasználó telefont kivételével minden entitás.
 
-### <a name="try-the-bot"></a>Próbálja meg a botot
+### <a name="try-the-bot"></a>A robot kipróbálása
 
-Váltás a webes felhasználói felületén, majd kattintson a napló párbeszédpanel.
+A webes felhasználói felületen váltson, és kattintson a napló-párbeszédpanelekhez.
 
-1. Adja meg a "Hello szövegrészt".
-2. Rendszer: "Hi, vagyok Botty. A keresztneve? " a név a OnSessionStartCallback Botty származó tartalmaz.
+1. Adja meg a "hello".
+2. Rendszer: "Üdvözöljük, vagyok Botty. Mi a neve? " amely rendelkezik a OnSessionStartCallback Botty érkező nevét.
 3. Adja meg a "jason".
-4. Rendszer: "Hi jason. Mi az, hogy a megadott telefonszámot? "
+4. Rendszer: "Üdvözöljük jason. Mi a telefonszáma? "
 5. Adja meg "555-555-5555".
-6. Rendszer: "állapítható meg Botty a helyet, jason?"
+6. Rendszer: "állapítható meg Botty a helynek, jason?"
 7. Írja be a "Redmond".
 
-Ez az egyetlen munkamenethez. Indítson el egy új munkamenetet, igazolnia kell a munkamenet befejezéséhez. 
+Ez az egyetlen munkamenetben. Új munkamenet indításához kell ezt a munkamenetet. 
 
 1. Kattintson a munkamenet időkorlátja. Ez helyezi át, a következő munkamenet.
-    - A "Munkamenet időkorlátja" gombra a hibakeresési célra valósul meg.  Az aktuális munkamenetben hosszú szünetet kellene fordulhat elő, körülbelül 30 perc.  Lásd a Súgó "Korlátozások" alapértelmezett munkamenet időtúllépési időtartama.
+    - A "Időtúllépés" gomb hibakeresési célra van megadva.  Tényleges-munkamenetben hosszú szünetet kellene történnek, körülbelül 30 perc.  Tekintse meg a "Korlátok" az alapértelmezett munkamenet időtúllépési időtartam a következő súgóoldalt.
 1. Adja meg "hi".
-2. Rendszer: "állapítható meg Botty a helyet, jason?"
-    - A rendszer megjegyezze rendelkezik neve és a telefon.
+2. Rendszer: "állapítható meg Botty a helynek, jason?"
+    - A rendszer rendelkezik megjegyzett nevét és a telefon száma.
 2. Adjon meg egy új helyet: "Seattle".
-3. Rendszer: "tehát jason áll budapesti".
-4. Kattintson a végzett tesztelése.
+3. Rendszer: "tehát jason Ön Seattle".
+4. Kattintson a kész tesztelése.
 
-Most lépjen vissza napló párbeszédpanel. Értesítés az utolsó beszélgetés osztották két mert minden egyes napló párbeszédpanel egy munkamenet felel meg.  
+Most váltson vissza Log párbeszédpanelekhez. Figyelje meg, hogy az utolsó beszélgetés rendelkezik ketté bontása mert minden egyes log párbeszédpanel felel meg egyetlen munkamenetben.  
 
 ![](../media/tutorial11_splitdialogs.PNG)
 
-- Az első beavatkozás a Botty be van állítva, de nevét és a telefonszám nem.
-- A második interakció nevét és a telefon számát mutatja.
+- Az első kapcsolati Botty van beállítva, de nevét és telefonszámát nem állnak.
+- A második interakció a nevét és telefonszámát számát jeleníti meg.
 
-Most láthatta, hogyan munkamenetek alapértelmezett kezeli, és hogyan felülbírálhatja az alapértelmezett viselkedés. 
+Most láthatta, milyen munkamenetek alapértelmezett kezel, és hogyan az alapértelmezett viselkedést felülírhatja. 
 
 ## <a name="next-steps"></a>További lépések
 

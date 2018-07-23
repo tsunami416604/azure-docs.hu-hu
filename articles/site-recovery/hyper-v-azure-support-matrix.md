@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 3204329dc7c9efe2b0ba0ae05d17bc93d51620b4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921527"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171983"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Hyper-V-replikáció az Azure-támogatási mátrixa
 
@@ -48,7 +48,12 @@ Virtuálisgép-konfiguráció | Az Azure-bA replikált virtuális gépek meg kel
 Vendég operációs rendszer | Bármilyen vendég operációs rendszer, Azure által támogatott.<br/><br/> A Windows Server 2016 Nano Server nem támogatott.
 
 
+## <a name="vmdisk-management"></a>A felügyeleti Virtuálisgép-lemez
 
+**Művelet** | **Részletek**
+--- | ---
+A replikált Hyper-V virtuális lemez átméretezése | Nem támogatott. Tiltsa le a replikációt, és módosítsa a majd újraengedélyezni a virtuális gép replikálását.
+Lemez hozzáadása a replikált Hyper-V virtuális Gépen | Nem támogatott. Tiltsa le a replikációt, és módosítsa a majd újraengedélyezni a virtuális gép replikálását.
 
 ## <a name="hyper-v-network-configuration"></a>A Hyper-V hálózati konfigurációja
 

@@ -1,7 +1,7 @@
 ---
-title: Használjon API használatával meghívja a beszélgetés tanuló alkalmazással - Microsoft kognitív szolgáltatások |} Microsoft Docs
+title: Hogyan használható az API használata meghívja a Beszélgetéstanuló modellel – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Megtudhatja, hogyan használja az API-hívásokban beszélgetés tanuló alkalmazásokkal együtt használandó.
+description: Megtudhatja, hogyan használható API-hívások használata Beszélgetéstanuló modell.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,86 +10,90 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ec752cbadfac7a47e08ed7b0ffe8bb475969fac5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d16f36a70ac176a895d9ba44d42d3fae5730f7ea
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348642"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173264"
 ---
-# <a name="how-to-add-api-calls-to-a-conversation-learner-application"></a>Az API-hívásokban beszélgetés tanuló alkalmazás hozzáadása
+# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>API-hívások Beszélgetéstanuló modell hozzáadása
 
-Ez az oktatóanyag bemutatja, hogyan adhat az alkalmazáshoz az API-hívásokban. API-hívások olyan funkció, amely határozza meg, és írja be a botot, és amely beszélgetés tanuló elő tudják hívni.
+Ez az oktatóanyag bemutatja, hogyan adhat hozzá a modell API-hívások. API-hívások olyan funkció, amely határozza meg, és írja be a robot, és amely Beszélgetéstanuló hívhatja.
+
+## <a name="video"></a>Videó
+
+[![Az oktatóanyag 12 előzetes verzió](http://aka.ms/cl-tutorial-12-preview)](http://aka.ms/blis-tutorial-12)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e a "tutorialAPICalls.ts" bot.
+Ehhez az oktatóanyaghoz, hogy fut-e a "tutorialAPICalls.ts" robot.
 
     npm run tutorial-api-calls
 
 ## <a name="details"></a>Részletek
 
-- Az API-hívásokban olvashatja és kezelheti az entitásokat.
-- Az API-hívásokban van az memória objektum eléréséhez.
-- API-hívások is számos argumentumok – Ez lehetővé teszi a különböző célt szolgálhat azonos API hívása újbóli használata.
+- API-hívások megtekintheti és módosíthatja az entitásokat.
+- API-hívások hozzáférése a memória-kezelő objektumot.
+- API-hívások is számos argumentumok – Ez lehetővé teszi, hogy újra az azonos API-hívást különböző célokat szolgálnak.
 
-### <a name="open-the-demo"></a>Nyissa meg a bemutató
+### <a name="open-the-demo"></a>Nyissa meg a bemutatót
 
-A webes felhasználói felület alkalmazások listájának megtekintéséhez kattintson a oktatóanyag – 12-APICalls. 
+A webes felhasználói felületen modell-lista kattintson a oktatóanyag – 12-APICalls. 
 
 ### <a name="entities"></a>Entitások
 
-Egy entitás definiáltuk nevű számát az alkalmazásban.
+Egy entitás rendelkezik meghatározott nevű száma a modellben.
 
 ![](../media/tutorial12_entities.PNG)
 
 ### <a name="api-calls"></a>API-hívások
-A kódot az API-hívásokban van definiálva az aktuális fájl: C:\<installedpath\>\src\demos\tutorialAPICalls.ts.
+A kódot az API-hívásokhoz van definiálva a következő fájlt: C:\<installedpath\>\src\demos\tutorialAPICalls.ts.
 
 ![](../media/tutorial12_apicalls.PNG)
 
-- Az első API visszahívási RandomGreeting. Az üdvözlőlap változóban megadott véletlenszerű üdvözlő adja vissza.
-- A szorzási API visszahívási: azt fogja szorozza meg a felhasználó által megadott két szám. Ezután a két szám a szorzás eredményét adja vissza. Ez azt jelenti, hogy a API visszahívások is igénybe vehet a bemeneti adatok. Vegye figyelembe, hogy memóriakezelő az első argumentumként. 
-- A ClearEntities API visszahívási: ahhoz, hogy a felhasználó adja meg a következő számú entitás törlése. Ez azt szemlélteti, hogyan API-hívások állíthatók be entitások.
+- Az első API-visszahívás RandomGreeting. A üdvözlés változóban meghatározott véletlenszerű üdvözlőszöveget adja vissza.
+- A szorzás API visszahívás:, fogja meg a felhasználó által megadott két szám. Ezután a két szám a szorzás eredményét adja vissza. Ez jelzi, hogy API-visszahívások eltarthat bemenetei között. Vegye figyelembe, hogy memóriakezelő az első argumentum. 
+- A ClearEntities API visszahívás: a felhasználók a következő számát adja meg a számot entitás törlése. Ez azt szemlélteti, hogyan API-hívások entitásokat is módosíthatja.
 
 ### <a name="actions"></a>Műveletek
 
-Létrehoztunk négy művelet közül választhat. 
+Négy művelet hoztunk létre. 
 
 ![](../media/tutorial12_actions.PNG)
 
-- Mellett "milyen számon szeretné szorozza meg 12?" Ez az communicative művelet, három különböző API-hívások, amelyek a tipikus API-hívás minták szemléltetik.
+- Mellett "milyen számon szeretné szorzása a következővel 12?" Ez az egy communicative művelet, három különböző API-hívások, amelyek a tipikus API-hívás minták mutatják be.
 
-- RandomGreeting: egy nem várja meg a művelet van. Állítsa be ezt, a művelet létrehozása párbeszédpanel, azt a API_LOCAL művelet típusa kiválasztva, majd RandomGreeting kiválasztva. 
+- RandomGreeting: egy nem várakozási művelet van. Ezt állítja be, a művelet létrehozása párbeszédpanelen, hogy API_LOCAL művelet típusa kiválasztva, majd RandomGreeting kiválasztott. 
 
 ![](../media/tutorial12_setupapicall.PNG)
 
-A frissítés gomb melletti az API-t használja, ha a botot leállítására, és végezze el a módosításokat az API-kat a rendszer. Kattintson a frissítés a legújabb módosításainak érvényesítéséhez lenne.
+A frissítés gomb mellett az API-t használja, ha a robot leállítása, és ne módosítsa az API-kat is. Kattintson a frissítés a legutóbbi módosítások átvételéhez lenne.
 
-Íme, hogyan hozza létre azt a szorozza meg a műveletet: API_Local és az API kiválasztása, után azt egy entitás ($number) a bemeneti érték első (num1string), és a megadott a második bemeneti érték (num2string) értéket (12). Ez a botot közötti kiosztótábla biztosít, és az API-t hívja, ezért a azonos visszahívási rendelhetők néhány műveleteket a rendszer, és hogyan hozzá vannak rendelve a térnek el egymástól.
+Itt látható, hogyan hoztunk létre a szorozza meg a műveletet: Miután API_Local és API-t, hogy egy entitás ($number) a bemeneti érték első (num1string), és a megadott a második bemeneti érték (num2string) értéket (12). Ez a robot közötti kiosztótábla szinten biztosítja, és az API-hívások, így ugyanazt a visszahívás is le lehet képezni néhány műveleteket a rendszer, és hogyan hozzá vannak rendelve a térnek el egymástól.
 
 ![](../media/tutorial12_actionmultiply.PNG)
 
-### <a name="train-dialog"></a>Vonat párbeszédpanel
+### <a name="train-dialog"></a>Train párbeszédpanel
 
-Bemutatjuk, egy tanítási párbeszédpanelen.
+Nézzük végig, egy tanítási párbeszédpanel.
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
 1. Adja meg "hi".
 2. Kattintson a pontszám művelet.
-3. Kattintással jelölje ki a RandomGreeting. Ez hajtja végre a véletlenszerű köszöntés API-hívás.
-3. Jelölje be a "milyen számot szeretné szorozza meg 12?"
+3. Kattintással jelölje ki a RandomGreeting. Ez hajtja végre a véletlenszerű üdvözlőszöveget API-hívás.
+3. Jelölje be a "milyen számot szeretné szorzása a következővel 12?"
 4. Adja meg a "8". Kattintson a pontszám műveletek.
-4. Jelölje ki "$number szorzási 12'. Vegye figyelembe a szorzás eredményét.
+4. Válassza ki a(z) $number szorzása 12'. Vegye figyelembe a szorzás az eredményt.
 5. Válassza ki a "Tiszta entitások".
-    - Vegye figyelembe, hogy a szám entitás érték törölve lett.
-3. Jelölje be a "milyen számot szeretné szorozza meg 12?"
-4. Kattintson a végzett tesztelése.
+    - A `number` törölve lett az entitás értékét.
+3. Jelölje be a "milyen számot szeretné szorzása a következővel 12?"
+4. Kattintson a kész tesztelése.
 
 ![](../media/tutorial12_dialog.PNG)
 
-Most láthatta hogyan kell regisztrálni az API-visszahívások, a közös környezeteken, és hogyan argumentumok megadása, és rendelje hozzá az értékek és a bennük foglalt entitások.
+Most láthatta, API-visszahívások regisztrálása gyakori mintáit, és hogyan argumentumok megadása, és rendelje hozzá az értékeket, és azokat az entitásokat.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kártyák 1. rész](./13-cards-1.md)
+> [Kártyák: 1. rész](./13-cards-1.md)

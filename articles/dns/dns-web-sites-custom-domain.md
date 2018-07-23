@@ -3,7 +3,7 @@ title: Webalkalmazások egyéni DNS-rekordok létrehozása |} A Microsoft Docs
 description: Hogyan hozhat létre egyéni tartományt a webalkalmazást az Azure DNS használatával DNS-rekordjait.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 ms.assetid: 6c16608c-4819-44e7-ab88-306cf4d6efe5
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: kumud
-ms.openlocfilehash: 7ee3dbdcd4d8b2627273a871aec94583b6c5dd6a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.author: victorh
+ms.openlocfilehash: f24c301cea5ef91d101206e71b69b7ceb03b0282
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059801"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172449"
 ---
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>A webalkalmazás DNS-rekordok létrehozása az egyéni tartomány
 

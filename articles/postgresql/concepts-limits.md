@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 52dfac826de86f67b3143cce49c35088547c4b39
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342951"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171772"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for postgresql-hez korlátozásai
 A következő szakaszok ismertetik a kapacitás és a működési korlátai az adatbázis-szolgáltatás.
@@ -55,8 +55,9 @@ Az Azure rendszer öt kapcsolatok figyelése az Azure Database for PostgreSQL-ki
 ### <a name="vnet-service-endpoints"></a>Virtuális hálózati Szolgáltatásvégpontok
 - Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
 
-### <a name="point-in-time-restore-pitr"></a>Pont-az-időponthoz kötött visszaállítás (PITR)
-- A PITR a funkció használatakor az ugyanezzel a konfigurációval, mint a kiszolgáló-alapú, az új kiszolgáló jön létre.
+### <a name="restoring-a-server"></a>Kiszolgáló visszaállítása
+- A PITR a funkció használata esetén az azonos árképzési szint konfigurációval, mint a kiszolgáló-alapú, az új kiszolgáló jön létre.
+- A visszaállítás során létrehozott új kiszolgáló nem rendelkezik a tűzfalszabályt, amely létezett az eredeti kiszolgálón. Tűzfalszabályok kell lennie külön beállítja azt az új kiszolgáló számára.
 - Törölt kiszolgáló visszaállítása nem támogatott.
 
 ## <a name="next-steps"></a>További lépések

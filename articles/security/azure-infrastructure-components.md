@@ -1,6 +1,6 @@
 ---
-title: Az Azure információk rendszerösszetevők és határok
-description: Ez a cikk a Microsoft Azure-architektúra és felügyeleti általános leírását tartalmazza.
+title: Az Azure information rendszerösszetevők és határok
+description: Ez a cikk a Microsoft Azure-architektúra és a felügyeleti általános leírása.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,102 +14,118 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 8db1dce5fcc56c229d1fdd746bafbd2fae2c9bad
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: b2e8ef232e1b25c7d000f4683830ff2e188047fb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102337"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186476"
 ---
-# <a name="azure-information-system-components-and-boundaries"></a>Az Azure információk rendszerösszetevők és határok
-Ez a cikk a Microsoft Azure-architektúra és felügyeleti általános leírását tartalmazza. A rendszer az Azure környezetben a következő hálózatok tevődik össze:
+# <a name="azure-information-system-components-and-boundaries"></a>Az Azure information rendszerösszetevők és határok
+Ez a cikk az Azure-architektúra és a felügyeleti általános leírása. A rendszer az Azure-környezet az alábbi hálózatok tevődik össze:
 
-- A Microsoft Azure éles hálózattól (Azure-hálózat)
-- Microsoft Corporate hálózaton (vállalati hálózat)
+- A Microsoft Azure éles hálózati környezetben (az Azure-hálózat)
+- A Microsoft vállalati hálózaton (vállalati hálózat)
 
-Külön informatikai csapata hozza létre a tevékenységek és karbantartás az Azure-hálózat és a vállalati hálózat hálózatok felelősek.
+Műveletek és karbantartás ezeket a hálózatokat felelős külön IT-csoportoknak.
 
-## <a name="azure-architecture"></a>Azure architektúra
-Microsoft Azure a felhő számítási platform és infrastruktúra létrehozása, telepítése, és kezelését alkalmazások és szolgáltatások a Microsoft által kezelt adatbázisok hálózaton keresztül. Az ügyfelek által megadott erőforrások számától függően a Azure virtuális gépek erőforrás igények alapján hoz létre. Futtassa a Microsoft Azure hipervizor, amely az a virtuális gépeken használja a felhőben, és nem érhető el a nyilvánosság számára.
+## <a name="azure-architecture"></a>Azure-architektúra
+Az Azure felhőalapú számítástechnikai platform és infrastruktúra létrehozását, telepítését, és kezelését alkalmazások és szolgáltatások adatközpontok hálózaton keresztül is. Ezek az adatközpontok a Microsoft felügyeli. A megadott erőforrások száma alapján, az Azure létrehozza a virtuális gépek (VM), erőforrás-igényei alapján. Ezek a virtuális gépek futtatását az Azure hipervizor, amely a felhőben, és nem érhető el a nyilvános.
 
-Minden Azure fizikai kiszolgáló-csomóponton nincs olyan Hipervizorra, amely közvetlenül a hardver felett fut. Hipervizor felosztja egy csomópont egy Vendég virtuális gépek (VM) változó számú. Minden csomópont is rendelkezik egy különös "Gyökér" virtuális gép, a gazda operációs Rendszerével futtató. A Windows tűzfal engedélyezve van minden egyes virtuális gépen. A csak nyitott és megcímezhető, belső vagy külső, portjait explicit módon definiálva az a szolgáltatásdefiníciós fájlból, az ügyfél által konfigurált portokat. Minden forgalom, és a lemezek és a hálózati hozzáférést a hipervizor és a gyökér operációs rendszer által közvetített.
+Minden Azure fizikai kiszolgáló-csomóponton nincs, amely közvetlenül a hardver felett fut hipervizoron. A hipervizor a Vendég virtuális gépek változó számú csomópont osztja fel. Minden egyes csomópontot egy legfelső szintű virtuális gép, amely a gazda operációs rendszer fut is tartalmaz. Windows tűzfal engedélyezve van az egyes virtuális Gépeken. Meghatározhatja, hogy mely portok címezhető úgy konfigurálja a szolgáltatásdefiníciós fájlban. Ezeket a portokat csak azok a nyitott és címezhetővé válnak, belsőleg és külsőleg. Az összes forgalom és a lemez és a hálózati hozzáférést a hipervizor és a gyökérszintű operációs rendszer által közvetített.
 
-Az állomás rétegben, a legújabb Windows Server testreszabott és a megerősített verziójának Azure virtuális gépeken. Microsoft Azure egy stripped-down verzióját használja, a Windows Server, amely csak a virtuális gépek gazdagépre szükséges összetevőket tartalmazza. Ez történik, a teljesítmény javítása érdekében, és a támadási felület csökkentése érdekében. A hipervizor, amely nem függ az operációs rendszer biztonsági gép határok érvényesíti.
+A gazdagép rétegben futtassa egy testre szabott és a megerősített verzióját a legújabb Windows Server Azure virtuális gépeken. Az Azure, amely csak virtuális gépek gazdagépre szükséges összetevőket tartalmazza a Windows Server olyan verzióját használja. Ez növeli a teljesítményt, és csökkenti a támadási felületet. Gép határokat a hipervizor, amely nem függ az operációs rendszer biztonsági tartat be.
 
-**Az Azure-kezelést úgy Hálóvezérlők (FCs)**: az Azure, a (paneleken/csomópontokat) fizikai kiszolgálókon futó virtuális gép "fürt" körülbelül 1000 vannak csoportosítva. A virtuális gépek egymástól függetlenül kiterjesztett és a redundáns platform szoftver összetevőt az FC kezeli.
+### <a name="azure-management-by-fabric-controllers"></a>Az Azure management by hálóvezérlők
 
-Minden egyes FC a fürt, és kiosztja a futó alkalmazások életciklusát felügyeli, és az ellenőrzése alatt a hardver állapotát figyeli. Végrehajtja a mindkét vegetatív műveletek, például a Virtuálisgép-példány megfelelő kiszolgálókon reincarnating, amikor meghatározza, hogy a kiszolgáló nem. Az FC telepítése, frissítése és alkalmazások kiterjesztése például alkalmazás-felügyeleti műveletek is végez.
+Az Azure-ban (panelek/csomópontokat) fizikai kiszolgálókon futó virtuális gépek fürtök körülbelül 1000 vannak csoportosítva. A virtuális gépek egymástól függetlenül kezeli a hálóvezérlő (FC) nevű horizontálisan felskálázott és redundáns platform szoftverösszetevő.
 
-A datacenter fürtök van osztva. Fürtök elkülöníteni az FC szintjén hibák, előfordulhat, hogy bizonyos hibák osztályok érintő kiszolgálók túl a fürt, amely akkor fordulhat elő. Egy adott Azure-fürttel átadott FCs az FC-fürt vannak csoportosítva.
+Minden egyes FC a fürt, és kiosztja a futó alkalmazások életciklusát felügyeli, és az ellenőrzése alatt a hardver állapotát figyeli. Autonóm mozgások műveletek, például a Virtuálisgép-példányok kifogástalan állapotú kiszolgálók reincarnating, ha azt állapítja meg, hogy a kiszolgáló nem futtatja. Az FC is végez az alkalmazás-felügyeleti műveletek, például a központi telepítése, frissítése és alkalmazások kiterjesztése.
 
-**Hardver készlet**: Azure hardver- és hálózati eszközökről lett előkészítve a rendszerindítási konfigurációs folyamat során, és részletes ismertetését lásd: a datacenter.xml konfigurációs fájlt. Bármely új hardver- és hálózati összetevők írja be az Azure éles környezetben a rendszerindítási konfigurációs folyamat után kell következnie. Az FC a teljes leltár datacenter.xml konfigurációs fájlban felsorolt felügyeletéért felelős.
+Az Adatközpont fürtök oszlik. Fürtök elkülönítése hibák az FC-szinten, és megakadályozza, hogy bizonyos osztályokat a hibák túl a fürt, amelyben történnek kiszolgálók érintő. FCs, amely egy adott Azure-fürtben kiszolgálása egy Szálcsatornás fürt vannak csoportosítva.
 
-**FC-felügyelet alatt álló operációs rendszer**: az operációs rendszer team Ez a témakör az operációs rendszer lemezképet a virtuális merevlemezek (VHD) formájában telepített összes gazdagép és Vendég virtuális gépek az Azure éles környezetben. Az operációs rendszer csapat hoz létre ezek "Base képek" egy automatizált offline létrehozási folyamat során. A kiinduló lemezkép az operációs rendszer a a kernel és egyéb alapvető összetevői rendelkezik lett módosítva, és az Azure környezetbe támogatására optimalizált egy verziója telepítve.
+### <a name="hardware-inventory"></a>Hardverleltár
 
-A háló által felügyelt operációsrendszer-lemezképek három típusa van:
+Az FC Azure hardver- és hálózati eszközöket leltárát előkészíti a rendszerindítási konfigurációs folyamat során. Minden olyan új hardver- és hálózati összetevők írja be az Azure éles környezetben a rendszerindítási konfigurációs eljárást kell követnie. Az FC feladata a teljes készlet datacenter.xml konfigurációs fájlban felsorolt kezelése.
 
-- Gazdagép operációs rendszer – az állomás operációs rendszere egy testreszabott állomás virtuális gépeken futó operációs rendszert
-- Az operációs rendszer natív – natív OS bérlők (például az Azure Storage) futó, amelynek nincs Generációazonosítón
-- Vendég operációs rendszer – a Vendég virtuális gépeken futó vendég operációs rendszer
+### <a name="fc-managed-operating-system-images"></a>FC-felügyelt operációsrendszer-lemezképek
 
-A gazdagép és a natív FC-felügyelet alatt álló operációs rendszerek használhatók a felhőben, és nincsenek nyilvánosan elérhető.
+Az operációs rendszer csapat lemezképet, a képernyőn a virtuális merevlemezek, az összes gazdagép és Vendég virtuális gépek az Azure éles környezetben üzembe helyezett biztosít. A csapat egy offline automatizált összeállítási folyamatból keresztül ezek alaplemezképek hoz létre. Az alap rendszerképet az operációs rendszer a a kernel és egyéb alapvető összetevői rendelkezik lett módosítva, és az Azure-környezet támogatására optimalizált verziója is.
 
-**Állomás és az operációs rendszer natív**: állomás operációs rendszer és az operációs rendszer natív megerősített operációsrendszer-lemezképek üzemeltető a háló ügynökök (be), és a számítási csomópont (fut, az első virtuális gép a csomóponton) és tárhely csomópontot. A használatának előnyeit optimalizált állomás képek talál, és a natív operációs rendszer, hogy csökkenti a támadási felületét API-k vagy nagy biztonsági kockázatot jelentenek, és növeli az operációs rendszer csökkentése nem használt összetevők által elérhetővé tett. Ilyen csökkenteni erőforrásigénnyel operációs rendszer csak az Azure szükséges összetevőket. Ez javítja a teljesítményt, és csökkenti a támadási felületet.
+Háló által felügyelt operációsrendszer-lemezképek három típusa van:
 
-**Vendég operációs rendszer**: Azure belső összetevőinek vendég operációs rendszer virtuális gépeken futó eltérően külső felhasználók Remote Desktop Protocol (RDP) futtatásához nincs lehetőség van. A referenciakonfiguráció konfigurációs beállításainak változtatásai halad át a módosítást, és felszabadíthatja a felügyeleti folyamat szükséges.
+- Gazdagép: Egy testreszabott operációs rendszert futtató virtuális gépek gazdagépen.
+- Natív: Egy natív operációs rendszert futtat, a bérlők számára (például Azure Storage). Ez az operációs rendszer nem rendelkezik minden olyan hipervizorra.
+- Vendég: A Vendég operációs rendszer, amely a Vendég virtuális gépeket.
+
+A gazdagép és a natív FC-felügyelt operációs rendszereket a felhőben való használatra készültek, és nem nyilvánosan elérhető-e.
+
+#### <a name="host-and-native-operating-systems"></a>Gazdagép és a natív operációs rendszerek
+
+Gazdagép és a natív a háló ügynökök működtetésére, és a egy számítási csomóponton (fut, az első virtuális gép a csomóponton) és a tárolási csomópontok futó megerősített operációsrendszer-lemezképeket. Állomás és a natív optimalizált alaplemezképek használatának előnye, hogy csökkenti a támadási API-k vagy a nem használt összetevők által elérhetővé tett. Ezek nagy biztonsági kockázatot jelentenek, és növelje az erőforrás-igényű, az operációs rendszer. Csökkentett erőforrás-igényű operációs rendszerek csak az Azure-bA szükséges összetevőket tartalmazza.
+
+#### <a name="guest-operating-system"></a>Vendég operációs rendszer
+
+A vendég operációs rendszer virtuális gépeken futó Azure belső összetevőket Remote Desktop Protocol futtatásához nincs lehetőség van. A referenciakonfiguráció konfigurációs beállításokhoz módosításokat kell haladjon végig a módosítás, és a kibocsátási folyamat.
 
 ## <a name="azure-datacenters"></a>Azure-adatközpontok
-A Microsoft felhőalapú infrastruktúra, valamint műveletek (MCIO) csapat felügyeli a Microsoft fizikai infrastruktúra és az Adatközpont létesítményekben az összes Microsoft online szolgáltatáshoz. MCIO felelős elsősorban belül az adatközpontokban a fizikai és környezeti vezérlők kezelése, valamint a kezelése és a támogató külső szegélyhálózati hálózati eszközök (a peremhálózati útválasztók és az Adatközpont útválasztókat). MCIO felelős is az Adatközpont állványok operációs rendszer minimális kiszolgálói hardvere beállítása. Az Azure-ral nincs közvetlen interakció rendelkeznek.
+A Microsoft felhő- és műveletek (MCIO) a fizikai infrastruktúra és az Adatközpont eszközökkel, a Microsoft online Services kezeli. MCIO felelős elsősorban az adatközpontokon belül a fizikai és környezeti vezérlők kezelése, valamint a kezelése és a külső szegélyhálózat-alapú hálózati eszközök (például a peremhálózati útválasztói és a datacenter útválasztók) támogatására. MCIO is feladata a minimális kiszolgálói operációs rendszer nélküli hardver az Adatközpont állványokra a beállítása. Nem Azure-ral való közvetlen kommunikáció az ügyfél rendelkezik.
 
-## <a name="service-management--service-teams"></a>Szolgáltatás-felügyelet & csoportokkal
-Támogatja az Azure-szolgáltatás a "Service csoportok" néven ismert mérnöki csoportokat kezeli. A csoportok egy Azure támogatása területe felelős. Minden csoport biztosítania kell egy mérnököt elérhető 24 x 7 vizsgálatához és a szolgáltatás hibáinak megoldásához. Csoportokkal, alapértelmezés szerint nincs fizikai érje el a hardvert, az Azure-ban működik.
+## <a name="service-management-and-service-teams"></a>A szolgáltatások felügyelete és csoportok
+Különböző mérnöki csoportok, csoportok, más néven a támogatást az Azure szolgáltatás kezelése. Minden egyes szolgáltatás csapat felelős Azure támogatása egy adott területre. Minden egyes szolgáltatás csapat vizsgálhatók és oldhatók meg a hibákat a szolgáltatásban elérhető 24 x 7 mérnökként kell tennie. Csoportokkal, alapértelmezés szerint nincs a hardvert, az Azure-ban működő fizikai hozzáférésre.
 
-Csoportok a következők:
+A csoportok a következők:
 
 - Alkalmazásplatform
 - Azure Active Directory
 - Azure Compute
-- Az Azure Net
+- Az Azure-háló
 - Mérnöki csapathoz Felhőszolgáltatások
-- ISSD: biztonsági
+- ISSD: biztonság
 - Multifactor Authentication (Többtényezős hitelesítés)
 - SQL Database
 - Storage
 
 ## <a name="types-of-users"></a>Felhasználók típusai
-Minden Azure belső felhasználók kategóriába sorolt, amely definiálja a hozzáférésüket ügyféladatokat (hozzáférés vagy nincs hozzáférése) bizalmassági szintű alkalmazott állapotuk rendelkeznek. Az alkalmazottak (vagy alvállalkozói) a Microsoft minősülnek belső felhasználók. Minden felhasználó külső felhasználók minősülnek. Az Azure-ba (engedélyezési engedély hitelesítési bekövetkezte után) a felhasználói jogosultságok az alábbi táblázat ismerteti:
+Az alkalmazottak (vagy alvállalkozók), a Microsoft kell tekinteni a belső felhasználók. Minden egyéb felhasználó külső felhasználók tekintendők. Minden Azure belső felhasználó rendelkezik, amely meghatározza a hozzáférése a vásárlói adatokhoz (hozzáférés vagy nincs hozzáférés) egy bizalmassági szintű kategorizált alkalmazott állapotukat. Az Azure-ba (engedélyezési engedély a hitelesítés végrehajtása után) a felhasználói jogosultságok az alábbi táblázat ismerteti:
 
-| Szerepkör | Belső vagy külső | Érzékenységi szint | Engedélyezett jogosultságok és a szerepkörökben elvégzett feladatok | Hozzáférés típusa
+| Szerepkör | Belső vagy külső | Érzékenységi szint | Engedélyezett jogosultságok és elvégzett feladatok | Hozzáférés típusa
 | --- | --- | --- | --- | --- |
-| Az Azure Datacenter visszafejtés | Belső | Nem lehet hozzáférni ügyféladatok | A helyszíni; a fizikai biztonság kezeléséhez Tartson őrjáratok mindkét az adatközpontban, és minden belépési pontot; figyelése Hajtsa végre a kíséreti szolgáltatások esetében bejövő és kimenő biztosíthat általános szolgáltatások (étkezési lehetőségek, tisztítás) vagy az informatikai munkahelyi; az adatközponton belül az egyes nem-bejelölve datacenter személyzet Tartson rendszeres figyelése és karbantartása hálózati hardver; Hajtsa végre az incidenskezelés és a javítás / csere munkahelyi segítségével számos különféle eszközre; Tartson rendszeres figyelése és karbantartása a fizikai hardverről a adatközpontokban; Hozzáférés az igény szerinti környezetet tulajdonság tulajdonosai. Képes a törvényszéki vizsgálatokat, naplózás a jelentést, és kötelező biztonsági képzés & házirend követelményeinek; megkövetelése Működési tulajdonjoga és kritikus fontosságú biztonsági eszközök, például a Képolvasók és a napló gyűjtemény karbantartása. | A környezet állandó hozzáférés |
-| A Microsoft Azure incidens osztályozás (gyors válasz mérnökök) | Belső | Felhasználói adatok | Infrastruktúra-műveletek, támogatást és Azure mérnöki csapat; közti kommunikáció felügyeletét Platform incidenseket, problémákat és szolgáltatáskérések osztályozhatja. | Csak az idő a hozzáférést a környezet - nem vevő rendszerek korlátozott állandó hozzáféréssel rendelkező |
-| A Microsoft Azure telepítési mérnökök | Belső | Felhasználói adatok | Hajtsa végre a központi telepítés/frissítés a webplatform-összetevők, szoftverek és ütemezett konfigurációs módosítások elősegítésére a Microsoft Azure. | Csak az idő a hozzáférést a környezet - nem vevő rendszerek korlátozott állandó hozzáféréssel rendelkező |
-| A Microsoft Azure kimaradás ügyfélszolgálathoz (bérlő) | Belső | Felhasználói adatok | Hibakeresés és platform kimaradások és hibák diagnosztizálása egyes számítási bérlők és a Microsoft Azure-fiókok; Hibák elemzése és kritikus javításokat meghajtó platform/ügyfélnek, meghajtó műszaki fejlesztései között támogatása. | Csak az idő a hozzáférést a környezet - nem vevő rendszerek korlátozott állandó hozzáféréssel rendelkező |
-| A Microsoft Azure élő webhelyet Engineers (figyelés mérnökök) & incidens | Belső | Felhasználói adatok | A felderítésére és diagnosztikai eszközökkel; platform állapotfigyelő kiküszöböléséhez kiszolgálófelügyeletért felelnek A kötet illesztőprogramok javítások meghajtó, kimaradások eredő elemek javítása, és kimaradás visszaállítási műveletek segítik. | Csak az idő a hozzáférést a környezet - nem vevő rendszerek korlátozott állandó hozzáféréssel rendelkező |
-|Microsoft Azure-ügyfelek | Külső | – | N/A | – |
+| Az Azure-adatközpont mérnök | Belső | Nincs hozzáférés a vásárlói adatokhoz | Kezelheti a helyszíni fizikai biztonságát. Tartson őrjáratok az Adatközpont-ból, és figyelheti az összes belépési pont. Általános szolgáltatások (például gyorsétkezés, vagy tisztítás) vagy az adatközponton belül informatikai munkahelyi személyzet kíséreti bA és az egyes adatközpont-ból nem törli. Végezhet rendszeres figyelése és karbantartása hálózati hardver. Incidensek kezelése és a javítás/csere munka elvégzéséhez különböző eszközök használatával. Végezhet rendszeres figyelése és karbantartása az adatközpontok fizikai hardver. Hozzáférés a lakástulajdonosok igény szerinti környezetet. Képes a törvényszéki vizsgálatokat végez, az incidensekkel kapcsolatos jelentéseket jelentkezzen és szükséges kötelező biztonsági képzés és a házirend követelményeinek. Működési tulajdonosi és a kritikus fontosságú eszközök, például a Képolvasók és naplógyűjtés karbantartását. | Állandó hozzáférést a környezethez. |
+| Az Azure incidens osztályozási (gyors válasz mérnökök) | Belső | Hozzáférés a vásárlói adatokhoz | MCIO, a támogatást és a mérnöki munkacsoportok közötti kommunikáció felügyeletét. Osztályozási platform incidenseket, a üzembe helyezési problémák és a szolgáltatáskéréseket. | Igény a hozzáférést a nem vevő rendszerek korlátozott állandó hozzáférést a környezet. |
+| Azure-beli mérnökök | Belső | Hozzáférés a vásárlói adatokhoz | Üzembe helyezése és frissítése a webplatform-összetevők, szoftverek és ütemezett konfigurációs módosítások Azure támogatásához. | Igény a hozzáférést a nem vevő rendszerek korlátozott állandó hozzáférést a környezet. |
+| Azure-ügyfél szolgáltatáskimaradás támogatási (bérlő) | Belső | Hozzáférés a vásárlói adatokhoz | Hibakeresés és a platform leállásainak és a hibák diagnosztizálása az egyes számítási bérlők és az Azure-fiókokon. Hibák elemzése. Kritikus javításokat meghajtó platform vagy az ügyfélnek, és technikai fejlesztései átívelő, támogatást. | Igény a hozzáférést a nem vevő rendszerek korlátozott állandó hozzáférést a környezet. |
+| (Figyelés mérnökök) élő webhelyet az Azure-mérnökök és incidens | Belső | Hozzáférés a vásárlói adatokhoz | Diagnosztizálásához és platform egészségügyi diagnosztikai eszközök használatával. Meghajtó a kötet illesztőprogramok esetén alkalmazott javítások, valamilyen okból kimaradás lép elemek javítása és szolgáltatáskimaradás helyreállítására szolgáló műveletek támogatásával segíti. | Igény a hozzáférést a nem vevő rendszerek korlátozott állandó hozzáférést a környezet. |
+|Az Azure-ügyfelek | Külső | – | N/A | – |
 
-Azure használja egyedi azonosítóként hitelesítéséhez a szervezeti felhasználók és a felhasználók (vagy szervezeti felhasználók nevében eljáró folyamatok) összes eszközök vagy eszközökre, amelyek az Azure környezetbe részei.
+Az Azure egyedi azonosítók használatával hitelesíti a szervezeti felhasználók és ügyfelek (vagy a szervezeti felhasználók nevében eljáró folyamatok). Ez vonatkozik az összes eszközre és az Azure-környezet részét képező eszközök.
 
-**A Microsoft Azure – belső hitelesítési**: Azure belső összetevői közötti kommunikáció a TLS-titkosítással védett. A legtöbb esetben az x.509 szabványú tanúsítványokban önaláírt. Kivételek tanúsítványokat használ, amely érhető el. az Azure-hálózatot kívül a kapcsolatok, valamint a FCs történik. FCs rendelkezik a hitelesítésszolgáltatói (CA) a megbízható legfelső szintű hitelesítésszolgáltató által támogatott Microsoft Certificate által kibocsátott tanúsítványokat. Ez lehetővé teszi, hogy könnyen tanúsítványváltást nyilvános kulcsok FC. FC nyilvános kulcsok ezenkívül a Microsoft fejlesztői eszközök használja, hogy a fejlesztők küldje el az új alkalmazás-lemezképek, ha azok titkosítottak FC nyilvános kulccsal rendelkező minden beágyazott titkos kulcsok védelmében.
+### <a name="azure-internal-authentication"></a>Az Azure belső hitelesítés
 
-**A Microsoft Azure hardver Device Authentication**: az FC fenn használt hitelesítő adatokat (kulcsok és/vagy jelszó) hitelesítse magát a különböző hardvereszközök az ellenőrzése alatt. Szállítására, megőrzése, és használja a hitelesítő adatokat használja a rendszer az Azure a fejlesztők, a rendszergazdák és a biztonsági mentési szolgáltatások/személyzet hozzáférés megakadályozása bizalmas, bizalmas vagy titkos információk célja.
+Az Azure belső összetevői közötti kommunikáció a TLS-titkosítás védi. A legtöbb esetben önaláírt X.509-tanúsítványokat. Kivételt,-kapcsolatokkal, amelyek az Azure-hálózaton kívülről elérhető tanúsítványok, az FCs a tanúsítványokat is. FCs van egy Microsoft-Certificate a hitelesítésszolgáltató (CA), amely használatával a megbízható legfelső szintű hitelesítésszolgáltató által kibocsátott tanúsítványokat. Ez lehetővé teszi a nyilvános kulcsok FC egyszerűen kell leváltani. Ezenkívül a Microsoft fejlesztői eszközök FC nyilvános kulcsok használata. Amikor a fejlesztők új alkalmazás-lemezképek, rendszer titkosítja a képeket egy FC nyilvános kulccsal rendelkező beágyazott titkos kulcsok védelme érdekében.
 
-A titkosítás nyilvános kulccsal FC beállítása és az FC újrakonfigurálása a FC fő identitása alapján alkalommal hálózati hardvereszközök eléréséhez használt hitelesítő adatok átvitele. Hitelesítő adatokat lekérni, és az FC visszafejteni, amikor jogcímadatokat őket.
+### <a name="azure-hardware-device-authentication"></a>Azure-beli hardveres eszközhitelesítés
 
-**Hálózati eszközök**: hálózati szolgáltatási fiókok vannak konfigurálva, hogy a hálózati eszközök (útválasztók, kapcsolók és terheléselosztók) hitelesítést a Microsoft Azure-ügyfél engedélyezése az Azure-hálózat csoport által.
+Az FC fenntart egy készletét használt hitelesítő adatokat (kulcsok és/vagy jelszavakat) önmaga hitelesítéséhez a különböző hardvereszközök az ellenőrzése alatt. A Microsoft ezekkel a hitelesítő adatokkal való hozzáférés letiltása a rendszert használja. Pontosabban az átviteli adatmegőrzés és használja ezeket az adatokat szolgál, hogy az Azure-fejlesztők számára, a rendszergazdák és a biztonsági mentési szolgáltatások és személyek hozzáférési bizalmas, bizalmas vagy titkos információkhoz.
+
+A Microsoft az FC fő identitás nyilvános kulcs alapján titkosítást használ. Ez akkor történik, FC beállítása és az FC újrakonfigurálás időpontokban, a hálózati hardvereszközöket eléréséhez használt hitelesítő adatok átviteléhez. Az FC van szüksége a hitelesítő adatokat, amikor az FC kérdezi le, és visszafejti őket.
+
+### <a name="network-devices"></a>Hálózati eszközök
+
+Az Azure hálózatkezelésért felelős csapat úgy konfigurálja a hálózati szolgáltatás fiókok egy Azure-ügyfél hálózati eszközökre (útválasztók, kapcsolók és terheléselosztók) hitelesítést.
 
 ## <a name="secure-service-administration"></a>Biztonságos felügyeleti szolgáltatás
-A Microsoft Azure operations csoporthoz kell használnia a biztonságos felügyeleti munkaállomás (fűrészek; ügyfelek is hasonló a vezérlőelemeket kell megvalósítani a Privileged Access munkaállomásokon vagy láb). A FŰRÉSZ megoldás, az neves ajánlott külön rendszergazdai és felhasználói fiókok használata a felügyeleti csoporthoz való kiterjesztését. Ez az eljárás egy külön-külön hozzárendelt rendszergazdai fiókot, amely a felhasználó általános jogú felhasználói fiók nem használja. LÁTOTT buildek az adott fiók elválasztási gyakorlat, adja meg a megbízható munkaállomás a kényes fiókok.
+Az Azure műveletei csoporthoz kell használnia a biztonságos rendszergazdai munkaállomások (saw). Ügyfeleink az emelt hozzáférési szintű munkaállomások segítségével Megvalósíthat hasonló szabályozza. Az saw a felügyeleti munkatársak segítségével egy külön-külön hozzárendelt rendszergazdai fiók, amely elkülönül az a felhasználó általános jogú felhasználói fiókot. A SAW épül, amely a fiók elkülönítése eljárás megbízható munkaállomásokat azáltal, hogy ezeket a bizalmas fiókok esetében.
 
 ## <a name="next-steps"></a>További lépések
-Microsoft funkciója az Azure-infrastruktúra védelméhez kapcsolatos további információkért lásd:
+A Microsoft nem biztonságossá tétele az Azure-infrastruktúra kapcsolatos további információkért lásd:
 
-- [Az Azure létesítményekben, a helyszíni és a fizikai biztonság](azure-physical-security.md)
+- [Azure létesítményekben, a helyi és a fizikai biztonság](azure-physical-security.md)
 - [Azure-infrastruktúra rendelkezésre állása](azure-infrastructure-availability.md)
 - [Az Azure hálózati architektúra](azure-infrastructure-network.md)
 - [Az Azure éles hálózati környezetben](azure-production-network.md)
-- [A Microsoft Azure SQL Database biztonsági funkciói](azure-infrastructure-sql.md)
-- [Az Azure éles műveletek és kezelése](azure-infrastructure-operations.md)
-- [Azure-infrastruktúra megfigyelése](azure-infrastructure-monitoring.md)
-- [Azure-infrastruktúra integritása](azure-infrastructure-integrity.md)
-- [Az Azure-ban felhasználói adatok védelme](azure-protection-of-customer-data.md)
+- [Az Azure SQL Database biztonsági funkciók](azure-infrastructure-sql.md)
+- [Azure éles környezetben való üzemeltetés és a felügyelet](azure-infrastructure-operations.md)
+- [Azure-infrastruktúra figyelése](azure-infrastructure-monitoring.md)
+- [Az Azure infrastruktúra-integritás](azure-infrastructure-integrity.md)
+- [Az Azure vásárlói adatok védelmére](azure-protection-of-customer-data.md)

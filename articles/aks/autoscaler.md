@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 629659a3a5090bae987be77637a574fcbe0abe98
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 4f8df8e7004ca3cee832b6230dc153b21e2a6c18
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163946"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186713"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Méretező fürt az Azure Kubernetes Service (AKS) – előzetes verzió
 
@@ -32,7 +32,19 @@ Jelen dokumentum céljából feltételezzük, hogy az RBAC-kompatibilis AKS-für
 
 ## <a name="gather-information"></a>Információgyűjtés
 
-Az alábbi táblázat mindent megtalál, meg kell adnia a méretező-definícióban.
+Az alábbi listában jeleníti meg mindent megtalál, meg kell adnia a méretező-definícióban.
+
+- *Előfizetés-azonosító*: megfelelő ehhez a fürthöz használt előfizetés-azonosító
+- *Erőforráscsoport-nevet* : a fürthöz tartozó erőforráscsoport neve 
+- *Fürt neve*: a fürt neve
+- *Ügyfél-azonosító*: lépés generálása engedélyt kapott Alkalmazásazonosító
+- *Titkos Ügyfélkód*: alkalmazás titkos kulcs generálása lépés engedélyt kapott
+- *Bérlőazonosító*: a bérlő (fióktulajdonos) azonosítója
+- *Csomópont erőforráscsoport*: az ügynök a fürt csomópontjain tartalmazó erőforráscsoport neve
+- *Készlet csomópontnév*: a csomópont neve tárolókészlet, szeretné, a méretezési csoport
+- *Csomópontok minimális száma*: a fürtben található csomópontok minimális száma
+- *Csomópontok maximális száma*: a fürtben található csomópontok maximális száma
+- *Virtuálisgép-típusra*: a Kubernetes-fürt létrehozásához használt szolgáltatás
 
 Kérje le a saját előfizetés-Azonosítójára: 
 
@@ -92,18 +104,7 @@ QUtTCg==
 ```
 
 ## <a name="create-secret"></a>Titkos kód létrehozása
-Ezen adatok alapján hozza létre a központi telepítés az értékek, mint például az előző lépésben található titkos kulcs:
-
-- ClientID: `<base64-encoded-client-id>`
-- ClientSecret: `<base64-encoded-client-secret>`
-- Erőforráscsoport: `<base64-encoded-resource-group>` (kisbetűket használni)
-- Előfizetés-azonosító: `<base64-encode-subscription-id>`
-- Bérlő azonosítója: `<base64-encoded-tenant-id>`
-- VMType: `<base64-encoded-vm-type>`
-- ClusterName: `<base64-encoded-clustername>`
-- NodeResourceGroup: `<base64-encoded-node-resource-group>` (használja a címke értéket szó. A kis-és nagybetűket)
-
-a következő formátumban:
+Ezen adatok alapján hozzon létre egy titkos kulcsot, a központi telepítés használatával értékeket az előző lépést a következő formátumban:
 
 ```yaml
 ---

@@ -1,7 +1,7 @@
 ---
-title: Felhasználói adatok beszélgetés tanuló - kognitív Microsoft-szolgáltatások kezelése |} Microsoft Docs
+title: Beszélgetéstanuló – a Microsoft Cognitive Services a felhasználói adatok kezelése |} A Microsoft Docs
 titleSuffix: Azure
-description: Megtudhatja, hogyan kezelheti a felhasználói adatok beszélgetés tanuló.
+description: Ismerje meg, hogyan kezelheti a felhasználói adatok Beszélgetéstanuló.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,36 +10,36 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8d42f903559a1e07b42ded33972be4b552f21b5e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f9de4377857188a8cf483321654fb857e428c7f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348602"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171639"
 ---
 # <a name="managing-user-data"></a>Felhasználói adatok kezelése
 
-Ez a lap ismerteti, hogy mi a beszélgetés tanuló felhőszolgáltatás naplózza az során párbeszédpanelek a végfelhasználókkal.  Azt is ismerteti, hogyan beszélgetés tanuló naplók társítandó felhasználói azonosítók, így beolvasása, vagy egy adott felhasználóhoz társított összes naplófájlt törlése.
+Ezen a lapon azt ismerteti, mi a Beszélgetéstanuló felhőszolgáltatás naplózzák végző párbeszédpaneleket a végfelhasználók számára.  Emellett bemutatja, hogyan lehet Beszélgetéstanuló naplók felhasználói azonosítóval, társítaná, beolvasása, vagy egy adott felhasználóhoz társított összes napló törlése.
 
 ## <a name="overview-of-end-user-data-logging"></a>Végfelhasználói adatok naplózásának áttekintése
 
-Alapértelmezés szerint a beszélgetés tanuló felhőszolgáltatás naplózza a végfelhasználók és a botot közötti kapcsolat.  Ezek a naplók fontosak a botot engedélyezése azonosíthatja az esetekben, amikor a botot kinyerni a megfelelő entitás vagy a hibás műveletet kijelölt javítására.  Az "Napló párbeszédpanel" weblapra a felhasználói felület, korrigálás, és a javított párbeszédpanel tárolása egy új vonat párbeszédpanelt, majd javítható, ezeket a hibákat. További információkért tekintse meg az a "Napló párbeszédpanelek."
+Beszélgetéstanuló felhőszolgáltatás alapértelmezés szerint naplózza a végfelhasználók és a robot közötti interakciókat.  Ezek a naplók fontosak a robot, lehetővé téve a esetekben, amikor a robot ki kell olvasni az helytelen entitás, vagy a helytelen művelet kiválasztott azonosítása javítására.  Ezek a hibák majd az "Log-párbeszédpanelekhez" weblapra a felhasználói felület, korrigálás és a javított párbeszédpanel tárolásához, egy tanítási párbeszédpanel való importálásával javítható. További információkért lásd az oktatóanyag a "Log párbeszédpanelek."
 
 ## <a name="how-to-disable-logging"></a>Naplózás letiltása
 
-Azt is szabályozhatja, hogy a végfelhasználók beszélgetést vannak-e a beszélgetés tanuló alkalmazás "Beállítások" lapon.  Nincs olyan be a "Napló beszélgetéseket."  Ez a jelölőnégyzet jelölésének törlése után a végfelhasználók beszélgetést nem naplózza a rendszer.
+Szabályozhatja, hogy vannak-e a végfelhasználókkal beszélgetések a "Beállítások" lapon a Beszélgetéstanuló modell.  Van egy jelölőnégyzetet a "Beszélgetés Log."  A jelölőnégyzet jelölésének törlése, a végfelhasználóknak beszélgetéseinek a rendszer nem naplózza.
 
 ## <a name="what-is-logged"></a>Mi a naplózására akkor kerül sor 
 
-A napló párbeszédpanelek beszélgetés tanuló minden kapcsolja a felhasználói bevitel, entitás értékek, kijelölt műveletek és időbélyegeket tárolja.  Ezek a naplók tárolása egy ideig, és elveti a (lásd a súgó lapjára "határokat és alapértelmezett értéke" részletei).  
+A napló párbeszédpanelek Beszélgetéstanuló egyes kapcsolja be a felhasználói bevitel, entitásértékek, kijelölt műveletek és időbélyegek tárolja.  Ezek a naplók tárolása egy ideig, és utána eldobja (lásd a következő súgóoldalt az "alapértelmezett értéket, és határokat" részletei).  
 
-Beszélgetés tanuló minden naplózott párbeszédpanel egyedi Azonosítót hoz létre.  Beszélgetés tanuló does *nem* egy felhasználói azonosítót, a naplózott párbeszédek tárolja.  
+Beszélgetéstanuló minden naplózott párbeszédpanel egyedi Azonosítót hoz létre.  Beszélgetéstanuló does *nem* egy felhasználói azonosítót, a naplózott párbeszédek tárolja.  
 
-## <a name="associating-logged-dialogs-with-a-user-id"></a>Párbeszédpanelek társítása naplózza a felhasználói azonosítóval
+## <a name="associating-logged-dialogs-with-a-user-id"></a>Párbeszédpanelek társítása naplózza a felhasználói azonosító
 
-Gyakran fontos, hogy rendelje hozzá a naplózott párbeszédpanelek, azonosító: a felhasználó – például, hogy tudják lekérni, illetve törölhet naplózott párbeszédpanelek egy adott felhasználó.  Beszélgetés tanuló nem tárolja a felhasználói azonosítót, mivel ezt a társítást kell megőrizni a fejlesztői kóddal.  
+Gyakran fontos lehet például naplózott párbeszédpanelek társítása a felhasználó azonosítója, a--, beolvasását és törlését a naplózott párbeszédpanelek egy adott felhasználó lehessen.  Beszélgetéstanuló nem tárolja a felhasználói azonosító, mivel ezt a társítást kell a fejlesztői kóddal kell tartani.  
 
-Ez a leképezés létrehozásához az azonosító, a naplózott párbeszédpanel lekéréséhez `EntityDetectionCallback`; majd a botot tárolóban, a felhasználói Azonosítót és az a naplózott párbeszédpanel társítását tárolja.  
+Ezen leképezés létrehozásához, szerezze be a naplózott párbeszédpanel a azonosítója `EntityDetectionCallback`; majd a bot Storage, a felhasználói Azonosítót és a naplózott párbeszédpanel közötti társítás tárolja.  
 
 ```
 cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManager): Promise<void> => {
@@ -63,62 +63,63 @@ cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManag
 })
 ```
 
-## <a name="headers-for-http-calls"></a>Fejlécek HTTP-hívások
+## <a name="headers-for-http-calls"></a>HTTP-hívásokhoz fejlécek
 
-Minden egyes a HTTP-hívásokat az alábbi adja hozzá a következő fejléc:
+Az egyes alábbi HTTP-hívások a következő fejléc hozzáadása:
 
 ```
 Ocp-Apim-Subscription-Key=<LUIS_AUTHORING_KEY>
 ```
 
-Ha `<LUIS_AUTHORING_KEY>` a szerzői műveletekhez a beszélgetés tanuló alkalmazások elérésére használt kulcs LUIS.
+ahol `<LUIS_AUTHORING_KEY>` a LUIS a beszélgetés Learner alkalmazások eléréséhez használt kulcs létrehozási.
 
-## <a name="how-to-obtain-raw-data-for-a-logged-dialog"></a>Egy naplózott párbeszédpanel nyers adatok beszerzése
+## <a name="how-to-obtain-raw-data-for-a-logged-dialog"></a>Egy naplózott párbeszédpanel szükséges nyers adatok beszerzése
 
-A napló párbeszédpanel a nyers adatok beszerzéséhez a HTTP-hívást használhatja:
+A napló párbeszédpanel a nyers adatok megszerzéséhez használhatja a HTTP-hívás:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Ha `<appId>` a GUID beszélgetés tanuló alkalmazás, és `<logDialgoId>` szeretné beolvasni a naplófájl-párbeszédpanel azonosítója.  
+Ahol `<appId>` ez Beszélgetéstanuló modell GUID azonosítója és `<logDialgoId>` a lekérni kívánt napló párbeszédpanel azonosítója.  
 
-Vegye figyelembe, hogy napló párbeszédpanelek előfordulhat, hogy lehet a fejlesztőnek szerkeszthetik, párbeszédpanelek betanítása majd tárolva.  Ebben az esetben, ha a beszélgetés tanuló a "forrás" napló párbeszédpanel megnyitása a vonat párbeszédpanel Azonosítóját tárolja.  További egy tanítási párbeszédpanelt is lehet "elágazó" a felhasználói felületen; Ha a vonat párbeszédpanelnek egy forrásoldali napló párbeszédpanel azonosítója, majd a vonat párbeszédpanelről ágak lesz megjelölve napló párbeszédpanel azonos azonosítóval.
+> [!NOTE]
+> Napló párbeszédpanelek előfordulhat, hogy a fejlesztő által szerkesztett, és tárolja, a párbeszédpanelek betanításához.  Ha ezzel végzett, Beszélgetéstanuló tárolja a "forrás" log párbeszédpanel a vonat párbeszédpanel azonosítója.  További egy tanítási párbeszédpanel "elágaztathatók" a felhasználói felületen; Ha egy train párbeszédpanel egy forrásoldali Naplóazonosító párbeszédpanelen, majd train párbeszédablakból ágak lesznek megjelölve log párbeszédpanel azonos azonosítóval.
 
-Szerezze be az összes vonat párbeszédpanel, amely napló párbeszédpanel származik, kövesse az alábbi lépéseket.
+Összes train párbeszédpanel, amely egy naplót párbeszédpanel származik beszerzéséhez kövesse az alábbi lépéseket.
 
-Első lépésként lekéri az összes vonat párbeszédpanel:
+Először kérje le az összes train párbeszédpanel:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialogs
 ```
 
-Ha `<appId>` beszélgetés tanuló alkalmazás GUID azonosítója.  
+Ahol `<appId>` a Beszélgetéstanuló modell GUID azonosítója.  
 
-Ez visszaad minden vonat párbeszédpanelek.  Keresés a listában, a társított `sourceLogDialogId`, és jegyezze fel a társított `trainDialogId`. 
+Ez visszaadja az összes train párbeszédpanel.  Keresés a listában, a társított `sourceLogDialogId`, és jegyezze fel a társított `trainDialogId`. 
 
-Egyetlen train-azonosító szerint párbeszédpanel:
+Egyetlen vonat azonosító alapján párbeszédpanelen:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Ha `<appId>` a GUID beszélgetés tanuló alkalmazás, és `<trainDialogId>` szeretné beolvasni vonat párbeszédpanel azonosítója.  
+Ahol `<appId>` ez Beszélgetéstanuló modell GUID azonosítója és `<trainDialogId>` a lekérni kívánt train párbeszédpanel azonosítója.  
 
 ## <a name="how-to-delete-a-logged-dialog"></a>Egy naplózott párbeszédpanel törlése
 
-Szeretné törölni a megadott Azonosítóval napló párbeszédpanel, ha a HTTP-hívást használhatja:
+Ha egy napló párbeszédpanelen megadott Azonosítóval törölni kívánt, használhatja a HTTP-hívás:
 
 ```
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Ha `<appId>` a GUID beszélgetés tanuló alkalmazás, és `<logDialogId>` a törölni kívánt napló párbeszédpanel azonosítója. 
+Ahol `<appId>` ez Beszélgetéstanuló modell GUID azonosítója és `<logDialogId>` a törölni kívánt napló párbeszédpanel azonosítója. 
 
-Ha törli a megadott Azonosítóval vonat párbeszédablak, használhatja a HTTP-hívás:
+Ha szeretné törölni a megadott Azonosítóval train párbeszédpanel, használhatja a HTTP-hívás:
 
 ```
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Ha `<appId>` a GUID beszélgetés tanuló alkalmazás, és `<trainDialogId>` a törölni kívánt vonat párbeszédpanel azonosítója. 
+Ahol `<appId>` ez Beszélgetéstanuló modell GUID azonosítója és `<trainDialogId>` a törölni kívánt train párbeszédpanel azonosítója. 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: elioda
-ms.openlocfilehash: b553da54cd8ce63638fc52dd078bb517a1f9e713
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: f335ffae153893a39312326738ee4188c3756ff4
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34634658"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185475"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hubhoz az MQTT protokoll használatával kommunikálnak.
 
@@ -79,7 +79,9 @@ Ha egy eszköz nem tudja használni az eszközoldali SDK-k, továbbra is csatlak
 
   SAS-tokeneket kapcsolatos további információkért lásd: az eszköz szakaszában [használata az IoT Hub biztonsági tokenek][lnk-sas-tokens].
 
-  Ha teszteli, használhatja a [device explorer] [ lnk-device-explorer] eszköz gyorsan létrehozhat egy SAS-jogkivonatot is másolja és illessze be a saját kódját:
+  Ha teszteli, használhatja a [Device Explorer] [ lnk-device-explorer] eszközzel vagy a platformfüggetlen [Azure IoT-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) gyorsan létrehozhat egy SAS-jogkivonatát, másolja, és illessze be a saját kódját:
+
+A Device Explorer:
 
   1. Nyissa meg a **felügyeleti** lapján **Device Explorer**.
   2. Kattintson a **SAS-Token** (jobb felső).
@@ -93,6 +95,13 @@ Ha egy eszköz nem tudja használni az eszközoldali SDK-k, továbbra is csatlak
      Ez a token adatokként a részét a **jelszó** MQTT érdemesebb a mező:
 
      `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
+     
+Az Azure IoT-eszközkészlet:
+
+  1. Bontsa ki a **AZURE IOT HUB-eszközök** lapon, a Visual Studio Code bal alsó sarkában.
+  2. Kattintson a jobb gombbal az eszközt, és válassza ki **készítése a SAS-Token eszköz**.
+  3. Állítsa be **lejárati idő** nyomja le az "Enter" billentyűt.
+  4. A SAS-jogkivonatát, és a vágólapra másolva.
 
 MQTT csatlakoztatása és leválasztása a csomagok, az IoT Hub kiad egy eseményt a a **Működésfigyelés** csatorna. Ez az esemény rendelkezik, amelyek segítségével a kapcsolati hibák elhárításához további információt.
 

@@ -1,9 +1,9 @@
 ---
-title: Azure DNS-sel más Azure-szolgáltatásokkal |} Microsoft Docs
-description: Azure DNS használatával oldja meg a nevet az egyéb Azure-szolgáltatások ismertetése
+title: Azure DNS használata más Azure-szolgáltatások |} A Microsoft Docs
+description: Az Azure DNS használatával oldja meg a nevet más Azure-szolgáltatások ismertetése
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 tags: azure dns
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
-ms.author: kumud
-ms.openlocfilehash: 6d052bc82c35aa3f2fdf5b5820e3901bd5c4080d
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: victorh
+ms.openlocfilehash: 2f5ff425eadc4572f5e109f503c57969ab310f6b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
-ms.locfileid: "25989843"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171806"
 ---
-# <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS működése más Azure-szolgáltatásokkal
+# <a name="how-azure-dns-works-with-other-azure-services"></a>Az Azure DNS más Azure-szolgáltatások működése
 
-Az Azure DNS egy olyan üzemeltetett DNS felügyeleti és name névfeloldási szolgáltatás. Ez lehetővé teszi, hogy az egyéb alkalmazások és szolgáltatások telepítése a nyilvános DNS-nevek létrehozása az Azure-ban. Az egyéni tartomány létrehozása az Azure-szolgáltatások nevét más dolga, mint a szolgáltatás a megfelelő típusú rekord hozzáadása.
+Az Azure DNS szolgáltatása egy üzemeltetett DNS felügyeleti és a név feloldása. Ez lehetővé teszi, hogy az egyéb alkalmazások és szolgáltatások telepítése a nyilvános DNS-nevek létrehozása az Azure-ban. Az egyéni tartomány létrehozása egy Azure-szolgáltatás nevét az szúrni a szolgáltatás megfelelő típusú rekord.
 
-* Dinamikusan kiosztott IP-címeket létre kell hoznia egy DNS CNAME-rekordot, amely a DNS-neve, amely a szolgáltatás számára létrehozott Azure van leképezve. DNS-szabványokból, hogy az egy olyan CNAME rekordot a zóna felső pontja.
-* Statikusan lefoglalt IP-címekhez, bármely név használatával DNS A rekordot hozhat létre például egy *csupasz tartomány* nevű zóna tetején.
+* A dinamikusan kiosztott IP-címek létre kell hoznia egy DNS CNAME-rekordot, amely a DNS-név, amely a szolgáltatás számára létrehozott Azure van leképezve. DNS-szabványok megakadályozzák a CNAME rekord a zóna felső pontja használatával.
+* A statikusan kiosztott IP-címek, a DNS a-rekord bármely név használatával hozhat létre például egy *csupasz tartománynévnek* neve, a zóna legfelső pontján.
 
-Az alábbi táblázat ismerteti a támogatott típusok különböző Azure-szolgáltatásokat is használható. Ahogy látja, ebből a táblázatból, Azure DNS-ben csak támogatja DNS-rekordok internetre irányuló hálózati erőforrásokhoz. Az Azure DNS névfeloldás belső, személyes címek nem használható.
+Az alábbi táblázat ismerteti a támogatott bejegyzéstípusokat, különböző Azure-szolgáltatások is használható. Amint láthatja, ebből a táblázatból, az Azure DNS DNS-rekordok csak internetkapcsolattal rendelkező hálózati erőforrások támogatja. Az Azure DNS nem használható belső, saját címek névfeloldásához.
 
 | Azure-szolgáltatás | Hálózati adapter | Leírás |
 | --- | --- | --- |
-| Application Gateway |[Előtérbeli nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |A DNS A vagy CNAME rekordot hozhat létre. |
-| Load Balancer |[Előtérbeli nyilvános IP-cím](dns-custom-domain.md#public-ip-address)  |A DNS A vagy CNAME rekordot hozhat létre. Terheléselosztó lehet dinamikusan hozzárendelt IPv6 nyilvános IP-címet. Ezért az IPv6-címet egy olyan CNAME rekordot kell létrehoznia. |
-| Traffic Manager |Nyilvános neve |Csak létrehozhat egy olyan CNAME REKORDOT, amely a Traffic Manager-profil rendelt trafficmanager.net neve van leképezve. További információkért lásd: [Traffic Manager-hogyan működik](../traffic-manager/traffic-manager-overview.md#traffic-manager-example). |
-| Felhőszolgáltatás |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Statikusan lefoglalt IP-címet, a DNS A rekordot hozhat létre. Dinamikusan kiosztott IP-címeket, létre kell hoznia egy CNAME rekordot, amely leképezhető a *cloudapp.net* nevét.|
-| App Service | [Külső IP](dns-custom-domain.md#app-service-web-apps) |A külső IP-címek DNS A rekordot hozhat létre. Máskülönben hozzon létre egy CNAME rekordot, amely a azurewebsites.net neve van leképezve. További információkért lásd: [egy egyéni tartománynevet hozzárendelése az Azure-alkalmazás](../app-service/app-service-web-tutorial-custom-domain.md) |
-| Erőforrás-kezelő virtuális gépek |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Erőforrás-kezelő virtuális gépek nyilvános IP-címek is rendelkezik. Nyilvános IP-címek egy virtuális gép is lehet a terheléselosztó mögött. DNS A vagy CNAME rekordot a nyilvános cím hozhat létre. Az egyéni nevet a VIP-nek a terheléselosztón megkerülésére használható. |
-| A klasszikus virtuális gépeket |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Klasszikus virtuális gépeinek létrehozása a PowerShell használatával, vagy a CLI (dinamikus vagy statikus fenntartott) virtuális címek konfigurálhatók. Vagy is létrehozhat egy DNS CNAME rekord, illetve. |
+| Application Gateway |[Előtérbeli nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |A DNS A vagy CNAME rekordot is létrehozhat. |
+| Load Balancer |[Előtérbeli nyilvános IP-cím](dns-custom-domain.md#public-ip-address)  |A DNS A vagy CNAME rekordot is létrehozhat. Load Balancer dinamikusan hozzárendelt IPv6-alapú nyilvános IP-cím lehet. Ezért létre kell hoznia egy CNAME rekord, egy IPv6-cím. |
+| Traffic Manager |Nyilvános neve |Csak hozhat létre egy CNAME REKORDOT, amely leképezi a Traffic Manager-profilhoz rendelt trafficmanager.net nevét. További információkért lásd: [működik, hogy a Traffic Manager](../traffic-manager/traffic-manager-overview.md#traffic-manager-example). |
+| Felhőszolgáltatás |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |A statikusan kiosztott IP-címek a DNS a-rekord is létrehozhat. A dinamikusan kiosztott IP-címek, létre kell hoznia egy CNAME rekordot, amely leképezi a *cloudapp.net* nevét.|
+| App Service | [Külső IP](dns-custom-domain.md#app-service-web-apps) |Külső IP-cím létrehozhat egy DNS a-rekord. Ellenkező esetben létre kell hoznia egy CNAME-rekordot, amely leképezi a azurewebsites.net nevét. További információkért lásd: [egy egyéni tartománynév hozzárendelése egy Azure-alkalmazáshoz](../app-service/app-service-web-tutorial-custom-domain.md) |
+| Resource Manager virtuális gépek |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Resource Manager virtuális gépek nyilvános IP-cím lehet. Nyilvános IP-címmel rendelkező virtuális gép is lehet egy terheléselosztó mögé. Létrehozhat egy DNS-beli A vagy CNAME rekordot a nyilvános cím. Az egyéni nevet a VIP-címet a terheléselosztó megkerülésére használható. |
+| A klasszikus virtuális gépeket |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Klasszikus virtuális gépeket létrehozni a PowerShell használatával, vagy a parancssori felület is konfigurálhatók, dinamikus vagy statikus (fenntartott) virtuális cím. Létrehozhat egy DNS CNAME rekord vagy egy rekordot, jelölik. |

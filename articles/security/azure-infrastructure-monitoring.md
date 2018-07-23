@@ -1,6 +1,6 @@
 ---
-title: Azure-infrastruktúra megfigyelése
-description: A cikk ismerteti az Azure éles hálózati környezetben a figyelését.
+title: Azure-infrastruktúra figyelése
+description: Ez a cikk ismerteti az Azure éles hálózati környezetben figyelését.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 17e7183ff56725462dc43cba21db418a86d86b51
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 59f54487d89aee199e35e741ac4683d4784818a0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102341"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172483"
 ---
-# <a name="monitoring-of-azure-infrastructure"></a>Azure-infrastruktúra megfigyelése   
+# <a name="azure-infrastructure-monitoring"></a>Azure-infrastruktúra figyelése   
 
-## <a name="configuration-and-change-management"></a>Konfigurációs és a változáskezeléshez
-Microsoft Azure ellenőrzi, és frissíti a konfigurációs beállításokat és az eredeti hardveres, szoftveres és hálózati eszközök beállításait évente. Módosítások fejlesztett, tesztelt, és az éles környezetben érkező fejlesztési vagy tesztelési környezetben előtt jóvá.
+## <a name="configuration-and-change-management"></a>Konfiguráció és a változáskezeléshez
+Az Azure ellenőrzi, és frissíti a konfigurációs beállításokat és a hardveres, szoftveres és hálózati eszközök alapkonfigurációkhoz évente. Módosítások vannak fejlesztett, tesztelését és jóváhagyott fejlesztési és/vagy tesztelési környezetből éles környezetben megadása előtt.
 
-Az Azure-alapú szolgáltatások számára szükséges alapterv konfigurációkat van felül az Azure biztonsági és megfelelőségi csoport és a csoportokat. A service csapatának felülvizsgálati tesztelése előtt az éles szolgáltatás részét képezi.
+Az Azure-alapú szolgáltatások számára szükséges alapkonfigurációkhoz nyilvánosan lektorálhatók csoportokat és az Azure biztonsági és megfelelőségi csapata által. A szolgáltatások csapat vizsgálata részét képezi a tesztelés, amely a termelési service telepítése előtt következik be.
 
-## <a name="vulnerability-management"></a>A biztonsági rés kezelése
-Biztonsági frissítés management megvédi rendszerek a ismert biztonsági rések. Az Azure által használt integrált telepítési rendszerek kezeléséhez terjesztési és biztonsági frissítések Microsoft-szoftverek telepítését. Azure egyben a Microsoft biztonsági válasz Center (MSRC) erőforrásait igénybe. MSRC azonosítja, figyeli, válaszol, és oldja fel a biztonsági események és a felhő biztonsági rések éjjel, minden év napja.
+## <a name="vulnerability-management"></a>Biztonsági rések kezelése
+Biztonsági frissítés management megvédi rendszereket az ismert biztonsági kockázatokkal. Azure az integrált központi telepítési rendszerek kezelése a terjesztési és a Microsoft-szoftverek biztonsági frissítések telepítését. Az Azure is el tudja forrásaiból a Microsoft Security Response Center (MSRC). A MSRC azonosítja, figyeli, válaszol, és oldja fel a biztonsági incidensek és a felhő biztonsági rések éjjel, az év minden napján.
 
-## <a name="vulnerability-scanning"></a>Biztonsági rések keresése
-Kiszolgálói operációs rendszerek, adatbázisok és a hálózati eszközökön történik a biztonsági rések keresése. A biztonsági vizsgálatok legalább negyedévente történik. A Microsoft Azure szerződéseket független értékelő behatolást vagy a biztonság teszteléséhez a Microsoft Azure-határ. Piros-csapat gyakorlatokat is rendszeresen készül, és eredmények használ a biztonsági javítások.
+## <a name="vulnerability-scanning"></a>Biztonsági rés vizsgálata
+Biztonsági rések keresése a kiszolgálói operációs rendszerek, adatbázisok és a hálózati eszközök történik. A vizsgálatot a biztonsági rések legalább negyedévente történik. Az Azure szerződéseket független értékelők behatolásvizsgálat, az Azure határain végrehajtásához. Red team gyakorlatokban is rendszeresen történik, és az eredményeket, hogy a biztonsági fejlesztésekkel szolgálnak.
 
 ## <a name="protective-monitoring"></a>Védelmi figyelése
-A Microsoft Azure biztonsági követelmények aktív figyelés definiálva van. Csoportok konfigurálása aktív Hálózatfigyelő eszközök a követelményeknek megfelelően. Aktív felügyeleti eszközök közé tartozik, a figyelési ügynök (MA) és a System Center Operations Manager. Ezek az eszközök a Microsoft Azure biztonsági csoporthoz azonnali beavatkozást igénylő esetekben idő riasztások megadására vannak konfigurálva.
+Az Azure security definiálva van aktív monitorozására vonatkozó követelmények. Szolgáltatás csapatok aktív figyelési eszközök ezeknek a követelményeknek megfelelően konfigurálja. Aktív figyelési eszközök közé tartozik, a Microsoft Monitoring Agent (MMA) és a System Center Operations Manager. Ezek az eszközök értesítések nyújtson az azonnali intézkedést igénylő esetekben az Azure biztonsági csoporthoz vannak konfigurálva.
 
-## <a name="incident-management"></a>Incidenskezelés
-Microsoft valósítja meg a biztonsági incidenskezelési folyamat megkönnyítésére koordinált választ adhasson az eseményekre, megtörténik, egyet.
+## <a name="incident-management"></a>incidenskezelés
+A Microsoft valósít meg egy biztonsági incidens folyamat megkönnyítése érdekében koordinált választ adhasson az eseményekre, csak az egyik fordulhat elő.
 
-Ha Microsoft tudomást berendezései vagy létesítményekben, vagy ilyen berendezések vagy adatvesztés, nyilvánosságra vagy megváltoztatása ügyféladatok létesítményekben jogosulatlan elérésére tárolt ügyféladatok jogosulatlan hozzáférést, a Microsoft a következő lép műveletek:
+Ha a Microsoft tudomást az eszközökön, vagy a létesítményekben tárolt vásárlói adatokhoz való jogosulatlan hozzáféréssel, vagy ilyen berendezések vagy az eszközök elvesztése, közzétételi vagy az megváltoztatására ügyféladatok, ami a jogosulatlan hozzáférést tudomást A Microsoft a következő műveleteket hajtja végre:
 
-- Azonnal értesíti az ügyfél a biztonsági incidens
-- Azonnal pedig megvizsgálja a biztonsági incidens, és az ügyfél biztosít a biztonsági incidens kapcsolatos részletes információk
-- Végrehajtja által okozott hatások mérsékléséhez és minimalizálása érdekében a biztonsági incidens egy károk ésszerű és azonnali műveleteket.
+- Azonnal értesíti az ügyfél a biztonsági incidens.
+- Azonnal folytat a biztonsági incidensek és ügyfelek részletes információit a biztonsági incidensek.
+- Ésszerű és azonnali lépéseket által okozott hatások mérsékléséhez és a biztonsági incidensek bármely károk minimalizálása vesz igénybe.
 
-Az incidenskezelés keretrendszer definiált szerepkörök és felelősségek lefoglalt létrejött. A Windows Azure biztonsági incidens (WASIM) felügyeleti csoport biztonsági incidensek kezelése, beleértve eszkalációs és specialistája csapatok szükség esetén bevonásának biztosítása felelős. Az Azure üzemeltetési vezetők is vizsgálati és a biztonság és adatvédelem az incidensek megoldási felügyeletéért felelős.
+Az incidenskezelés keretrendszer létrejött, amely határozza meg a szerepkörök és feladatkörök foglalja le. Az Azure biztonsági incidens csapat felelős biztonsági incidensek kezelése, ideértve a eszkalációs, és szükség esetén szakértő csapatok bevonása biztosítása. Az Azure üzemeltetési vezetők a vizsgálati és a biztonság és adatvédelem problémamegoldást felügyeletéért felelős.
 
 ## <a name="next-steps"></a>További lépések
-Microsoft funkciója az Azure-infrastruktúra védelméhez kapcsolatos további információkért lásd:
+A Microsoft használ az Azure-infrastruktúra secure kapcsolatos további információkért lásd:
 
-- [Az Azure létesítményekben, a helyszíni és a fizikai biztonság](azure-physical-security.md)
+- [Azure létesítményekben, a helyi és a fizikai biztonság](azure-physical-security.md)
 - [Azure-infrastruktúra rendelkezésre állása](azure-infrastructure-availability.md)
-- [Az Azure információk rendszerösszetevők és határok](azure-infrastructure-components.md)
+- [Az Azure information rendszerösszetevők és határok](azure-infrastructure-components.md)
 - [Az Azure hálózati architektúra](azure-infrastructure-network.md)
 - [Az Azure éles hálózati környezetben](azure-production-network.md)
-- [A Microsoft Azure SQL Database biztonsági funkciói](azure-infrastructure-sql.md)
-- [Az Azure éles műveletek és kezelése](azure-infrastructure-operations.md)
-- [Azure-infrastruktúra integritása](azure-infrastructure-integrity.md)
-- [Az Azure-ban felhasználói adatok védelme](azure-protection-of-customer-data.md)
+- [Az Azure SQL Database biztonsági funkciók](azure-infrastructure-sql.md)
+- [Azure éles környezetben való üzemeltetés és a felügyelet](azure-infrastructure-operations.md)
+- [Az Azure infrastruktúra-integritás](azure-infrastructure-integrity.md)
+- [Az Azure vásárlói adatok védelmére](azure-protection-of-customer-data.md)

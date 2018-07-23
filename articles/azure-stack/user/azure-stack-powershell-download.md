@@ -1,39 +1,38 @@
 ---
-title: Töltse le az Azure-verem eszközök a Githubról |} Microsoft Docs
-description: Útmutató az Azure veremnek megfelelő működéséhez szükséges eszközök.
+title: Azure Stack-eszközök letöltése a githubról |} A Microsoft Docs
+description: Ismerje meg, hogyan töltse le az Azure Stack működéséhez szükséges eszközöket.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 28F360AD-789A-488D-965F-FC6E6CCF3329
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 07/19/2018
 ms.author: mabrigg
-ms.openlocfilehash: f4c4d907fe76c5e6ee5893b5b4dd1b2d766877a7
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 9c1e4abe50b06db58a4ca05a99e1ae4a531b2294
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287257"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187451"
 ---
-# <a name="download-azure-stack-tools-from-github"></a>Töltse le az Azure-verem eszközök a Githubról
+# <a name="download-azure-stack-tools-from-github"></a>Azure Stack-eszközök letöltése a githubról
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-AzureStack-eszközök kezelésének és központi telepítésének erőforrások Azure verem használható PowerShell-modulok üzemeltető GitHub-tárházban.
+1.2.9-es-eszközökkel egy GitHub-adattár, amely futtatja a PowerShell-modulokat, amelyek segítségével kezelheti és erőforrások üzembe helyezése az Azure Stack.
 
 ## <a name="download-targets"></a>Töltse le a célok
 
-Töltse le, és a PowerShell-modulok Azure verem Development Kit használja, vagy egy Windows-alapú külső ügyfél használó VPN-kapcsolatot.
+Letöltheti és használhatja ezeket az Azure Stack Development Kit PowerShell modulok, vagy egy Windows-alapú külső ügyfél használó VPN-kapcsolatot.
 
 ## <a name="how-to-get-the-tools"></a>Az eszközök beszerzése
 
-Ahhoz, hogy ezek az eszközök, klónozza a AzureStack-eszközök GitHub-tárházban, vagy töltse le a AzureStack-eszközök mappa a következő parancsfájl futtatásával:
+Ezek az eszközök a AzureStack-eszközök GitHub-tárház klónozásához, vagy töltse le az AzureStack-eszközök mappát a következő szkript futtatásával:
 
 ```PowerShell
 # Change directory to the root directory
@@ -55,18 +54,18 @@ cd AzureStack-Tools-master
 
 ```
 
-## <a name="functionalities-provided-by-the-modules"></a>A modulok által nyújtott funkciók
+## <a name="functionalities-provided-by-the-modules"></a>A modulok által biztosított funkciók
 
-A AzureStack-eszközök tárház, amely támogatja a következő funkciók verem Azure PowerShell-modulok tartalmazza:
+A AzureStack-Tools-tárház, amely támogatja a következő funkciók az Azure Stack PowerShell-modulokat tartalmaz:
 
 | Funkció | Leírás | Ez a modul ki tudja használni? |
 | --- | --- | --- |
-| [Felhőalapú képességek](azure-stack-validate-templates.md) | Ez a modul segítségével felhő felhőalapú szolgáltatásokkal. A felhőalapú képességek, például az API-verzió, az Azure Resource Managerhez tartozó erőforrások, a Virtuálisgép-bővítmények stb. például Azure verem, és ez a modul Azure felhők kaphat. | Felhő rendszergazdák és felhasználók. |
-| [Erőforrás-kezelő házirend Azure verem](azure-stack-policy-module.md) | Ez a modul segítségével konfigurálása Azure-előfizetés vagy egy Azure-erőforráscsoportot a azonos versioning és a szolgáltatás rendelkezésre állás mint Azure verem. | Felhő rendszergazdák és felhasználók |
-| [Kapcsolódás Azure verem](azure-stack-connect-azure-stack.md) | Ez a modul használja, egy Azure veremben példányra Powershellen keresztül csatlakozni, és Azure verem VPN-kapcsolat konfigurálása. | Felhő rendszergazdák és felhasználók |
-| [Sablon érvényesítő](azure-stack-validate-templates.md) | Ez a modul segítségével ellenőrizheti, ha egy meglévő vagy új sablon Azure verem számára telepíthető. | Felhő rendszergazdák és felhasználók |
+| [A felhőalapú képességek](https://github.com/Azure/AzureStack-Tools/tree/master/CloudCapabilities) | Ez a modul használatával a felhő felhő képességeit. Például az Azure Stack, és ez a modul használatával Azure-felhők a felhőalapú képességek, például az API-verzió, az Azure Resource Manager-erőforrásokkal, a Virtuálisgép-bővítmények stb. is kap. | Felhőszolgáltatás-rendszergazdák és felhasználók. |
+| [Az Azure Stack Resource Manager-házirend](azure-stack-policy-module.md) | Ez a modul használatával Azure-előfizetésre vagy Azure-erőforrás konfigurálása az Azure Stack, azonos verziókezelés és szolgáltatás rendelkezésre. | Felhőszolgáltatás-rendszergazdák és felhasználók |
+| [Csatlakozás az Azure Stackhez](azure-stack-connect-azure-stack.md) | Ez a modul használja, egy PowerShell-lel az Azure Stack-példányhoz való csatlakozáshoz, és az Azure Stackhez VPN-kapcsolat konfigurálása. | Felhőszolgáltatás-rendszergazdák és felhasználók |
+| [Sablon-érvényesítő](azure-stack-validate-templates.md) | Ez a modul segítségével ellenőrizheti, ha egy meglévő vagy új sablont is üzembe helyezhetők az Azure Stackhez. | Felhőszolgáltatás-rendszergazdák és felhasználók |
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure-verem felhasználói PowerShell környezet konfigurálása](azure-stack-powershell-configure-user.md)
-* [Csatlakozás Azure verem szoftverfejlesztői készlet egy VPN-kapcsolaton keresztül](azure-stack-connect-azure-stack.md)
+- [Az Azure Stack felhasználói PowerShell-környezet konfigurálása](azure-stack-powershell-configure-user.md)
+- [Csatlakozás az Azure Stack Development Kit egy VPN-kapcsolaton keresztül](azure-stack-connect-azure-stack.md)

@@ -1,9 +1,9 @@
 ---
-title: DNS-rekordhalmazok és az Azure DNS-rekordok kezelése |} Microsoft Docs
-description: Az Azure DNS lehetővé teszi a DNS-rekordhalmazok és rekordok kezelése, amikor a tartomány.
+title: DNS-rekordhalmazok és rekordok az Azure DNS használata kezelheti |} A Microsoft Docs
+description: Az Azure DNS lehetővé teszi, hogy a DNS-rekordhalmazok és rekordok kezelése, ha a tartomány üzemeltetésének.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: kumud
-ms.openlocfilehash: da7d2118a0fb6bc5004856d994a01a932094ca45
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: b95ec9b4b5077b236c5f3a7183820552b7ccac49
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174429"
 ---
-# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok kezelése és a rekordhalmazok az Azure portál használatával
+# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok kezelése és a rekordhalmazok az Azure portal használatával
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
@@ -29,70 +30,70 @@ ms.lasthandoff: 05/03/2018
 > * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Ez a cikk bemutatja, hogyan rekordhalmazok és rekordokat a DNS-zóna kezelése az Azure-portál használatával.
+Ez a cikk bemutatja, hogyan rekordhalmazok és rekordok a DNS-zóna kezelése az Azure portal használatával.
 
-Fontos a DNS-rekordhalmazok és egyedi DNS-rekordok közötti különbségek megértése. A rekordhalmaz zónában azt jelzi, hogy az azonos nevű és azonos típusú gyűjteménye. További információkért lásd: [hozzon létre DNS-rekordhalmazok és az Azure portál használatával rekordok](dns-getstarted-create-recordset-portal.md).
+Fontos tudni, hogy a DNS-rekordhalmazok és egyéni DNS-rekordok közötti különbség. Rekordhalmaz rekordokat a zónában lévő, azonos nevű és azonos típusú gyűjteménye. További információkért lásd: [hozzon létre DNS-rekordhalmazok és rekordok az Azure portal használatával](dns-getstarted-create-recordset-portal.md).
 
-## <a name="create-a-new-record-set-and-record"></a>Egy új rekordhalmaz és rekord létrehozása
+## <a name="create-a-new-record-set-and-record"></a>Új rekordhalmaz és rekord létrehozása
 
-Az Azure-portálon a rekordhalmaz létrehozásához lásd: [hozzon létre DNS-rekordok az Azure portál használatával](dns-getstarted-create-recordset-portal.md).
+Szeretne létrehozni egy rekordot az Azure Portalon, tekintse meg [hozzon létre DNS-rekordok az Azure portal használatával](dns-getstarted-create-recordset-portal.md).
 
-## <a name="view-a-record-set"></a>A rekordhalmaz megtekintése
+## <a name="view-a-record-set"></a>Rekordhalmaz megtekintése
 
-1. Az Azure-portálon lépjen a **DNS-zóna** panelen.
-2. Keresse meg a rekordhalmaz, és válassza ki azt. Ekkor megnyílik a rekordhalmaz tulajdonságait.
+1. Az Azure Portalon nyissa meg a **DNS-zóna** panelen.
+2. Keresse meg a beállított rekord, és válassza ki azt. Ekkor megnyílik a rekordhalmaz tulajdonságait.
 
-    ![A rekordhalmaz keresése](./media/dns-operations-recordsets-portal/searchset500.png)
+    ![Rekordhalmaz keresése](./media/dns-operations-recordsets-portal/searchset500.png)
 
-## <a name="add-a-new-record-to-a-record-set"></a>Adjon hozzá egy új rekordot a rekordhalmaz
+## <a name="add-a-new-record-to-a-record-set"></a>Adjon hozzá egy új rekordot rekordhalmazhoz
 
-Minden rekordhalmaz legfeljebb 20 adhat hozzá. A rekordhalmaz nem tartalmazhat két azonos rekordokat. (A nulla rekord) üres rekordhalmazok hozhatók létre, de nem jelennek meg az Azure DNS névkiszolgálóit. CNAME típusú rekordhalmazok legfeljebb egy bejegyzést tartalmazhat.
+Minden rekordhalmaz legfeljebb 20 bejegyzést adhat hozzá. Rekordhalmaz nem tartalmazhat két azonos rekordot. Üres rekordhalmazok (a nulla rekord) hozhatók létre, de nem jelennek meg az Azure DNS névkiszolgálóit. CNAME típusú rekordhalmazok legfeljebb több rekordot is tartalmazhat.
 
-1. Az a **rekordhalmaz tulajdonságok** a DNS-zóna panelen kattintson a bővíteni kívánt rekordkészlet.
+1. Az a **rekordhalmaz tulajdonságok** a DNS-zóna panelen kattintson a rekordhalmaz adjon hozzá egy rekordot a kívánt.
 
     ![Válassza ki a rekordhalmaz](./media/dns-operations-recordsets-portal/selectset500.png)
 
-2. Adja meg, a rekordhalmaz tulajdonságok a mezők kitöltésével.
+2. Adja meg a rekord állítsa be a tulajdonságokat, a mezők kitöltésével.
 
-    ![Adjon hozzá egy rekordot](./media/dns-operations-recordsets-portal/addrecord500.png)
+    ![Rekord hozzáadása](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. Kattintson a **mentése** mentse a beállításokat a panel tetején. Zárja be a panelt.
-4. Sarokban jelenik meg, hogy a rekord menti.
+3. Kattintson a **mentése** a beállítások mentéséhez a panel tetején. Zárja be a panelt.
+4. A sarokban jelenik meg, hogy a bejegyzést ment.
 
-    ![Rekordhalmaz mentése](./media/dns-operations-recordsets-portal/saving150.png)
+    ![Rekordhalmaz mentése folyamatban](./media/dns-operations-recordsets-portal/saving150.png)
 
-A rekord mentését követően, az értékek a a **DNS-zóna** panel fogja tartalmazni az új rekordban.
+A rekord mentése után, az értékek a a **DNS-zóna** panelen jelenik meg az új rekordban.
 
-## <a name="update-a-record"></a>Frissítse a bejegyzést
+## <a name="update-a-record"></a>Rekord frissítése
 
-Amikor frissít egy meglévő rekordhalmaz rekord, a mezők frissítheti a típusú rekord dolgozunk függ.
+Amikor frissít egy rekordot egy meglévő rekordhalmazt, frissítheti a mezők dolgozik rekord típusa függenek.
 
-1. Az a **rekordhalmaz tulajdonságok** panel a rekordhalmaz, keressen rá a rekordot.
-2. Módosítsa a bejegyzést. Amikor módosít egy rekordot, módosíthatja a rendelkezésre álló beállítások a rekordhoz. A következő példában a **IP-cím** mező be van jelölve, és az IP-cím módosított folyamatban van.
+1. Az a **rekordhalmaz tulajdonságok** panelen, a rekordhalmaz, keresse meg a rekordot.
+2. A rekord módosításához. Amikor módosít egy rekordot, módosíthatja a rendelkezésre álló beállítások a rekord. A következő példában a **IP-cím** mező van kiválasztva, és a módosított folyamatban van az IP-cím.
 
-    ![Egy rekord módosítása](./media/dns-operations-recordsets-portal/modifyrecord500.png)
+    ![Rekordok módosítása](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. Kattintson a **mentése** mentse a beállításokat a panel tetején. A jobb felső sarkában található megjelenik az értesítés a rekord mentett.
+3. Kattintson a **mentése** a beállítások mentéséhez a panel tetején. A jobb felső sarokban láthatja a értesítést, amelyet a rekord mentése megtörtént.
 
-    ![Rekordhalmaz mentése](./media/dns-operations-recordsets-portal/saved150.png)
+    ![Rekordhalmaz mentve](./media/dns-operations-recordsets-portal/saved150.png)
 
-A rekord mentését követően a rekord értékeit beállítani a **DNS-zóna** panel a frissített rekord fogja tartalmazni.
+A rekord mentése után a rekord értékeit beállítani a **DNS-zóna** panelen jelenik meg a frissített rekord.
 
 ## <a name="remove-a-record-from-a-record-set"></a>A rekordhalmaz bejegyzés eltávolítása
 
-Az Azure portál segítségével rekordok eltávolítása rekordhalmaz. Vegye figyelembe, hogy a rekordhalmaz utolsó rekordját eltávolítása nem törli a rekordhalmaz.
+Az Azure portal segítségével egy rekordhalmaz rekordok eltávolítása. Vegye figyelembe, hogy az utolsó rekord eltávolítását a rekordhalmaz nem törli a rekordhalmaz.
 
-1. Az a **rekordhalmaz tulajdonságok** panel a rekordhalmaz, keressen rá a rekordot.
-2. Kattintson a bejegyzésre, hogy el szeretné távolítani. Válassza ki **eltávolítása**.
+1. Az a **rekordhalmaz tulajdonságok** panelen, a rekordhalmaz, keresse meg a rekordot.
+2. Kattintson az eltávolítani kívánt rekord. Válassza ki **eltávolítása**.
 
-    ![Bejegyzés eltávolítása](./media/dns-operations-recordsets-portal/removerecord500.png)
+    ![Rekord törlése](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. Kattintson a **mentése** mentse a beállításokat a panel tetején.
-4. A rekord eltávolítását követően a rekord értékeit a **DNS-zóna** panel eltávolításának fogja tartalmazni.
+3. Kattintson a **mentése** a beállítások mentéséhez a panel tetején.
+4. Miután a bejegyzés el lett távolítva, az a rekord értékeit a **DNS-zóna** panelen jelenik meg az eltávolítás.
 
 ## <a name="delete"></a>A rekordhalmaz törlése
 
-1. Az a **rekordhalmaz tulajdonságok** a rekordhalmaz panelen kattintson a **törlése**.
+1. Az a **rekordhalmaz tulajdonságok** a rekordhalmaz paneljén kattintson **törlése**.
 
     ![A rekordhalmaz törlése](./media/dns-operations-recordsets-portal/deleterecordset500.png)
 
@@ -100,28 +101,28 @@ Az Azure portál segítségével rekordok eltávolítása rekordhalmaz. Vegye fi
 3. Győződjön meg arról, hogy a neve egyezik-e a rekordhalmaz törlése, és kattintson a kívánt **Igen**.
 4. Az a **DNS-zóna** panelen ellenőrizze, hogy a rekordhalmaz már nem látható.
 
-## <a name="work-with-ns-and-soa-records"></a>Az NS és SOA rekordok kezelése
+## <a name="work-with-ns-and-soa-records"></a>NS és SOA típusú rekordoknak használata
 
-Automatikusan létrehozott NS és SOA rekordokat másképp kezeli az egyéb típusú bejegyzés.
+A további rekordtípusok NS és SOA típusú rekordoknak, automatikusan létrehozott eltérően kezelik.
 
-### <a name="modify-soa-records"></a>Módosíthatja a SOA rekordokat
+### <a name="modify-soa-records"></a>SOA típusú rekordok módosítása
 
-Nem adja hozzá vagy rekordok eltávolítása az automatikusan létrehozott SOA típusú rekordját, állítsa be a zóna felső pontja (név = "@"). Azonban módosíthatja a SOA típusú rekordját (kivéve az "állomás") belül paraméterek egyikét, és a rekordhalmaz TTL-t.
+Nem adhat hozzá és rekordok eltávolítása az automatikusan létrehozott, állítsa be a zóna legfelső pontján SOA típusú rekordját (név = "\@"). Azonban módosíthatja a SOA típusú rekordját (kivéve a "Host") belül paraméterek egyikét, és a rekordhalmaz TTL.
 
-### <a name="modify-ns-records-at-the-zone-apex"></a>A zóna felső pontja a Névkiszolgálói rekordok módosítása
+### <a name="modify-ns-records-at-the-zone-apex"></a>Módosítsa a Névkiszolgálói rekordokat a zóna legfelső pontján
 
-Állítsa be a zóna felső pontja NS-rekord automatikusan létrejön minden DNS-zóna. Az Azure DNS névkiszolgálóit, a zóna nevét tartalmazza.
+Az NS-rekord a zóna legfelső pontján állítsa be a rendszer automatikusan létrehoz minden DNS-zónát. Az Azure DNS névkiszolgálóit, a zóna nevét tartalmazza.
 
-Hozzáadhat további névhez a kiszolgálók e NS-rekord, támogatja a párhuzamos üzemeltetési tartományok egynél több DNS-szolgáltatónál. A TTL-t és a metaadatok a rekordhalmaz is módosíthatók. Azonban nem lehet eltávolítani, vagy módosítsa az előre megadott Azure DNS névkiszolgálóit.
+Hozzáadhat további névhez e NS-rekord-kiszolgálókat, támogatja a közös üzemeltetési tartomány több DNS-szolgáltatónál. Az élettartam és a rekordhalmaz metaadatait is módosíthatja. Azonban nem távolítsa el vagy módosítsa az ki van töltve az Azure DNS névkiszolgálóit.
 
-Vegye figyelembe, hogy csak vonatkozik az NS típusú rekordhalmaz zóna tetején. A zónában (a használt gyermekzónákhoz delegálása) más NS-rekordhalmazok lehet módosítani, korlátozás nélkül.
+Vegye figyelembe, hogy ez csak érvényes az NS-rekord a zóna legfelső pontján állítsa be. Más Névkiszolgálói rekordhalmazt a zónában (a használt gyermek zónák delegálása) korlátozás nélkül módosíthatók.
 
-### <a name="delete-soa-or-ns-record-sets"></a>SOA vagy NS rekordhalmazok törlése
+### <a name="delete-soa-or-ns-record-sets"></a>A SOA és Névkiszolgálói rekordhalmazt törlése
 
-Nem lehet törölni a SOA és NS-rekord beállítja a zóna felső pontja (név = "@"), amely automatikusan jönnek létre a zóna létrehozásakor. Ezek automatikusan törlődnek a zóna törlésekor.
+Nem lehet törölni a SOA és NS-rekord zóna felső pontjánál állítja be (név = "\@"), amely automatikusan létrehozza a zóna létrehozásakor. Ezek automatikusan törlődnek a zóna törlésekor.
 
 ## <a name="next-steps"></a>További lépések
 
-* Azure DNS szolgáltatással kapcsolatos további információkért lásd: a [Azure DNS áttekintése](dns-overview.md).
-* DNS automatizálásával kapcsolatos további információkért lásd: [létrehozása DNS-zónák és a .NET SDK használatával rekordhalmazok](dns-sdk.md).
-* Névkeresési DNS-rekordok kapcsolatos további információkért lásd: [címfeloldási DNS- és támogatás az Azure-ban – áttekintés](dns-reverse-dns-overview.md).
+* Azure DNS szolgáltatással kapcsolatos további információkért lásd: a [Azure DNS áttekintését biztosító](dns-overview.md).
+* DNS automatizálása kapcsolatos további információkért lásd: [létrehozása DNS-zónák és -rekordhalmazok a .NET SDK használatával](dns-sdk.md).
+* Fordított DNS-rekordok kapcsolatos további információkért lásd: [fordított DNS és támogatás az Azure-ban – áttekintés](dns-reverse-dns-overview.md).

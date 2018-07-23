@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2018
+ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8d354e3f409a51bdbb03ad340c951c39cc6137e1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112722"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186444"
 ---
 # <a name="understand-load-balancer-probes"></a>Load Balancer vizsgálatok ismertetése
 
@@ -28,7 +28,7 @@ Az Azure Load Balancer állapot-mintavételei alapján határozza meg, melyik h�
 
 Állapot-mintavételei szabályozzák, hogy új folyamatok megfelelően működő háttér-példányok létrehozása történik. Ha az állapotfigyelő mintavételező nem sikerül, a terheléselosztó nem irányít, több új folyamatok a megfelelő nem megfelelő állapotú példányhoz.  Fennálló TCP-kapcsolatok állapot-mintavételi hiba után továbbra is.  Meglévő UDP-forgalom egy másik megfelelő példány a háttérkészletben át a nem megfelelő állapotú példányból.
 
-Minden háttérkészlet-mintavételt sikertelen lesz, ha alapszintű Load Balancer Terheléselosztók megszűnik az összes meglévő TCP-adatfolyamok a háttérkészlethez, míg a Standard Load balancer lehetővé teszik a meghatározott folytatásához; TCP-adatfolyamok nincsenek új folyamatok küld a háttérkészlethez.  Az összes meglévő UDP-forgalom az alapszintű és standard szintű terheléselosztóhoz leáll, amikor egy háttér-mintavételt összes tárolókészlet sikertelen.
+Minden háttérkészlet-mintavételt sikertelen lesz, ha alapszintű Load Balancer Terheléselosztók megszűnik az összes meglévő TCP-adatfolyamok a háttérkészlethez, míg a Standard Load balancer lehetővé teszik a meghatározott folytatásához; TCP-adatfolyamok nincsenek új folyamatok küld a háttérkészlethez.  Az összes meglévő UDP-forgalom az alapszintű és standard szintű terheléselosztóhoz leáll, amikor egy háttér-mintavételt összes tárolókészlet sikertelen.  UDP kapcsolat nélküli, és nincs teljesítményfolyamati állapot nyomon követett UDP-hez.  Mindaddig, amíg a kivonatolás ugyanazt az eredményt adja, a folyamat datagramok marad egy adott példányon.  Az állapotfigyelő mintavételező a háttérkészletben módosítását előfordulhat, hogy új datagramok áthelyezése egy másik példányt, a háttérkészletben.
 
 A felhőszolgáltatásokhoz tartozó szerepkörök (a feldolgozói szerepkörök és a webes szerepkörök) használni egy vendégügynök mintavétel. TCP- vagy HTTP egyéni állapotmintákat úgy kell konfigurálni, ha Cloud Services használata az IaaS virtuális gépet terheléselosztó mögé.
 

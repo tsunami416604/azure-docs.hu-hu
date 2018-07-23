@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7e60bc217562d91aa5ed3c653458a46251a45c8d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: bcdd4b681992b015b817e1245681c41c09b78210
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347440"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173690"
 ---
 # <a name="manage-entities"></a>Entitások kezelése
 Keresse meg az alkalmazás [leképezések](luis-concept-intent.md), kell [példa utterances címke](luis-concept-utterance.md) a [entitások](luis-concept-entity-types.md). Entitások a fontos darabokat egy parancs vagy a kérdés, és lehet, hogy az ügyfélalkalmazás a feladatok végrehajtásához nélkülözhetetlen. 
@@ -149,7 +149,7 @@ A szerepkör szintaxisa **{entitás neve: szerepkör neve}** ahol az entitás ne
 
 1. Az alkalmazásba az a **összeállítása** szakaszt, és válassza ki **entitások** a bal oldali panelen.
 
-2. Válassza ki **új entitás létrehozása**. Adja meg a nevét `Location`. Válassza ki a **egyszerű** válassza **kész**
+2. Válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. Adja meg a nevét `Location`. Válassza ki a **egyszerű** válassza **kész**
 
 3. Válassza ki **entitások** a bal oldali panelen, majd válassza ki az új entitás **hely** a 2. lépésben létrehozott.
 
@@ -260,5 +260,5 @@ Kereshet és szűrheti a Nagyító ikont, az eszköztáron a kimondott szöveg.
 Után adja hozzá, szerkeszthet és eltávolíthat az entitásokat, [betanításához](luis-how-to-train.md) és [közzététele](luis-how-to-publish-app.md) a végpont lekérdezéseket érintő módosítások alkalmazásához. 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy hozzáadta a szándék fog vonatkozni, utterances és entitások, akkor alapszintű LUIS-alkalmazásokon. Ismerje meg, hogyan [betanításához](luis-how-to-train.md), [tesztelése](interactive-test.md), és [közzététele](luis-how-to-publish-app.md) az alkalmazást.
+Most, hogy hozzáadta a szándék fog vonatkozni, utterances és entitások, akkor alapszintű LUIS-alkalmazásokon. Ismerje meg, hogyan [betanításához](luis-how-to-train.md), [tesztelése](luis-interactive-test.md), és [közzététele](luis-how-to-publish-app.md) az alkalmazást.
  

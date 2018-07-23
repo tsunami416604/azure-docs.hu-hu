@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: d77d835fab8c26b1816f15577b6461c62322901e
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1eea6380d4276644db0c7681f23a4b0c5e79ff09
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162075"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187349"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Előzetes verzió: Azure AD jelszó-védelem figyelési, jelentéseket és hibaelhárítás
 
@@ -197,7 +197,7 @@ Ha úgy döntenek, hogy távolítsa el a nyilvános előzetes verziójú szoftve
    ```
    $scp = “serviceConnectionPoint”
    $keywords = “{EBEFB703-6113-413D-9167-9F8DD4D24468}*”
-   Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -eq $keywords }
+   Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
    Nem hagyja ki a csillag ("*") a $keywords változó értékét a végén.
@@ -209,7 +209,7 @@ Ha úgy döntenek, hogy távolítsa el a nyilvános előzetes verziójú szoftve
    ```
    $scp = “serviceConnectionPoint”
    $keywords = “{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*”
-   Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -eq $keywords }
+   Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
    Az eredményül kapott objektumhoz keresztül található a `Get-ADObject` parancs majd átadható olyan parancsoknak `Remove-ADObject`, vagy manuálisan törölték.

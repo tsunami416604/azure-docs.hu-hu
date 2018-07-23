@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 067404193507f9787c994e82267679737ebe4832
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: deba3ad8a283b111dc94a5361f3fa4e73d95c0b8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145417"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187383"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az Azure-beli virtuális hálózatok Kezdje itt az adatokat további: [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -150,6 +150,7 @@ Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szó
 * **A kezdeti telepítés**: az API Management szolgáltatás egyik alhálózatában kezdeti telepítése nem sikerül, ha először helyezheti üzembe a virtuális gép ugyanazon az alhálózaton javasolt. Tovább a távoli asztal a virtuális géppel, és ellenőrizze, hogy nincs-e az egyes erőforrások alatt az azure-előfizetésében egyik kapcsolat
     * Azure Storage blob
     * Azure SQL Database
+    * Az Azure Storage-táblából
 
  > [!IMPORTANT]
  > Miután ellenőrizte a kapcsolat, el kell távolítania az alhálózatban az API Management telepítése előtt üzembe helyezheti az alhálózaton, összes erőforrást.

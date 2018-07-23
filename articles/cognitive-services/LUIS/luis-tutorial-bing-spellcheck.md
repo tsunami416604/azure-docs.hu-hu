@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: e7bf447dafecf090f610f670539ca4673827953a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 8d86bf3974cd11b644f59799e3d6140b46899244
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343978"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173826"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>A Bing Spell Check megfelelő kijavítsa a hibásan leírt szavakat
 
@@ -30,7 +30,7 @@ A [első Bing Spell Check API 7-es verziója kulcsot](https://azure.microsoft.co
 ## <a name="create-endpoint-key"></a>Végponti kulcs létrehozása
 Ha az ingyenes kulcs lejárt, a végpont kulcs létrehozása.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 2. Válassza ki **erőforrás létrehozása** bal felső sarokban.
 
@@ -57,7 +57,7 @@ Ha az ingyenes kulcs lejárt, a végpont kulcs létrehozása.
 10. Másolja ki az első kulcsot. Csak akkor kell egyik két kulcsot. 
 
 ## <a name="using-the-key-in-luis-test-panel"></a>A kulcs használatával LUIS teszt panel
-Nincsenek a kulcs használatához a LUIS két helyén. Az első szerepel a [teszt panel](interactive-test.md#view-bing-spell-check-corrections-in-test-panel). A kulcs nem menti a LUIS, de ehelyett egy munkamenet-változó. Minden alkalommal, amikor azt szeretné, hogy a teszt panel az utterance (kifejezés) vonatkoznak a Bing Spell Check API 7-es verziója szolgáltatást, állítsa be a kulcsot kell. Lásd: [utasításokat](interactive-test.md#view-bing-spell-check-corrections-in-test-panel) állítja a kulcsot a teszt panel.
+Nincsenek a kulcs használatához a LUIS két helyén. Az első szerepel a [teszt panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). A kulcs nem menti a LUIS, de ehelyett egy munkamenet-változó. Minden alkalommal, amikor azt szeretné, hogy a teszt panel az utterance (kifejezés) vonatkoznak a Bing Spell Check API 7-es verziója szolgáltatást, állítsa be a kulcsot kell. Lásd: [utasításokat](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) állítja a kulcsot a teszt panel.
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>A kulcs hozzáadása a végpont URL-címe
 A végpont lekérdezés minden egyes lekérdezés javításra a alkalmazni szeretné a lekérdezési karakterlánc paraméterei átadott kulcs szükséges. Előfordulhat, hogy egy csevegőrobot, amely meghívja a LUIS, vagy közvetlenül a LUIS-végpont API-t hívhatja. Függetlenül attól, milyen a végpont neve minden hívás tartalmaznia kell a helyesírási javításokkal megfelelő működéséhez szükséges információkat.

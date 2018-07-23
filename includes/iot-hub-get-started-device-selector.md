@@ -1,8 +1,8 @@
 > [!div class="op_single_selector"]
 > * [Raspberry Pi-webszimulátor](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)   
-> * [Szimulált eszköz .NET-tel](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
-> * [Szimulált eszköz Javával](../articles/iot-hub/iot-hub-java-java-getstarted.md)
-> * [Szimulált eszköz Node.js-sel](../articles/iot-hub/iot-hub-node-node-getstarted.md)
+> * [Szimulált eszköz .NET-tel](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)
+> * [Szimulált eszköz Javával](../articles/iot-hub/quickstart-send-telemetry-java.md)
+> * [Szimulált eszköz Node.js-sel](../articles/iot-hub/quickstart-send-telemetry-node.md)
 > * [IoT DevKit AZ3166 VS Code-dal](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Raspberry Pi és Node.js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [Raspberry Pi és Python](../articles/iot-hub/iot-hub-raspberry-pi-kit-python-get-started.md)

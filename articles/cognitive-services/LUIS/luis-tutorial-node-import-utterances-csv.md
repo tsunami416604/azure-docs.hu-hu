@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 54c7565dd00305d3ce1faba5d7cc5616c53dd026
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: fe82899dc4db24c0d4c09a42872ad9113ef7ebad
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888160"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172000"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programozott módon a Node.js használatával a LUIS alkalmazás készítése
 
@@ -171,7 +171,7 @@ Miután a parancsfájl lefutott, bejelentkezhet a [LUIS](luis-reference-regions.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [LUIS webhelyen az alkalmazást kész, és tesztelése](interactive-test.md)
+> [LUIS webhelyen az alkalmazást kész, és tesztelése](luis-interactive-test.md)
 
 ## <a name="additional-resources"></a>További források
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b516dd165bfc22ad3966ffe51e99591379f9e680
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: fb3f307642dc6f4607a626e0b320949306129759
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144329"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172313"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -65,7 +65,7 @@ A Microsoft-fiók, pl. *@outlook.com vagy @live.com*, használható számos Micr
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. A Marketplace-en regisztrációs űrlap beküldése  
 | 15 perc |}  
-Végezze el a rövid regisztrációs űrlapot, a marketplace-kiadó válik. Az információkat az űrlapon a kiadói fiók létrehozása a Cloud Partner portálra, amely lehetővé teszi a létrehozását, közzétételét és kezelheti a marketplace-ajánlat a használandó.
+Végezze el ezt a tájékoztatót [regisztrációs űrlap](https://azuremarketplace.microsoft.com/en-us/sell/signup) a marketplace-kiadó válik. Az információkat az űrlapon a kiadói fiók létrehozása a Cloud Partner portálra, amely lehetővé teszi a létrehozását, közzétételét és kezelheti a marketplace-ajánlat a használandó.
 
 Meg kell adnia az alábbi információkat:
 *   A szervezete számára, beleértve a Microsoft Partner Network-azonosító adatait (amely akár kereshet [Partnerközpont](https://partnercenter.microsoft.com/partner/home) vagy [tagsági Partnerközpont](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx))

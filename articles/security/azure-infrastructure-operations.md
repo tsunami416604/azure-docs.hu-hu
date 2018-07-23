@@ -1,6 +1,6 @@
 ---
-title: Az Azure éles műveletek és kezelése
-description: Ez a cikk az Azure éles hálózati környezetben működésének és a felügyeleti általános leírását tartalmazza.
+title: Azure éles környezetben való üzemeltetés és a felügyelet
+description: Ez a cikk általános leírását, a felügyeleti és működtetése az Azure éles hálózati környezetben.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,45 +14,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: dc389f5f5c155555deb860f041b15b0ea49ee416
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 21ae81f1d8423a9d05208ec6d8c4f31d909d2f9f
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102330"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173159"
 ---
-# <a name="azure-production-operations-and-management"></a>Az Azure éles műveletek és kezelése    
-Felügyeleti és az Azure éles hálózati környezetben működésének egy Azure műveletek csoportjai és az Azure SQL Database a koordinált szükséges. Több rendszer- és teljesítményfigyelő eszközök alkalmaz a környezetben. Hálózati eszközök, kiszolgálók, szolgáltatások és alkalmazások folyamatok figyelhetők a megfelelő eszközökkel.
+# <a name="azure-production-operations-and-management"></a>Azure éles környezetben való üzemeltetés és a felügyelet    
+A felügyeleti és az éles Azure-hálózat művelet célja egy koordinált az üzemeltetési csapatok az Azure és az Azure SQL Database között. A teams használatát több rendszer és alkalmazás-teljesítményfigyelési eszköz a környezetben. És megfelelő eszközök használják a hálózati eszközök, kiszolgálók, szolgáltatások és alkalmazási folyamatok figyeléséhez.
 
-A figyelés, naplózási és jelentéskészítési valósíthatók meg annak a Microsoft Azure környezetben futó szolgáltatások biztonságos végrehajtása érdekében több szintjéről többek között a következő műveleteket:
+Ahhoz, hogy az Azure-környezetben futó szolgáltatások biztonságos végrehajtásának, a üzemeltetési csapatok megvalósítása többszintű monitorozás, naplózás és jelentéskészítés, többek között a következő műveleteket:
 
-- A Microsoft Azure figyelési ügynök (MA), beleértve az FC és a gyökér operációs rendszer számos helyről összegyűjti a megfigyelési és diagnosztikai információkat, és írja azt a naplófájlokba. Az előre konfigurált Azure Storage-fiókot az információk emésztett részhalmazának végül kimenő. Emellett a megfigyelési és diagnosztikai szolgáltatás (MDS) olyan szabadon álló szolgáltatás, amely különböző megfigyelési és diagnosztikai naplófájl adatokat olvas, és a tudnivalókat foglalja össze. Az MDS egy integrált naplófájlba írja az adatokat. Azure az Azure felügyeleti rendszer bővítménye, vagyis az egyedi Azure biztonsági figyelése (ASM), használja. Figyelje meg, elemzése és a különböző pontokról a platform biztonsági kapcsolódó események jelentés összetevőket tartalmaz.
-- A Microsoft Azure SQL adatbázis WinFabric platform felügyeleti, telepítési, fejlesztési, és működési felügyeletet szolgáltatásokat biztosít a Microsoft Azure SQL-adatbázis. Elosztott, több lépés telepítési, állapotfigyelés, automatikus javítási és szolgáltatás verziója megfelelőségi kínál. A következő szolgáltatásokat tartalmazza:
+- A Microsoft Monitoring Agent (MMA), elsősorban sok helyen, beleértve a hálóvezérlő (FC) és a gyökérszintű operációs rendszer (OS), figyelési és diagnosztikai adatait gyűjti össze, és írja a naplófájlokat. Az ügynök az adatokat egy emésztett részét végül leküldések előre konfigurált Azure storage-fiókra. Emellett a szabadon álló figyelési és diagnosztikai szolgáltatás beolvassa a különböző monitorozási és diagnosztikai naplóadatokat, és a tudnivalókat foglalja össze. A monitorozási és diagnosztikai szolgáltatás integrált naplóba beírja az információkat. Az Azure a személyre szabott Azure biztonsági figyelés, a rendszer figyelése az Azure kiterjesztése, amely használja. Figyelje meg, elemzéséhez és biztonsági profiljával kapcsolatos események különféle pontokról a platform jelentések összetevőket tartalmaz.
 
-   - Szolgáltatás modellezési képességekkel valósághű fejlesztői környezetet (datacenter fürtök költséges és szűkös).
-   - Egy kattintással telepítési és frissítési munkafolyamatok service rendszerindítási és karbantartási.
-   - Jelentéskészítés a automatizált javítás munkafolyamatok self-healing engedélyezése állapotát.
-   - Valós idejű figyelés, riasztás és hibakeresés létesítményekben elosztott rendszer csomópontjai között.
-   - Működési adatok és az elosztott alapvető metrikák központi gyűjteménye elemzést, a szolgáltatás betekintést miatt.
-   - Üzembe helyezés esetén tooling eszköz működési módosítások kezelése és figyelése.
-   - A Microsoft Azure SQL adatbázis WinFabric platform és figyelő parancsfájlok folyamatos futtatás, és valós idejű figyelése.
+- Az Azure SQL Database Windows Fabric platformot biztosít a felügyeleti, üzembe helyezés, fejlesztési és üzemeltetési felügyeletet szolgáltatások az Azure SQL Database. A platform kínál elosztott, több lépésből álló-telepítési szolgáltatások, szolgáltatásállapot-figyelést, automatikus javítási és szolgáltatás verziója megfelelőségi. Ez a következő szolgáltatásokat nyújtja:
 
-Bármely rendellenességeket fordulhat elő, ha az Incidensmegoldási folyamat az Azure incidens osztályozás csapat követ aktiválva van. A megfelelő Azure technikai támogatási csoporthoz válaszolni az incidens értesítést kap. Probléma- és névfeloldási dokumentált, és a központosított hibajegyalapú rendszert felügyelni. Rendszer hasznos üzemidő mérőszámok alapján a nem adathozzáférést szerződés (titoktartási) és a kérés esetén érhetők el.
+   - Szolgáltatás adatmodellezési képességekkel élethű fejlesztői környezetet (datacenter fürtök olyan költséges és szűkös).
+   - Egykattintásos üzembe helyezéshez és a rendszerindítási szolgáltatás és a karbantartási frissítés munkafolyamatok.
+   - Az automatikus javítási munkafolyamatra engedélyezéséhez az önjavítást szem előtt tartva reporting állapotát.
+   - Valós idejű figyelés, riasztás és a létesítményekben hibakeresése egy elosztott rendszer csomópontjai között.
+   - Operatív adatok és az elosztott alapvető metrikákat központi gyűjteményét elemzés és a szolgáltatás insight miatt.
+   - Műveleti hibakeresését, üzembe helyezéshez változáskezelés és figyelését.
+   - Az Azure SQL Database Windows Fabric platformot és a figyelő parancsfájlok folyamatosan fusson, és valós időben figyelheti.
 
-## <a name="corporate-network-and-multi-factor-access-to-production"></a>Vállalati hálózat és a többtényezős hozzáférés üzemi környezetben
-A vállalati hálózat felhasználói bázis magában foglalja a Microsoft Azure technikai támogatási csoporthoz. A vállalati hálózat belső vállalati funkciókat támogatja, és tartoznak a belső alkalmazások, amelyeket az Azure ügyfélszolgálatához. A vállalati hálózat logikailag és fizikailag elkülönül az Azure éles hálózati környezetben. Microsoft Azure személyzet hozzáférhetnek a vállalati hálózathoz, a Microsoft Azure munkaállomásokat és laptopok. Az összes felhasználónak rendelkeznie kell Active Directory (AD) adatait, beleértve a felhasználónevet és jelszót, a vállalati hálózati erőforrások eléréséhez. CorpNet hozzáférést AD-fiókokat, amelyek minden Microsoft személyzete, alvállalkozói, szállítók kibocsátott, és kezeli az MSIT használja. Egyedi felhasználói azonosítók megkülönböztetéséhez a Microsoftnál azok foglalkoztatottsági állapot alapján csoporthoz.
+Felismerheti a rendellenességeket fordulhat elő, ha az incidensmegoldási folyamatba az Azure incidens osztályozási csapat követ aktiválva van. Az incidens válaszol a megfelelő Azure-támogatási személyzet értesítést kap. Probléma- és névfeloldási dokumentált és kezelése a központi hibajegyalapú rendszert. Rendszer üzemidejét metrikák érhetők el a titoktartási szerződését (NDA) és a kérésre.
 
-Belső Azure alkalmazásokhoz való hozzáférés szabályozását hitelesítéssel az Active Directory összevonási szolgáltatások (ADFS). Az AD FS egy olyan szolgáltatás, amely a CorpNet felhasználók biztonságos token és a felhasználói jogcímek alkalmazása keresztül hitelesítést nyújt MSIT üzemelteti. Az AD FS lehetővé teszi, hogy a belső Microsoft Azure-alkalmazások a Microsoft vállalati AD-tartomány alapján a felhasználók hitelesítéséhez. A vállalati hálózat környezetből a termelési hálózat eléréséhez a felhasználónak hitelesítenie kell magát a multi-factor authentication használatával.
+## <a name="corporate-network-and-multi-factor-access-to-production"></a>Vállalati hálózat és a többtényezős hozzáférés az éles környezetbe
+A vállalati hálózat felhasználói bázis magában foglalja az Azure támogatási csoporthoz. A vállalati hálózat belső vállalati funkciók támogatja, és hozzáférést biztosít a belső alkalmazások által használt Azure ügyfélszolgálatához. A vállalati hálózaton fizikailag és logikailag is elkülönül az Azure éles hálózati környezetben. Az Azure munkatársai Azure munkaállomások és hordozható számítógépek hozzáférhetnek a vállalati hálózathoz. Valamennyi felhasználónak rendelkeznie kell egy Azure Active Directory (Azure AD-) fiók, beleértve a felhasználónevet és jelszót, a vállalati hálózati erőforrások eléréséhez. Vállalati hálózati hozzáférés az Azure AD-fiókokat, az összes Microsoft-alkalmazottak, alvállalkozók és beszállítók kiadott és kezeli a Microsoft informatikai használ. Egyedi felhasználói azonosítók tesz különbséget a csoporthoz a Microsoftnál. foglalkoztatottsági állapot alapján.
+
+A belső Azure-alkalmazások hozzáférésének hitelesítéssel az Active Directory összevonási szolgáltatások (AD FS). Az AD FS üzemelteti, amely a vállalati hálózat felhasználók alkalmazása egy biztonságos token és a felhasználói jogcímek keresztül hitelesítést biztosít a Microsoft informatikai szolgáltatás a. Az AD FS lehetővé teszi, hogy a belső Azure-alkalmazások hitelesíteni tudja a felhasználókat a Microsoft vállalati active directory-tartományhoz. Szeretné elérni az éles hálózati környezetben a vállalati hálózati környezetben, a felhasználók a multi-factor authentication szolgáltatás használatával kell hitelesítenie.
 
 ## <a name="next-steps"></a>További lépések
-Microsoft funkciója az Azure-infrastruktúra védelméhez kapcsolatos további információkért lásd:
+A Microsoft használ az Azure-infrastruktúra secure kapcsolatos további információkért lásd:
 
-- [Az Azure létesítményekben, a helyszíni és a fizikai biztonság](azure-physical-security.md)
+- [Azure létesítményekben, a helyi és a fizikai biztonság](azure-physical-security.md)
 - [Azure-infrastruktúra rendelkezésre állása](azure-infrastructure-availability.md)
-- [Az Azure információk rendszerösszetevők és határok](azure-infrastructure-components.md)
+- [Az Azure information rendszerösszetevők és határok](azure-infrastructure-components.md)
 - [Az Azure hálózati architektúra](azure-infrastructure-network.md)
 - [Az Azure éles hálózati környezetben](azure-production-network.md)
-- [A Microsoft Azure SQL Database biztonsági funkciói](azure-infrastructure-sql.md)
-- [Azure-infrastruktúra megfigyelése](azure-infrastructure-monitoring.md)
-- [Azure-infrastruktúra integritása](azure-infrastructure-integrity.md)
-- [Az Azure-ban felhasználói adatok védelme](azure-protection-of-customer-data.md)
+- [Az Azure SQL Database biztonsági funkciók](azure-infrastructure-sql.md)
+- [Azure-infrastruktúra figyelése](azure-infrastructure-monitoring.md)
+- [Az Azure infrastruktúra-integritás](azure-infrastructure-integrity.md)
+- [Az Azure vásárlói adatok védelmére](azure-protection-of-customer-data.md)

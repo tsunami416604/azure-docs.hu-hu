@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 43a26f9e81b788c2a110c24bf2e02c56c0714f1e
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d579ba8913eeb6ce22e277dab454ba7e3b628703
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988836"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171932"
 ---
 # <a name="publish-your-trained-app"></a>A betanított alkalmazás közzététele
 Ha befejezte a elkészítését és tesztelését a LUIS-alkalmazás, tegye közzé. Az alkalmazás közzététele után a közzétételi oldalon látható-e az összes kapcsolódó HTTP [végpontok](luis-glossary.md#endpoint). Ezeket a végpontokat kiszolgálónként [régió](luis-reference-regions.md) és a egy [kulcs](luis-how-to-manage-keys.md), majd integrálva vannak minden olyan ügyfél, a csevegőrobot, vagy a háttérrendszer alkalmazás. 
 
-Bármikor [tesztelése](interactive-test.md) mielőtt közzéteszi az alkalmazást. 
+Bármikor [tesztelése](luis-interactive-test.md) mielőtt közzéteszi az alkalmazást. 
 
 ## <a name="production-and-staging-slots"></a>Éles és átmeneti tárhelyek
 Az alkalmazás, közzétehet a **előkészítési pont** vagy a **üzemelési**. Két közzétételi tárolóhely használatával Ez lehetővé teszi, hogy két különböző végpontok közzétett végpontokkal rendelkező két különböző verziója vagy verziójával rendelkezik. 
@@ -154,4 +154,4 @@ Tesztelje a közzétett végpont URL-cím kiválasztásával a **végpont** oszl
 ## <a name="next-steps"></a>További lépések
 
 * Lásd: [kulcsok kezelése](./luis-how-to-manage-keys.md) kulcs hozzáadása a LUIS-alkalmazás, és ismerje meg hogyan kulcsok leképezése régióban.
-* Lásd: [Train és tesztelje alkalmazását](interactive-test.md) vonatkozó utasításokat a közzétett alkalmazás tesztelése a test-konzolon.
+* Lásd: [Train és tesztelje alkalmazását](luis-interactive-test.md) vonatkozó utasításokat a közzétett alkalmazás tesztelése a test-konzolon.

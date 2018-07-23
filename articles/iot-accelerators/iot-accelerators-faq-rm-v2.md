@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 21e02a9ae4679c1f9521cc188a6f72878276fb93
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ba0d81761904be74632f8f0025488b7f501bd715
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076154"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185999"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Távoli figyelési megoldásgyorsító kapcsolatos gyakori kérdések
 
@@ -42,7 +42,7 @@ További információkért lásd: [eszközök megtekintéséhez a térképen a d
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A távoli figyelési megoldásgyorsító funkcióinak megismerése](iot-accelerators-remote-monitoring-explore.md)
+* [A távoli figyelési megoldásgyorsító funkcióinak megismerése](quickstart-remote-monitoring-deploy.md)
 * [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
 * [Okosgyár-megoldásgyorsító üzembe helyezése](quickstart-connected-factory-deploy.md)
 * [IoT-biztonság létrehozása az alapoktól](/azure/iot-fundamentals/iot-security-ground-up)

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/21/2018
-ms.openlocfilehash: 3637ee63c94ea54145d99b9d5632f0a77c95d2f4
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7494f139f824d3794fced3a0eb4f8d676f3961f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970261"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173707"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for postgresql-hez tarifacsomagok
 
@@ -97,6 +97,8 @@ A kiszolgáló van megjelölve csak olvasható, amikor szabad tárterület mére
 Ha a kiszolgáló értékre van állítva, csak olvasható, az összes meglévő munkamenet le vannak választva, és a nem véglegesített tranzakció vissza legyen állítva. Bármely ezt követő írási műveletek és a tranzakció érvényesítése sikertelen. Minden olvasási lekérdezések zavartalanul fog működni.  
 
 Növelje a kiosztott tárterület a kiszolgálóhoz, vagy új munkamenet indításához az írható-olvasható módban, és a drop adatok szabad tárhely felszabadítása érdekében. Futó `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` állítja be a jelenlegi munkamenet olvasási, írási módban. Annak érdekében, hogy adatsérülés elkerülése érdekében ne hajtsa végre írási műveleteket Ha a kiszolgáló továbbra is a csak olvasható állapotát.
+
+Azt javasoljuk, hogy beállította egy riasztás arra az esetre, ha a kiszolgáló tárhelyét hamarosan eléri a küszöbértéket a csak olvasható állapotba első elkerülése érdekében. További információkért lásd a dokumentációt [riasztást beállítása](howto-alert-on-metric.md).
 
 ## <a name="backup"></a>Backup
 

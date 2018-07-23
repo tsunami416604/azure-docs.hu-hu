@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 4e745a5de8000e0f26491c9f4f236f7f8a735ae9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: de0d6ee32380367bfba4a27958c9c1e739b5dba3
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635068"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173426"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Hogyan biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez az Azure CLI használatával
 
@@ -84,6 +84,8 @@ A hely és a tarifacsomag-értékei a visszaállított kiszolgáló továbbra is
 
 A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón, és győződjön meg arról, hogy az adatok helyreáll a várt módon.
 
+A visszaállítás során létrehozott új kiszolgáló nem rendelkezik a tűzfalszabályt, amely létezett az eredeti kiszolgálón. Tűzfalszabályok kell lennie külön beállítja azt az új kiszolgáló számára.
+
 ## <a name="geo-restore"></a>GEO-visszaállítás
 Ha konfigurálta a kiszolgáló georedundáns biztonsági mentésekhez, egy új kiszolgálót a biztonsági mentésből a meglévő kiszolgáló hozható létre. Az új kiszolgáló hozható létre bármelyik régióban érhető el, hogy az Azure Database for postgresql-hez.  
 
@@ -121,6 +123,8 @@ A `az postgres server georestore` parancs requies a következő paraméterekkel:
 >Az új kiszolgáló létrehozása a geo-visszaállítás által, amikor örökli az azonos tárolási mérettel és tarifacsomagjának mint a forráskiszolgálónak. Ezeket az értékeket nem lehet módosítani a létrehozása során. Az új kiszolgáló létrehozása után a tároló mérete is vertikálisan fel.
 
 A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón, és győződjön meg arról, hogy az adatok helyreáll a várt módon.
+
+A visszaállítás során létrehozott új kiszolgáló nem rendelkezik a tűzfalszabályt, amely létezett az eredeti kiszolgálón. Tűzfalszabályok kell lennie külön beállítja azt az új kiszolgáló számára.
 
 ## <a name="next-steps"></a>További lépések
 - További információ a szolgáltatásról [biztonsági mentések](concepts-backup.md).

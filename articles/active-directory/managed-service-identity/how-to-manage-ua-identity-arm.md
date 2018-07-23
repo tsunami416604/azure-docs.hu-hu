@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: ced2a8354e63288ad9957b6a177b43c97b58698c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 42d5b55e0bddf2d027810bfdf146de9bfee8a0fb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160535"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188131"
 ---
 # <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Lista létrehozása, és a egy felhasználóhoz hozzárendelt identitás, az Azure Resource Manager törlése
 
@@ -37,8 +37,8 @@ Nem alkalmas listázása és törlése egy a felhasználóhoz hozzárendelt iden
 
 - Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség egy rendszer által hozzárendelt, és a felhasználóhoz hozzárendelt identitás](overview.md#how-does-it-work)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-
-Jelentkezzen be az Azure-bA helyileg vagy az Azure Portalon az Azure-előfizetéshez társított olyan fiókot használjon, amely tartalmazza a virtuális Gépet. Emellett győződjön meg arról, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi a virtuális gép (például "Virtuális gép közreműködő" szerepkör) írási engedéllyel.
+- Ebben a cikkben a műveletek végrehajtásához a fióknak rendelkeznie kell a következő szerepkör-hozzárendelés:
+    - [Felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör létrehozása, olvasása (lista), frissítése és törlése a felhasználóhoz hozzárendelt identitás.
 
 ## <a name="template-creation-and-editing"></a>Sablon létrehozása és szerkesztése
 
@@ -51,7 +51,7 @@ Ahogy az az Azure portal és a parancsfájlok, az Azure Resource Manager-sablono
 
 ## <a name="create-a-user-assigned-identity"></a>Felhasználóhoz rendelt identitás létrehozása 
 
-A felhasználóhoz hozzárendelt identitás létrehozásához használja az alábbi sablont. Legalább a fióknak rendelkeznie kell rendelni a [felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkört a felhasználóhoz hozzárendelt identitás létrehozása. Cserélje le a `<USER ASSIGNED IDENTITY NAME>` értéket a saját értékeire:
+A felhasználóhoz hozzárendelt identitás létrehozásához használja az alábbi sablont. Cserélje le a `<USER ASSIGNED IDENTITY NAME>` értéket a saját értékeire:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 

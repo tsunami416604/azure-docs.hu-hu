@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban felhasználói adatok védelme
-description: Ez a cikk foglalkozik, hogyan Azure felhasználói adatok védelmét.
+title: Az Azure-ban tárolt ügyféladatok védelme
+description: Ez a cikk foglalkozik, hogyan védi az Azure a vásárlói adatokat.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 9a3b00e39f78f65b05b7d730447440d481979539
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0b702cec6113e6b31e34750872479dce162e4cb6
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102322"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173067"
 ---
-# <a name="protection-of-customer-data-in-azure"></a>Az Azure-ban felhasználói adatok védelme   
-A Microsoft üzemeltetési és támogató személyzete alapértelmezés szerint nem férhet hozzá a vevőadatokhoz. Felhasználói adatok hozzáférésének megadását vezetőségi jóvá kell, és majd hozzáférés gondosan felügyelt, és a rendszer naplózza. A hozzáférés-vezérlési követelményeinek létrehozása a következő Microsoft Azure biztonsági házirend alapján történik:
+# <a name="azure-customer-data-protection"></a>Az Azure vásárlói adatok védelmére   
+A Microsoft üzemeltetési és támogató személyzete alapértelmezés szerint nem férhet hozzá a vevőadatokhoz. Ha engedélyezett a hozzáférés a vásárlói adatokhoz, a rendszer vezetői jóváhagyásra szükség és a hozzáférés van gondosan felügyelt naplózza. A hozzáférés-vezérlésre vonatkozó követelményeket a következő Azure-biztonsági házirendet állítja be:
 
-- Nem érhető el alapértelmezés szerint a felhasználói adatok
-- Az ügyfél virtuális gépek nem felhasználói vagy rendszergazdai fiók
-- Adja meg a feladat elvégzése; szükséges legalacsonyabb jogosultsági szint naplózási és hozzáférési kérelmek naplózása
+- Nem érhető el az ügyféladatokat, alapértelmezés szerint.
+- Nincsenek felhasználói vagy rendszergazdai fiókok ügyfél virtuális gépeken (VM).
+- Adja meg a minimális jogosultság; feladat végrehajtásához szükséges naplózási és hozzáférési kérelmek naplózása.
 
-Microsoft Azure technikai támogatási csoporthoz rendelt egyedi vállalati AD-fiókok a Microsoft által. A Microsoft Azure a Microsoft vállalati Active Directory, MSIT történő hozzáférés szabályozása érdekében fontos információk rendszerek által kezelt támaszkodik. Többtényezős hitelesítés szükséges, és csak hozzáférés biztonságos konzol.
+Az Azure támogatási csoporthoz rendelt egyedi vállalati Active Directory-fiókok a Microsoft által. Az Azure a Microsoft vállalati Active Directory, a Microsoft információkat technológia (MSIT), a kulcsadatokat rendszerekhez való hozzáférésének felügyelt támaszkodik. A multi-factor authentication megadása kötelező, és a hozzáférés csak a biztonságos konzolok.
 
-Minden hozzáférések figyeli, és egy alapvető házirendcsoport jelentések keresztül jeleníthető meg.
+Minden hozzáférési kísérleteket monitorozza, és a egy alapvető házirendcsoport jelentések keresztül is megjeleníthetők.
 
 ## <a name="data-protection"></a>Adatvédelem
-Azure köszönhetően a felhasználók erős adatbiztonság – mind alapértelmezés szerint, és a felhasználói beállítások szerint.
+Azure köszönhetően a felhasználók erős az adatbiztonságot, alapértelmezett vagy felhasználói közül.
 
-**Az adatok elkülönítése** -Azure a több-bérlős szolgáltatást, ami azt jelenti, hogy ugyanazon a fizikai hardveren több ügyfél központi telepítések és a virtuális gépek kell tárolni. Azure logikai elkülönítés használatával elkülönítse az adatok mások egyes ügyfelek adatait. Elkülönítése biztosít a méretezés és a több-bérlős szolgáltatások gazdasági előnyei szigorú megakadályozza az ügyfél egy másik adatok elérése közben.
+**Az adatok elkülönítése**: az Azure több-bérlős szolgáltatás, ami azt jelenti, hogy több ügyfél központi telepítések és ugyanazokon a hardvereszközökön tárolt virtuális gépek. Azure logikai elkülönítés használatával elkülönítheti az egyes ügyféladatot átviheti az adatokat, mások. Elkülönítése biztosítja a méretezési csoport és a több-bérlős szolgáltatások gazdasági előnyeinek ellenőrizteti megakadályozza, hogy ügyfelek hozzáférjenek egymás adataihoz.
 
-**Az adatvédelem nyugalmi** -ügyfelek felelőssége annak biztosítása, hogy az Azure-ban tárolt adatok titkosítása az előírásoknak. Az Azure számos különböző titkosítási képességeit, így ügyfelei rugalmasan válassza ki az igényeinek leginkább megfelelő megoldást kínál. Az Azure Key Vault segítségével az ügyfelek könnyen az adatok titkosítása a felhőalapú alkalmazások és szolgáltatások által használt kulcsok irányítást tarthat fenn. Az Azure Disk Encryption lehetővé teszi az ügyfelek virtuális gépek titkosításához. Az Azure Storage szolgáltatás titkosítási lehetővé teszi egy ügyfél tárfiókjával csoportosítson összes adatot titkosítják.
+**Inaktív adatok védelmére**: az ügyfelek felelőssége arról gondoskodni, hogy az Azure-ban tárolt adatok titkosítását azok szabványoknak megfelelően. Az Azure számos titkosítási lehetőségeket, így a vevők rugalmasan választhatja ki az igényeinek leginkább megfelelő megoldást kínál. Az Azure Key Vault segítségével az ügyfelek könnyedén tarthatja kézben a felhőalapú alkalmazások és szolgáltatások által az adatok titkosításához használt kulcsokat. Az Azure Disk Encryption lehetővé teszi a vevők titkosíthatják a virtuális gépeket. Az Azure Storage Service Encryption lehetővé teszi kerül az ügyfél storage-fiók összes adat titkosítását.
 
-**Az átvitel közbeni adatvédelem** -ügyfelek is engedélyezheti a titkosítást a saját virtuális gépek és a végfelhasználók közötti forgalmat. Azure védi az adatokat átvitel közben, vagy a külső összetevőket, és az adatok átmenő belső, például két virtuális hálózatok közötti. Azure 2048 bites RSA/SHA-256 titkosítási kulcsokkal, ajánlott által CESG/NCSC, mint a szabványos Transport Layer Security (TLS) 1.2-es vagy újabb operációs rendszerre protokoll közötti kommunikáció titkosítására használja:
+**Adatok védelmére átvitel**: ügyfelei engedélyezhetik a saját virtuális Gépeiket és a végfelhasználók közötti adatforgalomra titkosítást. Az Azure védi az adatokat átvitel közben, illetve a külső összetevők és az adatok átvitel belső használatra, például két virtuális hálózat között. Az Azure az iparági szabványnak megfelelő Transport Layer Security (TLS) 1.2-es vagy újabb protokollt használja az 2048 bites RSA/SHA256-titkosítási kulcs, CESG/NCSC, által javasolt módon közötti kommunikáció titkosításához:
 
-- az ügyfél és a felhő
-- belső Azure rendszerek és adatközpontok között
+- Az ügyfél és a felhőben.
+- Belsőleg az Azure és a közötti adatközpontok.
 
-**Titkosítási** -titkosítás az adatok tárolási és átvitel közben elvégezhető az ügyfelek titkosítás és az adatok integritásának biztosításához az ajánlott eljárás. Az ügyfelek számára a kommunikáció védelméhez az internetről érkező SSL használatára az Azure felhőszolgáltatások konfigurálása egyszerű, és akár az Azure közötti üzemeltetett virtuális gépeket.
+**Titkosítási**: storage-ban, és az átvitel során az adatok titkosítása az ügyfelek általi titkosítás és az adatok sértetlenségének biztosítása érdekében ajánlott eljárásként telepíthető. Az ügyfelek számára a kommunikáció védelméhez, az internetről, és akár az Azure-ban üzemeltetett virtuális gépek közötti SSL használatára az Azure cloud services konfigurálása egyszerű.
 
-**Adatredundanciát** -a Microsoft biztosítja az adatok védelmét, ha egy cyberattack vagy a fizikai sérüléstől adatközpontba. Az ügyfelek is választhat:
+**Adatredundancia**: a Microsoft biztosítja, hogy adatok védelme a kibertámadás esetén vagy az egy kínai adatközpont fizikai sérülés esetén. Ügyfelek is választhat:
 
-- megfelelőségi vagy késés szempontok az ország-tároló
-- biztonsági vagy katasztrófa utáni helyreállításra ki az ország-tároló
+- Az ország tárolási megfelelőségi vagy késés kapcsolatos szempontokat.
+- Tárolási ki az országot, biztonsági vagy vész-helyreállítási céllal.
 
-Adatok előfordulhat, hogy replikálja a redundancia érdekében egy kijelölt földrajzi területen, de a rendszer nem továbbít azon kívül. Az ügyfelek adatreplikálás, beleértve a példányszám és száma és helye replikációs adatközpontok több lehetősége van.
+Adatok replikálható a redundancia érdekében egy kiválasztott földrajzi területen belül, de nem lehet megadni azon kívül jelenik meg. Ügyfelek replikál adatokat, többek között a másolatokat és száma és helye replikációs adatközpontok több lehetősége van.
 
-A tárfiók létrehozásakor kell választania a következő replikációs lehetőségek egyikét:
+A tárfiók létrehozásakor válassza ki a következő replikációs lehetőségek egyikét:
 
-- Helyileg redundáns tárolás (LRS) A helyileg redundáns tárolás három másolatot tart fenn adatairól. A rendszer egy régió egyetlen létesítményén belül háromszor replikálja az LRS-t. Az LRS megvédi adatait a normál hardverhibáktól, de nem nyújt védelmet a létesítményt érintő hibák ellen.
-- Zónaredundáns tárolás (ZRS). A zónaredundáns tárolás három másolatot tart fenn adatairól. A ZRS rendszer háromszor replikálja az LRS-nél nagyobb tartósságot biztosít két vagy három intézményben között. A replikáció egy vagy két régióban. A ZRS biztosítja az adatok tartósságát egyetlen régión belül.
-- Georedundáns tárolás (GRS). Amikor létrehoz egy tárfiókot, a georedundáns tárolás alapértelmezés szerint engedélyezve van. A GRS hat másolatot tart fenn adatairól. A GRS az adatok rendszer háromszor replikálja az elsődleges régióban. Az adatok is háromszor replikálja az elhagyja az elsődleges régióban, így a legmagasabb szintű tartósságot miles egy másodlagos régióban több száz. Ha az elsődleges régióban hiba történne, az Azure Storage feladatátvételt hajt végre a másodlagos régióba. A GRS biztosítja az adatok tartósságát két külön régióban.
+- **Helyileg redundáns tárolás (LRS)**: helyileg redundáns tárolás három másolatot tart fenn az adatokat. A rendszer egy régió egyetlen létesítményén belül háromszor replikálja az LRS-t. LRS védi az adatokat a normál hardverleltárfájlok hibák után, de nem létesítményt hiba.
+- **Zónaredundáns tárolás (ZRS)**: zónaredundáns tárolás három másolatot tart fenn az adatokat. A ZRS rendszer háromszor replikálja az LRS-nél nagyobb tartósságot biztosítanak két vagy három intézményben. A replikáció egy adott régión belül, vagy két régióban is. A ZRS segítségével, győződjön meg arról, hogy az adatok tartós, egy adott régión belül.
+- **Georedundáns tárolás (GRS)**: georedundáns tárolás a tárfiók alapértelmezés szerint engedélyezve van, létrehozásakor. A GRS hat másolatot tart fenn adatairól. A grs Tárolással az adatok rendszer háromszor replikálja az elsődleges régióban. Az adatok is háromszor replikálja a másodlagos régióban több száz mérfölddel erről az elsődleges régióban, így a legmagasabb szintű tartósságot. Az elsődleges régióban hiba esetén az Azure Storage átadja a feladatokat a másodlagos régióba. GRS segít az adatok tartósságának biztosítása két külön régióban.
 
-**Adatok megsemmisítésének** – Ha az ügyfelek törli az adatokat, vagy hagyja Azure, a Microsoft következő szigorú szabványait felülírja a tárolási erőforrások újbóli, valamint a leszerelt hardver fizikai megsemmisítése előtt. Microsoft végrehajtja az adatok teljes törlését a felhasználói kérelem és a szerződés megszüntetése.
+**Adatok megsemmisítésének**: ügyfelek törli az adatokat, vagy hagyja meg az Azure, Microsoft követi-e a tárolási erőforrások, mielőtt azok újbóli, valamint a fizikai megsemmisítése leszerelt hardver felülírása szigorú szabványokat. A Microsoft végrehajtja az adatok egy teljes törlését, ügyfélkérés és a szerződés felmondása.
 
-## <a name="customer-data-ownership"></a>Felhasználói adatok tulajdonjoga
-A Microsoft nem vizsgálja meg, hagyja jóvá vagy figyelni, hogy az ügyfelek központi telepítése az Azure-alkalmazásokat. Ezenkívül a Microsoft nem tudja, milyen adatokat ügyfelek válassza az Azure-ban tárolja. A Microsoft nem tulajdonosi adatok az Azure megadott ügyfél-információ keresztül.
+## <a name="customer-data-ownership"></a>Vásárlói adatok tulajdonjoga
+A Microsoft nem vizsgálja meg, hagyja jóvá vagy figyelheti az alkalmazásokat, amelyek az ügyfelek üzembe helyezése az Azure-bA. Ezenkívül a Microsoft nem tudja típusú adatok ügyfél dönt az Azure-ban tárolja. A Microsoft nem tulajdonjogának adatokat meg kell adni az Azure-bA ügyfélinformációkat keresztül.
 
-## <a name="records-management"></a>Rekordok kezelése
-Azure létesített háttéradatokkal belső rekordok megőrzési követelményei. Az ügyfelek felelőssége saját rekordok megőrzési vonatkozó követelmények azonosításának. Az Azure-ban tárolt rekordok az ügyfél felelős az adatok kinyeréséhez, valamint az Azure-on kívüli tartalom megőrzése az ügyfél által megadott megőrzési ideig.
+## <a name="records-management"></a>Rekordkezelés
+Az Azure háttér-adatok belső rekordok-megőrzési követelményei hozott létre. Ügyfelek felelőssége saját rekordok megőrzési követelményeinek. Az Azure-ban tárolt rekordok ügyfelei felelősek az adatok kinyeréséhez és az Azure-on kívül a tartalom megőrzése az ügyfél által megadott megőrzési ideig.
 
-Azure teszi lehetővé az ügyfél exportálhatja az adatokat, és jelentéseket a termék naplózására. A kivitel helyileg menti, és tartsa meg az adatai egy felhasználó által meghatározott megőrzési időszakot.
+Az Azure lehetővé teszi, hogy az ügyfelek számára, hogy az adatok exportálása és a naplózási jelentéseket a termék. A export helyben menti, és megőrizheti az adatait egy felhasználó által meghatározott megőrzési időszakot.
 
-## <a name="electronic-discovery-e-discovery"></a>Elektronikus felderítés (elektronikus felderítés)
-Az Azure ügyfelei felelősek az elektronikus felderítés követelményeinek megfelelő azok használata Azure-szolgáltatásokhoz. Ha az Azure felhasználóinál meg kell őriznie az ügyféladatokat, akkor előfordulhat, hogy exportálni, és helyileg az adatok mentése. Az ügyfelek emellett Azure ügyfél-támogatási részleg használói kérhetnek exportálja az adatokat. Amellett, hogy az ügyfelek számára az adatok exportálása lehetővé, a Azure széles körű naplózás és figyelés belső végez.
+## <a name="electronic-discovery-e-discovery"></a>Elektronikus felderítés (ediscovery)
+Az Azure-ügyfelek az Azure-szolgáltatások használata az elektronikus felderítés követelményeknek megfelelő felelős. Ha Azure-ügyfeleknek meg kell őrizniük a vásárlói adatokat, azok előfordulhat, hogy exportálása és az adatok helyi. Ügyfelek emellett az Azure ügyfélszolgálatának részleg használói kérhetnek exportálásai adataikat. Amellett, hogy lehetővé teszi az ügyfelek számára az adatok exportálása, az Azure széles körű naplózás és figyelés belsőleg hajt végre.
 
 ## <a name="next-steps"></a>További lépések
-Microsoft funkciója az Azure-infrastruktúra védelméhez kapcsolatos további információkért lásd:
+A Microsoft használ az Azure-infrastruktúra secure kapcsolatos további információkért lásd:
 
-- [Az Azure létesítményekben, a helyszíni és a fizikai biztonság](azure-physical-security.md)
+- [Azure létesítményekben, a helyi és a fizikai biztonság](azure-physical-security.md)
 - [Azure-infrastruktúra rendelkezésre állása](azure-infrastructure-availability.md)
-- [Az Azure információk rendszerösszetevők és határok](azure-infrastructure-components.md)
+- [Az Azure information rendszerösszetevők és határok](azure-infrastructure-components.md)
 - [Az Azure hálózati architektúra](azure-infrastructure-network.md)
 - [Az Azure éles hálózati környezetben](azure-production-network.md)
-- [A Microsoft Azure SQL Database biztonsági funkciói](azure-infrastructure-sql.md)
-- [Az Azure éles műveletek és kezelése](azure-infrastructure-operations.md)
-- [Azure-infrastruktúra megfigyelése](azure-infrastructure-monitoring.md)
-- [Azure-infrastruktúra integritása](azure-infrastructure-integrity.md)
+- [Az Azure SQL Database biztonsági funkciók](azure-infrastructure-sql.md)
+- [Azure éles környezetben való üzemeltetés és a felügyelet](azure-infrastructure-operations.md)
+- [Azure-infrastruktúra figyelése](azure-infrastructure-monitoring.md)
+- [Az Azure infrastruktúra-integritás](azure-infrastructure-integrity.md)

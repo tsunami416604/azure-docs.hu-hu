@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 77bfaad4909927d277d856a6b79f9f4c871b4f35
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a104578b0c010ea7ded99e6bf24e4daa30526318
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159752"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187323"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Az Azure Marketplace és AppSource közzétételi útmutató
 
@@ -71,10 +71,9 @@ Miután [küldje el a megoldás](https://azuremarketplace.microsoft.com/sell/sig
 További információ a Microsoft a piaci megjelenést előnyökről és növelje üzletét a Marketplace-en: [a Microsoft piaci megjelenést szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
 
 ## <a name="storefronts"></a>Áruházak
-Egy áruház oldala az ajánlatok listázása, engedélyezze a kísérleteket, majd közvetlenül a Microsoft ügyfelei transact. A Microsoft biztosít különböző kirakattípus a Marketplace és appsource-ban. A részletek és a egy kirakattípus összehasonlítása a következő cikkekben talál:
-*   [Appsource-ban és az Azure Marketplace-en](./comparing-appsource-azure-Marketplace.md)
-*   [Vállalatfejlesztés az AppSource segítségével](./grow-your-business-with-appsource.md)
-*   [Növelje üzletét az Azure Piactérrel](./grow-your-business-with-azure-Marketplace.md)
+Egy áruház oldala az ajánlatok listázása, engedélyezze a kísérleteket, majd közvetlenül a Microsoft ügyfelei transact. A Microsoft biztosít különböző kirakattípus a Marketplace és appsource-ban. Minden egyes kirakattípus részletes előnyeit tekintse meg a következő hivatkozásra:
+* [Az AppSource és az Azure Marketplace összehasonlítása](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
+* [Növelje üzletét a Marketplace-en](https://docs.microsoft.com/en-us/azure/marketplace/grow-your-business-with-azure-marketplace)
 
 Kirakattípus segíthet az ügyfeleknek, keresse meg, és megvásárolják alkalmazásokat és szolgáltatásokat, gyorsítsa fel a digitális átalakítást az ügyfél. Kirakattípus segít Önnek a növekedésben a vállalatok a Microsoft ügyfelei és partnerei való hozzáférés kiterjesztésével.
  
@@ -88,13 +87,12 @@ Minden kirakat biztosít a speciális beállításokat a közzétételi befektet
 | Csomag típusa | <ul><li>Tanácsadási szolgáltatások</li><li>Kapcsolatfelvétel</li><li>Ingyenes próbaidőszak</li><li>Most</li><li>Próbaüzem</li></ul> | <ul><li>Azure-alkalmazások: a felügyelt alkalmazás</li><li>Az Azure apps: megoldássablon</li><li>Tanácsadási szolgáltatások</li><li>Kapcsolatfelvétel</li><li>Próbaverzió</li><li>Virtuális gép</li></ul> |
 | Alkalmazáson belüli felhasználói élményt alkalmazásokhoz és szolgáltatásokhoz a környezetben, az alkalmazás hozzáférést biztosít a felhasználóknak | <ul><li>Dynamics 365</li><li>Office 365</li><li>Office kliensalkalmazások</li><li>Power BI</li></ul> | <ul><li>Azure Portal</li><li>Azure Resource Manager</li><li>Azure CLI</li></ul> |
 
-## <a name="publish-in-a-storefront-in-the-marketplace"></a>A Marketplace-en egy kirakat közzététele
+## <a name="publish-in-the-marketplace"></a>A piactéren közzétett
 A következő cikkek nyújtanak tájékoztatást appsource-ban és az Azure Marketplace közzétételi beállítások.
 
 Válhat kiadóvá a piactéren három egyszerű lépésben egy áruház oldala:
-1. [A közzététel a megoldás meghatározása](./determine-your-listing-type.md)
-2. [Válhat kiadóvá a piactéren kirakattípus](./become-publisher.md)
-3. [Követelményeinek megértését listázásával típusa](./listing-type-requirements.md) 
+1. [Közzétételi lehetőség](https://review.docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type?branch=pr-en-us-47093)
+2. [Válhat kiadóvá a piactéren kirakattípus](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-47093)
 
 ## <a name="publishing-checklists"></a>Közzétételi Ellenőrzőlisták
 *   [Közzétételi ellenőrzőlista az appsource-ban](publishing-checklist-appsource.md)

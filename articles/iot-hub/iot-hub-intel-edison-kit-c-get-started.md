@@ -10,18 +10,18 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: 2efea8054320323df0e0eb603a20a5773d03cad8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2e0f8b46f2020db0bb657a8e099158c349af6a89
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676621"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187665"
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Intel Edison csatlakozhat az Azure IoT Hub (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Ez az oktatóanyag első lépésként, tanulás az Intel Edison való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe az eszközök [Azure IoT Hub](iot-hub-what-is-iot-hub.md).
+Ez az oktatóanyag első lépésként, tanulás az Intel Edison való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe az eszközök [Azure IoT Hub](about-iot-hub.md).
 
 Még nem rendelkezik egy csomagot? Indítsa el [Itt](https://azure.microsoft.com/develop/iot/starter-kits)
 

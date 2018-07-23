@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5babe089575d03db1f6bc0dd3f01bd3b6a5475fe
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: acf328b706a992df03de837ba8837c5810593ae5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951899"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173741"
 ---
 # <a name="utterances-in-luis"></a>A LUIS kimondott szöveg
 
@@ -47,7 +47,7 @@ Itt, a core kifejezés a "számítógép", nem változott. Asztali számítógé
 Minden egyes szándékot példa utterances, legalább 10-15 rendelkeznie kell. Ha megjelölésű példa megszólalásokat nem rendelkező, nem lesz képes LUIS betanításához. Ha az egy vagy néhány példa utterances megjelölésű, LUIS fog nem előre pontosan a célt. 
 
 ## <a name="add-small-groups-of-10-15-utterances-for-each-authoring-iteration"></a>Az Authoring Tool törzsének 10 – 15 utterances kis csoportok hozzáadása
-A modell minden egyes ismétléskor ne adjon hozzá egy nagy mennyiségű kimondott szöveg. Beszédmódok hozzáadása több tíz mennyiségét. [Train](luis-how-to-train.md), [közzététele](luis-how-to-publish-app.md), és [tesztelése](interactive-test.md) újra.  
+A modell minden egyes ismétléskor ne adjon hozzá egy nagy mennyiségű kimondott szöveg. Beszédmódok hozzáadása több tíz mennyiségét. [Train](luis-how-to-train.md), [közzététele](luis-how-to-publish-app.md), és [tesztelése](luis-interactive-test.md) újra.  
 
 A LUIS, gondosan ki van jelölve, hogy megcímkézzen hatékony modelleket hoz létre. Túl sok beszédmódok hozzáadása nincs értékes keveredési, mert.  
 

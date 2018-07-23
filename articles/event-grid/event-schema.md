@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/06/2018
+ms.date: 07/20/2018
 ms.author: babanisa
-ms.openlocfilehash: 266ddced5f1949fa72508d914f76953101a7aac6
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: f7be7e5f5e51a47b95d39047af9bcf08e463ca34
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902231"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186111"
 ---
 # <a name="azure-event-grid-event-schema"></a>Az Azure Event Grid-esemény séma
 
@@ -83,7 +83,7 @@ Az összes esemény rendelkezik ugyanazokat az alábbi felső szintű adatokat:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tulajdonos | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| Tulajdonos | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | sztring | Az esemény egyedi azonosítója. |
@@ -94,6 +94,7 @@ Az összes esemény rendelkezik ugyanazokat az alábbi felső szintű adatokat:
 Az az objektum tulajdonságainak kapcsolatos további információkért tekintse meg az eseményforrás:
 
 * [Az Azure-előfizetések (műveletek)](event-schema-subscriptions.md)
+* [Container Registry](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)
