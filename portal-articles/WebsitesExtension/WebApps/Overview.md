@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: e795a6c5f76fb8d40c7e6778555de619d00b3a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c01fcc7e69cf5af26b127519f183062ccf4923cc
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600904"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172744"
 ---
 # <a name="app-service-documentation"></a>App Service – dokumentáció
 Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat az infrastruktúra, a nyelv vagy a webes keretrendszer futtatókörnyezetének kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely egyéb Git-adattárból. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.
@@ -29,7 +29,7 @@ Megtudhatja, hogyan helyezheti üzembe első alkalmazását a felhőben az App S
 - [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
 - [PHP](/azure/app-service/app-service-web-get-started-php)
 - [Java](/azure/app-service/app-service-web-get-started-java)
-- [Python](/azure/app-service/app-service-web-get-started-python)
+- [Python](/azure/app-service/containers/quickstart-python)
 - [HTML](/azure/app-service/app-service-web-get-started-html)
 
 ## <a name="step-by-step-tutorials"></a>Részletes útmutatók
@@ -40,7 +40,7 @@ Megtudhatja, hogyan telepíthet, kezelhet és monitorozhat biztonságos webalkal
   - [.NET és Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
   - [Node.js és MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
   - [Java és MySQL](/app-service/app-service-web-tutorial-java-mysql)
-  - [Python és PostgreSQL](/app-service/app-service-web-tutorial-python-postgresql)
+  - [Python és PostgreSQL](/app-service/containers/tutorial-docker-python-postgresql-app)
 - [Meglévő egyéni tartomány kapcsolása az alkalmazáshoz](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Meglévő SSL-tanúsítvány kötése az alkalmazáshoz](/azure/app-service/app-service-web-tutorial-custom-SSL)
 

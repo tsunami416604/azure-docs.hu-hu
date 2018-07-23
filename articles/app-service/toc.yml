@@ -23,8 +23,6 @@
       href: app-service-web-get-started-php.md
     - name: Java-alkalmazás létrehozása
       href: app-service-web-get-started-java.md
-    - name: Python-alkalmazás létrehozása
-      href: app-service-web-get-started-python.md
     - name: Statikus HTML-webhely létrehozása
       href: app-service-web-get-started-html.md
 - name: Oktatóanyagok
@@ -41,8 +39,6 @@
           href: app-service-web-tutorial-nodejs-mongodb-app.md
         - name: Java és MySQL
           href: app-service-web-tutorial-java-mysql.md
-        - name: Python és PostgreSQL
-          href: app-service-web-tutorial-python-postgresql.md
     - name: Az SQL DB biztonságos elérése
       href: app-service-web-tutorial-connect-msi.md
     - name: RESTful API üzemeltetése

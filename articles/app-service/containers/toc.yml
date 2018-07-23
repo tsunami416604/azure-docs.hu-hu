@@ -19,6 +19,8 @@
       href: quickstart-nodejs.md
     - name: Java-alkalmazás létrehozása
       href: quickstart-java.md
+    - name: Python-alkalmazás létrehozása
+      href: quickstart-python.md
     - name: Ruby-alkalmazás létrehozása
       href: quickstart-ruby.md
     - name: Docker-/Go-alkalmazás létrehozása
