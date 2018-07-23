@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 06fd547ff87263b660e697693c65d9ac1a907628
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 41fe350fd712f6c521a9020af9a540e554abe94b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866725"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170599"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>Tanítás a Beszélgetéstanulóval 
 
@@ -56,9 +56,10 @@ Előző bekapcsolása előtt a rendszer műveletek | 4 |
 Ennek a jelenlegi bekapcsolása előtt található entitások | 4 | 
 Aktuális bekapcsolása előtt a felhasználó kimondott szöveg | 5 | 
 
-Vegye figyelembe, hogy művelet kiválasztása nem vesz-e a tartalom rendszer műveletek – a szöveget, kártya tartalma, vagy API-név vagy viselkedés – csak a rendszer művelet identitását.  Ennek eredményeképpen a művelet tartalmának módosítása nem változtatja meg a művelet kiválasztása modell viselkedését.
-
-További vegye figyelembe, hogy a tartalom és az entitások értékei nem használható – csak jelenléte vagy hiánya.
+> [!NOTE]
+> Művelet kiválasztása nem veszi a tartalom rendszer műveletek – a szöveget, kártya tartalma, vagy API-név vagy viselkedés – csak a rendszer művelet identitását.  Ennek eredményeképpen a művelet tartalmának módosítása nem változtatja meg a művelet kiválasztása modell viselkedését.
+>
+> Továbbá, hogy a tartalom és az entitások értékei nem használt – csak jelenléte vagy hiánya.
 
 Ha a művelet kiválasztása nem a várt módon viselkedik, az alábbiakban lehetséges megoldása:
 

@@ -1,7 +1,7 @@
 ---
-title: Hogyan kártyák használata a beszélgetés tanuló alkalmazások, 1 – Microsoft kognitív szolgáltatások része |} Microsoft Docs
+title: Hogyan használja a kártyák Beszélgetéstanuló modell, 1. rész – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Megtudhatja, hogyan kártyák használata a beszélgetés tanuló alkalmazás.
+description: Ismerje meg, hogyan használja a kártyák egy Beszélgetéstanuló modellel.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,78 +10,85 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e90ccd42b21eea6139c402937be7e20513d73c84
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 988a2433f098f41bca4796299825293efd4de44b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348606"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171134"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>Kártya (2 1. rész) használata
 
-Ez az oktatóanyag bemutatja, hogyan lehet felvenni, és egy egyszerű kártyát használni a botot.
+Ez az oktatóanyag bemutatja, hogyan adhat hozzá, és a egy egyszerű kártya használata a robot.
 
-Vegye figyelembe, hogy a beszélgetés tanuló vár a kártya definíciós fájlokat, és egy "kártyák" nevű könyvtárat, amely a címtárban található található ahol a botot elindult.
+> [!NOTE]
+> Beszélgetéstanuló jelenleg ezt várja a kártya definíciós fájlokat, és egy "kártyák" nevű könyvtárat, amely megtalálható a címtárban található, a bot elindult. Használunk ez konfigurálható a jövőben.
+
+## <a name="video"></a>Videó
+
+[![Az oktatóanyag 13 előzetes verzió](http://aka.ms/cl-tutorial-13-preview)](http://aka.ms/blis-tutorial-13)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e az általános útmutató botot
+Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
 
-Kártyák használata a felhasználói felületi elemei, amelyek lehetővé teszik a felhasználónak választania egy beállítást a beszélgetésben. 
+Kártyák a felhasználói felületi elemeket, amelyek lehetővé teszik a felhasználó kiválaszthatja a beállítást a beszélgetésben. 
 
-### <a name="open-the-demo"></a>Nyissa meg a bemutató
+### <a name="open-the-demo"></a>Nyissa meg a bemutatót
 
-A webes felhasználói felület alkalmazások listájának megtekintéséhez kattintson a oktatóanyag-13-kártyák-1. 
+A webes felhasználói felületen modell-lista kattintson a – 13-kártyák – 1. oktatóanyag. 
 
 ### <a name="the-card"></a>A kártya
 
 A kártya definíciója van a következő helyen: C:\<installedpath\>\src\cards\prompt.json.
 
-A rendszer vár a kártya definíciók a kártyák könyvtárban található.
+A rendszer vár, a kártya-definíciók keresése a kártyák könyvtárban található.
 
 ![](../media/tutorial13_prompt.PNG)
 
-- Vegye figyelembe a TextBlock és a kérdés sablont.
-- Nincsenek a két gombok és a szöveg, amely lekérdezi az egyes elküldött küldje el.
+> [!NOTE]
+> Figyelje meg, hogy a törzs típusa `TextBlock` és a `{{question}}` helyőrző a szövegmezőben.
+> Nincsenek a két elküldéséhez, gombok és a szöveg, amelyben az egyes elküldött beolvasása.
 
 ### <a name="actions"></a>Műveletek
 
-Létrehoztunk három műveletet. Alább látható módon az első művelete egy kártyát.
+Három műveletet hoztunk létre. Amint alább látható, az első művelet eredménye egy kártyát.
 
 ![](../media/tutorial13_actions.PNG)
 
-Nézzük meg, hogyan hozták létre a kártya művelet típusa:
+Lássuk, hogyan jött létre a kártya művelet típusa:
 
 ![](../media/tutorial13_cardaction.PNG)
 
-Jegyezze fel a kérdés bemeneti és az 1. és 2 gomb szerepel. Ezek is sablon hivatkozik a kártyán ahol meg kell adni a kérdés és a megfelelő választ. Is hivatkoznak, és használja az entitások vagy a szöveg és entitások.
+> [!NOTE]
+> A kérdés bemeneti, és a gombok 1. és 2. Most már a kártyán hivatkozik, akkor adja meg a kérdést, és a hozzájuk tartozó válaszok. Is hivatkozhat és entitások vagy vegyesen szöveg és entitásokat.
 
-A szem ikon azt ismerteti, a kártya néz.
+Szem ikonra bemutatja, hogy a kártya néz ki.
 
-### <a name="train-dialog"></a>Vonat párbeszédpanel
+### <a name="train-dialog"></a>Train párbeszédpanel
 
-Bemutatjuk, egy tanítási párbeszédpanelen.
+Nézzük végig, egy tanítási párbeszédpanel.
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
 1. Adja meg "hi".
 2. Kattintson a pontszám művelet.
-3. Kattintással jelölje ki a "Kérdés Ugrás balra vagy jobbra".
-    - Kattintson a "" vagy "bal" megegyezik felhasználói írja be a "left" vagy "jobbra" kulcsszó. 
+3. Kattintással jelölje ki a "Rákérdezés go bal vagy jobb oldali".
+    - Kattintson "a bal oldali" vagy "megfelelő" megegyezik a felhasználó beírja a "left" vagy "megfelelő" jelölik. 
 4. Kattintson a pontszám műveletek.
-4. Kattintással jelölje be "left". Ez a nem-wait-művelet.
-6. Kattintással jelölje ki a "Kérdés Ugrás balra vagy jobbra".
-4. Kattintson a "jobbra".
+4. Kattintással jelölje be "left". Ez az egy nem várja meg a műveletet.
+6. Kattintással jelölje ki a "Rákérdezés go bal vagy jobb oldali".
+4. Kattintson a "megfelelő".
 5. Kattintson a pontszám műveletek.
 3. Jelölje be a 'Jobbról'
-6. Kattintással jelölje ki a "Kérdés Ugrás balra vagy jobbra".
-4. Kattintson a végzett tesztelése.
+6. Kattintással jelölje ki a "Rákérdezés go bal vagy jobb oldali".
+4. Kattintson a kész tesztelése.
 
-Most láthatta kártyák működése. A kártyák könyvtárban vannak definiálva json sablonok. A sablonok fog surface, a felhasználói felület, amely egy karakterlánc vagy egy entitás vagy vegyesen is kitöltheti.
+Most láthatta kártyák működését. Json-sablonok, a kártyák könyvtárban vannak definiálva. A sablonok a felületen a felhasználói felület, amely fel lehet tölteni egy karakterlánc vagy egy entitás gazdagéptípusból, vagy mindkettő használatával.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [2. rész kártyák](./14-cards-2.md)
+> [Kártyák 2. rész](./14-cards-2.md)

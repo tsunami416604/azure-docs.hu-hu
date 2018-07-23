@@ -1,7 +1,7 @@
 ---
-title: Versioning és a címkézést a beszélgetés tanuló alkalmazással - kognitív Microsoft-szolgáltatások használata |} Microsoft Docs
+title: Verziókezelés és a címkézés a Beszélgetéstanuló modell – a Microsoft Cognitive Services használata |} A Microsoft Docs
 titleSuffix: Azure
-description: Megtudhatja, hogyan versioning és a címkézés beszélgetés tanuló alkalmazásokkal együtt használandó.
+description: Ismerje meg, hogyan használható a verziókezelés és a egy Beszélgetéstanuló modellel címkézés.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,58 +10,58 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ea013db078ff33f8597b0e15a8fc951e8ae320e8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c7f23d989cbfa0ece9e404a0fe0feb68cf5fddb2
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348646"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170545"
 ---
-# <a name="how-to-use-versioning-and-tagging"></a>Versioning és címkézés
+# <a name="how-to-use-versioning-and-tagging"></a>Verziókezelés és a címkézés használata
 
-Ez az oktatóanyag bemutatja, hogyan címkét a beszélgetés tanuló alkalmazás verzióját, és állítsa be melyik verziója "élő".  
+Ez az oktatóanyag bemutatja, hogyan a Beszélgetéstanuló modell verziói címkét, és állítsa be melyik verzió "élő".  
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag szükséges botot emulátorral napló párbeszédpanelek, nem a napló párbeszédpanel webes felhasználói felületének létrehozásához.  
+Ehhez az oktatóanyaghoz log párbeszédpanelek, nem a napló párbeszédpanel webes felhasználói felület létrehozása a robot emulator használatával.  
 
-Ez az oktatóanyag megköveteli, hogy fut-e az általános útmutató botot:
+Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag bot:
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
 
-Szerkesztésekor, mindig szerkeszti a "fő" nevű tag – címkézett verziók főkiszolgáló (amely lényegében pillanatképet készít, master) hozhat létre, de címkézett verziói nem szerkeszthetők.
+Szerkesztésekor, mindig a "master" nevű címke szerkesztése – címkézett verziók master (Ez lényegében pillanatfelvételének elkészítése master) hozhat létre, de nem szerkesztheti a címkézett verziók.
 
 ## <a name="steps"></a>Lépések
 
-### <a name="install-the-bot-framework-emulator"></a>Telepítse az Botot keretrendszer emulátort
+### <a name="install-the-bot-framework-emulator"></a>Telepítse a Bot framework-emulátor
 
 - Nyissa meg a következőt: [https://github.com/Microsoft/BotFramework-Emulator](https://github.com/Microsoft/BotFramework-Emulator).
 - Töltse le és telepítse az emulátort.
 
-### <a name="create-an-app"></a>Alkalmazás létrehozása
+### <a name="create-an-model"></a>A modell létrehozása
 
-1. Kattintson az új alkalmazás
-2. A név mezőben adja meg az oktatóanyag-16-Versioning
+1. Kattintson az új modell
+2. A név mezőben adja meg az oktatóanyag-16-verziókezelés
 3. Kattintson a Létrehozás gombra 
 4. Kattintson a beállítások
-5. Másolja az alkalmazás azonosítója
+5. A modell azonosítóját
 
-### <a name="configure-the-emulator"></a>Az emulátor konfigurálása
+### <a name="configure-the-emulator"></a>Az emulator konfigurálása
 
-- A beszélgetés tanuló gyökérmappájába nyissa meg a .env fájlt.
-- Illessze be az alkalmazás Azonosítóját CONVERSATION_LEARNER_APP_ID értékeként
-- Kilépés a parancssorba, majd futtassa újból a beszélgetés tanuló szolgáltatás újraindításához:
+- Beszélgetéstanuló gyökérmappájában nyissa meg a .env fájlt.
+- Illessze be a Modellazonosító CONVERSATION_LEARNER_MODEL_ID értéket
+- A Beszélgetéstanuló szolgáltatás újraindításához a parancssor használatával kilép, és ismételt:
  
-    Futtassa az oktatóanyag általános npm 
+    oktatóanyag – általános futtatásához npm 
 
 ### <a name="actions"></a>Műveletek
 
-Hozzon létre egy műveletet:
+Hozzunk létre egy műveletet:
 
-1. A webes felhasználói felület váltani.
-1. Kattintson a műveletek, majd új művelet.
-2. A választ, adja meg a "hi ott (verzió: 1)".
+1. Váltson a webes felhasználói felületen.
+1. Kattintson a műveletek, majd az új művelet.
+2. Válaszként, adja meg a "hi ott (1-es)".
 3. Kattintson a Mentés gombra.
 
 
@@ -70,50 +70,51 @@ Hozzon létre egy műveletet:
 Új címke létrehozásához:
 
 3. Kattintson a "beállítások", és hozzon létre egy új "címke".
-    - Neki "verzió 1"
-4. Állítsa be a "verzió 1" kell "élő".  
-    - Az élő címke verzióról"1" beállítás hatásának, hogy a csatornák használata a botot használja a "version 1" címke.
-    - Az alkalmazások címkézett verziói nem érinti a módosításokat (módosítása a műveletek, entitásokat, vonat párbeszédpanelek hozzáadása).  
-    - A "fő" címke (módosítása műveletek, entitásokat, vonat párbeszédpanelek hozzáadása) alkalmazás módosításainak mindig történik.  Más szóval "fő" értéke csak címke által módosítható; más címkék pillanatképek rögzítettek.
-    - Bejelentkezés párbeszédpanelek a beszélgetés tanuló felhasználói felület mindig használja főkiszolgáló (nem a élő címke).
+    - Nevezze el "1. verziójának"
+4. Állítsa be az "1. verziójának" kell "élő".  
+    - Az élő címkét "1. verziójának" beállítás hatásának, hogy ez a robot használatával csatornák használja a "version 1" címke.
+    - Modellek címkézett verziói nem érinti a módosításokat (módosítása műveletek, entitásokat, train párbeszédpanelek hozzáadása).  
+    - A "master" címke mindig készülnek el módosításainak egy modell (műveleteket hajthat végre, az entitások módosítása, train párbeszédpanelek hozzáadása).  Más szóval "master", amelyek megváltoztatják; csak címke más címkék pillanatképek vannak rögzítve.
+    - Bejelentkezés párbeszédpanelek a beszélgetés Learner felhasználói felület mindig használja master (nem a élő címke).
 
 ![](../media/tutorial16_v1_create.PNG)
 
-Megjegyzés: a verziót a beállítások jött létre:
+A verzió létrehozása a beállítások:
 
 ![](../media/tutorial16_settings.PNG)
 
-Adjuk hozzá a második műveletet:
+Adjunk hozzá egy második műveletet:
 
-1. Kattintson a műveletek, majd új művelet.
-2. A válasz írja be a "(2-es verziójú) bye bye".
+1. Kattintson a műveletek, majd az új művelet.
+2. A választ adja meg a "bye bye (2-es)".
 
-Az első művelet szerkesztése:
+Az első teendő szerkesztése:
 
 1. Kattintson a műveletek.
-2. A műveletek, kattintson a "hi ott (verzió: 1)".
-3. A válasz módosítása "hi ott (2-es verziójú)".
+2. A műveletek, kattintson a "hi ott (1-es)".
+3. Módosítsa a válasz a "hi ott (2. verzió)".
 
 ![](../media/tutorial16_hi_there_v2.PNG)
 
-### <a name="switch-to-the-bot-emulator"></a>Váltás a botot emuláló
+### <a name="switch-to-the-bot-emulator"></a>Váltson át a robot-emulátor
 
-1. A felhasználói felület botot adja meg a "goodbye".
-2. Megjegyzés: a botot válaszol, "hi ott (verzió: 1)".
-    - Ez azt jelenti, hogy "élő" értéke 1-es verziójával. 
+1. A robot felhasználói Felületet adja meg a "goodbye értékre".
+2. A robot válaszol "üdv mindenkinek ott (1-es)".
+    - Ez bemutatja az 1. verziójának "élő". 
 
 ![](../media/tutorial16_bf_response.PNG)
 
-### <a name="switch-to-the-web-ui"></a>Váltás a webes felhasználói felületen
+### <a name="switch-to-the-web-ui"></a>A webes felhasználói felület
 
-1. Kattintson a napló párbeszédpanelek, (ha bármely párbeszédpanelek, frissítse az alkalmazás nem jelenik meg).
-2. Kattintson a "hi ott (2-es verziójú)"
+1. Kattintson a napló párbeszédpanelek, és (Ha nem lát minden párbeszédpanelek, a frissítés gombra).
+2. Kattintson a "hi ott (2-es)"
 
-Vegye figyelembe, hogy javításokat választani a minden jelenleg elérhető művelet kitöltésében. Ezeket a szerkesztéseket a fő fog történni.
+> [!NOTE]
+> Javításokat minden jelenleg elérhető művelet kiválasztásával teheti azt. Ezeket a szerkesztéseket a fő fog érkezni.
 
-Most láthatta versioning működése, és hogyan kezelheti a Botot keretrendszer emulator használatával botot.
+Most láthatta versioning működését, és hogyan használhatja a robot a Bot framework emulator használatával.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bemutató - jelszó alaphelyzetbe állítása](./demo-password-reset.md)
+> [Bemutató – jelszó-visszaállítás](./demo-password-reset.md)

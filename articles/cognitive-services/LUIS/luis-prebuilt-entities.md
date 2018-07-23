@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: cahann
 ms.reviewer: v-geberr
-ms.openlocfilehash: 0dc1dbf32114e989fd2b9c2be61bd531f7b5e839
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f7abf6d8a9f0fe18017fe5c54801ac0d3b6c379e
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347428"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170783"
 ---
 # <a name="prebuilt-entities"></a>Előre összeállított entitások
 
@@ -37,7 +37,7 @@ LUIS az általános típusú adatok, például a dátumok, időpontok, számok, 
 ## <a name="use-a-prebuilt-number-entity"></a>Egy előre elkészített számú entitást használja
 Ha az alkalmazás tartalmaz egy előre összeállított entitások, az előrejelzéseket a közzétett alkalmazás szerepelnek. Előre összeállított entitások viselkedését előre betanított és **nem** módosítható. Kövesse az alábbi lépéseket, hogy egy előre összeállított entitások működését:
 
-1. Adjon hozzá egy **szám** entitást az alkalmazáshoz, majd [Train](interactive-test.md) és [közzététele](luis-how-to-publish-app.md) az alkalmazást.
+1. Adjon hozzá egy **szám** entitást az alkalmazáshoz, majd [Train](luis-interactive-test.md) és [közzététele](luis-how-to-publish-app.md) az alkalmazást.
 2. Kattintson a végpont URL-cím a **App közzététele** megnyitásához a LUIS-végpont egy webböngészőben. 
 3. Az URL-cím, amely tartalmaz egy numerikus kifejezés hozzáfűzése egy utterance (kifejezés). Például beírhatja a `buy two plane ticktets`, és láthatja, hogy a LUIS azonosítja `two` , egy `builtin.number` entitás, és azonosítja az `2` alelem értékként a a `resolution` mező. A `resolution` mező segít a számok és dátumok feloldani a kanonikus formájában, amely egyszerűbb használata az ügyfélalkalmazás számára. 
 
@@ -70,7 +70,7 @@ Az alábbi példa bemutatja, amely tartalmazza a felbontást az utterance (kifej
 ## <a name="use-a-prebuilt-datetimev2-entity"></a>Egy előre elkészített datetimeV2 entitás használja
 A **datetimeV2** előre összeállított entitások felismeri a dátumok, időpontok, dátumtartományokat és idő időtartamának összegénél. Kövesse az alábbi lépéseket, hogy hogyan a `datetimeV2` előre összeállított entitások működik:
 
-1. Adjon hozzá egy **datetimeV2** entitást az alkalmazáshoz, majd [Train](interactive-test.md) és [közzététele](luis-how-to-publish-app.md) az alkalmazást.
+1. Adjon hozzá egy **datetimeV2** entitást az alkalmazáshoz, majd [Train](luis-interactive-test.md) és [közzététele](luis-how-to-publish-app.md) az alkalmazást.
 2. Kattintson a végpont URL-cím a **App közzététele** megnyitásához a LUIS-végpont egy webböngészőben. 
 3. Az utterance (kifejezés) hozzáfűzni a dátumtartományt tartalmazó URL-cím. Például beírhatja a `book a flight tomorrow`, és láthatja, hogy a LUIS azonosítja `tomorrow` , egy `builtin.datetimeV2.date` entitás, és azonosítja az alelem értékként a holnapi dátumot a `resolution` mező. 
 

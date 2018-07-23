@@ -1,7 +1,7 @@
 ---
-title: A "Hello, World" beszélgetésazonosító tanuló alkalmazás – Microsoft kognitív szolgáltatások létrehozása |} Microsoft Docs
+title: Hogyan hozhat létre egy "Hello World" Beszélgetéstanuló modell – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan hozhat létre a "Hello, World" beszélgetésazonosító tanuló alkalmazást.
+description: Ismerje meg, hogyan hozhat létre egy "Hello World" Beszélgetéstanuló modellt.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,103 +10,108 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 30026285ac6dda45d2f5e3718aae741b928cf242
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 70b8f25bd699cbdb069892d65bf766ef3953f59d
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348683"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170871"
 ---
-# <a name="how-to-create-a-hello-world-application-with-conversation-learner"></a>Hogyan hozhat létre a "Hello, World" alkalmazást a beszélgetés tanuló
+# <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Hogyan hozhat létre egy "Hello World" modellt Beszélgetéstanuló
 
-Ez az oktatóanyag bemutatja, hogyan beszélgetés tanuló, többek között a műveleteket, létre oktatási interaktív módon, és a végfelhasználók számára naplózott párbeszédpanelek korrigálás használatába.
+Ez az oktatóanyag bemutatja, hogyan Beszélgetéstanuló, a létrehozás műveletek, beleértve a oktatási interaktív módon, és a végfelhasználók naplózott párbeszédpanelek korrigálás használatának első lépései.
+
+## <a name="video"></a>Videó
+
+[![1. oktatóanyag előzetes verzió](http://aka.ms/cl-tutorial-01-preview)](http://aka.ms/blis-tutorial-01)
+
 
 ## <a name="requirements"></a>Követelmények
-Ha még nem tette meg, győződjön meg arról az összes beállítási lépéseket készültek el, beleértve a létrehozásának egy `.env` a kulcs szerzői LUIS fájlt.  Lásd: [gyors üzembe helyezés](https://github.com/Microsoft/ConversationLearner-Samples) részleteiről.
+Ha még nem tette, először győződjön meg arról az összes telepítő lépés befejeződött, beleértve a létrehozása egy `.env` a LUIS szerzői kulcsot tartalmazó fájl.  Lásd: [rövid](https://github.com/Microsoft/ConversationLearner-Samples) részleteiről.
 
-Ez az oktatóanyag megköveteli, hogy fut-e az általános útmutató botot
+Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 
     npm run tutorial-general
 
 ## <a name="steps"></a>Lépések
 
-Indítsa el a webes felhasználói felület kezdőlapján.
+Indítsa el a kezdőlapon a webes felhasználói felületen.
 
-### <a name="create-the-app"></a>Az alkalmazás létrehozása
-1. Kattintson az új alkalmazás
-2. A név mezőbe írja be a Hello World
+### <a name="create-the-model"></a>A modell létrehozása
+1. Kattintson az új modell
+2. A név mezőben adja meg a "Hello World"
 3. Kattintson a Létrehozás gombra
 
 ### <a name="create-an-action"></a>Hozzon létre egy műveletet
 
-1. Kattintson a Hello World alkalmazásnak, hogy indítsa el a
+1. Kattintson a "Hello World" modellt, indítsa el a
 2. Kattintson a műveletek, majd az új művelet
-    - Egy művelet lehet egy szöveges üzenetet, amely a beszélgetés tanuló visszaadja a felhasználó, az API-hívás vagy a kártya.
+    - Művelet lehet, amely Beszélgetéstanuló visszaadja a felhasználó, egy API-hívás vagy kártya szöveges üzenetet.
 3. A válasz írja be a "Hello World!"
-    - Ez az a választ, amely a botot ad vissza
+    - Ez az a választ, amely visszaadja a robotot
 4. Kattintson a Létrehozás gombra
 
-A botot teheti azaz elsőként létrehozott szöveg választ.
+A robot teheti meg, azaz az első lépésben létrehozott egy szöveges választ adja vissza.
 
-### <a name="train-the-bot"></a>A botot képzése
+### <a name="train-the-bot"></a>A robot betanítása
 
-#### <a name="create-the-first-dialog"></a>Hozzon létre első párbeszédpanel
+#### <a name="create-the-first-dialog"></a>Az első párbeszédpanel létrehozása
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel
-2. Adja meg, mi a felhasználó megtudhatja, hogy a "hello" például a beszélgetés kolduláshoz példát.
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel
+2. Adjon meg egy példát, hogy mi a felhasználó meg fog jelenni a "hello" a beszélgetést, például kolduláshoz.
 3. Kattintson a pontszám műveletek
 4. Válassza ki a "Hello World!"
-    - Ezzel létrehoz egy példa egy szolgálna párbeszédpanelt. 
+    - Ez létrehoz egy egy-kapcsolja példa párbeszédpanel. 
 2. Adja meg a "goodbye"
 3. Kattintson a pontszám műveletek
-4. Kattintson a művelet hozzáadása, majd adja meg a "Goodbye!" válaszként majd kattintson a "Létrehozás"
-5. Kattintson a tanítási végezhető el. Ezzel befejezi a képzés párbeszédpanel.
+4. Művelet hozzáadása gombra, majd adja meg a "Viszlát!" válaszként majd kattintson a "Létrehozás"
+5. Kattintson a tanítási kész gombra. Ezzel befejezi a betanítási párbeszédpanel.
 
-Most, hogy egy tanítási párbeszédpanel a rendszerben.
+Most már rendelkezik egy tanítási párbeszédpanel a rendszerben.
 
-#### <a name="continue-teaching-the-bot"></a>Továbbra is a botot oktatási
-Most egy további képzési tegye, és tekintse meg, hogyan válaszol az a botot.
+#### <a name="continue-teaching-the-bot"></a>A robot oktatási folytatása
+Most egy további képzési lehetőségek, és tekintse meg a robot reakciója.
 
-1. Kattintson az új vonat párbeszédpanel
-2. Adja meg "hi nincs"
-    - Ez hasonlít az első párbeszédpanel, és egy jó pontszám lekérése a botot várhatóan.
+1. Kattintson az új Train párbeszédpanel
+2. Adja meg "üdv mindenkinek nincs"
+    - Ez hasonlít az első párbeszédpanel, és a egy jó pontszám lekérése a robot várhatóan.
 2. Kattintson a pontszám művelet
-    - A pozíció és pontszám még nem elég pontosak, és további oktatási igényel.
-3. Kattintson a Kiválasztás mellett a "Hello World!"
-4. Adja meg az "bye"
+    - A pozíció és pontszám nem ennek ellenére még lehet elég pontosak, és további oktatási igényelnek.
+3. Kattintson a kijelölés mellett a "Hello World!"
+4. Majd adja meg a "bye"
 5. Kattintson a pontszám műveletek
-6. Válassza ki a "Goodbye"!
-7. Kattintson a tanítási kész
+6. Válassza ki a "goodbye" értékre!
+7. Kattintson a kész tanítás
 
 ![](../media/tutorial1_actions.PNG)
 
-Hogyan működik-e a botot egy másik oktatási munkamenetet műveleteket végezzük el.
+A robot működésének megtekintéséhez egy másik oktatási munkamenet fogunk jutni.
 
-Ismételje meg a fenti lépéseket, a "hi" és "byebye", és jegyezze fel a pozíció és a botok válasz pontszám történt módosításokat, kattintson a pontszám művelet.
+Ismételje meg a fenti lépéseket, a "hi" és "byebye", és vegye figyelembe a pozíció és a robotok válasz pontszám a módosításokat, kattintson a pontszám művelet.
 
-Ezután ismételje meg a a "howdy" és "jó bye", és vegye figyelembe, hogy rendelkezik a botot jelző pontszámok pontozási látható fejlesztések megtanulta, kommunikáció.
+Most ismételje meg az "howdy" és "Viszlát" lépést, és vegye figyelembe, hogy rendelkezik a robot jelző pontszámok pontozási látható fejlesztések megtudhatta, ennek az interakciónak.
 
 ![](../media/tutorial1_dialogs.PNG)
 
-### <a name="test-the-bot-as-an-end-user"></a>A botot végfelhasználói tesztelése
+### <a name="test-the-bot-as-an-end-user"></a>A robot tesztelje, a felhasználó
 
-1. Kattintson a napló párbeszédpanelek, majd új naplófájl párbeszédpanel
-2. Írja be a "hello nincs"
-3. Majd "bye"
+1. Kattintson a napló párbeszédpanelek, majd az új naplófájl párbeszédpanel
+2. Írja be a "helló"
+3. Majd a "bye"
 
-Indítsa el a "bye" beszélgetést, és jegyezze fel a botot válasz is.
+Próbálja meg elindítani a "bye" beszélgetést, és jegyezze fel a robot válasz is.
 
-### <a name="view-conversations-in-the-log-dialogs"></a>A napló párbeszédpanel a nézet témakörök
+### <a name="view-conversations-in-the-log-dialogs"></a>A párbeszédpanelek a napló megtekintése beszélgetések
 
-A napló párbeszédpanelek, megtekintheti a lista beszélgetéseket, frissítése, valamint a kapcsolatok elmentse képzési párbeszédpanelek. Ehhez:
+A napló párbeszédpanelek, megtekintheti a listában, beszélgetések, frissítése és interakciókat Mentés másként képzési párbeszédpanelek. Ehhez:
 
 1. Kattintson a napló a témakör a
-2. Ha a beszélgetés megfelelőnek tűnik, kattintson a az utolsó művelet pl. "Goodbye".
-3. Ide kattintva válassza ki a javasolt választ. 
-    - Válassza ki vagy adja hozzá egy újabb műveletet is.
-4. Majd kattintson a Kész gombra menti ezt az képzési párbeszédpanel.
+2. Ha a beszélgetés megfelelőnek tűnik, kattintson a az utolsó művelet például: "Goodbye"értékre.
+3. Kattintással jelölje ki a javasolt választ. 
+    - Válassza ki vagy adjon hozzá egy másik műveletet is.
+4. Ezután kattintson a Kész gombra egy képzési párbeszédpanel, az elem mentéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Várjon, és nem várakozási műveletek](./2-wait-vs-nonwait-actions.md)
+> [Várjon, és nem várakozási művelet](./2-wait-vs-nonwait-actions.md)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: fd4226254e076957ac8651f9172f1f3f82427a60
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5a321ef7dca86993a913a283fe7b9b076c127d94
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001830"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171255"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-megoldások monitorozása
 
@@ -63,7 +63,7 @@ A Batch-alkalmazások a Batch API-k vagy többek között a feladatok, a feladat
   > Az Application Insights használatával további költségeket számítanak fel. Tekintse meg a [díjszabási lehetőségek](https://azure.microsoft.com/pricing/details/application-insights/). 
   >
 
-* A [BatchLabs](https://github.com/Azure/BatchLabs) egy ingyenes, számos funkcióval ellátott, különálló ügyféleszköz Azure Batch-alkalmazások létrehozásához, hibakereséséhez és monitorozásához. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchLabs/) Mac, Linux vagy Windows rendszerre. Választható lehetőségként konfigurálhatja a Batch-megoldás a [Application Insights-adatok megjelenítése](https://github.com/Azure/batch-insights) például a virtuális gép teljesítményszámlálókat BatchLabs.
+* [A Batch Explorer](https://github.com/Azure/BatchExplorer) egy ingyenes, számos funkcióval ellátott, különálló ügyféleszköz létrehozásához, hibakereséséhez és monitorozásához az Azure Batch-alkalmazások segítségével. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchExplorer/) Mac, Linux vagy Windows rendszerre. Választható lehetőségként konfigurálhatja a Batch-megoldás a [Application Insights-adatok megjelenítése](https://github.com/Azure/batch-insights) például a virtuális gép teljesítményszámlálók a Batch Explorer.
 
 
 ## <a name="next-steps"></a>További lépések

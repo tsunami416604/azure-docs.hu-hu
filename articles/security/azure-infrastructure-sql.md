@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database biztonsági funkciói
-description: Ez a cikk ismerteti az Azure SQL Database általános leírása az Azure-ban felhasználói adatok védelmét.
+title: Az Azure SQL Database biztonsági funkciók
+description: A cikk ismerteti, hogyan védi az Azure SQL Database a vásárlói adatokat az Azure általános leírása.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: cca8febb004029b13b0df09a047da701c4528e8e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: cce1ff1102c42bd1627caeba7b2c86432b228607
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102582"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170854"
 ---
-# <a name="microsoft-azure-sql-database-security-features"></a>A Microsoft Azure SQL Database biztonsági funkciói    
-A Microsoft Azure SQL Database biztosít egy relációs adatbázis-szolgáltatás az Azure-ban. Felhasználói adatok védelmét, és adja meg, amely a relációs adatbázis-szolgáltatás elvárt erős biztonsági funkciói, SQL-adatbázis számára a saját biztonsági képességei készleteinek. Ezek a képességek az Azure-ból örökölt vezérlők épül.
+# <a name="azure-sql-database-security-features"></a>Az Azure SQL Database biztonsági funkciók    
+Az Azure SQL Database relációsadatbázis-szolgáltatás az Azure-ban biztosít. Az ügyféladatok védelme, és adja meg az erős biztonsági funkciókat, amelyeket az ügyfelek várható relációsadatbázis-szolgáltatás, SQL-adatbázis rendelkezik a saját csoportok biztonsági képességeket. Ezeket a képességeket, amely az Azure-ból örökölt útmutatóra épül.
 
 ## <a name="security-capabilities"></a>Biztonsági képességei
 
-### <a name="usage-of-tabular-data-stream-tds-protocol"></a>Tabular Data Stream (TDS) protokoll használatát
-A Microsoft Azure SQL Database csak támogatja a TDS-protokoll, amely szükséges az adatbázis csak keresztül az alapértelmezett port a TCP/1433 elérhetők lesznek.
+### <a name="usage-of-the-tds-protocol"></a>A TDS protokoll használatát
+Az Azure SQL Database támogatja a csak a tabulált adatfolyam (TDS) protokoll, amely szükséges az adatbázis keresztül csak az alapértelmezett a TCP/1433-as port elérhetők lesznek.
 
-### <a name="microsoft-azure-sql-database-firewall"></a>A Microsoft Azure SQL Database-tűzfal
-Ügyfelek adatok védelme érdekében a Microsoft Azure SQL Database egy tűzfal funkcióit, így alapértelmezés szerint minden hozzáférés az SQL Database-kiszolgálóhoz, az alább látható módon tartalmazza.
+### <a name="azure-sql-database-firewall"></a>Az Azure SQL Database-tűzfal
+Ügyféladatok védelme érdekében az Azure SQL Database egy tűzfal funkciót tartalmaz, amely alapértelmezés szerint minden hozzáférés az SQL Database-kiszolgálóhoz, megakadályozza a lent látható módon.
 
 ![Az Azure SQL Database-tűzfal][1]
 
-Az átjáró tűzfala lehetővé teszi a korlátozza az elfogadható IP-címek tartományát adja meg az ügyfél számára a tanúsítványhasználat pontos szabályzása lehetővé tevő címeket. A tűzfal hozzáférést biztosít minden kérelem származási IP-címe alapján.
+A gateway-tűzfalhoz korlátozhatja címek, amely lehetővé teszi a felhasználóknak szabályozható az elfogadható IP-címek tartományát adja meg. A tűzfal hozzáférést biztosít minden kérés eredeti IP-címe alapján.
 
-Tűzfal-konfiguráció valósítható meg a felügyeleti portál használatával, vagy programozott módon, a Microsoft Azure SQL Database felügyeleti REST API. A Microsoft Azure SQL adatbázis átjáró tűzfal alapértelmezés szerint megakadályozza minden ügyfél TDS Microsoft Azure SQL-adatbázisok. Hozzáférés engedélyezéséhez a forrás és cél Internet címeket, protokollok, és a Microsoft Azure SQL Database kapcsolatok ACL-ekkel kell konfigurálni.
+Ügyfelek tűzfal-konfiguráció érheti el a felügyeleti portál használatával, vagy programozott módon, az Azure SQL Database Management REST API segítségével. Alapértelmezés szerint az Azure SQL Database átjáró tűzfal megakadályozza, hogy minden ügyfél TDS-hozzáférés az Azure SQL database-példányok. Ügyfelek konfigurálni kell a hozzáférését lehetővé teszi a csatlakozást az Azure SQL Database hozzáférés-vezérlési listák (ACL-ek) használatával a forrás és cél internetcímek, protokollok és a portszámok.
 
 ### <a name="dosguard"></a>DoSGuard
-Egy SQL-adatbázis átjáró szolgáltatás DoSGuard-szolgáltatásmegtagadásos (DoS-) támadások csökkentik. DoSGuard aktívan IP-címekről nyomon követi a sikertelen bejelentkezések. Ha egy időszakon belül több sikertelen bejelentkezés egy adott IP-címről, az IP-cím le van tiltva a szolgáltatás egy előre meghatározott időszak bármely erőforrások eléréséhez.
+Egy SQL Database-átjáró szolgáltatás nevű DoSGuard csökkentik szolgáltatásmegtagadási (DoS) támadások ellen. DoSGuard aktívan nyomon követi a sikertelen bejelentkezések IP-címekről. Ha egy adott IP-címről több sikertelen bejelentkezés időn belül, az IP-cím hozzáférését az olyan erőforrások, az előre meghatározott időszakban a szolgáltatás le van tiltva.
 
-A fentiek mellett a Microsoft Azure SQL Database átjáró is végez:
+Emellett az Azure SQL Database átjárója hajtja végre:
 
-- Biztonságos csatorna funkció egyeztetések TDS FIPS 140-2 végrehajtásához érvényesíteni a titkosított kapcsolatokat, az adatbázis-kiszolgálókhoz való csatlakozáskor.
-- Állapot-nyilvántartó TDS Csomagvizsgálat ügyfelektől érkező kapcsolatok elfogadása közben. Az átjáró érvényesíti a kapcsolati adatokat, és a megfelelő fizikai kiszolgálóhoz, az adatbázis neve a kapcsolati karakterláncban megadott alapján továbbítja a TDS-csomagok.
+- Biztonságos csatorna képesség tárgyalások megvalósításához TDS FIPS 140-2 ellenőrzése a titkosított kapcsolatokat, amikor csatlakozik a az adatbázis-kiszolgálók.
+- Állapot-nyilvántartó TDS csomagvizsgálatról, miközben ügyfelektől érkező kapcsolatokat fogad. Az átjáró érvényesíti a kapcsolati adatokat, és továbbítja a TDS-csomagokat a megfelelő fizikai kiszolgálóra, az adatbázis neve a kapcsolati karakterláncban megadott alapján.
 
-A hálózati biztonság, a Microsoft Azure SQL Database ajánlat átívelő elvet hoz engedélyezése csak a kapcsolat és a szükséges ahhoz, hogy a szolgáltatás működéséhez-kommunikációt. Más portok, protokollok és kapcsolatok alapértelmezett blokkolja. Virtuális helyi hálózatok és a hozzáférés-vezérlési listák segítségével korlátozhatja a hálózati kommunikáció a forrás és a cél hálózatok, a protokollok és a portszámokat.
+A hálózati biztonság az Azure SQL Database-ajánlat címtérrel alapelve, hogy csak a kapcsolat és az, hogy a szolgáltatás működéséhez szükséges kommunikációt engedélyezze. Alapértelmezett blokkolja a többi portok, protokollok és kapcsolatokat. Virtuális helyi hálózatokat (VLAN) és ACL-ek forrás és cél hálózatok, a protokollok és a portszámok által használt hálózati kommunikáció korlátozása.
 
-Hálózati hozzáférés-vezérlési listák végrehajtásához jóváhagyott mechanizmusok az alábbiak: ACL-ek útválasztók és a terheléselosztók. Ezeket felügyelt Azure-hálózat, a Vendég virtuális gép tűzfal és a Microsoft Azure SQL Database átjáró tűzfalszabályok, amely az ügyfél által konfigurált.
+Neurálishálózat-alapú ACL-ek végrehajtásához jóváhagyott mechanizmusok ACL-ek belefoglalása az útválasztókon és terheléselosztókat. Ezek a mechanizmusok az Azure-hálózatok, a Vendég virtuális gép tűzfala és az Azure SQL Database átjáró tűzfalszabályok vannak konfigurálva, az ügyfél által felügyelt.
 
-## <a name="data-segregation-and-customer-isolation"></a>Adatok elkülönítése és az ügyfelek elkülönítési
-Az Azure éles hálózati környezetben van felépítve, úgy, hogy a nyilvánosan elérhető rendszerösszetevők elkülönülnek a belső erőforrásokat. Fizikai és logikai létezik a nyilvánosan elérhető Azure portál és az alapjául szolgáló Azure virtuális infrastruktúra, felhasználói az alkalmazáspéldányok és a felhasználói adatokat tároló hozzáférést biztosító web-kiszolgálók között.
+## <a name="data-segregation-and-customer-isolation"></a>Adatok elkülönítése és az ügyfél elkülönítése
+Az Azure éles hálózati környezetben van felépítve, hogy nyilvánosan hozzáférhető rendszerösszetevők elkülönülnek a belső erőforrásokat. Fizikai és logikai határok webkiszolgálók, amelyeket a nyilvánosan elérhető az Azure portal eléréséhez és az alapul szolgáló Azure virtuális infrastruktúra, ahol az ügyfél az alkalmazáspéldányok és a vásárlói adatok találhatók közötti licencszerződéseket.
 
-Összes nyilvánosan elérhető információk az Azure éles hálózaton belüli kezeli. Az éles hálózati környezetben az kéttényezős hitelesítést és a határ védelmi mechanizmust, az előző szakaszban ismertetett állítsa be a tűzfal és a biztonsági szolgáltatás, és adatok elkülönítési funkciók alábbi esetekben használja.
+Az összes nyilvánosan elérhető információk az Azure éles hálózati környezetben van kezelhető. Az éles hálózati környezetben a kétfaktoros hitelesítés, illetve a határ védelmi mechanizmust, használja a tűzfal- és biztonsági funkció, amely az előző szakaszban leírt, és az adatok elkülönítése funkciók feljegyzett használja a következő szakaszokban.
 
-### <a name="unauthorized-systems-and-isolation-of-fc"></a>Jogosulatlan rendszerek és az FC elkülönítése
-Mivel az FC központi az orchestrator, a Microsoft Azure háló, jelentős vezérlők, amelyek csökkentik fenyegetéseket, különösen a potenciálisan veszélyeztetett eszközök belül vevő alkalmazások rendelkezése. FC nem ismeri fel a hardvereket, amelynek eszköz adatait (például MAC-cím) nem előre betölti az FC belül. A DHCP-kiszolgálók az FC konfigurálta azokat a rendszer rendszerindító csomópontja MAC-címek listáját. Akkor is, ha a jogosulatlan rendszerek összekötése nem szóló háló készlet, és ezért nem csatlakozó vagy kommunikálhat a rendszer a háló készlet belül engedélyezett. Ez csökkenti a jogosulatlan rendszerek és az FC, majd a VLAN és az Azure hozzáférjenek kockázatát.
+### <a name="unauthorized-systems-and-isolation-of-the-fc"></a>Jogosulatlan rendszerek és az fc elkülönítés
+Mivel a hálóvezérlő (FC) központi az orchestrator, az Azure fabric, jelentős vezérlők hely, ahol elhárítani a fenyegetéseket, főleg a potenciálisan veszélyeztetett FAs ügyfélalkalmazások belül találhatók. Az FC nem ismeri fel a hardvereket, amelynek eszköz adatait (például MAC-cím) nem előre betölti az FC belül. A DHCP-kiszolgálók az FC konfigurálta a csomópontok arra, hogy a MAC-címek listáját. Akkor is, ha jogosulatlan rendszerek csatlakoznak, nem szóló fabric készlet, és ezért nem csatlakoztatott vagy kommunikálni bármely olyan rendszeren belül a háló készlet engedélyezett. Ez csökkenti a jogosulatlan rendszerek az FC kommunikáló, illetve hozzáférjenek a VLAN- és Azure kockázatát.
 
 ### <a name="vlan-isolation"></a>VLAN elkülönítése
-Az Azure éles hálózati környezetben logikailag elkülönített a három elsődleges VLAN-ok:
+Az Azure éles hálózati környezetben van logikailag elkülönítve három elsődleges VLAN-ok:
 
-- A fő VLAN – összeköttetések használatára a nem megbízható felhasználói csomópontok
-- Az FC VLAN – tartalmazza a megbízható FCs és a támogató rendszerek
-- Az eszköz VLAN – tartalmazza a megbízható hálózatok és egyéb eszközök
+- A fő VLAN: amellyel az ügyfél nem megbízható csomópontokon.
+- A Szálcsatornás virtuális helyi hálózat: Megbízható FCs és a támogató rendszerek tartalmazza.
+- Az eszköz VLAN: megbízható hálózatok és egyéb infrastrukturális eszközök tartalmazza.
 
 ### <a name="packet-filtering"></a>Hálózaticsomag-szűrés
-A IPFilter és a szoftver tűzfalak megvalósítva a gyökér operációs rendszer és a vendég operációs rendszer, a csomópontok kapcsolat korlátozások érvényesítése, és megakadályozza a jogosulatlan virtuális gépek közötti forgalmat.
+A IPFilter és a szoftver-tűzfalak, amelyek a gyökér operációs rendszer és a vendég operációs rendszer a csomópontok kapcsolat kikényszerítheti, és megakadályozza a jogosulatlan forgalom a virtuális gépek között.
 
 ### <a name="hypervisor-root-os-and-guest-vms"></a>Hipervizor, a gyökér operációs rendszer és a Vendég virtuális gépek
-A Vendég virtuális gépek és a Vendég virtuális gépek egymástól a gyökér operációs rendszer elkülönítését a hipervizor és a gyökér operációs rendszer kezeli.
+A gyökér operációs rendszer a Vendég virtuális gépek és a Vendég virtuális gépeket egy másik elkülönítése a hipervizor és a gyökér operációs rendszer kezeli.
 
 ### <a name="types-of-rules-on-firewalls"></a>A tűzfalak szabályok típusai
-Egy szabály típusúként van definiálva:
+Egy szabály határozza meg:
 
-{Biztonsági válasz Center (forrás) IP, a forrásport, cél IP-, Célport, cél protokoll, állapotalapú alkalmazások és szolgáltatások állapotmentes, állapotalapú folyamat időtúllépés ki- /}.
+{Security Response Center (forrás) IP, forrásport, cél IP-, Célport, cél protokoll, és horizontális, állapotalapú és állapotmentes, állapotalapú folyamat időtúllépés}.
 
-Szinkronizálás a mi csomagját bejövő vagy kimenő csak akkor, ha a szabályok lehetővé teszi. A TCP, Microsoft Azure állapot nélküli szabályokat használ ahol elve az, hogy csak lehetővé teszi az összes nem SZIN csomagok virtuális gépbe vagy onnan a virtuális Gépet. A biztonsági helyi, hogy minden gazdagép verem is lehetséges, a figyelmen kívül hagyva nem SZIN, ha már nem látottaknál SZIN csomag korábban. A TCP protokoll állapotalapú, és az állapot nélküli SYNbased együtt szabály éri el egy átfogó állapot-nyilvántartó megvalósítási viselkedését.
+Csak akkor, ha a szabályok közül bármelyik lehetővé teszi, hogy szinkron tétlen karakter (külön) csomagok vagy használata engedélyezett. TCP, az Azure használ állapotmentes szabályok ahol elve az, hogy csak az összes nem külön csomag lehetővé teszi vagy onnan máshová a virtuális Gépet. A biztonsági helyi, hogy a gazdagépen szoftverkörnyezettől rugalmas figyelmen kívül tudják nem külön, ha azt nem találkozott egy külön csomag korábban. A TCP protokoll állapotalapú, és az állapot nélküli szinkronizálás a mi-alapú szabály együtt éri el az általános működést egy állapotalapú megvalósítási.
 
-A User Datagram Protocol (UDP), a Microsoft Azure egy állapotalapú szabályt használ. Minden alkalommal, amikor egy UDP csomag megfelel a szabálynak, a fordított áramlását az ellenkező irányba jön létre. Ez a folyamat egy beépített időtúllépési rendelkezik.
+A User Datagram Protocol (UDP), az Azure állapot-nyilvántartó szabály használ. Minden alkalommal, amikor egy UDP csomag megfelel valamelyik szabálynak, a másik irányba fordított folyamat jön létre. Ez a folyamat rendelkezik egy beépített időkorlátja.
 
-Ügyfelek felelőssége saját Microsoft Azure biztosít fölött tűzfalak beállítása. Itt az ügyfelek képesek a bejövő és kimenő forgalom vonatkozó szabályok meghatározásához.
+Ügyfelek felelőssége saját tűzfallal felül az Azure biztosít beállításához. Ügyfelek itt tudnak meghatározzák azon szabályokat a bejövő és kimenő forgalmat.
 
 ### <a name="production-configuration-management"></a>Éles konfigurációkezelés
-Standard biztonságos konfiguráció Azure-ban és a Microsoft Azure SQL Database megfelelő műveletek csoportok karbantartása. Éles rendszerek esetén minden konfigurációs módosítását dokumentált, és egy központi követőrendszerrel és nyomon követni. A központi követőrendszerrel keresztül a szoftverek és hardverek változások nyomon követése. A hálózat módosításai vonatkozó hozzáférés-vezérlési lista követi ACL kezelési szolgáltatás (AMS) használatával.
+Standard biztonságos konfigurációját az Azure és az Azure SQL Database a megfelelő üzemeltetési csapatok által karbantartása. Minden konfigurációmódosítás éles rendszereket dokumentált, és a egy központi követőrendszerhez és nyomon követni. A központi követési rendszer-n keresztül a hardver- és változások nyomon követése. A hálózat módosításai vonatkozó ACL-t, a rendszer nyomon követi egy ACL management szolgáltatással.
 
-A Microsoft Azure minden konfigurációs módosítását fejlesztett és tesztelése az átmeneti környezetben; és azt követően telepített éles környezetben. Szoftver buildek felülvizsgálata tesztelés részeként. Biztonság és adatvédelem ellenőrzések felülvizsgálata bejegyzés ellenőrzőlista feltétel részeként. Változások a megfelelő telepítési csapat által ütemezés szerint vannak telepítve. Kiadásokban felülvizsgálata, és írja alá a megfelelő központi telepítési csapat személyzet éles környezetben telepítésük előtt.
+Az Azure-ban minden konfigurációmódosítás kifejlesztett és tesztelt átmeneti környezetben, és ezt követően az éles környezetben vannak telepítve. Szoftver buildek lektorálhatók a tesztelés során. Biztonság és adatvédelem ellenőrzések nyilvánosan lektorálhatók bejegyzés ellenőrzőlista feltétel részeként. Változások a megfelelő telepítési csapat által telepített ütemezett időközönként. Kiadások felül, és jóváhagyta a megfelelő központi telepítési csapat munkatársak által, éles környezetben való telepítésük előtt.
 
-Változások a sikeres figyeli. Egy meghibásodási forgatókönyv szerint a módosítás van állítva vissza korábbi állapotba, vagy a gyorsjavítást a rendszer a kijelölt személyzet jóváhagyással hiba. Forrás raktár számára, Git, TFS, az MDS, indák, Azure biztonsági figyelése (ASM), a FC, és a WinFabric platform végzi központilag kezelheti, alkalmazza, és ellenőrizze a konfigurációs beállításokat az Azure virtuális környezetben.
+Módosítások figyeli a program sikeres. Egy meghibásodási forgatókönyv szerint a módosítás vissza lesz állítva az előző állapotába, vagy a gyorsjavítás telepítve van a kijelölt személyzet jóváhagyással a hiba megoldása érdekében. Forrás Depotban, a Git, TFS, Master Data Services (MDS), indák, az Azure security monitoring, az FC és a WinFabric platform központilag kezelheti, alkalmazza, és ellenőrizze a konfigurációs beállításokat az Azure-beli virtuális szolgálnak.
 
-Hasonlóképpen hardver- és hálózati módosítások létesítése elfogadását, a build követelmények kiértékeléséhez ellenőrzési lépéseket. A kiadások felülvizsgálata, és jogosult keresztül egy koordinált módosítás tanácsadó bizottsága (CAB-fájl) megfelelő csoportok között a veremben.
+Hasonlóképpen hardver- és hálózati módosítások létrehozott elfogadását, a build követelmények kiértékeléséhez ellenőrzési lépéseket. A kiadások tekintse át és a verem között egy koordinált változások tanácsadó bizottsága (CAB-fájl), a megfelelő csoportok keresztül engedélyezett.
 
 ## <a name="next-steps"></a>További lépések
-Microsoft funkciója az Azure-infrastruktúra védelméhez kapcsolatos további információkért lásd:
+A Microsoft használ az Azure-infrastruktúra secure kapcsolatos további információkért lásd:
 
-- [Az Azure létesítményekben, a helyszíni és a fizikai biztonság](azure-physical-security.md)
+- [Azure létesítményekben, a helyi és a fizikai biztonság](azure-physical-security.md)
 - [Azure-infrastruktúra rendelkezésre állása](azure-infrastructure-availability.md)
-- [Az Azure információk rendszerösszetevők és határok](azure-infrastructure-components.md)
+- [Az Azure information rendszerösszetevők és határok](azure-infrastructure-components.md)
 - [Az Azure hálózati architektúra](azure-infrastructure-network.md)
 - [Az Azure éles hálózati környezetben](azure-production-network.md)
-- [Az Azure éles műveletek és kezelése](azure-infrastructure-operations.md)
-- [Azure-infrastruktúra megfigyelése](azure-infrastructure-monitoring.md)
-- [Azure-infrastruktúra integritása](azure-infrastructure-integrity.md)
-- [Az Azure-ban felhasználói adatok védelme](azure-protection-of-customer-data.md)
+- [Azure éles környezetben való üzemeltetés és a felügyelet](azure-infrastructure-operations.md)
+- [Azure-infrastruktúra figyelése](azure-infrastructure-monitoring.md)
+- [Az Azure infrastruktúra-integritás](azure-infrastructure-integrity.md)
+- [Az Azure vásárlói adatok védelmére](azure-protection-of-customer-data.md)
 
 <!--Image references-->
 [1]: ./media/azure-infrastructure-sql/sql-database-firewall.png

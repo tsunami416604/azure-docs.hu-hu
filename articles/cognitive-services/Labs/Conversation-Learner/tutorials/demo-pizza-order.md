@@ -1,7 +1,7 @@
 ---
-title: Beszélgetés tanuló alkalmazás, pizzaszósz rendelés - Microsoft kognitív szolgáltatásokat bemutató |} Microsoft Docs
+title: Bemutató Beszélgetéstanuló modell, kétpizzás rendelés – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Útmutató a bemutató beszélgetés tanuló alkalmazás létrehozásához.
+description: Megtudhatja, hogyan hozhat létre egy bemutató Beszélgetéstanuló modell.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,97 +10,101 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 99cd89c4f4430f2d65ed0963e3092d51a83842d7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 052ef249f3367a562e5598b90533c0e52ed75df4
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348699"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171384"
 ---
-# <a name="demo-pizza-order"></a>Bemutató: Pizzaszósz sorrendje
-Ez a bemutató a rendezés botot pizzaszósz mutatja be. Ezzel a funkcióval egy egyetlen pizzaszósz sorrendje támogatja:
+# <a name="demo-pizza-order"></a>Bemutató: Kétpizzás sorrend
+Ez a bemutató a robot rendezése kétpizzás mutatja be. Ezzel a funkcióval egy egyetlen kétpizzás rendezése támogatja:
 
-- a felhasználó utterances pizzaszósz toppings ismer fel
-- Ha pizzaszósz toppings készleten, vagy nincs készleten ellenőrzése, és megfelelően válaszol
-- pizzaszósz toppings egy előző sorrendje a jelszóelőzmények, és szeretné, hogy - új rendelés az azonos toppings ajánlat
+- FELISMERVE kétpizzás toppings a felhasználó kimondott szöveg
+- ellenőrzi, hogy a készlet vagy készleten kívüli kétpizzás toppings vannak, és megfelelően válaszol
+- kétpizzás toppings egy korábbi utasítás a megjegyzését, és szeretné, hogy – egy új rendelést az azonos toppings ajánlat
+
+## <a name="video"></a>Videó
+
+[![Bemutató Kétpizzás előzetes verzió](http://aka.ms/cl-demo-pizza-preview)](http://aka.ms/blis-demo-pizza)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e a pizzaszósz rendelés botot
+Ehhez az oktatóanyaghoz, hogy fut-e a kétpizzás rendelés robotot
 
     npm run demo-pizza
 
-### <a name="open-the-demo"></a>Nyissa meg a bemutató
+### <a name="open-the-demo"></a>Nyissa meg a bemutatót
 
-A webes felhasználói felület alkalmazások listájának megtekintéséhez kattintson a TutorialDemo pizzaszósz sorrendje. 
+A webes felhasználói felületen modell-lista kattintson a TutorialDemo Kétpizzás sorrendben. 
 
 ## <a name="entities"></a>Entitások
 
-Létrehoztunk három entitásokat.
+Három entitások hozott létre.
 
-- Toppings: felhalmozódnak a toppings a kér a felhasználótól. Ez magában foglalja a érvényes toppings a készlet. Azt ellenőrzi, hogy ha egy transzformátorok készlet kívül vagy belül van-e.
-- OutofStock: Ez való kommunikációhoz használt azokat a felhasználónak, hogy a kijelölt transzformátorok nincs a készlet.
-- LastToppings: sorrendben helyezkedik el, ha ehhez az entitáshoz használt biztosítson a felhasználó a sorrendnek toppings listája.
+- Toppings: ehhez az entitáshoz felhalmozódnak a toppings kéri a felhasználót. Ez magában foglalja a készleten lévő érvényes toppings. Azt ellenőrzi, hogy ha egy transzformátorok, vagy ki a készlet.
+- OutofStock: ehhez az entitáshoz való kommunikációhoz a felhasználó számára, hogy a kiválasztott transzformátorok ne legyen készlet szolgál.
+- LastToppings: egy rendelés történik, ha az entitás segítségével elérhetővé teheti a felhasználó a toppings sorrendjét a listája.
 
 ![](../media/tutorial_pizza_entities.PNG)
 
 ### <a name="actions"></a>Műveletek
 
-Létrehoztunk műveletekként kérni a felhasználó milyen kívánják a saját pizzaszósz közölve, mi hányszor adtak hozzá, amennyiben stb.
+Létrehozott kérni a felhasználót, amit szeretnének a saját kétpizzás műveletek egy csoportját, létrehozóját arról, mit hozzáadott eddig, és így tovább.
 
-Van még két API-hívásokban:
+Két API-hívások is van:
 
-- FinalizeOrder: a ahhoz, hogy a pizzaszósz elhelyezése
+- FinalizeOrder: a sorrendjét a kétpizzás elhelyezése
 - UseLastToppings: a toppings át az előző sorrendje 
 
 ![](../media/tutorial_pizza_actions.PNG)
 
 ### <a name="training-dialogs"></a>Képzési párbeszédpanelek
-Definiáltuk képzési párbeszédpanelek skálázhatja. 
+Minősített képzési párbeszédpanelek van definiálva. 
 
 ![](../media/tutorial_pizza_dialogs.PNG)
 
-Tegyük fel próbáljuk meg egy tanítási munkamenet.
+Tegyük fel próbáljon meg egy tanítási munkamenet.
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
-1. Adja meg az "order egy pizzaszósz".
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
+1. Adja meg az "order kétpizzás egy'.
 2. Kattintson a pontszám művelet.
-3. Kattintással jelölje be "mit szeretne az a pizzaszósz?"
-4. Adja meg a "gomba és sajt".
-    - Figyelje meg, LUIS feliratú is, mint a Toppings. Ha, amely nem volt megfelelő, akkor sikerült kattintással jelölje ki, majd javítsa ki.
-    - A "+" jel mellett az entitás azt jelenti, hogy éppen kerül toppings készletét.
+3. Válassza ki a kattintson a "mit szeretne a a kétpizzás?"
+4. Adja meg a "gomba és sajtok iránti szenvedélyének".
+    - Figyelje meg, a LUIS feliratú Toppings mindkettőt. Ha, amely nem volt megfelelő, akkor sikerült kattintással jelölje ki a, majd javítsa ki.
+    - A "+" jelre az entitás mellett, az azt jelenti, hogy azt ad hozzá a toppings készletét.
 5. Kattintson a pontszám műveletek.
-    - Értesítés gomba és sajt nincsenek Toppings a memória.
-3. Jelölje be a "rendelkezik $Toppings a pizzaszósz"
-    - Figyelje meg, ez a egy nem várakozási művelet, így a botot rákérdez a következő művelet.
-6. Válassza a "Kívánja, hogy bármi más?"
-7. Adja meg a "gomba eltávolítása és paprika hozzáadása".
-    - Értesítés **gomba** rendelkezik egy "-" bejelentkezési mellett azt is el kell távolítani. És paprika "+" toppings veheti fel.
+    - Figyelje meg `mushrooms` és `cheese` nem szerepelnek a for Toppings a memóriát.
+3. Jelölje be a "nincs $Toppings a kétpizzás"
+    - Figyelje meg, hogy ez a egy nem várakozási művelet, így a robot rákérdez a következő művelet.
+6. Válassza a "Szeretné bármi más?"
+7. Adja meg a "gomba eltávolítása és paprikát hozzáadása".
+    - Figyelje meg `mushroom` rendelkezik egy "-" bejelentkezési mellette, ahhoz, hogy el kell távolítani. És `peppers` rendelkezik egy "+" jelre mellett, adja hozzá a toppings.
 2. Kattintson a pontszám művelet.
-    - Értesítés **paprika** mostantól a félkövérrel szedett, ahogy új. És **gomba** küszöbértéke túllépve.
-8. Jelölje be a "rendelkezik $Toppings a pizzaszósz"
-6. Válassza a "Kívánja, hogy bármi más?"
+    - Figyelje meg `peppers` most már a félkövér, mert jelent meg. És `mushrooms` küszöbértéke túllépve.
+8. Jelölje be a "nincs $Toppings a kétpizzás"
+6. Válassza a "Szeretné bármi más?"
 7. Adja meg a "esetében hozzáadása".
-    - Esetében a rendszer egy példa egy transzformátorok készlet kívül esik. Vegye figyelembe, hogy továbbra is lett címkézve, egy transzformátorok.
+    - `Peas` látható egy példa egy transzformátorok, amely kívül esik a készlet. Ez továbbra is egy transzformátorok kerülhetnek.
 2. Kattintson a pontszám művelet.
-    - Esetében OutOfStock jelenik meg.
-    - Hogyan ez történt megtekintéséhez nyissa meg a kódot C:\<\installedpath > \src\demos\demoPizzaOrder.ts. És jegyezze fel a EntityDetectionCallback metódust. Ez a metódus után minden transzformátorok meg, ha a készlet neve. Ha nem, akkor azt törli azt a toppings készletét, és a OutOfStock entitást ad hozzá. A inStock változó Ez a módszer, amelynek a készlet toppings listája felett van definiálva.
-6. Válassza ki a "Nem tudunk $OutOfStock".
-7. Válassza a "Kívánja, hogy bármi más?"
+    - `Peas` mint OutOfStock megjelenik-e.
+    - Látható, hogy ez történt, nyissa meg a kódot `C:\<\installedpath>\src\demos\demoPizzaOrder.ts`. Tekintse meg a EntityDetectionCallback metódust. A metódus meghívása után minden transzformátorok megtekintéséhez, hogy a készleten. Ha nem, akkor azt törli a toppings készletéből, és hozzáadja a OutOfStock entitás. A inStock változó adott metódust, amely a készlet toppings listája szerepel felett van meghatározva.
+6. Válassza ki a "Nincs $OutOfStock".
+7. Válassza a "Szeretné bármi más?"
 8. "Nem" adja meg.
 9. Kattintson a pontszám művelet.
 10. Válassza ki a "FinalizeOrder" API-hívás. 
-    - Ez a kódban a "FinalizeOrder" függvényt hívja. Ez törli a toppings, és visszaadja a "rendelés hamarosan megérkezik". 
-2. Adja meg "egy másik order". Új rendelés indító azt.
+    - Ez a kód meghatározott "FinalizeOrder" függvényt fogja hívni. Ez törli a toppings, és visszaadja a "a rendelés hamarosan megérkezik". 
+2. Adja meg az "egy másik order". Mi indítja egy új rendelést.
 9. Kattintson a pontszám művelet.
-    - Megjegyzés: sajt és paprika van a memória, az utolsó rendelés toppings.
-1. Válassza ki a "Kívánja, hogy $LastToppings".
+    - "sajtok iránti szenvedélyének" és "paprikát", az utolsó rendelés toppings vannak a memóriában.
+1. Válassza ki a "Szeretné $LastToppings".
 2. Írja be az "Igen"
 3. Kattintson a pontszám művelet.
-    - A botot szabályozni akarja-e a UseLastToppings művelet. Ez a két visszahívási módszer közül a második. Emellett az utolsó rendelés toppings átmásolja toppings és az utolsó toppings törölje. Ez az utolsó rendelés jelszóelőzmények, és ha a felhasználó egy másik pizzaszósz kívánják, így ezek közül toppings.
-2. Kattintással jelölje ki a "rendelkezik $Toppings a pizzaszósz".
-3. Válassza a "Kívánja, hogy bármi más?"
+    - A robot a UseLastToppings műveletet szeretne. Ez a két visszahívási módszer közül a második. Ez az utolsó rendelés toppings toppings másolja, és töröljük az utolsó toppings. Ez az utolsó rendelés megjegyzését, és ha a felhasználó szerint, egy másik kétpizzás szeretnének, így ezek közül toppings módja.
+2. Kattintással jelölje ki a "nincs $Toppings a kétpizzás".
+3. Válassza a "Szeretné bármi más?"
 8. "Nem" adja meg.
-4. Kattintson a tanítási végezhető el.
+4. Kattintson a tanítási kész gombra.
 
 ![](../media/tutorial_pizza_callbackcode.PNG)
 
@@ -109,4 +113,4 @@ Tegyük fel próbáljuk meg egy tanítási munkamenet.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bemutató - VR app indítója](./demo-vr-app-launcher.md)
+> [Bemutató – VR appindítója](./demo-vr-app-launcher.md)

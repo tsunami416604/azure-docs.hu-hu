@@ -9,18 +9,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: d6cbba2a5bf9ff44439c6e98debde5cd47d4bfc3
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 46aa23ee359fd1f2f5a1cf8a05854d5c4cc7c739
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950389"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170616"
 ---
 # <a name="testing-in-luis"></a>A LUIS tesztelése
 
 Tesztelés az a folyamat minta utterances biztosítva a LUIS, és a egy beérkező válasszal, LUIS elismert szándékokat és entitásokat. 
 
-Is [tesztelése](interactive-test.md) LUIS interaktívan, egyetlen utterance egyszerre, vagy adjon meg egy [batch](luis-concept-batch-test.md) a kimondott szöveg. Tesztelés, akkor összehasonlíthatja az aktuális [aktív](luis-concept-version.md#active-version) modell a közzétett modell. 
+Is [tesztelése](luis-interactive-test.md) LUIS interaktívan, egyetlen utterance egyszerre, vagy adjon meg egy [batch](luis-concept-batch-test.md) a kimondott szöveg. Tesztelés, akkor összehasonlíthatja az aktuális [aktív](luis-concept-version.md#active-version) modell a közzétett modell. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
@@ -57,4 +57,4 @@ Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet [tesztelés](interactive-test.md) a kimondott szöveg.
+* Tudjon meg többet [tesztelés](luis-interactive-test.md) a kimondott szöveg.

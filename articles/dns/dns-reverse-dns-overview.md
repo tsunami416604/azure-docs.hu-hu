@@ -1,9 +1,9 @@
 ---
-title: Az Azure-ban címfeloldási DNS áttekintése |} Microsoft Docs
-description: Megtudhatja, hogyan címfeloldási DNS működik, és hogyan használható az Azure-ban
+title: Az Azure-ban a fordított DNS áttekintése |} A Microsoft Docs
+description: Ismerje meg, hogyan fordított DNS működik, és hogyan használható az Azure-ban
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.devlang: na
@@ -11,56 +11,56 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: kumud
-ms.openlocfilehash: 1ce14360d0f62a01172a8003e1d78a45885166f6
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: fa3798a35804998936e0ac166fceff02b01231a0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772398"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171510"
 ---
-# <a name="overview-of-reverse-dns-and-support-in-azure"></a>A címfeloldási DNS- és támogatás az Azure-ban – áttekintés
+# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Fordított DNS és támogatás az Azure-ban – áttekintés
 
-Ez a cikk lehetőséget nyújt az hogyan címfeloldási DNS works áttekintését, és a címfeloldási DNS-forgatókönyvek az Azure-ban támogatott.
+Ez a cikk a fordított irányú DNS-forgatókönyvek az Azure-ban támogatott, és hogyan fordított DNS works áttekintését biztosítja.
 
-## <a name="what-is-reverse-dns"></a>Mi az a címfeloldási DNS?
+## <a name="what-is-reverse-dns"></a>Mi a fordított DNS?
 
-Hagyományos DNS-rekordokat a DNS-nevét (például "www.contoso.com") egy IP-címre (például 64.4.6.100) leképezéseket engedélyezhetik.  Névkeresési DNS lehetővé teszi, hogy a fordítás egy IP-cím (64.4.6.100) vissza a nevét ("www.contoso.com").
+A hagyományos DNS-rekordok engedélyezése a leképezés egy DNS-nevet (például "www.contoso.com") egy IP-címet (például 64.4.6.100).  Fordított DNS lehetővé teszi, hogy a fordítás vissza ("www.contoso.com") nevet az IP-cím (64.4.6.100).
 
-Névkeresési DNS-rekordok számos különféle helyzetekben is használja. Például címfeloldási DNS-rekordok széles körben használt e-mail levélszemét elleni egy e-mail üzenet feladójának ellenőrzésével.  A fogadó levelezési kiszolgáló lekéri a címfeloldási DNS-rekord a küldő kiszolgáló IP-cím, és ellenőrzi, hogy üzemeltető jogosult-e e-mail küldése a származó tartományból. 
+Fordított DNS-rekordok számos helyzetben kell használni. Fordított DNS-rekordok például széles körben használják a elleni küzdelemben e-mail levélszemét szóló e-mail üzenet küldője ellenőrzésével.  A fogadó levelezési kiszolgáló lekéri a fordított irányú DNS-rekord a küldő kiszolgáló IP-cím, és ellenőrzi, hogy jogosult-e, amelyeken e-mailek küldését az eredeti tartományból. 
 
-## <a name="how-reverse-dns-works"></a>Hogyan címfeloldási DNS működik
+## <a name="how-reverse-dns-works"></a>Hogyan fordított DNS működése
 
-Speciális DNS-zónák, úgynevezett "ARPA" zónák tárolt címfeloldási DNS-rekordokat.  A zónák egy külön DNS-hierarchiában, a normál hierarchiája, például "contoso.com" tartományt üzemeltet, párhuzamosan alkotnak.
+Fordított DNS-rekordok speciális DNS-zónák, más néven "az ARPA"-zónák üzemeltetik.  A zónák párhuzamosan, a normál hierarchiája, például a "contoso.com" tartományt üzemeltet egy külön DNS-hierarchia alkotnak.
 
-Például a DNS rekord "www.contoso.com" a "contoso.com" zóna a "www" nevet a DNS-"A" rekord segítségével van megvalósítva.  Ezt A rekordot a megfelelő IP-cím, ebben az esetben 64.4.6.100 mutat.  A névkeresési segítségével van megvalósítva külön-külön, a "PTR" rekord nevű "100" a "6.4.64.in-addr.arpa" zónában (vegye figyelembe, hogy IP-címek felcseréli ARPA-zónák.)  A PTR típusú rekord, ha megfelelően lett konfigurálva mutat a neve "www.contoso.com".
+Például a DNS rekord "www.contoso.com" a "contoso.com" zóna a "www" name "A" DNS rekord segítségével van megvalósítva.  Ez A rekordot a megfelelő IP-cím, ebben az esetben 64.4.6.100 mutat.  A névkeresési használatával lett megvalósítva külön-külön "PTR" rekord nevű, "100" a "6.4.64.in-addr.arpa" zónában (vegye figyelembe, hogy IP-címek felcseréli ARPA-zónák.)  A PTR típusú rekord, ha megfelelően lett konfigurálva mutat a neve "www.contoso.com".
 
-Amikor egy szervezet hozzá van rendelve egy IP-Címblokk, azokat is szerezzen be a megfelelő ARPA zónát irányítására. Az ARPA-zónák az IP-címblokkok Azure által használt megfelelő tárolt és kezelt Microsoft által. Az Internetszolgáltató meg az ARPA időzónáját a saját IP-címek is tartalmazhat, vagy előfordulhat, hogy engedélyezi, hogy egy szerkesztőprogramban, például az Azure DNS-ben a DNS szolgáltatásban a ARPA zóna üzemeltetésére.
+Amikor egy szervezet hozzá van rendelve egy IP-Címblokk, azokat is beszerezheti a jogot arra, hogy a megfelelő ARPA-zónák kezelése. Az ARPA-zónák az Azure által használt IP-címblokkok megfelelő üzemeltetett és a Microsoft felügyeli. Az Internetszolgáltató az Ön számára a saját IP-címek az ARPA zóna is tartalmazhat, vagy lehetővé teheti, hogy a szolgáltatás egy szerkesztőprogramban, például az Azure DNS DNS ARPA-zónát üzemeltessen.
 
 > [!NOTE]
-> DNS-címkeresés és a DNS-névlekérdezés különálló, párhuzamos DNS hierarchiákban valósíthatók meg. A "www.contoso.com" névlekérdezés **nem** üzemelteti a "contoso.com" zónában, hanem helyezkedik el a megfelelő IP-Címblokk ARPA zónában. Különálló zónákra az IPv4 és IPv6-címterületet használnak.
+> DNS-címkeresés és a fordított DNS-lekérdezések külön, párhuzamos DNS hierarchiákban van megvalósítva. A "www.contoso.com" névlekérdezés **nem** a "contoso.com" zónában lévő üzemeltetett, hanem vannak tárolva a megfelelő IP-Címblokk ARPA zónában. Különálló zónákra IPv4 és IPv6-címterületet szolgálnak.
 
 ### <a name="ipv4"></a>IPv4
 
-Egy IPv4 névkeresési zóna neve a következő formátumban kell megadni: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+Egy IPv4-névkeresési zóna neve a következő formátumúnak kell lennie: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
 
-Például a névkeresési zónát, hogy állomásrekordokat állomások IP-címek, amelyek szerepelnek a 192.0.2.0/24 előtag létrehozásakor Zónanév hozhatók létre azoknak a hálózati előtag a cím (192.0.2) és a sorrend (2.0.192) felcserélni és Utótaghozzáadása`.in-addr.arpa`.
+Ha például az IP-címek lévő gazdagépek 192.0.2.0/24 előtagot a gazdagép-rekordok a névkeresési zóna létrehozásakor a zóna nevét jönnek létre elkülönítése a hálózati előtagot a cím (192.0.2) és a rendelés (2.0.192) megfordítása és Utótaghozzáadása`.in-addr.arpa`.
 
-|Alhálózati osztály|Hálózati előtag  |Fordított hálózati előtag  |Standard utótag  |Névkeresési zóna neve |
+|Alhálózat-osztály|Hálózati előtagok  |Fordított hálózati előtagok  |Standard utótag  |Névkeresési zóna neve |
 |-------|----------------|------------|-----------------|---------------------------|
 |A osztály|203.0.0.0/8     | 203        | .in-addr.arpa   | `203.in-addr.arpa`        |
-|B osztály|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
+|B. osztály|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
 |C osztály|192.0.2.0/24    | 2.0.192    | .in-addr.arpa   | `2.0.192.in-addr.arpa`    |
 
 ### <a name="classless-ipv4-delegation"></a>Classless IPv4-delegálás
 
-Bizonyos esetekben a szervezetek számára lefoglalt IP-címtartomány kisebb, mint egy C osztályú (/ 24) tartományon. Ebben az esetben az IP-címtartomány nem tartozik a zóna keretén belül a `.in-addr.arpa` hierarchia zónát, és ezért nem delegálható gyermek zónának.
+Bizonyos esetekben egy szervezet számára lefoglalt IP-címtartomány kisebb, mint egy osztály C (/ 24) tartomány. Ebben az esetben az IP-címtartomány nem tartozik egy zóna határon belül a `.in-addr.arpa` hierarchia zónát, és ezért nem delegálható, egy gyermekzónát.
 
-Ehelyett egy másik módszer használata vezérlő egyes névkeresési (PTR) rekordok átvitele egy dedikált DNS-zónát. A mechanizmus delegálja a gyermekzónát minden IP-címtartomány, majd külön-külön leképezhető minden IP-cím a tartományban, hogy a gyermekzóna CNAME rekordok használatával.
+Ehelyett egy másik mechanizmust használ a vezérlőelem az egyes névkeresési (PTR) rekordok átvitele egy dedikált DNS-zónát. Ez a mechanizmus delegálja a gyermekzónát az egyes IP-címtartományban, majd a CNAME rekordok használatával a gyermekzóna névkiszolgálóira külön-külön rendeli minden IP-cím a tartományban.
 
-Tegyük fel például, egy szervezet megkapja az IP-címtartomány 192.0.2.128/26 az Internetszolgáltató által. A 192.0.2.191 192.0.2.128 64 IP-címek, ez jelöli. Névkeresési DNS ezt a tartományt a következőképpen történik:
-- A szervezet egy névkeresési zónát 128-26.2.0.192.in-addr.arpa hoz létre. Az előtag "128-26' jelöli a szervezeten belül a C osztályú hozzárendelt hálózati szegmens (/ 24) tartományon.
-- Az internetszolgáltató által biztosított hoz létre a Névkiszolgálói rekordokat a DNS-delegálás, a fenti zóna a C osztályú szülőzónában beállítása. Is létre CNAME rekordok a szülő (C osztályú) névkeresési zónát, az új zóna a szervezet által létrehozott minden IP-címet az IP-címtartomány leképezése:
+Tegyük fel, hogy egy szervezet megkapja az IP-címtartomány 192.0.2.128/26 az Internetszolgáltató által. A 192.0.2.191 192.0.2.128 64 IP-címek, ez jelöli. Fordított DNS ezt a tartományt a következőképpen történik:
+- A szervezet egy névkeresési zónát 128-26.2.0.192.in-addr.arpa hoz létre. A "128-26' előtag a szervezeten belül a C osztályú hozzárendelt hálózati szegmenst (/ 24) tartomány.
+- Az Internetszolgáltató hoz létre a Névkiszolgálói rekordokat a DNS-delegálás, a fenti zóna C osztályú szülőzónában beállításához. Is létrehoz CNAME-rekordok a szülő (C osztályú) névkeresési zónát, az egyes IP-címet az IP-címtartomány leképezése a szervezet által létrehozott új zóna:
 
 ```
 $ORIGIN 2.0.192.in-addr.arpa
@@ -73,7 +73,7 @@ $ORIGIN 2.0.192.in-addr.arpa
 131       CNAME    131.128-26.2.0.192.in-addr.arpa
 ; etc
 ```
-- A szervezet kezeli az egyes PTR-rekordok a gyermekzóna belül.
+- Ezután a szervezeten belül a gyermekzónát az egyes PTR-rekordok kezeli.
 
 ```
 $ORIGIN 128-26.2.0.192.in-addr.arpa
@@ -83,35 +83,35 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 131      PTR    partners.contoso.com
 ; etc
 ```
-A PTR típusú rekord IP-cím "192.0.2.129" lekérdezésekhez névlekérdezés "129.2.0.192.in-addr.arpa" nevű. Ez a lekérdezés szülőzóna a gyermekzóna PTR rekordjához CNAME keresztül oldható fel.
+A névkeresési PTR típusú rekord IP-cím "192.0.2.129" lekérdezést a "129.2.0.192.in-addr.arpa" nevű. Ez a lekérdezés a CNAME REKORDOT a PTR típusú rekord a gyermekzónát a szülőzónában keresztül oldható fel.
 
 ### <a name="ipv6"></a>IPv6
 
 Egy IPv6-névkeresési zóna neve a következő formátumban kell lennie: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Például. Ha vannak létrehozása egy névkeresési zónát, hogy állomásrekordokat állomások IP-címek, amelyek a 2001:db8:1000:abdc:: / 64 előtag Zónanév hozhatók létre azoknak a hálózati előtag a cím (2001:db8:abdc::). Ezután bontsa ki az IPv6 hálózati előtag eltávolításához [tömörítés nulla](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), ha való jelentős mértékben csökkentse az IPv6-címelőtagot (2001:0db8:abdc:0000::). Fordított sorrendben, időszak használja, mint a fordított hálózati előtag létrehozásához az előtag hexadecimális számoknak közötti elválasztó karaktert (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`), és adja hozzá a utótag `.ip6.arpa`.
+Ha például. Ha egy gazdagép-rekordok névkeresési zóna gazdagépek kialakításának az IP-címek, amelyek vannak a 2001:db8:1000:abdc:: / 64 előtagjával, a zóna nevét jönnek létre a cím előtagja hálózati elkülönítése (2001:db8:abdc::). Ezután bontsa ki a hálózat IPv6-előtag eltávolítása [tömörítési nulla](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), ha az IPv6-címelőtagot lerövidítheti használta azt (2001:0db8:abdc:0000::). A rendelés egy időszak használja, mint a elválasztó hozhat létre a fordított hálózati előtagot az előtag, az egyes hexadecimális szám között fordított (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) és az utótag hozzáadása `.ip6.arpa`.
 
 
-|Hálózati előtag  |Bővített és a fordított hálózati előtag |Standard utótag |Névkeresési zóna neve  |
+|Hálózati előtagok  |Bővített és megfordítva hálózati előtagok |Standard utótag |Névkeresési zóna neve  |
 |---------|---------|---------|---------|
 |2001:db8:abdc:: / 64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | . ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
 |2001:db8:1000:9102:: / 64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | . ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
 
 
-## <a name="azure-support-for-reverse-dns"></a>A címfeloldási DNS Azure-támogatás
+## <a name="azure-support-for-reverse-dns"></a>Azure-támogatás a fordított DNS
 
-Azure DNS fordított vonatkozó két külön forgatókönyveket támogat:
+Az Azure támogatja a címfeloldási DNS vonatkozó két külön forgatókönyvek:
 
 **A megfelelő az IP-Címblokk névkeresési zónát üzemeltető.**
-Az Azure DNS a következőkre használható [a névkeresési zónák tárolásához és kezeléséhez minden DNS-címkeresés a PTR rekordok](dns-reverse-dns-hosting.md), az IPv4 és IPv6.  A folyamat a (ARPA) névkeresési zóna létrehozásának, a delegálás beállítása és konfigurálása a PTR-rekordok számára ugyanúgy rendszeres DNS-zónák.  Csak olyan, hogy a delegálási kell konfigurálni a DNS-regisztráló webhelyén, hanem az Internetszolgáltató, és csak a PTR típusú rekord típust kell használni.
+Az Azure DNS az alábbiakra használhatók [a névkeresési zónák üzemeltetése és a PTR-rekordok kezelése az egyes DNS-névkeresési](dns-reverse-dns-hosting.md), IPv4 és IPv6-alapú.  A (ARPA) névkeresési zóna létrehozásának, a delegálás beállítása és PTR-rekordok konfigurálásával való ugyanaz, mint a rendszeres DNS-zónák.  Az egyetlen különbség, hogy a delegálást konfigurálni kell a DNS-regisztráló helyett az Internetszolgáltató keresztül, és csak a PTR típusú rekord típust kell használni olyan.
 
-**Konfigurálja az IP-cím, az Azure szolgáltatáshoz a fordított DNS-rekordot.** Azure lehetővé teszi [konfigurálása az Azure service lefoglalt IP-címek névkeresési](dns-reverse-dns-for-azure-services.md).  A névkeresési PTR-rekordot a megfelelő ARPA zónát az Azure-ban van konfigurálva.  Ezek az ARPA-zónák, az Azure által használt összes IP-címtartományok megfelelő Microsoft által üzemeltetett
+**A fordított irányú DNS-rekordot az Azure-szolgáltatáshoz rendelt IP-cím konfigurálása.** Az Azure lehetővé teszi, hogy [konfigurálása az Azure-szolgáltatás számára lefoglalt IP-címek névkeresési](dns-reverse-dns-for-azure-services.md).  A névkeresési PTR-rekordot a megfelelő ARPA-zónát az Azure-ban van konfigurálva.  A Microsoft által üzemeltetett ezeket az ARPA-zónák, megfelelő Azure-ban, által használt IP-címtartományai
 
 ## <a name="next-steps"></a>További lépések
 
-A címfeloldási DNS-további információkért lásd: [Wikipedia névkeresési DNS](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Fordított DNS további információkért lásd: [Wikipedia DNS-címkeresés](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Megtudhatja, hogyan [az az Internetszolgáltató által hozzárendelt IP-címtartományt, az Azure DNS-névkeresési zóna](dns-reverse-dns-for-azure-services.md).
+Ismerje meg, hogyan [a névkeresési zóna Azure DNS-ben az Internetszolgáltató által kiosztott IP-címtartományt a gazdagép](dns-reverse-dns-for-azure-services.md).
 <br>
-Megtudhatja, hogyan [címfeloldási DNS-rekordjait az Azure-szolgáltatások kezelése](dns-reverse-dns-for-azure-services.md).
+Ismerje meg, hogyan [fordított DNS-rekordjait az Azure-szolgáltatások kezelése](dns-reverse-dns-for-azure-services.md).
 

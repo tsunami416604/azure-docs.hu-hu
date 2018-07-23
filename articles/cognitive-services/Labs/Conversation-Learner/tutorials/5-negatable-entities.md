@@ -1,7 +1,7 @@
 ---
-title: A beszélgetés tanuló alkalmazás – Microsoft kognitív szolgáltatások negálható entitások használata |} Microsoft Docs
+title: Beszélgetéstanuló modell – a Microsoft Cognitive Services negálható entitások használata |} A Microsoft Docs
 titleSuffix: Azure
-description: Útmutató negálható entitások beszélgetést tanuló alkalmazással.
+description: Ismerje meg, hogyan használhatja negálható entitásokat Beszélgetéstanuló modell.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,108 +10,112 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3d65376c9c43ee1407468f3e8bf3e058048bd556
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2fd00d53755e44e3a3d86782c40aa6a53ff4d378
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348662"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171401"
 ---
-# <a name="how-to-use-negatable-entities-with-a-conversation-learner-application"></a>Negálható entitások beszélgetést tanuló alkalmazással használata
+# <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Beszélgetéstanuló modell negálható entitások használata
 
-Ez az oktatóanyag azt mutatja be, az entitások "negálható" tulajdonság.
+Ez az oktatóanyag bemutatja az entitások "negálható" tulajdonságát.
+
+## <a name="video"></a>Videó
+
+[![Útmutató 5 előzetes verzió](http://aka.ms/cl-tutorial-05-preview)](http://aka.ms/blis-tutorial-05)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e az általános útmutató botot
+Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
-Egy művelet, mintha a "negálható" megjelölni, ha a felhasználó "törlése" egy entitás értékét, mint a "Nem, most nem kívánok $entity" vagy "nem, nem $entity." Például "nem, nem szeretném, hogy a Boston."
+Egy művelet, "negálható" minősítés, ha a felhasználó "törölheti" egy entitás érték, mint a "Nem, most nem kívánok $entity" vagy "nem, nem $entity." Például "nem, nem szeretném, hogy a Boston."
 
-Konkrétan Ha az entitás "negálható" tulajdonság értéke:
+Konkrétan Ha egy entitás a "negálható" tulajdonság értéke:
 
-- Ha entitás címkézés említi, engedélyezi, hogy egy entitás normál (pozitív) példányát, mind az entitás "negatív" példányai címke
-- LUIS megtanulja két entitás modell: egy a példányok pozitív és negatív példányok egy második
-- A hatását, hogy az entitás egy negatív példányát, hogy törölje ezt az értéket a entitásra változóból (ha van ilyen)
+- Entitás említései címkézés, ha lehetővé teszi a normál (pozitív) példányok az entitások, mind az entitás "negatív" példánya felirat
+- A LUIS megtanulja a két entitás modell: egy pozitív példányok és a egy második negatív példányok
+- Egy entitás egy negatív példány hatását, hogy ezt az értéket az entitás változó törlése (ha létezik)
 
 ## <a name="steps"></a>Lépések
 
-### <a name="create-the-application"></a>Az alkalmazás létrehozása
+### <a name="create-the-model"></a>A modell létrehozása
 
-1. A webes felhasználói felületén kattintson az új alkalmazás
-2. A név megadása NegatableEntity. Majd kattintson a Létrehozás gombra.
+1. A webes felhasználói felületén kattintson az új modell
+2. A nevet írja be a NegatableEntity. Ezután kattintson a Létrehozás gombra.
 
 ### <a name="create-an-entity"></a>Entitás létrehozása
 
-1. Kattintson az entitásokat, majd új entitás.
-2. Entitás nevét adjon meg nevet.
+1. Kattintson az entitásokat, majd az új entitás.
+2. Az entitás nevét adja meg a nevét.
 3. A jelölőnégyzet negálható.
-    - Jelzi a felhasználó fog tudni az entitás adjon meg egy értéket, vagy mondja ki van valami *nem* az entitás értékét. Az utóbbi esetben ennek eredményeképpen, az az entitás megfelelő érték törlése.
+    - Ez a tulajdonság jelzi a felhasználó fogja tudni adjon meg egy értéket az entitás vagy tegyük fel, valami *nem* az entitás értékét. Az utóbbi esetben ez eredményez az entitás megfelelő érték törlése.
 3. Kattintson a Létrehozás gombra.
 
 ![](../media/tutorial5_entities.PNG)
 
-### <a name="create-two-actions"></a>Két tevékenység
+### <a name="create-two-actions"></a>Hozzon létre két műveletet
 
 1. Kattintson a műveletek, majd az új művelet
-2. Válasz írja be a "Nem tudom a neve".
-3. A kizárásának entitások írja be.
+2. Válaszként írja be a "Nem tudom, a neve".
+3. Entitások kizárásának adjon meg nevet.
 3. Kattintson a Létrehozás gombra
 
 Ezután hozzon létre a második műveletet.
 
-1. Kattintson a műveletek, majd új művelet egy második művelet létrehozásához.
-3. A válasz, írja be "tudható, hogy a neve. $Name ".
+1. Kattintson a műveletek, majd új műveletet egy másik művelet létrehozása.
+3. A válasz, írja be "tudom, hogy a neve. Célszerű a $name ".
 4. Kattintson a Létrehozás gombra
 
-Most, két műveletet kell végrehajtani.
+Most már két műveletet.
 
 ![](../media/tutorial5_actions.PNG)
 
-### <a name="train-the-bot"></a>A botot képzése
+### <a name="train-the-bot"></a>A robot betanítása
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
-2. Írja be a "Hello szövegrészt".
-3. Kattintson a pontszám műveleteket, majd válassza a "Nem tudom a neve"
-    - Figyelje meg, hogy már nehézséget 100 %-os pontszámot, mert az csak érvényes művelet.
-2. Adja meg a "nevem david"
-3. Válassza ki a "david", és válassza ki a címke "+ neve"
-    - Figyelje meg a "name" két példánya van: "+ neve" és "-name".  Továbbá azt jelenti, hogy azt az értéket ad. Mínusz azt jelenti, hogy azt azt közli a rendszerrel, hogy valami nem értékét.
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
+2. Írja be a "hello".
+3. Kattintson a pontszám műveletek, és válassza a "Nem tudom, a neve"
+    - A pontszám: 100 %-os, az egyetlen érvényes művelet, mert.
+2. Adja meg az "a nevem david"
+3. Válassza ki a "david", és válassza ki a címke "+ nevezze el"
+    - Két esetben a "name": "+ name" és "-neve".  (+) Plusz ad hozzá, vagy felülírja a értéket. (-) Mínuszjel eltávolítja az értéket.
 5. Kattintson a pontszám műveletek
-    - Megjegyzés: név értéke most már a botot memóriában.
-    - "Tudható, hogy a neve. $Name "csak akkor áll rendelkezésre a válasz. 
-6. Jelölje ki "tudható, hogy a neve. $Name ".
+    - A név-érték már a robot a memóriában.
+    - "Tudom, hogy a neve. Célszerű a $name "csak akkor érhető el a válasz. 
+6. Jelölje be "tudom, hogy a neve. Célszerű a $name ".
 
-Most törölje ki a negálható entitás:
+Próbáljon meg a negálható entitás törlése:
 
-7. Adja meg, "a név nincs david".
-    - Figyelje meg "nem" választotta az előző minta alapján nevet. Amely nem megfelelő.
-2. Kattintson a "nem", és a piros x. 
+7. Adja meg a "saját név nem david".
+    - Figyelje meg "nem" van kiválasztva a korábbi minta alapján neveként. Ez a címke nem megfelelő.
+2. Kattintson a "nem", majd a piros x. 
 3. Kattintson a "david".
-    - Ez már egy negatív entitás való kommunikációhoz, az érték nem az entitás neve.
-2. Jelölje ki "-name".
+    - Ez mostantól egy negatív entitáshoz való kommunikációhoz, hogy ez nem a név entitás értékét.
+2. Válassza ki a(z) – neve ".
 3. Kattintson a pontszám műveletek.
-    - Figyelje meg, az érték a memóriából törölve lett.
-2. Jelölje ki a "Nem tudom a neve", amely az egyetlen művelet.
+    - Figyelje meg, hogy a memóriából törölve lett az értéket.
+2. Jelölje ki a "Nem tudom, a neve", amely az egyetlen művelet.
 
-A következő megmutatjuk, hogyan döntéseit beírhatja a nevet az új értéket.
+Bemutatjuk, hogyan lehet megadni, egy új értéket a név a következő.
 
-3. Adja meg "john" néven. Ezután válassza ki a "john", és kattintson a nevére.
+3. Adja meg a "János" nevet. Ezután válassza ki a "János", és kattintson a nevére.
 4. Kattintson a pontszám műveletek.
-5. Jelölje ki "tudható, hogy a neve. $Name ".
+5. Jelölje be "tudom, hogy a neve. Célszerű a $name ".
 
-Próbálja meg a mag cseréje a megadott név.
+Próbálja meg és cserélje le a megadott név.
 
-6. Adja meg a "nevem susan".
-7. Jelölje ki "tudható, hogy a neve. $Name ".
+6. Adja meg a "a nevem susan".
+7. Jelölje be "tudom, hogy a neve. Célszerű a $name ".
 7. Kattintson a pontszám műveletek.
-8. Értesítés **susan** felülírta **john** az entitás értékek.
-9. Adja meg, "a név nincs susan".
-    - Figyelje meg, a rendszer feliratú ez negatív-példányként.
+8. Figyelje meg **susan** felülírta **john** az entitás értékeket.
+9. Adja meg a "saját név nem susan".
+    - Figyelje meg, hogy a rendszer rendelkezik címkével ez negatív példányként.
 2. Kattintson a pontszám műveletek.
-3. Jelölje ki a "Nem tudom a neve", amely az egyetlen művelet.
-7. Kattintson a tanítási végezhető el.
+3. Jelölje ki a "Nem tudom, a neve", amely az egyetlen művelet.
+7. Kattintson a tanítási kész gombra.
 
 ![](../media/tutorial5_dialogs.PNG)
 

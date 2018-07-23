@@ -1,7 +1,7 @@
 ---
-title: Előre elkészített entitások felvétele a beszélgetés tanuló alkalmazás – Microsoft kognitív szolgáltatások |} Microsoft Docs
+title: Előre összeállított entitások hozzáadása egy Beszélgetéstanuló modell – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Megtudhatja, hogyan előre elkészített entitások a beszélgetés tanuló az alkalmazáshoz való hozzáadásához.
+description: Ismerje meg, hogyan előre összeállított entitások hozzáadása Beszélgetéstanuló modellhez.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,72 +10,76 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f014464419bfac39a9e57e679fcd28a737e9ebdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84d73add5586aaaf130253a8122a4152e39bcbe9
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349343"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171367"
 ---
-# <a name="how-to-add-pre-built-entities"></a>Előre elkészített entitások hozzáadása
-Ez az oktatóanyag bemutatja, hogyan "előzetesen elkészített" entitások a beszélgetés tanuló az alkalmazáshoz való hozzáadásához.
+# <a name="how-to-add-pre-built-entities"></a>Előre összeállított entitások hozzáadása
+Ez az oktatóanyag bemutatja, hogyan "beépített" entitásokat ad hozzá a Beszélgetéstanuló modell.
+
+## <a name="video"></a>Videó
+
+[![Az oktatóanyag 7 előzetes verzió](http://aka.ms/cl-tutorial-07-preview)](http://aka.ms/blis-tutorial-07)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e az általános útmutató botot
+Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
 
-Előre elkészített entitások entitások, például a dátum, pénzügyi összegek, és másokkal közös típusú ismeri fel.  Egyéni entitások eltérően azok "out-of-az-box" működik, és nem igényelnek képzést.  Egyéni entitásokat, ellentétben a viselkedés nem módosítható.  Alapértelmezés szerint előre elkészített entitások többértékű – Ez azt jelenti, hogy a botot memória felhalmozódnak az entitás minden azonosított példányát.
+Előre összeállított entitások ismeri fel az általános típusú entitások, például a számokat, dátumokat, pénzügyi összegek és mások.  Egyéni entitásokat, eltérően, "out-of-a-box" működik, így nincs szükség képzést.  Egyéni entitásokat, ellentétben a viselkedésük nem lehet módosítani.  Alapértelmezés szerint előre összeállított entitások többértékű – a bot memória azt jelenti, hogyan gyűlnek az entitás minden egyes azonosított példány.
 
 ## <a name="steps"></a>Lépések
 
-### <a name="create-the-application"></a>Az alkalmazás létrehozása
+### <a name="create-the-model"></a>A modell létrehozása
 
-1. A webes felhasználói felületén kattintson az új alkalmazás
-2. A név megadása BuiltInEntities. Majd kattintson a Létrehozás gombra.
+1. A webes felhasználói felületén kattintson az új modell
+2. A nevet írja be a BuiltInEntities. Ezután kattintson a Létrehozás gombra.
 
 ### <a name="create-an-entity"></a>Entitás létrehozása
 
-1. Kattintson az entitásokat, majd új entitás.
-2. Kattintson a legördülő lista EntityType, és válassza a datetimev2.
-    - Programozható és Negatable beállítások le vannak tiltva, mert előzetesen összeállításához az entitások nem vonatkoznak.
+1. Kattintson az entitásokat, majd az új entitás.
+2. Kattintson a legördülő EntityType, és válassza a datetimev2.
+    - Programozható és Negatable beállítások le vannak tiltva, mert előre hozhat létre entitásokat nem vonatkoznak.
 3. Kattintson a Létrehozás gombra.
 
 ![](../media/tutorial7_entities.PNG)
 
-### <a name="create-two-actions"></a>Két tevékenység
+### <a name="create-two-actions"></a>Hozzon létre két műveletet
 
 1. Kattintson a műveletek, majd az új művelet
-2. A válasz, írja be "a dátum, $luis-datetimev2".
+2. A válasz, írja be "a dátum az $luis-datetimev2".
 3. Kattintson a Létrehozás gombra.
 
 ![](../media/tutorial7_actions.PNG)
 
-A második művelet majd létrehozása:
+Ezután hozzon létre a második műveletet:
 
-1. Kattintson a műveletek, majd új művelet egy második művelet létrehozásához.
-3. Válasz írja be a "Mi az a dátum?".
-4. A kizárásának entitások írja be a "luis-datetimev2".
+1. Kattintson a műveletek, majd új műveletet egy másik művelet létrehozása.
+3. A válasz írja be a "Mi az a dátum?".
+4. Adja meg "a luis-datetimev2" kizárásának entitásokat.
 4. Kattintson a Létrehozás gombra
 
 ![](../media/tutorial7_actions2.PNG)
 
-Most, két műveletet kell végrehajtani.
+Most már két műveletet.
 
-### <a name="train-the-bot"></a>A botot képzése
+### <a name="train-the-bot"></a>A robot betanítása
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
-2. Írja be a "Hello szövegrészt".
-3. Kattintson a pontszám műveleteket, majd válassza a "Mi az a dátum?"
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
+2. Írja be a "hello".
+3. Kattintson a pontszám műveletek, és válassza a "Mi az a dátum?"
 2. Adja meg a "ma". 
-    - Ma van megjelölve, és megjelenik a második sorban, mivel ez egy előre elkészített entitás, és nem szerkeszthető.
+    - Figyelje meg még ma van megjelölve, és megjelenik a második sorban, mivel ez egy előre elkészített entitás, és nem szerkeszthető.
 5. Kattintson a pontszám műveletek
-    - Figyelje meg, a dátum most megjelenik a entitás memóriaszakasz. 
-    - Ha egér mozgatásakor át a dátumot, akkor jelenik meg a további adatok LUIS, amely használható által biztosított, és további kezelhetők a kódban. 
-6. Jelölje ki "a dátum, $luis-datetimev2".
-7. Kattintson a tanítási kész
+    - Figyelje meg, hogy most már a dátum entitás memória szakaszban jelenik meg. 
+    - Ha az egérmutatót a dátumot, a LUIS, amely használható által biztosított további adatokat fog látni, és további kezelhetők a kódban. 
+6. Válassza "a dátum az $luis-datetimev2".
+7. Kattintson a kész tanítás
 
 ## <a name="next-steps"></a>További lépések
 

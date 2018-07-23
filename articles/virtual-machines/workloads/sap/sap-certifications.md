@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 07/12/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: d1d2bd74a5118b48f7ed79a77ca2d7b6545607c6
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: f293adc6a25ef9e6ed916043c40233f9dd7bfbc1
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072380"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171282"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-tanúsítványok és a Microsoft Azure-on futó konfigurációk
 
@@ -36,13 +36,13 @@ Hivatkozások:
 | SAP-termék | Támogatott operációs rendszer | Azure-ajánlatok |
 | --- | --- | --- |
 | SAP HANA Developer Edition (HANA-ügyfélszoftver komponensekkel SQLODBC, ODBO – Windows csak, ODBC, JDBC-illesztőprogramok, HANA studio és HANA database) | Red Hat Enterprise Linux, a SUSE Linux Enterprise | A D-sorozat Virtuálisgép-család |
-| Üzleti egy on HANA | SUSE Linux Enterprise | DS14_v2 |
-| SAP S/4 HANA | Red Hat Enterprise Linux, a SUSE Linux Enterprise | Szabályozott elérhetőség a GS5, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) |
-| Suite on HANA, OLTP | Red Hat Enterprise Linux, a SUSE Linux Enterprise | Nem éles környezethez, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) a gs5 esetén |
-| HANA Enterprise BW-hez, OLAP-hoz | Red Hat Enterprise Linux, a SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) |
-| AZ SAP BW/4 HANA | Red Hat Enterprise Linux, a SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) |
+| Üzleti egy on HANA | SUSE Linux Enterprise | DS14_v2 <br /> [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
+| SAP S/4 HANA | Red Hat Enterprise Linux, a SUSE Linux Enterprise | Szabályozott elérhetőség a gs5 esetén. Teljes körű támogatás M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) <br /> [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| Suite on HANA, OLTP | Red Hat Enterprise Linux, a SUSE Linux Enterprise | M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) <br /> [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| HANA Enterprise BW-hez, OLAP-hoz | Red Hat Enterprise Linux, a SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) <br /> [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| AZ SAP BW/4 HANA | Red Hat Enterprise Linux, a SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, az SAP HANA az Azure-ban (nagyméretű példányok) <br /> [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 
-Minden Azure virtuális gépeket, amennyiben az SAP HANA vertikális felskálázás hitelesített.
+Vegye figyelembe, hogy az SAP használja-e a kifejezés "Fürtszolgáltatás" [SAP HANA Certified IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) , szinonima "scale-out", pedig nem fürtözés"magas rendelkezésre állás
 
 ## <a name="sap-netweaver-certifications"></a>SAP NetWeaver-minősítések
 A Microsoft Azure az alábbi SAP termékekhez rendelkezik minősítéssel és teljes körű támogatással a Microsoft és az SAP részéről.

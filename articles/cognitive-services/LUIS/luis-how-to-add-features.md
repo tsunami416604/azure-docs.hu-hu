@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3a63aa13b7c3c98fb4c9c0177474e2c848aa7d1f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3b225780240d772564e55d3bfa4b85eec2a20963
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869193"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170735"
 ---
 # <a name="use-features-to-improve-your-luis-apps-performance"></a>A LUIS-alkalmazás a teljesítmény javítása szolgáltatások használata  
 
@@ -69,4 +69,4 @@ Kattintson a három pont (***...*** ) gombra a sor végén található, és vál
 
 ## <a name="next-steps"></a>További lépések
 
-Utána hozzáadása, szerkesztése, törlése vagy kifejezés listáját inaktiválása [betanítása és az alkalmazás tesztelése](interactive-test.md) ismételt használatával ellenőrizheti, ha növeli a teljesítményt.
+Utána hozzáadása, szerkesztése, törlése vagy kifejezés listáját inaktiválása [betanítása és az alkalmazás tesztelése](luis-interactive-test.md) ismételt használatával ellenőrizheti, ha növeli a teljesítményt.

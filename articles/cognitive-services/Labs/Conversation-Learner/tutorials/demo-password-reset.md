@@ -1,7 +1,7 @@
 ---
-title: Beszélgetés tanuló alkalmazás, jelszó-visszaállítás - Microsoft kognitív szolgáltatásokat bemutató |} Microsoft Docs
+title: Bemutató Beszélgetéstanuló modell, jelszó-visszaállítási – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Útmutató a bemutató beszélgetés tanuló alkalmazás létrehozásához.
+description: Megtudhatja, hogyan hozhat létre egy bemutató Beszélgetéstanuló modell.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,66 +10,70 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 24d61787a79ee1a1a9737c417aa966cc8fd75930
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f633dd375d690a1c3e66a2a6e02ae69665dbe960
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348614"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170633"
 ---
-# <a name="demo-password-reset"></a>Bemutató: Jelszó alaphelyzetbe állítása
-Ez a bemutató, amelyek segíthetnek a jelszó-átállításra egyszerű műszaki támogatás bot mutatja be. 
+# <a name="demo-password-reset"></a>Bemutató: Jelszó-visszaállítás
+Ez a bemutató mutatja be egy egyszerű technikai támogatás robot, amelyek segíthetnek a jelszó-visszaállítási folyamatait. 
 
-Azt illusztrálja, hogyan beszélgetés tanuló nem triviális párbeszédpanel adatfolyamok, több kapcsolja sorozatok, például egy tartományhoz csatlakozó out osztályt is találhat. Ebben a bemutatóban a kódok vagy entitások nem használja.
+Megmutatja, hogyan Beszélgetéstanuló tudhat meg nem triviális párbeszédpanel folyamatok, több kapcsolja sorozatok, beleértve egy out-a-domain-osztályt. Ez a bemutató nem használja a kódok vagy entitásokat.
+
+## <a name="video"></a>Videó
+
+[![Bemutató jelszó előzetes verzió](http://aka.ms/cl-demo-password-preview)](http://aka.ms/blis-demo-password)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e a jelszó alaphelyzetbe állítása botot
+Ehhez az oktatóanyaghoz, hogy fut-e a jelszó alaphelyzetbe állítása robotot
 
     npm run demo-password
 
-### <a name="open-the-demo"></a>Nyissa meg a bemutató
+### <a name="open-the-demo"></a>Nyissa meg a bemutatót
 
-A webes felhasználói felület alkalmazások listájának megtekintéséhez kattintson a oktatóanyag bemutató jelszó alaphelyzetbe állítása. 
+A webes felhasználói felületen modell-lista kattintson a oktatóanyag bemutató jelszó alaphelyzetbe állítása. 
 
 ### <a name="actions"></a>Műveletek
 
-Létrehoztunk műveleteket, ha a felhasználó segítségre megoldások többek között a jelszó szüksége van.
+Ha a felhasználó keres súgó a jelszavát, beleértve a megoldások a műveletek hoztunk létre.
 
 ![](../media/tutorial_pw_reset_actions.PNG)
 
 ### <a name="training-dialogs"></a>Képzési párbeszédpanelek
 
-Számos képzési párbeszédpanelek. Van például felhasználói kérelmek például tartomány; kívül esnek a "útvonalak" kívüli tartomány osztály – bemutatók a botot megkapta-e tartományi kérelmek kívül néhány példát, és képes válaszolni a "I nem segít, hogy."
+Számos képzési párbeszédpanelek. Még nincsenek technológiáink miként kívüli tartomány osztály – például a felhasználói kérések, tartományi; "útvonalak" esnek a robot adott tartomány kérések ki néhány példát, és képes válaszolni az "I nem tud segíteni az adott."
 
 ![](../media/tutorial_pw_reset_entities.PNG)
 
-Tegyük fel próbáljuk meg egy tanítási munkamenet.
+Tegyük fel próbáljon meg egy tanítási munkamenet.
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
-1. Adja meg a "Megszakadt a jelszavam".
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
+1. Adja meg a "Megszakadt a jelszó".
 2. Kattintson a pontszám művelet.
-3. Jelölje be az "Is, amely a helyi fióknak vagy a Microsoft-fiókkal?"
+3. Jelölje be a "Is, amely a helyi fiók vagy a Microsoft-fiókkal?"
 4. Adja meg a "Helyi fiók".
 5. Kattintson a pontszám műveletek.
-3. Jelölje be a "Windows verziójának rendelkezik?"
+3. Jelölje be a "Windows melyik verziója van?"
 4. Adja meg "a Windows 8'.
 5. Kattintson a pontszám műveletek.
-6. Jelölje ki "megoldás: a Windows 8-as jelszó alaphelyzetbe állításával."
-4. Kattintson a tanítási végezhető el.
+6. Válassza ki a(z) megoldás: a Windows 8-as jelszó alaphelyzetbe állítása. "
+4. Kattintson a tanítási kész gombra.
 
-Próbáljuk meg, hogyan a botot egy tartományhoz csatlakozó out osztályt is találhat.
+Próbáljuk meg, hogyan a robot további egy out-a-domain-osztályt.
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
-1. Adja meg a "keresést a".
-    - Íme egy tartományhoz csatlakozó out osztály. 
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
+1. Adja meg a "webes keresés".
+    - Ez a tartományon kívüli out osztály egy példát. 
 2. Kattintson a pontszám művelet.
-3. Jelölje be a "Sajnos I nem segít, hogy."
-    - Figyelje meg, ez a beállítás a pontszám jelenleg alacsony. De után egy kis oktatási a pontszám magasabb kap.
-4. Kattintson a tanítási végezhető el.
+3. Jelölje be a "Sajnos tudok, amely nem segítség."
+    - Figyelje meg, hogy ez a beállítás a pontszám értéke jelenleg alacsony. De után egy kicsit több oktatás, a pontszám magasabb fog kapni.
+4. Kattintson a tanítási kész gombra.
 
-Most láthatta egy alapvető technikai támogatás bemutató létrehozása, és hogyan megtanulhassa megoldást nyújtanak, és mintalekérdezések kívül is kezelni.
+Most láthatta, hogyan hozhat létre egy alapvető technikai támogatás bemutatót, és hogyan tudhat megoldást nyújtanak, és a mintalekérdezések kívül is kezelésére.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bemutató - pizzaszósz sorrendje](./demo-pizza-order.md)
+> [Bemutató – kétpizzás sorrend](./demo-pizza-order.md)

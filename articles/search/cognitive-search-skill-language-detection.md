@@ -1,6 +1,6 @@
 ---
-title: Nyelvi észlelési kognitív keresési szakértelem (Azure Search) |} Microsoft Docs
-description: Strukturálatlan szöveg kiértékeli, és az egyes rekordokhoz, ad vissza egy nyelvi azonosító egy Azure Search dúsító folyamat elemzés erősségével jelző pontszámot.
+title: Nyelv észlelése cognitive search szakértelem (Azure Search) |} A Microsoft Docs
+description: Kiértékeli a strukturálatlan szöveg, és az egyes rekordokhoz, az Azure Search-felderítési bővítést folyamatban elemzés erőssége jelző pontszámot nyelvi azonosítónak visszaad.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,42 +10,42 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 338d89b47ea451efcf8300d4ac016a6946a95259
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 443ac895085053b7c4c876c3deecaa1943c9f506
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791055"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171058"
 ---
-#   <a name="language-detection-cognitive-skill"></a>Nyelvi észlelési kognitív szakértelem
+#   <a name="language-detection-cognitive-skill"></a>Nyelv észlelése cognitive szakértelem
 
-Legfeljebb 120 nyelvek esetén a **nyelvi észlelési** szakértelem észleli a bemeneti szöveg nyelvét és jelentések minden dokumentumhoz, a kérés küldése egy egyetlen nyelvi kódot. A nyelvi kódot párosított az elemzés erősségével jelző pontszámot.
+Legfeljebb 120 nyelv esetén a **nyelvfelismerés** szakértelem észleli a bemeneti szöveg nyelvét, és a kérés küldése minden dokumentum egyetlen nyelvkód jelentéseket. A nyelvi kód az elemzés erőssége jelző pontszámot párban áll.
 
-Ez a funkció akkor különösen akkor hasznos, ha meg kell adnia a szöveg nyelvének más képességek bemeneti (például a [véleményeket Snalysis szakértelem](cognitive-search-skill-sentiment.md) vagy [szöveges szakértelem](cognitive-search-skill-textsplit.md)).
+Ez a funkció akkor különösen hasznos, ha a meg kell adnia a szöveg nyelvét, egyéb képességek bemenetként (például a [Hangulatelemzés szakértelem](cognitive-search-skill-sentiment.md) vagy [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md)).
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill
 
-## <a name="data-limits"></a>Adatok korlátok
-A maximális mérete egy olyan rekordot kell mért 50 000 karakternél `String.Length`. Ha feloszthatja az adatokat, mielőtt elküldené a céggel kapcsolatos véleményeket analyzer van szüksége, használhatja a [szöveges szakértelem](cognitive-search-skill-textsplit.md).
+## <a name="data-limits"></a>A Data korlátai
+Egy rekord maximális mérete 50 000 karakter által mért kell lennie `String.Length`. Ha az adatok tördelésével, mielőtt elküldené a róluk szóló véleményeket analyzer van szüksége, használhat a [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md).
 
-## <a name="skill-inputs"></a>Szakértelem bemenetek
+## <a name="skill-inputs"></a>Ismeretek bemenetek
 
 A paraméterei a kis-és nagybetűket.
 
 | Bemenetek     | Leírás |
 |--------------------|-------------|
-| Szöveg | A szöveg elemzése.|
+| szöveg | Elemezni kívánt szöveget.|
 
-## <a name="skill-outputs"></a>Szakértelem kimenetek
+## <a name="skill-outputs"></a>Ismeretek kimenetek
 
-| Kimeneti neve    | Leírás |
+| Kimeneti név    | Leírás |
 |--------------------|-------------|
-| languageCode | Az ISO-6391 nyelvi kódját azonosított nyelven. Például "hu". |
-| LanguageName | Nyelv neve. Például "angol." |
-| Pontszám | 0 és 1 közötti értéket. A valószínűsége, hogy a nyelvi helyesen azonosítani. A pontszám 1-nél kisebb lehet, ha a mondatok rendelkezik vegyes nyelveket.  |
+| languageCode | Az azonosított nyelv ISO 6391 nyelvi kódot. Például "hu". |
+| LanguageName | Nyelv neve. Például "angol". |
+| pontszám | 0 és 1 közötti értéket. Annak valószínűsége, hogy nyelvi megfelelően legyen azonosítva. A pontszám 1-nél kisebb lehet, ha a mondat van vegyes nyelveket.  |
 
-##  <a name="sample-definition"></a>A minta meghatározása
+##  <a name="sample-definition"></a>Minta-definíció
 
 ```json
  {
@@ -74,7 +74,7 @@ A paraméterei a kis-és nagybetűket.
   }
 ```
 
-##  <a name="sample-input"></a>A minta bemenet
+##  <a name="sample-input"></a>Minta beviteli
 
 ```json
 {
@@ -126,9 +126,9 @@ A paraméterei a kis-és nagybetűket.
 
 
 ## <a name="error-cases"></a>Hibák esetén
-Ha a szöveg egy nem támogatott nyelven van kifejezve, hiba történik, és nincs nyelvi azonosító adja vissza.
+Szöveg egy nem támogatott nyelven van kifejezve, ha hiba történik, és nincs nyelvi azonosítót adja vissza.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
-+ [Egy skillset definiálása](cognitive-search-defining-skillset.md)
++ [Előre megadott képesség](cognitive-search-predefined-skills.md)
++ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)

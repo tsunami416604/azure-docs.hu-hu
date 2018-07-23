@@ -1,7 +1,7 @@
 ---
-title: A beszélgetés tanuló alkalmazás – Microsoft kognitív szolgáltatások entitás észlelési visszahívási használata |} Microsoft Docs
+title: Entitás észlelési visszahívási használata Beszélgetéstanuló modell – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Megtudhatja, hogyan entitás észlelési visszahívást beszélgetés tanuló alkalmazással.
+description: 'Útmutató: entitás észlelési visszahívást Beszélgetéstanuló modell.'
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,100 +10,104 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e41ea5930ff0c8395d0c93aa42e224ebfc894ba8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f168018a23d03ffb957da2dd1f67881420a21208
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348631"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171103"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Entitás észlelési visszahívási használata
 
-Ez az oktatóanyag az entitás észlelési visszahívási látható, illetve mutatja be egy közös mintát entitások megoldása.
+Ez az oktatóanyag bemutatja az entitás észlelési visszahívási, és entitások feloldására vonatkozó gyakori minta mutatja be.
+
+## <a name="video"></a>Videó
+
+[![Az oktatóanyag 10-es előzetes verzió](http://aka.ms/cl-tutorial-10-preview)](http://aka.ms/blis-tutorial-10)
 
 ## <a name="requirements"></a>Követelmények
-Ez az oktatóanyag megköveteli, hogy fut-e a "tutorialEntityDetectionCallback" bot.
+Ehhez az oktatóanyaghoz, amely a `tutorialEntityDetectionCallback` bot fut-e.
 
     npm run tutorial-entity-detection
 
 ## <a name="details"></a>Részletek
-Entitás észlelési visszahívási lehetővé teszi, hogy egyéni kód használatával entitások kapcsolódó üzleti szabályok kezelése. Ez a bemutató a használjuk visszahívások és programozott entitások megoldásához kanonikus nevét – például, hogy a felhasználó által megadott városnév "a nagy apple" a "new york" megoldása.
+Entitás észlelési visszahívási lehetővé teszi, hogy egyéni kódot használó üzleti szabályok entitásokkal kapcsolatos kezelésére. Ez a bemutató visszahívások és szoftveres entitások használatával feloldani a "a big Data típusú apple", "Győr" feloldása egy canonical nevét – például, hogy a felhasználó által megadott város nevét.
 
-### <a name="open-the-demo"></a>Nyissa meg a bemutató
+### <a name="open-the-demo"></a>Nyissa meg a bemutatót
 
-Az alkalmazás listájában kattintson a oktatóanyag-10-EntityDetenctionCallback. 
+A modell-lista kattintson az oktatóanyag-10-EntityDetectionCallback. 
 
 ### <a name="entities"></a>Entitások
 
-Három entitások definiáltuk az alkalmazásban.
+Három az entitások határozzák meg a modellben.
 
 ![](../media/tutorial10_entities.PNG)
 
-1. Cityben egy egyéni entitás, amely a felhasználó átadja szöveg bemenetként.
-2. CityUnknown a programozott entitás. Ez a a rendszer feltölti beolvasása. A felhasználó által megadott azt fogja másolni, ha a rendszer nem tudja, melyik városban van.
-3. CityResolved a város, a rendszer tudja, hogy kapcsolatban. Ez lesz a város kanonikus nevet, például a nagy apple fel a "new york".
+1. Város egy egyéni entitást, amely a felhasználó szöveges bemenetként biztosít.
+2. CityUnknown programozott entitás. Ehhez az entitáshoz fog lekérése kitölti a rendszer. Ha a rendszer nem tudja, melyik város, másolja a felhasználói bevitel.
+3. CityResolved, a rendszer ismert az városa. Ehhez az entitáshoz city kanonikusnév például rendszer feloldja a big Data típusú apple "Győr" lesz.
 
 ### <a name="actions"></a>Műveletek
 
-Létrehoztunk három műveletet. 
+Három műveletet a modell vannak definiálva.
 
 ![](../media/tutorial10_actions.PNG)
 
-1. Az első művelete "mely Cityben van szüksége?"
-2. A második pedig a "nem tudható, hogy a város, $CityUknown. Melyik városban folytatja? "
-3. A harmadik pedig a "$City válaszából kiderült, és szeretnék, hogy $CityResolved feloldva."
+1. Az első beavatkozásra "melyik városban szeretne?"
+2. A második pedig a "nem tudom, az városa $CityUknown. Melyik városban biztosan? "
+3. A harmadik pedig a "$City mondtad, és szeretnék, hogy $CityResolved megoldott."
 
-### <a name="callback-code"></a>A visszahívási kódot
+### <a name="callback-code"></a>A visszahívás kód
 
-Vizsgáljuk meg a kódot. A EntityDetectionCallback metódus található a C:\<installedpath > \src\demos\tutorialSessionCallbacks.ts fájlt.
+Nézzük meg a kódot. A EntityDetectionCallback metódus találhatja meg a C:\<installedpath > \src\demos\tutorialSessionCallbacks.ts fájlt.
 
 ![](../media/tutorial10_callbackcode.PNG)
 
-Ez a függvény meghívása megtörténik, entitás feloldása után.
+Ez a függvény meghívása megtörténik az entitások megoldási végrehajtása után.
  
-- A legfontosabb fog tenni egyértelmű $CityUknown. $CityUknown csak megmaradnak az egyetlen menetben, hogy mindig lekérdezi bejelölve elején.
-- Ezt követően azt listájának elismert város tartozik. Az elsőt igénybe vehet, és próbálja meg oldható meg.
-- A függvény, amely feloldja az (resolveCity) van meghatározva további fent a kódban. Canonical város neveinek listáját rendelkezik. A város nevét a listában, akkor azt adja vissza. Más esetben "cityMap" jelenjenek meg, és a csatlakoztatott nevét adja vissza. Ha nem találja a város, hogy null értéket ad vissza.
-- Végezetül a város megoldotta a nevét, ha tároljuk azt $CityKnown entitásban. Más esetben törölje, mi a felhasználó már rendelkezik, és $CityUknown entitás feltöltéséhez.
+- Először is fog tenni egyértelmű $CityUknown. $CityUknown csak megmaradnak az egyetlen menetben, hogy mindig lekérdezi bejelölve elején.
+- Ezt követően a városok elismert listájának beolvasása. Az első utótagcímkéjét igénybe, és próbálja meg oldható meg.
+- A függvényt, amely feloldja az (resolveCity) definiált további fent a kódban. Canonical városnevet listáját rendelkezik. A város nevét a listában, akkor azt adja vissza. Más esetben jelenjenek meg "cityMap", és a csatlakoztatott nevét adja vissza. Ha nem talál egy város, hogy null értéket ad vissza.
+- Végül ha az városa megoldotta a nevét, tároljuk, $CityKnown entitásban. Más esetben törölje, mi a felhasználó már rendelkezik, és töltse fel a $CityUknown entitás.
 
-### <a name="train-dialogs"></a>Vonat párbeszédpanelek
+### <a name="train-dialogs"></a>Párbeszédpanelek betanítása
 
-1. Kattintson a vonat párbeszédpanelek, majd új vonat párbeszédpanel.
-2. Írja be a "Hello szövegrészt".
-3. Kattintson a pontszám műveleteket, majd válassza a "mely Cityben van szüksége?"
+1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
+2. Írja be a "hello".
+3. Kattintson a pontszám műveletek, és válassza a "melyik városban szeretne?"
 2. Adja meg a "new york".
-    - Vegye figyelembe, hogy lekérdezi-e felismerhető város egységként.
+    - A szöveg egy város entitás végfelhasználóként.
 5. Kattintson a pontszám műveletek
-    - Vegye figyelembe, hogy város és CityResolved vannak-e töltve.
-6. Válassza ki a "$City válaszából kiderült, és szeretnék, hogy $CityResolved feloldása".
-7. Kattintson a tanítási végezhető el.
+    - `City` és `CityResolved` vannak-e töltve.
+6. Válassza ki a "$City mondtad, és szeretnék, hogy $CityResolved megoldott".
+7. Kattintson a tanítási kész gombra.
 
-Adja hozzá egy másik példa párbeszédpanel:
+Adjon hozzá egy másik példa párbeszédpanel:
 
-1. Kattintson az új vonat párbeszédpanel.
-2. Írja be a "Hello szövegrészt".
-3. Kattintson a pontszám műveleteket, majd válassza a "mely Cityben van szüksége?"
-2. Adja meg a "nagy apple".
-    - Vegye figyelembe, hogy lekérdezi-e felismerhető város egységként.
+1. Kattintson az új Train párbeszédpanel.
+2. Írja be a "hello".
+3. Kattintson a pontszám műveletek, és válassza a "melyik városban szeretne?"
+2. Adja meg a "big Data típusú apple".
+    - A szöveg egy város entitás végfelhasználóként.
 5. Kattintson a pontszám műveletek
-    - Vegye figyelembe, hogy CityResolved mutatja futó kód.
-6. Válassza ki a "$City válaszából kiderült, és szeretnék, hogy $CityResolved feloldása".
-7. Kattintson a tanítási végezhető el.
+    - `CityResolved` futó mutatja.
+6. Válassza ki a "$City mondtad, és szeretnék, hogy $CityResolved megoldott".
+7. Kattintson a tanítási kész gombra.
 
-Adja hozzá egy másik példa párbeszédpanel:
+Adjon hozzá egy másik példa párbeszédpanel:
 
-1. Kattintson az új vonat párbeszédpanel.
-2. Írja be a "Hello szövegrészt".
-3. Kattintson a pontszám műveleteket, majd válassza a "mely Cityben van szüksége?"
-2. Adja meg a "PEL".
-    - Itt látható egy példa a város, a rendszer nem tudja. 
+1. Kattintson az új Train párbeszédpanel.
+2. Írja be a "hello".
+3. Kattintson a pontszám műveletek, és válassza a "melyik városban szeretne?"
+2. Adja meg a "foo".
+    - Ez a példa egy város, a rendszer nem tudja. 
 5. Kattintson a pontszám műveletek
-6. Jelölje ki "a város, $CityUknown nem tudom. Melyik városban folytatja?'.
+6. Jelölje be "az városa $CityUknown nem tudom. Melyik városban biztosan? ".
 7. Adja meg a "new york".
 8. Kattintson a pontszám műveletek.
-    - Vegye figyelembe, hogy CityUknown törölve lett, és CityResolved fel van töltve.
-6. Válassza ki a "$City válaszából kiderült, és szeretnék, hogy $CityResolved feloldása".
-7. Kattintson a tanítási végezhető el.
+    - `CityUknown` törölték, és `CityResolved` fel van töltve.
+6. Válassza ki a "$City mondtad, és szeretnék, hogy $CityResolved megoldott".
+7. Kattintson a tanítási kész gombra.
 
 ![](../media/tutorial10_bigapple.PNG)
 
