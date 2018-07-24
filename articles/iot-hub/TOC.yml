@@ -291,6 +291,8 @@
           items:
             - name: Eszközök felhőalapú üzenetkezelése az iothub-explorerrel
               href: iot-hub-explorer-cloud-device-messaging.md
+            - name: Eszközök felhőalapú üzenetkezelése a VS Code-hoz készült Azure IoT-eszközkészlettel
+              href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
             - name: IoT Hub-üzenetek mentése az Azure Blob Storage-ba
               href: iot-hub-store-data-in-azure-table-storage.md
             - name: Adatmegjelenítés a Power BI-ban
