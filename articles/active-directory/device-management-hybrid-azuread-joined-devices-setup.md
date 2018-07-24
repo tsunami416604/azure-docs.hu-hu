@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd23da29324dc5cb212c144f5bb303a46d6f4d42
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3fbf47eca2c623e55ff5e70095c04f16a1a1b3e6
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868435"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215162"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -54,7 +54,7 @@ A leírások olvashatóbbá, ebben a cikkben a következő kifejezést:
 - Az alábbi Windows régebbi verziójú eszközök támogatottak:
     - Windows 8.1
     - Windows 7
-    - Windows Server 2012 R2
+    - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
 - A Windows régebbi verziójú eszközök regisztrációja **van** nem összevont környezetben keresztül zökkenőmentes egyszeri bejelentkezést támogatja [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
@@ -97,7 +97,7 @@ A szervezet tervezi, hogy közvetlen egyszeri bejelentkezés használata, ha a s
 
 Ha a szervezete használja az felügyelt (nem összevont) beállítása a helyszíni AD- és nem használja az AD FS vonni az Azure AD hibrid Azure AD join a Windows 10-es támaszkodik a számítógép-objektumokat az ad-ben az Azure AD sync'ed kell majd. Győződjön meg arról, hogy bármely szervezeti egység (OU), amelyek tartalmazzák a számítógép-objektumokat, kell lennie a hibrid Azure AD-hez az Azure AD Connect szinkronizálási konfigurációjában a szinkronizálási szolgáltatás engedélyezve vannak-e.
 
-Ha a szervezet az interneten keresztül egy kimenő proxy hozzáférésre van szüksége, meg kell valósítani Proxy automatikus felderítési WPAD (Web) lehetővé teszik a Windows 10-es számítógépek regisztrálása az Azure AD.
+1703-as vagy korábbi verziójú Windows 10 rendszerű eszközökhöz Ha a szervezet megköveteli a hozzáférést az interneten keresztül egy kimenő proxy meg kell valósítani Proxy automatikus felderítési WPAD (Web) lehetővé teszik a Windows 10-es számítógépek regisztrálása az Azure AD. 
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
 
@@ -109,11 +109,11 @@ Az alábbi táblázat segítségével áttekintheti a forgatókönyvhöz szüks�
 
 | Lépések                                      | Windows jelenlegi és a jelszót a jelszókivonatok szinkronizálása | Jelenlegi Windows és az összevonás | Régebbi verziójú Windows |
 | :--                                        | :-:                                    | :-:                            | :-:                |
-| 1. lépés: Konfigurálja a szolgáltatáskapcsolati pontot | ![Jelölőnégyzet][1]                            | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
-| 2. lépés: A telepítő kiállítási jogcímek           |                                        | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
-| 3. lépés: A Windows 10-eszközök engedélyezése      |                                        |                                | ![Jelölőnégyzet][1]        |
-| 4. lépés: Az üzembe helyezési és bevezetési szabályozása     | ![Jelölőnégyzet][1]                            | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
-| 5. lépés: A csatlakoztatott eszközök ellenőrzése          | ![Jelölőnégyzet][1]                            | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
+| 1. lépés: Konfigurálja a szolgáltatáskapcsolati pontot | ![Ellenőrzés][1]                            | ![Ellenőrzés][1]                    | ![Ellenőrzés][1]        |
+| 2. lépés: A telepítő kiállítási jogcímek           |                                        | ![Ellenőrzés][1]                    | ![Ellenőrzés][1]        |
+| 3. lépés: A Windows 10-eszközök engedélyezése      |                                        |                                | ![Ellenőrzés][1]        |
+| 4. lépés: Az üzembe helyezési és bevezetési szabályozása     | ![Ellenőrzés][1]                            | ![Ellenőrzés][1]                    | ![Ellenőrzés][1]        |
+| 5. lépés: A csatlakoztatott eszközök ellenőrzése          | ![Ellenőrzés][1]                            | ![Ellenőrzés][1]                    | ![Ellenőrzés][1]        |
 
 
 

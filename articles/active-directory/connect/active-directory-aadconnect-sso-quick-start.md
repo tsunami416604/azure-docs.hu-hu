@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0611662dfb0ad2e15f87bbe5ec5559e7d8da57d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: bf83a98010631fc20c5fd7365a3ca081bd9c8c75
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185720"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214860"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezési
 
@@ -41,9 +41,13 @@ Győződjön meg arról, hogy a következő előfeltételeket:
     >[!NOTE]
     >Az Azure AD Connect-verziók 1.1.557.0, 1.1.558.0, 1.1.561.0 és 1.1.614.0 van a Jelszókivonat-szinkronizálás kapcsolatos probléma. Ha Ön _nem_ kívánja használni a Jelszókivonat-szinkronizálás az átmenő hitelesítéssel, olvassa el a [kibocsátási megjegyzések az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) további.
 
+* **Használjon egy támogatott az Azure AD Connect topológia**: Győződjön meg arról, hogy használja az Azure AD Connect támogatott topológiák leírt egyik [Itt](active-directory-aadconnect-topologies.md).
+
 * **Tartományi rendszergazdai hitelesítő adatok beállítása**: szüksége lesz a tartományi rendszergazda hitelesítő adatai esetében minden egyes Active Directory-erdő, amely:
     * Az Azure AD-keresztül az Azure AD Connect szinkronizálása.
     * Közvetlen egyszeri bejelentkezés engedélyezése kívánt felhasználókat tartalmazza.
+    
+* **A modern hitelesítés engedélyezése**: engedélyeznie kell a [modern hitelesítést](https://aka.ms/modernauthga) a bérlő esetében ez a funkció működéséhez.
 
 ## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
 
@@ -77,21 +81,27 @@ Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte 
 
 ## <a name="step-3-roll-out-the-feature"></a>3. lépés: A szolgáltatás bevezetése
 
-A szolgáltatás bevezetése a felhasználók számára, szüksége az Active Directory csoportházirend segítségével a felhasználók intranetes zóna beállításait az alábbi Azure AD URL-cím hozzáadása:
+Is fokozatosan fokozatosan zökkenőmentes egyszeri Bejelentkezést a felhasználók az alábbi utasítások szerint. Először adja hozzá a következő, Azure AD-URL az összes, vagy a kiválasztott felhasználók intranetes zóna beállításait az Active Directory csoportházirend használatával:
 
 - https://autologon.microsoftazuread-sso.com
-
 
 Ezenkívül, engedélyeznie kell az Intranet zóna házirend nevű beállítása **lehetővé teszik a frissítések állapotsor keresztül parancsfájl** csoportházirenden keresztül. 
 
 >[!NOTE]
-> Az alábbi utasításokat követve dolgozhat csak az Internet Explorer és a Google Chrome Windows (ha az Internet Explorer Megbízható helyek URL-címek készletét közös). Olvassa el a következő szakaszban útmutatást, Mozilla Firefox és a Google Chrome Mac beállítása
+> Az alábbi utasításokat követve dolgozhat csak az Internet Explorer és a Google Chrome Windows (ha az Internet Explorer Megbízható helyek URL-címek készletét közös). Olvassa el a következő szakaszban útmutatást állíthatja be a Mozilla Firefox és a Google Chrome-ban MacOS-gépeken.
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Miért van szüksége felhasználói intranetes zóna beállításait módosítani?
 
 Alapértelmezés szerint a böngésző automatikusan kiszámolja a megfelelő zónához, internetes vagy intranetes, egy adott URL-címről. Például "http://contoso/"az Intranet zóna képez, mivel a"http://intranet.contoso.com/" rendeli az Internet zóna (mivel az URL-cím pont szerepel). Böngészők nem küldenek Kerberos-jegyekhez felhőbeli végpont, például az Azure AD URL-cím, kivéve, ha explicit módon fel az URL-CÍMÉT a böngésző intranetzónához az.
 
-### <a name="detailed-steps"></a>Részletes lépések
+Felhasználók Intranet zóna beállításainak módosításához két módja van:
+
+| Beállítás | Felügyeleti szempontok | Felhasználói élmény |
+| --- | --- | --- |
+| Csoportházirend | Felügyeleti zárolások le az Intranet zóna beállításainak szerkesztése | A felhasználó nem módosíthatja a saját beállítások |
+| Csoportházirend-beállítások |  Rendszergazdai lehetővé teszi, hogy az Intranet zóna beállításainak szerkesztése | Felhasználók a saját beállítások módosíthatók. |
+
+### <a name="group-policy-option---detailed-steps"></a>"Csoportházirend" beállítás – részletes lépései
 
 1. Nyissa meg a Csoportházirendkezelés-szerkesztő eszközt.
 2. Az egyes alkalmazott csoportházirend szerkesztése vagy az összes felhasználó. Ez a példa **alapértelmezett tartományi házirend**.
@@ -123,6 +133,32 @@ Alapértelmezés szerint a böngésző automatikusan kiszámolja a megfelelő z�
 
     ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso12.png)
 
+### <a name="group-policy-preference-option---detailed-steps"></a>"Group csoportházirend-beállítások" lehetőséget – részletes lépései
+
+1. Nyissa meg a Csoportházirendkezelés-szerkesztő eszközt.
+2. Az egyes alkalmazott csoportházirend szerkesztése vagy az összes felhasználó. Ez a példa **alapértelmezett tartományi házirend**.
+3. Keresse meg a **felhasználói konfiguráció** > **beállítások** > **Windows beállítások** > **beállításjegyzék**  >  **Új** > **beállításjegyzék-elem**.
+
+    ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso15.png)
+
+4. Adja meg a következő értékeket a megfelelő, és kattintson a **OK**.
+   - **Elérési kulcs**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
+   - **Érték neve**: ***https***.
+   - **Érték típusa**: ***REG_DWORD***.
+   - **Érték**: ***00000001***.
+ 
+    ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso16.png)
+ 
+    ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso17.png)
+
+6. Keresse meg a **felhasználói konfiguráció** > **felügyeleti sablonok** > **Windows-összetevők**  >   **Az Internet Explorer** > **Internet Vezérlőpult** > **Biztonság lap** > **Intranetzónához**. Válassza ki **lehetővé teszik a frissítések állapotsor keresztül parancsfájl**.
+
+    ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso11.png)
+
+7. Engedélyezi a házirend-beállítást, és válassza ki **OK**.
+
+    ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso12.png)
+
 ### <a name="browser-considerations"></a>Böngésző kapcsolatos szempontok
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (minden platform)
@@ -134,15 +170,15 @@ Mozilla Firefox automatikusan nem használ Kerberos-hitelesítést. Minden felha
 4. Adja meg https://autologon.microsoftazuread-sso.com a mezőben.
 5. Válassza ki **OK** majd nyissa meg a böngészőben.
 
-#### <a name="safari-mac-os"></a>Safari (Mac OS)
+#### <a name="safari-macos"></a>Safari (macOS)
 
-Győződjön meg arról, hogy a Mac OS futtató gép az AD-tartományhoz csatlakozik. Való csatlakozásról AD útmutatásért lásd: [ajánlott eljárások az OS X integrálja az Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf).
+Győződjön meg arról, hogy a gép a macOS rendszerű ad-hez csatlakozik. Való csatlakozásról AD útmutatásért lásd: [ajánlott eljárások az OS X integrálja az Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf).
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (minden platform)
 
 Ha rendelkezik felül a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállítások a környezetben, győződjön meg arról, hogy a az Azure AD URL-cím hozzáadása (https://autologon.microsoftazuread-sso.com) nekik is.
 
-#### <a name="google-chrome-mac-os-only"></a>Google Chrome (csak Mac OS)
+#### <a name="google-chrome-macos-only"></a>Google Chrome (macOS esetén)
 
 Google Chrome, a Mac OS és más nem Windows platformokon, tekintse meg a [a króm projekt Policy List](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) információk, amelyeket engedélyezni kell hogy Azure ad-ben URL-Címének hogyan integrált hitelesítés.
 
@@ -169,7 +205,12 @@ Tesztelje a forgatókönyvet, ahol a felhasználó nem rendelkezik a felhasznál
 
 ## <a name="step-5-roll-over-keys"></a>5. lépés: Vihető kulcsok
 
-2. lépésben az Azure AD Connect létrehoz számítógépfiókok (amely az Azure AD), amelyen engedélyezte a közvetlen egyszeri bejelentkezés az Active Directory erdőkben. További tudnivalókért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: részletes technikai](active-directory-aadconnect-sso-how-it-works.md). A nagyobb biztonság érdekében azt javasoljuk, hogy rendszeres időközönként hosszabbítsa a Kerberos visszafejtési kulcs esetében a számítógépfiókoknak. Hogyan állítható kulcsok útmutatásért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakran ismételt kérdések](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account).
+2. lépésben az Azure AD Connect létrehoz számítógépfiókok (amely az Azure AD), amelyen engedélyezte a közvetlen egyszeri bejelentkezés az Active Directory erdőkben. További tudnivalókért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: részletes technikai](active-directory-aadconnect-sso-how-it-works.md).
+
+>[!IMPORTANT]
+>A számítógép-fiók, a Kerberos-visszafejtési kulcs kiszivárgott, ha használható lehet létrehozni a Kerberos-jegyekhez bármely felhasználó számára az AD-erdőben. Rosszindulatú majd tudja megszemélyesíteni az Azure AD bejelentkezések a feltört felhasználók számára. Kifejezetten ajánljuk, hogy rendszeres időközönként rotálja ezek Kerberos visszafejtési kulcsok – 30 nap során legalább egyszer.
+
+Hogyan állítható kulcsok útmutatásért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakran ismételt kérdések](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). Dolgozunk a kulcsok vezessen be automatikus visszaállítási keresztül teszi lehetővé.
 
 >[!IMPORTANT]
 >Ez a lépés nem kell _azonnal_ a funkció engedélyezése után. Vihetők át a Kerberos-visszafejtési kulcsok a 30 nap során legalább egyszer.

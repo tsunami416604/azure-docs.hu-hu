@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 84aac0017496c50f0006fd6e184537e4c14f10c7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e11ba8ca9c4ad17b2ade909bb474ad2d1fcf4410
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059444"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205374"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Oktatóanyag: Azure Active Directory-integráció az ismeretek alapja
 
@@ -110,7 +110,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE] 
-    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [képességek alap ügyfél-támogatási csapatának](mailto:support@skills-base.com) a gépkulcsengedélyek értékének.
+    > Megtekintheti a bejelentkezési URL-képességek alap alkalmazásból. Adjon rendszergazdaként, és nyissa meg a rendszergazdai bejelentkezési -> Beállítások -> példány -> helyi hivatkozás részletei. Másolja a bejelentkezési URL-címet, és illessze be a fenti szövegmezőbe.
 
 4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -141,7 +141,6 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Kattintson a **Save** (Mentés) gombra.
     
-
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
@@ -179,7 +178,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja egy képességek Base Britta Simon nevű felhasználó létrehozásához. Képességek alap támogatja a just-in-time-kiépítés, engedélyezve alapértelmezés szerint ez. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó képességek alap eléréséhez, ha még nem létezik kísérlet során jön létre.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [képességek alap ügyfél-támogatási csapatának](mailto:support@skills-base.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, kövesse az utasításokat [Itt](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

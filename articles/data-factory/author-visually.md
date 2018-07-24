@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factory Visual szerzői |} Microsoft Docs
-description: Az Azure Data Factory visual szerzői használata
+title: Vizuális szerzői az Azure Data Factoryban |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja a vizuális szerzői az Azure Data Factoryban
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 655a6ab2960047cde50bec2953015283ca8577f0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265288"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214853"
 ---
-# <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factory Visual készítése
-Az Azure Data Factory felhasználói felület élmény (UX) lehetővé teszi vizuálisan hozhatnak létre és telepítését erőforrások az a data factory kód írása nélkül. Húzzon tevékenységeket a feldolgozási sor vásznon, hajtsa végre a teszt futtatása, debug ismételt, és telepítheti és figyelheti a folyamat futtatása. Kétféleképpen használatához a UX visual szerzői műveletek végrehajtásához:
+# <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
+Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
 
 - Szerző közvetlenül a Data Factory szolgáltatással.
-- A Visual Studio Team Services (VSTS) Git integráció együttműködés, verziókezelő vagy versioning a szerző.
+- Felügyeleti csomagok készítése a Visual Studio Team Services (VSTS) Git-integráció együttműködés, verziókövetési vagy versioning.
 
 ## <a name="author-directly-with-the-data-factory-service"></a>Szerző közvetlenül a Data Factory szolgáltatással
-A Data Factory szolgáltatással Visual szerzői eltér az visual szerkesztése a VSTS két módon:
+A Data Factory szolgáltatásban történő vizuális tartalomkészítésről eltér a vizuális szerzői a vsts-sel két módon:
 
-- A Data Factory szolgáltatásnak egy helyen tárolásához a módosítások a JSON-entitások nem tartalmaz.
-- A Data Factory szolgáltatásnak együttműködés vagy verziókezelést nincs optimalizálva.
+- A Data Factory szolgáltatás nem tartalmaz egy helyen a JSON-entitások a módosítások tárolásához.
+- A Data Factory szolgáltatás együttműködési vagy a verziókezeléshez nincs optimalizálva.
 
-![A Data Factory szolgáltatásnak konfigurálása ](media/author-visually/configure-data-factory.png)
+![A Data Factory szolgáltatás konfigurálása ](media/author-visually/configure-data-factory.png)
 
-A UX használatakor **vászonra szerzői** ahhoz, hogy közvetlenül a Data Factory szolgáltatásnak, csak az a **összes** módban érhető el. A végrehajtott módosításokat közvetlenül a Data Factory szolgáltatásnak kerülnek közzétételre.
+A felhasználói felület használata esetén **szerzői vászon** ahhoz, hogy a Data Factory szolgáltatás csak a közvetlenül a **összes közzététele** módban érhető el. A végrehajtott módosításokat közvetlenül a Data Factory szolgáltatás vannak közzétéve.
 
 ![Közzétételi mód](media/author-visually/data-factory-publish.png)
 
-## <a name="author-with-vsts-git-integration"></a>Szerző az VSTS Git integráció
-Visual szerkesztése VSTS Git integráció a támogatja a verziókövetési rendszerrel és együttműködés a data factory folyamatok munka. Egy adat-előállító társíthatja egy VSTS Git-fiók tárházat verziókezelő, együttműködés, versioning, és így tovább. Egyetlen VSTS Git fiók rendelkezhet több tárházak találhatók, de lehet, hogy a VSTS Git-tárház csak egy adat-előállító tartozik. Ha nem rendelkezik a VSTS-fiókok vagy tárház, hajtsa végre a [ezeket az utasításokat](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) az erőforrások létrehozásához.
+## <a name="author-with-vsts-git-integration"></a>Felügyeleti csomagok készítése a VSTS Git-integráció
+VSTS Git-integrációval történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító társíthatja egy VSTS Git-fiók tárház verziókövetés, együttműködési, verziószámozása és így tovább. VSTS Git egyetlen fiók több tárházak rendelkezhet, de egy VSTS Git-tárház társítható csak egy adat-előállító. Ha nem rendelkezik a VSTS-fiók vagy a tárház, hajtsa végre a [ezek az utasítások](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) az erőforrások létrehozásához.
 
 > [!NOTE]
-> Parancsfájl-és adatfájlok tárolhat egy VSTS GIT-tárházat. Azonban hogy a fájlok manuális feltöltése az Azure-tárhelyre. A Data Factory-folyamat nem automatikusan parancsfájl vagy adatok fájlok feltöltése a VSTS GIT-tárház Azure Storage tárolja.
+> Egy VSTS GIT-tárház feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölti fel parancsfájl vagy adatfájlok VSTS GIT-tárházat az Azure Storage tárolja.
 
-### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>A VSTS Git-tárház konfigurálása az Azure Data Factoryvel
-A data Factory két módszerrel konfigurálhatja egy VSTS GIT-tárházat.
+### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>VSTS Git-adattár konfigurálása az Azure Data Factoryvel
+Az adat-előállító egy VSTS GIT-tárház két módszer segítségével konfigurálhatja.
 
-#### <a name="method1"></a> Konfiguráció 1. módszer: folytassuk lépéseket ismertető oldal felkereséséhez
+#### <a name="method1"></a> Konfiguráció 1. módszer: első lépések lap
 
-Azure Data Factory, keresse meg a **lássunk** lap. Válassza ki **kód tárház konfigurálása**:
+Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
 
-![A VSTS kód tárház konfigurálása](media/author-visually/configure-repo.png)
+![Egy VSTS-kódtárral konfigurálása](media/author-visually/configure-repo.png)
 
-A **tárház beállításainak** konfigurációs ablaktáblán jelenik meg:
+A **adattár beállításai** konfigurációs panelen jelenik meg:
 
 ![A kód tárház beállításainak konfigurálása](media/author-visually/repo-settings.png)
 
-A ablaktábla megjeleníti azokat a következő VSTS-kód tárház beállítások:
+A panelen látható a következő VSTS kód adattár beállításai:
 
 | Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
-| **Tárház típusa** | A VSTS kód tárház típusa.<br/>**Megjegyzés:**: GitHub jelenleg nem támogatott. | Visual Studio Team Services Git |
-| **Azure Active Directory** | Az Azure AD bérlő neve. | <your tenant name> |
-| **Visual Studio Team Services Account** | A VSTS-fiók nevét. Megkeresheti a VSTS-fiók nevére, `https://{account name}.visualstudio.com`. Is [jelentkezzen be a VSTS-fiókba](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil és a tárolóhelyekkel és a projektek. | <your account name> |
-| **ProjectName** | A VSTS-projekt nevét. Megkeresheti a VSTS projektnévre, `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
-| **RepositoryName** | A VSTS kód tárház nevét. VSTS-projektek Git tárhelyek kezelése a forráskódot, a projekt növekedésével tartalmaz. Hozzon létre egy új tárházat, vagy egy meglévő tárházon, amely már a projekthez. | <your VSTS code repository name> |
-| **Együttműködés ág** | A VSTS együttműködés fiókirodai, amely jelzi a közzététel. Alapértelmezés szerint van `master`. Abban az esetben, ha a másik fiókiroda erőforrásaihoz közzé szeretné tenni, módosítsa az. | <your collaboration branch name> |
-| **Gyökérmappa** | A legfelső szintű mappa az VSTS együttműködés ágában. | <your root folder name> |
-| **Importálja a meglévő adat-előállító erőforrások tárházba** | Megadja, hogy a meglévő data factory erőforrások importálása a UX **vászonra szerzői** be egy VSTS Git-tárházat. Jelölje be a jelölőnégyzetet annak a data factory erőforrások importálnia kell a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (Ez azt jelenti, hogy a társított szolgáltatások és az adatkészletek exportálása külön JSONs be). Ha ez a mező nincs bejelölve, a nem importált a meglévő erőforrásokat. | Kijelölt (alapértelmezett) |
+| **Adattár típusa** | A VSTS-kódtárral típusa.<br/>**Megjegyzés:**: GitHub jelenleg nem támogatott. | Visual Studio Team Services Git |
+| **Azure Active Directory** | Az Azure AD-bérlő neve. | <your tenant name> |
+| **Visual Studio Team Services Account** | A VSTS-fiók nevét. Megkeresheti a VSTS-fiók nevét, `https://{account name}.visualstudio.com`. Is [jelentkezzen be a VSTS-fiók](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil, és az adattárak és a projekteket. | <your account name> |
+| **ProjectName** | A VSTS-projekt neve. Megkeresheti a VSTS-projekt neve, `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
+| **RepositoryName** | A VSTS kód adattár nevét. VSTS-projekteket a Git-tárházakat a forráskód kezelheti a projekt növekedésével tartalmaz. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely a projektben már van. | <your VSTS code repository name> |
+| **Együttműködés ág** | A VSTS együttműködési ág közzétételéhez használt. Alapértelmezés szerint a `master`. Módosítsa az erőforrások egy másik ágban való közzétételéhez szeretne. | <your collaboration branch name> |
+| **Gyökérmappa** | A VSTS-együttműködés ág a gyökérmappában. | <your root folder name> |
+| **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy VSTS Git-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurációs 2. módszer: UX szerzői vászonra
-Az az Azure Data Factory UX **vászonra szerzői**, keresse meg a data factory. Válassza ki a **adat-előállító** legördülő menüre, és válassza **konfigurálása kód tárház**.
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurációs 2. módszer: UX szerzői vászon
+Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 
-Egy konfigurációs ablaktáblán jelenik meg. További konfigurációs beállításokkal kapcsolatos információkért lásd: a leírásokat <a href="#method1">konfigurációs módszer 1</a>.
+A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcsolatos információkért lásd: található leírások <a href="#method1">konfigurációs módszer 1</a>.
 
-![A kód tárház UX szerzői beállításainak konfigurálása](media/author-visually/configure-repo-2.png)
+![A UX szerzői kód tárház beállításainak konfigurálása](media/author-visually/configure-repo-2.png)
 
-#### <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-tárház
+#### <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-adattár
 
-Váltson át egy másik Git-tárház, keresse meg a ikonra a Data Factory – Áttekintés lap jobb felső sarkában a következő képernyőfelvételen látható módon. Ha nem látja a ikonra, kapcsolja ki a helyi gyorsítótárban. Válassza ki az ikonra kattintva törölje a társítást az aktuális adattárban.
+Váltson át egy másik Git-adattár, keresse meg a ikonra a Data Factory – Áttekintés lap jobb felső sarokban az alábbi képernyőképen látható módon. Ha nem látja a ikonra, törölje a helyi böngésző gyorsítótárát. Válassza ki a ikonra kattintva távolítsa el az aktuális tárház a hozzárendelését.
 
-Ha eltávolítja a jelenlegi tárház társítását, akkor egy másik tárház használandó Git beállításainak konfigurálásához. Majd importálhatja az új tárház adat-előállító meglévő erőforrásokat.
+Miután eltávolítja a társítást az aktuális tárház, konfigurálhatja a Git-beállításait, hogy használjon egy másik adattárral. Ezután importálhatja meglévő Data Factory-erőforrásokkal az új adattárhoz.
 
-![Törölje a társítást az aktuális Git-tárház.](media/author-visually/remove-repo.png)
+![Távolítsa el az aktuális Git-adattárat a hozzárendelését.](media/author-visually/remove-repo.png)
 
-### <a name="use-version-control"></a>Verziókövetés alkalmazása
-Verzió rendszerek (más néven _verziókövető_) segítségével a fejlesztők közösen dolgozzon a kódot, és nyomon követése végzett módosításokat a kód alap. A verziókövetési rendszerrel több fejlesztői projektek alapvető eszközét.
+### <a name="use-version-control"></a>Használja a verziókövetés
+Verziókövető rendszereket (más néven _verziókövetés_) lehetővé teszik a fejlesztőknek, kód és nyomon követésére helyadatbázisokban végrehajtott módosításokat a kód alap másokkal közös használatához. Verziókövetés fontos több fejlesztési projektek eszközzel.
 
-Minden adat-előállító társított VSTS Git-tárház rendelkezik egy együttműködés ág. (`master` alapértelmezett együttműködés ág). Felhasználók emellett létrehozhatják szolgáltatás ágak kattintva **+ új fiókirodai** és a szolgáltatás ágak fejlesztésbe.
+Minden egyes VSTS Git-tárház az adat-előállító társított együttműködési ág rendelkezik. (`master` alapértelmezett együttműködési ág). Felhasználók is létrehozhat a szolgáltatás ágak kattintva **+ új ág** és végezze el a szolgáltatás ágak fejlesztés.
 
-![A kód módosítása vagy szinkronizálása](media/author-visually/sync-publish.png)
+![A kód módosítása szinkronizálása vagy közzététele](media/author-visually/sync-publish.png)
 
-Ha készen áll a szolgáltatás fejlesztés és a szolgáltatás ágában, kattinthat **hozzon létre lekérési kérelmet**. A rendszer ekkor VSTS GIT, ahol merülhet lekéréses kérések kód értékelést, és az együttműködés ágában egyesítési vált. (`master` az alapértelmezett beállítás). Csak az a Data Factory szolgáltatás az Ön együttműködés ágából engedélyezettek. 
+Amikor készen áll a funkció fejlesztéséhez a szolgáltatás ágban, kattintson **Create pull-kérelem**. Ekkor megjelenik a VSTS GIT, ahol lekéréses is növelheti a kérések, code felülvizsgálatok, és módosítások az együttműködés ágban. (`master` az alapértelmezett beállítás). A Data Factory szolgáltatásban közzétenni az együttműködés ágból csak engedélyezett. 
 
-![Hozzon létre egy új lekérést](media/author-visually/create-pull-request.png)
+![Új lekéréses kérelem létrehozása](media/author-visually/create-pull-request.png)
 
-#### <a name="publish-code-changes"></a>Kódmódosításokat közzététele
-Miután módosításai az együttműködés ág lehet egyesített (`master` az alapértelmezett), jelölje be **közzététel** közzététele kézzel a kódmódosításokat a főágba a Data Factory szolgáltatásnak.
+#### <a name="publish-code-changes"></a>Kód módosítások közzététele
+Rendelkezik sikeresen összevonta a együttműködési ág módosításai után (`master` az alapértelmezett beállítás), jelölje be **közzététel** , manuálisan tegye közzé a kódmódosításokat a főágban, a Data Factory szolgáltatásban.
 
-![Változások közzétételére a Data Factory szolgáltatásnak](media/author-visually/publish-changes.png)
+![Módosítások mentése a Data Factory szolgáltatásban](media/author-visually/publish-changes.png)
 
 > [!IMPORTANT]
-> A főágba nincs képviselő mi történik a Data Factory szolgáltatásban. A főágba *kell* manuálisan közzé kell tenni a Data Factory szolgáltatásnak.
+> Nem áll a Data Factory szolgáltatásban üzembe helyezett képviselő a master ággal. A főág *kell* manuálisan tehetők közzé a Data Factory szolgáltatásban.
 
-## <a name="use-the-expression-language"></a>A kifejezés nyelv használatával
-A kifejezés nyelv, amely támogatja-e az Azure Data Factory használatával megadhatja a tulajdonságértékek kifejezések. 
+## <a name="use-the-expression-language"></a>Kifejezés nyelve
+Az Azure Data Factory által támogatott kifejezés nyelv használatával megadhatja a tulajdonságértékek a kifejezéseket. 
 
-Adja meg a tulajdonságok értékeit az adott kifejezések kiválasztásával **dinamikus tartalom hozzáadása**:
+Adja meg a kifejezéseket tulajdonságértékek kiválasztásával **dinamikus tartalom hozzáadása**:
 
-![A kifejezés nyelv használatával](media/author-visually/dynamic-content-1.png)
+![Kifejezés nyelve](media/author-visually/dynamic-content-1.png)
 
 ## <a name="use-functions-and-parameters"></a>Paraméterek és függvények használata
 
-Függvények, vagy adja meg a Data Factory adatcsatornákat és adathalmazokat paramétereinek **Kifejezésszerkesztő**:
+Használhatja a functions vagy adja meg a folyamatokról és adatkészletekről paraméterek adat-előállító **Kifejezésszerkesztő**:
 
-Támogatott kifejezésekkel kapcsolatos információkért lásd: [kifejezések és az Azure Data Factory funkciók](control-flow-expression-language-functions.md).
+Támogatott kifejezésekkel kapcsolatos további információkért lásd: [kifejezések és függvények az Azure Data Factoryban](control-flow-expression-language-functions.md).
 
 ![Dinamikus tartalom hozzáadása](media/author-visually/dynamic-content-2.png)
 
@@ -125,4 +125,4 @@ Válassza ki **visszajelzés** funkciókkal kapcsolatos megjegyzés, vagy értes
 ![Visszajelzés](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>További lépések
-További információk figyelését és folyamatok kezelése című témakörben talál [figyelő programozott folyamatok kezelését és](monitor-programmatically.md).
+További információk figyelése és kezelése a folyamatok kapcsolatban lásd: [figyelő programozással felügyelheti a folyamatokat és](monitor-programmatically.md).
