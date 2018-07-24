@@ -11,14 +11,14 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 07/23/2018
 ms.author: bsiva
-ms.openlocfilehash: 0d3f28f0a9f1e9862fabb6ce5e96597f1534abd8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 552a0d131f630db7b3a73293d330377ee350d2a9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008768"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214618"
 ---
 # <a name="migrate-servers-running-windows-server-2008-2008-r2-to-azure"></a>A Windows Server 2008, 2008 R2, az Azure-ban futó kiszolgálók áttelepítése
 
@@ -85,7 +85,7 @@ Ez az oktatóanyag további részeinek bemutatja, hogyan telepíthet át a helys
   >
 
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Kezdő lépések
 
 A következő feladatokat az Azure előfizetés és a helyszíni VMware-ről/fizikai környezet előkészítése:
 
@@ -110,15 +110,47 @@ Az új tároló megjelenik az **Irányítópult** **Minden erőforrás** részé
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>Készítse elő a helyszíni környezetet az áttelepítésre
 
 - Töltse le a konfigurációs kiszolgáló (egyesített telepítő) a [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup)
-- [Állítsa be a](physical-azure-disaster-recovery.md#set-up-the-source-environment) az előző lépésben letöltött a forráskörnyezethez, a telepítő fájl segítségével.
+- Kövesse az alábbi lépéseket követve állíthatja be a forráskörnyezetet a az előző lépésben letöltött telepítő fájl segítségével.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a fenti az első lépésben letöltött fájl telepítését és a konfigurációs kiszolgálót regisztrálja. Ne töltse le a fájl az Azure Portalról. A rendelkezésre álló fájl [ https://aka.ms/asr-w2k8-migration-setup ](https://aka.ms/asr-w2k8-migration-setup) az egyetlen verzió, amely támogatja a Windows Server 2008-áttelepítés.
+> - Győződjön meg arról, hogy a fenti az első lépésben letöltött fájl telepítését és a konfigurációs kiszolgálót regisztrálja. Ne töltse le a fájl az Azure Portalról. A rendelkezésre álló fájl [ https://aka.ms/asr-w2k8-migration-setup ](https://aka.ms/asr-w2k8-migration-setup) az egyetlen verzió, amely támogatja a Windows Server 2008-áttelepítés.
 >
-> Nem használhat egy meglévő konfigurációs kiszolgálóra áttelepítheti a Windows Server 2008 rendszerű gépeket. Egy új konfigurációs kiszolgálót, a fenti hivatkozással kell.
+> - Nem használhat egy meglévő konfigurációs kiszolgálóra áttelepítheti a Windows Server 2008 rendszerű gépeket. Egy új konfigurációs kiszolgálót, a fenti hivatkozással kell.
+>
+> - Kövesse a lépéseket, a konfigurációs kiszolgáló telepítése lejjebb találja. Ne kísérelje meg az eljárást a GUI-alapú telepítés közvetlenül az egységes telepítő futtatásával. Ez a telepítési kísérlet egy helytelen hiba, amely megállapítja, hogy nincs-e az internet kapcsolat miatt sikertelenül működő eredményez.
+
+ 
+1) Töltse le a tároló hitelesítőadat-fájlja a portálról: az Azure Portalon, válassza ki az előző lépésben létrehozott Recovery Services-tárolót. A tároló oldalon a menüben válassza ki a **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**. Kattintson a **+ kiszolgáló**. Válassza ki *konfigurációs kiszolgáló fizikai géphez* a megnyíló lapon űrlap a legördülő listából. A Letöltés gombra a tároló hitelesítőadat-fájljának letöltése 4. lépés.
 
  ![Tárregisztrációs kulcs letöltése](media/migrate-tutorial-windows-server-2008/download-vault-credentials.png) 
- 
+
+2) A konfigurációs kiszolgáló gép asztalán a korábban letöltött másolása a tároló hitelesítőadat-fájljának letöltése az előző lépésben és az egyesített telepítő fájlban (a Windows Server 2012 R2 vagy Windows Server 2016 gép, amelyre telepíteni kívánja a konfigurációs kiszolgáló szoftver.)
+
+3) Győződjön meg arról, hogy a konfigurációs kiszolgáló rendelkezik-e internetkapcsolat, és hogy a rendszeróra és a számítógép időzóna-beállításai megfelelően vannak konfigurálva. Töltse le a [MySQL 5.7-es](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi) telepítő, és helyezze a *C:\Temp\ASRSetup* (hozza létre a címtárban, ha még nem létezik.) 
+
+4) Hozzon létre egy MySQL hitelesítőadat-fájlja a következő sorokat, és helyezze el az asztalon az **C:\Users\Administrator\MySQLCreds.txt** . Cserélje le "jelszó ~ 1" alatt egy megfelelő, és erős jelszóval:
+
+```
+[MySQLCredentials]
+MySQLRootPassword = "Password~1"
+MySQLUserPassword = "Password~1"
+```
+
+5) Bontsa ki a letöltött egyesített telepítő fájlt az asztal tartalmát a következő parancs futtatásával:
+
+```
+cd C:\Users\Administrator\Desktop
+
+MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Users\Administrator\Desktop\9.18
+```
+  
+6) Telepítse a konfigurációs kiszolgáló szoftver kinyert tartalmát a következő parancsok végrehajtásával:
+
+```
+cd C:\Users\Administrator\Desktop\9.18.1
+
+UnifiedSetup.exe /AcceptThirdpartyEULA /ServerMode CS /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /MySQLCredsFilePath "C:\Users\Administrator\Desktop\MySQLCreds.txt" /VaultCredsFilePath <vault credentials file path> /EnvType VMWare /SkipSpaceCheck
+```
 
 ## <a name="set-up-the-target-environment"></a>A célkörnyezet beállítása
 

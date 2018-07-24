@@ -10,12 +10,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4cf3bbfa24e102c544b0e3215a20b73d323f15df
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 3e9afc990d6bfa73eb045e7ed76dfd194df309c6
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070960"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213199"
 ---
 # <a name="sample-for-intent-recognition"></a>Minta szándékfelismerés
 
@@ -53,7 +53,7 @@ Az alábbi kódrészlet bemutatja, hogyan szándékfelismerés mikrofon bemeneti
 
 ## <a name="intent-recognition-from-a-file-using-events"></a>Egy fájlból, események használatával szándékfelismerés
 
-A kódrészlet azt mutatja be, hogyan szándékfelismerés az alapértelmezett nyelven (`en-US`) folyamatos. Ez a kód lehetővé teszi, hogy további információkhoz, például a köztes eredményeket. A hangfájl bemeneti forrása, a támogatott formátum: egyetlen csatornát (mono) WAV / 16 KHz mintavételi arány PCM.
+A kódrészlet azt mutatja be, hogyan szándékfelismerés az alapértelmezett nyelven (`en-US`) folyamatos. Ez a kód lehetővé teszi, hogy további információkhoz, például a köztes eredményeket. Hangfájl bemeneti forrása, a támogatott formátum: egyetlen csatornát (mono) WAV / 16 KHz mintavételi arány PCM.
 
 [!code-csharp[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 

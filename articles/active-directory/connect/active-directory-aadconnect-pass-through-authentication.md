@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917278"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214029"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználó jelentkezzen be az Azure Active Directory átmenő hitelesítése
 
@@ -30,7 +30,7 @@ Az Azure Active Directory (Azure AD) átmenő hitelesítés lehetővé teszi, ho
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Ez a funkció csak az alternatív [Azure AD a Jelszókivonat-szinkronizálás](active-directory-aadconnectsync-implement-password-hash-synchronization.md), amely biztosítja, hogy az azonos előnye, hogy a szervezetek számára a felhőalapú hitelesítés. Azonban egyes szervezetek biztonsági és megfelelőségi szabályzatok nem teszi lehetővé ezen szervezetek küldése a felhasználói jelszavakat, még a egy kivonatolt formában, azok belső határain kívülre. Az átmenő hitelesítés az olyan szervezetek számára a megfelelő megoldás.
+Ez a funkció csak az alternatív [Azure AD a Jelszókivonat-szinkronizálás](active-directory-aadconnectsync-implement-password-hash-synchronization.md), amely biztosítja, hogy az azonos előnye, hogy a szervezetek számára a felhőalapú hitelesítés. Azonban egyes szervezetek számára, aki a saját helyszíni Active Directory biztonsági és jelszóházirendek, dönthet úgy, hogy átmenő hitelesítést használjon. Felülvizsgálat [Ez az útmutató](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) összehasonlítása az Azure AD bejelentkezési módszerek és a szervezet bejelentkezési megfelelő módszer kiválasztásában.
 
 ![Az Azure AD átmenő hitelesítés](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 
@@ -49,7 +49,7 @@ Az átmenő hitelesítés kombinálhatja a [zökkenőmentes egyszeri bejelentkez
 - *Biztonságos*
   - A helyszíni jelszavak soha nem a felhőben, bármilyen formában vannak tárolva.
   - Az ügynök csak lehetővé teszi a kimenő kapcsolatokat a hálózaton belül. Ezért esetében nem követelmény az ügynök telepítéséhez a szegélyhálózaton, más néven DMZ-t.
-  - A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), beleértve a multi-factor Authentication (MFA) és a [szűri ki a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
+  - A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), többek között a multi-factor Authentication (MFA), [örökölt hitelesítés](../active-directory-conditional-access-conditions.md) , illetve [ kiszűri a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
 - *Magas rendelkezésre állású*
   - További ügynökök bejelentkezési kérelmek magas rendelkezésre állást biztosít több helyszíni kiszolgálókon telepíthető.
 
@@ -68,12 +68,13 @@ Az átmenő hitelesítés kombinálhatja a [zökkenőmentes egyszeri bejelentkez
 
 ## <a name="next-steps"></a>További lépések
 
-- [**Gyors üzembe helyezési** ](active-directory-aadconnect-pass-through-authentication-quick-start.md) – és az Azure AD átmenő hitelesítés futtató.
-- [**Az intelligens zárolási** ](../authentication/howto-password-smart-lockout.md) -konfigurálása az intelligens zárolás funkciót a bérlő felhasználói fiókok védelmét.
-- [**Aktuális korlátozások** ](active-directory-aadconnect-pass-through-authentication-current-limitations.md) – ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
-- [**Részletes technikai** ](active-directory-aadconnect-pass-through-authentication-how-it-works.md) – Ez a funkció működésének megismerése.
-- [**Gyakran ismételt kérdések** ](active-directory-aadconnect-pass-through-authentication-faq.md) – a gyakran feltett kérdésekre adott válaszok.
-- [**Hibaelhárítás** ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) – ismerje meg, a szolgáltatással kapcsolatos gyakori problémák megoldása.
-- [**A biztonság részletes bemutatása** ](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) – további technikai információ a szolgáltatásról.
-- [**Az Azure AD közvetlen egyszeri bejelentkezés** ](active-directory-aadconnect-sso.md) -további információ a kiegészítő funkció.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkcióra vonatkozó javaslata tárolásához.
+- [Gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md) – és az Azure AD átmenő hitelesítés futtató.
+- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
+- [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md) -konfigurálása az intelligens zárolás funkciót a bérlő felhasználói fiókok védelmét.
+- [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md) – ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
+- [Részletes technikai](active-directory-aadconnect-pass-through-authentication-how-it-works.md) – Ez a funkció működésének megismerése.
+- [Gyakran ismételt kérdések](active-directory-aadconnect-pass-through-authentication-faq.md) – a gyakran feltett kérdésekre adott válaszok.
+- [Hibaelhárítás](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) – ismerje meg, a szolgáltatással kapcsolatos gyakori problémák megoldása.
+- [A biztonság részletes bemutatása](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) – további technikai információ a szolgáltatásról.
+- [Az Azure AD közvetlen egyszeri bejelentkezés](active-directory-aadconnect-sso.md) -további információ a kiegészítő funkció.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkcióra vonatkozó javaslata tárolásához.

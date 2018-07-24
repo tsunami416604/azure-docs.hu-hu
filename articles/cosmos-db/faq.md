@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: fb8ae3b6225b2029ced3687083777ae47cb54acf
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b792798c64ed0a2eb12a16d868d8a17302466fea
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002330"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215356"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -68,7 +68,7 @@ Részletekért tekintse meg a [díjszabásáról az Azure Cosmos DB](https://azu
 ### <a name="is-a-free-account-available"></a>Van egy ingyenes fiókot?
 Igen, akkor regisztráljon egy időben korlátozott fiók ingyenesen, kötelezettségvállalás nélkül. Ha szeretne regisztrálni, keresse fel a [próbálja ki ingyenesen az Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) vagy további információ: a [próbálja ki az Azure Cosmos DB – gyakori kérdések](#try-cosmos-db).
 
-Ha most ismerkedik az Azure-ba, akkor regisztráljon egy [ingyenes Azure-fiók](https://azure.microsoft.com/free/), 30 napig révén, és, és próbálja ki az Azure-szolgáltatásokhoz. A Visual Studio-előfizetéssel rendelkezik, ha jogosult is [ingyenes Azure-kreditek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) bármely Azure-szolgáltatások használatára. 
+Ha most ismerkedik az Azure-ba, hogy regisztráljon egy [ingyenes Azure-fiók](https://azure.microsoft.com/free/), amely biztosít 30 napot és az összes Azure-szolgáltatás kreditet. A Visual Studio-előfizetéssel rendelkezik, ha jogosult is [ingyenes Azure-kreditek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) bármely Azure-szolgáltatások használatára. 
 
 Is használhatja a [Azure Cosmos DB Emulatort](local-emulator.md) fejlesztéséhez és teszteléséhez az alkalmazás helyi ingyenes, az Azure-előfizetés létrehozása nélkül. Amikor már elégedett az alkalmazás működésével az Azure Cosmos DB Emulatorban, átválthat az Azure Cosmos DB-fiók használatára a felhőben.
 

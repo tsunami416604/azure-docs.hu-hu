@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: mabrigg
-ms.openlocfilehash: 43ec962c91b354d8f07f1be8885b89424d00e452
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 484f04dc2ed523d3f979b0ba857c92f90d9d32ad
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069859"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215810"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Kezelheti a frissítéseket az Azure Stack áttekintése
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-A Microsoft update csomagok az Azure Stack integrált rendszerek általában kiadás minden hónap negyedik keddjén körül. Az OEM érdeklődjön az adott értesítési folyamat frissítési értesítések eléréséhez a szervezet biztosításához. A jelen dokumentációs könyvtárban alatt alapján is ellenőrizheti **áttekintése** > **kibocsátási megjegyzések** verziókról lévő aktív támogatási információkat. 
+A Microsoft update csomagok az Azure Stack integrált rendszerek általában kiadás minden hónap negyedik keddjén körül. Az OEM érdeklődjön az adott értesítési folyamat frissítési értesítések eléréséhez a szervezet biztosításához. A jelen dokumentációs könyvtárban alapján is ellenőrizheti **áttekintése** > **kibocsátási megjegyzések** verziókról lévő aktív támogatási információkat. 
 
 A Microsoft különböző kiadásai egyetlen frissítési csomag részét képezi. Az Azure Stack operátorait szerint importálhatja, telepítése és a figyelő ezeket a telepítési folyamat frissítési csomagok a felügyeleti portálról. 
 

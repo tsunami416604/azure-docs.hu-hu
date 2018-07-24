@@ -1,6 +1,6 @@
 ---
-title: Adatcsatorna HL7 FHIR erőforrások - Azure Cosmos DB módosítása |} Microsoft Docs
-description: Megtudhatja, hogyan állíthatja be a változási értesítéseket HL7 FHIR beteg egészségügyi rekordok Azure Logic Apps, az Azure Cosmos DB és a Service Bus használatával.
+title: A változáscsatorna HL7 FHIR-erőforrások – Azure Cosmos DB |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be a módosítási értesítésekre; HL7 FHIR egészségügyi betegnyilvántartást Azure Logic Apps, az Azure Cosmos DB és a Service Bus használatával.
 keywords: HL7 fhir
 services: cosmos-db
 author: SnehaGunda
@@ -10,96 +10,96 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 9d05c41e7ebf9d1cc0735da8853e4ad1617eb810
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d40ab5d6bb29878c633a2645810d6256ac661071
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610497"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213700"
 ---
-# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>A Logic Apps és az Azure Cosmos DB használatával HL7 FHIR egészségügyi rekord módosítása betegek értesítése
+# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>A Logic Apps és az Azure Cosmos DB használatával HL7 FHIR egészségügyi rekord módosításait a betegek értesítése
 
-Az Azure MVP Howard Edidin nemrég egészségügyi szervezetek, amelyek hozzáadni az új funkciókat a beteg portálra felvenni a kapcsolatot. Értesítések küldéséhez meghozandó, az egészségügyi frissítették, és szeretne előfizetni a frissítések betegek szükség rájuk szükség rájuk. 
+Az Azure MVP Howard Edidin nemrég szeretne hozzáadni az új funkció a betegek portálra egészségügyi intézmény felvenni a kapcsolatot. Értesítések küldésére a betegek, az egészségügyi rekordot, és feliratkozhat a frissítésekhez a betegek szükség rájuk szükség rájuk. 
 
-Ez a cikk végigvezeti a módosítás hírcsatorna a egészségügyi szervezet Azure Cosmos DB, a Logic Apps és a Service Bus használatával létrehozott értesítési megoldást. 
+Ez a cikk végigvezeti a változáscsatorna értesítés megoldás létrehozása az Azure Cosmos DB, a Logic Apps és a Service Bus használatával egészségügyi szervezet számára. 
 
-## <a name="project-requirements"></a>Projekt követelmények
-- Szolgáltatók küldése HL7 konszolidált klinikai dokumentum architektúra (C-CDA) dokumentumok XML formátumban. C-CDA dokumentumok tartalmazzák a klinikai dokumentum, beleértve a klinikai dokumentumok például családba tartozó alábbi előzményeinek és azon rögzíti, valamint a felügyeleti, a munkafolyamat és a pénzügyi dokumentumok szinte bármilyen típusú. 
+## <a name="project-requirements"></a>Projekt követelményeinek
+- Szolgáltatók küldése XML formátumú dokumentumok HL7 konszolidált klinikai dokumentum architektúra (C-CDA). C-CDA dokumentumok tartalmazzák a klinikai dokumentum, beleértve a klinikai dokumentumok, például családi előzményeket és azon rekordokat, valamint felügyeleti, a munkafolyamat és a pénzügyi dokumentumok szinte bármilyen típusú. 
 - C-CDA dokumentumok alakulnak [HL7 FHIR erőforrások](http://hl7.org/fhir/2017Jan/resourcelist.html) JSON formátumban.
-- Módosított FHIR erőforrás dokumentumokat küldött e-mailek JSON formátumban.
+- Módosított FHIR erőforrás dokumentum elküldése e-mailes JSON formátumban.
 
-## <a name="solution-workflow"></a>Megoldás munkafolyamat 
+## <a name="solution-workflow"></a>Megoldás munkafolyamata 
 
-Magas szinten a projekt szükséges a következő munkafolyamat-lépéseket: 
-1. C-CDA dokumentumok átalakítása FHIR erőforrásokat.
-2. Ciklikus lekérdezés a módosított FHIR erőforrások ismétlődő eseményindító végrehajtása. 
-2. Egyéni alkalmazás, FhirNotificationApi Azure Cosmos adatbázis és az új vagy módosított dokumentumok lekérdezés való kapcsolódáshoz hívja.
-3. Mentse a Service Bus várólista-válasz.
-4. A lekérdezési az új üzenetek a Service Bus-üzenetsorba.
-5. E-mail értesítéseket küldhet meghozandó.
+Magas szinten a projekthez szükséges a következő munkafolyamat-lépéseit: 
+1. C-CDA-dokumentumok átalakítása FHIR-erőforrásokat.
+2. Végezze el az ismétlődő eseményindító módosított FHIR-erőforrások lekérdezése. 
+2. Meghív egy egyéni alkalmazást, FhirNotificationApi kapcsolódjanak az Azure Cosmos DB és az új vagy módosított dokumentumok lekérdezése.
+3. A Service Bus-üzenetsorba küldött válasz mentése.
+4. Lekérdezés az új üzenetek a Service Bus-üzenetsorba.
+5. A betegek e-mail értesítések küldéséhez.
 
 ## <a name="solution-architecture"></a>Megoldás architektúrája
-Ez a megoldás három Logic Apps a fenti követelményeknek, és a megoldás munkafolyamat befejezéséhez szükséges. A három a logic apps a következők:
-1. **HL7-FHIR-leképezés app**: a HL7 C-CDA dokumentum kap, átalakítja a FHIR erőforráshoz, majd menti azt az Azure Cosmos-Adatbázishoz.
-2. **EHR app**: az Azure Cosmos DB FHIR tárház lekérdezése, és menti a válasz a Service Bus-üzenetsorba. A logikai alkalmazást használ egy [API-alkalmazás](#api-app) új és módosított dokumentumok beolvasása.
-3. **Folyamat értesítési app**: a FHIR erőforrás dokumentumok e-mailben értesítést küld a törzsében.
+Ez a megoldás három logikai alkalmazás a fenti követelményeknek megfelelő, és a megoldás a munkafolyamat befejezéséhez szükséges. A három logikai alkalmazások a következők:
+1. **HL7 FHIR-hozzárendelés alkalmazás**: a HL7 C-CDA dokumentum fogadása, alakítja át, a FHIR-erőforráshoz, majd menti azt az Azure Cosmos DB.
+2. **EHR alkalmazás**: lekérdezése az Azure Cosmos DB FHIR adattárban, és menti a Service Bus-üzenetsorba küldött válasz. Ez a logikai alkalmazás használja egy [API-alkalmazás](#api-app) új és módosított dokumentumok lekérdezésének.
+3. **Folyamat értesítés alkalmazás**: küld egy e-mail-értesítés a FHIR erőforrás dokumentumokat törzsében.
 
-![A három Logic Apps a HL7 FHIR egészségügyi megoldásban használt](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
+![A három Logic Apps, a HL7 FHIR egészségügyi megoldást](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
 
 
 ### <a name="azure-services-used-in-the-solution"></a>A megoldásban használt Azure-szolgáltatások
 
-#### <a name="azure-cosmos-db-sql-api"></a>Az Azure Cosmos DB SQL API
-Azure Cosmos-adatbázis a FHIR erőforrások tárháza, az alábbi ábrán látható módon.
+#### <a name="azure-cosmos-db-sql-api"></a>Az Azure Cosmos DB SQL API-hoz
+Az Azure Cosmos DB a tárház FHIR erőforrások, az alábbi ábrán látható módon.
 
-![A HL7 FHIR egészségügyi oktatóanyagban használt Azure Cosmos DB fiók](./media/change-feed-hl7-fhir-logic-apps/account.png)
+![Az egészségügyi HL7 FHIR oktatóanyagban használt Azure Cosmos DB-fiók](./media/change-feed-hl7-fhir-logic-apps/account.png)
 
 #### <a name="logic-apps"></a>Logic Apps
-Logic Apps alkalmazásokat kezeléséhez a munkafolyamat. Az alábbi képek a létre ebben a megoldásban a Logic apps megjelenítése. 
+A Logic Apps kezelni a munkafolyamat folyamatában. Az alábbi képernyőfelvételnek megfelelően a Logic apps, a megoldás számára létrehozott megjelenítése. 
 
 
-1. **HL7-FHIR-leképezés app**: megkapja a HL7 C-CDA dokumentumot, és irányítópulttá, használja a vállalati integrációs csomag Logic Apps FHIR erőforráshoz. A vállalati integrációs csomag kezeli a leképezés a C-CDA FHIR erőforrásokhoz.
+1. **HL7 FHIR-hozzárendelés alkalmazás**: a HL7 C-CDA dokumentum fogadása és átalakítja a Logic Apps Enterprise Integration Pack használatával FHIR erőforrásokhoz. Az Enterprise Integration Pack a C-CDA FHIR erőforrásokhoz való leképezése kezeli.
 
-    ![A logikai alkalmazás HL7 FHIR egészségügyi rekordok fogadására szolgáló](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
+    ![A logikai alkalmazás egészségügyi HL7 FHIR-rekord fogadása](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
 
-2. **EHR app**: az Azure Cosmos DB FHIR tárház lekérdezése, és mentse a válasz a Service Bus-üzenetsorba. A GetNewOrModifiedFHIRDocuments alkalmazás kódja nem éri el.
+2. **EHR alkalmazás**: lekérdezése az Azure Cosmos DB FHIR adattár és a egy Service Bus-üzenetsorba küldött válasz mentése. A kód az GetNewOrModifiedFHIRDocuments alkalmazás nem éri el.
 
-    ![A logikai alkalmazást használt Azure Cosmos DB lekérdezése](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
+    ![A logikai alkalmazás segítségével Azure Cosmos DB lekérdezése](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
-3. **Folyamat értesítési app**: a FHIR erőforrás dokumentumokkal e-mail értesítés küldése a törzsében.
+3. **Folyamat értesítés alkalmazás**: a törzsben elküldendő e-mail-értesítés a FHIR erőforrás dokumentumok.
 
-    ![A logikai alkalmazást a HL7 FHIR erőforrás beteg e-maileket küldő törzsében.](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
+    ![A logikai alkalmazás, amely a HL7 FHIR-erőforrással betegek e-mailt küld a törzskérelemben](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
 
 #### <a name="service-bus"></a>Service Bus
-Az alábbi ábrán láthatók a betegek várólista. A címke tulajdonság értékét használja az e-mail tárgyát.
+A következő ábrán látható a betegek várólista. A címke tulajdonság értéke az e-mail tárgyát szolgál.
 
-![A Service Bus-üzenetsorba HL7 FHIR oktatóanyagban használt](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
+![A Service Bus-üzenetsor HL7 FHIR-oktatóanyagban használt](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
 
 <a id="api-app"></a>
 
 #### <a name="api-app"></a>API-alkalmazás
-Az API-alkalmazások Azure Cosmos adatbázis és az új vagy módosított FHIR dokumentumok erőforrástípusok szerint lekérdezések csatlakozik. Ez az alkalmazás rendelkezik egy tartományvezérlő, **FhirNotificationApi** egy művelettel **GetNewOrModifiedFhirDocuments**, lásd: [API-alkalmazás forrását](#api-app-source).
+API-alkalmazás csatlakozik az Azure Cosmos DB és a lekérdezések új vagy módosított FHIR dokumentumok erőforrástípus szerint. Az alkalmazás van egy vezérlő **FhirNotificationApi** egy művelettel **GetNewOrModifiedFhirDocuments**, lásd: [forrás API-alkalmazás](#api-app-source).
 
-Használjuk a [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) osztály az Azure Cosmos DB SQL .NET API-t. További információkért lásd: a [módosítás hírcsatorna cikk](change-feed.md). 
+Használjuk a [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) az Azure Cosmos DB SQL .NET API osztályt. További információkért lásd: a [módosítási hírcsatorna cikk](change-feed.md). 
 
 ##### <a name="getnewormodifiedfhirdocuments-operation"></a>GetNewOrModifiedFhirDocuments művelet
 
-**Bemenetek**
+**bemenetek**
 - DatabaseId
 - CollectionId
 - HL7 FHIR erőforrástípus neve
-- Logikai érték: Indítsa el az elejétől
+- Logikai érték: Start elejétől
 - Int: Visszaadott dokumentumok száma
 
 **Kimenetek**
-- Sikerült: Állapotkód: 200, válasz: dokumentumok (JSON-tömb) listája
-- Hiba: Állapotkód: 404-es, válasz: "nem található a"*erőforrás neve "* erőforrástípus"
+- Sikeres: Állapotkód: 200, válasz: (JSON-tömböt) dokumentumok listája
+- Hiba: Állapotkód: 404-es, válasz: "nem található"*erőforrás neve "* erőforrástípus"
 
 <a id="api-app-source"></a>
 
-**Az API-alkalmazás forrása**
+**Forrás API-alkalmazás**
 
 ```csharp
 
@@ -206,25 +206,25 @@ Használjuk a [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/lib
 
 ### <a name="testing-the-fhirnotificationapi"></a>A FhirNotificationApi tesztelése 
 
-A következő kép bemutatja, hogyan swagger lett megadva a tesztelése a [FhirNotificationApi](#api-app-source).
+Az alábbi képen láthatja, hogyan tesztelésére használt swagger a [FhirNotificationApi](#api-app-source).
 
 ![A Swagger-fájl, amellyel tesztelheti az API-alkalmazás](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-testing-app.png)
 
 
-### <a name="azure-portal-dashboard"></a>Azure-portál irányítópultjának
+### <a name="azure-portal-dashboard"></a>Az Azure portal irányítópultján
 
-A következő kép bemutatja az összes Azure-szolgáltatás fut az Azure portálon ebben a megoldásban.
+Az alábbi képen látható a megoldás futtatása az Azure Portalon az Azure-szolgáltatások mindegyikét.
 
-![Az Azure-portálon megjelenítő HL7 FHIR oktatóanyagban használt minden szolgáltatás](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
+![Az Azure Portalon HL7 FHIR-oktatóanyagban használt összes szolgáltatásokat bemutató](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
 
 
 ## <a name="summary"></a>Összegzés
 
-- Megtanulta, hogy Azure Cosmos DB natív támogatja a következő kapcsolattípust értesítéseket az új vagy módosított dokumentumokat és milyen egyszerűen használatára van-e. 
-- A Logic Apps használatával programozás nélkül munkafolyamatokat hozhat létre.
-- Azure Service Bus-üzenetsorok használatával a terjesztési HL7 FHIR dokumentumok kezeléséhez.
+- Megtanulhatta, hogy az Azure Cosmos DB rendelkezik-e a natív támogatása az értesítések az új vagy módosított dokumentumok és mennyire egyszerű is használhatja. 
+- A Logic Apps kihasználva munkafolyamatokat hozhat létre kód írása nélkül.
+- Az Azure Service Bus-üzenetsorok használatával a terjesztési HL7 FHIR dokumentumok kezeléséhez.
 
 ## <a name="next-steps"></a>További lépések
-Azure Cosmos DB kapcsolatos további információkért tekintse meg a [Azure Cosmos DB kezdőlap](https://azure.microsoft.com/services/cosmos-db/). A Logic Apps kapcsolatos további információk megadására, lásd: [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+Azure Cosmos DB kapcsolatos további információkért lásd: a [Azure Cosmos DB-kezdőlap](https://azure.microsoft.com/services/cosmos-db/). További információ a Logic Apps szolgáltatásról, tekintse meg a [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 
 

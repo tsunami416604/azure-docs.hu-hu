@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: f53f8ffcf8354d35fa552f099302456fa5226ca8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b785b23b41981efeb7fe160a18dc0c3c38f3772f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915877"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215390"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Felhasználói adatok védelme és az Azure Active Directory átmenő hitelesítése
 
@@ -75,7 +75,7 @@ Az átmenő hitelesítés ügynök naplók megtekintéséhez nyissa meg a **Esem
 Rendszeresen ellenőrizni kell a tartalmát **%ProgramData%\Microsoft\Azure AD Connect hitelesítési Agent\Trace\**  , és törölje a mappa tartalma minden 48 óra. 
 
 >[!IMPORTANT]
->Ha a hitelesítési ügynök szolgáltatás fut, nem fogja kattintva törölheti az aktuális fájl a mappában. Állítsa le a szolgáltatást, majd próbálkozzon újra. Felhasználói bejelentkezési hibák elkerülése érdekében már konfigurálni kell az átmenő hitelesítés [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+>Ha a hitelesítési ügynök szolgáltatás fut, nem fogja kattintva törölheti az aktuális fájl a mappában. Állítsa le a szolgáltatást, majd próbálkozzon újra. Felhasználói bejelentkezési hibák elkerülése érdekében már konfigurálni kell az átmenő hitelesítés [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 Ellenőrizhetik és törölhetik ezeket a fájlokat a Windows Intézőben, vagy használhatja az alábbi parancsfájlt a szükséges műveletek végrehajtásához:
 

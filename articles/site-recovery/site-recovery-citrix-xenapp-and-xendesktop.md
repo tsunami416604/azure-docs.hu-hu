@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: c4bc8a1b2ab8f6569d6893f5c4fc16339ebddbe6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 45d366842416ddfa7b0153a1d075ee6de58e45a1
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917210"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213633"
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Egy többrétegű Citrix XenApp és xendesktop-példányok üzembe helyezés az Azure Site Recovery replikálása
 
@@ -182,7 +182,7 @@ A testre szabott helyreállítási terv néz ki az alábbi:
 
 
    >[!NOTE]
-   >A parancsfájlokat használhat [hely](https://github.com/Azure/azure-quickstart-templates/blob/>master/asr-automation-recovery/scripts) frissíteni a DNS-ben az új IP-címek a sikertelen a keresztül > virtuális gépek vagy csatolni a feladatait egy terheléselosztó feladatátviteli virtuális géphez, ha szükséges.
+   >A parancsfájlokat használhat [hely](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) frissíteni a DNS-ben az új IP-címek a sikertelen a keresztül > virtuális gépek vagy csatolni a feladatait egy terheléselosztó feladatátviteli virtuális géphez, ha szükséges.
 
 
 ## <a name="doing-a-test-failover"></a>Teszt feladatátvétel végrehajtása

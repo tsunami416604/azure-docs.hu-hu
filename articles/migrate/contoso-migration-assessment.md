@@ -1,202 +1,188 @@
 ---
 title: A helyszíni számítási feladatok Azure-bA a Contoso migrálásának értékelése |} A Microsoft Docs
-description: Ismerje meg, hogyan a Contoso felméri a helyszíni gépek az Azure-bA az Azure Migrálási és az adatbázis Migraton az áttelepítéshez
+description: Ismerje meg, hogyan Contoso felméri az Azure Migrate és a Data Migration Assistant használatával a helyszíni gépek az Azure-ba való migrálásra.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: fa6fb4ffe1eea98392b2199f379431b0dffc6774
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 2be5ddd51140563efc44b1c1a4c84502bf491020
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006566"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215322"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: a helyszíni számítási feladatok Azure-bA migrálásának értékelése
 
-Ez a cikk bemutatja, hogyan értékeli a Contoso az Azure-ba való migrálásra való felkészüléskor a helyszíni SmartHotel alkalmazást.
+Ebben a cikkben Contoso felméri a helyszíni SmartHotel alkalmazást az alkalmazás Azure-ba való migrálás előkészítésekor.
 
-Ez a dokumentum a harmadik a cikksorozatot, amely dokumentálja a fiktív Contoso hogyan a helyszíni erőforrásokkal áttelepíti a Microsoft Azure felhőbe. A sorozat háttér-információkat is tartalmaz, és a egy sorozat különböző telepítési forgatókönyvek esetén, amelyek bemutatják, hogyan állíthat be egy áttelepítési infrastruktúra felmérheti a a helyszíni erőforrások migrálásra való alkalmasságát, és futtassa a különböző típusú áttelepítéseket. Forgatókönyvek egyre összetettebbé válnak, és adunk hozzá további cikkek idővel.
+Ez a cikk a egy sorozat harmadik cikket, amely a fiktív Contoso hogyan a helyszíni erőforrásokkal áttelepíti a Microsoft Azure felhőbe dokumentumok. A sorozat háttér-információkat is tartalmaz, és különböző telepítési forgatókönyvek esetén, amelyek bemutatják, hogyan állíthat be egy áttelepítési infrastruktúra egy sorozat felmérheti a a helyszíni erőforrások migrálásra való alkalmasságát, és futtassa a különböző típusú áttelepítéseket. Forgatókönyvek egyre összetettebbé válnak. Cikkek idővel felveszi az adatsorozat.
 
-**Cikk** | **Részletek** | **Állapot**
+Cikk | Részletek | Állapot
 --- | --- | ---
-[1. cikk: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk sorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
-[2. cikk: Egy Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Az összes migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Elérhető
-3. cikk: Mérje fel helyszíni erőforrásait az Azure-ba való migráláshoz  | Bemutatja, hogyan Contoso fut a VMware-en futó helyszíni kétrétegű SmartHotel alkalmazás értékelése. Contoso alkalmazás rendelkező virtuális gépek értékeli a [Azure Migrate](migrate-overview.md) szolgáltatás és az alkalmazás SQL Server-adatbázisnak a [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Ez a cikk.
-[4. cikk: Áthelyezési egy alkalmazást az Azure virtuális gépeken és a egy felügyelt SQL-példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Bemutatja, hogyan Contoso fut egy lift-and-shift-migrálás az Azure-bA a helyszíni SmartHotel alkalmazás. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az alkalmazás-adatbázis SQL felügyelt példányra, használja a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Elérhető
-[5. cikk: Áthelyezési egy alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-vm.md) | Bemutatja, hogyan Contoso migrálása az Azure virtuális gépeire, a Site Recovery szolgáltatással az SmartHotel alkalmazás virtuális gépeit. | Elérhető
-[A cikk 6: Egy alkalmazást az Azure virtuális gépek és az SQL Server Always On rendelkezésre állási csoport áthelyezési](contoso-migration-rehost-vm-sql-ag.md) | Bemutatja, hogyan telepíti át a Contoso a SmartHotel alkalmazást. Contoso számára, hogy az alkalmazás virtuális gépeit és a Database Migration service, az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt a Site Recovery használja. | Elérhető
-[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso hajtja végre a Linux osTicket alkalmazás lift-and-shift áttelepítés Azure virtuális gépekre, a Site Recovery | Elérhető
-[A cikk 8: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépek és az Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
-[9. cikk: Újrabontás egy alkalmazást az Azure Web Apps és az Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Bemutatja, hogyan Contoso a SmartHotel alkalmazást áttelepíti egy Azure-webalkalmazást, és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány | Elérhető
-[10. cikk: Újrabontás egy Linux-alkalmazás Azure Web Apps és az Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Bemutatja, hogyan Contoso áttelepíti a Linux-osTicket alkalmazás Azure Web Apps több helyen, a folyamatos készregyártás a GitHub integrálva. Az alkalmazás-adatbázis nekik át egy Azure-beli MySQL-példányt. | Elérhető
-[11. cikk: Újrabontás a TFS-t a vsts-ben](contoso-migration-tfs-vsts.md) | Bemutatja, hogyan telepíti át a Contoso a saját helyi Team Foundation Server (TFS) központi, migrálás, a Visual Studio Team Services (VSTS) az Azure-ban. | Elérhető
-[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Bemutatja, hogyan Contoso áttelepíti, és rearchitects SmartHotel alkalmazás az Azure-bA. Az alkalmazás webes réteg egy Windows-tárolót, és a egy Azure SQL Database-ben az alkalmazás-adatbázis újratervezése azokat. | Elérhető
-[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Bemutatja, hogyan építse újra a Contoso SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az App Services, Azure-beli Kubernetes, az Azure Functions, a Cognitive services és a Cosmos DB használatával. | Elérhető
+[1. cikk: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk sorozat és a sorozat használt mintaalkalmazások áttekintése. | Szabad
+[2. cikk: Egy Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Contoso előkészíti a helyszíni infrastruktúra és az Azure-infrastruktúra az áttelepítéshez. A sorozat minden migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Szabad
+3. cikk: Mérje fel helyszíni erőforrásait az Azure-ba való migráláshoz | Contoso fut, a VMware-en futó helyszíni kétrétegű SmartHotel alkalmazás értékelése. Contoso értékeli az alkalmazás virtuális gépek használatával a [Azure Migrate](migrate-overview.md) szolgáltatás. Contoso alkalmazás SQL Server-adatbázis értékelésére használatával [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Ez a cikk
+[4. cikk: Áthelyezési egy alkalmazást egy Azure virtuális Gépen, és SQL Database felügyelt példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso lift-and-shift az áttelepítés fut az Azure-bA a helyszíni SmartHotel alkalmazáshoz. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso az alkalmazás-adatbázis áttelepítése az Azure SQL Database felügyelt példányába használatával a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Szabad
+[5. cikk: Áthelyezési egy alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-vm.md) | Contoso Azure virtuális gépekre annak SmartHotel alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással. | Szabad
+[Cikk 6: Azure virtuális gépeken és a egy SQL Server AlwaysOn rendelkezésre állási csoportban található alkalmazások Újratárolása](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Szabad
+[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-linux-vm.md) | Contoso a Site Recovery használatával az Azure virtuális gépek Linux osTicket alkalmazás lift-and-shift áttelepítés befejeződik. | Szabad
+[Cikk 8: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépek és az Azure Database for MySQL-hez](contoso-migration-rehost-linux-vm-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure virtuális gépek Site Recovery használatával. Az áttelepítése az alkalmazás-adatbázis az Azure Database for MySQL-hez a MySQL Workbench használatával. | Szabad
+[9. cikk: Újrabontás egy alkalmazást az Azure web App alkalmazásban és az Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-webalkalmazás, és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány. | Szabad
+[Cikk 10: Újrabontás egy Linux-alkalmazást egy Azure-webalkalmazást és az Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure-webalkalmazás több helyen is előfordul. A webalkalmazás folyamatos készregyártás a GitHub van integrálva. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Szabad
+[11. cikk: Újrabontás a Team Foundation Server, a Visual Studio Team Servicesben](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi migrálással, hogy a Visual Studio Team Services az Azure-ban. | Szabad
+[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-ba, és ezután rearchitects az alkalmazást. Contoso rearchitects az alkalmazás webes réteg Windows tárolójaként, és az alkalmazás-adatbázis rearchitects Azure SQL Database használatával. | Szabad
+[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service-ben, az Azure Functions, az Azure Cognitive Services és az Azure Cosmos DB használatával. | Szabad
 
 
 ## <a name="overview"></a>Áttekintés
 
-Ahogy, vegye figyelembe a migrálás az Azure-ba, Contoso vállalat műszaki és pénzügyi felmérést, döntse el, a helyszíni számítási feladatok alkalmasak-e a felhőbe való migrálásra szeretné. Különösen a Contoso csapat felmérheti a gépek és adatbázisok kompatibilitását, és megbecsülheti a kapacitás és a költségek az Azure-ban futó erőforrásaikat szeretné.
+Contoso úgy véli, hogy az Azure-ba való migrálás, mivel a vállalat a műszaki és pénzügyi értékelés van a felhőbe való migrálásra alkalmas-e a helyszíni számítási feladatok futtatásához. A Contoso csapata különösen szeretné felmérheti a gépek és adatbázisok kompatibilitását. Ha meg szeretné becsülni a kapacitás és a Contoso-erőforrások Azure-ban futó szeretné.
 
-Értékelnek, és értelmezheti az érintett, azok fogjuk mérje fel a helyszíni alkalmazásaikat, két technológiákat a következő táblázat foglalja össze. Vegye figyelembe, hogy azok értékelni áttelepítési forgatókönyvek, áthelyezési és újrabontása alkalmazásokat az áttelepítéshez. További információ újratárolása, és a újrabontás a [Contoso áttelepítése – áttekintés](contoso-migration-overview.md).
+Első lépések, és jobban megérthessék az érintett technológiákat, a Contoso felméri két a helyszíni alkalmazások esetében a következő táblázat foglalja össze. A vállalat áttelepítési forgatókönyvek felméri a migrálásra, áthelyezési és újrabontása alkalmazásokat. További információ újratárolása, és a újrabontás a [Contoso áttelepítése – áttekintés](contoso-migration-overview.md).
 
-**Alkalmazás neve** | **Platform** | **Alkalmazás szinten** | **Részletek**
+Alkalmazásnév | Platform | Alkalmazás szinten | Részletek
 --- | --- | --- | ---
-SmartHotel<br/><br/> Kezeli a Contoso utazási követelmények | Az SQL Server-adatbázis a Windows rendszerű | Kétszintű alkalmazás és az előtér egy virtuális gép (WEBVM) és a egy másik virtuális gép (SQLVM) futó SQL Server futó ASP.NET-webhely | Virtuális gépek a VMware vCenter-kiszolgáló által kezelt ESXi-gazdagépen futó.<br/><br/> A mintaalkalmazás letölthető [GitHub](https://github.com/Microsoft/SmartHotel360).
-OSTicket<br/><br/> Contoso szolgáltatás ügyfélszolgálati alkalmazás | Linux/Apache, a egy MySQL-PHP (a LAMP) futnak. | Kétrétegű-alkalmazás és egy frontend php-alapú webhely egy virtuális gép (OSTICKETWEB) és a egy másik virtuális gép (OSTICKETMYSQL) fut a MySQL-adatbázishoz | Az alkalmazás belső alkalmazottai és külső ügyfelek esetében a problémák nyomon követésére ügyfélalkalmazások szolgáltatást használják.<br/><br/> A mintaalkalmazás letölthető [GitHub](https://github.com/osTicket/osTicket).
+SmartHotel<br/><br/> (a Contoso utazási követelmények kezeli) | Windows fut az SQL Server-adatbázis | Kétszintű alkalmazás. Az előtérbeli ASP.NET-webhely futtat egy virtuális gép (**WEBVM**) és a egy másik virtuális gépen fut az SQL Server (**SQLVM**). | Virtuális gépek a VMware vCenter-kiszolgáló által kezelt ESXi-gazdagépen futó.<br/><br/> Letöltheti a mintaalkalmazást a [GitHub](https://github.com/Microsoft/SmartHotel360).
+osTicket<br/><br/> (A Contoso ügyfélszolgálati-alkalmazás) | Linux/Apache, a MySQL PHP (a LAMP) fut | Kétszintű alkalmazás. Egy előtér-php-alapú webhely egy virtuális gépen fut (**OSTICKETWEB**) és a MySQL-adatbázist futtat egy másik virtuális Géphez (**OSTICKETMYSQL**). | Az alkalmazás belső alkalmazottai és külső ügyfelek esetében a problémák nyomon követésére ügyfélalkalmazások szolgáltatást használják.<br/><br/> Letöltheti a mintát a [GitHub](https://github.com/osTicket/osTicket).
 
 ## <a name="current-architecture"></a>Aktuális architektúra
 
+Ez az ábra bemutatja az aktuális Contoso a helyszíni infrastruktúra:
 
-Íme az aktuális Contoso a helyszíni infrastruktúra bemutató ábra.
+![Aktuális Contoso-architektúra](./media/contoso-migration-assessment/contoso-architecture.png)  
 
-![Contoso-architektúra](./media/contoso-migration-assessment/contoso-architecture.png)  
-
-- Contoso a az városa New York a kelet-Egyesült Államok található egy fő adatközpont rendelkezik.
-- Három további helyszíni ágakat Egyesült államokbeli városba rendelkeznek.
-- A fő adatközpont fiber metro ethernet-kapcsolattal (500 MB/s) az internethez csatlakozik.
-- Minden egyes fiókiroda helyi üzleti osztály kapcsolatok, térjen vissza a fő adatközpont IPSec VPN-alagutat az internetes csatlakozik. Ez lehetővé teszi, hogy a teljes hálózat véglegesen csatlakoztatja, és optimalizálja a internetkapcsolat.
-- A fő adatközpont teljes VMware-rel lesz virtualizálva. Két ESXi 6.5-ös virtualizációs gazdagépeket, a vCenter Server 6.5-ös által felügyelt rendelkeznek.
-- Contoso az Active Directory identitáskezelési és a DNS-kiszolgálók a belső hálózaton.
+- Contoso egyik fő adatközpont rendelkezik. Az adatközpontban található a a város, New York-i keleti Egyesült Államokban található.
+- Contoso három további helyszíni ágakat Egyesült államokbeli városba rendelkezik.
+- A fő adatközpont csatlakozik az internetre egy fiber Metro Ethernet-kapcsolat (500 MB/s).
+- Minden egyes fiókiroda az interneten helyileg kapcsolódik, térjen vissza a fő adatközpont IPsec VPN-alagutak rendelkező vállalati szintű kapcsolatokon keresztül. A telepítő lehetővé teszi, hogy a Contoso teljes véglegesen csatlakoztatja, és optimalizálja a internetkapcsolat.
+- A fő adatközpont teljes VMware-rel lesz virtualizálva. Contoso két vCenter Server 6.5-ös által kezelt ESXi 6.5-ös virtualizációs gazdagépeket tartalmaz.
+- Contoso Active Directoryt identitáskezeléshez használ. Contoso DNS-kiszolgálókat használ, a belső hálózaton.
 - A tartományvezérlők VMware virtuális gépek futtatását az adatközpontban. A tartományvezérlők helyi ágat, fizikai kiszolgálókon futnak.
-
-
-
-
 
 ## <a name="business-drivers"></a>A stratégiai
 
-Az informatikai vezetőségi szorosan együttműködik az üzleti partnerek megértéséhez, az üzleti szeretne való áttérés érhet el:
+A Contoso informatikai vezetőségi szorosan együttműködik a vállalat üzleti partnerek megértéséhez, az üzleti szeretne való áttérés érhet el:
 
-- **Üzleti növekedés cím**: Contoso nő, és ennek eredményeképpen nincs a helyszíni rendszerek és infrastruktúra nyomás.
-- **Növelheti a hatékonyságot**: Contoso cégnek szüksége van, távolítsa el a felesleges eljárásokat, és egyszerűsíthetők a folyamatok a fejlesztők és a felhasználók számára.  Az üzleti igények informatikai gyorsan, és nem Hulladékmennyiség idő vagy költséget takaríthat meg, így gyorsabban továbbítása az ügyfelek igényei.
-- **A gyorsaság növeléséhez**: Contoso IT kell lennie a rugalmasabb ügyfélkapcsolatok kialakítását teszi az üzleti igényeinek. Reagáljon gyorsabban a Marketplace-en, a versenyképes sikeres engedélyezése a módosításokat, képesnek kell lennie.  Azt nem a módon, vagy egy üzleti blocker válnak.
-- **Méretezési csoport**: a vállalat növekedésével sikeres, a Contoso informatikai kell megadnia rendszerek, amelyek képesek a ugyanolyan ütemben nő.
+- **Üzleti növekedés cím**: Contoso nő. Ennek eredményeképpen nyomás növelte a vállalat a helyszíni rendszerek és infrastruktúra.
+- **Növelheti a hatékonyságot**: Contoso cégnek szüksége van, távolítsa el a felesleges eljárások és egyszerűsíthetők a folyamatok a fejlesztők és a felhasználók számára. Az ügyfelek igényei kell gyors és a nem Hulladékmennyiség idő vagy költséget takaríthat meg, így a vállalat informatikai üzleti igények gyorsabban is készíthetnek.
+- **A gyorsaság növeléséhez**: Contoso IT kell lennie a rugalmasabb ügyfélkapcsolatok kialakítását teszi az üzleti igényeinek. Reagáljon gyorsabban a Marketplace-en, a cég számára a globális gazdaság végrehajtott módosításokat a képesnek kell lennie. Contoso IT nem kell a területük vagy egy üzleti blocker válnak.
+- **Méretezési csoport**: növekedésével a vállalat üzleti sikeresen a Contoso informatikai meg kell adnia rendszerek, amelyek ütemben növekedhet.
 
 ## <a name="assessment-goals"></a>Értékelés célok
 
-A Contoso felhőalapú csapat rendelkezik rögzített le azok áttelepítési felmérések célok:
+A Contoso felhőalapú csapat azonosította a migrálás értékelések célok:
 
-- Az áttelepítés után az Azure-beli alkalmazások kell teljesítmény ugyanazokat a lehetőségeket, mint jelenleg helyszíni VMWare környezetben.  A felhőbe való áthelyezés nem jelenti azt, hogy teljesítményének kevésbé fontos.
-- Contoso meg kell ismernie az Azure-követelményeknek, valamint azok üzemeltetési lehetőségek az Azure-ban alkalmazásaik és adatbázisok kompatibilitását.
-- A Contoso adatbázis felügyeleti kerülendő, miután alkalmazások helyezte át a felhőbe.  
-- A Contoso biztosítani szeretné tudni, nem csak az áttelepítési lehetőségek, de a felhőbe való áthelyezés után az infrastruktúra társított költségek is.
+- Az áttelepítés után alkalmazások az Azure-ban még ma a helyszíni VMWare-környezetet a Contoso rendelkező alkalmazások azonos teljesítménybeli képességeinek kell rendelkeznie. A felhőbe való áthelyezés nem jelenti azt, hogy teljesítményének kevésbé fontos.
+- Contoso meg kell ismernie az alkalmazások és adatbázisok kompatibilitását az Azure követelményeinek. Contoso is meg kell ismernie, a üzemeltetési lehetőségek az Azure-ban.
+- A Contoso adatbázis felügyeleti kerülendő, alkalmazásokat a felhőbe való áthelyezése után.  
+- A Contoso biztosítani szeretné tudni, nem csak az áttelepítési lehetőségek, de a költségeket az infrastruktúrát a felhőbe való áthelyezése után is.
 
 ## <a name="assessment-tools"></a>Értékelési eszközök
-Contoso az értékelés Microsoft-eszközöket használ. Ezek az eszközök igazodnak a saját céljainak és kell biztosítania az összes szükséges információt.
 
-**Technológia** | **Leírás** | **Költségek**
+Contoso Microsoft-eszközöket használ a migrálási felmérést. Az eszközök összhangba kerüljenek a vállalati célok, és a Contoso kell biztosítania az összes szükséges információt.
+
+Technológia | Leírás | Költség
 --- | --- | ---
-[Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Ezek segítségével DMA értékeli és észleli a kompatibilitási problémákat, amelyek hatással lehetnek a funkció az Azure-ban. A DMA értékeli a funkcióparitás SQL források és célok között, és a teljesítmény- és megbízhatóságbeli fejlesztéseket javasol. | Ez egy ingyenesen letölthető eszköz.
-[Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso Ez a szolgáltatás segítségével felmérheti a VMware virtuális gépeket. Felméri a gépek migrálásra való alkalmasságát, és méretezési, illetve költségbecsléseket ad az Azure-ban való futtatásra vonatkozóan.  | Nincs jelenleg használja ezt a szolgáltatást (Előfordulhat, hogy 2018-as) számítunk fel díjat.
-[Szolgáltatástérkép](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Az Azure Migrate a Service Map használatával jeleníti meg a függőségeket a migrálni kívánt gépek között. |  A Service Map az Azure Log Analytics részét képezi. Jelenleg 180 napig díjmentesen használható.
+[Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso segítségével mérheti fel, és észleli a kompatibilitási problémákat, amelyek hatással lehetnek a funkció az Azure Data Migration Assistant szolgáltatást használja. Data Migration Assistant felméri funkcióparitás SQL források és célok között. Teljesítmény- és megbízhatóságbeli fejlesztéseket javasol azt. | Data Migration Assistant szolgáltatást egy olyan ingyenes, letölthető eszköz.
+[Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso az Azure Migrate szolgáltatás segítségével felmérheti a VMware virtuális gépeket. Az Azure Migrate felméri a gépek migrálásra való alkalmasságát. Az Azure-ban futó biztosít méretezési és költségbecslést.  | 2018 május az Azure Migrate egy olyan ingyenes szolgáltatás.
+[Szolgáltatástérkép](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Az Azure Migrate a Service Map használatával a vállalat szeretne áttelepíteni a gépek közötti függőségek megjelenítése. | A Service Map az Azure Log Analytics részét képezi. Contoso jelenleg a Service Map 180 napig díjmentesen használható.
 
-Ebben a forgatókönyvben a Contoso letölti és futtatja a DMA értékeli az utazási alkalmazás helyszíni SQL Server-adatbázis. Ezek az Azure migrate és függőségi leképezés használatával értékeljük az alkalmazás-beli virtuális gépek Azure-ba való migrálás előtt.
-
-
+Ebben a forgatókönyvben a Contoso letölti és futtatja a Data Migration Assistant szolgáltatást az utazási alkalmazás helyszíni SQL Server-adatbázis értékelésére. Contoso használja az Azure Migrate és függőségi leképezés használatával értékeljük az alkalmazás virtuális gépek Azure-ba való migrálás előtt.
 
 ## <a name="assessment-architecture"></a>Migrálásfelmérési architektúra
 
-
 ![Migrálásfelmérési architektúra](./media/contoso-migration-assessment/migration-assessment-architecture.png)
 
-- Contoso egy vállalati szervezet jelölő fiktív nevét.
-- Contoso rendelkezik egy helyszíni adatközpont (**contoso-datacenter**), a helyszíni tartományvezérlővel (CONTOSODC1, CONTOSODC2).
-- VMware virtuális gépek találhatók a VMware ESXI gazdagépek 6.5-ös verzióját futtatja. Gazdagépek: **contosohost1**, **contosohost2**
-- A VMware-környezet kezeli a vCenter server 6.5-ös (**venter**, futó virtuális gépen.
-- SmartHotel utazási alkalmazás:
-    - Az alkalmazás két VMware virtuális gépek között többszintű **WEBVM** és **SQLVM**.
+- Contoso egy fiktív egy jellemző nagyvállalati szervezet jelölő nevet.
+- Contoso rendelkezik egy helyszíni adatközpont (**contoso-datacenter**) és a helyszíni tartományvezérlő (**CONTOSODC1**, **CONTOSODC2**).
+- VMware virtuális gépek 6.5-ös verziójú VMware ESXi-gazdagépek találhatók (**contosohost1**, **contosohost2**).
+- A VMware-környezet kezeli a vCenter Server 6.5-ös (**vcenter**, egy virtuális gépen futó).
+- A SmartHotel utazási alkalmazás a következő jellemzőkkel rendelkeznek:
+    - Az alkalmazás két VMware virtuális gépek között többszintű (**WEBVM** és **SQLVM**).
     - VMware ESXi-gazdagépen található virtuális gépek **contosohost1.contoso.com**.
     - A virtuális gépek futnak a Windows Server 2008 R2 Datacenter SP1.
 - A VMware-környezetet egy virtuális gépen futó vCenter Server (**vcenter.contoso.com**) felügyeli.
-- A OSTicket szolgáltatás Desk alkalmazás:
-    - Az alkalmazás két virtuális gépen, többszintű **OSTICKETWEB** és **OSTICKETMYSQL**.
-    - A virtuális gépek futnak, az Ubuntu Linux Server 16.04-LTS.
-    - A OSTICKETWEB virtuális gép fut, Apache-2 és a PHP 7.0-ban.
-    - Virtuális gép OSTICKETMYSQL MySQL 5.7.22 fut.
-
-![Architektúra](./media/contoso-migration-assessment/architecture.png)
-
+- Ügyfélszolgálati alkalmazás osTicket szolgáltatás:
+    - Az alkalmazás két virtuális gép között többszintű (**OSTICKETWEB** és **OSTICKETMYSQL**).
+    - A virtuális gépek futnak, Ubuntu Linux Server 16.04-LTS.
+    - **OSTICKETWEB** fut, Apache-2 és a PHP 7.0-ban.
+    - **OSTICKETMYSQL** MySQL 5.7.22 fut-e.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Íme, mi Contoso (és) van szüksége az értékelés:
+A Contoso és más felhasználók az értékelés a következő előfeltételeknek kell megfelelnie:
 
-- Tulajdonosi vagy közreműködői hozzáférés az Azure-előfizetést, vagy az Azure-előfizetéshez egy erőforráscsoportban.
-- Egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú helyszíni vCenter-kiszolgáló.
-- Egy csak olvasható fiók a vCenter-kiszolgálón, vagy a szükséges jogosultság egy ilyen fiók létrehozásához.
-- Jogosultság egy virtuális gép létrehozására a vCenter-kiszolgálón egy .OVA-sablon használatával.
-- Legalább egy 5.0-s vagy újabb verziójú ESXi-gazdagép.
+- Tulajdonosi vagy közreműködői jogosultságot az Azure-előfizetést, vagy egy erőforráscsoport, az Azure-előfizetésében.
+- A helyszíni vCenter 6.5-ös, 6.0 vagy 5.5-ös verziót futtató kiszolgálópéldány.
+- Egy csak olvasható fiókot vCenter-kiszolgáló, vagy hozzon létre egyet engedélyekkel.
+- Engedélyek virtuális gép létrehozása a vCenter Server-példányon egy .ova-sablon használatával.
+- Legalább egy ESXi-gazdagép 5.0-s vagy újabb verziót futtat.
 - Legalább két helyszíni VMware virtuális gép, amelyek közül az egyik egy SQL Server-adatbázist futtat.
 - Engedélyek az Azure Migrate-ügynökök telepítéséhez minden virtuális gépen.
-- A virtuális gépeknek közvetlen internetkapcsolattal kell rendelkezniük.
-        - Az internetes hozzáférést korlátozhatja [a szükséges URL-címekre](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).
-        -Ha gépek, amelyeken nincs internetkapcsolat a [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) kell őket telepíteni.
+- A virtuális gépeknek közvetlen internetkapcsolattal kell rendelkezniük.  
+        - Az internetes hozzáférést korlátozhatja [a szükséges URL-címekre](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
+        – Ha a virtuális gépek nem rendelkezik internetkapcsolattal, az Azure Log Analytics [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) telepíteni kell őket.
 - Az SQL Server-példányt futtató virtuális gép teljes tartományneve az adatbázis-értékeléshez.
-- Az SQL Server virtuális gépen futó Windows tűzfalnak engedélyeznie kell a külső kapcsolatokat a 1433-as (alapértelmezett) TCP-porton, hogy a DMA csatlakozni tudjon.
-
+- Az SQL Server virtuális gépen futó Windows tűzfalnak engedélyeznie kell a külső kapcsolatokat a 1433-as (alapértelmezett) TCP-porton. A telepítő lehetővé teszi a Data Migration Assistant való csatlakozáshoz.
 
 ## <a name="assessment-overview"></a>– Áttekintés
 
-Az alábbiakban hogyan Contoso fogja az értékelés tennie:
-
+Itt látható, hogyan hajtja végre a Contoso az értékelés:
 
 > [!div class="checklist"]
-> * **1. lépés: Töltse le és telepítse a DMA**: DMA előkészítése a helyszíni SQL Server-adatbázis értékelésére.
-> * **2. lépés: Az adatbázist a DMA értékeli**: az adatbázis-kiértékelés futtatása és elemzése.
-> * **3. lépés: Felkészülés a virtuális gépek az Azure Migrate**: állítsa be a helyszíni fiókok és értékelésére VMware beállításait.
-> * **4. lépés: Az Azure Migrate a helyszíni virtuális gépek felderítése**: egy Azure Migrate gyűjtő virtuális gép létrehozása. Ezután, futtassa a gyűjtő virtuális gépek felderítéséhez az értékeléshez.
-> * **5. lépés: Felkészülés a függőségelemzésre az Azure Migrate**: a virtuális gépek telepítése az Azure Migrate-ügynökök, hogy a virtuális gépek közötti függőségi leképezés is megtekinthetik.
-> * **6. lépés: A virtuális gépek, az Azure Migrate értékelése**: Ellenőrizze a függőségeket, a virtuális gépek csoportosítása és az értékelés futtatása. Az értékelés után készen áll, akkor a migrálás előkészítése elemezhetők.
+> * **1. lépés: Töltse le és telepítse a Data Migration Assistant**: Contoso Data Migration Assistant előkészíti a helyszíni SQL Server-adatbázis értékelésére.
+> * **2. lépés: Az adatbázis értékelése a Data Migration Assistant**: Contoso fut, és az adatbázis-értékelés elemzi.
+> * **3. lépés: Felkészülés a virtuális gépek Azure Migrate használatával**: Contoso állítja be a helyszíni fiókok és a VMware beállításait módosítja.
+> * **4. lépés: A helyszíni virtuális gépek felderítése az Azure Migrate használatával**: Contoso hoz létre egy Azure Migrate gyűjtő virtuális Gépen. Ezt követően a Contoso a gyűjtő virtuális gépek felderítéséhez értékelés futtatja.
+> * **5. lépés: Felkészülés a függőségelemzésre Azure Migrate használatával**: Contoso a virtuális gépeken, telepíti az Azure Migrate-ügynökök, így a cég számára látható virtuális gépek közötti függőségi leképezés.
+> * **6. lépés: A virtuális gépek értékelése az Azure Migrate használatával**: Contoso ellenőrzi a függőségek, csoportok, a virtuális gépeket, és futtatja az értékelést. Amikor készen áll az értékelés, Contoso elemzi a migrálás előkészítése az értékelést.
 
+## <a name="step-1-download-and-install-data-migration-assistant"></a>1. lépés: Töltse le és telepítse a Data Migration Assistant
 
-## <a name="step-1-download-and-install-the-dma"></a>1. lépés: Töltse le és telepítse a DMA
-
-1. Contoso letölti a DMA a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595).
-    - Az asszisztens, amely képes kapcsolódni az SQL-példány bármely gépen telepíthető. Nem szükséges az SQL Server-gépen futtatnia.
-    - Az SQL Server-gazdagépen, nem futtatható.
-2. Futtatás a letöltött telepítőfájlra (DownloadMigrationAssistant.msi), hogy elindítsa a telepítést.
-3. Az a **Befejezés** lapon válasszon **indítsa el a Microsoft Data Migration Assistant** a varázsló befejezése előtt.
+1. Contoso Data Migration Assistant szolgáltatást a letölti a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595).
+    - Data Migration Assistant telepíthető minden olyan gép, amely képes kapcsolódni az SQL Server-példányt. Contoso nem szükséges az SQL Server-gépen futtatnia.
+    - Az SQL Server-gazdagépen Data Migration Assistant nem futtatható.
+2. Contoso fut, a letöltött telepítőfájlra (DownloadMigrationAssistant.msi) a telepítés megkezdéséhez.
+3. Az a **Befejezés** lapon, a Contoso kiválasztja **indítsa el a Microsoft Data Migration Assistant** a varázsló befejezése előtt.
 
 ## <a name="step-2-run-and-analyze-the-database-assessment-for-smarthotel"></a>2. lépés: Futtassa, és a SmartHotel az adatbázis-értékelés elemzése
 
-Most már a Contoso értékelését azok a helyszíni SQL Server SmartHotel alkalmazás futtatható.
+Most Contoso futtathatja a helyszíni SQL Server-adatbázis SmartHotel alkalmazás értékelését.
 
-1. A Database Migration Assistant, a kattintson **új**válassza **Assessment**, és nevezze el az értékelés project - **SmartHotel**.
-2. Akkor válassza ki a **forráskiszolgáló típusa** , **SQL Server Azure virtuális gépeken**.
+1. Data Migration Assistant, a Contoso kiválasztja **új** > **értékelés**, és ezután megadja az értékelés a projekt nevét (**SmartHotel**).
+2. A **forráskiszolgáló típusa**, Contoso kiválasztja **SQL Server Azure virtuális gépeken**.
 
-    ![Forrás kiválasztása](./media/contoso-migration-assessment/dma-assessment-1.png)
+    ![Data Migration Assistant – forrás kiválasztása](./media/contoso-migration-assessment/dma-assessment-1.png)
 
     > [!NOTE]
-      A DMA jelenleg nem támogatja a felügyelt SQL-példányokra való migrálások értékelését. Áthidaló megoldásként Contoso használ az SQL Server Azure virtuális gépen feltételezett célként az értékelés.
+      Jelenleg Data Migration Assistant nem támogatja a felmérés az Azure SQL Database felügyelt példányába történő áttelepítéséhez. Áthidaló megoldásként Contoso az SQL Server-beli virtuális gépen feltételezett célként az értékelés.
 
-3. A **cél verziójának kiválasztása**, azok az SQL Server 2017-ben válassza ki a célverzió. Válassza ezt, mert a felügyelt SQL-példány által használt verziója van szükségük.
-4. Kompatibilitási és az új funkciók kapcsolatos információk felderítésére válassza ki:
-    - **Kompatibilitási problémák** vegye figyelembe, amely meghiúsulhat a migrálás, vagy egy kisebb beállítások áttelepítése előtt igénylő módosításokat. Szinkronban tartja szerez tudomást jelenleg használatban lévő szolgáltatások, már elavult. A problémák kompatibilitási szint szerint vannak rendezve.
-    - **Új szolgáltatásokra vonatkozó javaslat** megjegyzések az áttelepítés után az adatbázis használható SQL Server célplatformon új funkciói. Ezek teljesítmény, biztonság és tárterület alapján vannak rendszerezve.
+3. A **cél verziójának kiválasztása**, Contoso az SQL Server 2017-ben a célverzió, választja ki. Ezt a verziót választja, a verziót, amelyet az SQL Database felügyelt példányát, mert a Contoso cégnek szüksége van.
+4. Contoso lehetőséget választja, jelentések, tudjon meg többet a kompatibilitási és az új funkciók segítik:
+    - **Kompatibilitási problémák** vegye figyelembe, amely meghiúsulhat a migrálás, vagy egy kisebb beállítások áttelepítése előtt igénylő módosításokat. Ez a jelentés megtartja a Contoso szerez tudomást bármely elavult funkciók jelenleg használatban van. A problémák kompatibilitási szint szerint vannak rendezve.
+    - **Új szolgáltatásokra vonatkozó javaslat** megjegyzések az áttelepítés után az adatbázis használható SQL Server célplatformon új funkciói. Új szolgáltatási javaslatok a pontok alapján vannak rendezve **teljesítmény**, **biztonsági**, és **tárolási**.
 
-    ![Cél kiválasztása](./media/contoso-migration-assessment/dma-assessment-2.png)
+    ![Data Migration Assistant - kompatibilitási problémák és az új funkciók](./media/contoso-migration-assessment/dma-assessment-2.png)
 
-2. A **Kapcsolódás kiszolgálóhoz**, akkor adja meg a virtuális gép nevét az adatbázis és a hitelesítő adatokkal futtatja az eléréséhez. Szükségük van ahhoz, hogy **megbízható kiszolgálói tanúsítvány** , hogy az SQL Server is kapnak. Ezután kattintanak **Connect**.
+2. A **Kapcsolódás kiszolgálóhoz**, Contoso beírja a nevét, a virtuális gép, amelyen fut az adatbázis és a hozzáférési hitelesítő adatokat. Contoso kiválasztja **megbízható kiszolgálói tanúsítvány** , hogy a virtuális gép hozzáférhet az SQL Server. Ezután kiválasztja a Contoso **Connect**.
 
-    ![Cél kiválasztása](./media/contoso-migration-assessment/dma-assessment-3.png)
+    ![Data Migration Assistant – Csatlakozás kiszolgálóhoz](./media/contoso-migration-assessment/dma-assessment-3.png)
 
-3. A **forrás hozzáadása**, adnak hozzá az adatbázis felmérése, és kattintson a kívánt **tovább** és a felmérés elindításához.
+3. A **forrás hozzáadása**, Contoso ad hozzá, az adatbázis szeretné annak ellenőrzéséhez, és ezután kiválasztja **tovább** és a felmérés elindításához.
 4. Az értékelés jön létre.
 
-    ![Értékelés létrehozása](./media/contoso-migration-assessment/dma-assessment-4.png)
+    ![Data Migration Assistant - értékelés létrehozása](./media/contoso-migration-assessment/dma-assessment-4.png)
 
-5. A **felülvizsgálati eredmények**, az értékelések eredményeinek megjelenik.
-
+5. A **felülvizsgálati eredmények**, Contoso megtekinti az értékelések eredményeinek.
 
 ### <a name="analyze-the-database-assessment"></a>Az adatbázis-értékelés elemzése
 
-Eredmények jelennek meg, amint azok elérhetők. Ha ezek a problémák megoldása gombra kell kattintani **indítsa újra a felmérés** kattintva futtassa újra az értékelést.
+Eredmények jelennek meg, amint azok elérhetők. Ha Contoso hibákat javít, akkor válasszon **értékelés indítsa újra a** kattintva futtassa újra az értékelést.
 
-1. Az a **kompatibilitási problémák** jelentésben, ellenőrizze az egyes kompatibilitási szinten problémákat. A kompatibilitási szintek a következőképpen feleltethetők meg az SQL Server-verzióknak:
+1. Az a **kompatibilitási problémák** jelentésében a Contoso ellenőrzi az esetleges problémákat az egyes kompatibilitási szinten. A kompatibilitási szintek a következőképpen feleltethetők meg az SQL Server-verzióknak:
 
     - 100: SQL Server 2008/Azure SQL Database
     - 110: SQL Server 2012/Azure SQL Database
@@ -204,357 +190,342 @@ Eredmények jelennek meg, amint azok elérhetők. Ha ezek a problémák megoldá
     - 130: SQL Server 2016/Azure SQL Database
     - 140: SQL Server 2017/Azure SQL Database
 
-    ![Kompatibilitási problémák](./media/contoso-migration-assessment/dma-assessment-5.png)
+    ![Data Migration Assistant - kompatibilitási problémák jelentés](./media/contoso-migration-assessment/dma-assessment-5.png)
 
-2. Az a **Szolgáltatásjavaslatok** jelentésében a Contoso megtekintheti a teljesítmény, biztonság és tárolási szolgáltatások, amelyek az értékelés szerint az áttelepítés után. Számos különböző funkció használata akkor javasolt, beleértve az In-Memory OLTP és Oszloptár, Stretch Database, Always Encrypted, a dinamikus Adatmaszkolás és transzparens adattitkosítási (TDE).
+2. Az a **Szolgáltatásjavaslatok** jelentésében a Contoso megtekinti a teljesítmény, biztonság és tárolási szolgáltatások, amelyek az értékelés szerint az áttelepítés után. Számos különböző funkció használata akkor javasolt, többek között a In-Memory OLTP, az oszlopcentrikus indexek, Stretch Database, Always Encrypted, a dinamikus adatmaszkolás és transzparens adattitkosítás.
 
-    ![Szolgáltatási javaslatok](./media/contoso-migration-assessment/dma-assessment-6.png)
+    ![Data Migration Assistant – a szolgáltatás javaslatokat tartalmazó jelentés](./media/contoso-migration-assessment/dma-assessment-6.png)
 
     > [!NOTE]
-    > Azt javasoljuk, hogy Contoso [lehetővé teszi a TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) az összes SQL Server adatbázisok, és ez fontos még több felhőbeli adatbázisok esetén. TDE csak engedélyezni kell az áttelepítés után. Ha TDE már engedélyezve van, szüksége lesz a tanúsítvánnyal vagy aszimmetrikus kulccsal áthelyezése a célkiszolgáló a master adatbázishoz. [További információk](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
+    > Contoso kell [transzparens adattitkosítás engedélyezése](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) minden SQL Server-adatbázisok. Ez akkor is kritikus fontosságú, ha egy adatbázist, amikor azt már a helyszínen üzemeltetett, mint a felhőben van. Transzparens adattitkosítás engedélyezni kell a csak a migrálás után. Transzparens adattitkosítás már engedélyezve van, ha a Contoso át kell helyeznie a tanúsítvánnyal vagy aszimmetrikus kulccsal a célkiszolgáló a master adatbázishoz. Ismerje meg, hogyan [transzparens adatok titkosítás által védett adatbázis áthelyezése egy másik SQL Server-példány](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
 
-2. Exportálhatja az értékelés JSON vagy CSV-formátumban.
+2. Contoso az értékelés JSON vagy CSV formátumban is exportálhatja.
 
-Vegye figyelembe, hogy ha egy nagyobb méretezés értékelés is:
+> [!NOTE]
+> Nagy méretű értékelések:
+> - Egyidejűleg futtathatók több értékelést, és az értékelések állapotát megtekintheti a a **összes értékelés** lapot.
+> - Értékelések egyesíthetők egy [SQL Server-adatbázis](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database).
+> - Értékelések egyesíthetők egy [Power BI-jelentés](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017).
 
-- Egyidejűleg futtathatók több értékelést, és az értékelések állapotának megtekintéséhez nyissa meg a **összes értékelés** lapot.
-- [SQL Server-adatbázis értékelések egyesíthetők](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database).
-- [A Power bi-jelentés értékelések egyesíthetők](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017).
+## <a name="step-3-prepare-for-vm-assessment-by-using-azure-migrate"></a>3. lépés: Felkészülés a virtuális gépek Azure Migrate használatával
 
-
-## <a name="step-3-prepare-for-vm-assessment-with-azure-migrate"></a>3. lépés: Felkészülés a virtuális gépek az Azure Migrate
-
-Contoso van szüksége, hozzon létre egy VMware-fiókot, amelynek használatával az Azure Migrate automatikusan értékelése a virtuális gépek felderítéséhez, a virtuális gép létrehozásához szükséges engedélyek ellenőrzése jegyezze fel a portot, amelyet meg kell nyitni, és állítsa be a statisztikai beállítások szintjét.
+Contoso létre kell hoznia egy VMware-fiókot, amellyel az Azure Migrate automatikusan felderíti az virtuális gépek értékelése, ellenőrizze, hozzon létre egy virtuális Gépet, jegyezze fel a portot, amelyet meg kell nyitni, és állítsa be a statisztikai beállítások szintjét.
 
 ### <a name="set-up-a-vmware-account"></a>VMware-fiók beállítása
 
- Virtuális gépek felderítésének van szükség egy csak olvasható fiókra a Vcenterben, az alábbi tulajdonságokkal:
+Virtuális gépek felderítésének egy csak olvasható fiókot vCenter-kiszolgáló, amely a következő tulajdonságokkal rendelkezik a szükséges:
 
-- Felhasználó típusa: Egy legalább olvasási jogosultsággal rendelkező felhasználó.
-- Engedélyek: Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható.
-- Részletek: A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.
-- A hozzáférés korlátozásához rendelje a **Gyermekobjektumba propagálás** objektummal rendelkező **Nincs hozzáférés** szerepkört a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).
+- **Felhasználó típusa**: egy legalább olvasási jogosultsággal rendelkező felhasználó.
+- **Engedélyek**: az Adatközpont-objektum, válassza ki a **propagálása az gyermekobjektum** jelölőnégyzetet. A **szerepkör**válassza **csak olvasható**.
+- **Részletek**: A felhasználó hozzáférést az adatközpontban lévő összes objektumra az adatközpontszinten hozzárendelve.
+- Hozzáférés korlátozásához rendelje a **nincs hozzáférés** szerepkört a **Gyermekobjektumba** objektum a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).
 
 ### <a name="verify-permissions-to-create-a-vm"></a>A virtuális gép létrehozásához szükséges engedélyek ellenőrzése
 
-Contoso ellenőrzi, hogy jogosult a virtuális gép létrehozása a fájl importálásával. OVA formátumot. [További információk](https://kb.vmware.com/s/article/1023189?other.KM_Utility.getArticleLanguage=1&r=2&other.KM_Utility.getArticleData=1&other.KM_Utility.getArticle=1&ui-comm-runtime-components-aura-components-siteforce-qb.Quarterback.validateRoute=1&other.KM_Utility.getGUser=1).
+Contoso ellenőrzi, hogy rendelkezik-e virtuális gép létrehozása egy .ova formátumú fájl importálásával. Ismerje meg, hogyan [hozzon létre és rendelhet egy szerepkört jogosultságokkal](https://kb.vmware.com/s/article/1023189?other.KM_Utility.getArticleLanguage=1&r=2&other.KM_Utility.getArticleData=1&other.KM_Utility.getArticle=1&ui-comm-runtime-components-aura-components-siteforce-qb.Quarterback.validateRoute=1&other.KM_Utility.getGUser=1).
 
 ### <a name="verify-ports"></a>Portok ellenőrzése
 
-A Contoso értékelés függőségi leképezés használ. Ezt a szolgáltatást telepítenie kell egy ügynököt az értékelni kívánt virtuális gépeket. Az ügynök kell lennie, hogy csatlakozni tudjon az Azure-hoz a 443-as TCP-port az egyes virtuális Gépeken. [További információ](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid) a kapcsolódási követelményekről.
-
+A Contoso értékelés függőségi leképezés használ. Függőségi leképezés kell egy ügynököt telepíteni a virtuális gépek, amelynek megfelelését. Az ügynök kell lennie, hogy csatlakozni tudjon az Azure-hoz a 443-as TCP-port az egyes virtuális Gépeken. Ismerje meg [kapcsolati követelmények](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid).
 
 ### <a name="set-statistics-settings"></a>Statisztikai beállítások megadása
 
-Mielőtt azok az üzembe helyezés, a Contoso be kell állítania a vCenter Server statisztikai beállításait a 3. szintre. Vegye figyelembe:
+Contoso az üzembe helyezés megkezdése előtt, a vCenter Server statisztikai beállításait a 3. szintre kell beállítania. 
 
-- A szint beállítása után várjon legalább egy napot az értékelés futtatása előtt kell. Máskülönben előfordulhat, hogy az értékelés nem a vártnak megfelelően fog működni.
-- Ha a szint nagyobb mint 3, az értékelés működik, de:
-    - A rendszer nem gyűjti majd a lemezek és a hálózat teljesítményadatait.
-    - A tárolás tekintetében az Azure Migrate egy standard lemez létrehozását javasolja az Azure-ban, amelynek a mérete megegyezik a helyszíni lemezével.
-    - A hálózatkezelés tekintetében a rendszer azt javasolja, hogy minden helyszíni hálózati adapterhez hozzon létre egy Azure-beli hálózati adaptert.
-    - A számítási kapacitás tekintetében az Azure Migrate áttekinti a VM-magokat és a memória méretét, és egy azonos konfigurációjú Azure-beli virtuális gép létrehozását javasolja. Ha több lehetséges Azure-beli virtuálisgép-méret létezik, a rendszer a legalacsonyabb költségűt ajánlja.
-- [További információ](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing) a 3. szintű méretezésről.
+> [!NOTE]
+> - A szint beállítása után Contoso kell legalább egy napot vár az értékelés futtatása előtt. Ellenkező esetben az értékelés esetleg nem működnek megfelelően.
+> - Ha a szint nagyobb mint 3, az értékelés működik, de:
+>    - Lemezek és a hálózat teljesítményadatai nem lesznek gyűjtve.
+>    - A tárolás tekintetében az Azure Migrate egy standard lemez létrehozását javasolja az Azure-ban, amelynek a mérete megegyezik a helyszíni lemezével.
+>    - Az Azure-ban minden helyszíni hálózati adapterhez, a hálózat egy hálózati adapter használata javasolt.
+>    - A számítási kapacitás az Azure Migrate a VM-magokat és a memória méretét, és azonos konfigurációjú Azure virtuális Gépeken javasolja. Ha több lehetséges Azure-beli virtuálisgép-méret létezik, a rendszer a legalacsonyabb költségűt ajánlja.
+> - Méretezés a 3. szintre használatával kapcsolatos további információkért lásd: [méretezési](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing).
 
-Ezek a szint a következő megadásához:
+A szint beállítása:
 
-1. A vSphere webes ügyfélben akkor nyissa meg a vCenter server-példányt.
-2. A **kezelés** > **beállítások** > **általános**, kattintanak **szerkesztése**.
-3. A **statisztika**, azok értékre a statisztikai szint beállítását **3. szint**.
+1. A vSphere webes ügyfélben, a Contoso megnyílik a vCenter Server-példányt.
+2. Contoso kiválasztja **kezelés** > **beállítások** > **általános** > **szerkesztése**.
+3. A **statisztika**, Contoso állítja be a statisztikai szint beállítását **3. szint**.
 
-    ![vCenter statisztikai szintje](./media/contoso-migration-assessment/vcenter-statistics-level.png)
-
-
+    ![vCenter Server statisztikájának szintjét](./media/contoso-migration-assessment/vcenter-statistics-level.png)
 
 ## <a name="step-4-discover-vms"></a>4. lépés: Virtuális gépek felderítése
 
-Virtuális gépek felderítéséhez, a Contoso Azure Migrate-projektet hoz létre. Töltse le és telepítse a gyűjtő virtuális gép, és futtassa a gyűjtő a helyszíni virtuális gépek felderítéséhez.
+Virtuális gépek felderítéséhez, a Contoso Azure Migrate-projektet hoz létre. Contoso letölti és beállítja a gyűjtő virtuális Gépen. Ezt követően a Contoso futtatja a gyűjtő a helyszíni virtuális gépek felderítéséhez.
 
 ### <a name="create-a-project"></a>Projekt létrehozása
 
-1. Az a [az Azure portal](https://portal.azure.com), keresnek a **Azure Migrate**, és hozzon létre egy projektet (ContosoMigration).
-2. Adja meg a projekt nevét, az Azure-előfizetéssel, és a egy új Azure erőforráscsoport létrehozása **ContosoFailoverRG**. Vegye figyelembe:
+1. Az a [az Azure portal](https://portal.azure.com), Contoso keres **Azure Migrate**. Ezt követően a Contoso egy projektet hoz létre.
+2. Contoso adja meg a projekt nevét (**ContosoMigration**) és az Azure-előfizetést. Létrehoz egy új Azure-erőforráscsoportot (**ContosoFailoverRG**). 
+    > [!NOTE]
+    > - Azure Migrate-projektet csak az az USA nyugati középső Régiója és USA keleti régiójában hozhat létre.
+    > - Bármilyen célhelyre tervezhet migrálást.
+    > - A projekt helye csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál.
 
-    - Azure Migrate-projektet csak az USA középnyugati régiójában és keleti régiójában lehet létrehozni.
-    - Bármilyen célhelyre tervezhet migrálást.
-    - A projekt helye csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál.
-
-    ![Azure Migrate](./media/contoso-migration-assessment/project-1.png)
-
+    ![Az Azure Migrate - migrálási projekt létrehozása](./media/contoso-migration-assessment/project-1.png)
 
 ### <a name="download-the-collector-appliance"></a>A gyűjtőberendezés letöltése
 
-Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtuális gépet. A virtuális gép felderíti a helyszíni VMware virtuális gépeket, és az azokkal kapcsolatos metaadatokat továbbítja az Azure Migrate szolgáltatásnak. A gyűjtőberendezés beállításához, a Contoso letölti egy. OVA sablont, és importálja azt a virtuális gép létrehozása a helyszíni vCenter-kiszolgálóhoz.
+Az Azure Migrate létrehoz egy helyszíni virtuális gép, más néven a *gyűjtőberendezés*. A virtuális gép felderíti a helyszíni VMware virtuális gépeket, és elküldi metaadatait, a virtuális gépek az Azure Migrate szolgáltatás. A gyűjtőberendezés beállításához Contoso letölti az OVA sablont, és importálja a helyszíni vCenter Server-példány a virtuális gép létrehozásához.
 
-1. Az Azure Migrate-projektben > **bevezetés** > **felderítés és értékelés** > **gépek felderítése**, letöltik a. Sablon OVA-fájl.
-2. Azok az másolja a projekt Azonosítóját és kulcsát. A gyűjtő konfigurálásához szükséges.
+1. Az Azure Migrate-projektben Contoso kiválasztja **bevezetés** > **felderítés és értékelés** > **gépek felderítése**. Contoso letölti az OVA sablon fájlt.
+2. Contoso másolja a projekt Azonosítóját és kulcsát. A projekt és Azonosítóját a gyűjtő konfigurálásához szükségesek.
 
-    ![Az .ova-fájl letöltése](./media/contoso-migration-assessment/download-ova.png)
+    ![Az Azure Migrate - az OVA-fájl letöltése](./media/contoso-migration-assessment/download-ova.png)
 
 ### <a name="verify-the-collector-appliance"></a>A gyűjtőberendezés ellenőrzése
 
-A virtuális gép üzembe helyezése előtt Contoso ellenőrzi, hogy a. Fájl (OVA) biztonságos.
+A virtuális gép üzembe helyezése előtt Contoso ellenőrzi, hogy az OVA-fájl biztonságos:
 
-1. A számítógépen, amelyre a fájlt letöltötte azokat egy rendszergazdai parancsablakot nyissa meg.
-2. A következő parancsot az OVA létrehozni a kivonatot futnak:
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. A létrehozott kivonatnak egyeznie kell az ezeket a beállításokat (1.0.9.12 verzió)
+1. A számítógépen, amelyre letöltötte a fájlt a Contoso megnyílik egy rendszergazdai parancsablakot.
+2. Contoso futtatja a következő parancsot az OVA-fájl kivonatának:
 
-**Algoritmus** | **Kivonat értéke**
---- | ---
-MD5 | d0363e5d1b377a8eb08843cf034ac28a
-SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
-SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
+    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    
+    **Példa** 
+    
+    ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+3. A létrehozott kivonatnak egyeznie kell az ezeket a beállításokat (1.0.9.12 verzió):
+
+    Algoritmus | Kivonat értéke
+    --- | ---
+    MD5 | d0363e5d1b377a8eb08843cf034ac28a
+    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
 ### <a name="create-the-collector-appliance"></a>A gyűjtőberendezés létrehozása
 
-Most Contoso importálni a letöltött fájlt a vCenter-kiszolgáló és a konfigurációs kiszolgáló virtuális gép üzembe helyezéséhez.
+Most Contoso importálni a letöltött fájlt a vCenter Server-példány és a konfigurációs kiszolgáló virtuális gép üzembe helyezéséhez:
 
-1. A vSphere Client-konzolon kattintson **fájl** > **OVF-sablon telepítése**.
+1. A vSphere Client-konzolon, a Contoso kiválasztja **fájl** > **OVF-sablon telepítése**.
 
-    ![Az OVF telepítése](./media/contoso-migration-assessment/vcenter-wizard.png)
+    ![vSphere webes ügyfélben - telepítése OVF-sablon](./media/contoso-migration-assessment/vcenter-wizard.png)
 
-2. Az OVF-sablon üzembe helyezése varázsló > **forrás**, akkor adja meg a helyét a. OVA-fájl.
-3. A **név és hely**, akkor adja meg egy rövid nevet a gyűjtő virtuális Gépen, és a készlet helyét, amelyben a virtuális gép fog üzemeltetni. Akkor is megadhatja a gazdagép vagy fürt, amelyen a gyűjtő berendezés futni fog.
-5. A **tárolási**, akkor adja meg a tárolási hely és a **lemezformátum**, és hogyan szeretne kiosztani a tárhelyet.
-7. A **Hálózatleképezés**, akkor adja meg a hálózat, amelyhez a gyűjtő virtuális gép csatlakozni fog. A hálózatnak internetkapcsolattal kell rendelkeznie a metaadatok az Azure-ba küldéséhez.
-8. Tekintse át a beállításokat, és válassza ki **üzembe helyezés után bekapcsolási**> **Befejezés**. A berendezés létrehozása után megjelenik egy üzenet, amely visszaigazolja a sikeres létrehozást.
+2. Az OVF sablon központi telepítése varázsló Contoso kiválasztja **forrás**, és az OVA-fájl helyét, majd adja meg.
+3. A **név és hely**, Contoso a gyűjtő virtuális Gépnek megjelenített nevét adja meg. Ezt követően kiválasztva a készlet hely, ahol a virtuális gép üzemeltetni szeretné. Contoso adja meg azt is, a gazdagép vagy -fürt futtatására a gyűjtőberendezés.
+4. A **tárolási**, Contoso tárolási helyét adja meg. A **lemezformátum**, Contoso választja ki, hogyan szeretné kiosztani a tárhelyet a.
+5. A **Hálózatleképezés**, Contoso adja meg, amelyben a gyűjtő virtuális gép kapcsolódni a hálózathoz. A hálózati metaadatokat küldhet az Azure-bA internetkapcsolattal kell rendelkeznie.
+6. Contoso ellenőrzi a beállításokat, majd ezután kiválasztja az **üzembe helyezés után bekapcsolási** > **Befejezés**. Ha a készülék jön létre, megjelenik egy üzenet, amely megerősíti, hogy a művelet sikeresen befejeződött.
 
 ### <a name="run-the-collector-to-discover-vms"></a>A gyűjtő futtatása a virtuális gépek felderítéséhez
 
-Most, futtassa a gyűjtő virtuális gépek felderítéséhez. Vegye figyelembe, hogy az adatgyűjtő jelenleg csak támogatja "Angol (Egyesült Államok)", az operációs rendszer és az adatgyűjtő felület nyelveként.
+Most Contoso fog futni, a gyűjtő virtuális gépek felderítéséhez. Jelenleg az adatgyűjtő jelenleg csak támogatja **angol (Egyesült Államok)** az operációs rendszer nyelvét és az adatgyűjtő felület nyelveként.
 
-1. A vSphere Client-konzol > **konzol megnyitása**, nyelvi, időzóna és a gyűjtő virtuális gép jelszóbeállításait megadása.
-2. Az asztalon kattintson a **gyűjtő futtatása** parancsikon.
+1. A vSphere Client-konzolon, a Contoso kiválasztja **konzol megnyitása**. Contoso Itt adhatja meg, a nyelv, időzóna és a gyűjtő virtuális gép jelszóbeállításait.
+2. Az asztalon, a Contoso kiválasztja a **gyűjtő futtatása** parancsikon.
 
-    ![Gyűjtő parancsikonja](./media/contoso-migration-assessment/collector-shortcut.png)
+    ![a vSphere Client-konzolon - gyűjtő parancsikonja](./media/contoso-migration-assessment/collector-shortcut.png)
 
-4. Az Azure Migrate Collector > **Előfeltételek beállítása**, fogadja el a licencfeltételeket, és a külső adatokat olvasni.
-5. A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel, hogy az idő szinkronizálva van-e, és, hogy fut-e a gyűjtőszolgáltatás (Ez alapértelmezés szerint telepítve van a virtuális gépen). VMWare powercli-t is telepíti.
+3. Az Azure Migrate Collector Contoso választja **Előfeltételek beállítása**. A Contoso elfogadja a licencfeltételeket, és a külső eszközadatokat olvas be.
+4. A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel, hogy az idő szinkronizálva van-e, és, hogy fut-e a gyűjtőszolgáltatás. (A gyűjtő szolgáltatás alapértelmezés szerint telepítve van a virtuális gépen.) Contoso VMware powercli-t is telepíti.
 
     > [!NOTE]
-    > Feltételezzük, hogy a virtuális gép közvetlen, proxy nélkül internet-hozzáféréssel rendelkezik.
+    > Azt feltételezzük, hogy a virtuális gép rendelkezik-e közvetlen internet-hozzáférés proxy használata nélkül.
 
-    ![Előfeltételek ellenőrzése](./media/contoso-migration-assessment/collector-verify-prereqs.png)
+    ![Az Azure Migrate Collector – Előfeltételek ellenőrzése](./media/contoso-migration-assessment/collector-verify-prereqs.png)
 
+5. A **adja meg a vCenter Server adatait**, a Contoso beírja a nevét (FQDN) vagy a vCenter Server-példány IP-címet, és a csak olvasható hitelesítő adatokat használja a felderítéshez.
+6. Contoso választja ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak virtuális gépek, amelyek a megadott hatókörön belül képes felderíteni. A hatókör egy adott mappájába, az adatközpontban vagy a fürt állítható. A hatókör nem tartalmazhat több mint 1500 virtuális gépet.
 
-5. A **adja meg a vCenter Server adatait**, adja meg a nevét (FQDN) vagy a vCenter-kiszolgáló IP-címét és a csak olvasható hitelesítő adatokat használja a felderítéshez.
-7. Akkor válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1500-nál több virtuális gépet.
+    ![Adja meg a VCenter Server adatait](./media/contoso-migration-assessment/collector-connect-vcenter.png)
 
-    ![Csatlakozás a vCenterhez](./media/contoso-migration-assessment/collector-connect-vcenter.png)
+7. A **adja meg a migrálási projekt**, Contoso belép az Azure Migrate-projekt Azonosítóját és a Portalról másolt kulcsot. A projekt Azonosítóját és kulcsát, Contoso is keresse fel a projekt **áttekintése** lap > **gépek felderítése**.  
 
-6. A **adja meg a migrálási projekt**, adja meg, kattintson az Azure Migrate-projekt Azonosítóját és a Portalról másolt kulcsot. Szerezheti be őket ismét a projekt **áttekintése** lap > **gépek felderítése**.  
+    ![Adja meg a migrálási projektet](./media/contoso-migration-assessment/collector-connect-azure.png)
 
-    ![Csatlakozás az Azure szolgáltatáshoz](./media/contoso-migration-assessment/collector-connect-azure.png)
+8. A **adatgyűjtési folyamat megtekintése**, Contoso felderítési figyelheti, és ellenőrizze, hogy a virtuális gépekről gyűjtött metaadatok hatókörében van. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát.
 
-7. A **adatgyűjtési folyamat megtekintése** Contoso figyelheti a felderítést, és ellenőrizze, hogy a virtuális gépekről gyűjtött metaadatok hatókörében van. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát.
-
-    ![Gyűjtés folyamatban](./media/contoso-migration-assessment/collector-collection-process.png)
-
-
+    ![Adatgyűjtési folyamat megtekintése](./media/contoso-migration-assessment/collector-collection-process.png)
 
 ### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
 
-A gyűjtés befejezése után a Contoso ellenőrzi, hogy a virtuális gépek megjelennek-e a portálon.
+Gyűjtemény befejezését követően a Contoso ellenőrzi, hogy a virtuális gépek megjelennek-e a portálon:
 
-1. Az Azure Migrate-projektben > **kezelés** > **gépek**, akkor ellenőrizze, hogy a felderíteni kívánt virtuális gépek jelennek meg.
+1. Az Azure Migrate-projektben Contoso kiválasztja **kezelés** > **gépek**. Contoso ellenőrzi, hogy láthatók-e a virtuális gépeket szeretné felderíteni.
 
-    ![Felderített gépek](./media/contoso-migration-assessment/discovery-complete.png)
+    ![Az Azure Migrate - felderített gépek](./media/contoso-migration-assessment/discovery-complete.png)
 
-3. Vegye figyelembe, hogy az Azure Migrate-ügynök jelenleg nincs telepítve a gépeken. Contoso cégnek szüksége van, ezek a megtekintéséhez függőségek telepítéséhez.
+2. A gépek jelenleg nem rendelkezik telepített Azure Migrate-ügynökkel. Contoso a függőségek megtekintéséhez ügynököket kell telepítenie.
 
-    ![Felderített gépek](./media/contoso-migration-assessment/machines-no-agent.png)
-
-
+    ![Az Azure Migrate - ügynök telepítése kötelező megadni](./media/contoso-migration-assessment/machines-no-agent.png)
 
 ## <a name="step-5-prepare-for-dependency-analysis"></a>5. lépés: Felkészülés a függőségelemzésre
 
-Contoso elérni kívánt virtuális gépek közötti függőségek megtekintéséhez, töltse le és telepítse ügynökök az alkalmazás virtuális gépeit. Contoso pedig az alkalmazások, Windows és a Linux rendszerű virtuális gépek azért teszi ezt.
+Szeretné elérni, hogy virtuális gépek közötti függőségek megtekintéséhez, Contoso letölti és telepíti az alkalmazást, virtuális gépek ügynökök. Contoso pedig az alkalmazások, mind a Windows és Linux rendszerű virtuális gépek ügynököket telepít.
 
 ### <a name="take-a-snapshot"></a>Pillanatkép készítése
 
-Virtuális gép másolatának vezetnek módosítása, által pillanatképének elkészítése előtt az ügynökök telepítése előtt.
+Tárol egy másolatot a virtuális gépek őket módosítása előtt, a Contoso egy pillanatképet az ügynökök telepítése előtt.
 
 ![Gép pillanatképe](./media/contoso-migration-assessment/snapshot-vm.png)
 
-
 ### <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
 
-1. A a **gépek** lapon, válassza ki a gépet, majd **telepítés szükséges** a a **függőségek** oszlop.
-2. Az a **gépek felderítése** lapon, tegye a következőket:
-    - Töltse le az MMA és a függőségi ügynököt Windows virtuális gépek
-    - Töltse le az MMA és a függőségi ügynököt minden egyes Linux virtuális gép
-3. Most, másolja, a munkaterület Azonosítójára és kulcsára. Van szükségük ezek az MMA telepítése során.
+1. A **gépek**, Contoso választja ki a gépet. Az a **függőségek** oszlop, Contoso kiválasztja **telepítés szükséges**.
+2. Az a **gépek felderítése** Contoso panelen:
+    - Letölti a Microsoft Monitoring Agent (MMA) és a függőségi ügynök minden Windows virtuális gép számára.
+    - Letölti az MMA és a függőségi ügynök minden egyes Linux virtuális gép számára.
+3. Contoso másolja át a munkaterület Azonosítójára és kulcsára. Contoso van szüksége a munkaterület Azonosítóját és kulcsát, amikor telepíti az MMA.
 
     ![Ügynök letöltése](./media/contoso-migration-assessment/download-agents.png)
 
 ### <a name="install-the-agents-on-windows-vms"></a>Az ügynökök telepítése Windows virtuális gépeken
 
-A telepítés az egyes virtuális Gépeken futnak.
+Contoso futtatja a telepítést az egyes virtuális Gépeken.
 
 #### <a name="install-the-mma-on-windows-vms"></a>Windows virtuális gépeken az MMA telepítése
 
-1. Ezek kattintson duplán a letöltött ügynökre.
-2. A **célmappa**, azok megtartani az alapértelmezett telepítési mappa > **tovább**.
-2. A **ügynök telepítésének beállításai**, kiválasztják **az ügynök csatlakoztatása az Azure Log Analyticshez** > **tovább**.
+1. Contoso mértékeredményeket a letöltött ügynökre.
+2. A **célmappa**, Contoso megtartja az alapértelmezett telepítési mappát, majd ezután kiválasztja az **tovább**.
+3. A **ügynök telepítésének beállításai**, Contoso kiválasztja **az ügynök csatlakoztatása az Azure Log Analyticshez** > **tovább**.
 
-    ![Az MMA telepítése](./media/contoso-migration-assessment/mma-install.png)
+    ![A Microsoft Monitoring Agent telepítése – ügynök telepítésének beállításai](./media/contoso-migration-assessment/mma-install.png)
 
-5. A **Azure Log Analytics**, akkor illessze be a munkaterület Azonosítóját és kulcsát, a portálról kimásolt.
+4. A **Azure Log Analytics**, Contoso illeszti be a munkaterület-Azonosítót és a kulcsot, akkor a másolja a portálról.
 
-    ![Az MMA telepítése](./media/contoso-migration-assessment/mma-install2.png)
+    ![A Microsoft Monitoring Agent telepítése – az Azure Log Analytics](./media/contoso-migration-assessment/mma-install2.png)
 
-6. A **telepítésre kész**, akkor most már telepítheti az MMA.
+5. A **telepítésre kész**, Contoso telepíti az MMA.
 
 #### <a name="install-the-dependency-agent-on-windows-vms"></a>Telepítse a függőségi ügynököt Windows virtuális gépek
 
-1. Ezek kattintson duplán a letöltött függőségi ügynökre.
-2. Fogadja el a licencfeltételeket, és várjon, amíg a telepítés befejeződik.
+1. Contoso mértékeredményeket a letöltött függőségi ügynökre.
+2. A Contoso fogadja el a licencfeltételeket, és megvárja, amíg a telepítés befejeződik.
 
-    ![Függőségi ügynök](./media/contoso-migration-assessment/dependency-agent.png)
-
+    ![Függőségi ügynök beállítása – telepítés](./media/contoso-migration-assessment/dependency-agent.png)
 
 ### <a name="install-the-agents-on-linux-vms"></a>Az ügynök telepítéséhez a Linux rendszerű virtuális gépek
 
-A telepítés az egyes virtuális Gépeken futnak.
+Contoso futtatja a telepítést az egyes virtuális Gépeken.
 
 #### <a name="install-the-mma-on-linux-vms"></a>Az MMA telepítése Linux rendszerű virtuális gépeken
 
-1. Azok minden virtuális gép használatával telepítse a python-ctypes kódtár: **sudo apt-get paranccsal telepítse a python-ctypeslib**.
-2. A parancs az MMA-ügynök telepítése a legfelső szintű kell futnak.  Válhat a legfelső szintű futtassa a következő parancsot, és adja meg a gyökér szintű jelszó: **sudo -i**.
-3. Most már az MMA-ügynök telepítése.
-    - Helyezze be a parancsot a megfelelő munkaterület Azonosítójára és kulcsára.
+1. Contoso a ctypes Python-kódtár az egyes virtuális Gépeken telepíti a következő paranccsal:
+
+    `sudo apt-get install python-ctypeslib`
+2. Contoso a parancsot az MMA-ügynök telepítéséhez rendszergazdaként kell futtatnia. Legfelső szintű válik, a Contoso futtatja a következő parancsot, és ezután beírja a gyökér szintű jelszó:
+
+    `sudo -i`
+3. Contoso telepíti az MMA:
+    - Contoso kerül, a parancsban a munkaterület Azonosítójára és kulcsára.
     - A 64 bites parancsai.
-    - A **munkaterület-Azonosítót** és **elsődleges kulcs** az OMS-portálon belül található > **beállítások**, a a **csatlakoztatott források** fülre.
-    - Futtassa az alábbi parancsokat az OMS-ügynök letöltése, az ellenőrzőösszegekkel és telepítés/előkészítése az ügynök ellenőrzése.
+    - A munkaterület-Azonosítót és elsődleges kulcsot a Microsoft Operations Management Suite (OMS) portálon találhatók. Válassza ki **beállítások**, majd válassza ki a **csatlakoztatott források** fülre.
+    - Az OMS-ügynök letöltése, a ellenőrzőösszegének ellenőrzése, és telepítse a következő parancsokat, és előkészítheti az ügynököt:
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
     ```
 
-
-
 #### <a name="install-the-dependency-agent-on-linux-vms"></a>A függőségi ügynök telepítése Linux rendszerű virtuális gépeken
 
-Az MMA telepítése után a Contoso telepítheti a függőségi ügynököt a Linuxos virtuális gépeken.
+Az MMA telepítése után a Contoso a függőségi ügynököt telepít a Linux rendszerű virtuális gépeken:
 
-1. A függőségi ügynök Linux rendszerű számítógépek InstallDependencyAgent Linux64.bin, azt a héjparancsfájlt, egy önkicsomagoló bináris segítségével telepítve van. Azok a fájl használatával futtassa sh, vagy adja hozzá végrehajtási engedélyeket magát a fájlt.
+1. A függőségi ügynök Linux-számítógépeken InstallDependencyAgent Linux64.bin, azt a héjparancsfájlt, amely rendelkezik egy önkicsomagoló bináris segítségével telepítve van. Sh használatával, vagy hogy a fájl hozzáadása a Contoso futtatások végrehajtási engedélyeket magát a fájlt.
 
-2. Gyökér szintű a Linux függőségi ügynök telepítése:
+2. Contoso legfelső szintű Linux-függőségi ügynök telepíti:
 
     ```
     wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin && sudo sh InstallDependencyAgent-Linux64.bin -s
     ```
 
-
 ## <a name="step-6-run-and-analyze-the-vm-assessment"></a>6. lépés: Futtassa, és a Virtuálisgép-kiértékelés elemzése
 
-Contoso mostantól ellenőrizze a gépek függőségeit, és hozzon létre egy csoportot. Ezután, futtassa az értékelést a csoport számára.
+Contoso mostantól ellenőrizze a gépek függőségeit, és hozzon létre egy csoportot. Ezután futtatja az értékelést a csoport számára.
 
 ### <a name="verify-dependencies-and-create-a-group"></a>Ellenőrizze a függőségeket, és hozzon létre egy csoportot
 
+1. Annak megállapításához, mely számítógépek elemzéséhez, a Contoso kiválasztja **függőségek megtekintése**.
 
-1. A gépek elemzéséhez, kattintson **függőségek megtekintése**.
-
-    ![Gépek függőségeinek megtekintése](./media/contoso-migration-assessment/view-machine-dependencies.png)
+    ![Az Azure Migrate - gépek függőségeinek megtekintése](./media/contoso-migration-assessment/view-machine-dependencies.png)
 
 2. Az SQLVM esetében a függőségi térkép a következő részleteket tartalmazza:
 
-    - Az SQLVM-en futó, aktív hálózati kapcsolatokkal rendelkező folyamatcsoportok/folyamatok a megadott időszakban (alapértelmezés szerint egy óra)
+    - Folyamat csoportokat vagy folyamatokat, amelyek a megadott időszakban (alapértelmezés szerint egy óra) SQLVM futó aktív hálózati kapcsolatokkal rendelkeznek.
     - Az összes függő gép bejövő (ügyfél) és kimenő (kiszolgálói) TCP-kapcsolatai.
-    - A telepített Azure Migrate-ügynökkel rendelkező függő gépek külön mezőkben jelennek meg
-    - A telepített ügynökkel nem rendelkező gépek esetében a port- és IP-címadatok jelennek meg.
+    - Telepített Azure Migrate-ügynökkel rendelkező függő gépek külön mezőkben jelennek meg.
+    - Gépek, amelyek nem rendelkeznek telepített ügynökök a port és IP-címadatok jelennek meg.
 
-3. A telepített ügynökkel (WEBVM) rendelkező gépek esetében, kattintson a gép mezőjére a további információk, beleértve a teljes tartománynév, az operációs rendszer és a MAC-cím megtekintéséhez.
+3. A telepített ügynökkel (WEBVM) rendelkező gépek esetében a Contoso kiválasztja a gép mezőjére a további információk megtekintéséhez. Az információ tartalmazza a teljes tartománynév, az operációs rendszer és a MAC-cím.
 
-    ![Csoportos függőségek megtekintése](./media/contoso-migration-assessment/sqlvm-dependencies.png)
+    ![Az Azure Migrate - csoportos függőségek megtekintése](./media/contoso-migration-assessment/sqlvm-dependencies.png)
 
-4. Most, válassza ki a virtuális gépeket (SQLVM és WEBVM) a csoportba való felvételéhez.  Azok is használja a CTRL + kattintással jelölje ki a több virtuális gép.
-5. Kattintanak **csoport létrehozása**, és adjon meg egy nevet (smarthotelapp).
+4. Contoso választja ki a virtuális gépeket (SQLVM és WEBVM) a csoportba való felvételéhez. Contoso Ctrl + kattintás használatával több virtuális gép kiválasztása.
+5. Contoso kiválasztja **csoport létrehozása**, és ezután beírja a nevét (**smarthotelapp**).
 
-> [!NOTE]
-    > A függőségek részletesebb megtekintéséhez terjessze ki az időtartományt. Megadhat egy adott időtartamot vagy kezdő és befejező dátumokat is.
-
+    > [!NOTE]
+    > A függőségek részletesebb megtekintéséhez terjessze ki az időtartományt. Válasszon ki egy adott időtartamot, vagy válassza ki a kezdő és záró dátuma.
 
 ### <a name="run-an-assessment"></a>Értékelés futtatása
 
+1. A **csoportok**, Contoso megnyitja a csoport (**smarthotelapp**), majd kiválasztja, és **értékelés létrehozása**.
 
-1. Az a **csoportok** lapon nyissa meg a csoportot (smarthotelapp), és kattintson a **értékelés létrehozása**.
+    ![Az Azure Migrate - értékelés létrehozása](./media/contoso-migration-assessment/run-vm-assessment.png)
 
-    ![Értékelés létrehozása](./media/contoso-migration-assessment/run-vm-assessment.png)
+2. Az értékelés megtekintéséhez Contoso kiválasztja **kezelés** > **értékelések**.
 
-2. Az értékelés a **Kezelés** > **Értékelések** lapon jelenik meg.
-
-Contoso használja az alapértelmezett értékelési beállításokat, de testre is szabhatók. [További információk](how-to-modify-assessment.md).
-
-
+Contoso használja az alapértelmezett értékelési beállításokat, de Ön is [beállítások testre szabása](how-to-modify-assessment.md).
 
 ### <a name="analyze-the-vm-assessment"></a>A virtuálisgép-kiértékelés elemzése
 
-Egy Azure Migrate-értékelések információt kompatibilitásról a helyszíni virtuális gépek az Azure-hoz, javasolt Azure virtuális gép megfelelő méretezéséhez, valamint a becsült havi Azure-költségekről.
+Egy Azure Migrate-értékelések információt az Azure-ral a helyszíni kompatibilitás javasolt Azure virtuális gép megfelelő méretezéséhez, és a becsült havi Azure-költségekről.
 
-![Értékelési jelentés](./media/contoso-migration-assessment/assessment-overview.png)
+![Az Azure Migrate - értékelési jelentés](./media/contoso-migration-assessment/assessment-overview.png)
 
 #### <a name="review-confidence-rating"></a>Megbízhatósági minősítés áttekintése
 
-![Értékelés megjelenítése](./media/contoso-migration-assessment/assessment-display.png)
+![Az Azure Migrate - értékelés megjelenítése](./media/contoso-migration-assessment/assessment-display.png)
 
-Az értékelés kap egy megbízhatósági minősítést amely 1 csillagtól 5 csillagig terjed (1 csillag a legalacsonyabb, 5 csillag a legmagasabb).
-- A megbízhatósági minősítés az értékelések kiszámításához szükséges adatpontok rendelkezésre állása alapján vannak az értékelésekhez rendelve.
+Az értékelés rendelkezik olyan megbízhatósági minősítéssel, amely 1 csillagtól az 5 csillagig terjed (1 csillag a legalacsonyabb és 5 csillag a legmagasabb).
+- A megbízhatósági minősítés az értékelés kiszámításához szükséges adatpontok rendelkezésre állásának alapján van hozzárendelve.
 - A minősítés segít megbecsülni az Azure Migrate által nyújtott méretjavaslatok megbízhatóságát.
-- Megbízhatósági minősítés akkor hasznos, ha végez *teljesítményalapú* , az Azure Migrate lehet, hogy nincs elegendő adatpont ehhez használat a használatalapú méretezéshez. A *helyszíni méretezésnél* a megbízhatósági minősítés mindig 5 csillagos, mert az Azure Migrate rendelkezik a virtuális gép méretezéséhez szükséges összes adatponttal.
+- A megbízhatósági minősítés akkor hasznos, ha végez *teljesítményalapú*. Az Azure Migrate lehet, hogy nincs elegendő adatpont adatponttal a használatalapú méretezéshez. A *helyszíni* osztályozás, a megbízhatósági minősítés mindig 5 csillag, mert az Azure Migrate rendelkezik a virtuális gép méretezéséhez szükséges összes adatponttal.
 - Az elérhető adatpontok százalékától függően van megadva a megbízhatósági minősítés:
 
-   **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
+   Adatpontok rendelkezésre állása | Megbízhatósági minősítés
    --- | ---
    0%–20% | 1 csillag
-   21%–40% | 2 csillag
-   41%–60% | 3 csillag
-   61%–80% | 4 csillag
-   81%–100% | 5 csillag
+   21%-40% | 2 csillag
+   41%-60% | 3 csillag
+   61%-80% | 4 csillag
+   81%-100% | 5 csillag
 
-#### <a name="verify-readiness"></a>Felkészültség ellenőrzése
+#### <a name="verify-azure-readiness"></a>Azure-kompatibilitás ellenőrzése
 
-![Készenléti állapot értékelése](./media/contoso-migration-assessment/azure-readiness.png)  
+![Az Azure Migrate - készenléti állapot értékelése](./media/contoso-migration-assessment/azure-readiness.png)  
 
-Az értékelési jelentés egy táblában összefoglalva jeleníti meg az információkat. Vegye figyelembe, hogy a teljesítményalapú méretezés megjelenítéséhez az Azure Migrate-nek szüksége van a következő adatokra. Ha ezt az információt nem lehet összegyűjteni, az értékelés pontatlan lehet.
+Az értékelési jelentés a táblában az információkat, amelyek összegzése látható. Teljesítményalapú megjelenítéséhez az Azure Migrate kell a következő információkat. Ha az adatokat nem lehet összegyűjteni, értékelés pontatlan lehet.
 
 - A processzor és a memória kihasználtsági adatai.
 - A virtuális géphez csatlakoztatott összes lemez olvasási/írási IOPS-értéke és adatátviteli teljesítménye.
 - A virtuális géphez csatlakoztatott összes hálózati adapter bejövő és kimenő hálózati forgalmának adatai.
 
-
-**Beállítás** | **Jelzés** | **Részletek**
+Beállítás | Jelzése | Részletek
 --- | --- | ---
-**Azure-beli virtuális gép felkészültsége** | Azt jelzi, hogy a virtuális gép készen áll-e a migrálásra | Lehetséges állapotok:</br><br/>- Készen áll az Azure-beli migrálásra<br/><br/>- Feltételekkel kész <br/><br/>- Nem áll készen az Azure-beli migrálásra<br/><br/>- A felkészültség ismeretlen<br/><br/> Ha a virtuális gép nem áll készen, bemutatunk néhány lehetséges javítási intézkedést.
-**Azure-beli virtuális gép mérete** | A készen álló virtuális gépek esetében javaslatot teszünk egy Azure-beli virtuálisgép-méretre. | A méretezési javaslat az értékelési tulajdonságoktól függ:<br/><br/>- Ha teljesítményalapú méretezést használt, a méretezés a virtuális gépek teljesítményelőzményeit veszi figyelembe.<br/><br/>- Ha „helyszíni méretezést” használt, a méretezés a helyszíni virtuális gép méretétől függ, és a kihasználtsági adatokat nem használja fel a rendszer.
-**Ajánlott eszköz** | Mivel az ügynökök a mi gépeinken futnak, az Azure Migrate megvizsgálja a gépen futó folyamatokat, és meghatározza, hogy a gép adatbázisgép-e.
-**Virtuális gép adatai** | A jelentés a helyszíni virtuális gép beállításait mutatja, beleértve az operációs rendszer, a rendszerindítási típus, a lemez és a tárterület adatait.
-
+**Azure-beli virtuális gép felkészültsége** | Azt jelzi, hogy a virtuális gép készen áll az áttelepítéshez. | Lehetséges állapotok:</br><br/>- Készen áll az Azure-beli migrálásra<br/><br/>- Feltételekkel kész <br/><br/>- Nem áll készen az Azure-beli migrálásra<br/><br/>- A felkészültség ismeretlen<br/><br/> Virtuális gép nem áll készen, ha az Azure Migrate látható néhány lehetséges javítási intézkedést.
+**Azure-beli virtuális gép mérete** | A készen álló virtuális gépek az Azure Migrate biztosít egy Azure virtuális gép mérete javaslat. | A méretezési javaslat az értékelési tulajdonságoktól függ:<br/><br/>- Ha teljesítményalapú méretezést használt, a méretezés a virtuális gépek teljesítményelőzményeit veszi figyelembe.<br/><br/>-Ha a használt *helyszíni*, méretezés a helyszíni virtuális gép mérete alapján, és a kihasználtsági adatokat nem használja a rendszer.
+**Ajánlott eszköz** | Azure-beli gépek az ügynökök futnak, mert az Azure Migrate megvizsgálja a gépen futó folyamatokat. Azonosítja a gép adatbázisgép-e.
+**Virtuális gép adatai** | A jelentés a helyszíni virtuális gép, beleértve az operációs rendszer, a rendszerindítási típus és a lemez-és storage-beállításokat ismerteti.
 
 #### <a name="review-monthly-cost-estimates"></a>Havi költségbecslések áttekintése
 
-Ez a nézet a virtuális gépeknek az Azure-ban való futtatásával kapcsolatos összes számítási és tárolási költséget mutatja az egyes gépek adataival együtt.
+Ebben a nézetben látható a teljes számítási és tárolási költsége a virtuális gép futtatása az Azure-ban. Azt is bemutatja az egyes gépek részleteit.
 
-![Készenléti állapot értékelése](./media/contoso-migration-assessment/azure-costs.png)
+![Az Azure Migrate - Azure-költségek](./media/contoso-migration-assessment/azure-costs.png)
 
-- A költségbecslések az egyes gépekre vonatkozó méretjavaslatokon alapulnak.
+- A költségbecslések a javaslatok a méretekkel kapcsolatban a gép kiszámítása.
 - A becsült havi számítási és tárolási költségek a csoportban lévő virtuális gépekre összesítve szerepelnek.
-
 
 ## <a name="clean-up-after-assessment"></a>Értékelés után tisztítása
 
-- Az értékelés befejeződése után a Contoso megőrzi az Azure Migration a készülék jövőbeli értékelések.
-- A virtuális gép VMware kikapcsolása. Akkor lesz indítsa el újra, amikor további virtuális gépek értékelik.
-- Ezek a Contoso Migrálási projekt, megtarthatja az Azure-ban.  Jelenleg üzemel ContosoFailoverRG erőforráscsoportban, a keleti Azure régiójában.
--  A gyűjtő virtuális gép rendelkezik egy 180 napos próbaverzió licenccel. Ha ezt a korlátot lejár, akkor kell töltse le és állítsa be a gyűjtő újra.
-
+- Az értékelés befejeződése Contoso megmaradnak az Azure Migrate készülék értékelések a jövőben használni.
+- Contoso a VMware virtuális gép kikapcsolása. Contoso használni fogja azt újra, amikor további virtuális gépek értékeli.
+- Contoso tartja a **Contoso áttelepítési** projekt az Azure-ban. A projekt jelenleg telepítve van a **ContosoFailoverRG** East US Azure régióban található erőforráscsoportot.
+-  A gyűjtő virtuális Gépnek a 180 napos próbaverzió licenccel rendelkezik. Ha ezt a korlátot lejár, Contoso töltse le a gyűjtőt, és újra be kell.
 
 ## <a name="conclusion"></a>Összegzés
 
-Ebben a forgatókönyvben Contoso SmartHotel alkalmazás adatbázisában a DMA eszközzel, és a helyszíni virtuális gépek az Azure Migrate szolgáltatással kiértékeltük. Majd áttekintettük az értékeléseket, győződjön meg arról, készen áll a helyszíni erőforrásokhoz az Azure-ba való migrálásra.
+Ebben a forgatókönyvben a Contoso SmartHotel alkalmazás adatbázisában felméri az adatok áttelepítési Frissítésfelmérő eszköz használatával. A helyszíni virtuális gépek az Azure Migrate szolgáltatás használatával értékeli azt. Contoso áttekinti az értékeléseket, győződjön meg arról, amelyek a helyszíni erőforrások készen áll az Azure-ba való migrálásra.
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag-sorozatban a következő cikkben Contoso annak SmartHotel app, az Azure-ban egy lift-and-shift-áttelepítés áthelyezi. Contoso áttelepíti az előtér WEBVM az alkalmazás használatával az Azure Site Recovery és az alkalmazás-adatbázis egy Azure SQL felügyelt példányra, a Database Migration Service segítségével. [Első lépések](contoso-migration-rehost-vm-sql-managed-instance.md) ezzel az üzembe helyezéssel.
+A sorozat következő cikkben a Contoso lift-and-shift-áttelepítés használatával áthelyezi a SmartHotel alkalmazás Azure-ban. Contoso az előtér-alkalmazás WEBVM áttelepíti az Azure Site Recovery használatával. Ez áttelepíti az alkalmazás-adatbázis egy Azure SQL Database felügyelt példánya a Database Migration Service használatával. [Első lépések](contoso-migration-rehost-vm-sql-managed-instance.md) ezzel az üzembe helyezéssel.

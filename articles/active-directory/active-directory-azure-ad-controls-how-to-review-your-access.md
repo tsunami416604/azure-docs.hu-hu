@@ -10,15 +10,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 09/19/2017
+ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ac43637adc91c22aaab78f04732a613c74706d9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f583e962023603dbd7428c32bde52b9040246814
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446127"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205119"
 ---
 # <a name="review-your-access"></a>A hozzáférés felülvizsgálata
 
@@ -26,7 +26,11 @@ Az Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok alkalmaz�
 
 ## <a name="open-an-access-review"></a>Nyissa meg a hozzáférési felülvizsgálat
 
-A függőben lévő hozzáférési felülvizsgálatokat, jelölje ki a hivatkozást az e-mailben. Ha nem rendelkezik az e-mailt, keresse meg a hozzáférési felülvizsgálatok az alábbi lépéseket:
+Megtekintheti a függőben lévő hozzáférési felülvizsgálatokat, a felülvizsgálat hozzáférés hivatkozásra az e-mailben. A 2018 augusztus-től kezdődően az Azure AD-szerepkörökhöz tartozó e-mail-értesítések egy új megjelenés rendelkezik. Az alábbiakban látható egy például szolgáló e-mail érkezik, amikor egy felhasználót a cégbe felülvizsgálót lehet.
+
+![E-mailek hozzáférési felülvizsgálat](./media/active-directory-azure-ad-controls-how-to-review-your-access/new-ar-email.png)
+
+Ha nem rendelkezik az e-mailt, keresse meg a hozzáférési felülvizsgálatok az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure AD hozzáférési panel](https://myapps.microsoft.com).
 

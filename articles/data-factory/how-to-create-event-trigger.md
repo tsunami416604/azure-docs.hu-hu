@@ -10,20 +10,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/23/2018
 ms.author: douglasl
-ms.openlocfilehash: ecd5f242d2dcb5662376541ac0a9e75ce533b59f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 53ea7425f0497eca7c95ddefeaa09aa40259672b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005832"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216266"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot az adott esemény
 
 Ez a cikk ismerteti az eseményalapú eseményindítókat, amelyek a Data Factory-folyamatok hozhat létre.
 
 Eseményvezérelt architektúra (EDA), amely magában foglalja az éles, észlelési, fogyasztással és események reakciót gyakori adatok integrációs minta. Adatintegrációs forgatókönyvek gyakran igényelnek a Data Factory ügyfelek indítható folyamatok események alapján. A Data Factory mostantól integrálva van az [Azure Event Grid](https://azure.microsoft.com/services/event-grid/), egy eseményt a folyamatok, amellyel indít el.
+
+Egy 10 perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
+
 
 > [!NOTE]
 > Az ebben a cikkben leírt integráció függ [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Győződjön meg arról, hogy az előfizetése regisztrálva van-e az Event Grid erőforrás-szolgáltatónál. További információ: [erőforrás-szolgáltatókat és típusaikat](../azure-resource-manager/resource-manager-supported-services.md#portal).

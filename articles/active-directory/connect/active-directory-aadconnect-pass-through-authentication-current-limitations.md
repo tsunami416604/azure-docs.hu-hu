@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 34b83c54e31ed73af3f776a6add8f218dda35cf7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 2fff52a7909a1f3c59ebe4944386e096bd1a8d95
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918920"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213418"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Az Azure Active Directory átmenő hitelesítés: Aktuális korlátozások
 
@@ -29,12 +29,12 @@ ms.locfileid: "37918920"
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-Teljes mértékben támogatottak a következő esetekben:
+A következő forgatókönyvek támogatottak:
 
-- Felhasználói bejelentkezések összes böngészőalapú webalkalmazáshoz.
-- Felhasználói bejelentkezések a támogató Office-alkalmazások [modern hitelesítést](https://aka.ms/modernauthga): Office 2016 és Office 2013 _a_ modern hitelesítést.
-- Felhasználói bejelentkezések az Outlook-felhasználók számára, például az Exchange ActiveSync-, SMTP-, POP és IMAP örökölt protokollok használatával.
-- Felhasználói bejelentkezések a Skype for Business, amely támogatja a modern hitelesítést, beleértve az online és a hibrid topológiák. További tudnivalók a támogatott topológiák [Itt](https://technet.microsoft.com/library/mt803262.aspx).
+- Felhasználói bejelentkezések böngészőalapú webalkalmazásokhoz.
+- Felhasználói bejelentkezések az Outlook-felhasználók számára, például az Exchange ActiveSync, EAS, SMTP, POP és IMAP örökölt protokollok használatával.
+- Felhasználói bejelentkezések a régebbi Office-ügyfélalkalmazások és támogató Office-alkalmazások [modern hitelesítést](https://aka.ms/modernauthga): Office 2010, 2013 és 2016-verziók.
+- Felhasználói bejelentkezések örökölt protokoll alkalmazások, például a PowerShell 1.0-s verzióját.
 - Az Azure AD domain csatlakoztatja a Windows 10 rendszerű eszközökhöz.
 - A multi-factor Authentication alkalmazásjelszókat.
 
@@ -42,23 +42,19 @@ Teljes mértékben támogatottak a következő esetekben:
 
 A következő forgatókönyvek _nem_ támogatja:
 
-- Felhasználói bejelentkezések a az örökölt Office ügyfélalkalmazások számára, az Outlook kivételével (lásd: **támogatott forgatókönyvek** fent): az Office 2010 és Office 2013 _nélkül_ modern hitelesítést. Szervezetek számára javasolt, hogy váltson át a modern hitelesítést, ha lehetséges. Modern hitelesítés lehetővé teszi az átmenő hitelesítés támogatását. Emellett segítséget nyújt a felhasználói fiókokhoz gondoskodhat [feltételes hozzáférési](../active-directory-conditional-access-azure-portal.md) funkciók, például az Azure multi-factor Authentication szolgáltatás.
-- A hozzáférést az naptár megosztása és a rendelkezésre állási információk az Exchange hibrid környezetek az Office 2010-et csak.
-- Felhasználói bejelentkezések a Skype for Business ügyfélalkalmazások _nélkül_ modern hitelesítést.
-- Felhasználói bejelentkezések a PowerShell 1.0-s verzióját. Azt javasoljuk, hogy a PowerShell 2.0-s verzióját használja.
 - A felhasználók észlelése [kiszivárgott hitelesítő adatok](../active-directory-reporting-risk-events.md#leaked-credentials).
 - Az Azure AD Domain Services Jelszókivonat-szinkronizálást engedélyezni kell a bérlő van szüksége. Ezért az átmenő hitelesítést használó bérlők _csak_ Azure AD tartományi szolgáltatásokat igénylő forgatókönyvek nem működnek.
 - Az átmenő hitelesítés nincs integrálva az [az Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
-- Az Apple Készülékregisztrációs Program (Apple DEP) segítségével az iOS beállítási asszisztens nem támogatja a modern hitelesítést. Ez az Apple DEP-eszközök regisztrálása az Intune-ban a felügyelt tartományokat használ az átmenő hitelesítés sikertelen lesz. Fontolja meg a [céges portál alkalmazás](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/) alternatívájaként.
 
 >[!IMPORTANT]
 >Nem támogatott forgatókönyvek esetében _csak_, a Jelszókivonat-szinkronizálás engedélyezése a [választható funkciók](active-directory-aadconnect-get-started-custom.md#optional-features) lévő Azure AD Connect varázsló. Alkalmazások felhasználói bejelentkezés szerepel a listában szerepel a "nem támogatott forgatókönyvek" szakaszt, ha ezeket megadott bejelentkezési kérelmek vannak _nem_ átmenő hitelesítési ügynökök kezeli, és ezért nem rögzíti a [ Az átmenő hitelesítés naplók](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs).
 
 >[!NOTE]
-Jelszókivonat-szinkronizálás engedélyezése teszi meg a feladatátvételi hitelesítési Ha megszakad a helyi infrastruktúrát. Jelszókivonat-szinkronizálást az Active Directory átmenő hitelesítés a feladatátvétel nem automatikus. Váltson a bejelentkezési módszer, az Azure AD Connect segítségével manuálisan kell. Az Azure AD Connectet futtató kiszolgáló leáll, ha szüksége lesz a segítséget a Microsoft Support átmenő hitelesítés kikapcsolása.
+Jelszókivonat-szinkronizálás engedélyezése teszi meg a feladatátvételi hitelesítési Ha megszakad a helyi infrastruktúrát. A feladatátvétel az átmenő hitelesítés a Jelszókivonat-szinkronizálás nem történik meg automatikusan. Váltson a bejelentkezési módszer, az Azure AD Connect segítségével manuálisan kell. Az Azure AD Connectet futtató kiszolgáló leáll, ha szüksége lesz a segítséget a Microsoft Support átmenő hitelesítés kikapcsolása.
 
 ## <a name="next-steps"></a>További lépések
 - [Gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md): első lépésekhez az Azure AD átmenő hitelesítés.
+- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
 - [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): ismerje meg, hogyan konfigurálhatja az intelligens zárolás funkciót a bérlő felhasználói fiókok védelmét.
 - [Részletes technikai](active-directory-aadconnect-pass-through-authentication-how-it-works.md): az átmenő hitelesítési szolgáltatás működésének megismerése.
 - [Gyakori kérdések](active-directory-aadconnect-pass-through-authentication-faq.md): az átmenő hitelesítés szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok.

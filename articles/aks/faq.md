@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/20/2018
 ms.author: iainfou
-ms.openlocfilehash: 915f74df69596b1677a0e03770e076ae50efc609
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ea22b33233f85da117de54829e5a16bd7dcab36a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001245"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205248"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>– Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdések
 
@@ -37,7 +37,7 @@ Igen, az automatikus skálázás keresztül érhető el a [Kubernetes méretező
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Támogatja az AKS Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC)?
 
-Igen, engedélyezhető az RBAC az Azure CLI-vel vagy Azure Resource Manager-sablon az AKS-fürt üzembe helyezésekor. Ezt a funkciót hamarosan az Azure Portalra fognak érkezni.
+Igen, az RBAC lehet engedélyezve, ha [üzembe helyezése egy AKS-fürtöt az Azure CLI vagy az Azure Resource Manager-sablonból](https://docs.microsoft.com/en-us/azure/aks/aad-integration). Ezt a funkciót hamarosan az Azure Portalra fognak érkezni.
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>Milyen Kubernetes már a betegfelvétel tartományvezérlők támogatja az AKS? Ez konfigurálható?
 
@@ -59,6 +59,10 @@ Nincs jelenleg lehetséges módosítani az aks-ben már a betegfelvétel tartom�
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Üzembe helyezhetem az AKS a meglévő virtuális hálózatban?
 
 Igen, telepíthet egy AKS-fürtöt egy meglévő virtuális hálózat használatával, a [speciális hálózatkezelési funkció](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
+
+## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>Korlátozhatja a csak a saját virtuális hálózaton belül elérhetők lesznek a Kubernetes API-t kiszolgáló?
+
+Jelenleg nem. A Kubernetes API-kiszolgáló egy nyilvános teljes tartománynév (FQDN) üzemállapottal érhető el. A fürt használatával kell szabályozhatja a hozzáférést [Kubernetes szerepköralapú hozzáférés-vezérlési (RBAC) és az Azure Active Directory (AAD)](https://docs.microsoft.com/en-us/azure/aks/aad-integration).
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Az aks-sel integrált Azure Key Vault?
 

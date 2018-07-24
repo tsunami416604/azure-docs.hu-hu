@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/16/2018
+ms.date: 07/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7cda2a406c6c49e9252bfd5840e8f943e5b7043f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723860"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205799"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Az Azure PowerShell-erőforrások kezelése
 
@@ -72,13 +72,9 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 A folyamatot általában a **Hálózati közreműködő** és a **Tárfiók-közreműködő** szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
-## <a name="azure-policies"></a>Azure-szabályzatok
+## <a name="azure-policy"></a>Azure Policy
 
-[!INCLUDE [Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>Szabályzatok alkalmazása
-
-Az előfizetése már számos szabályzatdefinícióval rendelkezik. Elérhető szabályzatdefiníciók használja:
+[Az Azure Policy](../azure-policy/azure-policy-introduction.md) , ellenőrizze, hogy minden erőforrás-előfizetés segít a vállalati követelményeknek. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Elérhető szabályzatdefiníciók használja:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -186,17 +182,17 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ### <a name="view-costs-by-tag-values"></a>Költségek megtekintése címkeértékek szerint
 
-Erőforrások a címkék alkalmazása után megtekintheti a költségeket címkék erőforrás esetén. A legújabb használati megjelenítéséhez, ezért még nem láthatók a költségek költségelemzés egy ideig tart. A költségek érhetők el, megtekintheti az erőforrások költségeit erőforráscsoportok közt az előfizetésében. A felhasználóknak rendelkezniük [előfizetési szintű hozzáféréssel a számlázási adatokat](../billing/billing-manage-access.md) megtekintéséhez a költségeket.
+Az erőforrások felcímkézése után megtekintheti az adott címkével ellátott erőforrások költségét. A legutóbbi használati adatok megjelenítése eltarthat egy darabig a költségelemzés számára, tehát előfordulhat, hogy rögtön nem látja a költségeket. Amikor a költségek már elérhetők, megtekintheti az előfizetésében lévő erőforráscsoportok erőforrásainak költségét. A költségek megtekintéséhez a felhasználóknak [előfizetéses szintű hozzáféréssel](../billing/billing-manage-access.md) kell rendelkezniük a számlázási adatokhoz.
 
-A portálon a címke szerinti költségek megtekintéséhez válassza ki az előfizetését, és válassza **költségelemzés**.
+Ha címke szerint szeretné megtekinteni a költségeket a portálon, válassza ki az előfizetését, és válassza a **Költségelemzés** lehetőséget.
 
 ![Költségelemzés](./media/powershell-azure-resource-manager/select-cost-analysis.png)
 
-Ezután a címke értéke szűrés, és válassza ki **alkalmaz**.
+Ezután szűrjön címkeérték szerint, és válassza az **Alkalmaz** lehetőséget.
 
-![Nézet költség címke szerint](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
+![Költség megtekintése címke szerint](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
 
-Is használhatja a [Azure számlázási API-kat](../billing/billing-usage-rate-card-overview.md) programozott módon a költségek megtekintéséhez.
+Használhatja az [Azure-beli számlázási API-kat](../billing/billing-usage-rate-card-overview.md) is a költségek programozott módon való megtekintéséhez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

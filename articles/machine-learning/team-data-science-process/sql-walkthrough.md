@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 89fb805ac64be358ed4f52865d2e89ab16fe2b17
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ffd0f272d182e3362a82e137e902d433ca750b46
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005798"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216291"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: az SQL Server használata
 Ebben az oktatóanyagban vezeti végig a folyamat létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Server és a egy nyilvánosan elérhető adatkészlet használatával – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szokásos adatelemzési munkafolyamathoz: fogadni, és Fedezze fel az adatokat, Funkciók tervezése, tanulás egyszerűbbé tételével majd hozhat létre és helyezhet üzembe modelleket.
@@ -129,7 +129,7 @@ Betöltés/átvitele a nagy mennyiségű adat az SQL database és a lekérdezés
 7. Az a **Mintaszkriptek** mappában vannak a két minta PowerShell-parancsfájlok párhuzamos tömeges importálja az SQL Server-táblákra adatok bemutatásához megadott.
    
    * **BCP\_párhuzamos\_generic.ps1** egy általános parancsfájl párhuzamos tömeges adatok importálása egy táblába. Módosítsa ezt a szkriptet a bemeneti és a cél változók beállítása a szkriptben a Megjegyzés sorok jelzett.
-   * **BCP\_párhuzamos\_nyctaxi.ps1** az általános parancsfájl előre konfigurált változata és betölteni a mindkét táblázatot a NYC Taxi utak adatokhoz való használható.  
+   * **BCP\_párhuzamos\_nyctaxi.ps1** az általános parancsfájl előre konfigurált változata, és betölteni a mindkét táblázatot a NYC Taxi utak adatokhoz is használható.  
 8. Kattintson a jobb gombbal a **bcp\_párhuzamos\_nyctaxi.ps1** parancsfájl nevét, és kattintson **szerkesztése** a PowerShell való megnyitásához. Az előre definiált változókat, és módosítsa megfelelően a kijelölt adatbázis neve, a bemeneti adatok egy mappáján, log célmappa és a minta formátumú fájlok elérési útjai **nyctaxi_trip.xml** és **nyctaxi\_fare.xml** (a megadott a **Mintaszkriptek** mappát).
    
     ![Adatok tömeges importálása][16]

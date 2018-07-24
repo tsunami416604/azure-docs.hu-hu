@@ -1,6 +1,6 @@
 ---
-title: Általános Node.js ügyfélalkalmazást Azure IoT központi csatlakozás |} Microsoft Docs
-description: Egy eszköz fejlesztőjeként általános Node.js eszköz csatlakoztatása az Azure IoT központi alkalmazás.
+title: Egy általános Node.js ügyfél-alkalmazás csatlakoztatása az Azure IoT Central |} A Microsoft Docs
+description: Eszköz fejlesztőként egy általános Node.js-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz.
 author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
@@ -8,107 +8,109 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 42ede975f2cfde2d9c0a61d15ba1af412a88c556
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628538"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206037"
 ---
-# <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Csatlakozás az Azure IoT központi alkalmazáshoz (Node.js) általános ügyfélalkalmazás
+# <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
-Ez a cikk ismerteti, hogyan eszköz fejlesztőként jelző egy olyan fizikai eszköz a Microsoft Azure IoT központi alkalmazás általános Node.js alkalmazás csatlakozni.
+Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők egy általános Node.js-alkalmazást képviselő egy fizikai eszköz a Microsoft Azure IoT Central alkalmazáshoz csatlakozhat.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. Azure IoT központi alkalmazás. További információkért lásd: [létrehozása az Azure IoT központi alkalmazás](howto-create-application.md).
-1. Fejlesztési virtuális gép [Node.js](https://nodejs.org/) 4.0.0 verzió vagy újabb verziója. Futtathat `node --version` a parancssorban a verziójának. A Node.js az operációs rendszerek széles körében elérhető.
+1. Azure IoT Central alkalmazáshoz. További információkért lásd: [az Azure IoT központi alkalmazás létrehozása](howto-create-application.md).
+1. A fejlesztői gépen való [Node.js](https://nodejs.org/) 4.0.0-s verzió vagy újabb verziója szükséges. Futtathat `node --version` a parancssorban a verzió ellenőrzéséhez. A Node.js az operációs rendszerek széles körében elérhető.
 
-Az Azure IoT központi-alkalmazás van szüksége a következő mérések és eszköztulajdonságok definiált rendelkező eszköz sablont:
+## <a name="create-a-device-template"></a>Egy eszköz-sablon létrehozása
+
+Az Azure IoT Central-alkalmazás lesz szüksége a következő mérések és eszköztulajdonságok definiált eszköz sablon:
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-Adja hozzá az alábbi telemetriai a **mérések** lap:
+Adja hozzá a következő telemetriát a **mérések** oldalon:
 
-| Megjelenítendő név | Mezőnév  | Egység | Min | Max | Tizedeshelyen |
+| Megjelenített név | Mező neve  | Mértékegységek | Min | Maximum | Tizedeshelyek |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Hőmérséklet  | hőmérséklet | F     | 60  | 110 | 0              |
-| Páratartalom     | nedvességtartalma    | %     | 0   | 100 | 0              |
+| Hőmérséklet  | hőmérséklet | P     | 60  | 110 | 0              |
+| Nedvességtartalom     | páratartalom    | %     | 0   | 100 | 0              |
 | Pressure     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  A telemetriai adatok mérték adattípusa.
+  A telemetriai adatok mérték adattípusának dupla.
 
-Írja be pontosan megegyezik az eszköz sablonba a táblázatban látható mező nevét. Ha a mezőnevek nem egyezik, a telemetriai nem lehet megjeleníteni az alkalmazásban.
+Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a mező nevei nem egyeznek, a telemetria az alkalmazás nem lehet megjeleníteni.
 
 ### <a name="state-measurements"></a>Állapot mérések
 
-Adja hozzá a következő állapotot a **mérések** lap:
+Adja hozzá a következő állapotot a a **mérések** oldalon:
 
-| Megjelenítendő név | Mezőnév  | 1. érték | Megjelenítendő név | 2. érték | Megjelenítendő név |
+| Megjelenített név | Mező neve  | 1. érték | Megjelenített név | 2. érték | Megjelenített név |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Ventilátor mód     | fanmode     | 1       | Fut      | 0       | Leállítva      |
+| Ventilátor mód     | fanmode     | 1.       | Futtatás      | 0       | Leállítva      |
 
 > [!NOTE]
-  Az állapot mérési datatype karakterlánc.
+  Az állapot mérték adattípusának egy karakterlánc.
 
-Írja be pontosan megegyezik az eszköz sablonba a táblázatban látható mező nevét. Ha a mezőnevek nem egyezik, az állapot nem lehet megjeleníteni az alkalmazásban.
+Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a mező nevei nem egyeznek, az állapot nem lehet megjeleníteni az alkalmazásban.
 
 ### <a name="event-measurements"></a>Esemény mérések
 
-A következő esemény hozzáadása a **mérések** lap:
+Adja hozzá a következő esemény a **mérések** oldalon:
 
-| Megjelenítendő név | Mezőnév  | Severity |
+| Megjelenített név | Mező neve  | Súlyosság |
 | ------------ | ----------- | -------- |
-| Túlmelegedése  | melegedjen túl    | Hiba    |
+| Életbe  | melegedjen túl    | Hiba    |
 
 > [!NOTE]
-  Az esemény mérési datatype karakterlánc.
+  Az esemény mérték adattípusának egy karakterlánc.
 
 ### <a name="device-properties"></a>Eszköztulajdonságok
 
-A következő eszköz Tulajdonságok hozzáadása a **tulajdonságlapján**:
+Adja hozzá a következő eszköztulajdonságokat a a **tulajdonságai lap**:
 
-| Megjelenítendő név        | Mezőnév        | Adattípus |
+| Megjelenített név        | Mező neve        | Adattípus |
 | ------------------- | ----------------- | --------- |
 | Sorozatszám       | serialNumber      | szöveg      |
 | Eszköz gyártója | gyártó      | szöveg      |
 
-Adja meg a mezőnevek pontosan megegyezik az eszköz sablonba a táblázatban látható. Ha a mezőnevek nem egyezik, az alkalmazás a tulajdonság értéke nem tudja megjeleníteni.
+A mezők nevét adja meg a pontosan az eszköz sablonba be a táblázatban látható módon. Ha a mező nevei nem egyeznek, az alkalmazás nem jeleníthető meg a tulajdonság értéke.
 
 ### <a name="settings"></a>Beállítások
 
 Adja hozzá a következő **szám** beállításait a **beállítások lapon**:
 
-| Megjelenítendő név    | Mezőnév     | Egység | Tizedesjegyre | Min | Max  | Kezdeti |
+| Megjelenített név    | Mező neve     | Mértékegységek | Tizedesjegyek | Minimum | Maximum  | Kezdeti |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
-| Ventilátor sebessége       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
-| Megadott hőmérséklet | setTemperature | F     | 0        | 20  | 200  | 80      |
+| Sebesség ventilátor       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
+| Megadott hőmérséklet | setTemperature | P     | 0        | 20  | 200  | 80      |
 
-Mező neve pontosan a eszköz sablonba a táblázatban látható módon. Ha a mezőnevek nem egyezik, az eszköz a beállításérték nem kapnak.
+Adja meg a mező neve pontosan a eszköz sablonba a táblázatban látható módon. Ha a mező nevei nem egyeznek, akkor az eszköz a beállítás értéke nem tud fogadni.
 
-### <a name="add-a-real-device"></a>Valós eszköz hozzáadása
+## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT központi-alkalmazás létrehozása, és jegyezze fel az eszköz kapcsolati karakterláncot az eszköz sablonból valós eszköz hozzáadásához. További információkért lásd: [valós eszköz hozzáadása az Azure IoT központi alkalmazás](tutorial-add-device.md)
+Az Azure IoT Central-alkalmazás hozzáadása egy igazi eszközön az eszköz sablonból, létrehozása, és jegyezze fel az eszköz kapcsolati karakterláncát. További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazáshoz](tutorial-add-device.md)
 
-## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
+### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
-A következő lépések bemutatják, hogyan hozzon létre egy ügyfélalkalmazást, amely a valós eszközt, az alkalmazásba felvett.
+A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja az az alkalmazáshoz hozzáadott valós eszköz ügyfélalkalmazás.
 
-1. Hozzon létre egy `connected-air-conditioner-adv` nevű mappát a gépén. Keresse meg a parancssori környezetben mappában.
+1. Hozzon létre egy `connected-air-conditioner-adv` nevű mappát a gépén. Keresse meg a mappát a parancssori környezetben.
 
-1. A Node.js-projektet inicializálni a következő parancsokat:
+1. A Node.js-projektet inicializálása, futtassa a következő parancsokat:
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Hozzon létre egy nevű fájlt **connectedAirConditionerAdv.js** a a `connected-air-conditioner-adv` mappát.
+1. Hozzon létre egy fájlt nevű **connectedAirConditionerAdv.js** a a `connected-air-conditioner-adv` mappát.
 
-1. Adja hozzá a következő `require` elején utasítások a **connectedAirConditionerAdv.js** fájlt:
+1. Adja hozzá a következő `require` elején található utasításokat a **connectedAirConditionerAdv.js** fájlt:
 
     ```javascript
     "use strict";
@@ -127,9 +129,9 @@ A következő lépések bemutatják, hogyan hozzon létre egy ügyfélalkalmazá
     var client = clientFromConnectionString(connectionString);
     ```
 
-    Frissítse a helyőrző `{your device connection string}` az eszköz kapcsolati karakterlánccal. Ez az érték a kapcsolat részleteit megjelenítő oldalon másolta, a tényleges eszköz hozzáadásakor. Ez a példa azt inicializálása `targetTemperature` nulla, opcionálisan készíthet az eszköz az aktuális olvasása vagy -érték az az eszköz iker. 
+    Frissítse a helyőrző `{your device connection string}` az eszköz kapcsolati karakterlánccal. Ez az érték a kapcsolat részleteit megjelenítő oldalon másolja, a valós eszköz hozzáadásakor. Ebben a példában azt inicializálása `targetTemperature` nulla, igény szerint elvégezhető az eszköz aktuális olvasásakor vagy értéket az ikereszközről. 
 
-1. Telemetriai adatok, az állapot és a esemény küldése az Azure IoT központi alkalmazáshoz, adja hozzá a fájlhoz a következő függvény:
+1. A telemetriai adatokat, állapota és esemény mérések küldése az Azure IoT Central alkalmazáshoz, adja hozzá a fájlhoz a következő függvényt:
 
     ```javascript
     // Send device measurements.
@@ -151,7 +153,7 @@ A következő lépések bemutatják, hogyan hozzon létre egy ügyfélalkalmazá
     }
     ```
 
-    1. Eszköztulajdonságok küldése az Azure IoT központi alkalmazáshoz, adja hozzá a fájlhoz a következő függvény:
+    1. Eszköztulajdonságokat küldik az Azure IoT Central alkalmazáshoz, adja hozzá a fájlhoz a következő függvényt:
 
     ```javascript
     // Send device properties.
@@ -165,7 +167,7 @@ A következő lépések bemutatják, hogyan hozzon létre egy ügyfélalkalmazá
     }
     ```
 
-1. Az eszköz válaszol-e a beállításainak megadásához adja hozzá a következő definícióját:
+1. Az eszköz válaszol-beállításainak megadásához adja hozzá a következő-definíciót:
 
     ```javascript
     // Add any settings your device supports,
@@ -191,7 +193,7 @@ A következő lépések bemutatják, hogyan hozzon létre egy ügyfélalkalmazá
     };
     ```
 
-1. Az Azure IoT központi alkalmazásból frissített beállításainak kezeléséhez, adja hozzá a következő fájl:
+1. Az Azure IoT Central alkalmazásnak a frissített beállítások kezelése érdekében adja hozzá a következő fájl:
 
     ```javascript
     // Handle settings changes that come from Azure IoT Central via the device twin.
@@ -218,7 +220,7 @@ A következő lépések bemutatják, hogyan hozzon létre egy ügyfélalkalmazá
     }
     ```
 
-1. Adja hozzá a következő, a kapcsolat az Azure IoT központi befejeződését, majd az ügyfélkód a funkciókat a fájlkiszolgálófürtöt:
+1. Vegye fel a kapcsolatot az Azure IoT Central, és a funkciókat az Ügyfélkód kapcsolni a következőket:
 
     ```javascript
     // Handle device connection to Azure IoT Central.
@@ -251,28 +253,28 @@ A következő lépések bemutatják, hogyan hozzon létre egy ügyfélalkalmazá
 
 ## <a name="run-your-nodejs-application"></a>A Node.js-alkalmazás futtatása
 
-A következő parancsot a parancssori környezetben:
+Futtassa a következő parancsot a parancssori környezetben:
 
 ```cmd/sh
 node connectedAirConditionerAdv.js
 ```
 
-Az Azure IoT központi alkalmazásban kezelőként a valódi eszköz a következőket teheti:
+Az Azure IoT központi alkalmazás kezelőként a valódi eszköz a következőket teheti:
 
-* A telemetriai adatok megtekintése a **mérések** lap:
+* A telemetria megtekintése a **mérések** oldalon:
 
     ![Telemetria megtekintése](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Az eszközről küldött eszköz tulajdonságértéket megtekintése a **tulajdonságok** lap.
+* Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot.
 
     ![Az eszköz tulajdonságai](media/howto-connect-nodejs/viewproperties.png)
 
-* Állítsa be a ventilátor sebesség és a cél hőmérséklet a **beállítások** lap.
+* Állítsa be a ventilátor sebesség és a cél hőmérséklet a **beállítások** lapot.
 
     ![Set Ventilátor sebessége](media/howto-connect-nodejs/setfanspeed.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte rendelkezik egy általános Node.js ügyfél csatlakoztatása az Azure IoT központi alkalmazás, az alábbiakban a javasolt lépéseket:
-* [Raspberry Pi előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)
+Most, hogy rendelkezik egy általános Node.js-ügyfél csatlakoztatása az Azure IoT Central alkalmazáshoz, Íme a javasolt következő lépések:
+* [Készítse elő és a Raspberry Pi csatlakoztatása](howto-connect-raspberry-pi-python.md)
 <!-- Next how-tos in the sequence -->

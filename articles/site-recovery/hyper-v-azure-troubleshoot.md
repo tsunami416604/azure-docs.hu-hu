@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rayne
-ms.openlocfilehash: 97006f2dfecc8d3ade680f97cbb7776dfda98dd5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 95941b3f9333273c11208c56a63c62d5d37a9386
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921025"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213554"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V hibaelhárítása az Azure-replikáció és feladatátvétel
 
@@ -131,11 +131,11 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 2. A virtuális gép létrehozása a VSS-pillanatképet, ellenőrizze, hogy a Hyper-V integrációs szolgáltatások telepítve vannak-e a virtuális gépen, és, hogy engedélyezve van-e a biztonsági mentés (VSS) integrációs szolgáltatás.
     - Győződjön meg róla, hogy az Integration Services VSS-szolgáltatás/démonok a vendégen futnak, és a egy **OK** állapota.
     - Ellenőrizheti ezt a parancsot a Hyper-V gazdagépen egy emelt szintű PowerShell-munkamenetet **et-VMIntegrationService – VMName<VMName>-név VSS** ezeket az információkat is kaphat a Vendég virtuális Gépen való bejelentkezéssel. [További információk](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
-    - Győződjön meg arról, hogy a biztonsági mentés/VSS integrációs szolgáltatásokat a virtuális gép működik és kifogástalan állapotban vannak-e. Ha nem, indítsa újra ezeket a szolgáltatásokat és és a Hyper-V Kötet-árnyékmásolata kérelmező szolgáltatást a Hyper-V gazdakiszolgálón.
+    - Győződjön meg arról, hogy a biztonsági mentés/VSS integrációs szolgáltatásokat a virtuális gép működik és kifogástalan állapotban vannak-e. Ha nem, indítsa újra ezeket a szolgáltatásokat, és a Hyper-V Kötet-árnyékmásolata kérelmező szolgáltatás a Hyper-V gazdakiszolgálón.
 
 ### <a name="common-errors"></a>Gyakori hibák
 
-**Hibakód:** | **Üzenet** | **Részletek**
+**Hibakód:** | **üzenet** | **Részletek**
 --- | --- | ---
 **0x800700EA** | "A Hyper-V VSS pillanatkép beállítása a virtuális gép létrehozása nem sikerült: több adat áll rendelkezésre. (0x800700EA). VSS-pillanatkép beállított-létrehozás sikertelen lehet, ha biztonsági mentési művelet folyamatban van.<br/><br/> Nem sikerült a virtuális gép replikációs művelet: több adat érhető el. " | Ellenőrizze, hogy a virtuális gép rendelkezik-e engedélyezve van a dinamikus lemezek. Ez a funkció nem támogatott.
 **0x80070032** | "A Hyper-V Kötet árnyékmásolata másolási kérelmező nem sikerült csatlakozni a virtuális gép <. / VMname > mert a verziója nem egyezik meg a Hyper-V által várt verzió | Ellenőrizze, hogy ha a legújabb Windows-frissítések telepítése.<br/><br/> [Frissítés](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md#keep-integration-services-up-to-date) a legújabb integrációs szolgáltatásokat.

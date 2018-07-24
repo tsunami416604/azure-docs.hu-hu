@@ -1,43 +1,43 @@
 ---
-title: Példa szűrőkifejezéseket lehetséges az Azure Machine Learning adatok előkészítése |} Microsoft Docs
-description: Ez a dokumentum egy olyan készlete Példák lehetséges az Azure Machine Learning adatok előkészítése
+title: Az Azure Machine Learning adat-előkészítési lehetséges példa szűrőkifejezésekben |} A Microsoft Docs
+description: Ez a dokumentum számos új példák az Azure Machine Learning adat-előkészítési lehetőségeinek megismerése
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 434da595762a077b94ff034325d5bdb156585884
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a960197c89e1d051de0e9b8b73cbab231982cf52
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830360"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216503"
 ---
-# <a name="sample-of-filter-expressions-python"></a>Minta szűrőkifejezéseket (Python) 
-Ahhoz, hogy olvassa el a jelen függelék, olvassa el a [Python bővítési áttekintése](data-prep-python-extensibility-overview.md).
+# <a name="sample-of-filter-expressions-python"></a>A szűrőkifejezések (Python) minta 
+Mielőtt, olvassa el a jelen függelék, olvassa el a [Python bővíthetőség áttekintése](data-prep-python-extensibility-overview.md).
 
-## <a name="filter-with-equivalence-test"></a>Szűrhet alkalmasként tesztelése
-Szűrés csak ezeket ahol (numerikus) Col2 érték nagyobb, mint 4 sorokat. 
+## <a name="filter-with-equivalence-test"></a>Egyenértékűségi teszt szűrése
+Szűrés csak olyan sorok, ahol (numerikus) Col2 értéke nagyobb, mint a 4. 
 
 ```python
     row["Col2"] > 4
 ```
 
-## <a name="filter-with-multiple-columns"></a>Több oszlopból álló szűrése 
-Szűrés csak azok a sorok ahol Oszlop1 értéke **jó** és Col2 1 (numerikus) értéket tartalmazza. 
+## <a name="filter-with-multiple-columns"></a>Több oszlop szűrése 
+Csak olyan ahol Col1 értéket tartalmazza sorok szűrése **jó** és Col2 1 (numerikus) értéket tartalmazza. 
 ```python
     row["Col1"] == 'Good' and row["Col2"] == 1
 ```
 
 ## <a name="test-filter-against-null"></a>Teszt szűrő null ellen
-Szűrés csak azok a sorok ahol Oszlop1 értéke null. 
+Szűrés csak azok a sorok ahol Col1 egy null értékű. 
 ```python
     pd.isnull(row["Col1"])
 ```

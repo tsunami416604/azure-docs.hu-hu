@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: ee804ddc9e8fe9901173bb3d9357a273ea28057d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f6829d497c85ef1b4e74e26befe42d5d6fa87e36
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056817"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205969"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL-lekérdezések
 
@@ -522,7 +522,7 @@ Más összehasonlító operátorok, mint például a >, > =,! =, < és < =, a k�
 
 Ha a szűrő skaláris kifejezés eredménye nincs definiálva, a megfelelő dokumentum nem szerepel az eredményt, mivel nincs megadva logikailag igényhez nem "true".
 
-### <a name="between-keyword"></a>Kulcsszó között
+## <a name="between-keyword"></a>Kulcsszó között
 A BETWEEN kulcsszó használatával címtartományok érték például az ANSI SQL-lekérdezéseket express. KÖZÖTT is használhatók karakterlánc vagy szám.
 
 Például ez a lekérdezés visszaadja az összes családi dokumentumot, amelyben az első alárendelt szintű (mindkét határokat is beleértve) 1-5 között van. 
@@ -543,25 +543,25 @@ A fő különbség az SQL API és az ANSI SQL BETWEEN használata között, hogy
 ### <a name="logical-and-or-and-not-operators"></a>Logikai (AND, OR és NOT) operátorok
 Logikai operátorok a logikai értékek művelethez. Ezen operátorok logikai hiteles táblázatokban az alábbi táblázatban láthatók.
 
-| VAGY | True (Igaz) | False (Hamis) | Meghatározatlan |
+| VAGY | Igaz | Hamis | Meghatározatlan |
 | --- | --- | --- | --- |
-| True (Igaz) |True (Igaz) |True (Igaz) |True (Igaz) |
-| False (Hamis) |True (Igaz) |False (Hamis) |Meghatározatlan |
-| Meghatározatlan |True (Igaz) |Meghatározatlan |Meghatározatlan |
+| Igaz |Igaz |Igaz |Igaz |
+| Hamis |Igaz |Hamis |Meghatározatlan |
+| Meghatározatlan |Igaz |Meghatározatlan |Meghatározatlan |
 
-| ÉS | True (Igaz) | False (Hamis) | Meghatározatlan |
+| ÉS | Igaz | Hamis | Meghatározatlan |
 | --- | --- | --- | --- |
-| True (Igaz) |True (Igaz) |False (Hamis) |Meghatározatlan |
-| False (Hamis) |False (Hamis) |False (Hamis) |False (Hamis) |
-| Meghatározatlan |Meghatározatlan |False (Hamis) |Meghatározatlan |
+| Igaz |Igaz |Hamis |Meghatározatlan |
+| Hamis |Hamis |Hamis |Hamis |
+| Meghatározatlan |Meghatározatlan |Hamis |Meghatározatlan |
 
 | NEM |  |
 | --- | --- |
-| True (Igaz) |False (Hamis) |
-| False (Hamis) |True (Igaz) |
+| Igaz |Hamis |
+| Hamis |Igaz |
 | Meghatározatlan |Meghatározatlan |
 
-### <a name="in-keyword"></a>A kulcsszó
+## <a name="in-keyword"></a>A kulcsszó
 Az IN kulcsszó segítségével ellenőrizze, hogy egy megadott értéke megegyezik-e a lista bármely értéke. Például ez a lekérdezés visszaadja az összes családi dokumentumot, az azonosító az egyik "WakefieldFamily" vagy "AndersenFamily". 
 
     SELECT *
@@ -574,7 +574,7 @@ Ez a példa összes dokumentumot visszaadja, ahol állapota a megadott értékek
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
-### <a name="ternary--and-coalesce--operators"></a>Ternáris (?) és a kezelők Coalesce (?)
+## <a name="ternary--and-coalesce--operators"></a>Ternáris (?) és a kezelők Coalesce (?)
 A Ternáris és Coalesce operátorok hasonló olyan népszerű programozási nyelvet, például C# és a JavaScript, a feltételes kifejezések felépítéséhez létre használható. 
 
 A Ternáris (?) operátor nagyon hasznos lehet, amikor hozhat létre, amely menet közben új JSON-tulajdonságokkal. Például most már írhat a osztály szintek besorolása például a kezdő vagy haladó/speciális alább látható módon emberi olvasható formába lekérdezések.
@@ -594,7 +594,7 @@ A Coalesce (?) operátor segítségével hatékonyan ellenőrizze, a tulajdonsá
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
-### <a id="EscapingReservedKeywords"></a>Határolójeles tulajdonság hozzáférő
+## <a id="EscapingReservedKeywords"></a>Határolójeles tulajdonság hozzáférő
 Is elérheti a határolójeles tulajdonság operátorral tulajdonságok `[]`. Ha például `SELECT c.grade` és `SELECT c["grade"]` egyenértékűek. Ezt a szintaxist akkor hasznos, amikor szüksége van egy szóközt, speciális karaktereket tartalmaz vagy történik a neve megegyezik az SQL kulcsszó vagy fenntartott szó tulajdonság karaktert.
 
     SELECT f["lastName"]
@@ -682,7 +682,7 @@ Nézzük, szerepe `$1` itt. A `SELECT` záradék létre kell hoznia egy JSON-obj
     }]
 
 
-### <a name="aliasing"></a>Aliasképző
+## <a name="aliasing"></a>Aliasképző
 Most tekintsük kiterjesztése a fenti példában a explicit aliasképző értékek. Ez a kulcsszó aliasképző használt. Nem kötelező, miközben kivetítést, mint a második érték látható módon `NameInfo`. 
 
 Abban az esetben, ha egy lekérdezést a két tulajdonság azonos nevű rendelkezik, alias átnevezése egyikét vagy mindkettőt a tulajdonságokat, hogy azok az előre jelzett eredmény vannak használatát kell használni.
@@ -708,7 +708,7 @@ Abban az esetben, ha egy lekérdezést a két tulajdonság azonos nevű rendelke
     }]
 
 
-### <a name="scalar-expressions"></a>Skaláris kifejezések
+## <a name="scalar-expressions"></a>Skaláris kifejezések
 Mellett tulajdonság hivatkozik a SELECT záradékban skaláris kifejezések állandók, számtani kifejezéseket, logikai kifejezéseket és egyéb hasonló is támogatja. Ha például itt látható egy egyszerű "Hello World" lekérdezést.
 
 **Lekérdezés**
@@ -754,7 +754,7 @@ A következő példában a skaláris kifejezés eredménye egy logikai érték.
     ]
 
 
-### <a name="object-and-array-creation"></a>Az objektum és tömb létrehozása
+## <a name="object-and-array-creation"></a>Az objektum és tömb létrehozása
 Az SQL API egy másik fontos szolgáltatása a tömb vagy objektum-létrehozás. Az előző példában vegye figyelembe, hogy létrehozott egy új JSON-objektum. Hasonlóképpen egy szerkezetét is tömbök a következő példákban szemléltetett módon:
 
 **Lekérdezés**
@@ -779,7 +779,7 @@ Az SQL API egy másik fontos szolgáltatása a tömb vagy objektum-létrehozás.
       }
     ]
 
-### <a id="ValueKeyword"></a>ÉRTÉK kulcsszó
+## <a id="ValueKeyword"></a>ÉRTÉK kulcsszó
 A **érték** kulcsszó lehetővé teszi a JSON-értéket adja vissza. Ha például az alábbi lekérdezés adja vissza a skaláris `"Hello World"` helyett `{$1: "Hello World"}`.
 
 **Lekérdezés**
@@ -830,7 +830,7 @@ Az alábbi példa kibővíti ezt a JSON egyszerű értékeket (a levélszintű a
     ]
 
 
-### <a name="-operator"></a>* Operátor
+## <a name="-operator"></a>* Operátor
 A speciális operátor (*) támogatott, a dokumentum Project-van. Használatakor a csak tervezett mezőt kell lennie. Miközben a lekérdezésben `SELECT * FROM Families f` érvényes, `SELECT VALUE * FROM Families f ` és `SELECT *, f.id FROM Families f ` nem érvényesek.
 
 **Lekérdezés**
@@ -859,7 +859,7 @@ A speciális operátor (*) támogatott, a dokumentum Project-van. Használatakor
         "isRegistered": true
     }]
 
-### <a id="TopKeyword"></a>TOP operátor
+## <a id="TopKeyword"></a>TOP operátor
 A felső kulcsszó egy lekérdezés által értékek számának korlátozására használható. FELSŐ az ORDER BY záradékkal együtt kell használni, amikor az eredményhalmaz korlátozódik rendezett értékek; az első N száma Ellenkező esetben azt számát adja vissza az első N eredmények nem meghatározott sorrendben legyenek. Ajánlott eljárásként olyan SELECT utasításban, mindig egy ORDER BY záradék együtt használni a TOP záradékot. Ez az egyetlen módja lehetővé teszi a kiszámítható jelzi a felső által érintett sorok. 
 
 **Lekérdezés**
@@ -889,7 +889,7 @@ A felső kulcsszó egy lekérdezés által értékek számának korlátozására
 
 FELSŐ használható egy állandó értékkel (a fent látható) vagy egy változó értéke a paraméteres lekérdezések használatával. További részletekért tekintse meg az alábbi paraméteres lekérdezések.
 
-### <a id="Aggregates"></a>Aggregátumfüggvények
+## <a id="Aggregates"></a>Aggregátumfüggvények
 Az összesítéseket is elvégezheti a `SELECT` záradékban. Aggregátumfüggvények számítás elvégzése különböző értékeket, és egyetlen értéket ad vissza. Például az alábbi lekérdezés a gyűjteményben lévő családba tartozó dokumentumok darabszámát adja vissza.
 
 **Lekérdezés**

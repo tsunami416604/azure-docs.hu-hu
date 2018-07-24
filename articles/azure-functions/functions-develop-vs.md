@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: bc280e9b4ade8a4fb8107ec2dcc1c33f538472e1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 318a39e244f0fca3a1b2d8531dd9197a15400e02
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602975"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205357"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -132,7 +132,7 @@ Az előre lefordított függvények a függvény által használt kötéseket ha
         }
     }
     ````
-    A kötés-specifikus attribútum alkalmazza a rendszer minden egyes belépési pont metódushoz megadott kötési paraméter. Az attribútum a kötési információ paraméterekként vesz igénybe. Az előző példában az első paramétere rendelkezik egy **QueueTrigger** attribútum a alkalmazni, üzenetsor által aktivált függvény jelzi. A várólista nevét és kapcsolati karakterlánc beállítás neve adhatók be a paramétereket a **QueueTrigger** attribútum.
+    A kötés-specifikus attribútum alkalmazza a rendszer minden egyes belépési pont metódushoz megadott kötési paraméter. Az attribútum a kötési információ paraméterekként vesz igénybe. Az előző példában az első paramétere rendelkezik egy **QueueTrigger** attribútum a alkalmazni, üzenetsor által aktivált függvény jelzi. A várólista nevét és kapcsolati karakterlánc beállítás neve adhatók be a paramétereket a **QueueTrigger** attribútum. További információkért lásd: [Azure Queue storage – Azure Functions kötések](functions-bindings-storage-queue.md#trigger---c-example).
     
 A fenti eljárással további funkciók hozzáadása a függvényalkalmazás projektjét. A projektben egyes funkciót egy másik eseményindító rendelkezhet, de a következő függvénynek rendelkeznie kell a pontosan egy eseményindító. További információkért lásd: [Azure Functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md).
 

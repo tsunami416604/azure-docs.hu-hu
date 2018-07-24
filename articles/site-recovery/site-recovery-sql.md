@@ -2,24 +2,16 @@
 title: Alkalmazásait az SQL Server és az Azure Site Recovery replikálja |} A Microsoft Docs
 description: Ez a cikk ismerteti, hogyan replikálhat az Azure Site Recovery használatával az SQL Server vészhelyreállítási funkciók az SQL Server.
 services: site-recovery
-documentationcenter: ''
-author: prateek9us
-manager: gauravd
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: pratshar
-ms.openlocfilehash: c877f4bbc0ed14e859ff39f1d719a9cd0b787118
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 07/22/2018
+ms.author: raynew
+ms.openlocfilehash: fecf7366417a8a592578a425d8b028249c2681d7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920831"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216359"
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Az SQL Server-vészhelyreállítás és az Azure Site Recovery használatával az SQL Server védelme
 
@@ -51,7 +43,7 @@ Site Recovery szolgáltatás védi az SQL Server, a táblázat foglalja össze.
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen
 **Fizikai kiszolgáló** | Igen | Igen
-**Azure**|NA| Igen
+**Azure**|n/a| Igen
 
 ### <a name="supported-sql-server-versions"></a>Támogatott SQL Server-verziók
 Ezek az SQL Server-verziók támogatottak, a támogatott forgatókönyveket:
@@ -78,7 +70,7 @@ Ez a táblázat összefoglalja a javaslatok az SQL Server BCDR-technológiákkal
 
 | **Verzió** | **Kiadás** | **Üzembe helyezés** | **A helyi helyszíni** | **Az Azure-bA helyszíni** |
 | --- | --- | --- | --- | --- |
-| SQL Server 2014 vagy 2012 |Enterprise |Feladatátvevőfürt-példány |Always On rendelkezésre állási csoportok |Always On rendelkezésre állási csoportok |
+| Az SQL Server 2016-ot, 2014 vagy 2012 |Enterprise |Feladatátvevőfürt-példány |Always On rendelkezésre állási csoportok |Always On rendelkezésre állási csoportok |
 || Enterprise |Always On rendelkezésre állási csoportokat magas rendelkezésre állás érdekében |Always On rendelkezésre állási csoportok |Always On rendelkezésre állási csoportok | |
 || Standard |Feladatátvevőfürt-példány (FCI) |Site Recovery-replikációja helyi tükrözött |Site Recovery-replikációja helyi tükrözött | |
 || Enterprise vagy Standard |Különálló |Site Recovery-replikációja |Site Recovery-replikációja | |

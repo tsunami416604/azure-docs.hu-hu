@@ -1,6 +1,6 @@
 ---
 title: Gyűjtését monitorozási adatok az Azure-ban |} A Microsoft Docs
-description: A monitorozási adatok, alkalmazások és szolgáltatások az Azure-ral és a számítógépről összegyűjtött áttekintése segítségével elemezheti azt.
+description: A monitorozási adatok, alkalmazások és szolgáltatások az Azure-ral és a segítségével elemezheti az összegyűjtött áttekintése.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: bwren
-ms.openlocfilehash: d3ebd512f8244de74c009ac8a2936ed8e817dad9
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: efbf0907f3ed75957159c38a536bd31e88a0dbb3
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991353"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213299"
 ---
 # <a name="collecting-monitoring-data-in-azure"></a>Az Azure monitorozási adatok gyűjtésére
-Ez a cikk ismerteti, hogy a monitorozási adatok, alkalmazások és szolgáltatások az Azure-ral és a számítógépről összegyűjtött áttekintést segítségével elemezheti azt. 
+Ez a cikk a monitorozási adatok, alkalmazások és szolgáltatások az Azure-ral és a segítségével elemezheti az összegyűjtött áttekintést nyújt. 
 
 ## <a name="types-of-monitoring-data"></a>Monitorozási adatok típusai
 Az összes monitorozási adat megfelel egy két alapvető típusok, metrikákat vagy naplókat. Minden egyes típusa eltérő jellemzőkkel rendelkezik, és olyan feladatokra ajánljuk adott, az alább ismertetett.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>metrikák
 Metrikák numerikus értékek időben bizonyos elemeit a rendszer egy adott időpontban ismertetik. Ezek tartalmazzák a különböző adatokat, beleértve magát, az érték a ideje gyűjtötte a program az értéket, a mérték értékét jelöli, és az adott erőforrás, amely az érték társítva van. Rendszeres időközönként metrikákat gyűjt az érték-e. Például előfordulhat, hogy összegyűjtött processzorhasználat egy virtuális gépet, az alkalmazás 10 percenként rögzíti minden perc vagy a felhasználók száma.
 
 Metrikák, könnyen használható, és képes a közel valós idejű feldolgozásához. Különösen hasznos, mivel metrikák gyakran kell mintát, és a egy riasztás gyorsan is fired viszonylag egyszerű logikával riasztási legyenek. Például előfordulhat, hogy egy riasztás értesíti, ha egy mérőszám meghalad egy küszöbértéket, vagy riasztás aktiválódik, amikor két mérőszám értéke közötti különbség eléri egy adott érték.
@@ -34,7 +34,7 @@ Egyéni metrikák általában kevés betekintést nyújt a saját. Bármilyen k�
 
 A riasztások alapján nem riasztásai teljesítménymetrikák alapján, rugalmas, de összetettebb logika is tartalmazhatnak. Bármely a több forrásból származó adatok összetett elemzésére végző lekérdezési eredmények alapján riasztást hozhat létre.
 
-### <a name="logs"></a>Logs
+### <a name="logs"></a>Naplók
 Naplók tartalmaznak különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Naplók például metrikák numerikus értékeket tartalmaz, de rendszerint a szöveges adatok részletes leírását tartalmazza. Azok további különböznek metrikák, azok szerkezetét, változó és gyakran nem gyűjtött rendszeres időközönként.
 
 A naplóbejegyzés gyakori típus egy eseményt. Események csak időnként gyűjtött egy alkalmazás vagy szolgáltatás által létrehozott, és általában a teljes kontextusba saját elegendő információt tartalmaznak.  Például egy esemény arra utalhat, hogy egy adott erőforrás létrehozásának vagy módosításának, egy új gazdagépre való megnövekedett forgalmának adott válaszként indítandók vagy egy alkalmazás hibát észlelt.
@@ -66,7 +66,7 @@ A log Analytics kezelését az Azure-ban közös adatplatformot biztosítja. A s
 
 A log Analytics egy részletes lekérdezési nyelvet összegyűjti az adatelemzés számára rendelkezik.  Használhat [naplókeresési portálok](../log-analytics/log-analytics-log-search-portals.md) interaktív módon írása és tesztelése a lekérdezések és elemzésére szolgáló az eredményeiket. Emellett [nézeteket hozhat létre](../log-analytics/log-analytics-view-designer.md) megjelenítheti az eredményeket naplókeresését, vagy illessze be a közvetlenül egy Azure-irányítópultot, egy lekérdezés eredményeit.  Felügyeleti megoldások tartalmaznak naplókereséseken és nézeteken a Log Analytics az összegyűjtött adatok elemzéséhez. Más szolgáltatásokkal, például az Application Insights tárolnak adatokat a Log Analytics, és biztosítja a további elemzés.  
 
-![Logs](media/monitoring-data-collection/logs.png)
+![Naplók](media/monitoring-data-collection/logs.png)
 
 ### <a name="application-insights"></a>Application Insights
 Az Application Insights telemetria többféle platformon telepítve webalkalmazások gyűjti. Tárolja az adatokat az Azure-mérőszámok és a Log Analytics és a egy kiterjedt gazdag, a meglévő eszközöket, elemzése és vizualizációja az adatok elemzésére szolgáló eszközöket biztosít. Ez lehetővé teszi lehetővé a közös szolgáltatások, például a riasztások, naplókeresések és az egyéb figyelési használt irányítópultok.
@@ -74,10 +74,10 @@ Az Application Insights telemetria többféle platformon telepítve webalkalmaz�
 
 ![App Insights](media/monitoring-data-collection/app-insights.png)
 
-### <a name="service-map"></a>Szolgáltatástérkép
+### <a name="service-map"></a>Service Map
 A Service Map biztosít a virtuális gépeket, amelyek a saját folyamatok és a függőségek ábrázolása. Ezeket az adatokat a legtöbb tárolja a Log Analyticsben, így más felügyeleti adatokkal elemezheti. A Szolgáltatástérkép-konzol is lekéri az adatokat a Log Analyticsben, hogy megjeleníti azt a virtuális gép elemezni a környezetben.
 
-![Szolgáltatástérkép](media/monitoring-data-collection/service-map.png)
+![Service Map](media/monitoring-data-collection/service-map.png)
 
 
 ## <a name="transferring-monitoring-data"></a>Figyelési adatok átvitele

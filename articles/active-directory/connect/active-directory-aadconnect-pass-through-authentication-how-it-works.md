@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 371f3ea3b764eecbb621fc06ec483de4778e7db2
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 674952982ac4342caaf31c05f3d644c1e74b649d
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159491"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215896"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés: Részletes technikai bemutatása
 Ez a cikk áttekintést az Azure Active directory (Azure AD) átmenő hitelesítés működéséről. Részletes technikai és biztonsági információk, tekintse meg a [biztonság részletes bemutatása](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) cikk.
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Hogyan működik az Azure Active Directory átmenő hitelesítés?
 
-[!NOTE]
-Előfeltételként az átmenő hitelesítés csak akkor működik felhasználók szükség lesz az Azure AD Connect használatával a helyszíni Active Directoryból az Azure AD-be. Az átmenő hitelesítés nem vonatkozik a csak felhőbeli felhasználók számára.
+>[!NOTE]
+>Előfeltételként az átmenő hitelesítés csak akkor működik felhasználók szükség lesz az Azure AD Connect használatával a helyszíni Active Directoryból az Azure AD-be. Az átmenő hitelesítés nem vonatkozik a csak felhőbeli felhasználók számára.
 
 Ha a felhasználó megpróbál bejelentkezni az Azure AD által védett alkalmazáshoz való, és ha az átmenő hitelesítés engedélyezve van a bérlőn, a következő lépések történnek:
 
@@ -52,6 +52,7 @@ A következő ábra szemlélteti az összes összetevő és a folyamat lépései
 ## <a name="next-steps"></a>További lépések
 - [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md): ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
 - [Gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md): első lépésekhez az Azure AD átmenő hitelesítés.
+- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
 - [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): az intelligens zárolás funkciót konfigurálhatja a bérlő felhasználói fiókok védelmét.
 - [Gyakran ismételt kérdések](active-directory-aadconnect-pass-through-authentication-faq.md): választ találhat a gyakori kérdésekre.
 - [Hibaelhárítás](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): ismerje meg az átmenő hitelesítés szolgáltatás szolgáltatással kapcsolatos gyakori problémák megoldásához.

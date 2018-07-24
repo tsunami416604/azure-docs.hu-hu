@@ -1,6 +1,6 @@
 ---
 title: Azure Automation-feladat adatainak továbbítása a Log Analyticsbe
-description: Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladat adatfolyamok további betekintést és kezelése az Azure Naplóelemzés.
+description: Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladatstreamek az Azure Log Analyticsben, hogy további betekintést és a felügyeleti.
 services: automation
 ms.service: automation
 ms.component: process-automation
@@ -9,52 +9,52 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c51c79b85f5277496a3b8f80fe2487136a9fcbc1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 12628b5a552b864784d780e5f2adc00aac579911
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228614"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215033"
 ---
-# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Feladat állapotát és a feladat adatfolyam továbbítása Automation Naplóelemzési
-Automatizálási küldhet runbook feladat állapotát és a feladat adatfolyamok Naplóelemzési munkaterületet. Feladat naplózza, és a feladat adatfolyamok láthatók az Azure portálon, vagy a PowerShell használatával, az egyes feladatokat, és ez lehetővé teszi egyszerű vizsgálatok végrehajtását. Most Log Analytics segítségével:
+# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Feladat állapota és a feladatstreamek automatizálást továbbítása a Log Analyticsbe
+Automation küldhet a runbook állapota és a feladat feladatstreamek a Log Analytics-munkaterületre. Feladatnaplók és a feladatstreamek láthatók az Azure Portalon, vagy a PowerShell-lel, az egyes feladatok, és ez lehetővé teszi egyszerű vizsgálatokhoz végrehajtásához. Most már a Log Analytics-szel a következőket teheti:
 
-* Az automatizálási feladatok insight szerezni.
-* A runbook-feladat állapota (például felfüggesztett vagy sikertelen) alapuló riasztás vagy e-mail eseményindító.
-* Speciális lekérdezéseket írhat a feladat adatfolyamok között.
-* Feladatok összefüggéseket Automation-fiókok között.
-* A feladatelőzmények megjelenítheti az adott idő alatt.
+* Ismerkedjen meg az Automation-feladatokkal.
+* A trigger egy e-mailben vagy a riasztások alapján a forgatókönyv-feladat állapota (például felfüggesztett vagy sikertelen).
+* Speciális lekérdezéseket írhat a feladatstreamek között.
+* Az Automation-fiókok feladatok összevethető.
+* A feladatelőzmények megjelenítése idővel.
 
-## <a name="prerequisites-and-deployment-considerations"></a>Előfeltételek és központi telepítésével kapcsolatos megfontolások
-Az automatizálási naplók értesítésküldés Naplóelemzési, az alábbiak szükségesek:
+## <a name="prerequisites-and-deployment-considerations"></a>Előfeltételek és telepítésével kapcsolatos megfontolások
+Az Automation-naplók küldése a Log Analyticshez való indításához lesz szüksége:
 
-* A November 2016 vagy újabb kiadása [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0).
-* Egy Log Analytics-munkaterület. További információkért lásd: [Ismerkedés a Naplóelemzési](../log-analytics/log-analytics-get-started.md). 
-* Az erőforrás-azonosítója az Azure Automation-fiókhoz.
+* A November 2016 vagy újabb kiadását [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0).
+* Egy Log Analytics-munkaterület. További információkért lásd: [Ismerkedés a Log Analytics](../log-analytics/log-analytics-get-started.md). 
+* Az Azure Automation-fiókhoz tartozó erőforrás azonosítója.
 
 
-Az erőforrás-azonosítója az Azure Automation-fiókban található:
+Az Azure Automation-fiókban található az erőforrás-azonosító:
 
 ```powershell-interactive
 # Find the ResourceId for the Automation Account
-Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
+Get-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
 ```
 
-Az erőforrás-azonosítója a Naplóelemzési munkaterület megkereséséhez futtassa a következő PowerShell:
+Az erőforrás-azonosító a Log Analytics-munkaterület, futtassa az alábbi PowerShell-lel:
 
 ```powershell-interactive
 # Find the ResourceId for the Log Analytics workspace
-Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+Get-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 ```
 
-Ha egynél több Automation-fiók, vagy a munkaterületek között, az előző parancs kimenetében található a *neve* meg kell konfigurálnia, és másolja a következő *ResourceId*.
+Ha egynél több Automation-fiókok, vagy a munkaterületeket, a fenti parancsok kimenetének, keresse meg a *neve* kell konfigurálni, és másolja az értéket a *ResourceId*.
 
-Ha meg szeretné tudni a *neve* az Automation-fiók, az Azure portálon válassza ki az Automation-fiók a a **Automation-fiók** panelhez, és válassza **összes beállítás**. A **Minden beállítás** panel **Fiókbeállítások** részénél válassza a **Tulajdonságok** lehetőséget.  A **Tulajdonságok** panelen megtalálja a keresett értékeket.<br> ![Automation-fiók tulajdonságai](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
+Ha meg kell keresnie a *neve* az Automation-fiók az Azure Portalon válassza ki az Automation-fiókját a **Automation-fiók** panelhez, és válassza **minden beállítás** . A **Minden beállítás** panel **Fiókbeállítások** részénél válassza a **Tulajdonságok** lehetőséget.  A **Tulajdonságok** panelen megtalálja a keresett értékeket.<br> ![Automation-fiók tulajdonságai](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
 
-## <a name="set-up-integration-with-log-analytics"></a>Log Analytics-integráció beállítása
+## <a name="set-up-integration-with-log-analytics"></a>A Log Analytics-integráció beállítása
 
-1. A számítógépen indítása **Windows PowerShell** a a **Start** képernyő.
-2. Futtassa a következő PowerShell-, és a megadott értéket a `[your resource id]` és `[resource id of the log analytics workspace]` az előző lépésben értékekkel.
+1. A számítógépen indítsa el a **Windows PowerShell** származó a **Start** képernyő.
+2. Futtassa az alábbi PowerShell-lel, és az értéke Szerkesztés a `[your resource id]` és `[resource id of the log analytics workspace]` az előző lépésből származó értékekkel.
 
    ```powershell-interactive
    $workspaceId = "[resource id of the log analytics workspace]"
@@ -63,26 +63,26 @@ Ha meg szeretné tudni a *neve* az Automation-fiók, az Azure portálon válassz
    Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
    ```
 
-A parancsfájl futtatása után új JobLogs vagy írása JobStreams 10 percen belül megjelennek a Log Analytics-rekordok.
+Ez a szkript futtatása után látni fogja az rögzíti a Log Analytics új JobLogs vagy ír JobStreams 10 percen belül.
 
-A naplók megtekintéséhez futtassa a következő lekérdezés Naplóelemzési napló keresése: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+A naplók megtekintéséhez futtassa a következő lekérdezést a Log Analytics naplóbeli keresés: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Konfiguráció ellenőrzése
-Annak ellenőrzéséhez, hogy az Automation-fiók naplókat küld a Naplóelemzési munkaterületet, ellenőrizze, hogy diagnosztika helyesen van konfigurálva az Automation-fiók a következő PowerShell használatával:
+Győződjön meg arról, hogy az Automation-fiók naplókat küld a Log Analytics-munkaterülethez, ellenőrizze, hogy diagnosztikai helyesen van konfigurálva az Automation-fiókot a következő PowerShell-lel:
 
 ```powershell-interactive
 Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
 
-A kimenet győződjön meg arról, hogy:
+A kimenetben ellenőrizze, hogy:
 + A *naplók*, értéke *engedélyezve* van *igaz*.
-+ Értékének *WorkspaceId* az erőforrás-azonosítója a Naplóelemzési munkaterület értékre van állítva.
++ Az érték *munkaterület azonosítója* az erőforrás-azonosító, a Log Analytics-munkaterület értékre van állítva.
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
 
-Azure Automation diagnosztika kétféle típusú rekordok Naplóelemzési hoz létre, és címkével rendelkeznek, **AzureDiagnostics**. Az alábbi lekérdezéseket a frissített lekérdezési nyelv szolgáltatáshoz használja. A hagyományos lekérdezési nyelv és az új Azure Log Analytics lekérdezési nyelv között közös lekérdezésekkel kapcsolatos információt [örökölt az új Azure napló Analytics Query Language-Adatlap](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)
+Diagnosztika az Azure Automation két rekordtípust hoz létre a Log Analytics és a címkével **AzureDiagnostics**. A következő lekérdezéseket a Log Analytics frissített lekérdezési nyelvet használja. Az örökölt lekérdezési nyelv és az Azure Log Analytics új lekérdezési nyelvre közötti gyakori lekérdezések információt [örökölt az új Azure Log Analytics lekérdezési nyelv – Adatlap](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)
 
-### <a name="job-logs"></a>Feladatnaplóit
+### <a name="job-logs"></a>Feladatnaplók
 | Tulajdonság | Leírás |
 | --- | --- |
 | TimeGenerated |A runbook-feladat végrehajtásának dátuma és időpontja. |
@@ -92,19 +92,19 @@ Azure Automation diagnosztika kétféle típusú rekordok Naplóelemzési hoz l�
 | JobId_g |GUID, a runbook-feladat azonosítója. |
 | ResultType |A runbook-feladat állapota. Lehetséges értékek:<br>– Új<br>- Elindítva<br>- Leállítva<br>- Felfüggesztve<br>- Sikertelen<br>-Befejeződött |
 | Kategória | Az adattípus besorolása. Az Automation esetében az érték JobLogs. |
-| OperationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az automatizáláshoz értéke feladat. |
+| OperationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat. |
 | Erőforrás | Az Automation-fiók neve |
-| SourceSystem | Hogyan Naplóelemzési gyűjti az adatokat. Mindig *Azure* az Azure diagnostics. |
+| SourceSystem | A Log Analytics hogyan összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
 | ResultDescription |Ismerteti a runbook-feladat eredményállapotát. Lehetséges értékek:<br>- A feladat elindult<br>- A feladat nem sikerült<br>- A feladat befejeződött |
 | CorrelationId |GUID, a runbook-feladat korrelációs azonosítója. |
-| ResourceId |A runbook Azure Automation szolgáltatásbeli fiók erőforrás azonosítóját adja meg. |
-| SubscriptionId | Az Azure-előfizetés azonosítója (GUID) az Automation-fiókhoz. |
-| ResourceGroup | Az erőforráscsoport neve az Automation-fiók. |
+| ResourceId |Itt adhatja meg az Azure Automation fiók erőforrás-azonosítója a runbook. |
+| Előfizetés-azonosító | Az Azure-előfizetés azonosítóját (GUID) az Automation-fiókhoz. |
+| Erőforráscsoport | Az Automation-fiókot az erőforráscsoport neve. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
-| ResourceType | AUTOMATIONACCOUNTS |
+| Erőforrástípus | AUTOMATIONACCOUNTS |
 
 
-### <a name="job-streams"></a>Feladat adatfolyamok
+### <a name="job-streams"></a>Feladatstreamek
 | Tulajdonság | Leírás |
 | --- | --- |
 | TimeGenerated |A runbook-feladat végrehajtásának dátuma és időpontja. |
@@ -113,61 +113,61 @@ Azure Automation diagnosztika kétféle típusú rekordok Naplóelemzési hoz l�
 | StreamType_s |A feladatstream típusa. Lehetséges értékek:<br>- Folyamatban<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes |
 | Tenant_g | A hívónak a bérlői azonosító GUID. |
 | JobId_g |GUID, a runbook-feladat azonosítója. |
-| ResultType |A runbook-feladat állapota. Lehetséges értékek:<br>-Folyamatban |
+| ResultType |A runbook-feladat állapota. Lehetséges értékek:<br>– Folyamatban |
 | Kategória | Az adattípus besorolása. Az Automation esetében az érték JobStreams. |
-| OperationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az automatizáláshoz értéke feladat. |
+| OperationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat. |
 | Erőforrás | Az Automation-fiók neve |
-| SourceSystem | Hogyan Naplóelemzési gyűjti az adatokat. Mindig *Azure* az Azure diagnostics. |
+| SourceSystem | A Log Analytics hogyan összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
 | ResultDescription |A runbook kimeneti streamjét tartalmazza. |
 | CorrelationId |GUID, a runbook-feladat korrelációs azonosítója. |
-| ResourceId |A runbook Azure Automation szolgáltatásbeli fiók erőforrás azonosítóját adja meg. |
-| SubscriptionId | Az Azure-előfizetés azonosítója (GUID) az Automation-fiókhoz. |
-| ResourceGroup | Az erőforráscsoport neve az Automation-fiók. |
+| ResourceId |Itt adhatja meg az Azure Automation fiók erőforrás-azonosítója a runbook. |
+| Előfizetés-azonosító | Az Azure-előfizetés azonosítóját (GUID) az Automation-fiókhoz. |
+| Erőforráscsoport | Az Automation-fiókot az erőforráscsoport neve. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
-| ResourceType | AUTOMATIONACCOUNTS |
+| Erőforrástípus | AUTOMATIONACCOUNTS |
 
-## <a name="viewing-automation-logs-in-log-analytics"></a>A Naplóelemzési bejelentkezik Automation megtekintése
-Most, hogy az Automation-feladat naplók küldése Naplóelemzési használatához nézzük meg, mi mindent, ezek a naplók Naplóelemzési belül.
+## <a name="viewing-automation-logs-in-log-analytics"></a>A Log Analytics-naplók Automation megtekintése
+Most, hogy az Automation-feladat naplókat küld a Log Analytics kezdi, lássuk, mit tehet a Log Analytics belül ezeket a naplókat.
 
 A naplók megtekintéséhez futtassa a következő lekérdezést: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
-### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>E-mailt küld, ha egy runbook-feladat sikertelen lesz, vagy felfüggesztése
-Az első ügyfél egyik kéri van arra, hogy a szöveg vagy egy e-mailt küldeni, ha probléma merül fel a runbook-feladatok.   
+### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>E-mail küldése, ha a runbook-feladat meghiúsul, vagy felfüggeszti a
+A kiemelt ügyfeleknek küldtük egyik kéri arra, hogy küldjön egy e-mailt vagy egy szöveges, ha valami probléma merül fel a runbook-feladat van.   
 
-A riasztási szabályt létrehozni, akkor először hozzon létre egy napló keressen rá a runbook feladat azt jelzi, hogy a riasztás kell meghívnia. Kattintson a **riasztás** gombra kattintva hozza létre és konfigurálja a riasztási szabályt.
+Létrehoz egy riasztási szabályt, hogy először létrehozni egy naplókeresést kell meghívnia a riasztás runbook-feladat rekordok. Kattintson a **riasztás** gombot létrehozni és konfigurálni a riasztási szabályt.
 
-1. A napló elemzés áttekintése lapon kattintson **naplófájl-keresési**.
-2. A riasztás napló keresési lekérdezés létrehozásához írja be a következő keresést a lekérdezés mezőbe: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` szerint is csoportosíthatók a RunbookName által használatával: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+1. A Log Analytics áttekintése oldalon kattintson **naplóbeli keresés**.
+2. A riasztás számára, egy naplóbeli keresési lekérdezés létrehozásához írja be a következő keresési az lekérdezés mezőbe: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` is szerint csoportosíthatók az RunbookName használatával: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
-   Ha korábban beállított naplók egynél több Automation-fiók vagy előfizetés a munkaterületet, csoportosíthatók a a riasztások előfizetés és az Automation-fiók. Automation-fiók neve JobLogs keresése mezőjében erőforrás található.
-1. Lehetőségre a **létrehozás szabály** kattintson **+ Új riasztási szabály** az oldal tetején. A riasztás konfigurálása lehetőségekről további információkért lásd: [riasztások jelentkezzen be Azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md).
+   Ha beállította naplók egynél több Automation-fiókot vagy előfizetést a munkaterületre, előfizetése és az Automation-fiók által a riasztásokat csoportosíthatók. Automation-fiók neve JobLogs keresése erőforrás mezőjében található.
+1. Megnyitásához a **létrehozás szabály** kattintson **+ Új riasztási szabály** az oldal tetején. A beállítások konfigurálása a riasztás további információkért lásd: [Naplóriasztások az Azure-ban](../monitoring-and-diagnostics/monitor-alerts-unified-log.md).
 
-### <a name="find-all-jobs-that-have-completed-with-errors"></a>Található összes feladatot, amely hibákkal fejeződött be
-Mellett hibák riasztást küld, ha a runbook-feladatok nem okozó hibát tartalmaz található. Ezekben az esetekben PowerShell egy hibafolyam eredményez, de az nem okozó hibák nem okoznak a feladat felfüggesztése, vagy sikertelen.    
+### <a name="find-all-jobs-that-have-completed-with-errors"></a>Keresse meg az összes feladatot, amely hibákkal fejeződött be
+Mellett hibák riasztást küld, amikor egy runbook-feladat nem megszakító hibát tartalmaz találja. Ezekben az esetekben a PowerShell-hibafolyam eredményez, de a megszakítást nem okozó hibákat nem okoznak a feladat felfüggesztése vagy sikertelen.    
 
-1. A Naplóelemzési munkaterületet, kattintson **naplófájl-keresési**.
-2. A lekérdezés mezőbe írja be a `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` , majd a **keresési** gombra.
+1. A Log Analytics munkaterületén kattintson **naplóbeli keresés**.
+2. A lekérdezés mezőbe írja be a `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` és kattintson a **keresési** gombra.
 
-### <a name="view-job-streams-for-a-job"></a>Nézet feladat adatfolyamok feladat
-Ha egy feladat hibakeresése, is érdemes lehet megismerhetők a feladat adatfolyamokat. A következő lekérdezés a GUID 2ebd22ea-e05e-4eb9 – 9d 76-d73cbd4356e0 egyetlen feladat az adatfolyamokat jeleníti meg:   
+### <a name="view-job-streams-for-a-job"></a>A feladat nézet feladatstreamek
+Amikor egy feladat hibakeresése, is érdemes megvizsgáljuk a feladatstreamek. A következő lekérdezést egy egyetlen GUID 2ebd22ea-e05e-4eb9 – 9d 76-d73cbd4356e0 feladathoz tartozó összes adatfolyamot látható:   
 
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort by TimeGenerated asc | project ResultDescription`
 
 ### <a name="view-historical-job-status"></a>Korábbi feladat állapotának megtekintése
-Végül érdemes lehet a feladatelőzményekben megjelenítheti az adott idő alatt. Ez a lekérdezés segítségével keresse meg a feladatok állapotának adott idő alatt.
+Végül, előfordulhat, hogy szeretné megjeleníteni a feladatelőzmények idővel. Ez a lekérdezés segítségével keresse meg a feladatok állapota idővel.
 
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
-<br> ![Naplózási előzmények feladat állapota diagramra](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
+<br> ![Log Analytics korábbi feladat állapot diagramja](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
 ## <a name="summary"></a>Összegzés
-Az Automation feladat állapotát és az adatfolyam adatokat küld a Naplóelemzési, által az automatizálási feladatok állapotának jobb betekintést kaphat:
-+ Riasztások beállítása értesítést küldenek, ha probléma van.
-+ Egyéni nézetei és a keresési lekérdezések segítségével a runbook eredményeinek képi megjelenítése, runbook-feladat állapotát, és egyéb kapcsolódó fő mutatók vagy metrikákat.  
+Az Automation-feladat állapotának és az adatfolyam adatainak küld a Log Analytics, az állapot az Automation-feladatok által jobb betekintést kaphat:
++ Riasztások beállítása arra az esetre, ha probléma van.
++ Egyéni nézetek és a keresési lekérdezések segítségével a runbook eredményeinek képi megjelenítése, forgatókönyv-feladat állapota, és egyéb kapcsolódó legfontosabb mutatók vagy a metrikákat.  
 
-A Naplóelemzési az Automation-feladat működési áttekinthetősége biztosít, és segít a cím incidensek gyorsabb.  
+Log Analytics az Automation-feladatokkal, nagyobb átláthatók biztosít, és segíthet a cím az incidensek gyorsabb.  
 
 ## <a name="next-steps"></a>További lépések
-* Különböző keresési lekérdezések összeállításához, és tekintse át az Automation-feladat naplók és a Naplóelemzési kapcsolatos további tudnivalókért lásd: [Log Analytics-e jelentkezni a keresések](../log-analytics/log-analytics-log-searches.md).
-* Szeretné megtudni, hogyan hozhat létre és runbook-kimenet és a hiba üzeneteket beolvasni, lásd: [Runbook kimenet és üzenetek](automation-runbook-output-and-messages.md).
+* Más keresési lekérdezéseket hozhat létre, és tekintse át az Automation feladatnaplóit Log Analytics szolgáltatással kapcsolatos további tudnivalókért lásd: [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md).
+* Megtudhatja, hogyan hozhat létre és kimenetet és üzeneteket beolvasni a runbookok, lásd: [Runbook kimeneti és az üzenetek](automation-runbook-output-and-messages.md).
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza.
-* Log Analytics és a gyűjtemény adatforrások kapcsolatos további információkért lásd: [gyűjtése Azure storage adatok a Naplóelemzési – áttekintés](../log-analytics/log-analytics-azure-storage.md).
+* A Log Analytics használatával és adatgyűjtési forrásokkal kapcsolatos további információkért lásd: [gyűjtése az Azure storage-adatok a Log Analytics – áttekintés](../log-analytics/log-analytics-azure-storage.md).

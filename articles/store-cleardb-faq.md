@@ -11,12 +11,13 @@ ms.workload: data-management
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: ff36a67cd09dd1e5cb5635be17d1dd76fc824d1a
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: f078cad95d39c18a8391bc32100d08accc53c37c
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917074"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215203"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK használatával, és az Azure Web Appshez az adatbázisok a ClearDB MySQL vásárlásával kapcsolatos gyakori kérdésekre ad választ.

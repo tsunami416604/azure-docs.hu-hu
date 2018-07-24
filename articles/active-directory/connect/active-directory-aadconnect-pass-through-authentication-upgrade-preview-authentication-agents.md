@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 3f2480fb1068096bf77a3677ad62c886bc4774bb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: be76965e99a20c1f7164187255e26f6463926c2f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160154"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214727"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Az Azure Active Directory átmenő hitelesítés: Frissítési előzetes verziójú hitelesítési ügynökök
 
@@ -60,7 +60,7 @@ A hitelesítési ügynökök minden kiszolgálón, az előző lépésben azonos�
 A frissítés előtt ellenőrizze, hogy a következő elemek helyen:
 
 1. **Csak felhőalapú globális rendszergazdai fiók létrehozása**: nem a meglévő anélkül, hogy egy csak felhőalapú globális rendszergazdai fiók használata a vészhelyzetekre, ahol az átmenő hitelesítés ügynökök nem működnek megfelelően. Ismerje meg [hozzáadása egy csak felhőalapú globális rendszergazdai fiókkal](../active-directory-users-create-azure-portal.md). Ehhez a lépéshez kritikus fontosságú, és biztosítja, hogy ne zárja ki a bérlő.
-2.  **Magas rendelkezésre állásának biztosításához**: Ha korábban nem sikerült befejezni, telepítse a magas rendelkezésre állást biztosít a bejelentkezési kérelmek ezeket a hitelesítési ügynök második önálló [utasításokat](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+2.  **Magas rendelkezésre állásának biztosításához**: Ha korábban nem sikerült befejezni, telepítse a magas rendelkezésre állást biztosít a bejelentkezési kérelmek ezeket a hitelesítési ügynök második önálló [utasításokat](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Az Azure AD Connect-kiszolgálón a hitelesítési ügynök frissítése
 

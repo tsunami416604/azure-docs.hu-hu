@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/18/2018
 ms.author: trinadhk
-ms.openlocfilehash: c9dff77f6b9fffc02ec94caa3454500772651195
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39137373"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205340"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure virtuális gép biztonsági mentési vermének v2 verziójára frissítsen.
 
@@ -48,7 +48,7 @@ Alapértelmezés szerint a pillanatképek őrzi meg a hét napja. Ez a funkció 
 
 * A pillanatképek a rendszer helyben tárolja, a helyreállítási pont létrehozása növelése érdekében és visszaállítási műveletek felgyorsítása érdekében. Ennek eredményeképpen láthatja a tárolási költségek, amelyek megfelelnek a 7 napos időszakban készített pillanatkép.
 
-* Növekményes pillanatképek lapblobként tárolt. Nem felügyelt lemezeket használó összes ügyfelei a hét nap, a pillanatképek vannak tárolva az ügyfél helyi tárfiók díjkötelesek. A jelenlegi díjszabási modell szerint nem felügyelt lemezekkel rendelkező ügyfelek költség nélkül.
+* Növekményes pillanatképek lapblobként tárolt. Nem felügyelt lemezeket használó összes ügyfelei a hét nap, a pillanatképek vannak tárolva az ügyfél helyi tárfiók díjkötelesek. Mivel a visszaállítási pont gyűjtemények által felügyelt virtuális gép biztonsági mentéseinek használt blobpillanatképeket használja az alapul szolgáló tárolási szinten, a felügyelt lemezek érhet el megfelelő költségeket [blob-pillanatkép díjszabás](https://docs.microsoft.com/rest/api/storageservices/understanding-how-snapshots-accrue-charges) és a növekményes-e. 
 
 * Egy prémium szintű virtuális gép egy pillanatkép helyreállítási pontból állítja vissza, ha egy ideiglenes tárolási helyet szolgál, míg a virtuális gép létrehozása.
 
@@ -56,7 +56,7 @@ Alapértelmezés szerint a pillanatképek őrzi meg a hét napja. Ez a funkció 
 
 ## <a name="upgrade"></a>Frissítés
 ### <a name="the-azure-portal"></a>Az Azure Portal
-Ha használja az Azure Portalon, a tároló irányítópultjának megjelenik egy értesítés. Ezt az értesítést a nagyméretű lemezek támogatása és a biztonsági mentés és visszaállítás sebességének fejlesztései vonatkozik.
+Ha használja az Azure Portalon, a tároló irányítópultjának megjelenik egy értesítés. Ezt az értesítést a nagyméretű lemezek támogatása és a biztonsági mentés és visszaállítás sebességének fejlesztései vonatkozik. Másik lehetőségként megnyithatja a tároló frissítési lehetősége tulajdonságok lapján.
 
 ![A virtuális gép biztonsági másolat verem Resource Manager üzemi modell – értesítés a támogatás megszűnéséről biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-banner.png) 
 
@@ -72,13 +72,13 @@ Futtassa a következő parancsmagokat egy emelt szintű PowerShell terminálon:
     PS C:> Connect-AzureRmAccount
     ```
 
-2.  Válassza ki az előfizetést, amelyhez szeretne regisztrálni az előzetes verzió:
+2.  Regisztrálni kívánt előfizetés kiválasztásához:
 
     ```
     PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
     ```
 
-3.  Regisztrálja ezt az előfizetést a private Preview verziójára:
+3.  Ez az előfizetés regisztrálása:
 
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
@@ -101,13 +101,13 @@ Az alábbi kérdések és válaszok összegyűjtése a fórumok és a vásárló
 
 V2 verzióra frissíti, van-e a jelenlegi biztonsági mentések nem érinti, és nem kell konfigurálnia a környezetben. A frissítés és a biztonsági mentési környezet továbbra is működik, mert.
 
-### <a name="what-does-it-cost-to-upgrade-to-azure-backup-stack-v2"></a>Mit költséggel jár a frissítsen az Azure Backup stack v2?
+### <a name="what-does-it-cost-to-upgrade-to-azure-vm-backup-stack-v2"></a>Mit költséggel jár a frissítsen az Azure VM Backup stack v2?
 
-Nincs frissítése az Azure Backup stack v2 a költségek nélkül. A pillanatképek rendszer helyben tárolja a helyreállítási pont létrehozása felgyorsítása és visszaállítási műveletek. Ennek eredményeképpen láthatja a tárolási költségek, amelyek megfelelnek a 7 napos időszakban készített pillanatképeket.
+Nincs frissítés a verem v2 költség nélkül. A pillanatképek rendszer helyben tárolja a helyreállítási pont létrehozása felgyorsítása és visszaállítási műveletek. Ennek eredményeképpen láthatja a tárolási költségek, amelyek megfelelnek a 7 napos időszakban készített pillanatképeket.
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Megnöveli a prémium szintű storage fiók pillanatképekre vonatkozó korlát 10 TB-os által a verem v2 verzióra?
 
-Nem.
+V2 stack száma 10 TB-os pillanatképekre vonatkozó korlát a nem felügyelt lemezek prémium szintű storage-fiók felé részeként készített pillanatkép. 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>A prémium szintű Storage-fiókok hajtsa végre az azonnali helyreállítási pontok készített pillanatkép foglalhat el a 10 TB-os pillanatképekre vonatkozó korlát?
 
@@ -117,14 +117,6 @@ Igen, prémium szintű tárfiókok esetén az azonnali helyreállítási pontok,
 
 Minden nap, egy új pillanatkép készítésének időpontjában. Hét egyes pillanatképek vannak. A szolgáltatásnak nincs **nem** készítsen róla egy másolatot az első napon, és adja hozzá a módosítások a következő hat nap.
 
-### <a name="what-happens-if-the-default-resource-group-is-deleted-accidentally"></a>Mi történik, ha véletlenül törölték az alapértelmezett erőforráscsoport?
-
-Az erőforráscsoport törlése esetén az összes védett virtuális gépek az adott régióban, az azonnali helyreállítási pontjai is elvesznek. A következő biztonsági mentés esetén az erőforráscsoport jön létre újra, és a biztonsági mentések a várt módon folytatódik. Ez a funkció nem kizárólagos azonnali helyreállítási pontokra.
-
-### <a name="can-i-delete-the-default-resource-group-created-for-instant-recovery-points"></a>Törölheti az azonnali helyreállítási pontok számára létrehozott alapértelmezett erőforráscsoport?
-
-Az Azure Backup szolgáltatás a felügyelt erőforráscsoport jön létre. Jelenleg nem módosítható, és az erőforráscsoport módosításához. Emellett nem kell zárolni az erőforráscsoport. Ez az útmutató már nem csak a V2-verem a.
- 
 ### <a name="is-a-v2-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Egy v2 pillanatkép, olyan növekményes pillanatkép vagy a teljes pillanatkép?
 
-Nem felügyelt lemezek növekményes pillanatképek szolgálnak. Felügyelt lemezek a pillanatkép egy teljes pillanatképet.
+Nem felügyelt lemezek növekményes pillanatképek szolgálnak. Felügyelt lemezek visszaállítási pont gyűjteményt használ az Azure Backup által létrehozott blob-pillanatképekkel, és ezért növekményes. 

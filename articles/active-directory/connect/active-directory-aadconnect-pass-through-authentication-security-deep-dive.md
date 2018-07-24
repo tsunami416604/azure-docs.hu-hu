@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 48710bc10a57854fcbd4ffbe44bc426333baddc0
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: ad4567ffb927694872d5b86dd38833466f944ca8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159229"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215084"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása
 
@@ -37,14 +37,14 @@ A tárgyalt témakörök a következők:
 Ez a funkció a kulcs biztonsági beállításait az alábbiak:
 - El vannak különítve a bejelentkezési kérelmek, a bérlők között biztonságos, a több-bérlős architektúra alapján készült.
 - A helyszíni jelszavak soha nem a felhőben, bármilyen formában vannak tárolva.
-- A helyszíni hitelesítési ügynökök, amelyek figyelik, és reagálni, a jelszó érvényesítése kérelmek tétele csak a kimenő kapcsolatokat a hálózaton belül. Esetében nem követelmény a szegélyhálózaton (DMZ) hitelesítési ügynökök telepítéséhez.
+- A helyszíni hitelesítési ügynökök, amelyek figyelik, és reagálni, a jelszó érvényesítése kérelmek tétele csak a kimenő kapcsolatokat a hálózaton belül. Esetében nem követelmény a szegélyhálózaton (DMZ) hitelesítési ügynökök telepítéséhez. Ajánlott eljárásként kezeljük az összes olyan kiszolgálóalkalmazást futtató hitelesítési ügynökök, a Tier 0 rendszerek (lásd: [referencia](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 - Csak szabványos portot (80-as és 443-as) az Azure AD a hitelesítési ügynököktől származó kimenő kommunikációra szolgálnak. Nem kell megnyitni a bejövő portra a tűzfalon. 
   - 443-as port az összes hitelesített kimenő kommunikációra szolgál.
   - 80-as port szolgál csak a visszavont tanúsítványok listájának (CRL) letöltése esetén győződjön meg arról, hogy ez a szolgáltatás által használt tanúsítványok egyike visszavonták.
   - A hálózati követelmények teljes listáját lásd: [Azure Active Directory átmenő hitelesítés: gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites).
 - Hogy a felhasználók a bejelentkezés során adja meg a felhőben vannak titkosítva, előtt a helyszíni hitelesítési ügynökök fogadja el az Active Directory érvényesítésre.
 - Az Azure AD között a HTTPS-csatorna és a helyszíni hitelesítési ügynök a kölcsönös hitelesítés védi.
-- A szolgáltatás zökkenőmentesen integrálódik az Azure AD felhőalapú-védelmi funkciókat, például a feltételes hozzáférési szabályzatok (beleértve az Azure multi-factor Authentication), az identitásvédelem és intelligens zárolás.
+- A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), többek között a multi-factor Authentication (MFA), [örökölt hitelesítés](../active-directory-conditional-access-conditions.md) , illetve [ kiszűri a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="components-involved"></a>Részt vevő összetevők
 
@@ -209,6 +209,7 @@ Az automatikus frissítés hitelesítési ügynök:
 ## <a name="next-steps"></a>További lépések
 - [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md): ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
 - [Gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md): első lépésekhez az Azure AD átmenő hitelesítés.
+- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
 - [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): az intelligens zárolás funkciót konfigurálhatja a bérlő felhasználói fiókok védelmét.
 - [Hogyan működik](active-directory-aadconnect-pass-through-authentication-how-it-works.md): kapcsolatos alapismereteket tartalmazza az Azure AD átmenő hitelesítés működéséről.
 - [Gyakori kérdések](active-directory-aadconnect-pass-through-authentication-faq.md): választ találhat a gyakori kérdésekre.

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc98f15303f23937d58131de971d5c60017c9034
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917710"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214982"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítés: Gyors útmutató
 
@@ -29,9 +29,9 @@ ms.locfileid: "37917710"
 Az Azure Active Directory (Azure AD) átmenő hitelesítés lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be a helyszíni és felhőalapú alkalmazások is ugyanazt a jelszót. Az átmenő hitelesítés közvetlenül a helyi Active Directorybeli jelszavuk érvényesítésével felhasználó jelentkezik be.
 
 >[!IMPORTANT]
->Ha ez a funkció előzetes verzió keresztül használja, győződjön meg arról, az előzetes verziók a hitelesítési ügynökök frissítése szereplő utasítások segítségével [Azure Active Directory átmenő hitelesítés: frissítési előzetes verzió Hitelesítési ügynökök](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md).
+>Ha az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal) átmenő hitelesítésre migrál, javasoljuk, hogy kövesse a részletes üzembe helyezési útmutató, közzétett [Itt](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
 
-Kövesse ezeket az utasításokat az átmenő hitelesítés telepítéséhez:
+Kövesse ezeket az utasításokat az átmenő hitelesítés telepítése a bérlő:
 
 ## <a name="step-1-check-the-prerequisites"></a>1. lépés: Az Előfeltételek ellenőrzése
 
@@ -50,7 +50,11 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek.
     >[!NOTE]
     >Az Azure AD Connect-verziók 1.1.557.0, 1.1.558.0, 1.1.561.0 és 1.1.614.0 van a Jelszókivonat-szinkronizálás kapcsolatos probléma. Ha Ön _nem_ kívánja használni a Jelszókivonat-szinkronizálás az átmenő hitelesítéssel, olvassa el a [kibocsátási megjegyzések az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
 
-3. További kiszolgáló azonosítása (Windows Server 2012 R2 rendszerű vagy újabb), a hitelesítési ügynök önálló futtathatja. A hitelesítési ügynök verziója kell lennie a 1.5.193.0 vagy újabb. A kérelmet, jelentkezzen be a magas rendelkezésre állásának biztosításához a további kiszolgáló van szükség. Adja hozzá a kiszolgálót a felhasználókat, amelyeknek a jelszava érvényesítenie kell ugyanabban az Active Directory erdőben.
+3. Egy vagy több további kiszolgálók azonosításához (Windows Server 2012 R2 rendszerű vagy újabb), különálló hitelesítési ügynökök futtathatja. Ezek a további kiszolgálók a kérelmet, jelentkezzen be a magas rendelkezésre állás biztosításához szükségesek. A kiszolgálókat hozzáadja a felhasználókat, amelyeknek a jelszava érvényesítenie kell ugyanabban az Active Directory erdőben.
+
+    >[!IMPORTANT]
+    >Éles környezetben azt javasoljuk, hogy rendelkezik-e legalább 3 hitelesítési ügynökök futtassa a bérlő. 12 hitelesítési ügynökök bérlőnként rendszer korlátozva van. Ajánlott eljárásként kezeljük az összes olyan kiszolgálóalkalmazást futtató hitelesítési ügynökök, a Tier 0 rendszerek és (lásd: [referencia](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+
 4. Ha egy a kiszolgálók és az Azure AD között tűzfal található, adja meg a következő elemek:
    - Győződjön meg arról, hogy a hitelesítési ügynökök kezdeményezhetik *kimenő* kéréseket az Azure AD az alábbi portokon keresztül:
    
@@ -62,32 +66,14 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek.
     Ha a tűzfal szabályok alapján származó kikényszeríti, nyissa meg ezeket a portokat, a forgalom hálózati szolgáltatásként futó Windows-szolgáltatások.
    - Ha a tűzfal vagy proxy lehetővé teszi a DNS engedélyezéskor engedélyezett kapcsolatokat  **\*. msappproxy.net** és  **\*. servicebus.windows.net**. Való hozzáférés engedélyezése, ha nem, akkor a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653), amely hetente frissül.
    - A hitelesítési ügynökök hozzáférésre van szükségük **login.windows.net** és **login.microsoftonline.com** kezdeti regisztráció. Nyissa meg a tűzfal, valamint az URL-címeket.
-   - A tanúsítványok ellenőrzését, a következő URL-címek feloldása: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, és  **www.microsoft.com:80**. Más Microsoft-termékekkel a tanúsítványok ellenőrzését az URL-címek szolgálnak. Előfordulhat, hogy már rendelkezik az URL-címek feloldva.
+   - A tanúsítványok ellenőrzését, a következő URL-címek feloldása: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, és  **www.microsoft.com:80**. Mivel az URL-címek szolgálnak más Microsoft-termékekkel, előfordulhat, hogy már ezen URL-címek feloldva a tanúsítványok ellenőrzését.
 
-## <a name="step-2-enable-exchange-activesync-support-optional"></a>2. lépés: (Nem kötelező) az Exchange ActiveSync-támogatás engedélyezése
-
-Kövesse ezeket az utasításokat az Exchange ActiveSync-támogatás engedélyezése:
-
-1. Használat [Exchange PowerShell](https://technet.microsoft.com/library/mt587043(v=exchg.150).aspx) , futtassa a következő parancsot:
-```
-Get-OrganizationConfig | fl per*
-```
-
-2. Ellenőrizze a `PerTenantSwitchToESTSEnabled` beállítás. Ha az érték **igaz**, a bérlő megfelelően van konfigurálva. Ez általában a helyzet a legtöbb ügyfél számára. Ha az érték **hamis**, futtassa a következő parancsot:
-```
-Set-OrganizationConfig -PerTenantSwitchToESTSEnabled:$true
-```
-
-3. Ellenőrizze, hogy az érték a `PerTenantSwitchToESTSEnabled` most beállítása **igaz**. Várjon egy órát, mielőtt a következő lépéssel.
-
-Ha e lépés során problémák között, ellenőrizze a [hibaelhárítási útmutató](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#exchange-activesync-configuration-issues).
-
-## <a name="step-3-enable-the-feature"></a>3. lépés: A funkció engedélyezése
+## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
 
 Átmenő hitelesítés keresztül engedélyezése [az Azure AD Connect](active-directory-aadconnect.md).
 
 >[!IMPORTANT]
->Az átmenő hitelesítés az Azure AD Connect elsődleges vagy átmeneti kiszolgálón engedélyezheti. Az elsődleges kiszolgálóról azt kell engedélyezni.
+>Az átmenő hitelesítés az Azure AD Connect elsődleges vagy átmeneti kiszolgálón engedélyezheti. Javasoljuk, hogy engedélyezi azt az elsődleges kiszolgálóról.
 
 Ha először telepíti az Azure AD Connect, válassza ki a [egyéni telepítési útvonal](active-directory-aadconnect-get-started-custom.md). Jelenleg a **felhasználói bejelentkezés** lapon a **átmenő hitelesítés** , a **bejelentkezési módszert**. A sikeres telepítést, a egy átmenő hitelesítési ügynök telepítve van az Azure AD Connect ugyanazon a kiszolgálón. Emellett az átmenő hitelesítés szolgáltatás engedélyezve van a bérlőn.
 
@@ -98,9 +84,9 @@ Ha már telepítette az Azure AD Connect használatával a [Expressz telepítés
 ![Az Azure AD Connect: Felhasználói bejelentkezés módosítása](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
 >[!IMPORTANT]
->Az átmenő hitelesítés egy olyan bérlői szintű szolgáltatás. Bekapcsolását, hatással van a bejelentkezés a felhasználók több _összes_ a felügyelt tartomány a bérlőben. Ha az átmenő hitelesítés való váltás az Active Directory összevonási szolgáltatások (AD FS), az ellenőrzést, várjon legalább 12 órán át az AD FS-infrastruktúra leállítása előtt. A várakozási idő, hogy győződjön meg arról, hogy felhasználók is folyamatosan jelentkezik be az Exchange ActiveSync az áttérés során.
+>Az átmenő hitelesítés egy olyan bérlői szintű szolgáltatás. Bekapcsolását, hatással van a bejelentkezés a felhasználók több _összes_ a felügyelt tartomány a bérlőben. Ha az átmenő hitelesítés való váltás az Active Directory összevonási szolgáltatások (AD FS), az ellenőrzést, várjon legalább 12 órán át az AD FS-infrastruktúra leállítása előtt. A várakozási idő, hogy győződjön meg arról, hogy felhasználók is folyamatosan jelentkezik be az Exchange ActiveSync az áttérés során. Az áttelepítés az AD FS-ről átmenő hitelesítés további segítségért tekintse meg a részletes üzembe helyezési útmutató, közzétett [Itt](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
 
-## <a name="step-4-test-the-feature"></a>4. lépés: A szolgáltatás tesztelése
+## <a name="step-3-test-the-feature"></a>3. lépés: A szolgáltatás tesztelése
 
 Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte az átmenő hitelesítés megfelelően:
 
@@ -116,9 +102,12 @@ Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte 
 
 Ezen a ponton a bérlő összes felügyelt tartományokban lévő felhasználók az átmenő hitelesítés használatával jelentkezhetnek be. Összevont tartományokban lévő felhasználók azonban továbbra is, az AD FS vagy egy másik összevonási szolgáltató, amelyet korábban konfigurált használatával bejelentkezni. Ha alakít át egy tartományt a felügyelt összevont, az adott tartomány összes felhasználó automatikusan indítsa el az átmenő hitelesítés használatával jelentkezik be. Az átmenő hitelesítés szolgáltatás nincs hatással a kizárólag felhőalapú felhasználói.
 
-## <a name="step-5-ensure-high-availability"></a>5. lépés: A magas rendelkezésre állásának biztosításához
+## <a name="step-4-ensure-high-availability"></a>4. lépés: A magas rendelkezésre állásának biztosításához
 
-Ha azt tervezi, éles környezetben üzembe helyezése az átmenő hitelesítés, telepítenie kell legalább egy további önálló hitelesítési ügynök. Ezek a hitelesítési ügynököt telepíteni ko _más_ , mint az egy futó Azure AD Connect. A telepítő felhasználói bejelentkezési kérelmek magas rendelkezésre állást biztosít.
+Ha azt tervezi, éles környezetben üzembe helyezése az átmenő hitelesítés, telepítenie kell a további önálló hitelesítési ügynökök. Ezek a hitelesítési ügynököt telepíteni ko _más_ , mint az egy futó Azure AD Connect. A telepítő felhasználói bejelentkezési kérelmek magas rendelkezésre állást biztosít.
+
+>[!IMPORTANT]
+>Éles környezetben azt javasoljuk, hogy rendelkezik-e legalább 3 hitelesítési ügynökök futtassa a bérlő. 12 hitelesítési ügynökök bérlőnként rendszer korlátozva van. Ajánlott eljárásként kezeljük az összes olyan kiszolgálóalkalmazást futtató hitelesítési ügynökök, a Tier 0 rendszerek és (lásd: [referencia](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 Kövesse az alábbi utasításokat a hitelesítési ügynök szoftver letöltéséhez:
 
@@ -132,7 +121,7 @@ Kövesse az alábbi utasításokat a hitelesítési ügynök szoftver letöltés
 ![Az Azure Active Directory felügyeleti központ: ablaktábla-ügynök letöltése](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
 
 >[!NOTE]
->Emellett közvetlenül is letöltheti a hitelesítési ügynök szoftver [Itt](https://aka.ms/getauthagent). Tekintse át és fogadja el a hitelesítési ügynök [szolgáltatási feltételeit](https://aka.ms/authagenteula) _előtt_ telepíti azt.
+>Emellett közvetlenül is [töltse le a hitelesítési ügynök szoftver](https://aka.ms/getauthagent). Tekintse át és fogadja el a hitelesítési ügynök [szolgáltatási feltételeit](https://aka.ms/authagenteula) _előtt_ telepíti azt.
 
 Kétféleképpen helyezhet üzembe egy önálló hitelesítési ügynök:
 
@@ -152,6 +141,7 @@ A második hozzon létre, és a egy felügyelet nélküli telepítési parancsf�
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>További lépések
+- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
 - [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): ismerje meg, hogyan konfigurálhatja az intelligens zárolás funkciót a bérlő felhasználói fiókok védelmét.
 - [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md): ismerje meg, milyen forgatókönyvekre az átmenő hitelesítés használata támogatott, és melyek nem.
 - [Részletes technikai](active-directory-aadconnect-pass-through-authentication-how-it-works.md): az átmenő hitelesítési szolgáltatás működésének megismerése.

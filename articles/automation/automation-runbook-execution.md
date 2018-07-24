@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c01a63867ca3df85b4e7203c93855b43e9cd04c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3dfe16cc09f0453aef8adf8bf87a00aebd2054bc
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044849"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214635"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -36,15 +36,15 @@ A feladatok az Azure-erőforrások elérését azáltal, hogy az Azure-előfizet
 
 A következő táblázat ismerteti a különféle lehetséges állapotait feladat.
 
-| status | Leírás |
+| Állapot | Leírás |
 |:--- |:--- |
 | Befejeződött |A feladat sikeresen befejeződött. |
-| Meghiúsult |A [grafikus és a PowerShell-munkafolyamati runbookok](automation-runbook-types.md), a runbook fordítása sikertelen. A [PowerShell-parancsprogram runbookok](automation-runbook-types.md), a runbook nem indult el, vagy a feladat kivételt észlelt. |
+| Sikertelen |A [grafikus és a PowerShell-munkafolyamati runbookok](automation-runbook-types.md), a runbook fordítása sikertelen. A [PowerShell-parancsprogram runbookok](automation-runbook-types.md), a runbook nem indult el, vagy a feladat kivételt észlelt. |
 | Sikertelen volt a Várakozás az erőforrásokat, |A feladat sikertelen volt, mert elérte a [igazságos elosztás](#fair-share) háromszor korlátozhatja, és az azonos ellenőrzőpont vagy kezdete a forgatókönyv és minden alkalommal, amikor indított. |
 | Várakozási sorba helyezve |A feladat felszabaduljanak, amely segítségével elindítható, hogy egy automatizálási feldolgozó erőforrások vár. |
 | Indítás |A feladat hozzá lett rendelve egy feldolgozóhoz, és a rendszer az elindítás folyamatban van. |
 | Folytatás |A folytatása a feladat felfüggesztését követően annak folyamatban van. |
-| Fut |A feladat fut. |
+| Futtatás |A feladat fut. |
 | Futó erőforrások vár |A feladat lett távolítva a memóriából, mert elérte a [igazságos elosztás](#fair-share) korlátot. Folytatja a hamarosan az utolsó ellenőrzőponttól. |
 | Leállítva |A feladatot leállította a felhasználó, mielőtt befejeződhetett volna. |
 | Leállítás |A rendszer a feladat leállítása folyamatban van. |
@@ -145,7 +145,7 @@ Ez a szolgáltatás szembeni nélkül, határozatlan ideig futó runbookok, mive
 
 Ha a runbook rendelkezik nincsenek ellenőrzőpontok, vagy a feladat nem érte el a az első ellenőrzőpont folyamatban előtt, majd újraindul az elejétől.
 
-A sokáig futó feladatokat, javasoljuk, hogy használjon egy [hibrid Runbook-feldolgozó](automation-hrw-run-runbooks.md#job-behavior). Hibrid Runbook-feldolgozók igazságos elosztás nincs korlátozva, és a egy korlátozás nem rendelkezik a mennyi runbookot hajthat végre.
+A sokáig futó feladatokat, javasoljuk, hogy használjon egy [hibrid Runbook-feldolgozó](automation-hrw-run-runbooks.md#job-behavior). Hibrid Runbook-feldolgozók igazságos elosztás nincs korlátozva, és nincs korlátozás a mennyi runbookot hajthat végre.
 
 Az Azure-ban, egy PowerShell-munkafolyamati forgatókönyv használ, amikor a runbook létrehozása, ha biztosítania kell, hogy a két ellenőrzőpontok közötti tevékenységeket futási időnek nem haladja meg a három óra. Szükség lehet az ellenőrzőpontokat hozzáadni a runbookhoz, győződjön meg arról, hogy azt nem eléri ezt a korlátot három óra vagy feloszthatja a hosszú futó műveletek. Például a runbook egy reindex előfordulhat, hogy végre nagy SQL-adatbázisba. Ha a egyetlen művelet nem fejeződik az igazságos elosztás időkorláton belül, majd a feladat a memóriából és indítani az elejétől. Ebben az esetben kell részekre a reindex művelet, például újraindexeléshez egy olyan táblát, egyszerre több lépésekre, és helyezze ellenőrzőpont után minden művelet, úgy, hogy a feladat sikerült folytatni a legutóbbi művelet befejezését követően.
 

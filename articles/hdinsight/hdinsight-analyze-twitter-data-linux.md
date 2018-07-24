@@ -1,6 +1,6 @@
 ---
 title: Twitter-adatok elemzése az Apache Hive – Azure HDInsight |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatók Hive és a Hadoop on HDInsight nyers TWitter-adatok átalakításához egy kereshető Hive-táblába.
+description: Megtudhatja, hogyan használható a Hive és a Hadoop HDInsight, nyers TWitter-adatok átalakítása a kereshető Hive-táblába.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 0c6643e167f43c2524a4d00a209c5a5db22076a8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: cca015c1af9a10d2214ab972aff339b781e4fd44
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865314"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214533"
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>A HDInsight Hive és a Hadoop használatával Twitter-adatok elemzése
 
@@ -44,9 +44,9 @@ Twitter lehetővé teszi, hogy az egyes tweetek adatainak betöltése a JavaScri
 
    | Mező | Érték |
    |:--- |:--- |
-   | Name (Név) |MyHDInsightApp |
+   | Név |MyHDInsightApp |
    | Leírás |MyHDInsightApp |
-   | Honlap |http://www.myhdinsightapp.com |
+   | Webhely |http://www.myhdinsightapp.com |
 
 4. Ellenőrizze **Igen, elfogadom**, és kattintson a **Twitter-alkalmazás létrehozása**.
 

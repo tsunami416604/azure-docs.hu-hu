@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 06179d42d2904a4d82f466be0719768f9f010858
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 16f5ffbfbb3ec4e0c01dd2ad151f282e5b2d0a87
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868558"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213683"
 ---
 # <a name="azure-active-directory-reporting"></a>Jelentéskészítés az Azure Active Directoryban
 
@@ -88,7 +88,7 @@ További részleteket az [Azure Active Directory funkciók és képességek](htt
 
 
 
-A **bejelentkezési tevékenységjelentéssel** például a következő kérdésekre talál választ:
+A **bejelentkezési tevékenységjelentéshez** lehetővé teszi, hogy az alábbi kérdésekre például:
 
 - Milyen egy adott felhasználó bejelentkezési mintázata?
 - Hány felhasználó jelentkezett be egy adott héten?

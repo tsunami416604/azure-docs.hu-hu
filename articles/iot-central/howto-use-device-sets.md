@@ -1,6 +1,6 @@
 ---
-title: Eszköz használata az Azure IoT központi alkalmazás beállítása |} Microsoft Docs
-description: Kezelőként eszköz használata az Azure IoT központi alkalmazás beállítása.
+title: Beállítja a eszköz használata az Azure IoT Central alkalmazáshoz |} A Microsoft Docs
+description: Kezelőként használata az eszköz beállítása az Azure IoT Central alkalmazáshoz.
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
@@ -8,132 +8,132 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261678"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206071"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Eszköz használata az Azure IoT központi alkalmazás beállítása
 
-Ez a cikk ismerteti, hogyan, kezelőként eszköz használatára állítja be a Microsoft Azure IoT központi alkalmazásban.
+Ez a cikk bemutatja, hogyan kezelőként eszközével állít be a Microsoft Azure IoT Central alkalmazáshoz.
 
-Egy eszköz be kapcsolva, amelyek mert minden egyes megadott feltételeknek megfelelő eszközök listáját. Eszköz kezelése, megjelenítésének és kisebb, logikai csoportok eszközök csoportosításával léptékű eszközök elemzése súgó állítja be. Például minden légkondicionálók eszközöket létrehozhat Budapesten található minden olyan eszközre, amelynek ő feladata a budapesti technikus engedélyezéséhez. Ez a cikk bemutatja, hogyan hozza létre és konfigurálja az eszköz beállítása.
+Egy eszköz csoportot az eszközöket, amelyek vannak csoportosítva, mivel bizonyos megadott feltételeknek megfelelő összes listája. Eszközök kezelése, megjelenítését és elemzését a nagy mennyiségű eszközt eszközök kisebb, logikai csoportokba csoportosításával súgó állítja be. Az összes légkondicionálóját eszközök listáját például Budapesten található összes eszközt, amelynek ő feladata a Seattle technikus engedélyezéséhez létrehozása. Ez a cikk bemutatja, hogyan hozhat létre, és az eszköz csoportjainak konfigurálása.
 
-## <a name="create-a-device-set"></a>Eszköz létrehozása
+## <a name="create-a-device-set"></a>Hozzon létre egy eszköz csoportot
 
-Egy eszköz-készlet létrehozása:
+Eszköz létrehozásához állítsa be:
 
-1. Válasszon **eszköz beállítása** a bal oldali navigációs menü.
+1. Válasszon **eszköz csoportok** a bal oldali navigációs menüben.
 
 1. Kattintson az **+ Új** elemre.
 
     ![Új eszköz beállítása](media/howto-use-device-sets/image1.png)
 
-1. Nevezze el az eszköz beállítása, amely egyedi a teljes alkalmazás között. Azt is megteheti leírását. Eszköz is csak tartalmazhatnak egyetlen eszközt sablonból eszközök. Válassza ki az ebben a készletben használt eszköz sablon.
+1. Nevezze el az eszköz beállítása, amely egyedi a teljes alkalmazáson. Hozzáadhat egy leírást is. Egy eszköz csoportot csak egyetlen eszköz sablonból eszközök tartalmazhat. Válassza ki az eszközt a készlet használni kívánt sablont.
 
-1. Hozzon létre a lekérdezés futtatásával azonosíthatja azokat az eszközöket, az eszköz konfigurálása egy tulajdonságot, egy összehasonlító operátor és egy érték megadásával. Több lekérdezések és teljesítő eszközöket úgy adhatja hozzá **összes** a feltételek kerülnek, az eszköz beállítása. Az eszköz készletet hoz létre a bárki, aki hozzáfér az alkalmazás így bárki, aki megtekintése, módosítása vagy az eszköz-készlet törlése érhető el.
+1. Az eszköz kiválasztásával, egy tulajdonságot egy összehasonlító operátor és egy értéket állítsa be az eszközök azonosítására a lekérdezés létrehozásához. Hozzáadhat több lekérdezések és eszközei megfeleljenek **minden** az eszköz beállítása a feltételek vannak elhelyezve. Az eszköz készletet hoz létre, bárki, aki hozzáfér az alkalmazáshoz, így bárki megtekintése, módosítása vagy törlése az eszköz beállítása érhető el.
 
-    ![Lekérdezés beállítva](media/howto-use-device-sets/image2.png)
+    ![Eszköz beállítása lekérdezés](media/howto-use-device-sets/image2.png)
 
     > [!NOTE]
-    > Az eszköz be kapcsolva a dinamikus lekérdezés. Minden alkalommal, amikor az eszközök listájának megtekintéséhez lehet különböző eszközök a listában. A lista attól függ, mely eszközök jelenleg felel meg a lekérdezés feltételeinek.
+    > Az eszköz be kapcsolva egy dinamikus lekérdezést. Minden alkalommal, amikor az eszközök listájának megtekintéséhez lehet a különböző eszközök a listában. A lista attól függ, mely eszközök jelenleg felel meg a lekérdezés feltételeinek.
 
 1. Válassza a **Mentés** elemet.
 
-## <a name="configure-the-dashboard-for-your-device-set"></a>Az irányítópult az eszköz készlet konfigurálása
+## <a name="configure-the-dashboard-for-your-device-set"></a>Az eszköz beállítása az irányítópulton konfigurálása
 
-Miután létrehozta az eszköz-csoportosítóra, konfigurálhatja a **irányítópult**. A **irányítópult** helyezheti el képek és hivatkozások kezdőlapon van. Azt is megteheti, hogy az eszköz körben lévő eszközök listában rácsok.
+Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópult**. A **irányítópult** van a kezdőlap helyezheti el képek és hivatkozások. Azt is megteheti, hogy az eszköz beállítása az eszközök rácsok.
 
-1. Válasszon **eszköz beállítása** a bal oldali navigációs menü.
+1. Válasszon **eszköz csoportok** a bal oldali navigációs menüben.
 
 1. Válassza ki a **irányítópult** fülre.
 
-1. Kapcsolja be a **Tervező mód**.
+1. Kapcsolja be a **tervezési mód**.
 
     ![A Tervező módban](media/howto-use-device-sets/image3.png)
 
-1. A képfájl hozzáadásával kapcsolatos további információkért lásd: [előkészítése és feltöltése az Azure IoT központi alkalmazáshoz képek](howto-prepare-images.md).
+1. Kép adásával kapcsolatos információkért lásd: [előkészítése és a feltöltés rendszerképek az Azure IoT Central alkalmazásnak](howto-prepare-images.md).
 
-1. Adja hozzá egy hivatkozást csempe:
-    1. Válasszon **hivatkozás** a jobb oldali ablaktáblában.
+1. Hivatkozás csempe hozzáadása:
+    1. Válasszon **hivatkozás** a jobb oldali ablaktáblán.
 
-        ![Válassza ki a kapcsolat](media/howto-use-device-sets/image6.png)
+        ![Válassza ki a hivatkozást](media/howto-use-device-sets/image6.png)
 
-    1. Ad a hivatkozás egy **cím**.
+    1. Adja meg a hivatkozás egy **cím**.
     1. Válasszon egy URL-címet kell megnyitni, ha a hivatkozásra kattint.
-    1. Ad a hivatkozás egy leírást, amely alatt a **cím**.
+    1. Adjon a hivatkozás egy leírást, amely az alább látható a **cím**.
     1. Válassza a **Mentés** elemet.
 
         ![Hivatkozás mentése](media/howto-use-device-sets/image7.png)
 
-    1. Helyezze át, és a hivatkozás csempe átméretezése a **irányítópult**.
+    1. Helyezze át, és a hivatkozás csempe átméretezése a a **irányítópult**.
 
-1. Adja hozzá a rács. A rács az eszköz beállítása az oszlopokat, dönthet eszközöket tartalmazó táblázat.
-    1. Válasszon **rács** a jobb oldali ablaktáblában.
+1. Adjon hozzá egy rácsot. Rács az eszköz beállítása az oszlopokat választja a eszközök tábláját.
+    1. Válasszon **rács** a jobb oldali ablaktáblán.
 
         ![Válassza ki a rács](media/howto-use-device-sets/image8.png)
 
     1. A rács adjon egy **cím**.
-    1. Válassza ki a beállítások gombra megjelenítendő oszlopok kiválasztása Ugrik fel a panelen válassza ki a megjelenítendő, és kattintson a jobbra mutató nyílra kattintva válassza ki azt az oszlop.
+    1. Válassza ki az oszlopok jelennek meg a beállítások gomb kiválasztásával. A felugró panelen válassza ki a jelenjenek, és válassza a jobbra mutató nyílra, válassza ki azt az oszlopban.
     1. Kattintson az **OK** gombra.
     1. Válassza a **Mentés** elemet.
 
         ![Mentse a rács](media/howto-use-device-sets/image9.png)
 
-    1. A rácsban, hogy helyezze el áthúzása a **irányítópult**.
+    1. Helyezze el a rácsban áthúzása a **irányítópult**.
 
     > [!NOTE]
     > Több lemezképek, a hivatkozások és a rácsok is hozzáadhat.
   
-    1. Kapcsolja ki a **tervezési módba**.
+    1. Kapcsolja ki a **tervezési mód**.
 
-    ![Tervező mód kikapcsolása](media/howto-use-device-sets/image10.png)
-
-
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Irányítópult helyének hozzárendelése konfigurálása az eszköz a állítja be. 
-Egy hely leképezés jelenítheti meg az eszközök helyét a térképen beállítja adhat hozzá. 
-
-Egy hely térképet, eszköz irányítópult rendelkeznie kell beállított hely tulajdonság beállítása az eszköz sablonban hozzáadásához lásd: [hozzon létre egy Azure Maps technológiával helyet jelölő tulajdonsághoz](howto-set-up-template.md).
+    ![Tervezési mód kikapcsolása](media/howto-use-device-sets/image10.png)
 
 
-1. Az eszköz beállítása irányítópultot válassza ki a térkép a könyvtárból. 
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Helyek térképe konfigurálása az eszköz beállítása az irányítópult 
+Hozzáadhat egy helyek térképe jeleníthetik meg az eszközök helyét egy térképen állítja be. 
 
-    ![Eszköz irányítópult Maps állítja be.](media/howto-use-device-sets/LocationMaps1.png)
+Annak érdekében, hogy adjon hozzá egy eszközhöz, helyek térképe irányítópult rendelkeznie kell konfigurált helyre tulajdonságot állítja az eszköz sablonban, lásd: [hozzon létre egy hely tulajdonságot az Azure Maps segítségével](howto-set-up-template.md).
 
 
-2. Olyan címet adjon, és válassza ki a helyet jelölő tulajdonsághoz vannak konfigurálva a Eszköztulajdonságon részeként.
+1. A csoportok irányítópultját válassza ki a térkép a könyvtárból. 
+
+    ![Eszköz beállítása irányítópult térképek](media/howto-use-device-sets/LocationMaps1.png)
+
+
+2. Adjon címet, és válassza ki a helyet jelölő tulajdonsághoz korábban konfigurálta a Eszköztulajdonság részeként.
 
     ![Irányítópult-leképezések konfigurálása](media/howto-use-device-sets/LocationMaps2.png)
 
-3. Mentés, és megjelenik a térkép csempén megjelenő helyét, az eszközök a beállítva.
+3. Mentés, és megjelenik a csempén, az eszköz beállítása az eszközök helyét megjelenítése térképen.
 
-    ![Irányítópult-leképezések mentése](media/howto-use-device-sets/LocationMaps3.png)
+    ![Irányítópult Maps mentése](media/howto-use-device-sets/LocationMaps3.png)
 
 
-5. Most operátor megtekinti az eszköz beállítása irányítópultot, amikor áttekinthetők a csempék konfigurálta, beleértve a leképezés egy pillantással eszközök hely megjelenítése!
+5. Most, ha az operátor megtekinti a csoportok irányítópultját, láthatja, hogy az összes csempe konfigurált megjelenítése egyetlen pillantással eszközök helyét a térképen helyét! 
 
     ![A Maps operátor irányítópult-nézet](media/howto-use-device-sets/LocationMaps4.png)
 
-    A kívánt méretet a térképen átméretezése lehet.
+    Méretezze át a térkép a megfelelő méretre lehet.
+
+    Kattintson a PIN-kódot a térképen az eszközinformációkat, nevét és helyét jeleníti meg. Az eszköz tulajdonságok oldalán lépjen az előugró kattinthat.  
 
 
+## <a name="configure-the-list-for-your-device-set"></a>A lista az eszköz készlet konfigurálása
 
+Miután létrehozta az eszköz beállítása, konfigurálhatja a **lista**. A **lista** megjeleníti az összes az eszközök az eszközön állítsa be a választott oszlopokat tartalmazó tábla.
 
-## <a name="configure-the-list-for-your-device-set"></a>Az eszköz készlet listájának konfigurálása
-
-Miután létrehozta az eszköz-csoportosítóra, konfigurálhatja a **lista**. A **lista** jeleníti meg a megadott összes eszközt az eszközt a választott oszlopokat tartalmazó tábla.
-
-1. Válasszon **eszköz beállítása** a bal oldali navigációs menü.
+1. Válasszon **eszköz csoportok** a bal oldali navigációs menüben.
 
 1. Válassza ki a **lista** fülre.
 
-1. Válasszon **oszlop beállítások**.
+1. Válasszon **Oszloptörlés beállításai**.
 
-    ![Oszlop beállítások](media/howto-use-device-sets/image11.png)
+    ![Oszloptörlés beállításai](media/howto-use-device-sets/image11.png)
 
-1. Jelölje ki a megjeleníteni kívánt oszlopot kiválasztásával, és válassza a jobbra mutató nyílra megjelenítendő oszlopok kiválasztása
+1. Jelölje ki a megjeleníteni kívánt oszlop kiválasztva, majd a jobbra mutató nyílra megjelenítendő oszlopok kiválasztása.
 
     ![Oszlop kiválasztása](media/howto-use-device-sets/image12.png)
 
@@ -141,11 +141,11 @@ Miután létrehozta az eszköz-csoportosítóra, konfigurálhatja a **lista**. A
 
 ## <a name="analytics"></a>Elemzés
 
-Az eszköz beállítása az analytics megegyezik a fő analytics fülre a bal oldali navigációs menü. További elemzés a cikkben szereplő információk a [analytics létrehozása](howto-create-analytics.md).
+Az eszköz beállítása az analytics megegyezik a fő analytics lapra a bal oldali navigációs menüben. További kapcsolatos elemzések a cikkben a [analytics létrehozása](howto-create-analytics.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan használható az eszköz beállítása az Azure IoT központi alkalmazásban, ez a javasolt következő lépésre:
+Most, hogy az eszköz csoportok használata az Azure IoT Central alkalmazásban megtanulhatta, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
 > [Telemetria szabályok létrehozása](howto-create-telemetry-rules.md)

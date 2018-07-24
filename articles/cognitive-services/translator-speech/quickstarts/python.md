@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 40535f400bc5359019e89320489721bf481c1210
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 8bf904b2029790d64a806fcf4a7e4860579a5a2f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39124827"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39204850"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>Gyors útmutató: a Microsoft Translator Speech API a Pythonnal 
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ Szüksége lesz [Python 3.x](https://www.python.org/downloads/) Ez a kód futtat
 
 Telepítenie kell a [websocket-client csomagot](https://pypi.python.org/pypi/websocket-client) Pythonhoz készült.
 
-Szüksége lesz egy .wav "speak.wav" ugyanabban a mappában az alábbi kód fordítása futtatható fájlt. Ezt a fájlt .wav standard PCM, 16 bites, 16kHz Monó formátumban kell lennie.
+Szüksége lesz egy .wav "speak.wav" ugyanabban a mappában az alábbi kód fordítása futtatható fájlt. Ezt a fájlt .wav standard PCM, 16 bites, 16kHz Monó formátumban kell lennie. Szerezhet be ilyen .wav fájl a [Text to Speech API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
 Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Microsoft Translator Speech API**. Szüksége lesz egy fizetős kulcs a [Azure irányítópultján](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: a104578b0c010ea7ded99e6bf24e4daa30526318
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c06811afbf575b36dd1cf185a4554427ce2cd9e3
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187323"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205231"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Az Azure Marketplace és AppSource közzétételi útmutató
 
@@ -79,20 +79,20 @@ Kirakattípus segíthet az ügyfeleknek, keresse meg, és megvásárolják alkal
  
 Minden kirakat biztosít a speciális beállításokat a közzétételi befektetések optimális kihasználása érdekében. Az alábbi táblázat foglalja össze, ezeket a beállításokat:
 
-| Beállítás | AppSource | Azure Piactér |
+| Beállítás | AppSource | Azure Marketplace |
 |:--- |:--- |:--- |
 | Célközönség | Az üzleti döntéshozók<table> <tr> <th>szakértő szerepkörök </th> </tr> <tr> <td>Könyvelés</td> </tr> <tr> <td>Beszerzés</td> </tr> <tr> <td>Gyártás</td> </tr> </table> | Informatikai szakemberek és fejlesztők<table> <tr> <th>szakértő szerepkörök </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>Adatbázisok</td> </tr> <tr> <td>SecOps</td> </tr> </table> |
 | A beépített vagy bővítése | <ul><li>Azure Dynamics 365</li><li>Office 365</li><li>Power BI</li><li>PowerApps</li></ul> | Azure | 
 | Megoldás- és szolgáltatástípusok | <ul><li>Üzleti felhőalkalmazások befejeződött</li><li>Az Office 365-bővítmények</li></ul> | <ul><li>Infrastruktúra-megoldások</li><li>Professzionális szolgáltatások</li></ul> |
-| Csomag típusa | <ul><li>Tanácsadási szolgáltatások</li><li>Kapcsolatfelvétel</li><li>Ingyenes próbaidőszak</li><li>Most</li><li>Próbaüzem</li></ul> | <ul><li>Azure-alkalmazások: a felügyelt alkalmazás</li><li>Az Azure apps: megoldássablon</li><li>Tanácsadási szolgáltatások</li><li>Kapcsolatfelvétel</li><li>Próbaverzió</li><li>Virtuális gép</li></ul> |
+| Csomag típusa | <ul><li>Tanácsadási szolgáltatások</li><li>Kapcsolatfelvétel</li><li>Ingyenes próba</li><li>Most</li><li>Próbaüzem</li></ul> | <ul><li>Azure-alkalmazások: a felügyelt alkalmazás</li><li>Az Azure apps: megoldássablon</li><li>Tanácsadási szolgáltatások</li><li>Kapcsolatfelvétel</li><li>Próba</li><li>Virtuális gép</li></ul> |
 | Alkalmazáson belüli felhasználói élményt alkalmazásokhoz és szolgáltatásokhoz a környezetben, az alkalmazás hozzáférést biztosít a felhasználóknak | <ul><li>Dynamics 365</li><li>Office 365</li><li>Office kliensalkalmazások</li><li>Power BI</li></ul> | <ul><li>Azure Portal</li><li>Azure Resource Manager</li><li>Azure CLI</li></ul> |
 
 ## <a name="publish-in-the-marketplace"></a>A piactéren közzétett
 A következő cikkek nyújtanak tájékoztatást appsource-ban és az Azure Marketplace közzétételi beállítások.
 
 Válhat kiadóvá a piactéren három egyszerű lépésben egy áruház oldala:
-1. [Közzétételi lehetőség](https://review.docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type?branch=pr-en-us-47093)
-2. [Válhat kiadóvá a piactéren kirakattípus](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-47093)
+1. [Közzétételi lehetőség](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type) 
+2. [Válhat kiadóvá a piactéren kirakattípus](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) 
 
 ## <a name="publishing-checklists"></a>Közzétételi Ellenőrzőlisták
 *   [Közzétételi ellenőrzőlista az appsource-ban](publishing-checklist-appsource.md)

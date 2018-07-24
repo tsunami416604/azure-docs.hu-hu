@@ -1,6 +1,6 @@
 ---
-title: Az Azure labor szolgáltatásokban labor fiókok kezelése |} Microsoft Docs
-description: 'Útmutató: tesztlabor-fiók létrehozása, minden tesztkörnyezeti fiókok megtekintéséhez vagy az Azure-előfizetés labor fiók törlése.'
+title: Az Azure Lab Services tesztkörnyezetfiókok kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok vagy törölheti a tesztkörnyezet Azure-előfizetéssel.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 6039ea482b0968d48fc21ff3dfec82a2ff0db43d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 68baab14e2adf7f43bb1e0e0f47c414555a28659
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715326"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213401"
 ---
-# <a name="manage-lab-accounts-in-azure-lab-services"></a>Az Azure labor szolgáltatásokban labor fiókok kezelése 
-Az Azure labor szolgáltatásban a labor számítógépfiókja osztályteremben labs például kezelt labs tárolója. A rendszergazda állít be egy tesztlabor fiókot az Azure labor Services, és hozzáférést biztosít a labor tulajdonosai, akik labs hozhat létre a fiókot. Ez a cikk ismerteti, hogyan lab-fiók létrehozása, minden tesztkörnyezeti fiókok megtekintéséhez vagy labor fiók törlése.
+# <a name="manage-lab-accounts-in-azure-lab-services"></a>Az Azure Lab Services tesztkörnyezetfiókok kezelése 
+Az Azure Lab Services tesztkörnyezetfiók az osztályterem-tesztkörnyezetek például felügyelt tesztkörnyezetek tárolója. A rendszergazda állítja be az Azure Lab Services tesztkörnyezetfiók és labortulajdonosok labs hozhat létre a fiók számára hozzáférést biztosít. Ez a cikk bemutatja, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok, vagy törölheti a labor.
 
 ## <a name="create-a-lab-account"></a>Tesztkörnyezetfiók létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -45,7 +45,7 @@ Az Azure labor szolgáltatásban a labor számítógépfiókja osztályteremben 
     ![Tesztkörnyezetfiók-oldal](../media/how-to-manage-lab-accounts/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz
-Ha engedélyt kíván ad az oktatóknak, hogy létrehozzák a tesztkörnyezeteket a tanóráikhoz, adja hozzá őket a Tesztkörnyezet-létrehozó szerepkörhöz:
+Osztályterem-tesztkörnyezet tesztkörnyezetfiók beállítása, hogy a felhasználó tagjának kell lennie a **tesztkörnyezet létrehozója** szerepkör a labor-fiókban. A lab-fiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. Ha azt tervezi, ugyanazzal a fiókkal használandó osztályterem-tesztkörnyezet létrehozása, kihagyhatja ezt a lépést. Osztályterem-tesztkörnyezet létrehozni egy másik felhasználói fiók használatával, kövesse az alábbi lépéseket: 
 
 1. A **Tesztkörnyezetfiók** oldalon válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget, majd kattintson az eszköztár **+ Hozzáadás** elemére. 
 
@@ -55,22 +55,22 @@ Ha engedélyt kíván ad az oktatóknak, hogy létrehozzák a tesztkörnyezeteke
     ![Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 
-## <a name="view-lab-accounts"></a>Labor számlák megtekintése
+## <a name="view-lab-accounts"></a>Tesztkörnyezetfiókok megtekintése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **összes erőforrás** a menüből. 
-3. Válassza ki **labor szolgáltatások** a a **típus**. 
-    Előfizetés, az erőforráscsoport, a helyek és a címkék alapján is szűrheti. 
+3. Válassza ki **Lab Services** számára a **típus**. 
+    Előfizetés, erőforráscsoport, helyek és címkék szerint is szűrheti. 
 
-## <a name="delete-a-lab-account"></a>A tesztlabor-fiók törlése
-Kövesse az utasításokat a fenti szakaszban leírt tesztkörnyezet fiókok listában jeleníti meg. A következő utasításokat követve labor fiók törlése: 
+## <a name="delete-a-lab-account"></a>Tesztkörnyezetfiók törlése
+Kövesse az utasításokat az előző szakaszban, hogy a lab-fiókokban listában jeleníti meg. Tesztkörnyezetfiók törléséhez kövesse az alábbi utasításokat: 
 
-1. Válassza ki a **labor fiók** , hogy törölni szeretné. 
+1. Válassza ki a **labor fiók** , amelyet törölni szeretne. 
 2. Válassza ki **törlése** az eszköztáron. 
-3. Típus **Igen** megerősítést kér.
+3. Típus **Igen** megerősítést.
 4. Válassza a **Törlés** elemet. 
 
 ## <a name="next-steps"></a>További lépések
 Kezdje meg egy tesztkörnyezet létrehozását az Azure Lab Services használatával:
 
 - [Osztályterem-tesztkörnyezet beállítása](tutorial-setup-classroom-lab.md)
-- [A tesztkörnyezet beállítása](../tutorial-create-custom-lab.md)
+- [Tesztkörnyezet beállítása](../tutorial-create-custom-lab.md)

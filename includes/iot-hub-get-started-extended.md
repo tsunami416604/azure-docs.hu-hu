@@ -2,9 +2,10 @@
 
 Más Azure-szolgáltatásokat és -eszközöket is használhat. Miután csatlakoztatta eszközét az IoT Hubhoz, további forgatókönyveket tekinthet át, amelyek más Azure-eszközöket és -szolgáltatásokat használnak:
 
-| Forgatókönyv                                                   | Azure-szolgáltatás vagy -eszköz              |
+| Eset                                                   | Azure-szolgáltatás vagy -eszköz              |
 |----------------------------------------------------------- |------------------------------------|
 | [IoT Hub-üzenetek kezelése][Mg_IoT_Hub_Msg]                  | iothub-explorer eszköz               |
+| [IoT Hub-üzenetek kezelése][Mg_IoT_Toolkit]                  | A VS Code Azure IoT-eszközkészlet bővítmény|
 | [IoT-eszközök felügyelete][Mg_IoT_Dv]                        | Az Azure CLI 2.0 és az IoT-bővítmény|
 | [IoT Hub-üzenetek mentése Azure-tárolóba][Sv_IoT_Msg_Stor]  | Azure Table Storage                |
 | [Érzékelőadatok megjelenítése][Vis_Data_PBI]                      | Microsoft Power BI                 |
@@ -18,6 +19,7 @@ Miután végrehajtotta ezeket az oktatóanyagokat, az IoT Hub képességeiről t
 
 
 [Mg_IoT_Hub_Msg]: ../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md
+[Mg_IoT_Toolkit]: ../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
 [Mg_IoT_Dv]: ../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md
 [Sv_IoT_Msg_Stor]: ../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md
 [Vis_Data_Web]: ../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md

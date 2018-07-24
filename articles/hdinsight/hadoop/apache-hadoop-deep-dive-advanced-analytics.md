@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ff1f6fcae1d21d47b5ee0263b4e038287a588991
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a6db6b7f1a0e81867a1db75ed3b31a38a8dbdeb0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008229"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213537"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Részletes bemutatása – speciális elemzés
 
@@ -97,7 +97,7 @@ Nincsenek három kulcsfontosságú feladatokat a fejlett analitikai forgatókön
 
 1. Hozzon létre egy Azure HDInsight Hadoop-fürtöt egy Apache Spark 2.1.0 terjesztési. 
 2. Egy Azure HDInsight Spark-fürt összes csomópontjára telepítse a Microsoft Cognitive Toolkit egyéni parancsfájl futtatásához. 
-3. Töltse fel egy előre elkészített Jupyter notebookot a HDInsight Spark-fürt egy betanított Microsoft Cognitive Toolkit deep learning-modell segítségével az Azure Blob Storage-fiókban a Spark Python API (PySpark) használatával a fájlok a alkalmazni. 
+3. Töltse fel egy előre elkészített Jupyter notebookot HDInsight Spark-fürthöz egy betanított Microsoft Cognitive Toolkit deep learning-modell segítségével az Azure Blob Storage-fiókban a Spark Python API (PySpark) használatával a fájlok a alkalmazni. 
 
 Ebben a példában a lefordított és elosztott Alex Krizhevsky, Vinod Nair és Geoffrey Hinton CIFAR 10-es lemezképet használja. A CIFAR-10 adatkészlet tartalmaz 60 000 32 x 32 10 egymást kölcsönösen kizáró osztályba tartozó képek színe:
 
@@ -114,7 +114,7 @@ Az adatkészlet képzési 50 000 képkészlet és tesztelési 10 000 képkészle
 
 A teljes előfeldolgozása/pontozás 10 000 rendszerképet tart a kevesebb mint egy perc 4 feldolgozó csomóponttal rendelkező fürt. A modell felel meg pontosan előrejelzi a címkék ~ 9,100 (91 %) lemezképek. Egy keveredési mátrixot a leggyakrabban használt besorolási hibák mutatja be. Például a mátrix kutyák macskák, és ez fordítva is igaz mislabeling történik, hogy látható-e nagyobb gyakran más címkét párokhoz.
 
-![Results (Eredmények)](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
+![Eredmények](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
 
 ### <a name="try-it-out"></a>Próbálja ki!
 

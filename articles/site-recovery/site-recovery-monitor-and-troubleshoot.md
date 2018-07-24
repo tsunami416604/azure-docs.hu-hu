@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 17238e8714593eeac9ad8d9611f57976531ecb49
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 747189c7cab2c76c6695bdb8e13f77532adc46d4
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171167"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216073"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorozás és hibaelhárítás a Site Recovery
 
@@ -103,7 +103,7 @@ A **infrastruktúranézet** érintett látható az infrastruktúra-összetevőke
     **Az Azure virtuális gép replikációja az Azure-régiók között** | Feladatátvétel / feladat-visszavételt | Nem   
     **VMware – Azure replikálás** | Replikáció engedélyezése és kezdeti replikáció folyamatban | Igen     
     **VMware – Azure replikálás** | Nem sikerült a biztonsági over/nem sikerült | Nem      
-    **Az Azure-ba történő Hyper-V-replikáció** | Nem sikerült a biztonsági over/nem sikerült | Nem
+    **Hyper-V-replikáció az Azure-bA** | Nem sikerült a biztonsági over/nem sikerült | Nem
 
 - Az infrastruktúra-nézet egyetlen replikáló gép, a tároló menüjében kattintson **replikált elemek**, és válassza ki a kiszolgálót.  
 
@@ -194,4 +194,4 @@ A tárolóban > **figyelés és jelentéskészítés** területén kattintson **
 2. Kattintson a **E-mail-értesítések**.
 3. A **e-mailes értesítés**, bekapcsolja az értesítéseket, és adja meg, akik küldéséhez. Minden előfizetés-Adminisztrátorok küldeni az értesítéseket, és igény szerint adott e-mail-címeket is elküldheti.
 
-    ![E-mail-értesítések](./media/site-recovery-monitor-and-troubleshoot/email.png)
+    ![E-mail értesítés](./media/site-recovery-monitor-and-troubleshoot/email.png)

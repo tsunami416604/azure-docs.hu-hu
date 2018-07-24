@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 81aa8153198f69abd1722f97462927a0c242d4e7
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6ba090065b18a44cc1f01a62eefb5dcf52bcf356
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186159"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213265"
 ---
 # <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás az Azure portal használatával
 
@@ -37,7 +37,7 @@ Ebben a cikkben, megtudhatja, hogyan engedélyezheti és tilthatja le a rendszer
 - Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md).
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ebben a cikkben a kezelési műveletek végrehajtásához a fióknak rendelkeznie kell a következő szerepkör-hozzárendelés:
-    - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) engedélyezéséhez, és távolítsa el a Felügyeltszolgáltatás-identitását egy Azure virtuális gépből.
+    - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) engedélyezéséhez, és távolítsa el a rendszer által hozzárendelt identitással Azure virtuális gépből.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Felügyeltszolgáltatás-identitás az Azure-beli virtuális gép létrehozása során
 

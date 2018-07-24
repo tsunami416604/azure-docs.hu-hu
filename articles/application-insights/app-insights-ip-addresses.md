@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5cd49145f1109fb99fd999e8ac0b1e17141fe5b5
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d96fbac6ae09e8b6611ff615ba1f95fc1a084f89
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186917"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205731"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és a Log Analytics által használt IP-címek
 A [Azure Application Insights](app-insights-overview.md) szolgáltatást használ egy IP-címek számát. Előfordulhat, hogy szeretne, ezeket a címeket, ha az alkalmazás, figyelt tűzfal mögött található.
@@ -31,7 +31,7 @@ A [Azure Application Insights](app-insights-overview.md) szolgáltatást haszná
 ## <a name="outgoing-ports"></a>Kimenő portok
 Meg kell nyitnia néhány kimenő portot a kiszolgálója tűzfalán, hogy az Application Insights SDK-t és/vagy Állapotfigyelőt adatokat küldeni a portálon:
 
-| Cél | URL-cím | IP | Portok |
+| Cél | URL-cím | IP-cím | Portok |
 | --- | --- | --- | --- |
 | Telemetria |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244 |443 |
 | Élő metrikastream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
@@ -39,7 +39,7 @@ Meg kell nyitnia néhány kimenő portot a kiszolgálója tűzfalán, hogy az Ap
 ## <a name="status-monitor"></a>A figyelő állapota
 Állapot figyelő konfiguráció – csak módosításkor szükséges.
 
-| Cél | URL-cím | IP | Portok |
+| Cél | URL-cím | IP-cím | Portok |
 | --- | --- | --- | --- |
 | Konfiguráció |`management.core.windows.net` | |`443` |
 | Konfiguráció |`management.azure.com` | |`443` |
@@ -226,54 +226,54 @@ East US
 ```  
 
 ## <a name="application-insights-api"></a>Az Application Insights API
-| Cél | URI | IP | Portok |
+| Cél | URI | IP-cím | Portok |
 | --- | --- | --- | --- |
 | API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80,443 |
 | API-dokumentáció |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13.82.24.149<br/>40.114.82.10 |80,443 |
 | Belső API-t |aigs.aisvc.visualstudio.com<br/>aigs1.aisvc.visualstudio.com<br/>aigs2.aisvc.visualstudio.com<br/>aigs3.aisvc.visualstudio.com<br/>aigs4.aisvc.visualstudio.com<br/>aigs5.aisvc.visualstudio.com<br/>aigs6.aisvc.visualstudio.com |Dinamikus|443 |
 
 ## <a name="log-analytics-api"></a>Log Analytics API
-| Cél | URI | IP | Portok |
+| Cél | URI | IP-cím | Portok |
 | --- | --- | --- | --- |
 | API |api.loganalytics.io<br/>*.api.loganalytics.io |Dinamikus |80,443 |
 | API-dokumentáció |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |Dinamikus |80,443 |
 
 ## <a name="application-insights-analytics"></a>Application Insights-elemzési
 
-| Cél | URI | IP | Portok |
+| Cél | URI | IP-cím | Portok |
 | --- | --- | --- | --- |
 | Analytics-portál | analytics.applicationinsights.io | Dinamikus | 80,443 |
-| Tartalomkézbesítési hálózat (CDN) | applicationanalytics.azureedge.net | Dinamikus | 80,443 |
+| CDN | applicationanalytics.azureedge.net | Dinamikus | 80,443 |
 | Media CDN | applicationanalyticsmedia.azureedge.net | Dinamikus | 80,443 |
 
 Megjegyzés: *. az Application Insights csapata a applicationinsights.io tartomány tulajdonosa.
 
 ## <a name="log-analytics-portal"></a>Log Analytics-portál
 
-| Cél | URI | IP | Portok |
+| Cél | URI | IP-cím | Portok |
 | --- | --- | --- | --- |
 | Portál | portal.loganalytics.io | Dinamikus | 80,443 |
-| Tartalomkézbesítési hálózat (CDN) | applicationanalytics.azureedge.net | Dinamikus | 80,443 |
+| CDN | applicationanalytics.azureedge.net | Dinamikus | 80,443 |
 
 Megjegyzés: *. a Log Analytics fejlesztőcsapata loganalytics.io tartomány tulajdonosa.
 
 ## <a name="application-insights-azure-portal-extension"></a>Application Insights az Azure portal bővítmény
 
-| Cél | URI | IP | Portok |
+| Cél | URI | IP-cím | Portok |
 | --- | --- | --- | --- |
 | Application Insights-bővítmény | stamp2.app.insightsportal.visualstudio.com | Dinamikus | 80,443 |
 | Application Insights-bővítmény CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | Dinamikus | 80,443 |
 
 ## <a name="application-insights-sdks"></a>Application Insights SDK-k
 
-| Cél | URI | IP | Portok |
+| Cél | URI | IP-cím | Portok |
 | --- | --- | --- | --- |
 | Application Insights node.js SDK CDN | az416426.vo.msecnd.net | Dinamikus | 80,443 |
 | Application Insights Java SDK | aijavasdk.blob.core.windows.net | Dinamikus | 80,443 |
 
-## <a name="profiler"></a>Profilkészítő
+## <a name="profiler"></a>Profiler
 
-| Cél | URI | IP | Portok |
+| Cél | URI | IP-cím | Portok |
 | --- | --- | --- | --- |
 | Ügynök | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71<br/>52.230.124.46<br/>52.230.122.9 | 443
 | Portál | gateway.azureserviceprofiler.net | Dinamikus | 443
@@ -284,7 +284,7 @@ Megjegyzés: *. a Log Analytics fejlesztőcsapata loganalytics.io tartomány tul
 > [!NOTE]
 > Profiler és a pillanatkép-hibakereső ossza meg ugyanazokat az IP-címeket.
 
-| Cél | URI | IP | Portok |
+| Cél | URI | IP-cím | Portok |
 | --- | --- | --- | --- |
 | Ügynök | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71<br/>52.230.124.46<br/>52.230.122.9 | 443
 | Portál | ppe.gateway.azureserviceprofiler.net | Dinamikus | 443

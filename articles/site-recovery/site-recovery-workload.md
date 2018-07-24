@@ -2,24 +2,17 @@
 title: Milyen számítási feladatokat tud védeni az Azure Site Recovery? | Microsoft Docs
 description: Azokat a számítási feladatokat ismerteti, amelyeket meg lehet védeni a vészhelyreállítás Azure Site Recovery szolgáltatással történő használatával.
 services: site-recovery
-documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: ''
-ms.assetid: 4953948f-26c0-4699-8fe7-59d3bfc1d3da
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 07/22/2018
 ms.author: raynew
-ms.openlocfilehash: e0094b48bc602a1b59339458b430319f4a705d44
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.openlocfilehash: 5295002e823dc864f0f0dcc67594f49b5431bce7
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920109"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205952"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
 
@@ -52,18 +45,17 @@ A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes repl
 
 | **Számítási feladat** |**Virtuális gépek replikálása az Azure-ba** |**Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** |
 | --- | --- | --- | --- | --- |---|
-| Active Directory, DNS |I |I |I |I |I|
-| Webalkalmazások (IIS, SQL) |I |I |I |I |I|
-| System Center Operations Manager |I |I |I |I |I|
-| SharePoint |I |I |I |I |I|
+| Active Directory, DNS |Y |Y |Y |Y |Y|
+| Webalkalmazások (IIS, SQL) |Y |Y |Y |Y |Y|
+| System Center Operations Manager |Y |Y |Y |Y |Y|
+| SharePoint |Y |Y |Y |Y |Y|
 | SAP<br/><br/>Replikálás SAP-helyről az Azure-ba nem fürtözött rendszer esetén |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
-| Exchange (nem DAG) |I |I |I |I |I|
-| Távoli asztal/VDI |I |I |I |I |I|
+| Exchange (nem DAG) |Y |Y |Y |Y |Y|
+| Távoli asztal/VDI |Y |Y |Y |Y |Y|
 | Linux (operációs rendszer és alkalmazások) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
-| Dynamics AX |I |I |I |I |I|
-| Oracle |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
-| Windows fájlkiszolgáló |I |I |I |I |I|
-| Citrix XenApp és XenDesktop |I|N/A |I |N/A |I |
+| Dynamics AX |Y |Y |Y |Y |Y|
+| Windows fájlkiszolgáló |Y |Y |Y |Y |Y|
+| Citrix XenApp és XenDesktop |Y|- |Y |- |Y |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory és DNS replikálása
 A legtöbb vállalati alkalmazás számára elengedhetetlen az Active Directory- és DNS-infrastruktúra használata. A vészhelyreállítás során a számítási feladatok és az alkalmazások helyreállítása előtt ezeket az infrastruktúra-összetevőket meg kell védenie és helyre kell állítania.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: b3837da26868dcf3c14fab230b4dad4aa6f531b3
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d3ff80391214dbc5d29f04c4a1972b46e68d73d4
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161395"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215145"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -246,7 +246,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 ---
 
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Szinkronizálási csoport és a felhőbeli végpont létrehozása
-Szinkronizálási csoport határozza meg, hogy a fájlokat a sync-topológiát. Végpontok egy szinkronizálási csoportban vannak szinkronban egymással. Szinkronizálási csoport tartalmaznia kell legalább egy felhőbeli végpont, amely Azure-fájlmegosztások és a egy vagy több kiszolgáló végpontot. Kiszolgálói végpont egy regisztrált kiszolgáló elérési útját jelöli. Egy kiszolgáló több szinkronizálási csoporttal is lehet kiszolgálói végpontot. Tetszőleges számú szinkronizálási csoportok megfelelően írja le a kívánt szinkronizálási topológia, igény szerint hozhat létre.
+Szinkronizálási csoport határozza meg, hogy a fájlokat a sync-topológiát. Végpontok egy szinkronizálási csoportban vannak szinkronban egymással. Szinkronizálási csoport tartalmaznia kell legalább egy felhőbeli végpont, amely Azure-fájlmegosztások és a egy vagy több kiszolgáló végpontot. Kiszolgálói végpont egy regisztrált kiszolgáló elérési útját jelöli. Egy kiszolgáló több szinkronizálási csoporttal is lehet kiszolgálói végpontot. Tetszőleges számú szinkronizálási csoportok megfelelően írja le a kívánt szinkronizálási topológia igény szerint hozhat létre.
 
 Felhőbeli végpont az Azure-fájlmegosztások mutató. Összes kiszolgálói végpontot a felhőbeli végpont, így a felhőbeli végpont a hub szinkronizálódnak. Az Azure-fájlmegosztást a storage-fiókját és a Storage Sync Service ugyanabban a régióban kell elhelyezkednie. A teljes Azure-fájlmegosztásba való szinkronizálása megtörténik, egy kivétellel: az NTFS-köteten található mappa rejtett "System Volume Information" hasonlítható speciális mappa lesznek üzembe helyezve. Ez a könyvtár neve ". SystemShareInformation". Nem szinkronizálódnak más végpontok szinkronizálási fontos metaadatokat tartalmaz. Ne használja, és törölje azt!
 

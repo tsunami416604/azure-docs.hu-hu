@@ -2,19 +2,17 @@
 title: A forráskörnyezet (fizikai kiszolgálók Azure-bA) beállítása |} A Microsoft Docs
 description: Ez a cikk ismerteti, hogyan állítható be a helyszíni környezetben való fizikai kiszolgálók, Windows vagy Linux rendszerű Azure-ba való replikálásának megkezdéséhez.
 services: site-recovery
-documentationcenter: ''
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 00b09db97e597521de5c73eeefab77b0dfa1304d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 07/21/2018
+ms.author: raynew
+ms.openlocfilehash: 0cbba45ce49667293d8f16bf370424acd70ff78b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38671022"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213486"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>A forráskörnyezet (fizikai kiszolgáló Azure-bA) beállítása
 
@@ -23,8 +21,9 @@ Ez a cikk ismerteti, hogyan állítható be a helyszíni környezetben való fiz
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikk feltételezi, hogy már rendelkezik:
-1. A Recovery Services-tároló az a [az Azure portal](http://portal.azure.com "az Azure portal").
-3. Fizikai számítógép, amelyen a konfigurációs kiszolgáló telepítése.
+- A Recovery Services-tároló az a [az Azure portal](http://portal.azure.com "az Azure portal").
+- Fizikai számítógép, amelyen a konfigurációs kiszolgáló telepítése.
+- Ha, le lett tiltva a TLS 1.0-t a gépen, amelyen a konfigurációs kiszolgálót telepít, ellenőrizze, hogy engedélyezve van-e a TLs 1.2-es és, hogy a .NET-keretrendszer 4.6-os vagy újabb verziója telepítve van a számítógépen (az erős titkosítás le van tiltva). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Konfigurációs kiszolgáló minimális követelményei
 A következő táblázat felsorolja a minimális hardver-, szoftver, és a konfigurációs kiszolgáló hálózati követelményei.
@@ -63,7 +62,7 @@ A következő táblázat felsorolja a minimális hardver-, szoftver, és a konfi
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> A konfigurációs kiszolgálót a parancssorból is telepíthető. További információkért lásd: [telepítése a konfigurációs kiszolgáló parancssori eszközökkel](http://aka.ms/installconfigsrv).
+> A konfigurációs kiszolgálót a parancssorból is telepíthető. [További információk](physical-manage-configuration-server.md#install-from-the-command-line).
 
 
 ## <a name="common-issues"></a>Gyakori problémák

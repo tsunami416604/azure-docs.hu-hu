@@ -1,6 +1,6 @@
 ---
-title: NODE.js gyors üzembe helyezés az Azure kognitív szolgáltatások esetében a Microsoft Translator Diktálásfelismerési API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan Ismerkedés a Microsoft Translator Diktálásfelismerési API használatával a Microsoft Azure kognitív Services.
+title: NODE.js – rövid útmutató az Azure Cognitive Services, a Microsoft Translator Speech API |} A Microsoft Docs
+description: Get information és kód minták segítségével gyorsan használatának első lépései a Microsoft Translator Speech API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 documentationcenter: ''
 author: v-jaswel
@@ -9,35 +9,35 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d469fa008ba8acaf505fa09596dd739d5cc7744c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0c0f3120811bba164a07783bc7ce3b7af389fd2b
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347466"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205214"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-nodejs"></a>A Microsoft Translator Diktálásfelismerési API-t Node.js gyors üzembe helyezés 
+# <a name="quickstart-for-microsoft-translator-speech-api-with-nodejs"></a>Gyors útmutató: a Microsoft Translator Speech API a node.js használatával 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan használja a Microsoft Translator Diktálásfelismerési API lefordítani a WAV-fájlokban szóbeli szavakat.
+Ez a cikk bemutatja, hogyan .wav fájl a kimondott szavakat lefordítása a Microsoft Translator Speech API használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége [Node.js 6](https://nodejs.org/en/download/) futtatásához ezt a kódot.
+Szükséges [Node.js 6](https://nodejs.org/en/download/) Ez a kód futtatásához.
 
-Telepítenie kell a [Websocket csomag](https://www.npmjs.com/package/websocket) a Node.js.
+Telepítenie kell a [Websocket csomag](https://www.npmjs.com/package/websocket) a node.js-ben.
 
-A mappában, amelyben a végrehajtható fájl az alábbi kód fordítása "speak.wav" nevű WAV-fájl szükséges. A WAV-fájl szabványos PCM, 16 bites, 16 kHz Monó formátumban kell megadni. Ezt úgy szerezheti be ilyen .wav fájl a [fordító szöveg-beszéd API](http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak).
+Egy ugyanabban a mappában az alábbi kód fordítása futtatható "speak.wav" nevű .wav-fájl szükséges. Ezt a fájlt .wav standard PCM, 16 bites, 16 kHz Monó formátumban kell lennie. Szerezhet be ilyen .wav fájl a [Text to Speech API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Microsoft Translator Diktálásfelismerési API**. A szolgáltatás fizetős kulcs van szüksége a [Azure irányítópult](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Microsoft Translator Speech API**. A fizetős kulcs van szüksége a [Azure irányítópultján](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 ## <a name="translate-speech"></a>Beszéd fordítása
 
-A következő kódot az eszköz beszédfelismerés egyik nyelvről a másikra.
+A következő kódot a speech egyik nyelvről a másikra fordítja le.
 
-1. Hozzon létre egy új Node.js-projektet a kedvenc ide.
+1. Hozzon létre egy új Node.js-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```nodejs
@@ -64,8 +64,8 @@ let params = '?api-version=1.0&from=en-US&to=it-IT&features=texttospeech&voice=i
 let uri = host + path + params;
 
 /* The input .wav file is in PCM 16bit, 16kHz, mono format.
-You can obtain such a .wav file using the Translator Text Speak API. See:
-http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak
+You can obtain such a .wav file using the Text to Speech API. See:
+https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech
 */
 let input_path = 'speak.wav';
 
@@ -110,7 +110,8 @@ function send(connection, filename) {
     });
 
 /* Make sure the audio file is followed by silence.
-This lets the service know that the audio input is finished. */
+This lets the service know that the audio file is finished.
+At 32 bytes per millisecond, this is 100 seconds of silence. */
     myReadableStreamBuffer.put(fs.readFileSync(filename));
     myReadableStreamBuffer.put(new Buffer(3200000));
     myReadableStreamBuffer.stop();
@@ -156,16 +157,16 @@ connect();
 
 **Beszéd válasz fordítása**
 
-Egy sikeres eredménye "speak2.wav" nevű fájl létrehozása. A fájl tartalmazza a fordítás szóbeli a "speak.wav" szó.
+Egy sikeres eredménye "speak2.wav" nevű fájl létrehozása. A fájl tartalmazza a fordítás beszélt "speak.wav" szó.
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A fordító beszéd oktatóanyag](../tutorial-translator-speech-csharp.md)
+> [Translator Speech oktatóanyag](../tutorial-translator-speech-csharp.md)
 
 ## <a name="see-also"></a>Lásd még 
 
-[A fordító beszéd áttekintése](../overview.md)
+[Translator Speech áttekintése](../overview.md)
 [API-referencia](http://docs.microsofttranslator.com/speech-translate.html)

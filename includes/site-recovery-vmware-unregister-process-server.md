@@ -19,4 +19,4 @@ A folyamatkiszolgálók regisztrációjának visszavonásához szükséges lép�
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-4. Ez véglegesen törli a folyamatkiszolgáló adatait a rendszerből.
+4. Ez az üzenet jelenik meg a folyamatkiszolgáló sikeresen eltávolításakor: **regisztrációja sikeresen törölve a kiszolgáló-neve > (kiszolgáló-IP-cím)**.

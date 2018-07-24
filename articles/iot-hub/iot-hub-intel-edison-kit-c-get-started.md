@@ -10,12 +10,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: 2e0f8b46f2020db0bb657a8e099158c349af6a89
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 0138b44141bb64671ed2feb522c4b7fa14cab696
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187665"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213316"
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Intel Edison csatlakozhat az Azure IoT Hub (C)
 
@@ -27,7 +27,7 @@ Még nem rendelkezik egy csomagot? Indítsa el [Itt](https://azure.microsoft.com
 
 ## <a name="what-you-do"></a>TEENDŐ
 
-* A telepítő Intel Edison és és a Groove-modulok.
+* Intel Edison és a Groove modulok beállítása.
 * Hozzon létre egy IoT hubot.
 * Eszköz regisztrálása az IoT hub for Edison.
 * Egy mintaalkalmazás futtatása a Edison érzékelőktől kapott adatok küldése az IoT hubnak.

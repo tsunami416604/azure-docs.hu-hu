@@ -3,23 +3,18 @@ title: Azure Health Analytics Blueprint
 description: Útmutató a HIPAA/HITRUST egészségügyi Analytics tervrajz üzembe helyezése
 services: security
 documentationcenter: na
-author: jomolesk
-manager: mbaldwin
-editor: tomsh
+author: RajeevRangappa
 ms.assetid: 26566e0a-0a54-49f4-a91d-48e20b7cef71
 ms.service: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/27/2018
-ms.author: jomolesk
-ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 07/23/2018
+ms.author: rarangap
+ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113231"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214941"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -31,7 +26,7 @@ Az Azure biztonsági és -megfelelőségi terv – a HIPAA/HITRUST egészségüg
 
 ![](images/components.png)
 
-A megoldás célja egy minta adatkészlet gyors Healthcare együttműködési erőforrások (FHIR), az egészségügyi információk cseréje elektronikus úton, globális szabvány használatával formázott felhasználását, és biztonságos módon tárolja. Ügyfelek ezután használhatja az Azure Machine Learning hatékony üzleti intelligencia eszközök és az analitikai tekintse át a mintaadatok rmse előnyeit. Például, hogy milyen típusú kísérlet Azure Machine Learning megkönnyítheti a tervezet minta adatkészlet, a parancsfájlokat és a egy betegnek a kórházi létesítménybe vesznek hossza előrejelzésére szolgáló eszközök is tartalmaz. 
+A megoldás célja egy minta adatkészlet gyors Healthcare együttműködési erőforrások (FHIR), az egészségügyi információk cseréje elektronikus úton, globális szabvány használatával formázott felhasználását, és biztonságos módon tárolja. Ügyfelek felhasználhatja az Azure Machine Learning Studio hatékony üzleti intelligencia eszközök és az analitikai tekintse át a mintaadatok rmse előnyeit. Például, hogy milyen típusú kísérlet Azure Machine Learning Studio megkönnyítheti a tervezet minta adatkészlet, a parancsfájlokat és a egy betegnek a kórházi létesítménybe vesznek hossza előrejelzésére szolgáló eszközök is tartalmaz. 
 
 Ez a megoldás alkalmas szolgál az ügyfelek számára állítsa be az adott követelményekhez, új Azure Machine learning-példakísérleteket megoldásában mindkét klinikai és a működési használati esetek fejlesztése moduláris alapjaként. Arra tervezték, hogy biztonságos és megfelelő telepítésekor; azonban ügyfelei felelősek az megfelelően szerepkörök konfigurálása, és minden egyéb módosítás végrehajtása. Vegye figyelembe a következőket:
 
@@ -66,7 +61,7 @@ Röviden, ez a megoldás működéséről, tekintse meg ezt [videó](https://aka
 
 Alapvető architektúrája a következő összetevőkből áll:
 
--   **[Fenyegetések modellezése](https://aka.ms/healththreatmodel)**  egy átfogó fenyegetések modellezése tm7 formátumban van megadva a segítségével a [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168), a megoldás összetevői látható, a közti adatfolyamok, és a megbízhatósági kapcsolat határok. A modell segítségével az ügyfelek megismerhetik a pontokat a rendszer infrastruktúra esetleges kockázat, machine learning-összetevők vagy egyéb módosítások fejlesztése során.
+-   **[Fenyegetések modellezése](https://aka.ms/healththreatmodel)**  egy átfogó fenyegetések modellezése tm7 formátumban van megadva a segítségével a [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168), a megoldás összetevői látható, a közti adatfolyamok, és a megbízhatósági kapcsolat határok. A modell segítségével az ügyfelek megismerhetik a pontokat a rendszer infrastruktúra esetleges kockázat, Machine Learning Studio-összetevők vagy egyéb módosítások fejlesztése során.
 
 -   **[Ügyfél megvalósítása mátrix](https://aka.ms/healthcrmblueprint)**  A Microsoft Excel-munkafüzet HITRUST vonatkozó követelményeit, és azt ismerteti, hogyan a Microsoft és az ügyfél a mindegyiknél teljesítéséért felelős.
 
@@ -107,7 +102,7 @@ A betegek kartonjai nincs hozzáféréssel rendelkeznek.
  ### <a name="data-scientist"></a>Adatelemzési szakértő
 
 
-Az adatszakértő működik, az Azure Machine Learning szolgáltatáshoz. Ezek is importálása, exportálása, adatok kezelése és jelentések futtatása. Az adatszakértő férhet hozzá a betegek adatai, de nem rendelkezik rendszergazdai jogosultságokkal.
+Az adatszakértő működik, az Azure Machine Learning Studio. Ezek is importálása, exportálása, adatok kezelése és jelentések futtatása. Az adatszakértő férhet hozzá a betegek adatai, de nem rendelkezik rendszergazdai jogosultságokkal.
 
 -   Beépített szerepkör-hozzárendeléseit: [Tárfiók-közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
@@ -148,12 +143,12 @@ Az auditor kiértékeli megfelelőség szempontjából a megoldás. A hálózat 
 ## <a name="example-use-case"></a>Példa használati esetekhez
 
 
-Ez a megoldás részét képező példa használati eset azt mutatja be, hogyan a tervezet használható engedélyezése a machine learning és a felhőalapú egészségügyi adatok elemzése. Contosoclinic egy kis kórházi, az Egyesült Államokban található. A kórházi hálózati rendszergazdáknak is érdemes az Azure Machine Learning segítségével jobban előre jelezni a beteg ápolás felvételéről hatékonyságának növeléséhez és ellátás azt is lehetővé teszi a minőség fokozása érdekében időpontjában.
+Ez a megoldás részét képező példa használati eset azt mutatja be, hogyan a tervezet használható engedélyezése a machine learning és a felhőalapú egészségügyi adatok elemzése. Contosoclinic egy kis kórházi, az Egyesült Államokban található. A kórházi hálózati rendszergazdáknak is érdemes az Azure Machine Learning Studio használatának jobb egy páciens ápolás felvételéről hatékonyságának növeléséhez és ellátás azt is lehetővé teszi a minőség fokozása érdekében idején előre jelezni.
 
 ### <a name="predicting-length-of-stay"></a>Tartózkodás időtartamának előrejelzése
 
 
-A példa használati esetekhez Azure Machine Learning segítségével előre jelezni egy újonnan bevezetett beteg kórházi ápolás összehasonlításával összesített előzményadatok előző betegek származnak, betegek bevitel orvosi részleteit.
+A példa használati esetekhez Azure Machine Learning Studio használatával előre jelezni egy újonnan bevezetett beteg kórházi ápolás összehasonlításával összesített előzményadatok előző betegek származnak, betegek bevitel orvosi részleteit.
 A tervezet anonimizált orvosi bemutatásához a megoldás betanítást, prediktív képességeit nagy készletét tartalmazza. Az éles környezet esetében ügyfelek lenne használja saját rekordokat a megoldást a pontos előrejelzések tükröző a környezetben, a létesítmények és a betegek egyedi részleteit.
 
 ### <a name="users-and-roles"></a>Felhasználók és szerepkörök
@@ -301,7 +296,7 @@ A storage, az adatok elérése, egy közös API-séma implementálása a követk
 
 
 
-### <a name="event-grid"></a>Event Grid
+### <a name="event-grid"></a>Eseményrács
 
 
 A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az összes esemény bármilyen forrásból bármilyen cél felé való útválasztását biztosító támogatja:
@@ -336,7 +331,7 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 
 -   Csak a szükséges IP-címek engedélyezettek a hozzáférés az SQL-tűzfalon keresztül.
 
-### <a name="storage-accounts"></a>Tárfiókok
+### <a name="storage-accounts"></a>Storage-fiókok
 
 
 -   [Mozgásban lévő adatok továbbítása a TLS/SSL használatával csak](/azure/storage/common/storage-require-secure-transfer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
@@ -356,8 +351,8 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 ### <a name="machine-learning"></a>Machine Learning
 
 
--   [Naplózás engedélyezve van](/azure/machine-learning/studio/web-services-logging) a Machine Learning webszolgáltatások.
-- használatával [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench igényel, amely lehetővé teszi a számára egy megoldás előrejelzése kísérletek, fejlesztését. [A workbench integrálása](/azure/machine-learning/desktop-workbench/using-git-ml-project) segíthet kísérletek felügyelete egyszerűbb.
+-   [Naplózás engedélyezve van](/azure/machine-learning/studio/web-services-logging) Machine Learning Studio a web services.
+- használatával [Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench igényel, amely lehetővé teszi a számára egy megoldás előrejelzése kísérletek, fejlesztését. [A workbench integrálása](/azure/machine-learning/desktop-workbench/using-git-ml-project) segíthet kísérletek felügyelete egyszerűbb.
 
 ## <a name="security"></a>BIZTONSÁG
 
@@ -389,7 +384,7 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 
     -   [Azure WebApp Analytics](/azure/log-analytics/log-analytics-azure-web-apps-analytics) megoldás
 
-    -   Key Vault-elemzés
+    -   Key Vault Analytics
 
     -   Változások követése
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 77ccfccc0a575cb64272b634b11e80f9e07280f1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 79f3787713d7615d8f5c42d1747dfa5ed96780cd
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160031"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214883"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -82,7 +82,7 @@ Jelenleg a Windows Server az Azure File Sync verziók a következők:
 | Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
 |---------|----------------|------------------------------|
 | Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
-| Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
+| Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
 
 A Windows Server későbbi verzióiban bekerül vannak. Windows korábbi verzióiban előfordulhat, hogy a felhasználói visszajelzések alapján adható hozzá.
 
@@ -149,7 +149,7 @@ További információkért lásd: [elosztott fájlrendszer replikációs szolgá
 A kiszolgálón, amely az Azure File Sync-ügynök van telepítve a sysprep használata nem támogatott, és váratlan eredményekhez vezethet. Az ügynök telepítése és a kiszolgáló regisztrálása a kiszolgálói lemezkép központi telepítése és a sysprep minitelepítő befejezése után történjen.
 
 ### <a name="windows-search"></a>A Windows Search
-Ha a felhőbeli rétegezés engedélyezve van a kiszolgálóvégponton, fájlokat, a rendszer tengerében. könnyebben kihagyva, és nem indexeli a Windows Search. A nem rétegzett fájlok megfelelően vannak indexelve.
+Ha a felhőbeli rétegezés engedélyezve van a kiszolgálóvégponton, a rendszer rétegzett fájlok kihagyva, és nem indexeli a Windows Search. A nem rétegzett fájlok megfelelően vannak indexelve.
 
 ### <a name="antivirus-solutions"></a>A víruskereső megoldásokkal
 Víruskereső ismert kártevő kódja fájlok vizsgálata úgy működik, mert egy víruskereső előfordulhat, hogy a rétegzett fájlok visszahívása. Mert rétegzett fájlok beállítása "offline" attribútuma, javasoljuk, hogy a szoftver gyártójával megtudhatja, hogyan konfigurálhatja a kapcsolat nélküli fájlok olvasásakor kihagyandó megoldás egyeztetett. 
@@ -180,7 +180,7 @@ Az Azure File Sync nem működik az ismert:
 
 - Az NTFS fájlrendszer (EFS) titkosított
 
-Általánosságban véve az Azure File Sync támogatnia kell a titkosítási megoldásokkal, a fájlrendszer, a BitLocker, például az alább található, és fájlformátumban, például a BitLocker megvalósított megoldások együttműködési. Nincsenek speciális együttműködési megoldások, a fájlrendszer, (például NTFS EFS) felett található lett végrehajtva.
+Általánosságban véve az Azure File Sync támogatnia kell a titkosítási megoldásokkal, a fájlrendszer, a BitLocker, például az alább található, és fájlformátumban, például az Azure Information Protection megvalósított megoldások együttműködési. Nincsenek speciális együttműködési megoldások, a fájlrendszer, (például NTFS EFS) felett található lett végrehajtva.
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Egyéb hierarchikus tárolás (HSM) megoldások
 Nincs más HSM-megoldások az Azure File Sync használatával kell használni.
@@ -200,8 +200,8 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | 2. keleti régiója | Virginia |
 | Észak-Európa | Írország |
 | Délkelet-Ázsia | Szingapúr |
-| Az Egyesült Királyság déli régiója | London |
-| Az Egyesült Királyság nyugati régiója | Cardiff |
+| Egyesült Királyság déli régiója | London |
+| Egyesült Királyság nyugati régiója | Cardiff |
 | Nyugat-Európa | Hollandia |
 | USA nyugati régiója | Kalifornia |
 
@@ -224,8 +224,8 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 | USA 2. keleti régiója           | USA középső régiója         |
 | Észak-Európa        | Nyugat-Európa        |
 | Délkelet-Ázsia      | Kelet-Ázsia          |
-| Az Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |
-| Az Egyesült Királyság nyugati régiója             | Az Egyesült Királyság déli régiója           |
+| Egyesült Királyság déli régiója            | Egyesült Királyság nyugati régiója            |
+| Egyesült Királyság nyugati régiója             | Egyesült Királyság déli régiója           |
 | Nyugat-Európa         | Észak-Európa       |
 | USA nyugati régiója             | USA keleti régiója            |
 

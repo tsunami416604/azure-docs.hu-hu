@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2e7f3b0f01dbd6656413c233fcf64c46963d00ef
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6cd6b139699b38a06a8e3f9fce5eb6e24fe24654
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917370"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214175"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítés hibaelhárítása
 
@@ -43,7 +43,7 @@ Győződjön meg arról, hogy az átmenő hitelesítés funkció továbbra is **
 
 Ha a felhasználó nem tud bejelentkezni az átmenő hitelesítéssel, megjelenhet számukra felhasználói hibák a következők egyikét a bejelentkezési képernyő Azure ad-ben: 
 
-|Hiba|Leírás|Megoldás:
+|Hiba|Leírás|Feloldás
 | --- | --- | ---
 |AADSTS80001|Nem lehet csatlakozni az Active Directory|Győződjön meg arról, hogy az ügynök kiszolgálók tagjai a felhasználókat, amelyeknek a jelszava kell érvényesíteni eltérő AD-erdőben, és azok tud csatlakozni az Active Directory.  
 |AADSTS8002|Időtúllépés történt az Active Directoryhoz csatlakozó|Ellenőrizze, hogy ellenőrizze, hogy az Active Directory elérhető-e, és az ügynököktől származó válaszol a kérelmekre.
@@ -59,7 +59,7 @@ Ha a bérlő az Azure AD Premium licenccel rendelkezik, akkor is megjeleníthet�
 
 Navigáljon a **Azure Active Directory** -> **bejelentkezések** a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/) kattintson egy adott felhasználó bejelentkezési tevékenységét. Keresse meg a **bejelentkezési hiba kódja** mező. A mező értékét leképezése a hiba oka és a megoldás a következő táblázat használatával:
 
-|Bejelentkezési hiba kódja|Jelentkezzen be a hiba oka|Megoldás:
+|Bejelentkezési hiba kódja|Jelentkezzen be a hiba oka|Feloldás
 | --- | --- | ---
 | 50144 | A felhasználó Active Directory jelszava lejárt. | A helyszíni Active Directoryban a felhasználó jelszavának alaphelyzetbe állítása.
 | 80001 | Nem érhető el hitelesítési ügynök. | Telepíti és regisztrálja a hitelesítési ügynök.
@@ -97,7 +97,7 @@ Győződjön meg arról, hogy egy csak felhőalapú globális rendszergazdai fi�
 
 Ha az átmenő hitelesítés engedélyezve van a bérlő rendelkezik, és megpróbálja eltávolítani az Azure AD Connect, megjeleníti a következő hibaüzenet: "felhasználók nem fognak tudni jelentkezzen be az Azure AD, ha nincsenek más telepítve átmenő hitelesítési ügynökök más kiszolgálókra."
 
-Győződjön meg arról, hogy a telepítő [magas rendelkezésre álló](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) felhasználói bejelentkezés használhatatlanná tévő elkerülése érdekében az Azure AD Connect eltávolítása előtt.
+Győződjön meg arról, hogy a telepítő [magas rendelkezésre álló](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) felhasználói bejelentkezés használhatatlanná tévő elkerülése érdekében az Azure AD Connect eltávolítása előtt.
 
 ## <a name="issues-with-enabling-the-feature"></a>A szolgáltatás engedélyezési problémái
 
@@ -112,18 +112,6 @@ Győződjön meg arról, hogy a kiszolgáló, amelyen telepítve van az Azure AD
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>A funkció engedélyezése a jogkivonatot, vagy a fiók hitelesítési hibák miatt nem sikerült
 
 Ha a funkció engedélyezése egy csak felhőalapú globális rendszergazdai fiók használata érdekében. Egy ismert probléma, és a többtényezős hitelesítés (MFA)-engedélyezve van a globális rendszergazdai fiókok; Áthidaló megoldásként kapcsolja ki az MFA ideiglenesen (csak a a művelet végrehajtásához).
-
-## <a name="exchange-activesync-configuration-issues"></a>Exchange ActiveSync konfigurációs problémák
-
-Ezek a gyakori problémák, amelyeket az átmenő hitelesítés támogatása az Exchange ActiveSync konfigurálásakor.
-
-### <a name="exchange-powershell-issue"></a>Exchange PowerShell-probléma
-
-Ha megjelenik a "**egy paraméter nem található, amely megfelel a paraméter neve"PerTenantSwitchToESTSEnabled"\.**" Hiba történt, amikor futtatja a `Set-OrganizationConfig` Exchange PowerShell paranccsal, forduljon a Microsoft Support.
-
-### <a name="exchange-activesync-not-working"></a>Nem működik az Exchange ActiveSync
-
-A konfiguráció eltarthat egy ideig érvénybe - környezettől függ az adott időszakban. Ha hosszú ideje a helyzet továbbra is fennáll, forduljon a Microsoft Support.
 
 ## <a name="collecting-pass-through-authentication-agent-logs"></a>Átmenő hitelesítési ügynök-naplók gyűjtését.
 

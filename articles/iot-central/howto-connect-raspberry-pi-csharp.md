@@ -1,6 +1,6 @@
 ---
-title: Kapcsolat egy málna Pi az Azure IoT központi alkalmazáshoz (C#) |} Microsoft Docs
-description: Egy eszköz fejlesztőjeként egy málna Pi csatlakoztatása az Azure IoT központi alkalmazás használatával C#.
+title: Az Azure IoT Central alkalmazáshoz (C#) Raspberry Pi Connnect |} A Microsoft Docs
+description: Eszköz fejlesztőként Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz, C# használatával.
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/22/2018
@@ -8,83 +8,54 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 58f363c522f3e5abe6bf49a2aebafe4e953e00df
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 63843797cca7fe84cdb9ce91d2282b1c0c288f0c
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628589"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205136"
 ---
-# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Egy málna Pi csatlakozni az Azure IoT központi alkalmazás (C#)
+# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
 
 [!INCLUDE [howto-raspberrypi-selector](../../includes/iot-central-howto-raspberrypi-selector.md)]
 
-Ez a cikk ismerteti, hogyan eszköz fejlesztőként egy málna Pi kapcsolódni a Microsoft Azure IoT központi alkalmazáshoz, a C# programozási nyelv használatával.
+Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők Raspberry Pi kapcsolódni a Microsoft Azure IoT Central alkalmazáshoz C# programozási nyelv használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-* [A .NET core 2](https://www.microsoft.com/net) a fejlesztői gépen telepítve van. A megfelelő kód szerkesztése is rendelkezik, mint [Visual Studio Code](https://code.visualstudio.com/).
-* A létrehozott Azure IoT központi alkalmazást a **minta Devkits** alkalmazássablon. További információkért lásd: [létrehozása az Azure IoT központi alkalmazás](howto-create-application.md).
-* A Raspbian operációs rendszert futtató málna Pi eszköz.
+* [.NET core 2](https://www.microsoft.com/net) a fejlesztői gépen telepítve van. Emellett rendelkeznie kell egy megfelelő Kódszerkesztő például [Visual Studio Code](https://code.visualstudio.com/).
+* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: [az Azure IoT központi alkalmazás létrehozása](howto-create-application.md).
+* Raspberry Pi eszköz a Raspbian operációs rendszert.
 
-A létrehozott alkalmazást, a **minta Devkits** alkalmazás sablon tartalmaz egy **málna Pi** eszköz sablon a következő jellemzőkkel:
 
-### <a name="telemetry-measurements"></a>Telemetria mérések
+## <a name="sample-devkits-application"></a>**Minta Devkits** alkalmazás
 
-| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
-| -------------- | ------ | ------- | ------- | -------------- |
-| nedvességtartalma       | %      | 0       | 100     | 0              |
-| TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | az mg     | -2000   | 2000    | 0              |
-| accelerometerY | az mg     | -2000   | 2000    | 0              |
-| accelerometerZ | az mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel: 
 
-### <a name="settings"></a>Beállítások
+- Telemetriai adatokat, amely tartalmazza az eszköz a mérések **páratartalom**, **hőmérséklet**, **nyomás**, **Magnometer** (mért mentén X Y, tengely Z), **Accelorometer** (X, Y, mentén mért Z tengely) és **Giroszkóp** (X, Y, mentén mért Z tengely).
+- Beállítások megjelenítése **feszültség**, **aktuális**,**ventilátor sebesség** és a egy **integrációs modul** be-vagy kikapcsolása.
+- Eszköztulajdonság tartalmazó tulajdonságainak **die szám** és **hely** felhőbeli tulajdonság.
 
-Numerikus beállításai
 
-| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
-| Ventilátor sebessége    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
+Tekintse meg a konfigurációs eszköz sablon kapcsolatos részletes [Raspberry PI eszköz sablon részletei](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)
 
-A beállítások ki-/ bekapcsolása
 
-| Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
-| ------------ | ---------- | ------- | -------- | ------- |
-| INFRAVÖRÖS           | activateIR | ON      | KI      | Ki     |
+## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-### <a name="properties"></a>Tulajdonságok
+Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Raspberry Pi** eszköz sablont, és jegyezze fel az eszköz kapcsolati karakterláncát. További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
 
-| Típus            | Megjelenített név | Mező neve | Adattípus |
-| --------------- | ------------ | ---------- | --------- |
-| Eszköz tulajdonság | Die száma   | dieNumber  | szám    |
-| Szöveg            | Hely     | location   | –       |
+### <a name="create-your-net-application"></a>A .NET-alkalmazás létrehozása
 
-### <a name="add-a-real-device"></a>Valós eszköz hozzáadása
+Hozzon létre, és az eszköz alkalmazás tesztelése a asztali gépén.
 
-Az Azure IoT központi-alkalmazás hozzáadása a valódi eszközről a **málna Pi** eszköz sablont, és jegyezze fel az eszköz kapcsolati karakterlánc. További információkért lásd: [valós eszköz hozzáadása az Azure IoT központi alkalmazás](tutorial-add-device.md).
-
-## <a name="create-your-net-application"></a>A .NET-alkalmazás létrehozása
-
-Hozzon létre, és az eszköz alkalmazás tesztelése a asztali számítógépen.
-
-Az alábbi lépésekkel, a Visual Studio Code is használhat. További információkért lásd: [működik-e a C#](https://code.visualstudio.com/docs/languages/csharp).
+A következő lépéseket, használhatja a Visual Studio Code-ot. További információkért lásd: [használata a C#](https://code.visualstudio.com/docs/languages/csharp).
 
 > [!NOTE]
-> Ha jobban szeret, befejezheti az alábbi lépéseket egy másik kódot szerkesztő segítségével.
+> Ha szeretné, az alábbi lépéseket egy másik kódot-szerkesztő használatával is elvégezheti.
 
-1. A .NET-projekt inicializálása, és adja hozzá a szükséges NuGet-csomagokat, a következő parancsokat:
+1. A .NET projekt inicializálása, és adja hozzá a szükséges NuGet-csomagok, futtassa a következő parancsokat:
 
   ```cmd/sh
   mkdir pisample
@@ -94,7 +65,7 @@ Az alábbi lépésekkel, a Visual Studio Code is használhat. További informác
   dotnet restore
   ```
 
-1. Nyissa meg a `pisample` Visual Studio Code mappájában. Nyissa meg a **pisample.csproj** projektfájlt. Adja hozzá a `<RuntimeIdentifiers>` címke a következő kódrészletben látható:
+1. Nyissa meg a `pisample` mappát a Visual Studio Code-ban. Nyissa meg a **pisample.csproj** soubor projektu. Adja hozzá a `<RuntimeIdentifiers>` címke az alábbi kódrészletben látható módon:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk">
@@ -110,9 +81,9 @@ Az alábbi lépésekkel, a Visual Studio Code is használhat. További informác
     ```
 
     > [!NOTE]
-    > A **Microsoft.Azure.Devices.Client** lehet, hogy a csomag verziószáma magasabb, mint a fentit is.
+    > A **Microsoft.Azure.Devices.Client** lehet, hogy a csomag verziószáma magasabb, mint meg.
 
-1. Mentés **pisample.csproj**. Ha a Visual Studio Code kéri, hogy a visszaállítási parancs hajtható végre, válassza a **visszaállítása**.
+1. Mentés **pisample.csproj**. Ha a Visual Studio Code kéri, hogy a restore parancs végrehajtása, válassza a **visszaállítása**.
 
 1. Nyissa meg **Program.cs** , és cserélje ki annak tartalmát az alábbira:
 
@@ -290,33 +261,33 @@ Az alábbi lépésekkel, a Visual Studio Code is használhat. További informác
 
 ## <a name="run-your-net-application"></a>A .NET-alkalmazás futtatása
 
-Az eszközre vonatkozó kapcsolati karakterlánc hozzáadása a kódot az eszköz az Azure IoT központi való hitelesítéshez szükséges. Feljegyezte ezt a kapcsolati karakterláncot, a valós eszközt az Azure IoT központi alkalmazáshoz való hozzáadásakor.
+Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközspecifikus kapcsolati karakterláncra. Az Azure IoT Central alkalmazásnak a valódi eszköz hozzáadásakor végzett jegyezze fel ezt a kapcsolati karakterláncot.
 
-1. Cserélje le `{your device connection string}` a a **Program.cs** korábban feljegyzett kapcsolati karakterlánccal rendelkező fájl.
+1. Cserélje le `{your device connection string}` a a **Program.cs** fájlt a korábban feljegyzett kapcsolati karakterláncra.
 
-1. A következő parancsot a parancssori környezetben:
+1. Futtassa a következő parancsot a parancssori környezetben:
 
   ```cmd/sh
   dotnet restore
   dotnet publish -r linux-arm
   ```
 
-1. Másolás a `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` málna Pi eszközét mappát. Használhatja a **scp** parancs a másolást, például:
+1. Másolás a `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` mappát a Raspberry Pi-eszközre. Használhatja a **scp** parancs használatával másolja ki a fájlokat, például:
 
     ```cmd/sh
     scp -r publish pi@192.168.0.40:publish
     ```
 
-    További információkért lásd: [málna Pi távelérési](https://www.raspberrypi.org/documentation/remote-access/).
+    További információkért lásd: [Raspberry Pi távelérési](https://www.raspberrypi.org/documentation/remote-access/).
 
-1. Jelentkezzen be az málna Pi eszközt, és futtassa az alábbi parancsokat a rendszerhéj:
+1. Jelentkezzen be a Raspberry Pi-eszközét, és futtassa a következő parancsokat egy rendszerhéjból a:
 
     ```cmd/sh
     sudo apt-get update
     sudo apt-get install libc6 libcurl3 libgcc1 libgssapi-krb5-2 liblttng-ust0 libstdc++6 libunwind8 libuuid1 zlib1g
     ```
 
-1. A málna Pi futtassa a következő parancsokat:
+1. A Raspberry Pi futtassa a következő parancsokat:
 
     ```cmd/sh
     cd publish
@@ -324,20 +295,65 @@ Az eszközre vonatkozó kapcsolati karakterlánc hozzáadása a kódot az eszkö
     ./pisample
     ```
 
-    ![Megkezdése](./media/howto-connect-raspberry-pi-csharp/device_begin.png)
+    ![Program elkezd](./media/howto-connect-raspberry-pi-csharp/device_begin.png)
 
-1. Az Azure IoT központi alkalmazás láthatja, hogy a kód a málna Pi futó hogyan működjön együtt az alkalmazás:
+1. Az Azure IoT Central-alkalmazás láthatja, hogy a kód a Raspberry Pi-on futó hogyan működjön együtt az alkalmazás:
 
-    * Az a **mérések** lap az valós eszközhöz, lásd: a telemetriai adatokat.
-    * A a **tulajdonságok** lapon megtekintheti a jelentett értékének **Die szám** tulajdonság.
-    * Az a **beállítások** lapon módosíthatja a málna Pi feszültség és ventilátor sebesség például különböző beállításait.
+    * Az a **mérések** lap a valós eszközhöz, tekintse meg a telemetriát.
+    * Az a **tulajdonságok** lapon láthatja a jelentett értékét **Die szám** tulajdonság.
+    * Az a **beállítások** lapon módosíthatja a Raspberry Pi feszültség és ventilátor sebesség például a különböző beállításait.
 
-    Az alábbi képernyőfelvételen látható a málna Pi fogadása a beállítás módosítása:
+    Az alábbi képernyőfelvételen a Raspberry Pi fogad beállítás változása:
 
-    ![Raspberry Pi fogad beállítás módosítása](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+    ![Raspberry Pi fogad beállítás változása](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+
+
+## <a name="raspberry-pi-device-template-details"></a>Raspberry PI eszköz sablon részletei
+
+A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel:
+
+### <a name="telemetry-measurements"></a>Telemetria mérések
+
+| Mezőnév     | Mértékegységek  | Minimum | Maximum | Tizedeshelyek |
+| -------------- | ------ | ------- | ------- | -------------- |
+| páratartalom       | %      | 0       | 100     | 0              |
+| TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
+| magnetometerX  | mgauss | – 1000   | 1000    | 0              |
+| magnetometerY  | mgauss | – 1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | – 1000   | 1000    | 0              |
+| accelerometerX | felügyeleti csoport     | -2000   | 2000    | 0              |
+| accelerometerY | felügyeleti csoport     | -2000   | 2000    | 0              |
+| accelerometerZ | felügyeleti csoport     | -2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+### <a name="settings"></a>Beállítások
+
+Numerikus beállításai
+
+| Megjelenített név | Mezőnév | Mértékegységek | Tizedeshelyek | Minimum | Maximum | Kezdeti |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
+| Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
+| Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
+
+A beállítások ki-/ bekapcsolása
+
+| Megjelenített név | Mezőnév | A szöveg | Ki a szöveg | Kezdeti |
+| ------------ | ---------- | ------- | -------- | ------- |
+| INTEGRÁCIÓS MODUL           | activateIR | BE      | KI      | Ki     |
+
+### <a name="properties"></a>Tulajdonságok
+
+| Típus            | Megjelenített név | Mezőnév | Adattípus |
+| --------------- | ------------ | ---------- | --------- |
+| Eszköztulajdonság | Die száma   | dieNumber  | szám    |
+| SMS            | Tartózkodási hely     | hely   | -       |
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik megismerte a málna Pi csatlakoztatása az Azure IoT központi alkalmazás, az alábbiakban a javasolt lépéseket:
+Most, hogy megismerte a Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz, Íme a javasolt következő lépések:
 
-* [Általános Node.js ügyfélalkalmazást Azure IoT központi csatlakozás](howto-connect-nodejs.md)
+* [Egy általános Node.js ügyfél-alkalmazás csatlakoztatása az Azure IoT Central](howto-connect-nodejs.md)

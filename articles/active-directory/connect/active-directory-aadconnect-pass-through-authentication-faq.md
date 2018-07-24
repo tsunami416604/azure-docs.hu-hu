@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048968"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215067"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory átmenő hitelesítés: Gyakori kérdések
 
@@ -28,7 +28,7 @@ Ez a cikk foglalkozik az Azure Active Directory (Azure AD) átmenő hitelesíté
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Amely a módszerek bejelentkezni az Azure AD-ben az átmenő hitelesítés, a jelszó ujjlenyomat-szinkronizálás és az Active Directory összevonási szolgáltatások (AD FS) válasszam?
 
-Attól függ, a helyszíni környezet és a szervezeti követelményeknek. Tekintse át a [az Azure AD Connect felhasználói bejelentkezési lehetőségek](active-directory-aadconnect-user-signin.md) a különböző Azure AD bejelentkezési módszerek összehasonlítását cikk.
+Felülvizsgálat [Ez az útmutató](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) összehasonlítása az Azure AD bejelentkezési módszerek és a szervezet bejelentkezési megfelelő módszer kiválasztásában.
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Az átmenő hitelesítés egy ingyenes szolgáltatás?
 
@@ -48,7 +48,7 @@ Igen. Az átmenő hitelesítés támogatja `Alternate ID` a felhasználóneveké
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Jelszókivonat-szinkronizálást, átmenő hitelesítés egy tartalék szerepét?
 
-Nem. Az átmenő hitelesítés _nem_ Jelszókivonat-szinkronizálás automatikusan feladatátvételt. Csak a tartalékként működik [szituációt, amelyek jelenleg nem támogatja az átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Felhasználói bejelentkezési hibák elkerülése érdekében konfigurálnia kell az átmenő hitelesítés [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+Nem. Az átmenő hitelesítés _nem_ Jelszókivonat-szinkronizálás automatikusan feladatátvételt. Csak a tartalékként működik [szituációt, amelyek jelenleg nem támogatja az átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Felhasználói bejelentkezési hibák elkerülése érdekében konfigurálnia kell az átmenő hitelesítés [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Telepíthetem egy [Azure AD-alkalmazásproxy](../manage-apps/application-proxy.md) -összekötő ugyanarra a kiszolgálóra, egy átmenő hitelesítési ügynök?
 
@@ -82,7 +82,7 @@ Igen. Ha Proxy automatikus felderítési WPAD (Web) engedélyezve van a helyszí
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Két vagy több átmenő hitelesítési ügynökök telepíthető ugyanarra a kiszolgálóra?
 
-Egyetlen kiszolgáló nem, egy átmenő hitelesítési ügynök csak telepítheti. Ha az átmenő hitelesítés konfigurálása a magas rendelkezésre álláshoz szeretné, kövesse a [Azure Active Directory átmenő hitelesítés: gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+Egyetlen kiszolgáló nem, egy átmenő hitelesítési ügynök csak telepítheti. Ha az átmenő hitelesítés konfigurálása a magas rendelkezésre álláshoz szeretné, kövesse a [Azure Active Directory átmenő hitelesítés: gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Hogyan távolíthatom el egy átmenő hitelesítési ügynök?
 
@@ -92,12 +92,7 @@ Ha az átmenő hitelesítés panelen ellenőrizheti a a [Azure Active Directory 
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Már használom az AD FS bejelentkezni az Azure ad-hez. Hogyan lehet váltani, az átmenő hitelesítés?
 
-Ha az AD FS az Azure AD Connect varázsló használatával bejelentkezni módszerként van beállítva, módosítsa a módszert, amellyel a felhasználók jelentkezzen be az átmenő hitelesítés. Ez a változás lehetővé teszi, hogy átmenő hitelesítést, a bérlő, és konvertálja _összes_ a felügyelt tartományok az összevont tartományokban. Az átmenő hitelesítés kezeli az összes további kérelmet, jelentkezzen be a bérlő. Jelenleg nem támogatott az Azure AD Connect belül használatának módja az AD FS és az átmenő hitelesítés különböző tartományokban.
-
-Ha az AD FS van-e konfigurálva, a metódus bejelentkezni _kívül_ az Azure AD Connect varázsló, módosítsa a felhasználói bejelentkezési metódus az átmenő hitelesítés. A módosítást, a **ne konfiguráljon** lehetőséget. Ez a változás lehetővé teszi, hogy a átmenő hitelesítés, a bérlő, de az összevont tartományok továbbra is az AD FS használata a bejelentkezéshez. PowerShell használatával manuálisan vagy azok egy részét a összevont tartományok átalakítása felügyelt tartományok. A módosítás végrehajtása után *csak* átmenő hitelesítés bejelentkezni a felügyelt tartományokat az összes kérelmet kezel.
-
->[!IMPORTANT]
->Az átmenő hitelesítés nem kezeli az bejelentkezési kizárólag felhőalapú Azure AD-felhasználók.
+Ha az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal) átmenő hitelesítésre migrál, javasoljuk, hogy kövesse a részletes üzembe helyezési útmutató, közzétett [Itt](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>Használható átmenő hitelesítés az Active Directory Többerdős környezetben?
 
@@ -105,7 +100,7 @@ Igen. Többerdős környezetben támogatottak, ha vannak az Active Directory-erd
 
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>Átmenő hitelesítés hány ügynök van szükségem telepítéséhez?
 
-Több átmenő hitelesítési ügynökök telepítésével biztosítható [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability). Azonban nem biztosítják a hitelesítési ügynökök közötti terheléselosztás determinisztikus.
+Több átmenő hitelesítési ügynökök telepítésével biztosítható [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability). Azonban nem biztosítják a hitelesítési ügynökök közötti terheléselosztás determinisztikus.
 
 Fontolja meg a maximális és átlagos terhelés bejelentkezési kérések a bérlő látja a keresett. Alapként egy egyetlen hitelesítési ügynök képes kezelni másodpercenként egy standard 4 magos processzor, 16 GB RAM-MAL kiszolgáló 300, 400 hitelesítések.
 
@@ -133,6 +128,7 @@ Ha egy kiszolgálóról távolítja el egy átmenő hitelesítési ügynök, a k
 ## <a name="next-steps"></a>További lépések
 - [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md): ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
 - [Gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md): első lépésekhez az Azure AD átmenő hitelesítés.
+- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
 - [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): ismerje meg, hogyan konfigurálhatja az intelligens zárolás funkciót a bérlő felhasználói fiókok védelmét.
 - [Részletes technikai](active-directory-aadconnect-pass-through-authentication-how-it-works.md): az átmenő hitelesítési szolgáltatás működésének megismerése.
 - [Hibaelhárítás](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): ismerje meg az átmenő hitelesítés szolgáltatás szolgáltatással kapcsolatos gyakori problémák megoldásához.

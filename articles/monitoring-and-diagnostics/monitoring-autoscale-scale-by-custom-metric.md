@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban egyéni metrika automatikus skálázás
-description: Ismerje meg, hogy az erőforrás méretezése által egyéni mértéket az Azure-ban.
+title: Az automatikus méretezés egyéni metrikával Azure-ban
+description: Ismerje meg, hogy az erőforrás méretezése az Azure-beli egyéni metrika szerint.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 739ef5423f7b1769fa793f0cac5306efa634b781
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 97836c4160349b8095ba2095176783ae17b46e82
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262973"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216199"
 ---
-# <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Ismerkedés az automatikus skálázási által egyéni mértéket az Azure-ban
-Ez a cikk ismerteti, hogyan bővítse az erőforrás egy egyéni mértéket az Azure portálon.
+# <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Ismerkedés az automatikus skálázás az Azure-beli egyéni metrika szerint
+Ez a cikk azt ismerteti, hogy az erőforrás méretezése az Azure Portalon egy egyéni metrika szerint.
 
-Az Azure a figyelő automatikus méretezési csak a virtuális gép méretezési készletek (VMSS), a felhőszolgáltatások, az app service-csomagokról és a app service Environment-környezetek vonatkozik. 
+Az Azure Monitor automatikus méretezés csak a virtuális gép méretezési csoportok (VMSS), a cloud services, app service-csomagot és app service Environment-környezetek vonatkozik. 
 
 # <a name="lets-get-started"></a>Lehetővé teszi, hogy első lépései
-Ez a cikk feltételezi, hogy rendelkezik-e egy webalkalmazást az application insights szolgáltatással konfigurált. Ha egy már nem rendelkezik, akkor [Application Insights beállítása az ASP.NET-webhely][1]
+Ez a cikk feltételezi, hogy egy webes alkalmazást az application insights segítségével a konfigurálása. Ha Ön nem rendelkezik ilyennel, [Application Insights beállítása ASP.NET-webhely][1]
 
-- Nyissa meg [Azure-portálon][2]
-- Kattintson az Azure-figyelő ikonra a bal oldali navigációs ablaktáblán.
-  ![Az Azure-figyelő indítása][3]
-- Kattintson az automatikus skálázási beállítás, mely automatikus méretezési nem alkalmazható, az automatikus skálázás aktuális állapotával együtt minden erőforrások ![automatikus méretezési Azure figyelőben felderítése][4]
-- Azure-figyelő a "automatikus skálázási" panel megnyitásához, és válasszon ki egy erőforrástípust méretezésére
-> Megjegyzés: Az alábbi lépéseket az app service-csomag, amely rendelkezik beállított app insights webes alkalmazáshoz kapcsolódó használja.
-- Az erőforrás a skálázási beállítás paneljén láthatja, hogy az aktuális példányszám 1. Kattintson az "Enable automatikus skálázás".
-  ![Új webalkalmazás skálázási beállítást][5]
-- Adjon meg egy nevet a skálázási beállítást, majd kattintson a "Szabály hozzáadása". A skálázási szabályhoz, amelyet értesítés weblapként jelennek meg a jobb oldali ablaktábla a környezetben. Alapértelmezés szerint állítja a méretezési a példányok száma 1, ha a CPU percetage az erőforrás 70 % meghaladja a beállítást. Módosítani a metrika felső "Application Insights", válassza ki a app insights-erőforrás "Resource" a legördülő, majd válassza ki az egyéni metrika-alapú a kívánja méretezni.
-  ![Egyéni metrika szerint][6]
-- Hasonló a fenti, a adja hozzá a skálázási szabályhoz, amelyek a méretezhető és csökkentheti a méretezési száma 1 az egyéni metrika esetén is a küszöbérték alá.
-  ![A skála cpu alapján][7]
-- Állítsa be az Ön korlátok példány. Például ha azt szeretné, attól függően, hogy az egyéni mérték ingadozását 2 – 5 példányai között méretezési, állítsa "minimális" a "2", "maximális", "5" és a "default" és "2"
-> Megjegyzés: az erőforrás metrikáit olvasása probléma merül fel, és a jelenlegi kapacitásnál nem éri el az alapértelmezett kapacitásértéket, majd az erőforrás rendelkezésre állásának biztosításához automatikus skálázási fog horizontális felskálázás az alapértelmezett értékre. Ha a jelenlegi kapacitásnál már nagyobb, mint az alapértelmezett kapacitásértéket, az automatikus skálázás nem lesz skálázva a.
+- Nyissa meg [Azure Portalon][2]
+- Kattintson az Azure Monitor ikonra a bal oldali navigációs ablaktáblán.
+  ![Indítsa el az Azure Monitor][3]
+- Kattintson az automatikus skálázási beállítás számára, amelyen az automatikus skálázási kell alkalmazni, az automatikus skálázási aktuális állapotával együtt az összes erőforrás megtekintését ![Fedezze fel az Azure monitor automatikus méretezés][4]
+- Az Azure monitorban "Automatikus" panel megnyitásához, és válasszon ki egy erőforrást méretezésére
+> Megjegyzés: Az alábbi lépéseket az app service-csomag, amely rendelkezik az app insights konfigurált webalkalmazás társított használja.
+- Az erőforrás a skálázási beállítás panelen láthatja, hogy a jelenlegi példányszám 1. Kattintson az "Automatikus méretezés engedélyezése".
+  ![Új webalkalmazás számára a skálázási beállítás][5]
+- Adjon meg egy nevet a skálázási beállítás, majd kattintson a "Hozzáadás szabály". Figyelje meg, hogy a környezet ablaktáblát a jobb oldalon megnyíló skálázási szabály beállításainak. Alapértelmezés szerint méretezheti a példányok száma 1, ha az erőforrás a CPU percetage meghaladja a 70 %-os lehetőség beállítása. Módosítsa a metrikaforrás felső "Application Insights". a "Erőforrás" legördülő listában válassza ki az app insights-erőforrás, majd válassza ki az egyéni metrika alapján a, amelyre vonatkozóan szeretné méretezni.
+  ![Méretezhető, egyéni metrika][6]
+- Az a fenti lépésben adja a skálázási szabályhoz, amely méretezhető és csökkentése méretezési száma 1, ha az egyéni metrika kisebb egy küszöbértéknél.
+  ![A cpu kihasználtságához][7]
+- Állítsa be az Ön példányszámkorlátoknál. Például ha szeretne horizontális függően az egyéni metrika ingadozások által megkövetelt 2 – 5-példányok között, állítsa a "2', 'maximális", "5" és "default", "2" "minimum"
+> Megjegyzés: abban az esetben az erőforrás-metrikák olvasása során, és a jelenlegi kapacitás nem éri el az alapértelmezett kapacitásértéket, majd az erőforrások rendelkezésre állásának biztosításához maximumára skálázza ki az alapértelmezett értékre. Ha a jelenlegi kapacitás még magasabb, mint az alapértelmezett kapacitásértéket, az automatikus skálázási nem lesz skálázva a.
 - Kattintson a "Mentés"
 
-Gratulálunk! Most már sikeresen megtörtént a beállítás automatikus méretezési méretezni a webalkalmazás egyéni metrika alapján.
+Gratulálunk! A webalkalmazás, egy egyéni metrika alapján méretezhető, hogy most a méretezési csoport automatikus beállítás létrehozása sikeresen megtörtént.
 
-> Megjegyzés: A lépéseket alkalmazhatók VMSS vagy a felhőbeli szolgáltatás szerepkör használatába.
+> Megjegyzés: A ugyanazokat a lépéseket kell alkalmazni a VMSS vagy felhőalapú szolgáltatás szerepkör használatának első lépései.
 
 <!--Reference-->
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net

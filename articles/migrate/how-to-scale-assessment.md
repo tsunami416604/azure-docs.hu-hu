@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: d7814b976529bf7032edd54e4afd574ce766e5dd
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4bcb6734c33d70e4045860a2c0f0acfedfa06eff
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919862"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215179"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -36,7 +36,7 @@ Az Azure Migrate hozzá kell férnie a VMware-kiszolgálókhoz a virtuális gép
 
 Ha a bérlő környezetben telepíti, a következő beállítására egyik módja:
 
-1.  Hozzon létre egy felhasználót bérlőnként és és [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), csak olvasási engedélyek hozzárendelése a virtuális gép összes tartozó, egy adott bérlőbe. Ezután használja ezeket a hitelesítő adatokat a felderítéshez. RBAC biztosítja, hogy a megfelelő vCenter-felhasználó hozzáférhet, csak az adott virtuális gép bérlői.
+1.  Hozzon létre egy felhasználó / bérlő és a használatával [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), csak olvasási engedélyek hozzárendelése a virtuális gép összes tartozó, egy adott bérlőbe. Ezután használja ezeket a hitelesítő adatokat a felderítéshez. RBAC biztosítja, hogy a megfelelő vCenter-felhasználó hozzáférhet, csak az adott virtuális gép bérlői.
 2. RBAC beállítását másik bérlőben felhasználók felhasználói 1 és 2. felhasználói esetében az alábbi példában ismertetett módon:
 
     - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelynek használatával a gyűjtő a virtuális gépek felderítése
@@ -57,7 +57,7 @@ Tervezze meg a felderítések és értékelések az alábbi korlátok alapján:
 
 | **Entitás** | **Gép korlátja** |
 | ---------- | ----------------- |
-| Project    | 1,500             |
+| Projekt    | 1,500             |
 | Detektálás  | 1,500             |
 | Értékelés | 1,500             |
 
@@ -126,7 +126,7 @@ Ellenőrizze, hogy az OVA-fájl biztonságos-e az üzembe helyezés előtt:
 
 3. Győződjön meg arról, hogy a létrehozott kivonatnak megegyezik-e a következő beállításokat.
 
-    Az OVA verziója 1.0.9.12
+    Az OVA 1.0.9.12-es verziója esetén
 
     **Algoritmus** | **Kivonat értéke**
     --- | ---
@@ -199,14 +199,14 @@ Az alábbi táblázatban is megjeleníti az értékelések eredményeinek, ha eg
 
 | Számláló                                 | Szint | Az eszközszintű szint | Értékelés gyakorolt hatás                    |
 | --------------------------------------- | ----- | ---------------- | ------------------------------------ |
-| CPU.Usage.average                       | 1     | NA               | Javasolt Virtuálisgép-méretet és költség         |
-| mem.usage.average                       | 1     | NA               | Javasolt Virtuálisgép-méretet és költség         |
-| virtualDisk.read.average                | 2     | 2                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
-| virtualDisk.write.average               | 2     | 2                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
-| virtualDisk.numberReadAveraged.average  | 1     | 3                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
-| virtualDisk.numberWriteAveraged.average | 1     | 3                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
-| NET.Received.average                    | 2     | 3                | Virtuális gép mérete és a hálózati költség             |
-| NET.transmitted.average                 | 2     | 3                | Virtuális gép mérete és a hálózati költség             |
+| CPU.Usage.average                       | 1.     | n/a               | Javasolt Virtuálisgép-méretet és költség         |
+| mem.usage.average                       | 1.     | n/a               | Javasolt Virtuálisgép-méretet és költség         |
+| virtualDisk.read.average                | 2.     | 2.                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| virtualDisk.write.average               | 2.     | 2.                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| virtualDisk.numberReadAveraged.average  | 1.     | 3.                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| virtualDisk.numberWriteAveraged.average | 1.     | 3.                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| NET.Received.average                    | 2.     | 3.                | Virtuális gép mérete és a hálózati költség             |
+| NET.transmitted.average                 | 2.     | 3.                | Virtuális gép mérete és a hálózati költség             |
 
 > [!WARNING]
 > Csak statisztikai magasabb szintű állított be, ha tart naponta létrehozni a teljesítményszámlálókat. Ezért javasoljuk, hogy a felderítés futtatásakor egy nap elteltével.
