@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: da81f26109eb140135eb972fd28e487139470b82
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: a69bfbe4c062012e82ca49233226eb1fcb8eb75e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032909"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113540"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>Gyors útmutató: Stream Analytics-feladat létrehozása a Visual Studio Azure Stream Analytics eszközeinek használatával
 
@@ -71,6 +71,11 @@ A Stream Analytics-feladat létrehozása előtt érdemes beállítani azokat az 
 4. Adja meg az alkalmazás **nevét**, **helyét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
 
    ![Stream Analytics-projekt létrehozása](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
+
+Figyelje meg az Azure Stream Analytics-projektben szereplő elemeket.
+
+   <img src="./media/stream-analytics-quick-create-vs/stream-analytics-project.png" alt="Azure Stream Analytics project elements" width="300px"/>
+
 
 ## <a name="choose-the-required-subscription"></a>A kívánt előfizetés kiválasztása
 

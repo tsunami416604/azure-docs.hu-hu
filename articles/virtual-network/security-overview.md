@@ -1,6 +1,6 @@
 ---
-title: Az Azure-hálózat biztonsági áttekintése | Microsoft Docs
-description: Ismerkedjen meg az Azure-erőforrások közötti hálózati forgalom szabályzására szolgáló biztonsági beállításokkal.
+title: Az Azure biztonsági csoportok áttekintése | Microsoft Docs
+description: Ismerje meg a hálózati és alkalmazásbiztonsági csoportokat A biztonsági csoportok az Azure-erőforrások közötti hálózati forgalom szűrésében segítenek.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 11178c574bcfa2224d15f81653f7d202ba88fb55
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e43f476c6f816a912e5739d5e2c13676cd1ca3e
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657587"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092671"
 ---
-# <a name="network-security"></a>Hálózati biztonság
+# <a name="network-and-application-security-groups"></a>A hálózati és alkalmazásbiztonsági csoportok
 
-A hálózati biztonsági csoportokkal korlátozhatja az egy adott virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalmat. A hálózati biztonsági csoport egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a bejövő vagy kimenő hálózati forgalmat a forrás vagy a cél IP-címe, illetve portok vagy protokollok alapján. 
+A hálózati és alkalmazásbiztonsági csoportokkal korlátozhatja az egy adott virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalmat. A hálózati biztonsági csoport egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a bejövő vagy kimenő hálózati forgalmat a forrás vagy a cél IP-címe, illetve portok vagy protokollok alapján. Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendezze a hasonló funkciójú virtuális gépeket, például a webkiszolgálókat. Az alkalmazásbiztonsági csoportokat megadhatja forrásként vagy célként is egy hálózati biztonsági csoport szabályában.
 
 ## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
-Mindegyik hálózati adapter nulla vagy egy társított hálózati biztonsági csoporttal rendelkezik. Mindegyik hálózati adapter egy [virtuális hálózati](virtual-networks-overview.md) alhálózatban létezik. Az alhálózat szintén nulla vagy egy társított hálózati biztonsági csoporttal rendelkezhet. 
+Mindegyik hálózati adapter nulla vagy egy társított hálózati biztonsági csoporttal rendelkezik. Mindegyik hálózati adapter egy [virtuális hálózati](virtual-networks-overview.md) alhálózatban létezik. Az alhálózat szintén nulla vagy egy társított hálózati biztonsági csoporttal rendelkezhet.
 
 Az alhálózatokra alkalmazott biztonsági szabályok az adott alhálózatban minden erőforrásra vonatkoznak. A hálózati adapterek mellett más Azure-szolgáltatások, például a HDInsight, a virtuálisgép-méretezési csoportok és az alkalmazásszolgáltatási környezetek példányait is üzembe helyezheti az alhálózaton.
 
@@ -167,10 +167,10 @@ Az alkalmazásbiztonsági csoportok a következő korlátozásokkal rendelkeznek
 
      - **Nagyvállalati szerződés**: 25-ös porton keresztüli kimenő kommunikáció engedélyezve. Közvetlenül a virtuális gépekről küldhet kimenő e-maileket a külső e-mail-szolgáltatóknak, és az Azure platform korlátozásai nem érvényesülnek. 
      - **Használatalapú fizetés**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Ha közvetlenül a virtuális gépéről szeretne e-mailt küldenie egy külső e-mail-szolgáltatónak (hitelesített SMTP-továbbítás használata nélkül), kérheti a korlátozás feloldását. A kérelmeket a Microsoft saját belátása szerint értékeli és hagyja jóvá, a visszaélések kiküszöbölésére szolgáló megfelelő ellenőrzések elvégzése után. Kérelem benyújtásához támogatási esetet kell nyitnia a *Technikai*, *Virtuális hálózati kapcsolat*, *Sikertelen e-mail-küldés (SMTP/25-ös port)* problématípus kiválasztásával. A támogatási esetben részletesen indokolja, hogy előfizetésének miért kell közvetlenül a levelezési szolgáltatónak e-mailt küldenie a hitelesített SMTP-továbbítás használata helyett. Amennyiben előfizetését felmentik a korlátozás alól, csak a mentesítés dátuma után létrehozott virtuális gépek képesek a 25-ös porton keresztüli kimenő kommunikációra.
-     - **Felhőszolgáltató (CSP), MSDN, Azure Pass, Azure in Open, Education, BizSpark és ingyenes próbaverzió**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Nem küldhető kérelem a korlátozás feloldására, mert a kérelmek nem teljesíthetők. Amennyiben mindenképpen virtuális gépről szeretne e-mailt küldeni, SMTP-továbbítási szolgáltatást kell használnia.
+     - **MSDN, Azure Pass, Azure in Open, Education, BizSpark és ingyenes próbaverzió**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Nem küldhető kérelem a korlátozás feloldására, mert a kérelmek nem teljesíthetők. Amennyiben mindenképpen virtuális gépről szeretne e-mailt küldeni, SMTP-továbbítási szolgáltatást kell használnia.
+     - **Felhőszolgáltató**: Az Azure-erőforrásokat felhőszolgáltatón keresztül használó ügyfelek létrehozhatnak egy támogatási esetet a felhőszolgáltatónál, és kérhetik, hogy a szolgáltató hozzon létre a nevükben egy feloldási esetet, ha nem használható egy biztonságos SMTP-továbbító.
 
-  Amennyiben az Azure engedélyezi az e-mailek küldését a 25-ös porton keresztül, a Microsoft nem tudja garantálni, hogy a levelező szolgáltatók elfogadják a virtuális gépről érkező bejövő e-maileket. Amennyiben egy szolgáltató elutasítja a virtuális gépéről érkező leveleket, vele együttműködésben kell megoldania bármely üzenetküldési vagy levélszemétszűrési problémát, vagy SMTP-továbbítási szolgáltatást kell használnia. 
-
+  Amennyiben az Azure engedélyezi az e-mailek küldését a 25-ös porton keresztül, a Microsoft nem tudja garantálni, hogy a levelező szolgáltatók elfogadják a virtuális gépről érkező bejövő e-maileket. Amennyiben egy szolgáltató elutasítja a virtuális gépéről érkező leveleket, vele együttműködésben kell megoldania bármely üzenetküldési vagy levélszemétszűrési problémát, vagy SMTP-továbbítási szolgáltatást kell használnia.
 
 ## <a name="next-steps"></a>További lépések
 

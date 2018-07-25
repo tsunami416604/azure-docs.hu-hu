@@ -1,21 +1,21 @@
 ---
-title: Részben strukturált adatok keresése az Azure felhőalapú tárolóban
-description: Részben strukturált blobadatok keresése az Azure Search használatával.
-author: roygara
+title: Oktatóanyag a felhőalapú Azure-tárolókban lévő, részben strukturált adatok Azure Searchben való kereséséhez | Microsoft Docs
+description: Ebben az oktatóanyagban megtanulhatja, hogyan kereshet részben strukturált Azure-beli blobadatokat az Azure Search használatával.
+author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 10/12/2017
-ms.author: v-rogara
-ms.openlocfilehash: 7579862e132724d101e4267023afd9e3336bc3b1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 07/12/2018
+ms.author: heidist
+ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795041"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005077"
 ---
-# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>2. rész: Részben strukturált adatok keresése felhőalapú tárolóban
+# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Oktatóanyag: Részben strukturált adatok keresése az Azure-beli felhőalapú tárolóban
 
 Ebben a kétrészes oktatóanyag-sorozatban megismerheti, hogyan kereshet részben strukturált és strukturálatlan adatokat az Azure Search használatával. Az [1. rész](../storage/blobs/storage-unstructured-search.md) bemutatta a strukturálatlan adatok keresését, de az ehhez az oktatóanyaghoz fontos előfeltételeket is tartalmazott, ilyen például a tárfiók létrehozása. 
 
@@ -28,14 +28,16 @@ A 2. részben a következőkkel ismerkedhet meg:
 > * Azure Search-index és indexelő létrehozása és feltöltése a tároló bejárásához és kereshető tartalom kinyeréséhez
 > * Keresés az újonnan létrehozott indexben
 
-> [!NOTE]
-> Ez az oktatóanyag a JSON-tömbök támogatására támaszkodik, amely jelenleg előzetes verziójú funkció az Azure Search szolgáltatásban. A portálon nem érhető el. Ezért az előzetes verziójú, ezt a funkciót biztosító REST API-t használjuk, és egy REST-ügyféleszköz segítségével hívjuk meg az API-t.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az [előző oktatóanyag](../storage/blobs/storage-unstructured-search.md) befejezése, amely biztosítja a benne létrehozott tárfiókot és keresési szolgáltatást.
 
 * REST-ügyfél telepítése és a HTTP-kérelmek létrehozásának ismerete. Ebben az oktatóanyagban a [Postman](https://www.getpostman.com/) szolgáltatást használjuk. Nyugodtan használhat egy másik REST-ügyfélt, ha azt már jól ismeri.
+
+> [!NOTE]
+> Ez az oktatóanyag a JSON-tömbök támogatására támaszkodik, amely jelenleg előzetes verziójú funkció az Azure Search szolgáltatásban. A portálon nem érhető el. Ezért az előzetes verziójú, ezt a funkciót biztosító REST API-t használjuk, és egy REST-ügyféleszköz segítségével hívjuk meg az API-t.
 
 ## <a name="set-up-postman"></a>A Postman beállítása
 
@@ -55,9 +57,9 @@ Előkészítettünk Önnek egy mintaadatkészletet. **Töltse le a [clinical-tri
 
 A mintában példa JSON-fájlok találhatók, amelyek eredetileg a [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) oldalról származó szöveges fájlok. A kényelmes használat érdekében ezeket JSON-fájlokká alakítottuk át.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure portálra](http://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 
 ## <a name="upload-the-sample-data"></a>A mintaadatok feltöltése
 
@@ -73,7 +75,7 @@ Ha befejeződött a feltöltés, a fájlok a saját almappájukban jelennek meg 
 
 A Postmannel három API-hívást indítunk a keresési szolgáltatás felé annak érdekében, hogy létrehozzunk egy adatforrást, egy indexet és egy indexelőt. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
 
-A lekérdezési karakterláncnak tartalmaznia kell az **api-version=2016-09-01-Preview** elemet, és minden hívásnak egy **201 Created** elemet kell visszaadnia. Az általánosan elérhető api-version még nem képes a JSON-t egy JSON-tömbként kezelni, jelenleg erre csak az előzetes api-version képes.
+A lekérdezési sztringnek tartalmaznia kell az **api-version=2016-09-01-Preview** elemet, és minden hívásnak egy **201 Created** elemet kell visszaadnia. Az általánosan elérhető api-version még nem képes a JSON-t egy JSON-tömbként kezelni, jelenleg erre csak az előzetes api-version képes.
 
 Hajtsa végre az alábbi három API-hívást a REST-ügyfélről.
 
@@ -273,19 +275,17 @@ Egy példa összetettebb lekérdezésre: `$filter=MinimumAge ge 30 and MaximumAg
 
   ![Részben strukturált keresés](media/search-semi-structured-data/metadatashort.png)
 
-Nyugodtan kísérletezhet, és néhány további lekérdezést is kipróbálhat. Használhat logikai operátorokat (and, or, not) és összehasonlító operátorokat (eq, ne, gt, lt, ge, le) is. A karakterlánc-összehasonlítások megkülönböztetik a kis- és nagybetűket.
+Nyugodtan kísérletezhet, és néhány további lekérdezést is kipróbálhat. Használhat logikai operátorokat (and, or, not) és összehasonlító operátorokat (eq, ne, gt, lt, ge, le) is. A sztring-összehasonlítások megkülönböztetik a kis- és nagybetűket.
 
 A `$filter` paraméter csak olyan metaadatokkal működik, amelyek szűrhetőként lettek megjelölve az index létrehozásakor.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatást tartalmazó erőforráscsoport törlésével távolíthatók el a leggyorsabban. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Search szolgáltatás Áttekintés lapján szerepel.
+
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan kereshet részben strukturált adatokat az Azure Search használatával, például a következőkkel:
-
-> [!div class="checklist"]
-> * Azure Search szolgáltatás létrehozása REST API használatával
-> * Az Azure Search szolgáltatás használata tároló keresésére
-
-A kereséssel kapcsolatos további információkat erre a hivatkozásra kattintva érheti el.
+Mesterséges intelligencia által vezérelt algoritmusokat csatolhat egy indexelőfolyamathoz. Következő lépésként folytassa az alábbi oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Dokumentumok indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md)

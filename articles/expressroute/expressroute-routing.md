@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2018
 ms.author: ganesr
-ms.openlocfilehash: 998d4f8017af51a21e13695a8491e9b6bd62af9a
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 7fd2dd870338dc6778d192658143d14d9d9895cc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930528"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072146"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -221,7 +221,7 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 > 
 > 
 
-### <a name="bgp-community-support-in-national-clouds-preview"></a>BGP-közösségek támogatása országos felhőkörnyezetekben (Előzetes verzió)
+### <a name="bgp-community-support-in-national-clouds"></a>BGP-közösségek támogatása országos felhőkörnyezetekben
 
 | **Országos felhőkörnyezetek – Azure-régió**| **BGP-közösségérték** |
 | --- | --- |

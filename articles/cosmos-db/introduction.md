@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: dcc384fad0479c66211fe31e547ad7076150b58e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 256c951b5bf193f5ee5bfe5f70c3549ef17a4d9b
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611228"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071978"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -68,7 +68,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB segíts�
     * Az Azure Cosmos DB adatbázismotorja teljesen sémafüggetlen. Automatikusan indexel minden fogadott adatot bármiféle séma vagy index nélkül, és villámgyors lekérdezéseket kínál. 
 
 * **Alacsony tulajdonosi költségek**
-    * Öt-tízszer [költséghatékonyabb](https://aka.ms/cosmos-db-tco-paper), mint egy nem felügyelt vagy egy helyszíni NoSQL-megoldás.
+    * Öt-tízszer költséghatékonyabb, mint egy nem felügyelt vagy egy helyszíni NoSQL-megoldás.
     * Harmadannyiba kerül, mint az AWS DynamoDB vagy a Google Spanner.
 
 ## <a name="capability-comparison"></a>Képességek összehasonlítása

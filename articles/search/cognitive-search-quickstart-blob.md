@@ -3,16 +3,17 @@ title: 'Rövid útmutató: Kognitív keresési folyamat létrehozása az Azure S
 description: Példa adatkinyerési, természetes nyelvi és képfeldolgozási képességekre az Azure Portalon, mintaadatok használatával.
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3dda4c330f2dc620662c476aa4e5dbfe3a60fa76
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640261"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003696"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rövid útmutató: Kognitív keresési folyamat létrehozása képességek és mintaadatok használatával
 
@@ -123,7 +124,7 @@ Mivel megadott egy képességcsoportot, a varázsló feltételezi, hogy a forrá
 
 Az **Index testreszabása** résznél tekintse át a mezők attribútumait, hogy láthassa, a rendszer hogyan használja azokat egy indexben. A Kereshető attribútum azt jelzi, hogy a mező kereshető. A Lekérdezhető attribútum azt jelzi, hogy visszaadható az eredményekben. 
 
-Fontolja meg a Lekérdezhető attribútum törlését a `content` mezőből. A blobokban ez a mező több ezer sort is kitölthet, amely a **Keresési ablakhoz** hasonló eszközök segítségével nehezen olvasható.
+Fontolja meg a Lekérdezhető attribútum törlését a `content` mezőből. A blobokban ez a mező több ezer sort is kitölthet, amely a **Keresési ablakhoz** hasonló eszközökkel nehezen olvasható.
 
 Kattintson az **OK** gombra az index definíciójának elfogadásához.
 

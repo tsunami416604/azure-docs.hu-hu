@@ -7,24 +7,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: 3671f63b9e27cb6af55c31e3e61dc6d19932f54c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 65c10f393efbeaa111e2b413a0568da053c04567
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972913"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001127"
 ---
-# <a name="quickstart-deploy-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rövid útmutató: Felhőalapú megoldás üzembe helyezése prediktív karbantartási elemzés saját csatlakoztatott eszközökön való futtatásához
+# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rövid útmutató: Felhőalapú megoldás kipróbálása prediktív karbantartási elemzés saját csatlakoztatott eszközökön való futtatásához
 
-Ez a rövid útmutató bemutatja az Azure IoT-prediktív karbantartási megoldásgyorsító üzembe helyezését az IoT-eszközök felhőalapú prediktív karbantartási megoldásaként történő használatához. A megoldásgyorsító telepítését követően a megoldás **Dashboard** (Irányítópult) lapjának segítségével futtathat egy szimulációt repülőgépmotor-adatokkal.
+Ez a rövid útmutató bemutatja az Azure IoT-prediktív karbantartási megoldásgyorsító üzembe helyezését egy felhőalapú prediktív karbantartási szimuláció futtatásához. A megoldásgyorsító telepítése után a megoldás **Dashboard** (Irányítópult) lapján futtathat egy prediktív karbantartási elemzést egy szimulált repülőgépmotor adatai alapján. A megoldásgyorsítót saját megvalósítása kiindulópontjaként vagy képzési eszközként is használhatja.
 
-A Fabrikam egy regionális légitársaság, amely a nagyszerű ügyfélélményre összpontosít versenyképes árakon. A járatok késésének egyik okai a karbantartási problémák, és a repülőmotorok karbantartása különösen nagy kihívást jelent. A Fabrikamnak minden áron el kell kerülnie a repülés közbeni motorhibákat, így rendszeresen megvizsgálja a motorokat, és tervszerűen ütemezi a karbantartást. A repülőgépek motorja azonban nem mindig ugyanolyan ütemben használódik el. Időnként feleslegesen végeznek karbantartást a motorokon. Még fontosabb, hogy olyan problémák merülnek fel, amelyek miatt a repülőgép nem szállhat fel a karbantartás elvégzéséig. Ezek a problémák különösen költségesek lehetnek, ha egy repülőgép olyan helyen van, ahol nincsenek megfelelő szerelők vagy pótalkatrészek.
+A szimulációban a Fabrikam egy regionális légitársaság, amely a nagyszerű ügyfélélményre összpontosít versenyképes árakon. A járatok késésének egyik okai a karbantartási problémák, és a repülőmotorok karbantartása különösen nagy kihívást jelent. A Fabrikamnak minden áron el kell kerülnie a repülés közbeni motorhibákat, így rendszeresen megvizsgálja a motorokat, és tervszerűen ütemezi a karbantartást. A repülőgépek motorja azonban nem mindig ugyanolyan ütemben használódik el. Időnként feleslegesen végeznek karbantartást a motorokon. Még fontosabb, hogy olyan problémák merülnek fel, amelyek miatt a repülőgép nem szállhat fel a karbantartás elvégzéséig. Ezek a problémák különösen költségesek lehetnek, ha egy repülőgép olyan helyen van, ahol nincsenek megfelelő szerelők vagy pótalkatrészek.
 
 A Fabrikam repülőmotorjai olyan érzékelőkkel vannak felszerelve, amelyek monitorozzák a motor állapotát repülés közben. A motor működési és meghibásodási adatainak többéves begyűjtése után a Fabrikam adatszakértői olyan modellt fejlesztettek, amely előrejelzi a repülőmotor fennmaradó hasznos élettartamát (RUL). A modell a négy motorérzékelőből érkező adatok és a meghibásodáshoz vezető motorkopás közötti összefüggést alkalmazza. A Fabrikam továbbra is rendszeres vizsgálatokat végez a biztonság érdekében, azonban mostantól a modellek használatával kiszámíthatja mindegyik motor RUL-értékét minden egyes repülőút után. A Fabrikam már képes előre megmondani a várható meghibásodási pontokat, ez alapján tervezni a karbantartást, így képes minimálisra csökkenteni a repülőgép földön töltött idejét és csökkenteni a működési költségeket, miközben az utasok és a személyzet biztonságát is garantálja.
-
-## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
@@ -40,9 +38,9 @@ Kattintson a **Kipróbálom most** elemre a **Prediktív karbantartás** csempé
 
 ![Prediktív karbantartás kiválasztása](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
 
-A **Prediktív karbantartási megoldás létrehozása** oldalon adjon meg egy **Megoldásnevet** a prediktív karbantartási megoldásgyorsítóhoz.
+A **Prediktív karbantartási megoldás létrehozása** oldalon adjon meg egy **Megoldásnevet** a prediktív karbantartási megoldásgyorsítóhoz. Ebben a rövid útmutatóban a **MyPredictiveMaintenance** nevet használjuk.
 
-Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Mindehhez [globális rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie az előfizetésben.
+Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban a **Visual Studio Enterprise** és az **USA keleti régiója** értékeket választjuk. Mindehhez [globális rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie az előfizetésben.
 
 Kattintson a **Megoldás létrehozása** gombra az üzembe helyezés elkezdéséhez. A folyamat legalább öt percig tart:
 
@@ -50,7 +48,7 @@ Kattintson a **Megoldás létrehozása** gombra az üzembe helyezés elkezdésé
 
 ## <a name="sign-in-to-the-solution"></a>Bejelentkezés a megoldásba
 
-Ha az üzembe helyezés befejeződött az Azure-előfizetésen, bejelentkezhet a prediktív karbantartási megoldásgyorsító irányítópultjára.
+Ha az üzembe helyezés befejeződött az Azure-előfizetésen, a megoldás csempéjén egy zöld pipa és a **Kész** felirat jelenik meg. Ekkor bejelentkezhet a prediktív karbantartási megoldásgyorsító irányítópultjára.
 
 A **Kiépített megoldások** lapon kattintson az új prediktív karbantartási megoldásgyorsítóra. A megjelenő panelen megtekintheti a prediktív karbantartási megoldásgyorsítóra vonatkozó információkat. Válassza ki a **Megoldások irányítópultja** elemet a prediktív karbantartási megoldásgyorsító megjelenítéséhez:
 
@@ -78,7 +76,7 @@ Bármikor leállíthatja a szimulációt, de a **Start Simulation** (Szimuláci�
 
 Ha tovább szeretne ismerkedni az eszközzel, hagyja üzembe helyezve a prediktív karbantartási megoldást.
 
-Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról:
+Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról. Ehhez jelölje ki, majd kattintson a **Megoldás törlése** gombra:
 
 ![Megoldás törlése](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 
@@ -86,7 +84,7 @@ Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megol
 
 Ebben a rövid útmutatóban telepítette a prediktív karbantartási megoldásgyorsítót, és futtatott egy szimulációt.
 
-A megoldásgyorsítóról a cikkben találhat további információkat.
+Ha többet szeretne megtudni a megoldásgyorsítóról és a szimulált repülőgépmotorokról, lépjen tovább a következő oktatóanyagra.
 
 > [!div class="nextstepaction"]
 > [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-walkthrough.md)

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 2/13/2018
+ms.date: 7/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 155cdaf51ac5725a315259a0d809ba644f64110c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447251"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048916"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rövid útmutató: Bejelentkezés beállítása egyoldalas alkalmazáshoz az Azure Active Directory B2C használatával
 
@@ -29,7 +29,7 @@ Ebben a gyors útmutatóban az Azure AD B2C-t használó egyoldalas mintaalkalma
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) az **ASP.NET és webfejlesztési** számítási feladattal.
 * [Node.js](https://nodejs.org/en/download/) telepítése
-* Egy Facebook, Google, Microsoft vagy Twitter közösségi fiók.
+* Egy Facebook-fiók.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -63,21 +63,17 @@ Nyissa meg az alkalmazás `http://localhost:6420` URL-címét egy webböngésző
 
 Kattintson a **Login** (Bejelentkezés) gombra az Azure AD B2C **regisztrációs vagy bejelentkezési** munkafolyamatának elindításához egy Azure AD B2C-szabályzat alapján. 
 
-A minta több regisztrációs beállítást is támogat, beleértve a közösségi identitásszolgáltató használatát vagy helyi fiók e-mail-címmel való létrehozását. Ehhez a gyors útmutatóhoz Facebook, Google vagy Twitter közösségi identitásszolgáltatótól származó fiókot használjon. 
+A minta több regisztrációs beállítást is hivatott támogatni, beleértve helyi fiók e-mail-címmel való létrehozását. Ebben a rövid útmutatóban egy Facebook-fiókot használunk. 
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>Regisztráció közösségi identitásszolgáltatóval
 
 Az Azure AD B2C a minta-webalkalmazáshoz egy Wingtip Toys nevű fiktív márka egyéni bejelentkezési lapját jeleníti meg. 
 
-1. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a használni kívánt identitásszolgáltató gombjára.
-
-    ![Bejelentkezési vagy regisztrációs szolgáltató](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+1. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a Facebook-identitásszolgáltató gombjára.
 
     Hitelesíti magát (bejelentkezik) a közösségi fiók hitelesítő adataival, és feljogosítja az alkalmazást, hogy beolvassa a közösségi fiók adatait. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését. 
 
-2. Fejezze be az identitásszolgáltató bejelentkezési folyamatát. Ha például a Twittert választotta, írja be a Twitter-fiók hitelesítő adatait, majd kattintson **Sign in** (Bejelentkezés) gombra.
-
-    ![Hitelesítés és engedélyezés közösségi fiókkal](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
+2. A hitelesítő adatai megadásával fejezze be az identitásszolgáltató bejelentkezési folyamatát.
 
     Az új fiókprofil részletei előre ki vannak töltve a közösségi fiókja adataival. 
 

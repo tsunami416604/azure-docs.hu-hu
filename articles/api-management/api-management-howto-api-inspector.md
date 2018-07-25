@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 01a9120af2fb240eed1463613f7a6f946a9c16ed
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf9c56fa2ba75dc5b5ad4af59d111a0124f1a9df
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934689"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057327"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>API-k hibakeresése kérelmek nyomkövetésének használatával
 
@@ -44,6 +44,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 3. Válassza a **GetSpeakers** műveletet.
 4. Váltson a **Teszt** lapra.
 5. Győződjön meg róla, hogy egy **Ocp-Apim-Trace** elnevezésű HTTP-fejlécet is belefoglal, amely a **true** (igaz) értékre van állítva.
+
+    ![API nyomkövetési fejléc](media/api-management-howto-api-inspector/api-management-tracing-header.png)
+
+    > [!NOTE]
+    > Ha az Ocp-Apim-Subscription-Key nincs automatikusan kitöltve, akkor a fejlesztői portálon, a profiloldalon a kulcsok felfedésével szerezheti be.
+
 6. Kattintson a **„Küldés”** gombra egy API-hívás indításához. 
 7. Várjon, amíg a hívás véget ér. 
 8. Lépjen az **API-konzol** **Nyomkövetés** lapjára. A következő hivatkozások bármelyikére kattintva a részletes nyomkövetési információkra ugorhat: **bejövő**, **háttér**, **kimenő**.

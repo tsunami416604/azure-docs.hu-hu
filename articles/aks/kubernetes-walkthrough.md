@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 5b5ae6ba945b1428ffc2877711ebdc73937ea0a3
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 8b9f53b34b75f9827e4976681a78f873b812ad96
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915942"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055117"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rövid útmutató: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -34,20 +34,20 @@ Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] par
 
 Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet, ahol az erőforrások megtalálhatók lesznek az Azure-ban.
 
-A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+A következő példában létrehozunk egy *myAKSCluster* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name myAKSCluster --location eastus
 ```
 
 Kimenet:
 
 ```json
 {
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myAKSCluster",
   "location": "eastus",
   "managedBy": null,
-  "name": "myResourceGroup",
+  "name": "myAKSCluster",
   "properties": {
     "provisioningState": "Succeeded"
   },
@@ -60,7 +60,7 @@ Kimenet:
 Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. AKS-fürt telepítésekor a tároló állapotmonitorozó megoldása is engedélyezhető. A tároló állapotmonitorozási megoldásának engedélyezéséről az [Azure Kubernetes Service állapotmonitorozásáról][aks-monitor] szóló témakörben talál további információt.
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myAKSCluster --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
 Néhány perc múlva befejeződik a parancs végrehajtása, és visszaadja a fürttel kapcsolatos adatokat JSON formátumban.
@@ -79,7 +79,7 @@ az aks install-cli
 Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálhatja a kubectl-t a Kubernetes-fürthöz való csatlakozásra. Ebben a lépésben a rendszer hitelesítő adatokat tölt le, és konfigurálja a Kubernetes parancssori felületét azok használatára.
 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+az aks get-credentials --resource-group myAKSCluster --name myAKSCluster
 ```
 
 A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kubectl-get] parancsot a fürtcsomópontok listájának lekéréséhez. Vegye figyelembe, hogy az adatok megjelenítése eltarthat néhány percig.
@@ -209,8 +209,11 @@ Most lépjen a külső IP-címre az Azure Vote alkalmazás megtekintéséhez.
 Ha a fürtre már nincs szükség, az [az group delete][az-group-delete] paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes --no-wait
+az group delete --name myAKSCluster --yes --no-wait
 ```
+
+> [!NOTE]
+> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket.
 
 ## <a name="get-the-code"></a>A kód letöltése
 
@@ -246,4 +249,4 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli
-
+[sp-delete]: kubernetes-service-principal.md#additional-considerations

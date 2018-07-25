@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: 22be921c7ab437e08d8ea5032befb8671dc90ed0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1bc890abc8b406ae75f292f37775e4cb62cf0473
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163367"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115275"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances-kvóták és -régiók rendelkezésre állása
 
@@ -31,6 +31,7 @@ Az Azure Container Instances a következő régiókban érhető el a megadott pr
 | -------- | -- | :---: | :-----------: |
 | USA nyugati régiója, USA keleti régiója, Nyugat-Európa, Észak-Európa | Linux | 4 | 14 |
 | USA nyugati régiója, 2., Délkelet-Ázsia | Linux | 2 | 7 |
+| Kelet-Ausztrália, USA 2. keleti régiója, USA középső régiója | Linux | 1 | 1.5 |
 | USA nyugati régiója, USA keleti régiója, Nyugat-Európa, Észak-Európa | Windows | 4 | 14 |
 | USA nyugati régiója, 2., Délkelet-Ázsia | Windows | 2 | 3.5 |
 

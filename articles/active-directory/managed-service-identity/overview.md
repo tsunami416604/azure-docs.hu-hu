@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3d6df04df8ceac1f868e64f0e8fbc7eb0fa317e3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d25d868d8f3542d74de8edf8d7d5d26037409911
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38547973"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006930"
 ---
 #  <a name="what-is-managed-service-identity-for-azure-resources"></a>Mi az Azure-erőforrásokhoz készült felügyeltszolgáltatás-identitás?
 
@@ -40,7 +40,7 @@ Ennek eredményeképpen a kód használhat egy rendszerhez vagy egy felhasznál�
 
 Az alábbiakban egy példát láthat a rendszerhez hozzárendelt identitások az Azure-beli virtuális gépeken történő használatáról:
 
-![Példa virtuális gép által felügyelt identitásra](overview/msi-vm-vmextension-imds-example.png)
+![Példa virtuális gép által felügyelt identitásra](media/overview/msi-vm-vmextension-imds-example.png)
 
 1. Az Azure Resource Managerbe érkezik egy kérés a rendszerhez hozzárendelt identitás egy virtuális gépen történő engedélyezésére.
 2. Az Azure Resource Manager létrehoz egy szolgáltatásnevet az Azure AD-ben a virtuális gép identitásának jelölésére. A szolgáltatásnév az előfizetés által megbízhatónak tekintett Azure AD-bérlőn jön létre.
@@ -101,6 +101,7 @@ A felügyeltszolgáltatás-identitásokkal (MSI) foglalkozó különféle oktat�
 | Azure Functions    | [Felügyeltszolgáltatás-identitás használata az Azure App Service vagy az Azure Functions szolgáltatással](/azure/app-service/app-service-managed-service-identity) |
 | Azure Service Bus  | [Felügyeltszolgáltatás-identitás használata az Azure Service Bus szolgáltatással](../../service-bus-messaging/service-bus-managed-service-identity.md) |
 | Azure Event Hubs   | [Felügyeltszolgáltatás-identitás használata az Azure Event Hubs szolgáltatással](../../event-hubs/event-hubs-managed-service-identity.md) |
+| Azure API Management | [Felügyeltszolgáltatás-identitás használata az Azure API Managementtel](../../api-management/api-management-howto-use-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>Mely Azure-szolgáltatások támogatják a felügyeltszolgáltatás-identitások használatát?
 

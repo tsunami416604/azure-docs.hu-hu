@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 91bb57f49f8c92967275d340410e22381adad19e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f795333e8af2f09800dedc0b65030c42165d6bbb
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114275"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068903"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Windows-alapú Service Fabric-fürt üzembe helyezése Azure virtuális hálózatban
 
@@ -97,7 +97,7 @@ Egy Windows-fürt üzembe helyezése történik az alábbi jellemzőkkel:
 * engedélyezve van a [fordított proxy](service-fabric-reverseproxy.md);
 * engedélyezve van a [DNS szolgáltatás](service-fabric-dnsservice.md);
 * bronz szintű [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
-* ezüst szintű [megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
+ * ezüst szintű [megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
 * ügyfélkapcsolati végpont: 19000 (a sablon paramétereiben konfigurálható);
 * HTTP-átjáró végpontja: 19080 (a sablon paramétereiben konfigurálható).
 
@@ -139,9 +139,9 @@ A [vnet-cluster.parameters.json][parameters] paraméterfájl számos, a fürt é
 
 |Paraméter|Példaérték|Megjegyzések|
 |---|---||
-|adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. |
-|adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez.|
-|clusterName|mysfcluster123| A fürt neve. |
+|adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez.[Virtuális gép felhasználónévre vonatkozó követelményei](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm) |
+|adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez. [Virtuális gép jelszóra vonatkozó követelményei](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)|
+|clusterName|mysfcluster123| A fürt neve. Csak betűket és számokat tartalmazhat. 3–23 karakter hosszú lehet.|
 |location|southcentralus| A fürt helye. |
 |certificateThumbprint|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány ujjlenyomatának értékét. Például: „6190390162C988701DB5676EB81083EA608DCCF3”</p>. |
 |certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie. </p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Például: „https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346”.</p>|

@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 03/15/2018
+ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 39797bb4fe2b0576cd5696d7111826dcf807ff5c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 8f35bda8c6925bdc10097ac6d180f5998bd5cf1d
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304531"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989786"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Azure-beli felügyelt alkalmazások a Marketplace piactéren
 
@@ -43,8 +43,8 @@ Ahhoz, hogy közzétevő lehessen az Azure Marketplace piactéren, az alábbiaka
 
 1. Microsoft-azonosító létrehozása – Hozzon létre Microsoft-fiókot egy olyan e-mail-cím használatával, amely a vállalati tartományhoz tartozik, nem pedig egy magánszemélyhez. Ezt az e-mail-címet a Microsoft fejlesztői központ és a Felhőpartnerportál fogja használni. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
 1. Az [Azure Marketplace Nomination Form](https://aka.ms/ampnomination) (Azure Marketplace jelentkezési űrlapja) elküldése – A **Solution that you intend to publish?** (Közzétenni kívánt megoldás?) kérdésnél válassza a **Managed Application** (Felügyelt alkalmazás) lehetőséget. Az űrlap elküldése után a Marketplace bevezetési csapata áttekinti a jelentkezést, és ellenőrzi a kérelmet. A jóváhagyási folyamat egy–három napot vehet igénybe. Ha a jelentkezést jóváhagyják, egy promóciós kódot kap, amellyel mentesül a fejlesztői központ regisztrációs díjának kifizetése alól. Ha **nem** tölti ki a Marketplace jelentkezési űrlapját, 99 dollár regisztrációs díjat kell fizetnie.
-1. Regisztrálás a [fejlesztői központban](http://dev.windows.com/registration?accountprogram=azure) – A Microsoft ellenőrzi, hogy a vállalat érvényes jogi személyiség-e, és hogy rendelkezik-e érvényes adóazonosítóval a bejegyzés országában. A jóváhagyási folyamat 5–10 napot vehet igénybe. A regisztrációs díj elkerülése érdekében használja a jelentkezési folyamat során érkező e-mailben kapott kódot. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
-1. Bejelentkezés a [Felhőpartnerportálra](https://cloudpartner.azure.com) – A közzétevői profilban társítsa a fejlesztői központban regisztrált fiókot a Marketplace közzétevői profilhoz. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
+1. Regisztrálás a [fejlesztői központban](http://dev.windows.com/registration?accountprogram=azure) – A Microsoft ellenőrzi, hogy a vállalat érvényes jogi személy-e, és hogy rendelkezik-e érvényes adóazonosítóval a bejegyzés országában. A jóváhagyási folyamat 5–10 napot vehet igénybe. A regisztrációs díj elkerülése érdekében használja a jelentkezési folyamat során érkező e-mailben kapott kódot. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
+1. Bejelentkezés a [Cloud Partner Portalra](https://cloudpartner.azure.com) – A közzétevői profilban társítsa a fejlesztői központban regisztrált fiókot a Marketplace-beli közzétevői profilhoz. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Új Azure-alkalmazásajánlat létrehozása
 
@@ -101,12 +101,13 @@ Az SKU-k a fő ajánlat alatt jelennek meg a piactéren. Saját megvásárolhat�
 
    Töltse ki az alábbi mezőket:
 
-   * **Current Version** (Aktuális verzió): Adja a feltöltött csomag verzióját. A következő formátumban kell lennie: `{number}.{number}.{number}{number}`.
-   * **Select a package file** (Csomagfájl kiválasztása): Ez a csomag kettő, egy .zip csomagba tömörített szükséges fájlt tartalmaz. Az egyik fájl a Resource Manager-sablon, amely a felügyelt alkalmazáshoz üzembe helyezendő erőforrásokat határozza meg. A másik fájl a [felhasználói felületet](create-uidefinition-overview.md) határozza meg a felügyelt alkalmazást a portálon keresztül üzembe helyező felhasználók számára. A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
+   * **Verzió**: Adja a feltöltött csomag verzióját. A következő formátumban kell lennie: `{number}.{number}.{number}{number}`.
+   * **Csomagfájl (.zip)**: Ez a csomag két szükséges fájlt tartalmaz, amelyek egy .zip csomagba vannak tömörítve. Az egyik fájl a Resource Manager-sablon, amely a felügyelt alkalmazáshoz üzembe helyezendő erőforrásokat határozza meg. A másik fájl a [felhasználói felületet](create-uidefinition-overview.md) határozza meg a felügyelt alkalmazást a portálon keresztül üzembe helyező felhasználók számára. A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
    * **PrincipalId** (Résztvevő-azonosító): Ez a tulajdonság egy olyan felhasználó, felhasználócsoport vagy alkalmazás Azure Active Directory- (Azure AD-) azonosítója, amely az ügyfél előfizetésén belüli erőforrásokhoz kap hozzáférést. A Role Definition (Szerepkör-definíció) az engedélyeket ismerteti.
    * **Role Definition** (Szerepkör-definíció): Ez a tulajdonság a beépített szerepkör-alapú hozzáférés-vezérlési (RBAC) szerepkörök listája, amelyet az Azure AD biztosít. Kiválaszthatja az erőforrásoknak az ügyfél nevében történő felügyeletéhez leginkább megfelelőbb szerepkört.
+   * **Szabályzatbeállítások**: Alkalmazzon egy [Azure-szabályzatot](../azure-policy/azure-policy-introduction.md) a felügyelt alkalmazásokra az üzembe helyezett megoldások megfelelőségi követelményeinek megadásához. Válassza ki az alkalmazandó szabályzatokat az elérhető lehetőségek közül. **Szabályzatparaméterek** esetén adjon meg egy JSON-karakterláncot a paraméter értékeivel. A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](../azure-policy/json-samples.md).
 
-Egyszerre több engedélyezést is hozzáadhat. Javasoljuk, hogy hozzon létre egy AD-felhasználócsoportot, és adja meg annak azonosítóját a **PrincipalId** (Résztvevő-azonosító) tulajdonságban. Így több felhasználót is hozzáadhat a felhasználócsoporthoz anélkül, hogy frissítenie kellene az SKU-t.
+Több engedélyt is hozzáadhat. Javasoljuk, hogy hozzon létre egy AD-felhasználócsoportot, és adja meg annak azonosítóját a **PrincipalId** (Résztvevő-azonosító) tulajdonságban. Így több felhasználót is hozzáadhat a felhasználócsoporthoz anélkül, hogy frissítenie kellene az SKU-t.
 
 Az RBAC-vel kapcsolatban az [RBAC Azure Portalon való használatának megkezdését ismertető](../role-based-access-control/overview.md) témakörben tekinthet meg további információt.
 

@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: cea83fbe9c60bab687eb3d43fc269fa9f6bea325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9400c476179d801eb66f574373bf75cfb672d9d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630459"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091084"
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>X.509-eszközök regisztrációja az IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val
 
@@ -54,7 +54,12 @@ A folytatás előtt [végezze el az IoT Hub Device Provisioning Service beállí
 
 ## <a name="download-and-modify-the-java-sample-code"></a>A Java-mintakód letöltése és módosítása
 
-Ez a szakasz bemutatja, hogyan adhatja hozzá az X.509-eszköz kiépítési adatait a mintakódhoz. 
+Ez a szakasz egy önaláírt X.509-tanúsítványt használ. Fontos szem előtt tartani a következőket:
+
+* Az önaláírt tanúsítványok csak tesztelési célokra alkalmasak, és nem javasolt őket éles környezetben alkalmazni.
+* Az önaláírt tanúsítványok alapértelmezett lejárati ideje 1 év.
+
+A következő lépések bemutatják, hogyan adhatja hozzá az X.509-eszköz kiépítési adatait a mintakódhoz. 
 
 1. Nyisson meg egy parancssort. Klónozza a GitHub-adattárat az eszközregisztráció kódmintájához a Java szolgáltatásoldali SDK használatával:
     

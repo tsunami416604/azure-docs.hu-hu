@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 04/13/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: d87b27101b5bbb3fb589987865649e102d7835de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 628a936d85eb94a1ee332205047527b0f9795d50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639207"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990514"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
@@ -41,7 +41,7 @@ A felügyelt alkalmazások közzétehetők külsőleg vagy belsőleg.
 
 ### <a name="service-catalog"></a>Szolgáltatáskatalógus
 
-A szolgáltatáskatalógus egy belső katalógus azokról a megoldásokról, amelyeket egy vállalat jóváhagy a felhasználói számára. A katalógus segítségével biztosítható, hogy a vállalat számára elérhető megoldások megfeleljenek bizonyos vállalati szabványoknak. Az alkalmazottak a katalógussal könnyen felfedezhetik az informatikai részleg által jóváhagyott és ajánlott alkalmazások széles kínálatát. Láthatják, hogy a vállalat más dolgozói milyen felügyelt alkalmazásokat osztottak meg velük.
+A szolgáltatáskatalógus egy belső katalógus azokról a megoldásokról, amelyeket egy vállalat jóváhagy a felhasználói számára. A katalógus segítségével biztosítható, hogy a vállalat számára elérhető megoldások megfeleljenek bizonyos vállalati szabványoknak. Az alkalmazottak a katalógussal könnyen felfedezhetik az informatikai részleg által jóváhagyott és ajánlott alkalmazásokat. Láthatják, hogy a vállalat más dolgozói milyen felügyelt alkalmazásokat osztottak meg velük.
 
 A szolgáltatáskatalógusban elérhető felügyelt alkalmazások közzétételével kapcsolatban lásd a [szolgáltatáskatalógusban elérhető alkalmazások létrehozását](publish-service-catalog-app.md) ismertető témakört.
 
@@ -70,6 +70,10 @@ Az ügyfél teljes hozzáféréssel rendelkezik az erőforráscsoporthoz, így k
 Ez az erőforráscsoport a felügyelt alkalmazáshoz szükséges összes erőforrást tartalmazza. Ez az erőforrás például a megoldáshoz szükséges virtuális gépeket, tárfiókokat és virtuális hálózatokat is tartalmazza. Az ügyfél korlátozott hozzáféréssel rendelkezik ehhez az erőforráscsoporthoz, mivel nem az ügyfél kezeli a felügyelt alkalmazás különálló erőforrásait. A közzétevő hozzáférése az erőforráscsoporthoz megfelel a felügyelt alkalmazás definíciójában megadott szerepkörnek. Például a közzétevő kérheti a tulajdonosi vagy közreműködői szerepkört az erőforráscsoporthoz.
 
 Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törlődik.
+
+## <a name="azure-policy"></a>Azure Policy
+
+A felügyelt alkalmazásra [Azure-szabályzatot](../azure-policy/azure-policy-introduction.md) alkalmazhat. Szabályzatokat alkalmazhat annak érdekében, hogy a felügyelt alkalmazás üzembe helyezett példányai megfeleljenek a biztonsági és adatkövetelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás az Office 365-ből származó adatokat használ, alkalmazzon egy szabályzatot az adattitkosítás engedélyezése érdekében.
 
 ## <a name="next-steps"></a>További lépések
 

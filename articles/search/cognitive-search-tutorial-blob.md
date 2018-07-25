@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: Kognitív keresési API-k meghívása az Azure Search szolgáltatásban | Microsoft Docs'
-description: Példa adatok mesterséges intelligencia segítségével történő kinyerésére, illetve természetes nyelvi és képfeldolgozásra az Azure Search adatkinyerési és -átalakítási indexelőszolgáltatásában.
+title: Kognitív keresési API-k meghívása az Azure Search szolgáltatásban | Microsoft Docs
+description: Ez az oktatóanyag részletesen bemutat egy példát adatok mesterséges intelligencia segítségével történő kinyerésére, illetve természetes nyelvi és képfeldolgozásra az Azure Search adatkinyerési és -átalakítási indexelőszolgáltatásában.
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 0bca64675ed656373d6a73ca772fa713ad36a57e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 35295f00b9264e4b6fba2ff9d293772c22b91c50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757570"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991919"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Oktatóanyag: Ismerje meg a kognitív keresési API-k (előzetes verzió) meghívásának módját
 
@@ -23,8 +23,8 @@ Eben az oktatóanyagban az adatok Azure Search-beli bővítésének programozás
 Az oktatóanyagban REST API-hívásokat fog indítani az alábbi feladatok végrehajtásához:
 
 > [!div class="checklist"]
-> * Olyan indexelőfolyamat létrehozása, amely kibővíti a forrásadatokat egy indexhez vezető útvonalon
-> * Beépített képességek használata a mintaadatokon: entitásfelismerés, nyelvfelismerés, szövegmanipuláció és kulcskifejezés-kinyerés
+> * Olyan indexelőfolyamat létrehozása, amely kibővíti a mintaadatokat egy indexhez vezető útvonalon
+> * Beépített képességek használata: entitásfelismerés, nyelvfelismerés, szövegmanipuláció és kulcskifejezés-kinyerés
 > * Megtudhatja, hogyan kapcsolhat össze képességeket egy képességcsoporton belül a bemenetek kimenetekhez való társításával
 > * Kérések végrehajtása és az eredmények áttekintése
 > * Az index és az indexelők alaphelyzetbe állítása további fejlesztés céljából

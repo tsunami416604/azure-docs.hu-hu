@@ -15,12 +15,12 @@ ms.date: 06/13/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c6800e5a00d2fb837538141571c105a1d21e4374
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5f5aab6a8514636e8be09deb773748080871b9d4
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860375"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005231"
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Az Azure Active Directory csoportalapú licencelésének alapjai
 
@@ -30,8 +30,8 @@ A licencek hozzárendelése eddig csak az egyes felhasználók szintjén volt le
 
 Ezen kihívások kezelésére biztosítja az Azure AD a csoportalapú licencelést. A terméklicenceket hozzárendelheti egy csoporthoz. Ezután az Azure AD gondoskodik arról, hogy megtörténjen a licencek hozzárendelése a csoport mindegyik tagjához. A csoporthoz csatlakozó új tagokhoz is hozzárendeli a megfelelő licenceket. Amikor a felhasználók elhagyják a csoportot, eltávolítja a licenceket. Így már nincs szükség arra, hogy a PowerShell segítségével megvalósított automatikus licenckezeléssel, a felhasználók szintjén kelljen kezelni a szervezet és a részlegek szerkezetében történt változásokat.
 
->[!NOTE]
->Ez a funkció jelenleg nyilvános előzetes verzióban érhető el. Készüljön fel a módosítások visszavonására vagy eltávolítására. A funkció bármilyen fizetős Azure Active Directory- (Azure AD-) licenccsomaggal elérhető a nyilvános előzetes verzióban. Amikor azonban a funkció általánosan elérhetővé válik, előfordulhat, hogy bizonyos aspektusainak a használatához egy vagy több Prémium szintű Active Directory-licencre lesz szükség.
+>[!Note]
+>A csoportalapú licencelés jelenleg az Azure Active Directory (Azure AD) nyilvános előzetes verziójú funkciójaként bármilyen fizetős Azure AD-licenccsomaggal elérhető. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="features"></a>Szolgáltatások
 

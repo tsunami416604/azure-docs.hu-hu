@@ -9,18 +9,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: f3a252d6f7c49a65e0c548599b1958825b134ee8
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37966939"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005033"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>Rövid útmutató: Felhőalapú eszközszimulációs megoldás üzembe helyezése és futtatása
 
 Ez a rövid útmutató bemutatja hogyan helyezheti üzembe az Azure IoT eszközszimulációs megoldásgyorsítót az IoT-megoldás teszteléséhez. A megoldásgyorsító telepítését követően a **Szimuláció** lapon hozhat létre és futtathat szimulációkat.
-
-## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
@@ -88,7 +86,7 @@ A megoldásgyorsító egy kiépített példányából egyszerre csak egy szimul�
 
 Ha tovább szeretne ismerkedni az eszközzel, hagyja üzembe helyezve az Eszközszimulációs megoldásgyorsítót.
 
-Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról:
+Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról. Ehhez jelölje ki, majd kattintson a **Megoldás törlése** gombra:
 
 ![Megoldás törlése](media/quickstart-device-simulation-deploy/deletesolution.png)
 
@@ -96,7 +94,7 @@ Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megol
 
 Ebben a rövid útmutatóban telepítette az Eszközszimulációs megoldásgyorsítót, és futtatott egy IoT-eszközszimulációt.
 
-A meglévő IoT Hub szimulációban történő használatáról további információt a Használati útmutatóban talál:
+A meglévő IoT Hub-központok szimulációkban való használatáról további információt a következő használati útmutatóban talál:
 
 > [!div class="nextstepaction"]
 > [Meglévő IoT Hub használata az Eszközszimulációs megoldásgyorsítóval](iot-accelerators-device-simulation-choose-hub.md)

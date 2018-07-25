@@ -7,7 +7,7 @@
 ## [Key Vault létrehozása – Parancssori felület](quick-create-cli.md)
 ## [Key Vault létrehozása – PowerShell](quick-create-powershell.md)
 ## [Key Vault létrehozása – Portal](quick-create-portal.md)
-
+## [Olvasás Key Vaultból – .NET](quick-create-net.md)
 # Oktatóanyagok
 ## [A Key Vault titkos kulcsainak olvasása ](tutorial-web-application-keyvault.md)
 ## [Ismerkedés a Key Vaulttal](key-vault-get-started.md)

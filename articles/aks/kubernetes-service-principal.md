@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: f933788968ffdbd4a856a84476d8d82b32637d62
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 4dbb8b7abf6da77115d0e1d12621ec20ec60d174
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100334"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035200"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Mikor az `az aks create` paranccsal AKS-fürtöt helyez üzembe, lehetősége va
 
 A következő példa egy AKS-fürtöt hoz létre, és mivel nincs meglévő szolgáltatásnév megadva, a rendszer létrehoz egyet a fürt számára. A művelet végrehajtásához a fióknak rendelkeznie kell a szükséges jogosultságokkal a szolgáltatásnév létrehozásához.
 
-```azurecli
+```azurecli-interactive
 az aks create --name myAKSCluster --resource-group myResourceGroup --generate-ssh-keys
 ```
 
@@ -47,7 +47,7 @@ Használhat egy meglévő Azure AD szolgáltatásnevet, vagy előre létrehozhat
 
 A szolgáltatásnév Azure CLI felületen való létrehozásához használja az [az ad sp create-for-rbac][az-ad-sp-create] parancsot.
 
-```azurecli
+```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
@@ -84,7 +84,12 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 * Amikor megadja az egyszerű szolgáltatásnév **ügyfél-azonosítóját**, használja az `appId` értékét (ahogyan az a cikkben látható) vagy a megfelelő egyszerű szolgáltatásnév `name` értékét (például: `https://www.contoso.org/example`).
 * A Kubernetes-fürt mester és csomópont virtuális gépein az egyszerű szolgáltatás hitelesítő adatai az `/etc/kubernetes/azure.json` fájlban lesznek tárolva.
 * Ha az `az aks create` parancsot használja az egyszerű szolgáltatás automatikus létrehozásához, az egyszerű szolgáltatás hitelesítő adatai a `~/.azure/aksServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
-* Az `az aks create` használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott egyszerű szolgáltatás nem törlődik. A következő paranccsal törölje: `az ad sp delete --id $clientID`.
+* Az `az aks create` használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott szolgáltatásnév nem törlődik. A szolgáltatásnév törléséhez először szerezze be annak azonosítóját az [az ad app list][az-ad-app-list] paranccsal. Az alábbi példa lekérdezi a *myAKSCluster* nevű fürtöt, majd törli az alkalmazásazonosítót az [az ad app delete][az-ad-app-delete] paranccsal. Helyettesítse ezeket a neveket a saját értékeivel:
+
+    ```azurecli-interactive
+    az ad app list --query "[?displayName=='myAKSCluster'].{Name:displayName,Id:appId}" --output table
+    az ad app delete --id <appId>
+    ```
 
 ## <a name="next-steps"></a>További lépések
 
@@ -101,3 +106,5 @@ Az Azure Active Directory szolgáltatásnevekkel kapcsolatos további informáci
 [install-azure-cli]: /cli/azure/install-azure-cli
 [service-principal]: ../active-directory/develop/active-directory-application-objects.md
 [user-defined-routes]: ../load-balancer/load-balancer-overview.md
+[az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
+[az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete

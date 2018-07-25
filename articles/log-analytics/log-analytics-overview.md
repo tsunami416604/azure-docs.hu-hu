@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2018
+ms.date: 07/11/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 463ac7ee3e640f8bc275adb9e6ac27cc3e6a037a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 8e78528783d57d31e1eb9bcda82fa9acccf69dde
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127959"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005249"
 ---
 # <a name="what-is-azure-log-analytics"></a>Mi az Azure Log Analytics?
 A Log Analytics központi szerepet tölt be az Azure felügyeletében: telemetriai és egyéb adatokat gyűjt különböző forrásokból, valamint lekérdezési nyelvet és elemzési motort biztosít, amellyel betekintést nyerhet az alkalmazások és erőforrások működésébe.  A Log Analytics adataival közvetlenül is dolgozhat a naplókereséseken és nézeteken keresztül, vagy használhatja olyan Azure-szolgáltatások elemzőeszközeit, amelyek az adataikat a Log Analyticsben tárolják (például: Application Insights vagy Azure Security Center).  
@@ -41,12 +41,12 @@ A Log Analytics különféle forrásokból gyűjt adatokat.  Az adatgyűjtés ut
 
 Az adatok a Log Analyticsbe történő gyűjtése a következőket is magában foglalja:
 
-- Konfigurálhatja az Azure Monitort az Azure-erőforrásokból gyűjtött metrikák és naplók másolására.
-- A [Windows](log-analytics-windows-agent.md) és [Linux](log-analytics-linux-agents.md) rendszerű virtuális gépek a konfigurált [Adatforrások](log-analytics-data-sources.md) alapján a vendég operációs rendszerről és alkalmazásokról származó telemetriát küldhetnek a Log Analyticsnek.  
-- Csatlakoztathat egy [System Center Operations Manage-beli felügyeleti csoportot](log-analytics-om-agents.md) a Log Analyticshez a csoport ügynökeitől származó adatok gyűjtéséhez.
+- Konfigurálhatja az Azure Monitort az Azure-erőforrásokból gyűjtött [metrikák és naplók](../monitoring/monitoring-data-collection.md#types-of-monitoring-data) másolására.
+- Gyűjtheti az [Azure Storage](log-analytics-azure-storage-iis-table.md) szolgáltatásba írt telemetriaadatokat.
+- A [Windows](log-analytics-windows-agent.md) és [Linux](log-analytics-linux-agents.md) rendszerű virtuális gépek a konfigurált [Adatforrások](log-analytics-data-sources.md) alapján a vendég operációs rendszerről és alkalmazásokról származó telemetriát küldhetnek a Log Analyticsnek. Az ügynökök csatlakoztathatók közvetlenül, egy [OMS-átjárón](log-analytics-oms-gateway.md) keresztül, ha nem rendelkeznek tűzfal-eléréssel, vagy egy [System Center Operations Manage felügyeleti csoporton](log-analytics-om-agents.md) keresztül.
 - Az Azure-szolgáltatások (például az [Application Insights](https://docs.microsoft.com/azure/application-insights/) és az [Azure Security Center](https://docs.microsoft.com/azure/security-center/)) közvetlenül a Log Analyticsben tárolhatják az adataikat, bármilyen konfigurálás igénye nélkül.
 - Adatokat írhat a PowerShell-parancssorból vagy az [Azure Automation-runbookból](../automation/automation-runbook-types.md) Log Analytics-parancsmagok használatával.
-- Egyéni követelmények érvényesülése esetén a [HTTP-adatgyűjtő API](log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.
+- Egyéni követelmények esetén a [HTTP-adatgyűjtő API](log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből, vagy egy [Azure Logic Apps logikai alkalmazással](https://docs.microsoft.com/azure/logic-apps/) írhat adatokat egy egyéni munkafolyamatból.
 
 
 ![A Log Analytics összetevői](media/log-analytics-overview/collecting-data.png)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c72ae695c33bf9147bce7f326e8501ce2a88bb33
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: de30085ae5ff95e7067684ff3af9ccb0d45357de
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916602"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990863"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Azure-beli virtuális gép replikálása másik Azure-régióba
 
@@ -34,7 +34,7 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 1. Az Azure Portal területén kattintson a **Virtuális gépek** elemre, és válassza ki a replikálni kívánt virtuális gépet.
 
-2. A **Beállítások** területen kattintson a **Vészhelyreállítás** elemre.
+2. A **Műveletek** területen kattintson a **Vészhelyreállítás** elemre.
 3. A **Vészhelyreállítás konfigurálása** > **Célrégió** részben válassza ki a célrégiót, amelybe a replikálást végezni kívánja.
 4. A jelen rövid útmutató esetében fogadja el a többi alapértelmezett beállítást.
 5. Kattintson a **Replikáció engedélyezése** lehetőségre. Ekkor elindul a virtuális gép replikálásának engedélyezési feladata.

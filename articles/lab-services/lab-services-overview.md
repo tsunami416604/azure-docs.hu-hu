@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/19/2018
+ms.date: 07/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 8f8de53f03cc1378e8aaafa9a2f486eadc23fe14
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb957346cb0e003e9aff19026ed81495abf432c5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637853"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049377"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Az Azure Lab Services bemutatása
 Az Azure Lab Services lehetővé teszi egy környezet (például: fejlesztési környezet, tesztelési környezet, osztályterem-tesztkörnyezet) beállítását a csapat számára a felhőben. A tesztkörnyezet tulajdonosa létrehoz egy tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket, és elérhetővé teszi azokat a tesztkörnyezet felhasználói számára. A tesztkörnyezet felhasználói a tesztkörnyezetben található virtuális gépekhez csatlakoznak, és a mindennapos munkájukhoz, rövidtávú projektekhez vagy osztálytermi gyakorlatokhoz használják azokat. Miután a felhasználók megkezdik az erőforrások használatát a tesztkörnyezetben, a tesztkörnyezet egy rendszergazdája több tesztkörnyezetre kiterjedően elemezheti a költségeket és a használatot, és átfogó szabályzatokat állíthat be a vállalat vagy csapat költségeinek optimalizálásához.
@@ -36,6 +36,9 @@ Az Azure Lab Services az alábbi fő képességeket/funkciókat támogatja:
 - **Költségoptimalizálás és elemzés**. A tesztkörnyezet tulajdonosa ütemezéseket állíthat be a tesztkörnyezetben a virtuális gépek automatikus leállításához és elindításához. A tesztkörnyezet tulajdonosa beállíthat egy ütemezést azon időtartamok meghatározásához, amikor a tesztkörnyezet virtuális gépei elérhetők a felhasználók számára, és felhasználóalapú vagy tesztkörnyezet-alapú használati szabályzatokat állíthat be a költségek optimalizálása, továbbá a tesztkörnyezetben jelentkező használati és tevékenységi trendek elemzése érdekében. Felügyelt tesztkörnyezetek, például osztályterem-tesztkörnyezetek esetén a költségoptimalizálási és elemzési lehetőségeknek jelenleg csak egy kisebb része érhető el. 
 - **Beágyazott biztonság**. A tesztkörnyezet tulajdonosa beállíthat egy virtuális magánhálózatot és alhálózatot a tesztkörnyezet számára, és engedélyezheti a megosztott nyilvános IP-címeket. A tesztkörnyezetek felhasználói biztonságosan érhetik el az erőforrásokat az ExpressRoute vagy helyek közötti VPN használatával konfigurált virtuális hálózattal. (Jelenleg csak a DevTest Labs szolgáltatásban érhető el.)
 - **Integrálás a munkafolyamatokba és az eszközökbe**. Az Azure Lab Services lehetővé teszi a tesztkörnyezetek integrálását a vállalat webhelyébe és felügyeleti rendszereibe. Automatikusan építhet ki környezeteket a folyamatos integrációs/folyamatos üzembehelyezési (CI/CD) eszközökből. (Jelenleg csak a DevTest Labs szolgáltatásban érhető el.)
+
+> [!NOTE]
+> Az Azure Lab Services jelenleg csak az Azure Marketplace rendszerképeiből létrehozott virtuális gépeket támogatja. Ha egyéni rendszerképeket szeretne használni vagy egyéb PaaS-erőforrásokat szeretne létrehozni tesztkörnyezetben, használja a DevTest Labst. További információkért lásd az [egyéni rendszerkép a DevTest Labsban történő létrehozását](devtest-lab-create-custom-image-from-vm-using-portal.md) és [a tesztkörnyezetek Resource Manager-sablonok használatával történő létrehozását](devtest-lab-create-environment-from-arm.md) ismertető cikket. 
 
 ## <a name="scenarios"></a>Forgatókönyvek
 Néhány, az Azure Lab Services által támogatott forgatókönyv: 

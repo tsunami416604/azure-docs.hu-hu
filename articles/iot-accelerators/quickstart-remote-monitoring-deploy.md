@@ -7,22 +7,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: e3eff46299ecfbfe39b57bc2cf5ed4a655a6d7f1
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8dd630650498f3698fea3ed03882fe8c5c3d338e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088039"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004318"
 ---
-# <a name="quickstart-deploy-a-cloud-based-remote-monitoring-solution"></a>Rövid útmutató: Távoli felhőalapú monitorozási megoldás üzembe helyezése
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rövid útmutató: Távoli felhőalapú monitorozási megoldás kipróbálása
 
-Ez a rövid útmutató bemutatja az Azure IoT távoli monitorozási megoldásgyorsító üzembe helyezését az IoT-eszközök felhőalapú távoli monitorozási megoldásaként történő használatához. A megoldásgyorsító telepítését követően a megoldás **Dashboard** (Irányítópult) lapjának segítségével jelenítheti meg a szimulált eszközöket egy térképen, és a **Maintenance** (Karbantartás) lapon válaszolhat a szimulált hűtőeszköz nyomással kapcsolatos riasztásaira.
+Ez a rövid útmutató bemutatja az Azure IoT távoli monitorozási megoldásgyorsító üzembe helyezését felhőalapú távoli monitorozási szimulációk futtatásához. A megoldásgyorsító telepítését követően a megoldás **Dashboard** (Irányítópult) lapjának segítségével jelenítheti meg a szimulált eszközöket egy térképen, és a **Maintenance** (Karbantartás) lapon válaszolhat a szimulált hűtőeszköz nyomással kapcsolatos riasztásaira. A megoldásgyorsítót saját megvalósítása kiindulópontjaként vagy képzési eszközként is használhatja.
 
-Az alapértelmezett üzembe helyezés a Contoso nevű vállalat számára konfigurálja a távoli monitorozási megoldásgyorsítót. A Contoso különféle fizikai környezetekben található, különböző típusú eszközöket (például hűtőeszközöket) felügyel. A hűtőeszköz a hőmérsékletre, a páratartalomra és a nyomásra vonatkozó telemetriai adatokat küld a távoli monitorozási megoldásgyorsítónak.
-
-## <a name="prerequisites"></a>Előfeltételek
+A kezdeti üzembe helyezés a Contoso nevű vállalat számára konfigurálja a távoli monitorozási megoldásgyorsítót. A Contoso különféle fizikai környezetekben található, különböző típusú eszközöket (például hűtőeszközöket) felügyel. A hűtőeszköz a hőmérsékletre, a páratartalomra és a nyomásra vonatkozó telemetriai adatokat küld a távoli monitorozási megoldásgyorsítónak.
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
@@ -42,9 +40,9 @@ A **Megoldás létrehozása (Távoli monitorozás)** lapon válassza ki az **Ala
 
 Válassza a **.NET** nyelvet. A Java és a .NET implementáció azonos funkciókat tartalmaz.
 
-Adjon meg egy egyedi **megoldásnevet** a távoli monitorozási megoldásgyorsítóhoz.
+Adjon meg egy egyedi **megoldásnevet** a távoli monitorozási megoldásgyorsítóhoz. Ebben a rövid útmutatóban a **contoso-rm2** nevet használjuk.
 
-Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Mindehhez [globális rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie az előfizetésben.
+Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban a **Visual Studio Enterprise** előfizetést és a **Nyugat-Európa** régiót választjuk. Mindehhez [globális rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie az előfizetésben.
 
 Kattintson a **Megoldás létrehozása** gombra az üzembe helyezés elkezdéséhez. A folyamat legalább öt percig tart:
 
@@ -52,7 +50,7 @@ Kattintson a **Megoldás létrehozása** gombra az üzembe helyezés elkezdésé
 
 ## <a name="sign-in-to-the-solution"></a>Bejelentkezés a megoldásba
 
-Ha az üzembe helyezés befejeződött az Azure-előfizetésen, bejelentkezhet a távoli monitorozási megoldásgyorsító irányítópultjára.
+Ha az üzembe helyezés befejeződött az Azure-előfizetésen, a megoldás csempéjén egy zöld pipa és a **Kész** felirat jelenik meg. Ezután bejelentkezhet a távoli monitorozási megoldásgyorsító irányítópultjába.
 
 A **Kiépített megoldások** lapon kattintson az új távoli monitorozási megoldásgyorsítóra:
 
@@ -68,7 +66,7 @@ Kattintson az **Elfogadás** gombra az engedélykérések elfogadásához. Ekkor
 
 ## <a name="view-your-devices"></a>Eszközök megtekintése
 
-A megoldás irányítópultja a Contoso eszközeire vonatkozó következő információkat jeleníti meg:
+A megoldás irányítópultja a következő információkat jeleníti meg a Contoso szimulált eszközeiről:
 
 * Az **eszközök statisztikái** a riasztások összegző információit és az eszközök teljes számát mutatják. Az alapértelmezett üzemelő példányban a Contoso 10, különböző típusú szimulált eszközzel rendelkezik.
 
@@ -110,7 +108,7 @@ Ha műveletet szeretne végrehajtani a hűtőeszközön, görgessen le a **Relat
 
 [![Eszköz kiválasztása és művelet ütemezése](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
-A **feladatok** paneljén válassza a **Run method** (Futtatási metódus) menüpontot, majd az **EmergencyValveRelease** metódust, adja hozzá a **ChillerPressureRelease** feladatnevet, és kattintson az **Apply** (Alkalmaz) elemre. Ezek a beállítások egy olyan feladatot hoznak létre, amelyet a rendszer azonnal végrehajt.
+A **feladatok** paneljén válassza a **Run method** (Metódus futtatása) elemet, majd az **EmergencyValveRelease** metódust. Adja hozzá a **ChillerPressureRelease** feladatnevet, és kattintson az **Apply** (Alkalmaz) elemre. Ezek a beállítások egy olyan feladatot hoznak létre, amelyet a rendszer azonnal végrehajt.
 
 A feladat állapotának megtekintéséhez lépjen vissza a **karbantartási** lapra, és a **feladatok** nézetében tekintse meg a feladatok listáját. Lehet, hogy néhány másodpercet várnia kell, amíg megjelenik, hogy a rendszer futtatta a hűtőeszköz szelepnyomásának csökkentésére irányuló feladatot:
 
@@ -132,7 +130,7 @@ Az állapotoszlop **Closed** (Lezárva) értékre módosul.
 
 Ha tovább kíván lépni a további oktatóanyagokra, ne kapcsolja ki a távoli monitorozási megoldásgyorsítót.
 
-Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról:
+Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról. Ehhez jelölje ki, majd kattintson a **Megoldás törlése** gombra:
 
 ![Megoldás törlése](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
@@ -140,7 +138,7 @@ Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megol
 
 Ebben a rövid útmutatóban üzembe helyezte a távoli monitorozási megoldásgyorsítót, és elvégzett egy monitorozási feladatot az alapértelmezett Contoso üzemelő példányban szereplő szimulált eszközökön.
 
-Ha szeretné megtudni, hogyan frissítheti a csatlakoztatott eszközök belső vezérlőprogramját, és hogyan rendszerezheti az eszközöket a megoldásgyorsítóban, folytassa a következő oktatóanyaggal.
+Ha többet szeretne megtudni a szimulált eszközöket használó megoldásgyorsítóról, lépjen tovább a következő oktatóanyagra.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: IoT-eszközök monitorozása](iot-accelerators-remote-monitoring-monitor.md)

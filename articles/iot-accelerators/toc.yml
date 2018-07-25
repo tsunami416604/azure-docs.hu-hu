@@ -157,18 +157,26 @@
           href: iot-accelerators-device-simulation-custom-model.md
 - name: Referencia
   items:
-    - name: Fejlesztői referencia-útmutató
-      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-    - name: Fejlesztői hibaelhárítási útmutató
-      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-    - name: Biztonsági architektúra
-      href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
-    - name: Ajánlott biztonsági eljárások
-      href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
-    - name: Az IoT üzemelő példányának védelme
-      href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
-    - name: Biztonság az alapoktól
-      href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
+    - name: Távoli monitorozás
+      items:
+        - name: Fejlesztői referencia-útmutató
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: Fejlesztői hibaelhárítási útmutató
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+    - name: Eszközszimuláció
+      items:
+        - name: Fejlesztői referencia-útmutató
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+    - name: Biztonság
+      items:
+        - name: Biztonsági architektúra
+          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
+        - name: Ajánlott biztonsági eljárások
+          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
+        - name: Az IoT üzemelő példányának védelme
+          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
+        - name: Biztonság az alapoktól
+          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
 - name: Kapcsolódó témakörök
   items:
     - name: Megoldások
@@ -203,6 +211,18 @@
       href: /azure/machine-learning/
 - name: További források
   items:
+    - name: GitHub-adattárak
+      items:
+        - name: Távoli monitorozás (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: Távoli monitorozás (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: Csatlakoztatott gyár
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: Prediktív karbantartás
+          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+        - name: Eszközszimuláció
+          href: 'https://github.com/Azure/device-simulation-dotnet'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: GYIK

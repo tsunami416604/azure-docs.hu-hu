@@ -99,6 +99,8 @@
           href: automation-runbook-output-and-messages.md
         - name: Verziókövetés integrálása
           href: automation-source-control-integration.md
+        - name: Runbookok létrehozása a grafikus runbook SDK-val
+          href: graphical-runbook-sdk.md
     - name: Automatizálás
       items:
         - name: Runbook indítása

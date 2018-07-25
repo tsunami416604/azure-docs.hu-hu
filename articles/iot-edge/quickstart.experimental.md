@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5bde54a65160c58d8bfba2f6c4c3b6a4317e46ed
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 54a8b5f14cc2f9fb0ac887da8995623353e73ac9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38540231"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115585"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése az Azure Portal segítségével egy Windows-eszközön – előzetes verzió
 
@@ -51,8 +51,10 @@ Az IoT Edge-eszközként használni kívánt számítógépen a következő elő
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-A rövid útmutató első lépéseként hozza létre az IoT Hubot az Azure Portalon.
+A rövid útmutató első lépéseként hozzon létre egy IoT Hubot az Azure Portalon.
 ![IoT Hub létrehozása][3]
+
+Egy olyan erőforráscsoportban hozza létre az IoT Hubot, amellyel az ebben a rövid útmutatóban létrehozott összes erőforrást fenntarthatja és kezelheti. Adjon neki egy könnyen megjegyezhető nevet (pl.: **IoTEdgeResources**). Ha a rövid útmutatóhoz és az oktatóanyagokhoz szükséges összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti, illetve könnyen eltávolíthatja azokat, amikor végzett a teszteléssel. 
 
 [!INCLUDE [iot-hub-create-hub](../../includes/iot-hub-create-hub.md)]
 
@@ -81,14 +83,15 @@ Ebben a szakaszban az IoT Edge-futtatókörnyezet Linux-tárolókkal történő 
 
 2. Töltse le az IoT Edge-szervizcsomagot.
 
-  ```powershell
-  Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
-  Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
-  Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
-  rmdir C:\ProgramData\iotedge\iotedged-windows
-  $env:Path += ";C:\ProgramData\iotedge"
-  SETX /M PATH "$env:Path"
-  ```
+   ```powershell
+   Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
+   Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
+   Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
+   rmdir C:\ProgramData\iotedge\iotedged-windows
+   $sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+   $path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+   Set-ItemProperty -Path $sysenv -Name Path -Value $path
+   ```
 
 3. Telepítse a vcruntime környezetet.
 
@@ -160,7 +163,7 @@ Konfigurálja a futtatókörnyezetet az IoT Edge-eszköz kapcsolati sztringjéve
   SETX /M IOTEDGE_HOST "http://<ip_address>:15580"
   ```
 
-6. A `config.yaml` fájlban keresse meg a **Connect settings** (Kapcsolati beállítások) szakaszt. Frissítse a **management_uri** és a **workload_uri** paraméter értékét az IP-címre és az előző szakaszban megnyitott portokra. Cserélje le a **\<GATEWAY_ADDRESS\>** címet az IP-címére. 
+6. A `config.yaml` fájlban keresse meg a **Connect settings** (Kapcsolati beállítások) szakaszt. Frissítse a **management_uri** és a **workload_uri** paraméter értékét az IP-címre és az előző szakaszban megnyitott portokra. Cserélje le a **\<GATEWAY_ADDRESS\>** címet a kimásolt DockerNAT IP-címére.
 
    ```yaml
    connect: 
@@ -249,14 +252,55 @@ Az IoT Hub által fogadott üzeneteket az [IoT Hub Explorer eszközzel][lnk-ioth
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az IoT Edge-oktatóanyagok teszteléséhez használhatja az ebben a rövid útmutatóban konfigurált, szimulált eszközt is. Ha nem szeretné, hogy a tempSensor modul adatokat küldjön az IoT Hubnak, a következő paranccsal állíthatja le az IoT Edge-szolgáltatást, és törölheti az eszközön létrehozott tárolókat. Ha esetleg ismét IoT Edge-eszközként kívánja használni számítógépét, ne felejtse el elindítani a szolgáltatást. 
+Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ha nem, törölheti a létrehozott Azure-erőforrásokat, és eltávolíthatja az IoT Edge-futtatókörnyezetet az eszközről. 
+
+### <a name="delete-azure-resources"></a>Azure-erőforrások törlése
+
+Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta létre, törölheti azt a csoportot és az összes társított erőforrást. Ha van valami abban az erőforráscsoportban, amit meg szeretne tartani, csak azokat a különálló erőforrásokat törölje, amelyektől meg szeretne szabadulni. 
+
+Erőforráscsoport eltávolításához hajtsa végre az alábbi lépéseket: 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+2. A **Szűrés név alapján...** mezőbe írja be az IoT Hubot tartalmazó erőforráscsoport nevét. 
+3. Az eredménylistában kattintson az erőforráscsoporttól jobbra lévő **…** ikonra, majd kattintson az **Erőforráscsoport törlése** elemre.
+4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
+
+### <a name="remove-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet eltávolítása
+
+Ha a jövőben tesztelésre szeretné használni az IoT Edge-eszközt, de nem szeretné, hogy a tempSensor modul adatokat küldjön az IoT Hubnak, amikor nincs használatban, a következő paranccsal állíthatja le az IoT Edge-szolgáltatást. 
 
    ```powershell
    Stop-Service iotedge -NoWait
-   docker rm -f $(docker ps -aq)
    ```
 
-Ha már nincs szüksége a létrehozott IoT Hubra, az Azure Portalon eltávolíthatja az erőforrást és a vele társított eszközöket. Nyissa meg az IoT Hub áttekintési lapját, és kattintson a **Törlés** elemre. 
+Ha készen áll a tesztelés ismételt megkezdésére, újraindíthatja a szolgáltatást.
+
+   ```powershell
+   Start-Service iotedge
+   ```
+
+Ha el szeretné távolítani a telepítéseket az eszközéről, azt a következő parancsokkal teheti meg.  
+
+Távolítsa el az IoT Edge-futtatókörnyezetet.
+
+   ```powershell
+   cmd /c sc delete iotedge
+   rm -r c:\programdata\iotedge
+   ```
+
+Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tárolók leállnak, de továbbra is ott lesznek az eszközön. Tekintse meg az összes tárolót.
+
+   ```powershell
+   docker ps -a
+   ```
+
+Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. Ha más nevet adott neki, módosítsa a tempSensor tároló nevét. 
+
+   ```powershell
+   docker rm -f tempSensor
+   docker rm -f edgeHub
+   docker rm -f edgeAgent
+   ```
 
 ## <a name="next-steps"></a>További lépések
 

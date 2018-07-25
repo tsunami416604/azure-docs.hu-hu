@@ -6,14 +6,14 @@ author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 04/05/2018
+ms.date: 07/11/2018
 ms.author: tamram
-ms.openlocfilehash: 0ae4e196c81e767b2bbee4340f5d99b9f803df3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 30741e48adbdb621317c13ec286b419bed2f9ea1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653654"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001541"
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -140,6 +140,7 @@ A Storage-szolgáltatásokban két alapszintű titkosítási módszer áll rende
 
 Az Azure Storage Service Encryption (SSE) segít az adatok biztonságos megőrzésében inaktív állapotban a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. Ezzel a funkcióval az Azure Storage automatikusan titkosítja az adatokat a tárolás előtt, és visszafejti őket a lekérés előtt. A titkosítás, visszafejtés, és kulcskezelés teljes mértékben átlátható a felhasználók számára.
 
+
 Az SSE automatikusan titkosítja minden teljesítményszint (Standard és Prémium), minden üzembehelyezési modell (Azure Resource Manager és klasszikus) és minden Azure Storage-szolgáltatás (Blob, Queue, Table és File) adatait. Az SSE nem befolyásolja az Azure Storage teljesítményét.
 
 Az inaktív adatok SSE-titkosításával kapcsolatos további információkért látogasson el ide: [Azure Storage szolgáltatás inaktívadat-titkosítása](storage-service-encryption.md).
@@ -168,6 +169,8 @@ Az AzCopy parancssori segédprogrammal blob- és fájladatokat másolhat egy tá
 Az AzCopy az [Azure Adatátviteli könyvtárra](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) épül, amelynek jelenleg az előzetes verziója érhető el.
 
 Az Azure Import/Export szolgáltatás használatával nagy mennyiségben importálhat és exportálhat blobadatokat a tárfiókjába/tárfiókjából. Készítse elő és küldje el postán az adatokat tartalmazó merevlemezeket valamely Azure adatközpontnak, ahol az adatokat átmásolják a merevlemezekről/merevlemezekre, majd visszaküldik azokat az Ön számára. További információ az Import/Export szolgáltatásról: [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage](../storage-import-export-service.md) (A Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez a Blob Storage-ba).
+
+Ha nagy mennyiségű blobadatot szeretne gyorsan, olcsón és megbízható módon importálni a tárfiókjában, használhatja az Azure Data Box Disk szolgáltatást is. A Microsoft legfeljebb 5 darab, egyenként 40 TB kapacitású titkosított SSD-lemezt küld az Ön adatközpontjába egy regionális szállítóval. Ön gyorsan konfigurálhatja a lemezeket, USB-kapcsolaton átmásolhatja az adatokat, majd visszaküldheti a lemezeket az Azure-hoz. Az Azure-adatközpontban az adatok automatikusan feltöltődnek a meghajtókról a felhőbe. További információ a megoldásról: [Az Azure Data Box Disk áttekintése](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
 
 ## <a name="pricing"></a>Díjszabás
 

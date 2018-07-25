@@ -6,16 +6,16 @@ ms.service: functions
 keywords: ''
 ms.devlang: azurecli
 author: syntaxc4
-ms.author: cfowler
-ms.date: 01/09/2018
+ms.author: glenga
+ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 720ead07aa35540f61f1dc8e15b79ac9d58669be
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: b44126f6bf191ee57bfea7017a4f4d87a57c01f1
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29842728"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989860"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHubról üzembe helyezett függvényalkalmazás létrehozása az Azure-ban
 
@@ -49,9 +49,8 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/appservice/web#az_appservice_web_delete) |
-| [az appservice web source-control config](https://docs.microsoft.com/cli/azure/appservice/web/source-control#az_appservice_web_source_control_config) | Társít egy függvényalkalmazást egy Git- vagy Mercurial-adattárhoz. |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Létrehozza a tárfiókot, amely a függvényalkalmazáshoz szükséges. |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [használatalapú csomagban](../functions-scale.md#consumption-plan), és társítja egy Git- vagy Mercurial-adattárhoz. |
 
 ## <a name="next-steps"></a>További lépések
 

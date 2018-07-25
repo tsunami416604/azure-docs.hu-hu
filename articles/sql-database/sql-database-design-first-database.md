@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 6/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: c89b03baccc7e20ae945da154fbd78d5d0dac376
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 6f12c44c2d65eef7e8d3345ec79b812304fe9791
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311031"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091541"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Oktatóanyag: Az első Azure SQL Database-adatbázis megtervezése az SSMS használatával
 
@@ -31,7 +31,7 @@ Az Azure SQL Database a Microsoft Cloudon (Azure) alapuló, szolgáltatásként 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
    >[!NOTE]
-   > Ebben az oktatóanyagban a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) használjuk, de választhatja a [vCore-alapú vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) használatát is. 
+   > Ebben az oktatóanyagban a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) használjuk, de választhatja a [vCore-alapú vásárlási modell](sql-database-service-tiers-vcore.md) használatát is. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -77,7 +77,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
 
 5. Kattintson a **Kiválasztás** gombra.
 
-6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Fedezze fel a DTU-k/virtuális magok számára és a tárterületre vonatkozó, egyes szolgáltatásszinteken elérhető lehetőségeket. Ebben az oktatóanyagban a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) használjuk, de választhatja a [vCore-alapú vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) használatát is. 
+6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Fedezze fel a DTU-k/virtuális magok számára és a tárterületre vonatkozó, egyes szolgáltatásszinteken elérhető lehetőségeket. Ebben az oktatóanyagban a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) használjuk, de választhatja a [vCore-alapú vásárlási modell](sql-database-service-tiers-vcore.md) használatát is. 
 
 7. Ebben az oktatóanyagban válassza a **Standard** szolgáltatásszintet, majd a csúszkával állítson be **100 DTU (S3)** egységet, illetve **400** GB tárhelyet.
 
@@ -131,7 +131,7 @@ Mostantól csatlakozhat az SQL Database-kiszolgálóhoz és annak adatbázisaiho
 
 Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure Portalon. Használja a teljes kiszolgálónevet az SQL Server Management Studióban a kiszolgálóhoz történő csatlakozáshoz.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
 3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**.
 

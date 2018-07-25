@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: af8b91ee20ccb4d16e7666c317ea7d08a265e6d6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 62e376a345be837e910ea615f8648e6b8d196ae1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435544"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006247"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 A Visual Studio alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerébe. Meghatározhatja például az alkalmazás webállomását, webhelyét és adatbázisát, továbbá telepítheti az infrastruktúrát a kóddal együtt. A Visual Studio számos különböző kezdősablont kínál a gyakori forgatókönyvek telepítéséhez. Ebben a cikkben egy webapp és egy SQL Database üzembe helyezésének módját ismerheti meg.  
@@ -292,7 +292,6 @@ Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat haszn
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-  }
   ```
 
 2. Helyezze ismét üzembe az erőforráscsoportot. Figyelje meg az Azure Portalon lévő irányítópulton, hogy a megosztott irányítópult bekerült a választási lehetőségek listájába.

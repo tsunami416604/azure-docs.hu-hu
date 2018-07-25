@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 07/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0faed5d72002f24d7be7602c5f16c18e66a0089e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5cc109467f9affa9cf5f43342203e8d4298269e0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308613"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115206"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Oktatóanyag: Videók feltöltése, kódolása és streamelése REST használatával
 
@@ -77,16 +77,17 @@ Ebben a szakaszban konfiguráljuk a Postmant.
     > [!Note]
     > Frissítse a hozzáférési változókat a fenti **Hozzáférés a Media Services API-hoz** szakaszban található értékekkel.
 
-7. Zárja be a párbeszédpanelt.
-8. Válassza az **Azure Media Service v3 Environment** környezetet a legördülő menüből.
+7. Kattintson duplán a kiválasztott fájlra, és írja be az [API elérésének](#access-the-media-services-api) lépéseiben lekért értékeket.
+8. Zárja be a párbeszédpanelt.
+9. Válassza az **Azure Media Service v3 Environment** környezetet a legördülő menüből.
 
     ![Környezet kiválasztása](./media/develop-with-postman/choose-env.png)
    
 ### <a name="configure-the-collection"></a>A gyűjtemény konfigurálása
 
 1. Kattintson az **Import (Importálás)** gombra a gyűjteményfájl importálásához.
-1. Keresse meg a `Media Services v3 (2018-03-30-preview).postman_collection.json` fájlt, amelyet a `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` klónozásakor töltött le
-3. Válassza a **Media Services v3 (2018-03-30-preview).postman_collection.json** fájlt.
+1. Keresse meg a `Media Services v3.postman_collection.json` fájlt, amelyet a `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` klónozásakor töltött le
+3. Válassza a **Media Services v3.postman_collection.json** fájlt.
 
     ![Fájl importálása](./media/develop-with-postman/postman-import-collection.png)
 
@@ -128,11 +129,21 @@ A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja
 2. Ezután válassza a „Create or update an Asset” (Objektum létrehozása vagy frissítése) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
-    A rendszer a következő **PUT** műveletet küldi el.
+    * A rendszer a következő **PUT** műveletet küldi el:
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
+        ```
+    * A művelet törzse a következő:
+
+        ```json
+        {
+        "properties": {
+            "description": "My Asset",
+            "alternateId" : "some GUID"
+         }
+        }
+        ```
 
 ### <a name="create-a-transform"></a>Átalakítás létrehozása
 
@@ -149,11 +160,30 @@ Használhatja a beépített EncoderNamedPreset beállítást vagy az egyéni el�
 2. Ezután kattintson a „Create Transform” (Átalakítás létrehozása) elemre.
 3. Kattintson a **Küldés** gombra.
 
-    A rendszer a következő **PUT** műveletet küldi el.
+    * A rendszer a következő **PUT** műveletet küldi el.
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
+        ```
+    * A művelet törzse a következő:
+
+        ```json
+        {
+            "properties": {
+                "description": "Basic Transform using an Adaptive Streaming encoding preset from the libray of built-in Standard Encoder presets",
+                "outputs": [
+                    {
+                    "onError": "StopProcessingJob",
+                "relativePriority": "Normal",
+                    "preset": {
+                        "@odata.type": "#Microsoft.Media.BuiltInStandardEncoderPreset",
+                        "presetName": "AdaptiveStreaming"
+                    }
+                    }
+                ]
+            }
+        }
+        ```
 
 ### <a name="create-a-job"></a>Feladat létrehozása
 
@@ -165,11 +195,32 @@ Ebben a példában a feladat bemenete egy HTTPS URL-címen („https://nimbuscdn
 2. Ezután válassza a „Create or Update Job” (Feladat létrehozása vagy frissítése) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
-    A rendszer a következő **PUT** műveletet küldi el.
+    * A rendszer a következő **PUT** műveletet küldi el.
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
+        ```
+    * A művelet törzse a következő:
+
+        ```json
+        {
+        "properties": {
+            "input": {
+            "@odata.type": "#Microsoft.Media.JobInputHttp",
+            "baseUri": "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/",
+            "files": [
+                    "Ignite-short.mp4"
+                ]
+            },
+            "outputs": [
+            {
+                "@odata.type": "#Microsoft.Media.JobOutputAsset",
+                "assetName": "testAsset1"
+            }
+            ]
+        }
+        }
+        ```
 
 A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. A feladat előrehaladásának megtekintéséhez az Event Grid használatát javasoljuk. Ez egy magas rendelkezésre állású, egyenletes teljesítményű, dinamikusan skálázható szolgáltatás. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. Az egyszerű, HTTP-alapú reaktív eseménykezelés segít hatékony megoldásokat kialakítani az események intelligens szűrése és átirányítása révén.  További információkért tekintse meg az [események egyéni webes végponthoz való átirányítását](job-state-events-cli-how-to.md) ismertető cikket.
 
@@ -189,14 +240,24 @@ A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators
 A Media Service-fiókban korlátozva van a StreamingPolicy-bejegyzések száma. Nem érdemes új streamelési szabályzatot létrehozni minden egyes StreamingLocatorhöz.
 
 1. A Postman bal ablakában válassza a „Streaming Policies” (Streamelési szabályzatok) lehetőséget.
-2. Ezután válassza a „Create a Streaming Policy” (Streamelési szabályzat létrehozása) lehetőséget.
+2. Ezután válassza a „Create a Streaming Locator” (Streamelési lokátor létrehozása) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
-    A rendszer a következő **PUT** műveletet küldi el.
+    * A rendszer a következő **PUT** műveletet küldi el.
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        ```
+    * A művelet törzse a következő:
+
+        ```json
+        {
+            "properties":{
+            "assetName": "{{assetName}}",
+            "streamingPolicyName": "{{streamingPolicyName}}"
+            }
+        }
+        ```
 
 ### <a name="list-paths-and-build-streaming-urls"></a>Elérési utak listázása és streamelési URL-ek létrehozása
 
@@ -208,40 +269,40 @@ A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators
 2. Ezután válassza a „List Paths” (Elérési utak listázása) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
-    A rendszer a következő **POST** műveletet küldi el.
+    * A rendszer a következő **POST** műveletet küldi el.
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName/listPaths?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName/listPaths?api-version={{api-version}}
+        ```
+        
+    * A műveletnek nincs törzse:
+        
 4. Jegyezze fel a streameléshez használni kívánt elérési utak egyikét, amelyet a következő szakaszban fog használni. Ebben az esetben a következő elérési utak lettek visszaadva:
     
     ```
-    {
-        "streamingPaths": [
-            {
-                "streamingProtocol": "Hls",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=m3u8-aapl)"
-                ]
-            },
-            {
-                "streamingProtocol": "Dash",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=mpd-time-csf)"
-                ]
-            },
-            {
-                "streamingProtocol": "SmoothStreaming",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest"
-                ]
-            }
-        ],
-        "downloadPaths": []
-    }
+    "streamingPaths": [
+        {
+            "streamingProtocol": "Hls",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=m3u8-aapl)"
+            ]
+        },
+        {
+            "streamingProtocol": "Dash",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=mpd-time-csf)"
+            ]
+        },
+        {
+            "streamingProtocol": "SmoothStreaming",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest"
+            ]
+        }
+    ]
     ```
 
 #### <a name="build-the-streaming-urls"></a>Streamelési URL-címek létrehozása
@@ -253,16 +314,27 @@ Ebben a szakaszban egy HLS-streamelési URL-címet hozunk létre. Az URL-címek 
     > [!NOTE]
     > Ha a lejátszót egy HTTPS-hely futtatja, az URL-t módosítsa a HTTPS-protokoll használatára.
 
-2. A StreamingEndpoint gazdaneve. Ebben az esetben a név „amsaccount-usw22.streaming.media.azure.net”
-3. Elérési út, amelyet az előző szakaszban feljegyzett.  
+2. A StreamingEndpoint gazdaneve. Ebben az esetben a név „amsaccount-usw22.streaming.media.azure.net”.
+
+    A gazdanév lekéréséhez a következő GET műveletet használhatja:
+    
+    ```
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    ```
+    
+3. Elérési út, amelyet az előző (Elérési utak listázása) szakaszban feljegyzett.  
 
 Ennek eredményeként a következő HLS URL jött létre
 
 ```
-https://amsaccount-usw22.streaming.media.azure.net/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=m3u8-aapl)
+https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=m3u8-aapl)
 ```
 
 ## <a name="test-the-streaming-url"></a>A streamelési URL-cím tesztelése
+
+
+> [!NOTE]
+> Győződjön meg arról, hogy a streameléshez használt streamvégpont fusson.
 
 Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez. 
 

@@ -1,7 +1,7 @@
 ---
-title: Azure Automation szolgáltatásbeli integrálása esemény rács |} Microsoft Docs
-description: Megtudhatja, hogyan automatikusan címke hozzáadása egy új virtuális gép létrehozásakor, és értesítést küldeni a Microsoft Teams.
-keywords: automatizálás, runbook, csoportok, esemény rács, virtuális gépek, virtuális gép
+title: Az Azure Automation integrálása az Event Griddel | Microsoft Docs
+description: Ismerje meg, hogyan adhat hozzá automatikusan címkéket az új virtuális gépek létrehozásakor, valamint küldhet értesítést a Microsoft Teamsbe.
+keywords: automation, runbook, teams, event grid, virtuális gép, VM
 services: automation
 documentationcenter: ''
 author: eamonoreilly
@@ -14,112 +14,120 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2017
 ms.author: eamono
-ms.openlocfilehash: 9a4d6ecf19fc96a9c7b92cf246effbf3948fb478
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 6270f8bad893798f46d8db91e7b1140b6a125350
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
-ms.locfileid: "26349069"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049864"
 ---
-# <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Azure Automation szolgáltatásbeli integrálható a esemény rács és a Microsoft csapatai
+# <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Az Azure Automation integrálása az Event Grid és a Microsoft Teams szolgáltatással
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Egy esemény rács minta forgatókönyv importálása.
-> * Hozzon létre egy nem kötelező Microsoft Teams webhook.
-> * A runbook a webhook létrehozása.
-> * Esemény rács előfizetéssel, hozzon létre.
-> * Hozzon létre egy virtuális Gépet, amely elindítja a runbookot.
+> * Event Grid-runbookminta importálása.
+> * Opcionális Microsoft Teams-webhook létrehozása.
+> * Webhook létrehozása a runbookhoz.
+> * Event Grid-előfizetés létrehozása.
+> * A runbookot aktiváló virtuális gép létrehozása.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/automation-offering-get-started.md) a runbookot, az Azure Event rács előfizetésből kiváltó tárolásához szükséges.
+Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/automation-offering-get-started.md) szükséges a runbook tárolásához, amelyet az Azure Event Grid-előfizetésből fogunk aktiválni.
 
-## <a name="import-an-event-grid-sample-runbook"></a>Egy esemény rács minta forgatókönyv importálása
-1. Válassza ki az Automation-fiók, és válassza ki a **Runbookok** lap.
+* Az `AzureRM.Tags` modult be kell tölteni az Automation-fiókba. A modulok az Azure Automationbe való importálásával kapcsolatban lásd [a modulok az Azure Automationbe való importálását](../automation/automation-update-azure-modules.md) bemutató cikket.
 
-   ![Válassza ki a runbookot](./media/ensure-tags-exists-on-new-virtual-machines/select-runbooks.png)
+## <a name="import-an-event-grid-sample-runbook"></a>Event Grid-runbookminta importálása
 
-2. Válassza ki a **Tallózás gyűjtemény** gombra.
+1. Válassza ki az Automation-fiókot, és lépjen a **Runbookok** lapra.
 
-3. Keresse meg **esemény rács**, és válassza ki **integrálása Azure Automation esemény rácshoz**. 
+   ![Runbookok kiválasztása](./media/ensure-tags-exists-on-new-virtual-machines/select-runbooks.png)
 
-    ![Gyűjteményelem forgatókönyv importálása](media/ensure-tags-exists-on-new-virtual-machines/gallery-event-grid.png)
+2. Kattintson a **Tallózás a katalógusban** gombra.
 
-4. Válassza ki **importálási** és adjon neki nevet **figyelési-VMWrite**.
+3. Keressen rá az **Event Grid** kifejezésre, és válassza **Az Azure Automation integrálása az Event Griddel** lehetőséget.
 
-5. Után importálva van, jelölje be az **szerkesztése** runbook forrásának megtekintéséhez. Válassza ki a **Közzététel** gombot.
+    ![Katalógusrunbook importálása](media/ensure-tags-exists-on-new-virtual-machines/gallery-event-grid.png)
 
-## <a name="create-an-optional-microsoft-teams-webhook"></a>Egy nem kötelező Microsoft Teams webhook létrehozása
-1. A Microsoft Teams, válassza ki **további beállítások** a Tovább gombra a csatorna nevét, és adja **összekötők**.
+4. Válassza az **Importálás** lehetőséget, és nevezze el a **Watch-VMWrite** néven.
 
-    ![Microsoft Teams kapcsolatok](media/ensure-tags-exists-on-new-virtual-machines/teams-webhook.png)
+5. Az importálás befejeztével válassza a **Szerkesztés** lehetőséget a runbook forrásának megtekintéséhez. Válassza ki a **Közzététel** gombot.
 
-2. Görgessen végig az összekötők listáját **bejövő Webhook**, és válassza ki **Hozzáadás**.
+> [!NOTE]
+> A szkript 74. sorát le kell cserélni a következőre: `Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose`. A `-Tags` paraméter a `-Tag` paraméterre változott.
 
-3. Adja meg **AzureAutomationIntegration** nevét, és válassza ki a **létrehozása**.
+## <a name="create-an-optional-microsoft-teams-webhook"></a>Opcionális Microsoft Teams-webhook létrehozása
 
-4. A webhook másolása a vágólapra, és mentse. A webhook URL-cím segítségével adatokat küld a Microsoft Teams.
+1. A Microsoft Teamsben válassza a **További lehetőségek** elemet a csatorna neve mellett, majd válassza az **Összekötők** lehetőséget.
 
-5. Válassza ki **végzett** a webhook mentése.
+    ![Microsoft Teams-kapcsolatok](media/ensure-tags-exists-on-new-virtual-machines/teams-webhook.png)
 
-## <a name="create-a-webhook-for-the-runbook"></a>A runbook a webhook létrehozása
-1. Nyissa meg a figyelés-VMWrite runbookot.
+2. Görgesse végig az összekötők listáját a **Bejövő webhook** elemig, és válassza a **Hozzáadás** lehetőséget.
 
-2. Válassza ki **Webhookok**, és válassza ki a **hozzáadása Webhook** gombra.
+3. Adja a webhooknak az **AzureAutomationIntegration** nevet, és válassza a **Létrehozás** lehetőséget.
 
-3. Adja meg **WatchVMEventGrid** nevét. Másolja az URL-címet a vágólapra, és mentse.
+4. Másolja a webhookot a vágólapra, és mentse. A rendszer a webhook URL-címének segítségével információkat küld a Microsoft Teamsnek.
 
-    ![Konfigurálja webhook neve](media/ensure-tags-exists-on-new-virtual-machines/copy-url.png)
+5. A webhook mentéséhez válassza a **Kész** lehetőséget.
 
-4. Válassza ki **konfigurálása paraméterek és futtatási beállítások**, és írja be a Microsoft Teams webhook URL-címe **CHANNELURL**. Hagyja **WEBHOOKDATA** üres.
+## <a name="create-a-webhook-for-the-runbook"></a>Webhook létrehozása a runbookhoz
 
-    ![Webhook paramétereinek beállítása](media/ensure-tags-exists-on-new-virtual-machines/configure-webhook-parameters.png)
+1. Nyissa meg a Watch-VMWrite runbookot.
 
-5. Válassza ki **OK** a runbook Automation-webhook létrehozása.
+2. Válassza a **Webhookok** lehetőséget, és kattintson a **Webhook hozzáadása** gombra.
+
+3. Adja a webhooknak a **WatchVMEventGrid** nevet. Másolja az URL-címet a vágólapra, és mentse.
+
+    ![Webhook nevének konfigurálása](media/ensure-tags-exists-on-new-virtual-machines/copy-url.png)
+
+4. Válassza a **Paraméterek és futtatási beállítások konfigurálása** lehetőséget, és adja meg a Microsoft Teams-webhook URL-címét a **CHANNELURL** mezőben. Hagyja a **WEBHOOKDATA** mezőt üresen.
+
+    ![Webhook paramétereinek konfigurálása](media/ensure-tags-exists-on-new-virtual-machines/configure-webhook-parameters.png)
+
+5. Az Automation-runbook webhookjának létrehozásához kattintson az **OK** gombra.
 
 
-## <a name="create-an-event-grid-subscription"></a>Egy esemény rács előfizetés létrehozása
-1. Az a **Automation-fiók** – Áttekintés lapon jelölje be **esemény rács**.
+## <a name="create-an-event-grid-subscription"></a>Event Grid-előfizetés létrehozása
+1. Az **Automation-fiók** áttekintő lapján válassza az **Event Grid** lehetőséget.
 
-    ![Válassza ki az esemény rács](media/ensure-tags-exists-on-new-virtual-machines/select-event-grid.png)
+    ![Event Grid kiválasztása](media/ensure-tags-exists-on-new-virtual-machines/select-event-grid.png)
 
-2. Válassza ki a **+ Eseményelőfizetés** gombra.
+2. Kattintson az **+ Esemény-előfizetés** gombra.
 
-3. Az előfizetés konfigurálása a következő információkat:
+3. Konfigurálja az előfizetést az alábbi információkkal:
 
-    *   Adja meg **AzureAutomation** nevét.
-    *   A **témakörtípus**, jelölje be **Azure-előfizetések**.
-    *   Törölje a jelet a **minden eseménytípushoz előfizetni** jelölőnégyzetet.
-    *   A **eseménytípusok**, jelölje be **erőforrás írása sikeres**.
-    *   A **előfizető végpont**, írja be a webhook URL-CÍMÉT a figyelési-VMWrite runbookhoz.
-    *   A **előtag szűrő**, adja meg azt az előfizetést, és ha az új virtuális gépek megkeresni kívánt erőforrás-csoport létrehozása. Az hasonlóan kell kinéznie:`/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`
+    *   Adja az előfizetésnek az **AzureAutomation** nevet.
+    *   A **Témakörtípus** mezőben válassza az **Azure-előfizetések** lehetőséget.
+    *   Törölje az **Előfizetés az összes eseménytípusra** jelölőnégyzet jelölését.
+    *   Az **Eseménytípusok** mezőben válassza az **Erőforrás írása sikeres** lehetőséget.
+    *   Az **Előfizető végpontja** mezőben adja meg a Watch-VMWrite runbook webhookjának URL-címét.
+    *   Az **Előtagszűrő** mezőben adja meg azt az előfizetést és az erőforráscsoportot, ahol az újonnan létrehozott virtuális gépeket figyelni szeretné. Ennek így kell kinéznie: `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`
 
-4. Válassza ki **létrehozása** menteni az esemény rács előfizetést.
+4. Kattintson a **Létrehozás** gombra az Event Grid-előfizetés mentéséhez.
 
-## <a name="create-a-vm-that-triggers-the-runbook"></a>Hozzon létre egy virtuális Gépet, amely elindítja a runbookot
-1. Hozzon létre egy új virtuális gép abban az esetben, ha rács előfizetés előtag szűrő megadott erőforráscsoportban.
+## <a name="create-a-vm-that-triggers-the-runbook"></a>A runbookot aktiváló virtuális gép létrehozása
+1. Hozzon létre egy új virtuális gépet az Event Grid-előfizetés előtagszűrőjében megadott erőforráscsoportban.
 
-2. A figyelési-VMWrite runbook kell meghívni, és a virtuális gép hozzá új címke.
+2. A Watch-VMWrite runbookot meg kell hívni, és egy új címkét hozzá kell adni a virtuális géphez.
 
-    ![Virtuális gép címke](media/ensure-tags-exists-on-new-virtual-machines/vm-tag.png)
+    ![Virtuális gép címkéje](media/ensure-tags-exists-on-new-virtual-machines/vm-tag.png)
 
-3. Egy új üzenetet küld a Microsoft Teams csatornára.
+3. A rendszer egy új üzenetet küld a Microsoft Teams-csatornára.
 
-    ![Microsoft Teams értesítés](media/ensure-tags-exists-on-new-virtual-machines/teams-vm-message.png)
+    ![Microsoft Teams-értesítés](media/ensure-tags-exists-on-new-virtual-machines/teams-vm-message.png)
 
-## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban beállította esemény rács és automatizálás közötti integrációt. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>További lépések
+Ebben az oktatóanyagban az Event Grid és az Automation közötti integrációt állította be. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Egy esemény rács minta forgatókönyv importálása.
-> * Hozzon létre egy nem kötelező Microsoft Teams webhook.
-> * A runbook a webhook létrehozása.
-> * Esemény rács előfizetéssel, hozzon létre.
-> * Hozzon létre egy virtuális Gépet, amely elindítja a runbookot.
+> * Event Grid-runbookminta importálása.
+> * Opcionális Microsoft Teams-webhook létrehozása.
+> * Webhook létrehozása a runbookhoz.
+> * Event Grid-előfizetés létrehozása.
+> * A runbookot aktiváló virtuális gép létrehozása.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre és útvonal-esemény rácshoz egyéni események](../event-grid/custom-event-quickstart.md)
+> [Egyéni események létrehozása és átirányítása az Event Griddel](../event-grid/custom-event-quickstart.md)

@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.topic: quickstart
-ms.date: 07/02/2018
+ms.date: 07/16/2018
 ms.author: sachinp
-ms.openlocfilehash: 264397fee8ea37321841a4130cb5977219861053
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 172ee6c2200334a57ebaa073d7ff530d19b2f07d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345423"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090530"
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
 
@@ -24,7 +24,7 @@ Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre SQL-adatbázist a
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
   >[!NOTE]
-  >Ez az oktatóanyag a DTU-alapú vásárlási modellt használja, de a [vCore-alapú vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) szintén elérhető.
+  >Ez az oktatóanyag a DTU-alapú vásárlási modellt használja, de a [vCore-alapú vásárlási modell](sql-database-service-tiers-vcore.md) szintén elérhető.
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 

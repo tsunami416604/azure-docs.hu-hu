@@ -53,6 +53,8 @@
           href: howto-create-telemetry-rules.md
         - name: Eseményszabály létrehozása
           href: howto-create-event-rules.md
+        - name: Webhookműveletek létrehozása szabályokon
+          href: howto-create-webhooks.md
         - name: Folyamatok létrehozása a Microsoft Flow-ban
           href: howto-add-microsoft-flow.md
         - name: Kezdőlap konfigurálása

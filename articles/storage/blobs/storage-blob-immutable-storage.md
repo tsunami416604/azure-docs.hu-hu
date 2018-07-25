@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 04e88725c04fc88a8394bafd455d25ea13718f7d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970244"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070008"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Az Azure Blob Storage Immutable Storage (nem módosítható tárolás) funkciója (előzetes verzió)
 
@@ -178,11 +178,11 @@ A nem módosítható tárolási funkciót bármely már létező GPv2-fiókkal v
 
 **Mi történik, ha megpróbálok törölni egy tárolót, amelyre *zárolt* időalapú adatmegőrzési szabályzat vagy jogi célú visszatartás vonatkozik?**
 
-A tároló törlési művelete sikertelen lesz, ha a tároló legalább egy olyan blobot tartalmaz, amelyen zárolt időalapú adatmegőrzési szabályzat vagy jogi célú visszatartás van beállítva. A tároló törlési művelete sikeres lesz, ha nincs benne aktív adatmegőrzési időtartammal és jogi célú visszatartással beállított blob. A tároló törlése előtt törölnie kell a blobokat.
+A tároló törlési művelete sikertelen lesz, ha a tároló legalább egy olyan blobot tartalmaz, amelyen zárolt időalapú adatmegőrzési szabályzat vagy jogi célú visszatartás van beállítva. Ez az adatok [helyreállítható törlése](storage-blob-soft-delete.md) esetén is igaz. A tároló törlési művelete sikeres lesz, ha nincs benne aktív adatmegőrzési időtartammal és jogi célú visszatartással beállított blob. A tároló törlése előtt törölnie kell a blobokat. 
 
 **Mi történik, ha megpróbálok törölni egy olyan WORM-tárolót tartalmazó tárfiókot, amelyre *zárolt* időalapú adatmegőrzési szabályzat vagy jogi célú visszatartás vonatkozik?**
 
-A tárfiók törlése sikertelen lesz, ha legalább egy jogi célú visszatartással ellátott WORM-tárolót vagy aktív adatmegőrzési időtartammal rendelkező blobot tartalmaz.  A tárfiók törlése előtt minden WORM-tárolót törölni kell.  A tárolók törlésével kapcsolatos további információkért tekintse meg a 2-es kérdést.
+A tárfiók törlése sikertelen lesz, ha legalább egy jogi célú visszatartással ellátott WORM-tárolót vagy aktív adatmegőrzési időtartammal rendelkező blobot tartalmaz.  A tárfiók törlése előtt minden WORM-tárolót törölni kell.  A tárolók törlésével kapcsolatos további információkért tekintse meg az előző kérdést.
 
 **Áthelyezhetem az adatokat különböző blobrétegek között (gyakran, ritkán és alig használt rétegek), ha a blob nem módosítható állapotban van?**
 

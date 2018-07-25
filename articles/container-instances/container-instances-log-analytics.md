@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 06/06/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: a0772d1009021ca64b448710c5353407a5492fae
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: e4c1efbf4c2c844bae971fa1136e0fe3bed18bcc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809869"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112963"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Tárolópéldány-naplózás az Azure Log Analytics használatával
 
@@ -43,9 +43,26 @@ A Log Analytics-munkaterület azonosítóját és elsődleges kulcsát a követk
 
 ## <a name="create-container-group"></a>Tárolócsoport létrehozása
 
-Most, hogy lekérte a Log Analytics-munkaterület azonosítóját és elsődleges kulcsát, készen áll arra, hogy létrehozzon egy naplózható tárolócsoportot. Az alábbi példa létrehoz egy tárolócsoportot, amelyben egyetlen [fluentd][fluentd] tároló található. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
+Most, hogy lekérte a Log Analytics-munkaterület azonosítóját és elsődleges kulcsát, készen áll arra, hogy létrehozzon egy naplózható tárolócsoportot.
 
-Először is másoljuk egy új fájlba az alábbi YAML-t, amely meghatároz egy tárolócsoportot, benne egyetlen tárolóval. Cserélje le a `LOG_ANALYTICS_WORKSPACE_ID` és `LOG_ANALYTICS_WORKSPACE_KEY` helyőrzőket az előző lépésben lekért értékekre, majd mentse a fájlt **deploy-aci.yaml** néven.
+A következő példák két módszert mutatnak be arra, hogyan hozható létre tárolócsoport egyetlen [fluentd][fluentd] tárolóval: Azure CLI és Azure CLI YAML-sablonnal. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
+
+### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+
+Az Azure CLI üzembe helyezéséhez adja meg a `--log-analytics-workspace` és a `--log-analytics-workspace-key` paramétereket az [az container create][az-container-create] parancsban. Cserélje le a két munkaterület-értéket az előző lépésben lekért értékekre (és frissítse az erőforráscsoport nevét) a következő parancs futtatása előtt.
+
+```azurecli-interactive
+az container create \
+    --resource-group myResourceGroup \
+    --name mycontainergroup001 \
+    --image fluent/fluentd \
+    --log-analytics-workspace <WORKSPACE_ID> \
+    --log-analytics-workspace-key <WORKSPACE_KEY>
+```
+
+### <a name="deploy-with-yaml"></a>Üzembe helyezés a YAML használatával
+
+Ezt a módszert akkor használja, ha a YAML használatával szeretne tárolócsoportokat üzembe helyezni. Az alábbi YAML egy tárolócsoportot határoz meg, benne egyetlen tárolóval. Másolja a YAML-t egy új fájlba, majd cserélje le a `LOG_ANALYTICS_WORKSPACE_ID` és `LOG_ANALYTICS_WORKSPACE_KEY` helyőrzőket az előző lépésben lekért értékekre. Mentse a fájlt **deploy-aci.yaml** néven.
 
 ```yaml
 apiVersion: 2018-06-01
@@ -75,7 +92,7 @@ type: Microsoft.ContainerInstance/containerGroups
 Ezután futtassa az alábbi parancsokat a tárolócsoport üzembe helyezéséhez. Az `myResourceGroup` helyőrzőt cserélje le egy, az előfizetésében található erőforráscsoport nevére (vagy először hozzon létre egy „myResourceGroup” nevű erőforráscsoportot):
 
 ```azurecli-interactive
-az container create -g myResourceGroup -n mycontainergroup001 -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
 ```
 
 Röviddel a parancs kiadását követően választ kell kapnia az Azure-tól, amely az üzemelő példány részleteit taglalja.
@@ -135,3 +152,4 @@ A tárolópéldányok processzor- és memória-erőforrásainak monitorozásáva
 [query_lang]: https://docs.loganalytics.io/
 
 <!-- LINKS - Internal -->
+[az-container-create]: /cli/azure/container#az-container-create

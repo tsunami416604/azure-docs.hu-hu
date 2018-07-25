@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: bbe60fb6a6371551f588d5472ac304148a4a1aa7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 27cfb391c5c47ef44c443e2603da62fe5d6a3122
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38453416"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113045"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Graph API használatával
 
@@ -153,21 +153,25 @@ Az alábbi kódrészletek mind a Program.cs fájlból származnak.
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kulcsok** lehetőségre. 
+1. Az [Azure Portalon](http://portal.azure.com/) keresse meg a gráfadatbázis-fiókot. Az **Áttekintés** lapon két végpontot lát: 
+ 
+   **.Net SDK URI** – Ezt az értéket akkor használja, ha Microsoft.Azure.Graphs-kódtárral kapcsolódik a gráffiókhoz. 
 
-    Másolja az URI érték első részét.
+   **Gremlin-végpont** – Ezt az értéket akkor használja, ha Gremlin.Net-kódtárral kapcsolódik a gráffiókhoz.
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-dotnet/keys.png)
+    ![A végpont másolása](./media/create-graph-dotnet/endpoint.png)
+
+   A minta futtatásához másolja ki a **Gremlin-végpont** értékét, és törölje a port számát a végéről. Így az URI a következő lesz: `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`
 
 2. A Program.cs fájlban illessze be az értéket a `your-endpoint` helyett a 19. sorban lévő `hostname` változóban. 
 
-    `"private static string hostname = "your-endpoint.gremlin.cosmosdb.azure.com";`
+    `"private static string hostname = "<your cosmos db account name>.gremlin.cosmosdb.azure.com";`
 
     A végpontértéknek most így kell kinéznie:
 
     `"private static string hostname = "testgraphacct.gremlin.cosmosdb.azure.com";`
 
-3. Másolja a portálról az **ELSŐDLEGES KULCS** értékét, és illessze be azt az `authkey` változóba, lecserélve a `"your-authentication-key"` helyőrzőt a 21. sorban. 
+3. Ezután nyissa meg a **Kulcsok** lapot, másolja a portálról az **ELSŐDLEGES KULCS** értékét, és illessze be azt az `authkey` változóba, lecserélve a `"your-authentication-key"` helyőrzőt a 21. sorban. 
 
     `private static string authKey = "your-authentication-key";`
 

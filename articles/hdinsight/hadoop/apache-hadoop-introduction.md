@@ -1,25 +1,22 @@
 ---
-title: Mi a HDInsight, valamint a Hadoop- és a Spark-technológia? - Azure | Microsoft Docs
+title: Mi a HDInsight, valamint a Hadoop- és a Spark-technológia? – Azure
 description: A HDInsight, a Hadoop- és Spark-technológiák, valamint az olyan összetevők, mint a big data-elemzéshez használt Kafka, Hive, Storm és HBase bemutatása.
 keywords: azure hadoop, hadoop azure, hadoop bevezetés, hadoop bemutatása, hadoop-technológiák, bevezetés a hadoop szolgáltatásba, a hadoop bemutatása, mi az a hadoop-fürt, mi a hadoop-fürt, mire való a hadoop
 services: hdinsight
-documentationcenter: ''
 author: cjgronlund
+ms.author: cgronlun
 manager: jhubbard
-editor: cgronlun
 ms.assetid: e56a396a-1b39-43e0-b543-f2dee5b8dd3a
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
-ms.devlang: na
 ms.topic: overview
 ms.date: 05/07/2018
-ms.author: cgronlun
-ms.openlocfilehash: b84389c1d52c0c43f1e71da3eed86f4057b85559
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c7bed171a3b866f4b1f94d6a5348dd25d8820f2b
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051382"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115341"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Mi az Azure HDInsight, és mik azok a Hadoop-technológiák?
 
@@ -89,9 +86,9 @@ A HDInsight segítségével kiterjesztheti a meglévő helyszíni big data-infra
 ## <a name="cluster-types-in-hdinsight"></a>Fürttípusok a HDInsightban
 A HDInsight adott fürttípusokat és fürttestreszabási képességeket is tartalmaz, például lehetővé teszi összetevők, segédprogramok és nyelvek hozzáadását. A HDInsight a következő fürttípusokat kínálja:
 
-* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: egy keretrendszer, amely [HDFS](#hdfs)-t, [YARN](#yarn) erőforrás-kezelést, és egy egyszerű [MapReduce](#mapreduce) programozási modellt használ az adatok párhuzamos feldolgozásához és elemzéséhez.
+* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: egy keretrendszer, amely HDFS-t, YARN erőforrás-kezelést, és egy egyszerű MapReduce programozási modellt használ az adatok párhuzamos feldolgozásához és elemzéséhez.
 
-* **[Apache Spark](http://spark.apache.org/)**: egy nyílt forráskódú, párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozást a big data-elemző alkalmazások teljesítményének növelése érdekében. Lásd: [Mi a HDInsight-alapú Apache Spark?](../spark/apache-spark-overview.md)
+* **[Apache Spark](http://spark.apache.org/)**: egy nyílt forráskódú, párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozást a big data-elemző alkalmazások teljesítményének növelése érdekében. Lásd: [Mi a HDInsight-alapú Apache Spark?](../spark/apache-spark-overview.md).
 
 * **[Apache HBase](http://hbase.apache.org/)**: egy Hadoopra épülő NoSQL-adatbázis, amely közvetlen hozzáférést és nagymértékű következetességet biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok számára, akár egy több milliárd sorból és több millió oszlopból álló táblázat esetén is. Lásd: [Mi a HDInsight-alapú HBase?](../hbase/apache-hbase-overview.md)
 

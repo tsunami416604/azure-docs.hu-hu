@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 7248e2477a217c769bd232b87a8e510fcfd59790
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c0a1caca1c7b026965d2a83211c87d49db53c4ca
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798440"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991635"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>A Java-webalkalmazás monitorozásának indítása
 
@@ -39,7 +39,7 @@ Ha a Spring keretrendszert részesíti előnyben, tekintse meg a [Spring Boot in
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -89,25 +89,25 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Most megnyithatja ismét az Application Insights **Áttekintés** lapját az Azure Portalon (ahol a kialakítási kulcsot is megjelenítette) a jelenleg futó alkalmazás részleteinek megtekintéséhez.
 
-   ![Az Application Insights áttekintése menü](./media/app-insights-java-quick-start/0008-j.png)
+   ![Az Application Insights áttekintése menü](./media/app-insights-java-quick-start/overview-001.png)
 
 2. Kattintson az **Alkalmazástérkép** elemre az alkalmazás-összetevők függőségi viszonyait mutató vizuális elrendezés megjelenítéséhez. Minden egyes összetevőnél megjelennek a KPI-k, például a terhelés, a teljesítmény, a hibák és a riasztások.
 
-   ![Alkalmazástérkép](./media/app-insights-java-quick-start/005-j.png)
+   ![Alkalmazástérkép](./media/app-insights-java-quick-start/application-map-001.png)
 
 3. Kattintson az **Alkalmazáselemzés** ikonra ![Alkalmazáselemzés ikon](./media/app-insights-java-quick-start/006.png). Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/app-insights-java-quick-start/0010-j.png)
 
-4. Lépjen vissza az **Áttekintés** lapra, és vizsgálja meg az **Állapotáttekintési időegyenest**.  Ezen az irányítópulton az alkalmazás állapotával kapcsolatos statisztikák jelennek meg, köztük a bejövő kérések száma, az egyes kérések időtartama, valamint az esetleges hibák.
+4. Lépjen vissza az **Áttekintés** lapra, és vizsgálja meg a KPI-gráfokat.  Ezen az irányítópulton az alkalmazás állapotával kapcsolatos statisztikák jelennek meg, köztük a bejövő kérések száma, az egyes kérések időtartama, valamint az esetleges hibák.
 
-   ![Az Állapotáttekintési időegyenes diagramjai](./media/app-insights-java-quick-start/0009-j.png)
+   ![Az Állapotáttekintési időegyenes diagramjai](./media/app-insights-java-quick-start/overview-perf.png)
 
    Ahhoz, hogy a **Lapmegtekintés betöltési ideje** diagramon megjelenjenek az **ügyféloldali telemetria** adatai, adja az alábbi szkriptet minden olyan oldalhoz, amelyet nyomon kíván követni:
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

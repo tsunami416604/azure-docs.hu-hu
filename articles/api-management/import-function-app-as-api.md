@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 07/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 1962a4aac8e2d15caf4ec33998da1985d3b8a9af
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ee83446bb08e66c7f325bdd5585b8cc0484a74e
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306473"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090928"
 ---
 # <a name="import-a-function-app-as-an-api"></a>Függvényalkalmazás importálása API-ként
 
@@ -34,7 +34,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
-+ Győződjön meg arról, hogy az előfizetése tartalmaz egy függvényalkalmazást. További információkért lásd a [függvényalkalmazás létrehozását](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) ismertető szakaszt.
++ Győződjön meg arról, hogy az előfizetése tartalmaz egy Azure-függvényalkalmazást. További információkért lásd a [függvényalkalmazás létrehozását](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) ismertető szakaszt.
++ Az Azure-függvényalkalmazás [OpenAPI-definíciójának létrehozása](../azure-functions/functions-openapi-definition.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -56,6 +57,24 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
     * **Kezdő**
     * **Korlátlan**   
 7. Kattintson a **Létrehozás** gombra.
+
+## <a name="populate-azure-functions-keys-in-azure-api-management"></a>Azure Functions-kulcsok feltöltése az Azure API Managementben
+
+Ha az importált Azure Functionst kulcsok védik, akkor az Azure API Management automatikusan létrehoz hozzájuk **névvel ellátott értékeket**, de nem tölti fel titkos kulcsokkal a bejegyzéseket. Minden bejegyzés esetében el kell végeznie az alábbi lépéseket.  
+
+1. Lépjen az API Management-példány **Névvel ellátott értékek** lapjára.
+2. Kattintson egy bejegyzésre, majd az oldalsáv **Érték megjelenítése** elemére.
+
+    ![Névvel ellátott értékek](./media/import-function-app-as-api/apim-named-values.png)
+
+3. Ha a tartalom a(z) *{Azure-függvény neve} kódjához* hasonlít, lépjen az importált az Azure Functions-alkalmazásra, és keresse meg az Azure-függvényt.
+4. Lépjen a kívánt Azure-függvény **Kezelés** szakaszára, és másolja ki a megfelelő kulcsot az Azure-függvény hitelesítési módszere alapján.
+
+    ![Függvényalkalmazás](./media/import-function-app-as-api/azure-functions-app-keys.png)
+
+5. Illessze be a **Névvel ellátott értékek** mezőből származó kulcsot a szövegmezőbe, majd kattintson a **Mentés** gombra.
+
+    ![Függvényalkalmazás](./media/import-function-app-as-api/apim-named-values-2.png)
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Az új APIM API tesztelése az Azure Portalon
 

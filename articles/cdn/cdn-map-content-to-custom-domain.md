@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f66aaa23a631bd71494587683aab87a74a5aef20
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 30dbe6590cc1d70dfc026330a09645c86be24288
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261270"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036887"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Útmutató: Egyéni tartomány hozzáadása az Azure CDN-végponthoz
 Ez az útmutató megmutatja, hogyan adható hozzá egyéni tartomány egy Azure Content Delivery Network- (CDN-) végponthoz. Amikor CDN-végpontot használ a tartalom továbbítására, és azt szeretné, hogy a saját tartományneve jelenjen meg a CDN URL-címében, egyéni tartományt kell létrehoznia. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is. 
@@ -54,11 +54,11 @@ Egy egyéni tartománynév és annak altartománya egyszerre csak egy végpontta
 
 Amikor meglévő, éles környezetben futó tartományt képez le, speciális szempontokat kell figyelembe vennie. Amikor regisztrálja az egyéni tartományát az Azure Portalon, rövid kimaradás fordulhat elő a tartományon. A webes forgalom megszakításának elkerüléséhez először képezze le az egyéni tartományt a CDN-végpont gazdanevére az Azure cdnverify altartománnyal. Ezzel létrehoz egy ideiglenes CNAME-leképezést. Ezzel a módszerrel a felhasználók megszakítás nélkül férhetnek hozzá a tartományhoz a DNS-hozzárendelés közben. 
 
-Egyéb esetben, ha először használja az egyéni tartományát, és nem fut rajta éles forgalom, a tartományt leképezheti közvetlenül a CDN-végpontra is. Lépjen tovább az [Állandó egyéni tartomány leképezése](#map-permanent-custom-domain) szakaszra.
+Egyéb esetben, ha először használja az egyéni tartományát, és nem fut rajta éles forgalom, a tartományt leképezheti közvetlenül a CDN-végpontra is. Lépjen tovább [az állandó egyéni tartomány leképezését](#map-the-permanent-custom-domain) bemutató cikkre.
 
 CNAME rekord létrehozása a cdnverify altartománnyal:
 
-1. Jelentkezzen be az egyéni tartománya tartományszolgáltatójának webhelyére.
+1. Jelentkezzen be az egyéni tartomány tartományszolgáltatójának webhelyére.
 
 2. Keresse meg a DNS-rekordok kezelésére szolgáló oldal helyét a szolgáltató dokumentációjának segítségével, vagy a webhely **Tartománynév**, **DNS** vagy **Névkiszolgáló kezelése** területeinek áttekintésével. 
 
@@ -78,7 +78,7 @@ CNAME rekord létrehozása a cdnverify altartománnyal:
 
 Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
-1. Jelentkezzen be és válassza ki a használni kívánt egyéni tartományt.
+1. Jelentkezzen be, és válassza ki a használni kívánt egyéni tartományt.
 
 2. A Tartományok szakaszban válassza az **Összes kezelése**, majd a **DNS** | **Zónák kezelése** lehetőséget.
 
@@ -109,7 +109,7 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
 Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a CDN-végpontjához. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és navigáljon a CDN-profilra, amely tartalmazza azt a végpontot, amelyet az egyéni tartományhoz kíván leképezni.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és navigáljon arra a CDN-profilra, amely tartalmazza azt a végpontot, amelyet az egyéni tartományhoz kíván leképezni.
     
 2. A **CDN-profil** oldalon válassza ki a CDN-végpontot, amelyet társítani kíván az egyéni tartománnyal.
 
@@ -152,7 +152,7 @@ Ha ellenőrizte, hogy a cdnverify altartomány sikeresen le lett képezve a vég
 
 CNAME rekord létrehozása az egyéni tartományhoz:
 
-1. Jelentkezzen be az egyéni tartománya tartományszolgáltatójának webhelyére.
+1. Jelentkezzen be az egyéni tartomány tartományszolgáltatójának webhelyére.
 
 2. Keresse meg a DNS-rekordok kezelésére szolgáló oldal helyét a szolgáltató dokumentációjának segítségével, vagy a webhely **Tartománynév**, **DNS** vagy **Névkiszolgáló kezelése** területeinek áttekintésével. 
 
@@ -176,7 +176,7 @@ CNAME rekord létrehozása az egyéni tartományhoz:
 
 Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
-1. Jelentkezzen be és válassza ki a használni kívánt egyéni tartományt.
+1. Jelentkezzen be, és válassza ki a használni kívánt egyéni tartományt.
 
 2. A Tartományok szakaszban válassza az **Összes kezelése**, majd a **DNS** | **Zónák kezelése** lehetőséget.
 

@@ -1,48 +1,37 @@
 ---
-title: Az Azure DNS használatának első lépései az Azure CLI 2.0-val | Microsoft Docs
-description: A cikkből megtudhatja, hogyan hozhat létre DNS-zónát és -rekordot az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel az Azure CLI 2.0 használatával létrehozhatja és kezelheti az első DNS-zónáját és -rekordját.
+title: Rövid útmutató – Azure DNS-zóna és -rekord létrehozása az Azure CLI használatával
+description: Rövid útmutató – A cikkből megtudhatja, hogyan hozhat létre DNS-zónát és -rekordot az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel az Azure CLI használatával létrehozhatja és kezelheti az első DNS-zónáját és -rekordját.
 services: dns
-documentationcenter: na
-author: KumuD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
+author: vhorne
 ms.service: dns
-ms.devlang: azurecli
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/10/2017
-ms.author: kumud
-ms.openlocfilehash: d24eaa4974f8bff09b337384e4fd139edb6ebd70
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: quickstart
+ms.date: 7/16/2018
+ms.author: victorh
+ms.openlocfilehash: 3fb39558ff99c35786dedc133a9d1d1a450b5928
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30175239"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090122"
 ---
-# <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Az Azure DNS használatának első lépései az Azure CLI 2.0-val
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Rövid útmutató: Azure DNS-zóna és -rekord létrehozása az Azure CLI használatával
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](dns-getstarted-portal.md)
-> * [PowerShell](dns-getstarted-powershell.md)
-> * [Azure CLI 2.0](dns-getstarted-cli.md)
-
-Ez a cikk bemutatja az első DNS-zóna és -rekord létrehozásának lépéseit a platformfüggetlen Azure CLI 2.0 használatával, amely Windows, Mac és Linux platformokon is elérhető. Ezeket a lépéseket az Azure Portal vagy az Azure PowerShell használatával is elvégezheti.
+Ez a cikk bemutatja az első DNS-zóna és -rekord létrehozásának lépéseit az Azure CLI használatával, amely Windows, Mac és Linux platformokon is elérhető. Ezeket a lépéseket az [Azure Portal](dns-getstarted-portal.md) vagy az [Azure PowerShell](dns-getstarted-powershell.md) használatával is elvégezheti.
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Végül a DNS-zóna interneten való közzétételéhez konfigurálnia kell a tartomány névkiszolgálóit. Az egyes lépéseket az alábbiakban ismertetjük.
 
-Ezek az utasítások feltételezik, hogy már telepítette az Azure CLI 2.0-t, és bejelentkezett. További segítségért lásd [a DNS-zónák az Azure CLI 2.0 használatával való kezelésével kapcsolatos](dns-operations-dnszones-cli.md) témakört.
-
 Az Azure DNS már támogatja a privát DNS-zónák használatát (jelenleg nyilvános előzetes verzióban érhető el). További információk a saját DNS-zónákról: [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md). További információt a privát DNS-zónák létrehozásáról [az Azure DNS privát zónái CLI segítségével történő használatának első lépéseit](./private-dns-getstarted-cli.md) ismertető cikkben olvashat.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-A DNS-zóna létrehozása előtt egy erőforráscsoportot kell létrehozni, amely a DNS-zónát tartalmazza majd. Az alábbiakban a parancs látható.
+Mielőtt létrehozná a DNS-zónát, hozzon létre egy erőforráscsoportot, amely a DNS-zónát tartalmazza majd:
 
 ```azurecli
-az group create --name MyResourceGroup --location "West US"
+az group create --name MyResourceGroup --location "East US"
 ```
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
@@ -64,8 +53,6 @@ Az alábbi példa a „MyResourceGroup” erőforráscsoport „contoso.com” D
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
 ```
-
-Más rekordtípusok, több rekordot tartalmazó rekordhalmazok, alternatív élettartam-értékek és meglévő rekordok módosítása esetén lásd: [DNS-rekordok és -rekordhalmazok kezelése az Azure CLI 2.0 használatával](dns-operations-recordsets-cli.md).
 
 ## <a name="view-records"></a>A rekordok megtekintése
 
@@ -107,7 +94,7 @@ Ezeket a névkiszolgálókat a tartományregisztrálóhoz kell konfigurálni (ah
 
 ## <a name="delete-all-resources"></a>Az összes erőforrás törlése
  
-A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépést:
+Ha már nincs rájuk szükség, a rövid útmutatóban létrehozott erőforrásokat az erőforráscsoport törlésével távolíthatja el:
 
 ```azurecli
 az group delete --name MyResourceGroup
@@ -115,8 +102,7 @@ az group delete --name MyResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure DNS-sel kapcsolatos további információért lásd [az Azure DNS áttekintését biztosító](dns-overview.md) cikket.
+Most, hogy létrehozta első DNS-zónáját és -rekordját az Azure CLI használatával, létrehozhat webalkalmazás-rekordokat is egyéni tartományokban.
 
-DNS-zónák az Azure DNS-ben való kezelésével kapcsolatos további információért lásd [a DNS-zónák az Azure DNS-ben az Azure CLI 2.0-val való kezelésével kapcsolatos](dns-operations-dnszones-cli.md) témakört.
-
-DNS-rekordok az Azure DNS-ben való kezelésével kapcsolatos további információért lásd [a DNS-rekordok és -rekordhalmazok az Azure DNS-ben az Azure CLI 2.0-val való kezelésével kapcsolatos](dns-operations-recordsets-cli.md) témakört.
+> [!div class="nextstepaction"]
+> [Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban](./dns-web-sites-custom-domain.md)

@@ -1,28 +1,34 @@
 ---
-title: A szinonimák oktatóanyaga az Azure Search szolgáltatásban | Microsoft Docs
-description: A szinonimák szolgáltatás hozzáadása az Azure Search szolgáltatás egyik indexéhez.
+title: A szinonimák C#-oktatóanyaga az Azure Search szolgáltatásban | Microsoft Docs
+description: Ebben az oktatóanyagban a szinonimák szolgáltatást adja hozzá egy indexhez az Azure Searchben.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/20/2018
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182089"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990561"
 ---
-# <a name="synonym-c-tutorial-for-azure-search"></a>Szinonima C# oktatóanyag az Azure Search szolgáltatáshoz
+# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Oktatóanyag: Szinonimák hozzáadása az Azure Searchhöz C# nyelven
 
-A szinonimák bővítik a lekérdezéseket azáltal, hogy találatként kezelik a bemeneti kifejezéssel szemantikailag egyenértékűnek tekintett kifejezéseket. Előfordulhat például, hogy azt szeretné, hogy a „kocsi” kifejezésre olyan dokumentumokat kapjon eredményül, amelyek az „autó” vagy a „jármű” kifejezéseket is tartalmazzák.
+A szinonimák bővítik a lekérdezéseket azáltal, hogy találatként kezelik a bemeneti kifejezéssel szemantikailag egyenértékűnek tekintett kifejezéseket. Előfordulhat például, hogy azt szeretné, hogy a „kocsi” kifejezésre olyan dokumentumokat kapjon eredményül, amelyek az „autó” vagy a „jármű” kifejezéseket is tartalmazzák. 
 
-Az Azure Search szolgáltatásban a szinonimák meghatározása egy *szinonimatérképpel* történik, az egyenértékű kifejezéseket társító *leképezési szabályok* segítségével. Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index számára elérhető szolgáltatásszintű erőforrásként, majd hivatkozhat arra, amelyiket a mezőszinten használni kívánja. Az indexben való keresés mellett az Azure Search szolgáltatás lekérdezéskor a szinonimatérképben is keres, ha meg van határozva egy a lekérdezésben használt mezőkhöz.
+Az Azure Search szolgáltatásban a szinonimák meghatározása egy *szinonimatérképpel* történik, az egyenértékű kifejezéseket társító *leképezési szabályok* segítségével. Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá és használhat szinonimákat egy meglévő indexszel. Az alábbiak végrehajtásának módját ismerheti meg:
+
+> [!div class="checklist"]
+> * Szinonimák engedélyezése leképezési szabályok létrehozásával és közzétételével 
+> * Szinonimatérkép megjelölése lekérdezési sztringben
+
+Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index számára elérhető szolgáltatásszintű erőforrásként, majd hivatkozhat arra, amelyiket a mezőszinten használni kívánja. Az indexben való keresés mellett az Azure Search szolgáltatás lekérdezéskor a szinonimatérképben is keres, ha meg van határozva egy a lekérdezésben használt mezőkhöz.
 
 > [!NOTE]
-> A szinonimák szolgáltatás a legújabb API- és SDK-verzióban támogatott (API-verzió: 2017-11-11, SDK-verzió: 5.0.0). Jelenleg nincs Azure Portal-támogatás. Ha az Azure Portalon a szinonimák támogatása hasznos lenne az Ön számára, küldjön visszajelzést a [UserVoice](https://feedback.azure.com/forums/263029-azure-search) (Felhasználói vélemények) fórumon.
+> A legújabb API- és SDK-verzió támogatja a szinonimákat (api-version=2017-11-11, SDK-verzió 5.0.0). Jelenleg nincs Azure Portal-támogatás. Ha az Azure Portalon a szinonimák támogatása hasznos lenne az Ön számára, küldjön visszajelzést a [UserVoice](https://feedback.azure.com/forums/263029-azure-search) (Felhasználói vélemények) fórumon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +41,7 @@ Az oktatóanyag az alábbi követelményekkel rendelkezik:
 
 ## <a name="overview"></a>Áttekintés
 
-Az „előtte és utána” lekérdezések a szinonimák előnyeit mutatják be. A jelen oktatóanyagban egy mintaalkalmazást használunk, amely lekérdezéseket hajt végre és eredményeket ad vissza egy mintaindexen. A mintaalkalmazás egy „hotels” nevű kisméretű indexet hoz létre, amely két dokumentummal van feltöltve. Az alkalmazás keresési lekérdezéseket futtat olyan kifejezésekkel, amelyek nem szerepelnek az indexben, engedélyezi a szinonimák szolgáltatást, majd ismét kiadja ugyanazokat a kereséseket. Az alábbi kód az általános folyamatot mutatja be.
+Az „előtte és utána” lekérdezések a szinonimák előnyeit mutatják be. Ebben az oktatóanyagban egy mintaalkalmazást használunk, amely lekérdezéseket hajt végre és eredményeket ad vissza egy mintaindexen. A mintaalkalmazás egy „hotels” nevű kisméretű indexet hoz létre, amely két dokumentummal van feltöltve. Az alkalmazás keresési lekérdezéseket futtat olyan kifejezésekkel, amelyek nem szerepelnek az indexben, engedélyezi a szinonimák szolgáltatást, majd ismét kiadja ugyanazokat a kereséseket. Az alábbi kód az általános folyamatot mutatja be.
 
 ```csharp
   static void Main(string[] args)
@@ -73,7 +79,7 @@ A mintaindex létrehozásának és a dokumentumok feltöltésének lépései [Az
 
 ## <a name="before-queries"></a>„Előtte” lekérdezések
 
-A `RunQueriesWithNonExistentTermsInIndex` parancsban olyan keresési lekérdezéseket adunk ki, mint „five star” (ötcsillagos), „internet”, valamint „economy AND hotel” (gazdaság ÉS szálloda).
+A `RunQueriesWithNonExistentTermsInIndex` parancsban olyan keresési lekérdezéseket adunk ki, mint „five star” (ötcsillagos), „internet”, valamint „economy AND hotel” (gazdaságos ÉS szálloda).
 ```csharp
 Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
 results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
@@ -159,8 +165,13 @@ A szinonimák hozzáadásával teljesen megváltozik a keresési élmény. Ebben
 ## <a name="sample-application-source-code"></a>Mintaalkalmazás forráskódja
 A jelen útmutatóban használt mintaalkalmazás teljes forráskódját a [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) webhelyén találja.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatást tartalmazó erőforráscsoport törlésével távolíthatók el a leggyorsabban. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Search szolgáltatás Áttekintés lapján szerepel.
+
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át [a szinonimák Azure Searchben történő használatával](search-synonyms.md) foglalkozó cikket.
-* Tekintse át a [szinonimák REST API dokumentációját](https://aka.ms/rgm6rq).
-* Nézze át a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referenciáit.
+Ez az oktatóanyag bemutatta a [Szinonimák REST API-t](https://aka.ms/rgm6rq) C#-kódban, amellyel leképezési szabályokat hozhat létre és tehet közzé, majd meghívhatja a szinonimatérképet egy lekérdezésben. További információt a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referencia-dokumentációjában találhat.
+
+> [!div class="nextstepaction"]
+> [Szinonimák használata az Azure Searchben](search-synonyms.md)

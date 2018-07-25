@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 06/14/2018
+ms.date: 07/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 5205a6746f6a698768a60375e2e77db9cb535a71
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ad3b8755615332249ac00f43a2d0cc5fa13a7233
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971907"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113284"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
@@ -69,6 +69,52 @@ A Media Services-erőforrás neve nem tartalmazhatja a következőket: "<", ">",
 
 Az Azure Resource Manager elnevezéseire vonatkozó további információért tekintse meg az [Elnevezési követelmények](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és az [Elnevezési konvenciók](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) című részeket.
 
+## <a name="media-services-v3-api-design-principles"></a>A Media Services v3 API tervezési alapelvei
+
+A v3 API egyik fő tervezési alapelve az API biztonságosabbá tétele. A v3 API-k nem adnak vissza titkos kulcsokat vagy hitelesítő adatokat a **lekérési** vagy **listázási** művelet során. A kulcsok mindig null értékűek, üresek vagy törölve vannak a válaszból. Egy különálló műveleti metódust kell meghívnia a titkos kulcsok vagy hitelesítő adatok lekéréséhez. A különálló műveletekkel különböző RBAC biztonsági engedélyeket állíthat be, ha esetleg valamely API mégis lekér/megjelenít titkos kulcsokat, míg más API-k nem. A hozzáférés RBAC használatával való kezeléséről további információt a [hozzáférés RBAC használatával való kezeléséről](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest) szóló szakaszban talál.
+
+Erre a következők szolgálnak példaként: 
+
+* a rendszer nem ad vissza ContentKey értékeket a StreamingLocator lekérésében, 
+* a rendszer nem ad vissza korlátozó kulcsokat a ContentKeyPolicy lekérésében, 
+* a rendszer nem adja vissza az URL lekérdezési sztring részét (az aláírás eltávolításához) a feladat HTTP bemeneti URL-jei esetében.
+
+A következő .NET példa bemutatja, hogyan kérhet le aláírókulcsot a meglévő szabályzatból. A **GetPolicyPropertiesWithSecretsAsync** paranccsal kell lekérnie a kulcsot.
+
+```csharp
+private static async Task<ContentKeyPolicy> GetOrCreateContentKeyPolicyAsync(
+    IAzureMediaServicesClient client,
+    string resourceGroupName,
+    string accountName,
+    string contentKeyPolicyName)
+{
+    ContentKeyPolicy policy = await client.ContentKeyPolicies.GetAsync(resourceGroupName, accountName, contentKeyPolicyName);
+
+    if (policy == null)
+    {
+        // Configure and create a new policy.
+        
+        . . . 
+        policy = await client.ContentKeyPolicies.CreateOrUpdateAsync(resourceGroupName, accountName, contentKeyPolicyName, options);
+    }
+    else
+    {
+        var policyProperties = await client.ContentKeyPolicies.GetPolicyPropertiesWithSecretsAsync(resourceGroupName, accountName, contentKeyPolicyName);
+        var restriction = policyProperties.Options[0].Restriction as ContentKeyPolicyTokenRestriction;
+        if (restriction != null)
+        {
+            var signingKey = restriction.PrimaryVerificationKey as ContentKeyPolicySymmetricTokenKey;
+            if (signingKey != null)
+            {
+                TokenSigningKey = signingKey.KeyValue;
+            }
+        }
+    }
+
+    return policy;
+}
+```
+
 ## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát?
 
 Fejlesztőként a Media Services [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=873030), illetve a REST API-val való kommunikációt lehetővé tévő ügyfélkódtárakkal könnyedén hozhat létre, felügyelhet és kezelhet egyéni média-munkafolyamatokat. A REST Postman-példát [itt](https://github.com/Azure-Samples/media-services-v3-rest-postman) találja. [Azure Resource Manager-alapú REST API-t](https://github.com/Azure-Samples/media-services-v3-arm-templates) is használhat.
@@ -77,10 +123,10 @@ A Microsoft az alábbi ügyfélkódtárakat hozza létre és támogatja:
 
 |Ügyfélkódtár|Példák|
 |---|---|
-|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)|[Azure CLI-minták](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
+|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)|[Azure CLI-minták](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
 |[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)|[.NET-minták](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)|
 |[.NET Core SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0) (válassza a **.NET CLI** fület)|[.NET Core-minta](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/mediaservices)||
+|[Java SDK](https://docs.microsoft.com/java/api/mediaservices/management?view=azure-java-stable)||
 |[Node.js SDK](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest)|[Node.js-minták](https://github.com/Azure-Samples/media-services-v3-node-tutorials)|
 |[Python SDK](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)||
 |[Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)||

@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/10/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 30b75f577b5e68614131e6476586921a752768dc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8bc725a5d9e3e9cdf82a01693aed83bff1f16c04
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386537"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991628"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>A Node.js-webalkalmazás monitorozásának indítása
 
@@ -30,12 +30,12 @@ A gyorsútmutató elvégzéséhez:
 - Szüksége lesz egy Azure-előfizetésre és egy meglévő Node.js-webalkalmazásra.
 
 Ha nem rendelkezik Node.js-webalkalmazással, a létrehozásához követheti a [Node.js-webalkalmazások létrehozásához készült útmutató](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs) utasításait.
- 
+
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -60,7 +60,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Válassza az **Áttekintés** > **Alapvető erőforrások** elemet, és másolja ki az alkalmazás **Kialakítási kulcsát**.
 
-   ![Új App Insights-erőforrás űrlap](./media/app-insights-nodejs-quick-start/003-Black.png)
+   ![Új App Insights-erőforrás űrlap](./media/app-insights-nodejs-quick-start/instrumentation-key-001.png)
 
 2. Adja hozzá a Node.js-hez készült Application Insights SDK-t az alkalmazáshoz. Az alkalmazás gyökérmappájából futtassa a következőket:
 
@@ -84,25 +84,25 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Most megnyithatja ismét az Application Insights **Áttekintés** lapját az Azure Portalon (ahol a kialakítási kulcsot is megjelenítette) a jelenleg futó alkalmazás részleteinek megtekintéséhez.
 
-   ![Az Application Insights áttekintése menü](./media/app-insights-nodejs-quick-start/004-Black.png)
+   ![Az Application Insights áttekintése menü](./media/app-insights-nodejs-quick-start/overview-001.png)
 
 2. Kattintson az **Alkalmazástérkép** elemre az alkalmazás-összetevők függőségi viszonyait mutató vizuális elrendezés megjelenítéséhez. Minden egyes összetevőnél megjelennek a KPI-k, például a terhelés, a teljesítmény, a hibák és a riasztások.
 
-   ![Alkalmazástérkép](./media/app-insights-nodejs-quick-start/005-Black.png)
+   ![Alkalmazástérkép](./media/app-insights-nodejs-quick-start/application-map.png)
 
 3. Kattintson az **Alkalmazáselemzés** ikonra ![Alkalmazáselemzés ikon](./media/app-insights-nodejs-quick-start/006.png).  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/app-insights-nodejs-quick-start/007-Black.png)
 
-4. Lépjen vissza az **Áttekintés** lapra, és vizsgálja meg az **Állapotáttekintési időegyenest**.  Ezen az irányítópulton az alkalmazás állapotával kapcsolatos statisztikák jelennek meg, köztük a bejövő kérések száma, az egyes kérések időtartama, valamint az esetleges hibák. 
+4. Lépjen vissza az **Áttekintés** lapra, és vizsgálja meg a KPI-gráfokat.  Ezen az irányítópulton az alkalmazás állapotával kapcsolatos statisztikák jelennek meg, köztük a bejövő kérések száma, az egyes kérések időtartama, valamint az esetleges hibák. 
 
-   ![Az Állapotáttekintési időegyenes diagramjai](./media/app-insights-nodejs-quick-start/008-Black.png)
+   ![Az Állapotáttekintési időegyenes diagramjai](./media/app-insights-nodejs-quick-start/overview-perf.png)
 
    Ahhoz, hogy a **Lapmegtekintés betöltési ideje** diagramon megjelenjenek az **ügyféloldali telemetria** adatai, adja az alábbi szkriptet minden olyan oldalhoz, amelyet nyomon kíván követni:
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics tools about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

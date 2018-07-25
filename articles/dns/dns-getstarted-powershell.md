@@ -1,47 +1,37 @@
 ---
-title: Az Azure DNS PowerShell-lel való használatának első lépései | Microsoft Docs
-description: A cikkből megtudhatja, hogyan hozhat létre DNS-zónát és -rekordot az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel a PowerShell használatával létrehozhatja és kezelheti az első DNS-zónáját és -rekordját.
+title: Rövid útmutató – Azure DNS-zóna és -rekord létrehozása az Azure PowerShell használatával
+description: A cikkből megtudhatja, hogyan hozhat létre DNS-zónát és -rekordot az Azure DNS-ben. Ez egy lépésenkénti rövid útmutató, amellyel az Azure PowerShell használatával létrehozhatja és kezelheti az első DNS-zónáját és -rekordját.
 services: dns
-documentationcenter: na
-author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
+author: vhorne
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/10/2017
-ms.author: kumud
-ms.openlocfilehash: 050111f4a5e8459e89d049ccb879b5079ff68527
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: quickstart
+ms.date: 07/16/2018
+ms.author: victorh
+ms.openlocfilehash: e5801e9ed512a32d793f7b4b71be86174f656ab0
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30175324"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089978"
 ---
-# <a name="get-started-with-azure-dns-using-powershell"></a>Az Azure DNS PowerShell-lel való használatának első lépései
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Rövid útmutató: Azure DNS-zóna és -rekord létrehozása az Azure PowerShell használatával
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](dns-getstarted-portal.md)
-> * [PowerShell](dns-getstarted-powershell.md)
-> * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
-> * [Azure CLI 2.0](dns-getstarted-cli.md)
-
-Ez a cikk végigvezeti az első DNS-zóna és -rekord Azure PowerShell-lel való létrehozásának lépésein. Ezek a lépések az Azure Portal vagy a platformfüggetlen Azure CLI használatával is elvégezhetőek. Az Azure DNS a saját tartományok létrehozását is támogatja. Ha részletes útmutatót keres az első saját DNS-zóna és -rekord létrehozásához, lásd: [Az Azure DNS saját zónáival kapcsolatos első lépések PowerShell-lel](private-dns-getstarted-powershell.md).
+Ezzel a rövid útmutatóval létrehozza első DNS-zónáját és -rekordját az Azure PowerShell használatával. Ezek a lépések az [Azure Portal](dns-getstarted-portal.md) vagy az [Azure CLI](dns-getstarted-cli.md) használatával is elvégezhetők. 
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Végül a DNS-zóna interneten való közzétételéhez konfigurálnia kell a tartomány névkiszolgálóit. Az egyes lépéseket az alábbiakban ismertetjük.
 
-Ezek az utasítások feltételezik, hogy már telepítette és az Azure Powershellt, és bejelentkezett. További segítségért lásd [a DNS-zónák a PowerShell használatával való kezelésével kapcsolatos](dns-operations-dnszones.md) témakört.
+Az Azure DNS saját tartományok létrehozását is támogatja. Ha részletes útmutatót keres az első saját DNS-zóna és -rekord létrehozásához, lásd: [Az Azure DNS saját zónáival kapcsolatos első lépések PowerShell-lel](private-dns-getstarted-powershell.md).
+
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-A DNS-zóna létrehozása előtt egy erőforráscsoportot kell létrehozni, amely a DNS-zónát tartalmazza majd. Az alábbiakban a parancs látható.
+Mielőtt létrehozná a DNS-zónát, hozzon létre egy erőforráscsoportot, amely a DNS-zónát tartalmazza majd:
 
 ```powershell
-New-AzureRMResourceGroup -name MyResourceGroup -location "westus"
+New-AzureRMResourceGroup -name MyResourceGroup -location "eastus"
 ```
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
@@ -51,7 +41,6 @@ A DNS-zóna az `New-AzureRmDnsZone` parancsmag használatával hozható létre. 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
 ```
-Az Azure DNS már támogatja a privát DNS-zónák használatát (jelenleg nyilvános előzetes verzióban érhető el).  További információk a saját DNS-zónákról: [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md). További információt a privát DNS-zónák létrehozásáról [az Azure DNS privát zónái PowerShell segítségével történő használatának első lépéseit](./private-dns-getstarted-powershell.md) ismertető cikkben olvashat.
 
 ## <a name="create-a-dns-record"></a>DNS-rekord létrehozása
 
@@ -60,9 +49,6 @@ Rekordhalmazt a `New-AzureRmDnsRecordSet` parancsmag használatával hozhat lét
 ```powershell
 New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4")
 ```
-
-Más rekordtípusok, több rekordot tartalmazó rekordhalmazok és meglévő rekordok módosítása esetén lásd: [DNS-rekordok és -rekordhalmazok kezelése az Azure PowerShell használatával](dns-operations-recordsets.md). 
-
 
 ## <a name="view-records"></a>A rekordok megtekintése
 
@@ -95,7 +81,7 @@ Ezeket a névkiszolgálókat a tartományregisztrálóhoz kell konfigurálni (ah
 
 ## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 
-A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépést:
+Ha már nincs rájuk szükség, a rövid útmutatóban létrehozott erőforrásokat az erőforráscsoport törlésével távolíthatja el:
 
 ```powershell
 Remove-AzureRMResourceGroup -Name MyResourceGroup
@@ -103,9 +89,8 @@ Remove-AzureRMResourceGroup -Name MyResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure DNS-sel kapcsolatos további információért lásd [az Azure DNS áttekintését biztosító](dns-overview.md) cikket.
+Most, hogy létrehozta első DNS-zónáját és -rekordját az Azure PowerShell használatával, létrehozhat webalkalmazás-rekordokat is egyéni tartományokban.
 
-DNS-zónák az Azure DNS-ben való kezelésével kapcsolatos további információért lásd [a DNS-zónák az Azure DNS-ben a PowerShell-lel való kezelésével kapcsolatos](dns-operations-dnszones.md) témakört.
-
-DNS-rekordok az Azure DNS-ben való kezelésével kapcsolatos további információért lásd [a DNS-rekordok és -rekordhalmazok az Azure DNS-ben a PowerShell-lel való kezelésével kapcsolatos](dns-operations-recordsets.md) témakört.
+> [!div class="nextstepaction"]
+> [Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban](./dns-web-sites-custom-domain.md)
 
