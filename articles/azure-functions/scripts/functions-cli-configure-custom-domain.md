@@ -13,19 +13,21 @@ ms.workload: na
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 06/26/2018
+ms.date: 07/04/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 7d3fc71bc53e85fa7555dbee5ee79b3f06f27fe8
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 0650fffeb54ebc4390c82fb2711d7c89e0ac4572
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960338"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989418"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Egyéni tartomány leképezése egy függvényalkalmazásra
 
-Ez a példaszkript egy függvényalkalmazást hoz létre a kapcsolódó erőforrásokkal együtt, majd leképezi rá a `www.<yourdomain>` tartományt. Ha a függvényalkalmazása egy [App Service-csomagban](../functions-scale.md#app-service-plan) üzemel, egy CNAME vagy A rekord segítségével képezhet le egy egyéni tartományt. [Használatalapú csomagban](../functions-scale.md#consumption-plan) lévő függvényalkalmazások esetében csak a CNAME lehetőség támogatott.
+Ez a példaszkript egy függvényalkalmazást hoz létre egy App Service-csomagban, majd leképezi a megadott egyéni tartományhoz. Ha a függvényalkalmazása egy [App Service-csomagban](../functions-scale.md#app-service-plan) üzemel, egy CNAME vagy A rekord segítségével képezhet le egy egyéni tartományt. [Használatalapú csomagban](../functions-scale.md#consumption-plan) lévő függvényalkalmazások esetében csak a CNAME lehetőség támogatott. Ez a példa létrehoz egy App Service-csomagot, és egy A rekordra van szüksége a tartomány leképezéséhez. 
+
+A példaszkript futtatásához előzetesen konfigurálnia kell egy olyan A rekordot az egyéni tartományban, amely a webalkalmazás alapértelmezett tartománynevére mutat. További információ: [Egyéni tartományutasítások leképezése az Azure App Service-ben](https://aka.ms/appservicecustomdns). 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -46,14 +48,14 @@ A szkript a következő parancsokat használja: A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy tárfiókot, amely a függvényalkalmazáshoz szükséges. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot, amely az egyéni tartomány leképezéséhez szükséges. |
-| [az functionapp create]() | Létrehoz egy függvényalkalmazást. |
-| [az appservice web config hostname add](https://docs.microsoft.com/cli/azure/appservice/web/config/hostname#az_appservice_web_config_hostname_add) | Leképez egy egyéni tartományt egy függvényalkalmazásra. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy tárfiókot, amely a függvényalkalmazáshoz szükséges. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy App Service-csomagot, amely az egyéni tartomány leképezéséhez szükséges. |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást az App Service-csomagban. |
+| [az functionapp config hostname add](https://docs.microsoft.com/cli/azure/functionapp/config/hostname#az-functionapp-config-hostname-add) | Leképez egy egyéni tartományt egy függvényalkalmazásra. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További Functions CLI-példaszkripteket az [Azure Functions dokumentációjában]() találhat.
+További Functions CLI-példaszkripteket az [Azure Functions dokumentációjában](../functions-cli-samples.md) találhat.

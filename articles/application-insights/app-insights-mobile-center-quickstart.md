@@ -4,18 +4,19 @@ description: A mobilalkalmazások gyors üzembe helyezésével kapcsolatos utas�
 services: application-insights
 keywords: ''
 author: mrbullwinkle
-ms.author: daviste; mbullwin
-ms.date: 10/05/2017
+ms.author: mbullwin
+ms.date: 07/11/2018
 ms.service: application-insights
+ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 252d16a5c4ef2d1f8230746dff681f7fbf5f44b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: fd594e65de79844720462996a89477e0a6237ceb
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867951"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988925"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -66,7 +67,7 @@ Ha meg szeretne győződni arról, hogy az App Center fogadja az egyéni esemén
 
 Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket az eseményeket, létre kell hoznia egy App Center-típusú Application Insights-erőforrást az Azure Portalon:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza az **Erőforrás létrehozása** > **Monitoring és felügyelet** > **Application Insights** elemet.
 
     ![Application Insights-erőforrások hozzáadása](./media/app-insights-mobile-center-quickstart/add.png)
@@ -144,7 +145,7 @@ Az App Center által biztosított elemzőeszközök mellett az Application Insig
 
    A Felhasználói folyamatok eszköz megjeleníti, hogy a felhasználók mely eseményeket küldik el az indítási események után. A segítségével átfogó képet lehet kapni arról, hogy hogyan navigálnak a felhasználók az alkalmazásban. Az eszköz továbbá megmutathatja azokat a helyeket, ahol sok felhasználó megfordul az alkalmazásban, vagy ahol többször is végrehajtják ugyanazokat a műveleteket.
 
-   A Felhasználói folyamatok mellett az Application Insights más használatelemző eszközökkel is rendelkezik a konkrét kérdések megválaszolásához:
+   A Felhasználói folyamatok mellett az Application Insights a felhasználói viselkedést elemző egyéb eszközökkel is rendelkezik a konkrét kérdések megválaszolásához:
 
    * **Tölcsérek** – a konverziós arányok elemzéséhez és figyelemmel kíséréséhez.
    * **Megtartás** – annak elemzésére, hogy milyen jól tartja meg az alkalmazás a felhasználókat az idő múlásával.

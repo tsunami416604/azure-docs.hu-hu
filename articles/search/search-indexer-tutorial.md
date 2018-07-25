@@ -1,22 +1,22 @@
 ---
 title: Oktatóanyag az Azure SQL-adatbázisok indexeléséről az Azure Search szolgáltatásban | Microsoft Docs
-description: Feltérképezi az Azure SQL-adatbázist a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez.
+description: Ebben az oktatóanyagban feltérképezi az Azure SQL Database-adatbázist a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/10/2017
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: abf121ec369d84dd307416d2c08971d9096de4a8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799515"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988795"
 ---
-# <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Azure SQL-adatbázis feltérképezése Azure Search-indexelők használatával
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Oktatóanyag: Azure SQL Database-adatbázis feltérképezése Azure Search-indexelőkkel
 
 Ez az oktatóanyag az indexelő konfigurálását mutatja be kereshető adatok kinyeréséhez egy minta Azure SQL-adatbázisból. Az [indexelők](search-indexer-overview.md) olyan Azure Search-összetevők, amelyek feltérképezik a külső adatforrásokat, és tartalommal töltenek fel egy [keresési indexet](search-what-is-an-index.md). Az Azure SQL-adatbázis indexelője mind közül a legszélesebb körben használt indexelő. 
 
@@ -33,9 +33,9 @@ Ebben az oktatóanyagban az [Azure Search .NET-ügyfélkönyvtárak](https://aka
 > * Keresés az indexben
 > * Az indexelő konfigurációjának megtekintése a portálon
 
-## <a name="prerequisites"></a>Előfeltételek
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* Aktív Azure-fiók. Ha még nincs fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
+## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Search-szolgáltatás. A beállításhoz itt talál segítséget: [Keresési szolgáltatás létrehozása](search-create-service-portal.md).
 
@@ -92,7 +92,7 @@ A keresési szolgáltatás végpontját és kulcsát a portálon találja. A szo
   > [!Note]
   > A szolgáltatásnév része a search.windows.net fájlt tartalmazó végpontnak. Ha kíváncsi rá, a teljes URL-címet az Áttekintés oldal **Alapvető szolgáltatások** részében tekintheti meg. Az URL-cím a következő példához hasonlít: https://your-service-name.search.windows.net
 
-5. A bal oldalon másolja az egyik rendszergazdai kulcsot a **Beállítások** > **Kulcsok** területről, majd illessze be azt második bejegyzésként az **appsettings.json** fájlba. A kulcsok olyan alfanumerikus karakterláncok, amelyeket a rendszer a kiépítés során hoz létre a szolgáltatás számára, és amelyekre a szolgáltatási műveletekhez történő engedélyezett hozzáféréshez van szükség. 
+5. A bal oldalon másolja az egyik rendszergazdai kulcsot a **Beállítások** > **Kulcsok** területről, majd illessze be azt második bejegyzésként az **appsettings.json** fájlba. A kulcsok olyan alfanumerikus sztringek, amelyeket a rendszer a kiépítés során hoz létre a szolgáltatás számára, és amelyekre a szolgáltatási műveletekhez történő engedélyezett hozzáféréshez van szükség. 
 
   A két beállítás hozzáadását követően a fájlnak a következő példához hasonlóan kell kinéznie:
 
@@ -145,14 +145,14 @@ Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem
    ```
    A prototípusos lekérdezés (`SELECT * FROM Hotels`) nem működik a Lekérdezésszerkesztőben. A mintaadatok olyan földrajzi koordinátákat is tartalmaznak a Hely mezőben, amelyeket a szerkesztő jelenleg nem kezel. A további lekérdezhető oszlopok listájának megtekintéséhez futtassa a következő utasítást: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
-10. Most, hogy már rendelkezik külső adatkészlettel, másolja ki az adatbázishoz tartozó ADO.NET kapcsolati karakterláncot. Az adatbázis SQL Database oldalának **Beállítások** > **Kapcsolati karakterláncok** területéről másolja az ADO.NET kapcsolati karakterláncot.
+10. Most, hogy már rendelkezik külső adatkészlettel, másolja ki az adatbázishoz tartozó ADO.NET kapcsolati sztringet. Az adatbázis SQL Database oldalának **Beállítások** > **Kapcsolati sztringek** területéről másolja az ADO.NET kapcsolati sztringet.
  
-  Az érvényes adatbázisnév, felhasználónév és jelszó használatának megfelelően módosított ADO.NET kapcsolati karakterlánc az alábbi példához hasonlóan fog kinézni.
+  Az érvényes adatbázisnév, felhasználónév és jelszó használatának megfelelően módosított ADO.NET kapcsolati sztring az alábbi példához hasonlóan fog kinézni.
 
   ```sql
   Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
   ```
-11. Az **appsettings.json** harmadik bejegyzéseként illessze be a kapcsolati karakterláncot az „AzureSqlConnectionString” részbe a Visual Studióban.
+11. Az **appsettings.json** harmadik bejegyzéseként illessze be a kapcsolati sztringet az „AzureSqlConnectionString” részbe a Visual Studióban.
 
     ```json
     {
@@ -233,11 +233,11 @@ A program hibakeresési módban lesz végrehajtva. Az egyes műveletek állapota
 
   ![SQL-szkript](./media/search-indexer-tutorial/console-output.png)
 
-A kód futtatása helyileg történik a Visual Studióban, és csatlakozik azt a keresési szolgáltatáshoz az Azure-on. Ez utóbbi a kapcsolati karakterláncot használja az Azure SQL Database-hez való csatlakozásra és az adatkészlet lekérdezéséhez. Ilyen sok művelet esetében számos hibalehetőség adódik. Ha hibaüzenetet kap, először a következőket ellenőrizze:
+A kód futtatása helyileg történik a Visual Studióban, és csatlakozik azt a keresési szolgáltatáshoz az Azure-on. Ez utóbbi a kapcsolati sztringet használja az Azure SQL Database-hez való csatlakozásra és az adatkészlet lekérdezéséhez. Ilyen sok művelet esetében számos hibalehetőség adódik. Ha hibaüzenetet kap, először a következőket ellenőrizze:
 
 + Az Ön által megadott keresési szolgáltatás kapcsolati adatai ebben az oktatóanyagban a szolgáltatás nevére korlátozódnak. A teljes URL-cím megadásakor a műveletek az index létrehozásakor leállnak, kapcsolódási hibát jelezve.
 
-+ Az adatbázis kapcsolati adatai az **appsettings.json** fájlban. Ennek a portálról beszerzett ADO.NET kapcsolati karakterláncnak kell lennie, amelyet úgy módosítottunk, hogy tartalmazza az adatbázishoz tartozó felhasználónevet és jelszót. A felhasználói fióknak megfelelő engedéllyel kell rendelkeznie az adatok lekérdezéséhez.
++ Az adatbázis kapcsolati adatai az **appsettings.json** fájlban. Ennek a portálról beszerzett ADO.NET kapcsolati sztringnek kell lennie, amelyet úgy módosítottunk, hogy tartalmazza az adatbázishoz tartozó felhasználónevet és jelszót. A felhasználói fióknak megfelelő engedéllyel kell rendelkeznie az adatok lekérdezéséhez.
 
 + Erőforráskorlátok. Ne felejtse el, hogy a megosztott (ingyenes) szolgáltatások 3-3 indexre, indexelőre és adatforrásra vannak korlátozva. A felső korlátot elért szolgáltatások nem képesek új objektumok létrehozására.
 
@@ -251,11 +251,11 @@ Az Azure Portalon, a keresési szolgáltatás Áttekintés oldalán kattintson a
 
   A rendszer az indexben lévő három bejegyzést JSON-dokumentumként adja vissza. A keresési ablak a dokumentumokat JSON-formátumban adja vissza, így a teljes struktúra megtekinthető.
 
-3. A következő lépésben adja meg ezt a keresési karakterláncot: `search=river&$count=true`. 
+3. A következő lépésben adja meg ezt a keresési sztringet: `search=river&$count=true`. 
 
   Ez a lekérdezés teljes szöveges keresést indít a `river` kifejezésre, az eredmény pedig tartalmazza az egyező dokumentumok darabszámát. Az egyező dokumentumok darabszámának visszaadása hasznos lehet az olyan forgatókönyvek tesztelése esetében, amelyekben több ezer vagy több millió dokumentumot tartalmazó, nagy méretű indexszel rendelkezik. Ebben az esetben a lekérdezésnek csak egy dokumentum felel meg.
 
-4. Végül adjon meg egy olyan keresési karakterláncot, amely a JSON-kimeneteket a kívánt mezőkre korlátozza: `search=river&$count=true&$select=hotelId, baseRate, description`. 
+4. Végül adjon meg egy olyan keresési sztringet, amely a JSON-kimeneteket a kívánt mezőkre korlátozza: `search=river&$count=true&$select=hotelId, baseRate, description`. 
 
   A lekérdezési válasz csak a kiválasztott mezőket tartalmazza, így a kimenet tömörebb lesz.
 
@@ -269,21 +269,14 @@ A portálon fel van sorolva az összes indexelő, így az imént programozott m�
 
   ![Indexelők és adatforrások csempéi](./media/search-indexer-tutorial/tiles-portal.png)
 
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a továbbiakban már nem használja ezeket a szolgáltatásokat, a következő lépések használatával törölje az oktatóanyag során létrehozott összes erőforrást az Azure Portalon. 
-
-1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
-2. Az erőforráscsoport lapján kattintson az **Erőforráscsoport törlése** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
+Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatást tartalmazó erőforráscsoport törlésével távolíthatók el a leggyorsabban. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Search szolgáltatás Áttekintés lapján szerepel.
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért és a más támogatott adatforrásokra vonatkozó feladatokért tekintse meg a következő cikkeket:
+Mesterséges intelligencia által vezérelt algoritmusokat csatolhat egy indexelőfolyamathoz. Következő lépésként folytassa az alábbi oktatóanyaggal.
 
-* [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [CSV-blobok indexelése az Azure Search Blob indexelőjével](search-howto-index-csv-blobs.md)
-* [JSON-blobok indexelése az Azure Search Blob indexelőjével](search-howto-index-json-blobs.md)
-
+> [!div class="nextstepaction"]
+> [Dokumentumok indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md)
