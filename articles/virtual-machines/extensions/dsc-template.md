@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: d007869bb8bad1a2f0775a1ab2c1bf5d27c1cb8f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 1dcbc8e0221689a6ece7e061d4b1a2632986ae84
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866221"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224374"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok Desired State Configuration bővítmény
 
@@ -183,9 +183,9 @@ Használja a következő sémának a **beállítások** szakasz a Resource Manag
 | settings.configuration.script |sztring |Megadja a fájl nevét, a parancsfájl, amely tartalmazza a DSC-konfiguráció definíciójának. Ez a parancsfájl a megadott URL-címről letöltött .zip fájl a gyökérmappában kell lennie a **configuration.url** tulajdonság. Ez a tulajdonság nem kötelező, ha **settings.configuration.url** vagy **settings.configuration.script** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítása és argumentumot kell megadni. |
 | settings.configuration.function |sztring |Megadja a DSC-konfiguráció nevét. A konfiguráció nevű szerepelnie kell a parancsfájlt, amely **configuration.script** határozza meg. Ez a tulajdonság nem kötelező, ha **settings.configuration.url** vagy **settings.configuration.function** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítása és argumentumot kell megadni. |
 | settings.configurationArguments |Gyűjtemény |Határozza meg, amely a DSC-konfiguráció átadni kívánt paramétereket. Ez a tulajdonság nincs titkosítva. |
-| settings.configurationData.url |sztring |Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.psd1) való használatra a DSC-konfiguráció bemenetként. A probléma**: egy meghatározott tulajdonság szüksége van egy másik tulajdonságot használja, amely nincs megadva. |
-| settings.privacy.dataEnabled |sztring |Megoldások: Adja meg a hiányzó tulajdonság. Távolítsa el a tulajdonságot, amelyet a hiányzó tulajdonságot. Ismerje meg **virtuális gép méretezési csoportokat használ az Azure DSC bővítménnyel**. További részleteket talál a kapcsolatos [DSC a biztonságos hitelesítő adatok kezelése](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
-| settings.advancedOptions.downloadMappings |Gyűjtemény |Get- bemutatása az Azure DSC Bővítménykezelő. További információ a PowerShell DSC, nyissa meg a [PowerShell dokumentációs központban](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
+| settings.configurationData.url |sztring |Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.psd1) való használatra a DSC-konfiguráció bemenetként. Ha a megadott URL-cím egy SAS-tokent igényel hozzáférést, állítsa be a **protectedSettings.configurationDataUrlSasToken** tulajdonság értéke az SAS-jogkivonatot. |
+| settings.privacy.dataEnabled |sztring |Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság az egyetlen lehetséges értékei a következők **engedélyezése**, **letiltása**, **''**, vagy **$null**. És ez a tulajdonság üres vagy null értékű lehetővé teszi, hogy a telemetria. Az alapértelmezett érték **''**. További információkért lásd: [Azure DSC bővítmény adatgyűjtés](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
+| settings.advancedOptions.downloadMappings |Gyűjtemény |Határozza meg a másodlagos helyeket, ahonnan letölthető a WMF. További információkért lásd: [Azure DSC bővítmény 2.8-as és a bővítmény függőségi letöltések leképezése a saját helyét](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
 | protectedSettings.configurationArguments |Gyűjtemény |Határozza meg, amely a DSC-konfiguráció átadni kívánt paramétereket. Ez a tulajdonság titkosított. |
 | protectedSettings.configurationUrlSasToken |sztring |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **configuration.url** határozza meg. Ez a tulajdonság titkosított. |
 | protectedSettings.configurationDataUrlSasToken |sztring |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **configurationData.url** határozza meg. Ez a tulajdonság titkosított. |
@@ -249,7 +249,7 @@ Konfigurációs argumentumok a LCM metaadatainak alapértelmezett konfiguráció
 },
 "protectedSettings": {
     "Items": {
-        "registrationKeyPrivate": "[parameters('registrationKey1']"
+        "registrationKeyPrivate": "[parameters('registrationKey1')]"
     }
 }
 ```

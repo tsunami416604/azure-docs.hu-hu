@@ -1,39 +1,39 @@
 ---
-title: Nyelvi ismertetése (LUIS) API HTTP válaszkódot - Azure |} Microsoft Docs
+title: Language Understanding (LUIS) API HTTP-válaszkódot – Azure |} A Microsoft Docs
 titleSuffix: Azure
-description: Milyen HTTP válaszkódot ad vissza a LUIS jelentéskészítő és -végpont API-k ismertetése
+description: Mely HTTP-válaszkódot kapott a LUIS szerzői és végponti API-k ismertetése
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: v-geberr
-ms.openlocfilehash: 9c7381d9dc2ecf302c85c6b4f1f24b24a28d9ebe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 5fd64b5fa3e3c084aee1e63c5233ccffc93917ae
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347754"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237940"
 ---
-# <a name="luis-api-http-response-codes"></a>LUIS API HTTP válaszkódot.
-A [szerzői](https://aka.ms/luis-authoring-apis) és [végpont](https://aka.ms/luis-endpoint-apis) API-kat a HTTP válaszkódot adja vissza. Amíg válaszüzenetek információval kérelemre adott, a HTTP-válasz állapotkódja általános. 
+# <a name="luis-api-http-response-codes"></a>Intelligens HANGFELISMERÉSI API HTTP-válaszkódot
+A [szerzői](https://aka.ms/luis-authoring-apis) és [végpont](https://aka.ms/luis-endpoint-apis) API-k HTTP-válaszkódot adja vissza. Parancsválasz-üzeneteket egy kérelem-re vonatkozó információk közé tartozik, míg a HTTP-válaszként kapott állapotkód általános. 
 
 ## <a name="common-status-codes"></a>Közös állapotkódok
-A következő táblázat felsorolja a leggyakrabban használt HTTP állapotkódok az egyes a [szerzői](https://aka.ms/luis-authoring-apis) és [végpont](https://aka.ms/luis-endpoint-apis) API-kat:
+Az alábbi táblázat a leggyakoribb HTTP-válasz állapota kódokat a némelyike a [szerzői](https://aka.ms/luis-authoring-apis) és [végpont](https://aka.ms/luis-endpoint-apis) API-kat:
 
 |Kód|API|Magyarázat|
 |:--|--|--|
-|400|Szerzői, a végpont|kérelem paraméterei helytelen, ami azt jelenti, a szükséges paramétereket: hiányzó, helytelen formátumú vagy túl nagy|
-|400|Szerzői, a végpont|kérelem törzse nem megfelelő, ami azt jelenti, a JSON-ja hiányzik, helytelen formátumú, vagy túl nagy|
-|401|Szerzői műveletek|előfizetés végpontkulcs használt kulcs szerzői helyett|
-|401|Szerzői, a végpont|Érvénytelen, nem megfelelően formázott vagy üres kulcs|
-|401|Szerzői, a végpont| kulcs nem egyezik meg a régió|
-|401|Szerzői műveletek|nem áll a tulajdonos vagy közreműködő|
-|401|Szerzői műveletek|az API-hívások érvénytelen sorrendje|
-|403|Szerzői, a végpont|teljes havi kulcs kvótakorlátot túllépve|
-|409|Végpont|alkalmazás még betöltés|
-|410|Végpont|alkalmazást retrained és újból közzé kell|
-|414|Végpont|lekérdezés meghaladja a megengedett karakterek maximális számát|
-|429|Szerzői, a végpont|Sávszélesség-korlátjának túllépése (kérelmek/másodperc)|
+|400|Szerzői műveletek, a végpont|kérés paraméterei helytelen, ami azt jelenti, a szükséges paraméterek: hiányzó, hibás vagy túl nagy|
+|400|Szerzői műveletek, a végpont|kérelem törzse nem megfelelő, ami azt jelenti, a JSON-ja hiányzik, hibás vagy túl nagy|
+|401|Szerzői műveletek|előfizetés végpontkulcsának használt kulcs létrehozási helyett|
+|401|Szerzői műveletek, a végpont|Érvénytelen, hibás vagy üres kulccsal|
+|401|Szerzői műveletek, a végpont| kulcs nem egyezik meg a régiót|
+|401|Szerzői műveletek|Ön nem a tulajdonos vagy közreműködő|
+|401|Szerzői műveletek|Érvénytelen order az API-hívások|
+|403|Szerzői műveletek, a végpont|teljes havi kulcs kvótakorlát túllépve|
+|409|Végpont|alkalmazások betöltése folyamatban van|
+|410|Végpont|retrained és újra közzé kell Application|
+|414|Végpont|lekérdezés meghaladja a maximális karakterszámot.|
+|429|Szerzői műveletek, a végpont|Költési korlát túllépve (kérelem/másodperc)|

@@ -1,43 +1,43 @@
 ---
-title: A LUIS - Azure konvertálás – fogalmak megismerése |} Microsoft Docs
-description: Ismerje meg, hogyan utterances előrejelzéseket a nyelvi ismertetése (LUIS) előtt módosíthatók
+title: A LUIS - az Azure data átalakítás fogalmak megértésében |} A Microsoft Docs
+description: Ismerje meg, hogyan utterances is módosítható előtt előrejelzések a Language Understanding (LUIS)
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/27/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 16b0df4b81220885e2c3747470272cee9536e10c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: diberry
+ms.openlocfilehash: 05a02191af171936dd9f5c4bf469b9c84aa144a3
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063561"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223701"
 ---
-# <a name="data-conversion-concepts-in-luis"></a>A LUIS konvertálás – fogalmak
-LUIS utterances szóbeli utterances átalakítása szöveges utterances előtt előrejelzés lehetőséget biztosít. 
+# <a name="data-conversion-concepts-in-luis"></a>A LUIS átalakítás – fogalmak
+A LUIS utterances kimondott kimondott szöveg átalakítása előtt előrejelzés szöveges utterances lehetővé teszi. 
 
-## <a name="speech-to-intent-conversion-concepts"></a>Beszédfelismerés leképezési átalakítás fogalmak
-LUIS szöveggé beszéd átalakítás lehetővé teszi szóbeli utterances küldhet a végpont és LUIS előrejelzés választ. A folyamat az integrációs vagy a [beszéd](https://docs.microsoft.com/azure/cognitive-services/Speech) LUIS szolgáltatás. 
+## <a name="speech-to-intent-conversion-concepts"></a>Beszéd szándékának átalakítás alapelveinek
+Átalakítás beszéd szöveggé LUIS lehetővé teszi egy végpont kimondott utterances küldésére és fogadására a LUIS előrejelzési választ. A folyamat nem integrációs vagy a [Speech](https://docs.microsoft.com/azure/cognitive-services/Speech) szolgáltatás az intelligens hangfelismerési szolgáltatással. 
 
-### <a name="key-requirements"></a>Fő követelményekre
-Nem szeretne létrehozni egy **Bing Diktálásfelismerési API** kulcsát, ezt az integrációt. A **nyelvi ismertetése** az Azure-portálon létrehozott kulcsot akkor működik, ha ezt az integrációt. Ne használja a LUIS alapszintű kulcs, az ezt az integrációt nem működik.
+### <a name="key-requirements"></a>Fő
+Nem szeretne létrehozni egy **Bing Speech API** kulcsával ezt az integrációt. A **Language Understanding** működik ez az integráció az Azure Portalon létrehozott kulcsot. Ne használja a LUIS alapszintű kulcsot, nem fog működni a ezt az integrációt.
 
 ### <a name="new-endpoint"></a>Új végpont 
-Ez az integráció létrehoz egy új végpontot és [árképzési](luis-boundaries.md#key-limits) modell. A végpont keresztül a [beszéd SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk), mindkettő szóbeli fogadhat és a szöveg utterances, hogy lehetővé teszi egy végpontot használni. 
+Ez az integráció létrehoz egy új végpontot és [díjszabás](luis-boundaries.md#key-limits) modell. A végpont keresztül a [beszéd SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk), mindkét beszélt fogadására képes, és lehetővé teszi, hogy egyetlen végpontot szöveg kimondott szöveg. 
 
-### <a name="quota-usage"></a>Kvótahasználat
+### <a name="quota-usage"></a>Fiókkvóta-használat
 Lásd: [korlátok kulcs](luis-boundaries.md#key-limits) információt. 
 
 ### <a name="data-retention"></a>Adatmegőrzés
-A küldött adatok a végponthoz, a beszédfelismerés SDK keresztül függetlenül beszéd vagy a szöveg, ha csak használt javítása érdekében a beszédfelismerés modell. Nem használható a modell túl általános minőségben beszéd vagy LUIS javítása érdekében. A LUIS alkalmazás törlésekor a megőrzött adatokat is törlődik.
+Küldött adatok a végponthoz, a beszéd SDK függetlenül speech vagy a szöveg, csak használatos a beszédmodellel növelése érdekében. Nem használatos a modell túl általános kapacitásban beszéd vagy a LUIS növelése érdekében. A LUIS-alkalmazás törlése esetén a megőrzött adatok is törlődik.
 
 <!-- TBD: Machine translation conversion concepts -->
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Beszéd segítségével szöveg](luis-tutorial-speech-to-intent.md)
+> [Diktálás használata](luis-tutorial-speech-to-intent.md)
 

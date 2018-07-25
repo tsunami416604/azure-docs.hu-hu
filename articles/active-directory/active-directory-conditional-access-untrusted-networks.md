@@ -1,82 +1,83 @@
 ---
-title: Hogyan – Azure Active Directory konfigurálása a feltételes hozzáférési házirendeket az hozzáférési kísérletről a nem megbízható hálózatokon |} Microsoft Docs
-description: 'Útmutató: a feltételes hozzáférési szabályzat konfigurálása az Azure Active Directory (Azure AD) való hozzáférés megkísérelnek-e a nem megbízható hálózatokon.'
+title: Hogyan – feltételes hozzáférési szabályzatainak konfigurálása az Azure Active Directory hozzáférési a nem megbízható hálózatokhoz |} A Microsoft Docs
+description: Ismerje meg, hogyan egy feltételes hozzáférési szabályzat konfigurálása az Azure Active Directoryban (Azure AD) való hozzáférési kísérleteket a nem megbízható hálózatokon.
 services: active-directory
-keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
+keywords: feltételes hozzáférés az alkalmazásokhoz, az Azure AD feltételes hozzáférés, biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 editor: ''
+ms.component: protection
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 952a3a3952a96c7125e0b0dbe770b72c17a57101
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b37c9017d6c9a8b1d5f53141e28c170307206f3b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232517"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225825"
 ---
-# <a name="how-to-configure-conditional-access-policies-for-access-attempts-from-untrusted-networks"></a>Útmutató: a feltételes hozzáférési házirendek konfigurálása kísérlete nem megbízható hálózatokon   
+# <a name="how-to-configure-conditional-access-policies-for-access-attempts-from-untrusted-networks"></a>Útmutató: a nem megbízható hálózatokon kísérlete feltételes hozzáférési szabályzatok konfigurálása   
 
-Mobileszköz-first, a felhő-első világában Azure Active Directory (Azure AD) lehetővé teszi, hogy az egyszeri bejelentkezés eszközök, alkalmazások és szolgáltatások bárhonnan. Ennek eredményeként a felhasználók férhetnek hozzá a felhőalapú alkalmazások nem csak a vállalati hálózathoz, de is bárhonnan, nem megbízható internetes. A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy hogyan jogosult felhasználók úgy férhetnek hozzá a felhőalapú alkalmazásokhoz. Ebben a környezetben közös követelményt hoz kezdeményezése a nem megbízható hálózatokon hozzáférések szabályozása. Ez a cikk azt ismerteti a konfigurálja a feltételes hozzáférési szabályzatot, amely kezeli ezt a követelményt. 
+Mobileszközök és a felhő-és felhőközpontú világában Azure Active Directory (Azure AD) lehetővé teszi, hogy egyszeri bejelentkezéshez az eszközök, alkalmazások és szolgáltatások bárhonnan. Ennek eredményeképpen felhasználói bármikor hozzáférhetnek a felhőbeli alkalmazásokat, nem csak a vállalati hálózaton, hanem nem megbízható internetes bárhonnan. A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférhetnek a felhőbeli alkalmazásokat. Ebben a környezetben egy általános követelmény, hogy szabályozza a nem megbízható hálózatokon kezdeményezett hozzáférési kísérleteket. Ez a cikk, amely kezeli ezt a követelményt a feltételes hozzáférési szabályzat konfigurálásához szükséges információkat biztosít. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy Ön ismeri a: 
+Ez a cikk azt feltételezi, hogy Ön ismeri a: 
 
-- A feltételes hozzáférés az Azure AD alapvető fogalmait 
-- Feltételes hozzáférési szabályzatok konfigurálása az Azure-portálon
+- Az alapvető fogalmait, az Azure AD feltételes hozzáférés 
+- Feltételes hozzáférési szabályzatok konfigurálása az Azure Portalon
 
 Lásd:
 
-- [Mi az az Azure Active Directoryban feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) - áttekintését a feltételes hozzáférés 
+- [Mi a feltételes hozzáférés az Azure Active Directory](active-directory-conditional-access-azure-portal.md) – feltételes hozzáférés áttekintése 
 
-- [Gyors üzembe helyezés: Azure Active Directory feltételes hozzáféréssel rendelkező adott alkalmazásokhoz megkövetelő](active-directory-conditional-access-app-based-mfa.md) – némi tapasztalattal a feltételes hozzáférési szabályzatok konfigurálása eléréséhez. 
+- [Gyors útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](active-directory-conditional-access-app-based-mfa.md) – az első, némi tapasztalattal a feltételes hozzáférési szabályzatok konfigurálása. 
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Biztonsági és a termelékenység közötti egyensúly főkiszolgálóvá, azt is elegendő lehet, hogy csak a felhasználó hitelesíthető a jelszót. Azonban ha hozzáférési kísérlet történt egy nem megbízható hálózati helyről, van egy nagyobb kockázatot jelent, amelyek bejelentkezések nem jogosult felhasználók által végzett. Ezen probléma megoldásának tilthatja le a nem megbízható hálózatokon hozzáférési kísérlet. Azt is megteheti többtényezős hitelesítés (MFA) ahhoz, hogy vissza további olyan garantálja, hogy a fiók jogos tulajdonosa történt kísérlet is megkövetelheti. 
+Szakértőjévé válhat biztonság és hatékonyság közötti egyensúly, azt is elegendő lehet, hogy a felhasználó hitelesíthető a jelszó csak akkor van szükség. Ha történt hozzáférési kísérlet egy nem megbízható hálózati helyről, van azonban egy megnövekedett kockázata, hogy a bejelentkezések, amelyek nem megbízható a felhasználók által végrehajtott. Ezen probléma megoldásának, tiltsa le a hozzáférési kísérleteket a nem megbízható hálózatokon. Azt is megteheti többtényezős hitelesítés (MFA) történt kísérlet, a fiók jogos tulajdonosa vissza további frissítési garanciát biztosító próbál a jeggyel is megkövetelheti. 
 
-A feltételes hozzáférés az Azure AD meg lehet oldani ezt a követelményt, amely hozzáférést biztosít egy házirendnek: 
+Az Azure AD feltételes hozzáférés meg lehet oldani ezt a követelményt, egy egyetlen szabályzattal, amely engedélyezi a hozzáférést: 
 
-- Kijelölt felhőalapú alkalmazásokhoz
+- A kiválasztott felhőalapú alkalmazások
 
 - A kijelölt felhasználók és csoportok  
 
 - Többtényezős hitelesítés megkövetelése 
 
-- Ha egy hozzáférési kísérlet érkezett: 
+- Ha egy hozzáférési kísérlet kérés érkezett: 
 
-    - Egy olyan helyre, nem megbízható
+    - Egy helyet, amely nem megbízható
 
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-A dokumentációkat az ebben a forgatókönyvben az lefordítani *mikor történt hozzáférési kísérlet, amely nem megbízható helyről* azokat a feltételes hozzáférés egy feltétele. A feltételes hozzáférési szabályzatot, konfigurálhatja a [helyek feltétel](active-directory-conditional-access-locations.md) forgatókönyvek kezeléséhez kapcsolódó hálózati helyeket. A helyek feltétel lehetővé teszi [helyek nevű](active-directory-conditional-access-locations.md#named-locations), amely az IP-címtartományok, országokban és régiókban logikai csoportosításait jelképező.  
+Az ebben a forgatókönyvben a kihívás abban áll lefordítani *mikor történt hozzáférési kísérlet, amely nem megbízható helyről* , a feltételes hozzáférés egy feltétele. A feltételes hozzáférési szabályzat, konfigurálhatja a [helyek feltétel](active-directory-conditional-access-locations.md) helyzetekre kapcsolódó hálózati helyeket. A helyek feltétel kiválaszthatók [nevesített helyek](active-directory-conditional-access-locations.md#named-locations), amely logikai csoportosításait IP-címtartományok, országok és régiók.  
 
-Általában a szervezete rendelkezik egy vagy több-címtartományokat, például 199.30.16.0 - 199.30.16.24.
-Konfigurálhatja egy nevesített, hely:
+Általában a szervezete tulajdonában van egy vagy több-címtartományokat, például 199.30.16.0 - 199.30.16.24.
+Konfigurálhat egy elnevezett helye szerint:
 
 - Ez a tartomány (199.30.16.0/24) megadása 
 
-- Például hozzárendelése egy leíró nevet **vállalati hálózat** 
+- Egy leíró nevet például hozzárendelése **vállalati hálózat** 
 
 
-Nem próbálja meg mi összes helyét, amelyek nem megbízható, a következő műveletek végezhetők el:
+Helyett adja meg, mi minden hely, amelyek nem megbízható, a következőket teheti:
 
 - Belefoglalás 
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-untrusted-networks/02.png)
 
-- Az összes megbízható helyek kizárása 
+- Minden megbízható hely kizárása 
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-untrusted-networks/01.png)
 
@@ -84,10 +85,10 @@ Nem próbálja meg mi összes helyét, amelyek nem megbízható, a következő m
 
 ## <a name="implementation"></a>Megvalósítás
 
-A cikkben ismertetett módszert konfigurálhat egy feltételes hozzáférési házirend nem megbízható helyeken. A házirend mindig kell tesztelni, mielőtt éles környezetben győződjön meg arról, hogy az elvárt módon működik. Ideális esetben a kezdeti teszteket egy tesztelési bérlőn lehetőleg kell tenni. További információkért lásd: [hogyan kell új házirendet telepít](active-directory-conditional-access-best-practices.md#how-should-you-deploy-a-new-policy). 
+A következő cikkben ismertetett módszert használja nem megbízható helyekre vonatkozó feltételes hozzáférési szabályzat most konfigurálhatja. Mielőtt éles környezetben, győződjön meg arról, hogy az elvárt módon működik, mindig tesztelje a szabályzatot. Ideális esetben hajtsa végre a tesztelési célú bérlői kezdeti teszteket, ha lehetséges. További információkért lásd: [hogyan kell egy új házirendet telepít](active-directory-conditional-access-best-practices.md#how-should-you-deploy-a-new-policy). 
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha azt szeretné, további információ a feltételes hozzáférési, lásd: [Mi az, hogy a feltételes hozzáférés az Azure Active Directoryban?](active-directory-conditional-access-azure-portal.md)
+Ha szeretne további információ a feltételes hozzáférésről, lásd: [Mi az az Azure Active Directory feltételes hozzáférés?](active-directory-conditional-access-azure-portal.md)

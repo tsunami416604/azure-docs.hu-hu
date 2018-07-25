@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 68baab14e2adf7f43bb1e0e0f47c414555a28659
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ff2968f8e2fa9a705817b020f2daa6582d78029c
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213401"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225302"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Az Azure Lab Services tesztkörnyezetfiókok kezelése 
 Az Azure Lab Services tesztkörnyezetfiók az osztályterem-tesztkörnyezetek például felügyelt tesztkörnyezetek tárolója. A rendszergazda állítja be az Azure Lab Services tesztkörnyezetfiók és labortulajdonosok labs hozhat létre a fiók számára hozzáférést biztosít. Ez a cikk bemutatja, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok, vagy törölheti a labor.
@@ -54,6 +54,22 @@ Osztályterem-tesztkörnyezet tesztkörnyezetfiók beállítása, hogy a felhasz
 
     ![Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>Adja meg a Marketplace-rendszerképek labortulajdonosok számára elérhető
+Ebben a szakaszban adja meg, amely labortulajdonosok használatával hozhat létre az osztályterem-tesztkörnyezetek Marketplace-rendszerképek. 
+
+1. Válassza ki **Piactérről származó rendszerképek** a a bal oldali menüben. Alapértelmezés szerint (egyaránt engedélyezve van, és le van tiltva) teljes listáját láthatja. A listában, csak az engedélyezett/letiltott-lemezképek kiválasztásával szűrheti a **csak engedélyezett**/**csak letiltja** lehetőséget a legördülő listából válassza ki a tetején. 
+
+    ![Piactéri lemezképek lap](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+2. A **letiltása** Piactéri lemezképet, amely engedélyezve van, hajtsa végre az alábbi műveletek egyikét: 
+    1. Válassza ki **... három (pont)**  az utolsó oszlopra, és válassza a **letiltása lemezkép**. 
+
+        ![Egy kép letiltása](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. Válasszon ki egy vagy több lemezképet a listából válassza ki a jelölőnégyzetek a rendszerkép neve előtt a listában, és válassza ki **tiltsa le a megadott lemezképek**. 
+
+        ![Több lemezképet letiltása](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. Ehhez hasonlóan a **engedélyezése** a Piactéri rendszerkép, tegye a következő műveletek egyikét: 
+    1. Válassza ki **... három (pont)**  az utolsó oszlopra, és válassza a **engedélyezése lemezkép**. 
+    2. Válasszon ki egy vagy több lemezképet a listából válassza ki a jelölőnégyzetek a rendszerkép neve előtt a listában, és válassza ki **engedélyezése a megadott lemezképek**. 
 
 ## <a name="view-lab-accounts"></a>Tesztkörnyezetfiókok megtekintése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).

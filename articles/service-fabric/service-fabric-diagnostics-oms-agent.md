@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric - teljesítményfigyelés a Log Analyticshez |} Microsoft Docs
-description: Megtudhatja, hogyan állíthatja be a Analytics ügynök tárolók és a teljesítményszámlálók az Azure Service Fabric-fürtök a figyelésre.
+title: Az Azure Service Fabric - alkalmazásteljesítmény-figyelés a Log Analytics-szel |} A Microsoft Docs
+description: Ismerje meg, hogyan állítsa be a Log Analytics ügynököt tárolók és a teljesítményszámlálók az Azure Service Fabric-fürtök a figyelésre.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: a31fe62f2e81a0e39e4c314fc736e91e72bf7517
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b97a32e2e859a5bb370873bfbdc5c6b4dffa1ac1
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301553"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237842"
 ---
-# <a name="performance-monitoring-with-log-analytics"></a>A Naplóelemzési teljesítményfigyelés
+# <a name="performance-monitoring-with-log-analytics"></a>Alkalmazásteljesítmény-figyelés a Log Analytics használatával
 
-Ez a cikk adható hozzá a Analytics ügynök, mert a virtuálisgép-méretezési virtuáliskapcsoló-kiterjesztés beállítása a fürthöz, és csatlakoztassa a meglévő Azure Log Analytics-munkaterület lépéseket ismerteti. Ez lehetővé teszi a tárolók, alkalmazások és -figyelő gyűjtését diagnosztikai adatokat. Bővítményként való hozzáadásával a virtuálisgép-méretezési készlet erőforrás, Azure Resource Manager biztosítja, hogy megkapja-e telepítve minden csomóponton, még ha méretezés a fürt.
+Ez a cikk ismerteti a lépéseket egy virtuális gép méretezési csoport bővítményének a fürthöz hozzáadni a Log Analytics-ügynököket, és csatlakoztassa a meglévő Azure Log Analytics-munkaterületet. Ez lehetővé teszi a tárolók, alkalmazások és alkalmazásteljesítmény-figyelési gyűjtését diagnosztikai adatait. Bővítményeként való hozzáadásával a virtuálisgép-méretezési készlet erőforrás, az Azure Resource Manager biztosítja, hogy megkapja-e telepítve minden csomóponton, még ha méretezése a fürtben.
 
 > [!NOTE]
-> Ez a cikk feltételezi, hogy rendelkezik-e az Azure Log Analytics-munkaterülethez állította be. Ha nem így tesz, látogasson el [Azure Naplóelemzés beállítása](service-fabric-diagnostics-oms-setup.md)
+> Ez a cikk azt feltételezi, hogy rendelkezik-e már beállított egy Azure Log Analytics-munkaterületet. Ha ezt elmulasztja, látogasson el [Azure Log Analytics beállítása](service-fabric-diagnostics-oms-setup.md)
 
-## <a name="add-the-agent-extension-via-azure-cli"></a>Az Azure parancssori felület használatával ügynök-bővítmény hozzáadása
+## <a name="add-the-agent-extension-via-azure-cli"></a>Adja hozzá az ügynök bővítményt, az Azure CLI-n keresztül
 
-A legjobb módszer a Analytics ügynök hozzáadása a fürthöz a virtuálisgép-méretezési keresztül értéke elérhető API-kat az Azure parancssori felület segítségével. Ha az Azure parancssori felület még nem rendelkezik, látogasson el az Azure portálon, és nyissa meg a [felhő rendszerhéj](../cloud-shell/overview.md) példányt, vagy [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+A legjobb módszer a Log Analytics-ügynököket a fürt hozzáadása a virtuálisgép-méretezési csoport keresztül beállítása API-kat az Azure CLI használatával. Ha az Azure parancssori felület beállítása még nem rendelkezik, látogasson el az Azure Portalon, és nyissa meg a [Cloud Shell](../cloud-shell/overview.md) példány, vagy [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-1. Miután a felhő rendszerhéj van szükség, ellenőrizze, hogy dolgozik, az erőforrás ugyanahhoz az előfizetéshez. Ellenőrizze a `az account show` , és győződjön meg arról, hogy a "name" érték megegyezik a fürt előfizetés.
+1. Miután a Cloud Shell van szükség, győződjön meg arról, dolgozik, és az erőforrásnak ugyanabban az előfizetésben. Ennek az ellenőrzéséhez `az account show` és ellenőrizze, hogy a "name" érték megegyezik a fürt előfizetés.
 
-2. A portálon lépjen az erőforráscsoporthoz, ahol a Naplóelemzési munkaterület. Kattintson a Log Analytics-erőforrás (az erőforrás típusa lehet Naplóelemzési) be. Ha az erőforrás áttekintése oldalon, kattintson a **speciális beállítások** a bal oldali menü Beállítások szakaszban.
+2. A portálon keresse meg az erőforráscsoport, ahol a Log Analytics-munkaterület megtalálható. Kattintson az a Log Analytics-erőforrás (az erőforrás típusa, a Log Analytics lesz). Miután az erőforrás – Áttekintés lapon, kattintson a **speciális beállítások** a beállítások szakaszában a bal oldali menüben.
 
-    ![Napló Analytics Tulajdonságok lap](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
+    ![Log Analytics-Tulajdonságok lap](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
  
-3. Kattintson a **Windows kiszolgálók** Ha meg vannak állandó Windows fürt, és **Linux kiszolgálók** egy Linux-fürt létrehozásakor. Ezen a lapon megjelenik a `workspace ID` és `workspace key` (a listában az elsődleges kulcs a portálon). Szüksége lesz a következő lépéshez is.
+3. Kattintson a **Windows kiszolgálók** rendelkezésére állnak a Windows-fürtöt, ha és **Linux-kiszolgálók** Linux-fürt létrehozásakor. Ezen a lapon megjelenik a `workspace ID` és `workspace key` (a listában az elsődleges kulcs a portálon). Szüksége lesz a következő lépéshez is.
 
-4. Futtassa a parancsot a fürt települ a Log Analytics-ügynök használatával a `vmss extension set` a felhő rendszerhéj API:
+4. Futtassa a parancsot a fürthöz, az alakzatot a Log Analytics-ügynök telepítése használatával a `vmss extension set` a Cloud shellben API:
 
-    A Windows-fürt:
+    Egy Windows-fürt:
     
     ```sh
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
@@ -51,53 +51,53 @@ A legjobb módszer a Analytics ügynök hozzáadása a fürthöz a virtuálisgé
     A Linux-fürt:
 
     ```sh
-    az vmss extension set --name Log AnalyticsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
+    az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
-    Íme egy példa a felvenni kívánt Windows-fürt Analytics ügynök.
+    Íme egy példa a Log Analytics ügynök egy Windows-fürtöt ad hozzá.
 
-    ![Elemzés ügynök cli parancs naplózása](media/service-fabric-diagnostics-oms-agent/cli-command.png)
+    ![Log Analytics az ügynök parancssori felületi parancsot](media/service-fabric-diagnostics-oms-agent/cli-command.png)
  
-5. Ekkor az ügynök sikeresen hozzáadása a csomópontok kisebb, mint 15 perc. Ellenőrizheti, hogy az ügynökök használatával vannak adva a `az vmss extension list` API:
+5. Ez az ügynök sikeresen hozzá a csomópontok kisebb, mint 15 perc vesz igénybe. Ellenőrizheti, hogy az ügynökök használatával lettek hozzáadva a `az vmss extension list` API:
 
     ```sh
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 
-## <a name="add-the-agent-via-the-resource-manager-template"></a>Az ügynök keresztül a Resource Manager-sablon hozzáadása
+## <a name="add-the-agent-via-the-resource-manager-template"></a>Az ügynök használatával a Resource Manager-sablon hozzáadása
 
-A minta Resource Manager-sablonok, amelyek központi telepítése egy Azure Log Analytics-munkaterület, és adja hozzá a az ügynök a csomópontok mindegyikének érhető el [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) vagy [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
+Mintául szolgáló Resource Manager-sablonok üzembe helyezése az Azure Log Analytics-munkaterületet, és adja hozzá az ügynök minden egyes csomópontján érhető el a [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) vagy [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
 
-Töltse le, és módosítsa a sablon az igényeinek leginkább megfelelő a fürtök telepítése.
+Töltse le, és módosítsa a sablon üzembe helyezése egy fürtöt, amely a legjobban az igényeinek megfelelő.
 
-## <a name="view-performance-counters"></a>Nézet teljesítményszámlálói
+## <a name="view-performance-counters"></a>Teljesítményszámlálók megtekintése
 
-Most, hogy a Naplóelemzési ügynök head hozzáadta a kiválaszthatja, melyik teljesítményszámlálóinak Log Analytics-portálról való szeretne gyűjteni. 
+Most, hogy hozzáadta a Log Analytics-ügynököket, lépjen a átváltunk a Log Analytics-portálon választhat, mely teljesítményszámlálókat szeretné gyűjteni. 
 
-1. Az Azure-portálon lépjen az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**.
+1. Az Azure Portalon nyissa meg az erőforráscsoport, amelyben létrehozta a Service Fabric-elemzés megoldás. Válassza ki **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**.
 
 2. Kattintson a **Log Analytics** elemre.
 
 3. Kattintson a **speciális beállítások**.
 
-4. Kattintson a **adatok**, majd kattintson a **Windows vagy Linux-teljesítményszámlálók**. Dönthet úgy, hogy alapértelmezett számlálók listája, és a gyűjtemény intervallumát túl állíthatja be. Azt is megteheti [további teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md) gyűjtéséhez. A megfelelő formátumú a hivatkozott [cikk](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
+4. Kattintson a **adatok**, majd kattintson a **Windows vagy Linux-teljesítményszámlálók**. A beállítással engedélyezi alapértelmezett számlálókat tartalmazó listát, és beállíthatja a gyűjtési időköze túl. Azt is megteheti [további teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md) gyűjtéséhez. A kiszolgálócím formátuma hivatkozik ez [cikk](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
 
 5. Kattintson a **mentése**, majd kattintson a **OK**.
 
-6. Zárja be a Speciális beállítások panelen.
+6. Zárja be a Speciális beállítások panelt.
 
-7. Általános fejléc alatt kattintson **áttekintése**.
+7. Kattintson az általános cím alatt **áttekintése**.
 
-8. Az egyes a megoldásairól engedélyezve van, egy a Service Fabric csempék egy grafikonon formájában jelenik meg. Kattintson a **Service Fabric** diagramot úgy, hogy továbbra is a Service Fabric elemzési megoldások.
+8. Csempék formájában grafikon, a megoldások engedélyezve van, például egy Service Fabric az egyes jelenik meg. Kattintson a **Service Fabric** graph, hogy a Service Fabric-elemzés megoldás.
 
-9. Néhány csempe található diagramokat, amelyik a műveleti csatornát és megbízható szolgáltatások események jelenik meg. A kijelölt számlálók áramló adatokat grafikus ábrázolása metrikák csomópont alatt jelenik meg. 
+9. Műveleti csatorna és a reliable services eseményei látni fogja a gráfok néhány csempét. A kijelölt számlálók beérkező adatok grafikus ábrázolását Csomópontmetrikák alatt jelenik meg. 
 
-10. Kattintson a tároló metrika grafikon további részletek megtekintéséhez. A teljesítményszámláló-adatok hasonlóan a fürthöz kapcsolódó események és a csomópontok, telj számláló neve, valamint a Kusto lekérdezési nyelv értékek szűrő is lekérheti.
+10. Kattintson a tároló metrika grafikon további részletek megtekintéséhez. A hasonlóan a fürthöz kapcsolódó események és a csomópontok, teljesítményoptimalizált számláló neve és a Kusto-lekérdezési nyelv segítségével értékek alapján végezhet szűrést a teljesítményszámláló-adatokat is lekérdezhet.
 
-![Napló Analytics telj számláló lekérdezés](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
+![Log Analytics teljesítményoptimalizált teljesítményszámláló-lekérdezés](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>További lépések
 
-* Megfelelő gyűjtése [teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md). A Naplóelemzési ügynök specifikus teljesítményszámlálók adatainak összegyűjtése konfigurálásához tekintse át a [adatforrások konfigurálása](../log-analytics/log-analytics-data-sources.md#configuring-data-sources).
-* Log Analytics beállítása konfigurálása [riasztás automatikus](../log-analytics/log-analytics-alerts.md) észlelésére és diagnosztika
-* Másik megoldásként a teljesítményszámlálók segítségével gyűjtheti [Azure Diagnostics bővítményt, és küldje el az Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)
+* Releváns gyűjtése [teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md). A Log Analytics-ügynököket gyűjtendő teljesítményszámlálókat konfigurálásához tekintse át a [adatforrások konfigurálása](../log-analytics/log-analytics-data-sources.md#configuring-data-sources).
+* Konfigurálja a Log Analytics beállítása [automatizált riasztások](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelést és a diagnosztikát
+* Alternatív megoldásként a teljesítményszámlálók segítségével gyűjtheti [Azure Diagnostics bővítményt, és küldje el azokat az Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)

@@ -1,35 +1,35 @@
 ---
-title: Előre elkészített LUIS elavult entitások referencia - Azure |} Microsoft Docs
+title: A LUIS előre összeállított elavult entitások referencia – Azure |} A Microsoft Docs
 titleSuffix: Azure
-description: Ez a cikk ismerteti a elavult előre elkészített entitás a nyelvi ismertetése (LUIS).
+description: Ez a cikk a Language Understanding (LUIS) elavult előre összeállított entitások információkat tartalmaz.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8ff260adf437eb8b390d5cfb708d2a98f989bdcb
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 8fbd2e7ea0998a6a3dc141b97d64341c8140fa61
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321875"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237060"
 ---
 # <a name="deprecated-entities"></a>Elavult entitások
-A következő előre elkészített entitások elavultak, és nem vehető fel új LUIS alkalmazásokat.
+A következő előre összeállított entitások elavultak, és nem adható hozzá új LUIS-alkalmazások.
 
-* **Dátum és idő**: használó alkalmazásokhoz, meglévő LUIS **datetime** áttelepítendő **datetimeV2**, bár a DateTime típusú entitás továbbra is működik, az azt használó meglévő alkalmazásokban.
-* **A földrajzi**: használó alkalmazásokhoz, meglévő LUIS **geográfiai** December 2018 amíg nem támogatott.
-* **Enciklopédiájában**: használó alkalmazásokhoz, meglévő LUIS **enciklopédiájában** December 2018 amíg nem támogatott.
+* **Dátum és idő**: használó meglévő LUIS-alkalmazások **datetime** áttelepítendő **datetimeV2**, noha a dátum és idő entitás továbbra is működik, a már meglévő alkalmazások, amelyek használják azt.
+* **Földrajzi hely**: használó meglévő LUIS-alkalmazások **földrajzi** 2018. December támogatott.
+* **Enciklopédiájában**: használó meglévő LUIS-alkalmazások **enciklopédiájában** 2018. December támogatott.
 
-## <a name="geography-culture"></a>A földrajzi kulturális környezet
-**A földrajzi** csak a `en-us` területi beállítás.
+## <a name="geography-culture"></a>Földrajzi hely kulturális környezet
+**Földrajzi hely** csak érhető el a `en-us` területi beállítás.
 
-#### <a name="3-geography-subtypes"></a>3 geográfiai altípusainál
+#### <a name="3-geography-subtypes"></a>3 földrajzi altípus
 
-Előre elkészített entitás   |   Példa utterance   |   JSON
+Előre összeállított entitások   |   Példa utterance (kifejezés)   |   JSON
 ------|------|------|
 ```builtin.geography.city```   |  ```seattle```    |```{ "type": "builtin.geography.city", "entity": "seattle" }```|
 ```builtin.geography.city```   |  ```paris```    |```{ "type": "builtin.geography.city", "entity": "paris" }```|
@@ -39,10 +39,10 @@ Előre elkészített entitás   |   Példa utterance   |   JSON
 ```builtin.geography.pointOfInterest```   |   ```sahara desert```|```{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }```|
 
 ## <a name="encyclopedia-culture"></a>Enciklopédiájában kulturális környezet
-**Enciklopédiájában** csak a `en-US` területi beállítás.
+**Enciklopédiájában** csak érhető el a `en-US` területi beállítás.
 
-#### <a name="encyclopedia-subtypes"></a>Enciklopédiájában altípusainál
-Enciklopédiájában beépített entitás több mint 100 alárendelt számítógéptípusokat tartalmaznak a következő táblázatban: emellett enciklopédiájában entitások gyakran leképezése több típust. Például a lekérdezés Ronald Reagan eredményez: 
+#### <a name="encyclopedia-subtypes"></a>Enciklopédiájában altípus
+Enciklopédiájában beépített entitás több mint 100 alárendelt típusokat tartalmaz a következő táblázatban: emellett enciklopédiájában entitások gyakran leképezése több típust. Ha például a lekérdezés Ronald reagan elnök eredményez: 
 
 ```JSON
 {
@@ -64,7 +64,7 @@ Enciklopédiájában beépített entitás több mint 100 alárendelt számítóg
  ```
 
 
-Előre elkészített entitás   |   Előre elkészített entitás (alárendelt esetében)   |   Példa utterance
+Előre összeállított entitások   |   Előre összeállított entitások (altípusok)   |   Példa utterance (kifejezés)
 ------|------|------|
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.people.person ```|```bryan adams``` |
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.film.producer ```| ```walt disney``` |
@@ -120,7 +120,7 @@ Előre elkészített entitás   |   Előre elkészített entitás (alárendelt e
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.american_football.team  ```| ``` green bay packers  ```|
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.ice_hockey.team  ```| ``` hamilton bulldogs  ```|
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.soccer.team  ```| ``` fc bayern munich  ```|
-a(z) "builtin.encyclopedia.organization.organization |Builtin.Encyclopedia.Government.political_party|pertubuhan kebangsaan melayu singapura "."|
+'''builtin.encyclopedia.organization.organization |Builtin.Encyclopedia.Government.political_party|pertubuhan kebangsaan melayu singapura'' '|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.time.event  ```| ``` 1740 batavia massacre   ```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.sports.championship_event  ```| ``` super bowl xxxix  ```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.award.competition  ```| ``` eurovision song contest 2003  ```|
@@ -162,5 +162,5 @@ a(z) "builtin.encyclopedia.organization.organization |Builtin.Encyclopedia.Gover
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a [dimenzió](luis-reference-prebuilt-dimension.md), [e-mail](luis-reference-prebuilt-email.md) entitásokat, és [szám](luis-reference-prebuilt-number.md). 
+További információ a [dimenzió](luis-reference-prebuilt-dimension.md), [e-mail](luis-reference-prebuilt-email.md) entitásokat, és [szám](luis-reference-prebuilt-number.md). 
 

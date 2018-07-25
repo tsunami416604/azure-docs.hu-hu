@@ -1,30 +1,30 @@
 ---
-title: Előre elkészített LUIS entitások elavulnak referencia - Azure |} Microsoft Docs
+title: A LUIS előre összeállított entitások kor referencia – Azure |} A Microsoft Docs
 titleSuffix: Azure
-description: A cikkben kora előre elkészített entitás információ a nyelvi ismertetése (LUIS).
+description: Ez a cikk tartalmaz kora előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 59732469cf0d1e55643f3977958ec34a887130d3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: f93acb8bece8c66c3ed7197f1c4530011aec3f29
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321987"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237400"
 ---
 # <a name="age-entity"></a>Kor entitás
-Az előre elkészített kora entitás a kora egyaránt numerikus és tekintetében nap, hét, hónap és év rögzíti. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések korra tartalmazó példa utterances hozzáadása. Támogatott a kor entitás [számos kultúra](luis-reference-prebuilt-entities.md). 
+Az előre összeállított kora entitás age értékét egyaránt numerikusan és tekintetében nap, hét, hónap és év rögzíti. Az entitás már be van tanítva, mert nem kell kora, az alkalmazás leképezések tartalmazó példa beszédmódok hozzáadása. Kor entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-age"></a>Kor típusai
-Kor felügyelete a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) Github-adattár
+Kor felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) Github-adattár
 
-## <a name="resolution-for-prebuilt-age-entity"></a>Előre elkészített kora entitás felbontás
-A következő példa bemutatja a feloldása a **builtin.age** entitás.
+## <a name="resolution-for-prebuilt-age-entity"></a>Előre összeállított kora entitás feloldása
+Az alábbi példa bemutatja a feloldása a **builtin.age** entitás.
 
 ```JSON
 {
@@ -56,4 +56,4 @@ A következő példa bemutatja a feloldása a **builtin.age** entitás.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a [pénznem](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), és [dimenzió](luis-reference-prebuilt-dimension.md) entitásokat. 
+További információ a [pénznem](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), és [dimenzió](luis-reference-prebuilt-dimension.md) entitásokat. 

@@ -2,19 +2,19 @@
 title: A LUIS-alkalmazások az Azure-ban entitástípusok megértése |} A Microsoft Docs
 description: A Language Understanding Intelligent Service (LUIS) alkalmazások hozzáadása a entitások (a tartomány az alkalmazás legfontosabb adatok).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: v-geberr
-ms.openlocfilehash: ebe3b31e3fb101eaf92c7ec24b03b7b35829f1d3
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.author: diberry
+ms.openlocfilehash: ace4aa48d3bfce5f88bce8947ab568f0990d67fa
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187019"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226611"
 ---
 # <a name="entities-in-luis"></a>A LUIS entitások
 

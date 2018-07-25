@@ -2,19 +2,19 @@
 title: Language Understanding (LUIS) határain belül keresse meg a LUIS régió, a node.js környezettel |} A Microsoft Docs
 description: Programozott módon a keresés régióhoz végponti kulcs és az alkalmazás közzététele a LUIS-azonosítója.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/01/2018
-ms.author: v-geberr
-ms.openlocfilehash: 6d85e6007b3e85a1b55997541e721ad57c22dddf
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.author: diberry
+ms.openlocfilehash: 66a34b5b611934ca531e7709b13e0c6d1c794206
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163075"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222511"
 ---
 # <a name="region-can-be-determined-from-api-call"></a>Régió lehet meghatározni az API-hívás 
 Ha rendelkezik a LUIS alkalmazás és a LUIS előfizetés-azonosító, Észreveheti, hogy melyik régiót kell végpont lekérdezések használatával.

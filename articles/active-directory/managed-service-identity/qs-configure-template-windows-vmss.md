@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: babeb0eb930d865cf519ddb45c651a3d77265665
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: b4fa875c71869dc3fd671f5dc4b801934c27f0ff
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215793"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237196"
 ---
-# <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>A sablonok segítségével a VMSS Felügyeltszolgáltatás-identitás konfigurálása
+# <a name="configure-managed-service-identity-on-virtual-machine-scale-using-a-template"></a>Felügyeltszolgáltatás-identitás konfigurálása a virtuálisgép-méretezési csoport sablon használatával
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Felügyeltszolgáltatás-identitás az Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
 
-Ez a cikk ismerteti az Azure VMSS, Azure Resource Manager üzembe helyezési sablon használatával Felügyeltszolgáltatás-identitást a következő műveletek végrehajtásához:
-- Engedélyezheti és tilthatja le a rendszer az Azure VMSS identitásának hozzárendelve
-- Hozzáadhat és eltávolíthat az Azure VMSS identitásának hozzárendelt felhasználó
+Ebből a cikkből elsajátíthatja az alábbi műveletek Felügyeltszolgáltatás-identitását egy Azure-beli virtuálisgép-méretezési Azure Resource Manager üzembe helyezési sablon használatával:
+- Engedélyezheti és tilthatja le a rendszer által hozzárendelt identitással egy Azure-beli virtuálisgép-méretezési
+- Hozzáadhat és eltávolíthat egy Azure-beli virtuálisgép-méretezési egy felhasználóhoz hozzárendelt identitás
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +55,7 @@ A lehetőséget választja, függetlenül a sablon szintaxisa megegyezik kezdeti
 
 Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identitás egy Azure Resource Manager-sablon használatával.
 
-### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vmss-or-an-existing-azure-vmss"></a>Hozzárendelt identitás létrehozása az Azure VMSS, vagy egy meglévő Azure VMSS rendszer engedélyezése
+### <a name="enable-system-assigned-identity-during-creation-the-creation-of-or-an-existing-azure-virtual-machine-scale-set"></a>Engedélyezze a system hozzárendelt identitás létrehozása során, a létrehozása vagy egy meglévő Azure-beli virtuálisgép-méretezési csoportot
 
 1. A sablon betöltése a szerkesztő, keresse meg a `Microsoft.Compute/virtualMachineScaleSets` házirendsablonokkal erőforrás a `resources` szakaszban. Öné kissé eltérhetnek az alábbi képernyőfelvételen látható, a szerkesztő használata függően előfordulhat, hogy keresse meg, és hogy szerkeszti egy sablont egy új központi telepítést vagy a meglévőt.
    
@@ -99,12 +99,23 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identi
 
 ### <a name="disable-a-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Tiltsa le az Azure-beli virtuálisgép-méretezési csoportot, a rendszer által hozzárendelt identitással
 
-> [!NOTE]
-> A Felügyeltszolgáltatás-identitást a virtuális gépről letiltása jelenleg nem támogatott. Addig is válthat a rendszer által hozzárendelt, és a felhasználó hozzárendelt identitások között.
+Ha egy virtuálisgép-méretezési csoportban, már nem kell a felügyeltszolgáltatás-identitás:
 
-Ha egy virtuálisgép-méretezési csoportban, már nem kell a rendszerhez rendelt identitáshoz, de továbbra is szüksége van a felhasználó által hozzárendelt identitások:
+1. Bejelentkezik az Azure-bA helyileg vagy az Azure Portalon, hogy az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoportba tartozó fiókot kell használnia.
 
-- A sablon betöltése az egy szövegszerkesztőben, és módosítsa az azonosító típusát `'UserAssigned'`
+2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachineScaleSets` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális gép méretezési csoportot, amely csak a rendszer által hozzárendelt identitással rendelkezik, letilthatja, módosítsa úgy az identitás típus `None`.  Ha a virtuálisgép-méretezési system és a felhasználó által hozzárendelt identitások is van, távolítsa el `SystemAssigned` identitástípus és tarthatja `UserAssigned` együtt a `identityIds` a felhasználó által hozzárendelt identitások tömbje.  Az alábbi példa bemutatja, hogyan távolítsa el a rendszer egy virtuálisgép-méretezési csoport nincs a felhasználói identitások hozzárendelt identitás:
+   
+   ```json
+   {
+       "name": "[variables('vmssName')]",
+       "apiVersion": "2017-03-30",
+       "location": "[parameters(Location')]",
+       "identity": {
+           "type": "None"
+        }
+
+   }
+   ```
 
 ## <a name="user-assigned-identity"></a>A felhasználóhoz hozzárendelt identitás
 
@@ -134,6 +145,7 @@ Ebben a szakaszban rendel egy felhasználóhoz hozzárendelt identitás az Azure
 
     }
     ```
+
 2. (Nem kötelező) Adja hozzá a következő bejegyzés alatt a `extensionProfile` elem a VMSS felügyelt identitás kiterjesztése hozzárendelése. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok. Az alábbi szintaxissal:
    
     ```JSON
@@ -152,12 +164,37 @@ Ebben a szakaszban rendel egy felhasználóhoz hozzárendelt identitás az Azure
                         "protectedSettings": {}
                     }
                 }
-   ```
+    ```
+
 3.  Amikor elkészült, a sablon az alábbihoz hasonlóan kell kinéznie:
    
       ![Képernyőkép a felhasználóhoz hozzárendelt identitás](./media/qs-configure-template-windows-vmss/qs-configure-template-windows-final.PNG)
 
+### <a name="remove-user-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>A felhasználóhoz hozzárendelt identitás eltávolítása egy Azure-beli virtuálisgép-méretezési csoportot
+
+Ha egy virtuálisgép-méretezési csoportban, már nem kell a felügyeltszolgáltatás-identitás:
+
+1. Bejelentkezik az Azure-bA helyileg vagy az Azure Portalon, hogy az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoportba tartozó fiókot kell használnia.
+
+2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachineScaleSets` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális gép méretezési csoportot, amely csak a felhasználóhoz hozzárendelt identitás rendelkezik, letilthatja, módosítsa úgy az identitás típus `None`.  Ha a virtuális gép méretezési system és a felhasználó által hozzárendelt identitások is van, és szeretné megőrizni a rendszer által hozzárendelt identitással, távolítsa el `UserAssigned` az identitás típusból a `identityIds` a felhasználó által hozzárendelt identitások tömbje.
+    
+   Eltávolítja a hozzárendelt egyetlen felhasználói identitást a virtuális gép méretezési, távolítsa el a `identityIds` tömb.
+   
+   Az alábbi példa bemutatja, hogyan hozzárendelt identitások nincs rendszer rendelt identitásokkal rendelkező virtuálisgép-méretezési csoportot az összes felhasználó eltávolítása:
+   
+   ```json
+   {
+       "name": "[variables('vmssName')]",
+       "apiVersion": "2017-03-30",
+       "location": "[parameters(Location')]",
+       "identity": {
+           "type": "None"
+        }
+
+   }
+   ```
+
 ## <a name="next-steps"></a>További lépések
 
-- Szélesebb perspektíva MSI kapcsolatban, olvassa el a [Felügyeltszolgáltatás-identitás – áttekintés](overview.md).
+- Szélesebb perspektíva Felügyeltszolgáltatás-identitás kapcsolatban, olvassa el a [Felügyeltszolgáltatás-identitás – áttekintés](overview.md).
 

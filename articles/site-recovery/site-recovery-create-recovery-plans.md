@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 853b9c2f50967d7a203e5627bdd2fc6f14e0e4f6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 145b23aa7b8e48a0301676595c8d59a64bebdd0b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921001"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226668"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Hozzon létre, és a helyreállítási tervek testreszabása
 
@@ -76,7 +76,7 @@ Olyan parancsfájl vagy manuális művelet hozzáadásával testre szabhatja a h
 2. A **művelet beszúrása**válassza **parancsfájl** vagy **manuális művelet**.
 3. Ha szeretne egy kézi művelet felvétele, tegye a következőket"egy. Írja be a művelet nevét, és írja be a művelet utasításai. A feladatátvétel futtatása a személy jelenik meg ezeket az utasításokat.
     b. Adja meg, hogy szeretné-e a manuális műveletet (teszt feladatátvétel esetén a tervezett feladatátvétel (Ha releváns)) feladatátvételi minden alkalmazástípus esetében hozzá. Ezután kattintson az **OK** gombra.
-4. Ha szeretne hozzáadni egy parancsfájl, tegye a következőket: egy. Hozzáadásakor a VMM-szkript, válassza ki a **a VMM-szkript feladatátvételi**, majd a a **parancsprogram elérési útja** relatív elérési útját a megosztás. Például, ha a megosztáshoz a következő helyen található \\ <VMMServerName>\MSSCVMMLibrary\RPScripts, adja meg az elérési út: \RPScripts\RPScript.PS1.
+4. Ha szeretne hozzáadni egy parancsfájl, tegye a következőket: egy. Hozzáadásakor a VMM-szkript, válassza ki a **a VMM-szkript feladatátvételi**, és a **parancsfájl elérési útján** relatív elérési útját a megosztást. Például, ha a megosztáshoz a következő helyen található \\ <VMMServerName>\MSSCVMMLibrary\RPScripts, adja meg az elérési út: \RPScripts\RPScript.PS1.
     b. Ha egy könyv futtatása az Azure automation, adja meg a **Azure Automation-fiók** , amelyben a runbookban található, majd válassza ki a megfelelő **Azure-forgatókönyv Parancsprogramja**.
 5. Annak érdekében, hogy a parancsfájl a várt módon működik-e a helyreállítási terv feladatátvételi teszt futtatása.
 

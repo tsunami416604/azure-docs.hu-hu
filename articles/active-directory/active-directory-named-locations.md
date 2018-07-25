@@ -1,47 +1,48 @@
 ---
-title: Elnevezett helyek konfigurálása az Azure Active Directoryban |} Microsoft Docs
-description: Megtudhatja, hogyan elnevezett helyek konfigurálása.
+title: Nevesített helyek konfigurálása az Azure Active Directoryban |} A Microsoft Docs
+description: Ismerje meg, hogyan nevesített helyek konfigurálása.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
+ms.component: protection
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4c8aba8faf4ce91445209eb46abea17423f57a77
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f739917b201d5255716d22930d7c4bd9e6602f37
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589331"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224517"
 ---
-# <a name="configure-named-locations-in-azure-active-directory"></a>Elnevezett helyek konfigurálása az Azure Active Directoryban
+# <a name="configure-named-locations-in-azure-active-directory"></a>Nevesített helyek konfigurálása az Azure Active Directoryban
 
-Az elnevezett helyek a címkézés megbízható IP-címtartományok a szervezetében. Az Azure Active Directory környezetében elnevezett helyek használja:
+A nevesített helyek a címkézés megbízható IP-címtartományok a szervezetben. Az Azure Active Directory nevesített helyek összefüggésben használja:
 
-- A észlelését [kockázati események](active-directory-reporting-risk-events.md) jelentett vakriasztások számának csökkentése érdekében.  
+- Észlelését [kockázati események](active-directory-reporting-risk-events.md) jelentett vakriasztások számának csökkentése érdekében.  
 
-- [Feltételes hozzáférés helyalapú](active-directory-conditional-access-locations.md).
+- [Helyalapú feltételes hozzáférés](active-directory-conditional-access-locations.md).
 
 
-Ez a cikk azt ismerteti, hogyan konfigurálhat nevű helyek a környezetben.
+Ez a cikk bemutatja, hogyan konfigurálhat nevű helyeken az adott környezetben.
 
 
 ## <a name="entry-points"></a>Belépési pontok
 
-Az elnevezett hely konfigurációs lapján végezheti el a **biztonsági** kattintva Azure Active Directory lap részében:
+Az elnevezett hely csatornakonfigurációs lapján érheti a **biztonsági** szakaszában kattintson az Azure Active Directory oldalon:
 
 ![Belépési pontok](./media/active-directory-named-locations/34.png)
 
 - **Feltételes hozzáférés:**
 
-    - Az a **kezelése** kattintson **helyek nevű**.
+    - Az a **kezelés** területén kattintson **nevesített helyek**.
     
         ![A nevesített helyek parancs](./media/active-directory-named-locations/06.png)
 
@@ -57,34 +58,34 @@ Az elnevezett hely konfigurációs lapján végezheti el a **biztonsági** katti
 
 **Egy elnevezett hely konfigurálása:**
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) globális rendszergazdaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdaként.
 
-2. Kattintson a bal oldali ablaktáblában **Azure Active Directory**.
+2. A bal oldali ablaktáblán kattintson a **Azure Active Directory**.
 
-    ![A bal oldali panelen az Azure Active Directory hivatkozás](./media/active-directory-named-locations/01.png)
+    ![Az Azure Active Directory-hivatkozás a bal oldali panelen](./media/active-directory-named-locations/01.png)
 
-3. Az a **Azure Active Directory** lap a **biztonsági** kattintson **feltételes hozzáférés**.
+3. Az a **Azure Active Directory** lap a **biztonsági** területén kattintson **feltételes hozzáférési**.
 
     ![A feltételes hozzáférés parancs](./media/active-directory-named-locations/05.png)
 
 
-4. A a **feltételes hozzáférés** lap a **kezelése** kattintson **helyek nevű**.
+4. Az a **feltételes hozzáférési** lap a **kezelés** területén kattintson **nevesített helyek**.
 
     ![A nevesített helyek parancs](./media/active-directory-named-locations/06.png)
 
 
-5. Az a **helyek nevű** kattintson **új helyre**.
+5. Az a **nevesített helyek** kattintson **új helyre**.
 
     ![Az új hely parancs](./media/active-directory-named-locations/07.png)
 
 
-6. Az a **új** lapján tegye a következőket:
+6. Az a **új** lapon, tegye a következőket:
 
     ![Az új panel](./media/active-directory-named-locations/61.png)
 
-    a. Az a **neve** mezőbe írja be a nevesített hely nevét.
+    a. Az a **neve** mezőbe írja be a megnevezett hely nevét.
 
-    b. Az a **IP-címtartományok** mezőbe írjon be egy IP-címtartományt. Az IP-címtartomány kell lennie a *Classless Inter-Domain Routing* (CIDR) formátumban.  
+    b. Az a **IP-címtartományok** mezőbe írja be egy IP-címtartományt. Az IP-címtartomány kell lennie a *Classless Inter-Domain Routing* (CIDR) formátumban.  
 
     c. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -94,10 +95,10 @@ Az elnevezett hely konfigurációs lapján végezheti el a **biztonsági** katti
 
 További információkért lásd:
 
-- [Feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md).
+- [Az Azure Active Directory feltételes hozzáférés](active-directory-conditional-access-azure-portal.md).
 
-- [Azure Active Directory feltételes hozzáférési feltételek helye](active-directory-conditional-access-locations.md)
+- [Az Azure Active Directory feltételes hozzáférés a helyszínre vonatkozó feltételek](active-directory-conditional-access-locations.md)
 
-- [Az Azure Active Directory kockázati események](active-directory-reporting-risk-events.md).
+- [Az Azure Active Directory kockázati eseményeivel](active-directory-reporting-risk-events.md).
 
-- [Az Azure Active Directory portálon kockázatos bejelentkezések jelentés](active-directory-reporting-security-risky-sign-ins.md).  
+- [Kockázatos bejelentkezések jelentés az Azure Active Directory portálon](active-directory-reporting-security-risky-sign-ins.md).  

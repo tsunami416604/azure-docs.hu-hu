@@ -9,12 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: davidmu
-ms.openlocfilehash: 20865fc3adf8610b5a4ce111e3db91aef714fdd6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.component: B2C
+ms.openlocfilehash: cc48cd3eb40d93c26a68caf843a89f7bbfb46c6c
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448305"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236893"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása
 
@@ -30,7 +31,7 @@ Megismerheti, hogyan kell regisztrálni egy alkalmazást a következő oktatóan
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C bérlő létrehozása
 
@@ -46,7 +47,7 @@ Az új bérlő kezelésének megkezdéséhez, kattintson a word **Itt** , ugyana
 
 ## <a name="link-your-tenant-to-your-subscription"></a>A bérlő az előfizetés mutató hivatkozás
 
-Az Azure AD B2C-bérlő összekapcsolása az Azure-előfizetés minden funkció engedélyezése és a használati díjat kell fizetnie kell. Ha nem a bérlő az előfizetéshez, az alkalmazások nem fog megfelelően működni.
+Az összes funkció engedélyezéséhez és a használati díjak kifizetéséhez össze kell kapcsolnia Azure-előfizetését az Azure AD B2C-bérlőjével. Ha nem a bérlő az előfizetéshez, az alkalmazások nem fog megfelelően működni.
 
 1. Győződjön meg arról, hogy a könyvtár között az Azure Portal jobb felső sarokban az új bérlőhöz társítani kívánt előfizetést tartalmazó könyvtárat használja.
 

@@ -1,6 +1,6 @@
 ---
-title: Gépi tanulási algoritmus-Adatlap |} Microsoft Docs
-description: Egy nyomtatható gépi tanulási algoritmus-Adatlap segítségével válassza ki a megfelelő a prediktív modell algoritmusa az Azure Machine Learning Studióban.
+title: Gépi tanulási algoritmus-Adatlap – Azure |} A Microsoft Docs
+description: Nyomtatható machine learning algoritmus-Adatlap segít az Azure Machine Learning Studióban válassza ki a megfelelő algoritmus a prediktív modell.
 keywords: algoritmus-Adatlap, Adatlap, gépi tanulási algoritmus
 services: machine-learning
 documentationcenter: ''
@@ -16,64 +16,64 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: a448d6931330f7b2f0730add65473097bb2b5a57
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b080a739aa73e3c8ef95c7db9a6358d942e94bba
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833563"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238386"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Gyorsreferencia a Machine Learning-algoritmusokhoz a Microsoft Azure Machine Learning Studióban
-A **Microsoft Azure Machine Learning algoritmus Cheat lap** segít kiválasztani, a jobb oldali egy prediktív elemzési modell algoritmusa.
+A **a Microsoft Azure Machine Learning algoritmus Adatlap lap** segítségével válassza ki a megfelelő algoritmus a prediktív elemzési modellek.
 
-[Az Azure Machine Learning Studio](https://studio.azureml.net/) származó algoritmusok hatalmas katalógusában rendelkezik a ***regressziós***, ***besorolás***, ***Fürtszolgáltatás***, és  ***anomáliadetektálás*** családok. Minden más típusú machine learning probléma megoldására készült.
+[Az Azure Machine Learning Studio](https://studio.azureml.net/) rendelkezik egy nagy származó algoritmusok könyvtára a ***regressziós***, ***besorolási***, ***Fürtszolgáltatás***, és  ***anomáliadetektálás*** családhoz. Minden egyes célja egy más típusú machine learning a probléma megoldása érdekében.
 
-## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Letöltés: Machine learning algoritmus-Adatlap
-**Töltse le a Adatlap: [Machine Learning algoritmus Cheat lap (11 x 17.)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
+## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Letöltés: A Machine learning algoritmus-Adatlap
+**A Adatlap letöltése: [Machine Learning algoritmus Adatlap lap (11 x 17)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
 
-![Machine Learning algoritmus-Adatlap: Útmutató: a gépi tanulási algoritmus kiválasztása.][cheat-sheet]
+![Machine Learning algoritmus-Adatlap: ismerje meg, egy gépi tanulási algoritmus kiválasztása.][cheat-sheet]
 
 [cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
-Töltse le és lapot tud kinyomtatni a Machine Learning algoritmus Cheat tabloid méretben kéznél legyen, és segítségre van szüksége a választáshoz algoritmust.
+Töltse le, és a Machine Learning algoritmus Adatlap lap nyomtatása tabloid méretben kéznél legyen, és kérjen segítséget az algoritmus kiválasztása.
 
 > [!NOTE]
-> A cikkben [algoritmusok kiválasztása a Microsoft Azure Machine Learning](algorithm-choice.md) egy részletes útmutató a Adatlap használatával.
+> Tekintse meg a cikket [algoritmusok kiválasztása a Microsoft Azure Machine Learning](algorithm-choice.md) részletes útmutató a Adatlap használatával.
 > 
 > 
 
-## <a name="more-help-with-algorithms"></a>További segítséget itt találhat algoritmusok
-* Ez Adatlap használva a megfelelő algoritmus, valamint a gépi tanulási algoritmusok és hogyan által használt különböző típusú mélyebb döntéseken kiválasztására vonatkozó útmutatásért lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learning](algorithm-choice.md).
-* Letölthető infographic, amely leírja a algoritmusok, és a példákat mutat be, lásd: [letölthető Infographic: gépi tanulási algoritmus példákkal alapjai](basics-infographic-with-algorithm-examples.md).
-* Kategória a Machine Learning Studióban elérhető összes gépi tanulási algoritmusok listájáért lásd: [inicializálása modell] [ initialize-model] a Machine Learning Studio algoritmus és a modul segítségével.
-* Teljes betűrendben listáját az algoritmusok és a modulok a Machine Learning Studióban, tekintse meg a [a Machine Learning Studio moduljai A-Z listában] [ a-z-list] a Machine Learning Studio algoritmus és a modul segítségével.
+## <a name="more-help-with-algorithms"></a>További segítségért algoritmusokkal
+* Használatával a Adatlap döntöttek a megfelelő algoritmus, valamint a különböző típusú gépi tanulási algoritmusok és a használatuk mélyebb hatásának a megbeszélését lásd [algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md).
+* Letölthető infografika, amely ismerteti az algoritmusokkal, és példákat talál, lásd: [letölthető Infografika: Machine learning alapjai algoritmuspéldákkal](basics-infographic-with-algorithm-examples.md).
+* A Machine Learning Studióban elérhető összes gépi tanulási algoritmusok, kategória szerint, lásd: [modell inicializálása] [ initialize-model] a Machine Learning Studio algoritmus-és modul segítségével.
+* Betűrend szerinti rendezés listájáért algoritmusok és a Machine Learning Studióban modulok, lásd: [betűrend szerinti lista Machine Learning Studio-modulok] [ a-z-list] a Machine Learning Studio algoritmus- és modul segítségével.
 * Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="notes-and-terminology-definitions-for-the-machine-learning-algorithm-cheat-sheet"></a>Megjegyzések és a gépi tanulási algoritmus terminológiai definíciók cheat lap
+## <a name="notes-and-terminology-definitions-for-the-machine-learning-algorithm-cheat-sheet"></a>Megjegyzések és a gépi tanulási algoritmus esetében terminológiai definíciók – Adatlap
 
-* A javaslatok érhető el az algoritmus-Adatlap hozzávetőleges szabályok-az-görgetőgomb. Néhány hajlított, és néhány is lehet flagrantly betartva. Ennek célja felajánlja a kiindulási pontot. Ne ijedjen head-to-head verseny futtatásához több algoritmusok a adatai között. Nincs egyszerűen nem helyettesíti a ismertetése az egyes algoritmustípusok modelljeinek ezeket az alapelveket és a rendszer az adatokat létrehozó ismertetése.
+* A javaslat érhető el az algoritmus-Adatlap hozzávetőleges szabályok-az-bütykének. Néhány hajlított, és néhány is lehet flagrantly megsértve. Ennek célja, és kiindulási pontot javasolja. Ne féljen head-to-head versenyt között számos algoritmust az adatokon való futtatásához. Nincs egyszerűen nincs helyettesítő egyes algoritmus alapelveinek ismertetése, és a rendszer az adatokat létrehozó ismertetése.
 
-* Minden gépi tanulási algoritmus rendelkezik saját stílus vagy *induktív időeltérés*. Egy adott probléma lehet, hogy több algoritmusok megfelelő, és egy algoritmus lehet, mint a többire jobban megfelelnek. Azonban úgy is nem mindig tudja előre, ez az a legjobb térkihasználás érdekében. Ilyen esetekben több algoritmusok szereplő együtt a Adatlap. Próbálja meg egy algoritmust, és ha az eredmények még nem kielégítő, próbálja ki, a többi lehet a megfelelő stratégiát. A példában a [Azure Eszközintelligencia-katalógus](http://gallery.cortanaintelligence.com/) egy kísérlet, amely megpróbál több algoritmusok elleni ugyanazokat az adatokat, és összehasonlítja az eredményeket: [több osztály osztályozó összehasonlítása: felismerés betűs](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+* Minden gépi tanulási algoritmus rendelkezik a saját style vagy *induktív eltérés*. Egy meghatározott problémára vonatkozó számos algoritmust célszerű lehet, és a egy algoritmus lehet, mint a többi jobban megfelel. De nem mindig lehetséges tudja előre, azaz az ideális megoldást. Ilyen esetekben számos algoritmust szerepelnek együtt a Adatlap. Próbáljon meg egy algoritmust, és ha az eredmények egyelőre nem kielégítő, próbálja ki, a többi lehet a megfelelő stratégiát. Íme egy példa a a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/) kísérletet, amelyek az ugyanazon adatokra irányuló számos algoritmust megpróbál, és összehasonlítja az eredményeket: [többcsoportos deklarációkkal összehasonlítása: felismerés betűs](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
-* Gépi tanulás három fő kategóriába sorolhatók: **felügyelt tanítással**, **felügyelt tanítást**, és **megerősítése tanulási**.
+* A gépi tanulás három fő kategóriába sorolhatók: **felügyelt tanítással**, **tanítást**, és **megerősítő tanulást**.
 
-  * A **felügyelt tanítással**, minden adatpontnál feliratú vagy kategória vagy egyik fontos értékére.  Példa kategorikus címke van hozzárendelése "cat" vagy "kutya" kép.  Egy érték címkéje példa: egy használt autó kapcsolódó pénztári ár. Felügyelt tanítás során az a célja, hogy sok címkézett fentihez hasonló példához hasonló, ezek tanulmányozzák, majd előrejelzéseket készítsen a jövőbeli adatpontok tennie. Például új fényképek azonosítja a megfelelő állat, vagy más használt autók pontos pénztári árak hozzárendelése. Ez olyan népszerű és hasznos a gépi tanulás. Tanulási algoritmus kivételével az összes, az Azure Machine Learning modulok felügyelete [K-közép Fürtszolgáltatás][k-means-clustering].
+  * A **felügyelt tanítással**, az egyes van címkézett, illetve a társított egy kategóriát vagy az egyik fontos értékére.  Egy példa egy kategorikus címke van hozzárendelése "cat" vagy "kutya" kép.  Egy érték felirat egyik példája az olyan kapcsolattal társított eladási ár. A felügyelt tanítás célja, hogy ezeket, mint számos címkézett példák tanulmánya majd tudnak kapcsolatos jövőbeli adatpontok előrejelzéseket. Például új fényképet azonosítja a megfelelő szolgáltatást, vagy más használt autók pontos értékesítési árak hozzárendelése. Ez a machine learning egy népszerű és hasznos típusú. Az Azure Machine Learning összes felügyelt tanulási algoritmus kivételével [K-közép-Fürtszolgáltatás][k-means-clustering].
 
-  * A **felügyelt tanítást**, adatpontok hozzájuk társított címkéket nem rendelkezik. Ehelyett felügyeletlen tanulási algoritmus célja az adatok valamilyen módon vagy struktúrája ismertetik. Ez azt csoportosításával azt fürtök esetén a K-közép hasonlóan, vagy megtekint összetett adatokat úgy, hogy egyszerűbb különböző módokat kereséséhez.
+  * A **tanítást**, adatpontok nem tartalmaz feliratokat társítva. Ehelyett egy felügyeletlen tanulási algoritmus célja valamilyen módon adatok rendezése, vagy a szerkezetét írja le. Ez azt csoportosítás, csoportosít, a K-közép hasonlóan, vagy különböző módszert is megnézzük az összetett, így egyszerűbb jelenik kereséséhez.
 
-  * A **megerősítése tanulási**, az algoritmus lekérdezi az egyes adatpontokban válaszul művelet kiválasztását. Általános gyakorlatként javasolt a robotics, ahol adatpont érzékelő szivattyútelepek érzékelőinek adatai egy helyen időben lesz, és az algoritmus ki kell választania a robot a következő művelet. Egyúttal természetes az eszközök internetes hálózatát alkalmazások alkalmas. A tanulási algoritmus is kap egy ellenszolgáltatás jel rövid időn belül később jelző mennyire jó a döntést. Ennek alapján, az algoritmus módosítja a stratégia a legmagasabb ellenszolgáltatás elérése érdekében. Jelenleg nincsenek nem tanulási algoritmus modulok Azure ml megerősítése.
+  * A **megerősítő tanulást**, az algoritmus beolvasása művelet kiválasztása az egyes adott válaszként. Általánosan használt megközelítés a robotika, ahol egy adatpont érzékelőinek adott ponton időben lesz, és az algoritmus ki kell választania a robot a következő művelet. Még egy természetes választás olyan IOT-alkalmazásokat. A tanulási algoritmus is fogad ellenszolgáltatás jel egy rövid ideig később, hogyan jó döntés lett megjelölve. Ennek alapján, az algoritmus módosítása igazítani a stratégiáját a legmagasabb ellenszolgáltatás növelhető. Jelenleg nincsenek nincs megerősítő tanulási algoritmus modulok az Azure gépi tanulás.
 
-* **Bayes-féle módszerek** statisztikailag független adatpontok feltételezi. Ez azt jelenti, hogy az egy-egy unmodeled variancia predikátumban másokkal, ez azt jelenti, hogy nem meghatározható. Például ha a rögzített adatok percben, amíg a következő subway vonat megérkeznek, két mérések naponta egymástól függetlenek statisztikailag. Azonban két mérések egy percet egymástól függetlenek nem statisztikailag - egyik értéke magas prediktív egyéb értékének.
+* **Bayes módszerek** statisztikailag független adatpontok feltételezik. Ez azt jelenti, hogy az egyik adatpont unmodeled hozzon predikátumban másokkal, vagyis nem becsülhető. Például ha az adatok rögzíti a hány perc múlva a következő subway vonat érkezik, két mérések napi egymástól függetlenek statisztikailag. Azonban két mérések egy perc közötti nem függetlenek statisztikailag – a egy értéke magas prediktív, a másik értékét.
 
-* **Súlyozott döntési fa regressziós** kihasználja a szolgáltatás hozzon létre vagy szolgáltatások közötti kommunikáció. Ez azt jelenti, hogy, hogy bármely adott adatpontban, egy szolgáltatás értéke némileg prediktív egy másik érték. Például napi magas vagy alacsony hőmérséklet-adatok, az alacsony hőmérséklet ismerete, a nap lehetővé teszi, hogy csak akkor lehet egy ésszerű becslés a nagy. A két funkció szereplő információk már némileg redundáns.
+* **Súlyozott regressziós döntési fa** kihasználja a szolgáltatás között átfedés van, vagy a szolgáltatások közötti interakció. Azt jelenti, hogy, hogy az adott adatpontok, egy szolgáltatás értéke némileg prediktív egy másik érték. Például a napi magas és alacsony hőmérsékletadatokat, a legalacsonyabb hőmérséklet, hogy a nap lehetővé teszi, hogy a nagy egy ésszerű találgatásos. A két funkció található információkat, valamennyire redundáns.
 
-* Adatok besorolása több mint két kategóriába sorolhatók végezhető vagy egy eredendően több osztály osztályozó, vagy csoportjának egyesítésével képzett két osztályú osztályozó be egy **ensemble**. A ensemble módszert használja, nincs külön két osztályú besorolás minden osztály - mindegyik elkülöníti az adatokat két kategóriába sorolhatók: "Ez az osztály" és "nem ez az osztály." Ezek a besorolások majd a megfelelő hozzárendelési az adatpont szavazhatnak. Ez az a működési elv mögött [egyik-vs-összes Multiclass][one-vs-all-multiclass].
+* Adatok besorolása több mint két kategóriába sorolhatók teheti meg vagy egy eredendően több osztály osztályozó, vagy csoportjának egyesítésével képzett két osztályú osztályozás be egy **ensemble**. A ensemble módszert használja, nincs külön két osztályú besorolás az egyes osztályok – az adatok mindegyik elválasztja a két kategóriába sorolhatók: "Ez az osztály" és "nem ez az osztály." Ezek a besorolások majd helyes hozzárendelését az adatpont is szavazhat. Ez az a működési elv mögött [egy-multi-osztályú osztályozási műveletet][one-vs-all-multiclass].
 
-* Tegyük fel, számos módszer, beleértve a logisztikai regresszió és Bayes pontozó gépet **lineáris osztály határok**. Ez azt jelenti, hogy azok feltételezik, hogy a határok osztályok között körülbelül egyenes vonalak (vagy az általános esetben hyperplanes). Gyakran ez jellemzője, addig nem tudja, miután azt próbálta adatokat, de azt olyan dolog, amire általában is amelyeket ismernie kell előzetesen megjelenítése. Ha az osztály határok nagyon szabálytalan, a döntési fák odatapadjon, jungles döntési, támogatja a vektoros gépek vagy a Neurális hálózatokat.
+* Tegyük fel, több módszer, beleértve a logisztikai regressziós és a Bayes pontozó gépet **lineáris osztály határok**. Ez azt jelenti, hogy azt feltételezik, hogy az osztályok között határok körülbelül egyenes vonalak (vagy az általános esetben hyperplanes). Gyakran ez az adatok, amíg nem tudja után való elhatárolásra próbálta jellemzők, de valami, amely általában is lehet megtanult előre vizualizációjával. Az osztály határok nagyon szabálytalan tekinti meg, ha jól döntési fák, decision jungle algoritmust, támogatja a vektoros gépek vagy a Neurális hálózatokat.
 
-* Neurális hálózatokat használható kategorikus változók hozzon létre egy **típusú változó** kategórián, 1 értékre állítaná az esetekben, amikor a kategóriát, ahol nem 0.
+* Neurális hálózatokkal használható kategorikus változók létrehozásával egy **helyőrző a változó** minden egyes kategóriánál, 1 értékre állítaná az esetekben, amikor a kategóriát, ahol nem 0.
 
 
 <!-- This is how you can embed a link in an image in HTML. Don't know how to do this in markdown.

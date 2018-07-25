@@ -1,5 +1,5 @@
 ---
-title: Hibaelhárítás az Azure-beli RBAC |} A Microsoft Docs
+title: Az Azure-beli RBAC hibaelhárítása |} A Microsoft Docs
 description: Azure szerepköralapú hozzáférés-vezérlés (RBAC) kapcsolatos hibaelhárítás.
 services: azure-portal
 documentationcenter: na
@@ -11,29 +11,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 07/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 186bcf26639f5cff2dcbf1e805913ac7edab7df4
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: d1a0e46fe348bbc60a4d02a4727a9bb27cb26742
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437366"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223296"
 ---
-# <a name="troubleshooting-rbac-in-azure"></a>Az Azure-beli RBAC hibaelhárítása
+# <a name="troubleshoot-rbac-in-azure"></a>Az Azure-beli RBAC hibaelhárítása
 
-Ez a cikk szerepköralapú hozzáférés-vezérlést (RBAC), kapcsolatos általános kérdéseket válaszol meg, hogy tudja, mire számítson, ha használja a szerepkörök az Azure portal és a hozzáférési problémák elhárítása. Ezek a szerepkörök minden erőforrástípus terjed ki:
+Ez a cikk szerepköralapú hozzáférés-vezérlést (RBAC), kapcsolatos általános kérdéseket válaszol meg, hogy tudja, mire számítson, ha használja a szerepkörök az Azure portal és a hozzáférési problémák elhárítása.
 
-* Tulajdonos  
-* Közreműködő  
-* Olvasó  
+## <a name="web-app-features-that-require-write-access"></a>Webes alkalmazás írási hozzáférést igénylő szolgáltatások
 
-A felügyeleti feladatok tulajdonosai és a közreműködők is teljes hozzáférése, de közreműködői nem tud hozzáférést adni más felhasználóknak vagy csoportoknak. Dolgok beolvasása egy kicsit több érdekes, az Olvasó szerepkörhöz, hogy az, ahol azt fogjuk szánjon némi időt. További információ hozzáférést biztosítani, seee [rbac-RÓL és az Azure portal-hozzáférés kezelése](role-assignments-portal.md).
-
-## <a name="app-service"></a>App Service
-### <a name="write-access-capabilities"></a>Írási hozzáférés képességek
 Egyetlen webalkalmazásban; a felhasználó csak olvasható hozzáférést ad, ha néhány funkció le van tiltva, hogy nem várt. A következő felügyeleti képességeket igényelnek **írási** nem érhetők el az összes csak olvasható forgatókönyv és a egy web app (tulajdonos vagy közreműködő) hozzáférést.
 
 * Parancsok (például Indítás, Leállítás, stb.)
@@ -49,8 +43,9 @@ Egyetlen webalkalmazásban; a felhasználó csak olvasható hozzáférést ad, h
 
 Ha ezek a csempék nem sikerül elérnie, kérje meg a rendszergazdát a közreműködői hozzáférés szükséges a webes alkalmazás szeretné.
 
-### <a name="dealing-with-related-resources"></a>Kapcsolódó erőforrások kezelése
-Web apps néhány más erőforrások, amelyek kölcsönhatások jelen vannak bonyolult. Íme néhány webhelyek egy tipikus erőforráscsoportot:
+## <a name="web-app-resources-that-require-write-access"></a>Írási hozzáférést igénylő webes alkalmazás-erőforrások
+
+Web apps néhány más erőforrások, amelyek kölcsönhatások jelen vannak bonyolult. Íme egy tipikus erőforráscsoportot, a websites néhány:
 
 ![Webes alkalmazás erőforráscsoportjának](./media/troubleshooting/website-resource-model.png)
 
@@ -70,15 +65,9 @@ Ezeket az elemeket szükség **írási** a teljes hozzáférés **erőforráscso
 * Application Insights-összetevők  
 * Webtesztek  
 
-## <a name="azure-functions"></a>Azure Functions
-Az egyes funkciói [Azure Functions](../azure-functions/functions-overview.md) írási jogosultság szükséges. Például ha egy felhasználó az Olvasó szerepkör van hozzárendelve, nem tudja megtekinteni a függvényalkalmazás-függvényei. A portál megjeleníti **(nincs hozzáférés)**.
+## <a name="virtual-machine-features-that-require-write-access"></a>Írási hozzáférést igénylő virtuális gépek jellemzői
 
-![Alkalmazások függvény nincs hozzáférés](./media/troubleshooting/functionapps-noaccess.png)
-
-Kattintson egy olvasót a **platformfunkciók** fülre, majd **minden beállítás** bizonyos beállítások megtekintéséhez (a webalkalmazás hasonlóan) függvényalkalmazás kapcsolódó, de nem módosíthatják a beállítások.
-
-## <a name="virtual-machine"></a>Virtuális gép
-Sokkal például a web apps, a virtuális gép paneljén egyes funkcióinak írási jogosultság szükséges a virtuális gépet, vagy más az erőforráscsoportban lévő erőforrásokat.
+Hasonlóan a web apps, néhány funkció a virtuális gép paneljén szükséges írási hozzáférést a virtuális gépet, vagy más az erőforráscsoportban lévő erőforrásokat.
 
 Virtuális gépek kapcsolódó tartomány nevét, virtuális hálózatok, storage-fiókok és riasztási szabályok.
 
@@ -97,7 +86,19 @@ Ilyen esetekben **írási** elérését a **virtuális gép**, és a **erőforr�
 
 Ha ezek a csempék nem sikerül elérnie, kérje meg a rendszergazdát a közreműködői hozzáférés az erőforráscsoporthoz.
 
+## <a name="azure-functions-and-write-access"></a>Az Azure Functions és az írási hozzáférés
+
+Az egyes funkciói [Azure Functions](../azure-functions/functions-overview.md) írási jogosultság szükséges. Például ha egy felhasználó az Olvasó szerepkör van hozzárendelve, nem tudja megtekinteni a függvényalkalmazás-függvényei. A portál megjeleníti **(nincs hozzáférés)**.
+
+![Alkalmazások függvény nincs hozzáférés](./media/troubleshooting/functionapps-noaccess.png)
+
+Kattintson egy olvasót a **platformfunkciók** fülre, majd **minden beállítás** bizonyos beállítások megtekintéséhez (a webalkalmazás hasonlóan) függvényalkalmazás kapcsolódó, de nem módosíthatják a beállítások.
+
+## <a name="rbac-changes-are-not-being-detected"></a>RBAC módosításait nem észleli a folyamatban
+
+Az Azure Resource Manager néha gyorsítótárazza a konfigurációkat és a teljesítmény javítása az adatokat. Létrehozásakor, vagy törlése a szerepkör-hozzárendeléseit, a módosítások érvénybe léptetéséhez akár 30 percet is igénybe vehet. Az Azure Portalon, az Azure PowerShell vagy az Azure CLI használatakor kényszerítheti a szerepkör-hozzárendelési módosítások frissítését kijelentkezés és bejelentkezés. A REST API-hívások szerepkör-hozzárendelés módosításokat végez, ha egy frissítés kényszerítheti a hozzáférési jogkivonat frissítésével.
+
 ## <a name="next-steps"></a>További lépések
-* [Rbac-RÓL és az Azure portal-hozzáférés kezelése](role-assignments-portal.md)
+* [Hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)
 * [Az RBAC-módosítások Tevékenységnaplók megtekintése](change-history-report.md)
 

@@ -3,19 +3,19 @@ title: Language Understanding (LUIS) határok |} A Microsoft Docs
 titleSuffix: Azure
 description: Ez a cikk a LUIS ismert korlátait tartalmazza.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: c1f49f88cb4772da636bd1396b09e5efd357fb60
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.author: diberry
+ms.openlocfilehash: ea4f31094e27f1abbe57c212f262845fd16dd984
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344121"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225278"
 ---
 # <a name="luis-boundaries"></a>A LUIS határok
 A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-boundaries), amely szabályozza a szándék fog vonatkozni, az entitások és az intelligens HANGFELISMERÉSI szolgáltatások. A második terület [kvótakorlát](#key-limits) kulcs típusa alapján. A határokat egy harmadik területe a [kombináció billentyűzet](#keyboard-controls) szabályozni a LUIS-webhelyet. A negyedik terület a [világ régió hozzárendelése](luis-reference-regions.md) webhely készítése a LUIS és a LUIS között [végpont](luis-glossary.md#endpoint) API-k. 

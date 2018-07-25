@@ -1,30 +1,30 @@
 ---
-title: Előre elkészített LUIS entitások hivatkozás - Azure phone |} Microsoft Docs
+title: A LUIS előre összeállított entitások phone hivatkozás – Azure |} A Microsoft Docs
 titleSuffix: Azure
-description: A cikkben telefonszám előre elkészített entitás-információ a nyelvi ismertetése (LUIS).
+description: Ez a cikk a telefonszám előre összeállított entitások-információ a Language Understanding (LUIS) tartalmazza.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0f72b807b9b0ec110a80d67babb1c45902b8c810
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 1ae14f72f0dc610b9399e675f49ef5fff51a6965
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321882"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238991"
 ---
 # <a name="phonenumber-entity"></a>Telefonszám entitás
-A `phonenumber` entitás telefonszámokat, beleértve az országhívószám számos bontja ki. Az entitás már be van tanítva, mert nem kell példa utterances hozzáadni az alkalmazáshoz. A `phonenumber` entitás támogatott `en-us` kulturális környezet csak. 
+A `phonenumber` entitás kinyeri a telefonszámokat, beleértve az országkódot különböző. Az entitás már be van tanítva, mert nem kell példa beszédmódok hozzáadása az alkalmazáshoz. A `phonenumber` entitás támogatott `en-us` culture csak. 
 
 ## <a name="types-of-phonenumber"></a>Telefonszám típusai
-Telefonszám felügyelete a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) Github-adattár
+Telefonszám felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) Github-adattár
 
-## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Előre elkészített phonenumber entitás felbontás
-A következő példa bemutatja a feloldása a **builtin.phonenumber** entitás.
+## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Előre összeállított phonenumber entitás feloldása
+Az alábbi példa bemutatja a feloldása a **builtin.phonenumber** entitás.
 
 ```JSON
 {
@@ -56,4 +56,4 @@ A következő példa bemutatja a feloldása a **builtin.phonenumber** entitás.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a [százalékos](luis-reference-prebuilt-percentage.md), [szám](luis-reference-prebuilt-number.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat. 
+További információ a [százalékos](luis-reference-prebuilt-percentage.md), [szám](luis-reference-prebuilt-number.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat. 

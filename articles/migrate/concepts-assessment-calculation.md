@@ -4,14 +4,14 @@ description: Értékelési számítások az Azure Migrate szolgáltatás átteki
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/20/2018
+ms.date: 07/24/2018
 ms.author: raynew
-ms.openlocfilehash: 890614133649762788418c538bd22bb6ffc425bf
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: af832cb3791f0175b38aad16526acd51509bbe52
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173758"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223684"
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -40,7 +40,7 @@ Az Azure Migrate áttekinti a következő tulajdonságok azonosítani, hogy egy 
 --- | --- | ---
 **Rendszerindítás típusa** | Az Azure virtuális gépek a BIOS-ban, és nem UEFI típusú rendszerindítást támogatja. | Feltételesen készen áll az Azure-ban UEFI típusú rendszerindítást-e.
 **Processzormagok** | A gépek a Processzormagok száma kisebb, mint a magok maximális számának (32) egy Azure virtuális gép esetében támogatott, vagy azzal egyenlőnek kell lennie.<br/><br/> Teljesítményelőzmények érhető el, ha az Azure Migrate figyelembe veszi a túl magas kihasználtsággal rendelkező magok, az összehasonlítást. Ha egy kompatibilitási faktor értékelés beállításaiban van megadva, a rendszer megszorozza a túl magas kihasználtsággal rendelkező magok számát a kompatibilitási faktor.<br/><br/> Ha nincsenek teljesítményelőzményei, a kompatibilitási faktor alkalmazása nélkül az Azure Migrate használja a lefoglalt magok száma. | Nem áll készen, ha magok száma nagyobb, mint a 32.
-**Memória** | A memória mérete kisebb, mint az Azure virtuális gép számára engedélyezett maximális memóriaméretet (448 GB), vagy azzal egyenlőnek kell lennie. <br/><br/> Teljesítményelőzmények érhető el, ha az Azure Migrate figyelembe veszi a magas kihasználtságú memóriát, az összehasonlítást. Ha egy kompatibilitási faktor van megadva, a rendszer megszorozza a magas kihasználtságú memória a kompatibilitási faktor.<br/><br/> Ha nincsenek előzményei a lefoglalt memória használata esetén a kompatibilitási faktor alkalmazása nélkül.<br/><br/> | Nem áll készen, ha a 448 GB-nál nagyobb méretű memória.
+**Memória** | A memória mérete kisebb, mint a maximális memóriát, vagy azzal egyenlőnek kell lennie. (az Azure M sorozatú Standard_M128m 3892 GB&nbsp;<sup>2</sup>) egy Azure virtuális gép engedélyezett. [További információk](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series).<br/><br/> Teljesítményelőzmények érhető el, ha az Azure Migrate figyelembe veszi a magas kihasználtságú memóriát, az összehasonlítást. Ha egy kompatibilitási faktor van megadva, a rendszer megszorozza a magas kihasználtságú memória a kompatibilitási faktor.<br/><br/> Ha nincsenek előzményei a lefoglalt memória használata esetén a kompatibilitási faktor alkalmazása nélkül.<br/><br/> | Nem áll készen, ha a 448 GB-nál nagyobb méretű memória.
 **Tárolólemez** | A lemez lefoglalt mérete 4 TB-ig (4096 GB) kell lennie, vagy kisebb.<br/><br/> A géphez csatolt lemezek száma 65 vagy annál kisebb, többek között az operációsrendszer-lemez kell lennie. | Nem áll készen, ha van lemez mérete nagyobb, mint 4 TB-os, vagy ha a gép csatlakozik, több mint 65 lemezek vannak nem.
 **Hálózat** | Egy gép 32 kell rendelkeznie, vagy kevesebb hálózati adapter csatlakozik. | Nem áll készen, ha a gép legfeljebb 32 hálózati adaptert
 

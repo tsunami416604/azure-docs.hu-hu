@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: timlt
-ms.openlocfilehash: ede7748b1471136cf792c2b30b7c90e12b0b274a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c5697f6d4ca2c9d9948b7cdd005a6a75bdabb246
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006848"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222565"
 ---
 # <a name="create-an-event-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Hozzon létre egy esemény-szabályt, és állítsa be az Azure IoT Central alkalmazásban művelet
 
@@ -62,7 +62,9 @@ Ez a szakasz bemutatja, hogyan figyelheti a ventilátor motor hiba esemény mér
 
 ### <a name="add-an-action"></a>Művelet hozzáadása
 
-Ez a szakasz bemutatja, hogyan művelet hozzáadása a szabályhoz. Ez jeleníti meg az e-mail-művelet hozzáadása, de emellett [adjon hozzá egy Microsoft Flow műveletet](howto-add-microsoft-flow.md) elindít egy munkafolyamatot a Microsoft Flow, a szabály aktiválásakor a szabályhoz.
+A TIS példa bemutatja, hogyan művelet hozzáadása a szabályhoz. Ez jeleníti meg az e-mail-művelet hozzáadása, de más műveleteket is hozzáadhat:
+-  [Microsoft Flow művelet](howto-add-microsoft-flow.md) elindít egy munkafolyamatot a Microsoft Flow, amikor egy szabály akkor lesz kiváltva
+- [Webhook művelettel](howto-create-webhooks.md) más szolgáltatások értesíti, amikor egy szabály akkor lesz kiváltva
 
 > [!NOTE]
 > Jelenleg csak 1 művelet lehet egyetlen szabály van társítva.

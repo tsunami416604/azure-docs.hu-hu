@@ -3,19 +3,19 @@ title: Programozott módon a Node.js használatával a LUIS alkalmazás készít
 titleSuffix: Azure
 description: Ismerje meg, hogyan hozhat létre egy már létező adatokat CSV formátumban a LUIS jelentéskészítési API-val programozott módon a LUIS-alkalmazás.
 services: cognitive-services
-author: DeniseMak
-manager: rstand
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
-ms.author: v-geberr
-ms.openlocfilehash: fe82899dc4db24c0d4c09a42872ad9113ef7ebad
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: 42b9800c94171ecbd2dadf30bb2ce2f342063552
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172000"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238505"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programozott módon a Node.js használatával a LUIS alkalmazás készítése
 

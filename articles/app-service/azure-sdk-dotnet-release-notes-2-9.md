@@ -1,6 +1,6 @@
 ---
-title: Az Azure SDK for .NET 2.9 kibocsátási megjegyzések
-description: Az Azure SDK for .NET 2.9 kibocsátási megjegyzések
+title: Az Azure SDK for .NET 2.9 kibocsátási megjegyzései
+description: Az Azure SDK for .NET 2.9 kibocsátási megjegyzései
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
@@ -13,82 +13,82 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 30013c0bd8ded31ccaf3cdc142bbf8dc6b375031
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01b8ccc9fe6b5469408131bce68a903f15382998
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150957"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222528"
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Az Azure SDK for .NET 2.9 kibocsátási megjegyzései
 
-Ez a témakör a .NET 2.9 és az Azure SDK 2.9.6 kibocsátási megjegyzései tartalmaz.
+Ez a témakör a .NET-hez 2.9 és 2.9.6 Azure SDK kibocsátási megjegyzései tartalmaz.
 
 ## <a name="azure-sdk-for-net-296-release-summary"></a>Az Azure SDK for .NET 2.9.6 kiadási összegzése
 
-Kiadás dátuma: 2016. 11/16
+Kiadás dátuma: 2016-11/16
  
-Ebben a kiadásban az Azure SDK 2.9 legfrissebb módosításokat nem vezettek be. Nem szükséges az SDK-val meglévő Felhőszolgáltatás-projektek kihasználhatják frissítési folyamat is van.
+Ebben a kiadásban nem kompatibilitástörő változások, az Azure SDK 2.9 vezettek be. Nincs szükség kihasználhatja a meglévő Felhőszolgáltatás-projektek az SDK frissítési folyamat is van.
 
-### <a name="visual-studio-2017-release-candidate"></a>A Visual Studio 2017 kiadásra jelölt verziójára
+### <a name="visual-studio-2017-release-candidate"></a>A Visual Studio 2017 Release Candidate
 
-- A Visual Studio 2017 RC ebben a kiadásban az Azure SDK for .NET-t az Azure terheléseknél engedélyezett. Minden eszköz a végre kell hajtani az Azure fejlesztési továbbítja a Visual Studio 2017 RC része lesz. A Visual Studio 2015-öt és a Visual Studio 2013, az SDK-t továbbra is elérhetők WebPI keresztül. Azt fogja kell megszűnő Azure SDK .NET kiadásokban a Visual Studio 2013, ha a Visual Studio 2017 feloldja a végső termék. Erre a hivatkozásra kattintva töltse le a Visual Studio 2017 RC kövesse: https://www.visualstudio.com/vs/visual-studio-2017-rc/
+- A Visual Studio 2017 RC ebben a kiadásban az Azure SDK for .NET a beépített, az Azure számítási feladatokhoz. Az összes, a kell tennie az Azure-fejlesztési eszközök a Visual Studio 2017 RC, a jövőben része lesz. A Visual Studio 2015-öt és a Visual Studio 2013, az SDK továbbra is elérhető lesz webpi-vel. Azt fog kell megszűnő Azure SDK a .NET kiadásokhoz Pro Visual Studio 2013, amikor Visual Studio 2017-kiadások végső üzemel. Töltse le a Visual Studio 2017 RC erre a hivatkozásra: https://www.visualstudio.com/vs/visual-studio-2017-rc/
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-- A viselkedés csak tárolására Cloud Services diagnosztika tárolási kapcsolati karakterlánc egy token helyett a kulccsal részleges kapcsolati karakterlánc megváltozott. A tényleges kulcsot most tárolja a felhasználói profil mappában, így a hozzáférése vezérelhető. A Visual Studio a biztonságitár-kulcs olvasását helyi Hibakeresés és a közzétételi folyamat felhasználói profil mappájába. 
-- A fent leírt módosítás válaszul a Visual Studio Online csapata az Azure Cloud Services központi telepítési sablon fokozott, így a felhasználók a diagnosztika bővítmény beállításához, a folyamatos integrációt és telepítést Azure való közzétételkor kulcsot kell megadni.
-- Hajtottunk akkor lehet tárolni a biztonságos kapcsolati karakterláncot és létrehozása az Azure Diagnostics (ÜVEGVATTA), konfigurációjával kapcsolatos problémák megoldásához environements között.
+- Megváltoztatta a módot csak tárolásához egy részleges kapcsolati karakterlánc helyébe a Felhőszolgáltatások diagnosztikai tárfiók kapcsolati karakterláncának a jogkivonatot a kulccsal. Így szabályozható a hozzáférés a tényleges tárterület kulcsot most tárolja a felhasználói profil mappájába. A Visual Studio a tárfiók kulcsát olvasni a helyi hibakereséshez és a közzétételi folyamat felhasználói profil mappájába. 
+- A fenti módosítás válaszul, a Visual Studio Online team az Azure Cloud Services üzembe helyezési sablon fokozott, így a felhasználó megadhatja a tárfiók hívóbetűjét, a diagnosztikai bővítmény állítja a folyamatos integráció az Azure-ba való közzétételekor és A központi telepítés.
+- Végeztünk, lehetséges, biztonságos kapcsolati karakterlánc és az Azure Diagnostics (WAD), az között environements konfigurálásával kapcsolatos problémák megoldásához a jogkivonatok tárolására.
  
-### <a name="windows-server-2016-virtual-machines"></a>Windows Server 2016-os virtuális gépek
+### <a name="windows-server-2016-virtual-machines"></a>A Windows Server 2016 virtuális gépek
 
-- A Visual Studio mostantól támogatja a felhő szolgáltatások telepítése az operációs rendszer családja 5 (Windows Server 2016) virtuális gépekhez. A meglévő felhőszolgáltatások módosíthatja a beállításokat, amelyekre az új operációsrendszer-család. Létrehozásakor új felhőalapú szolgáltatások, ha úgy dönt, hogy létrehozni a szolgáltatást használó .net 4.6-os vagy újabb, az alapértelmezés szerint a szolgáltatás az operációs rendszer családja 5.  További információkért tekintse át a [Vendég operációsrendszer-család támogatja a tábla](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/).
+- A Visual Studio mostantól támogatja az operációs rendszer termékcsalád 5 (Windows Server 2016) virtuális gépek, Cloud Services rendszerbe állítása. A meglévő cloud services módosíthatja a beállításokat, amelyekre az új operációsrendszer-család. Új felhőszolgáltatások létrehozásakor, ha úgy dönt, hogy hozza létre a szolgáltatást használó .net 4.6-os vagy újabb, az operációsrendszer-család 5 használni a szolgáltatást alapértelmezés lesz.  További információkért megtekintheti a [támogatja a Vendég operációsrendszer-család tábla](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/).
 
 #### <a name="known-issues"></a>Ismert problémák
 
-- Az Azure .NET SDK 2.9.6 rendszerben jelent meg, amely blokkolja az telepítési projektek nem támogatott .NET-keretrendszert (például .NET 4.6) használatával egyetlen operációsrendszer-családról korlátozás < 5. A megoldás biztosítja [Itt](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9).
+- Az Azure .NET SDK 2.9.6 vezetett be, amely blokkolja a telepítési projektek nem támogatott .NET-keretrendszerek (például a .NET 4.6) használatával az operációs rendszer családja korlátozás < 5. Áthidaló megadott [Itt](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9).
 
  
-### <a name="azure-in-role-cache"></a>Azure szerepköralapú gyorsítótár 
+### <a name="azure-in-role-cache"></a>Az Azure szerepköralapú gyorsítótárához 
 
-- Támogatás a 2016. November 30 Azure szerepköralapú gyorsítótár végződik. További információért kattintson [Itt](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/).
+- Támogatás a 2016. November 30-Azure szerepköralapú gyorsítótárához ér véget. További részletekért kattintson [Itt](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/).
 
-### <a name="azure-resource-manager-templates-for-azure-stack"></a>Az Azure-bA az Azure Resource Manager-sablonok a verem
+### <a name="azure-resource-manager-templates-for-azure-stack"></a>Az Azure Stack az Azure Resource Manager-sablonokkal
 
-- A Microsoft már megjelent Azure verem telepítési cél az Azure Resource Manager-sablonok.
+- Jelentettük Azure Stack üzembe helyezés céljaként az Azure Resource Manager-sablonokkal.
 
 
 ## <a name="azure-sdk-for-net-29-summary"></a>Az Azure SDK for .NET 2.9 összegzése
 
 ## <a name="overview"></a>Áttekintés
-Ez a dokumentum az Azure SDK for .NET 2.9 kiadás tartalmazza a kibocsátási megjegyzéseket. 
+Ez a dokumentum a kibocsátási megjegyzések az Azure SDK for .NET 2.9 kiadás tartalmazza. 
 
-Ebben a kiadásban frissítésekkel kapcsolatos részletes információkért lásd: a [Azure SDK 2.9 közlemény post](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/).
+Ebben a kiadásban frissítésekkel kapcsolatos részletes információkért lásd: a [Azure SDK 2.9-bejelentés post](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/).
 
-## <a name="azure-sdk-29-for-visual-studio-2015-update-2-and-visual-studio-15-preview"></a>A Visual Studio 2015 Update 2 és a Visual Studio "15" az Azure SDK 2.9 megtekintése
-A frissítés tartalmazza a következő hibajavításokat tartalmaz:
+## <a name="azure-sdk-29-for-visual-studio-2015-update-2-and-visual-studio-15-preview"></a>Az Azure SDK 2.9-cel for Visual Studio 2015 Update 2 és a Visual Studio "15" előzetes verzió
+Ez a frissítés a következő hibajavításokat tartalmaz:
 
-* REST-API-ügyfél létrehozása a kapcsolatos problémát, amelyben a kód-generációs mappa nevét és/vagy a névtér nevét, a karakterlánc "Ismeretlen típusú" jelent a generált kód eldobva.
-* Ahol a hitelesítő adatok nem működött átadását az ütemező létesítésének folyamatát kell használnia az ütemezett WebJobs kapcsolatos problémát.
+* REST API Client. generációs, amelyben a karakterlánc "Ismeretlen típus" néven jelenik meg a kódot – általános mappa nevét és/vagy a generált kódot érkező névtér nevére kapcsolatos probléma.
+* Ütemezett webjobs-feladatok, amelyben a hitelesítési adatokat létesítésének folyamatát kell használnia az ütemező átadandó volt sikertelen kapcsolatos probléma.
 
-A frissítés a következő új szolgáltatást tartalmaz:
+A frissítés a következő új szolgáltatást tartalmazza:
 
-* A "Szolgáltatások" fülre az App Service üzembe helyezési párbeszédpanel a másodlagos alkalmazásszolgáltatások támogatása. 
+* A "Szolgáltatások" fülre az App Service üzembe helyezési párbeszédpanelének másodlagos az App Services támogatása. 
 
 ## <a name="azure-data-lake-tools-for-visual-studio-2015-update-2"></a>Az Azure Data Lake Tools for Visual Studio 2015 Update 2
-A frissítés az alábbiakat tartalmazza:
+A frissítés a következőket tartalmazza:
 
-* **Az Azure Data Lake Tools** a Visual Studio most egyesíti az Azure SDK for .NET kiadás. Az eszköz automatikusan települ Azure SDK telepítésekor. 
+* **Az Azure Data Lake Tools** for Visual Studio mostantól egyesíti az Azure SDK for .NET-kiadásban. Az eszköz automatikusan települ az Azure SDK telepítésekor. 
   
-    Az eszköz gyakran frissül, nyissa meg [Itt](http://aka.ms/datalaketool) töltsék le a frissítéseket.
-* **Server Explorer** most már lehetővé teszi az összes megtekintése és bizonyos U-SQL metaadat-entitások létrehozása. További információkért lásd: [ez](https://azure.microsoft.com/documentation/services/data-lake-analytics/) blog.
+    Az eszköz milyen gyakran frissülnek, lépjen [Itt](http://aka.ms/datalaketool) le a frissítéseket.
+* **Server Explorer** most már lehetővé teszi, hogy az összes megtekintése és a egy U-SQL metaadat-entitások létrehozása. További információkért lásd: [ez](https://azure.microsoft.com/documentation/services/data-lake-analytics/) blog.
 
-## <a name="hdinsight-tools"></a>A HDInsight Tools
-**A HDInsight Tools** mostantól támogatja a HDInsight 3.3-as, beleértve a Tez ábrákat és egyéb nyelvi verzió kijavítja a Visual Studio.
+## <a name="hdinsight-tools"></a>HDInsight-eszközök
+**HDInsight Tools** mostantól támogatja a HDInsight 3.3-as, beleértve a Tez ábrákat és más nyelvet használva verziója kijavítja a Visual Studióhoz készült.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-Ez a kiadás [KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) Resource Manager-sablonok támogatása.
+Ez a kiadás bővült [KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) Resource Manager-sablonok támogatása.
 
 ## <a name="see-also"></a>Lásd még
-[Az Azure SDK 2.9 közlemény post](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
+[Az Azure SDK 2.9-bejelentés post](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
 

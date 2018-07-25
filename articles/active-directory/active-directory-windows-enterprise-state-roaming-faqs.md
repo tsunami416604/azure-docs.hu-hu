@@ -1,131 +1,132 @@
 ---
-title: Beállítások és adatok hordozása – gyakori kérdések |} Microsoft Docs
-description: Biztosítja a rendszergazdák feltett kérdésekre adott válaszok beállításait, valamint az alkalmazás adatszinkronizálás rendelkezhet.
+title: Beállítások és adatroaming GYIK |} A Microsoft Docs
+description: Biztosít a rendszergazdák feltett kérdésekre adott válaszokat beállításairól és az alkalmazás data Sync szolgáltatással rendelkezhet.
 services: active-directory
-keywords: Vállalati állapot barangolási beállításokat, a windows-felhő, gyakran ismételt kérdések a vállalati állapothordozás
+keywords: Vállalati állapot barangolási beállításokat, a windows-felhő, vállalati állapothordozás kapcsolatos gyakori kérdésekre
 documentationcenter: ''
-author: tanning
+author: MarkusVi
 manager: mtillman
 editor: curtand
+ms.component: devices
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: f33376d5f68d64495a7a90e62870f3ec14f73246
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: ee03ed3159ad2fc1cd8da4a84fd1be34d0b656c8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258714"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224330"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
-Ebben a cikkben megválaszolunk kérdések merülhetnek fel, a rendszergazdák beállításait, valamint az alkalmazás adatszinkronizálás rendelkezhet.
+Ez a cikk rendszergazdák lehet beállításai és alkalmazás data Sync szolgáltatással kapcsolatos kérdésekre ad választ.
 
-## <a name="what-data-roams"></a>Milyen adatok barangol?
-**Windows-beállítások**: a számítógép beállításait, a Windows operációs rendszer beépített. Általában ezek a beállítások a számítógép testreszabása, és tartalmazzák a következő kategóriába sorolhatók:
+## <a name="what-data-roams"></a>Milyen adatokat barangol?
+**Windows beállítások**: a számítógép-beállítások a Windows operációs rendszerbe beépített. Általában ezek a beállítások, amelyek a számítógép testreszabása, és a következő tág kategóriába tartoznak:
 
-* *Téma*, mely funkciók, például asztali téma és a tálca beállításait tartalmazza.
-* *Az Internet Explorer beállításainak*, beleértve a legutóbb megnyitott lapokat és a Kedvencekhez.
-* *A szegély böngészőbeállítások*, például a Kedvencek és olvasási listáját.
-* *Jelszavak*, beleértve a Internet jelszavakat, a Wi-Fi profilok és mások számára.
-* *Nyelvi beállítások*, amely tartalmazza a billentyűzetkiosztások, rendszer nyelve, dátum és idő, és további beállításait.
-* *Könnyű hozzáférés funkcióját*, például Nagyító, kontrasztos téma vagy Narrátor.
-* *Egyéb Windows-beállítások*, például a parancssor beállításai és alkalmazásainak listáját.
+* *Téma*, amely magában foglalja a szolgáltatások, például asztali téma- és tálcán beállítások.
+* *Az Internet Explorer beállításainak*, beleértve a legutóbb megnyitott lapokat és a Kedvencek közé.
+* *Böngésző beállításainak él*, például a Kedvencek közé, és olvassa.
+* *Jelszavak*, többek között internetes jelszavakat, a Wi-Fi profilok és mások.
+* *Nyelvi beállítások*, amely tartalmazza a billentyűzetkiosztás, rendszer nyelve, dátum és idő és további beállításait.
+* *Könnyű hozzáférés funkciók*, például a Narrátor, Nagyító és a kontrasztos téma.
+* *Egyéb Windows-beállítások*, például a parancssor használatával beállítások és alkalmazások listája.
 
-**Alkalmazásadatok**: univerzális Windows-alkalmazások beállításainak adatokat írhatna központi mappába, és bármely ebbe a mappába írt adatok automatikusan lesznek szinkronizálva. Már az egyedi alkalmazás fejlesztőjének tervezhet egy alkalmazást, hogy ez a funkció előnyeit. Központi használó univerzális Windows-alkalmazások fejlesztésével kapcsolatos további részletekért lásd: a [appdata tárolási API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [Windows 8 appdata fejlesztői blogja központi](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Alkalmazásadatok**: univerzális Windows-alkalmazások beállításainak adatokat írhatna központi mappába, és minden ebbe a mappába írt adatok automatikusan szinkronizálja. Fontos az egyéni alkalmazás fejlesztőjénél, ez a funkció kihasználásához alkalmazásokat. Egy univerzális Windows-alkalmazást, amely központi fejlesztésével kapcsolatos további részletekért lásd: a [appdata storage API-JÁNAK](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [fejlesztői blog barangolás Windows 8 appdata](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Milyen fiókot szolgál szinkronizálási beállítások?
-A Windows 8 és Windows 8.1 a szinkronizálási beállítások mindig használt végfelhasználói Microsoft-fiókok. Vállalati felhasználók kellett a kapcsolódhat Microsoft-fiókot az Active Directory tartományi fiók szinkronizálási beállítások eléréséhez. A Windows 10 Ez egy elsődleges és másodlagos fiók keretrendszer helyére, a funkciók Microsoft-fiók csatlakoztatva.
+A Windows 8 és Windows 8.1-beállítások szinkronizálása mindig használja a fogyasztói Microsoft-fiókok. Vállalati felhasználó számára lehetővé teszi egy Microsoft-fiók csatlakozni az Active Directory tartományi fiók a szinkronizálási beállítások eléréséhez rendelkezett. A Windows 10 csatlakozik egy elsődleges és másodlagos fiók keretrendszer helyére, a funkciók Microsoft-fiókjával.
 
-Az elsődleges definiálva van a Windows való bejelentkezéshez használt fiók. Ez lehet egy Microsoft-fiókkal, egy Azure Active Directory (Azure AD-) fiók, a helyszíni Active Directory-fiókkal vagy egy helyi fiókot. Az elsődleges fiók mellett Windows 10-felhasználók számára fiókokat is hozzáadhat egy vagy több másodlagos felhő az eszközükre. Egy másodlagos számítógépfiókja általában egy Microsoft-fiókkal, az Azure AD-fiókot vagy néhány más fiók, például a Gmailes vagy a Facebook-on. Ezeket a másodlagos fiókokat adja meg a további szolgáltatások, például egyszeri bejelentkezés és a Windows áruházhoz való hozzáférés, de azok nem képes a szinkronizálási beállítások működtetéséhez.
+Az elsődleges fióknak számít, ha a Windows való bejelentkezéshez használt fiók. Ez lehet egy Microsoft-fiókkal, egy Azure Active Directory (Azure AD-) fiók, a helyszíni Active Directory-fiókkal vagy egy helyi fiókot. Az elsődleges fiókon kívül Windows 10-es fiókokat is hozzáadhat egy vagy több másodlagos felhőbeli eszközére. Egy másodlagos fiókot alapvetően egy Microsoft-fiókkal, egy Azure AD-fiók vagy néhány egyéb fiók, mint például a Gmail vagy a Facebook. Másodlagos hozzáférést biztosít a további szolgáltatásokat, például az egyszeri bejelentkezést és a Windows Store, de azok nem képes a motorja olyan beállítások szinkronizálása.
 
-A Windows 10, az eszköz csak az elsődleges fiók is használható beállítások szinkronizáláshoz (lásd: [hogyan lehet frissíteni a Microsoft fiók beállítások szinkronizálása a Windows 8-ban az Azure AD szinkronizálása a Windows 10-es?](active-directory-windows-enterprise-state-roaming-faqs.md#how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10)).
+A Windows 10, az eszköz csak az elsődleges fiók is használható beállítások szinkronizálása (lásd: [hogyan frissíthetem a Microsoft-Fiókbeállítások szinkronizálását a Windows 8 az Azure AD-beállítások szinkronizálása a Windows 10?](active-directory-windows-enterprise-state-roaming-faqs.md#how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10)).
 
 Adatok soha nem vegyes között a különböző felhasználói fiókot az eszközön. Beállítások szinkronizálása két szabályok vonatkoznak:
 
-* A Windows rendszer mindig hordozhatók elsődleges fiókkal.
-* Az alkalmazásadatok az alkalmazás használt fiókkal címkével fog rendelkezni. Csak az elsődleges fiók címkéjű alkalmazásokat szinkronizálja. Alkalmazás tulajdonjoga címkézés határozza meg, a Windows áruház vagy a mobileszköz-kezelés (MDM) keresztül közvetlenül telepített alkalmazások esetén.
+* Windows-beállítások mindig az elsődleges fiókkal hordozhatók a lesz.
+* Az alkalmazásadatok címkével fog rendelkezni az alkalmazás beszerzésére használt fiókot. Az elsődleges fióknak címkéjű csak alkalmazásokat szinkronizálja. Alkalmazás tulajdonjogának címkézése határozza meg, ha az alkalmazás az ügyféloldali betölti a Windows Store vagy a mobileszköz-felügyelet (MDM) keresztül.
 
-Ha az alkalmazás tulajdonosa nem azonosítható, azt fogja barangolás elsődleges fiókkal. Ha egy eszközt a Windows 8 vagy Windows 8.1 és Windows 10 frissítve van, az alkalmazások címkével fog rendelkezni, a Microsoft-fiók használatával. Ennek az oka, hogy a legtöbb felhasználó programon keresztül a Windows Áruházbeli alkalmazásokat, és nincs Windows Store támogatása Windows 10 előtti Azure AD-fiókok történt. Ha egy alkalmazás telepítve van egy kapcsolat nélküli licenc keresztül, az alkalmazás címkével fog rendelkezni az elsődleges fiókkal az eszközön.
+Ha egy alkalmazás tulajdonosa nem azonosítható, azt fogja hordozhatók a elsődleges fiókkal. Ha egy eszköz Windows 10-re frissítve van a Windows 8 vagy Windows 8.1, minden alkalmazás címkével fog rendelkezni, a Microsoft-fiók segítségével. Ez azért, mert a legtöbb felhasználó keresztül a Windows Store apps beszerezni, és hiba történt az Azure AD-felhasználók előtt a Windows 10-es nem Windows Store támogatása. Ha egy alkalmazást offline licenccel keresztül van telepítve, az alkalmazás címkével fog rendelkezni az elsődleges fiókkal az eszközön.
 
 > [!NOTE]
-> Vállalati által birtokolt és az Azure ad Szolgáltatásba csatlakoztatott Windows 10-es eszközök már nem csatlakozhat a Microsoft-fiókok egy olyan tartományi fiók. Csatlakozás egy Microsoft-fiók egy olyan tartományi fiók, és rendelkezik a felhasználói adatok szinkronizálása a Microsoft-fiókjába (Ez azt jelenti, hogy a Microsoft-fiók keresztül az összekapcsolt Microsoft-fiókkal és az Active Directory központi) törlődik a csatlakoztatott Active Directory vagy az Azure AD-környezet tartományhoz csatlakoztatott Windows 10-eszközökre.
+> Vállalati által birtokolt és az Azure AD-csatlakoztatott Windows 10-es eszközök már nem kapcsolódhat a Microsoft-fiókok egy tartományi fiókot. Microsoft-fiókkal csatlakozik egy tartományi fiókot, és rendelkezik az összes felhasználói data sync számára a Microsoft-fiók (azt jelenti, a Microsoft-fiók az összekapcsolt Microsoft-fiók és az Active Directory működési roaming) lehetővé teszi a Windows 10-es eltávolítása egy csatlakoztatott Active Directory vagy az Azure AD-környezet csatlakozó eszközökről.
 >
 >
 
-## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Hogyan lehet frissíteni a Microsoft fiók beállítások szinkronizálása a Windows 8-ban az Azure AD szinkronizálása a Windows 10-es?
-Ha tartományhoz csatlakozik az Active Directory-tartomány, Windows 8 vagy Windows 8.1 fut összekapcsolt Microsoft-fiókkal, a Microsoft-fiókján keresztül fogja szinkronizálni az beállításait. Windows 10-re a frissítés után folytatja szinkronizálják a felhasználó beállításait a Microsoft-fiók segítségével, mindaddig, amíg egy tartományhoz csatlakozó felhasználók és az Active Directory-tartomány nem az Azure AD connect.
+## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Hogyan frissíthetem a Microsoft-Fiókbeállítások szinkronizálását a Windows 8 az Azure AD-beállítások szinkronizálása a Windows 10-ben?
+Ha tartományhoz csatlakozik az Active Directory-tartománynak Windows 8 vagy Windows 8.1 rendszerű összekapcsolt Microsoft-fiókkal, akkor beállítások a Microsoft-fiókján keresztül szinkronizálódnak. Windows 10-re a frissítés után továbbra is keresztül a Microsoft-fiók felhasználói beállítások szinkronizálása, mindaddig, amíg egy tartományhoz csatlakozó felhasználók és az Active Directory-tartomány nem csatlakozik az Azure ad-ben.
 
-Ha a helyszíni Active Directory-tartomány és az Azure AD connect, az eszköz a beállításokat a csatlakoztatott a szinkronizálás megkísérléséhez Azure AD-fiókot. Ha az Azure AD-rendszergazda nem engedélyezi a vállalati Állapothordozás, a csatlakoztatott Azure AD-fiókot a beállítások szinkronizálása leáll. Ha a Windows 10-felhasználók és jelentkezik be egy Azure AD identity, hozzákezdhet szinkronizálása a windows-beállítások, amint a rendszergazda engedélyezi a beállítások szinkronizálása az Azure AD használatával.
+Ha a helyszíni Active Directory-tartomány az Azure AD connect, az eszköz megkísérli beállítások segítségével a csatlakoztatott szinkronizálása az Azure AD-fiókot. Ha az Azure AD-rendszergazda nem engedélyezi a vállalati Állapothordozás, a csatlakoztatott Azure AD-fiókot a beállítások szinkronizálása leáll. Ha a Windows 10-felhasználók és jelentkezik be egy Azure AD identity, hozzákezdhet windows-beállítások szinkronizálása, amint a rendszergazda engedélyezi a beállítások szinkronizálása az Azure AD-n keresztül.
 
-Ha a vállalati eszköz személyes adatokat tárolja, vegye figyelembe, hogy a Windows operációs rendszer és az alkalmazásadatok megkezdődik a szinkronizálás az Azure AD kell lennie. Azt a következő szempontokat:
+Ha személyes adatok tárolása a céges eszközét a történik, érdemes figyelembe, hogy Windows operációs rendszer és az alkalmazásadatok megkezdődik az Azure AD szinkronizálása. Ez rendelkezik a következő szempontokat:
 
-* A személyes Microsoft-fiók beállításainak eltolódás a beállítások mellett a a munkahelyi vagy iskolai fiókok Azure AD lesz. Ennek oka, hogy a Microsoft-fiókkal és az Azure AD-beállításokat a szinkronizálás most már külön fiókot használ.
-* Személyes adatok, például Wi-Fi jelszavakat, a webes hitelesítő adatok és az Internet Explorer Kedvencek az előzőleg szinkronizált keresztül összekapcsolt Microsoft-fiókkal az Azure AD keresztül lesznek szinkronizálva.
+* A személyes Microsoft-Fiókbeállítások konfigurációsodródás szereplőkkel a beállításokat a munkahelyi vagy iskolai fiókok Azure ad-ben lesz. Ennek oka, hogy a Microsoft-fiók és az Azure AD-beállítások szinkronizálása. most már külön fiókokat használnak.
+* Személyes adatok, például a WiFi-jelszavakat, webes hitelesítő adatok és az Internet Explorer Kedvencek összekapcsolt Microsoft-fiók használatával korábban szinkronizált Azure AD-n keresztül lesznek szinkronizálva.
 
-## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Honnan, Microsoft-fiókkal és az Azure AD vállalati állapot központi együttműködés?
-Windows 10 November 2015-ös vagy újabb kiadásaiban a vállalati Állapothordozás csak támogatott ugyanazt a fiókot egy időben. Ha Windows jelentkezzen be a munkahelyi vagy iskolai fiókkal az Azure AD, minden adatot az Azure AD útján szinkronizálódnak. Ha bejelentkezik a Windows egy személyes Microsoft-fiókkal, minden adatot a Microsoft-fiók útján szinkronizálódnak. Univerzális appdata barangolás-e a használata csak az elsődleges bejelentkezési fiókot az eszközön, és ez csak akkor, ha az alkalmazás licencének elsődleges fiók tulajdonosa lesz barangolás. Az alkalmazások bármely másodlagos fiókokat tulajdonában univerzális appdata nem lesznek szinkronizálva.
+## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Microsoft-fiók és az Azure AD vállalati állapot Roaming együttműködési munkahelyi hogyan?
+Windows 10-es November, 2015 vagy újabb kiadásaiban Enterprise State Roaming csak támogatott egyetlen fiókkal egy időben. Jelentkezzen be a Windows egy munkahelyi vagy iskolai fiókkal az Azure AD, ha az összes adat szinkronizálja az Azure AD-n keresztül. Ha bejelentkezik a Windows egy személyes Microsoft-fiók használatával, a minden adatot a Microsoft-fiók útján szinkronizálódnak. Univerzális appdata fog hordozhatók a fiókkal csak az elsődleges jelentkezzen be az eszközön, és azt fogja hordozhatók a csak akkor, ha az elsődleges fióknak a licenc az alkalmazás tulajdonosa. Az alkalmazások bármely másodlagos fiókokat tulajdonában univerzális appdata nem lesznek szinkronizálva.
 
-## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Azure AD-fiókok több bérlő beállítások is szinkronizálja?
-Ha több Azure AD különböző fiókok Azure AD bérlőre ugyanarra az eszközre, frissítenie kell az eszköz beállításjegyzékébe minden Azure AD-bérlő az Azure Rights Management szolgáltatással való kommunikációra.  
+## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Több bérlő Azure AD-fiókokat beállításokat is szinkronizálja?
+Ha több Azure AD-fiókok a különböző Azure AD-bérlőt ugyanazon az eszközön, frissítenie kell az eszköz beállításjegyzék minden egyes Azure AD-bérlőhöz tartozó Azure Rights Management szolgáltatással való kommunikációra.  
 
-1. Minden Azure AD-bérlő a GUID keresése. Nyissa meg az Azure-portálon, és válassza ki az Azure AD-bérlő. A kiválasztott bérlő tulajdonságai lapon van a bérlőhöz tartozó GUID (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), címkézett **könyvtár-azonosítója**. 
-2. Miután a globálisan egyedi Azonosítót, akkor a beállításkulcs **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<bérlői azonosító GUID >**.
-   Az a **bérlői azonosító GUID** kulcsot, hozzon létre egy új karakterláncsoros értéket (REG-MULTI-SZ) **AllowedRMSServerUrls**. Az adatait adja meg a licencelési terjesztési pont URL-címei a más Azure bérlőre, az eszköz hozzáférő.
-3. A terjesztési pont licencelési URL-címeket található futtatásával a **Get-AadrmConfiguration** parancsmag a AADRM modulból. Ha az értékek a **LicensingIntranetDistributionPointUrl** és **LicensingExtranetDistributionPointUrl** eltérőek, mindkét értéket adni. Ha az értékek megegyeznek, csak egyszer adja meg az értéket.
+1. A GUID azonosító található minden egyes Azure AD-bérlővel. Nyissa meg az Azure Portalon, és válassza ki az Azure AD-bérlő. A Tulajdonságok lapon a kiválasztott bérlő van a bérlőhöz tartozó GUID (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), címkézett **címtár-azonosító**. 
+2. Miután a globálisan egyedi Azonosítót, szüksége lesz a beállításkulcs hozzáadása **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<bérlői azonosító GUID >**.
+   Az a **bérlői azonosító GUID** kulcsban, hozzon létre egy új karakterláncsoros értéket (REG-MULTI-SZ) **AllowedRMSServerUrls**. Adja meg az adatokat, a licencelési terjesztési pont URL-címek az eszköz hozzáfér a többi Azure bérlők számától.
+3. Annak a terjesztési pont licencelési URL-címeket futtatásával a **Get-AadrmConfiguration** parancsmag az AADRM modulban. Ha a tartozó értékeket a **LicensingIntranetDistributionPointUrl** és **LicensingExtranetDistributionPointUrl** eltérőek, mindkét értéket adja meg. Ha az értékek azonosak, csak egyszer adja meg az értéket.
 
-## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Mik a meglévő Windows asztali alkalmazások központi beállítások lehetőségei?
-Csak az univerzális Windows-alkalmazások központi működik. Nincsenek elérhető egy meglévő Windows asztali alkalmazások a roaming engedélyezésének két lehetőség közül választhat:
+## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Mik azok a meglévő Windows asztali alkalmazások központi beállítások lehetőségei?
+Csak az univerzális Windows-alkalmazások központi működik. Két lehetőség van egy meglévő Windows asztali alkalmazás roaming engedélyezése érhető el:
 
-* A [asztali híd](https://aka.ms/desktopbridge) segítséget nyújt a meglévő Windows asztali alkalmazások kerüljön a univerzális Windows Platform. Itt minimális kódmódosítással lesz szükség az Azure AD alkalmazásadat-barangolás előnyeit. Az asztal híd biztosít az alkalmazások app identitást, amely engedélyezéséhez alkalmazásadat-barangolás meglévő asztali alkalmazások esetén van szükség.
-* [Felhasználói élmény Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) segítségével hozzon létre egy meglévő Windows asztali alkalmazások egyéni beállítások sablont, és engedélyezte a Win32-alkalmazások központi. Ezzel a beállítással kell az alkalmazás fejlesztőjének az alkalmazás módosításához. UE-V a helyszíni Active Directory központi az ügyfelek, akik a Microsoft Desktop Optimization Pack korlátozódik.
+* A [asztali híd](https://aka.ms/desktopbridge) segítséget nyújt a meglévő Windows asztali alkalmazások használata az univerzális Windows platform. Itt minimális kódmódosítással lesz szükség az Azure AD alkalmazásadat-barangolás előnyeinek kihasználása érdekében. A Desktop Bridge alkalmazás identitást, amely engedélyezéséhez alkalmazásadat-barangolás meglévő asztali alkalmazások esetén van szükség az alkalmazások biztosít.
+* [Felhasználói élmény Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) segítséget nyújt egy meglévő Windows asztali alkalmazások egyéni beállítások sablon létrehozása és engedélyezése barangolás Win32-alkalmazások esetén. Ezt a beállítást nem szükséges az alkalmazás fejlesztőjénél, az alkalmazás kódjának módosítása. UE-V a helyszíni Active Directory barangolás esetén ügyfelek, akik a Microsoft Desktop Optimization Pack korlátozódik.
 
-A rendszergazdák konfigurálhatják UE-V számára a Windows asztali alkalmazások adatainak a Windows operációs rendszer beállításainak és univerzális alkalmazások adatainak keresztül központi módosításával [UE-V csoportházirendek](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), többek között a következőket:
+A rendszergazdák konfigurálhatják UE-V számára a Windows asztali alkalmazás adatokat úgy módosítja a Windows operációs rendszer beállításait és univerzális alkalmazások adatainak keresztül, barangolás [UE-V csoportházirendek](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), többek között:
 
-* A Windows beállításait csoportházirend barangolás
-* Ne szinkronizáljon a Windows csoportházirend
-* Az Internet Explorer, az alkalmazások szakaszban központi
+* Hordozhatók a Windows beállításait a csoportházirend
+* Ne szinkronizáljon a Windows-alkalmazások csoportházirend
+* Az Internet Explorer, az alkalmazások szakaszban barangolás
 
-A jövőben Microsoft előfordulhat, hogy vizsgálja ki módon UE-V mélyen integrált a Windows rendszerbe, és kiterjesztése UE-V számára a beállításokat az Azure AD cloud keresztül.
+A jövőben a Microsoft előfordulhat, hogy vizsgálja meg, győződjön meg arról, UE-V Windows mélyen integrált és kiterjesztése UE-V számára a beállítások az Azure AD-felhőn keresztül.
 
-## <a name="can-i-store-synced-settings-and-data-on-premises"></a>Tárolhatok szinkronizált beállításokat és adatokat a helyszínen?
-A vállalati Állapothordozás az összes szinkronizált adatot tárolja Azure felhőben. UE-V biztosít egy helyszíni megoldás központi.
+## <a name="can-i-store-synced-settings-and-data-on-premises"></a>Tárolhatok szinkronizált beállítás és adat a helyszínen?
+Enterprise State Roaming tárolja az összes szinkronizált adatot az Azure-felhőben. UE-V kínál a helyszíni központi megoldás.
 
-## <a name="who-owns-the-data-thats-being-roamed"></a>Ki, hogy a rendszer éppen forrásul az adatok tulajdonosa?
-A vállalatok számára saját vállalati Állapothordozás keresztül forrásul az adatokat. Egy Azure-adatközpontban adatokat tárolja. Összes felhasználói adat titkosítva van, mind az átvitel során, és az Azure Rights Management szolgáltatással az Azure Information Protectiontől felhő aktívan. Ez a Microsoft fiók-alapú beállítások szinkronizálás, amely csak bizonyos érzékeny adatok, például felhasználói hitelesítő adatok titkosítja, mielőtt az eszköz kikerül képest javítása.
+## <a name="who-owns-the-data-thats-being-roamed"></a>Kié az adatokat, amelyek a forrásul van folyamatban?
+A saját vállalatok számára az adatok forrásul Enterprise State Roaming-n keresztül. Az Azure-adatközpontban tárolt adatokat. Összes felhasználói adatot van titkosítva, mind az átvitel során, míg az inaktív, a felhőben az Azure Information Protection az Azure Rights Management szolgáltatás használatával. Ez az, hogy javulást Microsoft tárfiókalapú beállítások szinkronizálása, amely csak bizonyos felhasználói hitelesítő adatokat például bizalmas adatokat titkosítja, mielőtt az eszköz kikerül képest.
 
-A Microsoft elkötelezett az adatok védelme. Egy vállalati felhasználói beállítások automatikusan adattitkosítás az Azure Rights Management szolgáltatás még egy Windows 10 rendszerű eszköz, hogy más felhasználó nem tudja olvasni az adatokat. Ha a szervezete az Azure Rights Management szolgáltatás a szolgáltatás fizetős, is használjon más védelmi szolgáltatások, például nyomon követése és visszavonatni a dokumentumokat, automatikusan bizalmas információkat tartalmazó e-mailek védelmét, és a saját kulcsok kezelése (a "állapotba a saját kulcs"megoldás, más néven BYOK). Ezek a szolgáltatások és a védelmi szolgáltatás működésével kapcsolatos további információkért lásd: [Mi az az Azure Rights Management](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection).
+A Microsoft elkötelezett a vásárlói adatok védelmére. Mielőtt elhagyja a Windows 10 rendszerű eszköz, hogy más felhasználó nem tudja olvasni ezeket az adatokat egy vállalati felhasználó beállítások adatokat automatikusan titkosítja az Azure Rights Management szolgáltatás által. Ha a szervezet rendelkezik az Azure Rights Management szolgáltatás fizetős, is egyéb adatvédelmi funkciói, például nyomon követheti és visszavonhatja a dokumentumot, automatikusan bizalmas információkat tartalmazó e-mailek védelme, és kézben tarthatja saját kulcsait (a "használata a saját kulcs"megoldás, más néven BYOK). Ezek a funkciók és a védelmi szolgáltatás működésével kapcsolatos további információkért lásd: [Mi az Azure Rights Management](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection).
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>Kezelheti egy adott alkalmazás vagy beállítás-szinkronizálás?
-Windows 10-ben található mobileszköz-kezelési vagy a csoportházirend az egyes alkalmazások a roaming letiltása. A bérlői rendszergazdák letilthatják appdata szinkronizálási az összes olyan alkalmazáshoz egy felügyelt eszközön, de nincs egyeztetését vezérlő alkalmazásonkénti vagy alkalmazáson belül szinten.
+A Windows 10-es nem tartozik MDM vagy a csoportházirend beállítás letiltása barangolás esetén az egyes alkalmazásokhoz. A bérlői rendszergazdák letilthatják appdata szinkronizálása a felügyelt eszközök összes alkalmazáshoz, de nem lehet finomabb szabályozásra alkalmazásonkénti vagy alkalmazáson belül szinten van.
 
-## <a name="how-can-i-enable-or-disable-roaming"></a>Hogyan is engedélyezheti vagy letilthatja a központi?
-Az a **beállítások** alkalmazást, és navigáljon **fiókok** > **beállítások szinkronizálása**. Ezen a lapon láthatja, melyik fiók számára a beállításokat használja, és engedélyezheti vagy tiltsa le az egyes csoportok beállításokat kell forrásul.
+## <a name="how-can-i-enable-or-disable-roaming"></a>Hogyan tudok engedélyezheti vagy letilthatja a központi?
+Az a **beállítások** alkalmazást, lépjen a **fiókok** > **beállítások szinkronizálása**. Ezen a lapon láthatja, melyik fiókot használja a beállítások hordozhatók, és engedélyezheti vagy letilthatja az egyes csoportok beállításokat kell lennie a forrásul.
 
-## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Mi az a Microsoft által ajánlott engedélyezése a Windows 10 központi?
-A Microsoftnál érhető el, beleértve a központi felhasználói profilok, a UE-V és a vállalati állapot központi megoldások központi néhány beállítást.  A Microsoft elkötelezett egy befektetés vállalati központi későbbi Windows verziók állapot. Ha a szervezet nem áll készen vagy kényelmes az adatok áthelyezését a felhőbe, majd ajánlott UE-V, az elsődleges központi technológia használatát. Ha a szervezet központi meglévő Windows asztali alkalmazások támogatása szükséges, de nem szeretné, helyezze át a felhőbe, vállalati állapot központi és UE-V használatát javasoljuk. Annak ellenére, hogy UE-V és a vállalati Állapothordozás nagyon hasonló technológiákat, azok nincsenek kölcsönösen kizárják egymást. Kiegészíti egymástól annak biztosítására, hogy a szervezet a központi olyan szolgáltatásokat biztosít, a felhasználóknak hozzá kell.  
+## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Mi a Microsoft azt javasolja, a Windows 10 roaming engedélyezéséhez?
+A Microsoft érhető el, beleértve a központi felhasználói profilok, a UE-V és a vállalati állapot központi megoldások barangolás néhány különböző beállításokkal rendelkezik.  A Microsoft elkötelezett az állapot, a jövőbeli verzióiban a Windows központi vállalat befektetés. Ha a szervezet nem áll készen áll, vagy okoz gondot az adatok áthelyezése a felhőbe, majd azt javasoljuk, hogy a központi elsődleges technológiaként UE-V használata. Ha a szervezet megköveteli a meglévő Windows asztali alkalmazások támogatása a központi, de különösen a felhőbe, azt javasoljuk, vállalati állapot központi és UE-V használatát. Bár a UE-V- és Enterprise State Roaming nagyon hasonló technológiákat, azok nem kölcsönösen kizárják egymást. Kiegészíti egymást annak biztosítására, hogy a szervezet a barangoló szolgáltatást nyújt, amelyek a felhasználóknak kell.  
 
-Ha a vállalati Állapothordozás és UE-V, az alábbi szabályok vonatkoznak:
+Enterprise State Roaming és UE-V használata esetén a következő szabályok érvényesek:
 
-* Az elsődleges központi ügynök az eszközön a vállalati Állapothordozás. UE-V használják, hogy kiegészíti a "Win32 térközét."
-* UE-V központi Windows-beállítások és modern UWP-alkalmazások adatainak le kell tiltani, ha a UE-V csoport szabályzatok. Ezekre már vonatkozik a vállalati Állapothordozás.
+* Enterprise State Roaming az elsődleges központi ügynök az eszközön. UE-V használják, hogy kiegészíti a "Win32 térköz."
+* UE-V központi Windows-beállításait és a modern UWP-alkalmazás adatait, amikor a UE-V csoporttal szabályzatok le kell tiltani. Ezek már tárgyalt Enterprise State Roaming szerint.
 
-## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>Hogyan a vállalati Állapothordozás támogatja a virtuális asztali infrastruktúra (VDI)?
-A vállalati Állapothordozás termékváltozatok Windows 10-ügyfélen, de nem található a kiszolgálón termékváltozatok esetén támogatott. Ha egy ügyfél VM birtokolt hipervizor gépen, és távolról jelentkeznek be a virtuális gépet, az adatok fog vándorol. Ha több felhasználó osztozik ugyanazon operációs rendszer és a felhasználók távolról jelentkeznek be a kiszolgáló teljes asztali élmény, központi előfordulhat, hogy nem működik. Az utóbbi munkamenet-alapú forgatókönyv hivatalosan nem támogatott.
+## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>Hogyan Enterprise State Roaming támogatja a virtuális asztali infrastruktúra (VDI)?
+Enterprise State Roaming a Windows 10-es ügyfél SKU-k, de nem található a kiszolgálón termékváltozatok használata támogatott. Ha egy ügyfél VM hipervizor gépen üzemel, és távolról jelentkeznek be a virtuális gép, az adatok hordozhatók a rendszer. Ha több felhasználó megosztva az ugyanazon operációs rendszer és a felhasználók távolról jelentkeznek be a kiszolgálónak a teljes asztali élmény, barangolás előfordulhat, hogy nem működik. Az utóbbi munkamenet-alapú forgatókönyv hivatalosan nem támogatott.
 
-## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>Mi történik, ha a szervezet vásárol egy előfizetést, amely tartalmazza az Azure Rights Management központi használata után?
-Ha a szervezet már használja az Azure Rights Management korlátozott használatú ingyenes előfizetés a Windows 10 központi, a megvásárlásáról a [előfizetéssel](https://azure.microsoft.com/pricing/details/information-protection/) , amely tartalmazza az Azure Rights Management védelmi szolgáltatás nem lesz. a rendszergazda által a központi funkció működését mért hatást és a konfigurációs módosítások nélküli lesz szükség.
+## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>Mi történik, ha a szervezet megvásárolja egy előfizetést, amely tartalmazza az Azure Rights Management központi használata után?
+Ha a szervezet már használja az Azure Rights Management korlátozott használatú ingyenes előfizetés a Windows 10 roaming, megvásárlásának egy [előfizetéssel](https://azure.microsoft.com/pricing/details/information-protection/) , amely tartalmazza az Azure Rights Management adatvédelmi szolgáltatást nem fog a rendszergazda által a barangoló szolgáltatás funkciói hatást, és a konfigurációs módosítások nélküli lesz szükség.
 
 ## <a name="known-issues"></a>Ismert problémák
-A dokumentáció a a [hibaelhárítási](active-directory-windows-enterprise-state-roaming-troubleshooting.md) fellépő ismert problémák listáját szakasz. 
+Tekintse át a dokumentációt a [hibaelhárítási](active-directory-windows-enterprise-state-roaming-troubleshooting.md) szakaszban található ismert problémák listáját. 
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
-* [Vállalati állapotának központi áttekintése](active-directory-windows-enterprise-state-roaming-overview.md)
-* [Az Azure Active Directoryban a vállalati állapothordozás engedélyezése](active-directory-windows-enterprise-state-roaming-enable.md)
-* [Csoport házirend és a mobileszköz-kezelési beállítások beállítások szinkronizálási szolgáltatás](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
-* [Windows 10 központi beállításainak ismertetése](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
+* [Vállalati állapot központi áttekintése](active-directory-windows-enterprise-state-roaming-overview.md)
+* [Az Azure Active Directory vállalati állapothordozás engedélyezése](active-directory-windows-enterprise-state-roaming-enable.md)
+* [Csoport házirend és a mobileszköz-kezelési beállítások a beállítások szinkronizálása](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
+* [A Windows 10 roaming beállítások referenciája](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [hibaelhárítással](active-directory-windows-enterprise-state-roaming-troubleshooting.md)

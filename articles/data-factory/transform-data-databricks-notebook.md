@@ -1,6 +1,6 @@
 ---
-title: Adatok átalakítása a Databricks Notebook - Azure |} Microsoft Docs
-description: Ismerje meg, hogyan kell feldolgozni vagy átalakítási adatok Databricks jegyzetfüzet futtatásával.
+title: Adatok átalakítása a Databricks-jegyzetfüzet – Azure |} A Microsoft Docs
+description: Ismerje meg a feldolgozása vagy átalakíthatja azokat egy Databricks-jegyzetfüzet futtatásával.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: fbf713b2d52469ae12fc284e0a3d7e3bc369daeb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f21f33678b8cf09d9dbd8966d42b1a5ebac9ffb
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620503"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224652"
 ---
-# <a name="transform-data-by-running-a-databricks-notebook"></a>Adatok átalakítása Databricks jegyzetfüzet futtatásával
+# <a name="transform-data-by-running-a-databricks-notebook"></a>Adatok átalakítása a Databricks-jegyzetfüzet futtatása
 
-Az Azure Databricks Notebook tevékenység egy [Data Factory-folyamathoz](concepts-pipelines-activities.md) Databricks jegyzetfüzet futtatja az Azure Databricks munkaterületen. Ez a cikk épít, a [adatok átalakítása tevékenységek](transform-data.md) cikk, amelynek során az adatok átalakítása és a támogatott átalakítása tevékenységek általános áttekintést. Az Azure Databricks egy felügyelt platformon futó Apache Spark.
+Az Azure Databricks-jegyzetfüzet tevékenységeivel az egy [Data Factory-folyamatot](concepts-pipelines-activities.md) Databricks-jegyzetfüzet futtatása az Azure Databricks-munkaterületen. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform.
 
-## <a name="databricks-notebook-activity-definition"></a>Databricks Notebook activity definíció
+## <a name="databricks-notebook-activity-definition"></a>Databricks-jegyzetfüzet tevékenységet definíciója
 
-Ez a minta JSON-definícióból Databricks Notebook tevékenység:
+Itt látható a minta JSON-definícióját egy Databricks-jegyzetfüzetek tevékenységeit:
 
 ```json
 {
@@ -43,21 +43,80 @@ Ez a minta JSON-definícióból Databricks Notebook tevékenység:
             "baseParameters": {
                 "inputpath": "input/folder1/",
                 "outputpath": "output/"
-            }
+            },
+            "libraries": [
+                {
+                "jar": "dbfs:/docs/library.jar"
+                }
+            ]
         }
     }
 }
 ```
 
-## <a name="databricks-notebook-activity-properties"></a>Databricks Notebook tevékenység tulajdonságai
+## <a name="databricks-notebook-activity-properties"></a>Databricks-jegyzetfüzet tevékenység tulajdonságai
 
-A következő táblázat a JSON-definícióból használt JSON-tulajdonságok:
+A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulajdonságokat:
 
 |Tulajdonság|Leírás|Szükséges|
 |---|---|---|
-|név|A feldolgozási tevékenység nevét.|Igen|
-|leírás|A tevékenység mit leíró szöveg.|Nem|
-|type|Databricks Notebook tevékenység a tevékenységtípus DatabricksNotebook.|Igen|
-|linkedServiceName|Amikor a Databricks notebook fut. Databricks társított szolgáltatás neve. A csatolt szolgáltatással kapcsolatos további tudnivalókért lásd: [összekapcsolt szolgáltatások számítási](compute-linked-services.md) cikk.|Igen|
-|notebookPath|A Databricks munkaterületen futtatásához a notebook abszolút elérési útja. Ennek az elérési útnak törtvonallal kell kezdődnie.|Igen|
-|baseParameters|Kulcs-érték párokból álló tömb. Alap paraméterek használhatók az egyes tevékenységek futtatásához. Ha a notebook paramétert nincs megadva, az alapértelmezett értéket a notebook használható. További információ a paraméterek [Databricks notebookok](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nem|
+|név|A folyamat a tevékenység neve.|Igen|
+|leírás|A tevékenység leírása leíró szöveg.|Nem|
+|type|Databricks-jegyzetfüzetek tevékenységeit tevékenység típus DatabricksNotebook.|Igen|
+|linkedServiceName|Amelyen futtatja a Databricks-jegyzetfüzetek Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
+|notebookPath|A jegyzetfüzet futtatása a Databricks-munkaterület az abszolút elérési útja. Az elérési út perjellel kell kezdődnie.|Igen|
+|baseParameters|Kulcs-érték párokból álló tömb. Alap paramétereket az egyes tevékenységek futtatásához használható. Ha a notebook tart egy paramétert, amely nincs megadva, az alapértelmezett érték a notebookból használható. További információ: a paraméterek [Databricks-jegyzetfüzeteket](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nem|
+|Kódtárak|Telepíteni a fürt, amely végrehajtja a feladat a könyvtárak listáját. Álló tömb lehet \<karakterlánc, objektum >.|Nem|
+
+
+## <a name="supported-libraries-for-databricks-activities"></a>Databricks-tevékenységek támogatott kódtárak
+
+A fenti Databricks tevékenység meghatározásában, adja meg, ezek a szalagtár-típusok: *jar*, *tojás*, *maven*, *pypi*,  *cran*.
+
+```json
+{
+    "libraries": [
+        {
+            "jar": "dbfs:/mnt/libraries/library.jar"
+        },
+        {
+            "egg": "dbfs:/mnt/libraries/library.egg"
+        },
+        {
+            "maven": {
+                "coordinates": "org.jsoup:jsoup:1.7.2",
+                "exclusions": [ "slf4j:slf4j" ]
+            }
+        },
+        {
+            "pypi": {
+                "package": "simplejson",
+                "repo": "http://my-pypi-mirror.com"
+            }
+        },
+        {
+            "cran": {
+                "package": "ada",
+                "repo": "http://cran.us.r-project.org"
+            }
+        }
+    ]
+}
+
+```
+
+További részletekért tekintse meg a [Databricks dokumentációja](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) függvénytár típusaihoz.
+
+## <a name="how-to-upload-a-library-in-databricks"></a>Hogyan tölthet fel egy gyűjteményt a Databricks
+
+#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Databricks-munkaterület felhasználói felület használatával](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+
+A könyvtár hozzáadása a felhasználói felület használatával dbfs elérési beszerzéséhez használja a [a Databricks parancssori felület (telepítés)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+
+Általában a Jar-kódtárakat dbfs tárolt: / {{FileStore/jars a felhasználói felület használata közben. A parancssori felületén keresztül az összes listázhatja: *databricks fs ls dbfs: / {{FileStore/JAR-fájlok vagy kivételével*.
+
+
+
+#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Másolási szalagtár Databricks parancssori felület használatával](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+
+Példa: *databricks fs cp SparkPi-szerelvény-0.1.jar dbfs: / {{FileStore/JAR-fájlok vagy kivételével*

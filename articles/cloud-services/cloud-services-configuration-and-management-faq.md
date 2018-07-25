@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 6cdfb40ce02cc5f80e3347b921e2b2c75ae3d8ea
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5b8c7e8880f7e467b1b5a305cc7381e6499571f5
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37437137"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238621"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálása és felügyelete hibák: gyakran ismételt kérdések (GYIK)
 
@@ -41,6 +41,7 @@ Ez a cikk tartalmazza a konfigurációs és felügyeleti kapcsolatos problémák
 
 - [Milyen az Azure Portalon, amely megkönnyíti a későbbi Felhőszolgáltatás képességekre kezelése és az alkalmazások figyelése?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [Miért érdemes az IIS a naplózási könyvtár való írás leállítása?](#why-does-iis-stop-writing-to-the-log-directory)
+- [Hogyan engedélyezhetem WAD naplózás a Cloud Services?](#how-do-i-enable-wad-logging-for-cloud-services)
 
 **Hálózati konfiguráció**
 
@@ -138,6 +139,15 @@ Már kipróbálta a naplózási könyvtár írása a helyi tárolási kvótát.�
 További információkért tekintse meg a következő dokumentumokat:
 * [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](cloud-services-dotnet-diagnostics-storage.md)
 * [IIS-naplók a Cloud Service-ben írás befejezése](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+
+### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Hogyan engedélyezhetem WAD naplózás a Cloud Services?
+Engedélyezheti a Windows Azure Diagnostics (WAD) naplózás használatával a következő beállításokat:
+1. [A Visual Studióból engedélyezése](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [.Net-kódon keresztül engedélyezése](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+3. [Powershell-lel engedélyezése](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+
+A felhőszolgáltatás az aktuális WAD beállítások eléréséhez használható [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps parancsot, vagy Ön is megtekinthetik az alkalmazást "Cloud Services--> bővítmények" panelen portálon keresztül.
+
 
 ## <a name="network-configuration"></a>Hálózati konfiguráció
 

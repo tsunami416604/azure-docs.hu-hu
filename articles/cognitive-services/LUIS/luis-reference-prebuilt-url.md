@@ -1,30 +1,30 @@
 ---
-title: Előre elkészített LUIS entitások URL-cím referencia - Azure |} Microsoft Docs
+title: A LUIS előre összeállított entitások URL-hivatkozással – Azure |} A Microsoft Docs
 titleSuffix: Azure
-description: Ez a cikk URL-címet tartalmaz előre elkészített entitás információ a nyelvi ismertetése (LUIS).
+description: Ez a cikk URL-címet tartalmaz az előre összeállított Entitásadatok a Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 4eacf564a295a568a3e2c8d2f44ad0af3fbbe258
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 86989abab1dcf64384b8b26b9484bc508f2ce31f
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321959"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236788"
 ---
-# <a name="url-entity"></a>Entitás URL-címe
-URL-cím entitás URL-címek tartománynév vagy IP-címek bontja ki. Az entitás már be van tanítva, mert nem kell az alkalmazás URL-címeket tartalmazó példa utterances hozzáadása. URL-cím entitás támogatott `en-us` kulturális környezet csak. 
+# <a name="url-entity"></a>URL-cím entitás
+Entitás URL-cím tartománynév vagy IP-címek URL-címek kibontása. Az entitás már be van tanítva, mert nem kell az alkalmazás URL-címeket tartalmazó példa beszédmódok hozzáadása. URL-cím entitás támogatott `en-us` culture csak. 
 
-## <a name="types-of-urls"></a>URL-típusok
-URL-cím felügyelete a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) Github-adattár
+## <a name="types-of-urls"></a>URL-címeinek típusai
+URL-cím felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) Github-adattár
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Előre elkészített URL-cím entitás felbontás
-A következő példa bemutatja a feloldása a **builtin.url** entitás.
+## <a name="resolution-for-prebuilt-url-entity"></a>Előre összeállított URL-cím entitás feloldása
+Az alábbi példa bemutatja a feloldása a **builtin.url** entitás.
 
 ```JSON
 {
@@ -52,4 +52,4 @@ A következő példa bemutatja a feloldása a **builtin.url** entitás.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a [sorszám](luis-reference-prebuilt-ordinal.md), [szám](luis-reference-prebuilt-number.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat.
+További információ a [sorszámnál](luis-reference-prebuilt-ordinal.md), [szám](luis-reference-prebuilt-number.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat.

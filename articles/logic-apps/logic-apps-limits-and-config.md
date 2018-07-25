@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7726d7eae2d9b3a37ffc141e4a4cbdc9a1af459c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: eaf05d44a4d77f1a294664485e38c6f5719ce238
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145037"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238311"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -96,8 +96,9 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 | Műveletek egyidejű kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek számát, vagy igény szerint időtartamának csökkentése érdekében. | 
 | Futásidejű végpont: egyidejű beérkező hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy igény szerint időtartamának csökkentése érdekében. | 
 | Futásidejű végpont: olvassa el a hívások száma 5 percenként  | 60,000 | Is szét a számítási feladatok több alkalmazás igény szerint. | 
-| Futásidejű végpont: 5 percenként hívások meghívása| 45,000 | Is szét a számítási feladatok több alkalmazás igény szerint. | 
-|||| 
+| Futásidejű végpont: 5 percenként hívások meghívása| 45,000 | Is szét a számítási feladatok több alkalmazás igény szerint. |
+| Tartalom átviteli 5 percenként | 600 MB | Is szét a számítási feladatok több alkalmazás igény szerint. |  
+||||| 
 
 Nyissa meg a fenti ezeket a korlátokat, a normál feldolgozása, vagy futtassa a terheléses tesztelés díjaival, előfordulhat, hogy nyissa meg a fenti ezeket a korlátokat [a Logic Apps-csapat](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
 

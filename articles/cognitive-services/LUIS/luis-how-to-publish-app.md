@@ -3,19 +3,19 @@ title: A LUIS-alkalmazás közzététele |} A Microsoft Docs
 description: Miután hozhat létre, és az alkalmazás tesztelése a Language Understanding (LUIS) használatával, közzéteheti webszolgáltatásként, amely az Azure-ban.
 services: cognitive-services
 titleSuffix: Azure
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr;
-ms.openlocfilehash: d579ba8913eeb6ce22e277dab454ba7e3b628703
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry;
+ms.openlocfilehash: b827f157ccd2919c959385eefd0e0223a8e23607
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171932"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225540"
 ---
 # <a name="publish-your-trained-app"></a>A betanított alkalmazás közzététele
 Ha befejezte a elkészítését és tesztelését a LUIS-alkalmazás, tegye közzé. Az alkalmazás közzététele után a közzétételi oldalon látható-e az összes kapcsolódó HTTP [végpontok](luis-glossary.md#endpoint). Ezeket a végpontokat kiszolgálónként [régió](luis-reference-regions.md) és a egy [kulcs](luis-how-to-manage-keys.md), majd integrálva vannak minden olyan ügyfél, a csevegőrobot, vagy a háttérrendszer alkalmazás. 

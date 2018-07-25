@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 6033269ab1dd35721aff17b1732d1f02cc452b31
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: b82785d0f4b6a5952334e891e7adec570c624f2d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216156"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238131"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurálja a VMSS Felügyeltszolgáltatás-identitás (MSI) PowerShell-lel
 
@@ -27,9 +27,9 @@ ms.locfileid: "39216156"
 
 Felügyeltszolgáltatás-identitás az Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
 
-Ez a cikk ismerteti a Felügyeltszolgáltatás-identitás műveleteket a egy virtuális gép méretezési beállítása (VMSS), PowerShell-lel:
-- Engedélyezheti és tilthatja le a rendszer az Azure VMSS identitásának hozzárendelve
-- Hozzáadhat és eltávolíthat az Azure VMSS identitásának hozzárendelt felhasználó
+Ez a cikk ismerteti a Felügyeltszolgáltatás-identitás műveletek végrehajtása az Azure-beli virtuálisgép-méretezési csoportot, PowerShell-lel:
+- Engedélyezheti vagy letilthatja a virtuálisgép-méretezési csoportot a rendszer által hozzárendelt identitással
+- Hozzáadhat és eltávolíthat a virtuálisgép-méretezési csoportot egy felhasználóhoz hozzárendelt identitás
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ Ez a cikk ismerteti a Felügyeltszolgáltatás-identitás műveleteket a egy vir
 
 Ebben a szakaszban megismerheti, hogyan engedélyezheti és távolítsa el a rendszer által hozzárendelt identitással Azure PowerShell-lel.
 
-### <a name="enable-system-assigned-identity-during-the-creation-of-an-azure-vmss"></a>Engedélyezze a rendszerhez rendelt identitáshoz az Azure VMSS létrehozása során
+### <a name="enable-system-assigned-identity-during-the-creation-of-an-azure-virtual-machine-scale-set"></a>Rendszer által hozzárendelt identitással engedélyezése egy Azure-beli virtuálisgép-méretezési készlet létrehozása során
 
 A rendszer által hozzárendelt identitással engedélyezve van a VMSS létrehozása:
 
@@ -55,7 +55,7 @@ A rendszer által hozzárendelt identitással engedélyezve van a VMSS létrehoz
     $VMSS = New-AzureRmVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
 
-2. (Nem kötelező) Hozzáadás a MSI VMSS bővítmény használatával a `-Name` és `-Type` paraméterrel a [Add-azurermvmssextension parancsmagban](/powershell/module/azurerm.compute/add-azurermvmssextension) parancsmag. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
+2. (Nem kötelező) Hozzáadás a MSI VMSS bővítmény használatával a `-Name` és `-Type` paraméterrel a [Add-azurermvmssextension parancsmagban](/powershell/module/azurerm.compute/add-azurermvmssextension) parancsmag. Átadható "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a típusától függően virtuálisgép-méretezési csoport állítsa be, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
 
     > [!NOTE]
     > Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.
@@ -66,24 +66,23 @@ A rendszer által hozzárendelt identitással engedélyezve van a VMSS létrehoz
    Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 
-## <a name="enable-system-assigned-identity-on-an-existing-azure-vmss"></a>A rendszer egy meglévő Azure VMSS identitásának hozzárendelt engedélyezése
+## <a name="enable-system-assigned-identity-on-an-existing-azure-virtual-machine-scale-set"></a>Egy meglévő Azure-beli virtuálisgép-méretezési csoportot a rendszer által hozzárendelt identitással engedélyezése
 
-Ha egy rendszer által hozzárendelt identitással a egy meglévő Azure VMSS engedélyeznie kell:
+Ha egy rendszer által hozzárendelt identitással egy meglévő Azure-beli virtuálisgép-méretezési csoportot a engedélyeznie kell:
 
-1. Jelentkezzen be Azure-bA `Login-AzureRmAccount`. Használjon, amely tartalmazza a virtuális gép Azure-előfizetéssel társított fiókot. Ügyeljen arra, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuális Gépen, például a "Virtuális gép közreműködő":
+1. Jelentkezzen be Azure-bA `Login-AzureRmAccount`. Az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoportba tartozó fiókot használnia. Ügyeljen arra, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuális gép méretezési csoportot, például a "Virtuális gép közreműködő":
 
    ```powershell
    Login-AzureRmAccount
    ```
 
-2. Először kérjen le a VMSS-tulajdonságok használatával a [ `Get-AzureRmVmss` ](/powershell/module/azurerm.compute/get-azurermvmss) parancsmagot. Ezután a rendszer által hozzárendelt identitással engedélyezéséhez használja a `-IdentityType` váltani a [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) parancsmagot:
+2. A virtuális gép méretezési csoport tulajdonságait a első lekérése a [ `Get-AzureRmVmss` ](/powershell/module/azurerm.compute/get-azurermvmss) parancsmagot. Ezután a rendszer által hozzárendelt identitással engedélyezéséhez használja a `-IdentityType` váltani a [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) parancsmagot:
 
    ```powershell
-   $vm = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVM
-   Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name -myVM -IdentityType "SystemAssigned"
+   Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-3. Hozzáadás a MSI VMSS bővítmény használatával a `-Name` és `-Type` paraméterrel a [Add-azurermvmssextension parancsmagban](/powershell/module/azurerm.compute/add-azurermvmssextension) parancsmag. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
+3. Hozzáadás a MSI VMSS bővítmény használatával a `-Name` és `-Type` paraméterrel a [Add-azurermvmssextension parancsmagban](/powershell/module/azurerm.compute/add-azurermvmssextension) parancsmag. Átadható "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a típusától függően virtuálisgép-méretezési csoport állítsa be, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
 
    ```powershell
    $setting = @{ "port" = 50342 }
@@ -91,68 +90,66 @@ Ha egy rendszer által hozzárendelt identitással a egy meglévő Azure VMSS en
    Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 
-### <a name="disable-the-system-assigned-identity-from-an-azure-vmss"></a>A rendszer az Azure VMSS hozzárendelt identitás letiltása
+### <a name="disable-the-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Tiltsa le az Azure-beli virtuálisgép-méretezési csoportot, a rendszer által hozzárendelt identitással
 
-> [!NOTE]
-> Felügyeltszolgáltatás-identitását egy virtuálisgép-méretezési csoportban a letiltás jelenleg nem támogatott. Addig is válthat a rendszer által hozzárendelt, és a felhasználó hozzárendelt identitások között.
+Ha egy virtuális gép méretezési csoportot, amely már nincs szüksége a rendszerhez rendelt identitáshoz, de továbbra is a felhasználó által hozzárendelt identitások van szüksége, használja a következő parancsmagot:
 
-Ha egy virtuálisgép-méretezési, már nincs szüksége a rendszerhez rendelt identitáshoz, de továbbra is a felhasználó által hozzárendelt identitások van szüksége, használja a következő parancsmagot:
-
-1. Jelentkezzen be Azure-bA `Login-AzureRmAccount`. Használjon, amely tartalmazza a virtuális gép Azure-előfizetéssel társított fiókot. Ügyeljen arra, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuális Gépen, például a "Virtuális gép közreműködő":
+1. Jelentkezzen be Azure-bA `Login-AzureRmAccount`. Használjon, amely tartalmazza a virtuális gép Azure-előfizetéssel társított fiókot. Ügyeljen arra, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuális gép méretezési csoportot, például a "Virtuális gép közreműködő":
 
 2. Futtassa a következő parancsmagot:
 
-    ```powershell
-    Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "UserAssigned"
-    ```
+   ```powershell
+   Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "UserAssigned"
+   ```
+
+Ha egy virtuális gép méretezési csoportot, amely a rendszerhez rendelt identitáshoz már nincs szüksége van, és nem a felhasználói identitásokat, használja a következő parancsokat:
+
+```powershell
+Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
+```
 
 ## <a name="user-assigned-identity"></a>A felhasználóhoz hozzárendelt identitás
 
-Ebben a szakaszban megismerheti, hogyan adhat hozzá és távolíthat el egy felhasználót egy Azure PowerShell-lel VMSS hozzárendelt identitás.
+Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása a a felhasználóhoz hozzárendelt identitás az Azure PowerShell használatával virtuálisgép-méretezési csoportot.
 
-### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-vmss"></a>Rendelje hozzá egy a felhasználóhoz hozzárendelt identitás létrehozása az Azure VMSS során
+### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Egy felhasználóhoz hozzárendelt identitás hozzárendelése egy Azure-beli virtuálisgép-méretezési készlet létrehozása során
 
-Egy új VMSS egy felhasználóhoz hozzárendelt identitás létrehozása jelenleg nem támogatott Powershellen keresztül. Tekintse át a következő szakaszban, a felhasználóhoz hozzárendelt identitás hozzáadása egy meglévő vmss-hez. Térjen vissza frissítésekért.
+Egy új virtuálisgép-méretezési csoportot az egy felhasználóhoz hozzárendelt identitás létrehozása jelenleg nem támogatott Powershellen keresztül. Tekintse át a következő szakasz egy felhasználóhoz hozzárendelt identitás hozzáadása egy meglévő virtuálisgép-méretezési csoportot. Térjen vissza frissítésekért.
 
-### <a name="assign-a-user-identity-to-an-existing-azure-vmss"></a>A felhasználói identitás hozzárendelése egy meglévő Azure vmss-hez
+### <a name="assign-a-user-identity-to-an-existing-azure-virtual-machine-scale-set"></a>A felhasználói identitás hozzárendelése egy meglévő Azure-beli virtuálisgép-méretezési csoportot
 
-Felhasználó hozzárendelése hozzárendelt identitás egy meglévő Azure vmss-hez:
+Egy felhasználóhoz hozzárendelt identitás hozzárendelése egy meglévő Azure-beli virtuálisgép-méretezési csoportot:
 
-1. Jelentkezzen be Azure-bA `Connect-AzureRmAccount`. Használjon, amely tartalmazza a virtuális gép Azure-előfizetéssel társított fiókot. Ügyeljen arra, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuális Gépen, például a "Virtuális gép közreműködő":
+1. Jelentkezzen be Azure-bA `Connect-AzureRmAccount`. Az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoportba tartozó fiókot használnia. Ügyeljen arra, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuális gép méretezési csoportot, például a "Virtuális gép közreműködő":
 
    ```powershell
    Connect-AzureRmAccount
    ```
 
-2. Először kérjen le a virtuális gép tulajdonságainak használata a `Get-AzureRmVM` parancsmagot. Majd szeretne hozzárendelni egy felhasználóhoz hozzárendelt identitás az Azure vmss-hez, használja a `-IdentityType` és `-IdentityID` váltani a [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) parancsmagot. Cserélje le `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` a saját értékeire.
+2. A virtuális gép méretezési csoport tulajdonságait a első lekérése a `Get-AzureRmVM` parancsmagot. Majd szeretne hozzárendelni egy felhasználóhoz hozzárendelt identitás a virtuálisgép-méretezési csoporthoz, használja a `-IdentityType` és `-IdentityID` váltani a [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) parancsmagot. Cserélje le `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` a saját értékeire.
 
    [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
-
    ```powershell
-   $vmss = Get-AzureRmVmss -ResourceGroupName <RESOURCE GROUP> -Name <VMSS NAME>
-   Update-AzureRmVmss -ResourceGroupName <RESOURCE GROUP> -VM $vmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED ID1>","<USER ASSIGNED ID2>"
+   Update-AzureRmVmss -ResourceGroupName <RESOURCE GROUP> -Name <VMSS NAME> -IdentityType UserAssigned -IdentityID "<USER ASSIGNED ID1>","<USER ASSIGNED ID2>"
    ```
 
-### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Az Azure VMSS identitás hozzárendelt felhasználó eltávolítása
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Egy Azure-beli virtuálisgép-méretezési csoportot felügyelt identitás hozzárendelt felhasználó eltávolítása
 
-> [!NOTE]
-> Az összes felhasználó által hozzárendelt identitások eltávolítása egy virtuálisgép-méretezési csoportban jelenleg nem támogatott, kivéve, ha a rendszerhez rendelt identitáshoz. Térjen vissza frissítésekért.
-
-Ha a VMSS több felhasználó által hozzárendelt identitások, az alábbi parancsokkal az utolsót kivételével az összes eltávolíthatja. Ne felejtse el a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterek értékeit a saját értékeire cserélni. A `<MSI NAME>` marad, és a VMSS a felhasználóhoz hozzárendelt identitás name tulajdonság. Ez az információ található a VMSS használatával identitás szakaszában `az vmss show`:
+Ha a virtuális gép méretezési több felhasználó által hozzárendelt identitások, az alábbi parancsokkal az utolsót kivételével az összes eltávolíthatja. Ne felejtse el a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterek értékeit a saját értékeire cserélni. A `<MSI NAME>` marad, és a virtuálisgép-méretezési csoportot a felhasználóhoz hozzárendelt identitás name tulajdonság. Ez az információ található a virtuálisgép-méretezési csoportot a identitás szakaszában `az vmss show`:
 
 ```powershell
-$vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss
-$vmss.Identity.IdentityIds = "<MSI NAME>"
-Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -VirtualMachineScaleSet $vmss
+Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<MSI NAME>"
 ```
-
-Ha a VMSS hozzárendelt rendszer és a felhasználó által hozzárendelt identitások, eltávolíthatja az összes a felhasználóhoz hozzárendelt identitások között használata csak a rendszer által hozzárendelt. Használja az alábbi parancsot:
+Ha el szeretné távolítani az összes felhasználó hozzárendelt identitások, a virtuálisgép-méretezési készlet nem rendelkezik a rendszerhez rendelt identitáshoz, használja a következő parancsot:
 
 ```powershell
-$vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss
-$vmss.Identity.IdentityIds = $null
-Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -VirtualMachine $vmss -IdentityType "SystemAssigned"
+Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
+```
+Ha a virtuálisgép-méretezési csoporthoz rendelt system és a felhasználó által hozzárendelt identitások, eltávolíthatja az összes felhasználói hozzárendelt identitások között csak a hozzárendelt rendszer használatára.
+
+```powershell 
+Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "SystemAssigned"
 ```
 
 ## <a name="related-content"></a>Kapcsolódó tartalom

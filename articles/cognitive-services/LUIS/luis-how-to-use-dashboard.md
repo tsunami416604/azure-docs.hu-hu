@@ -1,31 +1,31 @@
 ---
-title: Alkalmazás irányítópult LUIS alkalmazásokhoz |} Microsoft Docs
-description: Ismerje meg az alkalmazás irányítópult, a feladatkonfigurációkat jelentéskészítési eszköz, amely lehetővé teszi az alkalmazások egyetlen pillantással figyelése.
+title: Alkalmazás irányítópult, a LUIS-alkalmazások |} A Microsoft Docs
+description: Ismerje meg az irányítópult, egy teszi jelentéskészítési eszköz, amely lehetővé teszi, hogy egyetlen pillantással alkalmazások figyelése.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: v-geberr
-ms.openlocfilehash: c7ef38e2f2edaf795d3d76706afd4aa09b3b6959
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: diberry
+ms.openlocfilehash: 518227d9f4165a08fafefa357de255d97c710f61
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110048"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224500"
 ---
 # <a name="application-dashboard"></a>Alkalmazás irányítópult
-Alkalmazás irányítópult lehetővé teszi, hogy az alkalmazás egyetlen pillantással figyelheti. A **irányítópult** jelenít meg, amikor egy alkalmazás nyissa meg az alkalmazás neve kattintva **saját alkalmazások** lapon válassza ki azt **irányítópult** az ablak tetején. 
+Alkalmazás irányítópult lehetővé teszi az alkalmazás egyetlen pillantással figyelésére. A **irányítópult** jelenít meg, amikor megnyit egy alkalmazást az alkalmazás neve kattintva **saját alkalmazások** lapon válassza ki **irányítópult** az ablak tetején. 
 
 > [!CAUTION]
-> Ha szeretne a legfrissebb metrikák LUIS, kell:
-> * Használja a LUIS [végpontkulcs](luis-how-to-azure-subscription.md) létrehozása az Azure-ban
-> * Végpont kulcs használata LUIS, többek között a LUIS összes végpont kérelem [API](https://aka.ms/luis-endpoint-apis) és botot
-> * Minden egyes LUIS app másik végpont kulcs használata. Ne használjon egyetlen végpontkulcs az összes alkalmazáshoz. A végpont kulcs nyomon kulcs szinten, nem az alkalmazás szintjén van.  
+> Ha azt szeretné, a legfrissebb metrikák a LUIS, kell tennie:
+> * A LUIS használatát [végponti kulcs](luis-how-to-azure-subscription.md) létrehozása az Azure-ban
+> * Végpont kulcs használata LUIS, LUIS többek között az összes endpoint kérelmek [API](https://aka.ms/luis-endpoint-apis) és robotot
+> * A LUIS alkalmazás másik végponti kulcs használata. Ne használjon egyetlen végpontkulcsának összes alkalmazáshoz. A végpont kulcs rendszer nyomon követi a legfontosabb szintjén, az alkalmazás szintjén nem.  
 
-A **irányítópult** lap áttekintést nyújt a LUIS alkalmazás, beleértve az aktuális modell állapot, valamint [végpont](luis-glossary.md#endpoint) használat idővel. <!--The following image shows the **Dashboard** page.-->
+A **irányítópult** oldal áttekintést nyújt a LUIS-alkalmazás, beleértve az aktuális modell állapot, valamint [végpont](luis-glossary.md#endpoint) használat az idő függvényében. <!--The following image shows the **Dashboard** page.-->
 
 <!-- TBD: Get a working screen shot
 ![The Dashboard](./media/luis-how-to-use-dashboard/dashboard.png)
@@ -36,61 +36,61 @@ At the top of the **Dashboard** page, a contextual notification bar constantly d
 -->
   
 ## <a name="app-status"></a>Alkalmazás állapota
-Az irányítópult megjeleníti az alkalmazás képzési és a közzétételi állapota, beleértve a dátum és idő, amikor az alkalmazás legutóbbi betanítása és közzé.  
+Az irányítópult megjeleníti az alkalmazás-képzési és közzétételi állapota, beleértve a dátum és idő, amikor az alkalmazás történt legutóbbi betanított és a közzétett.  
 
 ![Irányítópult - alkalmazás állapota](./media/luis-how-to-use-dashboard/app-state.png)
 
-## <a name="model-data-statistics"></a>Modell adatok statisztikák
-Az irányítópult leképezések, entitások és az alkalmazás létező címkézett utterances teljes számát jeleníti meg. 
+## <a name="model-data-statistics"></a>Modell adatok statisztika
+Az irányítópult szándék fog vonatkozni, az entitások és az alkalmazás meglévő címkézett utterances teljes számát jeleníti meg. 
 
-![Az alkalmazásadatok statisztikák](./media/luis-how-to-use-dashboard/app-model-count.png)
+![Az alkalmazásadatok statisztika](./media/luis-how-to-use-dashboard/app-model-count.png)
 
 ## <a name="endpoint-hits"></a>Végpont találatok
-Az irányítópult megjelenítése a teljes végpont találatok, amely a LUIS alkalmazást kap, és lehetővé teszi, hogy is megjelenítsen találatok belül, hogy adja meg. Megjelenik a találatok száma érték a összege, azaz használó végpont a találatok egy [végpontkulcs](./luis-concept-keys.md#endpoint-key) végpont találatok használó és egy [szerzői műveletek kulcs](./luis-concept-keys.md#authoring-key).
+Az irányítópult megjeleníti az összes endpoint találatok, amely a LUIS alkalmazás kap, és lehetővé teszi, hogy a megjelenítési eléri egy időtartamon belül, amikor adja meg. Megjelenik a találatok teljes száma, az összeg, használó végpont a találatok egy [végponti kulcs](./luis-concept-keys.md#endpoint-key) és végpontot használó eléri egy [szerzői műveletek kulcs](./luis-concept-keys.md#authoring-key).
 
 <!-- TBD: this image is old but I don't have a new one based on usage -->
 ![Végpont találatok](./media/luis-how-to-use-dashboard/dashboard-endpointhits.png)
 
 > [!NOTE] 
-> A legújabb endpoint találatok száma szerepel az Azure-portálon a LUIS szolgáltatás áttekintése. 
+> A legfrissebb végpont találatok száma az intelligens HANGFELISMERÉSI szolgáltatás áttekintése az Azure Portalon található. 
  
 ### <a name="total-endpoint-hits"></a>Teljes endpoint találatok
-Az alkalmazás létrehozása az aktuális dátummal záródó részéből óta az alkalmazáshoz kapott végpont találatok összesített száma
+Alkalmazás létrehozása az aktuális dátummal záródó részéből. óta az alkalmazáshoz kapott végpont-találatok teljes száma.
 
 ### <a name="endpoint-hits-per-period"></a>Végpont találatok időszakonként
-Elmúlt időszakban kapott találatok száma naponta jelenik meg. A kezdő és záró dátum közötti pontok határoz meg az ebben az időszakban alá tartozó nap. Minden pont megjelenítéséhez vigye az egérmutatót a találatok száma naponta, a határidőn belül. 
+Egy elmúlt időszakban kapott találatok száma naponta jelenik meg. A pontokat a kezdő és záró dátuma között az ebben az időszakban alá tartozó nap képviseli. Minden pont megtekintéséhez vigye az egérmutatót a találatok száma naponta időszakon belül. 
 
 A diagram megtekintése időszak kiválasztása:
  
-1. Kattintson a **további beállításokat** ![további beállítások gomb](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) az időszakok lista eléréséhez. Kiválaszthatja a kezdve egy hét másolatot egy évig időszakok. 
+1. Kattintson a **további beállítás** ![további beállítások gomb](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) időszakok lista eléréséhez. Időszakok és a egy hét másolatot egy évig is választhat. 
 
     ![Végpont találatok időszakonként](./media/luis-how-to-use-dashboard/timerange.png)
 
-2. Válassza ki az adott időszakban a listából, és majd kattintson a Vissza gombra ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram megjelenítése.
+2. Egy időszakot válasszon a listából, és kattintson a Vissza nyíl ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram megjelenítése.
 
 ### <a name="key-usage"></a>Kulcshasználat
-A végpont kulcsát a felhasznált találatok száma. Végpont kulcsokkal kapcsolatos további információkért lásd: [LUIS kulcsokat](luis-concept-keys.md). 
+Az alkalmazás végponti kulcs üzenetdíjat találatok száma. Végpont kulcsokkal kapcsolatos további információkért lásd: [kulcsok a LUIS](luis-concept-keys.md). 
   
 ## <a name="intent-breakdown"></a>Leképezési lebontása
-A **leképezés lebontása** leképezések címkézett utterances vagy a végpont találatok részletes információkat jelenít meg. Az összegző diagram megjeleníti minden egyes leképezés relatív fontosságát az alkalmazásban. Ha az egérmutatóval rámutat szelet, megjelenik az leképezési nevét és azt jelenti, hogy az címkézett utterances/végpont találatok teljes száma. 
+A **szándékot lebontása** jelenít meg információkat a leképezések címkézett utterances vagy a végpont a találatok alapján. Az összegző diagram megjeleníti minden egyes szándékot relatív fontosságát az alkalmazásban. Ha az egérmutatót egy szeletet, láthatja a leképezés neve és a százalékos aránya, amely jelöl, címkézett kimondott szöveg/végpont találatok teljes száma. 
 
 ![Leképezési lebontása](./media/luis-how-to-use-dashboard/intent-breakdown.png)
 
-Szabályozásához, hogy a lebontása alapul címkézett utterances vagy a végpont találatok:
+Szabályozhatja, hogy táblázat összefoglalja alapul címkézett utterances vagy a végpont a találatok:
 
-1. Kattintson a **további beállításokat** ![további beállítások gomb](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) a listában, ahogy az alábbi képen eléréséhez:
+1. Kattintson a **további beállítás** ![további beállítások gomb](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) eléréséhez a listában, ahogyan az alábbi képen is látható:
 
     ![Leképezési lebontása listája](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
-2. Válasszon ki egy értéket a listából, és majd kattintson a Vissza gombra ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram megjelenítése.
+2. Válasszon ki egy értéket a listából, és kattintson a Vissza nyíl ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram megjelenítése.
 
 ## <a name="entity-breakdown"></a>Entitás lebontása
-Az irányítópult entitások alapján címkézett utterances vagy a végpont találatok részletes információkat jelenít meg. Az összegző diagram megjeleníti minden egyes entitás relatív fontosságát az alkalmazásban. Ha az egérmutatóval rámutat szelet, megjelenik az entitás nevét és a címkézett utterances/végpont találatok százalékos. 
+Az irányítópult egy bontása entitások címkézett utterances vagy a végpont a találatok alapján jeleníti meg. Az összegző diagram megjeleníti a minden entitás relatív fontosságát az alkalmazásban. Ha az egérmutatót egy szeletet, megjelenik az entitás nevét és a címkézett kimondott szöveg/végpont találatok százalékos. 
 
 ![Entitás lebontása](./media/luis-how-to-use-dashboard/entity-breakdown.png)
 
-Szabályozásához, hogy a lebontása alapul címkézett utterances vagy a végpont találatok:
+Szabályozhatja, hogy táblázat összefoglalja alapul címkézett utterances vagy a végpont a találatok:
 
-1. Kattintson a **további beállításokat** ![további beállítások gomb](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) a listában, ahogy az alábbi képen eléréséhez:
+1. Kattintson a **további beállítás** ![további beállítások gomb](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) eléréséhez a listában, ahogyan az alábbi képen is látható:
 
-    ![Entitás lebontása listájában](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
-2. Válasszon ki egy értéket a listából, és majd kattintson a Vissza gombra ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Ennek megfelelően megjelenítése a diagramterület.
+    ![Entitáslista lebontása](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
+2. Válasszon ki egy értéket a listából, és kattintson a Vissza nyíl ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram ennek megfelelően megjelenítéséhez.

@@ -3,19 +3,19 @@ title: C# SDK-t beszéd használata az intelligens hangfelismerési szolgáltat�
 titleSuffix: Azure
 description: A beszédfelismerés C# SDK-minta használatával beszéljen a mikrofon és visszaadott LUIS szándékot és entitások előrejelzés beolvasása.
 services: cognitive-services
-author: v-geberr
+author: diberry
 manager: kamran.iqbal
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 3b225a012abe4796172327d8a723338e8de67749
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry;
+ms.openlocfilehash: 4249b908cc64eb229281cff60ddaa0394f946433
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930018"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238913"
 ---
 # <a name="integrate-speech-service"></a>Beszédszolgáltatás integrálása
 A [beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) lehetővé teszi, hogy egyetlen kérés fogadásához hang, és a LUIS-előrejelzési JSON objektumokat adjanak vissza.
@@ -42,7 +42,7 @@ Do I have any paid time off?
 ## <a name="add-keyphrase-prebuilt-entity"></a>Adja hozzá a KeyPhrase előre összeállított entitások
 Válassza ki az alkalmazást az importálás után **entitások**, majd **előre összeállított entitások kezelése**. Adja hozzá a **KeyPhrase** entitás. A KeyPhrase entitás kulcs tárgyára kigyűjti az utterance (kifejezés).
 
-## <a name="train-and-publish-the-app"></a>Betanítása és az alkalmazás közzététele
+## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
 1. A felső, jobb oldali navigációs sávon válassza ki a **betanításához** gomb a LUIS alkalmazás betanításához.
 
 2. Válassza ki **közzététel** , nyissa meg a közzétételi oldalon. 

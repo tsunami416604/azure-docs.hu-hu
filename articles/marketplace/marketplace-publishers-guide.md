@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: c06811afbf575b36dd1cf185a4554427ce2cd9e3
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 0f4ff7c11952e6e222104b3953c547a91b4fc124
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205231"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223072"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Az Azure Marketplace és AppSource közzétételi útmutató
 
@@ -70,47 +70,6 @@ Miután [küldje el a megoldás](https://azuremarketplace.microsoft.com/sell/sig
 
 További információ a Microsoft a piaci megjelenést előnyökről és növelje üzletét a Marketplace-en: [a Microsoft piaci megjelenést szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
 
-## <a name="storefronts"></a>Áruházak
-Egy áruház oldala az ajánlatok listázása, engedélyezze a kísérleteket, majd közvetlenül a Microsoft ügyfelei transact. A Microsoft biztosít különböző kirakattípus a Marketplace és appsource-ban. Minden egyes kirakattípus részletes előnyeit tekintse meg a következő hivatkozásra:
-* [Az AppSource és az Azure Marketplace összehasonlítása](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
-* [Növelje üzletét a Marketplace-en](https://docs.microsoft.com/en-us/azure/marketplace/grow-your-business-with-azure-marketplace)
+## <a name="next-steps"></a>További lépések
 
-Kirakattípus segíthet az ügyfeleknek, keresse meg, és megvásárolják alkalmazásokat és szolgáltatásokat, gyorsítsa fel a digitális átalakítást az ügyfél. Kirakattípus segít Önnek a növekedésben a vállalatok a Microsoft ügyfelei és partnerei való hozzáférés kiterjesztésével.
- 
-Minden kirakat biztosít a speciális beállításokat a közzétételi befektetések optimális kihasználása érdekében. Az alábbi táblázat foglalja össze, ezeket a beállításokat:
-
-| Beállítás | AppSource | Azure Marketplace |
-|:--- |:--- |:--- |
-| Célközönség | Az üzleti döntéshozók<table> <tr> <th>szakértő szerepkörök </th> </tr> <tr> <td>Könyvelés</td> </tr> <tr> <td>Beszerzés</td> </tr> <tr> <td>Gyártás</td> </tr> </table> | Informatikai szakemberek és fejlesztők<table> <tr> <th>szakértő szerepkörök </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>Adatbázisok</td> </tr> <tr> <td>SecOps</td> </tr> </table> |
-| A beépített vagy bővítése | <ul><li>Azure Dynamics 365</li><li>Office 365</li><li>Power BI</li><li>PowerApps</li></ul> | Azure | 
-| Megoldás- és szolgáltatástípusok | <ul><li>Üzleti felhőalkalmazások befejeződött</li><li>Az Office 365-bővítmények</li></ul> | <ul><li>Infrastruktúra-megoldások</li><li>Professzionális szolgáltatások</li></ul> |
-| Csomag típusa | <ul><li>Tanácsadási szolgáltatások</li><li>Kapcsolatfelvétel</li><li>Ingyenes próba</li><li>Most</li><li>Próbaüzem</li></ul> | <ul><li>Azure-alkalmazások: a felügyelt alkalmazás</li><li>Az Azure apps: megoldássablon</li><li>Tanácsadási szolgáltatások</li><li>Kapcsolatfelvétel</li><li>Próba</li><li>Virtuális gép</li></ul> |
-| Alkalmazáson belüli felhasználói élményt alkalmazásokhoz és szolgáltatásokhoz a környezetben, az alkalmazás hozzáférést biztosít a felhasználóknak | <ul><li>Dynamics 365</li><li>Office 365</li><li>Office kliensalkalmazások</li><li>Power BI</li></ul> | <ul><li>Azure Portal</li><li>Azure Resource Manager</li><li>Azure CLI</li></ul> |
-
-## <a name="publish-in-the-marketplace"></a>A piactéren közzétett
-A következő cikkek nyújtanak tájékoztatást appsource-ban és az Azure Marketplace közzétételi beállítások.
-
-Válhat kiadóvá a piactéren három egyszerű lépésben egy áruház oldala:
-1. [Közzétételi lehetőség](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type) 
-2. [Válhat kiadóvá a piactéren kirakattípus](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) 
-
-## <a name="publishing-checklists"></a>Közzétételi Ellenőrzőlisták
-*   [Közzétételi ellenőrzőlista az appsource-ban](publishing-checklist-appsource.md)
-*   [A Cloud Partner portálra az Azure piactér közzétételi ellenőrzőlistája](./publishing-checklist-azure-Marketplace.md)
-*   [A próbaverzió listázása az Azure Active Directoryval engedélyezése](./enable-trial-using-azure-ad.md)
-
-## <a name="support"></a>Támogatás
-*   [AppSource-támogatás](./support-appsource.md) 
-*   [Az Azure Marketplace-en támogatása](./support-azure-Marketplace.md)
-
-## <a name="guides"></a>Útmutatók
-*   [Azure Marketplace tanácsadási szolgáltatások](consulting-services.md)
-*   [Azure Marketplace SaaS alkalmazás – műszaki közzétételi útmutató](Marketplace-saas-applications-technical-publishing-guide.md)
-
-## <a name="guidelines"></a>Irányelvek
-*   [Irányelvek](./guidelines.md)
-*   [A Marketplace-fiók kezelése a Microsoft ID létrehozására vonatkozó irányelvek](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)
-*   [Regisztrálás a fejlesztői központban](./register-dev-center.md) 
-*   [Adja meg a banki és adózási adatait](./add-bank-tax-info.md) 
-*   [A próbaverzió listázása az Azure Active Directoryval engedélyezése](./enable-trial-using-azure-ad.md)
-*   [Az Azure piactér számlázási lehetőségei](./billing-options-azure-marketplace.md) 
+Tekintse át a felhőbeli piactér témakörök részletesebb tájékoztatást a bal oldali tartalomjegyzék áttekintésével. 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: e8e41c51b6df9962e561d56be75108ba9cd76377
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: fd1e10239d63417a21eb6f76017539ec0d447258
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901619"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224802"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A biztonsági mentési és visszaállítási funkciójának [Azure App Service](app-service-web-overview.md) könnyedén hozhat létre alkalmazást biztonsági mentések manuális vagy ütemezett teszi lehetővé. Az alkalmazás írja felül a meglévő alkalmazás vagy egy másik alkalmazásba való visszaállítása visszaállíthatja egy korábbi állapotáról pillanatképet. 
@@ -37,8 +37,8 @@ App Service-ben is biztonsági másolatot a következő adatokat egy Azure stora
 
 A következő adatbázis-megoldások biztonsági mentési szolgáltatás támogatottak: 
    - [SQL Database](https://azure.microsoft.com/services/sql-database/)
-   - [Azure Database for MySQL (előzetes verzió)](https://azure.microsoft.com/services/mysql)
-   - [Azure Database for PostgreSQL (előzetes verzió)](https://azure.microsoft.com/services/postgresql)
+   - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
+   - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
    - [– Alkalmazáson belüli MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 

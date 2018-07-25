@@ -2,19 +2,19 @@
 title: Megismerheti a LUIS-alkalmazásokon iteratív megtervezése – Azure |} A Microsoft Docs
 description: A LUIS-alkalmazások tervezési ismétlések beolvasni a legjobb adatkinyerés LUIS betanításához szükséges.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/12/2018
-ms.author: v-geberr
-ms.openlocfilehash: e0467e4c41209c937f548edc0c40c05cae588f4c
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.author: diberry
+ms.openlocfilehash: 947350a1d0dcfb0caaca654768c3660fc1b146e1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888248"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225441"
 ---
 # <a name="authoring-cycle"></a>Tartalomkészítési ciklus
 LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
@@ -36,7 +36,7 @@ A LUIS figyelmen kívül hagyja, hogy nem vonatkoznak az alkalmazás tartományh
 ## Not just yet
 Do not add features such as a [phrase list](luis-concept-feature.md) feature in your first cycle. Phrase lists are phrases that would be specific to your app's subject area.  
 -->
-## <a name="train-and-publish-the-app"></a>Betanítása és az alkalmazás közzététele
+## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
 Miután 10 – 15 különböző utterances az egyes szándékkal, a szükséges entitásokkal címkével ellátott, LUIS betanítását, majd beolvasni a végpontok közzététele. Ügyeljen arra, hogy az alkalmazás létrehozása, és tegye közzé az alkalmazást, hogy elérhető legyen a [végpont régiók](luis-reference-regions.md) van szüksége. 
 
 ## <a name="https-endpoint-testing"></a>HTTPS-végpont tesztelése

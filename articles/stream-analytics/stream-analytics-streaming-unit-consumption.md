@@ -1,6 +1,6 @@
 ---
-title: Ismertetés és állítsa be az Azure Stream Analytics adatfolyam-egységek
-description: Ez a cikk ismerteti a Streaming Units beállítás és az egyéb Azure Stream Analytics a teljesítményt befolyásoló tényezők.
+title: Ismertetése és módosítása az Azure Stream Analytics szolgáltatásban a folyamatos átviteli egységek
+description: Ez a cikk ismerteti a Streamelési egységek beállítás és más tényező befolyásolja a teljesítményt az Azure Stream Analytics szolgáltatásban.
 services: stream-analytics
 author: JSeb225
 ms.author: jeanb
@@ -9,70 +9,71 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: c96e9825cddd0b60e67cd4752fab8f440ceaae76
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 482f0403cfd4bbd6587ba7e3e936cdac7f82b54a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228048"
 ---
-# <a name="understand-and-adjust-streaming-units"></a>Ismerje meg, és módosítsa a folyamatos átviteli egységek
+# <a name="understand-and-adjust-streaming-units"></a>Ismertetése és módosítása a folyamatos átviteli egységek
 
-Az Azure Stream Analytics összesíti a teljesítmény "weight" a futó feladat az adatfolyam-egységek (SUS-t). SUs határoz meg a feladat végrehajtásához felhasznált számítási erőforrások. A streamelési egységek segítségével leírható a relatív eseményfeldolgozási kapacitás a processzor, a memória, valamint az olvasási és írási sebesség összesített metrikája alapján. A kapacitás megadható, hogy a lekérdezés logika koncentrálhat, és időben feladat futtatásához a Stream Analytics hardver kezelése kell kivonatok.
+A számítási feladatok végrehajtásához lefoglalt erőforrások folyamatos átviteli egységek (su) jelöli. Minél nagyobb a szám, SUS-t, a további CPU és memória-erőforrások lefoglalva a feladatnak. Ez a kapacitás lehetővé teszi, hogy a lekérdezés logikára koncentrálhat, és felügyelnie a hardvert, hogy futtassa a Stream Analytics-feladat időben kivonatot.
 
-Adatfolyam-feldolgozási kis késleltetésű eléréséhez Azure Stream Analytics-feladatok minden feldolgozás memória hajtsa végre. Ha kevés a memória, a folyamatos átviteli feladat sikertelen lesz. Ennek eredményeképpen termelési feladat, fontos a folyamatos átviteli feladatnak Erőforrás kihasználtsága figyelésére, és győződjön meg arról, hogy nincs elegendő erőforrás a 24 és Windows 7 rendszerben futó feladatok megőrzése érdekében lefoglalt.
+Közel valós idejű adatfolyam-feldolgozás eléréséhez az Azure Stream Analytics-feladatok minden feldolgozás memória hajtsa végre. Kevés a memória, a folyamatos átviteli feladat sikertelen lesz. Ennek eredményeképpen egy éles feladat, fontos egy folyamatos átviteli feladat erőforrás-használat figyelése, és ellenőrizze, hogy nincs elegendő erőforrás le legyen foglalva, hogy a feladatok 24/7 rendszert.
 
-A metrika beállításnak: 0 és 100 %-os százalékos több. A folyamatos átviteli feladat minimális tárhely a SU % kihasználtsági mérőszáma általában 10-20 %-között. Legyen a legjobb, ha a mérték, hogy figyelembe vegye az alkalmi igényeiben jelentkező 80 %. A Microsoft azt javasolja, hogy egy riasztás beállítást 80 % SU kihasználtsági metrika erőforrás-fogyási megelőzése érdekében. További információkért lásd: [oktatóanyag: Azure Stream Analytics-feladatok beállítása](stream-analytics-set-up-alerts.md).
+Az SU % utilization metrika, amely 100 %-címtartományok a 0 %, a memóriát a számítási feladat ismerteti. A folyamatos átviteli feladatok minimális erőforrás-igényű Ez a metrika általában a 10-20 %-között. SU százalékos kihasználtsága alacsony, és a bemeneti események lekérése várakozó, valószínűleg a számítási feladathoz szükséges további számítási erőforrásokat, ami megköveteli, hogy ha több SUS-t. Legyen a legjobb, ha a SU metrika 80 % oldvolumesize alkalmanként adatforgalmi csúcsokhoz. A Microsoft javasolja, hogy egy riasztás beállítást 80 %-os SU Utilization metrika erőforrás-fogyási típus elkerülése érdekében. További információkért lásd: [oktatóanyag: Azure Stream Analytics-feladatok riasztásokat állíthat be](stream-analytics-set-up-alerts.md).
 
-## <a name="configure-stream-analytics-streaming-units-sus"></a>A Stream Analytics adatfolyam-egységek (SUs) konfigurálása
-1. Jelentkezzen be [Azure-portálon](http://portal.azure.com/)
+## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics Streamelési egységek (su) konfigurálása
+1. Jelentkezzen be a [Azure Portalon](http://portal.azure.com/)
 
-2. Az erőforrások listájához keresse meg a Stream Analytics-feladat, amely méretezhető, és nyissa meg. 
+2. Keresse meg a Stream Analytics-feladat, amelyet szeretne méretezni, és nyissa meg az erőforrások listájában. 
 
-3. A feladatok lapon alatt a **konfigurálása** elemcsoportban válasszon **méretezési**. 
+3. A feladat oldalát, az alatt a **konfigurálása** szakaszban kattintson **méretezési**. 
 
-    ![Az Azure Stream Analytics feladat beállítása][img.stream.analytics.preview.portal.settings.scale]
+    ![Az Azure Stream Analytics feladat Portálkonfiguráció][img.stream.analytics.preview.portal.settings.scale]
     
-4. A csúszka segítségével állítsa be a SUS-t, a feladathoz. Figyelje meg, hogy SU vonatkozó beállításokat. 
+4. A csúszka segítségével állítsa be a SUS-t a projekthez. Figyelje meg, hogy pedig csak adott SU-beállításait. 
 
-## <a name="monitor-job-performance"></a>Feladat teljesítmény figyelése
-Az Azure portál használatával, nyomon követheti a feladat átviteli sebesség:
+## <a name="monitor-job-performance"></a>Feladatok teljesítményének monitorozása
+Az Azure portal használatával, az átviteli feladat követheti nyomon:
 
-![Az Azure Stream Analytics feladatok figyelése][img.stream.analytics.monitor.job]
+![Az Azure Stream Analytics-feladatok figyelése][img.stream.analytics.monitor.job]
 
-A várt munkaterhelések átviteli sebessége a kiszámításához. A teljesítményt, kisebb a vártnál, ha a bemeneti partíció hangolására, a lekérdezés beállításához, majd adja hozzá SUS-t a feladatot.
+A várt átviteli sebességet a számítási feladatok számítja ki. Ha az átviteli sebességet a vártnál kevesebb, a bemeneti partíció hangolása, a lekérdezés beállításához és növekedtével a feladat.
 
-## <a name="how-many-sus-are-required-for-a-job"></a>Hány SUs szükségesek egy feladatot?
+## <a name="how-many-sus-are-required-for-a-job"></a>Hány SUs-feladat szükségesek?
 
-Kiválasztása szükséges SUS-t egy adott feladat száma attól függ, hogy a partíció konfigurációját a bemeneti és a lekérdezés, amely a feladat van meghatározva. A **méretezési** lap lehetővé teszi, hogy meg kell adnia a megfelelő számú SUS-t. Akkor célszerű foglaljon le több SUs, mint amennyi szükséges. A Stream Analytics program optimalizálja a késés és átviteli használ további memória lefoglalásakor.
+Kiválasztása szükséges SUS-t egy adott feladat száma attól függ, hogy a bemeneti és a lekérdezés a feladaton belül definiált partíció konfigurációját. A **méretezési** lap lehetővé teszi a megfelelő számú SUS-t állítsa be. Ajánlott eljárás a szükségesnél több SUs lefoglalása. A Stream Analytics optimalizálja a késést és átviteli sebességet, illetve további memória cserébe.
 
-Az ajánlott eljárás általában a lekérdezések, amelyek nem használják a 6 SUS-t használ első lépésként **PARTITION BY**. Majd megállapítja, hogy étkezési helyszíni egy módszerrel próbálkozást, amelyben módosítása SUs száma fázis reprezentatív adatmennyiséget, és vizsgálja meg a SU % kihasználtsági metrika után.
+Az ajánlott eljárás szerint általában a lekérdezések, amelyek nem használják 6 SUs történő indításához **PARTITION BY**. Majd vizsgálja meg a édes helyszíni egy próbálkozással, amelyben módosítása SUs száma után át mennyiségű adat, és vizsgálja meg az SU % Utilization metrika használatával. Egy Stream Analytics-feladat által használt streamelési egységek maximális száma attól függ, hogy a lekérdezésben, a feladat, illetve az egyes lépések a partíciók számának megadott lépéseket. További információ a korlátairól [Itt](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
-SUS-t a megfelelő számú kiválasztására vonatkozó további információkért lásd: ezen a lapon: [Scale Azure Stream Analytics-feladatok átviteli sebesség növelése](stream-analytics-scale-jobs.md)
+SUS-t a megfelelő számú kiválasztásával kapcsolatban további információkért tekintse meg ezt oldal: [Scale Azure Stream Analytics-feladatok az átviteli sebesség növelése](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> Hány SUs kiválasztása kell megadni a bemeneti adatok partíció konfigurációját és a lekérdezés a feladathoz megadott egy adott feladat függ. Kiválaszthatja, akár egy feladat a SUS-t a kvótáját. Alapértelmezés szerint minden Azure-előfizetéssel rendelkezik a kvóta az analytics-feladatok 200 SUS egy adott régióban. Ez a kvóta túl az előfizetések SUs növeléséhez forduljon [Microsoft Support](http://support.microsoft.com). Érvényes SUs Feladatonkénti értékei 1, 3, 6, és a 6 lépésekben.
+> Partíciókonfigurációjától szükség, az egy adott feladat a bemeneti partíció konfigurációját és a feladathoz meghatározott lekérdezéstől függ. Kiválaszthatja, SUS-t a kvóta egy feladat legfeljebb. Alapértelmezés szerint minden Azure-előfizetés az analytics-feladatok akár 200 SUs kvótával rendelkezik egy adott régióban. SUS-t az előfizetések mellett ez a kvóta növeléséhez forduljon [Support](http://support.microsoft.com). Feladatonként SUs érvényes értékei a következők 1, 3, 6, és legfeljebb 6-os léptékben.
 
-## <a name="factors-that-increase-su-utilization"></a>Tényezőket, amelyek növelik a SU kihasználtsága (%) 
+## <a name="factors-that-increase-su-utilization"></a>Tényezőket, amelyek növelik a SU százalékos kihasználtsága 
 
-A historikus (idő irányú) lekérdezés elemei a Stream Analytics által biztosított állapot-nyilvántartó operátorok sor. A Stream Analytics kezeli ezeket a műveleteket a felhasználó nevében, a belső állapotának való kezelésekor a rendszermemóriát, a rugalmasság és a rendszerállapot-helyreállítás ellenőrzőpontok frissítése során. Annak ellenére, hogy a Stream Analytics teljesen kezeli az állapotok, számos kapcsolatos bevált gyakorlatokat, felhasználók figyelembe kell venni.
+A historikus (time-orientált) lekérdezés elemei a Stream Analytics által biztosított állapotalapú szereplők core készletét. Stream Analytics belsőleg a felhasználó nevében, ezeket a műveleteket állapotát kezeli a memóriát, a rugalmasság és a rendszerállapot-helyreállítás ellenőrzőpontok használata során szolgáltatásfrissítés kezelésével. Annak ellenére, hogy a Stream Analytics teljes körűen felügyeli az államok, számos ajánlásokat és tanácsokat, felhasználók figyelembe kell venni.
 
-## <a name="stateful-query-logic-in-temporal-elements"></a>Historikus elemek állapottartó lekérdezés a logikai
-Az Azure Stream Analytics-feladat az egyedi képesség egyik állapot-nyilvántartó műveleteket, például az ablakos összesítéseket, időalapú illesztéseket és historikus analitikai függvények végrehajtásához. Ezen operátorok mindegyikének tartja az állapotadatokat. A lekérdezés egyikkel maximális ablak mérete hét nap. 
+## <a name="stateful-query-logic-in-temporal-elements"></a>Állapot-nyilvántartó lekérdezés logikája historikus elemek
+Az Azure Stream Analytics-feladat az egyedi képességét egyik állapot-nyilvántartó feldolgozó, például az ablakos összesítéseket, az időalapú illesztéseket és a historikus elemzési funkciók végrehajtásához. Ezen operátorok mindegyike megőrzi az állapotadatokat. Ezen lekérdezési elemek maximális ablak mérete hét nap. 
 
-Az ideiglenes ablakot fogalma több Stream Analytics lekérdezési elemek jelenik meg:
-1. Ablakos összesítéseket: csoport által az Átfedésmentes, Hopping, és a késleltetett windows
+A historikus időszak fogalma a több Stream Analytics lekérdezési elemeket jelenik meg:
+1. Ablakos összesítéseket: csoport által az Átfedésmentes, segítségével tehetjük meg, és a windows késleltetett
 
-2. A historikus illesztések: CSATLAKOZIK a DATEDIFF függvény
+2. Időalapú illesztéseket: CSATLAKOZIK a DATEDIFF függvény
 
-3. A historikus analitikai függvények: ISFIRST, LAST és a LIMIT DURATION KÉSÉS
+3. A historikus elemzési funkciók: ISFIRST utolsó és a LIMIT DURATION KÉSÉS
 
-Az alábbi tényezők befolyásolják a használt memória (részben adatfolyam-egységek metrika) által Stream Analytics-feladatok:
+Az alábbi tényezők befolyásolják a használt memória (streamelési egységek metrika részben) által a Stream Analytics-feladatok:
 
 ## <a name="windowed-aggregates"></a>Ablakos összesítéseket
-A használt memória (állapot mérete) az ablakos összesítő nincs mindig közvetlenül arányos az ablak mérete. Ehelyett a használt memória az adatok, vagy minden alkalommal ablakban csoportok száma számosságot arányos.
+A használt memória (állapot mérete) az ablakos összesítő értéke nem mindig közvetlenül arányos az ablak mérete. Ehelyett a felhasznált memória arányos számosságát jelöli az adatok, vagy a csoportok az egyes időtartomány száma.
 
 
-Például a következő lekérdezésben a szám társított `clusterid` van számossága alapján a lekérdezést. 
+Például a következő lekérdezést, a szám társított `clusterid` számosságát jelöli a lekérdezést. 
 
    ```sql
    SELECT count(*)
@@ -80,7 +81,7 @@ Például a következő lekérdezésben a szám társított `clusterid` van szá
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Ahhoz, hogy az előző lekérdezés nagy számosságot által okozott problémák javítását célzó, elküldheti események által particionálva Eseményközpont `clusterid`, és a lekérdezés azáltal, hogy a rendszer minden egyes külön bemeneti partíció feldolgozása kibővítési **partíció ÁLTAL** az alábbi példában látható módon:
+Annak érdekében, hogy az előző lekérdezést a magas Számosság által okozott problémák enyhítése, elküldheti események Event Hubs segítségével `clusterid`, és a horizontális felskálázás a lekérdezés azáltal, hogy a rendszer feldolgozza az egyes bemeneti partíció külön **partíció ÁLTAL** az alábbi példában látható módon:
 
    ```sql
    SELECT count(*) 
@@ -88,14 +89,14 @@ Ahhoz, hogy az előző lekérdezés nagy számosságot által okozott problémá
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 
-A rendszer több csoport között osztja el a lekérdezést a particionálása után. Ennek eredményeképpen a száma `clusterid` minden csomópont beérkező értékek csökken ilyen módon csökkenti a csoport számossága operátor. 
+A rendszer több csoport között osztja el a lekérdezést a particionálása után. Hány eredményeként `clusterid` érkező minden egyes értékek csomópontokba csökken a csoport a számosságot kezelő. 
 
-Event Hub partíciók kell particionálni a csoportosítási gombot, hogy ne kelljen egy csökkentse a lépéshez. További információkért lásd: [Event Hubs – áttekintés](../event-hubs/event-hubs-what-is-event-hubs.md). 
+Event Hub-partíciókat a csoportosítási kulcsot ne legyen kevesebb lépéssel szükség szerint kell particionálni. További információkért lásd: [Event Hubs – áttekintés](../event-hubs/event-hubs-what-is-event-hubs.md). 
 
 ## <a name="temporal-joins"></a>A historikus illesztések
-A használt memória (állapot mérete) historikus illesztés azzal arányos, hogy az illesztés, amely bemeneti eseménygyakoriság többszörösének által irányításához mozgassa hely méretét historikus irányításához mozgassa helyiségben események száma. Más szóval az illesztések által használt memória azzal arányos, hogy a DateDiff időtartományát megszorozza események átlagos száma.
+A historikus csatlakozzon (állapot mérete) felhasznált memória arányos az illesztés, amely a bemeneti gyakorisága vícekrát irányításához mozgassa hely mérete által a historikus irányításához mozgassa helyiségben események száma. Más szóval illesztések által felhasznált memória arányos az események átlagos száma szorozva DateDiff időtartomány.
 
-Az illesztés nem egyező események száma a lekérdezés memóriahasználata hatással. A következő lekérdezés a kattintásokat generáló oldalmegjelenéseket keresi:
+A JOIN nem egyező események száma befolyásolja a lekérdezés a memóriahasználat. A következő lekérdezés a kattintásokat generáló oldalmegjelenéseket keresi:
 
    ```sql
    SELECT clicks.id
@@ -103,9 +104,9 @@ Az illesztés nem egyező események száma a lekérdezés memóriahasználata h
    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
    ```
 
-Ebben a példában az is lehet, hogy nagy mennyiségű ads látható és néhány személy kattintson rá, és megtartja az eseményeket a időszak szükséges. A felhasznált memória arányos az ablak méretével és az események gyakoriságával. 
+Ebben a példában is lehet, hogy sok jelennek meg, és néhány személy kattintson rá, és szükséges, hogy az összes esemény az időtartományban. A felhasznált memória arányos az ablak méretével és az események gyakoriságával. 
 
-Ez kijavítani, elküldje az eseményeket az Event Hubs particionálva illesztési kulcsok (azonosító: Ebben az esetben), és a lekérdezés kibővítési azáltal, hogy a rendszer minden egyes külön bemeneti partíció feldolgozása **PARTITION BY** látható módon:
+Ennek orvoslása érdekében események küldése az Event Hubs azáltal, hogy a rendszer által a join kulcsok (ebben az esetben azonosító), és a lekérdezés horizontális particionálása mindegyik külön bemeneti partíció feldolgozása **PARTITION BY** látható módon:
 
    ```sql
    SELECT clicks.id
@@ -114,34 +115,34 @@ Ez kijavítani, elküldje az eseményeket az Event Hubs particionálva illeszté
    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
    ```
 
-A rendszer több csoport között osztja el a lekérdezést a particionálása után. Ennek eredményeképpen minden csomópontjába érkező események száma csökken ilyen módon csökkenti a állapotban tartani az illesztés ablakban méretét. 
+A rendszer több csoport között osztja el a lekérdezést a particionálása után. Ennek eredményeképpen egyes érkező események száma csomópontokba csökken a állapotban tartani az illesztési ablakban méretét. 
 
-## <a name="temporal-analytic-functions"></a>A historikus analitikai függvények
-A használt memória (állapot mérete) egy ideiglenes elemzési függvény az események gyakorisága arányos többszörösének időtartamának. Az analitikai függvények által használt memória nincs arányos az ablak mérete, de ahelyett, hogy partícióazonosító száma az egyes időszak.
+## <a name="temporal-analytic-functions"></a>A historikus elemzési funkciók
+Egy historikus analitikai függvény (állapot mérete) felhasznált memória arányos az események száma kettő többszörösének szerint idejére. Az analitikai függvények által felhasznált memória nem arányos az ablak mérete, de inkább particionálása az egyes időtartományban száma.
 
-A szervizelés historikus illesztési hasonlít. Ki lehet terjeszteni a lekérdezés segítségével **PARTITION BY**. 
+A szervizelés historikus való csatlakozás hasonlít. Ki lehet terjeszteni a lekérdezés használatával **PARTITION BY**. 
 
-## <a name="out-of-order-buffer"></a>Nem megfelelő sorrendben puffer 
-Felhasználó beállíthatja úgy a nem megfelelő sorrendben puffer mérete, abban az esetben, ha rendelési konfigurációs ablaktáblán. A puffer bemenetek tartsa a az ablak időtartama, és újrarendezéshez szolgál. A puffer mérete azzal arányos, hogy a bemeneti eseménygyakoriság többszörösének által az üzemen kívüli ablak mérete. Az alapértelmezett ablak mérete 0. 
+## <a name="out-of-order-buffer"></a>Üzemen kívüli puffer 
+Felhasználói beállítható az üzemen kívüli puffer mérete, abban az esetben, ha rendezése a konfiguráció panelen. A puffer szolgál az ablak időtartamának bemenetek nyomvatartással és sorrendjét húzással módosíthatja. A puffer mérete arányos a bemeneti gyakorisága az üzemen kívüli ablak méretének által vícekrát. Az alapértelmezett ablak méretének értéke 0. 
 
-A nem megfelelő sorrendben puffer túlcsordulás kijavítani, terjessze ki a lekérdezés segítségével **PARTITION BY**. A rendszer több csoport között osztja el a lekérdezést a particionálása után. Ennek eredményeképpen minden csomópontjába érkező események száma csökken ilyen módon csökkenti az egyes újrarendelési pufferben lévő események száma. 
+Az üzemen kívüli puffer túlcsordulás javítása, horizontális felskálázás lekérdezés használatával **PARTITION BY**. A rendszer több csoport között osztja el a lekérdezést a particionálása után. Ennek eredményeképpen egyes érkező események száma csomópontokba csökken az egyes átrendezési puffer események száma. 
 
-## <a name="input-partition-count"></a>Bemeneti partíciók száma 
-Adjon meg egy feladat minden egyes bemeneti partíció puffer rendelkezik. A feladat használ fel, a nagyobb számú bemeneti partíciót, a több erőforrás. Adatfolyam-továbbítási tárolóegységekhez Azure Stream Analytics körülbelül 1 MB/s bemeneti tud feldolgozni. Ezért egyeztetésével adatfolyam-egységek az Eseményközpont a partíciók számát a Stream Analytics száma is optimalizálhatja. 
+## <a name="input-partition-count"></a>A bemeneti partíciók száma 
+Minden egyes bemeneti partíció a feladat bemeneti puffer rendelkezik. A bemeneti partíció nagyobb száma, a további erőforrás a feladat használ fel. Minden streamelési egység az Azure Stream Analytics nagyjából 1 MB/s bemeneti tud feldolgozni. Ezért optimalizálhatja összekapcsolja a Stream Analytics streamelési egységek száma az eseményközpont-számát. 
 
-A feladat egy streamelési egységet konfigurált általában elegendő-e az Eseményközpontok két partíciókkal rendelkező (amely a minimális Event hub). Ha az Event Hubs további partíciókkal rendelkezik, a Stream Analytics-feladat további erőforrásokat használ fel, de nem feltétlenül használja az Eseményközpont által biztosított további átviteli sebesség. 
+A feladat egy streamelési egységnek konfigurált általában egy Eseményközpontba két partícióval rendelkező (amely a legkisebb eseményközpont) elegendő. Ha az Event Hubs több partícióval rendelkezik, a Stream Analytics-feladat több erőforrást használ fel, de nem feltétlenül használ az Event Hub által biztosított további átviteli. 
 
-Adatfolyam-egységek 6-os feladat szükség lehet az eseményközpontból 4 vagy 8 partíciókat. Túl sok felesleges partíciók azonban ne, óta, ami túl sok erőforrás kihasználtsága. Például az Eseményközpontok 16 partíciókat vagy nagyobb a Stream Analytics-feladat, amelynek 1 streamelési egységet. 
+A folyamatos átviteli egységek 6 feladatok 4 vagy 8 partíciók az eseményközpont szükség lehet. Azonban ne használjon túl sok felesleges partíció óta, ami túlzott erőforrás-használatot. Ha például egy Eseményközpontba 16 partícióval rendelkező vagy nagyobb a Stream Analytics-feladat, amely rendelkezik a folyamatos átviteli egység 1. 
 
 ## <a name="reference-data"></a>Referenciaadat 
-Az ASA referenciaadatok gyors keresési a memóriába. Az aktuális megvalósításáról referenciaadatok illesztési műveletben másolatot készít azokról a referenciaadatok a memóriában, még akkor is, ha csatlakozik a hivatkozás ugyanazokat az adatokat több alkalommal. A lekérdezések **PARTITION BY**, mindegyik partíció rendelkezik egy példányát a referenciaadatok úgy, hogy a partíciók teljesen leválasztott. A többszöröző kezdve memóriahasználata gyorsan megjeleníthet nagyon magas, ha csatlakozik a referenciaadatok több partícióval rendelkező több alkalommal.  
+Az ASA hivatkozási adatok gyors keresése a memóriába. A jelenlegi implementációja minden egyes join művelet referenciaadatok másolatot készít a referencia-adatok a memóriában, még akkor is, ha csatlakozik a ugyanaz a referenciaadatokat többször. A lekérdezések **PARTITION BY**, mindegyik partíció rendelkezik a referenciaadatok másolatát, így a partíciók teljesen leválasztott. A többszöröző hatással bír, a memóriahasználat gyorsan beszerezheti nagyon magas, ha csatlakozik a referenciaadatok többször, több partíción.  
 
-### <a name="use-of-udf-functions"></a>Az UDF-funkciók használata
-Amikor egy olyan UDF függvényt, Azure Stream Analytics a JavaScript futásidejű a memóriába tölti be. Ez milyen hatással van a SU %.
+### <a name="use-of-udf-functions"></a>Az UDF-függvények használatával
+Amikor hozzáad egy UDF-függvény, az Azure Stream Analytics betölti a JavaScript futásidejű a memóriába. Ez hatással lesz az SU %.
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure Stream Analytics párhuzamosítható lekérdezések létrehozása](stream-analytics-parallelization.md)
-* [Átviteli sebesség növelése az Azure Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)
+* [Az Azure Stream Analyticsben párhuzamosítható lekérdezések létrehozása](stream-analytics-parallelization.md)
+* [Átviteli sebesség növelése érdekében az Azure Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)
 
 <!--Image references-->
 

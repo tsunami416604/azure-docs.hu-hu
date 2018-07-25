@@ -11,46 +11,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 06/04/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 86ac1f1b5433104faa89e1f107fa36fc1da5f70e
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d86f0e96f64a56644b3161725f7f6a430568a72f
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989894"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242699"
 ---
-# <a name="azure-stack-development-kit-release-notes"></a>Az Azure Stack Development Kit kibocsátási megjegyzései  
+# <a name="azure-stack-development-kit-release-notes"></a>Az Azure Stack Development Kit kibocsátási megjegyzései
 A kibocsátási megjegyzések olyan információt tartalmaznak a fejlesztések, javításokat és ismert problémák az Azure Stack Development Kit. Ha nem biztos abban, hogy melyik verziót futtatja, akkor az [ellenőrizhető a portál használatával](.\.\azure-stack-updates.md#determine-the-current-version).
 
 > What's new in a ASDK való feliratkozással vétele a [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [hírcsatorna](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
-## <a name="build-11805147"></a>1.1805.1.47 összeállítása
+## <a name="build-11805142"></a>1.1805.1.42 összeállítása
 
-> [!TIP]  
-> Ügyfeleink visszajelzései alapján, a verzió sémát, használja a Microsoft Azure Stackhez készült frissítése nincs. Ezzel a frissítéssel 1805, kezdve az új sémában jobban jelöli az aktuális felhő verzió.  
-> 
-> A verzió séma már *Version.YearYearMonthMonth.MinorVersion.BuildNumber* , a második és harmadik csoportok verziójú és kiadású jelzi-e. Például 1805.1 jelöli a *RTM verzió kibocsátási* 1805 (RTM) verzióját.  
-
-
-### <a name="new-features"></a>Új funkciók 
-A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.  
-
-- <!-- 2297790 - IS, ASDK --> **Az Azure Stack már tartalmaz egy *Syslog* ügyfél** , egy *előzetes verziójú funkció*. Ez az ügyfél lehetővé teszi, hogy a Syslog server vagy a biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti szoftverek külső, az Azure Stackhez az Azure Stack-infrastruktúra kapcsolódó naplózási és biztonsági naplók továbbítását. Jelenleg a Syslog-ügyfél csak támogatja az UDP-kapcsolatok nem hitelesített alapértelmezett 514-es porton keresztül. Minden Syslog-üzenet a hasznos a Common Event Format (CEF) van formázva. 
-
-  A Syslog-ügyfél konfigurálásához használja a **Set-SyslogServer** parancsmag között szerepelnek a kiemelt végponthoz. 
-
-  Ebben az előzetes kiadásban a következő három riasztások jelenhet meg. Előadó: Azure Stack, ha ezek a riasztások belefoglalása *leírások* és *szervizelési* útmutatást. 
-  - TITLE: A Kódintegritás kikapcsolása  
-  - TITLE: A Kódintegritás rendszervizsgálati módban 
-  - CÍM: Felhasználói fiók létrehozása
-
-  Bár ez a funkció előzetes verzióban érhető el, akkor érdemes nem lehet hivatkozni az éles környezetben.   
+<!-- ### New features 
+This build includes the following improvements and fixes for Azure Stack.  
+-->
 
 
 ### <a name="fixed-issues"></a>Rögzített kapcsolatos problémák
-- Hogy javítva lett a probléma által blokkolt [új támogatási kérést adhat a legördülő listából](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) a a felügyeleti portálon. Most ezt a beállítást helyesen működik. 
 
 - **Különböző javításokat** teljesítményét, stabilitását, biztonsági és az Azure Stack által használt operációs rendszer
 
@@ -64,14 +47,6 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 ### <a name="known-issues"></a>Ismert problémák
  
 #### <a name="portal"></a>Portál
-- <!-- 2551834 - IS, ASDK --> Ha bejelöli **áttekintése** a rendszergazdai vagy a felhasználói portált, az információkat a storage-fiókok a *Essentials* ablaktáblában nem jelenik meg.  Az alapvető erőforrások panelen például a fiók információit jeleníti meg a *erőforráscsoport*, *hely*, és *előfizetés-azonosító*.  Egyéb lehetőségek áttekintő is elérhető, például *szolgáltatások* és *figyelés*, is, megadhatja, hogy *Megnyitás az Explorerben* vagy *tárfiók törlése* .  
-
-  A nem érhető el információ megtekintéséhez használja a [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) PowerShell-parancsmagot. 
-
-- <!-- 2551834 - IS, ASDK --> Ha bejelöli **címkék** a rendszergazdai vagy a felhasználói portált a storage-fiókok, az adatokat nem sikerül betölteni, és nem jeleníti meg.  
-
-  A nem érhető el információ megtekintéséhez használja a [Get-AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0) PowerShell-parancsmagot.
-
 - <!-- TBD - IS ASDK --> Ne használja az új felügyeleti előfizetés típusú *előfizetés mérési*, és *Használatalapú előfizetés*. E új típusú előfizetésessel jelentek meg az 1804-verzióval, de még nem állnak készen áll a használatra. Ön továbbra is használja a *alapértelmezett szolgáltató* előfizetés-típus.  
 
 - <!-- 2403291 - IS ASDK --> Lehet, hogy nincs használatát a vízszintes görgetősáv a rendszergazdai és felhasználói portál alján. Ha nem éri el a vízszintes görgetősáv, az útkövetés, keresse meg a portálon egy előző panelen válassza a panel neve, a tetején található navigációs listában megtekinteni kívánt használati a portál bal oldali.
@@ -97,40 +72,9 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
    - ÖSSZETEVŐ: Állapotfigyelő vezérlő
    - Leírás: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
 
-  Mindkét riasztás #1. és #2 biztonságosan figyelmen kívül hagyható, és automatikusan fog bezárása idővel. 
-
-  Is megjelenhet a következő riasztás *kapacitás*. A riasztás leírásában azonosított rendelkezésre álló memória százalékos eltérőek lehetnek:  
-
-  Riasztás a #3:
-   - NAME: Kevés a memória-kapacitás
-   - SÚLYOSSÁG: kritikus
-   - ÖSSZETEVŐ: kapacitás
-   - Leírás: A régió lefoglalta a rendelkezésre álló memória több mint 80,00 %. Virtuális gépek a nagy mennyiségű memóriát, előfordulhat, hogy nem lehet létrehozni.  
-
-  Ebben a verzióban az Azure Stack ezt a riasztást az helytelenül is aktiválódik. Ha a bérlői virtuális gépek továbbra is sikeresen telepíteni, nyugodtan figyelmen kívül hagyhatja ezt a riasztást. 
-  
-  Riasztási #3 nem automatikusan zárja be. Ez a riasztás bezárása Azure Stack fog létrehozni ugyanabból a riasztásból 15 percen belül.  
-
-- <!-- 2368581 - IS ASDK --> Az Azure Stack operátorait, ha kevés a szabad memória figyelmeztetést, és a bérlői virtuális gépek sikertelen üzembe helyezés egy *Fabric Virtuálisgép-létrehozási hiba*, lehetséges, hogy az Azure Stack-blokk esik a rendelkezésre álló memória. Használja a [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) legjobban megérteni az elérhető kapacitás a számítási feladatokhoz. 
-
+  Mindkét riasztás biztonságosan figyelmen kívül hagyhatja. Ezek automatikusan megszűnik idővel.  
 
 #### <a name="compute"></a>Compute
-- <!-- TBD - IS, ASDK --> Amikor kiválasztja a virtuális gép üzembe helyezéséhez virtuálisgép-méretet, néhány F-sorozat Virtuálisgép-méretek nem láthatók a virtuális gép létrehozásakor a méret választó részeként. Az alábbi virtuális gépeinek-választójában jelenítse nem jelennek meg: *F8s_v2*, *F16s_v2*, *F32s_v2*, és *F64s_v2*.  
-  Áthidaló megoldásként használja a következő módszerek egyikét virtuális gép üzembe helyezése. Az egyes módszerek kell adja meg a használni kívánt virtuális gép méretét.
-
-  - **Az Azure Resource Manager-sablon:** egy sablont használ, amikor a *vmSize* egyenlő a használni kívánt Virtuálisgép-méretet a sablonban. Ha például a következő bejegyzés központi telepítéséhez használandó használó virtuális gép a *F32s_v2* mérete:  
-
-    ```
-        "properties": {
-        "hardwareProfile": {
-                "vmSize": "Standard_F32s_v2"
-        },
-    ```  
-  - **Az Azure CLI:** használhatja a [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) parancsot, és adja meg a virtuális gép méretét a paramétert, hasonló `--size "Standard_F32s_v2"`.
-
-  - **PowerShell:** a PowerShell segítségével használható [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) a paraméterrel, amely meghatározza a virtuális gép méretét, hasonló `-VMSize "Standard_F32s_v2"`.
-
-
 - <!-- TBD -  IS ASDK --> A virtual machine scale sets méretezési beállításait a portálon nem érhetők el. Áthidaló megoldásként használhatja [Azure PowerShell-lel](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). PowerShell-verzió különbségek, miatt kell használnia a `-Name` paraméter helyett `-VMScaleSetName`.
 
 - <!-- TBD -  IS ASDK --> Az Azure Stack felhasználói portál virtuális gépek létrehozásakor a portál megjeleníti, amelyek a D sorozatú virtuális gépek csatolhat a szolgáltatáskéréshez adatlemezek száma helytelen. Az összes támogatott D sorozatú virtuális gépek, az Azure konfigurációs lehetővé teszi tetszőleges számú adatlemezeket.
@@ -146,16 +90,13 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 - <!-- 1662991 - IS ASDK --> Linux rendszerű virtuális gép diagnosztikai nem támogatott az Azure Stackben. A Virtuálisgép-diagnosztika engedélyezve van egy Linux rendszerű virtuális Gépet helyez üzembe, a központi telepítés sikertelen lesz. Az üzembe helyezés akkor is sikertelen, ha engedélyezi a Linux rendszerű virtuális gép alapvető metrikák diagnosztikai beállításokon keresztül. 
 
 #### <a name="networking"></a>Hálózat
-- <!-- TBD - IS ASDK --> Nem hozhat létre felhasználó által megadott útvonalakat vagy a rendszergazda vagy a felhasználói portálon. Áthidaló megoldásként használja [Azure PowerShell-lel](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell).
-
 - <!-- 1766332 - IS, ASDK --> A **hálózatkezelés**, ha rákattint **VPN-átjáró létrehozása** egy VPN-kapcsolat beállítása **csoportházirend-alapú** jelenik meg a VPN-típust. Válassza ezt a beállítást. Csak a **útválasztó alapú** beállítás támogatott az Azure Stackben.
 
 - <!-- 2388980 -  IS ASDK --> Miután egy virtuális Gépet létrehozni, és társított nyilvános IP-címet, IP-címet a virtuális gép nem szüntesse meg. Társításának úgy tűnik, hogy működik, de az előzőleg hozzárendelt nyilvános IP-cím marad az eredeti virtuális gép társítva.
 
   Jelenleg csak új nyilvános IP-címeket kell használnia az új virtuális gépek létrehozása.
 
-  Ez akkor fordul elő, akkor is, ha új virtuális gép IP-cím ismételt hozzárendelése (más néven egy *virtuális IP-címcsere*). Az összes jövőbeli kapcsolódni a kapcsolatot az eredeti virtuális gép, és a egy újra IP cím eredményéből.
-
+  Ez akkor fordul elő, akkor is, ha új virtuális gép IP-cím ismételt hozzárendelése (más néven egy *virtuális IP-címcsere*). Az összes jövőbeli próbál meg ezt az IP cím eredményt kapcsolaton keresztül a eredetileg kapcsolódó virtuális gép, és a egy újra csatlakozhat.
 
 - <!-- 2292271 - IS ASDK --> Ha megemeli egy kvótát egy hálózati erőforrás-ajánlat és a egy bérlői előfizetéshez társított csomag részét képező, a rendszer nem alkalmazza az új határértéket előfizetéshez. Azonban az új határértéket nő, a kvóta növelése után létrehozott új előfizetések a alkalmazni. 
 
@@ -284,7 +225,7 @@ A következő érhető el, azonban nem igénylik az Azure Stack frissítés 1804
 
   Jelenleg csak új nyilvános IP-címeket kell használnia az új virtuális gépek létrehozása.
 
-  Ez akkor fordul elő, akkor is, ha új virtuális gép IP-cím ismételt hozzárendelése (más néven egy *virtuális IP-címcsere*). Az összes jövőbeli kapcsolódni a kapcsolatot az eredeti virtuális gép, és a egy újra IP cím eredményéből.
+  Ez akkor fordul elő, akkor is, ha új virtuális gép IP-cím ismételt hozzárendelése (más néven egy *virtuális IP-címcsere*). Az összes jövőbeli próbál meg ezt az IP cím eredményt kapcsolaton keresztül a eredetileg kapcsolódó virtuális gép, és a egy újra csatlakozhat.
 
 - <!-- 2292271 - IS ASDK --> Ha megemeli egy kvótát egy hálózati erőforrás-ajánlat és a egy bérlői előfizetéshez társított csomag részét képező, a rendszer nem alkalmazza az új határértéket előfizetéshez. Azonban az új határértéket nő, a kvóta növelése után létrehozott új előfizetések a alkalmazni. 
 
@@ -414,7 +355,7 @@ Az új szolgáltatásokat és az Azure Stack integrált rendszerek verzió 1803 
 
   Jelenleg csak új nyilvános IP-címeket kell használnia az új virtuális gépek létrehozása.
 
-  Ez akkor fordul elő, akkor is, ha új virtuális gép IP-cím ismételt hozzárendelése (más néven egy *virtuális IP-címcsere*). Az összes jövőbeli kapcsolódni a kapcsolatot az eredeti virtuális gép, és a egy újra IP cím eredményéből.
+  Ez akkor fordul elő, akkor is, ha új virtuális gép IP-cím ismételt hozzárendelése (más néven egy *virtuális IP-címcsere*). Az összes jövőbeli próbál meg ezt az IP cím eredményt kapcsolaton keresztül a eredetileg kapcsolódó virtuális gép, és a egy újra csatlakozhat.
 
 
 
@@ -451,8 +392,3 @@ Az új szolgáltatásokat és az Azure Stack integrált rendszerek verzió 1803 
   Ez a hiba oka egy legutóbbi GitHub támogatás elavulásának Tlsv1 és Tlsv1.1 titkosítási szabványok (a PowerShell-alapértelmezett). További információkért lásd: [gyenge titkosítási szabványok eltávolítási értesítés](https://githubengineering.com/crypto-removal-notice/).
 
   A probléma megoldásához adja hozzá `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` kényszerítése a PowerShell-konzol használatához TLSv1.2 GitHub-adattárak való letöltése esetén a parancsfájl elejére.
-
-
-
-
-

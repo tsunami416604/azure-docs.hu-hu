@@ -3,19 +3,19 @@ title: Entitások hozzáadása a LUIS-alkalmazások |} A Microsoft Docs
 titleSuffix: Azure
 description: A Language Understanding (LUIS) alkalmazások hozzáadása a entitások (a tartomány az alkalmazás legfontosabb adatok).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: bcdd4b681992b015b817e1245681c41c09b78210
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: e97f9a5391799849983bd98db5400e0a842627b7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173690"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224126"
 ---
 # <a name="manage-entities"></a>Entitások kezelése
 Keresse meg az alkalmazás [leképezések](luis-concept-intent.md), kell [példa utterances címke](luis-concept-utterance.md) a [entitások](luis-concept-entity-types.md). Entitások a fontos darabokat egy parancs vagy a kérdés, és lehet, hogy az ügyfélalkalmazás a feladatok végrehajtásához nélkülözhetetlen. 

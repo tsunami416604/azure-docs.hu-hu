@@ -2,19 +2,19 @@
 title: Adatok kinyerése fogalmait a LUIS - Azure megismerése |} A Microsoft Docs
 description: Ismerje meg, milyen típusú adatok kinyerhetők a Language Understanding (LUIS)
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 4341233e56ef62486b935457f606e54e54af84f4
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: f57e7cb85e6d183a59b358e347d70d4d185868a7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952589"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225682"
 ---
 # <a name="data-extraction"></a>Adatok kinyerése
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni.
@@ -139,7 +139,7 @@ Minden entitás rendszer adja vissza a **entitások** a válasz a végpontról t
 ]
 ```
 
-## <a name="tokenized-entity-returned"></a>Tokenekre entitást adott vissza
+## <a name="tokenized-entity-returned"></a>tokenekre entitást adott vissza
 Több [kulturális környezetek](luis-supported-languages.md#tokenization) az a entitás objektumot ad vissza a `entity` érték [tokenekre](luis-glossary.md#token). A startIndex és a LUIS az adott vissza a célentitás objektum endIndex nem feleltethető meg az új, tokenekre érték hanem ahhoz, hogy programozott módon bontsa ki a nyers entitás az eredeti lekérdezésre. 
 
 Ha például a német, a word `das Bauernbrot` be van tokenekre `das bauern brot`. A tokenekre érték `das bauern brot`, adja vissza, és az eredeti érték programozott módon lehet meghatározni a startIndex és az eredeti lekérdezés, így endIndex `das Bauernbrot`.

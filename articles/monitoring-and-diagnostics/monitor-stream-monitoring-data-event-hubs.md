@@ -5,19 +5,21 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/06/2018
+ms.date: 7/24/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5e8d8947643494e06faaabb5335c52df5908303e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d131fb09e365a7a2d17b8a96c6a5fbc5d82164dc
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902989"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237936"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
 Az Azure Monitor hozzáférni az összes monitorozási adatai az Azure-környezet, amely lehetővé teszi, hogy könnyedén létrehozhasson partneri SIEM és figyelési eszközök felhasználhatják az adatokat, egy folyamatot biztosít. Ez a cikk végigvezeti a beállítása az adatok különböző rétegek, az Azure-környezet küldendő egyetlen Event Hubs névtér vagy event hub, ahol begyűjthetők egy külső eszközzel.
+
+> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
 ## <a name="what-data-can-i-send-into-an-event-hub"></a>Milyen adatokat lehet küldeni egy eseményközpontba való? 
 

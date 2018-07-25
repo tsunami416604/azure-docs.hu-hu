@@ -2,19 +2,19 @@
 title: Az oktatóanyag pedig az entitások összetett bontsa ki az összetett adatokat – Azure |} A Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre összetett entitásokat a különböző típusú entitások adatainak kinyeréséhez a LUIS-alkalmazás.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
 ms.date: 07/09/2018
-ms.author: v-geberr
-ms.openlocfilehash: d73dc9b9f204e334a75c9de5e19c6b11e3a95b12
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: d14041e895bdf70544f7e956c76f91992a2df991
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929185"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238097"
 ---
 # <a name="tutorial-6-add-composite-entity"></a>Oktatóanyag: 6. Összetett entitás hozzáadása 
 Ebben az oktatóanyagban egy összetett entitás szeretné a befoglaló entitás be kinyert adatok hozzáadása.
@@ -312,7 +312,7 @@ A csevegőrobot most már elég információt meghatározhatja az elsődleges m�
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, felhasználhatja a topScoringIntent eredményt és az entitás adatait a következő lépés végrehajtásához. A LUIS nem végzi el ezt a programozható munkát a csevegőrobotnak vagy a hívó alkalmazásnak. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza ki **saját alkalmazások** bal felső menüjében. Kattintson a három pontra (***...*** ) az alkalmazások listájában, jelölje be az alkalmazás nevétől jobbra látható gombra **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal oldali menüben. Kattintson a három pontra (***...*** ) az alkalmazások listájában, jelölje be az alkalmazás nevétől jobbra látható gombra **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 

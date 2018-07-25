@@ -3,19 +3,19 @@ title: A fiók beállításait, a LUIS kezelése |} A Microsoft Docs
 description: A LUIS webhely segítségével kezelheti a fiók beállításait.
 titleSuffix: Azure
 services: cognitive-services
-author: v-geberr
-manager: Kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 07/08/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8a1565b3816f2c6597ac941ac9a0ac48bc2c7bb7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.author: diberry
+ms.openlocfilehash: 963a7f8c196702ea899ddfe31e6187a15eb5f683
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915707"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223208"
 ---
 # <a name="manage-account-and-authoring-key"></a>Fiók és a kulcs létrehozási kezelése
 A két kulcsfontosságú adatokat egy LUIS-fiók olyan felhasználói fiók és az Authoring Tool kulcs. A bejelentkezési adatait felügyelt [account.microsoft.com](https://account.microsoft.com). Az Authoring Tool kulcs felügyelje a [LUIS](luis-reference-regions.md) webhely **beállítások** lapot. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 5d91e543f370d65337c0298fb6421d5ffa85eda0
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: d8b8aee508ff1b243bf40261819071fc2a5194a3
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216223"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237614"
 ---
 # <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Konfigurálja a Felügyeltszolgáltatás-identitás (MSI)-beli virtuális gépen az Azure CLI használatával
 
@@ -90,14 +90,21 @@ Ha a rendszer által hozzárendelt identitással egy meglévő virtuális gépen
 
 ### <a name="disable-the-system-assigned-identity-from-an-azure-vm"></a>Tiltsa le a rendszer hozzárendelt identitás Azure virtuális gépből
 
-> [!NOTE]
-> A Felügyeltszolgáltatás-identitást a virtuális gépről letiltása jelenleg nem támogatott. Addig is válthat a rendszer által hozzárendelt, és a felhasználó hozzárendelt identitások között.
-
 Ha egy virtuális gépet, amely már nincs szüksége a rendszerhez rendelt identitáshoz, de továbbra is a felhasználó által hozzárendelt identitások van szüksége, használja a következő parancsot:
 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type='UserAssigned' 
 ```
+
+Ha már nincs szüksége a rendszerhez rendelt identitáshoz egy virtuális gép, és nem a felhasználói identitásokat, használja a következő parancsot:
+
+> [!NOTE]
+> Az érték `none` megkülönbözteti a kis-és nagybetűket. Kisbetűnek kell lennie. 
+
+```azurecli-interactive
+az vm update -n myVM -g myResourceGroup --set identity.type="none"
+```
+
 Az MSI-Virtuálisgép-bővítmény eltávolítása felhasználói `-n ManagedIdentityExtensionForWindows` vagy `-n ManagedIdentityExtensionForLinux` kapcsoló (virtuális gép függően) és [vm-bővítmény törlése az](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
 
 ```azurecli-interactive
@@ -120,34 +127,33 @@ Ez a szakasz végigvezeti egy felhasználóhoz hozzárendelt identitás hozzáre
 
 2. Hozzon létre egy felhasználót hozzárendelt identitás használatával [az identitás létrehozása](/cli/azure/identity#az_identity_create).  A `-g` paraméter adja meg az erőforráscsoport, amelyben a felhasználóhoz hozzárendelt identitás jön létre, és a `-n` paraméter adja meg a nevét.    
     
-[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
+   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
+   ```azurecli-interactive
+   az identity create -g myResourceGroup -n myUserAssignedIdentity
+   ```
+   A válasz tartalmazza a felhasználóhoz hozzárendelt identitás létrehozása a következőhöz hasonló részleteit. A hozzárendelt a felhasználóhoz hozzárendelt identitás erőforrás-azonosítójának értéke a következő lépésben szolgál.
 
-```azurecli-interactive
-az identity create -g myResourceGroup -n myUserAssignedIdentity
-```
-A válasz tartalmazza a felhasználóhoz hozzárendelt identitás létrehozása a következőhöz hasonló részleteit. A hozzárendelt a felhasználóhoz hozzárendelt identitás erőforrás-azonosítójának értéke a következő lépésben szolgál.
-
-```json
-{
-    "clientId": "73444643-8088-4d70-9532-c3a0fdc190fz",
-    "clientSecretUrl": "https://control-westcentralus.identity.azure.net/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>/credentials?tid=5678&oid=9012&aid=73444643-8088-4d70-9532-c3a0fdc190fz",
-    "id": "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>",
-    "location": "westcentralus",
-    "name": "<MSI NAME>",
-    "principalId": "e5fdfdc1-ed84-4d48-8551-fe9fb9dedfll",
-    "resourceGroup": "<RESOURCE GROUP>",
-    "tags": {},
-    "tenantId": "733a8f0e-ec41-4e69-8ad8-971fc4b533bl",
-    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"    
-}
-```
+   ```json
+   {
+       "clientId": "73444643-8088-4d70-9532-c3a0fdc190fz",
+       "clientSecretUrl": "https://control-westcentralus.identity.azure.net/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>/credentials?tid=5678&oid=9012&aid=73444643-8088-4d70-9532-c3a0fdc190fz",
+       "id": "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>",
+       "location": "westcentralus",
+       "name": "<MSI NAME>",
+       "principalId": "e5fdfdc1-ed84-4d48-8551-fe9fb9dedfll",
+       "resourceGroup": "<RESOURCE GROUP>",
+       "tags": {},
+       "tenantId": "733a8f0e-ec41-4e69-8ad8-971fc4b533bl",
+       "type": "Microsoft.ManagedIdentity/userAssignedIdentities"    
+   }
+   ```
 
 3. Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm/#az_vm_create) paranccsal. Az alábbi példa létrehoz egy virtuális Gépet, azokat az új felhasználóhoz hozzárendelt identitás társított a `--assign-identity` paraméter. A `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>` és `<MSI ID>` paraméterek értékét mindenképp helyettesítse be a saját értékeivel. A `<MSI ID>`, használja a felhasználóhoz hozzárendelt identitás erőforrás `id` az előző lépésben létrehozott tulajdonság: 
 
-```azurecli-interactive 
-az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>
-```
+   ```azurecli-interactive 
+   az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>
+   ```
 
 ### <a name="assign-a-user-assigned-identity-to-an-existing-azure-vm"></a>Rendelje hozzá egy a felhasználóhoz hozzárendelt identitás meglévő Azure virtuális géphez
 
@@ -184,14 +190,21 @@ A válasz tartalmazza a felhasználó hozta létre, az alábbihoz hasonló MSI h
 
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vm"></a>Távolítsa el a a felhasználóhoz hozzárendelt identitás Azure virtuális gépből
 
-> [!NOTE]
-> Az összes felhasználó által hozzárendelt identitások eltávolítása a virtuális gép jelenleg nem támogatott, kivéve, ha a rendszerhez rendelt identitáshoz.
-
-Ha a virtuális gépen több felhasználó által hozzárendelt identitások, eltávolíthatja az utolsó egy a kivételével az összes [távolítsa el a virtuálisgép-azonosítója az](/cli/azure/vm#az-vm-identity-remove). Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A `<MSI NAME>` a felhasználóhoz hozzárendelt identitás lesz `name` tulajdonság, amely a virtuális Gépet az identitás szakaszában található `az vm show`:
+Egy felhasználóhoz hozzárendelt identitás eltávolítása a virtuális gépek használatát [távolítsa el a virtuálisgép-azonosítója az](/cli/azure/vm#az-vm-identity-remove). Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A `<MSI NAME>` a felhasználóhoz hozzárendelt identitás lesz `name` tulajdonság, amely a virtuális Gépet az identitás szakaszában található `az vm identity show`:
 
 ```azurecli-interactive
 az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI NAME>
 ```
+
+Ha el szeretné távolítani az összes felhasználó hozzárendelt identitások, a virtuális gép nem rendelkezik a rendszerhez rendelt identitáshoz, használja a következő parancsot:
+
+> [!NOTE]
+> Az érték `none` megkülönbözteti a kis-és nagybetűket. Kisbetűnek kell lennie.
+
+```azurecli-interactive
+az vm update -n myVM -g myResourceGroup --set identity.type="none" identity.identityIds=null
+```
+
 Ha a virtuális Géphez hozzárendelt rendszer és a felhasználó által hozzárendelt identitások, eltávolíthatja az összes felhasználói hozzárendelt identitások között csak a rendszer által hozzárendelt használatára. Használja az alábbi parancsot:
 
 ```azurecli-interactive

@@ -4,7 +4,7 @@ description: Office 365-csoportok az Azure Active Directoryban (előzetes verzi�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: michael.tillman
+manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.component: users-groups-roles
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: curtand
-ms.reviewer: kairaz.contractor
+ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c973245b6c8ee3557f9bf410544f9f698b2733c5
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 111be7d3ee00f2b40ace3bfe4efdacc5029ccf77
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872038"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239134"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) az Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése
 
@@ -200,9 +200,9 @@ Office 365 felügyeleti központ | Office 365 felügyeleti központ megfelelő e
 ## <a name="next-steps"></a>További lépések
 E cikkekben további információk az Azure AD-csoportokat.
 
-* [Tekintse meg a meglévő csoportok](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Meglévő csoportok megtekintése](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Elévülési szabályzatot, az Office 365-csoportok](groups-lifecycle.md)
-* [Csoport beállításainak kezelése](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Egy csoport tagjai kezelése](../fundamentals/active-directory-groups-members-azure-portal.md)
-* [Egy csoport tagságát kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [A csoport dinamikus szabályok kezelése](groups-dynamic-membership.md)
+* [Csoportbeállítások kezelése](../fundamentals/active-directory-groups-settings-azure-portal.md)
+* [Csoporttagok kezelése](../fundamentals/active-directory-groups-members-azure-portal.md)
+* [Csoporttagságok kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)
+* [A csoportban lévő felhasználók dinamikus szabályainak kezelése](groups-dynamic-membership.md)

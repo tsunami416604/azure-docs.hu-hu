@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: ffd0f272d182e3362a82e137e902d433ca750b46
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: dae8549cb951a463688869454e2f4c71103c1363
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216291"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226393"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: az SQL Server használata
 Ebben az oktatóanyagban vezeti végig a folyamat létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Server és a egy nyilvánosan elérhető adatkészlet használatával – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szokásos adatelemzési munkafolyamathoz: fogadni, és Fedezze fel az adatokat, Funkciók tervezése, tanulás egyszerűbbé tételével majd hozhat létre és helyezhet üzembe modelleket.
@@ -623,7 +623,7 @@ Az alábbi ábra egy minta kísérlet pontozási van. Amikor készen áll a köz
 A recap, ez a forgatókönyv az oktatóanyag egy Azure adatelemzési környezetet, egy nagy nyilvános adatkészletet egészen a modellek betanítása és a egy Azure Machine Learning webszolgáltatás üzembe helyezése adatgyűjtés használhatta hozott létre.
 
 ### <a name="license-information"></a>Licencinformációk
-Ez a minta forgatókönyv és a kísérő parancsfájlok és IPython notebook(s) osztanak meg a Microsoft mellett az MIT-licenccel. Ellenőrizze a LICENSE.txt fájlt további részletekért a Githubon mintakódot a címtárban.
+Ez a minta forgatókönyv és a kísérő parancsfájlok és IPython notebook(s) osztanak meg a Microsoft mellett az MIT-licenccel. Ellenőrizze a LICENSE.txt fájlt a könyvtárban mintakódot a Githubon további részletekért.
 
 ### <a name="references"></a>Referencia
 • [Andrés Monroy NYC Taxi lelassítja letöltési oldala](http://www.andresmh.com/nyctaxitrips/)  

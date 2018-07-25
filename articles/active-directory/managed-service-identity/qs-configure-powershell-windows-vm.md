@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 38f229addd0cd1f9c4f4d0ceb976f19f06d4a293
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 9a40ad66f104a33230484f24e20a5f3bd9ed6175
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214710"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237655"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás (MSI) PowerShell-lel
 
@@ -96,9 +96,6 @@ Ha egy meglévő virtuális gépet a rendszer által hozzárendelt identitással
 
 ## <a name="disable-the-system-assigned-identity-from-an-azure-vm"></a>Tiltsa le a rendszer hozzárendelt identitás Azure virtuális gépből
 
-> [!NOTE]
->  A Felügyeltszolgáltatás-identitást a virtuális gépről letiltása jelenleg nem támogatott. Addig is válthat a rendszer által hozzárendelt, és a felhasználó hozzárendelt identitások között.
-
 Ha egy virtuális gépet, amely már nincs szüksége a rendszerhez rendelt identitáshoz, de továbbra is a felhasználó által hozzárendelt identitások van szüksége, használja a következő parancsmagot:
 
 1. Jelentkezzen be Azure-bA `Login-AzureRmAccount`. Használjon, amely tartalmazza a virtuális gép Azure-előfizetéssel társított fiókot.
@@ -107,10 +104,20 @@ Ha egy virtuális gépet, amely már nincs szüksége a rendszerhez rendelt iden
    Login-AzureRmAccount
    ```
 
-2. Futtassa a következő parancsmagot: 
-    ```powershell       
-    Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -IdentityType "UserAssigned"
-    ```
+2. Beolvasni a virtuális gép tulajdonságait a a `Get-AzureRmVM` parancsmagot, és állítsa a `-IdentityType` paramétert `UserAssigned`:
+
+   ```powershell   
+   $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM    
+   Update-AzureRmVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType "UserAssigned"
+   ```
+
+Ha már nincs szüksége a rendszerhez rendelt identitáshoz egy virtuális gép, és nem a felhasználói identitásokat, használja a következő parancsokat:
+
+```powershell
+$vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
+Update-AzureRmVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
+```
+
 Az MSI-Virtuálisgép-bővítmény eltávolítása felhasználói a - Name kapcsolót a [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) parancsmagot, ugyanazt a bővítmény hozzáadásakor használt név megadásával:
 
    ```powershell
@@ -179,23 +186,23 @@ Felhasználó hozzárendelése egy meglévő Azure virtuális géphez hozzárend
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Távolítsa el a felhasználóhoz rendelt felügyelt identitás Azure virtuális gépből
 
-> [!NOTE]
->  Az összes felhasználó által hozzárendelt identitások eltávolítása a virtuális gép jelenleg nem támogatott, kivéve, ha a rendszerhez rendelt identitáshoz. Térjen vissza frissítésekért.
-
-Ha a virtuális gépen több felhasználó által hozzárendelt identitások, az alábbi parancsokkal az utolsót kivételével az összes eltávolíthatja. Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A `<MSI NAME>` továbbra is a virtuális gépen a felhasználóhoz hozzárendelt identitás name tulajdonság. Ez az információ található a virtuális Gépet az identitás szakaszában `az vm show`:
+Ha a virtuális gépen több felhasználó által hozzárendelt identitások, az alábbi parancsokkal az utolsót kivételével az összes eltávolíthatja. Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A `<MSI NAME>` továbbra is a virtuális gépen a felhasználóhoz hozzárendelt identitás name tulajdonság. Ez az információ a virtuális Gépet az identitás szakaszában található `az vm show`:
 
 ```powershell
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm
-$vm.Identity.IdentityIds = "<MSI NAME>"
-Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -VirtualMachine $vm
+Update-AzureRmVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType UserAssigned -IdentityID "<MSI NAME>"
 ```
+Ha el szeretné távolítani az összes felhasználó hozzárendelt identitások, a virtuális gép nem rendelkezik a rendszerhez rendelt identitáshoz, használja a következő parancsot:
 
-Ha a virtuális Géphez hozzárendelt rendszer és a felhasználó által hozzárendelt identitások, eltávolíthatja az összes felhasználói hozzárendelt identitások között csak a rendszer által hozzárendelt használatára. Használja az alábbi parancsot:
+```powershell
+$vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm
+Update-AzureRmVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
+```
+Ha a virtuális Géphez hozzárendelt rendszer és a felhasználó által hozzárendelt identitások, eltávolíthatja az összes felhasználói hozzárendelt identitások között csak a rendszer által hozzárendelt használatára.
 
 ```powershell 
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm
-$vm.Identity.IdentityIds = $null
-Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -VirtualMachine $vm -IdentityType "SystemAssigned"
+Update-AzureRmVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType "SystemAssigned"
 ```
 
 ## <a name="related-content"></a>Kapcsolódó tartalom

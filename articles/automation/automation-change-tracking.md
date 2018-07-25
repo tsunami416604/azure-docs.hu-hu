@@ -10,12 +10,12 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 891206e88173d72a0bacf6694a331c4ad8cc9acc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 86b8f76bd221be9f30a5b9336af858359ae0af8f
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069447"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238879"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -99,7 +99,7 @@ A következő lépéseket követve konfigurálja a fájlok nyomon követése a W
 
 ## <a name="configure-file-content-tracking"></a>Fájl tartalma követési konfigurálása
 
-Megtekintheti a előtti és utáni módosítását a File Content Change Tracking egy fájl tartalmát. Ez érhető el a Windows és Linux-fájlok minden módosítása a fájlt, a fájl tartalmát a storage-fiókban tárolt, és bemutatja a fájl előtt és után a változás, a beágyazott vagy egymás mellett. További tudnivalókért lásd: [követett fájl tartalmának megtekintése](change-tracking-file-contents.md).
+Megtekintheti a tartalom előtt és után egy fájlt a File Content Change Tracking módosítását. Ez érhető el a Windows és Linux-fájlok minden módosítása a fájlt, a fájl tartalmát a storage-fiókban tárolt, és bemutatja a fájl előtt és után a változás, a beágyazott vagy egymás mellett. További tudnivalókért lásd: [követett fájl tartalmának megtekintése](change-tracking-file-contents.md).
 
 ![változások megtekintése egy fájlban](./media/change-tracking-file-contents/view-file-changes.png)
 

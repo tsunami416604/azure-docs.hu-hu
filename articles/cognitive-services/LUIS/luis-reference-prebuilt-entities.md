@@ -3,25 +3,25 @@ title: A LUIS előre összeállított entitások referencia – Azure |} A Micro
 titleSuffix: Azure
 description: Ez a cikk az előre összeállított entitások, a Language Understanding (LUIS) részét képező tartalmaz.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 07/11/2018
-ms.author: v-geberr
-ms.openlocfilehash: 680acb5ed808750312da46b6bf4ebf3afca1bea5
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.author: diberry
+ms.openlocfilehash: 731ac279b4b0c162809d8e0638b9337924859b3d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969976"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238829"
 ---
 # <a name="entities-per-culture"></a>Entitások kultúránként
 
 Language Understanding (LUIS) biztosít az előre összeállított entitások. Ha az alkalmazás tartalmaz egy előre összeállított entitások, LUIS a kapcsolódó entitás előrejelzési a végpont-válasz tartalmazza. Valamennyi példa utterances is az a entitás vannak ellátva. Előre összeállított entitások viselkedését **nem** módosítható. Ha nincs másképp jelölve, előre összeállított entitások érhető el minden, a LUIS alkalmazás területi beállítások (kulturális környezetek). Az alábbi táblázat az előre összeállított entitások minden kulturális környezet által támogatott.
 
-Előre összeállított entitások   |   angol (Egyesült Államok)<br>```En-us```   |   francia (Franciaország)<br>```fr-FR```   |   olasz (Olaszország)<br>```it-IT```   |   spanyol (spanyolországi)<br>```es-ES```   |   kínai<br>```zh-CN```   |   német<br>```de-DE```   |   portugál (brazíliai)<br>```pt-BR```   |   japán (Japán)<br>```ja-JP```   |   koreai (Korea)<br>```ko-kr```   | francia (Kanada)<br>```fr-CA```   |   spanyol (Mexikó)<br>```es-MX```   |   holland (Hollandia)<br>```nl-NL```   |
+Előre összeállított entitások   |   angol (Egyesült Államok)<br>```En-us```   |   francia (Franciaország)<br>```fr-FR```   |   olasz (Olaszország)<br>```it-IT```   |   Spanyol (Spanyolország)<br>```es-ES```   |   kínai<br>```zh-CN```   |   német<br>```de-DE```   |   portugál (brazíliai)<br>```pt-BR```   |   japán (Japán)<br>```ja-JP```   |   koreai (Korea)<br>```ko-kr```   | francia (Kanada)<br>```fr-CA```   |   spanyol (Mexikó)<br>```es-MX```   |   holland (Hollandia)<br>```nl-NL```   |
 ------|:------:|------|------|------|------|------|------|------|------|------|------|------|
 [Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |

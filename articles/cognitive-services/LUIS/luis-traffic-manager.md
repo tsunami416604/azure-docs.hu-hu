@@ -1,20 +1,20 @@
 ---
 title: A Language Understanding (LUIS) – az Azure endpoint kvóta növeléséhez használja a Microsoft Azure Traffic Manager |} A Microsoft Docs
 description: Végpont kvóta helyezkednek el a Language Understanding (LUIS) végpont kvóta növeléséhez több előfizetés a Microsoft Azure Traffic Manager használatával
-author: v-geberr
+author: diberry
 manager: kaiqb
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8c8228b13c972c65596f0389e2fdfde585f8a742
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.author: diberry
+ms.openlocfilehash: 77a9d4197804dcdd1e0c8b3f8a0d66100f770855
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39137492"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238192"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A Microsoft Azure Traffic Manager használatával kezelheti a végpont kvóta kulcsok
 Language Understanding (LUIS) lehetővé teszi, hogy a végpont kérelmi kvótát egy kulcs kvóta túl kínál. További kulcsokat hoz létre a LUIS, és hozzáadni azokat a LUIS-alkalmazás az ehhez a **közzététel** lapját a **erőforrások és a kulcsok** szakaszban. 

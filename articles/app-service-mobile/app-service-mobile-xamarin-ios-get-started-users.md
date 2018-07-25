@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés a Mobile Apps Xamarin IOS-hitelesítés
-description: Útmutató a Mobile Apps segítségével hitelesíti a felhasználókat identitás-szolgáltatóktól, beleértve az aad-ben, a Google, a Facebook, a Twitter és a Microsoft számos a Xamarin IOS-es alkalmazás.
+title: Ismerkedés a Xamarin IOS Mobile Apps hitelesítése
+description: Ismerje meg, hogyan hitelesítheti a felhasználókat a Xamarin iOS-alkalmazás identitás-szolgáltatóktól, többek között az aad-ben, Google, Facebook, Twitter és a Microsoft számos, a Mobile Apps segítségével.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
@@ -14,57 +14,57 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: c2b77d7c9caab1c7ac13af5ccd50e992bcce1caf
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: be6ee88f43254ec3075a64299005d3597af968e7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31787658"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224765"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Bővítse Xamarin.iOS-alkalmazását hitelesítési funkcióval
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-Ez a témakör bemutatja, hogyan hitelesítheti egy App Service Mobile Apps az ügyfélalkalmazás felhasználóit. Ebben az oktatóanyagban hozzáadja hitelesítési gyorsútmutató-projekt Xamarin.iOS App Service által támogatott identitásszolgáltató használatával. Miután sikeresen alatt hitelesítése és engedélyezése a Mobile Apps által, a felhasználói azonosító érték jelenik meg, és fogja tudni elérni a korlátozott tábla adatai.
+Ez a témakör bemutatja, hogyan hitelesítheti felhasználóit egy App Service Mobile Apps, az ügyfél-alkalmazásból. Ebben az oktatóanyagban hozzáadja a Xamarin.iOS példaprojekthez egy identitásszolgáltatótól az App Service által támogatott hitelesítési. Folyamatban sikeresen hitelesíti és a Mobile Apps, a felhasználói azonosító értéke megjelenik, és lesz korlátozva táblák adatainak eléréséhez.
 
-Először el kell végeznie az oktatóanyag [Xamarin.iOS-alkalmazás létrehozása]. Ha nem használja a letöltött gyors üzembe helyezési kiszolgálóprojektet, hozzá kell adnia a hitelesítési kiterjesztés csomag fel a projektbe. Kiszolgáló bővítménycsomagok kapcsolatos további információkért lásd: [használható a .NET-háttérrendszer server SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Először végezze el az oktatóanyag [Xamarin.iOS-alkalmazás létrehozása]. Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, hozzá kell adnia a hitelesítési kiterjesztés csomagot a projekthez. Kiszolgáló bővítménycsomagok kapcsolatos további információkért lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Regisztrálja az alkalmazást a hitelesítéshez, és konfigurálja az App Service szolgáltatások
+## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Regisztrálja az alkalmazást a hitelesítés és az App Services konfigurálása
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 ## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>Az alkalmazás hozzáadása az engedélyezett külső átirányítási URL-címek
 
-Biztonságos hitelesítéshez az szükséges, hogy az alkalmazás adja meg egy új URL-sémát. Ez lehetővé teszi a hitelesítési rendszer visszairányítja az alkalmazás a hitelesítési folyamat befejezése után. Ebben az oktatóanyagban az URL-séma használjuk _appname_ egész. Bármely választja URL-sémát is használhatja. A mobilalkalmazás egyedinek kell lennie. A kiszolgáló oldalán engedélyezése:
+Hitelesítésre van szükség, hogy az alkalmazás egy új URL-séma meghatározása. Ez lehetővé teszi a hitelesítési rendszer visszairányítja az alkalmazás a hitelesítési folyamat befejeződése után. Ebben az oktatóanyagban azt használja az URL-séma _appname_ során. Bármely URL-séma választja is használhatja. A mobilalkalmazás egyedinek kell lennie. A kiszolgálói oldalon az átirányítás engedélyezése:
 
-1. Válassza ki az App Service az [Azure-portálon].
+1. Az [Azure Portalon] válassza ki az App Service.
 
-2. Kattintson a **hitelesítési / engedélyezési** menüjét.
+2. Kattintson a **hitelesítési / engedélyezési** menüpont.
 
-3. Az a **engedélyezett külső átirányítási URL-t**, adja meg `url_scheme_of_your_app://easyauth.callback`.  A **url_scheme_of_your_app** ezt a karakterláncot a rendszer az URL-séma, a mobilalkalmazás.  Akkor érdemes követnie normál URL-cím meghatározása (használata betűket és számokat csak, és betűvel kezdődik) protokoll.  Meg kell győződnie, jegyezze fel a karakterláncot, amely úgy dönt, mivel úgy, hogy az URL-séma több helyen a mobilalkalmazás kódot kell.
+3. Az a **engedélyezett külső átirányítási URL-címeket**, adja meg `url_scheme_of_your_app://easyauth.callback`.  A **url_scheme_of_your_app** Ez a karakterlánc a következő az URL-séma esetében.  Normál URL-cím-specifikáció (használata betűket és csak számokból állhat, és betűvel kezdődhet) protokoll, érdemes követnie.  Meg kell jegyezze fel a karakterlánc, amely úgy dönt, mert szüksége lesz a mobilalkalmazás-kód az URL-séma több helyen való beállításához.
 
 4. Kattintson az **OK** gombra.
 
 5. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="restrict-permissions-to-authenticated-users"></a>A hitelesített felhasználókhoz jogosultságok korlátozása
+## <a name="restrict-permissions-to-authenticated-users"></a>A hitelesített felhasználók engedélyeinek korlátozása
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-&nbsp;&nbsp;4. A Visual Studio és Xamarin Studio futtatható az ügyfélprojekt egy eszközt vagy emulátort. Győződjön meg arról, hogy egy állapotkód: nem kezelt kivétel a 401-es (nem engedélyezett) jelenik meg, az alkalmazás indítása után. A problémát a hibakereső konzoljába naplózza. Ezért a Visual Studio kell megjelennie a hiba a kimeneti ablakban.
+&nbsp;&nbsp;4. A Visual Studióban vagy a Xamarin Studióban futtassa az eszközt vagy emulátort a. Győződjön meg arról, hogy a 401-es (nem engedélyezett) állapotkódot a nem kezelt kivétel az alkalmazás indítása után jelenik meg. A hiba kerül a hibakeresőt a konzolja felé. Így a Visual Studióban láthatja a hibát a kimeneti ablakban.
 
-&nbsp;&nbsp;A jogosulatlan hiba akkor fordul elő, mert az alkalmazás megpróbál hozzáférni a mobil-háttéralkalmazást, nem hitelesített felhasználónak. A *TodoItem* tábla most hitelesítést igényel.
+&nbsp;&nbsp;Ez nem engedélyezett a hiba oka, hogy az alkalmazást próbál meg hozzáférni egy nem hitelesített felhasználóként a mobilalkalmazás háttérrendszerének. A *TodoItem* táblázat most már hitelesítést igényel.
 
-A következő később frissíteni az ügyfélalkalmazás az erőforrásokat a Mobile Apps-háttéralkalmazás a hitelesített felhasználók.
+Ezután az ügyfélalkalmazás szeretne frissíteni erőforrás-kérelmek a Mobile Apps-háttéralkalmazást a hitelesített felhasználóval.
 
 ## <a name="add-authentication-to-the-app"></a>Hitelesítés hozzáadása az alkalmazáshoz
-Ebben a szakaszban az alkalmazás egy bejelentkezési képernyőt megjelenítendő adatok megjelenítése előtt fog módosítani. Az alkalmazás indításakor nem nem csatlakoznak az App Service, és nem jelenik meg az adatokat. Az első alkalommal, amikor a felhasználó hajtja végre a frissítési kézmozdulat a bejelentkezési képernyőn megjelenik; sikeres bejelentkezés után a teendőlista elemeinek listája jelenik meg.
+Ebben a szakaszban fog módosítani az alkalmazás adatainak megjelenítése előtt egy bejelentkezési képernyő megjelenítéséhez. Az alkalmazás indításakor nem tudnak csatlakozni az App Service, és nem jelennek meg adatok. Miután az első alkalommal, amikor a felhasználó hajt végre a frissítési jelentkezhessenek be a bejelentkezési képernyőn jelenik meg; sikeres bejelentkezés után a teendőlista elemeinek listája jelenik meg.
 
-1. Az ügyfél projektben nyissa meg a fájl **QSTodoService.cs** és adja hozzá a következő utasítás használatával és `MobileServiceUser` az elérő QSTodoService osztályra:
+1. Az ügyfél-projektben nyissa meg a fájlt **QSTodoService.cs** , és adja hozzá a következő using utasítást, és `MobileServiceUser` hozzáférő a QSTodoService osztályhoz az:
  
         using UIKit;
        
         // Logged in user
         private MobileServiceUser user;
         public MobileServiceUser User { get { return user; } }
-2. Adja hozzá nevű új metódust **hitelesítés** való **QSTodoService** a következő definícióját:
+2. Adja hozzá az új metódust **hitelesítés** való **QSTodoService** az alábbi definíciójában:
 
         public async Task Authenticate(UIViewController view)
         {
@@ -79,9 +79,9 @@ Ebben a szakaszban az alkalmazás egy bejelentkezési képernyőt megjelenítend
             }
         }
 
-    >[AZURE.NOTE] Ha használja az identitásszolgáltató eltérő a Facebook, módosítsa az értéket, átadott **LoginAsync** fent a következőhöz: _MicrosoftAccount_, _Twitter_,  _Google_, vagy _WindowsAzureActiveDirectory_.
+    >[AZURE.NOTE] Ha eltérő egy Facebook-identitásszolgáltató használ, módosítsa az értéket, átadott **LoginAsync** fent, a következők egyikét: _MicrosoftAccount_, _Twitter-_,  _Google_, vagy _WindowsAzureActiveDirectory_.
 
-3. Nyissa meg **QSTodoListViewController.cs**. Módosítsa a metódus definícióját **ViewDidLoad** hívása eltávolítása **RefreshAsync()** vége:
+3. Nyissa meg **QSTodoListViewController.cs**. Módosítsa a metódus definícióját **ViewDidLoad** eltávolítása a hívást **RefreshAsync()** a végfelhasználók közelében:
    
         public override async void ViewDidLoad ()
         {
@@ -97,7 +97,7 @@ Ebben a szakaszban az alkalmazás egy bejelentkezési képernyőt megjelenítend
             // Comment out the call to RefreshAsync
             // await RefreshAsync();
         }
-4. A módszer módosításához **RefreshAsync** – Ha a **felhasználói** tulajdonsága null értékű. A metódusdefiníciót tetején adja hozzá a következő kódot:
+4. A módszer módosításához **RefreshAsync** – Ha a **felhasználói** tulajdonság null értékű. A metódusdefiníciót tetején adja hozzá a következő kódot:
    
         // start of RefreshAsync method
         if (todoService.User == null) {
@@ -116,10 +116,10 @@ Ebben a szakaszban az alkalmazás egy bejelentkezési képernyőt megjelenítend
         {
             return ResumeWithURL != null && ResumeWithURL(url);
         }
-6. Nyissa meg **Info.plist** fájlt, keresse meg **URL-cím típusú** a a **speciális** szakasz. Mostantól konfigurálhatja a **azonosító** és a **URL-sémákat** a URL-típust, és kattintson a **URL-típus hozzáadása**. **URL-sémákat** meg kell egyeznie a {url_scheme_of_your_app}.
-7. A Visual Studio, a kapcsolat a Mac-gazdagép vagy a Visual Studio Mac futtassa az ügyfélprojekt célzó egy eszközt vagy emulátort. Győződjön meg arról, hogy az alkalmazás nem jelennek meg adatok.
+6. Nyissa meg **Info.plist** fájlt, lépjen a **URL-cím-típusok** a a **speciális** szakaszban. Mostantól konfigurálhatja az **azonosító** és a **URL-sémákat** a URL-cím típusa, és kattintson a **URL-cím-típus hozzáadása**. **URL-sémákat** legyen ugyanaz, mint a {url_scheme_of_your_app}.
+7. A Visual Studióban, a Mac-gazdagépről vagy a Visual Studio csatlakoztatott Mac számítógépen futtassa az ügyfél-projektet egy eszközt vagy emulátort. Győződjön meg arról, hogy az alkalmazás nem jelennek meg adatok.
    
-    Hajtsa végre a frissítési kézmozdulat modulba húzza le az elemeket, és emiatt a bejelentkezési képernyő jelenik meg. Miután sikeresen megadta az érvényes hitelesítő adatokat, az alkalmazás a teendőlista elemeinek listáját jeleníti meg, és frissíthetik az adatokat.
+    Hajtsa végre a frissítési kézmozdulat kiindulásként lefelé a listában, a cikkek, amelyek a bejelentkezési képernyő megjelenését, okoz. Miután sikeresen megadta érvényes hitelesítő adatokat, az alkalmazás a teendőlista elemeinek listáját jeleníti meg, és az adatok lehetővé teszi a frissítések.
 
 <!-- URLs. -->
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582

@@ -1,6 +1,6 @@
 ---
-title: Az infrastruktúra biztonsági másolat szolgáltatással Azure verem végzetes adatvesztés helyreállíthatók |} Microsoft Docs
-description: Ha egy végzetes hiba miatt sikertelen, az Ön Azure-verem az infrastruktúra adatok vissza, ha az Azure Alkalmazásveremben üzembe visszaállítása.
+title: Az Azure Stack segítségével az infrastruktúra biztonsági mentési szolgáltatás súlyos adatvesztés utáni helyreállítás |} A Microsoft Docs
+description: Ha a végzetes hiba miatt sikertelenek lesznek, Ön telepítheti az Azure Stack az infrastruktúra adatok visszaállításához, amikor az Azure Stack üzemelő példány visszaállítása.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,62 +15,62 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 7ca3945dd3768ac71e0a962417f0a621aa83be1e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: f1582efa7d357f6f535c562a656ec17024357320
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075720"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242869"
 ---
-# <a name="recover-from-catastrophic-data-loss"></a>Végzetes adatvesztés helyreállítása
+# <a name="recover-from-catastrophic-data-loss"></a>Végzetes adatvesztés utáni helyreállítás
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek.*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek.*
 
-Azure verem Azure szolgáltatást futtat, az adatközpontban található. Az Azure-verem mérete négy csomópont egyetlen szekrényben telepítve legyen a környezetben is futtatható. Ezzel szemben Azure fut, legfeljebb 40 régiókban több adatközpontot és minden régióban több zóna. Felhasználói erőforrásokat is kiterjedhetnek több kiszolgálók, például rackszekrények, adatközpontok és régiókban. Az Azure-vermet jelenleg csak választhat a központi telepítése a teljes körű felhőalapú egyetlen rögzítve. Ez mutatja a felhőbe, a datacenter vagy a hiba oka, hogy nagyobb hibák katasztrofális események kockázatát. Ha egy olyan vészhelyzet esetén éri, az Azure-verem példány offline állapotba kerül. Az összes adat potenciálisan helyreállíthatatlan.
+Az Azure Stack Azure-szolgáltatások a helyi adatközpontban fut. Az Azure Stack négy csomópont az egyetlen állványon telepítve legyen a környezetben futtathatja. Ezzel szemben az Azure több mint 40 régióban több adatközpont és az egyes régiókban több zónában futtatja. Felhasználói erőforrásokat is kiterjedhetnek több kiszolgálók, állványokon, adatközpontok és régiók. Az Azure Stack jelenleg csak választhat, hogy a teljes felhőalapú üzembe egyetlen állványon. Ez elérhetővé teszi a felhőben, az adatközpontban vagy a hiba oka, hogy jelentős termékhibákat katasztrofális esemény kockázatát. Ha egy katasztrófa utáni feladatokat, az Azure Stack-példány offline állapotba kerül. Összes adat potenciálisan helyreállíthatatlan.
 
-Attól függően, hogy az adatok elvesztését okozza szükség lehet egy egyetlen infrastruktúra-szolgáltatás javítsa vagy állítsa vissza a teljes Azure verem-példány. Akkor is szükség lehet ugyanazon a helyen, vagy egy másik helyen lévő másik hardverre visszaállítása.
+Az adatvesztés kiváltó okának függően szükség lehet egy egyetlen infrastruktúra-szolgáltatás javítása, vagy állítsa vissza a teljes Azure Stack-példány. Akkor is szükség lehet ugyanazon a helyen, vagy egy másik helyen lévő másik hardverre visszaállítása.
 
-A forgatókönyv címek helyreállítása a teljes telepítési hiba esetén a készülék és a magánfelhő újbóli telepítését.
+A forgatókönyv címek helyreállítása a teljes telepítési hiba esetén a berendezés és az újbóli üzembe helyezés a magánfelhő.
 
 | Forgatókönyv                                                           | Adatvesztés                            | Megfontolandó szempontok                                                             |
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
-| Végzetes adatvesztés katasztrófa vagy termék hiba miatt helyreállítása | Az összes infrastruktúra és a felhasználó és az alkalmazás adatokat | Felhasználói alkalmazás és az adatok védett külön infrastruktúra adatokból |
+| Vészhelyreállítási vagy a termékverzió hiba miatt végzetes adatvesztés utáni helyreállítás | Az összes infrastruktúrát és a felhasználó és az alkalmazás adatokat | Felhasználó alkalmazás- és védett külön-külön infrastruktúra-adatokból |
 
 ## <a name="workflows"></a>Munkafolyamatok
 
-Az Azure Start védelmének út kezdődik-e adatok biztonsági mentése az infrastruktúra- és alkalmazás/bérlői külön-külön. Ez a dokumentum bemutatja, hogyan adhat az infrastruktúra védelméhez. 
+Külön-külön biztonsági mentése az infrastruktúra és az alkalmazás vagy a bérlőjéhez adatok védelme az Azure indítsa el az utazás kezdődik. Ez a dokumentum ismerteti, hogyan védheti meg az infrastruktúra. 
 
-![Első üzembe Azure verem](media\azure-stack-backup\azure-stack-backup-workflow1.png)
+![Kezdeti üzembe helyezhető Azure Stacket](media\azure-stack-backup\azure-stack-backup-workflow1.png)
 
-A legrosszabb esetben forgatókönyvekben, ahol minden adat elveszik Azure verem helyreállítása során a rendszer az egyedi infrastruktúra adatok visszaállítása Azure verem és az összes felhasználói adatot telepítésének. 
+A legrosszabb, használati esetek, ahol minden adat elveszik helyreállítása az Azure Stack az a folyamat egyedi az infrastruktúra-adatok visszaállítása az Azure Stack és az összes felhasználói adatot a telepítés. 
 
-![Telepítse újra az Azure verem](media\azure-stack-backup\azure-stack-backup-workflow2.png)
+![Az Azure Stack ismételt üzembe helyezése](media\azure-stack-backup\azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>Visszaállítás
 
-Ha nincs végzetes adatvesztés, de továbbra is használható a hardver, Azure verem újratelepítés megadása kötelező. Során újbóli üzembe helyezése megadhatja a tárolási helyét és a biztonsági másolatok eléréséhez szükséges hitelesítő adatokat. Ebben a módban nincs szükség adhatja meg a szolgáltatásokat, amelyeket vissza kell állítani. Biztonsági mentés vezérlő infrastruktúra esetében a telepítési munkafolyamat részeként vezérlősík vezérlőhivatkozás.
+Ha nincs végzetes adatvesztés, de továbbra is használható a hardvert, az újbóli üzembe helyezés az Azure Stack szükség. Újbóli üzembe helyezés, során megadhatja a tárolási helyét és a biztonsági másolatok eléréséhez szükséges hitelesítő adatokat. Ebben a módban van, nem szükséges, adja meg, hogy vissza kell állítani a szolgáltatásokat. Infrastruktúra biztonsági mentést vezérlő kódtárba vezérlő adatsík állapotának a telepítési munkafolyamat részeként.
 
-Ha egy olyan vészhelyzet esetén, hogy ez a beállítás a hardver nem használható, újbóli üzembe helyezése csak kiszolgálón lehetőség új hardverre. Újratelepítés hetet is igénybe vehet néhány helyettesítő hardver van rendezve, és az adatközponton belül érkezik. Bármikor vezérlő vezérlősík adatainak helyreállítását lehetőség. Visszaállítás azonban nem támogatott, ha az újratelepített példányának verziószáma nagyobb, mint a legutóbbi biztonsági mentés használt verzió több verziója. 
+Ha olyan használhatatlan rendereli a hardvert, újbóli üzembe helyezés csak akkor lehetséges, új hardverre. Újbóli üzembe helyezés hetet is igénybe vehet néhány helyettesítő hardver van rendezve, és az adatközponton belül érkezik. Vezérlési sík adatok visszaállítása bármikor lehetőség. Visszaállítási azonban nem támogatott, ha az újratelepített-példány verziója újabb, mint a legutóbbi biztonsági mentés a használt verzió egynél több verzió. 
 
-| A telepítési módban | Kezdőpont | Végpont                                                                                                                                                                                                     |
+| Üzembe helyezési mód | Kezdőpont | Végpont                                                                                                                                                                                                     |
 |-----------------|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Tiszta telepítés   | Alapkonfiguráció build | OEM Azure verem telepíti, és a legújabb támogatott verzióra frissíti.                                                                                                                                          |
-| Helyreállítási módban   | Alapkonfiguráció build | OEM Azure verem helyreállítási módban telepíti, és kezeli a rendelkezésre álló legutóbbi biztonsági követelmények megfelelő verziója. Az eredeti Berendezésgyártók által támogatott legújabb verzióra történő frissítése a központi telepítés befejeződik. |
+| Tiszta telepítés   | Alapkonfiguráció-build | OEM helyez üzembe az Azure Stack, és a legújabb támogatott verziót frissíti.                                                                                                                                          |
+| A helyreállítási mód   | Alapkonfiguráció-build | OEM helyez üzembe az Azure Stack helyreállítási módban, és kezeli a alapján a rendelkezésre álló legfrissebb biztonsági mentés követelményeinek megfelelő verziója. Az OEM által frissítése a legújabb támogatott verziót az üzembe helyezés befejeződik. |
 
-## <a name="data-in-backups"></a>Adatok biztonsági mentései
+## <a name="data-in-backups"></a>Biztonsági adatok
 
-Azure verem támogatja a felhő helyreállítási módban nevű központi telepítési típus. Ebben az üzemmódban csak akkor, ha úgy dönt, hogy katasztrófa utáni helyreállításhoz. Azure-verem vagy termék hiba kerül a megoldás helyreállíthatatlan szolgál. Ebben a telepítési módban nem tudja elhárítani a megoldásban tárolt felhasználói adatok. Ebben a telepítési módban a hatóköre korlátozva visszaállítása a következő adatokat:
+Az Azure Stack a felhőalapú helyreállítási mód nevű központi telepítés típusát támogatja. Ebben az üzemmódban csak akkor, ha úgy dönt, hogy az Azure Stack helyreállítása vészhelyzet után, vagy a termék hiba jelenik meg a megoldás helyreállíthatatlan szolgál. Ebben a telepítési módban nem tudja a megoldásban tárolt felhasználói adatok. Ebben a telepítési módban hatóköre korlátozva visszaállítása a következő adatokat:
 
- - Központi telepítés bemenetek
- - Belső identitáskezelő rendszerekkel
- - Összevont konfigurációs (leválasztott központi telepítésekhez) azonosítása
+ - Üzembe helyezés bemenetek
+ - Belső identitáskezelési rendszerek
+ - Összevont (kapcsolat nélküli üzembe helyezés) konfiguráció azonosítására
  - Belső hitelesítésszolgáltató által használt legfelső szintű tanúsítványok
- - Az Azure erőforrás-kezelő konfigurációs felhasználói adatok, például előfizetések, tervek, ajánlatok és kvóták tárolási, hálózati és számítási erőforrásokat
- - KeyVault titkok és tárolók
- - Az RBAC házirend-hozzárendelések és a szerepkör-hozzárendelések 
+ - Az Azure Resource Manager konfigurációs felhasználói adatok, például az előfizetések, csomagok, ajánlatok és kvóták tároláshoz, hálózati és számítási erőforrások
+ - A KeyVault titkos és tárolók
+ - Az RBAC-szabályzat-hozzárendelések és a szerepkör-hozzárendelések 
 
-A felhasználó infrastruktúra (IaaS) szolgáltatásként vagy Platform (PaaS) szolgáltatás-erőforrások egyike helyreállítás üzembe helyezése során. Vagyis IaaS virtuális gépeket, storage-fiókok, blobok, táblák, hálózati konfigurációt, és így tovább, elvesznek. Felhőbeli helyreállítási célja annak biztosítása érdekében a kezelők és a felhasználók a portálon ismét be tud jelentkezni a telepítés befejezése után. Naplózás vissza a felhasználók nem fogják látni az erőforrásokat. Felhasználók saját vissza előfizetéssel rendelkezik, és együtt, amely az eredeti terveket, és a rendszergazda által meghatározott olyan szabályzatot kínál. A felhasználók bejelentkezés a rendszer az eredeti megoldásban előtt a katasztrófa miatt szükséges azonos korlátozások alatt működik. Felhő helyreállítás után kézzel is helyreállíthatja az operátor hozzáadott értéket és a külső RPs, és a hozzájuk kapcsolódó adatok.
+A felhasználó infrastruktúra-szolgáltatás (IaaS) vagy a Platform, a Platformszolgáltatás (PaaS) erőforrások egyike állíthatók helyre, üzembe helyezés során. Vagyis IaaS virtuális gépek, tárfiókok, blobok, táblák, hálózati konfigurációt, és így tovább, elvesznek. A felhőalapú helyreállítás célja annak biztosítása érdekében az operátorok, a felhasználók vissza a portálra való üzembe helyezés után. Bejelentkezés felhasználók nem fogják látni a saját erőforrások. Felhasználók a visszaállított előfizetéssel rendelkezik, és együtt, amely az eredeti terveket, és a rendszergazda által meghatározott szabályzatokat kínál. A felhasználó bejelentkezik a rendszer az eredeti megoldásban a vészhelyzet előtt az azonos korlátozásai alapján működik. Felhőbeli helyreállítási befejezése után az operátor manuálisan állíthatja vissza hozzáadott értéket és a külső RPs, és a kapcsolódó adatokat.
 
 ## <a name="next-steps"></a>További lépések
 
- - További információk az ajánlott eljárások [az infrastruktúra biztonsági másolat szolgáltatással](azure-stack-backup-best-practices.md).
+ - További információ az ajánlott eljárások [az infrastruktúra biztonsági másolat szolgáltatással](azure-stack-backup-best-practices.md).

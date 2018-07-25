@@ -1,51 +1,51 @@
 ---
-title: Szerepkörök használata a minta-alapú entitások - Azure ismertetése |} Microsoft Docs
-description: Ismerje meg, hogyan szerepkör használható minta-alapú entitás adjon nevet a környezetfüggő entitás altípusa.
+title: Ismertetése szerepkörök használata a minta-alapú entitások – Azure |} A Microsoft Docs
+description: Ismerje meg, hogyan szerepkör használható egy minta-alapú entitásban adjon egy nevet a környezetfüggő entitás altípus.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: ab6100e33fb767528b87c6afde4c5ef275fc7c81
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: diberry
+ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35350051"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222703"
 ---
-# <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>A minták entitás szerepkörök környezetfüggő altípusainál
-Szerepkörök egy entitás használt csak a megnevezett, megfelelő altípusainak [minták](luis-concept-patterns.md).
+# <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>A minták entitás szerepkör a környezeti altípus
+Ezek az entitások csak a felhasznált nevesített, környezetfüggő altípusainak [minták](luis-concept-patterns.md).
 
-Például a utterance a `buy a ticket from New York to London`, Budapest és a londoni város tartozik, de eltérő jelentéssel rendelkezhetnek mindegyik rendelkezik a mondatok helyett szerepel. Győr a származási város, London pedig a cél város. 
+Ha például az utterance (kifejezés) a `buy a ticket from New York to London`, New York-i és a londoni városok, de mindegyik eltérő jelentéssel rendelkezik a mondat helyett szerepel. New York-i a forrás város, London pedig a cél város. 
 
-Szerepkörök nevezze el e különbségek:
+Szerepkörök e különbségek adjon meg egy nevet:
 
 |Entitás|Szerepkör|Cél|
 |--|--|--|
-|Hely|forrás|Ha a vezérlősík hagyja el a|
-|Hely|Cél|Ha a vezérlősík fájljai|
+|Hely|forrás|Ha az adatsík elhagyja a|
+|Hely|cél|Ha az adatsík hajtanak végre|
 
-## <a name="how-are-roles-used-in-patterns"></a>Hogyan használja a minták szerepkörök?
-A minta sablon utterance szerepkörök szerepelnek a utterance belül: 
+## <a name="how-are-roles-used-in-patterns"></a>Hogyan használhatók a szerepkörök a minták?
+A minta sablon utterance (kifejezés), a szerepkörök az utterance (kifejezés) használunk: 
 
 ```
 buy a ticket from {Location:origin} to {Location:destination}
 ```
 
-## <a name="role-syntax-in-patterns"></a>A minták szerepkör szintaxis
-Az entitás és a szerepkör csúcsos zárójelek között, között `{}`. Az entitás- és a szerepkör kettősponttal elválasztva. 
+## <a name="role-syntax-in-patterns"></a>Szerepkör-szintaxis a minták
+Az entitás- és szerepkör csúcsos zárójelek között, között `{}`. Az entitás- és a szerepkör egymástól kettősponttal elválasztva. 
 
 ## <a name="roles-versus-hierarchical-entities"></a>Szerepkörök és a hierarchikus entitások
-Hierarchikus entitások adja meg az azonos környezetfüggő adatokat szerepkörök, de csak a utterances **leképezések**. Hasonlóképpen, szerepkörök információkkal a azonos környezetfüggő hierarchikus entitásként, de csak a **minták**.
+Hierarchikus entitások, adja meg az azonos környezetfüggő adatokat szerepkörökként, hanem csak a kimondott szöveg **leképezések**. Hasonlóképpen adja meg a szerepkörök hierarchikus entitásokként, de csak az azonos környezeti információkat **minták**.
 
-|Környezetfüggő tanulás|A használt|
+|Környezetfüggő tanulás|Használatban|
 |--|--|
 |hierarchikus entitások|Leképezések|
 |roles|Minták|
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan adhat [szerepkörök](luis-how-to-add-entities.md#add-role-to-pattern-based-entity)
+* Ismerje meg, hogyan adhat hozzá [szerepkörök](luis-how-to-add-entities.md#add-role-to-pattern-based-entity)

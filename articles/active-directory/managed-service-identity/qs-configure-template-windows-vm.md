@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: ea51252de4877cdeee093c4f21f68f59a061cdc9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 703595bbc13fb859f406e7c9fa422a9c573957ab
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213513"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237247"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>A virtuális gépek Felügyeltszolgáltatás-identitás konfigurálása egy sablon használatával
 
@@ -155,7 +155,7 @@ Ha egy virtuális Gépet, amely már nincs szüksége a felügyeltszolgáltatás
 
 1. Jelentkezzen be az Azure-bA helyileg vagy az Azure Portalon az Azure-előfizetéshez társított olyan fiókot használjon, amely tartalmazza a virtuális Gépet.
 
-2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális Gépet, amely csak a rendszer által hozzárendelt identitással rendelkezik, letilthatja, módosítsa úgy az identitás típus `None`.  Ha a virtuális gép system és a felhasználó által hozzárendelt identitások is van, távolítsa el `SystemAssigned` identitástípus és tarthatja `UserAssigned` együtt a `identityIds` a felhasználó által hozzárendelt identitások tömbje.  Az alábbi példa bemutatja, hogyan távolítsa el a rendszer hozzárendelt identitás egy virtuális gépről a nem a felhasználói identitások:
+2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális Gépet, amely csak a rendszer által hozzárendelt identitással rendelkezik, letilthatja az identitás típusúra `None`.  Ha a virtuális gép system és a felhasználó által hozzárendelt identitások is van, távolítsa el `SystemAssigned` identitástípus és tarthatja `UserAssigned` együtt a `identityIds` a felhasználó által hozzárendelt identitások tömbje.  Az alábbi példa bemutatja, hogyan távolítsa el a rendszer hozzárendelt identitás egy virtuális gépről a nem a felhasználói identitások:
    
    ```JSON
     {
@@ -222,8 +222,30 @@ Ebben a szakaszban rendel egy felhasználóhoz hozzárendelt identitás egy Azur
 
       ![Képernyőkép a felhasználóhoz hozzárendelt identitás](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
 
+### <a name="remove-user-assigned-identity-from-an-azure-vm"></a>Távolítsa el a felhasználóhoz hozzárendelt identitás Azure virtuális gépből
+
+Ha egy virtuális Gépet, amely már nincs szüksége a felügyeltszolgáltatás-identitás van:
+
+1. Jelentkezzen be az Azure-bA helyileg vagy az Azure Portalon az Azure-előfizetéshez társított olyan fiókot használjon, amely tartalmazza a virtuális Gépet.
+
+2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális Gépet, amelyhez csak a felhasználóhoz hozzárendelt identitás, letilthatja, módosítsa úgy az identitás típus `None`.  Ha a virtuális gép system és a felhasználó által hozzárendelt identitások is van, és szeretné megőrizni a rendszer által hozzárendelt identitással, távolítsa el `UserAssigned` az identitás típusból a `identityIds` a felhasználó által hozzárendelt identitások tömbje.
+    
+   Eltávolítja a hozzárendelt egyetlen felhasználói identitást egy virtuális gépről, távolítsa el a `identityIds` tömb.
+   
+   Az alábbi példa bemutatja, hogyan távolítsa el az összes felhasználói identitások hozzárendelt virtuális gép nem hozzárendelt identitások rendszert:
+   
+   ```JSON
+    {
+      "apiVersion": "2017-12-01",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('vmName')]",
+      "location": "[resourceGroup().location]",
+      "identity": { 
+          "type": "None"
+    }
+   ```
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-- Szélesebb perspektíva MSI kapcsolatban, olvassa el a [Felügyeltszolgáltatás-identitás – áttekintés](overview.md).
+- Szélesebb perspektíva Felügyeltszolgáltatás-identitás kapcsolatban, olvassa el a [Felügyeltszolgáltatás-identitás – áttekintés](overview.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD-hitelesítő tanúsítványt |} Microsoft Docs
-description: Ez a cikk ismerteti a regisztrációs és az alkalmazás-hitelesítési tanúsítvány hitelesítő adatok használatát
+title: Tanúsítvány-hitelesítő adatokat az Azure ad-ben |} A Microsoft Docs
+description: Ez a cikk ismerteti a regisztráció és a tanúsítvány hitelesítő adatokat használjanak a kérelem hitelesítés
 services: active-directory
 documentationcenter: .net
 author: CelesteDG
@@ -13,49 +13,50 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 07/24/2018
 ms.author: celested
-ms.reviewer: nacanuma
+ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c782429ac2d8ee030ca8b589b4241242c7b101d6
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 49561434688806b3959824f87d1c81e07d7a7559
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156500"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238705"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Alkalmazás-hitelesítési tanúsítvány hitelesítő adatai
 
-Az Azure Active Directory lehetővé teszi az saját hitelesítő adatait használja a hitelesítéshez. Például az OAuth 2.0 ügyfél hitelesítő adatok Grant flow a ([v1](active-directory-protocols-oauth-service-to-service.md), [v2](active-directory-v2-protocols-oauth-client-creds.md)) és az On-meghatalmazásos folyamat ([v1](active-directory-protocols-oauth-on-behalf-of.md), [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
-A hitelesítő adatok, használhat egy formátuma egy JSON webes Token(JWT) helyességi feltételt, amely az alkalmazás tulajdonosa a tanúsítvánnyal aláírt.
+Az Azure Active Directory (Azure AD) lehetővé teszi, hogy az alkalmazás saját hitelesítő adatait használja a hitelesítéshez, például az OAuth 2.0-s ügyfélhitelesítő adatok flow-ban ([1.0-s verziójú](active-directory-protocols-oauth-service-to-service.md), [v2.0](active-directory-v2-protocols-oauth-client-creds.md)) és az On-meghatalmazásos a folyamat ([1.0-s verziójú](active-directory-protocols-oauth-on-behalf-of.md), [v2.0](active-directory-v2-protocols-oauth-on-behalf-of.md)).
 
-## <a name="format-of-the-assertion"></a>A helyességi feltétel formátuma
-A helyességi feltétel kiszámításához, érdemes lehet a több valamelyikével [JSON Web Token](https://jwt.ms/) szalagtárak a választott nyelven történik. A token által az információkat a következő:
+A hitelesítő adatok, amelyek egy alkalmazás használhatja a hitelesítéshez egy űrlap egy JSON webes Token(JWT) helyességi feltétel, amely az alkalmazás tulajdonosa tanúsítvánnyal aláírt.
 
-#### <a name="header"></a>Fejléc
+## <a name="assertion-format"></a>Helyességi feltétel formátum
+A helyességi feltétel számítási, használhatja egy a többhöz [JSON Web Token](https://jwt.ms/) kódtárak a választott nyelven. Az adatokat a token által a következők:
+
+### <a name="header"></a>Fejléc
 
 | Paraméter |  Megjegyzés |
 | --- | --- |
 | `alg` | Meg kell **RS256** |
-| `typ` | Meg kell **jwt-t** |
-| `x5t` | Az X.509 tanúsítvány SHA-1 ujjlenyomat kell lennie. |
+| `typ` | Meg kell **JWT** |
+| `x5t` | X.509 tanúsítvány SHA-1 ujjlenyomatnak kell lennie |
 
-#### <a name="claims-payload"></a>Jogcímek (tartalom)
+### <a name="claims-payload"></a>Jogcímek (tartalom)
 
-| Paraméter |  Megjegyzés |
+| Paraméter |  Megjegyzések |
 | --- | --- |
-| `aud` | A célközönség: Kell  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/token** |
-| `exp` | Lejárat dátuma: a dátum, amikor a jogkivonat érvényessége lejár. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token érvényességi lejárati idejének.|
-| `iss` | Kibocsátó: a client_id (az ügyfélszolgáltatás Alkalmazásazonosító) kell lennie. |
+| `aud` | : Közönség  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/jogkivonat** |
+| `exp` | Lejárati dátum: a dátum, amikor a jogkivonat érvényessége lejár. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token érvényessége lejár.|
+| `iss` | Kiállító: a client_id (az ügyfél szolgáltatás alkalmazás azonosítója) kell lennie. |
 | `jti` | GUID-ja: a JWT azonosító |
-| `nbf` | Hatálybalépési idő: az a dátum előtt, amely a token nem használható. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token lett kiállítva. |
-| `sub` | Tulajdonos: megegyezik a `iss`, a client_id (az ügyfélszolgáltatás Alkalmazásazonosító) kell lennie. |
+| `nbf` | Nem előtt: az a dátum előtt, amely a token nem használható. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token lett kiállítva. |
+| `sub` | Tulajdonos: a `iss`, kell lennie a client_id (az ügyfél szolgáltatás alkalmazás azonosítója) |
 
-#### <a name="signature"></a>Aláírás
+### <a name="signature"></a>Aláírás
 
-Az aláírás alkalmazása a tanúsítványt, a számított a [JSON Web Token RFC7519 meghatározása](https://tools.ietf.org/html/rfc7519)
+Az aláírás számított a tanúsítvány alkalmazása leírtak szerint a [JSON Web Token RFC7519 specifikáció](https://tools.ietf.org/html/rfc7519)
 
-### <a name="example-of-a-decoded-jwt-assertion"></a>A dekódolt JWT helyességi feltétel – példa
+## <a name="example-of-a-decoded-jwt-assertion"></a>A dekódolt JWT-előfeltétel példa
 
 ```
 {
@@ -77,44 +78,59 @@ Az aláírás alkalmazása a tanúsítványt, a számított a [JSON Web Token RF
 
 ```
 
-### <a name="example-of-an-encoded-jwt-assertion"></a>Egy kódolt JWT helyességi feltétel – példa
+## <a name="example-of-an-encoded-jwt-assertion"></a>Egy kódolt JWT-előfeltétel példa
 
-A következő karakterlánc kódolt helyességi feltétel példája. Gondosan tekintse meg a három pont (.) választja el szakasz figyelje meg.
-Az első szakaszban kódolja a fejlécet, a második, a tartalom, és az utolsó a tanúsítványokat az első két szakaszok tartalmának aláírással.
+A következő karakterláncot a kódolt helyességi feltétel példája. Ha körültekintően, megfigyelheti, hogy ponttal (.) elválasztott három szakaszra osztható:
+* Az első szakaszban kódolja a fejléc
+* A második szakasz kódolja a hasznos adat
+* Az utolsó szakaszban a számított a tanúsítványokat az első két szakasz tartalmát az aláírás
+
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-### <a name="register-your-certificate-with-azure-ad"></a>A tanúsítvány regisztrálása az Azure AD-val
+## <a name="register-your-certificate-with-azure-ad"></a>A tanúsítvány regisztrálása az Azure ad-vel
 
-Az ügyfélalkalmazás az Azure AD a következő módszereket az Azure portálon keresztül is társíthat a tanúsítvány hitelesítő adat:
+A tanúsítványalapú hitelesítő adatot is társíthat az ügyfélalkalmazás az Azure ad-ben az Azure Portalon az alábbi módszerek bármelyikével:
 
-**A tanúsítványfájl feltöltését**
+### <a name="uploading-the-certificate-file"></a>A tanúsítvány-fájl feltöltése
 
-Az ügyfélalkalmazást Azure-alkalmazás regisztrációja, kattintson a **beállítások**, kattintson a **kulcsok** majd **nyilvános kulcs feltöltése**. Válassza ki a tanúsítványfájl feltöltését, és kattintson a kívánt **mentése**. Menti a tanúsítvány feltöltése és az ujjlenyomat kezdetének és lejár értékek jelennek meg. 
+Az Azure-alkalmazás regisztrációja az ügyfélalkalmazás:
+1. Válassza ki **beállítások > kulcsok** majd **nyilvános kulcs feltöltése**. 
+2. Válassza ki a feltöltendő tanúsítványfájlt.
+3. Kattintson a **Mentés** gombra. 
+   
+   Miután menti, a tanúsítvány feltöltése, és az ujjlenyomat, a kezdő dátum és a lejárati értékek jelennek meg. 
 
-**Az alkalmazás jegyzékében frissítése**
+### <a name="updating-the-application-manifest"></a>Az alkalmazásjegyzék frissítése
 
-Tanúsítvány céllal rendelkezik, kell számítási:
+Tanúsítvány céllal rendelkező, kell számítási:
 
-- `$base64Thumbprint`, vagyis a base64 kódolás a tanúsítvány kivonata
-- `$base64Value`, vagyis a base64 kódolása nyers Tanúsítványadatok
+- `$base64Thumbprint`, azaz a base64 kódolást, a tanúsítvány kivonata
+- `$base64Value`, azaz a base64 kódolás a tanúsítvány nyers adatok
 
-Is meg kell adnia a kulcs az alkalmazásjegyzékben szereplő azonosító egy GUID (`$keyId`).
+Emellett meg kell adnia az alkalmazásjegyzékben-kulcs azonosításához, egy GUID Azonosítót (`$keyId`).
 
-Az ügyfélalkalmazást Azure-alkalmazás regisztrációja, nyissa meg az alkalmazás jegyzékében, és cserélje le a *keyCredentials* tulajdonságot, amelyben az új tanúsítvány adatait a következő séma:
+Az Azure-alkalmazás regisztrációja az ügyfélalkalmazás:
+1. Nyissa meg az alkalmazásjegyzékben.
+2. Cserélje le a *keyCredentials* tulajdonság, amely az új tanúsítvány adatait a következő séma használatával.
 
-```
-"keyCredentials": [
-    {
-        "customKeyIdentifier": "$base64Thumbprint",
-        "keyId": "$keyid",
-        "type": "AsymmetricX509Cert",
-        "usage": "Verify",
-        "value":  "$base64Value"
-    }
-]
-```
+   ```
+   "keyCredentials": [
+       {
+           "customKeyIdentifier": "$base64Thumbprint",
+           "keyId": "$keyid",
+           "type": "AsymmetricX509Cert",
+           "usage": "Verify",
+           "value":  "$base64Value"
+       }
+   ]
+   ```
+3. Mentse a módosításokat az alkalmazásjegyzékben, és a jegyzék majd feltöltése az Azure ad-hez. 
 
-Mentse a módosításokat az alkalmazás jegyzékében, és töltse fel az Azure AD. A keyCredentials tulajdonság többértékű, így előfordulhat, hogy több kulcskezelési több tanúsítványok feltöltése.
+   A `keyCredentials` tulajdonság többértékű adatelemeket, így kifinomultabb kezelésének több tanúsítványt tölthet fel.
+   
+## <a name="code-sample"></a>Kódminta
+
+A mintakód a [tanúsítványok démon alkalmazások az Azure ad hitelesítése](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) bemutatja, hogyan alkalmazás használja a hitelesítéshez saját hitelesítő adatait. Azt is bemutatja, hogyan zajlik [hozzon létre egy önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) használatával a `New-SelfSignedCertificate` Powershell-parancsot. Is előnyeit, és használja a [alkalmazás létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) tanúsítványok létrehozása, az ujjlenyomat számítási és így tovább.

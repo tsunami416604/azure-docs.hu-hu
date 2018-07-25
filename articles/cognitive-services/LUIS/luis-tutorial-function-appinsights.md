@@ -1,68 +1,68 @@
 ---
-title: LUIS adatok hozzáadása a Node.js segítségével az Application Insights |} Microsoft Docs
+title: A LUIS-adatok hozzáadása az Application Insights Node.js használatával |} A Microsoft Docs
 titleSuffix: Azure
-description: Hozzon létre egy LUIS alkalmazás és a Node.js segítségével az Application Insights szolgáltatással integrált bot.
+description: A robot a LUIS-alkalmazás és az Application Insights Node.js használatával integrálva hozhat létre.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 01/18/2018
-ms.author: v-geberr
-ms.openlocfilehash: 929b6e1cc980d7215f91a616820e257aed26bab7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 5b65747bea7d2496558c5b3b533bb8420eee6254
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349595"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236839"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Az Application Insights webes alkalmazás bot származó LUIS eredmények hozzáadása
-Ez az oktatóanyag hozzáadja a kérelem-válasz adatokat LUIS [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhetők le azt a Kusto nyelv vagy a Power bi elemzése, összesíteni, és a jelentéskészítés leképezések és a valós idejű utterance entitásokat. A elemzés segítségével meghatározhatja, hogy ha kell hozzáadásakor vagy szerkesztésekor a leképezések és entitások LUIS alkalmazása.
+# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Az Application Insights web app-robot a LUIS eredmények hozzáadása
+Ebben az oktatóanyagban hozzáadja a kérések és válaszok adatokat LUIS [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-* Az Application Insights könyvtár hozzáadása a webes alkalmazás bot
-* Rögzítése és a lekérdezési eredmények LUIS küldése az Application Insights részére
-* Az Application Insights felső leképezés, pontszám és utterance lekérdezése
+* Web app-robot Application Insights-könyvtár hozzáadása
+* Rögzíti és továbbítja a LUIS lekérdezés eredményeit az Application Insights
+* Az Application Insights lekérdezési felső szándékot, pontszám és utterance (kifejezés)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A LUIS web app botot a a **[az oktatóanyag előző](luis-nodejs-tutorial-build-bot-framework-sample.md)** az Application Insights-e kapcsolva. 
+* A LUIS web app bot származó a **[előző oktatóanyagban](luis-nodejs-tutorial-build-bot-framework-sample.md)** az Application Insights-e kapcsolva. 
 
 > [!Tip]
-> Ha még nem rendelkezik előfizetéssel, akkor a regisztrálhatja a [ingyenes fiókot](https://azure.microsoft.com/free/).
+> Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-A jelen oktatóanyagban található kód mindegyikét érhető el a [LUIS-minták github-tárházban](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) és az ebben az oktatóanyagban társított soronként megjegyzésként `//APPINSIGHT:`. 
+Ebben az oktatóanyagban kódja érhető el a [LUIS-minták github-adattár](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) és ebben az oktatóanyagban társított minden egyes sor van ellátva a `//APPINSIGHT:`. 
 
-## <a name="web-app-bot-with-luis"></a>Webes alkalmazás botot rendelkező LUIS
-Ez az oktatóanyag feltételezi, hogy rendelkezik-e a kódot, hogy a következőképpen néz vagy, hogy végrehajtotta a [más oktatóanyag](luis-nodejs-tutorial-build-bot-framework-sample.md): 
+## <a name="web-app-bot-with-luis"></a>Web app bot az intelligens hangfelismerési szolgáltatással
+Ez az oktatóanyag feltételezi, hogy a kódot, hogy a következőképpen néz ki: a következő vagy az, hogy végrehajtotta a [többi oktatóanyag](luis-nodejs-tutorial-build-bot-framework-sample.md): 
 
    [!code-javascript[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/nodejs/app.js "Web app bot with LUIS")]
 
-## <a name="add-application-insights-library-to-web-app-bot"></a>Az Application Insights könyvtár hozzáadása a webes alkalmazás botot
-Az Application Insights szolgáltatás, a webes alkalmazás botot használatban jelenleg a botot az általános állapot telemetriai gyűjti. Nem gyűjt LUIS kérelem-válasz szükséges információkat ellenőrizze és javítsa ki a leképezések és entitások. 
+## <a name="add-application-insights-library-to-web-app-bot"></a>Web app bot Application Insights-könyvtár hozzáadása
+Jelenleg az Application Insights szolgáltatás a web app bot használt gyűjt a robot telemetriája általános állapotát. A LUIS kérések és válaszok a keresett információt, ellenőrizze és javítsa ki a szándékok és entitások nem gyűjt. 
 
-A webes alkalmazás botot kell rögzítése a LUIS kérelem-válasz, a **[Application Insights](https://www.npmjs.com/package/applicationinsights)** NPM csomag telepítve és konfigurálva a **app.js** fájlt. Ezután a leképezési párbeszédpanel kezelők kell küldje el a LUIS kérés- és az Application Insights. 
+Annak érdekében, hogy a LUIS-kérések és válaszok rögzítése, a web app bot van szüksége a **[Application Insights](https://www.npmjs.com/package/applicationinsights)** NPM-csomag telepítve és konfigurálva a **app.js** fájlt. Ezután a szándék párbeszédpanel kezelők kell elküldeni a LUIS kérés- és az információkat az Application Insights. 
 
-1. Válassza ki az Azure portálon, a web app botot szolgáltatás **Build** alatt a **Botot felügyeleti** szakasz. 
+1. Web app bot service-ben az Azure Portalon válassza ki a **hozhat létre** alatt a **Bot felügyeleti** szakaszban. 
 
-    ![Az alkalmazás elemzések keresése](./media/luis-tutorial-appinsights/build.png)
+    ![Keresés az app insights](./media/luis-tutorial-appinsights/build.png)
 
-2. Egy új böngészőlapon nyílik meg az App Service szerkesztő. A felső parancssávon válassza ki az alkalmazás nevére, majd válasszon **nyissa meg a Kudu konzolt**. 
+2. Egy új böngészőlapon nyílik meg, hogy az App Service Editor. Válassza ki az alkalmazás neve a felső sávon, majd válassza ki **Kudu konzol megnyitása**. 
 
-    ![Az alkalmazás elemzések keresése](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![Keresés az app insights](./media/luis-tutorial-appinsights/kudu-console.png)
 
-3. A konzolon adja meg az Application insights szolgáltatással és az aláhúzás csomagok telepítéséhez a következő parancsot:
+3. A konzolon adja meg az Application Insights és az aláhúzás csomagok telepítéséhez a következő parancsot:
 
     ```
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
-    ![Az alkalmazás elemzések keresése](./media/luis-tutorial-appinsights/npm-install.png)
+    ![Keresés az app insights](./media/luis-tutorial-appinsights/npm-install.png)
 
-    Várja meg a telepítendő csomagokat:
+    Várja meg a csomagok telepítése:
 
     ```
     luisbot@1.0.0 D:\home\site\wwwroot
@@ -79,16 +79,16 @@ A webes alkalmazás botot kell rögzítése a LUIS kérelem-válasz, a **[Applic
     `-- underscore@1.8.3 
     ```
 
-    A kudu konzol böngészőlapon befejezése.
+    A kudu konzol böngészőlapon végzett.
 
-## <a name="capture-and-send-luis-query-results-to-application-insights"></a>Rögzítése és a lekérdezési eredmények LUIS küldése az Application Insights részére
-1. Az App Service-szerkesztő böngészőlapon, nyissa meg a **app.js** fájlt.
+## <a name="capture-and-send-luis-query-results-to-application-insights"></a>Rögzíti és továbbítja a LUIS lekérdezés eredményeit az Application Insights
+1. Az App Service Editor böngészőlapon nyissa meg a **app.js** fájlt.
 
-2. Adja hozzá a következő NPM könyvtárak alatt a meglévő `requires` sorok:
+2. Adja hozzá a következő NPM-kódtárak a meglévő alatt `requires` sorok:
 
    [!code-javascript[Add NPM packages to app.js](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=12-16 "Add NPM packages to app.js")]
 
-3. Az Application Insights-objektum létrehozása és használata a webes alkalmazás botot Alkalmazásbeállítás **BotDevInsightsKey**: 
+3. Az Application Insights-objektum létrehozása és használata a web app bot Alkalmazásbeállítás **BotDevInsightsKey**: 
 
    [!code-javascript[Create the Application Insights object](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=68-80 "Create the Application Insights object")]
 
@@ -96,49 +96,49 @@ A webes alkalmazás botot kell rögzítése a LUIS kérelem-válasz, a **[Applic
 
    [!code-javascript[Add the appInsightsLog function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=82-109 "Add the appInsightsLog function")]
 
-    A függvény utolsó sora, ahol az adatok bekerülnek az Application Insights részére. Az esemény neve **LUIS-eredmények**, a webes alkalmazás botot által gyűjtött mellett egyéb telemetriai adatokat egy egyedi nevet. 
+    A függvény utolsó sora, ahol az adatok bekerülnek az Application Insightsba. Az esemény nevét kötelező **LUIS-eredmények**, a web app bot által gyűjtött egyéb telemetriai adatokat szereplőkkel egy egyedi nevet. 
 
-5. Használja a **appInsightsLog** függvény. Minden leképezési párbeszédpanelen hozzáadhat:
+5. Használja a **appInsightsLog** függvény. Minden szándék párbeszédpanel, adja hozzá:
 
    [!code-javascript[Use the appInsightsLog function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=117-118 "Use the appInsightsLog function")]
 
-6. A webes alkalmazás botot teszteléséhez használja a **webes Csevegés tesztelése** szolgáltatás. Meg kell jelennie nincs különbség, mert a munkát az Application Insightsban, nem a botot válaszokat.
+6. A web app bot teszteléséhez használja a **tesztelni, webes csevegési** funkció. Nincs különbség, mivel a munka az Application insights szolgáltatásban, nem szerepel a robot válaszokat kell megjelennie.
 
-## <a name="view-luis-entries-in-application-insights"></a>Nézet LUIS bejegyzések az Application Insightsban
-Nyissa meg az Application Insights LUIS tételek megtekintéséhez. 
+## <a name="view-luis-entries-in-application-insights"></a>Nézet LUIS bejegyzések az Application insights szolgáltatásban
+Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez. 
 
-1. Válassza a portál **összes erőforrás** majd szűrés a webalkalmazás botot neve. Kattintson az erőforrás-típusú **Application Insights**. Az Application Insights ikonja villanykörte. 
+1. Válassza a portál **összes erőforrás** majd szűrés a webalkalmazás robot neve. Kattintson az erőforráson típusú **Application Insights**. Az ikonra az Application Insights egy villanykörte. 
 
-    ![Az alkalmazás elemzések keresése](./media/luis-tutorial-appinsights/search-for-app-insights.png)
+    ![Keresés az app insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 
 
-2. Amikor megnyílik az erőforrás, kattintson a a **keresési** ikon a Nagyítóüveg a jobb panelen. Egy új panelen a jobb oldali jelennek meg. Attól függően, hogy mennyi telemetriai adatot talál, a panel is igénybe vehet egy második megjelenítéséhez. Keresse meg `LUIS-results` , és nyomja le a billentyűzet adja meg. A lista csak LUIS lekérdezési eredmények hozzá, amelyeknél ez az oktatóanyag van szűkíthető.
+2. Az erőforrás megnyitása után kattintson a a **keresési** ikonjára a Nagyító ikonra a jobb szélen panelen. Egy új panel a jobb oldali jeleníti meg. Telemetriai adatok mennyiségétől függően található, a panel megjelenítéséhez egy második is igénybe vehet. Keresse meg `LUIS-results` , majd nyomja le a billentyűzet adja meg. A listában csak a LUIS lekérdezési eredmények ebben az oktatóanyagban hozzáadja van szűkíthető.
 
-    ![A függőségek szűrése](./media/luis-tutorial-appinsights/app-insights-filter.png)
+    ![Függőségek szűrése](./media/luis-tutorial-appinsights/app-insights-filter.png)
 
-3. Válassza ki a legfelső bejegyzésre. Egy új ablakban a LUIS lekérdezés jobb szélen egyéni adatokat is beleértve részletes adatait jeleníti meg. A felső célt, és a pontszám szerepel.
+3. Válassza ki a legfelső bejegyzésre. Egy új ablakban jeleníti meg a részletes – jobb szélen a LUIS lekérdezés egyéni adatokat is beleértve. A felső célt, és a pontszám szerepel.
 
     ![Függőség részletei](./media/luis-tutorial-appinsights/app-insights-detail.png)
 
-    Amikor elkészült, válassza ki a jobb szélső felső **X** való visszatéréshez függőségi elemek listáját. 
+    Amikor elkészült, válassza a jobb szélső felső **X** térjen vissza a függőségi elemek listáját. 
 
 
 > [!Tip]
-> Ha azt szeretné, mentse a függőségi listáját és a későbbiekben, kattintson a **... További** kattintson **mentés kedvenc**.
+> Ha azt szeretné, mentheti a függőségi listát, és később még visszatérünk rá, kattintson a **... További** kattintson **mentés kedvenc**.
 
-## <a name="query-application-insights-for-intent-score-and-utterance"></a>Az Application Insights leképezés, pontszám és utterance lekérdezése
-Az Application Insights a kínálja, az adatok lekérdezése a [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) nyelve, valamint exportálási úgy, hogy [Power bi](https://powerbi.microsoft.com). 
+## <a name="query-application-insights-for-intent-score-and-utterance"></a>Lekérdezés az Application Insights szándékot, pontszám és utterance (kifejezés)
+Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) nyelven, valamint exportálási, hogy [Power bi](https://powerbi.microsoft.com). 
 
-1. Kattintson a **Analytics** tetején található a függőségi listázása, fent a Szűrő mezőbe. 
+1. Kattintson a **Analytics** felső részén a függőség, listázása, fent a Szűrő mezőbe. 
 
     ![Elemzés gomb](./media/luis-tutorial-appinsights/analytics-button.png)
 
-2. Egy új ablakban nyílik meg a lekérdezési ablakban a bal felső és egy tábla ablak, amely alatt. Adatbázisok előtt használta, ezzel az elrendezéssel akkor ismeri. A lekérdezés tartalmazza az elmúlt 24 órában verziótól kezdve a név összes elemének `LUIS-results`. A **CustomDimensions** oszlopnak van a név/érték párként LUIS lekérdezés eredményeit.
+2. Egy lekérdezési ablak tetején, és a egy tábla ablak, amely alatt megjelenik egy új ablak. Ha a használt adatbázisokat korábban, ezzel az elrendezéssel fokozott tisztában van-e. A lekérdezés tartalmazza az elmúlt 24 órában nevét kezdetű elemeivel `LUIS-results`. A **CustomDimensions** oszlopnak a LUIS-lekérdezés eredménye név/érték párokként.
 
-    ![Analytics lekérdezési ablakba](./media/luis-tutorial-appinsights/analytics-query-window.png)
+    ![Elemzés lekérdezési ablak](./media/luis-tutorial-appinsights/analytics-query-window.png)
 
-3. A felső leképezés pontszám és utterance kiemeléséhez adja hozzá a következőket az utolsó sorban fölött a lekérdezési ablakban:
+3. Is, a felső szándékot, pontszám és utterance (kifejezés), adja hozzá a következő felett az utolsó sort a lekérdezési ablakban:
 
     ```SQL
     | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
@@ -146,18 +146,18 @@ Az Application Insights a kínálja, az adatok lekérdezése a [Kusto](https://d
     | extend utterance = tostring(customDimensions.LUIS_text)
     ```
 
-4. Futtassa a lekérdezést. Görgessen a képernyő jobb szélén az adatok táblázatban. Az új oszlopok topIntent, pontszám és utterance érhetők el. Kattintson a topIntent oszlopra kattintva rendezheti.
+4. Futtassa a lekérdezést. Görgessen az adatok tábla jobb szélén. Az új oszlopok topIntent, pontszám és utterance (kifejezés) érhetők el. Kattintson a topIntent oszlopra kattintva rendezheti a.
 
-    ![Elemzés felső leképezés](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
+    ![Analytics felső leképezés](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
 
 
-További információ a [Kusto lekérdezési nyelv](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) vagy [exportálja az adatokat a Power bi szolgáltatásba](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Tudjon meg többet a [Kusto-lekérdezés nyelvi](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) vagy [az adatok exportálása Power bi-bA](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 ## <a name="next-steps"></a>További lépések
 
-Egyéb információk, érdemes lehet az application insights adatainak hozzáadása Alkalmazásazonosító, Verzióazonosító, utolsó modell módosítás dátuma, utolsó vonat dátum, az legutóbbi közzétételének dátuma. Ezek az értékek vagy is beolvassa, végpont URL-CÍMÉT (Alkalmazásazonosító és Verzióazonosító), vagy egy [API szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) hívható meg, majd állítsa be a webes alkalmazás botot az és ott lekért.  
+Egyéb információkat, érdemes hozzáadni az application insights-adatok tartalmazza Alkalmazásazonosító, a verzió azonosítója, a legutóbbi modell dátuma, a legutóbbi train dátuma, a legutóbbi közzététel dátuma. Ezek az értékek vagy olvashatók be a végpont URL-címe, (Alkalmazásazonosító és verzió azonosítója), vagy a egy [API szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) hívja, majd a web app bot beállítások, és onnan kéri le.  
 
-Ha egynél több LUIS alkalmazás használ végpont ugyanazt az előfizetést, is tartalmaznia kell az előfizetés-azonosító és arról, hogy a megosztott kulcs tulajdonságot. 
+Végpont ugyanahhoz az előfizetéshez egynél több LUIS alkalmazás használ, akkor is tartalmaznia kell az előfizetés-azonosító és a egy tulajdonság arról, hogy egy megosztott kulcsot. 
 
 > [!div class="nextstepaction"]
-> [További tudnivalók példa utterances](luis-how-to-add-example-utterances.md)
+> [További tudnivalók a példa kimondott szöveg](luis-how-to-add-example-utterances.md)

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 1c52a97bce1b18e16cb5109049f36e146165dff4
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: e8d30ae6cde7c787f1aa950506e0eb74bac0c12d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172129"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238808"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -72,7 +72,7 @@ Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-b
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?
 
-Azure-bA replikálni, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-fiókot, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik. 
+Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-fiók, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik. 
 
 
 

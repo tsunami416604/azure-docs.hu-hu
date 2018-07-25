@@ -3,19 +3,19 @@ title: Az oktatóanyag minta szerepkörök segítségével javíthatja a LUIS-el
 titleSuffix: Cognitive Services
 description: Ebben az oktatóanyagban a minta szerepkörök kontextusban kapcsolódó entitások használatával javíthatja a LUIS előrejelzéseket.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 07/20/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 938b868fadfa102174b270a222494710fc156442
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: 80f2d482a660992011549fe8dc76a09740da6ab1
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174564"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237825"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>Oktatóanyag: A minta szerepkörökkel alkalmazás fejlesztéséhez
 

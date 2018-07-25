@@ -1,30 +1,30 @@
 ---
-title: LUIS előre elkészített, személyek sorszám referencia - Azure |} Microsoft Docs
+title: A LUIS előre elkészített, entitások sorszámnál referencia – Azure |} A Microsoft Docs
 titleSuffix: Azure
-description: Ez a cikk ismerteti a sorszám előre elkészített entitás a nyelvi ismertetése (LUIS).
+description: Ez a cikk sorszámnál előre összeállított entitások információkat a Language Understanding (LUIS) tartalmaz.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 2ff9b083e6cabe455baea3ed777dd6cc00b6fbfe
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 216114ec521e2065cb13cd39b4086f50ec81ba56
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321966"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236754"
 ---
 # <a name="ordinal-entity"></a>Sorszám entitás
-Sorszámmal numerikus ábrázolását objektum készleten belül: `first`, `second`, `third`. Az entitás már be van tanítva, mert nem kell sorszáma, hogy az alkalmazás leképezések tartalmazó példa utterances hozzáadása. Támogatott a sorszám entitás [számos kultúra](luis-reference-prebuilt-entities.md). 
+Sorszámok az objektumon belüli egy numerikus ábrázolását: `first`, `second`, `third`. Az entitás már be van tanítva, mert nem kell tartalmazó sorszámnál való az alkalmazás leképezések példa beszédmódok hozzáadása. Támogatott sorszámnál entitás [számos országban](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-ordinal"></a>Sorszámát típusai
-Sorszámát felügyelete a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) Github-adattár
+Sorszámát felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) Github-adattár
 
-## <a name="resolution-for-prebuilt-ordinal-entity"></a>Előre elkészített sorszám entitás felbontás
-A következő példa bemutatja a feloldása a **builtin.ordinal** entitás.
+## <a name="resolution-for-prebuilt-ordinal-entity"></a>Előre összeállított sorszámnál entitás feloldása
+Az alábbi példa bemutatja a feloldása a **builtin.ordinal** entitás.
 
 ```JSON
 {
@@ -59,4 +59,4 @@ A következő példa bemutatja a feloldása a **builtin.ordinal** entitás.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a [százalékos](luis-reference-prebuilt-percentage.md), [phonenumber](luis-reference-prebuilt-phonenumber.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat. 
+További információ a [százalékos](luis-reference-prebuilt-percentage.md), [phonenumber](luis-reference-prebuilt-phonenumber.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat. 

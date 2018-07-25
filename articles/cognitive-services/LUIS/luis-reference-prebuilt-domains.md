@@ -3,19 +3,19 @@ title: Előre összeállított útmutatója – Azure |} A Microsoft Docs
 titleSuffix: Azure
 description: Az előre összeállított tartományok, amelyek előre elkészített gyűjteménye szándékokat és entitásokat a Language Understanding Intelligent Services (LUIS) referenciája.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 45289b712a127e70636e225778d7a36578b34fa5
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 36e527f9afdce58475ca4c3c6e54ce393c48c983
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931628"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238896"
 ---
 # <a name="prebuilt-domain-reference"></a>Előre összeállított tartományhivatkozás
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
@@ -30,7 +30,7 @@ A LUIS 20 előre összeállított tartományok kínál.
 | Naptár | A naptár tartomány szándékot és entitások hozzáadása, törlése, vagy egy találkozót szerkesztésére, résztvevő rendelkezésre állásának ellenőrzése és adatait, egy naptáresemény biztosít.| hu-HU<br/> zh-CN |
 | Kamera | A kamera tartományban szándékok és entitások biztosít képek, a rögzítés videók és a szórásos videók véve az alkalmazás.| hu-HU |
 | Kommunikáció | Üzenetek küldése és telefonhívásokat.| hu-HU <br/> zh-CN |
-| Szórakoztatás  | Zene, filmek és TV kapcsolódó lekérdezések kezelése.| hu-HU |
+| szórakoztatás  | Zene, filmek és TV kapcsolódó lekérdezések kezelése.| hu-HU |
 | Események | Foglalás Koncertek, fesztiválok, sport játékokat és comedy jegyek jeleníti meg.| hu-HU |
 | Alkalmasságát | Kezelési mentességre tevékenységek nyomon követéséhez kapcsolódó kérelem.| hu-HU |
 | Játékok | Több résztvevős játék játék féllel kapcsolatos kérések kezelésével.| hu-HU |
@@ -105,9 +105,9 @@ A kommunikációs tartományban szándékok és entitások kapcsolatos e-mailek,
 | Megerősítés| Erősítse meg a műveletet.|Igen<br/>Rendben<br/>rendben<br/>Megerősítem, hogy szeretnék-e e-mailt.<br/>|
 | Telefonos kapcsolat létrehozása| Telefonhívás.|Jim hívása<br/>Adjon tárcsázza a 311<br/>|
 | FindContact| Kapcsolattartási adatok keresése név alapján.|Carol szám keresése<br/>Carol szám megjelenítése<br/>|
-| FindSpeedDial| A jelenlegi súly mentése|saját súly Jelentkezzen most<br/>a jelenlegi törzs súly tárolásához<br/>Tevékenységtípus|
-| Nyomon követő tevékenység típusa.| Az útmutató|Úszni<br/>Élelmiszer mentességre alkalmazásban nyomon követéséhez egy típusa.<br/>|
-| Banán| Lépjen vissza az előző lépésben.|Lépjen vissza a twitteren<br/>Lépjen vissza az adott lépés<br/>Vissza|
+| FindSpeedDial| Található a speedial telefonszám van beállítva, és ez fordítva is igaz.|Mi az a telefonos számot 5?<br/>Tárcsázza a set sebesség van?<br/>Mi a telefonszáma 941-5555-333?|
+| GetForwardingsStatus| Átirányítás aktuális állapotának lekéréséhez.|A hívás továbbítás engedélyezve van?<br/>Figyelmeztessen, ha hívás Állapotom-e a be- vagy kikapcsolása<br/>|
+| GoBack| Lépjen vissza az előző lépésben.|Lépjen vissza a twitteren<br/>Lépjen vissza az adott lépés<br/>Vissza|
 | Kihagyás| Bejövő hívás figyelmen kívül.|Nem válaszol<br/>Hagyja figyelmen kívül a hívás|
 | IgnoreWithMessage| Bejövő hívás figyelmen kívül, és inkább szöveget tartalmazó válasz.|Ez a meghívás nem válaszol, de küldjön inkább üzenetet.<br/>Figyelmen kívül hagyhatja, és vissza egy szöveges üzenet elküldéséhez.|
 | PressKey| Egy gomb vagy a szám nyomja le a billentyűzeten.|Tárcsázás csillagra.<br/>Nyomja meg az 1-2 3.|
@@ -140,7 +140,7 @@ A kommunikációs tartományban szándékok és entitások kapcsolatos e-mailek,
 | OrderReference | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója. Például "last" vagy "legutóbbi" a "Mi volt az utolsó üzenet elküldött?"| Vezetéknév<br/>Legutóbbi|
 | SenderName | A feladó neve.| Patti Owens|
 
-## <a name="entertainment"></a>Szórakoztatás  
+## <a name="entertainment"></a>szórakoztatás  
 A Szórakozás tartományban szándékok és entitások filmek, zene, játékokat és TV megkeresésével kapcsolatos biztosít jeleníti meg.
 
 ### <a name="intents"></a>Leképezések
@@ -233,7 +233,7 @@ A HomeAutomation tartományban szándékok és entitások intelligens otthoni es
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Eszköz | Eszköz, amely be vagy ki kell kapcsolni egy típusa.|kávét készítő<br/>thermostat<br/>lámpa|
+| Eszköz | Eszköz, amely be vagy ki kell kapcsolni egy típusa.|kávét készítő<br/>Thermostat<br/>lámpa|
 | Művelet | Az eszköz beállítása állapota.|zárolás<br/>megnyitás<br/>be<br/>kikapcsolva|
 | Hely | A hely vagy az eszköz a helyiségben.|nappali<br/>szobája<br/>megjelenítő kijelzőket a konyhai|
 
@@ -374,7 +374,7 @@ Can you make the screen brighter?
 | BrightnessLevel | Brightness szintjének beállítása az eszközön.|100 %-os<br/>Ötven<br/>40%|
 | ContactName | Egy ügyfél az eszköz nevét.|Paul<br/>Marlen maximális száma|
 | DeviceType | Eszköz típusa. |Telefonszám<br/>Kindle<br/>Hordozható számítógép|
-| MediaType | Az adathordozó típusát, kezeli az eszközt.|Zene<br/>Film<br/>Tévéműsorok|
+| mediaType | Az adathordozó típusát, kezeli az eszközt.|Zene<br/>Film<br/>Tévéműsorok|
 | Példányokat | Beállítás vagy a beállítások panel, amely a felhasználó szeretne szerkeszteni egy típusa.|Wi-Fi<br/>Vezeték nélküli hálózat<br/>Színsémát<br/>Értesítési központ|
 
 ## <a name="places"></a>Forráshelyek  
@@ -431,10 +431,10 @@ restart|
 | Cuisine | Egy hely cuisine. |Mediterrán<br/>olasz<br/>Indiai|
 | DestinationAddress| A célhely vagy címe.|Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
 | DestinationPlaceName| A cél, amely egy üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve.|Közép-India park<br/>safeway<br/>walmart|
-| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Éttermek<br/>Opera<br/>Mozi|
+| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Éttermek<br/>Opera<br/>mozi|
 | Távolság | A távolság egy helyen.|15 mérföld<br/>5 mérföld<br/>10 mérföld távolságban|
-| MealType | Például a reggeli vagy ebédszünetet beiktatni dara típusa. |a reggeli<br/>Vacsora<br/>ebéd<br/>supper|
-| OpenStatus | Azt jelzi, hogy egy helyen nyílt vagy lezárt.|Open program<br/>lezárt<br/>megnyitása|
+| MealType | Például a reggeli vagy ebédszünetet beiktatni dara típusa. |A reggeli<br/>Vacsora<br/>Ebéd<br/>Supper|
+| OpenStatus | Azt jelzi, hogy egy helyen nyílt vagy lezárt.|Open program<br/>Lezárt<br/>megnyitása|
 | PlaceName | A hely neve.|Cheesecake gyári|
 | PlaceType | Hely típusa.|Cafe<br/>Terület<br/>Részletes ismertetés|
 | PreferredRoute | Az előnyben részesített a felhasználó által megadott útvonal. | 101 <br/>202 <br/>401-es útvonal|
@@ -492,7 +492,7 @@ Table for 3 in Palo Alto at 7
 | Alkalmazásnév | Egy alkalmazás végzett foglalásokat neve.|TáblaMegnyitása<br/>Yelppel<br/>TripAdvisor|
 | Levegőben | Egy étterem vagy más helyen a levegőben leírása.|romantic<br/>az alkalmi<br/>a csoportok jó|
 | Cuisine | Élelmiszer, cuisine vagy cuisine állampolgárság típusát. |kínai<br/>olasz<br/>Mexikói|
-| MealType | A Foglalás társított dara típus.|a reggeli<br/>Vacsora<br/>ebéd<br/>supper|
+| MealType | A Foglalás társított dara típus.|A reggeli<br/>Vacsora<br/>Ebéd<br/>Supper|
 | PlaceName | Egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve.|IHOP<br/>Cheesecake gyári<br/>Louvre|
 | PlaceType | Egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa.|éttermek<br/>Opera<br/>mozi|
 | Minősítés | Egy hely vagy egy éttermi minősítése.|5 csillag<br/>3 csillag<br/>4 csillag|
@@ -521,9 +521,9 @@ Cancel my Uber
 | Cím| Foglalás-i taxik társított cím. |Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
 | DestinationAddress| A célhely vagy címe. |Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
 | DestinationPlaceName | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve. |Közép-India Park<br/>Safeway<br/>Walmart|
-| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Éttermek<br/>Opera<br/>Mozi|
+| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Éttermek<br/>Opera<br/>mozi|
 | PlaceName | Helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve. |Közép-India Park<br/>Safeway<br/>Walmart|
-| PlaceType| A kérelem-i taxik foglalható le a hely típusa.|Éttermek<br/>Opera<br/>Mozi|
+| PlaceType| A kérelem-i taxik foglalható le a hely típusa.|Éttermek<br/>Opera<br/>mozi|
 | TransportationCompany | A szállítási szolgáltató neve.|Amtrak<br/>Acela<br/>Greyhound|
 | TransportationType | A szállítási típusa.|Busz<br/>Betanítás<br/>Vezetés|
 

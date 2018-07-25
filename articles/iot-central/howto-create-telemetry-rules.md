@@ -8,12 +8,12 @@ ms.date: 04/16/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: timlt
-ms.openlocfilehash: 083410c6407ce7aa83c3829f884890561b0b44b8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 42516e4dd6a85e0d07d4a8e70e958b2ec6e84aad
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008212"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225200"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Telemetria szabály létrehozása és az Azure IoT Central alkalmazásban művelet beállítása
 
@@ -60,7 +60,9 @@ Ez a szakasz bemutatja, hogyan figyelheti a hőmérsékleti telemetria feltétel
 
 ### <a name="add-an-action"></a>Művelet hozzáadása
 
-Ez a szakasz bemutatja, hogyan művelet hozzáadása a szabályhoz. Ez jeleníti meg az e-mail-művelet hozzáadása, de emellett [adjon hozzá egy Microsoft Flow műveletet](howto-add-microsoft-flow.md) elindít egy munkafolyamatot a Microsoft Flow, a szabály aktiválásakor a szabályhoz.
+Ez a példa bemutatja, hogyan művelet hozzáadása a szabályhoz. Ez jeleníti meg az e-mail-művelet hozzáadása, de más műveleteket is hozzáadhat:
+-  [Microsoft Flow művelet](howto-add-microsoft-flow.md) elindít egy munkafolyamatot a Microsoft Flow, amikor egy szabály akkor lesz kiváltva
+- [Webhook művelettel](howto-create-webhooks.md) más szolgáltatások értesíti, amikor egy szabály akkor lesz kiváltva
 
 > [!NOTE]
 > Jelenleg csak 1 művelet lehet egyetlen szabály van társítva.

@@ -9,12 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: f4e8a579e020e81540c1fd52e412c8e6184813d2
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 120c78d9adb83ca58ae61700ae70d07ead42ebd0
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921212"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226560"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery Deployment Planner Hyper-V Azure-bA
 
@@ -94,13 +94,13 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>Kiszolgálók a TrustedHosts listához való hozzáadásának lépései
 1.  Az összes profillal ellátni kívánt gazdagépnek szerepelnie kell azon virtuális gép TrustedHosts listájában, ahonnan az eszközt telepíteni kívánja. Az ügyfél TrustedHosts listához való hozzáadásához futtassa a következő parancsot a virtuális gépen egy emelt szintű PowerShell-munkamenetből. A virtuális gép Windows Server 2012 R2 vagy Windows Server 2016 rendszerű lehet. 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
 2.  A profillal ellátni kívánt összes Hyper-V-gazdagépen a következők megléte szükséges:
 
     a. A virtuális gép, amelyen az eszközt futtatni kívánja hozzá van adva a TrustedHosts listájához. Futtassa a következő parancsot a Hyper-V-gazdagépen egy emelt szintű PowerShell-munkamenetből.
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
     b. Engedélyezve van a PowerShell távoli eljáráshívás.
 

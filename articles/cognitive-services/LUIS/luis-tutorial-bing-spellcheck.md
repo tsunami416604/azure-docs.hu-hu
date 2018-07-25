@@ -3,19 +3,19 @@ title: Adja hozzá a Bing Spell Check API 7-es verziója a LUIS-lekérdezésekre
 titleSuffix: Azure
 description: Beszédmódok LUIS végpont lekérdezések ad hozzá a Bing Spell ellenőrzés API 7-es megfelelő kijavítsa a hibásan leírt szavakat.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8d86bf3974cd11b644f59799e3d6140b46899244
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: 87882052ed7faf0a7d2a665d51afb20db7ee839c
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173826"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239151"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>A Bing Spell Check megfelelő kijavítsa a hibásan leírt szavakat
 

@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: 403490f47ac171d4a302d2b68af65375bbdc26cd
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 62b0639f134a134739b09593a0b21b47d06699dc
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345719"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236924"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL Database erőforrás-korlátozások áttekintése 
 
@@ -63,10 +63,6 @@ A munkamenetek és a feldolgozók maximális száma határozza meg a szolgáltat
 
 Amikor magas munkamenet vagy feldolgozói kihasználtság, kockázatcsökkentési lehetőségek a következők:
 - Növelése a szolgáltatási szint teljesítményi szintjének vagy az adatbázisához vagy rugalmas készletéhez. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
-- A számítási erőforrások optimalizálása minden egyes lekérdezés az erőforrás-használat csökkentésére, ha a megnövekedett feldolgozó kihasználtsági oka miatt a versengés a lekérdezéseket. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
-
-Amikor magas munkamenet vagy feldolgozói kihasználtság, kockázatcsökkentési lehetőségek a következők:
-- Növelése a szolgáltatási szint teljesítményi szintjének vagy az adatbázis. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
 - A számítási erőforrások optimalizálása minden egyes lekérdezés az erőforrás-használat csökkentésére, ha a megnövekedett feldolgozó kihasználtsági oka miatt a versengés a lekérdezéseket. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ## <a name="next-steps"></a>További lépések

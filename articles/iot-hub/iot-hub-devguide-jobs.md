@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 47d321788251462f2b34e1eb60231454dd6a72cf
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 460c7d24b2810de41e20ea803ded2ea988613f10
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185931"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223796"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Feladatok ütemezése több eszközön
 
@@ -84,7 +84,7 @@ A következő kódrészlet azt mutatja be, HTTPS 1.1 kérés részleteinek friss
     }
 
 ## <a name="querying-for-progress-on-jobs"></a>A folyamatban lévő feladatok lekérdezése
-A következő kódrészlet azt mutatja be, HTTPS 1.1 kérelem részleteit [feladatok lekérdezése][lnk-query]:
+Az alábbi kódrészlet bemutatja a feladatok lekérdezése HTTPS 1.1 kérelem részletei:
 
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
@@ -94,6 +94,8 @@ A következő kódrészlet azt mutatja be, HTTPS 1.1 kérelem részleteit [felad
     User-Agent: <sdk-name>/<sdk-version>
 
 A válaszból biztosítja a continuationtoken argumentumot használja.  
+
+A feladat végrehajtási állapotát minden egyes eszköz segítségével lekérdezhető a [az IoT Hub lekérdezési nyelv az ikereszközökhöz, feladatokkal és üzenet-útválasztása][lnk-query].
 
 ## <a name="jobs-properties"></a>Feladat tulajdonságai
 Az alábbi lista a tulajdonságait, és a vonatkozó leírásokat, amely használható lekérdezésekor feladatok vagy a feladat eredményeinek tartalmazza.

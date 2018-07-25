@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 4484031b20e625f81ba8b3869110e90df189323e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9c26a85a50bf4e7272b229bac8a8b9aa8c1ae364
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117426"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238522"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
@@ -60,7 +60,7 @@ Miután a fürt üzembe lesz helyezve, az automatikusan létrehozott AKS erőfor
 
 A HTTP útválasztási megoldást csak indítható el, amely a következőképpen vannak feliratozva bejövő erőforrásokon:
 
-```
+```yaml
 annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
@@ -119,7 +119,7 @@ spec:
 
 Használja a [a kubectl a alkalmazni] [ kubectl-apply] parancsot az erőforrások létrehozásához.
 
-```
+```bash
 $ kubectl apply -f samples-http-application-routing.yaml
 
 deployment "party-clippy" created
@@ -129,7 +129,7 @@ ingress "party-clippy" created
 
 A cURL vagy a böngésző használatával navigáljon az állomásnév-minták – http-kérelem-routing.yaml fájl gazdagép szakaszában megadott. Az alkalmazás előtt az interneten keresztül elérhető legfeljebb egy percig is eltarthat.
 
-```
+```bash
 $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
  _________________________________
@@ -150,6 +150,14 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
 ```
 
+## <a name="remove-http-routing"></a>Távolítsa el a HTTP-Útválasztás
+
+A HTTP-útválasztási megoldás távolíthatja el az Azure CLI használatával. Ehhez futtassa a következő parancsot, és cserélje le az AKS-fürt és az erőforrás csoport neve.
+
+```azurecli
+az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myAKSCluster --no-wait
+```
+
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 Használja a [kubectl naplók] [ kubectl-logs] paranccsal tekintheti meg az alkalmazásnaplókat a külső DNS-alkalmazáshoz. A naplók kell győződjön meg arról, hogy az A és a txt típusú DNS-rekord sikeresen létrejöttek-e.
@@ -167,7 +175,7 @@ Ezeket a rekordokat a DNS-zóna erőforrásai az Azure Portalon is láthatók.
 
 Használja a [kubectl naplók] [ kubectl-logs] parancsot az alkalmazásnaplókat az Nginx Bejövőforgalom-vezérlőjéhez tartozó megtekintéséhez. Ellenőrizze a naplókat a `CREATE` egy bejövő erőforrás és a vezérlő a töltse be újra. Az összes HTTP-tevékenységet a rendszer naplózza.
 
-```
+```bash
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
 
 -------------------------------------------------------------------------------
@@ -208,7 +216,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 Távolítsa el a jelen cikkben létrehozott kapcsolódó Kubernetes-objektumokat.
 
-```
+```bash
 $ kubectl delete -f samples-http-application-routing.yaml
 
 deployment "party-clippy" deleted

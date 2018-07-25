@@ -9,14 +9,14 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: ad4b31fa7b4f4b062f01935c34f7cacf82f99106
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 543e8d6fb68a351dfe75c962debaf15eeb080a3f
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072126"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223887"
 ---
-# <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service – gyakori kérdések
+# <a name="speech-to-text-frequently-asked-questions"></a>Beszédfelismerés – gyakori kérdések
 
 Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, próbálja meg a Custom Speech Service Közösség kéri a [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) és [uservoice-on](https://cognitive.uservoice.com/)
 
@@ -36,7 +36,7 @@ Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, próbálja 
 
 **Kérdés**: Honnan tudom, ha az adatkészlet vagy a modell feldolgozása befejeződött?
 
-**Válasz**: a modell vagy a tábla adatkészlet állapota jelenleg az egyetlen szeretné tudni, hogy.
+**Válasz**: a modell vagy a tábla adatkészlet állapota jelenleg az egyetlen mód arra, hogy.
 A feldolgozás befejeződése után az állapot lesz kell "sikeres".
 
 **Kérdés**: hozható létre egynél több modell?
@@ -49,7 +49,7 @@ A feldolgozás befejeződése után az állapot lesz kell "sikeres".
 
 **Kérdés**: Mi a különbség a Keresés & Diktálás modelleket és a természetes nyelvi modellek között?
 
-**Válasz**: nincsenek egynél több kiindulási modelleket alkalmazhatnak a beszédfelismerési szolgáltatás közül választhat. A természetes nyelvi modell megfelelő speech beszélt természetes nyelvi stílus felismerve. Ez a modell ideális megoldás a keresés közben trnascribing hívásokat és Diktálás ideális megoldás alkalmazások indítása hanggal történik. Univerzális egy új modell, amely a célja, hogy mindkét-forgatókönyveket érintenek.
+**Válasz**: nincsenek egynél több kiindulási modelleket alkalmazhatnak a beszédfelismerési szolgáltatás közül választhat. A természetes nyelvi modell megfelelő speech beszélt természetes nyelvi stílus felismerve. Ez a modell ideális keresése közben hívások átírás és Diktálás ideális megoldás alkalmazások indítása hanggal történik. Univerzális egy új modell, amely a célja, hogy mindkét-forgatókönyveket érintenek.
 
 **Kérdés**: is frissíthetők a saját meglévő model (modell rétegezést)?
 
@@ -133,7 +133,7 @@ A referenciakonfiguráció modellt, hogy a testreszabási adnak a munkánknak be
 
 **Kérdés**: szöveges adatok mennyiségét kell feltölteni?
 
-**Válasz**: attól függ, a különféle beszédstílusok, és az alkalmazásban használt kifejezések a kiindulási nyelvi modellek származnak. Minden új szavak célszerű azokat a szavakat használatát a lehető legtöbb példákat biztosítanak. Az alkalmazásában használt gyakori kifejezések többek között a mondatok a nyelvi adatok akkor is hasznos, ahogy azt jelzi, hogy a rendszer figyelni ezeket a feltételeket, valamint a. Gyakori, hogy legalább egy hudrend és általában több száz utterances nyelvi adatkészlet vagy több olyan fontos. Bizonyos típusú lekérdezések gyakoribb a többinél várhatóan, is az adatkészlet is beszúrhat a gyakori lekérdezések több példányát.
+**Válasz**: attól függ, a különféle beszédstílusok, és az alkalmazásban használt kifejezések a kiindulási nyelvi modellek származnak. Minden új szavak célszerű azokat a szavakat használatát a lehető legtöbb példákat biztosítanak. Az alkalmazásában használt gyakori kifejezések többek között a mondatok a nyelvi adatok akkor is hasznos, ahogy azt jelzi, hogy a rendszer figyelni ezeket a feltételeket, valamint a. Gyakori, hogy legalább száz és általában több száz utterances nyelvi adatkészlet vagy több olyan fontos. Bizonyos típusú lekérdezések gyakoribb a többinél várhatóan, is az adatkészlet is beszúrhat a gyakori lekérdezések több példányát.
 
 **Kérdés**: csak feltölthetek olyan szólistát?
 

@@ -1,6 +1,6 @@
 ---
-title: Egyéni stratégiai szolgáltatással - Azure kognitív szolgáltatások besorolás létrehozása |} Microsoft Docs
-description: Útmutató az egyéni stratégiai szolgáltatás egy osztályozó létrehozása, amely megfejteni is a behatolók fényképeket objektumokat.
+title: Tartalombesoroló létrehozása a Custom Vision Service - Azure Cognitive Services |} A Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre, amely képes tesz különbséget az adatok a fényképek objektumok besorolás a a Custom Vision Service használatával.
 services: cognitive-services
 author: anrothMSFT
 manager: corncar
@@ -9,124 +9,122 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: anroth
-ms.openlocfilehash: 6dc271c13f53a445c7d1101f5264d890208bd03c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5183078d2f9d5eb16abef4f5df240f77eea6b8b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347890"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223369"
 ---
-# <a name="how-to-build-a-classifier-with-custom-vision"></a>Az egyéni stratégiai besorolás létrehozása
+# <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
 
-Az egyéni stratégiai szolgáltatás használatához először egy osztályozó kell létrehozni. Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy osztályozó webböngésző segítségével.
+A Custom Vision Service használatához először egy osztályozó kell létrehozni. Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy osztályozó a webböngészőn keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Besorolás készítéséhez kell:
+Tartalombesoroló létrehozása, előbb rendelkeznie:
 
-- Egy érvényes [Microsoft-fiók](https://account.microsoft.com/account) vagy egy Azure Active Directory, szervezeti azonosítójával ("munkahelyi vagy iskolai fiók"), így customvision.ai tud bejelentkezni, és az első lépések.
+- Egy érvényes [Microsoft-fiók](https://account.microsoft.com/account) vagy egy Azure Active Directory OrgID ("munkahelyi vagy iskolai fiók"), így customvision.ai be tud jelentkezni, és a kezdéshez.
 
     > [!IMPORTANT] 
-    > Az Azure Active Directory (Azure AD) felhasználó számára a szervezeti azonosítójával bejelentkezési [nemzeti felhők](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud) jelenleg nem támogatott.
+    > Az Azure Active Directory (Azure AD) származó felhasználók OrgID bejelentkezési [országos felhők](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud) jelenleg nem támogatott.
 
-- Egy sorozatát kell még betanítani a osztályozó (legalább 30 kép címke /) a lemezképeket.
+- (A minimum 30 képenként címke) a besorolás betanítására lemezképek sorozata.
 
-- Néhány képet a osztályozó tesztelése után a osztályozó be van tanítva.
+- Néhány képet az osztályozó által igénybe vett tesztelése után az osztályozó által igénybe vett be van tanítva.
 
-- Választható lehetőség: Egy Azure-előfizetése társítva van a Microsoft Account vagy a szervezeti azonosítójával. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
+- Választható lehetőség: Azure-előfizetéssel társított Microsoft-Account vagy OrgID. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
 
     > [!IMPORTANT]
-    > Egy Azure-előfizetés nélkül csak lesz létrehozásához __próbaverzió korlátozott__ projektek. Ha Azure-előfizetéssel rendelkezik, kérni fogja létrehozni az egyéni stratégiai szolgáltatás képzési és előrejelzés erőforrásokat a [Azure-portálon](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) projekt létrehozása során.   
+    > Azure-előfizetés nélkül, csak lesz létrehozása __próbaverzió korlátozott__ projektek. Ha rendelkezik Azure-előfizetéssel, kéri a Custom Vision Service betanítási és Predikciós erőforrások létrehozása a [az Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) projekt létrehozása során.   
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
 Új projekt létrehozásához használja az alábbi lépéseket:
 
-1. A böngészőben navigáljon a [egyéni stratégiai weblap](https://customvision.ai). Válassza ki __bejelentkezés__ a szolgáltatás használatának megkezdéséhez.
+1. A böngészőben navigáljon a [Custom Vision weblap](https://customvision.ai). Válassza ki __jelentkezzen be a__ a szolgáltatás használatának megkezdéséhez.
 
-    ![A bejelentkezési lapjának képe](./media/getting-started-build-a-classifier/custom-vision-web-ui.png)
+    ![A bejelentkezési lap képe](./media/getting-started-build-a-classifier/custom-vision-web-ui.png)
 
     > [!NOTE]
-    > Bejelentkezés után egyéni stratégiai szolgáltatásra, lehetősége lesz projektek listája. Tesztelési két "próbaverzió korlátozott" projektek kívül projektek társított egy Azure-erőforrást. Ha egy Azure felhasználói, látni fogja a társított összes projektek [Azure-erőforrások](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#grant-access-to-resources) , amelyhez hozzáfér. 
+    > Bejelentkezés után a Custom Vision Service, projektek listája jelenik meg. Két "korlátozott próbaverzió" projektek tesztelési kívül a projektek társítva egy Azure-erőforrás. Ha Ön Azure-felhasználó, látni fogja a kapcsolódó összes projektet [Azure-erőforrások](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#grant-access-to-resources) , amely hozzáféréssel rendelkezik. 
 
-2. Az első projektet létrehozásához válassza **új projekt**. Az első projekt a rendszer felkéri vállalja, hogy a szolgáltatási feltételeket. Jelölje be a jelölőnégyzetet, majd válassza ki a **elfogadom** gombra. A **új projekt** párbeszédpanel jelenik meg.
+2. Az első-projekt létrehozásához válassza **új projekt**. Az első projektet, a rendszer felkéri vállalja, hogy a szolgáltatási feltételeket. Jelölje be a jelölőnégyzetet, és válassza a **elfogadom** gombra. A **új projekt** párbeszédpanel jelenik meg.
 
-    ![Az új projekt párbeszédpanel neve, leírása és tartományokra vonatkozó mezőt tartalmaz.](./media/getting-started-build-a-classifier/new-project.png)
+    ![Az új projekt párbeszédpanel mezőinek nevét, leírását és tartományok rendelkezik.](./media/getting-started-build-a-classifier/new-project.png)
 
-3. Adjon meg egy nevet és leírást a projekthez. Válassza ki az egyik rendelkezésre álló tartományában. Minden egyes tartományhoz optimalizálja a képek, bizonyos típusú osztályozó, a következő táblázatban ismertetett módon:
+3. Adjon meg egy nevet és leírást a projekthez. Ezután válassza ki, az elérhető tartományok közül. Minden egyes tartományhoz optimalizálja az osztályozó által igénybe vett képek, bizonyos típusú, az alábbi táblázatban leírtak szerint:
 
     |Tartomány|Cél|
     |---|---|
-    |__Általános__| Kép besorolás feladatok széles köre optimalizálva. Ha nincs más tartományok megfelelő, vagy mely tartomány kiválasztása nem, válassza ki az általános tartományt. |
-    |__Étele__|Egy étterem menü volna ismertető optimalizált csészék fényképeket. Ha szeretné besorolni különálló vagy zöldségek fényképek, használja a étele tartományhoz.|
-    |__Jellegzetes hely__|Optimalizált felismerhető természetes és mesterséges jellegzetes hely. Ez a tartomány akkor működik a legjobban, ha a környezet a fénykép jól látható. Ez a tartomány működik, akkor is, ha a környezet némileg fedhetik személyek takarja el.|
-    |__Kereskedelmi__|Képek, amelyek szerepelnek a vásárlási katalógus vagy a vásárlási webhelye optimalizálva. Ha azt szeretné, hogy magas pontosság zárolásának ruha, pants és ing között, ezt a tartományt használják.|
-    |__Felnőtt__|Optimalizált pontosabb meghatározásához a felnőtt tartalom és a nem felnőtt tartalom. Például fürdés csomagok tagjai képeit blokkolni szeretne, ha a tartomány teszi ehhez az egyéni osztályozó létrehozása.|
-    |__Kompakt tartományok__| A valós idejű besorolás mobileszközökön korlátozásait optimalizálva. A modellek kompakt tartományok által létrehozott helyi futtatásához exportálhatók.|
+    |__Általános__| Optimalizált széles kép fájlosztályozási feladatokhoz. Ha más tartományok sem megfelelő, vagy Ön nem tudja biztosan, melyik tartománya, válassza ki, válassza ki a általános tartományt. |
+    |__Élelmiszer__|Optimalizált csészék fényképeket, látnák őket egy étterem menüben. Ha szeretné besorolni különálló vagy zöldségek fényképek, használja az élelmiszer-tartomány.|
+    |__Arcrész__|Könnyen felismerhető névre arcrész természetes és mesterséges optimalizálva. Ez a tartomány akkor működik a legjobban, ha a környezet a fénykép fókuszjelzőknek jól láthatóknak. Ez a tartomány működik, akkor is, ha a környezet némileg fedhetik személyek takarja.|
+    |__Kereskedelmi__|Optimalizált rendszerképeket, amelyeket egy vásárlási katalógus vagy a vásárlási webhelyén találhatók. Ha azt szeretné, hogy nagy pontosságú Írisz ruha pants és ing között, használja ezt a tartományt.|
+    |__Felnőtt tartalom__|Optimalizált pontosabb meghatározásához a felnőtt tartalom, és nem felnőtt tartalom. Például ha azt szeretné, lemezképek emberek fürdés csomagok blokkolására, ebben a tartományban lehetővé teszi egyéni tartalombesoroló létrehozása valósítható meg.|
+    |__Kompakt tartományok__| A korlátozások a mobileszközökön a valós idejű besorolás optimalizálva. A modellek kompakt tartományok által létrehozott helyi futtatásához exportálhatók.|
 
-    Ha azt szeretné, később módosíthatók a tartományhoz.
+    Ha azt szeretné, később bármikor válthat a a tartományhoz.
 
-4. Válasszon egy erőforráscsoportot. Az erőforráscsoport legördülő mutatja meg az Azure erőforráscsoportok, amely tartalmazza az egyéni stratégiai szolgáltatás-erőforrást. Válassza ki is létrehozhat __próbaverzió korlátozott__. A korlátozott próba bejegyzés az-Azure felhasználó fog tudni választhat csak erőforráscsoport.
+4. Válasszon ki egy erőforráscsoportot. Az erőforráscsoport legördülő is láthatók, az Azure-erőforráscsoportok, amelyek tartalmazzák a Custom Vision Service erőforrás. Válassza ki is létrehozhat __próbaverzió korlátozott__. A korlátozott próbaverziós bejegyzés az egyetlen erőforráscsoportot, egy nem Azure-beli felhasználói tudják közül választhat.
 
     A projekt létrehozásához válassza __Create project__.
 
-## <a name="upload-and-tag-images"></a>Feltöltés és címke lemezképek
+## <a name="upload-and-tag-images"></a>Feltöltés és címke képek
 
-1. Lemezképek hozzáadása a osztályozó, használja a __lemezképek hozzáadása__ gombra, majd válassza ki __keresse meg a helyi fájlok__. Válassza ki __nyitott__ címkézés áthelyezése.
-
-    > [!TIP]
-    > Miután kiválasztotta a képek, címke azokat. A címke a csoport kijelölt feltölteni, így elképzelhető, hogy a képek feltöltése a használni kívánt címkék alapján könnyebben képek vonatkozik. A megadott lemezképek címkéjének címkézett és feltöltése után is módosíthatja.
+1. Képek hozzáadása az osztályozó által igénybe vett, használja a __lemezképeket__ gombra, majd válassza ki __helyi fájlok tallózása__. Válassza ki __nyílt__ szeretne váltani a címkézést.
 
     > [!TIP]
-    > Töltse fel a lemezképek különböző kamera beállítások, megvilágítási, háttér, típusok, stílusok, csoportok, méretét, stb. Fénykép típusok különböző segítségével győződjön meg arról, hogy a osztályozó nincs optimalizálva, és jól generalize is.
+    > Miután a rendszerképek kiválasztásáról, fel kell címkéznie, azokat. A csoport lemezképek kiválasztott szeretne feltölteni, így egyszerűbb tölthet fel képeket szeretne használni a címkék alapján lehet érvényes a címke. A kódot a megadott lemezképek címkézett és feltöltése után is módosíthatja.
 
-    Egyéni stratégiai szolgáltatás fogadja a képzés képek .jpg, .png és .bmp formátum, legfeljebb 6 MB méretű kép. (Legfeljebb 4 MB méretű kép előrejelzés képek is lehet.) Azt javasoljuk, hogy a képek a legrövidebb oldal 256 képpont lehet. Rövidebb, mint a legrövidebb oldal 256 képpont egyéni stratégiai szolgáltatás kiterjesztett képeket.
+    > [!TIP]
+    > Tölthet fel képeket a különböző kamera beállítások, világító, háttér, típusok, stílusok, csoportok, méretek, stb. Többféle típusú fénykép használatával győződjön meg arról, hogy az osztályozó által igénybe vett nem torzítatlan van, és jól generalize is.
 
-    ![A Hozzáadás képek vezérlő bal felső és alsó központban gombként jelenik meg.](./media/getting-started-build-a-classifier/add-images01.png)
+    A Custom Vision Service fogad betanító kép .jpg, .png és .bmp formátum, a kép legfeljebb 6 MB. (Legfeljebb 4 MB / kép előrejelzési lemezképek is lehet.) Azt javasoljuk, hogy képeket lehet-e a legrövidebb peremhálózaton 256 képpont. Rövidebb, mint a legrövidebb peremhálózaton 256 képpont képeket a Custom Vision Service magánkészletekben.
 
-    ![A helyi fájlok gomb alsó center mellett megjelenik.](./media/getting-started-build-a-classifier/add-images02.png)
+    ![A Hozzáadás lemezképek vezérlőelem bal felső és alsó központról gombként jelenik meg.](./media/getting-started-build-a-classifier/add-images01.png)
 
     >[!NOTE] 
-    > A REST API képzési képek betöltése a következő URL-címeket is használható.
+    > A REST API segítségével betöltése betanító kép URL-címekről.
 
-2. A címke beállításához írjon be szöveget a __a címkék__ mezőben, majd a __+__ gombra. A képek feltöltése és címke azokat, használja a __[szám] fájlok feltöltése__ gombra. A képek több címke adhat hozzá. 
+2. A címke beállítása, adjon meg szöveget a a __saját címkéket__ mezőbe, majd a __+__ gombra. A képek, és azokat, használja a __[száma] fájlok feltöltése__ gombra. Egynél több címkét adhat hozzá a képeket. 
 
     > [!NOTE]
-    > A feltöltés idő függ a számát és kijelölt képek méretét.
+    > A feltöltés által számát és méretét, a kiválasztott képek függ.
 
-    ![A címke és feltöltése lapjának képe](./media/getting-started-build-a-classifier/add-images03.png)
+    ![A címke és a feltöltési lap képe](./media/getting-started-build-a-classifier/add-images03.png)
 
-3. Válassza ki __végzett__ után a képek fel lett töltve.
+3. Válassza ki __kész__ rendelkezik a képek feltöltése után.
 
-    ![A folyamatjelző minden feladat befejeződött.](./media/getting-started-build-a-classifier/add-images04.png)
+    ![A folyamatjelző mutatja a minden feladat befejeződött.](./media/getting-started-build-a-classifier/add-images04.png)
 
-4. Egy másik készlet képek feltöltéséhez adnak vissza az 1. lépés. Például ha megkülönböztetni kutya és pónikat, töltse fel, és pónikat képeket címkét.
+4. Egy másik hárompéldányos készletet képek feltöltéséhez, térjen vissza 1. lépés. Például ha meg szeretné különböztetni egymástól kutyák és pónikat, töltse fel, és pónikat képcímkézést.
 
-## <a name="train-and-evaluate-the-classifier"></a>Betanítása és kiértékelése a osztályozó
+## <a name="train-and-evaluate-the-classifier"></a>Betanítása és kiértékelése az osztályozó által igénybe vett
 
-A osztályozó betanítása, válassza ki a **betanítása** gombra.
+A besorolás betanítására, válassza ki a **betanításához** gombra.
 
-![A vonat gomb nincs a böngészőablak jobb felső részén.](./media/getting-started-build-a-classifier/train01.png)
+![A vonat gombra a böngészőablak jobb felső van.](./media/getting-started-build-a-classifier/train01.png)
 
-Csak a osztályozó betanítása néhány percet vesz igénybe. Ebben az időszakban a képzési vonatkozó információk jelennek meg.
+Csak a besorolás betanítására néhány percet vesz igénybe. Ebben az időszakban a betanítási folyamat jelenik meg.
 
-![A vonat gomb nincs a böngészőablak jobb felső részén.](./media/getting-started-build-a-classifier/train02.png)
+![A vonat gombra a böngészőablak jobb felső van.](./media/getting-started-build-a-classifier/train02.png)
 
-Képzési, miután a __teljesítmény__ jelenik meg. A pontosság és a visszaírási mutatók jelzi, hogy mennyire jó a osztályozó, automatikus tesztekre alapozva. Egyéni stratégiai szolgáltatás használ a lemezképeket, amelyek ezeket a számokat egy folyamattal kiszámításához betanítása hívása a(z) [k hajtott keresztellenőrzési](https://en.wikipedia.org/wiki/Cross-validation_(statistics)).
+Képzés, miután a __teljesítmény__ jelenik meg. A pontosság és a visszaírási mutatók megtudhatja, hogyan érdemes az osztályozó által igénybe vett van, az automatikus vizsgálat alapján. A Custom Vision Service használ a betanítási folyamat használatával alapján számítja ki az ezek a számok nevű elküldött képek [k lépésből keresztellenőrzési](https://en.wikipedia.org/wiki/Cross-validation_(statistics)).
 
-![A képzési eredmények megjelenítése a teljes pontosság és a visszaírási, és a pontosság, és az egyes-címke a osztályozó visszahívási.](./media/getting-started-build-a-classifier/train03.png)
+![A képzési eredmények megjelenítése a teljes precíziós és visszaírási, és a pontosság, és az egyes címkét az osztályozó által igénybe vett visszaírásához.](./media/getting-started-build-a-classifier/train03.png)
 
 > [!NOTE] 
-> Minden alkalommal, amikor kijelöli a **vonat** gomb, létrehozhat egy új munkamenetben a osztályozó. Megtekintheti a régi közelítés a a **teljesítmény** fülre, majd törölheti azokat, előfordulhat, hogy elavult. Ha töröl egy iteráció, végül azt egyedileg tartozó képeket törlése.
+> Minden alkalommal, amikor kiválasztja a **Train** gomb, létrehozhat egy új ismétlését az osztályozó által igénybe vett. Megtekintheti a régi ismétlését a a **teljesítmény** fülre, majd törölheti azokat is, elavult lehet. Ha töröl egy iterációját, hogy végül egyedileg társított, képeket törlése.
 
-A osztályozó használja a képek modell, amely azonosítja az egyes címkék létrehozásához. A modell minőségét teszteléséhez a osztályozó megpróbál minden kép megtekintéséhez a modell megkeresi a modell.
+Az osztályozó által igénybe vett összes rendszerkép használatával létrehoz egy modellt, amely minden címke azonosítja. Az osztályozó által igénybe vett tesztelésére a modell minőségét, próbálja meg a modell tesztelésével, a modell megkeresi az egyes rendszerképek.
 
-A minőségi osztályozó eredmények jelennek meg.
+A minőségű az osztályozó által igénybe vett eredmények jelennek meg.
 
 |Időtartam|Meghatározás|
 |---|---|
-|__Pontosság__|Ha besorolását, kép, hogy mennyire valószínű a osztályozó a lemezkép megfelelően besorolása? Ki kell még betanítani a osztályozó (kutya és pónikat) használt összes képek milyen százalék nem a modell beszerezni megfelelő? 100 kép kívül 99 megfelelő címkék 99 %-os pontossága biztosít.|
-|__Visszahívása__|Kívül minden lemezképbe, amelyek kell besorolásuk megfelelően hogy hány nem a osztályozó azonosítani megfelelően? A visszaírási 100 %-os azt jelenti, hogy ha a képek a osztályozó betanítása használt 38 kutya lemezképek, a osztályozó 38 kutya található.|
+|__Pontosság__|A besorolás, a lemezkép megfelelően besorolni mikor besorolni, kép, hogy mennyire valószínű? (Kutyák és pónikat) a besorolás betanítására által használt összes rendszerképek, ki milyen százalékos volt a modell be megfelelő? 100 kép kívül 99 megfelelő címkéket 99 %-os pontossága biztosít.|
+|__Idézze__|Ki kell besorolásuk megfelelően összes rendszerkép hány volt az osztályozó által igénybe vett azonosítása megfelelően? 100 %-os visszahívást, az azt jelenti, hogy ha a képeken, a besorolás betanítására használt 38 kutya képek, az osztályozó által igénybe vett 38 kutyák található.|
 
 ## <a name="next-steps"></a>További lépések
 
