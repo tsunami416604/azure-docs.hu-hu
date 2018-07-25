@@ -1,6 +1,6 @@
 ---
-title: Az OAuth 2.0 hitelesítésikód-folyamata megismerése az Azure ad-ben
-description: A cikkből megtudhatja, hogyan használható a HTTP-üzenetek webalkalmazások és webes API-k használata az Azure Active Directory és az OAuth 2.0-bérlőben hozzáférés hitelesítése.
+title: Az OAuth 2.0 hitelesítési kódfolyamat megismerheti az Azure ad-ben
+description: Ez a cikk ismerteti, hogyan használható a HTTP-üzenetek webalkalmazásokhoz és webes API-k a bérlő Azure Active Directory és az OAuth 2.0 használatával való hozzáférés engedélyezésére.
 services: active-directory
 documentationcenter: .net
 author: CelesteDG
@@ -12,31 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a01c5bc2ca6310ee87f2ead1ea590987c854e733
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fab9ddefc022cb5643f98cf7fea4ca74d4f7101b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595325"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228052"
 ---
-# <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az Azure Active Directory webes alkalmazásokat az OAuth 2.0 code grant folyamat használatával való hozzáférés engedélyezésére
-Az Azure Active Directory (Azure AD) által használt OAuth 2.0 ahhoz, hogy engedélyezi a hozzáférést a webalkalmazások és webes API-knak az Azure AD-bérlőben. Ez az útmutató nyelvfüggetlen, és ismerteti, hogyan lehet üzeneteket küldjön és fogadjon HTTP nélkül használja fel [nyílt forráskódú kódtárai](active-directory-authentication-libraries.md).
+# <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az OAuth 2.0 kód engedélyezési folyamatával használatával az Azure Active Directory webes alkalmazásokhoz való hozzáférés engedélyezése
+Az Azure Active Directory (Azure AD) az OAuth 2.0 használatával lehetővé teszi, hogy engedélyezze a hozzáférést a webalkalmazásokhoz és webes API-k az Azure AD-bérlőben. Ez az útmutató nyelvektől független, és hogyan küldhetők és fogadhatók HTTP-üzenetek bármelyikének használata nélkül ismerteti meg [nyílt forráskódú könyvtáraink](active-directory-authentication-libraries.md).
 
-Az OAuth 2.0 hitelesítésikód-folyamata ismertetett [az OAuth 2.0-s szabvány 4.1 szakasz](https://tools.ietf.org/html/rfc6749#section-4.1). A legtöbb alkalmazás típusok, beleértve a webalkalmazások hitelesítési és engedélyezési végezhetők, és natív módon telepített alkalmazásokat.
+Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](https://tools.ietf.org/html/rfc6749#section-4.1). Hitelesítési és engedélyezési végezhető a legtöbb alkalmazás típusok, többek között a web apps és a natív módon telepített alkalmazásokat.
 
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
 
-## <a name="oauth-20-authorization-flow"></a>OAuth 2.0 hitelesítési folyamata
-Magas szinten az alkalmazás teljes engedélyezési folyamata néz ki egy kicsit:
+## <a name="oauth-20-authorization-flow"></a>OAuth 2.0 engedélyezési folyamat
+Magas szinten a teljes engedélyezési folyamatot egy alkalmazáshoz egy kicsit nézhet ki:
 
-![OAuth hitelesítési folyamata](media/active-directory-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
+![OAuth hitelesítési Kódfolyamat](media/active-directory-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
-## <a name="request-an-authorization-code"></a>Az engedélyezési kód kérése
-A hitelesítésikód-folyamata kezdődik irányítja a felhasználót, hogy az ügyfél a `/authorize` végpont. A kérelem az ügyfél azt jelzi, kell szerzi be a felhasználói engedélyek. Kaphat az OAuth 2.0 hitelesítési végpont a bérlő kiválasztásával **alkalmazás-regisztráció > végpontok** az Azure portálon.
+## <a name="request-an-authorization-code"></a>Hozzáférési kód kérése
+A hitelesítési kódfolyamat irányítja a felhasználót, hogy az ügyfél kezdődik a `/authorize` végpont. A kéréshez az ügyfél azt jelzi, hogy az engedélyeket kell beszerezni a felhasználó elől. Megtekintheti az OAuth 2.0 engedélyezési végpont a bérlőhöz tartozó kiválasztásával **alkalmazásregisztrációk > végpontok** az Azure Portalon.
 
 ```
 // Line breaks for legibility only
@@ -44,7 +44,7 @@ A hitelesítésikód-folyamata kezdődik irányítja a felhasználót, hogy az �
 https://login.microsoftonline.com/{tenant}/oauth2/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
-&redirect_uri=http%3A%2F%2Flocalhost%3A%12345
+&redirect_uri=http%3A%2F%2Flocalhost%3A12345
 &response_mode=query
 &resource=https%3A%2F%2Fservice.contoso.com%2F
 &state=12345
@@ -52,26 +52,26 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| bérlő |szükséges |A `{tenant}` személyek is jelentkezzen be az alkalmazás a kérelem elérési útjában szereplő érték is használható. Az engedélyezett értékek a következők bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
-| client_id |szükséges |Az Azure ad-vel regisztrált az alkalmazáshoz hozzárendelt Alkalmazásazonosító. Ez az Azure portálon találja meg. Kattintson a **Azure Active Directory** szolgáltatások oldalsávon kattintson **App regisztrációk**, és válassza ki az alkalmazást. |
-| response_type |szükséges |Tartalmaznia kell `code` a a hitelesítésikód-folyamata. |
-| redirect_uri |Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszok redirect_uri. Ez pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve az url-kódolású kell lennie. Natív & mobileszköz-alkalmazások esetén az alapértelmezett értéket használjon `urn:ietf:wg:oauth:2.0:oob`. |
-| response_mode |Ajánlott |Megadja azt a módszert, amelynek használatával az eredményül kapott jogkivonat vissza küldése az alkalmazásnak. A következők egyike lehet: `query` vagy `form_post`. `query` a kód biztosít az átirányítási URI-t, a lekérdezési karakterlánc paraméterként közben `form_post` végrehajtja a kódot az átirányítási URI-t tartalmazó POST. |
-| state |Ajánlott |A kérelem is a biztonságijogkivonat-válaszban visszaadott szerepel érték. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások megelőzése](http://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a is használatos. |
-| erőforrás | Ajánlott |App ID URI-azonosítója a target webes API-k (védett erőforrás). Az Azure portálon található App ID URI, kattintson a **Azure Active Directory**, kattintson a **alkalmazás regisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson az  **Tulajdonságok**. Például a külső erőforrásokra is lehet `https://graph.microsoft.com`. Ez egy engedélyezési vagy jogkivonat-kérelmeket a szükséges. Ahhoz, hogy kevesebb hitelesítési kérések helyezze el az engedélyezési kérelmeket annak érdekében, hogy a felhasználói hozzájárulás érkezik. |
-| scope | **figyelmen kívül hagyva** | Az Azure AD alkalmazásaiban v1, hatókörök statikusan kell konfigurálni az alkalmazások az Azure portál **beállítások**, **szükséges engedélyek**. |
-| parancssor |választható |Jelzi a felhasználói beavatkozás szükséges.<p> Érvényes értékek a következők: <p> *bejelentkezési*: A felhasználó a rendszer kéri újból hitelesítésre. <p> *select_account*: A felhasználótól a kívánt fiók kiválasztásához egyszeri bejelentkezési szakad meg. A felhasználó is kiválaszthat egy meglévő bejelentkezve fiókot, adja meg a hitelesítő adatok megjegyzett fiók, vagy teljesen használjon más fiókot. <p> *hozzájárulás*: felhasználói hozzájárulás rendelkezik, de frissíteni kell. A felhasználó beleegyezését kell kérni. <p> *admin_consent*: A rendszergazda a rendszer kéri a szervezetben lévő összes felhasználó nevében hozzájárulás |
-| login_hint |választható |Segítségével előre töltse ki a bejelentkezési oldal a felhasználó a felhasználónév vagy e-mail cím mező, ha tudja, hogy időben a felhasználónevét. Gyakran alkalmazások újrahitelesítés, hogy már kivont a felhasználónév egy korábbi bejelentkezési használatával során használja ezt a paramétert a `preferred_username` jogcímek. |
-| domain_hint |választható |A bérlői és a tartományhoz, amely a felhasználó által használandó jelentkezzen be a mutatót. A domain_hint értéke egy regisztrált tartományt a bérlő számára. A bérlő helyszíni Directory össze van vonva, ha a megadott tenantot összevonási kiszolgáló átirányítja a aad-ben. |
-| code_challenge_method | választható    | Kódolja használt módszer a `code_verifier` a a `code_challenge` paraméter. Egyike lehet `plain` vagy `S256`. Ha ki van zárva, `code_challenge` adottnak egyszerű szöveges Ha `code_challenge` tartalmazza. Az Azure AAD 1.0-s verziója is támogatja `plain` és `S256`. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| code_challenge        | választható    | Használatával teszi biztonságossá a hitelesítési kód biztosít igazolása kulccsal a kód Exchange (PKCE) egy nyilvános vagy natív ügyfél. Kötelező, ha `code_challenge_method` tartalmazza. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| bérlő |szükséges |A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. A megengedett értékek: bérlő azonosítókat, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
+| client_id |szükséges |Az Alkalmazásazonosítót az alkalmazáshoz rendelt Azure AD-vel való regisztrációja. Az Azure Portalon találja. Kattintson a **Azure Active Directory** a szolgáltatások oldalsávon kattintson **alkalmazásregisztrációk**, és válassza ki az alkalmazást. |
+| response_type |szükséges |Tartalmaznia kell `code` az engedélyezési kód folyamata. |
+| redirect_uri |Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. A natív és mobil alkalmazások esetén az alapértelmezett értéket használjon `urn:ietf:wg:oauth:2.0:oob`. |
+| response_mode |Ajánlott |Meghatározza a létrejövő jogkivonat vissza küldhet az alkalmazáshoz használandó módszert. Lehet `query`, `fragment`, vagy `form_post`. `query` a kódot biztosít az átirányítási URI-t a lekérdezési sztring paramétereként. Ha Ön a kért egy azonosító jogkivonat, használja az implicit folyamatot, nem használhatja `query` meghatározott a [OpenID specifikációja](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Ha csak a kódot kért, `query`, `fragment`, vagy `form_post`. `form_post` az átirányítási URI-t a kódot egy HOZZÁSZÓLÁSRA hajtja végre. |
+| state |Ajánlott |A kérésben is a token válaszban visszaadott érték. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](http://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
+| erőforrás | Ajánlott |Az Alkalmazásazonosító URI-t a cél a webes API (védett erőforrás). Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazást az alkalmazásregisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson a  **Tulajdonságok**. Például egy külső erőforrás is lehet `https://graph.microsoft.com`. Ez azért szükséges, egy engedélyezési vagy jogkivonat-kérelmeket. Annak biztosítása érdekében kevesebb hitelesítési kérések helyezze el az engedélyezési kérésben, ha biztosítani szeretné, jóváhagyás a felhasználó. |
+| scope | **figyelmen kívül hagyva** | V1 az Azure AD-alkalmazásokhoz, hatókörök statikusan konfigurálni kell lennie az alkalmazások az Azure portál **beállítások**, **szükséges engedélyek**. |
+| parancssor |választható |A felhasználói beavatkozás szükséges típusát jelzi.<p> Érvényes értékek a következők: <p> *bejelentkezési*: A felhasználó a rendszer kéri, hogy hitelesítse magát újra. <p> *select_account*: kéri a felhasználót, válassza ki a fiókot, hogy az egyszeri bejelentkezés megszakítása. A felhasználó előfordulhat, hogy válasszon egy meglévő bejelentkezett fiókot, adja meg a hitelesítő adataikat a korábban megjegyzett fiók vagy teljesen használt egy másik fiókot. <p> *hozzájárulás*: felhasználói beleegyezés kapott, de frissíteni kell. A felhasználó jóváhagyást kell kérni. <p> *admin_consent*: A rendszergazda a rendszer kéri a szervezetben lévő összes felhasználó nevében jóváhagyást |
+| login_hint |választható |Segítségével előre töltse ki a felhasználónév, e-mail-cím mező a bejelentkezési oldal a felhasználó számára, ha ismeri a kívánt időben felhasználóneve. Gyakran alkalmazások újrahitelesítés, hogy már kinyert a felhasználónevet egy előző jelentkezzen be az során használja ezt a paramétert a `preferred_username` jogcím. |
+| domain_hint |választható |A bérlő és a tartományhoz, amely a felhasználónak kell használnia, hogy jelentkezzen be a mutatót. A domain_hint értéke a bérlő regisztrált tartományhoz. Ha a bérlő összevonást használ, egy helyszíni címtár, az adott bérlő összevonási kiszolgáló átirányítja a aad-ben. |
+| code_challenge_method | választható    | Kódolás használt módszer a `code_verifier` számára a `code_challenge` paraméter. Lehetnek `plain` vagy `S256`. Ha ki van zárva, `code_challenge` adatforrásmérete egyszerű szöveges Ha `code_challenge` részét képezi. Az Azure AAD 1.0-s verziója is támogatja `plain` és `S256`. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge        | választható    | Használt kód engedélyezések koncepció kulcs használatával a kód Exchange (PKCE) egy nyilvános vagy natív ügyfél. Kötelező, ha `code_challenge_method` részét képezi. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 > [!NOTE]
-> Ha a felhasználó egy szervezet része, a szervezet rendszergazdája hozzájárulás vagy elutasítja a felhasználó nevében, vagy a felhasználó beleegyezését engedélyezése. A felhasználó beleegyezését csak akkor, ha a rendszergazda engedélyezi azt a lehetőséget kap.
+> Ha a felhasználó egy szervezet része, a szervezet rendszergazdája hozzájárulás megadása vagy elutasítása a felhasználó nevében, vagy lehetővé teszik a felhasználó beleegyezését. A felhasználó a beállítás csak akkor, ha a rendszergazda lehetővé teszi, hogy jóváhagyást kap.
 >
 >
 
-Ezen a ponton a felhasználónak kapcsolatba kell adnia a hitelesítő adatait, és hozzájárul az Azure portálon az alkalmazás által kért engedélyeit. Miután a felhasználó hitelesíti és engedélyezi a hozzájárulási, az Azure AD az alkalmazást választ küld a `redirect_uri` cím a kód a kérelemben.
+Ezen a ponton a felhasználó kéri, adja meg a hitelesítő adataikat, és hozzájárul az Azure Portalon az alkalmazás által kért engedélyeket. A felhasználó végzi a hitelesítést, és engedélyezi a jóváhagyás után az Azure AD az alkalmazáshoz, választ küld a `redirect_uri` címe a kérelemben a kóddal.
 
 ### <a name="successful-response"></a>A sikeres válasz
 A sikeres válasz nézhet ki:
@@ -83,13 +83,13 @@ Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 
 | Paraméter | Leírás |
 | --- | --- |
-| admin_consent |Az értéke True, ha a rendszergazda átadni kívánt hozzájárult e a jóváhagyási kérelem kérése. |
-| Kód |Az engedélyezési kód, amely az alkalmazás kéri. Az alkalmazás az engedélyezési kód segítségével olyan hozzáférési jogkivonatot célerőforrás igényelhetnek. |
-| session_state |A jelenlegi felhasználói munkamenetet azonosító egyedi érték. Ez az érték egy GUID, de egy vizsgálat nélkül átadott nem átlátszó értéket kell kezelni. |
-| state |Ha a kérelem egy állapot paramétert tartalmaz, ugyanazt az értéket meg kell jelennie a válasz. Célszerű ellenőrizni, hogy a kérés- és állapot értékei megegyeznek a válasz használata előtt az alkalmazáshoz. Ez segít észleléséhez [többhelyes kérelem hamisítására (CSRF) támadások](https://tools.ietf.org/html/rfc6749#section-10.12) az ügyfél ellen. |
+| admin_consent |Az értéke igaz, ha a rendszergazda által jóváhagyott kérelem jóváhagyásukat kéri az. |
+| Kód |Az engedélyezési kódot, amely az alkalmazás kéri. Az alkalmazás az engedélyezési kód használatával a célként megadott erőforrás-hozzáférési jogkivonat kérése. |
+| session_state |A jelenlegi felhasználói munkamenetet azonosító egyedi értéket. Ez az érték egy GUID Azonosítót, de vizsgálat nélkül átadott átlátszatlan érték kell kezelni. |
+| state |Ha a kérelem tartalmazza a state paraméterben, ugyanazt az értéket meg kell jelennie a választ. Ajánlott az alkalmazás győződjön meg arról, hogy a kérés- és állapot értékei megegyeznek a válasz használata előtt. Ez segít észlelni [többhelyes kérelem hamisítására (CSRF) támadások](https://tools.ietf.org/html/rfc6749#section-10.12) szemben az ügyfél. |
 
-### <a name="error-response"></a>Hibaválaszba
-Hibaválaszok is elküldheti a `redirect_uri` , hogy az alkalmazás kezeli őket megfelelően.
+### <a name="error-response"></a>Hiba történt a válasz
+Hibaválaszok is elküldheti az `redirect_uri` úgy, hogy az alkalmazás kezelni tudja őket megfelelően.
 
 ```
 GET http://localhost:12345/?
@@ -99,25 +99,25 @@ error=access_denied
 
 | Paraméter | Leírás |
 | --- | --- |
-| error |Egy hiba kód értékét, az 5.2. szakaszban meghatározott a [OAuth 2.0 hitelesítési keretrendszer](http://tools.ietf.org/html/rfc6749). A következő táblázat a hibakódok az Azure AD eredményül. |
-| error_description |A hiba részletes leírását. Ez az üzenet nem lehet olyan végfelhasználói leíró. |
-| state |Az állapot értéke nem használja fel újra egy véletlenszerűen generált érték, amely a kérelemben küldött és az eredmény abban a webhelyközi kérések hamisítására (CSRF) támadások megelőzése érdekében. |
+| error |Egy hiba-kód szakaszban az 5.2 meghatározott értékét a [OAuth 2.0 engedélyezési keretrendszer](http://tools.ietf.org/html/rfc6749). A következő táblázat a hibakódok, melyek az Azure AD adja vissza. |
+| error_description |A hiba részletes leírását. Ez az üzenet nem célja, hogy lehet végfelhasználói rövid. |
+| state |Az állapot értéke nem újra felhasználhatók egy véletlenszerűen generált érték, amely a kérés küldése és webhelyközi kérések hamisításának megakadályozása (CSRF) támadások megelőzése érdekében a válaszban visszaadott. |
 
-#### <a name="error-codes-for-authorization-endpoint-errors"></a>Engedélyezési végpont hibái hibakódok
-A következő táblázat ismerteti a különböző hibakódok a visszaadható a `error` paramétere a hibaüzenetet.
+#### <a name="error-codes-for-authorization-endpoint-errors"></a>Hitelesítési végpont hibák hibakódok
+A következő táblázat ismerteti a különböző visszaadható hibakódok a `error` válaszként küldött hibaüzenetben paraméterében.
 
 | Hibakód | Leírás | Ügyfélművelet |
 | --- | --- | --- |
-| invalid_request |Protokollhiba történt, például a hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet. A fejlesztési hiba, és a kezdeti tesztelés során általában kiszűri. |
-| unauthorized_client |Az ügyfélalkalmazás az engedélyezési kód kérése nem engedélyezett. |Ez általában akkor fordul elő, amikor az ügyfél-alkalmazás nincs regisztrálva az Azure ad-ben, vagy nem kerül be a felhasználó Azure AD-bérlő. Az alkalmazás kérheti a felhasználót az alkalmazás telepítése és az Azure AD hozzáadni utasítás. |
-| ACCESS_DENIED |Erőforrás tulajdonosa hozzájárulási megtagadva |Az ügyfélalkalmazás is értesíti a felhasználót, hogy azt nem folytatható, kivéve, ha a felhasználó. |
-| unsupported_response_type |Az engedélyezési kiszolgáló nem támogatja a kérelem a válasz típusa. |Javítsa ki, és küldje el újra a kérelmet. A fejlesztési hiba, és a kezdeti tesztelés során általában kiszűri. |
-| server_error |A kiszolgáló váratlan hibát észlelt. |Próbálkozzon újra a kéréssel. Ezeket a hibákat okozhat az átmeneti állapotot. Az ügyfélalkalmazás elmagyarázhatja a felhasználót, hogy egy ideiglenes hiba miatt késik a válaszában. |
-| temporarily_unavailable |A kiszolgáló ideiglenesen jelenleg túl elfoglalt a kérelem kezelésére. |Próbálkozzon újra a kéréssel. Az ügyfélalkalmazás elmagyarázhatja a felhasználót, hogy egy ideiglenes állapot miatt késik a válaszában. |
-| invalid_resource |A cél erőforráson érvénytelen, mert nem létezik, az Azure AD a fájl nem található vagy nincs megfelelően konfigurálva. |Ez azt jelzi, hogy az erőforrás, ha létezik, nincs konfigurálva a bérlőben. Az alkalmazás kérheti a felhasználót az alkalmazás telepítése és az Azure AD hozzáadni utasítás. |
+| invalid_request |Protokollhiba történt, például egy hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet. Ez fejlesztési hiba, és a kezdeti tesztelés során általában történt. |
+| unauthorized_client |Az ügyfélalkalmazás számára nem engedélyezett az engedélyezési kódot kér. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure ad-ben, vagy a felhasználó Azure AD-bérlő nem kerül. Az alkalmazás megkérheti a felhasználót az utasítást az alkalmazás telepítése és az Azure ad-hez adásával. |
+| ACCESS_DENIED |Erőforrás tulajdonosának jóváhagyás elutasítva |Az ügyfélalkalmazás is értesíti a felhasználót, hogy azt nem lehet folytatni, kivéve, ha a felhasználó. |
+| unsupported_response_type |Az engedélyezési kiszolgáló nem támogatja a kód választípusához a kérésben. |Javítsa ki, és küldje el újra a kérelmet. Ez fejlesztési hiba, és a kezdeti tesztelés során általában történt. |
+| server_error |A kiszolgáló váratlan hibát észlelt. |Ismételje meg a kérelmet. Ezeket a hibákat okozhat az ideiglenes feltételek. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy átmeneti hiba miatt késik. |
+| temporarily_unavailable |A kiszolgáló nem túlságosan elfoglalt a kérelem kezelése. |Ismételje meg a kérelmet. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy ideiglenes állapot miatt késik. |
+| invalid_resource |A célként megadott erőforrás érvénytelen, mert nem létezik, az Azure AD nem található, vagy azt nem megfelelően van konfigurálva. |Ez azt jelzi, hogy az erőforrást, ha létezik, nincs konfigurálva a bérlőben. Az alkalmazás megkérheti a felhasználót az utasítást az alkalmazás telepítése és az Azure ad-hez adásával. |
 
-## <a name="use-the-authorization-code-to-request-an-access-token"></a>Az engedélyezési kód segítségével olyan hozzáférési jogkivonatot kérése
-Most, hogy az engedélyezési kód jut hozzá, és a felhasználó a engedélyt kaptak, olyan hozzáférési jogkivonatot a kívánt erőforráshoz tartozó kód is beváltja úgy, hogy a POST kérést küld a `/token` végpont:
+## <a name="use-the-authorization-code-to-request-an-access-token"></a>Az engedélyezési kód használatával hozzáférési jogkivonat kérése
+Most, hogy az engedélyezési kód beszerzése és engedéllyel rendelkezik a felhasználó által, a kód egy hozzáférési jogkivonatot a kívánt erőforrást beválthatja egy POST kérelmet küld a `/token` végpont:
 
 ```
 // Line breaks for legibility only
@@ -137,21 +137,21 @@ grant_type=authorization_code
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| bérlő |szükséges |A `{tenant}` személyek is jelentkezzen be az alkalmazás a kérelem elérési útjában szereplő érték is használható. Az engedélyezett értékek a következők bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
-| client_id |szükséges |Az Azure ad-vel regisztrált az alkalmazáshoz hozzárendelt alkalmazásazonosító. Ez az Azure portálon találja meg. Az alkalmazásazonosító az alkalmazás-regisztrációs beállításai jelenik meg. |
-| grant_type |szükséges |Kell `authorization_code` a a hitelesítésikód-folyamata. |
+| bérlő |szükséges |A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. A megengedett értékek: bérlő azonosítókat, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
+| client_id |szükséges |Az alkalmazásazonosítót az alkalmazáshoz rendelt Azure AD-vel való regisztrációja. Az Azure Portalon találja. Az alkalmazásazonosító az alkalmazás regisztrációját a beállításait jelenik meg. |
+| grant_type |szükséges |Meg kell `authorization_code` az engedélyezési kód folyamata. |
 | Kód |szükséges |A `authorization_code` az előző szakaszban beszerzett |
-| redirect_uri |szükséges |Azonos `redirect_uri` megszerzésére használt érték a `authorization_code`. |
-| client_secret |a web Apps, nem engedélyezett a következő nyilvános ügyfelek szükséges |Az alkalmazás titkos kulcs, amely alatt az alkalmazás az Azure portálon létrehozott **kulcsok**. Ez nem használható natív alkalmazásban (nyilvános ügyfél), mert client_secrets megbízhatóan nem tárolható az eszközökön. Szükséges, hogy az webalkalmazások és webes API-k (összes bizalmas ügyfelek), amelyek tárolása a `client_secret` biztonságos helyen a kiszolgálói oldalon. |
-| erőforrás | Ajánlott |App ID URI-azonosítója a target webes API-k (védett erőforrás). Az Azure portálon található App ID URI, kattintson a **Azure Active Directory**, kattintson a **alkalmazás regisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson az  **Tulajdonságok**. Például a külső erőforrásokra is lehet `https://graph.microsoft.com`. Ez egy engedélyezési vagy jogkivonat-kérelmeket a szükséges. Ahhoz, hogy kevesebb hitelesítési kérések helyezze el az engedélyezési kérelmeket annak érdekében, hogy a felhasználói hozzájárulás érkezik. Ha a hitelesítési kérelem és a jogkivonatra vonatkozó kérést, az erőforrás "paraméterek meg kell egyeznie. | 
-| code_verifier | választható | Az beszerzése a authorization_code használt azonos code_verifier. Szükséges, ha az engedélyezési kód támogatási kérelmet PKCE használta. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
+| redirect_uri |szükséges |Azonos `redirect_uri` beszerzéséhez használt értékkel a `authorization_code`. |
+| client_secret |a web apps esetében nem engedélyezett a nyilvános ügyfelek szükséges |Az alkalmazás titkos, amelyet az alkalmazás mellett az Azure Portalon létrehozott **kulcsok**. Ez nem használható egy natív alkalmazást (nyilvános ügyfél), mert client_secrets megbízhatóan nem tárolható az eszközökön. Webalkalmazások és webes API-kat (az összes bizalmas ügyfeleknek), amelyek történő tárolásának lehetőségét szükséges a `client_secret` biztonságosan a kiszolgálói oldalon. |
+| erőforrás | Ajánlott |Az Alkalmazásazonosító URI-t a cél a webes API (védett erőforrás). Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazást az alkalmazásregisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson a  **Tulajdonságok**. Például egy külső erőforrás is lehet `https://graph.microsoft.com`. Ez azért szükséges, egy engedélyezési vagy jogkivonat-kérelmeket. Annak biztosítása érdekében kevesebb hitelesítési kérések helyezze el az engedélyezési kérésben, ha biztosítani szeretné, jóváhagyás a felhasználó. Ha az engedélyezési kérésben, mind a jogkivonat kérése az erőforrás "paramétereknek egyezniük kell. | 
+| code_verifier | választható | Az azonos code_verifier a authorization_code beszerzéséhez használt. Szükséges, ha az engedélyezési kód engedélyezési kérésben PKCE használt. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 
-Az Azure portálon található App ID URI, kattintson a **Azure Active Directory**, kattintson a **alkalmazás regisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson az  **Tulajdonságok**.
+Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazást az alkalmazásregisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson a  **Tulajdonságok**.
 
 ### <a name="successful-response"></a>A sikeres válasz
-Az Azure AD, a sikeres válasz hozzáférési jogkivonatot ad vissza. Az ügyfélalkalmazás és azok kapcsolódó késés hálózati hívásait minimalizálása érdekében az ügyfélalkalmazás kell gyorsítótárba hozzáférési jogkivonatok a jogkivonat élettartamát az OAuth 2.0 válaszban megadott. Használja a jogkivonat élettartamát határozza meg, hogy a `expires_in` vagy `expires_on` paraméterértékeket.
+Az Azure AD hozzáférési jogkivonatot a sikeres válasz alapján ad vissza. Hálózati hívások az ügyfélalkalmazás és azok kapcsolódó késés minimalizálása érdekében az ügyfélalkalmazásnak kell hozzáférési jogkivonatok gyorsítótárazása az OAuth 2.0-válaszban megadott jogkivonat élettartama. Annak megállapításához, a jogkivonat élettartamát, vagy használja a `expires_in` vagy `expires_on` paraméterértékeket.
 
-Ha a webes API-erőforrás adja vissza egy `invalid_token` hibakód, ez azt jelentheti, hogy az erőforrás megállapította, hogy a jogkivonat lejárt. Ha az ügyfél- és erőforrás óra alkalommal különböző (ismert egy "eltérésére alkalommal"), az erőforrás érdemes lehet a jogkivonat lejárt, mielőtt a jogkivonat nincs bejelölve, az ügyfél-gyorsítótárból. Ha ez történik, törölje a jogkivonatot a gyorsítótárból, akkor is, ha továbbra is számított élettartamuk belül.
+Ha egy webes API-erőforrás adja vissza egy `invalid_token` hibakód, ez azt jelentheti, hogy az erőforrás megállapította, hogy a jogkivonat lejárt. Ha az ügyfél- és erőforrás óra alkalommal különböző (vagyis egy "időeltérés"), az erőforrás érdemes lehet a token lejárt előtt a jogkivonatot az ügyfél gyorsítótárában törlődik. Ha ez történik, akkor is, ha számított élettartamuk belül törölje a jogkivonatot a gyorsítótárból.
 
 A sikeres válasz nézhet ki:
 
@@ -171,17 +171,17 @@ A sikeres válasz nézhet ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| access_token |A kért hozzáférési jogkivonat, egy aláírt JSON webes jogkivonat (JWT). Az alkalmazás a token használatával hitelesítik magukat a védett erőforrások, például egy webes API. |
-| token_type |A jogkivonat típusa értékét jelöli. A csak az Azure AD támogató típus tulajdonosi. Tulajdonosi jogkivonatok kapcsolatos további információkért lásd: [OAuth2.0 hitelesítési keretrendszer: tulajdonosi jogkivonat használati (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
+| access_token |A kért hozzáférési jogkivonatot, egy aláírt JSON webes jogkivonat (JWT). Az alkalmazás a jogkivonat használatával hitelesítik magukat a védett erőforráshoz, például a webes API-t. |
+| token_type |Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [OAuth2.0 engedélyezési keretrendszer: tulajdonosi jogkivonat-használat (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
-| expires_on |A hozzáférési jogkivonat lejárati idejének. A dátum jelzi másodpercben a 1970-01-01T0:0:0Z UTC, amíg az elévülési időt. Ezt az értéket a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
-| erőforrás |A webes API-k (védett erőforrás) App ID URI. |
-| scope |Az ügyfélalkalmazás számára megadott megszemélyesítési engedélyeket. Az alapértelmezett engedély `user_impersonation`. A védett erőforrás tulajdonosa további értékeket regisztrálhatja az Azure AD-ben. |
-| refresh_token |Az OAuth 2.0-s frissítési jogkivonat. Az alkalmazás a jogkivonat segítségével szerezzen be további hozzáférési jogkivonatok az aktuális jogkivonat lejárata után is. Frissítési jogkivonatok hosszú élettartamú, és erőforrásokhoz való hozzáférés megőrzése huzamosabb ideig használható. |
-| id_token |Az aláírás nélküli JSON webes jogkivonat (JWT). Az alkalmazás is base64Url dekódolni a bejelentkezett felhasználóval kapcsolatos információkat a token szegmensek. Az alkalmazás gyorsítótárazása az értékeket, és a megjelenítésükhöz, de azt nem igazolható a azokat bármilyen engedélyezési vagy a biztonsági határokat. |
+| expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
+| erőforrás |Az Alkalmazásazonosító URI a webes API (védett erőforrás). |
+| scope |Az ügyfélalkalmazás számára biztosított megszemélyesítési engedélyeket. Az alapértelmezett engedély `user_impersonation`. A védett erőforrás tulajdonosa további értékek regisztrálhat az Azure ad-ben. |
+| refresh_token |Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás a jogkivonat használatával szerzi be a további hozzáférési jogkivonatokat a jelenlegi hozzáférési jogkivonat lejárata után. Frissítési jogkivonatok hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. |
+| id_token |Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazás is base64Url dekódolni a szegmensek a token a bejelentkezett felhasználóval kapcsolatos információkat. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. |
 
 ### <a name="jwt-token-claims"></a>JWT jogkivonat jogcímek
-A JWT jogkivonat értékének a `id_token` paraméter a következő jogcímeket is dekódolható:
+A JWT jogkivonat értékét a `id_token` paraméter a következő jogcímekké alakítja vissza tudja fejteni:
 
 ```
 {
@@ -205,30 +205,30 @@ A JWT jogkivonat értékének a `id_token` paraméter a következő jogcímeket 
 }.
 ```
 
-JSON webes jogkivonatainak kapcsolatos további információkért tekintse meg a [JWT IETF-vázlat specifikáció](http://go.microsoft.com/fwlink/?LinkId=392344). A jogkivonat-típusok és a jogcímek kapcsolatos további információkért olvassa el a [támogatott jogkivonat és jogcímtípusok](active-directory-token-and-claims.md)
+JSON webes jogkivonatainak kapcsolatos további információkért lásd: a [JWT IETF draft specifikáció](http://go.microsoft.com/fwlink/?LinkId=392344). A token típusát és a jogcímek kapcsolatos további információkért olvassa el a [támogatott jogkivonatok és jogcímtípusok](active-directory-token-and-claims.md)
 
-A `id_token` paraméter a következő jogcímtípust tartalmazza:
+A `id_token` paraméter tartalmazza a következő jogcímtípusokat:
 
 | Jogcím típusa | Leírás |
 | --- | --- |
-| és |A jogkivonat célközönség. Amikor a jogkivonat ügyfél alkalmazás, a célközönségét a `client_id` az ügyfél. |
-| Exp |Lejárati idő. A jogkivonat lejárati idejének. A jogkivonat érvényes, az aktuális dátumra/időre lehet kisebb vagy egyenlő, mint a `exp` érték. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token érvényességi lejárati idejének.|
-| family_name |Felhasználó Vezetéknév vagy családnév. Az alkalmazás meg tudja jeleníteni ezt az értéket. |
-| given_name |Felhasználó első nevét. Az alkalmazás meg tudja jeleníteni ezt az értéket. |
-| IAT |Kiadott időpontban. Az az idő, amikor a jwt-t adta ki. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token lett kiállítva. |
-| iss |A jogkivonat-kibocsátó azonosítja. |
-| NBF |Nem korábbi. Az az idő, amikor a jogkivonat érvénybe lép. A jogkivonat érvényes az aktuális dátum/idő nagyobb vagy egyenlő a Nbf értéknek kell lennie. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token lett kiállítva. |
-| OID |Az Azure AD-beli felhasználóobjektum objektumazonosítója. |
-| Sub |Token tulajdonos azonosítója. Ez az a felhasználót, hogy a jogkivonat ismerteti egy állandó, és nem módosítható azonosítót. Használja ezt az értéket logika gyorsítótárazását. |
-| TID |Bérlő azonosítója (ID) az Azure AD-bérlő a jogkivonatot kibocsátó. |
-| unique_name |Egyedi azonosítója, amely a felhasználó jeleníthetőek meg. Ez általában az egyszerű felhasználónév (UPN). |
+| AUD |A jogkivonat célközönség. Amikor egy ügyfélalkalmazás a jogkivonat kiadása a célközönségét a `client_id` az ügyfél. |
+| Exp |Lejárati idő. Az az időpont, amikor a jogkivonat érvényessége lejár. A jogkivonat érvényes, az aktuális dátum/idő kisebbnek kell lennie, mint vagy egyenlő a `exp` értéket. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token érvényessége lejár.|
+| family_name |Felhasználó legutóbbi neve vagy vezetékneve. Az alkalmazás megjelenítheti ezt az értéket. |
+| given_name |Felhasználó utóneve. Az alkalmazás megjelenítheti ezt az értéket. |
+| IAT |Kiadott időpontban. Az idő, amikor a JWT lett kiállítva. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token lett kiállítva. |
+| iss |Azonosítja a jogkivonat kibocsátója |
+| NBF |Hatálybalépési idő. Az az időpont, amikor a jogkivonat életbe lép. A jogkivonat érvényes az aktuális dátum/idő nagyobb vagy egyenlő a Nbf-értéke kell lennie. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token lett kiállítva. |
+| objektumazonosító |Az Azure AD-beli felhasználóobjektum objektumazonosítója. |
+| Sub |Token tulajdonos azonosítója. Ez az a felhasználót, hogy a jogkivonat ismerteti egy állandó, és nem módosítható azonosítója. A gyorsítótárazás logikai értéket használja. |
+| TID |Bérlő azonosítója (ID) az Azure AD-bérlővel, amely kiállította a jogkivonatot. |
+| unique_name |A felhasználó egyedi azonosítója, amely képes jeleníthető meg. Ez általában a egyszerű felhasználónév (UPN). |
 | egyszerű felhasználónév |A felhasználó egyszerű felhasználóneve. |
-| ver |Verzió. A JWT jogkivonat, általában az 1.0-s verzióját. |
+| ver |Verzió. A JWT jogkivonat, általában az 1.0-s verziója. |
 
-### <a name="error-response"></a>Hibaválaszba
-A jogkivonat kibocsátási végpont olyan HTTP hibakódok, mert az ügyfél meghívja a hitelesítési karakterláncok kiállításához végpont közvetlenül. Mellett a HTTP-állapotkód: az Azure AD hitelesítési karakterlánc-kiállítási végpont is egy JSON-dokumentum objektumok, amelyek ismertetik a hibát adja vissza.
+### <a name="error-response"></a>Hiba történt a válasz
+Kiállítási végpont olyan HTTP-hibakódok, mert az ügyfél közvetlenül a kiállítási végpont hívja. A HTTP-állapotkódot mellett az Azure AD-kiállítási végpont is objektumok, amelyek a hiba a JSON-dokumentumok adja vissza.
 
-Egy minta hibaüzenetet nézhet ki:
+Hiba történt egy mintaválasz nézhet ki:
 
 ```
 {
@@ -245,37 +245,37 @@ Egy minta hibaüzenetet nézhet ki:
 ```
 | Paraméter | Leírás |
 | --- | --- |
-| error |Egy hiba kód karakterlánc, amely segítségével besorolni a felmerülő hibákat, és reagálni hibákat is használható. |
-| error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba okának azonosításához. |
-| error_codes |STS-specifikus hibakódok, amelyek segítik a diagnosztika listáját. |
-| időbélyeg |Az az idő, a hiba történt. |
-| trace_id |A kérelem, amelyek segítik a diagnosztika egyedi azonosítója. |
-| correlation_id |A kérelem, amelyek segítik a diagnosztika összetevői között egyedi azonosítója. |
+| error |Egy hibakód karakterláncát típusú előforduló hibák besorolására használható, és reagálhat a hibák használható. |
+| error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba kiváltó okának azonosításához. |
+| error_codes |A diagnosztikát segítő STS-specifikus hibakódok listáját. |
+| időbélyeg |Az idő, a hiba történt. |
+| trace_id |A kérelem, amelyek segítik a diagnosztikai egyedi azonosítója. |
+| correlation_id |A különböző összetevők a diagnosztikát segítő kérelem egyedi azonosítója. |
 
 #### <a name="http-status-codes"></a>HTTP-állapotkódok
-A következő táblázat felsorolja a HTTP-állapotkódok, amely a token kiállítási végpont adja vissza. Bizonyos esetekben hibakód elegendő ahhoz, hogy a válasz írják le, de ha nincsenek hibák, kell elemezni, a hozzá tartozó JSON-dokumentum, és vizsgálja meg a hiba kódja.
+Az alábbi táblázat a kiállítási végpont által visszaadott HTTP-állapotkódok. Néhány esetben elegendő ahhoz, hogy a válasz ismertetik a hibakód, de ha nincsenek hibák, szeretné-e a hozzájuk tartozó JSON-dokumentum elemzése, és vizsgálja meg a hibakódot.
 
 | HTTP-kód | Leírás |
 | --- | --- |
-| 400 |Alapértelmezett HTTP-kód. A legtöbb esetben használja, és általában az az oka, hogy hibás kérés. Javítsa ki, és küldje el újra a kérelmet. |
-| 401 |A hitelesítés sikertelen volt. Például a kérelemből hiányzik a client_secret paraméter. |
+| 400 |Alapértelmezett HTTP-kód. A legtöbb esetben használja, és általában az oka, hogy hibás kérés. Javítsa ki, és küldje el újra a kérelmet. |
+| 401 |A hitelesítés sikertelen volt. Ha például a kérelemből hiányzik a titkos ügyfélkódot paramétert. |
 | 403 |A hitelesítés sikertelen. Például a felhasználónak nincs engedélye az erőforrás elérésére. |
-| 500 |Belső hiba történt: a szolgáltatás. Próbálkozzon újra a kéréssel. |
+| 500 |Belső hiba történt a szolgáltatás. Ismételje meg a kérelmet. |
 
-#### <a name="error-codes-for-token-endpoint-errors"></a>A token-végpont hibákat hibakódok
+#### <a name="error-codes-for-token-endpoint-errors"></a>A jogkivonat-végpont hibákat hibakódok
 | Hibakód | Leírás | Ügyfélművelet |
 | --- | --- | --- |
-| invalid_request |Protokollhiba történt, például a hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet |
-| invalid_grant |Az engedélyezési kód érvénytelen vagy lejárt. |Próbálja meg egy új kérelmet a `/authorize` végpont |
-| unauthorized_client |A hitelesített ügyfél nem jogosult a engedélyezési grant típus használatára. |Ez általában akkor fordul elő, amikor az ügyfél-alkalmazás nincs regisztrálva az Azure ad-ben, vagy nem kerül be a felhasználó Azure AD-bérlő. Az alkalmazás kérheti a felhasználót az alkalmazás telepítése és az Azure AD hozzáadni utasítás. |
-| invalid_client |Nem sikerült ügyfél-hitelesítéshez. |Az ügyfél hitelesítő adatok érvénytelenek. Javítsa ki, az alkalmazás-rendszergazda frissítések a hitelesítő adatokat. |
-| unsupported_grant_type |A hitelesítési kiszolgáló nem támogatja az engedélyezési grant típusát. |A kérelem grant típusának módosítása. Hiba az ilyen típusú csak a fejlesztés során megtörténik, és a kezdeti tesztelés során észlelt. |
-| invalid_resource |A cél erőforráson érvénytelen, mert nem létezik, az Azure AD a fájl nem található vagy nincs megfelelően konfigurálva. |Ez azt jelzi, hogy az erőforrás, ha létezik, nincs konfigurálva a bérlőben. Az alkalmazás kérheti a felhasználót az alkalmazás telepítése és az Azure AD hozzáadni utasítás. |
-| interaction_required |A kérelem felhasználói beavatkozást igényel. Például egy további hitelesítési lépésre szükség. | Helyett a nem interaktív kérelmet próbálkozzon újra az azonos erőforrás interaktív hitelesítési kérelmet. |
-| temporarily_unavailable |A kiszolgáló ideiglenesen jelenleg túl elfoglalt a kérelem kezelésére. |Próbálkozzon újra a kéréssel. Az ügyfélalkalmazás elmagyarázhatja a felhasználót, hogy egy ideiglenes állapot miatt késik a válaszában. |
+| invalid_request |Protokollhiba történt, például egy hiányzó kötelező paraméter. |Javítsa ki és küldje el újra a kérelmet |
+| invalid_grant |Az engedélyezési kód érvénytelen vagy lejárt. |Próbálkozzon egy új kérelmet a `/authorize` végpont |
+| unauthorized_client |A hitelesített ügyfél nem jogosult használni a engedélyezés engedélyezési típusa. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure ad-ben, vagy a felhasználó Azure AD-bérlő nem kerül. Az alkalmazás megkérheti a felhasználót az utasítást az alkalmazás telepítése és az Azure ad-hez adásával. |
+| invalid_client |Ügyfél-hitelesítés nem sikerült. |Az ügyfél-hitelesítő adatok nem érvényesek. Meg az alkalmazás-rendszergazda hitelesítő adatokat frissíti. |
+| unsupported_grant_type |Az engedélyezési kiszolgáló nem támogatja az engedélyezés engedélyezési típusa. |A kérelem az engedélyezési típus módosítása Ezen hibatípus csak a fejlesztés során megtörténik, és a kezdeti tesztelés során észlelt. |
+| invalid_resource |A célként megadott erőforrás érvénytelen, mert nem létezik, az Azure AD nem található, vagy azt nem megfelelően van konfigurálva. |Ez azt jelzi, hogy az erőforrást, ha létezik, nincs konfigurálva a bérlőben. Az alkalmazás megkérheti a felhasználót az utasítást az alkalmazás telepítése és az Azure ad-hez adásával. |
+| interaction_required |A kérelem felhasználói beavatkozást igényel. Ha például egy további hitelesítési lépésre szükség. | Helyett a nem interaktív kéréseket próbálkozzon újra egy interaktív engedélyezési kérést ugyanarra az erőforrásra vonatkozó. |
+| temporarily_unavailable |A kiszolgáló nem túlságosan elfoglalt a kérelem kezelése. |Ismételje meg a kérelmet. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy ideiglenes állapot miatt késik. |
 
-## <a name="use-the-access-token-to-access-the-resource"></a>Az erőforrás eléréséhez használja a hozzáférési jogkivonat
-Most, hogy sikeresen jut hozzá egy `access_token`, azzal, hogy belefoglalja azt a webes API-k, intézett kérésekben a token is használhatja a `Authorization` fejléc. A [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) megadását ismerteti a HTTP-kérelmek tulajdonosi jogkivonatok segítségével védett erőforrások eléréséhez.
+## <a name="use-the-access-token-to-access-the-resource"></a>A hozzáférési jogkivonat használata az erőforrás eléréséhez
+Most, hogy sikeresen szerezte- `access_token`, használhatja a jogkivonatot a kéréseket a webes API-k, többek között a a `Authorization` fejléc. A [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) specifikáció ismerteti a HTTP-kérések tulajdonosi jogkivonatok segítségével védett erőforrások eléréséhez.
 
 ### <a name="sample-request"></a>Mintakérelem
 ```
@@ -284,10 +284,10 @@ Host: service.contoso.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1THdqcHdBSk9NOW4tQSJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2UuY29udG9zby5jb20vIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2ZlODE0NDctZGE1Ny00Mzg1LWJlY2ItNmRlNTdmMjE0NzdlLyIsImlhdCI6MTM4ODQ0MDg2MywibmJmIjoxMzg4NDQwODYzLCJleHAiOjEzODg0NDQ3NjMsInZlciI6IjEuMCIsInRpZCI6IjdmZTgxNDQ3LWRhNTctNDM4NS1iZWNiLTZkZTU3ZjIxNDc3ZSIsIm9pZCI6IjY4Mzg5YWUyLTYyZmEtNGIxOC05MWZlLTUzZGQxMDlkNzRmNSIsInVwbiI6ImZyYW5rbUBjb250b3NvLmNvbSIsInVuaXF1ZV9uYW1lIjoiZnJhbmttQGNvbnRvc28uY29tIiwic3ViIjoiZGVOcUlqOUlPRTlQV0pXYkhzZnRYdDJFYWJQVmwwQ2o4UUFtZWZSTFY5OCIsImZhbWlseV9uYW1lIjoiTWlsbGVyIiwiZ2l2ZW5fbmFtZSI6IkZyYW5rIiwiYXBwaWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0yNzRhNzJhNzMwOWUiLCJhcHBpZGFjciI6IjAiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJhY3IiOiIxIn0.JZw8jC0gptZxVC-7l5sFkdnJgP3_tRjeQEPgUn28XctVe3QqmheLZw7QVZDPCyGycDWBaqy7FLpSekET_BftDkewRhyHk9FW_KeEz0ch2c3i08NGNDbr6XYGVayNuSesYk5Aw_p3ICRlUV1bqEwk-Jkzs9EEkQg4hbefqJS6yS1HoV_2EsEhpd_wCQpxK89WPs3hLYZETRJtG5kvCCEOvSHXmDE6eTHGTnEgsIk--UlPe275Dvou4gEAwLofhLDQbMSjnlV5VLsjimNBVcSRFShoxmQwBJR_b2011Y5IuD6St5zPnzruBbZYkGNurQK63TJPWmRd3mbJsGM0mf3CUQ
 ```
 
-### <a name="error-response"></a>Hibaválaszba
-Védett erőforrások, amelyek megvalósítják az RFC 6750 probléma HTTP-állapotkódok. Ha a kérelem nem tartalmazza a hitelesítő adatok, vagy a token hiányzik, a válasz tartalmazza egy `WWW-Authenticate` fejléc. Egy kérelem sikertelen lesz, amikor az erőforrás-kiszolgáló válaszol a HTTP-állapotkód és egy hibakódot.
+### <a name="error-response"></a>Hiba történt a válasz
+RFC 6750 probléma HTTP-állapotkódok megvalósító védett erőforrásokhoz. Ha a kérelem nem tartalmaz a hitelesítő adatok, vagy a token hiányzik, a válasz tartalmazza egy `WWW-Authenticate` fejléc. Amikor egy kérelem meghiúsul, az erőforrás-kiszolgáló válaszol a HTTP-állapotkódot és a egy hibakódot.
 
-A következő példája egy sikertelen választ, ha az ügyfél kérelem nem tartalmazza a tulajdonosi jogkivonatot:
+A következő egy sikertelen választ például amikor az ügyfél kérése nem tartalmazza a tulajdonosi jogkivonatot:
 
 ```
 HTTP/1.1 401 Unauthorized
@@ -297,29 +297,29 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="error-parameters"></a>Hiba paramétereit
 | Paraméter | Leírás |
 | --- | --- |
-| authorization_uri |Az URI (fizikai végpont) a hitelesítési kiszolgáló. Ezt az értéket is tájékozódhat a kiszolgáló lekérése a discovery endpoint használja keresési kulcsként. <p><p> Az ügyfélnek ellenőrizni kell, hogy a hitelesítési kiszolgáló nem megbízható. Amikor az erőforrás Azure AD által védett, nem elegendő győződjön meg arról, hogy az URL-cím kezdődik https://login.microsoftonline.com vagy egy másik állomásnév, amely támogatja az Azure AD. A bérlő-specifikus erőforrás mindig kell visszaadnia egy bérlő vonatkozó engedélyezési URI Azonosítót. |
-| error |Egy hiba kód értékét, az 5.2. szakaszban meghatározott a [OAuth 2.0 hitelesítési keretrendszer](http://tools.ietf.org/html/rfc6749). |
-| error_description |A hiba részletes leírását. Ez az üzenet nem lehet olyan végfelhasználói leíró. |
-| resource_id |Az erőforrás egyedi azonosítóját adja vissza. Az ügyfélalkalmazás Ez az azonosító értékét használhatja a `resource` paraméter az erőforráshoz tartozó jogkivonat kérelem során. <p><p> Fontos az ügyfélalkalmazás ellenőrizheti ezt az értéket a, ellenkező esetben a rosszindulatú szolgáltatás valószínűleg idéz elő egy **utasítással történő jogosultságszint-az-jogosultságokkal** támadás <p><p> Ajánlott stratégiát a támadás megakadályozza, hogy ellenőrizze, hogy a `resource_id` megegyezik a Web API URL-CÍMÉT a következő is hozzáférnek. Például ha https://service.contoso.com/data is hozzáférnek, a `resource_id` htttps://service.contoso.com/ lehet. Az ügyfélalkalmazás elutasítása kell egy `resource_id` , nem kezdődik az alap URL-cím kivéve, ha megbízható alternatív módot ellenőrizze a azonosítóját. |
+| authorization_uri |Az URI (fizikai végpont), az engedélyezési kiszolgálón. Ez az érték is szolgál keresési kulcsként részletes tájékoztatást nyújt a kiszolgáló egyes felderítési végpontokból. <p><p> Az ügyfélnek ellenőriznie kell, hogy az engedélyezési kiszolgáló nem megbízható. Az erőforrások védelme az Azure AD, ha elegendő ahhoz, hogy ellenőrizze, hogy az URL-cím kezdete https://login.microsoftonline.com vagy másik gazdagépnevet, amely támogatja az Azure ad-ben. A bérlő-specifikus erőforrás mindig egy bérlő-specifikus engedélyezési URI-t adja vissza. |
+| error |Egy hiba-kód szakaszban az 5.2 meghatározott értékét a [OAuth 2.0 engedélyezési keretrendszer](http://tools.ietf.org/html/rfc6749). |
+| error_description |A hiba részletes leírását. Ez az üzenet nem célja, hogy lehet végfelhasználói rövid. |
+| resource_id |Az erőforrás egyedi azonosítójának beolvasása. Az ügyfélalkalmazás használható ez az azonosító értéket a `resource` paramétert az erőforrás-jogkivonat kérés. <p><p> Lényeges, hogy az ügyfélalkalmazás ellenőrizheti ezt az értéket, előfordulhat, hogy egy rosszindulatú szolgáltatás lehet tudni idéz elő egy **jogosultságszint-az-jogosultságokkal** támadás <p><p> A javasolt stratégiával és a támadás megakadályozására, hogy ellenőrizze, hogy a `resource_id` megegyezik az alapszintű, a webes API URL-címe, amely hozzáfér. Például ha https://service.contoso.com/data hozzáférnek, a `resource_id` htttps://service.contoso.com/ is lehet. Az ügyfélalkalmazás elutasítása kell egy `resource_id` , amely nem ezzel kezdődik az alap URL-címet, ha nincs alternatív megbízhatóan az azonosító ellenőrzése. |
 
 #### <a name="bearer-scheme-error-codes"></a>Tulajdonosi séma hibakódok
-Az RFC 6750 specifikációt a válaszban a WWW-Authenticate fejléc és a tulajdonosi sémát használó erőforrásokhoz hibák a következők határozza meg.
+Az RFC 6750 specifikáció határozza meg a következő hibák a válaszban a WWW-Authenticate fejléc és tulajdonosi sémát használó erőforrásokhoz.
 
 | HTTP-állapotkód | Hibakód | Leírás | Ügyfélművelet |
 | --- | --- | --- | --- |
-| 400 |invalid_request |A kérelem formátuma helytelen. Például akkor lehet, hogy hiányzik egy paraméter vagy kétszer azonos paraméter használatával. |Javítsa ki a hibát, és próbálkozzon újra a kéréssel. Hiba az ilyen típusú csak a fejlesztés során megtörténik, és a kezdeti tesztelése észlelhető. |
-| 401 |invalid_token |A hozzáférési jogkivonat hiányzó, érvénytelen, vagy vissza lett vonva. A error_description paraméter értékének további részletesen ismerteti. |A hitelesítési kiszolgáló egy új jogkivonatot kérhet. Ha az új jogkivonatot sikertelen, hiba történt. A felhasználó, és próbálkozzon újra egy hibaüzenet küldése után véletlenszerű késleltetése. |
-| 403 |insufficient_scope |A hozzáférési jogkivonat nem tartalmaz megszemélyesítési jogosultságot az erőforrás elérésére. |Új engedélyezési kérelmet küld az engedélyezési végpont. Ha a válasz a hatókör-paramétert tartalmaz, hatókörében lévő érték legyen használva a kérelmet az erőforráshoz. |
-| 403 |insufficient_access |A tárgy, a jogkivonat nem rendelkezik az erőforrás eléréséhez szükséges engedélyeket. |Kéri a felhasználót, használjon más fiókot vagy kérjen engedélyeket a megadott erőforrás. |
+| 400 |invalid_request |A kérés formátuma nem megfelelő. Például akkor lehet, hogy hiányzik egy paraméter vagy kétszer használja ugyanezt a paramétert. |Javítsa a hibát, és ismételje meg a kérelmet. Ezen hibatípus csak a fejlesztés során megtörténik, és a kezdeti tesztelés észlelhető. |
+| 401 |invalid_token |A hozzáférési jogkivonat hiányzó, érvénytelen, vagy vissza lett vonva. A error_description paraméter értékét a további részleteket biztosít. |Egy új jogkivonatot kér az engedélyezési kiszolgálón. Ha az új jogkivonat nem sikerül, egy váratlan hiba történt. A felhasználó, és próbálkozzon újra egy hibaüzenet küldése után véletlenszerű késéseket. |
+| 403 |insufficient_scope |A hozzáférési jogkivonat nem tartalmazza a megszemélyesítési az erőforrás eléréséhez szükséges engedéllyel. |Új engedélyezési kérést küldhet az engedélyezési végponton. Ha a válasz a hatókör-paramétert tartalmaz, használja a hatókör értéke az erőforrás a kérelem. |
+| 403 |insufficient_access |A jogkivonat a tulajdonos nem rendelkezik az erőforrás eléréséhez szükséges engedélyekkel. |Kéri a felhasználót egy másik fiók használata vagy a megadott erőforráshoz engedélyek kéréséhez. |
 
 ## <a name="refreshing-the-access-tokens"></a>A hozzáférési jogkivonatok frissítése
-Hozzáférési jogkivonatok rövid életű, és folytatja az erőforrások elérése után frissíteni kell. Is frissítheti a `access_token` szerint egy másik `POST` elküldeni a kérelmet a `/token` végpont, de ez idő biztosítása a `refresh_token` ahelyett, hogy a `code`.
+Hozzáférési jogkivonatok rövid életű, és folytatja az erőforrások elérése után frissíteni kell. Frissítheti a `access_token` Ha elküldi egy másik `POST` kérelmet a `/token` végpont, de ez idő kezeléséről a `refresh_token` helyett a `code`.
 
-Frissítési jogkivonatok nem rendelkezik megadott élettartama. A frissítési jogkivonatokat élettartamának jellemzően viszonylag hosszú. Azonban bizonyos esetekben a frissítési jogkivonatokat lejár, vissza lenne vonva, vagy nem rendelkezik megfelelő jogosultsággal a kívánt műveletet. Az alkalmazás a várt, és megfelelően a jogkivonat kibocsátási végpont által visszaadott hibák kezelésének kell.
+Frissítési jogkivonatok nem rendelkezik megadott élettartam. A frissítési biztonsági jogkivonat élettartamának jellemzően viszonylag hosszú. Azonban bizonyos esetekben frissítési biztonsági jogkivonat lejár, vissza lenne vonva, vagy nem rendelkezik megfelelő jogosultsággal a kívánt műveletet. Az alkalmazás várható és megfelelően a kiállítási végpont által visszaadott hibák kezelni kell.
 
-Ha kapott választ egy frissítési jogkivonat hibával, elveti a jelenlegi frissítési jogkivonat és egy új hitelesítési kód kérése vagy hozzáférési tokent. Különösen akkor, amikor frissítés használatával lexikális elem: az engedélyezési Code Grant flow Ha tartalmazó választ kap a `interaction_required` vagy `invalid_grant` hibakódok, a frissítési jogkivonat elvetése és az új hitelesítési kódot kér.
+Frissítési jogkivonat hiba választ kap, amikor elveti a jelenlegi frissítési jogkivonat, és kérjen új engedélyezési kódot, vagy hozzáférési tokent. Különösen, ha frissítés használatával tokent a az engedélyezési kód folyamatot, ha tartalmazó választ kap a `interaction_required` vagy `invalid_grant` hibakódok, elveti a frissítési jogkivonatot, és új engedélyezési kódot kér.
 
-Minta kérelem a **bérlői-specifikus** végpont (is használhatja a **közös** végpont) egy új férhetnek hozzá a frissítési jogkivonat használatával token néz ki:
+Minta kérést a **bérlőspecifikus** végpont (is használhatja a **közös** végpont), egy új hozzáférési token használatával a frissítési jogkivonatok néz ki:
 
 ```
 // Line breaks for legibility only
@@ -336,7 +336,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 ### <a name="successful-response"></a>A sikeres válasz
-A sikeres token válasz hasonlóan fog kinézni:
+Token sikeres válasz fog kinézni:
 
 ```
 {
@@ -351,15 +351,15 @@ A sikeres token válasz hasonlóan fog kinézni:
 | Paraméter | Leírás |
 | --- | --- |
 | token_type |A jogkivonat típusa. Az egyetlen támogatott érték **tulajdonosi**. |
-| expires_in |A token fennmaradó élettartam (másodperc). Jellemző értéke 3600 (egy óra). |
-| expires_on |A dátum és idő, amikor a jogkivonat lejár. A dátum jelzi másodpercben a 1970-01-01T0:0:0Z UTC, amíg az elévülési időt. |
-| erőforrás |Azonosítja a védett erőforrást, amely a hozzáférési jogkivonat eléréséhez használt. |
-| scope |A natív ügyfélalkalmazás adott megszemélyesítési engedélyek. Az alapértelmezett engedély **user_impersonation**. A célként megadott erőforrás tulajdonosa választható érték regisztrálhatja az Azure AD-ben. |
-| access_token |Az új jogkivonat kért. |
-| refresh_token |Egy új OAuth 2.0 refresh_token kérjen új jogkivonatot, ezt a választ a lejártakor használható. |
+| expires_in |A token fennmaradó élettartam (másodperc). Egy tipikus értéke 3600 (1 óra). |
+| expires_on |A dátum és idő, amikor a jogkivonat lejár. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. |
+| erőforrás |Azonosítja a védett erőforrás, amely a hozzáférési jogkivonat elérésére használta. |
+| scope |A natív ügyfélalkalmazás rendelt megszemélyesítési engedélyeket. Az alapértelmezett engedély **user_impersonation**. A célként megadott erőforrás tulajdonosának alternatív értékek regisztrálhat az Azure ad-ben. |
+| access_token |Az új hozzáférési jogkivonatot, amely a kért. |
+| refresh_token |Egy új OAuth 2.0 refresh_token, amely új hozzáférési jogkivonatok kérése, amikor lejár egy, a válasz is használható. |
 
-### <a name="error-response"></a>Hibaválaszba
-Egy minta hibaüzenetet nézhet ki:
+### <a name="error-response"></a>Hiba történt a válasz
+Hiba történt egy mintaválasz nézhet ki:
 
 ```
 {
@@ -376,11 +376,11 @@ Egy minta hibaüzenetet nézhet ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| error |Egy hiba kód karakterlánc, amely segítségével besorolni a felmerülő hibákat, és reagálni hibákat is használható. |
-| error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba okának azonosításához. |
-| error_codes |STS-specifikus hibakódok, amelyek segítik a diagnosztika listáját. |
-| időbélyeg |Az az idő, a hiba történt. |
-| trace_id |A kérelem, amelyek segítik a diagnosztika egyedi azonosítója. |
-| correlation_id |A kérelem, amelyek segítik a diagnosztika összetevői között egyedi azonosítója. |
+| error |Egy hibakód karakterláncát típusú előforduló hibák besorolására használható, és reagálhat a hibák használható. |
+| error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba kiváltó okának azonosításához. |
+| error_codes |A diagnosztikát segítő STS-specifikus hibakódok listáját. |
+| időbélyeg |Az idő, a hiba történt. |
+| trace_id |A kérelem, amelyek segítik a diagnosztikai egyedi azonosítója. |
+| correlation_id |A különböző összetevők a diagnosztikát segítő kérelem egyedi azonosítója. |
 
-A hibakódok és a javasolt művelet leírását, [token-végpont hibák hibakódok](#error-codes-for-token-endpoint-errors).
+A hibakódok és a javasolt művelet leírását, [hibakódok a jogkivonat-végpont hibákat](#error-codes-for-token-endpoint-errors).

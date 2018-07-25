@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: 205c62246210373333c1315d5f3a9b3ec8571e59
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6178c4a55d24bb37aae787129c9a0d390a2e536b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004370"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226226"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával
 Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
@@ -882,7 +882,7 @@ Az alábbi ábrán egy minta kísérlet pontozási biztosítunk. Amikor készen 
 Recap, amit eddig még ebben az oktatóanyagban a forgatókönyv, hogy létrehozott egy Azure adatelemzési környezetet, használta korábban a nagy nyilvános adatkészlet, a csoportos adatelemzési folyamat, egészen a modell betanítása, majd az adatgyűjtés keresztül tart, a az Azure Machine Learning webszolgáltatás üzembe helyezése.
 
 ### <a name="license-information"></a>Licencinformációk
-Ez a minta forgatókönyv és a kísérő parancsfájlok és IPython notebook(s) osztanak meg a Microsoft mellett az MIT-licenccel. Ellenőrizze a LICENSE.txt fájlt további részletekért a Githubon mintakódot a címtárban.
+Ez a minta forgatókönyv és a kísérő parancsfájlok és IPython notebook(s) osztanak meg a Microsoft mellett az MIT-licenccel. Ellenőrizze a LICENSE.txt fájlt a könyvtárban mintakódot a Githubon további részletekért.
 
 ## <a name="references"></a>Referencia
 • [Andrés Monroy NYC Taxi lelassítja letöltési oldala](http://www.andresmh.com/nyctaxitrips/)  

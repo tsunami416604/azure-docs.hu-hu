@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: cc6837ab14aa8fb36317da52cf011ddbd7e464be
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.openlocfilehash: ae670eca3d655e16ddf55da2e2538ba96b7e0115
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972231"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126051"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Tervezési megfontolások a Service Fabric-fürt kapacitása
 Éles rendszerek üzembe a kapacitástervezés egy fontos lépés. Íme néhány, az elem, meg kell figyelembe venni, hogy a folyamat részeként.
@@ -138,17 +138,17 @@ A megbízhatósági szint hajthatja végre a következő értékeket:
 
 ### <a name="recommendations-for-the-reliability-tier"></a>A megbízhatósági szint javaslatok
 
-Ha növeli vagy csökkenti a fürt (az összes csomóponttípusok lévő Virtuálisgép-példányok összege) méretét, frissítenie kell a fürt az egyik rétegről a másikra megbízhatóságát. Ezzel elindítja a fürtfrissítések módosításához a rendszer szolgáltatások replika beállítása szükséges száma. Virtuálisgép-példányok száma: éles számítási feladatokra, amelyek az állapot nélküli elemek, a minimális támogatott nem elsődleges csomópontot típus mérete 2.  Ez lehetővé teszi, hogy az alkalmazás- és a szolgáltatás lehetővé teszi egy Virtuálisgép-példány elvesztését stabilitást biztosít két állapotmentes példányának futtatása.](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+Ha növeli vagy csökkenti a fürt (az összes csomóponttípusok lévő Virtuálisgép-példányok összege) méretét, frissítenie kell a fürt az egyik rétegről a másikra megbízhatóságát. Ezzel elindítja a fürtfrissítések módosításához a rendszer szolgáltatások replika beállítása szükséges száma. Várjon, amíg a frissítés befejezését, mielőtt megváltoztatna más a fürt, például a csomópontok hozzáadása folyamatban van.  A frissítés a Service Fabric Explorerben vagy futtatja az előrehaladását nyomon követheti [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
 
-A kapacitásigények, a csomópont típusa határozza meg a számítási feladatot tervez futtatni a fürtben, hogy nem kínálunk, hogy az adott számítási feladathoz, azonban itt van a széles körű útmutatás nyújtása a minőségi útmutatása alapján használatának megkezdése
+Ez a javaslat a megbízhatósági szint választásával.
 
-| **Az ajánlott Virtuálisgép-Termékváltozat a Standard D3 vagy a standard szintű D3_V2 vagy ezzel egyenértékű.** | **A minimális támogatott VM-Termékváltozatok használata Standard D1 vagy standard szintű D1_V2 vagy ezzel egyenértékű.** |
+| **Fürt mérete** | **Megbízhatósági szint** |
 | --- | --- |
-| 1 |Fejezze be a kapacitástervezés és fürt létrehozása után olvassa el a következőket: |
+| 1 |Adja meg a megbízhatósági szint paramétert, a rendszer kiszámítja, |
 | 3 |Bronz |
-| A Service Fabric-Fürtbiztonság|Silver |
-| A Service Fabric-fürt méretezése |Arany |
-| Vész-helyreállítás tervezése |A virtuálisgép-méretezési csoport a NodeType kapcsolat beállítása |
+| 5 vagy 6|Silver |
+| 7 vagy 8 |Arany |
+| 9 és újabb |Platinum |
 
 ## <a name="primary-node-type---capacity-guidance"></a>Elsődleges csomóponttípus - kapacitás útmutató
 
@@ -165,6 +165,7 @@ A termelési számítási feladatokhoz:
 - Azt javasoljuk, hogy a fürtök dedikált elsődleges NodeType csomóponttípus rendszerszolgáltatások és elhelyezési korlátozások használata a másodlagos NodeType azokat üzembe helyezni.
 - Az ajánlott Virtuálisgép-Termékváltozat a Standard D3, a standard szintű D3_V2 vagy a megfelelő legalább 14 GB helyi SSD-.
 - A minimális támogatott VM-Termékváltozatok használata Standard D1 vagy Standard D1_V2 vagy ezzel egyenértékű legalább 14 GB helyi SSD. 
+- 14 GB helyi SSD a minimális követelmények része. Azt javasoljuk, legalább 50 GB. A számítási feladatok, különösen ha fut a Windows-tárolók nagyobb méretű lemezeket szükség. 
 - Részleges core például Standard A0 VM Termékváltozatokban nem támogatottak a termelési számítási feladatokhoz.
 - Standard A1-Termékváltozat nem támogatott a termelési számítási feladatokhoz megfelelő teljesítmény biztosítása érdekében.
 

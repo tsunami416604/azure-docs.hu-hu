@@ -50,7 +50,7 @@ A következő táblázat általános lekérdezések egyenértékű parancsok kö
 |                        | Típus = esemény &#124; top 100 | Esemény &#124; 100 igénybe |
 | Karakterláncok összehasonlításának      | Type=Event Computer=srv01.contoso.com   | Esemény &#124; ahol számítógép == "srv01.contoso.com" |
 |                        | Típus esemény Computer=contains("contoso") = | Esemény &#124; ahol számítógép tartalmazza a "contoso" (nem kis-és nagybetűket)<br>Esemény &#124; ahol számítógép contains_cs "Contoso" (kis-és nagybetűket) |
-|                        | Típus = esemény számítógép = RegEx ("\@contoso @")  | Esemény &#124; ahol számítógép megfelel a reguláris kifejezéssel ". *contoso*" |
+|                        | Típus = esemény számítógép = RegEx ("\@contoso \@\")  | Esemény &#124; ahol számítógép megfelel a reguláris kifejezéssel ". *contoso*" |
 | Dátum összehasonlítása        | Típus esemény TimeGenerated = > most-1DAYS | Esemény &#124; ahol TimeGenerated > ago(1d) |
 |                        | Típus esemény TimeGenerated = > 2017-05-01 TimeGenerated < 2017-05-31 | Esemény &#124; ahol TimeGenerated között (datetime(2017-05-01)... datetime(2017-05-31)) |
 | Logikai összehasonlítása     | Type=Heartbeat IsGatewayInstalled=false  | Szívverés \| ahol IsGatewayInstalled == false |

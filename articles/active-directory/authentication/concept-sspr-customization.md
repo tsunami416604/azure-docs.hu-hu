@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 70f36447270199545ac27cf27f87f971e34ef424
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162126"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222788"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az Azure AD-funkciókról, önkiszolgáló jelszó-visszaállítás testreszabása
 
@@ -55,7 +55,7 @@ Az Active Directory összevonási szolgáltatások (AD FS) a rendszergazdák has
 
 Az AD FS bejelentkezési oldalára hivatkozás hozzáadásához használja a következő parancsot az AD FS-kiszolgálóra. Felhasználók is ezen a lapon adja meg az SSPR-munkafolyamat.
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?</A></p>" ```
+``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Bejelentkezési oldal és a hozzáférési panel megjelenésének és testreszabása
 

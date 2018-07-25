@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: cbbaa789295a0e8fe602d7d90055f6d3af6bfc01
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 3d6eb70b3ce9072dc2c51220af89549022b5dacf
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34643756"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238268"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Csatlakozás az Azure SQL Database ActiveDirectoryInteractive mód használatával
 
@@ -124,7 +124,7 @@ C#-példában támaszkodik egy névtér van **System.Data.SqlClient**. Érdeklik
 
 - **SqlAuthenticationMethod.ActiveDirectory*interaktív x:&nbsp; használja ezt az egy Azure AD-felhasználó nevét, a multi-factor authentication, MFA eléréséhez.
     - Ez az érték a fókusz a jelen cikk. A felhasználó jelszavát, majd a többtényezős hitelesítés érvényesítés párbeszédpanelek megjelenítésével, ha a többtényezős hitelesítés a felhasználó a várakozásnak küld egy interaktív élmény.
-    - Ez az érték érhető el a .NET-keretrendszer verziója 4.7.2 kezdve.
+    - Ezt az értéket a .NET-keretrendszer verziója 4.7.2 kezdődően elérhető.
 
 - **SqlAuthenticationMethod.ActiveDirectory*integrált x:&nbsp; használata esetén ez egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a módszer nem támogatja a többtényezős hitelesítés.
 
