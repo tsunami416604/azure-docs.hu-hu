@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: bonova
-ms.openlocfilehash: 698b02e1bad7da3f793a35184d634eaf5c948988
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: HT
+ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071577"
+ms.locfileid: "39091993"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi a felügyelt példány (előzetes verzió)?
 
@@ -68,9 +68,9 @@ Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság,
 
 ![Egyszeri bejelentkezés](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model-preview"></a>Virtuálismag-alapú vásárlási modellt (előzetes verzió)
+## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
-A Virtuálismag-alapú vásárlási modellt (előzetes verzió), rugalmasság, ellenőrzés és átláthatóságot biztosít, és a közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Ez a modell lehetővé teszi méretezheti a számítási, memória és a tárolási számítási feladatok igényeik alapján. A Virtuálismag-modell nem is jogosult fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+A Virtuálismag-alapú vásárlási modell, rugalmasság, ellenőrzés és átláthatóságot biztosít, és a közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Ez a modell lehetővé teszi méretezheti a számítási, memória és a tárolási számítási feladatok igényeik alapján. A Virtuálismag-modell nem is jogosult fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
 Egy virtuális magot és generációk hardver lehetőség elérhető logikai CPU jelöli.
 - A Gen 4 logikai CPU-k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokon alapulnak.
