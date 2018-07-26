@@ -8,16 +8,17 @@
 ## [Funkciók és eszközök](features.md)
 
 # Használati útmutató
-## [Tároló megőrzése](persisting-shell-storage.md)
-## [Az ablak használata](using-the-shell-window.md)
 ## [PowerShell Cloud Shell Windows-felhasználóknak](cloud-shell-windows-users.md)
+## [Fájlok megőrzése tárolóban](persisting-shell-storage.md)
+## [Az ablak használata](using-the-shell-window.md)
+## [MSI használata a Cloud Shellben](msi-authorization.md)
+## [Cloud Shell beágyazása](embed-cloud-shell.md)
 
 # Példák
 ## [Bash – Erőforrások létrehozása a Terraformmal](example-terraform-bash.md)
 ## [Bash – Ansible-forgatókönyvek futtatása](../ansible/ansible-run-playbook-in-cloudshell.md)
 
-# [Cloud Shell beágyazása](embed-cloud-shell.md)
-# [MSI használata a Cloud Shellben](msi-authorization.md)
+# [A Cloud Shell-szerkesztő használata](using-cloud-shell-editor.md)
 
 # [Hibaelhárítás és korlátozások](troubleshooting.md)
 

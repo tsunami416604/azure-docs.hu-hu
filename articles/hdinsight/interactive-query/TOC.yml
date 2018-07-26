@@ -35,7 +35,7 @@
               href: ../hdinsight-connect-hive-zeppelin.md
               maintainContext: true
             - name: Visual Studio-eszközök
-              href: ../hdinsight-hadoop-visual-studio-tools-get-started.md
+              href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
               maintainContext: true
             - name: VSCode-eszközök
               href: ../hdinsight-for-vscode.md

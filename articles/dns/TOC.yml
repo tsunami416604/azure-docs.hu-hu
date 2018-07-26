@@ -45,7 +45,7 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Útmutató
   items:
-    - name: Egyéni DNS-zónák és -rekordok létrehozása – Azure CLI
+    - name: Privát DNS-zóna és -rekord létrehozása – Azure CLI
       href: private-dns-getstarted-cli.md
     - name: DNS-zónák kezelése
       items:
