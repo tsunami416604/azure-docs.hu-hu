@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 58b7dc532511ae25c7db2bf021a42fecc3dd9bb5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 601742d82c1bd9a0e691de28ff9c4a09f12b538e
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056681"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186379"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Oktatóanyag: Service Fabric-alkalmazás üzembe helyezése egy fürtön az Azure-ban
 
@@ -57,7 +57,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="publish-to-a-service-fabric-cluster"></a>Közzététel Service Fabric-fürtön
 
-Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a Visual Studióból. A [Service Fabric-fürt](/service-fabric/service-fabric-deploy-anywhere.md) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet.
+Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a Visual Studióból. A [Service Fabric-fürt](https://docs.microsoft.com/en-gb/azure/service-fabric/service-fabric-deploy-anywhere) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet.
 
 Ez az oktatóanyag két alternatívát tartalmaz a szavazóalkalmazás egy Service Fabric-fürtben a Visual Studio használatával történő üzembe helyezésére:
 
