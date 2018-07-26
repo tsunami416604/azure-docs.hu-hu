@@ -11,27 +11,27 @@ ms.date: 05/11/2018
 ms.topic: include
 manager: douge
 ms.openlocfilehash: d44f33b0e9f71c1d8d6e2c9878b08f9fa0e1f8a1
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
-ms.translationtype: MT
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938172"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991015"
 ---
-## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Kód Docker és Kubernetes fejlesztés előkészítése
-Eddig hogy egy egyszerű webalkalmazást helyileg futtathat. Akkor lesz most containerize az eszközök, amelyek meghatározzák az alkalmazás tárolót, és hogyan telepíti a Kubernetes létrehozásával. Ez a feladat áll Azure fejlesztői szóközök: 
+## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Kód előkészítése Docker- vagy Kubernetes-fejlesztéshez
+Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan objektumok létrehozásával egy tárolóba fogja helyezni, amelyek meghatározzák az alkalmazás tárolóját, és a Kubernetesben történő üzembe helyezésének módját. Ez a feladat az Azure Dev Spaces segítségével egyszerűen elvégezhető: 
 
-1. Indítsa el a Visual STUDIO Code, és nyissa meg a `webfrontend` mappát. (Figyelmen kívül hagyhatja hibakeresési eszközök hozzáadása vagy a projekt visszaállítása alapértelmezett figyelmeztetéseket.)
-1. Nyissa meg a integrált terminál Visual STUDIO Code (használja a **Nézet > integrált Terminálszolgáltatások** menü).
-1. Futtassa ezt a parancsot (ügyeljen arra, hogy **webfrontend** van az aktuális mappát):
+1. Indítsa el a VS Code-ot, majd nyissa meg a `webfrontend` mappát. (Figyelmen kívül hagyhat minden olyan alapértelmezett kérést, amely az objektumok hibakeresésére vagy a projekt visszaállítására vonatkozik.)
+1. Nyissa meg a VS Code Integrált terminálját (a **View (Nézet) > Integrated Terminal (Integrált terminál)** menüvel).
+1. Futtassa ezt a parancsot (győződjön meg róla, hogy a **webfrontend** a jelenlegi mappája):
 
     ```cmd
     azds prep --public
     ```
 
-Az Azure parancssori felület `azds prep` parancs létrehozza az alapértelmezett beállításokkal Docker és Kubernetes eszközök:
-* `./Dockerfile` az alkalmazás tároló lemezképet, és hogyan forráskódját épül, és a tárolóban fut ismerteti.
-* A [Helm diagram](https://docs.helm.sh) alatt `./charts/webfrontend` ismerteti, hogyan lehet telepíteni a tároló Kubernetes.
+Az Azure CLI `azds prep` parancsa alapértelmezett beállításokkal hoz létre Docker- és Kubernetes-objektumokat:
+* A `./Dockerfile` ismerteti az alkalmazás tárolólemezképét, illetve hogy a forráskód hogyan épül fel és hogyan fut a tárolón belül.
+* A `./charts/webfrontend` alatt található [Helm-diagram](https://docs.helm.sh) ismerteti a konténer Kubernetesben történő üzembe helyezését.
 
-Egyelőre nem szükséges tudni, hogy ezek a fájlok teljes tartalmát. Érdemes mutat, azonban, hogy **az azonos Kubernetes és Docker konfigurációs, kód eszközök segítségével keresztül fejlesztési éles, lehetővé téve jobb konzisztencia különböző környezetek között.**
+Egyelőre még nem fontos a fájlok teljes tartalmát megérteni. Ugyanakkor azt megjegyeznénk, hogy **használhatja ugyanazokat a Docker és a Kubernetes kóddal való konfigurálási objektumokat a fejlesztéstől kezdve egészen az éles környezetig, így jobb konzisztenciát biztosíthat a különböző környezetekben.**
  
-Nevű fájl `./azds.yaml` is állítja elő a `prep` parancsot, és az Azure fejlesztői tárolóhelyek konfigurációs fájlját. Kiegészíti a Docker és Kubernetes összetevők további konfiguráció egy iteratív fejlesztési felület, amellyel az Azure-ban.
+A `prep` parancs egy `./azds.yaml` nevű fájlt is létrehoz, amely az Azure Dev Spaces konfigurációs fájlja. Ez olyan további konfigurációval egészíti ki a Docker- és Kubernetes-munkadarabokat, amely engedélyez az Azure-ban egy iteratív fejlesztési környezetet.

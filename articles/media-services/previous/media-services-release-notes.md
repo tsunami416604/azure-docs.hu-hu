@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 07/24/2018
 ms.author: juliako
-ms.openlocfilehash: 5ef1ca201bc564949ee65f81970d0b040679d6b8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 220ff194ab5f8fa49ba7603ecd91122459d4dc1e
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38671425"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249223"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
@@ -45,6 +45,10 @@ Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója vál
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API-korábbi verziók
 A Media Services REST API-korábbi verziók kapcsolatos információkért tekintse meg a [Az Azure Media Services REST API-referencia].
+
+## <a name="july-2018"></a>2018. július
+
+A szolgáltatás legújabb kiadással nincsenek kisebb a hibaüzenetek, amikor egy feladat sikertelen volt, vonatkozóan, hogyan azt van osztva két vagy több sort adja vissza a szolgáltatás a módosítások formázása.
 
 ## <a name="may-2018"></a>2018. május 
 
@@ -168,7 +172,7 @@ A Basic, Standard és Premium kódoláshoz fenntartott egységek az S1, S2, is �
 ### <a name="azure-sdk-for-php"></a>Azure SDK a PHP-hoz
 Az Azure SDK csapata közzétett új kiadása a [php-hez készült Azure SDK-t](http://github.com/Azure/azure-sdk-for-php) csomagot, amely a Media Services frissítéseit és új funkcióit tartalmazza. Ilyen például a Media Services php SDK mostantól támogatja a legújabb [content protection szolgáltatása](media-services-content-protection-overview.md) funkciókat. Ezeket a funkciókat a dinamikus titkosítás, az AES és DRM (PlayReady és Widevine), a és a jogkivonat-korlátozások nélkül. Ezenkívül támogatja skálázás [kódolási egységek](media-services-dotnet-encoding-units.md).
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
 * A következő [Kódminták](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) segítenek a gyors kezdéshez:
   * **vodworkflow_aes.php**: A PHP-fájl bemutatja, hogyan használhatja a dinamikus AES-128 titkosítást és a kulcstovábbítást. A .NET-minta leírtak alapján [használata AES-128, a dinamikus titkosítás és a kulcstovábbítást](media-services-protect-with-aes128.md).
@@ -207,7 +211,7 @@ Az AssetDeliveryConfiguration Widevine használatára történő beállításáh
 További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a id="august_changes_15"></a>2015 augusztus kiadás
-* A Media Services SDK a Java 0.8.0. verzió kiadását és az új mintát, mostantól elérhetők. További információkért lásd:
+* A Media Services SDK a Java 0.8.0. verzió kiadását és az új mintát, mostantól elérhetők. További információ eléréséhez lásd:
     
 * Az Azure Media Player frissítve lett a többszörös hang Streamek támogatását. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 
@@ -394,7 +398,7 @@ További információkért lásd: [Újrapróbálkozási logika, a Media Services
 A 3.0.0.1 és 3.0.0.2 a változások a következők:
 
 * Javítva lett a LINQ-lekérdezések az OrderBy utasítások használatát kapcsolatos problémákat.
-* -Megoldások teszteléséhez [GitHubon] egység alapján tesztek és a forgatókönyv-alapú tesztek lett felosztva.
+* -Megoldások teszteléséhez [GitHub] egység alapján tesztek és a forgatókönyv-alapú tesztek lett felosztva.
 
 A változásokkal kapcsolatos további információkért lásd: a [3.0.0.1 és 3.0.0.2 Media Services .NET SDK-kiadások](http://gtrifonov.com/2014/02/07/windows-azure-media-services-net-sdk-3-0-0-2-release/index.html).
 
@@ -410,7 +414,7 @@ A következő változások történtek 3.0.0.3 verzióban:
 > 
 > 
 
-A Media Services SDK legújabb verzióját már 3.0.0.0. Töltse le a legújabb csomagot a Nugetről, vagy a bits, az első [GitHubon].
+A Media Services SDK legújabb verzióját már 3.0.0.0. Töltse le a legújabb csomagot a Nugetről, vagy a bits, az első [GitHub].
 
 A Media Services SDK 3.0.0.0 verziójával kezdődően újból felhasználhatja a [Azure AD Access Control Service](http://msdn.microsoft.com/library/hh147631.aspx) jogkivonatokat. További információkért lásd: "Újbóli Access Control Service tokenek" szakasz a [kapcsolódás a Media Services Media Services SDK-val .NET-keretrendszerhez készült](http://msdn.microsoft.com/library/azure/jj129571.aspx).
 
@@ -569,7 +573,7 @@ Az alábbi funkciókat lett az SDK novemberi kiadásában új:
 [Connect to Media Services with the Media Services SDK for .NET]: http://msdn.microsoft.com/library/azure/jj129571.aspx
 [Media Services .NET SDK extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [Azure SDK tools]: https://github.com/Azure/azure-sdk-tools
-[GitHubon]: https://github.com/Azure/azure-sdk-for-media-services
+[GitHub]: https://github.com/Azure/azure-sdk-for-media-services
 [Manage Media Services assets across multiple Storage accounts]: http://msdn.microsoft.com/library/azure/dn271889.aspx
 [Handle Media Services job notifications]: http://msdn.microsoft.com/library/azure/dn261241.aspx
 

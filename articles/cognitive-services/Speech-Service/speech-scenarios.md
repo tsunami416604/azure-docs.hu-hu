@@ -1,6 +1,6 @@
 ---
 title: Az Azure Cognitive Services beszédfelismerő forgatókönyvek |} Az Azure a Microsoft Docs
-description: Forgatókönyvek
+description: Alkalmazási helyzetek
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 1488f95296bcc11a55a45aff56cee83b7708a789
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9e6be3608f5aa5ec5d68e6bbefff6da6c23c62fd
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072214"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247954"
 ---
 # <a name="speech-scenarios"></a>Beszédforgatókönyvek
 
@@ -36,7 +36,7 @@ Ha az alkalmazás által használt nyilvános környezetekben nem túl nagy, a h
 
 ### <a name="voice-triggered-apps-with-custom-models"></a>Egyéni modellek hangalapú aktivált alkalmazások
 
-Ha az alkalmazás-címek egy adott tartományban, (például kémia, biológiai vagy speciális előrejelzéséhez igénylő), akkor érdemes lehet érdemes figyelembe venni, hogy alkalmazkodjanak a [nyelvi modell](how-to-customize-language-model.md). Nyelvi modell gyakorlatainak hogyan a leggyakrabban használt kifejezések és az alkalmazás által használt szavakat kapcsolatban a dekóder. A dekódoló tudják a hang, adjon meg a referenciakonfiguráció modell helyett az egyes tartományokhoz tartozó egyéni nyelvi modell pontosabb lefényképezze. Hasonlóképpen neves hol fog használni az alkalmazást a háttérzaj esetén érdemes az akusztikai modell igazíthatja. Fedezze fel az olyan esetekben, amely alatt a dokumentáció [nyelvi betanítás](how-to-customize-language-model.md) és [akusztikai betanítás](how-to-customize-acoustic-models.md) adjon meg értéket, és látogasson el a [betanítás portál](https://customspeech.ai) indító figyelmezteti a a modell-létrehozási folyamatának. Hasonló a kiindulási modelleket, egyéni modellek keresztül nevezzük az [beszéd SDK](speech-sdk.md) és követni a megfelelő [minták](quickstart-csharp-dotnet-windows.md).
+Ha az alkalmazás-címek egy adott tartományban, (például kémia, biológiai vagy speciális előrejelzéséhez igénylő), akkor érdemes lehet érdemes figyelembe venni, hogy alkalmazkodjanak a [nyelvi modell](how-to-customize-language-model.md). Nyelvi modell gyakorlatainak hogyan a leggyakrabban használt kifejezések és az alkalmazás által használt szavakat kapcsolatban a dekóder. A dekódoló tudják a hang, adjon meg a referenciakonfiguráció modell helyett az egyes tartományokhoz tartozó egyéni nyelvi modell pontosabb lefényképezze. Hasonlóképpen neves hol fog használni az alkalmazást a háttérzaj esetén érdemes az akusztikai modell igazíthatja. Fedezze fel az olyan esetekben, amely alatt a dokumentáció [nyelvi betanítás](how-to-customize-language-model.md) és [akusztikai betanítás](how-to-customize-acoustic-models.md) adjon meg értéket, és látogasson el a [betanítás portál](https://customspeech.ai) számára a modell-létrehozási folyamatának kick-Starting. Hasonló a kiindulási modelleket, egyéni modellek keresztül nevezzük az [beszéd SDK](speech-sdk.md) és követni a megfelelő [minták](quickstart-csharp-dotnet-windows.md).
 
 ## <a name="transcribe-call-center-audio-calls"></a>Hívás center hang hívások alapuló átírás
 

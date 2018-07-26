@@ -1,259 +1,259 @@
 ---
-title: Az Azure felhőalapú tárolást strukturálatlan adatok keresése
-description: Az Azure search strukturálatlan adatok keresése.
+title: Strukturálatlan adatok keresése az Azure felhőalapú tárolójában
+description: Strukturálatlan adatok keresése az Azure Search használatával.
 author: roygara
-manager: timlt
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/12/2017
-ms.author: rogara
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 930b735eb03aea6ce701b694ca527049b4c3f24d
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: e50ff3b3a53a13d1604fcb7872853d758259ff9f
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
-ms.locfileid: "23930203"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136536"
 ---
 # <a name="search-unstructured-data-in-cloud-storage"></a>Strukturálatlan adatok keresése felhőalapú tárolóban
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan strukturálatlan adatok kereséséhez [Azure Search](../../search/search-what-is-azure-search.md) Azure-blobokat tárolt adatok használatával. Strukturálatlan adatok olyan adat, amelyet nem olyan előre definiált módon vannak rendezve, vagy nem rendelkezik olyan adatmodellt. Erre példa lehet egy .txt fájlt.
+Ebben az oktatóanyagban megismerheti, hogy miként lehet a strukturálatlan adatokban keresni az [Azure Search](../../search/search-what-is-azure-search.md) és az Azure-blobokban tárolt adatok használatával. A strukturálatlan adatok olyan adatok, amelyek nem előre definiáltan vannak rendezve, vagy nem rendelkeznek adatmodellel. Jó példa erre egy szöveges (.txt) fájl.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Hozzon létre egy erőforráscsoportot
-> * Create a storage account
+> * Tárfiók létrehozása
 > * Tároló létrehozása
 > * Adatok feltöltése a tárolóba
-> * Hozzon létre egy keresési szolgáltatást a portálon keresztül
-> * A keresési szolgáltatását használja a tároló keresése
+> * Keresési szolgáltatás létrehozása a portálon
+> * A keresési szolgáltatás használata tároló keresésére
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Egy minta adatkészlet Önnek készült. **Töltse le [klinikai trials.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials.zip)**  és csomagolja ki azt a saját mappába.
+Előkészítettünk Önnek egy mintaadatkészletet. **Töltse le a [clinical-trials.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials.zip) fájlt**, és bontsa ki a saját mappájába.
 
-A minta áll nyert szövegfájlok [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results). Használhatja például szövegfájlként Azure használatával kereséséhez.
+A minta a [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) webhelyről származó szöveges fájlokat tartalmaz. Használhatja őket szöveges példafájlokként az Azure-ral történő kereséskor.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az [Azure portálra](http://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-A storage-fiók egy egyedi helyet tárolhatja és érheti el az Azure Storage-adatobjektumok biztosít.
+A tárfiók egy egyedi helyet biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez.
 
-Jelenleg nincsenek storage-fiókok, két típusú **Blob** és **általános célú**. Ebben az oktatóanyagban létrehoz egy **általános célú** storage-fiók.
+Jelenleg kétféle típusú tárfiók létezik: **blob** és **általános célú**. Ebben az oktatóanyagban egy **általános célú** tárfiókot hozunk létre.
 
-Ha nem ismeri a egy általános célú tárfiók létrehozásának folyamatán, itt, hogyan hozzon létre egyet:
+Ha nem ismeri az általános célú tárfiókok létrehozásának folyamatát, az alábbiakban ismertetjük azt:
 
-1. A bal oldali menüben válassza ki a **Tárfiókok**, majd jelölje be **Hozzáadás**.
+1. A bal oldali menüben válassza a **Tárfiókok**, majd a **Hozzáadás** lehetőséget.
 
-2. Adjon meg egy egyedi nevet a tárfiók. 
+2. Adja meg a tárfiók egyedi nevét. 
 
-3. Válassza ki **erőforrás-kezelő** a a **telepítési modell** válassza **általános célú** a a **fiók kind** legördülő.
+3. Válassza ki az **Üzemi modell** lehetőséget a **Resource Manager** szakaszban, majd válassza az **Általános célú** lehetőséget a **Fióktípus** legördülő listájában.
 
-4. Válassza ki **helyileg redundáns tárolás (LRS)** a a **replikációs** legördülő listán.
+4. A **Replikáció** legördülő listából válassza a **Helyileg redundáns tárolás (LRS)** lehetőséget.
 
-5. A **erőforráscsoport**, jelölje be **hozzon létre új** és adjon meg egy egyedi nevet.
+5. Az **Erőforráscsoport** menüben kattintson az **Új létrehozása** elemre, és adjon meg egy egyedi nevet.
 
 6. Válassza ki a megfelelő előfizetést.
 
-7. Válassza ki azt a helyet, és válassza ki **létrehozása.**
+7. Válasszon egy helyet, majd válassza a **Létrehozás** elemet.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/storagepanes2.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/storagepanes2.png)
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Tárolók mappák hasonló, és a blobok tárolására szolgálnak.
+A tárolók hasonlók a mappákhoz, és a blobok tárolására szolgálnak.
 
-Ebben az oktatóanyagban segítségével egyetlen tárolót clinicaltrials.gov származó szöveget fájlok tárolásához.
+Ebben az oktatóanyagban egyetlen tárolót használunk a clinicaltrials.gov webhelyről származó szöveges fájlok tárolására.
 
-1. Nyissa meg a storage-fiókot az Azure-portálon.
+1. Az Azure Portalon nyissa meg a tárfiókot.
 
-2. Válassza ki **keresse meg a blobok** alatt **Blob szolgáltatás.**
+2. A **Blob Service** szakaszban válassza a **Blobok tallózása** lehetőséget.
 
-3. Adjon hozzá egy új tárolót.
+3. Vegyen fel egy új tárolót.
 
-4. A tároló neve "data", és válassza ki **tároló** a nyilvános hozzáférés szint.
+4. Adjon meg egy nevet a tárolónak („adatok”), és a nyilvános hozzáférés szintjénél válassza a **Tároló** lehetőséget.
 
-5. Válassza ki **OK** létrehozni a tárolót. 
+5. A tároló létrehozásához válassza az **OK** gombot. 
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/storageactinfo.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/storageactinfo.png)
 
-## <a name="upload-the-example-data"></a>A példa adatok feltöltése
+## <a name="upload-the-example-data"></a>A példaadatok feltöltése
 
-Most, hogy a tároló, a példában az adatait feltöltheti azt.
+Most, hogy már rendelkezik tárolóval, feltöltheti abba a példaadatokat.
 
-1. Válassza ki a tárolót, majd **feltöltése**.
+1. Válassza ki a tárolót, majd válassza a **Feltöltés** elemet.
 
-2. Válassza ki a kék ikonja mellett a fájlok és a Tallózás gombra a helyi mappát, amelyikbe kibontotta a mintaadatok használatosak.
+2. Válassza ki a Fájlok melletti kék mappaikont, és tallózással nyissa meg azt a helyi mappát, amelyikbe kibontotta a mintaadatokat.
 
-3. Válassza ki a kibontott fájlok mindegyikét, majd **megnyitása**
+3. Jelölje ki az összes kibontott fájlt, és válassza a **Megnyitás** elemet
 
-4. Válassza ki **feltöltése** a feltöltési folyamat megkezdéséhez.
+4. Válassza a **Feltöltés** elemet a feltöltési folyamat megkezdéséhez.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/upload.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/upload.png)
 
-A feltöltési folyamat néhány percet is igénybe vehet.
+A feltöltési folyamat eltarthat egy kis ideig.
 
-Miután befejeződött, nyissa meg vissza az adatokat tároló annak ellenőrzéséhez, hogy a szöveg fájlok feltöltése.
+Amint a folyamat befejeződik, lépjen vissza az adattárolóba, és ellenőrizze, hogy megtörtént-e a szöveges fájlok feltöltése.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/clinicalfolder.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/clinicalfolder.png)
 
-## <a name="create-a-search-service"></a>Hozzon létre egy keresési szolgáltatást
+## <a name="create-a-search-service"></a>Keresési szolgáltatás létrehozása
 
-Az Azure Search egy keresési,--szolgáltatás felhőalapú megoldás, amely lehetőséget nyújt a fejlesztők API-k, valamint eszközei hozzáadása egy hatékony keresési élményt biztosít az adatok a webes, mobil és vállalati alkalmazások.
+Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett adatkeresési funkciók adhatók hozzá a webalkalmazásokhoz, a mobilalkalmazásokhoz és a vállalati alkalmazásokhoz.
 
-Ha nem ismeri a keresési szolgáltatás létrehozásának folyamatán, itt, hogyan hozzon létre egyet:
+Ha nem ismeri a keresési szolgáltatások létrehozásának folyamatát, az alábbiakban ismertetjük azt:
 
-1. Nyissa meg a storage-fiókot az Azure-portálon.
+1. Az Azure Portalon nyissa meg a tárfiókot.
 
-2. Görgessen le, majd kattintson a **hozzáadása Azure Search** alatt **BLOB szolgáltatás**.
+2. Görgessen lefelé, és kattintson **Az Azure Search felvétele** elemre a **BLOB SERVICE** szakaszban.
 
-3. A **és adatokat importálhat**, jelölje be **válassza ki a szolgáltatás**.
+3. Az **Adatok importálása** szakaszban használja a **Válasszon szolgáltatást** lehetőséget.
 
-4. Válassza ki **Ide kattintva hozzon létre egy új keresési szolgáltatást**.
+4. Válassza a **Kattintson ide egy új keresési szolgáltatás létrehozásához** lehetőséget.
 
-5. Belül **új keresőszolgáltatás** adjon egy egyedi nevet a keresési szolgáltatáshoz a a **URL-cím** mező.
+5. Az **Új keresési szolgáltatás** szakaszban adjon meg egy egyedi nevet a keresési szolgáltatásnak az **URL** mezőben.
 
-6. A **erőforráscsoport**, jelölje be **meglévő** , és válassza a korábban létrehozott erőforráscsoportot.
+6. Az **Erőforráscsoport** listában válassza a **Meglévő használata** elemet, és válassza ki a korábban létrehozott erőforráscsoportot.
 
-7. Az a **tarifacsomag**, jelölje be a **szabad** réteg, majd kattintson a **válasszon**.
+7. A **Tarifacsomag** szakaszban válassza az **Ingyenes** csomagot, és kattintson a **Kiválasztás** elemre.
 
-8. Válassza ki **létrehozása** létrehozni a keresési szolgáltatást.
+8. A keresési szolgáltatás létrehozásához kattintson a **Létrehozás** elemre.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/createsearch2.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/createsearch2.png)
 
-## <a name="connect-your-search-service-to-your-container"></a>A keresési szolgáltatáshoz kapcsolódni a tárolóhoz
+## <a name="connect-your-search-service-to-your-container"></a>Keresési szolgáltatás csatlakoztatása a tárolóhoz
 
-Most, hogy a keresési szolgáltatást, csatolhat a blob-tároló. Ez a szakasz bemutatja, hogyan adatforrás kiválasztása, az index létrehozása és az indexelő létrehozásának folyamata.
+Most, hogy már rendelkezik keresési szolgáltatással, csatlakoztathatja azt a Blob Storage szolgáltatáshoz. Ez a szakasz végigvezeti az adatforrás kiválasztásának, az index létrehozásának és az indexelő létrehozásának folyamatán.
 
-1. Lépjen a tárfiókhoz.
+1. Nyissa meg a tárfiókot.
 
-2. Válassza ki **adja hozzá az Azure Search** alatt **BLOB szolgáltatás.**
+2. Válassza **Az Azure Search felvétele** elemet a **BLOB SERVICE** szakaszban.
 
-3. Válassza ki **keresési szolgáltatás** belül **és adatokat importálhat** , majd a keresési szolgáltatás az előző szakaszban létrehozott. Ezzel megnyílik **új adatforrás**.
+3. Válassza a **Keresési szolgáltatás** elemet az **Adatok importálása** lapon, és kattintson az előző szakaszban létrehozott keresési szolgáltatásra. Megnyílik az **Új adatforrás** lap.
 
-### <a name="new-data-source"></a>Új adatforrás hozzáadása
+### <a name="new-data-source"></a>Új adatforrás
 
-  Adatforrás határozza meg, amelyhez az index és az adatok elérése. Egy adatforrás használhatja többször ugyanazt a keresési szolgáltatást.
+  Az adatforrás az indexelendő adatokat és az adatok elérési módját határozza meg. Ugyanaz a keresési szolgáltatás többször is használhat egy adott adatforrást.
 
-1. Adja meg az adatforrás nevét. A **adatok kibontásához**, jelölje be **tartalom és metaadatok**. Az adatforrás határozza meg, mely részei a blob indexelt.
+1. Adjon meg egy nevet az adatforrásnak. A **Kivonandó adatok** legördülő listából válassza ki a **Tartalom és metaadatok** lehetőséget. Az adatforrás a blob indexelendő részeit határozza meg.
     
-    a. Saját jövőbeli forgatókönyvek közül is választhat **csak a tároló metaadatainak**. A kijelölés lenne, ha az adatok szabványos blob tulajdonságok vagy tulajdonságok felhasználó által definiált indexelt korlátozni szeretné.
+    a. Saját jövőbeli forgatókönyvek esetén a **Csak tárolási metaadatok** lehetőséget is kiválaszthatja. Akkor válassza ezt, ha a blob szokásos tulajdonságaira vagy felhasználó által definiált tulajdonságokra szeretné korlátozni az indexelt adatok körét.
     
-    b. Dönthet úgy is **minden** mindkét szabványos blob tulajdonságok beszerzésére és *összes* tartalomtípus adott metaadatokat. 
+    b. Választhatja az **Összes metaadat** lehetőséget mindkét szokásos blobtulajdonság és az *összes* tartalomtípusú, konkrét metaadat lekéréséhez. 
 
-2. Mivel a blobs használata szövegfájlok, állítsa be **elemzése mód** való **szöveg**.
+2. Mivel a használandó blobok szöveges fájlok, állítsa az **Elemzési mód** beállítást **Szöveg** értékre.
     
-    a. A saját jövőbeli esetben Kezdésként kiválasztása [más elemzési módok](../../search/search-howto-indexing-azure-blob-storage.md) attól függően, hogy a BLOB tartalmát.
+    a. Saját jövőbeli forgatókönyvek esetén [más elemzési módot](../../search/search-howto-indexing-azure-blob-storage.md) is kiválaszthat a blobok tartalmától függően.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/datasources.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/datasources.png)
 
-3. Válassza ki **tároló** a rendelkezésre álló tárfiókok listázásához.
+3. A **Tároló** kiválasztásával listázhatja a rendelkezésre álló tárfiókokat.
 
-4. Válassza ki a tárfiókot, majd válassza ki a korábban létrehozott tároló.
+4. Válassza ki a tárfiókot, majd válassza ki a korábban létrehozott tárolót.
 
-5. Kattintson a **válassza** való visszatéréshez **új adatforrás** válassza **OK** folytatja.
+5. A **Kiválasztás** elemre kattintva visszatérhet az **Új adatforrás** lapra, majd válassza az **OK** gombot folytatáshoz.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/datacontainer.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/datacontainer.png)
 
 ### <a name="configure-the-index"></a>Az index konfigurálása
 
-  Az index az adatforrásból kereshető mezők gyűjteménye. Az index az, hogy hogyan a keresőszolgáltatása tudja, hogyan lehet keresni az adatok.
+  Az index az adatforrásból származó kereshető mezők gyűjteménye. Az index segítségével tudja a keresési szolgáltatás megállapítani, hogy az adatok milyen módon kereshetők.
 
-1. A **adatimportálás** válasszon **testreszabás cél index**.
+1. Az **Adatok importálása** lapon válassza a **Célindex testreszabása** lehetőséget.
  
-2. Adjon meg egy nevet az index a **indexnév** mező.
+2. Írja be az index nevét az **Index neve** mezőbe.
 
-3. Válassza ki a **lekérhető** attribútum jelölőnégyzet alatti **metadata_storage_name**.
+3. Jelölje be a **Lekérdezhető** attribútum jelölőnégyzetét a **metadata_storage_name** mezőnél.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/valuestoselect.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/valuestoselect.png)
 
-4. Kattintson a **OK**, amely megjelenik **hozzon létre egy indexelőt**.
+4. Kattintson a **OK** gombra, és megnyílik az **Indexelő létrehozása** lap.
 
-Az index és ezeket a paramétereket ad az attribútumok paraméterei fontos. A paraméterek meg *mi* adatok tárolására, adja meg, az attribútumok *hogyan* adatok tárolására.
+Az index paraméterei és az ezekhez a paraméterekhez rendelt attribútumok fontosak. A paraméterek azt határozzák meg, hogy a rendszer *milyen* adatokat tároljon, az attribútumok pedig azt, hogy a rendszer *hogyan* tárolja ezeket az adatokat.
 
-A **mezőnév** oszlop a paramétereket tartalmaz. A következő táblázat felsorolja a rendelkezésre álló attribútumok és azok leírásait tartalmazza.
+A **MEZŐ NEVE** oszlop tartalmazza a paramétereket. Az alábbi táblázat a rendelkezésre álló attribútumokat és a hozzájuk tartozó leírást listázza.
 
 ### <a name="field-attributes"></a>Mezőattribútumok
 | Attribútum | Leírás |
 | --- | --- |
-| *Kulcs* |Dokumentum keresési használt egyes dokumentumok egyedi Azonosítóját megadó karakterlánc. Minden egyes indexnek egy kulccsal kell rendelkeznie. A kulcs kizárólag egyetlen mező lehet, annak típusa pedig Edm.String kell legyen. |
+| *Kulcs* |Az egyes dokumentumok egyedi azonosítóját megadó sztring, amelyet a dokumentumok keresésére használunk. Minden egyes indexnek egy kulccsal kell rendelkeznie. A kulcs kizárólag egyetlen mező lehet, annak típusa pedig Edm.String kell legyen. |
 | *Lekérhető* |Megadja, hogy az adott mező visszaadható-e egy keresési eredményben. |
 | *Szűrhető* |Lehetővé teszi az adott mező szűrőlekérdezésekben történő használatát. |
 | *Rendezhető* |Lehetővé teszi egy lekérdezés számára, hogy az adott mezőt használja egy rendezés alapjaként. |
-| *Értékkorlátozó* |Lehetővé teszi, hogy egy felhasználó irányuló szűréshez jellemzőalapú navigációs szerkezetben használandó mezőt. Általában olyan ismétlődő értékeket tartalmazó mezők, amelyek dokumentumok csoportosítására használhatók (például adott márkához vagy szolgáltatási kategóriához tartozó dokumentumok esetében). |
+| *Értékkorlátozó* |Lehetővé teszi az adott mező értékkorlátozott navigációs szerkezetben történő használatát a felhasználó által önállóan irányított szűrések során. Általában olyan ismétlődő értékeket tartalmazó mezők, amelyek dokumentumok csoportosítására használhatók (például adott márkához vagy szolgáltatási kategóriához tartozó dokumentumok esetében). |
 | *Kereshető* |Azt jelzi, hogy az adott mező teljes szöveges keresésre alkalmas. |
 
 
-### <a name="create-an-indexer"></a>Hozzon létre egy indexelőt
+### <a name="create-an-indexer"></a>Indexelő létrehozása
     
-  Az indexelő adatforráshoz kapcsolódik egy keresési indexszel, és biztosítja az adatok újraindexelése ütemezésével.
+  Az indexelő az adatforrást kapcsolja össze a keresési indexszel, és ütemezést biztosít az adatok újraindexeléséhez.
 
-1. Írjon be egy nevet a **neve** mezőben, majd válassza ki **OK**.
+1. Írjon be egy nevet a **Név** mezőbe, majd válassza az **OK** elemet.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/exindexer.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/exindexer.png)
 
-2. Hivatkozásra vissza **és adatokat importálhat**, jelölje be **OK** a csatlakozási folyamat befejezéséhez.
+2. A rendszer visszairányítja az **Adatok importálása** lapra, ahol válassza az **OK** elemet a kapcsolódási folyamat befejezéséhez.
 
-Most már sikeresen csatlakozott a blob a keresési szolgáltatáshoz. A portálon megjelenítendő van feltöltve, hogy az index néhány percet vesz igénybe. Azonban a keresési szolgáltatás megkezdi az indexelő azonnali elkezdéséhez azonnal keresése.
+Most már sikeresen csatlakoztatta a blobot a keresési szolgáltatáshoz. Az index feltöltési állapotának megjelenítése néhány percet vesz igénybe a portálon. Azonban a keresési szolgáltatás azonnal megkezdi az indexelést, így Ön is azonnal megkezdheti a keresést.
 
-## <a name="search-your-text-files"></a>Keresés a szövegfájlok
+## <a name="search-your-text-files"></a>Keresés a szöveges fájlokban
 
-A fájlok megkereséséhez nyissa meg a keresési ablak belül az index az újonnan létrehozott search szolgáltatás.
+A fájlokban történő kereséshez nyissa meg az újonnan létrehozott keresési szolgáltatás indexének keresési ablakát.
 
-A következő lépések bemutatják, hol található a keresési ablak, és mintalekérdezéseket biztosít:
+Az alábbi lépések megmutatják a keresési ablak helyét, és tartalmaznak néhány példát a lekérdezésekre:
 
-1. Keresse meg az összes erőforráshoz, és az újonnan létrehozott search szolgáltatás található.
+1. Az összes erőforrásnál keresse meg az újonnan létrehozott keresési szolgáltatást.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/exampleurl.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/exampleurl.png)
 
-3. Válassza ki az index a megnyitáshoz. 
+3. Válassza ki az indexet a megnyitáshoz. 
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/overview.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/overview.png)
 
-4. Válassza ki **keresési ablak** kattintva nyissa meg a keresési ablak teszi lehetővé az élő lekérdezések az adatokon.
+4. A **Keresési ablak** elem kiválasztásával nyissa meg a keresési ablakot, ahol élő lekérdezéseket végezhet az adatokon.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/indexespane.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/indexespane.png)
 
-5. Válassza ki **keresési** lekérdezési karakterlánc mezőneve üres állapotában. Egy üres lekérdezés visszaadja az *összes* blobok adatait.
+5. Válassza a **Keresés** elemet úgy, hogy a lekérdezési karakterlánc mezője üres legyen. Az üres lekérdezés a blobok *összes* adatát adja vissza.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/emptySearch.png)
+  ![Strukturálatlan keresés](media/storage-unstructured-search/emptySearch.png)
 
 ### <a name="full-text-search"></a>Teljes szöveges keresés 
 
-A "Myopia" adja meg a **lekérdezési karakterlánc** mezőben, majd válassza ki **keresési**. A Keresés a fájlok tartalmának kezdeményezése törlését és azok egy részét, amely tartalmazza a word "Myopia."
+Írja be a „Myopia” kifejezést a **Lekérdezési karakterlánc** mezőbe, majd válassza a **Keresés** elemet. Fájltartalom keresésének kezdeményezése és az adatok egy olyan részhalmazának visszaadása, amely tartalmazza a „Myopia” szót.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/secondMyopia.png) 
+  ![Strukturálatlan keresés](media/storage-unstructured-search/secondMyopia.png) 
 
-### <a name="system-properties-search"></a>Rendszer tulajdonságok keresési
+### <a name="system-properties-search"></a>Rendszertulajdonságok alapján történő keresés
 
-Lekérdezéseiben, amelyeket a rendszer tulajdonságok használatával kereshet is létrehozhat a `$select` paraméter. Adja meg `$select=metadata_storage_name` a lekérdezési karakterláncot, és nyomja le az adja meg, csak adott mező ad vissza.
+A `$select` paraméterrel olyan lekérdezéseket is létrehozhat, amelyek rendszertulajdonságok alapján keresnek. Adja meg a `$select=metadata_storage_name` lekérdezési karakterláncot, nyomja meg az Enter billentyűt, és a rendszer csak az adott mezőt adja vissza.
     
-A lekérdezési karakterlánc közvetlenül módosítja az URL-cím, így szóközök nem használhatók. Keresés több mező, használjon vesszőt, például:`$select=metadata_storage_name,metadata_storage_path`
+A lekérdezési karakterlánc közvetlenül módosítja az URL-t, így a szóközök használata nem engedélyezett. Több mező kereséséhez használjon vesszőt, például: `$select=metadata_storage_name,metadata_storage_path`
     
-A `$select` paraméter csak akkor használható az index definiálásakor megjelölt lekérhető mezőkkel.
+A `$select` paraméter csak olyan mezőkkel használható, amelyek lekérdezhetőként lettek megjelölve az index definiálásakor.
 
-  ![Strukturálatlan keresése](media/storage-unstructured-search/metadatasearchunstructured.png) 
+  ![Strukturálatlan keresés](media/storage-unstructured-search/metadatasearchunstructured.png) 
 
-Ez az oktatóanyag teljesített és kereshető strukturálatlan adatok rendelkeznek.
+Ezennel befejezte ezt az oktatóanyagot, és most már rendelkezik a strukturálatlan adatok kereshető halmazával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóprogramban megismerte az Azure Search, például hogyan strukturálatlan adatok keresése:
+Ez az oktatóanyag bemutatta a strukturálatlan adatok Azure Search használatával történő keresését, például a következő feladatokra:
 
 > [!div class="checklist"]
 > * Hozzon létre egy erőforráscsoportot
-> * Create a storage account
+> * Tárfiók létrehozása
 > * Tároló létrehozása
 > * Adatok feltöltése a tárolóba
-> * Hozzon létre egy keresési szolgáltatást
-> * A keresési szolgáltatás használatakor a tároló keresése
+> * Keresési szolgáltatás létrehozása
+> * A keresési szolgáltatás használata tároló keresésére
 
-Kattintson ide további információt az Azure Search dokumentumok indexelő.
+Erre a hivatkozásra kattintva többet tudhat meg a dokumentumok Azure Search használatával történő indexeléséről.
 
 > [!div class="nextstepaction"]
-> [Az Azure Blob Storage tárolóban az Azure Search dokumentumok indexelő](../../search/search-howto-indexing-azure-blob-storage.md)
+> [Dokumentumok indexelése az Azure Blob Storage-ban az Azure Search használatával](../../search/search-howto-indexing-azure-blob-storage.md)

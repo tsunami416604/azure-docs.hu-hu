@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 07/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b297e2ef2f4c276b9183d1874e104d686b304a14
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: bc04483c35162c0b461fd03c63aaa894b1bc199a
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919121"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070677"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -40,7 +40,10 @@ Mielőtt elkezdené, érdemes áttekinteni a [VMware](vmware-azure-architecture.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
+- A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
+ 
+> [!WARNING]
+> A virtuális gépek fizikai kiszolgálóként való kezelése esetén a virtuális gépeket más (a VMware-től és a Hyper-V-től eltérő) virtualizációs platformokon is lehetséges migrálni. Ezt a megközelítést azonban a Microsoft nem tesztelte és nem érvényesítette, és nem garantált a működése. Például az XenServer platformon futó virtuális gépek nem biztos, hogy futnak az Azure-ban, kivéve, ha a migrálás előtt a virtuális gépről eltávolítják a XenServer-eszközöket és a paravirtualizált tárolási és hálózati meghajtókat.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
@@ -109,7 +112,7 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
 1. A **Beállítások** > **Replikált elemek** területen kattintson a gépre > **Feladatátvétel** ikonra.
 2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot.
 3. Ehhez a forgatókönyvhöz nem kell figyelembe venni a titkosítási kulcs beállítását.
-4. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery a feladatátvitel indítása előtt megkísérli leállítani a forrás virtuális gépeket. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
+4. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery a feladatátvitel indítása előtt megkísérli leállítani a virtuális gépeket. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 5. Ellenőrizze, hogy az Azure-beli virtuális gép a várt módon jelenik-e meg az Azure-ban.
 6. A **Replikált elemek** listában kattintson a jobb gombbal a virtuális gépre, majd kattintson a **Migrálás befejezése** parancsra. Ez befejezi a migrálási folyamatot, valamint leállítja a virtuális gép replikálását és a virtuális gép Site Recovery-számlázását.
 
@@ -124,7 +127,7 @@ Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szüksége
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. Most konfigurálhatja az Azure-beli virtuális gépek vészhelyreállítását.
-
-> [!div class="nextstepaction"]
-> Az Azure-beli virtuális gépek [vészhelyreállítását](azure-to-azure-replicate-after-migration.md) a helyszíni helyről történő áttelepítést követően állítsa be.
+Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. Most, hogy sikeresen migrálta a virtuális gépeket:
+- [Állítsa be a vészhelyreállítást](azure-to-azure-replicate-after-migration.md) a migrált virtuális gépekre.
+- Használja ki az Azure [biztonságos és felügyelt felhőjének](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) képességeit az Azure-beli virtuális gépeinek kezeléséhez.
+  

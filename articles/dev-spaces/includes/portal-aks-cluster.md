@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 6d2940712f8a76173de47badd45d7c7f0f0be05c
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 05736495d0d4a0c3a5072d29ad27801b6d4a7241
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825476"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37967762"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaceshez engedélyezett Kubernetes-fürt létrehozása
 
@@ -25,10 +25,10 @@ ms.locfileid: "34825476"
    Tegye a következőket az AKS-fürt létrehozására szolgáló űrlap címsorai alatt.
 
     - **PROJEKT ADATAI**: válasszon ki egy Azure-előfizetést és egy új vagy meglévő Azure-erőforráscsoportot.
-    - **FÜRT ADATAI**: adjon meg egy nevet, régiót (jelenleg kötelező az EastUS, WestEurope vagy CanadaEast régiót választani), verziót és DNS-névelőtagot az AKS-fürthöz.
+    - **FÜRT ADATAI**: adjon meg egy nevet, régiót (jelenleg kötelező az EastUS, Central US, WestEurope, WestUS2, CanadaCentral vagy CanadaEast régiót választani), verziót és DNS-névelőtagot az AKS-fürthöz.
     - **MÉRET**: válassza ki a virtuálisgép-méretet az AKS-ügynökcsomópontok számára, és a csomópontok számát. Ha most kezdte el az Azure Dev Spaces használatát, egyetlen csomópont elegendő az összes funkció kipróbálásához. A csomópontok száma bármikor egyszerűen beállítható a fürt telepítése után. Vegye figyelembe, hogy a virtuálisgép-méret az AKS-fürt létrehozását követően nem módosítható. Az AKS-fürt telepítése után azonban egyszerűen létrehozhat egy új, nagyobb virtuális gépekkel rendelkező AKS-fürtöt, majd a Dev Spaces használatával újratelepíthet erre a nagyobb fürtre, ha felskálázásra van szükség.
 
-   Ügyeljen rá, hogy a Kubernetes 1.9.6-os vagy újabb verzióját válassza.
+   Ügyeljen rá, hogy a Kubernetes 1.10.3-as vagy újabb verzióját válassza.
 
    ![Kubernetes konfigurációs beállításai](../media/common/Kubernetes-Create-Cluster-2.PNG)
 
@@ -40,5 +40,9 @@ ms.locfileid: "34825476"
 
     > [!IMPORTANT]
     > Az AKS-fürt létrehozásakor ne felejtse el engedélyezni a HTTP-alkalmazások útválasztását. Ez a beállítás később nem módosítható.
+
+1. Válassza ki a Szerepköralapú hozzáférés-vezérlés (RBAC) kívánt beállítását. Az Azure Dev Spaces engedélyezett és letiltott RBAC esetén is támogatja a fürtöket.
+
+    ![RBAC-beállítás](../media/common/k8s-RBAC.PNG)
 
 1. Amikor végzett, válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget.

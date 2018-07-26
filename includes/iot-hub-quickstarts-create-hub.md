@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ddecf2f75e80f95291b12d9c139a8da85f45ac94
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 63acf0297a694ff442d56e67d52fd9b4e49f812d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36288051"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008586"
 ---
 Első lépésként az Azure Portal használatával hozzon létre IoT Hubot az előfizetésében. Az IoT Hub lehetővé teszi nagy mennyiségű telemetria betöltését számos eszközről a felhőbe. A Hub ezután engedélyt ad egy vagy több, a felhőben futó háttérszolgáltatásnak a telemetria olvasására és feldolgozására.
 
@@ -26,12 +26,9 @@ Első lépésként az Azure Portal használatával hozzon létre IoT Hubot az el
 1. Az **IoT Hub** panelen adja meg a következő adatokat az IoT Hub számára:
 
    * **Előfizetés**: Válassza ki az IoT Hub létrehozásához használni kívánt előfizetést.
-
-   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot az IoT Hub üzemeltetéséhez, vagy használjon egy meglévőt. Ha az összes kapcsolódó erőforrást egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlése például az adott csoportban található összes erőforrást is törli. További információt az [Azure-erőforrások erőforráscsoportokkal való kezeléséről][lnk-resource-groups] szóló cikkben olvashat.
-
-   * **Régió**: Válassza ki az Önhöz legközelebbi helyet.
-
-   * **Név**: Adja meg az IoT Hub nevét. Ha a megadott név elérhető, egy zöld pipa jelenik meg.
+   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot az IoT Hub tárolásához, vagy használjon egy meglévőt. Ha az összes kapcsolódó erőforrást egy csoportban helyezi el (pl. **TestResources**), akkor mindet együtt kezelheti. Az erőforráscsoport törlése például az adott csoportban található összes erőforrást is törli. További információt az [Azure-erőforrások erőforráscsoportokkal való kezeléséről][lnk-resource-groups] szóló cikkben olvashat.
+   * **Régió**: Válassza ki az eszközeihez legközelebbi helyet.
+   * **Név**: Adja meg az IoT Hub egyedi nevét. Ha a megadott név elérhető, egy zöld pipa jelenik meg.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 

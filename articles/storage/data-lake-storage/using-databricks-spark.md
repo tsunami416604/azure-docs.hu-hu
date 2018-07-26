@@ -1,26 +1,26 @@
 ---
-title: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz a Databricks és a Spark használatával | Microsoft Docs
-description: Ismerje meg, hogyan futtathat Spark-lekérdezéseket egy Databricks-fürtön 2. generációs Azure Data Lake Storage-tárfiókban tárolt adatokhoz való hozzáféréshez.
+title: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz az Azure Databricks és a Spark használatával | Microsoft Docs
+description: Ismerje meg, hogyan futtathat Spark-lekérdezéseket egy Azure Databricks-fürtön 2. generációs Azure Data Lake Storage-tárfiókban tárolt adatokhoz való hozzáféréshez.
 services: hdinsight,storage
 tags: azure-portal
 author: dineshm
 manager: twooley
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 41c34b2c1459178c59af66a75e7b34e2ec158025
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096916"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136403"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>Oktatóanyag: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz a Databricks és a Spark használatával
+# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz az Azure Databricks és a Spark használatával
 
-Ez az oktatóanyag bemutatja, hogyan futtathat Spark-lekérdezéseket egy Databricks-fürtön adatok lekérdezéséhez egy 2. generációs Azure Data Lake Storage előzetes verziójával kompatibilis fiókban.
+Ez az oktatóanyag bemutatja, hogyan futtathat Spark-lekérdezéseket egy Azure Databricks-fürtön adatok lekérdezéséhez egy 2. generációs Azure Data Lake Storage előzetes verziójával kompatibilis fiókban.
 
 > [!div class="checklist"]
 > * Databricks-fürt létrehozása
@@ -49,7 +49,7 @@ A fióknév és a kulcs egyaránt szükséges az oktatóanyag későbbi lépése
 
 ## <a name="create-a-databricks-cluster"></a>Databricks-fürt létrehozása
 
-A következő lépés egy [Databricks-fürt](https://docs.azuredatabricks.net/) létrehozása adat-munkaterület létrehozásához.
+A következő lépésben egy [Databricks-fürtöt](https://docs.azuredatabricks.net/) kell létrehozni adat-munkaterület létrehozásához.
 
 1. Hozzon létre egy [Databricks-szolgáltatást](https://ms.portal.azure.com/#create/Microsoft.Databricks), és nevezze el a következőképp: **myFlightDataService** (győződjön meg arról, hogy bejelölte a *Rögzítés az irányítópulton* jelölőnégyzetet a szolgáltatás létrehozásakor).
 2. A munkaterület új böngészőablakban történő megnyitásához kattintson a **Munkaterület indítása** elemre.

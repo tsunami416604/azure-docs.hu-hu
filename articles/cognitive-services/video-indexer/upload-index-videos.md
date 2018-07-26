@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: df3ebdcb07980c297204d6d2959cac6a759b34e2
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 64c4c8e4df0179f1644f23f0ae489015222a4ffd
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347431"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258364"
 ---
 # <a name="upload-and-index-your-videos"></a>A videók feltöltése és az  
 
@@ -37,6 +37,12 @@ Használja ezt a paramétert, ha nyers vagy külső felvételek háttérzaj tart
 - `DefaultWithNoiseReduction` – Indexelése és elemzési adatokat nyerhet a hang és videó, hang streamu zaj csökkentésére algoritmusok alkalmazása közben
 
 Díj attól függ, hogy a kiválasztott indexelési lehetőség.  
+
+### <a name="callbackurl"></a>callbackUrl
+
+POST URL-címe értesítése, ha az indexelés hajtható végre. A video Indexer hozzáadja két lekérdezési karakterlánc paraméterek: azonosítója és állapota. Például, ha a visszahívási URL-címe "https://test.com/notifyme?projectName=MyProject", az értesítés jelenik meg a további paramétereket"https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed".
+
+Is hozzáadhat további paramétereket az URL-címet a Video Indexer hívása előtt, és ezeket a paramétereket fog szerepelni a visszahívás. Később a kódban, a lekérdezési karakterlánc elemzésére és az első biztonsági összes a megadott paramétereket a lekérdezési karakterláncban (adatok meg kellett eredetileg hozzáfűzi az URL-címe és a Video Indexer a megadott adatokat.) 
 
 ### <a name="streamingpereset"></a>streamingPereset
 

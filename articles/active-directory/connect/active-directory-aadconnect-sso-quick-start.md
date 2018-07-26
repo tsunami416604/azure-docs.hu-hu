@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bf83a98010631fc20c5fd7365a3ca081bd9c8c75
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: df936c697f500f5ab98becd1529cd321f9f3f5c4
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214860"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259119"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezési
 
@@ -48,6 +48,8 @@ Győződjön meg arról, hogy a következő előfeltételeket:
     * Közvetlen egyszeri bejelentkezés engedélyezése kívánt felhasználókat tartalmazza.
     
 * **A modern hitelesítés engedélyezése**: engedélyeznie kell a [modern hitelesítést](https://aka.ms/modernauthga) a bérlő esetében ez a funkció működéséhez.
+
+* **Az Office 365-ügyfelek a legújabb verziókat használhatja**: verziók 16.0.8730.xxxx kell beolvasni a beavatkozás nélküli bejelentkezést az Office 365-ügyfelek (Outlook, Word, Excel és mások), vagy újabb.
 
 ## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
 
@@ -96,7 +98,7 @@ Alapértelmezés szerint a böngésző automatikusan kiszámolja a megfelelő z�
 
 Felhasználók Intranet zóna beállításainak módosításához két módja van:
 
-| Beállítás | Felügyeleti szempontok | Felhasználói élmény |
+| Lehetőség | Felügyeleti szempontok | Felhasználói élmény |
 | --- | --- | --- |
 | Csoportházirend | Felügyeleti zárolások le az Intranet zóna beállításainak szerkesztése | A felhasználó nem módosíthatja a saját beállítások |
 | Csoportházirend-beállítások |  Rendszergazdai lehetővé teszi, hogy az Intranet zóna beállításainak szerkesztése | Felhasználók a saját beállítások módosíthatók. |

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: b82eeb43c29fd52f4df2d453bb24bb2b3bd581ad
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 747a0fc7f66edbae8d4a99eeaf0ea45f844d6465
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030515"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125941"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Oktatóanyag: Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához
 
@@ -128,8 +128,8 @@ A webalkalmazásnak két NuGet-csomagot kell telepítenie. A telepítésükhöz 
 3. Jelölje be a keresőmező melletti következő jelölőnégyzetet: **Include prerelease** (Előzetes verzió is).
 4. Keresse meg az alábbi két NuGet-csomagot, és fogadja el a megoldáshoz való hozzáadásukat:
 
-    * [Microsoft.Azure.Services.AppAuthentication (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) – a segítségével egyszerűen lekérheti a hozzáférési jogkivonatokat a szolgáltatás és Azure-szolgáltatás közötti hitelesítési forgatókönyvekhez. 
-    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/2.4.0-preview) – metódusokat tartalmaz a Key Vaulttal való kommunikációhoz.
+    * [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) – a segítségével egyszerűen lekérheti a hozzáférési jogkivonatokat a szolgáltatás és Azure-szolgáltatás közötti hitelesítési forgatókönyvekhez. 
+    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) – metódusokat tartalmaz a Key Vaulttal való kommunikációhoz.
 
 5. Nyissa meg a `Program.cs` fájlt a Solution Explorer (Megoldáskezelő) használatával, és cserélje le a Program.cs fájl tartalmát az alábbi kódra. A ```<YourKeyVaultName>``` értéket cserélje le a Key Vault nevére:
 
@@ -142,37 +142,36 @@ A webalkalmazásnak két NuGet-csomagot kell telepítenie. A telepítésükhöz 
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureKeyVault;
     
-        namespace WebKeyVault
-        {
-        public class Program
-        {
-        public static void Main(string[] args)
-        {
-        BuildWebHost(args).Run();
-        }
-    
-            public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((ctx, builder) =>
-                {
-                    var keyVaultEndpoint = GetKeyVaultEndpoint();
-                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
-                    {
-                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        var keyVaultClient = new KeyVaultClient(
-                            new KeyVaultClient.AuthenticationCallback(
-                                azureServiceTokenProvider.KeyVaultTokenCallback));
-                        builder.AddAzureKeyVault(
-                            keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                    }
-                }
-             )
-                .UseStartup<Startup>()
-                .Build();
-    
-            private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
-        }
-        }
+    namespace WebKeyVault
+    {
+       public class Program
+       {
+           public static void Main(string[] args)
+           {
+               BuildWebHost(args).Run();
+           }
+
+           public static IWebHost BuildWebHost(string[] args) =>
+           WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((ctx, builder) =>
+               {
+                   var keyVaultEndpoint = GetKeyVaultEndpoint();
+                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                   {
+                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                       var keyVaultClient = new KeyVaultClient(
+                           new KeyVaultClient.AuthenticationCallback(
+                               azureServiceTokenProvider.KeyVaultTokenCallback));
+                       builder.AddAzureKeyVault(
+                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                   }
+               }
+            ).UseStartup<Startup>()
+             .Build();
+
+           private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
+         }
+    }
     ```
 
 6. A Solution Explorer (Megoldáskezelő) segítségével lépjen a **Pages** részhez, és nyissa meg az `About.cshtml` fájlt. Cserélje le az **About.cshtml.cs** fájl tartalmát az alábbi kódra:
@@ -206,7 +205,8 @@ A webalkalmazásnak két NuGet-csomagot kell telepítenie. A telepítésükhöz 
 7. A főmenüben válassza a **Debug** > **Start without Debugging** (Hibakeresés > Indítás hibakeresés nélkül) elemet. Amikor megjelenik a böngésző, lépjen a **Névjegy** oldalra. Megjelenik az AppSecret értéke.
 
 >[!IMPORTANT]
-> Ha megjelenik az „502.5 számú HTTP-hiba – Folyamathiba” üzenet, ellenőrizze a `Program.cs` fájlban megadott Key Vault nevét.
+> Ha a HTTP Error 502.5 - Process Failure (feldolgozási hiba) üzenetet
+> > kapja, ellenőrizze a(z) `Program.cs` helyen megadott Key Vault-nevet.
 
 ## <a name="publish-the-web-application-to-azure"></a>A webalkalmazás közzététele az Azure-ban
 
