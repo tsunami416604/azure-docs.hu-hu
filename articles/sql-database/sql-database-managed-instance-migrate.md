@@ -9,14 +9,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: e0de9a1494641fef87d11545b99e5e7275f6b614
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a9a02f9007c174024028305746682f9ac07dab22
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069263"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247210"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
@@ -24,7 +24,7 @@ Ebben a cikkben megismerkedhet a módszerek egy SQL Server 2005 vagy újabb verz
 
 Az SQL Database felügyelt példánya a meglévő SQL Database szolgáltatás kiegészítése, amely a különálló adatbázisok és a rugalmas adatbáziskészletek mellett egy harmadik üzembe helyezési lehetőséget is elérhetővé tesz.  Adatbázis lift-and-shift teljes körűen felügyelt paas-megoldás, hogy ahhoz, hogy az alkalmazás újratervezése nélkül tervezték. A felügyelt példány az SQL Server programozási modell funkcióival nagy mértékben kompatibilis, és emellett beépítetten támogatja az SQL Server legtöbb funkcióját is, valamint a hozzájuk kapcsolódó eszközöket és szolgáltatásokat.
 
-A magas szintű áttelepítési folyamatának hasonlóan néz ki az alábbi ábrán a:
+Magas szintű az alkalmazás áttelepítési folyamatának hasonlóan néz ki:
 
 ![Áttelepítési folyamat](./media/sql-database-managed-instance-migration/migration-process.png)
 
@@ -97,7 +97,7 @@ Az alábbi ábra magas szintű áttekintést nyújt az a folyamat:
 
 Az alábbi táblázatban bővebb információt a forrás SQL Server verziójától függően használható módszereket futtatja:
 
-|Lépés|SQL-kezelő és verzió|Biztonsági mentése / visszaállítása metódus|
+|Lépés:|SQL-kezelő és verzió|Biztonsági mentése / visszaállítása metódus|
 |---|---|---|
 |Helyezze az Azure Storage biztonsági mentés|Előzetes SQL 2012 SP1 CU2|Közvetlenül az Azure storage-bA a .bak-fájl feltöltése|
 ||2012 SP1 CU2 – 2016|A közvetlen biztonsági mentési használata elavult [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) szintaxis|
@@ -105,7 +105,7 @@ Az alábbi táblázatban bővebb információt a forrás SQL Server verzióját�
 |Felügyelt példány visszaállítása az Azure Storage-ból|[Állítsa vissza az URL-címet az SAS-hitelesítő adatot](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> - Által védett adatbázis áttelepítését [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) áttelepítendő előtt kell a megfelelő tanúsítványt a helyszíni vagy IaaS SQL Server Azure SQL felügyelt példány natív visszaállítási lehetőséggel adatbázis-visszaállítás. Részletes lépéseiért lásd: [áttelepítése TDE cert egy felügyelt példányra](sql-database-managed-instance-migrate-tde-certificate.md)
+> - Amikor [transzparens adattitkosítással](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) védett adatbázist migrál egy felügyelt Azure SQL-példányra a natív visszaállítási megoldással, az adatbázis visszaállítása előtt migrálni kell a helyszíni vagy az IaaS SQL Server-példányról a megfelelő tanúsítványt. Részletes lépéseiért lásd: [áttelepítése TDE cert egy felügyelt példányra](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Rendszer-adatbázisok visszaállítása nem támogatott. Példány szolgáltatásszint-objektumokhoz (master vagy msdb-adatbázisokban tárolt) áttelepítéséhez, javasoljuk, hogy parancsfájl, és T-SQL-szkriptek a cél-példányon futnak.
 
 A teljes útmutató, amely tartalmazza az adatbázis biztonsági másolatának visszaállítása egy felügyelt példányhoz az SAS-hitelesítő adatot: [visszaállítása biztonsági másolatból egy felügyelt példányra](sql-database-managed-instance-restore-from-backup-tutorial.md).

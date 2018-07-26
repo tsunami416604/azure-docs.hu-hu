@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus metrikát a Azure Monitor (előzetes verzió) |} Microsoft Docs
-description: Azure-figyelés használatával figyelheti a Service Bus-entitások
+title: Az Azure Service Bus-metrikák az Azure Monitor (előzetes verzió) |} A Microsoft Docs
+description: Azure Monitoring segítségével figyelheti a Service Bus-entitások
 services: service-bus-messaging
 documentationcenter: .NET
 author: sethmanheim
@@ -9,97 +9,97 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: sethm
-ms.openlocfilehash: bb0c9fcc33d6f5b54a8c2c8ad3e356a485d6ccbb
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 517c1376415466f5ce0e3c854f6c91f60cdab9f8
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701294"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247623"
 ---
-# <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Az Azure Service Bus metrikát a Azure Monitor (előzetes verzió)
+# <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Az Azure Service Bus-metrikák az Azure Monitor (előzetes verzió)
 
-A Service Bus metrikák lehetővé teszi az erőforrások az Azure-előfizetése állapotát. A metrikai adatok széles skáláját felmérheti a Service Bus erőforrásainak, nem csak a névterek szintjén, hanem az entitás szintjén általános állapotát. A statisztikai információk lehet fontos, mint annak elősegítése, hogy a Service Bus állapotának figyelése. Metrikák is hozzájárulhat a kiváltó okának elhárítása anélkül, hogy az Azure ügyfélszolgálatához.
+Service Bus-metrikák biztosít az Azure-előfizetésében erőforrások állapotát. Metrikai adatok széles skáláját felmérheti a Service Bus-erőforrások, nem csak a névterek szintjén, hanem az entitások szintjén általános állapotát. A statisztikai lehet fontos, mert ezek segítségével figyelheti a Service Bus állapotát. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
 
-Az Azure biztosít, egységes felhasználói felületek keresztüli különböző Azure-szolgáltatásokhoz. További információkért lásd: [figyelése a Microsoft Azure-ban](../monitoring-and-diagnostics/monitoring-overview.md) és a [.NET metrikák beolvasása Azure figyelő](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon.
+Az Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [a Microsoft Azure figyelés](../monitoring-and-diagnostics/monitoring-overview.md) és a [lekérése az Azure Monitor-metrikák .NET-tel](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon.
 
-## <a name="access-metrics"></a>Hozzáférés metrikák
+## <a name="access-metrics"></a>Access-metrikák
 
-Az Azure hozzáférési metrikák több lehetőség is biztosít. Mindkét hozzáférési metrikák keresztül is a [Azure-portálon](https://portal.azure.com), vagy használja az Azure figyelő API-k (REST és .NET) és elemzési megoldások, például Naplóelemzés és az Event Hubs. További információkért lásd: [Azure figyelő metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
+Az Azure Monitor hozzáférés metrikák több módot is biztosít. Mindkét hozzáférési metrikák keresztül is a [az Azure portal](https://portal.azure.com), vagy használja az Azure Monitor API-k (REST és .NET) és az elemzési megoldások, például a Log Analytics és az Event Hubs. További információkért lásd: [Azure Monitor-metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
 
-Alapértelmezés szerint engedélyezve vannak a metrikákat, és érheti el az utolsó 30 napnyi adat. Ha szeretné megőrizni az adatokat egy hosszabb ideig, úgy archiválhatók metrikai adatok az Azure Storage-fiók. Ez úgy van konfigurálva a [diagnosztikai beállítások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) Azure-figyelőben.
+Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az utolsó 30 nap adatait. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ennek a konfigurációja a [diagnosztikai beállítások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) az Azure monitorban.
 
-## <a name="access-metrics-in-the-portal"></a>Hozzáférés metrikákat a portálon
+## <a name="access-metrics-in-the-portal"></a>Hozzáférés mérőszámok portálon
 
-Adott idő alatt a figyelheti a metrikák a [Azure-portálon](https://portal.azure.com). A következő példa bemutatja, hogyan sikeres és a bejövő kérelmeket a fiók szintjén megtekintése:
+Az idő függvényében segítségével figyelheti a mérőszámokat a [az Azure portal](https://portal.azure.com). Az alábbi példa bemutatja, hogyan sikeres kérések és a fiók szintjén a bejövő kérelmek megtekintése:
 
 ![][1]
 
-Metrikák közvetlenül a névtér keresztül is elérheti. Ehhez jelölje ki a névteret, és kattintson a **metrikák (Peview)**. Az entitás hatókörébe szűrt metrikák megjelenítéséhez jelölje ki az entitást, és kattintson **metrikák (előzetes verzió)**.
+Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (Peview)**. Az entitás hatókörének szűrt metrikák megjelenítéséhez válassza ki az entitást, és kattintson a **metrikák (előnézet)**.
 
 ![][2]
 
-A dimenziók támogató metrika szűrheti kell a kívánt dimenzió értékű.
+Dimenziók támogató metrikákhoz a kívánt dimenzió értékkel kell szűrni.
 
 ## <a name="billing"></a>Számlázás
 
-Metrikák Azure figyelőben használata során preview ingyenes. Azonban további megoldások, amelyek a metrikai adatok betöltési használatakor, akkor előfordulhat, hogy számlázni ezek a megoldások. Például kell fizetni Azure Storage által archiválja metrikák egy Azure Storage-fiókhoz. Is meg számlázása Naplóelemzési által, ha adatfolyam formájában a speciális elemzésekre szolgáló metrikák Naplóelemzési adatokat.
+Metrikák az Azure Monitor használata az előzetes verzió ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett a számlázás a Log Analytics által speciális elemzésekre szolgáló Log Analytics-metrikák adatok streamelése az, ha.
 
-A következő mérőszámokat adhat a szolgáltatás állapotának áttekintése. 
+Az alábbi mérőszámok segítségével a szolgáltatás állapotának áttekintése. 
 
 > [!NOTE]
-> Más néven áthelyezett azt is elavulttá több metrikákat. Ehhez szükség lehet, hogy frissítse a hivatkozásokat. A "elavult" kulcsszó jelölésű metrikák módosítástól fogva nem támogatott.
+> Más néven áthelyezett azt rendszer kivezetése több metrikát. Ehhez szükség lehet, hogy a hivatkozások frissítését. Metrikák, a "elavult" kulcsszó megjelölve a jövőben nem támogatja.
 
-Minden értékeihez Azure figyelő percenként küldi. A részletességet határozza meg az az időtartam, amelynek metrikák értékek jelenjenek meg. A támogatott időtartam alatt, az összes Service Bus-metrikát értéke 1 perc.
+Az összes értékeihez kapnak az Azure Monitor percenként. Az idő részletessége határozza meg az időintervallum, amelynek metrikák jelennek meg. A Service Bus-metrikák támogatott idő időköz 1 perc.
 
-## <a name="request-metrics"></a>Kérelem metrikák
+## <a name="request-metrics"></a>Kérelem-metrikák
 
-Megjeleníti az adatok és felügyeleti műveletek kérelmek számát.
+Számít az adatok és a felügyeleti műveletek kérések száma.
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| A bejövő kérések (előzetes verzió) | A megadott időszakban a Service Bus szolgáltatás felé intézett kérések száma. <br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Sikeres kérések (előzetes verzió)|A sikeres kérelmek száma a Service Bus szolgáltatáshoz adott időszakon belül.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Kiszolgálóhibákat (előzetes verzió)|Hiba történt a Service Bus szolgáltatásban egy adott időszakban nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Felhasználó hibákat (előzetes verzió – tekintse meg a következő szakasz)|A megadott időszakban felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Szabályozottan halmozott kérelmek (előzetes verzió)|A használati túllépése miatt volt halmozódni kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
+| A bejövő kérések (előnézet) | Egy meghatározott időtartamon belül a Service Bus szolgáltatás felé irányuló kérelmek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Sikeres kérések (előnézet)|A sikeres kérelmek száma a Service Bus szolgáltatásnak egy meghatározott időtartamon belül.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kiszolgálóhibák (előzetes verzió)|Egy meghatározott időtartamon belül a Service Bus szolgáltatás hibája miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Felhasználói hibák (előzetes verzió – tekintse meg a következő szakasz)|Egy meghatározott időtartamon belül a felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Szabályozott kérelmeinek száma (előzetes verzió)|Szabályozott volt, mert túllépte a használati kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 
 ### <a name="user-errors"></a>Felhasználói hibák
 
-A következő két típusú hibák besorolt felhasználói hibák:
+A következő két típusú hibák besorolt felhasználói hibáinak száma:
 
-1. Ügyfél oldali hibák (a HTTP 400 hibák lesznek).
-2. Például üzenetek feldolgozása során előforduló hibákat [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception).
+1. Ügyfél kiszolgálóoldali hibák (a HTTP 400 hibákat adott).
+2. Például üzenetek feldolgozása közben jelentkező hibákról [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception).
 
 
-## <a name="message-metrics"></a>Üzenet metrikák
-
-| Metrika neve | Leírás |
-| ------------------- | ----------------- |
-|A bejövő üzenetek (előzetes verzió)|Események vagy adott időszakon belül a Service Bus küldött üzenetek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Kimenő üzenetek (előzetes verzió)|Események vagy adott időszakon belül a Service Bus fogadott üzenetek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-
-## <a name="connection-metrics"></a>Kapcsolati metrikák
+## <a name="message-metrics"></a>Üzenet-metrikák
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|ActiveConnections (előzetes verzió)|Egy névtér, valamint egy entitás aktív kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Kapcsolatok Opened (előzetes verzió)|A nyitott kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Kapcsolatok lezárva (előzetes verzió)|Lezárt kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName |
+|Bejövő üzenetek (előzetes verzió)|Események vagy adott időszakon belül Service Busnak küldött üzenetek számát.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kimenő üzenetek (előzetes verzió)|Események vagy egy meghatározott időtartamon belül a Service Bus Beérkezett üzenetek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+
+## <a name="connection-metrics"></a>Kapcsolati metrika
+
+| Metrika neve | Leírás |
+| ------------------- | ----------------- |
+|Aktív kapcsolatai (előzetes verzió)|A névtér, valamint egy entitására aktív kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kapcsolatok megnyitott (előzetes verzió)|Megnyitott kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kapcsolat lezárva (előzetes verzió)|Lezárt kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName |
 
 ## <a name="resource-usage-metrics"></a>Erőforrás-használati metrikák
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|CPU-használat / névtér (előzetes verzió)|A százalékos CPU-használat a névtér.<br/><br/> Egység: százaléka <br/> Összesítési típusát: maximális <br/> Dimenzió: EntityName|
-|Memóriahasználat mérete / névtér (előzetes verzió)|A névtér százalékos memória használata.<br/><br/> Egység: százaléka <br/> Összesítési típusát: maximális <br/> Dimenzió: EntityName|
+|Processzorhasználat névterenként (előzetes verzió)|Százalékos processzorhasználat a névteret.<br/><br/> Egység: %-os <br/> Összesítés típusa: maximális <br/> Dimenzió: EntityName|
+|Memória mérete névterenként (előzetes verzió)|A névtér százalékos memóriahasználatát.<br/><br/> Egység: %-os <br/> Összesítés típusa: maximális <br/> Dimenzió: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók
 
-Az Azure Service Bus Azure a figyelő a metrikák a következő dimenziók támogatja. Dimenziók hozzáadása a metrikákat, nem kötelező megadni. Ha nem adja hozzá a dimenziók, metrikák meg van adva, a névterek szintjén. 
+Az Azure Service Bus a következő dimenziókat támogatja a mérőszámok az Azure Monitor. A metrikák dimenziók hozzáadása nem kötelező. Ha nem adja hozzá a dimenziók, a metrikák a névterek szintjén vannak megadva. 
 
 |Dimenzió neve|Leírás|
 | ------------------- | ----------------- |
-|entityName| A Service Bus a névtér az üzenetküldési entitások támogatja.|
+|EntityName| A Service Bus a névtérben üzenetküldési entitások támogatja.|
 
 ## <a name="next-steps"></a>További lépések
 

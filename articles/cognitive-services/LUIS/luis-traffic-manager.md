@@ -2,19 +2,19 @@
 title: A Language Understanding (LUIS) – az Azure endpoint kvóta növeléséhez használja a Microsoft Azure Traffic Manager |} A Microsoft Docs
 description: Végpont kvóta helyezkednek el a Language Understanding (LUIS) végpont kvóta növeléséhez több előfizetés a Microsoft Azure Traffic Manager használatával
 author: diberry
-manager: kaiqb
+manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: diberry
-ms.openlocfilehash: 77a9d4197804dcdd1e0c8b3f8a0d66100f770855
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 909c32452db216f79633b94c31f39350b7a6ee20
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238192"
+ms.locfileid: "39248628"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A Microsoft Azure Traffic Manager használatával kezelheti a végpont kvóta kulcsok
 Language Understanding (LUIS) lehetővé teszi, hogy a végpont kérelmi kvótát egy kulcs kvóta túl kínál. További kulcsokat hoz létre a LUIS, és hozzáadni azokat a LUIS-alkalmazás az ehhez a **közzététel** lapját a **erőforrások és a kulcsok** szakaszban. 
@@ -76,7 +76,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
     
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
     
-    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
     |--|--|--|
     |-Név|a Luis-profil – USA keleti régiója|A TRAFFIC Manager neve az Azure Portalon|
     |-ResourceGroupName|a Luis-traffic-manager|Az előző szakaszban létrehozott|
@@ -95,7 +95,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
     ```
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
     |--|--|--|
     |-Végpontneve|a Luis-kelet-végpont|A profil alatt jelenik meg a végpont neve|
     |-TrafficManagerProfile|$eastprofile|1. lépésben létrehozott profil objektummal|
@@ -144,7 +144,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
     
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
     
-    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
     |--|--|--|
     |-Név|a Luis-profil-westus|A TRAFFIC Manager neve az Azure Portalon|
     |-ResourceGroupName|a Luis-traffic-manager|Az előző szakaszban létrehozott|
@@ -164,7 +164,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
 
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
     |--|--|--|
     |-Végpontneve|a Luis-Nyugat-végpont|A profil alatt jelenik meg a végpont neve|
     |-TrafficManagerProfile|$westprofile|1. lépésben létrehozott profil objektummal|
@@ -211,7 +211,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
     |--|--|--|
     |-Név|szülő-Luis-profil|A TRAFFIC Manager neve az Azure Portalon|
     |-ResourceGroupName|a Luis-traffic-manager|Az előző szakaszban létrehozott|
@@ -231,7 +231,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
     |--|--|--|
     |-Végpontneve|gyermek-endpoint-useast|Kelet-profil|
     |-TrafficManagerProfile|$parentprofile|Ennek a végpontnak a hozzárendelt profil|
@@ -268,7 +268,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
     |--|--|--|
     |-Végpontneve|gyermek-endpoint-uswest|Nyugat-profil|
     |-TrafficManagerProfile|$parentprofile|Ennek a végpontnak a hozzárendelt profil|

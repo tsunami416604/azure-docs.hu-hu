@@ -1,6 +1,6 @@
 ---
-title: Hogyan lehet egy Azure-beli virtuális gépen az MSI konfigurálása egy sablon használatával
-description: Részletes útmutató Azure virtuális gép, egy Azure Resource Manager-sablon használatával konfigurálja a Felügyeltszolgáltatás-identitás (MSI).
+title: Felügyeltszolgáltatás-identitás konfigurálása Azure virtuális gép sablon használatával
+description: Részletes útmutató a Felügyeltszolgáltatás-identitás konfigurálása az Azure virtuális gép, egy Azure Resource Manager-sablon használatával.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 703595bbc13fb859f406e7c9fa422a9c573957ab
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 15a743f524c58e56247ec46fee27611b33595bad
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237247"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258694"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>A virtuális gépek Felügyeltszolgáltatás-identitás konfigurálása egy sablon használatával
 
@@ -73,7 +73,7 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identi
    },
    ```
 
-4. (Nem kötelező) Adja hozzá a virtuális gép MSI-bővítményt, mint egy `resources` elemet. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.  Az alábbi szintaxissal:
+4. (Nem kötelező) Adja hozzá a virtuális gépek Felügyeltszolgáltatás-identitás bővítményt, mint egy `resources` elemet. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.  Az alábbi szintaxissal:
 
    >[!NOTE] 
    > Az alábbi példa feltételezi, hogy Windows VM-bővítmény (`ManagedIdentityExtensionForWindows`) lesz üzembe helyezve. Beállíthatja a Linux használatával `ManagedIdentityExtensionForLinux` ehelyett a `"name"` és `"type"` elemeket.

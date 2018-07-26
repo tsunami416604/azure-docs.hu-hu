@@ -1,8 +1,8 @@
 ---
-title: Az Azure SQL adatbázis felügyelt példány egyéni DNS |} Microsoft Docs
-description: Ez a témakör ismerteti az Azure SQL adatbázis felügyelt példánya egy egyéni DNS-konfigurációs beállítások.
+title: Az Azure SQL Database felügyelt példány egyéni DNS |} A Microsoft Docs
+description: Ez a témakör ismerteti egy egyéni DNS-ben az Azure SQL Database felügyelt példánya a konfigurációs beállításait.
 services: sql-database
-author: srdjan-bozovic
+author: srdan-bozovic-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 05a7b600ae8672447126b79cda10ca94c6d0fb48
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5bb2f2f4b79c4b03e631fc844a712f76fc69109
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649329"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258167"
 ---
-# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Példány egy egyéni DNS konfigurálása az Azure SQL Database felügyelete
+# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Egy egyéni DNS konfigurálása az Azure SQL Database felügyelt példánya
 
-Egy Azure SQL adatbázis felügyelt példány (előzetes verzió) telepítenie kell egy Azure-ban [virtuális hálózathoz (VNet)](../virtual-network/virtual-networks-overview.md). Van néhány forgatókönyvek, a felhőalapú vagy hibrid környezetben más SQL-példányokban kívánja csatolt kiszolgálók, igénylő titkos állomásnevek oldható fel a felügyelt példányból. Ebben az esetben kell egy egyéni DNS belül Azure konfigurálása. Felügyelt példány a belső működésével az azonos DNS-Kiszolgálókat használ, mert a virtuális hálózat DNS-konfiguráció kell lennie a felügyelt példány kompatibilis. 
+Egy Azure SQL Database felügyelt példány (előzetes verzió) kell üzembe helyezni egy Azure-ban [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md). Vannak, néhány alkalmazási helyzetek, csatolt kiszolgálók más SQL-példányok a felhőalapú vagy hibrid környezetben, igénylő privát állomásnevek fel kell oldani a felügyelt példányhoz az. Ebben az esetben, konfigurálnia kell egy egyéni DNS az Azure-on belül. Felügyelt példány az azonos DNS-t használ a belső működésével, mivel a virtuális hálózat DNS-konfigurációt kell lennie a felügyelt példány kompatibilis. 
 
-Ahhoz, hogy egy egyéni DNS-konfiguráció felügyelt példány kompatibilis, kell végeznie az alábbi lépéseket: 
-- A kérelem továbbítása az Azure DNS-egyéni DNS konfigurálása 
-- A vnet az elsődleges egyéni DNS és az Azure DNS-ben, mint a másodlagos beállítása 
-- Az egyéni DNS elsődleges regisztrálása és az Azure DNS-ben, mint a másodlagos
+Ahhoz, hogy kompatibilis felügyelt példányt az egyéni DNS-konfigurációval, a következő lépéseket kell: 
+- Egyéni DNS-kérelmeket továbbítja az Azure DNS konfigurálása 
+- A virtuális hálózathoz a Custom DNS elsődleges és másodlagos, az Azure DNS beállítása 
+- Az egyéni DNS elsődlegesként és az Azure DNS regisztrálása, másodlagos
 
-## <a name="configure-custom-dns-to-forward-requests-to-azure-dns"></a>A kérelem továbbítása az Azure DNS-egyéni DNS konfigurálása 
+## <a name="configure-custom-dns-to-forward-requests-to-azure-dns"></a>Egyéni DNS-kérelmeket továbbítja az Azure DNS konfigurálása 
 
-A Windows Server 2016-os DNS-továbbító konfigurálásához tegye a következőket: 
+DNS-továbbító konfigurálása a Windows Server 2016-on, tegye a következőket: 
 
 1. A **Kiszolgálókezelő**, kattintson a **eszközök**, és kattintson a **DNS**. 
 
@@ -36,21 +36,21 @@ A Windows Server 2016-os DNS-továbbító konfigurálásához tegye a következ�
 
 2. Kattintson duplán a **továbbítók**.
 
-   ![A továbbítók](./media/sql-database-managed-instance-custom-dns/forwarders.png) 
+   ![Továbbítók](./media/sql-database-managed-instance-custom-dns/forwarders.png) 
 
 3. Kattintson a **Szerkesztés** gombra. 
 
-   ![A továbbítók-lista](./media/sql-database-managed-instance-custom-dns/forwarders-list.png) 
+   ![Továbbítók-list](./media/sql-database-managed-instance-custom-dns/forwarders-list.png) 
 
-4. Adja meg Azure rekurzív feloldókat IP-címet, például 168.63.129.16.
+4. Adja meg az Azure rekurzív feloldók IP-címet, például a 168.63.129.16.
 
-   ![Rekurzív feloldókat IP-cím](./media/sql-database-managed-instance-custom-dns/recursive-resolvers-ip-address.png) 
+   ![A rekurzív feloldók IP-cím](./media/sql-database-managed-instance-custom-dns/recursive-resolvers-ip-address.png) 
  
-## <a name="set-up-custom-dns-as-primary-and-azure-dns-as-secondary"></a>Elsődleges egyéni DNS és az Azure DNS-ben, mint a másodlagos beállítása 
+## <a name="set-up-custom-dns-as-primary-and-azure-dns-as-secondary"></a>Egyéni DNS elsődleges és másodlagos, az Azure DNS beállítása 
  
-Egy Azure virtuális hálózatot a DNS-konfiguráció szükséges, hogy adja meg az IP-címek, úgy konfigurálja az Azure virtuális Gépen, amelyen a DNS-kiszolgáló a következő lépések segítségével statikus IP-címmel: 
+Az egy Azure virtuális hálózat DNS-konfiguráció szükséges, hogy adja meg az IP-címeket, így konfigurálása az Azure virtuális Gépen, amelyen a DNS-kiszolgáló a következő lépések segítségével statikus IP-cím: 
 
-1. Az Azure portálon nyissa meg az egyéni DNS VM hálózati illesztőt.
+1. Az Azure Portalon nyissa meg az egyéni DNS virtuális hálózati adapter.
 
    ![network-interface](./media/sql-database-managed-instance-custom-dns/network-interface.png) 
 
@@ -59,26 +59,26 @@ Egy Azure virtuális hálózatot a DNS-konfiguráció szükséges, hogy adja meg
    ![IP-konfiguráció](./media/sql-database-managed-instance-custom-dns/ip-configuration.png) 
 
 
-3. Állítsa be statikus magánhálózati IP-címet. Jegyezze fel az IP-cím (10.0.1.5 meg ezen a képernyőfelvételen látható) 
+3. Statikus magánhálózati IP-cím beállítva. Jegyezze fel az IP-cím (ezen a képernyőfelvételen a 10.0.1.5) 
 
    ![statikus](./media/sql-database-managed-instance-custom-dns/static.png) 
 
 
-## <a name="register-custom-dns-as-primary-and-azure-dns-as-secondary"></a>Elsődleges egyéni DNS és az Azure DNS-ben regisztrálja, a másodlagos 
+## <a name="register-custom-dns-as-primary-and-azure-dns-as-secondary"></a>Egyéni DNS elsődlegesként és az Azure DNS regisztrálása, a másodlagos 
 
-1. Az Azure-portálon keresse meg a Vnethez tartozó egyéni DNS-beállítás.
+1. Az Azure Portalon keresse meg az egyéni DNS-beállítás a virtuális hálózat számára.
 
    ![egyéni DNS-beállítás](./media/sql-database-managed-instance-custom-dns/custom-dns-option.png) 
 
-2. Az egyéni váltson, és adja meg az egyéni DNS-kiszolgáló IP-címét, valamint az Azure rekurzív feloldókat IP-címet, például 168.63.129.16. 
+2. Egyéni váltson, és adja meg az egyéni DNS-kiszolgáló IP-címét, valamint az Azure rekurzív feloldók IP-címet, például a 168.63.129.16. 
 
    ![egyéni DNS-beállítás](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png) 
 
    > [!IMPORTANT]
-   > Nem beállítása az Azure rekurzív feloldó a DNS-lista után a kezelt példányt adja meg a meghibásodott. Végezze el a helyreállítást, hogy a állapot előfordulhat, hogy a megfelelő hálózati házirendek a Vneten belül új példányt létrehozni, hozzon létre példányok szintű adatait, és az adatbázisok visszaállítása. Lásd: [VNet konfigurációját](sql-database-managed-instance-vnet-configuration.md).
+   > Nem beállítása az Azure rekurzív feloldó DNS-ben okoz a felügyelt példány hibás állapotba. Utáni helyreállítás állapot megkövetelhetik, hogy hozzon létre új példányt a megfelelő hálózati szabályzatok rendelkező virtuális hálózaton, példány szintű adatok létrehozásához, és az adatbázisok visszaállítása. Lásd: [VNet-konfiguráció](sql-database-managed-instance-vnet-configuration.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, [Mi az, hogy a felügyelt példánya](sql-database-managed-instance.md)
-- Az oktatóanyag bemutatja, hogyan hozzon létre egy új kezelt példányt, lásd: [felügyelt példány létrehozása](sql-database-managed-instance-create-tutorial-portal.md).
-- További információ a virtuális hálózat konfigurálása a felügyelt példányához: [felügyelt példányok VNet konfigurációja](sql-database-managed-instance-vnet-configuration.md)
+- Áttekintéséhez lásd: [mit jelent a felügyelt példány](sql-database-managed-instance.md)
+- Bemutatja, hogyan hozzon létre egy új felügyelt példány oktatóanyagért lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md).
+- A felügyelt példányhoz egy virtuális hálózat konfigurálásával kapcsolatos további információkért lásd: [felügyelt példányok VNet-konfiguráció](sql-database-managed-instance-vnet-configuration.md)

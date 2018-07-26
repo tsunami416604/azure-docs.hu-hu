@@ -14,89 +14,98 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 6658eeb70e31593da5f3612ccac8685ecbb976b9
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 806487ec731a1b7fe02ccdfe6b285f5b2e119787
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161588"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249097"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Figyelje az Azure Kubernetes Service (AKS) tároló állapotát (előzetes verzió)
 
-Ez a cikk ismerteti, hogyan beállítása és használata az Azure Monitor tárolójának állapotára figyelése az Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-környezetekből üzembe helyezett munkaterhelések teljesítményét.  A Kubernetes-fürt és -tárolók monitorozása kritikus fontosságú, különösen, ha egy éles fürtöt futtat skálázható módon, több alkalmazással.
+Ez a cikk ismerteti, hogyan beállítása és használata az Azure Monitor tárolójának állapotára üzembe helyezett Kubernetes-környezeteket, és az Azure Kubernetes Service (AKS) üzemeltetett számítási feladatok teljesítményének figyeléséhez. A Kubernetes-fürt és -tárolók monitorozása alapvető fontosságú, különösen akkor, ha nagy mennyiségű, több alkalmazással rendelkező egy éles fürtöt futtat.
 
-Tároló állapotának alkalmazásteljesítmény-figyelés gyűjtését memória és a tartományvezérlők, a csomópontok és a tárolók Kubernetes, a metrikák API-n keresztül a rendelkezésre álló processzor mérőszámainak lehetőségét biztosítja.  Miután engedélyezte a tároló állapotának, ezek a metrikák automatikusan gyűjti a Linuxhoz készült OMS-ügynök tárolóalapú verzióját használja, és tárolja a [Log Analytics](../log-analytics/log-analytics-overview.md) munkaterületen.  Az előre meghatározott nézetek megjelenítése az adataihoz, tárolókhoz kapcsolódó számítási feladatok és a Kubernetes-fürt teljesítménybeli állapotát mi van hatással, így az képes megérteni:  
+Tároló állapotának alkalmazásteljesítmény-figyelés gyűjtését memória és a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók processzor mérőszámainak lehetőségét biztosítja. Miután engedélyezte a tároló állapotának, ezeket a metrikákat automatikusan az Ön számára a Linuxhoz készült Operations Management Suite (OMS) ügynök tárolóalapú verziója gyűjtött és tárolt a [Log Analytics](../log-analytics/log-analytics-overview.md) munkaterületen. A csomagban foglalt előre meghatározott nézeteket megjeleníti az adataihoz, tárolókhoz kapcsolódó számítási feladatot, és milyen hatással van a Kubernetes-fürt teljesítménybeli állapotát, így is:  
 
-* Milyen tárolók futnak, a csomópont, illetve azok átlagos processzor és memória kihasználtságáról, az erőforrás szűk keresztmetszetek azonosítása
-* Ahol a tárolóban található egy tartományvezérlő és/vagy egy tartományvezérlő vagy a pod általános teljesítménye megtekintéséhez podok azonosítása 
-* Tekintse át az erőforrás-használat, a standard szintű folyamatok a pod támogató egymástól független, a gazdagépen futó számítási feladatok
-* A fürt segítségével azonosíthatja a kapacitásbeli szükségleteket, és döntse el, a legnagyobb terhelést is kiálló tárolókkal átlagos és a leggyakrabban használt terhelés alatt a viselkedés értelmezése 
+* Azonosíthatja a csomópont és a processzor és memória átlagos kihasználtság a futó tárolók. A Tudásbázis segítségével erőforrás szűk keresztmetszetek azonosítása.
+* Azonosítsa, amelyben a tároló található a vezérlő vagy podot. A Tudásbázis segítségével megtekintheti a vezérlő vagy a pod általános teljesítménye. 
+* Tekintse át az erőforrás-használat, a gazdagépen futó számítási feladatok, amely a szabványos folyamatokat, amelyek támogatják a pod kapcsolódnak.
+* Ismerje meg a fürt átlagos és a leggyakrabban használt terhelések viselkedését. Ennek segítségével azonosíthatja a kapacitásbeli szükségleteket, és döntse el, a legnagyobb terhelést, amely képes elviselni a fürt. 
 
 Ha érdekli, figyelése és kezelése a Docker és a Windows a tárológazdagép konfiguráció megtekintése, naplózási és erőforrás-használatot, tekintse meg a [Tárolómonitorozási megoldás](../log-analytics/log-analytics-containers.md).
 
-## <a name="requirements"></a>Követelmények 
-Mielőtt hozzákezdene, tekintse át a következő adatokat, így megismerheti a támogatott előfeltételek.
+## <a name="prerequisites"></a>Előfeltételek 
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Egy új vagy meglévő AKS-fürt
-- Tárolóalapú OMS-ügynök Linux-verzió esetében a microsoft / oms:ciprod04202018 és újabb verziók. A verziószám képviseli egy dátumot a következő formátumban – *mmddyyyy*.  Telepíti a rendszer automatikusan a tároló állapotának bevezetés során.  
-- Egy Log Analytics-munkaterület.  Amikor engedélyezi az új AKS-fürt figyelése, vagy létrehozhat egyet keresztül hozhatók [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
-- A Log Analytics közreműködő szerepkört, és engedélyezze a tárolómonitorozási tagja.  A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md).
+- Egy új vagy meglévő AKS-fürtöt.
+- A tárolóba az OMS-ügynök Linux-verzió esetében a microsoft / oms:ciprod04202018 vagy újabb. A verziószám képviseli egy dátumot a következő formátumban: *mmddyyyy*. Az ügynök automatikusan települ a tároló állapotának az előkészítés során. 
+- Egy Log Analytics-munkaterület. Hozhat létre, amikor engedélyezi az új AKS-fürt figyelése, vagy létrehozhat keresztül [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)segítségével, [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
+- A Log Analytics közreműködő szerepkört, a figyelési szint. A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md).
 
 ## <a name="components"></a>Összetevők 
 
-Ez a funkció a tárolóalapú OMS-ügynök Linux rendszeren, a teljesítmény- és esemény-adatok gyűjtésére a fürt összes csomópontja támaszkodik.  Az ügynök automatikus telepítése és regisztrálása a megadott Log Analytics-munkaterület-, miután engedélyezte a tárolók figyelését. 
+A teljesítmény monitorozását teszi lehetővé a Linux rendszerre, amely teljesítmény- és esemény-adatokat gyűjti össze a fürt összes csomópontja tárolóalapú OMS-ügynök támaszkodik. Az ügynök automatikus telepítése és regisztrálása a megadott Log Analytics-munkaterület-, miután engedélyezte a tárolók figyelését. 
 
 >[!NOTE] 
->Ha már telepített egy AKS-fürtöt, akkor engedélyezhető egy megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. Nem használhat `kubectl` frissítése, törlése, telepítse újra vagy telepítheti az ügynököt.  
+>Ha már telepített egy AKS-fürtöt, akkor engedélyeznie figyelése a megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. Nem használhat `kubectl` frissítése, törlése, telepítse újra vagy telepítheti az ügynököt. 
 >
 
-## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure Portalra
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
+## <a name="sign-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portal webhelyre
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Engedélyezze a tárolót állapotfigyelés egy új fürthöz
-Engedélyezheti egy új AKS-fürt figyelése az Azure Portalról üzembe helyezés során.  Kövesse a cikk rövid [Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../aks/kubernetes-walkthrough-portal.md).  Ha befejezte a a **figyelés** lapon jelölje be **Igen** beállítás **figyelés engedélyezése** engedélyezi, majd válasszon egy meglévő, vagy hozzon létre egy új Log Analytics-munkaterületet.  
+A telepítés során engedélyezheti a figyelését egy új AKS-fürtöt az Azure Portalon. Kövesse a cikk rövid [Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../aks/kubernetes-walkthrough-portal.md). Az a **figyelés** lapon a a **figyelés engedélyezése** beállításnál válassza **Igen**, majd válassza ki egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy újat. 
 
-Figyelés engedélyezése után minden konfigurációs feladat sikeresen befejeződött, a teljesítmény, a fürt a két módszer egyikével figyelheti:
+Miután engedélyezte a figyelés, és minden konfigurációs feladat sikeresen befejeződött, a teljesítmény, a fürt két módon figyelheti:
 
-1. Az AKS-fürtöt kiválasztásával közvetlenül a **egészségügyi** a bal oldali ablaktáblán.<br><br> 
-2. Kattintson a a **tároló állapotának monitorozása** az AKS-fürt lapján a kijelölt fürt csempéjén.  Válassza ki az Azure monitorban **egészségügyi** a bal oldali ablaktáblán.  
+* Az AKS-fürtöt kiválasztásával közvetlenül a **egészségügyi** a bal oldali panelen.
+* Válassza a **tároló állapotának monitorozása** az AKS-fürt lapján a kijelölt fürt csempéjén. Az Azure Monitor, a bal oldali ablaktáblán válassza **egészségügyi**. 
 
-![Válassza ki a tároló állapotának az aks-ben beállításai](./media/monitoring-container-health/container-performance-and-health-select-01.png)
+  ![Lehetőség kiválasztásakor a tároló állapotának az aks-ben](./media/monitoring-container-health/container-performance-and-health-select-01.png)
 
-Figyelés engedélyezését követően eltarthat körülbelül 15 perc elteltével megtekintheti a fürt működési adatokat.  
+Miután engedélyezte a figyelés, körülbelül 15 percet, mielőtt megtekintheti a fürt működési adatokat vehet igénybe. 
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>Engedélyezze a tárolót állapotfigyelés a meglévő felügyelt fürtöket.
-A már üzembe helyezte az Azure Portalról vagy a PowerShell-parancsmag segítségével megadott Azure Resource Manager-sablonnal egy AKS-fürt figyelése **New-AzureRmResourceGroupDeployment** vagy Azure CLI használatával.  
+Az AKS-fürt, amely már telepítve van az Azure Portalon vagy a megadott Azure Resource Manager-sablonnal a PowerShell-parancsmag használatával figyelése `New-AzureRmResourceGroupDeployment` vagy az Azure CLI használatával. 
 
+### <a name="enable-monitoring-in-the-azure-portal"></a>Engedélyezze a monitorozást az Azure Portalon
+Az AKS-tároló az Azure Portal figyelés engedélyezése, tegye a következőket:
 
-### <a name="enable-from-azure-portal"></a>Az Azure Portalról engedélyezése
-A következő lépésekkel engedélyezze a monitorozást az AKS-tároló az Azure Portalról.
+1. Az Azure Portalon válassza ki a **minden szolgáltatás**. 
+2. Az erőforrások listájába írja be a szöveget **tárolók**.  
+    A szűrők megjelenítése a bemenetet a következők alapján. 
+3. Válassza ki **Kubernetes-szolgáltatás**.  
 
-1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **tárolók**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Kubernetes-szolgáltatás**.<br><br> ![Azure Portal](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
-2. A tárolók listájában válassza ki a tárolót.
-3. A tároló áttekintés oldalán válassza **tároló állapotának monitorozása** és a **tároló állapotának és a naplók bevezetési** lap jelenik meg.
-4. Az a **tároló állapotának és a naplók bevezetési** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben a fürttel, válassza a legördülő listából.  A lista preselects az alapértelmezett munkaterületre, és az AKS-tároló helye telepítve van az előfizetésben.<br><br> ![AKS-tároló állapotfigyelésének engedélyezése](./media/monitoring-container-health/container-health-enable-brownfield-02.png) 
+    ![A Kubernetes-szolgáltatások hivatkozás](./media/monitoring-container-health/azure-portal-01.png)
+
+4. A tárolók listájában válassza ki a tárolót.
+5. A tároló áttekintés oldalán válassza **tároló állapotának monitorozása**.  
+6. Az a **bevezetési tároló állapotának és a naplók** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben a fürttel, válassza a legördülő listában.  
+    A lista preselects az alapértelmezett munkaterületre és a helyre, amely az AKS-tároló üzembe helyezése az előfizetésben. 
+
+    ![AKS-tároló állapotfigyelésének engedélyezése](./media/monitoring-container-health/container-health-enable-brownfield-02.png)
 
 >[!NOTE]
->Ha szeretne létrehozni egy új Log Analytics-munkaterület a fürtből a monitorozási adatok tárolásához, kövesse a [hozzon létre egy Log Analytics-munkaterület](../log-analytics/log-analytics-quick-create-workspace.md) , és ügyeljen arra, hogy a munkaterület létrehozásához, amely az AKS tároló ugyanabban az előfizetésben üzembe helyezését.  
->
+>Ha azt szeretné, a fürtből a figyelési adatok tárolására szolgáló új Log Analytics-munkaterület létrehozásához kövesse a [hozzon létre egy Log Analytics-munkaterület](../log-analytics/log-analytics-quick-create-workspace.md). Győződjön meg arról, a munkaterület ugyanabban az előfizetésben üzembe helyezett az AKS-tároló létrehozásához. 
  
-Figyelés engedélyezését követően eltarthat körülbelül 15 perc elteltével megtekintheti a fürt működési adatokat. 
+Miután engedélyezte a figyelés, körülbelül 15 percet, mielőtt megtekintheti a fürt működési adatokat vehet igénybe. 
 
-### <a name="enable-using-azure-resource-manager-template"></a>Engedélyezze az Azure Resource Manager-sablon használatával
-Ezt a módszert tartalmaz két JSON-sablonok, egy sablon határozza meg, a konfigurációt a figyelés engedélyezése és az egyéb JSON-sablon, konfigurálja úgy, hogy adja meg a következő paraméterértékeket tartalmaz:
+### <a name="enable-monitoring-by-using-an-azure-resource-manager-template"></a>Engedélyezze a monitorozást az Azure Resource Manager-sablon használatával
+Ez a módszer két JSON-sablont tartalmaz. Egy sablon határozza meg, a konfigurációt a figyelés, és a másik paraméterértékeket, hogy adja meg az alábbiakat tartalmazza:
 
-* AKS-tárolók erőforrás-azonosító 
-* A fürt erőforráscsoport van üzembe helyezve 
-* Log Analytics-munkaterületet és régióban hozhat létre a munkaterületet 
+* Az AKS tároló erőforrás-azonosítója. 
+* Az erőforráscsoport, amely a fürt üzemel.
+* A Log Analytics-munkaterületet és régióban hozhat létre a munkaterületén. 
 
-A Log Analytics-munkaterületen van, manuálisan kell létrehozni.  A munkaterület létrehozásához, beállíthat egy keresztül [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), az a [az Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
+A Log Analytics-munkaterületen van, manuálisan kell létrehozni. A munkaterület létrehozásához, beállíthatja azt keresztül [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)segítségével, [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 
-Ha nem ismeri a sablon használatával a PowerShell erőforrások üzembe helyezésének fogalmait, tekintse meg a [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md)vagy az Azure CLI-vel lásd, [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md).
+Ha ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalmát, lásd:
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Ha úgy döntött, hogy az Azure parancssori felület használata, először telepítése és használata a parancssori felület helyileg.  Szükség rá, hogy futnak-e az Azure CLI 2.0.27-es vagy újabb. Futtatás `az --version` a verziójának azonosításához. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Kell futnia az Azure CLI 2.0.27-es vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-#### <a name="create-and-execute-template"></a>Hozzon létre, és hajtsa végre a sablon
+#### <a name="create-and-execute-a-template"></a>Hozzon létre, és hajtsa végre a sablon
 
 1. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
 
@@ -188,7 +197,7 @@ Ha úgy döntött, hogy az Azure parancssori felület használata, először tel
     ```
 
 2. Mentse a fájlt **existingClusterOnboarding.json** egy helyi mappába.
-3. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
+3. A következő JSON-szintaxist illessze be a fájlba:
 
     ```json
     {
@@ -211,22 +220,22 @@ Ha úgy döntött, hogy az Azure parancssori felület használata, először tel
     }
     ```
 
-4. Az érték szerkesztése **aksResourceId**, **aksResourceLocation** azokra az értékekre, amelyeket a a **az AKS áttekintése** oldala az AKS-fürtöt.  Az érték **workspaceResourceId** a Log Analytics-munkaterületet, amely tartalmazza a következő munkaterület nevének teljes erőforrás-Azonosítójára van.  Emellett adja meg a helyet, a munkaterület megtalálható a **workspaceRegion**.    
+4. Értékeinek szerkesztéséhez **aksResourceId** és **aksResourceLocation** értékek a segítségével a **az AKS áttekintése** oldala az AKS-fürtöt. Az érték **workspaceResourceId** a Log Analytics-munkaterületet, amely tartalmazza a következő munkaterület nevének teljes erőforrás-Azonosítójára van. Emellett adja meg a helyet, a munkaterület a **workspaceRegion**. 
 5. Mentse a fájlt **existingClusterParam.json** egy helyi mappába.
 6. Készen áll a sablon üzembe helyezésére. 
 
-    * Használja a következő PowerShell-parancsokat a sablont tartalmazó könyvtárban:
+    * Használja a következő PowerShell-parancsokat a sablont tartalmazó mappában:
 
         ```powershell
         New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName ClusterResourceGroupName -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
         ```
-        A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló:
+        A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
 
         ```powershell
         provisioningState       : Succeeded
         ```
 
-    * A futtassa a következő parancsot az Azure CLI-vel Linux rendszeren:
+    * A következő parancs futtatása az Azure CLI használatával Linux rendszeren:
     
         ```azurecli
         az login
@@ -234,24 +243,24 @@ Ha úgy döntött, hogy az Azure parancssori felület használata, először tel
         az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
         ```
 
-        A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló:
+        A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
 
         ```azurecli
         provisioningState       : Succeeded
         ```
-Figyelés engedélyezését követően eltarthat körülbelül 15 perc elteltével megtekintheti a fürt működési adatokat.  
+Miután engedélyezte a figyelés, körülbelül 15 percet, mielőtt megtekintheti a fürt működési adatokat vehet igénybe. 
 
 ## <a name="verify-agent-and-solution-deployment"></a>Az ügynök és a megoldás a telepítés ellenőrzése
-Az ügynök verziója *06072018* és újabb verziója szükséges, ellenőrizheti, hogy az ügynök és a megoldás is sikeresen lettek telepítve.  Az ügynök korábbi verzióival ügynök telepítésének ellenőrzése csak is.
+Az ügynök verziója *06072018* vagy később ellenőrizheti, hogy az ügynök és a megoldás is sikeresen lettek telepítve. Az ügynök korábbi verzióival csak az ügynök telepítésének ellenőrzéséhez.
 
-### <a name="agent-version-06072018-and-higher"></a>Ügynök verziója 06072018 és magasabb
-A következő parancs futtatásával ellenőrizze az ügynök telepítése sikeresen megtörtént.   
+### <a name="agent-version-06072018-or-later"></a>Az ügynök 06072018 vagy újabb verziójára
+A következő paranccsal ellenőrizheti, hogy az ügynök telepítése sikeresen megtörtént. 
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-A kimenet a következő jelző megfelelően fejeződött üzembe kell hasonlítania:
+A kimenet a következő, amely azt jelzi, hogy megfelelően lett-e telepítve kell hasonlítania:
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -265,7 +274,7 @@ A megoldás üzembe helyezése ellenőrzéséhez futtassa a következő parancso
 kubectl get deployment omsagent-rs -n=kube-system
 ```
 
-A kimenet a következő jelző megfelelően fejeződött üzembe kell hasonlítania:
+A kimenet a következő, amely azt jelzi, hogy megfelelően lett-e telepítve kell hasonlítania:
 
 ```
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -275,13 +284,13 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>06072018-nél korábbi ügynökverzió
 
-Ellenőrizze az OMS-ügynök előtt kiadott verzióját *06072018* megfelelően üzemel, a következő parancsot:  
+Ellenőrizze, hogy az OMS-ügynök verziója előtt kiadott *06072018* megfelelően üzemel, a következő parancsot:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-A kimenet a következő jelző megfelelően fejeződött üzembe kell hasonlítania:  
+A kimenet a következő, amely azt jelzi, hogy megfelelően lett-e telepítve kell hasonlítania:  
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -290,129 +299,129 @@ omsagent   2         2         2         2            2           beta.kubernete
 ```  
 
 ## <a name="view-performance-utilization"></a>Nézet teljesítmény kihasználtsága
-Amikor megnyitja a tároló állapotának, az oldal azonnal megadja az egész fürt teljesítményének kihasználását.  Az AKS-fürt adatainak megtekintése a következő szakaszokba négy szempont:
+Amikor megnyitja a tároló állapotának, az oldal azonnal megadja az egész fürt teljesítményének kihasználását. Az AKS-fürt adatainak megtekintése a következő szakaszokba négy szempont:
 
 - Fürt
 - Csomópontok 
 - Vezérlők  
-- Containers
+- Tárolók
 
-A fürt lapon a sor teljesítménydiagramok megjelenítése a fürt fő teljesítménymutatói.  
+Az a **fürt** lapon, a negyedik sor teljesítménydiagramok megjelenítése a fürt fő teljesítménymutatói. 
 
 ![Példa teljesítménydiagramok fürt lapján](./media/monitoring-container-health/container-health-cluster-perfview.png)
 
-A következő információkat a bemutatott teljesítmény-mérőszámait:
+A teljesítmény diagramon négy teljesítmény-mérőszámait jeleníti meg:
 
-- Processzor kihasználtsága (%) - csomópont a diagram jelöli egy összesített szempontjából gyűjtik a CPU-kihasználtság az egész fürt számára.  Kijelölésével szűrheti az eredményeket a időtartományban *átlagos*, *Min*, *maximális*, *50*, *90*, és *95* a percentilisei választó a diagram felett, vagy külön-külön vagy kombinált. 
-- Csomópont memória kihasználtsági % - a diagram jelöli egy összesített szempontjából gyűjtik a memóriahasználat, az egész fürt számára.  Kijelölésével szűrheti az eredményeket a időtartományban *átlagos*, *Min*, *maximális*, *50*, *90*, és *95* a percentilisei választó a diagram felett, vagy külön-külön vagy kombinált. 
-- Csomópontok száma – Ez a diagram jelöli a csomópontok száma és az állapot a Kubernetes.  A fürtcsomópontok jelölt állapot *összes*, *készen*, és *nem áll készen* és szűrt külön-külön vagy összegzéséből származik a választó a diagram felett.    
-- Tevékenységnapló-pod száma – ezen a diagramon jelöli a podok száma és az állapot a Kubernetes.  A podok jelölt állapotát is *összes*, *függőben lévő*, *futó*, és *ismeretlen* és szűrt külön-külön vagy összegzéséből származik a a diagram felett választó.  
+- **Csomópont CPU-kihasználtság&nbsp;%**: egy összesített szempontjából gyűjtik a CPU-kihasználtság az egész fürt számára. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
+- **Csomópont memóriahasználat&nbsp;%**: egy összesített szempontjából gyűjtik a memóriahasználat, az egész fürt számára. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
+- **Csomópontok száma**: A csomópontok száma és a Kubernetes állapota. A fürtcsomópontok jelölt állapotok a *összes*, *készen*, és *nem áll készen* és szűrt külön-külön vagy együtt a választó a diagram felett a. 
+- **Tevékenységnapló-pod száma**: A podok számát és a Kubernetes állapota. A podok jelöli az állapotok a *összes*, *függőben lévő*, *futó*, és *ismeretlen* és szűrt külön-külön vagy együtt a a a diagram felett választó. 
 
-A csomópontok lapra vált, a sor hierarchia követi a Kubernetes hálózatiobjektum-modellt a fürtben egy csomópont kezdve.  Bontsa ki a csomópontot, és láthatja, hogy a csomóponton futó egy vagy több podok, ha egynél több tároló podot szerint vannak csoportosítva, mint a hierarchiában lévő utolsó sora láthatók. Ön is láthatja, hány nem pod kapcsolódó számítási feladatok futnak a gazdagépen, abban az esetben a processzor vagy a rendelkezésre álló memória mennyisége a gazdagép rendelkezik.
+Ha úgy vált, hogy a **csomópontok** lapon, a sor hierarchia követi a Kubernetes hálózatiobjektum-modellt a fürtben egy csomópont kezdve. Bontsa ki a csomópontot, és a csomóponton futó egy vagy több podok is megtekintheti. Ha egynél több tároló van csoportosítva podot, jelennek meg az utolsó sorban a hierarchiában. Hány nem pod kapcsolódó számítási feladatok futnak a gazdagépen, ha a gazdagép processzort vagy a rendelkezésre álló memória mennyisége is megtekintheti.
 
 ![Kubernetes-csomópontot példahierarchia a teljesítmény nézet](./media/monitoring-container-health/container-health-nodes-view.png)
 
-Válassza ki a lap tetején tartományvezérlők vagy a tárolókat, és tekintse át az állapot- és erőforrás-felhasználást azokat az objektumokat.  Névtér, a szolgáltatás és a csomópont által szűréséhez használja a képernyő tetején a legördülő mezőkben. Ha ehelyett meg szeretné tekinteni a memóriahasználat, az a **metrika** legördülő listában válassza ki **memória RSS** vagy **memória-munkakészlet**.  **Memória RSS** csak a Kubernetes 1.8-as és újabb verziók esetében támogatott. Jelenik meg az értékeket **minimális %** azt jelzi, hogy *NaN %*, amely egy nem definiált vagy ábrázolható értéket jelölő numerikus adatokat típusú érték. 
+Válassza ki a tartományvezérlők vagy a lap tetején lévő tárolókat, és tekintse át az állapot- és erőforrás-felhasználást azokat az objektumokat. Névtér, a szolgáltatás és a csomópont által szűréséhez használja a legördülő listák tetején. Ha ehelyett meg szeretné tekinteni a memóriahasználat, az a **metrika** legördülő listában válassza **memória RSS** vagy **memória-munkakészlet**. **Memória RSS** csak Kubernetes 1.8-as és újabb verziók esetében támogatott. Ellenkező esetben, tekintse meg az értékeket **Min&nbsp; %**  , *NaN&nbsp;%*, azaz egy nem definiált képviselő numerikus típus értéke vagy ábrázolható érték. 
 
 ![Tároló csomópontok teljesítmény nézet](./media/monitoring-container-health/container-health-node-metric-dropdown.png)
 
-Alapértelmezés szerint a teljesítményadatokat az elmúlt hat órán alapul, de az ablakban módosíthatja a **időtartomány** legördülő listából válassza ki a lap jobb felső sarkában található. Ilyenkor a lapon nem automatikus frissítés, így azt manuálisan frissítenie kell. Kiválasztásával is szűrheti az eredményeket időtartományban *átlagos*, *Min*, *maximális*, *50*, *90*, és *95* származó a PERCENTILIS választó. 
+Alapértelmezés szerint a teljesítményadatokat az elmúlt hat órán alapul, de az ablak használatával módosíthatja a **időtartomány** legördülő listából válassza ki a jobb felső sarokban. Ilyenkor a lapon nem automatikus frissítés, így azt manuálisan frissítenie kell. Kiválasztásával is szűrheti az eredményeket időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95** PERCENTILIS-választójában jelenítse. 
 
 ![Az adatok szűrésének. percentilis kiválasztása](./media/monitoring-container-health/container-health-metric-percentile-filter.png)
 
-A következő példában láthatja, hogy a csomópont *aks-nodepool-3977305*, értéke **tárolók** érték 5, amely egy összegző üzembe helyezett tárolókat teljes száma.
+A következő példában, vegye figyelembe a node *aks-nodepool-3977305*, értéke **tárolók** érték 5, amely egy összesítő üzembe helyezett tárolókat teljes száma.
 
-![A tárolók száma példája összegzése](./media/monitoring-container-health/container-health-nodes-containerstotal.png)
+![A tárolók példája egy összesítő](./media/monitoring-container-health/container-health-nodes-containerstotal.png)
 
-Ez segíthet gyorsan azonosíthatja, hogy nem kell a tárolókat a fürt csomópontjai közötti megfelelő egyensúly.  
+Azt is segítenek gyorsan azonosítani, hogy van-e a tárolók a fürtben lévő csomópontok közötti megfelelő egyensúly. 
 
-A következő táblázat ismerteti a csomópontok megtekintésekor megjelenő információkat.
+A csomópontok megtekintésekor megjelenő információkat az alábbi táblázatban olvasható:
 
 | Oszlop | Leírás | 
 |--------|-------------|
-| Name (Név) | A gazdagép neve |
-| status | A csomópont állapota Kubernetes nézete |
-| ÁTLAGOS %, A MIN %, A MAXIMÁLIS SZÁMA: %, A 50 %, A 90 % | A csomópont átlagos százalékos során kiválasztott töltött idő százalékos érték alapján. |
-| AVG, MIN, MAX, 50, 90 | Csomópontok átlagos tényleges értéket során kiválasztott töltött idő százalékos érték alapján.  Az átlagos érték mérése történik egy csomópont; beállítása CPU/memória felső korlátja podok és tárolók az értéke az avg a gazdagép által jelentett. |
-| Containers | A tárolók száma. |
+| Name (Név) | A gazdagép neve. |
+| Állapot | A csomópont állapota Kubernetes nézete. |
+| Átlagos&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;% | A csomópont átlagos százalékos PERCENTILIS alapján a kijelölt időszakra. |
+| Avg, Min, Max, 50, 90 | Csomópontok átlagos tényleges értéket során kiválasztott töltött idő százalékos érték alapján. Az átlagos érték mérése történik egy csomópont; beállítása CPU/memória felső korlátja podok és tárolók az értéke az avg a gazdagép által jelentett. |
+| Tárolók | A tárolók száma. |
 | Hasznos üzemidő | Mivel a csomópont elindult, és újra lett indítva a idejét jelzi. |
-| Vezérlők | Csak a tárolók és a podokat. Melyik, a hozzá tartozó tartományvezérlő jeleníti meg. Nem minden podok szerepelni fog egy vezérlőt, ezért néhány valószínűleg nincs. | 
-| Átlagos %, a MIN %, a maximális száma: %, a 50 %, a 90 % trend | Oszlopdiagram trend PERCENTILIS mérőszám %-a vezérlő bemutatására. |
+| Vezérlők | Csak a tárolók és a podokat. Azt mutatja, hogy melyik tartományvezérlő van a hozzá tartozó. Nem minden podok egy vezérlőt, vannak, ezért néhány megjelenítheti **N/A**. | 
+| Átlagos trend&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;% | Oszlopdiagram trend PERCENTILIS mérőszám százalékos aránya a vezérlő bemutatására. |
 
 
 Válassza ki a választó **tartományvezérlők**.
 
 ![Kijelölés vezérlők megjelenítése](./media/monitoring-container-health/container-health-controllers-tab.png)
 
-Itt láthatja a tartományvezérlők teljesítménybeli állapotát.
+Itt megtekintheti a vezérlő teljesítménybeli állapotát.
 
 ![< név > tartományvezérlők teljesítmény nézet](./media/monitoring-container-health/container-health-controllers-view.png)
 
-A sor hierarchia vezérlő kezdődik, és a vezérlő bővül, és a egy, vagy egy vagy több tárolók láthatja.  Bontsa ki a pod, és az utolsó sor megjelenítése a tárolót a pod szerint vannak csoportosítva.  
+A sor hierarchia vezérlő kezdődik, és a vezérlő bővül. Megtekintheti az egy vagy több tárolóban. Bontsa ki a pod, és az utolsó sort jeleníti meg a tároló a pod szerint vannak csoportosítva. 
 
-A következő táblázat ismerteti a tartományvezérlők megtekintésekor megjelenő információkat.
+A tartományvezérlők megtekintésekor megjelenő információkat az alábbi táblázatban olvasható:
 
 | Oszlop | Leírás | 
 |--------|-------------|
-| Name (Név) | A vezérlő neve|
-| status | A tárolók, hogy végzett futó állapotú, mint például állapotát összesítő *OK*, *kilépett*, *sikertelen* *leállítva*, vagy  *Felfüggesztve*. Ha a tároló fut-e, de a állapota volt, vagy nem megfelelően jelenik meg vagy volt nem dolgozza fel az ügynök és a 30 percnél hosszabb ideig nem válaszolt, az állapot értéke *ismeretlen*. További részletek a állapot ikon az alábbi táblázatban szerepelnek.|
-| ÁTLAGOS %, A MIN %, A MAXIMÁLIS SZÁMA: %, A 50 %, A 90 % | Minden entitás, a kiválasztott metrika és PERCENTILIS átlagos % átlagos összesítő. |
-| AVG, MIN, MAX, 50, 90  | Az átlagos CPU millicore vagy a memória teljesítményét a kiválasztott PERCENTILIS tárolója összesítő.  Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
-| Containers | A vezérlő vagy a pod tárolók száma összesen. |
-| Újraindul | Összesítő újraindítás száma, a tárolók. |
+| Name (Név) | A vezérlő neve.|
+| Állapot | Összesítő állapotát, amikor befejeződött, például a futó állapotú, a tárolók *OK*, *kilépett*, *sikertelen* *leállítva*, vagy *Szüneteltetve*. Ha a tároló fut-e, de a állapota volt, vagy nem megfelelően jelenik meg, vagy volt nem dolgozza fel az ügynök és a 30 percnél hosszabb ideig nem válaszolt, az állapot értéke *ismeretlen*. További részletek a állapot ikon az alábbi táblázatban szerepelnek.|
+| Átlagos&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;% | Minden entitás, a kiválasztott metrika és PERCENTILIS hányada összesítő átlaga. |
+| Avg, Min, Max, 50, 90  | Összesítő az átlagos CPU millicore vagy a memória teljesítményét a kiválasztott PERCENTILIS tárolója. Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
+| Tárolók | A vezérlő vagy a pod tárolók száma összesen. |
+| Újraindul | Összesítő tárolókból újraindítás száma. |
 | Hasznos üzemidő | Egy tároló indítása óta idejét jelzi. |
 | Csomópont | Csak a tárolók és a podokat. Melyik, a hozzá tartozó tartományvezérlő jeleníti meg. | 
-| Átlagos %, a MIN %, a maximális száma: %, a 50 %, a 90 % trend| Oszlopdiagram trend jelölő PERCENTILIS mérőszám, a vezérlő. |
+| Átlagos trend&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;%| Oszlopdiagram trend jelölő PERCENTILIS mérőszám, a vezérlő. |
 
 Az ikonok az állapot mezőben a tárolók online állapotát jelzi:
  
-| Ikon | status | 
+| Ikon | Állapot | 
 |--------|-------------|
 | ![Készen áll, futó állapot ikon](./media/monitoring-container-health/container-health-ready-icon.png) | Fut (kész)|
 | ![Várakozás vagy szüneteltetett állapot ikon](./media/monitoring-container-health/container-health-waiting-icon.png) | Várakozás vagy fel van függesztve|
 | ![Utolsó jelentett futó állapotikon](./media/monitoring-container-health/container-health-grey-icon.png) | Utolsó jelentett fut, de 30 percnél hosszabb ideig nem válaszolt.|
 | ![A sikeres állapot ikon](./media/monitoring-container-health/container-health-green-icon.png) | Sikeresen leállt vagy nem sikerült leállítani a|
 
-Az állapotjelző ikon alapján a pod biztosít számát mutatja. Azt mutatja, az rosszabb kétállapotú, és ha az egérmutatót az állapot, minden podok állapota egy összesítése megjelenít a tárolóban.  Ha nincs kész állapotú, az állapot érték jelenik-e meg a **(0)**.  
+Az állapotjelző ikon alapján a pod biztosít számát jeleníti meg. A legrosszabb kétállapotú jeleníti meg, és ha az egérmutatót az állapot, a tárolóban megjeleníti az összes podok egy összesítő állapotát. Ha nincs kész állapotú, az állapot értékét jeleníti meg **(0)**. 
 
 Válassza ki a választó **tárolók**.
 
 ![Válassza ki a tárolók megtekintése](./media/monitoring-container-health/container-health-containers-tab.png)
 
-Itt látható a tárolókat teljesítménybeli állapotát.
+Itt megtekintheti a tárolókat teljesítménybeli állapotát.
 
 ![< név > tartományvezérlők teljesítmény nézet](./media/monitoring-container-health/container-health-containers-view.png)
 
-A következő táblázat ismerteti a tárolók megtekintésekor megjelenő információkat.
+A tárolók megtekintésekor megjelenő információkat az alábbi táblázatban olvasható:
 
 | Oszlop | Leírás | 
 |--------|-------------|
-| Name (Név) | A vezérlő neve|
-| status | A tárolók, ha van ilyen állapotát. További részletek a állapot ikon az alábbi táblázatban szerepelnek.|
-| ÁTLAGOS %, A MIN %, A MAXIMÁLIS SZÁMA: %, A 50 %, A 90 % | Minden entitás, a kiválasztott metrika és PERCENTILIS átlagos % átlagos összesítő. |
-| AVG, MIN, MAX, 50, 90  | Az átlagos CPU millicore vagy a memória teljesítményét a kiválasztott PERCENTILIS tárolója összesítő.  Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
+| Name (Név) | A vezérlő neve.|
+| Állapot | A tárolók, ha van ilyen állapotát. További részletek a állapot ikon a következő táblázatban találhatók.|
+| Átlagos&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;% | Az összesítő az átlagos százalékos aránya a kiválasztott metrika és PERCENTILIS minden entitáshoz. |
+| Avg, Min, Max, 50, 90  | Az összesítő az átlagos CPU millicore vagy a memória teljesítményét a kiválasztott PERCENTILIS tárolója. Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
 | Pod | A pod tartalmazó tároló.| 
 | Csomópont |  Csomópont, amelyben a tároló található. | 
 | Újraindul | Egy tároló indítása óta idejét jelzi. |
 | Hasznos üzemidő | Mivel egy tároló volt elindítva vagy újraindítva idejét jelzi. |
-| Átlagos %, a MIN %, a maximális száma: %, a 50 %, a 90 % trend | Oszlopdiagram trend átlagos metrika %-át a tárolót. |
+| Átlagos trend&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;% | Oszlopdiagram a tendencia, hogy a tároló átlagos metrika százalékát jelenti. |
 
-Az ikonok az állapot mezőben a podok online állapotát jelzi:
+Az állapot mezőben az ikonok jelzi a podok, online válik, az alábbi táblázatban leírtak szerint:
  
-| Ikon | status | 
+| Ikon | Állapot | 
 |--------|-------------|
 | ![Készen áll, futó állapot ikon](./media/monitoring-container-health/container-health-ready-icon.png) | Fut (kész)|
 | ![Várakozás vagy szüneteltetett állapot ikon](./media/monitoring-container-health/container-health-waiting-icon.png) | Várakozás vagy fel van függesztve|
-| ![Utolsó jelentett futó állapotikon](./media/monitoring-container-health/container-health-grey-icon.png) | Utolsó jelentett fut, de 30 percnél hosszabb ideig nem válaszolt.|
+| ![Utolsó jelentett futó állapotikon](./media/monitoring-container-health/container-health-grey-icon.png) | Utolsó jelentett fut, de a 30 percnél hosszabb ideig nem válaszolt|
 | ![Elbocsátott állapotikon](./media/monitoring-container-health/container-health-terminated-icon.png) | Sikeresen leállt vagy nem sikerült leállítani a|
 | ![Sikertelen állapotikon](./media/monitoring-container-health/container-health-failed-icon.png) | Hibás állapotban |
 
-## <a name="container-data-collection-details"></a>Tároló adatainak gyűjtése részletei
+## <a name="container-data-collection-details"></a>Tároló-adatokat gyűjtő részletei
 Tároló állapotának tároló-gazdagépek és -tárolók különböző mérőszámokban és naplófájlokban teljesítményadatokat gyűjt. Az adatgyűjtés percen át 3 percenként történik.
 
 ### <a name="container-records"></a>Tárolórekordok
 
-Az alábbi táblázat a tároló állapotának és az adattípusok, amely a napló keresési eredmények között megjelenik által összegyűjtött rekordokkal példái láthatók.
+Az alábbi táblázatban példák a tároló állapotának és az adattípusok, amely a napló keresési eredmények között megjelenik által gyűjtött rekordok jelennek meg:
 
 | Adattípus | Naplókeresési adatok típusa | Mezők |
 | --- | --- | --- |
@@ -431,29 +440,33 @@ Az alábbi táblázat a tároló állapotának és az adattípusok, amely a napl
 | A Kubernetes-fürt része tárolók teljesítménymetrikáit | Teljesítményoptimalizált &#124; ahol ObjectName == "K8SContainer" | CounterName &#40;cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, restartTimeEpoch, cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryLimitBytes&#41;, Avg, TimeGenerated, Számláló_elérési_útja, SourceSystem | 
 
 ## <a name="search-logs-to-analyze-data"></a>Keresési naplókat az adatelemzéshez
-A log Analytics segítségével keresése trendek, diagnosztizálhatja a szűk keresztmetszeteket, előrejelzési vagy összevetését adatokat, amelyek segítségével határozza meg, hogy optimális működik-e az aktuális fürtbeállításokat.  Előre definiált naplókeresések biztosított rögtön használatba vagy biztosítása érdekében az adatokat a kívánt módon szabhatja testre. 
+A log Analytics segítségével keresése trendek, diagnosztizálhatja a szűk keresztmetszeteket, előrejelzési vagy összevetését adatokat, amelyek segítségével határozza meg, hogy optimális működik-e az aktuális fürtbeállításokat. Előre definiált naplókeresések rögtön használatba, illetve adja vissza a kívánt módon szabhatja testre a biztosított. 
 
-Válassza a munkaterület az adatok interaktív elemzés céljából is végezhet a **napló megtekintése** beállítás érhető el, a jobb szélen bontsa ki a vezérlő vagy a tároló.  **Naplóbeli keresés** a lap jobb fent az oldalra, amelyen korábban volt a portálon.
+Válassza a munkaterület az adatok interaktív elemzés céljából is végezhet a **napló megtekintése** beállítás érhető el a jobb szélen bontsa ki a vezérlő vagy a tároló. A **naplóbeli keresés** oldal az Azure portal oldalán meg forráshálózati felett jelenik meg.
 
 ![Adatok elemzése a Log Analytics az](./media/monitoring-container-health/container-health-view-logs.png)   
 
-A tároló naplóinak kimenete a Log Analyticsnek továbbítják az STDOUT és STDERR. Tároló health által monitorozott Azure felügyelt Kubernetes (AKS), mert Kube rendszer nem gyűjti ma létrehozott adatok nagy mennyisége miatt.     
+A tároló naplók kimenete, a Log Analytics továbbíthatja a rendszer az STDOUT és STDERR. Tároló health által monitorozott Azure által felügyelt Kubernetes-(AKS), mert Kube rendszer nem gyűjti jelenleg generált adatok nagy mennyisége miatt. 
 
 ### <a name="example-log-search-queries"></a>Példa naplóbeli keresési lekérdezések
-Gyakran hasznos építhetők fel lekérdezések például vagy két kezdődő és annak módosításával őket az igényeinek. Az alábbi mintalekérdezések segíteni bonyolultabb lekérdezéseket is kipróbálhat.
+Gyakran hasznos hozhatók létre olyan lekérdezések, amelyek például vagy a kettő, és módosítsa őket az igényeinek. Annak érdekében, hogy speciális lekérdezések felépítését, kísérletezhet, és az alábbi mintalekérdezések:
 
 | Lekérdezés | Leírás | 
 |-------|-------------|
-| ContainerInventory<br> &#124;Számítógép, név, kép, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime projekt<br> &#124;táblázat megjelenítése | Összes tároló életciklus-információinak listázása| 
+| ContainerInventory<br> &#124;Számítógép, név, kép, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime projekt<br> &#124;táblázat megjelenítése | Összes egy tároló tárolóéletciklus-adat listázása| 
 | KubeEvents_CL<br> &#124;ahol not(isempty(Namespace_s))<br> &#124;Rendezés a TimeGenerated desc<br> &#124;táblázat megjelenítése | Kubernetes-események|
 | ContainerImageInventory<br> &#124;summarize AggregatedValue futó = count() by ImageTag, kép | Rendszerképek leltára | 
 | **A speciális analitika, válassza ki a vonaldiagramok**:<br> Teljesítményoptimalizált<br> &#124;ahol ObjectName == "Container" és a CounterName == "processzoridő"<br> &#124;Összegzés AvgCPUPercent avg(CounterValue) a bin (TimeGenerated, 30 millió), InstanceName = | Tároló CPU | 
 | **A speciális analitika, válassza ki a vonaldiagramok**:<br> Teljesítményoptimalizált &#124; ahol ObjectName == "Container" és a CounterName == "Memória kihasználtsága MB"<br> &#124;Összegzés AvgUsedMemory avg(CounterValue) a bin (TimeGenerated, 30 millió), InstanceName = | Tároló memória |
 
 ## <a name="how-to-stop-monitoring-with-container-health"></a>Előfordulhat, hogy a tároló állapotának figyelése
-Az AKS-tároló monitoringja engedélyezése után úgy döntene, hogy már nem szeretné, hogy megfigyeli azt, akkor is *kikapcsolhatja az újat* a megadott Azure Resource Manager-sablonok használata a PowerShell-parancsmag  **Új AzureRmResourceGroupDeployment** vagy az Azure CLI használatával.  Egy JSON-sablon meghatározza a konfigurációt a *kikapcsolhatja az újat* és az egyéb JSON-sablont, konfigurálja úgy, hogy adja meg az AKS fürterőforrás Azonosítót és erőforrás-csoport a fürt üzembe lesz helyezve, a paraméterértékeket tartalmaz.  Ha nem ismeri a sablon használatával a PowerShell erőforrások üzembe helyezésének fogalmait, tekintse meg a [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md) vagy az Azure CLI-vel lásd, [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md).
+Ha engedélyezése után az AKS-tárolók figyelését, úgy döntene, hogy már nem szeretne, megfigyeli azt, akkor is *kikapcsolhatja az újat* vagy a megadott Azure Resource Manager-sablonok segítségével a PowerShell-parancsmag  **Új AzureRmResourceGroupDeployment** vagy az Azure CLI használatával. Egy JSON-sablon meghatározza a konfigurációt a *kikapcsolhatja az újat*. A másik, konfigurálja úgy, hogy adja meg az AKS Azonosítót és erőforrás erőforráscsoportot, amely a fürt üzembe lesz helyezve, a paraméterértékeket tartalmaz. 
 
-Ha úgy döntött, hogy az Azure parancssori felület használata, először telepítése és használata a parancssori felület helyileg.  Szükség rá, hogy futnak-e az Azure CLI 2.0.27-es vagy újabb. Futtatás `az --version` a verziójának azonosításához. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Ha még nem ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalma, lásd:
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
+
+Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Kell futnia az Azure CLI 2.0.27-es vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ### <a name="create-and-execute-template"></a>Hozzon létre, és hajtsa végre a sablon
 
@@ -499,7 +512,7 @@ Ha úgy döntött, hogy az Azure parancssori felület használata, először tel
     ```
 
 2. Mentse a fájlt **OptOutTemplate.json** egy helyi mappába.
-3. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
+3. A következő JSON-szintaxist illessze be a fájlba:
 
     ```json
     {
@@ -516,11 +529,11 @@ Ha úgy döntött, hogy az Azure parancssori felület használata, először tel
     }
     ```
 
-4. Az érték szerkesztése **aksResourceId** és **aksResourceLocation** az értékeket az AKS-fürtöt, amely a a **tulajdonságok** a kijelölt fürt lapján.
+4. Értékeinek szerkesztéséhez **aksResourceId** és **aksResourceLocation** értékeit az AKS-fürtöt, amely a használatával a **tulajdonságok** a kijelölt fürt lap .
 
     ![Tároló tulajdonságai lap](./media/monitoring-container-health/container-properties-page.png)
 
-    Ha a **tulajdonságok** területén is átmásolja a **munkaterület erőforrás-azonosító**.  Az értéket kötelező megadni, ha úgy dönt, hogy törli a Log Analytics-munkaterület később, amely nem történik meg a folyamat részeként.  
+    Ha a **tulajdonságok** területén is átmásolja a **munkaterület erőforrás-azonosító**. Az értéket kötelező megadni, ha úgy dönt, hogy később törli a Log Analytics-munkaterületet. Ez a folyamat részeként a Log Analytics-munkaterület törlése nem történik. 
 
 5. Mentse a fájlt **OptOutParam.json** egy helyi mappába.
 6. Készen áll a sablon üzembe helyezésére. 
@@ -553,18 +566,18 @@ Ha úgy döntött, hogy az Azure parancssori felület használata, először tel
         ProvisioningState       : Succeeded
         ```
 
-Ha a munkaterület létrejött, csak a fürt figyelésére is alkalmas, és már nincs rá szükség, akkor törölje kézzel. Ha nem ismeri a munkaterület törlése, lásd: [törlése az Azure Log Analytics-munkaterületet az Azure Portallal](../log-analytics/log-analytics-manage-del-workspace.md).  Ne felejtse el a kapcsolatos a **munkaterület erőforrás-azonosító** azt korábban a 4. lépésben másolt, szükség van rá fog.  
+Ha a munkaterület létrejött, csak a fürt figyelésére is alkalmas, és már nincs rá szükség, akkor törölje kézzel. Ha nem ismeri a munkaterület törlése, lásd: [törlése az Azure Log Analytics-munkaterületet az Azure Portallal](../log-analytics/log-analytics-manage-del-workspace.md). Ne felejtse el a kapcsolatos a **munkaterület erőforrás-azonosító** azt korábban a 4. lépésben másolt, szükség van rá fog. 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ez a témakör az adatait a tároló állapotának kapcsolatos hibaelhárítás.
 
-Ha a tároló állapotának lett sikeresen engedélyezve és konfigurálva, de Ön nem érzékelhető a bármely állapotinformációkat vagy a Log Analytics-Naplókeresés végrehajtásakor eredmények, a probléma diagnosztizálása érdekében a következő lépéseket végezheti.   
+Ha a tároló állapotának lett sikeresen engedélyezve és konfigurálva, de nem tekintheti meg állapotinformációk vagy az eredmény a Log Analytics Naplókeresés végrehajtásakor, segíthet a probléma diagnosztizálása az alábbiak szerint: 
 
 1. Ellenőrizze az ügynök állapotát a következő parancs futtatásával: 
 
     `kubectl get ds omsagent --namespace=kube-system`
 
-    A kimenet a következő jelző megfelelően fejeződött üzembe kell hasonlítania:
+    A kimenet a következő, amely azt jelzi, hogy megfelelően lett-e telepítve kell hasonlítania:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -575,7 +588,7 @@ Ha a tároló állapotának lett sikeresen engedélyezve és konfigurálva, de �
 
     `kubectl get deployment omsagent-rs -n=kube-system`
 
-    A kimenet a következő jelző megfelelően fejeződött üzembe kell hasonlítania:
+    A kimenet a következő, amely azt jelzi, hogy megfelelően lett-e telepítve kell hasonlítania:
 
     ```
     User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -583,7 +596,7 @@ Ha a tároló állapotának lett sikeresen engedélyezve és konfigurálva, de �
     omsagent   1         1         1            1            3h
     ```
 
-3. A állapotának ellenőrzése, hogy fut-e a pod vagy nem a következő parancs futtatásával: `kubectl get pods --namespace=kube-system`
+3. Ellenőrizze, hogy fut a futó a következő parancsot a pod állapotának ellenőrzéséhez: `kubectl get pods --namespace=kube-system`
 
     A kimenet a következő állapottal kell hasonlítania *futó* a omsagent számára:
 
@@ -597,8 +610,9 @@ Ha a tároló állapotának lett sikeresen engedélyezve és konfigurálva, de �
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-4. Ellenőrizze az ügynök bejegyzéseit. A tárolóalapú ügynök telepítésekor, egy gyors ellenőrzés futtatásával OMI a következő parancsokat, és megjeleníti az ügynök verziója fut, és 
-5.  szolgáltató. Ha szeretné látni, hogy az ügynök sikeresen lett előkészítve, futtassa a következő parancsot: `kubectl logs omsagent-484hw --namespace=kube-system`
+4. Ellenőrizze az ügynök bejegyzéseit. A tárolóalapú ügynök telepítésekor lekérdezi az OMI a következő parancsok futtatásával egy gyors ellenőrzés fut, és az ügynök és a szolgáltató verzióját jeleníti meg. 
+
+5. Győződjön meg arról, hogy az ügynök sikeresen lett előkészítve, futtassa a következő parancsot: `kubectl logs omsagent-484hw --namespace=kube-system`
 
     Az állapot a következő kell hasonlítania:
 
@@ -625,4 +639,4 @@ Ha a tároló állapotának lett sikeresen engedélyezve és konfigurálva, de �
 
 ## <a name="next-steps"></a>További lépések
 
-[Naplók keresése](../log-analytics/log-analytics-log-search.md) részletes tároló állapotát és az alkalmazás teljesítményének információk megtekintéséhez.  
+Részletes tároló állapotát és az alkalmazás teljesítményének információk megtekintése: [naplók keresése](../log-analytics/log-analytics-log-search.md). 

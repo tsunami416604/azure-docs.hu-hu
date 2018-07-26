@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/24/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: d131fb09e365a7a2d17b8a96c6a5fbc5d82164dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237936"
+ms.locfileid: "39248096"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -29,8 +29,9 @@ Az Azure-környezet van több "csomag" figyelési adatok, és a metódus az adat
   - Alakíthatja ki például a kód egy SDK-val a [Application Insights SDK](../application-insights/app-insights-overview.md).
   - A monitorozási ügynök, amely figyeli az új alkalmazás-naplókat a gépen futó az alkalmazás futtatásának, mint például a [Windows Azure diagnosztikai ügynök](./azure-diagnostics.md) vagy [Linux Azure diagnosztikai ügynök](../virtual-machines/linux/diagnostic-extension.md).
 - **Vendég operációs rendszerek monitorozási adatai:** az operációs rendszer, amelyen fut az alkalmazás adatait. Példák a vendég operációs rendszer monitorozási adatok lenne a Linux rendszernaplójából vagy a Windows rendszer eseményeket. Ilyen típusú adatok gyűjtéséhez, például ügynököt telepíteni kell a [Windows Azure diagnosztikai ügynök](./azure-diagnostics.md) vagy [Linux Azure diagnosztikai ügynök](../virtual-machines/linux/diagnostic-extension.md).
-- **Azure-erőforrás monitorozási adatai:** egy Azure-erőforrás a művelet adatait. Egyes Azure-erőforrástípus, például a virtuális gépek van egy vendég operációs rendszereket és figyelése, hogy az Azure szolgáltatáson belüli alkalmazások. Más Azure-erőforrások, például a hálózati biztonsági csoportok az erőforrás monitorozási adatok legmagasabb szintű rendelkezésre álló adatok (mivel az nem áll fenn a vendég operációs rendszer vagy alkalmazás ezeket az erőforrásokat futtató). Ezeket az adatokat lehessen gyűjteni használatával [erőforrás diagnosztikai beállításait](./monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
-- **Figyelési adatok az Azure platform:** a művelet és a egy Azure-előfizetés vagy a bérlő felügyeleti adatait, valamint állapotának és az Azure működésének adatait magát. A [tevékenységnapló](./monitoring-overview-activity-logs.md), beleértve a szolgáltatás egészségügyi adatok és az Active Directory naplózások példák a monitorozási adatok platform. Ezeket az adatokat, valamint a diagnosztikai beállítások használatával gyűjthetők össze.
+- **Azure-erőforrás monitorozási adatai:** egy Azure-erőforrás a művelet adatait. Egyes Azure-erőforrástípus, például a virtuális gépek van egy vendég operációs rendszereket és figyelése, hogy az Azure szolgáltatáson belüli alkalmazások. Más Azure-erőforrások, például a hálózati biztonsági csoportok az erőforrás monitorozási adatok legmagasabb szintű rendelkezésre álló adatok (mivel az nem áll fenn a vendég operációs rendszer vagy alkalmazás ezeket az erőforrásokat futtató). Ezeket az adatokat lehessen gyűjteni használatával [erőforrás diagnosztikai beállításait](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
+- **Azure-előfizetés monitorozási adatai:** a művelet és a felügyeleti Azure-előfizetés adatait, valamint állapotának és az Azure működésének adatait magát. A [tevékenységnapló](./monitoring-overview-activity-logs.md) monitorozási adatok, például a service health incidens- és Azure Resource Manager-naplók a legtöbb előfizetést tartalmazza. Ezek az adatok Log profilt használó gyűjtheti.
+- **Az Azure-bérlő monitorozási adatok:** bérlői szintű Azure-szolgáltatások, például az Azure Active Directory vonatkozó adatokkal. Naplózza az Azure Active Directory és a bejelentkezések a monitorozási adatok bérlői példái. Ezeket az adatokat egy bérlő diagnosztikai beállítás használatával gyűjthetők össze.
 
 Az egyik csomagunkban adatküldés egy eseményközpontba, ahol azt tölthetők be a partner eszközt. A következő szakaszokban az egyes szintekről az eseményközpontok felé is streamelhetők adatok konfigurálása. A lépések feltételezik, hogy már rendelkezik eszközöket lehet figyelni a rétegben.
 
@@ -47,11 +48,17 @@ Mielőtt elkezdené, kell [hozzon létre egy Event Hubs-névtér és az esemény
 
 Emellett tekintse át a [Azure Event Hubs – gyakori kérdések](../event-hubs/event-hubs-faq.md).
 
-## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatok be monitorozási adatok az Azure platform egy eseményközpontba is streamelhetők?
+## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatok be az Azure-bérlő figyelési adatokat egy eseményközpontba is streamelhetők?
 
-Figyelési adatok az Azure platform két fő eseményforrást származik:
-1. A [Azure tevékenységnapló](./monitoring-overview-activity-logs.md), amely tartalmazza a létrehozása, frissítése és törlési műveletek a Resource Manager, a változások [az Azure service health](../service-health/service-health-overview.md) , amely befolyásolhatja az erőforrást az előfizetésében, a [a resource health](../service-health/resource-health-overview.md) állapotváltásra, és számos egyéb típusú előfizetés-szintű eseményeit. [Ez a cikk részletesen jelennek meg az Azure-tevékenységnapló eseményeket az összes kategória](./monitoring-activity-log-schema.md).
-2. [Jelentéskészítés az Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md), amely tartalmazza a bejelentkezési tevékenység és a naplózási beállításainak egy adott bérlőn belül végrehajtott módosítások előzményei. Ez még nem lehetséges az Azure Active Directory-adatok streamelése az event hubs-eseményközpontba.
+Az Azure-bérlő monitorozási adatok jelenleg csak az Azure Active Directory érhető el. Származó adatokat is használhatja [jelentéskészítés az Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md), amely bejelentkezési tevékenység és a naplózási beállításainak egy adott bérlőn belül végrehajtott módosítások előzményeit tartalmazza.
+
+### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Az Azure Active Directory-adatok Stream egy eseményközpontba
+
+Az Azure Active Directory-naplóból származó adatokat küldeni az Event Hubs-névtér, beállíthatja egy bérlő diagnosztikai beállítás az AAD-bérlőre. [Ezt az útmutatót](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md) állíthatja be a bérlő diagnosztikai beállítást.
+
+## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatok be Azure-előfizetés monitorozási adatai is streamelhetők az eseményközpontok felé?
+
+Azure-előfizetés monitorozási adatok érhető el a [Azure tevékenységnapló](./monitoring-overview-activity-logs.md). Ez tartalmazza a létrehozása, frissítése és törlési műveletek a Resource Manager, a változások [az Azure service health](../service-health/service-health-overview.md) , amely befolyásolhatja az erőforrást az előfizetésében, a [a resource health](../service-health/resource-health-overview.md) állapota átmenetekkel és számos egyéb típusú előfizetés-szintű eseményeit. [Ez a cikk részletesen jelennek meg az Azure-tevékenységnapló eseményeket az összes kategória](./monitoring-activity-log-schema.md).
 
 ### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>Stream Azure tevékenységnapló adatainak eseményközpontba
 

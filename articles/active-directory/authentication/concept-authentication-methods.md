@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 48f3a77d2aa81cda62f8206709268bae8e7c8737
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9141658c25ea3051d8e7c866f523c54afb7d6e18
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163948"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248344"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -30,10 +30,17 @@ A Microsoft nyomatékosan javasolja a rendszergazdák engedélyezés felhasznál
 | Jelszó | Többtényezős hitelesítés és az SSPR |
 | Biztonsági kérdések | Csak az SSPR |
 | E-mail-cím | Csak az SSPR |
-| A Microsoft Authenticator alkalmazás | Csak a többtényezős hitelesítés |
+| A Microsoft Authenticator alkalmazás | Többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
 | SMS | Többtényezős hitelesítés és az SSPR |
 | Hanghívás | Többtényezős hitelesítés és az SSPR |
 | Alkalmazásjelszók | Bizonyos esetekben csak a többtényezős hitelesítés |
+
+![Használja a bejelentkezési képernyőn hitelesítési módszerek](media/concept-authentication-methods/overview-login.png)
+
+|     |
+| --- |
+| Mobilalkalmazás-értesítés és módszerek a az Azure AD önkiszolgáló jelszó-, mobilalkalmazás-kód alaphelyzetbe állítása a nyilvános előzetes verziójú funkciók az Azure Active Directory. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+|     |
 
 ## <a name="password"></a>Jelszó
 
@@ -116,13 +123,27 @@ A Microsoft Authenticator alkalmazás egy további, az Azure ad-ben munkahelyi v
 
 A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el.
 
+> [!NOTE]
+> Felhasználó nem fog regisztrálni az mobilalkalmazás regisztráció önkiszolgáló jelszó-visszaállítás során. Ehelyett a felhasználók regisztrálhatják saját mobilalkalmazást található [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) vagy a biztonsági adatok regisztrálása verzió díjának [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
+>
+
 ### <a name="notification-through-mobile-app"></a>Értesítés mobilalkalmazáson keresztül
 
 A Microsoft Authenticator alkalmazás segítségével a fiókokhoz való illetéktelen hozzáférés megakadályozása és a egy rövid értesítést a okostelefonján vagy táblagépén küldésével állítsa le a csalárd tranzakciókat. Felhasználók tekintse meg az értesítést, és ha az megbízható, válassza ki az ellenőrzés. Ellenkező esetben Megtagadás kijelölve.
 
+> [!WARNING]
+> Az önkiszolgáló jelszó-visszaállítás, ha csak egyetlen módszer a visszaállításhoz szükséges, az ellenőrző kódot csak a lehetőség a felhasználók számára elérhető.
+>
+> Ha két módszer szükség felhasználók tudják alaphelyzetbe **vagy** értesítési **vagy** ellenőrzőkódot kívül bármely más módszerek engedélyezve van.
+>
+
 ### <a name="verification-code-from-mobile-app"></a>Mobilalkalmazás ellenőrzőkódja
 
-A Microsoft Authenticator alkalmazást, vagy más harmadik felek alkalmazásaihoz segítségével szoftvertokenként hozzon létre egy OAuth ellenőrző kódot. Miután megadta a felhasználónevét és jelszavát, írja be a bejelentkezési képernyőn az alkalmazás által biztosított kódot. Az ellenőrző kódot biztosít egy második hitelesítési mód.
+A Microsoft Authenticator alkalmazást, vagy más harmadik felek alkalmazásaihoz használható szoftvertokenként OATH-Ellenőrzőkód generálásához. Miután megadta a felhasználónevét és jelszavát, írja be a bejelentkezési képernyőn az alkalmazás által biztosított kódot. Az ellenőrző kódot biztosít egy második hitelesítési mód.
+
+> [!WARNING]
+> Az önkiszolgáló jelszó-visszaállítás, ha csak egyetlen módszer a visszaállításhoz szükséges ellenőrző kódot a lehetőség csak a felhasználók számára elérhető.
+>
 
 ## <a name="mobile-phone"></a>Mobiltelefon
 

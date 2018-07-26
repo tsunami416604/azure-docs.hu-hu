@@ -1,6 +1,6 @@
 ---
-title: Metrikákat, a riasztások és a diagnosztikai naplók az Azure Batch |} Microsoft Docs
-description: Jegyezze fel, és elemzi az Azure Batch-fiók erőforrásokhoz, mint a készletek és a feladatok diagnosztikai naplózási eseményeket.
+title: Metrikák, a riasztások és a diagnosztikai naplók az Azure Batch |} A Microsoft Docs
+description: Jegyezze fel, és elemezze a diagnosztikai naplót eseményeire az Azure Batch-fiók erőforrásokat, például a készletek és tevékenységek.
 services: batch
 documentationcenter: ''
 author: dlepow
@@ -15,98 +15,98 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: e64d272695c4e47c972df040d1c1c2a63bf3dddd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 54034b9a851fc6f06f97be9cfd5f261465bad455
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31788194"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248262"
 ---
-# <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Kötegelt metrikákat, a riasztások és a naplókat a további diagnosztikai kiértékelési és figyelés
+# <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez
 
-Ez a cikk azt ismerteti, hogyan szolgáltatását használja, a Batch-fiók figyeléséhez [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Az Azure adatokat gyűjt [metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) és [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a Batch-fiókhoz az erőforrásokra. Gyűjtse össze és felhasználhatják ezeket az adatokat a különböző módszereket a Batch-fiók figyelése és diagnosztizálása problémák. Beállíthatja úgy is [metrika riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md#alerts-on-azure-monitor-data) , értesítést kapjon a metrika eléri a megadott értéket. 
+Ez a cikk azt ismerteti, hogyan szolgáltatását használja, amely a Batch-fiók figyelése [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Az Azure Monitor gyűjt [metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) és [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) az erőforrásokat a Batch-fiókban. Összegyűjtheti, és számos módon figyelheti a Batch-fiókhoz, és diagnosztizálhatja a problémákat a feldolgozásukhoz. Beállíthatja úgy is [metrikákhoz kapcsolódó riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md#alerts-on-azure-monitor-data) így értesítést kapjon a metrika eléri a megadott értéket. 
 
-## <a name="batch-metrics"></a>Kötegelt metrikák
+## <a name="batch-metrics"></a>Batch-metrikák
 
-Adatok gyűjtése le az Azure-erőforrások, amelyek az Azure-figyelő szolgáltatás által felhasznált által kibocsátott (más néven teljesítményszámlálók) Azure telemetriai adatokat. A Batch-fiók példa mérőszámok közé tartozik: készlet létrehozása események, alacsony prioritású csomópontok száma és teljes feladathoz kapcsolódó eseményekről. 
+Metrikák az Azure-erőforrások, amelyek használják az Azure Monitor szolgáltatás által kibocsátott (más néven teljesítményszámlálók) Azure telemetriai adatokat. A Batch-fiókokban példa mérőszámok közé tartozik: készlet létrehozása esemény, alacsony prioritású csomópontok száma és a feladat befejezése események. 
 
-Tekintse meg a [támogatott kötegelt metrikák listája](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts).
+Tekintse meg a [Batch támogatott mérőszámok listája](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts).
 
-Adatok gyűjtése le van:
+Metrikák a következők:
 
-* Alapértelmezés szerint engedélyezett a minden további konfiguráció nélkül Batch-fiók
-* Generált minden 1 perc
-* Nem maradnak meg automatikusan, de egy 30 napos működés közbeni előzmények rendelkezik. Részeként is megőrizni a tevékenységi metrikák [diagnosztikai naplózás](#work-with-diagnostic-logs).
+* Minden egyes Batch-fiókban, további konfiguráció nélkül alapértelmezés szerint engedélyezve
+* Generált 1 percenként
+* Nem maradnak meg automatikusan, de van egy 30 napos gördülő előzményei. Tevékenységi metrikák megőrizheti a részeként [diagnosztikai naplózás](#work-with-diagnostic-logs).
 
-### <a name="view-metrics"></a>Nézet metrikák
+### <a name="view-metrics"></a>Metrikák megtekintése
 
-A Batch-fiókhoz metrikák megtekintése az Azure portálon. A **áttekintése** lapon, az a fiók alapértelmezés szerint a kulcs csomópont, a core és a feladat metrikák jeleníti meg. 
+A Batch-fiók metrikák megtekintése az Azure Portalon. A **áttekintése** alapértelmezés szerint a fiók jeleníti meg a fő csomópont, a core és a feladat metrikák oldala. 
 
-Összes Batch-fiók metrikát megtekintése: 
+Az összes Batch-fiók metrikákat tekinthet meg: 
 
-1. A portálon kattintson **minden szolgáltatás** > **Batch-fiókok**, majd kattintson a Batch-fiók nevét.
+1. Kattintson a portál **minden szolgáltatás** > **Batch-fiókok**, majd kattintson a Batch-fiók nevére.
 2. A **figyelés**, kattintson a **metrikák**.
-3. Jelöljön ki legalább egy, a metrikákat. Ha azt szeretné, válassza a további erőforrás metrikák használatával a **előfizetések**, **erőforráscsoport**, **erőforrástípus**, és **erőforrás** legördülő lista.
+3. Válassza ki egy vagy több metrikákat. Ha azt szeretné, válassza a további erőforrás-mérőszámok segítségével a **előfizetések**, **erőforráscsoport**, **erőforrástípus**, és **erőforrás** a legördülő menük.
 
-    ![Kötegelt metrikák](media/batch-diagnostics/metrics-portal.png)
+    ![Batch-metrikák](media/batch-diagnostics/metrics-portal.png)
 
-Metrikák programozott módon lekéréséhez használja az Azure-figyelő API-kat. Lásd például: [.NET metrikák beolvasása Azure figyelő](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/).
+Metrikák programozott módon lekéréséhez használja az Azure Monitor API-kat. Lásd a [lekérése az Azure Monitor-metrikák .NET-tel](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/).
 
-## <a name="batch-metric-alerts"></a>Kötegelt metrika riasztások
+## <a name="batch-metric-alerts"></a>A Batch metrikákhoz kapcsolódó riasztások
 
-Nem kötelező lépésként beállíthatja közel valós időben *metrika riasztások* , amely indul el, ha a megadott metrika értékét a hozzárendelt küszöbérték keverve használ. A riasztást állít elő egy [értesítési](../monitoring-and-diagnostics/insights-alerts-portal.md) úgy dönt, ha a riasztás "aktív" (Ha a küszöb van átlépte, és a riasztási feltétel nem teljesül), valamint ha a "Megoldásig" (Ha újra áthaladnak a küszöbérték és a következő feltételt: nincs már teljesül). 
+Igény szerint állítsa be közel valós idejű *metrikákhoz kapcsolódó riasztások* , amely indítható el, ha egy adott mérőszám értéke átlép egy küszöbértéket, hozzárendelt. A riasztást állít elő egy [értesítési](../monitoring-and-diagnostics/insights-alerts-portal.md) úgy dönt, hogy ha a riasztás "aktív" (amikor áthaladnak a küszöbértéket, és a riasztási feltétel nem teljesül), valamint amikor azt "megoldódott" (amikor újra áthaladnak a küszöbértéket, és a feltétel nem már teljesül). 
 
-Például előfordulhat, hogy szeretne egy metrika riasztást konfigurálhat, ha a kis prioritású virtuális gép magok száma csökken bizonyos szintjét, így módosíthatja az adott összeállításban a globálisnév-készletek.
+Például érdemes metrikariasztás konfigurálása, ha az alacsony prioritású magok száma egy bizonyos szintre csökken, így módosíthatja a készletek az összeállításban.
 
-A metrika-riasztások konfigurálása a portál:
+Metrikariasztás konfigurálása a portálon:
 
 1. Kattintson a **Minden szolgáltatás** > **Batch-fiókok** lehetőségre, majd a Batch-fiók nevére.
-2. A **figyelés**, kattintson a **riasztási szabályok** > **metrika riasztás hozzáadása**.
-3. Jelölje be a metrika egy riasztási feltétel (például ha egy metrika időszakon belül meghaladja egy adott értéket) és egy vagy több értesítés.
+2. A **figyelés**, kattintson a **riasztási szabályok** > **metrikariasztás hozzáadása**.
+3. Válassza ki a metrika, egy riasztási feltétel (például ha egy metrika egy időszakban meghalad egy bizonyos értéket) és egy vagy több értesítés.
 
-Beállíthatja azt is, a közel valós idejű riasztási használatával a [REST API](). További információkért lásd: [újabb metrika riasztások használni az Azure-portálon az Azure szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)
-## <a name="batch-diagnostics"></a>Kötegelt diagnosztika
+A közel valós idejű riasztási használatával is konfigurálhatja a [REST API-val](). További információkért lásd: [az újabb metrikákhoz kapcsolódó riasztások használata az Azure-szolgáltatásokhoz az Azure Portalon](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)
+## <a name="batch-diagnostics"></a>Batch-diagnosztika
 
-Azure-erőforrások az egyes erőforrások műveletet leíró által kibocsátott diagnosztikai naplók tartalmazzák. A kötegelt gyűjtse össze a következő naplók kapcsolódnak:
+Diagnosztikai naplók az Azure-erőforrások, amelyek ismertetik az egyes erőforrások a művelet által kibocsátott információkat tartalmaznak. A Batch gyűjtse össze a következő naplók kapcsolódnak:
 
-* **Szolgáltatás** egyedi kötegelt erőforrás élettartama során az Azure Batch szolgáltatás által kibocsátott események, például egy készletet vagy a feladatot. 
+* **Szolgáltatási naplók** egyes Batch-erőforrások teljes élettartama alatt az Azure Batch szolgáltatás által kibocsátott események, például egy készlettel vagy feladattal. 
 
 * **Metrikák** naplók a fiók szintjén. 
 
-Alapértelmezés szerint nem engedélyezettek a diagnosztikai naplók gyűjteménye engedélyezésére szolgáló beállítások. Explicit módon engedélyezze a diagnosztikát minden figyelni kívánt Batch-fiókhoz.
+Alapértelmezés szerint nem engedélyezettek a beállítások a diagnosztikai naplók gyűjtésének engedélyezéséhez. Explicit módon a figyelni kívánt minden egyes Batch-fiókhoz tartozó diagnosztikai beállítások engedélyezése.
 
-### <a name="log-destinations"></a>Napló célok
+### <a name="log-destinations"></a>Napló célhelyek
 
-Egy gyakori forgatókönyv, hogy egy Azure Storage-fiók jelölje meg célhelyként napló. Naplók tárolására az Azure Storage, hozzon létre a fiókot az naplók gyűjtésének engedélyezése előtt. A storage-fiók társított a Batch-fiók, ha dönthet úgy, hogy a fiók napló célként. 
+Gyakran előfordul, hogy válassza ki az Azure Storage-fiók log céljaként. Az Azure Storage-naplók tárolásához, a fiók létrehozása-naplók gyűjtésének engedélyezése előtt. A Batch-fiók egy storage-fiókot társított, ha kiválaszthatja, hogy a fiók log céljaként. 
 
-A diagnosztikai naplók más választható célok:
+A diagnosztikai naplók számára más választható célok:
 
-* Adatfolyam-kötegelt diagnosztikai naplóeseményeket egy [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). Az Event Hubs fogadására képes több millió esemény / másodperc, amely akkor átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató használatával. 
+* Kötegelt diagnosztikai napló események a Stream- [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Az Event Hubs fogadására képes több millió esemény / másodperc, amely, átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató segítségével. 
 
-* A diagnosztikai naplók küldése [Azure Naplóelemzés](../log-analytics/log-analytics-overview.md), amelyen az Operations Management Suite (OMS) portálon elemezheti őket, vagy a Power bi-ban vagy az Excel elemzés céljából exportálhatja őket.
+* Diagnosztikai naplók küldése [Azure Log Analytics](../log-analytics/log-analytics-overview.md), ahol elemezheti az Operations Management Suite (OMS) portálra, és exportálhatja is azokat elemzés a Power bi-ban vagy az Excel.
 
 > [!NOTE]
-> Tárolja, vagy az Azure-szolgáltatásokkal diagnosztikai naplófájl adatok feldolgozása további költségekkel járhat. 
+> Ön további költségekkel járhat tárolásához, vagy az Azure-szolgáltatások diagnosztikai naplóadatokat feldolgozni. 
 >
 
-### <a name="enable-collection-of-batch-diagnostic-logs"></a>Az kötegelt diagnosztikai naplók gyűjtésének engedélyezése
+### <a name="enable-collection-of-batch-diagnostic-logs"></a>Diagnosztikai naplók a Batchben gyűjtésének engedélyezéséhez
 
-1. A portálon kattintson **minden szolgáltatás** > **Batch-fiókok**, majd kattintson a Batch-fiók nevét.
-2. A **figyelés**, kattintson a **diagnosztikai naplók** > **a diagnosztika bekapcsolásához**.
-3. A **diagnosztikai beállítások**, adjon meg egy nevet a beállítás, és válassza a napló cél (meglévő tárolási fiók, az Event Hubs vagy Naplóelemzési). Válassza ki az egyik vagy mindkét **ServiceLog** és **AllMetrics**.
+1. Kattintson a portál **minden szolgáltatás** > **Batch-fiókok**, majd kattintson a Batch-fiók nevére.
+2. A **figyelés**, kattintson a **diagnosztikai naplók** > **diagnosztika bekapcsolása**.
+3. A **diagnosztikai beállítások**, adjon meg egy nevet a beállítás, és válassza ki a naplócél (meglévő tárolási fiók, az Eseményközpont vagy a Log Analytics). Válassza ki az egyik vagy mindkét **ServiceLog** és **AllMetrics**.
 
-    Válasszon egy tárfiókot, opcionálisan állítja egy megőrzési házirend. Ha nem adja meg egy megőrzési napok száma, adatok megőrzi a tárfiók élettartama során.
+    Amikor kiválaszt egy tárfiókot, igény szerint adatmegőrzési szabály beállításához. Ha nem adja meg a megőrzési napok száma, adatok megőrződnek a storage-fiók élettartama során.
 
 4. Kattintson a **Save** (Mentés) gombra.
 
-    ![Kötegelt diagnosztika](media/batch-diagnostics/diagnostics-portal.png)
+    ![Batch-diagnosztika](media/batch-diagnostics/diagnostics-portal.png)
 
-Naplózási gyűjtés engedélyezése az egyéb lehetőségei közé tartozik: Azure figyelő használni a portál a diagnosztikai beállítások konfigurálásához használja a [Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md), vagy az Azure PowerShell vagy az Azure parancssori felület használata. Lásd: [gyűjtése és felhasználása az Azure-erőforrások naplóadatait](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs).
+Az Erőforrásnapló-gyűjtés engedélyezése más lehetőségek a következők: a portálon az Azure Monitor használatával diagnosztikai beállítások konfigurálása, használja a [Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md), vagy az Azure PowerShell vagy az Azure parancssori felület. Lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
 
 
-### <a name="access-diagnostics-logs-in-storage"></a>Tárolási bejelentkezik hozzáférést diagnosztika
+### <a name="access-diagnostics-logs-in-storage"></a>Hozzáférés diagnosztikai naplók storage-ban
 
-Amikor archivál kötegelt diagnosztikai naplók tárfiókokban, tárolót létrejön a tárfiók, amint egy kapcsolódó esemény akkor következik be. Blobok az alábbi elnevezési mintája alapján jönnek létre:
+Ha archiválja kötegelt diagnosztikai naplókat egy tárfiókban, egy storage-tárolót a storage-fiókban jön létre, amint a kapcsolódó esemény következik be. Blobok jönnek létre a következő elnevezési mintának megfelelően:
 
 ```
 insights-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/
@@ -122,15 +122,15 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-PT1H.json fájlját tartalmazza JSON-formátumú események, a blob URL-címben megadott órán belül (például h = 12). Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéket (m = 00) mindig 00, mivel diagnosztikai alkalmazásnapló-események az egyes blobok óránként van felosztva. (Az összes idő (UTC) is.)
+Mindegyik PT1H.json blob fájl tartalmazza a blob URL-CÍMBEN megadott egy órán belül bekövetkezett események JSON-formátumú (például h = 12). Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéke (m = 00) mindig 00, mert a diagnosztikai naplóesemények óránként külön blobokba vannak osztva. (UTC szerint is minden esetben.)
 
 
-A tárfiók a diagnosztikai naplók a séma kapcsolatos további információkért lásd: [archív Azure diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+További információ a tárfiókot a diagnosztikai naplók a séma: [archiválása az Azure diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
 
-A Storage API-k segítségével fér hozzá a tárfiókban lévő naplókat programozott módon. 
+A Storage API-k használatával programozott módon hozzáférni az a tárfiókban lévő naplókat. 
 
 ### <a name="service-log-events"></a>Szolgáltatás bejelentkezési események
-Azure Batch szolgáltatás naplók, ha gyűjtött, például egy készletet vagy a feladat egyedi kötegelt erőforrás élettartama során az Azure Batch szolgáltatás által kibocsátott eseményeket tartalmaz. Minden egyes kötegelt által kibocsátott naplóz JSON formátumban. Például ez az a szervezet egy minta **készlet esemény létrehozása**:
+Az Azure szolgáltatási naplók a Batchben, ha a gyűjtött, a Batch-készlettel vagy feladattal például egyedi erőforrásokat élettartama során az Azure Batch szolgáltatás által kibocsátott események tartalmaznak. Minden egyes köteg által kibocsátott naplóz JSON formátumban. Például ez a minta törzse **készlet létrehozása esemény**:
 
 ```json
 {
@@ -154,16 +154,16 @@ Azure Batch szolgáltatás naplók, ha gyűjtött, például egy készletet vagy
 }
 ```
 
-A Batch szolgáltatás jelenleg a következő szolgáltatás bejelentkezési események bocsát ki. Ez a lista nem lehet teljes, mivel további események is hozzá vannak adva ez a cikk utolsó frissítése óta.
+A Batch szolgáltatás jelenleg a következő szolgáltatás bejelentkezési eseményeket bocsát ki. Ez a lista nem lehet teljes, mivel további események is bővült, mivel ez a cikk utolsó frissítés.
 
 | **Szolgáltatás bejelentkezési események** |
 | --- |
-| [Alkalmazáskészlet létrehozása](batch-pool-create-event.md) |
-| [Készlet törlése indítása](batch-pool-delete-start-event.md) |
-| [Teljes készlet törlése](batch-pool-delete-complete-event.md) |
-| [Készlet átméretezési indítása](batch-pool-resize-start-event.md) |
-| [Teljes készlet átméretezése](batch-pool-resize-complete-event.md) |
-| [A feladat indítása](batch-task-start-event.md) |
+| [Készlet létrehozása](batch-pool-create-event.md) |
+| [Készlet törlésének indítása](batch-pool-delete-start-event.md) |
+| [Készlet törlése kész](batch-pool-delete-complete-event.md) |
+| [Készlet átméretezésének indítása](batch-pool-resize-start-event.md) |
+| [Készlet átméretezése kész](batch-pool-resize-complete-event.md) |
+| [Zahájení úlohy](batch-task-start-event.md) |
 | [A feladat befejezése](batch-task-complete-event.md) |
 | [A feladat sikertelen](batch-task-fail-event.md) |
 
@@ -172,4 +172,4 @@ A Batch szolgáltatás jelenleg a következő szolgáltatás bejelentkezési ese
 ## <a name="next-steps"></a>További lépések
 
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
-* További információ [kötegelt megoldások figyelési](monitoring-overview.md).
+* Tudjon meg többet [Batch-megoldások figyelési](monitoring-overview.md).

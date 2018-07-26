@@ -5,22 +5,22 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a0146c0bf2b5a10f27cb59e32978aa6dff8f5982
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 266404a69c691cfbbfabc49e4d78deb11db74b52
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916326"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249155"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplóinak archiválása
 
 Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-parancsmagok, CLI vagy REST API-val archiválása a [Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md) a storage-fiókban. Ez a beállítás akkor hasznos, ha szeretné megőrizni a diagnosztikai naplók egy opcionális adatmegőrzési szabályzat naplózási, elemzési statikus vagy biztonsági mentés. A storage-fiók nem rendelkezik és a naplókat kibocsátó mindaddig, amíg a beállítást konfiguráló felhasználónak megfelelő hozzáférése RBAC mindkét előfizetéshez erőforrásnak ugyanabban az előfizetésben lennie.
 
 > [!WARNING]
-> A formátum a naplóadatok a tárfiókban lévő JSON-sorok 2018. november 1-től változik. [Tekintse meg a jelen cikk egy leírást a hatás és az eszközök kezeléséhez az új formátum frissítése.](./monitor-diagnostic-logs-append-blobs.md) 
+> A tárfiókban lévő naplóadatok formátuma 2018. nov. 1-től JSON Lines lesz. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./monitor-diagnostic-logs-append-blobs.md) 
 >
 > 
 
@@ -33,7 +33,7 @@ Mielőtt elkezdené, kell [hozzon létre egy tárfiókot](../storage/storage-cre
 
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
 
-Az alábbi módszerek bármelyikével a diagnosztikai naplók archiválása, beállíthat egy **diagnosztikai beállítás** egy adott erőforráshoz. Egy erőforrás diagnosztikai beállításának meghatározza a naplók és metrikaadatok küldeni a célhelyre (storage-fiók, az Event Hubs-névtér vagy a Log Analytics). Események az egyes naplókategória és a mérőszám, a storage-fiókban tárolt adatok az adatmegőrzési (Ha a napok száma) is meghatározza. Adatmegőrzési értéke nulla, a napló kategória események tárolása történik határozatlan idejű (azaz, végtelen). Adatmegőrzési más módon lehet minden olyan 1 és 2147483647 között eltelt napok számát. [További információ itt a diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén a rendszer törli a szabályzatot. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet. 
+Az alábbi módszerek bármelyikével a diagnosztikai naplók archiválása, beállíthat egy **diagnosztikai beállítás** egy adott erőforráshoz. Egy erőforrás diagnosztikai beállításának meghatározza a naplók és metrikaadatok küldeni a célhelyre (storage-fiók, az Event Hubs-névtér vagy a Log Analytics). Események az egyes naplókategória és a mérőszám, a storage-fiókban tárolt adatok az adatmegőrzési (Ha a napok száma) is meghatározza. Adatmegőrzési értéke nulla, a napló kategória események tárolása történik határozatlan idejű (azaz, végtelen). Adatmegőrzési más módon lehet minden olyan 1 és 2147483647 között eltelt napok számát. [További információ itt a diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings). Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén a rendszer törli a szabályzatot. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet. 
 
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
@@ -150,7 +150,7 @@ A PT1H.json fájlt belül minden egyes esemény tárolja a "rekord" tömb, a kö
 
 | Elem neve | Leírás |
 | --- | --- |
-| time |Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás a megfelelő esemény kérelem feldolgozása. |
+| idő- |Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás a megfelelő esemény kérelem feldolgozása. |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |
 | operationName |A művelet neve. |
 | category |Az esemény kategóriája napló. |
@@ -163,4 +163,5 @@ A PT1H.json fájlt belül minden egyes esemény tárolja a "rekord" tömb, a kö
 
 * [Tölthet le blobokat elemzéshez](../storage/storage-dotnet-how-to-use-blobs.md)
 * [Stream-diagnosztikai naplók az Event Hubs-névtér](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Az Azure Monitor szolgáltatással az Azure Active Directory naplóinak archiválása](../active-directory/reporting-azure-monitor-diagnostics-azure-storage-account.md)
 * [További információ a diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)

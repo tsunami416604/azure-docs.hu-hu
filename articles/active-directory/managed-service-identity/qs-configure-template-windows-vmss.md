@@ -1,6 +1,6 @@
 ---
-title: Az MSI konfigurálása az Azure virtuálisgép-méretezési csoport, egy sablon használatával
-description: Részletes útmutató a Felügyeltszolgáltatás-identitás (MSI) konfigurálása az Azure VMSS, egy Azure Resource Manager-sablon használatával.
+title: Felügyeltszolgáltatás-identitás konfigurálása az Azure virtuálisgép-méretezési csoport, egy sablon használatával
+description: Részletes útmutató a Felügyeltszolgáltatás-identitás konfigurálása az Azure VMSS, egy Azure Resource Manager-sablon használatával.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: b4fa875c71869dc3fd671f5dc4b801934c27f0ff
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 562bf5e5239114a8dad16727089f94f378db82ff
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237196"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258864"
 ---
 # <a name="configure-managed-service-identity-on-virtual-machine-scale-using-a-template"></a>Felügyeltszolgáltatás-identitás konfigurálása a virtuálisgép-méretezési csoport sablon használatával
 
@@ -49,7 +49,7 @@ Csakúgy, mint az Azure Portalon, és parancsfájl-kezelési, [Azure Resource Ma
    - Egy helyi [JSON-szerkesztővel (például a VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), majd feltöltését és üzembe helyezése a PowerShell vagy parancssori felület használatával.
    - A Visual Studio használatával [Azure erőforráscsoport-projekt](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) hozzon létre és helyezhet üzembe sablont is.  
 
-A lehetőséget választja, függetlenül a sablon szintaxisa megegyezik kezdeti üzembe helyezése és újbóli üzembe helyezés során. Egy új vagy meglévő virtuális gépen az MSI engedélyezéséhez azonos módon történik. Emellett, alapértelmezés szerint az Azure Resource Manager elvégzi az [növekményes frissítés](../../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) üzemelő példányokhoz.
+A lehetőséget választja, függetlenül a sablon szintaxisa megegyezik kezdeti üzembe helyezése és újbóli üzembe helyezés során. Engedélyezi a Felügyeltszolgáltatás-identitását egy új vagy meglévő virtuális gépen azonos módon történik. Emellett, alapértelmezés szerint az Azure Resource Manager elvégzi az [növekményes frissítés](../../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) üzemelő példányokhoz.
 
 ## <a name="system-assigned-identity"></a>Rendszerhez rendelt identitáshoz
 
@@ -69,7 +69,7 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identi
    },
    ```
 
-3. (Nem kötelező) Adja hozzá a virtuális gép méretezési csoport MSI kiterjesztésű fájlt egy `extensionsProfile` elemet. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás használatával, valamint a jogkivonatok.  Az alábbi szintaxissal:
+3. (Nem kötelező) Adja hozzá a virtuális gép méretezési kiterjesztésű fájlt a Felügyeltszolgáltatás-identitást egy `extensionsProfile` elemet. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás használatával, valamint a jogkivonatok.  Az alábbi szintaxissal:
 
    >[!NOTE] 
    > Az alábbi példa azt feltételezi, hogy egy Windows virtuális gép méretezési csoport bővítményének (`ManagedIdentityExtensionForWindows`) lesz üzembe helyezve. Beállíthatja a Linux használatával `ManagedIdentityExtensionForLinux` ehelyett a `"name"` és `"type"` elemeket.

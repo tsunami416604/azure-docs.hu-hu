@@ -7,14 +7,14 @@ ms.author: jasonh
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 8bee80647d692b60898880a85652189a684426f7
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 426d7b15cd4a98d958ed02329f40becdfb177ceb
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312973"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259279"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Ismerje meg az Azure Stream Analytics használ azát és az IoT-eszközökről származó ad azok feldolgozását
 Ez az oktatóanyag bemutatja, hogyan hozhat létre streamfeldolgozó logikákat, és hogyan gyűjthet velük adatokat az eszközök internetes hálózatára kapcsolódó (IoT-) eszközökről. Egy valódi, az IoT-re épülő gyakorlati esettel fogjuk bemutatni, hogyan hozhat létre egy megoldást gyorsan és gazdaságosan.
@@ -23,7 +23,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre streamfeldolgozó logikákat,
 * [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/)
 * A mintalékérdezés és a mintaadatfájlok letölthetők a [GitHubból](https://aka.ms/azure-stream-analytics-get-started-iot)
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 A Contoso egy vállalat az ipari automatizálás területén, amely teljesen automatizálta a gyártási folyamatait. A gyár gépeinek érzékelői valós idejű adatstreamek létrehozására képesek. Ebben a forgatókönyvben a termelési szint egyik igazgatója valós idejű elemzéseket szeretne kapni az érzékelők adataiból, hogy mintákat keressen bennük, és ezek alapján tegyen további lépéseket. Az érzékelők adatain a SAQL nyelvet (Stream Analytics Query Language) használjuk, hogy érdekes szabályszerűségeket keressünk a beérkező streamben.
 
 Itt az adatokat egy Texas Instrument Sensor Tag eszköz állítja elő. A hasznos adatok JSON formátumban vannak, és a következőképpen néznek ki:
@@ -91,7 +91,7 @@ Próbáljuk meg egy feltétel alapján szűrni az eredményeket. Azt szeretnénk
 
 ![Adatstream szűrése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
-Vegye figyelembe, hogy a kis- és nagybetűket megkülönböztető lekérdezés karakterlánc típusú értékkel végzi az összehasonlítást. Kattintson újra a **Teszt** fogaskerékre a lekérdezés végrehajtásához. A lekérdezésnek 389 sort kell visszaadnia az 1860 eseményből.
+Vegye figyelembe, hogy a kis- és nagybetűket megkülönböztető lekérdezés sztring típusú értékkel végzi az összehasonlítást. Kattintson újra a **Teszt** fogaskerékre a lekérdezés végrehajtásához. A lekérdezésnek 389 sort kell visszaadnia az 1860 eseményből.
 
 ![Második kimeneti eredmény a lekérdezéstesztelésből](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
 

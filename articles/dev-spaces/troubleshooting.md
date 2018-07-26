@@ -11,20 +11,43 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: c5224422c88690ccf063a27b053963ebde622a1e
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172102"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247322"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
 Ez az útmutató az Azure fejlesztési tárolóhelyek használata esetén előfordulhat, hogy rendelkezik kapcsolatos gyakori problémák információkat tartalmaz.
 
+## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>"Nem sikerült létrehozni az Azure fejlesztési tárolóhelyek vezérlő" hiba
+
+Előfordulhat, hogy ezt a hibaüzenetet, ha probléma merül fel a vezérlő létrehozása. Ha ez egy átmeneti hiba, törlését és újbóli létrehozását a vezérlő kijavítja azt.
+
+### <a name="try"></a>Próbálja ki:
+
+A vezérlő törléséhez használja az Azure fejlesztési tárolóhelyek CLI. Nem alkalmas a Visual Studio vagy a Cloud Shellben. A AZDS parancssori felületének telepítéséhez, először telepítse az Azure CLI-vel, és futtassa ezt a parancsot:
+
+```cmd
+az aks use-dev-spaces -g <resource group name> -n <cluster name>
+```
+
+És futtassa ezt a parancsot a vezérlő törlése:
+
+```cmd
+azds remove -g <resource group name> -n <cluster name>
+```
+
+A vezérlő újbóli létrehozása a parancssori felület vagy a Visual Studio elvégezhető. Kövesse az utasításokat az oktatóanyagok, mint ha első alkalommal indítása.
+
+
 ## <a name="error-service-cannot-be-started"></a>Hiba történt "szolgáltatás nem indítható."
 
 Előfordulhat, hogy ezt a hibaüzenetet, ha a szolgáltatás kód nem indul el. Oka általában a felhasználói kódban. További diagnosztikai adatok beszerzéséhez hajtsa végre a következő módosításokat a parancsok és beállítások:
+
+### <a name="try"></a>Próbálja ki:
 
 A parancssorban:
 

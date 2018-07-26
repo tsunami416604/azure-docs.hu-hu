@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs metrikát a Azure Monitor (előzetes verzió) |} Microsoft Docs
-description: Azure-figyelés használatával figyelheti az Event Hubs
+title: Az Azure Event Hubs-metrikák az Azure Monitor (előzetes verzió) |} A Microsoft Docs
+description: Azure Monitoring segítségével figyelheti az Event Hubs
 services: event-hubs
 documentationcenter: .NET
 author: ShubhaVijayasarathy
@@ -14,106 +14,106 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2018
 ms.author: sethm
-ms.openlocfilehash: 445b439ff77a88a4b7783427f5fab0e40a485542
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f25900ddffd9d8be008abbb3672a3f6a2eabd481
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405140"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248113"
 ---
-# <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Az Azure Event Hubs metrikát a Azure Monitor (előzetes verzió)
+# <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Az Azure Event Hubs-metrikák az Azure Monitor (előzetes verzió)
 
-Event Hubs metrikák lehetővé teszi az Event Hubs erőforrások az Azure-előfizetése állapotát. A metrikai adatok széles skáláját felmérheti az eseményközpontok nem csak a névterek szintjén, hanem az entitás szintjén általános állapotát. A statisztikai információk olyankor lehet fontos, mivel ezek segítségével figyelheti az eseményközpontok állapotának. Metrikák is hozzájárulhat a kiváltó okának elhárítása anélkül, hogy az Azure ügyfélszolgálatához.
+Event Hubs-mérőszámok az Azure-előfizetésében az Event Hubs-erőforrások állapotának biztosítja. Metrikai adatok széles skáláját felmérheti az event hubs szolgáltatás nem csak a névterek szintjén, hanem az entitások szintjén általános állapotát. A statisztikai lehet fontos, mert ezek segítségével figyelheti az event hubs szolgáltatás állapotát. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
 
-Az Azure biztosít, egységes felhasználói felületek keresztüli különböző Azure-szolgáltatásokhoz. További információkért lásd: [figyelése a Microsoft Azure-ban](../monitoring-and-diagnostics/monitoring-overview.md) és a [.NET metrikák beolvasása Azure figyelő](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon.
+Az Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [a Microsoft Azure figyelés](../monitoring-and-diagnostics/monitoring-overview.md) és a [lekérése az Azure Monitor-metrikák .NET-tel](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon.
 
-## <a name="access-metrics"></a>Hozzáférés metrikák
+## <a name="access-metrics"></a>Access-metrikák
 
-Az Azure hozzáférési metrikák több lehetőség is biztosít. Mindkét hozzáférési metrikák keresztül is a [Azure-portálon](https://portal.azure.com), vagy használja az Azure figyelő API-k (REST és .NET) és elemzési megoldások, például a felügyeleti csomag művelet és az Event Hubs. További információkért lásd: [Azure figyelő metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
+Az Azure Monitor hozzáférés metrikák több módot is biztosít. Mindkét hozzáférési metrikák keresztül is a [az Azure portal](https://portal.azure.com), vagy használja az Azure Monitor API-k (REST és .NET) és elemzési megoldásokkal, például az Operation Management Suite és az Event Hubs. További információkért lásd: [Azure Monitor-metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
 
-Alapértelmezés szerint engedélyezve vannak a metrikákat, és érheti el az utolsó 30 napnyi adat. Ha szeretné megőrizni az adatokat egy hosszabb ideig, úgy archiválhatók metrikai adatok az Azure Storage-fiók. Ez úgy van konfigurálva a [diagnosztikai beállítások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) Azure-figyelőben.
+Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az utolsó 30 nap adatait. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ennek a konfigurációja a [diagnosztikai beállítások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) az Azure monitorban.
 
-## <a name="access-metrics-in-the-portal"></a>Hozzáférés metrikákat a portálon
+## <a name="access-metrics-in-the-portal"></a>Hozzáférés mérőszámok portálon
 
-Adott idő alatt a figyelheti a metrikák a [Azure-portálon](https://portal.azure.com). A következő példa bemutatja, hogyan sikeres és a bejövő kérelmeket a fiók szintjén megtekintése:
+Az idő függvényében segítségével figyelheti a mérőszámokat a [az Azure portal](https://portal.azure.com). Az alábbi példa bemutatja, hogyan sikeres kérések és a fiók szintjén a bejövő kérelmek megtekintése:
 
 ![][1]
 
-Metrikák közvetlenül a névtér keresztül is elérheti. Ehhez jelölje ki a névteret, és kattintson a **metrikák (Peview)**. Az event hubs hatókörébe szűrt metrikák megjelenítéséhez jelölje ki az eseményközpont, és kattintson **metrikák (előzetes verzió)**.
+Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (Peview)**. Az event hubs hatókörének szűrt metrikák megjelenítéséhez válassza ki az event hubs, és kattintson a **metrikák (előnézet)**.
 
-A dimenziók támogató metrika a kívánt dimenzió értékű a következő példában látható módon kell szűrése:
+Dimenziók támogató metrikákhoz a kívánt dimenzió értékű a következő példában látható módon kell szűrése:
 
 ![][2]
 
 ## <a name="billing"></a>Számlázás
 
-A metrikák Azure figyelőben használata jelenleg szabad, miközben a képen. Azonban további megoldások, amelyek a metrikai adatok betöltési használatakor, akkor előfordulhat, hogy számlázni ezek a megoldások. Például kell fizetni Azure Storage által archiválja metrikák egy Azure Storage-fiókhoz. Is meg számlázása az Azure-ban, ha adatfolyam formájában a speciális elemzésekre szolgáló metrikák Naplóelemzési adatokat.
+Az Azure monitorban mérőszámok segítségével a jelenleg előzetes verzióban ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett a számlázás az Azure speciális elemzésekre szolgáló Log Analytics-metrikák adatok streamelése az, ha.
 
-A következő mérőszámokat adhat a szolgáltatás állapotának áttekintése. 
+Az alábbi mérőszámok segítségével a szolgáltatás állapotának áttekintése. 
 
 > [!NOTE]
-> Más néven áthelyezett azt is elavulttá több metrikákat. Ehhez szükség lehet, hogy frissítse a hivatkozásokat. A "elavult" kulcsszó jelölésű metrikák módosítástól fogva nem támogatott.
+> Más néven áthelyezett azt rendszer kivezetése több metrikát. Ehhez szükség lehet, hogy a hivatkozások frissítését. Metrikák, a "elavult" kulcsszó megjelölve a jövőben nem támogatja.
 
-Minden értékeihez Azure figyelő percenként küldi. A részletességet határozza meg az az időtartam, amelynek metrikák értékek jelenjenek meg. Minden Event Hubs metrikák támogatott időközének értéke 1 perc.
+Az összes értékeihez kapnak az Azure Monitor percenként. Az idő részletessége határozza meg az időintervallum, amelynek metrikák jelennek meg. Minden Event Hubs-metrika támogatott idő időköz 1 perc.
 
-## <a name="request-metrics"></a>Kérelem metrikák
+## <a name="request-metrics"></a>Kérelem-metrikák
 
-Megjeleníti az adatok és felügyeleti műveletek kérelmek számát.
+Számít az adatok és a felügyeleti műveletek kérések száma.
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| A bejövő kérések (előzetes verzió) | A megadott időszakon át az Azure Event Hubs szolgáltatás felé intézett kérések száma. <br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName |
-| Sikeres kérések (előzetes verzió)   | A sikeres kérelmek száma az Azure Event Hubs szolgáltatás az adott időszakon belül. <br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName |
-| Kiszolgálóhibákat (előzetes verzió) | A megadott időszakon át az Azure Event Hubs szolgáltatás a bekövetkezett hiba miatt nem feldolgozott kérelmek száma. <br/><br/>Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName |
-|Felhasználó hibákat (előzetes verzió)|A megadott időszakban felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Szabályozottan halmozott kérelmek (előzetes verzió)|Az átviteli egység használati túllépése miatt volt halmozódni kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Kvóta túllépve hibák (előzetes verzió)|A kérések száma meghaladja a rendelkezésre álló kvótát. Lásd: [Ez a cikk](event-hubs-quotas.md) további információ az Event Hubs kvótákat.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
+| A bejövő kérések (előnézet) | Az Azure Event Hubs szolgáltatás egy megadott időszakban végrehajtott kérelmek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName |
+| Sikeres kérések (előnézet)   | Az Azure Event Hubs szolgáltatás egy megadott időszakban végrehajtott sikeres kérelmek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName |
+| Kiszolgálóhibák (előzetes verzió) | Az Azure Event Hubs szolgáltatás hibája miatt a meghatározott időtartamon belül nem feldolgozott kérelmek száma. <br/><br/>Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName |
+|Felhasználói hibák (előzetes verzió)|Egy meghatározott időtartamon belül a felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Szabályozott kérelmeinek száma (előzetes verzió)|Voltak szabályozva, mert túllépte az átviteli egységek használati kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kvóta túllépve hibák (előzetes verzió)|A kérelmek száma túllépte a rendelkezésre álló kvótát. Lásd: [Ez a cikk](event-hubs-quotas.md) Event Hubs-kvótákról további információt.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 
 ## <a name="throughput-metrics"></a>Átviteli sebességre vonatkozó mérőszámok
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Szabályozottan halmozott kérelmek (előzetes verzió)|Az átviteli egység használati túllépése miatt volt halmozódni kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
+|Szabályozott kérelmeinek száma (előzetes verzió)|Voltak szabályozva, mert túllépte az átviteli egységek használati kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 
-## <a name="message-metrics"></a>Üzenet metrikák
-
-| Metrika neve | Leírás |
-| ------------------- | ----------------- |
-|A bejövő üzenetek (előzetes verzió)|Események vagy adott időszakon belül az Event Hubs küldött üzenetek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Kimenő üzenetek (előzetes verzió)|Az események vagy üzenetek száma lekért Event Hubs egy adott időszakban.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Bejövő bájtok (előzetes verzió)|A megadott időszakon át az Azure Event Hubs szolgáltatásnak küldött bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Kimenő bájtok (előzetes verzió)|Az Azure Event Hubs szolgáltatásból beolvasott bájtok száma adott időszakon belül.<br/><br/> Egység: bájtok <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-
-## <a name="connection-metrics"></a>Kapcsolati metrikák
+## <a name="message-metrics"></a>Üzenet-metrikák
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|ActiveConnections (előzetes verzió)|Egy névtér, valamint egy entitás aktív kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Kapcsolatok Opened (előzetes verzió)|A nyitott kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Kapcsolatok lezárva (előzetes verzió)|Lezárt kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
+|Bejövő üzenetek (előzetes verzió)|Események vagy adott időszakon belül az Event hubs szolgáltatásba küldött üzenetek számát.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kimenő üzenetek (előzetes verzió)|Események vagy üzenetek száma egy meghatározott időtartamon belül beolvasni az Event hubs Eseményközpontokból.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Bejövő bájtok száma (előzetes verzió)|Az Azure Event Hubs szolgáltatás egy meghatározott időtartamon belül küldött bájtok száma.<br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kimenő bájtok (előzetes verzió)|Az Azure Event Hubs szolgáltatás egy meghatározott időtartamon belül veszi bájtok száma.<br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 
-## <a name="event-hubs-capture-metrics"></a>Event Hubs rögzítése metrikák
-
-Ha engedélyezi a rögzítése funkció az eseményközpontok a hatékonyan nyomon követheti a metrikákat Event Hubs rögzítése. A következő mérőszámokat írják le, az engedélyezett rögzítésével is figyelheti.
+## <a name="connection-metrics"></a>Kapcsolati metrika
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Rögzítheti a várakozó (előzetes verzió)|Még a választott cél rögzítéshez bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Rögzített üzenetek (előzetes verzió)|Üzenetek vagy adott időszakon belül a választott cél rögzített események száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Rögzített bájtok (előzetes verzió)|A megadott időszakon át a választott cél rögzített bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
+|Aktív kapcsolatai (előzetes verzió)|A névtér, valamint egy entitására aktív kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kapcsolatok megnyitott (előzetes verzió)|Megnyitott kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kapcsolat lezárva (előzetes verzió)|Lezárt kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+
+## <a name="event-hubs-capture-metrics"></a>Event Hubs Capture metrikák
+
+Az Event Hubs Capture metrikák figyelheti az event hubs rögzítési funkciója engedélyezésekor. A következő metrikák ismertetik, mit is figyelheti a rögzítés engedélyezve van.
+
+| Metrika neve | Leírás |
+| ------------------- | ----------------- |
+|Rögzítése (előzetes verzió)|Amely során a kiválasztott cél még el bájtok száma.<br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Rögzített üzenetek (előzetes verzió)|Az üzenetek vagy a kiválasztott cél egy megadott időszakban rögzített események száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Rögzített bájtok száma (előzetes verzió)|A kiválasztott cél egy megadott időszakban rögzített bájtok száma.<br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók
 
-Az Azure Event Hubs Azure a figyelő a metrikák a következő dimenziók támogatja. Dimenziók hozzáadása a metrikákat, nem kötelező megadni. Ha nem adja hozzá a dimenziók, metrikák meg van adva, a névterek szintjén. 
+Azure Event hubs szolgáltatás a következő dimenziókat támogatja a mérőszámok az Azure Monitor. A metrikák dimenziók hozzáadása nem kötelező. Ha nem adja hozzá a dimenziók, a metrikák a névterek szintjén vannak megadva. 
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|entityName| Az Event Hubs az event hub entitásokat a wsrmp támogatja.|
+|EntityName| Az Event Hubs névtér event hub entitása támogatja.|
 
 ## <a name="next-steps"></a>További lépések
 
 * Tekintse meg a [Azure Figyelés áttekintése](../monitoring-and-diagnostics/monitoring-overview.md).
-* [.NET Azure figyelő metrikák beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon. 
+* [.NET-tel az Azure Monitor-metrikák beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon. 
 
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:
 

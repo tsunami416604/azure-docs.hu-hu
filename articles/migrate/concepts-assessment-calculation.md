@@ -4,14 +4,14 @@ description: Értékelési számítások az Azure Migrate szolgáltatás átteki
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/24/2018
+ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: af832cb3791f0175b38aad16526acd51509bbe52
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7900a02ba9112b910589d04850a4cd5d52e044d2
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223684"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249189"
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -54,11 +54,12 @@ A következő logikai Azure Migrate által azonosítására szolgál az Azure k�
 
 **Operációs rendszer** | **Részletek** | **Azure-kompatibilitás állapota**
 --- | --- | ---
-A Windows Server 2016 és az összes szervizcsomagok | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-A Windows Server 2012 R2 és az összes szervizcsomagok | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-A Windows Server 2012 és az összes szervizcsomagok | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-A Windows Server 2008 R2 minden szervizcsomagok | Az Azure teljes körű támogatást biztosít.| Készen áll az Azure-beli használatra
-A Windows Server 2003-2008 | Ezek az operációs rendszerek megfeleltek támogatása, és meg kell azok végén egy [egyéni támogatási megállapodás (CSA)](https://aka.ms/WSosstatement) támogatás az Azure-ban. | Feltételesen készen áll az Azure-hoz, fontolja meg az operációs rendszer frissítését az Azure-ba való migrálás előtt.
+A Windows Server 2016 és az összes szervizcsomagok | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+A Windows Server 2012 R2 és az összes szervizcsomagok | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+A Windows Server 2012 és az összes szervizcsomagok | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+A Windows Server 2008 R2 minden szervizcsomagok | Az Azure teljes körű támogatást biztosít.| Azure-beli használatra kész
+A Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+A Windows Server 2003, Server 2003 R2 | Ezek az operációs rendszerek megfeleltek támogatása, és meg kell azok végén egy [egyéni támogatási megállapodás (CSA)](https://aka.ms/WSosstatement) támogatás az Azure-ban. | Feltételesen készen áll az Azure-hoz, fontolja meg az operációs rendszer frissítését az Azure-ba való migrálás előtt.
 Windows 2000, 98, 95, NT, 3.1, MS-DOS | Az említett operációs rendszerektől azok befejezési támogatása estek át, a gép elindulhat az Azure-ban, de nem az operációs rendszer biztosít támogatást az Azure-ban. | Feltételesen készen az Azure-hoz, javasolt az Azure-ba való migrálás előtt az operációs rendszer verziófrissítéséhez.
 Windows-ügyfél 7, 8 és 10 | Az Azure támogatja a csak a Visual Studio-előfizetéssel. | Feltételesen készen áll az Azure-beli használatra
 Windows Vista, XP Professional | Az említett operációs rendszerektől azok befejezési támogatása estek át, a gép elindulhat az Azure-ban, de nem az operációs rendszer biztosít támogatást az Azure-ban. | Feltételesen készen az Azure-hoz, javasolt az Azure-ba való migrálás előtt az operációs rendszer verziófrissítéséhez.
@@ -113,10 +114,10 @@ A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virt
    **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---
    0%–20% | 1 csillag
-   21%–40% | 2 csillag
-   41%–60% | 3 csillag
-   61%–80% | 4 csillag
-   81%–100% | 5 csillag
+   21%-40% | 2 csillag
+   41%-60% | 3 csillag
+   61%-80% | 4 csillag
+   81%-100% | 5 csillag
 
 Az értékelésekben a következő okok miatt nem lehet elérhető az összes adatpont:
 - A vCenter Server statisztikai beállítása nem a 3. szintre van állítva. Ha a vCenter Server statisztikai beállítása a 3. szintnél alacsonyabb, akkor a lemez és a hálózat teljesítményadatai nem lesznek begyűjtve a vCenter Serverről. Ebben az esetben az Azure Migrate által a lemezhez és a hálózathoz nyújtott javaslat nem a kihasználtságon alapul. A lemez IOPS-értékének/adatátviteli teljesítményének figyelembe vétele nélkül az Azure Migrate nem tudja meghatározni, hogy a lemez prémium szintű lemezt igényel-e az Azure-ban, ezért minden esetben standard lemezeket javasol az összes lemezhez.

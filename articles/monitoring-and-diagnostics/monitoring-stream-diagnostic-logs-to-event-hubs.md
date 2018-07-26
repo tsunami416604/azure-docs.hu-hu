@@ -1,52 +1,52 @@
 ---
-title: Az adatfolyam Azure diagnosztikai naplók az eseményközpontba
-description: Útmutató az Azure diagnosztikai naplók az eseményközpontba adatfolyamként történő küldéséhez.
+title: Stream Azure diagnosztikai naplók egy eseményközpontba
+description: Ismerje meg, hogyan streamelése az Azure diagnosztikai naplók egy eseményközpontba.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c59b9982f5ba5a4fa52ab36df5ebb6995b2d45b0
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085089"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258184"
 ---
-# <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Az adatfolyam Azure diagnosztikai naplók az eseményközpontba
-**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható közel valós idejű bármely alkalmazás a beépített "Exportálás az Event Hubs" beállítás használatával, a portálon, vagy a központi engedélyezési szabály eseményazonosító keresztül az Azure diagnosztikai beállítás engedélyezésével PowerShell-parancsmagok vagy Azure CLI 2.0.
+# <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream Azure diagnosztikai naplók egy eseményközpontba
+**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható bármely alkalmazás a beépített "Exportálás az Event Hubs" lehetőség használatával, a portálon, vagy az Event Hub engedélyezési szabály azonosítója a diagnosztikai beállítást az Azure-on keresztül engedélyezésével közel valós időben PowerShell-parancsmagok vagy az Azure CLI 2.0 használatával.
 
-## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Mi mindent diagnosztikai naplók és az Event Hubs
-Az alábbiakban néhány módszereket, akkor előfordulhat, hogy az adatfolyam-továbbítási képesség a diagnosztikai naplók:
+## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Mire képes a diagnosztikai naplók és az Event Hubs
+Az alábbiakban néhány olyan módon, a streamelési funkciót használhat a diagnosztikai naplókhoz:
 
-* **Adatfolyam-bejegyzéseit, amelyek a 3. fél naplózása és telemetriai rendszerek** – is adatfolyam formájában a diagnosztikai naplók cső napló az adatokat egy külső SIEM- vagy naplófájl elemzőeszköz egy eseményközpontba.
-* **Szolgáltatás állapotának megtekintéséhez a Power bi szolgáltatásba "forró path" adatok folyamatos** – az Event Hubs használatával, a Stream Analytics és a Power BI, könnyen átalakíthatja a diagnosztikai adatokat a valós idejű elemzése az Azure-szolgáltatások a közelében. [A dokumentációs cikket tartalmaz az Event Hubs beállítása, a Stream Analytics adatok feldolgozása és kimenetként használata a Power bi kiváló áttekintést nyújt](../stream-analytics/stream-analytics-power-bi-dashboard.md). Az alábbiakban néhány tippek a diagnosztikai naplók első beállítása:
+* **Stream naplók 3. fél naplózás és a telemetriai rendszer** – összes a diagnosztikai naplók a függőleges vonal tranzakciónaplójának adatai egy külső SIEM- vagy a log analytics eszközzel ugyanabba az eseményközpontba streamelheti.
+* **A service health megtekintéséhez streamelési "gyakori elérésű útvonal" adatok a Power bi-bA** – Event Hubs használatával, a Stream Analytics és a Power BI, egyszerűen alakíthatja át a diagnosztikai adatok közel valós idejű elemzés az Azure-szolgáltatásokhoz való. [A dokumentációs cikk állítsa be az Event Hubs, a Stream Analytics használatával adatokat feldolgozni és kimenetként használja a Power BI remek áttekintést nyújt](../stream-analytics/stream-analytics-power-bi-dashboard.md). Íme néhány tipp az első állítsa be a diagnosztikai naplók segítségével:
 
-  * Az eseményközpontok a diagnosztikai naplók kategóriájú automatikusan jön létre, jelölje be a beállítást, a portálon, vagy engedélyezze a PowerShell segítségével, így szeretné kiválasztani az event hubs kezdetű névvel névtér **insights -**.
-  * A következő SQL-kódot a Stream Analytics mintalekérdezést használó összes a napló az adatok a Power bi táblára:
+  * Egy eseményközpontba kategóriájára vonatkozó diagnosztikai naplók automatikusan jön létre, ha a beállítás a portálon vagy engedélyezése a PowerShell, ezért az event hubs kiválasztása a névtér nevét kezdetű **insights –**.
+  * A következő SQL-kódot egy Stream Analytics-mintalekérdezés elemezni a naplóban lévő összes adat egy Power BI-táblához, amelyekkel:
 
     ```sql
     SELECT
     records.ArrayValue.[Properties you want to track]
     INTO
-    [OutputSourceName – the PowerBI source]
+    [OutputSourceName – the Power BI source]
     FROM
     [InputSourceName] AS e
     CROSS APPLY GetArrayElements(e.records) AS records
     ```
 
-* **Létre egy egyéni telemetriai adatokat és a naplózás platform** – Ha már rendelkezik egy egyedi telemetriai platform vagy csak egy kiválóan méretezhető kiépítésével foglalkozó végezni azok jellegű közzétételi-feliratkozási az Event hubs lehetővé teszi a rugalmas tölti be a diagnosztikai naplókat. [Az Event Hubs használatával egy globális méretű telemetriai platform itt Dan Rosanova útmutatójában](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+* **Hozhat létre egy egyéni telemetriát és a naplózás platform** – Ha már rendelkezik egy személyre szabott telemetriai platform vagy csak mértékegységeként létrehozására, rugalmasan méretezhető közzétételi és előfizetési jellegű az Event hubs lehetővé teszi, hogy rugalmasan diagnosztikai naplókat. [Az Event Hubs használatával itt globális méretezhetőség telemetriai platform Dan Rosanova útmutatójában](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
-## <a name="enable-streaming-of-diagnostic-logs"></a>Adatfolyamként való küldése a diagnosztikai naplók engedélyezése
+## <a name="enable-streaming-of-diagnostic-logs"></a>Diagnosztikai naplók streamelésének engedélyezéséhez
 
-Adatfolyamként való küldése a diagnosztikai naplók programozott módon, a portálon, vagy használatával engedélyezheti a [Azure figyelő REST API-k](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). Mindkét módszer esetén létrehozhat egy diagnosztikai beállítás található, amely akkor adja meg az Event Hubs-névteret és a napló kategóriák és a metrikák szeretne küldeni névtérhez. Az eseményközpontok engedélyezi napló kategóriákhoz tartozó névtér jön létre. A diagnosztika **napló kategória** a naplóban, amely egy erőforrás gyűjthet típusa.
+Streamelési diagnosztikai naplók a portálon keresztül programozás útján vagy a használatával engedélyezheti a [Azure Monitor REST API-k](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). Mindkét esetben hoz létre egy diagnosztikai beállítás található, amely megadott Event Hubs-névtér és naplókategóriák és metrikák is szeretne küldeni névtérhez. Egy eseményközpont engedélyezi a napló kategóriákhoz tartozó névtér jön létre. A diagnosztika **naplókategória** napló, amely egy erőforrás gyűjthet olyan típusú.
 
 > [!WARNING]
-> Engedélyezése, valamint a folyamatos átviteli a számítási erőforrások (például a virtuális gépek vagy a Service Fabric) diagnosztikai naplók [meg kell adni egy másik lépések](../event-hubs/event-hubs-streaming-azure-diags-data.md).
+> Engedélyezése és számítási erőforrások (például a virtuális gépek vagy a Service Fabric) diagnosztikai naplóinak streamelési [szükséges lépések külön készletét](../event-hubs/event-hubs-streaming-azure-diags-data.md).
 
-Az Event Hubs névtér nem kell lennie a naplók kibocsátó mindaddig, amíg a beállítás konfigurálása felhasználó hozzáfér megfelelő RBAC mindkét előfizetéshez erőforrás ugyanahhoz az előfizetéshez.
+Az Event Hubs névterének nem muszáj ugyanabban az előfizetésben a naplókat kibocsátó mindaddig, amíg a beállítást konfiguráló felhasználónak megfelelő RBAC hozzáféréssel rendelkezik mind az előfizetések, és mindkét előfizetés erőforrásként kell az azonos AAD-bérlő részét képezik.
 
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
@@ -55,45 +55,45 @@ Az Event Hubs névtér nem kell lennie a naplók kibocsátó mindaddig, amíg a 
 >
 >
 
-## <a name="stream-diagnostic-logs-using-the-portal"></a>Az adatfolyam diagnosztikai naplókat a portálon
+## <a name="stream-diagnostic-logs-using-the-portal"></a>Stream diagnosztikai naplók a portál használatával
 
-1. A portál Azure figyelő keresse meg és kattintson a **diagnosztikai beállítások**
+1. A portálon lépjen az Azure Monitor, és kattintson a **diagnosztikai beállítások**
 
-    ![Figyelés szakaszban Azure-figyelő](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
+    ![Az Azure Monitor figyelési szakasza](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
 
-2. Opcionálisan erőforráscsoport és erőforrások típus szerint a lista szűréséhez, majd kattintson az erőforráson, amelynek szeretné beállítani a diagnosztikai.
+2. Igény szerint szűrje a listát, erőforráscsoport vagy erőforrás típusa, majd kattintson az a erőforrás, amelynek szeretné egy diagnosztikai beállítás.
 
-3. Ha a beállítások nem található az erőforrás a választott, kéri beállítás létrehozása. Kattintson a "Diagnosztika bekapcsolásához."
+3. Ha a beállítások nem létezik az erőforráson kiválasztott, kéri létre beállítást. Kattintson a "Engedélyezze a diagnosztikát."
 
-   ![Diagnosztikai beállítás - nincsenek meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-none.png)
+   ![Diagnosztikai beállítás - beállítások nélkül hozzáadása](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-none.png)
 
-   Ha az erőforrás-meglévő beállítások, látni fogja már ehhez az erőforráshoz konfigurált beállítások listája. A "Hozzáadás diagnosztikai beállításának."
+   Ha meglévő beállításokat az erőforráson, látni fogja a beállítások már konfigurálva van a ehhez az erőforráshoz. Kattintson a "Diagnosztikai beállítás hozzáadása."
 
    ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-multiple.png)
 
-3. Adjon a beállítás a neve, és jelölje be a **adatfolyam egy eseményközpontba**, majd válassza ki az Event Hubs névteret.
+3. Adja meg a beállítás a neve, és jelölje be a **egy eseményközpontba Stream**, majd válassza ki az Event Hubs-névtér.
 
    ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
 
-   A kijelölt névtér lesz az eseményközpont létre (Ha ez az első alkalommal adatfolyam diagnosztikai naplók) vagy a folyamatos átviteli rendelkező (ha van már erőforrásokat, amelyek ehhez a névtérhez napló kategória vannak streaming), és a házirend határozza meg az engedélyeket, amelyek a adatfolyam-mechanizmus rendelkezik. Napjainkban az eseményközpontba streaming engedélyekkel kell rendelkeznie kezelése, a Küldés és a figyelés. Hozzon létre, vagy az Event Hubs névtér megosztott hozzáférési házirendek a portálon az konfigurálása lapon módosítsa a névtér. Ezek a diagnosztikai beállítások frissítéséhez az ügyfél a ListKey engedéllyel kell rendelkeznie az Event Hubs engedélyezési szabályt. Opcionálisan megadhat egy eseményközpont neveként. Ha megad egy eseményközpont neveként, naplók adott eseményközpont helyett egy újonnan létrehozott eseményközpont napló kategóriánként legyenek átirányítva.
+   A kiválasztott névtér lesz, ahol az eseményközpont létrehozásakor a (Ha ez az első alkalommal streamelési diagnosztikai naplók) vagy adatfolyamként történő (ha vannak még erőforrások, amelyek ehhez a névtérhez, hogy naplókategória vannak streaming), és a szabályzat határozza meg az engedélyeket, amelyek a streamelési mechanizmussal rendelkezik. Jelenleg egy eseményközpontba streamelési kezelése, küldési és figyelési engedélyek szükségesek. Hozzon létre, vagy módosítsa az Event Hubs névtér megosztott hozzáférési házirendek a konfigurálás lapot a portál névteréhez. Ezek a diagnosztikai beállítások frissítéséhez az ügyfél a ListKey engedéllyel kell rendelkeznie az Event Hubs engedélyezési szabályt. Opcionálisan megadhatja egy eseményközpont neve. Ha megad egy eseményközpont neve, naplókat a rendszer ennek az eseményközpontnak helyett egy újonnan létrehozott eseményközpont log kategória szerinti irányítja.
 
 4. Kattintson a **Save** (Mentés) gombra.
 
-Néhány másodpercen belül az új beállítás jelenik meg az ehhez az erőforráshoz beállítások listáját, és diagnosztikai naplók részére, hogy az event hubs, amint létrejön az új esemény-adatokat.
+Néhány pillanat múlva az új beállítás jelenik meg az ehhez az erőforráshoz beállítások listáját, és diagnosztikai naplókat a rendszer streamként továbbítja ennek az eseményközpontnak, amint új esemény adat keletkezik.
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell-parancsmagok használatával
 
-Adatfolyamként keresztül a [Azure PowerShell-parancsmagok](insights-powershell-samples.md), használhatja a `Set-AzureRmDiagnosticSetting` parancsmag ezekkel a paraméterekkel:
+Keresztül streamelésének engedélyezéséhez a [Azure PowerShell-parancsmagok](insights-powershell-samples.md), használhatja a `Set-AzureRmDiagnosticSetting` parancsmag ezekkel a paraméterekkel:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
 ```
 
-A központi engedélyezési szabály Eseményazonosító: a formátumú karakterlánc: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, például `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Jelenleg nem választhat egy adott eseményközpont neveként a PowerShell használatával.
+Az Event Hub engedélyezési szabály azonosítója egy karakterláncérték, ebben a formátumban: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, például `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Jelenleg nem választhat egy adott eseményközpont neve a PowerShell használatával.
 
 ### <a name="via-azure-cli-20"></a>Via Azure CLI 2.0
 
-Adatfolyamként keresztül a [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest), használhatja a [az figyelő diagnosztikai-beállítások létrehozása](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) parancsot.
+Keresztül streamelésének engedélyezéséhez a [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest), használhatja a [az monitor diagnostic-settings létrehozása](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) parancsot.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -108,13 +108,13 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     ]'
 ```
 
-Hozzáadhat további kategóriákra a diagnosztikai naplófájl szótárak ad hozzá a JSON-tömb, mint az átadott a `--logs` paraméter.
+Adhat hozzá további kategóriát a diagnosztikai napló szótárak ad hozzá a JSON-tömböt adhatók be a `--logs` paraméter.
 
-A `--event-hub-rule` argumentum, a központi engedélyezési szabály eseményazonosító ugyanazt a formátumot használja a csatornára. További információ a PowerShell-parancsmag.
+A `--event-hub-rule` argumentum az Event Hub engedélyezési szabály ID ugyanazt a formátumot használja a mértékét a PowerShell-parancsmag.
 
-## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Hogyan Eseményközpontokból származó napló adatokat felhasználó?
+## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Hogyan felhasználása a a naplóadatokat, az Event Hubs?
 
-Minta kimenet Eseményközpontokból származó adatokat a következő:
+A következő minta kimeneti adatokat az Event Hubsról:
 
 ```json
 {
@@ -179,21 +179,22 @@ Minta kimenet Eseményközpontokból származó adatokat a következő:
 
 | Elem neve | Leírás |
 | --- | --- |
-| rekordok |Ezek a hasznos adatok az összes naplóeseményeket tömbjét. |
-| time |Az időt az esemény történt. |
-| category |Ez az esemény napló kategóriát. |
-| resourceId |Az erőforrás ezt az eseményt létrehozó erőforrás-azonosító. |
+| rekordok |Az adattartalomban szereplő összes alkalmazásnapló-események tömbje. |
+| idő- |Idő az esemény történt. |
+| category |Naplókategória ezt az eseményt. |
+| resourceId |Erőforrás-azonosító az erőforrás által generált ezt az eseményt. |
 | operationName |A művelet neve. |
-| szint |Választható. A naplózási esemény szintjét jelzi. |
+| szint |Választható. Azt jelzi, hogy a naplózási események szint. |
 | properties |Az esemény tulajdonságai. |
 
-Megtekintheti az összes erőforrás-szolgáltató, amely támogatja az Event hubs streaming listáját [Itt](monitoring-overview-of-diagnostic-logs.md).
+Megtekintheti az összes erőforrás-szolgáltató, amely támogatja a streamelés az Event Hubs listáját [Itt](monitoring-overview-of-diagnostic-logs.md).
 
-## <a name="stream-data-from-compute-resources"></a>Az adatfolyam adatok a számítási erőforrásokat
+## <a name="stream-data-from-compute-resources"></a>A számítási erőforrások Stream adatait
 
-Adatfolyam formájában a diagnosztikai naplókat a számítási erőforrásokat, a Windows Azure diagnosztikai ügynök használatával is. [Ebben a cikkben találhat](../event-hubs/event-hubs-streaming-azure-diags-data.md) beállítása, amely a.
+A Windows Azure Diagnostics-ügynök használatával, a számítási erőforrások diagnosztikai naplóinak streamelheti is. [Ebben a cikkben](../event-hubs/event-hubs-streaming-azure-diags-data.md) , hogy hogyan állította be.
 
 ## <a name="next-steps"></a>További lépések
 
-* [További tudnivalók az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
+* [Az Azure Monitor szolgáltatással Stream Azure Active Directory-naplók](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
+* [További információ az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
 * [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

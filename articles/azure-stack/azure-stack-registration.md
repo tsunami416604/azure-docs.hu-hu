@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 07/25/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 65525ffe33ddc100dd3066e7c2b52ef8a856fbc3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: a5e31df435d5e9af8543301e7a4540faa3d6410f
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934674"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258065"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -47,7 +47,7 @@ Ha nem rendelkezik Azure-előfizetéssel, amely megfelel ezeknek a követelmény
 
 Sikerült regisztrálni az Azure Stack, a PowerShell nyelv módba kell állítani **FullLanguageMode**.  Annak ellenőrzéséhez, hogy a jelenlegi nyelvmód beállítása teljes nyisson meg egy rendszergazda jogú PowerShell-ablakot, és futtassa a következő PowerShell-parancsokat:
 
-```powershell
+```PowerShell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
@@ -78,7 +78,7 @@ Az Azure-ral az Azure Stack erőforrás-szolgáltató regisztrálásához indít
 
 1. Adja hozzá az Azure-fiók, amely az Azure Stack regisztrálhat. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmagot. Az Azure globális rendszergazdai fiók hitelesítő adatait kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2 többtényezős hitelesítés használatára.
 
-   ```PowerShell
+   ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<Either AzureCloud or AzureChinaCloud>"
    ```
 
@@ -89,13 +89,13 @@ Az Azure-ral az Azure Stack erőforrás-szolgáltató regisztrálásához indít
 
 2. Ha több előfizetéssel rendelkezik, futtassa a következő parancsot a használni kívánt válassza ki a:  
 
-   ```PowerShell
+   ```PowerShell  
       Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
 3. Futtassa a következő parancsot az Azure Stack erőforrás-szolgáltató regisztrálása az Azure-előfizetésben:
 
-   ```PowerShell
+   ```PowerShell  
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
@@ -105,24 +105,26 @@ Ezeket a lépéseket segítségével regisztrálja az Azure Stack az Azure-ral a
 
 1. Indítsa el a PowerShell ISE-t rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** akkor könyvtárat kell létrehozni, [letöltött az Azure Stack eszközök](#bkmk_tools). Importálás a **RegisterWithAzure.psm1** a modul PowerShell-lel:
 
-   ```powershell
+   ```PowerShell  
    Import-Module .\RegisterWithAzure.psm1
    ```
 
 2. Ezután ugyanazon PowerShell-munkamenetben, győződjön meg arról, a megfelelő Azure PowerShell-környezet van bejelentkezve. Ez az azure-fiók, amellyel a fenti Azure Stack erőforrás-szolgáltató regisztrálásához. PowerShell futtatásához:
 
-   ```powershell
+   ```PowerShell  
    Add-AzureRmAccount -Environment "<Either AzureCloud or AzureChinaCloud>"
    ```
 
 3. Az ugyanazon PowerShell-munkamenetben futtassa a **Set-AzsRegistration** parancsmagot. PowerShell futtatásához:  
 
-   ```powershell
+   ```PowerShell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+   $RegistrationName = "<unique-registration-name>"
    Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
       -BillingModel PayAsYouUse
+      -RegistrationName $RegistrationName
    ```
 
   |Paraméter|Leírás|
@@ -130,7 +132,7 @@ Ezeket a lépéseket segítségével regisztrálja az Azure Stack az Azure-ral a
   |PrivilegedEndpointCredential|A használt hitelesítő adatok [az emelt szintű végpontot](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). A felhasználónevet a következő formátumban kell **AzureStackDomain\CloudAdmin**.|
   |PrivilegedEndpoint|Egy előre konfigurált távoli PowerShell-konzolt, amely biztosít, mint például a naplógyűjtés és egyéb post telepítési feladatokat. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) cikk.|
   |BillingModel|A számlázási modell, amely az előfizetés használja. Engedélyezett, ez a paraméter értékei a következők: kapacitás, PayAsYouUse és fejlesztésére.|
-  |  |  |
+  | registrationName | Állítsa be egy egyedi nevet a regisztráció, ha futtatja a regisztrációs szkriptet az Azure Stack több példányának használatával az ugyanabban az Azure előfizetés-azonosító. A paraméter alapértelmezett értéke van **AzureStackRegistration**. Azonban, ha ugyanazzal a névvel egynél több Azure Stack-példányt használ, a parancsfájl futtatása sikertelen lesz. |
 
   A folyamat között 10 – 15 percet vesz igénybe. A parancs befejeződésekor megjelenik az üzenet **"a környezet már regisztrálva van, és aktiválta a megadott paraméterek használatával."**
 
@@ -140,13 +142,15 @@ Ugyanezeket az utasításokat a használatalapú mint-akkor-használható száml
 
 PowerShell futtatásához:
 
-```powershell
+```PowerShell  
 $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+$RegistrationName = "<unique-registration-name>"
 Set-AzsRegistration `
     -PrivilegedEndpointCredential $CloudAdminCred `
     -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
     -AgreementNumber <EA agreement number> `
     -BillingModel Capacity
+    -RegistrationName $RegistrationName
 ```
 
 ## <a name="register-azure-stack-in-disconnected-environments"></a>Regisztráljon az Azure Stack kapcsolat nélküli környezetben
@@ -156,7 +160,7 @@ Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (az internet-hoz
 
 1. Indítsa el a PowerShell ISE-t rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** akkor könyvtárat kell létrehozni, [letöltött az Azure Stack eszközök](#bkmk_tools). Importálás a **RegisterWithAzure.psm1** modul:  
 
-   ```powershell
+   ```PowerShell  
    Import-Module .\RegisterWithAzure.psm1
    ```
 
@@ -174,18 +178,19 @@ Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (az internet-hoz
 
 ### <a name="connect-to-azure-and-register"></a>Csatlakozás az Azure és a regisztráció
 
-Azon a számítógépen, az internethez csatlakoztatott hajtsa végre a RegisterWithAzure.psm1 modul és a bejelentkezési importálása a megfelelő Azure Powershell-környezet ugyanazokat a lépéseket. Ezután hívja a Register-AzsEnvironment, és adja meg a regisztrációs jogkivonatot, regisztrálni az Azure-ral:
+Azon a számítógépen, amely az internethez csatlakozik hajtsa végre a RegisterWithAzure.psm1 modul importálása, és jelentkezzen be a megfelelő Azure Powershell környezetben ugyanazokat a lépéseket. Majd hívja a Register-AzsEnvironment. Adja meg a regisztrációs jogkivonatot, regisztrálni az Azure-ral. Ha regisztrál az Azure Stack segítségével az ugyanazon Azure-előfizetési azonosító egynél több példányát, adjon meg egy egyedi regisztrációs nevet. Futtassa a következő parancsmagot:
 
-  ```Powershell  
+  ```PowerShell  
   $registrationToken = "<Your Registration Token>"
-  Register-AzsEnvironment -RegistrationToken $registrationToken  
+  $RegistrationName = "<unique-registration-name>"
+  Register-AzsEnvironment -RegistrationToken $registrationToken  -RegistrationName $RegistrationName
   ```
 
 A Get-tartalom parancsmag segítségével igény szerint, a regisztrációs jogkivonatot tartalmazó fájlra mutat:
 
-  ```Powershell  
+  ```PowerShell  
   $registrationToken = Get-Content -Path '<Path>\<Registration Token File>'
-  Register-AzsEnvironment -RegistrationToken $registrationToken  
+  Register-AzsEnvironment -RegistrationToken $registrationToken -RegistrationName $RegistrationName
   ```
 
   > [!NOTE]  
@@ -208,7 +213,7 @@ Az aktiválási kulcs lekéréséhez futtassa a következő PowerShell-parancsok
 
 ### <a name="create-an-activation-resource-in-azure-stack"></a>Hozzon létre egy aktiválási erőforrást az Azure Stackben
 
-Térjen vissza az Azure Stack-környezet a fájl vagy a szöveget a Get-AzsActivationKey alapján létrehozott aktiválási kulcs. Ezután létrehozhat egy aktiválási erőforrást az Azure Stack használatával a aktiválási kulcs. Hozzon létre egy aktiválási erőforrás futtassa a következő PowerShell-parancsokat:  
+Térjen vissza az Azure Stack-környezet a fájl vagy a szöveget a Get-AzsActivationKey alapján létrehozott aktiválási kulcs. Ezután létrehozhat egy aktiválási erőforrást az Azure Stack használatával a aktiválási kulcs. Hozzon létre egy aktiválási erőforrást, futtassa a következő PowerShell-parancsokat:  
 
   ```Powershell
   $ActivationKey = "<activation key>"
@@ -248,18 +253,18 @@ Frissítés vagy újítania regisztrációját a következő körülmények köz
 
 Ha szeretné az előfizetést használ, előbb futtatnia kell a **Remove-AzsRegistration** parancsmagot, majd győződjön meg arról, a megfelelő Azure PowerShell-környezet van bejelentkezve, és végül futtassa **Set-AzsRegistration**  bármelyik módosítani a Paraméterek:
 
-  ```powershell
+  ```PowerShell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   Set-AzureRmContext -SubscriptionId $NewSubscriptionId
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
   ```
 
 #### <a name="change-the-billing-model-or-syndication-features"></a>Módosítsa a számlázási modell, vagy az együttműködési funkciók
 
 Ha szeretné a számlázási modellt vagy az együttműködési funkciókat a telepítés módosítása, meghívhatja a regisztrációs függvény, amely az új értékeinek megadására. Nem kell először távolítsa el a jelenlegi regisztrációs:
 
-  ```powershell
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse
+  ```PowerShell  
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
   ```
 
 ### <a name="renew-or-change-registration-in-disconnected-environments"></a>Újítsa meg vagy módosítsa a kapcsolat nélküli környezetekben regisztrációs

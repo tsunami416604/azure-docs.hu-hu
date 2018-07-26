@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: A beszédfelismerés C# SDK-minta használatával beszéljen a mikrofon és visszaadott LUIS szándékot és entitások előrejelzés beolvasása.
 services: cognitive-services
 author: diberry
-manager: kamran.iqbal
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: diberry;
-ms.openlocfilehash: 4249b908cc64eb229281cff60ddaa0394f946433
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 286efcd97c0c9ab95a8241215bc36799c486a8b6
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238913"
+ms.locfileid: "39247715"
 ---
 # <a name="integrate-speech-service"></a>Beszédszolgáltatás integrálása
 A [beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) lehetővé teszi, hogy egyetlen kérés fogadásához hang, és a LUIS-előrejelzési JSON objektumokat adjanak vissza.
@@ -72,7 +72,7 @@ A beszédfelismerés SDK már elérhető az egy rá mutató hivatkozást.
 ## <a name="modify-the-c-code"></a>A C#-kód módosítása
 Nyissa meg a **LUIS_samples.cs** fájlt, és módosítsa az alábbi változókat:
 
-|Változó neve|Cél|
+|Változó neve|Rendeltetés|
 |--|--|
 |luisSubscriptionKey|A közzétételi oldalon végpont URL-ekhez előfizetés-kulcs-érték felel meg|
 |luisRegion|Végpont URL-cím első altartomány felel meg|

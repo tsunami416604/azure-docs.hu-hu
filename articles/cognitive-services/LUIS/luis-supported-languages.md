@@ -2,19 +2,19 @@
 title: Támogatja a LUIS-alkalmazások használata az Azure-ban honosítási |} A Microsoft Docs
 description: Ismerje meg, amely támogatja a LUIS nyelveket.
 services: cognitive-services
-author: cahann
-manager: hsalama
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2017
-ms.author: cahann
-ms.openlocfilehash: f2c9514f03019a742044dc077b395025d7d698e3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: d2c479445aabe05013470724c623978402abeb9d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927757"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248417"
 ---
 # <a name="culture-specific-understanding-in-luis-apps"></a>Kulturális környezet jellemző a LUIS-alkalmazások ismertetése
 
@@ -39,7 +39,7 @@ A LUIS tisztában van azzal a kimondott szöveg a következő nyelveken:
 | *[japán](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Csak a kulcsfontosságú kifejezések|
 | koreai |`ko-KR` |-|   -   |-|Csak a kulcsfontosságú kifejezések|
 | portugál (brazíliai) |`pt-BR` |-| ✔ |✔ |nem minden alárendelt kulturális környezetek|
-| spanyol (spanyolországi) |`es-ES` |-| ✔ |✔|✔|
+| Spanyol (Spanyolország) |`es-ES` |-| ✔ |✔|✔|
 | spanyol (Mexikó)|`es-MX` |-|  -   |✔|✔|
 
 

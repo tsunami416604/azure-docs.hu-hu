@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 45352c1cf4aca9043c23bbe12e94ba770a38c01b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436705"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257998"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló Stream
 Streamelheti a [Azure-tevékenységnapló](monitoring-overview-activity-logs.md) közel valós időben által bármely alkalmazás:
@@ -34,7 +34,7 @@ Ha nem rendelkezik az Event Hubs-névtér, akkor először hozzon létre egyet. 
 
 A megosztott elérési házirend határozza meg az engedélyeket, a streamelési mechanizmussal rendelkezik. Még ma, és az Event Hubs streamelési igényel **kezelés**, **küldése**, és **figyelésére** engedélyeket. Létrehozhat vagy megosztott elérési házirendeket az Event Hubs-névtér alatt az Azure Portalon módosíthatja a **konfigurálása** lapon találja az Event Hubs-névtér. 
 
-A tevékenységnapló naplóprofil tartalmazza a folyamatos átviteli frissíti, a felhasználó, aki a módosítás a ListKey engedéllyel kell rendelkeznie az Event Hubs engedélyezési szabályokat. Az Event Hubs-névtér nem rendelkezik az előfizetést, amelyhez a naplókat, a kibocsátó az azonos előfizetésben kell mindaddig, amíg a beállítást konfiguráló felhasználónak megfelelő RBAC-hozzáféréssel, mindkét előfizetéshez tartozik.
+A tevékenységnapló naplóprofil tartalmazza a folyamatos átviteli frissíti, a felhasználó, aki a módosítás a ListKey engedéllyel kell rendelkeznie az Event Hubs engedélyezési szabályokat. Az Event Hubs-névtér nem kell ugyanabban az előfizetésben kell az előfizetést, amelyhez a naplókat, a kibocsátó, mindaddig, amíg a beállítást konfiguráló felhasználónak megfelelő RBAC rendelkezik mindkét előfizetés való hozzáférést, és mindkét előfizetés az ugyanahhoz az AAD-bérlőhöz vannak.
 
 ### <a name="via-the-azure-portal"></a>Az Azure Portalon
 1. Keresse meg a **tevékenységnapló** használatával a szakasz a **minden szolgáltatás** keresés a portál bal oldalán.
@@ -53,8 +53,9 @@ A tevékenységnapló naplóprofil tartalmazza a folyamatos átviteli frissíti,
    > Ha bármi más, **minden régióban**, fog kihagyná kaphat legfontosabb eseményeket. A tevékenységnapló egy globális (nem régióhoz kötött) naplófájl, így a legtöbb kapcsolódóan nem történik meg a hozzájuk társított régió. 
    >
 
-4. Válassza ki **mentése** ezek a beállítások mentéséhez. A beállítások azonnal érvényesek az előfizetéshez.
-5. Ha több előfizetéssel rendelkezik, ismételje meg ezt a műveletet, és minden adat küldése az azonos eseményközpontba.
+4. Kattintson a **Azure Event Hubs** lehetőséget, és válassza ki, hogy mely naplók az event hubs-névtér kell küldeni, majd kattintson **OK**.
+5. Válassza ki **mentése** ezek a beállítások mentéséhez. A beállítások azonnal érvényesek az előfizetéshez.
+6. Ha több előfizetéssel rendelkezik, ismételje meg ezt a műveletet, és minden adat küldése az azonos eseményközpontba.
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell-parancsmagok használatával
 Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő log-profilt, és hozzon létre egy új naplóprofil.

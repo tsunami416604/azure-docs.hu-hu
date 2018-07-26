@@ -1,6 +1,6 @@
 ---
-title: Az Azure Advisor teljesítmény javaslatok |} Microsoft Docs
-description: Az Advisor segítségével az Azure-környezetekhez teljesítményének optimalizálásához.
+title: Az Azure Advisor-teljesítményajánlások |} A Microsoft Docs
+description: Az Advisor használatával az Azure-környezetek teljesítményének optimalizálásához.
 services: advisor
 documentationcenter: NA
 author: KumudD
@@ -14,52 +14,58 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 00abb5aafc6f3aec2e2dd7326a307bee74d97cc1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3331c795cbb1c45820d4c86d287ef57b54f0ae6b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149355"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247642"
 ---
-# <a name="advisor-performance-recommendations"></a>Teljesítmény javaslatokat biztosít
+# <a name="advisor-performance-recommendations"></a>Advisor-teljesítményajánlások
 
-Az Azure teljesítménye javaslatokat biztosít a sebesség és az üzleti szempontból kritikus fontosságú alkalmazások válaszképességének javítása érdekében. Letölthető teljesítmény javaslatok Advisor a **teljesítmény** az Advisor irányítópult.
+Az Azure Advisor-teljesítményajánlások sebesség és az üzleti szempontból kritikus fontosságú alkalmazások válaszképességét javítása érdekében. Advisor javaslatainak teljesítménnyel kapcsolatos javaslatok is kap a **teljesítmény** az Advisor irányítópult lapon.
 
-## <a name="improve-database-performance-with-sql-db-advisor"></a>Az SQL DB Advisor adatbázis teljesítményének növelése
+## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>A Traffic Manager-profilt, hogy gyorsabban átadása a kifogástalan állapotú végpontok DNS idejének csökkentése
 
-Az Advisor egy egységes, összevont nézetének összes Azure-erőforrások javaslatokat biztosít. SQL Database Advisor lapján kapcsolja a javaslatok az SQL Azure adatbázis teljesítményének növelése integrálható. SQL Database Advisor segédprogramot a használati előzmények elemzésével az SQL Azure-adatbázisok teljesítményét értékeli. Lehetőséget kínál a javaslatok, amelyek az adatbázis átlagos munkaterhelésre fut a legalkalmasabb. 
+[Élettartam (TTL) beállításainak idő](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) a Traffic Manager-profilok lehetővé teszik, hogy adja meg, hogyan lehet gyorsan végpontok váltani, ha a megadott végpont nem válaszol, a lekérdezéseket. Csökkenti az élettartam-értékek, az azt jelenti, hogy az ügyfelek gyorsabban működő végpontok lesznek átirányítva.
+
+Az Azure Advisor azonosítja a Traffic Manager-profilok konfigurált hosszabb TTL és 20 másodperc és 60 másodperc, attól függően, hogy az élettartam konfigurálása javasolja a profilhoz van beállítva [gyors feladatátvétel](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
+
+## <a name="improve-database-performance-with-sql-db-advisor"></a>Adatbázis-teljesítmény javítása az SQL DB Advisor szolgáltatással
+
+Az Advisor-javaslatok az Azure-erőforrások egységes, összevont nézetének biztosít. Integrálható az SQL Database Advisor viszi, az SQL Azure adatbázis teljesítményének javítására vonatkozó javaslatokat. Az SQL Database Advisor az SQL Azure-adatbázisok teljesítményét értékeli a használati előzmények elemzésével. Javaslatok, amelyek a leginkább kihasználni az adatbázis jellemző számítási feladatot futtat majd kínál. 
 
 > [!NOTE]
-> Ahhoz, hogy a javaslatok, egy adatbázisnak rendelkeznie kell egy hét használati kapcsolatos, és a hét belül kell konzisztens tevékenységet észleltünk a fiókjában. SQL Database Advisor segédprogramot a lekérdezés konzisztens mintára mint a véletlenszerű felszakadásáig tevékenység könnyebben optimalizálható.
+> Javaslatokat beolvasni egy adatbázisnak rendelkeznie kell egy hét használati kapcsolatban, és a hét belül kell lennie konzisztens tevékenységet észleltünk a fiókjában. Az SQL Database Advisor a lekérdezés konzisztens minták, mint a tevékenység véletlenszerű csúcsforgalomra könnyebben optimalizálható.
 
-SQL Database Advisor kapcsolatos további információkért lásd: [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
+Az SQL Database Advisor kapcsolatos további információkért lásd: [az SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
 
-## <a name="improve-redis-cache-performance-and-reliability"></a>Redis gyorsítótár teljesítményének és megbízhatóságának növelése
+## <a name="improve-redis-cache-performance-and-reliability"></a>Redis gyorsítótár teljesítményének és megbízhatóságának javítása
 
-Az Advisor azonosítja a Redis Cache példány ahol teljesítményt hátrányosan érintheti által magas memóriahasználat, a kiszolgáló terhelését, a hálózati sávszélesség vagy a nagyszámú ügyfél kapcsolatok. Az Advisor is gyakorlati tanácsokat ajánlásokat lehetséges problémák elkerülése érdekében. További információ a Redis Cache javaslatok: [Redis gyorsítótár Advisor](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
+Az Advisor azonosítja, ahol teljesítményét negatívan befolyásolhatja a magas memóriahasználat, a kiszolgáló terhelését, a hálózati sávszélesség vagy a ügyfélkapcsolatok nagy számú Redis Cache-példányokban. Az Advisor is gyakorlati tanácsokat javaslatok kapcsolatos lehetséges problémák elkerülése érdekében. További információ a Redis Cache javaslatok: [a Redis Cache Advisor](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
 
 
-## <a name="improve-app-service-performance-and-reliability"></a>App Service-teljesítmény és megbízhatóság javítása
+## <a name="improve-app-service-performance-and-reliability"></a>Az App Service teljesítményének és megbízhatóságának javítása
 
-Azure Advisor integrálja a alkalmazásszolgáltatások felhasználói élmény javítása és felderítésére vonatkozó platform képességei ajánlott eljárásait. Például App Services ajánlások a következők:
-* Ahol memória vagy a Processzor-erőforrások elfogytak a megoldás beállítások app futtatókörnyezetek által példányok észlelése.
-* Ahol helymegosztást erőforrások – például webes alkalmazásokat és adatbázisokat példányok észlelésének javíthatja a teljesítményt és az alacsonyabb költségek. 
+Az Azure Advisor integrálja, ajánlott eljárásait az App Services élmény javítása és a megfelelő platform képességei felderítése. Példák az App Services ajánlások a következők:
+* Ahol memória vagy a Processzor-erőforrások elfogytak, kockázatcsökkentési lehetőségek alkalmazás modulok által példányok felismerése.
+* Észlelését, ahol helymegosztást erőforrások, például a web apps és az adatbázisok példányai javíthatja a teljesítményt és alacsony költségek mellett. 
 
-App Service szolgáltatások javaslatok kapcsolatos további információkért lásd: [ajánlott eljárások az Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
+App Services javaslatok kapcsolatos további információkért lásd: [ajánlott eljárások az Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
 
-## <a name="how-to-access-performance-recommendations-in-advisor"></a>Teljesítmény javaslatok az Advisor elérése
+## <a name="how-to-access-performance-recommendations-in-advisor"></a>Az Advisor teljesítményajánlásainak elérése
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
 
 2.  Az Advisor irányítópultján kattintson a **teljesítmény** fülre.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Advisor-javaslatokra kapcsolatos további információkért lásd:
+Az Advisor-javaslatok kapcsolatos további információkért lásd:
 
 * [Az Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Költség javaslatokat biztosít](advisor-performance-recommendations.md)
-* [Magas rendelkezésre állású javaslatokat biztosít](advisor-high-availability-recommendations.md)
-* [Biztonsági javaslatokat biztosít](advisor-security-recommendations.md)
+* [Az Advisor díjakkal kapcsolatos ajánlások](advisor-performance-recommendations.md)
+* [Az Advisor magas rendelkezésre állás – javaslatok](advisor-high-availability-recommendations.md)
+* [Az Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 

@@ -3,8 +3,8 @@ title: Használata Data Lake Store az Azure HDInsight a Hadoop-keretrendszerrel
 description: Megtudhatja, hogyan kérdezhet le adatokat az Azure Data Lake Store-ból, és hogyan tárolhatja az elemzésének eredményeit.
 services: hdinsight,storage
 tags: azure-portal
-author: mumian
-ms.author: jgao
+author: jasonwhowell
+ms.author: jasonh
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
@@ -12,12 +12,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: 8f81e04c1b80173868f068957b6ca7da6bfe19c1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 48b98e170601f80e8cd1348ccc9afa3b5fc0c4e1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222889"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258031"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>A Data Lake Store és az Azure HDInsight-fürtök együttes használata
 
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan használható a Data Lake Store a HDInsigh
 > [!NOTE]
 > A Data Lake Store elérése mindig biztonságos csatornán keresztül történik, így nincs `adls` fájlrendszer-sémanév. Mindig `adl` használandó.
 > 
-> 
+
 
 ## <a name="availability-for-hdinsight-clusters"></a>A HDInsight-fürtök rendelkezésre állása
 
@@ -48,7 +48,7 @@ Jelen pillanatban csak bizonyos típusú, illetve verziójú HDInsight-fürtök 
 | A HDInsight 3.4-es verziója | Nem | Igen | |
 | A HDInsight 3.3-as verziója | Nem | Nem | |
 | A HDInsight 3.2-es verziója | Nem | Igen | |
-| Storm | | |A Data Lake Store használható Storm-topológiából származó adatok írására. A Data Lake Store-ban tárolhatók referenciaadatok is, amelyek olvashatók lesznek egy Storm-topológiából.|
+| A Storm | | |A Data Lake Store használható Storm-topológiából származó adatok írására. A Data Lake Store-ban tárolhatók referenciaadatok is, amelyek olvashatók lesznek egy Storm-topológiából.|
 
 Ha a Data Lake Store-t kiegészítő tárfiókként használja, az nem befolyásolja a fürtből az Azure-tárba történő írás, illetve olvasás lehetőségét vagy hatékonyságát.
 
@@ -136,8 +136,8 @@ Az alábbi hivatkozások a Data Lake Store-hozzáféréssel rendelkező HDInsigh
 Az alábbi PowerShell-kód példa beolvassa a helyi tanúsítványtárolóban fájlt, és a HDInsight-fürt frissíti az új tanúsítvánnyal, az Azure Data Lake Store eléréséhez. Adja meg a saját HDInsight-fürt nevét, az erőforráscsoport nevéhez, előfizetés-azonosító, az alkalmazás Azonosítóját, a tanúsítvány elérési útja. Írja be a jelszót, amikor a rendszer kéri.
 
 ```powershell-interactive
-$clusterName = 'MyCluster'
-$resourceGroupName = 'MyResourceGroup'
+$clusterName = '<clustername>'
+$resourceGroupName = '<resourcegroupname>'
 $subscriptionId = '01234567-8a6c-43bc-83d3-6b318c6c7305'
 $appId = '01234567-e100-4118-8ba6-c25834f4e938'
 $generateSelfSignedCert = $false

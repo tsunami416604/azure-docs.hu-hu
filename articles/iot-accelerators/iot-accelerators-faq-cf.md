@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 6d1002fd5131ca97f7bc1b9d081ae1471191a6cf
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d2f5ce97ee81deaf590771f4794af4adf0fdbd1b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076335"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248587"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések az Okosgyár-megoldásgyorsító
 
@@ -125,7 +125,7 @@ Alternatív megoldásként jelentkezzen be a virtuális Gépre SSH-n keresztül,
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hogyan tudom ellenőrizni Ha a szimulációs adatokat küld a felhőbe?
 
-Az a [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy a [iothub-explorer](https://github.com/azure/iothub-explorer) eszközt, az egyes eszközök által az IoT hubnak küldött adatok ellenőrizheti. Ezek az eszközök használatához, ismernie kell a központi telepítésben az IoT hub kapcsolati karakterláncára. Lásd: [hogyan állapíthatom meg a kapcsolati karakterláncot a megoldás által használt IoT hub?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Az a [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy a [Azure IoT CLI-bővítmény-események figyelése](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) paranccsal vizsgálhatja meg az egyes eszközök által az IoT hubnak küldött adatokat. Ezek az eszközök használatához, ismernie kell a központi telepítésben az IoT hub kapcsolati karakterláncára. Lásd: [hogyan állapíthatom meg a kapcsolati karakterláncot a megoldás által használt IoT hub?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Vizsgálja meg az egyik publisher eszköz által küldött adatokat:
 

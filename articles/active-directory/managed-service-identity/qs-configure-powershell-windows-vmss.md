@@ -1,5 +1,5 @@
 ---
-title: Egy PowerShell-lel az Azure VMSS MSI konfigurálása
+title: Felügyeltszolgáltatás-identitás konfigurálása az Azure VMSS PowerShell-lel
 description: Részletes utasításokat a rendszer és a felhasználó rendelt identitásokkal az Azure VMSS a PowerShell használatával.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: b82785d0f4b6a5952334e891e7adec570c624f2d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 5d4539c05d05053ac2ea6cd1c5fadbd161b41173
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238131"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257742"
 ---
-# <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurálja a VMSS Felügyeltszolgáltatás-identitás (MSI) PowerShell-lel
+# <a name="configure-a-vmss-managed-service-identity-using-powershell"></a>PowerShell-lel VMSS felügyelt Szolgáltatásidentitás konfigurálása
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -55,7 +55,7 @@ A rendszer által hozzárendelt identitással engedélyezve van a VMSS létrehoz
     $VMSS = New-AzureRmVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
 
-2. (Nem kötelező) Hozzáadás a MSI VMSS bővítmény használatával a `-Name` és `-Type` paraméterrel a [Add-azurermvmssextension parancsmagban](/powershell/module/azurerm.compute/add-azurermvmssextension) parancsmag. Átadható "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a típusától függően virtuálisgép-méretezési csoport állítsa be, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
+2. (Nem kötelező) Hozzáadás a Managed Service Identity VMSS bővítmény használatával a `-Name` és `-Type` paraméterrel a [Add-azurermvmssextension parancsmagban](/powershell/module/azurerm.compute/add-azurermvmssextension) parancsmagot. Átadható "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a típusától függően virtuálisgép-méretezési csoport állítsa be, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
 
     > [!NOTE]
     > Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.
@@ -82,7 +82,7 @@ Ha egy rendszer által hozzárendelt identitással egy meglévő Azure-beli virt
    Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-3. Hozzáadás a MSI VMSS bővítmény használatával a `-Name` és `-Type` paraméterrel a [Add-azurermvmssextension parancsmagban](/powershell/module/azurerm.compute/add-azurermvmssextension) parancsmag. Átadható "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a típusától függően virtuálisgép-méretezési csoport állítsa be, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
+3. Hozzáadás a Managed Service Identity VMSS bővítmény használatával a `-Name` és `-Type` paraméterrel a [Add-azurermvmssextension parancsmagban](/powershell/module/azurerm.compute/add-azurermvmssextension) parancsmagot. Átadható "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a típusától függően virtuálisgép-méretezési csoport állítsa be, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
 
    ```powershell
    $setting = @{ "port" = 50342 }

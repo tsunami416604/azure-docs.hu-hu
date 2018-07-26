@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: d8b8aee508ff1b243bf40261819071fc2a5194a3
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: cb23db13d67047225102c6888e27e8f79a3e5abf
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237614"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259313"
 ---
-# <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Konfigurálja a Felügyeltszolgáltatás-identitás (MSI)-beli virtuális gépen az Azure CLI használatával
+# <a name="configure-managed-service-identity-on-an-azure-vm-using-azure-cli"></a>Felügyeltszolgáltatás-identitás konfigurálása-beli virtuális gépen az Azure CLI használatával
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -105,7 +105,7 @@ Ha már nincs szüksége a rendszerhez rendelt identitáshoz egy virtuális gép
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Az MSI-Virtuálisgép-bővítmény eltávolítása felhasználói `-n ManagedIdentityExtensionForWindows` vagy `-n ManagedIdentityExtensionForLinux` kapcsoló (virtuális gép függően) és [vm-bővítmény törlése az](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
+A Managed Service Identity Virtuálisgép-bővítmény, az eltávolítandó felhasználói `-n ManagedIdentityExtensionForWindows` vagy `-n ManagedIdentityExtensionForLinux` kapcsoló (virtuális gép függően) és [vm-bővítmény törlése az](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -119,7 +119,7 @@ Ebben a szakaszban megtudhatja, hogyan adhat hozzá és távolíthat el egy felh
 
 Ez a szakasz végigvezeti egy felhasználóhoz hozzárendelt identitás hozzárendelését a virtuális gépek létrehozása. Ha már rendelkezik egy használni kívánt virtuális Gépet, kihagyhatja ezt a szakaszt, és folytassa a következő.
 
-1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, az MSI használatával [az csoport létrehozása](/cli/azure/group/#az_group_create). Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
+1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a Felügyeltszolgáltatás-identitást, használatával [az csoport létrehozása](/cli/azure/group/#az_group_create). Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -165,7 +165,7 @@ Ez a szakasz végigvezeti egy felhasználóhoz hozzárendelt identitás hozzáre
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <MSI NAME>
     ```
-A válasz tartalmazza a felhasználó hozta létre, az alábbihoz hasonló MSI hozzárendelt részleteit. Az erőforrás `id` hozzárendelt a felhasználóhoz hozzárendelt identitás érték szerepel a következő lépéssel.
+A válasz tartalmazza a felhasználó hozta létre, az alábbihoz hasonló felügyelt identitás részletei. Az erőforrás `id` hozzárendelt a felhasználóhoz hozzárendelt identitás érték szerepel a következő lépéssel.
 
    ```json
    {

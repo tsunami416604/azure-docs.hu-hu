@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ba8392509f47ae91525841966d992c3ddfd9cd52
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 563958458979d0a0a28046ce35d21bd58be631ce
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216376"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259296"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibaelhárítása
 
@@ -56,7 +56,7 @@ Ha a bérlő az Azure AD Premium licenccel rendelkezik, akkor is megjeleníthet�
 
 Keresse meg a **Azure Active Directory** > **bejelentkezések** a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/), majd válassza ki egy adott felhasználó bejelentkezési tevékenységet. Keresse meg a **bejelentkezési hiba kódja** mező. A mező értékét leképezése a hiba oka és a megoldás a következő táblázat használatával:
 
-|Bejelentkezési hiba kódja|Jelentkezzen be a hiba oka|Feloldás
+|Bejelentkezési hiba kódja|Jelentkezzen be a hiba oka|Felbontás
 | --- | --- | ---
 | 81001 | A felhasználó Kerberos-jegye túl nagy. | Csökkentse a felhasználó csoporttagságait, majd próbálkozzon újra.
 | 81002 | Nem érvényesíthető a felhasználó Kerberos-jegye. | Tekintse meg a [hibaelhárítási ellenőrzőlista](#troubleshooting-checklist).
@@ -119,12 +119,20 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
 ### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>3. lépés: Minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatás közvetlen egyszeri bejelentkezés letiltása
 
 1. Hívás `$creds = Get-Credential`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatai a megfelelő Active Directory-erdőben.
+
+>[!NOTE]
+>A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
+
 2. Hívás `Disable-AzureADSSOForest -OnPremCredentials $creds`. Ezzel a paranccsal eltávolítható az `AZUREADSSOACCT` az adott erdő Active Directory a helyszíni tartományvezérlő számítógépfiókja.
 3. Ismételje meg a fenti lépéseket minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatást.
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4. lépés: Minden egyes Active Directory-erdő közvetlen egyszeri bejelentkezés engedélyezése
 
 1. Hívás `Enable-AzureADSSOForest`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatai a megfelelő Active Directory-erdőben.
+
+>[!NOTE]
+>A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
+
 2. Ismételje meg az előző lépést minden egyes Active Directory-erdőben, ahol szeretné beállítani a szolgáltatást.
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>5. lépés A bérlő a funkció engedélyezése

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Advisor magas rendelkezésre állású javaslatok |} Microsoft Docs
-description: Azure Advisor használata az Azure-környezetekhez magas rendelkezésre állásának javítása érdekében.
+title: Az Azure Advisor magas rendelkezésre állás – javaslatok |} A Microsoft Docs
+description: Az Azure Advisor használata az Azure-környezetek, magas rendelkezésre állás javítása érdekében.
 services: advisor
 documentationcenter: NA
 author: KumudD
@@ -14,57 +14,71 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 23764b476f01c30b1755c507a0cfa5ead27be91e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 297a213fe4219b834187f977e3281eb939352f60
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736551"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249063"
 ---
-# <a name="advisor-high-availability-recommendations"></a>Magas rendelkezésre állású javaslatokat biztosít
+# <a name="advisor-high-availability-recommendations"></a>Az Advisor magas rendelkezésre állás – javaslatok
 
-Az Azure Advisor segítségével győződjön meg arról, és az üzleti szempontból kritikus fontosságú alkalmazások folytonosságának javításához. Advisor a magas rendelkezésre állású javaslatok beszerezheti a **magas rendelkezésre állású** az Advisor irányítópult.
+Az Azure Advisor segítségével győződjön meg arról, és javíthatja az üzleti szempontból kritikus fontosságú alkalmazások folytonosságát. Megjelenik a magas rendelkezésre állás – javaslatok az Advisor által a **magas rendelkezésre állású** az Advisor irányítópult lapon.
 
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Virtuális gép a hibatűrés érdekében
+## <a name="ensure-virtual-machine-fault-tolerance"></a>Virtuális gép hibatűrő képesség biztosítása
 
-Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor azonosítja a virtuális gépek, amelyek nem részei egy rendelkezésre állási csoportot és helyezi át a rendelkezésre állási csoportok javasolja. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e a virtuális gép az Azure SLA-t. Lehetősége van a rendelkezésre állási készlet a virtuális gép létrehozásához, vagy a virtuális gép hozzáadása egy meglévő rendelkezésre állási csoportot.
+Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor azonosítja a virtuális gépeket, amelyek nem részei rendelkezésre állási csoport, és javasolja áthelyezése egy rendelkezésre állási csoportba. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e az Azure-beli virtuálisgép-SLA. Kiválaszthatja, hogy hozzon létre egy rendelkezésre állási csoportot a virtuális gép vagy a virtuális gép hozzáadása egy meglévő rendelkezésre állási csoporthoz.
 
 > [!NOTE]
-> Ha egy rendelkezésre állási csoport létrehozása mellett dönt, hozzá kell adnia legalább egy további virtuális gép bele. Azt javasoljuk, hogy Ön csoporthoz két vagy több virtuális gép rendelkezésre állási beállítása annak érdekében, hogy legalább egy gép érhető kimaradás során.
+> Ha egy rendelkezésre állási csoport létrehozása, hozzá kell adnia legalább egy virtuális gépet bele. Azt javasoljuk, hogy szolgáltatáskimaradások alkalmával, csoport, győződjön meg arról, hogy legalább egy gép beállítása két vagy több virtuális gépet egy rendelkezésre állási érhető el.
 
-## <a name="ensure-availability-set-fault-tolerance"></a>Ellenőrizze a rendelkezésre állási csoport hibatűrés 
+## <a name="ensure-availability-set-fault-tolerance"></a>Győződjön meg, hogy a rendelkezésre állási csoport hibatűrése 
 
-Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor tartalmazhat egyetlen virtuális gép rendelkezésre állási készleteket azonosítja, és azt javasolja, hogy egy vagy több virtuális gépek hozzáadása. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e a virtuális gép az Azure SLA-t. Kiválaszthatja a virtuális gép létrehozásához, vagy egy meglévő virtuális gép hozzáadása a rendelkezésre állási csoport.  
+Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor egy egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportok azonosítja, és javasolja, hogy egy vagy több virtuális gép hozzáadása. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e az Azure-beli virtuálisgép-SLA. Kiválaszthatja a virtuális gép létrehozása vagy meglévő virtuális gép hozzáadása a rendelkezésre állási csoporthoz.  
 
-## <a name="ensure-application-gateway-fault-tolerance"></a>Ellenőrizze az alkalmazás átjáró hibatűrés
-Kritikus fontosságú alkalmazások alkalmazás-átjárók vannak kapcsolva, az üzletmenet folytonosságának biztosításához, Advisor azonosítja alkalmazás példányai, amelyek nincsenek beállítva a hibatűrés érdekében, és javaslatot tesz, a szervizelési műveletek is. Az Advisor azonosítja közepes vagy nagy Egypéldányos alkalmazás átjárók, és hozzáadja legalább egy további példányt javasol. Egy vagy több instance kis alkalmazásátjárót azonosítja és a közepes vagy nagy termékváltozatok történő javasolja. Ezek a műveletek ellenőrizze, hogy az átjáró alkalmazáspéldányok megfelelnek a jelenlegi SLA ezekhez az erőforrásokhoz tartozó javasol.
+## <a name="ensure-application-gateway-fault-tolerance"></a>Application gateway hibatűrő képesség biztosítása
+Az az üzletmenet folytonosságának biztosítása az alapvető fontosságú alkalmazások, amelyek az application Gateway átjárók által, az Advisor azonosítja az application gateway-példány hibatűrése nem konfigurált, és azt sugallja, hogy elvégezhető javítási műveleteket. Az Advisor azonosítja a közepes vagy nagy egy példányban – az application Gateway átjárók, és legalább egy további példányok hozzáadása javasolja. Egyetlen vagy több instance kis application Gateway átjárókon azonosítja és a közepes vagy nagy SKU-ba való migrálás javasolja. Ezeket a műveleteket, ellenőrizze, hogy az application gateway-példány megfelelnek a jelenlegi SLA ezekhez az erőforrásokhoz javasol.
 
-## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>A teljesítmény és a virtuális gépek lemezeit megbízhatóságának javítása
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>A teljesítmény és a virtuálisgép-lemezek megbízhatóságának javítása
 
-Az Advisor azonosítja a virtuális gépek a standard lemezek és frissítése a premium lemezek javasolja.
+Az Advisor azonosít, a standard szintű lemezek virtuális gépekhez, és javasolja, hogy prémium szintű lemezek telepítse.
  
-Prémium szintű Storage nagy teljesítményű, alacsony késésű lemez I/O-igényes munkaterhelések futó virtuális gépek támogatása nyújt. Prémium szintű storage-fiókok használó virtuálisgép-lemezek SSD-meghajtót (SSD) adatait tárolják. A legjobb teljesítmény érdekében az alkalmazáshoz azt javasoljuk, hogy az áttelepített a prémium szintű Storage magas IOPS igénylő virtuális gép lemezei. 
+Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatás I/O-igényes számítási feladatokat futtató virtuális gépek tesz lehetővé. Premium storage-fiókok használó virtuálisgép-lemezek tartós állapotú meghajtókhoz (SSD-kkel) adatokat tárolja. Az alkalmazás a legjobb teljesítmény érdekében javasoljuk, hogy a virtuális gép lemezei a premium storage magas iops-t igénylő telepíti át. 
 
-A lemezek nem igényelnek magas iops értéket, ha szabványos Storage fenntartásuk korlátozhatja költségeket. Standard szintű tárolást virtuálisgép-lemez adatokat tárolja a (merevlemezes HDD) meghajtók SSD-k helyett. Ha szeretné, telepítse át a virtuális gépek lemezeit a prémium szintű lemezekhez. A legtöbb virtuális gép termékváltozatok Premium lemezek támogatottak. Azonban néhány esetben, ha szeretné használni a premium lemezek esetén szükség lehet a virtuális gép verziófrissítése termékváltozatok is.
+A lemezek nem igényelnek magas iops értéket, ha standard szintű tárolóban megőrzése őket korlátozhatja költségeket. Standard szintű tárolás virtuálisgép-lemez adatokat (merevlemezes HDD) meghajtók helyett SSD-k tárolja. Kiválaszthatja, hogy a virtuális gép lemezeinek migrálása a prémium szintű lemezek. A legtöbb virtuális gépek azon Termékváltozatai támogatja a prémium szintű lemezeket. Azonban bizonyos esetekben ha azt szeretné használni a prémium szintű lemezek, előfordulhat, hogy frissíteni szeretne a virtuális gépek azon Termékváltozatai is.
 
-## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>A virtuális gép adatainak véletlen törlés elleni védelme
-Virtuális gép biztonsági mentése beállításával biztosítja az üzleti szempontból kritikus fontosságú adatok rendelkezésre állását, és véletlen törlés vagy -sérülés elleni védelmet nyújt.  Az Advisor azonosítja a virtuális gépek, ahol a biztonsági mentés nem engedélyezett, és azt a biztonsági mentés engedélyezését javasolja. 
+## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>A virtuális gép adatainak véletlen törlés elleni védelem
 
-## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ellenőrizze, hogy Azure-felhőbe szakértők eléréséhez szükség esetén
-Olyan üzleti szempontból kritikus fontosságú alkalmazások és szolgáltatások futtatásakor fontos hozzáférjenek a technikai támogatási szolgálathoz, amikor szükséges. Az Advisor azonosítja a potenciális üzleti szempontból kritikus fontosságú előfizetések, amelyek nem rendelkeznek a támogatási csomag szerepel a technikai támogatási szolgálathoz, és javasolja, hogy telepítse olyan beállítás, amely magában foglalja a technikai támogatási szolgálathoz.
+Virtuális gépek biztonsági mentésének beállításához az üzleti szempontból kritikus fontosságú adatok rendelkezésre állását biztosítja, és véletlen törlés és adatsérülések elleni védelmet nyújt.  Az Advisor azonosítja a virtuális gépek, ahol a biztonsági mentés nem engedélyezett, és javasolja a biztonsági mentés engedélyezése. 
 
-## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állású javaslatok az Advisor elérése
+## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ellenőrizze, hogy szakértői Azure-felhőben való hozzáférést, ha szükséges
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
+Amikor egy üzleti szempontból kritikus fontosságú számítási feladatot futtat, fontos a technikai támogatáshoz, amikor szükség van. Az Advisor azonosítja a potenciális üzleti szempontból kritikus fontosságú előfizetéseket, amelyek nem rendelkeznek a támogatási csomagot a benne foglalt terméktámogatással, és javasolja, hogy olyan beállítás, amely tartalmazza a technikai támogatási telepítse.
+
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Értesítés az Önt érintő problémái az Azure az Azure Service Health-riasztások létrehozása
+
+Azt javasoljuk, hogy az Azure Service Health-riasztások beállítása értesítés az Azure-szolgáltatási problémák hatása a felhasználókra. [Az Azure Service Health](https://azure.microsoft.com/features/service-health/) egy ingyenes szolgáltatás, amely során egy Azure-szolgáltatási probléma által érintett, személyre szabott útmutatást és támogatást nyújt. Az Advisor azonosítja, amelyekhez nincs riasztás konfigurálva az előfizetések, és javasolja, hogy hozzon létre egyet.
+
+## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Rugalmasság a Traffic Manager-végpontok konfigurálása
+
+Több végpont a TRAFFIC Manager-profilok élmény magasabb rendelkezésre állás, ha bármely megadott végpont nem sikerül. További különböző régiókban lévő végpontok elhelyezése javítja a szolgáltatás megbízhatóságát. Az Advisor azonosítja a Traffic Manager-profilok, ahol csak egy végpont van és javasolni a felhasználóknak legalább egy további végpont hozzáadása egy másik régióban.
+
+Ha minden végpont a Traffic Manager-profil, amely konfigurálva van a közelségi útválasztás ugyanabban a régióban, a felhasználók el más régiókból tapasztalhatnak csatlakozási késések fordulhatnak elő. Hozzáadásával vagy a végpont áthelyezése egy másik régióba teljesítményjavítás általános, és adja meg a jobb rendelkezésre állás, ha egy adott régióban szereplő összes végpont sikertelen. Az Advisor azonosítja a Traffic Manager-profilok közelségi útválasztás, ahol az összes végpont ugyanabban a régióban vannak konfigurálva, és javasolja a hozzáadásával vagy a végpont áthelyezése egy másik Azure-régióban.
+
+Ha a Traffic Manager-profil földrajzi útválasztásra van konfigurálva, majd adatforgalmat végpontokra alapján meghatározott régióban. Ha meghibásodik egy régióban, nem nincs előre definiált feladatátvétel. Kellene egy végpontot, ahol van konfigurálva a regionális csoportosítás "Az összes (globális)" eldobott forgalom elkerülése érdekében, és szolgáltatás rendelkezésre állásának javítása. Az Advisor azonosítja a Traffic Manager-profilok konfigurált földrajzi útválasztásának, ahol nincs úgy konfigurálva, hogy a regionális csoportosítás rendelkezik, mint az "Összes (globális)" végpont, és javasolja, hogy a konfigurációs módosítás elvégzése.
+
+## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állás – javaslatok az Advisor elérése
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
 
 2.  Az Advisor irányítópultján kattintson a **magas rendelkezésre állású** fülre.
 
 ## <a name="next-steps"></a>További lépések
 
-Advisor-javaslatokra kapcsolatos további információkért lásd:
+Advisor-javaslatok kapcsolatos további információkért lásd:
 * [Bevezetés az Azure Advisor](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Költség javaslatokat biztosít](advisor-performance-recommendations.md)
-* [Teljesítmény javaslatokat biztosít](advisor-performance-recommendations.md)
-* [Biztonsági javaslatokat biztosít](advisor-security-recommendations.md)
+* [Az Advisor díjakkal kapcsolatos ajánlások](advisor-performance-recommendations.md)
+* [Advisor-teljesítményajánlások](advisor-performance-recommendations.md)
+* [Az Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 

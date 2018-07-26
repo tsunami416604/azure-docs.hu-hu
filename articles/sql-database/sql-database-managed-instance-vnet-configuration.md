@@ -2,7 +2,7 @@
 title: Az Azure SQL Database felügyelt példányok Vnetjének konfigurálásával |} A Microsoft Docs
 description: Ez a témakör ismerteti a virtuális hálózat (VNet) egy Azure SQL Database felügyelt példánya a konfigurációs beállításokat.
 services: sql-database
-author: srdjan-bozovic
+author: srdan-bozovic-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: dbd747fd3ec53b1221536609d6355ff5b4691977
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091604"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258100"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Virtuális hálózat konfigurálása az Azure SQL Database felügyelt példány
 
@@ -94,7 +94,7 @@ Az Azure virtuális hálózat létrehozása előfeltétele a felügyelt példán
 
 ## <a name="create-the-required-route-table-and-associate-it"></a>Hozzon létre a szükséges útválasztási táblázatot, és társítsa azt
 
-1. Jelentkezzen be az Azure Portalra  
+1. Bejelentkezés az Azure Portal webhelyre  
 2. Keresse meg az **Útvonaltábla** elemet, kattintson rá, majd az Útvonaltábla lapon kattintson a **Létrehozás** gombra.
 
    ![útvonaltábla létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)

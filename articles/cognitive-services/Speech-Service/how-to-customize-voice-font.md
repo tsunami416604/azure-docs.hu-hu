@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 011358e223db419f31e0181b05ce6f89479dba81
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 7c4abb6832a030c2cb3cc2088dc5d0f1350a6ab8
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070943"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258847"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -29,7 +29,7 @@ Hangalapú testreszabási amerikai angol (en-US) és kontinens kínai (zh-CN) é
 
 A szöveg-beszéd átalakítás testreszabási funkciót jelenleg privát előzetes verzióban érhető el. [Az alkalmazás űrlap kitöltésekor](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) hozzáférés figyelembe kell venni.
 
-Az Azure-fiók és a egy előfizetést a beszédfelismerési szolgáltatás is szükséges. [Hozzon létre egyet] (https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started) Ha még nem tette. A következő csatlakozzon az előfizetés az egyéni beszédfelismerési portálon.
+Az Azure-fiók és a egy előfizetést a beszédfelismerési szolgáltatás is szükséges. [Hozzon létre egyet](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Ha még nem tette. A következő csatlakozzon az előfizetés az egyéni beszédfelismerési portálon.
 
 1. Jelentkezzen be a [egyéni beszédfelismerési portál](https://customvoice.ai) hozzáférést alkalmazásához használt ugyanazon Microsoft-fiók használatával.
 
@@ -208,21 +208,21 @@ Miután a beviteli mód állapíthatja meg a beviteli mező kitöltése, kattint
 
 Miután sikeresen létrehozta és tesztelte a hangalapú modell, üzembe helyezésekor egy egyéni szövegfelolvasás végpontot. Ezt a végpontot a szokásos végpont helyett majd a REST API-n keresztül szöveg-beszéd átalakítás kérések küldésekor használja. Egyéni végpontra az előfizetést, amellyel a betűtípus telepítése csak a nem hívható meg.
 
-Hozzon létre egy új egyéni végpontot, válassza a **végpontok** az oldal tetején lévő egyéni beszédfelismerési menüből. Az üzembe helyezés lap jelenik meg, az a tábla az aktuális egyéni beszédfelismerési végpontokat, ha van ilyen.
+Hozzon létre egy új egyéni végpontot, válassza a **végpontok** az oldal tetején lévő egyéni beszédfelismerési menüből. A saját telepített beszédhangot lap megjelenik, az a tábla az aktuális egyéni beszédfelismerési végpontokat, ha van ilyen. A jelenlegi területi beállításhoz tükrözi a tábla első sorát. Hozzon létre egy üzemelő példánya egy másik nyelvet, módosítsa a megjelenített területi beállítás. (Azt meg kell egyeznie a hangalapú végzi.)
 
-Kattintson a **üzembe helyezése beszédhangot** gombra egy új végpont létrehozásához. A Create Endpoint"lapon megjelenik a táblázat első sorában a jelenlegi területi beállításhoz. Hozzon létre egy üzemelő példánya egy másik nyelvet, módosítsa a megjelenített területi beállítás. (Azt meg kell egyeznie a hangalapú végzi.) Adja meg a nevét és leírását, egyéni végpontra.
+Kattintson a **üzembe helyezése beszédhangot** gombra egy új végpont létrehozásához. Adja meg a nevét és leírását, egyéni végpontra.
 
 Az előfizetés menüből válassza a használni kívánt előfizetést. Ingyenes előfizetés felhasználóinak üzembe helyezett egyszerre csak egy modell rendelkezhet. Standard szintű előfizetés felhasználóinak legfeljebb 20 a saját egyéni beszédfelismerési végpontokat hozhat létre.
 
 ![Végpont létrehozása](media/custom-voice/create-endpoint.png)
 
-A modell üzembe helyezni kiválasztása után kattintson az **létrehozás**. Az üzembe helyezés lap ismét megjelenik, most már az új végpont egy bejegyzés. Eltarthat néhány percig, hozza létre az új végpont. A központi telepítés állapotát a rendszer sikeres, a végpont készen áll a használatra.
+A modell üzembe helyezni kiválasztása után kattintson az **létrehozás**. A saját telepített beszédhangot lap ismét megjelenik, most már az új végpont egy bejegyzés. Eltarthat néhány percig, hozza létre az új végpont. A központi telepítés állapotát a rendszer sikeres, a végpont készen áll a használatra.
 
 ![Az üzembe helyezett beszédhangot](media/custom-voice/my-deployed-voices.png)
 
-A sikeres üzembe helyezés állapota, az üzembe helyezett hangtípusú végpontja megjelenik az üzembe helyezett beszédhangot táblázat. Ez az URI használhatja közvetlenül a HTTP-kérést.
+A sikeres üzembe helyezés állapota, az üzembe helyezett hangtípusú végpontja a saját telepített beszédhangot tábla jelenik meg. Ez az URI használhatja közvetlenül a HTTP-kérést.
 
-A végpont tesztelését online érhető el az egyéni beszédfelismerési portálon keresztül. A végpont teszteléséhez válassza **tesztelés végpontok** az egyéni beszédfelismerési legördülő menüből. A végpont tesztelése oldalon jelenik meg. Válassza ki a központilag telepített hang, és adjon meg a szöveget, (az egyszerű szöveges vagy SSML formátumban) a szövegmezőbe.
+A végpont tesztelését online érhető el az egyéni beszédfelismerési portálon keresztül. A végpont teszteléséhez válassza **tesztelés végpontok** az egyéni beszédfelismerési legördülő menüből. A végpont tesztelése oldalon jelenik meg. Válasszon egy üzembe helyezett egyéni beszédfelismerési, és írja be a szöveget, (az egyszerű szöveges vagy SSML formátumban) a szövegmezőbe.
 
 > [!NOTE] 
 > SSML, használatakor a `<voice>` címke a neve, mint az egyéni beszédfelismerési létrehozásakor adott meg kell adnia.

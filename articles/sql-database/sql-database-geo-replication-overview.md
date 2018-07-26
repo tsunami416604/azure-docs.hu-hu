@@ -7,21 +7,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/20/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 669ac28302275c07365acad18cbd6cabebca5637
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 07c17d248d78313f1c5f6f1025ae06a623b75944
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239168"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259347"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok
 Aktív georeplikáció üzleti folytonossági megoldás, amely lehetővé teszi az alkalmazásnak, hogy gyors vészhelyreállítás esetén a méretezési csoport adatközponti üzemkimaradások tervezték. Ha engedélyezve van a georeplikáció, az alkalmazás kezdeményezhet feladatátvételt egy másodlagos adatbázist egy másik Azure-régióban. Legfeljebb négy meghatározhatják az azonos vagy eltérő régiókban támogatottak, és a másodlagos példány hozható létre a csak olvasási hozzáféréssel lekérdezésekhez is használható. A feladatátvétel kell kezdeményeznie manuálisan az alkalmazás vagy a felhasználó. A feladatátvételt követően az új elsődleges rendelkezik egy másik kapcsolat végpontját. 
+
 > [!NOTE]
 > Aktív georeplikáció az összes adatbázis összes szolgáltatási szinten az összes régióban érhető el.
 >  
+
 Automatikus feladatátvételi csoportok az aktív georeplikáció a kiterjesztése. Ez a célja, hogy egy alkalmazás által kezdeményezett feladatátvételi több georeplikált adatbázis sumultaneously feladatátvételének kezelésében, vagy delegálása feladatátvétel hajtható végre az SQL Database szolgáltatás, a felhasználó által megadott feltételek szerint. Az utóbbi lehetővé teszi az automatikus helyreállításán egy másodlagos régióban több kapcsolódó adatbázisok egy Katasztrofális hiba vagy egyéb nem tervezett esemény, amely az SQL Database szolgáltatás rendelkezésre állása az elsődleges régióban teljes vagy részleges elvesztését eredményezi. Emellett használhatja az olvasható másodlagos adatbázis csak olvasható lekérdezési számítási feladatok kiszervezéséhez. Automatikus feladatátvételi csoportok több adatbázis között, mivel ezeknek az adatbázisoknak az elsődleges kiszolgálón kell konfigurálni. Az adatbázisok a feladatátvételi csoport elsődleges és másodlagos kiszolgálók ugyanabban az előfizetésben kell lennie. Automatikus feladatátvételi csoportok támogatja az összes adatbázis replikálása a csoportban csak egy másodlagos kiszolgáló egy másik régióban.
 
 > [!NOTE]
@@ -62,15 +64,15 @@ Az aktív georeplikációs szolgáltatás az alábbi alapvető képességeket bi
 * **Az automatikus aszinkron replikáció**: ad hozzá egy meglévő adatbázist hozhat létre egy másodlagos adatbázis csak. Minden Azure SQL Database Server a másodlagos hozható létre. Létrehozása után megjelenik a másodlagos adatbázis az adatokat másolja az elsődleges adatbázisból. Ez a folyamat van áttöltésként is ismert. Miután létrehozott és áttöltésekor másodlagos adatbázis, az elsődleges adatbázis frissítések aszinkron módon replikált a másodlagos adatbázis automatikusan. Aszinkron replikáció azt jelenti, hogy tranzakció véglegesítve az elsődleges adatbázison, mielőtt azok replikálódnak a másodlagos adatbázis. 
 * **Olvasható másodlagos adatbázis**: az alkalmazás hozzáférhet egy másodlagos adatbázis csak olvasható műveletekhez az elsődleges adatbázis eléréséhez használt azonos vagy eltérő rendszerbiztonsági használatával. A másodlagos adatbázisok annak érdekében, hogy a frissítések az elsődleges (napló visszajátszását) replikációs nem késnek-e a másodlagos végrehajtott lekérdezések snapshot elkülönítési módban működik.
 
-   > [!NOTE]
-   > A napló visszajátszását a másodlagos adatbázis késik, ha az elsődleges sémafrissítések. Az utóbbi séma zárolva van a másodlagos adatbázis szükséges. 
-   > 
+> [!NOTE]
+> A napló visszajátszását a másodlagos adatbázis késik, ha az elsődleges sémafrissítések. Az utóbbi séma zárolva van a másodlagos adatbázis szükséges. 
+> 
 
 * **Több olvasható másodlagos példánnyal**: két vagy több másodlagos adatbázis növelni a redundanciát és az elsődleges adatbázis és az alkalmazás adatvédelmi szintet. Ha több másodlagos adatbázis létezik, az alkalmazás akkor is védett akkor is, ha egy másodlagos adatbázis nem sikerül. Ha csak egy másodlagos adatbázist, és ez nem sikerül, az alkalmazás van kitéve nagyobb eséllyel addig, amíg létrejön egy új másodlagos adatbázis.
 
-   > [!NOTE]
-   > Ha egy globálisan elosztott alkalmazás létrehozása, és meg kell adnia a csak olvasási hozzáféréssel az adatok több mint négy régióban aktív georeplikációt használ, másodlagos, egy másodlagos (láncolási néven ismert folyamat) hozhat létre. Ily módon érheti el adatbázis-replikáció gyakorlatilag korlátlan méretezhetőségét. Emellett láncolási csökkenti a replikáció az elsődleges adatbázisból. Kompromisszumot kötni a rendszer a megnövekedett replikációs késés a levél – a legtöbb másodlagos adatbázisokon. 
-   >
+> [!NOTE]
+> Ha egy globálisan elosztott alkalmazás létrehozása, és meg kell adnia a csak olvasási hozzáféréssel az adatok több mint négy régióban aktív georeplikációt használ, másodlagos, egy másodlagos (láncolási néven ismert folyamat) hozhat létre. Ily módon érheti el adatbázis-replikáció gyakorlatilag korlátlan méretezhetőségét. Emellett láncolási csökkenti a replikáció az elsődleges adatbázisból. Kompromisszumot kötni a rendszer a megnövekedett replikációs késés a levél – a legtöbb másodlagos adatbázisokon. 
+>
 
 * **A rugalmas készlet adatbázisok támogatása**: minden egyes replikának külön-külön részt venni a rugalmas készlet, vagy egyáltalán nem tudja bármilyen rugalmas készletben. A készlet minden egyes replikának választás a különálló, és nem függ semmilyen más replika konfigurációját (akár a elsődleges vagy másodlagos). Minden rugalmas készletet szerepel egy adott régión belül, így az azonos topológia több replika soha nem oszthatnak meg a rugalmas készlet.
 * **A másodlagos adatbázis teljesítményszintjének konfigurálható**: elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. Egy másodlagos adatbázis alacsonyabb teljesítményszintre (dtu-k), mint az elsődleges hozhatja létre. Ezt a beállítást nem ajánlott alkalmazások a nagy adatbázis-írási tevékenység, mert a megnövekedett replikációs késés jelentős adatvesztés kockázatának növeli a feladatátvétel után. Emellett a feladatátvételt követően az alkalmazás van a teljesítményre mindaddig, amíg az új elsődleges frissül egy magasabb teljesítményi szinthez. A napló i/o százalékos diagramra az Azure portal segítségével megbecsülheti a szükséges ahhoz, hogy a replikáció terhelés fenntartása másodlagos minimális teljesítményszintjének biztosít. Például, ha az elsődleges adatbázis P6 (1000 DTU), és i/o-százalék naplót a másodlagos kell lennie legalább 50 %-a P4 (500 DTU). Is lekérhet használatával i/o-naplóadatok [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vagy [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) adatbázis-nézeteket.  Az SQL Database teljesítményszintek további információkért lásd: [Mik az SQL Database szolgáltatási szinteken](sql-database-service-tiers.md). 
@@ -86,9 +88,9 @@ Automatikus feladatátvételi csoportok funkció biztosítja, hogy az aktív geo
 * **Másodlagos kiszolgáló**: egy kiszolgálót, amelyen a másodlagos adatbázisok a feladatátvételi csoportban. A másodlagos kiszolgáló és az elsődleges kiszolgáló ugyanabban a régióban nem lehet.
 * **Adatbázisok hozzáadása a feladatátvételi csoport**: ugyanabban a feladatátvételi csoportban is elhelyezhető egy kiszolgálón vagy a rugalmas készletben lévő adatbázisok. Ha egy önálló adatbázis hozzáadása a csoporthoz, automatikusan létrehoz egy másodlagos adatbázist, kiadást és teljesítményszintet. Ha az elsődleges adatbázis egy rugalmas készletben, a másodlagos automatikusan létrejön a rugalmas készlet ugyanazzal a névvel. Hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázist a másodlagos kiszolgálóra, ha, georeplikáció örökli a csoport.
 
-   > [!NOTE]
-   > Egy adatbázis, amely már rendelkezik egy másodlagos adatbázis egy kiszolgálót, amely nem része a feladatátvételi csoporthoz való hozzáadásakor, egy új másodlagos jön létre a másodlagos kiszolgálón. 
-   >
+> [!NOTE]
+> Egy adatbázis, amely már rendelkezik egy másodlagos adatbázis egy kiszolgálót, amely nem része a feladatátvételi csoporthoz való hozzáadásakor, egy új másodlagos jön létre a másodlagos kiszolgálón. 
+>
 
 * **Feladatátvételi csoport olvasási és írási figyelőjének**: egy DNS CNAME-rekordot formázott  **&lt;feladatátvételi csoportnév&gt;. database.windows.net** , amely a jelenlegi elsődleges kiszolgáló URL-címre mutat. Lehetővé teszi az olvasási és írási SQL alkalmazásokat az elsődleges változásakor a feladatátvételt követően az elsődleges adatbázis transzparens módon csatlakoznak. 
 * **Feladatátvételi csoport csak olvasási figyelői**: egy DNS CNAME-rekordot formázott  **&lt;feladatátvételi csoportnév&gt;. secondary.database.windows.net** , amely a másodlagos kiszolgáló URL-címre mutat. A csak olvasható SQL alkalmazások számára transzparens módon a másodlagos adatbázishoz a megadott terheléselosztási szabályok használatával lehetővé teszi. 
@@ -97,17 +99,16 @@ Automatikus feladatátvételi csoportok funkció biztosítja, hogy az aktív geo
 * **Manuális feladatátvétel**: feladatátvétel manuálisan is kezdeményezhető, tetszőleges időpontban, függetlenül attól, automatikus feladatátvételi konfigurációjának. Az automatikus feladatátvételi szabályzat nem történik meg, ha manuális feladatátvételt a feladatátvételi csoport az adatbázisok helyreállításához szükséges. (A teljes adatszinkronizálás) kényszerített vagy rövid feladatátvételt kezdeményezhet. Az utóbbi használható helyezze át az aktív kiszolgáló az elsődleges régióba. Feladatátvétel befejezése után a DNS-rekordok automatikusan frissülnek annak biztosítása érdekében a megfelelő kiszolgálóhoz való kapcsolódás.
 * **Türelmi időszak adatvesztéssel**: az elsődleges és másodlagos adatbázis szinkronizálva van, az aszinkron replikáció használatával, mert a feladatátvétel az adatvesztést eredményezhet. Az automatikus feladatátvételi szabályzat adatvesztés funkciót biztosít az alkalmazás megfelelően testre szabhatja. Konfigurálásával **Leváltó**, szabályozhatja, hogy a rendszer mennyi ideig vár, amely nagy eséllyel eredmény adatvesztés a feladatátvétel kezdeményezése előtt. 
 
-   > [!NOTE]
-   > Amikor rendszer azt észleli, hogy még mindig online állapotban-e a csoport az adatbázisok (például a szolgáltatáskimaradás elhárítása után csak hatással a szolgáltatás vezérlősík), függetlenül az érték elérésekor azonnalaktiváljaafeladatátvétel,ateljesadatszinkronizálás(rövidfeladatátvétel) **Leváltó**. Ez a viselkedés garantálja, hogy nincs-e az adatvesztés a helyreállítás során. A türelmi időszak lép érvénybe, csak akkor, amikor egy rövid feladatátvételi ez nem lehetséges. Ha a szolgáltatáskimaradás elhárítása után teljesítményköltségeket csökkenti a türelmi időszak lejárta előtt, a feladatátvétel nincs aktiválva.
-   >
+> [!NOTE]
+> Amikor rendszer azt észleli, hogy még mindig online állapotban-e a csoport az adatbázisok (például a szolgáltatáskimaradás elhárítása után csak hatással a szolgáltatás vezérlősík), függetlenül az érték elérésekor azonnalaktiváljaafeladatátvétel,ateljesadatszinkronizálás(rövidfeladatátvétel) **Leváltó**. Ez a viselkedés garantálja, hogy nincs-e az adatvesztés a helyreállítás során. A türelmi időszak lép érvénybe, csak akkor, amikor egy rövid feladatátvételi ez nem lehetséges. Ha a szolgáltatáskimaradás elhárítása után teljesítményköltségeket csökkenti a türelmi időszak lejárta előtt, a feladatátvétel nincs aktiválva.
+>
 
 * **Több, feladatátvételi csoportok**: konfigurálhat több feladatátvételi csoportok ugyanarra a két kiszolgáló feladatátvételi teszteket beosztásának szabályozására. Minden csoport külön feladatait. A több-bérlős alkalmazás rugalmas készletek használja, ha ez a funkció használatával minden egyes készletben található elsődleges és másodlagos adatbázis vegyesen. Ezzel a módszerrel csökkenthető a leállások hatásának fele a bérlők a.
 
-## <a name="best-practices-of-building-highly-available-service"></a>Ajánlott eljárások a magas rendelkezésre állású szolgáltatás készítése
+## <a name="best-practices-of-using-failover-groups-for-business-continuity"></a>Ajánlott eljárások a feladatátvételi csoportok használatának az üzletmenet folyamatosságához
+Amikor egy olyan szolgáltatást tervez az üzletmenet-folytonossági szem előtt, kövesse ezeket az irányelveket:
 
-Hozhat létre, amely az Azure SQL database szolgáltatás magas rendelkezésre állást, kövesse ezeket az irányelveket:
-
-- **Használja a feladatátvételi csoport**: egy vagy több, feladatátvételi csoportok hozható létre több különböző régióban (az elsődleges és másodlagos kiszolgálók) két kiszolgáló között. Minden csoport egy vagy több adatbázis helyreállított egységként abban az esetben az összes vagy néhány elsődleges adatbázissal az elsődleges régióban leállás miatt elérhetetlenné lehetnek. A feladatátvételi csoport geo-secondary adatbázisra hoz létre, az elsődleges azonos szolgáltatási célt. Ha a feladatátvételi csoporthoz ad hozzá egy meglévő georeplikációs kapcsolatban, ellenőrizze a geo-secondary van konfigurálva a azonos szolgáltatási szint célkitűzésének elsődlegesként.
+- **Egy vagy több, feladatátvételi csoportok segítségével kezelheti a több adatbázis feladatátvételét**: egy vagy több, feladatátvételi csoportok hozható létre több különböző régióban (az elsődleges és másodlagos kiszolgálók) két kiszolgáló között. Minden csoport egy vagy több adatbázis helyreállított egységként abban az esetben az összes vagy néhány elsődleges adatbázissal az elsődleges régióban leállás miatt elérhetetlenné lehetnek. A feladatátvételi csoport geo-secondary adatbázisra hoz létre, az elsődleges azonos szolgáltatási célt. Ha a feladatátvételi csoporthoz ad hozzá egy meglévő georeplikációs kapcsolatban, ellenőrizze a geo-secondary van konfigurálva a azonos szolgáltatási szint célkitűzésének elsődlegesként.
 - **Olvasási és írási figyelő OLTP-munkaterhelések esetében használjon**: OLTP műveletek végrehajtásakor használni  **&lt;feladatátvételi csoportnév&gt;. database.windows.net** mint a kiszolgáló URL-CÍMÉT és a kapcsolatok vannak automatikusan átirányítja az elsődleges. Az URL-cím nem változtatja meg a feladatátvételt követően. Vegye figyelembe, hogy a feladatátvétel magában foglalja a DNS-bejegyzést, így az ügyfél-kapcsolatokat a rendszer átirányítja az új elsődleges csak akkor, ha az ügyfél DNS-gyorsítótár nem frissítik frissítése.
 - **Csak olvasható munkaterhelések esetében használjon csak olvasási figyelői**: Ha egy logikailag elkülönített csak olvasható számítási feladat, amely tűri az adatok bizonyos frissesség, használhatja az alkalmazás a másodlagos adatbázis. Csak olvasható munkamenetek használata  **&lt;feladatátvételi csoportnév&gt;. secondary.database.windows.net** mint a kiszolgáló URL-CÍMÉT és a kapcsolat automatikusan irányul, a másodlagos. Emellett ajánlott jelzik a kapcsolati karakterlánc használatával leképezés olvasása **ApplicationIntent = csak olvasható**. 
 - **Elő kell készíteni a teljesítményoptimalizált teljesítménycsökkenés**: SQL feladatátvételi döntés független az alkalmazás vagy a használt egyéb szolgáltatások többi részétől. Az alkalmazás "összekeverhetők" egy adott régióban, és néhány, a másik néhány összetevőt. A probléma elkerülése érdekében győződjön meg, hogy a redundáns alkalmazástelepítés, a Vészhelyreállítás régióban található, és kövesse a cikkben. Megjegyzés: a DR régióban az alkalmazást nem kell egy másik kapcsolati karakterláncot használja.  
@@ -115,6 +116,44 @@ Hozhat létre, amely az Azure SQL database szolgáltatás magas rendelkezésre �
 
 > [!IMPORTANT]
 > Rugalmas készletek 800 vagy annál kisebb dtu-k és több mint 250 adatbázisaihoz georeplikációs többek között már tervezett feladatátvételeket problémák merülhetnek fel, és a teljesítménycsökkenést.  Ezeket a problémákat nagyobb valószínűséggel írási igényű számítási feladatokhoz fordulhat elő, ha a georeplikáció végpontok széles körben külön földrajzi hely szerint, vagy több másodlagos végpont az egyes adatbázisok használatakor.  Ezek a problémák tüneteit jelzi, ha a georeplikáció lag idővel növekszik.  A lag segítségével követhetők [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Ha ezeket a problémákat, majd megoldások például készlet dtu-k számának növelésével vagy a georeplikált azonos egy készletben található adatbázisok számának csökkentését.
+
+## <a name="failover-groups-and-network-security"></a>Feladatátvételi csoportok és hálózati biztonság 
+
+Egyes alkalmazások, a biztonsági szabályok követelnek meg, hogy a hálózati hozzáférést az adatréteg korlátozott-e egy adott összetevőre vagy az összetevők, például egy virtuális Gépet a web service stb. Ez a követelmény az üzleti folytonossági terv áttekinthet néhány problémát, és a feladatátvételi csoportok használatát mutatja be. Az ilyen korlátozott hozzáférés végrehajtása során vegye figyelembe a következő beállításokat.
+
+### <a name="using-failover-groups-and-virtual-network-rules"></a>Feladatátvételi csoportok és a virtuális hálózati szabályok használata
+
+Ha használ [virtuális hálózati Szolgáltatásvégpontok és szabályok](sql-database-vnet-service-endpoint-rule-overview.md) való hozzáférés korlátozása az SQL database, vegye figyelembe, hogy mindegyik virtuális hálózati szolgáltatásvégpont csak egy Azure-régióra vonatkozik. A végpont nem engedélyezi a más régiókban az alhálózat-kommunikációt fogad. A feladatátvétel az SQL ügyfélmunkameneteket folyamatban van a kiszolgálóhoz, a másik (másodlagos) régióban átirányítva eredményez, mivel ezek a munkamenetek sikertelen lesz, ha egy adott régión kívül ügyfél származik. Éppen ezért az automatikus feladatátvételi szabályzat nem lehet engedélyezni, ha a virtuális hálózati szabályok a résztvevő kiszolgálókat tartalmazza. Manuális feladatátvétel támogatása érdekében kövesse az alábbi lépéseket:
+
+1.  Az alkalmazás a másodlagos régió (webszolgáltatás, virtuális gépek stb.) az előtérbeli összetevőinek redundáns másolatait kiépítése
+2.  Konfigurálja a [virtuális hálózati szabályok](sql-database-vnet-service-endpoint-rule-overview.md) külön-külön az elsődleges és másodlagos kiszolgáló
+3.  Engedélyezze a [előtér-feladatátvétel a használatával egy Traffic manager konfigurációja](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
+4.  Manuális feladatátvétel kezdeményezése a szolgáltatáskimaradás elhárítása után észlelésekor
+
+Ez a beállítás az alkalmazások konzisztens késésű az előtér- és az adatszint között van optimalizálva, és a helyreállítási támogatja, ha az előtérbeli, adatrétegbeli vagy mindkettő negatív hatással van a szolgáltatáskiesés megszüntetése után. 
+
+> [!NOTE]
+> Ha használja a **csak olvasási figyelői** terheléselosztásához egy csak olvasható munkaterhelés, ellenőrizze, hogy, hogy ilyen számítási feladatok végrehajtja a virtuális gép vagy más resorce a másodlagos régióban, így képes csatlakozni a másodlagos adatbázisra.
+>
+
+ ### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Feladatátvételi csoportok és az SQL database-tűzfalszabályok használatával
+
+Ha az üzletmenet folytonosságát biztosító terve van szüksége a feladatátvételi csoportok használatával automatikus feladatátvétellel, hozzáférés az SQL Database, a hagyományos tűzfalszabályok használatával korlátozhatja.  Automatikus feladatátvétel támogatása érdekében kövesse az alábbi lépéseket:
+
+1.  [Hozzon létre egy nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address) 
+2.  [Nyilvános load balancer létrehozása](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) és rendelje hozzá a nyilvános IP-cím. 
+3.  [Hozzon létre egy virtuális hálózat és a virtuális gépek](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) az előtér-összetevők 
+4.  [Hálózati biztonsági csoport létrehozása](../virtual-network/security-overview.md) és konfigurálja a bejövő kapcsolatokat. 
+5. Győződjön meg arról, hogy a kimenő kapcsolatok meg nyitva, az Azure SQL database "Sql" használatával [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags). 
+5.  Hozzon létre egy [SQL database-tűzfalszabályt](sql-database-firewall-configure.md) az 1. lépésben létrehozott nyilvános IP-címről érkező forgalom engedélyezéséhez. 
+
+A kimenő hozzáférés konfigurálása és milyen IP-címet használja a tűzfalszabályok kapcsolatos további információkért lásd: [betölteni a terheléselosztó kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md).
+
+A fenti konfigurációs biztosítja, hogy az Automatikus feladatátvétel nem blokkolja a kapcsolatokat az előtér-kiszolgálói összetevők, és feltételezi, hogy az alkalmazás működését a hosszabb késéssel az előtér- és az adatszint között.
+
+> [!IMPORTANT]
+> A regionális üzemkimaradások utáni helyreállításon üzleti folytonosság biztosítása érdekében biztosítania kell a földrajzi redundancia előtér-kiszolgálói összetevők mind az adatbázisokat. 
+>
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>A frissítés, vagy egy elsődleges adatbázis alacsonyabb szolgáltatásszintre
 Frissítés vagy visszaminősítését méretez más teljesítményszintre (belül ugyanazon a szolgáltatásszinten) az elsődleges adatbázis bármely másodlagos adatbázisok leválasztása nélkül is. Amikor frissít, javasoljuk, hogy először frissítse a másodlagos adatbázist, és utána frissítse az elsődleges. Ha alacsonyabb szolgáltatásszintre, fordított sorrendben: először alacsonyabbra az elsődleges, majd a gyűjteményt majd a másodlagos. Frissítésekor vagy eltérő szolgáltatási réteg az adatbázisról, a javaslat lép érvénybe. 
@@ -191,7 +230,7 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 * Mintaszkriptek lásd:
    - [Önálló adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
    - [Készletezett adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-   - [Konfigurálása és feladatainak átvétele feladatátvételi csoport egy önálló adatbázis](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+   - [Önálló adatbázis feladatátvételi csoportjának konfigurálása és feladatainak átvétele](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
 * Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md)
 * További információ az Azure SQL Database automatikus biztonsági mentések, lásd: [SQL-adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md).
 * Az automatikus biztonsági másolatokból helyreállítási kapcsolatos további információkért lásd: [adatbázis visszaállítása a szolgáltatás által létrehozott biztonsági másolatokból](sql-database-recovery-using-backups.md).

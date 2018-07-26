@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory jelentéskészítés – gyakori kérdések |} Microsoft Docs
-description: Az Azure Active Directory reporting gyakran ismételt kérdések.
+title: Azure Active Directory jelentéskészítés – gyakori kérdések |} A Microsoft Docs
+description: Jelentéskészítés – gyakori kérdések az Azure Active Directoryban.
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -15,117 +15,157 @@ ms.component: compliance-reports
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8d627abfe7b686eeeb5a65c4515e184f4ce62f4e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d069d0e74c1bc10baa4d14cdb91c137203495ae2
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335057"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247408"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory jelentéskészítés – gyakori kérdések
 
-Ez a cikk reporting Azure Active Directory (Azure AD) kapcsolatos gyakran feltett kérdésekre adott válaszokat tartalmazza. További információk: [Jelentéskészítés az Azure Active Directoryban](active-directory-reporting-azure-portal.md). 
+Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentéskészítési adott válaszokat tartalmazza. További információk: [Jelentéskészítés az Azure Active Directoryban](active-directory-reporting-azure-portal.md). 
 
-**K: használom a https://graph.windows.net/&lt; bérlőnévvel&gt;/reports/ végpont API-k lekéréses az Azure AD naplózási és integrált alkalmazás használati jelentések jelentéskészítő rendszer programozott módon. Mit kell váltani a?**
+## <a name="getting-started"></a>Első lépések 
 
-**V:** kereshet a [API-referenciadokumentáció](https://developer.microsoft.com/graph/) használatát az új API-k elérésére megjelenítéséhez [Tevékenységjelentések](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal). A végpont két jelentés (naplózási és bejelentkezések) mindazokat az adatokat, a régi API-végpont portáltól biztosító rendelkezik. Az új végpont használó alkalmazások használatát, az eszköz használata és a felhasználó bejelentkezési adatait az Azure AD Premium licenccel rendelkező bejelentkezések jelentést is rendelkezik.
+**K: használom a https://graph.windows.net/&lt; bérlő neve&gt;lekéréses az Azure AD naplózási és használati integrált alkalmazás API-k programozott módon jelentések jelentéskészítő rendszer /reports/ végpont. Mit kell váltani a?**
 
-
---- 
-
-**K: használom a https://graph.windows.net/&lt; bérlőnévvel&gt;/reports/ végpont való lekérésére az Azure AD biztonsági jelentések (észlelések, például a kiszivárgott hitelesítő adatok vagy névtelen IP-címekről bejelentkezéseket adott típusú) jelentéskészítő rendszer API-k programozott módon. Mit kell váltani a?**
-
-**V:** használhatja a [Identity Protection kockázati események API](active-directory-identityprotection-graph-getting-started.md) való hozzáférés biztonsági észlelések Microsoft Graph használatával. Az új formátumot hogyan kérdezheti le adatokat, a speciális szűrési, mező kiválasztása, és több, nagyobb rugalmasságot biztosít, és egy típus a siem-ektől és egyéb adatok gyűjtemény eszközök egyszerűbb integrálása a kockázati eseményekről szabványosítja. Mivel az adatok egy, a régi lekérdezések nem helyettesítse be a egy új lekérdezést. Azonban [az új API-t használja a Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), vagyis a Microsoft Office 365 vagy Azure AD ilyen API-k szabvány. Így a munka szükséges vagy kiterjesztheti az aktuális MS Graph beruházások vagy súgó megkezdése az új szabványos platform az átállás.
+**V:** keresse ki a [API referenciadokumentációra](https://developer.microsoft.com/graph/) megtekintéséhez, hogyan használhatja az új API-k eléréséhez [tevékenységre vonatkozó jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal). Ez a végpont rendelkezik két jelentés (naplózás és a bejelentkezések) kapott a régi API-végpont az összes adat biztosító. Az új végpont bejelentkezésekre, a prémium szintű Azure AD-licenccel, amelyek segítségével az alkalmazások használatát, eszközhasználat és felhasználói bejelentkezési adatokat is tartalmaz.
 
 --- 
 
-**K: Mi az az adatok megőrzése (naplózási és bejelentkezések) tevékenységi naplóit Azure-portálon?** 
+**K: használom a https://graph.windows.net/&lt; bérlő neve&gt;/reports/ végpont lekérni az Azure AD biztonsági jelentések (észlelések, mint a kiszivárgott hitelesítő adatok vagy névtelen IP-címekről történő bejelentkezések adott típusú) jelentéskészítési rendszer API-k programozott módon. Mit kell váltani a?**
 
-**V:** lásd [mennyi ideig van az összegyűjtött adatok tárolt?](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored) a választ a kérdésére.
+**V:** használhatja a [Identity Protection kockázati események API](active-directory-identityprotection-graph-getting-started.md) való hozzáférés biztonsági észlelések Microsoft Graphon keresztül. Az új formátum hogyan kérdezheti le adatokat, a Speciális szűrés, mező kiválasztása és több, nagyobb rugalmasságot biztosít, és a kockázati események egységesíti az siem-EK és más adatok gyűjtése eszközök egyszerűbb integráció egy típust. Mivel az adatok különböző, a régi lekérdezések nem helyettesítse be a egy új lekérdezést. Azonban [az új API-t használja a Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), azaz a Microsoft standard ilyen API-t az Office 365 vagy Azure ad-ben. Így a kell elvégeznie, vagy végrehajthatja a meglévő az MS Graph-befektetéseit vagy súgó megkezdése az új standard szintű platform az átállás.
 
 --- 
 
-**K: mennyi ideig tart amíg I a feladat befejezése után is látható a tevékenységek adatai?**
-
-**V:** tevékenység naplókat a 15 perc és egy óra közötti késéssel rendelkeznek. Bejelentkezési tevékenység naplók legfeljebb 2 órával az egyes rekordok 15 perces is tarthat.
-
----
-
-**K: van-e globális rendszergazda az Azure-portálon tevékenység bejelentkezéseket, vagy az adatok lekérése az API-n keresztül?**
-
-**V.:** Nem. Kell egy **biztonsági olvasó**, egy **biztonsági rendszergazda**, vagy egy **globális rendszergazda** beolvasása Reporting adatokat az Azure portálon vagy az API-n keresztül.
-
----
-
-**K: kaphatok Office 365 műveletnapló adatai az Azure portálon keresztül?**
-
-**V:** annak ellenére, hogy Office 365 tevékenységet, és az Azure AD tevékenység naplók megosztás a könyvtár-erőforrások számos, ha azt szeretné, hogy az Office 365 tevékenységi naplóit, teljes egészében meg kell lépjen az Office 365 felügyeleti központban Office 365 tevékenység naplózási adatok beszerzése.
-
----
-
-
-**K: milyen API-k használata Office 365 tevékenységi naplóit kapcsolatos adatok**
-
-**V:** eléréséhez használja az Office 365 felügyeleti API-kat a [Office 365 tevékenység naplózza az API-n keresztül](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview).
-
----
-
-**K: hogyan sok rekord letölthető Azure-portálon?**
-
-**V:** legfeljebb 5000 rekordok tölthet le az Azure-portálon. A rekordok alapján vannak rendezve *legutóbbi* és alapértelmezés szerint le a legfrissebb 5000 rögzíti.
-
----
-
-**K: hogyan sok rekord tudja lekérdezni a tevékenységek API keresztül?**
-
-**V:** legfeljebb 1 millió rekordot lekérheti (Ha nem adja meg a top operátor, többsége a rekord rendező legutóbbi). Ha a "top" operátort használja, lekérheti mentése 500 KB-os rekordok. Az API használatával mintalekérdezések található [Itt](active-directory-reporting-api-getting-started.md).
-
----
-
-**K: Hogyan tudom működtetni premium licenc?**
+**K: Hogyan szerezhetem be a prémium licencre?**
 
 **V:** lásd [Ismerkedés az Azure Active Directory Premium](fundamentals/active-directory-get-started-premium.md) a választ a kérdésére.
 
 ---
 
-**K: hogyan hamarosan kell meg a tevékenységek adatok premium licenc beolvasása után?**
+**K: hogyan hamarosan kell tevékenységek adatainak megtekintéséhez prémium licencre első után?**
 
-**V:** Ha szabad licenc tevékenységek az adatok már rendelkezik, akkor ugyanazokat az adatokat láthatja. Ha még nem rendelkezik az adatokat, majd tart egy vagy két napot.
-
----
-
-**K: jelennek meg adatok előző hónap után egy Azure AD premium-licenc beolvasásakor?**
-
-**V:** nemrég váltott egy prémium verzió (beleértve a rendszer próbaverzióját), ha látható adatok mentése 7 napra kezdetben. Összesít adatokat, ha akár 30 napig jelenik meg.
+**V:** már tevékenységek adatainak, ingyenes licenccel rendelkezik, akkor láthatja, hogy ugyanazokat az adatokat. Ha nem rendelkezik semmilyen adatot, majd vesz igénybe egy vagy két napot.
 
 ---
 
-**K: van a kockázati események azonosító adatok védelmét, de nem látható az megfelelő bejelentkezhet az összes bejelentkezéseket. Ez várható?**
+**K: láthatók a múlt havi adatok lekérdezése az Azure AD premium-licenc után?**
 
-**V:** Igen, Identity Protection kiértékeli-e minden hitelesítési forgalom kockázatát interaktív vagy nem interaktív. Azonban minden bejelentkezések csak jelentésben csak a interaktív bejelentkezések.
-
----
-
-**K: hogyan töltheti Azure-portálon a "Kockázat megjelölt felhasználók" jelentést?**
-
-**V:** letöltése beállítás *felhasználók meg van jelölve, a kockázat* jelentés hamarosan megjelenik.
+**V:** nemrég egy prémium szintű verzió (beleértve a próbaverzió) vált, amennyiben látható adatok mentése és 7 nap kezdetben. Gyűlnek az adatok, látni fogja legfeljebb 30 napig.
 
 ---
 
-**K: Hogyan állapítható meg, hogy miért a bejelentkezés vagy a felhasználó lett megjelölve kockázatos Azure-portálon?**
+**K: van szükségem egy globális rendszergazda az Azure Portalon tevékenység bejelentkezések megtekintéséhez vagy az API-n keresztül az adatok a?**
 
-**V:** Premium edition ügyfelek tudhat meg többet az alapul szolgáló kockázati események a felhasználó a "Kockázat megjelölt felhasználók" vagy a "kockázatos bejelentkezések" parancsával. Szabad és alapvető edition ügyfelek eléréséhez at-risk felhasználók és bejelentkezések nélkül az alapul szolgáló kockázati események adatait.
-
----
-
-**K: hogyan kiszámítása a bejelentkezéseket és a kockázatos bejelentkezések jelentés IP-címek?**
-
-**V:** IP-címeket úgy, hogy nincs-e végleges kapcsolat közötti IP-cím és a számítógépre, hogy a cím fizikailag helyét adják. Ez például a mobil szolgáltatók és a kiállító központi készletek IP-címek nagyon gyakran távol, amelyekben ténylegesen szerepel az ügyféleszköz VPN tényezőktől bonyolítja. A fentiek IP-cím átalakítása a fizikai hely a nyomkövetési adatokat, beállításjegyzék-adatok, fordított keresések és egyéb információk alapján a lehető legkedvezőbb módon. 
+**V.:** Nem. Kell egy **biztonsági olvasó**, amely egy **biztonsági rendszergazda**, vagy egy **globális rendszergazdai** lekérése a jelentéskészítés az Azure Portalon vagy az API-n keresztül.
 
 ---
 
-**K: Mi nem a "Bejelentkezés az észlelt további kockázat" jelölésére kockázat eseményt?**
 
-**V:** , és betekintést az összes kockázatos bejelentkezések a környezetben, a "Bejelentkezés az további veszélyt a észlelt" funkciókkal, mint a bejelentkezések, amelyek kizárólag az Azure AD Identity Protection előfizetők észlelések helyőrző.
+## <a name="activity-logs"></a>Tevékenységnaplók
+
+
+**Kérdés: Mi az adatmegőrzés (naplózás és a bejelentkezések) tevékenységi naplóit az Azure Portalon?** 
+
+**V:** lásd [mennyi ideig kell a begyűjtött adatok tárolt?](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored) a választ a kérdésére.
+
+--- 
+
+**K: mennyi ideig tart mindaddig, amíg az látható, hogy a tevékenységek adatai I saját feladat befejeződése után?**
+
+**V:** auditnaplók tevékenység egy óra és a 15 perc késéssel rendelkeznek. Bejelentkezési tevékenységeket tartalmazó naplók is igénybe vehet 15 perctől akár 2 órát az egyes bejegyzéseket.
 
 ---
+
+
+**K: be az Office 365-Tevékenységnaplók adatait az Azure Portalon keresztül?**
+
+**V:** annak ellenére, hogy az Office 365-Tevékenységnaplók és az Azure AD tevékenység naplók a könyvtár-erőforrások jelentős részén osztoznak, ha azt szeretné, hogy az Office 365-Tevékenységnaplók teljes listáját meg kell nyissa meg az Office 365 felügyeleti központ, az Office 365-Tevékenységnaplók adatait beolvasni.
+
+---
+
+
+**K: mely API-k használható Office 365-Tevékenységnaplók információt szeretne kapni?**
+
+**V:** eléréséhez használja az Office 365 felügyeleti API-k a [Office 365-Tevékenységnaplók az API-n keresztül naplók](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview).
+
+---
+
+**K: mennyi rekord is letölthető az Azure Portalon?**
+
+**V:** legfeljebb 5000 rekordok tölthet le az Azure Portalon. A rekordok alapján vannak rendezve *legutóbbi* és alapértelmezés szerint az utolsó 5000 rekordok beolvasása.
+
+---
+
+**K: mennyi rekord is lekérdezheti az API keresztül?**
+
+**V:** lekérdezheti, akár 1 millió rekordot (, ha nem használja a top operátor, és a legtöbb alapján rendezi a rekordot legutóbbi). Ha a "top" operátort használja, lekérdezheti, ha másolatot 500 ezer rekordot. Az API használatával is megtalálhatja a mintalekérdezések [Itt](active-directory-reporting-api-getting-started.md).
+
+---
+
+## <a name="risky-sign-ins"></a>Kockázatos bejelentkezések
+
+**K: van egy kockázati esemény az Identity Protection, de nem látok kapcsolódó jelentkezzen be az összes bejelentkezés. Ez várható?**
+
+**V:** Igen, Identity Protection kiértékeli-e az összes hitelesítési folyamatok kockázati e interaktív vagy nem interaktív. Az összes bejelentkezési csak jelentések azonban csak az interaktív bejelentkezések jeleníti meg.
+
+---
+
+**K: Hogyan tölthetem le a "Kockázatosként megjelölt felhasználók" jelentést az Azure Portalon?**
+
+**V:** a melyre kattintva letölthető *kockázatosként megjelölt felhasználók* jelentés hamarosan közzétesszük.
+
+---
+
+**K: Hogyan tudhatom meg, hogy miért vagy egy felhasználó egy bejelentkezési lett megjelölve kockázatos az Azure Portalon?**
+
+**V:** Premium Editiont használó ügyfelek többet is megtudhat a mögöttes kockázatos eseményekről kattintva a felhasználó a "Kockázatosként megjelölt felhasználók" vagy a "kockázatos bejelentkezések" gombjára kattintva. Ingyenes és alapszintű termékváltozatot használó ügyfelek tekintheti meg a kockázatos besorolású felhasználók és bejelentkezések nélkül az alapul szolgáló kockázati események adatait beolvasása.
+
+---
+
+**K: hogyan IP-címek alapján számítjuk ki a bejelentkezési és a kockázatos bejelentkezések jelentés?**
+
+**V:** IP-címek kibocsátott oly módon, hogy ez nem végleges közötti IP-cím és a számítógép ezzel a címmel fizikailag helyét. Ez az összetett tényezők, például a mobil-szolgáltatók és a VPN-EK központi készletek IP-címek nagyon gyakran kiállító távol, ahol az ügyféleszközön ténylegesen szolgál. A fentiek IP-cím átalakítása egy fizikai helyhez célja a legjobb nyomkövetéseket, beállításjegyzék-adatok, fordított keresések és egyéb információk alapján. 
+
+---
+
+**K: Mi a nem a "Sign-in további észlelt kockázattal rendelkező" jelölésére kockázati esemény?**
+
+**V:** , hogy az összes kockázatos bejelentkezések betekintést a környezetében, helyőrző bejelentkezések, amelyek az Azure AD Identity Protection-előfizetők exkluzív észlelések "bejelentkezés-növeli annak kockázatát a észlelt" működik.
+
+---
+
+## <a name="conditional-access"></a>Feltételes hozzáférés
+
+**K: Mi új ezzel a funkcióval?**
+
+**V:** ügyfelek mostantól hibáinak elhárítása a feltételes hozzáférési szabályzatok minden bejelentkezésekre keresztül. Ügyfelek tekintheti meg a feltételes hozzáférési állapotát és adatait, a bejelentkezés és az eredmény az egyes szabályzatok alkalmazott házirendek bemutatása.
+
+**K: Hogyan kezdhetem?**
+
+**V:** a kezdéshez:
+    * Keresse meg a bejelentkezési jelentést a [az Azure portal](https://portal.azure.com). 
+    * Kattintson a bejelentkezés hibaelhárítása kívánt.
+    * Keresse meg a **feltételes hozzáférési** fülre. Itt tekintheti meg a bejelentkezési és az eredmény minden szabályzat érintett összes szabályzatot. 
+    
+**Kérdés: melyek az összes lehetséges értékek a feltételes hozzáférési állapot?**
+
+**V:** feltételes hozzáférési állapot a következő értékeket veheti fel:
+    * **Nem alkalmazott**: Ez azt jelenti, hogy hiba történt a nem a felhasználó és az alkalmazás hatókörében a feltételes hozzáférési szabályzat. 
+    * **Sikeres**: Ez azt jelenti, hogy hiba történt egy feltételes hozzáférési szabályzat és a hatókör az alkalmazás és a feltételes hozzáférési szabályzatok is sikeresen teljesül. 
+    * **Hiba**: Ez azt jelenti, hogy hiba történt egy feltételes hozzáférési szabályzat és a hatókör az alkalmazás és a feltételes hozzáférési szabályzatok nem teljesültek. 
+    
+**Kérdés: melyek az összes lehetséges értékei a feltételes hozzáférési szabályzat eredménye?**
+
+**V:** feltételes hozzáférési szabályzat az alábbi eredményeket rendelkezhet:
+    * **Sikeres**: A szabályzat sikeresen teljesült.
+    * **Hiba**: A házirend nem teljesült.
+    * **Nem alkalmazott**: lehetséges, hogy a nem felelt meg a szabályzat feltételeit.
+    * **Nincs engedélyezve a**: letiltott állapotban a házirend miatt nem lehetséges. 
+    
+**Kérdés: a házirend nevére a jelentésben az összes be nem egyezik meg a szabályzat nevét, a hitelesítésszolgáltató. Hogy miért?**
+
+**V:** a házirend nevére a jelentésben az összes bejelentkezési alapul a hitelesítésszolgáltató házirend neve a bejelentkezés során. Ez a házirend neve a hitelesítésszolgáltató inkonzisztens lehet, ha frissítette a házirend nevére később, a bejelentkezés után.

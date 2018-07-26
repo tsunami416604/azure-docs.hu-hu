@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ecd19acdeba57a29a28187d42783bbf146095190
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eb185a83ea154025e94c01c7b142a8d16fce91ab
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001905"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258347"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -196,7 +196,7 @@ A gazdahálózaton egy hálózati konfiguráció meggátolja, hogy az Edge Agent
 
 Az IoT Edge-futtatókörnyezet minden modulon beállít egy-egy hálózatot a kommunikációhoz. Linux rendszeren ez a hálózat egy hídhálózat. Windows rendszeren NAT-ot használ. Ez a probléma gyakoribb a NAT-hálózatot használó Windows-tárolókat igénybe vevő windowsos eszközökön. 
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 Győződjön meg arról, hogy elérhető egy útvonal az internethez az ehhez a híd-/NAT-hálózathoz rendelt IP-címek esetén. Néha a gazdagépen lévő VPN-konfiguráció felülbírálja az IoT Edge-hálózatot. 
 
 ## <a name="edge-hub-fails-to-start"></a>Az Edge Hub nem indul el
@@ -213,7 +213,7 @@ Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allo
 ### <a name="root-cause"></a>Gyökérok
 A gazdagépen egy másik folyamat foglalja le a 443-as portot. Az Edge Hub az 5671-es és a 443-as portot képezi le az átjáró-forgatókönyvekhez. Ez a portleképezés sikertelen, ha egy másik folyamat már lefoglalta a portot. 
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 Keresse meg, és állítsa le a 443-as portot használó folyamatot. Ez a folyamat általában a webkiszolgáló.
 
 ## <a name="edge-agent-cant-access-a-modules-image-403"></a>Az Edge Agent nem éri el egy modul rendszerképét (403)
@@ -222,7 +222,7 @@ Egy tároló nem fut, és az Edge Agent-naplók a 403-as hibát tartalmazzák.
 ### <a name="root-cause"></a>Gyökérok
 Az Edge Agentnek nincs engedélye egy modul rendszerképének eléréséhez. 
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 Győződjön meg arról, hogy a tárolójegyzék hitelesítő adatainak helyesen vannak megadva a manifest nasazení
 
 ## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IoT Edge biztonsági démon meghiúsul, és a egy érvénytelen állomásnév
@@ -236,7 +236,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 ### <a name="root-cause"></a>Gyökérok
 Az IoT Edge-futtatókörnyezet csak támogatja, amelyek 64 karakternél rövidebb gazdanévvel. Ez általában nem jelent problémát, fizikai gépek számára, de előfordulhatnak, ha a virtuális gépen a futtatókörnyezet beállítása. Az automatikusan létrehozott gazdanevek Windows virtuális gépek az Azure-ban üzemeltetett, általában hosszú. 
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 Ha ezt a hibát látja, feloldhatja konfigurálásával a virtuális gép DNS-nevét, és beállítja a DNS-nevét a setup parancs az állomásnevet.
 
 1. Az Azure Portalon lépjen a virtuális gép áttekintés oldalán. 
@@ -266,7 +266,7 @@ Felmerülhet korlátozott eszközökön, például a Raspberry Pi-októl stabili
 ### <a name="root-cause"></a>Gyökérok
 Az edge hub, az edge-futtatókörnyezet része, amely alapértelmezés szerint a teljesítmény optimalizáltuk, és megpróbálja nagy mennyiségű memóriát lefoglalni. Ez nem ideális korlátozott edge-eszközök és stabilitását problémákat okozhat.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 Az Edge hub környezeti változó értéke **OptimizeForPerformance** való **hamis**. Ehhez két módja van:
 
 A felhasználói felületen: 
@@ -292,6 +292,24 @@ A manifest nasazení:
       }
     },
 ```
+## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Nem olvasható be az IoT Edge démon naplóit a Windows
+Ha egy EventLogException használatakor `Get-WinEvent` Windows, ellenőrizze a beállításjegyzékbeli bejegyzéseket.
+
+### <a name="root-cause"></a>Gyökérok
+A `Get-WinEvent` PowerShell-paranccsal támaszkodik egy bejegyzés egy adott naplók keresése jelen `ProviderName`.
+
+### <a name="resolution"></a>Felbontás
+Állítsa be az IoT Edge-démon egy beállításjegyzék-bejegyzést. Hozzon létre egy **iotedge.reg** fájlt az alábbi tartalommal, és a Windows beállításjegyzék importálása a dupla kattintással vagy használatával a `reg import iotedge.reg` parancsot:
+
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
+"CustomSource"=dword:00000001
+"EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
+"TypesSupported"=dword:00000007
+```
+
 
 ## <a name="next-steps"></a>További lépések
 Úgy gondolja, hogy hibát talált az IoT Edge platformon? Kérjük, a kijavításához [küldje el a problémát](https://github.com/Azure/iotedge/issues). 

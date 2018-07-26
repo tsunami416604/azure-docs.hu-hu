@@ -1,6 +1,6 @@
 ---
-title: Az MSI konfigurálása Azure virtuális gép PowerShell-lel
-description: Útmutató Azure virtuális gép, PowerShell-lel konfigurálja a Felügyeltszolgáltatás-identitás (MSI) lépésben.
+title: Felügyeltszolgáltatás-identitás konfigurálása Azure virtuális gép PowerShell-lel
+description: Lépés útmutató a Felügyeltszolgáltatás-identitását egy Azure virtuális Gépen, PowerShell-lel konfigurálja.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 9a40ad66f104a33230484f24e20a5f3bd9ed6175
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 68c9ae7baa6b8fa1ebf672c28bf3c466b4b54860
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237655"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258392"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás (MSI) PowerShell-lel
+# <a name="configure-a-vm-managed-service-identity-using-powershell"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás PowerShell-lel
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -59,7 +59,7 @@ Egy Azure virtuális gép létrehozása a rendszer a hozzárendelt identitás en
    - [Hozzon létre egy Windows virtuális gépet PowerShell-lel](../../virtual-machines/windows/quick-create-powershell.md)
    - [Hozzon létre egy Linux rendszerű virtuális gép PowerShell-lel](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Nem kötelező) Adja hozzá az MSI-VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
+2. (Nem kötelező) Adja hozzá a Managed Service Identity VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
 
    ```powershell
    $settings = @{ "port" = 50342 }
@@ -85,7 +85,7 @@ Ha egy meglévő virtuális gépet a rendszer által hozzárendelt identitással
    Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-3. (Nem kötelező) Adja hozzá az MSI-VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Ügyeljen arra, hogy adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helye:
+3. (Nem kötelező) Adja hozzá a Managed Service Identity VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Ügyeljen arra, hogy adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helye:
 
    ```powershell
    $settings = @{ "port" = 50342 }
@@ -118,7 +118,7 @@ $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzureRmVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 
-Az MSI-Virtuálisgép-bővítmény eltávolítása felhasználói a - Name kapcsolót a [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) parancsmagot, ugyanazt a bővítmény hozzáadásakor használt név megadásával:
+Távolítsa el a Managed Service Identity Virtuálisgép-bővítmény, a felhasználó a - Name a kapcsolót a a [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) parancsmagot, ugyanazt a bővítmény hozzáadásakor használt név megadásával:
 
    ```powershell
    Remove-AzureRmVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
@@ -143,7 +143,7 @@ A virtuális gép létrehozásakor egy felhasználóhoz hozzárendelt identitás
     - [Hozzon létre egy Windows virtuális gépet PowerShell-lel](../../virtual-machines/windows/quick-create-powershell.md)
     - [Hozzon létre egy Linux rendszerű virtuális gép PowerShell-lel](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Nem kötelező) Adja hozzá az MSI-VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Ügyeljen arra, hogy adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helye:
+2. (Nem kötelező) Adja hozzá a Managed Service Identity VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Ügyeljen arra, hogy adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helye:
       > [!NOTE]
     > Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.
 
@@ -177,7 +177,7 @@ Felhasználó hozzárendelése egy meglévő Azure virtuális géphez hozzárend
    Update-AzureRmVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-4. Adja hozzá az MSI-VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helyét.
+4. Adja hozzá a Managed Service Identity VM bővítmény használatával a `-Type` paraméterrel a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helyét.
 
    ```powershell
    $settings = @{ "port" = 50342 }

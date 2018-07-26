@@ -1,6 +1,6 @@
 ---
-title: Azure Automation DSC – áttekintés
-description: Egy áttekintés az Azure Automation szükséges konfiguráló (DSC), a feltételek és ismert problémák
+title: Az Azure Automation DSC – áttekintés
+description: Az Áttekintés az Azure Automation Desired State Configuration (DSC), a használati és ismert problémák
 keywords: PowerShell dsc, a kívánt állapot konfigurációs, a powershell dsc azure
 services: automation
 ms.service: automation
@@ -10,56 +10,56 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83d5b89422a0181c06dbfe3b2bd8975ef7214b9d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f6d49ffa59ed53c0a1966a4132fd5fe1689a13ce
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193257"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247349"
 ---
-# <a name="azure-automation-dsc-overview"></a>Azure Automation DSC – áttekintés
+# <a name="azure-automation-dsc-overview"></a>Az Azure Automation DSC – áttekintés
 
-Az Azure Automation DSC az Azure-szolgáltatások, amely lehetővé teszi írási, kezelése és PowerShell kívánt állapot konfigurációs szolgáltatása (DSC) fordítási [konfigurációk](https://msdn.microsoft.com/powershell/dsc/configurations), importálása [DSC erőforrások](https://msdn.microsoft.com/powershell/dsc/resources), és rendelje hozzá a konfigurációk a célcsomópontokat, mind a felhőben.
+Az Azure Automation DSC egy Azure-szolgáltatás, amely lehetővé teszi, hogy írási, kezelheti és fordítsa le a PowerShell Desired State Configuration (DSC) [konfigurációk](https://msdn.microsoft.com/powershell/dsc/configurations), importálása [DSC-erőforrások](https://msdn.microsoft.com/powershell/dsc/resources), és rendelje hozzá a konfigurációk a célcsomópontokat, mindezt a felhőben.
 
 ## <a name="why-use-azure-automation-dsc"></a>Miért érdemes használni az Azure Automation DSC
 
-Az Azure Automation DSC számos előnye van, mint az Azure-on kívüli DSC.
+Az Azure Automation DSC több előnye is van, mint az Azure-on kívül DSC biztosít.
 
-### <a name="built-in-pull-server"></a>Beépített lekérési kiszolgálójával
+### <a name="built-in-pull-server"></a>Beépített lekéréses kiszolgálón
 
-Azure Automation szolgáltatásbeli biztosít egy [DSC lekérési kiszolgálójával](https://msdn.microsoft.com/powershell/dsc/pullserver) , hogy a célcsomópontokat automatikusan megjelenik a konfigurációk, felelnek meg a kívánt állapot, és megfelelőségi jelentéseket küldhetnek vissza.
-A beépített lekérési kiszolgálójával, az Azure Automationben szükségtelenné teszi beállítása és karbantartása a saját lekérési kiszolgálójával.
-Azure Automation szolgáltatásbeli virtuális vagy fizikai Windows vagy Linux rendszerű gépek, a felhőben, vagy a helyszíni célba.
+Az Azure Automation DSC lekéréses kiszolgálón hasonló biztosít a [Windows szolgáltatás DSC-szolgáltatás](/powershell/dsc/pullserver) úgy, hogy a célcsomópontokat automatikusan kap konfigurációkat, a kívánt állapotban megfelel, és a megfelelőségről szóló jelentést.
+Az Azure Automationben a beépített lekéréses kiszolgálón szükségtelenné teszi a saját lekérési kiszolgálóval termékeknél.
+Az Azure Automation virtuális vagy fizikai Windows vagy Linux rendszerű gépek, a felhőben vagy helyszíni célba.
 
-### <a name="management-of-all-your-dsc-artifacts"></a>A DSC-összetevők felügyelete
+### <a name="management-of-all-your-dsc-artifacts"></a>A DSC-összetevők kezelése
 
-Az Azure Automation DSC biztosítható az ugyanabban a felügyeleti réteg [PowerShell célállapot-konfiguráció](https://msdn.microsoft.com/powershell/dsc/overview) , az Azure Automation kínál a PowerShell-parancsprogramok.
+Az Azure Automation DSC ugyanolyan felügyeleti réteget biztosít [PowerShell Desired State Configuration](https://msdn.microsoft.com/powershell/dsc/overview) , az Azure Automation kínál a PowerShell-parancsprogramok.
 
-Azure-portálról, vagy a PowerShell kezelheti az összes a DSC konfigurációk, erőforrások és célcsomópontokat.
+Az Azure Portalról, vagy a Powershellből kezelheti az összes a DSC konfigurációk, erőforrások és célcsomópontokat.
 
-![Az Azure Automation panel képernyőfelvétele](./media/automation-dsc-overview/azure-automation-blade.png)
+![Képernyőfelvétel az Azure Automation panelről](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-log-analytics"></a>Jelentési adatok importálása a Naplóelemzési
+### <a name="import-reporting-data-into-log-analytics"></a>Jelentési adatok importálása a Log Analytics
 
-Az Azure Automation DSC Szolgáltatásban felügyelt csomópontok részletes jelentéskészítési állapot adatokat küldeni a a beépített lekérési kiszolgálójával.
-Azure Automation DSC ezeket az adatokat küldeni a Naplóelemzési munkaterület konfigurálhatja.
-A DSC állapot adatokat küldeni a Naplóelemzési munkaterület, lásd: [előre Azure Automation DSC jelentésadatait szolgáltatáshoz](automation-dsc-diagnostics.md).
+Felügyelt Azure Automation DSC-csomópontok részletes jelentési adatokat küldeni a beépített lekéréses kiszolgálón.
+Konfigurálhatja az Azure Automation DSC ezeket az adatokat küldhet a Log Analytics-munkaterületre.
+DSC-állapot adatainak küldése a Log Analytics-munkaterületre kapcsolatban lásd: [továbbítása Azure Automation DSC jelentési adatok Log Analytics](automation-dsc-diagnostics.md).
 
 ## <a name="introduction-video"></a>Bevezető videó
 
-Inkább néz videót olvasás helyett? Rá egy pillantást az alábbi videó az 2015. május, amikor bejelentette először Azure Automation DSC Szolgáltatásban.
+Inkább néz videót olvasás helyett? Tekintse meg a következő videó a 2015 május, amikor először bejelentettük az Azure Automation DSC rendelkezik.
 
 >[!NOTE]
->A fogalmakat, és ez a videó tárgyalt életciklusa helyesek, amíg a Azure Automation DSC sokkal fejlődött, mivel ez a videó lett felvéve.
->Az általánosan elérhető van jóval szélesebb körű felhasználói Felületet az Azure portálon, és számos további képességeket biztosít.
+>A fogalmakat és a videóban tárgyalt életciklusának megfelelő, amelyek a az Azure Automation DSC sokat fejlődött a videó rögzítése óta.
+>Azt már általánosan elérhető, van egy sokkal felhasználói felülete az Azure Portalon, és számos további képességeket is támogat.
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan előkészítésére csomópontokat a felügyelethez az Azure Automation DSC Szolgáltatásban, lásd: [bevezetési gépeket Azure Automation DSC általi kezelésre](automation-dsc-onboarding.md)
-* Azure Automation DSC használatának megkezdéséhez tekintse meg [Ismerkedés az Azure Automation DSC](automation-dsc-getting-started.md)
-* A DSC-konfigurációk fordítása, így hozzárendelheti azokat a célcsomópontokat, lásd: [fordítása Azure Automation DSC-konfigurációja](automation-dsc-compile.md)
-* PowerShell parancsmag-referencia az Azure Automation DSC Szolgáltatásban, lásd: [Azure Automation DSC-parancsmagok](/powershell/module/azurerm.automation/#automation)
-* Díjszabási információkért lásd: [Azure Automation DSC díjszabása](https://azure.microsoft.com/pricing/details/automation/)
-* Egy Azure Automation DSC használata a folyamatos üzembe helyezési folyamat példát, olvassa el [IaaS virtuális gépek használata Azure Automation DSC és Chocolatey folyamatos üzembe helyezés](automation-dsc-cd-chocolatey.md)
+* Megtudhatja, hogyan kell felügyelni az Azure Automation DSC előkészítése csomópontokhoz meg [gépek előkészítése kezelésre, amelyet az Azure Automation DSC](automation-dsc-onboarding.md)
+* Ismerkedés az Azure Automation DSC használatával, lásd: [Azure Automation DSC – első lépések](automation-dsc-getting-started.md)
+* DSC-konfigurációk fordítása, így hozzárendelheti azokat a célcsomópontokat kapcsolatos további információkért lásd: [összeállítása az Azure Automation DSC-konfigurációja](automation-dsc-compile.md)
+* PowerShell-parancsmag referencia az Azure Automation DSC, lásd: [Azure Automation DSC-parancsmagok](/powershell/module/azurerm.automation/#automation)
+* Díjszabási információkért tekintse meg a [Azure Automation DSC-díjszabás](https://azure.microsoft.com/pricing/details/automation/)
+* Azure Automation DSC folyamatos üzembe helyezés folyamatban lévő példa megtekintéséhez lásd: [folyamatos üzembe helyezés a chocolatey-t és az IaaS virtuális gépek használata az Azure Automation DSC](automation-dsc-cd-chocolatey.md)

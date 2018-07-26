@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: ab73420d1bfe0dbddcf2a0e3c3dd34203e4bb2d7
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008416"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248775"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
@@ -71,13 +71,18 @@ Magas szintű az importálási feladat az alábbi lépésekből áll:
 1. Határozza meg az adatokat importált, hány meghajtót van szüksége, az adatok Azure Storage-blob célhelyét.
 2. A WAImportExport eszközzel másolhat adatokat a lemezmeghajtók. A lemezek a Bitlockerrel titkosítani.
 3. Importálási feladat létrehozása a céloldali tárfiók Azure Portalon. A meghajtó naplófájlok feltöltése.
-2. Adja meg a címet és a Szállítmányozó számlaszáma a szállítási a meghajtók vissza.
-3. A feladat létrehozása során a szállítási cím meghajtókon szállításra.
-4. Követési szám a importálási feladat részletei tartalmazzák a kézbesítési frissíteni, és küldje el az importálási feladatot.
-5. Meghajtók fogadása és feldolgozása az Azure-adatközpontban.
-6. Meghajtók mellékelt szolgáltatója, a feladó címe az importálási feladat megadott fiókkal.
-  
-    ![Ábra 1:Import feladat folyamat](./media/storage-import-export-service/importjob.png)
+4. Adja meg a címet és a Szállítmányozó számlaszáma a szállítási a meghajtók vissza.
+5. A feladat létrehozása során a szállítási cím meghajtókon szállításra.
+6. Követési szám a importálási feladat részletei tartalmazzák a kézbesítési frissíteni, és küldje el az importálási feladatot.
+7. A meghajtók fogadása és feldolgozása az Azure-adatközpontban.
+8. A meghajtók mellékelt szolgáltatója, a feladó címe az importálási feladat megadott fiókkal.
+
+> [!NOTE]
+> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország) helyi szállításhoz 
+>
+> Ossza meg a nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
+
+ ![Ábra 1:Import feladat folyamat](./media/storage-import-export-service/importjob.png)
 
 A részletes adatok importálása, Ugrás:
 
@@ -101,8 +106,13 @@ Magas szintű exportálási feladat az alábbi lépésekből áll:
 8. A meghajtók fogadása és feldolgozása az Azure-adatközpontban.
 9. A meghajtó van titkosítva, a BitLocker és a kulcsok az Azure Portalon keresztül érhetők el.  
 10. A meghajtók mellékelt szolgáltatója, a feladó címe az importálási feladat megadott fiókkal.
+
+> [!NOTE]
+> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország) helyi szállításhoz 
+>
+> Ossza meg a nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
   
-    ![Ábra 2:Export feladat folyamat](./media/storage-import-export-service/exportjob.png)
+ ![Ábra 2:Export feladat folyamat](./media/storage-import-export-service/exportjob.png)
 
 Adatok exportálása részletes utasításokért látogasson el [exportál adatokat az Azure-Blobok](storage-import-export-data-from-blobs.md).
 
@@ -118,9 +128,9 @@ Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az 
 |USA keleti régiója    | Észak-Európa        | Közép-India        |USA-beli államigazgatás – Iowa         |
 |USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD – Kelet        |
 |USA 2. keleti régiója    | Kelet-Ázsia        |  Nyugat-India        | US DoD – Középső régió        |
-|USA nyugati régiója, 2.     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
+|USA 2. nyugati régiója     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
 |USA középső régiója     | Kelet-Ausztrália        | Kelet-Kanada        | Észak-Kína        |
-|USA északi középső régiója     |  Délkelet-Ausztrália       | Dél-Brazília        | Az Egyesült Királyság déli régiója        |
+|USA északi középső régiója     |  Délkelet-Ausztrália       | Dél-Brazília        | Egyesült Királyság déli régiója        |
 |USA déli középső régiója     | Nyugat-Japán        |Korea középső régiója         | Közép-Németország        |
 |USA nyugati középső régiója     |  Kelet-Japán       | USA-beli államigazgatás – Virginia        | Északkelet-Németország        |
 

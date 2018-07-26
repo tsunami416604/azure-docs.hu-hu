@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés a szerepkörök, engedélyek és biztonságának és az Azure-figyelő
-description: Ismerje meg, hogyan használható az Azure figyelő beépített szerepköröket és engedélyeket figyelési erőforrásokhoz való hozzáférés korlátozása.
+title: Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
+description: Ismerje meg, hogyan korlátozza a hozzáférést az erőforrások figyelése az Azure Monitor beépített szerepkörök és engedélyek segítségével.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,94 +8,94 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 82ec2b71ee83d2ec697fa44521c103b11976f1ed
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a30c6a8d02b46656a0d76cf8438bdf0b3361ae91
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264602"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248461"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Ismerkedés a szerepkörök, engedélyek és biztonságának és az Azure-figyelő
-Sok csapatok kell szigorúan szabályozzák, figyelési adatok és beállítások. Például ha vannak olyan dolgozó kizárólag figyelése (a támogatási szakértők, devops mérnökök) csoport tagjai, vagy ha egy felügyelt szolgáltató használja, érdemes lehet hozzáférést azokat csak figyelési adatok korlátozásával létrehozása, módosítása, vagy törli az erőforrást. Ez a cikk bemutatja, hogyan gyorsan figyelési beépített RBAC szerepkör alkalmazni a felhasználók az Azure-ban vagy a saját egyéni szerepkör a felhasználókat, akiknek korlátozott felügyeleti engedélyekkel. A cikk ismerteti az Azure-figyelő kapcsolódó erőforrások és hogyan korlátozhatja az adatok tartalmazzák a hozzáférést a biztonsági szempontok majd.
+# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
+Számos csapat kell szigorúan szabályozzák a hozzáférést a figyelési adatok és beállítások. Például, ha kizárólag a figyelést (a támogatási szakértők, fejlesztő és üzemeltető mérnököknek) dolgozó csapat tagjai rendelkezik, vagy ha egy felügyelt szolgáltató használ, érdemes hozzáférést biztosít nekik a csak figyelési adatok korlátozásával hozhat létre, módosít, vagy erőforrások törlése. Ez a cikk bemutatja, hogyan gyors beépített figyelési RBAC szerepkör alkalmazásához a felhasználónak az Azure-ban, vagy egy felhasználóhoz, aki csak korlátozott felügyeleti engedélyekre van szüksége a saját egyéni szerepkör létrehozása. Majd az Azure Monitor-kapcsolódó erőforrások és a bennük adatokhoz való hozzáférés korlátozásáról vonatkozó biztonsági szempontokat ismerteti.
 
 ## <a name="built-in-monitoring-roles"></a>Beépített figyelési szerepkörök
-Az Azure figyelő beépített szerepkörök útmutatók célja, továbbra is engedélyezze az beszerzése és konfigurálja a szükséges adatok infrastruktúra figyelése egy előfizetésben erőforrásokhoz való hozzáférés korlátozása. Az Azure két out-of-az-box szerepkörök biztosít: A figyelési olvasó és a figyelés közreműködő.
+Az Azure Monitor beépített szerepkörök tervezett korlátozza miközben beszerzéséhez és konfigurálásához szükséges adatok infrastruktúra felügyeletért felelős továbbra is egy adott előfizetés erőforrásokhoz való hozzáférést. Az Azure Monitor két-a-beépített szerepkört kínál: A figyelési olvasó és közreműködő figyelése.
 
 ### <a name="monitoring-reader"></a>Olvasó figyelése
-A figyelés olvasó szerepét személyek összes figyelési adatok megtekintése az előfizetés, de nem módosíthatja bármely erőforrás vagy bármely források követésével kapcsolatos beállítások szerkesztése. A szerepkör megfelelő vállalatnál, például a támogatási szolgálathoz vagy a műveletek mérnökök, akiknek kell tennie:
+A Monitoring Reader szerepkörhöz hozzárendelt személyek is az összes monitorozási adat egy előfizetésben, de nem bármely erőforrás módosítása beállításainak megtekintése vagy szerkesztése bármilyen kapcsolódó erőforrások figyeléséhez. Ez a szerepkör a következő megfelelő szervezetekben, például a műveletek vagy támogatási mérnökök, tudnia, hogy a felhasználók számára:
 
-* Figyelési irányítópult megtekintése a portálon, és a saját személyes figyelési irányítópultot létrehozni.
-* Megtekintheti a definiált riasztási szabályok [Azure riasztások](monitoring-overview-unified-alerts.md)
-* Metrikák használatára vonatkozó lekérdezés a [Azure figyelő REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-parancsmagok](insights-powershell-samples.md), vagy [platformfüggetlen parancssori felület](insights-cli-samples.md).
-* A lekérdezés a műveletnapló a portálon, a Azure figyelő REST API-t, a PowerShell-parancsmagok vagy a platformfüggetlen parancssori felület használatával.
-* Nézet a [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) erőforrás.
-* Nézet a [profilt naplózni](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) az előfizetéshez.
+* Figyelési irányítópult megtekintése a portálon, és a saját privát figyelési irányítópultokat hozhat létre.
+* Meghatározott riasztási szabályok megtekintése [Azure-riasztások](monitoring-overview-unified-alerts.md)
+* Metrikák a lekérdezés a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-parancsmagok](insights-powershell-samples.md), vagy [platformfüggetlen CLI](insights-cli-samples.md).
+* A lekérdezés a tevékenységnaplóban a portálon, az Azure Monitor REST API, PowerShell-parancsmagok vagy többplatformos parancssori felület használatával.
+* Nézet a [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) erőforrás.
+* Nézet a [naplóprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) -előfizetéssel.
 * Automatikus skálázási beállítások megtekintéséhez.
-* Riasztási tevékenység megtekintése és a beállítások.
-* Az Application Insights adatokat, és AI Analytics adatainak megtekintéséhez.
-* Keresse meg a Naplóelemzési munkaterület adatokat, többek között a munkaterület vonatkozó használati adatokat.
-* Log Analytics felügyeleti csoportoknak a megtekintése.
-* A Naplóelemzési keresési séma beolvasása.
-* Naplóelemzési eszközintelligencia csomagok felsorolása.
-* Kérje le, majd a mentett keresések Naplóelemzési hajtható végre.
-* A Naplóelemzési tárkonfiguráció beolvasása.
+* Riasztási tevékenység megtekintése és beállításait.
+* Application Insights-adatok elérése és adatok megtekintése az AI-Analytics.
+* Keressen rá a Log Analytics-munkaterület adatok többek között a munkaterület használati adatait.
+* A Log Analytics felügyeleti csoportok megtekintése.
+* A Log Analytics keresési séma lekérése.
+* A Log Analytics intelligenciacsomagok listázása.
+* Kérje le, és hajtsa végre a Log Analytics-beli mentett keresések.
+* A Naplóelemzési tárkonfiguráció lekéréséhez.
 
 > [!NOTE]
-> Ez a szerepkör nem szolgálnak olvasási hozzáférés egy eseményközpontba folyamatos átviteli vagy a storage-fiókban tárolt Teljesítménynapló-adatokat. [Lásd az alábbi](#security-considerations-for-monitoring-data) ezekhez az erőforrásokhoz való hozzáférés konfigurálásával kapcsolatos információkat.
+> Ez a szerepkör nem olvasási hozzáférést biztosít egy eseményközpontba, folyamatos vagy a storage-fiókban tárolt Teljesítménynapló-adatokat. [Lásd alább](#security-considerations-for-monitoring-data) ezekhez az erőforrásokhoz való hozzáférés konfigurálásával kapcsolatos információkat.
 > 
 > 
 
 ### <a name="monitoring-contributor"></a>Közreműködő figyelése
-A figyelési közreműködői szerepkör hozzárendelése mások is láthatják az összes figyelési adatok az előfizetés és hozzon létre vagy figyelési beállítások azonban nem lehet módosítani más erőforrásokat. Ez a szerepkör kibővíti a figyelési olvasó szerepkört, és megfelelő-e a szervezetek figyelési team vagy felügyelt szolgáltatók, akik mellett a fentiek engedélyeket is kell tennie:
+A figyelés közreműködői szerepkörrel mások is láthatják az összes monitorozási adat, előfizetés és a létrehozása vagy módosítása a figyelési beállításokat, de nem módosítható az összes többi erőforrást. Ez a szerepkör kibővíti a figyelési olvasó szerepkört, és a szervezet figyelési csapat vagy akik mellett a fenti, engedélyeket is képesnek kell lenniük a felügyelt szolgáltatóknak tagjai számára megfelelő:
 
-* Tegye közzé a figyelési irányítópult megosztott irányítópultként.
-* Állítsa be [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) egy resource.* számára
-* Állítsa be a [profilt naplózni](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) egy subscription.* számára
-* Riasztási szabályok tevékenység és a beállítások segítségével [Azure riasztások](monitoring-overview-unified-alerts.md).
-* Az Application Insights webalkalmazás-tesztek és összetevők létrehozása.
-* Lista Naplóelemzési munkaterület a megosztott kulcsok szükségesek.
-* Engedélyezi vagy letiltja a Naplóelemzési eszközintelligencia csomagokat.
-* Hozzon létre és törlése mentett keresések Naplóelemzési hajtható végre.
+* Tegye közzé a figyelési irányítópult, egy megosztott irányítópultot.
+* Állítsa be [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) egy resource.* számára
+* Állítsa be a [naplóprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) egy subscription.* számára
+* Riasztási szabályok tevékenység és a beállításokat az [Azure Alerts](monitoring-overview-unified-alerts.md).
+* Hozza létre az Application Insights-webtesztek és összetevőket.
+* A Log Analytics-munkaterület megosztott kulcsainak listázása.
+* Engedélyezi vagy letiltja a Log Analytics intelligenciacsomagok.
+* Hozzon létre, és törölje, és hajtsa végre a Log Analytics-beli mentett keresések.
 * Hozzon létre, és a Naplóelemzési tárkonfiguráció törlése.
 
-* felhasználói külön is engedéllyel kell ListKeys a cél erőforráson (tárolási fiók vagy esemény hub névtér) beállítása egy napló profil vagy a diagnosztikai beállítás.
+* a felhasználó külön is engedéllyel kell listkeys műveletének a cél erőforráson (tárolási fiók- vagy event hub-névtér) egy naplóprofil vagy diagnosztikai beállítás.
 
 > [!NOTE]
-> Ez a szerepkör nem szolgálnak olvasási hozzáférés egy eseményközpontba folyamatos átviteli vagy a storage-fiókban tárolt Teljesítménynapló-adatokat. [Lásd az alábbi](#security-considerations-for-monitoring-data) ezekhez az erőforrásokhoz való hozzáférés konfigurálásával kapcsolatos információkat.
+> Ez a szerepkör nem olvasási hozzáférést biztosít egy eseményközpontba, folyamatos vagy a storage-fiókban tárolt Teljesítménynapló-adatokat. [Lásd alább](#security-considerations-for-monitoring-data) ezekhez az erőforrásokhoz való hozzáférés konfigurálásával kapcsolatos információkat.
 > 
 > 
 
-## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Figyelési engedélyek és egyéni RBAC-szerepkörök
-Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényeinek, akkor [hozzon létre egy egyéni RBAC szerepkör](../role-based-access-control/custom-roles.md) részletesebb engedélyekkel. Az alábbiakban azok leírásait tartalmazza az általános Azure RBAC-figyelő műveleteket.
+## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Monitorozási engedélyek és egyéni RBAC-szerepkörök
+Ha a fenti beépített szerepkörök nem felelnek meg a csapat a pontos igényei, [hozzon létre egy egyéni RBAC-szerepkört](../role-based-access-control/custom-roles.md) részletesebb engedélyekkel. Az alábbiakban a hozzájuk tartozó leírások gyakori Azure Monitor RBAC műveletekről.
 
 | Művelet | Leírás |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |A csoport olvasási, írási és törlési művelet. |
-| Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |Olvasási, írási és törlési tevékenység napló riasztásokat. |
-| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Olvasási, írási és törlési riasztási szabályok (a riasztások klasszikus). |
-| Microsoft.Insights/AlertRules/Incidents/Read |A riasztási szabályok listázása incidensek (váltódik ki, hogy a riasztási szabály előzmények). Ez csak a portál vonatkozik. |
-| Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Olvasási, írási és törlési automatikus skálázási beállításokat. |
-| Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |Olvasási, írási és törlési diagnosztikai beállítások. |
-| Microsoft.Insights/EventCategories/Read |Az összes kategória lehetséges a műveletnaplóban számbavétele. Az Azure portál által használt. |
-| Microsoft.Insights/eventtypes/digestevents/Read |Ez az engedély szükség a felhasználók számára, akiknek tevékenységi naplóit a portálon hozzáférésre van szükségük. |
-| Microsoft.Insights/eventtypes/values/Read |Tevékenységnapló események (felügyeleti események) egy előfizetésben listában. Ezzel az engedéllyel csak a műveletnapló programozott és a portál eléréséhez alkalmazható. |
-| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | Olvasási, írási és törlési diagnosztikai beállítások hálózati folyamata naplókhoz. |
-| Microsoft.Insights/LogDefinitions/Read |Ez az engedély szükség a felhasználók számára, akiknek tevékenységi naplóit a portálon hozzáférésre van szükségük. |
-| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |Olvasási, írási és törlési napló profilok (tevékenységnapló streaming event hub vagy tárolási fiókhoz). |
-| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Olvasási, írási és törlési közel valós idejű metrika riasztások |
-| Microsoft.Insights/MetricDefinitions/Read |Olvassa el a metrikai meghatározásainak (erőforrás elérhető metrika típusok listája). |
-| Microsoft.Insights/Metrics/Read |Egy erőforrás olvasni. |
-| Microsoft.Insights/Register/Action |Az Azure-figyelő erőforrás-szolgáltató regisztrálása. |
-| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Az Application Insights riasztásainak olvasási, írási és törlési napló. |
+| Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |Olvasási, írási és törlési tevékenységnapló-riasztások. |
+| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Olvasási, írási és törlési riasztási szabályok (a klasszikus riasztások). |
+| Microsoft.Insights/AlertRules/Incidents/Read |Riasztási szabályok (az előzményeket a riasztási szabály aktiválása) incidensek listázása. Ez csak a portál vonatkozik. |
+| Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Olvasási, írási és törlési automatikus méretezési beállításokkal. |
+| Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |Diagnosztikai beállítások olvasása/írása/törlése. |
+| Microsoft.Insights/EventCategories/Read |Enumerálni az összes kategória lehetséges a tevékenységnaplóban. Használja az Azure Portalon. |
+| Microsoft.Insights/eventtypes/digestevents/Read |Erre az engedélyre szükség a felhasználók számára, akik hozzáférhetnek a vizsgálati naplók a portálon keresztül. |
+| Microsoft.Insights/eventtypes/values/Read |Tevékenységnapló eseményei (felügyeleti események) egy adott előfizetés listázása. Ezzel az engedéllyel csak a tevékenységnaplóban a szoftveres és a portál hozzáférést alkalmazható. |
+| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | Olvasási, írási és törlési hálózati forgalmi naplók diagnosztikai beállításait. |
+| Microsoft.Insights/LogDefinitions/Read |Erre az engedélyre szükség a felhasználók számára, akik hozzáférhetnek a vizsgálati naplók a portálon keresztül. |
+| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |Olvasási, írási és törlési naplóprofilok (tevékenységnapló streamelés az event hub vagy a storage-fiók). |
+| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Olvasási, írási és törlési közel valós idejű metrikákhoz kapcsolódó riasztások |
+| Microsoft.Insights/MetricDefinitions/Read |(Erőforrás rendelkezésre álló metrika típusok listája) metrikadefiníciók olvasása. |
+| Microsoft.Insights/Metrics/Read |Olvassa el a erőforrás metrikáit. |
+| Microsoft.Insights/Register/Action |Az Azure Monitor erőforrás-szolgáltató regisztrálásához. |
+| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Olvasási, írási és törlési naplóriasztások az Application Insights. |
 
 
 
 > [!NOTE]
-> Elérhető riasztásokat, a diagnosztikai beállítások és a metrikák egy erőforrást igényel, hogy a felhasználó rendelkezik-e az erőforrás típusát és a hatókör erőforrás olvasási hozzáférést. ("Write"), amely egy tárfiókhoz vagy az event hubs adatfolyamok archiválja diagnosztikai beállítás vagy a napló profil létrehozásához a felhasználó számára ListKeys engedéllyel is rendelkezik a cél erőforráson.
+> Egy erőforráscsoport szükséges, hogy a felhasználó rendelkezik-e olvasási hozzáféréssel az erőforrás típusát és a hatókör az erőforrás eléréséhez riasztásokat, a diagnosztikai beállítások és a metrikák. ("Írás"), amely egy storage-fiókot vagy adatfolyamok az event hubs archívum diagnosztikai beállítás vagy a naplóhoz profil létrehozásához a felhasználót, hogy a célként megadott erőforrás listkeys műveletének engedéllyel is rendelkezik.
 > 
 > 
 
-A fenti táblázatban egy "tevékenység napló olvasó" ilyen létrehozhat egy egyéni RBAC-szerepkör használata esetén például:
+Például használja a fenti táblázat egy egyéni RBAC szerepkör létrehozhat egy "tevékenység Log olvasó" ehhez hasonló:
 
 ```powershell
 $role = Get-AzureRmRoleDefinition "Reader"
@@ -109,31 +109,31 @@ $role.AssignableScopes.Add("/subscriptions/mySubscription")
 New-AzureRmRoleDefinition -Role $role 
 ```
 
-## <a name="security-considerations-for-monitoring-data"></a>Figyelési adatok biztonsági szempontjai
-Figyelési adatok – különösen naplófájlok – tartalmazhatnak bizalmas adatokat, például az IP-címek vagy felhasználó neve. Három alapvető képernyőn tartalmaz figyelési adatok az Azure-ból:
+## <a name="security-considerations-for-monitoring-data"></a>Monitorozási adatok történő futtatásának biztonsági szempontjai
+Monitorozási adatok – különösen a naplófájlok – tartalmazhatnak bizalmas adatokat, például az IP-címek vagy felhasználó neve. Három alapvető képernyőn monitorozási adatok az Azure-ból származik:
 
-1. A műveletnapló, amely minden vezérlő-vezérlősík műveleteket ismerteti az Azure-előfizetéshez.
-2. Diagnosztikai naplók, amelyek az erőforrás által kibocsátott naplókat.
-3. Metrika, amely erőforrások által kibocsátott.
+1. A tevékenységnapló-, amely minden vezérlősík műveleteket ismerteti az Azure-előfizetése.
+2. Diagnosztikai naplók, amelyek az erőforrás által kibocsátott naplók.
+3. Mérőszámok, amely erőforrások által kibocsátott vannak.
 
-Ezek az adattípusok három storage-fiókban tárolt, vagy Eseményközpont, amelyek mindkettő általános célú Azure-erőforrások részére. Mivel ezek az általános célú erőforrások, létrehozása, törlése és hozzájuk férni a rendszergazda számára fenntartott kiemelt művelet. Javasoljuk, hogy az alábbi eljárásokkal kapcsolatos megfigyelési erőforrások megakadályozására használja:
+Ezeken az adattípusokon mindhárom egy tárfiókban tárolja, vagy adatfolyamként történő Event Hub, mindkettő általános célú Azure-erőforrások is. Mivel az általános célú erőforrásokat, létrehozása, törlése és hozzájuk férni jogosultsághoz kötve a rendszergazda számára fenntartva. Javasoljuk, hogy a következő források figyelést kapcsolatos eljárások visszaélések megelőzése érdekében használjon:
 
-* A figyelési adatok dedikált tárolási fiók használata. Figyelési adatok több tárfiókot külön kell, ha ne ossza meg a storage-fiókok között figyelés használatát, és előfordulhat, hogy nem figyelési adatok, ez véletlenül adjon azok, akik csak a figyelési adatok (például egy harmadik fél SIEM) hozzáféréssel kell rendelkezniük hozzáférést nem figyelési adatokat.
-* Használja a dedikált Service Bus vagy az Event Hubs-névtér összes diagnosztikai beállítások ugyanebből az okból a fenti.
-* Korlátozhatja az kapcsolatos megfigyelési tárfiók vagy az event hubs egy külön erőforráscsoportot tartva és [hatókört használja](../role-based-access-control/overview.md#scope) a figyelési szerepkörökhöz való hozzáférés csak ennek az erőforráscsoportnak korlátozására.
-* Soha nem engedélyt ListKeys storage-fiókok vagy az event hubs előfizetési hatókört, ha a felhasználó csak nem figyelési adatok eléréséhez. Ehelyett biztosítják azokat az engedélyeket a felhasználó egy erőforrás vagy az erőforráscsoportot, (ha van egy dedikált figyelési erőforráscsoport) hatókör.
+* Egy egyedi, dedikált tárfiókot használják a figyelési adatok. Ha figyelési adatok szét több tárfiókra van szüksége, ne ossza meg a storage-fiók közötti figyelési használat, és előfordulhat, hogy-megfigyelési adatokat, mivel ezt véletlenül adjon azoknak, akik csak a figyelési adatok (például egy harmadik fél SIEM) hozzáférésre van szükségük hozzáférés figyelési adatokat.
+* Használjon egy egyedi, dedikált a Service Bus- vagy Event Hub-névtér összes diagnosztikai beállítások között ugyanebből az okból a fenti.
+* Férjenek hozzá az kapcsolatos figyelési storage-fiókok és az event hubs tartja őket egy külön erőforráscsoportot, és [hatókört használja](../role-based-access-control/overview.md#scope) a figyelési szerepkörök csak adott erőforráscsoporton való hozzáférés korlátozására.
+* Soha nem engedélyezheti a listkeys műveletének tárfiókokat vagy az event hubs előfizetési hatókörben, amikor a felhasználó csak a figyelési adatok hozzá kell férnie. Ehelyett adhat ezeket az engedélyeket a felhasználó egy erőforrás vagy erőforráscsoport (Ha rendelkezik egy dedikált figyelési erőforráscsoport) hatókör.
 
-### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Figyelési kapcsolatos tárfiókok való hozzáférés korlátozása
-Ha egy felhasználó vagy alkalmazás figyelését a tárfiókban lévő adatokat a hozzáférést, akkor [egy fiók SAS létre](https://msdn.microsoft.com/library/azure/mt584140.aspx) a tárfiók, amely tartalmazza a szolgáltatási szint csak olvasási hozzáféréssel a blob storage figyelési adatokat. A PowerShellben ez látható:
+### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Figyelés kapcsolódó tárfiókok való hozzáférés korlátozása
+Amikor egy felhasználó vagy alkalmazás a monitorozási adatok tárfiókban való hozzáférésre van szüksége, érdemes [egy fiók SAS előállítása](https://msdn.microsoft.com/library/azure/mt584140.aspx) a tárfiók, amely a blob storage szolgáltatói csak olvasási hozzáféréssel rendelkező figyelési adatokat tartalmaz. A PowerShell a következőhöz hasonló lehet:
 
 ```powershell
 $context = New-AzureStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
 $token = New-AzureStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
 ```
 
-Majd biztosíthat a jogkivonat az entitásban, hogy kell olvasni a tárolási fiók, és azt is listában és olvassa el az összes BLOB storage-fiókhoz tartozó.
+Ezután biztosíthat a jogkivonat az entitáshoz, hogy kell olvasni, hogy a tárolási fiók, és is listázása és a storage-fiókban lévő összes BLOB olvasni.
 
-Azt is megteheti Ha szeretne vezérelni az RBAC ezzel az engedéllyel, engedélyt adhat az entitás a Microsoft.Storage/storageAccounts/listkeys/action a tárolási fiók. Erre akkor szükség a felhasználók számára a diagnosztikai beállítás megadása, vagy a storage-fiók profil archiválására jelentkezzen képesnek kell lenniük. Például létrehozhatja a következő egyéni RBAC-szerepkör egy felhasználó vagy alkalmazás, amelyet a csak olvasható egy tárfiókot:
+Azt is megteheti Ha ezt az engedélyt az RBAC vezérlésére van szüksége, meg lehet adni entitás az Microsoft.Storage/storageAccounts/listkeys/action engedélyt az adott tárfiók. Erre azért szükség a felhasználók számára a diagnosztikai beállítás vagy naplóprofil kell archiválni egy tárfiókba képeseknek kell lenniük. Létrehozhat például, hogy egy felhasználó vagy alkalmazás, amelyet csak egy storage-fiókból olvassa el a következő egyéni RBAC szerepkör:
 
 ```powershell
 $role = Get-AzureRmRoleDefinition "Reader"
@@ -149,15 +149,15 @@ New-AzureRmRoleDefinition -Role $role
 ```
 
 > [!WARNING]
-> A ListKeys engedély lehetővé teszi a felhasználó számára az elsődleges és másodlagos tárfiókkulcsok listázása. Ezek a kulcsok adja meg a felhasználónak minden aláírt engedélyeket (olvasás, írás, blobok létrehozása, törlése, blobok stb.) összes aláírt szolgáltatások (blob, várólista, tábla, fájl), hogy a tárfiók. Egy fiók SAS, ha lehetséges, a fent leírt használatát javasoljuk.
+> A listkeys műveletének engedély lehetővé teszi, hogy a felhasználót, hogy az elsődleges és másodlagos tárfiókkulcsok listázása. Ezek a kulcsok adja meg a felhasználónak minden aláírt engedélyek (olvasás, írás, blobok létrehozása, törlése, blobok, stb.) minden aláírt szolgáltatásokhoz (blob, queue, table, fájl) a tárfiók. Ha lehetséges, a fent leírt fiók SAS használatát javasoljuk.
 > 
 > 
 
-### <a name="limiting-access-to-monitoring-related-event-hubs"></a>Figyelési kapcsolatos az event hubs való hozzáférés korlátozása
-Az event hubs gyűjtheti hasonló mintát, de először hozzon létre egy dedikált figyelési engedélyezési szabályt kell. Ha meg szeretné adni egy alkalmazás, amely csak a figyelési kapcsolatos event hubs figyelni kell a hozzáférést, tegye a következőket:
+### <a name="limiting-access-to-monitoring-related-event-hubs"></a>Figyelés kapcsolatos event hubs-hozzáférés korlátozása
+Az event hubs használatával követheti hasonló mintát, de először hozzon létre egy dedikált Listen engedélyezési szabályt. Ha szeretne hozzáférést biztosítani egy alkalmazás, amely csak a figyelési kapcsolatos event hubs figyelni kell, tegye a következőket:
 
-1. Az esemény hub(s) az adatfolyamként történő figyelési adatok csak a figyelési JOGCÍMEKKEL rendelkező és létrehozott egy megosztott hozzáférési házirend létrehozása Ezt megteheti a portálon. Például akkor lehet, hogy neki "monitoringReadOnly." Ha lehetséges érdemes kulcs adjon közvetlenül a fogyasztó számára, és ugorjon a következő lépéssel.
-2. Ha a fogyasztó kell helyeznie a kulcs alkalmi, adja meg a felhasználónak az adott eseményközpont ListKeys művelet. Ez akkor is szükséges, a felhasználók számára a diagnosztikai beállítás megadása, vagy az event hubs adatfolyamot profil jelentkezzen képesnek kell lenniük. Például előfordulhat, hogy létre RBAC-szabályt:
+1. Megosztott hozzáférési szabályzat létrehozása a streamelési figyelési jogcímek csak a figyelési adatok létrehozott esemény példáink a. Ezt megteheti a portálon. Például előfordulhat, hogy felhívja azt "monitoringReadOnly." Ha lehetséges érdemes a kulcs közvetlenül adhat a fogyasztói, majd ugorjon a következő lépéssel.
+2. Ha a fogyasztó kell helyeznie a kulcs az ad-hoc van szüksége, adja meg a felhasználónak az adott event hubs listkeys műveletének műveletet. Ez akkor is szükséges a felhasználók számára a diagnosztikai beállítás, vagy jelentkezzen profil streamelés az event hubs képeseknek kell lenniük. Például előfordulhat, hogy az RBAC szabály létrehozása:
    
    ```powershell
    $role = Get-AzureRmRoleDefinition "Reader"
@@ -173,6 +173,6 @@ Az event hubs gyűjtheti hasonló mintát, de először hozzon létre egy dedik�
    ```
 
 ## <a name="next-steps"></a>További lépések
-* [További tudnivalók a Szerepalapú és engedélyeket az erőforrás-kezelőben](../role-based-access-control/overview.md)
-* [Olvassa el az Azure-ban Figyelés áttekintése](monitoring-overview.md)
+* [További információ az RBAC és engedélyek a Resource Managerben](../role-based-access-control/overview.md)
+* [Olvassa el az Azure-beli Figyelés áttekintése](monitoring-overview.md)
 

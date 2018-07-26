@@ -10,17 +10,20 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f00653d0c58f52c73126693422ab0a485540dd7a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 50cf1bbbe529b30da6bfe39281d11eee1c788dd8
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072580"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259160"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>Gyors útmutató: Recognize speech, a C# .NET Core, a beszéd SDK-val Windows alatt
 
 Ebből a cikkből elsajátíthatja, hogyan hozzon létre egy C# konzolalkalmazást a .NET Core Windows beszédfelismerés lefényképezze a Cognitive Services beszédfelismerő SDK segítségével.
-Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+Az alkalmazás össze lett a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+
+> [!NOTE]
+> .NET core egy nyílt forráskódú, platformfüggetlen .NET-platformról megvalósítása a [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) specifikációnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,13 +48,13 @@ Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK Nu
 
     ![Telepítse a NuGet-csomag Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-0.5.0.png "telepítse a Nuget-csomag")
 
-1. A felugró licenc képernyőn fogadja el a licenc:
+1. Fogadja el a licencet, a megjelenő párbeszédpanelen.
 
     ![Fogadja el a licencfeltételeket](media/sdk/qs-csharp-dotnetcore-windows-04-nuget-license.png "fogadja el a licencfeltételeket")
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
-1. Az a `Program.cs` fájlt a Visual Studio-projektek, cserélje ki az összes kódot a következőre:
+1. Nyissa meg `Program.cs` projektre a Visual studióban, és cserélje le ezt a fájlt a kód a következő.
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnetcore-windows/helloworld/Program.cs#code)]
 
@@ -63,7 +66,7 @@ Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK Nu
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. Hozza létre az alkalmazást. A menüsávban válassza **összeállítása** > **megoldás fordítása**. A kódot kell fordítási hibák nélkül most:
+1. Hozza létre az alkalmazást. A menüsávban válassza **összeállítása** > **megoldás fordítása**. A kódot kell fordítási hibák nélkül most.
 
     ![A build sikeres létrehozása](media/sdk/qs-csharp-dotnetcore-windows-05-build.png "build sikeres létrehozása")
 
@@ -71,8 +74,7 @@ Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK Nu
 
     ![Az alkalmazás elindításához az into hibakeresés](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "indítsa el az alkalmazást into hibakeresés")
 
-1. A konzolablakban hibaikonra, azaz valami (angolul), és felszólítja a.
-A felismerés eredményét képernyő jelenik meg.
+1. A konzolablakban jelenik meg, például valamit (angolul), és felszólítja a. A felismert szöveget majd ugyanabban az ablakban jelenik meg.
 
     ![Sikeres felismerés után konzolkimenetet](media/sdk/qs-csharp-dotnetcore-windows-07-console-output.png "Konzolkimenetet követően sikeres felismerése")
 

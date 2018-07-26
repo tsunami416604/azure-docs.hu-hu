@@ -1,6 +1,6 @@
 ---
-title: Az Azure Redis Cache adatok importálása és exportálása |} Microsoft Docs
-description: Ismerje meg, hogyan importálhatja és exportálhatja az adatokat a blob storage a premium Azure Redis Cache osztályt érkező vagy oda irányuló
+title: Az Azure Redis Cache-ben az adatok importálása és exportálása |} A Microsoft Docs
+description: Ismerje meg, hogyan importálhat és exportálhat adatokat, és a prémium szintű Azure Redis Cache-példány a blob storage-ból
 services: redis-cache
 documentationcenter: ''
 author: wesmc7777
@@ -14,152 +14,152 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: wesmc
-ms.openlocfilehash: db488f759752880a47a78dfeec13b14f65bd503c
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6733891213f15e9ceaf08ef7fb50380db47a695f
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27910087"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259194"
 ---
-# <a name="import-and-export-data-in-azure-redis-cache"></a>Az Azure Redis Cache adatok importálása és exportálása
-Importálási/exportálási egy Azure Redis Cache adatok felügyeleti művelet, amely lehetővé teszi, hogy adatokat importáljon belőlük az Azure Redis Cache vagy exportál adatokat az Azure Redis Cache importálni és Redis gyorsítótár-adatbázis (Rekordadatbázis) pillanatkép exportálása egy prémium szintű gyorsítótár az Azure-Tárfiók a blob. 
+# <a name="import-and-export-data-in-azure-redis-cache"></a>Adatok importálása és exportálása az Azure Redis Cache-ben
+Importálás/exportálás szolgáltatás egy Azure Redis Cache-adatok felügyeleti művelet, amely lehetővé teszi, hogy az adatok importálása az Azure Redis Cache-be vagy exportál adatokat az Azure Redis Cache képes importálni, és a egy prémium szintű gyorsítótár egy Redis Cache-adatbázis (RDB) pillanatkép exportálása egy blobot az Azure-ban Storage-fiók. 
 
-- **Exportálás** -oldalakra vonatkozó Blob az Azure Redis Cache Rekordadatbázis pillanatképek exportálhatja.
-- **Importálás** -oldalakra vonatkozó Blob vagy egy Blokkblob importálhatja a Redis gyorsítótár Rekordadatbázis pillanatképeket.
+- **Exportálás** – Lapblob exportálhatók. az Azure Redis Cache RDB-pillanatképeket.
+- **Importálása** – a Redis Cache RDB-pillanatképek importálhat egy Lapblob vagy Blokkblob.
 
-Importálási/exportálási lehetővé teszi különböző Azure Redis Cache-példányok közötti áttelepítése vagy a gyorsítótár adatokkal használat előtt.
+Importálási/exportálási lehetővé teszi különböző Azure Redis Cache-példány közötti áttelepítéséhez, vagy töltse fel a gyorsítótárat az adatokat használat előtt.
 
-Ez a cikk egy útmutatót biztosít az Azure Redis Cache-adatok importálása és exportálása, és gyakran feltett kérdésekre adott válaszokat biztosít.
+Ez a cikk az Azure Redis Cache-adatok importálása és exportálása egy útmutatót biztosít, valamint megadja a gyakran feltett kérdésekre adott válaszokat.
 
 > [!IMPORTANT]
-> Importálási/exportálási jelenleg előzetes verzióban érhető, és csak [prémium csomagban](cache-premium-tier-intro.md) gyorsítótárazza.
+> Importálási/exportálási előzetes verzióban érhető el, és csak [prémium szintű](cache-premium-tier-intro.md) gyorsítótárazza.
 >
 >
 
 ## <a name="import"></a>Importálás
-Importálás a Redis-kiszolgáló futtatja a felhő vagy a környezet, beleértve a futó Linux, Windows vagy bármely felhőalapú szolgáltató, például az Amazon Web Services, míg mások Redis vinnie a Redis-kompatibilis Rekordadatbázis fájlok használható. Adatok importálása egyszerű módja a gyorsítótár létrehozásához előre megadott adatokkal. Az importálási folyamat során az Azure Redis Cache Rekordadatbázis fájlokat az Azure storage betölti a memóriába, és majd szúrja be a kulcsokat a gyorsítótárba.
+Importálás a Redis-kompatibilis RDB-fájlok viszi, minden bármilyen felhőben vagy a környezetben, beleértve a Linux, Windows vagy bármely más szolgáltatónál, például az Amazon Web Services és a többi futó Redis futó Redis-kiszolgálóról is használható. A rendszer egyszerűen hozzon létre egy gyorsítótárat az adatokkal előre feltöltött adatok importálása. Az importálási folyamat során az Azure Redis Cache RDB-fájlba való fájlokat az Azure storage-ból betölti a memóriába, és majd szúrja be a kulcsokat a gyorsítótárba.
 
 > [!NOTE]
-> Az importálási művelet megkezdése előtt győződjön meg arról, hogy a Redis adatbázis (Rekordadatbázis) fájl vagy fájlokat vannak töltve az Azure-tárfiókba, a ugyanabban a régióban, és az Azure Redis Cache példányt előfizetés lapot vagy blokk blobokat. További információkért lásd: [Ismerkedés az Azure Blob storage szolgáltatással](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ha a Rekordadatbázis fájlkiszolgáló az exportált a [Azure Redis Cache exportálása](#export) funkció, a Rekordadatbázis fájl oldalakra vonatkozó blob már tárolja, és készen áll a importálása.
+> Mielőtt megkezdené az importálási művelet, győződjön meg arról, hogy a Redis adatbázis (RDB) fájlt vagy fájlokat a rendszer feltölti az Azure storage, az ugyanabban a régióban és az Azure Redis Cache-példány előfizetésen stránka nebo Blok blobok. További információkért lásd: [Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ha az RDB-fájlba való fájl használatával exportált a [Azure Redis Cache exportálási](#export) funkció, a RDB-fájlba egy lapblob már tárolja, és készen áll a importálása.
 >
 >
 
-1. Egy vagy több exportált gyorsítótár blobot, importálandó [keresse meg a gyorsítótár](cache-configure.md#configure-redis-cache-settings) a Azure-portálon, majd kattintson a **adatimportálás** a a **erőforrás menü**.
+1. Egy vagy több exportált gyorsítótár blobok importálása [tallózással keresse meg a gyorsítótár](cache-configure.md#configure-redis-cache-settings) az Azure Portalon, és kattintson **adatok importálása** származó a **erőforrás menüben**.
 
     ![Adatok importálása][cache-import-data]
-2. Kattintson a **válasszon Blob(s)** , és válassza ki a tárfiókot, amely tartalmazza az importálandó adatok megadásához.
+2. Kattintson a **BLOB(ok) kiválasztása** , és válassza ki a tárfiókot, amely tartalmazza az adatok importálásához.
 
     ![Tárfiók kiválasztása][cache-import-choose-storage-account]
-3. Kattintson a tároló, amely tartalmazza az importálandó adatok megadásához.
+3. Kattintson a tároló, amely tartalmazza az adatok importálásához.
 
-    ![Válassza ki a tárolót][cache-import-choose-container]
-4. Válassza ki egy vagy több blobot importálása a blob nevének balra arra a területre, és kattintson a **válasszon**.
+    ![Válasszon tárolót][cache-import-choose-container]
+4. Válassza ki az importálandó bal oldalán a blob neveként a részre kattintva egy vagy több blobot, és kattintson a **kiválasztása**.
 
     ![Válassza ki a blobok][cache-import-choose-blobs]
-5. Kattintson a **importálása** az importálási folyamat megkezdéséhez.
+5. Kattintson a **importálása** az importálási folyamat elindításához.
 
    > [!IMPORTANT]
-   > A gyorsítótár nem gyorsítótár-ügyfelek által elérhető az importálási folyamat során, és a gyorsítótárban adat törlődik.
+   > A gyorsítótár nem érhető el a gyorsítótár-ügyfelek az importálási folyamat során, és a gyorsítótárban lévő összes adat törlődik.
    >
    >
 
     ![Importálás][cache-import-blobs]
 
-    Az értesítések következő Azure-portálról, vagy az események megtekintésével figyelheti az importálási művelet előrehaladását a [napló](../azure-resource-manager/resource-group-audit.md).
+    Az importálási művelet állapotát az alábbi, az értesítéseket az Azure Portalról, vagy az események megtekintésével figyelheti a [auditnapló](../azure-resource-manager/resource-group-audit.md).
 
-    ![Importálás folyamatban][cache-import-data-import-complete]
+    ![Importálás folyamatban van][cache-import-data-import-complete]
 
 ## <a name="export"></a>Exportálás
-Exportálás lehetővé teszi az Azure Redis Cache Redis kompatibilis Rekordadatbázis (oka) t a tárolt adatok exportálását. Ez a szolgáltatás segítségével tárolt adatok mozgatása egy Azure Redis Cache példányt, vagy egy másik Redis-kiszolgálóhoz. Az exportálási folyamat során egy ideiglenes fájl jön létre a virtuális Gépen, amelyen az Azure Redis Cache server-példányt, és a fájl feltöltése a kijelölt tárfiókkal. Az exportálási művelet befejezése után a vagy állapota sikeres végrehajtásával vagy hibajelzéssel az ideiglenes fájl törlődik.
+Exportálás lehetővé teszi, hogy exportálja az Azure Redis Cache redis-kompatibilis RDB-fájl(ok) tárolt adatokat. Ez a funkció segítségével az adatok áthelyezése egy Azure Redis Cache-példányról egy másikra, vagy egy másik Redis-kiszolgálóra. Az exportálási folyamat során egy ideiglenes fájl jön létre a virtuális gépen, amelyen az Azure Redis Cache-server-példányt, és a fájlt a kijelölt tárfiók töltenek fel. Az exportálási művelet befejeződik, vagy sikeres állapotú vagy sikertelen, amikor az ideiglenes fájl törlődik.
 
-1. Exportálja a gyorsítótár tartalmát tároló, [keresse meg a gyorsítótár](cache-configure.md#configure-redis-cache-settings) a Azure-portálon, majd kattintson a **adatok exportálása** a a **erőforrás menü**.
+1. A tárolóhoz, a gyorsítótár tartalmának exportálása [tallózással keresse meg a gyorsítótár](cache-configure.md#configure-redis-cache-settings) az Azure Portalon, és kattintson **adatok exportálása** származó a **erőforrás menüben**.
 
-    ![A tároló kiválasztása][cache-export-data-choose-storage-container]
-2. Kattintson a **válassza ki a tároló** , és válassza ki a kívánt tárfiókot. A tárfiók, a gyorsítótár az előfizetés és a régióban kell lennie.
+    ![Válasszon tárolót][cache-export-data-choose-storage-container]
+2. Kattintson a **válassza ki a tároló** , és válassza ki a kívánt tárfiókot. A tárfiók a gyorsítótár azonos előfizetésben és régióban kell lennie.
 
    > [!IMPORTANT]
-   > Exportálja a lapblobokat, amelyek klasszikus és Resource Manager tárfiókok által támogatott, de nem támogatja a együttműködik [Blob storage-fiókok](../storage/common/storage-account-options.md#blob-storage-accounts) most.
+   > Exportálja a lapblobokat, melyek a klasszikus és Resource Manager-tárfiókokra is támogatottak, de nem támogatja a együttműködik [Blob storage-fiókok](../storage/common/storage-account-options.md#blob-storage-accounts) jelenleg.
    >
    >
 
     ![Tárfiók][cache-export-data-choose-account]
-3. Válassza ki a kívánt blob tároló, és kattintson a **válasszon**. Új tároló használata, kattintson a **tároló hozzáadása** hozzáadásához először, és állítsa be azt a listából.
+3. Válassza ki a kívánt blob-tárolóba, és kattintson a **kiválasztása**. Új tároló használatához kattintson **tároló hozzáadása** először hozzá, és válasszon a listából.
 
-    ![A tároló kiválasztása][cache-export-data-container]
-4. Adjon meg egy **Blob előtagja** kattintson **exportálása** az exportálási folyamat elindítása. A blob nevének előtagja szolgál az exportálási művelet által létrehozott fájlok nevének előtagja.
+    ![Válasszon tárolót][cache-export-data-container]
+4. Adjon meg egy **Blobnév előtagja** kattintson **exportálása** az exportálási folyamat elindításához. A blob nevének előtagja szolgál az exportálási művelet által generált fájlok nevének előtagja.
 
     ![Exportálás][cache-export-data]
 
-    Az értesítések következő Azure-portálról, vagy az események megtekintésével figyelheti az exportálási művelet előrehaladását a [napló](../azure-resource-manager/resource-group-audit.md).
+    Az exportálási művelet állapotát az alábbi, az értesítéseket az Azure Portalról, vagy az események megtekintésével figyelheti a [auditnapló](../azure-resource-manager/resource-group-audit.md).
 
     ![Az adatok exportálása befejeződött][cache-export-data-export-complete]
 
-    Gyorsítótárak az exportálási folyamat során elérhetők maradnak.
+    Gyorsítótárak az exportálási folyamat során elérhető marad.
 
 ## <a name="importexport-faq"></a>Importálási/exportálási – gyakori kérdések
-Ez a szakasz az Import/Export szolgáltatás kapcsolatos gyakori kérdésekre.
+Ez a szakasz tartalmazza az Import/Export szolgáltatás – gyakori kérdések.
 
-* [Milyen árképzési tiers használhatja az Import/Export?](#what-pricing-tiers-can-use-importexport)
-* [Szeretnék adatokat importálhat a Redis-kiszolgáló?](#can-i-import-data-from-any-redis-server)
-* [Milyen Rekordadatbázis verziók lehet importálni?](#what-rdb-versions-can-i-import)
-* [A gyorsítótár érhető el az importálási/exportálási művelet közben?](#is-my-cache-available-during-an-importexport-operation)
-* [Használhatok Import/Export Redis-fürt?](#can-i-use-importexport-with-redis-cluster)
-* [Hogyan működik a Import/Export beállítása egy egyéni adatbázisok?](#how-does-importexport-work-with-a-custom-databases-setting)
-* [Miben különbözik Import/Export Redis-adatmegőrzés?](#how-is-importexport-different-from-redis-persistence)
-* [Automatizálható a PowerShell, a parancssori felületen vagy a más felügyeleti ügyfelek Import/Export?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
-* [Időtúllépési hiba érkezett a importálási/exportálási művelet közben. Mit jelent?](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
-* [Hiba történt az adatok Azure Blob Storage exportálásakor jelent. mi történt?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
+* [Milyen díjszabási szint esetében használhatja az importálási/exportálási?](#what-pricing-tiers-can-use-importexport)
+* [E importálhat adatokat bármely Redis-kiszolgáló?](#can-i-import-data-from-any-redis-server)
+* [RDB-fájlba való verziók is importálhat?](#what-rdb-versions-can-i-import)
+* [A gyorsítótár érhető el az importálási/exportálási művelet során?](#is-my-cache-available-during-an-importexport-operation)
+* [Használható Redis-fürttel az importálási/exportálási?](#can-i-use-importexport-with-redis-cluster)
+* [Hogyan működik a importálási/exportálási beállítása egy egyéni adatbázisok?](#how-does-importexport-work-with-a-custom-databases-setting)
+* [Miben különbözik importálási/exportálási Redis megőrzési funkciója?](#how-is-importexport-different-from-redis-persistence)
+* [Automatizálhatja a PowerShell, a parancssori felület vagy a más felügyeleti ügyfelek importálási/exportálási?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
+* [Az importálási/exportálási művelet során időtúllépési hiba kapott. Mit jelent?](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
+* [Az Azure Blob Storage-adatok exportálásakor hibaüzenetet kapok. mi történt?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
 
-### <a name="what-pricing-tiers-can-use-importexport"></a>Milyen árképzési tiers használhatja az Import/Export?
-Importálási/exportálási csak a prémium tarifacsomag érhető el.
+### <a name="what-pricing-tiers-can-use-importexport"></a>Milyen díjszabási szint esetében használhatja az importálási/exportálási?
+Importálási/exportálási csak a prémium tarifacsomagban érhető el.
 
-### <a name="can-i-import-data-from-any-redis-server"></a>Szeretnék adatokat importálhat a Redis-kiszolgáló?
-Igen, mellett az Azure Redis Cache példány exportált adatok importálása, importálhatja Rekordadatbázis fájlok bármely Redis-t futtató kiszolgáló összes felhő vagy a környezetben, például a Linux, Windows, a és felhőalapú szolgáltatók például az Amazon Web Services. Ehhez a kívánt Redis-kiszolgáló Rekordadatbázis a fájl feltöltése be egy Azure Storage-fiókban lévő lapot vagy blokk blob, és importálja azt a premium Azure Redis Cache példány. Érdemes lehet például az adatok exportálása az éles gyorsítótárból, és importálja a fájlt egy tesztelési, illetve áttelepítési egy átmeneti környezet részeként használt gyorsítótár.
+### <a name="can-i-import-data-from-any-redis-server"></a>E importálhat adatokat bármely Redis-kiszolgáló?
+Igen, mellett az Azure Redis Cache-példány-ból exportált adatok importálása is RDB-fájlok importálása a minden futó bármilyen felhőben vagy a környezetben, például a Linux, Windows, a Redis-kiszolgálóról, vagy a felhőbeli szolgáltatók, például az Amazon Web Services. Ehhez a kívánt kiszolgálóról Redis RDB-fájlba feltöltése stránka nebo Blok a blobok Azure Storage-fiókban, és importálja azt a prémium szintű Azure Redis Cache-példányhoz. Például előfordulhat, hogy szeretné az adatok exportálása az éles gyorsítótárból, és importálja azt a tesztelési vagy az áttelepítés során egy átmeneti környezetben használt gyorsítótár.
 
 > [!IMPORTANT]
-> Oldalakra vonatkozó blob használatakor eltérő Azure Redis Cache Redis-kiszolgálóról exportált adatokat importálni, a blob mérete 512 bájtos határra kell beállítani. Mintakód bármely szükséges bájt kitöltési végrehajtására, lásd: [minta lap blog feltöltéséhez](https://github.com/JimRoberts-MS/SamplePageBlobUpload).
+> Sikeresen importálni a Redis-kiszolgálók eltérő Azure Redis Cache egy lapblob használatakor exportált adatok, lapblob méretét egy 512 bájtos határhoz meg kell igazítani. A mintakódot, bármilyen szükséges bájt kitöltés végrehajtásához, lásd: [minta lap blob feltöltése](https://github.com/JimRoberts-MS/SamplePageBlobUpload).
 > 
 > 
 
-### <a name="what-rdb-versions-can-i-import"></a>Milyen Rekordadatbázis verziók lehet importálni?
+### <a name="what-rdb-versions-can-i-import"></a>RDB-fájlba való verziók is importálhat?
 
-Azure Redis Cache Rekordadatbázis importálási legfeljebb 7-es verzió Rekordadatbázis keresztül támogat.
+Az Azure Redis Cache RDB-fájlból való importálása be keresztül RDB 7-es verzió támogatja.
 
-### <a name="is-my-cache-available-during-an-importexport-operation"></a>A gyorsítótár érhető el az importálási/exportálási művelet közben?
-* **Exportálás** - gyorsítótárak elérhetők maradnak, és továbbra is a gyorsítótár használata az exportálási művelet során.
-* **Importálás** - gyorsítótárak elérhetetlenné válik, az importálási művelet indításakor, és az importálási művelet befejeződésekor elérhető lesz.
+### <a name="is-my-cache-available-during-an-importexport-operation"></a>A gyorsítótár érhető el az importálási/exportálási művelet során?
+* **Exportálás** - gyorsítótárak is elérhető marad, és továbbra is használja a gyorsítótár-exportálási művelet során.
+* **Importálása** - gyorsítótárak elérhetetlenné válnak, amikor az importálási művelet elindulása és az importálási művelet befejeződésekor elérhető lesz.
 
-### <a name="can-i-use-importexport-with-redis-cluster"></a>Használhatok Import/Export Redis-fürt?
-Igen, és akkor is importálási/exportálási egy fürtözött gyorsítótár és egy nem fürtözött gyorsítótár között. A Redis-fürt óta [csak által támogatott adatbázis-0](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering), egyetlen megadott adattal sem adatbázisok 0 kivételével nincs importálva. Fürtözött gyorsítótár-adatok importálása, a kulcsok terjeszti a szilánkok a fürt között.
+### <a name="can-i-use-importexport-with-redis-cluster"></a>Használható Redis-fürttel az importálási/exportálási?
+Igen, és meg is importálási-exportálási fürtözött gyorsítótár és a egy nem fürtözött gyorsítótár között. Redis-fürttel óta [csak támogatja az adatbázis-0](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering), a 0 kivételével adatbázisokban adatokat nem importálja. Fürtözött gyorsítótárazott adatok importálásakor a kulcsokat a fürt a szegmensek között terjeszti.
 
-### <a name="how-does-importexport-work-with-a-custom-databases-setting"></a>Hogyan működik a Import/Export beállítása egy egyéni adatbázisok?
-Különböző tartalmaznak az egyes tarifacsomagok [korlátok adatbázisok](cache-configure.md#databases), úgy, hogy nincs szempontokat importálásakor, ha konfigurálta az egyéni értékét a `databases` beállítása a gyorsítótár létrehozása közben.
+### <a name="how-does-importexport-work-with-a-custom-databases-setting"></a>Hogyan működik a importálási/exportálási beállítása egy egyéni adatbázisok?
+Egyes tarifacsomagok rendelkezik másik [adatbázisok korlátai](cache-configure.md#databases), így nincsenek néhány szempontot, ha konfigurálta az egyéni értéket importálásakor a `databases` beállítása gyorsítótár létrehozása során.
 
-* A tarifacsomag alsó importálásakor `databases` a réteget, ahol az exportált határa:
-  * Alapértelmezett számának használata `databases`, amely az összes tarifacsomagok 16, adatok nem vesztek el.
-  * Ha egyéni számos használ `databases` adott esik a határokon belül a réteget, amelyhez importál, az adatok nem vesztek el.
-  * Ha az exportált adatok egy adatbázist, amely meghaladja a új réteg adatokat, a rendszer nem importálja ezeket magasabb adatbázisból származó adatok.
+* Az ennél alacsonyabb tarifacsomagra importálásakor `databases` az szinttel, amelyet exportált korlát:
+  * Ha használja az alapértelmezett száma `databases`, amely minden árképzési szint esetében 16, nem történik adatvesztés.
+  * Ha egyéni számos használ `databases` , hogy esik a határokon belül, amelyhez importál, a szint nem áll adat elveszett.
+  * Ha az exportált adatok egy adott adatbázisban, amely túllépi a korlátot, az új szinten, a rendszer nem importálja azokat magasabb adatbázisokból származó adatok.
 
-### <a name="how-is-importexport-different-from-redis-persistence"></a>Miben különbözik Import/Export Redis-adatmegőrzés?
-Azure Redis Cache adatmegőrzési lehetővé teszi a Redis Azure Storage-ban tárolt adatok megőrzéséhez. Adatmegőrzési konfigurálásakor az Azure Redis Cache Redis bináris formában lemezre egy konfigurálható biztonsági mentési gyakoriság alapján a Redis gyorsítótár pillanatkép továbbra is fennáll. Ha egy katasztrofális esemény történik, akkor az elsődleges és a replika-gyorsítótár, a gyorsítótárazott adatokat állítja automatikusan a legújabb pillanatkép. További információkért lásd: [konfigurálása prémium szintű Azure Redis Cache adatok megőrzését](cache-how-to-premium-persistence.md).
+### <a name="how-is-importexport-different-from-redis-persistence"></a>Miben különbözik importálási/exportálási Redis megőrzési funkciója?
+Az Azure Redis Cache megőrzése segítségével megőrizheti a Redis az Azure Storage-ban tárolt adatokkal. Adatmegőrzés be van állítva, ha az Azure Redis Cache a Redis cache a Redis bináris formátumot egy konfigurálható biztonsági mentési gyakoriság alapján lemezre pillanatképét továbbra is fennáll. Ha egy katasztrofális esemény történik, amely letiltja az elsődleges és replika gyorsítótár, a gyorsítótár adatainak visszaállítása használatával automatikusan a legutóbbi pillanatképet. További információkért lásd: [konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz adatmegőrzés](cache-how-to-premium-persistence.md).
 
-Importálás / exportálás lehetővé teszi az adatok, vagy az Azure Redis Cache exportálja. Biztonsági mentés konfigurálása, és nem visszaállítása a Redis-adatmegőrzés használatával.
+Importálás / exportálás lehetővé teszi, hogy adatokat visz vagy exportálása az Azure Redis Cache. Biztonsági mentés konfigurálása, és nem visszaállítás Redis megőrzési funkciója segítségével.
 
-### <a name="can-i-automate-importexport-using-powershell-cli-or-other-management-clients"></a>Automatizálható a PowerShell, a parancssori felületen vagy a más felügyeleti ügyfelek Import/Export?
-Igen, a PowerShell útmutatásért lásd: [importálása a Redis gyorsítótár](cache-howto-manage-redis-cache-powershell.md#to-import-a-redis-cache) és [exportálása a Redis gyorsítótár](cache-howto-manage-redis-cache-powershell.md#to-export-a-redis-cache).
+### <a name="can-i-automate-importexport-using-powershell-cli-or-other-management-clients"></a>Automatizálhatja a PowerShell, a parancssori felület vagy a más felügyeleti ügyfelek importálási/exportálási?
+Igen, PowerShell-Útmutató: [importálása a Redis Cache-gyorsítótárhoz](cache-howto-manage-redis-cache-powershell.md#to-import-a-redis-cache) és [exportálása egy Redis gyorsítótárhoz](cache-howto-manage-redis-cache-powershell.md#to-export-a-redis-cache).
 
-### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>Időtúllépési hiba érkezett a importálási/exportálási művelet közben. Mit jelent?
-Ha a számítógép a a **adatimportálás** vagy **exportálhatja az adatokat** panelen a művelet kezdeményezése előtt legfeljebb 15 perc, a következőhöz hasonló hibaüzenettel hibaüzenetet kap:
+### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>Az importálási/exportálási művelet során időtúllépési hiba kapott. Mit jelent?
+Ha, ha továbbra is a **adatimportálás** vagy **adatok exportálása** paneljén, mielőtt elindítaná a művelet hosszabb 15 perc, akkor megjelenik egy hibaüzenet a következő példához hasonló hibaüzenettel:
 
     The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
 
-Probléma megoldása, kezdeményezni az importálási vagy exportálási művelet előtt 15 perc telt el.
+A probléma megoldásához, kezdeményezni az importálási vagy exportálási művelet előtt 15 perccel eltelt.
 
-### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Hiba történt az adatok Azure Blob Storage exportálásakor jelent. mi történt?
-Exportálás csak Rekordadatbázis fájlokat tárolja a lapblobokat működik. Egyéb blob típusú jelenleg nem támogatottak, beleértve a blob storage-fiókok gyakran és ritkán használt rétegekkel. További információkért lásd: [Blob storage-fiókok](../storage/common/storage-account-options.md#blob-storage-accounts).
+### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Az Azure Blob Storage-adatok exportálásakor hibaüzenetet kapok. Mi történt?
+Exportálás csak lapblobként tárolt RDB-fájlok működik. Más blobtípusok jelenleg nem támogatottak, beleértve a blob storage-fiókok a gyakori és ritka elérésű szint használata mellett. További információkért lásd: [Blob storage-fiókok](../storage/common/storage-account-options.md#blob-storage-accounts).
 
 ## <a name="next-steps"></a>További lépések
-Megtudhatja, hogyan további premium gyorsítótár-funkciók használatára.
+Ismerje meg, hogyan használja a további prémiumszintű gyorsítótár funkcióival.
 
 * [Az Azure Redis Cache prémium szintjének bemutatása](cache-premium-tier-intro.md)    
 

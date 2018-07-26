@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Server-adatbázis biztonsági mentése |} A Microsoft Docs
-description: Ez az oktatóanyag azt ismerteti, az SQL Server biztonsági másolat az Azure-bA. A cikk azt is bemutatja, az SQL Server helyreállítása.
+title: Az Azure SQL Server-adatbázisok biztonsági mentése |} A Microsoft Docs
+description: Ez az oktatóanyag azt ismerteti, hogyan SQL Server biztonsági mentése az Azure-bA. A cikk azt is bemutatja, az SQL Server helyreállítása.
 services: backup
 documentationcenter: ''
 author: markgalioto
@@ -16,39 +16,41 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 249f473d7318051e0ce27bcc47a9fde080c4c8f6
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3d19b42e339e9776d0fdbbf7cfcfba07d69549ad
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160315"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249080"
 ---
-# <a name="back-up-sql-server-database-in-azure"></a>Az Azure-beli SQL Server-adatbázis biztonsági mentése
+# <a name="back-up-sql-server-databases-to-azure"></a>Biztonsági másolatot az SQL Server-adatbázisok
 
-Az SQL Server-adatbázisok olyan alacsony helyreállítási időkorlátot (RPO) és a hosszú távú megőrzés igénylő kritikus fontosságú számítási feladatokhoz. Az Azure Backup egy SQL Server biztonsági mentési megoldás, amely nulla infrastruktúrát igényel, ami azt jelenti, hogy nincs összetett biztonsági mentési kiszolgálóra, nem felügyeleti ügynök, vagy biztonsági mentési tár kezeléséhez biztosít. Az Azure Backup minden SQL Server-kiszolgálók vagy akár a különböző számítási feladatok lehetővé teszi az központi felügyelet, a biztonsági mentésekhez.
+Az SQL Server-adatbázisok olyan alacsony a helyreállításipont-célkitűzés (RPO) és hosszú távú megőrzés igénylő kritikus fontosságú számítási feladatokhoz. Az Azure Backup egy SQL Server biztonsági mentési megoldást biztosít, amely nulla infrastruktúrát igényel: nincs összetett biztonsági mentési kiszolgálóra, nem felügyeleti ügynök, és nincs biztonsági mentési tár kezelheti. Az Azure Backup lehetővé teszi az SQL Server, vagy akár a különböző számítási feladatokat futtató összes kiszolgáló központi felügyeletet, a biztonsági mentésekhez.
 
- Ez a cikk bemutatja:
+Ez a cikk bemutatja:
 
 > [!div class="checklist"]
-> * SQL Server biztonsági mentése az Azure-bA előfeltételei
-> * Létrehozhat és használhat egy Recovery Services-tároló
-> * Az SQL Server-adatbázis biztonsági mentések konfigurálása
-> * A helyreállítási pontok biztonsági mentése (vagy az adatmegőrzési) szabályzat beállítása
-> * Az adatbázis visszaállítása
+> * Az Előfeltételek biztonsági mentése egy SQL Server-példányt az Azure-bA.
+> * Hogyan hozhat létre és használhat egy Recovery Services-tárolót.
+> * Hogyan konfigurálhatja az SQL Server-adatbázis biztonsági másolatait.
+> * Hogyan állíthat be a helyreállítási pontok biztonsági mentése (vagy az adatmegőrzési) szabályzatokat.
+> * Hogyan állíthatja vissza az adatbázist.
 
-Ez a cikk az eljárások előtt rendelkeznie kell egy Azure-ban futó SQL Server. [Az SQL-Piactéri virtuális gépek segítségével gyorsan létrehozhat egy SQL Server](../sql-database/sql-database-get-started-portal.md).
+Az eljárások ebben a cikkben a Kezdés előtt rendelkeznie kell az Azure-ban futó SQL Server-példányt. [SQL-Piactéri virtuális gépek használatával gyorsan létrehozhat egy SQL Server-példány](../sql-database/sql-database-get-started-portal.md).
 
 ## <a name="public-preview-limitations"></a>Nyilvános előzetes verzió korlátozásai
 
-A következő elemeket az ismert korlátozás a nyilvános előzetes verzió.
+A következő elemek ismert korlátozások a nyilvános előzetes verzió:
 
-- Az SQL virtuális gép eléréséhez az Azure nyilvános IP-címek internetkapcsolatra van szükség. További részletekért lásd a szakasz [hálózati kapcsolatot](backup-azure-sql-database.md#establish-network-connectivity).
-- Egy Recovery Services-tároló legfeljebb 2000 SQL-adatbázisok védelme biztosítható. További SQL-adatbázisok külön Recovery Services-tárolóban kell tárolni.
-- [Elosztott rendelkezésre állási csoportok biztonsági mentési korlátozásokkal rendelkezik](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017).
-- Az SQL a feladatátvevő fürt példány (FCI) használata nem támogatott.
-- Az Azure portal segítségével konfigurálhatja az Azure Backup az SQL Server-adatbázisok védelmét. Azure PowerShell, CLI és REST API-k támogatása jelenleg nem áll rendelkezésre.
+- Az SQL virtuális gép (VM) az Azure nyilvános IP-címek eléréséhez internetkapcsolatra van szükség. További információkért lásd: [hálózati kapcsolatot](backup-azure-sql-database.md#establish-network-connectivity).
+- Egy Recovery Services-tároló legfeljebb 2000 SQL-adatbázisok védelmét. További SQL-adatbázisok külön Recovery Services-tárolóban kell tárolni.
+- [Elosztott rendelkezésre állási csoportok biztonsági mentései](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) korlátozások is érvényesek.
+- Az SQL Server mindig a Feladatátvevőfürt-példányokat (példányoktól) nem támogatottak.
+- Az Azure portal segítségével konfigurálhatja az Azure Backup az SQL Server-adatbázisok védelmét. Az Azure PowerShell, az Azure CLI és a REST API-k jelenleg nem támogatottak.
 
-## <a name="supported-azure-geos"></a>Az Azure helyeken támogatott
+## <a name="support-for-azure-geos"></a>Az Azure helyeken támogatása
+
+Az Azure Backup az alábbi geók esetében támogatott:
 
 - Délkelet-Ausztrália (ASE) 
 - Dél-Brazília (BRS)
@@ -59,10 +61,10 @@ A következő elemeket az ismert korlátozás a nyilvános előzetes verzió.
 - Kelet-Ausztrália (AE) 
 - USA keleti régiója (EUS)
 - USA 2. keleti régiója (EUS2)
-- Kelet-Japán (JPE)
-- Nyugat-Japán (JPW)
 - Közép-India (INC) 
 - Dél-India (INS)
+- Kelet-Japán (JPE)
+- Nyugat-Japán (JPW)
 - Korea középső régiója (KRC)
 - Korea déli régiója (KRS)
 - USA északi középső régiója (NCUS) 
@@ -71,417 +73,424 @@ A következő elemeket az ismert korlátozás a nyilvános előzetes verzió.
 - Délkelet-Ázsia (SEA)
 - Egyesült Királyság déli régiója (UKS) 
 - Egyesült Királyság nyugati régiója (UKW) 
+- USA nyugati középső régiója (WCUS)
 - Nyugat-Európa (WE) 
 - USA nyugati régiója (WUS)
-- USA nyugati középső régiója (WCUS)
 - USA 2. nyugati régiója (WUS 2) 
 
-## <a name="supported-operating-systems-and-versions-of-sql-server"></a>Támogatott operációs rendszerek és az SQL server verziói
+## <a name="support-for-operating-systems-and-sql-server-versions"></a>Operációs rendszerek és az SQL Server-verziók támogatása
 
-A következő operációs rendszerek támogatottak. SQL-piactér Azure-beli virtuális gépek és (Ha kézzel telepíti az SQL Server) nem marketplace-virtuális gépek támogatottak.
+Ez a szakasz ismerteti az Azure Backup támogatása az operációs rendszerek és az SQL Server verziójával. SQL-piactér Azure virtuális gépek és (Ha kézzel telepíti az SQL Server) nem Marketplace-virtuális gépek támogatottak.
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
 - Windows Server 2012
-- Windows Server 2012 R2
+- Windows Server 2012 R2
 - Windows Server 2016
 
 Linux jelenleg nem támogatott.
 
-### <a name="supported-versionseditions-of-sql-server"></a>Az SQL Server támogatott verziók és kiadások
+### <a name="supported-sql-server-versions-and-editions"></a>Támogatott SQL Server-verziók és kiadások
 
-- Az SQL 2012 Enterprise, Standard, Web, Developer, Express
-- SQL 2014 Enterprise, Standard, Web, Developer, Express
-- Az SQL 2016 Enterprise, Standard, Web, Developer, Express
-- SQL 2017 Enterprise, Standard, Web, Developer, Express
+- Az SQL Server 2012 Enterprise, Standard, Web, Developer, Express
+- Az SQL Server 2014 Enterprise, Standard, Web, Developer, Express
+- SQL Server 2016 Enterprise, Standard, Web, Developer, Express
+- Az SQL Server 2017 Enterprise, Standard, Web, Developer, Express
 
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="prerequisites-for-using-azure-backup-to-protect-sql-server"></a>Az SQL Server védelme az Azure Backup használatára vonatkozó Előfeltételek 
+Biztonsági másolatot készíteni az SQL Server-adatbázishoz, mielőtt a következőket ellenőrizze:
 
-Mielőtt készíthet biztonsági mentést az SQL Server-adatbázishoz, ellenőrizze az alábbi feltételek. :
-
-- Azonosítsa vagy [hozzon létre egy Recovery Services-tároló](backup-azure-sql-database.md#create-a-recovery-services-vault) az azonos régióban, vagy területi beállítás, a virtuális gép, SQL Server szoftvert futtatja.
-- [Ellenőrizze az engedélyeit a virtuális gépen](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) SQL-adatbázisok biztonsági mentéséhez szükséges.
-- [Az SQL virtuális gép rendelkezik hálózati kapcsolattal](backup-azure-sql-database.md#establish-network-connectivity).
+- Azonosítsa vagy [hozzon létre egy Recovery Services-tároló](backup-azure-sql-database.md#create-a-recovery-services-vault) ugyanabban a régióban vagy területi beállítás a virtuális gép, amelyen az SQL Server-példány is.
+- [Ellenőrizze az engedélyeit a virtuális gépen](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) , amely az SQL-adatbázisok biztonsági mentéséhez szükségesek.
+- Ellenőrizze, hogy a [SQL virtuális gép rendelkezik hálózati kapcsolattal](backup-azure-sql-database.md#establish-network-connectivity).
 
 > [!NOTE]
-> Az SQL Server-adatbázisok biztonsági mentéséhez egyszerre csak egy biztonsági mentési megoldás is rendelkezhet. A funkció használata előtt tiltsa le minden olyan egyéb SQL biztonsági mentési, más biztonsági mentések fog zavarja és sikertelen lesz. Engedélyezheti az Azure Backup IaaS virtuális gép mellett az SQL biztonsági mentése bármely konfliktus nélkül 
+> Az SQL Server-adatbázisok biztonsági mentése egyszerre csak egy biztonsági mentési megoldás is rendelkezhet. Tiltsa le a többi SQL biztonsági másolatainak; Ez a funkció használata előtt Ellenkező esetben a biztonsági mentések zavarja és sikertelen lesz. Engedélyezheti az Azure Backup IaaS virtuális gép együtt az SQL biztonsági mentése bármely konfliktus nélkül.
 >
 
-Ha ezek a feltételek vannak jelen a környezetében, folytassa a szakasz [SQL-adatbázis védelme érdekében a tároló konfigurálása](backup-azure-sql-database.md#configure-your-vault-to-protect-a-sql-database). Ha az Előfeltételek bármelyike nem léteznek, továbbra is a fejezet elolvasása.
+Ha ezek a feltételek vannak jelen a környezetében, továbbra is [konfigurálása SQL Server-adatbázisok biztonsági mentését](backup-azure-sql-database.md#configure-backup-for-sql-server-databases). Ha az Előfeltételek bármelyike még nem léteznek, olvassa tovább.
 
 
 ## <a name="establish-network-connectivity"></a>Hálózati kapcsolatok létrehozása
 
-Minden műveletre az SQL virtuális gép kapcsolatot kell létesítenie az Azure nyilvános IP-címeket. Az SQL virtuális gép műveletek (például az adatbázis, a biztonsági mentés konfigurálása, ütemezett biztonsági mentések, visszaállítás helyreállítási pontok, és így tovább) anélkül, hogy a nyilvános IP-címek való kapcsolódás sikertelen. Világos és egyértelmű utat nyújt a biztonsági mentések forgalmától használja az alábbi lehetőségek egyikét:
+Minden műveletre az SQL virtuális gép kapcsolatot kell létesítenie az Azure nyilvános IP-címeket. Az SQL virtuális gép műveleteit (adatbázis felderítése, például a biztonsági mentések konfigurálása, a biztonsági mentések ütemezéséhez, helyreállítási pontok visszaállítása és így tovább) anélkül, hogy a nyilvános IP-címek való kapcsolódás sikertelen. Világos és egyértelmű utat nyújt a biztonsági mentések forgalmától használja az alábbi lehetőségek egyikét:
 
-- Engedélyezett az Azure-adatközpont IP-tartományait – az engedélyezési listára az Azure datacenter IP-címtartományok, használja a [töltse le az IP-címtartományok és utasításokat center oldalán](https://www.microsoft.com/download/details.aspx?id=41653). 
-- Irányítaná a forgalmat a HTTP-proxykiszolgáló üzembe helyezése – egy SQL-adatbázis egy virtuális gép biztonsági, amikor a biztonsági mentési bővítményt a virtuális gép HTTPS API-k segítségével felügyeleti parancsokat küldjön az Azure Backup és az Azure Storage-adatok. A biztonsági mentési bővítményt, az Azure Active Directory (AAD) is használ. A biztonsági mentési bővítményt forgalom irányítása a ezek három szolgáltatást, a HTTP-proxyn keresztül a nyilvános internet-hozzáférés konfigurált csak összetevő, mert.
+- Engedélyezett az Azure-adatközpont IP-címtartományok: az engedélyezési listára az Azure adatközpont IP-címtartományait, használja a [letöltőközpontlapon az IP-címtartományok és utasításokat](https://www.microsoft.com/download/details.aspx?id=41653). 
+- HTTP-proxykiszolgáló üzembe forgalomirányítást: SQL-adatbázis, a virtuális gépek biztonsági mentésekor, a biztonsági mentési bővítményt a virtuális gépen a HTTPS API-k segítségével felügyeleti parancsokat küldjön az Azure Backup és az Azure Storage-adatok. A biztonsági mentési bővítményt, az Azure Active Directory (Azure AD) is használ. A biztonsági mentési bővítményt forgalom irányítása a ezek három szolgáltatást, a HTTP-proxyn keresztül. A bővítmény által az egyetlen olyan összetevő, amely konfigurálva van a nyilvános internet-hozzáférés.
 
-A választható lehetőségek terén érvényesíthető kompromisszumokat vannak: kezelhetőségi, részletes ellenőrzésére és költség.
+A kompromisszumot kínál a beállítások között a következők: kezelhetőségi, szabályozhatja és költségek.
 
 > [!NOTE]
->Az Azure Backup szolgáltatás címkék általános rendelkezésre állás szerint elérhetőnek kell lennie.
+> Az Azure Backup szolgáltatás címkék általános rendelkezésre állás szerint elérhetőnek kell lennie.
 >
 
-| Beállítás | Előnyök | Hátrányai |
+| Lehetőség | Előnyök | Hátrányai |
 | ------ | ---------- | ------------- |
-| Engedélyezett IP-cím-tartományok | További költségek nélkül. <br/> Nyissa meg a hozzáférést egy NSG-ben, használja a **Set-AzureNetworkSecurityRule** parancsmagot. | Összetett kezelhetők az érintett IP-címtartományok idővel változni. <br/>Az Azure storage nem csak a teljes hozzáférést biztosít.|
-| HTTP proxyk használatára   | Szabályozható a proxy a tároló URL-címek használata engedélyezett. <br/>Virtuális gépek internet egyetlen pont hozzáférés. <br/> Nem vonatkozik Azure IP-cím változik. | Virtuális gép futtatása a proxy szoftverhez további költségekkel. |
+| Engedélyezett IP-cím-tartományok | További költségek nélkül. <br/> Egy NSG-ben nyissa meg a hozzáférést, használja a **Set-AzureNetworkSecurityRule** parancsmagot. | Mivel az idővel módosítható az érintett IP-címtartományok kezelése bonyolult. <br/>Azure-ban, nem csak az Azure Storage teljes hozzáférést biztosít.|
+| HTTP proxyk használatára   | Szabályozható a proxy a tároló URL-címek használata engedélyezett. <br/>Virtuális gépek internet egyetlen pont hozzáférés. <br/> Nem vonatkozik Azure IP-cím változik. | Virtuális gépek futtatása a proxy szoftverhez további költség. |
 
-## <a name="set-permissions-for-non-marketplace-sql-vms"></a>-Marketplace SQL virtuális gépekre vonatkozó engedélyek beállítása
+## <a name="set-permissions-for-non-marketplace-sql-vms"></a>A nem Marketplace-en az SQL virtuális gépek engedélyeinek beállítása
 
-A biztonsági mentéshez egy virtuális gép Azure Backup igényel a **AzureBackupWindowsWorkload** bővítményt lehet telepíteni. Ha az Azure marketplace virtuális gépeket használ, lépjen tovább [Fedezze fel az SQL server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases). Ha az SQL-adatbázisokat üzemeltető virtuális gép nem jött létre az Azure marketplace-ről, hajtsa végre a telepítse a bővítményt, és a megfelelő engedélyek beállítása a következő szakaszt. Mellett a **AzureBackupWindowsWorkload** bővítmény, az Azure Backup SQL-rendszergazdai jogosultságokkal az SQL-adatbázisok védelméhez szükséges. A virtuális gépen adatbázisok felderítéséhez, miközben az Azure Backup-fiók, NT Service\AzureWLBackupPluginSvc hoz létre. Az Azure Backup SQL-adatbázisok felderítéséhez, a NT Service\AzureWLBackupPluginSvc fióknak rendelkeznie kell az SQL és az SQL rendszergazdai jogosultságokkal. Az alábbi eljárás ismerteti ezen engedélyek megadása.
+A biztonsági mentéshez egy virtuális gép Azure Backup igényel a **AzureBackupWindowsWorkload** kiterjesztéssel kell telepíteni. Ha Azure Marketplace virtuális gépekhez használja, továbbra is [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases). Ha a virtuális gép, amelyen az SQL-adatbázisok nem hozott létre az Azure Marketplace-ről, a következő eljárással telepítse a bővítményt, és a megfelelő engedélyek beállítása. Mellett a **AzureBackupWindowsWorkload** bővítmény, az Azure Backup SQL-rendszergazdai jogosultságokkal az SQL-adatbázisok védelméhez szükséges. A virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT Service\AzureWLBackupPluginSvc**. Az Azure Backup SQL-adatbázisok felderítéséhez a **NT Service\AzureWLBackupPluginSvc** fióknak rendelkeznie kell az SQL és az SQL rendszergazdai jogosultságokkal. Az alábbi eljárás ismerteti ezen engedélyek megadása.
 
 Engedélyek beállítása:
 
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a Recovery Services-tároló használata SQL-adatbázisok védelmét.
-2. A tároló irányítópultos menüjében kattintson **+ biztonsági mentés** megnyitásához a **biztonsági mentés célja** menü.
+1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a Recovery Services-tároló, amellyel az SQL-adatbázisok védelmét.
 
-   ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/open-backup-menu.png)
+2. Az a **Recovery Services-tároló** irányítópulton válassza **Backup**. A **biztonsági mentés célja** menü megnyitása.
 
-3. Az a **biztonsági mentés célja** menüben, a a **a számítási feladat futtató?** menüben hagyja **Azure** alapértelmezés szerint.
+   ![A biztonsági mentés célja menüben nyissa meg a biztonsági másolat kiválasztása](./media/backup-azure-sql-database/open-backup-menu.png)
 
-4. Az a **miről szeretne biztonsági másolatot készíteni** menüben bontsa ki a legördülő menüből, és válassza ki **az SQL Server Azure virtuális gép**.
+3. Az a **biztonsági mentés célja** menüben beállítása **a számítási feladat futtató** alapértelmezett: **Azure**.
 
-    ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
+4. Bontsa ki a **miről szeretne biztonsági másolatot készíteni** legördülő listát, és válassza ki **az SQL Server Azure virtuális gép**.
 
-    A **biztonsági mentés célja** menüben megjelenik a két új lépések: **virtuális gépeken lévő adatbázisok felderítése** és **biztonsági mentés konfigurálása**. **Fedezze fel a virtuális gépeken lévő adatbázisok** elindítja az Azure-beli virtuális gépek a keresést.
+    ![Válassza ki az SQL Server Azure-beli virtuális gépen a biztonsági mentés](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    ![Az új biztonsági mentési cél lépéseit mutatja be](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
+    A **biztonsági mentés célja** menüben megjelenik a két lépést: **virtuális gépeken lévő adatbázisok felderítése** és **biztonsági mentés konfigurálása**. A **virtuális gépeken lévő adatbázisok felderítése** lépés elindít egy Azure-beli virtuális gépek keresése.
 
-5. Kattintson a **felderítés indítása lapra** az előfizetésben nem védett virtuális gépek kereséséhez. Az előfizetés nem védett virtuális gépek számától függően eltarthat egy ideig haladhat végig az összes virtuális gép.
+    ![Tekintse át a két biztonsági mentés célja lépéseit](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
-    ![Biztonsági mentés függőben](./media/backup-azure-sql-database/discovering-sql-databases.png)
+5. A **virtuális gépeken lévő adatbázisok felderítése**válassza **felderítés indítása lapra** , keresse meg az előfizetés nem védett virtuális gépek. Keresés az összes virtuális gépet egy ideig is eltarthat. A keresés időtartama attól függ, hogy az előfizetés nem védett virtuális gépek számát.
+
+    ![Biztonsági mentés függőben a virtuális gépeken lévő adatbázisok keresés közben](./media/backup-azure-sql-database/discovering-sql-databases.png)
  
-    Miután egy nem védett virtuális gép fel van derítve, megjelenik a listában. A virtuális gép nevére és erőforráscsoportjára csoport által nem védett virtuális gépek jelennek meg. Több virtuális gép neve megegyezik, lehetőség. Ugyanazzal a névvel rendelkező virtuális gépek azonban eltérő erőforráscsoportokban tartozik. Ha a virtuális gép várható nem jelenik meg a listában, tekintse meg, ha a virtuális gép már védett tárolóra.
+    Miután egy nem védett virtuális gép fel van derítve, megjelenik a listában. A virtuális gép nevére és erőforráscsoportjára csoport által nem védett virtuális gépek jelennek meg. Több virtuális gép neve megegyezik, lehetőség. Ugyanazzal a névvel rendelkező virtuális gépek azonban eltérő erőforráscsoportokban tartozik. Ha a virtuális gépek várt nincs felsorolva, tekintse meg, ha a virtuális gép már védett tárolóra.
 
-6. Virtuális gépek listájából válassza ki a virtuális gép, amely tartalmazza az SQL-adatbázis biztonsági mentése, és kattintson a kívánt **adatbázisok felderítése**. 
+6. A virtuális gépek listájából válassza ki a virtuális gép, amely rendelkezik az SQL-adatbázis biztonsági mentését, és válassza ki **adatbázisok felderítése**. 
 
-    A felderítési folyamat telepíti a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. A bővítmény lehetővé teszi, hogy a virtuális gép kommunikálni, ezért a biztonsági mentés az SQL-adatbázisok az Azure Backup szolgáltatással. Egyszer a bővítményt telepíti az Azure Backup a Windows virtuális szolgáltatás-fiókot hoz létre, **NT Service\AzureWLBackupPluginSvc**, a virtuális gépen. A virtuális szolgáltatásfiókot az SQL-rendszergazdai engedély szükséges. A szolgáltatás virtuális fiók telepítés során, ha a hibát látja **UserErrorSQLNoSysadminMembership**, tekintse meg a [kijavítása SQL-rendszergazdai engedélyekkel](backup-azure-sql-database.md#fixing-sql-sysadmin-permissions).
+    A felderítési folyamat telepíti a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. A bővítmény lehetővé teszi, hogy a virtuális gép kommunikálni, ezért a biztonsági mentés az SQL-adatbázisok az Azure Backup szolgáltatással. A bővítmény telepítése után az Azure Backup hoz létre a Windows virtuális szolgáltatásfiókot **NT Service\AzureWLBackupPluginSvc** a virtuális gépen. A virtuális szolgáltatásfiókot az SQL-rendszergazdai engedély szükséges. A virtuális fiók telepítés során, ha a hibaüzenet `UserErrorSQLNoSysadminMembership`, lásd: [javítsa ki az SQL-rendszergazdai jogosultságokkal](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
 
-    Az értesítések területen látható az adatbázis-felderítés előrehaladását. Attól függően, hány adatbázist használ a virtuális gép eltarthat egy ideig, amíg a feladat befejeződik. Kijelölt adatbázisok észlelt, amikor a sikert jelző üzenet jelenik meg.
+    A **értesítések** területen látható az adatbázis-felderítés előrehaladását. Eltarthat egy ideig, amíg a feladat befejeződik. A feladat idő attól függ, hány adatbázist vannak a virtuális gépen. A kijelölt adatbázisok észlelésekor megjelenik a sikert jelző üzenet.
 
-    ![sikeres üzembe helyezés értesítési üzenet](./media/backup-azure-sql-database/notifications-db-discovered.png)
+    ![Üzembe helyezés a sikert jelző üzenet](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-Miután társította az adatbázis a Recovery Services-tárolóval, a következő lépés az, hogy [a biztonsági mentés konfigurálása](backup-azure-sql-database.md#configure-your-vault-to-protect-a-sql-database).
+Miután társította az adatbázis a Recovery Services-tárolóval, a következő lépés az, hogy [a biztonsági mentési feladat konfigurálása](backup-azure-sql-database.md#configure-backup-for-sql-server-databases).
 
-### <a name="fixing-sql-sysadmin-permissions"></a>SQL-rendszergazdai engedélyek kijavítása
+### <a name="fix-sql-sysadmin-permissions"></a>Javítsa ki az SQL-rendszergazdai engedélyek
 
-A telepítés során, ha a hibát látja **UserErrorSQLNoSysadminMembership**, SQL-rendszergazdai engedélyekkel rendelkező fiók használatára, hogy jelentkezzen be az SQL Server Management Studio (SSMS). Ha nincs szükség speciális engedélyek, a Windows-hitelesítés működnie kell.
+A telepítés során, ha a hibaüzenet `UserErrorSQLNoSysadminMembership`, SQL Server SysAdmin (rendszergazda) engedélyekkel rendelkező fiók használatára, jelentkezzen be az SQL Server Management Studio (SSMS). Ha nincs szükség speciális engedélyek, a Windows-hitelesítés működnie kell.
 
-1. Nyissa meg az SQL Server, a **biztonsági/bejelentkezések** mappát.
+1. Az SQL-kiszolgálón nyissa meg a biztonsági/bejelentkezések mappát.
 
-    ![Nyissa meg az SQL Server és a biztonság és a bejelentkezési mappák fiókok megtekintéséhez.](./media/backup-azure-sql-database/security-login-list.png)
+    ![Nyissa meg a biztonsági/bejelentkezések mappában a fiókok](./media/backup-azure-sql-database/security-login-list.png)
 
-2. A bejelentkezések mappára, kattintson a jobb gombbal, és válassza ki **új bejelentkezés**, és a bejelentkezés – új párbeszédpanel, kattintson a **keresése**
+2. Kattintson a jobb gombbal a bejelentkezések mappát, és válassza ki **új bejelentkezés**. Az a **bejelentkezés – új** párbeszédpanelen jelölje ki **keresési**.
 
-    ![Keresés a bejelentkezés – új párbeszédpanel megnyitásához.](./media/backup-azure-sql-database/new-login-search.png)
+    ![A bejelentkezés – új párbeszédpanel, válassza ki a keresés](./media/backup-azure-sql-database/new-login-search.png)
 
-3. A Windows virtuális szolgáltatásfiókot, mert **NT Service\AzureWLBackupPluginSvc** már megtörtént a virtuális gép regisztrációja és SQL felderítési fázis során létrehozott, adja meg a fiók nevét, ahogyan megjelenik az  **Írja be a kijelölendő objektum nevét** párbeszédpanel. Kattintson a **Névellenőrzés** oldani a nevet. 
+3. A virtuális Windows-szolgáltatásfiók **NT Service\AzureWLBackupPluginSvc** a virtuális gép regisztrációja és SQL felderítési fázis során jött létre. Adja meg a fiók nevét, ahogyan az a **írja be a kijelölendő objektum nevét** mezőbe. Válassza ki **Névellenőrzés** oldani a nevet. 
 
-    ![Nevek ellenőrzése gombra kattintva a ismeretlen szolgáltatás név feloldása](./media/backup-azure-sql-database/check-name.png)
+    ![Válassza ki a szolgáltatás ismeretlen név Névellenőrzés](./media/backup-azure-sql-database/check-name.png)
 
-4. Kattintson a **OK** a felhasználó vagy csoport kiválasztása párbeszédpanel bezárásához.
+4. Válassza ki **OK** a párbeszédpanel bezárásához.
 
-5. Az a **kiszolgálói szerepkörök** párbeszédpanelen győződjön meg arról, hogy a **SysAdmin (rendszergazda)** szerepkör van kiválasztva. Kattintson a **OK** bezárásához **bejelentkezés – új**.
+5. Az a **kiszolgálói szerepkörök** mezőbe, ellenőrizze, hogy a **SysAdmin (rendszergazda)** szerepkör van kiválasztva. Válassza ki **OK** a párbeszédpanel bezárásához.
 
     ![Győződjön meg arról, hogy a sysadmin (rendszergazda) kiszolgálói szerepkör van kiválasztva](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
     A szükséges engedélyekkel most már léteznie kell.
 
-6. Bár az engedélyekkel kapcsolatos hibát kijavított, továbbra is szeretné az adatbázis társítani a Recovery Services-tároló. Az Azure Portalon **védett kiszolgálók** listában kattintson a jobb gombbal a kiszolgáló hibát, és válassza ki **adatbázisok újbóli felderítése**.
+6. Bár az engedélyekkel kapcsolatos hibát kijavított, kell az adatbázis társítani a Recovery Services-tároló. Az Azure Portalon az a **védett kiszolgálók** listában kattintson a jobb gombbal a kiszolgáló, amely a hibát az állami és válassza ki a **adatbázisok újbóli felderítése**.
 
-    ![Ellenőrizze a kiszolgáló rendelkezik a megfelelő engedélyekkel](./media/backup-azure-sql-database/check-erroneous-server.png)
+    ![Ellenőrizze a kiszolgáló rendelkezik-e megfelelő engedélyekkel](./media/backup-azure-sql-database/check-erroneous-server.png)
 
-    Az értesítések területen látható az adatbázis-felderítés előrehaladását. Attól függően, hány adatbázist használ a virtuális gép eltarthat egy ideig, amíg a feladat befejeződik. Amikor a kijelölt adatbázisok találhatók, a sikert jelző üzenet az értesítési területen jelenik meg.
+    A **értesítések** területen látható az adatbázis-felderítés előrehaladását. Eltarthat egy ideig, amíg a feladat befejeződik. A feladat idő attól függ, hány adatbázist vannak a virtuális gépen. A kijelölt adatbázisok találhatók, a sikert jelző üzenet jelenik meg.
 
-    ![sikeres üzembe helyezés értesítési üzenet](./media/backup-azure-sql-database/notifications-db-discovered.png)
+    ![Üzembe helyezés a sikert jelző üzenet](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-Miután társította az adatbázis a Recovery Services-tárolóval, a következő lépés az, hogy [a biztonsági mentés konfigurálása](backup-azure-sql-database.md#configure-your-vault-to-protect-a-sql-database).
+Miután társította az adatbázis a Recovery Services-tárolóval, a következő lépés az, hogy [a biztonsági mentési feladat konfigurálása](backup-azure-sql-database.md#configure-backup-for-sql-server-databases).
 
-[!INCLUDE [Section explaining how to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-sql-server-databases"></a>Az SQL Server-adatbázisok felderítése
 
-Az Azure Backup egy SQL Server-példány összes adatbázisára képes felderíteni, így azok a biztonsági mentési igényeknek is védelme. Az alábbi eljárás segítségével azonosítja a virtuális gépet, az SQL-adatbázisok üzemeltetéséhez. Miután azonosította a virtuális gépet, az Azure Backup egy egyszerűsített bővítmény, amely az SQL server-adatbázisok felderítése telepíti.
+Az Azure Backup felderíti az összes adatbázis egy SQL Server-példányon. Az adatbázisok védheti meg a biztonsági mentés követelményeinek megfelelően. Az alábbi eljárás segítségével azonosítsa a virtuális gép, amelyen az SQL-adatbázisokat. Miután meghatározta a virtuális gépet, az Azure Backup telepíti egy egyszerűsített bővítmény, amely az SQL Server-adatbázisok felderítéséhez.
 
 1. Jelentkezzen be az előfizetését a [az Azure portal](https://portal.azure.com/).
+
 2. A bal oldali menüben válassza ki a **minden szolgáltatás**.
 
-    ![Az összes szolgáltatás lehetőséget a főmenü](./media/backup-azure-sql-database/click-all-services.png) <br/>
+    ![Válassza ki az összes szolgáltatás](./media/backup-azure-sql-database/click-all-services.png) <br/>
 
-3. Az összes szolgáltatás párbeszédpanelen írja be a *Recovery Services*. Ahogy elkezd gépelni, a bemeneti szűri az erőforrások listájában. Ha azt látja, válassza ki a **Recovery Services-tárolók**.
+3. Az a **minden szolgáltatás** párbeszédpanelen adja meg **Recovery Services**. Írja be, mert a bemeneti szűri az erőforrások listájában. Válassza ki **Recovery Services-tárolók** a listában.
 
-    ![Az összes szolgáltatások párbeszédpanelen írja be a Recovery Services](./media/backup-azure-sql-database/all-services.png) <br/>
+    ![Adja meg, és válassza ki a Recovery Services-tárolók](./media/backup-azure-sql-database/all-services.png) <br/>
 
     Az előfizetés Recovery Services-tárolók listája megjelenik. 
 
-4. A Recovery Services-tároló listából válassza ki a tárolót, az SQL-adatbázisok védelméhez használni kívánt.
+4. A Recovery Services-tárolók listájában válassza ki a tároló SQL-adatbázisok védelmét.
 
-5. A tároló irányítópultos menüjében kattintson **+ biztonsági mentés** megnyitásához a **biztonsági mentés célja** menü.
+5. Az a **Recovery Services-tároló** irányítópulton válassza **Backup**. A **biztonsági mentés célja** menü megnyitása.
 
-   ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/open-backup-menu.png)
+   ![A biztonsági mentés célja menüben nyissa meg a biztonsági másolat kiválasztása](./media/backup-azure-sql-database/open-backup-menu.png)
 
-6. Az a **biztonsági mentés célja** menüben, a a **a számítási feladat futtató?** menüben hagyja **Azure** alapértelmezés szerint.
+6. Az a **biztonsági mentés célja** menüben beállítása **a számítási feladat futtató** alapértelmezett: **Azure**.
 
-7. Az a **miről szeretne biztonsági másolatot készíteni** menüben bontsa ki a legördülő menüből, és válassza ki **az SQL Server Azure virtuális gép**.
+7. Bontsa ki a **választható biztonsági mentéséhez** legördülő listát, és válassza ki **az SQL Server Azure virtuális gép**.
 
-    ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
+    ![Válassza ki az SQL Server Azure-beli virtuális gépen a biztonsági mentés](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    Miután választott, a **biztonsági mentés célja** menüben megjelenik a két lépést: adatbázisok felderítése a virtuális gépek és a biztonsági mentés konfigurálása. 
+    A **biztonsági mentés célja** menüben megjelenik a két lépést: **virtuális gépeken lévő adatbázisok felderítése** és **biztonsági mentés konfigurálása**.
+    
+    ![Tekintse át a két biztonsági mentés célja lépéseit](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
-    ![Az új biztonsági mentési cél lépéseit mutatja be](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
+8. A **virtuális gépeken lévő adatbázisok felderítése**válassza **felderítés indítása lapra** , keresse meg az előfizetés nem védett virtuális gépek. Eltarthat egy ideig át a virtuális gépek számát. A keresés időtartama attól függ, hogy az előfizetés nem védett virtuális gépek számát.
 
-8. Kattintson a **felderítés indítása lapra** az előfizetésben nem védett virtuális gépek kereséséhez. Az előfizetés nem védett virtuális gépek számától függően eltarthat egy ideig haladhat végig az összes virtuális gép.
-
-    ![Biztonsági mentés függőben](./media/backup-azure-sql-database/discovering-sql-databases.png)
+    ![Biztonsági mentés függőben a virtuális gépeken lévő adatbázisok keresés közben](./media/backup-azure-sql-database/discovering-sql-databases.png)
  
-    Miután egy nem védett virtuális gép fel van derítve, megjelenik a listában. Több virtuális gép rendelkezhet ugyanazzal a névvel. Ezzel a névvel több virtuális gépek azonban eltérő erőforráscsoportokban tartozik. A nem védett virtuális gépek a virtuális gép nevére és erőforráscsoportjára csoport alapján vannak listázva. Ha a virtuális gépek várt nincs felsorolva, tekintse meg, ha a virtuális gép már védett tárolóra.
+    Miután egy nem védett virtuális gép fel van derítve, megjelenik a listában. Több virtuális gép rendelkezhet ugyanazzal a névvel. Ugyanazzal a névvel rendelkező virtuális gépek azonban eltérő erőforráscsoportokban tartozik. A virtuális gép nevére és erőforráscsoportjára csoport által nem védett virtuális gépek jelennek meg. Ha virtuális gépek várt nincs felsorolva, tekintse meg, ha a virtuális gép már védett tárolóra.
 
-9. Virtuális gépek listájából válassza ki a jelölőnégyzetet a virtuális gép, amely tartalmazza az SQL-adatbázisok védelmét, és kattintson a kívánt **adatbázisok felderítése**.
+9. A virtuális gépek listájából válassza ki a virtuális gép, amely rendelkezik az SQL-adatbázis biztonsági mentését, és válassza ki **adatbázisok felderítése**.
 
-    Az Azure Backup a virtuális gép összes SQL-adatbázisok deríti fel. Mi történik az adatbázis-felderítési fázis során kapcsolatos információkért tekintse meg a következő szakaszban [háttérbeli műveletek során az SQL Database-adatbázisok felderítéséhez](backup-azure-sql-database.md#backend-operations-when-discovering-sql-databases). Az SQL-adatbázisok felderítéséhez, után készen áll [a biztonsági mentési feladat konfigurálása](backup-azure-sql-database.md#configure-your-vault-to-protect-a-sql-database).
+    Az Azure Backup a virtuális gép összes SQL-adatbázisok deríti fel. Mi történik az adatbázis-felderítési fázis során kapcsolatos információkért lásd: [háttér-műveletek](backup-azure-sql-database.md#background-operations). Az SQL-adatbázisok a felderítésüket követően készen áll [a biztonsági mentési feladat konfigurálása](backup-azure-sql-database.md#configure-backup-for-sql-server-databases).
 
-### <a name="backend-operations-when-discovering-sql-databases"></a>Háttérbeli műveletek során az SQL Database-adatbázisok felderítése
+### <a name="background-operations"></a>Háttérbeli műveletek
 
 Ha a **adatbázisok felderítése** eszközt, az Azure Backup a háttérben hajtja végre a következő műveleteket:
 
-- regisztrálja a virtuális gép számítási feladatok biztonsági mentés a Recovery Services-tárolót. A regisztrált virtuális gép minden adatbázis csak biztonsági mentésre alkalmas, a Recovery Services-tárolót. 
+- Regisztrálja a virtuális gép számítási feladatok biztonsági mentés a Recovery Services-tárolót. A regisztrált virtuális gép összes adatbázis biztonsági mentésre alkalmas, csak a Recovery Services-tárolót. 
 
-- telepíti a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. Egy SQL-adatbázis biztonsági mentése nem egy ügynök nélküli megoldás, az azt jelenti, a bővítményt a virtuális gépre telepíteni, a nincs ügynök van telepítve az SQL Database.
+- Telepítse a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. Készítsen biztonsági másolatot egy SQL database egy ügynök nélküli kivételfigyelés megoldás is. A bővítmény telepítve van a virtuális gépen, és az SQL-adatbázis nincs ügynök telepítve.
 
-- a szolgáltatás-fiókot hoz létre **NT Service\AzureWLBackupPluginSvc**, a virtuális gépen. Minden biztonsági mentési és visszaállítási műveletek service fiókot használja. **NT Service\AzureWLBackupPluginSvc** SQL-rendszergazdai engedélyekre van szüksége. Az összes SQL-Piactéri virtuális gépek kapható a SqlIaaSExtension telepítve van, és AzureBackupWindowsWorkload SQLIaaSExtension használja a szükséges engedélyek automatikus beszerzéséhez. Ha a virtuális gép nem rendelkezik telepített SqlIaaSExtension, az adatbázis felderítése művelet meghiúsul, és a hibaüzenet jelenik meg, **UserErrorSQLNoSysAdminMembership**. Biztonsági mentés a sysadmin (rendszergazda) engedéllyel hozzáadásához kövesse a [SQL nem marketplace-beli virtuális gépek az Azure biztonsági mentési engedélyek beállítása](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms).
+- A szolgáltatásfiók létrehozása **NT Service\AzureWLBackupPluginSvc** a virtuális gépen. Minden biztonsági mentési és visszaállítási műveletek service fiókot használja. **NT Service\AzureWLBackupPluginSvc** SQL-rendszergazdai engedélyekre van szüksége. Az összes SQL-Piactéri virtuális gépek rendelkeznek az **SqlIaaSExtension** telepítve. A **AzureBackupWindowsWorkload** kiterjesztést használja a **SQLIaaSExtension** a szükséges engedélyek automatikus beszerzéséhez. Ha a virtuális gép nem rendelkezik a **SqlIaaSExtension** telepítve van, az adatbázis felderítése művelet meghiúsul, a hibaüzenet `UserErrorSQLNoSysAdminMembership`. Biztonsági mentés a sysadmin (rendszergazda) engedéllyel hozzáadásához kövesse a [beállítása az Azure biztonsági mentési engedélyek esetében nem Marketplace-en az SQL virtuális gépek](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms).
 
     ![Válassza ki a virtuális gép és az adatbázis](./media/backup-azure-sql-database/registration-errors.png)
 
-## <a name="configure-backup-for-sql-server-database"></a>SQL Server-adatbázis biztonsági mentésének konfigurálása
+## <a name="configure-backup-for-sql-server-databases"></a>SQL Server-adatbázisok biztonsági mentés konfigurálása 
 
-Az Azure Backup az SQL Server-adatbázisok védelmét és biztonsági mentési feladatok kezelése a felügyeleti szolgáltatásokat biztosít. A felügyeleti és monitorozási képességeket függ a Recovery Services-tárolóba. 
+Az Azure Backup az SQL Server-adatbázisok védelmét és biztonsági mentési feladatok kezelése a felügyeleti szolgáltatásokat biztosít. A felügyeleti és monitorozási feladatokat függ a Recovery Services-tárolóba. 
 
 > [!NOTE]
-> Az SQL Server-adatbázisok biztonsági mentéséhez egyszerre csak egy biztonsági mentési megoldás is rendelkezhet. A funkció használata előtt tiltsa le minden olyan egyéb SQL biztonsági mentési, más biztonsági mentések fog zavarja és sikertelen lesz. Engedélyezheti az Azure Backup IaaS virtuális gép mellett az SQL biztonsági mentése bármely konfliktus nélkül 
+> Az SQL Server-adatbázisok biztonsági mentése egyszerre csak egy biztonsági mentési megoldás is rendelkezhet. Tiltsa le a többi SQL biztonsági másolatainak; Ez a funkció használata előtt Ellenkező esetben a biztonsági mentések zavarja és sikertelen lesz. Engedélyezheti az Azure Backup IaaS virtuális gép együtt az SQL biztonsági mentése bármely konfliktus nélkül.
 >
 
-Az SQL-adatbázis védelmének konfigurálása:
+SQL-adatbázis védelmének konfigurálása:
 
-1. Nyissa meg a helyreállítási tár regisztrálva van az SQL virtuális gép.
+1. Nyissa meg a Recovery Services-tároló, amely regisztrálva van az SQL virtuális gép.
 
-2. A tároló irányítópultos menüjében kattintson **+ biztonsági mentés** megnyitásához a **biztonsági mentés célja** menü.
+2. Az a **Recovery Services-tároló** irányítópulton válassza **Backup**. A **biztonsági mentés célja** menü megnyitása.
 
-    ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/open-backup-menu.png)
+   ![A biztonsági mentés célja menüben nyissa meg a biztonsági másolat kiválasztása](./media/backup-azure-sql-database/open-backup-menu.png)
 
-3. Az a **biztonsági mentés célja** menüben, a a **a számítási feladat futtató?** menüben hagyja **Azure** alapértelmezés szerint.
+3. Az a **biztonsági mentés célja** menüben beállítása **a számítási feladat futtató** alapértelmezett: **Azure**.
 
-4. Az a **miről szeretne biztonsági másolatot készíteni** menüben bontsa ki a legördülő menüből, és válassza ki **az SQL Server Azure virtuális gép**.
+4. Bontsa ki a **választható biztonsági mentéséhez** legördülő listát, és válassza ki **az SQL Server Azure virtuális gép**.
 
-    ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
+    ![Válassza ki az SQL Server Azure-beli virtuális gépen a biztonsági mentés](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    Miután választott, a **biztonsági mentés célja** menüben megjelenik a két lépést: adatbázisok felderítése a virtuális gépek és a biztonsági mentés konfigurálása. Ha Ön a mintajelentéshez Ez a cikk ahhoz, a nem védett virtuális gépek már megismert, és a tár regisztrálva van a virtuális gép. Most már készen áll az SQL-adatbázisok védelmének konfigurálása.
+    A **biztonsági mentés célja** menüben megjelenik a két lépést: **virtuális gépeken lévő adatbázisok felderítése** és **biztonsági mentés konfigurálása**.
+    
+    Ha elvégezte a cikkben található lépések sorrendben, a nem védett virtuális gépek megismert, és a tár regisztrálva van a virtuális gépet. Most már készen áll az SQL-adatbázisok védelmének konfigurálása.
+    
+5. Az a **biztonsági mentés célja** menüjében válassza **biztonsági mentés konfigurálása**.
 
-5. A biztonsági mentés célja menüben kattintson a **biztonsági mentés konfigurálása**.
+    ![Válassza ki a biztonsági mentés konfigurálása](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-    ![Az új biztonsági mentési cél lépéseit mutatja be](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
-
-    Az Azure Backup szolgáltatás minden SQL Server-példányok az önálló adatbázisok, valamint az SQL AlwaysOn rendelkezésre állási csoportok jeleníti meg. Az SQL-példányhoz az önálló adatbázisok megtekintéséhez kattintson a sávnyílra a példány nevét, az adatbázisok megtekintése mellett. Az alábbi képeken példák egy különálló példány és a egy Always On rendelkezésre állási csoportban.
+    Az Azure Backup szolgáltatás minden SQL Server-példányokat az önálló adatbázisok és az SQL Server Always On rendelkezésre állási csoportok jeleníti meg. Az önálló adatbázisok az SQL Server-példány megtekintéséhez jelölje ki a sávnyílra bal oldalán a példány nevét. Az alábbi képeken példák egy különálló példány és a egy Always On rendelkezésre állási csoportban.
 
     > [!NOTE]
-    > Esetén az SQL Always On rendelkezésre állási csoport hogy az SQL biztonsági mentési preferenciáját fogadja el. De SQL platformkorlátozásai miatt teljes és különbségi biztonsági másolatok kell az elsődleges csomópontról történik. Naplóalapú biztonsági mentés a biztonsági mentési preferenciáját akkor fordulhat elő a rendszer. Ez a korlátozás miatt a rendelkezésre állási csoportokra vonatkozó mindig az elsődleges csomópont kell regisztrálni.
+    > Egy SQL Server Always On rendelkezésre állási csoport figyelembe véve az SQL biztonsági mentési preferenciáját. De SQL platformkorlátozásai miatt teljes és különbségi biztonsági másolatok kell az elsődleges csomópontról történik. Napló vissza akár a biztonsági mentési preferenciáját megfelelően történik. Ez a korlátozás miatt a rendelkezésre állási csoportokra vonatkozó mindig az elsődleges csomópont kell regisztrálni.
     >
 
-    ![SQL-példány szereplő adatbázisok listája](./media/backup-azure-sql-database/discovered-databases.png)
+    ![Az SQL-példány szereplő adatbázisok listája](./media/backup-azure-sql-database/discovered-databases.png)
 
-    Kattintson a sávnyílra mellett az AlwaysOn rendelkezésre állási csoportok az adatbázisok listájának megtekintéséhez.
+    Válassza ki a sávnyílra a bal oldalon, az Always On rendelkezésre állási csoport az adatbázisok listájának megtekintéséhez.
 
-    ![AlwaysOn rendelkezésre állási csoportban szereplő adatbázisok listája](./media/backup-azure-sql-database/discovered-database-availability-group.png)
+    ![Az Always On rendelkezésre állási csoportban szereplő adatbázisok listája](./media/backup-azure-sql-database/discovered-database-availability-group.png)
 
-6. Az adatbázisok a listából válassza ki az összes védeni, és kattintson a kívánt **OK**.
+6. Az adatbázisok listájában válassza ki az összes védeni, és válassza ki az adatbázisokat **OK**.
 
-    ![Válassza ki a védelmükhöz, több adatbázis](./media/backup-azure-sql-database/select-multiple-database-protection.png)
+    ![Válassza ki a több adatbázis védelme](./media/backup-azure-sql-database/select-multiple-database-protection.png)
 
-    Egyszerre legfeljebb 50 adatbázisok választhat. Ha azt szeretné, több mint 50 adatbázisok védelméhez, győződjön meg arról, több fázisban. Miután az első 50 adatbázist lát el védelemmel, ismételje meg ezt a lépést a következő set-adatbázisok védelmét.
+    Egyszerre legfeljebb 50 adatbázis kiválasztása Több mint 50 adatbázisok védelméhez, győződjön meg arról, több fázisban. Miután az első 50 adatbázist lát el védelemmel, ismételje meg ezt a lépést a következő set-adatbázisok védelmét.
+
     > [!Note] 
     > Biztonsági mentési terhelés optimalizálása érdekében az Azure Backup bontja nagy biztonsági mentési feladatok több köteg. Egy biztonsági mentési feladat adatbázisok maximális száma érték az 50.
     >
     >
 
-7. Létrehozásához vagy egy biztonsági mentési szabályzatot, válassza ki a **biztonsági mentési** menüjében válassza **biztonsági mentési szabályzat**, a menü megnyitásához.
+7. Hozzon létre vagy válassza ki a biztonsági mentési házirend, a a **biztonsági mentési** menüjében válassza **biztonsági mentési szabályzat**. A **biztonsági mentési szabályzat** menü megnyitása.
 
-    ![Válassza ki a biztonsági mentési házirend-beállítás](./media/backup-azure-sql-database/select-backup-policy.png)
+    ![Válassza ki a biztonsági mentési szabályzat](./media/backup-azure-sql-database/select-backup-policy.png)
 
-8. Az a **biztonsági mentési házirend kiválasztása** legördülő menüben válasszon egy biztonsági mentési szabályzatot, majd kattintson **OK**. A saját biztonsági mentési szabályzat létrehozásával kapcsolatos információkért lásd: a szakasz [biztonsági mentési házirend meghatározása](backup-azure-sql-database.md#define-a-backup-policy).
+8. Az a **biztonsági mentési házirend kiválasztása** legördülő listában válassza ki a biztonsági mentési szabályzatot, és válassza **OK**. Biztonsági mentési szabályzat létrehozásáról információért lásd: [biztonsági mentési házirend meghatározása](backup-azure-sql-database.md#define-a-backup-policy).
 
-    ![a legördülő menüből válassza ki a biztonsági mentési házirend](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
+    ![A biztonsági mentési szabályzat kiválasztása a listából](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
 
-    A biztonsági mentési szabályzat menüje a a **biztonsági mentési házirend kiválasztása** legördülő menüben kiválaszthatja: 
-    - az alapértelmezett HourlyLogBackup házirend 
-    - korábban létrehozott SQL, a meglévő biztonsági mentési házirend
-    - a [definiáljon egy új szabályzatot](backup-azure-sql-database.md#define-a-backup-policy) a helyreállításipont-célkitűzés (RPO) és a megőrzési tartomány alapján. 
+    Az a **biztonsági mentési szabályzat** menüben, a a **biztonsági mentési házirend kiválasztása** legördülő lista is: 
+    - Válassza ki az alapértelmezett házirend: **HourlyLogBackup**.
+    - Válassza ki a korábban létrehozott SQL meglévő biztonsági mentési házirend.
+    - [Adja meg egy új házirendet](backup-azure-sql-database.md#define-a-backup-policy) a helyreállítási Időkorlát és a megőrzési tartomány alapján. 
 
     > [!Note]
-    > Az Azure Backup támogatja a hosszú távú megőrzés alapján a nagyapa-apa-fiú biztonsági mentési sémát, és optimalizálhatja a háttérrendszer tárhelyhasználat megfelelőségi igények teljesítése közben.
+    > Az Azure Backup támogatja a hosszú távú megőrzése a nagyapa-apa-fiú biztonsági mentési rendszer alapján. A rendszer optimalizálja a háttér-tároló fogyasztása, miközben értekezlet megfelelőségi igényekkel.
     >
 
-9. Miután kiválasztotta a biztonsági mentési házirend, az a **biztonsági mentés menü** kattintson **biztonsági mentés engedélyezése**.
+9. A biztonsági mentési házirend kiválasztása után a **biztonsági mentés menü**válassza **biztonsági mentés engedélyezése**.
 
     ![a választott biztonsági mentési szabályzat engedélyezése](./media/backup-azure-sql-database/enable-backup-button.png)
 
-    A konfigurációs folyamatot a portálon értesítések területén követheti nyomon.
+    A konfigurációs folyamat nyomon a **értesítések** a portál területéhez.
 
-    ![értesítési terület megjelenítése](./media/backup-azure-sql-database/notifications-area.png)
+    ![Értesítési terület](./media/backup-azure-sql-database/notifications-area.png)
 
 
 ### <a name="define-a-backup-policy"></a>Biztonsági mentési szabályzat meghatározása
 
-Biztonsági mentési házirend egy mátrixot határoz meg, amikor a biztonsági másolatokat készít, és mennyi ideig megőrződnek, a biztonsági mentéseket. Azure Backup használatával háromféle SQL-adatbázisok biztonsági mentés ütemezése:
+Biztonsági mentési házirend egy mátrixot határoz meg, amikor a biztonsági másolatokat készít, és mennyi ideig tartott használ. Használja az Azure Backup három típusú SQL-adatbázisok biztonsági mentés ütemezése:
 
-* Teljes biztonsági mentés – teljes biztonsági mentés biztonsági másolatot készít a teljes adatbázisról. Egy teljes biztonsági mentés egy adott adatbázishoz, vagy a fájlok és fájlcsoportok lévő összes adatot, és elég log helyreállítani az adatokat tartalmazza. Legfeljebb napi egy teljes biztonsági mentés is indíthat. Ha szeretné igénybe vehet egy teljes biztonsági mentés napi vagy heti időközönként. 
-* Különbségi biztonsági másolat - különbözeti biztonsági mentése a legújabb, az előző teljes biztonsági mentését alapul. Különbözeti biztonsági mentése csak a teljes biztonsági mentés óta megváltozott adatokat rögzíti. Legfeljebb napi egy különbségi biztonsági mentés is indíthat. Az azonos napi egy teljes biztonsági mentés és a különbözeti biztonsági mentése nem konfigurálható.
-* Tranzakciónapló biztonsági mentését – a napló biztonsági mentését lehetővé teszi, hogy legfeljebb egy adott időpontban a visszaállítás a második. Egyszerre legfeljebb konfigurálhatja tranzakciós napló biztonsági mentés 15 percenként.
+* Teljes biztonsági mentés: teljes biztonsági mentés a teljes adatbázis biztonsági mentését. Egy teljes biztonsági mentés az adatok egy adott adatbázisban vagy fájlcsoport vagy fájlokat, és elég naplózási adatok helyreállítása egy készletét tartalmazza. Legfeljebb napi egy teljes biztonsági mentés is indíthat. Ha szeretné igénybe vehet egy teljes biztonsági mentés napi vagy heti időközönként. 
+* Különbségi biztonsági másolat: különbözeti biztonsági mentése a legújabb, az előző teljes biztonsági mentését alapul. Különbözeti biztonsági mentése csak a teljes biztonsági mentés óta megváltozott adatokat rögzíti. Legfeljebb napi egy különbségi biztonsági mentés is indíthat. Az azonos napi egy teljes biztonsági mentés és a különbözeti biztonsági mentése nem konfigurálható.
+* Tranzakciónapló biztonsági mentését: A napló biztonsági mentését lehetővé teszi, hogy legfeljebb egy adott második időponthoz visszaállítást. Egyszerre legfeljebb konfigurálhatja tranzakciós napló biztonsági mentés 15 percenként.
 
-Szabályzat jön létre, a Recovery Services-tároló szint. Ha több tárolóra van, a tárolók használhatja az azonos mentési házirenddel, de a biztonsági mentési házirendet kell alkalmaznia az egyes tárolókban. A napi biztonsági mentési szabályzat létrehozásakor teljes biztonsági mentés az alapértelmezett érték. A különbségi biztonsági mentés, de csak ha váltson át a heti teljes biztonsági mentések is hozzáadhat. Az alábbi eljárás ismerteti egy SQL Server biztonsági mentési szabályzat létrehozása az Azure virtuális gépként.
+A házirendet létrehozni a Recovery Services-tároló szint. Több tárolóhoz is használhat az azonos mentési házirenddel, de a biztonsági mentési házirendet kell alkalmaznia az egyes tárolókban. Amikor létrehoz egy biztonsági mentési szabályzatot, a napi teljes biztonsági mentést az alapértelmezett érték. Különbségi biztonsági másolat, de csak is hozzáadhat, ha teljes biztonsági mentés hetente történjen. Az alábbi eljárás ismerteti egy SQL Server-példány biztonsági mentési szabályzat létrehozása az Azure virtuális gépként.
 
-Biztonsági mentési szabályzat létrehozása
+Biztonsági mentési szabályzat létrehozása:
 
-1. A biztonsági mentési szabályzat menüje a a **biztonsági mentési házirend kiválasztása** legördülő menüjében válassza **hozzon létre új**.
+1. Az a **biztonsági mentési szabályzat** menüben, a a **biztonsági mentési házirend kiválasztása** legördülő listában jelölje ki **hozzon létre új**.
 
-   ![új biztonsági mentési szabályzat létrehozása](./media/backup-azure-sql-database/create-new-backup-policy.png)
+   ![Egy új biztonsági mentési szabályzat létrehozása](./media/backup-azure-sql-database/create-new-backup-policy.png)
 
-    A biztonsági mentési szabályzat menüje vált, amennyiben az adja meg minden olyan új SQL server biztonsági mentési szabályzat szükséges mezőket.
+    A **biztonsági mentési szabályzat** menü jeleníti meg a mezőket, egy új SQL Server biztonsági mentési szabályzat szükséges.
 
    ![új biztonsági mentési szabályzat mezők](./media/backup-azure-sql-database/blank-new-policy.png)
 
-2. A **házirendnév**, adjon meg egy nevet. 
+2. Az a **házirendnév** adjon meg egy nevet.
 
-3. Egy teljes biztonsági mentés megadása kötelező. A teljes biztonsági mentés fogadja el az alapértékeket, vagy kattintson **teljes biztonsági mentés** a szabályzat szerkesztéséhez.
+3. Egy teljes biztonsági mentés megadása kötelező. Fogadja el az alapértelmezett értékeket, a teljes biztonsági mentésre, vagy válasszon **teljes biztonsági mentésre** a szabályzat szerkesztéséhez.
 
     ![új biztonsági mentési szabályzat mezők](./media/backup-azure-sql-database/full-backup-policy.png)
 
-    A teljes biztonsági mentés házirend választhatja a naponta vagy hetente gyakoriságát. Ha úgy dönt, hogy a napi, válassza ki az óra és időzóna, amikor megkezdődik a biztonsági mentési feladat. Ha naponkénti teljes biztonsági mentést, a különbségi biztonsági mentések nem hozható létre.
+    Az a **teljes biztonsági mentés házirend** menüben a **biztonsági mentés gyakorisága**, válassza a **napi** vagy **heti**. A **napi**, válasszon ki és az időzónát, amikor megkezdődik a biztonsági mentési feladat. Különbségi biztonsági mentés napi teljes biztonsági mentések esetén nem hozható létre.
 
    ![napi időköz beállítása](./media/backup-azure-sql-database/daily-interval.png)
 
-    Ha úgy dönt, hetente, válassza ki a nap, hét, óra és időzóna, amikor megkezdődik a biztonsági mentési feladat.
+    A **heti**, amikor megkezdődik a biztonsági mentési feladatot, válassza ki a nap, hét, óra és időzóna.
 
    ![heti időköz beállítása](./media/backup-azure-sql-database/weekly-interval.png)
 
-4. Alapértelmezés szerint minden megőrzési időtartam (napi, heti, havi és éves) beállítás ki van jelölve. Törölje a megőrzési tartomány korlátozott nem szeretné, és állítsa be a használandó időközt. A teljes biztonsági mentés házirend menüben kattintson a **OK** , fogadja el a beállításokat.
+4. Alapértelmezés szerint minden **megőrzési** lehetőség be van jelölve: napi, heti, havi és éves. Kapcsolja ki a nemkívánatos megőrzési tartomány korlátait. A használandó időközt beállítani. Az a **teljes biztonsági mentés házirend** menüjében válassza **OK** , fogadja el a beállításokat.
 
-   ![megőrzési tartomány időközének beállítása](./media/backup-azure-sql-database/retention-range-interval.png)
+   ![Megőrzési tartomány intervallum beállításai](./media/backup-azure-sql-database/retention-range-interval.png)
 
-    Helyreállítási pontok megőrzésének, a megőrzési tartomány alapján címkével vannak ellátva. Ha például napi választja, teljes biztonsági mentés csak egy teljes biztonsági mentés naponta aktiválódik. A heti megőrzési függően az adott napon létrehozott biztonsági mentést címkézve, és megőrzi a heti megőrzési tartomány alapján. A havi és évi megőrzési hasonlóan viselkedik.
+    Helyreállítási pontok megőrzésének a megőrzési tartomány alapján címkével vannak ellátva. Ha például napi teljes biztonsági mentést választja, csak egy teljes biztonsági mentés naponta aktiválódik. A biztonsági mentés meghatározott napja címkézett és a megőrzött alapján a heti megőrzési időtartam és a heti adatmegőrzési beállítás. A havi és éves megőrzési időtartamok viselkedése hasonló módon.
 
-5. A különbözeti biztonsági mentési szabályzat hozzáadásához kattintson **különbözeti biztonsági mentési** a menü megnyitásához. 
+5. A különbözeti biztonsági mentési szabályzat hozzáadásához válassza **különbözeti biztonsági mentési**. A **különbözeti biztonsági mentési szabályzat** menü megnyitása. 
 
-   ![Nyissa meg a különbözeti házirend](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+   ![Nyissa meg a különbözeti biztonsági mentési szabályzat menüje](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
-    Válassza ki a különbözeti biztonsági mentési szabályzat menüje **engedélyezése** a gyakoriság és megőrzési vezérlőelemek megnyitásához. Is indíthat, legfeljebb napi egy különbségi biztonsági mentés.
+    Az a **különbözeti biztonsági mentési szabályzat** menüjében válassza **engedélyezése** a gyakoriság és megőrzési vezérlőelemek megnyitásához. Legfeljebb napi egy különbségi biztonsági mentés is indíthat.
+    
     > [!Important] 
-    > Különbségi biztonsági másolatok legfeljebb 180 napig lehet megtartani. Ha hosszabb adatmegőrzés megadásához, teljes biztonsági mentést kell használnia, a különbségi biztonsági mentések nem használhat.
+    > Különbségi biztonsági másolatok megőrzésének legfeljebb 180 napra. Ha hosszabb adatmegőrzés megadásához, teljes biztonsági mentést kell használnia.
     >
 
-   ![különbözeti szabályzat szerkesztése](./media/backup-azure-sql-database/enable-differential-backup-policy.png)
+   ![A különbözeti biztonsági mentési szabályzat szerkesztése](./media/backup-azure-sql-database/enable-differential-backup-policy.png)
 
-    Kattintson a **OK** mentse a szabályzatot, és térjen vissza a fő biztonsági mentési szabályzat menüje.
+    Válassza ki **OK** mentse a szabályzatot, és térjen vissza a fő **biztonsági mentési szabályzat** menü.
 
-6. A tranzakciós napló biztonsági mentési szabályzat hozzáadásához kattintson **Naplóalapú biztonsági mentés** a menü megnyitásához. A Naplóalapú biztonsági mentés menü, válassza ki a **engedélyezése**, és állítsa be a gyakoriság és megőrzési szabályozza. Naplóalapú biztonsági mentések fordulhat elő, mint 15 perces gyakorisággal, és akár 35 napig lehet megtartani. Kattintson a **OK** mentse a szabályzatot, és térjen vissza a fő biztonsági mentési szabályzat menüje.
+6. A tranzakciós napló biztonsági mentési szabályzat hozzáadásához válassza **napló biztonsági mentési**. A **Naplóalapú biztonsági mentés** menü megnyitása.
 
-   ![napló biztonsági mentési szabályzat szerkesztése](./media/backup-azure-sql-database/log-backup-policy-editor.png)
+    Az a **Naplóalapú biztonsági mentés** menüjében válassza **engedélyezése**, majd állítsa be a gyakoriság és megőrzési szabályozza. Naplóalapú biztonsági mentések fordulhat elő, mint 15 perces gyakorisággal, és akár 35 napig lehet megtartani. Válassza ki **OK** mentse a szabályzatot, és térjen vissza a fő **biztonsági mentési szabályzat** menü.
 
-7. Döntse el, hogy az SQL biztonsági másolat tömörítésének engedélyezéséhez. A tömörítés alapértelmezés szerint le van tiltva.
+   ![A napló biztonsági mentési szabályzat szerkesztése](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-    A háttérben az Azure Backup használja az SQL natív biztonsági mentési tömörítését.
+7. Az a **biztonsági mentési szabályzat** menüben válassza ki, hogy engedélyezi-e **SQL biztonsági másolat tömörítése**. A tömörítés alapértelmezés szerint le van tiltva.
 
-8. Ha a biztonsági mentési szabályzat az összes módosításokat végzett, kattintson az **OK**. 
+    A háttérben az Azure Backup használ SQL natív biztonsági mentési tömörítését.
 
-   ![új szabályzat elfogadása](./media/backup-azure-sql-database/backup-policy-click-ok.png)
+8. Miután elvégezte a módosításokat a biztonsági mentési szabályzathoz, válassza ki a **OK**. 
+
+   ![Fogadja el az új biztonsági mentési házirend](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>SQL-adatbázis visszaállítása
 
-Az Azure Backup a tranzakciónaplók biztonsági mentése segítségével állíthatja vissza az egyes adatbázisok egy adott dátum vagy idő, akár egy adott második, funkciót biztosít. Teljes, különbségi és naplóalapú biztonsági mentések szükség az adatok helyreállításához láncolata alapján ad meg, az Azure Backup automatikusan meghatározza, hogy a megfelelő helyreállítási időt.
+Az Azure Backup az önálló adatbázisok visszaállítása egy adott dátum vagy idő (a második) a tranzakciónapló biztonsági mentései használatával funkciót biztosít. Az Azure Backup automatikusan a megfelelő teljes különbségi és naplóalapú biztonsági mentések, amelyek alapján a helyreállítási időt az adatok visszaállításához van szükség, a lánc határozza meg.
 
-Másik lehetőségként választhat egy teljes és különbségi biztonsági másolat visszaállítása egy adott időpont helyett egy adott helyreállítási pontot.
+Lehetőség kiválasztásával egy teljes vagy különbözeti biztonsági mentési állíthatja vissza egy adott helyreállítási pontot, nem pedig egy adott időpontban.
  > [!Note]
- > "Fő" adatbázis visszaállítási elindítása előtt indítsa el az SQL Server egyfelhasználós üzemmódban az indítási beállítást "-m AzureWorkloadBackup". Az -m argumentuma az ügyfél nevét, az ügyfél csak engedélyezett lesz a kapcsolat megnyitásához. Az összes rendszeradatbázisokban (master, model, msdb) állítsa le az SQL Agent szolgáltatás visszaállításának előtt. Zárja be, előfordulhat, hogy megpróbálja ellopni a kapcsolatot ezen adatbázisok bármelyikét alkalmazásokat.
+ > Mielőtt a "fő" adatbázis visszaállítási indít el, indítsa el az SQL Server-példány egyfelhasználós módban indítási lehetőséget `-m AzureWorkloadBackup`. Az argumentum a `-m` lehetőség az ügyfél nevét. Csak az ügyfél számára engedélyezett a kapcsolat megnyitásához. Az összes rendszer adatbázisban (modell master, msdb) állítsa le az SQL Agent szolgáltatást a visszaállítás elindítása előtt. Zárja be az olyan alkalmazásokat, amelyek próbálnak kapcsolatot sem ezeknek az adatbázisoknak ellopni.
 >
 
-Egy adatbázis visszaállítása
+Adatbázis visszaállítása:
 
-1. Nyissa meg a helyreállítási tár regisztrálva van az SQL virtuális gép.
+1. Nyissa meg a Recovery Services-tároló, amely regisztrálva van az SQL virtuális gép.
 
-2. Válassza ki a tároló irányítópultjának **használati** biztonsági másolati elemek a biztonsági másolati elemek menü megnyitásához.
+2. Az a **Recovery Services-tároló** irányítópult alatt **használati**válassza **biztonsági másolati elemek** megnyitásához a **biztonsági másolati elemek** menü.
 
-    ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
+    ![A biztonsági másolati elemek menü megnyitásához](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
-3. Az a **biztonsági másolati elemek** menüben válassza ki a biztonságimásolat-felügyelet típusa **SQL Azure-beli virtuális gépen**. 
+3. Az a **biztonsági másolati elemek** menü alatt **biztonságimásolat-kezelés típusa**válassza **SQL Azure-beli virtuális gépen**. 
 
-    ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/sql-restore-backup-items.png)
+    ![Válassza ki az SQL Azure-beli virtuális gépen](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
-    A biztonsági mentési elemek listája itt állíthatja be az SQL Database-adatbázisok listájának megjelenítéséhez. 
+    A **biztonsági másolati elemek** menü SQL-adatbázisok listáját jeleníti meg. 
 
-4. Az SQL-adatbázisok a listából válassza ki a visszaállítani kívánt adatbázis.
+4. SQL-adatbázisok listájában válassza ki az adatbázis visszaállításához.
 
-    ![Válassza ki az SQL Azure-beli virtuális gépen a listából](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
+    ![Válassza ki a visszaállítandó adatbázis](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-    Ha az adatbázist választja, megnyílik a menü. Ebben a menüben a biztonsági mentési részleteit jeleníti meg az adatbázis többek között:
+    Ha az adatbázist választja, megnyílik a menü. A menü biztosít a biztonsági mentés részletei az adatbázisban, többek között:
 
-    * a legrégebbi és a legújabb helyreállítási pontok
-    * napló biztonsági mentésének állapota az elmúlt 24 órában (az adatbázisokat a teljes és a tömegesen naplózott helyreállítási modell, ha a tranzakciós napló biztonsági mentés konfigurálva)
+    * A legrégebbi és a legújabb visszaállítási pontot.
+    * Napló biztonsági mentésének állapota az elmúlt 24 órában (az adatbázisokat a teljes és a tömegesen naplózott helyreállítási modell, ha a tranzakciós napló biztonsági mentés konfigurálva).
 
-5. A kijelölt adatbázis menüben kattintson a **visszaállítása DB** a visszaállítási menü megnyitásához.
+5. Válassza a menü a kiválasztott adatbázishoz, **visszaállítása DB**. A **visszaállítása** menü megnyitása.
 
-    ![Válassza ki az adatbázis visszaállítása](./media/backup-azure-sql-database/restore-db-button.png)
+    ![Válassza ki a Restore DB](./media/backup-azure-sql-database/restore-db-button.png)
 
-    A **visszaállítása** menü megnyílik, és így biztosítja a **konfiguráció visszaállítása** menü. A **konfiguráció visszaállítása** menü az első lépés a visszaállítást a rendszer. Ebből a menüből választhatja meg, ahol szeretné visszaállítani az adatokat. A következő lehetőségek közül választhat:
-    * Másik helyre, – használja ezt a beállítást, ha azt szeretné, miközben megőrzik az eredeti adatbázis állítsa vissza az adatbázist egy másik helyre.
-    * Adatbázis - visszaállítás az eredeti forrás, ugyanazon SQL Server-példány az adatok felülírása. Ennek következménye, az eredeti adatbázis felülírásához.
+    Ha a **visszaállítása** menü megnyílik, a **konfiguráció visszaállítása** menüben is megnyílik. A **konfiguráció visszaállítása** menü első lépése a visszaállítás konfigurálása. Ez a menü segítségével válassza ki, hogy az adatok hol. A következő lehetőségek közül választhat:
+    - **Másik helyre**: állítsa vissza az adatbázist egy másik helyre, és azokat megőrizheti az eredeti adatbázis.
+    - **Adatbázis felülírása**: az adatok visszaállítása az eredeti forrás, ugyanazon SQL Server-példányon. Ez a beállítás hatását, hogy az eredeti adatbázis felülírásához.
 
     > [!Important]
-    > Ha a kijelölt adatbázis Always On rendelkezésre állási csoporthoz tartozik, az SQL nem engedélyezi a felülírja az adatbázis. Ebben az esetben, csak a **máshová** beállítás engedélyezve van.
+    > Ha a kijelölt adatbázis Always On rendelkezésre állási csoporthoz tartozik, az SQL Server felülírja az adatbázis nem teszi lehetővé. Ebben az esetben, csak a **máshová** beállítás engedélyezve van.
     >
 
-    ![a konfigurálás elemre kattintva visszaállítási konfiguráció menü megnyitása](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
+    ![Visszaállítási konfiguráció menü](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
 
 ### <a name="restore-to-an-alternate-location"></a>Visszaállítás másik helyre
 
-Ez az eljárás bemutatja az adatok visszaállítása másik helyre. Ha szeretné felülírni az adatbázis visszaállításakor, lépjen a szakaszban [visszaállítása és az adatbázis felülírása](backup-azure-sql-database.md#restore-and-overwrite-the-database). Ez az eljárás feltételezi, hogy a Recovery Services-tároló nyílt, és jelenleg a konfiguráció visszaállítása menüben. Ha nem, indítsa el a szakasz [SQL-adatbázis visszaállítása](backup-azure-sql-database.md#restore-a-sql-database).
+Ez az eljárás lépésről lépésre adatok visszaállítása másik helyre. Az adatbázis felülírásához a visszaállítás során, továbbra is [visszaállítása és az adatbázis felülírása](backup-azure-sql-database.md#restore-and-overwrite-the-database). Ezen a ponton a Recovery Services-tároló meg nyitva, és a **konfiguráció visszaállítása** menü látható-e. Ha Ön nem ezen a ponton, első lépésként [egy SQL-adatbázis visszaállítása](backup-azure-sql-database.md#restore-a-sql-database).
 
 > [!NOTE]
-> Az adatbázist visszaállíthatja egy SQL Server ugyanazon Azure-régióban, és a célkiszolgálón kell lennie a helyreállítási tárban való regisztrálását. 
+> Az adatbázist visszaállíthatja egy példányát olyan SQL Server ugyanazon Azure-régióban. A célkiszolgáló regisztrálva kell lennie a Recovery Services-tárolóba. 
 >
 
-A **kiszolgáló** legördülő menüben csak az SQL Server, a helyreállítási tárban regisztrált jeleníti meg. Ha azt szeretné, a kiszolgáló nem szerepel a következőben a **kiszolgáló** list, tekintse meg a [Fedezze fel az SQL server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases) keresnie. A felderítési adatbázist során új kiszolgálókat a Recovery Services-tároló van regisztrálva.
+Az a **konfiguráció visszaállítása** menüben a **kiszolgáló** legördülő lista csak az SQL Server-példányokat a helyreállítási tárban regisztrált jeleníti meg. Ha azt szeretné, hogy a kiszolgáló nem szerepel a listán, [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases) keresnie. A felderítési folyamat során az új kiszolgálókat a Recovery Services-tároló van regisztrálva.
 
 1. Az a **konfiguráció visszaállítása** menüben:
 
-    * Válassza ki **máshová**,
-    * a **kiszolgáló**, válassza ki az SQL server, ahol szeretné állítani az adatbázist.
-    * az a **példány** legördülő menüben válasszon egy SQL-példányt
-    * az a **visszaállított adatbázis neve** párbeszédpanelen adja meg a céladatbázis nevét.
-    * Ha a alkalmazni, válassza ki a **felülírása, ha a kiválasztott SQL-példányon már létezik a DB ugyanazzal a névvel**.
-    * Kattintson a **OK** befejezéséhez konfigurálását, és vigye át egy visszaállítási pontot választja.
+    * Alatt **visszaállítás helyének**válassza **máshová**.
+    * Nyissa meg a **kiszolgáló** legördülő listában és válassza az SQL Server-példányon állítsa vissza az adatbázist.
+    * Nyissa meg a **példány** legördülő listában és válassza az SQL Server-példányt.
+    * Az a **visszaállított adatbázis neve** mezőbe írja be a céladatbázis neve.
+    * A megfelelő, válassza **felülírása, ha a kiválasztott SQL-példányon már létezik a DB ugyanazzal a névvel**.
+    * Válassza ki **OK** konfigurációjához a célhelyen, és továbbra is válasszon visszaállítási pontot.
 
-    ![Visszaállítási konfiguráció menüből válassza másik helyre, a példány és a név](./media/backup-azure-sql-database/restore-configuration-menu.png)
+    ![A konfiguráció visszaállítása menü értékeinek megadása](./media/backup-azure-sql-database/restore-configuration-menu.png)
 
-2. Az a **visszaállítási pont kiválasztása** menüben kiválaszthatja vagy egy naplók (idő) vagy a teljes és különbségi visszaállítási pont. Ha szeretné visszaállítani egy adott időpontban a naplóba, továbbra is az ehhez a lépéshez. Ha szeretné visszaállítani a teljes és különbségi visszaállítási pontot, folytassa a 3. lépés.
+2. Az a **visszaállítási pont kiválasztása** menüben válassza a **naplók (idő)** vagy **teljes és különbségi** visszaállítási pontot. Állítani egy adott időpontban a naplót, folytassa az ehhez a lépéshez. Állítsa vissza a teljes és különbségi visszaállítási pontot, folytassa a 3. lépés.
 
     ![Válassza ki a helyreállítási pont menü](./media/backup-azure-sql-database/recovery-point-menu.png)
 
-    A pont, időponthoz kötött visszaállítás csak érhető el az adatbázisok teljes naplóalapú biztonsági mentések & Tömegesen naplózott helyreállítási modell. Egy adott pont kötött visszaállítása:
+    A pont – történő visszaállítás csak olyan adatbázisok esetén a teljes és a tömegesen naplózott helyreállítási modell a naplóalapú biztonsági mentések érhető el. Adott időpontra való visszaállítása időben:
 
-    1. Válassza ki **naplók (idő)** visszaállítási paramétert.
+    1. Válassza ki **naplók (idő)** visszaállítási típusaként.
 
-        ![Válassza ki a helyreállítási pont típusa](./media/backup-azure-sql-database/recovery-point-logs.png)
+        ![Válassza ki a visszaállítási pont](./media/backup-azure-sql-database/recovery-point-logs.png)
 
-    2. A **dátum és idő visszaállításához**, kattintson a naptár ikonra, a naptár megnyitása. A félkövérrel szedett dátumok helyreállítási pontokat tartalmaznak, és az aktuális dátumot ki van jelölve. Válassza ki a helyreállítási pontok a naptárban egy dátumot. Nem választhat ki nincs helyreállítási pontok dátumát.
+    2. A **dátum és idő visszaállításához**, válassza ki a mini naptár megnyitása a **naptár**. Az a **naptár**, félkövérrel szedett dátumokra rendelkezik a helyreállítási pontok, és az aktuális dátumot ki van jelölve. Jelölje ki a helyreállítási pontok dátumát. Dátumok helyreállítási pontok nélkül nem lehet kiválasztani.
 
-        ![Naptár megnyitása](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
+        ![A naptár megnyitása](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
-        Miután kiválasztotta a dátumot, az idővonal graph a rendelkezésre álló helyreállítási pontok folyamatos széles jeleníti meg.
+        Miután kiválasztotta a dátumot, az ütemterv graph folyamatos számos jeleníti meg a rendelkezésre álló helyreállítási pontok.
 
-    3. Az ütemterv graph, vagy a párbeszédpanelen, adja meg a helyreállítási pontot, majd kattintson a megadott idő **OK** a visszaállítási pont lépésnek a végrehajtásához.
+    3. Az ütemterv graph használata vagy a **idő** párbeszédpanelen megadhatja egy adott a helyreállítási pontok időpontját. Válassza ki **OK** a visszaállítási pont lépésnek a végrehajtásához.
     
-       ![Naptár megnyitása](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
+       ![A naptár megnyitása](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
         A **visszaállítási pont kiválasztása** menü bezárul, és a **speciális konfiguráció** menü megnyitása.
 
@@ -489,75 +498,75 @@ A **kiszolgáló** legördülő menüben csak az SQL Server, a helyreállítási
 
     4. Az a **speciális konfiguráció** menüben:
 
-        * Hogy az adatbázis nem működő, visszaállítás után a a **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** menüjében válassza **engedélyezve**.
-        * Ha a célkiszolgálón lévő visszaállítási hely módosítani szeretné, adja meg az új elérési utat a **cél** oszlop.
-        * Kattintson a **OK** hagyja jóvá a beállításokat, és zárja be a **speciális konfiguráció**.
+        * Ha szeretné megtartani az adatbázis nem működő a visszaállítás után, állítsa be **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** való **engedélyezve**.
+        * A célkiszolgálón lévő visszaállítási hely átnevezéséhez írja be az új elérési utat a **cél** oszlop.
+        * Válassza ki **OK** hagyható jóvá a beállításokat. Zárja be a **speciális konfiguráció** menü.
 
-    5. Az a **visszaállítása** menüben kattintson a **visszaállítása** a visszaállítási feladat elindításához. Az értesítési területen követheti a folyamat állapotát. Is követheti, hogy az adatbázis-visszaállítási feladat a folyamatban.
+    5. Az a **visszaállítása** menüjében válassza **visszaállítása** a visszaállítási feladat elindításához. A visszaállítás, az előrehaladását úgy követheti nyomon a **értesítések** terület, vagy válasszon **visszaállítási feladatok** adatbázis menüben.
 
-       ![Speciális konfiguráció menü](./media/backup-azure-sql-database/restore-job-notification.png)
+       ![Visszaállítási feladat állapota](./media/backup-azure-sql-database/restore-job-notification.png)
 
-3. Az a **visszaállítási pont kiválasztása** menüben válasszon egy helyreállítási pontot. Választhat, vagy egy naplók (idő) vagy a teljes és különbségi. Ha szeretné visszaállítani az adott pont a napló, lépjen vissza, a 2. lépés. Ebben a lépésben egy adott teljes vagy különbözeti visszaállítási pontot állítja vissza. Ezzel a beállítással megjelenik az elmúlt 30 napra vonatkozó összes teljes és különbségi helyreállítási pontokat. Ha meg szeretné tekinteni a 30 napnál régebbi helyreállítási pontokat, kattintson a **szűrő** megnyitásához a **szűrő visszaállítási pontok** menü. Ha egy különbözeti helyreállítási pontot választja, az Azure Backup először visszaállítja a megfelelő teljes helyreállítási pontot, és majd alkalmazza a kiválasztott különbözeti helyreállítási pontot.
+3. Az a **visszaállítási pont kiválasztása** menüben válassza a **naplók (idő)** vagy **teljes és különbségi** visszaállítási pontot. Vissza szeretné állítani egy időponthoz naplót, lépjen vissza a 2. lépés. Ebben a lépésben egy adott teljes vagy különbözeti visszaállítási pontot állítja vissza. A teljes és különbségi helyreállítási pontok összes láthatja az elmúlt 30 napra vonatkozóan. 30 napnál régebbi helyreállítási pontok megtekintéséhez válasszon **szűrő** megnyitásához a **szűrő visszaállítási pontok** menü. Különbözeti helyreállítási pontok az Azure Backup először visszaállítja a megfelelő teljes helyreállítási pontot, és majd alkalmazza a kiválasztott különbözeti helyreállítási pontot.
 
     ![Válassza ki a helyreállítási pont menü](./media/backup-azure-sql-database/recovery-point-menu.png)
 
     1. Az a **visszaállítási pont kiválasztása** menüben kattintson **teljes és különbségi**.
 
-       ![Válassza ki a helyreállítási pont menü](./media/backup-azure-sql-database/recovery-point-logs-fd.png)
+       ![Válassza ki a teljes és különbségi](./media/backup-azure-sql-database/recovery-point-logs-fd.png)
 
-        A rendelkezésre álló helyreállítási pontok listája jelenik meg.
+        A menüben elérhető helyreállítási pontok listáját jeleníti meg.
 
-    2. Helyreállítási pontok listájából válasszon ki egy helyreállítási pontot, és kattintson a **OK** a visszaállítási pont eljárást. 
+    2. Válasszon ki egy helyreállítási pontot a listából, és válassza ki **OK** a visszaállítási pont eljárást. 
 
-        ![Válassza ki a teljes helyreállítási pontot](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+        ![Válasszon egy teljes helyreállítási pontot](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
 
         A **visszaállítási pont** menü bezárul, és a **speciális konfiguráció** menü megnyitása.
 
-        ![Speciális konfiguráció menü](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
+        ![Speciális konfigurációs menüje](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
     3. Az a **speciális konfiguráció** menüben:
 
-        * Hogy az adatbázis nem működő, visszaállítás után a a **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** menüjében válassza **engedélyezve**. **Visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** alapértelmezés szerint le van tiltva.
-        * Ha a célkiszolgálón lévő visszaállítási hely módosítani szeretné, adja meg az új elérési utat a **cél** oszlop.
-        * Kattintson a **OK** hagyja jóvá a beállításokat, és zárja be a **speciális konfiguráció**.
+        * Ha szeretné megtartani az adatbázis nem működő a visszaállítás után, állítsa be **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** való **engedélyezve**. **Visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** alapértelmezés szerint le van tiltva.
+        * A célkiszolgálón lévő visszaállítási hely átnevezéséhez írja be az új elérési utat a **cél** oszlop.
+        * Válassza ki **OK** hagyható jóvá a beállításokat. Zárja be a **speciális konfiguráció** menü.
 
-    4. Az a **visszaállítása** menüben kattintson a **visszaállítása** a visszaállítási feladat elindításához. Az értesítési területen követheti a folyamat állapotát. Is követheti, hogy az adatbázis-visszaállítási feladat a folyamatban.
+    4. Az a **visszaállítása** menüjében válassza **visszaállítása** a visszaállítási feladat elindításához. A visszaállítás, az előrehaladását úgy követheti nyomon a **értesítések** terület, vagy válasszon **visszaállítási feladatok** adatbázis menüben.
 
-       ![Speciális konfiguráció menü](./media/backup-azure-sql-database/restore-job-notification.png)
+       ![Visszaállítási feladat állapota](./media/backup-azure-sql-database/restore-job-notification.png)
 
 ### <a name="restore-and-overwrite-the-database"></a>Állítsa vissza, és az adatbázis felülírása
 
-Ez az eljárás végigvezeti a adatainak visszaállítása, és az adatbázis felülírása. Ha szeretne egy másodlagos helyre történő helyreállításához, lépjen a szakaszban [visszaállítás másik helyre](backup-azure-sql-database.md#restore-to-an-alternate-location). Ez az eljárás feltételezi, hogy a Recovery Services-tároló nyílt, és jelenleg a **konfiguráció visszaállítása** menü (lásd az alábbi képen). Ha nem, indítsa el a szakasz [SQL-adatbázis visszaállítása](backup-azure-sql-database.md#restore-a-sql-database).
+Ez az eljárás végigvezeti adatok visszaállítása és a egy adatbázis felülírása. Visszaállítás másik helyre, folytassa [visszaállítás másik helyre](backup-azure-sql-database.md#restore-to-an-alternate-location). Ezen a ponton a Recovery Services-tároló meg nyitva, és a **konfiguráció visszaállítása** menü látható (lásd az alábbi képen). Ha Ön nem ezen a ponton, első lépésként [egy SQL-adatbázis visszaállítása](backup-azure-sql-database.md#restore-a-sql-database).
 
-![a konfigurálás elemre kattintva visszaállítási konfiguráció menü megnyitása](./media/backup-azure-sql-database/restore-overwrite-db.png)
+![Visszaállítási konfiguráció menü](./media/backup-azure-sql-database/restore-overwrite-db.png)
 
-A **kiszolgáló** legördülő menüben csak az SQL Server, a helyreállítási tárban regisztrált jeleníti meg. Ha azt szeretné, a kiszolgáló nem szerepel a következőben a **kiszolgáló** list, tekintse meg a [Fedezze fel az SQL server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases) keresnie. A felderítési adatbázist során új kiszolgálókat a Recovery Services-tároló van regisztrálva.
+Az a **konfiguráció visszaállítása** menüben a **kiszolgáló** legördülő lista csak az SQL Server-példányokat a helyreállítási tárban regisztrált jeleníti meg. Ha azt szeretné, hogy a kiszolgáló nem szerepel a listán, [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases) keresnie. A felderítési folyamat során az új kiszolgálókat a Recovery Services-tároló van regisztrálva.
 
-1. Az a **konfiguráció visszaállítása** menüjében válassza **felülírása DB** kattintson **OK** konfigurálását végrehajtásához. 
+1. Az a **konfiguráció visszaállítása** menüben válassza **adatbázis felülírása**, majd válassza ki **OK** a cél a konfiguráció befejezéséhez. 
 
-   ![Kattintson az adatbázis felülírása](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
+   ![Válassza ki az adatbázis felülírása](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
-    A **kiszolgáló**, **példány**, és **visszaállított adatbázis neve** párbeszédpanelek nem szükségesek.
+    A **kiszolgáló**, **példány**, és **visszaállított adatbázis neve** beállításai nem szükséges.
 
-2. Az a **visszaállítási pont kiválasztása** menüben kiválaszthatja vagy egy naplók (idő) vagy a teljes és különbségi visszaállítási pont. Ha szeretné visszaállítani az adott pont a napló, továbbra is az ehhez a lépéshez. Ha szeretné visszaállítani a teljes és különbségi visszaállítási pontot, folytassa a 3. lépés.
+2. Az a **visszaállítási pont kiválasztása** menüben válassza a **naplók (idő)** vagy **teljes és különbségi** visszaállítási pontot. Állítani egy adott időpontban a naplót, folytassa az ehhez a lépéshez. Állítsa vissza a teljes és különbségi visszaállítási pontot, folytassa a 3. lépés.
 
     ![Válassza ki a helyreállítási pont menü](./media/backup-azure-sql-database/recovery-point-menu.png)
 
-    A pont, időponthoz kötött visszaállítás csak érhető el az adatbázisok teljes naplóalapú biztonsági mentések & Tömegesen naplózott helyreállítási modell. A második válasszon pontot egy adott időponthoz kötött visszaállítás:
+    A pont – történő visszaállítás csak olyan adatbázisok esetén a teljes és a tömegesen naplózott helyreállítási modell a naplóalapú biztonsági mentések érhető el. Egy adott második visszaállítása:
 
-    1. Válassza ki **naplók (idő)** visszaállítási paramétert.
+    1. Válassza ki **naplók (idő)** visszaállítási pontot.
 
-        ![Válassza ki a helyreállítási pont típusa](./media/backup-azure-sql-database/recovery-point-logs.png)
+        ![Válassza ki a visszaállítási pont](./media/backup-azure-sql-database/recovery-point-logs.png)
 
-    2. A **dátum és idő visszaállításához**, kattintson a naptár ikonra, a naptár megnyitása. A félkövérrel szedett dátumok helyreállítási pontokat tartalmaznak, és az aktuális dátumot ki van jelölve. Válassza ki a helyreállítási pontok a naptárban egy dátumot. Nem választhat ki nincs helyreállítási pontok dátumát.
+    2. A **dátum és idő visszaállításához**, válassza ki a mini naptár megnyitása a **naptár**. Az a **naptár**, félkövérrel szedett dátumokra rendelkezik a helyreállítási pontok, és az aktuális dátumot ki van jelölve. Jelölje ki a helyreállítási pontok dátumát. Dátumok helyreállítási pontok nélkül nem lehet kiválasztani.
 
-        ![Naptár megnyitása](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
+        ![A naptár megnyitása](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
-        Miután kiválasztotta a dátumot, az idővonal graph a rendelkezésre álló helyreállítási pontok jeleníti meg.
+        Miután kiválasztotta a dátumot, az ütemterv graph megjeleníti a rendelkezésre álló helyreállítási pontok.
 
-    3. Az ütemterv graph, vagy a párbeszédpanelen, adja meg a helyreállítási pontot, majd kattintson a megadott idő **OK** a visszaállítási pont lépésnek a végrehajtásához.
+    3. Az ütemterv graph használata vagy a **idő** párbeszédpanelen megadhatja egy adott a helyreállítási pontok időpontját. Válassza ki **OK** a visszaállítási pont lépésnek a végrehajtásához.
     
-       ![Naptár megnyitása](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
+       ![A naptár megnyitása](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
         A **visszaállítási pont kiválasztása** menü bezárul, és a **speciális konfiguráció** menü megnyitása.
 
@@ -565,69 +574,75 @@ A **kiszolgáló** legördülő menüben csak az SQL Server, a helyreállítási
 
     4. Az a **speciális konfiguráció** menüben:
 
-        * Hogy az adatbázis nem működő, visszaállítás után a a **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** menüjében válassza **engedélyezve**.
-        * Ha a célkiszolgálón lévő visszaállítási hely módosítani szeretné, adja meg az új elérési utat a **cél** oszlop.
-        * Kattintson a **OK** hagyja jóvá a beállításokat, és zárja be a **speciális konfiguráció**.
+        * Ha szeretné megtartani az adatbázis nem működő a visszaállítás után, állítsa be **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** való **engedélyezve**.
+        * A célkiszolgálón lévő visszaállítási hely átnevezéséhez írja be az új elérési utat a **cél** oszlop.
+        * Válassza ki **OK** hagyható jóvá a beállításokat. Zárja be a **speciális konfiguráció** menü.
 
-    5. Az a **visszaállítása** menüben kattintson a **visszaállítása** a visszaállítási feladat elindításához. Az értesítési területen követheti a folyamat állapotát. Is követheti, hogy az adatbázis-visszaállítási feladat a folyamatban.
+    5. Az a **visszaállítása** menüjében válassza **visszaállítása** a visszaállítási feladat elindításához. A visszaállítás, az előrehaladását úgy követheti nyomon a **értesítések** terület, vagy válasszon **visszaállítási feladatok** adatbázis menüben.
 
-       ![Speciális konfiguráció menü](./media/backup-azure-sql-database/restore-job-notification.png)
+       ![Visszaállítási feladat állapota](./media/backup-azure-sql-database/restore-job-notification.png)
 
-3. Az a **visszaállítási pont kiválasztása** menüben válasszon egy helyreállítási pontot. Választhat, vagy egy naplók (idő) vagy a teljes és különbségi. Ha szeretné visszaállítani az adott pont a napló, lépjen vissza, a 2. lépés. Ebben a lépésben egy adott teljes vagy különbözeti visszaállítási pontot állítja vissza. Ezzel a beállítással megjelenik az elmúlt 30 napra vonatkozó összes teljes és különbségi helyreállítási pontokat. Ha meg szeretné tekinteni a 30 napnál régebbi helyreállítási pontokat, kattintson a **szűrő** megnyitásához a **szűrő visszaállítási pontok** menü. Ha egy különbözeti helyreállítási pontot választja, az Azure Backup először visszaállítja a megfelelő teljes helyreállítási pontot, és majd alkalmazza a kiválasztott különbözeti helyreállítási pontot.
+3. Az a **visszaállítási pont kiválasztása** menüben válassza a **naplók (idő)** vagy **teljes és különbségi** visszaállítási pontot. Vissza szeretné állítani egy időponthoz naplót, lépjen vissza a 2. lépés. Ebben a lépésben egy adott teljes vagy különbözeti visszaállítási pontot állítja vissza. A teljes és különbségi helyreállítási pontok összes láthatja az elmúlt 30 napra vonatkozóan. 30 napnál régebbi helyreállítási pontok megtekintéséhez válasszon **szűrő** megnyitásához a **szűrő visszaállítási pontok** menü. Különbözeti helyreállítási pontok az Azure Backup először visszaállítja a megfelelő teljes helyreállítási pontot, és majd alkalmazza a kiválasztott különbözeti helyreállítási pontot.
 
     ![Válassza ki a helyreállítási pont menü](./media/backup-azure-sql-database/recovery-point-menu.png)
 
     1. Az a **visszaállítási pont kiválasztása** menüben kattintson **teljes és különbségi**.
 
-       ![Válassza ki a helyreállítási pont menü](./media/backup-azure-sql-database/recovery-point-logs-fd.png)
+       ![Válassza ki a teljes és különbségi](./media/backup-azure-sql-database/recovery-point-logs-fd.png)
 
-        A rendelkezésre álló helyreállítási pontok listája jelenik meg.
+        A menüben elérhető helyreállítási pontok listáját jeleníti meg.
 
-    2. Helyreállítási pontok listájából válasszon ki egy helyreállítási pontot, és kattintson a **OK** a visszaállítási pont eljárást. 
+    2. Válasszon ki egy helyreállítási pontot a listából, és válassza ki **OK** a visszaállítási pont eljárást. 
 
-        ![Válassza ki a teljes helyreállítási pontot](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+        ![Válasszon egy teljes helyreállítási pontot](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
 
         A **visszaállítási pont** menü bezárul, és a **speciális konfiguráció** menü megnyitása.
 
-        ![Speciális konfiguráció menü](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
+        ![Speciális konfigurációs menüje](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
     3. Az a **speciális konfiguráció** menüben:
 
-        * Hogy az adatbázis nem működő, visszaállítás után a a **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** menüjében válassza **engedélyezve**. **Visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** alapértelmezés szerint le van tiltva.
-        * Ha a célkiszolgálón lévő visszaállítási hely módosítani szeretné, adja meg az új elérési utat a **cél** oszlop.
-        * Kattintson a **OK** hagyja jóvá a beállításokat, és zárja be a **speciális konfiguráció**.
+        * Ha szeretné megtartani az adatbázis nem működő a visszaállítás után, állítsa be **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** való **engedélyezve**. **Visszaállítás a NORECOVERY BEÁLLÍTÁSSAL** alapértelmezés szerint le van tiltva.
+        * A célkiszolgálón lévő visszaállítási hely átnevezéséhez írja be az új elérési utat a **cél** oszlop.
+        * Válassza ki **OK** hagyható jóvá a beállításokat. Zárja be a **speciális konfiguráció** menü.
 
-    4. Az a **visszaállítása** menüben kattintson a **visszaállítása** a visszaállítási feladat elindításához. Az értesítési területen követheti a folyamat állapotát. Is követheti, hogy az adatbázis-visszaállítási feladat a folyamatban.
+    4. Az a **visszaállítása** menüjében válassza **visszaállítása** a visszaállítási feladat elindításához. A visszaállítás, az előrehaladását úgy követheti nyomon a **értesítések** területen vagy kiválasztásával **visszaállítási feladatok** adatbázis menüben.
 
-       ![Speciális konfiguráció menü](./media/backup-azure-sql-database/restore-job-notification.png)
-
+       ![Visszaállítási feladat állapota](./media/backup-azure-sql-database/restore-job-notification.png)
 
 ## <a name="manage-azure-backup-operations-for-sql-on-azure-vms"></a>Azure virtuális gépeken az SQL Azure Backup-műveletek kezelése
 
-Ez a szakasz ismerteti a különböző Azure Backup felügyeleti műveletek érhető el az SQL Azure-beli virtuális gépeken. A következő magas szintű műveletek találhatók:
+Ez a szakasz ismerteti a különböző Azure Backup felügyeleti műveletek, amelyek az SQL Azure-beli virtuális gépeken érhető el. A következő magas szintű műveletek találhatók:
 
 * Feladatok figyelése
 * Biztonsági mentési riasztások
 * SQL-adatbázis védelmének megszüntetése
 * Az SQL-adatbázis védelmének folytatása
 * Az ad hoc biztonsági mentési feladat aktiválása
-* SQL-kiszolgáló regisztrációjának törlése
+* Egy SQL Servert futtató kiszolgáló regisztrációjának törlése
 
-### <a name="monitor-jobs"></a>Feladatok figyelése
-Folyamatban van egy vállalati osztály megoldás az Azure Backup biztosítja a speciális biztonsági mentési riasztások és értesítések-e meghibásodva (lásd az alábbi biztonsági mentési riasztások szakaszban). Ha továbbra is szeretné meghatározott feladatok figyelése a követelmény alapján a következő lehetőségek bármelyikét használhatja:
+### <a name="monitor-backup-jobs"></a>Biztonsági mentési feladatok figyelése
+Az Azure Backup egy vállalati osztály megoldás által biztosított fejlett biztonsági mentési riasztások és értesítések az esetleges hibákat. (Lásd: [biztonsági mentésekkel kapcsolatos riasztások megtekintése](backup-azure-sql-database.md#view-backup-alerts).) Adott feladatok monitorozásához használja a következő beállításokat a követelményeinek megfelelően.
 
-#### <a name="use-azure-portal-for-all-adhoc-operations"></a>Az Azure portal használata az ad hoc ad hoc minden művelet
-Az Azure minden manuálisan aktivált biztonsági mentés mutat be, vagy ad hoc, feladatok, a biztonsági mentési feladatok portálon. A feladatok a portál beágyazás érhető el: az összes biztonsági mentési műveletek konfigurálása, manuálisan aktivált biztonsági mentési műveleteket, visszaállítási műveletek, regisztrációs és Fedezze fel az adatbázis-műveletek és állítsa le a biztonsági mentési műveletek. 
-![Speciális konfiguráció menü](./media/backup-azure-sql-database/jobs-list.png)
+#### <a name="use-the-azure-portal-for-adhoc-operations"></a>Az Azure portal használata az ad hoc ad hoc műveletek
+Az Azure Backup megjeleníti az összes manuálisan aktivált, vagy ad hoc, a feladatok a **biztonsági mentési feladatok** portálon. A feladatok érhetők el a **biztonsági mentési feladatok** portál tartalmazza:
+- Az összes konfigurálja a biztonsági mentési műveleteket.
+- Manuálisan aktivált biztonsági mentési műveleteket.
+- A visszaállítási műveleteket.
+- Regisztráció és Fedezze fel az adatbázis-műveletek.
+- Állítsa le a biztonsági mentési műveleteket. 
+
+![Biztonsági mentési feladatok portál](./media/backup-azure-sql-database/jobs-list.png)
 
 > [!NOTE]
-> Az összes ütemezett biztonsági mentési feladatok többek között a teljes, különbségi és Naplóalapú biztonsági mentés nem fognak megjelenni a portálon, és az SQL Server Management Studio használatával, az alább ismertetett figyelhető.
+> Az összes ütemezett biztonsági mentési feladatot, beleértve a teljes, különbségi és naplóalapú biztonsági mentés, nem láthatók a **biztonsági mentési feladatok** portálon. Az SQL Server Management Studio figyelése ütemezett biztonsági mentési feladatok, a következő szakaszban leírtak szerint.
 >
 
 #### <a name="use-sql-server-management-studio-for-backup-jobs"></a>A biztonsági mentési feladatok SQL Server Management Studio használata
-Az Azure Backup minden biztonsági mentési műveletek az SQL natív API-kat használ. Natív API-k, az összes feladat adatait lehet beolvasni a [SQL biztonságimásolat-készletet létrehozták tábla](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) az msdb adatbázisban.
+Az Azure Backup minden biztonsági mentési műveletek az SQL natív API-kat használ. A natív API-k segítségével kéri le az összes feladat adatait a [SQL biztonságimásolat-készletet létrehozták tábla](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) az msdb adatbázisban.
 
-Az alábbi példa egy lekérdezést beolvasni egy adatbázist, az összes biztonsági mentési feladat **DB1**. A lekérdezés speciális figyelés testre szabhatja.
+Az alábbi példa egy lekérdezést, amely beolvassa az összes biztonsági mentési feladat nevű adatbázishoz **DB1**. A lekérdezés a speciális monitorozás testreszabása.
+
 ```
 select CAST (
 Case type
@@ -649,141 +664,147 @@ backup_size AS BackupSizeInBytes
  
 ```
 
-### <a name="backup-alerts"></a>Biztonsági mentési riasztások
+### <a name="view-backup-alerts"></a>Biztonsági mentési riasztások megtekintése
 
-A naplóalapú biztonsági mentések előforduló 15 percenként a biztonsági mentési feladatok alkalmanként figyelése fárasztó lehet. Az Azure Backup a potenciálisan fárasztó helyzet tervezett azáltal, hogy minden biztonsági mentési hiba váltott e-mailes riasztásokhoz. Riasztások az adatbázis szintjén vannak konszolidált hibakód alapján. Például ha egy adatbázis több biztonsági mentési hibák, egyes sikertelen, riasztás fogadása helyett e-mailt kap az első sikertelen. Akkor is majd jelentkezzen be az Azure Portalon az adatbázishoz tartozó további hibák figyelése. 
+Mivel a naplóalapú biztonsági mentések fordulnak elő, 15 percenként, időnként, biztonsági mentési feladatok figyelése fárasztó feladat lehet. Az Azure Backup ebben a helyzetben segítséget nyújt. E-mailt a figyelmeztetéseket az összes biztonsági mentési hibák. Riasztások az adatbázis szintjén vannak konszolidált hibakód alapján. Értesítő e-mail érkezik, csak az első biztonsági mentés sikertelen egy adatbázis esetében. Jelentkezzen be az adatbázis összes hibák figyelése az Azure Portalon. 
 
 Biztonsági mentésekkel kapcsolatos riasztások figyelése:
 
 1. Jelentkezzen be az Azure-előfizetését a [az Azure portal](https://portal.azure.com).
 
-2. Nyissa meg a helyreállítási tár regisztrálva van az SQL virtuális gép.
+2. Nyissa meg a Recovery Services-tároló, amely regisztrálva van az SQL virtuális gép.
 
-3. A Recovery Services-tároló menüjében válassza **riasztások és események**. 
+3. Az a **Recovery Services-tároló** irányítópulton válassza **riasztások és események**. 
 
-   ![Speciális konfiguráció menü](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
+   ![Válassza ki a riasztások és események](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
 4. Az a **riasztások és események** menüjében válassza **biztonsági mentési riasztások** riasztások listájának megtekintéséhez.
 
-   ![Speciális konfiguráció menü](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
+   ![Válassza ki a biztonsági mentési riasztások](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
-### <a name="stop-protection-on-a-sql-server-database"></a>SQL Server-adatbázisok védelmének megszüntetése
+### <a name="stop-protection-for-a-sql-server-database"></a>SQL Server-adatbázisok védelmének megszüntetése
 
-Ha SQL Server-adatbázisok védelmének megszüntetéséhez az Azure Backup kéri, hogy szeretné-e őrizni a helyreállítási pontokat. SQL-adatbázisok védelmének leállítani két módja van:
+Az SQL Server-adatbázis védelmének leállításakor az Azure Backup kéri-e őrizni a helyreállítási pontokat. Kétféleképpen SQL-adatbázis védelmének megszüntetése:
 
-* Az összes jövőbeli biztonsági mentési feladatok leállítása és összes helyreállítási pont törlése
-* Állítsa le az összes jövőbeli biztonsági mentési feladatot, de hagyja meg a helyreállítási pontok 
+* Állítsa le az összes jövőbeli biztonsági mentési feladatot, és törli az összes helyreállítási pontot.
+* Állítsa le az összes jövőbeli biztonsági mentési feladatot, de hagyja meg a helyreállítási pontokat.
 
-A helyreállítási pontok meghagyásának végzi a költség, a helyreállítási pontok az SQL végrehajtása SQL-védett példány díja, valamint a felhasznált storage szolgáltatás díjszabása. Az SQL Azure Backup árairól kapcsolatos további információkért lásd: a [Azure Backup díjszabási oldala](https://azure.microsoft.com/pricing/details/backup/). Az adatbázis védelmének megszüntetése:
+A helyreállítási pontokat, hogy költsége van. A helyreállítási pontok az SQL számítunk fel az SQL-védett példány díja, valamint a felhasznált storage szolgáltatás díjszabása. Az SQL Azure Backup árairól kapcsolatos további információkért lásd: a [Azure Backup díjszabási oldala](https://azure.microsoft.com/pricing/details/backup/). 
 
-1. Nyissa meg a helyreállítási tár regisztrálva van az SQL virtuális gép.
+Egy adatbázis védelmének megszüntetése:
 
-2. Válassza ki a tároló irányítópultjának **használati** biztonsági másolati elemek a biztonsági másolati elemek menü megnyitásához.
+1. Nyissa meg a Recovery Services-tároló, amely regisztrálva van az SQL virtuális gép.
 
-    ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
+2. Az a **Recovery Services-tároló** irányítópult alatt **használati**válassza **biztonsági másolati elemek** megnyitásához a **biztonsági másolati elemek** menü.
 
-3. Az a **biztonsági másolati elemek** menüben válassza ki a biztonságimásolat-felügyelet típusa **SQL Azure-beli virtuális gépen**. 
+    ![A biztonsági másolati elemek menü megnyitásához](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
-    ![Kattintson a + biztonsági mentés, a biztonsági mentési cél menü megnyitása](./media/backup-azure-sql-database/sql-restore-backup-items.png)
+3. Az a **biztonsági másolati elemek** menü alatt **biztonságimásolat-kezelés típusa**válassza **SQL Azure-beli virtuális gépen**. 
 
-    A biztonsági mentési elemek listája itt állíthatja be az SQL Database-adatbázisok listájának megjelenítéséhez. 
+    ![Válassza ki az SQL Azure-beli virtuális gépen](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
-4. Az SQL-adatbázisok a listából válassza ki az adatbázis védelmét le szeretné.
+    A **biztonsági másolati elemek** menü SQL-adatbázisok listáját jeleníti meg. 
 
-    ![Válassza ki az SQL Azure-beli virtuális gépen a listából](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
+4. SQL-adatbázisok listájában válassza ki az adatbázis védelmének leállítása érdekében.
 
-    Ha az adatbázist választja, megnyílik a menü. 
+    ![Válassza ki az adatbázis védelmének megszüntetése](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-5. A kijelölt adatbázis menüben kattintson a **biztonsági mentés leállítása** leállítani az adatbázis védelme érdekében.
+    Ha az adatbázist választja, megnyílik a menü.
 
-    ![Válassza ki az adatbázis visszaállítása](./media/backup-azure-sql-database/stop-db-button.png)
+5. Válassza a menü a kiválasztott adatbázishoz, **biztonsági mentés leállítása**. 
+
+    ![Válassza ki a biztonsági mentés leállítása](./media/backup-azure-sql-database/stop-db-button.png)
 
     A **biztonsági mentés leállítása** menü megnyitása.
 
-6. Az a **biztonsági mentés leállítása** menüben válassza a biztonsági másolatok adatainak megőrzése, vagy a biztonsági másolatok adatainak törlése. Szükség esetén is adja meg a védelem és a egy megjegyzést leállításának oka.
+6. Az a **biztonsági mentés leállítása** menüben válassza ki a **biztonsági másolatok adatainak megőrzése** vagy **biztonsági másolatok adatainak törlése**. Szükség esetén itt adhatja meg a Leállítás, a védelem és a egy megjegyzés.
 
-    ![Válassza ki az adatbázis visszaállítása](./media/backup-azure-sql-database/stop-backup-button.png)
+    ![Állítsa le a biztonsági mentés menü](./media/backup-azure-sql-database/stop-backup-button.png)
 
-7. Kattintson a **biztonsági mentés leállítása** kikapcsolni a védelmet az adatbázison. 
+7. Válassza ki **biztonsági mentés leállítása** kikapcsolni a védelmet az adatbázison. 
 
 ### <a name="resume-protection-for-a-sql-database"></a>Az SQL-adatbázis védelmének folytatása
 
-Ha a **biztonsági másolatok adatainak megőrzése** lehetőséget választotta, amikor az SQL Database védelem leállításával, lehetőség a védelem folytatásához. Ha a rendszer nem őrzi meg a biztonsági mentési adatokat, a védelem nem folytatható. 
+Ha a **biztonsági másolatok adatainak megőrzése** lehetőséget választotta, amikor az SQL-adatbázis védelmét le lett állítva, folytathatja a védelmet. Ha a biztonsági mentési adatok nem őrződnek meg, a védelem nem folytatható. 
 
-1. Az SQL-adatbázis védelmének visszaállításához, nyissa meg a biztonsági mentési elemet, és kattintson **biztonsági mentés folytatása**.
+1. Az SQL-adatbázis védelmének visszaállításához, nyissa meg a biztonsági mentési elemet, és válassza **biztonsági mentés folytatása**.
 
-    ![adatbázis védelmének folytatása](./media/backup-azure-sql-database/resume-backup-button.png)
+    ![Válassza ki a biztonsági mentés folytatása adatbázis védelmének folytatása](./media/backup-azure-sql-database/resume-backup-button.png)
 
-   Ekkor megnyílik a biztonsági mentési szabályzat menüje.
+   A **biztonsági mentési szabályzat** menü megnyitása.
 
-2. Az a **biztonsági mentési szabályzat** menüben válasszon ki egy szabályzatot, és kattintson a **mentése**.
+2. Az a **biztonsági mentési szabályzat** menüben válasszon ki egy szabályzatot, és válassza **mentése**.
 
 ### <a name="trigger-an-adhoc-backup"></a>Eseményindító-ad hoc biztonsági mentés
 
-Az ad hoc biztonsági mentés, ha azt szeretné, is indíthat. Ad hoc ad hoc biztonsági mentések négy típusa van. Az egyes típusok, részletek: a cikk [típusok az SQL biztonsági másolatainak](https://docs.microsoft.com/sql/relational-databases/backup-restore/backup-overview-sql-server?view=sql-server-2017#types-of-backups).
+Ad hoc ad hoc biztonsági mentés indítása, igény szerint. Ad hoc ad hoc biztonsági mentések négy típusa van:
 
 * Teljes biztonsági mentés
-* Csak teljes biztonsági mentés másolása
+* Csak másolatot teljes biztonsági mentés
 * Különbségi biztonsági másolat
 * Naplóalapú biztonsági mentés
 
-### <a name="unregister-a-sql-server"></a>SQL-kiszolgáló regisztrációjának törlése
+További információ az egyes típusok: [típusok az SQL biztonsági másolatainak](https://docs.microsoft.com/sql/relational-databases/backup-restore/backup-overview-sql-server?view=sql-server-2017#types-of-backups).
 
-SQL-kiszolgáló regisztrációjának törlése, védelem eltávolítása után, de a tároló törlése előtt
+### <a name="unregister-a-sql-server-instance"></a>SQL Server-példány regisztrációjának törlése
 
-1. Nyissa meg a helyreállítási tár regisztrálva van az SQL virtuális gép.
+SQL Server-példány regisztrációját a védelem eltávolítása után, de a tároló törlése előtt:
 
-2. Az a **kezelés** szakasz a tároló menüjében kattintson **biztonsági mentési infrastruktúra**.  
+1. Nyissa meg a Recovery Services-tároló, amely regisztrálva van az SQL virtuális gép.
 
-   ![adatbázis védelmének folytatása](./media/backup-azure-sql-database/backup-infrastructure-button.png)
+2. Az a **Recovery Services-tároló** irányítópult alatt **kezelés**válassza **biztonsági mentési infrastruktúra**.  
 
-3. Az a **felügyeleti kiszolgálók** területén kattintson **védett kiszolgálók**.
+   ![Válassza ki a biztonsági mentési infrastruktúrára](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
-   ![adatbázis védelmének folytatása](./media/backup-azure-sql-database/protected-servers.png)
+3. A **felügyeleti kiszolgálók**válassza **védett kiszolgálók**.
 
-    A védett kiszolgálók menü megnyitása. 
+   ![Válassza ki a védett kiszolgálók](./media/backup-azure-sql-database/protected-servers.png)
 
-4. Az a **védett kiszolgálók** menüben válassza ki a kiszolgálót szeretné törölni a regisztrációját. Ha azt szeretné, törölje a tárat, meg kell összes kiszolgáló regisztrációját.
+    A **védett kiszolgálók** menü megnyitása. 
 
-5. A védett kiszolgálók menüben kattintson a jobb gombbal a védett kiszolgálón, és válassza ki **törlése**. 
+4. Az a **védett kiszolgálók** menüben válassza ki a kiszolgáló regisztrációjának törlése. A tároló törléséhez az összes kiszolgáló kell regisztrációját.
 
-   ![adatbázis védelmének folytatása](./media/backup-azure-sql-database/delete-protected-server.png)
+5. Az a **védett kiszolgálók** menüben kattintson a jobb gombbal a védett kiszolgálón, és válassza ki **törlése**. 
 
-## <a name="sql-database-backup-faq"></a>Az SQL database backup – gyakori kérdések
+   ![Válassza a Törlés](./media/backup-azure-sql-database/delete-protected-server.png)
+
+## <a name="faq"></a>Gyakori kérdések
 
 A következő szakaszban további információkat az SQL-adatbázis biztonsági mentése tartalmaz.
 
-### <a name="can-i-throttle-the-speed-of-the-sql-backup-policy-so-it-minimizes-impact-on-the-sql-server"></a>I szabályozhatja az SQL biztonsági mentési szabályzat sebességétől, az SQL server gyakorolt hatás minimálisra csökkenthető
+### <a name="can-i-throttle-the-speed-of-the-sql-server-backup-policy"></a>Szabályozhatja a sebességétől, az SQL Server biztonsági mentési szabályzatot?
 
-Igen, képes szabályozni a sebesség, a biztonsági mentési szabályzat hajt végre. A beállítás módosítása:
+Igen. A sebesség, amellyel a biztonsági mentési szabályzat hajt végre egy SQL Server-példány gyakorolt hatás minimalizálása érdekében szabályozhatja.
 
-1. Az SQL Server az a `C:\Program Files\Azure Workload Backup\bin` mappában nyissa meg **TaskThrottlerSettings.json**.
+A beállítás módosítása:
 
-2. Az a **TaskThrottlerSettings.json** fájl, módosítsa **DefaultBackupTasksThreshold** alacsonyabb értékre, ha például 5.
+1. Az SQL Server-példány a C:\Program Files\Azure munkaterhelés Backup\bin mappában nyissa meg a **TaskThrottlerSettings.json** fájlt.
 
-3. Mentse a módosítást, és zárja be a fájlt.
+2. A TaskThrottlerSettings.json fájlban módosítsa a **DefaultBackupTasksThreshold** (például 5) alacsonyabb értékűre állítja.
 
-4. Az SQL-kiszolgálón nyissa meg a Feladatkezelőt, és indítsa újra a **Azure Backup számítási feladatok koordinátora szolgáltatás**.
+3. Mentse a módosításokat. Zárja be a fájlt.
 
-### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Futtathatok egy teljes biztonsági mentés egy másodlagos replikáról
+4. Nyissa meg az SQL Server-példány **Feladatkezelő**. Indítsa újra a **Azure-beli biztonsági mentési számítási koordinátora szolgáltatás**.
 
-Nem, ez a funkció nem támogatott.
+### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Futtathatok egy teljes biztonsági mentés egy másodlagos replikáról?
 
-### <a name="do-successful-backup-jobs-create-alerts"></a>A sikeres biztonsági mentési feladatok ne hozzon létre riasztásokat
+Nem. Ez a funkció nem támogatott.
 
-Nem. A sikeres biztonsági mentési feladatok nem hoznak létre riasztásokat. Csak a biztonsági mentési feladatok sikertelenek, riasztást kap.
+### <a name="do-successful-backup-jobs-create-alerts"></a>A sikeres biztonsági mentési feladatok ne hozzon létre riasztásokat?
 
-### <a name="are-scheduled-backup-job-details-shown-in-the-jobs-menu"></a>A feladatok menü látható ütemezett biztonsági mentési feladat részleteit
+Nem. A sikeres biztonsági mentési feladatok ne készítsen riasztásokat. Csak a biztonsági mentési feladatok sikertelenek, riasztást kap.
 
-Nem. A feladatok menü ad hoc ad hoc feladat részleteit jeleníti meg, de nem jeleníti meg az ütemezett biztonsági mentési feladatot. Minden ütemezett biztonsági mentési feladat sikertelen, ha megtalálhatja a részletekről a sikertelen feladat riasztások. Ha azt szeretné, a figyelő minden ütemezett és ad hoc ad hoc biztonsági mentési feladatok, [az SQL Server Management Studio](backup-azure-sql-database.md#use-sql-server-management-studio-for-backup-jobs).
+### <a name="can-i-see-details-for-scheduled-backup-jobs-in-the-jobs-menu"></a>Láthatja a feladatok menü ütemezett biztonsági mentési feladatok részleteit?
 
-### <a name="if-i-select-a-sql-server-will-future-databases-automatically-be-added"></a>Ha kiválasztom a egy SQL server jövőbeli adatbázisok automatikusan hozzáadódnak
+Nem. A **biztonsági mentési feladatok** menü mutatja az ad hoc ad hoc feladat részleteit, de nem ütemezett biztonsági mentési feladatot. Ha bármely ütemezett biztonsági mentési feladat sikertelen, a részletek a sikertelen feladat riasztások érhető el. Figyelheti az összes ütemezett és ad hoc ad hoc biztonsági mentési feladatot, használja [SQL Server Management Studio](backup-azure-sql-database.md#use-sql-server-management-studio-for-backup-jobs).
 
-Nem. Ha egy SQL server védelmének beállítása, ha a kiszolgáló szintjén jelölőnégyzet bejelölésével, minden adatbázis ad hozzá. Azonban ha az adatbázisok az SQL server védelmének konfigurálása után vesz fel, manuálisan kell hozzáadni az új adatbázisok a védelmükhöz. Az adatbázisok nem automatikusan szerepelnek a konfigurált védelmet.
+### <a name="when-i-select-a-sql-server-instance-are-future-databases-automatically-added"></a>Ha kiválasztom a egy SQL Server-példány azok automatikusan hozzáadott jövőbeli adatbázisok?
 
-### <a name="if-i-change-the-recovery-model-how-do-i-restart-protection"></a>Ha módosítom a helyreállítási modell hogyan tegye újraindítok védelmét
+Nem. Amikor konfigurál egy SQL Server-példány védelmét, ha a kiszolgáló szintű lehetőséget választja, az összes adatbázis kerülnek. Adatbázisok hozzáadása SQL Server-példányra védelem konfigurálása után, ha manuálisan kell hozzáadni az új adatbázisok biztosítja a védelmet. Az adatbázisok automatikusan nem szerepelnek a konfigurált védelmet.
 
-Ha módosítja a helyreállítási modell, indítson egy teljes biztonsági mentést, és a naplóalapú biztonsági mentések a várt módon megkezdődik.
+### <a name="if-i-change-the-recovery-model-how-do-i-restart-protection"></a>Ha módosítom a helyreállítási modell, hogyan tegye újraindítok védelmét?
+
+Indítson egy teljes biztonsági mentést. Naplóalapú biztonsági mentések a várt módon kezdődik.
 
 ### <a name="can-i-protect-sql-always-on-availability-groups-where-the-primary-replica-is-on-premises"></a>SQL Always On rendelkezésre állási csoportok az elsődleges másodpéldány esetén a helyszínen is védeni
 
@@ -791,7 +812,7 @@ Nem. Az Azure Backup védi az Azure-ban futó SQL-kiszolgálók. Ha egy rendelke
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Backuppal kapcsolatos további információért tekintse meg a titkosított virtuális gépek biztonsági mentéséhez készült PowerShell-mintát.
+Az Azure Backuppal kapcsolatos további tudnivalókért tekintse meg a titkosított virtuális gépek biztonsági mentése az Azure PowerShell-minta.
 
 > [!div class="nextstepaction"]
-> [Titkosított virtuális gép biztonsági mentése](./scripts/backup-powershell-sample-backup-encrypted-vm.md)
+> [Készítsen biztonsági másolatot egy titkosított virtuális gép](./scripts/backup-powershell-sample-backup-encrypted-vm.md)

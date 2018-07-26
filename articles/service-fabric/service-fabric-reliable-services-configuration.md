@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c320f27dd53f0545ff5074d2d4f5a7bdd445fd89
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: f2af7c65d42cbbec28fd511be18c72a6cd3c3d0c
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866178"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249019"
 ---
 # <a name="configure-stateful-reliable-services"></a>A stateful reliable services konfigurálása
 Nincsenek konfigurációs beállításait a reliable services két csoportját. Egy, a fürt összes reliable Services globális, viszont a többi csoport csak egy adott megbízható szolgáltatás.
@@ -124,6 +124,7 @@ ReplicatorConfig
 | SharedLogId |GUID |"" |Adja meg egy egyedi GUID Azonosítót a megosztott naplófájlban, és a replika használt azonosítására használható. Szolgáltatások általában, ne használja ezt a beállítást. Azonban ha SharedLogId van megadva, majd SharedLogPath is kötelező. |
 | SharedLogPath |Teljes elérési útja |"" |Itt adhatja meg a teljes elérési útja, ahol létrejön a megosztott naplófájlt a replika. Szolgáltatások általában, ne használja ezt a beállítást. Azonban ha SharedLogPath van megadva, majd SharedLogId is kötelező. |
 | SlowApiMonitoringDuration |másodperc |300 |Megadja a figyelési időközt felügyelt API-hívások. Példa: felhasználó által megadott biztonsági mentési visszahívást függvény. Az intervallum letelte után egy figyelmeztetés állapotjelentés küldi el a Health Manager. |
+| LogTruncationIntervalSeconds |másodperc |0 |Konfigurálható időköz, mely log csonkolása megkezdődik a minden egyes replikának. Győződjön meg, hogy a napló is csonkolva van, az időtartam helyett csak napló mérete alapján szolgál. Ez a beállítás is arra kényszeríti a törölt bejegyzések végleges törlésére a megbízható szótárban. Ezért azt segítségével győződjön meg arról, hogy a rendszer a törölt elemek időben üríti ki. |
 
 ### <a name="sample-configuration-via-code"></a>Minta konfigurációs kódot keresztül
 ```csharp

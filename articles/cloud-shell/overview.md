@@ -12,21 +12,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 07/24/2018
 ms.author: juluk
-ms.openlocfilehash: 4ee02bc2a1956994da0ba49a24eefabf9608565c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9588bebdc827760f0e0d3e2aadccbff5f24723f1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856460"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258925"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
 Az Azure Cloud Shell egy interaktív, a böngésző által elérhető shell Azure-erőforrások kezeléséhez.
 Biztosít munkamódszer leginkább megfelelő rendszerhéj-felületet válassza.
 A Linuxot használók választhatják a Basht, a Windows-használók pedig a PowerShellt.
 
-Próbálja a shell.azure.com, ez a gomb használatával.
+Próbálja a shell.azure.com alábbi gombra kattintva.
 
 [![](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
 
@@ -34,7 +34,7 @@ Próbálja ki az Azure Portalról, a Cloud Shell ikon használatával.
 
 ![Portál indítása](media/overview/portal-launch-icon.png)
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Áttekintés
 ### <a name="browser-based-shell-experience"></a>Böngészőalapú rendszerhéj-felület
 A cloud Shell lehetővé teszi a hozzáférést egy beépített szem előtt az Azure felügyeleti feladatainak parancssori böngészőalapú felület.
 Használja ki a Cloud Shell működik a helyi gépről untethered oly módon csak a felhőben is biztosítanak.
@@ -49,7 +49,12 @@ Linux-felhasználók használhatja a Cloud Shellben, a Bash közben Windows felh
 ### <a name="authenticated-and-configured-azure-workstation"></a>Hitelesített és konfigurált Azure munkaállomás
 A cloud Shell Microsoft által kezelt, népszerű parancssori eszközökkel és a nyelvi támogatás származik. A cloud Shell is biztonságosan hitelesíti automatikusan azonnali hozzáférés az erőforrásokhoz az Azure CLI 2.0 vagy az Azure PowerShell parancsmagokon keresztül.
 
-Megtekintheti az összes [eszközök listája.](features.md#tools)
+Megtekintheti az összes [a Cloud Shellben telepített eszközök listáját.](features.md#tools)
+
+### <a name="integrated-cloud-shell-editor"></a>Integrált Cloud Shell-szerkesztő
+A cloud Shell biztosít egy integrált grafikus szövegszerkesztőben a nyílt forráskódú Monaco szerkesztő alapján. Egyszerűen hozzon létre, és szerkessze a konfigurációs fájlokat futtatásával `code .` a zökkenőmentes üzembe helyezése az Azure CLI 2.0-t vagy az Azure Powershellen keresztül.
+
+[További információ a Cloud Shell-szerkesztő](using-cloud-shell-editor.md).
 
 ### <a name="multiple-access-points"></a>Több kapcsolódási pont
 A cloud Shell rugalmas eszköz használható a következő:

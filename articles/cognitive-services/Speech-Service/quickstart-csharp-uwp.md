@@ -10,22 +10,20 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4599c3c4c69397a1ab1f65c246e4440085b8bb91
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 751736a4333932a68775589dddeb82ef6fa6f398
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072569"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258208"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>Gyors útmutató: Recognize speech, a beszéd SDK használatával egy UWP-alkalmazás
 
 Ebből a cikkből megismerheti, hogyan hozhat létre a Cognitive Services beszédfelismerő SDK segítségével beszédfelismerés lefényképezze az univerzális Windows Platform (UWP) alkalmazást.
-Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+Az alkalmazás össze lett a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
 
 > [!NOTE]
-> A beszédfelismerés SDK-val készített UWP-alkalmazás még nem adnak át a Windows App Certification Kit (WACK).
-> Az alkalmazások közvetlen telepítéséhez elküldése egy alkalmazást a Windows Store nincs lehetőség.
-> Ez javítja a soron következő kiadásban.
+> A Universal Windows Platform lehetővé teszi, hogy fejleszthet alkalmazásokat, amelyek futtatása bármilyen eszközön, amely támogatja a Windows 10 rendszerű számítógépek, az Xbox, a Surface hubra és a más eszközök. A beszédfelismerés SDK-t használó alkalmazások még nem adnak át a Windows App Certification Kit (WACK). Az alkalmazás, de előfordulhat, hogy nem jelenleg beküldeni a Windows Store közvetlenül lehetőség.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,12 +44,12 @@ Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK Nu
 
     ![](media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
-1. Ha egy 64 bites Windows telepítés futtatja, a build platform előfordulhat, hogy váltson át `x64`:
+1. Ha egy 64 bites Windows telepítés futtatja, a build platform előfordulhat, hogy váltson át `x64`.
 
    ![Váltson a build platform x64](media/sdk/qs-csharp-uwp-03-switch-to-x64.png)
 
    > [!NOTE]
-   > Jelenleg a Speech SDK nem támogatja a célként megadott ARM processzorokra.
+   > Jelenleg a Speech SDK az Intel-kompatibilis processzorral, de nem ARM támogatja.
 
 1. Telepítse, és hivatkozni a [beszéd SDK NuGet-csomagot](https://aka.ms/csspeech/nuget). A megoldáskezelőben kattintson a jobb gombbal a megoldás, és válassza ki **NuGet-csomagok kezelése megoldáshoz**.
 
@@ -61,11 +59,11 @@ Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK Nu
 
     ![Telepítse a NuGet-csomag Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-uwp-05-nuget-install-0.5.0.png "telepítse a Nuget-csomag")
 
-1. A felugró licenc képernyőn fogadja el a licenc:
+1. Fogadja el a licencet, a megjelenő párbeszédpanelen.
 
     ![Fogadja el a licencfeltételeket](media/sdk/qs-csharp-uwp-06-nuget-license.png "fogadja el a licencfeltételeket")
 
-1. A Package Manager konzol a következő kimeneti sort kell megjelennie:
+1. A Package Manager konzol a következő kimeneti sor jelenik meg.
 
    ```text
    Successfully installed 'Microsoft.CognitiveServices.Speech 0.5.0' to helloworld
@@ -78,13 +76,14 @@ Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK Nu
 
    ![](media/sdk/qs-csharp-uwp-07-capabilities.png)
 
-1. Ehhez kattintson duplán az alkalmazás felhasználói felületén szerkessze `MainPage.xaml` a Megoldáskezelőben.
-   A Tervező XAML nézetben, helyezze be a következő XAML-kódrészlet a rács címke (közötti `<Grid>` és `</Grid>`):
+1. Ehhez kattintson duplán az alkalmazás felhasználói felületén szerkessze `MainPage.xaml` a Megoldáskezelőben. 
+
+    A Tervező XAML nézetben, helyezze be a következő XAML-kódrészlet a rács címke (közötti `<Grid>` és `</Grid>`).
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
 1. Ehhez kattintson duplán a XAML háttérkód szerkesztése `MainPage.xaml.cs` a Megoldáskezelőben (alatt vannak csoportosítva a `MainPage.xaml` elem).
-   Cserélje le az összes kód a következőket:
+   Cserélje le ezt a fájlt a kód a következő.
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
@@ -96,7 +95,7 @@ Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK Nu
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. Hozza létre az alkalmazást. A menüsávban válassza **összeállítása** > **megoldás fordítása**. A kódot kell fordítási hibák nélkül most:
+1. Hozza létre az alkalmazást. A menüsávban válassza **összeállítása** > **megoldás fordítása**. A kódot kell fordítási hibák nélkül most.
 
     ![A build sikeres létrehozása](media/sdk/qs-csharp-uwp-08-build.png "build sikeres létrehozása")
 
@@ -108,8 +107,7 @@ Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK Nu
 
     ![Az alkalmazás elindításához az into hibakeresés](media/sdk/qs-csharp-uwp-10-access-prompt.png "indítsa el az alkalmazást into hibakeresés")
 
-1. Kattintson a **mikrofon bemenettel beszédfelismerés** és a egy rövid kifejezés beszéljen a mikrofont.
-   A beszédfelismerés felismerés eredményét a grafikus felhasználói felületen megjelenített kell lennie.
+1. Kattintson a **mikrofon bemenettel beszédfelismerés** és a egy rövid kifejezés beszéljen az eszköz mikrofonját. A felismert szöveget az ablakban jelenik meg.
 
     ![](media/sdk/qs-csharp-uwp-11-ui-result.png)
 

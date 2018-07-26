@@ -10,17 +10,17 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 07f22345d2bf8c481091652d9faa0bdd10205fdb
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: f3b181c8d65cf8618b7599a999b2b8edf20ed809
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072572"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259027"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>Gyors útmutató: Recognize speech mellett a Windows, a beszéd SDK-val .NET-keretrendszer C#-ban
 
 Ebből a cikkből elsajátíthatja, hogyan hozzon létre egy C# konzolalkalmazást a beszédfelismerés lefényképezze a Cognitive Services beszédfelismerő SDK segítségével Windows .NET-keretrendszer.
-Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+Az alkalmazás össze lett a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,9 +47,15 @@ Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK Nu
 
     ![Telepítse a NuGet-csomag Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-dotnet-windows-03-nuget-install-0.5.0.png "telepítse a Nuget-csomag")
 
-1. A felugró licenc képernyőn fogadja el a licenc:
+1. Fogadja el a licencet, a megjelenő párbeszédpanelen.
 
     ![Fogadja el a licencfeltételeket](media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "fogadja el a licencfeltételeket")
+
+1. A Package Manager konzol a következő kimeneti sor jelenik meg.
+
+   ```text
+   Successfully installed 'Microsoft.CognitiveServices.Speech 0.5.0' to helloworld
+   ```
 
 ## <a name="create-a-platform-configuration-matching-your-pc-architecture"></a>A számítógép architektúrájának megfelelő platform konfiguráció létrehozása
 
@@ -69,7 +75,7 @@ Ebben a szakaszban egy új platformra a konfigurációt, amely megfelel a proces
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
-1. Az a `Program.cs` fájlt a Visual Studio-projektek, cserélje ki az összes kódot a következőre:
+1. Nyissa meg `Program.cs` projektre a Visual studióban, és cserélje le ezt a fájlt a kód a következő.
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
@@ -81,7 +87,7 @@ Ebben a szakaszban egy új platformra a konfigurációt, amely megfelel a proces
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. Hozza létre az alkalmazást. A menüsávban válassza **összeállítása** > **megoldás fordítása**. A kódot kell fordítási hibák nélkül most:
+1. Hozza létre az alkalmazást. A menüsávban válassza **összeállítása** > **megoldás fordítása**. A kódot kell fordítási hibák nélkül most.
 
     ![A build sikeres létrehozása](media/sdk/qs-csharp-dotnet-windows-08-build.png "build sikeres létrehozása")
 
@@ -89,8 +95,7 @@ Ebben a szakaszban egy új platformra a konfigurációt, amely megfelel a proces
 
     ![Az alkalmazás elindításához az into hibakeresés](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "indítsa el az alkalmazást into hibakeresés")
 
-1. A konzolablakban hibaikonra, azaz valami (angolul), és felszólítja a.
-   A felismerés eredményét képernyő jelenik meg.
+1. A konzolablakban jelenik meg, például valamit (angolul), és felszólítja a. A felismert szöveget majd ugyanabban az ablakban jelenik meg.
 
     ![Sikeres felismerés után konzolkimenetet](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Konzolkimenetet követően sikeres felismerése")
 
