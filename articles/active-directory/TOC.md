@@ -46,6 +46,7 @@
 ## Felhasználók kezelése
 ### [Új felhasználók hozzáadása az Azure AD-hez](fundamentals/add-users-azure-active-directory.md)
 ### [Felhasználói profilok kezelése](fundamentals/active-directory-users-profile-azure-portal.md)
+### [Felhasználói jelszavak alaphelyzetbe állítása](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Fiókok megosztása](active-directory-sharing-accounts.md)
 ### [Felhasználók hozzárendelése rendszergazdai szerepkörökhöz ](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [Törölt felhasználó visszaállítása](fundamentals/active-directory-users-restore.md)
@@ -113,26 +114,32 @@
 ### [Veszélyeztetett felhasználók](active-directory-reporting-security-user-at-risk.md)
 ### [Kockázatos bejelentkezések](active-directory-reporting-security-risky-sign-ins.md)
 ### [Kockázati események](active-directory-reporting-risk-events.md)
+### [Naplók monitorozása az Azure Monitorral](reporting-azure-monitor-diagnostics-overview.md)
 ### [GYIK](active-directory-reporting-faq.md)
+
 ### Feladatok
 #### [Nevesített helyek konfigurálása](active-directory-named-locations.md)
 #### [Tevékenységjelentések keresése](active-directory-reporting-migration.md)
-#### [Az Azure Active Directory Power BI-tartalomcsomag használata](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Az Azure AD Power BI-tartalomcsomag használata](active-directory-reporting-power-bi-content-pack-how-to.md)
 #### [Kockázatosként megjelölt felhasználók szervizelése](active-directory-report-security-user-at-risk-remediation.md)
+#### [Tevékenységnaplók irányítása egy Azure Event Hub-központba](reporting-azure-monitor-diagnostics-azure-event-hub.md)
+#### [Tevékenységnaplók archiválása egy Azure Storage-fiókba](reporting-azure-monitor-diagnostics-azure-storage-account.md)
+#### [Tevékenységnaplók integrálása a Splunkkal az Azure Monitor használatával](reporting-azure-monitor-diagnostics-splunk-integration.md)
+
 ### Referencia
 #### [Megőrzés](active-directory-reporting-retention.md)
 #### [Késések](active-directory-reporting-latencies-azure-portal.md)
 #### [Naplózott tevékenységekre vonatkozó referencia](active-directory-reporting-activity-audit-reference.md)
 #### [Bejelentkezési tevékenységek hibakódjai](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md)
-
+#### [Az auditnaplók sémájának értelmezése az Azure Monitorban](reporting-azure-monitor-diagnostics-audit-log-schema.md)
+#### [A bejelentkezési napló sémájának értelmezése az Azure Monitorban](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
 ### Hibaelhárítás
 #### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Az Azure Active Directory-tevékenységnaplók tartalomcsomag-hibái](active-directory-reporting-troubleshoot-content-pack.md)
-#### [Hibák az Azure Active Directory Reporting API-ban](active-directory-reporting-troubleshoot-graph-api.md)
-
+#### [Azure AD-tevékenységnaplók tartalomcsomag hibái](active-directory-reporting-troubleshoot-
+#### [Az Azure AD Reporting API hibái](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [Szoftveres hozzáférés](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [Előfeltételek](active-directory-reporting-api-prerequisites-azure-portal.md)
@@ -140,13 +147,11 @@
 #### [Bejelentkezési minták](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Tanúsítványok használata](active-directory-reporting-api-with-certificates.md)
 
-## Jelszavak kezelése (active-directory/authentication/concept-sspr-howitworks.md)
+## [Jelszavak kezelése](authentication/concept-sspr-howitworks.md)
 ### Felhasználói dokumentumok
 #### [Jelszó visszaállítása vagy módosítása](user-help/active-directory-passwords-update-your-own-password.md)
-#### [Ajánlott eljárások a jelszavakhoz](active-directory-secure-passwords.md)
 #### [Regisztráció önkiszolgáló jelszó-visszaállításra](user-help/active-directory-passwords-reset-register.md)
-### Informatikai rendszergazdák: Új jelszavak kérése
-#### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
+
 
 ## Eszközök kezelése
 ### [Bevezetés](device-management-introduction.md)

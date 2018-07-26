@@ -131,6 +131,9 @@
   items:
     - name: Számlázásautomatizálási forgatókönyvek
       href: billing-cost-management-automation-scenarios.md
+      items:
+        - name: Költségek kezelése az Azure Budgetsszel
+          href: billing-cost-management-budget-scenario.md
     - name: Az Azure számlázási API áttekintése
       href: billing-usage-rate-card-overview.md
       items:
