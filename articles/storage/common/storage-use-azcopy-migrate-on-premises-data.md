@@ -10,12 +10,12 @@ ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 3f9735a1e5a6973ab1c1c3f575cf3aa345a3a5a4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4e2d891705cbe4d51ddc6af6fe178257424220ab
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267442"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205323"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Helyszíni adatok migrálása felhőtárhelybe az AzCopyval
 
@@ -70,7 +70,7 @@ Az AzCopyval feltöltheti egy mappa összes fájlját a Blob Storage-ba [Windows
         --recursive
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /S
+    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S
 ---
 
 Cserélje le a `<key>` és `key` értékeket a fiók kulcsára. Az Azure Portalon a fiókkulcs lekéréséhez válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Válasszon ki egy kulcsot, majd illessze be az AzCopy-parancsba. Ha a célként megadott tároló nem létezik, az AzCopy létrehozza, majd feltölti a fájlt a tárolóba. Frissítse az adatkönyvtár forrásútvonalát, és cserélje le a **myaccount** kifejezést a tárfiókja nevére a cél URL-címében.
@@ -91,7 +91,7 @@ Ha csak azokat az erőforrásokat szeretné átmásolni a forrásból, amelyek n
     --exclude-older
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /S /XO
+    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S /XO
 ---
 
 ## <a name="create-a-scheduled-task-or-cron-job"></a>Ütemezett vagy cron feladat létrehozása 
@@ -104,7 +104,7 @@ Másolja az AzCopy-parancsot egy szövegszerkesztőbe. Frissítse az AzCopy-para
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
     cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
-    AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
+    AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
 ---
 
 Az AzCopy a részletes `--verbose` (Linux) vagy `/V` (Windows) beállítással fut. A kimenet egy naplófájlba lesz átirányítva. 

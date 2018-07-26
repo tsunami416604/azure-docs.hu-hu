@@ -3,25 +3,25 @@ title: 'Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függv
 description: A jelen oktatóanyagban összetett lekérdezési műveleteket fog végrehajtani felhasználói JavaScript-függvényekkel.
 keywords: javascript, felhasználói függvények, udf
 services: stream-analytics
-author: SnehaGunda
+author: rodrigoamicrosoft
 manager: kfile
 ms.assetid: ''
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
-ms.author: sngun
-ms.openlocfilehash: f3a94017b95eb614669fa42594fe3a3499c74be7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: rodrigoa
+ms.openlocfilehash: a50b96f128fb32b8ac7b7b9971beeb3b12397b5f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31415296"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39184978"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei
-
+ 
 Az Azure Stream Analytics támogatja a JavaScript nyelven írt felhasználói függvényeket. A JavaScript által biztosított **String**, **RegExp**, **Math**, **Array** és **Date** metódusok széles választékának köszönhetően könnyebben hozhatók létre összetett adatátalakítások Stream Analytics-feladatokkal.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A felhasználói JavaScript-függvények támogatják a külső kapcsolatokat nem igénylő, állapot nélküli, csak számítási skaláris függvényeket. Egy függvény visszaadott értéke csak skaláris (egyetlen) érték lehet. Miután hozzáadott egy felhasználói JavaScript-függvényt egy feladathoz, bárhol használhatja a függvényt a lekérdezésben, egy beépített skaláris függvényhez hasonlóan.
 
 Az alábbiakban bemutatunk néhány forgatókönyvet, amelyekben hasznosnak találhatja a felhasználói JavaScript-függvényeket:
-* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()**) tartalmazó karakterláncok elemzése és módosítása.
+* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()**) tartalmazó sztringek elemzése és módosítása.
 * Adatok dekódolása és kódolása, például bináris adatok átalakítása hexadecimális adatokká.
 * Matematikai számítások végrehajtása JavaScript **Math** függvényekkel.
 * Tömbműveletek, például rendezés, összekapcsolás, keresés és kitöltés végrehajtása.
@@ -99,7 +99,7 @@ Stream Analytics | JavaScript
 bigint | Szám (a JavaScript legfeljebb pontosan a 2^53-ig tudja a számokat kezelni)
 DateTime | Dátum (a JavaScript csak az ezredmásodperceket támogatja)
 double | Szám
-nvarchar(MAX) | Karakterlánc
+nvarchar(MAX) | Sztring
 Record | Objektum
 Tömb | Tömb
 NULL | Null
@@ -112,7 +112,7 @@ JavaScript | Stream Analytics
 --- | ---
 Szám | Bigint (ha a szám kerek és a long.MinValue és a long.MaxValue közé esik, máskülönben double)
 Dátum | DateTime
-Karakterlánc | nvarchar(MAX)
+Sztring | nvarchar(MAX)
 Objektum | Record
 Tömb | Tömb
 Null, nem definiált | NULL
@@ -125,7 +125,7 @@ A JavaScript futásidejű hibái végzetesnek minősülnek, és a tevékenységn
 ## <a name="other-javascript-user-defined-function-patterns"></a>Egyéb felhasználói JavaScript-függvényminták
 
 ### <a name="write-nested-json-to-output"></a>Beágyazott JSON írása a kimenetbe
-Ha van még egy további feldolgozási lépés, amely a Stream Analytics-feladat kimenetét használja a bemeneteként, és JSON-formátumot igényel, a kimenetbe írhat JSON-karakterláncot. A következő példa a **JSON.stringify()** függvény meghívásával becsomagolja a bemenetben lévő összes név/érték párt, majd egyetlen karakterláncértékként írja azokat a kimenetbe.
+Ha van még egy további feldolgozási lépés, amely a Stream Analytics-feladat kimenetét használja a bemeneteként, és JSON-formátumot igényel, a kimenetbe írhat JSON-sztringet. A következő példa a **JSON.stringify()** függvény meghívásával becsomagolja a bemenetben lévő összes név/érték párt, majd egyetlen sztringértékként írja őket a kimenetbe.
 
 **Felhasználói JavaScript-függvény definíciója:**
 

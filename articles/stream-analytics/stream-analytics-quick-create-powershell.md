@@ -2,24 +2,24 @@
 title: Stream Analytics-feladat létrehozása az Azure PowerShell használatával
 description: Ez az útmutató azt mutatja be, hogy hogyan lehet egy Azure Stream Analytics-feladatot létrehozni és futtatni az Azure PowerShell-modul használatával.
 services: stream-analytics
-author: SnehaGunda
-ms.author: sngun
+author: sidramadoss
+ms.author: sidram
 ms.date: 05/14/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 2b5d8bfd6dbe36637a0c6873e941118e7ee71b80
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 18903dfbe187de73a6edb14196fa29e02d35dbca
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212432"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185380"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-azure-powershell"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure PowerShell használatával
 
 Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancsmagokkal vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató azt mutatja be, hogy hogyan lehet egy Azure Stream Analytics-feladatot létrehozni és futtatni az Azure PowerShell-modul használatával. 
-
+ 
 A példafeladat streamadatokat olvas az Azure Blob Storage egyik blobjából. Az ebben az útmutatóban használt bemeneti adatfájl statikus adatokat tartalmaz, illusztrációs céllal. Egy valós forgatókönyvben a Stream Analytics-feladathoz streamelt bemeneti adatokat használnánk. Ezután a feladat átalakítja az adatokat a Stream Analytics lekérdezési nyelv használatával, és kiszámolja a 100° feletti hőmérsékletek átlagát. Végül az eredményül kapott kimeneti eseményeket egy másik fájlba írja. 
 
 ## <a name="before-you-begin"></a>Előkészületek

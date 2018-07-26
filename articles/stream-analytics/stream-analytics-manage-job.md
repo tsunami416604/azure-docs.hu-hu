@@ -2,23 +2,23 @@
 title: 'Oktatóanyag: Stream Analytics-feladat létrehozása és kezelése az Azure Portallal | Microsoft Docs'
 description: Ez az oktatóanyag átfogóan bemutatja, hogyan használható az Azure Stream Analytics a csaló hívások elemzésére a telefonhívási streamekben.
 services: stream-analytics
-author: SnehaGunda
-ms.author: sngun
+author: sidramadoss
+ms.author: sidram
 manager: kfile
 ms.service: stream-analytics
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 524b15747a275c76fec6c529e4f00d0da1b41420
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 39b39a1d00c91e0ff114a28c13da0d4b6920ec13
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32778189"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186230"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Stream Analytics-feladat létrehozása telefonhívás-adatok elemzésére és az eredmények Power BI-irányítópulton való vizualizációjára
-
+ 
 Ez az oktatóanyag bemutatja, hogyan elemezhet egy ügyfélalkalmazás által létrehozott minta-telefonhívást az Azure Stream Analytics segítségével. Az ügyfélalkalmazás által létrehozott telefonhívás-adatok csaló hívásokat tartalmaznak, és meghatározunk egy Stream Analytics-feladatot az ilyen hívások szűréséhez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -36,7 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).  
-* Jelentkezzen be az [Azure portálra](https://portal.azure.com/).  
+* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).  
 * Töltse le a [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefonhívás-eseménykészítő alkalmazást a Microsoft letöltőközpontjából, vagy szerezze be a forráskódot a [GitHubról](https://aka.ms/azure-stream-analytics-telcogenerator).  
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event Hub létrehozása 

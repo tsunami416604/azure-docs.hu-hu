@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: e7aa675e849fb8c4dac0bfb5a1ae44dd16ca25e3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4acd8286cb8635f9a76815c936328a7c441e3115
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539205"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187148"
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a PowerShell használatával
 
@@ -85,7 +85,7 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'ExamplePas
 A titkos kódban tárolt érték megtekintése egyszerű szövegként:
 
 ```azurepowershell
-(get-azurekeyvaultsecret -vaultName "Contosokeyvault" -name "ExamplePassword").SecretValueText
+(Get-AzureKeyVaultSecret -vaultName "Contosokeyvault" -name "ExamplePassword").SecretValueText
 ```
 
 Most létrehozott egy Key Vaultot, tárolt egy titkos kulcsot, és lekérte azt.
