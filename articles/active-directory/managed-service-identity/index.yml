@@ -1,10 +1,16 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 7649d78e764c547f2211d8993514a1b793d76609
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264048"
 documentType: LandingData
 title: Az Azure Active Directory felügyeltszolgáltatás-identitás dokumentációja
 metadata:
   document_id: 
   title: Az Azure Active Directory felügyeltszolgáltatás-identitás dokumentációja
-  description: Megtudhatja, hogyan használhatja a felügyeltszolgáltatás-identitást (MSI) az Azure-felhőszolgáltatásokhoz való hitelesítésre anélkül, hogy a hitelesítő adatokat a forráskódban kellene tárolnia.
+  description: Megtudhatja, hogyan használhatja a Managed Service Identityt az Azure-felhőszolgáltatásokkal való hitelesítésre anélkül, hogy a hitelesítő adatokat a forráskódban kellene tárolnia.
   services: active-directory
   ms.component: msi
   author: daveba
@@ -15,19 +21,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/16/2018
   ms.author: daveba
-  ms.openlocfilehash: ca90d9d2bb3fffb65d2cefe156d0425de9634bdd
-  ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/20/2018
-  ms.locfileid: "34354282"
 abstract:
-  description: A felügyeltszolgáltatás-identitás (MSI) automatikusan felügyelt identitást biztosít az Azure-szolgáltatások számára az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással bármely, Azure AD-hitelesítést támogató szolgáltatáshoz végezhet hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.  Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre és kezelhet felügyeltszolgáltatás-identitásokat.
+  description: A Managed Service Identity (MSI) automatikusan felügyelt identitást biztosít az Azure-szolgáltatások számára az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással bármely, Azure AD-hitelesítést támogató szolgáltatáshoz végezhet hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.  Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre és kezelhet felügyeltszolgáltatás-identitásokat.
 sections:
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: Megtudhatja, hogyan érheti el az Azure Resource Manager API-t a felügyeltszolgáltatás-identitás (MSI) használatával
+    text: Megtudhatja, hogyan érheti el az Azure Resource Manager API-t a Managed Service Identity (MSI) használatával
   - type: list
     style: unordered
     items:
@@ -36,7 +36,7 @@ sections:
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Megtudhatja, hogyan érheti el biztonságosan az Azure-erőforrásokat a felügyeltszolgáltatás-identitás (MSI) használatával
+    text: Megtudhatja, hogyan érheti el biztonságosan az Azure-erőforrásokat a Managed Service Identity (MSI) használatával
   - type: paragraph
     text: Windows VM/VMSS
   - type: list

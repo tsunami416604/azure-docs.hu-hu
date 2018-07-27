@@ -387,24 +387,26 @@
           href: create-azure-ssis-integration-runtime.md
     - name: SSIS-csomagok futtatása az Azure-ban
       items:
-        - name: Az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
-          href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS IR-hez
-          href: enable-aad-authentication-azure-ssis-ir.md
-        - name: Az Azure SSIS IR konfigurálása nagy teljesítményre
-          href: configure-azure-ssis-integration-runtime-performance.md
-        - name: Az Azure SSIS IR Enterprise Edition kiadásának üzembe helyezése
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
-        - name: Az Azure SSIS IR telepítésének testreszabása
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Az Azure SSIS IR licencelt összetevőinek telepítése
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
         - name: SSIS-csomagok futtatása az SSIS-csomagok végrehajtása tevékenységgel
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: SSIS-csomagok futtatása tárolt eljárási tevékenységgel
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Azure-SSIS integrációs modul ütemezése
           href: how-to-schedule-azure-ssis-integration-runtime.md
+        - name: Az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
+          href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS IR-hez
+          href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Az Azure SSIS IR Enterprise Edition kiadásának üzembe helyezése
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Az Azure SSIS IR telepítésének testreszabása
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Az Azure SSIS IR licencelt összetevőinek telepítése
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
+        - name: Az Azure SSIS IR konfigurálása nagy teljesítményre
+          href: configure-azure-ssis-integration-runtime-performance.md
+        - name: Az Azure SSIS IR vészhelyreállításának konfigurálása
+          href: configure-bcdr-azure-ssis-integration-runtime.md
     - name: Eseményindítók létrehozása
       items:
         - name: Ütemezési eseményindító létrehozása

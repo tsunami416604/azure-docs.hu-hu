@@ -55,6 +55,8 @@
       href: container-registry-get-started-docker-cli.md
     - name: Az adattárak megtekintése
       href: container-registry-repositories.md
+    - name: Tárolórendszerképek törlése
+      href: container-registry-delete.md
     - name: Klasszikus beállításjegyzék frissítése
       href: container-registry-upgrade.md
     - name: ACR-webhookok használata

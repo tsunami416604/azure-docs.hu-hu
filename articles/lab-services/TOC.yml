@@ -133,6 +133,8 @@
               href: devtest-lab-manage-formulas.md
         - name: Összetevők kezelése
           items:
+            - name: Kötelező összetevők megadása
+              href: devtest-lab-mandatory-artifacts.md
             - name: Egyéni összetevők létrehozása
               href: devtest-lab-artifact-author.md
             - name: Az összetevők hibáinak diagnosztizálása

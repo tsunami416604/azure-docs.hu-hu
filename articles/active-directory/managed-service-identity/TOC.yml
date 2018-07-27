@@ -6,7 +6,7 @@
       href: overview.md
 - name: Gyors útmutatók
   items:
-    - name: Virtuális gép MSI használata az Azure Resource Manager eléréséhez
+    - name: Virtuális géphez tartozó felügyelt identitás használata az Azure Resource Manager eléréséhez
       items:
         - name: Windows rendszerű virtuális gép
           href: tutorial-windows-vm-access-arm.md
@@ -49,11 +49,11 @@
         - name: Az Azure Resource Manager elérése felhasználó által hozzárendelt identitásokkal
           href: msi-tutorial-linux-vm-access-arm.md
     - name: Azure Service Bus
-      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Azure App Service és Functions
-      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Azure Event Hubs
-      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
 - name: Útmutatók
   items:
     - name: Identitás konfigurálása Azure-beli virtuális géphez
@@ -82,7 +82,7 @@
           href: qs-configure-template-windows-vmss.md
         - name: REST
           href: qs-configure-rest-vmss.md
-    - name: Virtuális gép MSI használata
+    - name: Virtuális géphez tartozó felügyelt identitás használata
       items:
         - name: Hozzáférési jogkivonat beszerzése
           href: how-to-use-vm-token.md

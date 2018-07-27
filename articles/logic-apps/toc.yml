@@ -312,9 +312,9 @@
     - name: Munkafolyamat-definíciós nyelvséma
       href: logic-apps-workflow-definition-language.md
       items:
-        - name: Munkafolyamat-műveletek és eseményindítók
+        - name: Trigger- és művelettípusok referenciája
           href: logic-apps-workflow-actions-triggers.md
-        - name: Munkafolyamat-definíciós nyelv függvényei
+        - name: Függvényreferencia
           href: workflow-definition-language-functions-reference.md
         - name: GA – Sémaelőzmények
           href: logic-apps-schema-2016-04-01.md

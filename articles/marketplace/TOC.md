@@ -16,7 +16,7 @@
 #### [Virtuális gépek](./marketplace-virtual-machines.md)
 #### [Azure-alkalmazások: Megoldássablonok](./marketplace-solution-templates.md)
 #### [Azure-alkalmazások: Felügyelt alkalmazások](./marketplace-managed-apps.md)
-#### [SaaS-alkalmazás közzétételi útmutatója](./marketplace-saas-applications-technical-publishing-guide.md) 
+#### [SaaS alkalmazás](./marketplace-saas-applications-technical-publishing-guide.md) 
 #### [Containers](./marketplace-containers.md)
 #### [Tanácsadói szolgáltatás](./consulting-services.md)  
 #### [AppSource-alkalmazások](./appsource-offer-publishing-guide.md)

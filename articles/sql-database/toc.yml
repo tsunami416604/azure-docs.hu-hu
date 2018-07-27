@@ -138,9 +138,9 @@
           items:
             - name: Biztonsági mentés hosszú távú megőrzése
               href: sql-database-long-term-retention.md
-            - name: A biztonsági másolatok hosszú távú megőrzésének konfigurálása – SQL-tároló
+            - name: Konfigurálás az Azure Blob Storage használatával
               href: sql-database-long-term-backup-retention-configure.md
-            - name: A biztonsági másolatok hosszú távú megőrzésének konfigurálása – Azure-tároló (elavult)
+            - name: Konfigurálás az Azure Vault használatával (elavult)
               href: sql-database-long-term-backup-retention-configure-vault.md
         - name: Feladatátvételi csoportok és georeplikáció
           items:

@@ -138,7 +138,7 @@
 ### Hibaelhárítás
 #### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Azure AD-tevékenységnaplók tartalomcsomag hibái](active-directory-reporting-troubleshoot-
+#### [Az Azure AD-tevékenységnaplók tartalomcsomag hibái](active-directory-reporting-troubleshoot-content-pack.md)
 #### [Az Azure AD Reporting API hibái](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [Szoftveres hozzáférés](active-directory-reporting-api-getting-started-azure-portal.md)
@@ -222,11 +222,13 @@
 #### [Hibaelhárítás](manage-apps/application-proxy-troubleshoot.md)
 
 ### Vállalati alkalmazások kezelése
+#### [Alkalmazás hozzáadása](manage-apps/add-application-portal.md)
+#### [Bérlőalkalmazások megtekintése](manage-apps/view-applications-portal.md)
 #### [Felhasználók hozzárendelése](manage-apps/assign-user-or-group-access-portal.md)
 #### [Márkajelzés testreszabása](manage-apps/change-name-or-logo-portal.md)
 #### [Felhasználói bejelentkezések letiltása](manage-apps/disable-user-sign-in-portal.md)
 #### [Felhasználók eltávolítása](manage-apps/remove-user-or-group-access-portal.md)
-#### [Az összes alkalmazás megtekintése](manage-apps/view-applications-portal.md)
+
 #### [Felhasználói fiók üzembe helyezésének kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 #### [Egyszeri bejelentkezés kezelése nagyvállalati alkalmazások esetében](manage-apps/configure-single-sign-on-portal.md)
 #### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](manage-apps/certificate-signing-options.md)

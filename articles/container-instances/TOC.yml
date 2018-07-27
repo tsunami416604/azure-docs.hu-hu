@@ -59,7 +59,7 @@
           href: container-instances-log-analytics.md
     - name: Számítási feladatok futtatása
       items:
-        - name: Tárolóalapú feladatok futtatása
+        - name: Feladatok futtatása újraindítási szabályzattal
           href: container-instances-restart-policy.md
         - name: Jenkins-buildügynökök az ACI-ban
           href: container-instances-jenkins.md

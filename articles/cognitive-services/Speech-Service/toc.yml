@@ -1,3 +1,4 @@
+# displayName: additional text for filtering down the ToC in meaningful way.
 - name: Beszédszolgáltatási API dokumentációja
   href: index.yml
 - name: Áttekintés
@@ -13,30 +14,42 @@
       href: get-started.md
     - name: 'Beszéd felismerése C# nyelven (.NET Windows rendszeren)'
       href: quickstart-csharp-dotnet-windows.md
+      displayName: 'recognize speech, speech recognition, speech to text'
     - name: 'Beszéd felismerése C# nyelven (.NET Core Windows rendszeren)'
       href: quickstart-csharp-dotnetcore-windows.md
+      displayName: 'recognize speech, speech recognition, speech to text'
     - name: Beszéd felismerése UWP-alkalmazásban
       href: quickstart-csharp-uwp.md
+      displayName: 'recognize speech, speech recognition, speech to text, C#'
     - name: Beszéd felismerése Windows C++ nyelven
       href: quickstart-cpp-windows.md
+      displayName: 'recognize speech, speech recognition, speech to text'
     - name: Beszéd felismerése Linux C++ nyelven
       href: quickstart-cpp-linux.md
+      displayName: 'recognize speech, speech recognition, speech to text'
     - name: Beszéd felismerése Androidhoz készült Javán
       href: quickstart-java-android.md
+      displayName: 'recognize speech, speech recognition, speech to text'
     - name: A Beszédeszközök SDK használatának első lépései
       href: speech-devices-sdk-qsg.md
+      displayName: 'roobo, speech devices sdk'
 - name: Útmutatók
   items:
     - name: Beszéd felismerése
       href: how-to-speech-to-text.md
+      displayName: 'recognize speech, speech recognition, speech to text'
     - name: Beszédszintézis
       href: how-to-text-to-speech.md
+      displayName: 'synthesize speech, speech synthesis, text to speech'
     - name: Beszéd fordítása
       href: how-to-translate-speech.md
+      displayName: 'translate speech, speech translation, translator'
     - name: Kötegelt átírás
       href: batch-transcription.md
+      displayName: 'recognize speech, speech recognition, speech to text'
     - name: Beszédeszközök SDK letöltése
       href: get-speech-devices-sdk.md
+      displayName: 'roobo, speech devices sdk, download'
 - name: Testreszabás
   items:
     - name: Akusztikai modellek testreszabása
@@ -55,28 +68,37 @@
       href: how-to-use-audio-input-streams.md
     - name: Eszközébresztő kifejezés testreszabása (eszközoldali SDK)
       href: speech-devices-sdk-create-kws.md
+      displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
 - name: Példák
   items:
     - name: Minták letöltése
       href: samples.md
     - name: Beszédfelismerés
       href: speech-to-text-sample.md
+      displayName: 'recognize speech, speech recognition, speech to text'
     - name: Szándékfelismerés
       href: intent.md
+      displayName: 'recognize intent, intent recognition, language understanding service, luis'
     - name: Fordítás
       href: translation.md
+      displayName: 'translate speech, speech translation, translator'
 - name: Alapelvek
   items:
     - name: Diktálás
       href: speech-to-text.md
+      displayName: 'recognize speech, speech recognition, speech to text'
     - name: Szövegfelolvasás
       href: text-to-speech.md
+      displayName: 'synthesize speech, speech synthesis, text to speech'
     - name: Beszédfordítás
       href: speech-translation.md
+      displayName: 'translate speech, speech translation, translator'
     - name: Beszéd SDK
       href: speech-sdk.md
+      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, download'
     - name: Beszédeszközök SDK
       href: speech-devices-sdk.md
+      displayName: 'roobo, speech devices sdk'
 - name: Referencia
   items:
     - name: Támogatott nyelvek
@@ -87,37 +109,46 @@
       href: rest-apis.md
     - name: Beszéd SDK API
       href: speech-sdk-reference.md
+      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
     - name: Beszédszintézis jelölőnyelvi kódja
       href: speech-synthesis-markup.md
+      displayName: 'synthesize speech, speech synthesis, text to speech'
 - name: További források
   items:
+    - name: A Beszéd SDK kibocsátási megjegyzései
+      href: releasenotes.md
     - name: GYIK
       items:
         - name: Diktálás – gyakori kérdések
           href: faq-stt.md
+          displayName: 'recognize speech, speech recognition, speech to text'
         - name: Szövegfelolvasás – GYIK
           href: faq-text-to-speech.md
+          displayName: 'synthesize speech, speech synthesis, text to speech'
         - name: Fordító – GYIK
           href: 'https://www.microsoft.com/translator/faq.aspx'
+          displayName: 'translate speech, speech translation, translator'
+    - name: Hibaelhárítás
+      href: troubleshooting.md
+    - name: Támogatás
+      href: support.md
+    - name: Az alkalmazás küldése
+      href: ship-application.md
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/912208-speech-service'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Licenc / jogi információk
+      items:
+        - name: Beszéd SDK-licenc
+          href: license.md
+        - name: A Beszéd SDK harmadik felekkel kapcsolatos közleményei
+          href: third-party-notices.md
+        - name: Beszédeszközök SDK-licenc
+          href: speech-devices-sdk-license.md
+          displayName: 'roobo, speech devices sdk'
+        - name: Az Eszközök SDK harmadik felekkel kapcsolatos közleményei
+          href: devices-sdk-third-party-notices.md
+          displayName: 'roobo, speech devices sdk'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Adatvédelem és cookie-k
       href: 'https://privacy.microsoft.com/privacystatement'
-    - name: Hibaelhárítás
-      href: troubleshooting.md
-    - name: Az alkalmazás küldése
-      href: ship-application.md
-    - name: Kibocsátási megjegyzések
-      href: releasenotes.md
-    - name: Beszéd SDK-licenc
-      href: license.md
-    - name: Beszédeszközök SDK-licenc
-      href: speech-devices-sdk-license.md
-    - name: Harmadik felekkel kapcsolatos közlemények
-      href: third-party-notices.md

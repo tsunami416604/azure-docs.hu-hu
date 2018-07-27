@@ -4,9 +4,10 @@
   items:
     - name: Mi az Event Hubs?
       href: event-hubs-about.md
-    - name: Üzenetküldő szolgáltatások összehasonlítása
-      href: ../event-grid/compare-messaging-services.md
-      maintainContext: true
+    - name: Az Apache Kafkához készült Event Hubs
+      href: event-hubs-for-kafka-ecosystem-overview.md
+    - name: Event Hubs Capture
+      href: event-hubs-capture-overview.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -16,14 +17,31 @@
       href: event-hubs-quickstart-cli.md
     - name: Eseménystreamek feldolgozása – Azure PowerShell
       href: event-hubs-quickstart-powershell.md
+    - name: Streamelés az Apache Kafkához készült Event Hubsba
+      href: event-hubs-quickstart-kafka-enabled-event-hubs.md
 - name: Oktatóanyagok
   items:
     - name: Event Hubs-adatstreamek anomáliáinak vizualizációja
       href: event-hubs-tutorial-visualize-anomalies.md
+    - name: Big Data típusú adatok streamelése adattárházba
+      href: ../event-grid/event-grid-event-hubs-integration.md
+      maintainContext: true
+    - name: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
+      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+    - name: Az Apache Kafkához készült Event Hubs
+      items:
+        - name: Apache Kafka MirrorMaker és az Event Hubs
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: Az Apache Flink és az Event Hubs
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: Az Akka Streams és az Event Hubs
+          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: Példák
   href: event-hubs-samples.md
 - name: Alapelvek
   items:
+    - name: Event Hubs-szolgáltatások
+      href: event-hubs-features.md
     - name: Event Processor Host-áttekintés
       href: event-hubs-event-processor-host.md
     - name: IP-kapcsolat szűrői
@@ -35,8 +53,6 @@
     - name: Integrálás az Event Griddel
       href: ../event-grid/event-grid-event-hubs-integration.md
       maintainContext: true
-    - name: Event Hubs-szolgáltatások
-      href: event-hubs-features.md
     - name: Felügyeltszolgáltatás-identitás (előzetes verzió)
       href: event-hubs-managed-service-identity.md
     - name: Szerepköralapú hozzáférés-vezérlés (előzetes verzió)
@@ -64,20 +80,10 @@
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Események fogadása a .NET-keretrendszer használatával
       href: event-hubs-dotnet-framework-getstarted-receive-eph.md
-    - name: A Kafkához készült Event Hubs
+    - name: Az Apache Kafkához készült Event Hubs
       items:
-        - name: A Kafkához készült Event Hubs ökoszisztémájának áttekintése
-          href: event-hubs-for-kafka-ecosystem-overview.md
         - name: Kafka-kompatibilis eseményközpontok létrehozása
           href: event-hubs-create-kafka-enabled.md
-        - name: Streamelés a Kafkához készült Event Hubs ökoszisztémájában
-          href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-        - name: A Kafka MirrorMaker és az Event Hubs – oktatóanyag
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Az Apache Flink és az Event Hubs – oktatóanyag
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: Az Akka Streams és az Event Hubs – oktatóanyag
-          href: event-hubs-kafka-akka-streams-tutorial.md
     - name: Elérhető API-k
       href: event-hubs-api-overview.md
       items:
@@ -113,12 +119,8 @@
           href: event-hubs-metrics-azure-monitor.md
         - name: Event Hubs felügyeleti könyvtárak
           href: event-hubs-management-libraries.md
-        - name: Rögzítés
-          items:
-            - name: Event Hubs Capture
-              href: event-hubs-capture-overview.md
-            - name: Event Hubs-adatok rögzítése Python használatával
-              href: event-hubs-capture-python.md
+        - name: Event Hubs-adatok rögzítése Python használatával
+          href: event-hubs-capture-python.md
         - name: Azure Diagnostics-adatok streamelése az Event Hubs használatával
           href: event-hubs-streaming-azure-diags-data.md
         - name: Eseményközpontok létrehozása és üzembe helyezése Resource Manager-sablonnal

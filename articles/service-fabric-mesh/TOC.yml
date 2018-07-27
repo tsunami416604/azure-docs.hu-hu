@@ -45,6 +45,12 @@
       href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
     - name: Alkalmazáson belüli mikroszolgáltatások független skálázása
       href: service-fabric-mesh-howto-app-scale-out.md
+- name: Referencia
+  items:
+    - name: A Service Fabric Mesh erőforrás-szolgáltatói REST API-jai
+      href: /rest/api/servicefabric/sfmeshrp-index
+    - name: Service Fabric ügyfél-erőforrás REST API-k
+      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
 - name: További források
   items:
     - name: Gyakori kérdések
