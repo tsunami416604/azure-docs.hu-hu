@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 88869fbeef0475f2c674e0f154a3624545182363
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 41e75fcfd0b88d5c37bb8dd6fcc16b1767b34dba
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213231"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285357"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés
 
@@ -30,12 +30,12 @@ Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés (Azure AD köz
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Közvetlen egyszeri bejelentkezés kombinálva, vagy a [Jelszókivonat-szinkronizálás](active-directory-aadconnectsync-implement-password-hash-synchronization.md) vagy [átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) bejelentkezési módszereket.
+Közvetlen egyszeri bejelentkezés kombinálva, vagy a [Jelszókivonat-szinkronizálás](active-directory-aadconnectsync-implement-password-hash-synchronization.md) vagy [átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) bejelentkezési módszereket. Közvetlen egyszeri bejelentkezés van _nem_ alkalmazható az Active Directory összevonási szolgáltatások (ADFS).
 
 ![Közvetlen egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->Közvetlen egyszeri bejelentkezés van _nem_ alkalmazható az Active Directory összevonási szolgáltatások (ADFS).
+>Közvetlen egyszeri bejelentkezés kell lennie a felhasználó eszközén **tartományhoz csatlakoztatott**, de nem szükséges lehet az eszköz [Azure AD-csatlakoztatás](../active-directory-azureadjoin-overview.md).
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
@@ -62,11 +62,11 @@ Közvetlen egyszeri bejelentkezés kombinálva, vagy a [Jelszókivonat-szinkroni
 
 | OS\Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen|Nem|Igen|igen\*|-
-|Windows 8.1|Igen|-|Igen|igen\*|-
-|Windows 8|Igen|-|Igen|igen\*|-
-|Windows 7|Igen|-|Igen|igen\*|-
-|Mac OS X|-|-|igen\*|igen\*|igen\*
+|Windows 10|Igen|Nem|Igen|igen\*|–
+|Windows 8.1|Igen|–|Igen|igen\*|–
+|Windows 8|Igen|–|Igen|igen\*|–
+|Windows 7|Igen|–|Igen|igen\*|–
+|Mac OS X|–|–|igen\*|igen\*|igen\*
 
 \*Szükséges [további konfigurációs](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
 
@@ -76,7 +76,9 @@ Közvetlen egyszeri bejelentkezés kombinálva, vagy a [Jelszókivonat-szinkroni
 ## <a name="next-steps"></a>További lépések
 
 - [**Gyors üzembe helyezési** ](active-directory-aadconnect-sso-quick-start.md) – és az Azure AD közvetlen egyszeri bejelentkezés futtatása.
+- [**Telepítési terv** ](https://aka.ms/AuthenticationDeploymentPlan) – részletes telepítési tervét.
 - [**Részletes technikai** ](active-directory-aadconnect-sso-how-it-works.md) – Ez a funkció működésének megismerése.
 - [**Gyakran ismételt kérdések** ](active-directory-aadconnect-sso-faq.md) – a gyakran feltett kérdésekre adott válaszok.
 - [**Hibaelhárítás** ](active-directory-aadconnect-troubleshoot-sso.md) – ismerje meg, a szolgáltatással kapcsolatos gyakori problémák megoldása.
 - [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkcióra vonatkozó javaslata tárolásához.
+

@@ -1,6 +1,6 @@
 ---
-title: Hozza létre, és telepíteni az objektum modell Azure Machine Learning csomag használ a számítógép stratégiai.
-description: Megtudhatja, hogyan létre, betanítását, tesztelése és telepítése a számítógép stratégiai észlelési objektummodell használja az Azure Machine Learning csomag számítógép stratégiai.
+title: Fejleszthet és telepíthet egy Azure Machine Learning-csomagot használ a Computer Vision objektum modell.
+description: Ismerje meg, hogyan hozhat létre, betanítását, tesztelése és üzembe helyezése egy számítógépes látástechnológiai objektum észlelési modellel az Azure Machine Learning csomagot használ a Computer Vision.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,30 +9,30 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 06/01/2018
-ms.openlocfilehash: 62cc37d8c462d0fc1831de7b50a85738d6e63a17
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 44059de5a0ef0667b4268d9cdc2997162bab474a
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34727772"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285804"
 ---
-# <a name="build-and-deploy-object-detection-models-with-azure-machine-learning"></a>Létrehozni és telepíteni az objektum észlelési modell Azure Machine Learning segítségével
+# <a name="build-and-deploy-object-detection-models-with-azure-machine-learning"></a>Hozhat létre, és az Azure Machine Learning objektumot észlelési modellek üzembe helyezése
 
-Ebből a cikkből megtudhatja, hogyan használható **Azure Machine Learning csomag számítógép stratégiai** betanítása, tesztelését és rendszerbe egy [gyorsabban R-CNN](https://arxiv.org/abs/1506.01497) objektum modell. 
+Ebből a cikkből megtudhatja, hogyan használható **Azure Machine Learning-csomagja Computer Vision** munkámnak, teszteléséhez és üzembe egy [gyorsabban R-CNN](https://arxiv.org/abs/1506.01497) észlelési hálózatiobjektum-modellt. 
 
-A számítógép stratégiai tartomány problémák nagy számú objektum észlelési segítségével megoldhatók. Ezek a problémák közé tartozik, létrehozási modelleket, amely a változó számú objektum található a képfájl. 
+A számítógép vision tartomány problémák nagy számú objektum észlelési használatával kell megoldani. Ezek a problémák közé tartozik a belső modelleket, hogy a lemezképben található objektumok változó számú található. 
 
-Összeállításakor, és ez a modell csomag telepítése, végrehajtania az alábbi lépéseket:
+Összeállításakor és helyezi üzembe a modellt a csomaggal, akkor lépjen az alábbi lépéseket:
 1.  Adatkészlet létrehozása
-2.  Model Definition mély Neurális hálózat (DNN)
-3.  Modell betanítási
-4.  Kiértékelési és -megjelenítésre
-5.  A webszolgáltatás telepítése
-6.  A webszolgáltatás terhelés tesztelése
+2.  Neurális hálózat (DNN) modell definíciója
+3.  Modell betanítása
+4.  Kipróbálási és Vizualizáció
+5.  Webszolgáltatás üzembe helyezés
+6.  Terheléses tesztelés webszolgáltatás
 
-Ebben a példában a mély oktatási keretrendszer TensorFlow használt, betanítási helyileg kell elvégezni az alkalmazás bekapcsolja GPU gépen, mint a [részletes adatok tudományos VM tanulási](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview), és a telepítés használ az Azure ML Operationalization parancssori felület.
+Ebben a példában tensorflow-hoz, a deep learning-keretrendszert használ, a képzési helyileg kell elvégezni a GPU-alapú gépek például a [Deep learning-adatelemzési virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview), és üzembe helyezés az Azure Machine Learning Operacionalizálás CLI használja.
 
-Tekintse át a [referenciadokumentációt csomag](https://aka.ms/aml-packages/vision) minden modul és osztály részletes referenciaként.
+Tekintse át a [csomag dokumentációja](https://aka.ms/aml-packages/vision) minden egyes modul és osztály a részletes vonatkozó.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,36 +40,33 @@ Tekintse át a [referenciadokumentációt csomag](https://aka.ms/aml-packages/vi
 
 1. A következő fiókok és az alkalmazás kell hozni és telepítve:
    - Egy Azure Machine Learning kísérletezési fiókra 
-   - Az Azure Machine Learning modell felügyeleti fiók
+   - Az Azure Machine Learning Modellkezelés-fiók
    - Egy telepített Azure Machine Learning Workbenchre
 
-   Ha három még nincs létrehozva, és telepítve, kövesse a [Azure Machine Learning gyors üzembe helyezés és a munkaterületet üzemeltető telepítési](../service/quickstart-installation.md) cikk. 
+   Ha három vannak létrehozott vagy még nincs telepítve, kövesse a [Azure Machine Learning gyors üzembe helyezés és a Workbench telepítési](../service/quickstart-installation.md) cikk. 
 
-1. Az Azure Machine Learning csomag számítógép stratégiai telepítve kell lennie. Megtudhatja, hogyan [Itt a csomag telepítéséhez](https://aka.ms/aml-packages/vision).
+1. Az Azure Machine Learning csomag számítógépes Látástechnológiai telepítve kell lennie. Ismerje meg, hogyan [telepíti ezt a csomagot Itt](https://aka.ms/aml-packages/vision).
 
-## <a name="sample-data-and-notebook"></a>Mintaadatokat és notebook
+## <a name="sample-data-and-notebook"></a>Mintaadatok és notebook
 
-### <a name="get-the-jupyter-notebook"></a>A Jupyter notebook beolvasása
+### <a name="get-the-jupyter-notebook"></a>A Jupyter notebook beszerzése
 
-A minta futtatásához a notebook letöltési itt leírt magát.
+Letöltés a notebookot a minta futtatásához az itt leírtak szerint saját magának.
 
 > [!div class="nextstepaction"]
-> [A Jupyter notebook beolvasása](https://aka.ms/aml-packages/vision/notebooks/object_detection)
+> [A Jupyter notebook beszerzése](https://aka.ms/aml-packages/vision/notebooks/object_detection)
 
 ### <a name="load-the-sample-data"></a>A mintaadatok betöltése
 
-Ez a bemutató élelmiszerboltban elemek belül hűtőszekrények dataset biztosítja, 30 képek és 8 osztályok (eggBox, joghurt, ketchup, gomba, mustard, narancssárga, squash vagy vízjel). Az egyes jpg lemezképek egy jegyzet xml-fájl hasonló nevű van. 
+Ebben a bemutatóban pékséglánc elemek belül hűtőszekrények adatkészlet áll rendelkezésre, 30 képek és 8 osztályok (eggBox, joghurt, ketchup, gomba, ezredes, orange, squash és víz). Az egyes jpg-lemezképek van egy jegyzet xml-fájl hasonló nevű. 
 
-Az alábbi ábrán az ajánlott mappastruktúrájából. 
+A következő ábrán látható, a javasolt gyökérmappa-szerkezetében. 
 
-![Mappaszerkezet](media/how-to-build-deploy-object-detection-models/data_directory.JPG)
+![gyökérmappa-szerkezetében](media/how-to-build-deploy-object-detection-models/data_directory.JPG)
 
-## <a name="image-annotation"></a>Kép Megjegyzés
+## <a name="image-annotation"></a>Kép jegyzet
 
-Helyek szükséges betanítása és kiértékelése egy objektum érzékelő objektum feliratozva. [LabelImg](https://tzutalin.github.io/labelImg) nyílt forráskódú jegyzet eszköz, amely a jegyzet képek is használható. LabelImg ír Pascal-VOC formátum, ami tudja olvasni. Ez a csomag egy xml-fájl minden lemezképen. 
-
-## <a name="storage-context"></a>Adattároló-környezet
-Az adattároló-környezet DNN modell fájlok például különböző kimeneti fájlokat tároló meghatározására szolgál. További információkért lásd: a [StorageContext dokumentáció](https://docs.microsoft.com/en-us/python/api/cvtk.core.context.storagecontext?view=azure-ml-py-latest). Általában a tárolási tartalmat nem kell explicit módon kell beállítani. Azonban a munkaterületet üzemeltető projekt méretkorlátot 25 MB elkerülése érdekében a kimeneti könyvtár a AML projekten kívül a helyre mutasson beállítása (".. /.. /.. /.. / cvtk_output "). Győződjön meg arról, hogy a "cvtk_output" könyvtár eltávolítása után már nem szükséges.
+Helyek betanítása és kiértékelése az objektum detector használatával szükséges objektum feliratozva. [LabelImg](https://tzutalin.github.io/labelImg) egy nyílt forráskódú jegyzet eszköz lemezképek megjegyzésekkel használható. LabelImg ír egy xml-fájl képenként Pascal-VOC formátumban, amely a csomag által is olvasható. 
 
 
 ```python
@@ -77,28 +74,26 @@ import warnings
 warnings.filterwarnings("ignore")
 import os, time
 from cvtk.core import Context, ObjectDetectionDataset, TFFasterRCNN
+from cvtk.evaluation import DetectionEvaluation
+from cvtk.evaluation.evaluation_utils import graph_error_counts
 from cvtk.utils import detection_utils
-from matplotlib import pyplot as plt
 
 # Disable printing of logging messages
 from azuremltkbase.logging import ToolkitLogger
 ToolkitLogger.getInstance().setEnabled(False)
 
-# Initialize the context object
-out_root_path = "../../../cvtk_output"
-Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_path=out_root_path)
-
+from matplotlib import pyplot as plt
 # Display the images
 %matplotlib inline
 ```
 
 ## <a name="create-a-dataset"></a>Adatkészlet létrehozása
 
-Hozzon létre egy CVTK adatkészletet, amely a képek, a megfelelő határoló mezőben megjegyzések áll. Ebben a példában a hűtő lemezképeket, amelyek szerepelnek a ".. / sample_data/élelmiszerek/képzési"mappa szolgálnak. Csak a JPEG-képek támogatottak.
+Hozzon létre egy CVTK adatkészletet, amely a képek a megfelelő határoló box jegyzetekkel ellátott áll. Ebben a példában a hűtőszekrények lemezképeket, amelyek szerepelnek a ".. / sample_data/élelmiszerek/képzési"mappát használ. Csak a JPEG-képek használata támogatott.
 
 
 ```python
-image_folder = "../sample_data/foods/train"
+image_folder = "detection/sample_data/foods/train"
 data_train = ObjectDetectionDataset.create_from_dir(dataset_name='training_dataset', data_dir=image_folder,
                                                     annotations_dir="Annotations", image_subdirectory='JPEGImages')
 
@@ -131,7 +126,7 @@ _ = data_train.images[2].visualize_bounding_boxes(image_size = (10,10))
 
 ## <a name="define-a-model"></a>A modellek meghatározásához
 
-Ebben a példában a gyorsabb R-CNN modellt használja. Különböző paraméterek biztosítható, hogy ez a modell meghatározásakor. Ezek a paraméterek, valamint a betanítása (lásd a következő szakaszt) használt paraméterek szerinti található bármelyik CVTK API docs, vagy a a [Tensorflow objektum észlelési webhely](https://github.com/tensorflow/models/tree/master/research/object_detection). Gyorsabb R-CNN modell további információ található [Ez a hivatkozás](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details). Ez a modell a gyors R-CNN alapul, és további információ található [Itt](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details).
+Ebben a példában a gyorsabb R-CNN-modellt használja. Különböző paramétereket meghatározásakor az ebben a modellben adható meg. Ezeket a paramétereket, valamint oktatási (lásd a következő szakaszban) használt paraméterek szerinti található bármelyik CVTK API-dokumentumok, illetve a a [Tensorflow objektum észlelési webhely](https://github.com/tensorflow/models/tree/master/research/object_detection). További információ a gyorsabb R-CNN modell található [ezt a hivatkozást](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details). Ez a modell a gyors R-CNN-alapú, és további információ található [Itt](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details).
 
 
 ```python
@@ -144,15 +139,15 @@ my_detector = TFFasterRCNN(labels=data_train.labels,
 
 ## <a name="train-the-model"></a>A modell betanítása
 
-A ResNet50 Îles Cocos betanítása gyorsabban R-CNN modell betanítási kiindulási pontként szolgál. 
+A COCO betanított gyorsabban R-CNN modell ResNet50 képzési kiindulási pontként szolgál. 
 
-A kódban képzési lépések számát az érzékelő betanításához értéke 350, hogy a képzés gyorsabban (GPU ~ 5 perc). A gyakorlatban állítsa a betanítási készlet csomópontképek száma legalább 10 alkalommal.
+Az érzékelő betanításához képzési lépéseket és a kód 350, van beállítva, hogy képzési gyorsabban fut (~ 5 perc grafikus processzort tartalmaz). A gyakorlatban állítsa a betanítási készlet lemezképek száma legalább 10 alkalommal.
 
-Ebben a példában érzékelő képzési lépések számát gyors képzési 350 van beállítva. Azonban a gyakorlatban jó tapasztalatok is, hogy a lépéseket legalább 10 idők számát a betanítási készlet.
+Ebben a példában detector használatával képzési lépéseket és gyors képzést 350 értéke. Viszont a gyakorlatban, jó tapasztalatok, hogy a lépéseket-ra állítja legalább 10 alkalommal képek számát a gyakorlókészlethez.
 
 A betanításhoz két fő paraméterek a következők:
-- A num_seps argumentum által képviselt a modell betanításához lépések számát. Az egyes lépések betanítja egy minibatch egy köteg mérete, a modell.
-- Tanulási vannak határozva, amely állítható initial_learning_rate
+- Több betanítja a modellt, a num_seps argumentum által jelölt lépést. Az egyes lépések betanítja a modellt az egy-egy köteg mérete minibatch.
+- Tanulás meg vannak határozva, amely is létrehozhatnak initial_learning_rate
 
 ```python
 print("tensorboard --logdir={}".format(my_detector.train_dir))
@@ -188,21 +183,21 @@ print(end_train-start_train)
     361.604615688324
     
 
-TensorBoard segítségével jelenítheti meg a képzés folyamatban van. TensorBoard események a modellobjektumot train_dir attribútum által megadott mappában találhatók. TensorBoard megtekintéséhez kövesse az alábbi lépéseket:
-1. Másolja a nyomtatást, amely kezdődik-e a "tensorboard--logdir" parancsot a parancssorba, majd futtassa. 
-2. Másolja a visszaadott URL-címet a parancssorból egy webböngészőben megtekintheti a TensorBoard. 
+TensorBoard segítségével megjelenítheti a betanítási folyamat állapotát. TensorBoard eseményeket a modellobjektumot train_dir attribútum által megadott mappában találhatók. TensorBoard megtekintéséhez kövesse az alábbi lépéseket:
+1. Másolja a nyomtatást, amely "tensorboard--logdir" egy parancssorba kezdődik, és futtassa azt. 
+2. Másolja a visszaadott URL-cím a parancssorból egy böngészőbe a TensorBoard megtekintéséhez. 
 
-A TensorBoard az alábbi képernyőfelvételen hasonlóan kell kinéznie. A képzési mappa kell feltöltenie egy kis ideig tart. Ezért ha TensorBoard nem jeleníti meg be megfelelően az első alkalommal próbálkozzon ismétlődő lépések 1-2.  
+A TensorBoard a következő képernyőképhez hasonlóan kell kinéznie. Kell feltöltenie a betanítási mappa néhány percet vesz igénybe. Ezért ha TensorBoard nem jelenik meg a be megfelelően az első alkalommal próbálkozzon ismétlődő lépést 1 – 2.  
 
 ![tensorboard](media/how-to-build-deploy-object-detection-models/tensorboard.JPG)
 
 ## <a name="evaluate-the-model"></a>A modell értékelése
 
-A "kiértékelése" metódus segítségével értékelje ki a modellt. A függvény csak egy ObjectDetectionDataset objektum bemenetként. Az értékelés adatkészlet ugyanezt a funkciót, a képzési adatkészlethez használt segítségével hozhatók létre. A támogatott metrika az átlagos pontosság meghatározottak szerint a [PASCAL VOC Challenge](http://host.robots.ox.ac.uk/pascal/VOC/pubs/everingham10.pdf).  
+A "kiértékelése" metódus a modell kiértékelésére használatos. Ez a függvény bemeneteként ObjectDetectionDataset objektum szükséges. Az értékelés adatkészlet használatával ugyanezt a funkciót, amelyet használ a betanítási adatkészletet is létrehozható. A támogatott metrika az átlagos pontosság meghatározottak szerint a [PASCAL VOC Challenge](http://host.robots.ox.ac.uk/pascal/VOC/pubs/everingham10.pdf).  
 
 
 ```python
-image_folder = "../sample_data/foods/test"
+image_folder = "detection/sample_data/foods/test"
 data_val = ObjectDetectionDataset.create_from_dir(dataset_name='val_dataset', data_dir=image_folder)
 eval_result = my_detector.evaluate(dataset=data_val)
 ```
@@ -237,7 +232,7 @@ eval_result = my_detector.evaluate(dataset=data_val)
     F1 2018-05-25 23:18:38,254 INFO Finished evaluation!
     
 
-Az értékelési eredmények tiszta formátumban nyomtatható.
+Az értékelési eredmények tiszta formátumú nyomtatható.
 
 
 ```python
@@ -260,9 +255,9 @@ print('{0: <15}: {1: <3}'.format("overall:", round(eval_result['PASCAL/Precision
     overall:       : 0.99
     
 
-Hasonlóképpen a gyakorlókészlethez a modell pontosságát számíthatja ki. Ez lehetővé teszi a képzés konvergált jó megoldás. A pontosság, a képzési be után sikeres képzési gyakran megközelíti a 100 %.
+Hasonlóképpen képes számítási a gyakorlókészlethez a modell pontosságát. Ezzel lehetővé teszi a képzés jó megoldás konvergált. A sikeres képzési gyakran van közel 100 %-os után gyakorlókészletbe pontosságát.
 
-Értékelési eredmények TensorBoard térkép értékek és a képeket előre jelzett határoló mezőkbe is megtekinthetők. A nyomtatás átmásolni az alábbi kód egy parancssori ablakot, ahol a TensorBoard ügyfél elindítása. Itt 8008 portértéket használatos az alapértelmezett érték a 6006, amely lett használatát képzés állapotának megtekintése való ütközés elkerülése érdekében.
+Kiértékelés eredményeinek TensorBoard térkép értékek és a képek az előre jelzett határoló mezők is megtekinthetők. A nyomtatás másolása a következő kódot egy parancssori ablakot a TensorBoard ügyfél elindításához. Itt 8008 portérték használatos az alapértelmezett érték a 6006, amely használta a szolgáltatást, a képzési állapotának megtekintése való ütközés elkerülése érdekében.
 
 
 ```python
@@ -272,15 +267,15 @@ print("tensorboard --logdir={} --port=8008".format(my_detector.eval_dir))
     tensorboard --logdir=C:\Users\lixun\Desktop\AutoDL\CVTK\Src\API\cvtk_output\temp_faster_rcnn_resnet50\models\eval --port=8008
     
 
-## <a name="score-an-image"></a>Pontszám kép
+## <a name="score-an-image"></a>Kép pontszám
 
-Ha elégedett a betanított modell teljesítményétől, a modellobjektumot "pontszám" függvény új képek pontozása céljából használható. A visszaadott eredmények is lehet formájában jelenik meg a "megjelenítése" függvény. 
+Ha elégedett a betanított modell teljesítményét, a modellobjektumot "pontszám" függvény pontszámot rendelni az új képek használható. A visszaadott eredmények megjelenítése"függvény a jeleníthetők meg. 
 
 
 ```python
 image_path = data_val.images[1].storage_path
 detections_dict = my_detector.score(image_path)
-path_save = out_root_path + "/scored_images/scored_image_preloaded.jpg"
+path_save = "./scored_images/scored_image_preloaded.jpg"
 ax = detection_utils.visualize(image_path, detections_dict, image_size=(8, 12))
 path_save_dir = os.path.dirname(os.path.abspath(path_save))
 os.makedirs(path_save_dir, exist_ok=True)
@@ -289,13 +284,13 @@ ax.get_figure().savefig(path_save)
 
 ![PNG](media/how-to-build-deploy-object-detection-models/output_20_0.JPG)
 
-##  <a name="save-the-model"></a>Mentse a modellt
+##  <a name="save-the-model"></a>A modell mentése
 
-A betanított modell lemezre menti, és a memóriába vissza, ahogy az alábbi példákat.
+A betanított modell lemezre menti, és betölti a memóriába vissza, ahogy az alábbi példakódok.
 
 
 ```python
-save_model_path = out_root_path + "/frozen_model/faster_rcnn.model" # Please save your model to outside of your AML workbench project folder because of the size limit of AML project
+save_model_path = "./frozen_model/faster_rcnn.model"
 my_detector.save(save_model_path)
 ```
 
@@ -304,15 +299,15 @@ my_detector.save(save_model_path)
     F1 2018-05-25 23:19:03,867 INFO 2953 ops in the final graph.
     
 
-## <a name="load-the-saved-model-for-scoring"></a>Pontozó mentett modell betöltése
+## <a name="load-the-saved-model-for-scoring"></a>A mentett a modell betöltése a kiértékelés
 
-A mentett modellt használja, a modell betöltése "load" függvény a memóriába. Csak egyszer betöltése kell. 
+A mentett modell használatához töltse be a modell memóriát, valamint a "Betöltés" függvény. Csak egyszer betölteni kell. 
 
 ```python
 my_detector_loaded = TFFasterRCNN.load(save_model_path)
 ```
 
-A modell be van töltve, miután használat lemezkép vagy a lemezképek listája pontozása céljából. Az egyetlen lemezkép például "detection_boxes", "detection_scores" és "num_detections" kulccsal rendelkező dictionary adja vissza. Ha a bemeneti lista képek, szótár listája lett visszaadva, egy szótár egy kép megfelelő. 
+A modell betöltése után használat pontszámot rendelni egy képet vagy képek egy listája. Egy rendszerkép egy szótárban kulcsokkal, például a 'detection_boxes', "detection_scores" és "num_detections" adja vissza. Ha a bemenet-lemezképek listája szótár listáját adja vissza, a megfelelő egy kép egy szótárt. 
 
 
 ```python
@@ -351,42 +346,42 @@ print("\nFound {} objects in image {}.".format(n_obj, image_path))
     Found 8 objects in image ../sample_data/foods/test\JPEGImages\10.jpg.
     
 
-Az eredmények fentiekhez hasonló megjelenítése előtt.
+A pontszámok ugyanúgy, mint megjelenítése előtt.
 
 
 ```python
-path_save = out_root_path + "/scored_images/scored_image_frozen_graph.jpg"
+path_save = "./scored_images/scored_image_frozen_graph.jpg"
 ax = detection_utils.visualize(image_path, detections_dict, path_save=path_save, image_size=(8, 12))
 # ax.get_figure() # use this code extract the returned image
 ```
 
 ![PNG](media/how-to-build-deploy-object-detection-models/output_30_0.JPG)
 
-## <a name="operationalization-deploy-and-consume"></a>Operationalization: telepítheti, és felhasználása
+## <a name="operationalization-deploy-and-consume"></a>Operacionalizálás: üzembe helyezése és felhasználása
 
-Operationalization közzétételi modellek és kód webszolgáltatásként, és ezek a szolgáltatások üzleti eredmények eredményezett fogyasztásának. 
+Operacionalizálás közzétételi modelleket és webszolgáltatásként kódot és az ezeket a szolgáltatásokat az üzleti eredményeket felhasználását. 
 
-Ha a modell betanítása, telepítése, hogy a modell fogyasztás használatára vonatkozó webszolgáltatásként [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning). A modellek is telepíthető a helyi számítógépen vagy Azure tároló szolgáltatás (ACS) fürthöz. ACS használatával manuálisan méretezheti a webszolgáltatás vagy az automatikus skálázás funkcióival.
+A modell tanítása, miután a modellek webszolgáltatásként, amely a használatalapú telepíthet [Azure Machine Learning parancssori](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning). A modellek is üzembe helyezhetők a helyi számítógépen vagy az Azure Container Service (ACS) fürthöz. ACS használatával a manuális skálázása a webszolgáltatás vagy az automatikus skálázási funkciók használatához.
 
-**Jelentkezzen be az Azure parancssori felület**
+**Jelentkezzen be az Azure CLI**
 
-Használatával egy [Azure](https://azure.microsoft.com/) egy érvényes előfizetéssel fiókot, jelentkezzen be a következő parancssori parancsot:
+Használatával egy [Azure](https://azure.microsoft.com/) fiók és a egy érvényes előfizetést, jelentkezzen be a következő CLI-paranccsal:
 <br>`az login`
 
-+ Egy másik Azure-előfizetésre váltani, használja a parancsot:
++ Váltson egy másik Azure-előfizetéshez, használja a parancsot:
 <br>`az account set --subscription [your subscription name]`
 
-+ Az aktuális modell felügyeleti fiók megtekintéséhez használja a parancsot:
++ Az aktuális modellkezelési fiók megtekintéséhez használja a parancsot:
   <br>`az ml account modelmanagement show`
 
-**Hozzon létre, és a fürt telepítési környezet beállítása**
+**Hozzon létre, és állítsa be a fürt üzembe helyezési környezet**
 
-Csak a telepítési környezet egyszer be kell. Ha egy még nem rendelkezik, állítsa be a telepítési környezet megismerésére [ezeket az utasításokat](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
+Csak egyszer beállítani az üzembehelyezési környezetet kell. Ha Ön még nem rendelkezik, állítsa be az üzembe helyezési környezet most [ezek az utasítások](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
 
-Az aktív központi telepítéssel környezet, használja a következő parancssori parancsot:
+Az aktív központi telepítés környezet megtekintéséhez használja a következő CLI-parancsot:
 <br>`az ml env show`
    
-A minta Azure CLI parancs létrehozása és központi telepítési környezet beállítása
+Azure CLI-paranccsal minta létrehozása és üzembe helyezési környezet beállítása
 
 ```CLI
 az provider register -n Microsoft.MachineLearningCompute
@@ -397,25 +392,25 @@ az ml env set -n [environment name] -g [resource group]
 az ml env cluster
 ```
     
-### <a name="manage-web-services-and-deployments"></a>Webszolgáltatások és központi telepítések kezelése
+### <a name="manage-web-services-and-deployments"></a>Web services és a központi telepítések kezelése
 
-A következő API-k segítségével telepítheti a modellek webszolgáltatásként, webes szolgáltatások kezelése és központi telepítések felügyeletéhez szükséges.
+A következő API-kat helyezhet üzembe modelleket webszolgáltatásként, ezek a webszolgáltatások kezelése és központi telepítések felügyeletéhez használható.
 
 |Tevékenység|API|
 |----|----|
 |Központi telepítési objektum létrehozása|`deploy_obj = AMLDeployment(deployment_name=deployment_name, associated_DNNModel=dnn_model, aml_env="cluster")`
-|Webszolgáltatás telepítése|`deploy_obj.deploy()`|
+|Webszolgáltatás üzembe helyezése|`deploy_obj.deploy()`|
 |Pontszám kép|`deploy_obj.score_image(local_image_path_or_image_url)`|
 |Webszolgáltatás törlése|`deploy_obj.delete()`|
-|Docker lemezkép webszolgáltatás nélkül|`deploy_obj.build_docker_image()`|
-|Meglévő központi telepítési felsorolása|`AMLDeployment.list_deployment()`|
-|Ha a szolgáltatás létezik-e a központi telepítési nevű törlése|`AMLDeployment.delete_if_service_exist(deployment_name)`|
+|Webszolgáltatás nélkül docker-rendszerkép létrehozásához|`deploy_obj.build_docker_image()`|
+|Meglévő üzemelő példány listázása|`AMLDeployment.list_deployment()`|
+|Ha a szolgáltatás már létezik, a központi telepítés nevű törlése|`AMLDeployment.delete_if_service_exist(deployment_name)`|
 
-**API-JÁNAK dokumentációja:** további részleteket a [referenciadokumentációt csomag](https://aka.ms/aml-packages/vision) minden modul és osztály részletes referenciaként.
+**API-dokumentáció:** tekintse meg a [csomag dokumentációja](https://aka.ms/aml-packages/vision) minden egyes modul és osztály a részletes vonatkozó.
 
-**Parancssori felület hivatkozás:** a speciális kapcsolatos műveletek központi telepítését, tekintse meg a [modellhez tartozó felügyeleti CLI hivatkozás](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/model-management-cli-reference).
+**CLI-referenciáját:** speciális műveletek kapcsolódó központi telepítését, tekintse meg a [modellkezelési parancssori felület referenciája](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/model-management-cli-reference).
 
-**KözpontiTelepítés-felügyelet az Azure portálon**: nyomon követése, és a központi telepítések kezelése a [Azure-portálon](https://ms.portal.azure.com/). Azure-portálról a Machine Learning modell felügyeleti-fiók nevének lapon található. Folytassa a modell kezelése fióklapját > modell kezelése > szolgáltatások.
+**KözpontiTelepítés-felügyelet az Azure Portalon**: nyomon követheti és kezelheti a központi telepítések a [az Azure portal](https://ms.portal.azure.com/). Az Azure Portalról a Machine Learning Modellkezelés-fiók nevének lapon találja. Keresse meg a Modellkezelési fiók lap > Modellkezelési > szolgáltatások.
 
 ```python
 # ##### OPTIONAL - Interactive CLI setup helper ###### 
@@ -457,15 +452,15 @@ deploy_obj.deploy()
 print("Deployment DONE")
 ```
 
-### <a name="consume-the-web-service"></a>A webszolgáltatás felhasználása
+### <a name="consume-the-web-service"></a>A webszolgáltatás használata
 
-A webszolgáltatás létrehozása után, az üzembe helyezett webszolgáltatás képekkel is pontozása. Több lehetőség közül választhat:
+A webszolgáltatás létrehozása után, az üzembe helyezett webszolgáltatás rendszerképek is pontozása. Több lehetősége van:
 
-   - Akkor is közvetlenül pontozása objektummal hívja meg a központi telepítés a webservice: deploy_obj.score_image(image_path_or_url) 
-   - Vagy használhatja a végpont URL-címe és a szolgáltatási kulcs (nincs helyi telepítéshez): AMLDeployment.score_existing_service_with_image (image_path_or_url, service_endpoint_url, service_key = None)
-   - A http-kéréseket közvetlenül pontszám a webservice végpont (haladó felhasználóknak) alkotnak.
+   - Közvetlenül pontszámot rendelni a webszolgáltatás a központi telepítési objektum: deploy_obj.score_image(image_path_or_url) 
+   - Vagy használhatja a végpont URL-címe és a szolgáltatáskulcs (nincs helyi telepítéshez): AMLDeployment.score_existing_service_with_image (image_path_or_url, service_endpoint_url, service_key = None)
+   - A HTTP-kérések közvetlenül a pontszám a webszolgáltatás-végpont (a haladó felhasználók) alkotnak.
 
-### <a name="score-with-existing-deployment-object"></a>A meglévő központi telepítési objektum pontozása
+### <a name="score-with-existing-deployment-object"></a>A meglévő központi telepítési objektum pontszám
 ```
 deploy_obj.score_image(image_path_or_url)
 ```
@@ -503,7 +498,7 @@ for img_index, img_obj in enumerate(data_train.images[:num_images]):
     print("   Time for API call: {:.2f} seconds".format(timeit.default_timer() - tic))
 ```
 
-### <a name="score-with-service-endpoint-url-and-service-key"></a>Pontszám végpont URL-címe és szolgáltatási kulcs
+### <a name="score-with-service-endpoint-url-and-service-key"></a>A végpont URL-címe és a szolgáltatáskulcs pontszám
 ```
     AMLDeployment.score_existing_service_with_image(image_path_or_url, service_endpoint_url, service_key=None)
 ```
@@ -523,8 +518,8 @@ serialized_result_in_json = AMLDeployment.score_existing_service_with_image(imag
 print("serialized_result_in_json:", serialized_result_in_json[:50])
 ```
 
-### <a name="score-endpoint-with-http-request-directly"></a>Pontszám végpont közvetlenül a http-kérelem
-Az alábbiakban az egyes példakódot és a http-kérést közvetlenül a Python. Más programozási nyelven végezheti.
+### <a name="score-endpoint-with-http-request-directly"></a>HTTP-kérést közvetlenül a pontszám-végpont
+Alábbiakban található néhány példa kód kialakításához a HTTP-kérést közvetlenül a Python. Ezt a más programozási nyelvek megteheti.
 
 
 ```python
@@ -574,8 +569,8 @@ def score_image_with_http(image, service_endpoint_url, service_key=None, paramet
 
 ```
 
-### <a name="parse-serialized-result-from-webservice"></a>A WebService ügyféltől szerializált eredmény elemzése
-A webes szolgáltatás eredménye, a program értelmezni tudja json-karakterláncban.
+### <a name="parse-serialized-result-from-webservice"></a>A webszolgáltatás szerializált eredmény elemzése
+Az eredmény a webszolgáltatásból elemezhető json-karakterlánc szerepel.
 
 
 ```python
@@ -596,7 +591,7 @@ print("Parsed result:", parsed_result)
 
 ```python
 ax = detection_utils.visualize(image_path, parsed_result)
-path_save = "../../../cvtk_output/scored_images/scored_image_web.jpg"
+path_save = "./scored_images/scored_image_web.jpg"
 path_save_dir = os.path.dirname(os.path.abspath(path_save))
 os.makedirs(path_save_dir, exist_ok=True)
 ax.get_figure().savefig(path_save)
@@ -604,10 +599,10 @@ ax.get_figure().savefig(path_save)
 
 ## <a name="next-steps"></a>További lépések
 
-További Azure Machine Learning-csomaggal kapcsolatban az számítógép stratégiai a cikkeiben:
+További információ az Azure Machine Learning-csomagot a Computer Vision ezekben a cikkekben:
 
 + Olvassa el a [csomag áttekintése, és megtudhatja, hogyan telepítheti](https://aka.ms/aml-packages/vision).
 
-+ Megismerkedhet a [dokumentáció](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision) a csomag számára.
++ Fedezze fel a [referenciadokumentációt](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision) a csomag számára.
 
-+ További tudnivalók [egyéb Python-csomagokat, az Azure Machine Learning](reference-python-package-overview.md).
++ Ismerje meg [egyéb Python-csomagokat az Azure Machine Learning](reference-python-package-overview.md).

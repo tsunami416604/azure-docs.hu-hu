@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 5f4d39c6aa1a5c2c30e84fbf26535fe3ee7799a6
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 86aadcbdd8d7168440726d6dbed996629cad3ff7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216502"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285333"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Mi az új Azure SQL Data warehouse? 2018. július
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és a július 2018-ban bevezetett módosításokat.
@@ -59,3 +59,23 @@ parameter_ordinal | name | suggested_system_type_id | suggested_system_type_name
 --------------------------------------------------------------------------------
 1                 | @id  | 56                       | int
 ```
+
+## <a name="next-steps"></a>További lépések
+Most, hogy jobban megismerte az SQL Data warehouse, ismerje meg, hogyan lehet gyorsan [SQL Data Warehouse létrehozása] [SQL Data Warehouse létrehozása] és [mintaadatokat tölthet be] [mintaadatokat tölthet be]. Ha most ismerkedik az Azure-ba, hasznosnak találhatja az [Azure szószedet] [Azure szószedetét], akkor új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
+
+* [Ügyfelek sikertörténetei]
+* [Blogok]
+* [Funkciókérések]
+* [Videók]
+* [Az ügyféltanácsadói csapat blogjai]
+* [Stack Overflow-fórum]
+* [Twitter]
+
+
+[Blogok]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[Az ügyféltanácsadói csapat blogjai]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[Ügyfelek sikertörténetei]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
+[Funkciókérések]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[Stack Overflow-fórum]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[Videók]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse

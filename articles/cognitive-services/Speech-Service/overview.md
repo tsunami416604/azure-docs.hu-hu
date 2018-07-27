@@ -1,21 +1,20 @@
 ---
-title: Mi az a Speech service (előzetes verzió)? | Microsoft Docs
+title: Mi az a Speech service (előzetes verzió)?
 description: 'A Speech service, a Microsoft Cognitive Services részeként több egység számos Azure beszédszolgáltatások külön-külön korábban elérhető volt: (amely magában foglalja, beszédfelismerés, és a szöveg-beszéd átalakítás), a Bing Speech, egyéni beszédfelismerési és beszédalapú fordítási.'
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: adfc854fc24b9e285c405f3038a21ec84cd2f4c2
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fc6ef4ccbe6e392b991bd375afcc63a54f58db02
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989335"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285459"
 ---
 # <a name="what-is-the-speech-service-preview"></a>Mi az a Speech service (előzetes verzió)?
 

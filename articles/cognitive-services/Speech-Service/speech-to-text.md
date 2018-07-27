@@ -1,21 +1,20 @@
 ---
-title: Beszédfelismerés kapcsolatos |} A Microsoft Docs
+title: Tudnivalók a beszédfelismerés
 description: A Speech to Text API-funkcióinak áttekintése.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2ed00377db80849a8355ccc895db12d006bea642
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 464eb9bde689aa947a5b1e2900ae0fc4670fed6e
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069927"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285476"
 ---
 # <a name="about-the-speech-to-text-api"></a>Tudnivalók a Speech to Text API
 

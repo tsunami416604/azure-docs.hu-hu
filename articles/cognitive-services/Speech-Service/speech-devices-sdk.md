@@ -1,44 +1,43 @@
 ---
-title: A beszéd-eszközökről SDK |} Microsoft Docs
-description: A beszédfelismerés eszközök SDK bemutatása.
+title: A beszéd-eszközökről SDK
+description: Bevezetés a Speech Devices SDK-val.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c4451dd2e4d868bd7f604fb8002c3a758a530136
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 4607c997f6c274f6b367fe3e99bf8d21deceef0d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35350006"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285493"
 ---
-# <a name="about-the-speech-devices-sdk-preview"></a>A beszéd-eszközökről SDK (előzetes verzió)
+# <a name="about-the-speech-devices-sdk-preview"></a>A beszéd-eszközökről SDK-t (előzetes verzió)
 
-A saját a Microsoft Speech szolgáltatás működik együtt a eszközök és hang adatforrások széles választékát. Most már a megfelelő hardver- és szoftverkövetelményeket a következő szintre beszéd alkalmazásait is igénybe vehet. A beszédfelismerés eszközök SDK egy előre beállított könyvtár mikrofon-kompatibilis hardvereket párosítva. Az SDK megkönnyíti, hogy az eszköz integrálható a Microsoft Speech felhőalapú szolgáltatás, és hozzon létre egy kivételes felhasználói élményt az ügyfelek számára.
+Saját a Microsoft Speech service együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val egy előre beállított erőforrástár adott mikrofon-kompatibilis hardveres párosítva. Az SDK-t egyszerűen integrálhatja az eszköz a felhőalapú Microsoft Speech szolgáltatással, és hozzon létre egy kivételes felhasználói élmény az ügyfelek számára.
 
-Az SDK-val lehetővé teszi a saját testreszabott ébresztési szót környezeti eszközök összeállítása – így a köteg egy felhasználói beavatkozást kezdeményező a márka egyedi. A Többcsatornás hang pontosabb beszédfelismerés zaj tiltási, echo törlését, szélen mező hang és beamforming használja.
+Az SDK lehetővé teszi, hogy hozhat létre a saját testre szabott ébresztési szó környezeti eszközök – így a köteg kezdeményező felhasználói interakció a márka egyedi. Adjon meg pontosabb beszédfelismerést zaj tiltási, echo törlését, távolságban mező beszédfelismerési és beamforming Többcsatornás hang használ.
 
-Az SDK-val lehetővé teszi hang-kompatibilis forgatókönyvek, például a meghajtó-rendezési rendszerek, a car vagy in-home segédek vagy intelligens beszélők számos. Szöveg, amelyet a felhasználók akkor válaszolhat vissza őket egy alapértelmezett vagy egyéni hang a beszéd, adja meg a keresési eredmények között, lefordítani más nyelvek és további. 
+Az SDK-val segíti az voice-kompatibilis forgatókönyvek, például a meghajtó érvényes sorbarendezésre rendszerek, az autó vagy in-home asszisztensek és intelligens előadói különböző. Szöveg-, a felhasználók válaszolhat vissza őket egy alapértelmezett vagy egyéni beszédfelismerési a beszéd, adja meg a keresési eredmények, fordítása más nyelvekre, és egyéb. 
 
 
 
-## <a name="development-kit-providers"></a>Fejlesztői csomag szolgáltatók
+## <a name="development-kit-providers"></a>Development kit szolgáltatók
 
-Teljes, végpontok közötti rendszer hivatkozás tervek. Több hamarosan!
+Teljes, végpontok közötti rendszerek referenciatervek. További hamarosan elérhető!
 
 |||
 |-|-|
-|[![ROOBO embléma](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO teljes AI rendszer megoldást nyújt elektromos háztartási készülékeket, autók, robots, játékok és más iparágakban. ROOBO tartozó referencia tervek jelentősen csökkenti a fejlesztési idő piacra jutási a Microsoft Speech service szolgáltatással történt integrációján keresztül. [Látogasson el a ROOBO](http://ddk.roobo.com/)|
+|[![ROOBO embléma](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO electric háztartási, autók, robotok, a játékok és más iparágak teljes rendszer AI-megoldásokat biztosít. Referenciatervek ROOBO a jelentősen csökkentheti a fejlesztési-piacra keresztül a Microsoft Speech szolgáltatással. [Látogasson el a ROOBO](http://ddk.roobo.com/)|
 
 ## <a name="next-steps"></a>További lépések
 
-A kezdéshez lekérni egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/ai/) és a beszédfelismerés eszközök SDK regisztráljon.
+Első lépésként kérje le egy [ingyenes Azure-fiók](https://azure.microsoft.com/free/ai/) és iratkozzon fel a Speech Devices SDK-val.
 
 > [!div class="nextstepaction"]
-> [Iratkozzon fel a beszédfelismerés eszközök SDK](get-speech-devices-sdk.md)
+> [Iratkozzon fel a Speech Devices SDK-val](get-speech-devices-sdk.md)
 
