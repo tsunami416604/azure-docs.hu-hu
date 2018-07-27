@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: apimpm
-ms.openlocfilehash: b06a179459a449762555879669d177f811cb9560
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 4135bd66e839037d7db694cb3c6df8f3905222e6
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090877"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283097"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás szolgáltatás biztonsági mentése és visszaállítása az Azure API Management szolgáltatásban
 
@@ -76,6 +76,7 @@ Minden olyan feladat hivatkozása, amelyeket Ön az erőforrások az Azure Resou
 
 7. Kattintson a **delegált engedélyek** az újonnan hozzáadott alkalmazás mellett jelölje be a **hozzáférés az Azure Service Management (előzetes verzió)**.
 8. Nyomja meg **kiválasztása**.
+9. Kattintson a **Grant jelenthetnek**.
 
 ### <a name="configuring-your-app"></a>Az alkalmazás konfigurálása
 
@@ -92,7 +93,7 @@ namespace GetTokenResourceManagerRequests
         static void Main(string[] args)
         {
             var authenticationContext = new AuthenticationContext("https://login.microsoftonline.com/{tenant id}");
-            var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
+            var result = authenticationContext.AcquireTokenAsync("https://management.azure.com/", "{application id}", new Uri("{redirect uri}"), new PlatformParameters(PromptBehavior.Auto)).Result;
 
             if (result == null) {
                 throw new InvalidOperationException("Failed to obtain the JWT token");
@@ -123,6 +124,8 @@ Cserélje le `{tentand id}`, `{application id}`, és `{redirect uri}` az alábbi
 
 ## <a name="calling-the-backup-and-restore-operations"></a>A biztonsági mentési és visszaállítási műveletek meghívása
 
+A REST API-k [Api Management szolgáltatás – biztonsági mentés](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/backup) és [Api Management szolgáltatás - visszaállítási](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/restore).
+
 Előtt hívja meg a következő szakaszok ismertetik a "biztonsági mentés és visszaállítás" műveletek, állítsa be a engedélyezési kérés fejlécében a REST-hívás.
 
 ```csharp
@@ -132,24 +135,27 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ### <a name="step1"> </a>Készítsen biztonsági másolatot egy API Management-szolgáltatás
 Biztonsági mentése egy API Management szolgáltatási probléma a következő HTTP-kérelem:
 
-`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
+```
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
+```
 
 Ahol:
 
 * `subscriptionId` – az API Management szolgáltatás próbált készítsen biztonsági másolatot tartalmazó előfizetés azonosítója
 * `resourceGroupName` – az Azure API Management-szolgáltatás, az erőforráscsoport neve
 * `serviceName` – az API Management-szolgáltatás neve végez biztonsági másolatának létrehozása idején már megadott
-* `api-version` -lecserélése `2014-02-14`
+* `api-version` -lecserélése `2018-06-01-preview`
 
 A kérés törzsét adja meg a céloldali Azure storage-fiók neve, a hozzáférési kulcsot, a blobtároló neve és a biztonsági másolatának neve:
 
-```
-'{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
-    containerName : {backup container name},  
-    backupName : {backup blob name}  
-}'
+
+```json
+{
+  "storageAccount": "{storage account name for the backup}",
+  "accessKey": "{access key for the account}",
+  "containerName": "{backup container name}",
+  "backupName": "{backup blob name}"
+}
 ```
 
 Az értékét állítsa be a `Content-Type` a kérelem fejlécében `application/json`.
@@ -168,24 +174,26 @@ Vegye figyelembe a következő korlátozásokkal, amikor egy biztonsági mentés
 ### <a name="step2"> </a>API Management szolgáltatás visszaállítása
 Az API Management visszaállítása egy korábban létrehozott biztonsági másolat szolgáltatás győződjön meg arról, a következő HTTP-kérelem:
 
-`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}`
+```
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
+```
 
 Ahol:
 
 * `subscriptionId` -a visszaállítani kívánt biztonsági másolat az API Management szolgáltatást tartalmazó előfizetés azonosítója
 * `resourceGroupName` – egy karakterlánc formájában "Api - alapértelmezett: {szolgáltatás-régió}", ahol `service-region` azonosít, amelyen a visszaállítani kívánt biztonsági másolat az API Management-szolgáltatás található, például az Azure-régió `North-Central-US`
 * `serviceName` – az API Management szolgáltatás visszaállított be a létrehozása idején már megadott neve
-* `api-version` -lecserélése `2014-02-14`
+* `api-version` -lecserélése `2018-06-01-preview`
 
 A kérelem törzsében adja meg a biztonsági mentési fájl helyét, amely, az Azure storage-fiók neve, hozzáférési kulcsot, blobtároló neve és biztonsági másolatának neve:
 
-```
-'{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
-    containerName : {backup container name},  
-    backupName : {backup blob name}  
-}'
+```json
+{
+  "storageAccount": "{storage account name for the backup}",
+  "accessKey": "{access key for the account}",
+  "containerName": "{backup container name}",
+  "backupName": "{backup blob name}"
+}
 ```
 
 Az értékét állítsa be a `Content-Type` a kérelem fejlécében `application/json`.

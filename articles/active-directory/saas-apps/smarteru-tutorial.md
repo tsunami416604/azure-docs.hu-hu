@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 32feac32af01e518ad6cede43cc4b4f00c097d3b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e07ed8f131697d6340b899ef76c988aed215556b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041279"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283411"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Oktatóanyag: Azure Active Directory-integráció az SmarterU
 
@@ -126,11 +126,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 7. A felső eszköztáron kattintson **fiókbeállításokat**.
    
-    ![Fiókbeállítások](./media/smarteru-tutorial/IC777326.png "Fiókbeállítások")
+    ![Fiókbeállítások](./media/smarteru-tutorial/accountsettings.png)
 
 8. A fiók konfigurálása lapon hajtsa végre az alábbi lépéseket:
    
-    ![Külső engedélyezési](./media/smarteru-tutorial/IC777327.png "külső engedélyezési") 
+    ![Külső engedélyezési](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
  
       a. Válassza ki **engedélyezése külső engedélyezési**.
   
@@ -138,11 +138,13 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
   
       c. Az a **felhasználó alapértelmezett bejelentkezési** szakaszban jelölje be a **SmarterU** fülre.
   
-      d. Válassza ki **Okta engedélyezése**.
+      d. Válassza ki **SAML engedélyezése**.
   
-      e. Másolja a letöltött metaadatait tartalmazó fájl tartalmát, és illessze be azt a **Okta metaadatok** szövegmezőbe.
+      e. Másolja a letöltött metaadatait tartalmazó fájl tartalmát, és illessze be azt a **identitásszolgáltató metaadatok** szövegmezőbe.
+      
+      f. Válasszon egy **azonosító attribútum/jogcím**.
   
-      f. Kattintson a **Save** (Mentés) gombra.
+      g. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -193,7 +195,7 @@ SmarterU, ha a manuális tevékenység kiépítése.
 
 3. A felhasználói csoportban hajtsa végre az alábbi lépéseket:
    
-    ![Új felhasználó](./media/smarteru-tutorial/IC777329.png "új felhasználó")  
+    ![Új felhasználó](./media/smarteru-tutorial/adduser.png)  
 
     a. Kattintson a **+ felhasználó**.
     
@@ -248,7 +250,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

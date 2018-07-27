@@ -9,12 +9,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: 94847adf761652a25fd3e2d594c7169776fefc89
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 59e2254054f51a8d5f30e1b38dc5e6c23899c054
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125125"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284329"
 ---
 # <a name="quickstart-for-text-analytics-api-with-c"></a>Szövegelemzési API-t C# Gyorsútmutató 
 <a name="HOLTop"></a>
@@ -48,7 +48,7 @@ Rendelkeznie kell a [végpontját és hozzáférési kulcsát](../How-tos/text-a
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>Az SDK-val a szövegelemzési API hívása
 1. Cserélje le a program.cs fájlban az alábbi kódra. Ez a program a szövegelemzési API (nyelv kinyerés, kulcs-kifejezések kinyerése és hangulatelemzés) 3 szakaszokban képességeit mutatja be.
 1. Cserélje le a `Ocp-Apim-Subscription-Key` Fejlécérték egy hozzáférési kulccsal rendelkező érvényes az előfizetéshez.
-1. Cserélje le a hely a `client.BaseUri` a regisztrált a végponthoz. Az Azure Portal resource találja a végpont. A végpont általában a "https://[region].api.cognitive.microsoft.com/text/analytics/v2.0" tűnik.
+1. Cserélje le a hely a `Endpoint` a regisztrált a végponthoz. Az Azure Portal resource találja a végpont. A végpont általában "https://[region].api.cognitive.microsoft.com" előtaggal kezdődik, és itt csak adja meg protokoll és az állomásnevet.
 1. Futtassa a programot.
 
 ```csharp
@@ -81,8 +81,10 @@ namespace ConsoleApp1
         {
 
             // Create a client.
-            ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials());
-            client.BaseUri = new Uri("https://westus.api.cognitive.microsoft.com/text/analytics/v2.0");
+            ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials())
+            {
+                Endpoint = "https://westus.api.cognitive.microsoft.com"
+            };
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 

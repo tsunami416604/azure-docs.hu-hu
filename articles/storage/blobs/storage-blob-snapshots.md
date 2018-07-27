@@ -1,40 +1,40 @@
 ---
-title: Csak olvasható pillanatkép létrehozása a blob az Azure Storage |} Microsoft Docs
-description: 'Útmutató: a pillanatkép létrehozása a blob adatainak biztonsági mentése blob idő az adott pillanatban. Ismerje meg, hogyan számlázása a pillanatképek és a használatukat kapacitás költségek minimalizálása érdekében.'
+title: A blob csak olvasható pillanatkép létrehozása az Azure Storage-ban |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy pillanatképet egy blobról biztonsági másolatok blob egy adott pillanatban időben. Ismerje meg, hogyan számlázzuk a pillanatképek és a használatukkal kapacitás költségek minimalizálása érdekében.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: 1a27dfd61850d9dfa1f232eacf7f09d66202cafe
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.component: blobs
+ms.openlocfilehash: 6fa223ffcbc70b2f17649645df3daed22746edd0
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852931"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264031"
 ---
 # <a name="create-a-blob-snapshot"></a>Blob-pillanatkép létrehozása
 
-Pillanatkép egy blobot, amely egy adott időben csak olvasható verziója telepítve. A pillanatképek biztonsági mentési bináris objektumok hasznosak. Pillanatkép létrehozása után olvassa el, másolja, vagy törölje azt, de nem módosíthatja.
+Egy pillanatképet egy BLOB egy időben végrehajtott csak olvasható verziója is. A pillanatképek hasznosak blobok biztonsági mentéséről. Miután létrehozott egy pillanatkép, olvassa el, másolja, vagy törölje azt, de nem módosíthatja.
 
-Egy blob pillanatképe megegyezik az alap blob, azzal a különbséggel, hogy a blob URI egy **DateTime** érték hozzáfűzi a blob URI-t, amellyel során létrehozott pillanatképen időpontját jelzi. Például ha egy lap blob URI van `http://storagesample.core.blob.windows.net/mydrives/myvhd`, a pillanatkép URI hasonlít `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`.
+Egy pillanatképet egy blobról megegyezik a kiindulási blob, azzal a különbséggel, hogy a blob URI-t egy **DateTime** az érték hozzáadódik a blob URI-t, amellyel a pillanatkép időpontját jelzi. Például ha egy lap blob URI-t, `http://storagesample.core.blob.windows.net/mydrives/myvhd`, a pillanatkép-URI-ja hasonló `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`.
 
 > [!NOTE]
-> Minden pillanatkép megosztása a base blob URI. A kiinduló blob és a pillanatkép csak megkülönböztetése a hozzáfűzött **DateTime** érték.
+> Összes pillanatkép megosztása a base sablonblob URI azonosítója. A csak az alap blob és a pillanatkép megkülönböztetése a hozzáfűzött **DateTime** értéket.
 >
 
-Blob állhat tetszőleges számú pillanatkép. A pillanatképek továbbra is fennáll, addig, amíg explicit módon törlődnek. A pillanatkép nem outlive az alap blob. A pillanatképek nyomon követéséhez a jelenlegi pillanatképek alap blob társított enumerálása.
+Egy blob pillanatképeinek tetszőleges számú rendelkezhet. A pillanatképek továbbra is fennáll, addig, amíg explicit módon törlődnek. A pillanatkép nem outlive az alap blob. A pillanatképek nyomon követéséhez az aktuális pillanatképek alap blob társított enumerálása.
 
-Amikor létrehoz egy blob pillanatképet, a blob tulajdonságai ugyanazokat az értékeket a pillanatkép lesz másolva. A kiinduló blob metaadatait is másolja a pillanatképet, ha nem ad meg, a pillanatkép külön metaadatok létrehozásakor.
+Amikor létrehoz egy pillanatképet egy blobról, a blob rendszer tulajdonságai a pillanatkép ugyanazon értékekkel lesz másolva. Ha nem ad meg, a pillanatkép külön metaadatok létrehozásakor az alap blob metaadatait is másolja a pillanatkép.
 
-Az alap blob társított bármely címbérleteket nem befolyásolják a pillanatkép. Nem olvasható be a pillanatkép bérleti idejét.
+Az alap blob társított bármely bérleteket nem befolyásolják a pillanatkép. Ön nem szerez érvényesül a Bérlés a pillanatkép.
 
-A VHD-fájl az aktuális adatait és a Virtuálisgép-lemez állapota tárolására szolgál. Válassza le a lemezt a virtuális Gépen belül, vagy állítsa le a virtuális gép, és majd pillanatkép készítése a VHD-fájlt. A pillanatkép-fájlt később használhatja kérhető le a VHD-fájl ezen a ponton az időben, és hozza létre újra a virtuális Gépet.
+A VHD-fájl az aktuális adatait és a Virtuálisgép-lemez állapotának tárolására szolgál. A virtuális Gépen belül a lemez leválasztása vagy állítsa le a virtuális gép, és majd pillanatképet a VHD-fájl. Használhatja a pillanatkép-fájlt később kérje le a VHD fájlt ezen a ponton az időben, és hozza létre újra a virtuális Gépet.
 
 ## <a name="create-a-snapshot"></a>Pillanatkép létrehozása
-Az alábbi példakód bemutatja, hogyan hozzon létre egy pillanatképet a [Azure Storage ügyféloldali kódtára a .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). Ebben a példában adja meg a pillanatkép metaadatokat létrehozásakor.
+Az alábbi példakód bemutatja, hogyan hozhat létre egy pillanatképet a [Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/). Ebben a példában létrehozásakor adja meg a további metaadatok elkészíteni a pillanatképet.
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
@@ -70,34 +70,34 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 ```
 
 ## <a name="copy-snapshots"></a>A pillanatképek másolása
-Blobok és a pillanatképek másolási műveletek kövesse ezeket a szabályokat:
+Másolja a blobok és a pillanatfelvételeket kövesse ezeket a szabályokat érintő műveletek:
 
-* Az alap blob keresztül pillanatkép másolhatja. A kiinduló blob pozícióját az aktuális támogatásával, egy blobot egy korábbi verzióját is helyreállíthatja. A pillanatkép marad, de a következő blob felülírja a pillanatkép írható másolatát.
-* Egy forrásblobot más néven pillanatkép másolhatja. Az eredményül kapott cél blob írható blob és a pillanatkép nem.
-* Forrás blob másolását követően a forrás BLOB meglévő pillanatképeket a rendszer nem másolja a cél. Cél blob másolatot felülírja, ha a meglévő pillanatképeket, az eredeti cél blob társított változatlanok maradnak.
-* Amikor egy blokkblob pillanatképet hoz létre, a blob véglegesített tiltólista is másolja a pillanatkép. A nem véglegesített téglalapok nem kerülnek.
+* Az alap BLOB pillanatkép másolhatja. A kiinduló BLOB helyére pillanatkép támogatásával, visszaállíthatja egy blob egy korábbi verzióját. A pillanatkép marad, de az alapszintű blob felülírja a pillanatkép írható másolatát.
+* Egy forrásblobot, más néven pillanatkép másolhatja. Az eredményül kapott forrásblobot egy írható blob és a egy pillanatkép nem.
+* Ha a forrásblob másolja, bármely a forrás blob pillanatképeinek nem másolódnak át a cél. Cél blob másolatot felülírja, ha az eredeti forrásblobot társított bármely pillanatképek változatlanok maradnak.
+* A blokkblobok pillanatképet hoz létre, ha a blob véglegesített tiltólista is másolja a pillanatkép. Minden nem véglegesített blokkok nem másolódnak át.
 
-## <a name="specify-an-access-condition"></a>Adjon meg egy hozzáférési állapot
-A hívás esetén [CreateSnapshotAsync][dotnet_CreateSnapshotAsync], megadhatja a hozzáférés egy feltétele, hogy a pillanatkép létrehozása csak akkor, ha egy feltétel teljesül. A hozzáférési állapot megadásához használja a [AccessCondition] [ dotnet_AccessCondition] paraméter. Ha a megadott feltétel nem teljesül, a pillanatkép nem jön létre, és a Blob szolgáltatás adja vissza. állapotkód: [HTTPStatusCode][dotnet_HTTPStatusCode]. PreconditionFailed.
+## <a name="specify-an-access-condition"></a>Adja meg a hozzáférési állapot
+Meghívásakor [CreateSnapshotAsync][dotnet_CreateSnapshotAsync], megadhat egy hozzáférés egy feltétele, hogy a pillanatkép létrehozása csak akkor, ha egy feltétel teljesül. A hozzáférési állapot megadásához használja a [AccessCondition] [ dotnet_AccessCondition] paraméter. Ha a megadott feltétel nem teljesül, a pillanatkép nem jön létre, és a Blob service-állapotkódot adja vissza [HTTPStatusCode][dotnet_HTTPStatusCode]. PreconditionFailed.
 
-## <a name="delete-snapshots"></a>Törölje a pillanatképeket
-Egy blobot a pillanatképek nem törölhető, kivéve, ha a pillanatképek is törlődnek. Pillanatkép törlése egyenként, vagy adja meg, hogy minden pillanatképet törlődik a forrás blob törlődik. Ha a blob, amely még a pillanatképeket törölni próbál, hibát okoz.
+## <a name="delete-snapshots"></a>A pillanatképek törlése
+A pillanatképekkel rendelkező blobok nem törölhető, kivéve, ha a pillanatképeket is törlődik. Pillanatkép törlése egyenként, vagy adja meg, hogy az összes pillanatképet törölni kell a forrás blob törlése. Ha továbbra is pillanatképekkel rendelkező blobok törléséhez, egy hibát eredményez.
 
-Az alábbi példakód bemutatja, hogyan törli a blob és a pillanatképeket a .NET, ahol `blockBlob` típusú objektum [CloudBlockBlob][dotnet_CloudBlockBlob]:
+Az alábbi példakód bemutatja, hogyan törölni egy blobot, és annak pillanatképei a .NET-ben, ahol `blockBlob` típusú objektum [CloudBlockBlob][dotnet_CloudBlockBlob]:
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);
 ```
 
-## <a name="snapshots-with-azure-premium-storage"></a>Prémium szintű Azure Storage pillanatképei
-Prémium szintű Storage, pillanatképek használatakor a következő szabályok érvényesek:
+## <a name="snapshots-with-azure-premium-storage"></a>Az Azure Premium Storage-pillanatképeket
+A pillanatképek a Premium Storage használatakor a következő szabályok érvényesek:
 
-* A maximális számú pillanatképpel oldalakra vonatkozó blob egy prémium szintű tárfiók / 100. Ha túllépi ezt a határértéket, a pillanatkép-Blob visszaadja hibakód 409 (`SnapshotCountExceeded`).
-* Akkor is készítsen pillanatképet oldalakra vonatkozó blob egy prémium szintű tárfiók a 10 percenként egyszer. Ha adott aránya túllépi a határértéket, a pillanatkép-Blob művelet adja vissza hibakód 409 (`SnapshotOperationRateExceeded`).
-* Olvassa el a pillanatképet, használhatja a Blob másolási művelet pillanatkép átmásolása a fiók egy másik oldalakra vonatkozó blob. A másolási művelet a rendeltetési blob nem lehet a meglévő pillanatképeket. Ha a cél blob pillanatképekkel rendelkezik, akkor a Blob másolási művelet hibakódot 409 adja vissza (`SnapshotsPresent`).
+* A premium storage-fiók lap blobonkénti pillanatképek maximális száma pedig a 100. Ha túllépi ezt a korlátot, a Blob pillanatkép műveletet adja vissza a 409 hibakód (`SnapshotCountExceeded`).
+* Elvégezhető egy lapblob egy pillanatképet egy prémium szintű storage-fiókban 10 percenként egyszer. Ha adott aránya túllépi a határértéket, a Blob pillanatkép műveletet adja vissza a 409. Hibakód: (`SnapshotOperationRateExceeded`).
+* Olvasható pillanatkép, használhatja a Blob másolásához művelet pillanatkép másolása egy másik lapblob a fiókban. A cél blob másolási művelet nem kell rendelkeznie minden olyan meglévő pillanatképeket. Ha a cél blob pillanatképeinek rendelkezik, akkor a Blob másolásához műveletet ad vissza, hibakód: 409 (`SnapshotsPresent`).
 
-## <a name="return-the-absolute-uri-to-a-snapshot"></a>Térjen vissza a abszolút URI pillanatkép
-A C# Kódpélda pillanatképet hoz létre, és írja meg az elsődleges hely abszolút URI.
+## <a name="return-the-absolute-uri-to-a-snapshot"></a>Az abszolút URI-t térjen vissza egy pillanatképet
+A C# példakód létrehoz egy pillanatképet, és írja meg az abszolút URI Azonosítónak a elsődleges helyhez.
 
 ```csharp
 //Create the blob service client object.
@@ -119,56 +119,56 @@ CloudBlockBlob blobSnapshot = blob.CreateSnapshot();
 Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 ```
 
-## <a name="understand-how-snapshots-accrue-charges"></a>Hogyan pillanatképek keletkeznek költségek ismertetése
-Egy pillanatképet, amely egy blob csak olvasható másolatát, létrehozása eredményezhet további adatok tárolási költségek a fiókjához. Az alkalmazás megtervezéséhez fontos tudni, hogyan lehet, hogy keletkeznek ezeket a díjakat, így minimalizálhatja a költségeket.
+## <a name="understand-how-snapshots-accrue-charges"></a>Megismerheti, hogyan pillanatképek előfizetéstípusok
+Pillanatkép, amely egy blobot egy csak olvasható példányát, létrehozás eredményezhet további adatok tárolási díjakat a fiókjához. Az alkalmazás tervezésekor fontos figyelembe venni ezeket előfordulhat, hogy díjszabásokkal úgy, hogy csökkentheti minimálisra a költségeket.
 
 ### <a name="important-billing-considerations"></a>Fontos számlázási szempontok
-Az alábbi lista tartalmazza a legfontosabb megfontolandó a pillanatkép létrehozásához.
+Az alábbi lista tartalmazza az alapvető szempontokat figyelembe kell venni egy pillanatkép létrehozásához.
 
-* A tárfiók terhel egyedi blokkok vagy lapok, hogy vannak-e a blob vagy a pillanatképet. A fiók nem többletköltségei a pillanatképek társított blob, amíg nem frissíti a blob, amelyeken alapulnak. Miután frissítette az alap blob, a pillanatképek eltér. Ez akkor fordul elő, ha van szó, az egyedi blokkok vagy lapok minden egyes blob vagy a pillanatképet.
-* A blokkolás a blokkblob belül cseréjekor, amelyek blokkolják ezt követően és egyedi blokk számítjuk fel. Ez igaz, akkor is, ha a blokk blokk azonos Azonosítóval és ugyanazokat az adatokat, mert a pillanatkép. A blokk véglegesítése után újra, ez eltér a párjukhoz bármely pillanatfelvétel, és a saját adataikhoz fizetnie kell. Ugyanez érvényes a lap az oldalakra vonatkozó blob, amely azonos adatokkal rendelkező frissül.
-* A mag cseréje a blokkblob meghívásával a [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream] [ dotnet_UploadFromStream], vagy [UploadFromByteArray] [ dotnet_UploadFromByteArray] metódus található blokkok váltja fel. Ha, hogy a blob társított pillanatkép, az alap blob és a pillanatkép blokkok most tér el, és mindkét blobok blokkokról sávszélességért fizetnie kell. Ez igaz, akkor is, ha az alap blob és a pillanatkép adatainak azonos maradnak.
-* Az Azure Blob szolgáltatás nem rendelkezik segítségével határozza meg, hogy a két blokk azonos adatokat tartalmaz. Minden feltöltött és véglegesített blokk rendszer egyedi, még akkor is, ha ugyanazokat az adatokat, és a blokk megegyezik. Díjak egyedi blokk keletkeznek, mert fontos figyelembe venni, hogy egy blobot, amely rendelkezik egy pillanatkép eredmények további egyedi blokkok és további díjakat frissítése.
+* A tárfiók költségeket terhel egyedi blokkok vagy lapok, attól a blob vagy a pillanatkép. A fiók nem jár további díjakat a társított blob, amíg nem frissíti a blob-alapú, amelyre pillanatképekkel. Miután frissítette az alap blob, a pillanatképek eltér. Ha ez történik, az egyedi blokkok vagy minden egyes blob vagy pillanatkép oldalak díjkötelesek.
+* Ha lecseréli a blokkolás belül a blokkblobok, kódrészleten ezt követően egy egyedi blokként kell fizetnie. Ez igaz, akkor is, ha a blokk blokk ugyanazzal az Azonosítóval, és ugyanazokat az adatokat, mert a pillanatkép. A blokk véglegesítése után újra, bármilyen pillanatképet a párjukhoz eltér, és fizetni az adatokat. Ugyanez érvényes a lap a egy lapblob, amely azonos adatokkal frissül.
+* Cserélje le a blokkblob meghívásával a [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream] [ dotnet_UploadFromStream], vagy [UploadFromByteArray] [ dotnet_UploadFromByteArray] metódus váltja fel a blob minden blokkokat. Ha egy adott blob társított pillanatkép, mostantól a kiindulási blob és a pillanatkép összes blokkokat tér el, és, mindkét blobok minden blokkokat kell fizetnie. Ez igaz, akkor is, ha a kiindulási blob és a pillanatkép adatainak azonos marad.
+* Az Azure Blob szolgáltatás nem rendelkezik a módszerrel határozza meg, hogy a két blokk azonos adatokat tartalmaz. Minden feltöltött és véglegesített blokk egyedi, számít, még akkor is, ha ugyanazokat az adatokat és ugyanezzel az azonosítóval letiltása. Egyedi blokkolja a díjakat, mert fontos figyelembe venni, hogy frissítése egy blobot, amely rendelkezik egy pillanatkép további egyedi blokkok és további díjakat eredményez.
 
-### <a name="minimize-cost-with-snapshot-management"></a>Pillanatkép-kezeléssel költségek minimalizálása érdekében
+### <a name="minimize-cost-with-snapshot-management"></a>Minimalizálja a költségeket a pillanatkép-kezelése
 
-Azt javasoljuk, alaposan további költségek elkerülése érdekében a pillanatképek kezeléséhez. Az alábbi gyakorlati tanácsok a felmerült a pillanatképek tárolási költségek csökkentése érdekében kövesse:
+Azt javasoljuk, körültekintően a többletköltségek elkerülése érdekében a pillanatképek kezelése. Követheti az ajánlott eljárások a pillanatképek tárolását felmerült költségek minimálisra csökkentése érdekében:
 
-* Törölje, és hozza létre a pillanatképek társított blob amikor frissíti a blob, még akkor is, ha frissíti azonos adatokkal, kivéve, ha az alkalmazás tervhez szükséges, hogy a pillanatképek karbantartása. Törlésével és ismételt létrehozása a blob-pillanatképekkel, akkor biztosíthatja, hogy a blob és a pillanatfelvételeket tér el.
-* Ha a blob-pillanatképek fenntartásának ne hívása [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], vagy [UploadFromByteArray] [ dotnet_UploadFromByteArray] a blob frissítése. Ezek a módszerek a BLOB, amely az alapszintű blob és a pillanatképek tér el jelentősen blokkok cseréjét. Ehelyett frissítése a lehető legkevesebb blokkok használatával a [PutBlock] [ dotnet_PutBlock] és [PutBlockList] [ dotnet_PutBlockList] módszerek.
+* Törölje és hozza létre újból a pillanatképek társított blob, amikor frissíti a blob, még akkor is, ha frissíti az azonos adatokat, kivéve, ha az alkalmazás-tervezés szükséges, hogy továbbra is a pillanatképek. Törlésével és ismételt létrehozása a blob-pillanatfelvételek, akkor biztosíthatja, hogy a blob és a pillanatképekhez tér el.
+* Ha egy blob pillanatképének is fenntartják, elkerülheti a hívása [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], vagy [UploadFromByteArray] [ dotnet_UploadFromByteArray] frissíteni a blobot. Ezek a metódusok cserélje le az összes blob: az alap blob és a pillanatképek tér el jelentősen okoz a blokkok. Ehelyett a lehető legkevesebb blokkok használatával módosítsa a [PutBlock] [ dotnet_PutBlock] és [PutBlockList] [ dotnet_PutBlockList] módszereket.
 
 ### <a name="snapshot-billing-scenarios"></a>Pillanatkép számlázási forgatókönyvek
-A következő esetekben bemutatják, hogyan költségek letiltása blob és a pillanatképek keletkeznek.
+Az alábbi forgatókönyvek bemutatják a blokkblobok és annak pillanatképei vonatkozó díjszabásokkal.
 
 **1. forgatókönyv**
 
-Az 1. forgatókönyv az alap blob nem lett frissítve után során létrehozott pillanatképen, így díjak sem merülnek fel, csak az egyedi blokkok 1, 2 és 3.
+Az 1. forgatókönyv az alap blob nem lett frissítve után a pillanatkép, így csak az 1, 2 és 3 egyedi blokkok számítunk fel díjat.
 
-![Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-1.png)
+![Az Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-1.png)
 
 **2. forgatókönyv**
 
-A 2. forgatókönyv az alap blob frissítve lett, de nem rendelkezik a pillanatkép. Blokk 3 frissítették, és annak ellenére, hogy ugyanazokat az adatokat, és ugyanazzal az Azonosítóval tartalmaz, nincs megegyezik a pillanatkép 3 letiltása. Ennek eredményeképpen a fiók négy blokk számítjuk fel.
+A 2. forgatókönyv az alap blobot frissítve lett, de még nem a pillanatképre. Blokk 3 frissítve lett, és annak ellenére, hogy ugyanazokat az adatokat, és ugyanazzal az Azonosítóval tartalmaz, nem ugyanaz, mint a pillanatkép 3 letiltása. Ennek eredményeképpen a fiók díjszabásának négy blokkokat.
 
-![Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-2.png)
+![Az Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-2.png)
 
 **3. forgatókönyv**
 
-3. forgatókönyv az alap blob frissítve lett, de nem rendelkezik a pillanatkép. Blokk 3 váltotta fel a kiinduló blob 4 blokkja, de a pillanatkép továbbra is tükrözi blokk 3. Ennek eredményeképpen a fiók négy blokk számítjuk fel.
+3. forgatókönyv az alap blobot frissítve lett, de még nem a pillanatképre. Blokk 3 váltotta fel az alap blob 4 blokkja, de a pillanatkép továbbra is tükrözi 3 letiltása. Ennek eredményeképpen a fiók díjszabásának négy blokkokat.
 
-![Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-3.png)
+![Az Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-3.png)
 
 **4. forgatókönyv**
 
-A 4. forgatókönyv az alap blob teljesen frissült, ezért az eredeti blokkok egyike sem tartalmazza. Ennek eredményeképpen a fiók összes nyolc egyedi blokk számítjuk fel. Ez akkor fordulhat elő, ha egy frissítési módszerét használja, mint [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], vagy [UploadFromByteArray][dotnet_UploadFromByteArray], mert ezek a módszerek cseréjét a blob tartalmát.
+4. forgatókönyv az alap blob teljesen frissítve lett, és tartalmazza az eredeti blokkok egyike. Ennek eredményeképpen a fiók összes nyolc egyedi blokkok díjszabásának. Ez akkor fordulhat elő, ha például egy frissítési módszer használ [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], vagy [UploadFromByteArray][dotnet_UploadFromByteArray], mert ezek a metódusok cserélje le az összes blob tartalmát.
 
-![Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
+![Az Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a virtuális gép (VM) lemez pillanatképek használata található [készítsen biztonsági másolatot az Azure nem felügyelt méretű lemezek növekményes pillanatképek](../../virtual-machines/windows/incremental-snapshots.md)
+* További információ a virtuális gép (VM) pillanatképeit használata annak [biztonsági mentése az Azure nem felügyelt Virtuálisgép-lemezek növekményes pillanatképekkel](../../virtual-machines/windows/incremental-snapshots.md)
 
-* Kód Blob storage használatával, tekintse meg a [Azure mintakódok](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob). Töltse le a mintaalkalmazást, majd futtassa, vagy keresse meg a kódot a Githubon.
+* Blob storage-dzsal további példákért lásd [Azure-Kódminták](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob). Töltse le a mintaalkalmazást, és futtathatja, vagy tallózással keresse meg a kódot a Githubon.
 
 [dotnet_AccessCondition]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.accesscondition.aspx
 [dotnet_CloudBlockBlob]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.aspx

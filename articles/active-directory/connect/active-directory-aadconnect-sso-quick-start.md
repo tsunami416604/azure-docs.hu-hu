@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df936c697f500f5ab98becd1529cd321f9f3f5c4
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 4be205f13260d60bc9788b873bea34970b560f5a
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259119"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283605"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezési
 
@@ -49,7 +49,7 @@ Győződjön meg arról, hogy a következő előfeltételeket:
     
 * **A modern hitelesítés engedélyezése**: engedélyeznie kell a [modern hitelesítést](https://aka.ms/modernauthga) a bérlő esetében ez a funkció működéséhez.
 
-* **Az Office 365-ügyfelek a legújabb verziókat használhatja**: verziók 16.0.8730.xxxx kell beolvasni a beavatkozás nélküli bejelentkezést az Office 365-ügyfelek (Outlook, Word, Excel és mások), vagy újabb.
+* **Az Office 365-ügyfelek a legújabb verziókat használhatja**: szeretne kapni a beavatkozás nélküli bejelentkezést az Office 365-ügyfelek (Outlook, Word, Excel és mások), a felhasználók számára szeretné használni a verziók 16.0.8730.xxxx vagy újabb.
 
 ## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
 
@@ -98,7 +98,7 @@ Alapértelmezés szerint a böngésző automatikusan kiszámolja a megfelelő z�
 
 Felhasználók Intranet zóna beállításainak módosításához két módja van:
 
-| Lehetőség | Felügyeleti szempontok | Felhasználói élmény |
+| Beállítás | Felügyeleti szempontok | Felhasználói élmény |
 | --- | --- | --- |
 | Csoportházirend | Felügyeleti zárolások le az Intranet zóna beállításainak szerkesztése | A felhasználó nem módosíthatja a saját beállítások |
 | Csoportházirend-beállítások |  Rendszergazdai lehetővé teszi, hogy az Intranet zóna beállításainak szerkesztése | Felhasználók a saját beállítások módosíthatók. |
@@ -194,7 +194,7 @@ Közvetlen egyszeri bejelentkezés nem működik a privát böngészési módban
 
 A funkció egy adott felhasználó teszteléséhez ellenőrizze, hogy az alábbi feltételek teljesülnek:
   - A felhasználó bejelentkezik vállalati eszközök.
-  - Az eszköz az Active Directory-tartományhoz csatlakozik.
+  - Az eszköz az Active Directory-tartományhoz csatlakozik. Az eszköz _nem_ kell lennie [Azure AD-csatlakoztatás](../active-directory-azureadjoin-overview.md).
   - Az eszköz a tartományvezérlő (DC), hogy közvetlen kapcsolat van, a vállalati vezetékes vagy vezeték nélküli hálózaton vagy a távelérési kapcsolatot, például a VPN-kapcsolat használatával.
   - Rendelkezik [egyik tagján jelennek meg a szolgáltatás](##step-3-roll-out-the-feature) ehhez a felhasználóhoz a csoportházirenden keresztül.
 

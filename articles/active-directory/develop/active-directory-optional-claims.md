@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036751"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265064"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nem kötelező jogcímek, az Azure ad-ben (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ez a szolgáltatás-k segítségével az alkalmazásfejlesztők adja meg, milyen
 -   Adja hozzá, és egyéni jogcímek, az alkalmazás eléréséhez. 
 
 > [!Note]
-> Ez a lehetőség jelenleg nyilvános előzetes verzióban érhető el. Fel kell készülni visszaállítása, vagy távolítsa el a módosításokat. A szolgáltatás minden olyan Azure AD-előfizetéshez, a nyilvános előzetes verzióban érhető el. Amikor a szolgáltatás általánosan elérhetővé válik, azonban a szolgáltatást bizonyos aspektusainak szükség lehet egy Azure AD premium előfizetéssel.
+> Ez a lehetőség jelenleg nyilvános előzetes verzióban érhető el. Készüljön fel a módosítások visszavonására vagy eltávolítására. A szolgáltatás minden olyan Azure AD-előfizetéshez, a nyilvános előzetes verzióban érhető el. Amikor a szolgáltatás általánosan elérhetővé válik, azonban a szolgáltatást bizonyos aspektusainak szükség lehet egy Azure AD premium előfizetéssel.
 
 Standard jogcímek és azok hogyan használhatók a tokenek listáját lásd: a [alapjait, az Azure AD által kiállított jogkivonatokban](active-directory-token-and-claims.md). 
 
@@ -41,8 +41,8 @@ Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md)
 
 | Fiók típusa | 1.0-s verziójú végpont                      | 2.0 verziójú végpont  |
 |--------------|------------------------------------|----------------|
-| MSA          | NA – jegyek RPS ehelyett használt | A támogatás hamarosan elérhető |
-| AAD          | Támogatott                          | Támogatott      |
+| Személyes Microsoft-fiók  | NA – jegyek RPS ehelyett használt | A támogatás hamarosan elérhető |
+| Azure AD-fiók          | Támogatott                          | Támogatott      |
 
 ## <a name="standard-optional-claims-set"></a>Standard választható jogcímek készletébe
 Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem kötelező jogcímek készlete alább láthatók.  Az egyéni opcionális jogcímek az alkalmazáshoz adni, tekintse meg a [Címtárbővítmények](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions), az alábbi. 
@@ -214,7 +214,7 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
 3.  Válassza ki **Azure AD-bővítményben** , a bal oldali navigációs panelen, majd kattintson a **Alkalmazásregisztrációk**.
 4.  Keresse meg az alkalmazás konfigurálása nem kötelező jogcímeket a listában, és kattintson rá.
 5.  Kattintson az alkalmazás oldaláról **Manifest** , nyissa meg a beágyazott alkalmazásjegyzék-szerkesztőben. 
-6.  Közvetlenül szerkesztheti a jegyzékfájlt a szerkesztő használatával. A jegyzékfájl követi a sémát a [alkalmazás entitás](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity), és formázza a jegyzékfájl egyszer mentve. Új elemets hozzáadódik a `OptionalClaims` tulajdonság.
+6.  Közvetlenül szerkesztheti a jegyzékfájlt a szerkesztő használatával. A jegyzékfájl követi a sémát a [alkalmazás entitás](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity), és formázza a jegyzékfájl egyszer mentve. Új elem megjelenik a `OptionalClaims` tulajdonság.
 
       ```json
       "optionalClaims": 

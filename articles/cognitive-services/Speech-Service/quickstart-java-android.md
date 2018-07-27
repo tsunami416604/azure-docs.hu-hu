@@ -1,21 +1,20 @@
 ---
-title: 'Gyors útmutató: Ismeri fel a beszéd, a Java, a Cognitive Services beszédfelismerő SDK használatával Android rendszeren |} A Microsoft Docs'
+title: 'Gyors útmutató: Ismeri fel a beszéd, a Java, a Cognitive Services beszédfelismerő SDK használatával Android rendszeren'
 titleSuffix: Microsoft Cognitive Services
 description: Ismerje meg, hogyan beszédfelismerést javában Android a Cognitive Services beszédfelismerő SDK használatával
 services: cognitive-services
 author: fmegen
-manager: wolfma
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: fb52bc3fa398cbe5ba4cbea7c1908ee1fece876e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 585728d95db800f32d98d71cf0c64e689845794f
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114702"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285510"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést Java nyelven a Speech SDK használatával Android rendszeren
 

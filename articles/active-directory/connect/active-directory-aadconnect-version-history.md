@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/31/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e808d4bf116dcab344308c3dd2aa06c72e0318ba
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 1b14e1460eec54e89046f204be8f0c3a8f929881
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049517"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264592"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -36,6 +36,44 @@ Lépések az Azure AD Connect frissítése | Különböző módszerekkel [friss�
 Szükséges engedélyek | Tekintse meg a frissítés alkalmazásához szükséges engedélyek [fiókok és engedélyek](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Letöltés |} [Töltse le az Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="118800"></a>1.1.880.0
+
+### <a name="release-status"></a>Kiadási állapot
+
+7/20/2018: automatikus frissítés rendszerhez. Kiadás letölthető hamarosan követi.
+
+### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
+
+- A Ping összevonni integrációja az Azure AD Connect már általánosan elérhető. [Tudjon meg többet összevont Azure ad-Ping összevonása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
+- Az Azure AD Connect létrehozza a biztonsági mentés az Azure AD-megbízhatóság az AD FS minden egyes frissítés történik, és tárolja azokat az egyszerű helyreállítás külön fájlt, ha szükséges. [Ismerje meg, további információt az új funkciók és az Azure AD-kezelés az Azure AD Connect megbízható ](https://aka.ms/fedtrustinaadconnect).
+- Új hibaelhárítási eszköz segítségével elsődleges e-mail-cím megváltoztatása, és a fiókot a globális címlista elrejtése hibaelhárítása
+- Az Azure AD Connect lett frissítve a legújabb SQL Server 2012 Native Client
+- Amikor felhasználói bejelentkezés a Jelszókivonat-szinkronizálás és átmenő hitelesítés a "Change felhasználói bejelentkezési" feladat, az alapértelmezés szerint engedélyezve van a közvetlen egyszeri bejelentkezés jelölőnégyzetet.
+- A Windows Server Essentials 2019 támogatása
+- Az Azure AD Connect Health-ügynök frissítése a legújabb verzióra 3.1.7.0 megtörtént
+- A frissítés során a telepítő észleli az alapértelmezett szinkronizálási szabályokat, ha a rendszergazda megjelennek a egy figyelmeztetés, mielőtt felülírná a módosított szabályokat. Ez lehetővé teszi a felhasználó korrekciós művelet, és később folytathatja. Régi viselkedés: Ha hiba történt a szabály bármely módosítása out-of-box majd kézi frissítés figyelmeztetéseket a felhasználónak anélkül volt felülírása ezeket a szabályokat, és szinkronizálásütemező le lett tiltva, a felhasználó értesítése nélkül. Az új viselkedés: Felhasználó felszólítást kap figyelmeztetést, mielőtt felülírná a módosított out-of-box szinkronizálási szabályokat. A felhasználónak kell, hogy a frissítési folyamat leáll, és később a javítási műveletek után folytatódik.
+- Adjon meg érvényes a FIPS megfelelőségi problémát, így hibaüzenetet az MD5 kivonatoló létrehozásához a FIPS-kompatibilis környezetben és a egy hivatkozást, amely a probléma megkerülése biztosít dokumentációt jobban kezelése.
+- Felhasználói felület javítása összevonási feladatokat, amelyek egy külön sub csoportban az összevonáshoz immár a varázsló frissítse. 
+- Az összes összevonási további feladatokat egy egyszerűen használható egyetlen alárendelt menüpont alatt vannak csoportosítva.
+- Egy új technológiájú ADSyncConfig Posh modul (AdSyncConfig.psm1) az új AD-engedélyekről functions át a régi ADSyncPrep.psm1 (ami előfordulhat, hogy elavulttá válik hamarosan)
+
+### <a name="fixed-issues"></a>Rögzített kapcsolatos problémák 
+
+- Kijavítva a hiba, amely akkor időnként az eredmény egy hibaüzenet, automatikusan feloldásra SQL holtpont hiba
+- Számos kisegítő lehetőségekkel kapcsolatos probléma kijavítva a szinkronizálási Szabályszerkesztővel és a Sync Service Manager  
+- Kijavítva a hiba, ahol az Azure AD Connect nem sikerült beolvasni a beállításjegyzék-beállítás információk
+- Kijavítva a hiba, amelyet problémák, amikor a felhasználó halad előre és vissza a varázsló
+- Kijavítva a hiba miatt átadja a varázslóban helytelen több szál történik hiba elkerülése érdekében
+- Csoport szinkronizálás szűrése lap LDAP-hibát észlel, biztonsági csoportok feloldásakor, az Azure AD Connect most visszatér a kivétel teljes igazodva.  A hivatkozási kivételt kiváltó továbbra is ismeretlen, és a egy másik hiba fog fordulni.
+-  Kijavítva a hiba, ahol Találkozhatunk és NGC-kulcsok (msDS-KeyCredentialLink attribútum a WHfB felhasználó/eszköz objektumok) engedélyeit is nincs megfelelően beállítva.     
+- Kijavítva a hiba, ahol "Set-ADSyncRestrictedPermissions" nem lett meghívva megfelelően
+-  Engedély biztosítása a csoportok visszaírásához AADConnect a telepítővarázslóban támogatása
+- Ha módosítja a bejelentkezési módszer a Jelszókivonat-szinkronizálás az AD FS-hez, Jelszókivonatok szinkronizálása nem le lett tiltva.
+- A hozzáadott ellenőrzés az AD FS-konfiguráció IPv6-címek esetén
+- Az értesítési üzenet tájékoztatja, hogy létezik-e egy meglévő konfiguráció frissítése.
+- Eszközvisszaírás nem észleli a tároló nem megbízható erdőben. Ez egy jobb hibaüzenet és a egy hivatkozás a megfelelő dokumentációt frissítve lett
+- Egy szervezeti Egységet, és a megfelelő, hogy a szervezeti egység általános szinkronizálási hibát ad szinkronizálása/jelszóvisszaíró jelölésének. Ez a hiba érhetőbbé üzenet létrehozása megváltozott.
 
 ## <a name="118190"></a>1.1.819.0
 
@@ -218,9 +256,9 @@ Engedélyezés    | Rendszergazdák                | Teljes hozzáférés       
 Engedélyezés    | Vállalati tartományvezérlők | Tartalom listázása        | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Olvasási engedélyek     | Ez az objektum  |
-Engedélyezés    | Hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
-Engedélyezés    | Hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
-Engedélyezés    | Hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
+Engedélyezés    | A hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
+Engedélyezés    | A hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
+Engedélyezés    | A hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
 
 A beállítások a az AD DS-fiók megerősítéséhez futtathatja [a PowerShell-szkript](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). A PowerShell-szkriptet fogja hozzárendelni az engedélyeket, az AD DS-fiókot a fent említett.
 

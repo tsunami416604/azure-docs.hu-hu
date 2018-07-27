@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: fab9ddefc022cb5643f98cf7fea4ca74d4f7101b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a3b11abb665715f43279b925ad741de262c5656c
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228052"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263657"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az OAuth 2.0 kód engedélyezési folyamatával használatával az Azure Active Directory webes alkalmazásokhoz való hozzáférés engedélyezése
 Az Azure Active Directory (Azure AD) az OAuth 2.0 használatával lehetővé teszi, hogy engedélyezze a hozzáférést a webalkalmazásokhoz és webes API-k az Azure AD-bérlőben. Ez az útmutató nyelvektől független, és hogyan küldhetők és fogadhatók HTTP-üzenetek bármelyikének használata nélkül ismerteti meg [nyílt forráskódú könyvtáraink](active-directory-authentication-libraries.md).
@@ -142,7 +142,7 @@ grant_type=authorization_code
 | grant_type |szükséges |Meg kell `authorization_code` az engedélyezési kód folyamata. |
 | Kód |szükséges |A `authorization_code` az előző szakaszban beszerzett |
 | redirect_uri |szükséges |Azonos `redirect_uri` beszerzéséhez használt értékkel a `authorization_code`. |
-| client_secret |a web apps esetében nem engedélyezett a nyilvános ügyfelek szükséges |Az alkalmazás titkos, amelyet az alkalmazás mellett az Azure Portalon létrehozott **kulcsok**. Ez nem használható egy natív alkalmazást (nyilvános ügyfél), mert client_secrets megbízhatóan nem tárolható az eszközökön. Webalkalmazások és webes API-kat (az összes bizalmas ügyfeleknek), amelyek történő tárolásának lehetőségét szükséges a `client_secret` biztonságosan a kiszolgálói oldalon. |
+| client_secret |a web apps esetében nem engedélyezett a nyilvános ügyfelek szükséges |Az alkalmazás titkos, amelyet az alkalmazás mellett az Azure Portalon létrehozott **kulcsok**. Ez nem használható egy natív alkalmazást (nyilvános ügyfél), mert client_secrets megbízhatóan nem tárolható az eszközökön. Webalkalmazások és webes API-kat (az összes bizalmas ügyfeleknek), amelyek történő tárolásának lehetőségét szükséges a `client_secret` biztonságosan a kiszolgálói oldalon. A titkos ügyfélkódot kell URL-kódolású elküldése előtt. |
 | erőforrás | Ajánlott |Az Alkalmazásazonosító URI-t a cél a webes API (védett erőforrás). Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazást az alkalmazásregisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson a  **Tulajdonságok**. Például egy külső erőforrás is lehet `https://graph.microsoft.com`. Ez azért szükséges, egy engedélyezési vagy jogkivonat-kérelmeket. Annak biztosítása érdekében kevesebb hitelesítési kérések helyezze el az engedélyezési kérésben, ha biztosítani szeretné, jóváhagyás a felhasználó. Ha az engedélyezési kérésben, mind a jogkivonat kérése az erőforrás "paramétereknek egyezniük kell. | 
 | code_verifier | választható | Az azonos code_verifier a authorization_code beszerzéséhez használt. Szükséges, ha az engedélyezési kód engedélyezési kérésben PKCE használt. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 

@@ -17,12 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: a98a23de3ea58af5c4a63958f554de1e002ec456
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 8bba58c3493bc8adc17c5d4bca103326808d5b8b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248315"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283726"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Ismerkedés az Azure AD Node.js webalkalmazás
 Jelen példában használjuk a Passport:
@@ -150,115 +150,111 @@ Itt Express, az OpenID Connect hitelesítési protokoll használatára konfigur�
     }
     ));
     ```
-A Passport az összes stratégia esetében (Twitter, Facebook és így tovább), amely az összes stratégiafejlesztő által hasonló mintát alkalmaz. Megnézzük a stratégiát, láthatja, hogy adjuk át azt egy függvényt, amely rendelkezik egy jogkivonatot, és ennek paraméterei egy kész. A stratégia ismét velünk a kapcsolatot után annak működik. A Microsoft kívánja tárolni a felhasználót, és a jogkivonat Panelcsoport, így nem szükséges kelljen megismételni.
+   A Passport az összes stratégia esetében (Twitter, Facebook és így tovább), amely az összes stratégiafejlesztő által hasonló mintát alkalmaz. Megnézzük a stratégiát, láthatja, hogy adjuk át azt egy függvényt, amely rendelkezik egy jogkivonatot, és ennek paraméterei egy kész. A stratégia ismét velünk a kapcsolatot után annak működik. A Microsoft kívánja tárolni a felhasználót, és a jogkivonat Panelcsoport, így nem szükséges kelljen megismételni.
 
-> [!IMPORTANT]
-Az előző kód időt vesz igénybe, azok a felhasználók, a kiszolgáló hitelesítésére történik. Ez az úgynevezett automatikus regisztráció. Azt javasoljuk, hogy ne engedélyezze, hogy bárki azokat egy üzemi kiszolgálóra első kellene őket egy folyamat, amely dönt is keresztül regisztrálniuk használata nélkül végezzen hitelesítést. Ez általában a a megoldást látjuk a fogyasztói alkalmazásoknál, amelyek lehetővé teszik, hogy regisztrálja a Facebookkal, de aztán további információt adhat meg. Ha ez nem egy mintaalkalmazást, hogy sikerült rendelkezik kinyert a felhasználó e-mail címét a jogkivonat-objektumból, amely adott vissza, és ezután kéri a felhasználót, hogy adjon meg további információkat. Mivel ez egy tesztkiszolgálón, hozzáadjuk őket a memóriában lévő adatbázishoz.
+   > [!IMPORTANT]
+   > Az előző kód időt vesz igénybe, azok a felhasználók, a kiszolgáló hitelesítésére történik. Ez az úgynevezett automatikus regisztráció. Azt javasoljuk, hogy ne engedélyezze, hogy bárki azokat egy üzemi kiszolgálóra első kellene őket egy folyamat, amely dönt is keresztül regisztrálniuk használata nélkül végezzen hitelesítést. Ez általában a a megoldást látjuk a fogyasztói alkalmazásoknál, amelyek lehetővé teszik, hogy regisztrálja a Facebookkal, de aztán további információt adhat meg. Ha ez nem egy mintaalkalmazást, hogy sikerült rendelkezik kinyert a felhasználó e-mail címét a jogkivonat-objektumból, amely adott vissza, és ezután kéri a felhasználót, hogy adjon meg további információkat. Mivel ez egy tesztkiszolgálón, hozzáadjuk őket a memóriában lévő adatbázishoz.
 
 
 4. Ezután vegyünk fel a módszereket, amelyek lehetővé teszik számunkra, hogy a Passport által előírt, bejelentkezett felhasználók nyomon követése. Ezek a metódusok lehetnek szerializálása és deszerializálása a felhasználói adatokat.
 
     ```JavaScript
+    // Passport session setup. (Section 2)
 
-            // Passport session setup. (Section 2)
+    //   To support persistent sign-in sessions, Passport needs to be able to
+    //   serialize users into the session and deserialize them out of the session. Typically,
+    //   this is done simply by storing the user ID when serializing and finding
+    //   the user by ID when deserializing.
+    passport.serializeUser(function(user, done) {
+        done(null, user.email);
+    });
 
-            //   To support persistent sign-in sessions, Passport needs to be able to
-            //   serialize users into the session and deserialize them out of the session. Typically,
-            //   this is done simply by storing the user ID when serializing and finding
-            //   the user by ID when deserializing.
-            passport.serializeUser(function(user, done) {
-                done(null, user.email);
-            });
+    passport.deserializeUser(function(id, done) {
+        findByEmail(id, function (err, user) {
+            done(err, user);
+        });
+    });
 
-            passport.deserializeUser(function(id, done) {
-                findByEmail(id, function (err, user) {
-                    done(err, user);
-                });
-            });
+    // array to hold signed-in users
+    var users = [];
 
-            // array to hold signed-in users
-            var users = [];
-
-            var findByEmail = function(email, fn) {
-                for (var i = 0, len = users.length; i < len; i++) {
-                    var user = users[i];
-                    log.info('we are using user: ', user);
-                    if (user.email === email) {
-                        return fn(null, user);
-                    }
-                }
-                return fn(null, null);
-            };
+    var findByEmail = function(email, fn) {
+        for (var i = 0, len = users.length; i < len; i++) {
+            var user = users[i];
+            log.info('we are using user: ', user);
+            if (user.email === email) {
+                return fn(null, user);
+            }
+        }
+        return fn(null, null);
+    };
     ```
 
 5. Következő lépésként adjunk hozzá a kódot az Express motor betöltése. Itt az alapértelmezett /views használjuk, és Express /routes minta biztosít.
 
     ```JavaScript
+    // configure Express (section 2)
 
-        // configure Express (section 2)
-
-            var app = express();
-            app.configure(function() {
-          app.set('views', __dirname + '/views');
-          app.set('view engine', 'ejs');
-          app.use(express.logger());
-          app.use(express.methodOverride());
-          app.use(cookieParser());
-          app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
-          app.use(bodyParser.urlencoded({ extended : true }));
-          // Initialize Passport!  Also use passport.session() middleware, to support
-          // persistent login sessions (recommended).
-          app.use(passport.initialize());
-          app.use(passport.session());
-          app.use(app.router);
-          app.use(express.static(__dirname + '/../../public'));
-        });
-
+        var app = express();
+        app.configure(function() {
+      app.set('views', __dirname + '/views');
+      app.set('view engine', 'ejs');
+      app.use(express.logger());
+      app.use(express.methodOverride());
+      app.use(cookieParser());
+      app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
+      app.use(bodyParser.urlencoded({ extended : true }));
+      // Initialize Passport!  Also use passport.session() middleware, to support
+      // persistent login sessions (recommended).
+      app.use(passport.initialize());
+      app.use(passport.session());
+      app.use(app.router);
+      app.use(express.static(__dirname + '/../../public'));
+    });
     ```
 
 6. Utolsó lépésként adjunk az útvonalakat, amelyek kiosztják a tényleges bejelentkezési kéréseket a `passport-azure-ad` motor:
 
     ```JavaScript
+    // Our Auth routes (section 3)
 
-        // Our Auth routes (section 3)
+    // GET /auth/openid
+    //   Use passport.authenticate() as route middleware to authenticate the
+    //   request. The first step in OpenID authentication involves redirecting
+    //   the user to their OpenID provider. After authenticating, the OpenID
+    //   provider redirects the user back to this application at
+    //   /auth/openid/return.
+    app.get('/auth/openid',
+    passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+    function(req, res) {
+        log.info('Authentication was called in the Sample');
+        res.redirect('/');
+    });
 
-        // GET /auth/openid
-        //   Use passport.authenticate() as route middleware to authenticate the
-        //   request. The first step in OpenID authentication involves redirecting
-        //   the user to their OpenID provider. After authenticating, the OpenID
-        //   provider redirects the user back to this application at
-        //   /auth/openid/return.
-        app.get('/auth/openid',
-        passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
-        function(req, res) {
-            log.info('Authentication was called in the Sample');
-            res.redirect('/');
-        });
+    // GET /auth/openid/return
+    //   Use passport.authenticate() as route middleware to authenticate the
+    //   request. If authentication fails, the user is redirected back to the
+    //   sign-in page. Otherwise, the primary route function is called,
+    //   which, in this example, redirects the user to the home page.
+    app.get('/auth/openid/return',
+      passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+      function(req, res) {
+        log.info('We received a return from AzureAD.');
+        res.redirect('/');
+      });
 
-        // GET /auth/openid/return
-        //   Use passport.authenticate() as route middleware to authenticate the
-        //   request. If authentication fails, the user is redirected back to the
-        //   sign-in page. Otherwise, the primary route function is called,
-        //   which, in this example, redirects the user to the home page.
-        app.get('/auth/openid/return',
-          passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
-          function(req, res) {
-            log.info('We received a return from AzureAD.');
-            res.redirect('/');
-          });
-
-        // POST /auth/openid/return
-        //   Use passport.authenticate() as route middleware to authenticate the
-        //   request. If authentication fails, the user is redirected back to the
-        //   sign-in page. Otherwise, the primary route function is called,
-        //   which, in this example, redirects the user to the home page.
-        app.post('/auth/openid/return',
-          passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
-          function(req, res) {
-            log.info('We received a return from AzureAD.');
-            res.redirect('/');
-          });
-     ```
+    // POST /auth/openid/return
+    //   Use passport.authenticate() as route middleware to authenticate the
+    //   request. If authentication fails, the user is redirected back to the
+    //   sign-in page. Otherwise, the primary route function is called,
+    //   which, in this example, redirects the user to the home page.
+    app.post('/auth/openid/return',
+      passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+      function(req, res) {
+        log.info('We received a return from AzureAD.');
+        res.redirect('/');
+      });
+    ```
 
 
 ## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4. lépés: Használata a Passport a bejelentkezési és kijelentkezési kérések kiállítása az Azure AD
@@ -267,29 +263,27 @@ Az alkalmazás most már megfelelően van konfigurálva, az OpenID Connect hitel
 1. Első lépésként adjunk hozzá az alapértelmezett, bejelentkezési, fiókkal és kijelentkezési metódusokat az `app.js` fájlt:
 
     ```JavaScript
+    //Routes (section 4)
 
-        //Routes (section 4)
+    app.get('/', function(req, res){
+      res.render('index', { user: req.user });
+    });
 
-        app.get('/', function(req, res){
-          res.render('index', { user: req.user });
-        });
+    app.get('/account', ensureAuthenticated, function(req, res){
+      res.render('account', { user: req.user });
+    });
 
-        app.get('/account', ensureAuthenticated, function(req, res){
-          res.render('account', { user: req.user });
-        });
+    app.get('/login',
+      passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+      function(req, res) {
+        log.info('Login was called in the Sample');
+        res.redirect('/');
+    });
 
-        app.get('/login',
-          passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
-          function(req, res) {
-            log.info('Login was called in the Sample');
-            res.redirect('/');
-        });
-
-        app.get('/logout', function(req, res){
-          req.logout();
-          res.redirect('/');
-        });
-
+    app.get('/logout', function(req, res){
+      req.logout();
+      res.redirect('/');
+    });
     ```
 
 2. Vizsgáljuk meg részletesebben ezeket:
@@ -302,25 +296,22 @@ Az alkalmazás most már megfelelően van konfigurálva, az OpenID Connect hitel
 3. Az utolsó részét `app.js`, adjuk hozzá a **EnsureAuthenticated** használt módszer `/account`, ahogyan korábban.
 
     ```JavaScript
+    // Simple route middleware to ensure user is authenticated. (section 4)
 
-        // Simple route middleware to ensure user is authenticated. (section 4)
-
-        //   Use this route middleware on any resource that needs to be protected. If
-        //   the request is authenticated (typically via a persistent sign-in session),
-        //   the request proceeds. Otherwise, the user is redirected to the
-        //   sign-in page.
-        function ensureAuthenticated(req, res, next) {
-          if (req.isAuthenticated()) { return next(); }
-          res.redirect('/login')
-        }
+    //   Use this route middleware on any resource that needs to be protected. If
+    //   the request is authenticated (typically via a persistent sign-in session),
+    //   the request proceeds. Otherwise, the user is redirected to the
+    //   sign-in page.
+    function ensureAuthenticated(req, res, next) {
+      if (req.isAuthenticated()) { return next(); }
+      res.redirect('/login')
+    }
     ```
 
 4. Végezetül hozzunk létre magát a kiszolgálót a `app.js`:
 
 ```JavaScript
-
-        app.listen(3000);
-
+app.listen(3000);
 ```
 
 
@@ -330,25 +321,25 @@ Most már `app.js` befejeződött. Egyszerűen csak hozzá kell adnunk a az útv
 1. Hozza létre a gyökérkönyvtárban a `/routes/index.js` útvonalat.
 
     ```JavaScript
-                /*
-                 * GET home page.
-                 */
+    /*
+     * GET home page.
+     */
 
-                exports.index = function(req, res){
-                  res.render('index', { title: 'Express' });
-                };
+    exports.index = function(req, res){
+      res.render('index', { title: 'Express' });
+    };
     ```
 
 2. Hozza létre a gyökérkönyvtárban a `/routes/user.js` útvonalat.
 
     ```JavaScript
-                /*
-                 * GET users listing.
-                 */
+    /*
+     * GET users listing.
+     */
 
-                exports.list = function(req, res){
-                  res.send("respond with a resource");
-                };
+    exports.list = function(req, res){
+      res.send("respond with a resource");
+    };
     ```
 
  Ezek adják át a kérést a nézetekhez, beleértve a felhasználó, ha van ilyen.

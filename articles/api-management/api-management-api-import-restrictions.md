@@ -1,6 +1,6 @@
 ---
-title: Korlátozások és ismert problémákat az Azure API Management API importálási |} Microsoft Docs
-description: Ismert problémák és korlátozások az Azure API Management használata a nyílt API-t, WSDL vagy WADL formátumú importálási részleteit.
+title: Korlátozások és ismert problémák az Azure API Management API importálása |} A Microsoft Docs
+description: Ismert problémák és korlátozások az Open API, WSDL vagy WADL-formátumok használata az Azure API Management-ba való importálásuk részletei.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: 03d785898398cb0bcd7b43e8d7feab705bce4b34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9f4a4ed4a8771f32a4d66aed2457a43abb92a63
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598470"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285790"
 ---
-# <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
-## <a name="about-this-list"></a>Ez a lista
-Ha importál egy API-t, előfordulhat, hogy során bizonyos korlátozások vonatkoznak, vagy kapcsolatos problémákat jeleznek, amelyek sikeresen importálása előtt kell-e javítani kell. Ez a cikk a dokumentum fenti szerint vannak rendszerezve az API formátuma.
+# <a name="api-import-restrictions-and-known-issues"></a>API importálási korlátozások és ismert problémák
+## <a name="about-this-list"></a>Ez a lista kapcsolatban
+API importálásakor, előfordulhat, hogy bizonyos korlátozások bővítményeként vagy azonosíthatja a problémákat, amelyek sikeresen importálása előtt kell-e javítani kell. Ez a cikk dokumentumok, ezek szerint vannak rendezve az API-formátuma.
 
 ## <a name="open-api"> </a>OpenAPI/Swagger
-A OpenAPI dokumentum importálása hibák fordulnak elő, ha győződjön meg arról,-, vagy a-tervező használata az Azure portálon (Tervező - előtér - OpenAPI specifikáció-szerkesztőben) ellenőrzése, vagy egy külső gyártótól származó eszközzel, mint <a href="http://www.swagger.io">Swagger Editor</a>.
+Ha az OpenAPI-dokumentumok importálása hibák azért küldtük Önnek, győződjön meg arról, ellenőrzése –, vagy a Tervező használatával az Azure Portalon (- előtér - Tervező OpenAPI-specifikáció szerkesztője), vagy egy külső gyártótól származó eszköz például <a href="http://editor.swagger.io">Swagger Editor</a>.
 
-* Csak a OpenAPI JSON formátum támogatott.
-* Kötelező paraméterek között útvonal és a lekérdezés neve csak egyedi lehet. (A OpenAPI a paraméter neve csak egyedinek kell lennie egy helyen, például a elérési útja, a lekérdezés, a fejléc.  Azonban az API Management lehetővé hogy műveletek hátrányos kell megkülönböztetés útvonal és a lekérdezés paraméter (amely nem támogatja a OpenAPI) alapján. Ezért kérjük paraméterek nevei a teljes URL-cím sablon belül egyedinek kell lennie.)
-* Használatával sémák **$ref** tulajdonságok nem tartalmazhat más **$ref** tulajdonságait.
-* **$ref** mutatók nem hivatkozhatnak külső fájlokat.
-* **x-ms-elérési utak** és **x-kiszolgálók** csak támogatott kiterjesztések az alábbiak.
-* Egyéni bővítmény importálási figyelmen kívül lesznek hagyva, és nem menti és nem őrződik meg az exportált.
+* Csak az az OpenAPI JSON formátum támogatott.
+* Elérési út és a lekérdezési paramétereket egyedi névvel kell rendelkezniük. (Az OpenAPI-paraméter neve csak egyedinek kell lennie egy helyen, például az elérési út, lekérdezés, fejléc.  Azonban az API Management lehetővé tesszük műveletek legyen hátrányos megkülönböztetés elérési út és a lekérdezési paraméterek (amely nem támogatja a OpenAPI). Ezért szükség van a teljes URL-cím sablonon belül egyedinek kell lennie a paraméterek nevei.)
+* Sémák használatával hivatkozott **$ref** tulajdonságai nem tartalmazhatnak más **$ref** tulajdonságait.
+* **$ref** mutatók nem hivatkozhatnak külső fájlok.
+* **x-ms-elérési utak** és **x-kiszolgálók** csak támogatott bővítmények.
+* Egyéni bővítmények rendszer figyelmen kívül hagyja az importálás és a nem mentett vagy megőrzi az exportálás.
 
 > [!IMPORTANT]
-> Az OpenAPI-importálásról ebben a [dokumentumban](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/) talál fontos információt és cikkeket.
+> Az OpenAPI-importálásról ebben a [dokumentumban](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/) talál fontos információt és cikkeket.
 
 ## <a name="wsdl"> </a>WSDL
-SOAP áteresztő API-k létrehozása, vagy a SOAP-REST API háttéralkalmazás szolgálhat WSDL fájljait használja.
-* **SOAP-kötések** -style "dokumentumok" és "literal" encoding csak a SOAP-kötések támogatottak. Nincs "rpc" style vagy a SOAP-kódolás nem támogatott.
-* **WSDL** -Ez az attribútum nem támogatott. Az ügyfelek a import kell egyesítése egy dokumentumot.
-* **Több alkotórészek üzenetek** -üzenetek típusai nem támogatottak.
-* **WCF wsHttpBinding** -SOAP-szolgáltatások a Windows Communication Foundation létre kell használnia a basicHttpBinding - wsHttpBinding nem támogatott.
-* **Az MTOM** - szolgáltatásokat az MTOM <em>előfordulhat, hogy</em> működik. Jelenleg nem érhető hivatalos támogatást.
-* **A rekurzió** -típusok definiált rekurzív módon (például saját magukat olyan tömbjét lásd) APIM által nem támogatott.
+WSDL-fájlt a SOAP átmenő API-k készítése vagy folyamatában SOAP – REST API-t, a háttérrendszer használja.
+* **A SOAP-kötések** -stílus "dokumentumok" és "szövegkonstans" kódolás csak a SOAP-kötések támogatottak. A rendszer nem támogatja, a "rpc" style vagy a SOAP-kódolást.
+* **WSDL** – Ez az attribútum nem támogatott. Ügyfeleink a import kell egyesítése egy dokumentumot.
+* **A több részből üzenetek** – az ilyen típusú üzenetek nem támogatottak.
+* **A WCF wsHttpBinding** -SOAP-szolgáltatások a Windows Communication Foundation létrehozott használjon basicHttpBinding – wsHttpBinding nem támogatott.
+* **Zprávy MTOM** – zprávy MTOM használó szolgáltatások <em>előfordulhat, hogy</em> működik. Hivatalos támogatási jelenleg nem érhető el.
+* **Rekurze** -típusokat, amelyek meghatározott rekurzív módon (például lásd tömbjét magukat) APIM által nem támogatott.
 
 ## <a name="wadl"> </a>WADL
-Jelenleg nincsenek ismert problémák WADL importálása.
+Jelenleg nincsenek nem WADL-importálási ismert problémák.
