@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/25/2018
 ms.author: fryu
-ms.openlocfilehash: 6c313b6015a8a6dcc4ca5befb5fef70b047d0410
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 232af6ec08152d18db86a7b6373da0d281a74a91
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866525"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262517"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
 
-Ha naplózni kell az Azure Storage használatát a szolgáltatások legújabb megfelelőségi és biztonsági követelmények, SSL 1.0, az 2.0-s, 3.0 és TLS 1.0-t ismerik el nem megfelelő kommunikációs protokollok.
-
-Az SSL 1.0, 2.0 és 3.0 sebezhetők találhatók. Ezek RFC lett tiltják. A TLS 1.0 nem biztonságos, az nem biztonságos blokktitkosító (DES CBC és RC2 CBC) és a Stream titkosító (RC4) lesz. PCI Tanács is ajánlott az áttelepítés, a TLS újabb verziójának. További részletekért lásd [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
+Transport Layer Security (TLS) és a Secure Sockets Layer (SSL) a számítógép hálózaton keresztüli kommunikáció biztonságot nyújtanak titkosítási protokollok. Az SSL 1.0, 2.0 és 3.0 sebezhetők találhatók. Ezek RFC lett tiltják. A TLS 1.0 nem biztonságos, az nem biztonságos blokktitkosító (DES CBC és RC2 CBC) és a Stream titkosító (RC4) lesz. PCI Tanács is ajánlott az áttelepítés, a TLS újabb verziójának. További részletekért lásd [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
 
 Az Azure Storage már le van állítva az SSL 3.0 2015 óta, és használja a TLS 1.2-es nyilvános HTTPs-végpontokat, de a TLS 1.0-s és a TLS 1.1 továbbra is támogatott a visszamenőleges kompatibilitás érdekében.
 
-Az Azure Storage biztonságos és megfelelő kapcsolat biztosítása érdekében, engedélyeznie kell a TLS 1.2 ügyféloldali Azure Storage szolgáltatás kérések elküldése előtt.
+Az Azure Storage biztonságos és megfelelő kapcsolat biztosítása érdekében, engedélyeznie kell a TLS 1.2-es vagy újabb verzió, az ügyféloldali Azure Storage szolgáltatás kérések elküldése előtt.
 
 ## <a name="enable-tls-12-in-net-client"></a>A TLS 1.2 engedélyezze a .NET-ügyfél
 
@@ -86,4 +84,5 @@ Az alábbi képernyőképen egy mintát, az ellenőrzés.
 ## <a name="see-also"></a>Lásd még
 
 * [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
+* [A TLS PCI-megfelelőség](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
 * [Engedélyezze a TLS Java-ügyfél](https://www.java.com/en/configure_crypto.html)

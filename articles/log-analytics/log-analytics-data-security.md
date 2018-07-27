@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: b7fd880683eed9e742007d6e595e1f275467b664
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4cf04ceeb8650b2978389cefb561ae31e88bc853
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990115"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282437"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Az információ kiegészítésére az Azure Log Analytics információkat biztosít a dokumentum célközönsége [Azure adatvédelmi központ](../security/security-microsoft-trust-center.md).  
@@ -176,7 +176,7 @@ A fentiekben ismertetettek szerint a felügyeleti kiszolgálóról vagy közvetl
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. A Log Analytics szolgáltatás fogadja és dolgozza fel az adatokat
 A Log Analytics szolgáltatás biztosítja, hogy a bejövő adatok megbízható forrásból érvényesítésével megjeleníthető tanúsítványok és az adatok integritásának megőrzése Azure-hitelesítéssel. A feldolgozatlan nyers adatok majd tárolódik a régióban, az adatok inaktív végül lesznek tárolva az Azure-Eseményközpontba. A tárolt adatok típusát a megoldásokat, amelyek lettek importálva, és adatokat gyűjthet típusú függ. Ezután a Log Analytics szolgáltatás folyamatok a nyers adatokat, és feltölti azt az adatbázisba.
 
-Az összegyűjtött adatokat az adatbázisban tárolt a megőrzési időszak a kiválasztott díjszabással függ. Az a *ingyenes* szint, a 7 napig érhető összegyűjtött adatokat. Az a *fizetős* szinten gyűjtött adatok alapértelmezés szerint 31 napig érhető el, de 720 nap is kiterjeszthető. Adatok tárolása az Azure-tárolót, annak biztosítása érdekében az adatok titkosítását inaktív. Az adatok az elmúlt két hétben is SSD-alapú gyorsítótárában vannak tárolva, és a gyorsítótár jelenleg nincs titkosítva.  Titkosítás támogatása 2018 újabb felében tervezzük.  
+Az összegyűjtött adatokat az adatbázisban tárolt a megőrzési időszak a kiválasztott díjszabással függ. Az a *ingyenes* szint, a 7 napig érhető összegyűjtött adatokat. Az a *fizetős* szinten gyűjtött adatok alapértelmezés szerint 31 napig érhető el, de és 730 nap között is kiterjeszthető. Adatok tárolása az Azure-tárolót, annak biztosítása érdekében az adatok titkosítását inaktív. Az adatok az elmúlt két hétben is SSD-alapú gyorsítótárában vannak tárolva, és a gyorsítótár jelenleg nincs titkosítva.  Titkosítás támogatása 2018 újabb felében tervezzük.  
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Az adatok eléréséhez a Log Analytics használatával
 A Log Analytics-munkaterület elérését, jelentkezzen be az Azure Portalon a szervezeti fiók vagy a korábban használt Microsoft-fiók használatával. A portál és a Log Analytics szolgáltatás közötti összes forgalom egy biztonságos csatornán keresztül zajlik. A portál használata esetén a munkamenet-azonosító akkor jön létre, a felhasználó ügyfélen (webböngésző), és a helyi gyorsítótárban tárolt adatokat, mindaddig, amíg a munkamenet meg lett szakítva. Ha leállt, a gyorsítótár törlődik. Ügyféloldali cookie-kat, amelyek nem tartalmaznak személyes azonosításra alkalmas adatokat, nem lesznek automatikusan eltávolítva. Munkamenet-cookie HTTPOnly vannak megjelölve, és biztosított. Egy előre meghatározott tétlen időszak után az Azure portal munkamenet meg lett szakítva.

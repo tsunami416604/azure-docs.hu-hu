@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7a1b6aa9afd26116253482a2e1a9c6a25bdf3c55
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 57d017e2320e5cfea15f1716bc3b6518606e2ea4
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441573"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282244"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Az Azure Active Directory-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával
 
-Ha rendelkezik, amelyet eléréséhez, vagy módosítsa erőforrások, be kell állítania egy Azure Active Directory (AD) alkalmazást. A szükséges engedélyek hozzárendelése AD-alkalmazást. Ez a megközelítés célszerű fut az alkalmazás a saját hitelesítő adatokkal, mert engedélyeket rendelhet a saját engedélyek eltérő alkalmazás identitását. Ezek az engedélyek jellemzően csak azt engedélyezik, amire az alkalmazásnak szüksége van.
+Ha rendelkezik, amelyet eléréséhez, vagy módosítsa erőforrások, be kell állítania egy Azure Active Directory (AD) alkalmazást. Majd a szükséges engedélyeket rendelhet az AD-alkalmazás. Ez a megközelítés célszerű fut az alkalmazás a saját hitelesítő adatokkal, mert engedélyeket rendelhet a saját engedélyek eltérő alkalmazás identitását. Ezek az engedélyek jellemzően csak azt engedélyezik, amire az alkalmazásnak szüksége van.
 
-Ez a cikk bemutatja, hogyan végezheti el ezeket a lépéseket a portálon keresztül. Egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezeten belül célja összpontosít. Általában használnak a egybérlős alkalmazások az üzleti alkalmazások futtatására a szervezeten belül.
+Ez a cikk bemutatja, hogyan lehet ezeket a lépéseket a portálon keresztül. Egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezeten belül célja összpontosít. Általában használnak a egybérlős alkalmazások az üzleti alkalmazások futtatására a szervezeten belül.
 
 > [!IMPORTANT]
 > Szolgáltatásnév létrehozása helyett fontolja meg, hogy Azure AD Managed Service Identity-t használ az alkalmazásidentitásához. Az Azure AD MSI az Azure Active Directory egy nyilvános előzetes verziójú funkciója, mely leegyszerűsíti az identitások kód számára való létrehozását. Ha a kódja egy Azure AD MSI-t támogató szolgáltatásban fut, és Azure Active Directory-hitelesítést támogató erőforrásokhoz fér hozz, akkor az Azure AD MSI jobb megoldás Önnek. Ha szeretne többet megtudni az Azure AD MSI-ről, például hogy mely szolgáltatások támogatják jelenleg, olvassa el a [Managed Service Identity az Azure-erőforrásokhoz](../active-directory/managed-service-identity/overview.md) című cikket.
@@ -156,7 +156,7 @@ Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy
 
    ![Válassza a hozzáadása](./media/resource-group-create-service-principal-portal/select-add.png)
 
-1. Válassza ki a az alkalmazáshoz hozzárendelni kívánt szerepkört. Az alábbi képen látható a **olvasó** szerepkör.
+1. Válassza ki a az alkalmazáshoz hozzárendelni kívánt szerepkört. Annak érdekében, hogy az alkalmazás hajtható végre műveleteket, például **újraindítás**, **start** és **leállítása** példányok, kell rendelkeznie a jelölje ki a szerepkört **közreműködő**. Az alábbi képen látható a **olvasó** szerepkör.
 
    ![szerepkör kiválasztása](./media/resource-group-create-service-principal-portal/select-role.png)
 

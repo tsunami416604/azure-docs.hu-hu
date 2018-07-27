@@ -1,21 +1,20 @@
 ---
-title: 'Gyors útmutató: Ismeri fel a beszéd, a C++, a Cognitive Services beszédfelismerő SDK használatával a Windows asztalon |} A Microsoft Docs'
+title: 'Gyors útmutató: Ismeri fel a beszéd, a C++, a Cognitive Services beszédfelismerő SDK használatával a Windows asztalon'
 titleSuffix: Microsoft Cognitive Services
 description: Hogyan ismerhetik fel a beszéd, a C++ Windows asztalán a Cognitive Services beszédfelismerő SDK használatával
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4a8c5f7053c1976233bf9de6a0c142885b73c8aa
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 928018483eb727febd15d8e1c22bba53ba2aaedc
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071198"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285033"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>Gyors útmutató: Ismeri fel a beszéd, a C++, a Speech SDK-val a Windows asztalon
 

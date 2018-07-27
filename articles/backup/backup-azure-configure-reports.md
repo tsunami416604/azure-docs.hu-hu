@@ -6,15 +6,15 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/10/2017
+ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81653f9125b9cc4411e5cfe358bd602f92c5bf89
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: bd6228b6cb7409144a0cd16d6c9617b7127c3624
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448366"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264961"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk ismerteti lépések jelentések konfigurálása az Azure Backup helyreállítási tár használatával, és ezeket a jelentéseket a Power BI segítségével történő eléréséhez. Után hajt végre ezeket a lépéseket, a Power BI összes jelentés megtekintését, testre szabhatja, és jelentéseket hozhat létre közvetlenül léphet. 
@@ -24,7 +24,6 @@ Ez a cikk ismerteti lépések jelentések konfigurálása az Azure Backup helyre
 2. Azure SQL, a DPM és az Azure Backup Server jelentések jelenleg nem támogatottak.
 3. -Jelentések megtekintéséhez tárolók és között előfizetéseket, ha ugyanazt a tárfiókot az egyes a tárolók van konfigurálva. Kiválasztott tárfiók és recovery services-tárolónak ugyanabban a régióban kell lennie.
 4. A jelentések ütemezett frissítésének gyakoriságát a Power BI 24 óra. Egy ad-hoc frissítése a jelentéseket a Power bi-ban, amely megkülönbözteti a kis legfrissebb adatokat az ügyfél tárfiókja szolgál jelentések megjelenítése is elvégezheti. 
-5. Az Azure Backup-jelentések jelenleg nem támogatottak a nemzeti felhőkben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 1. Hozzon létre egy [Azure storage-fiók](../storage/common/storage-create-storage-account.md#create-a-storage-account) jelentések konfigurálásához. Ez a tárfiók jelentések kapcsolódó adatok tárolására szolgál.
@@ -75,7 +74,7 @@ A következő lépéseket követve konfigurálja a tárfiók a recovery services
 ## <a name="view-reports-in-power-bi"></a>Jelentések megtekintése a Power bi-ban 
 Miután a tárfiók konfigurálása a jelentéseket a helyreállítási tár használatával, vesz igénybe az adatok körülbelül 24 óra indítsa el a tárfiókba az. Storage-fiók beállításának 24 óra elteltével használja a Power BI-jelentések megtekintéséhez a következő lépéseket:
 1. [Jelentkezzen be a](https://powerbi.microsoft.com/landing/signin/) a Power bi-bA.
-2. Kattintson a **adatok lekérése** kattintson **első** alatt **szolgáltatások** a tartalomtár csomag. Az említett lépésekkel [hozzá a tartalomcsomag a Power BI dokumentációja](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-packs-services/).
+2. Kattintson a **adatok lekérése** kattintson **első** alatt **szolgáltatások** a tartalomtár csomag. Az említett lépésekkel [hozzá a tartalomcsomag a Power BI dokumentációja](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
 
      ![Csomag importálása](./media/backup-azure-configure-reports/content-pack-import.png)
 3. Típus **Azure Backup** a keresési sávon kattintson **Letöltés most**.

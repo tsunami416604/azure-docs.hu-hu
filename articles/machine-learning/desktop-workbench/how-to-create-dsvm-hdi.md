@@ -1,54 +1,54 @@
 ---
-title: DSVM és a cél az Azure ML számítási HDI létrehozása
-description: Hozzon létre DSVM és HDI Spark-fürt a számítási célozza az Azure ML kísérletezhet.
+title: DSVM és HDI a tárolók számítási az Azure Machine Learning létrehozása
+description: DSVM és HDI Spark a tárolók az Azure Machine Learning-Kísérletezési számítási fürt létrehozása.
 services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 40711c424d3d552253deba85110b0c4447f4ec62
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 18cf885cd71822c2c24791f3c6f55835c3204d35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831025"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285763"
 ---
-# <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>A számítási célok DSVM és HDI Spark fürt létrehozása
+# <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>DSVM és HDI Spark-fürt a tárolók számítási létrehozása
 
-Könnyedén növelheti vagy további számítási célok például Ubuntu-alapú DSVM (adatok tudományos virtuális gép), és az Apache Spark on Azure HDInsight-fürthöz hozzáadásával a gépi tanulási kísérlet kiterjesztése. Ez a cikk bemutatja, hogyan célozza az Azure számítási ezek létrehozásának lépéseit. Azure ML számítási célokon további információkért tekintse meg [Azure Machine Learning kísérletezhet szolgáltatás áttekintése](experimentation-service-configuration.md).
+Egyszerűen vertikális vagy horizontális felskálázáshoz a machine learning-kísérlet adjon hozzá további számítási célnak például az Ubuntu-alapú DSVM (adatelemző virtuális gép), és az Apache Spark for Azure HDInsight-fürt. Ez a cikk útmutatást nyújt az ezek létrehozásának lépésein keresztül számítási tárolók az Azure-ban. További információt az Azure ML számítási célnak, [áttekintése az Azure Machine Learning-Kísérletezési szolgáltatás](experimentation-service-configuration.md).
 
 >[!NOTE]
->Győződjön meg arról, hogy rendelkezik megfelelő engedélyekkel az erőforrások, például a virtuális Gépet és HDI-fürtök létrehozása az Azure, mielőtt továbblép. Mindkét ezeket az erőforrásokat is is felhasználhatnak konfigurációtól függően számos számítási magok. Győződjön meg arról, hogy előfizetése elegendő kapacitása a virtuális CPU-magokat. Akkor is mindig, hogy engedélyezte az Azure támogatási magok az előfizetésben megengedett maximális számának növeléséhez.
+>Győződjön meg arról, rendelkezik megfelelő engedélyekkel az erőforrások, például a virtuális gép és a HDI-fürtök létrehozása az Azure-ban, akkor a folytatás előtt. Mindkét ezeket az erőforrásokat használhatnak is számos számítási magok a konfigurációtól függően. Ellenőrizze, hogy előfizetése rendelkezik-e elegendő kapacitás a virtuális CPU-magok. Mindig megtekintheti felveszi a kapcsolatot az Azure-támogatás mag az előfizetésben megengedett maximális számának növeléséhez.
 
-## <a name="create-an-ubuntu-dsvm-in-azure-portal"></a>Hozzon létre egy Ubuntu DSVM Azure-portálon
+## <a name="create-an-ubuntu-dsvm-in-azure-portal"></a>Hozzon létre egy Ubuntu dsvm-hez az Azure Portalon
 
-Egy DSVM hozhat létre Azure-portálon. 
+Létrehozhat egy adatelemző virtuális GÉPET az Azure Portalról. 
 
-1. Jelentkezzen be az Azure-portálon https://portal.azure.com
-2. Kattintson a **+ új** hivatkozásra, majd keresse meg a "data tudományos virtuális gép Linux".
+1. Jelentkezzen be az Azure Portalon https://portal.azure.com
+2. Kattintson a **+ új** hivatkozásra, és keresse meg a "adatelemző virtuális gép Linux".
     ![Ubuntu](media/how-to-create-dsvm-hdi/ubuntu_dsvm.png)
-4. Válasszon **adatok tudományos virtuális gép Linux (Ubuntu)** elemet a listában, és kövesse a képernyőn megjelenő a DSVM létrehozásához nyújt útmutatást.
+4. Válassza a **adatelemző virtuális gép Linux (Ubuntu)** a listában, és kövesse a képernyőn megjelenő utasításokat követve hozzon létre a dsvm-hez.
 
 >[!IMPORTANT]
->Ellenőrizze, hogy **jelszó** , a _hitelesítési típus_.
+>Válasszon **jelszó** , a _hitelesítési típus_.
 
-![pwd használata](media/how-to-create-dsvm-hdi/use_pwd.png)
+![jelszó használata](media/how-to-create-dsvm-hdi/use_pwd.png)
 
-## <a name="create-an-ubuntu-dsvm-using-azure-cli"></a>Hozzon létre egy Ubuntu DSVM azure-parancssori felület használatával
+## <a name="create-an-ubuntu-dsvm-using-azure-cli"></a>Hozzon létre egy Ubuntu dsvm-hez azure-cli-vel
 
-Egy Azure-erőforrás management-sablon segítségével is telepítheti egy DSVM.
+Egy Azure resource management-sablon segítségével is telepítheti a dsvm-hez.
 
 >[!NOTE]
->Az összes következő parancsok rendszer feltételezi, hogy a gyökérmappában található azon Azure ML-projektben állítson ki.
+>Az összes alábbi parancsok rendszer feltételezi, hogy az Azure Machine Learning-projekt gyökérmappájában megbízik.
 
-Először hozzon létre egy `mydsvm.json` fájl használata a kedvenc szövegszerkesztőjével a `docs` mappát. (Ha még nem rendelkezik egy `docs` a projekt gyökérmappájában lévő mappának, hozzon létre egyet.) Ez a fájl néhány alapvető paramétert az Azure-erőforrás felügyeleti sablon konfigurálásához használjuk. 
+Először hozzon létre egy `mydsvm.json` fájlt a kedvenc szövegszerkesztőjével a `docs` mappát. (Ha nem rendelkezik egy `docs` a projekt gyökérmappájában lévő mappának, hozzon létre egyet.) Ez a fájl néhány alapvető paramétert a az Azure resource management-sablon konfigurálásához használjuk. 
 
-Másolja és illessze be a következő JSON részlet azokat a `mydsvm.json` fájlt, és töltse ki a megfelelő értékeket:
+Másolja és illessze be a következő JSON-kódrészlet azokat a `mydsvm.json` fájlt, és töltse ki a megfelelő értékeket:
 
 ```json
 {
@@ -63,11 +63,11 @@ Másolja és illessze be a következő JSON részlet azokat a `mydsvm.json` fáj
 }
 ```
 
-Az a _vmSize_ mező, használhatja a felsorolt suppported Virtuálisgép-méretet a [Ubuntu DSVM Azure resource felügyeleti sablon](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json). Javasoljuk, hogy valamelyikét használja az alábbi méretek a cél az Azure ML számítási. 
+Az a _vmSize_ mező, használhat bármilyen szereplő suppported Virtuálisgép-méretet a [Ubuntu dsvm-hez az Azure resource management-sablon](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json). Javasoljuk, hogy valamelyikét használja az alábbi méretek a tárolók számítási az Azure gépi tanulás. 
 
 
 >[!TIP]
-> A [mély munkaterhelések tanulási](how-to-use-gpu.md) központilag telepíthető a GPU kapcsolt virtuális gépek.
+> A [mély tanulási célú számítási feladatokhoz](how-to-use-gpu.md) központilag telepíthető a GPU-alapú virtuális gépeket.
 
 - [Általános célú virtuális gépek](/virtual-machines/linux/sizes-general.md)
   - Standard_DS2_v2 
@@ -76,20 +76,20 @@ Az a _vmSize_ mező, használhatja a felsorolt suppported Virtuálisgép-mérete
   - Standard_DS12_v2 
   - Standard_DS13_v2 
   - Standard_DS14_v2 
-- [Az alkalmazás bekapcsolja GPU virtuális gépek](/virtual-machines/linux/sizes-gpu.md)
+- [GPU-alapú virtuális gépek](/virtual-machines/linux/sizes-gpu.md)
   - Standard_NC6 
   - Standard_NC12 
   - Standard_NC24 
  
 
-További információk a [Azure Linux virtuális gépek méretei](../../virtual-machines/linux/sizes.md) és azok [árakról](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+További információ ezen [az Azure-ban Linux rendszerű virtuális gépek méretei](../../virtual-machines/linux/sizes.md) és azok [díjszabási információk](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-Indítsa el a parancssori ablakban az Azure ML munkaterület alkalmazásból kattintva **fájl** --> **nyissa meg a parancssort**, vagy **nyitott PowerShell** menüpont. 
+Indítsa el a parancssori felület ablakában az Azure ML Workbench alkalmazásból kattintva **fájl** --> **parancssor megnyitása**, vagy **megnyitott PowerShell** menüpont. 
 
 >[!NOTE]
->Is ehhez minden parancssori környezetben, ahol az cli telepítve van.
+>Emellett érdemes Ez bármilyen parancssori környezetben, ahol az cli telepítve van.
 
-Adja meg a parancssori ablakban az alábbi parancsokat:
+A parancssori ablakban írja be az alábbi parancsokat:
 
 ```azurecli
 # first make sure you have a valid Azure authentication token
@@ -121,8 +121,8 @@ $ az vm show -g <resource group name> -n <vm name> --query "fqdns"
 # find the IP address of the VM just created
 $ az vm show -g <resource group name> -n <vm name> --query "publicIps"
 ```
-## <a name="attach-a-dsvm-compute-target"></a>DSVM számítási target csatolása
-A DSVM létrehozása után most csatolhat az Azure ML-projektet.
+## <a name="attach-a-dsvm-compute-target"></a>A DSVM számítási célnak csatolása
+A DSVM-létrehozása után azt most már az Azure ML-projektjéhez is csatlakoztatható.
 
 ```azurecli
 # attach the DSVM compute target
@@ -132,48 +132,48 @@ $ az ml computetarget attach remotedocker --name <compute target name> --address
 # prepare the Docker image on the DSVM 
 $ az ml experiment prepare -c <compute target name>
 ```
-Most, készen áll a DSVM kísérletek futtatásához.
+Most már készen áll a dsvm-hez a kísérleteket futtathat.
 
-## <a name="deallocate-a-dsvm-and-restart-it-later"></a>Egy DSVM felszabadítani, és később
-A számítási feladatok Azure ML befejezése után felszabadítani a a DSVM. Ez a művelet leállítja a virtuális gép felszabadítja a számítási erőforrásokat, hanem a virtuális lemezek megőrzi. Van nem szó számítási költségeit, amikor a virtuális gép felszabadítása.
+## <a name="deallocate-a-dsvm-and-restart-it-later"></a>Szabadítsa fel a dsvm-hez, és indítsa újra később
+Ha befejezte a számítási feladatokat az Azure gépi tanulás, is felszabadítja a dsvm-hez. Ez a művelet leállítja a virtuális gép felszabadítja a számítási erőforrásokat, hanem a virtuális lemezek megőrzi. Nem terheli számítási költségeit, ha a virtuális gép fel van szabadítva.
 
-A virtuális gép felszabadítása:
+Virtuális gép felszabadításához:
 
 ```azurecli
 $ az vm deallocate -g <resource group name> -n <vm name>
 ```
 
-A virtuális gép vissza keltse életre, használja a `az ml start` parancs:
+A virtuális gép biztonsági keltse életre, használja a `az ml start` parancsot:
 
 ```azurecli
 $ az vm start -g <resource group name> -n <vm name>
 ```
 
-## <a name="expand-the-dsvm-os-disk"></a>Bontsa ki a DSVM operációsrendszer-lemez
-Az Ubuntu DSVM egy 50 GB-os operációsrendszer-lemez és a 100GB adatlemezt tartalmaz. Docker ábráit tárolja a adatlemez, több helyre nem áll rendelkezésre. A cél az Azure ML számítási használatakor ezt a lemezt használhatja húzza lefelé Docker képek és felépítése conda rétegek utasítást Docker-motorhoz. Szükség lehet bontsa ki a lemezről lemezre (például 200 GB) nagyobb méretűre elkerülése érdekében a "teljes" lemezhiba, amíg egy végrehajtását közepén. Hivatkozás [kibontása a Linux virtuális gép és az Azure parancssori felület virtuális merevlemezek](../../virtual-machines/linux/expand-disks.md) ehhez egyszerűen az azure-cli módjáról. 
+## <a name="expand-the-dsvm-os-disk"></a>A DSVM operációsrendszer-lemez kibontása
+Az Ubuntu DSVM egy 50 GB-os operációsrendszer-lemezt és egy 100 GB méretű adatlemezzel rendelkezik. Docker, több helyre van elérhető tárolja az adatokat lemezen, a képeket. A cél számítási az Azure ML használatakor ezt a lemezt által használható Docker-motor le a Docker-rendszerképek lekérése és megkönnyítése conda-rétegek létrehozását. Szüksége lehet egy nagyobb méretű (például a 200 GB-os) lemez kibontása elkerülése érdekében a "teljes" lemezhiba, amíg Ön egy végrehajtási közepén. Hivatkozás [hogyan bővít ki egy Linux rendszerű virtuális gépen az Azure CLI-vel virtuális merevlemezek](../../virtual-machines/linux/expand-disks.md) megtudhatja, hogyan teheti ezt egyszerűen az azure-cli. 
 
-## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Az Apache Spark on Azure HDInsight-fürt létrehozása az Azure portálon
+## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Az Apache Spark for Azure HDInsight-fürt létrehozása az Azure Portalon
 
-Kibővített Spark feladatok futtatása az Apache Spark on Azure HDInsight-fürt létrehozása az Azure portálon kell.
+Horizontális felskálázás Spark-feladatok futtatása, meg kell egy Apache Spark for Azure HDInsight-fürt létrehozása az Azure Portalon.
 
-1. Jelentkezzen be az Azure-portálon https://portal.azure.com
-2. Kattintson a **+ új** hivatkozásra, majd keresse meg a "HDInsight".
+1. Jelentkezzen be az Azure Portalon https://portal.azure.com
+2. Kattintson a **+ új** hivatkozásra, és keresse meg a "HDInsight".
 
-    ![hdi keresése](media/how-to-create-dsvm-hdi/hdi.png)
+    ![Keresse meg a hdi](media/how-to-create-dsvm-hdi/hdi.png)
     
-3. Válasszon **HDInsight** elemet a listában, és kattintson a a **létrehozása** gombra.
-4. Az a **alapjai** konfigurálására szolgáló képernyőn **típusú fürt** beállításait, ellenőrizze, hogy **Spark** , a _típusú fürt_, **Linux** , a _operációs rendszer_, és **Spark 2.1.0 (HDI 3.6)** , a _Version.
+3. Válasszon **HDInsight** a listában, és kattintson a **létrehozás** gombra.
+4. Az a **alapjai** konfigurációs képernyőjén **fürt típusa** beállításait, győződjön meg arról, hogy úgy dönt, **Spark** , a _fürt típusa_, **Linux** , a _operációs rendszer_, és **Spark 2.1.0 (HDI 3.6)** , a _Version.
 
     ![hdi konfigurálása](media/how-to-create-dsvm-hdi/configure_hdi.png)
 
     >[!IMPORTANT]
-    >Figyelje meg a fenti képernyőn a fürt rendelkezik egy _fürt bejelentkezési felhasználónevének_ mező és egy _Secure Shell (SSH) felhasználónév_ mező. Ezek a két különböző felhasználói identitásokat, annak ellenére, hogy a felhasználók kényelme érdekében adja meg ugyanazt a jelszót a mindkét bejelentkezések során. A _fürt bejelentkezési felhasználónevének_ jelentkezzen be a felügyeleti webes felhasználói Felületét a HDI-fürtöt szolgál. A _SSH bejelentkezéshez username_ jelentkezzen be a fürt átjárócsomópontjához szolgál, és azt, hogy mire van szükség az Azure ML Spark feladatok átirányítani.
+    >Figyelje meg a fenti képernyőn a fürt rendelkezik egy _fürt bejelentkezési felhasználóneve_ mezőt és a egy _Secure Shell (SSH-) felhasználónév_ mező. Ezek a két különböző felhasználói identitásokat, annak ellenére, hogy a felhasználók kényelme érdekében adja meg ugyanazt a jelszót mindkét bejelentkezéseket. A _fürt bejelentkezési felhasználóneve_ jelentkezzen be a felügyeleti webes felhasználói felületen a HDI-fürt segítségével. A _SSH-bejelentkezési felhasználónév_ jelentkezzen be a fürt fő csomópontjának szolgál, és ez az Azure gépi tanulás a Spark-feladatok szállítást van szükség.
 
-5. Válassza ki a fürt mérete és a csomópont méretének meg kell, és a létrehozási varázsló. A fürt üzembe helyezése akár 30 percet is igénybe vehet. 
+5. Válassza ki a fürt méretének és csomópontméret szükséges, és a létrehozási varázsló befejezéséhez. A fürt üzembe helyezése akár 30 percet is igénybe vehet. 
 
-## <a name="attach-an-hdi-spark-cluster-compute-target"></a>Egy HDI Spark-fürt számítási célhoz csatolása
+## <a name="attach-an-hdi-spark-cluster-compute-target"></a>Csatolhat egy HDI Spark-fürt számítási célnak
 
-A Spark HDI-fürtnek a létrehozása után most csatolhat az Azure ML-projektet.
+A Spark HDI-fürt létrehozása után azt most már az Azure ML-projektjéhez is csatlakoztatható.
 
 ```azurecli
 # attach the HDI compute target
@@ -182,12 +182,12 @@ $ az ml computetarget attach cluster --name <compute target name> --address <clu
 # prepare the conda environment on HDI
 $ az ml experiment prepare -c <compute target name>
 ```
-Most kell kísérletek futtathatja a Spark-fürtön.
+Most már készen áll, futtasson kísérleteket a Spark-fürtön.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ:
-- [Azure Machine Learning kísérletezhet szolgáltatás áttekintése](experimentation-service-configuration.md)
-- [Az Azure Machine Learning-munkaterület kísérletezhet szolgáltatás konfigurációs fájlok](experimentation-service-configuration-reference.md)
-- [Az Apache Spark on Azure HDInsight-fürthöz](https://azure.microsoft.com/services/hdinsight/apache-spark/)
-- [Adatok tudományos virtuális gép](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+További információk:
+- [Az Azure Machine Learning-kísérletezés szolgáltatás áttekintése](experimentation-service-configuration.md)
+- [Az Azure Machine Learning Workbench Kísérletezési szolgáltatás konfigurációs fájlok](experimentation-service-configuration-reference.md)
+- [Az Apache Spark for Azure HDInsight-fürt](https://azure.microsoft.com/services/hdinsight/apache-spark/)
+- [Adatelemző virtuális gép](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

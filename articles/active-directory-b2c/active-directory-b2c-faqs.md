@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e56b6f9360bdbfe2c5dcb2e81862cb80310bf54c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6b5cc1eff5c6d080854754ec5b3b62068f1cbb9c
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928732"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264715"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
@@ -118,7 +118,7 @@ Kövesse az alábbi lépéseket az Azure AD B2C-bérlő törléséhez:
 1. Most jelentkezzen be a [az Azure portal](https://portal.azure.com/) előfizetés-rendszergazdaként. (Használja a ugyanazzal a munkahelyi vagy iskolai fiók vagy a Microsoft-fiók, amellyel Azure-fiók regisztrálása.)
 1. Váltás az Azure AD B2C-bérlőt szeretne törölni.
 2. Keresse meg az Active Directory a bal oldali menüben.
-3. Válassza ki **felhasználók és csoportok**.
+3. Válassza a **Felhasználók és csoportok** elemet.
 4. Jelölje ki minden egyes felhasználó kapcsolja (a jelenleg bejelentkezett, előfizetés-rendszergazda felhasználó kizárása). Kattintson a **törlése** a lapot, majd kattintson az alsó **Igen** amikor a rendszer kéri.
 5. Kattintson a **alkalmazásregisztrációk**.
 6. Válassza ki a nevű alkalmazás **b2c-kiterjesztések alkalmazását**. Kattintson a **törlése** kattintson **Igen** amikor a rendszer kéri.

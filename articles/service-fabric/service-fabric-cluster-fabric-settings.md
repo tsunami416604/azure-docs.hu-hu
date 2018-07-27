@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2018
+ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 1f7cad982e4a78aaad92e563eb4a1fc33b533478
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 56c904c0da87c3b0023fe5c9a125a359e23678dc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238947"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263810"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>A Service Fabric-fürt beállításait és a háló házirend testreszabása
 Ez a dokumentum bemutatja, hogyan szabhatja testre a különböző hálóbeállítások, és a fabric frissítési szabályzatának a Service Fabric-fürt számára. Testre szabható azokhoz a [az Azure portal](https://portal.azure.com) vagy egy Azure Resource Manager-sablon használatával.
@@ -624,7 +624,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="securityadminclientx509names"></a>Biztonsági/AdminClientX509Names
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus| |
+|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus|Ez a "Name" és "Értéket" pár listáját. Minden egyes "név" DnsName X509, vagy a tulajdonos köznapi nevének van rendszergazdai műveletek engedélyezett tanúsítványok. Az egy adott "Name" "értéke" tanúsítvány-ujjlenyomatok rögzítés kibocsátó külön vesszővel tagolt listája, ha nem üres, a közvetlen rendszergazdai ügyféltanúsítványok-kibocsátó kell lennie a listában. |
 
 ## <a name="securityclientaccess"></a>Biztonsági/ClientAccess
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
@@ -730,7 +730,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="securityclientx509names"></a>Biztonsági/ClientX509Names
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus| |
+|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus|Ez a "Name" és "Értéket" pár listáját. Minden egyes "név" van a tulajdonos köznapi nevének vagy DnsName X509 az Ügyfélműveletek engedélyezett tanúsítványok. Az egy adott "Name" "értéke" tanúsítvány-ujjlenyomatok rögzítés kibocsátó külön vesszővel tagolt listája, ha nem üres, a közvetlen kibocsátó ügyféltanúsítványok kell lennie a listában.|
 
 ## <a name="securityclustercertificateissuerstores"></a>Biztonsági/ClusterCertificateIssuerStores
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
@@ -740,7 +740,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="securityclusterx509names"></a>Biztonsági/ClusterX509Names
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus| |
+|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus|Ez a "Name" és "Értéket" pár listáját. Egyes "név" a tulajdonos köznapi nevének vagy DnsName X509, fürt-műveletek engedélyezett tanúsítványok. Az egy adott "Name" "értéke" tanúsítvány-ujjlenyomatok rögzítés kibocsátó külön vesszővel tagolt listája, ha nem üres, a fürt tanúsítványok közvetlen kibocsátó kell lennie a listában.|
 
 ## <a name="securityservercertificateissuerstores"></a>Biztonsági/ServerCertificateIssuerStores
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
@@ -750,7 +750,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="securityserverx509names"></a>Biztonsági/ServerX509Names
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus| |
+|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus|Ez a "Name" és "Értéket" pár listáját. Minden egyes "név" van a tulajdonos köznapi nevének vagy a X509 DnsName műveletekhez történő engedélyezett tanúsítványok. Az egy adott "Name" "értéke" tanúsítvány-ujjlenyomatok rögzítés kibocsátó külön vesszővel tagolt listája, ha nem üres, a közvetlen kiszolgálói tanúsítványok-kibocsátó kell lennie a listában.|
 
 ## <a name="setup"></a>Beállítás
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
@@ -761,7 +761,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |FabricLogRoot |Sztring | Nem engedélyezett |Service fabric log gyökérkönyvtára. Ez az, ahol SF naplók és nyomkövetések kerülnek. |
 |NodesToBeRemoved|sztring, alapértelmezett érték a ""| Dinamikus |A csomópontok, amely konfigurációs frissítés részeként el kell távolítani. (Csak az önálló verziója telepítéseinek)|
 |ServiceRunAsAccountName |Sztring | Nem engedélyezett |A fiók neve, a fabric host szolgáltatás futtatására. |
-|SkipContainerNetworkResetOnReboot|bool, alapértelmezett érték a hamis|Nem engedélyezett|Hogy elmaradjon-e visszaállítása folyamatban; tároló hálózati újraindításkor.|
+|SkipContainerNetworkResetOnReboot|bool, alapértelmezett érték a hamis|NotAllowed|Hogy elmaradjon-e visszaállítása folyamatban; tároló hálózati újraindításkor.|
 |SkipFirewallConfiguration |Bool, alapértelmezett érték a False (hamis) | Nem engedélyezett |Itt adhatja meg, ha a tűzfal beállításainak meg kell adnia, a rendszer, vagy nem. Ez vonatkozik, csak akkor, ha a windows tűzfalat használja. Ha külső gyártótól származó tűzfalak használ, majd nyissa meg a portokat, a rendszer és alkalmazások általi használatát |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService

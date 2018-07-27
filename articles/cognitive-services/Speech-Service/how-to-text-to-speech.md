@@ -1,27 +1,26 @@
 ---
-title: Használat szöveg-beszéd átalakítás beszédszolgáltatások használata |} A Microsoft Docs
+title: Szöveg-beszéd átalakítás használatával beszédszolgáltatások használata
 description: Ismerje meg, hogyan használható a Speech service szöveg-beszéd átalakítás.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 21157af9ad6361234ffa9b927da64baab505f624
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213333"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281514"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Használja a "Szöveg-beszéd átalakítás" Speech service-ben
 
 A beszédfelismerési szolgáltatás szöveg-beszéd átalakítás funkciókat egy egyszerű HTTP-kérés biztosít. A szöveget, a megfelelő végpontra könyvelés és a szolgáltatás egy hangfájlt adja vissza (`.wav`) tartalmazó beszédszintetizátorral. Az alkalmazás használhatja ezt a hang, akkor kedveli.
 
-Szöveg-beszéd átalakítás lehet egyszerű szöveges (ASCII vagy UTF8), vagy egy kérelmet, a bejegyzés törzse [SSML](speech-synthesis-markup.md) dokumentumot. Egyszerű szöveges kérelmek egy alapértelmezett hangjával vannak szóbeli. A legtöbb esetben érdemes egy SSML szerv használja. A HTTP-kérelem tartalmaznia kell egy [engedélyezési](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication) token. 
+Szöveg-beszéd átalakítás lehet egyszerű szöveges (ASCII vagy UTF8), vagy egy kérelmet, a bejegyzés törzse [SSML](speech-synthesis-markup.md) dokumentumot. Egyszerű szöveges kérelmek egy alapértelmezett hangjával vannak szóbeli. A legtöbb esetben érdemes egy SSML szerv használja. A HTTP-kérelem tartalmaznia kell egy [engedélyezési](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) token. 
 
 A regionális szöveg-beszéd átalakítás végpontok Itt jelennek meg. Használja az egyik szükséges az előfizetéshez.
 
@@ -49,7 +48,7 @@ Fejléc|Értékek|Megjegyzések
 -|-|-
 |`Content-Type` | `application/ssml+xml` | A bemeneti szöveges formátum.
 |`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`audio-16khz-16kbps-mono-siren`<br>`riff-16khz-16kbps-mono-siren`<br>`riff-16khz-16bit-mono-pcm`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | A kimeneti audio formátum.
-|`User-Agent`   |Alkalmazás neve | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
+|`User-Agent`   |Alkalmazásnév | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
 | `Authorization`   | A jogkivonat-szolgáltatás az előfizetési kulcs szabályzatkérelem kapott engedélyezési jogkivonatot. Minden tokenhez a tíz percig érvényes. Lásd: [REST API-k: hitelesítés](rest-apis.md#authentication).
 
 > [!NOTE]
@@ -87,7 +86,7 @@ Ha hiba történik, az alábbi állapotkódok használja. A válasz törzse a hi
 |Kód|Leírás|Probléma|
 |-|-|-|
 400 |Hibás kérelem |Egy kötelező paraméter hiányzik, üres vagy null értékű. Másik lehetőségként átadott vagy egy kötelező vagy választható paraméter értéke érvénytelen. Egy gyakori probléma egy fejlécet, amely túl hosszú.
-401|Nincs engedélyezve |A kérelem nem engedélyezett. Ellenőrizze, hogy érvényes-e az előfizetés, vagy egy token.
+401|Nem engedélyezett |A kérelem nem engedélyezett. Ellenőrizze, hogy érvényes-e az előfizetés, vagy egy token.
 413|Kérelem az entitás túl nagy|A SSML bemeneti adat 1024 karakternél hosszabb.
 |502|Hibás átjáró    | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet.
 

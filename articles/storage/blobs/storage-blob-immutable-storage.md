@@ -1,38 +1,37 @@
 ---
-title: Az Azure Blob Storage Immutable Storage (nem módosítható tárolás) funkciója (előzetes verzió) | Microsoft Docs
-description: Az Azure Storage most WORM-támogatást kínál a Blob-objektumtárhoz, amely lehetővé teszi az adatok törölhetetlen, nem módosítható állapotban történő tárolását a felhasználó által megadott időtartamig. Ez a funkció lehetővé teszi számos szabályozott iparágban tevékenykedő cég, különösen az értékpapír-kereskedők számára, hogy adataikat az SEC 17a-4(f) és egyéb szabályozásokkal összhangban tárolhassák.
+title: Az Azure Blob storage (előzetes verzió) nem módosítható storage |} A Microsoft Docs
+description: Az Azure Storage kínál FÉREG (egyszer írható, olvassa el számos) támogatása (objektum) a Blob storage, amely lehetővé teszi a felhasználók számára nem törölhető, nem módosítható állapotban tárolva az adatok egy felhasználó által megadott időintervallum. Az Azure Blob storage FÉREG támogatás lehetővé teszi a szervezetek sok szabályozott iparágakban, különösen átvitelszervező-kereskedő szervezetek tárolja az adatokat az mp-ben 17a-4(f) összhangban és más szabályozások előírásainak betartását.
 services: storage
 author: sangsinh
-manager: twooley
-ms.custom: mvc
 ms.service: storage
-ms.topic: quickstart
+ms.topic: article
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 04e88725c04fc88a8394bafd455d25ea13718f7d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: HT
+ms.component: blobs
+ms.openlocfilehash: a69d26b8c60f25b5710e48500cc727421d9e5c9a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070008"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263327"
 ---
-# <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Az Azure Blob Storage Immutable Storage (nem módosítható tárolás) funkciója (előzetes verzió)
+# <a name="store-business-critical-data-in-azure-blob-storage-preview"></a>Üzleti szempontból kritikus fontosságú adatok Store az Azure Blob storage (előzetes verzió)
 
-Az Azure-blobok Immutable Storage (nem módosítható tárolás) funkciója lehetővé teszi a felhasználók számára, hogy fontos üzleti adataikat WORM- (Write Once Read Many, egyszer írható és többször olvasható) állapotban tárolhassák egy Azure Blob-tárolóban. Ebben az állapotban az adatokat a felhasználó által megadott időtartamig nem lehet törölni, és nem lehet módosítani. A megőrzési intervallum alatt a blobokat létre lehet hozni és be lehet olvasni, de nem lehet őket sem módosítani, sem törölni.
+Nem módosítható storage (object) az Azure Blob Storage lehetővé teszi a felhasználók üzleti szempontból kritikus fontosságú adatok tárolása az Azure blob storage-ban FÉREG (egyszer írható, olvassa el számos) állapotba. Ebben az állapotban az adatokat a felhasználó által megadott időtartamig nem lehet törölni, és nem lehet módosítani. Blobok is létrehozott, és olvassa el, de nem módosítható és nem törölhető, a megőrzési időtartam idejére.
 
 ## <a name="overview"></a>Áttekintés
 
-A nem módosítható tárolási funkció lehetővé teszi számos szabályozott iparágban tevékenykedő cég, különösen az értékpapír-kereskedők számára, hogy adataikat az SEC 17a-4(f) és egyéb szabályozásokkal összhangban tárolhassák.
+Nem módosítható storage lehetővé teszi a szervezetek sok szabályozott iparágakban, különösen átvitelszervező-kereskedő szervezetek tárolja az adatokat az mp-ben 17a-4(f) összhangban és más szabályozások előírásainak betartását.
 
 Jellemző alkalmazási területek:
 
-- **Előírásoknak való megfelelés**: Az Azure-blobok nem módosítható tárolási funkcióját úgy terveztük, hogy segítse a pénzügyi és ahhoz kapcsolódó iparágban tevékenykedő cégeket az SEC 17a-4(f), a CFTC 1.31©-(d), a FINRA és más szabályozások betartásában.
+- **A jogszabályoknak való megfelelőség**: nem módosítható, az Azure Blob storage tárolási célja pénzügyi intézmények és a kapcsolódó iparágakban cím mp 17a-4(f), CFTC 1.31©-(d), finra az Egyesült stb.
 
-- **Dokumentumok biztonságos megőrzése**: a felhasználók a lehető legszéleskörűbb adatvédelemben részesülnek, ugyanis a Blob Storage szolgáltatás gondoskodik róla, hogy az adatokat a felhasználók ne módosíthassák vagy törölhessék, még a rendszergazdai jogosultságokkal rendelkező felhasználók sem.
+- **Biztonságos dokumentum megőrzési**: a felhasználók kapnak maximális adatvédelem, a Blob storage biztosítja, hogy adatokat nem módosítható és nem törölhető is fiók rendszergazdai jogosultságokkal rendelkező felhasználója sem.
 
-- **Jogi célú visszatartás**: Az Azure-blobok nem módosítható tárolás funkciója lehetővé teszi a felhasználók számára, hogy a bírósági vagy büntetőjogi eljárások szempontjából alapvető fontosságú, kényes információkat feltörésbiztos állapotban tárolhassák a kívánt időtartamig.
+- **Jogi céllal zároltak közé**: az Azure Blob storage nem módosítható storage lehetővé teszi a felhasználók kritikus vagy egy rendőrségi vizsgálat stb. a bizalmas adatok tárolásához egy hamisíthatatlan állapotban a kívánt időszakra.
 
-A nem módosítható tárolási funkció lehetővé teszi a következőket:
+Nem módosítható storage lehetővé teszi, hogy:
 
 - **Időalapú adatmegőrzési szabályzatok támogatása:** Felhasználók által meghatározott szabályzatok az adatok előre megadott ideig tartó tárolásához.
 
@@ -44,11 +43,11 @@ A nem módosítható tárolási funkció lehetővé teszi a következőket:
 
 - **Naplózási támogatás:** Minden tárolóhoz tartozik egy auditnapló, amely legfeljebb öt időalapú adatmegőrzési parancsot jelenít meg a legfeljebb három megőrzésiidőtartam-hosszabbítási bejegyzéssel rendelkező zárolt időalapú adatmegőrzési szabályzatokhoz.  Az időalapú adatmegőrzések esetében a naplóbejegyzés tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a megőrzési időtartamot. A jogi célú visszatartások esetében a bejegyzés tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a jogi céllal történő zárolás címkéit. Az SEC 17a-4(f) szabályozási irányelveknek megfelelően a bejegyzés mindaddig megőrzésre kerül, amíg a tároló létezik. A vezérlősík összes tevékenységét tartalmazó átfogóbb naplót az [Azure tevékenységnaplóban](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) talál. A felhasználó felelőssége, hogy gondoskodjon a naplók állandó tárolásáról, mivel szabályozási és egyéb célból is szükség lehet rájuk.
 
- Ez a funkció minden nyilvános Azure-régióban elérhető.
+Nem módosítható tárolás engedélyezve van az Azure összes nyilvános régióban.
 
 ## <a name="how-it-works"></a>Működés
 
-Az Azure-blobok nem módosítható tárolási funkciója két típusú WORM vagy nem módosítható szabályzatot támogat: az időalapú adatmegőrzést és a jogi célú visszatartást. A nem módosítható szabályzatok létrehozásáról további információkat az [Első lépések](#Getting-started) fejezetben talál.
+Az Azure Blob storage nem módosítható storage támogatja a FÉREG vagy nem módosítható házirendek két típusa: időalapú adatmegőrzés és jogi célú visszatartással. A nem módosítható szabályzatok létrehozásáról további információkat az [Első lépések](#Getting-started) fejezetben talál.
 Amikor egy időalapú adatmegőrzési szabályzatot vagy egy jogi célú visszatartást állít be egy tárolón, minden meglévő blob nem módosítható állapotúvá válik (azaz írás- és törlésvédett lesz). A tárolóba feltöltött összes új blob szintén nem módosítható állapotúvá válik.
 
 > [!IMPORTANT]
@@ -79,7 +78,7 @@ Tekintse át az [Azure Blob Service API](https://docs.microsoft.com/rest/api/sto
 
 > [!NOTE]
 > A blob létrehozásához szükséges első Put Blob, illetve Put Block List és Put Block műveletek a fenti listán szereplő első két forgatókönyvben engedélyezve vannak, de az ezeket követő összes további művelet tiltott.
-> A nem módosítható tárolási funkció csak a GPv2-ben érhető el, a Blob Storage-fiókokat pedig az [Azure Resource Manageren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) keresztül kell létrehozni.
+> Nem módosítható tárolási csak a GPv2- és blob storage-fiókok és keresztül kell létrehoznia a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -94,7 +93,7 @@ A nyilvános előzetes verzió használatára a következő korlátozások érv�
 
 ## <a name="getting-started"></a>Első lépések
 
-Az Azure-blobok Azure Immutable Storage (nem módosítható tárolás) funkcióját az [Azure Portal](http://portal.azure.com), az Azure [CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és az Azure [PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) legújabb verziói is támogatják.
+Az Azure Blob storage Azure Storage nem módosítható a legújabb verzióiban támogatott [az Azure Portal](http://portal.azure.com), az Azure [CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), és az Azure [PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018)
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -132,7 +131,7 @@ Az Azure-blobok Azure Immutable Storage (nem módosítható tárolás) funkciój
 
 Telepítse a [CLI-bővítményt](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) az `az extension add -n storage-preview` paranccsal.
 
-Ha már telepítette a bővítményt, használja a következő parancsot a nem módosítható tárolási funkció engedélyezéséhez: `az extension update -n storage-preview`
+Ha már rendelkezik a bővítmény telepítve van, a következő paranccsal nem módosítható tároló engedélyezése: `az extension update -n storage-preview`
 
 A következő parancscsoportok tartalmazzák a funkciót (a parancsok megtekintéséhez futtassa rajtuk a „-h”-t): `az storage container immutability-policy` és `az storage container legal-hold`.
 
@@ -150,7 +149,7 @@ Alább talál egy PowerShell-mintakódot, amely bemutatja a funkció használat�
 
 ## <a name="client-libraries"></a>Ügyfélkódtárak
 
-Az Azure-blobok nem módosítható tárolási funkcióját az ügyfélkódtárak következő kiadásai támogatják
+Nem módosítható tárolás az Azure Blob storage a következő ügyféloldali kódtár kiadásokban támogatott
 
 - [.net-ügyfélkódtár (7.2.0-s előzetes vagy annál újabb verziók)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/7.2.0-preview)
 - [node.js-ügyfélkódtár (4.0.0-s vagy annál újabb verziók)](https://www.npmjs.com/package/azure-arm-storage)
@@ -170,11 +169,11 @@ Az Azure-blobok nem módosítható tárolási funkcióját az ügyfélkódtárak
 
 **Kizárólag blokkblobokhoz, vagy lap- és hozzáfűző blobokhoz is alkalmazható a funkció?**
 
-A nem módosítható tárolási funkció minden blobtípushoz alkalmazható.  Érdemes azonban figyelembe venni, hogy a használatát leginkább a blokkblobokhoz ajánljuk. A blokkbloboktól eltérően a lap- és a hozzáfűző blobokat a WORM-tárolón kívül kell létrehozni, és csak ezután lehet őket bemásolni.  A WORM-tárolóba történő bemásolást követően nem lehet további *hozzáfűzéseket* hozzáadni a hozzáfűző blobokhoz, és a lapblobok további módosítása sem engedélyezett.
+Minden blob típusa nem módosítható storage BLOB objektumokhoz használható.  Érdemes azonban figyelembe venni, hogy a használatát leginkább a blokkblobokhoz ajánljuk. A blokkbloboktól eltérően a lap- és a hozzáfűző blobokat a WORM-tárolón kívül kell létrehozni, és csak ezután lehet őket bemásolni.  A WORM-tárolóba történő bemásolást követően nem lehet további *hozzáfűzéseket* hozzáadni a hozzáfűző blobokhoz, és a lapblobok további módosítása sem engedélyezett.
 
 **Minden egyes alkalommal új tárfiókot kell létrehoznom a funkció használatához?**
 
-A nem módosítható tárolási funkciót bármely már létező GPv2-fiókkal vagy újonnan létrehozott tárfiókkal használhatja, ha a fiók típusa GPv2. Jelenleg a funkció csak blobtárolókhoz érhető el.
+Nem módosítható storage használható minden olyan meglévő GPv2-fiókok vagy az új storage-fiókok GPv2 fióktípus-e. Jelenleg a funkció csak blobtárolókhoz érhető el.
 
 **Mi történik, ha megpróbálok törölni egy tárolót, amelyre *zárolt* időalapú adatmegőrzési szabályzat vagy jogi célú visszatartás vonatkozik?**
 
@@ -186,7 +185,7 @@ A tárfiók törlése sikertelen lesz, ha legalább egy jogi célú visszatartá
 
 **Áthelyezhetem az adatokat különböző blobrétegek között (gyakran, ritkán és alig használt rétegek), ha a blob nem módosítható állapotban van?**
 
-Igen, a Blobszint beállítása parancs segítségével úgy helyezheti át az adatokat a blobrétegek között, hogy azok nem módosítható állapotban maradnak. A nem módosítható tárolási funkció a gyakran, ritkán és alig használt blobrétegek esetében is támogatott.
+Igen, a Blobszint beállítása parancs segítségével úgy helyezheti át az adatokat a blobrétegek között, hogy azok nem módosítható állapotban maradnak. Nem módosítható tárolási rétegek gyakori elérésű, ritka elérésű és ritka elérésű blob esetében támogatott.
 
 **Mi történik, ha elmulasztok fizetni, és a megőrzési időtartam még nem járt le?**
 
@@ -198,7 +197,7 @@ Igen, az időalapú adatmegőrzési szabály első létrehozásakor az *zárolat
 
 **A szolgáltatás országos és kormányzati felhőkben is elérhető?**
 
-A nem módosítható tárolási funkció kizárólag a nyilvános Azure-régiókban érhető el. Ha kérdései vannak egy adott országos felhővel kapcsolatban, küldjön e-mailt a következő címre: azurestoragefeedback@microsoft.com.
+Nem módosítható storage jelenleg csak a nyilvános Azure-régióban. Ha kérdései vannak egy adott országos felhővel kapcsolatban, küldjön e-mailt a következő címre: azurestoragefeedback@microsoft.com.
 
 ## <a name="sample-code"></a>Mintakód
 

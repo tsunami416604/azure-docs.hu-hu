@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: dfea1587cddbf7440771ca7007928f7e4054f61a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 46ab4a177cc7d86e5d967ff8e219dae96f82a0dc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092290"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263146"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -33,7 +33,7 @@ A következő táblázat összehasonlítja a ERT és RPO esetében a három legg
 | --- | --- | --- | --- |--- |--- |
 | Időponthoz kötött visszaállítás biztonsági másolatból |Bármely visszaállítási pont 7 napon belül |Bármely visszaállítási pont 35 napon belül |Bármely visszaállítási pont 35 napon belül |Bármely visszaállítási pont (legfeljebb 35 napra) konfigurált időtartamon belül|Bármely visszaállítási pont (legfeljebb 35 napra) konfigurált időtartamon belül|
 | Georedundáns visszaállítás georeplikált biztonsági másolatokból |ERT < 12 óra, RPO < 1 óra |ERT < 12 óra, RPO < 1 óra |ERT < 12 óra, RPO < 1 óra |ERT < 12 óra, RPO < 1 óra|ERT < 12 óra, RPO < 1 óra|
-| Visszaállítás Azure Backup-tárolóból |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét|ERT < 12 óra, RPO < 1 hét|
+| Állítsa vissza a SQL hosszú távú megőrzéséből |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét |ERT < 12 óra, RPO < 1 hét|ERT < 12 óra, RPO < 1 hét|
 | Aktív georeplikáció |ERT < 30 másodperc, RPO < 5 másodperc |ERT < 30 másodperc, RPO < 5 másodperc |ERT < 30 másodperc, RPO < 5 másodperc |ERT < 30 másodperc, RPO < 5 másodperc|ERT < 30 másodperc, RPO < 5 másodperc|
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>Adatbázis helyreállítása időponthoz visszaállítás használatával
@@ -102,7 +102,7 @@ A törölt adatbázisok az Azure Portalon vagy a PowerShell-lel végzett vissza�
 
 ### <a name="restore-backups-from-long-term-retention"></a>Biztonsági másolatok visszaállításához a hosszú távú megőrzéséből
 
-Ha az adatvesztés az automatikus biztonsági másolatok aktuális megőrzési időszakán kívül történt, és az adatbázis konfigurálva van hosszú távú megőrzésének, visszaállíthatja egy teljes biztonsági másolatból az LTR Storage egy új adatbázisba. Ekkor lecserélheti az eredeti adatbázist a visszaállítottra, vagy átmásolhatja a szükséges adatokat a visszaállított adatbázisból az eredetibe. Ha szeretné beolvasni az adatbázis egy nagyobb alkalmazásfrissítés előtti, régebbi verzióját, kérelem teljesítéséhez auditorok vagy egy jogi ahhoz, létrehozhat egy adatbázist egy teljes biztonsági mentése az Azure Backup-tárolóban.  További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
+Ha az adatvesztés az automatikus biztonsági másolatok aktuális megőrzési időszakán kívül történt, és az adatbázis konfigurálva van az Azure blob storage-dzsal hosszú távú megőrzésének, visszaállíthatja egy teljes biztonsági másolatból az Azure blob Storage egy új adatbázisba. Ekkor lecserélheti az eredeti adatbázist a visszaállítottra, vagy átmásolhatja a szükséges adatokat a visszaállított adatbázisból az eredetibe. Szeretné beolvasni az adatbázis egy nagyobb alkalmazásfrissítés előtti, régebbi verzióját, ha kérelem teljesítéséhez auditorok vagy egy jogi sorrendben is létrehozhat egy adatbázist egy teljes biztonsági mentése az Azure blob storage-ban.  További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Adatbázis helyreállítása egy másik régióba az Azure regionális adatközpontjának leállása esetén
 <!-- Explain this scenario -->

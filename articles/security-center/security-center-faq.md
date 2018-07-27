@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 320c7c483e865c85948d32ee2b5b70a92181920f
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 382f85c268b2e21a780756057f4bf78c41c791c2
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160069"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283503"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -67,10 +67,11 @@ Ha az Automatikus kiépítés engedélyezve van, a Security Center létrehozza a
 
 Az ügynök lehetővé teszi, hogy a folyamat-létrehozási esemény 4688 és a *CommandLine* mezőt 4688-as belül. A virtuális gépen új folyamatok EventLog által rögzített és a Security Center észlelési szolgáltatások által figyelt. Információk a rögzített minden új folyamathoz részleteire: [4688 leírás mezőiben](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Az ügynök is a virtuális gépen 4688 eseményeit, és tárolja a keresés.
 
+Az ügynök emellett lehetővé teszi adatok gyűjtésének [adaptív Alkalmazásvezérlők](security-center-adaptive-application.md), konfigurálja a helyi AppLocker-házirend rendszervizsgálati módban, hogy az összes alkalmazást. Ennek hatására az AppLocker események, amelyeket gyűjteni, és a Security Center által használható létrehozása. Fontos megjegyezni, hogy ez a szabályzat minden olyan gépeken, amelyeken már van egy konfigurált AppLocker-házirendek nem lesznek konfigurálva. 
+
 Ha a Security Center a virtuális gép gyanús tevékenységet észlel, az ügyfél értesítést e-mailben, ha a [biztonsági kapcsolattartási adatok](security-center-provide-security-contact-details.md) lett megadva. Egy riasztás akkor is a Security Center biztonsági riasztások irányítópult látható.
 
-> [!NOTE]
-> - Adatgyűjtés engedélyezése [adaptív Alkalmazásvezérlők](security-center-adaptive-application.md), konfigurálja a helyi AppLocker-házirend rendszervizsgálati módban, hogy az összes alkalmazást. Ennek hatására az AppLocker események, amelyeket gyűjteni, és a Security Center által használható létrehozása. Fontos megjegyezni, hogy ez a szabályzat minden olyan gépeken, amelyeken már van egy konfigurált AppLocker-házirendek nem lesznek konfigurálva. 
+
 
 ### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>A Monitoring Agent befolyásolja a kiszolgáló teljesítményét?
 Az ügynök egy névleges mennyiségű rendszer-erőforrásokat használ fel, és teljesítményére gyakorolt minimális hatás kell rendelkeznie. További információ a teljesítményt és az ügynök és a bővítmény: az [tervezéséhez és útmutató](security-center-planning-and-operations-guide.md#data-collection-and-storage).

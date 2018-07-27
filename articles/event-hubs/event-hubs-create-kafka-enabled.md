@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre Kafka engedélyezve van az Azure Event Hubs |} A Microsoft Docs
+title: Hozzon létre Apache Kafka engedélyezve van az Azure Event Hubs |} A Microsoft Docs
 description: Hozzon létre egy Kafka engedélyezve van az Azure Event Hubs-névtér az Azure portal használatával
 services: event-hubs
 documentationcenter: .net
@@ -10,18 +10,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: shvija
-ms.openlocfilehash: 7a05a89fdf99efb6470ee9c8695f349cf22b8ebb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 79b6b879bd2332c044ce871e2c9a938c6b9c900c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442127"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285085"
 ---
-# <a name="create-kafka-enabled-event-hubs"></a>Hozzon létre Kafka engedélyezve van az event hubs
+# <a name="create-apache-kafka-enabled-event-hubs"></a>Az Apache Kafka engedélyezve van az event hubs létrehozása
 
 Az Azure Event Hubs egy big Data típusú Adatstreamelési Platform (PaaS) szolgáltatás, amely másodpercenként több millió fogadnak és alacsony késéssel és nagy átviteli sebességet biztosít a valós idejű elemzési és vizualizációs szolgáltatás.
 
-A Kafka rendszereit az Azure Event Hubs egy végpontot biztosít. Ez a végpont lehetővé teszi, hogy a natív módon megérteni az Event Hubs-névtér [Apache Kafka](https://kafka.apache.org/intro) üzenetek protokoll és API-k. Ez a képesség kommunikálhat az event hubs, mint a Kafka-témaköröket a protokollt használó ügyfelek módosítása, vagy saját fürtök futtatása nélkül. Az Event Hubs, Kafka-ökoszisztéma támogatja a [Apache Kafka verziók 1.0](https://kafka.apache.org/10/documentation.html) és újabb verziók.
+Az Azure Event Hubs egy Kafka-végpontot biztosít. Ez a végpont lehetővé teszi, hogy a natív módon megérteni az Event Hubs-névtér [Apache Kafka](https://kafka.apache.org/intro) üzenetek protokoll és API-k. Ez a képesség kommunikálhat az event hubs, mint a Kafka-témaköröket a protokollt használó ügyfelek módosítása, vagy saját fürtök futtatása nélkül. Az Event Hubs támogatja [Apache Kafka verziók 1.0](https://kafka.apache.org/10/documentation.html) és újabb verziók.
 
 Ez a cikk ismerteti, hogyan hozzon létre egy Event Hubs-névtér és a Kafka-kompatibilis az event hubs Kafka alkalmazások való csatlakoztatásához szükséges kapcsolati sztring lekérése.
 
@@ -58,7 +58,7 @@ Az Event hubsba a Kafka-protokollt használó alkalmazások már streamelheti es
 Az Event Hubs kapcsolatos további információkért látogasson el ezeket a hivatkozásokat:
 
 * [Stream az Event Hubsba, a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-* [További információ az Event Hubs a Kafka-ökoszisztéma](event-hubs-for-kafka-ecosystem-overview.md)
+* [További információ az Event Hubs, Kafka for](event-hubs-for-kafka-ecosystem-overview.md)
 * [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
 
 

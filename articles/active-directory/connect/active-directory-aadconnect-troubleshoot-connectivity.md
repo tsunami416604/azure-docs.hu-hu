@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d30006fae8a0d495909b9a53cf0bffb5cc824433
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 793a65347552782c4a3482b29d10e4c94ef85663
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295396"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263231"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect kapcsolati problémáinak hibaelhárítása
 Ez a cikk azt ismerteti, hogyan működik az Azure AD Connect és az Azure AD közötti kapcsolat és a kapcsolódási problémák elhárítása. Ezek olyan problémák, nagy valószínűséggel olyan környezetben, egy proxykiszolgáló láthatók legyenek.
@@ -52,7 +52,7 @@ Ezen URL-címek a következő táblázat az csatlakozni az Azure AD minden, az a
 | \*.microsoftonline.com |HTTPS/443 |Segítségével a konfigurálása az Azure AD-címtár és az adatok importálása és exportálása. |
 
 ## <a name="errors-in-the-wizard"></a>Hibák a varázsló
-A telepítővarázsló használata két eltérő biztonsági környezetben. Az oldalon **az Azure AD Connect**, használja a jelenleg bejelentkezett felhasználót. Az oldalon **konfigurálása**, vált át a [a szinkronizálási motor a szolgáltatást futtató fiók](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). Ha probléma van, akkor jelenik meg valószínűleg már található a **az Azure AD Connect** a varázslóban, mivel a proxykonfiguráció globális lap.
+A telepítővarázsló használata két eltérő biztonsági környezetben. Az oldalon **az Azure AD Connect**, használja a jelenleg bejelentkezett felhasználót. Az oldalon **konfigurálása**, vált át a [a szinkronizálási motor a szolgáltatást futtató fiók](active-directory-aadconnect-accounts-permissions.md#adsync-service-account). Ha probléma van, akkor jelenik meg valószínűleg már található a **az Azure AD Connect** a varázslóban, mivel a proxykonfiguráció globális lap.
 
 A következő problémák a leggyakoribb hibákat tapasztal, a telepítési varázsló.
 
@@ -161,28 +161,28 @@ Hálózati vagy a proxy konfigurációs problémákat. A hálózat nem érhető 
 ### <a name="user-password-expired"></a>Felhasználó jelszava lejárt
 A hitelesítő adatok lejártak. Módosítsa a jelszót.
 
-### <a name="authorizationfailure"></a>AuthorizationFailure
-Ismeretlen hiba.
+### <a name="authorization-failure"></a>Engedélyezési hiba
+Nem sikerült engedélyezni a felhasználót, hogy az Azure ad-ben a műveletre.
 
 ### <a name="authentication-cancelled"></a>Hitelesítési megszakítva
 A többtényezős hitelesítés (MFA) kihívás meg lett szakítva.
 
-### <a name="connecttomsonline"></a>ConnectToMSOnline
+### <a name="connect-to-ms-online-failed"></a>Az MS Online nem sikerült csatlakozni
 A hitelesítés sikerült, de az Azure AD PowerShell rendelkezik egy hitelesítési probléma.
 
-### <a name="azurerolemissing"></a>AzureRoleMissing
-A hitelesítés sikerült. Ön nem globális rendszergazda.
+### <a name="azure-ad-global-admin-role-needed"></a>Az Azure AD globális rendszergazdai szerepkör szükséges
+Felhasználó hitelesítése sikeresen megtörtént. Felhasználói azonban nincs hozzárendelt globális rendszergazdai szerepkört. Ez a [globális rendszergazdai szerepkör hozzárendelése](../users-groups-roles/directory-assign-admin-roles.md) a felhasználó számára. 
 
-### <a name="privilegedidentitymanagement"></a>PrivilegedIdentityManagement
+### <a name="privileged-identity-management-enabled"></a>Privileged Identity Management engedélyezve
 A hitelesítés sikerült. Privileged identity management engedélyezve van, és jelenleg nem globális rendszergazda. További információkért lásd: [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
 
-### <a name="companyinfounavailable"></a>CompanyInfoUnavailable
+### <a name="company-information-unavailable"></a>Vállalati adatok nem érhető el
 A hitelesítés sikerült. Nem sikerült beolvasni a vállalati adatokat az Azure ad-ből.
 
-### <a name="retrievedomains"></a>RetrieveDomains
+### <a name="domain-information-unavailable"></a>Tartományadatokat nem érhető el
 A hitelesítés sikerült. Nem sikerült beolvasni a tartományadatokat az Azure ad-ből.
 
-### <a name="unexpected-exception"></a>Váratlan kivétel
+### <a name="unspecified-authentication-failure"></a>Nincs megadva hitelesítési hiba
 A telepítési varázslóban nem várt hiba jelenik meg. Előfordulhat, ha megpróbálja használni egy **Microsoft Account** helyett egy **iskola vagy szervezeti fiókjával**.
 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>Korábbi kiadások hibaelhárítási lépéseit.

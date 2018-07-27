@@ -1,29 +1,25 @@
 ---
-title: A munkafolyamat definíciós nyelvséma – Azure Logic Apps |} A Microsoft Docs
+title: Munkafolyamat-definíciós nyelv – Azure Logic Apps séma referenciája |} A Microsoft Docs
 description: A munkafolyamat-definíciós nyelv az Azure Logic Apps egyéni munkafolyamat-definíciókhoz írása
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: reference
 ms.date: 04/30/2018
-ms.author: estfan
-ms.openlocfilehash: babe21db6acc2f7154857b4eb0a02356e89a8ca7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 9268ca3db6c99c4e660690e25a2331a1fa1cdf96
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060578"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263674"
 ---
-# <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Logic Apps munkafolyamat-definíciók és a munkafolyamat-definíciós nyelvséma
+# <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv séma referenciája
 
-Amikor létrehoz egy logikaialkalmazás-munkafolyamat a [Azure Logic Apps](../logic-apps/logic-apps-overview.md), alapul szolgáló a munkafolyamat-definíció a tényleges logika, amely a logikai alkalmazás ismerteti. Ez a leírás meghatározott és érvényesített struktúrát követi a munkafolyamat-definíciós nyelv séma, amely használja [JavaScript Object Notation (JSON)](https://www.json.org/) formátumban. 
+Amikor létrehoz egy logikaialkalmazás-munkafolyamat a [Azure Logic Apps](../logic-apps/logic-apps-overview.md), alapul szolgáló a munkafolyamat-definíció a tényleges logika, amely a logikai alkalmazás ismerteti. Ez a leírás meghatározott és érvényesített struktúrát követi a munkafolyamat-definíciós nyelv séma, amely használja [JavaScript Object Notation (JSON)](https://www.json.org/). 
   
 ## <a name="workflow-definition-structure"></a>A munkafolyamat szabályzatdefiníciók struktúrája
 
@@ -226,7 +222,7 @@ Másik lehetőségként többet szeretne megtudni a functions és az általános
 Csak néhány példa feladatokat hajthat végre a funkciók a következők: 
 
 | Tevékenység | Függvény-szintaxis | Eredmény | 
-| ---- | --------------- | -------------- | 
+| ---- | --------------- | ------ | 
 | Kis formátumban adja vissza. | toLower (a(z) <*szöveg*> ") <p>Például: toLower('Hello') | "hello" | 
 | Egy globálisan egyedi azonosítóját (GUID) adja vissza. | GUID() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
 |||| 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d62eb4d5f43625b336ade68532cf734ef0cde6a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: af9a2e47a5e91d9b32a787f8f40ba06b5a1596e7
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214693"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265046"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikk ismerteti, hogy az egy felhőalapú Azure Active Directory (Azure AD) példány egy helyszíni Active Directory-példányból származó felhasználói jelszavakat szinkronizálja szükséges információkat.
@@ -173,3 +173,4 @@ Ha problémába ütközik a Jelszókivonat-szinkronizálás, [Jelszókivonat-szi
 ## <a name="next-steps"></a>További lépések
 * [Az Azure AD Connect-szinkronizálás: szinkronizálási beállítások testreszabása](active-directory-aadconnectsync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
+* [A részletes telepítési terv beolvasása az AD FS-ről történő Jelszókivonat-szinkronizálás](https://aka.ms/authenticationDeploymentPlan)

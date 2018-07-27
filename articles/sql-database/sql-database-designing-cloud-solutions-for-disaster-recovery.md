@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL Database használatával magas rendelkezésre állású szolgáltatás tervezése |} A Microsoft Docs
+title: Az Azure SQL Database használatával globálisan elérhető szolgáltatások tervezése |} A Microsoft Docs
 description: További információ az alkalmazás-tervezés az Azure SQL Database használatával magas rendelkezésre állású szolgáltatások.
 keywords: vész-helyreállítási, a vész-helyreállítási megoldások, a alkalmazás az adatok biztonsági mentése, a georeplikáció, a felhő üzleti folytonossági tervezése
 services: sql-database
@@ -8,19 +8,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/26/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f1c228802bd0a2e65321a3abe47b87845f5f86a0
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 88a6e1a66390b2b317e1e30a71455ad693e6d7df
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092613"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264654"
 ---
-# <a name="designing-highly-available-services-using-azure-sql-database"></a>Az Azure SQL Database használatával magas rendelkezésre állású szolgáltatások tervezése
+# <a name="designing-globally-available-services-using-azure-sql-database"></a>Az Azure SQL Database használatával globálisan elérhető szolgáltatások tervezése
 
-Összeállításakor, és az Azure SQL Database magas rendelkezésre állású szolgáltatások telepítése, használata [feladatátvételi csoportok és az aktív georeplikáció](sql-database-geo-replication-overview.md) katasztrofális hibák és a regionális üzemkimaradások utáni helyreállításon hibatűrést biztosít. Emellett lehetővé teszi a gyors helyreállítást a másodlagos adatbázisok. Ez a cikk gyakori alkalmazásminták koncentrál, és ismerteti ezek előnyeit és hátrányait skálán. Aktív georeplikáció rugalmas készletekkel kapcsolatos információkért lásd: [rugalmas készletek vészhelyreállítási stratégiái](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Amikor készítése és üzembe helyezése a cloud services az Azure SQL Database, [feladatátvételi csoportok és az aktív georeplikáció](sql-database-geo-replication-overview.md) katasztrofális hibák és a regionális üzemkimaradások utáni helyreállításon hibatűrést biztosít. Ugyanazokat a funkciókat az adatokhoz való hozzáférés helyi optimalizált globálisan elosztott alkalmazások létrehozását teszi lehetővé. Ez a cikk ismerteti a gyakori alkalmazásminták, többek között az előnyeit és hátrányait feláldozását. 
 
 > [!NOTE]
 > Ha prémium szintű és az üzletileg kritikus adatbázisok és rugalmas készletek használ, akkor is használhatja őket rugalmas a regionális üzemkimaradások utáni helyreállításon zóna redundáns üzembe helyezési konfiguráció átalakításával. Lásd: [zónaredundáns adatbázisok](sql-database-high-availability.md).  

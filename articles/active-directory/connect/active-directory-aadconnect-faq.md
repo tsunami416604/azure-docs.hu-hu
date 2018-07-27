@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 545766aa6c39fe678113297e584422872a6ded87
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008144"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264995"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
@@ -54,7 +54,7 @@ Ennek legegyszerűbb módja, hogy használja az SQL Server Management Studio Azu
 3. A meglévő ellen az Azure AD Connect telepítése [távoli SQL-adatbázis](active-directory-aadconnect-existing-database.md).
    A cikk bemutatja, hogyan telepíthető át egy helyi SQL-adatbázis használatával. Ha egy távoli SQL-adatbázis használatával telepít át, a folyamat 5. lépésében is be kell, amely a Windows szinkronizálási szolgáltatást futtató, meglévő szolgáltatásfiók. A szinkronizálási motor szolgáltatásfiók az alábbiakban ismertetjük:
    
-      **Meglévő szolgáltatásfiók használata**: az Azure AD Connect alapértelmezés szerint a szinkronizálási szolgáltatások egy helyi szolgáltatásfiókot használja használatára. Ha távoli SQL Server-példányt vagy egy hitelesítést igénylő proxyt használ, egy felügyelt szolgáltatásfiókot vagy szolgáltatásfiók használata a tartományban, és ismernie kell a jelszót. Ezekben az esetekben adja meg a használni kívánt fiókot. Győződjön meg arról, hogy a telepítést futtató felhasználók SQL-rendszergazdák, hogy a szolgáltatás fiók bejelentkezési hitelesítő adatok hozhatók létre. További információkért lásd: [az Azure AD Connect-fiókok és engedélyek](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). 
+      **Meglévő szolgáltatásfiók használata**: az Azure AD Connect alapértelmezés szerint a szinkronizálási szolgáltatások egy helyi szolgáltatásfiókot használja használatára. Ha távoli SQL Server-példányt vagy egy hitelesítést igénylő proxyt használ, egy felügyelt szolgáltatásfiókot vagy szolgáltatásfiók használata a tartományban, és ismernie kell a jelszót. Ezekben az esetekben adja meg a használni kívánt fiókot. Győződjön meg arról, hogy a telepítést futtató felhasználók SQL-rendszergazdák, hogy a szolgáltatás fiók bejelentkezési hitelesítő adatok hozhatók létre. További információkért lásd: [az Azure AD Connect-fiókok és engedélyek](active-directory-aadconnect-accounts-permissions.md#adsync-service-account). 
    
       A legújabb buildben az SQL-rendszergazda sávon kívül kiépítheti az adatbázist, majd az Azure AD Connect-rendszergazda adatbázis-tulajdonosi jogosultságokkal telepítheti. További információkért lásd: [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](active-directory-aadconnect-sql-delegation.md).
 

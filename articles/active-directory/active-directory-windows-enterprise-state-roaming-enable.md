@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 81a404a19dc1604f0aa87ef86883d0c18edac5cd
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: bb2210619e481189fc88ca3bb6b8044a8f5d7e14
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224887"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262948"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 Enterprise State Roaming egy prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licenccel rendelkező minden szervezet számára érhető el. Az Azure AD-előfizetés beszerzése További információkért lásd: a [Azure ad-ben termékoldalán](https://azure.microsoft.com/services/active-directory).
@@ -56,7 +56,7 @@ Kövesse az alábbi lépéseket egy felhasználó eszköz szinkronizálása áll
 
 1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com/).
 
-2. Válassza ki **Azure Active Directory** &gt; **felhasználók és csoportok** &gt; **minden felhasználó**.
+2. Válassza ki **Azure Active Directory** &gt; **felhasználók** &gt; **minden felhasználó**.
 
 3. Válassza ki a felhasználót, és válassza **eszközök**.
 

@@ -1,41 +1,41 @@
 ---
-title: Azure-tároló példányát indexelése feladatok futtatása
-description: Ismerje meg, hogyan használható az Azure tároló példányok futtatott feladatok befejezését, többek között a build, a vizsgálat vagy a kép megjelenítési feladatok végrehajtásához.
+title: Tárolóalapú feladatok futtatása az Azure Container Instances szolgáltatásban az újraindítási házirendek
+description: Ismerje meg, hogyan használható az Azure Container Instances szolgáltatásban futtatott feladatok befejezését, mint például a buildelési, tesztelési vagy kép renderelési feladatok végrehajtásához.
 services: container-instances
 author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 07/26/2018
 ms.author: marsma
-ms.openlocfilehash: 3bbe3e891423b6ad62a1d1093daef304206f3d76
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd411ff38411c71cce2a8a63cc453c34e665a385
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167129"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262735"
 ---
-# <a name="run-a-containerized-task-in-azure-container-instances"></a>Azure-tároló példányok indexelése feladat futtatása
+# <a name="run-containerized-tasks-with-restart-policies"></a>Tárolóalapú feladatok futtatása az újraindítási házirendek
 
-A könnyű és sebességét, a tárolókat az Azure-tároló példányok telepítése kényszerítő platformot kínál a végrehajtás alatt egyszer futó feladatokat, mint a build, a vizsgálati és a kép megjelenítési egy tároló-példányt.
+Az egyszerű és az Azure Container Instances a tárolók üzembe helyezésének sebességét meggyőző platformot kínál egyszeri futtatású feladatok, mint például a buildelési, tesztelési és képrenderelés végrehajtása a tárolópéldány.
 
-Konfigurálható újraindítási házirend megadhatja, hogy ha a folyamat befejeződését, a tárolók vannak-e állítva. Tároló példányok számlázása a második, mert meg van szó, csak a a számítási erőforrásokat, akkor használják, amikor a feladat végrehajtása a tárolóban fut-e.
+A konfigurálható újraindítási házirend megadhatja, hogy a tárolók le vannak állítva a folyamatok befejezését. Container instances szolgáltatás számlázása másodpercalapú, mert csak a használt, amíg a feladat végrehajtása a tároló fut-e számítási erőforrások díjkötelesek.
 
-A be ez a cikk használja az Azure parancssori felület. Rendelkeznie kell Azure CLI 2.0.21 verzió vagy újabb [helyileg telepített][azure-cli-install], vagy a CLI használata a [Azure Cloud rendszerhéj](../cloud-shell/overview.md).
+A példákban Ez a cikk a használati bemutatni az Azure CLI. Rendelkeznie kell Azure CLI 2.0.21-es vagy újabb [helyileg telepített][azure-cli-install], vagy a CLI használata a [Azure Cloud Shell](../cloud-shell/overview.md).
 
-## <a name="container-restart-policy"></a>Tároló újraindítási házirend
+## <a name="container-restart-policy"></a>Tároló újraindítási szabályzata
 
-Amikor Azure-tároló példányát létrehozni egy tárolót, megadhatja, három újraindítás házirend-beállítások egyikét.
+Egy tárolót az Azure Container Instances szolgáltatásban való létrehozásakor megadhat egy három újraindítási házirend-beállítások.
 
-| Indítsa újra a házirendet   | Leírás |
+| Újraindítási szabályzat   | Leírás |
 | ---------------- | :---------- |
-| `Always` | A tárolók a tárolócsoport mindig újraindul. Ez a **alapértelmezett** beállítást alkalmazza, nincs újraindítási házirend megadása a tároló létrehozásakor. |
-| `Never` | A tárolók a tárolócsoport soha nem újraindul. A tárolók legfeljebb egyszer futnak le. |
-| `OnFailure` | A tárolók a tároló csoport csak akkor, ha a tárolóban végrehajtása sikertelen (Ha a rendszer megszakítja, egy nem nulla kilépési kód) újraindul. A tárolók legalább egyszer futnak le. |
+| `Always` | A tárolócsoport tárolók mindig újra lesz indítva. Ez a **alapértelmezett** beállítást alkalmazza, amikor nincs újraindítási szabályzata van megadva a tároló létrehozásakor. |
+| `Never` | A tárolócsoport tárolók soha nem újra lesz indítva. A tárolók legfeljebb egyszer futtatni. |
+| `OnFailure` | A tárolócsoport tárolók újra lesz indítva, csak akkor, ha a tárolóban futtatott folyamat meghiúsul (amikor nullától eltérő kilépési kódot végződik). A tárolók legalább egyszer futnak le. |
 
-## <a name="specify-a-restart-policy"></a>Adja meg az újraindítási házirend
+## <a name="specify-a-restart-policy"></a>Adjon meg egy újraindítási szabályzata
 
-Hogyan határozza meg az újraindítási házirend attól függ, hogyan hoz létre a tároló példányok, például az Azure CLI Azure PowerShell-parancsmagjaival, vagy az Azure portálon. Az Azure parancssori felület, adja meg a `--restart-policy` paraméter hívásakor [az tároló létrehozása][az-container-create].
+Újraindítási házirend adhatja meg attól függ, hogyan hoz létre a container Instances szolgáltatásban, mint például az Azure CLI, Azure PowerShell-parancsmagok használatával vagy az Azure Portalon. Az Azure CLI-n, adja meg a `--restart-policy` paraméter hívja [az tároló létrehozása][az-container-create].
 
 ```azurecli-interactive
 az container create \
@@ -45,11 +45,11 @@ az container create \
     --restart-policy OnFailure
 ```
 
-## <a name="run-to-completion-example"></a>Futtassa a befejezési – példa
+## <a name="run-to-completion-example"></a>Futtatás befejezési példához
 
-A művelet az újraindítási házirend megtekintéséhez a tároló példány létrehozása a [microsoft/aci-wordcount] [ aci-wordcount-image] lemezképet, és adja meg a `OnFailure` indítsa újra a házirendet. Ez a példa tároló fut egy Python-parancsfájl kiszolgálószoftverek, alapértelmezés szerint Shakespeare tartozó szövegét [apró település](http://shakespeare.mit.edu/hamlet/full.html), a 10 leggyakoribb szavak írja az STDOUT és majd kilép.
+Az újraindítási házirend működés közben látni, hozzon létre egy tároló-példányát a [microsoft/aci-wordcount] [ aci-wordcount-image] rendszerképet, és adja meg a `OnFailure` újraindítási házirend. Ebben a példában a tárolóban fut egy Python-szkriptet, amely, alapértelmezés szerint elemzi a Shakespeare szövege [apró település](http://shakespeare.mit.edu/hamlet/full.html), a 10 leggyakoribb szavakat ír az STDOUT és majd kilép.
 
-A példa tároló futtassa a következő [az tároló létrehozása] [ az-container-create] parancs:
+A példa tároló futtassa az alábbi [az tároló létrehozása] [ az-container-create] parancsot:
 
 ```azurecli-interactive
 az container create \
@@ -59,7 +59,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure tároló példányok a tároló kezdődik, és azután leáll, amikor az alkalmazás (vagy parancsfájl, ebben az esetben) kilép. Ha Azure-tároló példányok leállítja egy tároló, amelynek újraindítás házirend `Never` vagy `OnFailure`, a tároló állapota **kilépett**. Egy tároló állapotát a ellenőrizheti a [az tároló megjelenítése] [ az-container-show] parancs:
+Az Azure Container Instances elindítja a tárolót, és azután leáll, amikor az alkalmazás (vagy szkript, ebben az esetben) kilép. Amikor az Azure Container Instances leáll egy tároló, amelynek újraindítás házirend `Never` vagy `OnFailure`, a tároló állapota **kilépett**. Ellenőrizheti a tárolót a a [az container show] [ az-container-show] parancsot:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state
@@ -71,7 +71,7 @@ Példa a kimenetre:
 "Terminated"
 ```
 
-Miután a példa tároló állapota: *kilépett*, láthatja a feladat kimenete a tároló naplók megtekintésével. Futtassa a [az tároló naplók] [ az-container-logs] megjelenítése a parancs kimenetének:
+Miután a példa tároló állapota: *kilépett*, láthatja a feladat kimenetét a tároló naplóinak megtekintésével. Futtassa a [az tárolónaplók] [ az-container-logs] paranccsal tekintheti meg a szkript kimenetének:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -92,21 +92,21 @@ Kimenet:
  ('HAMLET', 386)]
 ```
 
-Ez a példa bemutatja a STDOUT küldött a parancsfájl kimenete. A tárolóalapú feladatokat, azonban előfordulhat, hogy inkább írni a kimeneti állandó tároló a későbbi beolvasásához. Például, hogy egy [Azure fájlmegosztás](container-instances-mounting-azure-files-volume.md).
+Ez a példa bemutatja a kimenete a STDOUT küldött a parancsfájlt. A tárolóalapú feladatok, azonban előfordulhat, hogy inkább írni a kimeneti újabb lekérés-tároláshoz. Például, hogy egy [Azure-fájlmegosztás](container-instances-mounting-azure-files-volume.md).
 
-## <a name="configure-containers-at-runtime"></a>Futásidőben tárolók konfigurálása
+## <a name="configure-containers-at-runtime"></a>Tárolók konfigurálása a futási időben
 
-Amikor létrehoz egy tároló-példányt, beállíthatja a **környezeti változók**, illetve adjon meg egy egyéni **parancssori** a tároló indításakor végrehajtandó. Ezek a beállítások a kötegelt feladatok segítségével készítse elő a konfigurációs feladat minden egyes tárolóban.
+Amikor létrehoz egy tárolópéldányt, beállíthatja a **környezeti változók**, illetve adja meg az egyéni **parancssori** végrehajtani, amikor a tároló elindult. Ezek a beállítások a kötegelt feladatok használatával készítse elő az egyes tárolók feladatspecifikus konfigurációval.
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-Környezeti változók értékét a tárolóban, az alkalmazás vagy a tároló által futtatott parancsfájl dinamikus beállításainak megadásához. Ez hasonlít a `--env` parancssori argumentumának `docker run`.
+Környezeti változók értékét az alkalmazás vagy a tároló által futtatott parancsfájl dinamikus konfiguráció a tárolóban. Ez hasonlít a `--env` parancssori argumentumot `docker run`.
 
-A parancsfájl például tárolóban működése módosítható például a tároló példány létrehozásakor a következő környezeti változók megadásával:
+Például a parancsfájl a példa tárolóban működése módosítható a tárolópéldány létrehozásakor az alábbi környezeti változókat megadásával:
 
-*NumWords*: STDOUT küldött szót.
+*NumWords*: A STDOUT küldött szavak számát.
 
-*A MinLength*: ahhoz, hogy a megszámlálandó szót karakterek minimális száma. Minél nagyobb karakterkészletszámot figyelmen kívül hagyja a gyakori szavakat, például "a" és "a."
+*A MinLength*: word, a megszámlálandó karaktereinek minimális száma. Ha nagyobb figyelmen kívül hagyja a gyakori szavakat, például a "," és "a."
 
 ```azurecli-interactive
 az container create \
@@ -117,7 +117,7 @@ az container create \
     --environment-variables NumWords=5 MinLength=8
 ```
 
-Megadásával `NumWords=5` és `MinLength=8` a tároló környezeti változók, a tároló naplók megjelenjen-e eltérő kimenetet. A tároló állapota Amennyiben *kilépett* (használja `az container show` állapotának ellenőrzéséhez), az új kimeneti megjelenítéséhez naplók megjelenítése:
+Megadásával `NumWords=5` és `MinLength=8` a tároló naplóit a tároló környezeti változók esetében eltérő kimeneti kell megjelenítenie. Miután a tároló állapota *kilépett* (használata `az container show` ellenőrizheti annak állapotát), a naplók megtekintéséhez az új kimenet megjelenítéséhez:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer2
@@ -133,13 +133,13 @@ Kimenet:
  ('GUILDENSTERN', 54)]
 ```
 
-## <a name="command-line-override"></a>Parancssori felülbírálása
+## <a name="command-line-override"></a>Parancssor felülbírálása
 
-Adjon meg egy parancssort, amikor a parancssorból, a tároló lemezképpel bővíthetőség felülbírálására tároló példány létrehozása. Ez hasonlít a `--entrypoint` parancssori argumentumának `docker run`.
+Adja meg egy parancssort, amikor létrehoz egy tárolópéldányt, felülbírálhatja a tárolórendszerképbe beépített parancssori. Ez hasonlít a `--entrypoint` parancssori argumentumot `docker run`.
 
-Például rendelkezhet az a szöveg eltérő elemezheti például tároló *apró település* különböző parancssori megadásával. A Python-parancsfájl végrehajtása a tároló *wordcount.py*, fogad el argumentumként egy URL-címet, és feldolgozza a lap tartalma helyett az alapértelmezett.
+Például rendelkezhet a példa tárolót más, a szöveg elemzése *apró település* egy másik parancssori megadásával. A tároló által futtatott Python-szkript *wordcount.py*, argumentumként egy URL-cím fogadja és dolgozza fel a lapon alapértelmezett letöltője helyett.
 
-Ahhoz például, hogy határozza meg az első 3 öt levelek szavak *Romeo és Juliet*:
+Például határozza meg a 3 leggyakoribb öt levelek szavak *Romeo és Juliet*:
 
 ```azurecli-interactive
 az container create \
@@ -151,7 +151,7 @@ az container create \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
 ```
 
-Újra miután a tároló *kilépett*, jelenít meg a tároló naplók eredményének megtekintéséhez:
+Újra Ha a tároló *kilépett*, a kimenet megtekintéséhez a tároló naplóinak megjelenítése:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer3
@@ -167,7 +167,7 @@ Kimenet:
 
 ### <a name="persist-task-output"></a>A feladat kimenetének megőrzése
 
-Megtudhatja, hogyan megőrizni a kimenetét a tárolókban, hogy lefusson, lásd: [csatlakoztatása az Azure fájlmegosztások Azure tároló osztályt](container-instances-mounting-azure-files-volume.md).
+Hogyan kell a tárolókat, amelyek befejezését kimenetének megőrzése a részletekért lásd: [csatlakoztatása egy Azure-fájlmegosztás az Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/

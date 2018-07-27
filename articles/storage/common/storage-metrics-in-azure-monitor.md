@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: dd11dd9edd5a90f6f541b56263cea4c4c76225bd
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f67fdbde243a7087496a075581e3f1d0040ade58
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249138"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263606"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -340,7 +340,7 @@ Az Azure Storage a következő kapacitási mérőszámot az Azure monitorban biz
 | ------------------- | ----------------- |
 | UsedCapacity | A tárfiók által felhasznált tárterület mennyisége. Standard szintű tárfiókok esetén, az összeg, a blob, table, fájl és várólista által használt kapacitás. A premium storage-fiókok és a Blob storage-fiókok hogy megegyezik a BlobCapacity. <br/><br/> Egység: bájt <br/> Összesítés típusa: átlagos <br/> Érték példa: 1024 |
 
-### <a name="blob-storage"></a>Blobtároló
+### <a name="blob-storage"></a>Blob Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
@@ -380,12 +380,12 @@ Az Azure Storage a következő tranzakció-mérőszámot az Azure monitorban biz
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Alkalmazható dimenziók: ResponseType, GeoType, ApiName ([definíció](#metrics-dimensions))<br/> Érték példa: 1024 |
-| Belépő | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Alkalmazható dimenziók: GeoType, ApiName ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
-| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Alkalmazható dimenziók: GeoType, ApiName ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
-| SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Egység: ideje ezredmásodpercben <br/> Összesítés típusa: átlagos <br/> Alkalmazható dimenziók: GeoType, ApiName ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
-| SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Egység: ideje ezredmásodpercben <br/> Összesítés típusa: átlagos <br/> Alkalmazható dimenziók: GeoType, ApiName ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
-| Elérhetőség | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. Rendelkezésre állási a számlázható kérések teljes értékét és elosztjuk, többek között ezeket a kérelmeket, váratlan hibára, vonatkozó kérelmek száma alapján számítjuk. Minden nem várt hiba a társzolgáltatás vagy a megadott API-művelet romlik a rendelkezésre állás eredményez. <br/><br/> Egység: %-os <br/> Összesítés típusa: átlagos <br/> Alkalmazható dimenziók: GeoType, ApiName ([definíció](#metrics-dimensions)) <br/> Érték példa: 99,99 |
+| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Alkalmazható dimenziók: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték példa: 1024 |
+| Belépő | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
+| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
+| SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Egység: ideje ezredmásodpercben <br/> Összesítés típusa: átlagos <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
+| SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Egység: ideje ezredmásodpercben <br/> Összesítés típusa: átlagos <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
+| Rendelkezésre állás | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. Rendelkezésre állási a számlázható kérések teljes értékét és elosztjuk, többek között ezeket a kérelmeket, váratlan hibára, vonatkozó kérelmek száma alapján számítjuk. Minden nem várt hiba a társzolgáltatás vagy a megadott API-művelet romlik a rendelkezésre állás eredményez. <br/><br/> Egység: %-os <br/> Összesítés típusa: átlagos <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 99,99 |
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók
 
@@ -397,6 +397,7 @@ Az Azure Storage támogatja a következő dimenziókat a metrikák az Azure moni
 | ResponseType | Tranzakció válasz típusa. Az elérhető értékek a következők: <br/><br/> <li>ServerOtherError: Minden kiszolgálóoldali hiba kivéve leírt eszközök </li> <li> ServerBusyError: Hitelesített kéréshez, amely egy HTTP 503-as állapotkódot adott vissza. </li> <li> ServerTimeoutError: Időtúllépés hitelesített kéréshez, amely egy HTTP 500-as állapotkódot adott vissza. Az időtúllépés történt a kiszolgáló hibája miatt. </li> <li> AuthorizationError: Hitelesített kérelmeket, amelyek jogosulatlan hozzáférést vagy engedélyezési hiba miatt nem sikerült. </li> <li> NetworkError: Hitelesített kérelmeket, amelyek hálózati hibák miatt nem sikerült. Leggyakrabban akkor fordul elő egy ügyfél túl korán bezárása után a kapcsolat időkorlát lejárta előtt. </li> <li>    ClientThrottlingError: Ügyféloldali szabályozási hiba. </li> <li> ClientTimeoutError: Időtúllépés hitelesített kéréshez, amely egy HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időtúllépés vagy az egyes kérelmek időkorlátját, mint a társzolgáltatás által várt alacsonyabb értékre van állítva, egy várt időkorlátja. Ellenkező esetben azt az elvártnak megfelelően egy ServerTimeoutError. </li> <li> ClientOtherError: Összes ügyféloldali hiba kivételével az itt ismertetett azokat. </li> <li> Sikeres: Sikeres kérelem|
 | GeoType | A tranzakció elsődleges vagy másodlagos fürtből. Az elérhető értékek a következők: elsődleges és másodlagos. Érvényes írásvédett Georedundáns redundáns Storage(RA-GRS) másodlagos bérlőtől objektumok olvasásakor. |
 | ApiName | Művelet neve. Példa: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Az összes művelet nevekkel kapcsolatban lásd: [dokumentum](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
+| Hitelesítés | A tranzakciók használt hitelesítés típusa. Az elérhető értékek a következők: <br/> <li>AccountKey: A tranzakció hitelesítése a tárfiók kulcsára.</li> <li>SAS: A közös hozzáférésű jogosultságkódok használata a tranzakció van hitelesítve.</li> <li>OAuth: A tranzakció az OAuth hozzáférési tokenek hitelesítése.</li> <li>Névtelen: A tranzakció van a kért név nélkül. Ellenőrzési kérelem nem tartalmazza.</li> <li>AnonymousPreflight: A tranzakció ellenőrzési kérést.</li> |
 
 A metrikák támogató dimenziók esetében adja meg a megfelelő mérőszámok értékeit a dimenzió értéket kell. Például, ha megtekinti **tranzakciók** értéket a sikeres válaszok szűrése kell a **ResponseType** dimenzió **sikeres**. Vagy ha megtekinti **BlobCount** érték Blokkblob, meg kell szűrni a **BlobType** dimenzió **BlockBlob**.
 
@@ -404,7 +405,7 @@ A metrikák támogató dimenziók esetében adja meg a megfelelő mérőszámok 
 
 Az Azure Monitor felügyelt metrikákkal párhuzamos örökölt metrikák érhetők el. A támogatási azonos tárolja, amíg Azure Storage-be a szolgáltatást a régi metrikák is.
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 **Azure Storage támogatja a mérőszámok a Managed Disks vagy nem felügyelt lemezek?**
 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: diberry
-ms.openlocfilehash: ace4aa48d3bfce5f88bce8947ab568f0990d67fa
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b0b5852a223a77e33a288bb8061c1ce374018ec1
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226611"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282279"
 ---
 # <a name="entities-in-luis"></a>A LUIS entitások
 
@@ -70,7 +70,7 @@ A LUIS kínál számos különböző típusú entitások; előre összeállítot
 | **Egyszerű** <br/>[Gép megtanult](#machine-learned) | ✔ | **Definíció**<br>Egy egyszerű entitás egy általános entitás, amely egy egyetlen fogalom ismerteti, és van megtanult a gép megtanult környezetből. Környezet például a word választott, a word elhelyezési és az utterance (kifejezés) hossza.<br/><br/>Ez az a jó entitás szavakat vagy kifejezéseket, következetesen formátuma nem, de ugyanazt jelenti. <br/><br/>[Gyors útmutató](luis-quickstart-primary-and-secondary-data.md)<br/>[Entitás példaválasz](luis-concept-data-extraction.md#simple-entity-data)|  
 | **List** <br/>[Pontos egyezés](#exact-match)|| **Definíció**<br>Entitások listája és azok synoymns kapcsolódó szavakat rögzített, lezárt csoportját képviselik, a rendszer. <br><br>Előfordulhat, hogy minden lista entitás egy vagy több űrlap. Legjobban használható módszereket, amelyek ugyanazt a fogalmat változata egy ismert gyűjteményével.<br/><br/>A LUIS nem deríti fel a további értékek a lista entitásokat. Használja a **javasoljuk** funkció, amellyel új szavak javaslatokat tekintse meg az aktuális lista alapján.<br/><br>Ha egynél több lista entitás ugyanazzal az értékkel, a végpont lekérdezés minden entitás adja vissza. <br/><br/>[Gyors útmutató](luis-quickstart-intent-and-list-entity.md)<br>[Entitás példaválasz](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[Vegyes](#mixed) | ✔|**Definíció**<br>Patterns.any pedig változó hosszúságú való megjelöléséhez, ahol az entitás kezdődik és végződik csak egy minta sablon utterance (kifejezés) használja.  <br><br>**Példa**<br>Adja meg az utterance (kifejezés) keresése könyvek cím alapján, a pattern.any kibontja a teljes cím. Egy sablon utterance (kifejezés) pattern.any használatával van `Who wrote {BookTitle}[?]`.<br/><br/>[Oktatóanyag](luis-tutorial-pattern.md)<br>[Entitás példaválasz](luis-concept-data-extraction.md#composite-entity-data)|  
-| **Összetett** <br/>[Gép megtanult](#machine-learned) | ✔|**Definíció**<br>Egy összetett entitást más entitásokkal, például az előre összeállított entitások, egyszerű, a regex, a hierarchikus listájában épül fel. A különálló entitások teljes entitás űrlap. Lista entitások összetett entitások nem engedélyezettek. <br><br>**Példa**<br>Egy összetett entitást PlaneTicketOrder nevű lehet előre összeállított gyermekentitások `number` és `ToLocation`. <br/><br/>[Oktatóanyag](luis-tutorial-composite-entity.md)<br>[Entitás példaválasz](luis-concept-data-extraction.md#composite-entity-data)|  
+| **Összetett** <br/>[Gép megtanult](#machine-learned) | ✔|**Definíció**<br>Egy összetett entitást más entitásokkal, például az előre összeállított entitások, egyszerű, a regex, a hierarchikus listájában épül fel. A különálló entitások teljes entitás űrlap. <br><br>**Példa**<br>Egy összetett entitást PlaneTicketOrder nevű lehet előre összeállított gyermekentitások `number` és `ToLocation`. <br/><br/>[Oktatóanyag](luis-tutorial-composite-entity.md)<br>[Entitás példaválasz](luis-concept-data-extraction.md#composite-entity-data)|  
 | **Hierarchikus** <br/>[Gép megtanult](#machine-learned) |✔ | **Definíció**<br>Egy hierarchikus entitás egy egyszerű de megismert entitások kategóriáját.<br><br>**Példa**<br>Egy hierarchikus entitása megadott `Location` gyermekkel rendelkező kifejezések `ToLocation` és `FromLocation`, minden gyermek alapján lehet meghatározni a **környezet** az utterance (kifejezés) belül. Az utterance (kifejezés) a `Book 2 tickets from Seattle to New York`, a `ToLocation` és `FromLocation` kontextusban különböző alapú őket a szavakat. <br/><br/>**Ne használjon, ha**<br>Ha egy entitás, amely rendelkezik a pontos szöveg egyezések függetlenül környezet gyermekek számára, egy lista entitást kell használnia. Ha a szülő-gyermek kapcsolatot keres a többi entitás esetében, az összetett entitást kell használnia.<br/><br/>[Gyors útmutató](luis-quickstart-intent-and-hier-entity.md)<br>[Entitás példaválasz](luis-concept-data-extraction.md#hierarchical-entity-data)|
 
 <a name="prebuilt"></a>

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1cc58832d5f863f5bbfa6fc20d38b4be81ddad8f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cfb09718c545d55b31250070fed0c8adff9d3fed
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089961"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263946"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
 Ez a funkció jelent meg a build [(kiadás dátuma: 2016. február) 1.1.105.0](active-directory-aadconnect-version-history.md#111050).  Ez a szolgáltatás frissítve lett a [1.1.561 összeállítása](active-directory-aadconnect-version-history.md#115610) és mostantól támogatja a további forgatókönyvek, amelyek korábban nem támogatottak.
@@ -95,8 +95,8 @@ Ez egy lista a leggyakrabban használt üzenetek találja. Nem tartalmazza az ö
 | UpgradeNotSupportedInvalidPersistedState |A telepítés még nem egy gyorsbeállításokat vagy a DirSync frissítése. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Több mint 100 000 objektummal rendelkezik a metaverzumban. |
 | UpgradeNotSupportedMultiForestSetup |Egynél több erdő csatlakozik. Expressz telepítés csak egy erdőben csatlakozik. |
-| UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB adatbázis nem használ. |
-| UpgradeNotSupportedNonMsolAccount |A [AD-összekötő fiók](active-directory-aadconnect-accounts-permissions.md#active-directory-account) már nem az alapértelmezett MSOL_ fiókot. |
+| UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB adatbázis nem használ. |n
+| UpgradeNotSupportedNonMsolAccount |A [AD DS-összekötő fiók](active-directory-aadconnect-accounts-permissions.md#ad-ds-connector-account) már nem az alapértelmezett MSOL_ fiókot. |
 | UpgradeNotSupportedNotConfiguredSignInMethod | Állítson be az AAD Connect, választott *ne konfiguráljon* a bejelentkezési módszer kiválasztásakor. | 
 | UpgradeNotSupportedPtaSignInMethod | Az átmenő hitelesítés kijelölt bejelentkezési módszert. |
 | UpgradeNotSupportedStagingModeEnabled |A kiszolgáló beállítása legyen [átmeneti módban](active-directory-aadconnectsync-operations.md#staging-mode). |

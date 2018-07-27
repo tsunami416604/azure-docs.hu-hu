@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: efc62243370ff2cc5214a4ae235139bdb5965486
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: de8957864502b8c3ec6d9a43a8134fdb8dac6069
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248219"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283520"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Hogyan működik: az Azure AD önkiszolgáló jelszó-visszaállítás
 
@@ -55,13 +55,13 @@ Olvassa el az alábbi lépések segítségével megismerheti a jelszó mögötti
      * Ha a jelszóvisszaíró nincs telepítve, és a felhasználó jelszava a helyszínen kezel, akkor a felhasználónak meg kell adnia a rendszergazdától új jelszót kérnek.
 4. Ha megállapította, hogy a felhasználó nem tudja sikeresen visszaállítva jelszavukat, majd a felhasználó rendszer végigvezeti a visszaállítás folyamatához.
 
-## <a name="authentication-methods"></a>Hitelesítési módok
+## <a name="authentication-methods"></a>Hitelesítési módszerek
 
 Ha az SSPR engedélyezve van, választania kell a hitelesítési módszerek az alábbiak közül legalább egyet. Néha hallgassa meg ezek a beállítások "kapuk." néven Kifejezetten ajánljuk, hogy Ön **két vagy több hitelesítési módszer kiválasztása** , hogy a felhasználók rendelkeznek a nagyobb rugalmasságot, arra az esetre, szükség esetén az egyik hozzáférés nem tudnak.
 
-* Mobilalkalmazásbeli értesítés (előzetes verzió)
+* Mobilalkalmazás-értesítés (előzetes verzió)
 * Mobilalkalmazás-kód (előzetes verzió)
-* E-mail cím
+* E-mail
 * Mobiltelefon
 * Irodai telefon
 * Biztonsági kérdések
@@ -80,13 +80,16 @@ Ha egy felhasználó nincs regisztrálva a minimálisan szükséges módszerek, 
 
 #### <a name="mobile-app-and-sspr-preview"></a>Mobilalkalmazás és az SSPR (előzetes verzió)
 
-A Microsoft Authenticator alkalmazás, például egy mobilalkalmazás használata esetén a jelszó-visszaállításhoz módszerként felhasználók vegye figyelembe a következő. Az önkiszolgáló jelszó-visszaállítás, ha csak egyetlen módszer a visszaállításhoz szükséges ellenőrző kódot a lehetőség csak a felhasználók számára elérhető. Ha két módszer szükség felhasználók tudják alaphelyzetbe **vagy** értesítési **vagy** ellenőrzőkódot kívül bármely más módszerek engedélyezve van.
+Jelszó-visszaállítás módszerként mobilalkalmazás, például a Microsoft Authenticator alkalmazás használatakor vegye figyelembe a következőket:
 
-| Az új jelszó kéréséhez szükséges módszerek száma | az egyik | Két |
+* Ha a rendszergazdák egy módszert igényel használt jelszó alaphelyzetbe állítása, ellenőrző kódot csak a lehetőség érhető el.
+* Ha a rendszergazdáknak a két módszer van szükségük lehet használt jelszó alaphelyzetbe állítása, felhasználók is használhatják **vagy** értesítési **vagy** ellenőrzőkódot kívül bármely más módszerek engedélyezve van.
+
+| Új jelszó kéréséhez szükséges módszerek száma | az egyik | Két |
 | :---: | :---: | :---: |
 | Elérhető Mobile Apps funkciói | Kód | Kód vagy az értesítés |
 
-Felhasználó nem fog regisztrálni az mobilalkalmazás regisztráció önkiszolgáló jelszó-visszaállítás során. Ehelyett a felhasználók regisztrálhatják saját mobilalkalmazás aka.ms/mfasetup vagy a biztonsági adatok regisztrálása előzetes aka.ms/setupsecurityinfo. 
+Felhasználóknak nem kell regisztrálni a mobilalkalmazásukkal a önkiszolgáló jelszó-átállítási való regisztrálásakor [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup). A mobilalkalmazás, a felhasználók regisztrálhatják [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup), vagy az új biztonsági adatok regisztrációs verzió díjának [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
 
 ### <a name="change-authentication-methods"></a>Módosítsa a hitelesítési módszerek
 

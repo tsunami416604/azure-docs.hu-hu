@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 18b34af8dc383cfa86017162ec48782f156156bc
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: efd1c1eafbff8bf56b16131e44cff6b03ce7338a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093107"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264810"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Az Azure Stack bérlő regisztrációs kezelése
 
@@ -35,6 +35,13 @@ Használhatja ezt a műveletet is, ha meg szeretné változtatni az előfizetés
 
 Vegye figyelembe, hogy csak egy Azure-előfizetéssel is társítható egy bérlőt. Ha előfizetést szeretne hozzáadni egy második meglévő bérlő, az első előfizetés túlterhelt írásos. 
 
+### <a name="use-api-profiles"></a>API-profilok használatához
+
+A parancsmagok, ez a cikk a szükséges, hogy egy API-profilt, adja meg, amikor futtatja a Powershellt. API-profilok az Azure erőforrás-szolgáltatók és az API-verziók csoportját képviselik. Ezek segítenek az API-t a megfelelő verzióját használja, ha használata több Azure-felhők, például az Azure és az Azure Stack globális használatakor. Profilok olyan nevet, amely megfelel a kiadási dátum szerint vannak megadva. Az ebben a cikkben azt kell használnia a **2017-09-03** profilt.
+
+Az Azure Stacket és API-profilokkal kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](user/azure-stack-version-profiles.md). És a PowerShell API-profillal kapcsolatos utasításokért lásd: [használata API-verzióprofilok az Azure Stack PowerShell](user/azure-stack-version-profiles-powershell.md).
+
+### <a name="parameters"></a>Paraméterek
 
 | Paraméter                  | Leírás |
 |---                         | --- |

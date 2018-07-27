@@ -1,21 +1,20 @@
 ---
-title: Hogyan rögzítése a voice-minták létrehozásához egy egyéni beszédfelismerési |} A Microsoft Docs
+title: Hogyan rögzítése a voice-minták az egyéni beszédfelismerési létrehozása
 titleSuffix: Microsoft Cognitive Services
 description: Győződjön meg arról, a gyártási minőségű rendelésre hang robusztus parancsfájl előkészítése, mindegyik hangalapú jó szakembereket és professzionális rögzítése.
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 1afab3b7c128abdf97c3a16fc493935bab5cfd4c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 80b65b8bc2e2947575004269f45922e2306dd32e
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072265"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284166"
 ---
 # <a name="how-to-record-voice-samples-for-a-custom-voice"></a>Hogyan lehet egyéni beszédfelismerési rögzítése a voice-minták
 

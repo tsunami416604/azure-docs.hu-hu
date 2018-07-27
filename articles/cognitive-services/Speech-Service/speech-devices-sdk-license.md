@@ -1,96 +1,95 @@
 ---
-title: Beszéd eszközök SDK licencszerződés |} Microsoft Docs
-description: Beszéd eszközök SDK licencszerződés.
+title: Beszéd Devices SDK-val a licencszerződést.
+description: Beszéd Devices SDK-val licencszerződést.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a601c0307045ef3db8666c705e5b24fb365f532d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5d9fd0669302dbfbd4f1c3082643d6c03abc7019
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348714"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281963"
 ---
-# <a name="speech-devices-sdk-license-agreement"></a>Beszéd eszközök SDK licencszerződést.
+# <a name="speech-devices-sdk-license-agreement"></a>Beszéd Devices SDK-val a licencszerződést.
 
 ## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>MICROSOFT SZOFTVERLICENC-SZERZŐDÉS<br>BESZÉD ESZKÖZÖK SZOFTVERFEJLESZTŐI KÉSZLET (SDK) 
 
-> HA ÉLŐ (VAGY A FŐ ÜZLETI HELYÉT EGY ÜZLETI) AZ EGYESÜLT ÁLLAMOKBAN, OLVASSA EL AZ ALÁBBI "KÖTÉS EGYEZTETÉSI ÉS OSZTÁLY MŰVELET LEMONDÁS" SZAKASZT. ÁLTALA ÉRINTETT VITÁK FELOLDÁSA.
+> HA ÉL (VAGY A FŐ ÜZLETI HELYÉT EGY ÜZLETI) AZ EGYESÜLT ÁLLAMOKBAN, KÉRJÜK, OLVASSA EL AZ ALÁBBI "KÖTÉS VÁLASZTOTTBÍRÓSÁGI ELJÁRÁS ZÁRADÉKA ÉS PERINDÍTÁSRÓL LEMONDÁS" SZAKASZT. BEFOLYÁSOLJA A VITÁS ÜGYEK MEGOLDÁSÁRÓL.
 
-Jelen dokumentumban foglalt licencfeltételek szerződést között, és a Microsoft Corporation (vagy annak valamelyik leányvállalatával kötött). A fent megnevezett szoftverre szoftver- és bármely Microsoft-szolgáltatások vagy a szoftver frissítések vonatkoznak (kivéve mértékben ilyen szolgáltatások vagy a frissítések mellett az új vagy további feltételeket, ebben az esetben a különböző feltételek jövőre alkalmazása és nem módosítja a a vagy A Microsoft rights vonatkozó előre frissített szoftverek és szolgáltatások). **HA EZEKET A LICENCFELTÉTELEKET AHHOZ, AZOK AZ ALÁBBIAKBAN JOGOKAT.**
+Ezeket a licencfeltételeket, és a Microsoft Corporation között (vagy annak egyik társvállalata). A fent megnevezett szoftverre, és bármely Microsoft szoftverfrissítésre vonatkoznak (kivéve a mértékben ezen szolgáltatások vagy frissítések egészül ki új vagy további feltételekkel, ebben az esetben új jövőre a alkalmazni használati feltételek nem módosítja a a vagy A Microsoft jogait az előre frissített szoftverekkel vagy). **HA EZEKET A LICENCFELTÉTELEKET AHHOZ, HOGY AZ ALÁBBIAKBAN ISMERTETETT JOGOKAT.**
 
 **1\. TELEPÍTÉSI ÉS HASZNÁLATI JOGOK.**
 
-a) általános. Ön telepítheti és segítségével tetszőleges számú példányát a szoftver az eszközök kizárólag értékelje ki és tesztelje a belső üzleti célokra. Nem használhatja a szoftver élő üzemi környezetben kivéve, ha a Microsoft egyéb megállapodások teszi.
+a) általános. Előfordulhat, hogy telepítse, és segítségével tetszőleges számú példányt a szoftver az eszközök kizárólag értékeléséhez és teszteléséhez, a belső üzleti célokra. Éles működési környezetben nem, előfordulhat, hogy használja a szoftvert, kivéve, ha a Microsoft lehetővé teszi, hogy egy másik szerződés keretében.
 
-b) a Microsoft-alkalmazások tartalmazza. A szoftver tartalmazhat olyan más Microsoft-alkalmazások. Ezeket a licencfeltételeket alkalmazása tartalmazza ezeket az alkalmazásokat, ha van ilyen, kivéve, ha a többi Microsoft-alkalmazások más licencfeltételek kapnak.
+(b) a Microsoft-alkalmazások tartalmazzák. A szoftver tartalmazhat más Microsoft-alkalmazások. Ezeket a licencfeltételeket alkalmazni tartalmazza ezeket az alkalmazásokat, ha van ilyen, kivéve, ha a többi Microsoft-alkalmazásokat egyéb licencfeltételek által biztosított.
 
-c) harmadik féltől származó összetevőket. A szoftver tartalmazhatják harmadik féltől származó-összetevők külön jogi megjegyzések vagy egyéb szerződések szabályozza, a harmadik felekre vonatkozó megjegyzések (oka) t a szoftver kísérő a leírtak.
+c) harmadik féltől származó összetevőket. A szoftver tartalmazhat harmadik féltől származó összetevőket külön jogi tudnivalók- vagy egyéb szerződések szabályozzák, előfordulhat, hogy a szoftver kísérő harmadik felekkel kapcsolatos közlemények fájl(ok) kell leírtak szerint.
 
-d) csomag kezelők. A szoftver tartalmazhat olyan csomag kezelők NuGet, például, amely felkínálja a lehetőséget, más Microsoft és harmadik féltől származó szoftverek csomagok használata az alkalmazás letöltéséhez. Azokat a csomagokat a saját licencek, és nem a jelen szerződés alatt állnak. A Microsoft nem terjesztése, a licenc, vagy adja meg semmiféle bármely külső csomagok.
+d) Csomagkezelők. A szoftver tartalmazhat csomagkezelők, például a NuGet, amely lehetővé teszi az egyéb Microsoft- és külső csomagok használata az alkalmazás letöltéséhez. Azokat a csomagokat a saját licenccel, és nem a jelen szerződés alatt találhatók. A Microsoft nem terjesztése, a licenc, és adja meg a külső csomagok garanciát.
 
-e) Ha egy közvetlen versenytársnak, és eléréséhez, vagy a szoftver versenyképes teljesítménymérésre, elemzés, vagy adatgyűjtés eszközintelligencia célokra használni, szemben a Microsoft, leányvállalatai és a kapcsolt vállalatok (beleértve a jövőre) elengedni bármely versenyképes használatát, a hozzáférés és a vizsgálati korlátozások teljesítménymérésre mértékben a használati feltételeket, a szoftverek vonatkozó feltételekkel vagy szabálygyűjtemény, mint a Microsoft feltételek irányul. Ilyen feltételezett korlátozásokat a feltételeit a szoftver nem Ön lemond, ha nem engedélyezett, eléréséhez, vagy használhatja a szoftvert, és ehhez lesz.
+e) Ha Ön egy közvetlen versenytárs, és eléréséhez, vagy használja a szoftvert versenyképes teljesítménytesztek, elemzés, vagy információszerzés célokra, Ön a Microsoft, leányvállalatai és annak vállalatait (beleértve a jövőre) szemben lemond bármely versenyképes használja, a hozzáférés és a teszt korlátozások teljesítménytesztek a mértékben a használati feltételeket, a szoftverek vonatkozó használati feltételeiben szereplő, vagy lehet, a Microsoft használati határértéknél erősebb korlátozást jelentő irányul. Ha Ön nem lemond feltételezett korlátozásra a szabályozása a szoftverek használati feltételeiben szereplő, eléréséhez, vagy használhatja a szoftvert nem engedélyezett, és ehhez lesz.
 
-**2\. HATÓKÖR LICENC. Ezt a szoftvert licenceljük, és nem értékesítjük. A Microsoft minden egyéb jogot fenntart. Kivéve, ha az alkalmazandó jogszabályok biztosítanak Önnek több jogot, annak ellenére, hogy ez a korlátozás, akkor nem lesz (és nincs joga):**
+**2\. HATÓKÖR LICENC. Ezt a szoftvert licenceljük, és nem értékesítjük. A Microsoft minden egyéb jogot fenntart. Kivéve, ha az alkalmazandó jogszabályok e korlátozások több jogot biztosít, akkor nem fog (és nincs):**
 
-a) a szoftverfrissítési minden olyan technikai korlátozását, amelyekben csak meghatározott módokon; használandó megoldása
+a) a szoftver minden olyan technikai korlátozását, amelyek csak meghatározott módokon; használandó megkerüléséhez
 
-b), nem fordíthatja vissza és nem fejtheti vissza a szoftver;
+(b) visszafejtése, visszafordítása vagy a szoftvert;
 
-c) távolítsa el, minimalizálása érdekében, letiltása, vagy módosítsa az értesítések a Microsoft vagy beszállítói a szoftver;
+c) távolítsa el, kis méretű, letiltása vagy módosítása a Microsoft, illetve a szoftver; foglalt értesítések
 
-d) a szoftver módon használni, amellyel szemben a törvény vagy hozzon létre vagy propagálása malware; vagy
+d) a szoftver használatára semmilyen módon, amely törvényellenes vagy a hoz létre vagy terjeszt malware; vagy
 
-e) megosztani, közzététele, vagy a szoftver (kivéve bármely terjeszthető kódot, majd a fenti megfelelő feltételei) kikényszerítése, adja meg a szoftver mások számára is önálló üzemeltetett megoldás vagy át a szoftver vagy jelen szerződés átadása harmadik félnek.
+e) megosztani, tesz közzé, vagy tartós bérletbe a szoftvert (kivéve a terjeszthető kód, majd a fenti vonatkozó feltételek vonatkoznak), adja meg a szoftver egy önálló üzemeltetett megoldás, mások számára is, vagy át a szoftver vagy a jelen szerződés bármely harmadik féltől származó.
 
-f) szoftvert kell használnia a csak a Microsoft Azure kognitív szolgáltatások beszéd szolgáltatás együtt
+f) szoftvert kell használnia a Microsoft Azure Cognitive Services beszédszolgáltatás kombináltan
 
-**3\. ADATGYŰJTÉS.** Ez a szoftver úgy működhet együtt a továbbított adatokat gyűjthet a Microsoft más Microsoft-termékeket. Ha többet szeretne megtudni hogyan Microsoft folyamatok személyes adatokat gyűjtünk, lásd: a Microsoft adatvédelmi nyilatkozatát a http://go.microsoft.com/fwlink/?LinkId=248681.
+**3\. AZ ADATGYŰJTÉST.** Ez a szoftver más Microsoft-terméket, amely a Microsoftnak továbbított adatok gyűjtése is dolgozhat. Tudjon meg többet a hogyan Microsoft folyamatok személyes adatokat gyűjtünk, lásd a Microsoft adatvédelmi nyilatkozatát http://go.microsoft.com/fwlink/?LinkId=248681.
 
-**4\. ELŐZETES VERZIÓT.** A szoftverek előzetes verziója. Nem működhet megfelelően. Eltérhet a kereskedelmi verzióra.
+**4\. SZOFTVER MEGJELENÉS ELŐTTI.** A szoftver megjelenés előtti verziója is. Nem működhet megfelelően. Elképzelhető, hogy a kereskedelmi forgalomba verziója eltérő.
 
-**5\. VISSZAJELZÉST.** Ha a szoftver visszajelzést adhat a Microsoftnak, adhat a Microsoftnak, díjmentesen használja, megossza vagy kereskedelmileg hasznosítsa az Ön visszajelzését az bármely módon és bármely célból jobb. Ön nem küld arról, hogy csak a Microsoft licenceket a szoftver vagy dokumentáció, harmadik felekhez, mert a Microsoft tartalmazza a visszajelzést a bennük foglalt licencfeltételek hatálya alá tartozik. Ezek a rendelkezések a jelen szerződés.
+**5\. VISSZAJELZÉS.** A szoftver visszajelzést adhat a Microsoftnak, ha engedélyezi a Microsoftnak, nélkül, ingyenesen a jogot arra használja, megossza vagy kereskedelmileg hasznosítsa a visszajelzés bármilyen módon és bármilyen célra. Ön nem biztosít arról, hogy a Microsoft a a szoftver vagy dokumentáció külső felek számára a Microsoft a visszajelzés tartalmazza azokat a licencfeltételek hatálya alá tartozik. Ezek a rendelkezések a jelen szerződés.
 
-**6\. IDŐSZAK.** Ez a szerződés ekkortól lép érvénybe, hogy elfogadja a, és Ön vagy a Microsoft bármikor előfordulhat, hogy leállt. 
+**6\. IDŐSZAK.** A jelen szerződés lép érvénybe a az elfogadást, és bármikor megszüntethető, vagy a Microsoft által. 
 
-**7\. MEGSZÜNTETÉSE.** Minden egyéb jogot érinti Microsoft előfordulhat, hogy leáll a jelen szerződés, ha bármely feltételeket vagy feltételeket ahhoz, hogy nem sikerül. Ilyen esetben meg kell semmisítse meg a szoftver összes másolatát és az összes összetevő részeit.
+**7\. MEGSZÜNTETÉSE.** Minden egyéb jogot érinti a Microsoft felmondhatja a szerződést, ha bármely használati vagy feltételeket ahhoz, hogy a feladatokat. Ebben az esetben Ön pedig köteles megsemmisíteni a szoftver összes másolatát és az összes annak összetevőit.
 
-**8\.EXPORTKORLÁTOZÁSOK.** Be kell tartania minden hazai és nemzetközi exportjogszabályt és ‑előírást a szoftvert, többek között a célok, a végfelhasználók és a végfelhasználás korlátozások. EXPORTKORLÁTOZÁSOK további információkért látogasson el (aka.ms/exporting).
+**8\.EXPORTKORLÁTOZÁSOK.** Meg kell felelniük minden hazai és nemzetközi exportjogszabályt és ‑előírást az szoftvert, és a célhelyek, a végfelhasználók és a végfelhasználás korlátozásait. További információ az exportkorlátozásokról látogasson el (aka.ms/exporting).
 
-**9\. TÁMOGATÁSI SZOLGÁLATHOZ.** A Microsoft nem köteles jelen szerződés értelmében a szoftver támogatási szolgáltatások biztosításához. A megadott támogatás az "adott állapotban", "minden hibájával együtt", és bármiféle garancia nélkül.
+**9\. TÁMOGATÁSI SZOLGÁLATHOZ.** A Microsoft nem köteles jelen szerződés a szoftver minden olyan támogatási szolgáltatások keretében. Minden nyújtott támogatás a "adott állapotában", "minden hibájával együtt" és bármiféle garancia nélkül.
 
-**10\. FRISSÍTÉSEK.** A szoftver rendszeres időközönként keressen frissítéseket, és töltse le és telepíti azokat. Frissítések csak a Microsofttól vagy hivatalos források kaphat. A Microsoft biztosítja, hogy a frissítések a rendszer frissítésére lehet szükség. Vállalja, hogy minden további minden külön értesítés nélkül automatikus frissítések fogadásához. Frissítések nem tartalmaz és nem támogatja az összes meglévő szoftveres funkcióit, a szolgáltatások és a perifériák.
+**10\. FRISSÍTÉSEKET.** A szoftver rendszeres időközönként keressen frissítéseket, és töltse le és telepíti azokat. Frissítések csak a Microsofttól vagy az engedélyezett forrásoktól szerezheti be. A Microsoft szükség lehet Ön rendszerét a szoftverfrissítések előtt. Ön beleegyezik ezeket az automatikus frissítéseket további értesítés nélkül. Frissítések nem tartalmaznak és támogatja az összes meglévő szoftverfunkciót, szolgáltatások vagy külső eszközökhöz.
 
-**11\. KÖTÉS EGYEZTETÉSI ÉS OSZTÁLY MŰVELET LEMONDÁS.** Ez a szakasz alkalmazza, ha él, (vagy, ha a vállalat a fő üzleti tevékenysége a) az Amerikai Egyesült Államokban.  Ha Ön és a Microsoft viták, és a Microsoft vállalja, hogy próbálja meg 60 napig nem hivatalosan oldható meg. Ha nem Ön és a Microsoft, és a Microsoft vállalja, hogy egyes egyeztetési kötés a Szövetségi egyeztetési járnak ("FAA"), nem pedig a elé egy bíró vagy bírálóbizottság bírósági ági American egyeztetési társítás előtt. Ehelyett egy semleges értelmező határoz meg. Osztály művelet peres eljárásokra, osztály kiterjedő erről, személyes ügyvéddel általános műveletek és bármely más, ha valaki látja el egy reprezentatív kapacitás eljárás nem engedélyezett. sem egyesítő egyedi eljárás az összes fél hozzájárulása nélkül. A teljes egyeztetési megállapodás további feltételeket tartalmaz, és jelenleg aka.ms/arb-megállapodás-1. Ön és a Microsoft elfogadja ezeket a feltételeket.
+**11\. KÖTÉS VÁLASZTOTTBÍRÓSÁGI ELJÁRÁS ZÁRADÉKA ÉS PERINDÍTÁSRÓL ÉL.** Ez a szakasz vonatkozik, ha él (vagy ha a fő üzleti tevékenysége a) az Egyesült Államokban.  Ha Ön és a Microsoft fióktulajdonosát tekintjük, Ön és a Microsoft vállalja, hogy próbálja ki 60 napig belüli informális megoldására feloldásához. Ha Ön és a Microsoft nem tudja, Ön és a Microsoft vállalja, hogy egyéni választottbírósági előtt a Federal Arbitration Act ("FAA") alapján, és nem tudja bírósági peres eljárást bíró vagy esküdtszék előtt amerikai választottbírósági társítást. Ehelyett egy semleges választottbíró dönt. Perindításról szemben, osztály főügyészi, privát ügyészségekre – általános műveletek és bármely más eljárást, ha valaki látja el egy reprezentatív kapacitás nem engedélyezett. sem a csoportba foglalása egyéni eljárás az összes érintett fél beleegyezése nélkül. A teljes választottbírósági szerződés további feltételeket tartalmaz, és jelenleg aka.ms/arb-szerződés – 1. Ön és a Microsoft elfogadja ezeket a feltételeket.
 
-**12\. A SZERZŐDÉS TELJESSÉGE.** Ez a szerződés és bármely egyéb feltételeket, a Microsoft által biztosított a kiegészítések, a frissítések vagy a külső alkalmazások, a szoftver a szerződés teljessége.
+**12\. A SZERZŐDÉS TELJESSÉGE.** A jelen szerződés és bármely más feltételek a Microsoft nyújthat a kiegészítések, frissítésekre vagy harmadik féltől származó alkalmazások, a teljes megállapodást a szoftvert.
 
-**13\. JOGVITÁK MEGOLDÁSA ALKALMAZANDÓ JOGSZABÁLYOK ÉS HELYEN.** Ha beszerezte a szoftver az Egyesült Államok és Kanada, annak az államnak vagy megyének a törvényi él, ahol (vagy ha egy üzleti, ahol a fő üzleti tevékenysége található) szabályozására, a a szerződés értelmezését illetően, annak megsértésével kapcsolatos igények, és bármely más jogcímeket) beleértve fogyasztóvédelmi, tisztességtelen piaci versenyre vonatkozó, és a vétségeket jogcímek) függetlenül szabályaira, azzal a különbséggel, hogy a FAA irányadók minden kapcsolódó egyeztetési. A szoftver bármely más országban szerezte be, ha a törvényi alkalmazni, kivéve a FAA irányadók a egyeztetési kapcsolatos információk. Ha az USA szövetségi joghatóság létezik, és a Microsoft hozzájárul kizárólagos joghatóság és az összes viták hallgassa meg a (kivéve az egyeztetési) bírósági érvényesíthet a szövetségi bírósági a helyszínére. Ha nem, akkor Ön és a Microsoft kizárólagos joghatóság és a fölérendelt bírósági a érvényesíthet az összes viták hallgassa meg a bírósági (kivéve az egyeztetési) a helyszínére hozzájárul.
+**13\. JOGVITÁK MEGOLDÁSA JOGSZABÁLYOK ÉS HELYEN.** Ha a szoftvert az Amerikai Egyesült Államokban vagy Kanadában, az állam/megye jogszabályai szerezte be, ha él (vagy ha egy üzleti, ahol a székhelye megtalálható) szabályozzák a jelen szerződés értelmében a szerződésszegéssel, értelmezését és bármely más jogcímeket) például fogyasztóvédelmi, tisztességtelen piaci versenyre és jogellenes jogcímek) függetlenül szabályaira, azzal a különbséggel, hogy az FAA az irányadó minden kapcsolódó választottbírósági. Ha a szoftvert bármely más országban szerezte be, törvényei érvényesek, azzal a különbséggel, hogy az FAA az irányadó választottbírósági kapcsolódó összes elemet. Egyesült Államok Szövetségi joghatósága létezésének, és a Microsoft beleegyeznek kizárólagos hatáskörének és illetékességének a szövetségi bíróság, a Washington állambeli King County megye legfelsőbb bíróságához tartozzon (kivéve a választottbírósági eljárásokat) összes vita. Ha nem, akkor Ön és a Microsoft beleegyezik abba, hogy kizárólagos hatáskörének és illetékességének a Szövetségi a Washington állambeli King County összes vita legfelsőbb bíróságához tartozzon (kivéve a választottbírósági eljárásokat).
 
-**14\. FOGYASZTÓI JOGOKKAL; REGIONÁLIS VÁLTOZATA.** A jelen szerződés bizonyos jogokról szól. Előfordulhat, hogy más engedélyek fogyasztói jogokkal, beleértve az állapotot, a tartományt vagy a ország törvényei. Külön, és a kapcsolatot a Microsofttal, leszámítva az is előfordulhat, amelyből a szoftvert beszerezte a fél megillethetik bizonyos jogok. A jelen szerződés nem módosítja ezeket a jogokat, amennyiben az állapot, a tartományt vagy a ország törvényei ezt nem engedélyezik ehhez. Például, ha a szoftver az alábbi régióba, vagy kötelező egyikében ország jog vonatkozik, akkor a következő rendelkezések vonatkozik:
+**14\. FOGYASZTÓI JOGOKKAL; REGIONÁLIS VÁLTOZATOK.** A jelen szerződés bizonyos jogokról szól. Előfordulhat, hogy egyéb jogokat, beleértve a fogyasztói jogokkal, az állam, megye vagy ország törvényei szerint. Külön, és a Microsofttal való kapcsolatától, függetlenül is nincs jogosultsága Önnek a szoftvert árusító fél. Jelen szerződés nem módosítja ezeket a jogokat, amennyiben az állam, megye vagy ország jogszabályai ezt nem engedélyezik ezt. Például, ha a szoftvert az egyik az alábbi régiók, vagy kötelező országos törvények vannak érvényben, majd az alábbi rendelkezések vonatkoznak Önre:
 
-a) Ausztrália. Az ausztrál fogyasztóvédelmi törvény értelmében kötelező garanciák rendelkezik, és a megállapodás nem célja e jogainak.
+(a) Ausztrália. Az ausztrál fogyasztóvédelmi jogszabályok értelmében törvényes garancia, és a jelen Szerződés célja, hogy érinti ezeket a jogokat.
 
-b) Kanada. Ha ezt a szoftvert a kanadai szerezte be, leállíthatja frissítések fogadása az által, hogy ki az automatikus frissítés szolgáltatást, az eszköz leválasztása az internetről (Ha újra csatlakozni az internethez, azonban a szoftver folytatódik, keresése és frissítések telepítése), vagy a szoftver eltávolítása. A termék dokumentációjában bármilyen is meghatározza az adott eszköz vagy a szoftver frissítések kikapcsolása.
+(b) Kanada. Ha a szoftvert Kanadában vásárolta meg, előfordulhat, hogy leállítja az automatikus frissítés funkció kikapcsolásával frissítéseknek a fogadása az eszköz leválasztása az internetről (amennyiben ismét csatlakozik az internethez, azonban a szoftver folytatódik keresése és frissítések telepítése), vagy a szoftver. A termék dokumentációját, ha van ilyen, előfordulhat, hogy is megadhatja, hogyan az adott eszköz vagy szoftver frissítéseinek kikapcsolásához.
 
-c) Németország és Ausztria.
+(c) Németország és Ausztria.
 
-> (i) garanciát. A megfelelő licencelt szoftverek alapvetően olyan Microsoft anyagokat, amelyek a szoftverhez leírtak hajt végre. A Microsoft biztosít, azonban a licencelt szoftverek viszonyítva szerződéses garancia.
+> (i) jótállás. A megfelelően licencelt szoftver a Microsoft-anyagokban a szoftverhez mellékelt leírtak szerint jelentősen elvégzi. A Microsoft biztosít, azonban nem szerződésben foglalt garanciát a licencelt szoftverek.
 
-> (ii) felelősség korlátozása. Szándékos viselkedési, hanyagság, a termék felelősség Act, valamint, halála vagy személyes vagy fizikai sérülése esetén a jogcímalapú Microsoft által a törvényes törvények szerint.
+> (ii) felelősség korlátozása. Szándékos magatartás, súlyos gondatlanság, alapján, hogy a termék felelősség korlátozására vonatkozó törvény, valamint haláleset, illetve személyes vagy fizikai sérülés esetén a Microsoft a törvényeknek megfelelően LIABILITY acten.
 
-> A fenti záradék (ii) vonatkoznak Microsoft csak akkor enyhe hanyagsággal felelős Ha Microsoft ilyen jelentősen a teljesítése szerződéses kötelezettségek megsértésével, amelyek segítik a jelen szerződés volna a megsértése miatt teljesítményét veszélyeztetheti a jelen szerződés és a megfelelőségi, amellyel egy lehetséges, hogy folyamatosan megbízhatósági (úgynevezett "kardinális kötelezettségek") a célja. Más esetben enyhe hanyagság a Microsoft nem vállal enyhe hanyagsággal felelős.
+> A fenti záradék (ii) vonatkoznak a Microsoft csak akkor felelősségre az enyhe gondatlanságokért-e a Microsoft az ilyen jelentős a teljesítése szerződéses kötelezettségek megsértésével, amelyek megkönnyítik a a jelen szerződés értelmében a megszegését volna esedékes teljesítményét veszélyeztetheti a jelen szerződés és a megfelelőség, amellyel egy lehetséges, hogy folyamatosan megbízhatóság (úgynevezett "kardinális kötelezettségek") a célja. Egyéb enyhe gondatlanságokkal esetben a Microsoft nem lesz felelősségre az enyhe gondatlanságokért.
 
-**15\. JOGI NYILATKOZAT JÓTÁLLÁS KIZÁRÁSA. A SZOFTVER LICENCÉT SZEREZTE MEG "ADOTT ÁLLAPOTBAN." ÖN AZ ALKALMAZÁST SAJÁT FELELŐSSÉGÉRE HASZNÁLJA AZT. A MICROSOFTNÁL NINCS KIFEJEZETT SZAVATOSSÁGOT, GARANCIÁT VAGY FELTÉTELEKET. A VONATKOZÓ TÖRVÉNYEK ÁLTAL MEGENGEDETT MÉRTÉKBEN MICROSOFT SZAVATOSSÁGOT, BELEÉRTVE AZ ELADHATÓSÁGRA, AZ ADOTT CÉLRA, ÉS A JOGBITORLÁS-MENTESSÉGRE NEM TARTALMAZZA.**
+**15\. JOGI NYILATKOZAT GARANCIA KIZÁRÁSA. A SZOFTVER LICENCÉT ", AMI." FELELŐSSÉGÉRE HASZNÁLJA. A MICROSOFT BIZTOSÍT, NINCS SEMMILYEN KIFEJEZETT SZAVATOSSÁGOT, GARANCIÁT VAGY FELTÉTELEKET. A VONATKOZÓ JOGSZABÁLYOK SZERINT MEGENGEDETT MÉRTÉKBEN A MICROSOFT MINDEN VÉLELMEZETT GARANCIAVÁLLALÁSTÓL, BELEÉRTVE AZ ELADHATÓSÁGRA, EGY ADOTT CÉLRA, ÉS A JOGBITORLÁS-MENTESSÉGRE NEM TARTALMAZZA.**
 
-**16\. ÉS KIZÁRÁSI KORLÁTOZÁSAI KÁROK. HA BÁRMILYEN ALAPOT HELYREÁLLÍTÁSÁHOZ ANNAK ELLENÉRE, HOGY AZ ELŐZŐ JOGI NYILATKOZAT JÓTÁLLÁS KÁRÉRT, AKKOR HELYREÁLLÍTHATJA A MICROSOFT ÉS A SZÁLLÍTÓK CSAK KÖZVETLEN KÁR LEGFELJEBB 5,00 USD. NEM ÁLLÍTHATÓ HELYRE SEMMIFÉLE EGYÉB KÁRÉRT, BELEÉRTVE A KÖVETKEZMÉNYI, AZ ELMARADT NYERESÉGET, A RENDKÍVÜLI, KÖZVETETT ÉS A VÉLETLENSZERŰ KÁROKAT IS.**
+**16\. ÉS KIZÁRÁSI DÍJKONSTRUKCIÓT LEHETŐSÉGÉRŐL. HA A FENTI JÓTÁLLÁS ELLENÉRE HELYREÁLLÍTÁSÁHOZ VAN, AKKOR HELYREÁLLÍTHATJA A MICROSOFTTÓL ÉS BESZÁLLÍTÓITÓL CSAK KÖZVETLEN KÁROKÉRT LEGFELJEBB 5,00 USD KÁRTÉRÍTÉS. SEMMIFÉLE EGYÉB KÁRÉRT, BELEÉRTVE A KÖVETKEZMÉNYI, AZ EREDŐ, KÜLÖNLEGES, KÖZVETETT VAGY VÉLETLEN KÁROKÉRT NEM ÁLLÍTHATÓ HELYRE.**
 
-**Ez a korlátozás vonatkozik (a) semmit, a szoftver, a szolgáltatások, a tartalommal (beleértve a kódot) kapcsolatos harmadik felek webhelyéhez, vagy harmadik féltől származó alkalmazások; és (b) szerződés, a jótállás, a garancia vagy a feltétel szerződésszegés esetén objektív felelősség, hanyagság vagy egyéb károkozás; vagy bármely más jogcímet; minden esetben a vonatkozó törvények által megengedett mértékig.**
+**Ez a korlátozás vonatkozik (a) kapcsolódó egyik elemet sem a szoftver, a szolgáltatások, a tartalommal (beleértve a kódot is) a harmadik fél webhelyén vagy harmadik féltől származó alkalmazások; és (b) jogcímek szerződés, rendelkezésre, mindennemű garancia, garanciát vagy feltételt; szerződésszegés esetén objektív felelősség, hanyagság vagy más kárral; vagy bármely más jogcímet; minden esetben jogszabályok által megengedett mértékig.**
 
-**Azt is érvényesek, ha a Microsoftnak tudomása volt vagy tudnia kellett volna az ilyen károk bekövetkeztének lehetőségéről. A fenti korlátozás, illetve kizárás előfordulhat, hogy nem vonatkozik Önre, mert az állapot, a tartományt vagy a ország előfordulhat, hogy nem teszi lehetővé a véletlenszerű, következményi vagy egyéb károkért való felelősség korlátozása.**
+**Akkor is, ha a Microsoftnak tudomása volt vagy tudnia kellett volna az ilyen károk bekövetkeztének lehetőségéről is vonatkozik. A fenti korlátozás vagy kizárás előfordulhat, hogy nem vonatkozik, mert az állam, megye vagy ország előfordulhat, hogy nem teszi lehetővé a kizárási véletlen, KÖVETKEZMÉNYES, vagy egyéb károkért.**

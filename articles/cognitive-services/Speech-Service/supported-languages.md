@@ -1,21 +1,20 @@
 ---
-title: Beszédszolgáltatás támogatott nyelvek – a Microsoft Cognitive Services |} A Microsoft Docs
+title: Beszédszolgáltatás támogatott nyelvek – a Microsoft Cognitive Services
 description: A beszédfelismerési szolgáltatás által támogatott nyelvek listáját.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 06350decd9d9f15db7226b6f2c3580feb49a59d1
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2a768846958f73ace22971f2f2ca8f886c9df252
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069574"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282156"
 ---
 # <a name="supported-languages-for-speech-service"></a>Beszédszolgáltatás támogatott nyelvei
 
@@ -33,7 +32,7 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja.
  ja-JP | japán (Japán) | Nem | Igen | Nem
  hu-HU | angol (Egyesült Államok) | Igen | Igen | Igen
  pt-BR | portugál (brazíliai) | Nem | Igen | Nem
- es-ES | spanyol (spanyolországi) | Nem | Igen | Nem
+ es-ES | Spanyol (Spanyolország) | Nem | Igen | Nem
  ru-RU | orosz (Oroszország) | Nem | Igen | Nem
  FR-FR | francia (Franciaország) | Nem | Igen | Nem
  zh-CN | Kínai (Mandarin, egyszerűsített) | Nem | Igen | Nem
@@ -72,7 +71,7 @@ hu-HU | Angol (Egyesült Államok) |Nő | "A Microsoft Server beszéd szöveg Sp
 | | |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, BenjaminRUS)"
 | | |Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" 
 | | |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)"
-es-ES | spanyol (spanyolországi) |Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, Laura, Apollo)"
+es-ES | Spanyol (Spanyolország) |Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, Laura, Apollo)"
 | | |Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, HelenaRUS)"
 | | |Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, Pablo, Apollo)"
 es-MX | spanyol (Mexikó) | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es – MX, HildaRUS)"

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f215136c5d07eca098d68d882d22f6c9dd14b0b9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e63f07e7819d464b4ee430571d8c5a05259c8df5
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214676"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282034"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: Szükséges felügyelt eszközökre vonatkozó feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés
 
@@ -64,7 +64,7 @@ Három lehetősége van az Azure ad-vel regisztrált eszköz lekéréséhez:
 
 - **[Az Azure AD-hez csatlakoztatott eszközök](device-management-introduction.md#azure-ad-joined-devices)**  – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
 
-- **[Hibrid Azure AD-hez csatlakoztatott eszközök](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  – a Windows 10-es eszköz, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
+- **[Hibrid Azure AD-hez csatlakoztatott eszközök](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
 
 Felügyelt eszközzé válik, egy regisztrált eszközt kell, vagy egy **hibrid Azure AD-hez csatlakoztatott eszköz** vagy egy **megfelelőként megjelölt eszköz**.  
 
@@ -77,7 +77,7 @@ A feltételes hozzáférési szabályzat kiválaszthatja **hibrid Azure AD-csatl
 
 ![Eszköz-alapú feltételek](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-Ez a beállítás csak a helyszíni tartományhoz csatlakoztatott Windows 10 rendszerű eszközökre vonatkozik AD. Csak regisztrálhatja ezeket az eszközöket az Azure AD-bA egy hibrid Azure AD joinnal, amely egy [automatikus folyamat](device-management-hybrid-azuread-joined-devices-setup.md) egy regisztrált Windows 10-es eszköz. 
+Ez a beállítás csak Windows 10-es vagy régebbi verziójú eszközök például a Windows 7 vagy Windows 8, amely csatlakozik egy helyszíni AD. Csak regisztrálhatja ezeket az eszközöket az Azure AD-bA egy hibrid Azure AD joinnal, amely egy [automatikus folyamat](device-management-hybrid-azuread-joined-devices-setup.md) egy regisztrált Windows 10-es eszköz. 
 
 ![Eszköz-alapú feltételek](./media/active-directory-conditional-access-policy-connected-applications/45.png)
 

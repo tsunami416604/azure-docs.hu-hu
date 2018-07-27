@@ -1,5 +1,5 @@
 ---
-title: Globális méret Azure Cosmos DB, több főkiszolgálós |} Microsoft Docs
+title: Az Azure Cosmos DB globális méretekben több főkiszolgálós |} A Microsoft Docs
 description: ''
 services: cosmos-db
 author: rimman
@@ -9,130 +9,130 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: cc66b2f506d81a7ba10b26c3b24287472e890682
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: 4911a302bf9055948827a72f2e631663b8be741e
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724907"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265658"
 ---
-# <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Az Azure Cosmos DB globális léptékű több főkiszolgálós 
+# <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Az Azure Cosmos DB globális méretekben több főkiszolgálós 
  
-Fejlesztés globálisan elosztott alkalmazásokat, amelyek válaszolni helyi késések pedig konzisztens-adatok nézeteinek világszerte karbantartása kihívást probléma. Az ügyfelek globálisan elosztott adatbázisok használható, mert a szükséges adatok elérési késést biztosít javítása, magas rendelkezésre állás biztosítása, garantált katasztrófa-helyreállítás, és az üzleti követelményeinek megfelelően. Az Azure Cosmos Adatbázisba több főkiszolgálós biztosít magas szintű rendelkezésre állási (99.999 %), egyjegyű ezredmásodperces késési adatok és a méretezhetőség, beépített átfogó és rugalmas ütközés felbontás támogatása írni. Ezek a funkciók jelentősen megkönnyíti a globálisan elosztott alkalmazások fejlesztéséhez. Globálisan elosztott alkalmazásokhoz, több főkiszolgálós támogatás elengedhetetlen. 
+Fejlesztés globálisan elosztott kihívást probléma az adatok egységes nézetek világszerte fenntartása közben helyi késése reagáló alkalmazásokat. Ügyfelek globálisan elosztott adatbázisokat, használható, mert a szükséges adatok elérési késést biztosít javítása, magas rendelkezésre állás, garantált vészhelyreállítás biztosítása és az üzleti szükségletek kielégítése céljából. Az Azure Cosmos DB több főkiszolgálós biztosít magas szintű rendelkezésre állás (99,999 %), adatok és a méretezhetőség, a beépített átfogó és rugalmas ütközés feloldása támogatási írni egy számjegyű ezredmásodperces késés. Ezek a szolgáltatások jelentősen egyszerűsítik a globálisan elosztott alkalmazások fejlesztését. Globálisan elosztott alkalmazások esetében több főkiszolgálós támogatást elengedhetetlen. 
 
-![Több főkiszolgálós architektúrája](./media/multi-region-writers/multi-master-architecture.png)
+![Több főkiszolgálós architektúra](./media/multi-region-writers/multi-master-architecture.png)
 
-Azure Cosmos DB több főkiszolgálós támogatással írási műveleteket végezheti el az adatok (például gyűjtemények, diagramokat, táblák) bárhol a világon elosztott tárolók. Bármely régióban-adatbázis fiókjához tartozó adatok frissítheti. E adatfrissítések terjeszteni aszinkron módon képes. A gyors hozzáférést és az adatok írási késése mellett, több főkiszolgálós is gyakorlati megoldást kínál a feladatátvétel és terheléselosztás problémák. Összefoglalva, az Azure Cosmos DB kapott írási késése < bárhol a globális, 99.999 % írási és olvasási rendelkezésre állás érdekében bárhol a világon, és mindkét méretezési képességét 99th érték: 10 ms írási és olvasási átviteli bárhol a világon.   
+Azure Cosmos DB több főkiszolgálós támogatással hajtsa végre írási műveletek az adatok (például gyűjtemények, diagramok, táblákat) bárhol a világon elosztva tárolókon. Bármelyik régióban, az adatbázis-fiókkal társított adatok frissítheti. E adatfrissítések aszinkron módon is propagálása. Gyors és az adatok írási késése amellett több főkiszolgálós is praktikus megoldást kínál feladatátvételi és terheléselosztási problémák. Összefoglalva, az Azure Cosmos DB szolgáltatás írási késése < 10 ms, bárhol a világ, 99,999 %-os írási és olvasási rendelkezésre állás a bárhol a világon, és mindkét méretezhető 99 százalékon írási és olvasási teljesítménye bárhol a világon.   
 
 > [!IMPORTANT]
-> Több főkiszolgálós funkció előzetes verzióját használja, magán előnézetben [regisztráljon](#sign-up-for-multi-master-support) most.
+> Több főkiszolgálós támogatást előzetes verzióban érhető el privát, előzetes verziójának használatához [regisztráció](#sign-up-for-multi-master-support) most.
 
-## <a name="sign-up-for-multi-master-support"></a>Feliratkozás a több főkiszolgálós támogatása
+## <a name="sign-up-for-multi-master-support"></a>Több főkiszolgálós támogatást regisztráljon
 
-Ha már rendelkezik Azure-előfizetéssel, regisztrálhat az Azure-portálon a több főkiszolgálós preview program csatlakozni. Ha most ismerkedik az Azure-ba, regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/free) hol szerezheti Azure Cosmos DB szabad hozzáférési 12 hónapig. Kövesse az alábbi lépéseket, hogy hozzáférést igényelhessen a több főkiszolgálós programot.
+Ha már rendelkezik Azure-előfizetéssel, az Azure Portalon a több főkiszolgálós előzetes programhoz, is regisztrálhatnak. Ha még csak most ismerkedik az Azure-ral, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/free), amelynek keretében 12 hónapig ingyen használhatja az Azure Cosmos DB-t. A következő lépéseket igényelhet hozzáférést a több főkiszolgálós előzetes programjában.
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **hozzon létre egy erőforrást** > **adatbázisok** > **Azure Cosmos DB**.  
+1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforrás létrehozása** > **Adatbázisok** > **Azure Cosmos DB** elemre.  
 
-2. Az új fiók lapon adja meg az Azure Cosmos DB fiók nevét, válassza ki a API, előfizetés, erőforráscsoportot és helyet.  
+2. Az új fiók oldalán adja meg az Azure Cosmos DB-fiók nevét, válassza ki az API-t, előfizetést, erőforráscsoportot és helyet.  
 
-3. Ezután válasszon **regisztráljon az előzetes verzióra még ma** Multi Mater Preview mező alatti.  
+3. Ezután válassza ki **regisztráljon az előzetes verzióra még ma** többszörös főkiszolgáló előzetes mező alatti.  
 
-   ![Regisztrálhat több főkiszolgálós előzetes verziójára](./media/multi-region-writers/sign-up-for-multi-master-preview.png)
+   ![Több főkiszolgálós előzetes regisztráció](./media/multi-region-writers/sign-up-for-multi-master-preview.png)
 
-4. Az a **regisztráljon az előzetes verzióra még ma** ablaktáblán kattintson a **OK**. A kérelem elküldése után állapota **jóváhagyásra váró** a fiók létrehozása panelen.  
+4. Az a **regisztráljon az előzetes verzióra még ma** ablaktáblán kattintson a **OK**. A kérelmet, miután a állapota **jóváhagyásra váró** a fiók létrehozása panelen.  
 
-A kérelem elküldése után meg, hogy a kérelem jóváhagyását e-mailben értesítést fog kapni. A nagy mennyiségű kérést, mert egy héten belül értesítést kell kapnia. Nem kell a kérés teljesítéséhez el egy támogatási jegy létrehozását. Kérelem érkezett volt sorrendben felül kell vizsgálni.
+Az kérés benyújtása után, hogy a kérelem jóváhagyását e-mailben értesítést kap. A kérelmek nagy mennyisége miatt egy hét is eltelhet, amíg az e-mail megérkezik. Ezekhez a kérelmekhez nem kell támogatási jegyet leadnia. A kérelmeket azok beérkezési sorrendjében bíráljuk el.
 
 ## <a name="a-simple-multi-master-example--content-publishing"></a>Egy egyszerű több főkiszolgálós példa – tartalom közzététele  
 
-A valós forgatókönyvekben, amelyek több főkiszolgálós támogatási használata az Azure Cosmos DB vizsgáljuk meg. Fontolja meg a közzétételi tartalomplatform Azure Cosmos DB épül. Az alábbiakban olyan követelményekkel, amelyeket ezen a platformon meg kell felelnie a kiváló felhasználói élmény a közzétevők és a fogyasztók. 
+Lássunk erre egy való életből vett forgatókönyv leírja, hogyan használható a több főkiszolgálós támogatást az Azure Cosmos DB. Érdemes lehet egy Azure Cosmos DB beépített tartalom közzétételi-platform. Az alábbiakban néhány követelmények megszabásához ezen a platformon egy nagyszerű felhasználói élményt biztosít a kiadók és a fogyasztók számára. 
 
-* Szerzők és a előfizetők megoszlanak a világ minden táján.  
+* A világ minden táján szerzők és a előfizetők vannak elosztva.  
 
-* A helyi (legközelebbi) régióban szerzők (írás) cikkek közzé kell tennie.  
+* Szerzők közzé kell tennie a cikkek (írás) a saját helyi (legközelebbi) régióban.  
 
-* Szerzők olvasók/előfizetők a cikkek felvételéhez világ különböző pontjain lehet.  
+* Szerzők olvasók/előfizetők cikkeik, a világ különböző pontjain rendelkezik.  
 
-* Előfizetők kell értesítést kap, amikor új cikkek.  
+* Előfizetők kell értesítést kaphat, amikor új cikkek.  
 
-* Előfizetők cikkek olvasni a helyi régió képesnek kell lennie. Is kell adhat hozzá az alábbi cikkek értékelést.  
+* Előfizetők számára, olvassa el a cikkeket a helyi régióból képesnek kell lennie. Akkor is tudnia kell felülvizsgálatok hozzá ezeket a cikkeket.  
 
-* Bárki, beleértve a szerző, kattintson az alábbi cikkek cikkek csatlakozó összes értékelést egy helyi területet képes nézet kell lennie.  
+* Bárki, beleértve a cikkek szerzőjének kell lennie a helyi régióból cikkek csatolt összes felülvizsgálat képes megtekintése.  
 
-Feltéve, hogy a fogyasztók és a közzétevők milliárd cikkeket, több millió hamarosan tudunk skála helység hozzáférés biztosítása mellett a problémák alkalmazásra. Használati eset tökéletes jelölt Azure Cosmos DB többszörös főkiszolgáló. 
+Feltéve, hogy a fogyasztók és cikkeket, több milliárd közzétevőket hamarosan kell, hogy a skála helye való hozzáférés biztosítása mellett problémák leküzdésében. Használati eset az Azure Cosmos DB több főkiszolgálós egy tökéletes jelölt. 
 
-## <a name="benefits-of-having-multi-master-support"></a>Több főkiszolgálós támogatási előnyei 
+## <a name="benefits-of-having-multi-master-support"></a>Több főkiszolgálós támogatást előnyei 
 
-Több főkiszolgálós támogatás elengedhetetlen globálisan elosztott alkalmazások. Több főkiszolgálós áll [több fő régiók](distribute-data-globally.md) , amely egyaránt részt vesz egy írási bárhol modellben (aktív-aktív mintát), és segítségével győződjön meg arról, hogy érhetők el adatok bármikor ha esetleg szükség lenne rá. Egy adott régióban végrehajtott frissítések minden más régiókból, (amelyek viszont a saját fő régiók) aszinkron módon továbbítja. Ennek fő régiók több főkiszolgálós konfigurációban automatikusan működő Azure Cosmos DB régiók működik megfelelő, az összes replika adatainak, és győződjön meg arról [globális konzisztencia és adatintegritás](consistency-levels.md). Az alábbi ábrán egy egyszeres és mult-főkiszolgáló olvasási/írási replikálása.
+Globálisan elosztott alkalmazások több főkiszolgálós támogatást elengedhetetlen. Több főkiszolgálós áll [több fő régióban](distribute-data-globally.md) , amely egyaránt részt egy tetszőleges írási modell (aktív-aktív minta), és elérhető legyen a adatok bármikor fektetünk szolgál. Egy adott régióban végzett frissítések más régiók (amelyek viszont a saját fő régiók) aszinkron módon propagálva lesz. Azure Cosmos DB-régiók szerint fő régióban több főkiszolgálós konfigurációban automatikusan operációs éri el az adatokat az összes replika, és ellenőrizze, működik [globális összhangot és adatintegritás](consistency-levels.md). Az alábbi képen egy egyszeri és többszörös főkiszolgáló olvasási/írási replikációja.
 
-![Egyszeres és több főkiszolgálós](./media/multi-region-writers/single-vs-multi-master.png)
+![Egyszeri és többszörös főkiszolgáló](./media/multi-region-writers/single-vs-multi-master.png)
 
-Végrehajtási többszörös főkiszolgáló saját terheket fejlesztők ad hozzá. Nagy méretű az ügyfelek, akik több főkiszolgálós megvalósítani a saját megpróbálja tarthat több száz óra világszerte több főkiszolgálós konfiguráció tesztelése és konfigurálása, és számos rendelkezik dedikált egyetlen feladatokkal figyelni és karban a több főkiszolgálós mérnökök a replikáció. Létrehozása és kezelése a saját több főkiszolgálós telepítő időt vesz igénybe a, többet innovating magának az alkalmazásnak az erőforrásokat, és sokkal nagyobb költségeket eredményez. Azure Cosmos DB támogatja a több főkiszolgálós "out-of-az-box", és ez a terhelés megszünteti a fejlesztők számára.  
+Saját végrehajtási több főkiszolgálós terheket hozzáadja a fejlesztők számára. Nagy méretű ügyfelek, akik több főkiszolgálós megvalósítani a saját próbál előfordulhat, hogy töltött órák, a világszerte több főkiszolgálós konfiguráció tesztelése és konfigurálása több száz, és számos mérnökök, amelynek egyetlen feladata, figyelése és karbantartása a több főkiszolgálós külön készlete a replikáció. Létrehozása és kezelése a saját több főkiszolgálós telepítés időt vesz igénybe a, távolabbi magának az alkalmazásnak az innováció erőforrásokat, és sokkal magasabb költségeket eredményez. Az Azure Cosmos DB "out-of-a-box" több főkiszolgálós támogatást nyújt, és a fejlesztők távolít el a terhelést.  
 
-Összefoglalva, több főkiszolgálós a következő előnyöket nyújtja:
+Összefoglalva, több főkiszolgálós az alábbi előnyöket nyújtja:
 
-* **Vész-helyreállítási jobb, rendelkezésre állást és a feladatátvevő írás**-több főkiszolgálós használható a magas rendelkezésre állású nagyobb mértékben kritikus fontosságú adatbázis megőrzése érdekében. Például több főkiszolgálós adatbázis is replikálja az adatokat egy régióban feladatátvételi régióban, ha az elsődleges régióban kimaradás vagy regionális katasztrófa miatt nem érhető el. Feladatátvételi terület erre a célra egy teljesen működőképes fő területet alkalmazás támogatásához. Több főkiszolgálós jelenítik természeti katasztrófa, áramkimaradások, vagy megtámadása vagy mindkettő nagyobb "túlélést" védelmet nyújt a mivel a földrajzilag eltérő több főkiszolgálók egy garantált írási rendelkezésre állási > 99.999 % a fennmaradó régiók lehetnek. 
+* **Hatékonyabb vészhelyreállítás, rendelkezésre állás és feladatátvétel írási**– több főkiszolgálós is használható a magas rendelkezésre állású nagyobb mértékben alapvető fontosságú adatbázisok megőrzése érdekében. Például egy több főkiszolgálós database replikálhatja adatokat egy adott régióban található egy feladatátvételi régióban, ha az elsődleges régió kimaradás vagy regionális katasztrófa miatt elérhetetlenné válik. Az ilyen egy feladatátvételi régióban erre a célra egy teljesen működőképes fő régió az alkalmazása támogatásához. Több főkiszolgálós nagyobb "túlélést" védelmet biztosít tartományállapot természeti katasztrófa, áramkimaradások vagy megtámadása, mert régiók fennmaradó képes használni a garantált írás rendelkezésre állási > 99,999 %-os földrajzilag eltérő több főkiszolgálót. 
 
-* **A végfelhasználók számára írási késése továbbfejlesztett** – minél közelebb a adatok (szolgál), hogy a végfelhasználók számára, annál jobb lesz a felhasználói élmény. Például akkor, ha a felhasználók az Európai rendelkezik, de az adatbázis mérete az Egyesült Államokban és Ausztrália, a hozzáadott várakozási nem körülbelül 140 ms és a megfelelő régiókhoz 300 ms. Késések nem fogadhatók el kezdődnie számos népszerű játékok, banki követelmények vagy interaktív alkalmazások (web- vagy mobilalkalmazás). Késleltetés hatalmas szerepet játszik az ügyfél érzete a kiváló felhasználói élmény, és hatással lehet egyes észrevehető mértékben felhasználók viselkedésének lett bizonyult. Növeli a technológia, és különösen a AR, VR és MR megjelenésével még több hatásos és lifelike feladatait, hogy a fejlesztők most kell szigorú késési követelményekkel rendelkező szoftver rendszerek létrehozásához. Ezért helyileg elérhető alkalmazások és adatok (az alkalmazások tartalmat) rendelkező, több fontos. Az Azure Cosmos Adatbázisba több főkiszolgálós teljesítmény szerint rendszeres helyi olvas és ír a gyors és továbbfejlesztett globálisan által földrajzi terjesztési esetén.  
+* **A végfelhasználók számára írási késése továbbfejlesztett** – minél közelebb az adatok (azaz a jövőben kiszolgáló), hogy a végfelhasználók számára, annál jobb lesz a felhasználói élményt. Például akkor, ha az Európai felhasználók, de az adatbázis az Egyesült Államokban és Ausztrália, a hozzáadott késést, körülbelül 140 ms és a megfelelő régiókhoz 300 ms. Késések nem fogadhatók el a kezdéshez számos népszerű játékok, banki követelmények vagy interaktív alkalmazások (webes vagy mobilalkalmazás). Késés jelentős szerepet játszik az ügyfél érzete egy kiváló minőségű felhasználói élményt, és hatással lehetnek egyes észrevehető mértékben felhasználók viselkedését volt bizonyult. Javítja a technológia, és különösen az AR, VR és MR megjelenésével, még több magával ragadó és lifelike élményt, hogy a fejlesztők mostantól kell szigorú késési követelményekkel rendelkező a szoftver rendszerek előállításához. Ezért helyileg elérhető alkalmazások és adatok (az alkalmazások tartalma), akkor az több fontos. Több főkiszolgálós az Azure Cosmos DB a teljesítmény, gyors, mint a rendszeres helyi olvasási és írási és továbbfejlesztett globálisan által a földrajzi elosztás.  
 
-* **Továbbfejlesztett írási méretezhetősége és teljesítménye** – több főkiszolgálós ad nagyobb átviteli teljesítményt, és nagyobb kihasználtsági több konzisztencia modellek helyességét, miközben biztosítja, hogy és biztonsági mentést készített SLA-k. 
+* **Továbbfejlesztett írási méretezhetőség és a lemezírás teljesítménye** – több főkiszolgálós nagyobb átviteli sebességet biztosít, és miközben több konzisztenciamodelleket kínál helyességét a nagyobb kihasználtságát biztosítja, és a biztonsági másolatot készít az SLA-k. 
 
-  ![A több főkiszolgálós méretezési teljesítménye](./media/multi-region-writers/scale-write-throughput.png)
+  ![Több főkiszolgálós méretezési lemezírás teljesítménye](./media/multi-region-writers/scale-write-throughput.png)
 
-* **Jobb támogatása a kapcsolat nélküli környezetben (például peremeszközök)** -több főkiszolgálós lehetővé teszi a felhasználók az összes replikálás vagy az adatok egy részét a peremhálózati eszköz egy leválasztott környezetben legközelebbi régiót. Ebben a forgatókönyvben a jellemző az értékesítési munkatársak automation rendszerek, ahol egy adott hordozható (kapcsolat nélküli eszközt) tárolja az értékesítő kapcsolatos adatok egy részét. A távoli peremeszközök a forráslemez a célként fő régióban a felhőben találhatók bárhol a világon működtetéséhez.  
+* **Kapcsolat nélküli környezetben (például a peremhálózati eszközökön) jobb támogatása** – több főkiszolgálós lehetővé teszi, hogy a felhasználók számára az összes replikálás vagy az adatok egy részét az edge-eszköz kapcsolat nélküli környezetben legközelebb eső régiót. Ebben a forgatókönyvben a jellemzően a sales force automation rendszerek, ahol egy személy hordozható (kapcsolat nélküli eszköz) tárolja-e az egyes értékesítő kapcsolatos adatok egy részét. Fő területek a felhőben találhatók bárhol a világon a másolatot a távoli peremhálózati eszközökre céljaként működhet.  
 
-* **Terheléselosztás** -a több főkiszolgálós a terhelés, az alkalmazás között is rebalanced áthelyezésével felhasználók/munkaterhelések erősen terhelt régióban régiókban, ahol egyenletesen vannak elosztva a terhelés. Az írási kapacitás egyszerűen bővíthető hozzáadásával egy új területet, és néhány írások majd átváltása az új terület. 
+* **Terheléselosztás** – több főkiszolgálós a terhelés, az alkalmazás között is rebalanced való váltással felhasználók/munkafolyamatok erősen terhelt régióból régióban, ahol betöltési sebesség egyenletesen oszlik. Írás a kapacitást egyszerűen bővíthető hozzáadásával egy új régióban, és néhány írások majd átvált az új régióban. 
 
-* **Kiosztott kapacitást jobban használható** – a több főkiszolgálós írási műveleteket és a vegyes munkaterhelések esetén különféle régiókban is telítsük a kiosztott kapacitást...  Egyes esetekben terjeszthet olvasási és írási több egyaránt, így kevesebb átviteli építeni van szükség, és több költségmegtakarítást vezet.  
+* **A kiosztott kapacitás jobban használata** – több főkiszolgálós írási műveltekből és a vegyes számítási feladatok esetén több régióban is telítsük a kiosztott kapacitás...  Bizonyos esetekben terjeszthet olvasási és írási több egyaránt, ezért ki kell építeni kisebb teljesítményt igényel, és több költségmegtakarítást eredményez.  
 
-* **Egyszerűbb és rugalmasabb architektúrát** -alkalmazások áthelyezése több főkiszolgálós konfigurációs adatok rugalmasság beolvasása garantált.  Azure Cosmos DB elrejtése az összes összetettségét az jelentősen egyszerűsítheti az alkalmazás tervezési és architektúra. 
+* **Egyszerűbb és rugalmasabb architektúrákat** -alkalmazások áthelyezése a több főkiszolgálós konfigurációs adatok gyors helyreállíthatóságáról garantált.  Az Azure Cosmos DB elrejtése az összes összetettségét lényegében leegyszerűsítheti az alkalmazás-tervezés és architektúra. 
 
-* **Kockázati mentes feladatátvételi tesztelése** -feladatátvétel tesztelése nem rendelkezik majd romlását teljesítménye. A több főkiszolgálós, minden más régiók a következők teljes-főkiszolgálók, a feladatátvétel nem sok hatással lesz a a teljesítménye.  
+* **Kockázatmentesen feladatátvétel tesztelése** -feladatátvétel tesztelése nem lesz bármilyen teljesítménycsökkenésről a lemezírás teljesítménye. Több főkiszolgálós minden más régiókban teljes-főkiszolgálót,, így a feladatátvétel nem sok hatással lesz a a lemezírás teljesítménye.  
 
-* **Alacsonyabb Ownership(TCO) teljes költség- és Devopok** -kielégíti a méretezhetőséget, teljesítményt, globális terjesztési helyreállítási időre vonatkozó célkitűzések általában költséges költséges bővítmények vagy egy biztonsági másolat infrastruktúrájának, amely aktívan csak katasztrófa miatt éri. Azure Cosmos DB több főkiszolgálós biztonsági mentést készített iparágvezető SLA-k, a fejlesztők már nem szükséges létrehozása és karbantartása a "háttér kapcsolás logika" magukat, és lekérése egy nyugodt maradhat afelől fut a kritikus fontosságú munkaterhelésekhez. 
+* **Alacsonyabb teljes költség a Ownership(TCO) és DevOps** -értekezlet-méretezhetőséget, teljesítményt és globális disztribúciót, helyreállításiidő-célkitűzések általában költséges, drága bővítményeket vagy fenntartása a biztonsági mentési infrastruktúra inaktív amíg katasztrófa miatt is. Azure Cosmos DB több főkiszolgálós biztonsági másolatot készít az iparágvezető SLA-k fejlesztők már nem szükséges létrehozását és karbantartását az "integrációs háttérlogikát" magukat, és a biztonságot az alapvető fontosságú számítási feladatok futtatása. 
 
-## <a name="use-cases-where-multi-master-support-is-needed"></a>Ha van szükség a több főkiszolgálós támogatási használati esetek
+## <a name="use-cases-where-multi-master-support-is-needed"></a>Használati eseteket, ahol több főkiszolgálós támogatást van szükség
 
-Nincsenek számos használati esetek többszörös főkiszolgáló Azure Cosmos DB: 
+Nincsenek számos olyan alkalmazási helyzetek több főkiszolgálós az Azure Cosmos DB-ben: 
 
-* **Az IoT** -Azure Cosmos DB több főkiszolgálós lehetővé teszi, hogy egyszerűsített IoT adatfeldolgozási elosztott végrehajtása. Földrajzilag elosztott peremhálózati telepítésekkel CRDT-ütközés mentes replikált adatok típusok gyakran kell idő adatsorozat adatainak követéséhez több helyről. Egyes eszközök is lehet a következő helyen a legközelebbi régiók egyikéhez, és egy eszköz (például egy autó) is utazik, és dinamikusan is rehomed írni egy másik régióban.  
+* **IoT** – Azure Cosmos DB több főkiszolgálós lehetővé teszi az IoT-adatok feldolgozása egyszerűsített elosztott végrehajtásához. Földrajzilag elosztott edge környezeteknek, amelyek CRDT ütközés ingyenes replikált típusok gyakran kell nyomon követnie az idősorozat-adatok több helyről adatokat. Minden eszköz a is egy legközelebb eső régiót a következő helyen, és a egy eszközt (például egy autó) is utazik, és képes dinamikusan rehomed írni egy másik régióban.  
 
-* **Elektronikus kereskedelmi** -kereskedelmi forgatókönyvekben kiváló felhasználói élményt biztosítva van szüksége, magas rendelkezésre állás és a rugalmasság hiba forgatókönyvekre. Abban az esetben, ha nem sikerül egy régiót, a vásárlás kártyák, aktív felhasználói munkamenet kívánja listák kell zökkenőmentesen észlelnie kell egy másik régió szerinti adatvesztés nélkül. Az idő alatt a felhasználó által végrehajtott frissítések kell kezelni megfelelően (például ad hozzá, és eltávolítása a bevásárlókocsiból a hálózaton keresztül helyezze át kell). A több főkiszolgálós Azure Cosmos DB képes kezelni ilyen forgatókönyvek például szabályosan, az a felhasználó szempontból egységes megjelenítése megőrzésével aktív régiók közötti zökkenőmentes átmenet. 
+* **E-kereskedelmi** -e-kereskedelmi forgatókönyvekben nagyszerű felhasználói élményt biztosítva van szüksége, magas rendelkezésre állást és hibatűrést bizonyos hibák bekövetkezése esetén. Abban az esetben, ha meghibásodik egy régióban, a vásárlás kocsik aktív felhasználói munkamenet kívánja listák kell zökkenőmentesen észlelnie kell egy másik régió állapot elvesztése nélkül. Addig a felhasználó által végrehajtott frissítéseket kell megfelelő kezelését (például ad hozzá, és a bevásárlókocsiba távolítja el a hálózaton keresztül helyezze át kell). Több főkiszolgálós Azure Cosmos DB képes kezelni ilyen forgatókönyvek például szabályosan, az a felhasználó szempontból konzisztens nézet fenntartásával aktív régiók közötti zökkenőmentes átmenet. 
 
-* **Csalás/Anomáliadetektálás** -gyakran olyan alkalmazásokat, amelyek figyelése, vagy felhasználói fiók tevékenység globálisan fel vannak osztva és kell nyomon követésére több eseményt egyidejűleg. Létrehozása, és a felhasználó az pontszámait fenntartása, miközben a különböző földrajzi területek műveletek egyidejűleg frissítenie kell tartani a kockázat metrikák beágyazott pontszámait. Azure Cosmos DB biztosítsák a fejlesztők nem rendelkezik az alkalmazás szintjén ütközés forgatókönyvek kezeléséhez. 
+* **Csalás/rendellenesség-észlelést** – gyakran olyan alkalmazásokat, amelyek figyelése, vagy felhasználói fiók tevékenysége globálisan terjesztett és kell nyomon követésére több eseményt egyszerre. Létrehozásakor, és a egy felhasználó pontszámok fenntartása, különböző földrajzi régiókból származó műveletek egyidejűleg, hogy a metrikák beágyazott kockázati pontszámok kell frissíteni. Az Azure Cosmos DB is, hogy biztosítsa a fejlesztők nem rendelkezik az alkalmazás szintjén ütközés forgatókönyvek kezeléséhez. 
 
-* **Együttműködés** - alkalmazásokat, amelyek rangsora aszerint időben népszerűvé vált a cikkek például pénztári vagy adathordozón felhasznált terméket stb. Követés időben népszerűvé vált a földrajzi régiók közötti bonyolult, kérhet, különösen akkor, ha a jogdíjak kell fizetett vagy valós idő hirdetési döntést kell tenni. Prioritás, rendezése és sok világszerte, valós idejű Azure Cosmos DB régiók közötti reporting lehetővé teszi a fejlesztők számára biztosítanak szolgáltatást minimális erőfeszítéssel és késések fordulnak elő a veszélyeztetése nélkül. 
+* **Együttműködés** - alkalmazásokat, amelyek rangsora aszerint cikkeket, például a termékek értékesítése vagy a felhasznált media népszerűsége stb. Népszerűség követési földrajzi régióban bonyolult, lekérheti, különösen akkor, ha jogdíjak kell lennie, fizetős vagy valós idő hirdetési döntéseket kell tenni. Rangsorolás, rendezése és valós időben az Azure Cosmos DB világszerte számos régióban reporting lehetővé teszi a fejlesztőknek, hogy a szolgáltatások minimális erőfeszítéssel és az késleltetések kompromisszumok nélkül. 
 
-* **Szoftverhasználat-mérő** - számbavételi és használati szabályozásához (például az API-hívások, tranzakciók/másodperc, perc használt) globálisan implementálható az egyszerűség kedvéért több főkiszolgálós Azure Cosmos DB használatával. Beépített ütközésének feloldása mindkét pontosságát számát, valamint a valós idejű szabályozás biztosítja. 
+* **Szoftverhasználat-mérő** - számbavételi és használat szabályozása (például az API-hívás, tranzakció/másodperc, perc használt) az egyszerűség kedvéért használja az Azure Cosmos DB több főkiszolgálós globálisan implementálható. Beépített ütközésfeloldás biztosítja mindkét számát és a valós idejű rendelet pontosságát. 
 
-* **Személyre szabás** - e most karbantartása földrajzilag elosztott számlálók műveleteket végez, például hűség kiváltó mutat díjak vagy személyre szabott felhasználói munkamenet végrehajtási, a magas rendelkezésre állású megtekintése és egyszerűsített földrajzi eloszlása Azure Cosmos DB, által biztosított számbavételi lehetővé teszi, hogy a alkalmazások kézbesítése magas teljesítményt és az egyszerűség kedvéért. 
+* **Személyre szabás** - e műveletek hűségprogramok használatán keresztül például azt a földrajzilag elosztott számlálók vagyunk karbantartása mutat díjazottjai vagy a személyre szabott felhasználói munkamenet végrehajtási megtekinti, a magas rendelkezésre állás és a földrajzilag elosztott egyszerűsített Azure Cosmos DB által biztosított számbavételi lehetővé teszi, hogy alkalmazások Delivery nagy teljesítményű egyszerűség. 
 
-## <a name="conflict-resolution-with-multi-master"></a>A több főkiszolgálós ütközésének feloldása 
+## <a name="conflict-resolution-with-multi-master"></a>Több főkiszolgálós ütközésének feloldása 
 
-Több master a kérdés esetén gyakran, hogy ugyanazt a rekordot két (vagy több) replikáinak frissítheti egyidejűleg két vagy több különböző régiókban különböző írók tudják-e. Egyidejű írási műveletek azt eredményezheti, hogy két különböző verziója ugyanazon rekord, és beépített ütközésének feloldása nélkül, és magának az alkalmazásnak kell végeznie az ütközések feloldása a inkonzisztencia feloldásához.  
+Több főkiszolgálós a kihívást gyakran, hogy két (vagy több) replikák ugyanazt a rekordot, előfordulhat, hogy frissíthető egyszerre két vagy több különböző régiókban lévő különböző írók. Egyidejű írások két különböző verziója ugyanazon rekord és beépített ütközésének feloldása nélkül is vezethet, és maga az alkalmazás a inkonzisztencia feloldásához ütközésfeloldás kell végrehajtania.  
 
-**Példa** -tegyük fel, hogy használt Azure Cosmos DB az állapotmegőrző tárolóban egy vásárlásra szolgáló bevásárlókocsiból alkalmazás és az alkalmazás telepítve van a két régióban: USA keleti régiója, és az USA nyugati régiója.  Ha körülbelül egy időben, a felhasználó a San Francisco egy elem hozzáadása a kosár (például egy könyv) során egy készlet folyamatát a USA keleti régiója érvényteleníti az, hogy a felhasználók egy s válaszul egy másik bevásárlási bevásárlókocsiból elemet (például egy új telefonszám) a kiadási dátum kellett halasztva upplier értesítést. A T1 időpontban a vásárlási bevásárlókocsiból rögzíti a két régió eltérőek. Az adatbázis fogja használni a replikáció és ütközésfeloldási eljárás a inkonzisztencia feloldásához, és végül a kosár két verzióinak valamelyike lesz kiválasztva. Az ütközés feloldása heurisztikus leggyakrabban a több főkiszolgálós adatbázisok (például utolsó írási wins) által alkalmazott használ, nem lesz kiválasztva melyik verzióját becsülhető alkalmazás vagy a felhasználó számára. Mindkét esetben adatok nem vesztek el, vagy váratlan oka lehet. Ha keleti régió verzió van kiválasztva, majd egy új beszerzési elem (Ez azt jelenti, hogy egy könyv) a felhasználó által kiválasztott elvész, és ha a nyugati terület van kiválasztva, majd a korábban kiválasztott elemet (Ez azt jelenti, hogy a telefon) van továbbra is a bevásárlókocsiból. Mindkét módszer esetén információ elvész. Végül tanulmányozza a vásárlás e más folyamat nem determinisztikus viselkedését, valamint hogy lesz a T1 és T2 időpont között kosárhoz. Például háttérfolyamatként, amely a teljesítési raktár kiválasztja, és frissíti a bevásárlókocsiból szállítási költséget kellene eredményt, amelyek ütköznek a bevásárlókocsiból végleges tartalmát. Ha a folyamat nyugati a régióban fut, és alternatív 1 valóságban válik, annak ellenére, hogy a bevásárlókocsiból hamarosan esetleg csak egy elemet, a könyv azt kellene számítási két elemek szállítási költségeket. 
+**Példa** -tegyük fel, hogy használja az Azure Cosmos DB, az adatmegőrzés áruházban bevásárlókocsi alkalmazásai, és ezt az alkalmazást két régióban üzemel: USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA.  Ha körülbelül egy időben, a felhasználó a San franciscóban ad hozzá egy elemet a bevásárlókocsiba (például egy könyv) során egy készlet felügyeleti folyamatot az USA keleti régiójában érvényteleníti egy másik vásárlási bevásárlókocsi elemet (például egy új telefonszám), hogy egy s válaszul a felhasználók számára upplier értesítés, hogy a kiadási dátum kellett halasztva. A T1 időpontban a vásárlási bevásárlókocsi rekordokat a két régióban eltérőek. Az adatbázist fogja használni a replikáció és ütközésfeloldási eljárás a inkonzisztencia feloldásához, és végül a két a bevásárlókocsi-verziók valamelyikét lesz kiválasztva. Az ütközés feloldása heurisztika több főkiszolgálós adatbázisok (például a legutóbbi írási wins) által leggyakrabban alkalmazott használata esetén nem lehet a felhasználó vagy az alkalmazás előre, mely verziója lesz kiválasztva. Mindkét esetben adatvesztés, vagy váratlan oka lehet. Ha a keleti régió verzió van kijelölve, majd egy új vásárlási elem (azaz egy könyv) a felhasználó által választott elvész, és a nyugati régió van kijelölve, majd az előzőleg kiválasztott elem (azaz phone)-e továbbra is a kosárhoz. Mindkét esetben információ elvész. Végül egy másik folyamat, a vásárlás vizsgálatával bevásárlókocsiba nem determinisztikus viselkedést, valamint hogy történik a T1 és T2 időpont között. Például egy háttérfolyamatot, amely a teljesítési raktár kiválasztja, és frissíti a szállítási bevásárlókocsi szeretne eredményt, amelyek ütköznek a bevásárlókocsi végleges tartalmát. Alternatív 1 valóság válik a folyamat a nyugati régióban fut, annak ellenére, hogy tegyen a kosárba hamarosan előfordulhat, hogy csak egy elem, a könyvet, lenne számítási két elemet a szállítási költségeket. 
 
-Azure Cosmos-adatbázis valósítja meg az ütköző írások maga az adatbázis motorjában kezelése logikáját. Azure Cosmos DB kínál **átfogó és rugalmas ütközés felbontás támogatása** több ütközés feloldása modellek, beleértve az automatikus felajánlásával (adattípusok CRDT-ütközés mentes replikált), utolsó írás Wins (LWW), és egyéni () A tárolt eljárás) automatikus ütközésfeloldáshoz. Az ütközés feloldása modellek helyességét és a konzisztencia garanciák adja meg, és távolítsa el a terheket a fejlesztők számára kell gondolniuk a konzisztencia, rendelkezésre állási, teljesítmény, replikációs késésétől és a földrajzi-feladatátvétel események összetett kombinációi és kereszt-régió írási ütközések.  
+Az Azure Cosmos DB valósítja meg a logika az ütköző írások maga az adatbázis motorjában. Kínál az Azure Cosmos DB **átfogó és rugalmas ütközés feloldása támogatási** azzal több ütközés feloldása modellekhez, beleértve az automatikus (adattípusok CRDT ütközés ingyenes replikált), utolsó írás Wins (LWW), és egyéni () Tárolt eljárás) automatikus ütközésfeloldáshoz. Az ütközés feloldása modellek helyességét, és a konzisztencia garanciákat biztosít, és távolítsa el a terhet kell gondolniuk a konzisztencia, rendelkezésre állási, teljesítmény, replikációs késésétől és eseményeket a geo-feladatátvétel összetett kombinációi fejlesztők és régiók közötti írási ütközéseket.  
 
-  ![Mult – master ütközésének feloldása](./media/multi-region-writers/multi-master-conflict-resolution-blade.png)
+  ![Mult – fő ütközésének feloldása](./media/multi-region-writers/multi-master-conflict-resolution-blade.png)
 
-Ütközés feloldása modellek Azure Cosmos DB által kínált 3 típusú lesz. Az ütközés feloldása modellek szemantikáját a következők: 
+Ütközés feloldása modellek az Azure Cosmos DB által kínált 3 típusú kell. A szemantikát, az ütközés feloldása modellek a következők: 
 
-**Automatikus** -az alapértelmezett ütközés feloldása szabályzat. Ez a házirend kiválasztásának hatására a kiszolgáló oldalán ütköző frissítések automatikus megoldása és erős-végleges-konzisztencia biztosítja, hogy az Azure Cosmos DB. Belsőleg az Azure Cosmos DB automatikus ütközésének feloldása emelés ütközés-szabad replikált-adatok típusok (CRDTs) az adatbázis motorjában valósítja meg.  
+**Automatikus** – Ez az az alapértelmezett ütközésfeloldási házirend. Ez a házirend kijelölése hatására az Azure Cosmos DB automatikusan feloldani a kiszolgálói oldalon az ütköző frissítései és-végleges-konzisztenciát garantál. Belsőleg az Azure Cosmos DB automatikus ütközésfeloldás kibővítéséhez ütközés-szabad-replikált-adattípusok (CRDTs) az adatbázis motorjában által valósítja meg.  
 
-**Wins-utolsó-írás (LWW)** - időbélyeg-tulajdonság kiválasztása, ez a házirend lehetővé teszi a megoldásához vagy alapján ütközések a rendszer által meghatározott szinkronizálva, vagy a rekordok ütköző verziójában definiált egyéni tulajdonság. Az ütközés feloldásának történik, a kiszolgáló oldalán, és a legújabb Timestamp értékkel rendelkező verzióját a győztes választotta.  
+**Wins-utolsó-írási (LWW)** - időbélyeg-tulajdonság kiválasztása a szabályzat lehetővé teszi a megoldásához vagy alapján ütközések a rendszer által meghatározott szinkronizálva, vagy a rekordok ütköző verziójában definiált egyéni tulajdonság. Az ütközés feloldásának a kiszolgálói oldalon történik, és a verzió a legújabb időbélyeggel a nyertes van kiválasztva.  
 
-**Egyéni** – az alkalmazás által meghatározott ütközés feloldása logika regisztrálni egy tárolt eljárás regisztrálása. A tárolt eljárás akkor beolvasása meghívni egy adatbázis-tranzakciókhoz, a kiszolgáló oldalán támogatásával frissítés ütközések észlelése. Ha a beállítást, de nem sikerült regisztrálni a tárolt eljárás (vagy a tárolt eljárás kivételt futásidőben), összes keresztül az ütközések hírcsatorna egymással ütköző verziók eléréséhez, és egyenként oldható fel.  
+**Egyéni** – az alkalmazás által meghatározott ütközés feloldása logikai regisztrálni egy tárolt eljárás regisztrálása. A tárolt eljárás akkor első meghívni, adatbázis-tranzakciók, a kiszolgálói oldalon támogatásával frissítési ütközések észlelése. Ha a beállítást, de a tárolt eljárás regisztrálása sikertelen (vagy ha a tárolt eljárás kivételt jelez, futtatás közben), hozzá az összes az ütköző verziók az ütközések Hírcsatorna-n keresztül és a megoldásukkal külön-külön.  
 
 ## <a name="next-steps"></a>További lépések  
 
-Ebben a cikkben szerzett tapasztalatok globálisan elosztott több főkiszolgálós használata Azure Cosmos DB. Ezután tekintse meg a következőket: 
+Ebben a cikkben az Azure Cosmos DB globálisan elosztott, több főkiszolgálós használata tanulással. Ezután tekintse meg az alábbi forrásanyagokat: 
 
-* [Hogyan támogatja az Azure Cosmos DB a globális terjesztési megismerése](distribute-data-globally.md)  
+* [Ismerje meg hogyan támogatja az Azure Cosmos DB a globális terjesztés](distribute-data-globally.md)  
 
-* [További tudnivalók az Azure Cosmos Adatbázisba automatikus feladatátvétel](regional-failover.md)  
+* [További tudnivalók az Azure Cosmos DB az Automatikus feladatátvétel](regional-failover.md)  
 
-* [További tudnivalók az Azure Cosmos DB globális egységesítése](consistency-levels.md)  
+* [További tudnivalók az Azure Cosmos DB globális összhangot](consistency-levels.md)  
 
-* Több régióba fejlesztést használata az Azure Cosmos DB - [SQL API](tutorial-global-distribution-sql-api.md), [MongoDB API](tutorial-global-distribution-mongodb.md), vagy [tábla API](tutorial-global-distribution-table.md)  
+* Fejlesztés több régióra az Azure Cosmos DB - [SQL API](tutorial-global-distribution-sql-api.md), [MongoDB API-val](tutorial-global-distribution-mongodb.md), vagy [Table API](tutorial-global-distribution-table.md)  

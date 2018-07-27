@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 042db9bcadb470b2dc5e0095072e4ca06747ec5d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069385"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283624"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
 
@@ -117,7 +117,9 @@ Kiépítés és megszüntetés során a szinkronizálási csoport létrehozása,
 
 -   Egy táblához nem tartozhat azonosító oszlopot, amely nem az elsődleges kulcsot.
 
--   Elsődleges kulcs nem lehet az dátum és idő adattípusú.
+-   Elsődleges kulcs nem rendelkezik a következő adattípusokat: sql_variant, binary, varbinary, kép, xml. 
+
+-   Legyen óvatos elsődleges kulcsaként, az alábbi adattípusok használatakor a támogatott pontosság csak a második, mert: idő, dátum és idő, datetime2, datetimeoffset.
 
 -   Objektumok (adatbázisok, táblákat és oszlopokat) nevét nem tartalmazza a nyomtatható karakterek pont (.), bal oldali szögletes zárójel ([), és jobb szögletes zárójel (]).
 
@@ -131,7 +133,7 @@ Kiépítés és megszüntetés során a szinkronizálási csoport létrehozása,
 
 -   XMLSchemaCollection (XML támogatott)
 
--   Kurzor esetén időbélyegző, Hierarchyid
+-   A kurzor RowVersion, Timestamp, Hierarchyid
 
 #### <a name="unsupported-column-types"></a>Nem támogatott oszloptípus
 

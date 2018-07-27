@@ -12,24 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: d70eb1a329b2d1ba560aecbbb4132d2a8e2b7df1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a5151d1f9498b29c79638445a58a8337abff8961
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160127"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281922"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), futó folyamatok, a gép nevét, az IP-címek, bejelentkezett felhasználó, az AppLocker-eseményeket és a bérlő azonosítója. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterülethez.
+
+> [!NOTE]
+> Adatgyűjtés engedélyezése [adaptív Alkalmazásvezérlők](security-center-adaptive-application.md), konfigurálja a helyi AppLocker-házirend rendszervizsgálati módban, hogy az összes alkalmazást. Ennek hatására az AppLocker események, amelyeket gyűjteni, és a Security Center által használható létrehozása. Fontos megjegyezni, hogy ez a szabályzat minden olyan gépeken, amelyeken már van egy konfigurált AppLocker-házirendek nem lesznek konfigurálva. 
+>
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése     
 Alapértelmezés szerint az Automatikus kiépítés le van. Ha az Automatikus kiépítés engedélyezve van, a Security Center létrehozza a Microsoft Monitoring Agentet az összes támogatott Azure-beli és újonnan létrehozott. Az Automatikus kiépítés használata erősen ajánlott, de a manuális ügynöktelepítések is rendelkezésre áll. [Ismerje meg, hogyan telepítse a Microsoft Monitoring Agent bővítményt](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 > [!NOTE]
 > - Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását. További tudnivalókért lásd: [automatikus kiépítés letiltása](security-center-enable-data-collection.md#disable-automatic-provisioning) ebben a cikkben. Virtuálisgép-lemez pillanatképeinek és összetevőinek gyűjtése engedélyezve van, még akkor is, ha az Automatikus kiépítés le van tiltva.
-> - Adatgyűjtés engedélyezése [adaptív Alkalmazásvezérlők](security-center-adaptive-application.md), konfigurálja a helyi AppLocker-házirend rendszervizsgálati módban, hogy az összes alkalmazást. Ennek hatására az AppLocker események, amelyeket gyűjteni, és a Security Center által használható létrehozása. Fontos megjegyezni, hogy ez a szabályzat minden olyan gépeken, amelyeken már van egy konfigurált AppLocker-házirendek nem lesznek konfigurálva. 
 >
 
 A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
