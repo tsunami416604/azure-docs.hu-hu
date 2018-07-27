@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: c7a5031fab10f44809f9533e43c3596d46dc77e3
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: fbeda6a74be11668f16d477696ea00653b73baa6
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346025"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284826"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás 
 Az Azure SQL Database kibocsátható, metrikák és diagnosztikai naplókat megkönnyíteni a felügyeletet. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
@@ -204,7 +204,7 @@ A legegyszerűbben úgy konfigurálja, ahol adatbázisokat jegyezze fel a metrik
 
 Az SQL Analytics egy hierarchikus irányítópultot, amely lehetővé teszi, hogy az SQL Database-erőforrásokat a hierarchián keresztül helyezze át a. Az SQL Analytics megoldás használatával kapcsolatban lásd: [SQL Database megfigyelése az SQL Analytics megoldás használatával](../log-analytics/log-analytics-azure-sql.md).
 
-## <a name="stream-into-event-hubs"></a>Az Event Hubsba Stream
+## <a name="stream-into-event-hubs"></a>Streamelés az Event Hubsba
 
 Az SQL Database-metrikák és diagnosztikai naplókat is streamelt Event hubsba a beépített használatával **Stream egy eseményközpontba** lehetőséget a portálon. A Service Bus Szabályazonosító egy diagnosztikai beállítás PowerShell parancsmagok, az Azure CLI vagy az Azure Monitor REST API használatával is engedélyezi. 
 
@@ -460,6 +460,27 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |resource_owner_type_s|A zárolás tulajdonosa.|
 |blocked_process_filtered_s|Letiltott folyamat jelentés XML.|
 |duration_d|A Zárolás időtartama ezredmásodpercben kifejezve.|
+
+### <a name="deadlocks-dataset"></a>Holtpontok adatkészlet
+
+|Tulajdonság|Leírás|
+|---|---|
+|TenantId|A bérlő azonosítója.|
+|SourceSystem|Mindig: Azure|
+|TimeGenerated [UTC] |Időbélyeg, ha rögzít a naplóban.|
+|Típus|Mindig: AzureDiagnostics|
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
+|Kategória|A kategória nevét. Mindig: holtpontok|
+|OperationName|A művelet neve. Mindig: DeadlockEvent|
+|Erőforrás|Az erőforrás neve.|
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK és ADATBÁZISOK|
+|SubscriptionId|Előfizetés GUID-azonosítója, amely az adatbázis tartozik.|
+|ResourceGroup|Az erőforráscsoportot, amelyhez tartozik az adatbázis neve.|
+|LogicalServerName_s|Az adatbázishoz tartozó kiszolgáló nevét.|
+|ElasticPoolName_s|A rugalmas készlet, amely az adatbázis tartozik, ha van ilyen neve.|
+|DatabaseName_s|Az adatbázis nevét. |
+|ResourceId|Erőforrás-URI.|
+|deadlock_xml_s|Holtpont jelentés XML.|
 
 ### <a name="intelligent-insights-dataset"></a>Intelligent Insights adatkészlet
 Tudjon meg többet a [Intelligent Insights naplóformátum](sql-database-intelligent-insights-use-diagnostics-log.md).

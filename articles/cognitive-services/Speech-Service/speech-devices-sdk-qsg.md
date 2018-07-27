@@ -1,69 +1,68 @@
 ---
-title: Ismerkedés a beszédfelismerés eszközök SDK-val |} Microsoft Docs
-description: Előfeltételek, akkor az első lépések a beszédfelismerés eszközök SDK-val utasításait.
+title: A beszédfelismerés eszközök SDK használatának első lépései
+description: Előfeltételek és a Speech eszközök SDK – első lépések vonatkozó utasításokat.
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 32dd295132e26e46d64b01b194b557cae26575ad
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750795"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283136"
 ---
-# <a name="get-started-with-the-speech-devices-sdk"></a>Ismerkedés a beszédfelismerés eszközök SDK-val
+# <a name="get-started-with-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK használatának első lépései
 
-A cikkből megtudhatja, hogyan lehet beállítani a fejlesztési számítógépen és a Beszédfelismerés eszköz szoftverfejlesztői készlet adattárházzal történő, a beszédfelismerés eszközök SDK használatával beszéd-kompatibilis eszközök. Akkor lesz majd hozza létre, és egy mintaalkalmazást az eszközre telepíteni. 
+Ez a cikk bemutatja, hogyan konfigurálhatja a fejlesztési számítógép és a Speech eszköz development Kitet, a beszéd eszköz SDK-val speech-kompatibilis eszközök fejlesztéséhez. Ezután hozhat létre és üzembe helyezünk egy mintaalkalmazást az eszközön. 
 
-A mintaalkalmazás forráskódja megtalálható a beszédfelismerés eszközök SDK-val és is [elérhető a Githubon](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+A mintaalkalmazás forráskódja megtalálható a Speech Devices SDK-val, és egyben [elérhető a Githubon](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A beszédfelismerés eszközök SDK-val fejlesztési megkezdése előtt gyűjtse össze az adatokat és a szoftverek szükségesek.
+Fejlesztés előtt a Speech eszköz SDK-val, gyűjtsön információkat és szoftverek szükségesek.
 
-* Szerezzen be egy szoftverfejlesztői készlet [a Roobo](http://ddk.roobo.com/). Kits érhetők el a lineáris vagy kör alakú mikrofon tömb konfigurációival; ki kell választania az igényeinek megfelelő azt.
+* A fejlesztői csomag beszerzése [a Roobo](http://ddk.roobo.com/). Készletek érhetők el lineáris vagy kör alakú mikrofon a tömb konfigurációk Válassza ki az igényeinek megfelelőt.
 
-    |Fejlesztői csomag konfigurálása|Beszélőfelismerési helye|
+    |Development kit konfigurálása|Hangszóró helye|
     |-----------------------------|------------|
-    |Körkörös|Tetszőleges irányba a eszközről|
+    |Kör alakú|Bármelyik irányba, az eszközről|
     |Lineáris|Az eszköz előtt|
 
-* A beszédfelismerés eszközök SDK, beleértve az Android mintaalkalmazást, a beszédfelismerés eszközök SDK-ból a legújabb verzió beszerzéséhez [töltse le a hely](https://shares.datatransfer.microsoft.com/). Bontsa ki a ZIP-fájlt egy helyi mappát (például `C:\SDSDK`).
+* A beszéd Devices SDK-val, beleértve az Android mintaalkalmazást, a beszéd eszközök SDK legújabb verziójának beszerzéséhez [letöltőwebhelyéről](https://shares.datatransfer.microsoft.com/). Bontsa ki a ZIP-fájlt egy helyi mappába (például `C:\SDSDK`).
 
 * Telepítés [Android Studio](https://developer.android.com/studio/) és [Vysor](http://vysor.io/download/) a számítógépen.
 
-* Szerezzen be egy beszéd szolgáltatás [előfizetés kulcs](get-started.md). A 30 napos ingyenes próbaverziójának beszerzése, vagy az Azure irányítópultról kulcs beszerzése.
+* Szerezzen be egy beszédszolgáltatás [előfizetési kulcs](get-started.md). Egy 30 napos ingyenes próbaverzió beszerzése, vagy szerezze be egy kulcsot az Azure-irányítópulton.
 
-* Ha szeretné használni a beszédfelismerés szolgáltatás leképezési felismerés, előfizetni a [nyelvi ismertetése szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) és [előfizetés-kulcs beszerzése](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
+* Ha szeretné használni a Speech service szándékának felismerése, iratkozzon fel a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) és [egy előfizetési kulcsot beszerezni](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
 
-    Ön [hozzon létre egy egyszerű LUIS modell](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) vagy a minta LUIS modell `LUIS-example.json`, érhető el a beszédfelismerés eszközök SDK [töltse le a hely](https://shares.datatransfer.microsoft.com/). Töltse fel a modell JSON-fájl számára a [LUIS portal](https://www.luis.ai/home) kattintva **importálási új alkalmazás** és a JSON-fájl kiválasztása.
+    Előfordulhat, hogy [hozzon létre egy egyszerű LUIS-modellnek](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) vagy használja a LUIS-modellnek mintát `LUIS-example.json`, a beszéd eszköz SDK-ból elérhető [letöltőwebhelyéről](https://shares.datatransfer.microsoft.com/). Töltse fel a modell JSON-fájlt is a [LUIS portál](https://www.luis.ai/home) kattintva **importálása új alkalmazás** és a JSON-fájl kiválasztása.
 
-## <a name="set-up-the-development-kit"></a>A csomag beállítása
+## <a name="set-up-the-development-kit"></a>A fejlesztői készlet beállítása
 
-1. Csatlakoztassa a szoftverfejlesztői készlet tápegység. A zöld power kijelző kell bonyolít le a felső board alatt.
+1. Beépülő modul a fejlesztői készlet tápegység. Egy zöld power kijelző kell helyezzen üzembe az első tábla alatt.
 
-1. A csomag kapcsolódni a számítógéphez egy USB-kábel mini.
+1. A csomag kapcsolódni a számítógéphez egy USB-kábelen keresztül mini.
 
     ![Csatlakozás a fejlesztői csomag](media/speech-devices-sdk/qsg-1.jpg)
 
-1. A szoftverfejlesztői készlet megfelelően elhelyezés.
+1. Elhelyezés megfelelően a development Kitet.
 
-    |Fejlesztői csomag konfigurálása|Tájolás|
+    |Development kit konfigurálása|Tájolás|
     |-----------------------------|------------|
-    |Körkörös|Függőleges, és a felső határ irányuló mikrofonok|
-    |Lineáris|Az oldalon, a felénk (lásd alább) mikrofonok|
+    |Kör alakú|Mintha a mikrofonok a felső határ irányuló|
+    |Lineáris|Az oldalán a mikrofonok felénk (lásd alább)|
 
-    ![lineáris fejlesztői kit tájolását](media/speech-devices-sdk/qsg-2.jpg)
+    ![lineáris dev csomag tájolása](media/speech-devices-sdk/qsg-2.jpg)
 
-1. Telepítse a tanúsítványokat és az ébresztési word (kulcsszó) tábla fájlt, és beállítja az engedélyeket a hangeszköz. Írja be a következő parancsokat a parancsot.
+1. Telepítse a tanúsítványokat és a hálózati ébresztési word (kulcsszó) tábla fájlt, és állítsa be az engedélyeket a hangeszköz. Írja be a következő parancsokat egy parancssori ablakban.
 
     > [!NOTE]
-    > Ezek a parancsok használata a Android hibakeresési híd `adb.exe`, amely az Android Studio telepítés része. Ez az eszköz található `C:\Users\[user name]\AppData\Local\Android\Sdk\platform-tools`. Előfordulhat, hogy ez a könyvtár hozzáadása a elérési útját több kényelmes meghívása `adb`. Ellenkező esetben meg kell adnia a teljes elérési útja az Ön `adb.exe` minden parancs, amely hívja meg a `adb`.
+    > Ezek a parancsok használata az Android-hibakeresési híd `adb.exe`, amely az Android Studio telepítést része. Ez az eszköz található `C:\Users\[user name]\AppData\Local\Android\Sdk\platform-tools`. Előfordulhat, hogy adja hozzá ezt a könyvtárat az elérési úthoz, hogy kényelmesebbé meghívásához `adb`. Ellenkező esetben meg kell adnia a teljes elérési útja a telepített `adb.exe` minden parancshoz, amely meghívja a `adb`.
 
     ```
     adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/ 
@@ -75,13 +74,13 @@ A beszédfelismerés eszközök SDK-val fejlesztési megkezdése előtt gyűjtse
     ```
 
     > [!TIP]
-    > A számítógép mikrofon és hangalapú elnémíthatja. Így biztosítható, a szoftverfejlesztői készlet mikrofonok dolgozik, és nem véletlenül indul el az eszközt az hang a számítógépről.
+    > A számítógép mikrofon és beszélőfelismerési vypnutí. Így biztos lehet dolgozik a fejlesztői készlet mikrofonok, és véletlenül nem aktiválja a hangot a számítógépről az eszközre.
     
 1.  Indítsa el a Vysor a számítógépen.
 
     ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
-1.  Az eszköz alatt kell szerepelnie "Egy eszköz kiválasztása". Kattintson a **nézet** gomb látható. 
+1.  Az eszköz szerepelnie kell "Eszköz kiválasztása". Kattintson a **nézet** gomb mellett. 
  
 1.  A vezeték nélküli hálózathoz csatlakozni kattintva **beállítások**, majd **WLAN**.
 
@@ -89,19 +88,19 @@ A beszédfelismerés eszközök SDK-val fejlesztési megkezdése előtt gyűjtse
  
 ## <a name="run-a-sample-application"></a>A mintaalkalmazás futtatása
 
-A Roobo tesztek futtatása, és a fejlesztői csomag telepítő érvényesítéséhez, hozza létre, és a mintaalkalmazás telepítése.
+Futtassa a Roobo teszteket, és az development kit konfigurációjának ellenőrzése, hozza létre és telepítse a mintaalkalmazást.
 
 1.  Indítsa el az Android Studio.
 
-1.  Válassza ki az Android Studio projekt megnyitása.
+1.  Válasszon egy meglévő Android Studio projekt megnyitása.
 
-    ![Android studio – létező projekt megnyitása](media/speech-devices-sdk/qsg-5.png)
+    ![Android studio – meglévő projekt megnyitása](media/speech-devices-sdk/qsg-5.png)
  
 1.  Keresse meg a `C:\SDSDK\Android-Sample-Release\example`, majd kattintson a **OK** a példaprojekt megnyitásához.
  
-1.  A beszédfelismerés előfizetés kulcs hozzáadása a forráskódot. Ha azt szeretné, leképezési felismerés kipróbálására, is hozzáadhat a [nyelvi ismertetése szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetés kulcs és az alkalmazás azonosítóját. 
+1.  A beszédfelismerés előfizetési kulcs hozzáadása a forráskódban. Ha szeretné kipróbálni szándékának felismerése, is hozzáadhat a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcs és az alkalmazás azonosítóját. 
 
-    A kulcsok és a következő sorokat a forrásfájl kerül az alkalmazásadatok `MainActivity.java`.
+    A kulcsok és alkalmazással kapcsolatos információk a következő sorokat a forrásfájl `MainActivity.java`.
 
     ```java
     // Subscription
@@ -112,13 +111,13 @@ A Roobo tesztek futtatása, és a fejlesztői csomag telepítő érvényesítés
     private static final String LuisAppId = "[your LUIS app id]"
     ```
 
-1. Az alapértelmezett ébresztési word (kulcsszó) a "Számítógép."  Ha kívánja, próbálkozzon egy másik megadott ébresztési szavak, "Machine" és "Segéd." Alternatív szavak erőforrás fájlokat a "kulcsszó" mappában található a beszédfelismerés eszközök SDK-ban. Például `C:\SDSDK\Android-Sample-Release\keyword\Computer` a "Számítógép" használt fájlokat tartalmaz
+1. Az alapértelmezett ébresztési szó (kulcsszó) a "Számítógép."  Ha szeretné, előfordulhat, hogy próbálkozzon egy másik megadott ébresztési szavak, "Gép" és "Assistant". Az erőforrásfájlokat, az alternatív szavak "kulcsszó" mappában található a Speech eszköz SDK-ban. Ha például `C:\SDSDK\Android-Sample-Release\keyword\Computer` tartalmazza a "Számítógép." használt fájlok
 
-    Is lehet [hozzon létre egy egyéni ébresztési word](speech-devices-sdk-create-kws.md).
+    Lehetősége van [hozzon létre egy egyéni ébresztési szó](speech-devices-sdk-create-kws.md).
 
-    A kívánt ébresztési word telepítése:
+    A kívánt ébresztési szó telepítése:
  
-    * Hozzon létre egy `keyword` \data\ mappája a parancssori ablakban a következő parancsok futtatásával az eszközön.
+    * Hozzon létre egy `keyword` \data\ mappája a parancssori ablakban az alábbi parancsok futtatásával az eszközön.
 
         ```
         adb shell
@@ -127,7 +126,7 @@ A Roobo tesztek futtatása, és a fejlesztői csomag telepítő érvényesítés
         exit
         ```
 
-    * Másolja a fájlokat `kws.table`, `kws_g.fst`, `kws_k.fst`, és `words_kw.txt`) az eszköz \data\keyword\ mappába. O-parancsablakban futtassa a következő parancsokat.
+    * Másolja a fájlokat `kws.table`, `kws_g.fst`, `kws_k.fst`, és `words_kw.txt`) az eszköz \data\keyword\ mappába. O parancssori ablakban futtassa a következő parancsokat.
 
         ```
         adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
@@ -136,7 +135,7 @@ A Roobo tesztek futtatása, és a fejlesztői csomag telepítő érvényesítés
         adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\words_kw.txt /data/keyword
         ```
     
-    * Ezeket a fájlokat a mintaalkalmazás hivatkozik. A következő sorokat található `MainActivity.java`. Győződjön meg arról, hogy a megadott kulcsszó használata egy és, hogy az elérési út mutat a `kws.table` fájlt, amely leküldeni az eszközre.
+    * Ezeket a fájlokat a mintaalkalmazásban hivatkozhat. Keresse meg a következő sorokat `MainActivity.java`. Győződjön meg arról, hogy a megadott kulcsszót használ egy és, hogy az elérési út mutat, a `kws.table` fájlt, amely leküldeni az eszközre.
         
         ```java
         private static final String Keyword = "Computer";
@@ -144,44 +143,44 @@ A Roobo tesztek futtatása, és a fejlesztői csomag telepítő érvényesítés
         ```
 
         > [!NOTE]
-        > Az Ön saját kódját, használhatja a `kws.table` fájl kulcsszó modell példány létrehozása, és indítsa el az alábbiak szerint használatát.
+        > A saját kódját is használhatja a `kws.table` fájl kulcsszó modell példányt hoz létre, és indítsa el a következő felismerése.
         >
         > ```java
         > KeywordRecognitionModel km = KeywordRecognitionModel.fromFile(KeywordModel);
         > final Task<?> task = reco.startKeywordRecognitionAsync(km);
         > ```
 
-1.  A következő sorokat a mikrofon tömb geometriai beállításokat tartalmazó frissíteni.
+1.  Frissítés a következő sorokat a mikrofon tömb geometriai beállításokat tartalmazó.
 
     ```java
     private static final String DeviceGeometry = "Circular6+1";
     private static final String SelectedGeometry = "Circular6+1";
     ```
 
-    |Változó|Jelentés|Rendelkezésre álló értékeket|
+    |Változó|Jelentés|Elérhető értékek|
     |--------|-------|----------------|
-    |`DeviceGeometry`|Fizikai mic konfiguráció|`Circular6+1` Körkörös fejlesztői csomag|
-    ||| `Linear4` lineáris fejlesztői csomag|
-    |`SelectedGeometry`|Szoftver mic konfiguráció|`Circular6+1` Körkörös fejlesztői csomag összes mics használatával|
-    |||`Circular3+1` Körkörös fejlesztői csomag négy mics használatával|
-    |||`Linear4` az összes mics használó lineáris fejlesztői csomag|
-    |||`Linear2` két mics használó lineáris fejlesztői csomag|
+    |`DeviceGeometry`|Fizikai mic-konfiguráció|`Circular6+1` a kör alakú dev csomag|
+    ||| `Linear4` lineáris dev csomag|
+    |`SelectedGeometry`|Szoftver mic-konfiguráció|`Circular6+1` a kör alakú dev csomag összes megkérhetném használatával|
+    |||`Circular3+1` a négy megkérhetném használatával körkörös dev csomag|
+    |||`Linear4` az összes megkérhetném használatával lineáris dev csomag|
+    |||`Linear2` a két megkérhetném használatával lineáris dev csomag|
 
 
-1.  Válassza ki az alkalmazás összeállítása **"alkalmazás" futtatása** a Futtatás menüből. A telepítés helyének kiválasztása párbeszédpanel jelenik meg. Válassza ki az eszközét, és kattintson a **OK** az eszközre az alkalmazás telepítéséhez.
+1.  Hozza létre az alkalmazást kiválasztásával **"alkalmazás" futtatása** a Futtatás menüből. A központi telepítési cél kiválasztása párbeszédpanel jelenik meg. Válassza ki az eszközét, és kattintson a **OK** az eszközön az alkalmazás telepítéséhez.
 
-    ![Válassza ki a központi telepítési cél](media/speech-devices-sdk/qsg-7.png)
+    ![telepítési cél kiválasztása](media/speech-devices-sdk/qsg-7.png)
  
-1.  A beszédfelismerés eszközök SDK mintaalkalmazás kezdődik, az itt látható beállítások megjelenítése.
+1.  A beszédfelismerés Devices SDK-val mintaalkalmazás elindul, az itt látható lehetőségek megjelenítése.
 
     ![Beszéd eszköz mintaalkalmazás](media/speech-devices-sdk/qsg-8.png)
 
-1. Play azt!
+1. Játsszon egy kicsit azt!
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha tanúsítványhibák a beszédfelismerés szolgáltatás használatakor, győződjön meg arról, hogy az eszköz a helyes dátum és idő.
+Ha tanúsítványhibák lép a Speech szolgáltatással, győződjön meg arról, a helyes dátum és idő van az eszközön.
 
-Fejlesztési kapcsolatos további információkért lásd: Roobo tartozó [fejlesztői útmutató](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
+Fejlesztési kapcsolatos további információkért lásd: Roobo a [– fejlesztési útmutató](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 
-Roobo olyan eszköz, amely rögzíti az összes hang flash memória, amely segítséget nyújthat hang problémák elhárításához nyújt. Az eszköz egy verzióját minden development kit konfigurációs biztosított. Válassza ki az eszközét, [a Roobo hely](http://ddk.roobo.com/), majd kattintson a **ROOBO eszközök** hivatkozás az oldal alján.
+Roobo olyan eszköz, amely rögzíti a memória, amely segíthet a hibaelhárítást a hang Flash összes hang biztosít. Az eszköz egy verzióját minden egyes development kit konfiguráció biztosítunk. Válassza ki az eszközét, [a Roobo hely](http://ddk.roobo.com/), majd kattintson a **ROOBO eszközök** hivatkozásra a lap alján.

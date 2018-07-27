@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f73b6f594403ce51fcff4d757990afb3ce4a82bc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5ae7a0d3aa0606fd02bfbaa0dcebdfaed5d11eb7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004846"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283093"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal
 
-A [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) lehetővé teszi, hogy könnyen [létrehozása és a egy virtuális gép hozzáadása egy laborhoz](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Ez jól működik egyszerre egy virtuális gép létrehozását. Azonban ha a környezet több virtuális gépet tartalmaz, minden virtuális gép külön-külön léteznie kell. Például egy többrétegű webalkalmazást vagy a SharePoint-farm forgatókönyvek esetén olyan mechanizmus szükséges ahhoz, hogy egyetlen lépésben több virtuális gép létrehozásához. Az Azure Resource Manager-sablonok használatával ezután határozza meg az infrastruktúra és az Azure-megoldás konfigurációját, és ismételten üzembe több virtuális gépet egy konzisztens állapotba. Ez a funkció az alábbi előnyöket nyújtja:
+A [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) lehetővé teszi, hogy könnyen [egyszerre egy virtuális gép hozzáadása egy laborhoz](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Azonban ha a környezet több virtuális gépet tartalmaz, minden virtuális gép külön-külön léteznie kell. Például egy többrétegű webalkalmazást vagy a SharePoint-farm forgatókönyvek esetén olyan mechanizmus szükséges ahhoz, hogy egyetlen lépésben több virtuális gép létrehozásához. Az Azure Resource Manager-sablonok használatával ezután határozza meg az infrastruktúra és az Azure-megoldás konfigurációját, és ismételten üzembe több virtuális gépet egy konzisztens állapotba. Ez a funkció az alábbi előnyöket nyújtja:
 
 - Az Azure Resource Manager-sablonok töltődnek be közvetlenül a (a GitHub vagy a Team Services Git) a verziókövetési tárházzal.
 - Miután konfigurálta a felhasználók létrehozna egy környezetet az Azure Portalon egy Azure Resource Manager-sablon kiválasztásával, mint a más típusú [Virtuálisgép-adatbázisok](./devtest-lab-comparing-vm-base-image-types.md).
@@ -43,6 +43,8 @@ További információ a több [Resource Manager-sablonok használatának előnye
 
 Az ajánlott eljárásokat az infrastruktúra mint kód és konfigurációs a kódot, egyik környezeti sablonokkal verziókövetési rendszerben kell kezelni. Az Azure DevTest Labs ezzel a gyakorlattal követi, és az összes Azure Resource Manager-sablonok közvetlenül tölt be a GitHub vagy a VSTS Git-tárházak. Ennek eredményeképpen a Resource Manager-sablonok között a teljes kiadási ciklus a tesztkörnyezetből az éles környezetbe használható.
 
+Tekintse meg a DevTest Labs csapat által létrehozott sablonok az [nyilvános GitHub-adattárból](https://github.com/Azure/azure-devtestlab/tree/master/Environments). A nyilvános tárházban megtekintheti, hogy közvetlenül használni, vagy testre is szabhatja őket, hogy illeszkedjen az igényeihez mások által megosztott sablonok. Miután létrehozta a sablont, tárolja a tárházban, ossza meg másokkal. A saját Git-tárház környezeteket a felhőben használható sablonokkal is állíthatja. 
+
 Van néhány a szabályok egy adattárból az Azure Resource Manager-sablonok rendszerezésére kövesse:
 
 - Névvel kell rendelkeznie a fő sablonfájl `azuredeploy.json`. 
@@ -50,18 +52,18 @@ Van néhány a szabályok egy adattárból az Azure Resource Manager-sablonok re
     ![Kulcs Azure Resource Manager-sablonfájlokat](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - A paraméter-fájlban definiált paraméterértékek használni kívánt, ha az alkalmazásparaméter-fájlt névvel kell rendelkeznie `azuredeploy.parameters.json`.
-- A paraméterek használhatók `_artifactsLocation` és `_artifactsLocationSasToken` hozhatnak létre az parametersLink URI értéket, így a DevTest Labs automatikusan a beágyazott sablonok kezelése. Lásd: [módját az Azure DevTest Labs megkönnyíti a beágyazott erőforrás-kezelő sablon-üzembehelyezések tesztelési környezetben](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/) további információt.
+- A paraméterek használhatók `_artifactsLocation` és `_artifactsLocationSasToken` hozhatnak létre az parametersLink URI értéket, így a DevTest Labs automatikusan a beágyazott sablonok kezelése. További információkért lásd: [módját az Azure DevTest Labs megkönnyíti a beágyazott erőforrás-kezelő sablon-üzembehelyezések tesztelési környezetben](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/).
 - Metaadatok, adja meg a sablon megjelenítendő neve és leírása lehet definiálni. A metaadatok nevű fájlba kell `metadata.json`. A következő példa metaadatfájl mutatja be a megjelenítendő név és leírás megadása: 
 
-```json
-{
+    ```json
+    {
  
-"itemDisplayName": "<your template name>",
+        "itemDisplayName": "<your template name>",
  
-"description": "<description of the template>"
+        "description": "<description of the template>"
  
-}
-```
+    }
+    ```
 
 A következő lépések végigvezetik egy tárház hozzáadása a labor, az Azure portal használatával. 
 
@@ -144,13 +146,13 @@ DevTest Labs szolgáltatásban létrehozott Resource Manager-sablon használatak
 
    Az egyetlen kivétel az, hogy Ön **is** hivatkozhat egy meglévő virtuális hálózatot. 
 
-- A labor virtuális gépek Resource Manager-sablon alapján létrehozott képletek nem hozhatók létre. 
+- A labor virtuális gépeket, amelyek egy Resource Manager-sablon alapján létrehozott képletek nem hozhatók létre. 
 
-- Egyéni rendszerképek nem hozható létre a virtuális gépek Resource Manager-sablon alapján létrehozott tesztkörnyezet. 
+- Egyéni rendszerképek nem hozható létre a virtuális gépeket, amelyek egy Resource Manager-sablon alapján létrehozott tesztkörnyezet. 
 
 - A legtöbb házirendek nem értékeli ki a Resource Manager-sablonok központi telepítésekor.
 
-   Például hogy előfordulhat, hogy egy tesztkörnyezet szabályzat megadása, hogy a felhasználó csak öt virtuális gépeket hozhat létre. Azonban ha a felhasználó üzembe helyezi a Resource Manager-sablon, amely létrehozza a virtuális gépek több tucat, amelyek használata engedélyezett. Házirendeket, amelyek nem értékeli ki a következők:
+   Például hogy előfordulhat, hogy egy tesztkörnyezet szabályzat megadása, hogy a felhasználó csak öt virtuális gépeket hozhat létre. Azonban a felhasználó telepíthet egy Resource Manager-sablon, amely több tucat virtuális gépeket hoz létre. Házirendeket, amelyek nem értékeli ki a következők:
 
    - Virtuális gépek száma felhasználónként
    - Prémium szintű virtuális gépek labor felhasználónkénti száma

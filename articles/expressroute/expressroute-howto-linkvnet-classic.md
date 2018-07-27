@@ -4,23 +4,16 @@ description: Ez a dokumentum az ExpressRoute-Kapcsolatcsoportok összekapcsolás
 services: expressroute
 documentationcenter: na
 author: ganesr
-manager: carmonm
-editor: ''
-tags: azure-service-management
-ms.assetid: 9b53fd72-9b6b-4844-80b9-4e1d54fd0c17
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/25/2018
+ms.topic: conceptual
+ms.date: 07/26/2018
 ms.author: ganesr
-ms.openlocfilehash: 7e1faa9dc5901861aab8e7911c241e6704b805b1
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 99e0bbc0e2501deead8990776d35835ea396590b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257843"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284381"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz a PowerShell (klasszikus) használatával
 > [!div class="op_single_selector"]
@@ -40,9 +33,9 @@ Ez a cikk segítséget nyújt a virtuális hálózatok (Vnetek) összekapcsolás
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
-1. Az Azure PowerShell-modulok legújabb verziójára van szüksége. Letöltheti a legújabb PowerShell-modulok PowerShell szakaszában a [Azure letöltőoldala](https://azure.microsoft.com/downloads/). Kövesse a [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) konfigurálása az Azure PowerShell-modulok használata a számítógép részletes útmutatást.
-2. Át kell tekintenie a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
-3. Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége.
+
+* Tekintse át a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
+* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége.
    * Kövesse az utasításokat [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-classic.md) , és engedélyezze a kapcsolatcsoportot kapcsolatszolgáltatójával rendelkezik.
    * Gondoskodjon arról, hogy az Azure privát társviszony-létesítést a kapcsolatcsoporthoz konfigurálva. Tekintse meg a [útválasztás konfigurálását](expressroute-howto-routing-classic.md) cikk vonatkozó útválasztási utasításokat.
    * Győződjön meg arról, hogy az Azure privát társviszony-létesítés konfigurálva legyen, és a BGP társviszony-létesítés a hálózat és a Microsoft között működik, így engedélyezheti a végpontok közötti kapcsolat.
@@ -52,16 +45,31 @@ Legfeljebb 10 virtuális hálózatok csatlakoztatása egy ExpressRoute-kapcsolat
 
 Egyetlen virtuális hálózat legfeljebb négy ExpressRoute-Kapcsolatcsoportok lehet kapcsolódni. Egyes ExpressRoute-kapcsolatcsoporthoz csatlakozik egy új hivatkozás létrehozásához használja az alábbi folyamatot. Az ExpressRoute-Kapcsolatcsoportok ugyanahhoz az előfizetéshez tartozik, eltérő előfizetésekben vagy mindkét vegyesen is lehet.
 
+## <a name="download-the-latest-powershell-cmdlets"></a>Töltse le a legújabb PowerShell-parancsmagok
+
+Az Azure PowerShell-modulok legújabb verziójára van szüksége. Letöltheti a legújabb PowerShell-modulok PowerShell szakaszában a [Azure letöltőoldala](https://azure.microsoft.com/downloads/). Kövesse a [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) konfigurálása az Azure PowerShell-modulok használata a számítógép részletes útmutatást.
+
+Emellett meg kell töltse le az ExpressRoute-modult. A következő Példaparancsok használatával töltse le az Azure és az ExpressRoute-modulok. Ezek a parancsok használatakor vegye figyelembe, hogy a verziószáma (a példában 5.1.1-es) változik, amint a parancsmagok újabb verziói jelennek meg.
+
+```powershell
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
+```
+
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Azonos előfizetésben található virtuális hálózat csatlakoztatása egy kapcsolatcsoporthoz
 Egy virtuális hálózatot, összekapcsolása egy ExpressRoute-kapcsolatcsoportot, az alábbi parancsmag használatával. Győződjön meg arról, hogy a virtuális hálózati átjáró jön létre, és készen áll a csatolás, a parancsmag futtatása előtt.
 
-    New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
-    Provisioned
+```powershell
+New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+Provisioned
+```
     
 ## <a name="remove-a-virtual-network-link-to-a-circuit"></a>Virtuális hálózat bevonása egy kapcsolatcsoportba hivatkozás eltávolítása
 Egy virtuális hálózati kapcsolat ExpressRoute-kapcsolatcsoporttal történő eltávolításához az alábbi parancsmag használatával. Győződjön meg arról, hogy az aktuális előfizetésben az adott virtuális hálózathoz van-e kiválasztva. 
 
-    Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+```powershell
+Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+```
  
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Egy másik előfizetéshez tartozó virtuális hálózat bevonása egy kapcsolatcsoportba
@@ -76,7 +84,7 @@ A nagyméretű felhőbeli belül a kisebb felhők mindegyike egy szervezet kül�
 
 ![Az előfizetések közötti kapcsolat](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
-### <a name="administration"></a>Felügyelet
+### <a name="administration"></a>Adminisztráció
 A *kapcsolatcsoport tulajdonosát* az előfizetés, amelyben az ExpressRoute-kapcsolatcsoport létrehozása rendszergazdai/coadministrator van. A kapcsolatcsoport tulajdonosát a rendszergazdák és társrendszergazdák más előfizetések néven adhatják *kapcsolatcsoport-felhasználó*ahhoz, hogy a saját dedikált Kapcsolatcsoportok. Kapcsolatcsoport felhasználók, akik a szervezet ExpressRoute-kapcsolatcsoport használatára jogosult kapcsolat előfizetésében a virtuális hálózat az ExpressRoute-kapcsolatcsoport után jogosultak.
 
 A kapcsolatcsoport tulajdonosát a rendelkezik módosítja, és bármikor engedélyek visszavonása. Az engedély visszavonása azt eredményezi, hogy törli az előfizetést, amelynek hozzáférését visszavonták. az összes hivatkozást.

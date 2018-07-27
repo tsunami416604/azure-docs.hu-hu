@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d49164748079346f24aeeebe216b2668a4e3aed
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258492"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283223"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
 
@@ -42,14 +42,14 @@ Nem. Közvetlen egyszeri bejelentkezés csak akkor használható az Azure AD vil
 
 Az alábbiakban az alkalmazásokat, amelyek ezeket a paramétereket küldése az Azure ad-hez, és ezért felhasználók csendes bejelentkezési élményt nyújt közvetlen egyszeri bejelentkezés (azaz nincs szükség a felhasználók saját felhasználónevek bemeneti) használatával nem teljes listája:
 
-| Alkalmazás neve | Alkalmazás URL-cím használható |
+| Alkalmazásnév | Alkalmazás URL-cím használható |
 | -- | -- |
 | Hozzáférési panel | myapps.microsoft.com/contoso.com |
 | Webes Outlook | outlook.office365.com/contoso.com |
 
 Emellett a felhasználók kapnak-e egy csendes bejelentkezési felület Ha kérelmet küld a bejelentkezési kérelmek ábráját végpontok az Azure AD -, https://login.microsoftonline.com/contoso.com/<..> vagy https://login.microsoftonline.com/<tenant_ID>/<..> – helyett az Azure AD közös végpont – vagyis https://login.microsoftonline.com/common/<...>. Az alábbiakban az alkalmazásokat, amelyek az ilyen típusú bejelentkezési kérelmek nem teljes listája.
 
-| Alkalmazás neve | Alkalmazás URL-cím használható |
+| Alkalmazásnév | Alkalmazás URL-cím használható |
 | -- | -- |
 | SharePoint Online | contoso.sharepoint.com |
 | Azure Portal | portal.azure.com/contoso.com |
@@ -94,10 +94,8 @@ Kövesse az alábbi lépéseket a helyszíni kiszolgálón hol futnak az Azure A
 
 1. Hívás `$creds = Get-Credential`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatait a kívánt AD-erdőben.
 
->[!NOTE]
->A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
-
-használja az egyszerű felhasználónevek, hogy fordítása 
+    >[!NOTE]
+    >A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
 
 2. Hívás `Update-AzureADSSOForest -OnPremCredentials $creds`. Ez a parancs frissíti a Kerberos visszafejtési kulcs a `AZUREADSSOACC` számítógépfiókját az adott AD-erdő, és frissíti, az Azure ad-ben.
 3. Ismételje meg a fenti lépéseket minden beállította a szolgáltatást az AD-erdőben.
@@ -107,17 +105,36 @@ használja az egyszerű felhasználónevek, hogy fordítása
 
 ## <a name="how-can-i-disable-seamless-sso"></a>Hogyan tilthatom közvetlen egyszeri bejelentkezés?
 
-Közvetlen egyszeri bejelentkezés az Azure AD Connect használatával letilthatók.
+### <a name="step-1-disable-the-feature-on-your-tenant"></a>1. lépés A bérlő a funkció letiltásához
 
-Futtassa az Azure AD Connectet, válassza a "Change felhasználói bejelentkezési oldal", és kattintson a "Tovább gombra". Ezután törölje a jelet az "Egyszeri bejelentkezés engedélyezése" beállítást. Kövesse a varázsló lépéseit. A varázsló befejezése után közvetlen egyszeri bejelentkezés le van tiltva a bérlő.
+#### <a name="option-a-disable-using-azure-ad-connect"></a>"A" lehetőség Tiltsa le az Azure AD Connect használatával
 
-Azonban megjelenik egy üzenet, amely a következő képernyőn:
+1. Futtassa az Azure AD Connectet, válassza a **módosítása felhasználói bejelentkezési oldal** kattintson **tovább**.
+2. Törölje a jelet a **egyszeri bejelentkezés engedélyezése** lehetőséget. Kövesse a varázsló lépéseit.
+
+A varázsló befejezése után a bérlő közvetlen egyszeri bejelentkezés letiltásra kerül. Azonban megjelenik egy üzenet, amely a következő képernyőn:
 
 "Egyszeri bejelentkezés letiltva, de további manuális lépések szükségesek a teljes karbantartás. További információk"
 
-A folyamat befejezéséhez kövesse az alábbi manuális lépéseket a helyszíni kiszolgálón hol futnak az Azure AD Connect:
+A karbantartási folyamat befejezéséhez hajtsa végre a 2. és 3 a helyszíni kiszolgálón hol futnak az Azure AD Connect.
 
-### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>1. lépés Ha közvetlen egyszeri bejelentkezés engedélyezve van az AD-erdőkkel listájának beolvasása
+#### <a name="option-b-disable-using-powershell"></a>"B" lehetőség Tiltsa le a PowerShell használatával
+
+Futtassa az alábbi lépéseket a helyszíni kiszolgálón, ahol futtatja az Azure AD Connect:
+
+1. Először töltse le és telepítse a [Microsoft Online Services bejelentkezési segéd](http://go.microsoft.com/fwlink/?LinkID=286152).
+2. Ezután töltse le és telepítse a [64 bites Azure Active Directory-modul Windows Powershellhez készült](http://go.microsoft.com/fwlink/p/?linkid=236297).
+3. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
+4. Ezzel a paranccsal a zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása: `Import-Module .\AzureADSSO.psd1`.
+5. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
+6. Hívás `Enable-AzureADSSO -Enable $false`.
+
+>[!IMPORTANT]
+>Közvetlen egyszeri bejelentkezés letiltása PowerShell-lel nem változik az állapota, az Azure AD Connectben. Engedélyezve van a közvetlen egyszeri bejelentkezés fog megjelenni a **felhasználói bejelentkezés módosítása** lapot.
+
+### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>2. lépés Ha közvetlen egyszeri bejelentkezés engedélyezve van az AD-erdőkkel listájának beolvasása
+
+Ha le van tiltva a közvetlen egyszeri bejelentkezés az Azure AD Connect használatával, kövesse a lépéseket: 1 – az alábbi 5. Közvetlen egyszeri bejelentkezés használata esetén inkább a PowerShell le van tiltva, ha ugorhat alábbi 6. lépés.
 
 1. Először töltse le és telepítse a [Microsoft Online Services bejelentkezési segéd](http://go.microsoft.com/fwlink/?LinkID=286152).
 2. Ezután töltse le és telepítse a [64 bites Azure Active Directory-modul Windows Powershellhez készült](http://go.microsoft.com/fwlink/p/?linkid=236297).
@@ -126,7 +143,7 @@ A folyamat befejezéséhez kövesse az alábbi manuális lépéseket a helyszín
 5. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
 6. Hívás `Get-AzureADSSOStatus`. Ez a parancs listáját jeleníti meg, AD-erdőkkel, (tekintse meg a "Tartományok" listája), amelyre ez a funkció engedélyezve van a.
 
-### <a name="step-2-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>2. lépés Törölje kézzel a `AZUREADSSOACCT` számítógépfiókkal minden AD-erdőben, amely megjelenik a listában.
+### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>3. lépés Törölje kézzel a `AZUREADSSOACCT` számítógépfiókkal minden AD-erdőben, amely megjelenik a listában.
 
 ## <a name="next-steps"></a>További lépések
 

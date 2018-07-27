@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 99cd7fe6f9f46ff4d6dbbf6a6e024b3b32679724
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6d37ae9eb5aa5961c5da2e4cce0e79679f1e65ac
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444265"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283642"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Állítsa be, és az Azure Cosmos DB-tárolók és az adatbázis átviteli sebesség lekérdezése
 
@@ -153,7 +153,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-### <a name="set-throughput-at-the-for-a-set-of-containers-or-at-the-database-level"></a>Set-átviteli sebességet a készletre a tárolók vagy az adatbázis szintjén
+### <a name="set-throughput-for-a-set-of-containers-at-the-database-level"></a>Az adatbázis szintjén tárolók készletének átviteli sebesség beállítása
 
 Íme egy Fragment kódu Pro kiépítési 100 000 kérelemegység / másodperc illenek különböző tárolók az SQL API .NET SDK használatával:
 

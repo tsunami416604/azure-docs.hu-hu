@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 3389fed86fba8059db82816a6fc752f5374369a7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214982"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283368"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítés: Gyors útmutató
 
@@ -73,7 +73,7 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek.
 Átmenő hitelesítés keresztül engedélyezése [az Azure AD Connect](active-directory-aadconnect.md).
 
 >[!IMPORTANT]
->Az átmenő hitelesítés az Azure AD Connect elsődleges vagy átmeneti kiszolgálón engedélyezheti. Javasoljuk, hogy engedélyezi azt az elsődleges kiszolgálóról.
+>Az átmenő hitelesítés az Azure AD Connect elsődleges vagy átmeneti kiszolgálón engedélyezheti. Azt javasoljuk, hogy engedélyezi azt az elsődleges kiszolgálóról. Ha hoz létre egy Azure AD Connectet átmeneti kiszolgálót a jövőben, **kell** válassza a bejelentkezés beállításaként az átmenő hitelesítés továbbra is; a program egy másik lehetőség kiválasztásával **letiltása** A bérlői és az elsődleges kiszolgálón a beállítás felülbírálása az átmenő hitelesítés.
 
 Ha először telepíti az Azure AD Connect, válassza ki a [egyéni telepítési útvonal](active-directory-aadconnect-get-started-custom.md). Jelenleg a **felhasználói bejelentkezés** lapon a **átmenő hitelesítés** , a **bejelentkezési módszert**. A sikeres telepítést, a egy átmenő hitelesítési ügynök telepítve van az Azure AD Connect ugyanazon a kiszolgálón. Emellett az átmenő hitelesítés szolgáltatás engedélyezve van a bérlőn.
 

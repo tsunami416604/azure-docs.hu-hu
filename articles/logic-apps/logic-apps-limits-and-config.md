@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: eaf05d44a4d77f1a294664485e38c6f5719ce238
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: d153fa495c82103460dd8e4e2aae6000e49eb3eb
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238311"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283588"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -52,7 +52,7 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 | Name (Név) | Korlát | Megjegyzések | 
 |------|-------|-------| 
 | Futtatás időtartama | 90 nap | Ha módosítani szeretné ezt a korlátot, lásd: [módosítása Futtatás időtartama](#change-duration). | 
-| Tárterület adatmegőrzése | a Futtatás 90 nap kezdete | Ha módosítani szeretné ezt a korlátot, lásd: [adatmegőrzés storage módosítása](#change-retention). | 
+| Tárterület adatmegőrzése | a Futtatás 90 nap kezdete | 7 nap, és 90 nap közötti értéket módosítja ezt a korlátot, lásd: [adatmegőrzés storage módosítása](#change-retention). | 
 | Minimális ismétlődési időköz | 1 másodperc | | 
 | Maximális ismétlődési időköz | 500 nap | | 
 |||| 
@@ -62,7 +62,7 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 ### <a name="change-run-duration-and-storage-retention"></a>Futtatás időtartama és a storage adatmegőrzés módosítása
 
-7 nap, és 90 nap közötti értékre módosíthatja ezt a korlátot. Meghaladja a maximális, go [a Logic Apps-csapat](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
+Ha módosítani szeretné az alapértelmezett korlát a 7 nap, és 90 nap között, kövesse az alábbi lépéseket. Ha meg kell meghaladja a maximális, [a Logic Apps-csapat](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
 
 1. Az Azure Portalon, a logikai alkalmazás menüjében válassza a **munkafolyamat-beállítások**. 
 
@@ -72,16 +72,18 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 <a name="looping-debatching-limits"></a>
 
-## <a name="looping-and-debatching-limits"></a>A hurkokat és a kötegelés megszüntetésére vonatkozó korlátok
+## <a name="concurrency-looping-and-debatching-limits"></a>Egyidejűségi, hurkokat és a kötegelés megszüntetésére vonatkozó korlátok
 
 Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
-| UNTIL-iterációk | 5000 | | 
-| ForEach-elemek | 100 000 | Használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md) szűrhet nagyobb tömböket igény szerint. | 
-| ForEach-párhuzamosság | 50 | Az alapértelmezett érték 20. <p>Ez a ForEach ciklus az alapértelmezett szint módosításához állítsa a `runtimeConfiguration` tulajdonságot a `foreach` művelet. <p>Egymás után futtatja a ForEach ciklus, állítsa be a `operationOptions` "Szekvenciális" tulajdonságot a `foreach` művelet. | 
+| Az eseményindító egyidejűségi | 50 | Az alapértelmezett érték 20. Ez a korlátozás ismerteti egy időben, vagy a párhuzamosan futtatható logic app-példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát egy értéknek 1 és 50 között szélsőértékeket is beleértve, lásd: [módosítása az eseményindító egyidejűségi](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás után aktiválása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maximális várakozási futtatások | 100 | Az alapértelmezett érték 10. Ez a korlátozás ismerteti a logikai alkalmazás futtatását, amikor a logikai alkalmazás már fut a legnagyobb párhuzamos alkalmazáspéldányok várhat példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát 0 és 100 közötti értéket szélsőértékeket is beleértve, lásd: [módosítása várakozási futtatások korlátozza](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Foreach-elemek | 100 000 | Ez a korlátozás maximális számát, és egy "mindegyikre" hurkot feldolgozására képes tömbelemek ismerteti. <p><p>Nagyobb tömböket szűrhet, használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md). | 
+| Foreach ciklus ismétléseinek | 50 | Az alapértelmezett érték 20. Ez a korlátozás ismerteti a "for each" maximális számát az ismétlések egy időben, vagy a párhuzamosan futtatható ikonjához. <p><p>Az alapértelmezett korlát a egy értéke 1 és 50 között szélsőértékeket is beleértve, című témakör nyújt [módosítása "for each" egyidejűségi](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtassa a "for each" hurkokat egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | SplitOn-elemek | 100 000 | | 
+| UNTIL-iterációk | 5000 | | 
 |||| 
 
 <a name="throughput-limits"></a>
@@ -91,14 +93,14 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 | Name (Név) | Korlát | Megjegyzések | 
-| ----- | ----- | ----- | 
-| Művelet-végrehajtások száma 5 percenként | 100 000 | A 300,000 korlátjának növelését, futtathatja a logikai alkalmazás `High Throughput` mód. A magas átviteli mód, konfigurálása a `runtimeConfiguration` a munkafolyamat-erőforrás beállítása a `operationOptions` tulajdonságot `OptimizedForHighThroughput`. <p>**Megjegyzés:**: magas átviteli mód előzetes verzióban érhető el. Ezenkívül juttathatja el a munkaterhelés egynél több alkalmazás között igény szerint. | 
-| Műveletek egyidejű kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek számát, vagy igény szerint időtartamának csökkentése érdekében. | 
-| Futásidejű végpont: egyidejű beérkező hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy igény szerint időtartamának csökkentése érdekében. | 
-| Futásidejű végpont: olvassa el a hívások száma 5 percenként  | 60,000 | Is szét a számítási feladatok több alkalmazás igény szerint. | 
-| Futásidejű végpont: 5 percenként hívások meghívása| 45,000 | Is szét a számítási feladatok több alkalmazás igény szerint. |
-| Tartalom átviteli 5 percenként | 600 MB | Is szét a számítási feladatok több alkalmazás igény szerint. |  
-||||| 
+| ---- | ----- | ----- | 
+| Művelet: Végrehajtások száma 5 percenként | 300,000 | Az alapértelmezett érték 100 000. Az alapértelmezett korlát módosításához lásd [a logikai alkalmazás futtatása "nagy átviteli sebességű" módban](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), amely jelenleg előzetes verzióban. Vagy a számítási feladatok szét szükség szerint több mint egy logikai alkalmazást. | 
+| Művelet: Párhuzamos kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
+| Futásidejű végpont: egyidejű beérkező hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
+| Futásidejű végpont: olvassa el a hívások száma 5 percenként  | 60,000 | Számítási feladatok között egynél több alkalmazáshoz szükség szerint terjesztheti. | 
+| Futásidejű végpont: 5 percenként hívások meghívása | 45,000 | Számítási feladatok között egynél több alkalmazáshoz szükség szerint terjesztheti. | 
+| Tartalom átviteli 5 percenként | 600 MB | Számítási feladatok között egynél több alkalmazáshoz szükség szerint terjesztheti. | 
+|||| 
 
 Nyissa meg a fenti ezeket a korlátokat, a normál feldolgozása, vagy futtassa a terheléses tesztelés díjaival, előfordulhat, hogy nyissa meg a fenti ezeket a korlátokat [a Logic Apps-csapat](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
 
@@ -278,7 +280,7 @@ Minden logikai alkalmazás egy régióban használja ugyanazokat a tartományoka
 | Nyugat-Japán | 40.74.140.173, 40.74.81.13, 40.74.85.215 |
 | USA északi középső régiója | 168.62.249.81, 157.56.12.202, 65.52.211.164 |
 | Észak-Európa | 13.79.173.49, 52.169.218.253, 52.169.220.174 |
-| USA déli középső régiója | 52.172.9.47, 52.172.49.43, 52.172.51.140 |
+| USA déli középső régiója | 13.65.98.39, 13.84.41.46, 13.84.43.45 |
 | Dél-India | 52.172.9.47, 52.172.49.43, 52.172.51.140 |
 | Délkelet-Ázsia | 52.163.93.214, 52.187.65.81, 52.187.65.155 |
 | USA nyugati középső régiója | 52.161.26.172, 52.161.8.128, 52.161.19.82 |
