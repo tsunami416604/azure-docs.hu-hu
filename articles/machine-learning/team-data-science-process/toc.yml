@@ -26,8 +26,6 @@
       href: project-lead-tasks.md
     - name: Egyéni közreműködő
       href: project-ic-tasks.md
-- name: Projektstruktúra
-  href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
 - name: Projekttervezés
   href: team-data-science-process-project-templates.md
 - name: Fejlesztés
@@ -94,9 +92,6 @@
       href: team-data-science-process-for-devops.md
 - name: Útmutató
   items:
-    - name: TSDP használata az Azure ML-ben
-      href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
-      maintainContext: true
     - name: Adatelemzési környezetek beállítása
       href: environment-setup.md
       items:
@@ -218,6 +213,9 @@
               maintainContext: true
     - name: Modellek üzembe helyezése éles környezetben
       href: deploy-models-in-production.md
+    - name: TSDP használata az Azure ML-ben
+      href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
+      maintainContext: true
 - name: Kapcsolódó témakörök
   items:
     - name: Azure Machine Learning – AML
@@ -235,28 +233,26 @@
           href: cortana-intelligence-appsource-evaluation-tool.md
     - name: Cortana Analytics
       items:
-        - name: API-k
+        - name: Rendellenességek észlelése
+          href: apps-anomaly-detection-api.md
+        - name: Cognitive Services
+          href: 'https://docs.microsoft.com/azure/cognitive-services/'
+        - name: Prediktív karbantartás
           items:
-            - name: Rendellenességek észlelése
-              href: apps-anomaly-detection-api.md
-            - name: Cognitive Services
-              href: 'https://docs.microsoft.com/azure/cognitive-services/'
-            - name: Prediktív karbantartás
-              items:
-                - name: Áttekintés
-                  href: cortana-analytics-playbook-predictive-maintenance.md
-                - name: Architektúra
-                  href: cortana-analytics-architecture-predictive-maintenance.md
-                - name: Műszaki útmutató
-                  href: cortana-analytics-technical-guide-predictive-maintenance.md
-            - name: Járműtelemetria
-              items:
-                - name: Áttekintés
-                  href: cortana-analytics-playbook-vehicle-telemetry.md
-                - name: Útmutató
-                  href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
-                - name: Beállítás
-                  href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
+            - name: Áttekintés
+              href: cortana-analytics-playbook-predictive-maintenance.md
+            - name: Architektúra
+              href: cortana-analytics-architecture-predictive-maintenance.md
+            - name: Műszaki útmutató
+              href: cortana-analytics-technical-guide-predictive-maintenance.md
+        - name: Járműtelemetria
+          items:
+            - name: Áttekintés
+              href: cortana-analytics-playbook-vehicle-telemetry.md
+            - name: Útmutató
+              href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
+            - name: Beállítás
+              href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: További források
   items:
     - name: Blogok
@@ -279,8 +275,6 @@
           href: 'https://newsignature.com/services/professional-services/advanced-analytics/'
         - name: Kék gránit
           href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
-        - name: Microsoft Consulting Services
-          href: 'https://www.microsoft.com/en-us/microsoftservices/business-analytics.aspx'
     - name: Kapcsolódó Microsoft-források
       items:
         - name: MSDN-fórum
