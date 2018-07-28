@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9341c3bcbe90788318c9b20ccc6988461e972347
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 22751d7ab38717fefdebe107e7a7d6fc10dda4c4
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264538"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326190"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -43,7 +43,6 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 * Az AD séma verziója és az erdő működési szintje Windows Server 2003 vagy újabb verzióját kell lennie. A tartományvezérlőkön futtatható bármely verziója mindaddig, amíg a séma és az erdő szintű követelmények teljesülnek-e.
 * Ha azt tervezi, hogy a funkció használatához **jelszóvisszaíró**, akkor a tartományvezérlőket kell lennie (a legújabb SP) a Windows Server 2008 vagy újabb. Ha a tartományvezérlők 2008 (R2 előtti), akkor is telepítenie kell [gyorsjavítás KB2386717](http://support.microsoft.com/kb/2386717).
 * Az Azure AD által használt tartományvezérlő írhatónak kell lennie. Ez **nem támogatott** használata egy írásvédett tartományvezérlő (csak olvasható tartományvezérlő) és az Azure AD Connect nem minden írási átirányítások követése.
-* Ez **nem támogatott** használata a helyszíni erdők/tartományok által (Névvégződés nélküli tartományok) használatával.
 * Ez **nem támogatott** használata a helyszíni erdők/tartományok használatával "pontozott" (nevében pont szerepel ".") NetBios-nevét.
 * Javasoljuk, hogy [az Active Directory Lomtár engedélyezése](active-directory-aadconnectsync-recycle-bin.md).
 

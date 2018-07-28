@@ -8,18 +8,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 5b027051d4ea1e2f43d65a68def0482a44c7a3b7
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248775"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308688"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
-Az Azure Import/Export szolgáltatás segítségével biztonságosan importálása az Azure-adatközpont-meghajtókon szállításával az Azure Blob storage és az Azure Files nagy mennyiségű adat. Ez a szolgáltatás adatainak átvitelét az Azure Blob storage-ból a merevlemez-meghajtók, és küldje el a helyszíni hely a használatával is lehet. Egy vagy több lemezt az adatok importálhatók, vagy az Azure Blob storage vagy az Azure Files. 
+Az Azure Import/Export szolgáltatás segítségével biztonságosan importálása az Azure-adatközpont-meghajtókon szállításával az Azure Blob storage és az Azure Files nagy mennyiségű adat. Ez a szolgáltatás adatainak átvitelét az Azure Blob storage-ból a merevlemez-meghajtók, és küldje el a helyszíni hely a használatával is lehet. Egy vagy több lemezmeghajtót származó adatok importálhatók, vagy az Azure Blob storage vagy az Azure Files. 
 
-Az Azure Import/Export szolgáltatás megköveteli, hogy adja meg a saját lemezek. Ha azt szeretné, a Microsoft által biztosított lemezek használata az adatok átviteléhez az Azure Data Box-lemezek használatával adatok importálása az Azure-bA. A Microsoft 40 TB-os kapacitása megrendelésenként keresztül egy regionális szolgáltató adatközpontjában legfeljebb 5 titkosított tartós állapotú lemezt (SSD-kkel) tartalmaz. Gyorsan lemezek konfigurálása, másolja az adatokat a lemezeken, USB 3.0-kapcsolaton, és juttassa vissza az Azure-bA. További információért ugorjon [áttekintése az Azure Data Box-lemezek](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
+Az Azure Import/Export szolgáltatás lehetővé teszi a saját lemezmeghajtókat vagy a Microsoft által biztosított meghajtók használata. 
+
+Ha azt szeretné, a Microsoft által biztosított meghajtók használata az adatok átviteléhez használható [Azure Data Box-lemezek](../../databox/data-box-disk-overview.md) adatok importálása az Azure-bA. A Microsoft 40 TB-os kapacitásáig keresztül egy regionális szolgáltató adatközpontjában megrendelésenként legfeljebb 5 titkosított tartós állapotú meghajtók (SSD-kkel) tartalmaz. Gyorsan lemezmeghajtók konfigurálása, másolja az adatokat a lemezmeghajtók USB 3.0-kapcsolaton keresztül és szállíthat a lemezmeghajtók vissza az Azure-bA. További információért ugorjon [áttekintése az Azure Data Box-lemezek](../../databox/data-box-disk-overview.md).
 
 ## <a name="azure-importexport-usecases"></a>Az Azure Import/Export usecases
 
@@ -34,23 +36,23 @@ Fontolja meg az Azure Import/Export szolgáltatás használatát, amikor feltöl
 
 Import/Export szolgáltatás a következő összetevőket használja:
 
-- **Importálási/exportálási**service: az Azure Portalon elérhető szolgáltatás segítségével a felhasználó létrehozása és nyomon követheti az importálás és a feladatok exportálása.  
+- **Importálási/exportálási szolgáltatás**: az Azure Portalon elérhető szolgáltatás segítségével a felhasználók használhassanak, és nyomon követése adatok (feltöltés) importálása és exportálása a feladatok (Letöltés).  
 
 - **WAImportExport eszköz**: Ez a parancssori eszköz, amely a következőket: 
-    - Előkészíti a meghajtók szállított importálása.
+    - Előkészíti a lemezmeghajtók szállított importálása.
     - Lehetővé teszi az adatok másolása a meghajtóra.
     - Az adatok a meghajtón a BitLocker titkosítja.
     - Állít elő, a meghajtó Adatbázisnapló-fájlok importálása létrehozása során használt.
     - Export-feladatok szükséges meghajtók számú segíti az azonosítását.
+    
+> [!NOTE]
+> A WAImportExport eszköz két verziója, 1. és 2 verzió érhető el. Azt javasoljuk, hogy használja:
+> - 1. verzió az importálási és exportálási szolgáltatáshoz az Azure Blob storage-bA. 
+> - 2 az adatok importálása az Azure files-verzió.
+>
+> A WAImportExport eszköz csak nem kompatibilis a 64 bites Windows operációs rendszert. Lépjen az adott operációsrendszer-verziók támogatott, [Azure Import/Export követelmények](storage-import-export-requirements.md#supported-operating-systems).
 
-    Ez az eszköz két verziója, 1. és 2 verzió érhető el. Azt javasoljuk, hogy használja:
-
-    - 1. verzió az importálási és exportálási szolgáltatáshoz az Azure Blob storage-bA. 
-    - 2 az adatok importálása az Azure files-verzió.
-
-    A WAImportExport eszköz csak nem kompatibilis a 64 bites Windows operációs rendszert. Lépjen az adott operációsrendszer-verziók támogatott, [Azure Import/Export követelmények](storage-import-export-requirements.md#supported-operating-systems).
-
-- **Lemezek**: el olyan tartós állapotú meghajtókhoz (SSD-kkel) vagy a merevlemez-(HDD) meghajtók az Azure-adatközpontba. Importálási feladat létrehozásakor, az adatokat tartalmazó meghajtók szállításra. Exportálási feladat létrehozásakor, az Azure-adatközpontba üres meghajtókon szállításra. Adott lemez esetében, ugorjon [támogatja a lemeztípusok](storage-import-export-requirements.md#supported-hardware).
+- **Lemezmeghajtók**: el olyan tartós állapotú meghajtókhoz (SSD-kkel) vagy a merevlemez-(HDD) meghajtók az Azure-adatközpontba. Importálási feladat létrehozásakor, az adatokat tartalmazó meghajtók szállításra. Exportálási feladat létrehozásakor, az Azure-adatközpontba üres meghajtókon szállításra. Adott lemez esetében, ugorjon [támogatja a lemeztípusok](storage-import-export-requirements.md#supported-hardware).
 
 ## <a name="how-does-importexport-work"></a>Hogyan működik az importálási/exportálási?
 
@@ -58,18 +60,12 @@ Az Azure Import/Export szolgáltatás lehetővé teszi, hogy az adatforgalom az 
 
 A feladatok importálása vagy exportálása feladatok. Importálási feladat lehetővé teszi, hogy az adatok importálása az Azure-Blobokban vagy az Azure files, míg az exportálási feladatot lehetővé teszi, hogy az Azure-Blobokból az exportálandó adatokat. Importálási feladatokhoz szállítja az adatokat tartalmazó meghajtókat. Exportálási feladat létrehozásakor, az Azure-adatközpont üres meghajtókon szállításra. Minden esetben el olyan legfeljebb 10 meghajtók száma alapján történik.
 
-> [!IMPORTANT]
-> Adatok exportálása az Azure Files nem támogatott.
-
-Ebben a szakaszban magas szintű lépéseket vesz részt az importálási és exportálási feladatokat ismerteti. 
-
-
 ### <a name="inside-an-import-job"></a>Importálási feladat belül
 
 Magas szintű az importálási feladat az alábbi lépésekből áll:
 
 1. Határozza meg az adatokat importált, hány meghajtót van szüksége, az adatok Azure Storage-blob célhelyét.
-2. A WAImportExport eszközzel másolhat adatokat a lemezmeghajtók. A lemezek a Bitlockerrel titkosítani.
+2. A WAImportExport eszközzel másolhat adatokat a lemezmeghajtók. A merevlemez-meghajtók BitLocker-titkosítása.
 3. Importálási feladat létrehozása a céloldali tárfiók Azure Portalon. A meghajtó naplófájlok feltöltése.
 4. Adja meg a címet és a Szállítmányozó számlaszáma a szállítási a meghajtók vissza.
 5. A feladat létrehozása során a szállítási cím meghajtókon szállításra.
@@ -125,12 +121,12 @@ Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az 
 
 |Ország  |Ország  |Ország  |Ország  |
 |---------|---------|---------|---------|
-|USA keleti régiója    | Észak-Európa        | Közép-India        |USA-beli államigazgatás – Iowa         |
+|USA keleti régiója    | Észak-Európa        | Közép-India        |US Gov Iowa         |
 |USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD – Kelet        |
 |USA 2. keleti régiója    | Kelet-Ázsia        |  Nyugat-India        | US DoD – Középső régió        |
-|USA 2. nyugati régiója     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
+|USA nyugati régiója, 2.     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
 |USA középső régiója     | Kelet-Ausztrália        | Kelet-Kanada        | Észak-Kína        |
-|USA északi középső régiója     |  Délkelet-Ausztrália       | Dél-Brazília        | Egyesült Királyság déli régiója        |
+|USA északi középső régiója     |  Délkelet-Ausztrália       | Dél-Brazília        | Az Egyesült Királyság déli régiója        |
 |USA déli középső régiója     | Nyugat-Japán        |Korea középső régiója         | Közép-Németország        |
 |USA nyugati középső régiója     |  Kelet-Japán       | USA-beli államigazgatás – Virginia        | Északkelet-Németország        |
 

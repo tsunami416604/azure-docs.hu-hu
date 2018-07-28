@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 34b56c7435e2995f806828dce34f3d6bf425ca75
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 73ffb1ab9c91794325725bb3b99b210a06979443
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449933"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325513"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -98,7 +98,7 @@ A következő rendszergazdai szerepkörök érhetők el:
   | --- | --- |
   | Identity Protection Center |<ul><li>A biztonsági olvasó szerepkör összes engedélyt.<li>Ezenkívül lehetővé teszi új jelszavak kivételével az összes IPC műveletek végrehajtásához. |
   | Privileged Identity Management |<ul><li>A biztonsági olvasó szerepkör összes engedélyt.<li>**Nem lehet** kezelése az Azure ad-ben szerepkörtagságai és -beállítások. |
-  | <p>A figyelő az Office 365 szolgáltatás állapota</p><p>Az Office 365 Security & Compliance Centerben |<ul><li>A biztonsági olvasó szerepkör összes engedélyt.<li>Konfigurálhatja a komplex veszélyforrások elleni védelem szolgáltatást (kártevők és vírusok védelmi, rosszindulatú URL-cím konfigurációs, URL-cím nyomkövetés, stb.) az összes beállítást. |
+  | <p>A figyelő az Office 365 szolgáltatás állapota</p><p>Office 365 Biztonsági és megfelelőségi központ |<ul><li>A biztonsági olvasó szerepkör összes engedélyt.<li>Konfigurálhatja a komplex veszélyforrások elleni védelem szolgáltatást (kártevők és vírusok védelmi, rosszindulatú URL-cím konfigurációs, URL-cím nyomkövetés, stb.) az összes beállítást. |
   
 * **[Biztonsági olvasó](#security-reader)**: Ezzel a szerepkörrel rendelkező felhasználók globális csak olvasási hozzáférése van, többek között az Azure Active Directory, a Identity Protection, a Privileged Identity Management, valamint lehetővé teszi az Azure Active Directory olvasási Jelentkezzen be a jelentések és naplók. A szerepkör csak olvasási jogosultság az Office 365 Security & Compliance Centerben is nyújt. Office 365-engedélyekkel kapcsolatos további információt [az engedélyek az Office 365 Security & Compliance Centerben](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -106,7 +106,7 @@ A következő rendszergazdai szerepkörök érhetők el:
   | --- | --- |
   | Identity Protection Center |Olvassa el a biztonsági jelentések és a beállítási információk biztonsági funkciók<ul><li>Levélszemét<li>Titkosítás<li>Adatveszteség-megelőzés<li>Kártevőirtó<li>Komplex veszélyforrások elleni védelem<li>Adathalászat elleni<li>Mailflow szabályok |
   | Privileged Identity Management |<p>Csak olvasási hozzáférést minden információt illesztett rendelkezik az Azure AD PIM-ben: szabályzatok és a jelentések az Azure AD szerepkör-hozzárendeléseket, biztonsági ellenőrzi, és a jövőben olvassa el a hozzáférési házirend adatok és jelentések forgatókönyvek mellett az Azure AD szerepkör-hozzárendelés.<p>**Nem lehet** iratkozzon fel az Azure AD PIM-ben, vagy ne módosítsa. A PIM a portálon vagy a Powershellen keresztül valaki ezt a szerepkört a további szerepkörök (például a globális rendszergazdai vagy a kiemelt szerepkörű rendszergazda), számukra egy jelölt felhasználó esetén is aktiválhatja. |
-  | <p>A figyelő az Office 365 szolgáltatás állapota</p><p>Az Office 365 Security & Compliance Centerben</p> |<ul><li>Olvasás és riasztáskezelés<li>Biztonsági szabályzatok olvasása<li>Fenyegetések felderítése, a Cloud App Discovery és a Keresés és vizsgálat karantén olvasása<li>Az összes jelentés olvasása |
+  | <p>A figyelő az Office 365 szolgáltatás állapota</p><p>Office 365 Biztonsági és megfelelőségi központ</p> |<ul><li>Olvasás és riasztáskezelés<li>Biztonsági szabályzatok olvasása<li>Fenyegetések felderítése, a Cloud App Discovery és a Keresés és vizsgálat karantén olvasása<li>Az összes jelentés olvasása |
 
 * **[A szolgáltatástámogatási rendszergazda](#service-support-administrator)**: az ehhez a szerepkörhöz tartozó felhasználók támogatási kérelmeket nyithatnak a Microsoft Azure és az Office 365 szolgáltatásokban, és a szolgáltatás irányítópultját és üzenetközpontját center az Azure Portalon és az Office 365 felügyeleti portálján megtekinthetik a. További információ: [Office 365 rendszergazdai szerepköreinek](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -267,11 +267,6 @@ Az Application Proxy kivételével az alkalmazásregisztrációkkal és a válla
 Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultsággal rendelkezik. A Microsoft Graph API, Azure AD Graph API és az Azure AD PowerShell a szerepkör azonosítja a folyamat "Vállalati rendszergazdaként". Az "Globális rendszergazda" a [az Azure portal](https://portal.azure.com).
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
@@ -389,13 +384,8 @@ Ezen szerepkör tagjai a helyi Rendszergazdák csoport, az Azure AD-hez csatlako
 | **Műveletek** | **Leírás** |
 | --- | --- |
 
-### <a name="directory-reader"></a>Címtár-olvasó
+### <a name="directory-readers"></a>Directory-olvasók
 Alapszintű directory információkat olvashatja. Az alkalmazásokhoz való hozzáférés biztosítása
-
-  > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
@@ -449,11 +439,6 @@ Alapszintű directory információkat olvashatja. Az alkalmazásokhoz való hozz
 ### <a name="directory-synchronization-accounts"></a>Címtár-szinkronizálási fiókok
 Csak Azure AD Connect szolgáltatást használják.
 
-  > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/Policy/Create | Policy objektumok létrehozása az Azure Active Directoryban. |
@@ -482,11 +467,6 @@ Csak Azure AD Connect szolgáltatást használják.
 
 ### <a name="directory-writer"></a>Címtár-írója
 Olvasás, és alapszintű directory adatokat írnak a. Az alkalmazásokhoz való hozzáférés biztosítása
-
-  > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
@@ -783,6 +763,25 @@ Szerepkör-hozzárendelésekkel kezelheti az Azure ad-ben
 | microsoft.aad.directory/DirectoryRole/Update | A DirectoryRoles általános tulajdonságainak frissítése az Azure Active Directoryban. |
 | microsoft.aad.privilegedrolemanagement/AllEntities/AllActions | A Privileged Role Management szolgáltatás teljes körű felügyelete. |
 
+### <a name="reports-reader"></a>Jelentésolvasó
+Megtekintheti a bejelentkezési és a naplózási jelentéseket.
+
+  > [!NOTE]
+  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
+  >
+  >
+
+  > [!NOTE]
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.reports/AllEntities/Read | Azure AD-jelentések olvasása. |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
+| Microsoft.office365.usagereports/AllEntities/Read | Az Office 365-beli használati jelentések olvasása. |
+
 ### <a name="security-administrator"></a>Biztonsági rendszergazda
 Olvashatja a biztonsági információk és jelentések
 
@@ -810,25 +809,6 @@ Olvashatja a biztonsági információk és jelentések
 | microsoft.aad.privilegedrolemanagement/AllEntities/Read | Teljes körű olvasási hozzáférés a Privileged Identity Managementhez. |
 | microsoft.protectioncenter/AllEntities/Read | Az Office 365 Védelmi központ minden aspektusának olvasása. |
 | microsoft.protectioncenter/AllEntities/Update | Az Office 365 Védelmi központ felügyelete. |
-
-### <a name="reports-reader"></a>Jelentésolvasó
-Megtekintheti a bejelentkezési és a naplózási jelentéseket.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
-  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
-  >
-  >
-
-| **Műveletek** | **Leírás** |
-| --- | --- |
-| microsoft.aad.reports/AllEntities/Read | Azure AD-jelentések olvasása. |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
-| Microsoft.office365.usagereports/AllEntities/Read | Az Office 365-beli használati jelentések olvasása. |
 
 ### <a name="security-reader"></a>Biztonsági olvasó
 Megtekintheti a biztonsági adatokat és jelentéseket az Azure AD-ban és az Office 365-ben.

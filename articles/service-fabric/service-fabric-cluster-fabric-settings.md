@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 56c904c0da87c3b0023fe5c9a125a359e23678dc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 5628315423db1f0064d0e6b77f061d8e674757aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263810"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309153"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>A Service Fabric-fürt beállításait és a háló házirend testreszabása
 Ez a dokumentum bemutatja, hogyan szabhatja testre a különböző hálóbeállítások, és a fabric frissítési szabályzatának a Service Fabric-fürt számára. Testre szabható azokhoz a [az Azure portal](https://portal.azure.com) vagy egy Azure Resource Manager-sablon használatával.
@@ -59,11 +59,11 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="applicationgatewayhttp"></a>ApplicationGateway/Http
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|ApplicationCertificateValidationPolicy|sztring, alapértelmezett értéke "None"|Statikus| Ez nem ellenőrzi a kiszolgálótanúsítványt; a kérelem sikeres. Tekintse meg a konfigurációs ServiceCertificateThumbprints távoli, amely a fordított proxy megbízható tanúsítványok ujjlenyomatai vesszővel elválasztott listáját. Tekintse meg a távoli, amely a fordított proxy megbízható tanúsítványok a tulajdonos neve és kiállító ujjlenyomata ServiceCommonNameAndIssuer config. |
+|ApplicationCertificateValidationPolicy|sztring, alapértelmezett értéke "None"|Statikus| Ez nem ellenőrzi a kiszolgálótanúsítványt; a kérelem sikeres. Tekintse meg a konfigurációs ServiceCertificateThumbprints távoli, amely a fordított proxy megbízható tanúsítványok ujjlenyomatai vesszővel elválasztott listáját. Tekintse meg a távoli, amely a fordított proxy megbízható tanúsítványok a tulajdonos neve és kiállító ujjlenyomata ServiceCommonNameAndIssuer config. További tudnivalókért lásd: [fordított proxy biztonságos kapcsolatot](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 |BodyChunkSize |Uint, az alapértelmezett érték 16384 |Dinamikus| Az adattömbök a szervezet olvasásához használt bájtban biztosító méretét. |
 |CrlCheckingFlag|uint, alapértelmezett 0x40000000 |Dinamikus| Alkalmazás/szolgáltatás tanúsítványlánc érvényesítésének; jelzők például a CRL ellenőrzése 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY beállítás 0-ra letiltja a visszavont tanúsítványok Listájának ellenőrzése teljes támogatott értékeinek listáján szerződését, CertGetCertificateChain dwFlags szerint: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Időre (másodpercben). alapértelmezett érték a 120 |Dinamikus|Adja meg az időtartam másodpercben.  Az alapértelmezett kérés időtúllépése megtalálható a http-kérelmekre a http-app Gateway feldolgozása folyamatban. |
-|ForwardClientCertificate|bool, alapértelmezett érték a hamis|Dinamikus|Ha értéke HAMIS, a fordított proxy nem kéri az ügyféltanúsítványt. Ha értéke igaz, a fordított proxy lesz az SSL-kézfogás során az ügyféltanúsítványt kérhetnek és továbbítja a base64-kódolású PEM formátumú karakterláncot a szolgáltatást az X-ügyfél-Certificate.The service nevű fejléc sikertelen lehet a kérelmet a megfelelő állapotkód: Miután a tanúsítvány-adatok vizsgálatával. Ha ez igaz, és az ügyfél nem jelent-e a tanúsítvány, fordított proxy továbbítása egy üres fejlécet, és lehetővé teszik a szolgáltatást, így kezelni. Fordított proxy transzparens réteg fog működni.|
+|ForwardClientCertificate|bool, alapértelmezett érték a hamis|Dinamikus|Ha értéke HAMIS, a fordított proxy nem kéri az ügyféltanúsítványt. Ha értéke igaz, a fordított proxy lesz az SSL-kézfogás során az ügyféltanúsítványt kérhetnek és továbbítja a base64-kódolású PEM formátumú karakterláncot a szolgáltatást az X-ügyfél-Certificate.The service nevű fejléc sikertelen lehet a kérelmet a megfelelő állapotkód: Miután a tanúsítvány-adatok vizsgálatával. Ha ez igaz, és az ügyfél nem jelent-e a tanúsítvány, fordított proxy továbbítása egy üres fejlécet, és lehetővé teszik a szolgáltatást, így kezelni. Fordított proxy transzparens réteg fog működni. További tudnivalókért lásd: [ügyféltanúsítvány-alapú hitelesítés beállítása](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |sztring, alapértelmezett értéke "None" |Statikus| Azt jelzi, hogy a rendszer használatát a http app gateway végpont érvényes értékek a biztonsági hitelesítő adatok típusát "None / X 509. |
 |GatewayX509CertificateFindType |sztring, alapértelmezett "FindByThumbprint" |Dinamikus| Azt jelzi, hogy a tárolóban GatewayX509CertificateStoreName támogatott értéke által meghatározott tanúsítvány keresése: FindByThumbprint; FindBySubjectName. |
 |GatewayX509CertificateFindValue | sztring, alapértelmezett érték a "" |Dinamikus| Keresési szűrő keresse meg a http-app gateway tanúsítványt használt érték. Ezt a tanúsítványt a https-végpont konfigurálva van, és a szolgáltatások által szükség esetén az alkalmazás identitását is használható. Első; FindValue keresése Ha nem létezik; FindValueSecondary keresése. |
@@ -75,13 +75,13 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |NumberOfParallelOperations | Uint, alapértelmezett érték az 5000-es |Statikus|Olvasási és az http-kiszolgáló üzenetsorban közzéteendő száma. Ez vezérli, amelyeket teljesíteni tudja az HttpGateway egyidejű kérelmek száma. |
 |RemoveServiceResponseHeaders|sztring, alapértelmezett "dátum; Kiszolgáló"|Statikus|Pontosvessző / vesszővel elválasztott listája a válaszfejlécek, melyeket a rendszer eltávolítja a szolgáltatás válasza; való továbbítása előtt az ügyfél. Ha üres karakterláncot; értékre van állítva Adja át a szolgáltatás által visszaadott összes fejléc-van. azaz ne írja felül a dátum és a kiszolgáló |
 |ResolveServiceBackoffInterval |Idő (másodpercben), alapértelmezett érték az 5 |Dinamikus|Adja meg az időtartam másodpercben.  Lehetővé teszi az alapértelmezett visszatartási időköz egy sikertelen újrapróbálkozás előtt oldja meg a szolgáltatási művelet. |
-|SecureOnlyMode|bool, alapértelmezett érték a hamis|Dinamikus| SecureOnlyMode: true: fordított Proxy szolgáltatásokhoz, amelyek biztonságos végpontok közzététele csak továbbítja. FALSE (hamis): a fordított Proxy biztonságos/nem biztonságos végpontok kérelmeket továbbíthatja.  |
-|ServiceCertificateThumbprints|sztring, alapértelmezett érték a ""|Dinamikus|A vesszővel tagolt listája, amelyek a fordított proxy megbízható távoli tanúsítványok ujjlenyomatai.  |
+|SecureOnlyMode|bool, alapértelmezett érték a hamis|Dinamikus| SecureOnlyMode: true: fordított Proxy szolgáltatásokhoz, amelyek biztonságos végpontok közzététele csak továbbítja. FALSE (hamis): a fordított Proxy biztonságos/nem biztonságos végpontok kérelmeket továbbíthatja. További tudnivalókért lásd: [fordított proxy végpont lemezválasztási logika](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
+|ServiceCertificateThumbprints|sztring, alapértelmezett érték a ""|Dinamikus|A vesszővel tagolt listája, amelyek a fordított proxy megbízható távoli tanúsítványok ujjlenyomatai. További tudnivalókért lásd: [fordított proxy biztonságos kapcsolatot](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>ApplicationGateway/Http/ServiceCommonNameAndIssuer
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus| A távoli tanúsítványokat, amelyek a fordított proxy megbízható tárgy neve és kiállító ujjlenyomata.|
+|PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus| A távoli tanúsítványokat, amelyek a fordított proxy megbízható tárgy neve és kiállító ujjlenyomata. További tudnivalókért lásd: [fordított proxy biztonságos kapcsolatot](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
@@ -761,7 +761,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |FabricLogRoot |Sztring | Nem engedélyezett |Service fabric log gyökérkönyvtára. Ez az, ahol SF naplók és nyomkövetések kerülnek. |
 |NodesToBeRemoved|sztring, alapértelmezett érték a ""| Dinamikus |A csomópontok, amely konfigurációs frissítés részeként el kell távolítani. (Csak az önálló verziója telepítéseinek)|
 |ServiceRunAsAccountName |Sztring | Nem engedélyezett |A fiók neve, a fabric host szolgáltatás futtatására. |
-|SkipContainerNetworkResetOnReboot|bool, alapértelmezett érték a hamis|NotAllowed|Hogy elmaradjon-e visszaállítása folyamatban; tároló hálózati újraindításkor.|
+|SkipContainerNetworkResetOnReboot|bool, alapértelmezett érték a hamis|Nem engedélyezett|Hogy elmaradjon-e visszaállítása folyamatban; tároló hálózati újraindításkor.|
 |SkipFirewallConfiguration |Bool, alapértelmezett érték a False (hamis) | Nem engedélyezett |Itt adhatja meg, ha a tűzfal beállításainak meg kell adnia, a rendszer, vagy nem. Ez vonatkozik, csak akkor, ha a windows tűzfalat használja. Ha külső gyártótól származó tűzfalak használ, majd nyissa meg a portokat, a rendszer és alkalmazások általi használatát |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService

@@ -7,19 +7,19 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 07/16/2018
+ms.date: 07/27/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: a5d5c29b30f746c5507e45ecbee6c5ab9aff56f3
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: d350678d80497b44cdd854baf958926150867c01
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091942"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326098"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó
 
-SQL Database rugalmas készletei egy egyszerű és költséghatékony megoldás kezelése és méretezése több adatbázis, amely rendelkezik mértékben és kiszámíthatatlanul változik használati igényeknek is. A rugalmas készletben található adatbázisok egy Azure SQL Database-kiszolgálón, és beállítása a set áron erőforrások száma. Az Azure SQL Database rugalmas készleteivel az SaaS-fejlesztők az előre meghatározott költségvetésen belül maradva optimalizálhatják az adatbáziscsoportok ár-teljesítmény arányát, és rugalmas teljesítményt biztosíthatnak az egyes adatbázisokhoz.
+Az SQL Database rugalmas készletei egyszerű, költséghatékony megoldást kínálnak egyszerre több olyan adatbázis kezelésére és méretezésére, amelyek felhasználási igénye nagy mértékben és kiszámíthatatlanul változik. A rugalmas készletben található adatbázisok egy Azure SQL Database-kiszolgálón, és beállítása a set áron erőforrások száma. Az Azure SQL Database rugalmas készleteivel az SaaS-fejlesztők az előre meghatározott költségvetésen belül maradva optimalizálhatják az adatbáziscsoportok ár-teljesítmény arányát, és rugalmas teljesítményt biztosíthatnak az egyes adatbázisokhoz.
 
 ## <a name="what-are-sql-elastic-pools"></a>Mik a rugalmas SQL-készletek?
 
@@ -36,6 +36,9 @@ Rugalmas készletek megoldhatja a problémát azáltal, hogy az adatbázisok beo
 Rugalmas készletek köszönhetően a fejlesztő által az egyes adatbázisok használati időszakok kiszámíthatatlan befogadásához több adatbázis által közösen használt készlethez tartozó erőforrások megvásárlására. A készlet alapján vagy konfigurálhat erőforrásokat a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Egy készlet erőforrás-követelmény-adatbázisa a összesített kihasználtsága határozza meg. A fejlesztői költségvetés határozza meg a készlet számára elérhető erőforrások mennyisége. A fejlesztő egyszerűen adatbázisokat ad a készlethez, beállítja az adatbázisok erőforrások minimális és maximális (vagy minimális és maximális dtu-k vagy minimális vagy maximális virtuális magok a választott modell resourcing függően), és ezután beállítja az erőforrás-készlet alapján azok Költségvetés. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
 
 A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. Nagy terhelés alatt az adatbázisok használhatnak további erőforrásokat az igényeknek. A kisebb terhelésű adatbázisok kevesebbet, és terhelés alatt nem álló adatbázisoknak nincs erőforrás. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Emellett a készlet kiszámítható költségekkel rendelkezik. További erőforrások lehet hozzáadni egy meglévő készlet leállnának, azzal a különbséggel, hogy az adatbázisok áthelyezése a adja meg a további számítási erőforrásokat az új eDTU-foglalás szükség lehet. Hasonlóképpen ha már nincs szükség további erőforrásokat, távolíthatja el a létező készletből bármikor időben. Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
+
+> [!NOTE]
+> Adatbázisok áthelyezése vagy egy rugalmas készlet abból, ha nem jár egy rövid ideig (másodperc) sorrendje lesz a művelet végén kivéve ha az adatbázis-kapcsolatok megszakadnak.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Mikor érdemes egy SQL Database rugalmas készlet?
 

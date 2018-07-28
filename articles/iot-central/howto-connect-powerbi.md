@@ -8,12 +8,12 @@ ms.date: 07/16/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: peterpr
-ms.openlocfilehash: 1298ba85a221368d9153fea4f0311935dd51ff0f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 85c0432bceef3e94b32fa9b4a2803276b3efee17
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285787"
+ms.locfileid: "39324323"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>A Power BI-Irányítópulton az Azure IoT Central adatok megjelenítése és elemzése
 
@@ -33,9 +33,9 @@ Ez a megoldássablon állítja be a folyamatot, amely beolvassa az adatokat az A
 ## <a name="prerequisites"></a>Előfeltételek
 A sablon beállítása az alábbiak szükségesek:
 - Egy Azure-előfizetéshez való hozzáférés
-- Exportált adatok használatával [folyamatos adatexportálás](howto-export-data.md) az IoT-központ alkalmazásból. Azt javasoljuk, hogy bekapcsolja a mérések, az eszközök és az eszköz sablon-adatfolyam - a legtöbbet hozhassa ki a Power BI-irányítópulton.
+- Exportált adatok használatával [folyamatos adatexportálás](howto-export-data.md) az IoT-központ alkalmazásból. Azt javasoljuk, hogy bekapcsolja a mérések, eszközök és eszköz-sablon adatfolyam a legtöbbet hozhassa ki a Power BI-irányítópulton.
 - A Power BI Desktop (legújabb verzió)
-- A Power BI Pro (másokkal való megosztásához a sablon)
+- A Power BI Pro (Ha azt szeretné, az irányítópult megosztása másokkal)
 
 ## <a name="reports"></a>Jelentések
 

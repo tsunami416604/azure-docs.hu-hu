@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: ganesr
-ms.openlocfilehash: 99e0bbc0e2501deead8990776d35835ea396590b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: e598249d0065bde8b3fe74883da8a0e39c9bc7c7
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284381"
+ms.locfileid: "39308085"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz a PowerShell (klasszikus) használatával
 > [!div class="op_single_selector"]
@@ -25,6 +25,10 @@ ms.locfileid: "39284381"
 >
 
 Ez a cikk segítséget nyújt a virtuális hálózatok (Vnetek) összekapcsolása az Azure ExpressRoute-Kapcsolatcsoportok a klasszikus üzemi modell és a PowerShell használatával. Virtuális hálózatok ugyanabban az előfizetésben vagy egy másik előfizetés részeként is szerepelhetnek.
+
+Egyetlen virtuális hálózat legfeljebb négy ExpressRoute-Kapcsolatcsoportok lehet kapcsolódni. Ez a cikk a lépéseket követve hozzon létre új kapcsolatot minden egyes ExpressRoute-kapcsolatcsoporthoz csatlakozik. Az ExpressRoute-Kapcsolatcsoportok ugyanahhoz az előfizetéshez tartozik, eltérő előfizetésekben vagy mindkét vegyesen is lehet.
+
+Legfeljebb 10 virtuális hálózatok csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz kapcsolat. Az összes virtuális hálózatok ugyanazon geopolitikai régióban kell lennie. Kapcsolat egy nagyobb számú virtuális hálózatokat az ExpressRoute-kapcsolatcsoport vagy hivatkozás virtuális hálózatok, amelyek a geopolitikai régiók, ha az ExpressRoute prémium bővítmény engedélyezve. Ellenőrizze a [– gyakori kérdések](expressroute-faqs.md) kapcsolatos további részletekért a premium bővítményt.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -41,11 +45,7 @@ Ez a cikk segítséget nyújt a virtuális hálózatok (Vnetek) összekapcsolás
    * Győződjön meg arról, hogy az Azure privát társviszony-létesítés konfigurálva legyen, és a BGP társviszony-létesítés a hálózat és a Microsoft között működik, így engedélyezheti a végpontok közötti kapcsolat.
    * Rendelkeznie kell egy virtuális hálózat és a egy virtuális hálózati átjáró létrehozása, és teljesen kiépítve. Kövesse az utasításokat [virtuális hálózat konfigurálása expressroute](expressroute-howto-vnet-portal-classic.md).
 
-Legfeljebb 10 virtuális hálózatok csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz kapcsolat. Az összes virtuális hálózatok ugyanazon geopolitikai régióban kell lennie. Kapcsolat egy nagyobb számú virtuális hálózatokat az ExpressRoute-kapcsolatcsoport vagy hivatkozás virtuális hálózatok, amelyek a geopolitikai régiók, ha az ExpressRoute prémium bővítmény engedélyezve. Ellenőrizze a [– gyakori kérdések](expressroute-faqs.md) kapcsolatos további részletekért a premium bővítményt.
-
-Egyetlen virtuális hálózat legfeljebb négy ExpressRoute-Kapcsolatcsoportok lehet kapcsolódni. Egyes ExpressRoute-kapcsolatcsoporthoz csatlakozik egy új hivatkozás létrehozásához használja az alábbi folyamatot. Az ExpressRoute-Kapcsolatcsoportok ugyanahhoz az előfizetéshez tartozik, eltérő előfizetésekben vagy mindkét vegyesen is lehet.
-
-## <a name="download-the-latest-powershell-cmdlets"></a>Töltse le a legújabb PowerShell-parancsmagok
+### <a name="download-the-latest-powershell-cmdlets"></a>Töltse le a legújabb PowerShell-parancsmagok
 
 Az Azure PowerShell-modulok legújabb verziójára van szüksége. Letöltheti a legújabb PowerShell-modulok PowerShell szakaszában a [Azure letöltőoldala](https://azure.microsoft.com/downloads/). Kövesse a [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) konfigurálása az Azure PowerShell-modulok használata a számítógép részletes útmutatást.
 

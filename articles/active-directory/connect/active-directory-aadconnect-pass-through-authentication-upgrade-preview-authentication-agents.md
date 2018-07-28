@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 07/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: be76965e99a20c1f7164187255e26f6463926c2f
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f3460d22354a944a14c814c372cacf6839dc7bb7
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214727"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325428"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Az Azure Active Directory átmenő hitelesítés: Frissítési előzetes verziójú hitelesítési ügynökök
 
@@ -68,7 +68,7 @@ A hitelesítési ügynök ugyanazon a kiszolgálón a frissítés előtt frissí
 
 1. **Azure AD Connect frissítése**: ezen [cikk](./active-directory-aadconnect-upgrade-previous-version.md) , frissítsen az Azure AD Connect legújabb verziójára.
 2. **Távolítsa el az előzetes verzióját, a hitelesítési ügynök**: letöltése [a PowerShell-szkript](https://aka.ms/rmpreviewagent) , és futtassa rendszergazdaként a kiszolgálón.
-3. **Töltse le a hitelesítési ügynök legújabb verzióját (1.5.193.0 verzió vagy újabb)**: Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival. Válassza ki **Azure Active Directory -> az Azure AD Connect -> az átmenő hitelesítés ügynök letöltése ->**. Fogadja el a [szolgáltatási feltételeit](https://aka.ms/authagenteula) , és töltse le a hitelesítési ügynök legújabb verzióját. Is letöltheti a hitelesítési ügynök a [Itt](https://aka.ms/getauthagent).
+3. **Töltse le a hitelesítési ügynök legújabb verzióját (1.5.389.0 verzió vagy újabb)**: Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival. Válassza ki **Azure Active Directory -> az Azure AD Connect -> az átmenő hitelesítés ügynök letöltése ->**. Fogadja el a [szolgáltatási feltételeit](https://aka.ms/authagenteula) , és töltse le a hitelesítési ügynök legújabb verzióját. Is letöltheti a hitelesítési ügynök a [Itt](https://aka.ms/getauthagent).
 4. **Telepítse a legújabb verzióját, a hitelesítési ügynök**: futtassa a végrehajtható fájlt a 3. lépésben letöltött. Adja meg a bérlő globális rendszergazdai hitelesítő adatait, amikor a rendszer kéri.
 5. **Győződjön meg arról, hogy a legújabb verziója telepítve van-e**: módon Ugrás **Vezérlőpult -> Programok -> Programok és szolgáltatások** , és ellenőrizze, hogy nincs-e egy bejegyzés "**Microsoft Azure AD Connect A hitelesítési ügynök**".
 
@@ -80,7 +80,7 @@ A hitelesítési ügynök ugyanazon a kiszolgálón a frissítés előtt frissí
 Kövesse az alábbi lépéseket a többi kiszolgáló hitelesítési ügynökök frissítése (Ha nincs telepítve az Azure AD Connect):
 
 1. **Távolítsa el az előzetes verzióját, a hitelesítési ügynök**: letöltése [a PowerShell-szkript](https://aka.ms/rmpreviewagent) , és futtassa rendszergazdaként a kiszolgálón.
-2. **Töltse le a hitelesítési ügynök legújabb verzióját (1.5.193.0 verzió vagy újabb)**: Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival. Válassza ki **Azure Active Directory -> az Azure AD Connect -> az átmenő hitelesítés ügynök letöltése ->**. Fogadja el a szolgáltatási feltételeket, és a legújabb verzió letöltéséhez.
+2. **Töltse le a hitelesítési ügynök legújabb verzióját (1.5.389.0 verzió vagy újabb)**: Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival. Válassza ki **Azure Active Directory -> az Azure AD Connect -> az átmenő hitelesítés ügynök letöltése ->**. Fogadja el a szolgáltatási feltételeket, és a legújabb verzió letöltéséhez.
 3. **Telepítse a legújabb verzióját, a hitelesítési ügynök**: futtassa a 2. lépésben letöltött végrehajtható fájlt. Adja meg a bérlő globális rendszergazdai hitelesítő adatait, amikor a rendszer kéri.
 4. **Győződjön meg arról, hogy a legújabb verziója telepítve van-e**: módon Ugrás **Vezérlőpult -> Programok -> Programok és szolgáltatások** , és ellenőrizze, hogy nincs-e bejegyzés **Microsoft Azure AD Connect A hitelesítési ügynök**.
 

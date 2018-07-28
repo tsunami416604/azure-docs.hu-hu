@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4410adfd5788b06163b8da18b96d2f8a9c350ac8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 98ab398d2ab1dc3b7cb12a7d13a841f6d713b57c
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008789"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308575"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Az Eszközfelügyelet az Azure portal használatával
 
@@ -163,7 +163,7 @@ Eszköz törlése, két lehetősége van:
 
 **Megjegyzés:**
 
-- Az eszköz törlése az Azure AD globális rendszergazdának lennie kell.  
+- Meg kell lennie egy globális rendszergazdai vagy Intune-rendszergazda az eszköz törlése az Azure AD-ben.
 
 - Eszköz törlése:
  

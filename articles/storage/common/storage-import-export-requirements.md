@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 68e31f6b88a772ad67e3c58e11925f46f1cc37e9
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a86d5c1513594f5bc0df03b8ca7671a1f9541b4d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188805"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308054"
 ---
 # <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerre vonatkozó követelmények
 
@@ -30,13 +30,12 @@ A merevlemez-meghajtókat a WAImportExport eszközzel, a következő előkészí
 |Windows Server     |Windows Server 2008 R2 <br> A Windows Server 2012, Windows Server 2012 R2         |
 
 
-
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
-Az Azure Import/Export szolgáltatás a következő az Azure storage-fiókokat támogat.
-- Klasszikus
+Az Azure Import/Export szolgáltatás támogatja a következő [az Azure storage-fiókok](storage-account-options.md).
+- Általános célú v1-tárfiókok (klasszikus és a Azure Resource Manager üzembe helyezések)
 - Blob Storage-fiókok
-- Általános célú v1-tárfiókok. 
+- Általános célú v2-tárfiókok
 
 Minden egyes feladat előfordulhat, hogy használható-adatok áthelyezésénél csak egy storage-fiókból. Más szóval egy egyetlen importálási/exportálási feladat terjedhetnek ki több tárfiókon keresztül. Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
 
@@ -48,10 +47,10 @@ Minden egyes feladat előfordulhat, hogy használható-adatok áthelyezésénél
 A tárolási típusok a következők közül az Azure Import/Export szolgáltatás használata támogatott.
 
 
-|Feladat  |Storage  |Támogatott  |Nem támogatott  |
+|Feladat  |Storage szolgáltatás |Támogatott  |Nem támogatott  |
 |---------|---------|---------|---------|
-|Importálás     |  Az Azure Blob storage. <br>Blokkblobok, lapblobok támogatott. <br> Az Azure Files támogatott.       |         |
-|Exportálás     |   Az Azure Blob storage. <br>A blokkblobok, lapblobok és hozzáfűző blobok támogatott.       | Az Azure Files nem támogatott.        |
+|Importálás     |  Azure Blob Storage <br><br> Az Azure File storage       | Támogatott Blokkblobok és lapblobok <br><br> Támogatott fájlok          |
+|Exportálás     |   Azure Blob Storage       | A blokkblobok, lapblobok és hozzáfűző blobok támogatott         | Az Azure Files nem támogatott
 
 
 ## <a name="supported-hardware"></a>Támogatott hardveres 

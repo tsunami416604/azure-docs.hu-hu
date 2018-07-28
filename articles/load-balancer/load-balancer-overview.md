@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7495ac8b1414412dba9d62d0fb5668c6db364997
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f954bc3be01d7ac1698e21ac3e3f038fe931541d
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215050"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325479"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az Azure Load Balancer?
 
@@ -123,20 +123,7 @@ _Ajánlott explicit módon, adja meg a termékváltozatok annak ellenére, hogy 
 >[!IMPORTANT]
 >A standard Load Balancer egy új terheléselosztó terméket, és nagymértékben felülbírálja az alapszintű Load Balancert. Fontos és szándékos között van különbség a két termék. A Standard Load Balancer bármilyen végpontok közötti forgatókönyv, amely az alapszintű Load Balancer lehetőségeinek is létrehozhatók. Ha már jártas alapszintű terheléselosztót, meg kell ismerkednie a Standard Load Balancer a legutóbbi változtatásokat a Standard és alapszintű és a hatásuk között viselkedés megismeréséhez. Ebben a szakaszban javasolt gondosan áttekinteni.
 
-| | Standard termékváltozat | Alapszintű termékváltozat |
-| --- | --- | --- |
-| Háttérkiszolgáló-készlet mérete | akár 1000 példányt | akár 100 példány |
-| Háttérbeli címkészlet végpontok | bármelyik virtuális gépet, egyetlen virtuális hálózattal, programhoz való Blend alkalmazást a virtuális gépek rendelkezésre állási csoportok, köztük a virtuálisgép-méretezési csoport állítja be. | egy egyetlen rendelkezésre állási csoport vagy a virtuális gép méretezési csoportban lévő virtuális gépek beállítása |
-| Rendelkezésre állási zónák | a zónaszintű és zónaredundáns az előtérrendszer bejövő és kimenő, kimenő forgalom leképezések stabilitást biztosít az zóna hiba, zónaközi terheléselosztás | / |
-| Diagnosztika | Az Azure Monitor bájt és csomag számlálókat, egészségügyi többdimenziós metrikák mintavételi állapota, (TCP SZIN) kapcsolódási kísérletek, kimenő kapcsolat állapota (SNAT sikeres és sikertelen folyamatok), aktív adatsík mérések | Az Azure Log Analytics nyilvános Load Balancer csak, SNAT Erőforrásfogyás riasztás, háttérbeli címkészlet állapotfigyelő száma |
-| Magas rendelkezésre ÁLLÁS portok | belső Load Balancer | / |
-| Alapértelmezés szerint biztonságossá tétele | alapértelmezett lezárult a nyilvános IP-cím és a Load Balancer végpontok és a egy hálózati biztonsági csoportot kell használni kifejezetten engedélyezett a forgalom áramlását | alapértelmezett megnyitva, a hálózati biztonsági csoport nem kötelező |
-| [Kimenő kapcsolatok](load-balancer-outbound-connections.md) | Több előtérrendszer és a egy terheléselosztási szabályt az elutasítás fiókkal. Egy kimenő forgatókönyv _kell_ explicit módon hozhatók létre a virtuális gép nem tudja használni a kimenő kapcsolatot.  [Virtuális hálózati Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md) kimenő kapcsolat nélkül érhető el, és nem beleszámít a feldolgozott adatokat.  Bármely nyilvános IP-címeket, beleértve a nem érhető el, mint a virtuális hálózati Szolgáltatásvégpontokkal az Azure PaaS-szolgáltatások keresztül kimenő kapcsolat és a feldolgozott adatok felé számát el kell érni. Ha csak egy belső terheléselosztó szolgálja ki a virtuális gépek, alapértelmezett SNAT keresztül kimenő kapcsolatok nem érhetők el. Kimenő SNAT programozás az átviteli protokoll adott protokoll, a bejövő terheléselosztási szabály alapján. | Egyetlen előtér véletlenszerűen kiválasztott, amikor több előtérrendszer jelen.  Belső Load Balancer szolgálja ki a virtuális gépek, alapértelmezett SNAT használ. |
-| [Több előtérrendszer](load-balancer-multivip-overview.md) | Bejövő és [kimenő](load-balancer-outbound-connections.md) | Csak bejövő |
-| [Az állapotfigyelő mintavételező le viselkedés](load-balancer-custom-probe-overview.md) | TCP-kapcsolatok a példány mintavételi le életben maradjon __és__ az összes mintavételek lefelé | A példány mintavételi le életben maradjon, TCP-kapcsolatokat. Összes TCP-kapcsolatok le az összes mintavételek leáll. |
-| Kezelési műveletek | A legtöbb műveletek < 30 másodperc | 60 – 90 másodperc tipikus |
-| SLA | 99,99 %-os két kifogástalan állapotú virtuális gépek elérési útjához | A virtuális gép SLA implicit | 
-| Díjszabás | Feldolgozott adatok bejövő szabályok száma alapján, számlázunk ki vagy kimenő társított erőforrás  | díjmentes |
+[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
 További információkért lásd: [szolgáltatási korlátozásaival terheléselosztó](https://aka.ms/lblimits). A Standard Load Balancer részletekért lásd: [áttekintése](load-balancer-standard-overview.md), [díjszabás](https://aka.ms/lbpricing), és [SLA](https://aka.ms/lbsla).
 

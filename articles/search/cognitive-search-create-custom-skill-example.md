@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: dd9bb4cb2622651c2d1979166ad838b3b337d583
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342932"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307993"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Példa: Hozzon létre egy egyéni ismeretek a szöveg lefordítása API-val
 
@@ -244,6 +244,13 @@ Ha elégedett a függvény működése, közzéteheti azt.
 
 1. Az a [az Azure portal](https://portal.azure.com), keresse meg az erőforráscsoportot, és keresse meg a közzétett fordítása függvény. Alatt a **kezelés** szakaszban Gazdakulcsok kell megjelennie. Válassza ki a **másolási** ikonjára a *alapértelmezett* állomás kulcsát.  
 
+## <a name="update-ssl-settings"></a>SSL-beállítások frissítése
+
+2018. június 30. után létrehozott összes az Azure Functions letiltotta a TLS 1.0-t, amely, nem jelenleg kompatibilis egyéni képesség.
+
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg az erőforráscsoportot, és keresse meg a közzétett fordítása függvény. Alatt a **platformfunkciók** szakaszban SSL kell megjelennie.
+
+1. Miután kiválasztotta az SSL, módosítania kell a **TLS minimális verziója** 1.0-s. A TLS 1.2 funkciók még nem támogatottak, egyéni képesség.
 
 ## <a name="test-the-function-in-azure"></a>A függvény tesztelése az Azure-ban
 

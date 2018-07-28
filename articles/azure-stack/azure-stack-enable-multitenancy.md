@@ -1,9 +1,9 @@
 ---
-title: Több vállalat kiszolgálása Azure verem engedélyezése |} Microsoft Docs
-description: Megtudhatja, hogyan támogatja a több Azure Active Directory címtárral Azure verem
+title: Több-bérlős az Azure Stackben
+description: Ismerje meg, hogyan támogatja a több Azure Active Directory-címtár az Azure Stackben
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: PatAltimore
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,47 +11,50 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
-ms.author: mabrigg
-ms.openlocfilehash: 59b0f8e4c7234b246d4fb54d065ff318939e2662
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 07/23/2018
+ms.author: patricka
+ms.openlocfilehash: e61b4457cd88c236145ce7595ee7db4340538465
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301835"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39330866"
 ---
-# <a name="enable-multi-tenancy-in-azure-stack"></a>Több vállalat kiszolgálása Azure verem engedélyezése
+# <a name="multi-tenancy-in-azure-stack"></a>Több-bérlős az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Konfigurálhatja az Azure verem szolgáltatások használatához Azure-készletben több Azure Active Directory (Azure AD) bérlő felhasználók támogatására. Tegyük fel vegye figyelembe a következő forgatókönyvet:
+Konfigurálhatja az Azure Stack-szolgáltatások használatára az Azure Stackben több Azure Active Directory (Azure AD) bérlő felhasználók támogatására. Vegyük példaként az alábbi forgatókönyvet:
 
- - A szolgáltatás rendszergazdaként a contoso.onmicrosoft.com, amelyen telepítve van-e az Azure-verem.
- - Mária a címtár rendszergazdájának fabrikam.onmicrosoft.com, ahol vendégfelhasználók találhatók. 
- - Mária vállalati IaaS és PaaS szolgáltatások kap a vállalat, és a felhasználók a Vendég könyvtárból (fabrikam.onmicrosoft.com) jelentkezzen be, és Azure verem erőforrásainak használata contoso.onmicrosoft.com kell.
+ - A szolgáltatás-rendszergazda contoso.onmicrosoft.com, Ön, amelyen telepítve van-e az Azure Stack.
+ - Mary a címtár rendszergazdájának fabrikam.onmicrosoft.com, hol találhatók vendégfelhasználók. 
+ - Mária vállalati IaaS és PaaS-szolgáltatások fogadja a cégtől, és van szüksége, hogy a felhasználók a Vendég könyvtárból (fabrikam.onmicrosoft.com) jelentkezik be, és a contoso.onmicrosoft.com Azure Stack-erőforrások használata.
 
-Ez az Útmutató lépéseit, ebben az esetben a környezetében lévő konfigurálásához szükséges több-bérlős Azure verem.  Ebben a forgatókönyvben, és Mária lépések szükségesek ahhoz, hogy a bejelentkezéshez és a Contoso Azure verem telepítését szolgáltatásait Fabrikam felhasználók.  
+Ez az Útmutató lépéseit, ebben az esetben a környezetében történő konfigurálásához szükséges több-bérlős az Azure Stackben. Ebben a forgatókönyvben, és Mary kell befejezéséhez jelentkezzen be, és az Azure Stack üzembe helyezés a Contoso szolgáltatásait igénybe a Fabrikam felhasználók engedélyezésének lépései.  
 
-## <a name="before-you-begin"></a>Előkészületek
-Van néhány előfeltétel, hogy több-bérlős Azure verem konfigurálása előtt figyelembe:
+## <a name="enable-multi-tenancy"></a>A több-bérlős üzemmód engedélyezése
+
+Van néhány előfeltételeket, hogy figyelembe vegye az Azure Stackben több-bérlős konfigurálása előtt:
   
- - Ön és Mária mind az Azure-verem telepítve van-e (Contoso), és a Vendég könyvtárat (Fabrikam) keresztül kell összehangolják felügyeleti lépéseket.  
- - Győződjön meg arról, hogy már [telepített](azure-stack-powershell-install.md) és [konfigurált](azure-stack-powershell-configure-admin.md) PowerShell Azure verem.
- - [Töltse le az Azure-verem eszközök](azure-stack-powershell-download.md), és a csatlakozás és identitás modul importálása:
+ - Ön és Mary kell rendszergazdai lépések erőforrások közötti koordinációhoz is az Azure Stack (Contoso) van telepítve, és a Vendég könyvtárat (a Fabrikam).  
+ - Győződjön meg arról, hogy [telepített](azure-stack-powershell-install.md) és [konfigurált](azure-stack-powershell-configure-admin.md) PowerShell az Azure Stackhez.
+ - [Töltse le az Azure Stack eszközöket](azure-stack-powershell-download.md), és a Connect és az identitás-modulok importálása:
 
-    ````PowerShell
-        Import-Module .\Connect\AzureStack.Connect.psm1
-        Import-Module .\Identity\AzureStack.Identity.psm1
-    ```` 
- - Mária szükséges [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) Azure verem elérésére. 
+    ````PowerShell  
+    Import-Module .\Connect\AzureStack.Connect.psm1
+    Import-Module .\Identity\AzureStack.Identity.psm1
+    ````
 
-## <a name="configure-azure-stack-directory"></a>Azure verem directory konfigurálása
-Ebben a szakaszban Azure verem bejelentkezések engedélyezéséhez a Fabrikam az Azure Active directory-bérlő konfigurálja.
+ - Mary szükséges [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) hozzáférés az Azure Stackhez. 
 
-### <a name="onboard-guest-directory-tenant"></a>A bevezetni Vendég directory-bérlő
-Következő, a bevezetni a Vendég Directory-bérlő (Fabrikam) Azure verem.  Ez a lépés konfigurál az Azure Resource Manager-felhasználók és a Vendég directory-bérlőhöz szolgáltatásnevekről fogadásához.
+### <a name="configure-azure-stack-directory"></a>Azure Stack-címtár konfigurálása
 
-````PowerShell
+Ebben a szakaszban az Azure Stack bejelentkezések engedélyezéséhez a Fabrikam az Azure Active directory-bérlők fog konfigurálni.
+
+Előkészítése az Azure Stackhez az Azure Resource Manager egyszerű szolgáltatások a Vendég directory-bérlőhöz, és fogadja el a felhasználók konfigurálásával vendég Címtárbérlőben (Fabrikam).
+
+````PowerShell  
+## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
 $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
 
 ## Replace the value below with the Azure Stack directory
@@ -63,22 +66,26 @@ $guestDirectoryTenantToBeOnboarded = "fabrikam.onmicrosoft.com"
 ## Replace the value below with the name of the resource group in which the directory tenant registration resource should be created (resource group must already exist).
 $ResourceGroupName = "system.local"
 
+## Replace the value below with the region location of the resource group. 
+$location = "local"
+
 Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint `
  -DirectoryTenantName $azureStackDirectoryTenant `
  -GuestDirectoryTenantName $guestDirectoryTenantToBeOnboarded `
- -Location "local" `
+ -Location $location `
  -ResourceGroupName $ResourceGroupName
 ````
 
+### <a name="configure-guest-directory"></a>Vendég címtár konfigurálása
 
+Miután végrehajtotta a lépéseket az Azure Stack a címtárban, Mary kell hozzájárulási biztosíthat az Azure Stack fér hozzá a vendégcímtár és regisztrálja az Azure Stack a vendégcímtár. 
 
-## <a name="configure-guest-directory"></a>Vendég directory konfigurálása
-Miután elvégezte a Azure verem könyvtár lépéseit, Mária Azure verem a Vendég directory elérése hozzájárulási adja majd Azure verem regisztrálják a Vendég címtárban. 
+#### <a name="registering-azure-stack-with-the-guest-directory"></a>Azure Stack Regisztrálás a Vendég-könyvtár
 
-### <a name="registering-azure-stack-with-the-guest-directory"></a>A Vendég directory Azure verem regisztrálása
-Miután a Vendég directory rendszergazda által a Fabrikam könyvtár eléréséhez Azure verem hozzájárulási, Mária regisztrálnia kell a Azure verem Fabrikam directory-bérlő.
+Miután a Vendég directory rendszergazda adta az Azure Stack a Fabrikam repülőmotorjai könyvtár, Mary Azure Stack kell regisztrálja a Fabrikam repülőmotorjai directory-bérlő.
 
 ````PowerShell
+## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
 $tenantARMEndpoint = "https://management.local.azurestack.external"
     
 ## Replace the value below with the guest tenant directory. 
@@ -89,12 +96,62 @@ Register-AzSWithMyDirectoryTenant `
  -DirectoryTenantName $guestDirectoryTenantName `
  -Verbose 
 ````
-## <a name="direct-users-to-sign-in"></a>Közvetlen felhasználók jelentkezhetnek be
-Most, hogy és Mária végzett előkészítésére Mária könyvtár lépéseit, Mária utasíthatja a Fabrikam felhasználók jelentkezhetnek be.  Fabrikam felhasználók (Ez azt jelenti, hogy a fabrikam.onmicrosoft.com utótagjával rendelkező felhasználók) jelentkezzen be ellátogatva https://portal.local.azurestack.external.  
 
-Mária átirányítja a bármely [idegen rendszerbiztonsági tagok](../role-based-access-control/rbac-and-directory-admin-roles.md) a Fabrikam könyvtárban (Ez azt jelenti, hogy a Fabrikam könyvtárban nélkül fabrikam.onmicrosoft.com utótagja felhasználók) is bejelentkezhet https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Ha nem használják az URL-cím, azok küldi a program az alapértelmezett címtár (Fabrikam), és arról, hogy a rendszergazda nem hozzájárult hibaüzenetet kap.
+> [!IMPORTANT]
+> Ha az Azure Stack rendszergazdai a jövőben telepít új szolgáltatások vagy frissítések, szükség lehet futtassa ismét ezt a szkriptet.
+>
+> Ez a szkript futtatása újra bármikor ellenőrizheti az állapotot az Azure Stack-alkalmazások a címtárban.
+
+### <a name="direct-users-to-sign-in"></a>Jelentkezzen be a közvetlen felhasználók
+
+Most, hogy Ön és Mary végrehajtotta a előkészítése Mary könyvtárba, Mary irányíthatók a Fabrikam felhasználók jelentkezhetnek be.  Fabrikam felhasználók (vagyis a fabrikam.onmicrosoft.com utótagjával rendelkező felhasználók) jelentkezzen be funkcionáló https://portal.local.azurestack.external.  
+
+Mary átirányítja bármely [külső rendszerbiztonsági tag](../role-based-access-control/rbac-and-directory-admin-roles.md) a Fabrikam könyvtárban (azt jelenti, anélkül, hogy a fabrikam.onmicrosoft.com utótagja a Fabrikam címtárban felhasználó), jelentkezzen be a https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Ha nem használják az URL-cím, az alapértelmezett könyvtára (Fabrikam) küldött, és egy hibaüzenetet, amely szerint a rendszergazda nem egyezett bele.
+
+## <a name="disable-multi-tenancy"></a>Több-bérlős letiltása
+
+Ha már nem szeretne több bérlő számára az Azure Stackben, letilthatja a több-bérlős végrehajtásával sorrendben az alábbi lépéseket:
+
+1. Futtassa a vendégcímtár (ebben a forgatókönyvben Mary), rendszergazdaként *Unregister-AzsWithMyDirectoryTenant*. A parancsmag eltávolítja az Azure Stack-alkalmazásokat az új könyvtárból.
+
+    ``` PowerShell
+    ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
+    $tenantARMEndpoint = "https://management.local.azurestack.external"
+        
+    ## Replace the value below with the guest tenant directory. 
+    $guestDirectoryTenantName = "fabrikam.onmicrosoft.com"
+    
+    Unregister-AzsWithMyDirectoryTenant `
+     -TenantResourceManagerEndpoint $tenantARMEndpoint `
+     -DirectoryTenantName $guestDirectoryTenantName `
+     -Verbose 
+    ```
+
+2. A szolgáltatás-rendszergazda az Azure Stack (meg ebben a forgatókönyvben), futtassa, *Unregister-AzSGuestDirectoryTenant*. 
+
+    ``` PowerShell  
+    ## The following Azure Resource Manaager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
+    $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
+    
+    ## Replace the value below with the Azure Stack directory
+    $azureStackDirectoryTenant = "contoso.onmicrosoft.com"
+    
+    ## Replace the value below with the guest tenant directory. 
+    $guestDirectoryTenantToBeDecommissioned = "fabrikam.onmicrosoft.com"
+    
+    ## Replace the value below with the name of the resource group in which the directory tenant registration resource should be created (resource group must already exist).
+    $ResourceGroupName = "system.local"
+    
+    Unregister-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint `
+     -DirectoryTenantName $azureStackDirectoryTenant `
+     -GuestDirectoryTenantName $guestDirectoryTenantToBeDecommissioned `
+     -ResourceGroupName $ResourceGroupName
+    ```
+
+    > [!WARNING]
+    > A letiltás több-bérlős lépések sorrendben kell végrehajtani. #1. lépés sikertelen lesz, ha először #2. lépés befejeződött.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Delegált szolgáltatók kezelése](azure-stack-delegated-provider.md)
-- [Az Azure verem kulcsfogalmak](azure-stack-key-features.md)
+- [Az Azure Stack főbb fogalmak](azure-stack-key-features.md)

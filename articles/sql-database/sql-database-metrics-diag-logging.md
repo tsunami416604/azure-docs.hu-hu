@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: fbeda6a74be11668f16d477696ea00653b73baa6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: c0c2e1748518b794916f1950c288ed1f4df628aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284826"
+ms.locfileid: "39309061"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás 
 Az Azure SQL Database kibocsátható, metrikák és diagnosztikai naplókat megkönnyíteni a felügyeletet. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
@@ -267,6 +267,8 @@ Ismerje meg, hogyan [metrikák és diagnosztikai naplók letöltése a Storage-b
 |Rugalmas készlet|eDTU százalékos értéke, eDTU használja, az eDTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, napló írási százalékos, munkamenetek százaléka, feldolgozók százalékos, tárhely, tárolási százalékos, tárolási kapacitása, XTP tárolási százalékos aránya |
 |||
 
+### <a name="logs"></a>Logs
+
 ### <a name="query-store-runtime-statistics"></a>Query Store futásidejű statisztikája
 
 |Tulajdonság|Leírás|
@@ -481,6 +483,36 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |DatabaseName_s|Az adatbázis nevét. |
 |ResourceId|Erőforrás-URI.|
 |deadlock_xml_s|Holtpont jelentés XML.|
+
+### <a name="automatic-tuning-dataset"></a>Az automatikus finomhangolási adatkészlet
+
+|Tulajdonság|Leírás|
+|---|---|
+|TenantId|A bérlő azonosítója.|
+|SourceSystem|Mindig: Azure|
+|TimeGenerated [UTC]|Időbélyeg, ha rögzít a naplóban.|
+|Típus|Mindig: AzureDiagnostics|
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
+|Kategória|A kategória nevét. Mindig: AutomaticTuning|
+|Erőforrás|Az erőforrás neve.|
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK és ADATBÁZISOK|
+|SubscriptionId|Előfizetés GUID-azonosítója, amely az adatbázis tartozik.|
+|ResourceGroup|Az erőforráscsoportot, amelyhez tartozik az adatbázis neve.|
+|LogicalServerName_s|Az adatbázishoz tartozó kiszolgáló nevét.|
+|LogicalDatabaseName_s|Az adatbázis nevét.|
+|ElasticPoolName_s|A rugalmas készlet, amely az adatbázis tartozik, ha van ilyen neve.|
+|DatabaseName_s|Az adatbázis nevét.|
+|ResourceId|Erőforrás-URI.|
+|RecommendationHash_s|Az automatikus finomhangolási javaslat egyedi kivonatát.|
+|OptionName_s|Automatikus hangolási művelet.|
+|Schema_s|Adatbázis-séma.|
+|Table_s|Az érintett tábla.|
+|IndexName_s|Index neve.|
+|IndexColumns_s|Oszlop neve.|
+|IncludedColumns_s|Az oszlopokat tartalmaz.|
+|EstimatedImpact_s|Becsült hatás automatikus finomhangolási ajánlás JSON.|
+|Event_s|Az automatikus finomhangolási esemény típusa.|
+|Timestamp_t|Utolsó frissítés időbélyege.|
 
 ### <a name="intelligent-insights-dataset"></a>Intelligent Insights adatkészlet
 Tudjon meg többet a [Intelligent Insights naplóformátum](sql-database-intelligent-insights-use-diagnostics-log.md).

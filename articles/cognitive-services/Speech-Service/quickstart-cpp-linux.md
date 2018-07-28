@@ -9,14 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: a9a5a6b3c3f4831844083d082ba5b65cd900ec02
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8f794f1d29b5fde9acd43fa4a018ccb39a8ccd25
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281609"
+ms.locfileid: "39324778"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Rövid útmutató: Ismeri fel a beszéd, a C++, a beszéd SDK használatával Linux rendszeren
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ebből a cikkből elsajátíthatja, hogyan C++ Konzolalkalmazás létrehozása a linuxon (Ubuntu 16.04) alapuló átírás Beszédfelismerés a Cognitive Services beszédfelismerő SDK segítségével.
 
@@ -132,4 +134,4 @@ Keresse meg az ehhez a mintához a `quickstart/cpp-linux` mappát.
 
 ## <a name="next-steps"></a>További lépések
 
-* Látogasson el a [oldala](samples.md) a további példákat.
+* [A minták letöltése](speech-sdk.md#get-the-samples)

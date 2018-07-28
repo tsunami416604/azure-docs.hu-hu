@@ -9,14 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 928018483eb727febd15d8e1c22bba53ba2aaedc
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 7c93f9f450cc2d244a0d716401171cde02abf70b
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285033"
+ms.locfileid: "39324571"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>Gyors útmutató: Ismeri fel a beszéd, a C++, a Speech SDK-val a Windows asztalon
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 C++-alapú Konzolalkalmazás létrehozása, amelyek a beszéd SDK-t használja a Windows asztali ismertetünk.
 Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
@@ -93,4 +95,4 @@ Keresse meg az ehhez a mintához a `quickstart/cpp-windows` mappát.
 
 ## <a name="next-steps"></a>További lépések
 
-* Látogasson el a [oldala](samples.md) a további példákat.
+* [A minták letöltése](speech-sdk.md#get-the-samples)

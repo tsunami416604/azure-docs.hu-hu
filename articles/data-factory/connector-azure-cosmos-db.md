@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 92b45c1038fd099926360dc80802ababf0e8ee93
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6c0921a466864bf2b07711cfcd1eac397c5ced83
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37052766"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325353"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB az Azure Data Factory használatával
 
@@ -165,6 +165,8 @@ Adatok másolása az Azure Cosmos DB, állítsa a fogadó típusa a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **DocumentDbCollectionSink** |Igen |
+| WriteBehavior |Írja az adatokat, a Cosmos DB ismertetik. Engedélyezett értékek a következők: `insert` és `upsert`.<br/>Viselkedését **upsert** , hogy cserélje le a dokumentumot, ha egy dokumentum annak ugyanazzal az azonosítóval már létezik; ellenkező esetben szúrja be. Megjegyzés: ADF automatikus létrehozása a dokumentum egy azonosítót, ha nincs megadva, vagy az eredeti dokumentum vagy oszlop-hozzárendelés), ami azt jelenti, hogy ellenőrizze, hogy a dokumentum kell rendelkezik egy "id", így upsert a várt módon működik. |Nem, alapértelmezett van beszúrása |
+| WriteBatchSize | Data Factory használata [Cosmos DB tömeges végrehajtó](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) az adatok írása az Cosmos DB-be. "writeBatchSize" a Microsoft biztosít a tár minden alkalommal, amikor dokumentumok méretét szabályozza. Megpróbálhatja a növekedés writeBatchSize teljesítmény javítása érdekében. |Nem |
 | nestingSeparator |A forrás oszlop nevét jelzi, hogy a beágyazott dokumentum egy speciális karaktert van szükség. <br/><br/>Ha például `Name.First` a kimeneti adatkészlet struktúra hoz létre a Cosmos DB-dokumentumban a következő JSON-struktúrát:`"Name": {"First": "[value maps to this column from source]"}` pont a nestedSeparator esetén. |Nem (alapértelmezett érték a pont `.`) |
 
 **Példa**
@@ -191,7 +193,8 @@ Adatok másolása az Azure Cosmos DB, állítsa a fogadó típusa a másolási t
                 "type": "<source type>"
             },
             "sink": {
-                "type": "DocumentDbCollectionSink"
+                "type": "DocumentDbCollectionSink",
+                "writeBehavior": "upsert"
             }
         }
     }

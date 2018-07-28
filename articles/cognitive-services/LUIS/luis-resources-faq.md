@@ -7,14 +7,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 75159319e25ac63907e0d8a2cbf044cf9a854785
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239117"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308745"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – gyakori kérdések
 
@@ -147,6 +147,12 @@ Ha a napló előrejelzési elemzésre használ, ne rögzítsen rajta teszt utter
 * Beszédmódok törölheti, hogy a LUIS javasol a felhasználó megcímkézzen listájából a **tekintse át a végpont utterances** lapot. Beszédmódok törlése a listáról a továbbiakban nem javasolt, de nem törli azokat a naplókat.
 * Ha töröl egy fiókot, az összes alkalmazás törlődnek, azokhoz példa kimondott szöveg és a naplókat. Az adatok végleges törlés előtt 60 napig őrződnek a kiszolgálókon.
 
+### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Nem a Microsoft hozzáférést a LUIS alkalmazás adatainak a saját célra, például általában javíthatja a LUIS vagy a Microsoft? 
+
+Nem. A LUIS-alkalmazásokon adatmodell nem javíthatja a LUIS-platformként a LUIS segítségével vagy a Microsoft semmilyen módon használja. Minden alkalmazás adatait külön, és csak a felhasználó és a közreműködők által saját tulajdonú. 
+
+Tudjon meg többet [felhasználói adatvédelem](luis-reference-gdpr.md), [további biztonsági megfelelőségi](luis-concept-security.md#security-compliance), és [adattárolás](luis-concept-data-storage.md).
+
 ## <a name="language-and-translation-support"></a>Nyelvi és fordítási támogatás 
 
 ### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Szükségem van egy alkalmazása egy nyelven, és hozzon létre egy párhuzamos alkalmazást egy másik nyelven szeretné. Mi az a legegyszerűbb módja, ehhez?
@@ -175,20 +181,6 @@ Ha, válasszon ki egy LUIS-sablont, és válassza a **kiválasztása** gombra a 
 ### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>A LUIS elérhető helyszíni vagy a privát felhőben?
 Nem. 
 
-## <a name="changes-to-the-docs"></a>A Docs módosításai
-
-### <a name="where-did-the-tutorials-go"></a>Hová tűntek a oktatóanyagok? 
-A cikkek, amelyek az oktatóanyag szakaszban korábban voltak, mostantól az útmutatóban a dokumentumok. 
-
-|Oktatóanyag|
-|--|
-|A robot a LUIS integrálása [C#](luis-csharp-tutorial-build-bot-framework-sample.md) és [Node.js](luis-nodejs-tutorial-build-bot-framework-sample.md)|
-|A robot, az Application Insights hozzáadása [C#](luis-tutorial-bot-csharp-appinsights.md) és [Node.js](luis-tutorial-function-appinsights.md)|
-|Programozott módon használja a LUIS-alkalmazások felépítése [Node.js](luis-tutorial-node-import-utterances-csv.md)|
-|Használat [összetett entitást](luis-tutorial-composite-entity.md) csoportosított adatokat nyerhet ki|
-|Adjon hozzá [entitás listában](luis-tutorial-list-entity.md) nagyobb entitás észlelési Node.js használatával|
-|Az előrejelzési pontosság növeléséhez egy [kifejezéslista](luis-quickstart-primary-and-secondary-data.md), [minták](luis-tutorial-pattern.md), és [batch tesztelése](luis-tutorial-batch-testing.md)|
-|[Javítsa ki a helyesírás-ellenőrzés](luis-tutorial-batch-testing.md) a Bing Spell Check API 7-es verziója
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>A Build 2018 konferencián hallottam Language Understanding funkció vagy bemutató, de nem emlékszem, hogy milyen hívták? 
 

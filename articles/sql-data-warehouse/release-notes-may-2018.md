@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 81e3fd7183e97358b3d936045909ad5dc40612ff
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 01b571beba012ae0a1fa27d03f5e0e5454f62aa5
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281990"
+ms.locfileid: "39324955"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Mi az új Azure SQL Data warehouse? 2018. május 
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 május. 
@@ -129,7 +129,7 @@ The ORDER BY clause is invalid in views, CREATE TABLE AS SELECT, INSERT SELECT, 
 Használatával a `SET PARSEONLY ON` szintaxis lehetővé teszi, hogy a felhasználót, hogy rendelkezik az SQL Data Warehouse motor vizsgálja meg az egyes T-SQL-utasítás szintaxisa a következő hibaüzeneteket vissza a kódja lefordításának és az utasítás végrehajtása nélkül. Korábban a a [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) rendszernézet, ezek az utasítások állapota mappában marad a `Running` állapota. A `sys.dm_pdw_exec_requests` megtekintése most adja vissza, az állapot `Complete`.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy jobban megismerte az SQL Data warehouse, ismerje meg, hogyan lehet gyorsan [SQL Data Warehouse létrehozása] [SQL Data Warehouse létrehozása] és [mintaadatokat tölthet be] [mintaadatokat tölthet be]. Ha most ismerkedik az Azure-ba, hasznosnak találhatja az [Azure szószedet] [Azure szószedetét], akkor új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
+Most, hogy jobban megismerte az SQL Data warehouse, megtudhatja, hogyan lehet gyorsan [hozzon létre egy SQL Data Warehouse][create a SQL Data Warehouse]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure glossary], amikor az új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
 
 * [Ügyfelek sikertörténetei]
 * [Blogok]
@@ -147,3 +147,5 @@ Most, hogy jobban megismerte az SQL Data warehouse, ismerje meg, hogyan lehet gy
 [Stack Overflow-fórum]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videók]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md

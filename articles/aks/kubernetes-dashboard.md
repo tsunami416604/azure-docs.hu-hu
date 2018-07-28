@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: af48af596e86e0eb09fe45deabe13beedef57cd2
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091138"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307925"
 ---
 # <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Hozzáférés a Kubernetes-irányítópultot az Azure Kubernetes Service (AKS)
 
@@ -38,12 +38,14 @@ Ez a parancs létrehoz egy proxy között a fejlesztői rendszerhez, és a Kuber
 
 ### <a name="for-rbac-enabled-clusters"></a>A fürtök RBAC-kompatibilis
 
-Ha az AKS-fürtöt használ, az RBAC- *ClusterRoleBinding* megfelelően az irányítópult elérése előtt kell létrehozni. A kötés létrehozásához használja a [kubectl létrehozása clusterrolebinding] [ kubectl-create-clusterrolebinding] parancsot az alábbi példában látható módon. 
+Ha az AKS-fürtöt használ, az RBAC- *ClusterRoleBinding* megfelelően az irányítópult elérése előtt kell létrehozni. Alapértelmezés szerint a Kubernetes-irányítópult minimális olvasási hozzáféréssel rendelkező telepíti, és megjeleníti az RBAC-hozzáférési hibák. A Kubernetes-irányítópult jelenleg nem támogatja a felhasználó által megadott hitelesítő adatokat határozza meg a hozzáférési szintet, inkább használja a szerepkörök a szolgáltatásfiók számára. A fürt rendszergazdája választhat további hozzáférés adható a *kubernetes-irányítópult* szolgáltatásfiók, azonban ez lehet egy vektoros a jogosultságok eszkalációját. A részletesebb szintű hozzáférés az Azure Active Directory-hitelesítést is integrálhatja.
+
+A kötés létrehozásához használja a [kubectl létrehozása clusterrolebinding] [ kubectl-create-clusterrolebinding] parancsot az alábbi példában látható módon. 
 
 > [!WARNING]
 > Ez a minta kötés nem vonatkozik minden további hitelesítés összetevői, és nem biztonságos használat vezethet. A Kubernetes-irányítópult meg nyitva, bárki hozzáférhet az URL-cím hozzáférést. Nem teszik elérhetővé a Kubernetes-irányítópult nyilvánosan.
 >
-> Használhatja a mechanizmusokkal, mint például a tulajdonosi jogkivonatokat vagy férhet hozzá az irányítópultot, és mi felhasználónév/jelszó engedélyekkel rendelkeznek. Ez lehetővé teszi az irányítópult biztonságosabb használatát. A különböző hitelesítési módszerekkel további információkért tekintse meg a Kubernetes-irányítópult wiki [hozzáférés-vezérlés][dashboard-authentication].
+> A különböző hitelesítési módszerekkel további információkért tekintse meg a Kubernetes-irányítópult wiki [hozzáférés-vezérlés][dashboard-authentication].
 
 ```console
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard

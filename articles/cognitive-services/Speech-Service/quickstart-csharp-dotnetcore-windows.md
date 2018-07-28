@@ -9,14 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f66917ed49393988a378de0a55525105c5d19b7c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 7790920b6553ba0e2738d693710bfc3a1d3b4f89
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282374"
+ms.locfileid: "39325101"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>Gyors útmutató: Recognize speech, a C# .NET Core, a beszéd SDK-val Windows alatt
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ebből a cikkből elsajátíthatja, hogyan hozzon létre egy C# konzolalkalmazást a .NET Core Windows beszédfelismerés lefényképezze a Cognitive Services beszédfelismerő SDK segítségével.
 Az alkalmazás össze lett a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
@@ -82,6 +84,6 @@ Keresse meg az ehhez a mintához a `quickstart/csharp-dotnetcore-windows` mappá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Beszéd fordítása](how-to-translate-speech.md)
+- [Beszéd fordítása](how-to-translate-speech-csharp.md)
 - [Akusztikai modell testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modell testreszabása](how-to-customize-language-model.md)

@@ -9,14 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: be15c8ca37e11f10c31c1fa8738d2b57308a00f2
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 549a8fd29cf1f986da0af1ae49dbf0e5335603bd
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283748"
+ms.locfileid: "39325700"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>Gyors útmutató: Recognize speech, a beszéd SDK használatával egy UWP-alkalmazás
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ebből a cikkből megismerheti, hogyan hozhat létre a Cognitive Services beszédfelismerő SDK segítségével beszédfelismerés lefényképezze az univerzális Windows Platform (UWP) alkalmazást.
 Az alkalmazás össze lett a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
@@ -115,6 +117,6 @@ Keresse meg az ehhez a mintához a `quickstart/csharp-uwp` mappát.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Beszéd fordítása](how-to-translate-speech.md)
+- [Beszéd fordítása](how-to-translate-speech-csharp.md)
 - [Akusztikai modell testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modell testreszabása](how-to-customize-language-model.md)

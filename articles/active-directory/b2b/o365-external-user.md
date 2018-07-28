@@ -1,41 +1,46 @@
 ---
-title: Külső megosztás Office 365 és Azure Active Directory B2B együttműködés |} Microsoft Docs
-description: Erőforrások megosztása külső partnerei, az Office 365 és az Azure Active Directory B2B együttműködés, és ismerteti.
+title: Külső megosztás az Office 365 és az Azure Active Directory B2B együttműködés |} A Microsoft Docs
+description: Ismerteti az erőforrások megosztása külső partnerekkel, az Office 365 és az Azure Active Directory B2B együttműködés segítségével.
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/24/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: d55d587022b763a6890c098dd0a1b9bef2a3b7fb
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 7e0a65e4a5807cb9a6b39feecfd2d5b2643ea4a9
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267450"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39331018"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Külső megosztás Office 365 és Azure Active Directory B2B együttműködés
+# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Külső megosztás az Office 365 és Azure Active Directory B2B-együttműködés
 
-Az Office 365 (OneDrive, SharePoint online-hoz, egységes csoportok stb.) és az Azure Active Directory (Azure AD) B2B együttműködés megosztása külső rendszer technikailag az ugyanaz. Minden külső megosztás (kivéve a onedrive-on vagy a SharePoint Online), többek között a vendégek az Office 365-csoportok, már használja az Azure AD B2B együttműködés meghívó API-k a megosztásához.
+A külső megosztás (onedrive vállalati verzió, SharePoint online-hoz, egységesített csoportok stb.) az Office 365 és Azure Active Directory (Azure AD) B2B-együttműködés technikailag ugyanarra a dologra. Minden külső megosztás (kivéve a onedrive vállalati verzió/SharePoint online-hoz), beleértve a vendégeket az Office 365-csoportok, már használja az Azure AD B2B együttműködés meghívó API-k megosztása.
 
-A OneDrive vagy a SharePoint Online rendelkezik egy külön meghívó manager. A onedrive-on vagy a SharePoint Online elindítása előtt az Azure AD fejlesztett támogatását külső megosztás támogatása. Idővel OneDrive vagy a SharePoint Online külső megosztás esedékes számos szolgáltatást és a termék használó felhasználók sok több millió tartozó a-épül megosztása mintát. Van azonban néhány finom eltérések vannak a onedrive-on vagy a SharePoint Online külső megosztás működése, és az Azure AD B2B együttműködés működéséről között:
+## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Az Azure AD B2B Miben különbözik a külső megosztást a SharePoint online-ban?
 
-- A OneDrive vagy a SharePoint Online hozzáadja a felhasználókat a könyvtár után a felhasználók rendelkeznek sikerült beváltani a meghívást. Igen előtt érvényesítési, nem látható a felhasználó Azure AD portálon. Ha egy másik hely időközben felkéri a felhasználó, egy új meghívó jön létre. Azonban Azure AD B2B együttműködés használata esetén felhasználót adnak hozzá közvetlenül a meghívót, hogy azok megjelenni everywhere.
+Onedrive vállalati verzió/SharePoint online-ban rendelkezik egy külön meghívó manager. Támogatja a külső megosztása a OneDrive/SharePoint online-ban előtt az Azure AD fejlesztett támogat. Az idő múlásával esedékes számos funkcióval rendelkezik külső megosztás OneDrive/SharePoint online-hoz, és több millió felhasználók, akik a termék használatához a beépített minta megosztása. Vannak azonban bizonyos finom eltérések külső megosztás OneDrive/SharePoint Online működését, és az Azure AD B2B együttműködés működése között. További OneDrive/SharePoint Online külső megosztása a [külső megosztása – áttekintés](https://docs.microsoft.com/sharepoint/external-sharing-overview). A folyamat általában különbözik az Azure AD B2B, a következő lehetőségeket biztosítva:
 
-- Az érvényesítési élmény, a onedrive-on vagy a SharePoint Online az Azure AD B2B együttműködés élményt fog kinézni. Miután egy felhasználó visszaváltja meghívót, az feladatait egyformának.
+- Onedrive vállalati verzió/SharePoint online-hoz hozzáadja a felhasználókat arra a könyvtárra után a felhasználók beváltott a meghívást. Tehát előtt érvényesítési, nem látja a felhasználó Azure AD portálon. Ha egy másik hely addig felkéri a felhasználó, egy új meghívó jön létre. Azonban az Azure AD B2B együttműködés használata esetén hozzá lesznek adva azonnal meghívására, hogy azok meg mindenhol.
 
-- Az Azure AD B2B együttműködés meghívott felhasználók is tárolható a onedrive-on vagy a SharePoint Online-ból párbeszédpanelek. OneDrive vagy a SharePoint Online meghívott felhasználók is jelenik meg az Azure AD után azok beváltani a meghívást.
+- Az érvényesítési élmény, a OneDrive/SharePoint online-ban a felhasználói felület az Azure AD B2B együttműködés fog kinézni. Miután egy felhasználó visszaváltja meghívót, a tapasztalatok egyformának.
 
-- Külső megosztás kezelése a onedrive-on vagy a SharePoint Online az Azure AD B2B együttműködés, állítsa be a onedrive-on vagy a SharePoint Online külső megosztási beállítással **csak a könyvtárban már külső felhasználókkal való megosztásának engedélyezése**. Felhasználók ugorjon a külsőleg megosztott hely, és válassza ki a külső együttműködők, hogy a rendszergazda hozzáad. A rendszergazda adhat hozzá a külső együttműködők a B2B együttműködés meghívót API-k használatával.
+- Az Azure AD B2B együttműködés meghívott felhasználók is tárolható a OneDrive/SharePoint online-hoz megosztása párbeszédpanel. OneDrive/SharePoint Online meghívott felhasználók is jelennek meg az Azure ad-ben után azokat a Meghívók beváltásához.
 
-![A onedrive-on vagy a SharePoint Online külső megosztásának beállítása](media/o365-external-user/odsp-sharing-setting.png)
+- A licencelési követelményeket eltérőek. Minden fizetős Azure AD-licencre, esetében engedélyezheti legfeljebb 5 vendégfelhasználót eléréséhez a fizetős Azure AD-funkciók. Licenceléssel kapcsolatos további tudnivalókért lásd: [Azure AD B2B-licencelés](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance) és ["Mi egy külső felhasználót?" a SharePoint Online-ban külső megosztása – áttekintés](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-is-an-external-user).
+
+Külső megosztás kezelése a OneDrive/SharePoint online-ban az Azure AD B2B együttműködés, állítsa be a onedrive vállalati verzió/SharePoint online-hoz beállítással megosztása külső **a szervezet csak a külső felhasználók már létező megosztás engedélyezése Directory**. A felhasználók folytassa a külsőleg megosztott helyek és a rendszergazda által hozzáadott külső közreműködők választhatok. A rendszergazda adhat hozzá a külső együttműködők a B2B-együttműködés meghívó API-k használatával.
+
+
+![A OneDrive/SharePoint Online külső megosztási beállítás](media/o365-external-user/odsp-sharing-setting.png)
 
 ## <a name="next-steps"></a>További lépések
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-* [Egy szerepkör B2B együttműködés felhasználók hozzáadása](add-guest-to-role.md)
-* [B2B együttműködés meghívókat delegálása](delegate-invitations.md)
-* [Dinamikus csoportok és a B2B együttműködés](use-dynamic-groups.md)
+* [B2B-együttműködés felhasználó hozzáadása szerepkörhöz](add-guest-to-role.md)
+* [B2B-együttműködés meghívók delegálása](delegate-invitations.md)
+* [Dinamikus csoportok és B2B-együttműködés](use-dynamic-groups.md)

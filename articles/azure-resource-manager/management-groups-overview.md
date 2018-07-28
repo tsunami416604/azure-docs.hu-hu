@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/09/2018
+ms.date: 7/26/2018
 ms.author: rithorn
-ms.openlocfilehash: c8152a6c12c776806d9a17c5e434d825d6c91165
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f9554c058fbebc215aa61979fa03280553597afc
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466643"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308316"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok
 
@@ -45,14 +45,6 @@ Részlegek szerint csoportosított hierarchia hoz létre, rendelhet [Azure szere
 - Egyes felügyeleti csoportjai rendelkezhet több gyermeke is lehet.
 - Összes előfizetés és a felügyeleti csoport összes könyvtárban egy hierarchián belül található. Lásd: [a legfelső szintű felügyeleti csoportra vonatkozó fontos tények](#important-facts-about-the-root-management-group) kivételekhez az előzetes verzió ideje alatt.
 
-### <a name="preview-subscription-visibility-limitation"></a>Preview előfizetés láthatóságának korlátozása
-
-Jelenleg egy korlátozás az előzetes verzióra, ahol megtekintheti az előfizetéseket, amelyek hozzáférést örökölt vannak nem található. A hozzáférés öröklik az előfizetéshez, de az Azure Resource Manager nem tudja, hogy tartsa tiszteletben az öröklési hozzáférést még.  
-
-A REST API használatával az előfizetés kapcsolatban információért adatait adja vissza, mivel rendelkezik hozzáféréssel, de az Azure Portalon, és az Azure Powershell az előfizetések ne jelenjen meg.
-
-Ez az elem jelenleg szerkesztett, és megszűnik, mielőtt a felügyeleti csoportok vannak bejelentett "Általános rendelkezésre állás."  
-
 ### <a name="cloud-solution-provider-csp-limitation-during-preview"></a>Cloud Solution Provider (CSP) korlátozás az előzetes verzióban
 
 Nincs a jelenlegi korlátozás miatt a Cloud Solution Provider (CSP) partnerek számára, ahol nem sikerült létrehozni vagy az ügyfél a könyvtárból az ügyfél felügyeleti csoportok kezelése.  
@@ -76,7 +68,7 @@ Minden könyvtár neve a "Root" felügyeleti csoport egyetlen legfelső szintű 
   - Senki nem alapértelmezett való hozzáféréssel kap hozzáférést a legfelső szintű felügyeleti csoportban. Directory globális rendszergazdái is csak a felhasználók szintre emelhet, magukat, hogy hozzáférést kapjanak.  Miután hozzáféréssel rendelkeznek, a címtár rendszergazdái rendelheti bármely RBAC szerepkör más felhasználók kezeléséhez.  
 
 >[!NOTE]
->Ha a címtár első lépéseiben a felügyeleti csoportok szolgáltatás 6/25/2018 előtt, a előfordulhat, hogy nem állította be az összes előfizetést a hierarchiában a címtárban. A felügyeleti csoport csapat visszamenőlegesen frissíti a felügyeleti csoportok használata a nyilvános előzetes verziója 2018 július belül céldátum előtt elindított mindegyik könyvtár. A könyvtárakban található összes előfizetés lesz a gyökérszintű felügyeleti tartozó gyermekek előzetes.  
+>Ha a címtár első lépéseiben a felügyeleti csoportok szolgáltatás 6/25/2018 előtt, a előfordulhat, hogy nem állította be az összes előfizetést a hierarchiában a címtárban. A felügyeleti csoport csapat visszamenőlegesen frissíti a felügyeleti csoportok használata a nyilvános előzetes verziója 2018 július/augusztus belül céldátum előtt elindított mindegyik könyvtár. A könyvtárakban található összes előfizetés lesz a gyökérszintű felügyeleti tartozó gyermekek előzetes.  
 >
 >Ha kérdése van a visszamenőleges folyamattal, kapcsolatba: managementgroups@microsoft.com  
   
@@ -97,9 +89,13 @@ Az alábbi ábra a felügyeleti csoportok szerepkörök és a támogatott művel
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
 |Tulajdonos                       | X      | X      | X    | X      | X             |               | X     |
 |Közreműködő                 | X      | X      | X    | X      |               |               | X     |
+|Felügyeleti csoport közreműködői *             | X      | X      | X    | X      |               |               | X     |
 |Olvasó                      |        |        |      |        |               |               | X     |
+|Felügyeleti csoport olvasó *                  |        |        |      |        |               |               | X     |
 |Erőforrás-szabályzati közreműködő |        |        |      |        |               | X             |       |
 |Felhasználói hozzáférés rendszergazdája   |        |        |      |        | X             |               |       |
+
+*: Felügyeleti csoport közreműködői és a felügyeleti csoport olvasó csak engedélyezése a felhasználók számára, hogy ezeket a műveleteket hajthat végre a felügyeleti csoport hatóköre.  
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>Egyéni RBAC szerepkör-definíció- és hozzárendelés
 

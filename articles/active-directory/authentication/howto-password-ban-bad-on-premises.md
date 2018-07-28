@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 9c0519181ec03394e7d732a8eb608501d6dd6657
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5928896ab3c89972b7912f686be045afc988b1cd
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161830"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308875"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Előzetes verzió: Azure AD jelszóvédelem üzembe helyezése
 
@@ -56,7 +56,7 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
 
 1. Válasszon egy vagy több kiszolgálót az Azure AD jelszó védelme proxy szolgáltatás üzemeltetéséhez.
    * Minden ilyen szolgáltatás lehet csak jelszóházirendet egyetlen erdő, és a gazdagépen kell lennie egy tartományhoz tartományhoz (gyökér- és alárendelt egyaránt támogatottak) az adott erdőben. Az Azure AD jelszó védelme proxy szolgáltatás feladatát, teljesítéséhez nincs léteznie kell az erdő minden tartományban legalább egy tartományvezérlő és az Azure AD jelszó védelmi Proxy gazdagép közötti hálózati kapcsolat.
-   * Telepítéséhez és futtatásához az Azure AD jelszó védelme proxy szolgáltatás egy tartományvezérlőn tesztelési célokra támogatott, de majd internetkapcsolatra van szükség.
+   * Támogatott telepítése és futtatása az Azure AD jelszó védelme proxy szolgáltatás egy tartományvezérlőn tesztelési célokra, de a tartományvezérlő ezután internetkapcsolatra van szükség.
 
    > [!NOTE]
    > A nyilvános előzetes verziója támogatja a legfeljebb két (2) proxy kiszolgálók minden erdőre.
@@ -110,6 +110,9 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
 
    > [!NOTE]
    > Az Active Directory-erdő regisztrációs várhatóan egy egyszeri lépés az erdő élettartama során. A tartományt vezérlő ügynökök erdőben futtató automatikusan végre fogja hajtani a bármely más szükséges maintainenance ettől kezdve. Miután egy adott erdő esetén, további indítások sikeres `Register-AzureADPasswordProtectionForest` továbbra is sikeres legyen, de nem szükségesek.
+
+   > [!NOTE]
+   > Ahhoz, hogy `Register-AzureADPasswordProtectionForest` legalább egy Windows Server 2012 vagy újabb tartomány sikeres vezérlő elérhetőnek kell lennie a proxykiszolgálót a tartományban. Azonban esetében nem követelmény, hogy a tartományvezérlő ügynök szoftvert telepítenie minden olyan tartományvezérlőn, ez a lépés előtt.
 
 6. Választható lehetőség: Konfigurálása az Azure AD jelszó védelme proxy szolgáltatás egy adott portot figyeljen.
    * RPC TCP-n keresztül az Azure AD jelszó védelmi proxy szolgáltatással való kommunikációban használják az Azure AD jelszóvédelem DC ügynökszoftver a tartományvezérlőkön. Alapértelmezés szerint az Azure AD jelszóvédelem jelszó házirend Proxy szolgáltatás figyeli az összes rendelkezésre álló dinamikus RPC-végpont. Hálózati topológia vagy tűzfalra vonatkozó követelmények miatt szükséges, ha a szolgáltatás ehelyett beállítható egy adott TCP-porton figyeljen.

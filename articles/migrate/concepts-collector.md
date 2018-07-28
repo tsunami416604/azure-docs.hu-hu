@@ -4,15 +4,15 @@ description: A gyűjtőberendezés és konfigurálásának áttekintése.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 07/27/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 8cc5863489c58a0603d8aa464911031a22dba8f3
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c99d0f74dbb8cc28cabebae60fe10645f4bdb3b6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951039"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308459"
 ---
 # <a name="collector-appliance"></a>Gyűjtőberendezés
 
@@ -188,7 +188,7 @@ Javasoljuk továbbá az alábbi lépéseket a berendezés biztonságossá tétel
 
 Az OVA ismét letöltése nélkül frissítheti a gyűjtő a legújabb verzióra.
 
-1. Töltse le a legújabb [verziófrissítő csomagjának](https://aka.ms/migrate/col/upgrade_9_11) (1.0.9.11 verzió).
+1. Töltse le a legújabb [verziófrissítő csomagjának](https://aka.ms/migrate/col/upgrade_9_13) (1.0.9.13 verzió).
 2. Győződjön meg arról, hogy a letöltött gyorsjavítás biztonságos, nyissa meg a rendszergazdai parancsablakot, és futtassa a következő parancsot a ZIP-fájl kivonatának. A létrehozott kivonatnak egyeznie kell az említett verzió elleni kivonat:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
@@ -199,6 +199,16 @@ Az OVA ismét letöltése nélkül frissítheti a gyűjtő a legújabb verzióra
 5. Kattintson a jobb gombbal a Setup.ps1, és válassza a Futtatás a PowerShell-lel, és kövesse a képernyőn a frissítés telepítéséhez.
 
 ### <a name="list-of-updates"></a>Frissítések listája
+
+#### <a name="upgrade-to-version-10913"></a>1.0.9.13 verzióra frissítése
+
+Ujjlenyomat-frissítéshez értékek [1.0.9.13 csomag](https://aka.ms/migrate/col/upgrade_9_13)
+
+**Algoritmus** | **Kivonat értéke**
+--- | ---
+MD5 | 739f588fe7fb95ce2a9b6b4d0bf9917e
+SHA1 | 9b3365acad038eb1c62ca2b2de1467cb8eed37f6
+SHA256 | 7a49fb8286595f39a29085534f29a623ec2edb12a3d76f90c9654b2f69eef87e
 
 #### <a name="upgrade-to-version-10911"></a>1.0.9.11 verzióra frissítése
 

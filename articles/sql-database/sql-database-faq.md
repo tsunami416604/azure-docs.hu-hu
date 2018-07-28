@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/27/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e4f2bf4303d2a6f52f6dac7e8d71eca24800f53
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092069"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308813"
 ---
 # <a name="sql-database-faq"></a>SQL Database GYIK
 
@@ -90,7 +90,7 @@ Igen, egymástól függetlenül kiválaszthatja az alkalmazás van szüksége, �
 A biztonsági másolatok megőrzése 7 – 35 nap közötti PITR konfigurálható. A biztonsági másolatok tárolási számítunk fel külön a tényleges tárterület-használat alapján, ha ez meghaladja a maximális adatméret egyenlő tárolókapacitás. Előzetes verzióban elérhető alapértelmezés szerint a PITR a megőrzési időszak értéke 7 nap. Sok esetben adatok maximális mérete 7 nap a biztonsági mentések tárolásához elegendő.
 
 ## <a name="why-do-you-allow-selection-of-the-hardware-generation-for-compute"></a>Miért érdemes engedélyeznie a számítási hardver generációja kiválasztását?
-Az a célunk, hogy engedélyezze a lehető legnagyobb rugalmasságot, hogy kiválaszthatja, hogy a teljesítmény-konfigurációkat, amely szorosan megfelel az alkalmazás igényeinek. A fenti táblázatban láthatók a Gen4 és gen5 generáció együttes közötti különbségek. Különösen a Gen4 hardver lényegesen több memória / virtuális mag kínál. Azonban Gen5 hardver lehetővé teszi a vertikális felskálázása a számítási erőforrások sokkal magasabb. Ezek a különbségek transzparens ellenőrizze, hogy az optimális ár-teljesítmény arányt érhet el az alkalmazás szeretnénk.
+Az a célunk, hogy engedélyezze a lehető legnagyobb rugalmasságot, hogy kiválaszthatja, hogy a teljesítmény-konfigurációkat, amely szorosan megfelel az alkalmazás igényeinek. Gen4 hardver / virtuális mag lényegesen több memóriát biztosít. Azonban Gen5 hardver lehetővé teszi a vertikális felskálázása a számítási erőforrások sokkal magasabb. További információkért lásd: [Virtuálismag-beszerzési modell](sql-database-service-tiers-vcore.md)
 
 ## <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Kell az alkalmazásom átalakítása a Virtuálismag-alapú szolgáltatási szinten a DTU-alapú adatbázis? 
 Az új szolgáltatáscsomagok egyszerű online konverziós módszert kínálnak, amely hasonló az adatbázisok Standardról Premium szolgáltatáscsomagra és vissza történő átállításának jelenlegi eljárásához. Ez a konverzió használatával indítható el az Azure portal, PowerShell, Azure CLI-vel, a T-SQL vagy a REST API-t. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: adb78f04c0fd5ba175bb31c9a81ad58b3b03fb42
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 46e4956aa145aa082de86191ede4adaf9a43fca9
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447319"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309026"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Az Azure AD B2C: Jogkivonat-referencia
 
@@ -72,7 +72,7 @@ Vegye figyelembe, hogy a jogcímek, az ID jogkivonatok nem bármely adott sorren
 
 | Name (Név) | Jogcím | Példaérték | Leírás |
 | --- | --- | --- | --- |
-| Célközönség |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Célközönség jogcím azonosítja a jogkivonat az illetékes címzett. Az Azure AD B2C-vel a célközönség megegyezik az alkalmazás Alkalmazásazonosító, az alkalmazáshoz, az alkalmazás regisztrációs portálon rendelt. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha nem felel meg. |
+| Célközönség |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Célközönség jogcím azonosítja a jogkivonat az illetékes címzett. Az Azure AD B2C-vel a célközönség megegyezik az alkalmazás Alkalmazásazonosító, az alkalmazáshoz, az alkalmazás regisztrációs portálon rendelt. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha nem felel meg. Célközönségét egyenértékű az erőforrás. |
 | Kiállító |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Ez a jogcím azonosítja a biztonsági jogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatát adja vissza. Az Azure AD-címtárat, amelyben a felhasználó hitelesítési is azonosítja. Az alkalmazás ellenőrizni kell a kibocsátó jogcím győződjön meg arról, hogy a jogkivonat érkezett az Azure Active Directory v2.0-végpontra. |
 | Tulajdonos: |`iat` |`1438535543` |Ez a jogcím az idő, amikor a jogkivonat lett kiállítva, alapidőpont szerint jelöli. |
 | Lejárati idő |`exp` |`1438539443` |A lejárati idő jogcím az idő, amikor a jogkivonat érvénytelenné, alapidőpont szerint jelennek meg. Az alkalmazás használjon ezt az igényt a jogkivonatok élettartamának érvényességének ellenőrzéséhez. |

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 5d4062ff2c21deeb56eb4ae6e8386452608f85fa
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158804"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308476"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Előzetes verzió: Windows Server Active Directory az Azure AD jelszóvédelem kényszerítése
 
@@ -37,6 +37,7 @@ Nincsenek Azure AD jelszóvédelem alkotó három szoftverösszetevőket:
 ## <a name="requirements"></a>Követelmények
 
 * Minden olyan gép, amelyen telepítve vannak az Azure AD jelszó védelmi összetevők többek között a tartományvezérlők futnia kell a Windows Server 2012 vagy újabb.
+* Minden olyan gép, amelyen telepítve vannak az Azure AD jelszó-védelem összetevői beleértve a tartományvezérlőket kell rendelkeznie a Universal C futásidejű telepítve. Ez lehetőleg azáltal, hogy teljes mértékben kijavítja a gép Windows Update-en keresztül történik. Ellenkező esetben lehet, egy megfelelő operációsrendszer-specifikus frissítési csomag telepítve – lásd: [Universal C-modul a Windows Update](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows)
 * Minden olyan tartományban legalább egy tartományvezérlő és az Azure AD jelszó védelme proxy szolgáltatást futtató legalább egy kiszolgáló között léteznie kell a hálózati kapcsolatot.
 * Minden olyan Active Directory-tartományban, a Tartományvezérlőn futó ügynök szolgáltatás szoftvert kell használnia elosztott fájlrendszer replikációs szolgáltatása a sysvol replikáció.
 * Az Azure AD jelszó védelme proxy szolgáltatás regisztrálása az Azure AD egy globális rendszergazdai fiókkal.
@@ -48,7 +49,7 @@ A globális letiltott jelszavak lista előnyeit az Azure Active Directory (Azure
 
 A letiltott jelszavak egyéni lista alapszintű Azure AD-licenc szükséges.
 
-Az Azure AD jelszóvédelem a Windows Server Active Directory prémium szintű Azure AD-licenc szükséges. 
+Az Azure AD jelszóvédelem a Windows Server Active Directory prémium szintű Azure AD-licenc szükséges.
 
 További licencelési információk, beleértve a költségek, találhatók a [Azure Active Directory díjszabását ismertető a hely](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -61,7 +62,7 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
 * Nincs internetkapcsolat a tartományvezérlőkről szükséges. A futtatása az Azure AD jelszó védelme proxy szolgáltatás (ek) az internetkapcsolatot igénylő csak gépek.
 * Nincs hálózati portokat a tartományvezérlőkön.
 * Az Active Directory-séma módosítása nélkül szükség.
-   * A szoftver a meglévő Active Directory-tárolót és a serviceConnectionPoint sémaobjektumok használja.
+* A szoftver a meglévő Active Directory-tárolót és a serviceConnectionPoint sémaobjektumok használja.
 * Esetében nem minimális Active Directory-tartomány vagy erdő működési szint (DFL\FFL) követelmény.
 * A szoftver hozzon létre vagy nem szükséges minden olyan fiókok, az általa védett munkaterhelésekkel Active Directory-tartománynak.
 * Növekményes üzembe helyezést támogatott azzal a kompromisszummal jár, hogy jelszót házirend csak van érvényben, a domain controller ügynök telepítve van.
