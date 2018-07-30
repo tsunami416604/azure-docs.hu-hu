@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 453159e51473b76d8a95b98237796ac490f8ed6a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4355d6bebe00650a6fb4e2f2a6e400be30722b2
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630136"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145128"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszköz kiépítése IoT Hubra az Azure IoT Hub Device Provisioning Service használatával
 
@@ -49,7 +49,7 @@ Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevői
 
 A következő két módon regisztrálható az eszköz a Device Provisioning Service-ben:
 
-- **Regisztrációs csoportok** Közös igazolási mechanizmussal rendelkező eszközök csoportja. Nagy számú, azonos kívánt kezdeti konfigurációval rendelkező eszközhöz vagy azonos bérlőt célzó eszközökhöz érdemes regisztrációs csoportot használni.
+- **Regisztrációs csoportok** Közös igazolási mechanizmussal rendelkező eszközök csoportja. Nagy számú, azonos kívánt kezdeti konfigurációval rendelkező eszközhöz vagy azonos bérlőt célzó eszközökhöz érdemes regisztrációs csoportot használni. A regisztrációs csoportok identitásigazolásáról további információt a [Biztonság](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) részben talál.
 
     [![Csoportos regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
@@ -67,26 +67,29 @@ Most regisztrálja az eszközt a Device Provisioning Service-példánnyal az esz
 
 A regisztrációt követően a kiépítési szolgáltatás megvárja, amíg az eszköz elindul, és később csatlakozik hozzá. Az eszköz első indításakor az ügyfél SDK-kódtár a lapkával együttműködve kicsomagolja az eszközön lévő biztonsági összetevőket, és ellenőrzi a Device Provisioning Service-szel meglévő regisztrációt. 
 
-## <a name="start-the-device"></a>Az eszköz elindítása
+## <a name="start-the-iot-device"></a>IoT-eszköz elindítása
 
-Ekkor a következő beállítás van készen az eszköz regisztrációjához:
+Az IoT-eszköz lehet valós vagy szimulált eszközt. Mivel az IoT-eszköz most már regisztrálva van egy Device Provisioning Service-példánnyal, az eszköz mostantól elindulhat és meghívhatja a kiépítési szolgáltatást, amely elvégzi az azonosítást az igazolási mechanizmus használatával. Amint a kiépítési szolgáltatás felismerte az eszközt, hozzárendeli egy IoT hubhoz. 
 
-1. Az eszköz vagy eszközcsoport regisztrálva van a Device Provisioning Service-ben, és 
-2. Az eszközhöz konfigurálva van egy igazolási mechanizmus, amely a Device Provisioning Service ügyféloldali SDK-val érhető el az alkalmazáson keresztül.
+TPM- és az X.509-igazolást használó szimulált eszközre is talál példákat a C, a Java, a C#, a Node.js és Python esetében. A TPM-et és az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-t használó szimulált eszköz például az [Eszköz első rendszerindításának szimulálása](quick-create-simulated-device.md#simulate-first-boot-sequence-for-the-device) című szakaszban található folyamatot követi. Ugyanez az eszköz az X.509-tanúsítványigazolás használata esetén ezt a [rendszerindítással foglalkozó](quick-create-simulated-device-x509.md#simulate-first-boot-sequence-for-the-device) szakaszt venné alapul.
 
-Indítsa el az eszközt, hogy az ügyfélalkalmazás elindíthassa a Device Provisioning Service-szel való regisztrációt.  
+Tekintse meg az [MXChip Iot DevKit használati útmutatóját](how-to-connect-mxchip-iot-devkit.md) a valós eszköz példájához.
+
+Indítsa el az eszközt, hogy az eszköz ügyfélalkalmazása elindíthassa a Device Provisioning Service-szel való regisztrációt.  
 
 ## <a name="verify-the-device-is-registered"></a>Az eszköz sikeres regisztrálásának ellenőrzése
 
-Az eszköz indítása után a következő műveleteket kell elvégezni. További részletekért tekintse meg a TPM-szimulátor [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) mintaalkalmazását. 
+Az eszköz indítása után a következő műveleteket kell elvégezni:
 
 1. Az eszköz regisztrációs kérést küld a Device Provisioning Service-nek.
 2. TPM-eszközök esetén a Device Provisioning Service visszaküld egy regisztrációs kihívást, amelyre az eszköz válaszol. 
 3. Sikeres regisztráció esetén a Device Provisioning Service visszaküldi az eszköznek az IoT Hub URI-jét, az eszközazonosítót és a titkosított kulcsot. 
 4. Az eszközön lévő IoT Hub-ügyfélalkalmazás ekkor csatlakozik a hubhoz. 
-5. A hubhoz való sikeres csatlakozás esetén látnia kell az eszközt az IoT Hub **Device Explorer** paneljén. 
+5. A hubhoz való sikeres csatlakozás esetén látnia kell az eszközt az IoT Hub **IoT-eszközök** kezelőjében. 
 
     ![Sikeres csatlakozás a hubhoz a portálon](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
+
+További információért tekintse meg a TPM-szimulátor [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) mintaalkalmazását. 
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:

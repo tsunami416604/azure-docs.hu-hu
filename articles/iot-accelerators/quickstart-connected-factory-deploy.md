@@ -1,5 +1,5 @@
 ---
-title: Ipari IoT-eszközök felügyeletére szolgáló megoldás üzembe helyezése az Azure-ban | Microsoft Docs
+title: Ipari IoT-eszközök felügyeletére szolgáló megoldás kipróbálása az Azure-ban | Microsoft Docs
 description: Ezzel a rövid útmutatóval üzembe helyezheti a csatlakoztatott gyár Azure IoT megoldásgyorsítóját, és bejelentkezhet a megoldás irányítópultjának használatához.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: ce4d32c80040ec658070a3fa3132e34931a6755a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072650"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144513"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rövid útmutató: Az ipari IoT-eszközök felügyeletére szolgáló felhőalapú megoldás kipróbálása
 

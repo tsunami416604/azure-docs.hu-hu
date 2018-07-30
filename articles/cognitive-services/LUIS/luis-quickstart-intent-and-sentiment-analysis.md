@@ -2,19 +2,19 @@
 title: Oktatóanyag – Hangulatelemzést visszaadó LUIS-alkalmazás létrehozása – Azure | Microsoft Docs
 description: Az oktatóanyagból megtudhatja, hogyan adhat hozzá hangulatelemzést LUIS-alkalmazásához a kimondott szövegek pozitív, negatív vagy semleges érzelmeinek elemzésére.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8dc6b8d4dd4cbe64841c4b36c498cf9021b4196f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 1fa27cf04e136033c51b951271a3d329a910a720
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930606"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223619"
 ---
 # <a name="tutorial-9--add-sentiment-analysis"></a>Oktatóanyag: 9.  Hangulatelemzés hozzáadása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhető ki pozitív, negatív vagy semleges érzelem a kimondott szövegekből.

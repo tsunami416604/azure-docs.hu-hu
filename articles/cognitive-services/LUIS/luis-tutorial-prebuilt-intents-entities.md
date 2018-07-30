@@ -2,19 +2,19 @@
 title: Előre összeállított szándékok és entitások hozzáadása a gyakori adatok kinyeréséhez a Language Understandingben – Azure | Microsoft Docs
 description: Megismerheti, hogyan használhatja az előre összeállított szándékokat és entitásokat a különböző típusú entitásadatok kinyeréséhez.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 3fc2040e66f6fc649448d3241b01678b7bb7f214
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929049"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239035"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Oktatóanyag: 2. Előre összeállított szándékok és entitások hozzáadása
 Előre összeállított szándékokat és entitásokat adhat az oktatóanyagbeli Human Resources (Emberi erőforrások) alkalmazáshoz, így gyorsan hozzáférhet a szándék-előrejelzéshez és az adatok kinyeréséhez. 

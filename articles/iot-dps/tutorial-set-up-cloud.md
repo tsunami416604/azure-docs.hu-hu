@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e334ff0c8dec3a9611b60f64e565111064d10c18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ccc699a500cbaf20c9b90d71e7c730e617bc572c
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619282"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145536"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Felhőalapú erőforrások konfigurálása az IoT Hub Device Provisioning Service használatával történő eszközkiépítéshez
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag bemutatja, hogyan állíthatja be a felhőt az automatikus es
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -50,9 +50,9 @@ Kövesse az alábbi lépéseket egy új Device Provisioning Service-példány l�
 
    ![Írja be a DPS alapvető adatait a portálon](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Kattintson a **Create** (Létrehozás) gombra.
-6. Az *Azonosító hatóköre* a regisztrációs azonosítók azonosítására szolgál, továbbá garantálja a regisztrációs azonosító egyediségét. Az érték beszerzéséhez kattintson az **Áttekintés** gombra a Device Provisioning Service **Alapvető szolgáltatások** lapjának megnyitásához. A későbbi használat érdekében másolja az **Azonosító hatóköre** értéket egy ideiglenes helyre.
-7. A **Szolgáltatásvégpont** értékét is jegyezze fel, vagy másolja egy ideiglenes helyre későbbi használat céljából. 
+5. Kattintson a **Create** (Létrehozás) gombra. A rendszer néhány pillanaton belül létrehozza a Device Provisioning Service-példányt, majd megjeleníti az **Áttekintés** lapot.
+6. Az új szolgáltatáspéldány **Áttekintés** lapján másolja az **Azonosító hatóköre** értéket későbbi felhasználás céljából. Az érték a regisztrációs azonosítók azonosítására szolgál, továbbá garantálja a regisztrációs azonosító egyediségét.
+7. Jegyezze fel a **Szolgáltatásvégpont** értéket is későbbi felhasználás céljából. 
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -65,8 +65,11 @@ A következő lépés a Device Provisioning Service és az IoT-központ összeka
 1. Az **Összes erőforrás** lapon kattintson a korábban létrehozott Device Provisioning Service-példányra.
 2. A Device Provisioning Service lapján kattintson a **Csatolt IoT-központok** lehetőségre.
 3. Kattintson a **Hozzáadás** parancsra.
-4. A **Hivatkozás hozzáadása IoT-központhoz** lapon a választógombok segítségével adja meg, hogy a csatolt IoT-központ az aktuális előfizetésben vagy egy másik előfizetésben található. Ezután válassza ki az IoT-központ nevét az **IoT-központ** mezőben.
-5. Kattintson a **Save** (Mentés) gombra.
+4. A **Hivatkozás hozzáadása IoT hubhoz** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés**gombra:
+
+    * **Előfizetés:** Győződjön meg arról, hogy az IoT hubot tartalmazó szolgáltatás van kiválasztva. Másik előfizetésben található IoT hubot is csatlakoztathat.
+    * **IoT hub:** Válassza ki a Device Provisioning Service-példányhoz csatlakoztatni kívánt IoT hub nevét.
+    * **Hozzáférési szabályzat:** Válassza az **iothubowner** hitelesítő adatait az IoT Hubra mutató kapcsolat kiépítésének használatához.
 
    ![A központ nevének csatolása a DPS-hez a portálon](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 

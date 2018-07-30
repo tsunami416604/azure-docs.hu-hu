@@ -2,19 +2,19 @@
 title: Egyszerű alkalmazás létrehozása két szándékkal – Azure | Microsoft Docs
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy egyszerű LUIS-alkalmazást két szándékkal és entitások nélkül a kimondott felhasználói szövegek azonosításához.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: diberry
+ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865811"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237774"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Oktatóanyag: 1. Egyéni tartományt használó alkalmazás létrehozása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan használhatja a **szándékokat** a felhasználó _szándékának_ meghatározásához az alkalmazás számára elküldött kimondott szöveg (szöveg) alapján. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.

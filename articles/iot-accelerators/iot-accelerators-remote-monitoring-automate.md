@@ -1,20 +1,20 @@
 ---
-title: Eszközökkel kapcsolatos problémák észlelése egy Azure-alapú távoli monitorozási megoldásban | Microsoft Docs
+title: Eszközökkel kapcsolatos problémák észlelése egy Azure-alapú távoli monitorozási megoldásban – oktatóanyag | Microsoft Docs
 description: Ez az oktatóprogram bemutatja, hogyan használja a szabályokat és műveleteket a küszöbérték-alapú eszközhibák azonosítására a távoli monitorozási megoldásban.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/08/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1e3eaeec1d2eae3c36f285a3e4c536657504cbb8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 29d4289f5b83e37cddec652b976aeb5aa255ed4c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098481"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158877"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése
 
@@ -33,29 +33,19 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Meglévő szabály szerkesztése
 > * Szabályok be- vagy kikapcsolása
 
-## <a name="prerequisites"></a>Előfeltételek
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Az oktatóanyag követéséhez rendelkeznie kell a távoli monitorozási megoldásgyorsító üzembe helyezett példányával az Azure-előfizetésében.
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
-Ha még nem helyezte üzembe a távoli monitorozási megoldásgyorsítót, végezze el [Távoli felhőalapú monitorozási megoldás üzembe helyezése](quickstart-remote-monitoring-deploy.md) rövid útmutatóban leírtakat.
-
-## <a name="view-the-existing-rules"></a>Meglévő szabályok megtekintése
+## <a name="review-the-existing-rules"></a>Meglévő szabályok áttekintése
 
 A megoldásgyorsító **Szabályok** lapja megjeleníti az összes jelenlegi szabály listáját:
 
 [![Szabályok lap](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
-Ha kizárólag a hűtőre vonatkozó szabályokat szeretné megtekinteni, alkalmazzon szűrőt:
-
-[![Szabálylista szűrése](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-expanded.png#lightbox)
-
-A listából való kiválasztással részletes információkat kaphat egy adott szabályról, és szerkesztheti is:
+Ha kizárólag a hűtőeszközökre vonatkozó szabályokat szeretné megtekinteni, alkalmazzon szűrőt. A listából való kiválasztással részletes információkat kaphat egy adott szabályról, és szerkesztheti is:
 
 [![Szabály részleteinek megtekintése](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-expanded.png#lightbox)
-
-Egy vagy több szabály engedélyezéséhez vagy letiltásához válasszon ki egy vagy több szabályt a listából:
-
-[![Több szabály kijelölése](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-expanded.png#lightbox)
 
 ## <a name="create-a-rule"></a>Szabály létrehozása
 
@@ -80,7 +70,7 @@ A szabály aktiválásának idejét a **Szabály** vagy az **Irányítópult** o
 
 [![Figyelmeztetési szabály aktiválása](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
-## <a name="create-a-rule-with-multiple-conditions"></a>Több feltétellel rendelkező szabály létrehozása
+## <a name="create-an-advanced-rule"></a>Speciális szabály létrehozása
 
 Kattintson az **Új szabály** elemre egy olyan többfeltételes szabály létrehozásához, amely kritikus riasztást hoz létre, ha az utolsó öt perc során az eszközben az átlagos páratartalom meghaladja a 80%-ot, a hőmérséklet pedig magasabb, mint 75 Fahrenheit-fok. A szabály létrehozásához használja a következő értékeket:
 
@@ -128,23 +118,7 @@ Ha ideiglenesen ki kíván kapcsolni egy szabályt, tiltsa le a szabálylistába
 
 Egyszerre több szabályt is engedélyezhet vagy letilthat, ha kijelöli őket a listában.
 
-<!-- ## Delete a rule
-
-To permanently delete a rule, choose the rule in the list of rules and then choose **Delete**.
-
-You can delete multiple rules at the same time if you select multiple rules in the list.-->
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha tovább kíván lépni a következő oktatóanyagra, ne kapcsolja ki a távoli monitorozási megoldásgyorsítót. Ha csökkenteni szeretné a megoldásgyorsító futtatásának költségeit, amíg nem használja, állítsa le a szimulált eszközöket a beállítások panelen:
-
-[![Telemetria szüneteltetése](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-expanded.png#lightbox)
-
-Ha készen áll a következő oktatóanyag megkezdésére, újraindíthatja a szimulált eszközöket.
-
-Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról:
-
-![Megoldás törlése](media/iot-accelerators-remote-monitoring-automate/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>További lépések
 

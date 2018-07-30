@@ -9,70 +9,82 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1e4e93c276fe62caae17c85bf9ac92282dfdfb88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d589c0ece2b36970a31884aa72ee7ab87941a656
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631268"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39146439"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszközregisztráció beállítása az Azure IoT Hub Device Provisioning Service használatával
 
-Az előző oktatóanyagban bemutattuk, hogyan állíthatja be, hogy az Azure IoT Hub Device Provisioning Service automatikusan regisztrálja az eszközöket az IoT Hubban. Ez az oktatóanyag azt mutatja be, hogyan állíthatók be az eszközök a gyártási folyamat során, ami lehetővé teszi az IoT Hub általi automatikus regisztrációt. Az eszköz regisztrálása az [igazolási eljárás](concepts-device.md#attestation-mechanism), az első indítás és a regisztrálási szolgáltatással létesített kapcsolat alapján történik. Ez az oktatóanyag a következő folyamatokat mutatja be:
+Az előző oktatóanyagban bemutattuk, hogyan állíthatja be, hogy az Azure IoT Hub Device Provisioning Service automatikusan regisztrálja az eszközöket az IoT Hubban. Ez az oktatóanyag azt mutatja be, hogyan állíthatók be az eszközök a gyártási folyamat során, ami lehetővé teszi az IoT Hub általi automatikus regisztrációt. Az eszköz regisztrálása az [igazolási eljárás](concepts-device.md#attestation-mechanism), az első indítás és a regisztrálási szolgáltatással létesített kapcsolat alapján történik. Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Platformspecifikus Device Provisioning Services ügyfél-SDK kiépítése
 > * Biztonsági összetevők kicsomagolása
 > * Az eszközregisztrációs szoftver létrehozása
 
-## <a name="prerequisites"></a>Előfeltételek
-
-A folytatás előtt hozza létre a Device Provisioning Service-példányt és egy IoT-központot az előző, [1 – Felhőerőforrások beállítása](./tutorial-set-up-cloud.md) című oktatóanyag alapján.
+Ehhez az oktatóanyag feltételezi, hogy már létrehozta a Device Provisioning Service-példányt és az IoT hubot az előző, [Felhőerőforrások beállítása](tutorial-set-up-cloud.md) című oktatóanyag alapján.
 
 Ez az oktatóanyag az [Azure IoT SDKs and libraries for C](https://github.com/Azure/azure-iot-sdk-c) (Azure IoT SDK-k és tárak – C) adattárt használja, amely a C nyelvhez készült Device Provisioning Service ügyfél-SDK-t tartalmazza. Az SDK jelenleg Windows- és Ubuntu-implementációkon futó rendszerek számára kínál TPM- és X.509-támogatást. Az oktatóanyag egy Windows rendszerű fejlesztési ügyfél alapján készült, amely alapszintű jártasságot feltételez a Visual Studio 2017 használatában. 
 
 Amennyiben nem ismeri az automatikus regisztrálás folyamatát, a folytatás előtt olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket. 
 
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Visual Studio 2015 vagy [Visual Studio 2017](https://www.visualstudio.com/vs/), amelyben engedélyezve van az [„Asztali fejlesztés C++ használatával”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat.
+* A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
+
+
+
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Az SDK platformspecifikus verziójának kiépítése
 
-A Device Provisioning Service ügyfél-SDK az eszközregisztrációs szoftver implementálását segíti. Az SDK használata előtt azonban ki kell építenie annak fejlesztésiügyfél-platformjához tartozó verzióját, illetve az igazolási eljárást. Az oktatóanyag során kiépít egy támogatott igazolástípussal rendelkező SDK-t, amely egy Windows fejlesztési platformon használja a Visual Studio 2017-et:
+A Device Provisioning Service ügyfél-SDK az eszközregisztrációs szoftver implementálását segíti. Az SDK használata előtt azonban ki kell építenie annak fejlesztésiügyfél-platformjához tartozó verzióját, illetve az igazolási eljárást. Az oktatóanyagot követve kiépít egy támogatott igazolástípussal rendelkező SDK-t, amely egy fejlesztési Windows-platformon használja a Visual Studio 2017-et:
 
-1. Telepítse a szükséges eszközöket, és klónozza a regisztrációs szolgáltatás C ügyfél-SDK-t tartalmazó GitHub-adattárat:
+1. Töltse le a [CMake buildelési rendszer](https://cmake.org/download/) legújabb kiadási verzióját. Ugyanezen az oldalon keresse meg a választott bináris disztribúció verziójának titkosítási kivonatát. Ellenőrizze a letöltött bináris fájlt a megfelelő titkosítási kivonat értékének használatával. Az alábbi példa a Windows PowerShell használatával ellenőrizte az x64 MSI disztribúció 3.11.4-es verziójának titkosítási kivonatát:
 
-   a. Győződjön meg arról, hogy a Visual Studio 2015 vagy a [Visual Studio 2017](https://www.visualstudio.com/vs/) telepítve van a gépen. A Visual Studio telepítésekor engedélyezni kell az [„Asztali fejlesztés C++ használatával”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladatot.
+    ```PowerShell
+    PS C:\Users\wesmc\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
+    PS C:\Users\wesmc\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    True
+    ```
 
-   b. Töltse le és telepítse a [CMake buildelési rendszert](https://cmake.org/download/). Fontos, hogy a Visual Studio az „Asztali fejlesztés C++ használatával” számítási feladattal együtt telepítve legyen a gépen a CMake telepítése **előtt**.
+    Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
-   c. Győződjön meg arról, hogy a(z) `git` telepítve van a gépen, és a parancsablakból elérhető környezeti változókhoz van adva. A [Software Freedom Conservancy's Git ügyfél eszközeiben](https://git-scm.com/download/) találja a legújabb `git`-eszközöket, köztük a **Git Bash** eszközt, azt a parancssori Bash-felületet, amellyel kommunikálhat a helyi Git-adattárral. 
-
-   d. Nyissa meg a Git Basht, és klónozza az „Azure IoT SDKs and libraries for C” (Azure IoT SDK-k és tárak – C) adattárt. A klónozási parancs végrehajtása több percet is igénybe vehet, mivel a folyamat során a rendszer számos függő almodult is letölt:
+2. Nyisson meg egy parancssort vagy a Git Bash-felületet. A következő parancs végrehajtásával klónozza az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattárat:
     
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+    ```cmd/sh
+    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    ```
+    Az adattár mérete jelenleg körülbelül 220 MB. Ez a művelet várhatóan több percig is eltarthat.
 
-   e. Hozzon létre egy új `cmake` alkönyvtárat az újonnan létrehozott adattáralkönyvtárban:
 
-   ```cmd/sh
-   mkdir azure-iot-sdk-c/cmake
-   ``` 
+3. Hozzon létre egy `cmake` alkönyvtárat a Git-adattár gyökérkönyvtárában, és lépjen erre a mappára. 
 
-2. A Git Bash parancssorán nyissa meg az azure-iot-sdk-c adattár `cmake` alkönyvtárát:
+    ```cmd/sh
+    cd azure-iot-sdk-c
+    mkdir cmake
+    cd cmake
+    ```
 
-   ```cmd/sh
-   cd azure-iot-sdk-c/cmake
-   ```
+4. Hozza létre a fejlesztési platform SDK-ját a használni kívánt igazoló mechanizmusok alapján. Használja az alábbi parancsok egyikét (az egyes parancsokhoz tartozó két záró pontot se felejtse el). Ha elkészült, a CMake kiépíti az eszközspecifikus tartalommal rendelkező `/cmake` alkönyvtárat:
+ 
+    - Az igazoláshoz TPM-szimulátort használó eszközök esetében:
 
-3. Hozza létre a fejlesztési platform SDK-ját és az egyik támogatott igazolási eljárást az alábbi parancsok egyikével (a két záró pontot se felejtse ki). Ha elkészült, a CMake kiépíti az eszközspecifikus tartalommal rendelkező `/cmake` alkönyvtárat:
-    - Az igazoláshoz fizikai TPM-/HSM-modult vagy szimulált X.509-tanúsítványt használó eszközök esetében:
+        ```cmd/sh
+        cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
+        ```
+
+    - Bármely más eszköz esetében (fizikai TPM-/HSM-/X.509- vagy szimulált X.509-tanúsítvány):
+
         ```cmd/sh
         cmake -Duse_prov_client:BOOL=ON ..
         ```
 
-    - Az igazoláshoz TPM-szimulátort használó eszközök esetében:
-        ```cmd/sh
-        cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
-        ```
 
 Most már készen áll arra, hogy az SDK segítségével létrehozza az eszközregisztrációs kódot. 
  
@@ -82,20 +94,24 @@ Most már készen áll arra, hogy az SDK segítségével létrehozza az eszközr
 
 A következő lépés az eszköz által használt igazolási eljárás biztonsági összetevőinek kicsomagolása. 
 
-### <a name="physical-device"></a>Fizikai eszköz 
+### <a name="physical-devices"></a>Fizikai eszközök 
 
-Ha az SDK fizikai TPM/-HSM-modulból származó igazoláshoz készült:
+Attól függően, hogy az SDK-t fizikai TPM-/HSM-igazolás vagy X.509-tanúsítványok használatával hozta létre, a rendszer az alábbi módon gyűjti össze a biztonsági összetevőket:
 
 - TPM-eszköz esetén meg kell határozni a TPM-lapka gyártója által hozzá társított **Ellenőrzőkulcsot**. A TPM-eszköz egyedi **Regisztrációs azonosítójának** származtatását az ellenőrzőkulcs kivonatolásával végezheti el.  
 
-- X.509-eszköz esetén szerezze be az eszköz(ök)höz rendelt tanúsítványokat – végfelhasználói tanúsítványt egyéni eszközregisztrációhoz, főtanúsítványokat csoportos eszközregisztrációhoz. 
+- X.509-eszköz esetén be kell szereznie az eszköz(ök)höz kiadott tanúsítványokat. A kiépítési szolgáltatás kétféle regisztrációs bejegyzést tesz közzé, amelyek az X.509-igazolás mechanizmust használó eszközök hozzáférését szabályozzák. A szükséges tanúsítványok a használni kívánt regisztrációtípusoktól függnek.
 
-### <a name="simulated-device"></a>Szimulált eszköz
+    1. Egyéni regisztrációk: megadott különálló eszköz regisztrációja. Az ilyen típusú regisztrációs bejegyzéshez [végfelhasználói, vagy levéltanúsítványok](concepts-security.md#end-entity-leaf-certificate) szükségesek.
+    2. Regisztrációs csoportok: Az ilyen típusú regisztrációs bejegyzéshez köztes vagy főtanúsítványok szükségesek. További információért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
-Ha az SDK szimulált TPM-modulból vagy X.509-tanúsítványból származó igazoláshoz készült:
+### <a name="simulated-devices"></a>Szimulált eszközök
+
+Attól függően, hogy az SDK-t TPM- vagy x.509-tanúsítványokat használó szimulált eszköz igazolása céljából hozta létre, a rendszer az alábbi módon gyűjti össze a biztonsági összetevőket:
 
 - Szimulált TPM-eszköz:
-   1. Egy különálló vagy új parancssorban keresse meg az `azure-iot-sdk-c` alkönyvtárat, és futtassa a TPM-szimulátort. A 2321-es és a 2322-es portokon lévő szoftvercsatornán keresztül figyel. Ne zárja be ezt a parancsablakot. A szimulátornak a következő rövid útmutató végéig futnia kell. 
+
+   1. Nyisson meg egy Windows-parancssort, majd keresse meg az `azure-iot-sdk-c` alkönyvtárat, és futtassa a TPM-szimulátort. A 2321-es és a 2322-es portokon lévő szoftvercsatornán keresztül figyel. Ne zárja be ezt a parancsablakot. A szimulátornak a következő rövid útmutató végéig futnia kell. 
 
       Az `azure-iot-sdk-c` alkönyvtárból futtassa a következő parancsot a szimulátor indításához:
 
@@ -103,18 +119,22 @@ Ha az SDK szimulált TPM-modulból vagy X.509-tanúsítványból származó igaz
       .\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
       ```
 
+      > [!NOTE]
+      > Ha a Git bash parancssort használja ehhez a lépéshez, változtassa a fordított perjeleket perjelekre, például így: `./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`.
+
    2. A Visual Studióval nyissa meg a *cmake* mappában létrehozott `azure_iot_sdks.sln` nevű megoldást, és hozza létre a „Build” menü „Megoldás fordítása” parancsával.
 
    3. A Visual Studio *Solution Explorer* (Megoldáskezelő) panelén lépjen a **Provision\_Tools** mappára. Kattintson a jobb gombbal a **tpm_device_provision** projektre, és válassza a **Set as Startup Project** (Beállítás kezdőprojektként) lehetőséget. 
 
-   4. Futtassa a megoldást a Hibakeresés menü valamelyik „Indítás” parancsa segítségével. A kimeneti ablak megjeleníti a TPM-szimulátor eszközök beléptetéséhez és regisztrálásához szükséges **_regisztrációs azonosítóját_** és **_ellenőrzőkulcsot_**. Másolja ki ezeket az értékeket későbbi felhasználás céljára. Bezárhatja a regisztrációs azonosítót és az ellenőrzőkulcsot tartalmazó ablakot, de hagyja futni a TPM-szimulátor ablakát, amelyet az 1. lépésben nyitott meg.
+   4. Futtassa a megoldást a Hibakeresés menü valamelyik „Indítás” parancsa segítségével. A kimeneti ablak megjeleníti a TPM-szimulátor eszközök beléptetéséhez és regisztrálásához szükséges **_regisztrációs azonosítóját_** és az **_ellenőrzőkulcsot_**. Másolja ki ezeket az értékeket későbbi felhasználás céljára. Bezárhatja a regisztrációs azonosítót és az ellenőrzőkulcsot tartalmazó ablakot, de hagyja futni a TPM-szimulátor ablakát, amelyet az 1. lépésben nyitott meg.
 
 - Szimulált X.509-eszköz:
+
   1. A Visual Studióval nyissa meg a *cmake* mappában létrehozott `azure_iot_sdks.sln` nevű megoldást, és hozza létre a „Build” menü „Megoldás fordítása” parancsával.
 
   2. A Visual Studio *Solution Explorer* (Megoldáskezelő) panelén lépjen a **Provision\_Tools** mappára. Kattintson a jobb gombbal a **dice\_device\_enrollment** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. 
   
-  3. Futtassa a megoldást a Hibakeresés menü valamelyik „Indítás” parancsa segítségével. A kimeneti ablakba írja be a következőt az egyéni regisztrációhoz, amikor a rendszer erre kéri: **i**. A kimeneti ablakban megjelenik egy helyileg létrehozott X.509-tanúsítvány a szimulált eszközhöz. Másolja a vágólapra a kimenetet a *-----BEGIN CERTIFICATE-----* sortól az első *-----END CERTIFICATE-----* sorig, és ügyeljen arra, hogy a kijelölésben ez a két sor is benne legyen. Ne feledje, hogy csak az első tanúsítványra van szüksége a kimeneti ablakból.
+  3. Futtassa a megoldást a Hibakeresés menü valamelyik „Indítás” parancsa segítségével. A kimeneti ablakba írja be a következőt az egyéni regisztrációhoz, amikor a rendszer erre kéri: **i**. A kimeneti ablakban megjelenik egy helyileg létrehozott X.509-tanúsítvány a szimulált eszközhöz. Másolja a vágólapra a kimenetet a *-----BEGIN CERTIFICATE-----* sortól az első *-----END CERTIFICATE-----* sorig, és ügyeljen arra, hogy a kijelölésben ez a két sor is benne legyen. Csak az első tanúsítványra van szüksége a kimeneti ablakból.
  
   4. Hozzon létre egy **_X509testcert.pem_** nevű fájlt, nyissa meg egy szövegszerkesztőben, és másolja bele a vágólapra kimásolt szöveget. Mentse a fájlt, mivel később még szüksége lesz rá az eszköz regisztrálásához. A regisztrációs szoftver működés közben ugyanazt a tanúsítványt használja, mint az automatikus regisztrálás során.    
 

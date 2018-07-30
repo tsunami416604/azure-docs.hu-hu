@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 93fe8dc3f8ff991cd6c48923d9e2073e4e93f1ad
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040847"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144193"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosítása érdekében friss térképadatokat használó térinformatikai szolgáltatások gyűjteménye. A benne foglalt REST API-kkal térképek jeleníthetők meg, valamint hasznos helyek, az ezekhez vezető útvonalak, forgalmi viszonyok, időzónák és IP-alapú helymeghatározási szolgáltatások kereshetők. Az API-kat az ismerős eszközökkel együtt használva gyorsan fejleszthet és skálázhat olyan megoldásokat, amelyek helyadatokat biztosítanak az Azure-megoldásokban. A REST API-kkal együtt a szolgáltatás egy olyan webalapú JavaScript-vezérlőt biztosít, amelynek segítségével a fejlesztés egyszerűen, rugalmasan és különböző felületeken kivitelezhető. 
@@ -92,6 +92,7 @@ További részletekért lépjen az [Azure Maps forgalmi API-jainak](https://docs
 
 Az IP-alapú helymeghatározás egy előzetes verzióban elérhető szolgáltatás, amely adott IP-cím alapján megadja a kétbetűs országkódot. A szolgáltatás segítségével az alkalmazások testreszabhatók a különféle geopolitikai megkötéseknek megfelelően, valamint javítható a felhasználói élmény a tartalmak a földrajzi helyhez való igazításával. 
 
+Az IP-alapú helymeghatározási szolgáltatás REST API-kkal kapcsolatos információiért lépjen az [Azure Maps Geolocation API-jainak](https://docs.microsoft.com/rest/api/maps/geolocation) oldalára.
 
 ## <a name="programming-model"></a>A programozási modell
 
