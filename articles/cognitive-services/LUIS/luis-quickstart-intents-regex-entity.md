@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 522d24c1c03a338633c340502087300c890d1771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f51c296b39fda08d0bcc704fb974e71465385d67
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128445"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929371"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Oktatóanyag: 3. Reguláriskifejezés-entitás hozzáadása
 Ebben az oktatóanyagban létrehoz egy alkalmazást, amely bemutatja, hogyan nyerhető ki konzisztensen formázott adat egy kimondott szövegből a **Reguláris kifejezés** entitás segítségével.
@@ -31,7 +31,7 @@ Ebben az oktatóanyagban létrehoz egy alkalmazást, amely bemutatja, hogyan nye
 Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ha még nincs meg az Emberi erőforrások alkalmazása az [előre összeállított entitások](luis-tutorial-prebuilt-intents-entities.md) oktatóanyagából, [importálja](create-new-app.md#import-new-app) a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) GitHub-adattárból a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén.
+Ha még nincs meg az Emberi erőforrások alkalmazása az [előre összeállított entitások](luis-tutorial-prebuilt-intents-entities.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) GitHub-adattárból a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén.
 
 Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `regex`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
 
@@ -253,7 +253,7 @@ A csevegőrobot már elég információval rendelkezik az elsődleges művelet (
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot felhasználhatja a topScoringIntent eredményt és az űrlapszámokat, és kereshet egy harmadik fél API-t. Ezt nem végzi el a LUIS. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka, és kinyeri a szándék alapján az adatokat. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal oldali menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal oldali menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

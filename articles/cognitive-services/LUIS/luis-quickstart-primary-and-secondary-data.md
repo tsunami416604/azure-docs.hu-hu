@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a4bf63b7a2fbbb26b8c121f5360aea0a5ca8a687
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130892"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952385"
 ---
-# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>Oktatóanyag: 6. Egyszerű entitás és kifejezéslista hozzáadása
+# <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Oktatóanyag: 7. Egyszerű entitás és kifejezéslista hozzáadása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhetők ki gépi tanulással létrejött adatok egy kimondott szövegből az **Egyszerű** entitás használatával.
 
 <!-- green checkmark -->
@@ -32,7 +32,7 @@ Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan 
 Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ha még nincs meg az Emberi erőforrások alkalmazása a [hierarchikus entitás](luis-quickstart-intent-and-hier-entity.md) oktatóanyagából, [importálja](create-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) GitHub-adattárban található.
+Ha még nincs meg az Emberi erőforrások alkalmazása az [összetett entitás](luis-tutorial-composite-entity.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) GitHub-adattárban található.
 
 Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `simple`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne.  
 
@@ -366,7 +366,7 @@ Nyissa meg a [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
     ```
 
 ## <a name="phrase-lists"></a>Kifejezéslisták
-A kifejezéslista hozzáadása felerősítette a listában szereplő szavak jelét, de a rendszer **nem** használja pontos egyezésként. A kifejezéslistán számos állás szerepel a `lead` első szóval, és a `welder` állást is tartalmazza, de nem szerepel benne a `lead welder` állás. Lehet, hogy az állások kifejezéslistája nem teljes. Ha rendszeresen [áttekinti a végponti kimondott szövegeket](label-suggested-utterances.md) és állásokkal kapcsolatos egyéb szavakat is keres, adja hozzá ezeket a kifejezéslistához. Ezután tanítsa be ismét és tegye újra közzé az alkalmazást.
+A kifejezéslista hozzáadása felerősítette a listában szereplő szavak jelét, de a rendszer **nem** használja pontos egyezésként. A kifejezéslistán számos állás szerepel a `lead` első szóval, és a `welder` állást is tartalmazza, de nem szerepel benne a `lead welder` állás. Lehet, hogy az állások kifejezéslistája nem teljes. Ha rendszeresen [áttekinti a végponti kimondott szövegeket](luis-how-to-review-endoint-utt.md) és állásokkal kapcsolatos egyéb szavakat is keres, adja hozzá ezeket a kifejezéslistához. Ezután tanítsa be ismét és tegye újra közzé az alkalmazást.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
 Az alkalmazás, egy egyszerű entitással és egy kifejezéslistával azonosított egy természetes nyelvi lekérdezési szándékot, és visszaadta az állásadatokat. 
@@ -377,7 +377,7 @@ A csevegőrobot már elég információval rendelkezik az állásra való jelent
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, használhatja a topScoringIntent eredményt és az entitásból származó adatokat arra, hogy egy külső API használatával elküldje az állás információit egy emberierőforrás-képviselőhöz. Ha a csevegőrobot vagy a hívó alkalmazás egyéb programozható beállítással rendelkezik, a LUIS ezeket nem végzi el. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal felső menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal felső menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

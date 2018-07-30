@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: fea311eb36c0654b45b2354cb283f1699be7257c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109341"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865811"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Oktatóanyag: 1. Egyéni tartományt használó alkalmazás létrehozása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan használhatja a **szándékokat** a felhasználó _szándékának_ meghatározásához az alkalmazás számára elküldött kimondott szöveg (szöveg) alapján. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
@@ -188,7 +188,7 @@ A JSON-eredmény azonosítja a legmagasabb pontszámú szándékot. Minden ponts
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, a topScoringIntent eredmény segítségével megkeresheti az információkat (amelyek nem a LUIS-ban vannak tárolva) a kérdés megválaszolásához, vagy befejezheti a beszélgetést. Ezek programozható lehetőségek a robothoz vagy a hívó alkalmazáshoz. Ezt nem végzi el a LUIS. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a **My apps** (Saját alkalmazások) elemet a bal oldali felső menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a **My apps** (Saját alkalmazások) elemet a bal oldali felső menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

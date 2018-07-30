@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 075cb270641ca995eec95aa6aa8986c90077148a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112191"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929049"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Oktatóanyag: 2. Előre összeállított szándékok és entitások hozzáadása
 Előre összeállított szándékokat és entitásokat adhat az oktatóanyagbeli Human Resources (Emberi erőforrások) alkalmazáshoz, így gyorsan hozzáférhet a szándék-előrejelzéshez és az adatok kinyeréséhez. 
@@ -28,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 * A LUIS lekérdezése és az előrejelzési válasz fogadása
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ha nincs meg a [Human Resources](luis-quickstart-intents-only.md) (Emberi erőforrások) alkalmazása az előző oktatóanyagból, [importálja](create-new-app.md#import-new-app) a JSON-t új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) GitHub-adattárából.
+Ha nincs meg a [Human Resources](luis-quickstart-intents-only.md) (Emberi erőforrások) alkalmazása az előző oktatóanyagból, [importálja](luis-how-to-start-new-app.md#import-new-app) a JSON-t új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) GitHub-adattárából.
 
 Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `prebuilts`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
 
@@ -171,7 +171,7 @@ Két érték is tartozik a március 3-hoz, mert a kimondott szöveg nem határoz
 Az előre összeállított szándékok és entitások könnyű és gyors hozzáadásával az ügyfélalkalmazás beszélgetés-felügyeletet adhat hozzá, és kinyerheti a gyakori adattípusokat. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a **My apps** (Saját alkalmazások) elemet a bal oldali felső menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a **My apps** (Saját alkalmazások) elemet a bal oldali felső menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

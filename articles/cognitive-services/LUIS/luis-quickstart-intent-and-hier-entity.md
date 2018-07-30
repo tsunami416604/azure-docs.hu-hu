@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/22/2018
+ms.date: 07/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 6ba45de8ef41c8a57ca9c042a304e323a4fac263
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: babfc2f82e17f3745af1d940df89763170a002bd
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081693"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929586"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Oktatóanyag: 5. Hierarchikus entitás hozzáadása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan lehet kapcsolódó adatrészleteket keresni kontextus alapján. 
@@ -27,10 +27,10 @@ Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan 
 > * Alkalmazás betanítása és közzététele
 > * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz, többek között a hierarchikus gyermekek megtekintéséhez 
 
-Ehhez a cikkhez egy ingyenes [LUIS][LUIS]-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ha még nincs meg az Emberi erőforrások alkalmazása a [lista entitások](luis-quickstart-intent-and-list-entity.md) oktatóanyagából, [importálja](create-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) GitHub-adattárban található.
+Ha még nincs meg az Emberi erőforrások alkalmazása a [lista entitások](luis-quickstart-intent-and-list-entity.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) GitHub-adattárban található.
 
 Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `hier`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
 
@@ -64,12 +64,12 @@ A teljes kimondott szöveg megjelenítéséhez és a hierarchikus gyermek megjel
     [ ![Képernyőkép a LUIS-alkalmazásról a kiemelt Szándékok gombbal a bal menüben](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
 
-3. Kattintson a listában lévő szám entitás jobb oldalán található három pontra (...). Válassza a **Törlés** elemet. 
+3. Kattintson a listában lévő szám entitás jobb oldalán található három pontra (***...***). Válassza a **Törlés** elemet. 
 
     [ ![A LUIS-alkalmazás entitások listaoldalának képernyőképe, a törlés gomb kiemelve az előre összeállított szám entitásnál](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
 
-## <a name="add-utterances-to-findform-intent"></a>Kimondott szövegek hozzáadása a FindForm szándékhoz
+## <a name="add-utterances-to-moveemployee-intent"></a>Kimondott szövegek hozzáadása a MoveEmployee szándékhoz
 
 1. A bal oldali menüben válassza az **Intents** (Szándékok) lehetőséget.
 
@@ -268,12 +268,8 @@ A csevegőrobot már elég információval rendelkezik az elsődleges művelet (
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, felhasználhatja a topScoringIntent eredményt és az entitás adatait a következő lépés végrehajtásához. A LUIS nem végzi el ezt a programozható munkát a csevegőrobotnak vagy a hívó alkalmazásnak. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Ismerkedés a listaentitások hozzáadásának módjával](luis-quickstart-intent-and-list-entity.md) 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions
+> [Ismerkedés az összetett entitások hozzáadásának módjával](luis-tutorial-composite-entity.md) 
