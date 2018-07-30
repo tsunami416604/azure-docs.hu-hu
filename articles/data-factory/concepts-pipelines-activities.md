@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 1a713d23a385723517ba1fe924f9ec54d81eade5
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 4cf62e609505487961dbfbab3f46c37d54e8f50b
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857890"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259054"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -97,7 +97,7 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 
 Címke | Leírás | Típus | Kötelező
 --- | ----------- | ---- | --------
-név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>•   A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „*”, „%”, „&”, „:”, „\”</li></ul> | Sztring | Igen
+név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\”</li></ul> | Sztring | Igen
 leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | Nem
 tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Igen
 paraméterek | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | Nem

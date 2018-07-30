@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 692a384c3695001677b7a3d6161b77f3f015ad7c
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d48d7625221dfb96e0119ef0d42b3b0a8d04baba
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125869"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185669"
 ---
 # <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>Oktatóanyag: Többszolgáltatású webalkalmazás létrehozása, hibaelhárítása és üzembe helyezése a Service Fabric meshben
 
@@ -52,7 +52,9 @@ Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Győződjön meg arról, hogy [beállította a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md), amely tartalmazza a Service Fabric futtatókörnyezet, az SDK, a Docker, és a Visual Studio 2017 telepítését.
+* Először [alakítsa ki a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md) a Service Fabric futtatókörnyezet, az SDK, a Docker, és a Visual Studio 2017 telepítésével.
+
+* Ebben az oktatóanyagban angol területi beállításokkal kell létrehoznia az alkalmazást.
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric mesh-projekt létrehozása
 

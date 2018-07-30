@@ -1,8 +1,8 @@
 ---
 title: X.509-eszközök regisztrációja az Azure Device Provisioning Service-be a Python használatával | Microsoft Docs
-description: Azure rövid útmutató – X.509-eszközök regisztrálása az Azure IoT Hub Device Provisioning Service-be a Python regisztrációs szolgáltatási SDK-val
-author: bryanla
-ms.author: bryanla
+description: Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a Python használatával
+author: wesmc7777
+ms.author: wesmc
 ms.date: 01/25/2018
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,41 +10,53 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: c677bece27d011c5618845d950dd87e5b0e6bd06
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c98de2d2c59ae625d274c3d6cf914e4c8c37b13f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629337"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205714"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>X.509-eszközök regisztrációja az IoT Hub Device Provisioning Service-be a Python regisztrációs szolgáltatási SDK-val
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Python használatával
+
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Ezek a lépések egy Python-mintaalkalmazáson keresztül bemutatják, hogyan regisztrálhatja szimulált X.509-eszközök egy csoportját programozott módon az Azure IoT Hub Device Provisioning Service-be a [Python regisztrációs szolgáltatási SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) használatával. Bár a Java szolgáltatásoldali SDK Windows és Linux rendszerű gépeken is működik, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ a regisztrációs folyamat bemutatására.
+Az eszközöket a kiépítésiszolgáltatás-példányokban egy [regisztrációs csoport](concepts-service.md#enrollment-group) létrehozásával vagy [egyéni regisztrációval](concepts-service.md#individual-enrollment) lehet regisztrálni. Ez a rövid útmutató bemutatja, hogyan hozhat létre a Python segítségével programozott módon egy [regisztrációs csoportot](concepts-service.md#enrollment-group), amely köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítványokat használ. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. A regisztrációs csoport létrehozásához a [Python kiépítési szolgáltatási SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client)-t és egy Python-mintaalkalmazást használunk. A *Python regisztrációs szolgáltatási SDK*-val végzett egyéni regisztráció egyelőre kidolgozás alatt áll. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). További információ az X.509-tanúsítványon alapuló nyilvánoskulcs-infrastruktúra (PKI) az Azure IoT Hubbal és a Device Provisioning Service-szel való használatáról: [X.509 hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
 
-A folytatás előtt [végezze el az IoT Hub Device Provisioning Service beállítási lépéseit az Azure Portalon](./quick-setup-auto-provision.md).
+A rövid útmutató feltételezi, hogy már létrehozott egy IoT hubot és egy Device Provisioning Service-példányt. Ha ezeket az erőforrásokat még nem hozta létre, végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) rövid útmutatót, mielőtt továbbhaladna ebben a cikkben.
 
-> [!NOTE]
-> A gyors üzembe helyezés csak a **Regisztrációs csoportot** támogatja. A _Python regisztrációs szolgáltatási SDK_-val végzett **egyéni regisztráció** kidolgozása folyamatban van.
-> 
+Bár a cikkben ismertetett lépések Windows és Linux rendszerű gépeken egyaránt alkalmazhatók, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ.
 
-<a id="prepareenvironment"></a>
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prepare-the-environment"></a>A környezet előkészítése 
 
-1. Töltse le és telepítse a [Python 2.x-es vagy 3.x-es verzióját](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változókhoz. 
+## <a name="prerequisites"></a>Előfeltételek
 
-1. Válasszon egyet az alábbi lehetőségek közül:
+- Telepítse a [Python 2.x vagy 3.x verzióját](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változókhoz.
+- [Telepítse vagy frissítse a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
+- Telepítse a [Git](https://git-scm.com/download/) szoftvert.
 
-    - Hozza létre és fordítsa le az **Azure IoT Python SDK-t**. A Python-csomagok létrehozásához kövesse [ezeket az utasításokat](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md). Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagot](http://www.microsoft.com/download/confirmation.aspx?id=48145) is telepítse a Python natív DLL-jeinek használatához.
 
-    - [Telepítse vagy frissítse a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/), és a telepítse a csomagot az alábbi parancs segítségével:
 
-        ```cmd/sh
-        pip install azure-iothub-provisioningserviceclient
-        ```
+## <a name="prepare-test-certificates"></a>Teszttanúsítványok előkészítése
 
-1. Egy .pem fájlra lesz szüksége, amely egy köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítványt tartalmaz, amely fel lett töltve és hitelesítve lett az eszközkiépítési szolgáltatás által. Az **Azure IoT c SDK** tartalmazza azokat az eszközöket, amelyek segítségével létrehozhat egy X.509-tanúsítványláncot, feltölthet egy fő- vagy köztes tanúsítványt a láncból, valamint végrehajthat egy tulajdonlástanúsítási eljárást a szolgáltatással a tanúsítvány hitelesítéséhez. Az eszközkészlet használatához klónozza az [Azure IoT c SDK-t](https://github.com/Azure/azure-iot-sdk-c), és kövesse az [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) fájlban foglalt lépéseket a gépen.
+A rövid útmutatóhoz szükség van egy .pem vagy .cer fájlra, amely tartalmazza egy köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítvány nyilvános részét. A tanúsítványnak a kiépítési szolgáltatásba feltöltöttnek és a szolgáltatás által ellenőrzöttnek kell lennie. 
+
+Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) tartalmazza azokat a teszteszközöket, amelyek segítségével létrehozhat egy X.509-tanúsítványláncot, feltölthet egy legfelsőbb szintű vagy köztes tanúsítványt a láncból, valamint végrehajthat egy tulajdonlástanúsítási eljárást a szolgáltatással a tanúsítvány hitelesítéséhez. Az SDK-eszközkészlettel létrehozott tanúsítványokat csak **fejlesztési és tesztelési célokra** tervezték. Ezeket a tanúsítványokat **nem lehet termelési környezetben használni**. Nem módosítható jelszavakat tartalmaznak („1234”), amelyek 30 nap után lejárnak. A termelési használathoz megfelelő tanúsítványok beszerzésével kapcsolatos további információt az Azure IoT Hub dokumentációjának [X.509 hitelesítésszolgáltatói tanúsítvány beszerzése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) című részében talál.
+
+A teszteszköz segítségével a következő lépésekkel állíthat elő tanúsítványokat: 
+ 
+1. Nyisson meg egy parancssort vagy a Git Bash-felületet, és lépjen egy, a gépen található munkamappába. A következő parancs végrehajtásával klónozza az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattárat:
+    
+  ```cmd/sh
+  git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+  ```
+
+  Az adattár mérete jelenleg körülbelül 220 MB. Ez a művelet várhatóan több percig is eltarthat.
+
+  A teszteszköz a klónozott adattár *azure-iot-sdk-c/tools/CACertificates* mappájában található.    
+
+2. Kövesse a [mintákhoz és oktatóanyagokhoz készült hitelesítésszolgáltatói tanúsítványok kezeléséről](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) szóló cikk lépéseit. 
 
 
 ## <a name="modify-the-python-sample-code"></a>A Python-mintakód módosítása
@@ -53,7 +65,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá az X.509-eszköz kiépítési adat
 
 1. Egy szövegszerkesztővel hozzon létre egy új **EnrollmentGroup.py** fájlt.
 
-1. Adja hozzá a következő `import` utasításokat és változókat az **EnrollmentGroup.py** fájl elejéhez. Ezután cserélje le a `dpsConnectionString` elemet a kapcsolati sztringre, amely az **Azure Portal****Device Provisioning Service** panelén, a **Megosztott elérési szabályzatok** alatt található. A tanúsítvány helyőrzőjét cserélje le [A környezet előkészítése](quick-enroll-device-x509-python.md#prepareenvironment) szakaszban korábban létrehozott tanúsítványra. Végezetül hozzon létre egy egyedi `registrationid` azonosítót, de ne feledje, hogy az kizárólag kisbetűs alfanumerikus karaktereket és kötőjeleket tartalmazhat.  
+1. Adja hozzá a következő `import` utasításokat és változókat az **EnrollmentGroup.py** fájl elejéhez. Ezután cserélje le a `dpsConnectionString` elemet a kapcsolati sztringre, amely az **Azure Portal****Device Provisioning Service** panelén, a **Megosztott elérési szabályzatok** alatt található. A tanúsítvány helyőrzőjét cserélje le a [Teszttanúsítványok előkészítése](quick-enroll-device-x509-python.md#prepare-test-certificates) szakaszban korábban létrehozott tanúsítványra. Végezetül hozzon létre egy egyedi `registrationid` azonosítót, de ne feledje, hogy az kizárólag kisbetűs alfanumerikus karaktereket és kötőjeleket tartalmazhat.  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient
@@ -105,15 +117,21 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá az X.509-eszköz kiépítési adat
 
 ## <a name="run-the-sample-group-enrollment"></a>A mintául szolgáló csoportos regisztráció futtatása
 
-1. Nyisson meg egy parancssort, és futtassa a szkriptet.
+1. Nyisson meg egy parancssort, és futtassa a következő parancsot az [azure-iot-provisioning-device-client](https://pypi.org/project/azure-iot-provisioning-device-client.) telepítéséhez.
+
+    ```cmd/sh
+    pip install azure-iothub-provisioningserviceclient    
+    ```
+
+2. A parancssorban futtassa a szkriptet.
 
     ```cmd/sh
     python EnrollmentGroup.py
     ```
 
-1. Tekintse át a sikeres regisztráció kimenetét.
+3. Tekintse át a sikeres regisztráció kimenetét.
 
-1. Az Azure Portalon lépjen a kiépítési szolgáltatásra. Kattintson a **Regisztrációk kezelése** elemre. Az X.509-eszközök csoportjának a **Regisztrációs csoportok** lapon kell megjelennie a korábban létrehozott `registrationid` név alatt. 
+4. Az Azure Portalon lépjen a kiépítési szolgáltatásra. Kattintson a **Regisztrációk kezelése** elemre. Az X.509-eszközök csoportjának a **Regisztrációs csoportok** lapon kell megjelennie a korábban létrehozott `registrationid` név alatt. 
 
     ![Sikeres X.509-regisztráció ellenőrzése a portálon](./media/quick-enroll-device-x509-python/1.png)  
 

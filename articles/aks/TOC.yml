@@ -89,6 +89,10 @@
         - name: Azure-tárolóállapot megoldás
           href: ../monitoring/monitoring-container-health.md
           maintainContext: true
+        - name: A fő összetevőnaplók megtekintése
+          href: view-master-logs.md
+        - name: Kubelet-naplók megtekintése
+          href: kubelet-logs.md
     - name: Alkalmazások fejlesztése és futtatása
       items:
         - name: Alkalmazások futtatása a Helm használatával
@@ -121,8 +125,6 @@
       items:
         - name: SSH-csomópont elérése
           href: aks-ssh.md
-        - name: Kubelet-naplók beszerzése
-          href: kubelet-logs.md
 - name: Referencia
   items:
     - name: Azure CLI

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: d25d868d8f3542d74de8edf8d7d5d26037409911
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e58ba598df06feddc7b48072dfefd409f31e2445
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006930"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237869"
 ---
 #  <a name="what-is-managed-service-identity-for-azure-resources"></a>Mi az Azure-erőforrásokhoz készült felügyeltszolgáltatás-identitás?
 
@@ -59,7 +59,7 @@ Az alábbiakban egy példát láthat a rendszerhez hozzárendelt identitások az
 6. A rendszer egy hívást intéz az Azure AD-re, és egy hozzáférési jogkivonatot igényel az 5. lépésben leírtak szerint, a 3. lépésben konfigurált ügyfél-azonosító és tanúsítvány használatával. Az Azure AD egy JSON Web Token (JWT) formátumú hozzáférési jogkivonatot ad vissza.
 7. A kód elküldi a hozzáférési jogkivonatot egy hívásban egy olyan szolgáltatásnak, amely támogatja az Azure AD-hitelesítést.
 
-Ugyanennek az ábrának az alapján az alábbiakban egy példát láthat a felhasználóhoz hozzárendelt identitások Azure-beli virtuális gépeken történő használatáról.
+Ugyanennek az ábrának az alapján az alábbiakban egy példát láthat a felhasználóhoz hozzárendelt felügyelt identitások az Azure-beli virtuális gépeken történő használatáról.
 
 1. Az Azure Resource Managerbe érkezik egy kérés egy felhasználóhoz hozzárendelt identitás létrehozására.
 2. Az Azure Resource Manager létrehoz egy szolgáltatásnevet az Azure AD-ben a felhasználóhoz hozzárendelt identitás jelölésére. A szolgáltatásnév az előfizetés által megbízhatónak tekintett Azure AD-bérlőn jön létre.

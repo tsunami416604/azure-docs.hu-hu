@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/21/2018
+ms.date: 07/20/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: aeb94a430e633299637d4e9b96ef6b2c0309b163
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 18ea9920ef3f3602721bc27001a66bcd2fc2b0fd
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722915"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205697"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli-20"></a>Oktatóanyag: A Linux rendszerű virtuális gépek Azure CLI 2.0-val történő vezérlése
 
@@ -71,13 +71,9 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
-## <a name="azure-policies"></a>Azure-szabályzatok
+## <a name="azure-policy"></a>Azure Policy
 
-[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>Szabályzatok alkalmazása
-
-Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzatdefiníciók megtekintéséhez használja az [az policy definition list](/cli/azure/policy/definition#az_policy_definition_list) parancsot:
+Az [Azure Policy](../../azure-policy/azure-policy-introduction.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzatdefiníciók megtekintéséhez használja az [az policy definition list](/cli/azure/policy/definition#az_policy_definition_list) parancsot:
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table

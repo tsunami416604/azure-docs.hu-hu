@@ -15,18 +15,18 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: dee6a77fb85b2ac882103ba58a19ac4fce59c188
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 7ec4961a78b2207c9990b787c4a0f9cc9c2e7931
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301444"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237114"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Az Azure CDN-termékszolgáltatások összehasonlítása
 
 Az Azure Content Delivery Network (CDN) négy terméket tartalmaz: a **Microsoft Azure CDN Standard** (előnézetben), az **Akamai Azure CDN Standard**, a **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** terméket. 
 
-A **Verizon Azure CDN Standard** típusú profilok **Verizon Azure CDN Premium** típusú profilba történő migrálására vonatkozó információkért lásd: [Azure CDN-profil migrálása Standard Verizonból Premium Verizonba](cdn-migrate.md).
+A **Verizon Azure CDN Standard** típusú profilok **Verizon Azure CDN Premium** típusú profilba történő migrálására vonatkozó információkért lásd az [Azure CDN-profil Standard Verizonból Premium Verizonba történő migrálását](cdn-migrate.md) ismertető cikket.
 
 Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e39e5861c0606c43a869fe02a7de2dc9b6f489ea
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ad6812f25ee33bf723ed86d4ec32ca6898d01774
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125653"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186738"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Oktatóanyag: Hibakeresés a Service Fabric mesh-webalkalmazásokban
 
@@ -46,7 +46,7 @@ Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Győződjön meg arról, hogy [beállította a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md), és azon belül elvégezte a Service Fabric futtatókörnyezet, az SDK, a Docker és a Visual Studio 2017 telepítését.
+* Először [alakítsa ki a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md) a Service Fabric futtatókörnyezet, az SDK, a Docker, és a Visual Studio 2017 telepítésével.
 
 ## <a name="download-the-to-do-sample-application"></a>A teendőlista-mintaalkalmazás letöltése
 
@@ -75,8 +75,8 @@ Miután a helyi üzembe helyezés befejeződött, és a Visual Studio elindítot
 **Hibakeresési tippek**
 
 * Ha **Nem fut helyi Service Fabric-fürt** tartalmú hibaüzenetet kap, győződjön meg arról, hogy fut a Service Local Cluster Manager (SLCM), majd kattintson a tálca SLCM ikonjára a jobb gombbal, és kattintson a **Helyi fürt indítása** elemre. A fürt elindítása után térjen vissza a Visual Studióba, és nyomja meg az **F5** billentyűt.
-* Ha **404-es** hibát kap az alkalmazás indításakor, elképzelhető, hogy helytelenek a **service.yaml** környezeti változói. Ellenőrizze, hogy az `AppName`, az `ApiHostPort` és a `ServiceName` helyesen van-e beállítva a [Környezeti változók beállítása](#set-environment-variables) című cikk utasításai szerint.
-* Ha felépítési hibákat kap a **service.yaml** fájlban, ellenőrizze, hogy tabulátorok helyett szóközöket használ-e a sorok behúzására.
+* Ha **404-es** hibát kap az alkalmazás indításakor, elképzelhető, hogy helytelenek a **service.yaml** környezeti változói. Győződjön meg arról, hogy az `ApiHostPort` és a `ServiceName` megfelelően, a [környezeti változók létrehozását](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) ismertető részben leírtak szerint van beállítva.
+* Ha felépítési hibákat kap a **service.yaml** fájlban, ellenőrizze, hogy tabulátorok helyett szóközöket használ-e a sorok behúzására. Ezenkívül ebben az esetben angol területi beállításokkal kell létrehoznia az alkalmazást.
 
 ### <a name="debug-in-visual-studio"></a>Hibakeresés a Visual Studióban
 

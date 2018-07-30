@@ -1,41 +1,45 @@
 ---
-title: Azure AD SSPR a Windows 10 bejelentkezési képernyőjéről | Microsoft Docs
-description: A Windows 10 bejelentkezési képernyő Azure AD-jelszóvisszaállítási és „Elfelejtettem a PIN-kódom” funkcióinak konfigurálása
+title: Azure AD SSPR a Windows 10 bejelentkezési képernyőjéről
+description: Az oktatóanyagban engedélyezzük az új jelszó kérését a Windows 10 bejelentkezési képernyőjéről a telefonos ügyfélszolgálatra beérkező hívások számának csökkentése érdekében.
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 04/27/2018
+ms.topic: tutorial
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2a6fbd9e52e07141ae1d8c630bde6ab23801fb18
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e4e94567cf978631be52a3304b47b68f61ac3fff
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054501"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161163"
 ---
-# <a name="azure-ad-password-reset-from-the-login-screen"></a>Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
+# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Új Azure AD-jelszó kérése a bejelentkezési képernyőről
 
-Már üzembe helyezte az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) szolgáltatását, de a felhasználók még mindig az ügyfélszolgálathoz fordulnak, ha elfelejtették a jelszavukat. Azért tesznek így, mert nem tudnak hozzáférni a böngészőhöz az SSPR eléréséhez.
+Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérjenek a Windows 10 bejelentkezési képernyőjéről. A Windows 10 2018. áprilisi frissítésében az **Azure AD-hez csatlakoztatott** vagy **hibrid Azure AD-hez csatlakoztatott** eszközökkel rendelkező felhasználók a bejelentkezési képernyőn egy „Új jelszó kérése” hivatkozást használhatnak. Erre kattintva eljuthatnak a már ismert, új jelszó önkiszolgáló kérésére (SSPR) szolgáló felülethez.
 
-A Windows 10 2018. áprilisi frissítésében az **Azure AD-hez csatlakoztatott** vagy **hibrid Azure AD-hez csatlakoztatott** eszközökkel rendelkező felhasználók a bejelentkezési képernyőn egy „Jelszó visszaállítása” hivatkozást láthatnak és használhatnak. Erre kattintva eljuthatnak a már ismert önkiszolgáló jelszó-visszaállítási (SSPR) felülethez.
+> [!div class="checklist"]
+> * Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
+> * Másik konfigurálási lehetőség a Windows beállításjegyzék használatával
+> * A felhasználók által látható elemek ismertetése
 
-Ahhoz, hogy a felhasználók visszaállíthassák az Azure AD-jelszavukat a Windows 10 bejelentkezési képernyőjéről, a következő követelményeknek kell teljesülniük:
+## <a name="prerequisites"></a>Előfeltételek
 
-* A Windows 10 2018. áprilisi verziója, vagy egy újabb, az [Azure AD-hez csatlakoztatott](../device-management-azure-portal.md) vagy a [hibrid Azure AD-hez csatlakoztatott](../device-management-hybrid-azuread-joined-devices-setup.md) ügyfél.
+* A Windows 10 2018. áprilisi verziója, vagy egy újabb ügyfél, amely:
+   * [csatlakozik az Azure AD-hez](../device-management-azure-portal.md) vagy 
+   * [csatlakozik a Hibrid Azure AD-hez](../device-management-hybrid-azuread-joined-devices-setup.md)
 * Engedélyezni kell az Azure AD önkiszolgáló jelszó-visszaállítását.
-* A Jelszó visszaállítása hivatkozás használatát engedélyező beállítást a következő módokon lehet konfigurálni és üzembe helyezni:
-   * [Intune eszközkonfigurációs profil](tutorial-sspr-windows.md#configure-reset-password-link-using-intune). Ehhez a metódushoz regisztrálni kell az Intune-ba az eszközt.
-   * [Beállításkulcs](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
 
+A legrugalmasabb módszer az, ha az Intune használatával telepíti a konfigurációs módosítást, amely engedélyezi az új jelszó kérését a bejelentkezési képernyőről. Az Intune lehetővé teszi, hogy a konfigurációs módosítást az Ön által meghatározott gépek adott csoportján telepítse. Ehhez a metódushoz regisztrálni kell az Intune-ba az eszközt.
+
 ### <a name="create-a-device-configuration-policy-in-intune"></a>Eszközkonfigurációs szabályzat létrehozása az Intune-ban
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) és kattintson az **Intune** elemre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) és kattintson az **Intune** elemre.
 2. Hozzon létre egy új eszközkonfigurációs profilt az **Eszközkonfiguráció** > **Profilok** > **Profil létrehozása** paranccsal.
    * Adjon kifejező nevet a profilnak
    * Ha kívánja, megadhat egy kifejező leírást is a profilhoz
@@ -59,7 +63,7 @@ Ahhoz, hogy a felhasználók visszaállíthassák az Azure AD-jelszavukat a Wind
 
 #### <a name="create-a-group-to-apply-device-configuration-policy-to"></a>Hozzon létre egy csoportot, amelyen alkalmazni szeretné az eszközkonfigurációs szabályzatot
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) és kattintson az **Azure Active Directory** elemre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) és kattintson az **Azure Active Directory** elemre.
 2. Lépjen a **Felhasználók és csoportok** > **Minden csoport** > **Új csoport** területre.
 3. Adja meg a csoport nevét, majd a **Tagság típusa** beállításnál válassza a **Hozzárendelt** lehetőséget.
    * A **Tagok** területen válassza ki azokat az Azure AD-hoz csatlakoztatott Windows 10-eszközöket, amelyekre alkalmazni szeretné a szabályzatot.
@@ -70,7 +74,7 @@ A csoportok létrehozásával kapcsolatos további információkért lásd: [Er�
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>Eszközkonfigurációs szabályzat hozzárendelése az eszközcsoporthoz
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) és kattintson az **Intune** elemre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) és kattintson az **Intune** elemre.
 2. Keresse meg a korábban létrehozott eszközkonfigurációs profilt az **Eszközkonfiguráció** > **Profilok** elemre, majd a létrehozott profilra kattintva.
 3. A profil hozzárendelése egy eszközcsoporthoz 
    * Kattintson a **Hozzárendelések** > **Belefoglalás** > **Belefoglalandó csoportok kiválasztása** elemre.
@@ -79,13 +83,13 @@ A csoportok létrehozásával kapcsolatos további információkért lásd: [Er�
 
    ![Hozzárendelés][Assignment]
 
-Ezzel az Intune használatával létrehozott és hozzárendelt egy eszközkonfigurációs szabályzatot, amely lehetővé teszi a bejelentkezési képernyő Jelszó-visszaállítási hivatkozás használatát.
+Ezzel az Intune használatával létrehozott és hozzárendelt egy eszközkonfigurációs szabályzatot, amely lehetővé teszi a bejelentkezési képernyő Új jelszó kérése hivatkozásának használatát.
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>Jelszó-visszaállítási hivatkozás konfigurálása a Beállításjegyzék használatával
 
 Javasoljuk, hogy ezt a módszert csak a beállítás módosításának teszteléséhez használja.
 
-1. Jelentkezzen be az Azure AD-hez csatlakoztatott eszközre rendszergazdai hitelesítő adatokkal
+1. Jelentkezzen be a Windows rendszerű számítógépbe rendszergazdai hitelesítő adatokkal
 2. Futtassa a **regedit** parancsot rendszergazdaként
 3. Állítsa be a következő beállításkulcsot
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -93,11 +97,12 @@ Javasoljuk, hogy ezt a módszert csak a beállítás módosításának tesztelé
 
 ## <a name="what-do-users-see"></a>Mit látnak a felhasználók?
 
-Milyen változást tapasztalnak a felhasználók a szabályzat konfigurálása és hozzárendelése után? Honnan fogják tudni, hogy a bejelentkezési képernyőn visszaállíthatják a jelszavukat?
+Milyen változást tapasztalnak a felhasználók a szabályzat konfigurálása és hozzárendelése után? Honnan fogják tudni, hogy a bejelentkezési képernyőn új jelszót kérhetnek?
 
 ![Bejelentkezési képernyő][LoginScreen]
 
-Amikor a felhasználók megpróbálnak bejelentkezni, a bejelentkezési képernyőn mostantól egy Jelszó visszaállítása hivatkozást láthatnak, amely megnyitja az önkiszolgáló jelszó-visszaállítási felületet. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
+Amikor a felhasználók megpróbálnak bejelentkezni, a bejelentkezési képernyőn mostantól egy Új jelszó kérése hivatkozást láthatnak, amely megnyitja az önkiszolgáló jelszó-visszaállítási felületet. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
+Amikor a felhasználók megpróbálnak bejelentkezni, a bejelentkezési képernyőn mostantól egy Új jelszó kérése hivatkozást láthatnak, amely megnyitja az önkiszolgáló jelszó-visszaállítási felületet. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
 
 A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in) témakörben találhatnak útmutatást.
 
@@ -111,14 +116,17 @@ A funkció a Távoli asztal használatával történő tesztelésekor a „Jelsz
 
 * A Távoli asztalokról jelenleg nem támogatott a jelszó-visszaállítás.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha az oktatóanyag keretében konfigurált funkciót már nem szeretné tovább használni, törölje az Ön által létrehozott Intune eszközkonfigurációs profilt vagy a beállításkulcsot.
+
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
+Ebben az oktatóanyagban engedélyezte, hogy a felhasználók új jelszót kérjenek a Windows 10 bejelentkezési képernyőjéről. A következő oktatóanyagból megtudhatja, hogyan integrálható az Azure Identity Protection az új jelszó önkiszolgáló kérésével és a többtényezős hitelesítéssel.
 
-* [Az SSPR üzembe helyezése](howto-sspr-deployment.md)
-* [Új PIN-kód kérésének engedélyezése a bejelentkezési képernyőről](https://docs.microsoft.com/intune/device-windows-pin-reset)
-* [További információk az MDM hitelesítési szabályzatokról](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-authentication)
+> [!div class="nextstepaction"]
+> [Kockázat értékelése bejelentkezéskor](tutorial-risk-based-sspr-mfa.md)
 
-[CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Intune eszközkonfigurációs profil létrehozása jelszó-visszaállítási hivatkozása engedélyezéséhez a Windows 10 bejelentkezési képernyőjén"
+[CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Intune eszközkonfigurációs profil létrehozása új jelszó kérésére szolgáló hivatkozása engedélyezéséhez a Windows 10 bejelentkezési képernyőjén"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Intune eszközkonfigurációs szabályzat hozzárendelése Windows 10-eszközök egy csoportjához"
-[LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Jelszó-visszaállítási hivatkozás a Windows 10 bejelentkezési képernyőjén"
+[LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Új jelszó kérésére szolgáló hivatkozás a Windows 10 bejelentkezési képernyőjén"

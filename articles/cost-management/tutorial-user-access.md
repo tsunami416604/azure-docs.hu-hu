@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2018
+ms.date: 07/10/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 3ceed8b88b9c81954c967d3d7ddd964c532867ab
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4b45d917118d5be1252c3bb232e4b24e68d7857f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301607"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188182"
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Oktatóanyag: Hozzáférések hozzárendelése költségkezelési adatokhoz
 
@@ -28,6 +28,8 @@ Az Azure-szerződés vagy -fiók regisztrálásakor a rendszer létrehozott egy 
 > [!div class="checklist"]
 > * Rendszergazdai hozzáféréssel rendelkező felhasználó létrehozása
 > * Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
+> * Felhasználó törlése
+> * Személyes adatok törlése vagy exportálása
 > * Entitások létrehozása és felügyelete
 
 
@@ -42,7 +44,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Bár Ön eleve rendelkezik rendszergazdai hozzáféréssel, előfordulhat, hogy erre a cég más munkatársainak is szüksége lesz. A Cloudyn portálon kattintson a fogaskerék szimbólumra a jobb felső sarokban, és válassza a **User Management** (Felhasználókezelés) lehetőséget. Új felhasználó hozzáadásához kattintson az **Add New User** (Új felhasználó hozzáadása) gombra.
 
-Adja meg a felhasználóra vonatkozó kötelező adatokat. A bejelentkezési azonosítónak érvényes e-mail-címnek kell lennie. Adjon felhasználókezelési jogosultságokat, ha azt szeretné, hogy a felhasználó létrehozhasson és módosíthasson más felhasználókat. A címzettlisták kezelésére vonatkozó jogosultsággal a felhasználó szerkesztheti a címzettlistákat. A **Notify user by email** (Felhasználó értesítése e-mailben) lehetőségre kattintva a Cloudyn egy e-mailt küld a felhasználónak a bejelentkezési információkkal. Az első bejelentkezéskor a felhasználó beállít egy jelszót.
+Adja meg a felhasználóra vonatkozó kötelező adatokat. A **bejelentkezési azonosítónak** egy érvényes e-mail-címnek kell lennie. Adjon felhasználókezelési jogosultságokat, ha azt szeretné, hogy a felhasználó létrehozhasson és módosíthasson más felhasználókat. A címzettlisták kezelésére vonatkozó jogosultsággal a felhasználó szerkesztheti a címzettlistákat. A **Notify user by email** (Felhasználó értesítése e-mailben) lehetőségre kattintva a Cloudyn egy e-mailt küld a felhasználónak a bejelentkezési információkkal. Az első bejelentkezéskor a felhasználó beállít egy jelszót.
 
 A **User has admin access** (A felhasználó rendszergazdai hozzáféréssel rendelkezik) alatt a cég gyökérszintű entitása van kiválasztva. Hagyja kiválasztva a gyökérszintű entitást, és mentse a felhasználói adatokat. A gyökérszintű entitás kiválasztásával a felhasználó nem csupán a fa legfelső szintű entitásához fér majd hozzá, hanem az össze az alá tartozóhoz is.  
   ![rendszergazdai hozzáféréssel rendelkező új felhasználó hozzáadása](.\media\tutorial-user-access\new-admin-access.png)
@@ -57,6 +59,24 @@ A költségvetési adatokhoz irányítópult- és jelentésszintű hozzáférés
 ![felhasználói hozzáféréssel rendelkező új felhasználó hozzáadása](.\media\tutorial-user-access\new-user-access.png)
 
 A felhasználók hozzáadásáról szóló oktatóvideó: [Felhasználók felvétele az Azure Cost Management rendszerébe](https://youtu.be/Nzn7GLahx30).
+
+## <a name="delete-a-user"></a>Felhasználó törlése
+
+Felhasználó törlésekor érintetlen marad az összes olyan entitás, amelyhez a felhasználó hozzáféréssel rendelkezik. A felhasználó törlésekor a mentett *személyes* jelentések el lesznek távolítva. Az adott felhasználó által létrehozott, mentett *nyilvános* jelentések nem lesznek törölve.
+
+Felhasználóként saját magát nem távolíthatja el.
+
+> [!WARNING]
+> A felhasználótörlési műveletet nem lehet visszavonni.
+
+1.  A Cloudyn portálon kattintson a fogaskerék szimbólumra a jobb felső sarokban, és válassza a **User Management** (Felhasználókezelés) lehetőséget.
+2.  A felhasználók listájában jelölje ki a törölni kívánt felhasználót, majd kattintson a **Delete User** (Felhasználó törlése) lehetőségre (a kuka szimbólumra).
+3.  A felhasználótörlési párbeszédpanelen kattintson a **Yes** (Igen), majd az **OK** gombra.
+
+
+## <a name="delete-or-export-personal-data"></a>Személyes adatok törlése vagy exportálása
+
+Ha személyes adatokat kíván törölni vagy exportálni a Cloudynről, akkor létre kell hoznia egy támogatási jegyet. A létrehozott támogatási jegy hivatalos kérelemnek (adatalany általi kérelemnek) minősül. A Microsoft ekkor azonnal eltávolítja a fiókot, beleértve az ügyfél- és a személyes adatokat is. Az adatai törlésére vagy exportálására irányuló kérelem létrehozásának lépéseit a [Cloudyn-adatok adatalany általi kérelmeit](https://www.cloudyn.com/cloudyn-gdpr-requests) ismertető részben tekintheti meg.
 
 ## <a name="create-and-manage-entities"></a>Entitások létrehozása és felügyelete
 
@@ -105,6 +125,8 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Rendszergazdai hozzáféréssel rendelkező felhasználó létrehozása
 > * Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
+> * Felhasználó törlése
+> * Személyes adatok törlése vagy exportálása
 > * Entitások létrehozása és felügyelete
 
 

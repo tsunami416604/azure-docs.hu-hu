@@ -2,24 +2,25 @@
 title: Az Azure Key Vault használata egy webalkalmazásból – oktatóanyag | Microsoft Docs
 description: Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure Key Vaultot egy webalkalmazásból.
 services: key-vault
-author: adhurwit
+author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/29/2018
-ms.author: adhurwit
-ms.openlocfilehash: 5cd764395e91a82973318da7284b28d7a43d35ea
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.date: 07/20/2018
+ms.author: barclayn
+ms.openlocfilehash: ff59e39e54433aa673b093e2ee1fbe8c74010e54
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115078"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171323"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Oktatóanyag: Az Azure Key Vault használata egy webalkalmazásból
-Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure Key Vaultot egy webalkalmazásból az Azure-ban. Bemutatja, hogyan érhető el egy titkos kód egy Azure Key Vault-kulcstartóból egy webalkalmazásban való használathoz. Az oktatóanyag erre a folyamatra épül, és titkos ügyfélkulcs helyett tanúsítványt használ. Ez az oktatóanyag olyan webfejlesztők számára készült, akik tisztában vannak a webalkalmazások Azure-ban való létrehozásának alapjaival. 
+
+Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure Key Vaultot egy webalkalmazásból az Azure-ban. Bemutatja, hogyan érhető el egy titkos kód egy Azure Key Vault-kulcstartóból egy webalkalmazásban való használathoz. Az oktatóanyag erre a folyamatra épül, és titkos ügyfélkulcs helyett tanúsítványt használ. Ez az oktatóanyag olyan webfejlesztők számára készült, akik tisztában vannak a webalkalmazások Azure-ban való létrehozásának alapjaival.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
 
@@ -27,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Alkalmazásbeállítások hozzáadása a web.config fájlhoz
 > * Metódus hozzáadása hozzáférési jogkivonat lekéréséhez
 > * A jogkivonat lekérése az alkalmazás indításakor
-> * Hitelesítés tanúsítvánnyal 
+> * Hitelesítés tanúsítvánnyal
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -41,7 +42,7 @@ Az oktatóanyag teljesítéséhez a következő elemekre lesz szüksége:
 
 Végezze el a [Bevezetés az Azure Key Vault használatába](key-vault-get-started.md) című szakaszt egy titkos kód URI-jének, egy ügyfél-azonosítónak és egy titkos ügyfélkulcsnak a lekéréséhez, és regisztrálja az alkalmazást. A webalkalmazás hozzá fog férni a tárolóhoz, és regisztrálva kell lennie az Azure Active Directoryban. Hozzáférési jogosultságokkal is rendelkeznie kell a Key Vaulthoz. Ha nem így van, térjen vissza az első lépéseket ismertető oktatóanyag Alkalmazás regisztrálása című szakaszára, és ismételje meg az ott leírt lépéseket. További információ az Azure Web Apps létrehozásáról: [A Web Apps áttekintése](../app-service/app-service-web-overview.md).
 
-Ez a minta az Azure Active Directory-identitások manuális kiépítésétől függ. Jelenleg előzetes verzióként érhető el egy [Managed Service Identity (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) nevű új szolgáltatás, amely automatikusan épít ki Azure AD-identitásokat. További információt a [GitHubon](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) lévő mintában és az [MSI App Service-szel és Functionsszel való használatát ismertető kapcsolódó oktatóanyagban](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) talál. 
+Ez a minta az Azure Active Directory-identitások manuális kiépítésétől függ. Ezért inkább használja a [Managed Service Identityt (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview). Az MSI automatikusan épít ki Azure AD-identitásokat. További információt a [GitHubon](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) lévő mintában és az [MSI App Service-szel és Functionsszel való használatát ismertető kapcsolódó oktatóanyagban](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) talál. Emellett megtekintheti a Key Vaultra vonatkozó [MSI-oktatóanyagunkat](tutorial-web-application-keyvault.md).
 
 
 ## <a id="packages"></a>NuGet-csomagok hozzáadása

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 07/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4be205f13260d60bc9788b873bea34970b560f5a
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 24bda501f88d4f96fb558eeb6b21e437edd6d862
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283605"
+ms.locfileid: "39325387"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezési
 
@@ -80,6 +80,9 @@ Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte 
 4. Ellenőrizze, hogy a **zökkenőmentes egyszeri bejelentkezést** jelenik meg a szolgáltatás **engedélyezve**.
 
 ![Az Azure portal: az Azure AD Connect panel](./media/active-directory-aadconnect-sso/sso10.png)
+
+>[!IMPORTANT]
+> Közvetlen egyszeri bejelentkezés nevű számítógép-fiókot hoz létre `AZUREADSSOACC` (amely jelöli az Azure AD) a helyszíni Active Directory (AD) minden olyan AD-erdőben. Ennek a számítógépfióknak a funkció működéséhez szükség van. Helyezze át a `AZUREADSSOACC` számítógépfiók, egy szervezeti egység (OU) más számítógépfiókokat tároló biztosíthatja, hogy ugyanúgy kezeli, és nem törlődik.
 
 ## <a name="step-3-roll-out-the-feature"></a>3. lépés: A szolgáltatás bevezetése
 

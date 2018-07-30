@@ -2,19 +2,19 @@
 title: Oktatóanyag a végponti kimondott szövegek áttekintéséről a Language Understanding (LUIS) szolgáltatásban – Azure | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan tekintheti át a végponti kimondott szövegeket a LUIS Emberi erőforrások (HR) tartományában.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 07/03/2018
-ms.author: v-geberr
-ms.openlocfilehash: cd8374b3804594f96212dbe741f99ba22d33a4e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.author: diberry
+ms.openlocfilehash: 1f1e3310e0d02983aaecc3f87ba9c116d65b751b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970506"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237213"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>Oktatóanyag: Végponti kimondott szövegek áttekintése
 Ebben az oktatóanyagban az alkalmazás előrejelzéseit fejlesztheti a LUIS HTTP-végponton keresztül kapott kimondott szöveg ellenőrzésével vagy javításával. 

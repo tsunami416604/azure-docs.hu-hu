@@ -1,6 +1,6 @@
 ---
-title: Azure rövid útmutató – Blob létrehozása objektumtárban a Java Storage SDK V10 használatával | Microsoft Docs
-description: Ebben a rövid útmutatóban létrehoz egy tárolót egy objektumtárban (Blob Storage-fiókban), feltölt egy fájlt, objektumokat listáz ki, valamint letöltést végez a Java Storage SDK használatával.
+title: 'Azure rövid útmutató: Blob létrehozása objektumtárban a Java Storage SDK V10 használatával | Microsoft Docs'
+description: Ebben a rövid útmutatóban létrehoz egy tárolót egy objektumtárban (Azure Blob Storage-ban), feltölt egy fájlt, objektumokat listáz ki, valamint letöltést végez a Java Storage SDK használatával.
 services: storage
 author: roygara
 manager: jeconnoc
@@ -9,23 +9,23 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: rogarana
-ms.openlocfilehash: a789269e73e1817f6a45e1e5948dbfaa21efd283
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 749badbc0bf5286c06da02f092933abbefda7ceb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704470"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185414"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-the-java-sdk-v10-preview"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása a Java SDK V10 (előzetes verzió) használatával
+# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10-preview"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása a Java Storage SDK V10 (előzetes verzió) használatával
 
-A rövid útmutató azt ismerteti, hogyan használható az új Java Storage SDK blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban. Az új Java SDK a reaktív programozási modell és az RxJava segítségével biztosít aszinkron műveleteket. Az RxJava bővebb ismertetését [itt](https://github.com/ReactiveX/RxJava) találja. 
+A rövid útmutató azt ismerteti, hogyan használható az új Java Storage SDK blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban. Az új Java SDK a reaktív programozási modellt használja az RxJavával, amely aszinkron műveleteket biztosít. További tudnivalókat az RxJaváról [a Java virtuális gépekhez készült reaktív bővítményeket](https://github.com/ReactiveX/RxJava) ismertető cikkben olvashat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Telepítse és konfigurálja a következő alkalmazásokat:
 
-* A [Maven](http://maven.apache.org/download.cgi) telepítése és konfigurálása a parancssorból, vagy bármely szabadon választott Java IDE-ből való működésre
-* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) telepítése és konfigurálása
+* A [Mavent](http://maven.apache.org/download.cgi) a parancssorból való használathoz, vagy más használni kívánt Java integrált fejlesztőkörnyezetet
+* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -43,21 +43,21 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-v10-quickstart.git
 
 Ez a parancs a helyi git mappába klónozza az adattárat.
 
-A projekt importálásának befejezése után nyissa meg a **Qucikstart.java** fájlt (a **src/main/java/quickstart** mappában).
+A projekt importálásának befejezése után nyissa meg az **src/main/java/quickstart** mappában található **Quickstart.java** fájlt.
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
-Ehhez a megoldáshoz a tárfióknevét és -kulcsát biztonságosan legyen tárolnia helyileg, a mintakódot futtató gép környezeti változóiban. A környezeti változók létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
+Ehhez a megoldáshoz biztonságosan kell tárolni a tárfiók nevét és kulcsát. Tárolja őket a mintát futtató gép helyi környezeti változóiban. A környezeti változók létrehozásához kövesse a linuxos vagy a windowsos példát az operációs rendszerének megfelelően.
 
-### <a name="for-linux"></a>Linux esetén
+### <a name="linux-example"></a>Linuxos példa
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-### <a name="for-windows"></a>Windows esetén
+### <a name="windows-example"></a>Windowsos példa
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -66,11 +66,15 @@ setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Ez a minta létrehoz egy tesztfájlt az alapértelmezett könyvtárban (Windows esetén az AppData\Local\Temp mappában), majd felkéri a felhasználót, hogy töltse fel a tesztfájlt a Blob Storage-tárolóba, kilistázza a tárolóban található blobokat, és töltse le a feltöltött fájlt egy új néven, hogy össze lehessen hasonlítani a régebbi fájllal. 
+Ez a minta létrehoz egy tesztfájlt az alapértelmezett mappában, amely Windows esetén az **AppData\Local\Temp** mappa. Ezután felkéri a felhasználót, hogy hajtsa végre az alábbi lépéseket:
 
-Ha a Maven használatával szeretné futtatni a mintát a parancssorban, nyisson meg egy rendszerhéjat, és navigáljon a **storage-blobs-java-v10-quickstart** elemre a klónozott könyvtárában. Ezután írja be az `mvn compile exec:java` parancsot.
+1. Írja be a parancsokat a tesztfájl Azure Blob Storage-ba való feltöltéséhez.
+2. Listázza a tárolóban található blobokat.
+3. Töltse le a feltöltött fájlt egy új néven, hogy össze lehessen hasonlítani a régebbi fájllal. 
 
-A következő példában látható kimenet a Windows rendszeren végzett futtatás eredményét mutatja.
+Ha a Maven használatával szeretné futtatni a mintát a parancssorban, nyisson meg egy felületet, és lépjen a **storage-blobs-java-v10-quickstart** elemhez a klónozott könyvtárában. Ezután írja be az `mvn compile exec:java` parancsot.
+
+A következő példa az alkalmazás Windows rendszeren végzett futtatásakor látható kimenetet mutatja.
 
 ```
 Created quickstart container
@@ -97,38 +101,44 @@ E
 Cleaning up the sample and exiting!
 ```
 
-A mintát a felhasználó vezérli, így parancsokat kell megadnia a kód végrehajtásához. Vegye figyelembe, hogy a bemenet különbséget tesz a kis- és nagybetűk között.
+A mintát a felhasználó vezérli, így parancsokat kell megadnia a kód futtatásához. A bemenetek esetében különbözőnek számítanak a kis- és nagybetűk.
 
-Az [Azure Storage Explorert](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat, ha szeretné a fájlt megtekinteni a blobtárolóban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amellyel elérheti a tárfiókjával kapcsolatos információkat. 
+Az [Azure Storage Explorert](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat, ha meg szeretné tekinteni a fájlt a Blob Storage-ban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amely hozzáférést biztosít a tárfiókjával kapcsolatos információkhoz. 
 
-A fájlok ellenőrzése után nyomja le az **E**, majd az Enter billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez. Most, hogy tisztában van a minta működésével, nyissa meg a **Quickstart.java** fájlt, és tekintse meg a kódot. 
+Ellenőrizze a fájlokat. Ezután nyomja le az **E**, majd az **Enter** billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez. Most, hogy tisztában van a minta működésével, nyissa meg a **Quickstart.java** fájlt, és tekintse meg a kódot. 
 
 ## <a name="understand-the-sample-code"></a>A mintakód értelmezése
 
-A következőkben áttekintjük a mintakódot, és értelmezzük annak működését.
+Az alábbi szakaszok részletesen bemutatják a mintakódot, hogy értelmezzük annak működését.
 
 ### <a name="get-references-to-the-storage-objects"></a>Referenciák beszerzése a tárolóobjektumokhoz
 
-Az első lépésben létre kell hozni a referenciákat azokhoz az objektumokhoz, melyeket a blobtároló eléréséhez és kezeléséhez használ. Ezek az objektumok egymásra épülnek – mindegyiket a listában utánuk következő használja.
+Először létre kell hozni a referenciákat a Blob Storage eléréséhez és kezeléséhez használt objektumokhoz. Ezek az objektumok egymásra épülnek. Mindegyiket a listában utána következő használja.
 
-* Hozza létre a StorageURL objektum egy példányát, amely a tárfiókra mutat.
+1. Hozza létre a **StorageURL** objektum egy példányát, amely a tárfiókra mutat.
 
-    A [**StorageURL**](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._storage_u_r_l?view=azure-java-preview) objektum az Ön tárfiókját jelöli, és lehetővé teszi egy új folyamat létrehozását. A folyamat ([HTTP-folyamat](https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview#url-types--http-pipeline)) egy olyan szabályzatkészlet, amely kérések és válaszok manipulálásához használható, és engedélyezési, naplózási és újrapróbálkozási mechanizmusokat tartalmaz. A folyamattal létrehozható a [**ServiceURL**](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._service_u_r_l?view=azure-java-preview) objektum egy példánya, amely lehetővé teszi egy [**ContainerURL**](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview)-példány létrehozását, amely pedig a blobtárolókon a műveletek futtatásához szükséges.
+    * A [StorageURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._storage_u_r_l?view=azure-java-preview) objektum az Ön tárfiókját jelöli. Ezzel hozza létre az új folyamatokat. 
+    * A folyamat egy olyan szabályzatkészlet, amely kérések és válaszok manipulálásához használható, és engedélyezési, naplózási és újrapróbálkozási mechanizmusokat tartalmaz. További információk: [HTTP-folyamat](https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview#url-types--http-pipeline).  
+    * A folyamat használatával hozza létre a [ServiceURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._service_u_r_l?view=azure-java-preview) objektum egy példányát.
+    * A **ServiceURL** objektum használatával hozza létre a [ContainerURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview) egy példányát.
+    * A **ContainerURL** a műveletek blobtárolókon való futtatásához szükséges.
 
-* Hozza létre a ContainerURL objektum egy példányát. Ez azt a tárolót jelöli, amelyhez Ön hozzá szeretne férni. A tárolók a blobok csoportosítására használhatók, hasonlóan ahhoz, ahogyan a számítógépen a mappákkal rendszerezi a fájlokat.
+2. Hozza létre a **ContainerURL** objektum egy példányát. Ez azt a tárolót jelöli, amelyhez Ön hozzá szeretne férni. A tárolók a blobok rendszerezésére szolgálnak, akárcsak a számítógépen a fájlok rendszerezésére használt mappák.
 
-    A **ContainerURL** hozzáférési pontot biztosít a tárolószolgáltatáshoz. A **ContainerURL** használatával létrehozhatja a [**BlobURL**](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview) objektum egy példányát, amely a blobok létrehozásához szükséges.
+    * A **ContainerURL** hozzáférési pontot biztosít a tárolószolgáltatáshoz. 
+    * A [ContainerURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview) használatával létrehozhatja a [BlobURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l?view=azure-java-preview) objektum egy példányát.
+    * A **BlobURL** a blobok létrehozásához szükséges.
 
-* Hozza létre a [BlobURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l?view=azure-java-preview) objektum egy példányát, amely arra a konkrét blobra mutat, amely Önt érdekli.
+3. Hozza létre a **BlobURL** objektum egy példányát, amely arra a konkrét blobra mutat, amely Önt érdekli. 
 
 > [!IMPORTANT]
-> A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos részletekért lásd a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
+> A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és a blobok elnevezésével kapcsolatos további információkért tekintse meg a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
 
 ### <a name="create-a-container"></a>Tároló létrehozása 
 
-Ebben a szakaszban létrehozza a ContainerURL egy példányát, és azzal egy új tárolót. A mintabeli tároló neve **quickstart**. 
+Ebben a szakaszban létrehozza a **ContainerURL** egy példányát. Ezzel együtt egy új tárolót is létre fog hozni. A mintabeli tároló neve **quickstart**. 
 
-Ez a példa a [containerURL.create](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.create?view=azure-java-preview) metódust használja, mert a minta futtatásakor mindig új tárolót szeretnénk létrehozni. Azt is megteheti, hogy előre létrehozza a tárolót, hogy ne a kódban kelljen létrehoznia.
+Ez a példa a [ContainerURL.create](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.create?view=azure-java-preview) metódust használja, hogy mindig új tárolót hozhasson létre a minta futtatásakor. Azt is megteheti, hogy előre létrehozza a tárolót, hogy ne a kódban kelljen létrehoznia.
 
 ```java
 // Create a ServiceURL to call the Blob service. We will also use this to construct the ContainerURL
@@ -154,11 +164,18 @@ try {
 
 ### <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
 
-A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok, és ez a gyorsútmutató is ezeket használja. 
+A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok. Ez a rövid útmutató is használja őket. 
 
-Egy fájl adott blobba való feltöltéséhez szerezze be a blob céltárolón belüli hivatkozását. Ha megszerezte a blobhivatkozást, feltölthet rá egy fájlt egy alacsony szintű API-val, amilyen az [Upload](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-preview) (más néven PutBlob) vagy a [StageBlock](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-preview#com_microsoft_azure_storage_blob__block_blob_u_r_l_stageBlock_String_Flowable_ByteBuffer__long_LeaseAccessConditions_) (más néven PutBLock) a BlockBlobURL-példányban, vagy a [TransferManager](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-preview) osztály által biztosított magas szintű API-kkal, mint például a [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-preview) metódus. Ez az eljárás létrehozza a blobot, ha az még nem létezett, és felülírja, ha már igen.
+1. Egy fájl adott blobba való feltöltéséhez szerezze be a blob céltárolón belüli hivatkozását. 
+2. Ha beszerezte a blobhivatkozást, feltölthet rá egy fájlt a következő API-k egyikével:
 
-A mintakód létrehoz egy, a fel- és letöltéshez használatos helyi fájlt, és úgy tárolja, hogy az a **sourceFile** néven és a blob URL-címével elnevezve legyen feltöltve a **blob** helyre. A következő példa feltölti a fájlt a **quickstart** nevű tárolóba.
+    * Alacsony szintű API-k. Ilyen például a **BlockBlobURL** példányban található [BlockBlobURL.upload](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-preview), más néven PutBlob és a [BlockBlobURL.stageBlock](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-preview#com_microsoft_azure_storage_blob__block_blob_u_r_l_stageBlock_String_Flowable_ByteBuffer__long_LeaseAccessConditions_), más néven PutBLock. 
+
+    * A [TransferManager osztály](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-preview) által biztosított magas szintű API-k. Ilyen például a [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-preview) metódus. 
+
+    Ez az eljárás létrehozza a blobot, ha az még nem létezik. Ha már létezik a blob, akkor felülírja.
+
+A mintakód létrehoz egy, a fel- és letöltéshez használatos helyi fájlt, **sourceFile** néven tárolja a feltölteni kívánt fájlt, és a **blob** helyen tárolja a blob URL-címét. A következő példa feltölti a fájlt a **quickstart** nevű tárolóba.
 
 ```java
 static void uploadFile(BlockBlobURL blob, File sourceFile) throws IOException {
@@ -175,11 +192,11 @@ static void uploadFile(BlockBlobURL blob, File sourceFile) throws IOException {
 }
 ```
 
-A blokkblobok akármilyen típusú szöveges vagy bináris fájlok lehetnek. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használatosak. A hozzáfűző blobok az adatok utólagos hozzáfűzésére szolgálnak, és általában naplózási célra használatosak. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
+A blokkblobok akármilyen típusú szöveges vagy bináris fájlok lehetnek. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használatosak. A hozzáfűző blobok az adatok utólagos hozzáfűzésére szolgálnak, és általában naplózási célra használják őket. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-A tárolóban található objektumok listája a [containerURL.listBlobsFlatSegment](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.listblobsflatsegment?view=azure-java-preview) paranccsal kérhető le. Ez a metódus egyszerre legfeljebb 5000 objektumot ad vissza, valamint egy folytatási jelölőt (következő jelölőt), ha további listázható elemek is vannak még a tárolóban. Ehhez létrehozunk egy segítő függvényt, amely ismételten meghívja önmagát egészen addig, ameddig az előző listBlobsFlatSegment-válasz tartalmaz egy következő jelölőt.
+A tárolóban található objektumok listája a [ContainerURL.listBlobsFlatSegment](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.listblobsflatsegment?view=azure-java-preview) paranccsal kérhető le. Ez a metódus egyszerre legfeljebb 5000 objektumot ad vissza, valamint egy folytatási jelölőt (következő jelölőt), ha további listázható elemek is vannak még a tárolóban. Hozzon létre egy segédfüggvényt, amely ismételten meghívja önmagát egészen addig, ameddig az előző **listBlobsFlatSegment**-válasz tartalmaz egy következő jelölőt.
 
 ```java
 static void listBlobs(ContainerURL containerURL) {
@@ -237,9 +254,9 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
 
 ### <a name="download-blobs"></a>Blobok letöltése
 
-Blobokat a helyi lemezre a [blobURL.download](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l.download?view=azure-java-preview) metódussal tölthet le.
+Blobokat a helyi lemezre a [BlobURL.download](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l.download?view=azure-java-preview) metódussal tölthet le.
 
-A következő kód letölti az útmutató korábbi fejezetében feltöltött blobot, és hozzáadja a „_DOWNLOADED” (Letöltve) utótagot a nevéhez, így mindkét fájlt láthatja majd a helyi lemezen. 
+A következő kód letölti az útmutató korábbi fejezetében feltöltött blobot. Hozzáadja a blob nevéhez a **_DOWNLOADED** (Letöltve) utótagot, így mindkét fájlt láthatja majd a helyi lemezen. 
 
 ```java
 static void getBlob(BlockBlobURL blobURL, File sourceFile) {
@@ -262,7 +279,7 @@ static void getBlob(BlockBlobURL blobURL, File sourceFile) {
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a [containerURL.delete](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.delete?view=azure-java-preview) paranccsal. Ez a metódus a tárolóban található fájlokat is törli.
+Ha nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a [ContainerURL.delete](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.delete?view=azure-java-preview) paranccsal. Ez a metódus a tárolóban található fájlokat is törli.
 
 ```java
 containerURL.delete(null).blockingGet();
@@ -270,7 +287,7 @@ containerURL.delete(null).blockingGet();
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek a gyorsútmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Java használatával. 
+Ebben a rövid útmutatóban megtanulta, hogyan továbbíthatóak fájlok egy helyi lemez és az Azure Blob Storage között a Java használatával. 
 
 > [!div class="nextstepaction"]
 > [A Java Storage SDK V10 forráskódja](https://github.com/Azure/azure-storage-java/tree/New-Storage-SDK-V10-Preview)

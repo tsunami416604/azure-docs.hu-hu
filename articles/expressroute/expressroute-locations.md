@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2018
+ms.date: 07/23/2018
 ms.author: jaredro
-ms.openlocfilehash: 35d15811f31e64d0c27a23da802a16ce2e4570aa
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e3338e76f54516e384e5cfc3046b83f2e49476d9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113983"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215305"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -60,7 +60,7 @@ Az alábbi tábla a régiók és az országos felhők geopolitikai határainak i
 
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
 | --- | --- | --- |
-| **Az Egyesült Államok kormányának felhője** |USA-beli államigazgatás – Arizona, USA-beli államigazgatás – Iowa, USA-beli államigazgatás – Texas, USA-beli államigazgatás – Virginia, USA Védelmi Minisztériuma – Középső régió, USA Védelmi Minisztériuma – Keleti régió  |Chicago, Dallas, New York, Seattle, Szilícium-völgy, Washington, D.C. |
+| **Az Egyesült Államok kormányának felhője** |US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia, US DoD – középső régió, US DoD – keleti régió  |Chicago, Dallas, New York, Phoenix, San Antonio, Seattle, Szilícium-völgy, Washington, D.C. |
 | **Kína** |Észak-Kína, Kelet-Kína |Peking, Sanghaj |
 | **Németország** |Közép-Németország, Kelet-Németország |Berlin, Frankfurt |
 
@@ -146,9 +146,10 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **Szolgáltató** | **Microsoft Azure** | **Office 365** | **Helyek** |
 | --- | --- | --- | --- |
 | **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Támogatott |Támogatott |Chicago, Washington, D.C. |
+| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Támogatott |Támogatott |Phoenix |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Támogatott |Chicago, Dallas, New York, Seattle, Szilícium-völgy, Washington, D.C. |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Támogatott |Támogatott |Chicago, New York+, Szilícium-völgy, Washington, D.C. |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Támogatott | Támogatott | Chicago, Dallas |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Támogatott | Támogatott | Chicago, Dallas, San Antonio |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |Támogatott |Támogatott |Chicago, Dallas, New York, Washington, D.C. |
 
 ### <a name="china"></a>Kína
@@ -225,6 +226,7 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 | **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | Frankfurt |  
 | **Rogers** | Cologix, Equinix | Montréal, Toronto |
 | **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Telecity | London | 
+| **[Telecom Italia Sparkle](https://www.tisparkle.com/our-platform/corporate-platform/sparkle-cloud-connect#catalogue)**| Equinix | Amszterdam |
 | **[Telia](https://www.telia.se/foretag/losningar/produkter-tjanster/datanet)** | Equinix | Amszterdam |
 | **[ThinkTel](http://www.thinktel.ca/services/agile-ix-data/expressroute/)** | Equinix | Toronto | 
 | **[Transtelco](http://www.transtelco.net/tcloud/microsoft)** |Equinix | Dallas, Los Angeles |  

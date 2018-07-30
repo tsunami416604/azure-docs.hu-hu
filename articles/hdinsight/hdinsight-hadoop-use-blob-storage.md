@@ -1,34 +1,30 @@
 ---
-title: Adatok lekérdezése HDFS-kompatibilis Azure Storage-ból – Azure HDInsight | Microsoft Docs
+title: Adatok lekérdezése HDFS-kompatibilis Azure Storage-ból – Azure HDInsight
 description: Megtudhatja, hogyan kérdezhet le adatokat az Azure Blob Storage-ból és az Azure Data Lake Store-ból, és hogyan tárolhatja az elemzések eredményeit.
-keywords: blob storage,hdfs,strukturált adatok,strukturálatlan adatok, data lake store,Hadoop-bemenet,Hadoop-kimenet, hadoop-tárolás, hdfs-bemenet,hdfs-kimenet,hdfs-tárolás,wasb azure
 services: hdinsight,storage
-documentationcenter: ''
 tags: azure-portal
 author: mumian
+ms.author: jgao
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 1d2e65f2-16de-449e-915f-3ffbc230f815
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 3430e71a45eb92af9881f4f13d414cddd8b6076a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 13787620ca889beea74c96b8fa922287b88442f4
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201047"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237723"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
 A HDInsight-fürtben lévő adatok elemzéséhez az adatokat tárolhatja az Azure Storage-ban, az Azure Data Lake Store-ban vagy mindkettőben. Mindkét tárolási lehetőség lehetővé teszi a számításhoz használt HDInsight-fürtök biztonságos törlését a felhasználói adatok elvesztése nélkül.
 
-A Hadoop támogatja az alapértelmezett fájlrendszert. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight-fürt létrehozása során blobtárolók adhatók meg alapértelmezett fájlrendszerként, illetve a HDInsight 3.5 esetében választhat, hogy az Azure Storage vagy az Azure Data Lake Store legyen az alapértelmezett fájlrendszer, néhány kivétellel. A Data Lake Store alapértelmezett és kapcsolt tárként való egyidejű használatának támogatási lehetőségeiről a [Lehetőségek HDInsight-fürtök esetén](./hdinsight-hadoop-use-data-lake-store.md#availabilities-for-hdinsight-clusters) című cikk ad tájékoztatást.
+A Hadoop támogatja az alapértelmezett fájlrendszert. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight-fürt létrehozása során blobtárolók adhatók meg alapértelmezett fájlrendszerként, illetve a HDInsight 3.5 esetében választhat, hogy az Azure Storage vagy az Azure Data Lake Store legyen az alapértelmezett fájlrendszer, néhány kivétellel. A Data Lake Storage alapértelmezett és kapcsolt tárként való egyidejű használatának támogatási lehetőségeiről a [HDInsight-fürtök esetén elérhető rendelkezésre állást](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters) ismertető cikk ad tájékoztatást.
 
 Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight-fürtökkel. A Data Lake Store HDInsight-fürtökkel való használatáról az [Azure Data Lake Store használata Azure HDInsight-fürtökkel](hdinsight-hadoop-use-data-lake-store.md) című cikk szól. További információ a HDInsight-fürtök létrehozásáról: [Hadoop-fürtök létrehozása a HDInsightban](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -46,7 +42,7 @@ Az Azure Blob Storage egy robusztus, általános célú tárolómegoldás, amely
 
 Az alapértelmezett blobtárolóban nem ajánlott üzleti adatokat tárolni. Az alapértelmezett blobtárolót ajánlatos törölni minden egyes használat után. Fontos, hogy az alapértelmezett tároló alkalmazás- és rendszernaplókat is tartalmaz. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
 
-Egy blobtároló több fürt közötti megosztása nem támogatott.
+Egy blobtároló alapértelmezett fájlrendszerként való, több fürt közötti megosztása nem támogatott.
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight tároló-architektúra
 A következő ábra az Azure Storage-ot használó HDInsight tároló-architektúra absztrakt nézetét nyújtja:

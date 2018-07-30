@@ -1,26 +1,26 @@
 ---
-title: IoT-eszközök monitorozása Azure-megoldásokból | Microsoft Docs
+title: IoT-eszközök monitorozása Azure-megoldásokból – oktatóanyag | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan monitorozhatja IoT-eszközeit a távoli monitorozási megoldásgyorsítóval.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/08/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5f42ed0fa5362959e5619f2d550ca1ae3711ed65
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: d31ea1fe579e5ac7a846c1c0d03012d70be9884d
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097461"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159348"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>Oktatóanyag: IoT-eszközök monitorozása
 
 Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsítóval monitorozhatja a csatlakoztatott IoT-eszközöket. A megoldás irányítópultján megtekintheti a telemetriai adatokat, az eszközadatokat, a riasztásokat és a fő teljesítménymutatókat.
 
-A monitorozási funkciók bemutatásához az oktatóanyag két teherautóban található szimulált eszközt használ. A teherautókat egy Contoso nevű cég kezeli, és kapcsolódnak a távoli monitorozási megoldásgyorsítóhoz. A Contoso egyik operátoraként Önnek figyelemmel kell kísérnie a teherautók helyzetét és viselkedését a terepen.
+Az oktatóanyag két teherautóban található szimulált eszközt használ, amelyek helyre, sebességre és rakomány-hőmérsékletre vonatkozó telemetriát küldenek. A teherautókat egy Contoso nevű cég kezeli, és kapcsolódnak a távoli monitorozási megoldásgyorsítóhoz. A Contoso egyik operátoraként Önnek figyelemmel kell kísérnie az egyik teherautó (truck-02) helyzetét és viselkedését a terepen.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -31,11 +31,9 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Eszközökről érkező riasztások megtekintése
 > * A rendszer fő teljesítménymutatóinak megtekintése
 
-## <a name="prerequisites"></a>Előfeltételek
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Az oktatóanyag követéséhez rendelkeznie kell a távoli monitorozási megoldásgyorsító üzembe helyezett példányával az Azure-előfizetésében.
-
-Ha még nem helyezte üzembe a távoli monitorozási megoldásgyorsítót, végezze el [Távoli felhőalapú monitorozási megoldás üzembe helyezése](quickstart-remote-monitoring-deploy.md) rövid útmutatóban leírtakat.
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="choose-the-devices-to-display"></a>A megjelenítendő eszközök kiválasztása
 
@@ -43,31 +41,27 @@ Az **Irányítópult** oldalon megjelenítendő csatlakoztatott eszközök kivá
 
 [![Teherautók keresése szűréssel az irányítópulton](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
-Szűrő alkalmazásakor csak azok az eszközök jelennek meg az **Irányítópult** lap térképén, amelyek megfelelnek a szűrés feltételeinek:
+Szűrő alkalmazásakor csak azok az eszközök jelennek meg az **Irányítópult** lap térképén és telemetria-panelén, amelyek megfelelnek a szűrés feltételeinek. Láthatja, hogy a megoldásgyorsítóhoz két teherautó csatlakozik, beleértve a truck-02 teherautót is:
 
 [![Kizárólag teherautók jelennek meg a térképen](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
-A szűrő is meghatározza, hogy mely eszközök láthatók a **Telemetriai adatok** diagramon:
-
-[![A teherautó telemetriai adatai jelennek meg az irányítópulton](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-expanded.png#lightbox)
-
-A szűrők létrehozásához, szerkesztéséhez és törléséhez válassza az **Eszközcsoportok kezelése** lehetőséget.
+A szűrők létrehozásához, szerkesztéséhez és törléséhez kattintson az **Eszközcsoportok kezelése** lehetőségre.
 
 ## <a name="view-real-time-telemetry"></a>Valós idejű telemetriai adatok megtekintése
 
-A megoldásgyorsító valós idejű telemetriai adatokat ábrázol az **Irányítópult** lapon található diagramon. A telemetriai adatok diagram tetején a jelenlegi szűrővel kiválasztott eszközökhöz elérhető telemetria-típusokat láthatja:
+A megoldásgyorsító valós idejű telemetriai adatokat ábrázol az **Irányítópult** lapon található diagramon. A telemetriai adatok diagram tetején a jelenlegi szűrővel kiválasztott eszközökhöz, így a truck-02 teherautóhoz is elérhető telemetria-típusokat láthatja: Alapértelmezés szerint a diagram a teherautók földrajzi szélességét mutatja, és a truck-02 teherautó mozdulatlannak tűnik:
 
 [![Teherautótelemetria-típusok](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
-A hőmérsékleti telemetria megtekintéséhez kattintson a **Hőmérséklet** elemre:
+A teherautók hőmérsékleti telemetriájának megtekintéséhez kattintson a **Hőmérséklet** elemre. Láthatja, hogyan változott a truck-02 teherautó hőmérséklete az elmúlt órában:
 
 [![Teherautó hőmérsékleti telemetria-diagramja](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
-## <a name="use-the-map"></a>A térkép használata
+## <a name="view-the-map"></a>A térkép megtekintése
 
-A térkép az aktuális szűrővel kiválasztott szimulált teherautókról jelenít meg információkat. A térkép nagyításával és pásztázásával nagyobb vagy kisebb részletességgel tekintheti meg a helyeket. A térképen található eszközikon színe azt mutatja meg, hogy az adott eszköz rendelkezik-e aktív **Riasztásokkal** vagy **Figyelmeztetésekkel**. A térképtől balra láthatja a **Riasztások** és **Figyelmeztetések** összesített számát.
+A térkép az aktuális szűrővel kiválasztott szimulált teherautókról jelenít meg információkat. A térkép nagyításával és pásztázásával nagyobb vagy kisebb részletességgel tekintheti meg a helyeket. A térképen található eszközikon színe azt mutatja meg, hogy az adott eszköz rendelkezik-e aktív **Riasztásokkal**(sötétkék) vagy **Figyelmeztetésekkel** (vörös). A térképtől balra láthatja a **Riasztások** és **Figyelmeztetések** összesített számát.
 
-Az eszközadatok megtekintéséhez keresse meg az eszközt a térkép nagyításával és pásztázásával, majd válassza ki az eszközt a térképen. Ezután kattintson az eszköz címkéjére az **Eszközadatok** panel megnyitásához. Az eszközadatok a következők:
+A truck-02 teherautó részletes adatainak megtekintéséhez keresse meg azt a térkép nagyításával és pásztázásával, majd válassza ki a teherautót a térképen. Ezután kattintson az eszköz címkéjére az **Eszközadatok** panel megnyitásához. Az eszközadatok a következők:
 
 * Új telemetria-értékek
 * Az eszköz által támogatott metódusok
@@ -77,13 +71,11 @@ Az eszközadatok megtekintéséhez keresse meg az eszközt a térkép nagyítás
 
 ## <a name="view-alerts"></a>Riasztások megtekintése
 
-A **Riasztások** panel az eszközökről érkező legújabb riasztások részletes adatait jeleníti meg:
+A **Riasztások** panel az eszközökről érkező legújabb riasztások részletes adatait jeleníti meg. A truck-02 teherautóból érkező riasztások a megszokottnál magasabb rakomány-hőmérsékletet jeleznek:
 
 [![Eszközriasztások megtekintése az irányítópulton](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
-A szűrőkkel beállíthatja az új riasztások időtartományát. Alapértelmezés szerint a panel az elmúlt óra riasztásait jeleníti meg:
-
-[![Riasztások idő szerinti szűrése](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-expanded.png#lightbox)
+A szűrőkkel beállíthatja az új riasztások időtartományát. Alapértelmezés szerint a panel az elmúlt óra riasztásait jeleníti meg.
 
 ## <a name="view-the-system-kpis"></a>A rendszer fő teljesítménymutatóinak megtekintése
 
@@ -97,19 +89,11 @@ Az irányítópult három fő teljesítménymutatót jelenít meg az aktuális e
 * A riasztások aránya eszköztípusonként.
 * A kritikus riasztások százalékos aránya.
 
+A truck-02 teherautónál minden riasztás a megszokottnál magasabb rakomány-hőmérsékletre figyelmeztet.
+
 A riasztások időtartamát és a megjelenítendő eszközöket megadó szűrők határozzák meg a fő teljesítménymutatók összesítésének módját is. Alapértelmezés szerint a panel az elmúlt órában összesített fő teljesítménymutatókat jeleníti meg.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha tovább kíván lépni a következő oktatóanyagra, ne kapcsolja ki a távoli monitorozási megoldásgyorsítót. Ha csökkenteni szeretné a megoldásgyorsító futtatásának költségeit, amíg nem használja, állítsa le a szimulált eszközöket a beállítások panelen:
-
-[![Telemetria szüneteltetése](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-expanded.png#lightbox)
-
-Ha készen áll a következő oktatóanyag megkezdésére, újraindíthatja a szimulált eszközöket.
-
-Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról:
-
-![Megoldás törlése](media/iot-accelerators-remote-monitoring-monitor/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>További lépések
 

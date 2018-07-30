@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: 27eaa6582a355198b61e996cce0a4acce48061cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267128"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257871"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -85,7 +85,9 @@ További információ a virtuális hálózatok közötti társviszonyok létreho
 
 ## <a name="pricing"></a>Díjszabás
 
-Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és kimenő forgalomra. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
+Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és kimenő forgalomra. A virtuális társhálózatok és a globális virtuális társhálózatok díjszabásával kapcsolatos további tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
+
+Az átjáróval történő átvitel olyan társviszony-létesítési tulajdonság, amely lehetővé teszi egy virtuális hálózat számára egy VPN-átjáró használatát valamely virtuális társhálózaton belül a létesítmények vagy virtuális hálózatok közötti csatlakozáshoz. Ebben a forgatókönyvben a távoli átjárón áthaladó forgalomra a [VPN-átjáró díjai](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/) érvényesek, [virtuális társhálózati díjakat](https://azure.microsoft.com/pricing/details/virtual-network) azonban nem kell fizetni. Ha például az A virtuális hálózat VPN-átjáróval rendelkezik a helyszíni csatlakozáshoz, a B virtuális hálózat pedig megfelelő tulajdonságokkal konfigurált társviszonyban van az A virtuális hálózattal, akkor a B virtuális hálózatról a helyszíni felé irányuló forgalom után csak a VPN-átjáróra vonatkozó díjszabás szerint kell fizetni. Virtuális társhálózati díjak nem lesznek felszámolva. Ismerje meg, hogyan [konfigurálhat VPN-átjáróval történő adatátvitelt virtuális hálózatok közötti társviszony létesítéséhez](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
 

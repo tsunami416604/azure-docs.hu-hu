@@ -209,6 +209,8 @@
       items:
         - name: Fürterőforrások kezelése
           href: apache-spark-resource-manager.md
+        - name: Spark-alkalmazások kezelése kiterjesztett előzménykiszolgálóval
+          href: apache-azure-spark-history-server.md
         - name: A Spark beállításainak konfigurálása
           href: apache-spark-settings.md
         - name: Spark-feladatok optimalizálása

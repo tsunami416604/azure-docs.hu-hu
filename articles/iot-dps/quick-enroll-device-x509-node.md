@@ -1,8 +1,8 @@
 ---
 title: X.509-eszközök regisztrációja az Azure Device Provisioning Service-be a Node.js használatával | Microsoft Docs
-description: Azure rövid útmutató – X.509-eszközök regisztrációja az Azure IoT Hub Device Provisioning Service-be a Node.js szolgáltatásoldali SDK-val
-author: bryanla
-ms.author: bryanla
+description: Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a Node.js szolgáltatásoldali SDK-val
+author: wesmc7777
+ms.author: wesmc
 ms.date: 12/21/2017
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,30 +10,53 @@ services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 207dcc4651a9f3e3712ad67fe1718bcbcd715e27
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4c7e38f3180e8df260b29228e404a2160a17786a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629932"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205306"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>X.509-eszközök regisztrációja az IoT Hub Device Provisioning Service-be a Node.js szolgáltatásoldali SDK-val
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Node.js használatával
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
+Ez a rövid útmutató bemutatja, hogyan hozhat létre a Node.js segítségével programozott módon egy [regisztrációs csoportot](concepts-service.md#enrollment-group), amely köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítványokat használ. A regisztrációs csoport létrehozásához a [Node.js-hez készült IoT SDK](https://github.com/Azure/azure-iot-sdk-node)-t és egy Node.js-mintaalkalmazást használunk. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). További információ az X.509-tanúsítványon alapuló nyilvánoskulcs-infrastruktúra (PKI) az Azure IoT Hubbal és a Device Provisioning Service-szel való használatáról: [X.509 hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
 
-Ezek a lépések bemutatják, hogyan hozhat létre programozott módon regisztrációs csoportot egy köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítványhoz a [Node.js szolgáltatásoldali SDK](https://github.com/Azure/azure-iot-sdk-node) és egy Node.js-minta használatával. Bár a lépések Windows és Linux rendszerű gépeken egyaránt alkalmazhatók, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ.
- 
+A rövid útmutató feltételezi, hogy már létrehozott egy IoT hubot és egy Device Provisioning Service-példányt. Ha ezeket az erőforrásokat még nem hozta létre, végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) rövid útmutatót, mielőtt továbbhaladna ebben a cikkben.
+
+Bár a cikkben ismertetett lépések Windows és Linux rendszerű gépeken egyaránt alkalmazhatók, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
+- Telepítse a [Node.js 4.0-s vagy újabb verzióját](https://nodejs.org).
+- Telepítse a [Git](https://git-scm.com/download/) szoftvert.
 
+
+## <a name="prepare-test-certificates"></a>Teszttanúsítványok előkészítése
+
+A rövid útmutatóhoz szükség van egy .pem vagy .cer fájlra, amely tartalmazza egy köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítvány nyilvános részét. A tanúsítványnak a kiépítési szolgáltatásba feltöltöttnek és a szolgáltatás által ellenőrzöttnek kell lennie. 
+
+Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) tartalmazza azokat a teszteszközöket, amelyek segítségével létrehozhat egy X.509-tanúsítványláncot, feltölthet egy legfelsőbb szintű vagy köztes tanúsítványt a láncból, valamint végrehajthat egy tulajdonlástanúsítási eljárást a szolgáltatással a tanúsítvány hitelesítéséhez. Az SDK-eszközkészlettel létrehozott tanúsítványokat csak **fejlesztési és tesztelési célokra** tervezték. Ezeket a tanúsítványokat **nem lehet termelési környezetben használni**. Nem módosítható jelszavakat tartalmaznak („1234”), amelyek 30 nap után lejárnak. A termelési használathoz megfelelő tanúsítványok beszerzésével kapcsolatos további információt az Azure IoT Hub dokumentációjának [X.509 hitelesítésszolgáltatói tanúsítvány beszerzése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) című részében talál.
+
+A teszteszköz segítségével a következő lépésekkel állíthat elő tanúsítványokat: 
  
-- Győződjön meg arról, hogy a [Node.js 4.0-s vagy újabb verziója](https://nodejs.org) telepítve van a gépén.
+1. Nyisson meg egy parancssort vagy a Git Bash-felületet, és lépjen egy, a gépen található munkamappába. A következő parancs végrehajtásával klónozza az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattárat:
+    
+  ```cmd/sh
+  git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+  ```
+
+  Az adattár mérete jelenleg körülbelül 220 MB. Ez a művelet várhatóan több percig is eltarthat.
+
+  A teszteszköz a klónozott adattár *azure-iot-sdk-c/tools/CACertificates* mappájában található.    
+
+2. Kövesse a [mintákhoz és oktatóanyagokhoz készült hitelesítésszolgáltatói tanúsítványok kezeléséről](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) szóló cikk lépéseit. 
 
 
-- Egy .pem fájlra lesz szüksége, amely egy köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítványt tartalmaz, amely fel lett töltve és hitelesítve lett az eszközkiépítési szolgáltatás által. Az **Azure IoT c SDK** tartalmazza azokat az eszközöket, amelyek segítségével létrehozhat egy X.509-tanúsítványláncot, feltölthet egy fő- vagy köztes tanúsítványt a láncból, valamint végrehajthat egy tulajdonlástanúsítási eljárást a szolgáltatással a tanúsítvány hitelesítéséhez. Az eszközkészlet használatához klónozza az [Azure IoT c SDK-t](https://github.com/Azure/azure-iot-sdk-c), és kövesse a [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) fájlban foglalt lépéseket a gépen.
 
 ## <a name="create-the-enrollment-group-sample"></a>A regisztrációs csoport mintájának létrehozása 
 
@@ -89,13 +112,13 @@ Ezek a lépések bemutatják, hogyan hozhat létre programozott módon regisztr�
 ## <a name="run-the-enrollment-group-sample"></a>A regisztrációs mintacsoport futtatása
  
 1. A minta futtatásához szüksége lesz a kiépítési szolgáltatás kapcsolati sztringjére. 
-    1. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson az **Összes erőforrás** gombra, és nyissa meg az eszközkiépítési szolgáltatást. 
+    1. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson a **Minden erőforrás** gombra, és nyissa meg a Device Provisioning Service-t. 
     2. Kattintson a **Megosztott elérési szabályzatok** elemre, majd a használni kívánt hozzáférési szabályzatra a tulajdonságainak megnyitásához. A **Hozzáférési szabályzat** ablakban másolja és jegyezze fel az elsődleges kulcs kapcsolati sztringjét. 
 
     ![A kiépítési szolgáltatás kapcsolati sztringjének lekérése a portálról](./media/quick-enroll-device-x509-node/get-service-connection-string.png) 
 
 
-3. Amint azt az [Előfeltételek](#prerequisites) részben már említettük, egy .pem fájlra is szüksége lesz, amely egy köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítványt tartalmaz, amely már fel lett töltve és hitelesítve lett az eszközkiépítési szolgáltatás által. Annak ellenőrzéséhez, hogy a tanúsítvány már fel lett töltve és hitelesítve lett, az Azure Portalon a Device Provisioning Service összefoglaló panelén kattintson a **Tanúsítványok** gombra. Keresse meg a csoportos regisztrációhoz használni kívánt tanúsítványt, és győződjön meg arról, hogy az állapotának értéke *Hitelesítve*.
+3. Amint azt a [Teszttanúsítványok előkészítése](quick-enroll-device-x509-node.md#prepare-test-certificates) részben már említettük, egy .pem fájlra is szüksége lesz, amely egy köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítványt tartalmaz, amely már fel lett töltve és hitelesítve lett az eszközkiépítési szolgáltatás által. Annak ellenőrzéséhez, hogy a tanúsítvány már fel lett töltve és hitelesítve lett, az Azure Portalon a Device Provisioning Service összefoglaló panelén kattintson a **Tanúsítványok** gombra. Keresse meg a csoportos regisztrációhoz használni kívánt tanúsítványt, és győződjön meg arról, hogy az állapotának értéke *Hitelesítve*.
 
     ![Hitelesített tanúsítvány a portálon](./media/quick-enroll-device-x509-node/verify-certificate.png) 
 

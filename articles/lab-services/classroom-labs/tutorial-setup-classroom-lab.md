@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 07/23/2018
 ms.author: spelluru
-ms.openlocfilehash: 163763bf1203a045326c7163b5f6da9aa417d8cf
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: d1315753baf08cc80fda5811bd43bf59609781b7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081856"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216023"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -32,13 +32,13 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 > * Regisztrációs hivatkozás küldése a diákoknak
 
 ## <a name="prerequisites"></a>Előfeltételek
-A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezet tulajdonosa az alábbi cikkben leírt lépésekkel adható hozzá a Tesztkörnyezet-létrehozó szerepkörhöz: [Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezetfiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. A tesztkörnyezet tulajdonosa a [felhasználó a Tesztkörnyezet-létrehozó szerepkörhöz történő hozzáadását](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role) ismertető cikkben leírt lépésekkel adhat hozzá további felhasználókat a Tesztkörnyezet-létrehozó szerepkörhöz.
 
 
 ## <a name="create-a-classroom-lab"></a>Osztályterem-tesztkörnyezet létrehozása
 
-1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com).
-2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. 
+1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). 
+2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
 3. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
     1. Adja meg az osztályterem-tesztkörnyezet **nevét**. 
     2. Válassza ki az osztályteremben használni kívánt virtuális gép **méretét**.

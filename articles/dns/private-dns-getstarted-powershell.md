@@ -1,177 +1,214 @@
 ---
-title: Az Azure DNS saját zónáival kapcsolatos első lépések PowerShell-lel | Microsoft Docs
-description: A cikkből megtudhatja, hogyan hozhat létre saját DNS-zónát és -rekordot az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel a PowerShell használatával létrehozhatja és kezelheti az első saját DNS-zónáját és -rekordját.
+title: Oktatóanyag – Saját Azure DNS-zóna létrehozása az Azure PowerShell használatával
+description: Ebben az oktatóanyagban egy saját DNS-zónát és -rekordot hozunk létre és tesztelünk az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel az Azure PowerShell használatával létrehozhatja és kezelheti az első saját DNS-zónáját és -rekordját.
 services: dns
-documentationcenter: na
-author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: vhorne
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/20/2017
-ms.author: kumud
-ms.openlocfilehash: d9e5c9b8caa5349fbcda9b71f7524fb9e99b976c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: tutorial
+ms.date: 7/24/2018
+ms.author: victorh
+ms.openlocfilehash: 872227e0521bd54e6bf7fdbe3626dfca34170863
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30177654"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257725"
 ---
-# <a name="get-started-with-azure-dns-private-zones-using-powershell"></a>Az Azure DNS saját zónáival kapcsolatos első lépések PowerShell-lel
+# <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>Oktatóanyag: Saját Azure DNS-zóna létrehozása az Azure PowerShell használatával
 
-Ez a cikk végigvezeti az első saját DNS-zóna és -rekord Azure PowerShell-lel való létrehozásának lépésein.
+Ez az oktatóanyag végigvezeti az első saját DNS-zóna és -rekord Azure PowerShell-lel való létrehozásának lépésein.
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása.  Ezeket „feloldási virtuális hálózatoknak” nevezzük.  Megadhat olyan virtuális hálózatot is, amelyhez az Azure DNS eszköznévrekordokat biztosít a virtuális gépek létrehozásakor, IP-címének módosításakor vagy megsemmisülésekor.  Ezt „regisztrációs virtuális hálózatnak” nevezzük.
+Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása.  Ezeket *feloldási virtuális hálózatnak* nevezzük. Megadhat olyan virtuális hálózatot is, amelyhez az Azure DNS eszköznévrekordokat biztosít a virtuális gépek létrehozásakor, IP-címének módosításakor vagy törlésekor.  Ezt *regisztrációs virtuális hálózatnak* nevezzük.
 
-# <a name="get-the-preview-powershell-modules"></a>Az előzetes verziójú PowerShell-modulok beszerzése
-Ezek az utasítások feltételezik, hogy már telepítette az Azure Powershellt, és be is jelentkezett, illetve meggyőződött arról, hogy rendelkezik a Private Zone szolgáltatáshoz szükséges modulokkal. 
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-[!INCLUDE [dns-powershell-setup](../../includes/dns-powershell-setup-include.md)]
+> [!div class="checklist"]
+> * Saját DNS-zóna létrehozása
+> * Tesztelési célú virtuális gépek létrehozása
+> * További DNS-rekord létrehozása
+> * A saját zóna tesztelése
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+Igény szerint az oktatóanyag az [Azure CLI](private-dns-getstarted-cli.md) használatával is elvégezhető.
+
+<!--- ## Get the Preview PowerShell modules
+These instructions assume you have already installed and signed in to Azure PowerShell, including ensuring you have the required modules for the Private Zone feature. -->
+
+<!---[!INCLUDE [dns-powershell-setup](../../includes/dns-powershell-setup-include.md)] -->
+
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-A DNS-zóna létrehozása előtt egy erőforráscsoportot kell létrehozni, amely a DNS-zónát tartalmazza majd. Az alábbi példában a parancs látható:
+Először hozzon létre egy erőforráscsoportot, amely a DNS-zónát tartalmazza majd: 
 
-```powershell
-New-AzureRMResourceGroup -name MyResourceGroup -location "westus"
+```azurepowershell
+New-AzureRMResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
 ## <a name="create-a-dns-private-zone"></a>Saját DNS-zóna létrehozása
 
-DNS-zóna létrehozásához használja a `New-AzureRmDnsZone` parancsmagot, és adja meg a „Private” értéket a ZoneType paraméterhez. Az alábbi példaparancs a *MyResourceGroup* erőforráscsoportban létrehozza a *contoso.local* DNS-zónát, majd elérhetővé teszi azt a *MyAzureVnet* nevű virtuális hálózat számára. A példát követve, és az értékeket a sajátjaira cserélve hozza létre a DNS-zónát.
+DNS-zóna létrehozásához használja a `New-AzureRmDnsZone` parancsmagot, és adja meg a *Private* értéket a **ZoneType** paraméterhez. Az alábbi példaparancs a **MyAzureResourceGroup** erőforráscsoportban létrehozza a **contoso.local** DNS-zónát, majd elérhetővé teszi azt a **MyAzureVnet** nevű virtuális hálózat számára.
 
-Vegye figyelembe, hogy a ZoneType paraméter kihagyása esetén a zóna nyilvános zónaként jön létre, ezért a paraméter megadása kötelező ahhoz, hogy privát zónát hozhasson létre. 
+A **ZoneType** paraméter kihagyása esetén a zóna nyilvános zónaként jön létre, ezért a paraméter megadása kötelező a privát zónák létrehozásához. 
 
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name MyAzureVnet -ResourceGroupName VnetResourceGroup
-New-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup -ZoneType Private -ResolutionVirtualNetworkId @($vnet.Id)
+```azurepowershell
+$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.2.0.0/24"
+$vnet = New-AzureRmVirtualNetwork `
+  -ResourceGroupName MyAzureResourceGroup `
+  -Location eastus `
+  -Name myAzureVNet `
+  -AddressPrefix 10.2.0.0/16 `
+  -Subnet $backendSubnet
+
+New-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
+   -ZoneType Private `
+   -RegistrationVirtualNetworkId @($vnet.Id)
 ```
 
-Ha arra van szükség, hogy az Azure automatikusan hozzon létre gazdanév-rekordokat a zónában, a *ResolutionVirtualNetworkId* helyett használja a *RegistrationVirtualNetworkId* paramétert.  A feloldás a regisztrációs virtuális hálózatok számára automatikusan engedélyezett.
+Ha csupán a névfeloldáshoz kívánt zónát létrehozni (gazdagépnevek automatikus létrehozása nélkül), a *RegistrationVirtualNetworkId* paraméter helyett használhatja a *ResolutionVirtualNetworkId* paramétert.
 
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name MyAzureVnet -ResourceGroupName VnetResourceGroup
-New-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup -ZoneType Private -RegistrationVirtualNetworkId @($vnet.Id)
-```
+> [!NOTE]
+> Ekkor az automatikusan létrehozott gazdagépnév-rekordok nem jelennek meg. Később azonban a tesztelés során megbizonyosodhat róla, hogy léteznek.
 
-## <a name="create-a-dns-record"></a>DNS-rekord létrehozása
-
-Rekordhalmazt a `New-AzureRmDnsRecordSet` parancsmag használatával hozhat létre. Az alábbi példa a „MyResourceGroup” erőforráscsoport „contoso.local” DNS-zónájában egy „db” relatív nevű rekordot hoz létre. A beállított rekord teljes neve „db.contoso.local”. A rekord típusa „A”, az IP-címe „10.0.0.4”, az élettartama pedig 3600 másodperc.
-
-```powershell
-New-AzureRmDnsRecordSet -Name db -RecordType A -ZoneName contoso.local -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "10.0.0.4")
-```
-
-Más rekordtípusok, több rekordot tartalmazó rekordhalmazok és meglévő rekordok módosítása esetén lásd: [DNS-rekordok és -rekordhalmazok kezelése az Azure PowerShell használatával](dns-operations-recordsets.md). 
-
-## <a name="view-records"></a>A rekordok megtekintése
-
-A zónájában lévő DNS-rekordokat a következő paranccsal listázhatja:
-
-```powershell
-Get-AzureRmDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyResourceGroup
-```
-
-# <a name="list-dns-private-zones"></a>Privát DNS-zónák listázása
+### <a name="list-dns-private-zones"></a>Privát DNS-zónák listázása
 
 Ha kihagyja a zóna nevét a `Get-AzureRmDnsZone` parancsból, felsorolhatja az egy erőforráscsoportba tartozó összes zónát. Ez a művelet zónaobjektumok tömbjét adja vissza.
 
-```powershell
-$zoneList = Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
+```azurepowershell
+Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
 Ha a zóna és az erőforráscsoport nevét is kihagyja a `Get-AzureRmDnsZone` parancsból, felsorolhatja az Azure-előfizetéshez tartozó összes zónát.
 
-```powershell
-$zoneList = Get-AzureRmDnsZone
+```azurepowershell
+Get-AzureRmDnsZone
 ```
 
-## <a name="update-a-dns-private-zone"></a>Privát DNS-zóna frissítése
+## <a name="create-the-test-virtual-machines"></a>A tesztelési célú virtuális gépek létrehozása
 
-A DNS-zóna erőforrásai a `Set-AzureRmDnsZone` parancsmaggal módosíthatók. Ez a parancsmag nem frissíti a zóna egy DNS-rekordhalmazát sem (lásd a [DNS-rekordok kezeléséről szóló részt](dns-operations-recordsets.md)). Csak a zónaerőforrás tulajdonságainak frissítésére használatos. Az írható zónatulajdonságok jelenleg korlátozva vannak az [Azure Resource Manager zónaerőforrásokra vonatkozó „címkéire”](dns-zones-records.md#tags), valamint a privát zónák „RegistrationVirtualNetworkId” és „ResolutionVirtualNetworkId” paraméterére.
+Most hozzon létre két virtuális gépet, amelyekkel tesztelheti saját DNS-zónáját:
 
-Az alábbi példa kicseréli a zónához kapcsolódó regisztrációs virtuális hálózatot egy újra: MyNewAzureVnet.
+```azurepowershell
+New-AzureRmVm `
+    -ResourceGroupName "myAzureResourceGroup" `
+    -Name "myVM01" `
+    -Location "East US" `
+    -subnetname backendSubnet `
+    -VirtualNetworkName "myAzureVnet" `
+    -addressprefix 10.2.0.0/24 `
+    -OpenPorts 3389
 
-Fontos, hogy a létrehozással ellentétben a frissítéshez nem kötelező megadni a ZoneType paramétert. 
-
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name MyNewAzureVnet -ResourceGroupName MyResourceGroup
-Set-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup -RegistrationVirtualNetworkId @($vnet.Id)
+New-AzureRmVm `
+    -ResourceGroupName "myAzureResourceGroup" `
+    -Name "myVM02" `
+    -Location "East US" `
+    -subnetname backendSubnet `
+    -VirtualNetworkName "myAzureVnet" `
+    -addressprefix 10.2.0.0/24 `
+    -OpenPorts 3389
 ```
 
-Az alábbi példa kicseréli a zónához kapcsolódó feloldási virtuális hálózatot egy új, MyNewAzureVnet nevű virtuális hálózatra.
+Ez eltarthat pár percig.
 
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name MyNewAzureVnet -ResourceGroupName MyResourceGroup
-Set-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup -ResolutionVirtualNetworkId @($vnet.Id)
+## <a name="create-an-additional-dns-record"></a>További DNS-rekord létrehozása
+
+Rekordhalmazt a `New-AzureRmDnsRecordSet` parancsmag használatával hozhat létre. Az alábbi példa a **MyAzureResourceGroup** erőforráscsoport **contoso.local** DNS-zónájában hoz létre egy rekordot **db** relatív néven. A rekordkészlet teljes neve **db.contoso.local**. A rekord típusa „A”, az IP-címe „10.2.0.4”, az élettartama pedig 3600 másodperc.
+
+```azurepowershell
+New-AzureRmDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
+   -ResourceGroupName MyAzureResourceGroup -Ttl 3600 `
+   -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "10.2.0.4")
 ```
 
-## <a name="delete-a-dns-private-zone"></a>Privát DNS-zóna törlése
+### <a name="view-dns-records"></a>A DNS-rekordok megtekintése
 
-A privát DNS-zónák a nyilvános zónákhoz hasonlóan, a `Remove-AzureRmDnsZone` parancsmag használatával törölhetők.
+A zónájában lévő DNS-rekordokat a következő paranccsal listázhatja:
 
-> [!NOTE]
-> A DNS-zónák törlésével a zónában található összes DNS-rekord is törlődni fog. Ez a művelet nem vonható vissza. Ha a DNS-zóna használatban van, a zónát használó szolgáltatások futtatása meghiúsul a zóna törlésekor.
->
->A zónák véletlen törlése elleni védelemről további információt talál a [DNS-zónák és -rekordok védelme](dns-protect-zones-recordsets.md) című szakaszban.
-
-DNS-zónák törléséhez használja az alábbi két módszer egyikét:
-
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Zóna megadása a zóna és az erőforráscsoport nevének használatával
-
-```powershell
-Remove-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup
+```azurepowershell
+Get-AzureRmDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGroup
 ```
+Ne feledje, hogy a két tesztelési célú virtuális gép automatikusan létrehozott A rekordjai nem jelennek meg.
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Zóna megadása egy $zone objektum használatával
+## <a name="test-the-private-zone"></a>A saját zóna tesztelése
 
-A törölni kívánt zóna egy, a `Get-AzureRmDnsZone` parancs által visszaadott `$zone` objektummal adható meg.
+Most tesztelheti a **contoso.local** privát zóna névfeloldását.
 
-```powershell
-$zone = Get-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup
-Remove-AzureRmDnsZone -Zone $zone
-```
+### <a name="configure-vms-to-allow-inbound-icmp"></a>Virtuális gépek konfigurálása a befelé irányuló ICMP-forgalom engedélyezésére
 
-A zónaobjektum paraméterként való továbbítása helyett át is adhatja azt.
+A névfeloldás teszteléséhez használhatja a ping parancsot. Ehhez konfigurálja mindkét virtuális gépen a tűzfalat arra, hogy engedélyezze a bejövő ICMP-csomagokat.
 
-```powershell
-Get-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup | Remove-AzureRmDnsZone
+1. Csatlakozzon a myVM01 virtuális géphez, és nyisson meg egy Windows PowerShell-ablakot rendszergazdai jogosultsággal.
+2. Futtassa az alábbi parancsot:
 
-```
+   ```powershell
+   New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+   ```
 
-## <a name="confirmation-prompts"></a>Megerősítési kérések
+Ismételje meg ezt a myVM02 gép esetében is.
 
-A `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` és `Remove-AzureRmDnsZone` parancsmagok mind támogatják a megerősítési kérések használatát.
+### <a name="ping-the-vms-by-name"></a>Virtuális gépek pingelése név alapján
 
-A `New-AzureRmDnsZone` és a `Set-AzureRmDnsZone` egyaránt kér megerősítést, ha a `$ConfirmPreference` PowerShell-preferenciaváltozó értéke `Medium` vagy kisebb. A DNS-zónák lehetséges súlyos hatásai miatt a `Remove-AzureRmDnsZone` parancsmag felkéri a művelet megerősítésére, ha a `$ConfirmPreference` PowerShell-változó értéke más, mint `None`.
+1. A myVM02 gép Windows PowerShell parancssorából pingelje meg a myVM01 gépet az automatikusan regisztrált gazdagépnév használatával:
+   ```
+   ping myVM01.contoso.local
+   ```
+   A következőhöz hasonló kimenetnek kell megjelennie:
+   ```
+   PS C:\> ping myvm01.contoso.local
 
-Mivel a `$ConfirmPreference` alapértelmezett értéke `High`, csak a `Remove-AzureRmDnsZone` parancsmag kér alapértelmezés szerint megerősítést.
+   Pinging myvm01.contoso.local [10.2.0.4] with 32 bytes of data:
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time=1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
 
-A jelenlegi `$ConfirmPreference` beállítás a `-Confirm` paraméter használatával írható felül. Ha `-Confirm` vagy `-Confirm:$True` értéket ad meg, a parancsmag megerősítést fog kérni a futtatása előtt. Ha `-Confirm:$False` értéket ad meg, a parancsmag nem kér megerősítést.
+   Ping statistics for 10.2.0.4:
+       Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+   Approximate round trip times in milli-seconds:
+       Minimum = 0ms, Maximum = 1ms, Average = 0ms
+   PS C:\>
+   ```
+2. Most pingelje meg a korábban létrehozott **db** nevet:
+   ```
+   ping db.contoso.local
+   ```
+   A következőhöz hasonló kimenetnek kell megjelennie:
+   ```
+   PS C:\> ping db.contoso.local
 
-A `-Confirm` és `$ConfirmPreference` értékekkel kapcsolatos további információt [a preferenciaváltozók bemutatását](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables) tartalmazó részben talál.
+   Pinging db.contoso.local [10.2.0.4] with 32 bytes of data:
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
 
+   Ping statistics for 10.2.0.4:
+       Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+   Approximate round trip times in milli-seconds:
+       Minimum = 0ms, Maximum = 0ms, Average = 0ms
+   PS C:\>
+   ```
 
 ## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 
-A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépést:
+Ha már nincs rájuk szükség, a **MyAzureResourceGroup** erőforráscsoport törlésével törölheti az oktatóanyagban létrehozott erőforrásokat.
 
-```powershell
-Remove-AzureRMResourceGroup -Name MyResourceGroup
+```azurepowershell
+Remove-AzureRMResourceGroup -Name MyAzureResourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-További információk a saját DNS-zónákról: [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md).
+Ebben az oktatóanyagban üzembe helyezett egy privát DNS-zónát, létrehozott egy DNS-rekordot, és tesztelte a zónát.
+Ezután behatóbban megismerheti a DNS-zónákat.
 
-Néhány gyakori forgatókönyv ([Privát zónák – Forgatókönyvek](./private-dns-scenarios.md)), amelyek megvalósíthatók az Azure DNS privát zónáiban.
+> [!div class="nextstepaction"]
+> [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md)
 
-DNS-rekordok az Azure DNS-ben való kezelésével kapcsolatos további információért lásd [a DNS-rekordok és -rekordhalmazok az Azure DNS-ben a PowerShell-lel való kezelésével kapcsolatos](dns-operations-recordsets.md) témakört.
+
+
 

@@ -9,12 +9,12 @@ ms.date: 07/11/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: f56bcf0c844545e8883175da2bd3f22afdcd19ea
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cf899e236b7fa21a90a0784e1e2b4fce0feae055
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089527"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213435"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása
 A Service Fabric Mesh parancssori felülete az erőforrások a Service Fabric Meshben való üzembe helyezéséhez és felügyeletéhez szükséges. 

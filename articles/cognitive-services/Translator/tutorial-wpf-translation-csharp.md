@@ -1,62 +1,61 @@
 ---
-title: A Microsoft Translator WPF-alkalmazás, a C#, Azure kognitív szolgáltatások írásával |} Microsoft Docs
-description: Megtudhatja, hogyan használhatja a fordító szöveg szolgáltatás fordítása szöveg, támogatott nyelvek és további honosított listájának beolvasása.
+title: 'Oktatóanyag: Translator Textet használó WPF-alkalmazás írása C# nyelven | Microsoft Docs'
+titleSuffix: Microsoft Cognitive Services
+description: Az oktatóanyag bemutatja, hogy a Translator Text API használatával és egy C# nyelven írt WPF-alkalmazással többek között hogyan fordíthat le szövegeket vagy szerezheti be a támogatott nyelvek honosított listáját.
 services: cognitive-services
-author: Jann-Skotdal
-manager: chriswendt1
+author: noellelacharite
+manager: nolachar
 ms.service: cognitive-services
 ms.component: translator-text
-ms.devlang: csharp
-ms.topic: article
-ms.date: 10/25/2017
-ms.author: v-jansko
-ms.openlocfilehash: fb58fd087de09561a0ea930748562e595d3dde1c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 07/20/2018
+ms.author: nolachar
+ms.openlocfilehash: 5dc9478516f4e9850543a6ee129fef0f1d3ee4f7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347686"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214917"
 ---
-# <a name="how-to-write-a-microsoft-translator-wpf-application-in-c"></a>A Microsoft Translator WPF-alkalmazások írásával C#
+# <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>Oktatóanyag: Translator Textet használó WPF-alkalmazás írása C&#35 nyelven
 
-Ebben az oktatóanyagban azt az API-val Microsoft Translator szöveg (V3), a Microsoft Azure-ban kognitív Services része egy interaktív szöveg fordítóeszköz fogja létrehozni. Megtudhatja, hogyan:
+Ebben az oktatóanyagban egy interaktív szövegfordító eszközt fog létrehozni a Translator Text API (V3) használatával, ami az Azure-ban található Microsoft Cognitive Services része. A következőket fogja megtanulni:
 
 > [!div class="checklist"]
-> * Egy listát kér a rövid kódokat a szolgáltatás által támogatott nyelvek
-> * Ezek nyelvkódjait megfelelő honosított nyelvű neveinek listáját beolvasása
-> * Szerezze be a felhasználó által beírt szöveg lefordított verzióját egyik nyelvről egy másikra
+> * A szolgáltatás által támogatott nyelvek listájának lekérése.
+> * Felhasználó által megadott szöveg fordítása az egyik nyelvről a másikra.
 
-Ez az alkalmazás megtalálható két más Microsoft kognitív a szolgáltatásokkal való integrációt.
+Az alkalmazás további két Microsoft Cognitive Services-szolgáltatással működik együtt.
 
 |||
 |-|-|
-|[Szövegelemzések](https://azure.microsoft.com/services/cognitive-services/text-analytics/)|Opcionálisan automatikusan érzékeli a adatforrás nyelvi fordítandó szöveg|
-|[Bing helyesírás-ellenőrző](https://azure.microsoft.com/services/cognitive-services/spell-check/)|Az angol forrásszövege korrigálására talál helyesírási hibát, így pontosabb fordítás
+|[Szövegelemzés](https://azure.microsoft.com/services/cognitive-services/text-analytics/)|Választható funkció, automatikusan megállapítja a lefordítandó szöveg forrásnyelvét.|
+|[Bing helyesírás-ellenőrzés](https://azure.microsoft.com/services/cognitive-services/spell-check/)|Kijavítja az angol nyelvű forrásszövegek helyesírási hibáit, hogy a fordítás pontosabb legyen.
 
-![[A program oktatóanyag futtatása]](media/translator-text-csharp-session.png)
+![[Az oktatóprogram futás közben]](media/translator-text-csharp-session.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag elvégzéséhez szüksége van a Visual Studio 2017, beleértve a Community Edition kiadását.
+A kód Windows rendszeren történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.)
 
-A programban három Azure-szolgáltatás is kell előfizetéshez kulcsok. A kulcs a fordító szöveg szolgáltatás lekérheti az Azure-irányítópultjának. Ingyenes tarifacsomag érhető el, amely lehetővé teszi, hogy legfeljebb két millió karakteres díjmentesen lefordítani.
+Ezenkívül rendelkeznie kell előfizetési kulcsokkal a programban használt három Azure-szolgáltatáshoz. A Translator Text szolgáltatáshoz szükséges kulcsot az Azure-irányítópultról szerezheti be. Az ingyenes tarifacsomag keretében havonta legfeljebb kétmillió karaktert ingyenesen fordíthat le.
 
-A szöveg elemzés és a Bing helyesírás-ellenőrzés szolgáltatások ajánlat ingyenes próbaverzió, amely akkor regisztrálhatnak az a [kognitív szolgáltatások próbálja](https://azure.microsoft.com/try/cognitive-services/). Előfizetés vagy szolgáltatás az Azure-irányítópultjának használatával is létrehozhat. Szövegelemzések van egy ingyenes szint.
+A szövegelemzésből és a Bing helyesírás-ellenőrzési szolgáltatásából is elérhető ingyenes próbaverzió, amelyekre a [Cognitive Services kipróbálási](https://azure.microsoft.com/try/cognitive-services/) oldalán regisztrálhat. Mindkét szolgáltatáshoz létrehozhat előfizetést az Azure-irányítópulton. A szövegelemzési szolgáltatásnak ingyenes szintje is van.
 
-Ez az oktatóanyag forráskódja alatt érhető el. Az előfizetés kulcsok kell másolni a forráskódban a változók `TEXT_TRANSLATION_API_SUBSCRIPTION_KEY`, és így tovább, a `MainWindow.xaml.cs`.
+Az oktatóanyag forráskódját az alábbiakban tekintheti meg. Az előfizetési kulcsokat be kell másolnia a forráskódba a megfelelő (pl.: `MainWindow.xaml.cs`) változóhoz a `TEXT_TRANSLATION_API_SUBSCRIPTION_KEY` fájlban.
 
 > [!IMPORTANT]
-> A szöveg Analytics szolgáltatás több régióba érhető el. Az oktatóanyag forráskód szereplő URI azonosító szerepel a `westus` régióban, amely az a régió használt ingyenes próbaverzió. Ha egy másik régióban előfizetéssel rendelkezik, ennek megfelelően frissülnek ezt az URI.
+> A szövegelemzési szolgáltatás több régióban is elérhető. Az oktatóanyag forráskódjának URI-ja a `westus` régióra vonatkozik, amelyet az ingyenes próbaverziókhoz szokás használni. Ha egy másik régióban rendelkezik előfizetéssel, annak megfelelően módosítsa az URI-t.
 
 ## <a name="source-code"></a>Forráskód
 
-Ez az a Microsoft Translator szöveg API forráskódja. Futtassa az alkalmazást, másolja a megfelelő fájlt a Visual Studio új WPF projektben a forráskódot.
+Ez a Microsoft Translator Text API forráskódja. Az alkalmazás futtatásához másolja a forráskódot a megfelelő fájlba a Visual Studio egy új WPF-projektjében.
 
 ### <a name="mainwindowxamlcs"></a>MainWindow.xaml.cs
 
-Ez az a háttérkód fájlt, amely az alkalmazás működését.
+Ez a fájlhoz tartozó kód, amely lehetővé teszi az alkalmazás működését.
 
-```cs
+```csharp
 using System;
 using System.Windows;
 using System.Net;
@@ -74,9 +73,9 @@ using Newtonsoft.Json;
 namespace MSTranslatorTextDemo
 {
     /// <summary>
-    /// This WPF application demonstrates the use of the Microsoft Translator Text API to translate a brief text string
-    /// one language to another. The langauges are selected from a drop-down menu. The text of the translation is displayed.
-    /// The source language may optionally be automatically detected.  English text is spell-checked.
+    /// This WPF application demonstrates the use of the Microsoft Translator Text API to translate a brief text string from
+    /// one language to another. The languages are selected from a drop-down menu. The text of the translation is displayed.
+    /// The source language may optionally be automatically detected. English text is spell-checked.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -97,7 +96,7 @@ namespace MSTranslatorTextDemo
 
         public MainWindow()
         {
-            // at least show an error dialog when we get an unexpected error
+            // at least show an error dialog if there's an unexpected error
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(HandleExceptions);
 
             if (TEXT_TRANSLATION_API_SUBSCRIPTION_KEY.Length != 32
@@ -166,7 +165,7 @@ namespace MSTranslatorTextDemo
 
             HttpWebResponse response = (HttpWebResponse)detectLanguageWebRequest.GetResponse();
 
-            // read and and parse JSON response
+            // read and parse JSON response
             var responseStream = response.GetResponseStream();
             var jsonString = new StreamReader(responseStream, Encoding.GetEncoding("utf-8")).ReadToEnd();
             dynamic jsonResponse = serializer.DeserializeObject(jsonString);
@@ -334,7 +333,7 @@ namespace MSTranslatorTextDemo
 
 ### <a name="mainwindowxaml"></a>MainWindow.xaml
 
-Ez a fájl az alkalmazáshoz, a WPF-űrlapból a felhasználói felület határozza meg. Ha szeretné az űrlap saját verziójának kialakításában, nem kell az XAML-kódot.
+Ez a fájl határozza meg az alkalmazás felhasználói felületét, egy WPF-űrlapot. Amennyiben saját űrlapot szeretne tervezni, erre a XAML-fájlra nincsen szüksége.
 
 ```xml
 <Window x:Class="MSTranslatorTextDemo.MainWindow"
@@ -352,18 +351,18 @@ Ez a fájl az alkalmazáshoz, a WPF-űrlapból a felhasználói felület határo
         <Label x:Name="toLabel" Content="Translate to:" HorizontalAlignment="Left" Margin="304,58,0,0" VerticalAlignment="Top" FontSize="14"/>
 
         <Button x:Name="TranslateButton" Content="Translate" HorizontalAlignment="Left" Margin="39,206,0,0" VerticalAlignment="Top" Width="114" Height="31" Click="TranslateButton_Click" FontSize="14" TabIndex="4" IsDefault="True"/>
-        <ComboBox x:Name="ToLanguageComboBox" 
-                HorizontalAlignment="Left" 
-                Margin="306,88,0,0" 
-                VerticalAlignment="Top" 
+        <ComboBox x:Name="ToLanguageComboBox"
+                HorizontalAlignment="Left"
+                Margin="306,88,0,0"
+                VerticalAlignment="Top"
                 Width="175" FontSize="14" TabIndex="2">
 
         </ComboBox>
         <Label x:Name="fromLabel" Content="Translate from:" HorizontalAlignment="Left" Margin="40,58,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="FromLanguageComboBox" 
-            HorizontalAlignment="Left" 
-            Margin="42,88,0,0" 
-            VerticalAlignment="Top" 
+        <ComboBox x:Name="FromLanguageComboBox"
+            HorizontalAlignment="Left"
+            Margin="42,88,0,0"
+            VerticalAlignment="Top"
             Width="175" FontSize="14" TabIndex="1"/>
         <Label x:Name="TranslatedTextLabel" Content="Translation appears here" HorizontalAlignment="Left" Margin="39,255,0,0" VerticalAlignment="Top" Width="620" FontSize="14" Height="85" BorderThickness="0"/>
     </Grid>
@@ -372,60 +371,60 @@ Ez a fájl az alkalmazáshoz, a WPF-űrlapból a felhasználói felület határo
 
 ## <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
-A Microsoft Translator szolgáltatást számos olyan végpontok, többféle fordítási szolgáltatásokat nyújtó rendelkezik. Ebben az oktatóanyagban használjuk azokat a következők:
+A Microsoft Translator szolgáltatás több végponttal rendelkezik, amelyek különböző fordítási funkciókat biztosítanak. Ebben az oktatóanyagban a következőket fogja használni:
 
 |||
 |-|-|
-|`Languages`|Jelenleg más műveleteket a fordító szöveg API által támogatott nyelvek készletet ad vissza.|
-|`Translate`|Forrásszövege megadott, egy adatforrás nyelvi kódja, és egy cél nyelvi kódot ad vissza egy forrás fordítás a megadott nyelv.|
+|`Languages`|A Translator Text API egyéb műveletei által aktuálisan támogatott nyelvek listáját adja vissza.|
+|`Translate`|A forrásszöveg, a forrás nyelvkódja, valamint a cél nyelvkódjának megadása után a forrásszöveg fordítását adja vissza a célnyelven.|
 
-## <a name="the-translation-app"></a>A fordítás alkalmazás
+## <a name="the-translation-app"></a>A fordítóalkalmazás
 
-A fordító alkalmazás felhasználói felületén beépített Windows megjelenítési alaprendszer (WPF) használatával. Új WPF-projekt létrehozása a Visual Studio a következő lépések végrehajtásával.
+A fordítóalkalmazás felhasználói felülete a Windows Presentation Foundation (WPF) használatával lett létrehozva. Új WPF-projekt létrehozásához a Visual Studióban a következőket kell tennie.
 
-* Az a **fájl** menüben válasszon **új > projekt**.
-* Nyissa meg az új projekt ablakról **telepített > sablonok > Visual C#**. Az elérhető sablonok listájának közepét párbeszédpanel jelenik meg.
-* Győződjön meg arról, hogy **.NET-keretrendszer 4.5.2-es** a legördülő menü sablon projektlista felett van kiválasztva.
-* Kattintson a **WPF-alkalmazás (.NET-keretrendszer)** a projekt sablon listában.
-* A mezőkkel a párbeszédpanel alján, nevezze el az új projektbe futnak, és a megoldás, amely tartalmazza azt.
-* Kattintson a **OK** az új projekt és a megoldás létrehozásához.
+* A **File** (Fájl) menüben válassza a **New > Project** (Új > Projekt) lehetőséget.
+* A New Project (Új projekt) ablakban nyissa meg az **Installed > Templates > Visual C#** (Telepítve > Sablonok > Visual C#) elemet. A párbeszédpanel közepén megjelenik az elérhető projektsablonok listája.
+* Győződjön meg arról, hogy a projektsablonok listája feletti legördülő menüben a **.NET Framework 4.5.2** elem van kiválasztva.
+* A projektsablonok listájában kattintson a **WPF App (.NET Framework)** (WPF-alkalmazás (.NET-keretrendszer)) elemre.
+* A párbeszédablak alján található mezőkben adja meg az új projekt nevét, valamint hogy melyik megoldás tartalmazza a projektet.
+* Az új projekt és a megoldás létrehozásához kattintson az **OK** gombra.
 
-![[Új WPF-alkalmazás létrehozása a Visual Studio]](media/translator-text-csharp-new-project.png)
+![[Új WPF-alkalmazás létrehozása a Visual Studióban]](media/translator-text-csharp-new-project.png)
 
-Adja hozzá a következő .NET-keretrendszer szerelvényei mutató hivatkozásokat a projekthez.
+Adjon hivatkozásokat a projektje következő .NET-keretrendszerbeli szerelvényeihez.
 
 * System.Runtime.Serialization
 * System.Web
 * System.Web.Extensions
 
-Emellett a NuGet-csomag telepítése `Newtonsoft.Json` a projektben.
+Ezenkívül telepítse a `Newtonsoft.Json` NuGet-csomagot a projektben.
 
-Most már található a `MainWindow.xaml` fájlt a Megoldáskezelőben, majd nyissa meg. Az érték üres kezdetben. Ez mit a befejezett felhasználói felület kell hasonlítania, megjegyzésekkel ellátott kék vezérlők nevét. Használható a felhasználói felületen, a vezérlők az azonos nevű, mert is megjelennek a kódot.
+A Megoldáskezelőben keresse meg a `MainWindow.xaml` fájlt, és nyissa meg. A fájl kezdetben üres lesz. Így kell kinéznie a kész felhasználói felületnek, a vezérlők neve kék színnel van feltüntetve. A felhasználói felület vezérlőinek adja ugyanezeket a neveket, mivel a kódban is szerepelnek.
 
-![[A fő ablak a Visual Studio-tervezőben megjegyzésekkel ellátott nézet]](media/translator-text-csharp-xaml.png)
+![[A Visual Studio tervezői fő ablakának jegyzetekkel ellátott képe]](media/translator-text-csharp-xaml.png)
 
 > [!NOTE]
-> Ebben az oktatóanyagban a forráskód ezt az űrlapot XAML forrását tartalmazza. Előfordulhat, hogy illessze be azt a Visual Studio az űrlap létrehozása helyett a projekthez.
+> Az oktatóanyag forráskódja tartalmazza az űrlap XAML-forrását. Ezt beillesztheti a projektbe, ha nem szeretne saját űrlapot létrehozni a Visual Studióban.
 
-* `FromLanguageComboBox` *(Ehhez: ComboBox)*  -Szöveg fordításhoz Microsoft Translator által támogatott nyelvek listáját jeleníti meg. A felhasználó kiválasztja azokat a fordítja le a nyelvét.
-* `ToLanguageComboBox` *(Ehhez: ComboBox)*  -Azonos megjeleníti a nyelveket, `FromComboBox`, de segítségével válassza ki a nyelvet, a felhasználó számára van fordítása.
-* `TextToTranslate` *(Szövegmező)*  – A felhasználó megadja a szöveg itt fordítani.
-* `TranslateButton` *(Gomb)*  – A felhasználó a gombra kattintva (vagy megnyomja az ENTER billentyűt) lefordítani a szöveget.
-* `TranslatedTextLabel` *(Címke)*  – A felhasználó szöveges fordítása itt jelenik meg.
+* `FromLanguageComboBox` *(Kombinált lista)* – Megjeleníti a Microsoft Translator által a fordításhoz támogatott nyelvek listáját. A felhasználó kiválasztja azt a nyelvet, amelyről a fordítás történik.
+* `ToLanguageComboBox` *(Kombinált lista)* – Ugyanazt a nyelvlistát jeleníti meg, mint a `FromComboBox`, de ezúttal a célnyelvet kell kiválasztani.
+* `TextToTranslate` *(Szövegmező)* – A felhasználó ide írja a lefordítandó szöveget.
+* `TranslateButton` *(Gomb)* – A felhasználó erre a gombra kattint (vagy lenyomja az Enter billentyűt) a szöveg lefordításához.
+* `TranslatedTextLabel` *(Címke)* – A felhasználó által beírt szöveg fordítása itt jelenik meg.
 
-Ha ezt az űrlapot a saját verziójának hajt végre, nem szükséges, hogy *pontosan* , például is. De gondoskodjon arról, hogy a nyelvi legördülő listákat elég nagy a nyelv neveként ki kivágáshoz elkerülése érdekében.
+Amennyiben saját űrlapot készít, nem szükséges *pontosan* ugyanolyat létrehoznia, mint amilyen a példában szerepel. Arról azonban győződjön meg, hogy a nyelvválasztó legördülő menü kellően széles-e, hogy ne vágja le a nyelv nevének végét.
 
 ## <a name="the-mainwindow-class"></a>A MainWindow osztály
 
-A háttérkód fájl `MainWindow.xaml.cs` van, ahol a kód kerül, amely lehetővé teszi, hogy a működés programmal. A munkahelyi történik, két időpontokban:
+A `MainWindow.xaml.cs` fájlba kerül a kód, amely biztosítja a program működését. Két alkalommal van rá szükség:
 
-* A program indításakor. Ha `MainWindow` van beolvassuk példányként létrehozott, a nyelvi listát fordító által `GetLanguagesForTranslate` és `GetLanguageNames` API-k és a legördülő menükben való feltöltéséhez. Ez a feladat minden munkamenet elején egyszer történik.
+* A program indításakor és a `MainWindow` inicializálásakor lekéri a nyelvek listáját a Translator és az API-k segítségével, és feltölti adatokkal a legördülő menüket. Ezt a feladatot minden munkamenet elején elvégzi az alkalmazás.
 
-* Amikor a felhasználó kattint a **fordítás** gomb, beolvassuk a felhasználó nyelvi beállításokat és azok a megadott szöveg. Ezután ezt nevezik a `Translate` API-t végrehajtása fordítása. Egyéb feladatok, a szöveg nyelvét és a helyesírás-fordítási előtt is lehet, hogy hívása.
+* Amikor a felhasználó a **Translate** (Fordítás) gombra kattint, az alkalmazás lekéri a választott nyelveket és a beírt szöveget, majd meghívja a `Translate` API-t, hogy elvégezze a fordítást. Egyéb függvények hívására is szükség lehet a szöveg nyelvének megállapításához, illetve a helyesírási hibák javításához a fordítás elvégzése előtt.
 
-Nézzük, hogyan megkezdjük a osztály:
+Tekintse meg az osztály elejét:
 
-```cs
+```csharp
 public partial class MainWindow : Window
 {
     // Translator text subscription key from Microsoft Azure dashboard
@@ -445,7 +444,7 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
-        // at least show an error dialog when we get an unexpected error
+        // at least show an error dialog if there's an unexpected error
         AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(HandleExceptions);
 
         if (TEXT_TRANSLATION_API_SUBSCRIPTION_KEY.Length != 32
@@ -468,32 +467,32 @@ public partial class MainWindow : Window
 }
 ```
 
-Két tag változót deklarál Itt a nyelvek adatainak tárolásához:
+Kettő, itt meghatározott tagváltozó tartalmaz a nyelvekre vonatkozó információt:
 
 |||
 |-|-|
-|`languageCodes`<br>a karakterlánc tömbje|A nyelvkódjait gyorsítótárazza. A fordító szolgáltatás használja rövid kódok, például a `en` angol nyelvű azonosításához.|
-|`languageCodesAndTitles`<br>SortedDictionary|A Maps API-ban használt rövid kódok biztonsági a felhasználói felületen "barátságos" nevét. Folyamatosan rendezett betűrendben eset tekintet nélkül.|
+|`languageCodes`<br>sztringek tömbje|A nyelvkódokat gyorsítótárazza. A Translator szolgáltatás rövid kódokat használ a nyelvek azonosítására (például: `en` = angol).|
+|`languageCodesAndTitles`<br>SortedDictionary|A felhasználói felületen megjelenő „felhasználóbarát” neveket képezi le az API által használt rövid kódokra. Az elemeket betűrendbe rendezi, és nem veszi figyelembe a nagy- és kisbetűket.|
 
-Az alkalmazás által végrehajtott első kód a `MainWindow` konstruktor. Először, beállítjuk a metódus `HandleExceptions` globális hiba kezelőként. Ezzel a módszerrel azt legalább hiba figyelmeztetés megjelenítése kivételen nincs kezelve.
+Az alkalmazás által végrehajtott első kód a `MainWindow` konstruktor. Először is beállítja, hogy a `HandleExceptions` metódus legyen az általános hibakezelő. Így legalább egy hibariasztást kap, ha egy kivételt nem kezel az alkalmazás.
 
-A következő azt ellenőrizze, hogy az API-előfizetés kulcs minden pontosan 32 karakter hosszú. Ha nem, a hiba legvalószínűbb oka az, hogy *valaki* még nem beillesztett az API-kulcsok (tsk). Ebben az esetben azt egy hibaüzenetet jeleníti meg és fedezete. (Ez a vizsgálat nem jelenti azt a kulcsok akkor érvényes, természetesen.)
+Ezután meggyőződik arról, hogy az API-előfizetési kulcsok pontosan 32 karakter hosszúságúak. Ha nem, akkor *valaki* nem illesztette be az API-kulcsait. Ebben az esetben egy hibaüzenet jelenik meg, és a folyamat megszakad. (A sikeres teszt nem feltétlenül jelenti azt, hogy a kulcsok érvényesek is.)
 
-Ha okunk van, amelyek legalább a megfelelő hosszúságú kulcsok a `InitializeComponent()` hívás lekérdezi a felhasználói felület, működés közbeni megkeresi, betöltése, és létrehozza az alkalmazás fő ablak XAML leírása.
+Ha a kulcsok megfelelő hosszúságúak, az `InitializeComponent()` hívása elindítja a felhasználói felületet: megkeresi, betölti és létrehozza a fő alkalmazásablak XAML-leírásának példányát.
 
-Végül beállítjuk a nyelvi legördülő menükben. Ez a feladat három külön metódusba-hívások szükségesek. Ezek a módszerek a következő szakaszokban részletesen vizsgálni azt.
+Végül beállítja a nyelvek legördülő menüit. Ez három különálló metódushívást igényel, amelyeket a következő szakaszok mutatnak be.
 
-## <a name="get-supported-languages"></a>Támogatott nyelvek beolvasása
+## <a name="get-supported-languages"></a>Támogatott nyelvek lekérése
 
-A Microsoft Translator szolgáltatás írásának 61 kiszolgálónyelveit összesen támogatja, és több időről időre adhatók hozzá. Ezért azt rendelkezik az ajánlott nem a merevlemez-kód a program a támogatott nyelveket. Ehelyett kérje meg a fordító szolgáltatás milyen nyelveket támogatja. Bármely támogatott nyelvi fordítható bármely más támogatott nyelven.
+A Microsoft Translator szolgáltatás e sorok írásakor 61 nyelvet támogat, de a számuk a későbbiekben tovább nőhet. Ezért nem érdemes a programban rögzíteni a támogatott nyelveket. Érdemesebb lekérdezni a Translator szolgáltatástól, hogy mely nyelveket támogatja. Minden támogatott nyelv lefordítható a többi támogatott nyelvre.
 
-Hívja a `Languages` API-t listájának támogatott nyelveket.
+A támogatott nyelvek listáját a `Languages` API hívásával kérheti le.
 
-A `Languages` API egy választható GET lekérdezési paramétert fogad, *hatókör*. *hatókör* három érték egyike lehet: `translation`, `transliteration`, és `dictionary`. Ezzel az érték `translation`.
+A `Languages` API egy választható GET-lekérdezési paramétert (*scope*) is használ. A *scope* három értéket vehet fel: `translation`, `transliteration` és `dictionary`. A kód a `translation` értéket használja.
 
-A `Languages` API is fogad egy nem kötelező HTTP-fejlécben `Accept-Language`. Az ezt a fejlécet határozza meg a nyelvet, amelyben a rendszer visszairányítja a támogatott nyelvek nevét. Az érték lehet egy megfelelően formázott BCP 47 nyelvi címkét. Ezzel az érték `en` a nyelv nevének beolvasása a angol.
+A `Languages` API ezenkívül egy választható HTTP-fejlécet (`Accept-Language`) is használ. Ennek a fejlécnek az értéke határozza meg, hogy az alkalmazás milyen nyelven adja vissza a támogatott nyelvek nevét. Az érték egy megfelelő formátumú BCP 47 nyelvi címkének kell lennie. A kód az `en` érték megadásakor angolul jeleníti meg a nyelvek nevét.
 
-A `Languages` API ad vissza, amely a következőhöz hasonló JSON-választ.
+A `Languages` API egy JSON-választ ad vissza, amely a következőképpen néz ki.
 
 ```json
 {
@@ -512,11 +511,11 @@ A `Languages` API ad vissza, amely a következőhöz hasonló JSON-választ.
 }
 ```
 
-Bontsa ki a nyelvkódjait szeretnénk (például `af`) és a nyelv nevének (például `Afrikaans`). A NewtonSoft.Json módszert használjuk [JsonConvert.DeserializeObject](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) ehhez.
+Mivel a nyelvi kódok (például: `af`) és a nyelvek neve (például: `Afrikaans`) kinyerhetők, a kód a [JsonConvert.DeserializeObject](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) NewtonSoft.Json metódust használja.
 
-A háttér ismerő létrehozhatunk nyelvkódok és azok nevének beolvasása a következő metódust.
+Mindezen háttértudás birtokában hozza létre a következő, a nyelvi kódok és azok nevének lekérésére szolgáló metódust.
 
-```cs
+```csharp
 private void GetLanguagesForTranslate()
 {
     // send request to get supported language codes
@@ -541,15 +540,15 @@ private void GetLanguagesForTranslate()
 }
 ```
 
-`GetLanguagesForTranslate()` először hoz létre a HTTP-kérelem. A `scope=translation` lekérdezési karakterlánc paraméter határozza meg, hogy szeretnénk szöveg fordításhoz támogatott nyelveket. A kérelem fejlécében a szöveg fordítási API előfizetés kulcs hozzáadása azt. Is hozzáadhat a `Accept-Language` értékű fejléc `en` jelzi azt szeretnénk, hogy a támogatott nyelvek angolul adja vissza.
+A `GetLanguagesForTranslate()` először létrehozza a HTTP-kérést. A `scope=translation` lekérdezésisztring-paraméter kizárólag a szöveges fordításhoz használható, támogatott nyelveket kéri le. Az alkalmazás hozzáadja a Text Translation API előfizetési kulcsát a kérésfejlécekhez. Az `en` értékű `Accept-Language` fejléc hozzáadásával a támogatott nyelvek neve angolul jelenik meg.
 
-A kérelem befejezése után azt a JSON-válasz elemzése, és konvertálja szótárba. Jelenleg a nyelvi kód felvenni a `languageCodes` tagváltozó. A Microsoft majd ismétlése a kulcs/érték párok, melyek nyelvkódok és a nyelvek rövid nevét, és adja hozzá ezeket a `languageCodesAndTitles` tagváltozó. (A legördülő menükben a képernyő megjeleníti a rövid nevek, de ellenőriznünk kell, hogy a kód fordítása kéréséhez.)
+A kérés teljesítése után az alkalmazás elemzi a JSON-választ, és szótárrá konvertálja, majd a nyelvi kódokat hozzáadja a `languageCodes` tagváltozóhoz. A nyelvi kódokat és a nyelvek felhasználóbarát nevét tartalmazó kulcs-érték-párokból az alkalmazás egy hurkot hoz létre, majd hozzáadja azokat a `languageCodesAndTitles` tagváltozóhoz. (Az űrlapon megjelenő legördülő menükben a felhasználóbarát nevek szerepelnek, de szükség van a kódokra a fordítás kéréséhez.)
 
-## <a name="populate-the-language-menus"></a>A nyelvi menü feltöltése
+## <a name="populate-the-language-menus"></a>A nyelvi menük feltöltése adatokkal
 
-A felhasználói felület a legtöbb XAML-kódban, definiálva van, így nem szükséges műveletek nagy beállítása mellett hívás `InitializeComponent()`. A csak a másik műveletet kell tennie azt, adja hozzá a nyelvek rövid nevét a címzett felé és felől legördülő listákat, az történik `PopulateLanguageMenus()`.
+A felhasználói felületet a XAML határozza meg, ezért az `InitializeComponent()` hívásán kívül nincs sok tennivalója. Mindössze hozzá kell adnia a nyelvek felhasználóbarát nevét a **Translate from** (Forrásnyelv) és a **Translate to** (Célnyelv) legördülő menühöz. Ezt a `PopulateLanguageMenus()` alatt teheti meg.
 
-```cs
+```csharp
 private void PopulateLanguageMenus()
 {
     // Add option to automatically detect the source language
@@ -568,18 +567,18 @@ private void PopulateLanguageMenus()
 }
 ```
 
-A menük feltöltése keresztül léptetés egyszerű kérdése a `languageCodesAndTitles` szótár, és minden kulcsot, amely "barátságos" név, mindkét menüket. A menük feltöltéséhez, után hivatott az alapértelmezett észlelése (a nyelv automatikus észlelésű) nyelvű érkező vagy oda irányuló angol és.
+A menü feltöltéséhez egyszerűen iterálni kell a `languageCodesAndTitles` szótár tartalmát, hozzáadva minden kulcsot (a „felhasználóbarát” neveket) mindkét menühöz. A menük adatokkal való feltöltése után az alapértelmezett forrás- és célnyelvbeállítások a következők lesznek: **Detect** (észlelés; a nyelv automatikus felismerése), illetve **English** (angol).
 
 > [!TIP]
-> A menük hivatott nem alapértelmezett kijelölés, ha a felhasználó kattintással **fordítás** nem a a választott vagy nyelv. Az alapértelmezett érték nincs szükség az problémával foglalkozik.
+> Ha a menüknek nincs alapértelmezett értéke, a felhasználó a forrásnyelv és a célnyelv kiválasztása nélkül nem kattinthat a **Translate** (Fordítás) gombra. Ha vannak alapértelmezett beállítások, a felhasználónak nem kell ezzel törődnie.
 
-Most `MainWindow` inicializálása megtörtént, a felhasználói felület. Jelenleg nem kérek vezérlő újra amíg a felhasználó kattint a **fordítás** gombra.
+A `MainWindow` inicializálása és a felhasználói felület létrehozása után a kód csak arra vár, hogy a felhasználó a **Translate** (Fordítás) gombra kattintson.
 
-## <a name="perform-translation"></a>Végrehajtása fordítása
+## <a name="perform-translation"></a>A fordítás végrehajtása
 
-Amikor a felhasználó kattint **fordítás**, WPF meghívja a `TranslateButton_Click()` eseménykezelő, itt látható.
+Amikor a felhasználó a **Translate** (Fordítás) gombra kattint, a WPF meghívja az itt látható `TranslateButton_Click()` eseménykezelőt.
 
-```cs
+```csharp
 private async void TranslateButton_Click(object sender, EventArgs e)
 {
     string textToTranslate = TextToTranslate.Text.Trim();
@@ -652,24 +651,24 @@ private async void TranslateButton_Click(object sender, EventArgs e)
 }
 ```
 
-Itt először beolvassuk a címzett, és nyelven, a szöveg és a felhasználó megadott, a képernyőn.
+Az első lépésben le kell kérni az űrlapról a forrás- és a célnyelvet, valamint a felhasználó által beírt szöveget.
 
-Ha az adatforrás nyelvi hibakeresés, nevezzük `DetectLanguage()` a szöveg nyelvének meghatározásához. Lehet, hogy a szöveg a fordító API-k nem nyelven támogatása (számos további nyelveket is észlelhető mint fordítható) vagy a szöveg Analytics API nem feltétlenül azt észleli. Ebben az esetben azt üzenetben tájékoztatja a felhasználót és fordítása nélküli visszatéréshez.
+Amennyiben a forrásnyelv esetén a **Detect** (Észlelés) beállítás van megadva, a `DetectLanguage()` meghívásával állapítható meg a szöveg nyelve. Előfordulhat, hogy a szöveg olyan nyelven íródott, amelyet a Translator API-k nem támogatnak (jóval több nyelv felismerése lehetséges, mint amennyi között a fordítás is elérhető), vagy hogy a Text Analytics API nem képes felismerni azt. Erről az alkalmazás egy üzenetben tájékoztatja a felhasználót, és nem készül el a fordítás.
 
-Ha a forrás-nyelv az angol (-e megadva, vagy található), azt helyesírását a szöveg `CorrectSpelling()` és alkalmazza a javításokat. A javított szöveg újra üzembe a beviteli mezőt van töltve, így a felhasználó ismer, a javítás történt. (A felhasználó megelőzheti a javításra letiltásához kötőjellel éppen fordítás szöveget.)
+Amennyiben a forrásnyelv az angol (akár megadja ezt, akár a rendszer maga ismeri fel), a `CorrectSpelling()` használatával ellenőrizheti, valamint szükség esetén javíthatja a helyesírást. A kijavított szöveg visszakerül a beviteli mezőbe, hogy a felhasználó tudja, javításra volt szükség. (Ha a felhasználó kötőjellel kezdi a fordítandó szöveget, letilthatja a helyesírás-ellenőrzést.)
 
-Ha a felhasználó még nem adott meg, vagy ha a címzett és nyelvek megegyeznek, nincsenek fordítási szükség. Ebben az esetben azt ne a kérést.
+Ha a felhasználó nem írt be szöveget, vagy ha a forrás- és a célnyelv megegyezik, nincs szükség fordításra, és a kérés figyelmen kívül hagyható.
 
-A kód a fordítási kérelem teljesítéséhez Bizonyára ismerős lesz. Azt az URI azonosító létrehozása, hozzon létre egy kérést, elküldi a és a válasz elemzése. A szöveg megjelenítéséhez tároljuk azt a `TranslatedTextLabel` vezérlő.
+A fordítási kérés végrehajtására szolgáló kód ismerős lehet: létrehozza az URI-t, létrehozza a kérést, elküldi, majd elemzi a választ. A szöveg megjelenítéséhez küldje el azt a `TranslatedTextLabel` vezérlőnek.
 
-Azt a szöveget adja át a `Translate` API-nak a szerializált JSON-tömb POST kérelem törzsében. A JSON-tömb lefordítani szöveg több adatra is tartalmazhat, de itt csak magában foglalja az egyik.
+Ezután továbbítsa a szöveget a `Translate` API számára egy POST-kérés törzsében, egy szerializált JSON-tömb részeként. A JSON-tömb több lefordítható szövegrészletet is tartalmazhatna, de ebben az esetben elég lesz egy is.
 
-A HTTP-fejléc nevű `X-ClientTraceId` nem kötelező megadni. Az érték GUID-nak kell lennie. Az ügyfél által megadott nyomkövetési azonosító akkor hasznos, ha szeretné tárolni kívánt nyomkövetési kérelmek, ha a művelet nem a várt módon működik. Azonban hasznos lehet, X-ClientTraceID értékének rögzíteni kell az ügyfél által. Egy ügyfél-nyomkövetési Azonosítót és a dátum a kérelmek segítheti a Microsoftot, esetlegesen előforduló problémák diagnosztizálásához.
+Az `X-ClientTraceId` nevű HTTP-fejléc használata nem kötelező. Az értéknek egy GUID-nak kell lennie. Az ügyfél által biztosított nyomkövetési azonosító sokat segíthet a kérések nyomon követésében, ha valami nem a várt módon alakul. Ehhez rögzíteni kell az ügyfélben az X-ClientTraceID értékét. Az ügyfél nyomkövetési azonosítója és a kérések dátuma segíthet a Microsoft szakembereinek azonosítani a fellépő problémák okát.
 
 > [!NOTE]
-> Ez az oktatóanyag összpontosít a Microsoft Translator szolgáltatás, így azt nem fedik le a `DetectLanguage()` és `CorrectSpelling()` módszerek részletes információkat. A szöveg elemzés és a Bing helyesírás-ellenőrzés szolgáltatások visszajelzést XML helyett JSON, és Szövegelemzések megköveteli, hogy a kérelmet, valamint formázhatók JSON. E jellemzők fiókot használja a módszerek azt korábban már látott legtöbb kód különbségeket.
+> Mivel az oktatóanyag elsősorban a Microsoft Translator szolgáltatással foglalkozik, ezért a `DetectLanguage()` és a `CorrectSpelling()` metódussal nem foglalkozik részletesen. A szövegelemzési és a Bing helyesírás-ellenőrzési szolgáltatások XML helyett JSON-válaszokat adnak, és a szövegelemzés esetében a kérésnek is JSON formátumúnak kell lennie. Az itt tárgyalt metódusok kódjai közötti legtöbb különbség ezen jellemzők következménye.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Microsoft Translator szöveg API-referencia](http://docs.microsofttranslator.com/text-translate.html)
+> [Microsoft Translator Text API-referencia](http://docs.microsofttranslator.com/text-translate.html)

@@ -1,6 +1,6 @@
 ---
-title: Linux VM-beli MSI használata az Azure Cosmos DB eléréséhez
-description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure Cosmos DB-hez egy Linux VM-beli, rendszer által hozzárendelt felügyeltszolgáltatás-identitással (MSI).
+title: Az Azure Cosmos DB elérése Linux VM-beli felügyeltszolgáltatás-identitással
+description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure Cosmos DB-hez egy Linux VM-beli, rendszer által hozzárendelt felügyeltszolgáltatás-identitással.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: 30962827d0a7fbc70c2ed4c642d9bb8a586124da
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: af148cd8b3eececb258057a8bf6a78216ec0e50a
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904424"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258330"
 ---
-# <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Oktatóanyag: Linux VM-beli MSI használata az Azure Cosmos DB eléréséhez 
+# <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-cosmos-db"></a>Oktatóanyag: Az Azure Cosmos DB elérése Linux VM-beli felügyeltszolgáltatás-identitással 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre és használhat Linux VM-beli felügyeltszolgáltatás-identitást (MSI). Az alábbiak végrehajtásának módját ismerheti meg:
+Ez az oktatóanyag bemutatja, hogyan hozhat létre és használhat Linux VM-beli felügyeltszolgáltatás-identitást. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Engedélyezett MSI-vel rendelkező, Linux rendszerű virtuális gép létrehozása
+> * Linux rendszerű virtuális gép létrehozása a következő engedélyezésével:
 > * Cosmos DB-fiók létrehozása
 > * Gyűjtemény létrehozása Cosmos DB-fiókban
-> * MSI-hozzáférés megadása Azure Cosmos DB-példány számára
-> * A Linux VM-beli MSI `principalID` paraméterének lekérése
+> * Felügyeltszolgáltatás-identitás hozzáférésének megadása Azure Cosmos DB-példány számára
+> * A Linux VM-beli felügyeltszolgáltatás-identitás `principalID` paraméterének lekérése
 > * Hozzáférési jogkivonat lekérése, majd azzal az Azure Resource Manager meghívása
 > * Hozzáférési kulcsok lekérése az Azure Resource Managerből Cosmos DB-hívások indításához
 
@@ -54,9 +54,9 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Linux rendszerű virtuális gép létrehozása új erőforráscsoportban
 
-Ebben az oktatóanyagban egy új, engedélyezett MSI-vel rendelkező, Linux rendszerű virtuális gépet hozunk létre.
+Ebben az oktatóanyagban egy új, a felügyeltszolgáltatás-identitással kompatibilis Linux rendszerű virtuális gépet hozunk létre.
 
-Engedélyezett MSI-vel rendelkező virtuális gép létrehozása:
+A felügyeltszolgáltatás-identitással kompatibilis virtuális gép létrehozása:
 
 1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az_login) paranccsal jelentkezzen be az Azure-ba. A használni kívánt fiók azon Azure-előfizetéshez legyen hozzárendelve, amely alatt üzembe fogja helyezni a virtuális gépet:
 
@@ -70,7 +70,7 @@ Engedélyezett MSI-vel rendelkező virtuális gép létrehozása:
    az group create --name myResourceGroup --location westus
    ```
 
-3. Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm/#az_vm_create) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre egy MSI-vel, az `--assign-identity` paraméter által kérelmezett módon. Az `--admin-username` és `--admin-password` paraméterek adják meg a virtuális gép bejelentkeztetéséhez tartozó rendszergazdanevet és -jelszót. A környezetnek megfelelően frissítse ezeket az értékeket: 
+3. Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm/#az_vm_create) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre egy felügyeltszolgáltatás-identitással, az `--assign-identity` paraméter által kérelmezett módon. Az `--admin-username` és `--admin-password` paraméterek adják meg a virtuális gép bejelentkeztetéséhez tartozó rendszergazdanevet és -jelszót. A környezetnek megfelelően frissítse ezeket az értékeket: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -95,14 +95,14 @@ Adjon hozzá egy adatgyűjteményt a Cosmos DB-fiókhoz, amelyet a későbbi lé
 2. Az **Áttekintés** lapon kattintson a **+/Gyűjtemény hozzáadása** gombra. Ekkor megjelenik a „Gyűjtemény hozzáadása” panel.
 3. Adja meg a gyűjtemény adatbázis- és gyűjteményazonosítóját, válasszon ki egy tárkapacitást, adjon meg partíciókulcsot és átviteli sebességet, majd kattintson az **OK** gombra.  Ebben az oktatóanyagban elég a „Teszt” kifejezést használni az adatbázis és a gyűjtemény azonosítójaként, kiválasztani egy rögzített kapacitást és a legalacsonyabb átviteli sebességet (400 RU/s).  
 
-## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>A Linux VM-beli MSI `principalID` paraméterének lekérése
+## <a name="retrieve-the-principalid-of-the-linux-vms-managed-service-identity"></a>A Linux VM-beli felügyeltszolgáltatás-identitás `principalID` paraméterének lekérése
 
-Ahhoz, hogy az ezt követő szakaszban a Resource Managerből is hozzáférhessen a Cosmos DB-fiók hozzáférési kulcsaihoz, le kell kérdeznie a Linux VM-beli MSI `principalID` paraméterét.  Ne felejtse el a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (az az erőforráscsoport, amelyben a virtuális gép megtalálható) és `<VM NAME>` paraméterek értékeit a saját értékeire lecserélni.
+Ahhoz, hogy az ezt követő szakaszban a Resource Managerből is hozzáférhessen a Cosmos DB-fiók hozzáférési kulcsaihoz, le kell kérdeznie a Linux VM-beli felügyeltszolgáltatás-identitás `principalID` paraméterét.  Ne felejtse el a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (az az erőforráscsoport, amelyben a virtuális gép megtalálható) és `<VM NAME>` paraméterek értékeit a saját értékeire lecserélni.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
 ```
-A válasz tartalmazza a rendszer által hozzárendelt MSI részleteit (jegyezze fel a PrincipalId azonosító értékét, mivel a következő szakaszban használni fogja):
+A válasz tartalmazza a rendszer által hozzárendelt felügyeltszolgáltatás-identitás részleteit (jegyezze fel a PrincipalId azonosító értékét, mivel a következő szakaszban használni fogja):
 
 ```bash  
 {
@@ -114,11 +114,11 @@ A válasz tartalmazza a rendszer által hozzárendelt MSI részleteit (jegyezze 
  }
 
 ```
-## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Linux VM MSI hozzáférésének biztosítása a Cosmos DB-fiók hozzáférési kulcsaihoz
+## <a name="grant-your-linux-vm-managed-service-identity-access-to-the-cosmos-db-account-access-keys"></a>Linux VM felügyeltszolgáltatás-identitás hozzáférésének biztosítása a Cosmos DB-fiók hozzáférési kulcsaihoz
 
-A Cosmos DB nem támogatja natív módon az Azure AD-hitelesítést. Az MSI használatával azonban lekérheti a Cosmos DB hozzáférési kulcsát a Resource Managerből, és azzal elérheti a tárolót. Ebben a lépésben hozzáférést biztosít az MSI számára a Cosmos DB-fiók kulcsaihoz.
+A Cosmos DB nem támogatja natív módon az Azure AD-hitelesítést. A felügyeltszolgáltatás-identitás használatával azonban lekérheti a Cosmos DB hozzáférési kulcsát a Resource Managerből, és azzal elérheti a Cosmos DB-t. Ebben a lépésben hozzáférést biztosít a felügyeltszolgáltatás-identitás számára a Cosmos DB-fiók kulcsaihoz.
 
-Ha az Azure CLI használatával kíván hozzáférést adni az MSI-identitás számára a Cosmos DB-fiókhoz az Azure Resource Managerben, frissítse a környezet `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` és `<COSMOS DB ACCOUNT NAME>` értékeit. Cserélje le az `<MSI PRINCIPALID>` elemet a [Linux VM MSI PrincipalId azonosítójának lekérésével kapcsolatos szakaszban](#retrieve-the-principalID-of-the-linux-VM's-MSI) a `az resource show` által visszaadott `principalId` tulajdonságra.  A Cosmos DB a részletesség két szintjét támogatja a hozzáférési kulcsok használatakor: a fiók írási/olvasási, illetve írásvédett hozzáférését.  Rendelje hozzá a `DocumentDB Account Contributor` szerepkört, ha a fiók írási/olvasási kulcsait szeretné lekérni, vagy rendelje hozzá a `Cosmos DB Account Reader Role` szerepkört, ha írásvédett hozzáférést szeretne a fiókhoz:
+Ha az Azure CLI használatával kíván hozzáférést adni a felügyeltszolgáltatás-identitás számára a Cosmos DB-fiókhoz az Azure Resource Managerben, frissítse a környezet `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` és `<COSMOS DB ACCOUNT NAME>` értékeit. Cserélje le az `<MSI PRINCIPALID>` elemet a [Linux VM MSI PrincipalId azonosítójának lekérésével kapcsolatos szakaszban](#retrieve-the-principalID-of-the-linux-VM's-MSI) a `az resource show` által visszaadott `principalId` tulajdonságra.  A Cosmos DB a részletesség két szintjét támogatja a hozzáférési kulcsok használatakor: a fiók írási/olvasási, illetve írásvédett hozzáférését.  Rendelje hozzá a `DocumentDB Account Contributor` szerepkört, ha a fiók írási/olvasási kulcsait szeretné lekérni, vagy rendelje hozzá a `Cosmos DB Account Reader Role` szerepkört, ha írásvédett hozzáférést szeretne a fiókhoz:
 
 ```azurecli-interactive
 az role assignment create --assignee <MSI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"
@@ -140,7 +140,7 @@ A válasz tartalmazza a létrehozott szerepkör-hozzárendelés részleteit:
 }
 ```
 
-## <a name="get-an-access-token-using-the-linux-vms-msi-and-use-it-to-call-azure-resource-manager"></a>Hozzáférési jogkivonat lekérése a Linux rendszerű virtuális gép MSI-jének használatával, majd az Azure Resource Manager meghívása a használatával
+## <a name="get-an-access-token-using-the-linux-vms-managed-service-identity-and-use-it-to-call-azure-resource-manager"></a>Hozzáférési jogkivonat lekérése a Linux rendszerű virtuális gép felügyeltszolgáltatás-identitásának használatával, majd az Azure Resource Manager meghívása a jogkivonat használatával
 
 Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk majd.
 

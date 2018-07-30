@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 05736495d0d4a0c3a5072d29ad27801b6d4a7241
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f894549951a0ef23a95acaab48ab20ce6646443
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967762"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189461"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaceshez engedélyezett Kubernetes-fürt létrehozása
 
@@ -32,7 +32,11 @@ ms.locfileid: "37967762"
 
    ![Kubernetes konfigurációs beállításai](../media/common/Kubernetes-Create-Cluster-2.PNG)
 
-   Ha kész, válassza a **Következő: Hálózat** elemet.
+   Ha kész, válassza a **Következő: Hitelesítés** elemet.
+
+1. Válassza ki a Szerepköralapú hozzáférés-vezérlés (RBAC) kívánt beállítását. Az Azure Dev Spaces engedélyezett és letiltott RBAC esetén is támogatja a fürtöket.
+
+    ![RBAC-beállítás](../media/common/k8s-RBAC.PNG)
 
 1. Győződjön meg róla, hogy a HTTP-alkalmazások útválasztása engedélyezve van.
 
@@ -40,9 +44,5 @@ ms.locfileid: "37967762"
 
     > [!IMPORTANT]
     > Az AKS-fürt létrehozásakor ne felejtse el engedélyezni a HTTP-alkalmazások útválasztását. Ez a beállítás később nem módosítható.
-
-1. Válassza ki a Szerepköralapú hozzáférés-vezérlés (RBAC) kívánt beállítását. Az Azure Dev Spaces engedélyezett és letiltott RBAC esetén is támogatja a fürtöket.
-
-    ![RBAC-beállítás](../media/common/k8s-RBAC.PNG)
 
 1. Amikor végzett, válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget.

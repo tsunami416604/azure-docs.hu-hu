@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: e564f48b4b90cfcaa72ed51d5f210a71a4980360
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ee4702733e775051cbbcace109bd1a7ffdf50e9c
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902945"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325455"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Egy Azure virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata a token beszerzése 
 
@@ -49,6 +49,7 @@ Egy ügyfélalkalmazás kérheti a Felügyeltszolgáltatás-identitás [csak az 
 |  |  |
 | -------------- | -------------------- |
 | [HTTP-n keresztül egy token beszerzése](#get-a-token-using-http) | Az MSI jogkivonat-végpont protokoll részletei |
+| [A .NET-hez a Microsoft.Azure.Services.AppAuthentication kódtár használatával egy token beszerzése](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | A Microsoft.Azure.Services.AppAuthentication kódtár a .NET-kliens használatával – példa
 | [C# használatával egy token beszerzése](#get-a-token-using-c) | Az MSI REST-végpont egy C#-ügyfél használatával – példa |
 | [Go használatával egy token beszerzése](#get-a-token-using-go) | Az MSI REST-végpont egy Go-ügyfél használatával – példa |
 | [Azure PowerShell-lel egy token beszerzése](#get-a-token-using-azure-powershell) | Az MSI REST-végpont egy PowerShell-ügyfél használatával – példa |
@@ -73,7 +74,9 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Az MSI Instance Metadata szolgáltatás végpontját. |
 | `api-version`  | A lekérdezési sztring paramétereként, jelezve a IMDS végpont az API-verzió. API-verziót használja `2018-02-01` vagy nagyobb. |
 | `resource` | A lekérdezési sztring paramétereként, az Alkalmazásazonosító URI a célként megadott erőforrás-jelző. Emellett megjelenik a `aud` (célközönség) jogcím a kiállított jogkivonat. Ebben a példában az Azure Resource Manager eléréséhez tokent kér az Alkalmazásazonosító URI-t, amelynek https://management.azure.com/. |
-| `Metadata` | Egy HTTP kérés fejlécében, kötelező mező MSI, egy kiszolgáló kiszolgálóoldali kérelmet hamisítására (SSRF) támadások elleni megoldás. Ezt az értéket állítsa "true", csupa kisbetű szerepel.
+| `Metadata` | Egy HTTP kérés fejlécében, kötelező mező MSI, egy kiszolgáló kiszolgálóoldali kérelmet hamisítására (SSRF) támadások elleni megoldás. Ezt az értéket állítsa "true", csupa kisbetű szerepel. |
+| `object_id` | (Nem kötelező) A lekérdezési sztring paramétereként, a object_id az felügyelt identitás szeretné token jelzi. Szükséges, ha a virtuális gépen több felhasználó által a felügyelt identitásokból hozzárendelt.|
+| `client_id` | (Nem kötelező) A lekérdezési sztring paramétereként, a client_id az felügyelt identitás szeretné token jelzi. Szükséges, ha a virtuális gépen több felhasználó által a felügyelt identitásokból hozzárendelt.|
 
 A Felügyeltszolgáltatás-identitás (MSI) Virtuálisgép-bővítmény végpont használatával mintakérelem *(elavult) a*:
 
@@ -87,7 +90,9 @@ Metadata: true
 | `GET` | A HTTP-műveletet, amely azt jelzi, hogy szeretne-adatokat lekérni a végpontot. Ebben az esetben az OAuth hozzáférési tokent. | 
 | `http://localhost:50342/oauth2/token` | Az MSI végpont, ahol az alapértelmezett port 50342, és konfigurálható. |
 | `resource` | A lekérdezési sztring paramétereként, az Alkalmazásazonosító URI a célként megadott erőforrás-jelző. Emellett megjelenik a `aud` (célközönség) jogcím a kiállított jogkivonat. Ebben a példában az Azure Resource Manager eléréséhez tokent kér az Alkalmazásazonosító URI-t, amelynek https://management.azure.com/. |
-| `Metadata` | Egy HTTP kérés fejlécében, kötelező mező MSI, egy kiszolgáló kiszolgálóoldali kérelmet hamisítására (SSRF) támadások elleni megoldás. Ezt az értéket állítsa "true", csupa kisbetű szerepel.
+| `Metadata` | Egy HTTP kérés fejlécében, kötelező mező MSI, egy kiszolgáló kiszolgálóoldali kérelmet hamisítására (SSRF) támadások elleni megoldás. Ezt az értéket állítsa "true", csupa kisbetű szerepel.|
+| `object_id` | (Nem kötelező) A lekérdezési sztring paramétereként, a object_id az felügyelt identitás szeretné token jelzi. Szükséges, ha a virtuális gépen több felhasználó által a felügyelt identitásokból hozzárendelt.|
+| `client_id` | (Nem kötelező) A lekérdezési sztring paramétereként, a client_id az felügyelt identitás szeretné token jelzi. Szükséges, ha a virtuális gépen több felhasználó által a felügyelt identitásokból hozzárendelt.|
 
 
 Mintaválasz:
@@ -115,6 +120,26 @@ Content-Type: application/json
 | `not_before` | Az időtartomány, ha a hozzáférési jogkivonat érvénybe lép, és elfogadható. A dátum jelenik meg a másodpercek számát "1970-01-01T0:0:0Z (UTC)" (felel meg a token `nbf` jogcím). |
 | `resource` | Az erőforrás a hozzáférési jogkivonatot a kért, mely megfelel a `resource` lekérdezési karakterlánc paraméter a kérelem. |
 | `token_type` | A jogkivonatot, amely a "Tulajdonos" hozzáférési jogkivonatot, ami azt jelenti, hogy az erőforrás segítségével hozzáférést biztosíthat a token a tulajdonosi típusa. |
+
+## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>A .NET-hez a Microsoft.Azure.Services.AppAuthentication kódtár használatával egy token beszerzése
+
+A .NET-alkalmazások és funkciók a legegyszerűbb módja a felügyeltszolgáltatás-identitás használata a a Microsoft.Azure.Services.AppAuthentication csomag keresztül történik. Ebben a könyvtárban is lehetővé teszi, hogy a kód a fejlesztői gépen, a felhasználói fiókkal a Visual Studióban a helyi tesztelése az [Azure CLI-vel](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy az Active Directory beépített hitelesítést. Ebben a könyvtárban a helyi fejlesztési lehetőségek, lásd: [Microsoft.Azure.Services.AppAuthentication hivatkozás]. Ez a szakasz bemutatja, hogyan első lépések a kódtárat a programkódba.
+
+1. Adja hozzá hivatkozásokat az [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-csomagok az alkalmazáshoz.
+
+2.  Az alábbi kód hozzáadása az alkalmazáshoz:
+
+    ```csharp
+    using Microsoft.Azure.Services.AppAuthentication;
+    using Microsoft.Azure.KeyVault;
+    // ...
+    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
+    // OR
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+    ```
+    
+Microsoft.Azure.Services.AppAuthentication és teszi elérhetővé a műveletek kapcsolatos további információkért tekintse meg a [Microsoft.Azure.Services.AppAuthentication referencia](/azure/key-vault/service-to-service-authentication) és a [App Service-ben és a KeyVault MSI .NET-tel minta](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ## <a name="get-a-token-using-c"></a>C# használatával egy token beszerzése
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: dcda4e25932a74313674e91afc7382ea19724613
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4b00f28d3a1183d5033d0655d8c3f244e3d108e7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129950"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225992"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Oktatóanyag: Többtárolós (előzetes verzió) alkalmazás létrehozása a Web App for Containersben
 
@@ -531,7 +531,7 @@ Az oktatóanyag ezen részéhez a *kubernetes-wordpress.yml* fájlt fogjuk haszn
 
 ### <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 
-Hozzon létre egy kiszolgálót az Azure Database for MySQL (előzetes verzió) szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) paranccsal.
+Hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) paranccsal.
 
 Az alábbi parancsban a _&lt;mysql_server_name>_ helyőrzőt cserélje le a MySQL-kiszolgáló nevére (érvényes karakterek: `a-z`, `0-9` és `-`). Ez a név része a MySQL-kiszolgáló állomásnevének (`<mysql_server_name>.database.windows.net`), és globálisan egyedinek kell lennie.
 

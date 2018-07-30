@@ -1,8 +1,8 @@
 ---
 title: X.509-eszközök regisztrációja az Azure Device Provisioning Service-be a Java használatával | Microsoft Docs
-description: Azure rövid útmutató – X.509-eszközök regisztrációja az Azure IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val
-author: dsk-2015
-ms.author: dkshir
+description: Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a Java használatával
+author: wesmc7777
+ms.author: wesmc
 ms.date: 12/20/2017
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,44 +10,35 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: e9400c476179d801eb66f574373bf75cfb672d9d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 505aee35c839a0224ca158d918fc5e54dc6e0f28
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091084"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205765"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>X.509-eszközök regisztrációja az IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Java használatával
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Ezek a lépések egy Java-mintaalkalmazáson keresztül bemutatják, hogyan regisztrálhatja szimulált X.509-eszközök egy csoportját programozott módon az Azure IoT Hub Device Provisioning Service-be a [Java szolgáltatásoldali SDK](https://azure.github.io/azure-iot-sdk-java/service/) használatával. Bár a Java szolgáltatásoldali SDK Windows és Linux rendszerű gépeken is működik, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ a regisztrációs folyamat bemutatására.
+Ez a rövid útmutató bemutatja, hogyan regisztrálhatja szimulált X.509-eszközök egy csoportját programozott módon az Azure IoT Hub Device Provisioning Service-be a Java használatával. Az eszközöket a kiépítésiszolgáltatás-példányokban egy [regisztrációs csoport](concepts-service.md#enrollment-group) létrehozásával vagy [egyéni regisztrációval](concepts-service.md#individual-enrollment) lehet regisztrálni. Ez a rövid útmutató bemutatja mindkét típusú regisztráció létrehozását. A regisztrációk létrehozása a [Java szolgáltatásoldali SDK](https://azure.github.io/azure-iot-sdk-java/service/) használatával és egy Java-mintaalkalmazás segítségével történik. 
 
-A folytatás előtt [végezze el az IoT Hub Device Provisioning Service beállítási lépéseit az Azure Portalon](./quick-setup-auto-provision.md).
+A rövid útmutató feltételezi, hogy már létrehozott egy IoT hubot és egy Device Provisioning Service-példányt. Ha ezeket az erőforrásokat még nem hozta létre, végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) rövid útmutatót, mielőtt továbbhaladna ebben a cikkben.
 
-<a id="setupdevbox"></a>
+Bár a Java szolgáltatásoldali SDK Windows és Linux rendszerű gépeken is működik, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ a regisztrációs folyamat bemutatására.
 
-## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-1. Győződjön meg arról, hogy a [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) telepítve van a gépén. 
+## <a name="prerequisites"></a>Előfeltételek
 
-2. Állítson be környezeti változókat a Java-telepítéshez. A `PATH` változónak tartalmaznia kell a *jdk1.8.x\bin* könyvtár teljes elérési útját. Ha ez az első Java-telepítés a számítógépen, hozzon létre egy új, `JAVA_HOME` nevű környezeti változót, amely a *jdk1.8.x* könyvtár teljes elérési útjára mutat. Windows rendszerű gépeken ez a könyvtár általában a *C:\\Program Files\\Java\\* mappában található. Környezeti változók létrehozásához és szerkesztéséhez keressen rá a **Rendszerkörnyezeti változók szerkesztése** kifejezésre a Windows rendszerű gép **Vezérlőpultján**. 
+* Telepítse a [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)-at.
+* Telepítse a [Maven 3](https://maven.apache.org/download.cgi)-at. A jelenlegi Maven verzióját a következő parancs futtatásával ellenőrizheti:
 
-  Az alábbi parancs parancsablakban való futtatásával ellenőrizheti, hogy sikerült-e beállítani a Javát a számítógépen:
-
-    ```cmd\sh
-    java -version
-    ```
-
-3. Töltse le a [Maven 3](https://maven.apache.org/download.cgi)-at a számítógépre, és bontsa ki. 
-
-4. Szerkessze a `PATH` környezeti változót, hogy az *apache-maven-3.x.x\\bin* mappára mutasson abban a mappában, amelybe a Mavent kibontotta. Az alábbi parancs parancsablakban való futtatásával ellenőrizheti, hogy sikeres volt-e a Maven telepítése:
-
-    ```cmd\sh
+    ```cmd/sh
     mvn --version
     ```
 
-5. Győződjön meg arról, hogy a [git](https://git-scm.com/download/) telepítve van a gépen, és hozzá van adva a `PATH` környezeti változóhoz. 
+* Telepítse a [Git](https://git-scm.com/download/) szoftvert.
 
 
 <a id="javasample"></a>

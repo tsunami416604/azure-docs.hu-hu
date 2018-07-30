@@ -1,6 +1,6 @@
 ---
-title: Windows VM-beli, felhasználóhoz rendelt MSI használata az Azure Resource Manager eléréséhez
-description: Oktatóanyag, amely végigvezeti az Azure Resource Manager Windows VM-beli, felhasználóhoz rendelt felügyeltszolgáltatás-identitással (MSI) való elérésének folyamatán.
+title: Windows VM-beli, felhasználóhoz rendelt felügyeltszolgáltatás-identitás használata az Azure Resource Manager eléréséhez
+description: Oktatóanyag, amely végigvezeti az Azure Resource Manager Windows VM-beli, felhasználóhoz rendelt felügyeltszolgáltatás-identitással való elérésének folyamatán.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 67bb45f7bd27a142b978bedb48925cc41e8d1287
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 9cc7683b260a9afbe4aee006a22af9c4834c4eb1
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904373"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248387"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Oktatóanyag: Az Azure Resource Manager Windows VM-beli, felhasználóhoz rendelt felügyeltszolgáltatás-identitással (MSI) való elérése.
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Oktatóanyag: Az Azure Resource Manager Windows VM-beli, felhasználóhoz rendelt felügyeltszolgáltatás-identitással való elérése
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -111,9 +111,9 @@ $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzureRmVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-msi-access-to-a-resource-group-in-azure-resource-manager"></a>Hozzáférés engedélyezése a felhasználóhoz rendelt MSI számára az Azure Resource Manager erőforráscsoportjához 
+## <a name="grant-your-user-assigned-managed-service-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Hozzáférés engedélyezése felhasználóhoz rendelt identitás számára az Azure Resource Manager erőforráscsoportjához 
 
-A felügyeltszolgáltatás-identitás (MSI) által biztosított identitások segítségével a kód hozzáférési jogkivonatokat tud lekérni az olyan erőforrás API-k hitelesítéséhez, amelyek támogatják az Azure AD-hitelesítést. Ebben az oktatóanyagban a kódot az Azure Resource Manager API-jának eléréséhez használjuk. 
+A felügyeltszolgáltatás-identitás által biztosított identitások segítségével a kód hozzáférési jogkivonatokat tud lekérni az olyan erőforrás API-k hitelesítéséhez, amelyek támogatják az Azure AD-hitelesítést. Ebben az oktatóanyagban a kódot az Azure Resource Manager API-jának eléréséhez használjuk. 
 
 Ehhez azonban még engedélyeznie kell az identitás számára a hozzáférést az Azure Resource Manager erőforrásaihoz. Ebben az esetben arról az erőforráscsoportról van szó, amelyben a virtuális gép megtalálható. A környezetnek megfelelően frissítse a `<SUBSCRIPTION ID>` értékét.
 
@@ -148,7 +148,7 @@ Az oktatóanyag további részében a korábban létrehozott virtuális gépről
 
 4. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a **PowerShellt** a távoli munkamenetben.
 
-5. A PowerShell `Invoke-WebRequest` parancsával kezdeményezzen egy kérést a helyi MSI-végpont felé egy hozzáférési jogkivonat lekérésére az Azure Resource Managerhez.
+5. A Powershell `Invoke-WebRequest` parancsával küldjön kérést a helyi felügyeltszolgáltatás-identitási végpontra, hogy lekérjen egy hozzáférési jogkivonatot az Azure Resource Managerhez.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=73444643-8088-4d70-9532-c3a0fdc190fz&resource=https://management.azure.com' -Method GET -Headers @{Metadata="true"}

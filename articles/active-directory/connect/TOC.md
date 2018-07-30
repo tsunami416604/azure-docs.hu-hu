@@ -83,6 +83,7 @@
 
 ## Összevonási szolgáltatások kezelése
 ### [Kezelés és testreszabás](active-directory-aadconnect-federation-management.md)
+### [AD FS-megbízhatóság Azure AD általi kezelése az Azure AD Connect használatával](active-directory-azure-ad-connect-azure-ad-trust.md)
 ### [Több Azure AD-példány összevonása egyetlen AD FS-példánnyal](active-directory-aadconnectfed-single-adfs-multitenant-federation.md)
 
 

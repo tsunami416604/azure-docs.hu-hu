@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: f028d37a98cecf14706773a2eb7cb601481435d1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2ae0fee410c93911546e5cbeef1378e6f7ebbc39
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307915"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205197"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-powershell"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure PowerShell használatával
 
@@ -113,13 +113,15 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
+Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között. Ha bővebb információra van szüksége a Blob Storage és a PowerShell használatával kapcsolatban, lépjen tovább az Azure PowerShell és az Azure Storage használatáról szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]
-> [Blob Storage-műveletek használati útmutatója](storage-how-to-use-blobs-powershell.md)
+> [Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets-reference"></a>A Microsoft Azure PowerShell tárolási parancsmagjainak leírása
+
 * [Tárolási PowerShell-parancsmagok](/powershell/module/azurerm.storage#storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

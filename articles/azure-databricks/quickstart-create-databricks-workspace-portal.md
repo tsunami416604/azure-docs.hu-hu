@@ -1,25 +1,22 @@
 ---
-title: 'Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával | Microsoft Docs'
+title: 'Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával'
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure Portal egy Azure Databricks-munkaterület és egy Apache Spark-fürt létrehozásához, illetve Spark-feladatok futtatásához.
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
+ms.service: azure-databricks
+author: jasonwhowell
+ms.author: jasonh
 manager: cgronlun
 editor: cgronlun
-ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/23/2018
-ms.author: nitinme
+ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 19dcdeefe4a65f5c0fab06766a0fa40838df8b08
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a302c0c6c4ecbaff2d11d852caf9e1e1500931b8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30232432"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225346"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
 
@@ -41,7 +38,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     ![Databricks az Azure Portalon](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks az Azure Portalon")
 
-3. Az **Azure Databricks szolgáltatás** pontban adja meg az értékeket Databricks-munkaterület létrehozásához.
+2. Az **Azure Databricks szolgáltatás** pontban adja meg az értékeket Databricks-munkaterület létrehozásához.
 
     ![Azure Databricks-munkaterület létrehozása](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
 
@@ -63,6 +60,9 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Spark-fürt létrehozása a Databricks használatával
 
+> [!NOTE] 
+> Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/en-us/free/) ismertető cikket.  
+
 1. Az Azure Portalon lépjen a korábban létrehozott Databricks-munkaterülethez, majd kattintson a **Munkaterület indítása** elemre.
 
 2. A rendszer átirányítja az Azure Databricks portáljára. A portálon kattintson a **Fürt** elemre.
@@ -83,14 +83,34 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](https://docs.azuredatabricks.net/user-guide/clusters/create.html) ismertető szakaszban talál.
 
+
+## <a name="download-a-sample-data-file"></a>Mintaadatfájl letöltése
+Töltsön le egy JSON-mintaadatfájlt, és mentse az Azure Blob Storage-ban.
+
+1. Ezt a JSON-mintaadatfájlt a [GitHubról](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) töltheti le a helyi számítógépére. Kattintson a jobb gombbal, és a Mentés másként paranccsal mentse a fájlt helyileg. 
+
+2. Ha még nem rendelkezik tárfiókkal, akkor hozzon létre egyet. 
+   - Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget.  Válassza ki a **Tároló** kategóriát, majd a **Tárfiókok** lehetőséget.  
+   - Adjon meg egy egyedi nevet a tárfióknak.
+   - A **Fióktípus** beállításnál válassza a **Blob Storage** lehetőséget.
+   - Adja meg az **Erőforráscsoport** nevét. Használja ugyanazt az erőforráscsoportot, mint amelyben a Databricks-munkaterületet létrehozta.
+   
+   További információkért lásd az [Azure Blob Storage-fiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket. 
+
+3. Hozzon létre egy tárolót a Blob Storage-fiókban, és töltse fel a JSON-mintafájlt a tárolóba. A fájlfeltöltéshez használhatja az Azure Portalt vagy a [Microsoft Azure Storage Explorert](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+
+   - Nyissa meg a tárfiókot az Azure Portalon.
+   - Válassza ki a **Blobok** lehetőséget.
+   - Válassza a **+ Tároló** lehetőséget egy új üres tároló létrehozásához.
+   - Adja meg a tároló **nevét**, például: `databricks`. 
+   - Válassza ki a **Privát (nem névtelen hozzáférés)** hozzáférési szintet.
+   - A tároló létrehozása után adja meg a tároló nevét.
+   - Kattintson a **Feltöltés** gombra.
+   - A **Fájlok** oldalon kattintson a **Mappa** ikonra a tallózáshoz, és válassza ki a felöltendő mintafájlt (`small_radio_json.json`). 
+   - A **Feltöltés** gombra kattintva töltse fel a fájlt.
+   
+   
 ## <a name="run-a-spark-sql-job"></a>Spark SQL-feladat futtatása
-
-Mielőtt ehhez a szakaszhoz hozzáfogna, a következő előfeltételeknek kell eleget tennie:
-
-* [Hozzon létre egy Azure Blob-tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
-* Töltsön le egy JSON-mintafájlt a [GitHubról](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json). 
-* Töltse fel a JSON-mintafájlt a már létrehozott Azure Blob-tárfiókba. A fájlfeltöltéshez a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatát javasoljuk.
-
 A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a Databricksben, konfigurálja a jegyzetfüzetet úgy, hogy az Azure Blob-tárfiókból olvassa be az adatokat, majd ezt követően futtassa le a Spark SQL-feladatot az adatokon.
 
 1. A bal oldali panelen kattintson a **Munkaterület** elemre. A **Munkaterület** legördülő menüjében kattintson a **Létrehozás**, majd a **Notebook** elemre.

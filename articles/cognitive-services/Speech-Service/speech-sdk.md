@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 20fe0c3501e562584cd7762555479457a34a9297
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: c7eaa2aa37b05bd0e125e1841357979af4f6763a
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281323"
+ms.locfileid: "39326059"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>A Cognitive Services beszédszolgáltatások SDK
 
@@ -24,11 +24,13 @@ A Cognitive Services beszédfelismerő szoftver Development Kit (SDK) az alkalma
 
 [!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="get-the-windows-sdk"></a>A Windows SDK beszerzése
+## <a name="get-the-sdk"></a>Az SDK beszerzése
+
+### <a name="get-the-windows-sdk"></a>A Windows SDK beszerzése
 
 A beszédfelismerés SDK Windows verziója tartalmazza a 32 bites és 64 bites C/C++-klienskódtárakat, valamint az felügyelt (.NET) kódtárak C# környezetben való használatra. A Visual Studióban NuGet; használatával telepítheti az SDK-val egyszerűen keressen `Microsoft.CognitiveServices.Speech`.
 
-## <a name="get-the-linux-sdk"></a>A Linux SDK beszerzése
+### <a name="get-the-linux-sdk"></a>A Linux SDK beszerzése
 
 Győződjön meg arról, hogy Ön rendelkezik a szükséges fordító és tárak a következő rendszerhéj-parancsok futtatásával:
 
@@ -52,7 +54,7 @@ Ezt követően [az SDK letöltéséhez](https://aka.ms/csspeech/linuxbinary) és
 
 Alkalmazás létrehozása, másolja vagy a szükséges bináris fájlokat (és könyvtárak) helyezze át a fejlesztési környezetet, és ezeket a buildelési folyamatába szükség szerint.
 
-## <a name="get-the-java-sdk"></a>GET, a Java SDK
+### <a name="get-the-java-sdk"></a>GET, a Java SDK
 
 Az Androidhoz készült Java SDK van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak, valamint a szükséges Android-engedélyek útmutatójához.
 A Maven adattárban található `https://csspeechstorage.blob.core.windows.net/maven/` csomagként `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0`.
@@ -71,6 +73,8 @@ A felhasználás az Android Studio-projektek-csomagot a következő módosítás
   ```
 
 A Java SDK egyben része a [Speech Devices SDK-val](speech-devices-sdk.md).
+
+[!include[Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>További lépések
 

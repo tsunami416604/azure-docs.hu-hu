@@ -3,20 +3,19 @@ title: Felhőalapú tárolási alkalmazások monitorozása és hibaelhárítása
 description: Diagnosztikai eszközök, mérőszámok és riasztások használata a felhőalapú alkalmazások hibaelhárításához és monitorozásához.
 services: storage
 author: tamram
-manager: jeconnoc
+manager: twooley
 ms.service: storage
 ms.workload: web
-ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 07/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: eb58104309802125a8424cbbf8a1bef3d1c5e79c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ad64384ff17b1666f88ba99e04ec345015e07276
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418186"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206054"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Felhőalapú tárolási alkalmazások monitorozása és hibaelhárítása
 
@@ -30,9 +29,9 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 > * Tesztelési célú adatforgalom futtatása helytelen SAS-tokenekkel
 > * Naplók letöltése és elemzése
 
-Az [Azure Storage Analytics](../common/storage-analytics.md) naplózási funkciót és mérőszámadatokat biztosít a tárfiókok számára. Ezen adatok révén betekintést kaphat a tárfiók állapotába. Ha a tárfiók adataira kíváncsi, előbb be kell állítania az adatgyűjtést. E folyamat magában foglalja a naplózás bekapcsolását, a mérőszámok konfigurálását és a riasztások engedélyezését.
+Az [Azure Storage Analytics](../common/storage-analytics.md) naplózási funkciót és mérőszámadatokat biztosít a tárfiókok számára. Ezen adatok révén betekintést kaphat a tárfiók állapotába. Az Azure Storage elemzéseiből való adatgyűjtéshez konfigurálhat naplókat, metrikákat és riasztásokat. E folyamat magában foglalja a naplózás bekapcsolását, a mérőszámok konfigurálását és a riasztások engedélyezését.
 
-A tárfiókok naplózásának és mérőszámainak engedélyezése az Azure Portal **Diagnosztika** lapján történik. Kétféle mérőszámtípust különböztetünk meg. Az **Összesített** mérőszámok a bejövő/kimenő forgalom, a rendelkezésre állás, a késleltetés és a sikerességi arányok adatait gyűjtik össze. A mérőszámok összesítése blobok, üzenetsorok, táblák és fájlszolgáltatások szerint történik. Az **API-specifikus** ugyanezeket a mérőszámokat gyűjti össze az egyes tárolási műveletek esetében az Azure Storage-szolgáltatás API-jában. A Storage naplózási szolgáltatásával a sikeres és a sikertelen kérelmek adatai is rögzíthetők a tárfiókban. Ezekben a naplókban az Azure-táblák, -üzenetsorok és -blobok olvasási, írási és törlési műveleteinek részletei tekinthetők meg. Ezen kívül lehetővé teszik a kérelmek meghiúsulási okának (például időtúllépések, szabályozás vagy engedélyezési hibák) megtekintését is.
+A tárfiókok naplózásának és mérőszámainak engedélyezése az Azure Portal **Diagnosztika** lapján történik. A Storage naplózási szolgáltatásával a sikeres és a sikertelen kérelmek adatai is rögzíthetők a tárfiókban. Ezekben a naplókban az Azure-táblák, -üzenetsorok és -blobok olvasási, írási és törlési műveleteinek részletei tekinthetők meg. Ezen kívül lehetővé teszik a kérelmek meghiúsulási okának (például időtúllépések, szabályozás vagy engedélyezési hibák) megtekintését is.
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
@@ -42,11 +41,11 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
 A bal oldali menüben válassza az **Erőforráscsoportok**, a **myResourceGroup** elemet, majd válassza ki a tárfiókját az erőforrások listájából.
 
-A **Diagnosztika** területen állítsa az **Állapot** értékét a következőre: **Be**. Győződjön meg arról, hogy a **Blob tulajdonságai** területen lévő összes beállítás engedélyezve van.
+A **Diagnosztikai beállítások (klasszikus)** területen állítsa az **Állapot** beállítást **Be** értékre. Győződjön meg arról, hogy a **Blob tulajdonságai** területen lévő összes beállítás engedélyezve van.
 
 Amikor végzett, kattintson a **Mentés** gombra
 
-![Diagnosztika panel](media/storage-monitor-troubleshoot-storage-application/contoso.png)
+![Diagnosztika panel](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>Riasztások engedélyezése
 
@@ -54,34 +53,33 @@ Ha egy adott mérőszám értéke meghalad egy küszöbértéket, erről a rends
 
 ### <a name="navigate-to-the-storage-account-in-the-azure-portal"></a>A tárfiók megkeresése az Azure Portalon
 
-A bal oldali menüben válassza az **Erőforráscsoportok**, a **myResourceGroup** elemet, majd válassza ki a tárfiókját az erőforrások listájából.
+A **Monitorozás** szakaszban válassza a **Riasztások (klasszikus)** elemet.
 
-A **Monitorozás** szakaszban válassza a **Riasztási szabályok** elemet.
+Válassza a **Metrikariasztás hozzáadása (klasszikus)** lehetőséget, és töltse ki a **Szabály hozzáadása** űrlapot a szükséges információkkal. A **Metrika** legördülő listából válassza a `SASClientOtherError` lehetőséget. Ahhoz, hogy az első hiba aktiválja a riasztást, az **Állapot** legördülő listából válassza a **Nagyobb vagy egyenlő** lehetőséget.
 
-Válassza a **+ Riasztások hozzáadása** lehetőséget, majd a **Riasztási szabály hozzáadása** területen adja meg a szükséges adatokat. A **Metrika** legördülő listában válassza ki a következő elemet: `SASClientOtherError`.
-
-![Diagnosztika panel](media/storage-monitor-troubleshoot-storage-application/figure2.png)
+![Diagnosztika panel](media/storage-monitor-troubleshoot-storage-application/add-alert-rule.png)
 
 ## <a name="simulate-an-error"></a>Hiba szimulálása
 
-Egy érvényes riasztás szimulálásához próbáljon lekérni egy nem létező blobot a tárfiókból. Ehhez cserélje le az `<incorrect-blob-name>` értéket egy nem létező értékkel. Futtassa néhányszor az alábbi kódmintát a meghiúsult blobkérelmek szimulálásához.
+Egy érvényes riasztás szimulálásához próbáljon lekérni egy nem létező blobot a tárfiókból. Az alábbi parancshoz szükség van egy tárolónévre. Megadhatja egy meglévő tároló nevét, vagy létrehozhat egy új tárolót a példához.
+
+Helyettesítse be a helyőrzőket valós értékekkel (ügyeljen arra, hogy az `<INCORRECT_BLOB_NAME>` értéke ne létező érték legyen), majd futtassa a parancsot.
 
 ```azurecli-interactive
 sasToken=$(az storage blob generate-sas \
-    --account-name <storage-account-name> \
-    --account-key <storage-account-key> \
-    --container-name <container> \
-    --name <incorrect-blob-name> \
+    --account-name <STORAGE_ACCOUNT_NAME> \
+    --account-key <STORAGE_ACCOUNT_KEY> \
+    --container-name <CONTAINER_NAME> \
+    --name <INCORRECT_BLOB_NAME> \
     --permissions r \
-    --expiry `date --date="next day" +%Y-%m-%d` \
-    --output tsv)
+    --expiry `date --date="next day" +%Y-%m-%d`)
 
-curl https://<storage-account-name>.blob.core.windows.net/<container>/<incorrect-blob-name>?$sasToken
+curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCORRECT_BLOB_NAME>?$sasToken
 ```
 
 Az alábbi képen példa látható egy olyan riasztásra, amely az előző példában szereplő, szimulált sikertelen futtatáson alapul.
 
- ![Példa riasztásra](media/storage-monitor-troubleshoot-storage-application/alert.png)
+ ![Példa riasztásra](media/storage-monitor-troubleshoot-storage-application/email-alert.png)
 
 ## <a name="download-and-view-logs"></a>Naplók letöltése és megtekintése
 

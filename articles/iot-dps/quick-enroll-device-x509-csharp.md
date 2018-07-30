@@ -1,8 +1,8 @@
 ---
-title: X.509-eszköz regisztrációja az Azure Device Provisioning Service-be a C# használatával | Microsoft Docs
-description: Azure rövid útmutató – X.509-eszköz regisztrációja az Azure IoT Hub Device Provisioning Service-be a C# szolgáltatásoldali SDK-val
-author: bryanla
-ms.author: bryanla
+title: X.509-eszközök regisztrációja az Azure Device Provisioning Service-be a C# használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a C# használatával
+author: wesmc7777
+ms.author: wesmc
 ms.date: 01/21/2018
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,34 +10,62 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 444b59da487aa88d42ca6713bba86cabc620a0c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cf2a2dfbb46b8958e10431ba61e4bd8bc7ae18d6
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630197"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39204959"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>X.509-eszközök regisztrációja az IoT Hub Device Provisioning Service-be a C# szolgáltatásoldali SDK-val
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a C# használatával
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
 
-Ezek a lépések bemutatják, hogyan hozhat létre programozott módon regisztrációs csoportot egy köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítványhoz a [C# szolgáltatásoldali SDK](https://github.com/Azure/azure-iot-sdk-csharp) és egy C# .NET Core-mintaalkalmazás használatával. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). További információ az X.509-tanúsítványon alapuló nyilvánoskulcs-infrastruktúra (PKI) az Azure IoT Hubbal és a Device Provisioning Service-szel való használatáról: [X.509 hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). Bár a cikkben ismertetett lépések Windows és Linux rendszerű gépeken egyaránt alkalmazhatók, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre a C# segítségével programozott módon egy [regisztrációs csoportot](concepts-service.md#enrollment-group), amely köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítványokat használ. A regisztrációs csoport létrehozásához a [.NET-hez készült Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-csharp)-t és egy C# .NET Core-mintaalkalmazást használunk. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). További információ az X.509-tanúsítványon alapuló nyilvánoskulcs-infrastruktúra (PKI) az Azure IoT Hubbal és a Device Provisioning Service-szel való használatáról: [X.509 hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
 
-## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
+A rövid útmutató feltételezi, hogy már létrehozott egy IoT hubot és egy Device Provisioning Service-példányt. Ha ezeket az erőforrásokat még nem hozta létre, végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) rövid útmutatót, mielőtt továbbhaladna ebben a cikkben.
 
-1. Győződjön meg arról, hogy a [Visual Studio 2017](https://www.visualstudio.com/vs/) telepítve van a számítógépre. 
-2. Győződjön meg arról, hogy a [.NET Core SDK](https://www.microsoft.com/net/download/windows) telepítve van a gépén. 
-3. A folytatás előtt végezze el az [IoT Hub Device Provisioning Service az Azure Portallal való beállítását ismertető](./quick-setup-auto-provision.md) szakasz lépéseit.
-4. Egy .pem vagy .cer fájlra lesz szüksége, amely egy olyan köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítvány nyilvános részét tartalmazza, amely fel lett töltve és hitelesítve lett a kiépítési szolgáltatás által. Az [Azure IoT c SDK](https://github.com/Azure/azure-iot-sdk-c) tartalmazza azokat az eszközöket, amelyek segítségével létrehozhat egy X.509-tanúsítványláncot, feltölthet egy fő- vagy köztes tanúsítványt a láncból, valamint végrehajthat egy tulajdonlástanúsítási eljárást a szolgáltatással a tanúsítvány hitelesítéséhez. Az eszközkészlet használatához töltse le az [azure-iot-sdk-c/tools/CACertificates](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) mappa tartalmát a számítógépén található munkamappába, és kövesse az [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) lépéseit. A C SDK-ban található eszközkészleten kívül a **C# szolgáltatásoldali SDK-ban** található [Csoporttanúsítvány-hitelesítési minta](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample) a tulajdonostanúsítási eljárás elvégzését is bemutatja egy meglévő köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítvánnyal. 
+Bár a cikkben ismertetett lépések Windows és Linux rendszerű gépeken egyaránt alkalmazhatók, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ.
 
-  > [!IMPORTANT]
-  > Az SDK-eszközkészlettel létrehozott tanúsítványokat csak fejlesztési célokra tervezték. Az éles kódnak megfelelő tanúsítványok beszerzésével kapcsolatos további információt az [X.509 hitelesítésszolgáltatói tanúsítvány beszerzése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) című részben, az Azure IoT Hub dokumentációjában talál.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Telepítse a [Visual Studio 2017](https://www.visualstudio.com/vs/)-et.
+* Telepítse a [.NET Core SDK](https://www.microsoft.com/net/download/windows)-t.
+* Telepítse a [Git](https://git-scm.com/download/) szoftvert.
+
+
+
+## <a name="prepare-test-certificates"></a>Teszttanúsítványok előkészítése
+
+A rövid útmutatóhoz szükség van egy .pem vagy .cer fájlra, amely tartalmazza egy köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítvány nyilvános részét. A tanúsítványnak a kiépítési szolgáltatásba feltöltöttnek és a szolgáltatás által ellenőrzöttnek kell lennie. 
+
+Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) tartalmazza azokat a teszteszközöket, amelyek segítségével létrehozhat egy X.509-tanúsítványláncot, feltölthet egy legfelsőbb szintű vagy köztes tanúsítványt a láncból, valamint végrehajthat egy tulajdonlástanúsítási eljárást a szolgáltatással a tanúsítvány hitelesítéséhez. Az SDK-eszközkészlettel létrehozott tanúsítványokat csak **fejlesztési és tesztelési célokra** tervezték. Ezeket a tanúsítványokat **nem lehet termelési környezetben használni**. Nem módosítható jelszavakat tartalmaznak („1234”), amelyek 30 nap után lejárnak. A termelési használathoz megfelelő tanúsítványok beszerzésével kapcsolatos további információt az Azure IoT Hub dokumentációjának [X.509 hitelesítésszolgáltatói tanúsítvány beszerzése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) című részében talál.
+
+A teszteszköz segítségével a következő lépésekkel állíthat elő tanúsítványokat: 
+ 
+1. Nyisson meg egy parancssort vagy a Git Bash-felületet, és lépjen egy, a gépen található munkamappába. A következő parancs végrehajtásával klónozza az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattárat:
+    
+  ```cmd/sh
+  git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+  ```
+
+  Az adattár mérete jelenleg körülbelül 220 MB. Ez a művelet várhatóan több percig is eltarthat.
+
+  A teszteszköz a klónozott adattár *azure-iot-sdk-c/tools/CACertificates* mappájában található.    
+
+2. Kövesse a [mintákhoz és oktatóanyagokhoz készült hitelesítésszolgáltatói tanúsítványok kezeléséről](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) szóló cikk lépéseit. 
+
+A C SDK-ban található eszközkészleten kívül a *.NET-hez készült Microsoft Azure IoT SDK-ban* található [Csoporttanúsítvány-hitelesítési minta](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample) azt is bemutatja, hogyan végezhető el egy tulajdonostanúsítási eljárás a C# és egy meglévő köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítvány használatával. 
+
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>A kiépítési szolgáltatás kapcsolati sztringjének lekérése
 
 A rövid útmutatóban lévő mintához szüksége lesz a kiépítési szolgáltatás kapcsolati sztringjére.
-1. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson az **Összes erőforrás** gombra, és nyissa meg az eszközkiépítési szolgáltatást. 
+1. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson a **Minden erőforrás** gombra, és nyissa meg a Device Provisioning Service-t. 
 2. Kattintson a **Megosztott elérési szabályzatok** elemre, majd a használni kívánt hozzáférési szabályzatra a tulajdonságainak megnyitásához. A **Hozzáférési szabályzat** ablakban másolja és jegyezze fel az elsődleges kulcs kapcsolati sztringjét. 
 
     ![A kiépítési szolgáltatás kapcsolati sztringjének lekérése a portálról](media/quick-enroll-device-x509-csharp/get-service-connection-string.png)

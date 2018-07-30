@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 07/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a66d845fcf7507613cda475bbc96225f8a7cc7eb
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: bb0e3ee685d5a52a9f372e99d97f3608f67c17c0
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126851"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185397"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
 
@@ -144,7 +144,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozható létre sablon a Visual Studio Code használatával, és hogyan helyezhető üzembe a sablon az Azure Portal Cloud Shell szolgáltatással. Ebben a rövid útmutatóban egy olyan sablont hoztunk létre, amelyben csak egyetlen Azure-erőforrás szerepel.  A következő oktatóanyagban több erőforrást tartalmazó sablont fog készíteni.  Egyes erőforrások függő erőforrásokkal rendelkeznek.
+Ebben az oktatóanyagban megtanulta, hogyan hozható létre sablon a Visual Studio Code használatával, és hogyan helyezhető üzembe a sablon az Azure Portal Cloud Shell szolgáltatással. A következő oktatóanyagból megtudhatja, hogyan kell létrehozni egy sablont, és használatba venni a sablonreferenciákat.
 
 > [!div class="nextstepaction"]
-> [Sablonok létrehozása a Visual Studio használatával](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+> [Titkosított tárfiók létrehozása](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

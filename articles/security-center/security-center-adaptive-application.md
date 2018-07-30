@@ -3,7 +3,7 @@ title: Adaptív alkalmazásvezérlők az Azure Security Centerben | Microsoft Do
 description: Ebből a dokumentumból megismerheti, hogyan használható az adaptív alkalmazásvezérlés az Azure Security Centerben az Azure-beli virtuális gépeken futó alkalmazások engedélyezési listákra való felvételéhez.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: fa2f3c10687a02c5d0be8d7bb0ae88b2b0c38e19
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 07/19/2018
+ms.author: rkarlin
+ms.openlocfilehash: 27e013ad9e94bb025cfad87cc68b244882a207b3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989965"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161932"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben (előzetes verzió)
+# <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben
 Az útmutató azt ismerteti, hogyan konfigurálható az alkalmazásvezérlés az Azure Security Centerben.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Mire szolgálnak a Security Center adaptív alkalmazásvezérlői?
@@ -35,7 +35,7 @@ Az adaptív alkalmazásvezérlők segítségével szabályozhatja, hogy mely alk
 - Azt, hogy az informatikai részleg szabályozhassa a bizalmas adatokhoz való hozzáférést az alkalmazások használata során.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Az adaptív alkalmazásvezérlők engedélyezése
-Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurált erőforráscsoportokon futtatható alkalmazások csoportját. Ez a funkció csak Windows rendszerű (akár klasszikus, akár Azure Resource Manager típusú) gépeken használható. A következő lépésekkel konfigurálhatók az alkalmazások engedélyezési listái a Security Centerben:
+Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurált csoportokon futtatható alkalmazások csoportját. Ez a funkció csak Windows rendszerű (akár klasszikus, akár Azure Resource Manager típusú) gépeken használható. A következő lépésekkel konfigurálhatók az alkalmazások engedélyezési listái a Security Centerben:
 
 1. Nyissa meg a **Security Center** irányítópultját.
 2. A bal oldali panelen válassza ki az **Advanced cloud defense** (Speciális felhővédelem) szakaszban található **Adaptive application controls** (Adaptív alkalmazásvezérlők) elemet.
@@ -87,12 +87,12 @@ A **Virtuális gépek csoportjai** szakaszban három lap található:
 
 5. Ha végzett a kiválasztással, válassza a **Create** (Létrehozás) lehetőséget.
 
-Alapértelmezés szerint a Security Center minden esetben *vizsgálati* üzemmódban engedélyezi az alkalmazásvezérlést. Miután ellenőrizte, hogy az engedélyezési lista nincs negatív hatással a számítási feladatokra, átválthat *kényszerítési* üzemmódba.
-
-A Security Centernek legalább kétheti adatra van szüksége ahhoz, hogy létrehozhassa az alapkonfigurációt, és feltölthesse a virtuálisgép-csoportok szerinti egyéni javaslatokat. A Security Center standard szintű változatának új ügyfelei számíthatnak arra, hogy a virtuálisgép-csoportjaik először a *nincs javaslat* lapon jelennek meg.
-
+6. A Security Center az AppLocker beépített, Windows-szerverekre vonatkozó képességeinek felhasználásával alkalmazza a megfelelő szabályokat az egyes kiválasztott virtuális gépekre. Emellett a Security Center alapértelmezés szerint minden vizsgálati üzemmódban engedélyezi az alkalmazásvezérlést. Miután ellenőrizte, hogy az engedélyezési lista nincs negatív hatással a számítási feladatokra, átválthat **kényszerítési** üzemmódba. További információért lásd: [Az AppLocker működése](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/how-applocker-works-techref).
+ 
 > [!NOTE]
-> Ajánlott biztonsági eljárásként a Security Center minden esetben megkísérel létrehozni egy közzétételi szabályt azokra az alkalmazásokra, amelyeket engedélyezni kell, és csak akkor hoz létre elérésiút-szabályt az adott EXE fájl teljes elérési útjához, ha egy adott alkalmazás nem rendelkezik közzétevői adatokkal (azaz nincs aláírva).
+> - A Security Centernek legalább kétheti adatra van szüksége ahhoz, hogy létrehozhassa az alapkonfigurációt, és feltölthesse a virtuálisgép-csoportok szerinti egyéni javaslatokat. A Security Center standard szintű változatának új ügyfelei számíthatnak arra, hogy a virtuálisgép-csoportjaik először a *nincs javaslat* lapon jelennek meg.
+> - A Security Center Adaptív alkalmazásvezérlői nem támogatják az olyan virtuális gépeket, amelyekhez egy GPO vagy egy helyi biztonsági szabályzat már engedélyezett AppLocker-szabályzatot.
+> -  Ajánlott biztonsági eljárásként a Security Center minden esetben megkísérel létrehozni egy közzétételi szabályt azokra az alkalmazásokra, amelyeket engedélyezni kell, és csak akkor hoz létre elérésiút-szabályt az adott EXE fájl teljes elérési útjához, ha egy adott alkalmazás nem rendelkezik közzétevői adatokkal (azaz nincs aláírva).
 >   
 
 ### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>Alkalmazásvezérléssel konfigurált csoportok szerkesztése és monitorozása

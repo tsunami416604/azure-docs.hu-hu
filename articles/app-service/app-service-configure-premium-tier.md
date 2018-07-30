@@ -1,6 +1,6 @@
 ---
-title: PremiumV2 réteg konfigurálása az Azure App Service szolgáltatásban |} Microsoft Docs
-description: Útmutató a jobb teljesítmény, a webes, mobil és API-alkalmazás az Azure App Service-ben a használatát, mivel az új PremiumV2 árképzési szint.
+title: PremiumV2 szintű csomag konfigurálása az Azure App Service |} A Microsoft Docs
+description: Ismerje meg, hogyan végezhet a teljesítmény a webes, mobilos és API-alkalmazás Azure App Service-ben a méretezési lehetőségek érhetők el az új PremiumV2 tarifacsomag szerint.
 keywords: app service, azure app service, méret, méretezhető, app service-csomag, app service ára
 services: app-service
 documentationcenter: ''
@@ -13,108 +13,94 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 4c157ed905b7dc48c886b26987c164ef9a47f3c3
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 04996e772c2989be89ce551bfa45c57154de7b2d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714561"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307789"
 ---
-# <a name="configure-premiumv2-tier-for-azure-app-service"></a>Az Azure App Service-PremiumV2 szint konfigurálása
+# <a name="configure-premiumv2-tier-for-azure-app-service"></a>PremiumV2 szintű csomag konfigurálása az Azure App Service-ben
 
-Az új **PremiumV2** IP-címek lehetővé teszi az gyorsabb processzorok, SSD-re és a meglévő tarifacsomagok megduplázódik memória-core aránya. A teljesítmény előnyösebb kevesebb példányt az alkalmazások futtatásával lehetett költségtakarékosabb munkavégzésben. Ebből a cikkből megismerheti, hogyan hozzon létre egy alkalmazást a **PremiumV2** szintjüket, vagy egy alkalmazás növelheti **PremiumV2** réteg.
+Az új **PremiumV2** tarifacsomag biztosítja gyorsabb processzorokkal, SSD-tárolóval és a meglévő tarifacsomagok Double típusú értékekkel a memória-mag arány. A teljesítmény előnye az pénzt sikerült menteni az kevesebb példányt az alkalmazások futtatásával. Ebből a cikkből elsajátíthatja, hogyan hozzon létre egy alkalmazást az **PremiumV2** szinten vagy az alkalmazás vertikális felskálázása **PremiumV2** szint.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Webes alkalmazás növelni készül **PremiumV2**, telepíteni kell egy webalkalmazást az Azure App Service alacsonyabb tarifacsomagot futó **PremiumV2**.
+A vertikális felskálázás egy webalkalmazás **PremiumV2**, szüksége lesz egy webalkalmazást egy tarifacsomagot alacsonyabb, mint a futó Azure App Service-ben **PremiumV2**, és a webalkalmazás az App Service-környezet, amely támogatja a futnia kell PremiumV2.
 
 <a name="availability"></a>
 
 ## <a name="premiumv2-availability"></a>PremiumV2 rendelkezésre állása
 
-A PremiumV2 réteg érhető el jelenleg az App Service _Windows_ csak. Linux-tárolók még nem támogatottak.
+A **PremiumV2** szinten érhető el az App Service egyaránt _Windows_ , valamint _Linux_.
 
-PremiumV2 már elérhető az Azure-régiók és az egyre növekvő. Ha az elérhető az adott régióban, a következő parancsot az Azure parancssori felület a [Azure Cloud rendszerhéj](../cloud-shell/overview.md):
+**PremiumV2** a legtöbb Azure-régióban érhető el. Szeretné látni, hogy elérhető-e az Ön régiójában, az alábbi Azure CLI-paranccsal futtassa a [Azure Cloud Shell](../cloud-shell/overview.md):
 
 ```azurecli-interactive
 az appservice list-locations --sku P1V2
 ```
 
-Ha hibaüzenetet kap létrehozása vagy az alkalmazásszolgáltatási csomag létrehozása, majd során **PremiumV2** valószínűleg nem érhető el a kiválasztott régióban.
-
 <a name="create"></a>
 
-## <a name="create-an-app-in-premiumv2-tier"></a>Hozzon létre egy alkalmazást PremiumV2 rétegben
+## <a name="create-an-app-in-premiumv2-tier"></a>PremiumV2 szintű csomag az új alkalmazás létrehozása
 
-Egy App Service-alkalmazás az árképzési szint van megadva a [App Service-csomag](azure-web-sites-web-hosting-plans-in-depth-overview.md) azt futtató. App Service-csomagot is létrehozhat, önmagában, vagy a webes alkalmazás létrehozásának részeként.
+App Service-alkalmazások tarifacsomagja van definiálva a [App Service-csomag](azure-web-sites-web-hosting-plans-in-depth-overview.md) azt futtató. App Service-csomagot is létrehozhat, önmagában vagy webes alkalmazás létrehozásának részeként.
 
-Az App Service-csomag konfigurálása esetén a <a href="https://portal.azure.com" target="_blank">Azure-portálon</a>, jelölje be **tarifacsomag**. 
+Az App Service-csomag konfigurálása során a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>válassza **tarifacsomag**. 
 
-Válassza ki **éles**, majd jelölje be **P1V2**, **P2V2**, vagy **P3V2**, majd kattintson a **alkalmaz**.
+Válassza ki **éles**, majd **P1V2**, **P2V2**, vagy **P3V2**, majd kattintson a **alkalmaz**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> Ha nem lát **P1V2**, **P2V2**, és **P3V2** regisztrációja, mivel a beállításokat, vagy **PremiumV2** nem érhető el az adott régióban választott, vagy Ön a Linux App Service-csomag, amely nem támogatja a konfigurálása **PremiumV2**.
+> Ha nem lát **P1V2**, **P2V2**, és **P3V2** közül, vagy ha szürkén jelennek meg a beállítások ki, majd **PremiumV2** valószínűleg nem érhető el az alapul szolgáló App Service-környezet, amely tartalmazza az App Service-csomag. Lásd: lásd: [egy nem támogatott erőforrás csoport és a régió kombinációja a vertikális felskálázás](#unsupported) további részletekért.
 
-## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Vertikális felskálázás PremiumV2 réteghez egy meglévő alkalmazáshoz
+## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>PremiumV2 szintű csomag a meglévő alkalmazás vertikális felskálázása
 
-Egy meglévő alkalmazást, hogy skálázás előtt **PremiumV2** réteg, ellenőrizze, hogy **PremiumV2** érhető el az adott régióban. További információ: [PremiumV2 rendelkezésre állási](#availability). Ha az adott régióban nincs elérhető [vertikális felskálázás egy nem támogatott régióban](#unsupported).
+Egy meglévő alkalmazást a skálázás előtti **PremiumV2** réteg, ellenőrizze, hogy **PremiumV2** érhető el. További információ: [PremiumV2 rendelkezésre állási](#availability). Ha nem érhető el, lásd: [egy nem támogatott erőforrás csoport és a régió kombinációja a vertikális felskálázás](#unsupported).
 
-Attól függően, hogy az üzemeltetési környezetbe vertikális felskálázásával szükség lehet további lépéseket. 
+Attól függően, a üzemeltetési környezet vertikális felskálázása lehetséges, hogy további lépéseket igénylő. 
 
-Az a <a href="https://portal.azure.com" target="_blank">Azure-portálon</a>, nyissa meg az App Service alkalmazás lapját.
+Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, az App Service-alkalmazás lap megnyitásához.
 
-Válassza ki az App Service alkalmazás oldal bal oldali navigációs **vertikális felskálázás (App Service-csomag)**.
+Az App Service alkalmazás lapjának bal oldali navigációs sávján válassza **vertikális felskálázás (App Service-csomag)**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-Válassza ki **éles**, majd jelölje be **P1V2**, **P2V2**, vagy **P3V2**, majd kattintson a **alkalmaz**.
+Válassza ki **éles**, majd **P1V2**, **P2V2**, vagy **P3V2**, majd kattintson a **alkalmaz**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
-Ha a művelet sikeresen befejeződött, az alkalmazásban – áttekintés oldalra jeleníti meg, hogy mostantól egy **PremiumV2** réteg.
+Ha a művelet sikeres befejezését követően az alkalmazás áttekintése lapon azt mutatja, hogy most már egy **PremiumV2** szint.
 
 ![](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>Ha hibaüzenetet kap
 
-Egy App Service-csomagok nem vertikális felskálázás PremiumV2 csomagra. A méretezett művelet olyan hibaüzenetet ad, ha az alkalmazás egy új App Service-csomag szükséges.
-
-Hozzon létre egy _Windows_ azonos régióban és erőforrás tartozik, mint a meglévő App Service-alkalmazás az App Service-csomag. Kövesse a [hozzon létre egy alkalmazást PremiumV2 réteg](#create) állítsa be **PremiumV2** réteg. Ha azt szeretné, ugyanazt a kibővített konfigurációt használja, a meglévő App Service-csomag (száma példányok, automatikus skálázás és így tovább).
-
-Nyissa meg újra az App Service alkalmazás oldalát. Válassza ki az App Service bal oldali navigációs sáv **módosítás App Service-csomag**.
-
-![](media/app-service-configure-premium-tier/change-plan.png)
-
-Válassza ki a létrehozott App Service-csomag.
-
-![](media/app-service-configure-premium-tier/select-plan.png)
-
-Miután befejeződött a műveletet, az alkalmazás fut-e **PremiumV2** réteg.
+Néhány az App Service-csomagok nem vertikális felskálázás a PremiumV2 szintű csomag, ha az alapul szolgáló App Service-környezet PremiumV2 nem támogatja.  Lásd: [egy nem támogatott erőforrás csoport és a régió kombinációja a vertikális felskálázás](#unsupported) további részletekért.
 
 <a name="unsupported"></a>
 
-## <a name="scale-up-from-an-unsupported-region"></a>Egy nem támogatott régióban méretezése
+## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>Egy nem támogatott erőforrás csoport és a régió kombinációja a vertikális felskálázás
 
-Ha az alkalmazás fut egy régióban ahol **PremiumV2** nem érhető el, még az alkalmazás áthelyezheti egy másik régióban előnyeit **PremiumV2**. Erre két lehetősége van:
+Ha az alkalmazás fut, az App Service-környezet ahol **PremiumV2** nem érhető el, vagy ha az alkalmazás fut egy régióban jelenleg nem támogatja a **PremiumV2**, telepítse újra az alkalmazást kell használja ki **PremiumV2**.  Erre két lehetősége van:
 
-- Új alkalmazás létrehozása **PremiumV2** tervezze meg, majd telepítse újra az alkalmazás kódjában. Kövesse a [hozzon létre egy alkalmazást PremiumV2 réteg](#create) állítsa be **PremiumV2** réteg. Szükség esetén ugyanazt a kibővített konfigurációt használja, a meglévő App Service-csomag (száma példányok, automatikus skálázás és így tovább).
-- Ha az alkalmazás már fut egy meglévő **prémium** réteg, akkor átmásolhatja az alkalmazás az összes alkalmazás beállításait, a kapcsolati karakterláncok és a központi telepítés konfigurálása.
+- Hozzon létre egy **új** erőforrás csoportból, és hozzon létre egy **új** terv webalkalmazás és app Service-ben a **új** erőforráscsoport létrehozása közben a kívánt Azure-régió kiválasztása a folyamat.  Ön **kell** válassza ki a **PremiumV2** terv egyidejűleg jön létre új app service-csomag.  Ez biztosítja, hogy erőforráscsoportot, App Service-csomag együttes használata, és az Azure-régióban eredményez az App Service-csomag egy App Service-környezet, amely támogatja a létrehozás alatt álló **PremiumV2**.  Ezt követően telepítse újra az alkalmazás kódjának a újonnan létrehozott alkalmazást, és az app service-csomagot. Ha ezt követően vertikális az App Service-csomag a megfelelő **PremiumV2** menteni a költségeket, és Ön továbbra is képesek lesznek sikeresen vertikális vissza a jövőben segítségével újból **PremiumV2**.
+- Ha az alkalmazás már fut egy meglévő **prémium** tier, majd az alkalmazás összes Alkalmazásbeállítások, a kapcsolati karakterláncok és a azokat egy új app service-csomagot használó központi telepítés konfigurálása klónozhat **PremiumV2**.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    Az a **Klónozott alkalmazás** lapon is létrehozhat az App Service-csomag a régióban, és adja meg a beállításokat, klónozni szeretne.
+    Az a **alkalmazásklónozási** oldalon hozhat létre egy App Service csomag **PremiumV2** a régióban szeretne, majd adja meg az alkalmazásbeállítások és a klónozni kívánt beállításait.
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-Automatizálható az alkalmazás létrehozása a **PremiumV2** réteg parancsfájlok használata a [Azure CLI](/cli/azure/install-azure-cli) vagy [Azure PowerShell](/powershell/azure/overview).
+Automatizálható az alkalmazás-létrehozás a **PremiumV2** szint szkriptekkel, használja a [Azure CLI-vel](/cli/azure/install-azure-cli) vagy [Azure PowerShell-lel](/powershell/azure/overview).
 
 ### <a name="azure-cli"></a>Azure CLI
 
-A következő parancsot az App Service-csomagot hoz létre _P1V2_. A felhő rendszerhéj futtatható. A beállítások `--sku` P1V2, amelyek _P2V2_, és _P3V2_.
+A következő parancs létrehoz egy App Service-csomagban lévő _P1V2_. A Cloud shellben futtathatja. A lehetőségeket `--sku` P1V2, amelyek _P2V2_, és _P3V2_.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -125,7 +111,7 @@ az appservice plan create \
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A következő parancsot az App Service-csomagot hoz létre _P1V2_. A beállítások `-WorkerSize` vannak _kis_, _Közepes_, és _nagy_.
+A következő parancs létrehoz egy App Service-csomagban lévő _P1V2_. A lehetőségeket `-WorkerSize` vannak _kis_, _Közepes_, és _nagy_.
 
 ```PowerShell
 New-AzureRmAppServicePlan -ResourceGroupName <resource_group_name> `
@@ -136,5 +122,5 @@ New-AzureRmAppServicePlan -ResourceGroupName <resource_group_name> `
 ```
 ## <a name="more-resources"></a>További erőforrások
 
-[Vertikális felskálázás egy alkalmazást az Azure-ban](web-sites-scale.md)  
+[Az Azure-beli alkalmazás vertikális felskálázása](web-sites-scale.md)  
 [Példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md)

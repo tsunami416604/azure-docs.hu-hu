@@ -1,242 +1,247 @@
 ---
-title: API Java szembesülhetnek Android oktatóanyag |} Microsoft Docs
+title: Face API-oktatóanyag Java Android rendszerhez | Microsoft Docs
 titleSuffix: Microsoft Cognitive Services
-description: Hozzon létre egy egyszerű Android-alkalmazást, amely a kognitív szolgáltatások Arcfelismerési API észlelésére, és a kép emberi lapok kerete.
+description: Ebben az oktatóanyagban egy egyszerű Android-alkalmazást fogunk létrehozni, amely a Cognitive Services arcfelismerési szolgáltatása segítségével észleli és bekeretezi a képeken lévő arcokat.
 services: cognitive-services
-author: SteveMSFT
-manager: corncar
+author: noellelacharite
+manager: nolachar
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
-ms.date: 03/01/2018
-ms.author: sbowles
-ms.openlocfilehash: 5164a261d482d0cca3842a973d2109b17999bd25
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 07/12/2018
+ms.author: nolachar
+ms.openlocfilehash: ad7b85b378db9e9687b5f8081bc9832e91e9ee5e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349410"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125636"
 ---
-# <a name="getting-started-with-face-api-in-java-for-android-tutorial"></a>Ismerkedés az Arcfelismerési API-nak Java Android oktatóanyag
+# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Android-alkalmazás készítése képeken lévő arcok észleléséhez és bekeretezéséhez
 
-Ebből az oktatóanyagból megtudhatja, és hozzon létre egy egyszerű Android-alkalmazást, amely hívja meg a Arcfelismerési API emberi lapok észleléséhez a kép. Az alkalmazás az eredmény jeleníti meg, hogy az észlelt a lapok keretezési módot.
+Ebben az oktatóanyagban egy egyszerű Android-alkalmazást fogunk létrehozni, amely az arcfelismerési szolgáltatás Java-osztálytárának segítségével észleli a képeken lévő emberi arcokat. Az alkalmazás téglalappal bekeretezve jeleníti meg az összes észlelt arcot a kiválasztott képen. A teljes mintakód elérhető a GitHubon a [képeken lévő arcok észlelését és bekeretezését az Androidon](https://github.com/Azure-Samples/cognitive-services-face-android-sample) ismertető témakörben.
 
-![GettingStartedAndroid](../Images/android_getstarted2.1.PNG)
+![Android-képernyőkép egy fényképről, amelyen az arcok piros téglalappal vannak bekeretezve](../Images/android_getstarted2.1.PNG)
 
-## <a name="preparation"></a> Előkészítése
+Ez az oktatóanyag a következőket mutatja be:
 
-Az oktatóanyag használatához szüksége lesz a következő előfeltételek teljesülését:
+> [!div class="checklist"]
+> - Android-alkalmazás létrehozása
+> - Az arcfelismerési szolgáltatás ügyfélkódtárának telepítése
+> - Az ügyfélkódtár használata a képeken lévő arcok észleléséhez
+> - Keret rajzolása minden észlelt arc köré
 
-- Android Studio és az SDK telepítése
-- Android-eszköz (tesztelési nem kötelező).
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="step1"></a>1. lépés: Arcfelismerési API-szolgáltatásra, és az Előfizetés kulcs beszerzése
+- A minta futtatásához előfizetési kulcs szükséges. Ingyenes próba előfizetési kulcsot itt szerezhet: [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- [Android Studio](https://developer.android.com/studio/) legalább 22-es SDK-val (ez az arcfelismerési ügyfélkódtár számára szükséges).
+- A [com.microsoft.projectoxford:face:1.4.3](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.microsoft.projectoxford%22) arcfelismerési ügyfélkódtár a Mavenből. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
 
-Arcfelismerési API-k használatához regisztrálnia kell a Microsoft kognitív Services portálon Arcfelismerési API előfizetni. Lásd: [előfizetések](https://azure.microsoft.com/try/cognitive-services/). Elsődleges és másodlagos kulcs ebben az oktatóanyagban használható.
+## <a name="create-the-project"></a>A projekt létrehozása
 
-## <a name="step2"></a>2. lépés: Az alkalmazás-keretrendszer létrehozása
+Az Android-alkalmazásprojekt létrehozásához kövesse az alábbi lépéseket:
 
-Ebben a lépésben létrehoz egy Android-alkalmazás projekt fel, és egy kép megjelenítése az alapszintű felhasználói felület megvalósításához. Egyszerűen csak kövesse az alábbi utasításokat: 
+1. Nyissa meg az Android Studiót. Ez az oktatóanyag az Android Studio 3.1-es verzióját használja.
+1. Válassza a **Start a new Android Studio project** (Új Android Studio-projekt indítása) elemet.
+1. A **Create Android Project** (Android-projekt létrehozása) képernyőn szükség esetén módosítsa az alapértelmezett mezőket, majd kattintson a **Next** (Tovább) gombra.
+1. A **Target Android Devices** (Cél Android-eszközök) képernyőn a legördülő listából válassza az **API 22** vagy magasabb értéket, majd kattintson a **Next** (Tovább) gombra.
+1. Válassza az **Empty Activity** (Üres tevékenység) elemet, majd kattintson a **Next** (Tovább) gombra.
+1. Törölje a **Backwards Compatibility** (Visszamenőleges kompatibilitás) beállítás bejelölését, majd kattintson a **Finish** (Befejezés) gombra.
 
-1. Nyissa meg az Android Studiót.
-2. A Fájl menüben kattintson a **új projekt...**
-3. Adjon nevet az alkalmazásnak **MyFirstApp**, majd kattintson a Tovább gombra. 
+## <a name="create-the-ui-for-selecting-and-displaying-the-image"></a>A kép kiválasztására és megjelenítésére szolgáló felhasználói felület létrehozása
 
-    ![GettingStartAndroidNewProject](../Images/AndroidNewProject.png)
+Nyissa meg az *activity_main.xml* fájlt. Ekkor megjelenik a Layout Editor (Elrendezésszerkesztő). Válassza a **Text** (Szöveg) fület, majd cserélje le a tartalmat a következő kódra.
 
-4. Válassza ki a célplatform szükség szerint, és kattintson a Tovább gombra. 
+```xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    ![GettingStartAndroidNewProject2](../Images/AndroidNewProject2.png)
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageView1"
+        android:layout_above="@+id/button1"
+        android:contentDescription="Image with faces to analyze"/>
 
-5. Válassza ki **alapvető tevékenység** és kattintson a Tovább gombra.
-6. A tevékenység az alábbiak szerint nevet, és kattintson a Befejezés gombra. 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Browse for face image"
+        android:id="@+id/button1"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+```
 
-    ![GettingStartAndroidNewProject4](../Images/AndroidNewProject4.png)
+Nyissa meg a *MainActivity.java* elemet, majd cseréljen le mindent a következő kódra az első `package` utasítást kivéve.
 
-7. Nyissa meg **activity_main.xml**, elrendezés szerkesztővel, ezzel a tevékenységgel kell megjelennie.
-8. Forrás szövegfájl megtekintése, és módosítsa a tevékenység elrendezés az alábbiak szerint:
+A kód beállít egy eseménykezelőt a `Button` elemre, amely elindít egy új tevékenységet. Ez lehetővé teszi a felhasználó számára, hogy kiválasszon egy képet. A kiválasztott kép megjelenik az `ImageView` elemben.
 
-    ```xml
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
-     
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/imageView1"
-            android:layout_above="@+id/button1" />
-    
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Browse"
-            android:id="@+id/button1"
-            android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-    ```  
+```java
+import java.io.*;
+import android.app.*;
+import android.content.*;
+import android.net.*;
+import android.os.*;
+import android.view.*;
+import android.graphics.*;
+import android.widget.*;
+import android.provider.*;
 
-9. Nyissa meg **MainActivity.java** és a fájl elején a következő importálási irányelveket:
-
-    ```java
-    import java.io.*; 
-    import android.app.*; 
-    import android.content.*; 
-    import android.net.*; 
-    import android.os.*; 
-    import android.view.*; 
-    import android.graphics.*; 
-    import android.widget.*; 
-    import android.provider.*;
-    ```
-      
-    Másodszor módosítsa az osztály az alábbiak szerint:  
-    
-    ```java
+public class MainActivity extends Activity {
     private final int PICK_IMAGE = 1;
     private ProgressDialog detectionProgressDialog;
-         
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-           super.onCreate(savedInstanceState);
-           setContentView(R.layout.activity_main);
-           Button button1 = (Button)findViewById(R.id.button1);
-           button1.setOnClickListener(new View.OnClickListener() {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            Button button1 = (Button)findViewById(R.id.button1);
+            button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                Intent gallIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                gallIntent.setType("image/*");
-                startActivityForResult(Intent.createChooser(gallIntent, "Select Picture"), PICK_IMAGE);
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(
+                        intent, "Select Picture"), PICK_IMAGE);
             }
         });
-         
+
         detectionProgressDialog = new ProgressDialog(this);
     }
-    
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK &&
+                data != null && data.getData() != null) {
             Uri uri = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(
+                        getContentResolver(), uri);
                 ImageView imageView = (ImageView) findViewById(R.id.imageView1);
                 imageView.setImageBitmap(bitmap);
+
+                // Uncomment
+                //detectAndFrame(bitmap);
                 } catch (IOException e) {
-                e.printStackTrace();
+                    e.printStackTrace();
                 }
         }
     }
-    ```
-
-Az alkalmazás most már a gyűjteményből fénykép kereshetnek és megjeleníti azt az alábbi képen hasonló ablakban:
-
-![GettingStartAndroidUI](../Images/android_getstarted1.1.PNG)
-
-## <a name="step3"></a>3. lépés: Konfigurálja a Arcfelismerési API ügyféloldali kódtár
-
-A Arcfelismerési API hívhat meg HTTPS használatával API-kérelmek felhő. Több kényelmesen a Arcfelismerési API használatával a .NET alkalmazások egy ügyfélkönyvtárat is biztosítja a foglalják magukban a webes kérelmek. Ebben a példában az ügyféloldali kódtár használjuk a munkahelyi leegyszerűsítése érdekében. 
-
-Hajtsa végre az ügyféloldali kódtár konfigurálása az alábbi utasításokat: 
-
-1. Keresse meg a legfelső szintű **build.gradle** fájlt a projekt a projekt panelről a példában látható módon. Vegye figyelembe, hogy nincsenek számos más **build.gradle** fájlok a projekt fa, és meg kell nyitnia a legfelső szintű **build.gradle** először fájlt.
-2. Adja hozzá **mavenCentral()** a projektek adattárak számára. Jcenter(), amely az alapértelmezett tárház Android Studio, mivel jcenter() felülbírálja a mavenCentral() is használható.  
-
-```
-    allprojects {
-        repositories {
-            ...
-            mavenCentral()
-        }
-    }
+}
 ```
 
-3. Nyissa meg a **build.gradle** fájlt a "app" projektben.
-4. Az ügyféloldali kódtára a Maven központi tárházban tárolt függőségei hozzáadása:
+Ekkor az alkalmazás keres és megjelenít egy fényképet az ablakban az alábbi képen láthatóhoz hasonlóan.
 
-```
-    dependencies {  
-        ...  
-        implementation 'com.microsoft.projectoxford:face:1.4.3'  
-    }
-```
+![Android-képernyőkép egy fényképről, amelyen arcok láthatóak](../Images/android_getstarted1.1.PNG)
 
-5. Nyissa meg **MainActivity.java** a "app" projektben és a Beszúrás a következő importálási irányelveket: 
-    
-    ```java
-    import com.microsoft.projectoxford.face.*;  
-    import com.microsoft.projectoxford.face.contract.*;  
-    ```
-    
-   Ezután helyezze be a következő kódot az osztályban:
+## <a name="configure-the-face-client-library"></a>Az arcfelismerési ügyfélkódtár konfigurálása
 
-    ```java
-    private FaceServiceClient faceServiceClient = new FaceServiceRestClient("your API endpoint", "<Subscription Key>");
-    ```
+A Face API egy felhőalapú API, amely HTTPS-kérések használatával hívható meg. Ez az oktatóanyag az arcfelismerési ügyfélkódtárat használja, amely magában foglalja ezeket a webes kéréseket, hogy megkönnyítse az Ön munkáját.
 
-   Az első paraméter fent cserélje le az API-végpontot, amely a kulcs 1. lépésben lett hozzárendelve. Példa:
-   
-        https://eastus2.api.cognitive.microsoft.com/face/v1.0
-   
-   A második paraméter cserélje le az Előfizetés kulcs 1. lépésben beszerzett.
-   
-6. Nyissa meg a fájlt **AndroidManifest.xml** az "app" projektben. Helyezze be a következő elem gyermekeként a **manifest** elem:  
+A **Project** (Projekt) panelen válassza az **Android** elemet a legördülő listából. Bontsa ki a **Gradle Scripts** (Gradle-szkriptek) elemet, majd nyissa meg a *build.gradle (Module: app)* elemet.
 
-    ```xml
-    <uses-permission android:name="android.permission.INTERNET" />  
-    ```
+Adjon hozzá egy függőséget a `com.microsoft.projectoxford:face:1.4.3` arcfelismerési ügyfélkódtárhoz, ahogyan az az alábbi képernyőképen látható, majd kattintson a **Sync Now** (Szinkronizálás most) gombra.
 
-7. Most már készen áll a Arcfelismerési API hívása az alkalmazásból. 
+![Android Studio-képernyőkép az alkalmazás build.gradle fájljáról](../Images/face-tut-java-gradle.png)
 
-## <a name="step4"></a>4. lépés: A lapok észleléséhez képek feltöltése
-
-A legegyszerűbb lapok észlelése módja meghívásával a [szembesülhetnek – észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API közvetlenül a bináris fájl feltöltésével. Az ügyféloldali kódtár használata esetén ezt megteheti aszinkron módon **DetectAsync** , a **FaceServiceClient** osztály. Minden visszaadott lapot tartalmaz egy téglalapot elfoglalt helye választható arcfelismerési attribútumok sorozata együtt. Ebben a példában csak kell lekérni a tapasztalt helyét. Itt igazolnia kell a metódus beszúrása a **MainActivity** osztály arcfelismerési észleléséhez: 
+Nyissa meg a **MainActivity.java** fájlt, és fűzze hozzá a következő importálási irányelveket:
 
 ```java
+import com.microsoft.projectoxford.face.*;
+import com.microsoft.projectoxford.face.contract.*;
+```
 
-    // Detect faces by uploading face images
-    // Frame faces after detection
-    
-    private void detectAndFrame(final Bitmap imageBitmap)
-    {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-        ByteArrayInputStream inputStream = 
+## <a name="add-the-face-client-library-code"></a>Az arcfelismerési ügyfélkódtár kódjának hozzáadása
+
+Illessze be az alábbi kódot az `onCreate` metódus fölötti `MainActivity` osztályba:
+
+```java
+private final String apiEndpoint = "<API endpoint>";
+private final String subscriptionKey = "<Subscription Key>";
+
+private final FaceServiceClient faceServiceClient =
+        new FaceServiceRestClient(apiEndpoint, subscriptionKey);
+```
+
+Az `<API endpoint>` helyett írja be a kulcshoz rendelt API-végpontot. Az ingyenes próba előfizetési kulcsok létrehozásának helye a **westcentralus** régió. Tehát ha ingyenes próba előfizetési kulcsot használ, az utasítás legyen a következő:
+
+```java
+apiEndpoint = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+```
+
+A `<Subscription Key>` helyére írja be az előfizetési kulcsot. Például:
+
+```java
+subscriptionKey = "0123456789abcdef0123456789ABCDEF"
+```
+
+A **Project** (Projekt) panelen bontsa ki az **app** elemet, majd a **manifests** elemet, és nyissa meg az *AndroidManifest.xml* fájlt.
+
+Illessze be a következő elemet a `manifest` elem közvetlen gyermekeként:
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
+Hozza létre a projektet a hibák ellenőrzéséhez. Most már készen áll arra, hogy meghívja az arcfelismerési szolgáltatást.
+
+## <a name="upload-an-image-to-detect-faces"></a>Képek feltöltése arcok észleléséhez
+
+Az arcok észlelésének legegyszerűbb módja a `FaceServiceClient.detect` metódus meghívása. Ez a metódus becsomagolja az [észlelési](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API-metódust, és `Face` elemek tömbjét adja vissza.
+
+Minden visszaadott `Face` elem egy téglalapot foglal magában, amely jelzi annak helyét és esetleg további választható arcattribútumokat. Ebben a példában csak az arcok helye szükséges.
+
+Hiba esetén egy megjelenő `AlertDialog` jelzi annak okát.
+
+Illessze be a következő metódusokat a `MainActivity` osztályba.
+
+```java
+// Detect faces by uploading a face image.
+// Frame faces after detection.
+private void detectAndFrame(final Bitmap imageBitmap) {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+    ByteArrayInputStream inputStream =
             new ByteArrayInputStream(outputStream.toByteArray());
-        AsyncTask<InputStream, String, Face[]> detectTask =
+
+    AsyncTask<InputStream, String, Face[]> detectTask =
             new AsyncTask<InputStream, String, Face[]>() {
+                String exceptionMessage = "";
+
                 @Override
                 protected Face[] doInBackground(InputStream... params) {
                     try {
                         publishProgress("Detecting...");
                         Face[] result = faceServiceClient.detect(
-                                params[0], 
+                                params[0],
                                 true,         // returnFaceId
                                 false,        // returnFaceLandmarks
-                                null           // returnFaceAttributes: a string like "age, gender"
-                /* If you want value of FaceAttributes, try adding 4th argument like below.
-                            new FaceServiceClient.FaceAttributeType[] {
-                    FaceServiceClient.FaceAttributeType.Age,
-                    FaceServiceClient.FaceAttributeType.Gender }
-                */              
+                                null          // returnFaceAttributes:
+                                /* new FaceServiceClient.FaceAttributeType[] {
+                                    FaceServiceClient.FaceAttributeType.Age,
+                                    FaceServiceClient.FaceAttributeType.Gender }
+                                */
                         );
-                        if (result == null)
-                        {
-                            publishProgress("Detection Finished. Nothing detected");
+                        if (result == null){
+                            publishProgress(
+                                    "Detection Finished. Nothing detected");
                             return null;
                         }
-                        publishProgress(
-                                String.format("Detection Finished. %d face(s) detected",
-                                        result.length));
+                        publishProgress(String.format(
+                                "Detection Finished. %d face(s) detected",
+                                result.length));
                         return result;
                     } catch (Exception e) {
-                        publishProgress("Detection failed");
+                        exceptionMessage = String.format(
+                                "Detection failed: %s", e.getMessage());
                         return null;
                     }
                 }
+
                 @Override
                 protected void onPreExecute() {
                     //TODO: show progress dialog
@@ -250,92 +255,118 @@ A legegyszerűbb lapok észlelése módja meghívásával a [szembesülhetnek �
                     //TODO: update face frames
                 }
             };
-        detectTask.execute(inputStream);
-    }
+
+    detectTask.execute(inputStream);
+}
+
+private void showError(String message) {
+    new AlertDialog.Builder(this)
+    .setTitle("Error")
+    .setMessage(message)
+    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+        }})
+    .create().show();
+}
 ```
 
-## <a name="step5"></a>5. lépés: Az be van jelölve a kép néz.
+## <a name="frame-faces-in-the-image"></a>A képeken lévő arcok bekeretezése
 
-Ezen utolsó lépésében azt együtt kombinálhatja a fenti lépéseket, és jelölje a lemezképet a keretek észlelt lapokat. Első lépésként nyissa meg a **MainActivity.java** , majd szúrja be egy segédmetódust téglalapok megrajzolásához: 
-
-```java
-    private static Bitmap drawFaceRectanglesOnBitmap(Bitmap originalBitmap, Face[] faces) {
-        Bitmap bitmap = originalBitmap.copy(Bitmap.Config.ARGB_8888, true);
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(Color.RED);
-        int stokeWidth = 2;
-        paint.setStrokeWidth(stokeWidth);
-        if (faces != null) {
-            for (Face face : faces) {
-                FaceRectangle faceRectangle = face.faceRectangle;
-                canvas.drawRect(
-                        faceRectangle.left,
-                        faceRectangle.top,
-                        faceRectangle.left + faceRectangle.width,
-                        faceRectangle.top + faceRectangle.height,
-                        paint);
-            }
-        }
-        return bitmap;
-    }
-```
-
-Most Befejezés a Teendőlista részt a **detectAndFrame** metódus keret lapokat, és jelentse állapotát.
+Illessze be a következő segédmetódust a `MainActivity` osztályba. Ez a módszer téglalapot rajzol minden észlelt arc köré.
 
 ```java
-    @Override
-    protected void onPreExecute() {
-        detectionProgressDialog.show();
-    }
-    @Override
-    protected void onProgressUpdate(String... progress) {
-        detectionProgressDialog.setMessage(progress[0]);
-    }
-    @Override
-    protected void onPostExecute(Face[] result) {
-        detectionProgressDialog.dismiss();
-        if (result == null) return;
-        ImageView imageView = (ImageView)findViewById(R.id.imageView1);
-        imageView.setImageBitmap(drawFaceRectanglesOnBitmap(imageBitmap, result));
-        imageBitmap.recycle();
-    }
-```
- 
-Végül adjon hozzá egy a **detectAndFrame** metódust a **onActivityResult** metódust, az alább látható módon. 
-
-```java
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri uri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                ImageView imageView = (ImageView) findViewById(R.id.imageView1);
-                imageView.setImageBitmap(bitmap);
-     
-                // This is the new addition.
-                // detectAndFrame(bitmap);
-     
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+private static Bitmap drawFaceRectanglesOnBitmap(
+        Bitmap originalBitmap, Face[] faces) {
+    Bitmap bitmap = originalBitmap.copy(Bitmap.Config.ARGB_8888, true);
+    Canvas canvas = new Canvas(bitmap);
+    Paint paint = new Paint();
+    paint.setAntiAlias(true);
+    paint.setStyle(Paint.Style.STROKE);
+    paint.setColor(Color.RED);
+    paint.setStrokeWidth(10);
+    if (faces != null) {
+        for (Face face : faces) {
+            FaceRectangle faceRectangle = face.faceRectangle;
+            canvas.drawRect(
+                    faceRectangle.left,
+                    faceRectangle.top,
+                    faceRectangle.left + faceRectangle.width,
+                    faceRectangle.top + faceRectangle.height,
+                    paint);
         }
     }
+    return bitmap;
+}
 ```
 
-Futtassa az alkalmazás és egy ARC tartalmazó kép keresse meg. Várjon, amíg a felhő API válaszolni néhány másodpercig. Ezt követően elérhetővé válik egy eredményt a hasonló az alábbi képen: 
+Végezze el az `AsyncTask` metódusokat, amelyeket `TODO` megjegyzések jelölnek a `detectAndFrame` metódusban. Sikeres művelet esetén a kiválasztott kép megjelenik a bekeretezett arcokkal az `ImageView` elemben.
+
+```java
+@Override
+protected void onPreExecute() {
+    detectionProgressDialog.show();
+}
+@Override
+protected void onProgressUpdate(String... progress) {
+    detectionProgressDialog.setMessage(progress[0]);
+}
+@Override
+protected void onPostExecute(Face[] result) {
+    detectionProgressDialog.dismiss();
+    if(!exceptionMessage.equals("")){
+        showError(exceptionMessage);
+    }
+    if (result == null) return;
+    ImageView imageView = findViewById(R.id.imageView1);
+    imageView.setImageBitmap(
+            drawFaceRectanglesOnBitmap(imageBitmap, result));
+    imageBitmap.recycle();
+}
+```
+
+Végül az `onActivityResult` metódusban távolítsa el a megjegyzés jelölést a `detectAndFrame` metódus hívása mellől.
+
+```java
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (requestCode == PICK_IMAGE && resultCode == RESULT_OK &&
+                data != null && data.getData() != null) {
+        Uri uri = data.getData();
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(
+                    getContentResolver(), uri);
+            ImageView imageView = findViewById(R.id.imageView1);
+            imageView.setImageBitmap(bitmap);
+
+            // Uncomment
+            detectAndFrame(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+## <a name="run-the-app"></a>Az alkalmazás futtatása
+
+Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. Várjon néhány másodpercet, amíg az arcfelismerési szolgáltatás válaszol. Ezután az eredmény az alábbi képhez hasonló lesz:
 
 ![GettingStartAndroid](../Images/android_getstarted2.1.PNG)
 
-## <a name="summary"></a> Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Ebben az oktatóanyagban megtanulta, a folyamat alapvetően a Arcfelismerési API használatával, és az alkalmazások arcfelismerési jelek megjelenő képek. A Arcfelismerési API-val további információkért tekintse meg az útmutató és [API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236). 
+Ebben az oktatóanyagban megismerte az arcfelismerési szolgáltatás használatához szükséges alapvető folyamatot, és létrehozott egy alkalmazást, amely bekeretezett arcokat jelenít meg a képeken.
 
-## <a name="related"></a> Kapcsolódó oktatóprogramok
+## <a name="next-steps"></a>További lépések
 
-- [A csharp nyelvű oktatóprogram Ismerkedés a Arcfelismerési API](FaceAPIinCSharpTutorial.md)
-- [Az oktatóanyag a Python Ismerkedés a Arcfelismerési API](FaceAPIinPythonTutorial.md)
+További tudnivalók arcok részeinek észleléséről és használatáról.
+
+> [!div class="nextstepaction"]
+> [Arcok észlelése egy képen](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
+
+Felfedezheti a Face API-kat, amelyek arcok és azok attribútumai, például testtartás, nem, kor, fejtartás, arcszőrzet és szemüveg észleléséhez használhatóak.
+
+> [!div class="nextstepaction"]
+> [Face API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).

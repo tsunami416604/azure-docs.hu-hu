@@ -1,6 +1,6 @@
 ---
-title: Linuxos VM-beli, felhasználóhoz rendelt MSI használata az Azure Resource Manager eléréséhez
-description: Oktatóanyag, amely végigvezeti az Azure Resource Manager Linux VM-beli, felhasználóhoz rendelt felügyeltszolgáltatás-identitással (MSI) való elérésének folyamatán.
+title: Az Azure Resource Manager elérése Linux VM-beli, felhasználó által hozzárendelt felügyeltszolgáltatás-identitással
+description: Oktatóanyag, amely végigvezeti az Azure Resource Manager Linux VM-beli, felhasználó által hozzárendelt felügyeltszolgáltatás-identitással való elérésének folyamatán.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 06abd7867a99c20597ed17faf6fa61b91f70baaa
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c2735d385b0a3c2201ec2dad83c0c32fe44d458c
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007706"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258243"
 ---
 # <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Oktatóanyag: Az Azure Resource Manager Linux VM-beli, felhasználóhoz rendelt identitással való elérése.
 
@@ -72,7 +72,7 @@ Ebben az oktatóanyagban egy új Linux rendszerű virtuális gépet hozunk létr
     az login
     ```
 
-2. Hozzon létre egy felhasználóhoz rendelt identitást az [az identity create](/cli/azure/identity#az_identity_create) paranccsal. A `-g` paraméter adja meg azt az erőforráscsoportot, amelyben az MSI létre lesz hozva, a `-n` paraméter pedig a nevét határozza meg. Ne felejtse el a `<RESOURCE GROUP>` és `<MSI NAME>` paraméterek értékeit a saját értékeire cserélni:
+2. Hozzon létre egy felhasználóhoz rendelt identitást az [az identity create](/cli/azure/identity#az_identity_create) paranccsal. A `-g` paraméter adja meg azt az erőforráscsoportot, amelyben a felügyeltszolgáltatás-identitás létre lesz hozva, a `-n` paraméter pedig a nevét határozza meg. Ne felejtse el a `<RESOURCE GROUP>` és `<MSI NAME>` paraméterek értékeit a saját értékeire cserélni:
     
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -102,7 +102,7 @@ A válasz tartalmazza az imént létrehozott felhasználóhoz rendelt identitás
 
 A felhasználóhoz rendelt identitást az ügyfelek több Azure-erőforrás esetében is használhatják. Az alábbi parancsokkal rendelhet felhasználóhoz rendelt identitást egyetlen virtuális géphez. Ehhez használja az előző lépésben az `-IdentityID` paraméter esetében visszaadott `Id` tulajdonságot.
 
-Rendelje hozzá a felhasználóhoz rendelt MSI-t a Linux rendszerű virtuális géphez az [az vm assign-identity](/cli/azure/vm#az_vm_assign_identity) paranccsal. Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. Ehhez használja az előző lépésben az `--identities` paraméterérték esetében visszaadott `id` tulajdonságot.
+Rendelje hozzá a felhasználó által hozzárendelt felügyeltszolgáltatás-identitást a Linux rendszerű virtuális géphez az [az vm assign-identity](/cli/azure/vm#az_vm_assign_identity) paranccsal. Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. Ehhez használja az előző lépésben az `--identities` paraméterérték esetében visszaadott `id` tulajdonságot.
 
 ```azurecli-interactive
 az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>"

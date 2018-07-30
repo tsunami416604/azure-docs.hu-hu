@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4dbb8b7abf6da77115d0e1d12621ec20ec60d174
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: dcb142b8b648f3f02855cb211789a4dee62183c0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035200"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145580"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -81,7 +81,7 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 
 * A Kubernetes egyszerű szolgáltatása része a fürtkonfigurációnak. Azonban nem ajánlott az identitást használni a fürt üzembe helyezésére.
 * Minden egyszerű szolgáltatás társítva van egy Azure AD-alkalmazáshoz. A Kubernetes-fürt egyszerű szolgáltatása társítható bármilyen érvényes Azure AD-alkalmazásnévhez (például: `https://www.contoso.org/example`). Az alkalmazás URL-címének nem szükséges valódi végpontnak lennie.
-* Amikor megadja az egyszerű szolgáltatásnév **ügyfél-azonosítóját**, használja az `appId` értékét (ahogyan az a cikkben látható) vagy a megfelelő egyszerű szolgáltatásnév `name` értékét (például: `https://www.contoso.org/example`).
+* Amikor megadja a szolgáltatásnév **ügyfél-azonosítóját**, használja az `appId` értékét.
 * A Kubernetes-fürt mester és csomópont virtuális gépein az egyszerű szolgáltatás hitelesítő adatai az `/etc/kubernetes/azure.json` fájlban lesznek tárolva.
 * Ha az `az aks create` parancsot használja az egyszerű szolgáltatás automatikus létrehozásához, az egyszerű szolgáltatás hitelesítő adatai a `~/.azure/aksServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
 * Az `az aks create` használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott szolgáltatásnév nem törlődik. A szolgáltatásnév törléséhez először szerezze be annak azonosítóját az [az ad app list][az-ad-app-list] paranccsal. Az alábbi példa lekérdezi a *myAKSCluster* nevű fürtöt, majd törli az alkalmazásazonosítót az [az ad app delete][az-ad-app-delete] paranccsal. Helyettesítse ezeket a neveket a saját értékeivel:

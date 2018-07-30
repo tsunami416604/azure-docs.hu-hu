@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 93c9f42df1136f242a5a04dc3056e0b1595cfb02
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: facf2de40c555ccd79fe73543a85f0b5cc150450
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933442"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247483"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 
@@ -127,7 +127,7 @@ A Visual Studióból létrehozhat további tereket, amelyek akkor lesznek haszn�
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. A **Tér hozzáadása** párbeszédablakban adjon egy nevet a térnek, majd kattintson az **OK** gombra. Használhatja a saját nevét (pl.: „scott”) az új térhez, így munkatársai számára is könnyen beazonosítható a munkájához használt tér.
+6. A **Tér hozzáadása** párbeszédablakban állítsa **alapértelmezett** értékre a szülőteret, majd adjon nevet az új térnek. Használhatja a saját nevét (pl.: „scott”) az új térhez, így munkatársai számára is könnyen beazonosítható a munkájához használt tér. Kattintson az **OK** gombra.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Linux virtuális gép MSI identitásának használata az Azure Storage eléréséhez SAS-hitelesítő adatokkal
-description: Oktatóanyag, amely bemutatja, hogyan használhatja a Linux virtuális gép MSI-identitását az Azure Storage elérésére a tárelérési kulcs helyett SAS-hitelesítő adatok használatával.
+title: Az Azure Storage elérése SAS-hitelesítő adatok használatával Linux VM-beli felügyeltszolgáltatás-identitással
+description: Oktatóanyag, amely bemutatja, hogyan használhatja a Linux virtuális gép felügyeltszolgáltatás-identitását az Azure Storage elérésére a tárelérési kulcs helyett SAS-hitelesítő adatok használatával.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: adf3df6dd9163ef40b4f953c07fce6a18b5ab30f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a8eb733cf90d0160fe4b36cfb8c30df3ff19566e
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044274"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258499"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Az Azure Storage elérése SAS-hitelesítő adatok használatával Linux VM-beli felügyeltszolgáltatás-identitással
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyeltszolgáltatás-identitást (MSI) egy Linux virtuális gépen, majd hogyan használhatja ezt az identitást egy tároló közös hozzáférésű jogosultságkódú (SAS) hitelesítő adatai lekérésére. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
+Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyeltszolgáltatás-identitást egy Linux virtuális gépen, majd hogyan használhatja ezt az identitást egy tároló közös hozzáférésű jogosultságkódú (SAS) hitelesítő adatai lekérésére. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
 
 A szolgáltatási SAS segítségével korlátozott hozzáférési lehetőséget biztosíthat a tárfiókjában található objektumokhoz, korlátozott időre és egy adott szolgáltatáshoz (esetünkben egy Blob szolgáltatáshoz) anélkül, hogy ki kellene adnia a tárfiók hozzáférési kulcsát. A SAS-hitelesítő adatokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban a blobok az Azure Storage CLI használatával való fel- és letöltését mutatjuk be. Az alábbiakat fogja elsajátítani:
 
 
 > [!div class="checklist"]
-> * MSI engedélyezése Linux rendszerű virtuális gépen 
+> * Felügyeltszolgáltatás-identitás engedélyezése Linux rendszerű virtuális gépen 
 > * Hozzáférés engedélyezése virtuális gép számára a tárfiók a Resource Managerben lévő SAS-adataihoz 
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd a SAS-adatok lekérése a Resource Managerből annak használatával 
 
@@ -47,7 +47,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Linux rendszerű virtuális gép létrehozása új erőforráscsoportban
 
-Ebben az oktatóanyagban egy új linuxos virtuális gépet hozunk létre. A meglévő virtuális gépeken is engedélyezheti az MSI-t.
+Ebben az oktatóanyagban egy új linuxos virtuális gépet hozunk létre. A meglévő virtuális gépeken is engedélyezheti a felügyeltszolgáltatás-identitást.
 
 1. Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
@@ -59,20 +59,20 @@ Ebben az oktatóanyagban egy új linuxos virtuális gépet hozunk létre. A megl
 5. Ha a virtuális gépet egy új **Erőforráscsoportban** szeretné létrehozni, válassza az **Új létrehozása** elemet. Amikor végzett, kattintson az **OK** gombra.
 6. Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a Támogatott lemeztípus szűrőt. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-## <a name="enable-msi-on-your-vm"></a>MSI engedélyezése a virtuális gépen
+## <a name="enable-managed-service-identity-on-your-vm"></a>Felügyeltszolgáltatás-identitás engedélyezése a virtuális gépen
 
-A virtuális gép MSI-vel anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A felügyeltszolgáltatás-identitás VM-en való engedélyezése két dolgot tesz: regisztrálja a VM-et az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a VM-en. 
+A virtuális gép felügyeltszolgáltatás-identitásával anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A felügyeltszolgáltatás-identitás VM-en való engedélyezése két dolgot tesz: regisztrálja a VM-et az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a VM-en. 
 
 1. Lépjen az új virtuális gép erőforráscsoportjára, és válassza ki az előző lépésben létrehozott virtuális gépet.
 2. A virtuális gép bal oldalon található „Beállításai” között kattintson a **Konfiguráció** elemre.
-3. Az MSI regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra.
+3. A felügyeltszolgáltatás-identitás regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra.
 4. Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.
 
     ![Helyettesítő képszöveg](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
-Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt a lépést, és a VM MSI számára biztosíthat hozzáférést egy meglévő tárfiók kulcsaihoz. 
+Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt a lépést, és a VM-beli felügyeltszolgáltatás-identitás számára biztosíthat hozzáférést egy meglévő tárfiók kulcsaihoz. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
 2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre, amit követően megjelenik egy új „Tárfiók létrehozása” panel.
@@ -94,9 +94,9 @@ Később feltöltünk egy fájlt az új tárfiókba, majd letöltjük abból. Mi
 
     ![Storage-tároló létrehozása](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>Hozzáférés engedélyezése virtuális gép MSI-identitása számára a tároló SAS-adatainak használatához 
+## <a name="grant-your-vms-managed-service-identity-access-to-use-a-storage-sas"></a>Hozzáférés engedélyezése virtuális gép felügyeltszolgáltatás-identitása számára a tároló SAS-adatainak használatához 
 
-Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Az MSI használatával azonban lekérheti a tároló SAS-adatait a Resource Managerből, majd a SAS-adatokkal elérheti a tárolót.  Ebben a lépésben hozzáférést biztosít a virtuális gép MSI-identitása számára a tárfiók SAS-adataihoz.   
+Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  A felügyeltszolgáltatás-identitás használatával azonban lekérheti egy tároló SAS-adatait a Resource Managerből, majd a SAS-adatokkal elérheti a tárolót.  Ebben a lépésben hozzáférést biztosít a virtuális gép felügyeltszolgáltatás-identitása számára a tárfiók SAS-adataihoz.   
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.   
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  

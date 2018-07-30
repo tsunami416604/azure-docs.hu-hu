@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: charwen,cherylmc
-ms.openlocfilehash: 9b0e19ac859d3f0185c42a79353651996fcbf631
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: cdeda7d72461f35c138f12ca9b2758cdba44d5f6
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823563"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259255"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ Két különböző eljáráscsoport közül választhat. A konfigurálás válas
     Ha még nem rendelkezik virtuális hálózattal, ez az eljárás lépésről lépésre végigvezeti az új virtuális hálózat létrehozásának folyamatán a Resource Manager-alapú üzemi modellnek megfelelően, valamint az új ExpressRoute- és helyek közötti VPN-kapcsolatok létrehozásának folyamatán. Virtuális hálózat konfigurálásához kövesse az [Új virtuális hálózat és egyidejű kapcsolatok létrehozása](#new) szakaszban foglalt lépéseket.
 * Már rendelkezem egy Resource Manager-alapú üzemi modell szerinti VNettel.
   
-    Előfordulhat, hogy már rendelkezik üzemelő virtuális hálózattal egy létező helyek közötti VPN- vagy ExpressRoute-kapcsolattal. E forgatókönyv szerint, ha az átjáró alhálózati maszkja /28 vagy nagyobb, akkor törölnie kell a meglévő átjárót. Az [Egyidejű kapcsolatok konfigurálása meglévő VNet számára](#add) szakasz végigvezeti az átjáró törlésének, majd az új ExpressRoute- és helyek között VPN-kapcsolatok létrehozásának folyamatán.
+    Előfordulhat, hogy már rendelkezik üzemelő virtuális hálózattal egy létező helyek közötti VPN- vagy ExpressRoute-kapcsolattal. Ebben a forgatókönyvben, ha az átjáró alhálózati maszkja /28 vagy kisebb (/28, /29 stb.), akkor törölnie kell a meglévő átjárót. Az [Egyidejű kapcsolatok konfigurálása meglévő VNet számára](#add) szakasz végigvezeti az átjáró törlésének, majd az új ExpressRoute- és helyek között VPN-kapcsolatok létrehozásának folyamatán.
   
     Ha törli és újra létrehozza az átjárót, akkor a létesítmények közötti kapcsolatoknál állásidő fog jelentkezni. Azonban, ha megfelelően vannak konfigurálva, a virtuális gépek és a szolgáltatások továbbra is képesek lesznek kommunikálni a terheléselosztón keresztül az átjáró konfigurálása közben.
 
@@ -91,7 +91,7 @@ Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és
   Select-AzureRmSubscription -SubscriptionName 'yoursubscription'
   $location = "Central US"
   $resgrp = New-AzureRmResourceGroup -Name "ErVpnCoex" -Location $location
-  $VNetASN = 65010
+  $VNetASN = 65515
   ```
 3. Hozzon létre egy virtuális hálózatot az átjáró-alhálózattal együtt. A virtuális hálózatok létrehozásával kapcsolatos további információkért lásd a [virtuális hálózatok létrehozásával](../virtual-network/manage-virtual-network.md#create-a-virtual-network) foglalkozó témakört. Az alhálózatok létrehozásával kapcsolatos további információkért lásd az [alhálózatok létrehozásával](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) foglalkozó témakört.
    

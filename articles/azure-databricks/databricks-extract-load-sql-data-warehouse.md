@@ -1,24 +1,22 @@
 ---
-title: 'Oktatóanyag: ETL-műveletek végrehajtása az Azure Databricks használatával | Microsoft Docs'
+title: 'Oktatóanyag: ETL-műveletek végrehajtása az Azure Databricks használatával'
 description: Ismerje meg hogyan nyerhet ki adatokat a Data Lake Store-ból az Azure Databricksbe, hogyan alakíthatja át az adatokat, és hogyan töltheti be őket az Azure SQL Data Warehouse-ba.
 services: azure-databricks
-documentationcenter: ''
 author: nitinme
+ms.author: nitinme
 manager: cgronlun
 editor: cgronlun
 ms.service: azure-databricks
 ms.custom: mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/23/2018
-ms.author: nitinme
-ms.openlocfilehash: c3aa87f2c74175d1b61a8db6a9c7a0318a408658
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 07/23/2018
+ms.openlocfilehash: 7f0354413932aef8a27b09ebac542ad1b8f375e1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223830"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
 
@@ -53,13 +51,13 @@ Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következ�
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
 Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával. 
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Adatok + analitika** > **Azure Databricks** elemet. 
+1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Adatok + analitika** > **Azure Databricks** elemet.
 
     ![Databricks az Azure Portalon](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks az Azure Portalon")
 
@@ -194,22 +192,6 @@ Ha programozott módon jelentkezik be, át kell adnia a bérlőazonosítót a hi
 
    ![bérlőazonosító](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png) 
 
-### <a name="associate-service-principal-with-azure-data-lake-store"></a>Szolgáltatásnév társítása az Azure Data Lake Store-ral
-
-Ebben a szakaszban társítja az Azure Data Lake Store-fiókot a létrehozott Azure Active Directory-szolgáltatásnévvel. Ezzel biztosítja, hogy el lehessen érni a Data Lake Store-fiókot az Azure Databricksből.
-
-1. Az [Azure Portalon](https://portal.azure.com) válassza ki a létrehozott Data Lake Store-fiókot.
-
-2. A bal oldali panelen válassza ki a **Hozzáférés-vezérlés** > **Hozzáadás** elemet.
-
-    ![Data Lake Store-hozzáférés hozzáadása](./media/databricks-extract-load-sql-data-warehouse/add-adls-access.png "Data Lake Store-hozzáférés hozzáadása")
-
-3. Az **Engedélyek hozzáadása** területen válassza ki a szerepkört, amelyet hozzá kíván rendelni a szolgáltatásnévhez. Ebben az oktatóanyagban válassza a **Tulajdonos** lehetőséget. A **Hozzáférés hozzárendelése** területen válassza az **Azure AD, felhasználó, csoport vagy alkalmazás** elemet. A **Kiválasztás** mezőbe írja be a létrehozott szolgáltatásnevet a választható szolgáltatásnevek szűréséhez.
-
-    ![Szolgáltatásnév kiválasztása](./media/databricks-extract-load-sql-data-warehouse/select-service-principal.png "Szolgáltatásnév kiválasztása")
-
-    Válassza ki a korábban létrehozott szolgáltatásnevet, majd kattintson a **Mentés** elemre. Ezzel társította a szolgáltatásnevet az Azure Data Lake Store-fiókkal.
-
 ## <a name="upload-data-to-data-lake-store"></a>Adatok feltöltése a Data Lake Store-ba
 
 Ebben a szakaszban feltölt egy mintaadatfájlt a Data Lake Store-ba. Ezt a fájlt később az Azure Databricksben fogja használni átalakítások futtatására. Az oktatóanyagban használt mintaadatok (**small_radio_json.json**) ebben a [GitHub-adattárban](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) érhetők el.
@@ -229,6 +211,53 @@ Ebben a szakaszban feltölt egy mintaadatfájlt a Data Lake Store-ba. Ezt a fáj
     ![Feltöltés lehetőség](./media/databricks-extract-load-sql-data-warehouse/upload-data.png "Feltöltés lehetőség")
 
 5. Ebben az oktatóanyagban feltöltötte az adatfájlt a Data Lake Store gyökerébe. A fájl így már elérhető a következő helyen: `adl://<YOUR_DATA_LAKE_STORE_ACCOUNT_NAME>.azuredatalakestore.net/small_radio_json.json`.
+
+## <a name="associate-service-principal-with-azure-data-lake-store"></a>Szolgáltatásnév társítása az Azure Data Lake Store-ral
+
+Ebben a szakaszban társítja az Azure Data Lake Storage-fiókban található adatokat a létrehozott Azure Active Directory-szolgáltatásnévvel. Ezzel biztosítja, hogy el lehessen érni a Data Lake Store-fiókot az Azure Databricksből. A cikkben vázolt forgatókönyv szerint az adatokat a Data Lake Storage-ból olvassuk ki, és egy SQL Data Warehouse-beli táblába töltjük be. Ahogy a [Data Lake Storage-beli hozzáférés-vezérlést](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions) áttekintő cikk is írja, a Data Lake Storage-ban tárolt fájlok olvasási hozzáféréséhez a következők szükségesek:
+
+- **Végrehajtási** jogosultság a fájlt tartalmazó mappastruktúra összes mappájához.
+- **Olvasási** jogosultság magára a fájlra vonatkozóan.
+
+A fenti engedélyek megadásához kövesse az alábbi lépéseket.
+
+1. Az [Azure Portalon](https://portal.azure.com) válassza ki a létrehozott Data Lake Storage-fiókot, majd válassza az **Adatkezelő** lehetőséget.
+
+    ![Adatkezelő indítása](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-data-explorer.png "Adatkezelő indítása")
+
+2. Mivel ebben a forgatókönyvben a mintaadatfájl a mappaszerkezet gyökerében található, csak a mappa gyökeréhez kell kiosztani a **végrehajtási** engedélyt. Ehhez az adatkezelő gyökérkönyvtárában válassza ki a **Hozzáférés** elemet.
+
+    ![Mappa hozzáférés-vezérlési listáinak megadása](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-1.png "Mappa hozzáférés-vezérlési listáinak megadása")
+
+3. A **Hozzáférés** területen válassza a **Hozzáadás** lehetőséget.
+
+    ![Mappa hozzáférés-vezérlési listáinak megadása](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-2.png "Mappa hozzáférés-vezérlési listáinak megadása")
+
+4. Az **Engedélyek hozzárendelése** területen kattintson a **Felhasználó vagy csoport kiválasztása** lehetőségre, és keressen rá a korábban létrehozott Azure Active Directory-szolgáltatásnévre.
+
+    ![Data Lake Store-hozzáférés hozzáadása](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Data Lake Store-hozzáférés hozzáadása")
+
+    Válassza ki a hozzárendelni kívánt AAD-szolgáltatásnevet, és kattintson a **Kiválasztás** gombra.
+
+5. Az **Engedélyek hozzárendelése** területen kattintson az **Engedélyek kiválasztása** > **Végrehajtás** elemre. Tartsa meg a többi alapértelmezett értéket, és kattintson az **OK** gombra az **Engedélyek kiválasztása**, majd az **Engedélyek hozzárendelése** területen.
+
+    ![Data Lake Store-hozzáférés hozzáadása](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-4.png "Data Lake Store-hozzáférés hozzáadása")
+
+6. Lépjen vissza az Adatkezelőhöz, és kattintson arra a fájlra, amelyhez hozzá szeretné rendelni az olvasási engedélyt. A **Fájlelőnézet** területen válassza a **Hozzáférés** elemet.
+
+    ![Data Lake Store-hozzáférés hozzáadása](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-1.png "Data Lake Store-hozzáférés hozzáadása")
+
+7. A **Hozzáférés** területen válassza a **Hozzáadás** lehetőséget. Az **Engedélyek hozzárendelése** területen kattintson a **Felhasználó vagy csoport kiválasztása** lehetőségre, és keressen rá a korábban létrehozott Azure Active Directory-szolgáltatásnévre.
+
+    ![Data Lake Store-hozzáférés hozzáadása](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Data Lake Store-hozzáférés hozzáadása")
+
+    Válassza ki a hozzárendelni kívánt AAD-szolgáltatásnevet, és kattintson a **Kiválasztás** gombra.
+
+8. Az **Engedélyek hozzárendelése** területen kattintson az **Engedélyek kiválasztása** > **Olvasás** elemre. Kattintson az **OK** gombra az **Engedélyek kiválasztása**, majd az **Engedélyek hozzárendelése** területen.
+
+    ![Data Lake Store-hozzáférés hozzáadása](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-2.png "Data Lake Store-hozzáférés hozzáadása")
+
+    A szolgáltatásnév most már rendelkezik a szükséges engedélyekkel ahhoz, hogy olvassa a mintaadatfájlt az Azure Data Lake Storage-ból.
 
 ## <a name="extract-data-from-data-lake-store"></a>Adatok kinyerése a Data Lake Store-ból
 
@@ -283,6 +312,7 @@ A nyers **small_radio_json.json** mintaadat egy rádióállomás hallgatóit rö
 1. Első lépésként kérje le csak a *firstName*, *lastName*, *gender*, *location*, és *level* oszlopokat a már létrehozott adathalmazból.
 
         val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
+        specificColumnsDf.show()
 
     Az alábbi kódrészletben látható kimenetet fogja kapni:
 
@@ -313,7 +343,7 @@ A nyers **small_radio_json.json** mintaadat egy rádióállomás hallgatóit rö
 
 2.  Az adatok további átalakításához nevezze át a **level** oszlopot a következőre: **subscription_type**.
 
-        val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
+        val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
         renamedColumnsDF.show()
 
     Az alábbi kódrészletben látható kimenetet fogja kapni.
@@ -347,7 +377,7 @@ A nyers **small_radio_json.json** mintaadat egy rádióállomás hallgatóit rö
 
 Ebben a szakaszban feltölti az átalakított adatokat az Azure SQL Data Warehouse-ba. Az Azure Databricks Azure SQL Data Warehouse-összekötőjével közvetlenül feltölthet egy adathalmazt SQL Data Warehouse-táblaként.
 
-Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob Storage-ot használja ideiglenes tárolóként, amelybe feltölti az Azure Databricks és az Azure SQL Data Warehouse között áthelyezett adatokat. Ezért első lépésként adja meg a tárfiókhoz való csatlakozáshoz szükséges konfigurációt. A cikk előfeltételeinek részeként korábban már létre kellett hoznia a fiókot.
+Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob Storage-ot használja ideiglenes tárhelyként, amelybe feltölti az Azure Databricks és az Azure SQL Data Warehouse között áthelyezett adatokat. Ezért első lépésként adja meg a tárfiókhoz való csatlakozáshoz szükséges konfigurációt. A cikk előfeltételeinek részeként korábban már létre kellett hoznia a fiókot.
 
 1. Adja meg az Azure Storage-fiók Azure Databricksből való eléréséhez szükséges konfigurációt.
 
@@ -357,7 +387,7 @@ Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob S
 
 2. Adjon meg egy ideiglenes mappát, amelyet a rendszer az adatok Azure Databricks és Azure SQL Data Warehouse közötti áthelyezésekor fog használni.
 
-        val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
+        val tempDir = "wasbs://" + blobContainer + "\@" + blobStorage +"/tempDirs"
 
 3. Futtassa az alábbi kódrészletet az Azure Blob Storage hozzáférési kulcsainak a konfigurációban való tárolásához. Így nem kell egyszerű szövegként tárolnia a hozzáférési kulcsot a jegyzetfüzetben.
 
@@ -376,13 +406,13 @@ Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob S
         val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
         val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
 
-5. Futtassa az alábbi kódrészletet a **renamedColumnsDF** nevű átalakított adathalmaz SQL Data Warehouse-táblaként való betöltéséhez. Ez a kódrészlet létrehoz egy **SampleTable** nevű táblát az SQL-adatbázisban.
+5. Futtassa az alábbi kódrészletet a **renamedColumnsDF** nevű átalakított adathalmaz SQL Data Warehouse-táblaként való betöltéséhez. Ez a kódrészlet létrehoz egy **SampleTable** nevű táblát az SQL-adatbázisban. Vegye figyelembe, hogy az Azure SQL DW használatához egy főkulcs szükséges.  A főkulcsot az SQL Server Management Studióban, a „CREATE MASTER KEY;” parancs végrehajtásával hozhatja létre.
 
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
         
-        renamedColumnsDF.write
+        renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall) 
             .option("dbtable", "SampleTable")

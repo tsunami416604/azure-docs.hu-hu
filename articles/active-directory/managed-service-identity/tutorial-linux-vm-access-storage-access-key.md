@@ -1,6 +1,6 @@
 ---
-title: Linux virtuális gép MSI-identitásának használata az Azure Storage eléréséhez
-description: Oktatóanyag, amely végigvezeti az Azure Storage Linux VM-beli felügyeltszolgáltatás-identitással (MSI) való elérésének folyamatán.
+title: Az Azure Storage elérése Linux VM-beli felügyeltszolgáltatás-identitással
+description: Oktatóanyag, amely végigvezeti az Azure Storage Linux VM-beli felügyeltszolgáltatás-identitással való elérésének folyamatán.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: eee0787518a17826d6256cb9b7dad8f4547f5663
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: aa0736452d7dc06c5a1a6c2710024a5fdc626af1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048844"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258711"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Linux VM-beli felügyeltszolgáltatás-identitás használata az Azure Storage eléréséhez hozzáférési kulccsal
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyeltszolgáltatás-identitást (MSI) egy Linux virtuális gépen, majd használhatja ezt az identitást a tárfiók hozzáférési kulcsának lekéréséhez. A tárelérési kulcsokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban blobokat töltünk fel és le az Azure CLI használatával. Az alábbiakat fogja elsajátítani:
+Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyeltszolgáltatás-identitást egy Linux virtuális gépen, majd használhatja ezt az identitást a tárfiók hozzáférési kulcsának lekéréséhez. A tárelérési kulcsokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban blobokat töltünk fel és le az Azure CLI használatával. Az alábbiakat fogja elsajátítani:
 
 > [!div class="checklist"]
-> * MSI engedélyezése Linux rendszerű virtuális gépen 
+> * Felügyeltszolgáltatás-identitás engedélyezése Linux rendszerű virtuális gépen 
 > * Hozzáférés biztosítása a VM számára a tárfiók Resource Managerben található hozzáférési kulcsaihoz 
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd a tárelérési kulcsok lekérése a Resource Managerből a használatával  
 
@@ -44,7 +44,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Linux rendszerű virtuális gép létrehozása új erőforráscsoportban
 
-Ebben az oktatóanyagban egy új linuxos virtuális gépet hozunk létre. A meglévő virtuális gépeken is engedélyezheti az MSI-t.
+Ebben az oktatóanyagban egy új linuxos virtuális gépet hozunk létre. A meglévő virtuális gépeken is engedélyezheti a felügyeltszolgáltatás-identitást.
 
 1. Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
@@ -56,20 +56,20 @@ Ebben az oktatóanyagban egy új linuxos virtuális gépet hozunk létre. A megl
 5. Ha a virtuális gépet egy új **Erőforráscsoportban** szeretné létrehozni, válassza az **Új létrehozása** elemet. Amikor végzett, kattintson az **OK** gombra.
 6. Válassza ki a virtuális gép méretét. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a Támogatott lemeztípus szűrőt. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-## <a name="enable-msi-on-your-vm"></a>MSI engedélyezése a virtuális gépen
+## <a name="enable-managed-service-identity-on-your-vm"></a>Felügyeltszolgáltatás-identitás engedélyezése a virtuális gépen
 
-A virtuális gép MSI-vel anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A felügyeltszolgáltatás-identitás VM-en való engedélyezése két dolgot tesz: regisztrálja a VM-et az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a VM-en.  
+A virtuális gép felügyeltszolgáltatás-identitásával anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A felügyeltszolgáltatás-identitás VM-en való engedélyezése két dolgot tesz: regisztrálja a VM-et az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a VM-en.  
 
 1. Lépjen az új virtuális gép erőforráscsoportjára, és válassza ki az előző lépésben létrehozott virtuális gépet.
 2. A virtuális gép bal oldalon található „Beállításai” között kattintson a **Konfiguráció** elemre.
-3. Az MSI regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra.
+3. A felügyeltszolgáltatás-identitás regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra.
 4. Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.
 
     ![Helyettesítő képszöveg](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
-Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt a lépést, és a VM MSI számára biztosíthat hozzáférést egy meglévő tárfiók kulcsaihoz. 
+Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt a lépést, és a VM-beli felügyeltszolgáltatás-identitás számára biztosíthat hozzáférést egy meglévő tárfiók kulcsaihoz. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
 2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre, amit követően megjelenik egy új „Tárfiók létrehozása” panel.
@@ -91,9 +91,9 @@ Később feltöltünk egy fájlt az új tárfiókba, majd letöltjük abból. Mi
 
     ![Storage-tároló létrehozása](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Hozzáférés biztosítása a VM MSI-je számára a tárfiók hozzáférési kulcsainak használatához
+## <a name="grant-your-vms-managed-service-identity-access-to-use-storage-account-access-keys"></a>Hozzáférés biztosítása a VM felügyeltszolgáltatás-identitása számára a tárfiók hozzáférési kulcsainak használatához
 
-Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Az MSI használatával azonban lekérheti a tárfiók hozzáférési kulcsait a Resource Managerből, majd a kulcsokkal elérheti a tárolót.  Ebben a lépésben hozzáférést biztosít a VM MSI számára a tárfiók kulcsaihoz.   
+Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  A felügyeltszolgáltatás-identitás használatával azonban lekérheti a tárfiók hozzáférési kulcsait a Resource Managerből, majd a kulcsokkal elérheti a tárolót.  Ebben a lépésben hozzáférést biztosít a VM felügyeltszolgáltatás-identitása számára a tárfiók kulcsaihoz.   
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  

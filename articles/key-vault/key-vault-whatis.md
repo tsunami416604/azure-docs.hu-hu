@@ -12,19 +12,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/26/2017
+ms.date: 07/23/2018
 ms.author: barclayn
-ms.openlocfilehash: 1fd39cf6363cb028b2f933934c95ea2b635b754a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: b34b05ae86aed199d80a86c8e1a073cb54b5e75f
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089305"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226713"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
+
 Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Key Vault lehetővé teszi, hogy hardveres biztonsági modulokkal (HSM) védett kulcsokkal titkosítsa a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a tárfiókok kulcsait, az adattitkosítási kulcsokat, a PFX-fájlokat és a jelszavakat). A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. Ha ezt teszi, a Microsoft a FIPS 140-2 2. szintje szerint ellenőrzött hardveres biztonsági modulokban (hardverek és belső vezérlőprogramok) dolgozza fel a kulcsokat.  
 
 A Key Vault leegyszerűsíti a kulcskezelési folyamatot, valamint lehetővé teszi az adatok titkosításához használt kulcsok feletti teljes körű felügyeletet. A fejlesztők a fejlesztéshez és a teszteléshez percek alatt létrehozhatják a kulcsokat, később pedig zökkenőmentesen áttelepíthetik őket éles kulcsokká. A biztonsági rendszergazdák igény szerint adhatják meg (és vonhatják vissza) a kulcsokkal kapcsolatos engedélyeket.
+
+## <a name="basic-concepts"></a>Alapfogalmak
+
+Az Azure Key Vault egy titkos kulcsok biztonságos tárolására és hozzáférésére használható eszköz. Titkos kulcsnak számít minden olyan adat, amelynek a hozzáféréstét szigorúan korlátozni kívánja, például: API-kulcsok, jelszavak vagy tanúsítványok.
+Az alábbiakban néhány kulcsfontosságú fogalom ismertetése található:
+- **Bérlő** – A bérlő az a szervezet, amely egy Microsoft-felhőszolgáltatás egy adott példányát birtokolja és kezeli. A kifejezéssel általában egy szervezet Azure- és Office 365-szolgáltatásainak pontos listájára hivatkozunk.
+- **Kulcstartó-tulajdonos** – Létrehozhat egy Key Vault-tárolót, amely felett teljes körű hozzáféréssel és irányítással rendelkezik. Emellett beállíthat naplózást, amellyel naplózhatja a titkos kulcsok elérését. A kulcsok életciklusát a rendszergazdák kezelhetik. Kiadhatnak új kulcsverziókat, biztonsági másolatokat készíthetnek stb.
+- **Kulcstartóhasználó** – Műveleteket hajthat végre a Key Vault-tárolóban található objektumokon, ha a kulcstartó-tulajdonos felruházta hozzáféréssel. Ez a kiosztott jogosultságokon múlik.
+- Az **[Azure Active Directory](../active-directory/active-directory-whatis.md)** egy adott bérlő Azure AD-szolgáltatása. Minden címtárhoz tartozik egy vagy több tartomány. Egy címtárhoz számos előfizetés tartozhat, de csak egyetlen bérlő. 
+- **Azure-bérlő azonosítója** – Egy egyedi módszer az Azure-előfizetéseken belüli Azure Active Directory-címtárak azonosítására. 
+- **Felügyeltszolgáltatás-identitás** – Az Azure Key Vault módot kínál a hitelesítő adatok, valamint egyéb kulcsok és titkos kódok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. A felügyeltszolgáltatás-identitás (MSI) segít leegyszerűsíteni ezt a problémát, mivel az Azure-szolgáltatások számára egy automatikusan felügyelt identitást biztosít az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással anélkül végezhet hitelesítést a Key Vaultban vagy bármely, Azure AD-hitelesítést támogató szolgáltatásban, hogy a hitelesítő adatokat a kódban kellene tárolnia. Az MSI-ről további információkat [itt olvashat](../active-directory/managed-service-identity/overview.md).
+
+## <a name="key-vault-roles"></a>Key Vault-szerepkörök
 
 Az alábbi táblázat segítségével jobban megértheti, hogyan segíti a Key Vault a fejlesztők és a biztonsági rendszergazdák igényeinek kielégítését.
 
@@ -49,6 +63,7 @@ A rendszergazda ezután a fejlesztők számára olyan URI-kat biztosíthat, amel
 A fejlesztők közvetlenül is kezelhetik a kulcsokat API-k használatával. További információkért tekintse meg a [Key Vault fejlesztői útmutatóját](key-vault-developers-guide.md).
 
 ## <a name="next-steps"></a>További lépések
+
 A rendszergazdáknak szóló bevezető oktatóanyagért tekintse meg a [Bevezetés az Azure Key Vault használatába](key-vault-get-started.md) című cikket.
 
 A Key Vault használatának naplózásával kapcsolatos további információkért tekintse meg [Az Azure Key Vault naplózása](key-vault-logging.md) című cikket.

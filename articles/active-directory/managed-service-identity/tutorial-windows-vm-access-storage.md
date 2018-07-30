@@ -1,6 +1,6 @@
 ---
-title: Windows VM-beli MSI használata az Azure Storage eléréséhez
-description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure Storage-hoz egy Windows VM-beli felügyeltszolgáltatás-identitással (MSI).
+title: Az Azure Storage elérése Windows VM-beli felügyeltszolgáltatás-identitással
+description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure Storage-hoz egy Windows VM-beli felügyeltszolgáltatás-identitással.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 94e16156e8accc2460005cb1927a621ec7921c71
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ca2a460658b0de4f91816342d2eabb78ceee89fb
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043992"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247373"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Windows VM-beli felügyeltszolgáltatás-identitás használata az Azure Storage eléréséhez hozzáférési kulccsal
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyeltszolgáltatás-identitást (MSI) egy Windows rendszerű virtuális gépen, majd használhatja az identitást a tárfiók hozzáférési kulcsainak a lekéréséhez. A tárelérési kulcsokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban blobokat töltünk fel és le az Azure Storage PowerShell használatával. Az alábbiakat fogja elsajátítani:
+Az oktatóanyag bemutatja, hogyan engedélyezheti a felügyeltszolgáltatás-identitást egy Windows rendszerű virtuális gépen, majd használhatja az identitást a tárfiók hozzáférési kulcsainak a lekéréséhez. A tárelérési kulcsokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban blobokat töltünk fel és le az Azure Storage PowerShell használatával. Az alábbiakat fogja elsajátítani:
 
 
 > [!div class="checklist"]
-> * MSI engedélyezése Windows rendszerű virtuális gépen 
+> * Felügyeltszolgáltatás-identitás engedélyezése Windows rendszerű virtuális gépen 
 > * Hozzáférés biztosítása a VM számára a tárfiók Resource Managerben található hozzáférési kulcsaihoz 
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd a tárelérési kulcsok lekérése a Resource Managerből a használatával 
 
@@ -45,7 +45,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Egy Windows rendszerű virtuális gép létrehozása egy új erőforráscsoportban
 
-Ebben az oktatóanyagban egy új Windows VM-et fog létrehozni. A meglévő virtuális gépeken is engedélyezheti az MSI-t.
+Ebben az oktatóanyagban egy új Windows VM-et fog létrehozni. A meglévő virtuális gépeken is engedélyezheti a felügyeltszolgáltatás-identitást.
 
 1.  Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
 2.  Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
@@ -56,20 +56,20 @@ Ebben az oktatóanyagban egy új Windows VM-et fog létrehozni. A meglévő virt
 
     ![Helyettesítő képszöveg](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>MSI engedélyezése a virtuális gépen
+## <a name="enable-managed-service-identity-on-your-vm"></a>Felügyeltszolgáltatás-identitás engedélyezése a virtuális gépen
 
-A virtuális gép MSI-vel anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A háttérben az MSI engedélyezésének két következménye van: regisztrálja a virtuális gépet az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a virtuális gépen.
+A virtuális gép felügyeltszolgáltatás-identitásával anélkül kérhet le hozzáférési jogkivonatokat az Azure AD-ből, hogy hitelesítő adatokat kellene a kódba illesztenie. A háttérben a felügyeltszolgáltatás-identitás engedélyezésének két következménye van: regisztrálja a virtuális gépet az Azure Active Directoryban a felügyelt identitása létrehozásához, és konfigurálja az identitást a virtuális gépen.
 
 1. Lépjen az új virtuális gép erőforráscsoportjára, és válassza ki az előző lépésben létrehozott virtuális gépet.
 2. A virtuális gép bal oldalon található „Beállításai” között kattintson a **Konfiguráció** elemre.
-3. Az MSI regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra.
+3. A felügyeltszolgáltatás-identitás regisztrálásához és engedélyezéséhez kattintson az **Igen**, a letiltásához a Nem gombra.
 4. Mindenképp kattintson a **Mentés** gombra a konfiguráció mentéséhez.
 
     ![Helyettesítő képszöveg](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
-Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Ki is hagyhatja ezt a lépést, és a VM MSI számára biztosíthat hozzáférést egy meglévő tárfiók kulcsaihoz. 
+Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Ki is hagyhatja ezt a lépést, és a VM-beli felügyeltszolgáltatás-identitás számára biztosíthat hozzáférést egy meglévő tárfiók kulcsaihoz. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
 2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre, amit követően megjelenik egy új „Tárfiók létrehozása” panel.
@@ -91,9 +91,9 @@ Később feltöltünk egy fájlt az új tárfiókba, majd letöltjük abból. Mi
 
     ![Storage-tároló létrehozása](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Hozzáférés biztosítása a VM MSI-je számára a tárfiók hozzáférési kulcsainak használatához 
+## <a name="grant-your-vms-managed-service-identity-access-to-use-storage-account-access-keys"></a>Hozzáférés biztosítása a VM felügyeltszolgáltatás-identitása számára a tárfiók hozzáférési kulcsainak használatához 
 
-Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Az MSI használatával azonban lekérheti a tárfiók hozzáférési kulcsait a Resource Managerből, majd a kulcsokkal elérheti a tárolót.  Ebben a lépésben hozzáférést biztosít a VM MSI számára a tárfiók kulcsaihoz.   
+Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  A felügyeltszolgáltatás-identitás használatával azonban lekérheti a tárfiók hozzáférési kulcsait a Resource Managerből, majd a kulcsokkal elérheti a tárolót.  Ebben a lépésben hozzáférést biztosít a VM felügyeltszolgáltatás-identitása számára a tárfiók kulcsaihoz.   
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.  
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
@@ -114,7 +114,7 @@ Ebben a részben az Azure Resource Manager PowerShell-parancsmagokat kell haszn�
 1. Az Azure Portalon lépjen a **Virtuális gépek** lapra, keresse meg a Windows rendszerű virtuális gépet, majd kattintson az **Áttekintés** lap tetején található **Csatlakozás** gombra. 
 2. A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
 3. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a PowerShellt a távoli munkamenetben.
-4. A PowerShell Invoke-WebRequest parancsával kezdeményezzen egy kérést a helyi MSI-végpont felé egy hozzáférési jogkivonat lekérésére az Azure Resource Managerhez.
+4. A Powershell Invoke-WebRequest parancsával küldjön kérést a helyi felügyeltszolgáltatás-identitási végpontra, hogy lekérjen egy hozzáférési jogkivonatot az Azure Resource Managerhez.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9de4b00b2fff1feabcaee4e30667dfbdc75d9266
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: d404e3a300a953ccc1cfb691cbde6f6d7ee54b26
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114439"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216308"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -505,7 +505,7 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
 ## <a name="next-steps"></a>További lépések
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.
-* Töltse le és telepítse a [BatchLabs][batch_labs] alkalmazást, amelyet bármikor használhat, ha a Batch-megoldások fejlesztése során segítségre van szüksége. A BatchLabs alkalmazással Azure Batch-alkalmazásokat hozhat létre és monitorozhat, és a felmerülő hibáikat is elháríthatja. 
+* Töltse le és telepítse a [Batch Explorer][batch_labs] alkalmazást, amelyet bármikor használhat, ha a Batch-megoldások fejlesztése során segítségre van szüksége. A Batch Explorer alkalmazással Azure Batch-alkalmazásokat hozhat létre és monitorozhat, valamint a felmerülő hibáikat is elháríthatja. 
 * Tekintse meg a közösségi forrásanyagokat, például a [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch) oldalt, a [Batch-közösség adattárát](https://github.com/Azure/Batch) és az [Azure Batch fórumot][batch_forum] az MSDN-en. 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
@@ -516,7 +516,7 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_sample_taskdeps]:  https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
-[batch_labs]: https://azure.github.io/BatchLabs/
+[batch_labs]: https://azure.github.io/BatchExplorer/
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [msdn_env_vars]: https://msdn.microsoft.com/library/azure/mt743623.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx

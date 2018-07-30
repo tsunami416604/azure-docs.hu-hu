@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 47db87bf734674bd424fecd0f0f22bff9e2df5d5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 62ca816f7bdc183727eb22806ba9e733c8b97c44
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299254"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173505"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Az Azure Machine Learning üzembe helyezése IoT Edge-modulként – előzetes verzió
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure Machine Learning-modul üzembe helyezésén, amely előrejelzi az eszközök meghibásodását szimulált géphőmérsékleti adatok alapján. 
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure Machine Learning-modul üzembe helyezésén, amely előrejelzi az eszközök meghibásodását szimulált géphőmérsékleti adatok alapján. Az IoT Edge-en futó Azure ML-el kapcsolatos további információkat [az Azure Machine Learning dokumentációjában](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md) talál.
 
 Az ebben az oktatóanyagban létrehozott Azure Machine Learning-modul kiolvassa az eszköz által előállított környezeti adatokat, illetve rendellenesként vagy nem rendellenesként jelöli meg az üzeneteket.
 
@@ -41,16 +41,16 @@ Az Azure Machine Learning-modul nem támogatja az ARM processzorokat.
 
 A fejlesztői gépen a következő előfeltételeknek kell rendelkezésre állnia: 
 * Egy Azure Machine Learning-fiók. Kövesse az [Azure Machine Learning-fiókok létrehozása és az Azure Machine Learning Workbench telepítése](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts) szakaszban megadott utasításokat. Az oktatóanyag elvégzéséhez nincs szükség a Workbench alkalmazás telepítésére. 
-* Az Azure ML moduljainak kezelése a gépén. A környezet beállításához és fiók létrehozásához kövesse [A modellkezelés beállítása](../machine-learning/desktop-workbench/deployment-setup-configuration.md) szakaszban megadott utasításokat.
+* Az Azure ML modelljeinek kezelése a gépén. A környezet beállításához és fiók létrehozásához kövesse [A modellkezelés beállítása](../machine-learning/desktop-workbench/deployment-setup-configuration.md) szakaszban megadott utasításokat. Az üzembe helyezés során lehetőség szerint a fürt helyett helyi lépéseket használjon.
 
 ### <a name="disable-process-identification"></a>Folyamatazonosítás letiltása
 
 >[!NOTE]
 >
 > Az Azure Machine Learning előzetes verziója nem támogatja folyamatazonosítás biztonsági funkcióját, amely az IoT Edge szolgáltatásban alapértelmezés szerint engedélyezve van. 
-> Az alábbi lépések végrehajtásával tilthatja le. Ez azonban nem használható éles környezetben.
+> Az alábbi lépések végrehajtásával tilthatja le. Ez azonban nem használható éles környezetben. Ezeket a lépéseket csak Linuxon kell végrehajtani, mivel a Windows Edge-futtatókörnyezet telepítésének is ugyanezek a lépései.
 
-A folyamatazonosítás letiltásához meg kell adnia a **workload_uri** és a **management_uri** értékhez az IP-címet és portot az IoT Edge-démon konfigurációjának **connect** (csatlakozás) szakaszában.
+IoT Edge-eszközén a folyamatazonosítás letiltásához meg kell adnia a **workload_uri** és a **management_uri** értékhez az IP-címet és portot az IoT Edge-démon konfigurációjának **connect** (csatlakozás) szakaszában.
 
 Elsőként szerezze be az IP-címet. Írja be az `ifconfig` parancsot a parancssorba, majd másolja ki a **docker0** interfész IP-címét.
 
@@ -131,7 +131,7 @@ Ellenőrizze, hogy a tárolórendszerkép sikeresen létrejött-e és a Machine 
 
 1. Adja hozzá az Ön által létrehozott Machine Learning-modult.
 
-    1. Kattintson a **Hozzáadás** lehetőségre és válassza a következőt: **Azure Machine Learning-modul**.
+    1. Kattintson a **Hozzáadás** gombra, és válassza az **IoT Edge-modul** lehetőséget.
     1. A **Név** mezőbe írja a következőt: `machinelearningmodule`
     1. A **Rendszerkép** mezőbe írja be a rendszerkép címét, például a következőt: `<registry_name>.azurecr.io/machinelearningmodule:1`.
     1. Kattintson a **Mentés** gombra.

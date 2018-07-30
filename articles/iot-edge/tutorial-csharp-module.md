@@ -9,12 +9,12 @@ ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 12a17edc74ef0fbc573be0fc167aa7921e599341
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 2293390684a8dcdf5f32bbae8f04fe7317d389e2
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005866"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258962"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: C#-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -57,15 +57,15 @@ Ehhez az oktatóanyaghoz bármilyen Docker-kompatibilis beállításjegyzéket h
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge-modulprojekt létrehozása
 A következő lépések egy .NET core 2.0 SDK-n alapuló IoT Edge-modulprojektet hoznak létre a Visual Studio Code és az Azure IoT Edge bővítmény használatával.
-1. A Visual Studio Code-ban válassza a **View** > **Integrated Terminal** (Nézet, Integrált terminál) elemet a VS Code integrált terminál megnyitásához.
-2. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
-3. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
-4. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
+
+1. A Visual Studio Code-ban a VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
+2. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
+3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
 
    1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni. 
    2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
    3. A modul sablonjaként válassza a **C# modult**. 
-   4. A modulnak adja a **CSharpModule** nevet. 
+   4. Cserélje le az alapértelmezett modulnevet a **CSharpModule** névre. 
    5. Adja meg az előző szakaszban létrehozott Azure Container Registry-adatbázist az első modul rendszerképadattáraként. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére. A sztring végső változata a következőképpen néz ki: \<regisztrációs adatbázis neve\>.azurecr.io/csharpmodule.
 
 4.  A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét: a modules mappát, egy \.vscode mappát, egy üzembehelyezési jegyzéksablonfájlt és egy \.env fájlt. A VS Code Explorerben nyissa meg a **modules** > **CSharpModule** > **Program.cs** modult.
@@ -105,6 +105,16 @@ A következő lépések egy .NET core 2.0 SDK-n alapuló IoT Edge-modulprojektet
     }
     ```
 
+8. Az **Init** metódus egy, a modul által használható kommunikációs protokollt deklarál. Cserélje le az MQTT-beállításokat az AMPQ-beállításokra. 
+
+   ```csharp
+   // MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
+   // ITransportSettings[] settings = { mqttSetting };
+
+   AmqpTransportSettings amqpSetting = new AmqpTransportSettings(TransportType.Amqp_Tcp_Only);
+   ITransportSettings[] settings = {amqpSetting};
+   ```
+
 8. Az **Init** metódus használata esetén a kód létrehoz és konfigurál egy **ModuleClient** objektumot. Ez az objektum lehetővé teszi a modul helyi Azure IoT Edge-futtatókörnyezethez való csatlakozását üzenetek küldése és fogadása céljából. Az **Init** metódusban használt kapcsolati sztringet az IoT Edge-futtatókörnyezet biztosítja a modulnak. A **ModuleClient** objektum létrehozása után a kód beolvassa a **temperatureThreshold** értéket a modul ikerdokumentumának kívánt tulajdonságaiból. A kód visszahívást regisztrál egy IoT Edge-központból érkező üzenetek fogadásához az **input1** végponton keresztül. Cserélje le a **SetInputMessageHandlerAsync** metódust egy másikra, és adjon hozzá egy **SetDesiredPropertyUpdateCallbackAsync** metódust a kívánt tulajdonságok frissítéséhez. A módosítás végrehajtásához cserélje le az **Init** metódus utolsó sorát az alábbi kódra:
 
     ```csharp
@@ -121,7 +131,7 @@ A következő lépések egy .NET core 2.0 SDK-n alapuló IoT Edge-modulprojektet
     }
 
     // Attach a callback for updates to the module twin's desired properties.
-    await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(onDesiredPropertiesUpdate, null);
+    await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertiesUpdate, null);
 
     // Register a callback for messages that are received by the module.
     await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
@@ -226,7 +236,11 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy 
    ```
    Használja az első szakaszban az Azure Container Registry-adatbázisból kimásolt felhasználónevet, jelszót és bejelentkezési kiszolgálót. Vagy le is kérheti ezeket az értékeket az Azure Portalon a tárolóregisztrációs adatbázis **Hozzáférési kulcsok** szakaszában.
 
-2. A VS Code Explorerben az IoT Edge-megoldás munkaterületén nyissa meg a deployment.template.json fájlt. Az **$edgeAgent** a fájlból tudja meg, hogy üzembe kell helyeznie két modult: a **tempSensor** és a **CSharpModule** modult. A **CSharpModule.image** értéke a rendszerkép Linux amd64-es verziójára lett beállítva. További információt az üzembehelyezési jegyzékekről az [IoT Edge-modulok használatát, konfigurálását és újrahasznosítását](module-composition.md) ismertető cikkben olvashat.
+2. A VS Code Explorerben az IoT Edge-megoldás munkaterületén nyissa meg a deployment.template.json fájlt. Az **$edgeAgent** a fájlból tudja meg, hogy üzembe kell helyeznie két modult: a **tempSensor** és a **CSharpModule** modult. A **CSharpModule.image** értéke a rendszerkép Linux amd64-es verziójára lett beállítva. 
+
+   Ellenőrizze, hogy a sablonban a megfelelő modulnév van-e megadva az alapértelmezett **SampleModule** név helyett, amelyet az IoT Edge-megoldás létrehozásakor módosított.
+
+   További információt az üzembehelyezési jegyzékekről az [IoT Edge-modulok használatát, konfigurálását és újrahasznosítását](module-composition.md) ismertető cikkben olvashat.
 
 3. A deployment.template.json fájl **registryCredentials** szakasza tartalmazza a Docker regisztrációs adatbázis hitelesítő adatait. A tényleges felhasználónév–jelszó párokat az .env fájl tárolja, amelyet a Git figyelmen kívül hagy.  
 

@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 03/29/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 2da61d52e43857237f6e231c03ea62ba5eefdadd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 953d1dfd633f2fee52a2e6d197c6f32e7ab053f7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33767971"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160450"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -47,6 +47,8 @@ Az állapotok az Azure Container Instanceszel való lekéréséhez és megőrzé
 Az Azure Container Instances használatával a Windows- és a Linux-tárolókat ugyanazzal az API-val ütemezheti. Egyszerűen adja meg az operációs rendszer típusát a [tárolócsoportok](container-instances-container-groups.md) létrehozásakor.
 
 Bizonyos funkciók jelenleg Linux-tárolókra vannak korlátozva. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről az [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
+
+Az Azure Container Instances támogatja a Hosszútávú karbantartási csatornán (LTSC) alapuló Windows-rendszerképeket. A Windows féléves csatorna (SAC) egyes kiadásai, például az 1709 és az 1803 nem támogatottak.
 
 ## <a name="co-scheduled-groups"></a>Együttesen ütemezett csoportok
 

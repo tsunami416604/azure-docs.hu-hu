@@ -10,12 +10,12 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8bde281eab22fc720e2e2420f22ff4eb0a610b93
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31419104"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216589"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -49,7 +49,7 @@ Ezután az Azure Cloud Shell-lel létrehoz egy biztonsági jogkivonatot.
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>Közös hozzáférésű jogosultságkód létrehozása
-A böngészőben futó kód a közös hozzáférésű jogosultságkóddal (SAS) hitelesíti a Blob Storage-ba érkező kéréseket. Az SAS használatával az ügyfél a fiók hozzáférési kulcsa vagy kapcsolati karakterlánca nélkül végezhet hitelesítést. Az SAS-sel kapcsolatos további információkat a [közös hozzáférésű jogosultságkód (SAS) használatát ismertető](../common/storage-dotnet-shared-access-signature-part-1.md) cikkben olvashat.
+A böngészőben futó kód a közös hozzáférésű jogosultságkóddal (SAS) engedélyezteti a Blob Storage-ba érkező kéréseket. A SAS használatával az ügyfél a fiók hozzáférési kulcsa vagy kapcsolati sztringje nélkül is elvégezheti a tárolási erőforrásokhoz való hozzáférés engedélyeztetését. Az SAS-sel kapcsolatos további információkat a [közös hozzáférésű jogosultságkód (SAS) használatát ismertető](../common/storage-dotnet-shared-access-signature-part-1.md) cikkben olvashat.
 
 Létrehozhat egy SAS-t az Azure CLI használatával az Azure Cloud Shellen keresztül vagy az Azure Storage Explorerrel. A következő tábla azon paramétereket sorolja fel, amelyek értékét meg kell adnia SAS CLI-vel való létrehozásakor.
 
@@ -62,7 +62,7 @@ Létrehozhat egy SAS-t az Azure CLI használatával az Azure Cloud Shellen keres
 A következő szkript az Azure CLI használatával hozott létre egy SAS-t, amelyet átadhat egy JavaScript Blob szolgáltatásnak.
 
 > [!NOTE]
-> A legjobb eredmények elérése érdekében távolítsa el az extra szóközöket a paraméterek között, mielőtt beillesztené a parancsot az Azure Cloud Shellbe.
+> A legjobb eredmények eléréséhez távolítsa el az extra szóközöket a paraméterek között, mielőtt beillesztené a parancsot az Azure Cloud Shellbe.
 
 ```bash
 az storage account generate-sas
@@ -245,7 +245,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 });
 ```
 > [!WARNING]
-> Ahhoz, hogy a kódminta működjön, meg kell adnia egy karakterláncértéket a *blobName* számára.
+> Ahhoz, hogy a kódminta működjön, meg kell adnia egy sztringértéket a *blobName* számára.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. Ha kiválasztotta, az **Áttekintés > Tárfiók törlése** paranccsal törölheti a tárfiókot.
