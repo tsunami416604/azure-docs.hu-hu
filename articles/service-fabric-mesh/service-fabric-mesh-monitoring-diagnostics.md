@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 79e5622dd73e53854204675b435e99d187a3ab26
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9f857c23b5500bc7790a0ff7fcf81eaec51f37c9
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076419"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358308"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
-Az Azure Service Fabric háló egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a mikroszolgáltatás-alapú alkalmazások üzembe helyezése nélkül kezelése virtuális gépek, tároló, vagy a hálózat. Monitorozás és diagnosztika a Service Fabric-háló kategorizálva be a diagnosztikai adatok három fő típusa:
+Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. Monitorozás és diagnosztika a Service Fabric-háló kategorizálva be a diagnosztikai adatok három fő típusa:
 
 - Protokoly aplikací – ezek a naplók a tárolóalapú alkalmazásokat, hogyan van kialakítva az alkalmazás alapján vannak meghatározva (pl. docker-naplók)
 - Platform-események – a háló releváns a tároló működés, platformról események jelenleg beleértve a tároló aktiválási, Inaktiválási és felmondás.
@@ -40,7 +40,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 ```
 
 > [!NOTE]
-> A "az háló servicereplica" paranccsal kérje le a replika nevét. Másodpéldány nevének növekvő számok 0.* a
+> A "az háló és a replikakiszolgáló" paranccsal kérje le a replika nevét. Másodpéldány nevének növekvő számok 0.* a
 
 Megjelenése a szavazóalkalmazás VotingWeb.Code tárolótól naplóinak megtekintése az itt látható:
 

@@ -10,12 +10,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: tdykstra
-ms.openlocfilehash: 3d2c75ba2f7f5c276f495ec3589481b8131b58e1
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: a68085ee571654bc1bff2ea23303a02bfb2a9b0d
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342931"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343484"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Hogyan készíti elő a kimenő IP-cím módosítása
 
@@ -33,11 +33,13 @@ Ha módosítja a kimenő IP-címek az Azure App Service-alkalmazás értesítés
 
 Az új kimenő IP-címek láthatók a portálon életbe. Amikor Azure elindul, az újakat használatával, a régieket már nem használható. Egyszerre csak egy set szolgál, így listáihoz bejegyzést kell rendelkeznie a régi és új IP-címeket, hogy a kimaradás, ha a kapcsoló történik. 
 
-1.  Nyissa meg az [Azure portált](https://portal.azure.com).
+1.  Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 2.  A bal oldali navigációs menüben válassza ki a **App Services**.
 
 3.  Válassza ki az App Service-alkalmazást a listából.
+
+4.  Ha az alkalmazás egy függvényalkalmazást, lásd: [alkalmazás kimenő IP-címek függvény](../azure-functions/ip-addresses.md#function-app-outbound-ip-addresses).
 
 4.  Alatt a **beállítások** fejléc, kattintson a **tulajdonságok** a bal oldali navigációs és a keresés feliratú szakasz **kimenő IP-címeket**.
 

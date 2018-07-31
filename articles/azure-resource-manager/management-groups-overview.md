@@ -10,31 +10,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/26/2018
+ms.date: 7/31/2018
 ms.author: rithorn
-ms.openlocfilehash: f9554c058fbebc215aa61979fa03280553597afc
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 146ded37dbf517528af23574cd5b9325f4b5f9d0
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308316"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358769"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok
 
 Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. A fenti előfizetések hatókörének biztosítanak az Azure felügyeleti csoportok. "Felügyeleti csoportok" nevű tárolókba előfizetések rendszerezése és a felügyeleti csoportok a szabályozási feltételek vonatkoznak. A felügyeleti csoporton belül az összes előfizetés automatikusan örökli a feltételek a felügyeleti csoportra alkalmazza. Felügyeleti csoportok lehetővé teszik, nagyvállalati szintű felügyeleti, függetlenül attól, hogy milyen típusú előfizetések lehetséges, hogy a nagy mennyiségű.
-
-A felügyeleti csoport funkció nyilvános előzetes verzióban érhető el. Felügyeleti csoportok használatának megkezdéséhez jelentkezzen be a [az Azure portal](https://portal.azure.com) és keressen rá a **felügyeleti csoportok** a a **minden szolgáltatás** szakaszban.
 
 Például egy felügyeleti csoporthoz, amely korlátozza a virtuális gép (VM) létrehozásához rendelkezésre álló régiók szabályzatokat is alkalmazhat. Ez a szabályzat akkor alkalmazható, előfizetések és erőforrásokat a felügyeleti csoport összes felügyeleti csoportok azáltal, hogy csak virtuális gépek hozhatók létre az adott régióban.
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>Felügyeleti csoportok és az előfizetések hierarchia
 
 Felügyeleti csoportok és az előfizetések a egyesített házirend- és hozzáférés-kezelés hierarchiává az erőforrások rendszerezéséhez rugalmas szerkezete hozhat létre.
-Az alábbi ábrán látható egy példa a hierarchia felügyeleti csoportok és az előfizetések részlegek szerint vannak rendezve.
+Az alábbi ábrán látható egy példa a felügyeleti csoportok használatával cégirányítási-hierarchiák létrehozásáról.
 
 ![fa](media/management-groups/MG_overview.png)
 
-Részlegek szerint csoportosított hierarchia hoz létre, rendelhet [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) szerepkörök, amelyek *öröklik a* a szervezeti adott felügyeleti csoportban. Felügyeleti csoportok használatával csökkentheti a számítási feladatok, és csökkenti a hiba csak a szerepkör hozzárendelése után létesíteni.
+Hozzon létre egy hierarchia, mint ebben a példában egy házirendet, például az "infrastruktúra csoport felügyeleti csoportja" az USA nyugati régiójában korlátozódik VM helyek vonatkozik engedélyezése belső megfelelőségi és biztonsági házirendjeivel. Ez a szabályzat mindkét EA-előfizetések, a felügyeleti csoportban az alakzatot öröklik, és ezen előfizetések mellett minden virtuális gépre érvényes lesz. Ezt a szabályzatot örökli a felügyeleti csoport az előfizetésekhez, mivel a biztonsági házirend továbbfejlesztett cégirányítási lehetővé tevő erőforrás vagy az előfizetés tulajdonosa nem módosítható.
+
+Egy másik forgatókönyv, ahol a felügyeleti csoportok használna, hogy több előfizetést felhasználói hozzáférést biztosítanak.  Több felügyeleti csoport-előfizetések áthelyezésével, hogy a számítógép egy RBAC-hozzárendelés létrehozása a felügyeleti csoport, amely örökli az összes olyan előfizetést, hogy a hozzáférést.  Parancsfájl RBAC-hozzárendeléseket több előfizetés nélkül a felügyeleti csoport egy hozzárendelési engedélyezheti a felhasználóknak, amire csak szükségük hozzáférésre.
 
 ### <a name="important-facts-about-management-groups"></a>Fontos alapvető tudnivalók a felügyeleti csoportok
 
@@ -44,11 +44,6 @@ Részlegek szerint csoportosított hierarchia hoz létre, rendelhet [Azure szere
 - Minden egyes felügyeleti csoport és az előfizetés csak egy szülő támogatja.
 - Egyes felügyeleti csoportjai rendelkezhet több gyermeke is lehet.
 - Összes előfizetés és a felügyeleti csoport összes könyvtárban egy hierarchián belül található. Lásd: [a legfelső szintű felügyeleti csoportra vonatkozó fontos tények](#important-facts-about-the-root-management-group) kivételekhez az előzetes verzió ideje alatt.
-
-### <a name="cloud-solution-provider-csp-limitation-during-preview"></a>Cloud Solution Provider (CSP) korlátozás az előzetes verzióban
-
-Nincs a jelenlegi korlátozás miatt a Cloud Solution Provider (CSP) partnerek számára, ahol nem sikerült létrehozni vagy az ügyfél a könyvtárból az ügyfél felügyeleti csoportok kezelése.  
-Ez az elem jelenleg szerkesztett, és megszűnik, mielőtt a felügyeleti csoportok vannak bejelentett "Általános rendelkezésre állás."
 
 ## <a name="root-management-group-for-each-directory"></a>Gyökérszintű felügyeleti csoport minden könyvtár
 

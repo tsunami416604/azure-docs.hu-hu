@@ -1,27 +1,24 @@
 ---
-title: Kétlépéses ellenőrzés – az Azure AD beállítása |} A Microsoft Docs
+title: Állítsa be a kétlépéses ellenőrzés – Azure Active Directory |} A Microsoft Docs
 description: A vállalat Azure multi-factor Authentication állítja be, amikor a program felkéri iratkozzon fel a kétlépéses ellenőrzéshez. Ismerje meg, hogyan állítsa be.
-services: multi-factor-authentication
+services: active-directory
 keywords: az azure directory, a felhőben, az active directory az oktatóanyag az active directory használata
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.custom: end-user
-ms.openlocfilehash: 1d0c60dedcb5eefb4ab9167b40c06c3616790719
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d4ebecd11f4ca3d12a55cf25db31e31d7f528db8
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060081"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343729"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>A kétlépéses ellenőrzéshez a fiók beállítása
 A kétlépéses ellenőrzés egy kiegészítő biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében. Ha ez a cikk olvasása közben, valószínűleg kapott e-mailt a munkahelyi vagy iskolai rendszergazda multi-factor Authentication hitelesítéssel kapcsolatban. Vagy esetleg próbált meg bejelentkezni, és itt van egy üzenet, hogy további biztonsági ellenőrzés beállítása. Ebben az esetben, ha **nem tud bejelentkezni, amíg el nem végezte az automatikus regisztrációs folyamatot**.

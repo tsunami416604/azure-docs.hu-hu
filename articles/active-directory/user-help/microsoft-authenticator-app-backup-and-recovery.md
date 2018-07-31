@@ -1,25 +1,22 @@
 ---
-title: Biztonsági mentése és helyreállítása a Microsoft Authenticator alkalmazás – Azure ad-ben |} A Microsoft Docs
+title: Biztonsági mentése és helyreállítása a Microsoft Authenticator alkalmazás – Azure Active Directory |} A Microsoft Docs
 description: Megtudhatja, hogyan biztonsági mentését és helyreállítását a fiók hitelesítő adatait, a Microsoft Authenticator alkalmazás használatával.
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.service: multi-factor-authentication
+ms.component: user-help
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.custom: end-user
-ms.openlocfilehash: a9c950ecafd2eb5f3aed1bee3707f57be6ec3b62
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060102"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358120"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Biztonsági mentés és helyreállítás fiók hitelesítő adatait a Microsoft Authenticator alkalmazással
 
@@ -51,7 +48,7 @@ A biztonsági mentési adatok erősebb biztonságot igénylő, hogy jelentkezzen
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>A fiók hitelesítő adatait az új eszköz helyreállítása
 A fiók hitelesítő adatait az iCloud-fiók segítségével helyreállítható Microsoft recovery-fiók beállítása során, amelyről biztonsági másolatot az adatait.
 
-**Az adatok helyreállítása**
+### <a name="to-recover-your-information"></a>Az adatok helyreállítása
 1.  Az iOS-eszközön nyissa meg a Microsoft Authenticator alkalmazást, és válassza ki **helyreállítás megkezdése** a képernyő alján.
 
     ![A Microsoft Authenticator alkalmazás képe, amelyen hol kezdje helyreállítási kattintson](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-begin-recovery.png)
@@ -67,7 +64,7 @@ Ha leküldéses értesítések küldése a személyes, munkahelyi vagy iskolai f
 
 Személyes Microsoft-fiókok igazolja az identitását a jelszót és a egy másodlagos e-mail cím vagy telefonszám szám megadásával. Munkahelyi vagy iskolai fiókok esetében a fiók szolgáltatója által biztosított QR-kódot kell vizsgálnia.
 
-**A további ellenőrzési személyes fiókok**
+### <a name="to-provide-additional-verification-for-personal-accounts"></a>A további ellenőrzési személyes fiókok
 1.  Az a **fiókok** képernyőjén a Microsoft Authenticator alkalmazást, válassza ki a legördülő nyílra a helyreállítani kívánt fiók mellett.
 
     ![A Microsoft Authenticator alkalmazás képe, amelyen azok társított lefelé mutató nyíllal elérhető fiókok](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-arrow.png)
@@ -76,7 +73,7 @@ Személyes Microsoft-fiókok igazolja az identitását a jelszót és a egy más
 
     ![A Microsoft Authenticator alkalmazás képe, lehetővé teszi, hogy adja meg a bejelentkezési adatok](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-sign-in.png)
 
-**A további ellenőrzési munkahelyi vagy iskolai fiókok esetében**
+### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>A további ellenőrzési munkahelyi vagy iskolai fiókok esetében
 1.  Az a **fiókok** képernyőjén a Microsoft Authenticator alkalmazást, válassza ki a legördülő nyílra a helyreállítani kívánt fiók mellett.
 
     ![A Microsoft Authenticator alkalmazás képe, amelyen azok társított lefelé mutató nyíllal elérhető fiókok](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
@@ -86,7 +83,7 @@ Személyes Microsoft-fiókok igazolja az identitását a jelszót és a egy más
     ![A Microsoft Authenticator alkalmazás, amely lehetővé teszi a QR-kód](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >QR-kód beolvasásával kapcsolatos további információkért tekintse meg a [Ismerkedés a Microsoft Authenticator alkalmazás](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to) cikk.
+    >QR-kód beolvasásával kapcsolatos további információkért lásd: a [hozzáadása fiókok Get szakasz lépései a Microsoft Authenticator alkalmazás](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) cikk.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Biztonsági mentési és helyreállítási problémák hibaelhárítása
 Néhány oka miért a biztonsági mentés nem feltétlenül érhető el:

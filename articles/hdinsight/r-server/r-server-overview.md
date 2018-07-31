@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az ML Azure hdinsight |} Microsoft Docs
-description: Megtudhatja, hogyan ML szolgáltatások használata a HDInsight a big data elemző alkalmazások létrehozásához.
+title: Bevezetés a Machine Learning-szolgáltatások az Azure HDInsight |} A Microsoft Docs
+description: 'Útmutató: Machine Learning-szolgáltatások használata a HDInsight a big data elemző alkalmazások létrehozásához.'
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -13,47 +13,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 9633a7df1cb72f3e9e5ee79be0c332565e7e8f2a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c952d64229102f99dde393bc9a6efda45fc1c717
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054102"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358851"
 ---
-# <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Az ML-szolgáltatások és nyílt forráskódú R képességek a HDInsight bemutatása
+# <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Machine Learning-szolgáltatások és a nyílt forráskódú R funkciókat biztosít a HDInsight bemutatása
 
 > [!NOTE]
-> 2017. szeptember, a Microsoft R Server jelent meg új neve alatt **Microsoft Machine Learning Server** vagy ML-kiszolgáló. Ennek következtében a HDInsight R Server-fürt neve **Machine Learning szolgáltatás** vagy **ML szolgáltatások** a HDInsight fürt. Az R kiszolgálónév-változás további információkért lásd: [Microsoft R Server lesz Microsoft Machine Learning kiszolgáló](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server).
+> 2017 szeptemberi, a Microsoft R Server jelent meg új neve alatt megjelenő **Microsoft Machine Learning-kiszolgáló** vagy a Machine Learning-kiszolgáló. Ennek következtében, a HDInsight R Server-fürt új neve **Machine Learning-szolgáltatások** vagy **ML szolgáltatásokkal** a HDInsight-fürt. Az R Server névváltozásai további információkért lásd: [Microsoft R Server már Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server).
 
-Microsoft Machine Learning Server a HDInsight-fürtök létrehozása az Azure-ban esetén érhető el, mint a központi telepítési lehetőség. A fürt, amely ezt a lehetőséget biztosít neve **ML szolgáltatások**. Ezt a képességet biztosít a adatelemzők, statisztikusok és R-t használó programozók méretezhető, igény szerinti hozzáféréssel rendelkező elosztott elemzés hdinsight platformon történő módszerek.
+Microsoft Machine Learning-kiszolgáló telepítési beállításként érhető el, az Azure HDInsight-fürtök létrehozásakor. A fürt típusát, amely ezt a lehetőséget biztosít nevezzük **ML szolgáltatásokkal**. Ez a képesség nyújt, az adatszakértők, statisztikusok és R-programozók skálázható, igény szerinti hozzáféréssel rendelkező elosztott elemzési a HDInsight módszereket.
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
-A HDInsight ML-szolgáltatások töltődnek be az Azure Blob vagy a Data Lake szinte bármilyen méretű adatkészletek a legújabb funkciókat az R-alapú használatával biztosít. ML szolgáltatások fürt nyílt forráskódú R épül, mivel az R-alapú alkalmazások létrehozása kihasználhatják a 8000 + nyílt forráskódú R csomagok bármelyikét. A feladatok az ScaleR, a Microsoft big data elemzés csomag is rendelkezésre állnak.
+Machine Learning szolgáltatások a HDInsight betölti az Azure Blob vagy a Data Lake storage gyakorlatilag bármilyen méretű adatkészletek a legújabb funkciókat az R-alapú elemzési nyújt. Machine Learning-szolgáltatások fürt nyílt forráskódú R épül, mivel az R-alapú alkalmazásokat fejleszt kihasználhatják a 8000-es + nyílt forráskódú R csomagok. A feladatok az ScaleR, a Microsoft big data analytics csomag is rendelkezésre állnak.
 
-A fürt élcsomópont kényelmes csatlakozzon a fürthöz, és az R parancsfájlok futtatásához. Egy élcsomópontot az informatikai részleg parallelized elosztott feladatai ScaleR a peremhálózati kiszolgáló a magokon futtassák. Is futtathatja őket a fürt csomópontjai között ScaleR a Hadoop térkép csökkentése használatával, vagy Spark számítási környezeteket.
+A fürt élcsomópontjához kényelmes megoldás az R-szkriptek futtatása és a fürthöz való csatlakozáshoz. Az élcsomópont lehetősége van a futó párhuzamos működésű elosztott funkcióit ScaleR a Processzormagok száma, a peremhálózati kiszolgáló között. Is futtathatja őket a fürt csomópontjai között ScaleR a Hadoop Mapreduce használatával, vagy a Spark számítási környezetek.
 
-A modellek vagy előrejelzéseket elemzés a helyi használatra tölthető le. Akkor is is lehet operationalized máshol Azure, különösen keresztül [Azure Machine Learning Studio](http://studio.azureml.net) [webszolgáltatás](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
+A modellek vagy elemzési eredő előrejelzéseket letölthető a helyszíni használatra. Ezek is is kell üzembe helyezte azt máshol az Azure-ban, különös tekintettel keresztül [Azure Machine Learning Studio](http://studio.azureml.net) [webszolgáltatás](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
-## <a name="get-started-with-ml-services-on-hdinsight"></a>Ismerkedés az ML-szolgáltatások hdinsight
+## <a name="get-started-with-ml-services-on-hdinsight"></a>Machine Learning Services a HDInsight használatának első lépései
 
-Az Azure HDInsight az ML-szolgáltatások fürt létrehozásához válassza a **ML szolgáltatások** fürt típusa, az Azure portál használatával HDInsight-fürtök létrehozásakor. A gépi tanulás szolgáltatások fürt típusa tartalmaz ML-kiszolgálót, az adatok a fürt csomópontjai és egy élcsomópontot, az ML-alapú analytics követően zónának szolgál. Lásd: [első lépések az ML-szolgáltatások hdinsight](r-server-get-started.md) a fürt létrehozásához útmutatást.
+Az Azure HDInsight egy Machine Learning-szolgáltatások-fürt létrehozásához válassza a **Machine Learning-szolgáltatások** fürt típusát az Azure portal használatával egy HDInsight-fürt létrehozásakor. A Machine Learning-szolgáltatások fürttípus ML Server is tartalmaz, az adatcsomópontok a fürt és a egy élcsomópontot, szolgál a Machine Learning-alapú elemzési alkotóelemeit zónának. Lásd: [Machine Learning Services a HDInsight használatának első lépései](r-server-get-started.md) bemutató hogyan hozhat létre a fürtöt.
 
-## <a name="why-choose-ml-services-in-hdinsight"></a>Miért válassza ki az ML-szolgáltatások a Hdinsightban?
+## <a name="why-choose-ml-services-in-hdinsight"></a>Miért válassza ki a Machine Learning-szolgáltatások, a HDInsight?
 
-A HDInsight ML-szolgáltatások a következő előnyöket nyújtja:
+Machine Learning szolgáltatások a HDInsight az alábbi előnyöket nyújtja:
 
-### <a name="ai-innovation-from-microsoft-and-open-source"></a>A Microsoft és nyílt forráskódú AI innováció
+### <a name="ai-innovation-from-microsoft-and-open-source"></a>A Microsoft és a nyílt forráskódú AI innováció
 
-  ML-szolgáltatások részét képező magas szinten méretezhető, elosztott algoritmusok készleteiből állnak, mint [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package), és [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , amely használható az adatok mérete nagyobb, mint a fizikai memória, és számos különböző platformokról elosztott módon futtassa mérete. Ismerje meg, további információk a Microsoft a gyűjteményhez tartozó egyéni [R csomagok](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) és [Python-csomagokat](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) a termékhez mellékelt.
+  Machine Learning-szolgáltatások tartalmaz nagy mértékben skálázható, elosztott algoritmusokkal például [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package), és [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) -nál nagyobb méretű adatokkal is dolgozhat, amely a fizikai memória, és futtassa a számos különböző platformok elosztott módon mérete. Ismerje meg, további információt a Microsoft gyűjteményét címzettjének egyéni [R-csomagok](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) és [Python-csomagok](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) a termékhez mellékelt.
   
-  Gépi tanulás szolgáltatások kulcsösszetevő ezek Microsoft újításait és érkező összes fölött egy egyetlen vállalati szintű platform (AI, R és Python eszközök gazdag) nyílt forráskódú közösségi hozzájárulásokat. Bármilyen R vagy Python nyílt forráskódú gépi tanulás csomagot és a Microsoft semmilyen szellemi tulajdont képező innováció használható.
+  Machine Learning-szolgáltatások áthidalja ezeket a Microsoft innovációkat, és a hozzájárulások származó összes felett egy egyetlen vállalati szintű platform a nyílt forráskódú Közösség (R, Python és AI-eszközkészlettel). Bármely R vagy Python nyílt forráskódú gépi tanulási csomagot minden olyan szellemi tulajdont képező innováció a Microsoft párhuzamosan lesz képes együttműködni.
 
-### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Egyszerű, biztonságos és nagy méretű operationalization és felügyelet
+### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Egyszerű, biztonságos és nagy méretű operacionalizálás és felügyelet
 
-  A vállalatok számára a hagyományos mintáknak és környezetekben függő fektetnek sok időt és erőfeszítést operationalization felé. Ez a felfújt költségeket eredményez, és késlelteti a fordítási idő modellek, hogy továbbra is érvényes az ismétlés és aktuális, szabályozási jóváhagyási, és kezelésére engedélyekkel a operationalization is beleértve.
+  A hagyományos paradigmákat és környezetek függő vállalatok fektet mennyi idő és munka, operacionalizálás felé. Ez a felfújt költségeket eredményez, és később, beleértve a fordítási idő modellek, az ismétlések, hogy érvényes és aktuális, szabályozási jóváhagyási és a porttovábbításon keresztül engedélyek kezelése.
 
-  Gépi tanulás szolgáltatás nyújt enterprise osztályú [operationalization](https://docs.microsoft.com/machine-learning-server/what-is-operationalization), abban, hogy a gépi tanulási modell befejezése után néhány kattintással webszolgáltatások API-k létrehozásához szükséges. Ezek [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) server rácson a felhőben üzemeltetett és üzleti alkalmazásokkal integrálható. Központi telepítése egy vállalati, mind a kötegelt és a valós idejű pontozási igényekkel zökkenőmentesen méretezheti rugalmas rács lehetővé teszi. Útmutatásért lásd: [azok ML-szolgáltatások hdinsight](r-server-operationalize.md).
+  Machine Learning-szolgáltatásokat kínál a nagyvállalati szintű [operacionalizálás](https://docs.microsoft.com/machine-learning-server/what-is-operationalization), abban, hogy egy machine learning-modellek befejezése után csupán néhány kattintással web services API-k létrehozásához vesz igénybe. Ezek [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) kiszolgáló rácshoz a felhőben üzemeltetett és integrálható az üzletági alkalmazások. Helyezze üzembe a kötegelt és valós idejű pontozási egyaránt üzleti igényeinek megfelelő, zökkenőmentes méretezése, egy rugalmas grid lehetővé teszi lehetővé teszi. Útmutatásért lásd: [Machine Learning-szolgáltatások üzembe helyezése a HDInsight](r-server-operationalize.md).
 
 <!---
 * **Deep ecosystem engagements to deliver customer success with optimal total cost of ownership**
@@ -61,97 +61,97 @@ A HDInsight ML-szolgáltatások a következő előnyöket nyújtja:
   Individuals embarking on the journey of making their applications intelligent or simply wanting to learn the new world of AI and machine learning, need the right resources to help them get started. In addition to this documentation, Microsoft provides several learning resources and has engaged several training partners to help you ramp up and become productive quickly.
 --->
 
-## <a name="key-features-of-ml-services-on-hdinsight"></a>A HDInsight ML-szolgáltatások a legfontosabb jellemzők
+## <a name="key-features-of-ml-services-on-hdinsight"></a>A Machine Learning szolgáltatások a HDInsight fő funkciók
 
-A következő szolgáltatásokat tartalmazza az ML-szolgáltatások hdinsight.
+A Machine Learning szolgáltatások a HDInsight a következő szolgáltatásokat tartalmazza.
 
 | A szolgáltatás kategória | Leírás |
 |------------------|-------------|
-| R-engedélyezve | [R csomagok](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) R, az R, és a parancsfájl végrehajtása a futtatási infrastruktúra egy nyílt forráskódú terjesztési írt megoldások. |
-| Python-engedélyezve | [Python-modulok](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) a Python és a parancsfájl végrehajtása a futtatási infrastruktúra egy nyílt forráskódú eloszláshoz, pythonban írt megoldások.
-| [Előre betanított modellek](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | A vizuális elemzés és a szöveg véleményeket elemzésekhez készen áll az adatok pontozása megadnia. |
-| [Központi telepítése és felhasználása](r-server-operationalize.md) | Azok a kiszolgáló, és állíthat rendszerbe megoldásokat webszolgáltatásként. |
-| [Távoli végrehajtás](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Gépi tanulás szolgáltatások fürtön ügyfél a munkaállomáson a hálózaton működő távoli munkamenetek indításához. |
+| R-kompatibilis | [R-csomagok](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) egy nyílt forráskódú R-t és a parancsprogramok futtatásához futásidejű infrastruktúra eloszlása az R nyelven írt megoldásokhoz. |
+| Python-kompatibilis | [Python-modulok](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) pythonban írt, egy nyílt forráskódú elosztásáról, Python és a parancsprogramok futtatásához futásidejű infrastruktúra-megoldások számára.
+| [Előre betanított modellek](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Vizuális elemzéshez és szöveg hangulatelemzése készen áll az adatok pontozása, adja meg. |
+| [Üzembe helyezése és felhasználása](r-server-operationalize.md) | A kiszolgáló üzembe helyezése és webszolgáltatásként helyezhet üzembe megoldásokat. |
+| [Távoli végrehajtás](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Indítsa el a távoli asztali munkamenetek a Machine Learning-szolgáltatások fürt ügyfél a munkaállomáson a hálózaton. |
 
 
-## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>A HDInsight ML szolgáltatások adatok tárolási lehetőségek
+## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>A HDInsight Machine Learning-szolgáltatások adatok tárolási lehetőségek
 
-A HDInsight-fürtök a HDFS fájlrendszerében alapértelmezett tároló vagy egy Azure Storage-fiókot, vagy egy Azure Data Lake Store társítható. Ez a társítás biztosítja, hogy az adatokat tölt fel a fürt, tárolás elemzési során állandó történik, és a fürtök törlése után is érhető el az adatokat. Számos különböző eszköz az adatok átvitele a tárolási lehetőség választ ki, beleértve a feltöltési portálalapú létesítmény a tárfiók kezelése és a [AzCopy](../../storage/common/storage-use-azcopy.md) segédprogramot.
+Alapértelmezett tároló a HDInsight-fürtök a HDFS-fájlrendszer vagy egy Azure Storage-fiókot, vagy egy Azure Data Lake Store társítható. Ez a társítás biztosítja, hogy feltöltött adatokat a fürthöz a tároló elemzése során állandó történik, és az adatok érhető el a fürt törlése után is. Az adatok átvitelét a beállítást választ ki, beleértve a portálalapú feltöltési funkció a storage-fiók kezeléséhez különféle eszközök és a [AzCopy](../../storage/common/storage-use-azcopy.md) segédprogramot.
 
-Lehetősége van további Blob való hozzáférés engedélyezése, és a Data lake tárolja a kiépítési folyamat függetlenül használja az elsődleges tárolási lehetőség fürt során. Lásd: [első lépések az ML-szolgáltatások hdinsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started) további fiókokat ad hozzá hozzáférési olvashat. Lásd: [Azure tárolási lehetőségek az ML-szolgáltatások hdinsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) több storage-fiókok használatával kapcsolatos további olvashatja.
+Lehetősége van további Blob való hozzáférés engedélyezése, és a Data lake tárolja az folyamat függetlenül használja az elsődleges tárolási lehetőség fürtkiépítési során. Lásd: [Machine Learning Services a HDInsight használatának első lépései](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started) való hozzáadásáról a hozzáférés további fiókokra. Lásd: [Azure tárolási lehetőségei Machine Learning-szolgáltatások HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) cikk további több tárfiók használatával kapcsolatban.
 
-Is [Azure fájlok](../../storage/files/storage-how-to-use-files-linux.md) tárolási beállításként való használatra a peremhálózati csomóponton. Az Azure Files lehetővé teszi a fájlmegosztást, amelyet a Linux fájlrendszerben létrejött az Azure Storage csatlakoztatni. HDInsight-fürt ML szolgáltatások adatok tárolási lehetőségek kapcsolatos további információkért lásd: [Azure tárolási lehetőségek az ML-szolgáltatások hdinsight](r-server-storage.md).
+Is [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) tárolási beállításként való használatra az élcsomóponti operacionalizáláshoz. Az Azure Files lehetővé teszi az Azure Storage-ban a Linux fájlrendszerbe létrehozott fájlmegosztást. HDInsight-fürtön a Machine Learning Services ezen adatok tárolási lehetőségekről további információkért lásd: [Azure tárolási lehetőségei Machine Learning-szolgáltatások HDInsight](r-server-storage.md).
 
-## <a name="access-ml-services-edge-node"></a>Hozzáférés ML szolgáltatások élcsomópont
+## <a name="access-ml-services-edge-node"></a>Hozzáférés a Machine Learning-szolgáltatások élcsomóponthoz
 
-Csatlakozhat a Microsoft ML Server, a peremhálózati csomóponton böngésző használatával. Telepíti a rendszer alapértelmezés szerint a fürt létrehozása során. További információkért lásd: [HDInsight ML szolgáltatásokkal beolvasása stared](r-server-get-started.md). Keresztül is csatlakozhat a fürtcsomópont peremhálózati a parancssorból az R-konzol eléréséhez a SSH/PuTTY használatával.
+Csatlakozhat a Microsoft ML Server, az élcsomóponton, egy böngészővel. Telepíti a rendszer alapértelmezés szerint a fürt létrehozásakor. További információkért lásd: [lekérése és a gépi Tanulási szolgáltatások HDInsight stared](r-server-get-started.md). Akkor is csatlakozhat a fürt határcsomópontjához a parancssorból az R-konzol eléréséhez az SSH és PuTTY használatával.
 
-## <a name="develop-and-run-r-scripts"></a>Fejlesztéséhez és az R parancsfájlok futtatása
+## <a name="develop-and-run-r-scripts"></a>Fejlesztés és R-szkriptek futtatása
 
-Az R parancsfájlok létrehozása és futtatása használhatja a 8000 + nyílt forráskódú R csomagok elérhető párhuzamos működésű és elosztott rutinok mellett a ScaleR könyvtárban. A élcsomópont ML szolgáltatásokkal futó parancsfájl általában az R parancsértelmező belül fut, ezen a csomóponton. A kivételek közé tartoznak a fenti lépések, amelyeket a beállított számítási környezetet ScaleR függvény Hadoop térkép csökkentése (RxHadoopMR) vagy a Spark (RxSpark). A függvény ebben az esetben egy elosztott módon fut, ezen adatok (feladat) csomópontokon a fürt társított hivatkozott adatokkal. A különböző számítási környezet beállításokkal kapcsolatos további információkért lásd: [adatkörnyezet beállításai az ML-szolgáltatások hdinsight számítási](r-server-compute-contexts.md).
+Az R-szkriptek létrehozása és futtatása bármelyikét használhatja a 8000-es + nyílt forráskódú R-csomagok mellett a rendelkezésre álló párhuzamos és elosztott rutinokat a ScaleR-könyvtárban. A Machine Learning-szolgáltatásokkal, az élcsomóponton futtatott parancsfájl általában az R-értelmező belül futtatja, ezen a csomóponton. A kivételek közé tartoznak, amely egy beállított számítási környezet ScaleR függvény meghívásához szükséges lépések, Hadoop Mapreduce (RxHadoopMR) vagy a Sparkkal (RxSpark). Ebben az esetben a függvény fut egyszerre egy elosztott módon ezen adatok (feladat) csomópontok, a fürt, amely a hivatkozott adatokkal vannak társítva. A különböző számítási környezeti beállítások kapcsolatos további információkért lásd: [számítási környezeti beállítások a Machine Learning-szolgáltatásokhoz a HDInsight](r-server-compute-contexts.md).
 
 ## <a name="operationalize-a-model"></a>Modell üzembe helyezése
 
-Az adatok modellezési befejeződése után az új adatokat a Azure vagy a helyszíni előrejelzéseket készítsen a modellt üzembe. Ez a folyamat pontozási néven ismert. Pontozó teheti HDInsight, Azure Machine Learning vagy a helyszínen.
+Ha elkészült az adatmodellezés, működésbe hozhat a modellt, hogy az új adatok vagy az Azure-ban vagy a helyi adatokat. Ez a folyamat pontozási néven ismert. A pontozás elvégezhető a HDInsight, Azure Machine Learning vagy a helyszínen.
 
-### <a name="score-in-hdinsight"></a>Pontszám a Hdinsightban
+### <a name="score-in-hdinsight"></a>A HDInsight pontszám
 
-Pontozásához a hdinsight eszközben, az R függvényt, amely meghívja a modell a tárfiók betöltött új adatfájl előrejelzéseket készítsen írni. Ezután menti az előrejelzés a tárfiók. A szokásos igény szerinti élcsomópont a fürt vagy egy ütemezett feladat segítségével is futtathatja.
+A pontszám a HDInsight, egy R-függvényt, amely meghívja ezt a modellt, hogy egy új adatfájlt a tárfiók betöltött adatokat írni. Mentse az előrejelzés térjen vissza a tárfiók. Rendszeres igény szerinti, az élcsomóponton, a fürt vagy egy ütemezett feladat használatával futtathatja.
 
-### <a name="score-in-azure-machine-learning-aml"></a>Az Azure-ban pontszám számítógép-képzési (AML)
+### <a name="score-in-azure-machine-learning-aml"></a>Az Azure-ban pontszám a Machine Learning (AML)
 
-Pontszám Azure Machine Learning segítségével, használja az úgynevezett nyílt forráskódú Azure Machine Learning R csomag [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) közzététele a modell Azure webszolgáltatásként. Kényelmi célokat szolgál a csomag nincs előre telepítve van a élcsomópont. Ezt követően az Azure Machine Learning létesítményekben hozhat létre a webszolgáltatás felhasználói felület, és majd a webszolgáltatás hívására, pontozó igény szerint.
+Pontszámot rendelni az Azure Machine Learning segítségével, használja a nyílt forráskódú Azure Machine Learning R csomag néven [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) közzététele a modell egy Azure-webszolgáltatásként. Az egyszerűség kedvéért ez a csomag az élcsomóponti operacionalizáláshoz előzetesen már telepítve. Ezután egy felhasználói felületet a webszolgáltatás létrehozásához használja az a funkciók az Azure Machine Learning, és majd hívja meg a webszolgáltatás pontozó igény szerint.
 
-Válassza ezt a beállítást, ha bármely ScaleR modellobjektumokat kell konvertálnia egyenértékű nyílt forráskódú modellobjektumokat a webszolgáltatáshoz való használatra. Használjon ScaleR kényszerítési funkciók, például `as.randomForest()` ensemble alapú modellek esetében az átalakításhoz.
+Ha ezt a lehetőséget választja, minden ScaleR adatmodell-objektumokat kell konvertálnia egyenértékű nyílt forráskódú modellobjektumokat a webszolgáltatáshoz való használatra. Használjon ScaleR-függvényei kényszert, például `as.randomForest()` ensemble-alapú modell az átalakításhoz.
 
 ### <a name="score-on-premises"></a>Helyszíni pontszám
 
-A modell létrehozása után helyszíni pontozásához, szerializálni a modellnek az R, töltse le, deszerializálni, mert azt és kövesse az új adatok pontozása. Akkor is a korábban a leírt módszer segítségével új adatok pontozása [hdinsight pontozási](#scoring-in-hdinsight) vagy használatával [DeployR](https://deployr.revolutionanalytics.com/).
+A modell létrehozása után helyszíni pontozásához, szerializálni a modell az R, töltse le, deszerializálható, és majd használni az új adatok pontozásához. Ön is a korábban ismertetett megközelítés az új adatok pontozása [HDInsight pontozási](#scoring-in-hdinsight) vagy [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
 
-## <a name="maintain-the-cluster"></a>A fürt karbantartása
+## <a name="maintain-the-cluster"></a>A fürt kezelése
 
-### <a name="install-and-maintain-r-packages"></a>Telepítheti és karbantarthatja R csomagok
+### <a name="install-and-maintain-r-packages"></a>Telepítse és R-csomagok kezelése
 
-Az R csomagokat használhat a legtöbb élcsomópont óta az R parancsfájlok nincs legtöbb lépések szükségesek. Élcsomópont további R csomagok telepítéséhez használja a `install.packages()` R. metódus
+Az R-csomagok használata a legtöbb óta a lépések többségét, az R-szkriptek futtatása van az élcsomópontra van szükség. További R csomagokat telepíteni az élcsomóponton, használhatja a `install.packages()` metódus az R.
 
-Ha rutinok a ScaleR könyvtárból a fürtön csak használ, nem általában telepítendő további R csomagokat az adatok csomópontján. Azonban szükség lehet további csomagok használatát támogató **rxExec** vagy **RxDataStep** végrehajtási adatok csomópontjára.
+Ha rutinokat a ScaleR-erőforrástárból a fürtben csak használja, akkor sem általában kell további R csomagokat telepítenie az adatcsomópontok. Azonban szükség lehet további csomagok használatát támogató **rxExec** vagy **RxDataStep** végrehajtás a data-csomópontokon.
 
-Ilyen esetben a további csomagok telepíthetők a parancsfájlművelet a fürt létrehozása után. További információkért lásd: [ML-szolgáltatások kezelése a HDInsight-fürt](r-server-hdinsight-manage.md).
+Ezekben az esetekben a további csomagok telepíthetők szkriptműveletet a fürt létrehozása után. További információkért lásd: [Machine Learning Services kezelése a HDInsight-fürt](r-server-hdinsight-manage.md).
 
-### <a name="change-hadoop-mapreduce-memory-settings"></a>Hadoop-MapReduce memória beállításainak módosítása
+### <a name="change-hadoop-mapreduce-memory-settings"></a>Hadoop MapReduce memória beállításainak módosítása
 
-A fürt MapReduce feladatot futó ML szolgáltatásokban elérhető memória mennyiségének módosítása kell módosítani. A fürt módosításához használja az Apache Ambari felhasználói felület, amely a fürt számára az Azure portál panel keresztül érhető el. A fürt felhasználói felülete Ambari elérésével kapcsolatos útmutatásért lásd: [kezelése HDInsight-fürtök az Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md).
+A fürt módosíthatók, ha az egy MapReduce-feladatot a Machine Learning-szolgáltatások rendelkezésre álló memória mennyiségének módosítása. A fürt módosításához használja az Apache Ambari felhasználói felületén, amely a fürt számára az Azure portal paneljén érhető el. A fürt Ambari felhasználói felületén elérésével kapcsolatos útmutatásért lásd: [kezelése a HDInsight-fürtök az Ambari webes kezelőfelületen](../hdinsight-hadoop-manage-ambari.md).
 
-Akkor is módosíthatja a Hadoop kapcsolók használatával hívásában ML-szolgáltatások rendelkezésre álló memória mennyisége **RxHadoopMR** az alábbiak szerint:
+Az is lehet módosítani a hívást a Hadoop-kapcsolók használatával Machine Learning-szolgáltatások rendelkezésre álló memória mennyisége **RxHadoopMR** módon:
 
     hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
 ### <a name="scale-your-cluster"></a>Fürt méretezése
 
-Egy meglévő ML-Services-fürttel hdinsighton méretezhetők felfelé vagy lefelé a portálon keresztül. Vertikális felskálázásával, a további kapacitást, amelyek hasznosak lehetnek a nagyobb feldolgozási feladatok áttekintésével felmérheti, vagy méretezheti vissza egy fürt tétlen állapotában. A fürt méretezése kapcsolatos útmutatásért lásd: [kezelése HDInsight-fürtök](../hdinsight-administer-use-portal-linux.md).
+Machine Learning Services meglévő fürt a HDInsight méretezhetők felfelé és lefelé a portálon keresztül. Vertikális felskálázásával számára nagyobb feldolgozási feladatok szükség lehet további kapacitást szerezhet, vagy csökkenthetjük a fürt amikor nem használja azt. Fürt horizontális fel-kapcsolatos útmutatásért lásd: [kezelése a HDInsight-fürtök](../hdinsight-administer-use-portal-linux.md).
 
 ### <a name="maintain-the-system"></a>A rendszer karbantartása
 
-Operációsrendszer-javítások és egyéb frissítés alkalmazásához karbantartást végeznek a HDInsight-fürtök a mögöttes Linux virtuális gépek munkaidőn kívüli során. Általában karbantartási történik, 3:30-kor (a virtuális gép számára a helyi ideje alapján), minden hétfőjén és csütörtökén. Úgy, hogy a fürt egyszerre több mint egy negyedéve nincs hatással lesznek a frissítések megtörténik.
+Operációsrendszer-javítások és egyéb frissítés alkalmazásához karbantartása munkaidőn kívül Linuxos virtuális gépeken az alapul szolgáló egy HDInsight-fürtön történik. Általában karbantartási történik hajnalban 3:30-kor (a virtuális gép a helyi ideje alapján) minden hétfőjén és csütörtökén. Frissítések oly módon, hogy azok ne befolyásolják a fürt több mint egy negyedév egyszerre történik.
 
-Mivel az átjárócsomópontokkal redundáns, és nem minden adatcsomópontokat érintettek, bármely ez idő alatt futó feladatok lelassíthatják. Azonban ezek továbbra is fusson befejezését. Bármely egyéni szoftvert vagy a helyi adatok, amelyekhez őrzi meg karbantartási eseményekből keresztül, kivéve, ha végzetes hiba lép fel, amely egy fürt újjáépítése szükséges.
+Az átjárócsomópontokhoz redundáns, és nem minden adatcsomópontok érinti, mivel ez idő alatt futó feladatok lelassíthatják. Azonban azok továbbra is fusson befejezését. Bármilyen egyéni szoftver vagy a helyi adatok, amely rendelkezik a rendszer megőrzi ezeket a karbantartási események között, kivéve, ha egy végzetes hiba bekövetkezése, amely egy fürt Újraépítés igényel.
 
-## <a name="ide-options-for-ml-services-on-hdinsight"></a>A HDInsight az ML-szolgáltatások IDE-beállítások
+## <a name="ide-options-for-ml-services-on-hdinsight"></a>A HDInsight IDE Machine Learning-szolgáltatások beállításai
 
-HDInsight-fürt Linux élcsomópont az R-alapú elemzése követően időzónáját. HDInsight újabb verzióiban a peremhálózati csomóponton Rstudióból kiszolgáló alapértelmezett telepítést biztosítanak, egy webböngésző-alapú IDE. Egy IDE a fejlesztési Rstudióból kiszolgáló használni és az R parancsfájlok végrehajtását lehet jelentősen hatékonyabb, mint az R-konzol használata.
+A HDInsight-fürt Linux peremhálózati csomópont R-alapú elemzési alkotóelemeit zónáját. HDInsight újabb verzióiban az RStudio Server alapértelmezett telepítést biztosítanak az élcsomóponton, a böngésző alapú IDE. RStudio Server használatát a fejlesztési IDE és R-szkriptek végrehajtása jelentősen hatékonyabban dolgozhat, mint az R-konzol csak használatával is lehet.
 
-Ezenkívül egy asztali IDE telepítése és hozzáférhetne a fürt egy távoli MapReduce vagy a Spark számítási környezet használata. A Microsoft a választható lehetőségek [R Tools for Visual Studio](https://www.visualstudio.com/features/rtvs-vs.aspx) (RTVS) Rstudióból és Walware tartozó Eclipse-alapú [StatET](http://www.walware.de/goto/statet).
+Emellett telepíteni egy asztali IDE, és használhatja azokat a fürt eléréséhez az távoli MapReduce vagy a Spark számítási környezetek használatával. Lehetőségek a Microsoft [R Tools for Visual Studio](https://www.visualstudio.com/features/rtvs-vs.aspx) (RTVS), az RStudio és Walware céljai az Eclipse-alapú [StatET](http://www.walware.de/goto/statet).
 
-Emellett akkor begépelésével érhetik el az R-konzolra élcsomópont **R** SSH vagy a PuTTY segítségével történő kapcsolódás után Linux parancs parancssorba. Ha a konzol felhasználói felületén, célszerű egy szövegszerkesztőben R-parancsfájl fejlesztési futtassa egy másik ablakban, és Kivágás, és illessze be a parancsfájl szakaszok a R konzolba, igény szerint.
+Emellett hozzáférhet a peremhálózati csomópont R-konzol beírásával **R** keresztül az SSH- vagy putty-t kapcsolódás után Linux parancs parancssorba. Ha a konzol felhasználói felületén, célszerű a R-szkript fejlesztői egy szövegszerkesztőbe futtassa egy másik ablakban, és a Kivágás, és illessze be a szkript szakaszok az R-konzolról, igény szerint.
 
 ## <a name="pricing"></a>Díjszabás
 
-Az ML-szolgáltatások HDInsight-fürtök társított árak hasonlóan a más HDInsight-fürttípusok árakat van felépítve. Az alapul szolgáló virtuális gépek méretezési a neve, adatokat és peremhálózati csomópontok, azonban kiegészül a core órás uplift alapulnak. További információkért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
+Az árak egy Machine Learning-szolgáltatások HDInsight-fürthöz társított hasonlóan minden olyan HDInsight-fürt esetében a díjak a struktúrája. Azok a neve, az adatok és élcsomópontok egy magóra kicsivel igény szerinti hozzáadásával az alapul szolgáló virtuális gépek méretezési alapulnak. További információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="next-steps"></a>További lépések
 
-A HDInsight-fürtökön ML-szolgáltatások használatával kapcsolatos további tudnivalókért lásd a következő témaköröket:
+Machine Learning-szolgáltatások HDInsight-fürtökön való használatával kapcsolatos további tudnivalókért lásd a következő témaköröket:
 
-* [Ismerkedés az ML Serices-fürttel hdinsighton](r-server-get-started.md)
-* [Számítási környezet lehetőségek az ML-Services-fürttel hdinsighton](r-server-compute-contexts.md)
-* [Tárolási lehetőségek az ML-Services-fürttel hdinsighton](r-server-storage.md)
+* [Ismerkedés a Machine Learning Serices HDInsight-fürt](r-server-get-started.md)
+* [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)
+* [A Machine Learning-szolgáltatások HDInsight-fürt tárolási lehetőségek](r-server-storage.md)

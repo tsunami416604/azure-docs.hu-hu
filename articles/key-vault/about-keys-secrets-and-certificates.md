@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 77675b3c0b2ed9fcdb923c92638384d215bddc40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972400"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359189"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 Az Azure Key Vault lehetővé teszi, hogy a felhasználók tárolhatják és a Microsoft Azure-környezeten belül titkosítási kulcsok használata. A Key Vault több kulcstípusok és algoritmusokat támogatja, és lehetővé teszi az értékes kulcsok használható hardveres biztonsági modulok (HSM). Emellett a Key Vault lehetővé teszi a felhasználók számára a titkos kulcsok biztonságos tárolása. A titkok olyan mérete korlátozott oktett objektumok nem adott sémantikou. A Key Vault támogatja a tanúsítványok, kulcsok és titkos kulcsok épülnek, és adja hozzá az automatikus megújítási szolgáltatást is.
@@ -73,7 +73,7 @@ A JavaScript Object Notation (JSON) és a JavaScript Object aláírás és titko
 -   [JSON webes algoritmusok (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON webes aláírás (KMH)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
-### <a name="BKMK_DataTypes"></a> Adattípusok
+### <a name="BKMK_DataTypes"></a> adattípusok
 
 Tekintse meg a [JOSE specifikációk](#BKMK_Standards) kulcsok, titkosítási és aláírási vonatkozó adatok esetében.  
 
@@ -106,7 +106,7 @@ Az elemek magyarázata:
 
 |||  
 |-|-|  
-|`keyvault-name`|A Microsoft Azure Key Vault szolgáltatás key vault neve.<br /><br /> A Key Vault neve a felhasználó ki van jelölve, és globálisan egyedi.<br /><br /> A Key Vault nevének kell lennie egy karakterlánc 3 – 24 karakter hosszúságú tartalmazó csak (0-9, a – z, A-Z, - és).|  
+|`keyvault-name`|A Microsoft Azure Key Vault szolgáltatás key vault neve.<br /><br /> A Key Vault neve a felhasználó ki van jelölve, és globálisan egyedi.<br /><br /> A kulcstároló neve 3–24 karakter hosszúságú sztring lehet, és csak a következőket tartalmazhatja: 0–9, a–z, A–Z, és -.|  
 |`object-type`|Az objektumot, vagy a "kulcsok", vagy a "titok" típusú.|  
 |`object-name`|Egy `object-name` a felhasználó által megadott név és a egy Key Vaultot egyedinek kell lennie. A név nem lehet 1 – 127 karakter hosszúságú csak 0-9, a – z, A-Z, - és.|  
 |`object-version`|Egy `object-version` egy rendszer által létrehozott, az objektumok egyedi verziójának megoldására opcionálisan használt 32 karakter hosszúságú karakterlánc-azonosító.|  
@@ -117,15 +117,36 @@ Az elemek magyarázata:
 
 Titkosítási kulcsok Azure Key vaultban JSON webes kulcs [JWK] objektumként jelennek meg. Az alap JWK/JWA előírásoknak is ki vannak bővítve engedélyezéséhez az egyedi az Azure Key Vault-megvalósítás kulcstípusok, például a kulcsok Azure Key Vault biztonságos szállítása engedélyezéséhez a HSM szállítójával (Thales) adott csomagolás használatával történő importálását például kulcsok, Előfordulhat, hogy csak az használni őket az Azure Key Vault HSM.  
 
-A kezdeti Azure Key Vault a kiadás támogatja a csak az RSA-kulcsok jövőbeli kiadások más kulcstípusok, például a szimmetrikus és az elliptikus görbe is támogatja.  
-
--   **RSA**: egy 2048 bites RSA-kulcsot. Ez a "soft" kulcs, a Key Vault a szoftver dolgoz fel, de inaktív egy fájlrendszer kulcsa, amely egy hardveres biztonsági modulban tárolja. Az ügyfelek előfordulhat, hogy importálja a meglévő RSA-kulcsot, vagy kérje meg, hogy az Azure Key Vault generál egyet.  
--   **Az RSA-HSM**: egy RSA-kulcsot, která je zpracována egy hardveres biztonsági modulban. Az Azure Key Vault HSM biztonsági Világai egyik védett RSA-HSM kulcsok (van egy Biztonságivilág az elszigetelés földrajzi hely szerint). Ügyfelek előfordulhat, hogy egy RSA-kulcsot, vagy letölthető formában vagy exportálásával egy kompatibilis a HSM-eszközről, importálása, vagy kérje meg, hogy az Azure Key Vault generál egyet. Ilyen típusú kulcs hozzáadja a T-attribútumot a JWK szerezze be a HSM-kulcs adatai számára.  
+- **"Soft" kulcsok**: A kulcs a szoftver a Key Vault által feldolgozott, de titkosítása egy hardveres biztonsági modulban rendszer kulcs használatával. Az ügyfelek előfordulhat, hogy egy meglévő RSA vagy EK kulcs importálása, vagy kérje a az Azure Key Vault generál egyet.
+- **"Rögzített" kulcsok**: egy kulcs feldolgozása hardveres biztonsági modul (HSM-mel). Ezek a kulcsok az Azure Key Vault HSM biztonsági Világai egyik védett (van egy Biztonságivilág az elszigetelés földrajzi hely szerint). Az ügyfelek előfordulhat, hogy egy RSA vagy EK kulcs, vagy letölthető formában vagy exportálásával egy kompatibilis a HSM-eszközről, importálása, vagy kérje meg, hogy az Azure Key Vault generál egyet. Ilyen típusú kulcs hozzáadja a T-attribútumot a JWK szerezze be a HSM-kulcs adatai számára.
 
      További információ a földrajzi határokon belül: [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
 
+Az Azure Key Vault támogatja az RSA és az elliptikus görbe alapú kulcsok csak; jövőbeli kiadások például előfordulhat, hogy támogatja a más kulcstípusok szimmetrikus.
+
+-   **EK**: "Soft" elliptikus görbe alapú kulcsot.
+-   **HSM-EK**: "Merevlemez" elliptikus görbe alapú kulcsot.
+-   **RSA**: "Soft" RSA-kulcsot.
+-   **Az RSA-HSM**: "Rögzített" RSA-kulcsot.
+
+Az Azure Key Vault támogatja a 2048, 3072 és 4096-méretek RSA-kulcsok, és az elliptikus görbe alapú kulcsok írja be a P-256, p-384, p-521 és P-256_K.
+
+### <a name="BKMK_Cryptographic"></a> Titkosítási védelme
+
+A titkosítási modulok által használt Azure Key Vaultban, HSM, illetve szoftver –, hogy-e FIPS használatával érvényesített. Nem kell különösebb FIPS-módban történő futtatására. Ha Ön **létrehozása** vagy **importálása** HSM által védett kulcsokat, amelyek garantált belül érvényesítve a FIPS 140-2 2 vagy magasabb szintű hardveres biztonsági modulok dolgozzák. Ha Ön **létrehozása** vagy **importálása** kulcsokat, a szoftveres védelemmel ellátott majd belül titkosítási moduljait feldolgozása érvényesítve a FIPS 140-2 1 vagy magasabb szintű. További információkért lásd: [kulcsokat és a kulcstípusok](about-keys-secrets-and-certificates.md#BKMK_KeyTypes).
+
+###  <a name="BKMK_ECAlgorithms"></a> EK algoritmusok
+ Az Azure Key Vault HSM-EK és a kulcsokat a következő algoritmus azonosítók használata támogatott. 
+
+#### <a name="signverify"></a>BEJELENTKEZÉSI/ELLENŐRZÉSE
+
+-   **ES256** – digests ECDSA az SHA-256 algoritmust és görbe p-256 használatával létrehozott kulcsokat. Ez az algoritmus leírása: [RFC7518].
+-   **ES256K** – digests ECDSA az SHA-256 algoritmust és a görbe P-256_K létre kulcsokat. Ez az algoritmus szabványügyi szervezet függőben van.
+-   **ES384** – az SHA-384 ECDSA digests, és a görbe p-384 létre kulcsokat. Ez az algoritmus leírása: [RFC7518].
+-   **ES512** – az SHA-512 ECDSA digests, és a görbe p-521 létre kulcsokat. Ez az algoritmus leírása: [RFC7518].
+
 ###  <a name="BKMK_RSAAlgorithms"></a> Az RSA algoritmus  
- A következő algoritmus azonosítók RSA-kulcsok az Azure Key Vault használata támogatott.  
+ A következő algoritmus azonosítók RSA és az RSA-HSM kulcsok az Azure Key Vault használata támogatott.  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, TITKOSÍTÁSI/VISSZAFEJTÉSI
 
@@ -138,25 +159,6 @@ A kezdeti Azure Key Vault a kiadás támogatja a csak az RSA-kulcsok jövőbeli 
 -   **RS384** – RSASSA-PKCS-v1_5 SHA-384-et használ. Az alkalmazás megadott kivonatoló érték SHA-384-et használó kell számolni, és 48 bájt hosszú lehet.  
 -   **RS512** – RSASSA-PKCS-v1_5 SHA-512 használatával. Az alkalmazás megadott kivonatoló érték SHA-512 használatával kell számolni, és 64 bájt hosszú lehet.  
 -   **RSNULL** – lásd: [RFC2437], egy speciális használati bizonyos TLS forgatókönyvek engedélyezéséhez.  
-
-###  <a name="BKMK_RSA-HSMAlgorithms"></a> RSA-HSM algoritmusok  
-A következő algoritmus azonosítók az Azure Key Vault RSA-HSM kulcsok használata támogatott.  
-
-### <a name="BKMK_Cryptographic"></a> Titkosítási védelme
-
-A titkosítási modulok által használt Azure Key Vaultban, HSM, illetve szoftver –, hogy-e FIPS használatával érvényesített. Nem kell különösebb FIPS-módban történő futtatására. Ha Ön **létrehozása** vagy **importálása** HSM által védett kulcsokat, amelyek garantált belül érvényesítve a FIPS 140-2 2 vagy magasabb szintű hardveres biztonsági modulok dolgozzák. Ha Ön **létrehozása** vagy **importálása** kulcsokat, a szoftveres védelemmel ellátott majd belül titkosítási moduljait feldolgozása érvényesítve a FIPS 140-2 1 vagy magasabb szintű. További információkért lásd: [kulcsokat és a kulcstípusok](about-keys-secrets-and-certificates.md#BKMK_KeyTypes).
-
-#### <a name="wrapunwrap-encryptdecrypt"></a>SORTÖRÉS/KICSOMAGOLÁSA, A TITKOSÍTÁSI/VISSZAFEJTÉSI
-
--   **RSA1_5** -RSAES-PKCS1-V1_5 [RFC3447] kulcsú titkosítás.  
--   **Az RSA-OAEP** – RSAES optimális aszimmetrikus titkosítási Padding (OAEP) [RFC3447], szakasz A.2.1 az RFC 3447 által meghatározott alapértelmezett paraméterek használatával. Alapértelmezett paraméterek SHA-1 algoritmussal SHA-1 kivonatoló függvényt és a egy MGF1 maszk generációs funkcióját használja.  
-
- #### <a name="signverify"></a>BEJELENTKEZÉSI/ELLENŐRZÉSE  
-
--   **RS256** – RSASSA-PKCS-v1_5 SHA-256 használatával. Az alkalmazás megadott kivonatoló érték SHA-256 használatával kell számolni, és 32 bájt hosszú lehet.  
--   **RS384** – RSASSA-PKCS-v1_5 SHA-384-et használ. Az alkalmazás megadott kivonatoló érték SHA-384-et használó kell számolni, és 48 bájt hosszú lehet.  
--   **RS512** – RSASSA-PKCS-v1_5 SHA-512 használatával. Az alkalmazás megadott kivonatoló érték SHA-512 használatával kell számolni, és 64 bájt hosszú lehet.  
--   RSNULL: Lásd: [RFC2437], egy speciális használati bizonyos TLS forgatókönyvek engedélyezéséhez.  
 
 ###  <a name="BKMK_KeyOperations"></a> Kulcsműveletek
 

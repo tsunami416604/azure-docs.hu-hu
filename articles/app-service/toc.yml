@@ -247,7 +247,7 @@
     - name: Részletes útmutatók
       items:
         - name: Referenciaarchitektúrák
-          href: /azure/architecture/reference-architectures/app-service-web-app/
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications'
         - name: Üzembehelyezési szkriptek
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Hibaelhárítás

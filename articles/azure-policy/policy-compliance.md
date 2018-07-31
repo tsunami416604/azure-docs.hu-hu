@@ -4,17 +4,17 @@ description: Az Azure házirend értékelések és hatások határozza meg a meg
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 390935d80e903631287b1a4b9f1075e547298d99
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249568"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343552"
 ---
 # <a name="getting-compliance-data"></a>Megfelelőségi adatok beolvasása
 
@@ -35,7 +35,7 @@ Hozzárendelt házirendeket és kezdeményezések értékelések történt kül�
 
 - Egy szabályzatot vagy kezdeményezést újonnan hozzárendel egy hatókörhöz. Ha ez történik, a alkalmazni lehessen a hatókörbe való hozzárendelés körülbelül 30 percet vesz igénybe. Az alkalmazása után az újonnan hozzárendelt szabályzatot vagy kezdeményezést vagy a szabályzat által használt hatása attól függően, hogy hatókörön belüli erőforrások megkezdi a kiértékelési ciklusa, vagy kezdeményezés, erőforrások vannak megjelölve megfelelő vagy nem megfelelő. Egy nagy szabályzatot vagy kezdeményezést erőforrások nagy hatókörének értékelni időt vehet igénybe, így nem előre definiált elvárás, ha az értékelési ciklusát fog befejeződni. Ha kész, a portálon és az SDK-k frissített megfelelőségi eredmények érhetők el.
 - Egy szabályzatot vagy kezdeményezést már hozzá van rendelve egy hatókör frissül. A kiértékelési ciklusa és az időzítési ebben a forgatókönyvben ugyanúgy történik, mint egy új hozzárendelést egy hatókörhöz.
-- Egy erőforrás üzembe van helyezve, az erőforrás-kezelő, REST, Azure CLI-vel vagy az Azure PowerShell-hozzárendelés egy hatókörhöz. Ebben a forgatókönyvben a hatás esemény (hozzáfűzés, naplózása, megtagadása, üzembe helyezése) és a megfelelőségi állapot elérhetővé válik a portálon és az SDK-k körülbelül 15 perc múlva.
+- Egy erőforrás üzembe van helyezve, az erőforrás-kezelő, REST, Azure CLI-vel vagy az Azure PowerShell-hozzárendelés egy hatókörhöz. Ebben a forgatókönyvben a hatás esemény (hozzáfűzés, naplózása, megtagadása, üzembe helyezése) és a megfelelő állapotát az egyes erőforrások számára elérhetővé válik, a portálon és az SDK-k körülbelül 15 perc múlva. Ez az esemény nem okozhat más erőforrások értékelése.
 - Standard szintű megfelelőségi kiértékelési ciklusa. 24 óránként, a hozzárendelések olyan automatikusan újraértékelése is megtörténik. Egy nagy szabályzatot vagy kezdeményezést erőforrások nagy hatókörének értékelni időt vehet igénybe, így nem előre definiált elvárás, ha az értékelési ciklusát fog befejeződni. Ha kész, a portálon és az SDK-k frissített megfelelőségi eredmények érhetők el.
 
 ## <a name="how-compliance-works"></a>Megfelelőségi működése
@@ -44,15 +44,13 @@ A hozzárendelés nem megfelelő, ha azt nem követi a csoportházirend vagy a k
 
 | Erőforrás állapota | Következmény | Szabályzat-kiértékelés | Megfelelőségi állapot |
 | --- | --- | --- | --- |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Igaz | Nem megfelelő |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Hamis | Megfelelőség |
-| Új | Naplózás, AuditIfNotExist\* | Igaz | Nem megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | Hamis | Megfelelőség |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False (Hamis) | Megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | False (Hamis) | Megfelelő |
 
 \* Az Append, a DeployIfNotExist és az AuditIfNotExist hatás esetében az IF utasításnak TRUE értéket kell visszaadnia.
 Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy a szabályzat nem megfelelőnek minősüljön. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
-
-Segít jobban megérteni, hogyan vannak megjelölve az erőforrások nem megfelelő, használjuk a fent létrehozott szabályzat hozzárendelése – példa.
 
 Vegyük például, hogy rendelkezik egy erőforráscsoport – ContsoRG, néhány azokat a tárfiókokat (vörös színnel) jelennek meg a nyilvános hálózatok.
 
@@ -353,4 +351,4 @@ Ha rendelkezik egy [Log Analytics](../log-analytics/log-analytics-overview.md) m
 
 - A [Szabályzatdefiníciók struktúrájának](policy-definition.md) áttekintése.
 - A [Szabályzatok hatásainak ismertetése](policy-effects.md).
-- Tekintse át a felügyeleti csoport, a [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md)
+- A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../azure-resource-manager/management-groups-overview.md) ismertető részt.

@@ -1,49 +1,49 @@
 ---
-title: Az Azure Functions az Azure Blob storage kötések
-description: Azure Blob storage eseményindítók és kötések az Azure Functions használatának megismerése.
+title: Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
+description: Megtudhatja, hogyan használhatja az Azure Blob storage-eseményindítók és kötések az Azure Functions szolgáltatásban.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
-keywords: Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája
+keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
-ms.author: tdykstra
-ms.openlocfilehash: 85cdce312e141bee9da3b633c45dc770e503abfe
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: glenga
+ms.openlocfilehash: b9ddfb6582a4ce483e93b7ea753112d54fe65a9d
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724798"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346368"
 ---
-# <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
+# <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
-Ez a cikk ismerteti az Azure Functions kötések Azure Blob storage használata. Az Azure Functions támogatja indítás, bemeneti és kimeneti BLOB kötései. A cikk tartalmaz minden kötéshez szakaszt:
+Ez a cikk bemutatja, hogyan használható az Azure Blob storage-kötések az Azure Functions szolgáltatásban. Az Azure Functions támogatja a-trigger, bemeneti és kimeneti kötések blobok. A cikk tartalmazza minden egyes kötés szakaszát:
 
 * [Blob trigger](#trigger)
-* [A BLOB bemeneti kötése](#input)
-* [BLOB-kimeneti kötése](#output)
+* [BLOB bemeneti kötéssel](#input)
+* [Kimeneti kötés BLOB](#output)
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Az esemény rács eseményindító használata helyett a Blob storage eseményindító csak a blob storage-fiókok, nagy méretű, vagy a cold indításának késleltetése elkerülése érdekében. További információkért lásd: a [eseményindító](#trigger) szakasz. 
+> Az Event Grid eseményindító használata helyett a Blob storage-eseményindító csak a blob storage-fiókok, nagy méretű, vagy hidegindítási késések elkerülése érdekében. További információkért lásd: a [eseményindító](#trigger) szakaszban. 
 
-## <a name="packages---functions-1x"></a>Csomagok - 1.x működik
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-A Blob storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub-tárházban.
+A Blob storage-kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub-adattárban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok - 2.x működik
+## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-A Blob storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 3.x. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub-tárházban.
+A Blob storage-kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 3.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub-adattárban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -51,43 +51,43 @@ A Blob storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuge
 
 ## <a name="trigger"></a>Eseményindító
 
-A Blob storage indítsák el a függvény, egy új vagy frissített blob észlelése esetén. A blob tartalmát vannak megadva, a függvény bemenete.
+A Blob storage-eseményindító függvény elindul, egy új vagy frissített blob észlelése esetén. A blob tartalmát vannak megadva a függvény bemeneteként.
 
-A [esemény rács eseményindító](functions-bindings-event-grid.md) rendelkezik beépített támogatása [blob-események](../storage/blobs/storage-blob-event-overview.md) és elindításához a következő függvényt egy új vagy frissített blob észlelésekor is használható. Egy vonatkozó példáért lásd: a [kép átméretezése esemény rácshoz](../event-grid/resize-images-on-storage-blob-upload-event.md) oktatóanyag.
+A [Event Grid-trigger](functions-bindings-event-grid.md) beépített támogatást nyújt a [blob események](../storage/blobs/storage-blob-event-overview.md) és elindítani a függvény egy új vagy frissített blob észlelése esetén is használható. Egy vonatkozó példáért tekintse meg a [kép átméretezése az Event Griddel](../event-grid/resize-images-on-storage-blob-upload-event.md) oktatóanyag.
 
-A Blob storage eseményindító helyett esemény rács a következő helyzetekben használhatja:
+Event Grid a Blob storage-eseményindító helyett használja a következő esetekben:
 
 * Csak a BLOB storage-fiókok
-* Méretezhető.
-* Cold indításának késleltetése
+* Nagy méretű
+* Hidegindítási késleltetés
 
 ### <a name="blob-only-storage-accounts"></a>Csak a BLOB storage-fiókok
 
-[Csak a BLOB storage-fiókok](../storage/common/storage-create-storage-account.md#blob-storage-accounts) támogatottak a blob bemeneti és kimeneti kötések, de nem az blob-eseményindítókhoz. A BLOB storage eseményindítók általános célú tárfiók szükséges.
+[Csak a BLOB storage-fiókok](../storage/common/storage-create-storage-account.md#blob-storage-accounts) támogatottak a blob bemeneti és kimeneti kötések blob eseményindító esetében nem. Blobtároló eseményindítóiról egy általános célú tárfiók szükséges.
 
-### <a name="high-scale"></a>Méretezhető.
+### <a name="high-scale"></a>Nagy méretű
 
-Nagy méretű lazán adható meg azok a több mint 100 000 BLOB tárolókat vagy tárfiókot, amely másodpercenként több mint 100 blob a frissítéseket.
+Nagy méretű lazán adható meg több mint 100 000 blobok bennük rendelkező tárolókat vagy a storage-fiókok, amelyek másodpercenként több mint 100 blob frissítéseit.
 
-### <a name="cold-start-delay"></a>Cold indításának késleltetése
+### <a name="cold-start-delay"></a>Hidegindítási késleltetés
 
-Ha a függvény app a fogyasztás terv, létezhet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha egy függvény app inaktív állapotba került. A cold indítási késleltetés elkerülése érdekében váltson a az App Service-csomag az Always On engedélyezve van, vagy a különböző indítási típus használja.
+Ha a függvényalkalmazást a Használatalapú csomag, létezhet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha a függvényalkalmazás inaktív volt. A hidegindítási késleltetés elkerülése érdekében váltson arra az App Service-csomag, a mindig engedélyezve van, vagy eltérő triggertípust használja.
 
-### <a name="queue-storage-trigger"></a>Várólista tárolási eseményindító
+### <a name="queue-storage-trigger"></a>Queue storage-eseményindító
 
-Esemény rács mellett egy másik lehetőség az blobok feldolgozása a várólista tárolási eseményindító, de nincs blob események beépített támogatása rendelkezik. Hozzon létre üzenetsor-üzeneteket létrehozásakor vagy frissítésekor a blobok kellene. Egy példa, amely azt feltételezi, hogy a régebben már kötöttek, amely, tekintse meg a [blob bemeneti kötése például a cikk későbbi részében](#input---example).
+Event Grid mellett egy másik lehetőség az blobok feldolgozása a Queue storage eseményindítója, de azt nem tartalmaz beépített támogatást az Azure blob-események. Hozzon létre üzenetsori üzenetek létrehozásakor vagy frissítésekor a blobok kellene. Például, hogy azt feltételezi, hogy végezze el, amely, tekintse meg a [blob bemeneti kötésnek a példában a cikk későbbi részében](#input---example).
 
-## <a name="trigger---example"></a>Eseményindító – példa
+## <a name="trigger---example"></a>Az eseményindító – példa
 
-Tekintse meg a nyelvspecifikus példát:
+Tekintse meg az adott nyelvű példa:
 
 * [C#](#trigger---c-example)
 * [C# script (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 
-### <a name="trigger---c-example"></a>Eseményindító - C# – példa
+### <a name="trigger---c-example"></a>Eseményindító - C#-példa
 
-Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amely ír egy naplófájl, amikor egy blob hozzáadott vagy frissített a `samples-workitems` tároló.
+A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely ír egy naplófájl, amikor egy blob hozzáadásakor vagy frissítésekor a a `samples-workitems` tároló.
 
 ```csharp
 [FunctionName("BlobTriggerCSharp")]        
@@ -97,15 +97,15 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-A karakterlánc `{name}` a blob eseményindító útvonal `samples-workitems/{name}` létrehoz egy [kötési kifejezés](functions-triggers-bindings.md#binding-expressions-and-patterns) használható függvény kódban az eseményindító blob fájlnevét eléréséhez. További információkért lásd: [Blob-mintában](#trigger---blob-name-patterns) című cikkben.
+A karakterlánc `{name}` a blob eseményindító útvonal `samples-workitems/{name}` létrehoz egy [kifejezés kötés](functions-triggers-bindings.md#binding-expressions-and-patterns) használható a függvény kódját a riasztást kiváltó blob fájlneve eléréséhez. További információkért lásd: [Blob-name minták](#trigger---blob-name-patterns) a cikk későbbi részében.
 
-További információ a `BlobTrigger` attribútum című [eseményindító - attribútumok](#trigger---attributes).
+További információ a `BlobTrigger` attribútumot, lásd: [eseményindító - attribútumok](#trigger---attributes).
 
-### <a name="trigger---c-script-example"></a>Eseményindító - C# parancsfájl – példa
+### <a name="trigger---c-script-example"></a>Eseményindító - C#-szkript példa
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódot, amely a kötés használja. A függvény egy napló ír, amikor egy blob hozzáadott vagy frissített a `samples-workitems` tároló.
+Az alábbi példa bemutatja egy kötelező a blob eseményindító egy *function.json* fájl és [C#-szkript (.csx)](functions-reference-csharp.md) a kötést használó kód. A függvény ír a napló, amikor egy blob hozzáadásakor vagy frissítésekor a a `samples-workitems` tároló.
 
-Itt az kötés adatai a *function.json* fájlt:
+Itt van a kötési adatait a *function.json* fájlt:
 
 ```json
 {
@@ -122,11 +122,11 @@ Itt az kötés adatai a *function.json* fájlt:
 }
 ```
 
-A karakterlánc `{name}` a blob eseményindító útvonal `samples-workitems/{name}` létrehoz egy [kötési kifejezés](functions-triggers-bindings.md#binding-expressions-and-patterns) használható függvény kódban az eseményindító blob fájlnevét eléréséhez. További információkért lásd: [Blob-mintában](#trigger---blob-name-patterns) című cikkben.
+A karakterlánc `{name}` a blob eseményindító útvonal `samples-workitems/{name}` létrehoz egy [kifejezés kötés](functions-triggers-bindings.md#binding-expressions-and-patterns) használható a függvény kódját a riasztást kiváltó blob fájlneve eléréséhez. További információkért lásd: [Blob-name minták](#trigger---blob-name-patterns) a cikk későbbi részében.
 
-További információ *function.json* fájl tulajdonságai, tekintse meg a [konfigurációs](#trigger---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+További információ *function.json* fájl tulajdonságai, tekintse meg a [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-Itt a C# parancsfájlkód, amelyhez van kötve van egy `Stream`:
+Íme a C#-szkriptkódot, amely összekapcsolja a `Stream`:
 
 ```cs
 public static void Run(Stream myBlob, TraceWriter log)
@@ -135,7 +135,7 @@ public static void Run(Stream myBlob, TraceWriter log)
 }
 ```
 
-Itt a C# parancsfájlkód, amelyhez van kötve van egy `CloudBlockBlob`:
+Íme a C#-szkriptkódot, amely összekapcsolja a `CloudBlockBlob`:
 
 ```cs
 #r "Microsoft.WindowsAzure.Storage"
@@ -148,11 +148,11 @@ public static void Run(CloudBlockBlob myBlob, string name, TraceWriter log)
 }
 ```
 
-### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript – példa
+### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript-példa
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl és [JavaScript-kód](functions-reference-node.md) , amely a kötés használja. A függvény egy napló ír, amikor egy blob hozzáadott vagy frissített a `samples-workitems` tároló.
+Az alábbi példa bemutatja egy kötelező a blob eseményindító egy *function.json* fájl és [JavaScript-kódot](functions-reference-node.md) , amely a kötés használja. A függvény ír a napló, amikor egy blob hozzáadásakor vagy frissítésekor a a `samples-workitems` tároló.
 
-Itt a *function.json* fájlt:
+Íme a *function.json* fájlt:
 
 ```json
 {
@@ -169,11 +169,11 @@ Itt a *function.json* fájlt:
 }
 ```
 
-A karakterlánc `{name}` a blob eseményindító útvonal `samples-workitems/{name}` létrehoz egy [kötési kifejezés](functions-triggers-bindings.md#binding-expressions-and-patterns) használható függvény kódban az eseményindító blob fájlnevét eléréséhez. További információkért lásd: [Blob-mintában](#trigger---blob-name-patterns) című cikkben.
+A karakterlánc `{name}` a blob eseményindító útvonal `samples-workitems/{name}` létrehoz egy [kifejezés kötés](functions-triggers-bindings.md#binding-expressions-and-patterns) használható a függvény kódját a riasztást kiváltó blob fájlneve eléréséhez. További információkért lásd: [Blob-name minták](#trigger---blob-name-patterns) a cikk későbbi részében.
 
-További információ *function.json* fájl tulajdonságai, tekintse meg a [konfigurációs](#trigger---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+További információ *function.json* fájl tulajdonságai, tekintse meg a [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-A JavaScript-kód itt látható:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function(context) {
@@ -184,11 +184,11 @@ module.exports = function(context) {
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), ha egy blob eseményindítót a következő attribútumokat használhatja:
+A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a következő attribútumok konfigurálása a blob eseményindító:
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobTriggerAttribute.cs)
 
-  Az attribútum konstruktora tart egy elérési út karakterláncát, amely jelzi a tárolót, hogy figyelje, illetve opcionálisan egy [blob mintát](#trigger---blob-name-patterns). Például:
+  Az attribútum konstruktorának paramétereként meg egy elérési út karakterlánca, amely azt jelzi, hogy tekintse meg a tároló és opcionálisan egy [blob minta](#trigger---blob-name-patterns). Például:
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -200,7 +200,7 @@ A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), ha egy blob e
   }
   ```
 
-  Beállíthatja a `Connection` tulajdonság adja meg a tárfiókot, a következő példában látható módon:
+  Beállíthatja a `Connection` tulajdonságot adja meg a storage-fiókot szeretne használni, az alábbi példában látható módon:
 
    ```csharp
   [FunctionName("ResizeImage")]
@@ -212,11 +212,11 @@ A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), ha egy blob e
   }
   ```
 
-  Tekintse meg a teljes például [eseményindító - C# példa](#trigger---c-example).
+  Egy teljes példa: [eseményindító – C#-példa](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Adja meg a tárfiókot egy másik lehetőséget nyújt. A konstruktornak, amely tartalmazza a tárolási kapcsolati karakterlánc alkalmazásbeállítás neve vesz igénybe. Az attribútum a paraméter, módszer vagy osztály szintjén is alkalmazható. A következő példa bemutatja az osztály és módszer:
+  A használandó tárfiókot adjon meg egy másik megoldást kínál. A konstruktorban vesz igénybe egy tárolási kapcsolati karakterlánccal tartalmazó alkalmazásbeállítás neve. Az attribútum a paramétert, a metódus vagy az osztály szintjén alkalmazhatók. Az alábbi példa bemutatja az osztály és metódust:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -230,31 +230,31 @@ A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), ha egy blob e
   }
   ```
 
-A használt tárfiók határozza meg a következő sorrendben:
+A használandó tárfiókot határozza meg a következő sorrendben:
 
 * A `BlobTrigger` attribútum `Connection` tulajdonság.
-* A `StorageAccount` attribútuma ugyanezt a paramétert, mint a `BlobTrigger` attribútum.
-* A `StorageAccount` függvény attribútuma.
-* A `StorageAccount` osztály attribútuma.
-* Az alapértelmezett tárfiók a függvény ("AzureWebJobsStorage" alkalmazásbeállítás) alkalmazás.
+* A `StorageAccount` a paramétert, amelyek azonos, alkalmazott attribútum a `BlobTrigger` attribútum.
+* A `StorageAccount` attribútum a függvény a alkalmazni.
+* A `StorageAccount` attribútum az osztály a alkalmazni.
+* Az alapértelmezett tárfiókot a függvényalkalmazás ("AzureWebJobsStorage" alkalmazás beállítás).
 
 ## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
-Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `BlobTrigger` attribútum.
+A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `BlobTrigger` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a | meg kell `blobTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
-|**direction** | n/a | meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. A kivételeket jeleztük a [használati](#trigger---usage) szakasz. |
-|**name** | n/a | A blob függvény kódban jelölő neve. | 
-|**path** | **BlobPath** |A tároló figyelésére.  Lehetséges, hogy egy [blob mintát](#trigger-blob-name-patterns). | 
-|**Kapcsolat** | **Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak a blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
+|**type** | n/a | Meg kell `blobTrigger`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
+|**direction** | n/a | Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. A kivételeket jeleztük a [használati](#trigger---usage) szakaszban. |
+|**name** | n/a | A változó, amely a függvény kódját a blob neve. | 
+|**path** | **BlobPath** |A tároló figyelése.  Előfordulhat, hogy egy [blob minta](#trigger-blob-name-patterns). | 
+|**kapcsolat** | **kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
 
-A C# és C# a parancsfájlt a következő paraméter típusok használhatók a eseményindító BLOB:
+A riasztást kiváltó BLOB C# és C#-szkript, használhatja a következő paraméter típusa:
 
 * `Stream`
 * `TextReader`
@@ -266,40 +266,40 @@ A C# és C# a parancsfájlt a következő paraméter típusok használhatók a e
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
+<sup>1</sup> "inout" kötés szükséges `direction` a *function.json* vagy `FileAccess.ReadWrite` egy C# osztály könyvtárban.
 
-Ha megpróbál a Storage szolgáltatás SDK típusú kötni, és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
+Ha próbál meg kötést létrehozni a Storage SDK-t típusú, és a egy hibaüzenet, ellenőrizze, hogy rendelkezik-e egy hivatkozást [a megfelelő Storage SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
-A kötés `string`, `Byte[]`, vagy POCO csak akkor ajánlott, ha a blob mérete kisebb, mint a teljes blob tartalmát betölti a memóriába. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség-és memóriahasználatát](#trigger---concurrency-and-memory-usage) című cikkben.
+Kötés `string`, `Byte[]`, vagy POCO csak akkor javasolt, ha a blob mérete kisebb, mint a teljes blob tartalmát betölti a memóriába. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség és a memória kihasználtsági](#trigger---concurrency-and-memory-usage) a cikk későbbi részében.
 
-JavaScript, nyissa meg a bemeneti blob adatok `context.bindings.<name from function.json>`.
+A JavaScript, a bemeneti blob-adatokhoz való hozzáférés `context.bindings.<name from function.json>`.
 
 ## <a name="trigger---blob-name-patterns"></a>Eseményindító - blob neve minták
 
-A blob neve mintát is megadhat a `path` tulajdonság *function.json* vagy a `BlobTrigger` attribútum konstruktora. A minta lehet egy [szűrőt, vagy kötési kifejezés](functions-triggers-bindings.md#binding-expressions-and-patterns). A következő szakaszok példákat biztosítanak.
+A blob neve mintát is megadhat a `path` tulajdonság *function.json* vagy a `BlobTrigger` attribútumok konstruktorában. A minta lehet egy [szűrő vagy kötési kifejezés](functions-triggers-bindings.md#binding-expressions-and-patterns). A következő szakaszok példákat.
 
-### <a name="get-file-name-and-extension"></a>Get-fájl nevét és kiterjesztését
+### <a name="get-file-name-and-extension"></a>Fájl neve és a bővítmény beszerzése
 
-A következő példa bemutatja, hogyan lehet kötést létrehozni a blob-fájl neve és a bővítmény külön-külön:
+Az alábbi példa bemutatja, hogyan kötést létrehozni a blob nevét és a bővítmény külön:
 
 ```json
 "path": "input/{blobname}.{blobextension}",
 ```
-Ha a blob neve *eredeti-Blob1.txt*, értékeit a `blobname` és `blobextension` változók a funkciókódot *eredeti-Blob1* és *txt*.
+Ha a blob neve *eredeti-Blob1.txt*, értékeit a `blobname` és `blobextension` változók a függvénykódot *eredeti-Blob1* és *txt*.
 
 ### <a name="filter-on-blob-name"></a>A blob neve szűrése
 
-A következő példa eseményindítók csak a blobot, amely a `input` a string "eredeti" kezdetű tároló:
+Az alábbi példa eseményindítók csak a blobok a `input` tárolójára, a karakterlánc "eredeti –":
 
 ```json
 "path": "input/original-{name}",
 ```
  
-Ha a blob neve *eredeti-Blob1.txt*, értékét a `name` függvény a kódban a változó `Blob1`.
+Ha a blob neve *eredeti-Blob1.txt*, az értékét a `name` a függvény kódját a változó `Blob1`.
 
 ### <a name="filter-on-file-type"></a>A fájl típusa szűrése
 
-Az alábbi példa elindítja a kizárólag a *.png* fájlok:
+Az alábbi példa kizárólag a aktivál *.png* fájlok:
 
 ```json
 "path": "samples/{name}.png",
@@ -307,26 +307,26 @@ Az alábbi példa elindítja a kizárólag a *.png* fájlok:
 
 ### <a name="filter-on-curly-braces-in-file-names"></a>A fájlnevekben kapcsos zárójelek szűrése
 
-A fájlnevekben kapcsos zárójelek kereséséhez escape a zárójelek két zárójelek használatával. A következő példa szűrőket a blobok neve kapcsos zárójelek rendelkező:
+A fájlnevekben kapcsos zárójelek kereséséhez a zárójelek escape két kapcsos zárójelek használatával. A következő példa szűrőket a blobokat, amelyekre a kapcsos zárójelek között szerepel a neve:
 
 ```json
 "path": "images/{{20140101}}-{name}",
 ```
 
-Ha a blob neve  *{20140101}-soundfile.mp3*, a `name` változó a funkciókódot érték *soundfile.mp3*. 
+Ha a blob neve  *{20140101}-soundfile.mp3*, a `name` a függvénykódot a változó értéke *soundfile.mp3*. 
 
 ## <a name="trigger---metadata"></a>Eseményindító - metaadatok
 
-A blob eseményindító biztosít több metaadat-tulajdonságot. Ezeket a tulajdonságokat meg más kötésekben kötési kifejezés részeként vagy a kód paramétereiben használható. Ezekkel az értékekkel rendelkeznek az azonos szemantikákkal, a [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) típusa.
+A blob eseményindító számos metaadat-tulajdonságot tartalmaz. Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezekkel az értékekkel rendelkezik a azonos szemantikákkal, a [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) típusa.
 
 |Tulajdonság  |Típus  |Leírás  |
 |---------|---------|---------|
-|`BlobTrigger`|`string`|Az eseményindító blob elérési útja.|
-|`Uri`|`System.Uri`|A blob URI-azonosítóját az elsődleges helyre.|
+|`BlobTrigger`|`string`|A riasztást kiváltó blob elérési útja.|
+|`Uri`|`System.Uri`|A blob URI-azonosítóját az elsődleges helyen.|
 |`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties)|A blob rendszer tulajdonságai. |
 |`Metadata` |`IDictionary<string,string>`|A felhasználó által definiált metaadatok a BLOB.|
 
-Például a következő C#-parancsfájlt és a JavaScript példák bejelentkezni az elérési út az eseményindító blob, beleértve a tároló:
+Például az alábbi C#-szkript és a JavaScript-példák jelentkezzen be az elérési utat a riasztást kiváltó blob, beleértve a tároló:
 
 ```csharp
 public static void Run(string myBlob, string blobTrigger, TraceWriter log)
@@ -344,57 +344,57 @@ module.exports = function (context, myBlob) {
 
 ## <a name="trigger---blob-receipts"></a>Eseményindító - blob visszaigazolások
 
-Az Azure Functions futtatókörnyezettel biztosítja, hogy nincs blob funkció egynél többször meghívása megtörténik a azonos új vagy frissített BLOB. Annak meghatározásához, ha egy adott blobverzió feldolgozása tart fenn *blob-visszaigazolások*.
+Az Azure Functions runtime biztosítja, hogy nincs blob által aktivált függvény meghívása megtörténik egynél többször a azonos új vagy frissített BLOB. Meghatározni, ha egy adott blob verzió feldolgozása karbantartott *visszaigazolások blob*.
 
-Az Azure Functions tárolók blob-visszaigazolások nevű tároló *azure-webjobs-állomások* függvény alkalmazás az Azure storage-fiók (határozzák meg az Alkalmazásbeállítás `AzureWebJobsStorage`). Egy blob fogadását rendelkezik a következő információkat:
+Az Azure Functions-tárolók visszaigazolások nevű tárolóban lévő blob *azure-webjobs-gazdagépek* a függvényalkalmazás Azure storage-fiókban (határozzák meg az Alkalmazásbeállítás `AzureWebJobsStorage`). Egy blob beérkezési rendelkezik a következő információkat:
 
-* A kiváltott függvény ("*&lt;függvény alkalmazás neve >*. Működik.  *&lt;függvény neve >*", például:"MyFunctionApp.Functions.CopyBlob")
+* Az aktivált függvény ("*&lt;függvényalkalmazás neve >*. A műveletek.  *&lt;függvény neve >*", például:"MyFunctionApp.Functions.CopyBlob")
 * A tároló neve
-* A blob típusú ("BlockBlob" vagy "PageBlob")
+* A blob típusa ("BlockBlob" vagy "PageBlob")
 * A blob neve
-* Az ETag (például egy blob verziójának azonosítója: "0x8D1DC6E70A277EF")
+* Az ETag címke (például egy blob verzió azonosítója: "0x8D1DC6E70A277EF")
 
-Egy blob újrafeldolgozása kényszerítéséhez blob fogadását, hogy a BLOB törlése a *azure-webjobs-állomások* tároló manuálisan.
+A blob újrafeldolgozás kényszerítéséhez blob fogadását, hogy a BLOB törlése a *azure-webjobs-gazdagépek* tároló manuálisan.
 
-## <a name="trigger---poison-blobs"></a>Eseményindító - poison blobok
+## <a name="trigger---poison-blobs"></a>Eseményindító - ártalmas blobok
 
-Ha egy adott BLOB egy blob funkció nem sikerül, az Azure Functions újrapróbálkozik, amelyek összesen 5 alkalommal alapértelmezés szerint. 
+Ha egy blob eseményindító függvény egy adott BLOB nem sikerül, az Azure Functions, amely alapértelmezés szerint 5-ször összesen függvény újrapróbálkozik. 
 
-Minden 5 próbálkozás sikertelen lesz, ha az Azure Functions ad hozzá egy üzenet nevű tároló várólista *webjobs-blobtrigger-poison*. Az elhalt blobok várólista üzenet egy JSON-objektum, amely tartalmazza a következő tulajdonságokkal:
+Ha minden 5 alkalommal sikertelen, a az Azure Functions egy üzenetet ad hozzá nevű üzenetsor-tárolóba *webjobs-blobtrigger-poison*. Az üzenetsorban található üzenet ártalmas blobok esetében a következő JSON-objektum, amely a következő tulajdonságokat tartalmazza:
 
-* FunctionId (formátumú  *&lt;függvény alkalmazás neve >*. Működik.  *&lt;függvény neve >*)
+* FunctionId (a következő formátumban  *&lt;függvényalkalmazás neve >*. A műveletek.  *&lt;függvény neve >*)
 * BlobType ("BlockBlob" vagy "PageBlob")
 * ContainerName
-* Blobnév
-* ETag (például egy blob verziójának azonosítója: "0x8D1DC6E70A277EF")
+* BlobName
+* Az ETag (például egy blob verzió azonosítója: "0x8D1DC6E70A277EF")
 
-## <a name="trigger---concurrency-and-memory-usage"></a>Eseményindító - feldolgozási és a memóriahasználat
+## <a name="trigger---concurrency-and-memory-usage"></a>Eseményindító - egyidejűség és a memóriahasználat
 
-A blob eseményindító várólista belső használja, így maximális száma párhuzamos függvény meghívásához vezérli a [host.json várólisták konfiguráció](functions-host-json.md#queues). Az alapértelmezett beállításokat 24 indítások való egyidejű korlátozza. Ezt a határt külön vonatkozik minden funkció, amely egy blob eseményindítót használ.
+A blob eseményindító az üzenetsor belsőleg, így az egyidejű függvény meghívásához maximális számát szabályozza a [üzenetsorok konfigurációját a host.json](functions-host-json.md#queues). Az alapértelmezett beállítások 24 indítások az egyidejűségi korlátozza. Ezt a korlátot külön-külön mindegyik függvény, amely egy blob eseményindító vonatkozik.
 
-[A felhasználási terv](functions-scale.md#how-the-consumption-plan-works) egy függvény alkalmazást egy virtuális gépen (VM) 1,5 GB memória korlátozza. Memória használt egyes párhuzamosan végrehajtott függvény példányai és a funkciók futtatókörnyezet magát. Ha egy blob-eseményindítóval aktivált függvény a teljes blob betölti a memóriába, használja a függvény csak a blobok maximális memória: 24 * blob maximális mérete. Például egy függvény alkalmazás három blob-eseményindítókkal aktivált függvényeket és az alapértelmezett beállításokkal rendelkezik maximális száma-VM egyidejűségi beállítása pedig 3 * 24 = 72 függvény meghívásához.
+[A használatalapú csomag](functions-scale.md#how-the-consumption-plan-works) korlátozza egy függvényalkalmazást egy virtuális gépen (VM) 1,5 GB memória. Memória és a Functions futtatókörnyezete maga minden párhuzamosan függvény példány által használt. Ha egy blob által aktivált függvény a teljes blob betölti a memóriába, csak a blobok a függvény által használt maximális memória: 24 * blob maximális mérete. Például egy függvényalkalmazást a három blob által aktivált függvények és az alapértelmezett beállításokat kellene 3 * 24 = 72 maximális VM-enkénti egyidejűségi függvény meghívásához.
 
-JavaScript-funkcióként a teljes blob betölti a memóriába, és C# funkciók hajtsa végre, ha Ön kötődni `string`, `Byte[]`, vagy POCO.
+JavaScript-függvények a teljes blob betölti a memóriába, és C#-függvények végezze el, ha a kötött `string`, `Byte[]`, vagy POCO.
 
-## <a name="trigger---polling"></a>Indítás - lekérdezés
+## <a name="trigger---polling"></a>Trigger - lekérdezés
 
-Ha a figyelt blob tároló több mint 10 000 blobot tartalmaz, a funkciók futásidejű vizsgálatok a naplófájlok új vagy módosított blobok figyelendő. Ez a folyamat késést okozhat. Egy függvény előfordulhat, hogy nem get indulnak el, néhány percig, vagy már a blob létrehozása után. Emellett [tárolási naplófájlokat hoz létre a lehető legjobb rendezését,"a](/rest/api/storageservices/About-Storage-Analytics-Logging) alapján. Nincs nem garantálja, hogy a rendszer rögzíti-e az összes esemény. Bizonyos körülmények között a naplók kimaradhatnak. Ha a gyorsabb és megbízhatóbb blob feldolgozási van szüksége, érdemes létrehozni egy [üzenetsor](../storage/queues/storage-dotnet-how-to-use-queues.md) a blob létrehozásakor. Ezután egy [várólista eseményindító](functions-bindings-storage-queue.md) helyett egy blob eseményindító a blob feldolgozni. Egy másik lehetőség, hogy használja az esemény rács; Tekintse meg az [automatizálás átméretezése feltöltött lemezképeket rácshoz esemény](../event-grid/resize-images-on-storage-blob-upload-event.md).
+Ha a figyelt blobtárolóban több mint 10 000 BLOB tartalmaz, a Functions runtime vizsgálatok a naplófájlok új vagy módosított blobok megtekintéshez. Ez a folyamat az késleltetések eredményezheti. Függvény előfordulhat, hogy nem első indul el, amíg több percet vagy hosszabb a blob létrehozása után. Emellett [tárolási naplók jönnek létre egy "ajánlott beavatkozást"](/rest/api/storageservices/About-Storage-Analytics-Logging) alapját. Nincs garancia arra, hogy rögzítve lesznek-e az összes eseményt. Bizonyos körülmények között a naplók kimaradhatnak. Ha a gyorsabb és megbízhatóbb blob feldolgozás van szüksége, érdemes lehet létrehozni egy [üzenetsori üzenet](../storage/queues/storage-dotnet-how-to-use-queues.md) létrehozásakor, a blob. Ezután egy [üzenetsor eseményindító](functions-bindings-storage-queue.md) feldolgozni a blob blob eseményindító helyett. Egy másik lehetőség az, hogy az Event Grid; használata Lásd a következő oktatóanyagot [feltöltött Event Grid használatával képek átméretezésének automatizálása](../event-grid/resize-images-on-storage-blob-upload-event.md).
 
 ## <a name="input"></a>Input (Bemenet)
 
-A Blob storage bemeneti kötése segítségével olvassa el a blobokat.
+A Blob storage bemeneti kötés használatával olvasni a blobokat.
 
-## <a name="input---example"></a>Bemenet – példa
+## <a name="input---example"></a>Adjon meg – példa
 
-Tekintse meg a nyelvspecifikus példát:
+Tekintse meg az adott nyelvű példa:
 
 * [C#](#input---c-example)
 * [C# script (.csx)](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
 
-### <a name="input---c-example"></a>Bemenet – C# – példa
+### <a name="input---c-example"></a>Bemenet – C#-példa
 
-A következő példa egy [C# függvény](functions-dotnet-class-library.md) , amely a várólista eseményindító és egy bemeneti blob-kötést használja. Az üzenetsorban lévő üzenetet a blob nevét tartalmazza, és a függvény naplózza a blob mérete.
+Az alábbi példa egy [C#-függvény](functions-dotnet-class-library.md) egy üzenetsor eseményindító és a egy bemeneti blob-kötést használó. Az üzenetsorban található üzenet a blob nevét tartalmazza, és a függvény naplózza a blob mérete.
 
 ```csharp
 [FunctionName("BlobInput")]
@@ -407,13 +407,13 @@ public static void Run(
 }
 ```        
 
-### <a name="input---c-script-example"></a>Bemenet – C# parancsfájl – példa
+### <a name="input---c-script-example"></a>Bemenet – C#-szkript példa
 
 <!--Same example for input and output. -->
 
-A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódokat, amelyek a kötéseket. A függvény a szöveges blob másolatot készít. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
+Az alábbi példa bemutatja a blob bemeneti és kimeneti kötése egy *function.json* fájl és [C#-szkript (.csx)](functions-reference-csharp.md) kódokat, amelyek a kötéseket. A funkció lehetővé teszi a szöveges blob egy példányát. A függvény, amely tartalmazza a blob másolásához nevét, egy üzenetsor által aktivált. Az új blob neve *{originalblobname}-példány*.
 
-Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nevének megadására szolgál a `path` tulajdonságok:
+Az a *function.json* fájlt, a `queueTrigger` metaadat-tulajdonságot a blob nevének megadására szolgál a `path` tulajdonságai:
 
 ```json
 {
@@ -444,9 +444,9 @@ Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nev
 }
 ``` 
 
-A [konfigurációs](#input---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-A C# parancsfájl kód itt látható:
+Íme a C#-szkriptkódot:
 
 ```cs
 public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
@@ -456,13 +456,13 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="input---javascript-example"></a>Bemenet – JavaScript – példa
+### <a name="input---javascript-example"></a>Bemenet - JavaScript-példa
 
 <!--Same example for input and output. -->
 
-A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl és [JavaScript-kód](functions-reference-node.md) használó kötéseket. A funkció lehetővé teszi a blob egy példányát. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
+Az alábbi példa bemutatja a blob bemeneti és kimeneti kötése egy *function.json* fájl és [JavaScript-kódot](functions-reference-node.md) , amely használja a kötéseket. A funkció lehetővé teszi, hogy egy blob egy példányát. A függvény, amely tartalmazza a blob másolásához nevét, egy üzenetsor által aktivált. Az új blob neve *{originalblobname}-példány*.
 
-Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nevének megadására szolgál a `path` tulajdonságok:
+Az a *function.json* fájlt, a `queueTrigger` metaadat-tulajdonságot a blob nevének megadására szolgál a `path` tulajdonságai:
 
 ```json
 {
@@ -493,9 +493,9 @@ Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nev
 }
 ``` 
 
-A [konfigurációs](#input---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-A JavaScript-kód itt látható:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function(context) {
@@ -505,11 +505,11 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="input---attributes"></a>Bemenet – attribútumok
+## <a name="input---attributes"></a>Bemenet - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs).
+A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs).
 
-Az attribútum konstruktora a blob vesz igénybe az elérési utat és egy `FileAccess` paraméter, amely jelzi, olvasási vagy írási, a következő példában látható módon:
+Az attribútum konstruktorának paramétereként meg az elérési utat a blobra mutató és a egy `FileAccess` paraméter olvasási vagy írási, jelezve, az alábbi példában látható módon:
 
 ```csharp
 [FunctionName("BlobInput")]
@@ -523,7 +523,7 @@ public static void Run(
 
 ```
 
-Beállíthatja a `Connection` tulajdonság adja meg a tárfiókot, a következő példában látható módon:
+Beállíthatja a `Connection` tulajdonságot adja meg a storage-fiókot szeretne használni, az alábbi példában látható módon:
 
 ```csharp
 [FunctionName("BlobInput")]
@@ -536,26 +536,26 @@ public static void Run(
 }
 ```
 
-Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [eseményindító - attribútumok](#trigger---attributes).
+Használhatja a `StorageAccount` attribútumot az osztályra, módszer vagy paraméter szintű tárfiókot adjon meg. További információkért lásd: [eseményindító - attribútumok](#trigger---attributes).
 
-## <a name="input---configuration"></a>Adjon meg - konfiguráció
+## <a name="input---configuration"></a>Bemenet - konfiguráció
 
-Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `Blob` attribútum.
+A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `Blob` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a | meg kell `blob`. |
-|**direction** | n/a | meg kell `in`. A kivételeket jeleztük a [használati](#input---usage) szakasz. |
-|**name** | n/a | A blob függvény kódban jelölő neve.|
+|**type** | n/a | Meg kell `blob`. |
+|**direction** | n/a | Meg kell `in`. A kivételeket jeleztük a [használati](#input---usage) szakaszban. |
+|**name** | n/a | A változó, amely a függvény kódját a blob neve.|
 |**path** |**BlobPath** | A blob elérési útja. | 
-|**Kapcsolat** |**Kapcsolat**| A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak a blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
-|n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg kell olvasása vagy írása. |
+|**kapcsolat** |**kapcsolat**| A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
+|n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg fog kell olvasása vagy írása. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="input---usage"></a>Bemenet - használat
 
-A C# és C# a parancsfájlt használhatja a blob bemeneti kötése a következő paraméter típusa:
+A blob bemeneti kötésnek a C# és C#-szkript, használhatja a következő paraméter típusa:
 
 * `Stream`
 * `TextReader`
@@ -568,29 +568,29 @@ A C# és C# a parancsfájlt használhatja a blob bemeneti kötése a következő
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
+<sup>1</sup> "inout" kötés szükséges `direction` a *function.json* vagy `FileAccess.ReadWrite` egy C# osztály könyvtárban.
 
-Ha megpróbál a Storage szolgáltatás SDK típusú kötni, és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
+Ha próbál meg kötést létrehozni a Storage SDK-t típusú, és a egy hibaüzenet, ellenőrizze, hogy rendelkezik-e egy hivatkozást [a megfelelő Storage SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
-A kötés `string` vagy `Byte[]` csak akkor javasolt, ha blob mérete kisebb, mint a teljes blob tartalmát a memóriába betöltött. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség-és memóriahasználatát](#trigger---concurrency-and-memory-usage) korábbi ebben a cikkben.
+Kötés `string` vagy `Byte[]` csak akkor javasolt, ha a blob mérete kisebb,-e, a teljes blob tartalmát a memóriába betöltött. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség és a memória kihasználtsági](#trigger---concurrency-and-memory-usage) a cikk elején.
 
-JavaScript, nyissa meg a blob adatainak használatával `context.bindings.<name from function.json>`.
+A JavaScript, a blob adatait az eléréséhez `context.bindings.<name from function.json>`.
 
 ## <a name="output"></a>Kimenet
 
-A Blob storage kimeneti kötések segítségével írhat blobokat.
+A Blob storage kimeneti kötések segítségével írhat a blobokat.
 
-## <a name="output---example"></a>Kimeneti – példa
+## <a name="output---example"></a>Kimenete – példa
 
-Tekintse meg a nyelvspecifikus példát:
+Tekintse meg az adott nyelvű példa:
 
 * [C#](#output---c-example)
 * [C# script (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
-### <a name="output---c-example"></a>Kimeneti - C# – példa
+### <a name="output---c-example"></a>Kimenet – C#-példa
 
-A következő példa egy [C# függvény](functions-dotnet-class-library.md) , amely egy blob eseményindítót használ, és két kimeneti blob kötéseket. A függvény egy kép blob létrehozását váltja ki a *minta-lemezképek* tároló. Szülőlemezkép kis és közepes méretű másolatot hoz létre. 
+Az alábbi példa egy [C#-függvény](functions-dotnet-class-library.md) , amely egy blob eseményindító használ, és két kimeneti blob kötéseit. A függvény aktiválódik egy kép található blob létrehozása az *minta-lemezképek* tároló. A kép blob kis és közepes méretű másolatát hozza létre. 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -621,13 +621,13 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 };
 ```        
 
-### <a name="output---c-script-example"></a>Kimeneti - C# parancsfájl – példa
+### <a name="output---c-script-example"></a>Kimenet – C#-szkript példa
 
 <!--Same example for input and output. -->
 
-A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódokat, amelyek a kötéseket. A függvény a szöveges blob másolatot készít. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
+Az alábbi példa bemutatja a blob bemeneti és kimeneti kötése egy *function.json* fájl és [C#-szkript (.csx)](functions-reference-csharp.md) kódokat, amelyek a kötéseket. A funkció lehetővé teszi a szöveges blob egy példányát. A függvény, amely tartalmazza a blob másolásához nevét, egy üzenetsor által aktivált. Az új blob neve *{originalblobname}-példány*.
 
-Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nevének megadására szolgál a `path` tulajdonságok:
+Az a *function.json* fájlt, a `queueTrigger` metaadat-tulajdonságot a blob nevének megadására szolgál a `path` tulajdonságai:
 
 ```json
 {
@@ -658,9 +658,9 @@ Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nev
 }
 ``` 
 
-A [konfigurációs](#output---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-A C# parancsfájl kód itt látható:
+Íme a C#-szkriptkódot:
 
 ```cs
 public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
@@ -670,13 +670,13 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="output---javascript-example"></a>Kimeneti - JavaScript – példa
+### <a name="output---javascript-example"></a>Kimenet – JavaScript-példa
 
 <!--Same example for input and output. -->
 
-A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl- és [JavaScript-kód] (funkciók-referencia-node.md), amely használja a kötéseket. A funkció lehetővé teszi a blob egy példányát. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
+Az alábbi példa bemutatja a blob bemeneti és kimeneti kötése egy *function.json* fájl- és [JavaScript-kód] (functions – referencia-node.md), amely használja a kötéseket. A funkció lehetővé teszi, hogy egy blob egy példányát. A függvény, amely tartalmazza a blob másolásához nevét, egy üzenetsor által aktivált. Az új blob neve *{originalblobname}-példány*.
 
-Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nevének megadására szolgál a `path` tulajdonságok:
+Az a *function.json* fájlt, a `queueTrigger` metaadat-tulajdonságot a blob nevének megadására szolgál a `path` tulajdonságai:
 
 ```json
 {
@@ -707,9 +707,9 @@ Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nev
 }
 ``` 
 
-A [konfigurációs](#output---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-A JavaScript-kód itt látható:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function(context) {
@@ -719,11 +719,11 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="output---attributes"></a>Kimeneti - attribútumok
+## <a name="output---attributes"></a>Kimenet – attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs).
+A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs).
 
-Az attribútum konstruktora a blob vesz igénybe az elérési utat és egy `FileAccess` paraméter, amely jelzi, olvasási vagy írási, a következő példában látható módon:
+Az attribútum konstruktorának paramétereként meg az elérési utat a blobra mutató és a egy `FileAccess` paraméter olvasási vagy írási, jelezve, az alábbi példában látható módon:
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -735,7 +735,7 @@ public static void Run(
 }
 ```
 
-Beállíthatja a `Connection` tulajdonság adja meg a tárfiókot, a következő példában látható módon:
+Beállíthatja a `Connection` tulajdonságot adja meg a storage-fiókot szeretne használni, az alábbi példában látható módon:
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -747,28 +747,28 @@ public static void Run(
 }
 ```
 
-Tekintse meg a teljes például [kimeneti - C# példa](#output---c-example).
+Egy teljes példa: [kimenet – C#-példa](#output---c-example).
 
-Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [eseményindító - attribútumok](#trigger---attributes).
+Használhatja a `StorageAccount` attribútumot az osztályra, módszer vagy paraméter szintű tárfiókot adjon meg. További információkért lásd: [eseményindító - attribútumok](#trigger---attributes).
 
-## <a name="output---configuration"></a>Kimeneti - konfiguráció
+## <a name="output---configuration"></a>Kimenete – konfiguráció
 
-Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `Blob` attribútum.
+A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `Blob` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a | meg kell `blob`. |
-|**direction** | n/a | Meg kell `out` egy kimeneti kötés. A kivételeket jeleztük a [használati](#output---usage) szakasz. |
-|**name** | n/a | A blob függvény kódban jelölő neve.  Beállítása `$return` hivatkozni, a függvény visszatérési értéke.|
+|**type** | n/a | Meg kell `blob`. |
+|**direction** | n/a | Meg kell `out` a kimeneti kötés. A kivételeket jeleztük a [használati](#output---usage) szakaszban. |
+|**name** | n/a | A változó, amely a függvény kódját a blob neve.  Állítsa be `$return` való hivatkozáshoz függvény visszatérési értéke.|
 |**path** |**BlobPath** | A blob elérési útja. | 
-|**Kapcsolat** |**Kapcsolat**| A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak a blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
-|n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg kell olvasása vagy írása. |
+|**kapcsolat** |**kapcsolat**| A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
+|n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg fog kell olvasása vagy írása. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Kimeneti - használat
+## <a name="output---usage"></a>Kimenet – használat
 
-A C# és C# a parancsfájlt köthető a következő típusok blobok írni:
+A C# és a C#-szkript hozhasson létre a következő típusú blobok írni:
 
 * `TextWriter`
 * `out string`
@@ -782,31 +782,31 @@ A C# és C# a parancsfájlt köthető a következő típusok blobok írni:
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup> "a" kötésben szükséges `direction` a *function.json* vagy `FileAccess.Read` C# osztály könyvtárban. Az objektum, amely a futtatókörnyezetet biztosít írási műveletek, például a blobok feltölteni a tárolóba is használhatja.
+<sup>1</sup> "a" kötés szükséges `direction` a *function.json* vagy `FileAccess.Read` egy C# osztály könyvtárban. A tárolóobjektum, amellyel a modul írási művelet, például blobok feltöltése a tárolóba is használhatja.
 
-<sup>2</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
+<sup>2</sup> "inout" kötés szükséges `direction` a *function.json* vagy `FileAccess.ReadWrite` egy C# osztály könyvtárban.
 
-Ha megpróbál a Storage szolgáltatás SDK típusú kötni, és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
+Ha próbál meg kötést létrehozni a Storage SDK-t típusú, és a egy hibaüzenet, ellenőrizze, hogy rendelkezik-e egy hivatkozást [a megfelelő Storage SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
-Aszinkron funkciók, használja a visszatérési értéket vagy `IAsyncCollector` ahelyett, hogy egy `out` paraméter.
+Az aszinkron funkciók, a visszaadott értékének használata vagy `IAsyncCollector` helyett egy `out` paraméter.
 
-A kötés `string` vagy `Byte[]` csak akkor javasolt, ha blob mérete kisebb, mint a teljes blob tartalmát a memóriába betöltött. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség-és memóriahasználatát](#trigger---concurrency-and-memory-usage) korábbi ebben a cikkben.
+Kötés `string` vagy `Byte[]` csak akkor javasolt, ha a blob mérete kisebb,-e, a teljes blob tartalmát a memóriába betöltött. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség és a memória kihasználtsági](#trigger---concurrency-and-memory-usage) a cikk elején.
 
 
-JavaScript, nyissa meg a blob adatainak használatával `context.bindings.<name from function.json>`.
+A JavaScript, a blob adatait az eléréséhez `context.bindings.<name from function.json>`.
 
-## <a name="exceptions-and-return-codes"></a>Kivételeket és a visszatérési kódok
+## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
 
-| Kötelező |  Leírások |
+| Kötés |  Leírások |
 |---|---|
-| Blob | [A BLOB hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
-| A BLOB, Table, várólista |  [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| A BLOB, Table, várólista |  [hibaelhárítással](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob | [A BLOB-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
+| BLOB, tábla, üzenetsor |  [Storage-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB, tábla, üzenetsor |  [hibaelhárítással](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ugrás a Blob storage eseményindító használó gyors üzembe helyezés](functions-create-storage-blob-triggered-function.md)
+> [Nyissa meg a gyors útmutatót, amely egy Blob storage-eseményindító](functions-create-storage-blob-triggered-function.md)
 
 > [!div class="nextstepaction"]
-> [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+> [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

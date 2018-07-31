@@ -1,94 +1,98 @@
 ---
-title: A Microsoft Authenticator telefonos bejelentkezés – Azure és a Microsoft-fiókok |} A Microsoft Docs
-description: A telefon használatával jelentkezzen be Microsoft-fiókja helyett adja meg a jelszót. Ebben a cikkben megválaszolunk – gyakori kérdések a szolgáltatásról.
-services: multi-factor-authentication
-documentationcenter: ''
+title: A Microsoft Authenticator telefonos bejelentkezés – Azure Active Directory |} A Microsoft Docs
+description: Részletes információkat és telefonnal bejelentkezni a munkahelyi és iskolai és személyes Microsoft-fiókok helyett adja meg a jelszót a részletes útmutatást biztosít.
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.assetid: ''
-ms.service: multi-factor-authentication
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: user-help
 ms.topic: conceptual
-ms.date: 08/12/2017
+ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.custom: end-user
-ms.openlocfilehash: 589309c956ebbbebe6c423cfcca117a86c796be3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3303a0fb1ca4c4a8f6695c2e4338c1b0a0fc9f40
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060116"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358632"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Bejelentkezés telefonnal, nem kell jelszót
 
-A Microsoft Authenticator alkalmazás segít a kétlépéses ellenőrzés elvégzésével, a jelszó megadása után a fiókok biztonsága. De tudja, hogy azt is cserélje le a személyes Microsoft-fiókja jelszavát teljesen?
+A Microsoft Authenticator alkalmazást, nem csak azt használni, hogy a fiókok biztonságos végez kétlépéses ellenőrzést, miután segítségével adja meg a jelszót, de azt is cserélje le a Microsoft-fiókja jelszavát teljes egészében.
 
-Ez a funkció iOS és Android rendszerű eszközökön érhető el, és a személyes Microsoft-fiókokkal működik.
+Ez a funkció iOS és Android-eszközökön futó Android 6.0-s vagy újabb érhető el.
 
 ## <a name="how-it-works"></a>Működés
 
-A legtöbb felhasználó használja a Microsoft Authenticator alkalmazást a kétlépéses ellenőrzéshez a Microsoft-fiókkal való bejelentkezéskor. Írja be a jelszavát, majd nyissa meg az alkalmazás értesítéseinek jóváhagyása, vagy ellenőrző kód kérése. A telefonnal bejelentkezni hagyja ki a jelszót, és tegye meg az identitás-ellenőrzést a telefonján. Telefonos bejelentkezés is egy kétlépéses ellenőrzést, akkor továbbra is meg kell adnia egy dolog, tudja, és a egy dolog kell a személyazonosságát. A telefon még mindig a dolog van, és a telefon PIN-kódot vagy biometrikus kulcs ismeri a dolog.
+A legtöbb felhasználó használja a Microsoft Authenticator alkalmazást a kétlépéses ellenőrzéshez a Microsoft-fiókkal való bejelentkezéskor. Írja be a jelszavát, és keresse meg az alkalmazást, vagy hagyja jóvá az értesítést vagy egy ellenőrző kódot lekéréséhez. A telefonnal bejelentkezni hagyja ki a jelszót, és hajtsa végre az identitás-ellenőrző a telefonján. Telefonos bejelentkezés is egy kétlépéses ellenőrzést, továbbra is szeretné egy dolog, tudja, és a egy dolog van megadásával igazolhatja a személyazonosságát. A telefon továbbra is a dolog van, de a telefon PIN-kódot vagy biometrikus kulcs most már ismeri a dolog.
 
-## <a name="how-to-get-started"></a>Első lépések
+## <a name="turn-on-phone-sign-in-for-your-work-or-school-account"></a>Jelentkezzen be munkahelyi vagy iskolai fiókja phone bekapcsolása
 
-Jelentkezzen be személyes Microsoft-fiókkal és a telefon, kövesse az alábbi lépéseket:
+Ha a szervezete Azure Active Directory használja az identitáskezeléshez és hitelesítéshez, használhatja telefonos bejelentkezés bekapcsolása után, a Microsoft Authenticator alkalmazásban. 
 
-1. Engedélyezze a telefonnal bejelentkezni a fiókhoz.
+### <a name="to-turn-on-phone-sign-in-for-your-account"></a>Jelentkezzen be a fiók phone bekapcsolása
 
-  - Ha nem rendelkezik a Microsoft Authenticator alkalmazást, telepítése és a személyes Microsoft-fiókkal, a lépések megfelelően adja hozzá a [Microsoft Authenticator lap](microsoft-authenticator-app-how-to.md). Újonnan hozzáadott fiókok automatikusan engedélyezve vannak, szóval készen lépjen.
+- **Ha ez az ikon ![telefonos bejelentkezés ikonját](./media/microsoft-authenticator-app-phone-signin-faq/icon.png) a telefonján.** Már beállította telefonnal bejelentkezni. Előfordulhat, hogy megkérdezi, hogy a fiók hozzáadása a leküldéses értesítések, így értesítést kaphat az alkalmazás hitelesítési kérések kapcsolatos frissítését.
 
-  - Ha már használja a Microsoft Authenticator a kétlépéses ellenőrzéshez, válassza ki a fiókját az alkalmazás kezdőlapjáról, és válassza **telefonos bejelentkezés engedélyezése** a legördülő menüből.
+- **Ha már használja a Microsoft Authenticator alkalmazást a kétlépéses ellenőrzéshez.** Nyissa meg a **fiókok** az alkalmazást, válassza ki a legördülő listájának nyíl gombját, a munkahelyi vagy iskolai fiók, és válassza ki a képernyő **telefonos bejelentkezés engedélyezése**.
 
-  >[!NOTE]
-  >Fiókja védelme érdekében szükség van PIN-kódot vagy biometrikus zárolást az eszközön. A telefon zárolása feloldva, ha az alkalmazás egy kérelmet, amely felkéri, állíthatja be a zárolást a telefonos bejelentkezés engedélyezése előtt felugró.
+- **Ha a Microsoft Authenticator alkalmazást a személyes fiók, de nem a munkahelyi vagy iskolai fiókjával.** A szervezet kétlépéses ellenőrzési utasítások szerint, és kapcsolja be a telefonos bejelentkezés. További információkért lásd: [a Microsoft Authenticator alkalmazás használatának első lépései](microsoft-authenticator-app-how-to.md)
 
-3. Legtöbb oldalt, ahol általában beírnia a Microsoft-fiók jelszavát kell arról, hogy a hivatkozás **inkább alkalmazás**. Kattintson a bejelentkezés telefonnal.
+### <a name="to-use-phone-sign-in-to-sign-in-to-your-work-or-school-account"></a>Jelentkezzen be munkahelyi vagy iskolai fiókját a telefonos bejelentkezés használatához
 
-4. A Microsoft értesítést küld a telefonjára. Hagyja jóvá az értesítést, a bejelentkezés a fiókba.   
+1.  Jelentkezzen be munkahelyi vagy iskolai fiókjával, a szokásos módon.
 
-## <a name="faq"></a>GYIK
+    Után írja be a felhasználónevét, megjelenik egy oldal a 2-jegyű szám rákérdez arra, hogy a bejelentkezés a Microsoft Authenticator alkalmazásban jóvá. Ha nem szeretné használni a bejelentkezési módszer, választhatja **inkább jelszó**, és jelentkezzen be a jelszót.
 
-### <a name="how-is-signing-in-with-my-phone-more-secure-than-typing-a-password"></a>Hogyan biztonságosabb, mint a jelszó beírása telefonom történő bejelentkezés?  
-
-Ma a legtöbb ember bejelentkezés webhelyek vagy alkalmazások felhasználónév és jelszó használatával.  Sajnos jelszavak rendszer gyakran elvesztése, ellopása, vagy a támadók által kitalálni. Ha beállította a Microsoft Authenticator alkalmazás való bejelentkezéshez, azt a telefonján, amely a fiók zárolásának feloldása kulcs létrehozása. Ennek a kulcsnak a PIN-kód vagy biometrikus, hogy már használja a telefonján védje azt.  Jelentkezik be a telefonjára, ha ezt a kulcsot biztonságosan két tényező – a telefon, magát, és annak zárolását, hogy a személyazonossága igazolásához szolgál. 
-
-A használt kulcs hasonlít a Windows Hello és a FIDO Alliance UAF specifikációk használt kulcsokat. Az adatok csak akkor önéletrajz helyileg, a kulcs védelmét, és soha nem küldött, vagy a felhőben tárolt. 
+    ![Bejelentkezési oldal](./media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
  
-### <a name="where-can-i-use-my-phone-to-replace-my-password-and-where-would-i-still-need-the-password"></a>Hol használható telefonom cserélje le a jelszót, és ha lenne is meg kell a jelszót?  
+2. A Microsoft Authentication alkalmazásban rákérdez arra, hogy értesítést kapjon **hagyhatja jóvá a bejelentkezést**. Válasszon **jóváhagyás** Ha ismeri fel a bejelentkezési kísérlet. Ellenkező esetben válasszon **Megtagadás**.
 
-A telefon bejelentkezési funkció még ma, csak működik a webalkalmazások és szolgáltatások, amelyek személyes Microsoft-fiókok, iOS vagy Android-alkalmazások, amelyek személyes Microsoft-fiókkal és egy személyes Microsoft-fiókot használó alkalmazások a Windows 10-es működteti. Amikor bejelentkezik az egyik ezek a webhelyek vagy alkalmazások, az oldal, ahol Ön általában adja meg a jelszót a kapcsolat van arról, hogy a **inkább alkalmazás**. 
-
-Telefonos bejelentkezés nem használható Windows rendszerű számítógépek, XBOX vagy bármely Microsoft-alkalmazások, például az Office-alkalmazások asztali verzióinak feloldásához jelenleg.
+3. Koppintson az azonos számú akkor jelenik meg a **jóváhagyja a bejelentkezést** képernyő. A telefon PIN-kód vagy a biometrikus kulcsot használja a hitelesítéshez.
  
-### <a name="does-this-replace-two-step-verification-should-i-turn-it-off"></a>Vált, ez a kétlépéses ellenőrzés? Kell azt a kikapcsolása után?   
+    ![Hagyja jóvá a bejelentkezési oldal](./media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
 
-Egyes esetekben. Telefonos bejelentkezés hatókörének bővítésével dolgozunk, de egyelőre továbbra is vannak, amelyek nem támogatják a Microsoft-ökoszisztéma helyén. Ezen a helyen továbbra is használunk a kétlépéses ellenőrzés a biztonságos bejelentkezéshez. Éppen ezért nem, akkor ne kétlépéses ellenőrzés kikapcsolása a fiókjához.
- 
-### <a name="okay-if-i-keep-two-step-verification-turned-on-for-my-account-do-i-have-to-approve-two-notifications"></a>Oké Ha a kétlépéses ellenőrzés bekapcsolva a fiókomhoz megtartásához rendelkezem jóváhagyása két értesítések?
+## <a name="turn-on-phone-sign-in-for-your-personal-account"></a>Jelentkezzen be a személyes fiókjához phone bekapcsolása
 
-Nem, nem történik meg. Microsoft-fiókjába, a telefonos bejelentkezés számít a kétlépéses ellenőrzést. Helyett írja be a jelszót, majd hagyja jóvá az értesítést igazolja az identitását a telefon feloldásához ismerete, valamint majd hagyja jóvá az értesítést. A Microsoft nem küld egy második értesítés jóváhagyása.
+Bekapcsolhatja a telefonos bejelentkezés személyes Microsoft-fiókja, például az Outlook.com, Xbox vagy Skype bejelentkezéshez használt fióknak.
 
-### <a name="what-if-i-lose-my-phone-or-dont-have-it-with-me-how-can-i-access-my-account"></a>Mi történik, ha megszakad a telefonra, vagy még nincs velem megosztva, hogyan érhetem el a fiókomat?  
+### <a name="to-turn-on-phone-sign-in-for-your-personal-account"></a>Jelentkezzen be a személyes fiókjához phone bekapcsolása
 
-Mindig kattinthat **inkább jelszó** a bejelentkezési lapon váltson vissza az Ön jelszavát. Ne feledje, hogy ha használja a kétlépéses ellenőrzés, Önnek kell elvégeznie, ellenőrizze a bejelentkezést egy második módszer. Ezért erősen javasoljuk, hogy győződjön meg arról, hogy rendelkezik-e további, naprakész biztonsági adatokkal a fiókjában. A biztonsági adatait, kezelheti https://account.live.com/proofs/manage.
- 
-### <a name="how-do-i-stop-using-this-feature-and-go-back-to-entering-my-password"></a>Hogyan leállítása ezzel a funkcióval és térjen vissza a jelszó beírása?
+- **Ha nem használja a Microsoft Authenticator alkalmazást.** Töltse le és telepítse a Microsoft Authenticator alkalmazást, és adja hozzá a személyes Microsoft-fiókjával jelentkezzen be a fiók a **fiókok hozzáadása** képernyőjén a Microsoft Authenticator alkalmazást. További információkért lásd: [Ismerkedés a Microsoft Authenticator alkalmazás](microsoft-authenticator-app-how-to.md).
+Új fiókokat is automatikusan bekapcsolva, így azonnal megkezdheti a telefonos bejelentkezés.
 
-Kattintson a **inkább jelszó** bejelentkezést követően. Hogy ne felejtse el a legújabb választási lehetőség, és kínálnak, amely alapértelmezés szerint amikor legközelebb bejelentkezik. Ha bármikor visszatérhet a telefonos bejelentkezés, kattintson a szeretné **inkább alkalmazás**. 
- 
-### <a name="can-i-use-the-app-to-sign-in-to-all-my-accounts-with-microsoft"></a>Az alkalmazás használatával jelentkezzen be az összes saját Microsoft-fiókhoz?   
-Ez a funkció jelenleg csak akkor használható a személyes Microsoft-fiókok. 
- 
-### <a name="can-i-sign-into-my-pc-with-my-phone"></a>I be tud jelentkezni a számítógép a telefonomat?  
-A számítógépen bejelentkezik egy Windows Hello a Windows 10-es használatát javasoljuk az arcfelismerés, ujjlenyomattal vagy a PIN-kódot.   
- 
-### <a name="can-i-sign-in-with-my-windows-phone"></a>E is be lehet jelentkezni a Windows Phone?  
-Most hogy nem fejleszt ezt a funkciót a Microsoft Authenticator a Windows Phone. 
+- **Ha már használja a Microsoft Authenticator alkalmazást a kétlépéses ellenőrzéshez.** Nyissa meg a **fiókok** az alkalmazást, válassza ki a legördülő listájának nyíl gombját, a munkahelyi vagy iskolai fiók, és válassza ki a képernyő **telefonos bejelentkezés engedélyezése**.
+
+>[!NOTE]
+>A fiók védelme érdekében, hogy az alkalmazás PIN-kódot vagy biometrikus zárolást az eszközön van szükség. A telefon zárolása feloldva, ha az alkalmazás állíthat be egy biztonsági zárolása előtt ne tudják bekapcsolni a telefonos bejelentkezés szükséges.
+
+### <a name="to-use-phone-sign-in-to-sign-in-to-your-personal-account"></a>A személyes fiókjával jelentkezzen be a telefonos bejelentkezés használatához
+
+1.  Nyissa meg a személyes Microsoft fiók bejelentkezési oldalát, és a jelszó beírása helyett válassza a **inkább alkalmazás** hivatkozásra.
+
+    A Microsoft értesítést küld a telefonjára. 
+
+2.  Hagyja jóvá az értesítést.
+
+## <a name="phone-sign-in-faq"></a>Telefonos bejelentkezés – gyakori kérdések
+
+|**Kérdés**|**Megoldás**|
+|--------------|-------------|
+|**Hogyan biztonságosabb, mint a jelszó beírása telefonom történő bejelentkezés?**|Ma a legtöbb ember bejelentkezés webhelyek vagy alkalmazások felhasználónév és jelszó használatával. Sajnos jelszavakat is lehet elvesztése, ellopása, vagy a támadók által kitalálni.<br><br>Miután beállította a Microsoft Authenticator alkalmazást, a telefonján, hogy feloldja fiókját, a telefon PIN-kódot vagy biometrikus zárolás által védett létrehoz egy kulcsot. Ez a kulcs szolgál majd igazolja az identitását aláírás közben.<br><br>**Fontos**<br>Az adatok csak használatos helyileg a kulcsának védelmére. Ez soha nem küldött, vagy a felhőben tárolt.|
+|**Vált, ez a kétlépéses ellenőrzés? Kell azt a kikapcsolása után?**| Bontsa ki a telefonos bejelentkezés hatókörének dolgozunk, de egyelőre továbbra is vannak, amelyek nem támogatják a Microsoft-ökoszisztéma helyén. Ezen a helyen a kétlépéses ellenőrzés még mindig használatban van a biztonságos bejelentkezéshez. Éppen ezért nem, akkor ne kétlépéses ellenőrzés kikapcsolása a fiókjához.|
+|**Ha a kétlépéses ellenőrzés bekapcsolva a fiókomhoz megtartásához van két értesítések jóváhagyása?**| Nem. Bejelentkezés a Microsoft-fiókot a telefonon is számít a kétlépéses ellenőrzés, így nem második jóváhagyás szükséges.|
+|**Mi történik, ha megszakad a telefonra, vagy még nincs velem? Hogyan férhetek hozzá a-fiókomat?**| Mindig kiválaszthatja a használatát, ehelyett hivatkozás egy jelszót a bejelentkezési lapon váltson vissza az Ön jelszavát. Azonban ha a kétlépéses ellenőrzés továbbra is szüksége egy második módszerrel igazolja személyazonosságát.<br><br>**Fontos**<br>Most már javasoljuk, hogy több, naprakész, a fiókjához társított ellenőrzési módszert.<br><br>Az ellenőrzési módszerek sorát a személyes fiókok segítségével kezelheti a [biztonsági beállítások](https://account.live.com/proofs/manage) lap. Munkahelyi vagy iskolai fiókok esetében nyissa meg a szervezet [további biztonsági ellenőrzés](https://aka.ms/MFASetup) lap vagy az **a fiókja biztonságának megőrzéséhez** lapon, ha a rendszergazda bekapcsolta az biztonsági adatait. További információ a biztonsági adatok: [a biztonsági adatok kezelése](security-info-manage-settings.md).<br><br>Ha Ön tudja felügyelni az ellenőrzési módszerek sorát, meg kell forduljon a rendszergazdához.|
+|**Hogyan leállítása ezzel a funkcióval és térjen vissza a jelszó használatával?**|Személyes fiókok esetében válassza a **inkább jelszó** hivatkozásra a bejelentkezés során. A legutóbbi választott megjegyezze őket, és alapértelmezés szerint el, amikor legközelebb bejelentkezik. Ha szeretne lépjen vissza a telefonos bejelentkezés, válassza ki a **inkább alkalmazás** hivatkozásra a bejelentkezés során.<br><br>A munkahelyi vagy iskolai fiókkal, akkor el kell távolítania a nyissa meg a Microsoft Authenticator alkalmazás kiválasztása a **fiókok szerkesztése** menüt, és ezután a fiók törlése.|
+|**Miért nem használható a telefonos bejelentkezés egynél több munkahelyi vagy iskolai fiókkal?**| A telefon egyetlen munkahelyi vagy iskolai fiók regisztrálva kell lenniük. Kapcsolja be a telefonos bejelentkezés egy másik munkahelyi vagy iskolai fiókot szeretne, ha a régi fiókot keresztül először kell regisztrációját a **beállítások** lapot.|
+|**Is tudok bejelentkezni a számítógépre a telefon használatával?**| A számítógépen javasoljuk, hogy a használatával Windows Hello a Windows 10-es aláírási. Windows Hello lehetővé teszi az arcok, ujjlenyomattal vagy a PIN-kód segítségével jelentkezzen be.|
+|**Használható telefonos bejelentkezés a saját Windows Phone?**| Nem. Ez a funkció nem támogatja a Microsoft Authenticator alkalmazást a Windows Phone.|
 
 ## <a name="next-steps"></a>További lépések
-Ha még nem töltötte le a Microsoft Authenticator alkalmazást, próbálja ki. Az alkalmazás érhető el az [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), és a telefonos bejelentkezés érhető el a Microsoft Authenticator alkalmazást [Android](http://go.microsoft.com/fwlink/?Linkid=825072) és [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
 
-Ha kérdései vannak az alkalmazás általános, vessen egy pillantást a [a Microsoft Authenticator – gyakori kérdések](microsoft-authenticator-app-faq.md)
+-   Ha az alkalmazással kapcsolatos további általános kérdése van, tekintse meg [a Microsoft Authenticator – gyakori kérdések](microsoft-authenticator-app-faq.md)
+
+-   Ha azt szeretné, hogy további információ a kétlépéses ellenőrzést, [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md)
+
+-   Ha azt szeretné, hogy további információ a biztonsági adatait, tekintse meg [a biztonsági adatok kezelése](security-info-manage-settings.md)

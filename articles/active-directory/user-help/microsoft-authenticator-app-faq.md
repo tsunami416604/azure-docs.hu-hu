@@ -1,123 +1,60 @@
 ---
-title: Súgó a Microsoft Authenticator alkalmazás – Azure ad-ben |} A Microsoft Docs
+title: Súgó a Microsoft Authenticator alkalmazás – az Azure Active Directory |} A Microsoft Docs
 description: Gyakori kérdések és válaszok a Microsoft Authentication alkalmazás és az Azure multi-factor Authentication kapcsolatos listáját tartalmazza.
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
-ms.service: multi-factor-authentication
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: user-help
 ms.topic: conceptual
-ms.date: 03/08/2018
+ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.custom: end-user
-ms.openlocfilehash: d86bc84653e38a9b64a336b8ce9ed7e657129e8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c2071e662b50e57189e048b028fd5359482c817f
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059829"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358649"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>A Microsoft Authenticator alkalmazás – gyakori kérdések
 
-Ez a cikk a Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdésekre ad választ. Ha nem látja a választ a kérdésére, lépjen a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Emellett áttekintheti az alkalmazást, egy adott szolgáltatást egy másik gyakori kérdések [bejelentkezés telefonnal kapcsolatos gyakori kérdések](microsoft-authenticator-app-phone-signin-faq.md).
+Ez a cikk a Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdésekre ad választ. Ha nem látja a választ a kérdésére, lépjen a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Emellett, ha a telefonos bejelentkezési folyamatáról további információt keres, megtekintheti, [bejelentkezés telefonnal kapcsolatos gyakori kérdések](microsoft-authenticator-app-phone-signin-faq.md).
 
 A Microsoft Authenticator alkalmazás helyett az Azure Authenticator alkalmazást, és az Azure multi-factor Authentication használata esetén ajánlott alkalmazás. A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-
-### <a name="what-data-does-the-authenticator-store-on-my-behalf-and-how-can-i-delete-it"></a>Milyen adatokat a hitelesítő tárol a nevében, és hogyan lehet törölni?
-
-A Microsoft Authenticator tárolja a fiók adatait, ha a fiók létrehozása. Authenticator használata esetén a diagnosztikai naplót hibakeresési célra létrejön, és hozzájárult a Microsoft bármely előre nem látható problémák diagnosztizálása a hasznos adatokat tárol. A naplóadatok történő megnyitásával is elérheti **súgó** > **naplók küldése** > **megtekinthetők a naplófájlok**.
-
-A fiók csempe törlésével törölheti az adatokat. A fiók csempe törlése is törli a többek között a naplókat az alkalmazás által használt fiók adatait. 
-
-Az adatok Microsoft általi további információért látogasson el: https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted
-
-### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>Mik azok a kódokat az alkalmazásban? Miért nem szám szám legyen?
-
-A Microsoft Authenticator alkalmazás megnyitásakor látni a hozzáadott fiókok és a egy hat vagy nyolc számjegyű szám szerint, azok. Egy 30 másodperces számlálóval jelenhet meg.
-
-Ezek a kódok használatosak, amikor bejelentkezik a fiókjába. Miután megadta a felhasználónevét és jelszavát, előfordulhat, hogy kéri, adja meg egy ellenőrző kódot. Nyissa meg a Microsoft Authenticator alkalmazást, és másolja a jelenleg látható kódot. A bejelentkezési oldal befejezéséhez írja be a kódot.
-
-Az okot, amely a kód 30 másodpercenként módosítása, hogy soha ne használja ugyanazt a kódot kétszer van. Például egy jelszó ne felejtse el, amelyeknek nem áll. A cél pedig az, hogy a telefonon való hozzáférést csak a személy tudja-e az ellenőrző kódot.
-
-Így nem kell aggódnia kellene phone szolgáltatást, hogy jelentkezzen be a kódok internet vagy az adatokat, nincs szükség. Ha az alkalmazás bezárásához, nem folyamatosan fut a háttérben, és azt nem kiürítési az akkumulátor. Zárja be az alkalmazást, és figyelmen kívül hagyja a következő időpontig jelentkezik be.  
-
-### <a name="i-only-get-notifications-when-i-have-the-app-open-if-the-app-isnt-open-i-dont-get-any-notifications"></a>Tudok csak értesítések küldése, ha az alkalmazás van nyitva. Ha az alkalmazás még nincs megnyitva, értesítések nem jelenik meg.
-
-Ha értesítéseket kap, de nem győződjön meg arról, a háttérzaj vagy mozog, annak ellenére, hogy az a csengető, először ellenőrizze az alkalmazás beállításait. Az alkalmazás hang vagy mozog, az értesítések engedélyezéséhez.
-
-Ha egyáltalán nem kap értesítést, ellenőrizze a következő esetekben:
-
-- A telefon az elfoglalt állapot és a csendes módban? Mód alkalmazások megtartása értesítések küldéséhez.
-- Értesítéseket kaphat az egyéb alkalmazásokból? Ha nem, előfordulhat, hogy a hálózati kapcsolatokat a telefonjára, vagy az Android- vagy Apple értesítések csatornát a probléma. Meg lehet oldani az első lehetőség a telefon között, de szükség lehet a szolgáltató, a második lehetőség segítség kommunikáljon.
-- Kaphat az egyes fiókok, az alkalmazást, de nem más értesítések? Ha igen, távolítsa el a problémát okozó fiókot az alkalmazásból, és adja hozzá újra a leküldéses értesítések engedélyezéséhez.
-
-Ha ezek a hibaelhárítási javaslatok próbált, de még mindig problémákat tapasztal, elküldheti a diagnosztikai naplók. Nyissa meg az alkalmazás beállításait, majd válassza ki **Súgó és visszajelzés** és **naplók küldése**. Ezután nyissa meg a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) és tudassa velünk, mi a probléma akkor jelent meg, és milyen lépések próbálta eddig.
-
-### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>Már használom a Microsoft Authenticator alkalmazás az ellenőrző kódok kezelésére. Hogyan válthatok az egy kattintással leküldéses értesítések?
-A bejelentkezési keresztül leküldéses értesítés jóváhagyása csak akkor érhető el a személyes Microsoft-fiókok vagy munkahelyi és iskolai Microsoft-fiókok, mint a Google vagy a Facebook külső fiókok esetében nem. Ha rendelkezik munkahelyi vagy iskolai Microsoft-fiókot, tiltsa le ezt a beállítást a szervezet választhat.
-
-Ha Microsoft-fiókot használ a személyes fiókjához, és átválthat a leküldéses értesítéseket szeretne, vegye fel újra a fiókját szeretné. Regisztrálja újra az eszközt a fiókjához, és beállíthatja a leküldéses értesítéseket.  
-
-Ha használja a Microsoft Authenticator a munkahelyi vagy iskolai fiókkal, majd a szervezet úgy dönt, hogy egyetlen kattintással értesítéseket engedélyezik-e.
-
-### <a name="do-one-click-push-notifications-work-for-non-microsoft-accounts"></a>Egykattintásos leküldéses értesítések a Microsoft fiókok esetében működnek?
-Leküldéses értesítések nem, csak munkahelyi Microsoft-fiókok és az Azure Active Directory-fiókokat. Ha a munkahelyi vagy iskolai Azure AD-fiókokat használnak, azok előfordulhat, hogy letiltja ezt a szolgáltatást.  
-
-### <a name="i-got-a-new-device-or-restored-my-device-from-a-backup-how-do-i-set-up-my-accounts-in-the-microsoft-authenticator-app-again"></a>Tudok itt van egy új eszköz vagy az eszköz biztonsági másolatból. Hogyan állíthatok be a Microsoft Authenticator alkalmazást a saját fiókok újra?
-Ha iOS-eszközt futtatja, be van kapcsolva **automatikus biztonsági mentés**, és a régi eszközön; biztonsági másolatot a fiókokhoz létrehozott biztonsági másolat segítségével helyreállíthatja a a fiók hitelesítő adatait az új eszköz. További információ: a [biztonsági mentés és helyreállítás fiók hitelesítő adatait, a Microsoft Authenticator alkalmazás](microsoft-authenticator-app-backup-and-recovery.md) cikk. 
-
-### <a name="i-lost-my-device-or-moved-on-to-a-new-device-how-do-i-make-sure-notifications-dont-continue-to-go-to-my-old-device"></a>E az eszköz elvész, vagy áthelyezni új eszköz. Hogyan ellenőrizhetem, hogy értesítések továbbra is Ugrás a régi-eszközöm nem?  
-A Microsoft Authenticator alkalmazást ad hozzá az új iOS-eszköz nem távolítja el automatikusan az alkalmazást a régi eszközről. Az alkalmazás még régi az eszköz törlésével nem elég. Kell mind az alkalmazás törli a régi eszközről, és mondja el a Microsoft vagy a szervezet felejtse el a régi eszközök és regisztrációját a fiókját.
-- **Szeretné eltávolítani az alkalmazást az eszközről személyes Microsoft-fiókkal.** A kétlépéses ellenőrzés területén lépjen a [fiók biztonsági](https://account.microsoft.com/security) lapon és a régi eszköz ellenőrzési kikapcsolására.  
-- **A távolítsa el az alkalmazást az eszközről a munkahelyi vagy iskolai Microsoft-fiókjával.** A kétlépéses ellenőrzés területén lépjen a [MyApps](https://myapps.microsoft.com/) lapján vagy a szervezet egyéni portálra és a régi eszköz ellenőrzési kikapcsolására. 
-
-
-
-### <a name="how-do-i-remove-an-account-from-the-app"></a>Hogyan távolíthatom el a egy fiókot az alkalmazásból?
-* iOS: a fő képernyőről, pöccintsen balra, az a fiók csempéjére. Válassza a **Törlés** elemet.
-* Windows Phone: A fő képernyőjén válassza ki a menügombra, majd **fiókok szerkesztése**. Koppintson a **X** a fiók neve mellett.
-* Android: A fő képernyőjén válassza ki a menügombra, majd **fiókok szerkesztése**. Koppintson a **X** a fiók neve mellett.
-
-Ha a szervezet regisztrált eszközzel rendelkezik, szükség lehet egy plusz lépésre távolítsa el a fiókját. Ezeken az eszközökön a Microsoft Authenticator alkalmazás automatikusan regisztrálva van egy eszköz rendszergazdaként. Ha szeretne teljesen távolítsa el az alkalmazást, először szüntesse meg az alkalmazás az alkalmazás beállításaiban regisztrációját szeretné.
-
-### <a name="why-does-the-app-request-so-many-permissions"></a>Miért érdemes az alkalmazás sok engedélyek kéréséhez?
-Íme az engedélyeket, amelyek is meg kell adnia a teljes listáját, és azok hogyan használhatók az alkalmazásban. Láthatja a konkrét engedélyeket rendelkezik telefonos típusától függenek.
-
-* **Kamera**: használt QR-kódok beolvasása egy munkahelyi, iskolai vagy -Microsoft fiók hozzáadásakor.
-* **Névjegyek és phone**: használja a folyamat leegyszerűsítése érdekében a meglévő fiókok a telefonján felderítésével, amikor a személyes Microsoft-fiókkal jelentkezik be.
-* **SMS**:, hogy a telefonszám megegyezik a rekordok száma. Amikor bejelentkezik a személyes Microsoft-fiókkal jelentkezik be először.  Azt szöveges üzenetet küldjön a telefonjára, amelyre letöltötte az alkalmazást, amelyet 6-8 jegyű ellenőrző kódot tartalmaz. Ahelyett, hogy keresse meg a kódot, és írja be az alkalmazás kéri, megtalálható a szöveges üzenetben az Ön számára.
-* **Más alkalmazások keresztül rajzolása**: esetlegesen futó többi alkalmazást is megjelenik az értesítést kap, amely ellenőrzi a személyazonosságát.
-* **Az internetről érkező adatok fogadására**: erre az engedélyre szükség, az értesítések küldéséhez.
-* **Megakadályozhatja, hogy a telefon alvó**: az eszköz regisztrálása a munkahelyén, ha a szervezet módosíthatja ezt a házirendet a telefonján.
-* **Rezgés szabályozhatja**: választhat, hogy milyen egy rezgés, amikor a rendszer értesíti a személyazonosságát.
-* **Ujjlenyomat-alapú hardver**: egyes munkahelyi és iskolai fiókok egy további PIN-kód szükséges, minden alkalommal, amikor a személyazonosságát. A folyamat MEGKÖNNYÍTÉSE érdekében lehetővé tesszük az ujjlenyomat használatát a PIN-kód megadása helyett.
-* **Hálózati kapcsolatok megtekintéséhez**: Amikor hozzáad egy Microsoft-fiókkal, az alkalmazás hálózat és internet kapcsolat szükséges.
-* **A tároló tartalmának a beolvasása**: Ez az engedély csak akkor használatos, az alkalmazás beállításaival technikai probléma jelentése. A probléma diagnosztizálása érdekében gyűjt bizonyos adatokat, a storage-ból.
-* **Teljes hálózati hozzáférést**: Ez az engedély megadása kötelező a személyazonosságát értesítések küldéséhez.
-* **Indítási**: Ha a telefonja újra, ezt az engedélyt biztosítja, hogy továbbra is igazolhatja személyazonosságát értesítéseket kap.
-
-### <a name="why-does-the-microsoft-authenticator-app-allow-you-to-approve-a-request-without-unlocking-the-device"></a>Miért érdemes a Microsoft Authenticator alkalmazás lehetővé teszi, hogy hagyja jóvá a kérést az eszköz zárolásának feloldása nélkül?
-
-Nem kell az ellenőrzési kérések jóváhagyása, mert az összes igazolnia kell, hogy rendelkezik-e a telefonjára, az eszköz zárolásának feloldásához. A kétlépéses ellenőrzés szükséges igazolására két dolgokat – tudja egy dolog, és a egy dolog van. A tudja lényeg a jelszavát. A rendelkezik lényeg a telefon (állítsa be a Microsoft Authenticator alkalmazás és a egy megvalósíthatósági példában MFA regisztrált.) Ezért a telefon kapcsolatban, és a kérés jóváhagyása megfelel a feltételeknek, a hitelesítés második tényezőjét, a.
-
-### <a name="what-does-the-lock-icon-in-the-account-list-mean"></a>Mit jelent a lakat ikonra, a számla lista?
-
-A lakat ikon azt jelzi, hogy az eszköz Azure AD-ben regisztrált és a fiókjába regisztrált. IOS-es eszközregisztráció a Microsoft Intune-regisztráció során történik.
+|Kérdés|Megoldás|
+|--------|--------|
+|Milyen adatokat a hitelesítő tárol a nevében, és hogyan lehet törölni?| A Microsoft Authenticator alkalmazást a fiók adatait adja meg a fiók hozzáadásakor tárolja. Az alkalmazás használatakor a diagnosztikai naplót hibakeresési célra létrejön, és csak tárolja az adatokat, melyeknek segítheti a Microsoftot az előre nem látható problémák kivizsgálásában. Áttekintheti a naplóadatok nyissa meg az alkalmazás kiválasztása **súgó**lehetőségre kattint **naplók küldése**, és válassza a **megtekinthetők a naplófájlok** gombra.<br><br>Törölheti az adatokat, köztük a naplófájlok a fiók csempéjére a törlésével az összes a **fiókok** képernyő. További információ arról, hogy a Microsoft hogyan használja az adatok: a [Szolgáltatásmegbízhatósági portál](https://servicetrust.microsoft.com/ViewPage/HomePage.)|
+|Mik azok a kódokat az alkalmazásban?|A Microsoft Authenticator alkalmazás megnyitásakor látni fogja a hozzáadott fiókok csempékként hat vagy nyolc számjegyű több minden.<br><br>Annak ellenőrzése, hogy a felhasználók mondja magát, a kódok fogja használni. Miután az felhasználónevével és jelszavával jelentkezik be, az ellenőrző kódot, amely a fiók ugyanahhoz a csempéhez írjon be. Például ha Ön a Contoso-fiók bejelentkezés Alain, használna 427303 az ellenőrzőkódot.<br><br>![Fiókok képernyő az alkalmazásban](./media/microsoft-authenticator-app-faq/auth-app-accounts.png)|
+|A szám a leltár kódot megtartása mellett miért nem?|Egy 30 másodperces számlálóval az aktív ellenőrzőkódot mellett merülhetnek fel. Ez az időzítő van, így soha nem jelentkezzen be kétszer ugyanazt a kódot. Ellentétben a jelszó nem szeretnénk, hogy ne felejtse el ezt a számot. A cél pedig az, hogy a telefonon való hozzáférést csak a személy tudja-e a kód.|
+|Saját fiók csempe szürke miért van?|Egyes szervezetek megkövetelik a Microsoft Authenticator alkalmazás használata egyszeri bejelentkezéshez és a szervezeti erőforrások védelme. Ebben a helyzetben a fiók nem használható az kétlépéses ellenőrzést, és szürkeként vagy inaktív megjelenik-e. Ilyen típusú fiókok gyakran nevezik egy "broker" fiókot.|
+|Mi mindent az ikonok mean?|![Telefon-kulcs ikon](./media/microsoft-authenticator-app-faq/icon.png)<br>A telefon-kulcs ikonra jeleníti meg, hogy a frissített beállításának telefonos bejelentkezés használata. Ez lehet bekapcsolni egyetlen munkahelyi vagy iskolai fiókokhoz az authenticator alkalmazás és a személyes Microsoft-fiókok. Telefonos bejelentkezés kapcsolatos további információkért lásd: [jelentkezzen be a telefonjára, nem kell jelszót](microsoft-authenticator-app-phone-signin-faq.md)<br><br>![Lakat ikon](./media/microsoft-authenticator-app-faq/lock.png)<br>A lakat ikon látható, hogy a munkahelyi vagy iskolai fiók regisztrálva van-e a szervezet számára. A szervezet érdemes lehet, hogy regisztrálja az eszközt, így az képes megérteni a mely eszközök éri el a védett erőforrások, például fájlokat és alkalmazásokat, és valószínűleg kapcsolja be a feltételes hozzáférés az illetéktelen hozzáférés veszélyét csökkentse ezeket az erőforrásokat.|
+|Mi az az eszköz regisztrálása?|A szervezet érdemes lehet, hogy regisztrálja az eszközt, így az képes megérteni a mely eszközök éri el a védett erőforrások, például fájlokat és alkalmazásokat, és valószínűleg kapcsolja be a feltételes hozzáférés az illetéktelen hozzáférés veszélyét csökkentse ezeket az erőforrásokat. Az eszköz használatával regisztrációját is **beállítások**, de előfordulhat, hogy nem fér hozzá az e-mailt az Outlookban, a fájlok a onedrive-ban, és elveszíti a telefonos bejelentkezés használata lehetővé teszi.|
+|Kell csatlakozniuk kell az internethez és a hálózaton, és az ellenőrző kódok a való?|A kódok nem igénylik, hogy a rendszer az interneten, vagy kapcsolódik az adatokhoz, így nem kell phone szolgáltatást, hogy jelentkezzen be. Ezenkívül az alkalmazást, amint bezárja leáll, mert azt az akkumulátor kiürítési nem.|
+|Tudok csak értesítések küldése, ha az alkalmazás meg nyitva. Ha az alkalmazás le van zárva, értesítés jelenik meg.|Értesítések, de nem egy riasztást kap, ha az, hogy a csengető mellett is ellenőrizze az alkalmazásbeállítások. Ellenőrizze, hogy az alkalmazás be van kapcsolva hang- vagy alaplemezzel, az értesítések. Ha egyáltalán nem kap értesítést, ellenőrizze a következőket:<ul><li>A telefon az elfoglalt állapot és a csendes módban? E módok megakadályozhatja az alkalmazások értesítéseket küldjön.</li><li>A többi alkalmazás is kap értesítéseket? Ha nem, előfordulhat, hogy a hálózati kapcsolatokat a telefonjára, vagy az Android- vagy Apple értesítések csatornát a probléma. Megpróbálhatja feloldani a hálózati kapcsolatok keresztül a telefon beállításait, de szükség lehet a szolgáltató az Android- vagy Apple értesítések Channel segítségével kommunikál.</li><li>Beszerezheti az egyes fiókok, az alkalmazást, de nem más értesítések? Ha igen, távolítsa el a problémát okozó fiókot az alkalmazásból, adja hozzá újra engedélyezi az értesítéseket, és tekintse meg, ha a probléma megoldása, amely.</li></ul>Ha próbált meg ezeket a lépéseket, és még mindig problémákat tapasztal, javasoljuk a naplófájlok diagnosztikai küldése. Nyissa meg az alkalmazást, ugorjon a **súgó**, majd válassza ki **naplók küldése**. Ezt követően nyissa meg a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) és tudassa velünk, mi a probléma akkor jelent meg, és milyen lépések próbálta eddig.|
+|Az ellenőrző kódok használata az alkalmazásban, de hogyan lehet váltani a leküldéses értesítések?|Beállíthatja a munkahelyi vagy iskolai fiókját (Ha be van kapcsolva a rendszergazda által) vagy személyes Microsoft-fiókjával, de értesítések külső fiókok, mint a Google vagy a Facebook nem fog működni.<br><br>Értesítések vált át a személyes fiókjával kell regisztrálja újra az eszköz a fiókkal, a leküldéses értesítések beállítása.<br><br>A szervezet úgy dönt, hogy-e a munkahelyi vagy iskolai fiókot, egy kattintással értesítések, a szervezet előfordulhat, hogy kapcsolja ki ezt a szolgáltatást.|
+|Értesítések a Microsoft fiókok esetében működnek|Értesítések nem, csak működik a Microsoft-fiókok és bevezetésének Active Directory-fiókokat. Ha a munkahelyi vagy iskolai használja az Azure AD-fiókokat, előfordulhat, hogy kikapcsolása ezt a szolgáltatást.|
+|Tudok itt van egy új eszköz vagy az eszköz biztonsági másolatból. Hogyan állíthatok be a Microsoft Authenticator alkalmazást a saját fiókok újra?|Ha iOS-eszközt futtatja, be van kapcsolva **automatikus biztonsági mentés**, és a régi eszközön; biztonsági másolatot a fiókokhoz létrehozott biztonsági másolat segítségével helyreállíthatja a a fiók hitelesítő adatait az új eszköz. További információ: a [biztonsági mentés és helyreállítás fiók hitelesítő adatait, a Microsoft Authenticator alkalmazás](microsoft-authenticator-app-backup-and-recovery.md) cikk.|
+|E az eszköz elvész, vagy áthelyezni új eszköz. Hogyan ellenőrizhetem, hogy értesítések továbbra is Ugrás a régi-eszközöm nem?|A Microsoft Authenticator alkalmazást ad hozzá az új iOS-eszköz nem távolítja el automatikusan az alkalmazást a régi eszközről. Az alkalmazás még régi az eszköz törlésével nem elég. Kell mind az alkalmazás törli a régi eszközről, és mondja el a Microsoft vagy a szervezet felejtse el a régi eszközök és regisztrációját a fiókját.<ul><li>**Szeretné eltávolítani az alkalmazást az eszközről személyes Microsoft-fiókkal.** A kétlépéses ellenőrzés területén lépjen a [fiók biztonsági](https://account.microsoft.com/security) lapon és a régi eszköz ellenőrzési kikapcsolására.</li><li>**A távolítsa el az alkalmazást az eszközről a munkahelyi vagy iskolai Microsoft-fiókjával.** A kétlépéses ellenőrzés területén lépjen a [MyApps](https://myapps.microsoft.com/) lapján vagy a szervezet egyéni portálra és a régi eszköz ellenőrzési kikapcsolására.</li></ul>|
+|Hogyan távolíthatom el a egy fiókot az alkalmazásból?|<ul><li>**iOS-es.** A fő képernyőjén válassza a menü gombra, majd jelölje ki **fiókok szerkesztése**. Koppintson a fiók neve mellett a piros ikonra, majd koppintson **fiók eltávolítása**.</li><li>**Windows Phone.** A fő képernyőjén válassza a menügombra, majd **fiókok szerkesztése**. Koppintson a **X** a fiók neve mellett.</li><li>**Android.** A fő képernyőjén válassza a menügombra, majd **fiókok szerkesztése**. Koppintson a **X** a fiók neve mellett.</li></ul>Ha a szervezet regisztrált eszközzel rendelkezik, szükség lehet egy plusz lépésre távolítsa el a fiókját. Ezeken az eszközökön a Microsoft Authenticator alkalmazás automatikusan regisztrálva van egy eszköz rendszergazdaként. Ha szeretne teljesen távolítsa el az alkalmazást, először szüntesse meg az alkalmazás az alkalmazás beállításaiban regisztrációját szeretné.|
+|Miért érdemes az alkalmazás sok engedélyek kéréséhez?|Íme az engedélyeket, amelyek is meg kell adnia a teljes listáját, és azok hogyan használhatók az alkalmazásban. Láthatja a konkrét engedélyeket rendelkezik telefonos típusától függenek.<ul><li>**A kamera.** QR-kódok beolvasása egy munkahelyi, iskolai vagy -Microsoft fiók hozzáadásakor használja.</li><li>**Névjegyek és telefonszámát.** Használja a folyamat leegyszerűsítése érdekében a meglévő fiókok a telefonján felderítésével, amikor a személyes Microsoft-fiókkal jelentkezik be.</li><li>**SMS.** Hogy a telefonszám megegyezik a rekordok száma. Amikor bejelentkezik a személyes Microsoft-fiókkal jelentkezik be először. Azt szöveges üzenetet küldjön a telefonjára, amelyre letöltötte az alkalmazást, amelyet 6-8 jegyű ellenőrző kódot tartalmaz. Ahelyett, hogy keresse meg a kódot, és írja be az alkalmazás kéri, megtalálható a szöveges üzenetben az Ön számára.</li><li>**Rajzoljon más alkalmazások felett.** Az értesítést kap, amely ellenőrzi, hogy az identitás esetlegesen futó többi alkalmazást is megjelenik.</li><li>**Adatok fogadása az internetről.** Erre az engedélyre szükség, az értesítések küldéséhez.</li><li>**Az alvó állapotban, hogy a phone.** Ha az eszköz regisztrálása a munkahelyén, a szervezet módosíthatja ezt a házirendet a telefonján.</li><li>**Rezgés szabályozza.** Kiválaszthatja, hogy milyen egy rezgés, amikor a rendszer értesíti a személyazonosságát.</li><li>**Ujjlenyomattal történő hardvert használjon.** Egyes munkahelyi és iskolai fiókok egy további PIN-kód szükséges, minden alkalommal, amikor a személyazonosságát. A folyamat megkönnyítése érdekében lehetővé tesszük az ujjlenyomat használatát a PIN-kód megadása helyett.</li><li> **Hálózati kapcsolatok megjelenítése.** Amikor hozzáad egy Microsoft-fiókkal, az alkalmazás hálózati/internetkapcsolatot igényel.</li><li>**A tároló tartalmának a beolvasása**. Ez az engedély csak akkor használható, ha az alkalmazás beállításaival technikai probléma jelentése. A probléma diagnosztizálása érdekében gyűjt bizonyos adatokat, a storage-ból.</li><li>**Teljes hálózati hozzáférést.** Ez az engedély megadása kötelező igazolhatja személyazonosságát értesítések küldéséhez.</li><li>**Indításkor futnak.** Ha újraindítja a telefonjára, ezt az engedélyt biztosítja, hogy később is igazolhatja személyazonosságát értesítéseket kap.</li></ul>|
+|Miért érdemes a Microsoft Authenticator alkalmazás lehetővé teszi, hogy hagyja jóvá a kérést az eszköz zárolásának feloldása nélkül?|Nem kell az ellenőrzési kérések jóváhagyása, mert az összes igazolnia kell, hogy rendelkezik-e a telefonjára, az eszköz zárolásának feloldásához. A kétlépéses ellenőrzés szükséges igazolására két dolgokat – tudja egy dolog, és a egy dolog van. A tudja lényeg a jelszavát. A rendelkezik lényeg a telefon (állítsa be a Microsoft Authenticator alkalmazás és a egy megvalósíthatósági példában MFA regisztrált.) Ezért a telefon kapcsolatban, és a kérés jóváhagyása megfelel a feltételeknek, a hitelesítés második tényezőjét, a.|
+|Miért nem az összes saját fiókok jelennek meg a Microsoft Authenticator alkalmazást a saját Apple Watch megnyitásakor?|A Microsoft Authenticator alkalmazást csak támogatja a személyes Microsoft vagy az iskolai vagy munkahelyi fiókok leküldéses értesítések küldése az Apple Watch kiegészítő alkalmazásban. A más fiókokhoz, mint a Google vagy a Facebook, a kell az authenticator alkalmazás a telefonjára az ellenőrző kódok megtekintéséhez.|
+|Miért nem tudok jóváhagyása vagy elutasítása értesítések a saját Apple Watch?|Győződjön meg róla, hogy frissített a Microsoft Authenticator alkalmazást, 6.0.0 verzió vagy újabb, az iPhone-on. Ezt követően nyissa meg a Microsoft Authenticator kiegészítő az Apple Watch alkalmazást, és keresse meg az összes fiókot egy **Set Up** alattuk gombra. El kell végeznie, amelyek ezeket a fiókokat az értesítések jóváhagyása folyamat beállítása.|
+|Miért jelenik meg a hiba **nem lehet kommunikálni a telefonon a az Apple Watch a Microsoft Authenticator companion alkalmazás használatakor**?|Ha nem kommunikál a telefonján és nézze meg, próbálkozzon a következő:<ol><li>Hatályba lépjen ki a Microsoft Authenticator telefonos alkalmazást, és nyissa meg újra az iPhone-on.</li><li>Hatályba lépjen ki a kiegészítő az Apple Watch alkalmazást.<ol><li> Nyissa meg a figyelés a Microsoft Authenticator kiegészítő alkalmazást</li><li>Tartsa lenyomva a kiszolgálóoldali gombra, amíg a **leállítási** képernyő jelenik meg.</li><li>Tartsa lenyomva a digitális korona kényszerítése lépjen ki az alkalmazás aktív, és engedje el az ügyféloldali gombját.</li></ol></li><li>Kapcsolja ki a Bluetooth és a Wi-Fi telefonján és a figyelés, majd indítsa őket újra.</li><li>Indítsa újra az iPhone-ján és a figyelés.</li></ol>|
+|Miért nem a Microsoft Authenticator companion alkalmazás az Apple Watch szinkronizálása vagy saját watchra készült jelenik meg?|Ha az alkalmazás nem jelennek meg megtekinthesse, megpróbálkozhat a következőkkel: <ol><li>Ellenőrizze, hogy a figyelési futtató watchOS 4.0-s vagy újabb verziója.</li><li>A Watch újból szinkronizálódnak.</li></ol>|
+|Apple Watch kiegészítő alkalmazásom összeomlott. Küldhetek be saját összeomlási naplókat segítségével megvizsgálhatja, hogy? |Először azt kell, hogy kiválasztotta az elemzéseket megoszthatja velünk a kapcsolatot. Ha Ön a testflighthoz való felhasználó, még jelentkezett. Ellenkező esetben léphet **beállítások > adatvédelmi > Analytics** , és válassza ki mindkét a **megosztása iPhone & Watch analytics** és a **alkalmazásfejlesztők rendelkező megosztási** beállítások.<br><br>Miután regisztrált, próbálja meg reprodukálni az összeomlás, az összeomlási naplókat a rendszer automatikusan elküldje velünk a kapcsolatot a vizsgálat. Azonban ha az összeomlás nem lehet reprodukálni, manuálisan is a naplófájlok másolása, majd küldje el azokat velünk a kapcsolatot.<ol><li>Nyissa meg az órára készült alkalmazás a telefonján nyissa meg **beállítások > Általános**, és kattintson a **másolási Watch Analytics**.</li><li>Keresse meg a megfelelő összeomlási alatt **beállítások > Adatvédelem > Analytics > elemzési adatok**, majd manuálisan másolja a teljes szöveg.</li><li>Nyissa meg a Microsoft Authenticator alkalmazást a telefonján és a beillesztési, a vágólapra másolt szöveget a **alkalmazásfejlesztők rendelkező megosztási** szövegmezőbe írja be a **naplók küldése** lapot.</li></ol>|
 
 ## <a name="next-steps"></a>További lépések
 
-### <a name="contact-us"></a>Kapcsolat
-Ha a kérdését itt nem válaszolt, szeretnénk meghallgatnánk a véleményét. Nyissa meg a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) tegye fel a kérdéseit, és segítséget kérhet a Közösség, vagy szóljon hozzá ezen a lapon.
+-   Ha a telefonos bejelentkezés további kérdése van, tekintse meg [jelentkezzen be a telefonjára, nem kell jelszót](microsoft-authenticator-app-phone-signin-faq.md)
 
+-   Ha azt szeretné, hogy további információ a kétlépéses ellenőrzést, [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md)
 
-### <a name="related-topics"></a>Kapcsolódó témakörök
-* [Tudnivalók a kétlépéses ellenőrzés](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) Microsoft-fiókok
-* [Problémákat tapasztal a kétlépéses ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md) munkahelyi vagy iskolai fiókja?
-* [Jelentkezzen be a telefonról a Microsoft Authenticator használatával](microsoft-authenticator-app-phone-signin-faq.md)
+-   Ha azt szeretné, hogy további információ a biztonsági adatait, tekintse meg [a biztonsági adatok kezelése](security-info-manage-settings.md)
+
+- Ha a kérdését itt nem válaszolt, szeretnénk meghallgatnánk a véleményét. Nyissa meg a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) tegye fel a kérdéseit, és segítséget kérhet a Közösség, vagy szóljon hozzá ezen a lapon.

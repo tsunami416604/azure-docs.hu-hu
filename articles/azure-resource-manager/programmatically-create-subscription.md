@@ -2,8 +2,8 @@
 title: Az Azure Enterprise-előfizetések létrehozása programozott módon |} A Microsoft Docs
 description: Megtudhatja, hogyan további Azure Enterprise vagy a Enterprise Dev/Test-előfizetések létrehozása programozott módon.
 services: azure-resource-manager
-author: jlian
-manager: jlian
+author: adpick
+manager: adpick
 editor: ''
 ms.assetid: ''
 ms.service: azure-resource-manager
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
-ms.author: jlian
-ms.openlocfilehash: 36e69696b292454598faed2a95a844dc7a7442c5
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.author: adpick
+ms.openlocfilehash: 2bfa9944d85fde65ad8dbd73ddda11fa405df2f8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265700"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358356"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programozott módon létrehozhat az Azure Enterprise-előfizetések (előzetes verzió)
 
@@ -28,9 +28,11 @@ Az API-ból egy Azure-előfizetést hoz létre, ha ezt az előfizetést a szerz�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A fióktulajdonos Azure EA regisztrációs kell lennie. Ha nem, kérje meg a regisztrációs rendszergazdáját, hogy [vegye fel a nagyvállalati szerződések portáljának használatával fióktulajdonos](https://ea.azure.com/helpdocs/addNewAccount) (bejelentkezés szükséges). Kövesse az utasításokat a meghívó e-mailben kapott manuálisan hozzon létre egy kezdeti előfizetést. Erősítse meg a fiók tulajdonjogát, és manuálisan hozzon létre egy kezdeti, mielőtt továbblép a következő lépés a nagyvállalati szerződéses előfizetésében. Csak hozzáadása a regisztrációt a fiók nem elég.
+A regisztrációs fiók-előfizetések létrehoz egy tulajdonosi vagy közreműködői szerepkörhöz kell rendelkeznie. Ezek a szerepkörök beolvasása a két módja van:
 
-* Ha azt szeretné, a nagyvállalati szerződéses előfizetésében létrehozni az egyszerű szolgáltatás használatával, meg kell [megadása egyszerű szolgáltatást az előfizetések létrehozása](grant-access-to-create-subscription.md).
+* A regisztráció rendszergazdájához is [győződjön meg arról, hogy fióktulajdonos](https://ea.azure.com/helpdocs/addNewAccount) (bejelentkezés szükséges), amely lehetővé teszi, hogy a regisztrációs fiók tulajdonosának. Kövesse az utasításokat a meghívó e-mailben kapott manuálisan hozzon létre egy kezdeti előfizetést. Erősítse meg a fiók tulajdonjogát, és manuálisan hozzon létre egy kezdeti, mielőtt továbblép a következő lépés a nagyvállalati szerződéses előfizetésében. Csak hozzáadása a regisztrációt a fiók nem elég.
+
+* A regisztrációs fiók meglévő tulajdonosává is [hozzáférési](grant-access-to-create-subscription.md). Hasonlóképpen, ha azt szeretné, a nagyvállalati szerződéses előfizetésében létrehozni az egyszerű szolgáltatás használatával, meg kell [megadása egyszerű szolgáltatást az előfizetések létrehozása](grant-access-to-create-subscription.md).
 
 ## <a name="find-accounts-you-have-access-to"></a>Keresse meg a fiók rendelkezik hozzáféréssel
 

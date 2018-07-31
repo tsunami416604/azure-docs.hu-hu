@@ -91,6 +91,8 @@
       href: functions-best-practices.md
     - name: Functions-proxyk
       href: functions-proxies.md
+    - name: IP-címek
+      href: ip-addresses.md
     - name: Helyszíni függvények
       href: functions-runtime-overview.md
     - name: Tartós függvények

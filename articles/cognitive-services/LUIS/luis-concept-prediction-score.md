@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: cee7243531857f07dec2e968352ffb54aef16bf1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7412459fca179e7a13d6933f27c2c9ac2d770f33
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224586"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358103"
 ---
 # <a name="prediction-score"></a>Előrejelzési pontszám
 Előrejelzési pontszámot rendelkezik a LUIS-előrejelzési eredményeket megbízhatósági mértékét jelzi. 
@@ -36,6 +36,8 @@ Az utterance (kifejezés) egy alacsony-megbízhatósági pontszám eredményez, 
 Minden utterance (kifejezés) előrejelzési adja vissza egy felső pontozási szándékot. Ez az előrejelzési eredmények numerikus összehasonlítása. A felső két pontszámok rendelkezhet egy kis különbsége. A LUIS a közelségi eltérő pontszámok adatszolgáltató nem jelzi.  
 
 Ha a felső pontszámok közelében, az összes leképezések pontszámának kell visszaadnia. Beszédmódok vagy hozzáadása a két szándék, amelyek jelzik a különbségek a word választási lehetőséget és megállapodás vagy Ön is a LUIS-hívása alkalmazás, például egy csevegőrobotot, győződjön meg arról, hogyan legyen kezelve a két leggyakoribb leképezések programozott megállapításánál. 
+
+Két szándék, amely szorosan túl pontozását determinált képzési miatt előfordulhat, hogy megfordítása. A felső pontszám második felső válhat, és a második felső pontszám válhat az első felső pontszámot. Ennek megelőzése érdekében az egyes adott utterance (kifejezés), a word választási lehetőség és környezetet, amely a két szándék különbözteti meg a felső két szándék példa beszédmódok hozzáadása. A két szándék kapcsolatos példa utterances azonos számú kell rendelkeznie. El, hogy a betanítás, mert invertálásának tapasztalatok 15 %-os különbség a pontszámokat.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Minden leképezések előrejelzési pontszámának visszaadása
 Teszt vagy a végpont eredményeképpen minden leképezések is tartalmazhatnak. Ez a beállítás be van állítva a [végpont](https://aka.ms/v1-endpoint-api-docs) az a `verbose=true` lekérdezési karakterlánc név-érték pár. 

@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/19/2018
+ms.date: 07/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fbcd2ccb90b2c8b1b478e83fa7e55c46891f126b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 81b510c2dc5d65af5e8a7f2b6b78f45f3bdced68
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172398"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344351"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Az Azure használatához és az SAP munkaterhelés-forgatókönyvek
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -304,6 +304,13 @@ Az Azure natív Azure virtuális gép ajánlat esetén, amely a CPU és memória
 Az egyedi-e az Azure az SAP Hana-hoz egy egyedi ajánlat, amely Azure verseny szereplőkkel. Ahhoz, hogy több memóriát és CPU-erőforrás erőforrás-igényes forgatókönyveket az SAP az SAP HANA, az Azure üzemeltetési az ügyfél-használatát, dedikált operációs rendszer nélküli hardveres, akár 20 TB-ig (60 TB-os horizontális felskálázás) memóriát igénylő SAP HANA-telepítések futtatása céljából S/4HANA vagy egyéb SAP HANA számítási feladatot. SAP Hana az Azure-ban (nagyméretű példányok) az egyedi Azure-megoldás lehetővé teszi az alkalmazásrétegre SAP vagy a számítási feladatok szoftverek középső réteg natív Azure Virtual Machines szolgáltatásban üzemeltetett dedikált operációs rendszer nélküli hardveren SAP HANA futtatása. Ez a megoldás leírása itt található több dokumentumot a következő szakaszban: "Az SAP HANA az Azure-ban (nagyméretű példányok)."   
 
 SAP munkaterhelés-forgatókönyvek az Azure-beli futtató is hozhat létre identitásintegráció és egyszeri bejelentkezés használata az Azure Active Directory különböző SAP-összetevők és az SAP SaaS követelményeinek vagy PaaS kínál. Az ilyen integrációt és az Azure Active Directory (AAD) és az SAP entitások Single-Sign-On forgatókönyvek listája leírt, és a szakaszban leírt "AAD SAP-Identitásintegráció és egyszeri bejelentkezést."
+
+## <a name="latest-changes"></a>Legutóbbi módosítások
+
+SAP HANA horizontális felskálázás az Azure virtuális gép M128s körül dokumentáció lett hozzáadva:
+
+- [SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
+- [SAP HANA rendelkezésre állási egy Azure-régióban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
 
 
 ## <a name="sap-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA az SAP HANA az Azure-ban (nagyméretű példányok)

@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: ergreenl
-ms.openlocfilehash: 93e93f3cfa72fff744ada8d5109ae30a619c84b0
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 8ae99534916ce258dcab01ce2e37db1ffd809381
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264732"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358752"
 ---
 # <a name="suspended-domains"></a>Felfüggesztett tartományok
-Ha az Azure AD Domain Services nem tudja teljesíteni a felügyelt tartomány egy hosszú ideig, felfüggesztett állapotba helyezi a felügyelt tartományhoz. Ez a cikk azt ismerteti, miért felügyelt tartományok fel vannak függesztve, és a egy felfüggesztett tartomány javítása.
+Ha nem tudja teljesíteni a felügyelt tartomány egy hosszú ideig Azure Active Directory Domain Services (Azure AD DS), a felügyelt tartomány felfüggesztett állapotba helyezi el. Ez a cikk azt ismerteti, miért felügyelt tartományok fel vannak függesztve, és a egy felfüggesztett tartomány javítása.
 
 
 ## <a name="states-your-managed-domain-can-be-in"></a>A felügyelt tartomány állapotok lehet
 
 ![Felfüggesztett tartomány ütemterv](media\active-directory-domain-services-suspension\suspension-timeline.PNG)
 
-A fenti ábra ismerteti a lehetséges állapotok az Azure AD tartományi szolgáltatásokkal felügyelt tartományban lehet.
+A fenti ábra ismerteti a lehetséges állapotok az Azure Active Directory tartományi szolgáltatások által felügyelt tartományokhoz is lehet.
 
 ### <a name="running-state"></a>"Fut" állapotban
 A felügyelt tartomány, amely megfelelően konfigurált és működő rendszeresen a **futó** állapota.
@@ -66,7 +66,7 @@ Bizonyos esetekben (például, ha egy érvénytelen a hálózati konfigurációt
 ### <a name="the-suspended-state"></a>A "Felfüggesztve" állapota
 Felügyelt tartomány helyezi a **felfüggesztett** állapot a következő okok miatt:
 
-* Egy vagy több kritikus riasztások még nem lett feloldva 15 napon keresztül. Kritikus riasztások okozhatja egy hibás, hogy blokkolja az erőforrásokat, amelyek szükségesek az Azure AD tartományi szolgáltatásokhoz való hozzáférést.
+* Egy vagy több kritikus riasztások még nem lett feloldva 15 napon keresztül. Kritikus riasztások okozhatja egy hibás, hogy az Azure Active Directory tartományi szolgáltatások által használt erőforrások blokkolja a hozzáférést.
     * Ha például a riasztás [AADDS104: hálózati hiba](active-directory-ds-troubleshoot-nsg.md) a felügyelt tartomány a több mint 15 napon keresztül feloldatlan.
 * Egy számlázási probléma az Azure-előfizetésében, vagy az Azure-előfizetés lejárt.
 
@@ -90,18 +90,18 @@ A felügyelt tartomány, amely a "Felfüggesztett" állapotban marad, a 15 napon
 
 **Mi történik**
 * Minden erőforráshoz és a felügyelt tartományhoz tartozó biztonsági másolatokat a rendszer törli.
-* Állítsa vissza a felügyelt tartomány lehet, és létre kell hoznia egy új felügyelt tartomány használatához Azure AD tartományi szolgáltatásokat.
+* Állítsa vissza a felügyelt tartomány lehet, és létre kell hoznia egy új felügyelt tartományhoz az Azure Active Directory tartományi szolgáltatások használatához.
 * Törlés után nem használatáért a felügyelt tartományhoz.
 
 
 ## <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>Hogyan tudta, hogy ha a felügyelt tartomány fel van függesztve?
-Megjelenik egy [riasztás](active-directory-ds-troubleshoot-alerts.md) deklarálja, hogy a tartomány fel van függesztve, az Azure Portalon az Azure AD tartományi szolgáltatások állapotának oldalon. A tartomány állapota is látható "Felfüggesztett".
+Megjelenik egy [riasztás](active-directory-ds-troubleshoot-alerts.md) deklarálja, hogy a tartomány fel van függesztve, az Azure Portalon az Azure AD DS állapot oldalon. A tartomány állapota is látható "Felfüggesztett".
 
 
 ## <a name="restore-a-suspended-domain"></a>A felfüggesztett tartomány visszaállítása
 Állítsa vissza egy tartományhoz, amely a "Felfüggesztett" állapotban van, hajtsa végre az alábbi lépéseket:
 
-1. Nyissa meg a [Azure AD tartományi szolgáltatások lap](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) az Azure Portalon.
+1. Nyissa meg a [Azure Active Directory Domain Services oldal](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) az Azure Portalon.
 2. Válassza ki a felügyelt tartományhoz.
 3. A bal oldali panelen válassza ki a **egészségügyi**.
 4. Válassza ki a riasztást. A riasztás azonosítója lesz AADDS503 vagy AADDS504, felfüggesztése okától függően.
@@ -112,7 +112,7 @@ A felügyelt tartományra csak állítható vissza a legutóbbi biztonsági ment
 
 ## <a name="next-steps"></a>További lépések
 - [A felügyelt tartományhoz tartozó riasztások](active-directory-ds-troubleshoot-alerts.md)
-- [További információ az Azure AD tartományi szolgáltatások](active-directory-ds-overview.md)
+- [További információ az Azure Active Directory Domain Services](active-directory-ds-overview.md)
 - [Lépjen kapcsolatba a termékcsoport](active-directory-ds-contact-us.md)
 
 ## <a name="contact-us"></a>Kapcsolat

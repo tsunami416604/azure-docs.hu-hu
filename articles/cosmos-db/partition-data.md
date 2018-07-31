@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba9982d1f63345db394f1803c31d4246cfac499c
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 0cb668dba661ce05d6393aec2707b65918f0c2ac
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309170"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344130"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Particionálási és horizontális Azure Cosmos DB-ben
 
@@ -86,7 +86,7 @@ Olyan partíciókulcsot válasszon, hogy:
   A bal oldali a fenti kép az eredmény hibás partíciókulcs és a megfelelő a fenti kép az eredményt, ha egy remek partíciókulcs-t választotta. A bal oldali ábrán láthatja, hogy az adatok nem egyenletesen el van a partíciók közt. Törekedni kell választani egy partíciókulcsot, amely elosztja a adatait, hogy meggyőződjünk a rendszerkép hasonlóan néz ki.
 
 * Lekérdezések, amelyek nagy feldolgozási által elindított hatékonyan átirányíthatók a szűrőpredikátumban többek között a partíciókulcs alapján.  
-* Partíciókulcs választása magasabb számossága általában előnyben részesített – mert, általában poskytne jobb terjesztési és méretezhetőségét. Például egy összetett kulcs is formátumú elkülönített változó összefűzésével előállítjuk növelheti a számosságot több tulajdonságok értékeit.  
+* Partíciókulcs választása magasabb számossága általában előnyben részesített – mert, általában poskytne jobb terjesztési és méretezhetőségét. Például egy szintetikus kulcsot is formátumú elkülönített változó összefűzésével előállítjuk növelheti a számosságot több tulajdonságok értékeit.  
 
 Ha úgy dönt, hogy a fenti szempontok a partíciókulcsot, nem kell aggódnia a partíciók vagy száma fizikai partíciónként, milyen átviteli sebességre lefoglalt számát, az Azure Cosmos DB elvégzi a horizontális felskálázást fizikai partíciók száma és is méretezheti a az egyes partíciók szükséges.
 
@@ -205,9 +205,9 @@ g.E(['USA', 'I5'])
 
 További információkért lásd: [egy particionált graph használatával az Azure Cosmos DB](graph-partitioning.md).
 
-## <a name="composite-partition-key"></a>Összetett partíciókulcs
+## <a name="form-partition-key-by-concatenating-multiple-fields"></a>Űrlap partíciókulcs elkülönített változó összefűzésével előállítjuk több mező
 
-Egy összetett partíciókulcsot összetűzésének, és több tulajdonságértékek padding a elem egy egyetlen mesterséges "partitionKey" tulajdonságát be is alkotnak.
+Egy partíciókulcsot, is alkotnak, összefűzi és több tulajdonságértékek padding a elem egy egyetlen mesterséges "partitionKey" tulajdonságát be. Ezek a kulcsok szintetikus kulcsokként hivatkozunk.
 
 Például hogy egy dokumentumot, amely a következőhöz hasonló:
 
@@ -218,7 +218,7 @@ Például hogy egy dokumentumot, amely a következőhöz hasonló:
 }
 ```
 
-Az egyik lehetőség, hogy /deviceId vagy /date partitionKey beállításához. Ha szeretné az eszköz azonosítójával és dátum összetett kulcsot. Fűzze össze ezt a két értéket az olyan mesterséges "partitionKey" tulajdonságra, és állítsa a partíciókulcs /partitionKey.
+Az egyik lehetőség, hogy /deviceId vagy /date partitionKey beállításához. Ha szeretné az eszközazonosítót és a dátum partíciós kulcsot. Fűzze össze ezt a két értéket az olyan mesterséges "partitionKey" tulajdonságra, és állítsa a partíciókulcs /partitionKey.
 
 ```json
 {
@@ -228,7 +228,7 @@ Az egyik lehetőség, hogy /deviceId vagy /date partitionKey beállításához. 
 }
 ```
 
-Valós idejű helyzetekben lehetősége van több ezer dokumentumok, így ügyfél kiszolgálóoldali logikát fűz össze adatokat egy összetett kulcs be, az összetett kulcs beszúrása a dokumentumok és, amellyel megadhassa a partíciókulcsot, be kell állítania.
+Valós idejű forgatókönyveket használhat dokumentumok több ezer, így az ügyfél kiszolgálóoldali logikát fűz össze adatokat egy szintetikus kulcs be, a szintetikus kulcs beszúrása a dokumentumok és, amellyel megadhassa a partíciókulcsot, be kell állítania.
 
 <a name="designing-for-scale"></a>
 ## <a name="design-for-scale"></a>Méretezés tervezése

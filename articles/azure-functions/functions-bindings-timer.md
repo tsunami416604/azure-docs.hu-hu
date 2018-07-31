@@ -3,7 +3,7 @@ title: Az Azure Functions időzítő eseményindító
 description: Az Azure Functions időzített eseményindítók használatának elsajátítását.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,14 +15,14 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: eead96a2db9d0038ab27de747f2d9f486a7284a5
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8459c08866fb71e755663aaddd32015af8b0d1df
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284289"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345242"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő eseményindító 
 
@@ -180,7 +180,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**name** | n/a | A függvénykódot az időzítő objektumot képviselő változó neve. | 
 |**schedule**|**ScheduleExpression**|A [CRON-kifejezés](#cron-expressions) vagy egy [TimeSpan](#timespan) értéket. A `TimeSpan` csak egy függvényalkalmazást, amely egy App Service-csomag futtat használható. Az ütemezés kifejezés helyezni egy alkalmazásbeállításhoz, és ezzel a tulajdonsággal, a beállítás neve a beburkolt alkalmazás **%** jelentkezik, mint ebben a példában: "% ScheduleAppSetting %". |
 |**runOnStartup**|**RunOnStartup**|Ha `true`, a függvény meghívása a futtatókörnyezet indításakor. A modul például akkor kezdődik, amikor a függvényalkalmazás felébred végeztével üresjárati inaktivitás miatt. Amikor a függvényalkalmazás újraindítja a függvény változtatások miatt, és amikor a függvényalkalmazás elvégzi a horizontális felskálázást. Ezért **runOnStartup** ritkán, ha minden eddiginél meg `true`szerint fog létrehozni, akkor kód magas kiszámíthatatlan időpontokban hajtható végre.|
-|**useMonitor**|**UseMonitor**|Állítsa be `true` vagy `false` jelzi, hogy az ütemezés kell figyelni a. Figyelési ütemezés továbbra is fennáll, ezzel elősegítve annak biztosítása, az ütemezés megfelelően, kezelik, akkor is, ha a függvény alkalmazáspéldány indítsa újra az ütemezés előfordulási. Ha nincs explicit módon beállítva, az alapértelmezett érték `true` , amelyek rendelkeznek a nagyobb, mint 1 perces ismétlődési időköz ütemezések esetében. Percenként egynél többször kiváltó ütemezések esetében az alapértelmezett érték `false`.
+|**UseMonitor**|**UseMonitor**|Állítsa be `true` vagy `false` jelzi, hogy az ütemezés kell figyelni a. Figyelési ütemezés továbbra is fennáll, ezzel elősegítve annak biztosítása, az ütemezés megfelelően, kezelik, akkor is, ha a függvény alkalmazáspéldány indítsa újra az ütemezés előfordulási. Ha nincs explicit módon beállítva, az alapértelmezett érték `true` , amelyek rendelkeznek a nagyobb, mint 1 perces ismétlődési időköz ütemezések esetében. Percenként egynél többször kiváltó ütemezések esetében az alapértelmezett érték `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

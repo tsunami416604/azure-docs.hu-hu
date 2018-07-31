@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 73ffb1ab9c91794325725bb3b99b210a06979443
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 50ec925e10b32bd2bad63322ae166a02576c691a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325513"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344426"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -46,10 +46,8 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Feltételes hozzáférésű rendszergazda](#conditional-access-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók képesek az Azure Active Directory feltételes hozzáférés beállításainak ellenőrzése.
   > [!NOTE]
-  > Exchange ActiveSync feltételes hozzáférési szabályzatot az Azure-beli üzembe helyezéséhez a felhasználó is globális rendszergazdának kell lennie.
+  > Exchange ActiveSync feltételes hozzáférési szabályzatot az Azure-beli üzembe helyezéséhez a felhasználó is egy globális rendszergazdának kell lennie.
   
-* **[Szolgáltatás-rendszergazda Dynamics 365 és CRM-Szolgáltatásadminisztrátor](#crm-service-administrator)**: az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek a Microsoft CRM Online-ban, a szolgáltatás megléte esetén, ezenkívül kezelhetők a támogatási jegyeket, és a figyelő a Service health. További információ: [a szolgáltatás-rendszergazdai szerepkör használata kezelheti a bérlő](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
-
 * **[Eszközadminisztrátorok](#device-administrators)**: Ezzel a szerepkörrel rendelkező felhasználók válnak a helyi számítógép rendszergazdák minden, az Azure Active Directoryhoz csatlakoztatott Windows 10 rendszerű eszközökön. Nem rendelkeznek képes kezelni az eszközobjektumok az Azure Active Directoryban.
 
 * **[Címtárolvasók](#directory-readers)**: egy örökölt szerepkör, amely hozzá kell rendelni az alkalmazásokat, amelyek nem támogatják a [hozzájárulási keretrendszer](../develop/active-directory-integrating-applications.md). Azt nem lehet hozzárendelni egy felhasználóhoz sem.
@@ -57,6 +55,8 @@ A következő rendszergazdai szerepkörök érhetők el:
 * **[Címtár-szinkronizálási fiókok](#directory-synchronization-accounts)**: ne használja. Ez a szerepkör automatikusan hozzá lesz rendelve az Azure AD Connect szolgáltatást, és nem szándékos vagy bármely más használata támogatott.
 
 * **[Címtárírók](#directory-writers)**: egy örökölt szerepkör, amely hozzá kell rendelni az alkalmazásokat, amelyek nem támogatják a [hozzájárulási keretrendszer](../develop/active-directory-integrating-applications.md). Azt nem lehet hozzárendelni egy felhasználóhoz sem.
+
+* **[Szolgáltatás-rendszergazda Dynamics 365 és CRM-Szolgáltatásadminisztrátor](#dynamics-365-service-administrator)**: az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek a Microsoft Dynamics 365 online-ban, ha a szolgáltatás nem található, ezenkívül lehetővé teszi a támogatási jegyek kezelését és szolgáltatás állapotának figyelése. További információ: [a szolgáltatás-rendszergazdai szerepkör használata kezelheti a bérlő](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 * **[Exchange-szolgáltatások rendszergazdája](#exchange-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Exchange online-ban, globális engedélyekkel rendelkeznek, a szolgáltatás megléte esetén. További információ: [Office 365 rendszergazdai szerepköreinek](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -352,27 +352,6 @@ A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti j
 | microsoft.aad.directory/ConditionalAccessPolicy/Update | A ConditionalAccessPolicys általános tulajdonságainak frissítése az Azure Active Directoryban. |
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | A ConditionalAccessPolicys.Owners tulajdonság frissítése az Azure Active Directoryban. |
 
-### <a name="crm-service-administrator"></a>CRM-szolgáltatásadminisztrátor
-A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
-  > [!NOTE]
-  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
-  >
-  >
-
-| **Műveletek** | **Leírás** |
-| --- | --- |
-| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Az Organizations.TrustedCAsForPasswordlessAuth tulajdonság olvasása az Azure Active Directoryban. |
-| microsoft.aad.accessservice/AllEntities/AllActions | Minden erőforrás létrehozása és törlése, illetve az alapvető tulajdonságok írása és olvasása az Azure Access Control szolgáltatásban. |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
-| microsoft.aad.supporttickets/AllEntities/AllActions | Office 365-támogatási jegyek létrehozása és kezelése. |
-| microsoft.crm/AllEntities/AllActions | Jogosultság a Dynamics 365 számlázásának teljes körű felügyeletére. |
-
 ### <a name="device-administrators"></a>Eszközadminisztrátorok
 Ezen szerepkör tagjai a helyi Rendszergazdák csoport, az Azure AD-hez csatlakoztatott eszközök kerülnek.
 
@@ -385,7 +364,9 @@ Ezen szerepkör tagjai a helyi Rendszergazdák csoport, az Azure AD-hez csatlako
 | --- | --- |
 
 ### <a name="directory-readers"></a>Directory-olvasók
-Alapszintű directory információkat olvashatja. Az alkalmazásokhoz való hozzáférés biztosítása
+<<<<<<< Is a fő alapvető címtáradatok olvasása. Alkalmazásokhoz való hozzáférés biztosításához.
+=== Is alapszintű címtáradatok olvasása. Az alkalmazásokhoz való hozzáférés biztosítása
+>>>>>>> ae91bfc09771777f3e74c0dd0f8db6bc14e1e710
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
@@ -487,6 +468,27 @@ Olvasás, és alapszintű directory adatokat írnak a. Az alkalmazásokhoz való
 | microsoft.aad.directory/User/Update | Felhasználók általános tulajdonságainak frissítése az Azure Active Directoryban. |
 | microsoft.aad.directory/User/Update/AppRoleAssignments | A Users.AppRoleAssignments tulajdonság frissítése az Azure Active Directoryban. |
 | microsoft.aad.directory/User/Update/Manager | A Users.Manager tulajdonság frissítése az Azure Active Directoryban. |
+
+### <a name="dynamics-365-service-administrator"></a>Dynamics 365 szolgáltatás-rendszergazda
+A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
+
+  > [!NOTE]
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  >
+  >
+
+  > [!NOTE]
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Az Organizations.TrustedCAsForPasswordlessAuth tulajdonság olvasása az Azure Active Directoryban. |
+| microsoft.aad.accessservice/AllEntities/AllActions | Minden erőforrás létrehozása és törlése, illetve az alapvető tulajdonságok írása és olvasása az Azure Access Control szolgáltatásban. |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
+| microsoft.aad.supporttickets/AllEntities/AllActions | Office 365-támogatási jegyek létrehozása és kezelése. |
+| microsoft.crm/AllEntities/AllActions | Jogosultság a Dynamics 365 számlázásának teljes körű felügyeletére. |
 
 ### <a name="exchange-service-administrator"></a>Exchange-szolgáltatások rendszergazdája
 Az Exchange termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 496aea1195885c582d3529d7ddb43210aad5fea1
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 2c62f8ab0e5f8974fbed51848772dee69f60b063
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990132"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344249"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 frissítése
 
@@ -99,6 +99,8 @@ A következő érhető el, azonban nem igénylik az Azure Stack frissítés 1804
 Az alábbiakban a telepítés utáni ismert problémái build **20180513.1**.
 
 #### <a name="portal"></a>Portál
+- <!-- TBD - IS ASDK --> Illesztőprogram-frissítések nem alkalmazhat egy OEM-kiterjesztési csomag segítségével az Azure Stack jelen verziójában.  Nem áll megkerülő megoldás a probléma.
+
 - <!-- 1272111 - IS --> Az Azure Stack erre a verzióra frissítése vagy telepítése után nem feltétlenül tudja megtekinteni az Azure Stack skálázási egységek a felügyeleti portálon.  
   Megkerülő megoldás: Használja a Powershellt skálázási egységek kapcsolatos információk megtekintéséhez. További információkért lásd: a [súgó](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) az Azure Stack-modul 1.3.0 tartalmának. 
 

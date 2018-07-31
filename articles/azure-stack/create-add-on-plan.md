@@ -1,6 +1,6 @@
 ---
-title: Ebből a cikkből megismerheti, hogyan frissítheti a Azure verem ajánlatok és tervek |} Microsoft Docs
-description: A cikk ismerteti a meglévő Azure verem ajánlatok és tervek megtekintése és módosítása.
+title: Ebből a cikkből elsajátíthatja, hogyan frissítse az Azure Stack ajánlatokat és csomagokat |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan lehet megtekinteni és módosítani a meglévő Azure Stack ajánlatokat és csomagokat.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -13,42 +13,47 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: a84148a3ac31d51ff30cebffab00e5fec8fdaa87
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: a35ba993e6fd1162fa4a18bc0d6bc9351fe7dfa2
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35238416"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358275"
 ---
-# <a name="azure-stack-add-on-plans"></a>Az Azure verem bővítmény tervek
-Azure verem kezelőként létrehozhat, amelyek tartalmazzák a kívánt szolgáltatások és a felhasználók számára előfizetés vonatkozó kvótákat tervek. Ezek [ *tervek kiinduló* ](azure-stack-create-plan.md) a felhasználók számára az alapvető szolgáltatásokat tartalmazzák, és csak akkor ajánlat / egy referenciaterv. Ha módosítania kell az ajánlatot, akkor használhatja *bővítmény tervek* , amely lehetővé teszi a számítógép, tárolási, kiterjeszteni terv módosítása, vagy hálózati kvóták kezdetben a referenciaterv az ajánlott. 
+# <a name="azure-stack-add-on-plans"></a>Az Azure Stack kiegészítő csomagok
 
-Bár a egyesítésével mindent a Összevonhat egyazon csomagba néhány esetben optimális, érdemes lehet tervezze meg, és a további szolgáltatások bővítmény tervek segítségével base rendelkezik. Például sikerült mellett dönt IaaS szolgáltatást kínál a referenciaterv részeként az összes PaaS services bővítmény tervek számít. Terveket is használható az Azure-verem környezetében erőforrások fogyasztásának szabályozására. Például ha azt szeretné, hogy a felhasználók az erőforrás-használat szem előtt tartva, lehet viszonylag kicsi referenciaterv (attól függően, hogy a szükséges szolgáltatások), és felhasználói kapacitás elérni, mint azok volna riasztást kap, hogy által már igénybe vett erőforrások lefoglalása a hozzárendelt terv alapján. Ott a felhasználók további erőforrások elérhető bővítmény tervének előfordulhat, hogy ki. 
+Az Azure Stack operátorait szerint módosíthatja a kiegészítő csomagok létrehozása egy [ *ALAPCSOMAG* ](azure-stack-create-plan.md) Ha szeretne további szolgáltatásokat, vagy kibővítéséhez *számítógép*, *storage* , vagy *hálózati* kvóták alapcsomagok az ajánlat mellett. Kiegészítő csomagok az alapszintű csomag módosítása és opcionális bővítmények, amelyeket a felhasználók előfizetni. 
+
+Vannak olyan helyzetek, amikor egyetlen csomagban kombinálásával mindent nem optimális. Más esetekben érdemes rendelkezik egy alap megtervezése és a majd a további szolgáltatásokat a kiegészítő csomagok. Például az IaaS-szolgáltatások ajánlat részeként egy alapcsomagot az összes PaaS-szolgáltatások kiegészítő csomagok számít sikerült dönt.
+
+Felhasználók, erőforrások kihasználtságát, fordítson egy másik oka a használatára a kiegészítő csomagok azt. Ehhez egy alapcsomagot viszonylag kis kvóták (attól függően, a szükséges szolgáltatások) tartalmazó kezdhet. Ezt követően felhasználók kapacitás érni, azok lenne riasztást kap, akkor a lefoglalt erőforrásokat a hozzárendelt terv alapján felhasznált. Itt a felhasználók ezután válassza ki egy kiegészítő csomagot, amely a további forrásokat biztosít.
 
 > [!NOTE]
-> Ha egy felhasználó egy bővítmény terv hozzáadja a meglévő ajánlat előfizetése, a további erőforrások sikerült eltarthat egy órát jelennek meg. 
+> Ha nem szeretné kiterjeszteni a kvóta egy kiegészítő csomag használatával, azt is beállíthatja a [az eredeti konfigurációt kvóta szerkesztése](azure-stack-quota-types.md#to-edit-a-quota). 
 
-## <a name="create-an-add-on-plan"></a>Egy bővítmény terv létrehozása
-Bővítmény tervek meglévő ajánlatot módosításával jönnek létre:
+Amikor egy felhasználó felvesz egy kiegészítő csomag egy meglévő ajánlat előfizetéshez, a további erőforrások is igénybe vehet egy órát jelenik meg. 
 
-1. Jelentkezzen be a verem Azure felügyeleti portálján a felhőalapú rendszergazdaként.
-2. Ugyanezen lépések segítségével [hozzon létre egy új referenciaterv](azure-stack-create-plan.md) korábban nem kínált szolgáltatásokat kínáló új terv létrehozásához. Ebben a példában a Key Vault (Microsoft.KeyVault) szolgáltatások szerepelni fog az új tervet.
-3. A felügyeleti portálon kattintson **kínál** , és válassza a lefokozásra szolgáló bővítmény tervének frissíteni kell.
+## <a name="create-an-add-on-plan"></a>Hozzon létre egy kiegészítő csomag
+Létező ajánlat módosításával kiegészítő csomagok jönnek létre:
+
+1. Jelentkezzen be az Azure Stack rendszergazdai portál a felhő rendszergazdájához.
+2. Ugyanezekkel a lépésekkel használt [hozzon létre egy új alapszintű csomag](azure-stack-create-plan.md) , amely nem volt korábban kínált szolgáltatásokat kínáló új tervet létrehozni. Ebben a példában a Key Vault (Microsoft.KeyVault) szolgáltatások szerepelni fog az új csomag.
+3. Kattintson a felügyeleti portál **kínál** , és válassza ki az ajánlat és a egy kiegészítő csomag frissíteni kell.
 
    ![](media/create-add-on-plan/1.PNG)
 
-4.  Az ajánlat tulajdonságok alján görgessen és válassza ki **bővítmény tervek**. Kattintson a **Hozzáadás** parancsra.
+4.  Az ajánlat tulajdonságok alján görgessen és válassza ki **kiegészítő csomagok**. Kattintson a **Hozzáadás** parancsra.
    
     ![](media/create-add-on-plan/2.PNG)
 
-5. Jelölje ki a hozzáadni. Az ebben a példában a terv neve **Key vault terv**, és kattintson a **válasszon** a terv hozzáadása az ajánlat. A terv hozzáadásának a ajánlatra sikeresen értesítést kell kapnia.
+5. Válassza ki a csomag hozzáadásához. Ebben a példában a csomagot nevezik **Key vault terv**. A csomag kiválasztása után kattintson az **kiválasztása** a csomag hozzáadása az ajánlatot. A terv hozzáadásának az ajánlatra sikeresen értesítést kell kapnia.
    
     ![](media/create-add-on-plan/3.PNG)
 
-6. Tekintse át a bővítmény győződjön meg arról, hogy az új bővítmény megtervezése ajánlatot mellékelt tervek listáját.
+6. Tekintse át a bővítmény ellenőrzése, hogy az új kiegészítő csomagot az ajánlatban csomagok listáját.
    
     ![](media/create-add-on-plan/4.PNG)
 

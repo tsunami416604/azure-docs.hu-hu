@@ -1,27 +1,24 @@
 ---
-title: Kétlépéses ellenőrzés beállításait – az Azure AD kezelése |} A Microsoft Docs
+title: Kétlépéses ellenőrzés beállításait – Azure Active Directory kezelése |} A Microsoft Docs
 description: Kezelése, beleértve a kapcsolattartási adatok módosítása, vagy az eszközök konfigurálása az Azure multi-factor Authentication használatát.
-services: multi-factor-authentication
+services: active-directory
 keywords: többtényezős hitelesítés ügyfél, a hitelesítési probléma, a korrelációs azonosító
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.custom: end-user
-ms.openlocfilehash: ff48cb2cee5387f5dd5e0b89966a11fb76379337
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c3fd74731dbed2c2f36d97b3cb42b383f8e4ca0f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059437"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345089"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>A kétlépéses ellenőrzés beállításainak kezelése
 Ez a cikk a kétlépéses ellenőrzés vagy a multi-factor Authentication hitelesítés beállításainak frissítésével kapcsolatos kérdésekre ad választ. Ha a fiókjához regisztrálással kapcsolatos problémák merülnek fel, tekintse meg [problémákat tapasztal a kétlépéses ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md) hibaelhárítási segítséget.

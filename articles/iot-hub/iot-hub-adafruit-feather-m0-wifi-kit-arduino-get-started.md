@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 46763cbc53f70e25810a9849b71429a315a6fb7d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c9d786651198eeffd839f52b3d3c8e6c1a1168c4
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185363"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345420"
 ---
 # <a name="connect-adafruit-feather-m0-wifi-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather M0 WiFi csatlakoztatása Azure IoT hubhoz a felhőben
+
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 ![Egy BME280 Feather M0 WiFi és az IoT Hub közötti kapcsolat](media/iot-hub-adafruit-feather-m0-wifi-get-started/1_connection-m0-feather-m0-iot-hub.png)
@@ -61,6 +62,7 @@ Ha nem rendelkezik olyan érzékelő, a következő elemek nem kötelező. A be�
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
 ## <a name="connect-feather-m0-wifi-with-the-sensor-and-your-computer"></a>Az érzékelő és a számítógép csatlakoztatása a Feather M0 WiFi
+
 Ebben a szakaszban az érzékelők a táblához való csatlakozáshoz. Majd, az eszköz csatlakoztatása a számítógépre, további használatra.
 
 ### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-m0-wifi"></a>Csatlakozás egy DHT22 hőmérsékleti és páratartalom-érzékelőt Feather M0 WiFi
@@ -74,7 +76,7 @@ Használják a breadboard és átkötés hozhatja létre a kapcsolatot. Ha nem r
 
 
 | Kezdő (érzékelő.)           | Teljes (tábla)            | Kábel színe   |
-| -----------------------  | ---------------------- | ------------: |
+| -----------------------  | ---------------------- | ------------- |
 | VDD (27A PIN-kód)            | 3V (PIN-kód 3A)            | Piros kábel     |
 | GND (29A PIN-kód)            | GND [PIN-kód 6]           | Fekete kábellel   |
 | SCK (30A PIN-kód)            | SCK (12A PIN-kód)          | Sárga kábel  |
@@ -83,8 +85,6 @@ Használják a breadboard és átkötés hozhatja létre a kapcsolatot. Ha nem r
 | CS (33A PIN-kód)             | GPIO 5 (15J PIN-kód)       | Narancssárga kábel  |
 
 További információkért lásd: [Adafruit BME280 páratartalom + légköri nyomás + hőmérséklet-érzékelő kiscsoportos](https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/wiring-and-test?view=all) és [Adafruit Feather M0 WiFi érintkezőkiosztása szerepel](https://learn.adafruit.com/adafruit-feather-m0-wifi-atwinc1500/pinouts).
-
-
 
 Most már a Feather M0 WiFi kell csatlakoztatni a működő érzékelő.
 
@@ -136,6 +136,7 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
 1. Nyisson meg egy parancssort vagy terminálablakot.
 
 2. Nyissa meg egy mappára, ahol a mintaalkalmazás kell tárolni.
+
 3. Futtassa az alábbi parancsot:
 
    ```bash
@@ -151,21 +152,21 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
    ![Nyissa meg a mintaalkalmazást a Arduino IDE](media/iot-hub-adafruit-feather-m0-wifi-get-started/6_arduino-ide-open-sample-app.png)
 
 
-1. Kattintson a **fájl** > **beállítások** (Windows/Linux) vagy **Arduino** > **beállítások** (Mac), és másolja és illessze be az alábbi hivatkozásra a **további táblákon való Manager URL-címek** lehetőség az Arduino IDE beállítások között.
+3. Kattintson a **fájl** > **beállítások** (Windows/Linux) vagy **Arduino** > **beállítások** (Mac), és másolja és illessze be az alábbi hivatkozásra a **további táblákon való Manager URL-címek** lehetőség az Arduino IDE beállítások között.
    
    ```
    https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
    ```
 
-1. Kattintson a **eszközök** > **tábla** > **célra szolgáló kártyákat kezelő**, majd telepítse a `Arduino SAMD Boards` verzió `1.6.2` vagy újabb. 
+4. Kattintson a **eszközök** > **tábla** > **célra szolgáló kártyákat kezelő**, majd telepítse a `Arduino SAMD Boards` verzió `1.6.2` vagy újabb. 
 
-1. Majd a azonos ablakában telepítse `Adafruit SAMD Boards` csomagot adja hozzá a táblához fájl definíciókat.
+5. Majd a azonos ablakában telepítse `Adafruit SAMD Boards` csomagot adja hozzá a táblához fájl definíciókat.
 
    ![Az esp8266 csomag telepítve van](media/iot-hub-adafruit-feather-m0-wifi-get-started/7_arduino-ide-package-url.png)
 
-4. Kattintson a **eszközök** > **tábla** > **Adafruit M0 WiFi**.
+6. Kattintson a **eszközök** > **tábla** > **Adafruit M0 WiFi**.
 
-5. Illesztőprogramok telepítéséhez (csak Windows). Feather M0 WiFi csatlakoztatásakor szüksége lehet illesztőprogramot telepíteni. Kattintson a [a letöltési hivatkozás a weblapon](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/1.1/adafruit_drivers.exe) , töltse le az illesztőprogramot. Kövesse a lépéseket a kívánt illesztőprogramok telepítéséhez.
+7. Illesztőprogramok telepítéséhez (csak Windows). Feather M0 WiFi csatlakoztatásakor szüksége lehet illesztőprogramot telepíteni. Kattintson a [a letöltési hivatkozás a weblapon](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/1.1/adafruit_drivers.exe) , töltse le az illesztőprogramot. Kövesse a lépéseket a kívánt illesztőprogramok telepítéséhez.
 
 ### <a name="install-necessary-libraries"></a>Szükséges kódtárak telepítése
 
@@ -182,7 +183,7 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
    * `Adafruit BME280 Library`
    * `Adafruit Unified Sensor`
 
-3. Telepítse manuálisan `Adafruit_WINC1500`. Lépjen a [ezen a webhelyen](https://github.com/adafruit/Adafruit_WINC1500) kattintson **Klónozás vagy letöltés** > **ZIP letöltése**. Az Arduino ide használatával, folytassa a **rajz** > **tartalmaznak könyvtár** > **.zip könyvtár hozzáadása** , és adja hozzá a zip-fájlt.
+3. Telepítse manuálisan `Adafruit_WINC1500`. Nyissa meg a [Adafruit_WINC1500 weblap](https://github.com/adafruit/Adafruit_WINC1500) kattintson **Klónozás vagy letöltés** > **ZIP letöltése**. Az Arduino ide használatával, folytassa a **rajz** > **tartalmaznak könyvtár** > **.zip könyvtár hozzáadása** , és adja hozzá a zip-fájlt.
 
 ### <a name="use-the-sample-application-if-you-dont-have-a-real-bme280-sensor"></a>A mintaalkalmazás használja, ha nem rendelkezik BME280 valódi érzékelő
 
@@ -190,14 +191,15 @@ Ha nem rendelkezik BME280 valódi érzékelő, a mintaalkalmazás szimulálhatja
 
 1. Nyissa meg a `config.h` fájlt a `app` mappát.
 
-2. Keresse meg a következő kódsort, és módosítsa az értéket `false` való `true`:
+2. Keresse meg a következő kódsort, és módosítsa az értéket `false` való `true`.
 
    ```c
    define SIMULATED_DATA true
    ```
+
    ![A mintaalkalmazás szimulált adatok konfigurálása](media/iot-hub-adafruit-feather-m0-wifi-get-started/8_arduino-ide-configure-app-use-simulated-data.png)
 
-3. Mentse a fájlt a `Control-s`.
+3. Kattintson a `Control-s` szeretné menteni a fájlt.
 
 ### <a name="deploy-the-sample-application-to-feather-m0-wifi"></a>A minta Feather M0 WiFi-alkalmazás üzembe helyezése
 
@@ -212,7 +214,9 @@ A feltöltés sikeres befejeződése után adja meg hitelesítő adatait az alá
 1. Az Arduino IDE-ben kattintson **eszközök** > **soros figyelő**.
 
 2. A soros figyelő ablakának jobb alsó sarokban, válassza ki **nincs sor vége** a legördülő listából válassza ki a bal oldalon található.
+
 3. Válassza ki **115200 átviteli** a legördülő listában a jobb oldalon.
+
 4. Az oldal tetején a beviteli mezőbe, adja meg az az alábbi adatokat, ha az kéri, hogy adja meg azt, majd kattintson **küldése**:
 
    * Wi-Fi SSID

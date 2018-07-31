@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ff2968f8e2fa9a705817b020f2daa6582d78029c
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225302"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345888"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Az Azure Lab Services tesztkörnyezetfiókok kezelése 
 Az Azure Lab Services tesztkörnyezetfiók az osztályterem-tesztkörnyezetek például felügyelt tesztkörnyezetek tárolója. A rendszergazda állítja be az Azure Lab Services tesztkörnyezetfiók és labortulajdonosok labs hozhat létre a fiók számára hozzáférést biztosít. Ez a cikk bemutatja, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok, vagy törölheti a labor.
@@ -45,7 +45,7 @@ Az Azure Lab Services tesztkörnyezetfiók az osztályterem-tesztkörnyezetek p�
     ![Tesztkörnyezetfiók-oldal](../media/how-to-manage-lab-accounts/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz
-Osztályterem-tesztkörnyezet tesztkörnyezetfiók beállítása, hogy a felhasználó tagjának kell lennie a **tesztkörnyezet létrehozója** szerepkör a labor-fiókban. A lab-fiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. Ha azt tervezi, ugyanazzal a fiókkal használandó osztályterem-tesztkörnyezet létrehozása, kihagyhatja ezt a lépést. Osztályterem-tesztkörnyezet létrehozni egy másik felhasználói fiók használatával, kövesse az alábbi lépéseket: 
+A felhasználónak **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezetfiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. Ha ugyanazt a felhasználói fiókot tervezi használni az osztályterem-tesztkörnyezet létrehozásához, ezt a lépést kihagyhatja. Ha egy másik felhasználói fiókot tervez használni, kövesse a következő lépéseket: 
 
 1. A **Tesztkörnyezetfiók** oldalon válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget, majd kattintson az eszköztár **+ Hozzáadás** elemére. 
 
@@ -54,22 +54,28 @@ Osztályterem-tesztkörnyezet tesztkörnyezetfiók beállítása, hogy a felhasz
 
     ![Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>Adja meg a Marketplace-rendszerképek labortulajdonosok számára elérhető
-Ebben a szakaszban adja meg, amely labortulajdonosok használatával hozhat létre az osztályterem-tesztkörnyezetek Marketplace-rendszerképek. 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>A tesztkörnyezet-tulajdonosok számára elérhető rendszerképek megadása a Marketplace-en
+Labortulajdonosként fiókot adja meg a Marketplace-rendszerképek, labor alkotói segítségével tesztkörnyezetek létrehozása a lab-fiókban. 
 
-1. Válassza ki **Piactérről származó rendszerképek** a a bal oldali menüben. Alapértelmezés szerint (egyaránt engedélyezve van, és le van tiltva) teljes listáját láthatja. A listában, csak az engedélyezett/letiltott-lemezképek kiválasztásával szűrheti a **csak engedélyezett**/**csak letiltja** lehetőséget a legördülő listából válassza ki a tetején. 
+1. Válassza a bal oldali menüből a **Marketplace-beli rendszerképek** elemet. Alapértelmezés szerint a rendszerképek teljes listája jelenik meg (az engedélyezett és a letiltott rendszerképek egyaránt). A fenti legördülő listában a **Csak az engedélyezettek**/**Csak a letiltottak** lehetőségre kattintva szűrheti a listát, hogy csak az engedélyezett/letiltott rendszerképek jelenjenek meg. 
+    
+    ![Marketplace-beli rendszerképek oldal](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
-    ![Piactéri lemezképek lap](../media/tutorial-setup-lab-account/marketplace-images-page.png)
-2. A **letiltása** Piactéri lemezképet, amely engedélyezve van, hajtsa végre az alábbi műveletek egyikét: 
-    1. Válassza ki **... három (pont)**  az utolsó oszlopra, és válassza a **letiltása lemezkép**. 
+    A Marketplace-rendszerképek a listában megjelenő csak azokat, amelyek megfelelnek a következő feltételeknek:
+        
+    - Egyetlen virtuális Gépet hoz létre.
+    - Virtuális gépek üzembe helyezése Azure Resource Manager használatával
+    - Nincs szükség egy külön licencelési csomag vásárlása
+2. Egy engedélyezett Marketplace-beli rendszerkép **letiltásának** a következő módjai vannak: 
+    1. Kattintson az utolsó oszlopban a három pontra **(...)**, majd a **Rendszerkép letiltása** lehetőségre. 
 
-        ![Egy kép letiltása](../media/tutorial-setup-lab-account/disable-one-image.png) 
-    2. Válasszon ki egy vagy több lemezképet a listából válassza ki a jelölőnégyzetek a rendszerkép neve előtt a listában, és válassza ki **tiltsa le a megadott lemezképek**. 
+        ![Egy rendszerkép letiltása](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. Jelöljön ki egy vagy több, a listában szereplő rendszerképet a nevük előtti jelölőnégyzet kijelölésével, majd kattintson a **Kiválasztott rendszerképek letiltása** lehetőségre. 
 
-        ![Több lemezképet letiltása](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
-1. Ehhez hasonlóan a **engedélyezése** a Piactéri rendszerkép, tegye a következő műveletek egyikét: 
-    1. Válassza ki **... három (pont)**  az utolsó oszlopra, és válassza a **engedélyezése lemezkép**. 
-    2. Válasszon ki egy vagy több lemezképet a listából válassza ki a jelölőnégyzetek a rendszerkép neve előtt a listában, és válassza ki **engedélyezése a megadott lemezképek**. 
+        ![Több rendszerkép letiltása](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. A letiltott Marketplace-beli rendszerképek **engedélyezésének** a fentiekhez hasonlóan a következő módjai vannak: 
+    1. Kattintson az utolsó oszlopban a három pontra **(...)**, majd a **Rendszerkép engedélyezése** lehetőségre. 
+    2. Jelöljön ki egy vagy több, a listában szereplő rendszerképet a nevük előtti jelölőnégyzet kijelölésével, majd kattintson a **Kiválasztott rendszerképek engedélyezése** lehetőségre. 
 
 ## <a name="view-lab-accounts"></a>Tesztkörnyezetfiókok megtekintése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).

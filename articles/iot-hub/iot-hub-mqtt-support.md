@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: elioda
-ms.openlocfilehash: f335ffae153893a39312326738ee4188c3756ff4
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 19a129ec4646f13f1bd095dffd423f3b90bb32a7
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185475"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345460"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hubhoz az MQTT protokoll használatával kommunikálnak.
 
@@ -79,7 +79,14 @@ Ha egy eszköz nem tudja használni az eszközoldali SDK-k, továbbra is csatlak
 
   SAS-tokeneket kapcsolatos további információkért lásd: az eszköz szakaszában [használata az IoT Hub biztonsági tokenek][lnk-sas-tokens].
 
-  Ha teszteli, használhatja a [Device Explorer] [ lnk-device-explorer] eszközzel vagy a platformfüggetlen [Azure IoT-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) gyorsan létrehozhat egy SAS-jogkivonatát, másolja, és illessze be a saját kódját:
+  Tesztelésekor, használhatja a platformfüggetlen [Azure IoT-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) vagy a [Device Explorer] [ lnk-device-explorer] eszköz gyorsan létrehozhat egy SAS-jogkivonatát, másolja, és illessze be a saját kódját:
+
+Az Azure IoT-eszközkészlet:
+
+  1. Bontsa ki a **AZURE IOT HUB-eszközök** lapon, a Visual Studio Code bal alsó sarkában.
+  2. Kattintson a jobb gombbal az eszközt, és válassza ki **készítése a SAS-Token eszköz**.
+  3. Állítsa be **lejárati idő** nyomja le az "Enter" billentyűt.
+  4. A SAS-jogkivonatát, és a vágólapra másolva.
 
 A Device Explorer:
 
@@ -95,13 +102,6 @@ A Device Explorer:
      Ez a token adatokként a részét a **jelszó** MQTT érdemesebb a mező:
 
      `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
-     
-Az Azure IoT-eszközkészlet:
-
-  1. Bontsa ki a **AZURE IOT HUB-eszközök** lapon, a Visual Studio Code bal alsó sarkában.
-  2. Kattintson a jobb gombbal az eszközt, és válassza ki **készítése a SAS-Token eszköz**.
-  3. Állítsa be **lejárati idő** nyomja le az "Enter" billentyűt.
-  4. A SAS-jogkivonatát, és a vágólapra másolva.
 
 MQTT csatlakoztatása és leválasztása a csomagok, az IoT Hub kiad egy eseményt a a **Működésfigyelés** csatorna. Ez az esemény rendelkezik, amelyek segítségével a kapcsolati hibák elhárításához további információt.
 

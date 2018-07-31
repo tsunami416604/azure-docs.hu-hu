@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/03/2018
+ms.date: 07/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a88588497919d6cce17ced6d94de3bcbbb6a3019
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 86c301748b58e7642df9a738c70b4fe70be3310b
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069635"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358620"
 ---
 Zónaredundáns tárolás (ZRS) replikálja az adatokat három tárolási fürtöket egy régió között. Minden egyes tárolási fürt fizikailag elkülönül a többi pedig a saját rendelkezésre állási zónában (AZ) jelenti. Egyes rendelkezésre állási zóna és a ZRS fürtön belül, a rendszer külön segédprogramok és hálózati képességek autonóm.
 
@@ -28,7 +28,8 @@ A ZRS jelenleg támogatja a standard [általános célú v2 (GPv2)](../articles/
 
 A ZRS az alábbi régiókban általában érhető el:
 
-- USA keleti régiója 2
+- USA 2. keleti régiója
+- USA 2. nyugati régiója
 - USA középső régiója
 - Észak-Európa
 - Nyugat-Európa

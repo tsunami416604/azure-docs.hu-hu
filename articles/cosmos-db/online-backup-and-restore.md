@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cf4579705e5910f62ca07223cb16405140926119
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 66b4f63e75773aa0c1857dfcc19e22b48a0c3537
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859200"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343158"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatikus online biztonsági mentés és visszaállítás Azure Cosmos DB-vel
 Az Azure Cosmos DB az összes biztonsági mentések a rendszeres időközönként automatikusan vesz igénybe. Az automatikus biztonsági mentést készít a teljesítmény vagy az adatbázis-műveleteket rendelkezésre állásának befolyásolása nélkül. A biztonsági mentések külön-külön tárolja, egy másik storage szolgáltatásban, és ezeket a biztonsági mentéseket globálisan replikálva vannak a regionális katasztrófa szembeni ellenálló-képesség. Az automatikus biztonsági mentések készültek forgatókönyvek esetén, ha véletlenül törli a Cosmos DB-tárolóhoz, és később a adat-helyreállítás vagy egy vész-helyreállítási megoldást igényelnek.  
@@ -50,7 +50,7 @@ A fentiekben ismertetettek szerint az Azure Cosmos DB pillanatképeket készít 
 Az SQL API-hoz, ha meg szeretné tartani a saját pillanatképek használható JSON lehetőség az adatok exportálása az Azure Cosmos DB-ben [adatáttelepítési eszközét](import-data.md#export-to-json-file) további biztonsági mentések ütemezéséhez.
 
 > [!NOTE]
-> Ha Ön "Kiépítése átviteli több adatbázis szintjén tárolók" – Ne feledje, a visszaállítás teljes adatbázis fiók szintjén történik. Meg kell bizalommal a segélyszolgálatnak 8 órán belül, ha véletlenül törölte a tároló - gyűjtemény/táblázat vagy gráf Ez a lehetőség használatakor győződjön meg arról is. 
+> Ha Ön "Kiépítése átviteli több adatbázis szintjén tárolók" – Ne feledje, a visszaállítás teljes adatbázis fiók szintjén történik. Ön Emellett ellenőrizze bizalommal a segélyszolgálatnak 8 órán belül, ha véletlenül törölte a tárolót. Adatok nem állítható vissza, ha 8 órán belül nem forduljon az ügyfélszolgálathoz. 
 
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Adatbázis visszaállítása az online biztonsági mentés

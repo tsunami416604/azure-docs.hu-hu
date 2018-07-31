@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 04cb658da6a22643e21104f5673a3f211f48b7fc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916479"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346679"
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Egy helyszíni helyhez az Azure-ból gépek ismételt védelme
 
@@ -63,7 +63,7 @@ Az Azure-ban folyamatkiszolgáló üzembe helyezése:
 A fő célkiszolgáló fogadja a feladat-visszavételi adatokat. Alapértelmezés szerint a fő célkiszolgáló a helyszíni konfigurációs kiszolgálón fut. Azonban nem sikerült biztonsági forgalom mennyiségétől függően előfordulhat, hogy szeretne hozzon létre egy különálló fő célkiszolgálót a feladat-visszavételhez. Hogyan hozhat létre egyet a következő:
 
 * [Hozzon létre egy Linux rendszerű fő célkiszolgálót](vmware-azure-install-linux-master-target.md) a Linux rendszerű virtuális gépek feladat-visszavételhez. Ez a szükséges.
-* Szükség esetén hozzon létre egy különálló fő célkiszolgálót a Windows virtuális gép feladat-visszavételhez. Ehhez futtassa újra az egyesített telepítő, és válassza ki a fő célkiszolgáló létrehozása. [További információk](physical-azure-set-up-source.md#run-azure-site-recovery-unified-setup).
+* Szükség esetén hozzon létre egy különálló fő célkiszolgálót a Windows virtuális gép feladat-visszavételhez. Ehhez futtassa újra az egyesített telepítő, és válassza ki a fő célkiszolgáló létrehozása. [További információk](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers).
 
 Miután létrehozott egy fő célkiszolgálót, a következő feladatokat végezheti el:
 

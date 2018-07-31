@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/19/2018
+ms.date: 7/30/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 3d19b42e339e9776d0fdbbf7cfcfba07d69549ad
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 2776017c6c4673f5c24d25b06b58a1e818f1bd24
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249080"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344443"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Biztonsági másolatot az SQL Server-adatbázisok
 
@@ -85,7 +85,7 @@ Ez a szakasz ismerteti az Azure Backup támogatása az operációs rendszerek é
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
 - Windows Server 2012
-- Windows Server 2012 R2
+- Windows Server 2012 R2
 - Windows Server 2016
 
 Linux jelenleg nem támogatott.
@@ -125,7 +125,7 @@ A kompromisszumot kínál a beállítások között a következők: kezelhetős�
 > Az Azure Backup szolgáltatás címkék általános rendelkezésre állás szerint elérhetőnek kell lennie.
 >
 
-| Lehetőség | Előnyök | Hátrányai |
+| Beállítás | Előnyök | Hátrányai |
 | ------ | ---------- | ------------- |
 | Engedélyezett IP-cím-tartományok | További költségek nélkül. <br/> Egy NSG-ben nyissa meg a hozzáférést, használja a **Set-AzureNetworkSecurityRule** parancsmagot. | Mivel az idővel módosítható az érintett IP-címtartományok kezelése bonyolult. <br/>Azure-ban, nem csak az Azure Storage teljes hozzáférést biztosít.|
 | HTTP proxyk használatára   | Szabályozható a proxy a tároló URL-címek használata engedélyezett. <br/>Virtuális gépek internet egyetlen pont hozzáférés. <br/> Nem vonatkozik Azure IP-cím változik. | Virtuális gépek futtatása a proxy szoftverhez további költség. |
@@ -148,7 +148,7 @@ Engedélyek beállítása:
 
     ![Válassza ki az SQL Server Azure-beli virtuális gépen a biztonsági mentés](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    A **biztonsági mentés célja** menüben megjelenik a két lépést: **virtuális gépeken lévő adatbázisok felderítése** és **biztonsági mentés konfigurálása**. A **virtuális gépeken lévő adatbázisok felderítése** lépés elindít egy Azure-beli virtuális gépek keresése.
+    A **biztonsági mentés célja** menüben megjelenik a két lépést: **virtuális gépeken lévő adatbázisok felderítése** és **biztonsági mentés konfigurálása**. A **virtuális gépeken lévő adatbázisok felderítése** lépés indítson keresést Azure-beli virtuális gépek.
 
     ![Tekintse át a két biztonsági mentés célja lépéseit](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
@@ -341,7 +341,7 @@ SQL-adatbázis védelmének konfigurálása:
 
 Biztonsági mentési házirend egy mátrixot határoz meg, amikor a biztonsági másolatokat készít, és mennyi ideig tartott használ. Használja az Azure Backup három típusú SQL-adatbázisok biztonsági mentés ütemezése:
 
-* Teljes biztonsági mentés: teljes biztonsági mentés a teljes adatbázis biztonsági mentését. Egy teljes biztonsági mentés az adatok egy adott adatbázisban vagy fájlcsoport vagy fájlokat, és elég naplózási adatok helyreállítása egy készletét tartalmazza. Legfeljebb napi egy teljes biztonsági mentés is indíthat. Ha szeretné igénybe vehet egy teljes biztonsági mentés napi vagy heti időközönként. 
+* Teljes biztonsági mentés: teljes biztonsági mentés a teljes adatbázis biztonsági mentését. Egy teljes biztonsági mentés az adatok egy adott adatbázisban vagy fájlcsoport vagy fájlokat, és elég naplók az adatok helyreállítása egy készletét tartalmazza. Legfeljebb napi egy teljes biztonsági mentés is indíthat. Ha szeretné igénybe vehet egy teljes biztonsági mentés napi vagy heti időközönként. 
 * Különbségi biztonsági másolat: különbözeti biztonsági mentése a legújabb, az előző teljes biztonsági mentését alapul. Különbözeti biztonsági mentése csak a teljes biztonsági mentés óta megváltozott adatokat rögzíti. Legfeljebb napi egy különbségi biztonsági mentés is indíthat. Az azonos napi egy teljes biztonsági mentés és a különbözeti biztonsági mentése nem konfigurálható.
 * Tranzakciónapló biztonsági mentését: A napló biztonsági mentését lehetővé teszi, hogy legfeljebb egy adott második időponthoz visszaállítást. Egyszerre legfeljebb konfigurálhatja tranzakciós napló biztonsági mentés 15 percenként.
 
@@ -406,15 +406,16 @@ Biztonsági mentési szabályzat létrehozása:
    ![Fogadja el az új biztonsági mentési házirend](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>SQL-adatbázis visszaállítása
-
 Az Azure Backup az önálló adatbázisok visszaállítása egy adott dátum vagy idő (a második) a tranzakciónapló biztonsági mentései használatával funkciót biztosít. Az Azure Backup automatikusan a megfelelő teljes különbségi és naplóalapú biztonsági mentések, amelyek alapján a helyreállítási időt az adatok visszaállításához van szükség, a lánc határozza meg.
 
 Lehetőség kiválasztásával egy teljes vagy különbözeti biztonsági mentési állíthatja vissza egy adott helyreállítási pontot, nem pedig egy adott időpontban.
- > [!Note]
- > Mielőtt a "fő" adatbázis visszaállítási indít el, indítsa el az SQL Server-példány egyfelhasználós módban indítási lehetőséget `-m AzureWorkloadBackup`. Az argumentum a `-m` lehetőség az ügyfél nevét. Csak az ügyfél számára engedélyezett a kapcsolat megnyitásához. Az összes rendszer adatbázisban (modell master, msdb) állítsa le az SQL Agent szolgáltatást a visszaállítás elindítása előtt. Zárja be az olyan alkalmazásokat, amelyek próbálnak kapcsolatot sem ezeknek az adatbázisoknak ellopni.
->
 
-Adatbázis visszaállítása:
+### <a name="pre-requisite-before-trigerting-a-restore"></a>Egy visszaállítási trigerting előtt előfeltételeként
+1. Az adatbázist visszaállíthatja egy példányát olyan SQL Server ugyanazon Azure-régióban. A célkiszolgálón kell regisztrálni kell ugyanabban a Recovery Services-tároló forrásaként.  
+2. A TDE titkosított adatbázis visszaállítása egy másik SQL Serverre, először állítsa vissza a tanúsítványt a a célkiszolgáló által leírt lépéseket követve [Itt](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
+3. Mielőtt a "fő" adatbázis visszaállítási indít el, indítsa el az SQL Server-példány egyfelhasználós módban indítási lehetőséget `-m AzureWorkloadBackup`. Az argumentum a `-m` lehetőség az ügyfél nevét. Csak az ügyfél számára engedélyezett a kapcsolat megnyitásához. Az összes rendszer adatbázisban (modell master, msdb) állítsa le az SQL Agent szolgáltatást a visszaállítás elindítása előtt. Zárja be az olyan alkalmazásokat, amelyek próbálnak kapcsolatot sem ezeknek az adatbázisoknak ellopni.
+
+### <a name="steps-to-restore-a-database"></a>Adatbázis visszaállítása a következő lépéseket:
 
 1. Nyissa meg a Recovery Services-tároló, amely regisztrálva van az SQL virtuális gép.
 
@@ -768,7 +769,7 @@ SQL Server-példány regisztrációját a védelem eltávolítása után, de a t
 
    ![Válassza a Törlés](./media/backup-azure-sql-database/delete-protected-server.png)
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 A következő szakaszban további információkat az SQL-adatbázis biztonsági mentése tartalmaz.
 

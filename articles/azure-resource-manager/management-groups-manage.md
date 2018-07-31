@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/09/2018
+ms.date: 07/31/2018
 ms.author: rithorn
-ms.openlocfilehash: 730f79ce0a70da92dbb6332ad824b17e6c2327ff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 967aa87f89eff34427456bad3828e1e6509639cf
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488378"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358694"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
 Felügyeleti csoportok olyan tárolók, amelyek segítségével kezelheti a hozzáférési házirend és megfelelőség több előfizetést is. Módosítása, törlése, és ezek a tárolók szeretné, hogy használható-hierarchia kezelése [Azure Policy](../azure-policy/azure-policy-introduction.md) és [Azure szerepköralapú hozzáférés vezérlők (RBAC)](../role-based-access-control/overview.md). Felügyeleti csoportok kapcsolatos további információkért lásd: [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok ](management-groups-overview.md).
-
-A felügyeleti csoport funkció nyilvános előzetes verzióban érhető el. Felügyeleti csoportok használatának megkezdéséhez jelentkezzen be a [az Azure portal](https://portal.azure.com) vagy [Azure PowerShell-lel](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), vagy a [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) , felügyeleti csoportok kezelése.
 
 Módosít egy felügyeleti csoportot, egy tulajdonosi vagy közreműködői szerepkörhöz kell rendelkeznie a felügyeleti csoportban. Milyen engedélyek megtekintéséhez, rendelkezik, válassza ki a felügyeleti csoportot, majd **IAM**. RBAC-szerepkörök kapcsolatos további információkért lásd: [hozzáférést és engedélyeket az RBAC kezelése](../role-based-access-control/overview.md).
 
@@ -80,6 +78,7 @@ A felügyeleti csoport törléséhez az alábbi követelményeknek kell teljesü
 3. Válassza ki a törölni kívánt felügyeleti csoport.
 4. Válassza a **Törlés** elemet.
     - Ha az ikon le van tiltva, az egér választó egérmutatót az ikon bemutatja, okát.
+
     ![Csoport törlése](media/management-groups/delete.png)
 5. Nincs egy ablak, amely megerősíti, hogy törli a felügyeleti csoport megnyílik.
 

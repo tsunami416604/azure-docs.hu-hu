@@ -1,23 +1,23 @@
 ---
-title: A kétlépéses ellenőrzés – az Azure AD hibaelhárítása |} A Microsoft Docs
+title: A kétlépéses ellenőrzés – Azure Active Directory hibaelhárítása |} A Microsoft Docs
 description: Mi a teendő, ha azok problémába az Azure multi-factor Authentication és a kétlépéses ellenőrzés felhasználók ad útmutatást.
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
-ms.service: multi-factor-authentication
 ms.workload: identity
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: ec79adcaf7cbef778b8c9e572ae932d5ceb47aa6
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: fd722da236f3e1fff18e2561756635cd95f098e0
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090377"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346523"
 ---
 # <a name="get-help-with-two-step-verification"></a>Segítség a kétlépcsős ellenőrzéshez
 
@@ -42,7 +42,7 @@ Több oka is lehet, hogy miért egy másik ellenőrzési módszert a fiókjával
 
 ## <a name="sign-in-using-another-verification-method"></a>Jelentkezzen be egy másik ellenőrzési módszerrel
 
-1. Normális esetben jelentkezzen be a fiókjába, és válassza ki a **bejelentkezés másik módszerrel** hivatkozásra a **kétlépéses ellenőrzés** lapot.
+1. általában bejelentkezni a fiókjába, és válassza ki a **bejelentkezés másik módszerrel** hivatkozásra a **kétlépéses ellenőrzés** lapot.
 
     ![Ellenőrzési módszert bejelentkezés módosítása](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 

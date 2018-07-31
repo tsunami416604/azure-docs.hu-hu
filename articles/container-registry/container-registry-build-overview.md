@@ -6,20 +6,20 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 07/28/2018
 ms.author: marsma
-ms.openlocfilehash: 3ef91270bceb5865bdbdf9c436e4519595a3dc09
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 532817c6289c1718fd82a502e04dc10715ee7203
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582630"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343100"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizálja az operációs rendszer és a keretrendszer javítás ACR builddel
 
 Tárolók adja meg az új szintet jelentenek a virtualizálás, alkalmazás és a fejlesztői függőségek infrastruktúra-és működési követelmények elkülönítése. Milyen állapotban marad, azonban szükség, cím, hogyan van az application virtualization tudjon fókuszálni.
 
-**ACR Builddel**, egy csomag az Azure Container Registry lévő szolgáltatások nem csak natív tároló build képesség biztosít, de is automatizálja [operációs rendszer és a javítással keretrendszer](#automate-os-and-framework-patching) a Docker-tárolók számára.
+**ACR Builddel** Azure Container Registry lévő szolgáltatások együttese. A Linux, Windows és ARM biztosít a felhőalapú tároló-lemezkép létrehozása, és automatizálható [operációs rendszer és a keretrendszer javítása](#automate-os-and-framework-patching) a Docker-tárolók számára.
 
 [!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
@@ -33,7 +33,7 @@ Eseményindító tárolórendszerkép automatikusan épít, amikor a kód szám�
 
 Az életciklus-felügyelet elején elindítja a fejlesztők számára az első sornyi kód véglegesítése előtt. ACR Builddel [gyors létrehozása](container-registry-tutorial-quick-build.md) funkció lehetővé teszi egy integrált helyi belső-hurok fejlesztési környezetet biztosít, tehermentesítést buildeket, az Azure-bA. A gyors hoz létre ellenőrizheti az automatizált buildelési definíciókat a kód véglegesítése előtt.
 
-Az ismert `docker build` formátum, a [az acr-build] [ az-acr-build] parancs az Azure CLI-ben vesz igénybe egy helyi környezetet, elküldi azt az ACR Builddel szolgáltatásnak, és alapértelmezés szerint leküldi az összeállított rendszerképet a beállításjegyzékbe, Befejezés. ACR Builddel követi a georeplikált tárolójegyzékek elosztott fejlesztői csapatok kihasználhatja a legközelebbi replikált beállításjegyzék engedélyezése. Előzetes verzióban az ACR-build régiókban érhető el az USA keleti Régiójában és Nyugat-Európa.
+Az ismert `docker build` formátum, a [az acr-build] [ az-acr-build] parancs az Azure CLI-ben vesz igénybe egy helyi környezetet, elküldi azt az ACR Builddel szolgáltatásnak, és alapértelmezés szerint leküldi az összeállított rendszerképet a beállításjegyzékbe, Befejezés. ACR Builddel követi a georeplikált tárolójegyzékek elosztott fejlesztői csapatok kihasználhatja a legközelebbi replikált beállításjegyzék engedélyezése.
 
 ACR Builddel tervezték, mint egy egyszerű tároló életciklus. Ha például integrálhatja az ACR Builddel CI/CD-megoldását. Végrehajtásával [az bejelentkezési] [ az-login] az egy [szolgáltatásnév][az-login-service-principal], CI/CD-megoldását sikerült majd ki [az acr builddel] [ az-acr-build] parancsok felhőplatformos termékeiért buildek kép.
 
@@ -49,7 +49,7 @@ Ismerje meg, hogyan build aktiválása a forrás kód véglegesítés az ACR Bui
 
 Hatékonyságát ACR Builddel valóban növelése érdekében a tároló létrehozási folyamat képességét a frissítés alapképet észleléséhez származik. Ha a frissített alaplemezkép van leküldte a tárolójegyzékbe, ACR Builddel automatikusan hozhat létre bármilyen alkalmazás-lemezképek alapján.
 
-Tárolórendszerképek széles körben kategorizálhatók *alap* lemezképek és *alkalmazás* lemezképek. Az alaplemezképek rendszerint az operációs rendszer és alkalmazási keretrendszerek, amelyen az alkalmazást a létrehozása mellett egyéb testreszabásokat. Ezek alaplemezképek önmagukban általában nyilvános felsőbb rétegbeli rendszerképen alapuló, például [Alpine Linux] [ base-alpine] vagy [Node.js][base-node]. Előfordulhat, hogy ossza meg az alkalmazás-lemezképek számos közös alapképet.
+Tárolórendszerképek széles körben kategorizálhatók *alap* lemezképek és *alkalmazás* lemezképek. Az alaplemezképek rendszerint az operációs rendszer és alkalmazási keretrendszerek, amelyen az alkalmazást a létrehozása mellett egyéb testreszabásokat. Ezek alaplemezképek önmagukban általában nyilvános felsőbb rétegbeli rendszerképen alapuló, például: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet], vagy [Node.js][base-node]. Előfordulhat, hogy ossza meg az alkalmazás-lemezképek számos közös alapképet.
 
 Egy operációs rendszer vagy alkalmazás keretrendszer-lemezkép frissítésekor a felsőbb rétegbeli karbantartó által, például egy kritikus fontosságú az operációs rendszer biztonsági javítás is frissítenie kell az alaplemezképek a kritikus fontosságú javítás szükséges. Minden egyes alkalmazás-lemezképet majd is újra kell építeni ezeket most már szerepel az alaprendszerképet a felsőbb rétegbeli javításokat tartalmazza.
 
@@ -58,7 +58,7 @@ ACR Builddel dinamikusan felderíti az alaplemezkép függőségeit, amikor azt 
 Ismerje meg az operációs rendszer és a keretrendszer javítás ACR Builddel harmadik oktatóanyag [automatizálása rendszerképet az Azure Container Registry létrehozása épül rendszerkép alapszintű frissítésének](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> A kezdeti előzetes alaplemezkép frissítések eseményindító csak akkor, amikor az ugyanazon az Azure container registry találhatók az alap- és az alkalmazás képeket hoz létre.
+> A kezdeti előzetes alaplemezkép frissítések eseményindító csak akkor, amikor az ugyanazon az Azure container registry vagy a nyilvánosan elérhető-e a Docker Hub-tárházak találhatók az alap- és az alkalmazás képeket hoz létre.
 
 ## <a name="next-steps"></a>További lépések
 

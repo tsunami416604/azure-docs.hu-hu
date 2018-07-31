@@ -1,27 +1,23 @@
 ---
-title: Regisztráció önkiszolgáló jelszó-visszaállításra - Azure ad-ben |} A Microsoft Docs
+title: Regisztrálja a önkiszolgáló jelszó-átállítási – Azure Active Directory |} A Microsoft Docs
 description: Az Azure AD önkiszolgáló jelszó-hitelesítési adatok regisztrálása alaphelyzetbe állítása
 services: active-directory
-keywords: ''
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
+ms.component: user-help
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
-ms.custom: end-user;seohack1
-ms.openlocfilehash: 2cf768e05a9e3e88c0e6ced567c73fd4fa3c4e46
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f8b4fb8861760d2b5b10f61b3ab6a8c718f849b6
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060004"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346392"
 ---
 # <a name="register-for-self-service-password-reset"></a>Regisztráció önkiszolgáló jelszó-visszaállításra
 

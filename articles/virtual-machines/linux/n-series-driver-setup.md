@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 07/30/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8f043fdcaa7554d73be6ac3928a37630baab845
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 072b34ecb2e57bfa5d13b1fbc6e7fb441a5252aa
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630421"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39357690"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Az N sorozatú virtuális gépeken Linux rendszert futtató NVIDIA GPU-illesztők telepítése
 
@@ -176,7 +176,7 @@ NV-sorozat virtuális gépei NVIDIA GRID illesztőprogramok telepítéséhez lé
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-1. Futtassa a `lspci` parancsot. Győződjön meg arról, hogy az NVIDIA M60 kártya vagy kártyák láthatók, a PCI-eszközök.
+1. Futtassa a következő parancsot: `lspci`. Győződjön meg arról, hogy az NVIDIA M60 kártya vagy kártyák láthatók, a PCI-eszközök.
 
 2. Telepítse a frissítéseket.
 
@@ -225,7 +225,7 @@ NV-sorozat virtuális gépei NVIDIA GRID illesztőprogramok telepítéséhez lé
 8. Adja hozzá a következőt `/etc/nvidia/gridd.conf`:
  
   ```
-  IgnoreSP=TRUE
+  IgnoreSP=FALSE
   ```
 9. A virtuális gépet, és ellenőrizheti a telepítést.
 

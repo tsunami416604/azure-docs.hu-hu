@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: raynew
-ms.openlocfilehash: 2415812a62fc000ddb18318ac52b764c1b5de51b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0cfb583f9d16039249aaffe18f71039e91dc3705
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008433"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359206"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso áttelepítése: az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoport helyi alkalmazás Újratárolása
 
@@ -39,7 +39,7 @@ A cikk 6: Egy alkalmazást az Azure virtuális gépek és az SQL Server Always O
 
 
 
-Ez a cikk a Contoso a kétrétegű Windows át. NET SmartHotel alkalmazás VMware virtuális gépeken futó Azure-bA. Ha szeretné használni ezt az alkalmazást, nyílt forráskódú nyújtja, és töltheti le a [GitHub](https://github.com/Microsoft/SmartHotel360).
+Ebben a cikkben a Contoso a kétrétegű SmartHotel Windows .NET alkalmazás a VMware virtuális gépeken futó Azure-bA telepíti át. Ha szeretné használni ezt az alkalmazást, nyílt forráskódú nyújtja, és töltheti le a [GitHub](https://github.com/Microsoft/SmartHotel360).
 
 ## <a name="business-drivers"></a>A stratégiai
 
@@ -457,7 +457,7 @@ Most a Contoso megadja a cél replikációs beállításokat.
 
 ### <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
-Nem, a Contoso egy replikációs házirendet hozhat létre.
+Most a Contoso egy replikációs házirendet hozhat létre.
 
 1. A **infrastruktúra előkészítése** > **replikációs beállítások** > **replikációs házirend** >  **létrehozás és Társítsa**, akkor hozzon létre egy házirendet **ContosoMigrationPolicy**.
 2. Az alapértelmezett beállítások használata:

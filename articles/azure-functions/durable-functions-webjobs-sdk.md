@@ -1,8 +1,8 @@
 ---
-title: WebJobs - Azure funkcionál tartós futtatása
-description: Megtudhatja, hogyan code, és a webjobs-feladatok futtatása a WebJobs SDK használatával tartós funkciók konfigurálását.
+title: Tartós függvények futtatása a WebJobs - Azure-t
+description: Ismerje meg, hogyan code, és konfigurálja a Durable Functions a WebJobs SDK-val a webjobs-feladatok futtatásához.
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3fc84d1492d2855ffa3bb5538226da049a928339
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 90100461d7db93ece23bf2420a1b7e8c43da915b
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33767321"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343049"
 ---
-# <a name="how-to-run-durable-functions-as-webjobs"></a>Hogyan futtathat tartós funkciókkal, mint a webjobs-feladatok
+# <a name="how-to-run-durable-functions-as-webjobs"></a>Tartós függvények futtatása a webjobs-feladatok
 
-[Az Azure Functions](functions-overview.md) és a [tartós funkciók](durable-functions-overview.md) bővítmény épül a [WebJobs SDK](../app-service/web-sites-create-web-jobs.md). A `JobHost` a WebJobs SDK a futtatókörnyezet, az Azure Functions van. Ha meg kell határozni `JobHost` viselkedését az Azure Functions nem lehetséges módokon, létrehozhatja és tartós funkciók futtassa saját kezűleg a WebJobs SDK használatával. Ezt követően futtathatja a tartós funkciók az Azure webjobs-feladat vagy bárhol egy konzol alkalmazás fut-e.
+[Az Azure Functions](functions-overview.md) és a [Durable Functions](durable-functions-overview.md) bővítmény épül a [WebJobs SDK-val](../app-service/web-sites-create-web-jobs.md). A `JobHost` van a modul az Azure Functions a WebJobs SDK-val. Ha meg kell határozni `JobHost` viselkedését az Azure Functions nem lehetséges módokon, fejlesztéséhez és tartós függvények futtatása a WebJobs SDK-val saját maga által. A tartós függvények ezután futtathat egy Azure webjobs-feladat vagy bárhol a konzol alkalmazás fut-e.
 
-A titkosításblokkoló tartós funkciók minta érhető el a WebJobs SDK-verzió: Töltse le, vagy klónozza a [tartós funkciók tárház](https://github.com/azure/azure-functions-durable-extension/) , és keresse meg a *minták\\webjobssdk\\láncolás* mappa.
+A WebJobs SDK-verzió érhető el a titkosításblokkoló Durable Functions-minta: Töltse le vagy klónozza a [Durable Functions-tárház](https://github.com/azure/azure-functions-durable-extension/) , és keresse meg a *minták\\webjobssdk\\láncolás* mappát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy ismeri a WebJobs SDK, a C# osztály könyvtár fejlesztés az Azure Functions és tartós funkciók alapjait. Ha ezek a témakörök a bevezetést van szüksége, tekintse meg a következőket:
+Ez a cikk feltételezi, hogy ismeri a WebJobs SDK-C# osztály könyvtárfejlesztőjével az Azure Functions és a tartós függvények alapjait. Ha ezek a témakörök bevezetést van szüksége, tekintse meg az alábbi forrásanyagokat:
 
-* [Ismerkedés a WebJobs SDK-val](../app-service/webjobs-sdk-get-started.md)
+* [A WebJobs SDK használatának első lépései](../app-service/webjobs-sdk-get-started.md)
 * [Az első függvény létrehozása a Visual Studio használatával](functions-create-your-first-function-visual-studio.md)
-* [Tartós funkciók](durable-functions-sequence.md)
+* [Tartós függvények](durable-functions-sequence.md)
 
-Ebben a cikkben a lépések elvégzéséhez:
+A jelen cikkben ismertetett lépések végrehajtásához:
 
-* [A Visual Studio 2017 15.6 vagy újabb verzió telepítése](https://docs.microsoft.com/visualstudio/install/) rendelkező a **Azure fejlesztési** munkaterhelés.
+* [Telepítse a Visual Studio 2017 15.6 vagy újabb verzió](https://docs.microsoft.com/visualstudio/install/) együtt a **Azure-fejlesztési** számítási feladatok.
 
-  Ha már telepítve a Visual Studio, de nem rendelkezik a munkaterhelés, vegye fel a munkaterhelés kiválasztásával **eszközök > Get eszköz és funkció**. 
+  Ha már rendelkezik a Visual Studióval, de nem rendelkezik az adott számítási feladat, vegye fel a számítási feladatok kiválasztásával **eszközök > első eszközeivel és szolgáltatásaival**. 
 
-  (Használhatja [Visual Studio Code](https://code.visualstudio.com/) helyette, de néhány utasításokat a Visual Studio.)
+  (Használható [Visual Studio Code](https://code.visualstudio.com/) ehelyett azonban az itt található utasításokat a Visual Studio jellemző.)
 
-* Telepítheti és futtathatja [Azure Storage Emulator](../storage/common/storage-use-emulator.md) 5.2-es vagy újabb verziója. Alternatív frissítése érdekében szükség a *App.config* fájl egy Azure Storage kapcsolati karakterlánccal.
+* Telepítheti és futtathatja [Azure Storage Emulator](../storage/common/storage-use-emulator.md) 5.2-es vagy újabb verziója. Frissítés helyett a *App.config* fájlt egy Azure Storage kapcsolati karakterlánccal.
 
-## <a name="webjobs-sdk-versions"></a>WebJobs SDK-verzió
+## <a name="webjobs-sdk-versions"></a>A WebJobs SDK-verziókra
 
-Ez a cikk ismerteti, hogyan fejleszthet a WebJobs SDK 2.x project (az Azure Functions verzió egyenértékű 1.x). Verziójával kapcsolatos információkért 3.x, lásd: [WebJobs SDK 3.x](#webjobs-sdk-3x) című cikkben. 
+Ez a cikk bemutatja, hogyan hozhat létre a WebJobs SDK 2.x project (Azure Functions verzióra egyenértékű 1.x). Verzióval kapcsolatos információ 3.x, lásd: [WebJobs SDK-val 3.x](#webjobs-sdk-3x) a cikk későbbi részében. 
 
 ## <a name="create-console-app"></a>Konzolalkalmazás létrehozása
 
-A WebJobs SDK projekt csak egy olyan konzol app projektet a megfelelő NuGet-csomagok telepítve.
+A WebJobs SDK projekt érhető el csak console app telepített megfelelő NuGet-csomagokkal.
 
-A Visual Studio **új projekt** párbeszédablakban válassza **klasszikus Windows asztal > Konzolalkalmazás (.NET-keretrendszer)**. A következő projektfájlban a `TargetFrameworkVersion` kell `v4.6.1`.
+A Visual Studio **új projekt** párbeszédablakban válassza **Windows klasszikus Asztalialkalmazás > Console App (.NET Framework)**. A következő projektfájlban a `TargetFrameworkVersion` lehet `v4.6.1`.
 
-A Visual Studio szintén tartalmazza a webjobs-feladat projektsablon, amellyel kiválasztásával **felhő > Azure webjobs-feladat (.NET-keretrendszer)**. Ez a sablon telepítése csomagok száma, amelyek némelyike nem szükség lehet.
+A Visual Studio is rendelkezik a webjobs-feladat projektsablon, amellyel kiválasztásával **felhő > Azure WebJob (.NET Framework)**. Ez a sablon telepíti a csomagok száma, amelyek némelyike nem feltétlenül szükségesek.
 
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-A WebJobs SDK, core kötések, a naplózási keretrendszer és a tartós feladatkiterjesztés NuGet-csomagok van szüksége. Az alábbiakban **Csomagkezelő konzol** azokat a csomagokat, a legújabb stabil verziószáma, ez a cikk írásának napjától parancsokat:
+NuGet-csomagok a WebJobs SDK-val, core kötések, a naplózási keretrendszer és a tartós feladat bővítmény van szükség. Az alábbiakban **Package Manager Console** azokat a csomagokat, ez a cikk írásának dátumon legújabb stabil verziója számokkal parancsokat:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
@@ -67,7 +67,7 @@ Install-Package Microsoft.Extensions.Logging -version 2.0.1
 Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.4.0
 ```
 
-Naplózási szolgáltatók is kell. A következő parancsokat az Application Insights-szolgáltató telepítéséhez és a `ConfigurationManager`. A `ConfigurationManager` lehetővé teszi, hogy az Application Insights instrumentation kulcs beszerzése Alkalmazásbeállítások.
+Naplózás szolgáltató is szükséges. Az alábbi parancsokat az Application Insights-szolgáltató telepítésének és a `ConfigurationManager`. A `ConfigurationManager` az Application Insights-kialakítási kulcs vezeti be az alkalmazásbeállításokat.
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
@@ -80,9 +80,9 @@ A következő parancsot a konzol szolgáltatót telepíti:
 Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 ```
 
-## <a name="jobhost-code"></a>JobHost kód
+## <a name="jobhost-code"></a>JobHost kódot
 
-A tartós funkciók a kiterjesztést használni, hívja meg a `UseDurableTask` a a `JobHostConfiguration` objektum a `Main` módszert:
+Durable Functions bővítményt használja, hívja meg `UseDurableTask` a a `JobHostConfiguration` objektumának a `Main` módszer:
 
 ```cs
 var config = new JobHostConfiguration();
@@ -92,9 +92,9 @@ config.UseDurableTask(new DurableTaskExtension
 };
 ```
 
-A megadott tulajdonságok listáját a `DurableTaskExtension` objektumazonosító, lásd: [host.json](functions-host-json.md#durabletask).
+Beállíthatja a tulajdonságok listája a `DurableTaskExtension` objektumazonosító, lásd: [host.json](functions-host-json.md#durabletask).
 
-A `Main` módszer is a hely a naplózás szolgáltatók beállítása. A következő példa a konzol és az Application Insights-szolgáltatókat konfigurál.
+A `Main` mód is a hely a naplózás szolgáltatók beállítása. Az alábbi példa a konzol és az Application Insights-szolgáltatók konfigurálja.
 
 ```cs
 static void Main(string[] args)
@@ -125,21 +125,21 @@ static void Main(string[] args)
 
 ## <a name="functions"></a>Functions
 
-A WebJobs SDK-függvények képest írni az Azure Functions szolgáltatáshoz írt kódot néhány különbségek vannak.
+A WebJobs SDK-függvények képest írni az Azure Functions szolgáltatáshoz írt néhány különbségek vannak.
 
 A WebJobs SDK nem támogatja a következő Azure Functions-szolgáltatásairól:
 
 * [Függvénynév attribútum](#functionname-attribute)
-* [HTTP-eseményindítóval](#http-trigger)
-* [Tartós funkciók HTTP felügyeleti API](#http-management-api)
+* [HTTP-eseményindító](#http-trigger)
+* [Durable Functions – HTTP-felügyeleti API](#http-management-api)
 
 ### <a name="functionname-attribute"></a>Függvénynév attribútum
 
-A WebJobs SDK projektben a metódus nevét, egy függvény a függvény nevét. A `FunctionName` attribútum csak az Azure Functions használják.
+A WebJobs SDK-projektben egy függvény metódusnév a függvény nevét. A `FunctionName` attribútuma csak az Azure Functions szolgál.
 
 ### <a name="http-trigger"></a>HTTP eseményindító
 
-A WebJobs SDK nem rendelkezik egy HTTP-eseményindítóval. A minta projekt vezénylési ügyfél egy időzítő indítófeltételt használó:
+A WebJobs SDK-val nem rendelkezik egy HTTP-eseményindítóval. A mintaprojekt vezénylési ügyfél egy időzítő indítófeltételt használja:
 
 ```cs
 public static async Task CronJob(
@@ -151,17 +151,17 @@ public static async Task CronJob(
 }
 ```
 
-### <a name="http-management-api"></a>HTTP-kezelési API
+### <a name="http-management-api"></a>HTTP-felügyeleti API
 
-Nincs HTTP-eseményindítóval van, mert a WebJobs SDK nincs [HTTP felügyeleti API](durable-functions-http-api.md).
+Mivel nincs HTTP-eseményindítóval rendelkezik, a WebJobs SDK-val nem rendelkezik [HTTP-felügyeleti API](durable-functions-http-api.md).
 
-A WebJobs SDK projekt hívása helyett HTTP-kérelmek küldése a vezénylési ügyfél objektum módszerek. A három feladatokat hajthat végre a HTTP Management API felelnek meg a következőkkel:
+A WebJobs SDK-projektben módszerek segítségével meghívhatja a vezénylési ügyfél objektum helyett HTTP-kérelmek küldéséhez. A három feladatokat is végezhet a HTTP-felügyeleti API felel meg a következő módszerek:
 
 * `GetStatusAsync`
 * `RaiseEventAsync`
 * `TerminateAsync`
 
-Az orchestration ügyfél függvény a minta projekt elindítja az orchestrator függvény, és majd hiányzóra változik, amely behívja hurkot `GetStatusAsync` 2 másodpercenként:
+A vezénylési ügyfél függvényt a mintaprojekt az orchestrator függvény elindul, és majd hiányzóra változik, amely meghívja ezt hurkot `GetStatusAsync` másodpercenként 2:
 
 ```cs
 string instanceId = await client.StartNewAsync(nameof(HelloSequence), input: null);
@@ -186,44 +186,44 @@ while (true)
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Ez a szakasz áttekintést futtatásáról a [mintaprojektet](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining). Ismerteti az futtassa helyileg a WebJobs SDK-projektet, és telepítse azt egy Azure webjobs-feladat részletes útmutatás: [Ismerkedés a WebJobs SDK-val](../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
+Ez a szakasz futtatása áttekintést nyújt a [mintaprojektet](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining). Ismertetjük a WebJobs SDK-projekt helyi futtatása és üzembe helyezése az Azure WebJob részletes útmutatás: [a WebJobs SDK használatának első lépései](../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
 
 ### <a name="run-locally"></a>Helyi futtatás
 
 1. Győződjön meg arról, hogy fut-e a Storage emulator (lásd: [Előfeltételek](#prerequisites)).
 
-1. Ha meg szeretné tekinteni az Application Insights-naplók, amikor helyileg futtatta:
+1. Ha meg szeretné tekinteni az Application Insights-naplók, ha helyileg futtatja:
 
-  a. Hozzon létre egy Application Insights-erőforrást, alkalmazás típusa **általános**.
+  a. Hozzon létre egy Application Insights-erőforrást, alkalmazástípus **általános**.
 
-  b. A rendszerállapot-kulcsot a Mentés a *App.config* fájlt.
+  b. A kialakítási kulcsot az mentse a *App.config* fájlt.
 
 1. Futtassa a projektet.
 
-### <a name="run-in-azure"></a>Futtassa az Azure-ban
+### <a name="run-in-azure"></a>Azure-ban
 
-1. Hozzon létre egy webalkalmazást és a storage-fiók.
+1. Hozzon létre egy webalkalmazást és a egy tárfiókot.
 
-1. A web app alkalmazásban mentése a tárolási kapcsolat karakterláncát a AzureWebJobsStorage nevű Alkalmazásbeállítás.
+1. A web app alkalmazásban mentse a tárolási kapcsolat karakterláncát a AzureWebJobsStorage nevű Alkalmazásbeállítás.
 
-1. Hozzon létre egy Application Insights-erőforrást, alkalmazás típusa **általános**.
+1. Hozzon létre egy Application Insights-erőforrást, alkalmazástípus **általános**.
 
-1. Mentse a instrumentation kulcs APPINSIGHTS_INSTRUMENTATIONKEY nevű Alkalmazásbeállítás.
+1. Mentse a kialakítási kulcsot állítani az APPINSIGHTS_INSTRUMENTATIONKEY nevű Alkalmazásbeállítás.
 
-1. Telepítése webjobs-feladat.
+1. Helyezze üzembe a Webjobs-feladatként.
 
-## <a name="webjobs-sdk-3x"></a>WebJobs SDK 3.x
+## <a name="webjobs-sdk-3x"></a>A WebJobs SDK 3.x
 
-A fő módosítása 3.x által bevezetett a .NET Core helyett a .NET-keretrendszer használatát. 3.x-projekt létrehozása utasításokat megegyeznek, kivéve a következőket:
+A fő változás 3.x bevezetett, a .NET-keretrendszer helyett a .NET Core használata. 3.x projekt létrehozásához a ugyanezek az utasítások érvényesek, kivéve a következőket:
 
-1. Hozzon létre egy .NET Core konzolalkalmazást. A Visual Studio **új projekt** párbeszédablakban válassza **.NET Core > Konzolalkalmazás (.NET Core)**. A projektfájl azt jelenti, hogy `TargetFramework` van `netcoreapp2.0`.
+1. Hozzon létre egy .NET Core-konzolalkalmazást. A Visual Studio **új projekt** párbeszédablakban válassza **.NET Core > Console App (.NET Core)**. Soubor projektu azt jelenti, hogy `TargetFramework` van `netcoreapp2.0`.
 
-1. Válassza ki az előzetes verziót a következő csomagok 3.x:
+1. Válassza ki az előzetes verziót, a következő csomagok 3.x:
 
   * `Microsoft.Azure.WebJobs.Extensions`
   * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-2. Változás `Main` metódus kód segítségével kérheti le a tárolási kapcsolati karakterlánc és az Application Insights instrumentation kulcsot egy *appsettings.json* fájl, a .NET Core konfigurációs keretrendszer használatával.  Például:
+2. Változás `Main` metódus kód segítségével kérheti le a tárolási kapcsolati karakterlánc és az Application Insights-kialakítási kulcsot a egy *appsettings.json* fájlt, a .NET Core keretrendszerrel.  Például:
 
    ```cs
    static void Main(string[] args)
@@ -261,5 +261,5 @@ A fő módosítása 3.x által bevezetett a .NET Core helyett a .NET-keretrendsz
 
 ## <a name="next-steps"></a>További lépések
 
-A WebJobs SDK kapcsolatos további információkért lásd: [használata a WebJobs SDK](../app-service/webjobs-sdk-how-to.md).
+A WebJobs SDK-val kapcsolatos további információkért lásd: [használata a WebJobs SDK](../app-service/webjobs-sdk-how-to.md).
 

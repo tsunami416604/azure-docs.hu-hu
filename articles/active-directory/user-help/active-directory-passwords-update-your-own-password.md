@@ -1,27 +1,24 @@
 ---
-title: Új Azure AD - jelszó |} A Microsoft Docs
+title: Új Azure Active Directory - jelszó |} A Microsoft Docs
 description: Az önkiszolgáló jelszó-visszaállítás, hozzáférhet a munkahelyi vagy iskolai fiók használata
 services: active-directory
-keywords: ''
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
 ms.service: active-directory
+ms.component: user-help
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: cf26ba4048f4bd7a7ca3f1f2c456e3f2ec7d3b99
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 05a4961938f8a4f7d14c9dbf5041a2d02257b476
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059787"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345871"
 ---
 # <a name="reset-your-work-or-school-password"></a>A munkahelyi vagy iskolai jelszó visszaállítása
 
