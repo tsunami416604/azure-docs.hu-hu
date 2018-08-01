@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory-Proxy és a Tableau |} Microsoft Docs
-description: 'Útmutató: Azure Active Directory (Azure AD) alkalmazásproxy használatával adja meg a távelérés a Tableau üzembe helyezésére.  .'
+title: Az Azure Active Directory Application Proxy és a Tableau |} A Microsoft Docs
+description: Ismerje meg, a Tableau-telepítés a távelérés biztosítása az Azure Active Directory (Azure AD) alkalmazásproxy használatával.  .
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,27 +10,27 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 832d37e6c168a7b25adecee967b6523f6cea5554
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7cace1af527c1c7c80bf0e23f7a88aa9ac9f9d03
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303610"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365022"
 ---
-# <a name="azure-active-directory-application-proxy-and-tableau"></a>Az Azure Active Directory-Proxy és a Tableau 
+# <a name="azure-active-directory-application-proxy-and-tableau"></a>Az Azure Active Directory Application Proxy és a Tableau 
 
-Hogy könnyen alkalmazásproxy használatával adja meg a Tableau környezet a távoli hozzáférést az Azure Active Directory Alkalmazásproxyjával és a Tableau közösen. Ez a cikk azt ismerteti, hogyan konfigurálhatja az ebben a forgatókönyvben.  
+Az Azure Active Directory Application Proxy és a Tableau partnerkapcsolatra lépett, annak érdekében, hogy könnyen alkalmazásproxy használatával a Tableau-telepítés a távelérés biztosítása. Ez a cikk bemutatja, hogyan konfigurálhatja az ebben a forgatókönyvben.  
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Ez a cikk a forgatókönyv azt feltételezi, hogy rendelkezik:
+Ebben a cikkben a forgatókönyv azt feltételezi, hogy:
 
-- [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) konfigurálva. 
+- [A tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) konfigurálva. 
 
 - Egy [Application Proxy connector](application-proxy-enable.md) telepítve. 
 
@@ -38,27 +38,27 @@ Ez a cikk a forgatókönyv azt feltételezi, hogy rendelkezik:
 
 ## <a name="enabling-application-proxy-for-tableau"></a>A Tableau alkalmazásproxy engedélyezése 
 
-Ha használandó alkalmazásproxy a Tableau, szeretné-e egy e-mailek küldése [ aadapfeedback@microsoft.com ](mailto:aadapfeedback@microsoft.com) engedélyezve van ez a forgatókönyv segítségével.
+Ha szeretné az alkalmazásproxy használata a Tableau, szeretné-e egy e-mailek küldése [ aadapfeedback@microsoft.com ](mailto:aadapfeedback@microsoft.com) beolvasni ebben a forgatókönyvben engedélyezve van.
 Az e-mailben:
 
--   Alkalmazásproxy engedélyezése a Tableau használják tulajdonos
--   A bérlő azonosítója szerepeljenek a szervezet    
+-   Alkalmazásproxy engedélyezése használata a Tableau, a tulajdonos
+-   A bérlő Azonosítóját tartalmazza törzsében.    
 
-Amikor készen áll az alkalmazás használatára kap egy megerősítő üzenet. A konfiguráció befejezéséhez a megerősített várakozás közben.
+Kap egy megerősítő, ha az alkalmazás készen áll. A konfiguráció befejezéséhez a megerősítés várakozás közben.
 
 
  
 
 ## <a name="publish-your-applications-in-azure"></a>Az alkalmazások közzététele az Azure-ban 
 
-A Tableau való közzétételéhez szeretné közzétenni egy alkalmazást az Azure portálon.
+Szeretné közzétenni a Tableau, szeretne közzétenni egy alkalmazást az Azure Portalon.
 
 Esetén:
 
-- Részletes utasítások a lépések 1-8, lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md). 
-- Információ a Tableau értékek keresése a következő alkalmazás Proxy mezők a dokumentáció Tableau.  
+- Részletes utasítások lépéseket lásd a 1-8- [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-publish-azure-portal.md). 
+- A Tableau értékeinek megkeresése az alkalmazásproxy mezők információ a dokumentációban a Tableau.  
 
-**Az alkalmazás közzététele**: 
+**Az alkalmazás közzétételéhez**: 
 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként. 
@@ -69,29 +69,29 @@ Esetén:
 
 4. Válassza ki **helyszíni alkalmazás**. 
 
-5. Töltse ki a kötelező mezőket az új alkalmazás adatait tartalmazó. A következő útmutatást használhatja a beállításokat: 
+5. Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkat. A következő útmutatást használhatja a beállításokat: 
 
-    - **Belső URL-cím**: az alkalmazás egy belső URL-CÍMÉT, amely a Tableau URL-cím kell rendelkeznie. Például: `https://adventure-works.tableau.com`. 
+    - **Belső URL-cím**: az alkalmazásnak tartalmaznia kell egy belső URL-CÍMÉT, amely a Tableau URL-cím magát. Például: `https://adventure-works.tableau.com`. 
 
-    - **Előhitelesítési módszer**: Azure Active Directoryban (ajánlott, de nem kötelező). 
+    - **Az előhitelesítési módszer**: Azure Active Directory (ajánlott, de nem kötelező). 
 
-6. Válassza ki **Hozzáadás** a panel tetején. Az alkalmazás kerül, és a quick start menü megnyitása. 
+6. Válassza ki **Hozzáadás** a panel tetején. Az alkalmazás kerül, és megnyílik a gyors üzembe helyezési menü. 
 
-7. A quick start menüben válassza ki a **rendelje hozzá a felhasználót tesztelési**, és legalább egy felhasználói hozzáadni az alkalmazáshoz. Győződjön meg arról, hogy a teszt fiókjának van hozzáférési joga a helyszíni alkalmazások. 
+7. A gyors üzembe helyezési menüben válassza ki a **felhasználó hozzárendelése teszteléshez**, és legalább egy felhasználót az alkalmazáshoz. Ellenőrizze, hogy a teszt a helyszíni alkalmazás hozzáféréssel rendelkezik. 
 
-8. Válassza ki **hozzárendelése** menteni a teszt felhasználó hozzárendelése. 
+8. Válassza ki **hozzárendelése** a teszt felhasználó-hozzárendelés mentése. 
 
-9. (Választható) Az alkalmazás kezelése lapon válassza az **egyszeri bejelentkezés**. Válasszon **integrált Windows-hitelesítés** a legördülő menüből, és kitöltése során a kötelező mezőket a Tableau konfiguráció alapján. Kattintson a **Mentés** gombra. 
+9. (Nem kötelező) Válassza ki az alkalmazás-kezelési oldalán **egyszeri bejelentkezési**. Válasszon **integrált Windows-hitelesítés** a legördülő menüből, majd töltse ki a kötelező mezőket, a Tableau konfiguráció alapján. Kattintson a **Mentés** gombra. 
 
  
 
 ## <a name="testing"></a>Tesztelés 
 
-Az alkalmazás tesztelése készen áll. A Tableau, közzétételéhez használt külső URL hozzáférés, és jelentkezzen be egy felhasználó lehet hozzárendelve mindkét alkalmazáshoz.
+Az alkalmazás teszteléséhez készen áll. A Tableau, közzétételéhez használt külső URL-címet, és jelentkezzen be egy felhasználó mindkét alkalmazás hozzárendelve.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD-alkalmazásproxy kapcsolatos további információkért lásd: [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](application-proxy.md).
+Az Azure AD-alkalmazásproxy kapcsolatos további információkért lásd: [biztonságos távoli elérést biztosíthat a helyszíni alkalmazások](application-proxy.md).
 

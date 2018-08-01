@@ -1,13 +1,13 @@
 ---
-title: Az Azure Functions tesztelése |} Microsoft Docs
-description: Az Azure functions tesztelése Postman, a cURL és a Node.js segítségével.
+title: Az Azure Functions tesztelése |} A Microsoft Docs
+description: Az Azure functions tesztelése a Postman, a cURL és a Node.js használatával.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
-keywords: Azure funkciók, Funkciók, esemény feldolgozása, webhookokkal, dinamikus számítási, kiszolgáló nélküli architektúra tesztelése
+keywords: az Azure functions, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra tesztelése
 ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: functions
 ms.devlang: multiple
@@ -15,31 +15,31 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4f6bf89ec5c83a497666a8a410a156c5f9bb359
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 05c88c8938580666ce99f7cae46dc69cda3c3776
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083256"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344698"
 ---
-# <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kód az Azure Functions tesztelése kapcsolatos olyan stratégiák
+# <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
 
-Ebben a témakörben bemutatjuk a különböző módszereket funkciókkal, beleértve a következő általános módszerek használatával teszteléséhez:
+Ez a témakör bemutatja a különböző módszereket teszteléséhez szükséges funkciókat, beleértve a következő általános megközelítéseket használatával:
 
-+ HTTP-alapú eszközök, például cURL Postman vagy webes eseményindítók még egy webes böngésző
-+ Az Azure Tártallózó, Azure Storage-alapú eseményindítók tesztelése
-+ Az Azure Functions portálon teszt lap
-+ Időzítő-eseményindítóval aktivált függvény
-+ Alkalmazás vagy a keretrendszer tesztelése
++ HTTP-alapú eszközök, például a cURL, a Postman és a web-alapú eseményindítók még egy webes böngésző
++ Az Azure Storage Explorer, az Azure Storage-alapú eseményindítók tesztelése
++ Az Azure Functions portálon a tesztelési lapot
++ Időzítő által aktivált függvény
++ Alkalmazás- vagy keretrendszer tesztelése
 
-A tesztelési módszerek használják az egy HTTP funkció, amely a bemeneti egy lekérdezési karakterlánc paramétert vagy a kérelem törzsében keresztül fogadja. Ez a függvény az első szakaszban hoz létre.
+A tesztelési módszer használata egy HTTP által aktivált függvény, amely bemeneti keresztül vagy a lekérdezési sztring paramétereként, vagy a kérelem törzsében. Ez a függvény hoz létre az első szakaszban.
 
 ## <a name="create-a-function-for-testing"></a>Tesztelési függvény létrehozása
-Ez az oktatóanyag a legtöbb, a függvény létrehozása esetén érhető el HttpTrigger JavaScript-függvény sablon kis mértékben módosított verzióját használjuk. Ha a függvény létrehozásához segítségre van szüksége, tekintse meg a [oktatóanyag](functions-create-first-azure-function.md). Válassza ki a **HttpTrigger - JavaScript** sablon teszt funkció létrehozásakor a [Azure Portal].
+A legtöbb ebben az oktatóanyagban akkor használható, ha létrehoz egy függvényt HttpTrigger JavaScript-függvény sablon kis mértékben módosított verzióját használjuk. Ha egy függvény létrehozása segítségre van szüksége, tekintse át ezt [oktatóanyag](functions-create-first-azure-function.md). Válassza ki a **HttpTrigger - JavaScript** sablon létrehozásakor a teszt függvényt a [Azure Portal].
 
-Az alapértelmezett függvény sablon alapjában echók vissza a nevét, a kérelem törzsében vagy lekérdezési karakterlánc-paraméter, a "hello world" függvény `name=<your name>`.  Azt is lehetővé teszi, hogy adja meg a nevet és egy címet a kérelem törzsében szereplő JSON-tartalomként a kód frissítése. Ezután a függvény echók ezek vissza az ügyfélnek, ha elérhető.   
+Az alapértelmezett függvénysablon alapvetően ad vissza a nevét, a kérelem szövegtörzséből vagy a lekérdezési karakterlánc paramétereként, a "hello world" függvény `name=<your name>`.  Frissítjük a kódot is lehetővé teszi, hogy a név és a egy címet, a kérelem törzsében szereplő JSON-tartalmak. A függvény ezután a ezeket újra az ügyfelet, ha elérhető az ad.   
 
 Frissítse a függvény a következő kódra, amely a tesztelési használjuk:
 
@@ -85,27 +85,27 @@ function ProcessNewUserInformation(context, name, address) {
 }
 ```
 
-## <a name="test-a-function-with-tools"></a>Függvény eszközök és tesztelése
-Az Azure-portálon kívül vannak különböző eszközök, amelyek használatával indul el, a funkciók vizsgálatához. Ezek közé tartozik a HTTP-eszközök (Felhasználóifelület-alapú, mind parancs sor), Azure Storage access eszközök és még egy egyszerű webböngésző tesztelése.
+## <a name="test-a-function-with-tools"></a>Az eszközök a függvény tesztelése
+Az Azure Portalon kívül nincsenek különböző eszközöket, amelyek segítségével a tesztelési funkciók elindítani. Ezek közé tartozik a tesztelési eszközök (felületen mind a parancsot. sor), az Azure Storage-hozzáférés eszközökkel és még egy egyszerű webes böngésző HTTP.
 
-### <a name="test-with-a-browser"></a>Egy böngésző tesztelése
-A webböngésző egyszerű módja a eseményindító funkciók HTTP Protokollon keresztül. A GET-kérésekhez, amelyekhez nem szükséges a szervezet hasznos adatok között használható egy böngészőt, és használata csak lekérdezési karakterlánc-paraméterek.
+### <a name="test-with-a-browser"></a>Tesztelés böngészővel
+A webböngészőben az eseményindító függvények a HTTP Protokollon keresztül egyszerű módszert. Használhat egy böngészőben a GET-kérésekhez egy szervezet adattartalma nem igénylő, és a használata csak lekérdezési karakterlánc paraméterei.
 
-Az ellenőrzéshez a korábban meghatározott függvény másolni a **függvény URL-cím** a portálról. Rendelkezik a következő formában:
+A korábban meghatározott függvény teszteléséhez, másolja a **függvény URL-címének** a portálról. Rendelkezik a következő formátumot követi:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Hozzáfűzése a `name` a lekérdezési karakterlánc paramétert. Egy tényleges nevét használja a `<Enter a name here>` helyőrző.
+Fűzze hozzá a `name` a lekérdezési karakterlánc paramétert. Egy tényleges nevét használja a `<Enter a name here>` helyőrző.
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
 
-Illessze be az URL-CÍMÉT a böngészőbe, és szerezheti be a válasz a következőhöz hasonló.
+Illessze be az URL-címet a böngészőben, és hogy válasz érkezik az alábbihoz hasonló.
 
-![Képernyőfelvétel, Chrome böngésző lapon teszt válasz](./media/functions-test-a-function/browser-test.png)
+![Képernyőkép – a Chrome böngészőlapon teszt válasz](./media/functions-test-a-function/browser-test.png)
 
-Ebben a példában a Chrome böngészőben becsomagolja a visszaadott karakterlánc az XML-Fájlban. A más böngészőkkel csak a karakterlánc értéket jeleníti meg.
+Ebben a példában a Chrome böngészőben, amely becsomagolja a visszaadott karakterláncban XML formátumban. Más böngészők csak karakterlánc értéket jeleníti meg.
 
-A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a függvény végrehajtása:
+A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
 
     2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
     2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
@@ -115,23 +115,23 @@ A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a füg
     2016-03-23T07:35:10.338 Processing User Information...
     2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
 
-### <a name="test-with-postman"></a>A Postman tesztelése
-A funkciók a legtöbb teszteléséhez ajánlott eszköze Postman, amely integrálható a Chrome böngészőben. Postman telepítéséhez tekintse át [beolvasása Postman](https://www.getpostman.com/). Postman segítségével szabályozhatja, HTTP-kérések számos további attribútumokat.
+### <a name="test-with-postman"></a>Tesztelése a postman használatával
+Az ajánlott eszköz teszteléséhez a függvények a legtöbb Postman, amely integrálható a Chrome böngészőben. Postman telepítése: [első Postman](https://www.getpostman.com/). Postman segítségével szabályozhatja, számos további attribútumok HTTP-kérés.
 
 > [!TIP]
-> A vizsgálati eszköz, amely ismeri a Feladatkezelő HTTP használata. Az alábbiakban néhány más Postman:  
+> A vizsgálati eszköz, amely a leginkább teljesebb HTTP Protokollt használja. Az alábbiakban néhány más Postman:  
 >
 > * [Fiddler](http://www.telerik.com/fiddler)  
-> * [Paw](https://luckymarmot.com/paw)  
+> * [Emelt hozzáférési szintű munkaállomás](https://luckymarmot.com/paw)  
 >
 >
 
-A függvény egy kérelemtörzset tesztelése a Postman:
+A kérelem törzsében a függvény tesztelése a Postmanben:
 
-1. Indítsa el a Postman a **alkalmazások** gomb a böngészőablakba bal felső sarkában.
-2. Másolás a **függvény URL-cím**, majd illessze be a Postman. Ez magában foglalja a hozzáférési kód lekérdezési karakterláncot.
+1. Indítsa el a Postmant, a **alkalmazások** gombra a Chrome böngészőben ablak bal felső sarkában.
+2. Másolás a **függvény URL-címének**, és illessze be a Postman. Ez magában foglalja a hozzáférési kód lekérdezési karakterlánc paramétereként.
 3. Módosítsa a HTTP-metódus **POST**.
-4. Kattintson a **törzs** > **nyers**, és adja hozzá a következőhöz hasonló JSON kérelemtörzset:
+4. Kattintson a **törzs** > **nyers**, és adjon hozzá egy JSON-kérés törzsének a következőhöz hasonló:
 
     ```json
     {
@@ -141,11 +141,11 @@ A függvény egy kérelemtörzset tesztelése a Postman:
     ```
 5. Kattintson a **küldése**.
 
-A következő kép bemutatja, hogy az oktatóanyag az egyszerű echo függvény példa tesztelése.
+Az alábbi képen látható, ez az oktatóanyag az egyszerű echo függvény példa tesztelése.
 
-![Képernyőfelvétel a Postman felhasználói felülete](./media/functions-test-a-function/postman-test.png)
+![Képernyőkép a Postman felhasználói felület](./media/functions-test-a-function/postman-test.png)
 
-A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a függvény végrehajtása:
+A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
 
     2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
@@ -157,61 +157,61 @@ A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a füg
     2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
     2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
 
-### <a name="test-with-curl-from-the-command-line"></a>Tesztelje a cURL a parancssorból
-Gyakran amikor tesztelést szoftver, nincs szükség minden további, mint a parancssor segítségével az alkalmazás hibakeresését kereséséhez. Ez nem eltér a functions tesztelése. Ne feledje, hogy a cURL alapértelmezés szerint a Linux-alapú rendszerekhez. A Windows, először le kell töltenie és telepítse a [cURL eszköz](https://curl.haxx.se/).
+### <a name="test-with-curl-from-the-command-line"></a>A parancssorból a cURL tesztelése
+Általában amikor tesztelt szoftvert, nem elengedhetetlen keresse ki az esetleges további a parancssor segítségével az alkalmazás hibakeresését. Ez nem eltér a functions tesztelése. Vegye figyelembe, hogy a cURL Linux-alapú rendszereken alapértelmezés szerint elérhető. A Windows, akkor először le kell töltenie, és telepítse a [cURL eszköz](https://curl.haxx.se/).
 
-A függvény, amely korábban meghatározott teszteléséhez másolja a **függvény URL-cím** a portálról. Rendelkezik a következő formában:
+A függvény, amely a korábban meghatározott teszteléséhez, másolja a **függvény URL-Címének** a portálról. Rendelkezik a következő formátumot követi:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Ez a indítására, a függvény az URL-cím. Használjon a cURL-parancsot a parancssorból egy GET végrehajtásához (`-G` vagy `--get`) függvény kérelmet:
+Ez az a függvényt aktiváló URL-CÍMÉT. Tesztelje a cURL-parancs segítségével a parancssorból, hogy egy GET (`-G` vagy `--get`) függvény kérelmet:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Ebben a példában a lekérdezési karakterlánc paraméterként, amelyek adatként átadhatók igényel (`-d`) található a cURL-parancsot:
+Ebben a példában van szükség a lekérdezési sztring paramétereként, amely adatok argumentumként átadhatók (`-d`) az a cURL-parancsot:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
 
 Futtassa a parancsot, és a függvény a következő kimenet jelenik meg a parancssorban:
 
-![Képernyőkép a parancssori kimenet](./media/functions-test-a-function/curl-test.png)
+![Kimenet képernyőképe a parancssor használatával](./media/functions-test-a-function/curl-test.png)
 
-A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a függvény végrehajtása:
+A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
 
     2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
     2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
     2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
     2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
 
-### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Egy blob eseményindító tesztelése Tártallózó használatával
-Egy blob funkció segítségével tesztelheti [Azure Tártallózó](http://storageexplorer.com/).
+### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Storage Explorer használatával tesztelje a blob eseményindító
+Blob eseményindító függvény használatával tesztelheti [Azure Storage Explorer](http://storageexplorer.com/).
 
-1. Az a [Azure Portal] függvény alkalmazás, hozzon létre egy C#, F # vagy JavaScript blob eseményindító függvényt. A blob-tároló neve a figyelheti a elérési útjának beállítása. Példa:
+1. Az a [Azure Portal] a függvényalkalmazás létrehozása a C#, F # vagy JavaScript blob eseményindító függvény. Állítsa be a elérési útjának figyelése a blobtároló nevét. Példa:
 
         files
 2. Kattintson a **+** gombra, válassza ki vagy hozzon létre a használni kívánt tárfiókot. Ezt követően kattintson a **Create** (Létrehozás) gombra.
-3. A következő szöveggel hozzon létre egy szövegfájlt, és mentse azt:
+3. Hozzon létre egy szövegfájlt az alábbi szövegre, és mentse azt:
 
         A text file for blob trigger function testing.
-4. Futtatás [Azure Tártallózó](http://storageexplorer.com/), és kapcsolódjon a figyelt tárfiók a blob tároló.
-5. Kattintson a **feltöltése** a szöveges fájl feltöltéséhez.
+4. Futtatás [Azure Storage Explorer](http://storageexplorer.com/), és csatlakozzon a figyelt storage-fiókban a blob-tároló.
+5. Kattintson a **feltöltése** a szöveges fájlt feltölteni.
 
-    ![Képernyőkép a Tártallózó alkalmazással](./media/functions-test-a-function/azure-storage-explorer-test.png)
+    ![Képernyőkép a Storage Explorerben](./media/functions-test-a-function/azure-storage-explorer-test.png)
 
-Az alapértelmezett blob eseményindító függvény kód a naplókban lévő blob feldolgozása jelentések:
+Az alapértelmezett blob eseményindító függvény kód a blob, a naplók feldolgozását jelentések:
 
     2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
     2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
     2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
     2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
 
-## <a name="test-a-function-within-functions"></a>Egy függvény funkciók tesztelése
-A portál az célja, hogy lehetővé teszik, hogy HTTP tesztelése az Azure Functions és indított időzítő funkciók. Egyéb, a tesztelni kívánt funkciót kiváltásához funkciók is létrehozhat.
+## <a name="test-a-function-within-functions"></a>Egy függvény belül függvények tesztelése
+A portál a célja, hogy HTTP tesztelése az Azure Functions és az időzítő által aktivált függvények. Tesztelt egyéb funkciók aktiválásához funkciók is létrehozhat.
 
-### <a name="test-with-the-functions-portal-run-button"></a>A funkciók portál Futtatás gombra a teszt
-A portál biztosít egy **futtatása** gombra, hogy használhatják-bizonyos korlátozott tesztelése. A gombra kattintva megadhatja egy kérelemtörzset, de nem adja meg a lekérdezési karakterlánc paramétereket, illetve nem frissíthető a kérelemfejlécekben.
+### <a name="test-with-the-functions-portal-run-button"></a>A portál Futtatás gombjával funkciók tesztelése
+A portál biztosít egy **futtatása** gombot, amely segítségével hajtsa végre egy korlátozott tesztelése. Kéréstörzs gomb használatával biztosíthat, de nem adja meg a lekérdezési karakterlánc paraméterei, illetve nem frissíthető a kérelemfejlécek.
 
-A HTTP-eseményindító a következőhöz hasonló JSON karakterláncnak hozzáadásával korábban létrehozott függvény tesztelése a **Request body** mező. Kattintson a **futtatása** gombra.
+A korábban létrehozott hozzáadva a következőhöz hasonló JSON-karakterláncot HTTP által aktivált függvény tesztelése a **kérelem törzse** mező. Kattintson a **futtatása** gombra.
 
 ```json
 {
@@ -220,7 +220,7 @@ A HTTP-eseményindító a következőhöz hasonló JSON karakterláncnak hozzáa
 }
 ```
 
-A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a függvény végrehajtása:
+A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
 
     2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
@@ -233,44 +233,44 @@ A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a füg
     2016-03-23T08:03:18.744 Function completed (Success, Id=753a01b0-45a8-4125-a030-3ad543a89409)
 
 
-### <a name="test-with-a-timer-trigger"></a>Az időzítő eseményindító tesztelése
-Egyes funkciók nem megfelelően tesztelni a korábban említett eszközök. Tegyük fel, amely akkor fut, amikor egy üzenet megszakad a várólista eseményindító függvény [Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md). Mindig írhat kódot a dobja el az üzenetet a várólistán, és példákat a konzol projektben áll a cikk későbbi részében. Van azonban egy másik módszert alkalmaz is használhat, amely közvetlenül tesztek funkciók.  
+### <a name="test-with-a-timer-trigger"></a>Időzítő eseményindító tesztelése
+Bizonyos függvények a korábban említett eszközei megfelelően nem tesztelhető. Vegyük példaként, amely akkor fut, amikor egy üzenet van érkező üzenetsor eseményindító függvény [Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md). Mindig is írhat kódot a dobja el egy üzenetet az üzenetsorba, és a egy példát a konzol-projektben a cikk későbbi részében. Van azonban használhat, amely teszteli a függvényeket közvetlenül egy másik módszere.  
 
-Egy időzítő indítófeltételt konfigurált üzenetsorokat használhatja kimeneti kötése. Hogy időzítő aktiváló kód majd írhat a tesztüzenetet a várakozási sorba. Ez a szakasz egy példán keresztül bemutatja, hogyan.
+Egy időzítő indítófeltételt üzenetsor konfigurálva használhat kimeneti kötést. Időzítő eseményindító kódot majd írhat a teszt üzeneteket az üzenetsorba. Ez a szakasz egy példán keresztül mutatja be.
 
-További információt az Azure Functions kötések használatával, lásd: a [Azure Functions fejlesztői segédanyagai](functions-reference.md).
+További részletes információ a kötések használata az Azure Functions: a [Azure Functions fejlesztői segédanyagai](functions-reference.md).
 
-#### <a name="create-a-queue-trigger-for-testing"></a>A létrehozott várólista tesztelése
-Bemutatják, ezt a módszert használja, azt először létre kell hoznia egy várólista funkció, amely teszteléséhez nevű várólista szeretnénk `queue-newusers`. Ez a funkció be egy új felhasználó a Queue storage eldobott nevét és címét adatokat dolgozza fel.
+#### <a name="create-a-queue-trigger-for-testing"></a>Tesztelési üzenetsor eseményindító létrehozása
+Ez a megközelítés bemutatása érdekében először létrehozzuk, tesztelni szeretnénk a várólisták nevű üzenetsor eseményindító függvény `queue-newusers`. Ez a függvény nevét és címét, a Queue storage egy új felhasználó érkező információk dolgozza fel.
 
 > [!NOTE]
-> Ha egy másik várólistához nevet használja, győződjön meg arról, hogy a használt név megfelel-e a [elnevezési üzenetsorok és metaadatok](https://msdn.microsoft.com/library/dd179349.aspx) szabályok. Ellenkező esetben a rendszer hibaüzenetet küld.
+> Ha egy másik várólistához nevet használ, ellenőrizze, hogy használt név megfelel-e a [elnevezési üzenetsorok és metaadatok](https://msdn.microsoft.com/library/dd179349.aspx) szabályokat. Ellenkező esetben a rendszer hibaüzenetet küld.
 >
 >
 
-1. Az a [Azure Portal] függvény alkalmazás, kattintson a **új függvény** > **QueueTrigger - C#**.
-2. Adja meg a várólista nevét a várólista függvény által figyelt:
+1. Az a [Azure Portal] a függvényalkalmazást, kattintson a **új függvény** > **QueueTrigger - C#**.
+2. Adja meg a várólista függvény által figyelendő az üzenetsor neve:
 
         queue-newusers
 3. Kattintson a **+** gombra, válassza ki vagy hozzon létre a használni kívánt tárfiókot. Ezt követően kattintson a **Create** (Létrehozás) gombra.
-4. Hagyja megnyitva, a portál böngészőablakot, figyelheti a naplóbejegyzéseket, az alapértelmezett várólista függvény sablon kódot.
+4. Hagyja nyitva, a portál böngészőablakot, hogy meg tudja figyelni a naplóbejegyzéseket az alapértelmezett várólista függvény sablonkódját a.
 
-#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Hozzon létre egy időzítő indítófeltételt üzenetet a várólistában lévő elvetése érdekében
-1. Nyissa meg a [Azure Portal] egy új böngészőablakban, és keresse meg a függvény alkalmazást.
-2. Kattintson a **új függvény** > **TimerTrigger - C#**. Adja meg a beállítása, hogy milyen gyakran az időzítő kód teszteli a várólista függvény cron-kifejezést. Ezt követően kattintson a **Create** (Létrehozás) gombra. Ha a vizsgálatot, 30 másodperces futtatásához, a következő használható [CRON-kifejezés](https://wikipedia.org/wiki/Cron#CRON_expression):
+#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Az üzenetsorban lévő üzenet eldobni időzítő eseményindító létrehozása
+1. Nyissa meg a [Azure Portal] egy új böngészőablakban, és keresse meg a függvényalkalmazást.
+2. Kattintson a **új függvény** > **TimerTrigger – C#**. Adjon meg egy cron-kifejezés, milyen gyakran teszteli, az üzenetsor-függvény időzítő kódot beállítani. Ezt követően kattintson a **Create** (Létrehozás) gombra. Ha azt szeretné, hogy a teszt 30 másodpercenként futtatásához, a következőt használhatja [CRON-kifejezés](https://wikipedia.org/wiki/Cron#CRON_expression):
 
         */30 * * * * *
 3. Kattintson a **integráció** lap az új időzítő eseményindító.
-4. A **kimeneti**, kattintson a **+ új kimeneti**. Kattintson a **várólista** és **válasszon**.
-5. Megjegyzés: a nevet használja a **várólista message objektumot**. Ezzel a időzítő függvény kódban.
+4. A **kimeneti**, kattintson a **+ új kimenet**. Kattintson a **várólista** és **kiválasztása**.
+5. Megjegyzés: a nevet használja a **várólista üzenetobjektum**. Ezzel az időzítő függvény kódban.
 
         myQueue
-6. Adja meg a várólista nevét, ahol a hibaüzenet:
+6. Adja meg a várólista nevét, ahová az üzenet elküldésekor:
 
         queue-newusers
-7. Kattintson a **+** gombra kattintva válassza ki a korábban használt a várólista eseményindító tárfiókot. Ezután kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **+** gombra kattintva válassza ki a tárfiókot, az üzenetsor eseményindító a korábban használt. Ezután kattintson a **Save** (Mentés) gombra.
 8. Kattintson a **Develop** az időzítő eseményindító fülre.
-9. A következő kódot használhatja a C# időzítő függvény, mindaddig, amíg a várólista üzenet objektum néven korábban bemutatott használta. Ezután kattintson a **Save** (Mentés) gombra.
+9. A C# időzítő függvény esetében a következő kódot használhatja, mindaddig, amíg a várólista üzenet objektum névvel korábban bemutatott használt. Ezután kattintson a **Save** (Mentés) gombra.
 
     ```cs
     using System;
@@ -287,7 +287,7 @@ Bemutatják, ezt a módszert használja, azt először létre kell hoznia egy v�
     }
     ```
 
-Ezen a ponton a C# időzítő végrehajtja 30 másodpercenként, ha követte a példa cron-kifejezés. A naplókat az időzítő jelentést minden egyes végrehajtása:
+Ezen a ponton a C# időzítő függvény végrehajtása 30 másodpercenként, ha például cron-kifejezésként használt. A naplók az időzítő függvény minden egyes végrehajtása jelentheti:
 
     2016-03-24T10:27:02  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.004 Function started (Id=04061790-974f-4043-b851-48bd4ac424d1)
@@ -295,23 +295,23 @@ Ezen a ponton a C# időzítő végrehajtja 30 másodpercenként, ha követte a p
     2016-03-24T10:27:30.004 {"name":"User testing from C# timer function","address":"XYZ"}
     2016-03-24T10:27:30.004 Function completed (Success, Id=04061790-974f-4043-b851-48bd4ac424d1)
 
-A várólista függvény böngészőablakban minden egyes üzenet feldolgozás alatt látható:
+A várólista függvény a böngésző ablakában látható minden üzenet feldolgozása folyamatban:
 
     2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
     2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"User testing from C# timer function","address":"XYZ"}
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
-## <a name="test-a-function-with-code"></a>Egy függvény kóddal tesztelése
-Szükség lehet egy külső alkalmazás vagy keretrendszer, a funkciók ellenőrzéséhez hozzon létre.
+## <a name="test-a-function-with-code"></a>A kód egy függvény tesztelése
+Előfordulhat, hogy szeretne létrehozni egy külső alkalmazás vagy keretrendszer, a függvény teszteléséhez.
 
-### <a name="test-an-http-trigger-function-with-code-nodejs"></a>Egy HTTP-eseményindító függvény kóddal tesztelése: Node.js
-A Node.js-alkalmazás segítségével hajtható végre egy HTTP-kérést a függvény tesztelése.
+### <a name="test-an-http-trigger-function-with-code-nodejs"></a>A kód egy HTTP által aktivált függvény tesztelése: Node.js
+Node.js-alkalmazások segítségével HTTP-kérést, a függvény teszteléséhez hajtsa végre.
 Feltétlenül állítson be:
 
-* A `host` a kérelem-beállításokban, a függvény app gazdagépre.
-* A függvény nevét a `path`.
-* A hozzáférési kódját (`<your code>`) található a `path`.
+* A `host` a kérelem beállítások függvény app-gazdagépre.
+* A függvény neve az a `path`.
+* A hozzáférési kódot (`<your code>`) az a `path`.
 
 Példa:
 
@@ -364,7 +364,7 @@ Kimenet:
     Hello Wes testing with Node.JS code
     The address you provided is Dallas, T.X. 75201
 
-A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a függvény végrehajtása:
+A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
 
     2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
@@ -377,15 +377,15 @@ A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a füg
     2016-03-23T08:09:01.215 Function completed (Success, Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
 
 
-### <a name="test-a-queue-trigger-function-with-code-c"></a>A várólista funkció kóddal tesztelése: C# #
-Azt a korábban említett, hogy várólista eseményindító eldobásához egy üzenetet a várólistában lévő kód segítségével tesztelheti. Az alábbi példakód C#-kódban szerepel a alapul a [Ismerkedés az Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md) oktatóanyag. Kód más nyelveken érhető el az adott hivatkozáson.
+### <a name="test-a-queue-trigger-function-with-code-c"></a>Tesztelje a kódot az üzenetsor eseményindító függvény: C# #
+Azt korábban említettük, hogy egy üzenetsor eseményindító tesztelheti az üzenetsorban lévő üzenet eldobni kód használatával. Az alábbi példakód C#-kódban megjelenő alapul a [Azure Queue storage használatának első lépései](../storage/queues/storage-dotnet-how-to-use-queues.md) oktatóanyag. A kód más nyelven is a hivatkozás érhető el.
 
-Ez a kód egy konzolalkalmazás teszteléséhez a következőket kell tennie:
+Ez a kód egy konzolalkalmazást a teszteléséhez tegye a következőket:
 
 * [A tárolási kapcsolati karakterlánc konfigurálása az app.config fájlban](../storage/queues/storage-dotnet-how-to-use-queues.md).
-* Adjon át egy `name` és `address` az alkalmazás paraméterekként. Például: `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Ez a kód fogad el nevét és címét egy új felhasználó parancssori argumentumok futásidőben.)
+* Adja át a `name` és `address` az alkalmazás paraméterekként. Például: `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Ez a kód fogadja el a nevét és címét, egy új felhasználó parancssori argumentumként futtatás ideje alatt.)
 
-C# példakódot:
+A példában a C#-kódot:
 
 ```cs
 static void Main(string[] args)
@@ -433,7 +433,7 @@ static void Main(string[] args)
 }
 ```
 
-A várólista függvény böngészőablakban minden egyes üzenet feldolgozás alatt látható:
+A várólista függvény a böngésző ablakában látható minden üzenet feldolgozása folyamatban:
 
     2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)

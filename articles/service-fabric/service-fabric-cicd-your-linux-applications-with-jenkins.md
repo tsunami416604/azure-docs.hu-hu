@@ -4,22 +4,20 @@ description: Folyamatos felépítése és integrálása a Jenkins használatáva
 services: service-fabric
 documentationcenter: java
 author: sayantancs
-manager: timlt
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
+manager: jpconnock
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/9/2018
+ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: efdbfa9664e180031926982adedfcf94a4184081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0de62b6fa05ccad1977e7d98a614e8d601409f5b
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972248"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390177"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>A Jenkins használata a fejleszthetők és helyezhetők üzembe Linuxos alkalmazások
 A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához és üzembe helyezéséhez. Ebből a témakörből megtudhatja, hogyan helyezheti üzembe Azure Service Fabric-alkalmazásait a Jenkins használatával.
@@ -325,6 +323,10 @@ Fejlesztési és tesztelési környezetek esetében konfigurálhatja az Azure hi
 11. Alatt **Alkalmazáskonfiguráció**, konfigurálja a **alkalmazásnév**, **alkalmazástípus**, (relatív) és **Application Manifestelérésiútja** mezőket.
     ![Az Azure hitelesítő adatok beállítása a Service Fabric Jenkins felépítés utáni művelet](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
 12. Kattintson a **konfigurációjának ellenőrzése**. Kattintson az ellenőrzés sikeres **mentése**. A Jenkins-feladat folyamat most már teljes körűen konfigurálva. Továbbra is a [további lépések](#next-steps) az üzemelő példány teszteléséhez.
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Hibaelhárítás a Jenkins beépülő modul
+
+Ha bármely hibái a Jenkins beépülő modulok, a fájl be a problémát a [Jenkins JIRA](https://issues.jenkins-ci.org/) az adott összetevő.
 
 ## <a name="next-steps"></a>További lépések
 A GitHub és a Jenkins beállítása kész. Fontolja meg néhány mintamódosítást a a `reliable-services-actor-sample/Actors/ActorCounter` projekt a saját elágazásában a tárház https://github.com/Azure-Samples/service-fabric-java-getting-started. A módosításokat továbbíthatja a távoli `master` ágra (vagy bármilyen egyéb olyan használata már konfigurálta ágra). Ez aktiválja a konfigurált `MyJob` Jenkins-feladatot. Beolvassa a módosításokat a Githubról, lépteti őket, és központilag telepíti az alkalmazást a fürt megadott felépítés utáni műveletekben.  

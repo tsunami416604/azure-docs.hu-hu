@@ -1,6 +1,6 @@
 ---
-title: Hol találhatók a szükséges egyéni által fejlesztett alkalmazás adott API |} Microsoft Docs
-description: Hozzá kell férnie egy adott API-nak az egyéni engedélyek fejlesztése az Azure AD-alkalmazást
+title: Hogyan találhatja meg egy adott API-t egy egyénileg fejlesztett alkalmazásba történő üzembe helyezéshez |} A Microsoft Docs
+description: Az adott API-t az egyéni eléréséhez szükséges engedélyek konfigurálásának módjáról az Azure AD alkalmazást fejlesztett ki.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,27 +11,27 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 94f3c68e9a1433d2a433e2a3bbe557b487e7bf75
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f15e84d6efa30d2e66c7ff1d92551bece94938e7
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332058"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363346"
 ---
-# <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Egy adott API szükséges egyéni által fejlesztett alkalmazás megkeresése
+# <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Egy adott API-t egy egyénileg fejlesztett alkalmazásba történő üzembe helyezéshez megkeresése
 
-API-k eléréséhez szükséges hozzáférési hatókörök és a szerepkörök konfigurációja. Ha az erőforrás alkalmazás webes API-k ügyfélalkalmazások számára elérhetővé tenni kívánt, hozzáférési hatókörök és szerepkörök konfigurálása az API-t szeretné. Ha azt szeretné, hogy egy webes API-k elérésére ügyfélalkalmazást, kell konfigurálni az engedélyeket, hogy az API-alkalmazás regisztrációja.
+API-k a hozzáférést a hozzáférési hatókörök és szerepkörök van szükség. Ha szeretné elérhetővé tenni az erőforrás alkalmazás webes API-kat az ügyfélalkalmazások számára, a hozzáférési hatókörök és szerepkörök beállítása az API-t szeretné. Ha azt szeretné, hogy egy ügyfélalkalmazás egy webes API-k elérésére, kell eléréséhez az alkalmazás regisztrációját az API-engedélyek konfigurálása.
 
-## <a name="configuring-a-resource-application-to-expose-web-apis"></a>Egy erőforrás-alkalmazások – ezek általában a webes API-k konfigurálása
+## <a name="configuring-a-resource-application-to-expose-web-apis"></a>Webes API-k elérhetővé egy erőforrás-alkalmazás konfigurálása
 
-Amikor teszi ki a webes API-t, jeleníthető meg az API-t a **API kiválasztása** listára, amikor engedélyeket ad hozzá egy alkalmazás regisztrálása. A hozzáférési hatókörök hozzáadásához kövesse a témakörben ismertetett lépéseket [hozzáférési hatókörök hozzáadása az erőforrás alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-access-scopes-to-your-resource-application).
+Amikor elérhetővé teszi a webes API-t, jeleníthető meg az API-t a **API kiválasztása** listában engedélyek egy alkalmazásregisztráció való hozzáadásakor. A hozzáférési hatókörök hozzáadásához kövesse az ismertetett lépéseket [az erőforrás-alkalmazás hozzáadása a hozzáférési hatókörök](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-access-scopes-to-your-resource-application).
 
-## <a name="configuring-a-client-application-to-access-web-apis"></a>A webes API-k elérésére ügyfélalkalmazás konfigurálása
+## <a name="configuring-a-client-application-to-access-web-apis"></a>Webes API-k eléréséhez egy ügyfélalkalmazás konfigurálása
 
-Amikor az alkalmazás regisztrálása az engedélyeket, lehet **API-hozzáférés hozzáadása** feladatban felfedett webes API-k számára. Webes API-k eléréséhez kövesse a témakörben ismertetett lépéseket [adja hozzá a hitelesítő adatokat vagy webes API-k hozzáférési engedélye a](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-credentials-or-permissions-to-access-web-apis).
+Engedélyeket ad hozzá az alkalmazás regisztrációját, ha **API-hozzáférés hozzáadása** közzétett webes API-k. Webes API-k eléréséhez kövesse az ismertetett lépéseket [adja hozzá a hitelesítő adatokat vagy webes API-k elérésére jogosult](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-credentials-or-permissions-to-access-web-apis).
 
 ## <a name="next-steps"></a>További lépések
 

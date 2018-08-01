@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 07/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 794039ee1a5b1cf3b382e0f0769383b1e033e982
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b003f29db699d89f0d3cec76ee3562ffad08b40f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046940"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Oktatóanyag: Azure Active Directory-integráció a Jamf Pro
 
@@ -139,7 +139,21 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![A Jamf Pro-konfiguráció](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-10. Görgessen lefelé legfeljebb **IDENTITÁSSZOLGÁLTATÓ** alatt a **egyszeri bejelentkezés** szakaszt, és hajtsa végre az alábbi lépéseket:
+10. Az a **egyszeri bejelentkezés** oldalon tegye a következőket:
+
+    ![A Jamf Pro egyetlen](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+
+    a. Válassza ki **a Jamf Pro Server** egyszeri bejelentkezéses hozzáférés engedélyezéséhez.
+
+    b. Kiválasztásával **az összes felhasználó engedélyezése Mellőzés** a felhasználók nem irányítja át az identitásszolgáltató bejelentkezési oldal a hitelesítéshez, de is bejelentkezhetnek a Jamf Pro közvetlenül helyette. Amikor egy felhasználó megpróbál hozzáférni a Jamf Pro az identitásszolgáltató-n keresztül, identitásszolgáltató által kezdeményezett egyszeri Bejelentkezést, hitelesítést és engedélyezést történik.
+
+    c. Válassza ki a **NameID** beállításhoz tartozó **FELHASZNÁLÓLEKÉPEZÉS: SAML**. Alapértelmezés szerint ez a beállítás **NameID** , de előfordulhat, hogy megadhat egy egyéni attribútumot.
+
+    d. Válassza ki **E-mail** a **felhasználó-HOZZÁRENDELÉS: a JAMF PRO**. A Jamf Pro leképezi a következő módokon az identitásszolgáltató által küldött SAML-attribútumok: a felhasználók és csoportok számára. Amikor egy felhasználó megpróbál hozzáférni a Jamf Pro a Jamf Pro alapértelmezés szerint a felhasználóval kapcsolatos adatok beolvasása az identitásszolgáltató, és egyeztet a Jamf Pro felhasználói fiókok ellen. Ha a bejövő felhasználói fiók nem létezik a Jamf Pro szolgáltatásban, majd csoport névegyeztetés történik.
+
+    e. Illessze be az értéket `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` a a **ATTRIBÚTUM CSOPORTNÉV** szövegmezőbe.
+ 
+11. A legfeljebb azonos lapon görgetve **IDENTITÁSSZOLGÁLTATÓ** alatt a **egyszeri bejelentkezés** szakaszt, és hajtsa végre az alábbi lépéseket:
 
     ![A Jamf Pro-konfiguráció](./media/jamfprosamlconnector-tutorial/configure3.png)
 
@@ -149,10 +163,10 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. Válassza ki **metaadatok URL-címe** lehetőségként a a **IDENTITY PROVIDER METAADATFORRÁS** legördülő listából, majd illessze be az alábbi szövegmezőbe a **alkalmazás összevonási metaadatainak URL-címe** érték, amely az Azure Portalról másolta.
 
-    d. Másolás a **Entitásazonosító** vlaue és illessze be azt a **azonosító (entityid)** szövegmezőjébe **a Jamf Pro tartomány és URL-címek** szakaszban az Azure Portalon.
+    d. Másolás a **Entitásazonosító** értékét, és illessze be azt a **azonosító (entityid)** szövegmezőjébe **a Jamf Pro tartomány és URL-címek** szakaszban az Azure Portalon.
 
     >[!NOTE]
-    > Itt `aadsso` (amely erre a célra) altartomány része. Ez az érték használatával végezze el a bejelentkezési URL- és a válasz URL-cím a **a Jamf Pro tartomány és URL-címek** szakaszban az Azure Portalon.
+    > Itt elmosódott értéke az altartomány része. Ez az érték használatával végezze el a bejelentkezési URL- és a válasz URL-cím a **a Jamf Pro tartomány és URL-címek** szakaszban az Azure Portalon.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
@@ -270,7 +284,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

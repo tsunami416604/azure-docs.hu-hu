@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1b14e1460eec54e89046f204be8f0c3a8f929881
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 6ca32d51a52cf636b1c41667e20872cfe49fa7e2
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264592"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390153"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -60,6 +60,7 @@ Letöltés |} [Töltse le az Azure AD Connect](http://go.microsoft.com/fwlink/?L
 
 ### <a name="fixed-issues"></a>Rögzített kapcsolatos problémák 
 
+- Kijavítva a hiba, ahol az AAD Connect-kiszolgáló a következő jelenik meg magas CPU-használat .net 4.7.2 verziófrissítés utáni teendők
 - Kijavítva a hiba, amely akkor időnként az eredmény egy hibaüzenet, automatikusan feloldásra SQL holtpont hiba
 - Számos kisegítő lehetőségekkel kapcsolatos probléma kijavítva a szinkronizálási Szabályszerkesztővel és a Sync Service Manager  
 - Kijavítva a hiba, ahol az Azure AD Connect nem sikerült beolvasni a beállításjegyzék-beállítás információk
@@ -256,9 +257,9 @@ Engedélyezés    | Rendszergazdák                | Teljes hozzáférés       
 Engedélyezés    | Vállalati tartományvezérlők | Tartalom listázása        | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Olvasási engedélyek     | Ez az objektum  |
-Engedélyezés    | A hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
-Engedélyezés    | A hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
-Engedélyezés    | A hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
+Engedélyezés    | Hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
+Engedélyezés    | Hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
+Engedélyezés    | Hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
 
 A beállítások a az AD DS-fiók megerősítéséhez futtathatja [a PowerShell-szkript](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). A PowerShell-szkriptet fogja hozzárendelni az engedélyeket, az AD DS-fiókot a fent említett.
 
@@ -272,7 +273,7 @@ A PowerShell-parancsprogram használatával alkalmazni ezeket a beállításokat
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-Ahol (a(z) 
+Ahol 
 
 **$ObjectDN** = az Active Directory-fiók, amelynek engedélyeket kell megfeszíteni kell.
 
@@ -591,7 +592,7 @@ CBool(
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Válassza ezt:|
-    |CertKeyAlgorithmParams|CertHashString|Ahol (a(z)|
+    |CertKeyAlgorithmParams|CertHashString|Ahol|
     |||A következővel:|
 
 * Lehetővé teszi ügyfeleink számára hozzon létre egyéni szinkronizálási szabályok sAMAccountName domainNetBios és csoport objektumainak domainFQDN, valamint a felhasználói objektumok distinguishedName folyamat következő sémaváltozások vezettek be:

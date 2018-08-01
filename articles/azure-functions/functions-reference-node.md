@@ -1,9 +1,9 @@
 ---
-title: Az Azure Functions JavaScript-fejlesztői útmutatója |} Microsoft Docs
-description: Megtudhatja, hogyan fejleszthet függvények JavaScript használatával.
+title: Az Azure Functions JavaScript-fejlesztői útmutatója |} A Microsoft Docs
+description: Megismerheti, hogyan hozhat létre a függvények JavaScript használatával.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,22 +15,22 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
-ms.author: tdykstra
-ms.openlocfilehash: 78f29cd4a20861e40bb7f7f398979b8d93387a7b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.author: glenga
+ms.openlocfilehash: 7164ee938c61f9b8ec0b80a1b0f37b5f4838ca13
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936626"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344521"
 ---
-# <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript fejlesztői útmutató
+# <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
-Az Azure Functions JavaScript élményét megkönnyíti, hogy egy függvénynek, amely szerint átadott exportálása egy `context` objektum kommunikál a futtatókörnyezet és fogadása és adatküldés kötéseken keresztül.
+Az Azure Functions JavaScript élmény megkönnyíti egy függvényt, mint amelyet exportálása egy `context` kommunikál a futásidejű és fogadása és kötések keresztül az adatok küldésének objektum.
 
 Ez a cikk feltételezi, hogy Ön már elolvasta a [Azure Functions fejlesztői segédanyagai](functions-reference.md).
 
 ## <a name="exporting-a-function"></a>Egy függvény exportálása
-Minden JavaScript-funkcióként kell exportálnia az egyetlen `function` keresztül `module.exports` található a függvény, majd futtassa a futási időben. Ez a funkció mindig tartalmaznia kell egy `context` objektum.
+Minden JavaScript-függvények kell exportálnia az egyetlen `function` keresztül `module.exports` keresse meg a függvényt, majd futtassa az modul. Ez a függvény mindig tartalmaznia kell egy `context` objektum.
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -46,16 +46,16 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-A kötések `direction === "in"` függvény argumentumaként, ami azt jelenti, amelyeket felhasználhat továbbítódnak [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) dinamikusan kezelje az új bemeneti adatokat (például használatával `arguments.length` az ismétlés a bemeneti adatok). Ez a funkció esetén kényelmes csak egy eseményindító és nincs további bevitel, mivel nélkül hivatkozó kiszámítható hozzáfér az eseményindítóra vonatkozó információt a `context` objektum.
+Vazby prvku `direction === "in"` függvény argumentumaként, ami azt jelenti, hogy használhatja továbbítódnak [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) dinamikusan kezelje az új bemenetek (például használatával `arguments.length` minden a bemeneteket ciklustevékenység). Ezt a funkciót azért hasznos, ha csak egy eseményindítót, és nincs további bemenetek eseményindító adatait anélkül hivatkozó kiszámítható módon érheti a `context` objektum.
 
-Az argumentumok mindig továbbítódnak a sorrendben történik a függvény *function.json*, még akkor is, ha nem adja meg azokat a kivitel utasításban. Például, ha rendelkezik `function(context, a, b)` és módosítsa úgy, hogy `function(context, a)`, továbbra is használhatja a értékének `b` szakaszra függvény kódban `arguments[2]`.
+Az argumentumok mindig továbbítódnak a függvényt, amelyben a bekövetkezésük sorrendjében *function.json*, még akkor is, ha nem adja meg azokat a az export utasítás. Például, ha rendelkezik `function(context, a, b)` , és módosítsa a következőre `function(context, a)`, továbbra is használhatja az értékét `b` lépésként tekintse át a függvény kódját a `arguments[2]`.
 
-Összes kötését, irány, attól függetlenül is továbbítódnak a `context` (lásd a következő parancsfájl) objektum. 
+Összes kötését iránya, függetlenül is továbbít a `context` (lásd a következő parancsfájl) objektum. 
 
-## <a name="context-object"></a>környezeti objektumot
-A futtatókörnyezet használ egy `context` objektum és a függvény az adatok, és lehetővé teszik, hogy a futtatókörnyezet kommunikálni.
+## <a name="context-object"></a>környezeti objektumra
+A futtatókörnyezet-használja egy `context` objektum át adat és a függvényt, és lehetővé teszi, hogy futtatókörnyezetével.
 
-A `context` objektum mindig a függvény az első paraméter, és szerepelnie kell függvénykötésnek mert metódusok, mint `context.done` és `context.log`, amelyek ahhoz, hogy a futtatókörnyezet helyesen használni. Nevezze el az lehet az objektum függetlenül szeretné (például `ctx` vagy `c`).
+A `context` objektum mindig a függvény első paraméterként, és szerepelnie kell, mert módszerek például `context.done` és `context.log`, amely ahhoz, hogy a futtatókörnyezet megfelelően használni. Elnevezheti az objektum bármit szeretne (például `ctx` vagy `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -69,7 +69,7 @@ module.exports = function(context) {
 ```
 context.bindings
 ```
-Egy elnevezett objektum beállítása/beolvasása, amely a bemeneti és kimeneti adatokat tartalmaz. Például a következő kötés meghatározást a *function.json* megadható, hogy a várólista tartalmának eléréséhez a `context.bindings.myInput` objektum. 
+Egy elnevezett objektumot, amely tartalmazza a bemeneti és kimeneti adatokat ad vissza. Például a következő kötés meghatározást az *function.json* lehetővé teszi, hogy a várólistából tartalmának eléréséhez a `context.bindings.myInput` objektum. 
 
 ```json
 {
@@ -89,14 +89,14 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-### <a name="contextdone-method"></a>Context.Done módszer
+### <a name="contextdone-method"></a>Context.Done metódus
 ```
 context.done([err],[propertyBag])
 ```
 
-Figyelmeztet, hogy a kód befejezte a futtatókörnyezet. Meg kell hívnia `context.done`, vagy ellenkező esetben a futásidejű soha nem tudja, hogy a függvény befejeződött, és végrehajtása időtúllépést okoz. 
+Arról tájékoztatja a futtatókörnyezet, amely a kód befejeződött. Meg kell hívni `context.done`, vagy ellenkező esetben a modul soha nem tudja, hogy a függvény készen, és a végrehajtása időtúllépést okoz. 
 
-A `context.done` módszer lehetővé teszi a átadása vissza mindkét egy felhasználó által definiált hiba történt a futtatókörnyezet és tulajdonságai egy tulajdonságcsomagot, amelyek felülírják a tulajdonságok a `context.bindings` objektum.
+A `context.done` módszer lehetővé teszi, hogy vissza mindkét egy felhasználó által definiált hiba történt a futásidejű és tulajdonságai egy tulajdonságcsomagot, hogy felülírja a tulajdonságok a adnia a `context.bindings` objektum.
 
 ```javascript
 // Even though we set myOutput to have:
@@ -108,31 +108,31 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 //  -> text: hello there, world, noNumber: true
 ```
 
-### <a name="contextlog-method"></a>Context.log módszer  
+### <a name="contextlog-method"></a>Context.log metódus  
 
 ```
 context.log(message)
 ```
-Lehetővé teszi a adatfolyam, a nyomkövetési szint konzolnaplófájlokban írni. A `context.log`, további naplózási módszerek elérhetőek, amelyek lehetővé teszik a konzol naplófájlba más nyomkövetési szinten:
+Lehetővé teszi az adatfolyam-konzol naplói a nyomkövetési szint írni. A `context.log`, további naplózási metódusokat elérhetőek, amelyekkel a többi nyomkövetési szintű konzol naplóba:
 
 
 | Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
-| **Hiba (_üzenet_)**   | Naplózás vagy alacsonyabb hibaszintet ír.   |
-| **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű naplózás vagy alacsonyabb ír. |
-| **info(_message_)**    | Információ szintet naplózás vagy alacsonyabb ír.    |
-| **verbose(_message_)** | A részletes szint naplózás ír.           |
+| **Hiba (_üzenet_)**   | Naplózás, vagy alacsonyabb hibaszintet ír.   |
+| **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szint naplózás vagy alacsonyabb ír. |
+| **info(_message_)**    | Írási és naplózás, vagy alacsonyabb információ szintet.    |
+| **verbose(_message_)** | Részletes webhelyszintű naplózás ír.           |
 
-A következő példa ír a figyelmeztetési nyomkövetési szint a konzolhoz:
+Az alábbi példa ír a konzolban, amikor a figyelmeztetési nyomkövetési szint:
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
-Állítsa be a nyomkövetési szintű küszöbértéke a host.json fájl van bejelentkezve, vagy kapcsolja ki.  A naplókba írásával kapcsolatban további információkért tekintse meg a következő szakaszban.
+A nyomkövetési szintű küszöbérték a host.json fájlban naplózásának beállítása, vagy kapcsolja ki.  A naplókba írásával kapcsolatban további információkért tekintse meg a következő szakaszt.
 
-## <a name="binding-data-type"></a>Kötési adattípus
+## <a name="binding-data-type"></a>Kötés adattípus
 
-Egy bemeneti kötése adattípusát megadásához használja a `dataType` tulajdonság kötése definíciójában. Olvassa el a tartalom HTTP-kérések bináris formátumú, például típust használjon `binary`:
+Bemeneti kötés adattípusát meghatározásához használja a `dataType` tulajdonság a kötés-definícióban. Olvassa el a tartalom HTTP-kérés bináris formátumú, például a típus használja `binary`:
 
 ```json
 {
@@ -143,50 +143,50 @@ Egy bemeneti kötése adattípusát megadásához használja a `dataType` tulajd
 }
 ```
 
-Más beállításokat a `dataType` vannak `stream` és `string`.
+Egyéb lehetőségek `dataType` vannak `stream` és `string`.
 
-## <a name="writing-trace-output-to-the-console"></a>A konzol nyomkövetés írása 
+## <a name="writing-trace-output-to-the-console"></a>A konzol nyomkövetési írása 
 
-A Funkciók, használja a `context.log` módszerek nyomkövetés írni a konzolt. Ezen a ponton nem használható `console.log` írni a konzolt.
+A függvények, használja a `context.log` módszerek nyomkövetési írni a konzolon. Ezen a ponton nem használható `console.log` írni a konzolon.
 
-A hívás esetén `context.log()`, az üzenetet a nyomkövetési szint, amely a konzol ír a _info_ nyomkövetési szint. A következő kódot ír az információ a nyomkövetési szintet a konzolhoz:
+Meghívásakor `context.log()`, az üzenet íródik a konzolt a nyomkövetési szint, amely a _info_ nyomkövetési szint. A következő kódot ír a konzolban, amikor az információ a nyomkövetési szintet:
 
 ```javascript
 context.log({hello: 'world'});  
 ```
 
-Az előzőekben látható kód értéke megegyezik a következő kódot:
+A fenti kód megegyezik a következő kódot:
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-A következő kódot ír a hibaszintet a konzolhoz:
+A következő kódot ír a konzolban, amikor a hiba szintje:
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-Mivel _hiba_ a legmagasabb nyomkövetési szint a nyomkövetési ír a kimeneti minden nyomkövetési szintű mindaddig, amíg naplózás engedélyezve van.  
+Mivel _hiba_ van a legmagasabb nyomkövetési szint a nyomkövetési íródik a kimenetet a minden nyomkövetési szintek mindaddig, amíg naplózás engedélyezve van.  
 
 
-Minden `context.log` módszerek támogatják a paraméter formátuma a Node.js által támogatott [util.format metódus](https://nodejs.org/api/util.html#util_util_format_format). Vegye figyelembe az alábbi kód, amely a konzol ír az alapértelmezett nyomkövetési szint használatával:
+Az összes `context.log` módszereket támogatja a paraméter formátuma a Node.js által támogatott [util.format metódus](https://nodejs.org/api/util.html#util_util_format_format). Vegye figyelembe a következő kódra, amely az alapértelmezett nyomkövetési szint használatával írja a konzolon:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-Ugyanazt a kódot is kiírhatja a következő formátumban:
+Ugyanazt a kódot is írhat a következő formátumban:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>A nyomkövetési szint konzol naplózás konfigurálása
+### <a name="configure-the-trace-level-for-console-logging"></a>A nyomkövetési szintet konzol naplózásának konfigurálása
 
-Funkciók lehetővé teszi a küszöbérték nyomkövetési szint írásra, a konzolt, amely megkönnyíti a módon nyomkövetési adatokat a konzoljára írt a funkciók a vezérlő meghatározása. Összes adat konzolon küszöbértéke beállításához használja a `tracing.consoleLevel` tulajdonság a host.json fájlban. A függvény alkalmazás összes funkciójának alkalmazza a beállítást. A következő példa a küszöbértéket nyomkövetési részletes naplózás engedélyezése:
+Functions segítségével határozza meg a küszöbérték nyomkövetési szintet a konzolt, ami lehetővé teszi az egyszerű vezérlési módszert nyomkövetés a konzoljára írt az a funkciók írásához. Összes nyomkövetési konzolon küszöbértéke beállításához használja a `tracing.consoleLevel` tulajdonság a host.json fájlban. Ez a beállítás minden függvény a függvényalkalmazásban vonatkozik. Az alábbi példa állítja be a részletes naplózás engedélyezése a nyomkövetési küszöbértéket:
 
 ```json
 { 
@@ -196,49 +196,49 @@ Funkciók lehetővé teszi a küszöbérték nyomkövetési szint írásra, a ko
 }  
 ```
 
-Az értékek **consoleLevel** nevének felel meg a `context.log` módszerek. A konzol összes nyomkövetési naplózás letiltásához állítsa **consoleLevel** való _ki_. További információkért lásd: [host.json hivatkozás](functions-host-json.md).
+Az értékek **consoleLevel** nevei megegyeznek a `context.log` módszereket. A konzol összes nyomkövetési naplózás letiltásához állítsa **consoleLevel** való _ki_. További információkért lásd: [host.json referencia](functions-host-json.md).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP-eseményindítók és kötések
 
-A HTTP és a webhook eseményindítók és a HTTP kimeneti kötések kérés- és -objektumok segítségével határoz meg a HTTP-üzenetküldést.  
+HTTP és a webhook eseményindítók és a HTTP-kimeneti kötések használata kérések és válaszok objektumok, amelyek a HTTP-üzenetkezelés.  
 
-### <a name="request-object"></a>Kérelem objektum
+### <a name="request-object"></a>Támogatásikérelem-objektum
 
-A `request` objektum tulajdonságai a következők:
+A `request` objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság      | Leírás                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _Törzs_        | A kérelem törzsét tartalmazó objektum.               |
-| _Fejlécek_     | A kérelem fejlécében tartalmazó objektum.                   |
-| _Módszer_      | A kérelem HTTP-metódust.                                |
-| _originalUrl_ | A kérelem URL-CÍMÉT.                                        |
-| _params_      | A kérés útválasztási paramétereit tartalmazó objektum. |
-| _lekérdezés_       | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  |
-| _rawBody_     | A karakterlánc az üzenet törzsét.                           |
+| _Törzs_        | Egy objektum, amely tartalmazza a kérelem törzsében.               |
+| _A fejlécek_     | Egy objektum, amely tartalmazza a kérelem fejlécében.                   |
+| _Metódus_      | A kérelem HTTP-metódus.                                |
+| _originalUrl_ | A kérelem URL-címe                                        |
+| _params_      | Egy objektum, amely tartalmazza a kérés útválasztási paramétereit. |
+| _Lekérdezés_       | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  |
+| _rawBody_     | A karakterláncként az üzenet törzsében.                           |
 
 
-### <a name="response-object"></a>Válasz objektum
+### <a name="response-object"></a>Válaszobjektum
 
-A `response` objektum tulajdonságai a következők:
+A `response` objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság  | Leírás                                               |
 | --------- | --------------------------------------------------------- |
-| _Törzs_    | A választörzs tartalmazó objektum.         |
-| _Fejlécek_ | Egy objektum, amely tartalmazza a response fejlécekkel együtt.             |
-| _isRaw_   | Azt jelzi, hogy formázás ki van kapcsolva a választ.    |
-| _Állapot_  | A HTTP-állapotkód: a válasz.                     |
+| _Törzs_    | Egy objektum, amely a válasz törzse tartalmazza.         |
+| _A fejlécek_ | A válaszfejlécek tartalmazó objektum.             |
+| _isRaw_   | Azt jelzi, hogy a válasz formázás kihagyva.    |
+| _Állapot_  | A válasz HTTP-állapotkódot.                     |
 
-### <a name="accessing-the-request-and-response"></a>A kérelem és válasz elérése 
+### <a name="accessing-the-request-and-response"></a>A kérés- és hozzáférés 
 
-HTTP-eseményindítók használata során is elérheti HTTP kérelem-válasz objektumok három módokon:
+Ha HTTP-eseményindítók használata esetén a HTTP kérés- és objektumok három módokon érheti el:
 
-+ Az elnevezett bemeneti és kimeneti kötések. Ezzel a módszerrel a HTTP-eseményindítóval és kötések működik ugyanaz, mint bármely más kötés. A következő példa egy elnevezett használatával állítja be a válasz objektum `response` kötés: 
++ A nevesített bemeneti és kimeneti kötések. Ezzel a módszerrel a HTTP-eseményindítóval és kötések működik ugyanaz, mint bármely másik kötés. Az alábbi példa a válasz objektum beállítja a használatával egy nevesített `response` kötést: 
 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
 
-+ A `req` és `res` tulajdonságainak a `context` objektum. Ily módon használhatja a hagyományos mintát fér hozzá a HTTP adatokhoz a context objektumot, a teljes használata helyett a `context.bindings.name` mintát. A következő példa bemutatja, hogyan férhet hozzá a `req` és `res` az objektumokat a `context`:
++ A `req` és `res` tulajdonságai a `context` objektum. Ezzel a módszerrel használhatja a hagyományos minta adatokhoz való hozzáférésének HTTP a context objektumot, az összes használata helyett a `context.bindings.name` mintát. Az alábbi példa bemutatja, hogyan lehet hozzáférni a `req` és `res` az objektumokat a `context`:
 
     ```javascript
     // You can access your http request off the context ...
@@ -247,7 +247,7 @@ HTTP-eseményindítók használata során is elérheti HTTP kérelem-válasz obj
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ Meghívásával `context.done()`. HTTP-kötés olyan különleges visszaadja a választ, átadott a `context.done()` metódust. A következő HTTP kimeneti kötése definiál egy `$return` kimeneti paraméterként:
++ Meghívásával `context.done()`. HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
 
     ```json
     {
@@ -256,7 +256,7 @@ HTTP-eseményindítók használata során is elérheti HTTP kérelem-válasz obj
       "name": "$return"
     }
     ``` 
-    A kimeneti kötés vár, amelyen meg kell adnia a válasz hívásakor `done()`, az alábbiak szerint:
+    A kimeneti kötés vár, hogy adja meg a választ, amikor hívja `done()`, az alábbiak szerint:
 
     ```javascript
      // Define a valid response object.
@@ -264,30 +264,30 @@ HTTP-eseményindítók használata során is elérheti HTTP kérelem-válasz obj
     context.done(null, res);   
     ```  
 
-## <a name="node-version-and-package-management"></a>Csomópont-verziót és a csomag felügyelet
+## <a name="node-version-and-package-management"></a>Csomópont verziója és a csomag kezelése
 
-Az alábbi táblázat a Node.js-verzió a Functions futtatókörnyezete minden főverzióját használja:
+Az alábbi táblázat az egyes főverziója a Functions futtatókörnyezete által használt Node.js-verzió:
 
-| Funkciók verziója | Node.js verziója | 
+| Functions-verzió | Node.js verziója | 
 |---|---|
-| 1.x | 6.11.2 (zárolta-e a runtime) |
+| 1.x | 6.11.2 (futásidejű zárolta) |
 | 2.x  |> = 8.4.0 az aktuális LTS 8.9.4 ajánlott. A verzió-beállításokat a WEBSITE_NODE_DEFAULT_VERSION [Alkalmazásbeállítás](functions-how-to-use-azure-function-app-settings.md#settings).|
 
-Láthatja, hogy az aktuális verzió a futtatókörnyezet által használt nyomtatva `process.version` bármely függvényből.
+Láthatja, hogy a jelenlegi verzió a modul által használt nyomtasson `process.version` a függvényeket.
 
-Az alábbi lépéseket lehetővé teszik, hogy a csomagok tartalmazzák a függvény alkalmazásban: 
+A következő lépések segítségével csomagok tartalmazzák a függvényalkalmazásban: 
 
 1. Nyissa meg a következőt: `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Kattintson a **konzol Debug** > **CMD**.
+2. Kattintson a **hibakeresési konzolt** > **CMD**.
 
-3. Ugrás a `D:\home\site\wwwroot`, majd húzza a package.json fájlt a **wwwroot** mappát a a lap felső részén.  
-    Feltöltheti fájlok az függvény alkalmazásban más módokon is. További információkért lásd: [függvény alkalmazásfájlok frissítése](functions-reference.md#fileupdate). 
+3. Lépjen a `D:\home\site\wwwroot`, majd húzza a package.json fájlt a **wwwroot** mappában található az oldal felső részén.  
+    Feltölthet fájlokat a függvényalkalmazáshoz, egyéb módon is. További információkért lásd: [függvény alkalmazásfájlok frissítése](functions-reference.md#fileupdate). 
 
-4. Miután a package.json fájl feltöltése, futtassa a `npm install` parancsot a **Kudu távoli végrehajtás konzol**.  
-    Ez a művelet letölti a csomagot a package.json fájlban jelzett, és a függvény alkalmazás újraindul.
+4. Miután feltöltötte a package.json fájlt, futtassa a `npm install` parancsot a **Kudu távoli végrehajtás konzol**.  
+    Ez a művelet tölti le a csomagokat a package.json fájlban jelzett, és újraindítja a függvényalkalmazást.
 
-Miután telepítette a szükséges csomagokat, importálja a fájlokat a függvény meghívásával `require('packagename')`, az alábbi példa szerint:
+A szükséges csomagok telepítése után importálja a fájlokat a függvény meghívásával `require('packagename')`, ahogy az alábbi példában:
 
 ```javascript
 // Import the underscore.js library
@@ -300,10 +300,10 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-Meg kell határozni egy `package.json` fájl, a függvény alkalmazás gyökérmappájában. Ennek révén a legjobb teljesítmény érdekében az azonos gyorsítótárazott csomagok megosztani az alkalmazásban funkciók meghatározása a fájl segítségével. Ha verziószáma, hogyan oldható meg hozzáadásával egy `package.json` fájl a mappában, egy adott funkció.  
+Meg kell határozni egy `package.json` fájlt a függvényalkalmazás gyökérmappájában. Meghatározása a fájl lehetővé teszi, hogy a függvények az alkalmazás megosztása azonos gyorsítótárazott csomagok, ami a legjobb teljesítményt biztosítja. Verzióütközés merül fel, ha fel tudja oldani hozzáadásával egy `package.json` egy adott függvény mappában található fájl.  
 
 ## <a name="environment-variables"></a>Környezeti változók
-Egy környezeti változó vagy olyan alkalmazás, beállítás értékét, amelyet `process.env`, ahogy az itt látható a `GetEnvironmentVariable` függvény:
+Egy környezeti változó vagy olyan alkalmazás, beállítás értékét, amelyet `process.env`, amint az itt látható a `GetEnvironmentVariable` függvény:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -321,16 +321,16 @@ function GetEnvironmentVariable(name)
     return name + ": " + process.env[name];
 }
 ```
-## <a name="considerations-for-javascript-functions"></a>JavaScript-funkcióként szempontjai
+## <a name="considerations-for-javascript-functions"></a>JavaScript-függvények szempontjai
 
-JavaScript-funkcióként használatakor figyelembe a következő két szakaszban ismertetett szempontok alapján.
+JavaScript-függvények használata, a következő két szakaszban ismertetett szempontok figyelembe.
 
-### <a name="choose-single-vcpu-app-service-plans"></a>Válassza ki a single-vCPU App Service-csomagokról
+### <a name="choose-single-vcpu-app-service-plans"></a>Válasszon egy vcpu-nkénti App Service-csomagok
 
-Egy függvény alkalmazást, amely használja az App Service-csomag létrehozásakor azt javasoljuk, hogy kiválassza a terv több Vcpu helyett egy egyetlen-vCPU terv. Napjainkban funkciók fut JavaScript-funkcióként hatékonyabban single-vCPU virtuális gépeken, és nagyobb virtuális gépek használata nem eredményez a várt teljesítménynövekedést. Szükség esetén manuálisan méretezheti ki további single-vCPU Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus skálázása. További információkért lásd: [méretezése példányszám manuális vagy automatikus](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
+Amikor létrehoz egy függvényalkalmazást, amelyet az App Service-csomagot használ, azt javasoljuk, hogy kiválaszt egy csomagban több vcpu-k helyett egy egyszeri vcpu-nkénti terv. Még ma függvények JavaScript-függvények sokkal hatékonyabban futtatható egyetlen vcpu-nkénti virtuális gépeken, és nagyobb virtuális gépek használata nem eredményez a várt teljesítménnyel kapcsolatos fejlesztések. Ha szükséges, manuálisan horizontális felskálázása további egyetlen vcpu-nkénti Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus méretezés. További információkért lásd: [példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
 
-### <a name="typescript-and-coffeescript-support"></a>Géppel és CoffeeScript támogatása
-Közvetlen támogatási még nem létezik automatikus fordítása géppel vagy CoffeeScript a futtatókörnyezet keresztül, mert az ilyen támogatás kezelendő kívül a futtatókörnyezetet, a központi telepítéskor. 
+### <a name="typescript-and-coffeescript-support"></a>TypeScript és CoffeeScript támogatása
+Közvetlen támogatást még nem létezik automatikus fordítása TypeScript vagy CoffeeScript a modulon keresztül, mert az ilyen támogatás kezelendő kívül a futtatókörnyezet üzembe helyezéskor. 
 
 ## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket:

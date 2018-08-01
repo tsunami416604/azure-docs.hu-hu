@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/22/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 98d023f801ab4864e01a7dba32b5700b2d52e604
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 427964a6651dd4ab71d0029f89e40afdd34d162a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264317"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390704"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv eseményindító és művelet típusok referenciája
 
@@ -328,8 +328,8 @@ A trigger ellenőrzi vagy lekérdezi a megadott végponton, a megadott ismétlő
 
 | Elem | Típus | Leírás |
 |---------|------|-------------| 
-| A fejlécek | JSON-objektum | A válaszból a fejlécek | 
-| Törzs | JSON-objektum | A szervezetnek a válaszból | 
+| fejlécek | JSON-objektum | A válaszból a fejlécek | 
+| törzs | JSON-objektum | A szervezetnek a válaszból | 
 |||| 
 
 *A bejövő kéréseket követelmények*
@@ -422,8 +422,8 @@ Egyes értékek, mint például <*-eljárástípus*>, is a `"subscribe"` és `"u
 
 | Elem | Típus | Leírás |
 |---------|------|-------------| 
-| A fejlécek | JSON-objektum | A válaszból a fejlécek | 
-| Törzs | JSON-objektum | A szervezetnek a válaszból | 
+| fejlécek | JSON-objektum | A válaszból a fejlécek | 
+| törzs | JSON-objektum | A szervezetnek a válaszból | 
 |||| 
 
 *Példa*
@@ -816,7 +816,7 @@ Műveletek a fenti magas szintű elemek rendelkezik, bár egyes nem kötelező:
 ### <a name="built-in-actions"></a>Beépített műveletek
 
 | Művelettípus | Leírás | 
-|-------------|-------------|  
+|-------------|-------------| 
 | [**Compose**](#compose-action) | Hoz létre egy egyetlen kimeneti bemenetei között, amelyekhez különböző típusainak használatát. | 
 | [**Függvény**](#function-action) | Meghív egy Azure-függvényt. | 
 | [**HTTP**](#http-action) | Egy HTTP-végpontot hív meg. | 

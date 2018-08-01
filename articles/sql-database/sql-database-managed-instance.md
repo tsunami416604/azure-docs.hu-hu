@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/30/2018
 ms.author: bonova
-ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
-ms.translationtype: MT
+ms.openlocfilehash: ced88c491f4d2ff2c1e51fd04c481a8477053a20
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091993"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346698"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi a felügyelt példány (előzetes verzió)?
 
@@ -139,15 +139,16 @@ Az alábbi lista ismerteti azokat az általános célú szolgáltatásszint főb
 
 Az alábbi lista ismerteti azokat az üzletileg kritikus szolgáltatási rétegben főbb jellemzői: 
 -   A lehető legjobb teljesítmény és a magas rendelkezésre ÁLLÁSÚ követelmények üzleti alkalmazásokhoz tervezve 
--   Együttműködik a villámgyors SSD-tárolás (legfeljebb 1 TB a Gen 4. és 4 TB-ra Gen 5)-példányonként legfeljebb 100 adatbázisokat támogatja 
+-   Együttműködik a villámgyors SSD-tárolás (legfeljebb 1 TB a Gen 4. és 4 TB-ra Gen 5)
+-   Példányonként legfeljebb 100 adatbázisokat támogatja 
 
 |Szolgáltatás | Leírás|
 |---|---|
-| Hány virtuális magok * | 8, 16, 24 (4. generációs)<br>8, 16, 24, 32, 40, 64, 80-as (általános 5)|
+| Hány virtuális magok * | 8, 16, 24., 4, (általános) 32<br>8, 16, 24, 32, 40, 64, 80-as (általános 5)|
 | SQL Server-verzió létrehozása / | SQL Server legújabb (elérhető) |
 | További funkciók | [Memóriabeli OLTP beállítása](sql-database-in-memory.md)<br> 1 további csak olvasható replika ([olvasási kibővített](sql-database-read-scale-out.md))
 | Minimális tároló mérete | 32 GB |
-| Maximális tárméret | Általános 4: 1 TB-os (az összes virtuális mag méretek<br> A gen 5:<ul><li>1 TB-os 8, 16 virtuális mag</li><li>2 TB az 24 virtuális mag</li><li>4 TB-os 40, 60, 80-as virtuális magok</ul>|
+| Maximális tárméret | Általános 4: 1 TB-os (az összes virtuális mag méretek<br> A gen 5:<ul><li>1 TB-os 8, 16 virtuális mag</li><li>2 TB az 24 virtuális mag</li><li>4 TB-os 40, a 64, a 80-as virtuális magok</ul>|
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány |
 | Az adatbázisonkénti adatfájlt (sor) | Többszörös | 
 | Adatbázisonként (napló) fájlok száma | 1 | 
