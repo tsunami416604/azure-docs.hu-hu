@@ -51,6 +51,8 @@
           href: container-instances-liveness-probe.md
     - name: Kezelés
       items:
+        - name: Futó tárolók frissítése
+          href: container-instances-update.md
         - name: Parancs végrehajtása (exec)
           href: container-instances-exec.md
         - name: Processzor- és memóriahasználat monitorozása
@@ -59,7 +61,7 @@
           href: container-instances-log-analytics.md
     - name: Számítási feladatok futtatása
       items:
-        - name: Feladatok futtatása újraindítási szabályzattal
+        - name: Feladatok futtatása újraindítási szabályzatokkal
           href: container-instances-restart-policy.md
         - name: Jenkins-buildügynökök az ACI-ban
           href: container-instances-jenkins.md

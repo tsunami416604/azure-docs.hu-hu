@@ -1,0 +1,145 @@
+- name: Key Vault – dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Tudnivalók a Key Vaultról
+      href: key-vault-overview.md
+- name: Gyors útmutatók
+  items:
+    - name: Key Vault létrehozása – Parancssori felület
+      href: quick-create-cli.md
+    - name: Key Vault létrehozása – PowerShell
+      href: quick-create-powershell.md
+    - name: Key Vault létrehozása – Portal
+      href: quick-create-portal.md
+    - name: Olvasás Key Vaultból – .NET
+      href: quick-create-net.md
+    - name: Olvasás Key Vaultból – Node.js
+      href: quick-create-node.md
+- name: Oktatóanyagok
+  items:
+    - name: A Key Vault titkos kulcsainak olvasása
+      href: tutorial-web-application-keyvault.md
+    - name: Ismerkedés a Key Vaulttal
+      href: key-vault-get-started.md
+    - name: A kulcsforgatás és a naplózás beállítása
+      href: key-vault-key-rotation-log-monitoring.md
+    - name: Key Vault használata a webalkalmazásokból
+      href: key-vault-use-from-web-application.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
+- name: Alapelvek
+  items:
+    - name: Mi a Key Vault?
+      href: key-vault-whatis.md
+    - name: Biztonsági világok
+      href: key-vault-ovw-security-worlds.md
+    - name: Helyreállítható törlés
+      href: key-vault-ovw-soft-delete.md
+    - name: Tárfiókkulcsok
+      href: key-vault-ovw-storage-keys.md
+    - name: Throttling
+      href: key-vault-ovw-throttling.md
+- name: Útmutatók
+  items:
+    - name: Kezelés
+      items:
+        - name: Az Azure Key Vault naplózása
+          href: key-vault-logging.md
+        - name: Tűzfal mögötti hozzáférés
+          href: key-vault-access-behind-firewall.md
+        - name: Elérhetőség és redundancia
+          href: key-vault-disaster-recovery-guidance.md
+        - name: Bérlőazonosító módosítása
+          href: key-vault-subscription-move-fix.md
+        - name: Létrehozás és kezelés az Azure CLI-vel
+          href: key-vault-manage-with-cli2.md
+        - name: A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
+          href: key-vault-soft-delete-cli.md
+        - name: A Key Vault helyreállítható törlés funkciójának használata Azure PowerShell-lel
+          href: key-vault-soft-delete-powershell.md
+        - name: Hozzáférés megadása csoportok használatával
+          href: key-vault-group-permissions-for-apps.md
+        - name: Kulcstartó védelme
+          href: key-vault-secure-your-key-vault.md
+    - name: Automatizálás
+      items:
+        - name: Azure Automation
+          href: automation-manage-key-vault.md
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.keyvault
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/keyvault/client?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: Fejlesztés
+      items:
+        - name: Gyors kezdés – videó fejlesztőknek
+          href: 'http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start'
+        - name: Key Vault – fejlesztői útmutató
+          href: key-vault-developers-guide.md
+        - name: A szolgáltatásra vonatkozó korlátozások
+          href: key-vault-service-limits.md
+        - name: HSM-védett kulcsok
+          href: key-vault-hsm-protected-keys.md
+        - name: Áttelepítés az .NET 2.0-ba
+          href: key-vault-dotnet2api-release-notes.md
+        - name: Webalkalmazás titkos kulcsának mentése
+          href: vs-secure-secret-appsettings.md
+        - name: Szolgáltatáshitelesítés a .NET-keretrendszerrel
+          href: service-to-service-authentication.md
+        - name: A Visual Studio használata
+          items:
+            - name: A Key Vault csatlakoztatott szolgáltatás használata
+              href: vs-key-vault-add-connected-service.md
+            - name: Bevezetés az ASP.NET-projektek használatába
+              href: vs-key-vault-aspnet-get-started.md
+            - name: Mi történt az ASP.NET-projektemmel?
+              href: vs-key-vault-aspnet-what-happened.md
+            - name: Bevezetés az ASP.NET Core-projektek használatába
+              href: vs-key-vault-aspnet-core-get-started.md
+            - name: Mi történt az ASP.NET Core-projektemmel?
+              href: vs-key-vault-aspnet-core-what-happened.md
+- name: További források
+  items:
+    - name: Szolgáltatás áttekintése
+      href: 'https://azure.microsoft.com/services/key-vault/'
+    - name: 'A kulcsok, titkos kódok és tanúsítványok ismertetése'
+      href: about-keys-secrets-and-certificates.md
+      items:
+        - name: Bevezetés a tanúsítványok használatába
+          href: certificate-scenarios.md
+        - name: Tanúsítvány-létrehozási módszerek
+          href: create-certificate.md
+        - name: Tanúsítvány-létrehozás monitorozása és kezelése
+          href: create-certificate-scenarios.md
+    - name: 'Hitelesítés, kérelmek és válaszok'
+      href: authentication-requests-and-responses.md
+    - name: Ügyféladatokkal kapcsolatos funkciók
+      href: key-vault-customer-data.md
+    - name: Gyakori paraméterek és fejlécek
+      href: common-parameters-and-headers.md
+    - name: Key Vault-verziók
+      href: key-vault-versions.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Blog
+      href: 'http://blogs.technet.com/b/kv/'
+    - name: Kódminták
+      href: 'https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault&type=&language='
+    - name: Fórumok
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'

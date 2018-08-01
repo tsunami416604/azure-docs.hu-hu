@@ -175,16 +175,20 @@
               href: search-indexer-field-mappings.md
     - name: Adatok keresése
       items:
-        - name: Alapszintű lekérdezési konstrukció
+        - name: A lekérdezés alapjai
           href: search-query-overview.md
         - name: Keresési ablak (portál)
           href: search-explorer.md
-        - name: Egyszerű lekérdezési szintaxis
-          href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
-        - name: Lucene lekérdezési szintaxis
-          href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
-        - name: Lucene lekérdezési példák
+        - name: Példák egyszerű szintaxisra
+          href: search-query-simple-examples.md
+        - name: Példák teljes szintaxisra
           href: search-query-lucene-examples.md
+        - name: Lekérdezési referencia
+          items:
+            - name: Egyszerű lekérdezési szintaxis
+              href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
+            - name: Lucene lekérdezési szintaxis
+              href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
         - name: Lapozás eredményei
           href: search-pagination-page-layout.md
         - name: Relevanciahangolás

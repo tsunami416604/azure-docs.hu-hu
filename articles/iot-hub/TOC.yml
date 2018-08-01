@@ -214,6 +214,8 @@
           items:
             - name: Az Azure Portal használata
               href: iot-hub-create-through-portal.md
+            - name: Azure IoT-eszközkészlet használata a VS Code-hoz
+              href: iot-hub-create-use-iot-toolkit.md
             - name: Azure PowerShell használatával
               href: iot-hub-create-using-powershell.md
             - name: Az Azure parancssori felület használatával

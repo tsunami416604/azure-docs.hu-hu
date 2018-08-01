@@ -39,8 +39,16 @@
         - name: Inaktív adatok titkosítása
           href: azure-security-encryption-atrest.md
         - name: Lemeztitkosítás IaaS virtuális gépekhez
-          href: azure-security-disk-encryption.md
+          href: azure-security-disk-encryption-overview.md
           items:
+            - name: Lemeztitkosítás előfeltételei
+              href: azure-security-disk-encryption-prerequisites.md
+            - name: Lemeztitkosítás Windows rendszerű virtuális gépekhez
+              href: azure-security-disk-encryption-windows.md
+            - name: Lemeztitkosítás Linux rendszerű virtuális gépekhez
+              href: azure-security-disk-encryption-linux.md
+            - name: Lemeztitkosítás függeléke
+              href: azure-security-disk-encryption-appendix.md
             - name: Lemeztitkosítás – gyakori kérdések
               href: azure-security-disk-encryption-faq.md
             - name: Hibaelhárítás
@@ -198,6 +206,16 @@
       items:
         - name: Állapotadatok és mesterséges intelligencia
           href: ./blueprints/azure-health.md
+    - name: NIST SP 800-171
+      items:
+        - name: Adatelemzés
+          href: ./blueprints/nist171-analytics-overview.md
+        - name: Adattárház
+          href: ./blueprints/nist171-datawarehouse-overview.md
+        - name: IaaS-webalkalmazás
+          href: ./blueprints/nist171-iaaswa-overview.md
+        - name: PaaS webalkalmazás
+          href: ./blueprints/nist171-paaswa-overview.md
     - name: PCI DSS
       items:
         - name: Adatelemzés

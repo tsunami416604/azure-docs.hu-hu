@@ -131,7 +131,6 @@
 #### [Késések](active-directory-reporting-latencies-azure-portal.md)
 #### [Naplózott tevékenységekre vonatkozó referencia](active-directory-reporting-activity-audit-reference.md)
 #### [Bejelentkezési tevékenységek hibakódjai](active-directory-reporting-activity-sign-ins-errors.md)
-#### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md)
 #### [Az auditnaplók sémájának értelmezése az Azure Monitorban](reporting-azure-monitor-diagnostics-audit-log-schema.md)
 #### [A bejelentkezési napló sémájának értelmezése az Azure Monitorban](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
@@ -159,9 +158,16 @@
 ### [Az Azure AD Join megtervezése](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Gyakori kérdések](device-management-faq.md)
 ### Feladatok
+#### [A hibrid Azure Active Directory-csatlakozás megvalósításának tervezése](devices/hybrid-azuread-join-plan.md)
+#### [A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz](devices/hybrid-azuread-join-managed-domains.md)
+#### [A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz](devices/hybrid-azuread-join-federated-domains.md)
+#### [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](devices/hybrid-azuread-join-control.md)
+
+
+
 #### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök beállítása](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Az Azure AD-hez csatlakoztatott eszközök beállítása](user-help/device-management-azuread-joined-devices-setup.md)
-#### [Hibrid Azure AD-hez csatlakoztatott eszközök beállítása](device-management-hybrid-azuread-joined-devices-setup.md)
+#### [Hibrid Azure AD-hez csatlakoztatott eszközök beállítása](devices/hybrid-azuread-join-manual-steps.md)
 #### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
 #### [Azure AD-csatlakozás a Windows 10 első futtatási élménye alkalmával](device-management-azuread-joined-devices-frx.md)
 ### Hibaelhárítás
