@@ -116,6 +116,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrációs modul
       href: concepts-integration-runtime.md
+    - name: Elnevezési szabályok
+      href: naming-rules.md
 - name: Útmutatók
   items:
     - name: Szerző
