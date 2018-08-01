@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 7164ee938c61f9b8ec0b80a1b0f37b5f4838ca13
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
-ms.translationtype: HT
+ms.openlocfilehash: b0e078e3e7f18e3370ff1bcd90935e7fece265f0
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344521"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391180"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -271,7 +271,7 @@ Az alábbi táblázat az egyes főverziója a Functions futtatókörnyezete ált
 | Functions-verzió | Node.js verziója | 
 |---|---|
 | 1.x | 6.11.2 (futásidejű zárolta) |
-| 2.x  |> = 8.4.0 az aktuális LTS 8.9.4 ajánlott. A verzió-beállításokat a WEBSITE_NODE_DEFAULT_VERSION [Alkalmazásbeállítás](functions-how-to-use-azure-function-app-settings.md#settings).|
+| 2.x  | _Aktív LTS_ és _aktuális_ Node.js-verzió (8.11.1 és ajánlott 10.6.0). A verzió-beállításokat a WEBSITE_NODE_DEFAULT_VERSION [Alkalmazásbeállítás](functions-how-to-use-azure-function-app-settings.md#settings).|
 
 Láthatja, hogy a jelenlegi verzió a modul által használt nyomtasson `process.version` a függvényeket.
 

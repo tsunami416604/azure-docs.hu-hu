@@ -1,6 +1,6 @@
 ---
-title: Egy felhasználó sem törlődnek alatt egy Azure AD-katalógusában alkalmazás |} Microsoft Docs
-description: Kapcsolatos gyakori hibák elhárítása tapasztalt felhasználók jelennek meg nem jelenik meg az Azure AD egy gyűjtemény alkalmazás már konfigurálta a felhasználók átadása az Azure ad-vel
+title: Nincsenek felhasználók sem lett létrehozva az Azure AD katalógusából származó alkalmazásba való |} A Microsoft Docs
+description: Gyakori hibáinak elhárítása szembesülnek, ha nem lát megjelenjenek a felhasználók olyan Azure ad katalógusából származó alkalmazásba konfigurálta a felhasználókiépítés Azure AD-vel
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,61 +11,61 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 394e8642c177312c8990ea211f77fb802d4228fd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e3017612fe27ba5efbcdbf66c04d4d15641f216b
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332409"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364657"
 ---
-# <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Egy felhasználó sem törlődnek alatt egy Azure AD-katalógusában alkalmazáshoz
+# <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Nincsenek felhasználók sem lett létrehozva, egy Azure AD katalógusából származó alkalmazásba
 
-Amennyiben az Automatikus kiépítés konfigurálták az alkalmazáshoz (beleértve az ellenőrzése, hogy a alkalmazást az Azure AD-be az alkalmazáshoz megadott hitelesítő adatok érvényesek). Majd a felhasználók és/vagy csoportok törlődnek az alkalmazásba, és határozza meg a következőket:
+Ha az automatikus üzembe helyezés sikeresen beállítva az alkalmazás (beleértve az ellenőrzése, hogy a alkalmazás Azure ad-hez való csatlakozáshoz az alkalmazás megadott hitelesítő adatok érvényesek). Ezután a felhasználók és csoportok érvénybe lépnek az alkalmazásra, és határozza meg az alábbiakat:
 
--   Amelyek felhasználókat és csoportokat **hozzárendelt** az alkalmazáshoz. A hozzárendelés további információkért lásd: [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
+-   Amelyek a felhasználók és csoportok voltak **hozzárendelt** az alkalmazáshoz. A hozzárendelés további információkért lásd: [egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
--   E **attribútum-hozzárendelések** engedélyezni és konfigurálni az alkalmazást az Azure AD érvényes attribútumok szinkronizálása. Attribútum-leképezésekhez további információkért lásd: [testreszabása felhasználói kiépítés attribútum-leképezésekhez az SaaS-alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
+-   E **attribútum-leképezések** engedélyezve van, és úgy konfigurálva, hogy az alkalmazás Azure AD-ből érvényes attribútumok szinkronizálása. Attribútum-leképezéshez további információkért lásd: [testreszabása felhasználói kiépítés attribútum-leképezéshez az SaaS-alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
 
--   Van-e egy **tartalmazó szűrő** jelen van, hogy felhasználók egyedi attribútum értékek alapján. A helyezése hatókörszűrőkkel további információkért lásd: [alkalmazások Attribútumalapú üzembe helyezése hatókörszűrőkkel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters).
+-   Van-e egy **Hatókörszűrő** jelen, a szűrés a felhasználók adott attribútum értékei alapján. A szűrők felmerülő további információkért lásd: [attribútum-alapú alkalmazások üzembe helyezése és hatókörének beállítása szűrőket](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters).
 
-Amikor tartják be, hogy felhasználók nem alatt törlődnek, tekintse meg a felügyeleti naplók az Azure ad-ben, és keresse meg naplóbejegyzések adott felhasználó.
+Figyelje a felhasználó sem lett létrehozva, amikor tekintse át a naplókat az Azure ad-ben, és keresse meg egy adott felhasználó-bejegyzései.
 
-A telepítési naplók érhetők el az Azure portálon, a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazásnév\] &gt; vizsgálati naplókban** fülre. A naplók szűrést végezni a **fiók** kategóriát csak az adott alkalmazáshoz létesítési események megjelenítéséhez. A "egyező ID" attribútum-leképezésekhez számukra konfigurált alapján is kereshet. Például, ha az "egyszerű felhasználónév" vagy "e-mail cím" az Azure AD-oldalán a megfelelő attribútumaként konfigurálva, és a felhasználó nem kiépítés értéke "audrey@contoso.com". Majd keresse meg a naplókban talál "audrey@contoso.com", és tekintse át ezt követően eredményt adott vissza.
+Az üzembe helyezési naplók elérhetők az Azure Portalon a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazásnév\] &gt; Auditnaplók** fülre. A naplók szűrése a **fiók üzembe helyezésének** kategóriát csak az alkalmazás az üzembe helyezési események megtekintéséhez. A felhasználók számára a "egyező azonosító", amelyet a számukra az attribútumleképezések alapján kereshet. Például, ha konfigurálta a "felhasználó egyszerű neve" vagy "e-mail-cím", a megfelelő attribútum az Azure ad-ben oldalán, és a felhasználó nem kiépítése, amelynek értéke "audrey@contoso.com". Ezután a a naplók keresése "audrey@contoso.com" és a tekintse át, akkor a visszaadott bejegyzések.
 
-A létesítési naplók a rekord a műveleteket végzi el a létesítési szolgáltatás, így az Azure AD-hez hozzárendelt felhasználók hatókörébe kiépítés, a cél alkalmazás meglétét azoknak a felhasználóknak az lekérdezése, a felhasználó objektum összehasonlítása lekérdezése között a rendszer. Majd adja hozzá, frissíteni vagy tiltsa le a felhasználói fiókot a célrendszeren, az összehasonlítás alapján.
+Az üzembe helyezési naplók a kiépítési szolgáltatás, beleértve a lekérdezése az Azure AD-kiépítés, ezek a felhasználók létezik-e a célalkalmazásnak lekérdezése, a felhasználói objektumok összehasonlítása hatókörébe hozzárendelt felhasználók által végrehajtott összes műveletet rekord között a rendszer. Majd adja hozzá, frissítésére, vagy tiltsa le a felhasználói fiókot a célrendszeren, az összehasonlítás alapján.
 
-## <a name="general-problem-areas-with-provisioning-to-consider"></a>A Szolgáltatáskiépítéssel megfontolandó általános problémás területek
+## <a name="general-problem-areas-with-provisioning-to-consider"></a>Kiépítési kell figyelembe venni az általános problémás területek
 
-Az alábbiakban olvashat egy listát részletezhető Ha egy meghatározni, hogy hol kell elkezdeni az általános probléma területet.
+Az alábbi, az általános problémás területek, amely részletesen is megtekintheti, ha van egy ötlete, hol kell elkezdeni listáját.
 
-* [Szolgáltatás kiépítését nem jelenik meg elindítani](#provisioning-service-does-not-appear-to-start)
-* [Naplók mondja ki a felhasználók figyelmen hagyja, és nincs telepítve, akkor is, ha hozzárendeli őket](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
+* [A kiépítési szolgáltatás nem jelenik meg indítása](#provisioning-service-does-not-appear-to-start)
+* [Auditnaplók tegyük fel, hogy felhasználók kihagyva, és nincs kiépítve, még akkor is, ha hozzá vannak rendelve](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
-## <a name="provisioning-service-does-not-appear-to-start"></a>Szolgáltatás kiépítését nem jelenik meg elindítani
+## <a name="provisioning-service-does-not-appear-to-start"></a>A kiépítési szolgáltatás nem jelenik meg indítása
 
-Ha a **kiépítési állapot** kell **a** a a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazásnév\] &gt;Kiépítési** szakasza az Azure-portálon. Azonban nem más állapot részletei jelennek meg a lap után további betölti, valószínű, hogy a szolgáltatás fut, de egy kezdeti szinkronizálást még nem fejeződött be. Ellenőrizze a **naplók** milyen műveleteket hajt végre a szolgáltatást, hogy a fent leírt, és ha hiba történik.
+Ha a **üzembe helyezési állapotra** kell **a** a a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazásnév\] &gt;Kiépítési** szakaszában az Azure Portalon. Azonban nem más állapot részletei jelennek meg az oldal után következő újra betölti, valószínű, hogy a szolgáltatás fut, de a kezdeti szinkronizálás még nem fejeződött be. Ellenőrizze a **Auditnaplók** határozza meg, milyen műveleteket hajt végre a szolgáltatás, a fent leírt, és ha bármilyen hiba merül fel.
 
 >[!NOTE]
->Egy kezdeti szinkronizálást is igénybe vehet 20 percet az Azure AD-címtár és a felhasználók kialakítási hatókörében számát méretétől függően több órát. A kezdeti szinkronizálás után az ezt követő szinkronizálások nem gyorsabb, mivel a létesítési szolgáltatás, amelyben a kezdeti szinkronizálás után mindkét állapota egy vízjelek tárolja. Ez javítja ezt követő szinkronizálások teljesítményét.
+>Egy kezdeti szinkronizálást is eltarthat, 20 percet vagy akár néhány órát, a kiépítés hatókörébe felhasználók száma és az Azure AD-címtár méretétől függően. A kezdeti szinkronizálást követően ezt követő szinkronizálások gyorsabb, mert a regisztrációs szolgáltatás, amely a kezdeti szinkronizálást követően a két rendszer állapotát képviselik a vízjelek tárolja. Ez javítja az ezt követő szinkronizálások teljesítményét.
 >
 >
 
-## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Naplók mondja ki a felhasználók figyelmen hagyja, és nincs telepítve, akkor is, ha hozzárendeli őket
+## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Auditnaplók tegyük fel, hogy felhasználók kihagyva, és nincs kiépítve, még akkor is, ha hozzá vannak rendelve
 
-Amikor a felhasználó megjelenik, a "kihagyva" a naplófájlban, nagyon fontos olvasni a kiterjesztett részleteit a napló üzenet okának megállapításához. Az alábbiakban gyakori okok és megoldások:
+A felhasználó megjelenik, mint "kihagyva" a naplók, esetén nagyon fontos, hogy a kiterjesztett részleteket a naplóüzenet okának megállapításához. Az alábbiakban gyakori okok és a megoldásuk:
 
--   **Hatókörként szűrő konfigurációja** **, amely van kiszűrése a felhasználói egy attribútum-érték alapján**. A helyezése hatókörszűrőkkel további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
+-   **Egy hatókörszűrőt konfigurálták** **, amely a kiszűri a felhasználó egy attribútumérték alapján**. A szűrők felmerülő további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
 
--   **A felhasználó az "nem hatékony jogosult".** Ha hibaüzenet jelenik meg, azért, mert az Azure AD-ben tárolt felhasználói hozzárendelés rekord problémáját. Hárítsa el a problémát, megszüntetése a felhasználó (vagy csoport) az alkalmazásból, és újból rendelje hozzá újra. A hozzárendelés további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+-   **A felhasználó nem "nem hatékony jogosult".** Ha az adott hibaüzenet jelenik meg, mivel probléma adódott az Azure AD-ben tárolt felhasználó-hozzárendelés bejegyzést. Hárítsa el a problémát, megszüntetése a felhasználó (vagy csoport) az alkalmazásból, és újból rendelje hozzá újra. A hozzárendelés további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
 
--   **Egy kötelező attribútum hiányzik vagy nem ki van töltve egy felhasználó.** Kiépítés beállítása során figyelembe kell venni egy fontos dolog lehet áttekintése és konfigurálása a attribútum-leképezésekhez és a munkafolyamatok, amelyek meghatározzák, milyen felhasználói (vagy a csoport) tulajdonságok folyamata az Azure AD az alkalmazásnak. Ez magában foglalja a "egyező property" beállítás használható egyedileg azonosíthatja és felel meg a felhasználókat/csoportokat a két rendszer között. További információ a fontos folyamatban: [testreszabása felhasználói kiépítés attribútum-leképezésekhez az SaaS-alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
+-   **Egy kötelező attribútum hiányzik vagy nem ki van töltve, egy felhasználó.** Egy lényeges tudnivaló, hogy fontolja meg a kiépítési beállítása során kell, hogy tekintse át, és az attribútumleképezések és a munkafolyamatok, amelyek meghatározzák, mely felhasználó (vagy csoport) tulajdonságai a folyamat az Azure ad-ből az alkalmazás konfigurálása. Ez magában foglalja a "egyező tulajdonság" beállítás, amely egyedileg azonosíthatja és felhasználók/csoportok a két rendszer közötti megfelelő használható. Ez fontos folyamattal kapcsolatban további információkért lásd: [testreszabása felhasználói kiépítés attribútum-leképezéshez az SaaS-alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
 
-  * **Azon csoportok attribútum:** telepítése a csoport nevét és a csoport részletes adatait, a tagok, ha az egyes alkalmazásokra támogatott mellett. Engedélyezheti vagy letilthatja ezt a funkciót engedélyezésével vagy letiltásával a **leképezési** a csoport objektumainak látható a **kiépítési** fülre. Ha csoportok kiépítés engedélyezve van, feltétlenül olvassa el a attribútum-leképezésekhez ellenőrizze a megfelelő mezőben használja a "egyező azonosító". Ez lehet a megjelenített nevet vagy e-mail címét), mert a csoport és annak tagjait nem építhető ki, ha a megfelelő tulajdonság értéke üres vagy nem ki van töltve a csoport az Azure AD.
+  * **Attribútum-leképezések csoportok:** telepítése a csoport nevének és a csoport részletei mellett a tagokat, ha egyes alkalmazások esetében támogatott. Engedélyezheti vagy letilthatja ezt a funkciót engedélyezésével vagy letiltásával a **leképezési** csoport objektumainak látható a **kiépítési** fülre. Csoportok kiépítése engedélyezve van, ha mindenképpen tekintse át a annak érdekében, hogy a megfelelő mezőben használatos a "egyező ID" attribútum-leképezéshez. Ez lehet a megjelenítési név vagy e-mail-alias), mivel a csoportot és annak tagjait nem építhető ki, ha a megfelelő tulajdonság értéke üres vagy nem feltöltött csoport az Azure ad-ben.
 
 ## <a name="next-steps"></a>További lépések
-[Azure AD Connect szinkronizálása: Understanding deklaratív kiépítés](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
+[Az Azure AD Connect szinkronizálása: a deklaratív kiépítés ismertetése](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
 

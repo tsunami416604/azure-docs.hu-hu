@@ -7,18 +7,21 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 64c4c8e4df0179f1644f23f0ae489015222a4ffd
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c4a755d0c13516ce3cb0177cea2ea17e4a3abcbb
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258364"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390969"
 ---
 # <a name="upload-and-index-your-videos"></a>A videók feltöltése és az  
 
 Ez a cikk bemutatja, hogyan használhatja a [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) fel-és indexelése a videók az Azure Video Indexer API. Emellett ismerteti, hogy megadhatja azt az API-t a folyamat és a kimeneti API-paraméterek némelyike.
+
+> [!Note]
+> A Video Indexer-fiók létrehozásakor kiválaszthatja a (, ahol megkapja ingyenes indexelési perc bizonyos számú) egy ingyenes próbafiókot vagy egy fizetős lehetőség (Ha nem korlátozza a kvóta). <br/>Az ingyenes próbaverziót a Video Indexer legfeljebb 600 perc ingyenes indexeli a webhely számára biztosít, és akár 2400 percnyi ingyenes indexelő API számára. <br/>A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Indexelt perc, valamint a kapcsolódó adathordozó-fiók fizet díjak. 
 
 ## <a name="configurations-and-params"></a>Konfigurációk és paraméterek
 

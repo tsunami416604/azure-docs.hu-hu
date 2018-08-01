@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: bonova
-ms.openlocfilehash: ced88c491f4d2ff2c1e51fd04c481a8477053a20
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
-ms.translationtype: HT
+ms.openlocfilehash: 02a2a5d808f21c48181da265b05c7f532a200c2f
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346698"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390687"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi a felügyelt példány (előzetes verzió)?
 
@@ -148,7 +148,7 @@ Az alábbi lista ismerteti azokat az üzletileg kritikus szolgáltatási rétegb
 | SQL Server-verzió létrehozása / | SQL Server legújabb (elérhető) |
 | További funkciók | [Memóriabeli OLTP beállítása](sql-database-in-memory.md)<br> 1 további csak olvasható replika ([olvasási kibővített](sql-database-read-scale-out.md))
 | Minimális tároló mérete | 32 GB |
-| Maximális tárméret | Általános 4: 1 TB-os (az összes virtuális mag méretek<br> A gen 5:<ul><li>1 TB-os 8, 16 virtuális mag</li><li>2 TB az 24 virtuális mag</li><li>4 TB-os 40, a 64, a 80-as virtuális magok</ul>|
+| Maximális tárméret | Általános 4: 1 TB-os (az összes virtuális mag méretek<br> A gen 5:<ul><li>1 TB-os 8, 16 virtuális mag</li><li>2 TB az 24 virtuális mag</li><li>4 TB-os 32, 40, 64, 80 virtuális magok</ul>|
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány |
 | Az adatbázisonkénti adatfájlt (sor) | Többszörös | 
 | Adatbázisonként (napló) fájlok száma | 1 | 
