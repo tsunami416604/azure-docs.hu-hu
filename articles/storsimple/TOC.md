@@ -22,7 +22,8 @@
 
 ## Útmutató
 ### [Kezelés az Azure Portalon](storsimple-virtual-array-manager-service-administration.md)
-#### [A legújabb frissítés telepítése](storsimple-virtual-array-install-update-1.md)
+#### [A legújabb frissítés telepítése](storsimple-virtual-array-install-update-11.md)
+##### [Az 1-es frissítés telepítése](storsimple-virtual-array-install-update-1.md)
 ##### [A 0.6-os frissítés telepítése](storsimple-virtual-array-install-update-06.md)
 ##### Archívum
 ###### [A 0.5-ös frissítés telepítése](storsimple-virtual-array-install-update-05.md)
@@ -47,7 +48,8 @@
 ### [Konfigurálás helyi webes felhasználói felületen](storsimple-ova-web-ui-admin.md)
 
 ## Kibocsátási megjegyzések
-### [1-es frissítés – aktuális](storsimple-virtual-array-update-1-release-notes.md)
+### [1.1-es frissítés – aktuális](storsimple-virtual-array-update-11-release-notes.md)
+### [1. frissítés](storsimple-virtual-array-update-1-release-notes.md)
 ### [0.6-os frissítés](storsimple-virtual-array-update-06-release-notes.md)
 ### Archívum
 #### [0.5-ös frissítés](storsimple-virtual-array-update-05-release-notes.md)

@@ -15,7 +15,7 @@
 # SAP HANA az Azure-beli virtuális gépeken
 ## [Egyetlen példánnyal rendelkező SAP HANA telepítése](hana-get-started.md)
 ## [S/4 HANA vagy BW/4 HANA SAP CAL üzembehelyezési útmutatója](cal-s4h.md)
-## [SAP HANA az Azure-műveletek útmutatójában](hana-vm-operations.md)
+## [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](hana-vm-operations.md)
 ## Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
 ### [Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés](sap-hana-availability-overview.md)
 ### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)

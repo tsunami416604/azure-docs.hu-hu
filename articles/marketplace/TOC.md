@@ -11,6 +11,7 @@
 ##### [Microsoft-fiók létrehozása](./guidelines.md)
 ##### [Regisztrálás a fejlesztői központban](./register-dev-center.md) 
 ##### [Díjszabási lehetőségek az Azure Marketplace-en](./billing-options-azure-marketplace.md)  
+##### [Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése](./azure-partner-customer-usage-attribution.md)
 
 ### Közzétételi útmutató ajánlattípusok szerint 
 #### [Virtuális gépek](./marketplace-virtual-machines.md)

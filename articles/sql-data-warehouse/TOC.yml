@@ -111,8 +111,12 @@
           href: memory-and-concurrency-limits.md
         - name: Oszlopcentrikus tömörítés
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
-    - name: Figyelés
-      href: sql-data-warehouse-manage-monitor.md
+    - name: Kezelhetőség és monitorozás
+      items:
+        - name: Figyelés
+          href: sql-data-warehouse-manage-monitor.md
+        - name: Javaslatok
+          href: sql-data-warehouse-concept-recommendations.md
     - name: Adattárházak fejlesztése
       items:
         - name: Áttekintés
