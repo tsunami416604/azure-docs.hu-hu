@@ -1,6 +1,6 @@
 ---
-title: Nem megfelelő felhasználók csoportja alatt kiépített egy Azure AD-katalógusában alkalmazás |} Microsoft Docs
-description: Ha szeretné tudni, miért kiépített egy alkalmazás a várt, mint a felhasználók különböző szabálykészleteket útmutató
+title: A felhasználók megfelelővel lettek létrehozva az Azure AD katalógusából származó alkalmazásba való |} A Microsoft Docs
+description: Ismerje meg, hogyan tudhatja meg, miért érdemes külön készletét felhasználók lettek létrehozva egy alkalmazáshoz, mint a várt
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,105 +11,105 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: f984db4c06a98f7d131860f8eb5d76a67a35a483
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8893c6a45ecbe0c697fe60483bbd2d9856d3b599
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332551"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366579"
 ---
-# <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Nem megfelelő felhasználók csoportja folyamatban kiépített egy Azure AD-katalógusában alkalmazáshoz
+# <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>A felhasználók megfelelővel lettek létrehozva egy Azure AD katalógusából származó alkalmazásba
 
-Mely felhasználók törlődnek, az alkalmazás elsősorban célja a felhasználók és csoportok volt **hozzárendelt** az alkalmazáshoz.
+Mely felhasználók érvénybe lépnek az alkalmazásra elsősorban határozzák meg, milyen felhasználókkal és csoportokkal lett **hozzárendelt** az alkalmazáshoz.
 
-A következő források segítségével megtudhatja, hogyan ellenőrizze, hogy mely felhasználók és csoportok hozzárendelt egy alkalmazást az Azure Active Directoryban.
+Az alábbi forrásanyagokból megtudhatja, hogyan ellenőrizheti, hogy mely felhasználók és csoportok vannak hozzárendelve egy alkalmazást az Azure Active Directoryban.
 
-## <a name="assign-a-user-directly-as-an-administrator"></a>Rendelje hozzá a felhasználó közvetlenül rendszergazdaként
+## <a name="assign-a-user-directly-as-an-administrator"></a>Felhasználó hozzárendelése közvetlenül rendszergazdaként
 
-Hozzárendelése egy vagy több felhasználó alkalmazás közvetlenül, kövesse az alábbi lépéseket:
+Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
+  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki szeretné osztani a felhasználót, hogy a listában az alkalmazást.
+6.  Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
 
-7.  Ha az alkalmazás betölt, kattintson **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
+7.  Ha az alkalmazás betöltött, kattintson a **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Megnyitásához a **hozzáadása hozzárendelés** ablaktáblán kattintson a **Hozzáadás** gombra kattint, a a **felhasználók és csoportok** listája.
+8.  Megnyitásához a **hozzárendelés hozzáadása** ablaktáblán kattintson a **Hozzáadás** a gomb a **felhasználók és csoportok** listája.
 
-9.  Kattintson a **felhasználók és csoportok** a választó a **hozzáadása hozzárendelés** ablaktáblán.
+9.  Kattintson a **felhasználók és csoportok** a választó a **hozzárendelés hozzáadása** ablaktáblán.
 
-10. Írja be a **teljes név** vagy **e-mail cím** érdekli hozzárendelése a felhasználó a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
+10. Írja be a **teljes név** vagy **e-mail-cím** Önt érdeklő való hozzárendelése a felhasználó a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
 
-11. Vigye a **felhasználói** a listában, hogy láthatóvá váljon a **jelölőnégyzet**. A felhasználói profil fénykép vagy adja hozzá a felhasználót emblémát jelölőnégyzetét, kattintson a **kijelölt** listája.
+11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
 
-12. **Választható lehetőség:** Ha azt szeretné, hogy **egynél több felhasználó hozzáadása**, egy másik típus **teljes név** vagy **e-mail cím** azokat a **Keresés név vagy e-mail cím** mező, és a jelölőnégyzet bejelölésével adja hozzá a felhasználót, hogy a **kijelölt** listája.
+12. **Választható lehetőség:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név alapján, vagy e-mail-cím** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
 
-13. Ha elkészült, válassza a felhasználók, kattintson a **válasszon** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazáshoz.
+13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
 
-14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** a választó a **hozzáadása hozzárendelés** hozzárendelése a kiválasztott felhasználói szerepkör kiválasztása panel.
+14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** -választójában jelenítse a **hozzárendelés hozzáadása** hozzárendelése a kiválasztott felhasználói szerepkör kiválasztása panel.
 
-15. Kattintson a **hozzárendelése** gombra kattintva a kijelölt felhasználók az alkalmazást.
+15. Kattintson a **hozzárendelése** gombra kattintva rendelje hozzá az alkalmazás a kijelölt felhasználók számára.
 
-Ha a kiépítés van konfigurálva, és már fut egy olyan alkalmazáshoz, az új felhasználók kell kell létrehozni, hogy egy alkalmazás körülbelül 10 perc múlva. Ellenőrizze a **naplók** részleteiről.
+Ha a kiépítés van beállítva, és a egy alkalmazás fut, új felhasználókat kell létrehozni egy alkalmazás körülbelül 10 perc múlva. Ellenőrizze a **Auditnaplók** részleteiről.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Rendszergazdaként alkalmazáshoz való közvetlenül is kiadhatjuk egy csoportnak
+## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Csoport hozzárendelése közvetlenül egy alkalmazás-rendszergazdaként
 
 Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
+  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki szeretné osztani a felhasználót, hogy a listában az alkalmazást.
+6.  Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
 
-7.  Ha az alkalmazás betölt, kattintson **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
+7.  Ha az alkalmazás betöltött, kattintson a **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Megnyitásához a **hozzáadása hozzárendelés** ablaktáblán kattintson a **Hozzáadás** gombra kattint, a a **felhasználók és csoportok** listája.
+8.  Megnyitásához a **hozzárendelés hozzáadása** ablaktáblán kattintson a **Hozzáadás** a gomb a **felhasználók és csoportok** listája.
 
-9.  Kattintson a **felhasználók és csoportok** a választó a **hozzáadása hozzárendelés** ablaktáblán.
+9.  Kattintson a **felhasználók és csoportok** a választó a **hozzárendelés hozzáadása** ablaktáblán.
 
-10. Írja be a **teljes csoportnév** érdekli való hozzárendelése a csoport a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
+10. Írja be a **teljes csoportnév** a csoport Önt érdeklő való hozzárendelése a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
 
-11. Vigye a **csoport** a listában, hogy láthatóvá váljon a **jelölőnégyzet**. A csoport profilképet vagy adja hozzá a felhasználót emblémát jelölőnégyzetét, kattintson a **kijelölt** listája.
+11. A kurzort a **csoport** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a csoport profilfénykép, vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
 
-12. **Nem kötelező:** Ha azt szeretné, hogy **egynél több csoport hozzáadása**, egy másik típus **teljes csoportnév** be a **Keresés név vagy e-mail cím alapján** keresési mezőbe, és a jelölőnégyzet bejelölésével a csoport hozzáadása a **kijelölt** listája.
+12. **Választható lehetőség:** Ha szeretné **egynél több csoport hozzáadása**, írjon be egy másik **teljes csoportnév** be a **Keresés név vagy e-mail cím alapján** keresőmezőbe, és a jelölőnégyzet bejelölésével adja hozzá a csoport a **kijelölt** listája.
 
-13. Ha befejezte a csoportok kiválasztásával, kattintson a **válasszon** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazáshoz.
+13. Ha befejezte a csoportok kiválasztásával, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
 
-14. **Nem kötelező:** kattintson a **Szerepkörválasztás** a választó a **hozzáadása hozzárendelés** szerepkör hozzárendelése a kijelölt csoportok kiválasztása ablakban.
+14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** -választójában jelenítse a **hozzárendelés hozzáadása** ablaktáblán válassza ki a szerepkör hozzárendelése a kiválasztott csoportokhoz.
 
-15. Kattintson a **hozzárendelése** gombra az alkalmazás a kiválasztott csoportok számára.
+15. Kattintson a **hozzárendelése** gombra az alkalmazás a kijelölt csoportokhoz hozzárendelni.
 
-Ha a kiépítés van konfigurálva, és már fut egy olyan alkalmazáshoz, a csoport tartalmazza az új felhasználók kell kell létrehozni, hogy egy alkalmazás körülbelül 10 perc múlva. Ellenőrizze a **naplók** részleteiről.
+Ha a kiépítés van beállítva, és a egy alkalmazás fut, új felhasználókat a csoportban lévő kell létrehozni egy alkalmazás körülbelül 10 perc múlva. Ellenőrizze a **Auditnaplók** részleteiről.
 
 >[!IMPORTANT]
->Kiépítése a csoport nevét és a csoport részletes adatait, mellett a tagok, ha bizonyos alkalmazások támogatott. Engedélyezheti vagy letilthatja ezt a funkciót engedélyezésével vagy letiltásával a **leképezési** a csoport objektumainak látható a **kiépítési** fülre. 
+>Ha támogatja az egyes alkalmazások kiépítése a csoport nevét és a csoport részletei mellett a tagok. Engedélyezheti vagy letilthatja ezt a funkciót engedélyezésével vagy letiltásával a **leképezési** csoport objektumainak látható a **kiépítési** fülre. 
 >
 >
 
-Ha csoportok kiépítés engedélyezve van, feltétlenül olvassa el a attribútum-leképezésekhez ellenőrizze a megfelelő mezőben használja a "egyező azonosító". Ez a megjelenítendő név lehet, és nem e-mail alias, a csoport és a tagok nem építhető ki, ha a megfelelő tulajdonság üres vagy nem a csoport az Azure ad-ben.
+Csoportok kiépítése engedélyezve van, ha mindenképpen tekintse át a annak érdekében, hogy a megfelelő mezőben használatos a "egyező ID" attribútum-leképezéshez. Ez a megjelenítendő név vagy e-mail alias, a csoportot és annak tagjait nem építhető ki, ha a megfelelő tulajdonság nem üres, vagy nincs feltöltve az egy csoportot az Azure ad-ben.
 
 ## <a name="next-steps"></a>További lépések
-[Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](active-directory-saas-app-provisioning.md)
+[Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](active-directory-saas-app-provisioning.md)

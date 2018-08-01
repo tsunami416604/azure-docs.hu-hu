@@ -9,16 +9,18 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 849a8dde07c248b6d7b317de5908b3a46dfad777
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 456ee8f7461fdb6a4335cdb36d4a6f9182e4c63e
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259010"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389279"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Hozzon létre egy kapcsolódik az Azure Video Indexer-fiókot
 
-A Video Indexer ingyenes próbaverziós fiókját használatakor korlátot jelent a kvóta- és indexelésére használhatja, videók száma. Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéssel, amely Önnek nem kell ezeket a korlátokat, és használja a használatalapú fizetéshez kapcsolódó Video Indexer-fiókot.
+A Video Indexer-fiók létrehozásakor kiválaszthatja a (, ahol megkapja ingyenes indexelési perc bizonyos számú) egy ingyenes próbafiókot vagy egy fizetős lehetőség (Ha nem korlátozza a kvóta). Az ingyenes próbaverziót a Video Indexer legfeljebb 600 perc ingyenes indexeli a webhely számára biztosít, és akár 2400 percnyi ingyenes indexelő API számára. A fizetős lehetőség létrehozhat egy Azure-előfizetéséhez kapcsolódó Video Indexer-fiókot és az Azure Media Services-fiók. Indexelt perc, valamint a kapcsolódó adathordozó-fiók fizet díjak. 
+
+Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéséhez kapcsolódó Video Indexer-fiókot és az Azure Media Services-fiók. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

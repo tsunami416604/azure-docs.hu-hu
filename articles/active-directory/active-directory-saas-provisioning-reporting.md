@@ -1,140 +1,140 @@
 ---
-title: Az Azure Active Directory automatikus felhasználói fiók kiépítése SaaS-alkalmazásokhoz való Reporting |} Microsoft Docs
-description: 'Útmutató: automatikus felhasználói fiók kiépítése feladatok állapotának ellenőrzését, és egyéni felhasználók számára a kiépítés elhárítása.'
+title: Jelentéskészítés az Azure Active Directory automatikus felhasználói fiók kiépítése SaaS-alkalmazásokhoz |} A Microsoft Docs
+description: Ismerje meg, hogyan automatikus felhasználói fiók kiépítése a feladatok állapotát, és az egyes felhasználók átadásának hibaelhárítása.
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
-writer: asmalser-msft
+author: barbkess
 manager: mtillman
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
-ms.topic: article
-ms.date: 05/12/2017
-ms.author: asmalser-msft
-ms.openlocfilehash: 5011dfbe496472e21a85dee9fa4901dad429a984
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.topic: conceptual
+ms.date: 07/30/2018
+ms.author: barbkess
+ms.reviewer: asmalser
+ms.openlocfilehash: e3be74fbb571a806fc03a92d0b1b373e35d196be
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031729"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363614"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: Jelentések automatikus felhasználói fiók kiépítése
 
 
-Az Azure Active Directory tartalmaz egy [szolgáltatás kiépítését felhasználói fiók](active-directory-saas-app-provisioning.md) , amelynek segítségével automatizálhatja az üzembe helyezési megszüntetést felhasználói fiókok SaaS-alkalmazásokhoz és más rendszerek céljából végpont identitás életciklusa felügyeleti. Az Azure AD az összes, az alkalmazások és a "Kiemelt" szakaszában rendszerek összekötők kiépítés előre integrált felhasználói támogatja a [az Azure AD application gallery](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Az Azure Active Directory tartalmazza egy [létesítési szolgáltatás felhasználói fiók](active-directory-saas-app-provisioning.md) , amelynek segítségével automatizálhatja a kiépítési megszüntetést felhasználói fiókok a SaaS-alkalmazások és más rendszerek, teljes körű identitás-életciklus céljából felügyeleti. Az Azure AD támogatja az összes, az alkalmazások és rendszerek "Kiemelt" szakaszában összekötők előre integrált felhasználókiépítés a [Azure AD alkalmazáskatalógusában](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
-Ez a cikk ismerteti, hogyan feladatok kiépítése után azok beállított állapotának ellenőrzése és hibaelhárítása az egyes felhasználók és csoportok kiépítését.
+Ez a cikk bemutatja, hogyan ellenőrizheti az üzembe helyezés állapotát az feladatok után azok hoztak létre, és hibaelhárítási információkat ismertetni az egyes felhasználók és csoportok üzembe helyezése.
 
 ## <a name="overview"></a>Áttekintés
 
-Üzembe helyezési összekötők állíthatók be, és a használatával konfigurálhatók a [Azure-portálon](https://portal.azure.com), követve a [biztosított dokumentáció](saas-apps/tutorial-list.md) a támogatott alkalmazás. Ha konfigurálva és fusson, kiépítés feladatok jelenteni lehet a két módszer egyikével:
+Üzembe helyezési összekötők beállítása és konfiguráltak a [az Azure portal](https://portal.azure.com), a következő a [biztosított dokumentáció](saas-apps/tutorial-list.md) a támogatott alkalmazás. Miután konfigurálva és fusson, kiépítés feladatok jelenteni lehet a két módszer egyikével:
 
-* **Azure felügyeleti portálján** -Ez a cikk elsődlegesen ismerteti a jelentés-adatok beolvasása a [Azure-portálon](https://portal.azure.com), amely biztosítja, mind a kiépítés összefoglaló jelentést, valamint részletes kiépítése a naplók egy az adott alkalmazáshoz.
+* **Azure felügyeleti portálján** – Ez a cikk elsősorban ismerteti a jelentés adatainak beolvasása a [az Azure portal](https://portal.azure.com), amely biztosít egy összesítő jelentés kiépítés és is részletes kiépítés auditnaplók egy az adott alkalmazáshoz.
 
-* **Naplózási API** -Azure Active Directory is biztosít egy naplózási API-t, amely lehetővé teszi a programozott lekérése a részletes telepítési naplókat. Lásd: [Azure Active Directory naplózási API-referencia](active-directory-reporting-api-audit-reference.md) az API-jával vonatkozó dokumentációt. Amíg ez a cikk kifejezetten foglalkozik az API-t használja, azt a biztonsági naplóban rögzített események kiépítés típusú adatok találhatók.
+* **API naplózása** – Azure Active Directory is kínál, amely lehetővé teszi a programozott lekéréséhez a részletes üzembe helyezési naplók naplózási API. Lásd: [API-referencia az Azure Active Directory naplózási](active-directory-reporting-api-audit-reference.md) az adott használatával az API dokumentációjában. Ez a cikk nem tárgyalja kifejezetten az API használatát, amíg azt a kiépítés események, které jsou zaznamenány v auditovacím protokolu típusú részletesen.
 
 ### <a name="definitions"></a>Meghatározások
 
-Ebben a cikkben az alábbiakban meghatározott a következő feltételeket:
+Ebben a cikkben alább meghatározott, az alábbi feltételek:
 
-* **Forrás-rendszer** -a tárház, amely szinkronizálja az Azure AD szolgáltatás kiépítését. Az Azure Active Directory a forrásrendszerben többségének előre integrálva az összekötők kiépítés, azonban bizonyos kivételek vannak (Példa: Workday bejövő szinkronizálás).
+* **Forrás-rendszer** -, akik az Azure AD létesítési szolgáltatás szinkronizálja a tárházban. Az Azure Active Directory a forrásrendszerben a legtöbb előre integrált összekötők kiépítése, azonban vannak kivételek (Példa: Workday bejövő szinkronizálási).
 
-* **Cél rendszer** -a tárház, amely szinkronizálja az Azure AD szolgáltatás kiépítését. Ez általában az SaaS-alkalmazás (példák: Salesforce, a ServiceNow, a Google Apps, a Dropbox vállalati), azonban bizonyos esetekben lehet például az Active Directory egy a helyszíni rendszer (Példa: Workday bejövő szinkronizálás Active Directory).
-
-
-## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Jelentéseit az Azure felügyeleti portálján a kiépítés beolvasása
-
-Az beszerzése kiépítésére jelentési adatok egy adott alkalmazáshoz, indítsa el, indítsa el a [Azure felügyeleti portálján](https://portal.azure.com) és a vállalati alkalmazás, amelynek kiépítés van konfigurálva alkulcsot. Például ha a felhasználók számára LinkedIn jogosultságszint-emelés kiépíteni, a navigációs mutató az alkalmazás részletes adatainak elérési út:
-
-**Az Azure Active Directory > Vállalati alkalmazások > összes alkalmazás > LinkedIn jogosultságszint-emelés**
-
-Itt végezheti el a kiépítési összefoglaló jelentést és a telepítési naplók, mind az alábbiakban.
+* **Cél rendszer** -, akik az Azure AD létesítési szolgáltatás szinkronizálja a tárházban. Ez általában az SaaS-alkalmazás (példák: Salesforce, ServiceNow, a Google Apps, a Dropbox Business), de néhány esetben lehet egy helyszíni rendszer, például az Active Directory (Példa: bejövő szinkronizálás Workday az Active Directory).
 
 
-## <a name="provisioning-summary-report"></a>Üzembe helyezési összegzési jelentése
+## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Bevezetés a jelentések az Azure felügyeleti portálján a kiépítés
 
-A létesítési összefoglaló jelentést is elérhetővé válik a a **kiépítési** megadott alkalmazás lapján. Megtalálható a **szinkronizálás részleteivel** szakasz alatt **beállítások**, és a következő adatokat tartalmazza:
+Jelentési adatok egy adott alkalmazás első üzembe helyezés esetében először indítása a [Azure felügyeleti portálján](https://portal.azure.com) , és keresse meg a vállalati alkalmazás, amelynek kiépítés van konfigurálva. Például ha a felhasználók a LinkedIn jogosultságszint-emelés szeretne kiépíteni, a navigációs az alkalmazás részletes útvonala:
 
-* A felhasználók száma összesen és a / csoportok, amely nincs szinkronizálva, és jelenleg a hatókör között a forrás és a cél rendszerhez történő üzembe helyezéséhez
+**Az Azure Active Directory > Vállalati alkalmazások > minden alkalmazás > LinkedIn szintjének emelése**
 
-* A szinkronizálás a legutóbbi alkalommal volt futtatva. Történjen általában 20-40 percenként szinkronizálás után egy [kezdeti szinkronizálás](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) befejeződött.
+Itt is elérheti a kiépítési összefoglaló jelentés és az üzembe helyezési naplók, mind az alábbiakban.
 
-* -E egy [kezdeti szinkronizálás](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) befejezése
 
-* -E a telepítési folyamat karanténba helyezés került-e, és mi a karanténba helyezett állapotának oka (például nem sikerült kommunikálni a célrendszeren érvénytelen rendszergazdai hitelesítő adatok miatt)
+## <a name="provisioning-summary-report"></a>Üzembe helyezési összesítő jelentés
 
-A létesítési összefoglaló jelentést kell lennie az első hely rendszergazdák tekintse meg a kiosztási feladatának működési állapotának az ellenőrzéséhez.
+Az üzembe helyezési összefoglaló jelentés jelenik meg a a **kiépítési** megadott alkalmazás lapján. Található a **szinkronizálás részleteivel** szakasz alatt **beállítások**, és a következő információkat tartalmazza:
+
+* Felhasználók száma és a csoportok, amely nincs szinkronizálva, és jelenleg a forrás és a cél rendszer közötti kiépítés hatókörébe /
+
+* A szinkronizálás a legutóbbi alkalommal futott. Szinkronizálás általában után fordulhat elő, percenként 20 – 40- [a kezdeti szinkronizálás](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) befejeződött.
+
+* E- [a kezdeti szinkronizálás](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) befejezése
+
+* -E a kiépítési folyamat karanténba került-e, és mi az a karanténba helyezett állapot oka (például nem sikerült kommunikálni a célrendszer érvénytelen rendszergazdai hitelesítő adatok miatt)
+
+Az üzembe helyezési összefoglaló jelentés kell lennie a helyi rendszergazdák áttekintés a létesítési feladat működési állapotának az ellenőrzéséhez.
 
  ![Összefoglaló jelentés](./media/active-directory-saas-provisioning-reporting/summary_report.PNG)
 
-## <a name="provisioning-audit-logs"></a>Telepítési naplófájlok
-A létesítési szolgáltatás által végzett tevékenységek tárolja, amely az Azure AD naplókat, amely tekintheti meg a **naplók** lap a **fiók** kategóriát. Naplózott esemény tevékenységtípusok a következők:
+## <a name="provisioning-audit-logs"></a>Üzembe helyezési naplók
+A kiépítési szolgáltatás által végzett tevékenységek tárolja, amely az Azure AD naplóit, amely lehet megtekinteni a **Auditnaplók** lapjára az **fiók üzembe helyezésének** kategória. Esemény típusú naplózott tevékenységek a következők:
 
-* **Események importálása** -"importálás" esemény rögzítése minden alkalommal, amikor az Azure AD szolgáltatás kiépítését kapcsolatos egyéni felhasználó vagy csoport adatait kérdezi le a forrásrendszerben, vagy a célrendszeren. A szinkronizálás során felhasználókat a rendszer beolvassa az a forrásrendszerben először "importálása" események rögzített eredményekkel. A lekérdezett felhasználók egyező azonosítójú majd megkérdezi a szemben a célrendszeren ellenőrizze, hogy léteznek, a eredményekkel "importálása" eseményként is rögzíti. Ezeket az eseményeket rögzítse az összes csatlakoztatott felhasználói attribútumokat és azok értékei, az Azure AD szolgáltatás kiépítését az esemény időpontjában által látott volt. 
+* **Események importálása** – az "import" esemény minden alkalommal, amikor az Azure AD létesítési szolgáltatás egy adott felhasználó vagy csoport adatait, a forrás vagy cél rendszer kérdezi le. a rendszer rögzíti. A szinkronizálás során felhasználók lekért a forrásrendszerben először rögzíteni, "importálása" események eredményeivel. Az egyező azonosítók a lekért felhasználók majd megkérdezi a ellen annak ellenőrzéséhez, hogy azok léteznek, a "importálása" eseményként is rögzíti az eredményeket a célrendszeren. Ezeket az eseményeket rögzíteni, csatlakoztatott felhasználói attribútumok és azok értékeit, amely az Azure AD létesítési szolgáltatás az esemény időpontjában által is látható. 
 
-* **Szinkronizálási szabály események** – az attribútum-hozzárendelési szabályok eredményeit jelentés ezeket az eseményeket, és bármelyik konfigurált hatókörének meghatározásához szűrők, felhasználói adatok importálása és a forrás és cél rendszerekből kiértékelése után. Például ha egy felhasználó a forrásrendszerben kialakítási hatókörben kell tekinteni, és nem megfelelőnek nem létezik a célrendszeren, akkor ezt az eseményt, amely rögzíti a felhasználó megkapják a célrendszeren. 
+* **Szinkronizálási szabály események** – ezeket az eseményeket az eredményeket az attribútum-leképezési szabályok jelentést és az esetleges Hatókörszűrő, felhasználói adatok importált és a forrás és cél rendszerekből kiértékelése után. Például ha egy felhasználó a forrásrendszerben a kiépítés hatókörébe kell tekinteni, és tekinteni, hogy nem létezik a célrendszeren, majd ezt az eseményt, amely rögzíti a felhasználó lesznek üzembe helyezve a célrendszeren. 
 
-* **Események exportálását** -"export" esemény minden alkalommal, amikor az Azure AD szolgáltatás kiépítését egy felhasználói fiókot vagy csoportot objektum ír a rendszer rögzíti. Ezeket az eseményeket rögzítse az összes felhasználói attribútumokat és azok értékei, írt az Azure ad szolgáltatás kiépítését az esemény időpontjában. Hiba történt a felhasználói fiók vagy csoport objektum írása a célrendszeren, ha megjelenik itt.
+* **Események exportálását** – az "export" esemény minden alkalommal, amikor az Azure AD létesítési szolgáltatás egy felhasználói fiókot vagy csoportot objektum ír a rendszer rögzíti. Ezeket az eseményeket rögzíteni a felhasználói attribútumok és azok értékeit, hogy az írt által az Azure AD létesítési szolgáltatás az esemény időpontjában. Hiba történt a felhasználói fiók vagy csoport objektum írását a célrendszeren, ha megjelenik itt.
 
-* **Feldolgozni az eseményeket a letéti** -folyamat escrows fordulhat elő, ha a létesítési szolgáltatás közben művelet hiba lép fel, és próbálja megismételni a műveletet időt időközönkénti biztonsági ki elkezdi. Egy "letéti" esemény rögzítése minden alkalommal, amikor a telepítési művelet lett visszavonva.
+* **Dolgozza fel letéti** -folyamat escrows fordulhat elő, ha a kiépítési szolgáltatás közben egy művelet egy hiba lép fel, és próbálja megismételni a műveletet egy visszatartási időköz elteltéig kezd. Egy "letéti" esemény minden alkalommal, amikor egy üzembe helyezési művelet volt elavult rögzíti.
 
-Ha egyéni események kiépítés, az események általában fordulhat elő, az itt megadott sorrendben:
+Ha megnézzük a kiépítés események az egyes felhasználók számára, az események általában történnek az itt látható sorrendben:
 
-1. Importálás esemény: felhasználói a forrásrendszerben kéri le a rendszer.
+1. Importálás esemény: felhasználói veszi át a forrásrendszerben.
 
-2. Importálás esemény: célrendszeren le kell kérdezni a lekért felhasználói meglétének ellenőrzése.
+2. Importálás esemény: célrendszer lekérik a lekért felhasználói meglétének ellenőrzése.
 
-3. Szinkronizálási szabály esemény: a forrás-és cél felhasználó adatait értékelni a megadott attribútum-hozzárendelési szabályok és tartalmazó szűrő segítségével meghatározhatja, mi a teendő, ha van ilyen kell elvégezni.
+3. Szinkronizálási szabály esemény: rendszerekből a forrás- és felhasználói adatok értékeli ki a konfigurált attribútum-leképezési szabályok és meghatározni, hogy milyen műveletet, ha vannak szabad elvégezni Hatókörszűrő szemben.
 
-4. Esemény exportálása: Ha a szinkronizálási szabály eseményt meghatározni, hogy egy műveletet kell végrehajtani (Hozzáadás, frissítés, Törlés), majd a művelet eredményét tárolja, amely az Exportálás esemény.
+4. Esemény exportálása: Ha a szinkronizálási szabály esemény során, hogy a művelet legyen-e végre (Hozzáadás, Update, Delete), majd a művelet eredményeit rögzíti az exportálási esemény.
 
-![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-provisioning-reporting/audit_logs.PNG)
+![Az Azure ad-ben tesztfelhasználó létrehozása](./media/active-directory-saas-provisioning-reporting/audit_logs.PNG)
 
 
-### <a name="looking-up-provisioning-events-for-a-specific-user"></a>Kiépítés események egy adott felhasználó keresése
+### <a name="looking-up-provisioning-events-for-a-specific-user"></a>Kiépítés egy adott felhasználó események keresése
 
-A telepítési naplók a leggyakrabban használt használati eset egyedi felhasználói fiókot a kiépítési állapotának. Kereshet egy adott felhasználó utolsó létesítési események:
+A leggyakoribb üzembe helyezési Naplók funkcióban egyedi felhasználói fiók kiépítési állapotának ellenőrzéséhez. Keresse ki az utolsó kiépítési események egy adott felhasználó:
 
-1. Lépjen a **naplók** szakasz.
+1. Nyissa meg a **Auditnaplók** szakaszban.
 
-2. Az a **kategória** menü **fiók**.
+2. Az a **kategória** menüjében válassza **fiók üzembe helyezésének**.
 
-3. Az a **dátumtartomány** menüben válassza ki a keresendő, dátumtartomány
+3. Az a **dátumtartomány** menüben válassza ki a dátumtartományt szeretne keresni,
 
-4. Az a **keresési** sáv, adja meg a keresni kívánt felhasználó felhasználói Azonosítóját. Azonosító érték formátuma függetlenül van kiválasztva, mint az elsődleges egyező azonosító attribútum-leképezés konfigurációjában (például userPrincipalName vagy alkalmazott azonosítószámát) meg kell egyeznie. Az azonosító értékének megadása kötelező a cél(ok) oszlopban látható lesz.
+4. Az a **keresési** sáv, adja meg a keresni kívánt felhasználó felhasználói azonosítója. Azonosító értékének formátuma meg kell egyeznie a függetlenül van kiválasztva, mint az elsődleges egyező azonosító attribútumleképezés konfigurációjában (például userPrincipalName vagy az alkalmazott azonosítója szám). A szükséges azonosító értéke meg fognak jelenni a cél(ok) oszlop.
 
-5. Nyomja le az Enter kereséséhez. Először az eredmény a legutóbbi létesítési események.
+5. Nyomja le az Enter billentyűt a keresés. A legutóbbi kiépítési események először vissza kell.
 
-6. Ha események ad vissza, vegye figyelembe a tevékenység típusát, és hogy azok sikeres vagy sikertelen volt. Ha nincs találat, majd az azt jelenti, hogy a felhasználó nem létezik, vagy nem még felderítette a telepítési folyamatot, ha a teljes szinkronizálás még nem fejeződött be.
+6. Ha eseményeket ad vissza, vegye figyelembe a tevékenység típusát, és hogy azok sikeres vagy sikertelen volt. Ha nem jár eredménnyel, majd azt azt jelenti, hogy a felhasználó nem létezik vagy nem még észlelt a kiépítési folyamat által, ha a teljes szinkronizálás még nem fejeződött be.
 
-7. Kattintson az egyes események megtekintéséhez kiterjesztett adatait, többek között az összes felhasználó tulajdonságai beolvasni, értékeli ki, vagy az esemény-ként.
+7. Kattintson az egyes események megtekintéséhez kiterjesztett adatait, például az összes felhasználói tulajdonságok, amelyek lekérni, értékeli ki, vagy az esemény részeként írt.
 
-A bemutató a vizsgálati naplók használatáról tekintse meg az alábbi videó. A vizsgálati naplók jelenjenek meg az 5:30 körül jelölje meg:
+A bemutató a vizsgálati naplók használatáról tekintse meg az alábbi videó. A vizsgálati naplók jelennek meg az 5:30 körül jelölje meg:
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Tippek a telepítési naplók megtekintése
+### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Tippek az üzembe helyezési naplók megtekintése
 
-Az olvashatóság érdekében ajánlott az Azure portálon, válassza ki a **oszlopok** gombra, majd válassza ki a következő oszlopot:
+Az olvashatóság érdekében ajánlott az Azure Portalon, válassza ki a **oszlopok** gombra, és válassza ki ezeket az oszlopokat:
 
-* **Dátum** -dátumát jeleníti meg az esemény történt.
-* **Cél(ok)** -jeleníti meg az alkalmazás és egy felhasználói Azonosítót, amely az esemény vonatkoznak.
-* **Tevékenység** -tevékenységtípus, korábban leírt módon.
+* **Dátum** -jeleníti meg a dátumot, az esemény történt.
+* **Cél(ok)** – az alkalmazás neve és felhasználói azonosítója, amelyek az esemény tárgya jeleníti meg.
+* **Tevékenység** – a tevékenység típusa, az előzőekben leírtak szerint.
 * **Állapot** - e az esemény sikeres volt-e.
-* **Állapotok** – Mi történt az üzembe helyezési eseményben összegzését.
+* **Állapot oka** – Mi történt a kiépítési esemény összegzését.
 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az üzembe helyezési összegző jelentés és naplózási naplókat segíti a rendszergazdák különböző felhasználói fiók kiépítése kapcsolatos problémák elhárítása kulcsfontosságú szerepet játszanak.
+A kiépítési összefoglaló jelentés- és vizsgálati naplókat útmutatás nyújtása a különböző felhasználói fiók kiépítéssel kapcsolatos problémák elhárítása rendszergazdák kulcsfontosságú szerepet játszanak.
 
-Forgatókönyv-alapú bemutató elhárításáról automatikus a felhasználók átadása, lásd: [problémák konfigurálása, és üzembe helyezését a felhasználók számára az alkalmazás](active-directory-application-provisioning-content-map.md).
+Forgatókönyv-alapú hogyan háríthatók el a felhasználók automatikus átadása, tekintse át [konfigurálásával és a felhasználók alkalmazásban való létrehozásával kapcsolatos problémák](active-directory-application-provisioning-content-map.md).
 
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md)

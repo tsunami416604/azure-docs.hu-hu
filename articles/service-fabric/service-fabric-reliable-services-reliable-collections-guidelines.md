@@ -1,6 +1,6 @@
 ---
-title: Irányelvek és javaslatok az Azure-ban megbízható gyűjtemények szolgáltatás háló |} Microsoft Docs
-description: Irányelvek és javaslatok a Service Fabric megbízható gyűjtemények
+title: – Irányelvek és javaslatok az Azure-ban a Reliable Collections a Service Fabric |} A Microsoft Docs
+description: Service Fabric megbízható gyűjtemények használatával vonatkozó irányelvek és javaslatok
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,50 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: mcoskun
-ms.openlocfilehash: 7a61fa9df5b5232c11f4a546ec5f050461c88e88
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 72091d592475e41f254ef7c3882e3d3fee0c491b
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211140"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389531"
 ---
-# <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure Service Fabric megbízható gyűjtemények
-Ez a szakasz útmutatást nyújt a megbízható állapotkezelője és megbízható gyűjtemények használatával. A cél, hogy a felhasználók közös nehézségek elkerülése érdekében.
+# <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure Service Fabric megbízható gyűjteményeihez
+Ez a szakasz útmutatást nyújt a a Reliable State Manager és a Reliable Collections használata. A célja segítség a felhasználóknak a közös alkalmazásmegoldásokra elkerülése érdekében.
 
-Az irányelvek egyszerű ajánlásokat a feltételeket a következő előtaggal vannak sorolva *tegye*, *fontolja meg*, *kerülje* és *nem*.
+Az irányelvek előtaggal van ellátva a használati egyszerű ajánlásként vannak rendszerezve *tegye*, *fontolja meg*, *kerülje* és *nem*.
 
-* Ne módosítsa az olvasási műveletek által visszaadott egyéni típusú objektum (például `TryPeekAsync` vagy `TryGetValueAsync`). Megbízható gyűjtemények, egyidejű gyűjtemények, mint például egy hivatkozást az objektumok és másolatát nem adhat vissza.
-* Lemásolni mély visszaadott típusú objektumhoz tartozó olyan egyéni módosítás előtt. Mivel a struktúrák és beépített pass-by-value, nem kell csak referencia típusú mezők vagy a módosítani kívánt tulajdonságokat tartalmaznak, akkor a részletes másolatot rajtuk.
-* Ne használjon `TimeSpan.MaxValue` időtúllépési. Időtúllépések holtpont észleléséhez használandó.
-* Ne használjon tranzakció, miután ez befejeződött, megszakított, vagy elvetése megtörtént.
-* Ne használja az enumerálás a létrehozták a tranzakció hatókörén kívül.
-* Ne hozzon létre egy tranzakcióban, másik tranzakcióban `using` utasítás mert holtpont lehet okozni.
-* Győződjön meg arról, hogy a `IComparable<TKey>` implementációjának helyességét. A rendszer mennyi függőségi `IComparable<TKey>` az ellenőrzőpontok és sorok egyesítéshez.
-* Módosítási zárolást szándéka elemet olvasásakor frissítésére használni megakadályozhatja, hogy egy bizonyos osztály holtpont.
-* Vegye figyelembe, ha megtartja az 1000-nél kisebb lehet partíciónként megbízható gyűjtemények száma. Több megbízható gyűjteményeket, amelyek kevesebb elem felett előnyben részesítik a megbízható gyűjtemények további elemeket.
-* Vegye figyelembe a megőrzi az elemeket (például TKey + TValue megbízható szótár) 80 KB alatt: kisebb annál pontosabb. Ez csökkenti a nagy objektumok halommemóriájának kihasználtsága, valamint a lemezek és a hálózati IO-követelményeket. Gyakran csökkentik az ismétlődő adatokat replikál, az érték csak egy kis részét frissítésekor. Közös ennek érdekében a megbízható szótárban módja a sorok megszüntetése több sort.
-* Érdemes biztonsági mentést, és állítsa vissza a vész-helyreállítási funkció.
-* Elkerülése érdekében egyetlen entitás műveletek és többentitásos műveletek (például `GetCountAsync`, `CreateEnumerableAsync`) miatt a különböző elkülönítési szinten ugyanabban a tranzakcióban.
-* InvalidOperationException kezelni. A rendszer számos okból felhasználói tranzakció is megszakítja. Például ha a megbízható állapotkezelője-jal kívül elsődleges szerepet a, vagy ha egy hosszú ideig futó tranzakció blokkolja a tranzakciós napló csonkolási. Ilyen esetben felhasználói InvalidOperationException, amely azt jelzi, hogy a tranzakció már meg lett szakítva, jelenhet meg. Ha, a tranzakció futása nem volt szükség a felhasználó által kezelni ezt a kivételt legjobb módja, ha a tranzakció eldobásakor ellenőrizze, hogy a megszakítási token felé a jelzésküldés (vagy a replika szerepkörét az megváltozott), és ha nem hozzon létre egy új tranzakció, és próbálkozzon újra.  
+* Ne módosítsa az olvasási műveletek által visszaadott egyéni típusú objektumot (például `TryPeekAsync` vagy `TryGetValueAsync`). A Reliable Collections egyidejű gyűjteményeket, mint egy hivatkozást az objektumok és a egy másolja vissza.
+* Részletes másolási tegye meg a visszaadott objektum egy egyéni típusú módosítás előtt. Mivel az struktúrák és beépített pass-a-érték, nem kell tennie őket részletes másolatot, ha a referencia-kitöltött mező vagy a módosítani kívánt tulajdonságokat tartalmaznak.
+* Ne használjon `TimeSpan.MaxValue` időtúllépési. Időtúllépések használandó holtpontok észleléséhez.
+* Ne használjon egy tranzakciót, miután ez befejeződött, megszakított, vagy eldobva.
+* Ne használjon egy enumerálás kívül lett létrehozva a tranzakció-hatókörben.
+* Ne hozzon létre egy tranzakció egy másik tranzakción belül `using` utasítás mert holtpontok okozhat.
+* Győződjön meg arról, hogy a `IComparable<TKey>` megvalósítási helyességéről. A rendszer felveszi a függőségi `IComparable<TKey>` a sorok és az ellenőrzőpontok egyesítését.
+* Frissítési zárolás funkció használata egy elemet a szándéka olvasásakor frissítse úgy, hogy egy adott osztály holtpontok megakadályozása.
+* Érdemes lehet megtartja az 1000-nél kisebb lehet partíciónként megbízható gyűjtemények száma. A további elemek a Reliable Collections előnyben részesítése kevesebb elemet tartalmazó további megbízható gyűjtemények.
+* Vegye figyelembe a tartja az elemek (például TKey + megbízható szótár TValue) alatt 80 kilobájt: kisebb, annál jobb. Ez csökkenti a nagy objektumok halommemóriájának kihasználtsága, valamint a lemezek és a hálózati IO-követelményeket. Gyakran előfordul csökkenti a duplikált adatok replikálása, ha az érték csak egy kis részét frissítése folyamatban van. Ennek érdekében a megbízható szótárban gyakori módja, ha több sort a sorok feltörhessék.
+* Fontolja meg a biztonsági mentéssel, és hogy a vész-helyreállítási funkciójának helyreállításához.
+* Elkerülése érdekében egyetlen entitás műveletek és többentitásos műveletek (például: `GetCountAsync`, `CreateEnumerableAsync`) miatt a különböző elkülönítési szinten ugyanabban a tranzakcióban.
+* InvalidOperationException kezelni. A rendszer számos okból a felhasználói tranzakciókat is megszakítja. Például ha a Reliable State Manager módosul a szerepkör elsődleges kívül, vagy ha egy hosszú ideig futó tranzakció nem blokkolja a tranzakciós napló csonkolása. Ezekben az esetekben előfordulhat, hogy a felhasználó InvalidOperationException, amely azt jelzi, hogy a tranzakció már meg lett szakítva, kap. Feltételezve, a tranzakció megszüntetése nem volt szükség a felhasználó által kezelni ezt a kivételt a legjobb módja, ha tud megszabadulni a tranzakciót, ellenőrizze, hogy a megszakítás token mígnem lett (vagy a a replika szerepkörét az megváltozott), és hozzon létre egy új Ha tranzakció, majd próbálkozzon újra.  
 
-Az alábbiakban néhány dolgot figyelembe venni:
+Az alábbiakban néhány dolgot figyelembe kell venni:
 
-* Az alapértelmezett érték négy másodperc minden megbízható gyűjtemény API. A legtöbb felhasználónak alapértelmezett időkorlátja kell használnia.
-* Az alapértelmezett megszakítási lexikális elem `CancellationToken.None` a gyűjtemények API-k az összes megbízható.
-* A kulcs típusú paraméter (*TKey*) a megbízható Dictionary megfelelően meg kell valósítania `GetHashCode()` és `Equals()`. Lehet, hogy a kulcsok nem módosítható.
-* Magas rendelkezésre állás biztosítása a megbízható gyűjtemények, minden egyes szolgáltatás legalább egy célként és a replikakészlet minimális mérete 3 beállítása kell rendelkeznie.
-* A másodlagos olvasási műveletek nem kvórum véglegesített verziók lehet olvasni.
-  Ez azt jelenti, hogy egy verziója, amely egyetlen másodlagos olvasható adatok előfordulhat, hogy lehet hamis jutott el.
-  Elsődleges olvasások a rendszer mindig stabil: is soha nem lehet false jutott el.
+* Az alapértelmezett időtúllépési érték minden megbízható gyűjtemény API négy másodperc. A felhasználók többsége az alapértelmezett időtúllépési kell használnia.
+* Az alapértelmezett megszakítás jogkivonat `CancellationToken.None` az összes megbízható gyűjtemények API-t.
+* A kulcstípus paramétert (*TKey*) számára egy megbízható szótárban tároló megfelelően meg kell valósítania `GetHashCode()` és `Equals()`. Lehet, hogy a kulcsok nem módosítható.
+* A megbízható gyűjtemények magas rendelkezésre állás eléréséhez, minden szolgáltatás legalább egy cél és a replikakészlet minimális mérete 3 kell rendelkezniük.
+* A másodlagos olvasási művelet lehet, hogy olvassa el, amelyek nem kvórum véglegesített verziók.
+  Ez azt jelenti, hogy egy egyetlen másodlagos beolvasott verziója előfordulhat, hogy lehet hamis haladt előre.
+  Elsődleges olvasási mindig stabil: is soha nem lehet hamis haladt előre.
+* A megőrzött biztonsági és adatvédelmi az adatok az alkalmazás megbízható gyűjteményekben a döntést és a storage management által biztosított védelmet a tulajdonos AZAZ Operációs rendszer lemeztitkosítás használható az adatok inaktív védelme érdekében.  
 
 ### <a name="next-steps"></a>További lépések
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
-* [Tranzakciók és a zárolásokat](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+* [Tranzakciók és zárolások](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Adatok kezelése
   * [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
   * [Értesítések](service-fabric-reliable-services-notifications.md)
   * [Szerializálási és frissítése](service-fabric-application-upgrade-data-serialization.md)
-  * [Megbízható állapot Manager konfigurálása](service-fabric-reliable-services-configuration.md)
+  * [A Reliable State Manager konfigurálása](service-fabric-reliable-services-configuration.md)
 * Egyéb
-  * [Megbízható szolgáltatások – első lépések](service-fabric-reliable-services-quick-start.md)
-  * [Fejlesztői leírás megbízható gyűjtemények](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [A Reliable Services – gyorsútmutató](service-fabric-reliable-services-quick-start.md)
+  * [A Reliable Collections – fejlesztői referencia](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

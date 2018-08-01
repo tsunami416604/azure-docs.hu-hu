@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cd2578f2fd8217d513a693ef348a5c26a4b18623
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 118f9d7865728177f323078c036aee1884a61431
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126507"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390296"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
@@ -169,10 +169,10 @@ Hibrid Runbook-feldolgozók beállítható úgy, hogy csak aláírt runbookok fu
 
 ### <a name="create-signing-certificate"></a>Aláíró tanúsítvány létrehozása
 
-Az alábbi példa runbookokat az aláíráshoz használt önaláírt tanúsítványt hoz létre. A minta létrehozza a tanúsítványt, és exportálja azt. A tanúsítványt később importálja az a hibrid Runbook-feldolgozók. Az ujjlenyomat adja vissza, a rendszer később hivatkozik a tanúsítványra.
+Az alábbi példa létrehoz egy önaláírt tanúsítványt, a runbookok az aláíráshoz használható. A minta létrehozza a tanúsítványt, és exportálja azt. A tanúsítványt később importálja az a hibrid Runbook-feldolgozók. Az ujjlenyomat adja vissza, a rendszer később hivatkozik a tanúsítványra.
 
 ```powershell
-# Create a self signed runbook that can be used for code signing
+# Create a self-signed certificate that can be used for code signing
 $SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
                                         -Subject "CN=contoso.com" `
                                         -KeyAlgorithm RSA `
@@ -211,14 +211,14 @@ Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocati
 
 ### <a name="sign-your-runbooks-using-the-certificate"></a>A Runbookok a tanúsítvány aláírása
 
-A hibrid Runbook-feldolgozók használatára konfigurált csak aláírt runbookok. A runbookok, amelyek a hibrid Runbook-feldolgozón használandó be kell jelentkeznie. Az alábbi minta PowerShell használatával a runbookok aláírásához.
+A hibrid Runbook-feldolgozók használatára konfigurált csak aláírt runbookok, be kell jelentkeznie a runbookokat, amelyek a hibrid Runbook-feldolgozón használni fog. Az alábbi minta PowerShell használatával a runbookok aláírásához.
 
 ```powershell
 $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-Után a runbook rendelkezik, azt kell importálja az Automation-fiók, és közzéteheti az aláírásblokkot. Megtudhatja, hogyan importálhatja a runbookok, lásd: [runbook importálása egy fájlból az Azure Automationbe](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+A runbook aláírt azt kell importálja az Automation-fiók, és közzéteheti az aláírásblokkot. Runbookok importálása kapcsolatban lásd: [runbook importálása egy fájlból az Azure Automationbe](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

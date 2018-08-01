@@ -7,13 +7,13 @@ author: tomarcher
 manager: jpconnock
 ms.service: devops
 ms.custom: jenkins
-ms.date: 07/25/2018
-ms.openlocfilehash: 407ec2bbb145e73b1a903886204b660aadc9a65f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.date: 07/31/2018
+ms.openlocfilehash: 1b01eb760fa36c9f0fb6180c12dc3e5c1bf9de6f
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284414"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391486"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Azure App Service üzembe helyezése a Jenkins beépülő modul használatával 
 
@@ -221,7 +221,7 @@ Az a **Docker registry URL** értékét, adja meg az URL-címet a formátum http
 
 3. Go to http://&lt;your_app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Cserélje le &lt;x > és &lt;y > beolvasni az összeg, az x bármilyen számokkal + y.
     
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting-the-jenkins-plugin"></a>Hibaelhárítás a Jenkins beépülő modul
 
 Ha bármely hibái a Jenkins beépülő modulok, a fájl be a problémát a [Jenkins JIRA](https://issues.jenkins-ci.org/) az adott összetevő.
 

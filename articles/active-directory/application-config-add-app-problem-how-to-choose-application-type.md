@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás típust használja, ha egy alkalmazás hozzáadása kiválasztása |} Microsoft Docs
-description: A támogatott ismerteti az alkalmazások integrálva az Azure AD és a kapcsolódó konfigurációs beállítások
+title: Hogyan választható ki a használandó alkalmazás hozzáadásakor mely alkalmazástípust |} A Microsoft Docs
+description: Megismerheti a támogatott típusok is integrálhatja az Azure AD-alkalmazások és azok kapcsolódó konfigurációs beállítások
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,166 +11,166 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 6ee5be99a64ee6e637501534e0a152c6968c380f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5236e9620d68d2ac4dcc544482d244c1e998be9d
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331308"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365372"
 ---
-# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Alkalmazás típust használja, ha egy alkalmazás hozzáadása kiválasztása
+# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Hogyan választható ki a használandó alkalmazás hozzáadásakor mely alkalmazástípust
 
-Ez a cikk segítenek megérteni a négy fő típusú alkalmazások integrálható az Azure AD:
+Ennek a cikknek a segítségével megismerheti a négy fő típusú integrálható az Azure AD-alkalmazások:
 
-* Támogatott források és műveletek szerint
-* Miért akkor érdemes választania, melyik alkalmazás
-* Ezen alkalmazás core tulajdonságai, például a felhasználók konfigurálásával **kiépített**, vagy mi **egyszeri bejelentkezés** technológiát használatára.
+* Azok a támogatott műveletek
+* Előfordulhat, hogy miért választja melyik alkalmazáshoz
+* Ezen alkalmazás alapvető tulajdonságok, például a felhasználók konfigurálása **kiépített**, vagy milyen **egyszeri bejelentkezési** technológiáját használja.
 
 ## <a name="supported-application-types-in-azure-ad"></a>Az Azure ad-ben támogatott alkalmazástípusok
 
-Az Azure AD támogatja négy fő típusokat adhat hozzá a **Hozzáadás** szolgáltatás alatt található **vállalati alkalmazások**. Ezek a következők:
+Az Azure AD támogatja négy fő alkalmazástípusok használatával adhat hozzá a **Hozzáadás** szolgáltatás alatt található **vállalati alkalmazások**. Ezek a következők:
 
--   **Azure AD-gyűjtemény alkalmazások** –, amelyet az egyszeri bejelentkezés az Azure ad-vel előre integrált alkalmazás.
+-   **Az Azure AD-katalógusban alkalmazások** –, az egyszeri bejelentkezés az Azure ad-vel előre integrált alkalmazás.
 
--   **Alkalmazás Proxy alkalmazások** – szeretne biztosítani a biztonságos egyszeri bejelentkezést a külsőleg a helyszíni környezetben futó alkalmazáshoz.
+-   **Application Proxy alkalmazásai** – szeretne biztosítani a biztonságos egyszeri bejelentkezés, a külsőleg a helyszíni környezetben futó alkalmazásokhoz.
 
--   **Egyéni által fejlesztett alkalmazások** – az alkalmazás, amely a szervezet által platformon az Azure AD alkalmazás fejlesztési kialakításához, de, amely nem még létezik.
+-   **Saját fejlesztésű alkalmazásokat** – el alkalmazást, amely a szervezet által blokkolni kívánt fejlesztése az Azure AD-alkalmazás fejlesztési platform, amely nem még létezik.
 
--   **Nem-gyűjtemény alkalmazások** – kapcsolja a saját alkalmazásai! Bármely kívánt webes hivatkozást, vagy egy felhasználónév és jelszó mező megjelenítő alkalmazás SAML vagy az OpenID Connect protokollt támogatja, vagy az egyszeri bejelentkezés az Azure ad-vel integrálni kívánt SCIM támogatja.
+-   **Katalógusban nem szereplő alkalmazások** – saját alkalmazások importálása! Összes webes hivatkozás szeretne, vagy egy felhasználónév és jelszó mezőt megjelenítő alkalmazás támogatja az SAML- vagy OpenID Connect protokollok, vagy az egyszeri bejelentkezés az Azure ad-vel integrálni kívánt SCIM támogatja.
 
-## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>Funkciók és képességek minden előző alkalmazástípusok által támogatott
+## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>Funkciók és képességek az összes fenti alkalmazástípusok által támogatott
 
-Az alábbi szolgáltatások az Azure AD által az előző négy alkalmazás típusok támogatottak:
+Az alábbi szolgáltatások az Azure ad-ben szerint az előző négy alkalmazás típusok támogatottak:
 
--   **Gyors üzembe helyezési** – induláshoz alkalmazással gyorsan következő [egyszerű üzembe helyezés lépései](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)
+-   **Gyors üzembe helyezési** – az alkalmazás gyors induláshoz a következő [egyszerű üzembe helyezés lépései](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)
 
--   **Általános tulajdonságok felügyeleti** – lekérni egy [közvetlen mélyhivatkozás](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users) egy alkalmazást, [testre szabhatja a márkajelzési](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) egy alkalmazás vagy [az alkalmazás letiltására](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) az összes felhasználó számára.
+-   **Általános tulajdonságok felügyeleti** – beolvasása egy [közvetlen mélyhivatkozás](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users) egy alkalmazást, [a márkajelzés testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) egy alkalmazás vagy [tiltsa le az alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) az összes felhasználó számára.
 
--   **Felhasználók és csoportok kezelése** – [hozzárendelése](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) vagy [eltávolítása](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) felhasználókat és csoportokat egy alkalmazást, és ezek a felhasználók az adott alkalmazás szerepköröket rendelhet, és a csoportok fér hozzá a
+-   **Felhasználók és csoportok kezelése** – [hozzárendelése](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) vagy [eltávolítása](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) felhasználókat és csoportokat egy alkalmazást, és ezek a felhasználók az adott alkalmazás szerepköröket rendelhet, és a csoportok rendelkezik hozzáféréssel
 
--   **Önkiszolgáló alkalmazás-hozzáférés** – lehetővé teszi a felhasználók kéréséhez [önkiszolgáló alkalmazás-hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) az alkalmazás hozzáférési panelek vagy hozzáadásával egy alkalmazás közvetlenül az alkalmazáshoz való vagy [ Csatlakozás egy önkiszolgáló engedélyezett csoporthoz](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), opcionálisan menet üzleti jóváhagyásra van szükség
+-   **Az önkiszolgáló alkalmazás-hozzáférés** – a felhasználókat, hogy a kérelem engedélyezéséhez [önkiszolgáló alkalmazás-hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) az alkalmazás hozzáférési Paneljükön vagy hozzáadásával az alkalmazás közvetlenül egy alkalmazás vagy [ Csatlakozás egy önkiszolgáló engedélyezett csoporthoz](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), igény szerint követhető üzleti jóváhagyásra van szükség
 
--   **Bejelentkezési naplók** – lásd: [minden a bejelentkezéseket egy alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins), vagy az alkalmazások
+-   **Bejelentkezési naplók** – lásd: [összes a bejelentkezés egy alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins), vagy az alkalmazások
 
--   **A naplók** – lásd: [naplók kapcsolatos módosítások az alkalmazás részletes](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), vagy az alkalmazások
+-   **Auditnaplók** – lásd: [auditnaplók alkalmazás módosításai kapcsolatos részletes](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), vagy az alkalmazások
 
--   **Feltételes és kockázati-alapú hozzáférés** – hatékony beállított [feltétel-alapú hozzáférési szabályok](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) , amely akkor lépnek érvénybe, amikor a felhasználók próbálnak bejelentkezni az adott alkalmazást
+-   **Feltételes és kockázat-alapú hozzáférés** – állítson be hatékony [feltétel-alapú hozzáférési szabályok](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) , amely kényszerítettek, amikor a felhasználók megpróbálnak bejelentkezni egy adott alkalmazást
 
--   **Engedélyek megtekintése** – bármely megtekintése a [OAuth2 engedélyek](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent) hozzáfér egy alkalmazás helyezendő ugyanahhoz a könyvtárban
+-   **Engedélyek megtekintése** – bármelyik megtekintése a [OAuth2 engedélyek](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent) alkalmazás hozzáfér a címtárban, egyetlen elhelyezése
 
-## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Egyszeri bejelentkezés és a létesítési módot támogat. az adott alkalmazást típusok
+## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Egyszeri bejelentkezés és a üzembe helyezési módot támogat bizonyos alkalmazástípusok
 
-A következő táblázat ismerteti a egyszeri bejelentkezés és üzembe helyezési mód az előző alkalmazástípusok által támogatott. Ez a táblázat segítségével segítenek megérteni, melyik alkalmazás, akkor hozzon létre egy adott cél támogatásához.
+A következő táblázat ismerteti az egyszeri bejelentkezéshez és az üzembe helyezési mód az előző alkalmazástípusok által támogatott. Ez a táblázat segítségével melyik támogatásához egy bizonyos cél hozzá kell application megértését.
 
-  ![Alkalmazás típusú tábla](./media/application-tables/table1.png)
+  ![Alkalmazás-típusok táblázata](./media/application-tables/table1.png)
 
-## <a name="how-to-choose-a-single-sign-on-mode"></a>Egyszeri bejelentkezés mód kiválasztása
+## <a name="how-to-choose-a-single-sign-on-mode"></a>Egy egyszeri bejelentkezési mód kiválasztása
 
-Az alábbiakban a támogatott **egyszeri bejelentkezés** Azure AD-alkalmazások mód választható.
+Az alábbiakban a támogatott **egyszeri bejelentkezési** módhoz az Azure AD-alkalmazások.
 
--   **Az Azure AD az egyszeri bejelentkezés le van tiltva** – válassza ki az Azure AD az egyszeri bejelentkezés le van tiltva **egyszeri bejelentkezés mód** Ha még nem állnak készen áll az alkalmazás integrálható az egyszeri bejelentkezés az Azure ad-vel, vagy egyszerűen csak tesztelés kimenő
+-   **Az Azure AD egyszeri bejelentkezés le van tiltva** – válassza ki az Azure AD egyszeri bejelentkezés le van tiltva **egyszeri bejelentkezési mód** Ha még nem állnak készen áll az alkalmazás integrálása az egyszeri bejelentkezés az Azure ad-vel, vagy egyszerűen csak a tesztelt próbálhatja ki
 
--   **Bejelentkezés kapcsolódó** – válassza ki a [társított bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **egyszeri bejelentkezés mód** Ha valamelyik alkalmazásnál, amely a már meglévő egyszeri bejelentkezési megoldással már csatlakoztatva van, vagy ha szeretné a felhasználóknak egy egyszerű hivatkozás közzététele a [alkalmazás hozzáférési Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) vagy [Office 365 alkalmazásindító](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
+-   **Csatolt bejelentkezés** – válassza ki a [csatolt bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **egyszeri bejelentkezési mód** Ha egy alkalmazást, amely az egyszeri bejelentkezés megoldás már csatlakoztatva van, vagy ha csak át szeretné a felhasználók számára az egyszerű hivatkozás közzététele saját [alkalmazás-hozzáférési Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) vagy [Office 365 alkalmazásindítójában](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
--   **Jelszó alapú bejelentkezés** – válassza ki a [jelszóalapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **egyszeri bejelentkezés mód** Ha az alkalmazás Renderelés egy HTML-felhasználónév és jelszó mezőt, és szeretné tárolni, hogy a felhasználónév és a jelszó biztonságosan később az alkalmazás bejegyzéseit meg kell ismételni
+-   **Jelszóalapú bejelentkezés** – válassza ki a [jelszóalapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **egyszeri bejelentkezési mód** , ha az alkalmazás egy HTML-felhasználónév és jelszó mező jelenik meg, és szeretné tárolni, hogy a felhasználónév és a jelszó biztonságosan megismétlését, később az alkalmazáshoz
 
--   **SAML-alapú bejelentkezés** – válassza ki a [SAML-alapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) mód, ha az alkalmazás támogatja az SAML-alapú vagy az OpenID Connect protokollok, vagy azt szeretné, hogy segítségével a felhasználók adott alkalmazás szerepköreihez szabályok alapján egyszeri bejelentkezés a SAML-jogcímek meghatározott *
-
-   >[!NOTE]
-   >Ez a beállítás nem érhető el, ha a proxy van konfigurálva, az alkalmazás.
-   >
-   >
-
--   **Fejléc-alapú bejelentkezés** – válassza ezt a [fejléc-alapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) egyszeri bejelentkezés mód Ha valamelyik alkalmazásnál, amely támogatja a HTTP-fejléc-alapú hitelesítés egyszeri bejelentkezést a végrehajtani kívánt PingAccess használatával 
+-   **SAML-alapú bejelentkezés** – válassza ki a [SAML-alapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) módba, ha az alkalmazás támogatja az SAML- vagy OpenID Connect protokollok, vagy hogy képes legyen leképezni a felhasználók az adott alkalmazás-szerepkörök szabályok alapján szeretne egyszeri bejelentkezés Az SAML-jogcímek az meghatározott *
 
    >[!NOTE]
-   >Ez a beállítás csak érhető el, ha a proxy- és PingAccess úgy van konfigurálva, az alkalmazás.
+   >Ez a beállítás nem érhető el, ha egy alkalmazás a proxy van konfigurálva.
    >
    >
 
--   **Integrált Windows-hitelesítés** – válassza ki a [integrált Windows-hitelesítés](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) egyszeri bejelentkezést a elvégezni kívánt helyszíni WIA alkalmazás kitettségének üzemmódot egyszeri bejelentkezés 
+-   **Fejlécalapú bejelentkezés** – válassza ezt a [fejlécalapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) egyszeri bejelentkezési mód, ha egy alkalmazást, amely támogatja a HTTP-fejléc-alapú hitelesítést, amely egyszeri bejelentkezést a végrehajtani kívánt PingAccess segítségével 
 
    >[!NOTE]
-   >Ez a beállítás csak érhető el, ha a proxy van konfigurálva, az alkalmazás.
+   >Ezt a beállítást csak érhető el, ha a proxy és a PingAccess egy alkalmazás van konfigurálva.
    >
    >
 
-## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Egyszeri bejelentkezés módjainak egyéni által fejlesztett alkalmazások
+-   **Integrált Windows-hitelesítés** – válassza ki a [integrált Windows-hitelesítés](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) módra, amikor szeretné végrehajtani az egyszeri bejelentkezést a helyszíni WIA alkalmazás által egyszeri bejelentkezés 
 
-Egyéni használatával fejlesztett alkalmazások rendelkeznek a [egyéni által fejlesztett alkalmazás](#_Custom-Developed_Applications) élmény is további egyszeri bejelentkezés módot támogat korábban nem szerepel a listában, többek között:
+   >[!NOTE]
+   >Ez a beállítás csak érhető el, ha egy alkalmazás a proxy van konfigurálva.
+   >
+   >
 
--   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) bejelentkezés alapján
+## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Egyszeri bejelentkezési módok egyénileg fejlesztett alkalmazásokhoz
 
--   [OpenID Connect 1.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) bejelentkezés alapján
+Egyéni munka eredményeként kifejlesztett alkalmazások rendelkeznek a [egyénileg fejlesztett alkalmazásba](#_Custom-Developed_Applications) élmény is támogatja a további egyszeri bejelentkezési módok korábban fel nem vett, többek között:
 
--   [WS-Federation 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) bejelentkezés alapján
+-   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) -alapú bejelentkezésre
 
--   [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference) bejelentkezés alapján
+-   [OpenID Connect 1.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) -alapú bejelentkezésre
 
-Olvassa el a [Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) egy egyéni által fejlesztett alkalmazás, amely támogatja az egyszeri bejelentkezés módokban létrehozásával kapcsolatos további.
+-   [WS-Federation 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) -alapú bejelentkezésre
 
-## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Egy alkalmazás egyszeri bejelentkezés mód beállítása
+-   [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference) -alapú bejelentkezésre
 
-Az alkalmazás beállítására **egyszeri bejelentkezés** mód, kövesse az alábbi utasításokat:
+Olvassa el a [Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) létrehozása egy egyénileg fejlesztett alkalmazásba, amely támogatja az egyszeri bejelentkezés módokban tájékozódhat.
 
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Egy alkalmazás egyszeri bejelentkezési mód beállítása
+
+Egy alkalmazás beállítása **egyszeri bejelentkezési** módot, az alábbi lépéseket követve:
+
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
+  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki az alkalmazást, amelyekhez az egyszeri bejelentkezés konfigurálása.
+6.  Válassza ki az alkalmazást, legyen az egyszeri bejelentkezés konfigurálásához.
 
-7.  Ha az alkalmazás betölt, kattintson **egyszeri bejelentkezés** az alkalmazás bal oldali navigációs menüjében.
+7.  Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-## <a name="how-to-choose-a-provisioning-mode"></a>A létesítés kiválasztása
+## <a name="how-to-choose-a-provisioning-mode"></a>Kiépítési mód kiválasztása
 
--   **Manuális létesítési** – válassza ki a [manuális](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) kiépítési üzemmódban, ha van meglévő fiókokat, vagy szeretné ezt az Azure AD-en kívüli alkalmazáshoz tartozó fiókok kezelése.
+-   **Manuális kiépítési** – válassza ki a [manuális](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) Kiépítési mód, ha meglévő fiókot, vagy az Azure AD-en kívül az alkalmazáshoz tartozó fiókokat szeretne kezelni kívánja.
 
--   **Automatikus kiépítés** – válassza ki a [automatikus](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **létesítés** Ha később engedélyezni kívánja automatikus API-alapú üzembe helyezés és/vagy az alkalmazás felhasználói fiókokat megszüntetést 
-
-   >[!NOTE]
-   >Ez a beállítás csak a alkalmazások belül érhető el a **kiemelt** kategóriáját a [az Azure AD Application Gallery](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery).
-   >
-   >
-
--   **SCIM-alapú automatikus üzembe helyezés** – használható [SCIM-alapú automatikus üzembe helyezés](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) Ha az alkalmazás támogatja-e a SCIM protokoll felismeri a felhasználókat és csoportokat, amelyek a módosítások automatikusan kibocsátott módosításai az Azure ad-vel integrált bármely alkalmazás 
+-   **Az Automatikus kiépítés** – válassza ki a [automatikus](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **létesítés** szeretné-e az automatikus API-alapú üzembe helyezés és/vagy megszüntetést felhasználói fiókok ezen alkalmazás engedélyezése 
 
    >[!NOTE]
-   >Ez a beállítás nem szerepel egy üzembe helyezési mód, de minden olyan alkalmazásnál, az Azure ad-vel integrált alapértelmezés szerint engedélyezve van.
+   >Ez a beállítás csak alkalmazásokhoz érhető el a **kiemelt** kategóriáját a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery).
    >
    >
 
-## <a name="how-to-set-an-applications-provisioning-mode"></a>Az alkalmazás beállítása a kiépítési üzemmódban
+-   **Az Automatikus kiépítés SCIM-alapú** – használata [SCIM-alapú automatikus üzembe helyezés](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) Ha az alkalmazás támogatja-e a felhasználók és csoportok, amelyek automatikusan a módosítások kibocsátott változtatások észlelése az SCIM-protokoll az Azure AD-vel integrált alkalmazások 
 
-Az alkalmazás beállítására **kiépítés** mód, kövesse az alábbi utasításokat:
+   >[!NOTE]
+   >Ez a beállítás nem szerepel egy adott üzembe helyezési módot, de minden olyan alkalmazás, amelyek integrálhatók az Azure AD alapértelmezés szerint engedélyezve van.
+   >
+   >
 
-Az alkalmazás beállítására **egyszeri bejelentkezés** mód, kövesse az alábbi utasításokat:
+## <a name="how-to-set-an-applications-provisioning-mode"></a>Egy alkalmazás beállítása a kiépítési mód
 
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+Egy alkalmazás beállítása **kiépítés** módot, az alábbi lépéseket követve:
+
+Egy alkalmazás beállítása **egyszeri bejelentkezési** módot, az alábbi lépéseket követve:
+
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
+  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki az alkalmazást, amelynek konfigurálása kiosztás keresi.
+6.  Válassza ki az alkalmazást, amelynek meg szeretné átadásának konfigurálása.
 
-7.  Ha az alkalmazás betölt, kattintson **kiépítési** az alkalmazás bal oldali navigációs menüjében.
+7.  Ha az alkalmazás betöltött, kattintson a **kiépítési** az alkalmazás bal oldali navigációs menüjében.
 
 ## <a name="next-steps"></a>További lépések
 [Alkalmazások kezelése az Azure Active Directoryval](manage-apps/what-is-application-management.md)

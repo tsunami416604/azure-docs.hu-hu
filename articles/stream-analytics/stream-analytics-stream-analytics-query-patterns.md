@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 1ca7d40bb3c358b374e354fa2c3ef77edba055c9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 4a37ac6cdf5d13556c6a3e293c19c00ad36e4495
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971781"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364165"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példák a Stream Analytics-használat gyakori minták lekérdezése
 
@@ -25,20 +25,26 @@ A lekérdezés tervezési fejezhető ki egyszerű csatlakoztatott logikai egy be
 
 Ez a cikk számos gyakori lekérdezési-minták található, a valós életből vett példák alapján megoldásait ismerteti. Folyamatban lévő és továbbra is az új mintákat folyamatosan frissül.
 
+## <a name="work-with-complex-data-types-in-json-and-avro"></a>A JSON-t és az AVRO összetett adattípusok használata 
+Az Azure Stream Analytics támogatja az események feldolgozását a fürt megosztott kötetei szolgáltatás, a JSON-t és az Avro adatformátumok a célnyelven.
+JSON és az Avro összetett típusok, például a beágyazott objektumok (rekord) vagy a tömb tartalmazhat. Ezek az összetett adattípusok használatához, tekintse meg a [elmagyarázza, hogyan működnek az összetett adattípusok a JSON és az AVRO MSDN-lapján](
+https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics).
+
+
 ## <a name="query-example-convert-data-types"></a>Példa: adattípus átalakítása
 **Leírás**: meghatározza azokat a tulajdonságokat a bemeneti streamben.
 Például az autó súly beállításhalmazokkal bemeneti Stream érkezik, és alakítható át kell **INT** végrehajtásához **SUM** üzembe.
 
 **Bemeneti**:
 
-| Győződjön meg arról | Time | Súlyozás |
+| Győződjön meg arról | Time | Tömeg |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
 
 **Kimeneti**:
 
-| Győződjön meg arról | Súlyozás |
+| Győződjön meg arról | Tömeg |
 | --- | --- |
 | Honda |3000 |
 
@@ -423,7 +429,7 @@ Tegyük fel például, hogy hibát eredményezett a egy helytelen súly (fent 20
 
 **Bemeneti**:
 
-| Győződjön meg arról | Time | Súlyozás |
+| Győződjön meg arról | Time | Tömeg |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |

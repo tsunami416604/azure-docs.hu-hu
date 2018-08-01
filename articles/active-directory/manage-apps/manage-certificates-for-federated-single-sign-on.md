@@ -1,6 +1,6 @@
 ---
-title: Összevonási tanúsítványok kezelése az Azure AD |} Microsoft Docs
-description: Ismerje meg, hogyan szabhatja testre a összevonási tanúsítványok lejárati dátuma és rövidesen lejáró tanúsítvány megújítása.
+title: Összevonási tanúsítványok kezelése az Azure ad-ben |} A Microsoft Docs
+description: Ismerje meg, hogyan szabhatja testre az összevonási tanúsítványok lejáratának dátumát, és a közeljövőben lejáró tanúsítványok megújítása.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,81 +11,81 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2017
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: 5b4e2694a9b7e67643cb1e3b3cbc99fab940bd9d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1274143c2ae64574202b45969af43290e532fbfb
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337799"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366113"
 ---
-# <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Összevont egyszeri bejelentkezés az Azure Active Directoryban tanúsítványainak kezelése
-Ez a cikk ismerteti a gyakori kérdéseket és a tanúsítványok, az Azure Active Directory (Azure AD) hoz létre az SaaS-alkalmazások létrehozásához összevont egyszeri bejelentkezést (SSO) kapcsolatos adatokat. Az Azure AD-alkalmazásgyűjtemény vagy egy alkalmazás nem galéria sablon használatával, vegyen fel alkalmazásokat. Az alkalmazás beállítása az összevont egyszeri bejelentkezési beállítás használatával.
+# <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Összevont egyszeri bejelentkezés az Azure Active Directory-tanúsítványok kezelése
+Ez a cikk ismerteti a gyakori kérdéseket és a tanúsítványok, az Azure Active Directory (Azure AD) hoz létre, az SaaS-alkalmazások létrehozásához összevont egyszeri bejelentkezés (SSO) kapcsolatos adatokat. Alkalmazások hozzáadása az Azure AD-alkalmazásgyűjtemény vagy egy katalógusban nem szereplő alkalmazást sablon használatával. Az alkalmazás konfigurálása az összevont egyszeri bejelentkezési beállítás használatával.
 
-Ez a cikk fontos csak olyan alkalmazásokat, amelyek használatára konfigurált Azure AD SSO keresztül SAML összevonási, a következő példában látható módon:
+Ez a cikk jelentősége, csak az alkalmazásoknak a SAML-Összevonás, az Azure AD egyszeri bejelentkezés használatára vannak konfigurálva, az alábbi példában látható módon:
 
-![Az Azure AD-egyszeri bejelentkezés](./media/manage-certificates-for-federated-single-sign-on/saml_sso.PNG)
+![Az Azure AD egyszeri bejelentkezés](./media/manage-certificates-for-federated-single-sign-on/saml_sso.PNG)
 
-## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automatikusan létrehozott tanúsítvány gyűjteménye, és nem galéria-alkalmazásokhoz
-Új alkalmazás felvétele a gyűjteményből, és egy SAML-alapú bejelentkezés konfigurálásakor, az Azure AD a létrehoz egy tanúsítványt a három évig érvényes alkalmazás. Ez a tanúsítvány a programot letöltheti a **SAML-aláíró tanúsítványa** szakasz. Gyűjteményelem alkalmazások Ez a szakasz egy lehetőség, hogy töltse le a tanúsítványt, vagy a metaadatok, attól függően, hogy az alkalmazás követelmény előfordulhat, hogy megjelenítése.
+## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automatikusan létrehozott tanúsítvány katalógus és a katalógusban nem szereplő alkalmazásokhoz
+Amikor egy új alkalmazás hozzáadása a katalógusból, és a egy SAML-alapú bejelentkezés konfigurálása, az Azure AD állít elő, egy tanúsítványt az alkalmazáshoz, három évig érvényes. Letöltheti a tanúsítványt a **SAML-aláíró tanúsítvány** szakaszban. Katalógus alkalmazások ebben a szakaszban melyre kattintva letölthető a tanúsítvány vagy a metaadatok, az alkalmazás a követelmény függően előfordulhat, hogy megjelenítése.
 
-![Az Azure AD egyszeri bejelentkezést.](./media/manage-certificates-for-federated-single-sign-on/saml_certificate_download.png)
+![Az Azure AD egyszeri bejelentkezés](./media/manage-certificates-for-federated-single-sign-on/saml_certificate_download.png)
 
-## <a name="customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate"></a>Testre szabhatja a összevonási tanúsítvány lejárati dátuma, és új tanúsítványt váltása
-Alapértelmezés szerint a tanúsítványok állítottak három év után lejár. A tanúsítvány egy másik lejárati dátuma a következő lépések végrehajtásával szerint is választhat.
-A képernyőfelvételek Salesforce használja az példa, de ezeket a lépéseket alkalmazhatja bármely összevont SaaS-alkalmazásokhoz.
+## <a name="customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate"></a>Testre szabhatja az összevonási tanúsítványok lejáratának dátumát és vihetők át az új tanúsítvány
+Alapértelmezés szerint a tanúsítványok állíthatók három év után lejár. Választhat egy másik lejárati dátumot a tanúsítvány a következő lépések végrehajtásával.
+A képernyőképek példa az használja a Salesforce, de ezeket a lépéseket alkalmazhatja bármely összevont SaaS-alkalmazásba.
 
-1. Az a [Azure-portálon](https://aad.portal.azure.com), kattintson a **vállalati alkalmazás** a bal oldali ablaktáblán, és kattintson a **új alkalmazás** a a **áttekintése** lap:
+1. Az a [az Azure portal](https://aad.portal.azure.com), kattintson a **vállalati alkalmazás** a bal oldali panelen, és kattintson a **új alkalmazás** a a **áttekintése** oldalon:
 
-   ![Nyissa meg az egyszeri bejelentkezés beállítása varázsló](./media/manage-certificates-for-federated-single-sign-on/enterprise_application_new_application.png)
+   ![Nyissa meg az egyszeri bejelentkezés konfigurálása varázsló](./media/manage-certificates-for-federated-single-sign-on/enterprise_application_new_application.png)
 
-2. Keresse meg a gyűjtemény alkalmazás, és válassza ki a hozzáadni kívánt alkalmazást. Ha a szükséges alkalmazás nem található, adja hozzá az alkalmazás használatával az **nem-gyűjtemény alkalmazás** lehetőséget. Ez a funkció csak az Azure AD Premium (P1 és P2) SKU érhető el.
+2. Keresse meg a katalógusból származó alkalmazásra, és válassza ki a hozzáadni kívánt alkalmazást. Ha nem találja a szükséges alkalmazást, adja hozzá az alkalmazás használatával az **katalógusban nem szereplő alkalmazás** lehetőséget. Ez a funkció csak a prémium szintű Azure AD (a P1 és P2) Termékváltozat érhető el.
 
-    ![Az Azure AD egyszeri bejelentkezést.](./media/manage-certificates-for-federated-single-sign-on/add_gallery_application.png)
+    ![Az Azure AD egyszeri bejelentkezés](./media/manage-certificates-for-federated-single-sign-on/add_gallery_application.png)
 
-3. Kattintson a **egyszeri bejelentkezés** hivatkozásra a bal oldali ablaktáblán, és módosítsa **egyszeri bejelentkezés mód** való **SAML-alapú bejelentkezés**. Ezt a lépést az alkalmazás három év tanúsítványt hoz létre.
+3. Kattintson a **egyszeri bejelentkezési** hivatkozásra a bal oldali panelen, és módosítsa **egyszeri bejelentkezési mód** való **SAML-alapú bejelentkezés**. Ebben a lépésben létrehoz egy három éves tanúsítványt, az alkalmazás.
 
-4. Hozzon létre egy új tanúsítványt, kattintson a **hozzon létre új tanúsítvány** hivatkozásra a **SAML-aláíró tanúsítványa** szakasz.
+4. Hozzon létre egy új tanúsítványt, kattintson a **új tanúsítvány létrehozása** hivatkozásra a **SAML-aláíró tanúsítvány** szakaszban.
 
     ![Új tanúsítvány létrehozása](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
 
-5. A **hozzon létre egy új tanúsítványt** a hivatkozás megnyitja a havinaptár-vezérlőben. Beállíthatja bármely dátum és idő az aktuális dátum utáni legfeljebb három év. A kiválasztott dátum és idő az új lejárati dátum és idő az új tanúsítvány. Kattintson a **Save** (Mentés) gombra.
+5. A **hozzon létre egy új tanúsítványt** hivatkozás megnyitja a naptárban. Minden dátum megadása, és legfeljebb három év a mai dátumtól idő. A kiválasztott dátum és idő az új lejárati dátum és idő, az új tanúsítvány. Kattintson a **Save** (Mentés) gombra.
 
     ![Töltse le, majd a tanúsítvány feltöltése](./media/manage-certificates-for-federated-single-sign-on/certifcate_date_selection.PNG)
 
-6. Most már az új tanúsítvány áll le. Kattintson a **tanúsítvány** innen tölthető le azt. Ezen a ponton a tanúsítvány nem lesz aktív. Ha szeretné ezt a tanúsítványt a váltása, válassza ki a **új tanúsítvány aktiválásához** jelölőnégyzetet, majd kattintson **mentése**. Ettől a ponttól az Azure AD elindítja az új tanúsítványt használja a válasz az aláíráshoz.
+6. Most már az új tanúsítvány letöltése érhető el. Kattintson a **tanúsítvány** hivatkozás, ahonnan letöltheti azt. Ezen a ponton a tanúsítvány nem lesz aktív. Ha meg szeretné vihető át ezt a tanúsítványt, válassza ki a **új tanúsítvány aktívvá** jelölőnégyzetet, majd kattintson **mentése**. Ettől a ponttól az Azure ad-ben elindítja az új tanúsítványt használja a válasz az aláíráshoz.
 
-7.  Megtudhatja, hogyan tölthet fel a tanúsítvány az adott SaaS-alkalmazáshoz, kattintson a **nézet konfigurációs oktatóanyag** hivatkozásra.
+7.  Megtudhatja, hogyan tölthet fel a tanúsítványt az adott SaaS-alkalmazáshoz, kattintson a **nézet konfigurációs oktatóanyag** hivatkozásra.
 
-## <a name="certificate-expiration-notification-email"></a>Tanúsítvány lejáratának értesítő e-mailt
+## <a name="certificate-expiration-notification-email"></a>Tanúsítvány lejárati értesítést e-mailben
 
-Az Azure AD elküld egy e-mailek értesítés 60, 30 és 7 nap SAML-tanúsítvány érvényességének lejárta előtt. Az e-mail címet az értesítés küldési helyének megadása:
+Az Azure AD elküldi egy e-mail-értesítés 60, 30 és 7 nap SAML-tanúsítvány lejárta előtt. Az e-mail címet, amelyre az értesítés megadása:
 
-- Az Azure Active Directory alkalmazás egyszeri bejelentkezés lapon nyissa meg az értesítő e-mailt mező.
-- Adja meg a tanúsítvány lejárati értesítő e-mailt kell kapnia, e-mail címét. Alapértelmezés szerint ez a mező a rendszergazda, aki hozzá az alkalmazás e-mail címét használja.
+- Az Azure Active Directory alkalmazás egyszeri bejelentkezési oldalán lépjen az értesítési E-mail mező.
+- Adja meg az e-mail-cím, amely a tanúsítvány lejárati értesítő e-mailt kell kapnia. Alapértelmezés szerint ez a mező a rendszergazda, aki felvette az alkalmazás e-mail címét használja.
 
-Az értesítő e-mailt fog kapni aadnotification@microsoft.com. Az e-mailt a levélszemét-helyre is elkerülése érdekében ügyeljen arra, hogy adja hozzá az e-mailt az ügyfelekhez. 
+Az értesítési e-mailt a aadnotification@microsoft.com. Az e-mailt a levélszemét helyet fogja elkerülése érdekében ügyeljen arra, adja hozzá az e-mailt az ügyfelekhez. 
 
-## <a name="renew-a-certificate-that-will-soon-expire"></a>Rövidesen lejáró tanúsítvány megújítása
-A következő megújítási lépéseket kell eredményeznie jelentős állásidő nélkül a felhasználók számára. Ez a szakasz a szolgáltatás Salesforce példaként, de ezeket a lépéseket a képernyőképek bármely összevont SaaS-alkalmazás is alkalmazhatja.
+## <a name="renew-a-certificate-that-will-soon-expire"></a>Újítsa meg egy tanúsítvány hamarosan lejár
+A következő megújítási lépéseket kell eredményeznie, jelentős állásidő nélkül a felhasználók számára. A képernyőképek csak példaként, de ezeket a lépéseket, a szakasz funkció Salesforce az összevont SaaS-alkalmazásaiban is alkalmazhat.
 
-1. Az a **Azure Active Directory** alkalmazás **egyszeri bejelentkezés** lapon, az alkalmazás új tanúsítvány jön létre. Ehhez kattintson a **hozzon létre új tanúsítvány** hivatkozásra a **SAML-aláíró tanúsítványa** szakasz.
+1. Az a **Azure Active Directory** alkalmazás **egyszeri bejelentkezési** lapon, az alkalmazás az új tanúsítvány előállításához. Ezt megteheti kattintva is a **új tanúsítvány létrehozása** hivatkozásra a **SAML-aláíró tanúsítvány** szakaszban.
 
     ![Új tanúsítvány létrehozása](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
 
-2. Válassza ki a kívánt lejárati dátum és idő az új tanúsítvány, és kattintson a **mentése**.
+2. Válassza ki a kívánt lejárati dátuma és időpontja az új tanúsítvány számára, és kattintson a **mentése**.
 
-3. Töltse le a tanúsítványt a **SAML-aláíró tanúsítványa** lehetőséget. Töltse fel az új tanúsítványt az SaaS-alkalmazás egyszeri bejelentkezés konfigurálására szolgáló képernyőn. Megtudhatja, hogyan hajthatja végre az adott SaaS-alkalmazáshoz, kattintson a **nézet konfigurációs oktatóanyag** hivatkozásra.
+3. Letöltheti a tanúsítványt a **SAML aláíró tanúsítvány** lehetőséget. Töltse fel az új tanúsítványt a SaaS-alkalmazás egyszeri bejelentkezési konfigurációjának képernyő. Ismerje meg, hogyan hajthatja végre az adott SaaS-alkalmazáshoz, kattintson a **nézet alkalmazás konfigurációjára vonatkozó oktatóanyag** hivatkozásra.
    
-4. Az Azure ad-ben az új tanúsítvány aktiválásához jelölje be a **új tanúsítvány aktiválásához** jelölőnégyzetet, majd kattintson a **mentése** gombra az oldal tetején. Ez összegzi az új tanúsítvány keresztül, az Azure AD oldalán. A tanúsítvány állapota a **új** való **aktív**. Ettől a ponttól az Azure AD elindítja az új tanúsítványt használja a válasz az aláíráshoz. 
+4. Az Azure ad-ben az új tanúsítvány aktiválásához jelölje be a **új tanúsítvány aktívvá** jelölőnégyzetet, majd kattintson a **mentése** gombra a lap tetején. Ez összesíti az új tanúsítvány keresztül, az Azure AD-oldalán. A tanúsítvány állapotának a változik **új** való **aktív**. Ettől a ponttól az Azure ad-ben elindítja az új tanúsítványt használja a válasz az aláíráshoz. 
    
     ![Új tanúsítvány létrehozása](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](../saas-apps/tutorial-list.md)
-* [Alkalmazások kezelése az Azure Active Directoryban cikk indexe](../active-directory-apps-index.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](../saas-apps/tutorial-list.md)
+* [Alkalmazások kezelése az Azure Active Directoryban vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
 * [Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](what-is-single-sign-on.md)
-* [Hibaelhárítási SAML-alapú egyszeri bejelentkezést.](../develop/active-directory-saml-debugging.md)
+* [SAML-alapú egyszeri bejelentkezés hibaelhárítása](../develop/active-directory-saml-debugging.md)

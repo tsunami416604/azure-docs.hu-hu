@@ -7,17 +7,21 @@ manager: carmonm
 keywords: virtuális gépek biztonsági mentése, virtuális gépek biztonsági mentését
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/26/2018
+ms.date: 7/31/2018
 ms.author: markgal
-ms.openlocfilehash: b6288cd51cbbe36297235a65fb55c0d9c92101b6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 438c1130486fe1ba2ee484ae01655a2fb115de27
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283706"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390755"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Virtuális gép biztonsági infrastruktúrájának megtervezése az Azure-ban
-A cikk ismerteti a teljesítmény- és erőforrás-javaslatok segítséget nyújt a virtuális gép biztonsági infrastruktúrájának megtervezése. Azt is meghatározza a biztonsági mentési szolgáltatás; fő szempontok Ezeket a szempontokat architektúra, amely meghatározza, hogy kritikus fontosságú lehet kapacitástervezés és ütemezését. Ha [a környezet előkészítése](backup-azure-arm-vms-prepare.md), tervezési a következő lépés megkezdése előtt [a virtuális gépek biztonsági mentése](backup-azure-arm-vms.md). Ha további információt az Azure virtual machines van szüksége, tekintse meg a [Virtual Machines dokumentációja](https://azure.microsoft.com/documentation/services/virtual-machines/).
+A cikk ismerteti a teljesítmény- és erőforrás-javaslatok segítséget nyújt a virtuális gép biztonsági infrastruktúrájának megtervezése. Azt is meghatározza a biztonsági mentési szolgáltatás; fő szempontok Ezeket a szempontokat architektúra, amely meghatározza, hogy kritikus fontosságú lehet kapacitástervezés és ütemezését. Ha [a környezet előkészítése](backup-azure-arm-vms-prepare.md), tervezési a következő lépés megkezdése előtt [a virtuális gépek biztonsági mentése](backup-azure-arm-vms.md). Ha további információt az Azure virtual machines van szüksége, tekintse meg a [Virtual Machines dokumentációja](https://azure.microsoft.com/documentation/services/virtual-machines/). 
+
+> [!NOTE]
+> Ez a cikk a felügyelt és nem felügyelt lemezek való használatra. Ha nem felügyelt lemezeket használ, nincsenek tárfiókokra vonatkozó javaslatok. Ha [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md), nem kell aggódnia a teljesítmény vagy a resource kihasználtság problémákat. Azure optimalizálja a tárterület kihasználtságát az Ön számára.
+>
 
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Hogyan történik az Azure virtuális gépek biztonsági mentése?
 Ha az Azure Backup szolgáltatás indítja el egy biztonsági mentési feladat a megadott időpontban, a szolgáltatás eseményindítók a biztonsági mentési bővítmény időponthoz pillanatképének elkészítéséhez. Az Azure Backup szolgáltatás által használt a _VMSnapshot_ kiterjesztése a Windows, és a _VMSnapshotLinux_ Linux-bővítményt. A bővítmény telepítve van a virtuális gép első biztonsági mentés során. A bővítmény telepítéséhez a virtuális Gépen kell futnia. Ha a virtuális gép nem fut, a Backup szolgáltatás az alapul szolgáló tárolóról készít pillanatképet (mivel nem történik alkalmazásírás, amikor a virtuális gép le van állítva).
@@ -32,8 +36,7 @@ Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, é
 
 > [!NOTE]
 > 1. A biztonsági mentési folyamat során az Azure Backup nem tartalmazza az ideiglenes lemez a virtuális géphez csatlakozik. További információkért lásd a következő blogbejegyzésben [ideiglenes tároló](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
-> 2. Az Azure Backup veszi a tárolási szint pillanatkép, és továbbítja a pillanatkép-tároló, ne módosítsa a tárfiók kulcsait a biztonsági mentési feladat befejezéséig.
-> 3. A prémium szintű virtuális gépek esetében az Azure Backup átmásolja a pillanatkép a storage-fiókot. Ez a győződjön meg arról, hogy a Backup szolgáltatás elegendő IOPS az adatok átvitele a tárba. A storage további példányának a virtuális Géphez lefoglalt méret alapján kell fizetnie. 
+> 2. Az Azure Backup storage-szintű pillanatképet készít, és a pillanatkép tárba való átvitele. Ne módosítsa a tárfiókkulcsokat, a biztonsági mentési feladat befejezéséig.
 >
 
 ### <a name="data-consistency"></a>Adatkonzisztencia
@@ -64,22 +67,14 @@ Ez a táblázat ismerteti a konzisztencia típusú, és a feltételeket, ezek al
 ## <a name="performance-and-resource-utilization"></a>Teljesítmény- és Erőforrás-kihasználtsága
 Például a biztonsági mentési szoftver, amely üzembe helyezhető a helyszínen meg kell terveznie a kapacitás- és erőforrás-használat igényeinek megfelelően, ha az Azure-beli virtuális gépek biztonsági mentésének. A [korlátozza az Azure Storage](../azure-subscription-service-limits.md#storage-limits) meghatározhatja, hogyan kell a struktúra legnagyobb teljesítmény minimális hatással van, a számítási feladatokat futtató virtuális gépek üzembe helyezése.
 
-Figyelmet fordítani a következő Azure tárolási korlátokat megtervezésekor biztonsági mentésének teljesítményét:
-
-* Tárfiókonként maximum kimenő
-* Storage-fiók egységár kérelmek száma összesen
-
-### <a name="storage-account-limits"></a>Tárfiókok korlátai
-Biztonsági mentési adatokat másolni a tárfiókból, hozzáadja a bemeneti/kimeneti műveletek másodpercenként (IOPS) és a kimenő forgalom (vagy átviteli sebesség) a tárfiók metrikákat. Egy időben virtuális gépek is használó IOPS és átviteli sebesség. A célja annak biztosítása érdekében a biztonsági mentés és a virtuális gép forgalom nem haladhatja meg a tárfiókok korlátai.
-
 ### <a name="number-of-disks"></a>Lemezek száma
 A biztonsági mentési folyamat megpróbálja a lehető leggyorsabban egy biztonsági mentési feladat végrehajtásához. Ennek során azt eltárolni a legtöbb erőforrást használ fel. Azonban az összes i/o-műveletek révén korlátozottak a *cél átviteli egyetlen blobhoz*, amely rendelkezik egy legfeljebb 60 MB / másodperc. A sebesség maximalizálása érdekében próbál, a biztonsági mentési folyamat próbál biztonsági másolatot készíteni a Virtuálisgép-lemezek mindegyike *párhuzamosan*. Ha a virtuális gép lemezei négy, a szolgáltatás megkísérli párhuzamosan összes négy lemezek biztonsági mentése. A **lemezek száma** mentésre, az a legfontosabb tényező meghatározásakor a storage-fiók biztonsági mentések forgalmától.
 
 ### <a name="backup-schedule"></a>Biztonsági mentés ütemezése
-Egy további tényező, amely hatással van a teljesítmény a **biztonsági mentési ütemezés**. Így minden virtuális gép készül biztonsági másolat egy időben konfigurálhatja a házirendeket, ha a forgalom csávából ütemezett. A biztonsági mentési folyamat megpróbálja párhuzamosan összes lemezek biztonsági mentése. A storage-fiókból a biztonsági mentési forgalom csökkentése érdekében, eltérő virtuális gépek biztonsági mentése nélkül, a nap másik időpontban.
+Egy további tényező, amely hatással van a teljesítmény a **biztonsági mentési ütemezés**. Így minden virtuális gép készül biztonsági másolat egy időben konfigurálhatja a házirendeket, ha a forgalom csávából ütemezett. A biztonsági mentési folyamat megpróbálja párhuzamosan összes lemezek biztonsági mentése. A biztonsági mentési forgalom csökkentése érdekében különböző virtuális gépek biztonsági mentése nélkül, a nap másik időpontban.
 
 ## <a name="capacity-planning"></a>Kapacitástervezés
-Az előző tényezők bármik lehetnek, meg kell terveznie a tárolási fiók használati igényei szerint. Töltse le a [virtuális gép biztonsági mentési kapacitástervezési Excel-számolótáblában](https://gallery.technet.microsoft.com/Azure-Backup-Storage-a46d7e33) -azonosítókra gyakorolt hatást a lemez és a biztonsági mentési ütemezés választható.
+Töltse le a [virtuális gép biztonsági mentési kapacitástervezési Excel-számolótáblában](https://gallery.technet.microsoft.com/Azure-Backup-Storage-a46d7e33) -azonosítókra gyakorolt hatást a lemez és a biztonsági mentési ütemezés választható.
 
 ### <a name="backup-throughput"></a>Biztonsági mentési átviteli sebesség
 Az egyes lemezek biztonsági mentés alatt álló, az Azure Backup azokat az adatblokkokat a lemez beolvassa és csak a módosított adatokat (növekményes biztonsági mentés) tárolja. Az alábbi táblázat a biztonsági mentési szolgáltatás átlagos átviteli sebesség értékét. A következő adatokat használja, meg tudja becsülni a biztonsági másolatot készíteni egy adott méretű lemez szükséges idő.
@@ -94,20 +89,26 @@ A biztonsági mentési legtöbbször töltött beolvasása, illetve az adatok m�
 
 * Szükséges idő [telepíteni vagy frissíteni a biztonsági mentési bővítményt](backup-azure-arm-vms.md).
 * Pillanatkép időpontot, amely az idő a pillanatkép-trigger. A pillanatképek aktivált közelében az ütemezett biztonsági mentés időpontja.
-* Várólista várakozási idő. A Backup szolgáltatás biztonsági másolatok több ügyfeleink feldolgozása folyamatban van, mert pillanatkép a biztonsági mentési vagy helyreállítási tár biztonsági mentési adatok másolását esetleg nem azonnal elindul. Az időpontok csúcs betölteni, Várakozás segítségével kiterjesztheti legfeljebb nyolc óra miatt a feldolgozás alatt biztonsági mentéseinek számát. Viszont a teljes virtuális gép biztonsági mentésének ideje, a napi biztonsági mentési szabályzatok legfeljebb 24 óra. <br>
-**Ez tartalmazza a csak a növekményes biztonsági mentéseket és az első biztonsági mentés esetében nem érvényes. Első biztonsági mentés ideje arányos, és az adatok méretétől függően 24 óránál nagyobb is lehet, és az idő biztonsági mentés készül.**
+* Várólista várakozási idő. A biztonsági mentési szolgáltatás folyamatok feladatok több ügyfeleink egyszerre, mert a pillanatkép adatainak előfordulhat, hogy nem azonnal másolja a Recovery Services-tároló. Betöltés időszakokban előtt a biztonsági mentések feldolgozása legfeljebb nyolc órát is igénybe vehet. Viszont a teljes virtuális gép biztonsági mentésének ideje, a napi biztonsági mentési szabályzatok legfeljebb 24 óra.
+Teljes biztonsági mentés időpontja legfeljebb 24 órás növekményes biztonsági mentések esetében érvényes, de nem lehet az első biztonsági mentés. Első biztonsági mentés ideje arányos, és 24 óra, attól függően, hogy az adatok és a biztonsági mentés készül a mérete nagyobb is lehet.
 * Adatátviteli idő, a biztonsági mentési szolgáltatásban a növekményes változásokat előző biztonsági mentés a számítási és a változások átvitele a storage-tároló szükséges idő.
 
-### <a name="why-am-i-observing-longer12-hours-backup-time"></a>Miért vagyok I betartásával longer(>12 hours) biztonsági mentés időpontja?
-Biztonsági mentés két fázisból áll: pillanatképeket, és a pillanatképek átvitele a tárba. A Backup szolgáltatás optimalizálja a tároláshoz. A pillanatkép adatainak továbbítson egy tárolót, a szolgáltatás csak továbbítja a növekményes változásokat az előző pillanatképet.  Annak megállapításához, a növekményes változásokat, a szolgáltatás kiszámítja a blokkok ellenőrzőösszeget. Ha módosul egy, a blokk kell küldeni a tároló egy blokk azonosítja. Ezután a szolgáltatás működése során további minden egyes azonosított blokkok, minimalizálása érdekében az adatok átvitele lehetőségeket keres. Után minden megváltozott blokkokat kiértékelését, a szolgáltatás számmá egyesíti a módosításokat, és elküldi azokat a tárolóban. Egyes örökölt alkalmazások, a kicsi, töredezett írási műveletek nem állnak optimális tároló. Ha a pillanatkép sok kisebb, töredezett írások tartalmaz, a szolgáltatás további időt, az alkalmazások által írt adatok feldolgozására futtatásával töltött. Az ajánlott írási alkalmazásblokk az Azure-ban, a virtuális Gépen futó alkalmazások esetében legalább 8 KB-os van. Ha az alkalmazás egy 8 KB-blokk, biztonsági mentés teljesítményét történik. Hangolása biztonsági mentési teljesítményének javítása érdekében az alkalmazás-témakörben talál segítséget [hangolása az optimális teljesítmény és az Azure storage alkalmazások](../virtual-machines/windows/premium-storage-performance.md). Bár a cikkben a biztonsági mentés teljesítményét a prémium szintű storage-példák használata, az útmutató érvényes a standard szintű tárolólemezek vonatkozik.
+### <a name="why-are-backup-times-longer-than-12-hours"></a>Miért vannak a biztonsági mentés időpontjai hosszabb, mint 12 órán át?
+
+Biztonsági mentés két fázisból áll: pillanatképeket, és a pillanatképek átvitele a tárba. A Backup szolgáltatás optimalizálja a tároláshoz. A pillanatkép adatainak továbbítson egy tárolót, a szolgáltatás csak továbbítja a növekményes változásokat az előző pillanatképet.  Annak megállapításához, a növekményes változásokat, a szolgáltatás kiszámítja a blokkok ellenőrzőösszeget. Ha módosul egy, a blokk kell küldeni a tároló egy blokk azonosítja. Ezután a szolgáltatás működése során további minden egyes azonosított blokkok, minimalizálása érdekében az adatok átvitele lehetőségeket keres. Után minden megváltozott blokkokat kiértékelését, a szolgáltatás számmá egyesíti a módosításokat, és elküldi azokat a tárolóban. Egyes örökölt alkalmazások, a kicsi, töredezett írási műveletek nem állnak optimális tároló. Ha a pillanatkép sok kisebb, töredezett írások tartalmaz, a szolgáltatás további időt, az alkalmazások által írt adatok feldolgozására futtatásával töltött. A virtuális Gépen futó alkalmazások esetében a minimálisan ajánlott alkalmazásírás blokk 8 KB-os. Ha az alkalmazás egy 8 KB-blokk, biztonsági mentés teljesítményét történik. Hangolása biztonsági mentési teljesítményének javítása érdekében az alkalmazás-témakörben talál segítséget [hangolása az optimális teljesítmény és az Azure storage alkalmazások](../virtual-machines/windows/premium-storage-performance.md). Bár a cikkben a biztonsági mentés teljesítményét a prémium szintű storage-példák használata, az útmutató érvényes a standard szintű tárolólemezek vonatkozik.
 
 ## <a name="total-restore-time"></a>Teljes visszaállítási idő
-A visszaállítási művelet két fő részfeladatok áll: adatok másolása a kiválasztott ügyfél tárfiókja vissza a tárolóból, és létrehozta a virtuális gépet. Vissza a tárolóból az adatok másolásának attól függ, a biztonsági mentések tárolására belsőleg az Azure-ban, és az ügyfél tárfiókja tárolására. Az adatok másolásához szükséges idő attól függ:
+
+A visszaállítási művelet áll két fő feladat: adatok másolása a kiválasztott ügyfél tárfiókja vissza a tárolóból, és létrehozta a virtuális gépet. Adatok másolása a tárolóhoz szükséges idő attól függ, a biztonsági mentések tárolására az Azure és az ügyfél tárfiókja helyét. Az adatok másolásához szükséges idő attól függ:
 * Várólista várakozási idő – mivel a szolgáltatási folyamatoknak feladatok visszaállítása több ügyfél egyszerre, visszaállítási jár sorba helyezni.
 * Adatok másolása az idő - adatokat a tárolóból az ügyfél tárfiókja másolja. Visszaállítás idő függ az IOPS és átviteli sebesség az Azure Backup szolgáltatás lekérdezi a kijelölt ügyfél tárfiókban. Nincs betöltve, más alkalmazások írási és olvasási tárfiók kiválasztása a visszaállítási folyamat során a másolási idő csökkentése érdekében.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-Javasoljuk, hogy ezeket a gyakorlatokat a virtuális gépek biztonsági mentések konfigurálása során a következő:
+Javasoljuk, hogy ezeket a gyakorlatokat, nem felügyelt lemezekkel rendelkező virtuális gépek biztonsági mentések konfigurálása során a következő:
+
+> [!Note]
+> Az alábbi eljárásokat, javasoljuk, módosítása vagy a storage-fiókok kezelése a alkalmazni csak a nem felügyelt lemezekkel rendelkező virtuális gépeket. Ha felügyelt lemezeket használ, az Azure storage használata esetén az összes felügyeleti tevékenység gondoskodik.
+> 
 
 * Nem ütemezhető ugyanazon a felhőszolgáltatáson biztonsági mentését is elvégezheti a 10-nél több klasszikus virtuális gépeket. Ha azt szeretné, biztonsági mentése több virtuális gép ugyanazon a felhőszolgáltatáson, szinkronizálások a biztonsági mentés kezdési idejének eltolása szerint egy óra.
 * Nem ütemezhető be a több mint 100 virtuális gép biztonsági mentése egy időben egy közös tároló. 
@@ -115,7 +116,7 @@ Javasoljuk, hogy ezeket a gyakorlatokat a virtuális gépek biztonsági mentése
 * Győződjön meg arról, hogy a szabályzat vonatkozik-e elosztva a különböző storage-fiókok virtuális gépeken. Javasoljuk, hogy legfeljebb 20 teljes lemezeket az egy tárfiókban kell védeni az ugyanolyan biztonsági mentési ütemezést. Ha nagyobb, mint 20 lemezeket a storage-fiókban, helyezkednek el ezeket a virtuális gépek több szabályzat beolvasni a szükséges iops-t a biztonsági mentési folyamat átviteli fázisában.
 * Ne állítson vissza egy virtuális Gépet futtató a Premium storage ugyanazt a tárfiókot. A visszaállítási művelet folyamat egybeessen a biztonsági mentési műveletet, ha csökkenti a biztonsági mentés a rendelkezésre álló iops-érték.
 * A prémium szintű virtuális gép biztonsági mentése a virtuális gép biztonsági másolat verem V1 javasoljuk, hogy az Azure Backup szolgáltatás másolhatja a pillanatkép tárolási fiók és az átviteli adatok a storage-fiókban a tárolóba a másolt helyről csak 50 %-a a teljes tárterület fiók lefoglalni.
-* Ellenőrizze, hogy a python-verzió Linux rendszerű virtuális gépeken a biztonsági mentés van 2.7 engedélyezve van
+* Győződjön meg arról, hogy Linux rendszerű virtuális gépek biztonsági mentésének engedélyezve van, a Python 2.7-es vagy újabb verziót.
 
 ## <a name="data-encryption"></a>Adattitkosítás
 Az Azure Backup nem titkosítja az adatokat a biztonsági mentési folyamatának részeként. Azonban a virtuális Gépen lévő adatok titkosításához, és zökkenőmentesen biztonsági mentése a védett adatok (További információ [titkosított adatok biztonsági mentését](backup-azure-vms-encryption.md)).
@@ -125,14 +126,14 @@ Státuszban van az Azure virtuális gépek, amelyekről az Azure Backup segíts�
 
 Virtuális gépek biztonsági mentésének díjszabása az egyes virtuális géphez csatolt adatlemezek maximális támogatott mérete nem alapul. Díjszabás a tényleges, az adatok lemezen tárolt adatok alapján. Hasonlóképpen a biztonsági mentési tár számlázási tárolt adatokat az Azure Backup, azaz a tényleges adatok az egyes helyreállítási pontokon összege mennyisége alapul.
 
-Vegyünk példának egy Standard a2-es méretű virtuális gépet, amely két további adatlemezek 1 TB-os maximális mérettel. Az alábbi táblázat tartalmazza ezen lemezek tárolja a tényleges adatok:
+Vegyünk példának egy Standard a2-es méretű virtuális gépet, amely két további adatlemezek 4 TB-os maximális mérettel. Az alábbi táblázat tartalmazza ezen lemezek tárolja a tényleges adatok:
 
-| Lemez típusa | Max. mérete | Tényleges adatok |
+| Lemez típusa | Maximális méret | Tényleges adatok |
 | --------- | -------- | ----------- |
-| Operációsrendszer-lemez |1023 GB |17 GB |
+| Operációsrendszer-lemez |4095 GB |17 GB |
 | Helyi lemez / ideiglenes lemez |135 GB |5 GB-os (biztonsági mentés nem tartalmazza) |
-| Adatlemez 1 |1023 GB |30 GB |
-| Adatlemez 2 |1023 GB |0 GB |
+| Adatlemez 1 |4095 GB |30 GB |
+| Adatlemez 2 |4095 GB |0 GB |
 
 A tényleges méret a virtuális gép ebben az esetben a 17 GB + 30 GB + 0 GB = 47 GB. A védett példány mérete (GB-os 47) lesz alapjául a havi számla. A virtuális gépet az adatmennyiség növekedésével a védett példány mérete használja a számlázási változásokat ennek megfelelően.
 

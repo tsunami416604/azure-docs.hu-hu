@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 4a4ec63d41f013ebfef8a78eddc88a6131a960fc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070042"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390211"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 Ez a cikk ismerteti a különböző számítási környezetekben használható folyamat vagy átalakítási adatok. Emellett biztosítja linking ezeket a társított szolgáltatások konfigurálásakor a Data Factory által támogatott különböző konfigurációt (igény szerinti és használata a saját) adatait számítási környezeteket az Azure data factoryt.
@@ -429,8 +429,8 @@ Létrehoz egy **Azure Data Lake Analytics** társított szolgáltatást, az Azur
 | type                 | A type tulajdonságot kell megadni: **AzureDataLakeAnalytics**. | Igen                                      |
 | Fióknév          | Az Azure Data Lake Analytics-fiók neve.  | Igen                                      |
 | dataLakeAnalyticsUri | Az Azure Data Lake Analytics URI.           | Nem                                       |
-| subscriptionId       | Azure-előfizetés azonosítója                    | Nem (Ha nincs megadva, a data Factory előfizetés szerepel). |
-| resourceGroupName    | Azure-erőforráscsoport neve                | Nem (Ha nincs megadva, a data Factory erőforrás-csoport szerepel). |
+| subscriptionId       | Azure-előfizetés azonosítója                    | Nem                                       |
+| resourceGroupName    | Azure-erőforráscsoport neve                | Nem                                       |
 | servicePrincipalId   | Adja meg az alkalmazás ügyfél-azonosítót.     | Igen                                      |
 | servicePrincipalKey  | Adja meg az alkalmazáskulcsot.           | Igen                                      |
 | bérlő               | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Kérheti a viszi az egérmutatót az Azure portal jobb felső sarkában. | Igen                                      |
@@ -505,15 +505,6 @@ Hozzon létre egy Azure SQL Data Warehouse társított szolgáltatást, és egy�
 
 ## <a name="sql-server-linked-service"></a>Az SQL Server-alapú társított szolgáltatás
 Az SQL Server-alapú társított szolgáltatás létrehozása, és együtt használja, a [tárolt eljárási tevékenység](transform-data-using-stored-procedure.md) egy tárolt eljárást a Data Factory-folyamatok meghívásához. Lásd: [SQL Server-összekötő](connector-sql-server.md#linked-service-properties) részleteivel kapcsolatos ezt a társított szolgáltatást.
-
-## <a name="azure-data-factory---naming-rules"></a>Az Azure Data Factory – elnevezési szabályok
-Az alábbi táblázat a Data Factory-összetevők elnevezési szabályait biztosít.
-
-| Name (Név)                             | Név egyedi-e                          | Érvényesség-ellenőrzések                        |
-| :------------------------------- | :--------------------------------------- | :--------------------------------------- |
-| Data Factory                     | Egyedi Microsoft Azure-ban. Nevek és nagybetűk nincsenek megkülönböztetve, azaz `MyDF` és `mydf` tekintse meg az azonos adat-előállítóban. | <ul><li>Minden adat-előállító pontosan egy Azure-előfizetéssel van kötve.</li><li>Az objektum nevének betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és a kötőjel (-) karaktert tartalmazhat.</li><li>Minden kötőjel (-) karaktert kell előtt és egy betű vagy szám követ. Egymást követő kötőjelek használata nem engedélyezett a tároló nevében.</li><li>Neve 3 – 63 karakter hosszú lehet.</li></ul> |
-| Társított szolgáltatások/táblák/folyamatok | Egyedi az adat-előállítóban. Nevek és nagybetűk nincsenek megkülönböztetve. | <ul><li>A tábla neve a karakterek maximális száma: 260.</li><li>Objektum nevének betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie.</li><li>A következő karakterek nem engedélyezettek: ".", "+","?", "/", "<", ">","*", "%", "&", ":","\\"</li></ul> |
-| Erőforráscsoport                   | Egyedi Microsoft Azure-ban. Nevek és nagybetűk nincsenek megkülönböztetve. | <ul><li>Karakterek maximális száma: 1000.</li><li>Neve a betűket, számokat és a következő karaktereket tartalmazhatja: "-", "_",","és"."</li></ul> |
 
 ## <a name="next-steps"></a>További lépések
 Az Azure Data Factory által támogatott Adatátalakítási tevékenységek listáját lásd: [adatátalakítás](transform-data.md).

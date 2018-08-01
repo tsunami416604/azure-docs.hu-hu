@@ -1,6 +1,6 @@
 ---
-title: A Windows Server önálló Azure Service Fabric fürt frissítése |} Microsoft Docs
-description: Frissítse az Azure Service Fabric-kód és/vagy a konfigurációs rendszert futtató önálló Service Fabric-fürt, beleértve a fürt frissítési mód beállítása.
+title: A Windows Server önálló Azure Service Fabric-fürt frissítése |} A Microsoft Docs
+description: Frissítse az Azure Service Fabric-kód és/vagy a konfigurációt, amely egy önálló Service Fabric-fürt a fürt frissítési mód beállításával együtt futtatja.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 20526c1ddd55671f815dc39b3e03c4f9b2f91788
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9c2534644a0627bac9765621691cbba6ffccfe35
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208651"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391311"
 ---
-# <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Az önálló Azure Service Fabric-fürt Windows Server frissítése 
+# <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Frissítse az önálló Azure Service Fabric-fürt Windows Serveren 
 > [!div class="op_single_selector"]
-> * [Azure-fürttel](service-fabric-cluster-upgrade.md)
+> * [Azure-fürtben](service-fabric-cluster-upgrade.md)
 > * [Önálló fürt](service-fabric-cluster-upgrade-windows-server.md)
 >
 >
 
-Bármely, modern rendszer frissítése nem a hosszú távú sikeres, a termék kulcs. Az Azure Service Fabric-fürt saját erőforrás. Ez a cikk ismerteti, hogyan biztosíthatja, hogy a fürt mindig fut a Service Fabric-kódot és konfigurációk támogatott verzióit.
+Minden olyan modern rendszerbe arra, hogy frissítse a termék hosszú távú sikeréhez kulcsfontosságú, hogy. Azure Service Fabric-fürt saját erőforrás. Ez a cikk bemutatja, hogyan biztosíthatja, hogy a a fürt mindig fut-e a támogatott verziók a Service Fabric-kódra és konfigurációkat.
 
-## <a name="control-the-service-fabric-version-that-runs-on-your-cluster"></a>A Service Fabric-verzió a fürtön futó vezérlő
-A Service Fabric frissítéseinek letöltését, amikor a Microsoft által kiadott új verziójára a fürt beállításához beállítása fabricClusterAutoupgradeEnabled fürt *igaz*. Válassza ki a Service Fabric-on szeretné lebonyolítani a fürt által támogatott verzióját, adja meg a fabricClusterAutoupgradeEnabled fürtkonfiguráció *hamis*.
+## <a name="control-the-service-fabric-version-that-runs-on-your-cluster"></a>Vezérlő a Service Fabric verziója, amely a fürt fut
+A fürt Service fabric-frissítések letöltése a Microsoft által kiadott új verzió beállításához fabricClusterAutoupgradeEnabled fürt konfigurációjának beállítása *igaz*. Válassza ki a fürt a használni kívánt Service Fabric egy támogatott verzióját, állítsa a fabricClusterAutoupgradeEnabled fürtkonfiguráció *hamis*.
 
 > [!NOTE]
-> Győződjön meg arról, hogy a fürt mindig a Service Fabric támogatott verzióját futtatja. A Microsoft a Service Fabric verziójának megjelenésével időről, ha az előző verzió legalább a közlemény számított 60 nap után végéhez van megjelölve. Új kiadásokat történik bejelentés [a Service Fabric csapat blogjában](https://blogs.msdn.microsoft.com/azureservicefabric/). Ezen a ponton kiválasztása az új kiadási érhető el.
+> Győződjön meg arról, hogy a fürt mindig fut a Service Fabric támogatott verziója. A kiadás a Service Fabric egy új verzióját a Microsoft bejelenti, ha az előző verziója legalább a közlemény 60 nap után támogatásuk van megjelölve. Új kiadásokkal már bejelentettünk [a Service Fabric blogján](https://blogs.msdn.microsoft.com/azureservicefabric/). Ezen a ponton kiválasztása az új kiadásban érhető el.
 >
 >
 
-A fürt frissítheti az új verzió csak akkor, ha használ egy éles stílusú csomópont-konfiguráció, ahol minden Service Fabric-csomópont van lefoglalva, külön fizikai vagy virtuális gépen. Ha a fejlesztési fürtöt, ahol egynél több Service Fabric-csomópont nem egyetlen fizikai vagy virtuális gépen, kell újból létrehoznia az új verzióját futtató fürtökre.
+A fürt válthat az új verzió csak akkor, ha használ egy éles stílusú csomópont-konfiguráció, ahol minden Service Fabric-csomópont egy külön fizikai vagy virtuális gép van lefoglalva. Ha rendelkezik egy fejlesztési fürtöt, ahol egynél több Service Fabric-csomópont van egyetlen fizikai vagy virtuális gépen, újra létre kell hoznia a fürtöt az új verzióval.
 
-Két, különböző munkafolyamatokat a fürt frissítsen a legújabb verzióra, vagy a Service Fabric támogatott verziója. Egy munkafolyamat automatikusan a legújabb verzió letöltéséhez és fürtöknél van. A más munkafolyamat van fürtök, amelyek nem rendelkeznek a kapcsolatot a Service Fabric legújabb verziójának letöltéséhez.
+Két különböző munkafolyamatok frissíthetők a fürt a legújabb vagy támogatott a Service Fabric verziója. Egy munkafolyamat olyan fürtök, amelyek a legújabb verzió letöltéséhez automatikusan csatlakozik. A többi munkafolyamat olyan fürtök, amelyek nem rendelkeznek a kapcsolatot a Service Fabric legújabb verzió letöltéséhez.
 
-### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Fürtökben, amelyek kapcsolódik, töltse le a legfrissebb kódot és konfiguráció frissítése
-Ezen lépések segítségével frissítse a fürt valamelyik támogatott verzióra, ha a fürtcsomópontok kapcsolódik az internethez való a [Microsoft Download Center](http://download.microsoft.com).
+### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Töltse le a legújabb kódot és konfigurációs kapcsolati fürtök frissítése
+Kövesse az alábbi lépéseket egy támogatott verziójára frissítse a fürtöt, ha a fürtcsomópontok rendelkezik internetkapcsolattal a [Microsoft Download Center](http://download.microsoft.com).
 
-A fürtök, amely kapcsolódik a [Microsoft Download Center](http://download.microsoft.com), a Microsoft rendszeres időközönként új Service Fabric-verziók rendelkezésre állását ellenőrzi.
+A fürtök, amely rendelkezik a [Microsoft Download Center](http://download.microsoft.com), a Microsoft rendszeresen új Service Fabric-verziók rendelkezésre állását ellenőrzi.
 
-Ha egy új Service Fabric-verzió érhető el, a csomag tölt le helyileg, a fürtre és frissítés kiépítve. Emellett az új verzió az ügyfél tájékoztatja, a rendszer jeleníti meg egy explicit fürt állapotfigyelési figyelmeztetése a következőhöz hasonló:
+Ha egy új Service Fabric-verzió érhető el, a csomag helyileg töltött le a fürt és frissítés kiépítve. Emellett tájékoztatja az ügyfél az új verzió, a rendszer jelenít meg egy explicit fürt állapotfigyelési figyelmeztetése, amely a következőhöz hasonló:
 
-"Az aktuális fürt verziója [verzió #] támogatás [dátum] megszűnik."
+"Az aktuális fürt verziója [verzió #] támogatás vége [date]."
 
-Miután a fürt a legújabb verziója fut, a figyelmeztetés eltűnik.
+Miután a fürt fut. a legújabb verzióra, a figyelmeztetés ami újbóli próbálkozással megszűnik.
 
 #### <a name="cluster-upgrade-workflow"></a>A fürt frissítésének munkafolyamata
 Amikor megjelenik a fürt állapotfigyelési figyelmeztetése, tegye a következőket:
 
-1. Csatlakozzon a fürthöz, a fürtben csomópontként felsorolt összes gép rendszergazdai jogosultságokkal rendelkező bármely számítógépről. Ezt a parancsfájlt a gép nem rendelkezik a fürt részeként.
+1. A fürtben csomópontként felsorolt összes gép rendszergazdai hozzáféréssel rendelkező bármely gépről csatlakozhat a fürthöz. Ez a szkript futtatott a gép nem kell lennie a fürt része.
 
     ```powershell
 
@@ -72,7 +72,7 @@ Amikor megjelenik a fürt állapotfigyelési figyelmeztetése, tegye a következ
         -StoreName My
     ```
 
-2. A Service Fabric-verziók frissíthet listájának lekérdezése.
+2. A Service Fabric-verziók frissíthet listájának beolvasása.
 
     ```powershell
 
@@ -80,10 +80,10 @@ Amikor megjelenik a fürt állapotfigyelési figyelmeztetése, tegye a következ
     Get-ServiceFabricRegisteredClusterCodeVersion
     ```
 
-    Kimenettel kell kapnia hasonló:
+    Kimenetet kell kapni ehhez hasonló:
 
-    ![A Service Fabric-verziók beolvasása][getfabversions]
-3. A fürt egy elérhető verziójára való frissítést használatával indítsa el a [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx) Windows PowerShell-parancsot.
+    ![A Service Fabric-verzió beolvasása][getfabversions]
+3. Egy elérhető verzióra a fürtfrissítések indítása a [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) Windows PowerShell-parancsot.
 
     ```Powershell
 
@@ -94,34 +94,34 @@ Amikor megjelenik a fürt állapotfigyelési figyelmeztetése, tegye a következ
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
 
     ```
-   A frissítés állapotának figyeléséhez, használhatja a Service Fabric Explorer vagy a következő PowerShell-parancsot:
+   A frissítés állapotának figyelése, a Service Fabric Explorert használjuk, vagy futtassa a következő PowerShell-parancsot:
 
     ```powershell
 
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Ha a fürt állapotházirendeket nem teljesülnek, a frissítés vissza lesz állítva. Egyéni házirendek a Start-ServiceFabricClusterUpgrade parancs megadásához a dokumentációban [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx).
+    Ha a fürt állapotházirendeket nem teljesülnek, a frissítés vissza lesz állítva. Egyéni házirendek a Start-ServiceFabricClusterUpgrade parancs megadásához dokumentációjában talál [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
 
-A problémák, amelyek a visszaállítási kijavítása után kezdeményezése a frissítés ismét a korábban leírt lépéseket.
+    Után a visszaállítás eredményezett problémák kijavításához kezdeményezni a frissítés újra korábban ismertetett ugyanazokat a lépéseket követve.
 
-### <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Frissítés fürtöknél *kapcsolat* letölteni a legújabb kód és a konfiguráció
-Ezen lépések segítségével frissítse a fürt egy támogatott verzióra, ha a fürtcsomópontok nincs internetkapcsolat, hogy a [Microsoft Download Center](http://download.microsoft.com).
+### <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Rendelkező fürtök frissítése *elérhetetlen* a legújabb kód és a konfiguráció letöltése
+Kövesse az alábbi lépéseket egy támogatott verziójára frissítse a fürtöt, ha a fürtcsomópontok nem rendelkezik internetkapcsolattal a [Microsoft Download Center](http://download.microsoft.com).
 
 > [!NOTE]
-> Ha fut a fürtön, amely nem kapcsolódik az internethez, akkor figyelése a Service Fabric-csapat blogja tájékozódhat az új kiadásokat. A rendszer nem jeleníti meg a fürt állapotfigyelési figyelmeztetése riasztásokat az új kiadásokat.  
+> Ha egy fürtöt, amely nem csatlakozik az internethez rendszert használ, akkor új kiadásokkal megismerheti a Service Fabric-csapat blogjának figyelése. A rendszer nem jelenít meg a fürt állapota figyelmeztetés, hogy riasztást küldjön, új kiadásokat.  
 >
 >
 
-#### <a name="auto-provisioning-vs-manual-provisioning"></a>Az automatikus és manuális létesítési kiépítése
-Automatikus letöltés és nyilvántartási kód legfrissebb engedélyezéséhez állítsa be a Service Fabric-frissítés szolgáltatás. Útmutatásért lásd a belső Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt a [önálló csomag](service-fabric-cluster-standalone-package-contents.md).
+#### <a name="auto-provisioning-vs-manual-provisioning"></a>Automatikus telepítés és a manuális kiépítése
+Automatikus letöltés és a regisztrációs kód legfrissebb engedélyezéséhez állítsa be a Service Fabric-frissítés szolgáltatás. Útmutatásért lásd a belső Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt a [különálló csomag](service-fabric-cluster-standalone-package-contents.md).
 A manuális folyamat kövesse az alábbi utasításokat.
 
-A fürt konfigurációját, és a következő tulajdonság módosítása *hamis* egy konfigurációs frissítés megkezdése előtt:
+A fürt konfigurációját, a következő tulajdonság módosítása *hamis* egy konfigurációs frissítés megkezdése előtt:
 
         "fabricClusterAutoupgradeEnabled": false,
 
-A használat részleteiről lásd: a [Start-ServiceFabricClusterConfigurationUpgrade PowerShell-paranccsal](https://msdn.microsoft.com/library/mt788302.aspx). Ne felejtse el frissíteni a "clusterConfigurationVersion" a JSON-ban, a konfiguráció frissítés megkezdése előtt.
+Használattal kapcsolatos részletek, tekintse meg a [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) PowerShell-parancsot. Ellenőrizze, hogy "clusterConfigurationVersion" a JSON-fájlban frissítse a konfigurációs frissítés megkezdése előtt.
 
 ```powershell
 
@@ -131,9 +131,9 @@ A használat részleteiről lásd: a [Start-ServiceFabricClusterConfigurationUpg
 
 #### <a name="cluster-upgrade-workflow"></a>A fürt frissítésének munkafolyamata
 
-1. Futtassa a Get-ServiceFabricClusterUpgrade a fürt a csomópontok egyikét, és jegyezze fel a TargetCodeVersion.
+1. Futtatás [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade) a fürt, és vegye figyelembe a csomópontok közül a *TargetCodeVersion*.
 
-2. Futtassa a következő listán minden frissítés-kompatibilis verzió a jelenlegi verzióval, és a megfelelő csomag letölteni a letöltési hivatkozás internetkapcsolat gépből:
+2. Futtassa a következő internethez csatlakozó gépről az aktuális verzióval minden frissítés-kompatibilis verzió listázása, és a megfelelő csomag letöltését a letöltési hivatkozás:
 
     ```powershell
 
@@ -141,7 +141,7 @@ A használat részleteiről lásd: a [Start-ServiceFabricClusterConfigurationUpg
     Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1> 
     ```
 
-3. Csatlakozzon a fürthöz, a fürtben csomópontként felsorolt összes gép rendszergazdai jogosultságokkal rendelkező bármely számítógépről. Ezt a parancsfájlt a gép nem rendelkezik a fürt részeként.
+3. A fürtben csomópontként felsorolt összes gép rendszergazdai hozzáféréssel rendelkező bármely gépről csatlakozhat a fürthöz. Ez a szkript futtatott a gép nem kell lennie a fürt része.
 
     ```powershell
 
@@ -152,7 +152,7 @@ A használat részleteiről lásd: a [Start-ServiceFabricClusterConfigurationUpg
     Copy-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab -ImageStoreConnectionString "fabric:ImageStore"
 
     ```
-4. A letöltött csomagot átmásolja a fürt lemezképtárolóhoz.
+4. A fürt lemezképtárolójába másolja a letöltött csomag.
 
 5. A másolt csomag regisztrálása.
 
@@ -165,7 +165,7 @@ A használat részleteiről lásd: a [Start-ServiceFabricClusterConfigurationUpg
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
 
      ```
-6. Indítsa el a fürt frissítését elérhető verziójára.
+6. Indítsa el a fürt frissítése elérhető verzióra.
 
     ```Powershell
 
@@ -175,27 +175,27 @@ A használat részleteiről lásd: a [Start-ServiceFabricClusterConfigurationUpg
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
 
     ```
-   Figyelheti a feladat előrehaladását a frissítés a Service Fabric Explorer, vagy futtassa a következő PowerShell-parancsot:
+   A frissítés a Service Fabric Explorer az előrehaladását nyomon követheti, vagy futtathatja a következő PowerShell-parancsot:
 
     ```powershell
 
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Ha a fürt állapotházirendeket nem teljesülnek, a frissítés vissza lesz állítva. Adja meg a Start-ServiceFabricClusterUpgrade parancs egyéni állapotházirendeket, olvassa el a dokumentációt a [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx).
+    Ha a fürt állapotházirendeket nem teljesülnek, a frissítés vissza lesz állítva. Egyéni házirendek a Start-ServiceFabricClusterUpgrade parancs megadásához dokumentációjában talál [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
 
-A problémák, amelyek a visszaállítási kijavítása után kezdeményezése a frissítés ismét a korábban leírt lépéseket.
+    Után a visszaállítás eredményezett problémák kijavításához kezdeményezni a frissítés újra korábban ismertetett ugyanazokat a lépéseket követve.
 
 
 ## <a name="upgrade-the-cluster-configuration"></a>A fürt konfigurációjának frissítése
-A konfigurációs frissítés elindítása előtt az új fürt konfigurációs JSON tesztelheti az önálló csomag a következő PowerShell-parancsfájl futtatásával:
+A konfiguráció frissítése kezdeményez, mielőtt a különálló csomag a következő PowerShell-parancsfájl futtatásával tesztelheti az új fürt konfigurációs JSON-fájlt:
 
 ```powershell
 
     TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File>
 
 ```
-Vagy ha ezt a parancsfájlt:
+Vagy használja ezt a parancsfájlt:
 
 ```powershell
 
@@ -203,9 +203,9 @@ Vagy ha ezt a parancsfájlt:
 
 ```
 
-Bizonyos konfigurációk nem lehet frissíteni, például a végpontok, a fürt nevét, a csomópont IP stb. Az új fürt konfigurációs JSON szemben a régit tesztelni, és hibákat jelez a PowerShell-ablakban, ha probléma van.
+Bizonyos konfigurációk nem lehet frissíteni, például a végpontok, fürt nevét, IP-Címét, stb. Az új fürt JSON konfigurációs van tesztelve lett a régit, és a PowerShell-ablakban hibát jelez, ha probléma van.
 
-A Fürtfrissítés konfigurációs frissítéséhez futtassa a Start-ServiceFabricClusterConfigurationUpgrade. A konfigurációs frissítés frissítési tartomány által feldolgozott frissítési tartományban.
+A fürt konfiguráció frissítése a frissítéshez futtassa [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade). A konfiguráció frissítése frissítési tartomány által feldolgozott frissítési tartományban.
 
 ```powershell
 
@@ -213,24 +213,24 @@ A Fürtfrissítés konfigurációs frissítéséhez futtassa a Start-ServiceFabr
 
 ```
 
-### <a name="cluster-certificate-config-upgrade"></a>Fürtök tanúsítvány konfiguráció frissítése  
-A fürt tanúsítvány fürtcsomópontok közötti hitelesítéshez használt. A tanúsítványok leváltása extra körültekintően kell hajtható végre, mert hiba megakadályozza a fürtcsomópontok közötti kommunikáció.
+### <a name="cluster-certificate-config-upgrade"></a>Fürt tanúsítvány-konfiguráció frissítése  
+A fürttanúsítvány fürtcsomópontok közötti hitelesítéshez használatos. A tanúsítványváltás extra körültekintően kell hajtható végre, mert a sikertelen blokkolja a fürt csomópontok közötti kommunikációt.
 
-Technikai szempontból négy beállítások támogatottak:  
+Technikailag négy beállítások támogatottak:  
 
-* Egyetlen tanúsítvány frissítés: A frissítési elérési út (elsődleges) -> tanúsítvány B (elsődleges) tanúsítvány -> tanúsítvány C (elsődleges) ->...
+* Egy tanúsítvány frissítése: A frissítés elérési útja (elsődleges) -> tanúsítvány B (elsődleges) tanúsítvány tanúsítvány C (elsődleges) -> ->...
 
-* Kettős tanúsítvány frissítés: A frissítési elérési út (elsődleges) -> Tanúsítvány tanúsítvány-(elsődleges) és a B (másodlagos) -> tanúsítvány B (elsődleges) -> tanúsítvány B (elsődleges), és C (másodlagos) -> tanúsítvány C (elsődleges) ->...
+* Kettős tanúsítvány frissítése: A frissítés elérési útja (elsődleges) -> Tanúsítvány tanúsítvány-(elsődleges), és B (másodlagos) -> tanúsítvány B (elsődleges) -> (elsődleges) tanúsítvány B és C (másodlagos) > tanúsítvány C (elsődleges) ->...
 
-* Tanúsítvány típusa frissítés: a tanúsítvány ujjlenyomata-alapú konfigurációs <> – Köznapinév-alapú tanúsítvány konfigurálását. Például a tanúsítvány ujjlenyomata (elsődleges) és az ujjlenyomat B (másodlagos) tanúsítvány Köznapinév c ->
+* Tanúsítvány típusa frissítés: tanúsítvány ujjlenyomat-alapú konfigurációs <> – Köznapinév-alapú tanúsítvány konfigurálását. Ha például a tanúsítvány-ujjlenyomat (elsődleges) és ujjlenyomatát B (másodlagos) -> tanúsítvány CommonName c
 
-* A tanúsítvány kiállítójának ujjlenyomata frissítés: A frissítési elérési út a tanúsítvány CN = A, IssuerThumbprint et1 = (elsődleges) tanúsítvány CN -> = A, IssuerThumbprint et1, et2 = (elsődleges) tanúsítvány CN -> A, IssuerThumbprint = et2 = (elsődleges).
+* Tanúsítvány-kibocsátó ujjlenyomatát frissítés: A frissítési útvonalat a tanúsítvány CN = A, IssuerThumbprint et1 = (elsődleges) tanúsítvány CN -> A, IssuerThumbprint = et1, et2 = (elsődleges) tanúsítvány CN -> A, IssuerThumbprint = et2 = (elsődleges).
 
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan szabhatja testre az egyes [Service Fabric-fürt beállítások](service-fabric-cluster-fabric-settings.md).
-* Megtudhatja, hogyan [a fürt vagy horizontális](service-fabric-cluster-scale-up-down.md).
-* További tudnivalók [alkalmazásfrissítések](service-fabric-application-upgrade.md).
+* Ismerje meg, hogyan [fürt kétirányú méretezése](service-fabric-cluster-scale-up-down.md).
+* Ismerje meg [alkalmazásfrissítések](service-fabric-application-upgrade.md).
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

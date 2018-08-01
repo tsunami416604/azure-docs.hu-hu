@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás lapján nem jelennek meg helyesen az alkalmazásproxy-alkalmazás |} Microsoft Docs
-description: Ha a lap nem megfelelően jelennek meg az alkalmazás Proxy alkalmazás útmutatást integrálva van az Azure AD
+title: Alkalmazás lapján nem jelennek meg megfelelően az alkalmazásproxy-alkalmazáshoz |} A Microsoft Docs
+description: Az Azure ad-vel integrált útmutatást, ha az oldal nem megfelelően jelennek meg az egy alkalmazásproxy-alkalmazás
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,33 +10,33 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ee06018cd500937c69824f796c137e3972c55f6c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 118d5780145d0421160c70546f01dc930190185e
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334700"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365209"
 ---
-# <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Alkalmazás lapján nem jelennek meg helyesen az alkalmazásproxy-alkalmazáshoz
+# <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Alkalmazás lapján nem jelennek meg megfelelően az alkalmazásproxy-alkalmazáshoz
 
-Ez a cikk segít az Azure Active Directory Alkalmazásproxyjával alkalmazásokkal kapcsolatos problémák hibaelhárítása az lapra lép, de az oldalon valami nem megfelelően jelenik meg helyes.
+Ez a cikk segít az Azure Active Directory Application Proxy alkalmazásai hibák elhárításához, ha, nyissa meg a lapot, de az oldal hibásnak tűnik megfelelő.
 
 ## <a name="overview"></a>Áttekintés
-Alkalmazásproxy alkalmazások közzététele, amikor csak a legfelső szintű lapok érhetők el az alkalmazáshoz való hozzáféréskor. A lapon nem jelennek meg megfelelően, ha lehet, hogy a legfelső szintű belső használt URL-cím az alkalmazás hiányzik néhány lap erőforrást. Elhárítása érdekében ellenőrizze, hogy miután közzétette *összes* az erőforrásokat a lap az alkalmazás részeként.
+Amikor közzétesz egy alkalmazásproxy-alkalmazást, csak a legfelső szintű alatt lapok érhetők el az alkalmazás elérésekor. Ha az oldal nem megfelelően jelenik meg, a legfelső szintű belső URL-cím az alkalmazáshoz használt esetleg hiányzik a lap források. Oldja meg, győződjön meg arról, miután közzétette *összes* az erőforrásokat az oldal az alkalmazás részeként.
 
-Hiányzó erőforrások esetén a problémát a hálózati követő megnyitásával ellenőrizheti (például a Fiddler, vagy az F12 eszközök Internet Explorer vagy Edge), betölteni az oldalt, és a 404-es hibákat keres. Amely azt jelzi, hogy a lapok jelenleg nem található, és telepíteni kell, amely közzéteszi.
+Hiányzó erőforrás-e a problémát a hálózati tracker megnyitásával ellenőrizheti (például a Fiddler vagy F12 eszközök Internet Explorer vagy Edge), az oldal betöltése és 404-es hibát keres. Azt jelzi, az oldalak jelenleg nem találhatók, és van szükség, ha közzétesszük őket.
 
-Ebben az esetben, például azt feltételezik, miután közzétette a belső URL-címet használó költségek alkalmazások http://myapps/expenses, de az alkalmazás használ a stíluslap http://myapps/style.css. Ebben az esetben a stíluslap nincs közzétéve az alkalmazásban, a költségek alkalmazás betöltése kivételt a 404-es hibaüzenetet style.css betöltésére tett kísérlet közben. Ebben a példában a probléma megoldódott, azzal, hogy közzétesz egy belső URL-CÍMÉT az alkalmazás http://myapp/.
+Ebben az esetben a példaként tegyük fel, a belső URL-címet használó költségek alkalmazások közzétételét http://myapps/expenses, de az alkalmazás használ a stíluslap http://myapps/style.css. Ebben az esetben a stíluslap nincs közzétéve az alkalmazásban, így a költségek alkalmazás betöltése throw 404-es hiba style.css betöltése közben. Ebben a példában a probléma megoldódott, tegye közzé az alkalmazást a belső URL-címének http://myapp/.
 
 ## <a name="problems-with-publishing-as-one-application"></a>Egy alkalmazás közzétételi kapcsolatos problémák
 
-Ha nincs lehetőség az ugyanazon alkalmazásban minden erőforrások közzétételét, módosítania több alkalmazások közzététele és a hivatkozások között.
+Ha nem lehet ugyanaz az alkalmazás összes erőforrásának közzététele, meg kell több alkalmazások közzététele és a hivatkozások között.
 
-Ha igen, azt javasoljuk, a [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) megoldás. Azonban az ehhez a megoldáshoz szükségesek, hogy Ön a tulajdonosa a tanúsítványt a tartomány és az alkalmazások teljes tartományneveit (FQDN) használja. Egyéb lehetőségek, tekintse meg a [hivatkozások dokumentáció hibaelhárítása](application-proxy-page-links-broken-problem.md).
+Ha igen, azt javasoljuk, a [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) megoldás. Ez a megoldás azonban megköveteli, hogy saját a tanúsítványt a tartomány és az alkalmazások teljes tartománynevek (FQDN) használja. További beállításokért lásd: a [hibaelhárítása a megszakadt hivatkozások dokumentáció](application-proxy-page-links-broken-problem.md).
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure AD-alkalmazásproxy használó alkalmazások közzététele](manage-apps/application-proxy-publish-azure-portal.md)
+[Alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md)

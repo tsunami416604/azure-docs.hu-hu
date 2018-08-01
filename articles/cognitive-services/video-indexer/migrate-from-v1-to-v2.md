@@ -1,119 +1,117 @@
 ---
-title: V2 Azure videó indexelő API v1 át |} Microsoft Docs
-description: Ez a témakör azt ismerteti, hogyan telepíthetők át az Azure videó indexelő API v1 v2.
+title: Át Azure Video Indexer API v1, v2 |} A Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan migrálhat az Azure Video Indexer API v1, v2.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/13/2018
+ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 00f5a0d7c9a37c24866cd5e1259800d5e431ccc3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1883c449def44f6c54c6f20317de39ada405643f
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35350103"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39388970"
 ---
-# <a name="migrate-from-the-video-indexer-api-v1-to-v2"></a>A videó indexelő API v1 v2 áttelepítése
+# <a name="migrate-from-the-video-indexer-api-v1-to-v2"></a>A Video Indexer API v1, v2 át
 
 > [!Note]
-> A videó indexelő V1-es API-k mára elavult, és eltávolítja a 2018 augusztus 1-jétől. El kell kezdenie a videó indexelő v2 API-k használatával zavarokat elkerülése érdekében.
->
-> Fejlesztéséhez videó indexelő v2 API-khoz, tekintse meg a útmutatását [Itt](https://api-portal.videoindexer.ai/). 
+> A Video Indexer V1 API 2018. augusztus 1-től. a rendszer elavult. Most már a Video Indexer v2 API-t kell használnia. <br/>A Video Indexer v2 API-k fejlesztéséhez, tekintse meg a útmutatását [Itt](https://api-portal.videoindexer.ai/). 
 
-Ez a cikk ismerteti a v2 bevezetett módosítások.  
+Ez a cikk ismerteti a v2-ben bevezetett módosítások.  
 
-## <a name="api-changes"></a>API-változások
+## <a name="api-changes"></a>API-módosítás
 
 ### <a name="authorization-and-operations"></a>Engedélyezési és műveletek
 
-A v2 verziójú videó indexelő módosította a hitelesítési és engedélyezési modell API. API-k két csoportjára van: 
+A v2 verzióban a Video Indexer módosítani a hitelesítési és engedélyezési modellje, az API-t. Nincsenek az API-k két készlet: 
 
 * Engedélyezés 
 * Műveletek
 
-A **engedélyezési** API hívása jogkivonatainak beszerzésére szolgál a **műveletek** API. A **műveletek** API minden a videó indexelő API-kat tartalmaz, például a feltöltési videó, Get insights és egyéb műveletekhez.
+A **engedélyezési** API meghívása a hozzáférési tokenek beszerzése érdekében használja a **műveletek** API-t. A **műveletek** API tartalmaz minden a Video Indexer API-k, például videó feltöltése, a Get insights és az egyéb műveletek.
 
-Egyszer, [előfizetés](video-indexer-get-started.md) számára a **engedélyezési** API-t fogja tudni hozzáférési tokenek beszerzése érdekében úgy, hogy az Előfizetés kulcs (ahogy az 1-es verzió.)
+Egyszer, [előfizetés](video-indexer-get-started.md) , a **engedélyezési** API-t, akkor fog tudni hozzáférési tokenek beszerzése az előfizetési kulcs átadásával (ahogy v1-ben.)
 
-## <a name="getting-and-using-the-access-token-for-operations-apis"></a>Első és a hozzáférési jogkivonat segítségével műveleteihez API-k
+## <a name="getting-and-using-the-access-token-for-operations-apis"></a>Első és a hozzáférési jogkivonat használata műveletek API-k
 
-Ha előhívja a **műveletek** API-k, az Előfizetés kulcs már nem használható. Ehelyett a kapott hozzáférési jogkivonatok fogja továbbítani a **engedélyezési** API. 
+Hívásakor a **műveletek** API-k, az előfizetési kulcs többé nem fogja használni. Ehelyett a kapott hozzáférési jogkivonatok fogja továbbítani az **engedélyezési** API-t. 
 
-Minden kérésnek tartalmaznia kell egy érvényes tokent, az API-hívás a hozzáférési szint megfelelő. A felhasználó, például a fiókok első műveletek megkövetelni például, egy felhasználói jogkivonat. A fiók műveleteket, például a lista összes videók szinten kötelező, egy fiók hozzáférési jogkivonatot. Videók, például az ismételt indexelése videó, a rendszer működéséhez szükségesek, vagy a fiók hozzáférési tokent, vagy a videó jogkivonatot.
+Minden kérelmet el kell nevezni a hozzáférési szintet az API-t hívja meg a megfelelő érvényes token. A felhasználó, például az első a fiókok az operations például a felhasználói hozzáférési tokent igényelnek. A fiók műveleteket, például a listát az összes videó szintű kötelező, -fiók hozzáférési jogkivonatának. A videók, például reindex video-műveletekhez szükség van, vagy-fiók hozzáférési jogkivonatának, vagy a videó hozzáférési tokent.
 
-Egyszerűbbé, használhatja a **engedélyezési** API > **GetAccounts** a fiókok nem a felhasználó jogkivonatának beszerzéséhez először. Is kérhet, lekérni a fiókok érvényes jogkivonatokkal, így lehetővé teszi egy további, a fiók tokent irányuló hívás kihagyása.
+Egyszerűbbé tételéhez, használhatja a **engedélyezési** API > **GetAccounts** beolvasni a fiókok a felhasználó beszerzése nélkül jogkivonatot először. Is feltehet a fiókok érvényes jogkivonatokkal, lehetővé téve a fiók jogkivonatot kapjon egy további hívás kihagyása.
 
-A különböző hozzáférési jogkivonatok kapcsolatos további információkért lásd: [használata Azure videó indexelő API](video-indexer-use-apis.md).
+A másik hozzáférési jogkivonatok kapcsolatos további információkért lásd: [használata Azure Video Indexer API](video-indexer-use-apis.md).
 
 ### <a name="locations"></a>Helyek
 
-Minden egyes hívásakor az API-t tartalmaznia kell a videó indexelő fiók helyét. A hely nélkül, vagy egy rossz helyen lévő API-hívások meghiúsulnak.
+Az API minden meghívásához tartalmaznia kell a Video Indexer-fiókot a helyét. A hely nélkül vagy rossz helyre API-hívás sikertelen lesz.
 
-A következő táblázat ismerteti az értékek érvényesek. A **Param érték** az API-t használ az értéket, ha át.
+Az értékek a következő táblázat ismerteti a alkalmazni. A **Param érték** az API-t használja az értéket, ha adja át.
 
 |**Name (Név)**|**Param érték**|**Leírás**|
 |---|---|---|
-|Próbaverzió|Próbaverzió|Próba fiókok használatos. Például: https://api.videoindexer.ai/trial/Accounts/{accountId}/Videos/{videoId}/Index?language=English.|
-|USA nyugati régiója|westus2|Az Azure nyugati Velünk 2 régió használatos.  Például: https://api.videoindexer.ai/westus2/Accounts/{accountId}/Videos/{videoId}/Index?language=English.|
-|Észak-Európa |northeurope|Használja az Észak-Európa Azure-régió. Például: https://api.videoindexer.ai/northeurope/Accounts/{accountId}/Videos/{videoId}/Index?language=English. |
-|Kelet-Ázsia|eastasia|Az Azure Kelet-Ázsia régió használatos. Például: https://api.videoindexer.ai/eastasia/Accounts/{accountId}/Videos/{videoId}/Index?language=English.|
+|Próbaverzió|Próbaverzió|Próbafiókokon használható. Például: https://api.videoindexer.ai/trial/Accounts/{accountId}/Videos/{videoId}/Index?language=English.|
+|USA nyugati régiója|westus2|Használja az Azure West US 2 régióban.  Például: https://api.videoindexer.ai/westus2/Accounts/{accountId}/Videos/{videoId}/Index?language=English.|
+|Észak-Európa |northeurope|Az Azure észak-európai régión használatos. Például: https://api.videoindexer.ai/northeurope/Accounts/{accountId}/Videos/{videoId}/Index?language=English. |
+|Kelet-Ázsia|eastasia|Használja a Kelet-Ázsia Azure-régióban. Például: https://api.videoindexer.ai/eastasia/Accounts/{accountId}/Videos/{videoId}/Index?language=English.|
 
 ### <a name="data-model"></a>Adatmodell
 
-Videó indexelő most már képes biztosítani a sok tisztább insights egyszerűsített adatmodellt. A v2 API által létrehozott kimenet kapcsolatos további információkért lásd: [vizsgálja meg a videó indexelő kimenetét a v2 API által előállított](video-indexer-output-json-v2.md).
+Video Indexer – most már rendelkezik egy egyszerűsített adatmodellt sok világosabb elemzéseket kínálnak. A kimenet a v2 API által előállított kapcsolatos további információkért lásd: [a a v2 API által előállított Videóindexelő kimenetének vizsgálata](video-indexer-output-json-v2.md).
 
 ### <a name="swagger"></a>Swagger
 
-A videó indexelő API-definíciók ennek megfelelően frissültek-e, és keresztül, töltse le a [API portal](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token).
+A Video Indexer API-definíciók ennek megfelelően frissíti és keresztül letölthetők a [API-portál](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token).
 
 
-### <a name="v1-vs-v2-examples"></a>A V1 és V2 példák
+### <a name="v1-vs-v2-examples"></a>V1 vagy V2-példák
 
-Az új V2 API-kat tartalmaz, amely 3 fő paraméterekkel:
+Az új V2 API-k 3 fő paraméterek között:
 
-1. [Hely] - fent leírt módon. Próbaverzió, westus2, northeurope vagy eastasia.
-2. [YOUR_ACCOUNT_ID] - fiókját A Guid azonosítóját. Lekéri a fiókokhoz (lásd lejjebb) beolvasásakor.
-3. [YOUR_VIDEO_ID] - a videó (pl. "d4fa369abc") azonosítóját. Videó feltöltésekor vagy videók keresésekor adott vissza.
+1. [Helye] – a fent leírt módon. Próbaverzió, westus2, northeurope vagy eastasia.
+2. [YOUR_ACCOUNT_ID] – a fiók A Guid-azonosítója. Olvassa be az összes fiókok (lásd alább) beolvasásakor.
+3. [YOUR_VIDEO_ID] – a videót (például "d4fa369abc") azonosítója. Videó feltöltése közben vagy videók keresése adott vissza.
 
-#### <a name="uploading-a-video-in-v1"></a>A V1 videó feltöltése:
+#### <a name="uploading-a-video-in-v1"></a>Videó kedvelésének jelzése a V1 feltöltése:
 
 ```
 https://videobreakdown.azure-api.net/Breakdowns/Api/Partner/Breakdowns?name=some_name&description=some_description&privacy=private&videoUrl=http://URL_TO_YOUR_VIDEO
 ```
 
-#### <a name="uploading-a-video-in-v2"></a>A V2 videó feltöltése:
+#### <a name="uploading-a-video-in-v2"></a>A v2-ben a videó feltöltése:
 
-1. Hozzáférés-token beszerzése a feltöltési kérelem:
+1. Hozzáférési jogkivonat beszerzése az feltöltési kérés:
 
-  Minden fiókot és a hozzáférési jogkivonatok vagy beolvasása:
+  Minden fiók és a hozzáférési tokenek vagy kaphat:
 
     ```
     https://api.videoindexer.ai/auth/[LOCATION]/Accounts?generateAccessTokens=true&allowEdit=true
     ```
 
-  Vagy a meghatározott fiók access token beszerzése:
+  Vagy a fiók hozzáférési jogkivonat beszerzése:
   
   ```
   https://api.videoindexer.ai/auth/[LOCATION]/Accounts/[YOUR_ACCOUNT_ID]/AccessToken?allowEdit=true
   ```
-2. Töltse fel a videót:
+2. Videó feltöltése:
 
   ```
   POST https://api.videoindexer.ai/[LOCATION]/Accounts/[YOUR_ACCOUNT_ID]/Videos?name=MySample&description=MySampleDescription&videoUrl=[URL_ENCODED_VIDEO_URL]&accessToken=eyJ0eXAiOiJ...
   ```
 
-#### <a name="getting-insights-in-v1"></a>A V1 nyerek betekintést az adatokba:
+#### <a name="getting-insights-in-v1"></a>Elemzések lekérése a V1-ben:
 
 ```
 https://videobreakdown.azure-api.net/Breakdowns/Api/Partner/Breakdowns/[VIDEO_ID]
 ```
   
-#### <a name="getting-insights-in-v2"></a>A V2 nyerek betekintést az adatokba:
+#### <a name="getting-insights-in-v2"></a>Elemzések lekérése a v2-ben:
 
-1. A fiók hozzáférési jogkivonatot használja, vagy egy videó szintű hozzáférési jogkivonat beszerzése:
+1. A fiók hozzáférési jogkivonatának használjon, vagy egy videó az Objektumszintű hozzáférési token beszerzése:
 
   ```
   https://api.videoindexer.ai/auth/[LOCATION]/Accounts/[YOUR_ACCOUNT_ID]/Videos/[VIDEO_ID]/AccessToken
@@ -125,17 +123,17 @@ https://videobreakdown.azure-api.net/Breakdowns/Api/Partner/Breakdowns/[VIDEO_ID
   https://api.videoindexer.ai/trial/[LOCATION]/[YOUR_ACCOUNT_ID]/Videos/[VIDEO_ID]/Index?accessToken=eyJ0eXA...
   ```
 
-#### <a name="getting-video-processing-state-in-v1"></a>A V1 videó feldolgozási állapot beolvasása:
+#### <a name="getting-video-processing-state-in-v1"></a>Videó feldolgozási állapota első V1-ben:
 
 ```
 https://videobreakdown.azure-api.net/Breakdowns/Api/Partner/Breakdowns/[VIDEO_ID]/State
 ```
   
-#### <a name="getting-video-processing-state-in-v2"></a>A V2 videó feldolgozási állapot beolvasása:
+#### <a name="getting-video-processing-state-in-v2"></a>Kezdeti lépéseket ismertető videó feldolgozási állapota a v2-ben:
 
-Az API 2-es feldolgozási állapotát az beszerzése videó Index API részeként adja vissza.
+Az API v2-ben a feldolgozási állapot az első videó Index API részeként adja vissza.
 
-1. A fiók hozzáférési jogkivonatot használja, vagy egy videó szintű hozzáférési jogkivonat beszerzése:
+1. A fiók hozzáférési jogkivonatának használjon, vagy egy videó az Objektumszintű hozzáférési token beszerzése:
 
   ```
   https://api.videoindexer.ai/trial/[LOCATION]/[YOUR_ACCOUNT_ID]/Videos/[VIDEO_ID]/Index?accessToken=eyJ0eXA...
@@ -149,5 +147,5 @@ Az API 2-es feldolgozási állapotát az beszerzése videó Index API részekén
 
 ## <a name="next-steps"></a>További lépések
 
-[Használja az Azure videó indexelőt API](video-indexer-use-apis.md)
+[Az Azure Video Indexer API használata](video-indexer-use-apis.md)
 

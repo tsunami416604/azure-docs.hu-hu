@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory entitások elnevezési szabályai |} Microsoft Docs
-description: Adat-előállító entitások elnevezési szabályainak ismerteti.
+title: Az Azure Data Factory-entitások elnevezési szabályai |} A Microsoft Docs
+description: Az entitások Data Factory elnevezési szabályait ismerteti.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: cca9befb65abed3b6d07a52aa286c43725577121
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: cfab1a82c7da0ad596c9989e5a9f3ed800c58e4a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051746"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389310"
 ---
-# <a name="azure-data-factory---naming-rules"></a>Az Azure Data Factory - elnevezési szabályok
-A következő táblázat elnevezési szabályoknak az adat-előállító összetevők.
+# <a name="azure-data-factory---naming-rules"></a>Az Azure Data Factory – elnevezési szabályok
+Az alábbi táblázat a Data Factory-összetevők elnevezési szabályait biztosít.
 
-| Name (Név) | Név egyedisége | Érvényességi ellenőrzéseket |
+| Name (Név) | Név egyedi-e | Érvényesség-ellenőrzések |
 |:--- |:--- |:--- |
-| Data Factory |Egyedi Microsoft Azure között. Nevek nem különböztetik meg, ez azt jelenti, hogy `MyDF` és `mydf` adat-előállító hivatkozik. |<ul><li>Minden adat-előállító pontosan egy Azure-előfizetés van kötve.</li><li>Objektumnevek betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és a kötőjel (-) karaktert tartalmazhat.</li><li>Minden kötőjel (-) karaktert legyen azonnal előtt, és betűvel vagy számmal követ. A tároló neve nem szerepelhetnek egymást követő kötőjeleket.</li><li>Neve 3 – 63 karakter hosszú lehet.</li></ul> |
-| Szolgáltatások/táblák/folyamatok csatolt |Egyedi az adat-előállítóban. Nevek nem különböztetik meg. |<ul><li>A táblanév maximális karakterszámot: 260.</li><li>Objektumnevek betű, szám vagy aláhúzásjel (_) kell kezdődnie.</li><li>Következő karakterek nem engedélyezettek: ".", "+","?", "/", "<", ">","*", "%", "&", ":","\\"</li><li>Kötőjelek ("-") nem engedélyezettek a társított szolgáltatások és adatkészleteket csak nevét.</li></ul>  |
-| Erőforráscsoport |Egyedi Microsoft Azure között. Nevek nem különböztetik meg. | További információk: [Azure elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). |
+| Data Factory |Egyedi Microsoft Azure-ban. Nevek és nagybetűk nincsenek megkülönböztetve, azaz `MyDF` és `mydf` tekintse meg az azonos adat-előállítóban. |<ul><li>Minden adat-előállító pontosan egy Azure-előfizetéssel van kötve.</li><li>Az objektum nevének betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és a kötőjel (-) karaktert tartalmazhat.</li><li>Minden kötőjel (-) karaktert kell előtt és egy betű vagy szám követ. Egymást követő kötőjelek használata nem engedélyezett a tároló nevében.</li><li>Neve 3 – 63 karakter hosszú lehet.</li></ul> |
+| Társított szolgáltatások/adatkészletek és folyamatok |Egyedi az adat-előállítóban. Nevek és nagybetűk nincsenek megkülönböztetve. |<ul><li>Objektum nevének betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie.</li><li>A következő karakterek nem engedélyezettek: ".", "+","?", "/", "<", ">","*", "%", "&", ":","\\"</li><li>Szaggatott vonal ("-") a társított szolgáltatásokat és az adatkészletek csak a nevek nem engedélyezettek.</li></ul>  |
+| Erőforráscsoport |Egyedi Microsoft Azure-ban. Nevek és nagybetűk nincsenek megkülönböztetve. | További információ: [Azure elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). |
 
 ## <a name="next-steps"></a>További lépések
-Megtudhatja, hogyan hozzon létre az adat-előállítók részletes utasításait követve [gyors üzembe helyezés: hozzon létre egy adat-előállító](quickstart-create-data-factory-powershell.md) cikk. 
+Ismerje meg, hogyan hozhat létre adat-előállítók részletes utasításait követve [a rövid útmutató: adat-előállító létrehozása](quickstart-create-data-factory-powershell.md) cikk. 

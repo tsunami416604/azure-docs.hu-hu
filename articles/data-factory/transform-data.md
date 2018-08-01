@@ -10,25 +10,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: afd1944006a08811075e8af8b1a641d00ee3c352
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e3aefc23cd0f4d8043232214591155aa893f4522
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112814"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390136"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Az Azure Data Factoryban az adatok átalakítása
 > [!div class="op_single_selector"]
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
-> * [Hadoop Streaming](transform-data-using-hadoop-streaming.md)
-> * [Spark](transform-data-using-spark.md)
+> * [HDInsight Streaming](transform-data-using-hadoop-streaming.md)
+> * [HDInsight Spark](transform-data-using-spark.md)
 > * [Machine Learning](transform-data-using-machine-learning.md) 
 > * [Tárolt eljárás](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
+> * [Databricks-jegyzetfüzet](transform-data-databricks-notebook.md)
+> * [Databricks Jar](transform-data-databricks-jar.md)
+> * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET egyéni](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Áttekintés
@@ -63,6 +66,18 @@ Használhatja az SQL Server tárolt eljárás tevékenység a Data Factory-folya
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-tevékenység
 Data Lake Analytics U-SQL-tevékenység egy U-SQL-szkriptet futtat egy Azure Data Lake Analytics-fürt. Lásd: [Data Analytics U-SQL-tevékenység](transform-data-using-data-lake-analytics.md) részleteivel. 
+
+## <a name="databricks-notebook-activity"></a>Databricks-jegyzetfüzetek tevékenységeit
+
+Az Azure Databricks-jegyzetfüzetek tevékenységeit a Data Factory-folyamatok Databricks-jegyzetfüzet fut az Azure Databricks-munkaterületen. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform. Lásd: [adatok átalakítása a Databricks-jegyzetfüzet futtatásával](transform-data-databricks-notebook.md).
+
+## <a name="databricks-jar-activity"></a>Databricks Jar-tevékenység
+
+Az Azure Databricks Jar tevékenység a Data Factory-folyamatok futtat egy Spark-Jar az Azure Databricks-fürt. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform. Lásd: [alakíthat át adatokat egy Jar tevékenység futtatja az Azure Databricksben](transform-data-databricks-jar.md).
+
+## <a name="databricks-python-activity"></a>Databricks Python-tevékenység
+
+A Data Factory-folyamatot az Azure Databricks Python tevékenység fut egy Python-fájlt az Azure Databricks-fürt. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform. Lásd: [adatok átalakítása az Azure Databricks egy Python-tevékenység futtatásával](transform-data-databricks-python.md).
 
 ## <a name="custom-activity"></a>Egyéni tevékenység
 Adatok átalakítása a Data Factory által nem támogatott módon van szüksége, ha egyéni tevékenységek létrehozása a saját adatok feldolgozási logikáját, és használja a tevékenységet a folyamat. Konfigurálhatja úgy az egyéni .NET-tevékenységet egy Azure Batch szolgáltatás vagy egy Azure HDInsight-fürt futtatásához. Lásd: [egyéni tevékenységek használata](transform-data-using-dotnet-custom-activity.md) részleteivel. 

@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ce8630f5718a849f460b372d9e15b03902ac2117
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 89562e6a2bfb977585cec1925a5f306c69c3d1e8
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159679"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390670"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Az Azure Active Directory reporting API használatának első lépései
 
@@ -43,8 +43,6 @@ A jelentéskészítő API eléréséhez, akkor is, ha azt tervezi, a parancsfáj
 3. Engedélyek megadása
 4. Konfigurációs beállítások összegyűjtése
 
-
- 
 Részletes útmutatásért lásd: a [az Azure Active Directory reporting API elérésének előfeltételeit](active-directory-reporting-api-prerequisites-azure-portal.md).
 
 ## <a name="apis-with-graph-explorer"></a>A Graph Explorer API-k
@@ -55,9 +53,9 @@ Használhatja a [MSGraph explorer](https://developer.microsoft.com/en-us/graph/g
 
 ![Felhasználói felület engedélyek módosítása](./media/active-directory-reporting-api-getting-started-azure-portal/modify-permissions.png)
 
-## <a name="recommendation"></a>Ajánlás 
+## <a name="use-certificates-to-access-the-azure-ad-reporting-api"></a>Tanúsítványok használata az Azure AD reporting API eléréséhez 
 
-Ha azt tervezi, felhasználói beavatkozás nélkül jelentési adatok lekérésével, érdemes az Azure AD Reporting API és tanúsítványok használatával.
+Fontolja meg az Azure AD Reporting API és tanúsítványok használatával, ha azt tervezi, hogy a jelentési adatok felhasználói beavatkozás nélkül.
 
 Részletes útmutatásért lásd: [adatok lekérése az Azure AD Reporting API és tanúsítványok használatával](active-directory-reporting-api-with-certificates.md).
 
@@ -67,17 +65,13 @@ Részletes útmutatásért lásd: [adatok lekérése az Azure AD Reporting API �
 Kérje le a jelentéskészítési API-k egy első benyomást:
    
    - [Az ellenőrzési API-példák használata](active-directory-reporting-api-audit-samples.md) 
- 
    - [A bejelentkezési tevékenységek jelentés API-példák használata](active-directory-reporting-api-sign-in-activity-samples.md)
 
 
-## <a name="customize"></a>Testreszabás  
+## <a name="next-steps"></a>További lépések
 
-Hozza létre a saját megoldását: 
-   
-   - [Használatával a naplózási API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-
-   - [A bejelentkezési tevékenységek jelentéshivatkozás API használatával](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
-
+ * [Naplózási referencia API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+ * [Bejelentkezési tevékenységek jelentésének API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+ * [Az Azure AD reporting API hibáinak elhárítása](active-directory-reporting-troubleshoot-graph-api.md)
 
 

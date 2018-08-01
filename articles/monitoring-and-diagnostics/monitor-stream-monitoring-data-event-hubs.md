@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/24/2018
+ms.date: 7/31/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: a43b70d2ce7a8205903fb877ea056dea88ac8bb5
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248096"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389609"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -106,13 +106,14 @@ Alkalmazásfigyelési adatokat igényel, hogy a kód kialakítva az SDK-t, ezér
 
 ## <a name="what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub"></a>Mire használhatom a figyelési adatok my eseményközpontnak küldött?
 
-A figyelési adatok útválasztást egy eseményközpontba, és az Azure Monitor lehetővé teszi könnyen integrálhatja a partneri SIEM és figyelési eszközöket. A legtöbb eszközök az eseményközpont kapcsolati karakterláncával és bizonyos engedélyeket adatokat olvasni az event hubs az Azure-előfizetés szükséges. A következő eszközök az Azure Monitor integrációja nem teljes listája:
+A figyelési adatok útválasztást egy eseményközpontba, és az Azure Monitor lehetővé teszi könnyen integrálhatja a partneri SIEM és figyelési eszközöket. A legtöbb eszközök az eseményközpont kapcsolati karakterláncával és bizonyos engedélyeket adatokat olvasni az event hubs az Azure-előfizetés szükséges. Íme az Azure Monitorral integrált eszközök nem kizárólagos listája:
 
-* **Az IBM QRadar** – a Microsoft Azure DSM-et és a Microsoft Azure Event Hub protokoll is letölthető [az IBM-támogatási webhely](http://www.ibm.com/support). Is [további információ az integráció itt az Azure-ral](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+* **Az IBM QRadar** – a Microsoft Azure DSM-et és a Microsoft Azure Event Hub protokoll is letölthető [az IBM-támogatási webhely](http://www.ibm.com/support). További információkat [az Azure-ral való integrációról itt talál](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
 * **Splunk** -Splunk konfigurációtól függően kétféleképpen:
     1. [Az Azure Monitor bővítmény Splunk](https://splunkbase.splunk.com/app/3534/) Splunkbase és a egy nyílt forráskódú projekt érhető el. [Dokumentáció az itt](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
     2. Ha kiegészítő szolgáltatást nem lehet telepíteni a Splunk-példány (például) Ha proxyt használ, vagy a Splunk-felhőben futó), ezeket az eseményeket a Splunk HTTP Eseménygyűjtő történő továbbítás [ezt az eseményközpontban lévő üzenetek által aktivált függvény](https://github.com/Microsoft/AzureFunctionforSplunkVS).
 * **SumoLogic** – egy adott eseményközpontból adatok felhasználásához SumoLogic beállításával kapcsolatos utasítások [itt érhető el](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
+* **Syslog-kiszolgáló** – Ha szeretne közvetlenül a syslog-kiszolgálók, az Azure Monitor-adatok streamelése megtekinthet [a github-adattár](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>További lépések
 * [A tárfiókhoz a tevékenységnapló archiválása](monitoring-archive-activity-log.md)

@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás hozzájárulási működése |} Microsoft Docs
-description: További tudnivalók megtekintéséhez, hogyan használható az Azure ad-val alkalmazások fejlesztése során az Azure AD hozzájárulási keretrendszer működése
+title: Alkalmazás jóváhagyásának működése |} A Microsoft Docs
+description: További információ megtekintéséhez, hogyan használhatja, ha az Azure AD-alkalmazások fejlesztéséhez használható az Azure ad-ben hozzájárulási keretrendszer működése
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,26 +11,26 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 1966840bb664439069814c94299d4937020a9669
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 91378f4816db773aebd038bd9f176596a4f2c316
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331684"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366927"
 ---
-# <a name="how-application-consent-works"></a>Hogyan alkalmazás hozzájárulás működik
+# <a name="how-application-consent-works"></a>Hogyan hozzájárul az alkalmazás a működését
 
-Ez a cikk célja segíteni többet megtudhat az Azure AD hozzájárulási keretrendszer működése így hatékonyabban alkalmazásokat fejleszthet.
+Ez a cikk azt meg többet arról, hogyan működik az Azure ad-ben hozzájárulási keretrendszer, így hatékonyabban fejleszthet alkalmazásokat.
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
-- Egy általános megértése beolvasása [hogyan hozzájárulási lehetővé teszi, hogy egy alkalmazás erőforrásokhoz való hozzáférés szabályozása érdekében erőforrás tulajdonosa](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent).
-- Részletes áttekintést kaphat [hogyan valósítja meg az Azure AD hozzájárulási keretrendszer az hozzájárulási](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework).
-- További mélység, további [egy több-bérlős alkalmazás használatát a hozzájárulási keretrendszer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) "user" és "rendszergazda" hozzájárulási támogató több végrehajtásához advanced többrétegű alkalmazást minták.
-- További mélység, további [hogyan hozzájárulási támogatott az OAuth 2.0 protokoll rétegben a hitelesítésikód-támogatás folyamata során.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+- Első általános ismeretekkel [miként teszi lehetővé a hozzájárulási az erőforrás tulajdonosa egy alkalmazás erőforrásokhoz való hozzáférés szabályozásához](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent).
+- Részletes áttekintést [hogyan valósítja meg az Azure ad-ben hozzájárulási keretrendszer az hozzájárulási](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework).
+- Ismerje meg részletesebben olvashat róluk, a [több-bérlős alkalmazás használatát a hozzájárulási keretrendszer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) megvalósítása a "user" és "rendszergazda" engedélyt, támogató további speciális többrétegű alkalmazásminták.
+- Ismerje meg részletesebben olvashat róluk, a [hogyan jóváhagyás támogatott az OAuth 2.0 protokoll rétegben az engedélyezési kód engedélyezési folyamata során.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
 
 ## <a name="next-steps"></a>További lépések
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure ad stackoverflow-n](http://stackoverflow.com/questions/tagged/azure-active-directory)

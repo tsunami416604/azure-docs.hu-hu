@@ -1,6 +1,6 @@
 ---
-title: A probléma jelszó egyszeri bejelentkezés az Azure AD-katalógusában alkalmazás konfigurálása |} Microsoft Docs
-description: A gyakori problémák személyek arcfelismerési áttekinteni jelszó egyszeri bejelentkezés az Azure AD Application Gallery már szereplő alkalmazások konfigurálása
+title: Jelszó egyszeri bejelentkezés konfigurálása az Azure AD katalógusából származó alkalmazás probléma |} A Microsoft Docs
+description: Megismerheti a gyakori problémák személyek face jelszó egyszeri bejelentkezéshez, amely már szerepel az Azure AD Alkalmazásgyűjteményben alkalmazások konfigurálása során
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,102 +11,102 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 37c2a50a3aca281596a06e0d666edff05347f660
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dc362c89f7bc83c4848c0e857173db1ea2639bc4
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331155"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362840"
 ---
-# <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>A probléma jelszó egyszeri bejelentkezés az Azure AD-katalógusában alkalmazás konfigurálása
+# <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jelszó egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazás konfigurálása során
 
-Ez a cikk segít megérteni a gyakori problémák személyek oldallal, konfigurálásakor **jelszó egyszeri bejelentkezés** Azure AD-katalógusában alkalmazással.
+Ez a cikk segít megérteni a gyakori problémák személyek face, konfigurálásakor **jelszó egyszeri bejelentkezés** együtt az Azure AD katalógusából származó alkalmazásba.
 
-## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Kitölti a hitelesítő adatokat, de a bővítmény elküldeni őket
+## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Hitelesítő adatok ki vannak töltve, de a bővítmény nem elküldeni őket
 
-Ez a probléma általában akkor fordul elő, ha az alkalmazás gyártójának a bejelentkezési oldal nemrég mező felvétele a megváltozott, az észlelése a felhasználónév és jelszó megadására használt azonosító módosította, vagy módosítani, hogyan a bejelentkezés tapasztalhat az alkalmazásokban működik. Szerencsére sok esetben Microsoft együttműködhet alkalmazásszállítók gyorsan a problémák megoldásához.
+Ez a probléma általában akkor fordul elő, ha az alkalmazás gyártójától a bejelentkezési oldalon adjon hozzá egy mezőt a közelmúltban módosította, a felhasználónév és jelszó mezők észleléséhez használt azonosító megváltozott, vagy hogyan a bejelentkezés során a az alkalmazás működését módosító. Szerencsére a sok esetben a Microsoft együttműködhet tesztjéről alkalmazásszállítók problémák gyors megoldásához.
 
-Míg Microsoft technológiák Integrációk törés automatikus észleléséhez, hogy előfordulhat, hogy nem lehet a problémák azonnal található, vagy a problémák megoldásához egy kis idő múlva. Abban az esetben egy ezek integrációja nem működik megfelelően, ha nyissa meg a támogatási esetet, a lehető leggyorsabban lehet meghatározni.
+Míg a Microsoft technológiák automatikusan észlelni, ha Integrációk felosztása, nem feltétlenül azonnal találni a problémákat, vagy a problémák megoldásához hosszabb időt is igénybe. Abban az esetben egyet ezek Integrációk nem működik megfelelően, ha nyissa meg egy támogatási esetet, a lehető leggyorsabban lehet meghatározni.
 
-**Ha az alkalmazás gyártójával, szerepelnek** küldje el a módon, a Microsoft is dolgozhat velük a natív módon integrálja az alkalmazásokban az Azure Active Directoryban. A forgalmazójával küldhet a [listázása az alkalmazást az Azure Active Directory alkalmazáskatalógusában](./develop/active-directory-app-gallery-listing.md) azokat elindult.
+**Ha Ön az alkalmazás gyártójától, szerepelnek** küldjön el nekünk, a Microsoft is dolgozhat velük, natív módon integrálhatja alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](./develop/active-directory-app-gallery-listing.md) , azok elindult.
 
-## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Hitelesítő adatok kitöltötte és elküldve, de az oldal azt jelzi, hogy a hitelesítő adatok helytelenek
+## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Hitelesítő adatok kitölti a rendszer, és elküldve, de az oldal azt jelzi, hogy a hitelesítő adatok helytelenek
 
 A probléma megoldásához először próbálkozzon a következőkkel:
 
--   A felhasználó először próbál **jelentkezzen be az alkalmazás webhelyre közvetlenül** számukra tárolt hitelesítő adatokkal.
+-   A felhasználó először próbál **közvetlenül bejelentkezni az alkalmazás webhely** számukra tárolt hitelesítő adatokkal.
 
-  * Ha bejelentkezési működik, akkor meg kell a felhasználót, kattintson a **hitelesítő adatainak frissítése** gombra a **alkalmazás csempe** a a **alkalmazások** szakasza a [alkalmazás-hozzáférés Panel](https://myapps.microsoft.com/) frissíteni a legutóbbi ismert működő felhasználónevet és jelszót.
+  * Bejelentkezési működik, majd van-e a felhasználót, kattintson a **hitelesítő adatainak frissítése** gombot a **alkalmazás csempe** a a **alkalmazások** szakaszában a [alkalmazás-hozzáférés Panel](https://myapps.microsoft.com/) frissíteni őket a legutóbbi ismert működő felhasználónevet és jelszót.
 
-   * Ha Ön vagy egy másik rendszergazda hozzárendelve a felhasználó hitelesítő adatainak, található a felhasználó vagy csoport alkalmazás hozzárendelése navigáljon a **felhasználók és csoportok** az alkalmazás, a hozzárendelés ki, és kattintson a lapon **Frissítse a hitelesítő adatok** gombra.
+   * Ha Ön vagy egy másik rendszergazda rendelve Ez a felhasználó hitelesítő adatait, keresse meg a felhasználó vagy csoport az alkalmazás-hozzárendelés lépve a **felhasználók és csoportok** az alkalmazást, a hozzárendelés ki, és kattintson a lapján **Hitelesítő adatok frissítése** gombra.
 
--   Ha a felhasználó a saját hitelesítő adataikat, kérheti a felhasználótól **ellenőrizze, hogy ne feledje, hogy a jelszavát nem járt le az alkalmazás** , és ha igen, **lejárt jelszófrissítési** az alkalmazásnak a bejelentkezéssel közvetlenül.
+-   Ha a felhasználó a saját hitelesítő adatait rendeli, a felhasználó rendelkezik **győződjön meg arról, hogy a jelszavát nem járt le, az alkalmazás ellenőrzési** , és ha igen, **lejárt jelszófrissítési** jelentkezzen be az alkalmazás közvetlenül.
 
-   * A jelszó frissítése az alkalmazásban, után kérjen a felhasználótól az a **hitelesítő adatainak frissítése** gombra a **alkalmazás csempe** a a **alkalmazások** szakasza a [Alkalmazás hozzáférési Panel](https://myapps.microsoft.com/) frissíteni a legutóbbi ismert működő felhasználónevet és jelszót.
+   * A jelszó frissítése az alkalmazásban, után kérelem a felhasználó válassza az **hitelesítő adatainak frissítése** gombot a **alkalmazás csempe** a a **alkalmazások** szakaszában a [Alkalmazás-hozzáférési Panel](https://myapps.microsoft.com/) frissíteni őket a legutóbbi ismert működő felhasználónevet és jelszót.
 
-   * Ha Ön vagy egy másik rendszergazda hozzárendelve a felhasználó hitelesítő adatainak, található a felhasználó vagy csoport alkalmazás hozzárendelése navigáljon a **felhasználók és csoportok** az alkalmazás, a hozzárendelés ki, és kattintson a lapon **Frissítse a hitelesítő adatok** gombra.
+   * Ha Ön vagy egy másik rendszergazda rendelve Ez a felhasználó hitelesítő adatait, keresse meg a felhasználó vagy csoport az alkalmazás-hozzárendelés lépve a **felhasználók és csoportok** az alkalmazást, a hozzárendelés ki, és kattintson a lapján **Hitelesítő adatok frissítése** gombra.
 
--   A felhasználó a hozzáférési panel bővítmény frissítése az alábbi lépéseket követve a [a hozzáférési Panel bővítmény telepítése](#how-to-install-the-access-panel-browser-extension) szakasz.
+-   Frissítse a hozzáférési panel böngészőbővítményének használatánál az alábbi lépéseket követve a felhasználó rendelkezik a [a hozzáférési Panel webböngésző-bővítmény telepítése](#how-to-install-the-access-panel-browser-extension) szakaszban.
 
--   Győződjön meg arról, hogy a hozzáférési panel bővítmény fut, és a felhasználó böngészőben engedélyezve-e.
+-   Győződjön meg arról, hogy a hozzáférési panel böngészőbővítményének használatánál fut, és engedélyezve van a felhasználó böngészőjében.
 
--   Győződjön meg arról, hogy a felhasználók nem próbál bejelentkezni az alkalmazás a hozzáférési panelen igényelheti közben a **incognito, inPrivate vagy privát mód**. A hozzáférési panel bővítmény e mód nem támogatott.
+-   Győződjön meg arról, hogy a felhasználók nem próbál bejelentkezni az alkalmazásba a hozzáférési panelen, miközben a **inkognitó, inPrivate vagy privát módban**. A hozzáférési panel bővítmény ezek módban nem támogatott.
 
-Abban az esetben, ha az előző javaslatok nem működnek, annak oka lehet az eset, hogy olyan módosítás történt tartozó ideiglenesen az alkalmazások integrálása az Azure AD alkalmazás oldalán. Például ez akkor fordulhat elő, amikor az alkalmazás gyártójának vezet be a lapon, amely manuális vs másképpen viselkedik parancsfájl automatikus bemeneti, aminek következtében automatikus integrációs, például a saját, hibájához. Szerencsére sok esetben Microsoft együttműködhet alkalmazásszállítók gyorsan a problémák megoldásához.
+Abban az esetben, ha a fenti javaslatok nem működnek, annak oka az lehet az esetben, a módosítás történt, amely rendelkezik ideiglenesen működésképtelenné az alkalmazás-integráció az Azure AD-alkalmazás oldalán. Például ez akkor fordulhat elő, amikor az alkalmazás gyártójától vezet be egy parancsfájlt, amely manuális vs másképpen viselkedik oldalon automatikus bemeneti, milyen okok automatikus integráció, például a saját, kezdetét. Szerencsére a sok esetben a Microsoft együttműködhet tesztjéről alkalmazásszállítók problémák gyors megoldásához.
 
-Míg a Microsoft automatikus észlelés, ha alkalmazás Integrációk törés technológiákat, nem feltétlenül azonnal találni a problémákat, vagy a problémák megoldásához időbe telhet. Integrációs nem működik megfelelően, ha nyithatja meg a legyen a lehető leggyorsabban rögzített támogatási esetet. 
+Míg a Microsoft technológiák automatikusan észlelni, ha az alkalmazás Integrációk felosztása, nem feltétlenül azonnal találni a problémákat, vagy a problémák elhárításához időbe telhet. -Integrációja nem működik megfelelően, ha megnyithat egy támogatási esetet, minél hamarabb hiba javításához. 
 
-Továbbá a **szerepelnek a az alkalmazás gyártójával, ha** **küldje el a módon** , azt is elérheti őket a natív módon integrálja az alkalmazásokban az Azure Active Directoryban. A forgalmazójával küldhet a [listázása az alkalmazást az Azure Active Directory alkalmazáskatalógusában](./develop/active-directory-app-gallery-listing.md) azokat elindult.
+Emellett **szerepelnek a az alkalmazás gyártójával, ha** **küldjön el nekünk** így használhatnánk azokat a natív módon integrálja az alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](./develop/active-directory-app-gallery-listing.md) , azok elindult.
 
-## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>A bővítmény a Chrome és a Firefox, de az Internet Explorer nem működik
+## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>A bővítmény működik, a Chrome és a Firefox, de nem az Internet Explorer
 
-A probléma két fő oka is van:
+Ez a probléma két fő oka is van:
 
--   Attól függően, hogy a biztonsági beállítások engedélyezve van az Internet Explorerben, ha a webhely nem része egy **megbízható zóna**, egyes esetekben a parancsfájl letiltja a végrehajtása az alkalmazáshoz.
+-   Attól függően, a biztonsági beállítások engedélyezve van az Internet Explorerben, ha a webhely nem része egy **megbízható zóna**, egyes esetekben a parancsfájl tudják az alkalmazás végrehajtása.
 
-  *  A probléma megoldásához, kérje meg a felhasználót, hogy **az alkalmazás-webhely hozzáadása** való a **megbízható helyek** listán belül a **Internet Explorer biztonsági beállításai**. A felhasználók számára is elküldheti a [a webhely felvétele a megbízható helyek listájához](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) cikk részletes utasításokat.
+  *  A probléma megoldásához kérje meg a felhasználót, hogy **adja hozzá az alkalmazás webhelyének** , a **megbízható helyek** belül listában azok **Internet Explorer biztonsági beállításai**. A felhasználók számára is elküldheti a [hely hozzáadása a megbízható helyek listájához](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) cikkben részletes útmutatást.
 
--   Ritka esetekben előfordulhat, hogy az Internet Explorer biztonsági ellenőrzés néha okozhat a lapon, mint a parancsfájl végrehajtása lassan töltődik be.
+-   Ritka esetekben az Internet Explorer biztonsági ellenőrzés céljából néha okozhat a lap a parancsfájlja lassabban.
 
-   * Sajnos ez a helyzet eltérőek lehetnek attól függően, hogy a böngésző verziója, a számítógép sebességétől, vagy a meglátogatott webhely. Ebben az esetben javasoljuk, hogy kijavíthassuk a integráció az adott alkalmazás támogatási szolgálatához.
+   * Sajnos ez a helyzet eltérőek lehetnek attól függően, a böngésző verziója, a számítógép sebessége vagy a meglátogatott webhely. Ebben az esetben javasoljuk, hogy kapcsolatba lép a támogatással, hogy kijavíthassuk az integrációt, az adott alkalmazás.
 
-Továbbá a **szerepelnek a az alkalmazás gyártójával, ha** **küldje el a módon** , azt is elérheti őket a natív módon integrálja az alkalmazásokban az Azure Active Directoryban. A forgalmazójával küldhet a [listázása az alkalmazást az Azure Active Directory alkalmazáskatalógusában](./develop/active-directory-app-gallery-listing.md) azokat elindult.
+Emellett **szerepelnek a az alkalmazás gyártójával, ha** **küldjön el nekünk** így használhatnánk azokat a natív módon integrálja az alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](./develop/active-directory-app-gallery-listing.md) , azok elindult.
 
-## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Ha az alkalmazás bejelentkezési lapján mostanában megváltozott, vagy egy további mező szükséges ellenőrzése
+## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Ellenőrizze, hogy az alkalmazás bejelentkezési lapján nemrég megváltozott vagy egy további mező szükséges
 
-Ha az alkalmazás bejelentkezési oldalt a jelentősen megváltozott, néha ennek hatására a integrációja megszüntetése. Példa erre akkor, ha az alkalmazás gyártójának ad hozzá egy bejelentkezési mező, captcha vagy a multi-factor authentication tapasztalataikat. Szerencsére sok esetben Microsoft együttműködhet alkalmazásszállítók gyorsan a problémák megoldásához.
+Ha az alkalmazás bejelentkezési lapján a jelentősen megváltozott, néha ennek hatására az integrációkat érvényteleníteni. Példa erre van, ha az alkalmazás szállítójához hozzáadja a bejelentkezési mező, captcha vagy a multi-factor authentication személyre. Szerencsére a sok esetben a Microsoft együttműködhet tesztjéről alkalmazásszállítók problémák gyors megoldásához.
 
-Míg a Microsoft automatikus észlelés, ha alkalmazás Integrációk törés technológiákat, nem feltétlenül azonnal találni a problémákat, vagy a problémák megoldásához időbe telhet. Integrációs nem működik megfelelően, ha nyithatja meg a legyen a lehető leggyorsabban rögzített támogatási esetet. 
+Míg a Microsoft technológiák automatikusan észlelni, ha az alkalmazás Integrációk felosztása, nem feltétlenül azonnal találni a problémákat, vagy a problémák elhárításához időbe telhet. -Integrációja nem működik megfelelően, ha megnyithat egy támogatási esetet, minél hamarabb hiba javításához. 
 
-Továbbá a **szerepelnek a az alkalmazás gyártójával, ha** **küldje el a módon** , azt is elérheti őket a natív módon integrálja az alkalmazásokban az Azure Active Directoryban. A forgalmazójával küldhet a [listázása az alkalmazást az Azure Active Directory alkalmazáskatalógusában](./develop/active-directory-app-gallery-listing.md) azokat elindult.
+Emellett **szerepelnek a az alkalmazás gyártójával, ha** **küldjön el nekünk** így használhatnánk azokat a natív módon integrálja az alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](./develop/active-directory-app-gallery-listing.md) , azok elindult.
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>A hozzáférési Panel bővítmény telepítése
+## <a name="how-to-install-the-access-panel-browser-extension"></a>A hozzáférési Panel webböngésző-bővítmény telepítése
 
-A hozzáférési Panel bővítmény telepítéséhez kövesse az alábbi lépéseket:
+A hozzáférési Panel webböngésző-bővítmény telepítéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [hozzáférési Panel](https://myapps.microsoft.com) valamelyik támogatott böngészők és való bejelentkezést egy **felhasználói** az Azure AD-ben.
+1.  Nyissa meg a [hozzáférési Panel](https://myapps.microsoft.com) az egyik támogatott böngészők és való bejelentkezést egy **felhasználói** az Azure AD-ben.
 
 2.  Kattintson egy **jelszó-SSO alkalmazás** a hozzáférési panelen.
 
-3.  Válassza ki a szoftver telepítéséhez megkérdezi **telepítés**.
+3.  Válassza ki a rendszer kéri a szoftver telepítéséhez, **telepítés most**.
 
-4.  A böngésző alapján, hogy van irányítva a letöltési hivatkozás. **Adja hozzá** az bővítményt, hogy a böngészőben.
+4.  A böngészőtől függően a rendszer átirányítja a letöltési hivatkozás. **Adjon hozzá** a bővítményt a böngészőben.
 
-5.  Ha a böngésző, válassza ki vagy **engedélyezése** vagy **engedélyezése** a bővítményt.
+5.  Ha a böngésző kéri, válassza ki vagy **engedélyezése** vagy **engedélyezése** a bővítményt.
 
-6.  Korábban telepítve, **indítsa újra a** a böngésző-munkamenetet.
+6.  Miután telepítette, **indítsa újra a** a böngésző-munkamenetet.
 
-7.  Jelentkezzen be a hozzáférési panelre, és tekintse meg, ha **indítása** a jelszó-egyszeri bejelentkezés alkalmazásokhoz
+7.  Jelentkezzen be a hozzáférési panelre, és tekintse meg, ha a **indítsa el a** a jelszó-SSO-alkalmazások
 
-Az alábbi közvetlen hivatkozások közül a Chrome és Firefox is letöltheti a bővítmény:
+Az alábbi közvetlen hivatkozások a Chrome és a Firefox is letöltheti a bővítményt:
 
--   [Chrome hozzáférési Panel bővítmény](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Chrome-hozzáférési Panel bővítmény](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 -   [A Firefox hozzáférési Panel bővítmény](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
 ## <a name="next-steps"></a>További lépések
-[Adja meg az egyszeri bejelentkezés az alkalmazásokba a Proxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+[Az alkalmazásproxy egyszeri bejelentkezést az alkalmazásokba biztosít](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

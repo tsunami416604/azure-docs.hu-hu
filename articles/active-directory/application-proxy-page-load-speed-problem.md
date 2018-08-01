@@ -1,6 +1,6 @@
 ---
-title: Az alkalmazásproxy alkalmazás betöltése túl sokáig tart |} Microsoft Docs
-description: Elhárítása lap betöltési teljesítmény az Azure AD-alkalmazásproxy
+title: Egy alkalmazásproxy-alkalmazás betöltése túl sokáig tart |} A Microsoft Docs
+description: Oldal betöltési teljesítmény az Azure AD-alkalmazásproxy problémáinak hibaelhárítása
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,32 +11,32 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 26acc620184b51719a2ee55b75bd01966d225b8e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c78abf05fb28b0370e17107deccd46259df47c47
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330927"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367062"
 ---
-# <a name="an-application-proxy-application-takes-too-long-to-load"></a>Az alkalmazásproxy alkalmazás betöltése túl sokáig tart
+# <a name="an-application-proxy-application-takes-too-long-to-load"></a>Egy alkalmazásproxy-alkalmazás betöltése túl sokáig tart
 
-Ez a cikk segítségével megismerheti, hogy miért érdemes az Azure AD alkalmazásproxy alkalmazás betöltése sok időre lehet szükség. Azt is bemutatja, mi mindent a probléma megoldásához.
+Ez a cikk segít megismerni, miért az Azure AD-alkalmazásproxy alkalmazás betöltése hosszú időt vehet igénybe. Azt is bemutatja, mi mindent a probléma megoldásához.
 
 ## <a name="overview"></a>Áttekintés
-Bár az alkalmazások dolgozik, akkor tapasztalhat, a hosszú várakozási ideje. Előfordulhat, hogy sebesség növelése érdekében, a hálózati topológia beállításokból állnak. Különböző topológiák értékelése, tekintse meg a [hálózati szempontok dokumentum](manage-apps/application-proxy-network-topology.md).
+Bár az alkalmazások dolgozik, akkor a hosszú várakozási ideje tapasztalhatnak. Előfordulhat, hogy hálózati topológia honlap, amely növeli a sebességet teheti. Egy másik topológiák próbaidőszakára, tekintse meg a [hálózati megfontolások dokumentum](manage-apps/application-proxy-network-topology.md).
 
-Hálózati topológia mellett jelenleg nincs további javaslatok teljesítményhangolás. Az alkalmazásproxy-szolgáltatás bővíti, akkor előfordulhat, hogy térjen egy adatközpont, amely fizikailag közelebb van. A szorosabb közelségi kapcsolat késési segíthet. Azure-adatközpont listájáért lásd: a [késés tesztoldalt](http://www.azurespeed.com/Azure/Latency). 
+Hálózati topológia mellett jelenleg nincs további javaslatok a teljesítmény finomhangolásának. Az alkalmazásproxy szolgáltatás bővül, akkor előfordulhat, hogy jár egy adatközpont, amely fizikailag közelebb van. A közelebb közelében segíthetnek, a késés. Azure-beli adatközpontok listájáért tekintse meg a [késés tesztlap](http://www.azurespeed.com/Azure/Latency). 
 
-Az alkalmazásproxy-szolgáltatás a adatközpontjaiban található az a [összekötő portok vizsgálati eszköz](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
+Az alkalmazásproxy-szolgáltatás és az adatközpontok között található a [összekötő portok vizsgálati eszköz](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
 
-## <a name="feedback-on-application-proxy-data-center-locations"></a>Alkalmazásproxy data center helyeken visszajelzés 
-Előfordulhat, hogy Azure-adatközpont, amely nem még alkalmazásproxy tartalmaz, de meg a nagy késleltetésű fokozása vezetne. Az Adatközpont-helyre való küldés aadapfeedback@microsoft.com. A Microsoft a visszajelzést bővítése tervek használ.
+## <a name="feedback-on-application-proxy-data-center-locations"></a>Visszajelzés az alkalmazásproxy-adatok központ helye 
+Előfordulhat, hogy Azure-beli adatközpontok, nem még alkalmazásproxy tartalmazzák, de az Ön számára egy nagyszerű késés fokozása vezetne. Az Adatközpont-helyre való küldés aadapfeedback@microsoft.com. A Microsoft visszajelzést használja a nyelvi csomagok.
 
-Microsoft dolgozik a további lehetőségeket a késés javítására. Ezek a fejlesztések elérhetők, amint a dokumentáció fog frissülni.
+A Microsoft dolgozik további képességeket késés javítása érdekében. Ezek a fejlesztések elérhetők, amint az a dokumentáció frissülni fog.
 
 ## <a name="next-steps"></a>További lépések
-[A meglévő helyszíni proxykiszolgálókkal működik](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
+[Meglévő helyszíni proxykiszolgálók használata](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)

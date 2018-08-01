@@ -1,6 +1,6 @@
 ---
-title: A gyűjtemény alkalmazáshoz konfigurált összevont bejelentkezés problémák egyszeri bejelentkezés |} Microsoft Docs
-description: Útmutatás az egyes hibaüzenetek, amikor bejelentkezik egy alkalmazás már konfigurálta az SAML-alapú összevont egyszeri bejelentkezés az Azure ad szolgáltatással
+title: Egy konfigurált összevont katalógusból származó alkalmazásra való bejelentkezésnél egyszeri bejelentkezés |} A Microsoft Docs
+description: Útmutató a hibák egy alkalmazásba való bejelentkezéskor a konfigurált SAML-alapú összevont egyszeri bejelentkezés az Azure ad-vel
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,260 +11,260 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: f8c17b8c14b63007c3b623e5ffb60c0a2567cb72
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b5380a361244257d02cb0db56cf87abc8d655bd3
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333649"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363593"
 ---
-# <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Bejelentkezés egy összevont egyszeri bejelentkezés beállítása gyűjtemény alkalmazás problémák
+# <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Egy összevont egyszeri bejelentkezésre beállított katalógusából származó alkalmazásba történő bejelentkezésnél
 
-A hiba elhárításához ellenőrizze az alkalmazás konfigurációját az Azure AD a következőképpen kell:
+A probléma elhárításához ellenőrizze az alkalmazás konfigurációját az Azure AD a következőket kell:
 
--   Az Azure AD-gyűjtemény alkalmazás a konfigurációs lépéseket követte.
+-   Az Azure AD katalógusából származó alkalmazásba a konfigurációs lépéseket követte.
 
--   A azonosító és az aad-ben megadott válasz URL-cím egyezik meg azokat az alkalmazás a várt értékek
+-   A azonosítója és a válasz URL-cím, az aad-ben konfigurált egyezik, az alkalmazás a várt értékek
 
--   Az alkalmazáshoz hozzárendelt felhasználók
+-   Az alkalmazás hozzárendelt felhasználók
 
-## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a könyvtárban
+## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a címtárban
 
-*Hiba AADSTS70001: Alkalmazás-azonosítójú "https://contoso.com" nem található a könyvtárban*.
+*Hiba AADSTS70001: Alkalmazás-azonosítójú "https://contoso.com" nem található a címtárban*.
 
 **Lehetséges ok**
 
-A kibocsátó attribútum küldése az alkalmazásból az Azure AD-t a SAML-kérelmet nem felel meg az alkalmazás az Azure AD konfigurált azonosító értéket.
+Attribútum, az alkalmazás Azure ad-ben az SAML-kérelmet küld a kiállító nem felel meg a az alkalmazás Azure ad-ben konfigurált azonosító értékét.
 
-**megoldás**
+**Felbontás**
 
-Győződjön meg arról, hogy a kibocsátó attribútumot a SAML-kérelmet azt van megfelelő az azonosító az Azure ad-ben konfigurált értéket:
+Ellenőrizze, hogy a kibocsátó attribútumot az SAML-kérelmet, a megfelelő az azonosító az Azure ad-ben konfigurált értéket:
 
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
+  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki az egyszeri bejelentkezés konfigurálni kívánt alkalmazást
+6.  Válassza ki az alkalmazást szeretné az egyszeri bejelentkezés konfigurálása
 
-7.  Ha az alkalmazás betölt, kattintson a **egyszeri bejelentkezés** az alkalmazás bal oldali navigációs menüjében.
+7.  Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Ugrás a **tartomány és az URL-címek** szakasz. Győződjön meg arról, hogy az azonosító szövegmező értékét a értéket az azonosító a jelennek meg a hiba a megfelelő-e.
+8.  Lépjen a **tartomány és URL-címek** szakaszban. Győződjön meg arról, hogy az azonosító szövegbeviteli mező értékét a értéket az azonosító az a hiba jelenik meg a megfelelő-e.
 
-Miután frissítette az azonosító értéket az Azure ad-ben, és azt az értéket küld van megfelelő az alkalmazásnak a SAML-kérelmet, jelentkezhet be az alkalmazásba kell lennie.
+Miután frissítette az Azure ad-ben az azonosító értékét, és azt van megfelelő az érték küld az alkalmazásnak az SAML-kérelmet, jelentkezzen be az alkalmazást, képesnek kell lennie.
 
-## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg az alkalmazáshoz beállított válasz-címeket.
+## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel.
 
 *AADSTS50011. hiba: A címet "https://contoso.com" nem felel meg a válasz címek konfigurálva az alkalmazáshoz*
 
 **Lehetséges ok**
 
-A SAML-kérelmet AssertionConsumerServiceURL értéke nem egyezik, a válasz URL-címével vagy a minta az Azure ad-ben konfigurált. A SAML-kérelmet AssertionConsumerServiceURL érték az URL-címet, a hibaüzenet látható.
+Az SAML-kérelmet AssertionConsumerServiceURL értéke nem egyezik, a válasz URL-cím értékét vagy az Azure ad-ben konfigurált minta. Az SAML-kérelmet AssertionConsumerServiceURL érték jelenik meg a hiba az URL-CÍMÉT.
 
-**megoldás**
+**Felbontás**
 
-Győződjön meg arról, hogy a SAML-kérelmet, akkor a válasz URL-cím van megfelelő AssertionConsumerServiceURL értékét az Azure ad-ben beállított értéket.
+Ellenőrizze, hogy az SAML-kérelmet, a válasz URL-cím a megfelelő AssertionConsumerServiceURL értékét az Azure ad-ben konfigurált értéket.
 
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
-
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
-
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
-
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
-
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
-
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
-
-6.  Válassza ki az egyszeri bejelentkezés konfigurálni kívánt alkalmazást
-
-7.  Ha az alkalmazás betölt, kattintson a **egyszeri bejelentkezés** az alkalmazás bal oldali navigációs menüjében.
-
-8.  Ugrás a **tartomány és az URL-címek** szakasz. Győződjön meg arról, vagy frissítse az értéket, hogy az egyezzen a SAML-kérelmet a AssertionConsumerServiceURL értékkel válasz URL-CÍMEN szövegmezőjének.  
-    * Ha a válasz URL-cím beviteli mező nem látható, válassza ki a **megjelenítése speciális URL-beállításainak** jelölőnégyzetet.
-
-Miután frissítette az válasz URL-cím az Azure ad-ben, és azt az értéket küld van megfelelő az alkalmazásnak a SAML-kérelmet, jelentkezhet be az alkalmazásba kell lennie.
-
-## <a name="user-not-assigned-a-role"></a>Nem hozzárendelt felhasználó
-
-*AADSTS50105. hiba: A bejelentkezett felhasználó nevében "brian@contoso.com" nincs hozzárendelve az alkalmazás szerepkör*.
-
-**Lehetséges ok**
-
-A felhasználó nem rendelkezik az Azure AD-alkalmazás hozzáférését.
-
-**megoldás**
-
-Hozzárendelése egy vagy több felhasználó alkalmazás közvetlenül, kövesse az alábbi lépéseket:
-
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
+  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki szeretné osztani a felhasználót, hogy a listában az alkalmazást.
+6.  Válassza ki az alkalmazást szeretné az egyszeri bejelentkezés konfigurálása
 
-7.  Ha az alkalmazás betölt, kattintson **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
+7.  Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Kattintson a **Hozzáadás** gombra kattint, a a **felhasználók és csoportok** nyissa meg a listában a **hozzáadása hozzárendelés** ablaktáblán.
+8.  Lépjen a **tartomány és URL-címek** szakaszban. Győződjön meg arról, vagy frissítse az értéket a válasz URL-cím szövegmezőbe az SAML-kérelmet AssertionConsumerServiceURL értékének megfelelően.  
+    * Ha nem látja a válasz URL-címe szövegmezőbe, válassza ki a **speciális URL-beállítások megjelenítése** jelölőnégyzetet.
 
-9.  Kattintson a **felhasználók és csoportok** a választó a **hozzáadása hozzárendelés** ablaktáblán.
+Miután frissítése az Azure ad-ben a válasz URL-Címének értékét, és azt van megfelelő az érték küld az alkalmazásnak az SAML-kérelmet, jelentkezzen be az alkalmazást, képesnek kell lennie.
 
-10. Írja be a **teljes név** vagy **e-mail cím** érdekli hozzárendelése a felhasználó a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
+## <a name="user-not-assigned-a-role"></a>Felhasználói szerepkör nincs hozzárendelve
 
-11. Vigye a **felhasználói** a listában, hogy láthatóvá váljon a **jelölőnégyzet**. A felhasználói profil fénykép vagy adja hozzá a felhasználót emblémát jelölőnégyzetét, kattintson a **kijelölt** listája.
-
-12. **Választható lehetőség:** Ha azt szeretné, hogy **egynél több felhasználó hozzáadása**, egy másik típus **teljes név** vagy **e-mail cím** azokat a **Keresés név vagy e-mail cím** mező, és a jelölőnégyzet bejelölésével adja hozzá a felhasználót, hogy a **kijelölt** listája.
-
-13. Ha elkészült, válassza a felhasználók, kattintson a **válasszon** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazáshoz.
-
-14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** a választó a **hozzáadása hozzárendelés** hozzárendelése a kiválasztott felhasználói szerepkör kiválasztása panel.
-
-15. Kattintson a **hozzárendelése** gombra kattintva a kijelölt felhasználók az alkalmazást.
-
-Rövid időn belül a kijelölt felhasználók tudják elindítani ezeket az alkalmazásokat a megoldás leírása szakaszban ismertetett módszerekkel.
-
-## <a name="not-a-valid-saml-request"></a>Nem egy érvényes SAML-kérés
-
-*AADSTS75005. hiba: A kérelme, mert nem egy Saml2 protokoll érvényes üzenetet.*
+*AADSTS50105. hiba: A bejelentkezett felhasználó "brian@contoso.com" nincs hozzárendelve egy szerepkörhöz az alkalmazás*.
 
 **Lehetséges ok**
 
-Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó SAML-kérelmét. Néhány gyakori kérdések a következők:
+A felhasználó nem kapott hozzáférést az alkalmazáshoz az Azure ad-ben.
 
--   A SAML-kérelmet a kötelező mezők hiányoznak
+**Felbontás**
 
--   SAML kódolt kérelmek módja
+Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse az alábbi lépéseket:
 
-**megoldás**
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-1.  Rögzítse a SAML-kérelmet. az útmutató bevezeti Önt [hibakeresés SAML-alapú egyszeri bejelentkezés alkalmazásokhoz az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) megtudhatja, hogyan rögzítheti a SAML-kérelmet.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-2.  Lépjen kapcsolatba az alkalmazás gyártójának és megosztás:
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-   -   SAML-kérelmet
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-   -   [Azure AD-egyszeri bejelentkezés SAML protokoll követelmények](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-Ellenőrizni kell az egyszeri bejelentkezés az Azure AD SAML-alapú megvalósítás támogatják.
+  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+
+6.  Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
+
+7.  Ha az alkalmazás betöltött, kattintson a **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
+
+8.  Kattintson a **Hozzáadás** a gombot a **felhasználók és csoportok** listán, megnyílik a **hozzárendelés hozzáadása** ablaktáblán.
+
+9.  Kattintson a **felhasználók és csoportok** a választó a **hozzárendelés hozzáadása** ablaktáblán.
+
+10. Írja be a **teljes név** vagy **e-mail-cím** Önt érdeklő való hozzárendelése a felhasználó a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
+
+11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
+
+12. **Választható lehetőség:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név alapján, vagy e-mail-cím** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
+
+13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
+
+14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** -választójában jelenítse a **hozzárendelés hozzáadása** hozzárendelése a kiválasztott felhasználói szerepkör kiválasztása panel.
+
+15. Kattintson a **hozzárendelése** gombra kattintva rendelje hozzá az alkalmazás a kijelölt felhasználók számára.
+
+Után rövid idő alatt a kiválasztott felhasználók tudják elindítani ezeket az alkalmazásokat a megoldás leírása szakaszban leírt módszerek használatával.
+
+## <a name="not-a-valid-saml-request"></a>Nem egy érvényes SAML-kérelmet
+
+*AADSTS75005. hiba: A kérés nem érvényes egy Saml2 protokoll üzenetet.*
+
+**Lehetséges ok**
+
+Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó SAML-kérelmét. Néhány gyakori hibák a következők:
+
+-   Az SAML-kérelmet kötelező mezők hiányoznak
+
+-   SAML-kérelem kódolt metódusa
+
+**Felbontás**
+
+1.  Rögzítse a SAML-kérelmet. az oktatóanyag [az Azure ad-ben az SAML-alapú egyszeri bejelentkezés alkalmazások hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) megtudhatja, hogyan rögzítheti az SAML-kérelmet.
+
+2.  Lépjen kapcsolatba az alkalmazás szállítójához és megosztás:
+
+   -   SAML-kérelem
+
+   -   [Az Azure AD egyszeri bejelentkezési SAML protokolljának követelményei](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+
+Ellenőrizni kell az Azure AD SAML végrehajtása támogatja az egyszeri bejelentkezés.
 
 ## <a name="no-resource-in-requiredresourceaccess-list"></a>Nincs erőforrás requiredResourceAccess listában
 
-*Hiba AADSTS65005: az ügyfélalkalmazás kért erőforrás elérésére "00000002-0000-0000-c000-000000000000'. A kérelem sikertelen volt, mert az ügyfél nem megadva ehhez az erőforráshoz requiredResourceAccess listáján található*.
+*Hiba AADSTS65005: az ügyfélalkalmazás kért erőforrás elérésére "00000002-0000-0000-c000-000000000000'. A kérelem nem sikerült, mert az ügyfél nem megadva ehhez az erőforráshoz a requiredResourceAccess listájára*.
 
 **Lehetséges ok**
 
-Az application objektum sérült.
+Az alkalmazás objektum sérült.
 
 **Megoldás: 1. lehetőséget**
 
-A probléma megoldásához, adja hozzá az Azure Active Directory beállítása az egyedi azonosító értéket. Egy azonosító értéket hozzáadásához kövesse az alábbi lépéseket:
+A problémának a megoldásához adja hozzá az egyedi azonosító értékét az Azure AD-konfigurációban. Azonosító érték hozzáadása, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
+  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki az alkalmazást, az egyszeri bejelentkezés konfigurálta.
+6.  Válassza ki az alkalmazás egyszeri bejelentkezésre konfigurálta.
 
-7.  Ha az alkalmazás betölt, kattintson a a **egyszeri bejelentkezés** az alkalmazás bal oldali navigációs menü
+7.  Ha az alkalmazás betöltött, kattintson a a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menü
 
-8.  A a **tartomány és az URL-cím** területen jelölje be a **megjelenítése speciális URL-beállításainak**.
+8.  Alatt a **tartomány és URL-cím** részen ellenőrizheti a **speciális URL-beállítások megjelenítése**.
 
 9.  az a **azonosító** szövegmezőbe írja be az alkalmazás egyedi azonosítója.
 
-10. **Mentés** konfigurációját.
+10. **Mentés** a konfigurációt.
 
 
-**Névfeloldási beállítást 2**
+**A felbontási beállítás 2**
 
-Ha a fenti 1 beállítás nem működik az Ön, távolítsa el az alkalmazás a könyvtárból. Adja hozzá, és konfigurálja újra az alkalmazást, kövesse az alábbi lépéseket:
+Ha a fenti 1 beállítás nem működik az Ön számára, próbálkozzon az alkalmazás eltávolítása a címtárból. Adja hozzá, és konfigurálja újra az alkalmazást, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
+  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki az egyszeri bejelentkezés konfigurálni kívánt alkalmazást
+6.  Válassza ki az alkalmazást szeretné az egyszeri bejelentkezés konfigurálása
 
-7.  Kattintson a **törlése** , a bal felső az alkalmazás **áttekintése** ablaktáblán.
+7.  Kattintson a **törlése** felső – bal oldalán az alkalmazás **áttekintése** ablaktáblán.
 
-8.  Frissítse az Azure AD, és vegye fel az alkalmazást az Azure AD-galériából. Ezután konfigurálja az alkalmazást
+8.  Frissítse az Azure ad-ben, és vegye fel az alkalmazást az Azure AD katalógusából. Ezt követően az alkalmazás konfigurálása
 
-<span id="_Hlk477190176" class="anchor"></span>Az alkalmazás újbóli beállításához után jelentkezhet be az alkalmazásba kell lennie.
+<span id="_Hlk477190176" class="anchor"></span>Után az alkalmazás újbóli beállításához kell tudni bejelentkezni az alkalmazásba.
 
 ## <a name="certificate-or-key-not-configured"></a>Tanúsítvány és kulcs nincs konfigurálva
 
-*Hiba AADSTS50003: Nincs aláírási kulcs konfigurálva.*
+*AADSTS50003. hiba: Nincs aláíró kulcs beállítva.*
 
 **Lehetséges ok**
 
-Az application objektum sérült, és az Azure AD nem ismeri fel az alkalmazáshoz beállított tanúsítvány.
+Az alkalmazás objektum sérült, és az Azure AD nem ismeri fel a tanúsítványt az alkalmazáshoz konfigurált.
 
-**megoldás**
+**Felbontás**
 
-Törölje, majd hozzon létre egy új tanúsítványt, kövesse az alábbi lépéseket:
+Törölje, és hozzon létre egy új tanúsítványt, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
- * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
+ * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki az egyszeri bejelentkezés konfigurálni kívánt alkalmazást
+6.  Válassza ki az alkalmazást szeretné az egyszeri bejelentkezés konfigurálása
 
-7.  Ha az alkalmazás betölt, kattintson a **egyszeri bejelentkezés** az alkalmazás bal oldali navigációs menüjében.
+7.  Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Kattintson a **hozzon létre új tanúsítvány** alatt a **aláíró tanúsítvány SAML** szakasz.
+8.  Kattintson a **új tanúsítvány létrehozása** alatt a **SAML-aláíró tanúsítvány** szakaszban.
 
-9.  Válassza ki a lejárati dátum. Kattintson a **mentéséhez.**
+9.  Válassza ki a lejárati dátumot. Kattintson a **mentéséhez.**
 
-10. Ellenőrizze **új tanúsítvány aktiválásához** az aktív tanúsítvány felülbírálására. Kattintson a **mentése** , ha a panel tetején, és fogadja el a helyettesítő tanúsítvány aktiválásához.
+10. Ellenőrizze **új tanúsítvány aktívvá** az aktív tanúsítvány felülbírálásához. Kattintson a **mentése** a panel tetején, és fogadja el a helyettesítő tanúsítvány aktiválását.
 
-11. Az a **SAML-aláíró tanúsítványa** területén kattintson **eltávolítása** eltávolítása a **nem használt** tanúsítvány.
+11. Alatt a **SAML-aláíró tanúsítvány** területén kattintson **eltávolítása** eltávolítása a **nem használt** tanúsítványt.
 
-## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Probléma a alkalmazás küldött SAML-jogcímek testreszabása
+## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>A probléma, ha az alkalmazás küldött SAML-jogcímek testreszabása
 
-Megtudhatja, hogyan szabhatja testre a SAML attribútum típusú jogcímek az alkalmazás számára, lásd: [hozzárendelése az Azure Active Directory-jogcímek](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) további információt.
+A SAML-attribútum jogcímek, az alkalmazás testreszabásával kapcsolatban lásd: [Jogcímtársítások az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) további információt.
 
 ## <a name="next-steps"></a>További lépések
-[Hibakeresés SAML-alapú egyszeri bejelentkezés alkalmazásokhoz az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+[Az Azure ad-ben az SAML-alapú egyszeri bejelentkezés alkalmazások hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)

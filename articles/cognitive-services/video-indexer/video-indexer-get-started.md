@@ -1,53 +1,51 @@
 ---
-title: Azure videó indexelője iratkozzon fel, és töltse fel az első videó |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan regisztrálhat, és töltse fel az első videó videó indexelő portál használatával.
+title: Az első videó feltöltése és iratkozzon fel az Azure Video Indexer |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan regisztrálhat, és töltse fel az első videó a Video Indexer-portál használatával.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 5310ae419f7eb1e1e1b54e9c0669c9ecfe62f7cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a05b7b71cf7af54140167c99ea6cc2d7e306d2de
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349874"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390858"
 ---
-# <a name="how-to-sign-up-and-upload-your-first-video"></a>Iratkozzon fel, és töltse fel az első videó
+# <a name="how-to-sign-up-and-upload-your-first-video"></a>Regisztráljon, és az első videó feltöltése
 
-A rövid alapszintű bemutató videó videó indexelőnek bejelentkezés és az első feltöltéséről mutatja.
+A rövid ismertető oktatóanyagon videó a Video Indexer – bejelentkezés és hogyan tölthetők fel az első mutatja.
 
-További részletes áttekintést nyújt a videó indexelő szolgáltatás talál a [áttekintése](video-indexer-overview.md) cikk.
+> [!Note]
+> A Video Indexer-fiók létrehozásakor kiválaszthatja a (, ahol megkapja ingyenes indexelési perc bizonyos számú) egy ingyenes próbafiókot vagy egy fizetős lehetőség (Ha nem korlátozza a kvóta). <br/>Az ingyenes próbaverziót a Video Indexer legfeljebb 600 perc ingyenes indexeli a webhely számára biztosít, és akár 2400 percnyi ingyenes indexelő API számára. <br/>A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Indexelt perc, valamint a kapcsolódó adathordozó-fiók fizet díjak. 
 
 ## <a name="sign-up-and-sign-in"></a>Regisztráció és bejelentkezés
 
-Fejlesztés az videó indexelő, először regisztrálnia kell kezdő, és jelentkezzen be a [videó indexelő](https://api-portal.videoindexer.ai/) portálon. 
+Fejlesztés a Video Indexer, először regisztrálnia kell a kezdő és jelentkezzen be a [Video Indexer](https://api-portal.videoindexer.ai/) portálon. 
      
 További információkért lásd: [API-k használatának megkezdéséhez](video-indexer-use-apis.md).
 
-## <a name="upload-a-video-using-the-video-indexer-portal"></a>A videó indexelő portal videó feltöltése
+## <a name="upload-a-video-using-the-video-indexer-portal"></a>A Video Indexer portállal videó feltöltése
 
 1. Jelentkezzen be [https://www.videoindexer.ai/](https://www.videoindexer.ai/)
-2. Videó feltöltése, nyomja meg a feltöltési gomb vagy a hivatkozás.
+2. Videó feltöltése, nyomja le a feltöltési gomb vagy hivatkozás.
 
  ![Feltöltés](./media/video-indexer-get-started/video-indexer-upload.png)
 
-A videót a feltöltést követően a videó indexelő indexelő, és a videó elemzése indítása.
+A videó feltöltése után a Video Indexer elindítja az indexelés és a videó elemzése.
 
 ![Feltöltve](./media/video-indexer-get-started/video-indexer-uploaded.png) 
 
-Ha videó indexelő végzett elemzése, egy hivatkozás, értesítést fog kapni a video és rövid leírását mi található a videót. Például: személyek, témakörök, felismerése.
-
-> [!Note]
-> Az ingyenes próbaverzió teljes kvótát 40 óra és a napi feltöltési korlátot 100 fájlok rendelkezik. Vegye figyelembe, hogy a teljes kvóta és a napi korlátot változhatnak.
+Video Indexer befejezése után az adatelemzés, a videóra mutató hivatkozást tartalmazó értesítést fog kapni, és rövid leírást a Mi található a videót. Például: azok, akik, témakörök, felismerése.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután már használhatja a [videó indexelő portal](video-indexer-view-edit.md) vagy a [API](video-indexer-use-apis.md) feltárása a videó megtekintéséhez. 
+Most már használhatja a [Video Indexer portál](video-indexer-view-edit.md) vagy a [API](video-indexer-use-apis.md) az elemzéseket a videó megtekintéséhez. 
 
 ## <a name="see-also"></a>Lásd még
 
-[Az indexelő áttekintő videó](video-indexer-overview.md)
+[Video Indexer – áttekintés](video-indexer-overview.md)

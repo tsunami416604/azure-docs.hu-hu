@@ -1,6 +1,6 @@
 ---
-title: Skálázás Media feldolgozása áttekintése |} Microsoft Docs
-description: Ez a témakör a méretezési Media feldolgozásának az Azure Media Services nyújt áttekintést.
+title: Skálázás Media feldolgozása – áttekintés |} A Microsoft Docs
+description: Ez a témakör a méretezési Media feldolgozására az Azure Media Services nyújt áttekintést.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,30 +12,31 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/04/2017
+ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 894b403b59624b6c42ce947169e9c9ac30ec76b9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81fab8903c0101d0e4aae8a392f05129651cd762
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790362"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39369141"
 ---
-# <a name="scaling-media-processing-overview"></a>Méretezési Media feldolgozása – áttekintés
-Ezen a lapon lehetőséget nyújt az áttekintése és media feldolgozási méretezési ennek okát. 
+# <a name="scaling-media-processing-overview"></a>Skálázás Media feldolgozása – áttekintés
+Ezen a lapon nyújt áttekintést, és miért médiafeldolgozás méretezését. 
 
 ## <a name="overview"></a>Áttekintés
-A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: **S1**, **S2** vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. További információkért lásd: a [fenntartott egység típusok](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/).
+A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: **S1**, **S2** vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. További információkért lásd: a [szolgáltatás számára fenntartott egység típusok](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/).
 
-Mellett fenntartott egységnek típusának megadásával adhatja meg a fiók ellátása fenntartott egységek. A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát. Például ha a fiók nem rendelkezik öt fenntartott egységek, majd öt media feladatokat futtatni egyidejűleg hosszú, amennyi a feldolgozandó feladatok. A hátralévő műveletekkel a várólistában, és egymás után feldolgozásához, amikor egy futó feladat befejezése után fog beolvasása felvételre. Ha a fiók nem rendelkezik bármely fenntartott egységek kiosztása, majd feladatok fog felvételre egymás után. Ebben az esetben egy feladat befejeződik, és ezután egy kezdő között a várakozási idő függ a rendelkezésre álló erőforrások a rendszerben.
+A szolgáltatás számára fenntartott egység típusának meghatározása, mellett megadhatja fiókja ellátása szolgáltatás számára fenntartott egységek. A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát. Például ha a fiókja rendelkezik öt fenntartott egységet, majd öt feldolgozható médiafeladatok fog futni, amíg egy időben, amennyi a feldolgozandó feladatok. A hátralévő feladatok a várólistában várakozik, és feldolgozására egymás után futtatott feladat végeztével lesznek első mértékének. Ha a fiók nem rendelkezik minden üzembe helyezett szolgáltatás számára fenntartott egységeket, majd feladatok fog felvenni, egymás után. Ebben az esetben egy feladat befejeződik, és a következő egy kezdő között a várakozási idő függ az erőforrások rendelkezésre állása a rendszerben.
 
-## <a name="choosing-between-different-reserved-unit-types"></a>Választás a különböző fenntartott egység
-Az alábbi táblázat segítséget nyújt a különböző kódolási sebességű közötti kiválasztásakor a döntést. Emellett néhány teljesítményteszt esetekben biztosít, és SAS URL-címek, amelyek segítségével töltse le a videók, amelyen a saját teszteket hajthat végre itt:
+## <a name="choosing-between-different-reserved-unit-types"></a>Más szolgáltatás számára fenntartott egység típusok közötti választáshoz
+Az alábbi táblázat segít a különböző kódolási sebességű közötti kiválasztásakor döntéseket. Is biztosít a teljesítményteszt néhány esetben, és biztosítja a SAS URL-címek, amelyek segítségével töltse le a videókat, amelyen a saját teszteket hajthat végre:
 
 | Forgatókönyvek | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
-| Tervezett használati eset |Egyszeres sávszélességű kódolását. <br/>Fájlok SD vagy az alatti megoldások, nem idő-és nagybetűket, az alacsony költségű. |Egyszeres sávszélességű, és több sávszélességű kódolását.<br/>Normál használati SD és a HD kódolására. |Egyszeres sávszélességű, és több sávszélességű kódolását.<br/>Teljes HD és 4K feloldási videók. Idő-és nagybetűket, gyorsabb esetenként kódolást. |
-| Teljesítményteszt |[A bemeneti fájl: 5 perc hosszú 640x360p: 29,97 keretek/másodperc](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Egy egyszeres sávszélességű MP4-fájlokat, az ugyanaz felbontásban kódolást körülbelül 11 percet vesz igénybe. |[A bemeneti fájl: 5 perc hosszú 1280x720p: 29,97 keretek/másodperc](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>"H264 egyféle sávszélességű 720p" kódolás előre beállított vesz körülbelül 5 percet.<br/><br/>Kódolás "H264 Multiple Bitrate 720p" beállításkészletet körülbelül 11,5 percet vesz igénybe. |[A bemeneti fájl: 5 perc hosszú 1920x1080p: 29,97 keretek/másodperc](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D). <br/><br/>"H264 egyetlen Bitrate 1080p" kódolás előre beállított vesz körülbelül 2.7 percet.<br/><br/>Kódolás "H264 Multiple Bitrate 1080p" beállításkészletet körülbelül 5.7 percet vesz igénybe. |
+| A felhasználási esetet |Egyszeres átviteli sebességű kódolás. <br/>SD vagy az alatti megoldások, a fájlok nem idő-és nagybetűket, alacsony költségű. |Egyféle sávszélességű, és több átviteli sebességű kódolás.<br/>Normál használati SD és a HD Encoding. |Egyféle sávszélességű, és több átviteli sebességű kódolás.<br/>Teljes HD és 4K felbontása videókat. Idő-és nagybetűket, a gyorsabb ügyintézés kódolást. |
+| Teljesítményteszt |Körülbelül 11 perc meghatározott kódolásból egy egyféle sávszélességű MP4-fájlt, az azonos felbontású vesz igénybe. |Idő szükséges kódolásának a "H264 egyféle sávszélességű 720p" előbeállítást körülbelül 5 perc.<br/><br/>Kódolás az "H264 Multiple Bitrate 720p" beállításkészletet körülbelül 11,5 percig tart. |Idő szükséges kódolásának a "H264 egyetlen Bitrate 1080p" előbeállítást körülbelül 2.7-es perc.<br/><br/>Kódolás a "H264 Multiple Bitrate 1080p" beállításkészletet körülbelül 5.7 percig tart. |
+
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 > [!IMPORTANT]
@@ -43,18 +44,18 @@ Az alábbi táblázat segítséget nyújt a különböző kódolási sebességű
 > 
 > 
 
-* Fenntartott egységek működnek az összes adathordozó feldolgozási, beleértve az Azure Media Indexer használó feladatok indexelő parallelizing.  De a kódolással ellentétben az indexelési feladatok feldolgozása nem lesz gyorsabb a gyorsabb Fenntartott egységekkel.
-* Ha megosztott készletét használja, ez azt jelenti, hogy nélkül bármely fenntartott egységek, majd a encode feladat rendelkezik ugyanaz a teljesítmény, mint a S1 RUs. Azonban nem felső határa az idő, a feladatok képes költeni várakozó állapotban van, és egy adott időpontban legfeljebb csak egy feladat fog futni.
+* A hangelemzés Videóelemzés feladatok és a Media Services v3-as vagy a Video Indexer által aktivált, az S3-egység típusa erősen ajánlott.
+* Megosztott tárolókészletet használja, azt jelenti, anélkül, hogy bármilyen szolgáltatás számára fenntartott egységeket, majd encode feladatait van-e ugyanazokat a méretezhetőségi, az S1 szintű fenntartott egységek. Azonban nincs felső korlátja, az idő a tevékenységek várólistára Bajos dolgaival, és a egy adott időpontban legfeljebb csak egy tevékenység fog futni.
 
 ## <a name="billing"></a>Számlázás
 
-A számlázás a Media szolgáltatás számára fenntartott egységek tényleges percalapú használatán alapul. Részletes leírását, tekintse meg a feltett a [Media Services díjszabása](https://azure.microsoft.com/pricing/details/media-services/) lap.   
+A számlázás a Media szolgáltatás számára fenntartott egységek tényleges percalapú használatán alapul. – Gyakori kérdések című szakaszában talál részletes magyarázatát, a [Media Services-díjszabás](https://azure.microsoft.com/pricing/details/media-services/) lapot.   
 
 ## <a name="quotas-and-limitations"></a>Kvóták és korlátozások
-További információ a kvóták és korlátozások és a támogatási jegy megnyitása: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
+Kvóták és korlátozások és a egy támogatási jegyet kapcsolatos információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 
 ## <a name="next-step"></a>Következő lépés
-Ezek a technológiák egyike méretezési media feldolgozási feladata elérése: 
+A méretezési media feldolgozási feladatot egy technológiák elérése: 
 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 7/30/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 2776017c6c4673f5c24d25b06b58a1e818f1bd24
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
-ms.translationtype: HT
+ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344443"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364376"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Biztonsági másolatot az SQL Server-adatbázisok
 
@@ -258,7 +258,7 @@ Ha a **adatbázisok felderítése** eszközt, az Azure Backup a háttérben hajt
 
     ![Válassza ki a virtuális gép és az adatbázis](./media/backup-azure-sql-database/registration-errors.png)
 
-## <a name="configure-backup-for-sql-server-databases"></a>SQL Server-adatbázisok biztonsági mentés konfigurálása 
+## <a name="configure-backup-for-sql-server-databases"></a>SQL Server-adatbázisok biztonsági mentés konfigurálása
 
 Az Azure Backup az SQL Server-adatbázisok védelmét és biztonsági mentési feladatok kezelése a felügyeleti szolgáltatásokat biztosít. A felügyeleti és monitorozási feladatokat függ a Recovery Services-tárolóba. 
 
@@ -317,6 +317,9 @@ SQL-adatbázis védelmének konfigurálása:
 
 8. Az a **biztonsági mentési házirend kiválasztása** legördülő listában válassza ki a biztonsági mentési szabályzatot, és válassza **OK**. Biztonsági mentési szabályzat létrehozásáról információért lásd: [biztonsági mentési házirend meghatározása](backup-azure-sql-database.md#define-a-backup-policy).
 
+   > [!NOTE]
+   > Az előzetes verzióban már nem szerkesztheti a biztonsági mentési szabályzatok. Ha azt szeretné, hogy egy másik szabályzatot mint mi érhető el, a listában, létre kell hoznia a szabályzatot. Egy új biztonsági mentési szabályzat létrehozásával kapcsolatos információkért lásd: a szakasz [biztonsági mentési házirend meghatározása](backup-azure-sql-database.md#define-a-backup-policy).
+
     ![A biztonsági mentési szabályzat kiválasztása a listából](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
 
     Az a **biztonsági mentési szabályzat** menüben, a a **biztonsági mentési házirend kiválasztása** legördülő lista is: 
@@ -345,21 +348,28 @@ Biztonsági mentési házirend egy mátrixot határoz meg, amikor a biztonsági 
 * Különbségi biztonsági másolat: különbözeti biztonsági mentése a legújabb, az előző teljes biztonsági mentését alapul. Különbözeti biztonsági mentése csak a teljes biztonsági mentés óta megváltozott adatokat rögzíti. Legfeljebb napi egy különbségi biztonsági mentés is indíthat. Az azonos napi egy teljes biztonsági mentés és a különbözeti biztonsági mentése nem konfigurálható.
 * Tranzakciónapló biztonsági mentését: A napló biztonsági mentését lehetővé teszi, hogy legfeljebb egy adott második időponthoz visszaállítást. Egyszerre legfeljebb konfigurálhatja tranzakciós napló biztonsági mentés 15 percenként.
 
-A házirendet létrehozni a Recovery Services-tároló szint. Több tárolóhoz is használhat az azonos mentési házirenddel, de a biztonsági mentési házirendet kell alkalmaznia az egyes tárolókban. Amikor létrehoz egy biztonsági mentési szabályzatot, a napi teljes biztonsági mentést az alapértelmezett érték. Különbségi biztonsági másolat, de csak is hozzáadhat, ha teljes biztonsági mentés hetente történjen. Az alábbi eljárás ismerteti egy SQL Server-példány biztonsági mentési szabályzat létrehozása az Azure virtuális gépként.
+A házirendet létrehozni a Recovery Services-tároló szint. Több tárolóhoz is használhat az azonos mentési házirenddel, de a biztonsági mentési házirendet kell alkalmaznia az egyes tárolókban. Amikor létrehoz egy biztonsági mentési szabályzatot, a napi teljes biztonsági mentést az alapértelmezett érték. Különbségi biztonsági másolat, de csak is hozzáadhat, ha teljes biztonsági mentés hetente történjen. Az alábbi eljárás ismerteti egy SQL Server-példány biztonsági mentési szabályzat létrehozása az Azure virtuális gépként. 
 
+> [!NOTE]
+> Előzetes verzióban elérhető a biztonsági mentési szabályzat nem szerkeszthető. Ehelyett egy új házirendet kell létrehoznia a kívánt adatokkal.  
+ 
 Biztonsági mentési szabályzat létrehozása:
 
-1. Az a **biztonsági mentési szabályzat** menüben, a a **biztonsági mentési házirend kiválasztása** legördülő listában jelölje ki **hozzon létre új**.
+1. Kattintson a Recovery Services-tároló, amely védelmet nyújt az SQL database, **biztonsági mentési házirendek**, és kattintson a **Hozzáadás**. 
 
-   ![Egy új biztonsági mentési szabályzat létrehozása](./media/backup-azure-sql-database/create-new-backup-policy.png)
+   ![Nyissa meg az új biztonsági mentési szabályzat létrehozása párbeszédpanel](./media/backup-azure-sql-database/new-policy-workflow.png)
 
-    A **biztonsági mentési szabályzat** menü jeleníti meg a mezőket, egy új SQL Server biztonsági mentési szabályzat szükséges.
+   A **Hozzáadás** menü jelenik meg.
 
-   ![új biztonsági mentési szabályzat mezők](./media/backup-azure-sql-database/blank-new-policy.png)
+2. Az a **Hozzáadás** menüben kattintson a **az SQL Server Azure virtuális gép**.
 
-2. Az a **házirendnév** adjon meg egy nevet.
+   ![Olyan házirendtípus, az új biztonsági mentési házirend kiválasztása](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. Egy teljes biztonsági mentés megadása kötelező. Fogadja el az alapértelmezett értékeket, a teljes biztonsági mentésre, vagy válasszon **teljes biztonsági mentésre** a szabályzat szerkesztéséhez.
+   Válassza ki az SQL Server Azure virtuális gép határozza meg a házirend típusát, és megnyílik a biztonsági mentési szabályzat menüje. A **biztonsági mentési szabályzat** menü jeleníti meg a mezőket, egy új SQL Server biztonsági mentési szabályzat szükséges.
+
+3. A **házirendnév**, adja meg az új házirend nevét.
+
+4. Egy teljes biztonsági mentés kötelező; nem kapcsolhatja ki az **teljes biztonsági mentés** lehetőséget. Kattintson a **teljes biztonsági mentés** megtekintheti és szerkesztheti a szabályzatot. Akkor is, ha nem módosítja a biztonsági mentési szabályzatot, akkor érdemes a szabályzat részleteinek megtekintéséhez.
 
     ![új biztonsági mentési szabályzat mezők](./media/backup-azure-sql-database/full-backup-policy.png)
 
@@ -371,13 +381,13 @@ Biztonsági mentési szabályzat létrehozása:
 
    ![heti időköz beállítása](./media/backup-azure-sql-database/weekly-interval.png)
 
-4. Alapértelmezés szerint minden **megőrzési** lehetőség be van jelölve: napi, heti, havi és éves. Kapcsolja ki a nemkívánatos megőrzési tartomány korlátait. A használandó időközt beállítani. Az a **teljes biztonsági mentés házirend** menüjében válassza **OK** , fogadja el a beállításokat.
+5. Alapértelmezés szerint minden **megőrzési** lehetőség be van jelölve: napi, heti, havi és éves. Kapcsolja ki a nemkívánatos megőrzési tartomány korlátait. A használandó időközt beállítani. Az a **teljes biztonsági mentés házirend** menüjében válassza **OK** , fogadja el a beállításokat.
 
    ![Megőrzési tartomány intervallum beállításai](./media/backup-azure-sql-database/retention-range-interval.png)
 
     Helyreállítási pontok megőrzésének a megőrzési tartomány alapján címkével vannak ellátva. Ha például napi teljes biztonsági mentést választja, csak egy teljes biztonsági mentés naponta aktiválódik. A biztonsági mentés meghatározott napja címkézett és a megőrzött alapján a heti megőrzési időtartam és a heti adatmegőrzési beállítás. A havi és éves megőrzési időtartamok viselkedése hasonló módon.
 
-5. A különbözeti biztonsági mentési szabályzat hozzáadásához válassza **különbözeti biztonsági mentési**. A **különbözeti biztonsági mentési szabályzat** menü megnyitása. 
+6. A különbözeti biztonsági mentési szabályzat hozzáadásához válassza **különbözeti biztonsági mentési**. A **különbözeti biztonsági mentési szabályzat** menü megnyitása. 
 
    ![Nyissa meg a különbözeti biztonsági mentési szabályzat menüje](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
@@ -391,17 +401,17 @@ Biztonsági mentési szabályzat létrehozása:
 
     Válassza ki **OK** mentse a szabályzatot, és térjen vissza a fő **biztonsági mentési szabályzat** menü.
 
-6. A tranzakciós napló biztonsági mentési szabályzat hozzáadásához válassza **napló biztonsági mentési**. A **Naplóalapú biztonsági mentés** menü megnyitása.
+7. A tranzakciós napló biztonsági mentési szabályzat hozzáadásához válassza **napló biztonsági mentési**. A **Naplóalapú biztonsági mentés** menü megnyitása.
 
     Az a **Naplóalapú biztonsági mentés** menüjében válassza **engedélyezése**, majd állítsa be a gyakoriság és megőrzési szabályozza. Naplóalapú biztonsági mentések fordulhat elő, mint 15 perces gyakorisággal, és akár 35 napig lehet megtartani. Válassza ki **OK** mentse a szabályzatot, és térjen vissza a fő **biztonsági mentési szabályzat** menü.
 
    ![A napló biztonsági mentési szabályzat szerkesztése](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-7. Az a **biztonsági mentési szabályzat** menüben válassza ki, hogy engedélyezi-e **SQL biztonsági másolat tömörítése**. A tömörítés alapértelmezés szerint le van tiltva.
+8. Az a **biztonsági mentési szabályzat** menüben válassza ki, hogy engedélyezi-e **SQL biztonsági másolat tömörítése**. A tömörítés alapértelmezés szerint le van tiltva.
 
     A háttérben az Azure Backup használ SQL natív biztonsági mentési tömörítését.
 
-8. Miután elvégezte a módosításokat a biztonsági mentési szabályzathoz, válassza ki a **OK**. 
+9. Miután elvégezte a módosításokat a biztonsági mentési szabályzathoz, válassza ki a **OK**. 
 
    ![Fogadja el az új biztonsági mentési házirend](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
@@ -410,8 +420,9 @@ Az Azure Backup az önálló adatbázisok visszaállítása egy adott dátum vag
 
 Lehetőség kiválasztásával egy teljes vagy különbözeti biztonsági mentési állíthatja vissza egy adott helyreállítási pontot, nem pedig egy adott időpontban.
 
-### <a name="pre-requisite-before-trigerting-a-restore"></a>Egy visszaállítási trigerting előtt előfeltételeként
-1. Az adatbázist visszaállíthatja egy példányát olyan SQL Server ugyanazon Azure-régióban. A célkiszolgálón kell regisztrálni kell ugyanabban a Recovery Services-tároló forrásaként.  
+### <a name="pre-requisite-before-triggering-a-restore"></a>A visszaállítás elindítása előtt előfeltételeként
+
+1. Az adatbázist visszaállíthatja egy példányát olyan SQL Server ugyanazon Azure-régióban. A célkiszolgáló ugyanazt a Recovery Services-tároló forrásaként regisztrálnia kell.  
 2. A TDE titkosított adatbázis visszaállítása egy másik SQL Serverre, először állítsa vissza a tanúsítványt a a célkiszolgáló által leírt lépéseket követve [Itt](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
 3. Mielőtt a "fő" adatbázis visszaállítási indít el, indítsa el az SQL Server-példány egyfelhasználós módban indítási lehetőséget `-m AzureWorkloadBackup`. Az argumentum a `-m` lehetőség az ügyfél nevét. Csak az ügyfél számára engedélyezett a kapcsolat megnyitásához. Az összes rendszer adatbázisban (modell master, msdb) állítsa le az SQL Agent szolgáltatást a visszaállítás elindítása előtt. Zárja be az olyan alkalmazásokat, amelyek próbálnak kapcsolatot sem ezeknek az adatbázisoknak ellopni.
 

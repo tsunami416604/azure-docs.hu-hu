@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4b889f47c696148c693081ee0873fc57d91600c9
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 701a47a3907c77dbf5d51692e5d1ddc0c49ab985
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348447"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390102"
 ---
 # <a name="set-up-security-info-to-use-phone-calls-preview"></a>Állítsa be a biztonsági adatok telefonhívásokat (előzetes verzió) használata
 
@@ -29,7 +29,7 @@ A biztonsági adatok beállításához megköveteli, hogy jelentkezzen be munkah
 Attól függően, a szervezet beállításait a rendszer telefonszám megadása hozzá biztonsági adataihoz, amikor bejelentkezik. Ellenkező esetben telefonhívásokat biztonsági adatainak beállítása a kezdéshez kövesse [a biztonsági adatok kezelése](security-info-manage-settings.md).
 
 >[!Note]
->Ha nem látja a telefonos elrendezésre, akkor lehet, hogy a szervezet nem engedélyezi, hogy az ellenőrző telefonhívásokat. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+>Biztonsági adatok használatával telefonos mellékek nem támogatja. Akkor is, ha a megfelelő formátumban ad hozzá, + 1 4255551234 X 12345, a bővítmények törlődnek, mielőtt a hívást kezdeményeznek.<br>Ha nem látja a telefonos elrendezésre, akkor lehet, hogy a szervezet nem engedélyezi, hogy az ellenőrző telefonhívásokat. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
 
 ### <a name="to-use-your-phone-number"></a>A telefonszám használata
 

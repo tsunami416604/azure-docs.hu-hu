@@ -1,6 +1,6 @@
 ---
-title: Bejelentkezés az Azure AD-alkalmazásproxy használó helyszíni alkalmazások problémák |} Microsoft Docs
-description: Jelentkezzen be egy helyi alkalmazás nem tudja tapasztalt gyakori problémák elhárításához integrálva van az Azure AD az Azure AD-alkalmazásproxy használatával
+title: Az Azure AD-alkalmazásproxy használatával a helyszíni alkalmazásokhoz való bejelentkezésnél |} A Microsoft Docs
+description: Az Azure AD-alkalmazásproxy használatával az Azure AD-vel integrált szembesülnek, ha nem sikerül bejelentkezni egy helyszíni alkalmazásba gyakori hibák elhárítása
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,22 +10,22 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: a55cc1a616a017159559e6b3359ff6b8f4ea3605
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9a60dc685fa23527aabaaea250c4584f33040b7c
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334890"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365621"
 ---
-# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Bejelentkezés az Azure AD-alkalmazásproxy használó helyszíni alkalmazások problémák
+# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy használatával a helyszíni alkalmazásokhoz való bejelentkezésnél
 
-Ha problémába ütközik egy helyi alkalmazás aláírása, az alábbi lépéseket, a probléma elhárítását követően próbálja meg.
+Jelentkezzen be egy helyszíni alkalmazás problémák merülnek fel, ha az alábbi lépéseket a probléma megoldása után próbálkozzon.
 
-## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>Képes betölteni a saját alkalmazás, de valamit a lapon a következőhöz megszakadt
+## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>Az alkalmazásom betöltődik, de az oldal hibásnak tűnik
 
 Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
 
@@ -33,29 +33,29 @@ Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémá
   * [Hozzáférek az alkalmazáshoz, de az alkalmazás betöltése túl sokáig tart](application-proxy-page-load-speed-problem.md)
   * [Hozzáférek az alkalmazáshoz, de az alkalmazás oldalán található hivatkozások nem működnek](application-proxy-page-links-broken-problem.md)
 
-## <a name="im-having-a-connectivity-problem-my-application"></a>Problémáim vannak csatlakozási probléma a alkalmazás
+## <a name="im-having-a-connectivity-problem-my-application"></a>A csatlakozási problémát tapasztalok az alkalmazásom
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Nem tudom, milyen portokat nyissak meg az alkalmazáshoz](application-proxy-connectivity-ports-how-to.md)
   * [Problémát tapasztalok, mert az alkalmazáshoz tartozó összekötőcsoportban nem volt működő összekötő](application-proxy-connectivity-no-working-connector.md)
 
-## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>A probléma az Azure AD-alkalmazásproxy a felügyeleti portál konfigurálása
+## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Problémát tapasztalok a felügyeleti portálon az Azure AD-alkalmazásproxy konfigurálása során
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Problémát tapasztalok egy alkalmazásproxy-alkalmazás konfigurálásánál](application-proxy-config-how-to.md)
   * [Nem tudom, hogy kell beállítani az egyszeri bejelentkezést az alkalmazásproxy-alkalmazáshoz](application-proxy-config-sso-how-to.md)
   * [Problémát tapasztalok, amikor alkalmazást hozok létre a felügyeleti portálon](application-proxy-config-problem.md)
 
-## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Saját alkalmazás lépett egy tudja beállítani a háttér-hitelesítés
+## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Problémát tapasztalok egy tudja beállítani a háttér-hitelesítést az alkalmazáshoz
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Nem tudom, hogy kell konfigurálni a Kerberos általi korlátozott delegálást](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
   * [Nem tudom, hogy kell konfigurálni az alkalmazást a PingAccess segítségével ](application-proxy-back-end-ping-access-how-to.md)
 
-## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Probléma lépett az alkalmazásban történő bejelentkezéskor
+## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Olyan problémát tapasztalok, amikor bejelentkezik az alkalmazásom
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * ["Can't Access this Corporate Application" (Nem lehet hozzáférni ehhez a céges alkalmazáshoz) hibaüzenet jelenik meg](application-proxy-sign-in-bad-gateway-timeout-error.md)
 
-## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Az alkalmazásproxy-ügynök összekötő probléma lépett
+## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Problémát tapasztalok az alkalmazásproxy-ügynök Összekötőjével probléma
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Problémát tapasztalok az alkalmazásproxy-ügynök összekötőjének telepítésénél](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>További lépések
-[Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak](manage-apps/application-proxy.md)
+[Helyszíni alkalmazások biztonságos távoli elérése](manage-apps/application-proxy.md)

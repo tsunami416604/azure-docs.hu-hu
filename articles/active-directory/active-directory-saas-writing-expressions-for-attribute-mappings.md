@@ -3,22 +3,22 @@ title: Az Azure Active Directoryban attribútumleképezések kifejezések írás
 description: Ismerje meg, hogyan SaaS-alkalmazás objektumok az Azure Active Directoryban az Automatikus kiépítés során elfogadható formátumot attribútumértékek alakítsa át a kifejezés-leképezések használatával.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
-ms.author: markvi
-ms.openlocfilehash: c0c3e6fab27ff16f0cc75fde3587d280278be882
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.topic: conceptual
+ms.date: 07/30/2018
+ms.author: barbkess
+ms.openlocfilehash: 0fa8fc6408a81429dfa9e8d73ef842644591c144
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215288"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365939"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -47,10 +47,10 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 
 **Paraméterek:**<br> 
 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Kötelező |Sztring |Általában az attribútum az az adatforrás-objektum neve |
-| **suffix** |Kötelező |Sztring |Az adatforrás-értéke végére hozzáfűzni kívánt karakterlánc. |
+| **source** |Szükséges |Sztring |Általában az attribútum az az adatforrás-objektum neve |
+| **suffix** |Szükséges |Sztring |Az adatforrás-értéke végére hozzáfűzni kívánt karakterlánc. |
 
 - - -
 ### <a name="formatdatetime"></a>formatDateTime
@@ -60,11 +60,11 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 
 **Paraméterek:**<br> 
 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Kötelező |Sztring |Általában az attribútum neve, az adatforrás-objektum. |
-| **inputFormat** |Kötelező |Sztring |Az adatforrás-értéke formátumával. Tekintse meg a támogatott formátumok [ http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-| **outputFormat** |Kötelező |Sztring |A kimeneti dátum formátuma. |
+| **source** |Szükséges |Sztring |Általában az attribútum neve, az adatforrás-objektum. |
+| **inputFormat** |Szükséges |Sztring |Az adatforrás-értéke formátumával. Tekintse meg a támogatott formátumok [ http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **outputFormat** |Szükséges |Sztring |A kimeneti dátum formátuma. |
 
 - - -
 ### <a name="join"></a>Csatlakozás
@@ -76,9 +76,9 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 
 **Paraméterek:**<br> 
 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **separator** |Kötelező |Sztring |Forrásértékek elválasztó, amikor azok vannak összefűzött egy karakterlánc, karakterlánc. Lehet "", ha nincs elválasztó nem szükséges. |
+| **separator** |Szükséges |Sztring |Forrásértékek elválasztó, amikor azok vannak összefűzött egy karakterlánc, karakterlánc. Lehet "", ha nincs elválasztó nem szükséges. |
 | ** source1... sourceN ** |Szükség esetén a változó-hányszor |Sztring |A karakterlánc-értékek egymáshoz csatlakoztatni. |
 
 - - -
@@ -89,11 +89,11 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 
 **Paraméterek:**<br> 
 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Kötelező |Sztring |Általában az attribútum neve. |
-| **start** |Kötelező |egész szám |Az index a **forrás** karakterláncot, ahol karakterláncrészletet el kell indulnia. A karakterlánc első karaktere 1 index fog rendelkezni, a második karaktere index 2 rendelkezik, és így tovább. |
-| **Hossza** |Kötelező |egész szám |A karakterláncrész hossza. Ha hossza kívül ér véget a **forrás** karakterlánc, a függvény a karakterláncrészt adja vissza **indítsa el** végén indextől **forrás** karakterlánc. |
+| **source** |Szükséges |Sztring |Általában az attribútum neve. |
+| **start** |Szükséges |egész szám |Az index a **forrás** karakterláncot, ahol karakterláncrészletet el kell indulnia. A karakterlánc első karaktere 1 index fog rendelkezni, a második karaktere index 2 rendelkezik, és így tovább. |
+| **Hossza** |Szükséges |egész szám |A karakterláncrész hossza. Ha hossza kívül ér véget a **forrás** karakterlánc, a függvény a karakterláncrészt adja vissza **indítsa el** végén indextől **forrás** karakterlánc. |
 
 - - -
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -103,9 +103,9 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 
 **Paraméterek:**<br> 
 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Kötelező |Sztring | Általában egy Utónév vagy utolsó név attribútum |
+| **source** |Szükséges |Sztring | Általában egy Utónév vagy utolsó név attribútum |
 
 - - -
 ### <a name="not"></a>nem
@@ -115,9 +115,9 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 
 **Paraméterek:**<br> 
 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Kötelező |Logikai típusú karakterlánc |A várt **forrás** értékek: "True" vagy "False"... |
+| **source** |Szükséges |Logikai típusú karakterlánc |A várt **forrás** értékek: "True" vagy "False"... |
 
 - - -
 ### <a name="replace"></a>Csere
@@ -141,15 +141,15 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
   * Ha **forrás** értékkel rendelkezik, használja a **regexPattern** és **regexGroupName** érték kinyerésére rendelkező tulajdonság **replacementPropertyName** . Helyettesítő értéket adja vissza eredményként
 
 **Paraméterek:**<br> 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Kötelező |Sztring |Általában az attribútum neve, az adatforrás-objektum. |
-| **oldValue** |Választható |Sztring |Értéket kell cserélni a **forrás** vagy **sablon**. |
-| **regexPattern** |Választható |Sztring |Az érték cseréli a Regex minta **forrás**. Vagy, ha replacementPropertyName használják, csere tulajdonság értékének kinyerése mintát. |
-| **regexGroupName** |Választható |Sztring |A csoport a nevét **regexPattern**. Csak akkor, ha replacementPropertyName használják, ez a csoport értékét azt fogja bontsa ki, helyettesítő helyettesítő tulajdonság értéke. |
-| **replacementValue** |Választható |Sztring |Új értéket cserélje le a régit. |
-| **replacementAttributeName** |Választható |Sztring |Használandó érték, ha a forrás nem rendelkezik értékkel az attribútum neve. |
-| **sablon** |Választható |Sztring |Amikor **sablon** érték van megadva, alábbiakban tájékozódhat **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
+| **source** |Szükséges |Sztring |Általában az attribútum neve, az adatforrás-objektum. |
+| **oldValue** |Optional |Sztring |Értéket kell cserélni a **forrás** vagy **sablon**. |
+| **regexPattern** |Optional |Sztring |Az érték cseréli a Regex minta **forrás**. Vagy, ha replacementPropertyName használják, csere tulajdonság értékének kinyerése mintát. |
+| **regexGroupName** |Optional |Sztring |A csoport a nevét **regexPattern**. Csak akkor, ha replacementPropertyName használják, ez a csoport értékét azt fogja bontsa ki, helyettesítő helyettesítő tulajdonság értéke. |
+| **replacementValue** |Optional |Sztring |Új értéket cserélje le a régit. |
+| **replacementAttributeName** |Optional |Sztring |Használandó érték, ha a forrás nem rendelkezik értékkel az attribútum neve. |
+| **sablon** |Optional |Sztring |Amikor **sablon** érték van megadva, alábbiakban tájékozódhat **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
 
 - - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
@@ -159,9 +159,9 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 **Paraméterek:**<br> 
 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **[hozzárendeléseinek]** |Kötelező |Sztring |**[hozzárendeléseinek]**  objektum. |
+| **[hozzárendeléseinek]** |Szükséges |Sztring |**[hozzárendeléseinek]**  objektum. |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -171,9 +171,9 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 **Paraméterek:**<br> 
 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Kötelező |Sztring |**forrás** érték frissítéséhez. |
+| **source** |Szükséges |Sztring |**Forrás** érték frissítéséhez. |
 
 - - -
 ### <a name="switch"></a>Kapcsoló
@@ -183,12 +183,12 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 **Paraméterek:**<br> 
 
-| Név | Szükséges / ismétlődő | Típus | Megjegyzések |
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Kötelező |Sztring |**Forrás** érték frissítéséhez. |
-| **defaultValue** |Választható |Sztring |Alapértelmezett érték használható, ha a forrás nem felel meg minden olyan kulcsokat. Üres karakterlánc lehet (""). |
-| **key** |Kötelező |Sztring |**Kulcs** összehasonlítására **forrás** értéket. |
-| **value** |Kötelező |Sztring |Az érték a **forrás** összekapcsolja a kulcsot. |
+| **source** |Szükséges |Sztring |**Forrás** érték frissítéséhez. |
+| **defaultValue** |Optional |Sztring |Alapértelmezett érték használható, ha a forrás nem felel meg minden olyan kulcsokat. Üres karakterlánc lehet (""). |
+| **key** |Szükséges |Sztring |**Kulcs** összehasonlítására **forrás** értéket. |
+| **value** |Szükséges |Sztring |Az érték a **forrás** összekapcsolja a kulcsot. |
 
 ## <a name="examples"></a>Példák
 ### <a name="strip-known-domain-name"></a>Sáv ismert tartománynév

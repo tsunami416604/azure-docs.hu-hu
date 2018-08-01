@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: aa575340c0775369d4be05b5e323c05f7dd3218a
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 34696802735fd2a145cd6383dcdc7e4a4b6368e2
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348410"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391409"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>Biztonsági adatok beállítása az e-mailben (előzetes verzió)
 
@@ -29,7 +29,7 @@ A biztonsági adatok beállításához megköveteli, hogy jelentkezzen be munkah
 Szervezeti beállítások, attól függően előfordulhat, hogy kéri egy e-mail-cím hozzáadása a biztonsági adatait, amikor bejelentkezik. Ellenkező esetben e-mailt a biztonsági adatok beállítása a kezdéshez kövesse [a biztonsági adatok kezelése](security-info-manage-settings.md).
 
 >[!Note]
->Ha nem látja az e-mailt a beállítást, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrző e-mailt. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+>Egy e-mail-fiókot, amely nem igényel a hálózati jelszó használatát javasoljuk.<br>Ha nem látja az e-mailt a beállítást, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrző e-mailt. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
 
 ### <a name="to-use-your-email-address"></a>Az e-mail cím használata
 

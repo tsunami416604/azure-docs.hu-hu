@@ -1,6 +1,6 @@
 ---
-title: Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazások |} Microsoft Docs
-description: Egy vállalati alkalmazás hozzárendelése egy felhasználóhoz vagy csoporthoz, az Azure Active Directory kiválasztása
+title: Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazást az Azure Active Directoryban |} A Microsoft Docs
+description: Vállalati alkalmazás hozzárendelése egy felhasználóhoz vagy csoporthoz, az Azure Active Directory kiválasztása
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,55 +11,55 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: 487312cb79c5c278849668a472acfda7823e4bc1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f23c9976dacc1ca696772d6bf02b5d59e3e0b4d5
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303573"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39369183"
 ---
-# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban
-Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás, a vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.
+# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás
+Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazást, a vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.
 
 > [!NOTE]
-> A cikkben említett funkciók egy Azure Active Directory Premium P1 vagy Premium P2-licenc szükséges. További információkért lásd: a [Azure Active Directory árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/active-directory).
+> A cikkben tárgyalt funkciók egy Azure Active Directory Premium P1 vagy P2-licenc szükséges. További információkért lásd: a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory).
 
 > [!NOTE]
-> A Microsoft Applications (például az Office 365-alkalmazásokhoz) a PowerShell használatával felhasználók hozzárendelése egy vállalati alkalmazás.
+> A Microsoft Applications (például az Office 365-alkalmazások) a PowerShell használatával felhasználók hozzárendelése egy vállalati alkalmazást.
 
 
-## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Hogyan oszthatok ki a felhasználói hozzáférés a vállalati alkalmazásokhoz az Azure-portálon?
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki **minden szolgáltatás**, a mezőben adja meg Azure Active Directoryban, és válassza **Enter**.
-3. Az a **Azure Active Directory - *directoryname***  (Ez azt jelenti, hogy az Azure AD panelen a kezelt könyvtár) panelen válassza ki **vállalati alkalmazások**.
+## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Hogyan oszthatok ki a felhasználói hozzáférés a vállalati alkalmazásokat az Azure Portalon?
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
+2. Válassza ki **minden szolgáltatás**, a szövegmezőbe írja be az Azure Active Directory, és válassza **Enter**.
+3. Az a **Azure Active Directory - *directoryname***  (azt jelenti, az Azure ad-ben panelen kezeli a könyvtár) panelen adja meg **vállalati alkalmazások**.
 
-    ![Vállalati alkalmazások megnyitásakor](./media/assign-user-or-group-access-portal/open-enterprise-apps.png)
-4. Az a **vállalati alkalmazások** panelen válassza **összes alkalmazás**. A parancs megjeleníti az kezelheti az alkalmazásokat.
-5. Az a **vállalati alkalmazások – összes alkalmazás** panelen, jelöljön ki egy alkalmazást.
-6. Az a ***appname*** (Ez azt jelenti, hogy a panel nevű, a kijelölt alkalmazást a címben) panelen válassza ki **felhasználók és csoportok**.
+    ![Vállalati alkalmazások megnyitása](./media/assign-user-or-group-access-portal/open-enterprise-apps.png)
+4. Az a **vállalati alkalmazások** panelen válassza ki **minden alkalmazás**. Ez felsorolja az alkalmazásokat, kezelheti.
+5. Az a **nagyvállalati alkalmazások – minden alkalmazás** panelen jelöljön ki egy alkalmazást.
+6. Az a ***appname*** (azaz a panelen címében szerepel a kijelölt alkalmazás nevét) panelen adja meg **felhasználók és csoportok**.
 
-    ![Az összes alkalmazások paranccsal](./media/assign-user-or-group-access-portal/select-app-users.png)
-7. Az a ***appname*** **-felhasználó & csoport-hozzárendelés** panelen válassza a **Hozzáadás** parancsot.
-8. Az a **hozzáadása hozzárendelés** panelen válassza **felhasználók és csoportok**.
+    ![Az alkalmazások minden parancs kiválasztása](./media/assign-user-or-group-access-portal/select-app-users.png)
+7. Az a ***appname*** **-felhasználó és csoport-hozzárendelés** panelen válassza ki a **Hozzáadás** parancsot.
+8. Az a **hozzárendelés hozzáadása** panelen válassza ki **felhasználók és csoportok**.
 
-    ![Az alkalmazás egy felhasználó vagy csoport hozzárendelése](./media/assign-user-or-group-access-portal/assign-users.png)
-9. Az a **felhasználók és csoportok** panelen válasszon ki egy vagy több felhasználót vagy csoportot a listából, és válassza ki a **válasszon** gomb a panel alján.
-10. Az a **hozzáadása hozzárendelés** panelen válassza **szerepkör**. Ezt követően a **Szerepkörválasztás** panelen válassza ki a megfelelő szerepkört a kiválasztott felhasználókra vagy csoportokra alkalmazza, és válassza ki a **OK** gomb a panel alján.
-11. Az a **hozzáadása hozzárendelés** panelen válassza a **hozzárendelése** gomb a panel alján. A kijelölt felhasználók vagy csoportok engedélye a kiválasztott vállalati alkalmazás által meghatározott.
+    ![Egy felhasználó vagy csoport hozzárendelése az alkalmazáshoz](./media/assign-user-or-group-access-portal/assign-users.png)
+9. Az a **felhasználók és csoportok** panelen válasszon ki egy vagy több felhasználót vagy csoportot a listából, és válassza ki a **kiválasztása** gombra a panel alján.
+10. Az a **hozzárendelés hozzáadása** panelen válassza ki **szerepkör**. Ezután a a **Szerepkörválasztás** panelen válassza ki a megfelelő szerepkört a kiválasztott felhasználókra vagy csoportokra vonatkoznak, és válassza ki a **OK** gombra a panel alján.
+11. Az a **hozzárendelés hozzáadása** panelen válassza ki a **hozzárendelése** gombra a panel alján. A hozzárendelt felhasználók vagy csoportok rendelkezik a kijelölt szerepkört a vállalati alkalmazás által meghatározott engedélyekkel.
 
-## <a name="how-do-i-assign-a-user-to-an-enterprise-app-using-powershell"></a>Hogyan oszthatok ki az a felhasználó a vállalati alkalmazásokhoz PowerShell használatával
+## <a name="how-do-i-assign-a-user-to-an-enterprise-app-using-powershell"></a>Hogyan oszthatok ki egy felhasználó egy vállalati alkalmazáshoz a PowerShell használatával?
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-parancssort.
 
     >[!NOTE] 
-    > Telepítenie kell a AzureAD modul (a parancs `Install-Module -Name AzureAD`). Ha a NuGet-modulok vagy az új Azure Active Directory V2 PowerShell modul telepítésére kéri, írja be az I, és nyomja le az ENTER.
+    > Az Azure ad-modul telepítéséhez szüksége (a parancs használata `Install-Module -Name AzureAD`). Ha kéri, telepítse a NuGet-modult vagy az új Azure Active Directory V2 PowerShell modul, írja be az Y, és nyomja le az ENTER billentyűt.
 
 2. Futtatás `Connect-AzureAD` , és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
-3. Használja a következő parancsfájl egy felhasználó és a szerepkör hozzárendelése egy alkalmazás:
+3. A következő szkript használatával egy felhasználó és szerepkör hozzárendelése egy alkalmazáshoz:
 
     ```powershell
     # Assign the values to the variables
@@ -76,15 +76,15 @@ Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás, a v�
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```     
 
-További információ a felhasználó hozzárendelése egy alkalmazás-szerepkör látogasson el a dokumentációja [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)
+Felhasználók hozzárendelése egy alkalmazás-szerepkör kapcsolatos további részletekért látogasson el a dokumentációját [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)
 
-Egy csoport hozzárendelése egy vállalati alkalmazás, ki kell cserélni `Get-AzureADUser` rendelkező `Get-AzureADGroup`.
+Egy csoport hozzárendelése egy vállalati alkalmazást, ki kell cserélni `Get-AzureADUser` a `Get-AzureADGroup`.
 
 ### <a name="example"></a>Példa
 
-Ebben a példában a felhasználó Britta Simon rendeli hozzá a a [Microsoft munkahelyi Analytics](https://products.office.com/business/workplace-analytics) alkalmazás PowerShell-lel.
+Ebben a példában a felhasználó Britta Simon rendeli, a [Microsoft Workplace Analytics](https://products.office.com/business/workplace-analytics) alkalmazás PowerShell-lel.
 
-1. PowerShell rendelje hozzá a megfelelő értékeket a változók $username, $Alkalmazás_neve és $app_role_name. 
+1. A PowerShell rendelje hozzá a megfelelő értékeket a változók $username, $app_name és $app_role_name. 
 
     ```powershell
     # Assign the values to the variables
@@ -92,7 +92,7 @@ Ebben a példában a felhasználó Britta Simon rendeli hozzá a a [Microsoft mu
     $app_name = "Workplace Analytics"
     ```
 
-2. Ebben a példában nem állapítható meg, mi az az alkalmazás-szerepkör hozzárendelése Britta Simon szeretnénk pontos nevét. A felhasználó ($user) segítségével a következő parancsokat, és a felhasználó egyszerű szolgáltatásnév ($sp) és a szolgáltatás egyszerű nevének megjelenítése.
+2. Ebben a példában nem tudjuk Mi az az alkalmazás-szerepkör hozzárendelése a Britta Simon szeretnénk pontos nevét. A felhasználó ($user) beolvasni a következő parancsokat, és a használatával a felhasználó egyszerű szolgáltatásnév ($sp) és az egyszerű szolgáltatás nevének megjelenítéséhez.
 
     ```powershell
     # Get the user to assign, and the service principal for the app to assign to
@@ -100,11 +100,11 @@ Ebben a példában a felhasználó Britta Simon rendeli hozzá a a [Microsoft mu
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
         
-3. Futtassa a parancsot `$sp.AppRoles` elérhetővé válik a munkahelyi Analytics alkalmazás szerepkörök megjelenítéséhez. Ebben a példában szeretnénk Britta Simon az elemző (korlátozott hozzáférés) szerepkör hozzárendelése.
+3. Futtassa a parancsot `$sp.AppRoles` megjelenítéséhez a Workplace Analytics alkalmazás számára elérhető szerepköröket. Ebben a példában szeretnénk Britta Simon az elemző (korlátozott hozzáférés) szerepkör hozzárendelését.
     
-    ![Munkahelyi Analytics szerepkör](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
+    ![Workplace Analytics szerepkör](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
-4. Rendelje hozzá a szerepkör nevét a `$app_role_name` változó.
+4. A szerepkör nevét rendelje hozzá a `$app_role_name` változó.
         
     ```powershell
     # Assign the values to the variables
@@ -112,7 +112,7 @@ Ebben a példában a felhasználó Britta Simon rendeli hozzá a a [Microsoft mu
     $appRole = $sp.AppRoles | Where-Object { $_.DisplayName -eq $app_role_name }
     ```
 
-5. A következő parancsot a felhasználó hozzárendelése az alkalmazás-szerepkör:
+5. A következő paranccsal rendelje hozzá a felhasználót az alkalmazás-szerepkör:
 
     ```powershell
     # Assign the user to the app role
@@ -120,7 +120,7 @@ Ebben a példában a felhasználó Britta Simon rendeli hozzá a a [Microsoft mu
     ```
 
 ## <a name="next-steps"></a>További lépések
-* [Összes saját csoportok](../active-directory-groups-view-azure-portal.md)
-* [Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazások](remove-user-or-group-access-portal.md)
-* [Tiltsa le a felhasználói bejelentkezéseket a vállalati alkalmazás](disable-user-sign-in-portal.md)
-* [Módosítja a nevét, vagy egy vállalati alkalmazás embléma](change-name-or-logo-portal.md)
+* [Megjelenik az összes saját csoportok](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazás](remove-user-or-group-access-portal.md)
+* [Tiltsa le a felhasználók bejelentkezési folyamatába egy vállalati alkalmazás](disable-user-sign-in-portal.md)
+* [A name vagy a vállalati alkalmazás emblémájának módosítása](change-name-or-logo-portal.md)

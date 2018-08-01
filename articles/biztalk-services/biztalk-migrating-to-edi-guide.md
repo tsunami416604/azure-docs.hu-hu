@@ -1,27 +1,23 @@
 ---
-title: BizTalk Server EDI-megoldások áttelepítése a BizTalk Services műszaki útmutatója |} A Microsoft Docs
-description: EDI MABS; áttelepítése A Microsoft Azure BizTalk Services
+title: BizTalk Server EDI-megoldások áttelepítése a BizTalk Services |} A Microsoft Docs
+description: Ismerje meg, hogyan telepíthet át a Microsoft BizTalk Server EDI-megoldások a Microsoft Azure BizTalk Services (MABS)
 services: biztalk-services
-documentationcenter: na
-author: MandiOhlinger
-manager: anneta
-editor: ''
-ms.assetid: 61c179fa-3f37-495b-8016-dee7474fd3a6
 ms.service: biztalk-services
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: jonfancey
+ms.author: jonfan
+manager: jeconnoc
 ms.topic: article
-ms.date: 11/07/2016
-ms.author: mandia
-ms.openlocfilehash: aaa7028bb37ac4c2c313efce2afebc1dc5e814d2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.date: 07/31/2018
+ms.reviewer: jonfan, LADocs
+ms.suite: integration
+ms.openlocfilehash: 4ce65f1b5dd22da031ebf6730b5efad2d04f91a0
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860078"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365587"
 ---
-# <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Server EDI-megoldások áttelepítése a BizTalk Services: műszaki útmutató
+# <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Server EDI-megoldások áttelepítése a BizTalk Services: műszaki útmutató
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -34,7 +30,7 @@ Használatával írt: a Microsoft Azure BizTalk Services – 2014. februárban k
 ## <a name="introduction"></a>Bevezetés
 Elektronikus adatcserére (EDI) az egyik a legelterjedtebb azt jelenti, hogy melyik vállalkozások exchange-adatok alapján elektronikus úton, vállalatok vagy B2B tranzakcióként is hívják. BizTalk Server esetében több mint egy évtizedes BizTalk Server megjelenése óta támogatása EDI. A BizTalk Services a Microsoft támogatást biztosít az EDI-megoldások a Microsoft Azure platformon továbbra is. B2B-tranzakciók többnyire egy szervezeten kívüli, és ezért az egyszerűbb, ha azt egy felhőalapú platformon lett megvalósítva. A Microsoft Azure BizTalk Services segítségével ezt a képességet biztosít.
 
-Egyes ügyfeleink a BizTalk Services új EDI-megoldások "Előzmények nélküli" platformként tekinti meg, míg számos ügyfelünk aktuális BizTalk Server EDI-megoldások, amelyek szeretnék áttelepíteni az Azure-bA. Mivel a BizTalk Services EDI tervezésnek lesz a azonos kulcsentitások (kereskedelmi partnerek, entitásokat, szerződések), a BizTalk Server EDI-architektúra alapján, lehetőség a BizTalk Services áttelepítése a BizTalk Server EDI-összetevők.
+Egyes ügyfeleink a BizTalk Services új EDI-megoldások "zöldmezős" platformként tekinti meg, míg számos ügyfelünk aktuális BizTalk Server EDI-megoldások, amelyek szeretnék áttelepíteni az Azure-bA. Mivel a BizTalk Services EDI tervezésnek lesz a azonos kulcsentitások (kereskedelmi partnerek, entitásokat, szerződések), a BizTalk Server EDI-architektúra alapján, lehetőség a BizTalk Services áttelepítése a BizTalk Server EDI-összetevők.
 
 Ez a dokumentum ismerteti a BizTalk Services áttelepítése a BizTalk Server EDI-összetevőkkel kapcsolatos eltérések képest. Ez a dokumentum a BizTalk Server EDI-feldolgozást és kereskedelmi partneri szerződéseket ismeretét feltételezi. A BizTalk Server EDI további információkért lásd: [Partner Management használatával BizTalk Server kereskedelmi](https://msdn.microsoft.com/library/bb259970.aspx).
 
@@ -76,7 +72,7 @@ A BizTalk Server EDI a folyamatok olyan üzenet feldolgozása entitások, amelye
 
 Egyéni kód és/vagy a Service Bus-üzenetkezelés üzenetsorokat és Üzenettémákat, mielőtt a kereskedelmi partneri szerződés fogadja az üzenetet, vagy ha a szerződés feldolgozza az üzenetet, és továbbítja azt a Service Bus-végpont használatával közzétételi és előfizetési folyamat beszúrásához.
 
-Lásd: **forgatókönyvek/Üzenetáramlás** ebben a témakörben az üzenet a folyamat minta.
+Lásd: **forgatókönyvek/Üzenetáramlás** ebben a cikkben, az üzenet a folyamat minta.
 
 ## <a name="agreements"></a>Egyezmények
 Ha ismeri a BizTalk Server 2010 Trading Partner kimutatáshoz alapul szolgáló licencszerződések EDI-feldolgozást, majd a BizTalk Services kereskedelmipartner-egyezmények ismerős nagyon. A szerződés beállításai a legtöbb azonosak, és ugyanazokat a kifejezéseket használni. Bizonyos esetekben a szerződés beállítások a következők jóval egyszerűbb ugyanazokat a beállításokat a BizTalk Server képest. A Microsoft Azure BizTalk Services által támogatott X12, EDIFACT és az AS2 átviteli.
@@ -118,10 +114,7 @@ BizTalk Server EDI-feldolgozást tartalmaz "Tartalék szerződések" fogalma.  A
 ### <a name="routing-to-multiple-destinations"></a>Több célhelyre Útválasztás
 A BizTalk Services-hidat, a jelenlegi állapotában nem támogatja a útválasztási üzenetek, több célra irányuló használatával közzétételi-feliratkozási modell. Ehelyett sikerült irányíthatja a Service Bus-témakörbe, majd az üzenetet, egynél több végponton több előfizetéssel is rendelkezhet, amely a BizTalk Services hidat üzeneteket.
 
-## <a name="conclusion"></a>Összegzés
-A Microsoft Azure BizTalk Services: reguláris mérföldkövek további funkciók és képességek hozzáadása frissül. Az egyes frissítések örömmel várjuk a BizTalk Services és más Azure-technológiák segítségével teljes körű megoldások létrehozásának megkönnyítése érdekében a bővebb funkcionalitásnak támogatása.
-
 ## <a name="see-also"></a>Lásd még:
-[Vállalati alkalmazások fejlesztéséhez az Azure-ral](https://msdn.microsoft.com/library/azure/hh674490.aspx)
+[LOB-megoldások az Azure-ban](https://azure.microsoft.com/solutions/lob-applications)
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png

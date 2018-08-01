@@ -5,26 +5,26 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 7/19/2018
+ms.date: 7/30/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 1db5f0a62a21d040949c9f4e4c42f80c86e76506
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e23579479c61810d651bebae7b486b53aaaf0d42
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39164124"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39361369"
 ---
 ### <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
-Az Azure tűzfal az egy felügyelt, felhőalapú és hálózati biztonsági szolgáltatás, amely védelmet nyújt az Azure Virtual Network-erőforrások. Egy teljes körűen állapot-nyilvántartó tűzfal--szolgáltatásként beépített magas rendelkezésre állás és a korlátlan felhőbeli méretezhetőséget. Központilag létrehozása, érvényesítése és alkalmazás és a hálózati kapcsolat házirendek jelentkezzen az előfizetések és a virtuális hálózatok között. Az Azure tűzfal jelenleg nyilvános előzetes verzióban érhető el.
+Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Egy teljes körűen állapot-nyilvántartó tűzfal--szolgáltatásként beépített magas rendelkezésre állás és a korlátlan felhőbeli méretezhetőséget. Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan. Az Azure tűzfal jelenleg nyilvános előzetes verzióban érhető el.
 
 ### <a name="what-capabilities-are-supported-in-the-azure-firewall-public-preview-release"></a>Milyen funkciók támogatottak az Azure-tűzfal nyilvános előzetes kiadás?  
 
 * Állapot-nyilvántartó tűzfal szolgáltatásként
 * Beépített magas rendelkezésre állás korlátlan felhőbeli skálázással
 * FQDN-szűrés 
-* Hálózati forgalom szűrési szabályok
+* Hálózati forgalomra vonatkozó szűrési szabályok
 * Kimenő SNAT-támogatás
 * Központilag létrehozása, érvényesítése, és jelentkezzen alkalmazás és a hálózati kapcsolat házirendek az Azure-előfizetések és a virtuális hálózatok között
 * Teljes integráció az Azure Monitorral a naplózáshoz és az elemzéshez 
@@ -66,7 +66,7 @@ Azure-tűzfalon megtekintésére és elemzésére tűzfalnaplók integrálva van
 
 ### <a name="how-does-azure-firewall-work-relative-to-existing-like-nvas-in-the-marketplace"></a>Hogyan működik a Azure tűzfal viszonyított meglévő például nva-k a Marketplace-en?
 
-Az Azure tűzfal egyszerű tűzfal szolgáltatása kezelheti az egyes felhasználói forgatókönyv. Azt várhatóan 3. fél nva-k és az Azure-tűzfal rendelkező ügyfelek számára, és több együtt jobb lehetőségeken partnereink dolgozik. 
+Az Azure tűzfal egyszerű tűzfal szolgáltatása kezelheti az egyes felhasználói forgatókönyv. Valószínű, hogy külső nva-k és az Azure-tűzfal lesz. Jobban működnek együtt az alapvető prioritást.
  
 ### <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Mi a különbség az Application Gateway WAF és az Azure-tűzfal?
 
@@ -74,7 +74,7 @@ A webalkalmazási tűzfal (WAF) az Application Gateway, amelyek a webalkalmazás
 
 ### <a name="what-is-the-difference-between-network-security-groups-nsg-and-azure-firewall"></a>Mi a különbség a hálózati biztonsági csoportok (NSG) és a tűzfal az Azure között?
 
-A tűzfal az Azure szolgáltatás egészíti ki a meglévő hálózati biztonsági csoport funkciói, és együtt nagyobb biztonságot jellegű defense hálózati. Az NSG-k adja meg a hálózati réteg elosztott forgalom szűrése belül minden előfizetésben található virtuális hálózatok erőforrásokra irányuló forgalom korlátozásához.  Az Azure tűzfal egy teljes körűen állapotalapú, a központi hálózati tűzfal-szolgáltatásként, a hálózati és az szintű védelmet biztosít a különböző előfizetésekben találhatóak, és a virtuális hálózatok (Vnetek) között. 
+Az Azure-tűzfal szolgáltatás egészíti ki a hálózati biztonsági csoport funkciót, és együttesen biztosít jobb védelmet jellegű hálózati biztonság. Az NSG-k adja meg a hálózati réteg elosztott forgalom szűrése belül minden előfizetésben található virtuális hálózatok erőforrásokra irányuló forgalom korlátozásához.  Az Azure tűzfal egy teljes körűen állapotalapú, a központi hálózati tűzfal-szolgáltatásként, a hálózati és az szintű védelmet biztosít a különböző előfizetésekben találhatóak, és a virtuális hálózatok (Vnetek) között. 
 
 ### <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hogyan állíthatok be Azure-tűzfal saját szolgáltatásvégpontokkal?
 
@@ -84,4 +84,5 @@ Biztonságos hozzáférés PaaS-szolgáltatások javasoljuk, hogy a Szolgáltat�
 
 * Azure-tűzfalon egy 1000 TB/tűzfal/hó enyhe korlátjának rendelkezik. 
 * Azure-tűzfalon, amely futtatja a központi virtuális hálózaton van a virtuális hálózatok közötti társviszony-létesítési korlátozások vonatkoznak: 50 küllő virtuális hálózatok a maximális.  
-* Az Azure tűzfal nem képes együttműködni az globális társhálózatok létesítésének, így az ügyfelek kell legalább egy központi telepítési a tűzfal régiónként.
+* Azure-tűzfalon nem működik globális társviszony-létesítéshez, ezért rendelkeznie kell legalább egy tűzfal központi telepítési régiónként.
+* Az Azure támogatja a 10k alkalmazás tűzfalszabályokat és 10 ezer hálózati szabályok.

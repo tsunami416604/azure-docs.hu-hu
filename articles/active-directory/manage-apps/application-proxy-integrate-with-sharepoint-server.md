@@ -1,6 +1,6 @@
 ---
-title: Távoli hozzáférés SharePoint az Azure AD alkalmazásproxy engedélyezése |} Microsoft Docs
-description: Alapvető tudnivalók a helyszíni SharePoint-kiszolgáló integrálása az Azure AD-alkalmazásproxy ismerteti.
+title: Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése |} A Microsoft Docs
+description: Egy helyszíni SharePoint-kiszolgáló integrálása az Azure AD-alkalmazásproxy alapjait ismerteti.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,201 +10,201 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 49b5620fb95e9c67b0ff0e314534dc8499714b63
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: fcd02e264d5e85b1bef7e75d2a6375d6bf5e18c0
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34162098"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363949"
 ---
-# <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy SharePoint távoli hozzáférés engedélyezése
+# <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése
 
-A cikkből megtudhatja, hogyan integrálható a helyszíni SharePoint-kiszolgáló az Azure Active Directory (Azure AD) alkalmazásproxy.
+Ez a cikk ismerteti, hogyan lehet egy helyszíni SharePoint-kiszolgáló integrálása az Azure Active Directory (Azure AD) alkalmazásproxy használatával.
 
-Távelérés SharePoint az Azure AD alkalmazásproxy engedélyezéséhez kövesse az ebben a cikkben részletes szakaszok.
+Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezéséhez kövesse az ebben a cikkben lépésről lépésre szakaszok.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy már rendelkezik a SharePoint 2013 vagy újabb a környezetben. Emellett vegye figyelembe a következő előfeltételek teljesülését:
+Ez a cikk azt feltételezi, hogy már rendelkezik a SharePoint 2013-as vagy újabb a környezetben. Ezenkívül vegye figyelembe a következő előfeltételek vonatkoznak:
 
-* SharePoint natív Kerberos támogatja. Ezért elérő felhasználókat belső helyek távolról az Azure AD-proxyn keresztül történő egyszeri bejelentkezést (SSO) tapasztalatra veheti fel.
+* A SharePoint natív Kerberos-támogatást tartalmaz. Ezért hozzáférő felhasználók belső helyek távolról az Azure AD-alkalmazásproxyn keresztül feltételezheti, hogy az egyszeri bejelentkezés (SSO) felhasználói élményt.
 
-* Ez az eset tartalmazza a SharePoint-kiszolgáló konfigurációs módosításait. Átmeneti környezet használatát javasoljuk. Ezzel a módszerrel teheti frissítések átmeneti kiszolgálóhoz először, és egy tesztelési ciklust, mielőtt éles környezetben felhasználó majd megkönnyítése.
+* Ebben a forgatókönyvben a SharePoint-kiszolgáló konfigurációs módosításait tartalmazza. Azt javasoljuk, hogy egy átmeneti környezet használatával. Ezzel a módszerrel, először az átmeneti kiszolgálón hajtsa végre frissítéseket, és ezután megkönnyítik az éles környezetben való elhelyezés előtt tesztelési ciklust.
 
-* A közzétett URL-címen SSL szükséges. Az SSL protokoll engedélyezve van a belső webhely arról, hogy hivatkozások küldött/leképezett megfelelően kell. Ha SSL még nincs konfigurálva, lásd: [SSL konfigurálása a SharePoint 2013 rendszerhez](https://blogs.msdn.microsoft.com/fabdulwahab/2013/01/20/configure-ssl-for-sharepoint-2013) utasításokat. Ellenőrizze azt is, hogy az összekötő gép megbíznak kiállítja a tanúsítványt. (A tanúsítvány nem kell nyilvánosan ki.)
+* A közzétett URL-cím SSL szükség van. A belső webhely annak érdekében, hogy hivatkozásokat küldött/leképezve megfelelően engedélyezve van az SSL kell. Ha még nincs konfigurálva SSL, [SSL konfigurálása a SharePoint 2013-hoz készült](https://blogs.msdn.microsoft.com/fabdulwahab/2013/01/20/configure-ssl-for-sharepoint-2013) útmutatást. Győződjön meg arról, hogy az összekötő gép megbízhatónak tekinti a tanúsítványt, amely ki. (A tanúsítvány nem kell nyilvánosan állítanak ki.)
 
-## <a name="step-1-set-up-single-sign-on-to-sharepoint"></a>1. lépés: Állítsa be az egyszeri bejelentkezés SharePoint
+## <a name="step-1-set-up-single-sign-on-to-sharepoint"></a>1. lépés: Állítsa be egyszeri bejelentkezést a Sharepointhoz
 
-Windows-hitelesítést használó helyi alkalmazások esetén érhető el egyszeri bejelentkezés (SSO) a Kerberos hitelesítési protokoll és a Kerberos által korlátozott delegálás (KCD) nevezett szolgáltatással. A Kerberos által korlátozott, ha konfigurálva van, lehetővé teszi, hogy egy felhasználó Windows jogkivonat beszerzése az alkalmazásproxy-összekötő akkor is, ha a felhasználó még nem jelentkezett be a Windowsba közvetlenül. Kerberos által korlátozott Delegálás kapcsolatos további információkért lásd: [Kerberos által korlátozott delegálás áttekintése](https://technet.microsoft.com/library/jj553400.aspx).
+Windows-hitelesítést használó helyszíni alkalmazások akkor érhető el, egyszeri bejelentkezés (SSO) a Kerberos hitelesítési protokoll és a Kerberos által korlátozott delegálás (KCD) szolgáltatás. KCD, ha konfigurálva van, lehetővé teszi, hogy egy felhasználó egy Windows-jogkivonat beszerzése az Application Proxy connector akkor is, ha a felhasználó még nem jelentkezett be a Windows közvetlenül. KCD kapcsolatos további információkért lásd: [Kerberos által korlátozott delegálás áttekintése](https://technet.microsoft.com/library/jj553400.aspx).
 
-Kerberos által korlátozott Delegálás beállítása a SharePoint server, az eljárásokkal a következő szekvenciális szakaszokban:
+Egy SharePoint-kiszolgáló beállítása a kcd Szolgáltatáshoz, az eljárásokkal a következő egymást követő szakaszokban:
 
-### <a name="ensure-that-sharepoint-is-running-under-a-service-account"></a>Győződjön meg arról, hogy a SharePoint szolgáltatásfiók alatt fut.
+### <a name="ensure-that-sharepoint-is-running-under-a-service-account"></a>Győződjön meg arról, hogy a SharePoint szolgáltatásfiók alatt fut
 
-Először is győződjön meg arról, hogy a meghatározott szolgáltatási fiókkal--nem helyi rendszer, a helyi szolgáltatás vagy a hálózati szolgáltatás fut-e a SharePoint. Ehhez úgy, hogy az egyszerű szolgáltatásnevek (SPN) csatolhat egy érvényes fiókot. SPN-EK, hogyan a Kerberos protokoll azonosítja a különböző szolgáltatások. És a fiókot, hogy később a Kerberos által korlátozott Delegálás konfigurálásához szüksége lesz.
+Első lépésként ellenőrizze, hogy a SharePoint fut-e egy meghatározott szolgáltatási fiók – nem helyi, helyi vagy hálózati szolgáltatást. Ehhez úgy, hogy az egyszerű szolgáltatásnevek (SPN) csatlakoztathat egy érvényes fiókot. SPN-EK, hogyan azonosítja a Kerberos protokoll a különböző szolgáltatásokat. És a használatával konfigurálja a Kerberos-fiók szükséges.
 
 > [!NOTE]
-Telepíteni kell egy korábban létrehozott Azure AD-fiókot a szolgáltatáshoz. Javasoljuk, hogy lehetővé tegye egy automatikus jelszóváltoztatáshoz. A lépéseket és a hibaelhárítási problémák az összes kapcsolatos további információkért lásd: [konfigurálása automatikus jelszó módosítása a SharePoint 2013](https://technet.microsoft.com/library/ff724280.aspx).
+Szüksége lesz egy korábban létrehozott Azure AD-fiókot a szolgáltatáshoz. Javasoljuk, hogy engedélyezze az automatikus jelszóváltoztatáshoz. Azokat a lépéseket és a hibaelhárítási problémák teljes kapcsolatos további információkért lásd: [jelszavának automatikus módosítását konfigurálása a SharePoint 2013-ban](https://technet.microsoft.com/library/ff724280.aspx).
 
-Győződjön meg arról, hogy a helyek egy meghatározott szolgáltatás fiók alatt fut, hajtsa végre az alábbi lépéseket:
+Győződjön meg arról, hogy a helyek egy meghatározott szolgáltatás fiók alatt futnak, hajtsa végre az alábbi lépéseket:
 
-1. Nyissa meg a **SharePoint 2013 központi felügyelet** hely.
-2. Ugrás a **biztonsági** válassza **szolgáltatásfiókok konfigurálása**.
-3. Válassza ki **webalkalmazás-készlet - SharePoint - 80**. A beállítások kis mértékben eltérő lehet a webalkalmazás-készlet neve alapján, vagy ha a webes készlet alapértelmezés szerint az SSL.
+1. Nyissa meg a **SharePoint 2013 központi felügyeleti** hely.
+2. Lépjen a **biztonsági** válassza **szolgáltatásfiókok konfigurálása**.
+3. Válassza ki **webalkalmazás-készlet - SharePoint – 80-as**. A beállítások némileg eltérőek lehetnek a webalkalmazás-készlet neve alapján, vagy ha a webes készletet használja az SSL-alapértelmezés szerint.
 
   ![Lehetőségek a szolgáltatásfiók konfigurálása](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
 
-4. Ha **válassza ki a fiókot ehhez az összetevőhöz** mező értéke **helyi szolgáltatás** vagy **hálózati szolgáltatás**, fiók létrehozásához szükséges. Ha nem, akkor végzett, és továbbléphet a következő szakasszal.
-5. Válassza ki **új felügyelt fiók regisztrálása**. A fiók létrehozása után meg kell adni **webes alkalmazáskészlet** a fiók használata előtt.
+4. Ha **válassza ki a fiókot ehhez az összetevőhöz** mező értéke **helyi szolgáltatás** vagy **hálózati szolgáltatás**, hozzon létre egy fiókot kell. Ha nem, akkor ezzel végzett, és áthelyezheti a következő szakaszra.
+5. Válassza ki **új felügyelt fiók regisztrálása**. Miután létrehozta a fiókot, be kell állítania **webes alkalmazáskészlet** a fiók használata előtt.
 
 ### <a name="configure-sharepoint-for-kerberos"></a>A Kerberos a SharePoint konfigurálása
 
-Kerberos által korlátozott Delegálás segítségével hajtsa végre az egyszeri bejelentkezés a SharePoint-kiszolgálóra.
+Egyszeri bejelentkezés a SharePoint-kiszolgálóra való végrehajtásához használhatja a kcd Szolgáltatáshoz.
 
 A SharePoint-webhely a Kerberos-hitelesítés konfigurálása:
 
-1. Nyissa meg a **SharePoint 2013 központi felügyelet** hely.
-2. Lépjen **Alkalmazáskezelés**, jelölje be **webes alkalmazásokat kezeléséhez**, és válassza ki a SharePoint-webhelye. Az ebben a példában is **SharePoint - 80**.
+1. Nyissa meg a **SharePoint 2013 központi felügyeleti** hely.
+2. Lépjen a **Alkalmazáskezelés**válassza **webes alkalmazások kezelése**, és válassza ki a SharePoint-webhely. Ebben a példában van **SharePoint – 80-as**.
 
   ![A SharePoint-webhely kiválasztása](./media/application-proxy-integrate-with-sharepoint-server/manage-web-applications.png)
 
-3. Kattintson a **hitelesítésszolgáltatókat** az eszköztáron.
-4. Az a **hitelesítésszolgáltatókat** kattintson **alapértelmezett zóna** a beállítások megtekintéséhez.
-5. Az a **hitelesítés szerkesztése** párbeszédpanel mezőben görgessen lefelé, amíg megjelenik **jogcímek hitelesítési típusok**. Győződjön meg arról, hogy mindkét **Windows-hitelesítés engedélyezése** és **integrált Windows-hitelesítés** van kiválasztva.
-6. A legördülő listából, az integrált Windows-hitelesítés mező, ügyeljen arra, hogy **egyeztetés (Kerberos)** van kiválasztva.
+3. Kattintson a **hitelesítésszolgáltatók** az eszköztáron.
+4. Az a **hitelesítésszolgáltatók** kattintson **alapértelmezett zóna** megadott beállítások megjelenítéséhez.
+5. Az a **hitelesítés szerkesztése** párbeszédpanel mezőben görgessen lefelé, amíg meg nem látja **jogcímek hitelesítési típusok**. Ügyeljen arra, hogy mindkét **Windows-hitelesítés engedélyezése** és **integrált Windows-hitelesítés** ki van jelölve.
+6. Az integrált Windows-hitelesítés mező legördülő mezőben, győződjön meg arról, hogy **egyeztetés (Kerberos)** van kiválasztva.
 
-  ![Hitelesítés szerkesztése párbeszédpanel](./media/application-proxy-integrate-with-sharepoint-server/service-edit-authentication.png)
+  ![Szerkessze a hitelesítési párbeszédpanelt](./media/application-proxy-integrate-with-sharepoint-server/service-edit-authentication.png)
 
-7. Alján a **hitelesítés szerkesztése** párbeszédpanel, kattintson a **mentése**.
+7. Alsó részén a **hitelesítés szerkesztése** párbeszédpanelen kattintson a **mentése**.
 
-### <a name="set-a-service-principal-name-for-the-sharepoint-service-account"></a>Egy egyszerű szolgáltatásnévvel SharePoint szolgáltatásfiók beállítása
+### <a name="set-a-service-principal-name-for-the-sharepoint-service-account"></a>Állítsa be a szolgáltatásnév a SharePoint-szolgáltatásfiókhoz
 
-Kerberos által korlátozott Delegálás konfigurálása előtt kell a SharePoint szolgáltatás konfigurált szolgáltatásfiókként fut azonosítani. A szolgáltatás azonosítására úgy, hogy egy egyszerű Szolgáltatásnevet. További információkért lásd: [egyszerű szolgáltatásnevek](https://technet.microsoft.com/library/cc961723.aspx).
+Mielőtt beállítaná a kcd Szolgáltatáshoz, a SharePoint szolgáltatás konfigurált szolgáltatásfiókként fut azonosítania kell. A szolgáltatás egyszerű Szolgáltatásneve beállításával azonosítására. További információkért lásd: [egyszerű szolgáltatásnevek](https://technet.microsoft.com/library/cc961723.aspx).
 
-SPN formátuma:
+Egyszerű szolgáltatásnév formátuma:
 
 ```
 <service class>/<host>:<port>
 ```
 
-Az egyszerű Szolgáltatásnevet formátumban:
+Az egyszerű szolgáltatásnév formátuma:
 
-* _osztály szolgáltatás_ a szolgáltatás egyedi neve. A SharePoint, használhat **HTTP**.
+* _osztály szolgáltatás_ a szolgáltatás egy egyedi név. A SharePoint, használhat **HTTP**.
 
-* _állomás_ a teljes tartománynév vagy a gazdagép, amely a szolgáltatás fut a NetBIOS-nevét. A SharePoint-webhelyre Ez a szöveg lehet szükség az URL-címe, az IIS éppen használt verziójától függően.
+* _gazdagép_ a teljes tartománynév vagy NetBIOS-neve, amelyen a szolgáltatás fut, a gazdagép. Egy SharePoint-hely URL-címét a webhely az IIS használt verziójától függően elképzelhető ezt a szöveget.
 
-* _port_ nem kötelező megadni.
+* _port_ nem kötelező.
 
-Ha a SharePoint-kiszolgáló teljes Tartományneve:
+Ha a SharePoint-kiszolgáló teljes Tartománynevét:
 
 ```
 sharepoint.demo.o365identity.us
 ```
 
-Az egyszerű szolgáltatásnév akkor:
+Majd az egyszerű szolgáltatásnév van:
 
 ```
 HTTP/sharepoint.demo.o365identity.us demo
 ```
 
-Is szükség lehet SPN-ek beállítása adott webhelyeken a kiszolgálón. További információkért lásd: [konfigurálja a Kerberos-hitelesítés](https://technet.microsoft.com/library/cc263449(v=office.12).aspx). Figyelmesen elolvassa az "A Kerberos-hitelesítést használó webalkalmazások létrehozása egyszerű szolgáltatásnevek" szakaszban.
+Szükség lehet SPN-ek beállítása adott webhelyeken a kiszolgálón. További információkért lásd: [konfigurálja a Kerberos-hitelesítés](https://technet.microsoft.com/library/cc263449(v=office.12).aspx). Az "A Kerberos-hitelesítést használó webalkalmazások létrehozása egyszerű szolgáltatásnevek" szakaszban figyeljen.
 
-Ahhoz, hogy az SPN-ek beállítása a legegyszerűbb módja, kövesse a SPN-formátumok, amely már jelen, a helyek lehetnek. A szolgáltatás fiók regisztrálása e SPN-ek másolja. Ehhez tegye a következőket:
+A legegyszerűbb módja, hogy az SPN-ek beállítása, hogy az SPN-formátumok, amelyek esetleg már megtalálható a helyek kövesse. Másolja ki ezeket SPN-eket regisztrálni a fiók ellen. Ehhez tegye a következőket:
 
-1. Tallózással keresse meg az egyszerű Szolgáltatásnevet a helyhez egy másik számítógépről.
- Ha így tesz, a Kerberos-jegyek vonatkozó készlete gyorsítótárazza a számítógépen. Ezek a jegyek vetítéséhez webhely SPN tartalmaznak.
+1. Keresse meg az egyszerű szolgáltatásnév az a hely másik gépről.
+ Ha így tesz, a Kerberos-jegyekhez megfelelő készletét gyorsítótárazza a gépen. Ezeket a jegyeket a célhelyhez vetítéséhez egyszerű Szolgáltatásnevének tartalmaz.
 
-2. Nevű eszköz használatával lehet lekérni a webhelyre vonatkozóan, az egyszerű szolgáltatásnév [Klist](http://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html). Ugyanabban a környezetben, a felhasználó a webhely a böngészőben futó parancsablakban futtassa a következő parancsot:
+2. Az adott helyhez tartozó egyszerű szolgáltatásnév nevű eszköz használatával kérheti le [Klist](http://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html). Egy parancssori ablakban, amely ugyanabban a környezetben, ki fért hozzá a webhelyet a böngészőben a felhasználóként fut-e futtassa a következő parancsot:
 ```
 Klist
 ```
-Klist majd készletet ad vissza, a cél SPN-ek. Ebben a példában a kijelölt érték az SPN szükséges:
+Klist majd cél SPN-ek készletét adja vissza. Ebben a példában a kijelölt érték szükséges egyszerű szolgáltatásnév:
 
-  ![Példa Klist eredménye](./media/application-proxy-integrate-with-sharepoint-server/remote-sharepoint-target-service.png)
+  ![Példa Klist eredmények](./media/application-proxy-integrate-with-sharepoint-server/remote-sharepoint-target-service.png)
 
-4. Most, hogy az egyszerű Szolgáltatásnevet, győződjön meg arról, hogy megfelelően van konfigurálva a szolgáltatás fiók a webes alkalmazás korábban beállított. A következő parancsot a parancssorból futtassa a tartomány rendszergazdája:
+4. Most, hogy az egyszerű Szolgáltatásnevet, győződjön meg arról, hogy megfelelően van konfigurálva a szolgáltatásfiókhoz, amelyet korábban a webes alkalmazás beállítása a. A tartomány-rendszergazdaként futtassa a következő parancsot a parancssorba:
 
  ```
  setspn -S http/sharepoint.demo.o365identity.us demo\sp_svc
  ```
 
- Ez a parancs beállítja a SharePoint-szolgáltatás futtatásához használt fiók egyszerű Szolgáltatásnevét _demo\sp_svc_.
+ Ez a parancs beállítja a SharePoint-szolgáltatást futtató fiók egyszerű Szolgáltatásnevét _demo\sp_svc_.
 
- Cserélje le _http/sharepoint.demo.o365identity.us_ van a Célszámítógéphez, a kiszolgáló és _demo\sp_svc_ a szolgáltatásfiókkal a környezetben. A Setspn parancs megkeresi az egyszerű Szolgáltatásnevet, mielőtt hozzáadja azt. Ebben az esetben előfordulhat, hogy megjelenik egy **ismétlődő SPN-értéket** hiba. Ha ezt a hibaüzenetet látja, győződjön meg arról, hogy az érték a szolgáltatás fiókhoz.
+ Cserélje le _http/sharepoint.demo.o365identity.us_ az a kiszolgáló egyszerű Szolgáltatásnevének és _demo\sp_svc_ a szolgáltatási fiókkal a környezetben. A Setspn parancs keres az egyszerű Szolgáltatásnevet, mielőtt hozzáadja azt. Ebben az esetben előfordulhat, hogy lát egy **ismétlődő SPN érték** hiba. Ha ezt a hibaüzenetet, győződjön meg arról, hogy az érték a szolgáltatás-fiókhoz társítva.
 
-Ellenőrizheti, hogy az egyszerű Szolgáltatásnevet a Setspn parancs futtatásával a -l beállítással lett hozzáadva. Ez a parancs kapcsolatos további információkért lásd: [Setspn](https://technet.microsoft.com/library/cc731241.aspx).
+Ellenőrizheti, hogy az egyszerű Szolgáltatásnevet a Setspn parancs futtatásával a -l lehetőséggel jelent. Ezzel a paranccsal kapcsolatos további információkért lásd: [Setspn](https://technet.microsoft.com/library/cc731241.aspx).
 
 ### <a name="ensure-that-the-connector-is-set-as-a-trusted-delegate-to-sharepoint"></a>Győződjön meg arról, hogy az összekötő megbízható meghatalmazottként értéke SharePoint
 
-Konfigurálja a Kerberos által korlátozott Delegálás, hogy az Azure AD alkalmazásproxy delegálhatja a SharePoint szolgáltatás felhasználói identitásokat. Azáltal, hogy a felhasználók, akik az Azure Active Directory hitelesített Kerberos-jegyek beolvasása az alkalmazásproxy-összekötő Kerberos által korlátozott Delegálás konfigurálása Majd, hogy a kiszolgáló továbbítja a környezetben a célalkalmazás vagy a SharePoint ebben az esetben.
+Állítsa a kcd Szolgáltatáshoz, hogy az Azure AD-alkalmazásproxy szolgáltatás delegálhatja a felhasználói identitások a SharePoint szolgáltatáshoz. Konfigurálja a kcd Szolgáltatáshoz beolvasni a felhasználók, akik az Azure ad-ben hitelesített Kerberos-jegyet az Application Proxy connector engedélyezésével. Majd, hogy a kiszolgáló továbbítja a környezetet a célalkalmazás vagy a SharePoint ebben az esetben.
 
-A Kerberos által korlátozott Delegálás konfigurálásához ismételje meg minden összekötő gép a következő lépéseket:
+Konfigurálja a Kerberos, minden összekötő géphez ismételje meg a következő lépéseket:
 
-1. Jelentkezzen be a tartományvezérlőbe tartományi rendszergazdaként, és nyisson **Active Directory – felhasználók és számítógépek**.
-2. Az összekötőt futtató számítógépen található. Az ebben a példában is ugyanarra a SharePoint-kiszolgálóra.
+1. Jelentkezzen be egy tartományvezérlőre tartományi rendszergazdaként, és nyissa meg **Active Directory – felhasználók és számítógépek**.
+2. Az összekötőt futtató számítógépen található. Ebben a példában ugyanazon a SharePoint-kiszolgálón.
 3. Kattintson duplán arra a számítógépre, és kattintson a **delegálás** fülre.
-4. Győződjön meg arról, hogy a delegálás beállítása **a számítógépen csak a megadott szolgáltatások delegálhatók**. Ezt követően válassza **bármely hitelesítési protokoll**.
+4. Győződjön meg arról, hogy a delegálási beállítások beállítása **számítógépen csak a megadott szolgáltatások delegálhatók**. Ezután válassza ki **bármely hitelesítési protokoll**.
 
-  ![A delegálási beállításokat](./media/application-proxy-integrate-with-sharepoint-server/delegation-box.png)
+  ![A delegálási beállítások](./media/application-proxy-integrate-with-sharepoint-server/delegation-box.png)
 
-5. Kattintson a **Hozzáadás** gombra, majd **felhasználók vagy számítógépek**, és keresse meg a szolgáltatás fiók.
+5. Kattintson a **Hozzáadás** gombra, majd **felhasználók vagy számítógépek**, és keresse meg a szolgáltatás-fiókot.
 
-  ![A szolgáltatásfiók SPN hozzáadása](./media/application-proxy-integrate-with-sharepoint-server/users-computers.png)
+  ![A szolgáltatásfiók egyszerű Szolgáltatásnevének hozzáadása](./media/application-proxy-integrate-with-sharepoint-server/users-computers.png)
 
-6. Válassza ki azt, amelyik a fiók korábban létrehozott egyszerű szolgáltatásnevek listájának megtekintéséhez.
+6. SPN-ek listájában válassza ki a korábban létrehozott szolgáltatásfiók.
 7. Kattintson az **OK** gombra. Kattintson a **OK** újra, hogy a módosítások mentéséhez.
 
-## <a name="step-2-enable-remote-access-to-sharepoint"></a>2. lépés: A SharePoint távoli hozzáférés engedélyezése
+## <a name="step-2-enable-remote-access-to-sharepoint"></a>2. lépés: Engedélyezze a távoli hozzáférés a Sharepointhoz
 
-Most, hogy a SharePoint Kerberos és a beállított Kerberos által korlátozott Delegálás engedélyezését, készen áll az Azure AD-proxyn keresztül történő távoli hozzáférés a SharePoint-farm közzététele.
+Most, hogy a SharePoint Kerberos és a beállított KCD engedélyezését, készen áll az Azure AD-alkalmazásproxyn keresztül távoli hozzáférés a SharePoint-farm közzététele.
 
-1. Tegye közzé a SharePoint-webhely, a következő beállításokkal. Részletes útmutatásért lásd: [az Azure AD-alkalmazásproxy használó alkalmazások közzététele](application-proxy-publish-azure-portal.md). 
-   - **Belső URL-cím**: a SharePoint-webhely URL-CÍMÉT belső, például **https://SharePoint/**. Ebben a példában, ügyeljen arra, hogy használjon **https**
+1. Közzététel a SharePoint-webhely a következő beállításokkal. Lépésenkénti útmutatásért lásd: [közzététel az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md). 
+   - **Belső URL-cím**: a SharePoint-webhely URL-CÍMÉT a cégen belül, például **https://SharePoint/**. Ebben a példában győződjön meg arról, használandó **https**
    - **Előhitelesítési módszer**: az Azure Active Directory
-   - **URL-címet a fejlécekben fordítása**: nincs
+   - **A fejlécek URL-cím fordításának**: nem
 
    >[!TIP]
-   >SharePoint használja a _állomásfejléc_ megkeresheti a hely értékét. Emellett ez az érték alapján hivatkozásokat hoz létre. A nettó hatása az, hogy minden hivatkozás, amely SharePoint-hoz létre-e a közzétett URL-cím helyesen van-e állítva a külső URL-cím használatára. Az érték **Igen** is lehetővé teszi, hogy az összekötő továbbítja a kérést a háttér-alkalmazás. Azonban a értékre állítását **nem** azt jelenti, hogy az összekötő nem küld a belső neve. Ehelyett az összekötő elküldi az állomásfejléc a közzétett URL-címként a háttér-alkalmazásnak.
+   >A SharePoint használja a _állomásfejléc_ érték keresse ki a helyet. Ez az érték alapján hivatkozásokat is állít elő. Az eredő hatás, hogy minden olyan hivatkozás, amely a SharePoint hoz létre egy közzétett URL-címet, amely a külső URL-cím használata megfelelően vannak beállítva. Az érték **Igen** is lehetővé teszi, hogy az összekötő továbbítja a kérést a háttéralkalmazás. Azonban érték beállítása **nem** azt jelenti, hogy az összekötő nem küld a belső neve. Ehelyett az összekötő küld az állomásfejléc közzétett URL-címként a háttéralkalmazás.
 
-   ![SharePoint alkalmazás közzététele](./media/application-proxy-integrate-with-sharepoint-server/publish-app.png)
+   ![Alkalmazás közzététele SharePoint](./media/application-proxy-integrate-with-sharepoint-server/publish-app.png)
 
-2. Miután közzétette az alkalmazást, az egyszeri bejelentkezés beállítások konfigurálása a következő lépéseket:
+2. Az alkalmazás közzététele után konfigurálja az egyszeri bejelentkezés beállításai az alábbi lépéseket:
 
-   1. A portál alkalmazás lapon válassza az **egyszeri bejelentkezés**.
-   2. Egyszeri bejelentkezés módot, válassza a **integrált Windows-hitelesítés**.
-   3. Belső alkalmazás SPN értékre a korábban beállított értékeket. Ehhez a példához, amely lenne **http/sharepoint.demo.o365identity.us**.
+   1. Az alkalmazás oldalán a portálon, válassza **egyszeri bejelentkezési**.
+   2. Válassza az egyszeri bejelentkezési mód, **integrált Windows-hitelesítés**.
+   3. Belső alkalmazás egyszerű Szolgáltatásnevét, amely a korábban beállított értékre állítva. Ebben a példában ez lenne **http/sharepoint.demo.o365identity.us**.
 
-   ![Az egyszeri bejelentkezés integrált Windows-hitelesítés konfigurálása](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
+   ![Egyszeri bejelentkezés az integrált Windows-hitelesítés konfigurálása](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
-3. Az alkalmazás beállításának befejezéséhez, keresse fel a **felhasználók és csoportok** szakaszt, és rendelje hozzá a felhasználók az alkalmazás eléréséhez. 
+3. Az alkalmazás beállításának befejezéséhez, nyissa meg a **felhasználók és csoportok** szakaszt, és hozzárendelhet felhasználókat az alkalmazás eléréséhez. 
 
-## <a name="step-3-ensure-that-sharepoint-knows-about-the-external-url"></a>3. lépés: Győződjön meg arról, hogy a SharePoint ismer a külső URL-címe
+## <a name="step-3-ensure-that-sharepoint-knows-about-the-external-url"></a>3. lépés: Győződjön meg arról, hogy a SharePoint ismer a külső URL-cím
 
-Az utolsó lépése annak érdekében, hogy a SharePoint található a helyhez, a külső URL-címe alapján, hogy a külső URL-cím alapján hivatkozások miatt. Ehhez a SharePoint-webhely másodlagos hozzáférés-leképezések konfigurálása.
+Az utolsó lépéseként győződjön meg arról, hogy a SharePoint találhatja a hely, a külső URL-cím alapján, hogy a külső URL-cím alapján hivatkozások vártak. Ehhez a SharePoint-hely másodlagos címek leképezése konfigurálása.
 
-1. Nyissa meg a **SharePoint 2013 központi felügyelet** hely.
-2. A **rendszerbeállítások**, jelölje be **alternatív leképezések konfigurálása**. A másodlagos hozzáférési megfeleltetések gombra.
+1. Nyissa meg a **SharePoint 2013 központi felügyeleti** hely.
+2. A **rendszerbeállítások**válassza **konfigurálása másodlagos címek leképezése**. Megnyílik a másodlagos címek leképezése mezőbe.
 
-  ![Másodlagos hozzáférési megfeleltetések mezőbe](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
+  ![Másodlagos címek leképezése mezőbe](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
 
-3. A legördülő lista melletti **másodlagos hozzáférési leképezési gyűjtemény**, jelölje be **módosítás másodlagos hozzáférési leképezési gyűjtemény**.
-4. Válassza ki a webhely – például **SharePoint - 80**.
-5. Ha szeretné, adja hozzá a közzétett URL-címet vagy egy belső URL-CÍMÉT, vagy egy nyilvános URL-címet. A példa egy nyilvános URL-címet, az extranetről.
+3. A legördülő lista melletti **másodlagos hozzáférési leképezési gyűjteményt**válassza **módosítása másik hozzáférési leképezési gyűjteményt**.
+4. Válassza ki a webhely – például **SharePoint – 80-as**.
+5. Ha szeretné, adja hozzá a közzétett URL-cím egy belső URL-cím vagy egy nyilvános URL-címet. Ebben a példában egy nyilvános URL-címet használ, az extranetről.
 6. Kattintson a **szerkesztése nyilvános URL-címek** a a **Extranet** elérési utat, majd adja meg a külső URL-cím, az alkalmazás közzétételekor létrehozott. Adja meg például **https://sharepoint-iddemo.msappproxy.net**.
 
   ![Az elérési út megadása](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
 
 7. Kattintson a **Save** (Mentés) gombra.
 
-A SharePoint-webhely, az Azure AD-alkalmazásproxy külsőleg keresztül érhetők el.
+Most már elérheti a SharePoint-webhely külsőleg Azure AD-alkalmazásproxy használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egyéni tartományok az Azure AD alkalmazásproxy használata](application-proxy-configure-custom-domain.md)
-- [Az Azure AD-alkalmazásproxy összekötők ismertetése](application-proxy-connectors.md)
+- [Egyéni tartományok használata az Azure AD-alkalmazásproxy](application-proxy-configure-custom-domain.md)
+- [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Egyszeri bejelentkezés kezelése az Azure AD-alkalmazásproxy |} Microsoft Docs
-description: Az egyszeri bejelentkezés az alkalmazásproxy alapjainak megismerése
+title: Egyszeri bejelentkezés kezelése az Azure AD-alkalmazásproxyval |} A Microsoft Docs
+description: Egyszeri bejelentkezés alkalmazásproxyval való alapjainak ismertetése
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,73 +10,73 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 80b227ed787b1095ae8504ddcca16492b0a7b357
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbdbe8b83af20f66ad2cc99d2a5665262479b4a9
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594295"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364148"
 ---
-# <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Hogyan nyújt az Azure AD-alkalmazásproxy egyszeri bejelentkezéshez?
+# <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Hogyan nyújt az Azure AD-alkalmazásproxy egyszeri bejelentkezést?
 
-Egyszeri bejelentkezés az Azure AD alkalmazásproxy egyik fő eleme.  Mivel a felhasználók csak kell bejelentkezni az Azure Active Directory, a felhőben a legjobb felhasználói élményt biztosít. Az Azure Active Directory hitelesítéshez, ha az alkalmazásproxy-összekötő kezeli a hitelesítési a helyszíni alkalmazások. A háttéralkalmazás nem sikerült megállapítani, jelentkezzen be a Proxy és a normál használata egy tartományhoz csatlakoztatott eszközön keresztül egy távoli felhasználó közötti különbség. 
+Egyszeri bejelentkezés az Azure AD Application Proxy egyik fő eleme.  Mivel a felhasználók csak az Azure Active Directoryra a felhőbeli bejelentkezéshez a legjobb felhasználói élményt biztosít. Miután az Azure Active Directory hitelesítést végezni, az Application Proxy connector kezeli a helyszíni alkalmazás a hitelesítési. A háttéralkalmazás nem állapítható meg, hogy jelentkezzen be a Proxy és a egy normál használata egy tartományhoz csatlakoztatott eszközön keresztül egy távoli felhasználó közötti különbség. 
 
-Azure Active Directoryval az egyszeri bejelentkezés az alkalmazások használatához kell kiválasztania **Azure Active Directory** előtti hitelesítési módszerként. Ha **csatlakoztatott** ezt követően a felhasználók nem hitelesítéséhez az Azure Active Directory összes, de a rendszer átirányítja rögtön az alkalmazást. E beállítás konfigurálása először közzétenni egy alkalmazást, vagy keresse meg az alkalmazás az Azure portálon és a alkalmazás proxybeállításokat. 
+Azure Active Directory használata egyszeri bejelentkezéshez az alkalmazások számára, jelölje ki kell **Azure Active Directory** előtti hitelesítési módszerként. Ha **csatlakoztatott** , majd a felhasználók esetén az összes Azure Active Directory hitelesítést nem, de a rendszer átirányítja közvetlenül az alkalmazás. Ezzel a beállítással konfigurálhatja, amikor először közzétenni egy alkalmazást, vagy keresse meg az alkalmazás az Azure Portalon és az alkalmazásproxy beállításainak szerkesztése. 
 
-Az egyszeri bejelentkezésre vonatkozó beállításokat megtekintéséhez kövesse az alábbi lépéseket:
+Az egyszeri bejelentkezési lehetőségek megtekintéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Navigáljon a **Azure Active Directory** > **vállalati alkalmazások** > **összes alkalmazás**.
-3. Válassza ki az alkalmazást, amelynek egyszeri bejelentkezésre vonatkozó beállításokat szeretne kezelni.
-4. Válassza ki **egyszeri bejelentkezés**.
+2. Navigáljon a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás**.
+3. Válassza ki az alkalmazást, amelynek egyszeri bejelentkezésre vonatkozó beállításokat szeretné kezelni.
+4. Válassza ki **egyszeri bejelentkezési**.
 
    ![Egyszeri bejelentkezés legördülő menü](./media/application-proxy-single-sign-on/single-sign-on-mode.png)
 
-A legördülő menü az egyszeri bejelentkezés az alkalmazás öt lehetőségeket mutatja be:
+A legördülő menüből az egyszeri bejelentkezés az alkalmazás öt beállításai láthatók:
 
 * Azure AD-beli egyszeri bejelentkezés letiltva
-* Jelszó alapú bejelentkezés
+* Jelszóalapú bejelentkezés
 * Csatolt bejelentkezés
 * Integrált Windows-hitelesítés
-* Fejléc-alapú bejelentkezés
+* Fejlécalapú bejelentkezés
 
 ## <a name="azure-ad-single-sign-on-disabled"></a>Azure AD-beli egyszeri bejelentkezés letiltva
 
-Ha nem szeretné használni az Azure Active Directory-integráció az egyszeri bejelentkezés az alkalmazáshoz, válassza a **az Azure AD az egyszeri bejelentkezés le van tiltva**. Ezt a lehetőséget választja a felhasználók kétszer hitelesíthetők. Először hitelesítéséhez az Azure Active Directoryhoz, és magának az alkalmazásnak, majd jelentkezzen be. 
+Ha nem szeretné használni az Azure Active Directory-integráció az egyszeri bejelentkezés az alkalmazáshoz, válassza a **az Azure AD egyszeri bejelentkezés le van tiltva**. Ezt a lehetőséget választja a felhasználók kétszer hitelesíthetők. Először az Azure Active Directory hitelesítést, és magát az alkalmazást, majd jelentkezzen be. 
 
-Ez a beállítás akkor hasznos, ha a helyszíni alkalmazások nincs szükség a felhasználók hitelesítéséhez, de hozzá szeretne adni az Azure Active Directory, a távelérés biztonsági réteget. 
+Ez a beállítás akkor hasznos, ha a helyszíni alkalmazás nincs szükség a felhasználók számára a hitelesítést, de szeretne hozzáadni az Azure Active Directory, a távelérés biztonsági réteget. 
 
-## <a name="password-based-sign-on"></a>Jelszó alapú bejelentkezés
+## <a name="password-based-sign-on"></a>Jelszóalapú bejelentkezés
 
-Ha azt szeretné, az Azure Active Directory használatával és egy jelszó-tárolónak a helyszíni alkalmazások, **jelszóalapú bejelentkezés**. Ez a beállítás akkor hasznos, ha az alkalmazás végzi a hitelesítést egy felhasználónév/jelszó kombinált jogkivonatot, vagy a fejlécek helyett. A jelszó alapú bejelentkezés a felhasználóknak kell jelentkezzen be az alkalmazás az első alkalommal. Ezt követően Azure Active Directory választékát kínálja a felhasználónevet és jelszót a felhasználó nevében. 
+Ha az Azure Active Directory a helyszíni alkalmazások és a jelszó-tárolónak használni szeretne, válassza ki a **jelszóalapú bejelentkezés**. Ez a beállítás akkor hasznos, ha az alkalmazás végzi a hitelesítést egy felhasználónév/jelszó kombinált jogkivonatot, vagy a fejlécek helyett. Jelszóalapú bejelentkezés, a felhasználóknak kell jelentkezzen be az alkalmazás az első alkalommal. Ezt követően az Azure Active Directory szolgáltat, amelyekkel a felhasználónevet és jelszót a felhasználó nevében. 
 
-Jelszó alapú bejelentkezés beállításával kapcsolatos információkért lásd: [az egyszeri bejelentkezés az alkalmazásproxy vaulting jelszó](application-proxy-configure-single-sign-on-password-vaulting.md).
+Jelszóalapú bejelentkezés beállításával kapcsolatos további információkért lásd: [jelszó az egyszeri bejelentkezés alkalmazásproxyval való vaulting](application-proxy-configure-single-sign-on-password-vaulting.md).
 
 ## <a name="linked-sign-on"></a>Csatolt bejelentkezés
 
-Ha már rendelkezik egyszeri bejelentkezéshez megoldás beállítása a helyszíni identitások, válassza a **bejelentkezés kapcsolódó**. Ez a beállítás lehetővé teszi az Azure Active Directory kihasználhatják a meglévő SSO megoldások, de továbbra is a felhasználók távoli hozzáférést biztosít az alkalmazást. 
+Ha már rendelkezik egyszeri bejelentkezési megoldás beállítása a helyszíni identitások, válassza a **csatolt bejelentkezés**. Ez a beállítás lehetővé teszi az Azure Active Directory kihasználhatja meglévő SSO-megoldások, de továbbra is a felhasználók távoli hozzáférést biztosít az alkalmazásnak. 
 
-Csatolt bejelentkezés (hivatalosan néven meglévő egyszeri bejelentkezés) kapcsolatos információkért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
+Csatolt bejelentkezés (korábbi nevén meglévő egyszeri bejelentkezés) kapcsolatos információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="integrated-windows-authentication"></a>Integrált Windows-hitelesítés
 
-Ha a helyszíni alkalmazások integrált Windows-Authentication(IWA) használ, vagy ha azt szeretné, az egyszeri bejelentkezés, a Kerberos által korlátozott delegálás (KCD) használandó **integrált Windows-hitelesítés**. Ezzel a beállítással a felhasználók csak kell hitelesítéséhez az Azure Active Directoryhoz, és majd az alkalmazásproxy-összekötő megszemélyesít egy Kerberos-jogkivonata, és jelentkezzen be az alkalmazás a felhasználó. 
+Ha a helyszíni alkalmazások integrált Windows-Authentication(IWA) használ, vagy ha azt szeretné, a Kerberos által korlátozott delegálás (KCD) használata egyszeri bejelentkezéshez, válassza ki a **integrált Windows-hitelesítés**. Ezzel a beállítással a felhasználók csak az Azure Active Directory hitelesítést kell, és ezután a az Application Proxy connector megszemélyesíti a felhasználó számára egy Kerberos-token beszerzése és jelentkezzen be az alkalmazást. 
 
-Integrált Windows-hitelesítés beállításával kapcsolatos információkért lásd: [Kerberos által korlátozott delegálás az egyszeri bejelentkezés az alkalmazásproxy](application-proxy-configure-single-sign-on-with-kcd.md).
+Integrált Windows-hitelesítés beállításával kapcsolatos további információkért lásd: [Kerberos által korlátozott delegálás az egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-with-kcd.md).
 
-## <a name="header-based-sign-on"></a>Fejléc-alapú bejelentkezés 
+## <a name="header-based-sign-on"></a>Fejlécalapú bejelentkezés 
 
-Ha az alkalmazások fejlécek használnak a hitelesítéshez, válassza a **fejléc-alapú bejelentkezés**. Ezzel a beállítással a felhasználók csak kell hitelesítés az Azure Active Directoryban. Microsoft-partnereknek, egy harmadik fél hitelesítési szolgáltatással PingAccess, amely az Azure Active Directory jogkivonat lefordítani a fejléc formátuma az alkalmazás neve. 
+Ha az alkalmazások hitelesítési fejléceket használni, válassza a **fejlécalapú bejelentkezés**. Ezzel a beállítással a felhasználók csak kell hitelesítést az Azure Active Directoryban. Microsoft-partnerek egy harmadik fél hitelesítési szolgáltatással nevű PingAccess, amely az Azure Active Directory-jogkivonat fordítja az alkalmazás a fejléc formátuma. 
 
-Fejléc-alapú hitelesítés beállításával kapcsolatos információkért lásd: [fejléc-alapú hitelesítés egyszeri bejelentkezéshez az alkalmazásproxy](application-proxy-configure-single-sign-on-with-ping-access.md).
+Fejlécalapú hitelesítéskor beállításával kapcsolatos további információkért lásd: [fejlécalapú hitelesítéskor az egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-with-ping-access.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az egyszeri bejelentkezés az alkalmazásproxy vaulting jelszó](application-proxy-configure-single-sign-on-password-vaulting.md)
-- [Kerberos által korlátozott delegálás az egyszeri bejelentkezés az alkalmazásproxy](application-proxy-configure-single-sign-on-with-kcd.md)
-- [Az egyszeri bejelentkezés az alkalmazásproxy fejléc-alapú hitelesítés](application-proxy-configure-single-sign-on-with-ping-access.md) 
+- [Az egyszeri bejelentkezés alkalmazásproxyval való vaulting jelszó](application-proxy-configure-single-sign-on-password-vaulting.md)
+- [Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásproxy használatával](application-proxy-configure-single-sign-on-with-kcd.md)
+- [Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy használatával](application-proxy-configure-single-sign-on-with-ping-access.md) 

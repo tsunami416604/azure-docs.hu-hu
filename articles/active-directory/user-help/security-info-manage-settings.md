@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4a29f3e8b8f12091d640d68be3e2b0e87a8cc271
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: abd2984574f80f03f276861782ff9ee51348d07e
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348486"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391377"
 ---
 # <a name="manage-your-security-info-preview"></a>A biztonsági adatok (előzetes verzió) kezelése
 
@@ -86,7 +86,7 @@ Ez a cikk segít, hogy a biztonsági adatait, beleértve a kétlépéses ellenő
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg a biztonsági adatok a [Security info (előzetes verzió) – áttekintés](user-help-security-info-overview.md) cikk.
+- További információ a biztonsági adatok [Security info (előzetes verzió) – áttekintés](user-help-security-info-overview.md).
 
 - További tudnivalók a kétlépéses ellenőrzést a [kétlépéses ellenőrzési áttekintése](user-help-two-step-verification-overview.md) cikk. 
 

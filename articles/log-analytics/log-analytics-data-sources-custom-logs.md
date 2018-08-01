@@ -1,6 +1,6 @@
 ---
-title: Az Azure Naplóelemzés egyéni naplógyűjtéshez |} Microsoft Docs
-description: A Naplóelemzési képes eseményeket gyűjteni szöveges fájlt a Windows és Linux rendszerű számítógépeken.  Ez a cikk ismerteti, hogyan adható meg egy új egyéni napló és a rekordok hoznak létre a Naplóelemzési munkaterület részleteit.
+title: Egyéni gyűjtését az Azure Log Analyticsben |} A Microsoft Docs
+description: A log Analytics képes események gyűjtésére szöveges fájlok, a Windows és Linux rendszerű számítógépeket is.  Ez a cikk ismerteti, hogyan adhat meg egy új egyéni naplót, és a Log Analytics-munkaterületen hoznak létre a rekordok részleteit.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,137 +15,131 @@ ms.workload: infrastructure-services
 ms.date: 05/27/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: c533d54a804ccc624246f54940ccf269361cdd7a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 831b52a27a1ccfc349b9b54f8c3d874e41ddc322
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128673"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363143"
 ---
-# <a name="custom-logs-in-log-analytics"></a>A Naplóelemzési egyéni naplókat
-Az egyéni naplókat adatforrásra Naplóelemzési eseményeinek gyűjtése a Windows és Linux számítógépeken egyaránt szövegfájlból teszi lehetővé. Számos alkalmazás adatainak naplózása szöveges fájlok, például a Windows Eseménynapló vagy a Syslog szabványos naplózási szolgáltatások helyett.  Összegyűjtését követően elemezni a rekordokban a bejelentkezés használatával az egyes mezők a [egyéni mezők](log-analytics-custom-fields.md) Naplóelemzési szolgáltatása.
+# <a name="custom-logs-in-log-analytics"></a>A Log Analytics egyéni naplók
+Az egyéni naplókat adatforrás a Log Analytics lehetővé teszi az események gyűjtésére a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba.  Után minden egyes mezőket a bejelentkezés rekordja értelmezni tudja a [egyéni mezők](log-analytics-custom-fields.md) Log Analytics szolgáltatást.
 
-![Egyéni naplógyűjtést](media/log-analytics-data-sources-custom-logs/overview.png)
+![Egyéni naplók összegyűjtése](media/log-analytics-data-sources-custom-logs/overview.png)
 
-A naplófájlok kell gyűjteni a következő feltételeknek kell.
+A naplófájlok gyűjtendő egyeznie kell a következő feltételeknek.
 
-- A napló kell el egy soronként egy bejegyzést, vagy minden egyes belépési elején a következő formátumok egyikének megfelelő időbélyeggel használjon.
+- A napló kell, vagy minden sorában egy-egy bejegyzésnek kell vagy elején minden bejegyzés a következő formátumok egyikének megfelelő időbélyeg használja.
 
-    ÉÉÉÉ-HH-NN ÓÓ: PP:<br>H/ÉÉÉÉ ÓÓ: PP: MP DE/DU<br>F nn, éééé óó: pp:<br />ééhhnn óó: pp:<br />ddMMyy óó: pp:<br />HHH d óó: pp:<br />nn/hhh/yyyy:HH:mm:ss zzz<br />éééé-hh-ddTHH:mm:ssK
+    ÉÉÉÉ-HH-NN ÓÓ<br>H/ÉÉÉÉ ÓÓ: PP: MP DE/DU<br>Hónap nn, éééé óó<br />ééhhnn óó<br />ddMMyy óó<br />MMM d óó<br />nn/MMM/yyyy:HH:mm:ss zzz<br />éééé-hh-ddTHH:mm:ssK
 
-- A naplófájl nem engedélyezheti a körkörös naplózás vagy naplóváltás, ha a fájl új bejegyzések felülírja.
-- A naplófájl ASCII vagy UTF-8 kódolást kell használnia.  Más például az UTF-16 formátum nem támogatott.
+- A naplófájl nem engedélyezheti a körkörös naplózást, vagy naplóváltás, ahol a fájl új bejegyzések felülírja.
+- A naplófájl ASCII vagy UTF-8 kódolást kell használnia.  Eltérő, például az UTF-16 formátumban nem támogatottak.
 
 >[!NOTE]
->Ha ne legyenek ismétlődő bejegyzések a naplófájlban, Log Analyticshez gyűjt őket.  Azonban a keresési eredmények lesz inkonzisztens ahol a szűrő eredményben további események, mint az eredmények száma.  Fontos, hogy a napló határozza meg, ha az azt létrehozó alkalmazást okozza-e ezt a viselkedést, és oldja meg, ha lehetséges az egyéni naplódefiníciója gyűjtemény létrehozása előtt ellenőrizze lesz.  
+>Ha ismétlődő bejegyzéseket a naplófájlban, a Log Analytics gyűjti azokat.  Azonban a keresési eredmények lesz inkonzisztens ahol a az eredmények szűréséhez, mint a eredményszámot további események megjelenítése.  Fontos, hogy ellenőrizze, hogy a napló megállapításához, hogy az alkalmazás, amely létrehozza okozza ezt a viselkedést, és oldja meg az egyéni napló gyűjtése definíció létrehozása előtt, ha lehetséges lesz.  
 >
   
-## <a name="defining-a-custom-log"></a>Egy egyéni napló meghatározása
-A következő eljárás használatával adja meg egy egyéni naplófájlt.  Görgesse le ez a cikk egy egyéni napló hozzáadásának minta útmutatást.
+## <a name="defining-a-custom-log"></a>Egyéni napló meghatározása
+A következő eljárás használatával adja meg egy egyéni naplófájlt.  Ez a cikk az egyéni napló felvétele mintát bemutató végén görgessen.
 
-### <a name="step-1-enable-custom-logs-preview"></a>1. lépés Egyéni naplói minta engedélyezése
-1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
-2. A Naplóelemzési előfizetések ablaktáblán válassza ki a munkaterület, és válassza ki a **OMS-portálon** csempére.<br><br> ![Naplóbeli keresés gomb](media/log-analytics-data-sources-custom-logs/azure-portal-01.png)<br><br> 
-3. Után a rendszer átirányítja az OMS-portálon, kattintson a lap jobb felső oldalán beállítások csempére.<br><br> ![Beállítás OMS-portálon](media/log-analytics-data-sources-custom-logs/oms-portal-settings-option.png)<br><br> 
-4. Az a **beállítások** lapon jelölje be **előzetes verziójú funkciók** lapon válassza ki a **engedélyezése** az egyéni naplókat.    
+### <a name="step-1-open-the-custom-log-wizard"></a>1. lépés Nyissa meg az egyéni napló varázsló
+Az egyéni napló varázsló az Azure Portalon fut, és lehetővé teszi egy új egyéni naplót gyűjtéséhez.
 
-### <a name="step-2-open-the-custom-log-wizard"></a>2. lépés Nyissa meg az egyéni naplózás varázsló
-Az egyéni naplózás varázsló az Azure-portálon fut, és adhatók meg egy új egyéni napló gyűjtése.
+1. Az Azure Portalon válassza ki a **Log Analytics** > a munkaterület > **speciális beállítások**.
+2. Kattintson a **adatok** > **egyéni naplók**.
+3. Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt.  Linux-ügynökök a Fluentd adatgyűjtő küld egy konfigurációs fájl.  Ha szeretné módosítani ezt a fájlt minden egyes Linux-ügynök manuálisan, törölje a jelet *alkalmaz az alábbi konfiguráció Linuxos gépeimre*.
+4. Kattintson a **Add +** az egyéni napló varázsló megnyitásához.
 
-1. Válassza ki az Azure-portálon **Naplóelemzési** > a munkaterület > **speciális beállítások**.
-2. Kattintson a **adatok** > **egyéni naplói**.
-3. Összes konfigurációs módosításhoz alapértelmezés szerint automatikusan leküldéssel az összes ügynököt.  Linux-ügynökök, a konfigurációs fájlt a Fluentd adatgyűjtő küld.  Ha manuálisan minden egyes Linux-ügynök a következő fájl módosításához, törölje a jelet *alkalmaz az alábbi konfiguráció a Linuxos gépeimre*.
-4. Kattintson a **Add +** egyéni napló varázsló megnyitásához.
+### <a name="step-2-upload-and-parse-a-sample-log"></a>2. lépés Töltse fel és a egy mintanaplót elemzése
+Indítsa el az egyéni napló minta feltöltésével.  A varázsló elemzése és megjelenítése a bejegyzéseket, hogy ellenőrizze a fájlban.  A log Analytics az elválasztó alapján azonosíthatja az egyes rekordok megadott fogja használni.
 
-### <a name="step-3-upload-and-parse-a-sample-log"></a>3. lépés Töltse fel, és elemezni egy mintanaplót
-Indítsa el az egyéni napló minta feltöltésével.  A varázsló elemzése és a fájlban ahhoz, hogy ellenőrizze a bejegyzéseket megjeleníteni.  A Naplóelemzési a rekordokban azonosításához megadott elválasztó fogja használni.
+**Új sor** az alapértelmezett elválasztó karaktert, és a naplófájlokat, amelyek egy-egy bejegyzésnek soronként használható.  Ha a sor kezdődik a dátumot és időpontot a rendelkezésre álló formátumok egyikében, akkor megadhatja egy **időbélyeg** elválasztó karakter, amely támogatja a bejegyzéseket, amelyek egynél több sort.
 
-**Új sor** az alapértelmezett elválasztó és a naplófájlokat, amelyek egy-egy bejegyzésnek soronként használt.  Ha a sor kezdődik-e a dátumot és időpontot a formátumok egyikében, akkor megadhatja egy **időbélyeg** szövegelválasztó, amely támogatja a bejegyzéseket, amelyek több egynél több sort.
-
-Timestamp típusú elválasztó használata esetén majd Naplóelemzési tárolt rekordokban TimeGenerated tulajdonságának tölti fel az adott bejegyzés a naplófájlban a megadott dátum/idő.  Ha egy új sor elválasztó használja, majd TimeGenerated a telepítéskor dátum és idő, hogy a Naplóelemzési gyűjtött a bejegyzés.
+Egy időbélyeg elválasztó használata, majd a TimeGenerated tulajdonság, az egyes rekordok tárolja a Log Analytics tölti fel, hogy a naplófájl-bejegyzést a megadott dátum/idő.  Ha egy új sor elválasztó használja, majd TimeGenerated a dátumot és időt, hogy a Log Analytics gyűjti a bejegyzés van feltöltve.
 
 
-1. Kattintson a **Tallózás** és egy minta-fájl megkereséséhez.  Vegye figyelembe, hogy ez lehetséges, hogy gomb neve lehet **Choose File** egyes böngészőkben.
+1. Kattintson a **Tallózás** , keresse meg a minta fájlt.  Vegye figyelembe, hogy ez lehetséges, hogy a gomb neve lehet **fájl kiválasztása** egyes böngészőkben.
 2. Kattintson a **Tovább** gombra.
-3. Az egyéni napló varázsló feltölteni a fájlt és az azt jelzi, hogy az azonosított listában.
-4. A határoló, amellyel azonosíthatja egy új rekordot, és válassza ki a szövegelválasztó, amely a legjobban azonosítja a naplófájl rekordjainak módosítása.
+3. Az egyéni napló varázsló feltölteni a fájlt, és a listában, amely azonosítja a rekordokat.
+4. Módosítsa az új rekord azonosításához, és válassza ki a kivonni kívánt a naplófájl rekordjainak legjobb azonosításához használt elválasztó karaktert.
 5. Kattintson a **Tovább** gombra.
 
-### <a name="step-4-add-log-collection-paths"></a>4. lépés Naplógyűjtemények elérési útjának felvétele
-Meg kell adnia egy vagy több elérési utak az ügynökön, ahol keresse meg az egyéni naplót.  Vagy megadhatja a megadott elérési út és a naplófájl nevét, vagy egy elérési utat megadhatja a név helyettesítő karakter.  Ez a funkció támogatja alkalmazásokat, amelyek minden nap, vagy ha egy fájl elér egy adott méretet, hozzon létre egy új fájlt.  Több útvonal egy naplófájlt is biztosítható.
+### <a name="step-3-add-log-collection-paths"></a>3. lépés Naplógyűjtemények elérési útjának felvétele
+Az ügynökön, ahol keresse meg az egyéni napló definiálni kell egy vagy több elérési útvonalat.  Vagy megadhat egy adott elérési útja és a naplófájl neve, vagy a név helyettesítő karakter segítségével adható meg egy elérési utat.  Ez támogatja az alkalmazásokat, amelyek minden nap, vagy ha egy fájl bizonyos méretet elér, hozzon létre egy új fájlt.  Az egyetlen naplófájl több elérési úttal is megadhatja.
 
-Például egy alkalmazás előfordulhat, hogy dátummal hozza létre a naplófájl minden nap a a neve, ahogy log20100316.txt tartalmazza. Előfordulhat, hogy az ilyen naplók minta *napló\*.txt* amely bármely naplófájl, az alkalmazás a következő lenne érvényes csomagazonosítóját elnevezési sémát.
+Egy alkalmazás előfordulhat, hogy hozzon létre például egy naplófájlt minden nap log20100316.txt hasonlóan a neve tartalmazza a dátuma. Lehet, hogy az ilyen naplók mintát *log\*.txt* amely bármely naplófájl, az alkalmazás a következő lenne érvényes a séma elnevezése.
 
-A következő táblázat érvényes minták adhatja meg a különböző naplófájlokat.
+Az alábbi táblázat példákat érvényes minták adja meg a különböző naplófájlokat.
 
 | Leírás | Útvonal |
 |:--- |:--- |
-| Az összes fájl *C:\Logs* .txt kiterjesztésű, a Windows-ügynök |C:\Logs\\\*.txt |
-| Az összes fájl *C:\Logs* napló és a Windows-ügynök a .txt kiterjesztésű neve |C:\Logs\log\*.txt |
+| Az összes fájl *C:\Logs* .txt kiterjesztésű Windows-ügynök |C:\Logs\\\*.txt |
+| Az összes fájl *C:\Logs* a nevével, a napló és a egy .txt kiterjesztése a Windows-ügynök indítása |C:\Logs\log\*.txt |
 | Az összes fájl */var/log/audit* .txt kiterjesztésű, a Linux-ügynök |/var/log/audit/*.txt |
-| Az összes fájl */var/log/audit* napló és a Linux-ügynök a .txt kiterjesztésű neve |/var/log/audit/log\*.txt |
+| Az összes fájl */var/log/audit* napló- és Linux-ügynök a .txt kiterjesztésű kezdetű névvel |/var/log/audit/log\*.txt |
 
-1. Jelölje be a Windows vagy Linux adja meg, melyik elérési út formátumot ad hozzá.
+1. Válassza ki, Windows vagy Linux rendszerű, adja meg, hogy mely elérési út formátuma ad hozzá.
 2. Írja be a elérési utat, majd kattintson a **+** gombra.
-3. Bármely további elérési utak ismételje meg a műveletet.
+3. Ismételje meg a folyamatot minden olyan további elérési utak.
 
-### <a name="step-5-provide-a-name-and-description-for-the-log"></a>5. lépés Adjon nevet és leírást a napló
-A megadott név lesz használható a napló típusa fent leírt módon.  Azt mindig segítségével különböztetheti meg egymástól, egy egyéni napló _CL végződik.
+### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. lépés Adjon meg egy nevet és leírást a napló
+Az Ön által megadott név lesz használható a napló típusa fent leírtak szerint.  Mindig megszűnik az egyéni napló, csatornától való _CL.
 
-1. Adja meg a napló nevét.  A  **\_CL** utótag automatikusan elérhető.
-2. Adja hozzá egy nem kötelező **leírás**.
-3. Kattintson a **következő** menteni az egyéni napló-definícióját.
+1. Írja be a napló nevét.  A  **\_CL** utótag automatikusan elérhető.
+2. Adjon hozzá egy nem kötelező **leírás**.
+3. Kattintson a **tovább** az egyéni napló-definíció mentéséhez.
 
-### <a name="step-6-validate-that-the-custom-logs-are-being-collected"></a>6. lépés Ellenőrizze, hogy az egyéni naplókat a rendszer éppen gyűjti
-Azt is tarthat a kezdeti adatok egy órát az új egyéni napló Naplóelemzési jelennek meg.  Bejegyzések gyűjtése fog elindulni, hogy az egyéni napló meghatározott pontról megadott a naplókból az elérési úton található.  Azt nem őrzi meg az egyéni napló létrehozása során feltöltött bejegyzéseket, de a naplófájlokban, amely azt a már meglévő bejegyzéseket gyűjt.
+### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>5. lépés Ellenőrizze, hogy az egyéni naplókat gyűjtött
+Igénybe vehet egy órát a kezdeti adatok az új egyéni naplót megjelennek a Log Analyticsben.  Elindul az bejegyzések gyűjtése a ponttól, hogy az egyéni napló megadott megadott a naplókból, az elérési úton található.  Azt nem őrzi meg az egyéni napló létrehozása során feltöltött bejegyzések, de a naplófájlokban talál, már meglévő bejegyzéseket gyűjt.
 
-Naplóelemzési elindul, a rendszer összegyűjti az egyéni napló, a rekordok állnak rendelkezésre a napló keresés.  A egyéni naplót, mint a megadott nevet használja a **típus** a lekérdezésben.
+Megkezdéséről Log Analytics gyűjti össze az egyéni napló, a rekordok egy naplókereséssel elérhető lesz.  Mint az egyéni napló megadott nevét használja a **típus** a lekérdezésben.
 
 > [!NOTE]
-> Ha a RawData tulajdonság hiányzik a keresőmezőbe, esetleg zárja be és nyissa meg újra a böngészőt.
+> A RawData tulajdonság hiányzik a keresési, szükség lehet bezárja és újra megnyitja a böngészőt.
 >
 >
 
-### <a name="step-7-parse-the-custom-log-entries"></a>7. lépés Az egyéni naplóbejegyzések elemzése
-A teljes naplóbejegyzés fogja tárolni egy tulajdonságot, **RawData**.  Valószínűleg érdemes a másik adatot tárolja a rekordban levő egyes tulajdonságokat az egyes bejegyzések elválasztásához.  Ehhez használja a [egyéni mezők](log-analytics-custom-fields.md) Naplóelemzési szolgáltatása.
+### <a name="step-6-parse-the-custom-log-entries"></a>6. lépés Az egyéni napló bejegyzései elemzése
+A teljes naplóbejegyzés lesz tárolva egyetlen tulajdonsággal **RawData**.  Valószínűleg érdemes a különböző információt tárolja a rekordban levő egyes tulajdonságokat az egyes bejegyzések elválasztásához.  Ehhez használja a [egyéni mezők](log-analytics-custom-fields.md) Log Analytics szolgáltatást.
 
-Nincsenek megadva itt részletes, lépésenkénti leírását az egyéni naplóbejegyzés elemzésekor.  Tekintse meg a [egyéni mezők](log-analytics-custom-fields.md) ezt az információt dokumentációját.
+Részletes lépéseit az egyéni naplóbejegyzés elemzés nem tartozik ide.  Tekintse meg a [egyéni mezők](log-analytics-custom-fields.md) ezt az információt a dokumentáció.
 
-## <a name="removing-a-custom-log"></a>Egy egyéni napló eltávolítása
-Az Azure-portálon a következő folyamat segítségével távolítsa el a korábban definiált egyéni napló.
+## <a name="removing-a-custom-log"></a>Egyéni napló eltávolítása
+A következő folyamat használja az Azure Portalon, amely korábban definiált egyéni napló eltávolítása.
 
-1. Az a **adatok** menüjében a **speciális beállítások** a munkaterületen, válassza a **egyéni naplókat** listát az egyéni naplókat.
-2. Kattintson a **eltávolítása** melletti távolítsa el az egyéni naplót.
+1. Az a **adatok** menüjében a **speciális beállítások** a munkaterületén válassza **egyéni naplók** listázásához az egyéni naplókat.
+2. Kattintson a **eltávolítása** mellett az egyéni napló eltávolítása.
 
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A Naplóelemzési összegyűjti az új bejegyzések minden egyéni naplóból körülbelül 5 percenként.  Az ügynök minden az összegyűjtő naplófájlban rögzítik a helyére.  Ha az ügynököt az adott időszakban offline állapotba kerül, majd Naplóelemzési bejegyzések az gyűjtenek ahol utolsó abbamaradtak, még akkor is, ha a tételekhez hozta létre, miközben az ügynök offline állapotban volt.
+A log Analytics új bejegyzések-fájlokból gyűjt mindegyik egyéni napló körülbelül 5 percenként.  Az ügynök által gyűjtött, akkor minden egyes naplófájlban a helyére jegyezze fel.  Ha az ügynököt egy ideig offline állapotba kerül, majd a Log Analytics bejegyzések-fájlokból gyűjt ahol utolsó abbamaradtak, akkor is, ha tételekhez jöttek létre, miközben az ügynök offline állapotban volt.
 
-A naplóbejegyzés teljes tartalmát a rendszer egyetlen tulajdonságot, ír **RawData**.  Ez az elemzett és meghatározásával külön keresés több tulajdonságok tudja értelmezni [egyéni mezők](log-analytics-custom-fields.md) az egyéni napló létrehozása után.
+A naplóbejegyzés teljes tartalmát írt egyetlen tulajdonsággal **RawData**.  Ez az elemzett és definiálásával külön-külön keresni lehet több tulajdonságot tudja elemezni [egyéni mezők](log-analytics-custom-fields.md) az egyéni napló létrehozása után.
 
-## <a name="custom-log-record-properties"></a>Egyéni napló rekord tulajdonságai
-Egyéni naplórekordokat tartozhat a neve, amely megadja, és a tulajdonságok az alábbi táblázatban.
+## <a name="custom-log-record-properties"></a>Az egyéni napló rekord tulajdonságai
+Az egyéni napló rögzíti az alábbi táblázatban egy típus a napló nevére, Ön által megadott és a Tulajdonságok rendelkezik.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| TimeGenerated |Dátum és idő, a rekord Naplóelemzési által összegyűjtött.  Ha a napló időalapú elválasztó használ majd ez az az idő, a bejegyzés gyűjtött. |
-| SourceSystem |A rekord gyűjtötte a program az ügynök típusa. <br> OpsManager – Windows-ügynök, vagy közvetlen kapcsolódás vagy a System Center Operations Manager <br> Linux – az összes Linux-ügynökök |
-| RawData |Teljes szöveges a gyűjtött bejegyzés. |
-| ManagementGroupName |A System Center Operations kezelése ügynökök a felügyeleti csoport neve.  Más ügynökök, ez pedig AOI -\<munkaterület azonosítója\> |
+| TimeGenerated |Dátum és idő, a rekord a Log Analytics által összegyűjtött.  Ha a napló egy időalapú elválasztó használ majd ez az az idő a bejegyzés gyűjtött. |
+| SourceSystem |A rekord gyűjtötte a program az ügynök típusa. <br> OpsManager – Windows-ügynök, vagy közvetlen csatlakozás vagy a System Center Operations Manager <br> Linux – az összes Linux-ügynökök |
+| RawData |Teljes szöveges összegyűjtött bejegyzés. |
+| ManagementGroupName |A System Center Operations kezelése ügynökök a felügyeleti csoport neve.  Más ügynökök esetén ez AOI -\<munkaterület azonosítója\> |
 
-## <a name="log-searches-with-custom-log-records"></a>Napló keresést egyéni naplórekordokat:
-Csakúgy, mint bármely más adatforrás bejegyzéseit a Naplóelemzési munkaterület rögzíti az egyéni naplókat tárolja.  A típus, amely megadja, hogy használhassa a Type tulajdonságot a keresés egy adott napló gyűjtött rekordok beolvasni a naplófájl definiálásakor névnek megfelelő rendelkeznek.
+## <a name="log-searches-with-custom-log-records"></a>Az egyéni napló rekordokat tartalmazó naplókeresések
+Csakúgy, mint bármely más adatforrás rekordjainak a Log Analytics-munkaterületen tárolja a rekordokat az egyéni naplókat.  Így használhatja a Type tulajdonság a keresésben beolvasni egy konkrét naplófájlokból származó összegyűjtött rekordokkal meghatározása naplóban során megadandó névnek megfelelő típus rendelkeznek.
 
-Az alábbi táblázat példákat különböző napló kereséseket rekordok lekérése az egyéni naplókat.
+Az alábbi táblázat példákat különböző egyéni naplók le a rekordokat, a naplókeresésekben.
 
 | Lekérdezés | Leírás |
 |:--- |:--- |
-| MyApp_CL |Az egyéni összes eseménynaplózás elnevezett MyApp_CL. |
-| MyApp_CL &#124; ahol Severity_CF == "error" |Minden egyéni az eseménynaplózás elnevezett MyApp_CL értékkel rendelkező *hiba* nevű egyéni mező *Severity_CF*. |
+| MyApp_CL |Egyéni összes eseménye elnevezett MyApp_CL naplózása. |
+| MyApp_CL &#124; ahol Severity_CF == "error" |Egyéni összes eseménye elnevezett MyApp_CL jelentkezzen értékkel *hiba* nevű egyéni mező *Severity_CF*. |
 
 
-## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Egy egyéni napló hozzáadásának minta forgatókönyv
-A következő szakasz végigvezeti egy egyéni napló létrehozására láthat példát.  A gyűjtött napló minta soronként egy dátumot és időt, majd majd vesszővel tagolt mezők kódja, állapotát és üzenet kezdve egy-egy bejegyzésnek rendelkezik.  Több minta bejegyzések alább látható.
+## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Egyéni napló hozzáadásának mintaútmutató
+Egy példa egy egyéni napló létrehozása a következő szakasz ismerteti.  Az összegyűjtött mintanapló kezdve a dátumot és időt, és ezután vesszővel tagolt mezők a kódot, állapota és üzenet soronként egy-egy bejegyzésnek rendelkezik.  Több minta bejegyzések alább láthatók.
 
     2016-03-10 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
     2016-03-10 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
@@ -153,31 +147,31 @@ A következő szakasz végigvezeti egy egyéni napló létrehozására láthat p
     2016-03-10 01:38:22 302,Error,Application could not connect to database
     2016-03-10 01:31:34 303,Error,Application lost connection to database
 
-### <a name="upload-and-parse-a-sample-log"></a>Töltse fel, és elemezni egy mintanaplót
-A naplófájlok egyikét adja meg azt, és láthatja az eseményeket, azt fogja gyűjtése.  Ebben az esetben az új sor elegendő elválasztó.  Ha a naplóban szereplő egy-egy bejegyzésnek sikerült át, ha több sorra, timestamp elválasztó kellene használni.
+### <a name="upload-and-parse-a-sample-log"></a>Töltse fel és a egy mintanaplót elemzése
+Azt a naplófájlok egyikét adja meg, és láthatja az eseményeket, azt fogja gyűjtése.  Ebben az esetben új sor esetében egy elegendő elválasztó karaktert.  Ha egy-egy bejegyzésnek a naplóban sikerült ívelhet át több sort, és a egy időbélyeg elválasztó karaktert kell használni.
 
-![Töltse fel, és elemezni egy mintanaplót](media/log-analytics-data-sources-custom-logs/delimiter.png)
+![Töltse fel és a egy mintanaplót elemzése](media/log-analytics-data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>Naplógyűjtemények elérési útjának felvétele
-A naplófájlokban található *C:\MyApp\Logs*.  Egy új fájl neve tartalmazza a dátum a mintában a naponta jön létre *appYYYYMMDD.log*.  Ez a napló az elegendő mintázatát lenne *C:\MyApp\Logs\\\*.log*.
+A naplófájlokban található *C:\MyApp\Logs*.  Új fájl jön létre minden nap, amelynek neve tartalmazza a dátum a mintában *appYYYYMMDD.log*.  Ez a napló a megfelelő mintát lenne *C:\MyApp\Logs\\\*.log*.
 
-![Naplófájl elérési útvonala](media/log-analytics-data-sources-custom-logs/collection-path.png)
+![Napló elérési útvonala](media/log-analytics-data-sources-custom-logs/collection-path.png)
 
-### <a name="provide-a-name-and-description-for-the-log"></a>Adjon nevet és leírást a napló
+### <a name="provide-a-name-and-description-for-the-log"></a>Adjon meg egy nevet és leírást a napló
 Egy nevét használjuk *MyApp_CL* , és írja be a **leírás**.
 
 ![Napló neve](media/log-analytics-data-sources-custom-logs/log-name.png)
 
-### <a name="validate-that-the-custom-logs-are-being-collected"></a>Ellenőrizze, hogy az egyéni naplókat a rendszer éppen gyűjti
-A lekérdezés használjuk *típus = MyApp_CL* az összes rekordját adja vissza az összegyűjtött naplózási.
+### <a name="validate-that-the-custom-logs-are-being-collected"></a>Ellenőrizze, hogy az egyéni naplókat gyűjtött
+Használjuk a lekérdezést *típus = MyApp_CL* összegyűjtött napló minden rekord visszaadása.
 
-![Egyéni mezők napló lekérdezés](media/log-analytics-data-sources-custom-logs/query-01.png)
+![Az egyéni mezők naplólekérdezés](media/log-analytics-data-sources-custom-logs/query-01.png)
 
-### <a name="parse-the-custom-log-entries"></a>Az egyéni naplóbejegyzések elemzése
-Egyéni mezők definiálásához használjuk a *EventTime*, *kód*, *állapot*, és *üzenet* mezők és azt láthatja a különbség a rekordok a lekérdezés által visszaadott, amely.
+### <a name="parse-the-custom-log-entries"></a>Az egyéni napló bejegyzései elemzése
+Egyéni mezők definiálásához használjuk a *EventTime*, *kód*, *állapot*, és *üzenet* mezőket, és láthatja a rekordok közötti különbség a lekérdezés által visszaadott, amely.
 
-![Napló lekérdezés egyéni mezőkkel](media/log-analytics-data-sources-custom-logs/query-02.png)
+![Egyéni mezőkkel naplólekérdezés](media/log-analytics-data-sources-custom-logs/query-02.png)
 
 ## <a name="next-steps"></a>További lépések
-* Használjon [egyéni mezők](log-analytics-custom-fields.md) egyedi mezők egyéni bejelentkezési bejegyzései elemzése.
-* További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére.
+* Használat [egyéni mezők](log-analytics-custom-fields.md) elemezni az egyéni jelentkezzen be az egyes mezők bejegyzést.
+* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.

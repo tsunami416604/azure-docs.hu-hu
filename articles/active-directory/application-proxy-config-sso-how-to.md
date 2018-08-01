@@ -1,6 +1,6 @@
 ---
-title: Egyszeri bejelentkezés alkalmazásproxy alkalmazáshoz való konfigurálása |} Microsoft Docs
-description: Hogyan konfigurálhat egyszeri bejelentkezést az application proxy alkalmazáshoz gyorsan
+title: Konfigurálása egyszeri bejelentkezéshez az alkalmazásproxy-alkalmazáshoz |} A Microsoft Docs
+description: Hogyan konfigurálhat egyszeri bejelentkezést az alkalmazásproxy-alkalmazáshoz való gyors
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,42 +11,42 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 977f8af1f625548cb37c7deba7d368d45bded6ef
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 178737a5dec1aace43de9ddb8dcfac73530a250f
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332660"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363177"
 ---
-# <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Egyszeri bejelentkezés alkalmazásproxy alkalmazáshoz való konfigurálása
+# <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Egyszeri bejelentkezés egy alkalmazásproxy-alkalmazás konfigurálása
 
-Egyszeri bejelentkezés (SSO) lehetővé teszi a felhasználók csatlakozni egy alkalmazáshoz több alkalommal hitelesítése nélkül. Lehetővé teszi, hogy az egyetlen-hitelesítés létrejöjjön, Azure Active Directoryban, a felhőben, és lehetővé teszi, hogy a szolgáltatás vagy az összekötő megszemélyesíthet-e a felhasználót, hogy végezze el a további hitelesítési kihívás az alkalmazásból.
+Egyszeri bejelentkezés (SSO) lehetővé teszi a felhasználók hozzáférni egy alkalmazáshoz több alkalommal hitelesítése nélkül. Ez lehetővé teszi, hogy az egyetlen-hitelesítés a felhőben, Azure Active Directory, és lehetővé teszi, hogy a szolgáltatás vagy az összekötő megszemélyesíteni a felhasználót, hogy végezze el az alkalmazás minden olyan további hitelesítési kihívásokat.
 
 ## <a name="how-to-configure-single-sign-on"></a>Egyszeri bejelentkezés konfigurálása
-Egyszeri bejelentkezés beállításához először győződjön meg arról, hogy az alkalmazás Azure Active Directoryn keresztül előhitelesítéshez van konfigurálva. A konfiguráció végrehajtását, lépjen **Azure Active Directory**  - &gt; **vállalati alkalmazások**  - &gt; **minden alkalmazás**   - &gt; Az alkalmazás  **- &gt; alkalmazásproxy**. Ezen a lapon lásd a "Előtti hitelesítés" mezőt, és győződjön meg arról, hogy az beállítása "az Azure Active Directory. 
+Egyszeri bejelentkezés konfigurálásához először győződjön meg arról, hogy az alkalmazás konfigurálása Azure Active Directoryn keresztül az előhitelesítési. A konfiguráció végrehajtását, lépjen a **Azure Active Directory**  - &gt; **vállalati alkalmazások**  - &gt; **minden alkalmazás**   - &gt; Az alkalmazás  **- &gt; alkalmazásproxy**. Ezen a lapon lásd a "Előtti hitelesítés" mezőt, és győződjön meg arról, hogy állítsa be az "Azure Active Directory. 
 
-Előtti hitelesítési módszerekkel kapcsolatos további információkért lásd a 4. lépését a [alkalmazás közzétételi dokumentum](manage-apps/application-proxy-publish-azure-portal.md).
+Üzem előtti hitelesítési módszerekkel kapcsolatos további információkért lásd: 4. lépését a [közzétételi Alkalmazásdokumentum](manage-apps/application-proxy-publish-azure-portal.md).
 
-   ![Azure-portálon előhitelesítési módszer](./media/application-proxy-config-sso-how-to/app-proxy.png)
+   ![Az előhitelesítési módszer az Azure Portalon](./media/application-proxy-config-sso-how-to/app-proxy.png)
 
-## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>Egyszeri bejelentkezési módok konfigurálása az alkalmazás Proxy alkalmazások
-Az adott típusú egyszeri bejelentkezés konfigurálása. A bejelentkezés módszerek besorolt alapján milyen típusú hitelesítés a háttéralkalmazás használja. Alkalmazás Proxy támogatják a különböző alkalmazások háromféle bejelentkezés:
+## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>Egyszeri bejelentkezési módok konfigurálása az Application Proxy alkalmazásai
+Az adott típusú egyszeri bejelentkezés konfigurálása. A bejelentkezési módszerek besorolt alapján a hitelesítés típusát a háttéralkalmazás használja. Alkalmazásproxy-alkalmazások bejelentkezési három típusát támogatja:
 
--   **Jelszó alapú bejelentkezés**: jelszó alapú bejelentkezés alkalmas bármely alkalmazás által használt felhasználónév és jelszó megadására be kellene jelentkeznie. Konfigurációs lépéseit a [jelszó-SSO konfigurációs dokumentáció](active-directory-enterprise-apps-whats-new-azure-portal.md#bring-your-own-password-sso-applications).
+-   **Jelszóalapú bejelentkezés**: jelszóalapú bejelentkezés használható felhasználónév és jelszó mezők bejelentkezhet a minden alkalmazás esetén. Az szükséges konfigurációs lépéseket a [jelszó-SSO konfigurációs dokumentációt](active-directory-enterprise-apps-whats-new-azure-portal.md#bring-your-own-password-sso-applications).
 
--   **Integrált Windows-hitelesítés**: az integrált Windows-hitelesítéssel (IWA) alkalmazások esetén az egyszeri bejelentkezés engedélyezve van a Kerberos által korlátozott delegálás (KCD). Ez a módszer az Active Directory megszemélyesíthet felhasználókat, és a küldési és fogadási jogkivonatokat a nevében Application Proxy összekötők engedélyezi. Kerberos által korlátozott Delegálás konfigurálása a részletek megtalálhatók a [egyszeri bejelentkezéshez a Kerberos által korlátozott Delegálás dokumentáció](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md).
+-   **Integrált Windows-hitelesítés**: integrált Windows-hitelesítés (IWA) használó alkalmazásokhoz, az egyszeri bejelentkezés engedélyezve van – a Kerberos által korlátozott delegálás (KCD). Ez a módszer alkalmazásproxy-összekötők engedélyt ad az Active Directory megszemélyesíthet felhasználókat, és a küldési és fogadási jogkivonatokat a felhasználók nevében. KCD konfigurálása a részletek megtalálhatók a [egyszeri bejelentkezés KCD dokumentációban](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md).
 
--   **Fejléc-alapú bejelentkezés**: fejléc-alapú bejelentkezés az partnerség keresztül engedélyezhető, és néhány további beállításokra van szükség. További információkért a partneri kapcsolat áll fenn, és az egyszeri bejelentkezést használ fejlécek alkalmazáshoz való konfigurálásával kapcsolatos lépésenkénti útmutatót lásd: a [PingAccess az Azure AD-dokumentáció](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md).
+-   **Fejlécalapú bejelentkezés**: fejlécalapú bejelentkezés kialakított partnerség révén engedélyezve van, és a további konfigurálást igényel. További információ a partneri kapcsolat és a részletes utasításokat a egyszeri bejelentkezést egy alkalmazáshoz, amely a fejlécek használja a hitelesítéshez, tekintse meg a [dokumentáció az Azure AD-alapú PingAccess](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md).
 
-Ezen lehetőségek találhatók az alkalmazás a "Vállalati alkalmazások" lesz, és megnyitása a **egyszeri bejelentkezés** oldalon, a bal oldali menüben. Vegye figyelembe, hogy ha az alkalmazás létrehozása a régi portál, előfordulhat, hogy nem látja ezeket a beállításokat.
+A felsorolt lehetőségek találhatók fogja az alkalmazás a "Nagyvállalati alkalmazások", és nyissa meg a **egyszeri bejelentkezés** lapra a bal oldali menüben. Vegye figyelembe, hogy ha az alkalmazás a régi portálon lett létrehozva, nem láthatók ezek a beállítások.
 
-Ez a lap is megjelenik egy további bejelentkezési beállítás: csatolt Sign-On. Alkalmazásproxy is támogatja ezt a lehetőséget. Azonban ez a beállítás nem adja hozzá az egyszeri bejelentkezés az alkalmazást. Az alkalmazás előfordulhat, hogy már rendelkezik egyszeri bejelentkezéshez egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával megvalósított említett. 
+Ezen a lapon is megjelenik egy további bejelentkezési lehetőség: csatolt bejelentkezés. Ez a beállítás az alkalmazásproxy is támogatott. Azonban ez a beállítás nem adható hozzá egyszeri bejelentkezést az alkalmazást. Ugyanakkor az alkalmazás lehetséges, hogy már rendelkezik egyszeri bejelentkezés egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával implementált. 
 
-Ezzel a beállítással egy rendszergazda mutató hivatkozás létrehozásához az alkalmazás a felhasználók első föld meg az alkalmazáshoz való hozzáféréskor. Például ha egy alkalmazás, amely hitelesíti a felhasználókat az Active Directory összevonási szolgáltatások 2.0 eszköz használatával van konfigurálva, a rendszergazda segítségével a "csatolt bejelentkezési-" beállítás hozható létre hivatkozás azt a hozzáférési panelen.
+Ez a beállítás lehetővé teszi, hogy egy rendszergazda hozhat létre egy alkalmazást a felhasználók első föld a elérésekor az alkalmazás. Például ha egy alkalmazás, amely hitelesíti a felhasználót az Active Directory összevonási szolgáltatások 2.0 van beállítva, a rendszergazda segítségével a "csatolt bejelentkezés" lehetőséget a hozzáférési panelen, egy hivatkozás létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
-[Adja meg az egyszeri bejelentkezés az alkalmazásokba a Proxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+[Az alkalmazásproxy egyszeri bejelentkezést az alkalmazásokba biztosít](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

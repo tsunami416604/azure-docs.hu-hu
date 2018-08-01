@@ -1,6 +1,6 @@
 ---
-title: Egy új több-bérlős alkalmazás konfigurálása |} Microsoft Docs
-description: Hogyan konfigurálhatja az egyszeri bejelentkezés fejlesztés és regisztrálása az Azure ad-val egyéni alkalmazások.
+title: Egy új több-bérlős alkalmazás konfigurálása |} A Microsoft Docs
+description: Hogyan konfigurálása egyszeri bejelentkezéshez egy egyéni alkalmazás fejlesztésekor és regisztrálása az Azure ad-ben.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,38 +11,38 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: c5e46262c0099dfa7b4522cad5fc3668cd1d69f6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 97c698fa99c22b689b5e10b91c87345f4eadd647
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333935"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365226"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Egy új több-bérlős alkalmazás konfigurálása
 
-Az alkalmazás összevont egyszeri bejelentkezést (SSO) engedélyezése automatikusan engedélyezi az Azure AD keresztül OpenID Connect, az SAML 2.0-s vagy a WS-Fed összevonását. Ha a végfelhasználók számára annak ellenére, hogy már rendelkezik az Azure AD egy meglévő munkamenetben bejelentkezni, valószínű, az alkalmazás nincs megfelelően konfigurálva.
+Az alkalmazás összevont egyszeri bejelentkezés (SSO) engedélyezése automatikusan engedélyezi az Azure AD-n keresztül az OpenID Connect, SAML 2.0 vagy WS-Fed összevonásával. Ha a végfelhasználók számára, annak ellenére, hogy már rendelkezik egy meglévő munkamenetben az Azure AD-bejelentkezés, valószínű, az alkalmazás nincs megfelelően konfigurálva.
 
-* Ha az adal-t/MSAL használata esetén ellenőrizze, hogy **PromptBehavior** beállítása **automatikus** helyett **mindig**.
+* Ha az MSAL/adal-t használ, ellenőrizze, hogy **PromptBehavior** beállítása **automatikus** helyett **mindig**.
 
-* Ha a mobilalkalmazások most felépítése, szükség lehet további konfigurációs közvetített vagy a nem közvetítőalapú egyszeri bejelentkezés engedélyezése.
+* Ha a mobilalkalmazás készít, szükség lehet további konfigurálás felügyelt vagy nem felügyelt egyszeri bejelentkezés engedélyezése.
 
-Lásd: Android, [engedélyezése kereszt-alkalmazás SSO Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
+Android-, lásd: [Cross-SSO alkalmazás engedélyezése Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
 
-Az iOS számára, lásd: [Cross-SSO alkalmazás engedélyezése IOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
+IOS-re, lásd: [engedélyezése Adatbázisközi alkalmazás egyszeri bejelentkezés az IOS-es](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure AD-egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Az Azure AD egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
 
-[Közötti App SSO Android engedélyezése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[Platformfüggetlen Android alkalmazások SSO engedélyezése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
 
-[Cross-SSO App engedélyezése iOS-ban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[Adatbázisközi-SSO alkalmazás engedélyezése IOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
 
-[AzureAD alkalmazások integrálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[Az Azure ad-alkalmazások integrálását ismertető](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[Hozzájárulás és Permissioning AzureAD v2.0 az összevont alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Jóváhagyás és az Azure ad v2.0 csatornákban összevont alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure ad stackoverflow-n](http://stackoverflow.com/questions/tagged/azure-active-directory)

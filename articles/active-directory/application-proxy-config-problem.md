@@ -1,6 +1,6 @@
 ---
-title: A probléma az alkalmazásproxy-alkalmazás létrehozása |} Microsoft Docs
-description: Alkalmazásproxy-alkalmazások létrehozása az Azure AD felügyeleti portál kapcsolatos problémák elhárítása
+title: A probléma az alkalmazásproxy-alkalmazás létrehozása |} A Microsoft Docs
+description: Az alkalmazásproxy-alkalmazások létrehozása az Azure AD felügyeleti portálon hibáinak elhárítása
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,44 +11,44 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 97795593ecc83a0b15f018861f5cd9139d26443b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3f0c05673ec970e5763f27fc0045b9a529b2ffee
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335108"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365474"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>A probléma az alkalmazásproxy-alkalmazás létrehozása 
 
-Az alábbiakban néhány gyakori problémákat személyek arcfelismerési egy új application proxy alkalmazás létrehozásakor.
+Az alábbiakban néhány gyakori problémák személyek face egy új alkalmazásproxy-alkalmazás létrehozásakor.
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok 
 
-A felügyeleti portálon keresztül alkalmazásproxy alkalmazás létrehozásával kapcsolatos további tudnivalókért lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md).
+A felügyeleti portálon keresztül egy Application Proxy-alkalmazások létrehozásával kapcsolatos további tudnivalókért lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](manage-apps/application-proxy-publish-azure-portal.md).
 
-Ha a dokumentum lépéseit követi, és az alkalmazás létrehozásakor hiba lépett fel kap, tekintse meg információt a hiba részletes adatait, és javaslatokat arról, hogyan javítsa ki az alkalmazást. A legtöbb hiba üzenetekben javasolt javítás. 
+Ha a dokumentum lépéseit követi, és az alkalmazás létrehozása hibaüzenet, tekintse meg az információkat a hiba részleteit, és hogyan javíthatja az alkalmazás javaslatokat. A legtöbb hiba üzenetekben a javasolt javítás. 
 
-## <a name="specific-things-to-check"></a>Adott ellenőrizze az alábbiakat
+## <a name="specific-things-to-check"></a>Adott tudnivaló a ellenőrzése
 
-Gyakori hibák elkerülése érdekében győződjön meg arról:
+Gyakori hibák elkerülése érdekében győződjön meg:
 
--   Alkalmazásproxy alkalmazás létrehozása engedéllyel rendelkező rendszergazdáknak
+-   Az Application Proxy-alkalmazások létrehozásához szükséges engedéllyel rendelkező rendszergazdáknak
 
--   A belső URL-címe egyedi:
+-   A belső URL-cím egyediségét.
 
--   A külső URL-címe egyedi:
+-   A külső URL-cím egyediségét.
 
--   Az URL-címének http vagy https kezdődnie, és végén a "/"
+-   Az URL-címeket http vagy https előtaggal kezdődhet és végződhet egy "/"
 
--   Az URL-cím a tartomány neve és IP-cím nem kell lennie.
+-   Az URL-cím tartománynév, és ne az IP-címet kell lennie.
 
-A jobb felső sarokban a hibaüzenet a következő megjelenjen-e az alkalmazás létrehozásakor. Igény szerint kiválaszthatja az értesítés ikonra a hibaüzenetekben talál.
+A következő hibaüzenet jelenik meg a jobb felső sarokban az alkalmazás létrehozásakor. Választhatja az értesítési ikonra a hibaüzenetek megtekintéséhez.
 
-   ![Értesítési üzenet](./media/application-proxy-config-problem/error-message.png)
+   ![Értesítés kérése](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>További lépések
-[Alkalmazásproxy engedélyezése az Azure-portálon](manage-apps/application-proxy-enable.md)
+[Alkalmazásproxy engedélyezése az Azure Portalon](manage-apps/application-proxy-enable.md)

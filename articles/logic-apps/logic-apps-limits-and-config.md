@@ -2,20 +2,20 @@
 title: Korlátozások és konfiguráció – Azure Logic Apps |} A Microsoft Docs
 description: A szolgáltatás korlátozásai és konfigurációs értékei az Azure Logic Apps
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.topic: article
-ms.date: 05/30/2018
 ms.service: logic-apps
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.topic: article
+ms.date: 07/31/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: d153fa495c82103460dd8e4e2aae6000e49eb3eb
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 644d382b87b0cc7c60cc8917edbaeff34b222718
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283588"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390738"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -80,9 +80,9 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 | ---- | ----- | ----- | 
 | Az eseményindító egyidejűségi | 50 | Az alapértelmezett érték 20. Ez a korlátozás ismerteti egy időben, vagy a párhuzamosan futtatható logic app-példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát egy értéknek 1 és 50 között szélsőértékeket is beleértve, lásd: [módosítása az eseményindító egyidejűségi](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás után aktiválása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
 | Maximális várakozási futtatások | 100 | Az alapértelmezett érték 10. Ez a korlátozás ismerteti a logikai alkalmazás futtatását, amikor a logikai alkalmazás már fut a legnagyobb párhuzamos alkalmazáspéldányok várhat példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát 0 és 100 közötti értéket szélsőértékeket is beleértve, lásd: [módosítása várakozási futtatások korlátozza](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
-| Foreach-elemek | 100 000 | Ez a korlátozás maximális számát, és egy "mindegyikre" hurkot feldolgozására képes tömbelemek ismerteti. <p><p>Nagyobb tömböket szűrhet, használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md). | 
+| Foreach-elemek | 100 000 | Ez a korlátozás maximális számát, és egy "mindegyikre" hurkot feldolgozására képes tömbelemek ismerteti. <p><p>Nagyobb tömböket szűrhet, használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md). | 
 | Foreach ciklus ismétléseinek | 50 | Az alapértelmezett érték 20. Ez a korlátozás ismerteti a "for each" maximális számát az ismétlések egy időben, vagy a párhuzamosan futtatható ikonjához. <p><p>Az alapértelmezett korlát a egy értéke 1 és 50 között szélsőértékeket is beleértve, című témakör nyújt [módosítása "for each" egyidejűségi](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtassa a "for each" hurkokat egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
-| SplitOn-elemek | 100 000 | | 
+| SplitOn-elemek | 100 000 | | 
 | UNTIL-iterációk | 5000 | | 
 |||| 
 
@@ -238,44 +238,44 @@ Minden logikai alkalmazás egy régióban használja ugyanazokat a tartományoka
 
 | Logic Apps-régió | Kimenő IP |
 |-------------------|-------------|
-| Kelet-Ausztrália | 13.75.149.4, 104.210.91.55, 104.210.90.241 |
-| Délkelet-Ausztrália | 13.73.114.207, 13.77.3.139, 13.70.159.205 |
-| Dél-Brazília | 191.235.82.221, 191.235.91.7, 191.234.182.26 |
+| Kelet-Ausztrália | 13.75.149.4, 104.210.90.241, 104.210.91.55 |
+| Délkelet-Ausztrália | 13.70.159.205, 13.73.114.207, 13.77.3.139 |
+| Dél-Brazília | 191.234.182.26, 191.235.82.221, 191.235.91.7 |
 | Közép-Kanada | 52.233.29.92, 52.228.39.241, 52.228.39.244 |
-| Kelet-Kanada | 52.232.128.155, 52.229.120.45, 52.229.126.25 |
-| Közép-India | 52.172.154.168, 52.172.186.159, 52.172.185.79 |
-| USA középső régiója | 13.67.236.125, 104.208.25.27, 40.122.170.198 |
+| Kelet-Kanada | 52.229.120.45, 52.229.126.25, 52.232.128.155 |
+| Közép-India | 52.172.154.168, 52.172.185.79, 52.172.186.159 |
+| USA középső régiója | 13.67.236.125, 40.122.170.198, 104.208.25.27 |
 | Kelet-Ázsia | 13.75.94.173, 40.83.127.19, 52.175.33.254 |
-| USA keleti régiója | 13.92.98.111, 40.121.91.41, 40.114.82.191 |
+| USA keleti régiója | 13.92.98.111, 40.114.82.191, 40.121.91.41 |
 | USA 2. keleti régiója | 40.84.30.147, 104.208.155.200, 104.208.158.174 |
-| Kelet-Japán | 13.71.158.3, 13.73.4.207, 13.71.158.120 |
+| Kelet-Japán | 13.71.158.3, 13.71.158.120, 13.73.4.207 |
 | Nyugat-Japán | 40.74.140.4, 104.214.137.243, 138.91.26.45 |
-| USA északi középső régiója | 168.62.248.37, 157.55.210.61, 157.55.212.238 |
+| USA északi középső régiója | 157.55.210.61, 157.55.212.238, 168.62.248.37 |
 | Észak-Európa | 40.113.12.95, 52.178.165.215, 52.178.166.21 |
-| USA déli középső régiója | 104.210.144.48, 13.65.82.17, 13.66.52.232 |
-| Dél-India | 52.172.50.24, 52.172.55.231, 52.172.52.0 |
+| USA déli középső régiója | 13.65.82.17, 13.66.52.232, 104.210.144.48 |
+| Dél-India | 52.172.50.24, 52.172.52.0, 52.172.55.231 |
 | Délkelet-Ázsia | 13.76.133.155, 52.163.228.93, 52.163.230.166 |
-| USA nyugati középső régiója | 52.161.27.190, 52.161.18.218, 52.161.9.108 |
-| Nyugat-Európa | 40.68.222.65, 40.68.209.23, 13.95.147.65 |
-| Nyugat-India | 104.211.164.80, 104.211.162.205, 104.211.164.136 |
-| USA nyugati régiója | 52.160.92.112, 40.118.244.241, 40.118.241.243 |
-| USA nyugati régiója, 2. | 13.66.210.167, 52.183.30.169, 52.183.29.132 |
-| Az Egyesült Királyság déli régiója | 51.140.74.14, 51.140.73.85, 51.140.78.44 |
-| Az Egyesült Királyság nyugati régiója | 51.141.54.185, 51.141.45.238, 51.141.47.136 |
+| USA nyugati középső régiója | 52.161.18.218, 52.161.9.108, 52.161.27.190 |
+| Nyugat-Európa | 13.95.147.65, 40.68.209.23, 40.68.222.65 |
+| Nyugat-India | 104.211.162.205, 104.211.164.80, 104.211.164.136 |
+| USA nyugati régiója | 40.83.164.80, 40.118.244.241, 40.118.241.243, 52.160.92.112, 104.42.38.32, 104.42.49.145, 157.56.162.53, 157.56.167.147 |
+| USA nyugati régiója, 2. | 13.66.210.167, 52.183.29.132, 52.183.30.169 |
+| Az Egyesült Királyság déli régiója | 51.140.73.85, 51.140.74.14, 51.140.78.44 |
+| Az Egyesült Királyság nyugati régiója | 51.141.45.238, 51.141.47.136, 51.141.54.185 |
 | | |
 
 | Logic Apps-régió | Bejövő IP |
 |-------------------|------------|
 | Kelet-Ausztrália | 3.75.153.66, 104.210.89.222, 104.210.89.244 |
 | Délkelet-Ausztrália | 13.73.115.153, 40.115.78.70, 40.115.78.237 |
-| Dél-Brazília | 191.235.86.199, 191.235.95.229, 191.235.94.220 |
-| Közép-Kanada | 13.88.249.209, 52.233.30.218, 52.233.29.79 |
-| Kelet-Kanada | 52.232.129.143, 52.229.125.57, 52.232.133.109 |
+| Dél-Brazília | 191.235.86.199, 191.235.94.220, 191.235.95.229 |
+| Közép-Kanada | 13.88.249.209, 52.233.29.79, 52.233.30.218 |
+| Kelet-Kanada | 52.229.125.57, 52.232.129.143, 52.232.133.109 |
 | Közép-India | 52.172.157.194, 52.172.184.192, 52.172.191.194 |
-| USA középső régiója | 13.67.236.76, 40.77.111.254, 40.77.31.87 |
-| Kelet-Ázsia | 168.63.200.173, 13.75.89.159, 23.97.68.172 |
-| USA keleti régiója | 137.135.106.54, 40.117.99.79, 40.117.100.228 |
-| USA 2. keleti régiója | 40.84.25.234, 40.79.44.7, 40.84.59.136 |
+| USA középső régiója | 13.67.236.76, 40.77.31.87, 40.77.111.254 |
+| Kelet-Ázsia | 13.75.89.159, 23.97.68.172, 168.63.200.173 |
+| USA keleti régiója | 40.117.99.79, 40.117.100.228, 137.135.106.54 |
+| USA 2. keleti régiója | 40.79.44.7, 40.84.25.234, 40.84.59.136 |
 | Kelet-Japán | 13.71.146.140, 13.78.84.187, 13.78.62.130 |
 | Nyugat-Japán | 40.74.140.173, 40.74.81.13, 40.74.85.215 |
 | USA északi középső régiója | 168.62.249.81, 157.56.12.202, 65.52.211.164 |
@@ -283,12 +283,12 @@ Minden logikai alkalmazás egy régióban használja ugyanazokat a tartományoka
 | USA déli középső régiója | 13.65.98.39, 13.84.41.46, 13.84.43.45 |
 | Dél-India | 52.172.9.47, 52.172.49.43, 52.172.51.140 |
 | Délkelet-Ázsia | 52.163.93.214, 52.187.65.81, 52.187.65.155 |
-| USA nyugati középső régiója | 52.161.26.172, 52.161.8.128, 52.161.19.82 |
+| USA nyugati középső régiója | 52.161.8.128, 52.161.19.82, 52.161.26.172 |
 | Nyugat-Európa | 13.95.155.53, 52.174.54.218, 52.174.49.6 |
-| Nyugat-India | 104.211.164.112, 104.211.165.81, 104.211.164.25 |
-| USA nyugati régiója | 52.160.90.237, 138.91.188.137, 13.91.252.184 |
+| Nyugat-India | 104.211.164.25, 104.211.164.112, 104.211.165.81 |
+| USA nyugati régiója | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
 | USA nyugati régiója, 2. | 13.66.224.169, 52.183.30.10, 52.183.39.67 |
-| Az Egyesült Királyság déli régiója | 51.140.79.109, 51.140.78.71, 51.140.84.39 |
+| Az Egyesült Királyság déli régiója | 51.140.78.71, 51.140.79.109, 51.140.84.39 |
 | Az Egyesült Királyság nyugati régiója | 51.141.48.98, 51.141.51.145, 51.141.53.164 |
 | | |
 
@@ -303,28 +303,28 @@ A hívások támogatására, amely [összekötők](../connectors/apis-list.md) m
 | Logic Apps-régió | Kimenő IP | 
 |-------------------|-------------|  
 | Kelet-Ausztrália | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 | 
-| Délkelet-Ausztrália | 13.77.50.240 - 13.77.50.255, 13.70.136.174, 40.127.80.34 | 
-| Dél-Brazília | 191.233.203.192 - 191.233.203.207, 104.41.59.51, 191.232.38.129 | 
-| Közép-Kanada | -13.71.170.223, 13.71.170.224 - 13.71.170.208 13.71.170.239, 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13, 52.233.26.83 | 
-| Kelet-Kanada | 40.69.106.240 - 40.69.106.255, 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52, 52.229.120.131 | 
-| Közép-India | 104.211.81.192 - 104.211.81.207, 52.172.211.12, 104.211.98.164 | 
-| USA középső régiója | 13.89.171.80 - 13.89.171.95, 52.173.245.164, 40.122.49.51 | 
-| Kelet-Ázsia | 13.75.36.64 - 13.75.36.79, 52.175.23.169, 23.99.116.181 | 
+| Délkelet-Ausztrália | 13.70.136.174, 13.77.50.240 - 13.77.50.255, 40.127.80.34 | 
+| Dél-Brazília | 104.41.59.51, 191.232.38.129, 191.233.203.192 - 191.233.203.207 | 
+| Közép-Kanada | -13.71.170.223, 13.71.170.224 - 13.71.170.208 13.71.170.239, 52.228.33.76, 52.228.34.13, 52.228.42.205, 52.233.26.83, 52.233.31.197, 52.237.24.126 | 
+| Kelet-Kanada | 40.69.106.240 - 40.69.106.255, 52.229.120.52, 52.229.120.131, 52.229.120.178, 52.229.123.98, 52.229.126.202, 52.242.35.152 | 
+| Közép-India | 52.172.211.12, 104.211.81.192 - 104.211.81.207, 104.211.98.164 | 
+| USA középső régiója | 13.89.171.80 - 13.89.171.95, 40.122.49.51, 52.173.245.164 | 
+| Kelet-Ázsia | 13.75.36.64 - 13.75.36.79, 23.99.116.181, 52.175.23.169 | 
 | USA keleti régiója | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 191.237.41.52 | 
 | USA 2. keleti régiója | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100 | 
-| Kelet-Japán | 13.78.108.0 - 13.78.108.15, 13.71.153.19, 40.115.186.96 | 
-| Nyugat-Japán | 40.74.100.224 - 40.74.100.239, 104.215.61.248, 40.74.130.77 | 
+| Kelet-Japán | 13.71.153.19, 13.78.108.0 - 13.78.108.15, 40.115.186.96 | 
+| Nyugat-Japán | 40.74.100.224 - 40.74.100.239, 40.74.130.77, 104.215.61.248 | 
 | USA északi középső régiója | 52.162.107.160 - 52.162.107.175, 52.162.242.161, 65.52.218.230 | 
 | Észak-Európa | 13.69.227.208 - 13.69.227.223, 52.178.150.68, 104.45.93.9 | 
-| USA déli középső régiója | 104.214.19.48 - 104.214.19.63, 13.65.86.57, 104.214.70.191 | 
-| Dél-India | 40.78.194.240 - 40.78.194.255, 13.71.125.22, 104.211.227.225 | 
-| Délkelet-Ázsia | 13.67.8.240 - 13.67.8.255, 52.187.68.19, 13.76.231.68 | 
-| USA nyugati középső régiója | 13.71.195.32 - 13.71.195.47, 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212, 52.161.128 | 
-| Nyugat-Európa | 13.69.64.208 - 13.69.64.223, 52.174.88.118, 40.115.50.13 | 
-| Nyugat-India | 104.211.146.224 - 104.211.146.239, 104.211.189.218, 104.211.161.203 | 
-| USA nyugati régiója | 40.112.243.160 - 40.112.243.175, 104.42.122.49, 104.40.51.248 | 
-| USA nyugati régiója, 2. | 13.66.140.128 - 13.66.140.143, 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14, 13.66.221.19 | 
-| Az Egyesült Királyság déli régiója | 51.140.148.0 - 51.140.148.15, 51.140.80.51 | 
+| USA déli középső régiója | 13.65.86.57, 104.214.19.48 - 104.214.19.63, 104.214.70.191 | 
+| Dél-India | 13.71.125.22, 40.78.194.240 - 40.78.194.255, 104.211.227.225 | 
+| Délkelet-Ázsia | 13.67.8.240 - 13.67.8.255, 13.76.231.68, 52.187.68.19 | 
+| USA nyugati középső régiója | 13.71.195.32 - 13.71.195.47, 52.161.24.128, 52.161.26.212, 52.161.27.108, 52.161.29.35, 52.161.30.5, 52.161.102.22 | 
+| Nyugat-Európa | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118 | 
+| Nyugat-India | 104.211.146.224 - 104.211.146.239, 104.211.161.203, 104.211.189.218 | 
+| USA nyugati régiója | 40.112.243.160 - 40.112.243.175, 104.40.51.248, 104.42.122.49 | 
+| USA nyugati régiója, 2. | 13.66.140.128 - 13.66.140.143, 13.66.218.78, 13.66.219.14, 13.66.220.135, 13.66.221.19, 13.66.225.219, 52.183.78.157 | 
+| Az Egyesült Királyság déli régiója | 51.140.80.51, 51.140.148.0 - 51.140.148.15 | 
 | Az Egyesült Királyság nyugati régiója | 51.140.211.0 - 51.140.211.15, 51.141.47.105 | 
 | | | 
 

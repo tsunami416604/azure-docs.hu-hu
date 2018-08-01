@@ -8,18 +8,18 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 5b027051d4ea1e2f43d65a68def0482a44c7a3b7
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: e9fc74e6cd145cbba5b620b9db6db9635a0c4c77
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308688"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364525"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
 Az Azure Import/Export szolgáltatás segítségével biztonságosan importálása az Azure-adatközpont-meghajtókon szállításával az Azure Blob storage és az Azure Files nagy mennyiségű adat. Ez a szolgáltatás adatainak átvitelét az Azure Blob storage-ból a merevlemez-meghajtók, és küldje el a helyszíni hely a használatával is lehet. Egy vagy több lemezmeghajtót származó adatok importálhatók, vagy az Azure Blob storage vagy az Azure Files. 
 
-Az Azure Import/Export szolgáltatás lehetővé teszi a saját lemezmeghajtókat vagy a Microsoft által biztosított meghajtók használata. 
+Adja meg, hogy saját lemezmeghajtókat, és adatátvitelt az Azure Import/Export szolgáltatással. A Microsoft által biztosított lemezmeghajtók is használhatja. 
 
 Ha azt szeretné, a Microsoft által biztosított meghajtók használata az adatok átviteléhez használható [Azure Data Box-lemezek](../../databox/data-box-disk-overview.md) adatok importálása az Azure-bA. A Microsoft 40 TB-os kapacitásáig keresztül egy regionális szolgáltató adatközpontjában megrendelésenként legfeljebb 5 titkosított tartós állapotú meghajtók (SSD-kkel) tartalmaz. Gyorsan lemezmeghajtók konfigurálása, másolja az adatokat a lemezmeghajtók USB 3.0-kapcsolaton keresztül és szállíthat a lemezmeghajtók vissza az Azure-bA. További információért ugorjon [áttekintése az Azure Data Box-lemezek](../../databox/data-box-disk-overview.md).
 

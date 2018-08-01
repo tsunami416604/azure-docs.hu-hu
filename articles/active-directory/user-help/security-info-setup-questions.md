@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: d2b5487f82cc66d9689fdda6ac79b2fbfbec414c
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f1905e66bbe823f6c7c9c35d6540f3c8ca1d6ccd
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348455"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389633"
 ---
 # <a name="set-up-security-info-to-use-pre-defined-security-questions-preview"></a>Állítsa be a biztonsági adatai előre definiált biztonsági kérdések (előzetes verzió) használata
 
@@ -28,8 +28,10 @@ A biztonsági adatok beállításához megköveteli, hogy jelentkezzen be munkah
 
 Attól függően, a szervezet beállítások rendszer felkérheti biztonsági kérdések hozzáadása a biztonsági adatait, amikor bejelentkezik. Ellenkező esetben a biztonsági adatok biztonsági kérdések beállítása a kezdéshez kövesse [a biztonsági adatok kezelése](security-info-manage-settings.md).
 
+Biztonsági kérdések használatakor javasoljuk egy másik módszerrel együtt használja őket. Biztonsági kérdések kevésbé biztonságos, mint más módszerekkel is lehet, mivel vannak, akik előfordulhat, hogy egy másik személy kérdésekre adott válaszokat.
+
 >[!Note]
->Ha a biztonsági kérdések beállítás nem jelenik meg, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrző biztonsági kérdéseket. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+>Biztonsági kérdések a címtárban lévő felhasználói objektum a privát módon és biztonságosan tárolja, és csak választ, a regisztráció során. Nincs lehetőség a olvasni vagy módosítani a kérdések és válaszok a rendszergazdának.<br>Ha a biztonsági kérdések beállítás nem jelenik meg, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrző biztonsági kérdéseket. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
 
 ### <a name="to-choose-and-answer-your-security-questions"></a>Válassza ki, és a biztonsági kérdések megválaszolása
 

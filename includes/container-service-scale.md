@@ -14,7 +14,7 @@ Az Azure Portal vagy az Azure CLI 2.0 használatával módosíthatja az ügynök
 
 ## <a name="scale-with-the-azure-cli-20"></a>Méretezés az Azure CLI 2.0 használatával
 
-Győződjön meg arról, hogy Ön [telepített](/cli/azure/install-az-cli2) 2.0-s és Azure-fiókkal történő bejelentkezés a legújabb Azure parancssori felület (`az login`).
+Győződjön meg arról, hogy Ön [telepített](/cli/azure/install-az-cli2) a legfrissebb Azure CLI 2.0, és hogy bejelentkezett egy Azure-fiókjába (`az login`).
 
 ### <a name="see-the-current-agent-count"></a>Az ügynökök aktuális számának megtekintése
 A jelenleg a fürtben lévő ügynökök számának megtekintéséhez futtassa az `az acs show` parancsot. Ez megjeleníti a fürtkonfigurációt. Az alábbi parancs például a `myResourceGroup` erőforráscsoportban lévő `containerservice-myACSName` nevű tárolószolgáltatás konfigurációját jeleníti meg:
@@ -48,7 +48,6 @@ További parancsbeállításokért futtassa az `az acs scale --help` parancsot.
 
 * A fürtben üzembe helyezett vezénylőtől függően külön méretezheti a fürtben futó tárolók példányainak számát. A DC/OS-fürtökben például a [Marathon felhasználói felület](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md) használatával módosíthatja a tárolóalkalmazások példányainak számát.
 
-* Az ügynökcsomópontok automatikus méretezése a Container Service-fürtökben jelenleg nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 * Tekintse meg az Azure CLI 2.0-parancsok az Azure Container Service szolgáltatásban való használatát bemutató [további példákat](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md).
