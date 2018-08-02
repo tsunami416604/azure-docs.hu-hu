@@ -9,56 +9,56 @@ ms.date: 03/26/2018
 ms.author: jeking
 ms.custom: include file
 ms.openlocfilehash: f5b6e0e74bbab33b9ae6fbacca5c55ea434d3e41
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30919208"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399957"
 ---
-Georedundáns tárolás (GRS) szolgál a legalább 99.99999999999999 % (16 9 tartozó) tartóssági objektumok egy adott évben által az adatok replikálása egy másodlagos régióban, amelyek több száz miles elhagyja az elsődleges régióban van. Ha a tárfiók Georedundáns engedélyezve van, az adatok akkor tartós teljes regionális kimaradás vagy az elsődleges régióban nincs helyreállítható katasztrófa esetén is.
+Georedundáns tárolás (GRS) célja, hogy 99,99999999999999 %-ában (16 9-es) tartós objektumok egy adott évben által az adatok replikálása egy másodlagos régióba, amely több száz mérföld a forrásadatok elsődleges. Ha a tárfiók GRS engedélyezve van, az adatok a tartós még egy teljes regionális kimaradás vagy az elsődleges régió nem helyreállítható vészhelyzet esetén.
 
-Ha úgy dönt, a Georedundáns, két lehetősége kapcsolódó választhat:
+Amennyiben GRS igénybe vétele esetén, amelyek közül választhatnak, két kapcsolódó lehetősége van:
 
-* Georedundáns replikálja az adatokat egy másodlagos régióban, egy másik adatközpont azonban, hogy a csak olvasható, ha Microsoft indít el egy feladatátvételt az elsődleges másodlagos régióba érhetők el adatok. 
-* Írásvédett georedundáns tárolás (RA-GRS) Georedundáns alapul. RA-GRS replikálja az adatokat egy másik adatközpont egy másodlagos régióban, és emellett lehetőséget biztosít a beállítást, a másodlagos régióba olvasni. Az RA-GRS áttekintheti a másodlagos, függetlenül attól, hogy a Microsoft indít el egy feladatátvételt a másodlagos az elsődleges adatbázisból. 
+* GRS azonban, hogy adatokat érhető el lehet csak olvasható, ha a Microsoft kezdeményezi egy feladatátvétel az elsődleges kiszolgálóról a másodlagos régióba replikálja az adatokat egy másodlagos régióban, egy másik adatközpontba. 
+* Írásvédett georedundáns tárolás (RA-GRS) GRS alapul. RA-GRS az adatait egy másodlagos régióban egy másik adatközpontba replikálja, és emellett lehetőséget biztosít arra, hogy olvassa el a másodlagos régióból. Az RA-GRS áttekintheti, függetlenül attól, hogy a Microsoft feladatátvétel az elsődleges kiszolgálóról a másodlagos kezdeményezi a másodlagos helyről. 
 
-A grs-re vagy RA-GRS engedélyezve van a tárfiókon minden adat először replikálódik a helyileg redundáns tárolás (LRS). Egy frissítés először véglegesítése az elsődleges helyre, és replikálja az LRS használatával. A frissítés ezután a rendszer aszinkron módon a másodlagos régióba Georedundáns. A másodlagos hely adatot ír, amikor is replikált belül erre a helyre LRS használatával. 
+GRS vagy RA-GRS engedélyezve van a storage-fiókok az összes adat először replikálódik a helyileg redundáns tárolás (LRS). Frissítés először elkötelezte magát az elsődleges helyre, és replikálja az LRS használata. A frissítés majd aszinkron módon replikálja a másodlagos régióba, GRS használatával. A másodlagos helyre írja az adatokat, amikor is replikált LRS használatával adott helyen belül. 
 
-Az elsődleges és másodlagos régióban külön tartalék tartományok közötti replikák kezelése, és frissítse a tárolási méretezési egység tartományban. A tárolási méretezési egység az egyszerű replikációs egység az adatközponton belül. Ezen a szinten replikációs biztosítja LRS; További információkért lásd: [helyileg redundáns tárolás (LRS): az Azure Storage alacsony költségű adatredundanciát](../articles/storage/common/storage-redundancy-lrs.md).
+Az elsődleges és másodlagos régiók kezelheti a replikák külön tartalék tartományokban és frissítési tartományokban lévő tárolóskálázási egységben. A tárolási skálázási egység az egyszerű replikációs egység az adatközponton belül. LRS; által biztosított replikáció ezen a szinten További információkért lásd: [helyileg redundáns tárolás (LRS): az Azure Storage alacsony költségű adatredundancia](../articles/storage/common/storage-redundancy-lrs.md).
 
-Ezek a pontok tartsa szem előtt, ha a replikációs beállítás használata:
+Tartsa szem ezeken a pontokon, ha a replikációs beállítás használata:
 
-* Zónaredundáns tárolás (ZRS) szinkron replikáció magas rendelkezésre állást biztosít, és lehet, hogy az egyes forgatókönyvek jobb megoldás, mint a grs-re vagy RA-GRS. A ZRS további információkért lásd: [ZRS](../articles/storage/common/storage-redundancy-zrs.md).
-* Aszinkron replikációs késés jár, mivel regionális katasztrófa esetén is lehetséges, hogy még nem replikálódott a másodlagos régióba módosítások elvesznek az adatokat nem lehet helyreállítani az elsődleges régióban.
-* A GRS a replika csak akkor érhető Microsoft kezdeményezi a másodlagos régióba. Ha a Microsoft kezdeményezzen feladatátvételt a másodlagos régióban, akkor lesz olvasási és írási engedéllyel a feladatátvételt követően befejeződött. További információkért lásd: [vész-helyreállítási útmutatást](../articles/storage/common/storage-disaster-recovery-guidance.md).
-* Ha az alkalmazásnak a másodlagos régióba olvasni, engedélyezze az RA-GRS.
+* Zónaredundáns tárolás (ZRS) szinkron replikációt a magas rendelkezésre állást biztosít, és lehet, hogy bizonyos helyzetekben, mint a GRS vagy RA-GRS jobb választás. A zrs-t további információkért lásd: [ZRS](../articles/storage/common/storage-redundancy-zrs.md).
+* Mivel az aszinkron replikáció magában foglalja a késést, regionális katasztrófa, lehetséges, hogy módosítások, amelyek még nem replikálódott a másodlagos régióba elvesznek, ha az adatok nem állíthatók vissza az elsődleges régióból.
+* A grs Tárolással a replika nem áll rendelkezésre, ha a Microsoft a másodlagos régióba történő feladatátvételt kezdeményez. Ha a Microsoft kezdeményezzen feladatátvételt a másodlagos régióba, akkor a read, és befejeződött a feladatátvétel után az adatok írási hozzáféréssel. További információkért tekintse meg [vészhelyreállítási útmutató](../articles/storage/common/storage-disaster-recovery-guidance.md).
+* Ha az alkalmazásnak kell olvasni a másodlagos régióba, engedélyezze az RA-GRS.
 
 ## <a name="read-access-geo-redundant-storage"></a>Írásvédett georedundáns tárolás
 
-Írásvédett georedundáns tárolás (RA-GRS) a lehető legnagyobbra növeli a tárfiók rendelkezésre állását. RA-GRS az adatokat a másodlagos helyen mellett georeplikáció két régióban is olvasási hozzáférést biztosít.
+Írásvédett georedundáns tárolás (RA-GRS) maximalizálja a tárfiók rendelkezésre állását. RA-GRS az adatokat a másodlagos hely, georeplikációt két régióban mellett csak olvasási hozzáférést biztosít.
 
-Csak olvasási hozzáféréssel a másodlagos régióba adatai engedélyezésekor az adatok érhető el a másodlagos végponti, valamint a tárfiók elsődleges végpont. A másodlagos végponti az elsődleges végpont hasonló, de a utótag `–secondary` fióknevet. Például, ha az elsődleges végpont a Blob szolgáltatás `myaccount.blob.core.windows.net`, akkor a másodlagos végponti `myaccount-secondary.blob.core.windows.net`. A tárfiók hozzáférési kulcsainak megegyeznek az elsődleges és másodlagos végpontok.
+Ha engedélyezi a csak olvasási hozzáférés az adatokhoz a másodlagos régióban, az adatok érhető el a másodlagos végpontra és a tárfiók elsődleges végpontjába. A másodlagos végpontot az elsődleges végpont hasonló, de az utótag `–secondary` fióknevet. Például, ha az elsődleges végpont a Blob szolgáltatás `myaccount.blob.core.windows.net`, akkor a másodlagos végpontra `myaccount-secondary.blob.core.windows.net`. A tárfiók hozzáférési kulcsait megegyeznek az elsődleges és másodlagos végpontokhoz.
 
-RA-GRS használatakor szem előtt tartani szempontokat:
+Néhány szempontot, vegye figyelembe, amikor, RA-GRS használatával:
 
-* Az alkalmazás melyik végponthoz az RA-GRS használatakor dolgozik kezelésére van.
-* Mivel aszinkron replikációs késés, a módosítások, amelyek még nem replikálódott a másodlagos régióba elveszhetnek, ha adatokat nem lehet helyreállítani az elsődleges régióban, például regionális katasztrófa esetén.
-* Ellenőrizheti a legutóbbi szinkronizálásának időpontja a tárfiók. Utolsó szinkronizálás ideje GMT dátum/idő értéket. Minden elsődleges írás előtt a legutóbbi szinkronizálás ideje sikeresen elkészült a másodlagos helyre, ami azt jelenti, hogy elérhetők a másodlagos helyről olvasható. Elsődleges írása után utolsó szinkronizálásának időpontja is, vagy nem érhető el az olvasási műveletek még. Az érték használatával kérdezheti a [Azure-portálon](https://portal.azure.com/), [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), vagy az Azure Storage ügyfélkódtáraival egyikéből.
-* Ha a Microsoft a másodlagos régióba történő feladatátvételt kezdeményez, hogy fog rendelkezik olvasási és írási engedéllyel a feladatátvételt követően befejeződött. További információkért lásd: [vész-helyreállítási útmutatást](../articles/storage/common/storage-disaster-recovery-guidance.md).
-* Váltson át a másodlagos régióba kapcsolatos információkért lásd: [Mi a teendő, ha egy Azure Storage esetleges leálláskor](../articles/storage/common/storage-disaster-recovery-guidance.md).
-* RA-GRS magas rendelkezésre állású célokra szolgál. Méretezhetőség útmutatásért tekintse át a [teljesítmény ellenőrzőlista](../articles/storage/common/storage-performance-checklist.md).
-* A magas rendelkezésre álláshoz az RA-GRS tervezéséről a javaslatok, lásd: [tervezése magas rendelkezésre álló alkalmazások RA-GRS-tárolót](../articles/storage/common/storage-designing-ha-apps-with-ragrs.md).
+* Az alkalmazás melyik végponthoz, tesztverzióval az RA-GRS használata kezelheti azt.
+* Aszinkron replikációs késleltetés jár, mivel a módosításokat, amelyek még nem replikálódott a másodlagos régióba elveszhetnek, ha az adatok nem állíthatók vissza az elsődleges régióból, például regionális katasztrófa.
+* Ellenőrizheti a tárfiók a legutóbbi szinkronizálás időpontja. Utolsó szinkronizálás időpontja egy olyan GMT dátum/idő érték. Az összes elsődleges írási művelet a legutóbbi szinkronizálás időpontja előtt sikeresen alkalmazáskonfigurációjának a másodlagos helyre, ami azt jelenti, hogy elérhetők legyenek az olvasható másodlagos helyről. Elsődleges írása után előfordulhat, hogy a legutóbbi szinkronizálás időpontja, vagy nem érhető el az olvasásokhoz még. Az érték használatával lekérdezheti a [az Azure portal](https://portal.azure.com/), [Azure PowerShell-lel](../articles/storage/common/storage-powershell-guide-full.md), vagy az Azure Storage ügyfélkódtáraival közül.
+* Ha a Microsoft a másodlagos régióba történő feladatátvételt kezdeményez, akkor a read, és befejeződött a feladatátvétel után az adatok írási hozzáféréssel. További információkért lásd: [vészhelyreállítási útmutató](../articles/storage/common/storage-disaster-recovery-guidance.md).
+* Hogyan lehet váltani a másodlagos régióba információkért lásd: [Mi a teendő az Azure Storage leállása esetén](../articles/storage/common/storage-disaster-recovery-guidance.md).
+* RA-GRS a magas rendelkezésre állású célokra szolgál. Skálázhatósági útmutató, tekintse át a [teljesítmény ellenőrzőlista](../articles/storage/common/storage-performance-checklist.md).
+* Javaslatok a magas rendelkezésre állás az RA-GRS tervezéséhez, lásd: [tervezése magas rendelkezésre álló alkalmazásokat a RA-GRS tároló](../articles/storage/common/storage-designing-ha-apps-with-ragrs.md).
 
-## <a name="what-is-the-rpo-and-rto-with-grs"></a>Mi az a helyreállítási Időkorlát és a GRS RTO?
-**Helyreállítási időkorlát (RPO):** Georedundáns és RA-GRS, a tárolás szolgáltatás aszinkron módon földrajzi-replikálja az adatokat a másodlagos hely az elsődleges. Legyen fő regionális katasztrófahelyzet esetén az elsődleges régióban Microsoft hajtja végre a feladatátvételt a másodlagos régióba. A feladatátvétel történik, ha a legutóbbi módosítások, amelyek még nincsenek georeplikált elveszhetnek. A potenciális elveszett adatok percet nevezzük a helyreállítási Időkorlát, és a pont azt jelzi, amelyhez az adatok helyreállíthatók időben. Az Azure Storage általában kevesebb mint 15 perces az RPO, akkor bár jelenleg nincs SLA georeplikáció mennyi ideig tart.
+## <a name="what-is-the-rpo-and-rto-with-grs"></a>Mi az az RPO és RTO a grs Tárolással?
+**Helyreállítási időkorlát (RPO):** GRS és RA-GRS, a storage szolgáltatás aszinkron módon geo-replikálja az adatokat az elsődleges kiszolgálóról a másodlagos helyen. Esetén a regionális vészhelyzetek az elsődleges régióban a Microsoft végzi a feladatátvételt a másodlagos régióba. Ha feladatátvétel történik, a legutóbbi módosítások, amelyek még nem történt georeplikált elveszhetnek. Az esetleges adat elveszett percben nevezzük az rpo-t, és azt jelzi, a pont, amelyre az adatok helyreállíthatók időben. Az Azure Storage általában kevesebb, mint 15 perces egy Helyreállításipont-célkitűzéssel rendelkezik, noha jelenleg nem vonatkozik garantált szolgáltatási georeplikációs mennyi ideig tart.
 
-**A helyreállítási idő célkitűzése (RTO):** a RTO azt méri, hogy mennyi ideig tart a tárfiók újra online, és végezze el a feladatátvételt. Az idő a feladatátvétel elvégzéséhez a következő műveleteket tartalmazza:
+**A helyreállítási időre vonatkozó célkitűzés (RTO):** az RTO azt méri, mennyi ideig tart, hajtsa végre a feladatátvételt, és kérje le a tárfiókhoz online állapotba. Az idő a feladatátvétel végrehajtásához az alábbi műveleteket tartalmazza:
 
-   * Az idő a Microsoft megköveteli az adatok helyreállíthatók az elsődleges helyen, vagy ha a feladatátvétel során szükséges.
-   * Az idő hajtsa végre a feladatátvételt a tárfiók módosítása az elsődleges DNS-bejegyzéseket a másodlagos helyére mutasson.
+   * Az idő a Microsoft van szükség az adatok helyreállíthatók legyenek, az elsődleges helyen, vagy ha szükség egy feladatátvevő.
+   * Az az idő módosításával, hogy a másodlagos helyre mutasson az elsődleges DNS-bejegyzéseket a tárfiók a feladatátvétel végrehajtásához.
 
-   A Microsoft felelőssége súlyosan megőrzi az adatokat fogad. Ha az elsődleges régióban adatok helyreállítását minden alkalommal, Microsoft késleltetés a feladatátvételt, és összpontosítson, az adatok helyreállításáról. Egy jövőbeli verziójában a szolgáltatás lehetővé teszi a fiók szintjén feladatátvevő indul el, így felügyelheti a RTO saját maga.
+   A Microsoft felelőssége komolyan megőrzi az adatok vesz igénybe. Ha az elsődleges régióban lévő adatok helyreállítása bármilyen esélyét, a Microsoft a feladatátvétel késleltetés, és összpontosítson az adatok helyreállítása. Egy jövőbeli verziójában a szolgáltatás lehetővé teszi, hogy a fiók szintjén a feladatátvétel aktiválása, így szabályozható az RTO saját maga.
 
-## <a name="paired-regions"></a>Párhuzamos régiók 
+## <a name="paired-regions"></a>Párosított régiók 
 
-A storage-fiók létrehozásakor ki kell választania a fiók az elsődleges régióban. A párhuzamos másodlagos régióba az elsődleges régió alapján történik, és nem módosítható. Használható az Azure-régiók naprakész információkat, lásd: [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure-régiókat párosítva](../articles/best-practices-availability-paired-regions.md).
+Amikor létrehoz egy tárfiókot, válassza ki az elsődleges régió a fiókhoz. A párosított másodlagos régió az elsődleges régió alapján határozza meg, és nem módosítható. Az Azure által támogatott régiók naprakész kapcsolatban lásd: [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure párosított régiói](../articles/best-practices-availability-paired-regions.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9ecedb171fba9ae8719121f51026134f2bdc1a5f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160229"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413705"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -54,7 +54,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
     Az Azure Files és az Azure Blob storage közötti különbségekről további részletes ismertetését lásd: [való használata az Azure Blob storage, az Azure Files és az Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Azure Blob storage szolgáltatással kapcsolatos további tudnivalókért lásd: [Blob storage bemutatása](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Miért célszerű használni az Azure-fájlmegosztások Azure-lemezek helyett?**  
-    Az Azure Disks egy lemez egyszerűen egy lemez. Egy önálló önmagában lemez nem túl hasznos. Az Azure Disks érték lekéréséhez a lemez csatolása kell az Azure-ban futó virtuális géphez. Azure-lemezek minden, egy helyszíni kiszolgálón szeretné használni a lemez is használható. Egy operációs rendszer lemezként, lapozóterület-os vagy egy alkalmazás dedikált tárolására használható. Egy Azure-lemezek érdekes használja, ha egy fájlkiszolgáló ugyanazon a helyen, ahol az Azure-fájlmegosztás segítségével lehet használni a felhőben. Egy Azure Virtual Machines fájlkiszolgáló üzembe helyezésének módja a nagy teljesítményű kaphat a file storage az Azure-ban, ha a központi telepítési beállítások, amelyek jelenleg nem támogatottak az Azure Files (például az NFS protokoll támogatása vagy a prémium szintű storage) van szüksége. 
+    Az Azure Disks egy lemez egyszerűen egy lemez. Az Azure Disks érték lekéréséhez a lemez csatolása kell az Azure-ban futó virtuális géphez. Azure-lemezek minden, egy helyszíni kiszolgálón szeretné használni a lemez is használható. Egy operációs rendszer lemezként, lapozóterület-os vagy egy alkalmazás dedikált tárolására használható. Egy Azure-lemezek érdekes használja, ha egy fájlkiszolgáló ugyanazon a helyen, ahol az Azure-fájlmegosztás segítségével lehet használni a felhőben. Egy Azure Virtual Machines fájlkiszolgáló üzembe helyezésének módja a nagy teljesítményű kaphat a file storage az Azure-ban, ha a központi telepítési beállítások, amelyek jelenleg nem támogatottak az Azure Files (például az NFS protokoll támogatása vagy a prémium szintű storage) van szüksége. 
 
     Azonban a fájlkiszolgálót futtató Azure-lemezek háttér-tárolóként általában nem sokkal drágábbak, mint az Azure-fájlmegosztások használatával több okból is. Először a lemezes tárhely gyorsítótárpéldányok is külön kell fizetni egy vagy több Azure virtuális gépeken futó járó költségek. Másodszor is kell kezelni a virtuális gépek, amelyek a fájlkiszolgálón futtassa. Ha például Ön felelős az operációs rendszer frissítései. Végül végső soron az adatokat helyszíni gyorsítótárazott van szüksége, hogy, állítsa be, és kezelheti a replikációs technológiák, például az elosztott fájl replikációs (DFSR), győződjön meg, hogy történjen.
 

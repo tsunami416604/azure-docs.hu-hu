@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ad8920ac01ce62eb676b495dcde2aae6b076cbe2
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d14420a363cfea23c86f63533a4ea89c5f2fd06f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125503"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412916"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Gyors útmutató: Hozzon létre, és a egy webalkalmazás üzembe helyezése az Azure Service Fabric-háló
 
-Az Azure Service Fabric háló egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a mikroszolgáltatás-alapú alkalmazások üzembe helyezése nélkül kezelése virtuális gépek, tároló, vagy a hálózat.
+Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül.
 
 Ebben a rövid útmutatóban egy új Service Fabric-háló magában foglaló alkalmazást egy ASP.NET Core-webalkalmazást fog létrehozni futtathatja a helyi fejlesztési fürtöt, és tegye közzé, hogy az Azure-ban.
 
@@ -32,27 +32,27 @@ Szüksége lesz Azure-előfizetésre Ha még nincs fiókja, létrehozhat egy ing
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="create-a-service-fabric-mesh-project"></a>A Service Fabric-háló-projekt létrehozása
+## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric mesh-projekt létrehozása
 
 Nyissa meg a Visual Studiót, és válassza ki **fájl** > **új** > **projekt...**
 
-Az a **új projekt** párbeszédpanel **keresési** tetején típus `mesh`. Válassza ki a **Service Fabric-háló alkalmazás** sablont. (Ha nem látja a sablont, győződjön meg arról, hogy a háló SDK-t telepítette, és a VS-eszközeinek előzetes verziója a leírtak szerint [a fejlesztési környezet beállítása](service-fabric-mesh-howto-setup-developer-environment-sdk.md). 
+A **New Project** (Új projekt) párbeszédpanel fenti **Search** (Keresés) mezőjébe írja be a következőt: `mesh`. Válassza a **Service Fabric Mesh Application** (Service Fabric mesh-alkalmazás) sablont. Ha nem látja a sablont, győződjön meg róla, hogy telepítette a Mesh SDK-t és a VS-eszközök előzetes verzióját a [fejlesztési környezet beállításáról szóló szakaszban](service-fabric-mesh-howto-setup-developer-environment-sdk.md) ismertetett módon. 
 
 Az a **neve** mezőbe írja be **ServiceFabricMesh1** és a a **hely** állítsa be a mappa elérési útját a fájlokat a projekt helyét.
 
-Győződjön meg arról, hogy **megoldás könyvtár létrehozása** be van jelölve, és kattintson a **OK** a Service Fabric-háló projekt létrehozásához.
+Ügyeljen rá, hogy bejelölje a **Create directory for solution** (Címtár létrehozása a megoldáshoz) jelölőnégyzetet, majd kattintson az **OK** gombra a Service Fabric mesh-projekt létrehozásához.
 
-![A Visual studio új Service Fabric-háló projekt párbeszédpanel](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
+![A Visual Studio új Service Fabric mesh-projektjének párbeszédpanele](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>Szolgáltatás létrehozása
 
 Miután rákattintott **OK**, a **új Service Fabric-szolgáltatás** párbeszédpanel jelenik meg. Válassza ki a **ASP.NET Core** typ projektu, ellenőrizze, hogy **Container OS** értékre van állítva **Windows** kattintson **OK** az ASP.NET Core-projekt létrehozása . 
 
-![A Visual studio új Service Fabric-háló projekt párbeszédpanel](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-service-fabric-service.png)
+![A Visual Studio új Service Fabric mesh-projektjének párbeszédpanele](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-service-fabric-service.png)
 
 A **új ASP.NET Core-webalkalmazás** párbeszédpanel jelenik meg. Válassza ki **webalkalmazás** majd **OK**.
 
-![A Visual studio új ASP.NET core-alkalmazás](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-aspnetcore-app.png)
+![Visual Studio új ASP.NET Core-alkalmazás](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-aspnetcore-app.png)
 
 Visual Studio létrehozza a Service Fabric-háló-projektre, és az ASP.NET Core-projektet.
 
@@ -72,34 +72,21 @@ A Service Fabric-háló projekt közzététele az Azure-ba, kattintson a jobb go
 
 Látni fogja a **Service Fabric-alkalmazás közzététele** párbeszédpanel.
 
-![Service Fabric-háló a Visual studio közzététel párbeszédpanel](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-dialog.png)
+![Service Fabric Mesh párbeszédpanel a Visual Studióban](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-dialog.png)
 
-Válassza ki az Azure-fiók és -előfizetést. Válasszon egy **hely**. Ez a cikk **USA keleti Régiójában**.
+Válassza ki az Azure-fiókját és -előfizetését. Válasszon ki egy **helyet**. Ebben a cikkben az **USA keleti régiója** szerepel.
 
-A **erőforráscsoport**válassza  **\<új erőforráscsoport létrehozása... >**. A **erőforráscsoport létrehozása** párbeszédpanel jelenik meg. Állítsa be a **erőforráscsoport-név** és **hely**.  Ebben a rövid útmutatóban használja a **USA keleti Régiójában** helyét és a csoport-neveket **sfmeshTutorial1RG** (Ha a szervezete több felhasználó használ ugyanabban az előfizetésben, válasszon egy egyedi erőforráscsoport-nevet).  Kattintson a **létrehozás** hozza létre az erőforráscsoportot, és a közzétételi párbeszédpanelre való visszatéréshez.
+Az **Erőforráscsoport** területen válassza az **\<Új erőforráscsoport létrehozása...>** lehetőséget. A **erőforráscsoport létrehozása** párbeszédpanel jelenik meg. Állítsa be a **erőforráscsoport-név** és **hely**.  Ebben a rövid útmutatóban használja a **USA keleti Régiójában** helyét és a csoport-neveket **sfmeshTutorial1RG** (Ha a szervezete több felhasználó használ ugyanabban az előfizetésben, válasszon egy egyedi erőforráscsoport-nevet).  Kattintson a **létrehozás** hozza létre az erőforráscsoportot, és a közzétételi párbeszédpanelre való visszatéréshez.
 
-![A Visual studio Service Fabric-háló új erőforrás csoport párbeszédpanel](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
+![A Service Fabric Mesh új párbeszédpanelje a Visual Studióban](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-Térjen vissza a **Service Fabric-alkalmazás közzététele** párbeszédpanelen, a **Azure Container Registry**válassza  **\<hozzon létre új Container Registry... >**. Az a **tároló-beállításjegyzék létrehozása** párbeszédpanelen egy egyedi nevet a **Tárolóregisztrációs adatbázis nevét**. Adjon meg egy **hely** (ebben a rövid útmutatóban használt **USA keleti Régiójában**). Válassza ki a **erőforráscsoport** , amelyet az előző lépést a listából, például **sfmeshTutorial1RG**. Állítsa be a **Termékváltozat** való **alapszintű** majd **létrehozása** a közzétételi párbeszédpanelre való visszatéréshez.
+Miután visszatért a **Service Mesh-alkalmazás közzététele** párbeszédpanelhez, az **Azure Container Registry** területen válassza a **\<Create New Container Registry...>** (Tárolóregisztrációs adatbázis létrehozása) lehetőséget. A **Tárolóregisztrációs adatbázis** párbeszédpanelen használjon egyedi nevet a **Tárolóregisztrációs adatbázis neve** elemhez. Adjon meg egy **hely** (ebben a rövid útmutatóban használt **USA keleti Régiójában**). A legördülő listában válassza ki az előző lépésben létrehozott **Erőforráscsoportot**, például a **sfmeshTutorial1RG** nevűt. Állítsa be a **Termékváltozat** való **alapszintű** majd **létrehozása** a közzétételi párbeszédpanelre való visszatéréshez.
 
-Ha hibaüzenetet kap, amely egy erőforrás-szolgáltató nincs regisztrálva az előfizetéshez tartozó regisztrálhatja. Először tekintse meg, ha az előfizetés rendelkezésre áll-e az erőforrás-szolgáltató:
-
-```Powershell
-Connect-AzureRmAccount
-Get-AzureRmResourceProvider -ListAvailable
-```
-
-Ha a tároló beállításjegyzék-szolgáltatójának (`Microsoft.ContainerRegistry`) érhető el, regisztrálja a PowerShellben:
-
-```Powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
-```
-
-![A Visual studio Service Fabric-háló új erőforrás csoport párbeszédpanel](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
+![A Service Fabric Mesh új párbeszédpanelje a Visual Studióban](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 
 A közzététel párbeszédpanelen kattintson a **közzététel** gombra kattintva helyezze üzembe a Service Fabric-háló alkalmazást az Azure-bA.
 
-Ha első alkalommal közzéteszi a az Azure-ba, a docker-rendszerkép, az Azure Container Registry (ACR), amely a rendszerkép méretétől függően némi időre leküldésekor. Ezt követő közzéteszi az projekt gyorsabbak lesznek. Az üzembe helyezés állapotát figyelemmel kiválasztása **Service Fabric-eszközök** a Visual Studio **kimeneti** ablak legördülő listából. Az üzembe helyezés befejeztével a **Service Fabric-eszközök** kimenet megjeleníti az IP-cím és port, az alkalmazás URL-cím formájában.
+Az Azure-ban történő első közzététel alkalmával továbbítani kell a docker-rendszerképet az Azure Container Registrybe (ACR), és ez a kép méretétől függően időbe telhet. Ugyanebben a projektben a további közzétételek már gyorsabbak lesznek. Az üzembe helyezés állapotát figyelemmel kiválasztása **Service Fabric-eszközök** a Visual Studio **kimeneti** ablak legördülő listából. Az üzembe helyezés befejeztével a **Service Fabric-eszközök** kimenete egy URL-cím formájában jeleníti meg az alkalmazás IP-címét és portját.
 
 ```json
 Packaging Application...
@@ -131,6 +118,6 @@ Másik megoldásként törölje az erőforráscsoportot [az Azure Portalról](ht
 
 ## <a name="next-steps"></a>További lépések
 
-Létrehozása és alkalmazások Service Fabric-háló üzembe helyezése kapcsolatos további információkért folytassa az oktatóanyagot.
+A Service Fabric Mesh-alkalmazások létrehozásáról és üzembe helyezésével kapcsolatos további információért lépjen tovább az oktatóanyagra.
 > [!div class="nextstepaction"]
-> [Létrehozásához, hibakereséséhez és egy Service Fabric-háló több szolgáltatásos webalkalmazás üzembe helyezése](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> [Többszolgáltatású webalkalmazás létrehozása, hibaelhárítása és üzembe helyezése a Service Fabric Mesh-ben](service-fabric-mesh-tutorial-create-dotnetcore.md)

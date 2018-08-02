@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: ninarn
-ms.openlocfilehash: 62b5f7470491027dbf5a1c60ee478268e969d1a8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 1da4e8d94007653a43f187322c1d0e4077e337fa
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113494"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398937"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL-csatlakozási hibák és átmeneti hibák elhárítása, diagnosztizálása és elkerülése az SQL Database szolgáltatásban
 Ez a cikk ismerteti, hogyan megelőzése, elhárítása, diagnosztizálása és csökkentheti a csatlakozási hibák és átmeneti hibák, amely az ügyfélalkalmazásban fordul elő, amikor interaktálnak az Azure SQL Database. Ismerje meg, hogyan konfigurálhatja az újrapróbálkozási logika, a kapcsolati karakterlánc összeállítása és további kapcsolati beállításokat.
@@ -181,17 +181,21 @@ Háttér-portok és IP-címek konfigurációjával kapcsolatos információkat, 
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-461"></a>Kapcsolat: ADO.NET 4.6.1.
-Ha a program használja az ADO.NET-osztályok hasonló **System.Data.SqlClient.SqlConnection** szeretne csatlakozni az SQL Database, azt javasoljuk, hogy a .NET-keretrendszer 4.6.1-es verzióját használja, vagy később.
+### <a name="connection-adonet-462-or-later"></a>Kapcsolat: ADO.NET 4.6.2-es vagy újabb
+Ha a program használja az ADO.NET-osztályok hasonló **System.Data.SqlClient.SqlConnection** szeretne csatlakozni az SQL Database, azt javasoljuk, hogy a .NET-keretrendszer 4.6.2-es verzióját használja, vagy később.
 
-ADO.NET 4.6.1:
+Az ADO.NET-tel 4.6.2-es indítása:
+
+- A megnyitott való kapcsolódási kísérlet megpróbálja újból végrehajtani a közvetlenül az Azure SQL-adatbázisok, ezáltal javul a felhőkompatibilis alkalmazások teljesítményét.
+
+Az ADO.NET 4.6.1 kezdőérték:
 
 * Az SQL Database, a megbízhatóság növelése kapcsolat használatával nyissa meg a **SqlConnection.Open** metódust. A **nyílt** metódus mostantól tartalmazza a legjobb újrapróbálkozási mechanizmus az átmeneti hibák válaszul bizonyos hibák a kapcsolat időkorláton belül.
 * Kapcsolatkészletezést támogatott, amely egy hatékony annak ellenőrzése, hogy működik-e a kapcsolat objektumot biztosít a programot tartalmazza.
 
-Egy kapcsolat objektumot a kapcsolatkészlet használata esetén javasoljuk, hogy a programot ideiglenesen bontja a kapcsolatot, ha nem azonnal használatban van. Nem költséges, nyissa meg újra a kapcsolatot, de egy új kapcsolatot létrehozni.
+Egy kapcsolat objektumot a kapcsolatkészlet használata esetén javasoljuk, hogy a programot ideiglenesen lezárja a kapcsolatot, ha nem azonnal használatban van. Nem költséges, nyissa meg újra a kapcsolatot, de egy új kapcsolatot létrehozni.
 
-Ha korábban, azt javasoljuk, hogy frissítsen a legújabb ADO.NET vagy ADO.NET 4.0-s verzióját használja. 2015. November, is [ADO.NET 4.6.1 letöltéséhez](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx).
+Ha korábban, azt javasoljuk, hogy frissítsen a legújabb ADO.NET vagy ADO.NET 4.0-s verzióját használja. 2018 augusztus is [töltse le az ADO.NET 4.6.2-es](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/).
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 

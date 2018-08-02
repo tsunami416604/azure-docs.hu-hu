@@ -1,63 +1,63 @@
 ---
-title: 'Oktatóanyag: Titkosításához és visszafejtéséhez az Azure Key Vault használatával Azure Storage blobs is |} Microsoft Docs'
-description: Hogyan titkosításához és visszafejtéséhez az Azure Key Vault a Microsoft Azure Storage ügyféloldali titkosítással blob.
+title: 'Oktatóanyag: Blobok titkosítása és visszafejtése az Azure Storage-ban Azure Key Vault |} A Microsoft Docs'
+description: Hogyan titkosítása és visszafejtése az Azure Key Vault a Microsoft Azure Storage ügyféloldali titkosítás egy blobhoz.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: adhurwit
-ms.openlocfilehash: 405ccb44c9daf8d555946e6c68ef318ed2b82505
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.component: blobs
+ms.openlocfilehash: f5382644af7e79234d6c3944cf354a3b2a70cc90
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
-ms.locfileid: "27815813"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397621"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Oktatóanyag: Titkosításához és visszafejtéséhez az Azure Key Vault használatával a Microsoft Azure Storage blobs
+# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Oktatóanyag: Blobok titkosítása és visszafejtése az Azure Key Vault használatával a Microsoft Azure Storage-ban
 ## <a name="introduction"></a>Bevezetés
-Ez az oktatóanyag bemutatja, hogyan adhat ellenőrizze az Azure Key Vault storage ügyféloldali titkosítás használata. Végigvezeti titkosítás és visszafejtés egy konzolalkalmazást, ezeknek a technológiáknak a blob.
+Ez az oktatóanyag bemutatja, hogyan javíthatja a storage ügyféloldali titkosítás az Azure Key Vault használata. Azt ismerteti, hogyan titkosításához és visszafejtéséhez egy konzolalkalmazást, ezeknek a technológiáknak a blobok.
 
 **Az oktatóanyag áttekintésének várható időtartama:** 20 perc
 
 Áttekintés az Azure Key Vault kapcsolatos információkért lásd: [Mi az Azure Key Vault?](../../key-vault/key-vault-whatis.md).
 
-Áttekintés az Azure Storage ügyféloldali titkosítással kapcsolatos információkért lásd: [ügyféloldali titkosítás és a Microsoft Azure tárolás az Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Áttekintés az Azure Storage ügyféloldali titkosítással kapcsolatos információkért lásd: [ügyféloldali titkosítás és a Microsoft Azure Storage for Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez szüksége lesz:
 
-* Egy Azure Storage-fiók
-* A Visual Studio 2013 vagy újabb verzió
+* Azure Storage-fiók
+* A Visual Studio 2013-as vagy újabb
 * Azure PowerShell
 
 ## <a name="overview-of-client-side-encryption"></a>Ügyféloldali titkosítás áttekintése
-Az Azure Storage ügyféloldali titkosítás áttekintéséért lásd: [ügyféloldali titkosítás és a Microsoft Azure tárolás az Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+Az Azure Storage ügyféloldali titkosítás áttekintését lásd: [ügyféloldali titkosítás és az Azure Key Vault a Microsoft Azure Storage-hoz](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-Ügyféloldali titkosítása működése rövid leírása itt található:
+Itt látható egy rövid leírást ügyféloldali titkosítása működése:
 
-1. Az Azure Storage-ügyfél SDK állít elő, a tartalom titkosítási kulcs (CEK), amely a szimmetrikus kulcs egy egyszeri használata.
-2. Felhasználói adatok titkosítása a CEK használatával.
-3. A CEK ezt követően (titkosított) (KEK-) kulcs titkosítási kulcs használatával. A KEK kulcsazonosítójával azonosíthatók és aszimmetrikus kulcspár vagy egy szimmetrikus kulcsot kell és is kezelhetők helyileg vagy az Azure Key Vault tárolja. A tárolási ügyfélen soha nem a KEK elérésére. Egyszerűen meghívja a Key Vault által biztosított kulcs alkalmazásburkoló algoritmus. Az ügyfelek használhat egyéni szolgáltatók alkalmazásburkoló/kicsomagolásával Ha szeretné, hogy azok kulcshoz.
-4. A titkosított adatok majd feltöltése az Azure Storage szolgáltatásba.
+1. Az Azure Storage ügyféloldali SDK-tartalom titkosítási kulcs (CEK), amely egyszer használható egy szimmetrikus kulcs állít elő.
+2. Vásárlói adatok titkosítását a rendszer a CEK.
+3. A CEK ezt követően (titkosítva) a kulcstitkosítási kulcs-(KEK) használatával. A KEK kulcsazonosítójával azonosíthatók és aszimmetrikus kulcspárt alkotnak, vagy egy szimmetrikus kulcsot és is kezelhetők helyileg vagy az Azure Key Vaultban tárolt. A Storage-kliens maga soha nem rendelkezik hozzáféréssel a KEK. Csak a Key Vault által biztosított kulcs alkalmazásburkoló algoritmus hív meg. Ügyfelek kiválaszthatják a használandó egyéni szolgáltatók alkalmazásburkoló/kicsomagolási Ha szeretné, hogy azok kulcsot.
+4. A titkosított adatok majd fel van töltve az Azure Storage szolgáltatásba.
 
 ## <a name="set-up-your-azure-key-vault"></a>Az Azure Key Vault beállítása
-Ez az oktatóanyag folytatásához kell tennie az alábbi lépésekkel, amelyeket az oktatóanyag vázolt [Ismerkedés az Azure Key Vault](../../key-vault/key-vault-get-started.md):
+Folytassa az oktatóanyagot, kövesse az alábbi lépéseket, amelyek az oktatóanyagban leírt kell [első lépései az Azure Key Vault](../../key-vault/key-vault-get-started.md):
 
 * Hozzon létre egy kulcstartót.
-* A kulcsok vagy titkos hozzáadása a key vault.
-* Alkalmazás regisztrálása az Azure Active Directoryban.
-* Engedélyezi az alkalmazásnak a kulcsok vagy titkos kulcsok használatára.
+* Egy kulcs vagy titkos kód hozzáadása a key vaultban.
+* Alkalmazás regisztrálása az Azure Active Directoryval.
+* Engedélyezze az alkalmazás használatához a kulcs vagy titkos kód.
 
-Jegyezze fel a ClientID és a ClientSecret, amikor egy alkalmazás regisztrálása az Azure Active Directoryval létrehozott.
+Jegyezze fel a ClientID és az Azure Active Directory-alkalmazás regisztrálásakor létrehozott ClientSecret.
 
-A key vault mindkét kulcs létrehozása. Feltételezzük, hogy az oktatóanyag a többi használja a következő szerepel: ContosoKeyVault és TestRSAKey1.
+Hozzon létre a mindkét kulcsot a key vaultban. Feltételezzük, hogy az oktatóanyag további részeinek esetében használja a következő nevekkel: ContosoKeyVault és TestRSAKey1.
 
 ## <a name="create-a-console-application-with-packages-and-appsettings"></a>Hozzon létre egy konzolalkalmazást a csomagok és AppSettings
-A Visual Studio új Konzolalkalmazás létrehozása.
+A Visual Studióban hozzon létre egy új konzolalkalmazást.
 
-A Package Manager konzolon adja hozzá a szükséges nuget-csomagok.
+Adja hozzá a Package Manager Console szükséges nuget-csomagok.
 
 ```
 Install-Package WindowsAzure.Storage
@@ -81,7 +81,7 @@ Adja hozzá az App.Config AppSettings.
 </appSettings>
 ```
 
-Adja hozzá a következő `using` irányelvek és ügyeljen rá, hogy a System.Configuration mutató hivatkozás hozzáadása a projekthez.
+Adja hozzá a következő `using` irányelvek és ellenőrizze, hogy a System.Configuration hivatkozás hozzáadása a projekthez.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -94,8 +94,8 @@ using System.Threading;
 using System.IO;
 ```
 
-## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Adja hozzá a metódust a Konzolalkalmazás jogkivonat beolvasása
-A következő metódust a kulcstároló elérésére hitelesítést igénylő Key Vault-osztályokat használja.
+## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Adjon hozzá egy metódus lekéréséhez a Konzolalkalmazás egy tokent
+A következő metódust, amely a key vault eléréséhez hitelesítenie kell a Key Vault-osztályokat használja.
 
 ```csharp
 private async static Task<string> GetToken(string authority, string resource, string scope)
@@ -113,8 +113,8 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>Tárolás és a Key Vault hozzáférni a program
-Adja hozzá a következő kódot a Main függvényre.
+## <a name="access-storage-and-key-vault-in-your-program"></a>A program a tárolási és Key Vault eléréséhez
+Adja hozzá a következő kódot a fő függvényt.
 
 ```csharp
 // This is standard code to interact with Blob storage.
@@ -132,18 +132,18 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
 
 > [!NOTE]
-> Kulcstároló Hálózatiobjektum-modelljei
+> A Key Vault objektummodellt
 > 
-> Fontos megérteni, hogy vannak-e ténylegesen két Key Vault hálózatiobjektum-modelljei tisztában lenni a: egy REST API-t (névtér: KeyVault) alapján, a másik egy bővítmény ügyféloldali titkosítás.
+> Fontos megérteni, hogy nincsenek-e valójában két Key Vault objektummodellt érdemes figyelembe vennie: egyet a REST API (KeyVault névtér) alapján, és más ügyféloldali titkosítás-bővítmény.
 > 
-> A Key Vault ügyfél kommunikál a REST API-t, és megértette a JSON webes kulcsok és titkos dolog, amelyek szerepelnek a Key Vault két típusú.
+> A Key Vault-ügyfélnek a REST API-val kommunikál, és tisztában van azzal, JSON Web kulcsok és titkos kulcsok a Key Vaultban lévő dolog kétféle.
 > 
-> A kulcs tároló bővítmények olyan osztályok, úgy tűnik, az Azure Storage ügyféloldali titkosítás kifejezetten létrehozott. Kulcsok (IKey) és egy kulcs feloldó fogalma alapján osztályok illesztőfelület tartalmaznak. Nincsenek két implementációja, amely tudnia kell IKey: RSAKey és SymmetricKey. Most bekövetkezésük egybe a dolgokhoz, amelyek szerepelnek a kulcstároló, de ezen a ponton független osztályok (így a kulcs és a titkos kulcsot tároló-ügyfél által lekért nem valósítja meg a IKey).
+> A Key Vault-bővítmények olyan osztályok, úgy tűnik, az Azure Storage ügyféloldali titkosítás speciálisan létrehozott. Kulcsok (Rendszerállapotkulcsot) és a egy kulcs feloldó fogalma alapján osztályok illesztőfelületet tartalmaznak. Nincsenek a Rendszerállapotkulcsot, ismernie kell a két megvalósítását: RSAKey és SymmetricKey. Most már előfordulásuk egybeessen a Key Vaultban lévő dolog, de ezen a ponton azok független osztályok (így a kulcs és a Key Vault-ügyfél által beolvasott titkos kulcs nem implementálja a Rendszerállapotkulcsot).
 > 
 > 
 
-## <a name="encrypt-blob-and-upload"></a>A blob titkosításához, és töltse fel
-Adja hozzá a következő kódot blob titkosításához, és töltse fel az Azure-tárfiókot. A **ResolveKeyAsync** használt módszer egy IKey adja vissza.
+## <a name="encrypt-blob-and-upload"></a>Blob titkosítása és feltöltése
+Adja hozzá a következő kódot a blobok titkosítását, és töltse fel az Azure storage-fiók. A **ResolveKeyAsync** használt módszer változón adja vissza.
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -164,16 +164,16 @@ using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
 ```
 
 > [!NOTE]
-> Ha megnézi a BlobEncryptionPolicy konstruktor, látni fogja, hogy el tudja fogadni a kulcs és/vagy a feloldó. Vegye figyelembe, hogy most egy feloldó nem használata titkosításhoz, mert jelenleg nem támogatja egy alapértelmezett kulcs.
+> Ha megtekinti a BlobEncryptionPolicy konstruktort, látni fogja, hogy el tudja fogadni a kulcs és/vagy egy feloldó. Vegye figyelembe, hogy most egy feloldó nem használata titkosításhoz, mert jelenleg nem támogatja a alapértelmezett kulcs.
 > 
 > 
 
-## <a name="decrypt-blob-and-download"></a>Blob visszafejtésére és letöltése
-Amikor a feloldó osztályokat célszerű visszafejtési valójában. A titkosításhoz használt kulcs azonosítója társítva a metaadatait, a blob, így nincs lekérni a kulcsot, és ne feledje kulcs és a blob közötti társítás OK. Csak akkor győződjön meg arról, hogy a kulcs a Key Vault marad.   
+## <a name="decrypt-blob-and-download"></a>Blob visszafejtéséhez, és töltse le
+Visszafejtési valójában, amikor a feloldó-osztályokkal jelentéssel bírnak. A titkosításhoz használt kulcs Azonosítóját a blob metaadatait, a társítva, ezért nem lehet lekérni a kulcsot, és ne felejtse el a kulcs és a blob közötti társítás OK. Csak akkor ügyeljen arra, hogy a kulcsot a Key Vaultban továbbra is.   
 
-RSA-kulcs titkos kulcsával marad a Key Vault, így a visszafejtéshez megtörténik, a titkosított kulcs, amely tartalmazza a CEK blob metaadatok alapján kap Key Vault a visszafejtéshez.
+A titkos kulcsot az RSA-kulcsa marad a Key Vaultban, így a visszafejtéshez előfordul, a titkosított kulcsát, a blob metaadatai, amely tartalmazza a CEK megkap Key Vault visszafejtéshez.
 
-Adja hozzá a következő, a blob imént feltöltött visszafejtéséhez.
+Adja hozzá a következő, az imént feltöltött blobon visszafejtéséhez.
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -186,19 +186,19 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ```
 
 > [!NOTE]
-> Más típusú feloldókat könnyebben kulcskezelést, beleértve néhány: AggregateKeyResolver és CachingKeyResolver.
+> Van néhány feloldók könnyebben kulcsok kezelését, beleértve a más típusú: AggregateKeyResolver és CachingKeyResolver.
 > 
 > 
 
-## <a name="use-key-vault-secrets"></a>Key Vault titkos kulcsok használata
-A titkos kulcs használata ügyféloldali titkosítás módja a SymmetricKey osztály keresztül mert titkos kulcs lényegében egy szimmetrikus kulcsot. De a fentieknek megfelelően a Key Vault titkos kulcs van leképezve pontosan egy SymmetricKey. Néhány dolgot megértése:
+## <a name="use-key-vault-secrets"></a>A Key Vault titkos kulcsok használata
+A titkos kulcs használata ügyféloldali titkosítás módja a SymmetricKey osztállyal mert titkos kód lényegében egy szimmetrikus kulcsot. De a fentieknek megfelelően a Key Vaultban titkos kulcs nem feleltethető meg pontosan egy SymmetricKey. Néhány dolgot megismerése:
 
-* A kulcs egy SymmetricKey-nak kell lennie egy rögzített hosszúságú: 128, 192, 256-ot, 384 vagy 512 bites.
-* A kulcsot egy SymmetricKey a Base64 kódolású legyen.
-* A Key Vault titkos kulcsot, amely egy SymmetricKey lesz a Key Vault egy "application/octet-stream" tartalomtípusa rendelkeznie kell.
+* A kulcsot egy SymmetricKey azt kell egy rögzített hosszúságú: 128, 192, 256, 384 vagy 512 bites.
+* A kulcsot egy SymmetricKey a Base64-kódolású kell lennie.
+* A Key Vault titkos kulcsából, amely egy SymmetricKey lesz rendelkeznie kell egy "application/octet-stream" tartalomtípusa Key vaultban.
 
-Íme egy példa a titkos kulcs létrehozásának a kulcstároló, egy SymmetricKey használható PowerShell.
-Ne feledje, hogy a nél nagyobb értéket, $key, a csak bemutató célra. A saját kód érdemes ezt a kulcs létrehozásához.
+Íme egy példa a PowerShell, a titkos kulcs létrehozása a kulcstároló, amelyet egy SymmetricKey használható.
+Vegye figyelembe, hogy a jelenleg, $key, érték csak a bemutatási célból. A saját kódját érdemes létrehozni ezt a kulcsot.
 
 ```csharp
 // Here we are making a 128-bit key so we have 16 characters.
@@ -213,7 +213,7 @@ $secretvalue = ConvertTo-SecureString $enc -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName 'ContoseKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
 ```
 
-A Konzolalkalmazás használhatja az adott hívásban, mielőtt beolvasni a titkos kulcsot, mint egy SymmetricKey.
+A Konzolalkalmazás használhatja a azonos hívást, mielőtt beolvasni a titkos kód, mint egy SymmetricKey.
 
 ```csharp
 SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
@@ -223,8 +223,8 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 Ennyi az egész. Jó munkát!
 
 ## <a name="next-steps"></a>További lépések
-Microsoft Azure Storage a C# használatával kapcsolatos további információkért lásd: [Microsoft Azure Storage ügyféloldali kódtára a .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+A C# használatával a Microsoft Azure Storage használatával kapcsolatos további információkért lásd: [a Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-A Blob REST API kapcsolatos további információkért lásd: [Blob szolgáltatás REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx).
+A Blob REST API-val kapcsolatos további információkért lásd: [Blob Service REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx).
 
-A Microsoft Azure Storage legfrissebb információkért látogasson el a [Microsoft Azure tárolás fejlesztői Blog](http://blogs.msdn.com/b/windowsazurestorage/).
+A Microsoft Azure Storage a legfrissebb információkért nyissa meg a [a Microsoft Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/).

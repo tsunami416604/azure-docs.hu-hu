@@ -1,9 +1,9 @@
 ---
-title: Hozzáférés az Azure Linux virtuális gép visszaállítása |} Microsoft Docs
-description: A rendszergazda felhasználók kezelése, és alaphelyzetbe állítja a hozzáférés a Linux virtuális gépeken a VMAccess bővítmény és az Azure CLI 2.0 használatával
+title: Az Azure Linux rendszerű virtuális Gépekhez való hozzáférés alaphelyzetbe állítása |} A Microsoft Docs
+description: Rendszergazda felhasználók kezelése és hozzáférés a VMAccess bővítmény, az Azure CLI 2.0 használatával Linux virtuális gépek visszaállítása
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: danis
-ms.openlocfilehash: c023f226894d2fabb90736513e49a1ecca179d4f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.author: roiyz
+ms.openlocfilehash: 51c203c746a5256924033ebe48d9ddfdc3823b16
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165791"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39415070"
 ---
-# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Rendszergazda felhasználók, az SSH és az ellenőrzés kezeléséhez, vagy javítsa ki a Linux virtuális gépeken a VMAccess bővítmény használata az Azure CLI 2.0 lemezek
-## <a name="overview"></a>Áttekintés (klasszikus)
-A lemezt a Linux virtuális Gépet a hibák láthatók. Valamilyen módon alaphelyzetbe állítja a gyökér szintű jelszavát a Linux virtuális gép számára, vagy véletlenül törli a titkos SSH-kulcsot. Ha vissza a datacenter napban bekövetkezett, meg kell meghajtó van, és nyissa meg a kiszolgáló konzolján beolvasandó KVM. Az Azure VMAccess bővítmény gondol adott KVM kapcsolóéval, amely lehetővé teszi a hozzáférést a következőre Linux, vagy végezzen szintű konzol eléréséhez.
+# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Kezelheti a rendszergazda felhasználókat, az SSH és az ellenőrzés, vagy javítsa ki a VMAccess bővítmény használata az Azure CLI 2.0 használatával Linux rendszerű virtuális gépek lemezeinek
+## <a name="overview"></a>Áttekintés
+A Linuxos virtuális gép lemezét hibák láthatók. Valahogy a legfelső szintű jelszó alaphelyzetbe állítása, a Linux rendszerű virtuális gép vagy véletlenül törölt a titkos SSH-kulcs. Amely történt, az adatközpontok napban vissza, ha a meghajtó van, és nyissa meg a kiszolgálói konzolnál beolvasni a KVM kell. Úgy az Azure VMAccess bővítmény, mint a KVM kapcsoló, amely lehetővé teszi a hozzáférés visszaállítása, Linux vagy a lemez szintű karbantartásával konzol eléréséhez.
 
-Ez a cikk bemutatja, hogyan az Azure VMAccess bővítmény használatával ellenőrizze, vagy javítsa ki a lemezt, alaphelyzetbe állítja a felhasználói hozzáférés, rendszergazdai fiókok kezelése vagy Linux SSH-konfigurációját frissíteni, ha Azure Resource Manager virtuális gépként futnak. Ha a klasszikus virtuális gépek - kezeléséhez szükséges található utasításokat kövesse a [klasszikus virtuális dokumentációját](../linux/classic/reset-access-classic.md). 
+Ez a cikk bemutatja, hogyan használhatja az Azure VMAccess bővítmény ellenőrzése vagy javítása, a lemez, felhasználói hozzáférés alaphelyzetbe állítása, rendszergazdai felhasználói fiókok kezelése vagy Linux rendszeren az SSH-konfigurációját frissíteni, ha Azure Resource Manager virtuális gépeken futnak. Ha klasszikus virtuális gépek – kezelésére van szüksége, kövesse az megtalálható a [klasszikus virtuális gép dokumentációja](../linux/classic/reset-access-classic.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 ### <a name="operating-system"></a>Operációs rendszer
 
-A virtuális gép hozzáférési bővítményét is futtathatók a a Linux terjesztéseket:
+A Virtuálisgép-hozzáférési bővítmény ezen Linux-disztribúció futtatható:
 
-| Megoszlás | Verzió |
+| Disztribúció | Verzió |
 |---|---|
-| Ubuntu | 16.04 LTS, 14.04 LTS és 12.04 LTS |
+| Ubuntu | 16.04 LTS, 14.04 LTS, 12.04 LTS és |
 | Debian | Debian 7.9 +, 8.2 + |
-| RedHat | RHEL 6.7 + 7.1 + |
+| Red Hat | RHEL 6.7 + 7.1 + |
 | Oracle Linux | 6.4+, 7.0+ |
-| SUSE | 11 és 12 |
-| OpenSuse | Termékek 42.2 + openSUSE |
+| SUSE | 11 – 12 |
+| OpenSuse | openSUSE azt 42.2 + |
 | CentOS | A centOS 6.3 + 7.0 + |
 | CoreOS | 494.4.0+ |
 
-## <a name="ways-to-use-the-vmaccess-extension"></a>A VMAccess bővítmény használatának módjai
-Kétféleképpen használható a VMAccess bővítmény a Linux virtuális gépeken:
+## <a name="ways-to-use-the-vmaccess-extension"></a>A VMAccess bővítmény használatával
+Két módon, hogy a VMAccess bővítmény a Linuxos virtuális gépeken használhatja:
 
-* Használja az Azure CLI 2.0 és a szükséges paramétereket.
-* [Használja a VMAccess bővítmény feldolgozó nyers JSON-fájlok](#use-json-files-and-the-vmaccess-extension) és majd rájuk.
+* Az Azure CLI 2.0 és a szükséges paramétereket használja.
+* [Használja a nyers JSON-fájlokat, és a VMAccess bővítmény feldolgozására](#use-json-files-and-the-vmaccess-extension) , és ezután reagálhat rájuk.
 
-A következő példákban [az vm felhasználói](/cli/azure/vm/user) parancsok. A következő lépésekkel lesz szüksége a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
+A következő példákban [az a virtuális gép felhasználójának](/cli/azure/vm/user) parancsokat. Ezeket a lépéseket a legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 ## <a name="update-ssh-key"></a>SSH-kulcs frissítése
-Az alábbi példa frissíti a felhasználó az SSH-kulcs `azureuser` nevű virtuális gépen `myVM`:
+Az alábbi példa frissíti az SSH-kulcsot a felhasználó `azureuser` nevű virtuális gépre `myVM`:
 
 ```azurecli-interactive
 az vm user update \
@@ -63,10 +63,10 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **Megjegyzés:** a `az vm user update` parancsot az új nyilvános kulcs szöveg hozzáfűzi a `~/.ssh/authorized_keys` fájlt a rendszergazdai felhasználó, a virtuális Gépen. Ez nem cserélje le, vagy távolítsa el az összes létező SSH-kulcsok. Ez nem távolítja el a korábbi kulcsokat telepítési idő vagy a soron következő frissítések a VMAccess bővítmény használatával.
+> **Megjegyzés:** a `az vm user update` parancs hozzáfűzi az új nyilvános kulcs szövegét, a `~/.ssh/authorized_keys` a virtuális gépen a rendszergazda felhasználó fájlt. Ez nem cserélje le, vagy távolítsa el minden meglévő SSH-kulcsokat. Ez nem távolítja el korábbi kulcsok beállítása üzembe helyezési idő vagy a VMAccess bővítmény használatával ezt követő frissítésekben.
 
-## <a name="reset-password"></a>Jelszó visszaállítása
-Az alábbi példában a felhasználó jelszava alaphelyzetbe állítása `azureuser` nevű virtuális gépen `myVM`:
+## <a name="reset-password"></a>Új jelszó létrehozása
+A következő példa alaphelyzetbe állítja a jelszót a felhasználó `azureuser` nevű virtuális gépre `myVM`:
 
 ```azurecli-interactive
 az vm user update \
@@ -77,7 +77,7 @@ az vm user update \
 ```
 
 ## <a name="restart-ssh"></a>Indítsa újra az SSH
-A következő példa az SSH démon újraindul, és visszaállítja az SSH-konfigurációt az alapértelmezett értékekre a nevű virtuális gép `myVM`:
+A következő példa újraindítja az SSH démon, és visszaállítja az SSH-konfigurációt az alapértelmezett értékekre nevű virtuális gép `myVM`:
 
 ```azurecli-interactive
 az vm user reset-ssh \
@@ -85,8 +85,8 @@ az vm user reset-ssh \
   --name myVM
 ```
 
-## <a name="create-an-administrativesudo-user"></a>Hozzon létre felügyeleti sudo/felhasználót
-Az alábbi példakód létrehozza a felhasználó nevű `myNewUser` rendelkező **sudo** engedélyek. A fiók egy SSH-kulcsot használ hitelesítést nevű virtuális gép `myVM`. Ez a módszer segítségével újra hozzáférést nyerni egy virtuális Gépet, abban az esetben aktuálisan használt hitelesítő adatok elvesztése vagy elfelejtése tervezték. Ajánlott eljárásként fiókok **sudo** engedélyeket kell korlátozni.
+## <a name="create-an-administrativesudo-user"></a>Hozzon létre egy felügyeleti sudo/felhasználó
+A következő példában létrehozunk egy nevű felhasználó `myNewUser` a **sudo** engedélyeket. A fiók hitelesítéséhez nevű virtuális gépre SSH-kulcsot használ `myVM`. Ez a módszer segít a virtuális Géphez való hozzáférés visszaszerzéséhez, abban az esetben jelenlegi hitelesítő adatok vannak elveszíti vagy elfelejti tervezték. Ajánlott eljárásként fiókok **sudo** engedélyeket kell korlátozni.
 
 ```azurecli-interactive
 az vm user update \
@@ -97,7 +97,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>Felhasználó törlése
-A következő példa egy megnevezett felhasználó törli `myNewUser` nevű virtuális gépen `myVM`:
+Az alábbi példával törölhet egy nevű felhasználó `myNewUser` nevű virtuális gépre `myVM`:
 
 ```azurecli-interactive
 az vm user delete \
@@ -106,13 +106,13 @@ az vm user delete \
   --username myNewUser
 ```
 
-## <a name="use-json-files-and-the-vmaccess-extension"></a>JSON-fájlok és a VMAccess bővítmény
-Az alábbi példák nyers JSON-fájlokat használja. Használjon [az virtuálisgép-bővítmény készlet](/cli/azure/vm/extension#az_vm_extension_set) majd hívni a JSON-fájlokat. A JSON-fájlok az Azure-sablonok alapján is hívható. 
+## <a name="use-json-files-and-the-vmaccess-extension"></a>JSON-fájlok és a VMAccess bővítmény használata
+Az alábbi példák a nyers JSON-fájlokat használja. Használat [az virtuálisgép-bővítmény csoportot](/cli/azure/vm/extension#az_vm_extension_set) , majd hívja meg a JSON-fájlokat. Ezek a JSON-fájlok is meghívhat az Azure-sablonok. 
 
 ### <a name="reset-user-access"></a>Felhasználói hozzáférés alaphelyzetbe állítása
-Ha elvesztette a hozzáférést, legfelső szintű a Linux virtuális gépén, indítja el a vmaccess bővítmény parancsfájl frissíteni a felhasználó az SSH-kulcsot vagy jelszót.
+Ha a legfelső szintű hozzáférés elvesztette a Linux rendszerű virtuális gépen, indíthatja el a vmaccess bővítmény parancsfájl frissíteni egy felhasználó SSH-kulcs vagy jelszó.
 
-Az SSH nyilvános kulcsát egy felhasználó frissítéséhez hozzon létre egy fájlt `update_ssh_key.json` , és adja hozzá a beállítások a következő formátumban. A saját értékeit helyettesítse a `username` és `ssh_key` paraméterek:
+A nyilvános SSH-kulcsot, hogy egy felhasználó frissítéséhez hozzon létre egy fájlt `update_ssh_key.json` , és adja hozzá a beállítások a következő formátumban. A saját értékeit helyettesítse be a `username` és `ssh_key` paraméterek:
 
 ```json
 {
@@ -121,7 +121,7 @@ Az SSH nyilvános kulcsát egy felhasználó frissítéséhez hozzon létre egy 
 }
 ```
 
-A vmaccess bővítmény parancsprogram végrehajtása:
+Hajtsa végre a vmaccess bővítmény parancsfájlt:
 
 ```azurecli-interactive
 az vm extension set \
@@ -133,7 +133,7 @@ az vm extension set \
   --protected-settings update_ssh_key.json
 ```
 
-Felhasználói jelszó alaphelyzetbe állítása, hozzon létre egy fájlt `reset_user_password.json` , és adja hozzá a beállítások a következő formátumban. A saját értékeit helyettesítse a `username` és `password` paraméterek:
+Felhasználói jelszó alaphelyzetbe állítása, hozzon létre egy fájlt `reset_user_password.json` , és adja hozzá a beállítások a következő formátumban. A saját értékeit helyettesítse be a `username` és `password` paraméterek:
 
 ```json
 {
@@ -142,7 +142,7 @@ Felhasználói jelszó alaphelyzetbe állítása, hozzon létre egy fájlt `rese
 }
 ```
 
-A vmaccess bővítmény parancsprogram végrehajtása:
+Hajtsa végre a vmaccess bővítmény parancsfájlt:
 
 ```azurecli-interactive
 az vm extension set \
@@ -155,7 +155,7 @@ az vm extension set \
 ```
 
 ### <a name="restart-ssh"></a>Indítsa újra az SSH
-Indítsa újra az SSH démon, és visszaállítja az SSH-konfigurációt az alapértelmezett értékekre, hozzon létre egy fájlt `reset_sshd.json`. Adja hozzá a következőket:
+Az SSH démon újraindításához, és az SSH-konfiguráció visszaállítása az alapértelmezett értékeket, hozzon létre egy fájlt `reset_sshd.json`. Adja hozzá az alábbi tartalommal:
 
 ```json
 {
@@ -163,7 +163,7 @@ Indítsa újra az SSH démon, és visszaállítja az SSH-konfigurációt az alap
 }
 ```
 
-A vmaccess bővítmény parancsprogram végrehajtása:
+Hajtsa végre a vmaccess bővítmény parancsfájlt:
 
 ```azurecli-interactive
 az vm extension set \
@@ -175,9 +175,9 @@ az vm extension set \
   --protected-settings reset_sshd.json
 ```
 
-### <a name="manage-administrative-users"></a>Rendszergazdák kezelése
+### <a name="manage-administrative-users"></a>Rendszergazda felhasználók kezelése
 
-A felhasználó létrehozása **sudo** engedélyek, egy SSH-kulcsot használ, hozzon létre egy fájlt `create_new_user.json` , és adja hozzá a beállítások a következő formátumban. A saját értékeit helyettesítse a `username` és `ssh_key` paraméterek. Ez a módszer segítségével újra hozzáférést nyerni egy virtuális Gépet, abban az esetben aktuálisan használt hitelesítő adatok elvesztése vagy elfelejtése tervezték. Ajánlott eljárásként fiókok **sudo** engedélyeket kell korlátozni.
+A felhasználó létrehozása **sudo** az engedélyeket, amelyek SSH-kulcsot használ a hitelesítéshez, hozzon létre egy fájlt `create_new_user.json` , és adja hozzá a beállítások a következő formátumban. A saját értékeit helyettesítse be a `username` és `ssh_key` paramétereket. Ez a módszer segít a virtuális Géphez való hozzáférés visszaszerzéséhez, abban az esetben jelenlegi hitelesítő adatok vannak elveszíti vagy elfelejti tervezték. Ajánlott eljárásként fiókok **sudo** engedélyeket kell korlátozni.
 
 ```json
 {
@@ -187,7 +187,7 @@ A felhasználó létrehozása **sudo** engedélyek, egy SSH-kulcsot használ, ho
 }
 ```
 
-A vmaccess bővítmény parancsprogram végrehajtása:
+Hajtsa végre a vmaccess bővítmény parancsfájlt:
 
 ```azurecli-interactive
 az vm extension set \
@@ -199,7 +199,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-Felhasználó törlése, hozzon létre egy fájlt `delete_user.json` , és adja hozzá a következő tartalmat. Helyettesítse a saját értéke a `remove_user` paraméter:
+A felhasználó törléséhez hozzon létre egy fájlt `delete_user.json` , és adja hozzá az alábbi tartalommal. Helyettesítse be a saját értékét a `remove_user` paramétert:
 
 ```json
 {
@@ -207,7 +207,7 @@ Felhasználó törlése, hozzon létre egy fájlt `delete_user.json` , és adja 
 }
 ```
 
-A vmaccess bővítmény parancsprogram végrehajtása:
+Hajtsa végre a vmaccess bővítmény parancsfájlt:
 
 ```azurecli-interactive
 az vm extension set \
@@ -219,10 +219,10 @@ az vm extension set \
   --protected-settings delete_user.json
 ```
 
-### <a name="check-or-repair-the-disk"></a>Ellenőrizze, vagy javítsa ki a lemez
-Vmaccess bővítmény használatával ellenőrizze, és javítsa ki egy lemezt, a Linux virtuális gép hozzáadott-e.
+### <a name="check-or-repair-the-disk"></a>Ellenőrizze, vagy javítsa ki a lemezt
+Vmaccess bővítmény használatához ellenőrizze, és javítsa ki egy lemezt a Linux rendszerű virtuális géphez hozzáadott-e.
 
-Ellenőrizze és javítsa ki a lemezt, hozzon létre egy fájlt `disk_check_repair.json` , és adja hozzá a beállítások a következő formátumban. Helyettesítse a saját nevét a következő `repair_disk`:
+Ellenőrizze és javítsa ki a lemezt, hozzon létre egy fájlt `disk_check_repair.json` , és adja hozzá a beállítások a következő formátumban. Illessze be a saját nevét értéket `repair_disk`:
 
 ```json
 {
@@ -231,7 +231,7 @@ Ellenőrizze és javítsa ki a lemezt, hozzon létre egy fájlt `disk_check_repa
 }
 ```
 
-A vmaccess bővítmény parancsprogram végrehajtása:
+Hajtsa végre a vmaccess bővítmény parancsfájlt:
 
 ```azurecli-interactive
 az vm extension set \
@@ -244,9 +244,9 @@ az vm extension set \
 ```
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
-### <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
+### <a name="troubleshoot"></a>Hibaelhárítás
 
-Bővítmény központi telepítések állapotára vonatkozó lehet adatokat beolvasni az Azure-portálon, és az Azure parancssori felület használatával. A megadott virtuális gépek bővítmények központi telepítési állapotának megtekintéséhez a következő parancsot az Azure parancssori felület használatával.
+Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure parancssori felület használatával. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure CLI használatával.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -254,4 +254,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>Támogatás
 
-Ha ez a cikk bármely pontján további segítségre van szüksége, forduljon az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza ki a Get-támogatási szolgálathoz. Támogatja az Azure használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

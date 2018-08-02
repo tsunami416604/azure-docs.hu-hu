@@ -8,23 +8,36 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: afc48a36b8c26bde4d86ff6277bb2c511d14bace
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: a6d6a7639d3db0cc7d194ca9fae126ad9a2cc3ba
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091864"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413654"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Felhőalapú SQL Server-verzió választása: Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS)
 
 Az Azure-ban, az SQL Server számítási feladatok egy szolgáltatott infrastruktúra (IaaS) futtatja, vagy egy üzemeltetett szolgáltatást futtató rendelkezhet ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)):
 
-* [Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/): egy SQL-adatbázismotor, az Enterprise Edition az SQL Server, a modern alkalmazások fejlesztését optimalizált alapján. Az Azure SQL Database által nyújtott SQL üzemeltetett szolgáltatás két verziója: logikai kiszolgáló és a [Azure SQL Database felügyelt példányain (előzetes verzió)](sql-database-managed-instance.md). Mindkét verziót, az Azure SQL Database ad a további funkciók, amelyek nem érhetők el az SQL Server, például a beépített intelligenciával és a felügyeleti. Az első verzióval rendelkezhet egy logikai kiszolgálót tartalmazó [önálló adatbázisok](sql-database-servers-databases.md) csoportosíthatja azokat a kiszolgálókat, és egy [rugalmas készlet](sql-database-elastic-pool.md) erőforrások megosztásához, és csökkentheti a költségeket. Az Azure SQL Database logikai kiszolgáló egyetlen vagy készletezett adatbázisokat tartalmazó legtöbb az SQL Server adatbázis-specifikus szolgáltatást kínál. Az Azure SQL Database felügyelt példányába az Azure SQL Database megosztott erőforrásokat az adatbázisok és további példányok hatókörébe tartozó szolgáltatásokat kínál. Az Azure SQL Database felügyelt példánya támogatja az adatbázis-migrálás minimális nincs adatbázis módosítása.
-* [Az SQL Server Azure virtuális gépeken](https://azure.microsoft.com/services/virtual-machines/sql-server/): SQL Server telepítve van, és az Azure-ban, más néven egy infrastruktúra-szolgáltatás (IaaS) futó Windows Server vagy Linux rendszerű virtuális gépeken (VM) a felhőben. Migrálás jó választás a helyszíni SQL Server-adatbázisokat és alkalmazásokat adatbázis változás nélkül, egy SQL Server Azure-beli virtuális gépeken. Az összes legújabb verzióit és kiadásait az SQL Server telepítési IaaS virtuális gépen érhetők el. Az SQL Database-ből legfontosabb különbség az, hogy engedélyezik-e teljes körűen felügyelve az adatbázismotor SQL Server virtuális gépek. Amikor karbantartás vagy javítások elindul, változtassa meg a helyreállítási modelljét egyszerűre vagy Tömegesen naplózott ahhoz, hogy gyorsabban betöltődő kevésbé napló, szüneteltetése vagy indítsa el a motor, amikor szükséges, és teljes mértékben testre szabható az SQL Server adatbázismotor választhat. A további felügyelet együttműködik a hozzáadott feladata, hogy a virtuális gépek felügyeletéhez.
+- [Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/): egy SQL-adatbázismotor, az Enterprise Edition az SQL Server, a modern alkalmazások fejlesztését optimalizált alapján. Az Azure SQL Database több központi telepítési lehetőséget kínál:
+  - Telepíthet egyetlen-adatbázist egy [logikai kiszolgáló](sql-database-logical-servers.md).
+  - Üzembe helyezhető egy [rugalmas készlet](sql-database-elastic-pool.md) a egy [logikai kiszolgáló](sql-database-logical-servers.md) erőforrások megosztásához, és csökkentheti a költségeket. 
 
-Ebből a cikkből megtudhatja, hogyan illeszkednek ezek a verziók a Microsoft adatplatformjának rendszerébe, és rátalálhat az üzleti igényeinek leginkább megfelelő lehetőségre. Akár az adminisztrációs terhek csökkentését, akár a költségek csökkentését helyezi előtérbe, ez a cikk segít eldönteni, hogy melyik megközelítés képes teljesíteni az Ön számára legfontosabb üzleti igényekhez kötődő elvárásokat.
+      > [!NOTE]
+      > Egyetlen vagy készletezett adatbázisokat tartalmazó Azure SQL Database az SQL Server adatbázis-specifikus szolgáltatások többsége kínál.
+
+      A következő ábrán ezek a központi telepítési beállítások:
+
+      ![üzembe helyezés – beállítások](./media/sql-database-technical-overview/deployment-options.png) 
+  - Telepíthet egy [Azure SQL Database felügyelt példányain (előzetes verzió)](sql-database-managed-instance.md). 
+
+      > [!NOTE]
+      > Mindkét verziót, az Azure SQL Database ad a további funkciók, amelyek nem érhetők el az SQL Server, például a beépített intelligenciával és a felügyeleti. Az első verziója, az Azure SQL Database felügyelt példányába, az Azure SQL Database kínálja a megosztott erőforrásokat az adatbázisok és további példányok hatókörébe tartozó funkciók. Az Azure SQL Database felügyelt példánya támogatja az adatbázis-migrálás minimális nincs adatbázis módosítása.
+- [Az SQL Server Azure virtuális gépeken](https://azure.microsoft.com/services/virtual-machines/sql-server/): SQL Server telepítve van, és az Azure-ban, más néven egy infrastruktúra-szolgáltatás (IaaS) futó Windows Server vagy Linux rendszerű virtuális gépeken (VM) a felhőben. Migrálás jó választás a helyszíni SQL Server-adatbázisokat és alkalmazásokat adatbázis változás nélkül, egy SQL Server Azure-beli virtuális gépeken. Az összes legújabb verzióit és kiadásait az SQL Server telepítési IaaS virtuális gépen érhetők el. Az SQL Database-ből legfontosabb különbség az, hogy engedélyezik-e teljes körűen felügyelve az adatbázismotor SQL Server virtuális gépek. Amikor karbantartás vagy javítások elindul, változtassa meg a helyreállítási modelljét egyszerűre vagy Tömegesen naplózott ahhoz, hogy gyorsabban betöltődő kevésbé napló, szüneteltetése vagy indítsa el a motor, amikor szükséges, és teljes mértékben testre szabható az SQL Server adatbázismotor választhat. A további felügyelet együttműködik a hozzáadott feladata, hogy a virtuális gépek felügyeletéhez.
+
+Ismerje meg, hogyan illeszkedik a különböző telepítési lehetőségek a Microsoft data platformon, és rátalálhat az üzleti igényeinek leginkább megfelelő lehetőségre. Akár az adminisztrációs terhek csökkentését, akár a költségek csökkentését helyezi előtérbe, ez a cikk segít eldönteni, hogy melyik megközelítés képes teljesíteni az Ön számára legfontosabb üzleti igényekhez kötődő elvárásokat.
 
 ## <a name="microsofts-sql-data-platform"></a>A Microsoft SQL-adatplatform
 
@@ -45,7 +58,7 @@ A következő szakaszokban megismerheti a Microsoft nyilvános felhőben futó S
 
 ## <a name="a-closer-look-at-azure-sql-database-and-sql-server-on-azure-vms"></a>Az Azure SQL Database és az Azure virtuális gépeken futó SQL Server részletes bemutatása
 
-**Az Azure SQL Database** egy relációs adatbázis--szolgáltatásként (DBaaS), amely az iparági kategóriába esik az Azure felhőalapú *Platform--szolgáltatásként (PaaS)*. Az [SQL Database](sql-database-technical-overview.md) a Microsoft tulajdonában álló, illetve általa futtatott és fenntartott szabványos hardvereken és szoftvereken fut. Az SQL Database beépített szolgáltatásai és funkciói széles körű konfigurációt az SQL Server igénylő is használhatja. Az SQL Database használatalapú fizetéssel működik, emellett a teljesítményigény növekedése esetére lehetőség van vertikális vagy horizontális felskálázásra is. Az Azure SQL Database egyaránt támogatja [önálló adatbázisok](sql-database-servers-databases.md) és [rugalmas készletek](sql-database-elastic-pool.md) erőforrások megosztására, az új alkalmazások felhőbeli fejlesztéséhez ideális környezetet. És a [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md), a saját licencét is tenné. Ez a beállítás emellett biztosít minden Azure SQL Database a PaaS előnyei, de csak korábban elérhető SQL virtuális gépek képességekkel bővíti. Ez magában foglalja egy natív virtuális hálózati (VNet) és közel 100 %-os kompatibilitást a helyszíni SQL Server. [Felügyelt példány](sql-database-managed-instance.md) ideális megoldást biztosít a helyszíni migrálását az Azure-adatbázis minimális módosítással. 
+**Az Azure SQL Database** egy relációs adatbázis--szolgáltatásként (DBaaS), amely az iparági kategóriába esik az Azure felhőalapú *Platform--szolgáltatásként (PaaS)*. Az [SQL Database](sql-database-technical-overview.md) a Microsoft tulajdonában álló, illetve általa futtatott és fenntartott szabványos hardvereken és szoftvereken fut. Az SQL Database beépített szolgáltatásai és funkciói széles körű konfigurációt az SQL Server igénylő is használhatja. Az SQL Database használatalapú fizetéssel működik, emellett a teljesítményigény növekedése esetére lehetőség van vertikális vagy horizontális felskálázásra is. Azure SQL Database egy új alkalmazások felhőbeli fejlesztéséhez ideális környezetet. És a [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md), a saját licencét is tenné. Ez a beállítás emellett biztosít minden Azure SQL Database a PaaS előnyei, de csak korábban elérhető SQL virtuális gépek képességekkel bővíti. Ez magában foglalja egy natív virtuális hálózati (VNet) és közel 100 %-os kompatibilitást a helyszíni SQL Server. [Felügyelt példány](sql-database-managed-instance.md) ideális megoldást biztosít a helyszíni migrálását az Azure-adatbázis minimális módosítással. 
 
 Az **Azure virtuális gépeken futó SQL Server** az *infrastruktúra-szolgáltatás (IaaS)* kategóriába esik. Ebben a verzióban az SQL Server egy felhőalapú virtuális gépen fut. [Az SQL Server-virtuálisgépek](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) szabványos hardvereken, hogy a rendszer tulajdonában lévő üzemeltetett és a Microsoft által karbantartott is futtathatja. Az SQL Server virtuális gépen is fizetheti-,-nyissa meg az SQL Server-licence már szerepel egy SQL Server-lemezképet, vagy egyszerűen használhatja a meglévő licenchez. Állítsa le vagy folytatása a virtuális gép igény szerint is.
 

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: b39a1f7b0de01c50b04072cc0de011928c6af786
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f54849b9fef8ff09aa9b5b6254c92fc3c452ef4a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003613"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414425"
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk segít eldönteni, hogy a legjobb integrálása az Azure Stack a meglévő hálózati környezetbe az Azure Stack hálózati infrastruktúra információkat nyújt. 
@@ -85,7 +85,7 @@ A felhasználók számára elérhetővé tenni az Azure Stack-szolgáltatások, 
 ### <a name="ports-and-urls"></a>Portok és URL-címek
 Azure Stack-szolgáltatásokat (például a portálok, az Azure Resource Manager-, DNS, stb.) elérhető külső hálózatokhoz, engedélyeznie kell a bejövő forgalmat a fenti végpontokkal az adott URL-címeket, portokat és protokollokat.
  
-A központi telepítés, ha egy transzparens proxy kimenő portokhoz hagyományos proxykiszolgálónak engedélyeznie kell a adott portok és URL-címek is [bejövő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) és [kimenő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) kommunikációt. Ezek közé tartozik a portok és URL-címek az identitás, marketplace tartalomtípus-gyűjtési, javítási és frissítési, regisztrációs és használati adatokat.
+A központi telepítés, ha egy transzparens proxy kimenő portokhoz hagyományos proxykiszolgálónak engedélyeznie kell a adott portok és URL-címek is [bejövő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) és [kimenő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) kommunikációt. Ezek közé tartozik a portok és URL-címek identitás, a Marketplace-en, javítási és frissítési, regisztrációs és használati adatok.
 
 ## <a name="next-steps"></a>További lépések
 [Szegély kapcsolat](azure-stack-border-connectivity.md)

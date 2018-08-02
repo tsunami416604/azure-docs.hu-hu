@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: d4f77460ea6b0a31ed40286f33aa4296bafc9087
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eda06fbb63352dd71cb0183ebdf683dc2f3a4a4c
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007292"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413841"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linuxszal
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Azure-fájlmegosztások használatával Linux-disztribúciók csatlakoztathatók a [SMB-kernel ügyfél](https://wiki.samba.org/index.php/LinuxCIFS). Ez a cikk bemutatja az Azure-fájlmegosztások csatlakoztatására kétféleképpen: az igény a `mount` paranccsal, és a rendszerindítási bejegyzés létrehozásával `/etc/fstab`.
@@ -34,7 +34,7 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
     
     SMB 3.0 titkosítás támogatása a Linux kernel verziója 4.11 jelent meg, és a népszerű Linux-disztribúciókra vonatkozó régebbi kernel-verzióknál backported lett. Ez a dokumentum közzétételének időpontjában a következő disztribúciók az Azure-katalógusból támogatja a csatlakoztatáshoz szükséges beállítás van megadva a tábla fejléceit az. 
 
-* ** Minimális ajánlott verzió a megfelelő csatlakozási képességeit (SMB 2.1-es verziója vagy SMB 3.0-s verzió) **    
+* **Minimális ajánlott verzió a megfelelő csatlakozási képességeit (2.1 vagy SMB 3.0-s verziójú SMB-verzió)**    
     
     |   | SMB 2.1 <br>(Csatlakoztatása a virtuális gépek ugyanazon Azure-régióban) | SMB 3.0 <br>(Csatlakoztatása a helyszíni, a régiók közötti) |
     | --- | :---: | :---: |

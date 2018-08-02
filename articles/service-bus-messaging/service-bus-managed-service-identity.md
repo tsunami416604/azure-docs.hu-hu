@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus preview Szolgáltatásidentitás felügyelt |} Microsoft Docs
-description: Az Azure Service Bus felügyelt szolgáltatás-identitások használata
+title: Felügyelt Felügyeltszolgáltatás-identitás az Azure Service Bus előzetes verziójában |} A Microsoft Docs
+description: Az Azure Service Bus felügyelt Szolgáltatásidentitások használata
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,70 +12,74 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 08/01/2018
 ms.author: sethm
-ms.openlocfilehash: 7b9901ee3478cb193c808b65d2dbbcf8b596a3c1
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 30df312e349bd6f6ebd1f38141075382be2522a2
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29874652"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397984"
 ---
-# <a name="managed-service-identity-preview"></a>Felügyelt Szolgáltatásidentitás (előzetes verzió)
+# <a name="managed-service-identity-preview"></a>Felügyeltszolgáltatás-identitás (előzetes verzió)
 
-Felügyelt szolgáltatás identitásának (MSI) lehetővé teszi az Azure-határokon, amely lehetővé teszi a központi telepítést, amely alatt az alkalmazás kódjában fut. társított egy biztonságos azonosító létrehozása. Identitás majd társíthat egyéni engedélyeket az eléréséhez szükséges konkrét Azure-erőforrások az alkalmazást, a hozzáférés-vezérlési szerepkörtől.
+A Felügyeltszolgáltatás-identitás (MSI) közötti Azure-beli funkciója lehetővé teszi, hogy a központi telepítést, amely alatt az alkalmazás kódja fut társított biztonságos identitás létrehozása. Ezután társíthatja az identitásukat hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket adott, az alkalmazásnak szüksége van az Azure erőforrások eléréséhez.
 
-Az MSI-fájl az Azure platform kezeli a futásidejű identitást. Nem kell tárolni, és az alkalmazás kódja vagy konfiguráció, vagy maga identitását, vagy az erőforrások eléréséhez szükséges tárelérési kulcsok védelme. A Service Bus-ügyfélalkalmazás belül az Azure App Service alkalmazás vagy virtuális gépen futó engedélyezett MSI-támogatással rendelkező nem kell SAS szabályok és a kulcsok vagy más hozzáférési jogkivonatok kell kezelni. Az ügyfélalkalmazás csak kell a Service Bus üzenetkezelés névtér a végpont címét. Ha összekapcsolja az alkalmazást, a Service Bus a MSI környezetet az ügyfél egy műveletben, például a cikk későbbi részében látható van kötve. 
+Az MSI-vel az Azure platform kezeli a futtatókörnyezet identitást. Nem kell tárolja és védi a tárelérési kulcsok az alkalmazáskód vagy a konfiguráció, vagy maga identitását, vagy az erőforrások eléréséhez szükséges. Egy engedélyezett MSI-támogatással rendelkező Azure App Service-alkalmazáshoz vagy virtuális gépen futó Service Bus-ügyfélalkalmazás nem kell kezelni a SAS-szabályok és a kulcsokat, vagy bármely más hozzáférési jogkivonatok. Az ügyfélalkalmazásnak csupán a végpont címe a Service Bus Messaging-névteret. Amikor az alkalmazás csatlakozik, a Service Bus az MSI-környezet van kötve az ügyfél egy műveletben, például a cikk későbbi részében látható. 
 
-Amikor felügyelt szolgáltatásidentitás társítva, egy Service Bus-ügyfélalkalmazást minden engedélyezett műveleteket hajthat végre. Az engedélyt a Service Bus szerepek egy olyan MSI Csomaghoz társításával. 
+Miután társítva a felügyeltszolgáltatás-identitás, a Service Bus-ügyfélalkalmazást összes jogosult műveletek hajthatók végre. Az engedély megadása társít egy olyan MSI Csomaghoz, a Service Bus-szerepkörökhöz. 
 
-## <a name="service-bus-roles-and-permissions"></a>A Service Bus-szerepköröket és engedélyeket
+## <a name="service-bus-roles-and-permissions"></a>A Service Bus-szerepkörök és engedélyek
 
-Kezdeti nyilvános előzetes csak felügyelt szolgáltatásidentitás adhat hozzá a Service Bus-névtér, amely az identitás teljes hozzáférést a névtér összes entitásának a "Tulajdonos" vagy "Közreműködői" szerepét. Azonban a névtér topológia módosítása olyan kezdetben felügyeleti támogatott azonban csak Azure Resource Manager és a Service Bus REST natív kezelőfelület keresztül nem. Ez a támogatás azt is jelenti, hogy nem használható a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) felügyelt szolgáltatásidentitás objektummal.
+A kezdeti előzetes kiadás csak a felügyeltszolgáltatás-identitás adhat hozzá a Service Bus-névtér, amely az identitás a névtérben lévő összes entitáshoz teljes hozzáférést biztosít a "Tulajdonos" vagy "Közreműködő" szerepköröket. Azonban a névtér topológia módosító műveletekre kezdetben felügyeleti támogatott azonban csak az Azure Resource Manager és a nem a natív Service Bus REST-felügyeleti felületén keresztül. Ez a támogatás azt is jelenti, hogy nem használható a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) felügyeltszolgáltatás-identitás-objektummal.
 
-## <a name="use-service-bus-with-a-managed-service-identity"></a>A Service Bus használata egy felügyelt identitás
+## <a name="use-service-bus-with-a-managed-service-identity"></a>A Service Bus használata a Felügyeltszolgáltatás-identitás
 
-A következő szakasz azt ismerteti, hogyan hozhat létre és telepíthet a mintaalkalmazás, amely felügyelt szolgáltatásidentitás, hogyan egy Service Bus üzenetkezelés névtér identitás hozzáférést, és hogyan kommunikál a Service busszal az alkalmazás fut. Ezzel az identitással entitások.
+A következő szakasz azt ismerteti, hogyan létrehozása és üzembe helyezünk egy mintaalkalmazást, amely alatt a felügyeltszolgáltatás-identitás, hogyan identitás hozzáférést egy Service Bus Messaging-névteret, és hogyan kommunikál a Service Bus az alkalmazás fut. Ezzel az identitással entitások.
 
-Ez a bevezető ismerteti egy webalkalmazást [Azure App Service](https://azure.microsoft.com/services/app-service/). A virtuális gép által üzemeltetett alkalmazások szükséges lépések hasonlóak.
+Ez a bevezető ismerteti a lévő üzemeltetett webalkalmazásban [Azure App Service](https://azure.microsoft.com/services/app-service/). Egy virtuális gép által üzemeltetett alkalmazás számára szükséges lépések hasonlóak.
 
-### <a name="create-an-app-service-web-application"></a>Az App Service-webalkalmazás létrehozása
+### <a name="create-an-app-service-web-application"></a>Hozzon létre egy App Service-webalkalmazás
 
-Az első lépés, ha az App Service ASP.NET-alkalmazások. Ha még nem ismeri a ezzel az Azure-ban, hajtsa végre a [Ez az útmutató útmutató](../app-service/app-service-web-get-started-dotnet-framework.md). Ahogy az az oktatóprogram MVC alkalmazás létrehozása helyett azonban Web Forms-alkalmazás létrehozása.
+Az első lépés az App Service ASP.NET-alkalmazás létrehozása. Ha még nem ismeri az ehhez az Azure-ban, hajtsa végre a [Ez az útmutató](../app-service/app-service-web-get-started-dotnet-framework.md). Azonban helyett, ahogyan az oktatóprogram MVC alkalmazás létrehozása, hozzon létre egy Web Forms-alkalmazást.
 
-### <a name="set-up-the-managed-service-identity"></a>Állítsa be a felügyelt azonosítója
+### <a name="set-up-the-managed-service-identity"></a>A felügyeltszolgáltatás-identitás beállítása
 
-Miután létrehozta az alkalmazást, nyissa meg az újonnan létrehozott webalkalmazás az Azure portálon (az útmutató is látható), majd keresse meg a **Szolgáltatásidentitás felügyelt** lapon, és engedélyezze a szolgáltatást: 
+Miután létrehozta az alkalmazást, nyissa meg az újonnan létrehozott webalkalmazás az Azure Portalon (az útmutató is látható), majd nyissa meg a **Felügyeltszolgáltatás-identitás** lapon, és engedélyezze a szolgáltatást: 
 
 ![](./media/service-bus-managed-service-identity/msi1.png)
 
-A szolgáltatás engedélyezése után egy új szolgáltatásidentitás létrehozása az Azure Active Directoryban, és az App Service-állomás konfigurált.
+Miután engedélyezte a funkciót, egy új felügyeltszolgáltatás-identitás létrehozása az Azure Active Directoryban, és az App Service-ben gazdagépen konfigurált.
 
-### <a name="create-a-new-service-bus-messaging-namespace"></a>Új Service Bus üzenetkezelés névtér létrehozása
+### <a name="create-a-new-service-bus-messaging-namespace"></a>Hozzon létre egy új Service Bus Messaging-névteret
 
-Ezt követően [hozzon létre egy Service Bus üzenetkezelés névtér](service-bus-create-namespace-portal.md) egy Azure-régiókban, amelyek preview támogatják a Szerepalapú: **amerikai keleti**, **amerikai keleti régiója 2**, vagy **Nyugat-Európa** . 
+Ezután [hozzon létre egy Service Bus üzenetkezelési névteret](service-bus-create-namespace-portal.md) RBAC előzetes támogató Azure-régiók egyikében: **USA keleti régiójában**, **USA keleti régiója 2**, vagy **Nyugat-Európa** . 
 
-Keresse meg a névtér **hozzáférés-vezérlés (IAM)** a portál lapot, és kattintson a **Hozzáadás** hozzáadása a felügyelt identitását a **tulajdonos** szerepkör. Ehhez keresse meg a webalkalmazás nevét a **engedélyek hozzáadása** panel **válasszon** mezőben, majd kattintson a bejegyzést. Ezután kattintson a **Save** (Mentés) gombra.
+Keresse meg a névtér **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **Hozzáadás** a felügyeltszolgáltatás-identitás hozzáadása a **tulajdonosa** szerepkör. Ehhez keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra.
 
 ![](./media/service-bus-managed-service-identity/msi2.png)
  
-A webalkalmazás felügyelt szolgáltatásidentitás most már hozzáférhet a Service Bus-névtér, és a várakozási sorba korábban létrehozott. 
+A webalkalmazás felügyeltszolgáltatás-identitás ezentúl hozzáférhet a Service Bus-névteret, és az üzenetsorba korábban hozott létre. 
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Most már módosíthatja az ASP.NET-alkalmazás létrehozott alapértelmezett oldalán. Használhatja a webes alkalmazás kód [a GitHub-tárházban](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity).
+Most módosítsa az alapértelmezett oldalt, az ASP.NET alkalmazás hozott létre. Használhatja a webes alkalmazás kódot az [GitHub-adattárban](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  
 
-A Default.aspx lap a kezdőlapja. A kód a Default.aspx.cs fájlban találhatók. Néhány számbeviteli mezők, valamint a minimális webalkalmazás eredménye **küldése** és **kap** gombok, amelyhez csatlakozni a Service Bus számára, vagy üzenetek küldése / fogadása.
+A Default.aspx oldal a kezdőlapja. A kód a Default.aspx.cs fájlban található. Az eredmény néhány számbeviteli mezők, valamint a minimális webalkalmazás **küldése** és **kap** gombot, amely csatlakozik a Service Bus vagy üzeneteket küldeni vagy fogadni a.
 
-Megjegyzés: az [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálása. A megosztott hozzáférési jogkivonat (SAS) jogkivonat-szolgáltató helyett a kód hoz létre a felügyelt szolgáltatás identitásának a jogkivonat-szolgáltatót a `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` hívható meg. Nincsenek, nincs megőrizheti és felhasználhatja a titkos kulcsok. A felügyelt szolgáltatás identitásának környezet Service Bus és a hitelesítési kézfogás folyamata automatikusan kezeli a jogkivonat-szolgáltató, ami egy egyszerűbb modell, mint a SAS használatával.
+Megjegyzés: a [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálása. Helyett a szolgáltatóval közös hozzáférési jogkivonat (SAS-) token, a kódot hoz létre a felügyeltszolgáltatás-identitását a jogkivonat-szolgáltatót a `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` hívja. Ezért nincsenek nincs megőrizheti és felhasználhatja a titkos kulcsok. A folyamat a felügyeltszolgáltatás-identitás környezet Service Bus és a hitelesítési kézfogás a jogkivonat-szolgáltatót, amely egyszerűbb, mint a SAS használatával modell automatikusan kezeli.
 
-Miután végrehajtotta ezeket a módosításokat, közzététele, és futtassa az alkalmazást. Egyszerű módot nyújt a helyes közzétételi adatokat, hogy töltse le és majd a Visual Studio-közzétételi profil importálása:
+Miután elvégezte ezeket a módosításokat, közzététel, és futtathatja az alkalmazást. Egy egyszerű módja annak, hogy a helyes közzétételi adatokat, hogy töltse le és importálja a Visual Studióban egy közzétételi profilt:
 
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
-Üzenetek küldése / fogadása, adja meg a névtér nevét és a létrehozott entitás nevét, majd jelölje be az **küldése** vagy **kap**.
- 
-Figyelje meg, hogy a felügyelt szolgáltatásidentitás csak akkor működik, az Azure-környezeten belül, és csak a az App Service telepítésében, amelyben konfigurált ilyet. Ne feledje, hogy felügyelt szolgáltatás-identitások nem működik együtt az App Service üzembe helyezési most.
+Üzeneteket küldeni vagy fogadni, adja meg a névtér nevét és a létrehozott entitás nevét, majd kattintson **küldése** vagy **kap**.
+
+
+> [!NOTE]
+> - A felügyeltszolgáltatás-identitás működik csak belül az Azure-környezethez, az App services, Azure virtuális gépekhez és méretezési csoportok. A .NET-alkalmazásokban a Microsoft.Azure.Services.AppAuthentication könyvtárat, amelyet a Service Bus NuGet-csomagot használ, absztrakciós biztosít a protokoll, és támogatja a helyi fejlesztési környezetet biztosít. Ez a kódtár lehetővé teszi tesztelheti a kódját a helyi fejlesztői gépen, a felhasználói fiókot a Visual Studio, az Azure CLI 2.0 vagy az Active Directory integrált hitelesítést használ. További információ a helyi fejlesztési lehetőségek az ebben a könyvtárban,: [szolgáltatások közötti hitelesítés a .NET használatával az Azure Key Vault](../key-vault/service-to-service-authentication.md).  
+> 
+> - Felügyelt szolgáltatásidentitások jelenleg nem működik az App Service üzembe helyezési pontok.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: e63f07e7819d464b4ee430571d8c5a05259c8df5
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 5d67abe003afc6f5aec420f4668efa5df7d8dbc4
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282034"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414467"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: Szükséges felügyelt eszközökre vonatkozó feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés
 
@@ -60,11 +60,11 @@ Egyszerűen fogalmazva a felügyelt eszközök azok az alatt álló eszközök *
 
 Három lehetősége van az Azure ad-vel regisztrált eszköz lekéréséhez:
 
-- **[Az Azure ad-ben regisztrált eszközök](device-management-introduction.md#azure-ad-registered-devices)**  – az Azure ad-vel regisztrált egy személyes eszköz
+- **[Az Azure ad-ben regisztrált eszközök](devices/overview.md#azure-ad-registered-devices)**  – az Azure ad-vel regisztrált egy személyes eszköz
 
-- **[Az Azure AD-hez csatlakoztatott eszközök](device-management-introduction.md#azure-ad-joined-devices)**  – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
+- **[Az Azure AD-hez csatlakoztatott eszközök](devices/overview.md#azure-ad-joined-devices)**  – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
 
-- **[Hibrid Azure AD-hez csatlakoztatott eszközök](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
+- **[Hibrid Azure AD-hez csatlakoztatott eszközök](devices/overview.md#hybrid-azure-ad-joined-devices)**  – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
 
 Felügyelt eszközzé válik, egy regisztrált eszközt kell, vagy egy **hibrid Azure AD-hez csatlakoztatott eszköz** vagy egy **megfelelőként megjelölt eszköz**.  
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 1c8fad4b2c66515af05996395a53a7d8b5dba97f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: bac3747f3f410e63454f543c035d7e04c20fac2a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036921"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399177"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -27,23 +27,23 @@ ms.locfileid: "39036921"
 
 ### <a name="what-ip-address-does-traffic-manager-use"></a>Milyen IP-címet nem használja a Traffic Manager?
 
-A [Traffic Manager működése](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), a Traffic Manager a DNS szintjén működik. A megfelelő szolgáltatási végpont ügyfelek DNS-válaszok küld. Az ügyfelek ezután csatlakozik a szolgáltatásvégpont közvetlenül, nem Traffic Manageren keresztül.
+A [Traffic Manager működése](../traffic-manager/traffic-manager-how-it-works.md), a Traffic Manager a DNS szintjén működik. A megfelelő szolgáltatási végpont ügyfelek DNS-válaszok küld. Az ügyfelek ezután csatlakozik a szolgáltatásvégpont közvetlenül, nem Traffic Manageren keresztül.
 
 A Traffic Manager ezért nem biztosít egy végpontot, illetve az ügyfelek IP-címet. Ha szeretne statikus IP-címet kell konfigurálni, a szolgáltatás nem a Traffic Manager, a szolgáltatás.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Milyen típusú forgalom lehet irányítva a Traffic Manager használatával?
-A [Traffic Manager működése](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), egy Traffic Manager-végpont lehet bármely internetkapcsolattal rendelkező belül vagy kívül az Azure-szolgáltatás. Ezért a Traffic Manager érkező forgalmat a nyilvános internetről végpontok között az, hogy rendszer emellett az internetre irányuló irányíthatja. Ha végpontokat, amelyek egy privát hálózaton belül (például egy belső verzióját [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) vagy a felhasználók ezeket a forgalom a Traffic Manager nem használható ilyen belső hálózatokról és DNS kér.
+A [Traffic Manager működése](../traffic-manager/traffic-manager-how-it-works.md), egy Traffic Manager-végpont lehet bármely internetkapcsolattal rendelkező belül vagy kívül az Azure-szolgáltatás. Ezért a Traffic Manager érkező forgalmat a nyilvános internetről végpontok között az, hogy rendszer emellett az internetre irányuló irányíthatja. Ha végpontokat, amelyek egy privát hálózaton belül (például egy belső verzióját [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) vagy a felhasználók ezeket a forgalom a Traffic Manager nem használható ilyen belső hálózatokról és DNS kér.
 
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>A Traffic Manager támogatja a "kiemelt" munkamenetek?
 
-A [Traffic Manager működése](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), a Traffic Manager a DNS szintjén működik. DNS-válaszok használatával a közvetlen ügyfelek számára, hogy a megfelelő szolgáltatásvégpontot. Ügyfelek csatlakoznak a szolgáltatásvégpont közvetlenül, nem Traffic Manageren keresztül. A Traffic Manager ezért nem látja a HTTP-forgalmat az ügyfél és a kiszolgáló között.
+A [Traffic Manager működése](../traffic-manager/traffic-manager-how-it-works.md), a Traffic Manager a DNS szintjén működik. DNS-válaszok használatával a közvetlen ügyfelek számára, hogy a megfelelő szolgáltatásvégpontot. Ügyfelek csatlakoznak a szolgáltatásvégpont közvetlenül, nem Traffic Manageren keresztül. A Traffic Manager ezért nem látja a HTTP-forgalmat az ügyfél és a kiszolgáló között.
 
 Ezenkívül a Traffic Manager által fogadott DNS-lekérdezés forrás IP-címét a rekurzív DNS-szolgáltatás, az ügyfél nem tartozik. A Traffic Manager ezért semmilyen módon nem lehet nyomon követése az egyes ügyfelek rendelkezik, és "rögzített" munkamenetek nem valósítható meg. Ez a korlátozás az összes forgalom DNS-alapú felügyeleti rendszeren közös, és nem adott Traffic Manager.
 
 ### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Miért látok HTTP-hibát, amikor a Traffic Manager használatával?
 
-A [Traffic Manager működése](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), a Traffic Manager a DNS szintjén működik. DNS-válaszok használatával a közvetlen ügyfelek számára, hogy a megfelelő szolgáltatásvégpontot. Az ügyfelek ezután csatlakozik a szolgáltatásvégpont közvetlenül, nem Traffic Manageren keresztül. A TRAFFIC Manager nem talál HTTP-forgalom ügyfél és kiszolgáló közötti nem. Ezért az alkalmazásból érkező lehet bármilyen HTTP-hibát látja. Az ügyfél kapcsolódni az alkalmazáshoz minden DNS-feloldási lépést nem teljes. Beavatkozás, amely a Traffic Manager az alkalmazás adatforgalmat rendelkezik, amely tartalmazza.
+A [Traffic Manager működése](../traffic-manager/traffic-manager-how-it-works.md), a Traffic Manager a DNS szintjén működik. DNS-válaszok használatával a közvetlen ügyfelek számára, hogy a megfelelő szolgáltatásvégpontot. Az ügyfelek ezután csatlakozik a szolgáltatásvégpont közvetlenül, nem Traffic Manageren keresztül. A TRAFFIC Manager nem talál HTTP-forgalom ügyfél és kiszolgáló közötti nem. Ezért az alkalmazásból érkező lehet bármilyen HTTP-hibát látja. Az ügyfél kapcsolódni az alkalmazáshoz minden DNS-feloldási lépést nem teljes. Beavatkozás, amely a Traffic Manager az alkalmazás adatforgalmat rendelkezik, amely tartalmazza.
 
 További vizsgálat ezért irányul, az alkalmazást.
 
@@ -51,7 +51,7 @@ Az ügyfél böngészője által küldött HTTP-állomásfejlécet az problémá
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Mit jelent a teljesítményre gyakorolt hatását a Traffic Manager használatával?
 
-A [Traffic Manager működése](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), a Traffic Manager a DNS szintjén működik. Mivel az ügyfelek közvetlenül kapcsolódik a szolgáltatásvégpontokat, ez nincs teljesítmény hatással lesz felszámítva, ha a Traffic Manager használatával, ha a kapcsolat létrejött.
+A [Traffic Manager működése](../traffic-manager/traffic-manager-how-it-works.md), a Traffic Manager a DNS szintjén működik. Mivel az ügyfelek közvetlenül kapcsolódik a szolgáltatásvégpontokat, ez nincs teljesítmény hatással lesz felszámítva, ha a Traffic Manager használatával, ha a kapcsolat létrejött.
 
 A Traffic Manager a DNS szintjén alkalmazásokba van integrálva, mivel azt a DNS-feloldási lánc beszúrni egy további DNS-címkeresés szükséges. A művelet hatása a Traffic Manager DNS-feloldási idő minimális. A TRAFFIC Manager egy globális névkiszolgáló-hálózat, és használja [csomópontválasztásos](https://en.wikipedia.org/wiki/Anycast) DNS biztosításához hálózatkezelés lekérdezések mindig legyenek irányítva a legközelebbi elérhető névkiszolgáló. Emellett a DNS-válaszok gyorsítótárazását azt jelenti, hogy a Traffic Managert használva a felmerülő további DNS-késés csak azokra a munkamenetek tört.
 
@@ -59,7 +59,7 @@ A teljesítmény metódus a legközelebbi elérhető végpontra irányítja a fo
 
 ### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Milyen alkalmazásprotokollok használható a Traffic Managerrel?
 
-A [Traffic Manager működése](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), a Traffic Manager a DNS szintjén működik. A DNS-címkeresés befejeződése után az ügyfelek az alkalmazás végpontjának közvetlenül kapcsolódni, nem Traffic Manageren keresztül. A kapcsolat, ezért bármely alkalmazás protokollt használhat. Akkor válassza ki azt a TCP, a monitorozási protokoll, a Traffic Manager végpont szolgáltatásállapot-figyelést végezhető bármilyen alkalmazás protokollok használata nélkül. Ha szeretné, hogy a health-protokoll segítségével választja, a végpont képesnek kell lennie HTTP vagy HTTPS GET kérelmek megválaszolására.
+A [Traffic Manager működése](../traffic-manager/traffic-manager-how-it-works.md), a Traffic Manager a DNS szintjén működik. A DNS-címkeresés befejeződése után az ügyfelek az alkalmazás végpontjának közvetlenül kapcsolódni, nem Traffic Manageren keresztül. A kapcsolat, ezért bármely alkalmazás protokollt használhat. Akkor válassza ki azt a TCP, a monitorozási protokoll, a Traffic Manager végpont szolgáltatásállapot-figyelést végezhető bármilyen alkalmazás protokollok használata nélkül. Ha szeretné, hogy a health-protokoll segítségével választja, a végpont képesnek kell lennie HTTP vagy HTTPS GET kérelmek megválaszolására.
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Használhatom-e a Traffic Manager "csupasz" tartománynév?
 

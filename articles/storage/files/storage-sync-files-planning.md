@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 79f3787713d7615d8f5c42d1747dfa5ed96780cd
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0493679575e9ff94ede1ad40c2bcadc6066afa6b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214883"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399015"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -82,7 +82,7 @@ Jelenleg a Windows Server az Azure File Sync verziók a következők:
 | Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
 |---------|----------------|------------------------------|
 | Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
-| Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
+| Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
 
 A Windows Server későbbi verzióiban bekerül vannak. Windows korábbi verzióiban előfordulhat, hogy a felhasználói visszajelzések alapján adható hozzá.
 
@@ -156,6 +156,10 @@ Víruskereső ismert kártevő kódja fájlok vizsgálata úgy működik, mert e
 
 A következő megoldások ismert támogatására, a rendszer kihagyja a kapcsolat nélküli fájlok:
 
+- [A Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
+    - A Windows Defender automatikus kihagyja az ilyen fájlok olvasása. Azt Defender teszteltük, és egy kisebb hibát azonosított: a kiszolgáló egy meglévő szinkronizálási csoporthoz való hozzáadásakor fájlok kisebb, mint 800 bájt vannak idézni (Letöltés) az új kiszolgálón. Ezek a fájlok továbbra is az új kiszolgálón, és nem lesz rétegzett, mivel azok nem felelnek meg a rétegzési méretkövetelményt (> 64 KB-os).
+- [A System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
+    - SCEP működik, mint a Defender; Lásd a fenti
 - [A Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
 - [McAfee EndPoint Security](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (lásd a "Vizsgálat csak szükséges" 90 oldalán a PDF-fájl)
 - [Kaspersky Anti-Virus](https://support.kaspersky.com/4684)
@@ -197,11 +201,11 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | USA középső régiója | Iowa |
 | Kelet-Ázsia | Hongkong KKT |
 | USA keleti régiója | Virginia |
-| 2. keleti régiója | Virginia |
+| USA 2. keleti régiója | Virginia |
 | Észak-Európa | Írország |
 | Délkelet-Ázsia | Szingapúr |
-| Egyesült Királyság déli régiója | London |
-| Egyesült Királyság nyugati régiója | Cardiff |
+| Az Egyesült Királyság déli régiója | London |
+| Az Egyesült Királyság nyugati régiója | Cardiff |
 | Nyugat-Európa | Hollandia |
 | USA nyugati régiója | Kalifornia |
 
@@ -224,8 +228,8 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 | USA 2. keleti régiója           | USA középső régiója         |
 | Észak-Európa        | Nyugat-Európa        |
 | Délkelet-Ázsia      | Kelet-Ázsia          |
-| Egyesült Királyság déli régiója            | Egyesült Királyság nyugati régiója            |
-| Egyesült Királyság nyugati régiója             | Egyesült Királyság déli régiója           |
+| Az Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |
+| Az Egyesült Királyság nyugati régiója             | Az Egyesült Királyság déli régiója           |
 | Nyugat-Európa         | Észak-Európa       |
 | USA nyugati régiója             | USA keleti régiója            |
 

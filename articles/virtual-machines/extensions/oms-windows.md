@@ -1,9 +1,9 @@
 ---
-title: Az Azure Naplóelemzés virtuálisgép-bővítmény Windows |} Microsoft Docs
-description: A Log Analytics-ügynököt a Windows virtuális gépet egy virtuálisgép-bővítmény telepítése.
+title: Windows Azure Log Analytics virtuális gépi bővítmény |} A Microsoft Docs
+description: Windows virtuális gép, virtuálisgép-bővítmények használatával a Log Analytics-ügynök telepítése.
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,34 +14,34 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
-ms.author: danis
-ms.openlocfilehash: 49e5033f6c77b19dd8545e9b6fd30ce03ce21f34
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: roiyz
+ms.openlocfilehash: 2c228784e7a0a78f6dfdb93ce632bf340dea0ee9
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301780"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414742"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Virtuálisgép-bővítmény Analytics keresse meg a Windows
+# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuálisgép-bővítmény a Windows
 
-A Naplóelemzési megfigyelési képességeket biztosít a felhő között és a helyszíni eszközök. A Windows Log Analytics Agent virtuálisgép-bővítmény közzétett és a Microsoft támogatja. A bővítmény a Log Analytics-ügynököt telepít Azure virtuális gépeken, és regisztrálja a virtuális gépek be egy meglévő Naplóelemzési munkaterület. Ez a dokumentum a támogatott platformok, a konfigurációk és a Windows Naplóelemzési virtuálisgép-bővítmény telepítési lehetőségei részletes.
+A log Analytics monitorozási képességeket biztosít a felhőben és helyszíni eszközökön. A Log Analytics-ügynököket a Windows virtuálisgép-bővítmény közzétett és a Microsoft támogatja. A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja a virtuális gépek egy meglévő Log Analytics-munkaterületet. Ez a dokumentum részletesen, a támogatott platformok, konfigurációk és üzembe helyezési lehetőségeit a Log Analytics virtuálisgép-bővítmény Windows.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A Log Analytics Agent kiterjesztése a Windows is futtathatók a Windows Server 2008 R2, 2012, 2012 R2 és 2016 kiadását.
+A Log Analytics-ügynök bővítmény esetében a Windows is futtatható a Windows Server 2008 R2, 2012, 2012 R2 és 2016-kiadások.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Az Azure Security Center automatikusan látja el a Naplóelemzési ügynök, és csatlakozik, az alapértelmezett naplóelemzési munkaterület az Azure-előfizetés. Ha az Azure Security Center használ, ne futtassa végig a lépéseken, ebben a dokumentumban. Ezzel felülírja a konfigurált munkaterület és a break a kapcsolat az Azure Security Center.
+Az Azure Security Center automatikusan építi ki a Log Analytics-ügynököket, és csatlakoztatja a az alapértelmezett log analytics-munkaterületet az Azure-előfizetés. Ha az Azure Security Center használ, ne futtassa a jelen dokumentumban leírt lépések segítségével. Ez felülírja a konfigurált munkaterületével és a szünet a kapcsolatot az Azure Security Centerrel.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
-A Log Analytics Agent kiterjesztése Windows megköveteli, hogy a cél virtuális gép csatlakozik az internethez. 
+A Log Analytics-ügynököket kiterjesztésű Windows megköveteli, hogy a céloldali virtuális gép csatlakozik az internethez. 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Log Analytics Agent bővítmény séma jeleníti meg. A bővítmény szükséges a munkaterület azonosítója és a cél a Naplóelemzési munkaterület kulcsát. Ezek a beállítások a munkaterület az Azure portálon található. A munkaterület-kulcs bizalmas adatokat kell kezelni, mert azt egy védett beállítás konfigurációban kell tárolni. Az Azure Virtuálisgép-bővítmény védett beállítás adatokat titkosít, és csak visszafejti a cél virtuális gépen. Vegye figyelembe, hogy **workspaceId** és **workspaceKey** -és nagybetűk.
+A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti meg. A bővítmény telepítéséhez, a munkaterület azonosítóját és a cél Log Analytics-munkaterületet a munkaterület kulcsát. Ezek a beállítások a munkaterület az Azure Portalon található. A munkaterület kulcsát kényes adatként kell kezelni, mert azt egy védett beállítás konfigurációjának kell tárolni. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen. Vegye figyelembe, hogy **munkaterület azonosítója** és **workspaceKey** kis-és nagybetűket.
 
 ```json
 {
@@ -66,24 +66,24 @@ A következő JSON a Log Analytics Agent bővítmény séma jeleníti meg. A bő
     }
 }
 ```
-### <a name="property-values"></a>A tulajdonság értékek
+### <a name="property-values"></a>Tulajdonságok értékei
 
-| Name (Név) | Érték / – példa |
+| Name (Név) | Érték és példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
-| workspaceId (például) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
-| workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+| munkaterület azonosítója (például:) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (például:) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is telepíthető. Az előző szakaszban ismertetett JSON-séma segítségével az Azure Resource Manager-sablonok a Log Analytics Agent bővítmény futtatása az Azure Resource Manager sablon üzembe helyezése során. A napló Analytics ügynök Virtuálisgép-bővítmény tartalmazó minta sablon megtalálható a [Azure Quick Start gyűjtemény](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletes JSON-sémája a Log Analytics-ügynök bővítmény futtatása során egy Azure Resource Manager-sablon üzembe helyezése Azure Resource Manager-sablon is használható. A Log Analytics ügynök Virtuálisgép-bővítményt tartalmazó mintát sablon megtalálható a [Azure gyors üzembe helyezési katalógus](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
-A virtuálisgép-bővítmény JSON ágyazott a virtuálisgép-erőforrást, vagy elhelyezve, a gyökér vagy a legfelső szintű erőforrás-kezelő JSON-sablon. A JSON elhelyezésének befolyásolja az erőforrás neve és típusa értékét. További információkért lásd: [nevét és típusát gyermekerőforrásait beállítása](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
+A JSON-t egy virtuálisgép-bővítményt a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON-fájllal való elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
 
-Az alábbi példa azt feltételezi, hogy a Naplóelemzési bővítményt a virtuálisgép-erőforrás van beágyazva. A bővítmény erőforrás beágyazási, amikor bekerül a JSON a `"resources": []` objektum a virtuális gép.
+Az alábbi példa azt feltételezi, hogy a Log Analytics-bővítményt a virtuális gép típusú erőforrást van beágyazva. A bővítmény erőforrás beágyazása, ha a JSON az kerül a `"resources": []` objektum a virtuális gép.
 
 
 ```json
@@ -110,7 +110,7 @@ Az alábbi példa azt feltételezi, hogy a Naplóelemzési bővítményt a virtu
 }
 ```
 
-A bővítmény JSON elhelyezésekor a sablon gyökerében, az erőforrás nevét a szülő virtuális gép egy hivatkozást tartalmaz, és a típus beágyazott konfigurációját tükrözi. 
+Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőforrás neve a szülő virtuális gép egy hivatkozást tartalmaz, és a típus a beágyazott konfigurációját tükrözi. 
 
 ```json
 {
@@ -136,9 +136,9 @@ A bővítmény JSON elhelyezésekor a sablon gyökerében, az erőforrás nevét
 }
 ```
 
-## <a name="powershell-deployment"></a>PowerShell telepítése
+## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
 
-A `Set-AzureRmVMExtension` parancs segítségével Log Analytics Agent virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és titkos konfigurációk kell egy kivonattáblát a PowerShell tárolódnak. 
+A `Set-AzureRmVMExtension` parancs is használható a Log Analytics ügynök virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez. A parancs futtatása előtt a nyilvános és privát konfigurációk kell egy PowerShell kivonattábla kell tárolni. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
@@ -159,13 +159,13 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Bővítmény központi telepítések állapotára vonatkozó lehet adatokat beolvasni az Azure-portálon, és az Azure PowerShell modul segítségével. A megadott virtuális gépek bővítmények központi telepítési állapotának megtekintéséhez a következő parancsot az Azure PowerShell modullal.
+Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure PowerShell-modul segítségével. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure PowerShell modullal.
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
-A következő könyvtárban található fájlok kerül a bővítmény végrehajtás kimenetének:
+Bővítmény végrehajtás kimenetének a rendszer naplózza a következő könyvtárban található fájlok:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\
@@ -173,4 +173,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>Támogatás
 
-Ha ez a cikk bármely pontján további segítségre van szüksége, forduljon az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza ki a Get-támogatási szolgálathoz. Támogatja az Azure használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

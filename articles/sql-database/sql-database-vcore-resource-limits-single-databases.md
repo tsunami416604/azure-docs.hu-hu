@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ac9070e328ef867a0b0e8d7d81f5147a50357928
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 603a6e2f3ce744d792ad9c9be20622c65a37dda3
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126408"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414606"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -22,9 +22,13 @@ Ez a cikk a részletes erőforráskorlátok nyújt a Virtuálismag-alapú vásá
 
 DTU-alapú vásárlási modell korlátozásairól lásd: [SQL Database DTU-alapú erőforráskorlátok](sql-database-dtu-resource-limits.md).
 
+> [!IMPORTANT]
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
+
+
 ## <a name="single-database-storage-sizes-and-performance-levels"></a>Önálló adatbázis: tárterületet és teljesítményszintek
 
-Az önálló adatbázisok számára az alábbi táblázatok bemutatják az egyes szolgáltatási csomagot és teljesítményszintet szinten egy önálló adatbázis rendelkezésre álló erőforrások. A szolgáltatási rétegben, a teljesítményszintet és a egy önálló adatbázis a tárolókapacitás is megadhatja a [az Azure portal](sql-database-servers-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](sql-database-servers-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-servers-databases-manage.md#powershell-manage-logical-servers-and-databases), a [Az azure CLI](sql-database-servers-databases-manage.md#azure-cli-manage-logical-servers-and-databases), vagy a [REST API-val](sql-database-servers-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+Az önálló adatbázisok számára az alábbi táblázatok bemutatják az egyes szolgáltatási csomagot és teljesítményszintet szinten egy önálló adatbázis rendelkezésre álló erőforrások. A szolgáltatási rétegben, a teljesítményszintet és a egy önálló adatbázis a tárolókapacitás is megadhatja a [az Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), a [Az azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), vagy a [REST API-val](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
 
 ### <a name="general-purpose-service-tier"></a>Általános célú szolgáltatásszint
 

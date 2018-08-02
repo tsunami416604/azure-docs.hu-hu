@@ -1,68 +1,74 @@
 ---
-title: Az Azure SQL adatbázis szolgáltatásszintjeinek - DTU |} Microsoft Docs
-description: Ismerje meg egyetlen szolgáltatásszintek és teljesítményszintek és tárolási méretek készlet adatbázisok.
+title: Az Azure SQL Database szolgáltatási szinteken - DTU |} A Microsoft Docs
+description: Ismerje meg egyetlen szolgáltatásszintek és teljesítményszintek és tárolási méretek készlethez adatbázisok.
 services: sql-database
 author: sachinpMSFT
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 08/01/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: d6dc641123e2bf840940f6246245a89fdd792db5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 5d16763fc8f3331082b98216d25190b945d95b60
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131837"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411820"
 ---
-# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>A DTU-alapú szolgáltatásréteghez, a teljesítményszintet és a tárolási erőforrások kiválasztása 
+# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>DTU-alapú szolgáltatásszint, a teljesítményszint és a tárolási erőforrások kiválasztása 
 
-Számos különböző teljesítményszintek az belefoglalt tárolási, megőrzési időszak biztonsági mentések és a rögzített ár rögzített méretű szerint megkülönböztetett forgalomosztályból a szolgáltatási szinteket. Az összes szolgáltatási szinteket a leállás nélküli teljesítményszintet változó rugalmasságot biztosítanak. Önálló adatbázisok és rugalmas készletek számlázása óránként és teljesítményszintet szolgáltatásszint alapján.
+Szolgáltatásszintek által meghatározott memóriamennyiséggel rendelkeznek a csomagban foglalt tárhely, a megőrzési időszak a biztonsági mentések és a rögzített ár rögzített teljesítményszintek számos különbözteti meg. Összes szolgáltatási szint, leállás nélkül a teljesítményszint módosítása rugalmasságot biztosítanak. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, szolgáltatásszintet és teljesítményét.
 
 > [!IMPORTANT]
-> SQL adatbázis-felügyelt példány jelenleg nyilvános előzetes verziójában nem támogatja a DTU-alapú alapjául szolgáló vásárlási modell. További információkért lásd: [Azure SQL adatbázis felügyelt példány](sql-database-managed-instance.md). 
+> SQL Database felügyelt példányába, jelenleg nyilvános előzetes verziója nem támogatja a DTU-alapú vásárlási modell. További információkért lásd: [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md). 
 
-## <a name="choosing-a-dtu-based-service-tier"></a>A DTU-alapú szolgáltatásréteg kiválasztása
+## <a name="choosing-a-dtu-based-service-tier"></a>DTU-alapú szolgáltatásszint kiválasztása
 
-Elsősorban az üzletmenet folytonosságát, a tároló és a teljesítményre vonatkozó követelmények attól függ, egy szolgáltatási réteg kiválasztása.
+Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, tárolás és teljesítmény-követelmények attól függ.
 ||Alapszintű|Standard|Prémium|
 | :-- | --: |--:| --:| --:| 
-|Cél munkaterhelés|Fejlesztési és éles|Fejlesztési és éles|Fejlesztési és éles||
-|SLA-ban garantált üzemidő|99.99%|99.99%|99.99%|Nincs kép nézetben|
-|Biztonsági mentés megőrzése|7 nap|35 nap|35 nap|
-|CPU|Alacsony|Alacsony, közepes, magas|Közepes, magas|
-|IO átviteli sebesség (hozzávetőleges) |2.5 DTU iops-értéket| 2.5 DTU iops-értéket | DTU 48 iops-értéket|
-|I/O várakozási ideje (hozzávetőleges)|10 ms (írás) (olvasás), 5 ms|10 ms (írás) (olvasás), 5 ms|2 ms (olvasás/írás)|
-|Oszlopcentrikus indexelő |–|S3 vagy újabb verzió|Támogatott|
-|A memórián belüli online Tranzakciófeldolgozási|–|–|Támogatott|
+|Egyes számítási feladatokhoz|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek||
+|SLA-ban garantált üzemidő|99.99%|99.99%|99.99%|Nincs előzetes verzióban|
+|Biztonsági mentés megőrzése|7 nap|35 napon belül|35 napon belül|
+|CPU|Alacsony|Alacsony, közepes, nagy|Közepes, nagy|
+|IO-átviteli sebesség (becsült) |2,5 dtu-k IOPS| 2,5 dtu-k IOPS | Dtu-k 48 IOPS|
+|IO-késés (becsült)|5 ezredmásodperc (olvasás), 10 ms (írás)|5 ezredmásodperc (olvasás), 10 ms (írás)|2 ms (olvasás/írás)|
+|Oszlopcentrikus indexelés |–|S3 vagy újabb verzió|Támogatott|
+|Memóriabeli OLTP beállítása|–|–|Támogatott|
 |||||
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Önálló adatbázis DTU- és tárterületi korlátozásai
 
-A teljesítményszintek különálló adatbázisok esetében DTU-k (adatbázis-tranzakciós egységek), rugalmas készletek esetében pedig rugalmas DTU-k formájában vannak meghatározva. Dtu és edtu-k kapcsolatban bővebben lásd: [Dtu és edtu-k](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
+A teljesítményszintek különálló adatbázisok esetében DTU-k (adatbázis-tranzakciós egységek), rugalmas készletek esetében pedig rugalmas DTU-k formájában vannak meghatározva. További információ a dtu-król és Edtu-: [Mik a dtu-król és edtu-k](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
 
 ||Alapszintű|Standard|Prémium|
 | :-- | --: | --: | --: | --: |
-| Maximális tárolóméret | 2 GB | 1 TB | 4 TB  | 
+| Maximális tárterület méretét | 2 GB | 1 TB | 4 TB  | 
 | Maximális dtu-k | 5 | 3000 | 4000 | |
 ||||||
 
-## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>A rugalmas készlet edtu-ra, a tároló és a készletezett adatbázis korlátok
+> [!IMPORTANT]
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
+
+## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Rugalmas készlet edtu-k, a storage és a készletezett adatbázis korlátok
 
 | | **Basic** | **Standard** | **Prémium** | 
 | :-- | --: | --: | --: | --: |
-| Maximális tárhelyméretet adatbázis  | 2 GB | 1 TB | 1 TB | 
-| Készlet maximális tárhelyméretet | 156 GB | 4 TB | 4 TB | 
-| Maximális edtu-k adatbázisonkénti | 5 | 3000 | 4000 | 
-| Maximális edtu-k száma | 1600 | 3000 | 4000 | 
-| Készletenként adatbázisok maximális számát | 500  | 500 | 100 | 
+| Az adatbázisonkénti maximális mérete  | 2 GB | 1 TB | 1 TB | 
+| Készletenkénti maximális mérete | 156 GB | 4 TB | 4 TB | 
+| Maximális Edtu adatbázisonként | 5 | 3000 | 4000 | 
+| Maximális edtu-k száma készletenként | 1600 | 3000 | 4000 | 
+| Készletenkénti adatbázisok maximális száma | 500  | 500 | 100 | 
 ||||||
 
 > [!IMPORTANT]
-> Több mint 1 TB-nyi tárhelyre prémium tarifacsomagra a jelenleg rendelkezésre áll a következő kivételével minden régióban: nyugati középső Régiójában, Kína keleti, USDoDCentral, Németország központi, USDoDEast, USA – (kormányzati) délnyugati, USGov Iowa, Németország Northeast, Kína északi. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> A következő kivételével minden régióban több mint 1 TB prémium szintű storage jelenleg érhető el: USA nyugati középső Régiója, kelet-Kína, közép-USDoDCentral, Németország, USDoDEast, USA-beli államigazgatás – délnyugati, USGov Iowa, Északkelet-Németország, Észak-Kína. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+
+> [!IMPORTANT]
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- További részletek a meghatározott teljesítményszintet és a tárolási méret választható az önálló adatbázisok: [SQL Database DTU-alapú erőforrás-korlátozások az önálló adatbázisok](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels).
-- További részletek a meghatározott teljesítményszintet és a tároló mérete lehetőségeit a rugalmas: [SQL Database DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).
+- További információ a meghatározott teljesítményszintet és az önálló adatbázisok számára elérhető tárolási mérete lehetőségeket: [SQL adatbázis DTU-alapú erőforráskorlátok az önálló adatbázisok](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels).
+- További információ a meghatározott teljesítményszintet és a tároló mérete választható rugalmas készletek számára elérhető: [SQL Database DTU-alapú erőforráskorlátok](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).

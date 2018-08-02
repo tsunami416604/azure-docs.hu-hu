@@ -28,6 +28,7 @@
       maintainContext: true
     - name: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      maintainContext: true
     - name: Az Apache Kafkához készült Event Hubs
       items:
         - name: Apache Kafka MirrorMaker és az Event Hubs

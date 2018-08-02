@@ -1,9 +1,9 @@
 ---
-title: Virtuálisgép-bővítmények tartalmazó Azure erőforráscsoportok exportálása |} Microsoft Docs
-description: Virtuálisgép-bővítmények tartalmazó Resource Manager-sablonok exportálása.
+title: A Virtuálisgép-bővítmények tartalmazó Azure-erőforráscsoportok exportálása |} A Microsoft Docs
+description: Resource Manager-sablonok a virtuális gépi bővítmények exportálása.
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,59 +14,59 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
-ms.author: danis
-ms.openlocfilehash: 3c54b77f52dfc7acf10dc26d4c00e9c14a296774
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: 76305dd736adede954460e034fcd726ebfefdc91
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942696"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412093"
 ---
-# <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Virtuálisgép-bővítmények tartalmazó erőforráscsoportok exportálása
+# <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Erőforrás-csoportok, amelyek tartalmazzák a Virtuálisgép-bővítmények exportálása
 
-Azure erőforráscsoport-sablonok is exportálhatók be egy új Resource Manager-sablon, majd újratelepítése. Az exportálási folyamat értelmezi a meglévő erőforrásokat, és létrehoz egy Resource Manager-sablon, amely telepítésekor hasonló erőforráscsoport eredményez. A virtuálisgép-bővítmények tartalmazó erőforráscsoport elleni erőforráscsoport exportálása beállításának használata esetén több elem bővítmény kompatibilitási például figyelembe kell venni, és védett beállítások.
+Az Azure erőforrás-csoportok az új Resource Manager-sablonnal, majd újratelepítése exportálhatók. Az exportálási folyamat értelmezi a meglévő erőforrások, és létrehoz egy Resource Manager-sablon, amely telepítésekor hasonló erőforráscsoport eredményez. Az erőforráscsoport exportálási beállítás elleni tartalmazó virtuálisgép-bővítmények használata esetén több elemet bővítmény kompatibilitási például figyelembe kell venni, és a védett beállításainál.
 
-Ez az erőforráscsoport exportálási folyamat működésével kapcsolatban virtuálisgép-bővítmények, beleértve a listáját a dokumentum részletei bővítmény támogatott, és a védett adatok részleteinek kezelése.
+Ez a dokumentum részletesen kapcsolatos virtuálisgép-bővítmények, például az az erőforráscsoport exportálási folyamat működése támogatja a bővítményeket, és a védett adatok részletei kezeléséről.
 
 ## <a name="supported-virtual-machine-extensions"></a>Támogatott virtuálisgép-bővítmények
 
-Több virtuálisgép-bővítmények érhetők el. Nem az összes bővítmény exportálhatja azokat egy Resource Manager-sablon, a "Automatizálási parancsfájl" funkció használata. A virtuálisgép-bővítmény nem támogatott, így ellenőrzi, hogy manuálisan helyezhetők vissza az exportált sablon.
+Számos virtuálisgép-bővítmények érhetők el. Nem az összes bővítmény be az "Automation-szkript" funkció használatával a Resource Manager-sablon exportálhatók. Virtuálisgép-bővítmények nem támogatott, ha manuálisan kell helyezni az exportált sablonhoz szükséges.
 
-A következő kiterjesztések exportálhatja az automatizálási parancsfájl szolgáltatással.
+A következő kiterjesztések exportálhatók az automatizálási parancsfájl szolgáltatásával.
 
 | Mellék ||||
 |---|---|---|---|
-| Acronis biztonsági mentése | Datadog Windows-ügynök | Javítás Linux operációs rendszer | Virtuális gép pillanatkép Linux
-| Linux Acronis biztonsági mentése | Docker-bővítmény | Puppet ügynök |
-| BG adatai | DSC-bővítmény | Hely 24 x 7 Apm felmérése |
-| BMC CTM ügynök Linux | Dynatrace Linux | 24 x 7 Linux helykiszolgáló |
-| BMC CTM ügynök Windows | Dynatrace Windows | Hely 24 x 7 a Windows Server |
-| Chef ügyfél | HPE biztonsági alkalmazás Defender | Trend Micro DSA |
-| Egyéni parancsfájl | Infrastruktúra-szolgáltatási kártevőirtó | Trend Micro DSA Linux |
-| Egyéni szkriptbővítmény | IaaS-diagnosztika | Linux virtuális gép hozzáférés |
-| Egyéni parancsfájl Linux | Linux-Chef ügyfél | Linux virtuális gép hozzáférés |
-| Datadog Linux-ügynök | Linux-diagnosztika | Virtuális gép pillanatkép |
+| Acronis biztonsági mentés | Datadoggal Windows-ügynök | Az operációs rendszer javításai a Linux rendszerre | VM-pillanatkép Linux
+| Linux Acronis biztonsági mentés | Docker-bővítmény | Puppet ügynök |
+| BG adatai | DSC-bővítmény | Hely 24 x 7 Apm Insight |
+| BMC CTM ügynök Linux | Linux a dynatrace-szel | 24 x 7 Linux helykiszolgáló |
+| BMC CTM ügynök Windows | Windows a dynatrace-szel | Hely 24 x 7, Windows Server |
+| Chef-ügyfél | HPE biztonsági alkalmazás Defender | Trend Micro DSA |
+| Egyéni szkript | IaaS kártevőirtó | Trend Micro DSA Linux |
+| Egyéni szkriptbővítmény | IaaS-diagnosztika | Linuxos Virtuálisgép-hozzáférés |
+| Egyéni parancsfájl Linux rendszeren | Linux-Chef ügyfél | Linuxos Virtuálisgép-hozzáférés |
+| Linux-ügynök Datadoggal | Linux diagnosztikai | Virtuális gép pillanatképe |
 
-## <a name="export-the-resource-group"></a>Az erőforráscsoportok exportálása
+## <a name="export-the-resource-group"></a>Az erőforráscsoport exportálása
 
-Erőforráscsoport exportálása újrafelhasználható sablonba, kövesse az alábbi lépéseket:
+Újrahasznosítható sablonok exportálása egy erőforráscsoportot, hajtsa végre az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure Portalra
-2. A központ menüben kattintson a csoportok
-3. A célként megadott erőforráscsoportja válasszon a listából
-4. Az erőforráscsoport panelen kattintson az automatizálási parancsfájl
+2. A központi menüben kattintson az erőforráscsoportok
+3. Válassza ki a céloldali erőforráscsoport a listából
+4. Az erőforráscsoport panelen kattintson az Automation-szkript
 
-![Sablon exportálása](./media/export-templates/template-export.png)
+![A sablon exportálása](./media/export-templates/template-export.png)
 
-Az Azure Resource Manager automatizálása parancsfájlt hoz létre a Resource Manager-sablon, egy paraméterfájl és több központi telepítési mintaparancsfájlok például a PowerShell és az Azure parancssori felület. Ekkor az exportált sablon letölthető a Letöltés gombra kattintva, a Sablonkönyvtár új sablonként hozzá, vagy újra telepíteni a telepítés gombra kattintva.
+Az Azure Resource Manager automatizálását parancsfájl Resource Manager-sablonnal, paraméterfájl és több üzembe helyezési mintaszkriptek például a PowerShell és az Azure CLI-vel hoz létre. Ezen a ponton az exportált sablon segítségével lehet letölteni a Letöltés gombra, vagy a könyvtár új sablonként hozzáadott, újratelepítése, az üzembe helyezés gomb használatával.
 
 ## <a name="configure-protected-settings"></a>Védett beállításainak konfigurálása
 
-Sok Azure virtuálisgép-bővítmények közé tartozik egy védett beállításokat, titkosítja a bizalmas adatokat, például a hitelesítő adatokat és a konfigurációs karakterlánc. Védett beállítás nem exportálása az automation-parancsfájllal. Ha szükséges, a védett beállításokat szeretne lehet ismételten beszúrni az exportált sablon.
+Számos Azure-beli virtuálisgép-bővítmény egy védett beállítások konfigurációját, titkosítja a bizalmas adatokat, például a hitelesítő adatok és a konfiguráció karakterláncokat tartalmaznak. Védett beállításokat a rendszer nem exportál az automation-szkript. Ha szükséges, a védett beállításait lehet ismételten beszúrni kell azokat az exportált sablonalapúak.
 
 ### <a name="step-1---remove-template-parameter"></a>1. lépés – a sablonparaméter eltávolítása
 
-Az erőforráscsoport exportálásakor egyetlen sablonparaméter értéket adhat az exportált védett beállítások jön létre. Ezzel a paraméterrel eltávolítható. Távolítsa el a paramétert, nézze át a paraméterlista, és törli a következő paramétert, amely a JSON-példához hasonló.
+Amikor exportálja az erőforráscsoport, egy egyetlen sablonparaméter, adjon meg egy értéket az exportált védett beállítások jön létre. Ez a paraméter távolíthatja el. Távolítsa el a paramétert, nézze át a paraméterek listája, és törli a következő paramétert a JSON-példához hasonlóan néz ki.
 
 ```json
 "extensions_extensionname_protectedSettings": {
@@ -75,11 +75,11 @@ Az erőforráscsoport exportálásakor egyetlen sablonparaméter értéket adhat
 }
 ```
 
-### <a name="step-2---get-protected-settings-properties"></a>2. lépés - Get védett beállításainak tulajdonságai
+### <a name="step-2---get-protected-settings-properties"></a>2. lépés – Get védett tulajdonságai
 
-Mivel minden egyes védett beállítás szükséges tulajdonságait, ezek a tulajdonságok listájának kell összegyűjteni. Minden védett beállításokat paramétere megtalálható a [Azure Resource Manager séma a Githubon](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Ebben a sémában csak az a jelen dokumentum-áttekintés szakaszban felsorolt kiterjesztések a paraméter-készletet tartalmaz. 
+Mivel minden egyes védett beállítás kötelező tulajdonságai készletét, ezek a tulajdonságok listáját kell összegyűjteni. A védett beállításainak konfigurálása az egyes paraméter található a [Azure Resource Manager-sémát a Githubon](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Ebben a sémában csak a jelen dokumentum az Áttekintés szakaszban felsorolt bővítmények a paraméterkészlettel tartalmazza. 
 
-A belül a séma-tárházban, keresse meg a kívánt kiterjesztése, ez a példa `IaaSDiagnostics`. A bővítmények egyszer `protectedSettings` objektum található, jegyezze fel az egyes paramétereket. A példában a `IaasDiagnostic` bővítmény, a szükséges paraméterek `storageAccountName`, `storageAccountKey`, és `storageAccountEndPoint`.
+A séma rendszerképréteg, keresse meg a kívánt bővítményt, ebben a példában `IaaSDiagnostics`. Miután a kiterjesztések `protectedSettings` objektum található, jegyezze fel az egyes paraméterek. Az a példában a `IaasDiagnostic` bővítmény, a szükséges paraméterek a következők `storageAccountName`, `storageAccountKey`, és `storageAccountEndPoint`.
 
 ```json
 "protectedSettings": {
@@ -105,9 +105,9 @@ A belül a séma-tárházban, keresse meg a kívánt kiterjesztése, ez a példa
 
 ### <a name="step-3---re-create-the-protected-configuration"></a>3. lépés – a védett konfiguráció újbóli létrehozása
 
-Az exportált sablon keressen `protectedSettings` és az exportált védett beállításobjektumot cserélje le egy új, amely tartalmazza a szükséges kiterjesztés paraméterei, és minden egyes értéket.
+Az exportált sablon lévő keresése `protectedSettings` és a egy újat, amely tartalmazza a kötelező kiterjesztés paraméterei, és minden egyes értéket cserélje le az exportált védett beállítás objektum.
 
-A példában a `IaasDiagnostic` bővítmény, az új védett beállítások konfigurálása jelenne meg az alábbi példa:
+A példában a `IaasDiagnostic` bővítmény, az új védett beállítás konfigurációjának jelenne meg az alábbi példához hasonlóan:
 
 ```json
 "protectedSettings": {
@@ -117,7 +117,7 @@ A példában a `IaasDiagnostic` bővítmény, az új védett beállítások konf
 }
 ```
 
-A végső kiterjesztés erőforrás hasonlít a JSON-példa:
+A végső bővítmény erőforrás a következő JSON-példához hasonlóan néz ki:
 
 ```json
 {
@@ -149,9 +149,9 @@ A végső kiterjesztés erőforrás hasonlít a JSON-példa:
 }
 ```
 
-Sablonparaméterek segítségével adja meg a tulajdonság értékét, ha ezek kell létrehozni. Létrehozásakor Sablonparaméterek védett, a beállítás értéke, ügyeljen arra, hogy használja a `SecureString` paraméter írja be, hogy az érzékeny értékek biztonságosak. Paraméterek használatával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md).
+Ha a tulajdonság értékének megadására, használja a sablon paramétereit, ezeket kell létrehozni. Létrehozásakor Sablonparaméterek értékeinek beállítása védett, ügyeljen arra, hogy használja a `SecureString` paraméter írja be, hogy bizalmas értékek biztonságosak. Paraméterek használatával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md).
 
-A példában a `IaasDiagnostic` bővítmény, az alábbi paraméterekkel létrehozott Resource Manager-sablon a Paraméterek szakaszban.
+A példában a `IaasDiagnostic` bővítmény, az alábbi paraméterekkel jön a Resource Manager-sablon a paraméterek szakaszához.
 
 ```json
 "storageAccountName": {
@@ -164,4 +164,4 @@ A példában a `IaasDiagnostic` bővítmény, az alábbi paraméterekkel létreh
 }
 ```
 
-Ezen a ponton a sablon is telepíthető a sablon az üzembe helyezési módszer használatával.
+Ezen a ponton a sablon is üzembe helyezhetők a sablon üzembe helyezési módszerrel.

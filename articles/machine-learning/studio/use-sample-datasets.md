@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 725b7e1e37ffca38cf439cc62b053f13dfd6397d
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 7a90a8f05082e2c0731f9f112d3e56ecaf4ea55b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903030"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398801"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets
@@ -333,7 +333,7 @@ Továbbá vegye figyelembe, hogy alábecsülte van-e a háttérben futó esemén
 <tr>
   <td>Időjárás-adatkészlet</td>
   <td>
-A NOAA óránkénti szárazföldi időjárási megfigyelések (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">201310 201304 adatainak egyesített</a>).
+A NOAA óránkénti szárazföldi időjárási megfigyelések (<a href="http://az754797.vo.msecnd.net/data/WeatherDataset.csv">201310 201304 adatainak egyesített</a>).
 <p></p>
 Az időjárási adatok repülőtér időjárási állomásokon, az adott időszakban 2013. április október vonatkozó kérés érkezett megfigyelések ismerteti. Mielőtt feltöltené az Azure Machine Learning Studióban, az adatkészlet a következőképpen dolgozta:
 <ul>

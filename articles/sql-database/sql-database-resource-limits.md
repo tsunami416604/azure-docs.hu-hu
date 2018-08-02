@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 62b0639f134a134739b09593a0b21b47d06699dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236924"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412110"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL Database erőforrás-korlátozások áttekintése 
 
@@ -28,10 +28,12 @@ Ez a cikk az Azure SQL Database erőforrás-áttekintés korlátozza, és mi tö
 | Kiszolgálók száma előfizetésenként bármelyik régióban alapértelmezett száma | 20 |
 | Kiszolgálók száma előfizetésenként bármelyik régióban maximális száma | 200 |
 | Dtu-k vagy eDTU-kvóta kiszolgálónként | 54,000 |
+| virtuális mag kvóta kiszolgálónként | 540 |
+| Maximális készletek kiszolgálónként | attól függ, dtu-k vagy virtuális magok száma |
 |||
 
 > [!NOTE]
-> További /eDTU DTU-kvótába, vagy további kiszolgálókat, mint az alapértelmezett érték beszerzéséhez egy új támogatási kérelmet az Azure Portalon, a probléma típusa "Kvóta" az előfizetés beküldhető. A dtu-k / eDTU kvóta- és adatbázis-korlát kiszolgálónként kiszolgálónként rugalmas készletek száma korlátozza. 
+> További /eDTU DTU-kvótába, virtuális mag kvóta vagy további kiszolgálókat, mint az alapértelmezett érték beszerzéséhez egy új támogatási kérelmet az Azure Portalon, a probléma típusa "Kvóta" az előfizetés beküldhető. A dtu-k / eDTU kvóta- és adatbázis-korlát kiszolgálónként kiszolgálónként rugalmas készletek száma korlátozza. 
 
 > [!IMPORTANT]
 > Adatbázisok száma megközelíti a korlátot, egy kiszolgálón, mert a következő fordulhat elő:
@@ -56,6 +58,7 @@ Amikor magas lemezterület-kihasználás, kockázatcsökkentési lehetőségek a
 
 - Az adatbázisához vagy rugalmas maximális méretének növelését tárolókészlet, vagy vegyen fel további tárolókat. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
 - Ha az adatbázis egy rugalmas készletben, majd azt is megteheti az adatbázis áthelyezhetők a készlet kívül, hogy a tárolóhely nincsenek megosztva, más adatbázisok.
+- Az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [területe az Azure SQL Database kezelése](sql-database-file-space-management.md)
 
 ### <a name="sessions-and-workers-requests"></a>A munkamenetek és feldolgozók (kérelmek) 
 

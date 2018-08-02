@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 4d248724597a411f7253be1ccca0be6b85db95af
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 3c8eac98414fa43213136940fb4c91694a78a2c1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237179"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397526"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Az Azure Service Fabric DNS-szolgáltatás
 A DNS szolgáltatás nem egy választható rendszerszolgáltatás, amely a fürt engedélyezheti a DNS protokollt használó egyéb szolgáltatások észlelését. 
@@ -159,7 +159,7 @@ A szolgáltatás DNS-név használatával létrehozásakor beállíthatja a `New
     -ServiceDnsName service1.application1
 ```
 
-## <a name="making-dns-queries-on-a-stateful-service-partition"></a>DNS-lekérdezések tétele az állapotalapú szolgáltatás partíción
+## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>[Előzetes verzió] DNS-lekérdezések tétele az állapotalapú szolgáltatás partíción
 A Service Fabric DNS-szolgáltatás a Service Fabric verziója 6.3 a kiadástól kezdve a szolgáltatás partícióinak támogatja lekérdezéseket.
 
 A DNS-lekérdezésekben használt partíciók az alábbi elnevezési korlátozások vonatkoznak:
@@ -249,6 +249,8 @@ public class ValuesController : Controller
 }
 ```
 
+## <a name="known-issues"></a>Ismert problémák
+* A Service Fabric 6.3 és újabb verziók szolgáltatás-nevek DNS-nevet a kötőjelet tartalmazó DNS-keresések probléma van. Ennél a hibánál további információkért kérjük nyomon követése a következő [GitHub-problémát](https://github.com/Azure/service-fabric-issues/issues/1197). Ez javítja a következő 6.3 frissítés hamarosan elérhető. 
 
 ## <a name="next-steps"></a>További lépések
 További információ a fürtben a szolgáltatások közötti kommunikáció [csatlakozhat, és a kommunikáció a szolgáltatásokkal](service-fabric-connect-and-communicate-with-services.md)

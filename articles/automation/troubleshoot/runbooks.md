@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ea134cde8b174d020a0adf73256aec3a6c406eaa
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 48b2aab9d2a3937fb53a2e63efa26efc18a894f8
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237597"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413858"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -94,6 +94,26 @@ A multi-factor authentication szolgáltatás az Azure-fiókkal rendelkezik, ha e
 A klasszikus Azure üzemi modell parancsmagokban tanúsítványt használ, tekintse meg [létrehozása és kezelése az Azure-szolgáltatások egy tanúsítvány hozzáadása.](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Egy egyszerű szolgáltatást az Azure Resource Manager parancsmagjainak használatához tekintse meg [az egyszerű szolgáltatásnév létrehozása az Azure portal használatával](../../azure-resource-manager/resource-group-create-service-principal-portal.md) és [hitelesítése egy egyszerű szolgáltatást az Azure Resource Managerrel.](../../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>A forgatókönyvek használata során előforduló gyakori hibák
+
+### <a name="task-was-cancelled"></a>Forgatókönyv: A runbook futtatása meghiúsul a következő hibával: A feladat megszakítása
+
+#### <a name="issue"></a>Probléma
+
+A runbook egy a következőhöz hasonló hibaüzenettel meghiúsul:
+
+```
+Exception: A task was canceled.
+```
+
+#### <a name="cause"></a>Ok
+
+Ezt a hibát okozhatja az elavult Azure-modulokat.
+
+#### <a name="resolution"></a>Megoldás:
+
+Ez a hiba megoldhatók az Azure-modulok frissítése a legújabb verzióra.
+
+Az Automation-fiókban kattintson **modulok**, és kattintson a **frissítés az Azure-modulok**. A frissítés körülbelül 15 percet vesz igénybe, befejezése után futtassa újból a runbookot, amely sikertelen volt.
 
 ### <a name="not-recognized-as-cmdlet"></a>Forgatókönyv: A runbook nem hiányzik a parancsmag miatt
 

@@ -9,17 +9,17 @@ ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 58d81bd4c1ce4b3af91a335039f62df08b340576
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30928708"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399991"
 ---
-Helyileg redundáns tárolás (LRS) szolgál a legalább 99.999999999 % (11 9 tartozó) keresztül replikálja az adatokat a tárolási méretezési egység belül egy adott évben objektumok tartóssága. A tárolási méretezési egység esetén egy adatközpontban, a régióban, amelyben létrehozta a tárfiók tárolja. Az LRS tárfiók írási kérelem sikeresen visszaadja, csak azt követően az adatok írt összes replikát. Ezekre a replikákra találhatók minden egyes tartalék tartományok elválasztásához, és frissítse egy tárolási skálázási egységet tartományban.
+Helyileg redundáns tárolás (LRS) úgy tervezték, hogy legalább 99,999999999 %-os (11 9-es) tartós objektumok egy adott évben tárolóskálázási egységben belül az adatok replikálásával. Tárolóskálázási egységben helyezkedik el egy adatközpontban, a régiót, amelyben a tárfiókot létrehozták. LRS tárfiók írási kérelem sikeresen visszaadja, csak azt követően az adatok összes replika lett írva. E replikák mindegyike található tartalék tartományok elválasztásához, és a frissítési tartományok belül egy tárolóskálázási egységben.
 
-A tárolási méretezési egység tárolócsomópontok rackszekrények gyűjteménye. A tartalék tartomány (FD) olyan csomóponton, amelyeket egy fizikai egységet kialakulását jelöl, és az ugyanazon fizikai állványra tartozó számítógépen tekinthető. Frissítési tartományok (UD) olyan csomóponton, amelyeket a szolgáltatás frissítése (Bevezetés) folyamata során egyszerre frissítik. A replikák vannak elosztva UDs és FDs belül egy tárolási skálázási egységet. Ez az architektúra biztosítja, hogy az adatok elérhető legyen-e ha hardverhiba egyetlen állvány hatással van, vagy ha a csomópont frissítése a bevezetés alatt.
+Tárolóskálázási egységben tárolási csomópontok rackszekrények gyűjteménye. A tartalék tartomány (FD) az felel meg a hiba fizikai egységet, és az ugyanazon fizikai állványra szerelt tartozó tekinthető csomópontok egy csoportját. A frissítési tartomány (UD) olyan csomópontok, amelyek együtt vannak frissítve egy szolgáltatás frissítése (Bevezetés) folyamata során. A replikák vannak elosztva frissítési és tartalék tartományok belül egy tárolóskálázási egységben. Ez az architektúra biztosítja, hogy az adatok akkor áll rendelkezésre, ha hardverhiba egyetlen állványon hatással van, vagy amikor a csomópont frissítése a kibocsátás közben.
 
-LRS a legalacsonyabb költséget replikációs beállítás, és az egyéb beállítások képest legalább tartósságot biztosít. (Például tűz vagy elárasztás) datacenter szintű katasztrófa történik, ha az összes replika lehet elveszett vagy helyreállíthatatlan. Ennek a kockázatnak a mérséklése érdekében a Microsoft azt javasolja, zónaredundáns tárolás (ZRS) vagy a georedundáns tárolás (GRS) használatával.
+LRS legalacsonyabb költségek replikálási beállítását és az egyéb lehetőségek képest legalább tartóssági kínál. (Például fire vagy -elárasztás) adatközpont-szintű katasztrófa történik, ha az összes replika lehet elveszett vagy helyreállíthatatlan. A kockázat csökkentése érdekében a Microsoft azt javasolja, a zónaredundáns tárolás (ZRS) vagy georedundáns tárolást (GRS) használatával.
 
-* Ha az alkalmazás eltárolja könnyen rekonstruálható, ha adatvesztés történik, LRS is választhat.
-* Adatreplikálás adatok cégirányítási követelmények miatt országon belül csak bizonyos alkalmazások korlátozódnak. Bizonyos esetekben a párosított régiók között, amelyek adatokat a rendszer replikálja a Georedundáns fiókok lehet egy másik országban. A párhuzamos régiók további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
+* Ha az alkalmazás, amely egyszerűen rekonstruálható, adatvesztés esetén adatokat tárolja, az lrs esetén is választhat.
+* Az adatreplikálás adatok cégirányítási követelmények miatt országon belül csak bizonyos alkalmazások korlátozódnak. Bizonyos esetekben a párosított régiók között, amelyek az adatok replikálási GRS fiókok lehet egy másik országban. A párosított régiók további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).

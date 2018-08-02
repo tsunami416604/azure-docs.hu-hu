@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: de8957864502b8c3ec6d9a43a8134fdb8dac6069
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283520"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413103"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Hogyan működik: az Azure AD önkiszolgáló jelszó-visszaállítás
 
@@ -50,6 +50,7 @@ Olvassa el az alábbi lépések segítségével megismerheti a jelszó mögötti
        * Ha nincsenek konfigurálva a hitelesítési módszereket, majd a felhasználó javasolt a rendszergazdától új jelszót kérnek.
      * Ha a házirend a két módszer van szüksége, majd biztosítja azt, hogy a felhasználó rendelkezik-e a megfelelő adatokat a felügyeleti házirend által engedélyezett hitelesítési módszerek közül legalább két definiálva.
        * Ha nincsenek konfigurálva a hitelesítési módszereket, majd a felhasználó javasolt a rendszergazdától új jelszót kérnek.
+     * Ha egy Azure-rendszergazdai szerepkör van rendelve a felhasználó az erős két-kapu – jelszó házirend van érvényben. További információ a szabályzat a szakaszban található [rendszergazda alaphelyzetbe házirend különbségek](concept-sspr-policy.md#administrator-reset-policy-differences).
    * Ellenőrzi, hogy a felhasználó jelszava felügyelt helyszíni (összevont, átmenő hitelesítést, vagy a jelszókivonatok szinkronizálása).
      * Ha a jelszóvisszaíró telepíti, és a felhasználó jelszava a helyszínen kezel, akkor a felhasználó számára engedélyezett a jelszavuk és hitelesítéséhez a folytatáshoz.
      * Ha a jelszóvisszaíró nincs telepítve, és a felhasználó jelszava a helyszínen kezel, akkor a felhasználónak meg kell adnia a rendszergazdától új jelszót kérnek.
@@ -59,7 +60,7 @@ Olvassa el az alábbi lépések segítségével megismerheti a jelszó mögötti
 
 Ha az SSPR engedélyezve van, választania kell a hitelesítési módszerek az alábbiak közül legalább egyet. Néha hallgassa meg ezek a beállítások "kapuk." néven Kifejezetten ajánljuk, hogy Ön **két vagy több hitelesítési módszer kiválasztása** , hogy a felhasználók rendelkeznek a nagyobb rugalmasságot, arra az esetre, szükség esetén az egyik hozzáférés nem tudnak.
 
-* Mobilalkalmazás-értesítés (előzetes verzió)
+* Mobilalkalmazásbeli értesítés (előzetes verzió)
 * Mobilalkalmazás-kód (előzetes verzió)
 * E-mail
 * Mobiltelefon
@@ -67,6 +68,9 @@ Ha az SSPR engedélyezve van, választania kell a hitelesítési módszerek az a
 * Biztonsági kérdések
 
 Csak alaphelyzetbe állíthatja az felhasználók a jelszavát, ha a hitelesítési módszereket, a rendszergazda engedélyezte az adatok rendelkeznek.
+
+> [!WARNING]
+> Azure-rendszergazdai szerepkörök hozzárendelt fiókok lesz szükség az szakaszban definiált metódusok használata [rendszergazda alaphelyzetbe házirend különbségek](concept-sspr-policy.md#administrator-reset-policy-differences).
 
 ![Hitelesítés][Authentication]
 
@@ -85,7 +89,7 @@ Jelszó-visszaállítás módszerként mobilalkalmazás, például a Microsoft A
 * Ha a rendszergazdák egy módszert igényel használt jelszó alaphelyzetbe állítása, ellenőrző kódot csak a lehetőség érhető el.
 * Ha a rendszergazdáknak a két módszer van szükségük lehet használt jelszó alaphelyzetbe állítása, felhasználók is használhatják **vagy** értesítési **vagy** ellenőrzőkódot kívül bármely más módszerek engedélyezve van.
 
-| Új jelszó kéréséhez szükséges módszerek száma | az egyik | Két |
+| Az új jelszó kéréséhez szükséges módszerek száma | Az egyik | Két |
 | :---: | :---: | :---: |
 | Elérhető Mobile Apps funkciói | Kód | Kód vagy az értesítés |
 

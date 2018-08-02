@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: d3ff80391214dbc5d29f04c4a1972b46e68d73d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 3f377c24a53313ff8c9243152281344200167856
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215145"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414241"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -83,7 +83,7 @@ Az Azure File Sync ügynök csomag egy letölthető, amely lehetővé teszi a Wi
 Az ügynököt a letöltheti a [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Ha a letöltés befejeződött, kattintson duplán az MSI-csomag az Azure File Sync ügynök telepítésének indításához.
 
 > [!Important]  
-> Szeretne használni az Azure File Sync a feladatátvevő fürttel, ha az Azure File Sync ügynök telepítve kell lennie a fürt minden csomópontján.
+> Szeretne használni az Azure File Sync a feladatátvevő fürttel, ha az Azure File Sync ügynök telepítve kell lennie a fürt minden csomópontján. A fürt egyes csomópontjaihoz regisztrálva kell az Azure File Sync használatával működnek.
 
 Javasoljuk, hogy tegye a következőket:
 - Hagyja bejelölve az alapértelmezett telepítési útvonaltól (C:\Program Files\Azure\StorageSyncAgent), a hibaelhárítás és a kiszolgáló karbantartás leegyszerűsítésében.
@@ -93,6 +93,9 @@ Az Azure File Sync ügynök telepítésének befejezését követően a kiszolg�
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 Futtassa a következő PowerShell-kódot az operációs rendszer az Azure File Sync ügynök megfelelő verzióját töltse le és telepítse azt a rendszer.
+
+> [!Important]  
+> Szeretne használni az Azure File Sync a feladatátvevő fürttel, ha az Azure File Sync ügynök telepítve kell lennie a fürt minden csomópontján. A fürt egyes csomópontjaihoz regisztrálva kell az Azure File Sync használatával működnek.
 
 ```PowerShell
 # Gather the OS version

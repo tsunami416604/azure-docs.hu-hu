@@ -7,17 +7,17 @@ manager: carmonm
 keywords: biztonsági mentés és vészhelyreállítás; biztonsági mentési szolgáltatás
 ms.service: backup
 ms.topic: conceptual
-ms.date: 5/9/2018
+ms.date: 8/1/2018
 ms.author: markgal
-ms.openlocfilehash: ac3c90fef602c5f840fff9ccd03efc360ca16200
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 33a3a1c0fd375f6ed88e13f910c46e71f216b892
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605824"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412951"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Kérdések az Azure Backup szolgáltatással kapcsolatban
-Ez a cikk az Azure Backup szolgáltatás-összetevőivel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Megjegyzések írásához Livefyre-fiók szükséges. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+Ez a cikk az Azure Backup-összetevővel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Megjegyzések írásához Livefyre-fiók szükséges. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 A cikk szakaszainak gyors áttekintéséhez használja **A cikk tartalma** terület hivatkozásait a jobb oldalon.
 
@@ -25,22 +25,25 @@ A cikk szakaszainak gyors áttekintéséhez használja **A cikk tartalma** terü
 ## <a name="recovery-services-vault"></a>Recovery Services-tároló
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>Az egyes Azure-előfizetésekben létrehozható tárolók száma korlátozott? <br/>
-Igen. Létrehozhat akár 500 Recovery Services-tárolók, régiónként támogatott az Azure Backup szolgáltatásban. Ha több tárolóra van szüksége, hozzon létre egy további előfizetést.
+Igen. Akár 500 Recovery Services-tárolók száma előfizetésenként az Azure Backup szolgáltatás, a támogatott régióban hozhat létre. Ha több tárolóra van szüksége, hozzon létre egy további előfizetést.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Az egyes tárolókhoz regisztrálható kiszolgálók/gépek száma korlátozott? <br/>
-Legfeljebb 1000 Azure virtuális gépek száma a tároló lehet regisztrálni. Ha MAB ügynök használ, regisztrálhatja legfeljebb 50 MAB ügynökök / tárolóban. És regisztrálhatja 50 MAB kiszolgálók/DPM-kiszolgálók egy tárolóba.
+Legfeljebb 1000 Azure-beli virtuális gép tárolónként regisztrálhat. Ha a MAB-ügynök használ, legfeljebb 50 MAB-ügynökök tárolónként regisztrálhat. És regisztrálhatja az 50 MAB kiszolgálót/DPM-kiszolgálók egy tárolóba.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Ha a szervezetem egy tárolóval rendelkezik, hogyan tudom az egyik kiszolgáló adatait elszigetelni egy másik kiszolgálóétól az adatok visszaállításakor?<br/>
 Minden kiszolgáló, amely ugyanahhoz a tárolóhoz van regisztrálva, képes helyreállítani más, *ugyanazt a hozzáférési kódot használó* kiszolgálók adatainak biztonsági másolatait. Ha olyan kiszolgálókkal rendelkezik, amelyek adatainak biztonsági másolatait szeretné elszigetelni a szervezetében található más kiszolgálóétól, használjon egy erre kijelölt hozzáférési kódot ezekhez a kiszolgálókhoz. Például a humánerőforrás-kiszolgálók használhatnának egy titkosító hozzáférési kódot, a könyvelési kiszolgálók egy másikat és a tároló kiszolgálók egy harmadikat.
 
-### <a name="can-i-migrate-my-backup-data-or-vault-between-subscriptions-br"></a>Át lehet telepíteni a biztonsági mentési adatokat vagy tárolót az előfizetéseim között? <br/>
-Nem. A tároló előfizetési szinten jön létre, és a létrehozása után nem lehet másik előfizetéshez hozzárendelni.
+### <a name="can-i-migrate-my-vault-between-subscriptions-br"></a>Áttelepítheti a saját tároló előfizetések között? <br/>
+Nem. A tároló előfizetési szinten jön létre, és nem lehet hozzárendelni egy másik előfizetésbe.
 
-### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>A helyreállítási tárak a Resource Manageren alapulnak. Mentési tárolókban továbbra is támogatottak? <br/>
-Mentési tárolók Recovery Services-tárolók lett konvertálva. Ha Ön nem konvertálható a mentési tároló Recovery Services-tároló, majd a mentési tárolóval lett konvertálva a Recovery Services-tároló meg. 
+### <a name="can-i-migrate-backup-data-to-another-vault-br"></a>Áttelepíthetek biztonsági mentési adatokat egy másik tárban? <br/>
+Nem. A tárolókban tárolt biztonsági mentési adatok nem helyezhető át egy másik tárban.
+
+### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>A helyreállítási tárak a Resource Manageren alapulnak. Biztonsági mentési tárak továbbra is támogatottak? <br/>
+A Backup-tárolók Recovery Services-tárolók lett konvertálva. Ha Ön nem konvertálható a Backup-tároló Recovery Services-tárolót, majd a Backup-tároló lett konvertálva Recovery Services-tároló az Ön számára. 
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Áttelepíthetek egy Backup tárolót egy Recovery Services-tárolóra? <br/>
-Az összes biztonsági mentési tárolók Recovery Services-tárolók lett konvertálva. Ha Ön nem konvertálható a mentési tároló Recovery Services-tároló, majd a mentési tárolóval lett konvertálva a Recovery Services-tároló meg.
+Minden Backup-tároló Recovery Services-tárolók lett konvertálva. Ha Ön nem konvertálható a Backup-tároló Recovery Services-tárolót, majd a Backup-tároló lett konvertálva Recovery Services-tároló az Ön számára.
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
 A kérdések részletes listája a [Gyakori kérdések az Azure-beli fájlok és mappák biztonsági mentéséről](backup-azure-file-folder-backup-faq.md) című részben található
@@ -65,16 +68,16 @@ Nem. A DPM- vagy MABS- kiszolgálók csak egy tárolóhoz regisztrálhatók.
 ### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>A System Center – Data Protection Manager melyik verziója támogatott?
 
 Javasoljuk, hogy telepítse a [legújabb](http://aka.ms/azurebackup_agent) Azure Backup-ügynököt a System Center – Data Protection Manager legújabb kumulatív frissítésén. 
-- A System Center DPM 2012 R2 [Update Rollup 14](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) a legújabb frissítés.
-- A System Center DPM 2016 [2. kumulatív frissítés](https://support.microsoft.com/en-us/help/3209593) a legújabb frissítés.
+- A System Center DPM 2012 R2 [kumulatív frissítés 14](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) van a legújabb frissítést.
+- A System Center DPM 2016 [2. kumulatív](https://support.microsoft.com/en-us/help/3209593) van a legújabb frissítést.
 
-### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>Telepítettem az Azure Backup ügynököt a fájljaim és mappáim megvédéséhez. Telepítheti a System Center DPM az Azure-bA a helyi alkalmazás vagy Virtuálisgép-munkaterhelések védelme érdekében?
+### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>Telepítettem az Azure Backup ügynököt a fájljaim és mappáim megvédéséhez. Telepítheti a System Center DPM védelme érdekében a helyszíni alkalmazás/virtuális gépek számítási feladatait az Azure-bA?
 
-Igen. A System Center Data Protection Manager (DPM) Azure Backup használatához azonban először telepítse a DPM, és telepítse az Azure Backup szolgáltatás ügynökének. Az Azure Backup ügynök és a DPM együttműködését úgy biztosíthatja, ha az Azure Backup-összetevőket ebben a sorrendben telepíti. Nem javasolt és nem támogatott az Azure Backup ügynök telepítése a DPM telepítése előtt.
+Igen. Az Azure Backup használatához a System Center Data Protection Manager (DPM), azonban először a DPM telepítése, és telepítse az Azure Backup-ügynök. Az Azure Backup ügynök és a DPM együttműködését úgy biztosíthatja, ha az Azure Backup-összetevőket ebben a sorrendben telepíti. Nem javasolt és nem támogatott az Azure Backup ügynök telepítése a DPM telepítése előtt.
 
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>A DPM használatával biztonsági mentése Azure verem alkalmazások?
+### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>A DPM használatával biztonsági másolatot készíteni az alkalmazásokat az Azure Stack?
 
-Nem. Bár az Azure Backup segítségével védeni az Azure-vermet, Azure Backup szolgáltatás jelenleg nem támogatja a DPM biztonsági mentése Azure verem apps használatának.
+Nem. Bár az Azure Backup segítségével megvédheti az Azure Stack, az Azure Backup jelenleg nem támogatja a DPM biztonsági mentése alkalmazások az Azure Stack használatával.
 
 ## <a name="how-azure-backup-works"></a>Az Azure Backup működése
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Ha megszakítok egy már elindult biztonsági mentési feladatot, az átküldött adatok biztonsági másolata törlődik? <br/>
@@ -83,13 +86,13 @@ Nem. A biztonsági mentési feladat megszakításának pillanata előtt a tárol
 Ha megszakítja egy Azure virtuális gép valamely biztonsági mentését, a rendszer a már átvitt adatokat figyelmen kívül hagyja. A következő biztonsági mentési feladat az utolsó sikeres biztonsági mentéshez képest végzi el az adatok növekményes mentését.
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>Korlátozva van, hogy mikorra vagy hányszor ütemezhető egy biztonsági mentési feladat?<br/>
-Igen. Windows Server- vagy Windows-munkaállomásokon a biztonsági mentési feladatok naponta legfeljebb háromszor futtathatók. System Center DPM biztonsági mentési feladatok naponta legfeljebb két alkalommal futtathatja. Az infrastruktúra-szolgáltatás virtuális gépei esetén a biztonsági mentési feladat naponta legfeljebb egyszer futtatható. A Windows Server vagy a Windows munkaállomás ütemezési házirendjét segítségével napi vagy heti ütemezést megadni. A System Center DPM napi, heti, havi vagy éves ütemezéseket is megadhat.
+Igen. Windows Server- vagy Windows-munkaállomásokon a biztonsági mentési feladatok naponta legfeljebb háromszor futtathatók. A System Center DPM biztonsági mentési feladatok naponta kétszer legfeljebb futtathatja. Az infrastruktúra-szolgáltatás virtuális gépei esetén a biztonsági mentési feladat naponta legfeljebb egyszer futtatható. A Windows Server vagy Windows-munkaállomás ütemezési szabályzatával használatával adja meg, napi vagy heti ütemezéseket. A System Center dpm-mel napi, heti, havi és évi ütemezéseket is megadhat.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Miért kisebb a Recovery Services-tárolóba átvitt adatok mérete a biztonsági mentéskor létrehozott adatméretnél?<br/>
- Minden, az Azure Backup ügynökétől, az SCDPM-ből vagy az Azure Backup Serverről származó adatot, amelyről biztonsági mentés készül, a rendszer tömörít és titkosít az átvitel előtt. A tömörítés és titkosítás alkalmazni, ha a Recovery Services-tároló adatai 30-40 %-os kisebb.
+ Minden, az Azure Backup ügynökétől, az SCDPM-ből vagy az Azure Backup Serverről származó adatot, amelyről biztonsági mentés készül, a rendszer tömörít és titkosít az átvitel előtt. A tömörítés és titkosítás alkalmazása után a Recovery Services-tároló adatai 30 – 40 százalékkal kisebbek.
 
 ## <a name="what-can-i-back-up"></a>Miről tudok biztonsági mentést készíteni?
-### <a name="which-operating-systems-does-azure-backup-support-br"></a>Milyen operációs rendszereket támogatja Azure Backup? <br/>
+### <a name="which-operating-systems-does-azure-backup-support-br"></a>Mely operációs rendszerek nem támogatják az Azure Backup? <br/>
 Az Azure Backup a következő operációs rendszerek biztonsági mentését támogatja: az Azure Backup Server és a System Center Data Protection Manager (DPM) használatával védett fájlok és mappák, valamint számítási feladatokat végző alkalmazások.
 
 | Operációs rendszer | Platform | SKU |
@@ -114,7 +117,7 @@ Az Azure Backup a következő operációs rendszerek biztonsági mentését tám
 
 
 ### <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up-br"></a>Létezik méretkorlátozás a biztonsági mentésre kijelölt adatforrásokra vonatkozóan? <br/>
-Azure biztonsági mentés érvénybe lépteti az adatforrás mérete, azonban a forrás korlátok nagy. A 2015. augusztusi állapot szerint a támogatott operációs rendszerek esetén az adatforrás maximális mérete a következő:
+Az Azure Backup kényszerít egy adatforrás maximális mérete, azonban a korlátok a forrás nagyok. A 2015. augusztusi állapot szerint a támogatott operációs rendszerek esetén az adatforrás maximális mérete a következő:
 
 | Sorszám | Operációs rendszer | Adatforrás maximális mérete |
 |:---:|:--- |:--- |
@@ -134,16 +137,16 @@ Az alábbi táblázat megmagyarázza, hogy az egyes adatforrásméretek hogyan l
 | Microsoft Exchange |Egy biztonsági mentés alatt álló Exchange-kiszolgáló összes Exchange-adatbázisa |
 | BMR/Rendszerállapot |A biztonsági mentés alatt álló gép BMR-ének vagy rendszerállapotának minden egyes másolata |
 
-Azure IaaS virtuális gép biztonsági mentése, az egyes virtuális gépek lehet legfeljebb 16 adatlemez, és minden adatlemez legfeljebb 4095 GB lehet.
+Az Azure IaaS virtuális gépek biztonsági mentését minden virtuális Géphez legfeljebb 16 adatlemezzel rendelkezhet, és az egyes adatlemezek legfeljebb 4095 GB is lehet.
 
-### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>A Recovery Services-tárolóban tárolt adatok mennyiségének korlátozva van?
-Akkor is biztonsági mentés egy helyreállítási szolgáltatások tároló adatmennyiség korlátozva van.
+### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>A Recovery Services-tárolóban tárolt adatok mennyisége korlátozva van?
+Nincs, képes biztonsági mentést egy Recovery Services-tároló adatok mennyisége nincs korlátozva.
 
 ## <a name="retention-policy-and-recovery-points"></a>Adatmegőrzési szabály és helyreállítási pontok
 ### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>Van különbség a DPM és a Windows Server vagy Windows-ügyfél (pl. Windows Server kiszolgálón DPM nélkül) esetén a megtartási házirendben?<br/>
 Nem, a DPM és a Windows Server vagy Windows-ügyfél is rendelkezik napi, heti, havi és évi megtartási házirendekkel.
 
-### <a name="can-i-configure-my-retention-policies-selectively--that-is-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Konfigurálja a adatmegőrzési szelektív – Ez azt jelenti, heti és napi, de nem éves és havi konfigurálásához?<br/>
+### <a name="can-i-configure-my-retention-policies-selectively--that-is-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Konfigurálása saját megtartási házirendeket szelektíven – Ez azt jelenti, konfigurálja a heti és napi, de nem évente és havonta?<br/>
 Igen, az Azure Backup megtartási struktúrája az igényeihez igazodva teljes rugalmasságot tesz lehetővé a megtartási házirend meghatározásában.
 
 ### <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>„Ütemezhetek egy biztonsági mentést” este 6 órára, és megadhatok „megtartási házirendeket” egy másik időpontra?<br/>
@@ -167,8 +170,8 @@ Az Azure Backupból történő helyreállítások száma korlátlan.
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure-br"></a>Az adatok visszaállításakor fizetnem kell az Azure-ból kimenő forgalomért? <br/>
 Nem. A helyreállítások ingyenesek, és nem kell fizetni a kimenő forgalomért.
 
-### <a name="what-happens-when-i-change-my-backup-policy"></a>Mi történik, ha a biztonsági mentési házirend módosítása?
-Ha egy új házirend van érvényben, ütemezését és az új házirend megőrzési követi. Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak. Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
+### <a name="what-happens-when-i-change-my-backup-policy"></a>Mi történik, ha módosítom a biztonsági mentési szabályzatot?
+Új szabályzat alkalmazásakor, ütemezése és megőrzése az új házirendet kell követni. Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak. Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
 
 ## <a name="azure-backup-encryption"></a>Azure Backup-titkosítás
 ### <a name="is-the-data-sent-to-azure-encrypted-br"></a>Az Azure-ba küldött adatok titkosítottak? <br/>

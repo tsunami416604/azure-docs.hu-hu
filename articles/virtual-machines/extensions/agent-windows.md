@@ -3,7 +3,7 @@ title: Azure-beli virtuálisgép-ügynök – áttekintés |} A Microsoft Docs
 description: Azure-beli virtuálisgép-ügynök – áttekintés
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: danis
-ms.openlocfilehash: 51271a875d19d08d84dcc102c85c947c05599d85
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: roiyz
+ms.openlocfilehash: 9185b786a3eea402b8013eb71a5d7268787900c5
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868517"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414498"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure virtuálisgép-ügynök – áttekintés
 A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy olyan biztonságos, egyszerűsített folyamat, amely felügyeli a virtuális gép (VM) az Azure Fabric Controller-szal. A Virtuálisgép-ügynök engedélyezése és az Azure virtuálisgép-bővítmények végrehajtása az elsődleges szerepe van. A Virtuálisgép-bővítmények telepítése és beállítása a szoftver például a virtuális gép üzembe helyezés utáni konfigurációs engedélyezése. A Virtuálisgép-bővítmények rendszergazdai jelszavának visszaállítása egy virtuális gép helyreállítási funkciókat is engedélyezheti. Az Azure Virtuálisgép-ügynök nélkül nem lehet futtatni a Virtuálisgép-bővítmények.

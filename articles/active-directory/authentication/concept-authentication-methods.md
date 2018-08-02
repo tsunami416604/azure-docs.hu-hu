@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: fd46473fe1c60ccbac0b0c65ca2e30ac4b37a953
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 065f7ef822cdabad8fe25651e3cda9735c655d5f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344681"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414524"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -41,20 +41,6 @@ A Microsoft nyomatékosan javasolja a rendszergazdák engedélyezés felhasznál
 | --- |
 | Mobilalkalmazás-értesítés és módszerek a az Azure AD önkiszolgáló jelszó-, mobilalkalmazás-kód alaphelyzetbe állítása a nyilvános előzetes verziójú funkciók az Azure Active Directory. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
-
-## <a name="converged-user-registration-preview"></a>Összevont felhasználói regisztráció (előzetes verzió)
-
-Eddig a felhasználók szükség volt a többtényezős hitelesítés és az SSPR hitelesítési módszerek regisztrálása két különböző portál érhető. Hány felhasználó lett eleinte, hogy a hasonló módszerekkel MFA és az SSPR-ben használt, és nem szeretne regisztrálni mindkét portálokon. Ez néhány felhasználó nem MFA vagy a segélyszolgálat hívása, és szükség esetén az SSPR használatához és a egy figyelmébe felhasználó vezetett.
-
-Ahhoz, hogy a felhasználók hitelesítési módszerek regisztrálása az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítás segítségével az ugyanazon a portálon, a következő lépéseket:
-
-1. Jelentkezzen be globális rendszergazdaként az Azure Portalon.
-1. Keresse meg a **Azure Active Directory**, **felhasználói beállítások**, **kezelheti a hozzáférési panel előzetes verziójú funkciók beállításait**.
-1. A **felhasználók használhatják a előzetes verziójú funkciók regisztrálásához és a biztonsági adatok kezelése**, beállítással engedélyezi egy **kijelölt** csoport, felhasználók vagy a **összes** felhasználók.
-
-A felhasználók mostantól használhatják [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo) MFA és az SSPR regisztrálhat.
-
-![Konvergens felhasználói regisztráció előzetes verzió – a fiókját az MFA és az SSPR használatát a biztonsági adatok megadása](media/concept-authentication-methods/concept-add-methods.png)
 
 ## <a name="password"></a>Jelszó
 
@@ -212,3 +198,5 @@ Ha a szervezet össze van vonva az Azure AD egyszeri bejelentkezéshez, és szer
 [A szervezet számára önkiszolgáló jelszóátállítás engedélyezése](quickstart-sspr.md)
 
 [Az Azure multi-factor Authentication szolgáltatás engedélyezése a szervezet számára](howto-mfa-getstarted.md)
+
+[Végfelhasználói hitelesítés metódus konfigurációs dokumentációja](https://aka.ms/securityinfoguide)

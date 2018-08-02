@@ -16,16 +16,22 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2b74a85d866bcb2f67f61792d1afe2b590ffa418
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 27068c1154a4cc5776bbcc74922ca31c4f28ced6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369043"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399917"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>A hibrid Azure Active Directory join megvalósítás tervezése
 
-A felhasználó hasonló módon az eszköz neve lesz, mint rendszergazda, számára védelmet kíván biztosítani, és bármely időben és helyen az erőforrások védelmét egy másik identitás. A cél, és az Azure AD az eszközidentitások végezheti el. Ezt megteheti egy Azure AD-csatlakozás végrehajtásával is, a hibrid Azure AD-csatlakozás vagy egy Azure ad-ben regisztrált eszköz állapotát. Az eszközök és az Azure ad-hez, a felhőbeli és helyszíni erőforrások és a felhőbeli és helyszíni erőforrásokhoz való hozzáférés védelme feltételes engedélyezésével egy időben, jól tudja egyszeri (SSO) által a végfelhasználói hatékonyság maximalizálása érdekében kap A hozzáférés. További részletekért lásd: a feltételes hozzáférés az Azure ad-ben.
+Hasonló módon a felhasználó eszköz neve lesz a védelmét, és az erőforrások védelméhez bármely időben és helyen is használja egy másik identitás. A cél, és az eszközök identitásokat az Azure AD a következő módszerek egyikének használatával végezheti el:
+
+- Azure AD-csatlakozás
+- Hibrid Azure AD-csatlakozás
+- Azure AD-regisztráció
+
+Biztosítja az eszközök Azure ad-hez, a felhőalapú és helyszíni erőforrások a felhasználók hatékonyságát egyszeri bejelentkezés (SSO) maximalizálása meg. Egy időben, hozzáférés gondoskodhat a felhőbeli és helyszíni erőforrások [feltételes hozzáférési](../active-directory-conditional-access-azure-portal.md).
 
 Ha rendelkezik a helyszíni Active Directory-környezetben, és azt szeretné, a tartományhoz csatlakoztatott eszközök csatlakoztatása az Azure ad-ben, ez elvégezhető a hibrid Azure AD-csatlakoztatott eszközök konfigurálásával. Ez a cikk ismerteti, és a kapcsolódó lépéseket kell végrehajtani egy hibrid Azure AD join a környezetben. 
 
@@ -95,8 +101,6 @@ A regisztráció, a tartományvezérlőn (DC) szerepkört futtató Windows Serve
 
 Ha a szervezet az interneten keresztül egy hitelesített kimenő proxy hozzáférésre van szüksége, győződjön meg arról, hogy a Windows 10-es számítógépek és a kimenő proxy sikeresen hitelesítik. Windows 10-es számítógépek számítógép-környezet használatával történő eszközregisztrációval futtatni, mivel, használatával a számítógép-környezet kimenő proxy-hitelesítés konfigurálása szükséges.
 
-Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálja az eszközök. Ha ez igaz az Ön számára, tekintse meg az eszközt, a hibrid Azure AD-csatlakozás szabályozására.
-
 
 Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálja az eszközök. Ha ez igaz az Ön számára, lásd: [eszközt, a hibrid Azure AD join vezérlése](hybrid-azuread-join-control.md).
 
@@ -119,9 +123,9 @@ Ha a környezet rendelkezik felügyelt tartományok, a hibrid Azure AD-csatlakoz
 
 1.1.819.0 verzióval kezdve az Azure AD Connect biztosít a hibrid Azure AD-csatlakozás konfigurálása varázsló segítségével. A varázsló lehetővé teszi a jelentősen megkönnyíti a konfigurációs folyamat. További információkért lásd:
 
-- [Hibrid Azure Active Directory-csatlakozás összevont tartományok konfigurálása](hybrid-azuread-join-federated-domains.md)
+- [A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz](hybrid-azuread-join-federated-domains.md)
 
-- [Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása](hybrid-azuread-join-managed-domains.md)
+- [A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz](hybrid-azuread-join-managed-domains.md)
 
 
  Ha a szükséges verzió az Azure AD Connect telepítésével lehetőség nem az Ön számára, lásd: [manuális konfigurálása az eszközregisztrációs](../device-management-hybrid-azuread-joined-devices-setup.md). 

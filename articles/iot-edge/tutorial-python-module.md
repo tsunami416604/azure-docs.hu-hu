@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d56fccbb378736dc8235bf8b8f17afffc085c49f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 49fa81d89fb195e1caedc2348a8b0990022b0d0d
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002007"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414266"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -29,7 +29,7 @@ Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül
 
 Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze által létrehozott hőmérsékletadatokat. Csak akkor küld felfelé irányuló üzeneteket, amikor a hőmérséklet egy megadott küszöbérték felett van. Ez a fajta peremhálózati elemzés a felhőbe küldött és ott tárolt adatok mennyiségének csökkentésére használható. 
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Előfeltételek

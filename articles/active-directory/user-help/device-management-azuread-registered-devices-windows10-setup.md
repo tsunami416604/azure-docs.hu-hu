@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: bf763b08f234145cb81d2cded170348f96e5e478
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 0c38c0160cea51940ac5b04ee64095c6a6f25b5d
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343341"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414674"
 ---
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Állítsa be az Azure Active Directoryban regisztrált Windows 10-eszközök
 
@@ -28,7 +28,7 @@ Ha engedélyezni szeretné a **Bring Your Own Device (BYOD)** forgatókönyvben 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A Windows 10 rendszerű eszköz regisztrálása, hogy lehetővé tegye az eszközök regisztrálása az eszközregisztrációs szolgáltatás kell konfigurálni. Emellett rendelkeznie kell kevesebb, mint a beállított maximális regisztrált eszközök. További információkért lásd: [eszközbeállítások konfigurálása](../device-management-azure-portal.md#configure-device-settings).
+A Windows 10 rendszerű eszköz regisztrálása, hogy lehetővé tegye az eszközök regisztrálása az eszközregisztrációs szolgáltatás kell konfigurálni. Emellett rendelkeznie kell kevesebb, mint a beállított maximális regisztrált eszközök. További információkért lásd: [eszközbeállítások konfigurálása](../devices/device-management-azure-portal.md#configure-device-settings).
 
 ## <a name="what-you-should-know"></a>Tudnivalók
 

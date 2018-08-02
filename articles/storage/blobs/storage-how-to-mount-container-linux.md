@@ -1,55 +1,52 @@
 ---
-title: Azure Blob Storage tárolóban csatlakoztatásáról a fájlrendszer Linux |} Microsoft Docs
-description: Csatlakoztassa az Azure Blob storage tárolók biztosító rendelkező Linux
+title: Hogyan lehet Azure Blob-tároló csatlakoztatása fájlrendszerként Linux rendszeren |} A Microsoft Docs
+description: Egy Azure Blob storage-tároló FUSE való csatlakoztatás linuxon
 services: storage
-documentationcenter: linux
 author: seguler
-manager: jahogg
 ms.service: storage
-ms.devlang: bash
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: seguler
-ms.openlocfilehash: 1098eef15b559c30ef436d8e13bbe02bddb78649
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 9964aa4d263e0b75eb59b4e1434a9b3f0aac6ea1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072092"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400440"
 ---
-# <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>A fájlrendszer blobfuse a Blob-tároló csatlakoztatásáról
+# <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob-tároló csatlakoztatása fájlrendszerként blobfuse az útmutató
 
 ## <a name="overview"></a>Áttekintés
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) egy virtuális fájlrendszer-illesztőprogram van az Azure Blob-tároló, amely lehetővé teszi a meglévő blokk blob adatait a tárfiók eléréséhez a Linux fájlrendszeren keresztül. Az Azure Blob Storage egy olyan objektum tárolási szolgáltatás, és így nem kell a hierarchikus névtér. Ez a virtuális könyvtár séma használatával ferde a '/' elválasztó használatával névteret biztosít a Blobfuse.  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) egy virtuális fájlrendszer illesztőprogramja van az Azure Blob Storage, amely lehetővé teszi, hogy a meglévő blokkblobok adataival a tárfiókban lévő hozzáférnie a Linux-fájlrendszer. Az Azure Blob Storage-objektum tárolási szolgáltatás, és így nem kell egy hierarchikus névtér. Blobfuse biztosít a névtér a virtuális könyvtár séma használatával ferde '/' elválasztó használatával.  
 
-Ez az útmutató bemutatja, hogyan blobfuse használja, és a Linux és a hozzáférési adatok egy Blob storage tárolót csatlakoztatható. Blobfuse kapcsolatos további tudnivalókért olvassa el a részleteket [blobfuse összetevőtárházat](https://github.com/Azure/azure-storage-fuse).
+Ez az útmutató bemutatja, hogyan blobfuse használja, és a Linux és a hozzáférési adatokat a Blob storage-tároló csatlakoztatható. Blobfuse kapcsolatos további információkért olvassa el a részleteket [a blobfuse tárház](https://github.com/Azure/azure-storage-fuse).
 
 > [!WARNING]
-> Blobfuse nem garantálja a 100 %-os POSIX megfelelőség egyszerűen rendszerhez történő kérelmek [Blob REST API-k](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api). Például nevezze át olyan POSIX, de nem a blobfuse atomi.
-> A fájlrendszer és a blobfuse közötti különbségek teljes listájának megtekintéséhez keresse fel a [a blobfuse forráskódraktárban](https://github.com/azure/azure-storage-fuse).
+> Blobfuse nem garantálja a 100 %-os POSIX megfelelőségi egyszerűen rendszerhez történő kérelmek [Blob REST API-k](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api). Ha például átnevezési műveleteket elemiek POSIX, de nem a blobfuse.
+> Egy natív fájlrendszer és blobfuse közötti különbségekről teljes listájáért látogasson el [a blobfuse forráskód adattára](https://github.com/azure/azure-storage-fuse).
 > 
 
-## <a name="install-blobfuse-on-linux"></a>Blobfuse telepítése Linux rendszerre
-Blobfuse bináris érhetők el a [a Microsoft szoftverek tárolóhelyekkel Linux](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software). Blobfuse telepítéséhez konfigurálja ezeket a tárolóhelyekkel egyikét.
+## <a name="install-blobfuse-on-linux"></a>Blobfuse telepítése Linux rendszeren
+Blobfuse bináris fájlok elérhetők a [Linux a Microsoft szoftverek tárolóhelyekkel](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software). Blobfuse telepítéséhez állítsa be az alábbi két adattár.
 
-### <a name="configure-the-microsoft-package-repository"></a>A Microsoft csomag adattár konfigurálása
-Konfigurálja a [Linux csomag tárház a Microsoft-termékek](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
+### <a name="configure-the-microsoft-package-repository"></a>A Microsoft csomagtárház konfigurálása
+Konfigurálja a [Linux Csomagtárház Microsoft-termékek](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
 
 Tegyük fel, az Enterprise Linux 6 terjesztési:
 ```bash
 sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
 ```
 
-Hasonlóképpen, módosítsa az URL-címét a `.../rhel/7/...` egy Enterprise Linux 7 terjesztési ponthoz.
+Hasonlóképpen, módosítsa az URL-címe `.../rhel/7/...` egy Enterprise Linux 7 terjesztési ponthoz.
 
-Egy másik példa a egy Ubuntu 14.04:
+Egy Ubuntu 14.04 példájába egy másik:
 ```bash
 wget https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Hasonlóképpen, módosítsa az URL-címét a `.../ubuntu/16.04/...` egy Ubuntu 16.04 terjesztési ponthoz.
+Hasonlóképpen, módosítsa az URL-címe `.../ubuntu/16.04/...` egy Ubuntu 16.04 terjesztési ponthoz.
 
 ### <a name="install-blobfuse"></a>Blobfuse telepítése
 
@@ -58,37 +55,37 @@ Egy Ubuntu/Debian terjesztési:
 sudo apt-get install blobfuse
 ```
 
-Az Enterprise Linux terjesztési:
+Egy vállalati linuxos:
 ```bash
 sudo yum install blobfuse
 ```
 
-## <a name="prepare-for-mounting"></a>Készítse elő a csatlakoztatása
-Blobfuse ideiglenes elérési útvonalat kell megadni a fájlrendszer puffer és gyorsítótárazza a megnyitott fájlokat, amely segít a natív hasonló teljesítményt biztosít. Az ideiglenes mappa útvonalát válassza ki a legtöbb performant lemezt, vagy a ramdisk használjon a legjobb teljesítmény érdekében. 
+## <a name="prepare-for-mounting"></a>Csatlakoztatási előkészítése
+Blobfuse ideiglenes elérési útvonalat kell megadni a fájlrendszer, a puffer és gyorsítótárazzák a megnyitott fájlokat, ami megkönnyíti a natív hasonló teljesítményt nyújt. Az ideiglenes elérési út válassza ki a legtöbb nagy teljesítményű lemez vagy egy ramdisk használja a legjobb teljesítmény érdekében. 
 
 > [!NOTE]
-> Blobfuse minden megnyitott fájl tartalmát tárolja az ideiglenes mappa útvonalát. Ügyeljen arra, hogy elegendő lemezterület rendelkeznie ahhoz, hogy megfeleljen a megnyitott fájlokat. 
+> Blobfuse minden megnyitott fájl tartalmát az ideiglenes elérési úton tárolja. Ellenőrizze, hogy nincs elég hely való megfelelés érdekében a megnyitott fájlokat. 
 > 
 
-### <a name="optional-use-a-ramdisk-for-the-temporary-path"></a>(Választható) A ramdisk ideiglenes mappa útvonalát használja
-Az alábbi példakód létrehozza a ramdisk 16 GB, valamint a blobfuse könyvtár létrehozása. Válassza ki a igényei szerint méretét. A ramdisk lehetővé teszi, hogy a blobfuse megnyitott fájlok legfeljebb 16 GB-nál. 
+### <a name="optional-use-a-ramdisk-for-the-temporary-path"></a>(Nem kötelező) Használja a ramdisk ideiglenes elérési útja
+A következő példában létrehozunk egy 16 GB, valamint létrehoz egy könyvtárat a blobfuse ramdisk. Válassza ki a saját igényei szerint méretét. A ramdisk lehetővé teszi, hogy a blobfuse megnyitott fájlok és 16 GB-nál. 
 ```bash
 sudo mount -t tmpfs -o size=16g tmpfs /mnt/ramdisk
 sudo mkdir /mnt/ramdisk/blobfusetmp
 sudo chown <youruser> /mnt/ramdisk/blobfusetmp
 ```
 
-### <a name="use-an-ssd-for-temporary-path"></a>Az ideiglenes mappa útvonalát egy SSD használata
-Az Azure segítségével a rövid élettartamú meghajtón (SSD) érhető el a virtuális gépeken adja meg a kis késleltetésű puffer blobfuse. Ubuntu azokat a terjesztéseket, a rövid élettartamú lemez van csatlakoztatva: "/ mnt" mivel csatlakoztatva van a "/ mnt/erőforrás /" a RedHat és CentOS terjesztéseket.
+### <a name="use-an-ssd-for-temporary-path"></a>SSD-t használja az ideiglenes útvonal
+Az Azure-ban rendelkezésre álló ideiglenes lemezek (SSD) használhat a virtuális gépeken blobfuse közel valós idejű puffert biztosít. Az Ubuntu-disztribúció, ez a rövid élettartamú lemez van csatlakoztatva "/ mnt" mivel lett csatlakoztatva a "/ mnt/erőforrás /" a Red Hat és a CentOS disztribúciók.
 
-Győződjön meg arról, a felhasználó rendelkezik hozzáférési jogosultsággal az ideiglenes mappa útvonalát:
+Ellenőrizze, hogy a felhasználó férhet hozzá az ideiglenes elérési út:
 ```bash
 sudo mkdir /mnt/resource/blobfusetmp
 sudo chown <youruser> /mnt/resource/blobfusetmp
 ```
 
 ### <a name="configure-your-storage-account-credentials"></a>A Tárfiók hitelesítő adatainak konfigurálása
-Blobfuse szükséges a hitelesítő adatok tárolását a fájlt a következő formátumban: 
+Blobfuse szükséges a hitelesítő adatokat kell tárolni a fájlt a következő formátumban: 
 
 ```
 accountName myaccount
@@ -96,29 +93,29 @@ accountKey myaccesskey==
 containerName mycontainer
 ```
 
-Ha létrehozta ezt a fájlt, győződjön meg arról, korlátozhatja a hozzáférést, ezért nincs más felhasználói tudják elolvasni.
+Miután létrehozta ezt a fájlt, ügyeljen arra, hogy korlátozza a hozzáférést, így a többi felhasználó nem tudja olvasni azt.
 ```bash
 chmod 700 fuse_connection.cfg
 ```
 
-### <a name="create-an-empty-directory-for-mounting"></a>Hozzon létre egy üres könyvtárat csatlakoztatása
+### <a name="create-an-empty-directory-for-mounting"></a>Hozzon létre egy üres könyvtárra való csatlakoztatás
 ```bash
 mkdir ~/mycontainer
 ```
 
-## <a name="mount"></a>csatlakoztatása
+## <a name="mount"></a>Csatlakoztatási
 
 > [!NOTE]
-> A csatlakoztatási lehetőségek teljes listájáért tekintse meg [blobfuse összetevőtárházat](https://github.com/Azure/azure-storage-fuse#mount-options).  
+> Csatlakoztatási beállítások teljes listájáért tekintse [a blobfuse tárház](https://github.com/Azure/azure-storage-fuse#mount-options).  
 > 
 
-Ahhoz, hogy csatlakoztatási blobfuse futtassa a következő parancsot a felhasználóval. Ez a parancs a megadott tárolóhoz csatlakoztatja "/ path/to/fuse_connection.cfg", a helye "/ mycontainer".
+Csatlakoztatási blobfuse sorrendben futtassa a következő parancsot a felhasználóval. Ez a parancs csatlakoztatja a megadott tároló "/ path/to/fuse_connection.cfg" arra a helyre "/ mycontainer".
 
 ```bash
 blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-Hozzáférés a blokkblobok a rendszeres fájlrendszerrel API-k most kell. Vegye figyelembe, hogy a csatlakoztatott könyvtár csak elérhető csatlakoztatni, a felhasználó, amely biztosítja a hozzáférést. Ha azt szeretné, hogy minden felhasználó hozzáférést, akkor is csatlakoztathatja a beállítás keresztül ```-o allow_other```. 
+A blokkblobok, a normál API-k fájlrendszeren keresztül, akkor most már elérhetők. Vegye figyelembe, hogy a csatlakoztatott könyvtár csak sorrendvezérlése előtt a felhasználó csatlakoztatása, amely biztosítja a hozzáférést. Ha azt szeretné, hogy engedélyezze a hozzáférést minden felhasználó számára, akkor is csatlakoztathatja a beállítás keresztül ```-o allow_other```. 
 
 ```bash
 cd ~/mycontainer
@@ -128,6 +125,6 @@ echo "hello world" > test/blob.txt
 
 ## <a name="next-steps"></a>További lépések
 
-* [Blobfuse kezdőlap](https://github.com/Azure/azure-storage-fuse#blobfuse)
-* [A jelentés blobfuse problémák](https://github.com/Azure/azure-storage-fuse/issues) 
+* [Blobfuse kezdőlapja](https://github.com/Azure/azure-storage-fuse#blobfuse)
+* [A jelentés blobfuse kapcsolatos problémák](https://github.com/Azure/azure-storage-fuse/issues) 
 

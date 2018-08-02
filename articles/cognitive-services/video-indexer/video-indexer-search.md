@@ -1,57 +1,57 @@
 ---
-title: Használja az Azure videó indexelőt pontos pillanat videók belül található |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan pontos pillanat videók belül található.
+title: Az Azure Video Indexer segítségével videókban pontos időpontok keresése |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan videókban pontos időpontok keresése.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 75afa4efa50191466f8850d9b1313cf89a83c0a9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1cffa067d8028adab4dbcc82c529f77d980ce6be
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348966"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397543"
 ---
-# <a name="find-exact-moments-within-videos"></a>Pontos pillanat videók belül található
+# <a name="find-exact-moments-within-videos"></a>Pontos időpontok keresése videókban
 
-Ez a témakör bemutatja a keresési beállítások, amelyek lehetővé teszik, hogy pontos pillanat videók belül található.
+Ez a témakör bemutatja, hogy a keresési lehetőségeket, amelyek lehetővé teszik, hogy a videókban pontos időpontok keresése.
 
-1. Jelentkezzen be a [videó indexelő](https://api-portal.videoindexer.ai/) fiók.
-2. Keresse meg a fiók összes videók között.
+1. Jelentkezzen be a [Video Indexer](https://api-portal.videoindexer.ai/) fiókot.
+2. Keressen rá a fiókban lévő összes videó között.
 
-    A következő példában azt a keresés Channel9 a Scott Hanselman által létrehozott összes videók.
+    A következő példában azt keres az összes videó channel9-on, Scott Hanselman videosorozatának e által létrehozott is.
 
     ![Keresés](./media/video-indexer-search/video-indexer-search01.png)
     
-3. Keresse meg a videó röviden bemutatják azok feltárása.
+3. A videó összefoglaló elemzések keresése.
 
-    Is kereshet belül videó kattintva **lejátszása** meg a videót. Ezután úgy keresheti meg a videó belül kiválasztása a **keresési** fülre. Például azt a keresés kiterjed minden olyan hely, ahol a "identity protection" szöveget szolgál. 
+    Majd videón belüli kattintva kereshet **lejátszása** videó. Ezt követően is végezhető keresés a videó kiválasztásával a **keresési** fülre. Például hogy keresni minden olyan hely, ahol az "identity protection" szöveget használják. 
 
     ![Keresés](./media/video-indexer-search/video-indexer-search02.png)
 
-    Ha gombra kattint, az eredmények közül, a Windows Media player biztosít számára, hogy néhány percet a videó. Az alkalmazás érhet el a player/insights megtekintése és a szinkronizálás. További információkért lásd: [az alkalmazásba beágyazni videó indexelő widgeteket](video-indexer-embed-widgets.md). 
+    Kattint az eredmények közül, ha a Windows Media player méretezhetőséget kínál, hogy a videóban. A player/elemzések megtekintése és a szinkronizálás érheti el az alkalmazásban. További információkért lásd: [az alkalmazásba való beágyazása a Video Indexer widgetek](video-indexer-embed-widgets.md). 
 
     
-4. Keresse meg a részletes információkat a videó.
+4. Keresés a videó részletes áttekintését.
 
-    Ha szeretne létrehozni a saját lebontása alapján a videót, talált, nyomja meg a **szerkesztése** gombra. Ezen a lapon látható a teljes körű információkat a videó. Csak a részletezést belül kereshet érdekli sorokat. További információkért lásd: [megtekintése és szerkesztése a videó indexelő insights](video-indexer-view-edit.md).
+    Ha szeretne létrehozni a saját lebontása a videót, a megtalált alapján, nyomja le az **szerkesztése** gombra. Ezen a lapon látható a videó teljes áttekintését. Csak a részletezést belül kereshet az Önt érdeklő sorokat. További információkért lásd: [megtekintése és szerkesztése a Videóindexelő-elemzések](video-indexer-view-edit.md).
 
-    Ebben a példában a "identity protection" szöveget keres azt. Is alkalmaztunk további szűrőket, az alábbi képernyőn látható módon.
+    Ebben a példában a "identity protection" szöveget keres azt. Azt is alkalmazza a rendszer további szűrőket, az alábbi képernyőn látható módon.
 
     ![Keresés](./media/video-indexer-search/video-indexer-search03.png)
 
 ## <a name="next-steps"></a>További lépések 
 
-Miután megtalálta a videót szeretne dolgozni, továbbra is a videó feldolgozása az alábbi témakörökben találja leírtak szerint: 
+Miután megtalálta a videót, amelyben dolgozni szeretne, továbbra is a videó feldolgozása ezek témakörökben ismertetett módon: 
 
-- [Hozzon létre új videó insights meglévő videó alapján](video-indexer-create-new.md)
-- [Folyamatok tartalom videó indexelő REST API-hoz](video-indexer-use-apis.md)
-- [Az alkalmazás visual widgeteket beágyazása](video-indexer-embed-widgets.md)
+- [A meglévő videóhoz alapján új videóelemzések létrehozása](video-indexer-create-new.md)
+- [Video Indexer – REST API-val feldolgozása tartalom](video-indexer-use-apis.md)
+- [Vizuális widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>Lásd még
 
-[Az indexelő áttekintő videó](video-indexer-overview.md)
+[Video Indexer – áttekintés](video-indexer-overview.md)

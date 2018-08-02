@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0bfb06add64f5f1cd6ccfb772f604ab588bb1baf
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d89fef56a9fdab799170ed1ccd3261470d66bf95
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950406"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414701"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Az Azure Marketplace tanácsadási szolgáltatások
 A Microsoft partnereinek tanácsadási szolgáltatások az Azure Marketplace-en biztosít a cél az csatlakozó ügyfelek támogatása és kiterjesztése használata során az Azure-szolgáltatásokkal. Az Azure piactér támogatja a rendszer integráló (SI) partnerektől, a Microsoft consulting szolgáltatásajánlatok listája. 
@@ -31,17 +31,17 @@ A piactér kirakattípus célközönség és a Microsoft felhőalapú termékek 
 
 |         |Azure Piactér  |AppSource |
 |---------|---------|---------|
-|Célközönség   |Informatikai szakemberek és fejlesztők számára|Az üzleti felhasználók, üzleti döntéshozók /|
+|**Célközönség**   |**Informatikai szakemberek és fejlesztők számára**|**Az üzleti felhasználók, üzleti döntéshozók /**|
 |Megoldás relevancia alapján végzett     |Számára készült, vagy az Azure-on fejlesztett technikai alkalmazásokat|A Power BI, Office 365, Azure kihasználhatja / D365, bővítheti üzleti alkalmazásokat. (Beépülő modul vagy bővítmény kész alkalmazások)|
 |Közzétételi beállítások     |Nekem, próbaverzió, Transact vagy tanácsadási szolgáltatások|Lépjen kapcsolatba a velem megosztva, próba vagy tanácsadási szolgáltatások|
 |A termék élmény      |Azure felügyeleti portál|Dynamics 365, az Office 365, Office Kliensalkalmazások| 
 |Egyéb      |A helyszíni közzététele az Azure Stack-n keresztül|Tanácsadási szolgáltatások Dynamics és a Power bi-ban|
 
->[!Note]
->Tanácsadási szolgáltatások az Azure Marketplace-en támaszkodjon a célközönségét a fókusz a műszaki körétől ajánlatok *Azure technikai megoldásokat és szolgáltatásokat.*
-
-
 Microsoft Dynamics 365, az Office 365 és a Power BI alapuló szolgáltatási ajánlatok jogosultak az appsource-ban szerepel. További információkért lásd: [Microsoft AppSource tanácsadási szolgáltatások listaelem irányelvei](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+>[!Note]
+>Tanácsadási szolgáltatások az Azure Marketplace-en körétől ajánlatok támaszkodjon a ** műszaki célközönségét a összpontosít *Azure technikai megoldásokat és szolgáltatásokat.* **
+
 
 >[!TIP]
 >Azure Marketplace-szolgáltatásokhoz csak olyan ezt az információt. Közzététele az Azure Marketplace-en kirakat, fogja elérhetővé tenni ezt a választást az "Elsődleges termék" legördülő menüből a Cloud Partner portálra a "Azure" kiválasztásával. Közzététele az appsource-ban, fogja elérhetővé tenni ezt a választást "Dynamics 365," kiválasztásával "Power BI" vagy a "Elsődleges termék" legördülő menüből a Cloud Partner portálra a "kiemelt alkalmazások".
@@ -59,7 +59,7 @@ Partnerek is szükséges, hogy rendelkezik egy **silver vagy gold kompetencia** 
 További információkért lásd: [kompetenciák keresztül a Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies). 
  
 
-SI-partnerek is ajánlatokat küldhetnek be tanácsadási szolgáltatás a következő 18 országok számára. 
+**SI-partnerek is elküldhetik a 18 országok consulting-service-ajánlatokról**
 
 |Jogosult országok |  |  |
 |---------|---------|---------|
@@ -70,7 +70,7 @@ SI-partnerek is ajánlatokat küldhetnek be tanácsadási szolgáltatás a köve
 |Finnország     |Mexikó         |Egyesült Királyság         |
 |Franciaország     |Hollandia         |Egyesült Államok         |
 
-Az Azure Marketplace tanácsadási szolgáltatások indításának lép Ausztrália, Kanada, az Egyesült Királyságban és az Egyesült Államokban élő első. A más országokban katalógusokat élesben elteltével egy jelentéssel bíró és lenyűgöző szolgáltatásajánlatok választott lett partnerek által küldött és a Microsoft által jóváhagyott.
+Az Azure Marketplace tanácsadási szolgáltatások indítási fog élesben meghatározott földrajzi régióban. Az alkalmazás első indításakor lesz: Amerikai Egyesült Államok, Kanada, Egyesült Királyság és Ausztráliában. A más országokban katalógusokat élesben elteltével egy jelentéssel bíró és lenyűgöző szolgáltatásajánlatok választott lett partnerek által küldött és a Microsoft által jóváhagyott.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>How To Register a tanácsadási szolgáltatások az Azure Marketplace-en
 Indítsa el a tanácsadási szolgáltatások regisztrálásával [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/sell/signup). A kiadók is hivatkozhatnak [válhat Kiadóvá a piactéren](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher), teljes ellenőrzés-listáját a eszközregisztráció követelményeinek. 
@@ -121,7 +121,7 @@ Ajánlatok kell lennie a következő öt szolgáltatást típusú (listázhatja 
 * **A koncepció igazolása**: meghatározni, hogy a megoldás megfelel-e az ügyfelek igényei és A korlátozott hatókörű megvalósítás. 
 * **Workshop**: egy interaktív engagement, amely az ügyfél helyszíni végez. Képzés, tájékoztatói, értékelések vagy bemutatók a vásárlói adatok vagy környezet beépített is magában foglalhat. 
 
-Megjegyzés: kivételével a a *Briefing* szolgáltatástípus tanácsadási szolgáltatások kínálhatók fel (vagyis egy ügyfél vagy egy partneri létesítményben helyszíni) személyesen vagy virtuálisan (azaz keresztül teleconferencing, webes konferencia, vagy a távoli megvalósítása). Tájékoztatói személyesen kell kínáljuk.
+**Megjegyzés:** kivételével a *Briefing* szolgáltatástípus tanácsadási szolgáltatások kínálhatók fel (vagyis egy ügyfél vagy egy partneri létesítményben helyszíni) személyesen vagy virtuálisan (azaz keresztül teleconferencing, webes konferencia, vagy távoli megvalósítása). Tájékoztatói személyesen kell kínáljuk.
 
 Miután konfigurálta a fent felsorolt szükséges elemeket, a tartalom csapatától ellenőrzi, hogy az ajánlat leírása az informatív és befejeződött a célközönséget. 
 
@@ -144,11 +144,11 @@ Ajánlat leírása és összefoglalók ajánlat áttekintése, ha a csapat hatá
 
 |Csomag típusa  |Szükséges |Ajánlott  |
 |---------|---------|---------|
-|Értékelés    |   Egy többnapos vagy több hét értékelések részletes napirend tartalmazzák, és mi adjuk a terméket az ügyfél várható      |    Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása     |
-|Tájékoztató    |   Mi adjuk a terméket az ügyfél várható. Ne feledje, hogy tájékoztatói kell is kínáljuk személyesen. Ha meg van adva egy virtuális szolgáltatást, válasszon egy másik ajánlatra típusa    |  Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása       |
-|Megvalósítás    |  Több nap vagy több hét megvalósításokhoz részletes napirendjét között, valamint szövegbuborékokat mérnöki változások, technikai információk és más összetevőket egy ügyfél számíthatnak az engagement eredményeit       |    Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása     |
-|A koncepció igazolása    |    Milyen mérnöki módosításokat, technikai információk és más összetevőket egy ügyfél számíthatnak az engagement eredményeit, szövegbuborékokat     | Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása        |
-|Workshop    |   Például egy részletes napirend napi, heti vagy havi, a kiválasztott időtartama az Ön ajánlatának függően. A learning célokat vagy egyéb termékek esetében melyek az Műhely szövegbuborékokat     |   Az ajánlat a felső keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása      |
+|**Értékelés**    |   Egy többnapos vagy több hét értékelések részletes napirend tartalmazzák, és mi adjuk a terméket az ügyfél várható      |    Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása     |
+|**Briefing**    |   Mi adjuk a terméket az ügyfél várható. Ne feledje, hogy tájékoztatói kell is kínáljuk személyesen. Ha meg van adva egy virtuális szolgáltatást, válasszon egy másik ajánlatra típusa    |  Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása       |
+|**Megvalósítása**    |  Több nap vagy több hét megvalósításokhoz részletes napirendjét között, valamint szövegbuborékokat mérnöki változások, technikai információk és más összetevőket egy ügyfél számíthatnak az engagement eredményeit       |    Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása     |
+|**A koncepció igazolása**    |    Milyen mérnöki módosításokat, technikai információk és más összetevőket egy ügyfél számíthatnak az engagement eredményeit, szövegbuborékokat     | Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása        |
+|**Workshop**    |   Például egy részletes napirend napi, heti vagy havi, a kiválasztott időtartama az Ön ajánlatának függően. A learning célokat vagy egyéb termékek esetében melyek az Műhely szövegbuborékokat     |   Az ajánlat a felső keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása      |
 
 Cloud Partner Portalon adhat hozzá a tőzsdei használatával formázás [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown). Ez az egy egyszerűsített tervezési nyelv, amely segítséget nyújt a tőzsdei lengyel hozzáadása. 
 
@@ -160,3 +160,12 @@ Cloud Partner Portalon adhat hozzá a tőzsdei használatával formázás [Markd
 *   Sortörés fejléc után
 *   ** = (nincs terület) bold (például: **terület No**) • kínál összefoglaló dőltre állítása • napirend és le fejlécet
 
+## <a name="next-steps"></a>További lépések
+
+Ha ezt még nem tette meg, 
+
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en
+
+Ha Ön regisztrálva van és működik-e a Cloud Partner portálra, 
+
+- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot

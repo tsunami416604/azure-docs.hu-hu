@@ -1,50 +1,49 @@
 ---
-title: Az Azure videó indexelő fogalmak |} Microsoft Docs
-description: Ez a témakör néhány olyan fogalmat, a videó indexelő szolgáltatás.
+title: Az Azure Video Indexer – fogalmak |} A Microsoft Docs
+description: Ez a témakör néhány olyan fogalmat, a Video Indexer szolgáltatás.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 01d92a6b55d2fb2c09cee333f482d79d2cdf763c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 224c8b05027f51fb99c8d58be34c3604032c0f77
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348999"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399495"
 ---
-# <a name="video-indexer-concepts"></a>Videó indexelő fogalmak
+# <a name="video-indexer-concepts"></a>Video Indexer-fogalmak
  
-Ez a témakör néhány olyan fogalmat, a videó indexelő szolgáltatás.
+Ez a témakör néhány olyan fogalmat, a Video Indexer szolgáltatás.
     
 ## <a name="summarized-insights"></a>Összesített insights
 
-Összesített insights tartalmaznak az adatok összesített nézete: lapokat, kulcsszavakat, hangulati elemek. Helyett meghaladja az összes időtartományhoz ezer fog, és ellenőrzése, hogy mely lapok vannak benne, például az összesített insights minden lap tartalmaz, és mindegyik megjelenik időtartományhoz és a %-ában látható.
+Összesített insights tartalmaznia egy összesített nézetét az adatok: arcok, kulcsszavakat, hangulati. Helyett kapcsolaton át, mindegyik időtartományok több ezer, és győződjön meg róla melyik arcok, például az összesített insights tartalmazza az összes az arcok, és mindegyik, a megjelenő időtartományok és a %-os látható.
 
-## <a name="topicskeywords"></a>Témakörök/kulcsszavak
+## <a name="topicskeywords"></a>A témakörök/kulcsszavak
 
-Témakörök/kulcsszavak a listáját, amelyek a videó indexelő kiolvassa a szöveget a legfontosabb kifejezések szerepelnek. Például a Scott Guthrie-t videó tartalmazhatja a következő témakörök kulcsszavak: biztonsági, az Azure, a Microsoft Cloud, a bevétel.
+Témakörök/kulcsszavak olyan listájában, a Video Indexer kiolvassa a szöveget a kulcskifejezéseket. Például a Scott Guthrie videó tartalmazhatja a következő témakörök kulcsszavakat: biztonság, az Azure, a Microsoft Cloud, a bevétel.
 
-## <a name="sentiments"></a>Hangulati elemek
+## <a name="sentiments"></a>hangulati
 
-Videó indexelő elemzi ki, ha azt észleli, valamint hangulati elemek. "Ez az esemény nagyon izgalmas" például egy pozitív véleményeket.
+A Video Indexer elemzi az átiratok, amikor azt észleli, valamint hangulati. "Ez az esemény nagyon izgalmas" például egy pozitív véleményeket.
 
-## <a name="time-range-vs-adjusted-time-range"></a>időtartomány és módosított időtartomány
+## <a name="time-range-vs-adjusted-time-range"></a>időtartomány és a módosított időtartomány
 
-TimeRange az időt, amely az eredeti videó. AdjustedTimeRange az időt, amely az aktuális lista viszonyítva. Mivel a lista másik sornyi különböző videók hozhat létre, 1 órás videó igénybe vehet, és csak 1 használja azt, például 10:00 – 10:15. Ebben az esetben, hogy a lista 1 sorral, ha az időtartományt 10:00 – 10:15, de a adjustedTimeRange érték 00:00 – 00:15.
+TimeRange az időtartománya az eredeti videó. AdjustedTimeRange az időtartománya képest az aktuális listába. Különböző sornyi különböző videók lejátszási lista hozhat létre, mert 1 óra videó igénybe vehet, és használja azt, ha például 10:00-10:15 csak 1 sort. Ebben az esetben kell egy listát az 1 sort, ahol az időtartomány 10:00-10:15 azonban a adjustedTimeRange 00:00 – 00:15.
  
-## <a name="blocks"></a>Blokkok
+## <a name="blocks"></a>blokkok
 
-Blokkok úgy van kialakítva, hogy könnyebben halad át az adatokat. Például blokk előfordulhat, hogy kell bontani alapján amikor hangszórók változnak, vagy hosszú szünetet.
+Blokkok úgy van kialakítva, hogy egyszerűbb legyen halad át az adatokat. Például blokk előfordulhat, hogy bonthatók fel alapján előadói módosítása, vagy hosszabb szünet.
 
 ## <a name="next-steps"></a>További lépések
 
-Első lépések kapcsolatos információkért lásd: [iratkozzon fel, és töltse fel az első videó](video-indexer-get-started.md).
+Első lépések kapcsolatos információkért lásd: [regisztráljon, és az első videó feltöltése](video-indexer-get-started.md).
 
 ## <a name="see-also"></a>Lásd még
 
-[Az indexelő áttekintő videó](video-indexer-overview.md)
-
+[Video Indexer – áttekintés](video-indexer-overview.md)

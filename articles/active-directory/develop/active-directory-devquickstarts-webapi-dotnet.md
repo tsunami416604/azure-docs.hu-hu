@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD .NET webes API bevezetés |} Microsoft Docs
-description: Hogyan hozhat létre a .NET MVC webes API-k, amely az Azure AD a hitelesítéshez és engedélyezéshez.
+title: Az Azure AD .NET webes API első lépések |} A Microsoft Docs
+description: Hogyan hozhat létre egy .NET MVC webes API-t, amely integrálható az Azure AD-hitelesítés és engedélyezés.
 services: active-directory
 documentationcenter: .net
 author: CelesteDG
@@ -17,64 +17,65 @@ ms.date: 01/23/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e2537ab677527555fab9801b3dc5143f749a8b57
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 4c5f0bc7f6f23ce16a3e1d6c7ecac1692ca43d9b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318758"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398232"
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Az Azure AD .NET webes API első lépések
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Ha a védett erőforrásokhoz való hozzáférést biztosít az alkalmazás most felépítése, meg kell ismernie történő jogosulatlan hozzáférés elkerülése érdekében ezeket az erőforrásokat.
-Az Azure Active Directory (Azure AD) elérhetővé válnak az egyszerű és magától értetődő védelme egy webes API-t OAuth 2.0 tulajdonosi hozzáférés segítségével csak néhány sornyi kódot a jogkivonatokat.
+Védett erőforrásokhoz való hozzáférést biztosító alkalmazás létrehozásakor, meg kell ismernie a jogosulatlan hozzáférés megakadályozása érdekében ezeket az erőforrásokat.
+Az Azure Active Directory (Azure AD) révén egyszerű és könnyen érthető megjegyzésblokkok írására segítségével védelmet biztosíthatnak a webes API-k az OAuth 2.0 tulajdonosi hozzáférés jogkivonatok csak néhány sornyi kóddal.
 
-Az ASP.NET web apps a közösségi szerkesztésű OWIN köztes a .NET-keretrendszer 4.5 része a Microsoft általi implementációja használatával végezheti el a védelmet. Itt az OWIN fogjuk használni, amely "Teendőlista" webes API-k létrehozása:
+Az ASP.NET web apps a Közösség által készített OWIN közbenső szoftvert a .NET-keretrendszer 4.5 része a Microsoft általi implementációja használatával végezheti el a védelmet. Itt fogjuk használni az OWIN "Teendőlista" webes API készítése:
 
-* Jelöl ki, amelyek API-k védett.
-* Ellenőrzi, hogy a webes API-hívások tartalmaznak egy érvényes jogkivonat.
+* Azt jelzi, amely az API-k védelme.
+* Ellenőrzi, hogy a webes API-hívásokat tartalmaznak egy érvényes hozzáférési jogkivonatot.
 
-A való tegye lista API létrehozásához először kell:
+A a Do List API-t készíteni, akkor először kell:
 
 1. Alkalmazás regisztrálása az Azure AD-ben.
-2. Az alkalmazás beállítása az OWIN hitelesítési folyamatot használja.
-3. A webes API hívásához ügyfélalkalmazás konfigurálása.
+2. Állítsa be az alkalmazás használatához az OWIN hitelesítési folyamatot.
+3. A webes API meghívásához ügyfélalkalmazás konfigurálása.
 
-A kezdéshez [töltse le az alkalmazás vázat](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) vagy [töltse le az elkészült mintát](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Egy Visual Studio 2013 megoldást. Akkor is kell, ahol regisztrálhatja alkalmazását Azure AD-bérlő. Ha Ön nem rendelkezik ilyennel, [beszerzéséről egy](active-directory-howto-tenant.md).
+Első lépésként [töltse le az alkalmazás skeleton](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) vagy [töltse le az elkészült mintát](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). A Visual Studio 2013 megoldás minden egyes is. Emellett az Azure AD-bérlő, amelyben az alkalmazás regisztrálásához. Ha még nem tette meg, [megtudhatja, hogyan tehet szert egy](active-directory-howto-tenant.md).
 
-## <a name="step-1-register-an-application-with-azure-ad"></a>1. lépés: Egy alkalmazás regisztrálása az Azure ad szolgáltatással
-Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön bérlőjében, és adjon meg néhány kulcsfontosságú adatokat az Azure AD.
+## <a name="step-1-register-an-application-with-azure-ad"></a>1. lépés: Alkalmazás regisztrálása az Azure ad-ben
+Védelme érdekében az alkalmazás, először hozzon létre egy alkalmazást a saját bérlőjében, néhány kulcsfontosságú adatokat az Azure AD meg.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A felső eszköztáron kattintson a fiókját. Az a **Directory** menüben válassza ki az Azure AD-bérlőt, ahová az alkalmazás regisztrálásához.
+2. Válassza ki az Azure AD-bérlő a fiókra a lapon, majd kattintson a jobb felső sarkában kattintson a **címtár váltása** navigációs és válassza ki a megfelelő bérlő.
+ * Ezt a lépést kihagyhatja, csak egy Azure AD-bérlőt, ha a fiók alatt, vagy ha már kiválasztotta a megfelelő Azure AD-bérlővel.
 
-3. Kattintson a **több szolgáltatások** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
+3. A bal oldali navigációs ablakban kattintson az **Azure Active Directory** elemre.
 
-4. Kattintson a **App regisztrációk**, majd válassza ki **Hozzáadás**.
+4. Kattintson a **alkalmazásregisztrációk**, majd válassza ki **Hozzáadás**.
 
-5. Kövesse az utasításokat, és hozzon létre egy új **webalkalmazás és/vagy webes API**.
-  * **Név** az alkalmazás a felhasználók számára ismerteti. Adja meg **teendőlista szolgáltatás**.
-  * **Átirányítási Uri** protokollt és a karakterlánc kombinációját, amely az Azure AD szükséges az alkalmazás által kért jogkivonatokhoz adja vissza. Adja meg `https://localhost:44321/` ehhez az értékhez.
+5. Kövesse az utasításokat, és hozzon létre egy új **webalkalmazás és/vagy webes API-t**.
+  * **Név** ismerteti az alkalmazást a felhasználók számára. Adja meg **teendőlista szolgáltatás**.
+  * **Átirányítási Uri** sémát és karakterlánc kombinációja, amely az Azure AD vissza az alkalmazás által kért jogkivonatokat. Adja meg `https://localhost:44321/` ehhez az értékhez.
 
-6. Az a **beállítások** -> **tulajdonságok** az alkalmazás lapján frissítse a App ID URI. Adjon meg egy bérlő-specifikus azonosítója. Adja meg például a következőt: `https://contoso.onmicrosoft.com/TodoListService`.
+6. Az a **beállítások** -> **tulajdonságok** oldalon az alkalmazás, frissítse az Alkalmazásazonosító URI-t. Adja meg a bérlő-specifikus azonosítója. Adja meg például a következőt: `https://contoso.onmicrosoft.com/TodoListService`.
 
-7. A konfiguráció mentéséhez. Hagyja megnyitva, a portál, mert biztosítani kell az ügyfélalkalmazás hamarosan regisztrálni.
+7. A konfiguráció mentéséhez. Hagyja nyitva, a portálon, mert hamarosan regisztrálni az ügyfélalkalmazás is kell.
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>2. lépés: Az alkalmazás használatának beállítása a OWIN hitelesítési folyamatot
-Érvényesíteni a bejövő kérelmeket és jogkivonatok, akkor be kell állítania az alkalmazás kommunikálni az Azure AD.
+## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>2. lépés: Az alkalmazás beállítása az OWIN-hitelesítési folyamat használata
+A bejövő kérések és a jogkivonatok érvényesítésére, szeretne kommunikálni az Azure ad-ben az alkalmazás beállítása.
 
-1. Első lépésként nyissa meg a megoldást, és az OWIN köztes NuGet-csomagok hozzáadása a TodoListService projekthez a Csomagkezelő konzol használatával.
+1. A kezdéshez nyissa meg a megoldást, és az OWIN közbenső NuGet-csomagok hozzáadása a TodoListService projekthez a Package Manager konzol használatával.
 
     ```
     PM> Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
     PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
     ```
 
-2. Egy OWIN indítási osztály hozzáadása a TodoListService projekt neve `Startup.cs`.  Kattintson jobb gombbal a projektre, válassza ki **Hozzáadás** > **új elem**, majd keresse meg a **OWIN**. Az OWIN közbenső szoftver meghívja a `Configuration(…)` metódust az alkalmazás indulásakor.
+2. Adjon hozzá egy OWIN indítási osztályt a nevű TodoListService projekthez `Startup.cs`.  Kattintson a jobb gombbal a projektre, válassza ki **Hozzáadás** > **új elem**, és keressen **OWIN**. Az OWIN közbenső szoftver meghívja a `Configuration(…)` metódust az alkalmazás indulásakor.
 
-3. Módosítsa az osztálydeklaráció való `public partial class Startup`. Azt korábban már megvalósított Ez az osztály tartozik, egy másik fájlban. Az a `Configuration(…)` metódus hívása legyen `ConfgureAuth(…)` hitelesítés a webalkalmazás beállítása.
+3. Módosítsa az osztálydeklarációt `public partial class Startup`. Általunk már megvalósított ebbe az osztályba tartozó, egy másik fájlban. Az a `Configuration(…)` metódus hívása legyen `ConfgureAuth(…)` hitelesítés a webalkalmazás beállítása.
 
     ```csharp
     public partial class Startup
@@ -86,7 +87,7 @@ Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön 
     }
     ```
 
-4. Nyissa meg a fájlt `App_Start\Startup.Auth.cs` és megvalósítását a `ConfigureAuth(…)` metódust. A megadott paraméterek `WindowsAzureActiveDirectoryBearerAuthenticationOptions` koordináták az alkalmazás az Azure AD kommunikálni fog szolgálni.
+4. Nyissa meg a fájlt `App_Start\Startup.Auth.cs` és megvalósítása a `ConfigureAuth(…)` metódust. A megadandó paraméterek `WindowsAzureActiveDirectoryBearerAuthenticationOptions` kommunikálni az Azure ad-ben az alkalmazás koordináták erre a célra.
 
     ```csharp
     public void ConfigureAuth(IAppBuilder app)
@@ -100,7 +101,7 @@ Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön 
     }
     ```
 
-5. Mostantól a `[Authorize]` segít megvédeni a tartományvezérlőket és a JSON webes jogkivonat (JWT) tulajdonosi hitelesítéssel műveletek attribútumait. Adja a `Controllers\TodoListController.cs` osztály engedélyezés címke használatával. Ezzel kikényszeríti a felhasználót, hogy jelentkezzen be a lap elérése előtt.
+5. Most már használhatja `[Authorize]` attribútumok segít megvédeni a tartományvezérlők és a műveleteket a JSON webes jogkivonat (JWT) hitelesítését. Megadhat az `Controllers\TodoListController.cs` -engedélyezés címkével rendelkező osztály. Ez kényszeríti a felhasználót, hogy jelentkezzen be az oldal elérése előtt.
 
     ```csharp
     [Authorize]
@@ -108,9 +109,9 @@ Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön 
     {
     ```
 
-    Amikor egy jogosult hívó sikeresen hív meg, egy a `TodoListController` API-k, a művelet módosítania kell információkhoz juthat a hívóról. A jogcímek belül a tulajdonosi jogkivonattal keresztül hozzáférést biztosít az OWIN a `ClaimsPrincpal` objektum.  
+    Amikor egy jogosult hívó sikeresen hív meg egy a `TodoListController` API-k, a művelet igényelhet információkhoz juthat a hívóról. OWIN a jogcímek belül a tulajdonosi jogkivonat-n keresztül hozzáférést biztosít a `ClaimsPrincpal` objektum.  
 
-6. Általános követelmény a webes API-khoz a jogkivonatban jelen lévő „hatókörök” érvényesítése. Ez biztosítja, hogy a felhasználó hozzájárult a való tegye lista szolgáltatás eléréséhez szükséges engedélyekkel.
+6. Általános követelmény a webes API-khoz a jogkivonatban jelen lévő „hatókörök” érvényesítése. Ez biztosítja, hogy a felhasználó hozzájárult a szolgáltatáshoz való hozzáféréshez szükséges a, Do List engedélyeket.
 
     ```csharp
     public IEnumerable<TodoItem> Get()
@@ -127,32 +128,32 @@ Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön 
     }
     ```
 
-7. Nyissa meg a `web.config` a TodoListService projekt gyökérkönyvtárában található fájlt, és adja meg a konfigurációs értékeit a `<appSettings>` szakasz.
-  * `ida:Tenant` az Azure AD-bérlő – például a contoso.onmicrosoft.com neve van.
-  * `ida:Audience` az App ID URI az alkalmazás az Azure-portálon megadott van.
+7. Nyissa meg a `web.config` TodoListService projekt gyökérkönyvtárában található fájlt, és adja meg a konfigurációs értékeit az `<appSettings>` szakaszban.
+  * `ida:Tenant` az a név az Azure AD-bérlő – például contoso.onmicrosoft.com.
+  * `ida:Audience` az Alkalmazásazonosító URI-t az alkalmazás az Azure Portalon megadott van.
 
-## <a name="step-3-configure-a-client-application-and-run-the-service"></a>3. lépés: Ügyfélalkalmazás konfigurálása és a szolgáltatás futtatásához
-Ahhoz, hogy a To tegye lista Service működés közben, a teendőlista-ügyfél konfigurálása, hogy azok jogkivonatokhoz az Azure AD és a szolgáltatás meghíváshoz kell.
+## <a name="step-3-configure-a-client-application-and-run-the-service"></a>3. lépés: Egy ügyfélalkalmazás konfigurálása és a szolgáltatás futtatásához
+Ahhoz, hogy megjelenjenek a, tegye szolgáltatások listája működés közben, a To Do List-ügyfél konfigurálásához, így az Azure AD-ből tokenekhez és hívások indítása a Service kell.
 
-1. Lépjen vissza a [Azure-portálon](https://portal.azure.com).
+1. Lépjen vissza a [az Azure portal](https://portal.azure.com).
 
-2. Új alkalmazás létrehozása az Azure AD-bérlőn, és válassza ki **natív ügyfélalkalmazás** az eredményül kapott kér.
-  * **Név** az alkalmazás a felhasználók számára ismerteti.
-  * Adja meg `http://TodoListClient/` a a **átirányítási Uri-** érték.
+2. Új alkalmazás létrehozása az Azure AD-bérlőben, és válassza ki **natív ügyfélalkalmazás** az eredményül kapott parancssorban.
+  * **Név** ismerteti az alkalmazást a felhasználók számára.
+  * Adja meg `http://TodoListClient/` számára a **átirányítási URI-t** értéket.
 
-3. Regisztráció befejezése után az Azure AD egy egyedi alkalmazás Azonosítót rendel az alkalmazáshoz. Ez az érték kell a következő lépésekben, ezért másolja az alkalmazás oldalról.
+3. Regisztráció után az Azure AD az alkalmazáshoz rendeli hozzá egy egyedi Alkalmazásazonosítója. Ez az érték kell a következő lépésekben, ezért másolja ki az alkalmazás oldaláról.
 
-4. Az a **beállítások** lapon jelölje be **szükséges engedélyek**, majd válassza ki **Hozzáadás**. Keresse meg és válassza ki a való tegye lista szolgáltatást, vegye fel a **hozzáférés TodoListService** engedélyt a **delegált engedélyek**, és kattintson a **végzett**.
+4. Az a **beállítások** lapon jelölje be **szükséges engedélyek**, majd válassza ki **Hozzáadás**. Keresse meg és válassza ki az való tegye listában, adja hozzá a **hozzáférés TodoListService** engedélyt a **delegált engedélyek**, és kattintson a **kész**.
 
-5. A Visual Studióban nyissa meg a `App.config` a TodoListClient a projektre, és írja be a konfigurációs értékeit a `<appSettings>` szakasz.
+5. A Visual Studióban nyissa meg a `App.config` a TodoListClient a projektre, és adja meg a konfigurációs értékeit az `<appSettings>` szakaszban.
 
-  * `ida:Tenant` az Azure AD-bérlő – például a contoso.onmicrosoft.com neve van.
-  * `ida:ClientId` a rendszer az Azure-portálról másolt alkalmazás Azonosítóját.
-  * `todo:TodoListResourceId` az App ID URI számára tegye lista szolgáltatásalkalmazás az Azure-portálon megadott van.
+  * `ida:Tenant` az a név az Azure AD-bérlő – például contoso.onmicrosoft.com.
+  * `ida:ClientId` az Alkalmazásazonosító, az Azure Portalról másolt van.
+  * `todo:TodoListResourceId` az Alkalmazásazonosító URI a To Do List Service alkalmazás az Azure Portalon megadott van.
 
 ## <a name="next-steps"></a>További lépések
-Végül törlése, elkészítéséhez és futtatása minden olyan projekthez. Ha még nem tette meg, most már az új felhasználó létrehozása a bérlő az idő a *. onmicrosoft.com tartományt. Jelentkezzen be, hogy a felhasználó a teendőlista ügyfélnek, és bizonyos feladatok hozzáadása a felhasználói feladatlistában.
+Végül tiszta, hozhat létre, és minden projekt futtatása. Ha még nem tette, itt-e az idő, hozzon létre egy új felhasználót a bérlőben a *. onmicrosoft.com tartomány. Jelentkezzen be, hogy a felhasználó To Do List ügyfél, és az egyes tevékenységek hozzáadása a felhasználók feladatlistáit.
 
-Referenciaként az elkészült mintát (a konfigurációs értékek nélkül) érhető el a [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Most már továbbléphet további identitás forgatókönyvek.
+Referenciaként az elkészült mintát (a konfigurációs értékek) nélkül érhető el a [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Most már továbbléphet több identitás helyzetekben.
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

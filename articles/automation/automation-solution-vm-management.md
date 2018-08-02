@@ -6,37 +6,34 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/30/2018
+ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5bb59206f1b9f63f7d0310d35fc888cec1546874
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: f272ac7ee6432b43d0c9a72daf620a46e52366f8
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364566"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399049"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
 A gépek indítása/leállítása munkaidőn kívül megoldás elindítja és leállítja az Azure-beli virtuális gépek a felhasználó által definiált ütemezés, nyújt az Azure Log Analytics segítségével és a választható e-maileket küld a [Műveletcsoportok](../monitoring-and-diagnostics/monitoring-action-groups.md). Azure Resource Manager és klasszikus virtuális gépeket is támogatja a legtöbb forgatókönyvhöz.
 
-Ez a megoldás a felhasználók számára, akik csökkentheti költségeit, kiszolgáló nélküli, alacsony költségű erőforrásokat szeretne decentralizált automatizálási lehetőséget kínál. Ezzel a megoldással a következőket teheti:
+Ez a megoldás a felhasználók számára, akik az saját VM-költségek optimalizálását decentralizált alacsony költségű automation lehetőséget kínál. Ezzel a megoldással a következőket teheti:
 
 - Ütemezze a virtuális gépek indítása és leállítása.
 - Virtuális gépek indítása és leállítása növekvő sorrendben (klasszikus virtuális gépek esetében nem támogatott) az Azure-címkék használatával ütemezhető.
 - Virtuális gépeket automatikusan leállító alacsony CPU-használat alapján.
 
+Az aktuális megoldáshoz a korlátozások a következők:
+
+- Ez a megoldás kezeli a virtuális gépek minden olyan régióban, de csak akkor használható, az Azure Automation-fiók ugyanabban az előfizetésben.
+- Ez a megoldás érhető el az Azure-ban és AzureGov minden olyan régióban, amely támogatja a Log Analytics-munkaterülettel, egy Azure Automation-fiókot és riasztások. AzureGov régiók jelenleg nem támogatja e-mail funkció.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A runbookok (forgatókönyvek) [Azure-futtatófiókkal](automation-create-runas-account.md) használhatóak. A futtatófiók az előnyben részesített hitelesítési módszer azért tanúsítványalapú hitelesítést használ, előfordulhat, hogy lejárhat vagy gyakran változhat jelszó helyett.
-- Ez a megoldás kizárólag a virtuális gépek, amelyek ugyanahhoz az előfizetéshez tartozik, mint az Azure Automation-fiók kezelése.
-- Ez a megoldás érhető el az Azure-ban és AzureGov minden olyan régióban, amely támogatja a Log Analytics-munkaterülettel, egy Azure Automation-fiókot és riasztások.
-
-  > [!NOTE]
-  > A runbookokat a virtuális gép ütemezés bármely régió virtuális gépeit megcélozhatják.
-
-  > [!NOTE]
-  > AzureGov régiók nem támogatják az e-mail funkció.
+Az ebben a megoldásban-forgatókönyvek egy [Azure-beli futtató fiók](automation-create-runas-account.md). A futtatófiók az előnyben részesített hitelesítési módszer azért tanúsítványalapú hitelesítést használ, előfordulhat, hogy lejárhat vagy gyakran változhat jelszó helyett.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
@@ -64,7 +61,7 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
    - Válasszon egy tarifacsomagot a **Tarifacsomag** területen. Válassza ki a **Gigabájtonkénti (különálló)** lehetőséget. A log Analytics frissített [díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/) , és a GB szinten az egyetlen lehetőség.
 
 1. Miután megadta a szükséges adatokat a **OMS-munkaterület** kattintson **létrehozás**. Nyomon követheti a folyamat állapotát **értesítések** a menüben, amely adja vissza, hogy a **megoldás hozzáadása** lapon, ha ezzel elkészült.
-1. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Ha egy új Log Analytics-munkaterületet hoz létre, meg kell is létre kell hoznia egy új Automation-fiókot társítja. Válassza ki **Automation-fiók létrehozása**, majd a a **Automation-fiók hozzáadása** lap, adja meg a következő információkat:
+1. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Ha egy új Log Analytics-munkaterületet hoz létre, hozzon létre egy új Automation-fiókot társítja, vagy válasszon egy meglévő Automation-fiók nem a napló az elemzés munkaterülethez már kapcsolódó. Válassza ki a meglévő Automation-fiókot, vagy kattintson a **Automation-fiók létrehozása**, majd a a **Automation-fiók hozzáadása** lap, adja meg a következő információkat:
    - A **Név** mezőbe írja be az Automation-fiók nevét.
 
     Minden egyéb lehetőségeket vannak alapján automatikusan kitölti a kiválasztott Log Analytics-munkaterület. Ezek a beállítások nem módosíthatók. A megoldásban szereplő runbookok alapértelmezett hitelesítési módszere egy Azure-futtatófiók. Miután rákattintott **OK**, a rendszer érvényesíti a konfigurációs beállításokat, és az Automation-fiók létrehozása. Az **Értesítések** menüpont alatt nyomon követheti a folyamat előrehaladását.

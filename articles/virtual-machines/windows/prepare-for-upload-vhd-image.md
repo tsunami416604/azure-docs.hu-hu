@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 08/01/2018
 ms.author: genli
-ms.openlocfilehash: 9eb9984d99b907cd73f5f667cca41496127744e9
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 48037bc92d26cd01086451fdc778651df5b6bf67
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263514"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398971"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
-Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure csak 1. generációs virtuális gépek VHD formátumban vannak, és a egy rögzített méretű lemezt támogat. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja a **csak az 1. generációs virtuális gépeket** , amely a VHD formátumban, és rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 Azure virtuális gép a támogatási házirenddel kapcsolatos további információkért lásd: [Microsoft kiszolgálószoftveres támogatás az Microsoft Azure virtuális gépek](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -39,8 +39,8 @@ Miután konvertálja a lemezt, hozzon létre a konvertált lemezt használó vir
 1. Nyissa meg a Hyper-V kezelőjét, és válassza ki a helyi számítógépen, a bal oldalon. A számítógép eszközlista feletti menüben kattintson **művelet** > **lemez szerkesztése**.
 2. Az a **virtuális merevlemez keresése** képernyőn, keresse meg és jelölje ki a virtuális lemezt.
 3. Az a **választott tevékenység** képernyőn, és válassza ki **konvertálása** és **tovább**.
-4. Ha VHDX próbaverzióról van szüksége, válassza ki a **VHD** majd **tovább**
-5. Ha egy dinamikusan bővülő lemezek konvertálása van szüksége, válassza ki **rögzített méretű** majd **tovább**
+4. Ha VHDX próbaverzióról van szüksége, válassza ki a **VHD** majd **tovább**.
+5. Ha egy dinamikusan bővülő lemezek konvertálása van szüksége, válassza ki **rögzített méretű** majd **tovább**.
 6. Keresse meg és válassza ki a új virtuális merevlemez fájl elérési útját.
 7. Kattintson a **Befejezés** gombra.
 
@@ -73,7 +73,7 @@ A virtuális gépen, amely azt tervezi, hogy töltse fel az Azure-ba, az alábbi
     ```PowerShell
     netsh winhttp reset proxy
     ```
-3. A lemez a SAN-szabályzat beállítása [Onlineall](https://technet.microsoft.com/library/gg252636.aspx). 
+3. A lemez a SAN-szabályzat beállítása [Onlineall](https://technet.microsoft.com/library/gg252636.aspx):
    
     ```PowerShell
     diskpart 
@@ -205,7 +205,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
    ```
-3. A következő tűzfalszabályokat, hogy az RDP-forgalom engedélyezése 
+3. A következő tűzfalszabályokat, hogy az RDP-forgalmat engedélyezi:
 
    ```PowerShell
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
@@ -236,76 +236,82 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 2. A rendszerindítási konfigurációs adatok (BCD) beállításainak megadása. 
 
     > [!Note]
-    > Ellenőrizze, hogy futtassa a következő parancsokat egy emelt szintű CMD ablakot a és **nem** PowerShell:
+    > Ellenőrizze, hogy futtassa a következő parancsokat egy emelt szintű PowerShell-ablakban a.
    
-   ```CMD
-   bcdedit /set {bootmgr} integrityservices enable
-   
-   bcdedit /set {default} device partition=C:
-   
-   bcdedit /set {default} integrityservices enable
-   
-   bcdedit /set {default} recoveryenabled Off
-   
-   bcdedit /set {default} osdevice partition=C:
-   
-   bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
+   ```powershell
+    cmd
 
-   #Enable Serial Console Feature
+    bcdedit /set {bootmgr} integrityservices enable
+    bcdedit /set {default} device partition=C:
+    bcdedit /set {default} integrityservices enable
+    bcdedit /set {default} recoveryenabled Off
+    bcdedit /set {default} osdevice partition=C:
+    bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
 
+    #Enable Serial Console Feature
     bcdedit /set {bootmgr} displaybootmenu yes
-
     bcdedit /set {bootmgr} timeout 10
-
     bcdedit /set {bootmgr} bootems yes
-
-    bcdedit /ems {<<BOOT LOADER IDENTIFIER>>} ON
-
+    bcdedit /ems {current} ON
     bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
 
-    #Setup the Guest OS to collect a kernel dump on an OS crash event
-
-    REG ADD "HKLM\SYSTEM\ControlSet00x\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2
-
-    REG ADD "HKLM\SYSTEM\ControlSet00x\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP"
-
-    REG ADD "HKLM\SYSTEM\ControlSet00x\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1
+    exit
    ```
-3. Ellenőrizze, hogy a Windows Management Instrumentations tárház egységes. Ennek végrehajtásához futtassa a következő parancsot:
+3. A memóriakép napló a hibaelhárítást a Windows összeomlási hasznos lehet. A napló memóriakép-gyűjtés engedélyezése:
+
+    ```powershell
+    cmd
+
+    #Setup the Guest OS to collect a kernel dump on an OS crash event
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2 /f
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    #Setup the Guest OS to collect user mode dumps on a service crash event
+    md c:\Crashdumps
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpFolder /t REG_EXPAND_SZ /d "c:\CrashDumps" /f
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v CrashCount /t REG_DWORD /d 10 /f
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpType /t REG_DWORD /d 2 /f
+    sc config WerSvc start= demand
+
+    exit
+    
+    ```
+4. Ellenőrizze, hogy a Windows Management Instrumentations tárház egységes. Ennek végrehajtásához futtassa a következő parancsot:
 
     ```PowerShell
     winmgmt /verifyrepository
     ```
     Ha a tárház sérült, [WMI: tárház sérülése, vagy nem](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
-4. Győződjön meg arról, hogy minden más alkalmazás nem használja a 3389-es portot. Ezt a portot használja az RDP-szolgáltatás az Azure-ban. Futtathat **netstat - anob** megtekintéséhez, hogy mely portokon a szolgálnak a virtuális gépen:
+5. Győződjön meg arról, hogy minden más alkalmazás nem használja a 3389-es portot. Ezt a portot használja az RDP-szolgáltatás az Azure-ban. Futtathat **netstat - anob** megtekintéséhez, hogy mely portokon a szolgálnak a virtuális gépen:
 
     ```PowerShell
     netstat -anob
     ```
 
-5. Ha a feltölteni kívánt Windows virtuális Merevlemezt egy tartományvezérlőt, majd kövesse az alábbi lépéseket:
+6. Ha a feltölteni kívánt Windows virtuális Merevlemezt egy tartományvezérlőt, majd kövesse az alábbi lépéseket:
 
-    A. Hajtsa végre a [további lépések](https://support.microsoft.com/kb/2904015) készíti elő a lemezen.
+    1. Hajtsa végre a [további lépések](https://support.microsoft.com/kb/2904015) készíti elő a lemezen.
 
-    B. Győződjön meg arról, hogy ismeri a DSRM-jelszót, abban az esetben el kell indítani a virtuális gép a címtárszolgáltatások Helyreállító módjában időpontban induljanak. Érdemes ezen a hivatkozáson beállításához tekintse meg a [DSRM-jelszót](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
+    1. Győződjön meg arról, hogy ismeri a DSRM-jelszót, abban az esetben el kell indítani a virtuális gép a címtárszolgáltatások Helyreállító módjában időpontban induljanak. Érdemes ezen a hivatkozáson beállításához tekintse meg a [DSRM-jelszót](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
 
-6. Győződjön meg arról, hogy a beépített Rendszergazda fiók és jelszó is ismertek. Előfordulhat, hogy szeretné a jelenlegi helyi rendszergazdai jelszó visszaállítása, és győződjön meg arról, hogy ezt a fiókot használhatja bejelentkezni a Windows az RDP-kapcsolaton keresztül. A hozzáférési engedélyt a "Bejelentkezés engedélyezése a távoli asztali szolgáltatások használatával" csoportházirend-objektumot határozza meg. Ez az objektum a a Helyicsoportházirend-szerkesztő alatt tekintheti meg:
+7. Győződjön meg arról, hogy a beépített Rendszergazda fiók és jelszó is ismertek. Előfordulhat, hogy szeretné a jelenlegi helyi rendszergazdai jelszó visszaállítása, és győződjön meg arról, hogy ezt a fiókot használhatja bejelentkezni a Windows az RDP-kapcsolaton keresztül. A hozzáférési engedélyt a "Bejelentkezés engedélyezése a távoli asztali szolgáltatások használatával" csoportházirend-objektumot határozza meg. Ez az objektum a a Helyicsoportházirend-szerkesztő alatt tekintheti meg:
 
     Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok kiosztása
 
-7. Ellenőrizze az alábbi AD győződjön meg arról, hogy nem blokkolja az RDP-hozzáférés RDP-Kapcsolaton keresztül, és nem is a hálózat szabályzatokkal:
+8. Ellenőrizze az alábbi AD győződjön meg arról, hogy nem blokkolja az RDP-hozzáférés RDP-Kapcsolaton keresztül, és nem is a hálózat szabályzatokkal:
 
     - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok kiosztása\kötegelt munka bejelentkezésének megtagadása hozzáférést ehhez a számítógéphez a hálózatról
 
     - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok kiosztása\helyi bejelentkezés megtagadása a távoli asztali szolgáltatások használatával
 
 
-8. Indítsa újra a virtuális Gépen, győződjön meg arról, hogy Windows továbbra is megfelelő, elérhető, az RDP-kapcsolat használatával. Ezen a ponton érdemes a helyi Hyper-V – győződjön meg róla a virtuális gép teljesen elindult-e, és ellenőrizze, hogy RDP érhető el a virtuális gép létrehozásához.
+9. Indítsa újra a virtuális Gépen, győződjön meg arról, hogy Windows továbbra is megfelelő, elérhető, az RDP-kapcsolat használatával. Ezen a ponton érdemes a helyi Hyper-V – győződjön meg róla a virtuális gép teljesen elindult-e, és ellenőrizze, hogy RDP érhető el a virtuális gép létrehozásához.
 
-9. Távolítsa el a felesleges átviteli Driver Interface szűrőket, például egy szoftver, amely elemzi a TCP csomagokat, vagy további tűzfalakat. Emellett áttekintheti Ez az egy későbbi szakaszban a virtuális gép üzembe helyezése az Azure-ban, szükség esetén után.
+10. Távolítsa el a felesleges átviteli Driver Interface szűrőket, például egy szoftver, amely elemzi a TCP csomagokat, vagy további tűzfalakat. Emellett áttekintheti Ez az egy későbbi szakaszban a virtuális gép üzembe helyezése az Azure-ban, szükség esetén után.
 
-10. Távolítsa el a harmadik féltől származó szoftverek és illesztőprogramot, amely kapcsolódik a fizikai összetevők vagy más virtualizációs technológiát.
+11. Távolítsa el a harmadik féltől származó szoftverek és illesztőprogramot, amely kapcsolódik a fizikai összetevők vagy más virtualizációs technológiát.
 
 ### <a name="install-windows-updates"></a>Windows-frissítések telepítése
 Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez nem lehetséges, győződjön meg arról, hogy telepítve vannak-e a következő frissítéseket:
@@ -387,25 +393,7 @@ A következő beállítások nem befolyásolják a VHD feltöltésével. Azonban
 
     - [A Virtuálisgép-ügynök és -bővítmények – 1. rész](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
     - [A Virtuálisgép-ügynök és -bővítmények – 2. rész](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)
-* A memóriakép napló a hibaelhárítást a Windows összeomlási hasznos lehet. A napló memóriakép-gyűjtés engedélyezése:
-  
-    ```cmd
-    md c:\CrashDumps
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpFolder /t REG_EXPAND_SZ /d "c:\CrashDumps" /f
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpCount /t REG_DWORD /d 10 /f
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpType /t REG_DWORD /d 2 /f
-    sc config WerSvc start= demand
-    ```
-    Ha az a cikkben ismertetett eljárási lépések hibákat kap, ez azt jelenti, hogy létezik-e már a beállításkulcsokat. Ebben az esetben használja a következő parancsokat:
 
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "CrashDumpEnable" -Value "2" -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "DumpFile" -Value "%SystemRoot%\MEMORY.DMP"
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpFolder" -Value "c:\CrashDumps"
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpCount" -Value 10 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpType" -Value 2 -Type DWord
-    Set-Service -Name WerSvc -StartupType Manual
-    ```
 *  Miután a virtuális gép létrehozása az Azure-ban, azt javasoljuk, hogy a teljesítmény javítása a "Historikus elnevezésű" köteten helyezze a lapozófájl méretét. Beállíthatja a következőképpen:
 
     ```PowerShell

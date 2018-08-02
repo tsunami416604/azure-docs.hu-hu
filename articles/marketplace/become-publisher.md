@@ -3,8 +3,8 @@ title: Válhat Kiadóvá a piactéren az kirakattípus |} Az Azure
 description: Ez a cikk azt ismerteti, hogyan válhat a közzétevő a marketplace-en.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: jm-aditi-ms
-manager: pabutler
+author: ellacroi
+manager: nunoc
 editor: ''
 ms.assetid: ''
 ms.service: marketplace
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: fb3f307642dc6f4607a626e0b320949306129759
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4d37aba665fd9b6de89f683ce2785a14b1b6f60b
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172313"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412015"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -103,8 +103,8 @@ Befejezése után a [Dev Center](https://developer.microsoft.com/en-us/store/reg
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg a Marketplace-en kirakattípus: appsource-ban és az Azure Marketplace-en
-*   Határozza meg az ajánlatot a piactéren
+* Ismerje meg a Marketplace-en kirakattípus: [összehasonlítása appsource-ban és az Azure Marketplace-en](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
+*   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type)
 
  
 ---  

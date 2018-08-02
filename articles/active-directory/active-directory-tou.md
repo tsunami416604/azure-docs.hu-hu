@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 07/18/2018
+ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136655"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398954"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk az Azure AD Használati feltételek funkcióval kapcsolatos kezdeti lépéseket ismerteti.
@@ -138,6 +138,42 @@ A felhasználók az alábbi eljárással tekinthetik át az általuk elfogadott 
 
 1. Itt áttekintheti az elfogadott használati feltételeket. 
 
+## <a name="edit-terms-of-use-details"></a>Használati feltételek részleteinek szerkesztése
+Szerkesztheti a használati feltételeket tartalmazó fájl bizonyos részleteit, de nem módosíthatja egy meglévő dokumentumot. Az alábbi eljárás ismerteti, hogyan lehet az adatok szerkesztéséhez.
+
+1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
+
+1. Válassza ki a szerkeszteni kívánt használati feltételeket.
+
+1. Kattintson a **feltételeket tartalmazó fájl szerkesztése**.
+
+1. A használati ablaktábla Szerkesztés feltételeit módosítsa a nevet, megjelenítendő nevet vagy értékek felhasználóknak legyen kötelező.
+
+    ![Használati feltételek hozzáadása](media/active-directory-tou/edit-tou.png)
+
+1. Kattintson a **mentése** a módosítások mentéséhez.
+
+    A módosítások mentése után a felhasználóknak kell fogadnia hatókörébe.
+
+## <a name="add-a-terms-of-use-language"></a>A használati feltételek használata nyelv hozzáadása
+Az alábbi eljárás ismerteti, hogyan lehet a használati feltételek használata nyelv hozzáadása.
+
+1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
+
+1. Válassza ki a szerkeszteni kívánt használati feltételeket.
+
+1. Az a részleteket tartalmazó ablaktáblájában kattintson a **nyelvek** fülre.
+
+    ![Használati feltételek hozzáadása](media/active-directory-tou/languages-tou.png)
+
+1. Kattintson a **nyelv hozzáadása**.
+
+1. A honosított PDF-fájl feltöltése a Hozzáadás használati használata nyelvi ablaktáblán, és válassza ki a nyelvet.
+
+    ![Használati feltételek hozzáadása](media/active-directory-tou/language-add-tou.png)
+
+1. Kattintson a **Hozzáadás** a nyelv hozzáadása.
+
 ## <a name="delete-terms-of-use"></a>Használati feltételek törlése
 A korábbi használati feltételeket az alábbi eljárással törölheti.
 
@@ -175,8 +211,11 @@ V: a felhasználó-adatokra is használja a jelentés és aki elfogadott/nem fog
 **K: Miért láthatók a feltételeit, és az Azure AD használati jelentés címtárbérlőhöz különböző számú naplók?**</br>
 V: a használati jelentés használati tárolja a használati feltételeket, miközben a naplót 30 napig tárol az Azure AD naplózási élettartama. A használati jelentés használatát is, csak a felhasználók aktuális jóváhagyási állapotot jeleníti meg. Például ha egy felhasználó elutasítja, és majd elfogadja a használati jelentés használata csak akkor jelenik meg, hogy a felhasználó fogadja el. Ha szeretne látni a korábbi, használhatja az Azure AD auditnaplóinak.
 
-**K: Ha a használati feltételeket, módosításához, igényel a felhasználóknak újra el kell fogadniuk?**</br>
-V: Igen, rendszergazda módosíthatja a használati feltételeket, és ez megköveteli a felhasználóktól az új feltételeket hatókörébe.
+**K: Ha a használati feltételek részleteinek tudom szerkeszteni, azt igényel a felhasználóknak újra el kell fogadniuk?**</br>
+V: Igen, ha egy rendszergazda szerkeszt a részletek a használati feltételeket, eléréséhez a felhasználóknak az új feltételeket hatókörébe.
+
+**K: frissíti egy meglévő használati feltételek dokumentuma?**</br>
+Válasz: egy meglévő használati feltételek dokumentuma jelenleg nem lehet frissíteni. Ha módosítani szeretné a használati feltételek dokumentuma, akkor új feltételek használata-példány létrehozása.
 
 **K: Ha a hivatkozások a használati feltételek PDF dokumentuma van, a végfelhasználók fogja tudni azokra kattint?**</br>
 V: a PDF-fájl jelenik meg alapértelmezés szerint, JPEG, így nem kattintható hivatkozások állnak. Felhasználók rendelkeznek a kívánt **megtekintéssel? Kattintson ide a**, amely a PDF-fájl rendereli natív módon, a hivatkozások támogatottak.

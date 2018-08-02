@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/30/2018
 ms.author: mstewart
-ms.openlocfilehash: 3a93f4df52f5e148faaa1e8e7a0275b68d2ff508
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 19fe03a6d06b0f058a90e8bdc40d862601db4f7e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391773"
+ms.locfileid: "39399898"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei 
  Ez a cikk az Azure Disk Encryption titkosítási előfeltétel, biztosítani kell, mielőtt használhatná az Azure Disk Encryption igénylő elemeket ismerteti. Általános Előfeltételek, valamint az Azure Disk Encryption szolgáltatással integrált [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) és a hitelesítés kezeléséhez a titkosítási kulcsokat a key vault az Azure AD-alkalmazást használ. Előfordulhat, hogy is használni kívánt [Azure PowerShell-lel](/powershell/azure/overview) vagy a [Azure CLI-vel](/cli/azure/) beállítását, és állítsa be a Key Vault és az Azure AD-alkalmazás.
@@ -398,11 +398,6 @@ A PowerShell-parancsfájl használatával, mielőtt azokat a lépéseket mutatj�
 
 ## <a name="bkmk_Cert"></a> Tanúsítványalapú hitelesítés (nem kötelező)
 Ha Tanúsítványalapú hitelesítés használatára, töltsön fel a kulcstartóba, és telepítheti az ügyfelet. A PowerShell-parancsfájl használatával, mielőtt azokat a lépéseket mutatják a parancsfájl az Azure Disk Encryption Előfeltételek tisztában kell lennie. A példaszkript környezetében előfordulhat, hogy szükség módosításokra.
-
-> [!IMPORTANT]
-> Az Azure AD-alapú hitelesítés jelenleg nem támogatott Linuxos virtuális gépeken.
-
-
 
      
  ```powershell

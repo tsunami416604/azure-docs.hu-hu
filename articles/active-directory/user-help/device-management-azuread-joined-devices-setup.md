@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 511580b95646677a231a68862cae8a6aa57abcb0
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 83eea565cc775a0569015c04d79d627d6ba120e6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345531"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411709"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Állítsa be az Azure Active Directory-hez csatlakoztatott eszközök
 
@@ -28,7 +28,7 @@ Ha azt szeretné, ahhoz, hogy a munka a Windows 10-es eszközök Azure AD felüg
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Windows 10-es eszköz csatlakoztatása, hogy lehetővé tegye az eszközök regisztrálása az eszközregisztrációs szolgáltatás kell konfigurálni. Eszközök csatlakoztatása az Azure AD-bérlője számára, mellett rendelkeznie kell kevesebb, mint a beállított maximális regisztrált eszközök. További információkért lásd: [eszközbeállítások konfigurálása](../device-management-azure-portal.md#configure-device-settings).
+A Windows 10-es eszköz csatlakoztatása, hogy lehetővé tegye az eszközök regisztrálása az eszközregisztrációs szolgáltatás kell konfigurálni. Eszközök csatlakoztatása az Azure AD-bérlője számára, mellett rendelkeznie kell kevesebb, mint a beállított maximális regisztrált eszközök. További információkért lásd: [eszközbeállítások konfigurálása](../devices/device-management-azure-portal.md#configure-device-settings).
 
 
 
@@ -116,16 +116,14 @@ Emellett áttekintheti az Azure AD Portal Eszközbeállítások.
 
 ![Csatlakozva](./media/device-management-azuread-joined-devices-setup/15.png)
 
-További információkért lásd: [keresse meg az eszközöket](../device-management-azure-portal.md#locate-devices).
+További információkért lásd: [keresse meg az eszközöket](../devices/device-management-azure-portal.md#locate-devices).
 
 
 ## <a name="next-steps"></a>További lépések
 
 További információkért lásd: 
 
-- A [az Eszközfelügyelet az Azure Active Directory bemutatása](../device-management-introduction.md)
-- [Az Eszközfelügyelet az Azure portal használatával](../device-management-azure-portal.md)
-- 
-
+- A [az Eszközfelügyelet az Azure Active Directory bemutatása](../devices/overview.md)
+- [Az Eszközfelügyelet az Azure portal használatával](../devices/device-management-azure-portal.md)
 
 

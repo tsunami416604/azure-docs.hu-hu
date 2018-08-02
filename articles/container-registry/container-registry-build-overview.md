@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/28/2018
+ms.date: 08/01/2018
 ms.author: marsma
-ms.openlocfilehash: 532817c6289c1718fd82a502e04dc10715ee7203
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 63bbd9b5711330207c34ac4aa05aac3a71304653
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343100"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413579"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizálja az operációs rendszer és a keretrendszer javítás ACR builddel
 
@@ -33,7 +33,20 @@ Eseményindító tárolórendszerkép automatikusan épít, amikor a kód szám�
 
 Az életciklus-felügyelet elején elindítja a fejlesztők számára az első sornyi kód véglegesítése előtt. ACR Builddel [gyors létrehozása](container-registry-tutorial-quick-build.md) funkció lehetővé teszi egy integrált helyi belső-hurok fejlesztési környezetet biztosít, tehermentesítést buildeket, az Azure-bA. A gyors hoz létre ellenőrizheti az automatizált buildelési definíciókat a kód véglegesítése előtt.
 
-Az ismert `docker build` formátum, a [az acr-build] [ az-acr-build] parancs az Azure CLI-ben vesz igénybe egy helyi környezetet, elküldi azt az ACR Builddel szolgáltatásnak, és alapértelmezés szerint leküldi az összeállított rendszerképet a beállításjegyzékbe, Befejezés. ACR Builddel követi a georeplikált tárolójegyzékek elosztott fejlesztői csapatok kihasználhatja a legközelebbi replikált beállításjegyzék engedélyezése.
+Az ismert `docker build` formátum, a [az acr-build] [ az-acr-build] paranccsal az Azure CLI-ben egy **környezet** (fájlok halmazát hozhat létre), elküldi azt az ACR Builddel szolgáltatásnak és alapértelmezés szerint leküldi a lemezképet a beállításjegyzék befejezése után.
+
+Az alábbi táblázatban néhány példa a támogatott környezeti helyek az ACR Builddel látható:
+
+| Környezet helye | Leírás | Példa |
+| ---------------- | ----------- | ------- |
+| Helyi fájlrendszer | A helyi fájlrendszer egy könyvtárban lévő fájlokat. | `/home/user/projects/myapp` |
+| GitHub "master" ága | A fő (vagy más alapértelmezett) lévő fájlok egy GitHub-adattár ágában.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub-ág | Adott ághoz egy GitHub-adattár.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| A GitHub Pull-kérelem | A lekéréses kérelem a GitHub-tárházba. | `https://github.com/gituser/myapp-repo.git#pull/23/head` |
+| GitHub almappa | Egy GitHub-adattárban található almappában található fájlokat. Példa bemutatja a Pull-kérelem és almappák specifikáció kombinációja. | `https://github.com/gituser/myapp-repo.git#pull/24/head:myfolder` |
+| Távoli tarball | A tömörített archívum egy távoli webkiszolgálón található fájlokat. | `http://remoteserver/myapp.tar.gz` |
+
+ACR Builddel is követi a georeplikált tárolójegyzékek elosztott fejlesztői csapatok kihasználhatja a legközelebbi replikált beállításjegyzék engedélyezése.
 
 ACR Builddel tervezték, mint egy egyszerű tároló életciklus. Ha például integrálhatja az ACR Builddel CI/CD-megoldását. Végrehajtásával [az bejelentkezési] [ az-login] az egy [szolgáltatásnév][az-login-service-principal], CI/CD-megoldását sikerült majd ki [az acr builddel] [ az-acr-build] parancsok felhőplatformos termékeiért buildek kép.
 

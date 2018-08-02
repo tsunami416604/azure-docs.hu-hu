@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: 684507b58e5ac766e9b42d3aa53cb0867a131a93
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222672"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399571"
 ---
 # <a name="collaborating"></a>Együttműködés
 
@@ -25,7 +25,7 @@ A LUIS-fiókhoz társítva egyetlen [Microsoft Live](https://login.live.com/) fi
 
 A LUIS-fiók számos LUIS alkalmazás lehet.
 
-Lásd: [Azure Active Directory-bérlő felhasználói](luis-how-to-account-settings.md#azure-active-directory-tenant-user) további információ az Active Directory felhasználói fiókokat. 
+Lásd: [Azure Active Directory-bérlő felhasználói](luis-how-to-collaborate.md#azure-active-directory-tenant-user) további információ az Active Directory felhasználói fiókokat. 
 
 ## <a name="luis-app-owner"></a>A LUIS alkalmazás tulajdonosa
 A fiók, amely létrehoz egy alkalmazást a tulajdonosa. Minden alkalmazás rendelkezik egy egyetlen tulajdonosa. A tulajdonos szerepel az alkalmazás  **[beállítások](luis-how-to-collaborate.md)**. Ez az a fiók, amely az alkalmazás törlése. Ez akkor is a fiókot, amely e-mailt kap, ha a végpont kvóta eléri 75 %-a havi korlátot. 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2018
+ms.date: 08/01/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 29ab649f8fe06ae598ff138ff98eb2611ec38e1f
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 37cabadb18bf065de64b7ae24c4ed19994e60625
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128877"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413637"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 Meglévő System Center Operations Manager-befektetései kamatoztatása, és a Log Analytics képességeinek kiterjesztése érdekében az Operations Managert integrálhatja Log Analytics-munkaterületével.  Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -39,12 +39,21 @@ Az alábbi diagram egy System Center Operations Manager-beli felügyeleti csopor
 
 Ha az informatikai biztonsági szabályzatok nem engedélyezik, hogy a hálózat számítógépei kapcsolódjanak az internetre, a felügyeleti kiszolgálók az engedélyezett megoldásoktól függően konfigurálhatóak úgy, hogy az OMS-átjáróhoz kapcsolódjanak a konfigurációs adatok letöltése és a gyűjtött adatok küldése érdekében.  Az Operations Manager felügyeleti csoport a Log Analytics szolgáltatással az OMS-átjárón keresztüli kommunikációjának konfigurációjával kapcsolatos további információért lásd a [számítógépek az OMS-hez az OMS-átjáró használatával történő csatlakoztatását](log-analytics-oms-gateway.md) ismertető témakört.  
 
-## <a name="system-requirements"></a>Rendszerkövetelmények
-Mielőtt elkezdené, az alábbi adatokat áttekintve ellenőrizze, hogy megfelel-e a szükséges előfeltételeknek.
+## <a name="prerequisites"></a>Előfeltételek 
+Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 
-* A Log Analytics kizárólag a System Center Operations Manager 1801, az Operations Manager 2016, az Operations Manager 2012 SP1 UR6-os vagy újabb, illetve az Operations Manager 2012 R2 UR2-es vagy újabb kiadást támogatja.  A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
-* Minden Operations Manager-ügynöknek meg kell felelnie a minimális támogatási feltételeknek. Bizonyosodjon meg róla, hogy az ügynökök frissítve vannak a minimális szintekre, máskülönben a Windows-ügynökök forgalma meghiúsulhat, és rengeteg hiba kerülhet az Operations Manager-eseménynaplóba.
-* Egy Log Analytics-munkaterület.  További információért tekintse át az [Ismerkedés a Log Analytics szolgáltatással](log-analytics-get-started.md) című cikket.
+* Csak a log Analytics támogatja a System Center Operations Manager 1807, az Operations Manager 1801-re, az Operations Manager 2016-ra, az Operations Manager 2012 SP1 UR6 vagy újabb, és az Operations Manager 2012 R2 UR2 vagy újabb.  A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
+* Minden Operations Manager-ügynöknek meg kell felelnie a minimális támogatási feltételeknek. Győződjön meg arról, hogy ügynök a minimális frissítéskor el, egyéb Windows-ügynök kommunikációja sikertelen és hibák készítése az Operations Manager eseménynaplójában.
+* Egy Log Analytics-munkaterület.  További információkért tekintse át a [a környezet számítógépek csatlakoztatása a Log Analytics](log-analytics-concept-hybrid.md).
+* Végez hitelesítést az Azure-bA egy olyan fiókkal, amely tagja a [Log Analytics-közreműködő szerepkör](log-analytics-manage-access.md#manage-accounts-and-users).  
+
+>[!NOTE]
+>Útmutató legutóbbi módosításait az Azure API-k megakadályozza, hogy a felhasználók képes arra, hogy sikeresen az első alkalommal között a felügyeleti csoport és a Log Analytics-integráció konfigurálása. Azok a vásárlóknak, akik már integrálva van a felügyeleti csoport a szolgáltatásban nem érinti, kivéve, ha újra kell konfigurálni a meglévő kapcsolatot.  
+>Új felügyeleti csomag az Operations Manager különböző verzióinak kibocsátási lett:  
+>* Töltse le a felügyeleti csomag a System Center Operations Manager 1801 [Itt](https://www.microsoft.com/download/details.aspx?id=57173)  
+>* Töltse le a felügyeleti csomag a System Center 2016 – Operations Manager [Itt](https://www.microsoft.com/download/details.aspx?id=57172)  
+>* A System Center Operations Manager 2012 R2, töltse le a felügyeleti csomag [Itt](https://www.microsoft.com/en-us/download/details.aspx?id=57171)  
+
 
 ### <a name="network"></a>Network (Hálózat)
 Az alábbi lista az Operations Management-ügynök, a felügyeleti kiszolgálók és az Operatív konzol a Log Analyticsszel való kommunikációhoz szükséges proxy- és tűzfal-konfigurációját tartalmazza.  Az egyes összetevők forgalma kifelé, a hálózatból a Log Analytics szolgáltatásra irányul.     
@@ -76,11 +85,11 @@ Az alábbi lista az Operations Management-ügynök, a felügyeleti kiszolgálók
 ## <a name="connecting-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 Az alábbi lépések végrehajtásával konfigurálhatja Operations Manager felügyeleti csoportját, hogy a Log Analytics munkaterületei egyikéhez csatlakozzon.
 
-Ha az Operations Manager felügyeleti csoport most első alkalommal regisztrál Log Analytics-munkaterületre, és a felügyeleti kiszolgálóknak proxyn vagy OMS-átjárókiszolgálón keresztül kell kommunikálnia a szolgáltatással, az Operatív konzolon nem érhető el a felügyeleti csoport proxykonfigurációját megadó beállítás.  A felügyeleti csoportot sikeresen regisztrálni kell a szolgáltatásban ahhoz, hogy ez a lehetőség rendelkezésre álljon.  Az integráció és a felügyeleti csoportba tartozó minden felügyeleti kiszolgáló konfigurálásához Netsh használatával frissítenie kell a rendszerproxy-konfigurációt a rendszeren, amelyiken az Operatív konzolt futtatja.  
+Az Operations Manager felügyeleti csoportban a Log Analytics-munkaterületet a kezdeti regisztráció során adhat meg a proxykonfiguráció a felügyeleti csoport nem áll rendelkezésre az operatív konzolon.  A felügyeleti csoportot sikeresen regisztrálni kell a szolgáltatásban ahhoz, hogy ez a lehetőség rendelkezésre álljon.  Ez elkerülhető, hogy frissíteni szeretné a rendszer proxykonfigurációt a Netsh segédprogrammal a rendszer a fut az operatív konzol integrációt és az összes felügyeleti kiszolgáló konfigurálása a felügyeleti csoportban.  
 
 1. Nyisson meg egy emelt szintű parancssort.
-   a. Ugrás a **Start** és típus **cmd**.
-   b. Kattintson a jobb gombbal **parancssor** , és jelölje ki futtató rendszergazda **.
+   a. Lépjen a **Start** , és írja be **cmd**.
+   b. Kattintson a jobb gombbal **parancssor** , és válassza ki futtató rendszergazda **.
 2. Írja be a következő parancsot, majd nyomja le az **Enter** billentyűt:
 
     `netsh winhttp set proxy <proxy>:<port>`
@@ -91,7 +100,7 @@ Miután végrehajtotta a következő lépéseket a Log Analytics integrálásár
 2. Bontsa ki az Operations Management Suite-csomópontot, és kattintson a **Kapcsolat** elemre.
 3. Kattintson a **Register to Operations Management Suite** (Regisztráció az Operations Management Suite-be) hivatkozásra.
 4. Az **Operations Management Suite Előkészítési varázsló Hitelesítés lapján** adja meg az OMS-előfizetésével társított rendszergazdai fiók e-mail-címét vagy telefonszámát és jelszavát, és kattintson a **Bejelentkezés** gombra.
-5. Miután sikeresen bejelentkezett, az **Operations Management Suite Előkészítési varázsló Munkaterület kiválasztása lapján** ki kell választania a Log Analytics-munkaterületet.  Ha több munkaterülettel is rendelkezik, válassza ki a legördülő listából azt, amelyiket az Operations Manager felügyeleti csoportba regisztrálni szeretne, majd kattintson a **Tovább** gombra.
+5. Sikeres hitelesítés után, az a **Operations Management Suite előkészítési varázslója: Munkaterület kiválasztása** lap kéri, válassza ki az Azure-bérlő, az előfizetést és a Log Analytics-munkaterületet.  Ha több munkaterülettel is rendelkezik, válassza ki a legördülő listából azt, amelyiket az Operations Manager felügyeleti csoportba regisztrálni szeretne, majd kattintson a **Tovább** gombra.
    
    > [!NOTE]
    > Az Operations Manager egyszerre csak egy Log Analytics-munkaterület használatát támogatja. Az előző munkaterület a Log Analyticsbe regisztrált kapcsolati és a számítógépekre vonatkozó adatai törölve lesznek a Log Analyticsből.
@@ -101,7 +110,7 @@ Miután végrehajtotta a következő lépéseket a Log Analytics integrálásár
 7. Az **Operations Management Suite Előkészítési varázsló Befejezés lapján** kattintson a **Bezárás** gombra.
 
 ### <a name="add-agent-managed-computers"></a>Ügynök által felügyelt számítógépek hozzáadása
-Miután konfigurálta a Log Analytics-munkaterülettel való integrációt, ez csupán kapcsolatot létesít a szolgáltatással, adatokat nem gyűjt a felügyeleti csoportba jelentő ügynökökről. Ez csak azután kezdődik meg, hogy beállítja, melyik ügynök által felügyelt számítógépek gyűjtsenek adatokat a Log Analytics számára. A számítógép-objektumokat kiválaszthatja egyenként, vagy kiválaszthat egy Windows számítógép-objektumokat tartalmazó csoportot. Nem választhat olyan csoportot, amely egy másik osztályba tartozó példányokat, például logikai lemezeket vagy SQL-adatbázisokat tartalmaz.
+Integrációjának konfigurálása után az a Log Analytics-munkaterülethez, csak a szolgáltatás kapcsolatot létesít, nem a gyűjtött adatokat a felügyeleti csoportnak jelentő ügynököktől. Ez nem fordulhat elő, amíg mely adott ügynök által felügyelt számítógépek gyűjt adatokat a Log Analytics konfigurálása után. A számítógép-objektumokat kiválaszthatja egyenként, vagy kiválaszthat egy Windows számítógép-objektumokat tartalmazó csoportot. Nem választhat olyan csoportot, amely egy másik osztályba tartozó példányokat, például logikai lemezeket vagy SQL-adatbázisokat tartalmaz.
 
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 2. Bontsa ki az Operations Management Suite-csomópontot, és kattintson a **Kapcsolat** elemre.
@@ -111,7 +120,7 @@ Miután konfigurálta a Log Analytics-munkaterülettel való integrációt, ez c
 A Felügyelt számítógépek csomópont adatgyűjtésre konfigurált számítógépei és csoportjai az Operations Management Suite-ben az Operatív konzol **Adminisztráció** munkaterületén láthatók.  Itt szükség szerint hozzá is adhat és el is távolíthat számítógépeket és csoportokat.
 
 ### <a name="configure-proxy-settings-in-the-operations-console"></a>Proxybeállítások konfigurálása az Operatív konzolon
-Ha a felügyeleti csoport és a Log Analytics szolgáltatás közé egy belső proxykiszolgáló ékelődik, hajtsa végre a következő lépéseket.  Ezek a beállítások központilag vannak felügyelve a felügyeleti csoportból, és onnan kiküldve a Log Analytics adatgyűjtési hatókörébe tartozó, ügynök által felügyelt rendszerekre.  Ez hasznosnak bizonyul, ha egyes megoldások megkerülik a felügyeleti kiszolgálót, és közvetlenül a szolgáltatásba küldik az adatokat.
+Hajtsa végre az alábbi lépéseket, ha egy belső proxykiszolgáló a felügyeleti csoport és a Log Analytics szolgáltatás között.  Ezek a beállítások központilag vannak felügyelve a felügyeleti csoportból, és onnan kiküldve a Log Analytics adatgyűjtési hatókörébe tartozó, ügynök által felügyelt rendszerekre.  Ez hasznosnak bizonyul, ha egyes megoldások megkerülik a felügyeleti kiszolgálót, és közvetlenül a szolgáltatásba küldik az adatokat.
 
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 2. Bontsa ki a Microsoft Operations Management Suite elemet, majd kattintson a **Kapcsolatok** gombra.
@@ -143,10 +152,10 @@ A konfiguráció végeztével az Operations Manager felügyeleti csoport kapcsol
 
 A két szabály felülírható – a csomagok automatikus letöltésének kikapcsolásához letilthatja őket, vagy módosíthatja, hogy a felügyeleti kiszolgáló milyen gyakran szinkronizáljon az OMS-sel, és ellenőrizze, hogy van-e új elérhető és letöltendő felügyeleti csomag.  A [Szabály vagy figyelő felülbírálása](https://technet.microsoft.com/library/hh212869.aspx) cikkben ismertetett lépések mentén módosíthatja a **Gyakoriság** paraméter másodpercben kifejezett értékét, amely a szinkronizálás ütemezését adja meg, vagy az **Engedélyezve** paraméter módosításával letilthatja a szabályokat.  Ezeket a szabálymódosításokat az Operations Manager felügyeleti csoport osztályban lévő minden objektumra alkalmazza.
 
-Ha továbbra is a meglévő változáskezelési folyamatot kívánja követni az üzemi felügyeleti csoportjában a kiadott felügyeleti csomagok szabályozásához, kikapcsolhatja a szabályokat, majd ismét bekapcsolhatja meghatározott időpontokban, amikor a frissítések engedélyezettek. Ha rendelkezik fejlesztési vagy QA-felügyeleti csoporttal környezetében, és az képes kapcsolódni az internetre, konfigurálhatja a felügyeleti csoportot egy Log Analytics-munkaterülettel, amely támogatja ezt a forgatókönyvet.  Ez lehetővé teszi, hogy áttekintse és értékelje a Log Analytics-felügyeleti csomagok iteratív kiadásait, még mielőtt kiadná őket üzemi felügyeleti csoportjába.
+Folytassa a meglévő vezérlő folyamatának szabályozni a felügyeleti csomag kiadásokban az éles környezetű felügyeleti csoportjában, a szabályok letiltása, és engedélyezheti őket a megadott időpontok engedélyezett a frissítések során. Ha rendelkezik fejlesztési vagy QA-felügyeleti csoporttal környezetében, és az képes kapcsolódni az internetre, konfigurálhatja a felügyeleti csoportot egy Log Analytics-munkaterülettel, amely támogatja ezt a forgatókönyvet.  Ez lehetővé teszi, hogy áttekintse és értékelje a Log Analytics-felügyeleti csomagok iteratív kiadásait, még mielőtt kiadná őket üzemi felügyeleti csoportjába.
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Váltás Operations Manager csoportról egy új Log Analytics-munkaterületre
-1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet, és hozzon létre egy munkaterületet.  
 3. Nyissa meg az Operations Manager konzolt az Operations Manager-rendszergazdák szerepkörbe tartozó fiókkal, és válassza a **Felügyelet** munkaterületet.
 4. Bontsa ki a Microsoft Operations Management Suit elemet, és válassza a **Kapcsolatok** lehetőséget.
@@ -193,7 +202,7 @@ Azokat az Ön által engedélyezett megoldásokhoz tartozó felügyeleti csomago
 4. Olyan felügyeleti csomagok eltávolításához, amelyek más System Center Advisor felügyeleti csomagoktól függnek, használja a *RecursiveRemove.ps1* szkriptet, amelyet még a TechNet Script Centerből töltött le.  
  
     > [!NOTE]
-    > Ne törölje a Microsoft System Center Advisor vagy a Microsoft System Center Advisor Internal felügyeleti csomagokat.  
+    > A lépés a PowerShell-lel az Advisor felügyeleti csomagok eltávolítása nem törli automatikusan a Microsoft System Center Advisor belső vagy a Microsoft System Center Advisor felügyeleti csomagokat.  Ne törölje őket.  
     >  
 
 5. Nyissa meg az Operations Manager Operatív konzolját az Operations Manager-rendszergazdák szerepkörbe tartozó fiókkal.
@@ -201,9 +210,10 @@ Azokat az Ön által engedélyezett megoldásokhoz tartozó felügyeleti csomago
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
+
 7. Az OMS-portálon kattintson a **Beállítások** csempére.
-8. Válassza ki **csatlakoztatott adatforrások**.
-9. A tábla a System Center Operations Manager szakaszban meg kell jelennie a felügyeleti csoport el szeretné távolítani a munkaterület neve.  A **Legutóbbi adatok** oszlop alatt kattintson az **Eltávolítás** elemre.  
+8. Válassza ki **csatlakoztatott források**.
+9. A System Center Operations Manager szakaszában a táblázatban megtekintheti a felügyeleti csoport el kívánja távolítani a munkaterület nevét.  A **Legutóbbi adatok** oszlop alatt kattintson az **Eltávolítás** elemre.  
    
     > [!NOTE]
     > Az **Eltávolítás** hivatkozás csak 14 nap múlva válik elérhetővé, ha nem észlelhető aktivitás a csatlakoztatott felügyeleti csoportban.  

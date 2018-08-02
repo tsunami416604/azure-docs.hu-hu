@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 6d37ae9eb5aa5961c5da2e4cce0e79679f1e65ac
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 5f022f366c0247fade4cc39925e116a09b3d08de
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283642"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399090"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Állítsa be, és az Azure Cosmos DB-tárolók és az adatbázis átviteli sebesség lekérdezése
 
@@ -226,7 +226,16 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
-## <a id="GetLastRequestStatistics"></a>Átviteli sebesség lekérdezése a MongoDB API-k GetLastRequestStatistics parancs használatával
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Átviteli sebesség lekérdezése a MongoDB API-portál metrikák használatával
+
+Beolvasni egy jó becslés kérelem egységekre vonatkozó díjakon MongoDB API-val adatbázis használata esetén a legegyszerűbb módja a [az Azure portal](https://portal.azure.com) metrikákat. Az a *kérelmek száma* és *kérelem díj* diagramok, minden művelet is használja, és hány kérelemegység igényelnek egymáshoz viszonyított hány kérelemegység becsült kérheti.
+
+![MongoDB API-portál mérőszámai][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a> A MongoDB API-ban mért fenntartott adatátviteli kapacitást meghaladó
+Az alkalmazásokat, amelyek meghaladják a kiosztott átviteli sebesség egy tárolót vagy tárolók sebessége korlátozott lesz, amíg a fogyasztás sebessége a kiosztott átviteli sebesség alá csökken. A sebesség korlátozása esetén a háttér megszűnik a kérelem egy `16500` hibakód - `Too Many Requests`. Alapértelmezés szerint a MongoDB API-val automatikusan újrapróbálkozik legfeljebb 10 alkalommal visszaküldése előtt egy `Too Many Requests` hibakód. Ha azért küldtük Önnek, számos `Too Many Requests` hibakódok, érdemes figyelembe venni, vagy adja hozzá egy újrapróbálkozási logikát az alkalmazás hibakezelési rutinok vagy [tároló kiosztott átviteli sebesség növelése](set-throughput.md).
+
+## <a id="GetLastRequestStatistics"></a>Kérelem díja lekérése MongoDB API-k GetLastRequestStatistics parancs használatával
 
 A MongoDB API támogatja az egyéni parancsokat, *getLastRequestStatistics*, a kérelem díjak egy adott művelethez beolvasásakor.
 
@@ -254,14 +263,19 @@ Egy fenntartott adattovábbítási kapacitással, az alkalmazás számára szük
 > 
 > 
 
-## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Átviteli sebesség lekérdezése a MongoDB API-portál metrikák használatával
+## <a id="RequestchargeGraphAPI"></a>Kérelem díja Gremlin API-fiókok beolvasása 
 
-Beolvasni egy jó becslés kérelem egységekre vonatkozó díjakon MongoDB API-val adatbázis használata esetén a legegyszerűbb módja a [az Azure portal](https://portal.azure.com) metrikákat. Az a *kérelmek száma* és *kérelem díj* diagramok, minden művelet is használja, és hány kérelemegység igényelnek egymáshoz viszonyított hány kérelemegység becsült kérheti.
+Íme egy példa a kérelem díj beszerzése a Gremlin API-fiókok a Gremlin.Net-könyvtár használatával. 
 
-![MongoDB API-portál mérőszámai][1]
+```csharp
 
-### <a id="RequestRateTooLargeAPIforMongoDB"></a> A MongoDB API-ban mért fenntartott adatátviteli kapacitást meghaladó
-Az alkalmazásokat, amelyek meghaladják a kiosztott átviteli sebesség egy tárolót vagy tárolók sebessége korlátozott lesz, amíg a fogyasztás sebessége a kiosztott átviteli sebesség alá csökken. A sebesség korlátozása esetén a háttér megszűnik a kérelem egy `16500` hibakód - `Too Many Requests`. Alapértelmezés szerint a MongoDB API-val automatikusan újrapróbálkozik legfeljebb 10 alkalommal visszaküldése előtt egy `Too Many Requests` hibakód. Ha azért küldtük Önnek, számos `Too Many Requests` hibakódok, érdemes figyelembe venni, vagy adja hozzá egy újrapróbálkozási logikát az alkalmazás hibakezelési rutinok vagy [tároló kiosztott átviteli sebesség növelése](set-throughput.md).
+var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
+                var resultSet = response.AsResultSet();
+                var statusAttributes= resultSet.StatusAttributes;
+```
+
+A fenti módszerrel mellett is használhatja "x-ms-összesen-kérelem-díj" fejléc kérelemegység számításokhoz.
+
 
 ## <a name="throughput-faq"></a>Átviteli sebesség – gyakori kérdések
 

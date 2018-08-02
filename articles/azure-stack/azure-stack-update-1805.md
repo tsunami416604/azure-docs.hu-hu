@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 142ea08f026ad8d4b736fd62384eceb927cac359
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: abc96497c95397a6fab72672f1525462301c5cf9
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344232"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414633"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack 1805 frissítése
 
@@ -72,7 +72,8 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 ## <a name="before-you-begin"></a>Előkészületek    
 
 ### <a name="prerequisites"></a>Előfeltételek
-- Az Azure Stack telepítése [1804 frissítése](azure-stack-update-1804.md) az Azure Stack 1805 frissítés alkalmazása előtt.    
+- Az Azure Stack telepítése [1804 frissítése](azure-stack-update-1804.md) az Azure Stack 1805 frissítés alkalmazása előtt.  
+- Telepítse a legújabb elérhető [frissítést vagy gyorsjavítást verzió 1804](azure-stack-update-1804.md#post-update-steps).   
 - 1805 frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) állapotát, az Azure Stack érvényesítéséhez és a kapcsolódó működési problémák megoldásához. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő. 
 
 ### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat ismert problémái   

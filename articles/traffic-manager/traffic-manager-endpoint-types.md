@@ -1,6 +1,6 @@
 ---
-title: A TRAFFIC Manager-végpont típusú |} Microsoft Docs
-description: Ez a cikk ismerteti a különböző használható az Azure Traffic Manager-végpontok
+title: A TRAFFIC Manager Végponttípusok |} A Microsoft Docs
+description: Ez a cikk ismerteti a különböző típusú végpontok használható az Azure Traffic Managerrel
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
@@ -14,84 +14,84 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: 792712e3e529d77ff20a7603b5fbf028ca60f8c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 115511d15bc2366e49f6b3d1b89b513ea0ee5e90
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23877516"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398028"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-végpontok
-A Microsoft Azure Traffic Manager lehetővé teszi, hogy hogyan a hálózati forgalom különböző adatközpontokban futó alkalmazások telepítése esetén elosztott vezérlését. Minden alkalmazás központi telepítésének egy végpontként a Traffic Manager konfigurálása. Ha a Traffic Manager DNS-kérelmet kap, térjen vissza a DNS-válasz egy elérhető végpontot úgy dönt. A TRAFFIC manager végpont aktuális állapota és a forgalom-útválasztási módszer választása alapjait. További információkért lásd: [Traffic Manager működése](traffic-manager-how-traffic-manager-works.md).
+A Microsoft Azure Traffic Manager lehetővé teszi, hogy vezérelheti a hálózati forgalom hogyan ossza el a különböző adatközpontokban futó alkalmazások központi telepítéseit. A Traffic Manager konfigurálása minden egyes alkalmazás üzembe helyezési-végpontként. Amikor a Traffic Manager DNS-kérelmet kap, azt úgy dönt, a DNS-válaszban visszaadandó elérhető végpontot. A TRAFFIC manager végpont aktuális állapota és a forgalom-útválasztási módszer a kiválasztott adatbázisok. További információkért lásd: [Traffic Manager működése](traffic-manager-how-it-works.md).
 
-Traffic Manager által támogatott végpont három típusa van:
-* **Azure-végpontok** Azure-ban üzemeltetett szolgáltatásokhoz tartoznak.
-* **Külső végpontok száma** a szolgáltatások üzemeltetett külső Azure, a helyi vagy egy másik szolgáltató használata.
-* **A beágyazott végpontok** kombinálhatja a Traffic Manager-profilok létrehozása rugalmasabb forgalom-útválasztási rendszerek nagyobb, összetettebb telepítések igényeinek támogatására használhatók.
+A végpont a Traffic Manager által támogatott három típusa van:
+* **Azure-beli** használhatók az Azure-ban üzemeltetett szolgáltatások.
+* **Külső végpontok** szolgáltatások Azure-on kívülről, a helyszínen üzemeltetett, vagy egy másik üzemeltetésszolgáltatónál szolgálnak.
+* **A beágyazott végpontokat** egyesítheti a Traffic Manager-profilok létrehozása a rugalmas forgalom-útválasztási rendszerek nagyobb, összetettebb központi telepítések igényeinek támogatásához használt.
 
-Hogyan van összevonva különböző típusú végpontok egy Traffic Manager-profil nincs korlátozva van. Az egyes profilok típusú végpontok esetében bármilyen kombinációját is tartalmazhat.
+Hogyan van összevonva, különböző típusú végpontok egy Traffic Manager-profil korlátozva van. Az egyes profilok végponttípusok bármilyen kombinációját is tartalmazhat.
 
-A következő szakaszok ismertetik az egyes alaposabb típusú végpont.
+A következő szakaszok ismertetik az egyes többletköltségeket típusú végpont.
 
 ## <a name="azure-endpoints"></a>Azure-végpontok
 
-Azure-végpontok Azure-alapú szolgáltatásokhoz a Traffic Manager tartoznak. A következő Azure erőforráscsoport-típusok támogatottak:
+Azure-beli Azure-alapú szolgáltatásokat a Traffic Manager szolgálnak. A következő Azure-erőforrás-típusokat támogatja:
 
-* A felhőalapú szolgáltatások "Klasszikus" infrastruktúra-szolgáltatási virtuális gépeknél és PaaS.
+* A cloud services "Klasszikus" IaaS virtuális gépek és PaaS.
 * Web Apps
-* Nyilvános erőforrásokat (virtuális gépek is csatlakoztathatók közvetlenül, vagy egy Azure Load Balancer). A nyilvános rendelkeznie kell egy DNS-nevet hozzárendelni a Traffic Manager-profil használható.
+* PublicIPAddress erőforrásokat (virtuális gépek is csatlakoztathatók közvetlenül vagy egy Azure Load Balancer-n keresztül). A nyilvános IP-címre rendelkeznie kell egy DNS-nevet, egy Traffic Manager-profil használható rendelt.
 
-Nyilvános erőforrásokhoz olyan erőforrások, Azure Resource Manager. A klasszikus üzembe helyezési modellel azok nem léteznek. Így azok csak a támogatott Traffic Manager Azure Resource Manager lép. A más típusú végpontok esetében az erőforrás-kezelő és a klasszikus telepítési modellel keresztül támogatottak.
+PublicIPAddress erőforrásokat az Azure Resource Manager-erőforrások. Nem léteznek, a klasszikus üzemi modellben. Így azok csak a támogatott Traffic Manager az Azure Resource Manager élményt. A többi végponttípusok erőforrás-kezelő, mind a klasszikus üzemi modell használatával támogatottak.
 
-Azure-végpontok használata esetén a Traffic Manager észleli, ha a "Klasszikus" IaaS virtuális gépek, a felhőalapú szolgáltatás vagy a webes alkalmazás leáll, majd elindítani. Ez az állapot a végpont állapota is megjelenik. Lásd: [Traffic Manager-végpont figyelési](traffic-manager-monitoring.md#endpoint-and-profile-status) részleteiről. Az alapul szolgáló szolgáltatás leáll, amikor a Traffic Manager nem végez végpont állapotellenőrzést vagy a végpont közvetlen forgalmat. A leállított példány számlázási Traffic Manager-események nem fordulhat elő. A szolgáltatás újraindításakor számlázási folytatása és a a végpont nem jogosult forgalom fogadására. Az észlelés nem vonatkozik a nyilvános végpontok.
+Azure-beli használatakor a Traffic Manager észleli, ha a "Klasszikus" IaaS virtuális gép, a felhőalapú szolgáltatás vagy a webalkalmazás leállt, és elindult. Ez az állapot a végpont állapotának tükrözi. Lásd: [Traffic Manager végpont figyelése](traffic-manager-monitoring.md#endpoint-and-profile-status) részleteiről. A mögöttes szolgáltatás leáll, amikor a Traffic Manager nem végez végpont állapot-ellenőrzések vagy közvetlen forgalom a végpontra. Számlázási Traffic Manager-események nem fordulhat elő, a leállított példány. A szolgáltatás újraindításakor számlázási folytatja, és a végpont abban az esetben jogosult forgalom fogadására. Az észlelés nem vonatkozik a PublicIpAddress végpontokat.
 
-## <a name="external-endpoints"></a>Külső végpontok száma
+## <a name="external-endpoints"></a>Külső végpontok
 
-Külső végpontok száma a Azure-on kívüli szolgáltatáshoz használt. Például egy szolgáltatást a helyben tárolt vagy másik szolgáltatóhoz. Külső végpontok száma külön-külön használja, vagy együtt az Azure-végpontok a Traffic Manager-profilt. Külső végpontok száma az Azure-végpontok kombinálásával lehetővé teszi, hogy a különböző forgatókönyvekben:
+Azure-on kívüli szolgáltatások külső végpontokat használják. Ha például egy szolgáltatás a helyileg üzemeltetett vagy másik szolgáltatóhoz. Külső végpontok használt külön-külön vagy együtt az Azure-végpontot a Traffic Manager-profilt is lehet. Külső végpontokkal rendelkező Azure-beli kombinálásával lehetővé teszi a különböző forgatókönyvekben:
 
-* Vagy az aktív-aktív vagy aktív-passzív feladatátvevő modell használható Azure ad egy meglévő nagyobb redundancia helyszíni alkalmazás megadására.
-* A felhasználók számára a világ különböző alkalmazás késés csökkentése érdekében terjesztheti ki egy meglévő helyszíni alkalmazást további földrajzi helyek, az Azure-ban. További információkért lásd: ["Teljesítmény" Traffic Manager forgalom-útválasztás](traffic-manager-routing-methods.md#performance).
-* A további kapacitás egy létező használata Azure a helyszíni alkalmazás, folyamatosan vagy egy "kapacitásnövelés felhő" megoldás egy csúcs az igények kielégítéséhez.
+* Vagy egy aktív – aktív vagy aktív – passzív feladatátvétel modellben az Azure segítségével adja meg a nagyobb redundancia ad egy meglévő helyszíni alkalmazás.
+* A felhasználók a világ különböző pontjain található alkalmazás késés csökkentése érdekében, terjessze ki további földrajzi helyek, az Azure-ban egy meglévő helyszíni alkalmazást. További információkért lásd: [Traffic Manager "Teljesítmény" forgalom-útválasztást](traffic-manager-routing-methods.md#performance).
+* Az Azure ad egy meglévő további kapacitást biztosít a helyszíni alkalmazás, folyamatosan vagy egy "adatlöketek felhőbe irányuló" megoldás a megnövekedett igények kielégítése érdekében.
 
-Bizonyos esetekben célszerű hivatkozhasson rá az Azure-szolgáltatások használatához a külső végpontok száma (példákért lásd a [gyakran ismételt kérdések](traffic-manager-faqs.md#traffic-manager-endpoints)). Állapot-ellenőrzési eredményeire számlázása ebben az esetben az Azure-végpontok díj nem külső végpontok száma másodpercenként. Azonban eltérően az Azure-végpontok, leállítása vagy törlése a mögöttes szolgáltatás állapotának ellenőrzése számlázási továbbra is fennáll, addig, amíg letiltása, vagy törölni a Traffic Manager-végpontot.
+Bizonyos esetekben hasznos lehet hivatkozni az Azure-szolgáltatások külső végpontok használata (példák: a [– gyakori kérdések](traffic-manager-faqs.md#traffic-manager-endpoints)). Állapot-ellenőrzések ebben az esetben az Azure-beli sebességét, nem külső végpontokat kiszámlázzuk. Azonban eltérően az Azure-végpont, ha leállítja vagy törli a mögöttes szolgáltatás állapotának ellenőrzése a számlázás továbbra is fennáll, tiltsa le, illetve a Traffic Manager-végpont törlése.
 
-## <a name="nested-endpoints"></a>Beágyazott végpontok
+## <a name="nested-endpoints"></a>Beágyazott végpontokat
 
-Beágyazott végpontok több Traffic Manager-profilok létrehozása a rugalmas forgalom-útválasztási sémák, és kielégítse az összetett, nagyobb méretű telepítések össze. Beágyazott végpontokon "child" profil profilhoz van adva, a végpont egy "parent". A gyermek és szülő profilok tartalmazhat bármilyen típusú, beleértve a más beágyazott profilok végpontja. További információkért lásd: [Traffic Manager-profilok beágyazott](traffic-manager-nested-profiles.md).
+Beágyazott végpontokat össze több Traffic Manager-profilokat hozhat létre rugalmas forgalom-útválasztási sémákat, és nagyobb méretű, összetett központi telepítések az igényeinek támogatása. A beágyazott végpontokat a "gyermek" profil profilhoz lesz hozzáadva végpontként a "parent". A gyermek és szülő profilokat más végpontok bármilyen típusú, beleértve a más beágyazott profilok is tartalmazhat. További információkért lásd: [beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md).
 
-## <a name="web-apps-as-endpoints"></a>Web Apps végpontként
+## <a name="web-apps-as-endpoints"></a>Webes alkalmazások végpontként
 
-További vegye figyelembe a következőket: a Traffic Manager végpontként webalkalmazások konfigurálásakor:
+További megfontolásokat a alkalmazni: Web Apps Traffic Manager-végpontként konfigurálásakor:
 
-1. Csak a "Standard" SKU vagy meghaladja a webalkalmazások jogosultak a Traffic Managerrel történő használathoz. A webes alkalmazás egy alacsonyabb metódust felvételére irányuló kísérletek sikertelenek. A Traffic Manager már nem olyan adatforgalmat küldenie, hogy a webes alkalmazás alacsonyabb verziójúra változtatása egy már meglévő webalkalmazás Termékváltozata eredménye.
-2. Amikor a végpont egy HTTP-kérelem érkezik, az a "" állomásfejléc a kérelemben meghatározásához mely webalkalmazás kell feldolgozni a kérelmet. Az állomásfejléc tartalmazza a DNS-név, amelyről a kérést, például "contosoapp.azurewebsites.net". A webalkalmazás egy másik DNS-név használatához regisztrálni kell a DNS-nevet az alkalmazás az egyéni tartomány nevét. Egy webalkalmazás végpont Azure végpontjaként hozzáadásakor a Traffic Manager-profil DNS-neve automatikusan regisztrálja az alkalmazást. Ez a regisztráció automatikusan törlődik, amikor a végpontja törölve.
-3. Minden egyes Traffic Manager-profil legfeljebb egy webalkalmazás-végpontot rendelkezhet minden Azure-régióban. Az ennél a határértéknél megoldása érdekében webalkalmazás is létrehozható, amely egy külső végpont. További információkért lásd: a [gyakran ismételt kérdések](traffic-manager-faqs.md#traffic-manager-endpoints).
+1. Web Apps csak a "Standard" Termékváltozat vagy meghaladja a jogosultak a Traffic Managerrel történő használathoz. Sikertelen kísérlet egy alacsonyabb termékváltozat webes alkalmazás hozzáadásához. A Traffic Manager többé nem forgalmat küld a webalkalmazást egy meglévő Web Apps-Termékváltozat alacsonyabb szolgáltatásszintre eredmények.
+2. Ha a végpont HTTP-kérést kap, akkor használja a "host" a kérelemben szereplő tartományfejléc meghatározásához melyik webalkalmazás kell kiszolgálni a kérelmet. Az állomásfejlécnek kezdeményezhető a kérést, például a "contosoapp.azurewebsites.net" DNS-nevét tartalmazza. Webalkalmazással együtt egy másik DNS-név használatához regisztrálni kell a DNS-nevet az alkalmazás az egyéni tartomány nevét. Ha egy Azure-végpont hozzáadása egy webalkalmazás-végpontot, a Traffic Manager-profil DNS neve automatikusan regisztrálja az alkalmazás. A végpont törlése a rendszer automatikusan törli a regisztrációt.
+3. Minden egyes Traffic Manager-profil legfeljebb egy webalkalmazás-végpontot rendelkezhet minden egyes Azure-régióból. Külső végpontként megkerüléséhez ezt a korlátozást, konfigurálhatja egy webalkalmazást. További információkért lásd: a [– gyakori kérdések](traffic-manager-faqs.md#traffic-manager-endpoints).
 
-## <a name="enabling-and-disabling-endpoints"></a>Engedélyezése és letiltása a végpontok száma
+## <a name="enabling-and-disabling-endpoints"></a>Engedélyezése és letiltása a végpontok
 
-A Traffic Manager végpont letiltása traffic ideiglenesen eltávolítása a karbantartási mód vagy újratelepítés alatt álló végpontok hasznos lehet. Ha a végpont újra fut, újra engedélyezni lehet.
+A Traffic Manager végpont letiltása forgalom ideiglenesen eltávolítása karbantartási módban lévő vagy újratelepítés alatt álló végpont hasznos lehet. A végpont újra működik, ha újra engedélyezni lehet.
 
-Végpontok engedélyezve van, és le van tiltva a Traffic Manager-portál, PowerShell, a parancssori felületen vagy a REST API-t olyan erőforrás-kezelő és a klasszikus üzembe helyezési modellel is támogatottak.
-
-> [!NOTE]
-> Az Azure a végpont letiltása rendelkezik köze az Azure rendszerbeli üzembe helyezési állapotát. Az Azure-szolgáltatások (például egy virtuális gép vagy a webes alkalmazás továbbra is fut, és akkor is, ha le van tiltva a Traffic Manager forgalom fogadására alkalmasak. Forgalom is kezelhetők, közvetlenül a szolgáltatáspéldány számára, nem pedig a Traffic Manager-profil DNS-név használatával. További információkért lásd: [Traffic Manager működése](traffic-manager-how-traffic-manager-works.md).
-
-Az aktuális való jogosultságát, mindegyik végpont forgalom fogadására a következő tényezőktől függ:
-
-* A profil állapota (engedélyezett vagy letiltott)
-* A végpont állapota (engedélyezett vagy letiltott)
-* Az eredmények a rendszerállapot ellenőrzi, hogy a végpont
-
-További információkért lásd: [Traffic Manager-végpont figyelési](traffic-manager-monitoring.md#endpoint-and-profile-status).
+Végpontok is engedélyezve van, és le van tiltva a Traffic Manager portálján, PowerShell, a parancssori felület vagy a REST API-t, amely az összes Resource Manager és a klasszikus üzemi modellel is támogatottak.
 
 > [!NOTE]
-> A Traffic Manager DNS szintjén működik, mert nem tudja befolyásolni a tetszőleges végpontot meglévő kapcsolatok. A végpont nem érhető el, ha a Traffic Manager irányítja új kapcsolatot egy másik elérhető végpontot. A gazdagép a letiltott vagy nem megfelelő végpont mögött azonban továbbra is meglévő kapcsolatokon keresztül forgalom fogadására, amíg a munkamenetek leállítása van. Alkalmazások a munkamenet időtartama a meglévő kapcsolatok kiürítésére forgalom engedélyezésére kell korlátoznia.
+> Az Azure a végpont letiltása nem rendszerbeli üzembe helyezési állapotát az Azure-ban. Az Azure-szolgáltatások (például egy virtuális gép vagy a Web App továbbra is fut, és akkor is, ha le van tiltva a Traffic Manager forgalom fogadására. Forgalom közvetlenül a szolgáltatáspéldány helyett a Traffic Manager profil DNS-név használatával lehet megoldani. További információkért lásd: [Traffic Manager működése](traffic-manager-how-it-works.md).
 
-Ha egy profil végpontjai le vannak tiltva, vagy ha a profil le van tiltva, majd a Traffic Manager "NXDOMAIN" választ küld egy új DNS-lekérdezést.
+Az aktuális való jogosultságát, minden végpont forgalom fogadására a következő tényezőktől függ:
+
+* A profil állapota (engedélyezve/letiltva)
+* A végpont állapotának (engedélyezve/letiltva)
+* Az eredmények az egészségügyi ellenőrzi, hogy a végpont
+
+További információkért lásd: [Traffic Manager végpont figyelése](traffic-manager-monitoring.md#endpoint-and-profile-status).
+
+> [!NOTE]
+> A Traffic Manager a DNS szintjén működik, mert nem tudja befolyásolni a meglévő kapcsolatok bármely végpont. A végpont nem érhető el, ha a Traffic Manager arra utasítja a elérhető végpontot egy másik új kapcsolatokat. Azonban a gazdagép a letiltott vagy nem megfelelő állapotú végpont mögött továbbra is a meglévő kapcsolatok keresztül a forgalom fogadásához, mindaddig, amíg a munkamenetek megszűnik. Alkalmazások a munkamenet időtartama a meglévő kapcsolatok kiürítési forgalom engedélyezésére kell korlátozni.
+
+Ha a profilban szereplő összes végpont le vannak tiltva, vagy le van tiltva, a profil, a Traffic Manager egy új DNS-lekérdezés "NXDOMAIN" választ küld.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, [Traffic Manager működése](traffic-manager-how-traffic-manager-works.md).
-* Ismerje meg a Traffic Manager [végpont figyelési és automatikus feladatátvételt](traffic-manager-monitoring.md).
-* Ismerje meg a Traffic Manager [forgalom-útválasztási módszerei](traffic-manager-routing-methods.md).
+* Ismerje meg, [Traffic Manager működése](traffic-manager-how-it-works.md).
+* Tudnivalók a Traffic Managerről [végpont ellenőrzési és automatikus feladatátvételi](traffic-manager-monitoring.md).
+* Tudnivalók a Traffic Managerről [forgalom-útválasztási módszerek](traffic-manager-routing-methods.md).

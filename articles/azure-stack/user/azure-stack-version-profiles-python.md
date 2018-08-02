@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 23b5b5d79f0f905d7c4a173247232ede2cad2877
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "34806836"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412447"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Pythonnal
 
@@ -121,7 +121,7 @@ A példák nem feltétlenül a a fenti listában megadott sorrendben.
 
 6.  Állítsa be a következő változókat, és ezeket a környezeti változókat az aktuális parancshéjban exportálása. 
 
-    ````bash
+    ```bash
     export AZURE_TENANT_ID={your tenant id}
     export AZURE_CLIENT_ID={your client id}
     export AZURE_CLIENT_SECRET={your client secret}
@@ -129,32 +129,29 @@ A példák nem feltétlenül a a fenti listában megadott sorrendben.
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack market place. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
+7.  Ez a minta futtatásához, Ubuntu 16.04-LTS és lemezképek WindowsServer-2012-R2-Datacenter jelen kell lennie az Azure Stack-piactér. Ezek lehetnek, vagy [az Azure-ból letöltött](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) vagy [Platformlemezképtárhoz hozzáadott](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
 
-8. Run the sample.
+8. Futtassa a mintát.
 
     ```
     python unmanaged-disks\example.py
     ```
 
-## Notes
+## <a name="notes"></a>Megjegyzések
 
-You may be tempted to try to retrieve a VM's OS disk by using
-`virtual_machine.storage_profile.os_disk`.
-In some cases, this may do what you want,
-but be aware that it gives you an `OSDisk` object.
-In order to update the OS Disk's size, as `example.py` does,
-you need not an `OSDisk` object but a `Disk` object.
-`example.py` gets the `Disk` object with the following:
+Előfordulhat, hogy a gyermekeiről lekéréséhez a virtuális gép operációsrendszer-lemez használatával `virtual_machine.storage_profile.os_disk`.
+Bizonyos esetekben ez teheti meg, mit szeretne, de vegye figyelembe, hogy biztosít egy `OSDisk` objektum.
+Az operációsrendszer-lemez mérete, mint frissítéséhez `example.py` nem, akkor nem kell egy `OSDisk` objektum, de egy `Disk` objektum.
+`example.py` lekérdezi a `Disk` objektum a következőre:
 
 ```python
 os_disk_name = virtual_machine.storage_profile.os_disk.name
 os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 ```
 
-## Next steps
+## <a name="next-steps"></a>További lépések
 
-- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
-- [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
-- [Learning Path for Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).
+- [Azure Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
+- [Az Azure Virtual Machines – dokumentáció](https://azure.microsoft.com/services/virtual-machines/)
+- [Képzési terv a virtuális gépek](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- Ha nem rendelkezik Microsoft Azure-előfizetési, beszerezheti a egy ingyenes próbafiókot [Itt](http://go.microsoft.com/fwlink/?LinkId=330212).

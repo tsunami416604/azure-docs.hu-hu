@@ -1,56 +1,55 @@
 ---
-title: A tárolók és blobok az Azure Blob storage nyilvános olvasási hozzáférés engedélyezése |} Microsoft Docs
-description: 'Útmutató: elérhetővé tárolók és blobok névtelen hozzáféréshez, és hogyan programokon keresztül férhet hozzá.'
+title: Nyilvános olvasási hozzáférés tárolók és blobok az Azure Blob storage-ban engedélyezése |} A Microsoft Docs
+description: Ismerje meg, hogyan elérhetővé tárolók és blobok névtelen hozzáférés, és hogyan programozott módon érheti el őket.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: 4ddafb095816b5be82a18faa9c60869094e5e4c6
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7270ec7c5129352b0e801808e5c7720e5021ac9d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29557063"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398818"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Tárolók és blobok névtelen olvasási hozzáférésének kezelése
-Engedélyezheti a névtelen, nyilvános olvasási hozzáférés egy tároló és a benne található blobokat az Azure Blob Storage tárolóban. Ezzel a módszerrel csak olvasható hozzáférést biztosíthat ezeken az erőforrásokon a fiókkulcs megosztása nélkül, és anélkül, hogy a közös hozzáférésű jogosultságkód (SAS).
+Engedélyezheti a névtelen, nyilvános olvasási hozzáférést a tárolóhoz és annak blobjaihoz, az Azure Blob storage-ban. Ezzel a módszerrel csak olvasási hozzáféréssel ezekhez az erőforrásokhoz a fiókkulcs megosztása nélkül, és anélkül, hogy egy közös hozzáférésű jogosultságkód (SAS) adhat meg.
 
-Nyilvános olvasási hozzáférés esetén ajánlott forgatókönyvek, ahol azt szeretné, hogy egyes blobok névtelen olvasási hozzáférés mindig elérhetőek. Részletesebb vezérlést létrehozhat egy közös hozzáférésű jogosultságkódot. Közös hozzáférésű jogosultságkód lehetővé teszik a különböző engedélyeket használ egy adott időszakra vonatkozóan korlátozott hozzáférést biztosítanak. Megosztott létrehozásával kapcsolatos további információért aláírások hozzáférni, lásd: [használata közös hozzáférésű jogosultságkód (SAS) az Azure Storage](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Nyilvános olvasási hozzáférés az egyes blobok névtelen olvasási hozzáférés meg, ahová forgatókönyvek esetén ajánlott használni. A részletesebb szabályozás érdekében létrehozhat egy közös hozzáférésű jogosultságkód. Közös hozzáférésű jogosultságkódok lehetővé teszi különböző engedélyek használatával egy adott időtartamra korlátozott hozzáférést biztosíthat. További információ a megosztott hozzáférési aláírások című témakörben talál [a közös hozzáférésű jogosultságkódok (SAS) az Azure Storage-ban](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>A tárolók és blobok névtelen felhasználók engedélyeket
-Alapértelmezés szerint a tároló és szereplő bármely BLOB érhetik csak a tárfiók tulajdonosa által. Lehetőséget nyújt a névtelen felhasználóknak olvasási engedéllyel a tároló és a benne található blobokat, beállíthatja a tároló engedélyeit, hogy a nyilvános hozzáférést. Névtelen felhasználók olvashatják a nyilvánosan elérhető tárolóban található blobok a kérelem hitelesítése nélkül.
+## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Tárolók és blobok névtelen felhasználók engedélyek megadása
+Alapértelmezés szerint egy tárolót, és minden benne lévő blobok érhetik el csak a tárfiók tulajdonosa. Névtelen felhasználók számára, olvassa el a tárolóhoz és annak blobjaihoz biztosíthat, beállíthatja a tároló nyilvános hozzáférésének engedélyezése engedélyekkel. Névtelen felhasználók olvashatják a nyilvánosan elérhető tárolóban található blobok a kérelem hitelesítése nélkül.
 
-Egy tároló is konfigurálhatja a következő engedélyekkel:
+Konfigurálhat egy tárolót a következő engedélyekkel:
 
-* **Nincs nyilvános olvasási hozzáférés:** a tároló és a benne található blobokat elérhetők, csak a fiók tulajdonosa. Ez az alapértelmezés az összes új tárolókat.
-* **Nyilvános olvasási hozzáférés a blobok csak:** a tárolóban található Blobok névtelen kérelem által olvasható, de adatai nem érhető el. Névtelen ügyfeleket nem tudja felsorolni a BLOB a tárolóban.
-* **Teljes nyilvános olvasási hozzáférés:** minden tároló és a blob adatainak névtelen kérelem által olvasható. Ügyfelek is számba venni a tárolóban található blobok névtelen kérelem, de nem tudja felsorolni a tárolók a tárfiókon belül.
+* **Nincs nyilvános olvasási hozzáférés:** a tárolóhoz és annak blobjaihoz elérhetők, csak a tárfiók tulajdonosa. Ez az összes új tárolók alapértelmezett.
+* **Nyilvános olvasási hozzáférés csak blobok:** a tárolóban található Blobok névtelen kérelem által is olvasható, de adatokat tároló nem érhető el. Ügyfelek névtelen nem lehet számba venni a a tárolóban lévő blobokat.
+* **Teljes nyilvános olvasási hozzáférés:** minden tároló és blobnév adat névtelen kérelem által olvasható. Ügyfelek névtelen kérelem által a tárolóban található blobok enumerálása, de nem sikerült felsorolni a tárfiókban lévő tárolók.
 
-Tároló engedélyek beállítása a következő használható:
+A következő segítségével a tároló engedélyeinek beállítása:
 
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure CLI 2.0](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
-* Programozott módon egyikével a storage ügyfélkódtáraival vagy a REST API
+* Programozott módon a storage ügyfélkódtáraival vagy a REST API segítségével szerint
 
-### <a name="set-container-permissions-in-the-azure-portal"></a>Tároló engedélyeinek beállítása az Azure-portálon
-Tároló engedélyek beállítása a [Azure-portálon](https://portal.azure.com), kövesse az alábbi lépéseket:
+### <a name="set-container-permissions-in-the-azure-portal"></a>Az Azure Portalon a tároló engedélyeinek beállítása
+Tároló engedélyeinek beállítása a [az Azure portal](https://portal.azure.com), kövesse az alábbi lépéseket:
 
-1. Nyissa meg a **tárfiók** a portálon. A tárfiók található kiválasztásával **tárfiókok** a portál főmenü paneljén.
-1. A **BLOB szolgáltatás** menü paneljén válassza **tárolók**.
-1. Kattintson a jobb gombbal a tároló sorban, vagy válassza ki a tároló megnyitása a három pont **helyi menü**.
-1. Válassza ki **házirendhez** a helyi menü.
-1. Válasszon egy **hozzáférési típus** a legördülő menüből.
+1. Nyissa meg a **tárfiók** panel a portálon. Annak a storage-fiók kiválasztásával **tárfiókok** a fő menü a portálon a panelen.
+1. A **BLOB SERVICE** menü panelen válassza ki a **tárolók**.
+1. A tároló sorban kattintson a jobb gombbal, vagy kattintson a három pontra, nyissa meg a tároló **helyi menü**.
+1. Válassza ki **hozzáférési szabályzat** a helyi menüben.
+1. Válasszon egy **típus eléréséhez** a legördülő menüből.
 
-    ![Szerkessze a Csomagtároló metaadatai párbeszédpanel](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+    ![Tároló metaadatai párbeszédpanel szerkesztése](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
-### <a name="set-container-permissions-with-net"></a>A .NET tároló engedélyeinek beállítása
-A C# és a Storage ügyféloldali kódtára a .NET használatával tároló engedélyeinek beállítása, először a tároló meglévő engedélyek lekérdezése meghívásával a **GetPermissions** metódust. Utána állítsa be a **PublicAccess** tulajdonságát a **BlobContainerPermissions** által visszaadott objektum a **GetPermissions** metódust. Végezetül hívja a **SetPermissions** a frissített engedélyekkel rendelkező metódust.
+### <a name="set-container-permissions-with-net"></a>.NET-tel tároló engedélyeinek beállítása
+.NET-hez készült C# és a Storage ügyféloldali kódtár használatával egy tároló engedélyeinek beállítása, meghívásával először kérjen le a meglévő engedélyeket a tárolót a **GetPermissions** metódust. Majd állítsa be a **PublicAccess** tulajdonsága a **BlobContainerPermissions** által visszaadott objektum a **GetPermissions** metódust. Végezetül hívja meg a **SetPermissions** metódus az engedélyekkel rendelkező.
 
-A következő példa a teljes nyilvános olvasási hozzáférés a tároló engedélyeket állít be. Engedélyek beállítása a blobok csak nyilvános olvasási hozzáférés, állítsa be a **PublicAccess** tulajdonságot **BlobContainerPublicAccessType.Blob**. Távolítsa el az összes engedélyt a névtelen felhasználók esetében, állítsa be a tulajdonságot **BlobContainerPublicAccessType.Off**.
+Az alábbi példa a teljes nyilvános olvasási hozzáférés a tároló engedélyeket állít be. Engedélyek beállítása a nyilvános olvasási hozzáférés csak blobokhoz, állítsa be a **PublicAccess** tulajdonságot **BlobContainerPublicAccessType.Blob**. Névtelen felhasználók számára az összes engedélyének törléséhez a tulajdonsága **BlobContainerPublicAccessType.Off**.
 
 ```csharp
 public static void SetPublicContainerPermissions(CloudBlobContainer container)
@@ -61,11 +60,11 @@ public static void SetPublicContainerPermissions(CloudBlobContainer container)
 }
 ```
 
-## <a name="access-containers-and-blobs-anonymously"></a>Tárolók és blobok névtelen eléréséhez
-Ügyfél tárolók és blobok névtelen hozzáféréshez használhatja a konstruktorok, amelyekhez nem szükséges hitelesítő adatokat. A következő példák azt szemléltetik erőforrásokra kell hivatkoznia Blob szolgáltatás névtelenül fejlesztésében többféle formában.
+## <a name="access-containers-and-blobs-anonymously"></a>Tárolók és blobok névtelen hozzáférés
+Ügyfél, amely hozzáfér a tárolók és blobok névtelen hitelesítő adatok nem igénylő konstruktorok használhatja. Az alábbi példák bemutatják a különböző módokon erőforrásokra kell hivatkoznia a Blob szolgáltatás névtelenül.
 
 ### <a name="create-an-anonymous-client-object"></a>Névtelen ügyfél objektum létrehozása
-Létrehozhat egy új ügyfél szolgáltatásobjektum névtelen hozzáférés a Blob-szolgáltatásvégpont megadásával a fiók. Azonban is ismernie kell az adott fiók által elérhető névtelen hozzáférés a tároló nevét.
+Létrehozhat egy új szolgáltatás ügyfélobjektummal névtelen hozzáférés a Blob-szolgáltatásvégpont azáltal, hogy a fiókhoz. Azonban azt is tudnia kell, amely érhető el a névtelen hozzáférés a fiókban lévő tároló nevét.
 
 ```csharp
 public static void CreateAnonymousBlobClient()
@@ -83,8 +82,8 @@ public static void CreateAnonymousBlobClient()
 }
 ```
 
-### <a name="reference-a-container-anonymously"></a>Egy tároló névtelenül hivatkozik
-Ha olyan tároló, amely névtelenül elérhető URL-CÍMÉT, használhatja a tároló közvetlenül hivatkozni.
+### <a name="reference-a-container-anonymously"></a>Egy tároló hivatkozhat névtelenül
+Ha egy tároló, amely névtelenül elérhető URL-címe van, használhatja közvetlenül hivatkozni a tárolót.
 
 ```csharp
 public static void ListBlobsAnonymously()
@@ -100,8 +99,8 @@ public static void ListBlobsAnonymously()
 }
 ```
 
-### <a name="reference-a-blob-anonymously"></a>Egy blob névtelenül hivatkozik
-Ha elérhető a névtelen hozzáféréshez blob URL-CÍMÉT, melyeket referenciaként használhat, a blob, közvetlenül az adott URL-cím segítségével:
+### <a name="reference-a-blob-anonymously"></a>Blobok névtelenül hivatkozik
+Ha az URL-cím, egy blobhoz elérhető névtelen hozzáférés, a blob közvetlenül az adott URL-cím használatával is lehet hivatkozni:
 
 ```csharp
 public static void DownloadBlobAnonymously()
@@ -111,40 +110,40 @@ public static void DownloadBlobAnonymously()
 }
 ```
 
-## <a name="features-available-to-anonymous-users"></a>A névtelen felhasználók számára elérhető szolgáltatások
-Az alábbi táblázat bemutatja, hogy milyen műveletek is hívható névtelen felhasználók számára, ha egy tároló hozzáférés-vezérlési lista úgy van beállítva, hogy a nyilvános hozzáférést.
+## <a name="features-available-to-anonymous-users"></a>Névtelen felhasználók számára elérhető szolgáltatások
+Az alábbi táblázatban látható, hogy mely műveletek előfordulhat, hogy hívható névtelen felhasználók számára, ha ACL-t egy tároló nyilvános hozzáférésének engedélyezése.
 
-| REST-művelet | Teljes körű nyilvános olvasási joggal rendelkező engedély | A blobok csak nyilvános olvasási joggal rendelkező engedély |
+| REST-művelet | Teljes körű nyilvános olvasási hozzáféréssel rendelkező engedély | Engedéllyel rendelkező nyilvános olvasási hozzáférés csak blobok esetén |
 | --- | --- | --- |
-| Tárolók listája |Csak a tulajdonos |Csak a tulajdonos |
-| Tároló létrehozása |Csak a tulajdonos |Csak a tulajdonos |
-| A tároló tulajdonságainak beolvasása |Összes |Csak a tulajdonos |
-| Tároló metaadatot beszerezni |Összes |Csak a tulajdonos |
-| Állítsa be a Csomagtároló metaadatai |Csak a tulajdonos |Csak a tulajdonos |
-| Tároló hozzáférés-vezérlési lista beolvasása |Csak a tulajdonos |Csak a tulajdonos |
-| Tároló hozzáférés-vezérlési lista beállítása |Csak a tulajdonos |Csak a tulajdonos |
-| Törli a tárolót |Csak a tulajdonos |Csak a tulajdonos |
-| Lista Blobok |Összes |Csak a tulajdonos |
-| Put Blob |Csak a tulajdonos |Csak a tulajdonos |
-| Get Blob |Összes |Összes |
-| A Blob tulajdonságainak beolvasása |Összes |Összes |
-| A Blob tulajdonságainak beállítása |Csak a tulajdonos |Csak a tulajdonos |
-| A Blob metaadatot beszerezni |Összes |Összes |
-| Állítsa be a Blob metaadatai |Csak a tulajdonos |Csak a tulajdonos |
-| PUT letiltása |Csak a tulajdonos |Csak a tulajdonos |
-| (Csak a véglegesített blokkolja) tiltólista beolvasása |Összes |Összes |
-| (Csak a nem véglegesített blokkok vagy blokkok) tiltólista beolvasása |Csak a tulajdonos |Csak a tulajdonos |
-| PUT tiltólista |Csak a tulajdonos |Csak a tulajdonos |
-| Delete Blob |Csak a tulajdonos |Csak a tulajdonos |
-| Copy Blob |Csak a tulajdonos |Csak a tulajdonos |
-| Snapshot Blob |Csak a tulajdonos |Csak a tulajdonos |
-| Lease Blob |Csak a tulajdonos |Csak a tulajdonos |
-| Helyezze a lap |Csak a tulajdonos |Csak a tulajdonos |
-| Get tartományokat |Összes |Összes |
-| Hozzáfűző Blob |Csak a tulajdonos |Csak a tulajdonos |
+| Tárolók listája |Csak a tulajdonosa |Csak a tulajdonosa |
+| Tároló létrehozása |Csak a tulajdonosa |Csak a tulajdonosa |
+| A tároló tulajdonságainak beolvasása |Összes |Csak a tulajdonosa |
+| Tároló metaadatainak beolvasása |Összes |Csak a tulajdonosa |
+| Állítsa be a tároló metaadatai |Csak a tulajdonosa |Csak a tulajdonosa |
+| Tároló ACL lekérése |Csak a tulajdonosa |Csak a tulajdonosa |
+| ACL tároló beállítása |Csak a tulajdonosa |Csak a tulajdonosa |
+| Tároló törlése |Csak a tulajdonosa |Csak a tulajdonosa |
+| Blobok listázása |Összes |Csak a tulajdonosa |
+| Put Blob |Csak a tulajdonosa |Csak a tulajdonosa |
+| A Blob lekérése |Összes |Összes |
+| A Blob tulajdonságainak lekérése |Összes |Összes |
+| A Blob tulajdonságainak megadása |Csak a tulajdonosa |Csak a tulajdonosa |
+| Blob metaadatainak beolvasása |Összes |Összes |
+| Állítsa be a Blob metaadatai |Csak a tulajdonosa |Csak a tulajdonosa |
+| PUT letiltása |Csak a tulajdonosa |Csak a tulajdonosa |
+| (Csak a véglegesített blokkolja) blokk-lista lekérése |Összes |Összes |
+| (Csak a nem véglegesített blokkok vagy az összes blokkok) blokk-lista lekérése |Csak a tulajdonosa |Csak a tulajdonosa |
+| PUT tiltólista |Csak a tulajdonosa |Csak a tulajdonosa |
+| Delete Blob |Csak a tulajdonosa |Csak a tulajdonosa |
+| Blob másolása |Csak a tulajdonosa |Csak a tulajdonosa |
+| Snapshot Blob |Csak a tulajdonosa |Csak a tulajdonosa |
+| Címbérleti Blobhoz |Csak a tulajdonosa |Csak a tulajdonosa |
+| PUT lap |Csak a tulajdonosa |Csak a tulajdonosa |
+| Laptartomány-beolvasási |Összes |Összes |
+| Hozzáfűző Blob |Csak a tulajdonosa |Csak a tulajdonosa |
 
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure Storage szolgáltatásainak hitelesítése](https://msdn.microsoft.com/library/azure/dd179428.aspx)
-* [Közös hozzáférésű Jogosultságkód (SAS) használatával](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Közös hozzáférésű Jogosultságkódok (SAS) használata](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Hozzáférés delegálása közös hozzáférésű jogosultságkód használatával](https://msdn.microsoft.com/library/azure/ee395415.aspx)

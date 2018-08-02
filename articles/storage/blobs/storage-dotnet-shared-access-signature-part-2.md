@@ -1,53 +1,48 @@
 ---
-title: Létrehozhat és használhat egy közös hozzáférésű jogosultságkód (SAS) az Azure Blob storage szolgáltatással |} Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan használható közös hozzáférésű jogosultságkód létrehozása a Blob-tároló, és hogyan kell felhasználni azokat az ügyfél alkalmazásokban.
+title: Hozzon létre, és a egy közös hozzáférésű jogosultságkód (SAS) használata az Azure Blob storage |} A Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre közös hozzáférésű jogosultságkódok használata a Blob storage-, és hogyan lehet az azokat az ügyfélalkalmazásokban.
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 491e0b3c-76d4-4149-9a80-bbbd683b1f3e
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
+ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.openlocfilehash: 9dde12acde748c48b56f9f96ee772fca49954358
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.component: blobs
+ms.openlocfilehash: 6546553fa3537ac63d956dc5febfd77efe9fd34d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873211"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400398"
 ---
-# <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Közös hozzáférésű Jogosultságkód, 2. rész: Létrehozása és SAS-kód használata a Blob-tároló
+# <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>A közös hozzáférésű Jogosultságkódot, 2. rész: Hozzon létre, és használhatja az SAS-Blob-tárolóval
 
-[1. rész](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) felfedezte az oktatóanyag a közös hozzáférésű jogosultságkód (SAS), és azok használatának ajánlott eljárásai alapján. 2. rész bemutatja, hogyan hozhat létre, és a Blob storage közös hozzáférésű jogosultságkód majd használni. A példák C# nyelven íródtak, és használja az Azure Storage ügyféloldali kódtára a .NET-hez. Az oktatóanyagban szereplő példák:
+[1. rész](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ebben az oktatóanyagban bemutattuk az a közös hozzáférésű jogosultságkódot (SAS), és azok használatával kapcsolatos ajánlott eljárások ismertetése. 2. rész bemutatja, hogyan hozhat létre, illetve majd közös hozzáférésű jogosultságkódok használata Blob storage. A példák C# nyelven íródtak, és használja az Azure Storage ügyféloldali kódtára a .NET-hez. Ebben az oktatóanyagban szereplő példák:
 
-* A közös hozzáférésű jogosultságkód egy tároló létrehozása
-* A blob megosztott hozzáférési aláírást létrehozni
-* Egy tároló-erőforrások aláírások kezeléséhez tárolt hozzáférési házirend létrehozása
-* A közös hozzáférésű jogosultságkód egy ügyfél-alkalmazás tesztelése
+* Egy tároló közös hozzáférésű jogosultságkód létrehozása
+* A blob közös hozzáférésű jogosultságkód létrehozása
+* Hozzon létre egy tárolt hozzáférési szabályzatot, az aláírások egy tároló-erőforrások kezelése
+* A közös hozzáférésű jogosultságkódok tesztelése az ügyfélalkalmazás
 
 ## <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-Ebben az oktatóanyagban létrehozhatunk két konzol alkalmazások, amelyek bemutatják, létrehozása és a tárolók és blobok közös hozzáférésű jogosultságkód használata:
+Ebben az oktatóanyagban két konzolalkalmazást, amelyek bemutatják, létrehozása és a tárolók és blobok közös hozzáférésű jogosultságkódok használata hozunk létre:
 
-**1 alkalmazás**: A felügyeleti alkalmazás. A tároló és a blob egy közös hozzáférésű jogosultságkódot állít elő. A tárfiók elérési kulcsának forráskód tartalmazza.
+**1 alkalmazás**: A management alkalmazás. Létrehoz egy tárolót és a egy blob közös hozzáférésű jogosultságkód. Magában foglalja a tárfiók hozzáférési kulcsát a forráskódban.
 
-**Alkalmazás 2**: az ügyfélalkalmazást. Hozzáférések tároló és a blob erőforrások a közös hozzáférésű jogosultságkód létre az első alkalmazás használatával. Csak a közös hozzáférésű jogosultságkód hozzáférést tároló és a blob-erőforrások – használja az hajtja végre *nem* tartalmazza a tárfiók elérési kulcsának.
+**2 alkalmazás**: az ügyfélalkalmazás. Hozzáfér tároló és blobnév erőforrásokat a létrehozott az első alkalmazás közös hozzáférési aláírások használatával. Csak a közös hozzáférésű jogosultságkódok hozzáférés tároló és a blob-erőforrások – használja ezt *nem* tartalmazzák a tárfiók hozzáférési kulcsát.
 
-## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>1. lépés: Hozzon létre egy konzolalkalmazást közös hozzáférésű jogosultságkód létrehozása
-Először győződjön meg róla, hogy rendelkezik-e az Azure Storage ügyféloldali kódtára a .NET telepítése. Telepítheti a [NuGet-csomag](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet-csomag") tartalmazó az ügyféloldali kódtár legújabb szerelvényeket. Ez az az ajánlott módszer annak biztosítására, hogy rendelkezik-e a legújabb javításokat. Az ügyféloldali kódtár legújabb verziójának részeként is letöltheti a [Azure SDK for .NET](https://azure.microsoft.com/downloads/).
+## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>1. rész: Közös hozzáférésű jogosultságkódok létrehozása Konzolalkalmazás létrehozása
+Először is győződjön meg arról, hogy rendelkezik-e az Azure Storage ügyféloldali kódtára a .NET-hez telepítve. Telepítheti a [NuGet-csomag](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet-csomag") az ügyféloldali kódtár a legfrissebb szerelvényeket tartalmazó. Ez az az ajánlott módszer annak biztosítására, hogy rendelkezik-e a legújabb javításokat. Az ügyféloldali kódtár legújabb verziójának részeként is letöltheti a [Azure SDK for .NET](https://azure.microsoft.com/downloads/).
 
-A Visual Studio, hozzon létre egy új Windows-konzolalkalmazást, és adjon neki nevet **GenerateSharedAccessSignatures**. Hivatkozásokat adni [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) és [windowsazure.Storage kifejezésre](https://www.nuget.org/packages/WindowsAzure.Storage/) a következő módszerek egyikével:
+A Visual Studióban hozzon létre egy új Windows-konzolalkalmazást, és adja neki **GenerateSharedAccessSignatures**. Adja hozzá hivatkozásokat [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) és [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) a következő megközelítések egyikének használatával:
 
-* Használja a [NuGet-Csomagkezelő](https://docs.nuget.org/consume/installing-nuget) a Visual Studióban. Válassza ki **projekt** > **NuGet-csomagok kezelése**, keresse rá az interneten csomagonként (Microsoft.WindowsAzure.ConfigurationManager és windowsazure.Storage kifejezésre), és a telepítést.
-* Keresse meg a szerelvényeket az Azure SDK telepítése, és adja hozzá őket mutató hivatkozásokat:
+* Használja a [NuGet-Csomagkezelő](https://docs.nuget.org/consume/installing-nuget) a Visual Studióban. Válassza ki **projekt** > **NuGet-csomagok kezelése**, keressen rá az interneten az egyes csomagok (Microsoft.WindowsAzure.ConfigurationManager és a windowsazure.Storage segítségével), és telepítse őket.
+* Azt is megteheti keresse meg a ezekkel a szerelvényekkel-példány esetében az Azure SDK-t, és adja hozzá őket hivatkozásokat:
   * Microsoft.WindowsAzure.Configuration.dll
   * Microsoft.WindowsAzure.Storage.dll
 
-A Program.cs fájl felső részén adja hozzá a következő **használatával** irányelveket:
+A Program.cs fájl elején, adja hozzá a következő **használatával** irányelveket:
 
 ```csharp
 using System.IO;
@@ -56,7 +51,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 ```
 
-Szerkessze az app.config fájlt, hogy a konfigurációs beállítások mutat, a tárfiók kapcsolati karakterláncot tartalmaz. Az app.config fájlt ehhez hasonlóan kell kinéznie:
+Szerkessze az app.config fájlt úgy, hogy a benne egy olyan kapcsolati karakterlánccal, amely a tárfiók a konfigurációs beállítások. Az app.config fájlt ehhez hasonlóan kell kinéznie:
 
 ```xml
 <configuration>
@@ -69,10 +64,10 @@ Szerkessze az app.config fájlt, hogy a konfigurációs beállítások mutat, a 
 </configuration>
 ```
 
-### <a name="generate-a-shared-access-signature-uri-for-a-container"></a>A közös hozzáférésű jogosultságkód URI egy tároló létrehozása
-Először igazolnia adja hozzá a közös hozzáférésű jogosultságkód egy új tároló létrehozásához egy metódust. Ebben az esetben az aláírás nincs társítva egy tárolt hozzáférési házirend, az általa URI-n az adatokat, feltüntetve a lejárat időpontjának és az engedélyeket ad.
+### <a name="generate-a-shared-access-signature-uri-for-a-container"></a>Hozzon létre egy tároló közös hozzáférésű jogosultságkód URI
+Először hozzáadunk egy új tároló közös hozzáférésű jogosultságkód létrehozása egy metódust. Ebben az esetben az aláírás nincs társítva egy tárolt hozzáférési szabályzatot, általa az URI a jelző annak lejárati időpontot és engedélyeket ad információkat.
 
-Először adja hozzá a kódot a **Main()** módszer, amellyel hitelesíti a hozzáférést a tárfiókhoz, és hozzon létre egy új tároló:
+Először adja hozzá a kódot a **Main()** módszer engedélyezéséhez a tárfiókhoz való hozzáférést, és hozzon létre egy új tárolót:
 
 ```csharp
 static void Main(string[] args)
@@ -94,7 +89,7 @@ static void Main(string[] args)
 }
 ```
 
-Ezután adja hozzá a állít elő, a közös hozzáférésű jogosultságkódot, a tároló és az aláírás URI metódus:
+Ezután adjon hozzá egy metódus állít elő, a tároló közös hozzáférésű jogosultságkód, és adja vissza az aláírást URI:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -113,7 +108,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-Adja hozzá a következő sorokat alján a **Main()** metódus hívása előtt **Console.ReadLine()** meghívására **GetContainerSasUri()** és az aláírás URI írni a konzolablakban:
+Adja hozzá a következő sorokat alján a **Main()** metódus hívása előtt **Console.ReadLine()** meghívására **GetContainerSasUri()** írási és olvasási aláírásának URI-t, a a konzolablakban:
 
 ```csharp
 //Generate a SAS URI for the container, without a stored access policy.
@@ -121,18 +116,18 @@ Console.WriteLine("Container SAS URI: " + GetContainerSasUri(container));
 Console.WriteLine();
 ```
 
-Fordítsa le és futtassa a közös hozzáférésű jogosultságkódot URI az új tároló kimeneti. Az URI azonosító a következőhöz hasonló lesz:
+Fordítsa le és futtassa a kimenetben az új tároló közös hozzáférésű jogosultságkód URI. Az URI-t az alábbihoz hasonló lesz:
 
 ```
 https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-04-13T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3D
 ```
 
-A kód futtatása után a közös hozzáférésű jogosultságkódot, a tároló létrehozott lesz érvényes a következő 24 órában. Az aláírás engedélyt ad egy ügyfél lista BLOB a tárolóban, és a tároló új blobok írni.
+A kód futtatása után a létrehozott tároló közös hozzáférésű jogosultságkód lesz érvényes a következő 24 órában. Az aláírás engedélyt ad egy ügyfél blobok listázása, a tárolóban, és új blobok írni a tárolót.
 
-### <a name="generate-a-shared-access-signature-uri-for-a-blob"></a>A közös hozzáférésű jogosultságkód URI egy BLOB készítése
-A következő azt írhatja hasonló kódot hozzon létre egy új blob a tárolóban, és egy közös hozzáférésű jogosultságkódot létrehozni hozzá. A közös hozzáférésű jogosultságkódot nincs társítva tárolt hozzáférési házirenddel, így a kezdési ideje, a lejárati idő és a engedély információkat tartalmaz az URI azonosító.
+### <a name="generate-a-shared-access-signature-uri-for-a-blob"></a>Hozzon létre egy BLOB közös hozzáférésű jogosultságkód URI
+Következő lépésként hozzon létre egy új blobot a tárolóból, és a egy közös hozzáférésű jogosultságkód létrehozása, hasonló kódot írunk. A közös hozzáférésű jogosultságkód nincs társítva egy tárolt hozzáférési szabályzatot, így a kezdési idő, lejárati időpontot és engedély információkat tartalmaz az URI-ban.
 
-Adja hozzá egy új hoz létre egy új blob és szöveget abba, majd állít elő, a közös hozzáférésű jogosultságkód és metódus aláírása URI:
+Adjon hozzá egy új módszer, amely létrehoz egy új blob és valamilyen szöveget ír, akkor állít elő, a közös hozzáférésű jogosultságkód és aláírásának URI-t adja vissza:
 
 ```csharp
 static string GetBlobSasUri(CloudBlobContainer container)
@@ -161,7 +156,7 @@ static string GetBlobSasUri(CloudBlobContainer container)
 }
 ```
 
-Alján a **Main()** módszer, adja hozzá a következő sorokat hívására **GetBlobSasUri()**, hívása előtt **Console.ReadLine()**, és a közös hozzáférésű jogosultságkódot URI írni a konzolablakban:
+Alsó részén a **Main()** metódust, hívja a következő sorokat **GetBlobSasUri()**, hívása előtt **Console.ReadLine()**, és a közös hozzáférésű jogosultságkód írása A konzolablakban URI:
 
 ```csharp
 //Generate a SAS URI for a blob within the container, without a stored access policy.
@@ -169,22 +164,22 @@ Console.WriteLine("Blob SAS URI: " + GetBlobSasUri(container));
 Console.WriteLine();
 ```
 
-Fordítsa le és futtassa az új BLOB URI közös hozzáférésű jogosultságkódot kimeneti. Az URI azonosító a következőhöz hasonló lesz:
+Fordítsa le és futtassa a kimenetben az új blob közös hozzáférésű jogosultságkód URI. Az URI-t az alábbihoz hasonló lesz:
 
 ```
 https://storageaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-12T23%3A37%3A08Z&se=2013-04-13T00%3A12%3A08Z&sr=b&sp=rw&sig=dF2064yHtc8RusQLvkQFPItYdeOz3zR8zHsDMBi4S30%3D
 ```
 
-### <a name="create-a-stored-access-policy-on-the-container"></a>A tárolóban tárolt hozzáférési házirend létrehozása
-Most hozzon létre egy tárolt házirend a tárolóra, és határozza meg, amely hozzá van rendelve megosztott hozzáférési aláírásokkal korlátait.
+### <a name="create-a-stored-access-policy-on-the-container"></a>A tárolóban tárolt hozzáférési szabályzat létrehozása
+Most hozzunk létre egy tárolt hozzáférési szabályzatot a tárolót, amely meghatározza a függőségeket bármely közös hozzáférésű jogosultságkódok társított, a.
 
-Az előző példákban azt meg a kezdési idő (implicit vagy explicit módon), a lejárati időpont és az engedélyek a közös hozzáférésű jogosultságkódot maga URI. Az alábbi példák azt adja meg ezeket a tárolt házirend, nem a közös hozzáférésű jogosultságkóddal. Így lehetővé teszi, hogy ezek a megkötések nélkül a közös hozzáférésű jogosultságkódot hosszkorlátját módosíthatja.
+Az előző lépéseknél azt meg a kezdési idő (implicit és explicit módon), a lejárati időpontot és engedélyeket a közös hozzáférésű jogosultságkód URI magát. Az alábbi példák azt adja meg ezeket a tárolt hozzáférési házirendben, nem pedig a közös hozzáférésű jogosultságkód. Ez lehetővé teszi számunkra, hogy ezek a korlátozások nélkül a közös hozzáférésű jogosultságkód hosszkorlátját módosíthatja.
 
-Lehetséges, hogy egy vagy több, a közös hozzáférésű jogosultságkódot korlátozásaival, valamint a tárolt házirend a többi. Azonban csak megadhatja a kezdő időpont, a lejárat időpontjának és az engedélyek egy helyen vagy a másik. Például nem engedélyeket ad meg a közös hozzáférésű jogosultságkódot és is adja meg azokat a tárolt házirend.
+Lehetséges, hogy egy vagy több, a közös hozzáférésű jogosultságkód korlátait és a tárolt hozzáférési szabályzatot a fennmaradó. Azonban csak adhat a kezdési idő, lejárati időpontot és engedélyeket, vagy egy másik. Például nem határoz meg a közös hozzáférésű jogosultságkód engedélyeket és is adja meg azokat a tárolt hozzáférési szabályzatot.
 
-Amikor egy tárolt házirend hozzáadása a tárolóhoz, a tároló meglévő engedélyeket szerezni, adja hozzá az új házirend, és adja meg a tároló engedélyeit.
+Amikor egy tárolt hozzáférési szabályzatot hozzá egy tároló, a tároló meglévő engedélyeket, adja hozzá az új hozzáférési szabályzat, és majd beállítja annak a tároló engedélyeit.
 
-Adja hozzá egy új módszer, amely létrehoz egy új tárolt házirend tárolóba, és a házirend nevét adja vissza:
+Adjon hozzá egy új módszer, amely egy tárolót hoz létre egy új tárolt hozzáférési szabályzatot, és a szabályzat nevét adja vissza:
 
 ```csharp
 static void CreateSharedAccessPolicy(CloudBlobClient blobClient, CloudBlobContainer container,
@@ -206,7 +201,7 @@ static void CreateSharedAccessPolicy(CloudBlobClient blobClient, CloudBlobContai
 }
 ```
 
-Alján a **Main()** metódus hívása előtt **Console.ReadLine()** adja hozzá a következő sorokat első törölje a meglévő hozzáférési házirendeket, és, majd hívja a **CreateSharedAccessPolicy()** módszert:
+Alsó részén a **Main()** metódus hívása előtt **Console.ReadLine()**, és adja hozzá a következő vonalak először törölje a meglévő hozzáférési házirendekben, majd hívja a  **CreateSharedAccessPolicy()** módszer:
 
 ```csharp
 //Clear any existing access policies on container.
@@ -220,12 +215,12 @@ string sharedAccessPolicyName = "tutorialpolicy";
 CreateSharedAccessPolicy(blobClient, container, sharedAccessPolicyName);
 ```
 
-Ha törli a hozzáférési házirendek tárolóba, kell először lekérdezni a tároló meglévő engedélyeket, majd törölje a jelet az engedélyeket, majd állítsa be újra a engedélyeket.
+Amikor törli a hozzáférési házirendek a tárolón, kell először a tároló meglévő engedélyeket, majd törölje a jelet az engedélyek, majd állítsa be újra az engedélyeket.
 
-### <a name="generate-a-shared-access-signature-uri-on-the-container-that-uses-an-access-policy"></a>A közös hozzáférésű jogosultságkód által használt a hozzáférési házirendek a tárolón URI generálása
-A következő létrehozhatunk egy másik közös hozzáférésű jogosultságkódot ahhoz a tárolóhoz, amelybe a korábban, de ezúttal a tárolt házirend az előző példában létrehozott azt társítsa az aláírás létrehozott.
+### <a name="generate-a-shared-access-signature-uri-on-the-container-that-uses-an-access-policy"></a>Közös hozzáférésű jogosultságkód URI, amely egy hozzáférési szabályzatot használ a tároló létrehozása
+Ezután hozunk létre a tárolót, hogy létrehoztuk a korábban, de ezúttal azt társítsa az aláírást a tárolt hozzáférési szabályzatot az előző példában létrehoztunk egy másik közös hozzáférésű jogosultságkódot.
 
-Adja hozzá a tároló egy másik közös hozzáférésű jogosultságkódot létrehozni egy új módszer:
+Adjon hozzá egy új metódust a tároló egy másik közös hozzáférésű jogosultságkód létrehozása:
 
 ```csharp
 static string GetContainerSasUriWithPolicy(CloudBlobContainer container, string policyName)
@@ -239,7 +234,7 @@ static string GetContainerSasUriWithPolicy(CloudBlobContainer container, string 
 }
 ```
 
-Alján a **Main()** metódus hívása előtt **Console.ReadLine()**, adja hozzá a következő sorokat hívni a **GetContainerSasUriWithPolicy** módszert:
+Alsó részén a **Main()** metódus hívása előtt **Console.ReadLine()**, adja hozzá a következő sorokat hívja a **GetContainerSasUriWithPolicy** módszer:
 
 ```csharp
 //Generate a SAS URI for the container, using a stored access policy to set constraints on the SAS.
@@ -247,10 +242,10 @@ Console.WriteLine("Container SAS URI using stored access policy: " + GetContaine
 Console.WriteLine();
 ```
 
-### <a name="generate-a-shared-access-signature-uri-on-the-blob-that-uses-an-access-policy"></a>A közös hozzáférésű Jogosultságkód által használt a hozzáférési házirendek blobot URI generálása
-Végül azt adja hozzá a hasonló módszert, hozzon létre egy másik blob és tárolt hozzáférési házirenddel társított megosztott hozzáférési aláírást létrehozni.
+### <a name="generate-a-shared-access-signature-uri-on-the-blob-that-uses-an-access-policy"></a>Egy közös hozzáférésű Jogosultságkód URI, amely egy hozzáférési szabályzatot használja a BLOB létrehozása
+Végül hozzáadunk egy másik blob létrehozásához, és a egy közös hozzáférésű jogosultságkód társított egy tárolt hozzáférési szabályzat létrehozása hasonló módon.
 
-Hozzon létre egy blobot, és egy közös hozzáférésű jogosultságkódot létrehozni egy új módszer hozzáadása:
+Adjon hozzá egy új metódust hozzon létre egy blobot, és a egy közös hozzáférésű jogosultságkód létrehozása:
 
 ```csharp
 static string GetBlobSasUriWithPolicy(CloudBlobContainer container, string policyName)
@@ -277,7 +272,7 @@ static string GetBlobSasUriWithPolicy(CloudBlobContainer container, string polic
 }
 ```
 
-Alján a **Main()** metódus hívása előtt **Console.ReadLine()**, adja hozzá a következő sorokat hívni a **GetBlobSasUriWithPolicy** módszert:
+Alsó részén a **Main()** metódus hívása előtt **Console.ReadLine()**, adja hozzá a következő sorokat hívja a **GetBlobSasUriWithPolicy** módszer:
 
 ```csharp
 //Generate a SAS URI for a blob within the container, using a stored access policy to set constraints on the SAS.
@@ -285,7 +280,7 @@ Console.WriteLine("Blob SAS URI using stored access policy: " + GetBlobSasUriWit
 Console.WriteLine();
 ```
 
-A **Main()** metódus most példához hasonló egészében. Futtassa a közös hozzáférésű jogosultságkódot URI-azonosítók írni a konzolablakban Ezután másolja és illessze be egy szövegfájlt, ez az oktatóanyag második része legyen.
+A **Main()** metódus hasonlóan kell kinéznie a teljes egészében. Futtassa a közös hozzáférésű jogosultságkód URI-k írni a konzolablakban, majd másolja és illessze be őket egy szöveges fájl, amely ebben az oktatóanyagban a második részében.
 
 ```csharp
 static void Main(string[] args)
@@ -330,7 +325,7 @@ static void Main(string[] args)
 }
 ```
 
-Amikor futtatja a GenerateSharedAccessSignatures konzolalkalmazást, látni fogja, a következőhöz hasonló kimenetet. Ezek azok a megosztott hozzáférési aláírásokkal használhatja az oktatóanyag az 2.
+Amikor futtatja a GenerateSharedAccessSignatures konzolalkalmazást, látni fogja a következőhöz hasonló kimenetet. Ezek azok a közös hozzáférésű jogosultságkódok használata az oktatóanyag 2. rész.
 
 ```
 Container SAS URI: https://storagesample.blob.core.windows.net/sascontainer?sv=2016-05-31&sr=c&sig=pFlEZD%2F6sJTNLxD%2FQ26Hh85j%2FzYPxZav6mP1KJwnvJE%3D&se=2017-05-16T16%3A16%3A47Z&sp=wl
@@ -342,16 +337,16 @@ Container SAS URI using stored access policy: https://storagesample.blob.core.wi
 Blob SAS URI using stored access policy: https://storagesample.blob.core.windows.net/sascontainer/sasblobpolicy.txt?sv=2016-05-31&sr=b&si=tutorialpolicy&sig=%2FkTWkT23SS45%2FoF4bK2mqXkN%2BPKs%2FyHuzkfQ4GFoZVU%3D
 ```
 
-## <a name="part-2-create-a-console-application-to-test-the-shared-access-signatures"></a>2. lépés: Hozzon létre egy konzolalkalmazást a közös hozzáférésű jogosultságkód tesztelése
-A közös hozzáférésű jogosultságkód létrehozása a fenti példákban teszteléséhez jelenleg hozzon létre egy második konzolalkalmazást, amely a aláírásait használja a műveletek végrehajtásához, a tároló és a blob.
+## <a name="part-2-create-a-console-application-to-test-the-shared-access-signatures"></a>2. lépés: Hozzon létre egy konzolalkalmazást a közös hozzáférésű jogosultságkódok tesztelése
+A közös hozzáférésű jogosultságkódok, az előzőekben létrehozott teszteléséhez mintázatai alapján műveletek végrehajtásához, a tároló és a egy blob egy második konzolalkalmazást hozunk létre.
 
 > [!NOTE]
-> Ha több mint 24 órája eltelt óta elvégezte az oktatóanyag első részét, az Ön által létrehozott aláírásokat már nem érvényesek. Ebben az esetben az első Konzolalkalmazás friss közös hozzáférésű jogosultságkód használatra létrehozni az oktatóanyag második része a kódot kell futtatni.
+> Ha több mint 24 órával teljesül, mivel elvégezte az oktatóanyag első részét, az Ön által létrehozott aláírásokat már nem érvényes. Ebben az esetben futtassa a kódot az oktatóanyag második felében létrehozni az új közös hozzáférésű jogosultságkódok használata az első Konzolalkalmazás.
 >
 
-A Visual Studio, hozzon létre egy új Windows-konzolalkalmazást, és adjon neki nevet **ConsumeSharedAccessSignatures**. Hivatkozásokat adni [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) és [windowsazure.Storage kifejezésre](https://www.nuget.org/packages/WindowsAzure.Storage/), mint korábban.
+A Visual Studióban hozzon létre egy új Windows-konzolalkalmazást, és adja neki **ConsumeSharedAccessSignatures**. Adja hozzá hivatkozásokat [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) és [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/), ahogy korábban.
 
-A Program.cs fájl felső részén adja hozzá a következő **használatával** irányelveket:
+A Program.cs fájl elején, adja hozzá a következő **használatával** irányelveket:
 
 ```csharp
 using System.IO;
@@ -359,7 +354,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 ```
 
-Törzsében a **Main()** módszer, adja hozzá a következő karakterlánckonstansokat, az értékek módosítása a közös hozzáférésű jogosultságkód az oktatóanyag 1 részében létrehozott.
+Törzsében a **Main()** metódust, adja hozzá a következő karakterlánc-állandókat, azok az értékek módosítása a következőre a közös hozzáférésű jogosultságkódok, az oktatóanyag 1. rész létrehozott.
 
 ```csharp
 static void Main(string[] args)
@@ -371,10 +366,10 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="add-a-method-to-try-container-operations-using-a-shared-access-signature"></a>Próbálja meg a tároló műveletek használatával a közös hozzáférésű jogosultságkód egy olyan metódus hozzáadása
-Ezután azt adja hozzá a módszere, amely megvizsgálja az egyes tároló műveletek használatával a közös hozzáférésű jogosultságkód ahhoz a tárolóhoz. A közös hozzáférésű jogosultságkódot ad vissza egy hivatkozást a tárolóhoz, a tároló önmagában aláírás alapján való hozzáférés hitelesítéséhez.
+### <a name="add-a-method-to-try-container-operations-using-a-shared-access-signature"></a>Adjon meg egy metódust tárolóművelet közös hozzáférésű jogosultságkód használatával próbálja
+Ezután hozzáadunk egy metódust, amely bizonyos tárolóművelet, a tároló közös hozzáférésű jogosultságkód használatával teszteli. A közös hozzáférésű jogosultságkód küldhet vissza egy hivatkozást a tárolót, a tároló önálló aláírás alapján való hozzáférés hitelesítésére szolgál.
 
-Adja hozzá a következő metódust a program.cs fájlt:
+A program.cs fájlhoz adja hozzá a következő metódust:
 
 ```csharp
 static void UseContainerSAS(string sas)
@@ -460,7 +455,7 @@ static void UseContainerSAS(string sas)
 }
 ```
 
-Frissítés a **Main()** metódus hívására **UseContainerSAS()** mindkét a közös hozzáférésű jogosultságkód létrehozta a tárolón:
+Frissítés a **Main()** metódus meghívásához **UseContainerSAS()** mind a létrehozott a tároló közös hozzáférésű jogosultságkódok:
 
 ```csharp
 static void Main(string[] args)
@@ -478,10 +473,10 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="add-a-method-to-try-blob-operations-using-a-shared-access-signature"></a>Egy blob műveletek használatával a közös hozzáférésű jogosultságkód kipróbálásához metódus hozzáadása
-Végül azt adja hozzá a módszere, amely a blob néhány blob-műveletekbe egy közös hozzáférésű jogosultságkódot teszteli. Ebben az esetben a konstruktor használjuk **CloudBlockBlob(String)**, tompított a közös hozzáférésű jogosultságkódot, a blobra mutató hivatkozást ad eredményül. Nincs más hitelesítés szükség; az aláírás önmagában alapul.
+### <a name="add-a-method-to-try-blob-operations-using-a-shared-access-signature"></a>Adjon meg egy metódust próbálja meg a közös hozzáférésű jogosultságkódok használata blob műveletek
+Végül hozzáadunk egy metódust, amely néhány a blob közös hozzáférésű jogosultságkódok használata blob művelet teszteli. Ebben az esetben a konstruktor használjuk **CloudBlockBlob(String)**, passzok, az a közös hozzáférésű jogosultságkóddal való visszatéréshez a blobra mutató hivatkozást. További hitelesítés nem szükséges; az önálló aláírás alapul.
 
-Adja hozzá a következő metódust a program.cs fájlt:
+A program.cs fájlhoz adja hozzá a következő metódust:
 
 ```csharp
 static void UseBlobSAS(string sas)
@@ -554,7 +549,7 @@ static void UseBlobSAS(string sas)
 }
 ```
 
-Frissítés a **Main()** metódus hívására **UseBlobSAS()** mindkét a közös hozzáférésű jogosultságkód blobot létrehozott:
+Frissítés a **Main()** metódus meghívásához **UseBlobSAS()** mind az Ön által létrehozott a BLOB közös hozzáférésű jogosultságkódok:
 
 ```csharp
 static void Main(string[] args)
@@ -576,7 +571,7 @@ static void Main(string[] args)
 }
 ```
 
-Futtassa a konzolalkalmazást, és megfigyelheti, hogy mely műveleteket úgy is, mely aláírások kimeneti. A konzolablakban a kimenet az alábbihoz hasonló fog kinézni:
+Futtassa a konzolalkalmazást, és vizsgálja meg a kimenet megtekintéséhez, hogy mely műveletek mely aláírások használata engedélyezett. A kimenetet a konzolablakban az alábbihoz hasonlóan fog kinézni:
 
 ```
 Write operation succeeded for SAS https://storagesample.blob.core.windows.net/sascontainer?sv=2016-05-31&sr=c&sig=32EaQGuFyDMb3yOAey3wq%2B%2FLwgPQxAgSo7UhzLdyIDU%3D&se=2017-05-16T15%3A41%3A20Z&sp=wl
@@ -592,9 +587,9 @@ Additional error information: The remote server returned an error: (403) Forbidd
 ...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megosztott hozzáférési aláírásokkal, 1. lépés: Az SAS-modell ismertetése](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Tárolók és blobok névtelen olvasási hozzáférés kezelése](storage-manage-access-to-resources.md)
-* [A közös hozzáférésű jogosultságkód (REST API-t) hozzáférés delegálása](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-* [Tábla- és várólista SAS bemutatása](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+* [Közös hozzáférésű Jogosultságkódok, 1. rész: A SAS-modell ismertetése](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Tárolók és blobok névtelen olvasási hozzáférésének kezelése](storage-manage-access-to-resources.md)
+* [Közös hozzáférésű jogosultságkód (REST API) hozzáférés delegálása](http://msdn.microsoft.com/library/azure/ee395415.aspx)
+* [Tábla és üzenetsor SAS bemutatása](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

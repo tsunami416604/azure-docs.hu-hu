@@ -1,6 +1,6 @@
 ---
-title: Geo-redundant storage (GRS) for cross-regional durability in Azure Storage | Microsoft Docs
-description: Geo-redundant storage (GRS) replicates your data between two regions that are hundreds of miles apart. GRS protects against hardware failures in the datacenter as well as regional disasters.
+title: Georedundáns tárolás (GRS) az Azure Storage-régiók közti tartóssági |} A Microsoft Docs
+description: Georedundáns tárolás (GRS), amelyek több száz mérföld távolságra két régiója között replikálja az adatokat. GRS az adatközpontban, valamint a regionális katasztrófa elleni védelmet biztosít.
 services: storage
 author: tolandmike
 manager: jeconnoc
@@ -8,19 +8,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
-ms.openlocfilehash: 1aa3f1e948921a2f356b88e31ef1b9b0f408920a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: bd9d807796eee0d66387e481fa81a04f9ded5548
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2018
-ms.locfileid: "30324116"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397433"
 ---
-# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Geo-redundant storage (GRS): Cross-regional replication for Azure Storage
+# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Georedundáns tárolás (GRS): az Azure Storage-régiók közti replikáció
 
-[!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
+[!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
 
-## <a name="see-also"></a>See also
+## <a name="see-also"></a>Lásd még
 
-- [Azure Storage replication](storage-redundancy.md)
-- [Locally-redundant storage (LRS): Low-cost data redundancy for Azure Storage](storage-redundancy-lrs.md)
-- [Zone-redundant storage (ZRS): Highly available Azure Storage applications](storage-redundancy-zrs.md)
+- [Azure Storage replication (Azure Storage replikáció)](storage-redundancy.md)
+- [Helyileg redundáns tárolás (LRS): az Azure Storage alacsony költségű adatredundancia](storage-redundancy-lrs.md)
+- [Zónaredundáns tárolás (ZRS): az Azure Storage magas rendelkezésre állású alkalmazások](storage-redundancy-zrs.md)

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0afe5ba21fe17d8aec4d72c30086c6840f9e3c8e
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161570"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412412"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Felhőalapú Azure multi-factor Authentication szolgáltatás üzembe helyezése
 
@@ -40,7 +40,7 @@ Engedélyezve van, úgy módosítja a felhasználói állapot – Ez az a kétl�
 
 ## <a name="choose-authentication-methods"></a>Válassza ki a hitelesítési módszerek
 
-Engedélyezze a felhasználók a szervezet követelményei alapján legalább egy hitelesítési módszert. Találtunk, hogy ha engedélyezett a felhasználók a Microsoft Authenticator alkalmazást a legjobb felhasználói élményt biztosít. Ismernie kell milyen módszerek érhetők el, és hogyan állíthatja be, olvassa el [Mik hitelesítési methods]](concept-authentication-methods.md).
+Engedélyezze a felhasználók a szervezet követelményei alapján legalább egy hitelesítési módszert. Találtunk, hogy ha engedélyezett a felhasználók a Microsoft Authenticator alkalmazást a legjobb felhasználói élményt biztosít. Ha ismernie kell milyen módszerek érhetők el, és hogyan állíthatja be, tekintse meg a cikket [hitelesítési módszerei](concept-authentication-methods.md).
 
 ## <a name="get-users-to-enroll"></a>Felhasználók regisztrálása
 
@@ -69,37 +69,37 @@ Mielőtt engedélyezné az Azure multi-factor Authentication szolgáltatás, a s
 ### <a name="create-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy globális rendszergazdai fiókkal.
-1. Keresse meg a **Azure Active Directory**, **feltételes hozzáférés**
-1. Válassza ki **új szabályzat**
+1. Lépjen az **Azure Active Directory**, **Feltételes hozzáférés** területre.
+1. Válassza az **Új szabályzat** lehetőséget.
 1. Adjon meg egy kifejező nevet a házirend
 1. A **felhasználók és csoportok**
    * Az a **Belefoglalás** lapon jelölje be a **minden felhasználó** választógomb
    * AJÁNLOTT: A a **kizárása** lapra, jelölje be a **felhasználók és csoportok** , és válasszon egy csoportot, amikor a felhasználók nem rendelkeznek hozzáféréssel a hitelesítési módszereket kizárások használandó.
-   * Kattintson a **kész**
+   * Kattintson a **Kész** gombra.
 1. A **Felhőalkalmazások**, jelölje be a **az összes felhőalapú alkalmazások** választógomb
    * Választható: A a **kizárása** adja meg, hogy a szervezetnek nincs szüksége MFA felhőalapú alkalmazásokat.
-   * Kattintson a **kész**
+   * Kattintson a **Kész** gombra.
 1. A **feltételek** szakasz
    * Igény szerint: Ha engedélyezte az Azure Identity Protection, ha szeretné, bejelentkezési kockázat kiértékelése a szabályzat részeként.
    * Szükség esetén: Ha megbízható helyekre konfigurált és nevesített helyek, megadhatja vagy kizárja a ezeken a helyeken a szabályzat alól.
-1. Alatt **Grant**, győződjön meg arról, hogy a **hozzáférést** lehetőséget bejelöli
-    * Jelölje be a **többtényezős hitelesítés megkövetelése**
+1. A **Hozzáférés** területen győződjön meg róla, hogy a **Hozzáférés biztosítása** választógomb van kiválasztva.
+    * Jelölje be a **Többtényezős hitelesítés megkövetelése** jelölőnégyzetet.
     * Kattintson a **Kiválasztás** gombra.
-1. Ugrás a **munkamenet** szakasz
-1. Állítsa be a **házirend engedélyezése** kapcsolót **a**
+1. Hagyja ki a **Munkamenet** szakaszt.
+1. Állítsa a **Házirend engedélyezése** kapcsolót **Be** állásba.
 1. Kattintson a **Create** (Létrehozás) gombra
 
 ![Az MFA engedélyezése az Azure portálon a felhasználóknak a próbaüzemi csoport feltételes hozzáférési szabályzat létrehozása](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
-### <a name="test-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication hitelesítés tesztelése
+### <a name="test-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication tesztelése
 
 Annak ellenőrzéséhez, hogy működik-e a feltételes hozzáférési szabályzatot, tesztelje a többtényezős hitelesítés elvégzéséhez nem szükséges erőforrás és az Azure Portalra, amely többtényezős Hitelesítést követel meg.
 
-1. Nyisson meg egy új böngészőablakot InPrivate vagy inkognitó módban, és keresse meg a [ https://account.activedirectory.windowsazure.com ](https://account.activedirectory.windowsazure.com).
-   * Jelentkezzen be a tesztfelhasználó számára ez a cikk, és vegye figyelembe, hogy azt nem kérdezze meg, hogy végezze el az MFA Előfeltételek szakaszában létrehozott.
+1. Nyisson meg egy új böngészőablakot InPrivate vagy inkognitó módban, és lépjen a következő oldalra: [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com).
+   * Jelentkezzen be a cikk előfeltételeket ismertető szakaszában létrehozott tesztfelhasználóval. Ekkor a rendszer nem igényel többtényezős hitelesítést.
    * Zárja be a böngészőablakot.
-2. Nyisson meg egy új böngészőablakot InPrivate vagy inkognitó módban, és keresse meg a [ https://portal.azure.com ](https://portal.azure.com).
-   * Jelentkezzen be a teszt részeként ez a cikk, és vegye figyelembe, hogy most már Előfeltételek szakaszában létrehozott felhasználói regisztráljon, és az Azure multi-factor Authentication használata szükséges.
+2. Nyisson meg egy új böngészőablakot InPrivate vagy inkognitó módban, és lépjen a következő oldalra: [https://portal.azure.com](https://portal.azure.com).
+   * Jelentkezzen be a cikk előfeltételeket ismertető szakaszában létrehozott tesztfelhasználóval. Most regisztrálnia kell az Azure Multi-Factor Authenticationre, és használnia kell azt.
    * Zárja be a böngészőablakot.
 
 ## <a name="next-steps"></a>További lépések

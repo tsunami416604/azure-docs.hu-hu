@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2018
+ms.date: 8/1/2018
 ms.author: trinadhk
-ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 1021900620272cc5476d8972daf9d7e0a161797a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205340"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398001"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure virtuális gép biztonsági mentési vermének v2 verziójára frissítsen.
 
@@ -107,7 +107,7 @@ Nincs frissítés a verem v2 költség nélkül. A pillanatképek rendszer helyb
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Megnöveli a prémium szintű storage fiók pillanatképekre vonatkozó korlát 10 TB-os által a verem v2 verzióra?
 
-V2 stack száma 10 TB-os pillanatképekre vonatkozó korlát a nem felügyelt lemezek prémium szintű storage-fiók felé részeként készített pillanatkép. 
+Nem, a tárolási fiók továbbra is megmarad, 10 TB-os teljes pillanatkép-korlátozást. 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>A prémium szintű Storage-fiókok hajtsa végre az azonnali helyreállítási pontok készített pillanatkép foglalhat el a 10 TB-os pillanatképekre vonatkozó korlát?
 

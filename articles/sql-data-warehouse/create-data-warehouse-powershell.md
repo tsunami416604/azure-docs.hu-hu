@@ -1,25 +1,25 @@
 ---
-title: 'Gyors üzembe helyezés: Hozzon létre egy Azure SQL Data Warehouse - Azure Powershell |} Microsoft Docs'
-description: Egy SQL Database logikai kiszolgálóhoz kiszolgálószintű tűzfalszabályt és az adatraktár gyors létrehozása az Azure PowerShell.
+title: 'Rövid útmutató: Hozzon létre egy Azure SQL Data Warehouse – Azure PowerShell-lel |} A Microsoft Docs'
+description: Gyorsan létrehozhat egy SQL Database logikai kiszolgálót, kiszolgálószintű tűzfalszabály és data warehouse-bA az Azure PowerShell használatával.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/17/2018
+ms.date: 08/01/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e0bb014ec0706d458ff2f38e409efba5d66aaf18
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 72ed9e921d96faea155c1da88dd32fcbd467d549
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31529519"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414000"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors üzembe helyezés: Hozzon létre, és egy Azure SQL data warehouse Azure PowerShell lekérdezése
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rövid útmutató: Létrehozása és lekérdezése az Azure SQL data warehouse az Azure PowerShell használatával
 
-Gyorsan létrehozhat egy Azure SQL-adatraktár Azure PowerShell használatával.
+Gyorsan létrehozhat egy Azure SQL data warehouse, Azure PowerShell-lel.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -82,7 +82,7 @@ New-AzureRmResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Hozzon létre egy logikai kiszolgálót
 
-Hozzon létre egy [Azure SQL logikai kiszolgálóra](../sql-database/sql-database-servers-databases.md#what-is-an-azure-sql-logical-server) használatával a [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) parancsot. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. A következő példában létrehozunk egy véletlenszerűen elnevezett kiszolgálót az erőforráscsoportban egy `ServerAdmin` nevű és `ChangeYourAdminPassword1` jelszavú rendszergazdai bejelentkezéssel. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
+Hozzon létre egy [Azure SQL logikai kiszolgáló](../sql-database/sql-database-logical-servers.md) használatával a [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) parancsot. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. A következő példában létrehozunk egy véletlenszerűen elnevezett kiszolgálót az erőforráscsoportban egy `ServerAdmin` nevű és `ChangeYourAdminPassword1` jelszavú rendszergazdai bejelentkezéssel. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
 
 ```powershell
 New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
@@ -93,7 +93,7 @@ New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfiguráljon egy kiszolgálói tűzfalszabályt
 
-Hozzon létre egy [Azure SQL kiszolgálószintű tűzfalszabály](../sql-database/sql-database-firewall-configure.md) használatával a [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) parancsot. Egy kiszolgálószintű tűzfalszabályt lehetővé teszi, hogy a külső alkalmazás, például az SQL Server Management Studio vagy az SQLCMD segédprogram SQL data warehouse az SQL Data Warehouse szolgáltatás tűzfalon keresztül csatlakozni. A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
+Hozzon létre egy [Azure SQL kiszolgálószintű tűzfalszabály](../sql-database/sql-database-firewall-configure.md) használatával a [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) parancsot. Kiszolgálószintű tűzfalszabály lehetővé teszi, hogy a külső alkalmazások, például az SQL Server Management Studio vagy az SQLCMD segédprogram szeretne csatlakozni az SQL data warehouse az SQL Data Warehouse szolgáltatás tűzfalán keresztül. A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
 
 ```powershell
 New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -102,12 +102,12 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL-adatbázis és az SQL Data Warehouse 1433-as porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem lehet csatlakozni az Azure SQL server, kivéve, ha az IT-részleg megnyitja az 1433-as port.
+> SQL Database és az SQL Data Warehouse az 1433-as porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni az Azure SQL Serverhez, kivéve, ha az informatikai részleg megnyitja az 1433-as porton.
 >
 
 
-## <a name="create-a-data-warehouse-with-sample-data"></a>A mintaadatok data warehouse létrehozása
-Ebben a példában a korábban meghatározott változókkal adatraktár hoz létre.  Azt adja meg a szolgáltatási cél DW400, amely az adatraktár alacsonyabb költségű kiindulási pontot. 
+## <a name="create-a-data-warehouse-with-sample-data"></a>Adattárház létrehozása mintaadatok használatával
+Ez a példa létrehoz egy data warehouse használatával a korábban definiált változókat.  Azt határozza meg a szolgáltatási cél DW400, amely egy alacsonyabb költségű kiindulási pont, a data warehouse-hoz. 
 
 ```Powershell
 New-AzureRmSqlDatabase `
@@ -122,9 +122,9 @@ New-AzureRmSqlDatabase `
 
 A szükséges paraméterek a következők:
 
-* **RequestedServiceObjectiveName**: mennyisége [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md) kért. Ez a mennyiség növelése növeli a számítási költség. A támogatott értékek listája, [memória és a feldolgozási korlátok](memory-and-concurrency-limits.md).
+* **RequestedServiceObjectiveName**: mennyisége [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) kért. Ez a mennyiség növelése növeli a számítási költségeket. A támogatott értékek listáját lásd: [memória- és egyidejűségi korlátok](memory-and-concurrency-limits.md).
 * **DatabaseName**: A létrehozandó SQL Data Warehouse neve.
-* **Kiszolgálónév**: az a kiszolgáló neve, amely a létrehozásához használ.
+* **Kiszolgálónév**: a kiszolgáló, a létrehozásához használt nevét.
 * **ResourceGroupName**: A használt erőforráscsoport. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
 * **Edition**: Egy SQL Data Warehouse létrehozásához a „DataWarehouse” értéket kell megadni.
 
@@ -133,7 +133,7 @@ A választható paraméterek a következők:
 - **CollationName**: Ha nincs megadva, az alapértelmezett rendezés: SQL_Latin1_General_CP1_CI_AS. Az adatbázisok rendezése nem módosítható.
 - **MaxSizeBytes**: Alapértelmezés szerint az adatbázisok maximális mérete 10 GB.
 
-A paraméter lehetőségekről további információkért lásd: [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase).
+A paraméterbeállításokkal további információkért lásd: [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase).
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

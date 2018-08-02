@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/08/2018
 ms.author: diberry
-ms.openlocfilehash: 963a7f8c196702ea899ddfe31e6187a15eb5f683
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 73e90e5ae86db2c2c4625762b285f8c86f0e241b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223208"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398045"
 ---
 # <a name="manage-account-and-authoring-key"></a>Fiók és a kulcs létrehozási kezelése
 A két kulcsfontosságú adatokat egy LUIS-fiók olyan felhasználói fiók és az Authoring Tool kulcs. A bejelentkezési adatait felügyelt [account.microsoft.com](https://account.microsoft.com). Az Authoring Tool kulcs felügyelje a [LUIS](luis-reference-regions.md) webhely **beállítások** lapot. 
@@ -36,25 +36,6 @@ Ha az Authoring Tool kulcs biztonsága sérül, alaphelyzetbe állítja a kulcso
 
 ## <a name="delete-account"></a>Fiók törlése
 Lásd: [adattárolási és -eltávolítási](luis-concept-data-storage.md#accounts) milyen adat törlődik, ha a fiók törlése kapcsolatos információkat. 
-
-## <a name="azure-active-directory-tenant-user"></a>Az Azure Active Directory-bérlői felhasználó
-A LUIS a standard szintű Azure Active Directory (Azure AD) jóváhagyási folyamatot használ. 
-
-A bérlői rendszergazda közvetlenül a felhasználó, aki a LUIS használatát az Azure AD-ben biztosított hozzáférést kell működnie. 
-
-A felhasználó először jelentkezik be a LUIS, és megtekinti a rendszergazdai jóváhagyást igénylő felugró párbeszédpanel. A felhasználó felveszi a kapcsolatot a bérlői rendszergazda a folytatás előtt. 
-
-A bérlői rendszergazda második, LUIS bejelentkezik, és egy hozzájárulási folyamat felugró párbeszédpanel látja. Ez az a párbeszédpanelen, a rendszergazda engedélyt kell adnia a felhasználó számára. A rendszergazda fogad az engedélyt, ha a felhasználó nem tudja folytatni az intelligens hangfelismerési szolgáltatással.
-
-Ha a bérlői rendszergazda nem fog bejelentkezni a LUIS, a rendszergazda hozzáférhet [hozzájárulás](https://account.activedirectory.windowsazure.com/r#/applications) a LUIS. 
-
-![Alkalmazás webhelye által az Azure active directory-engedély](./media/luis-how-to-account-settings/tenant-permissions.png)
-
-Ha a bérlői rendszergazda csak meghatározott felhasználóknak, hogy a LUIS használatát szeretné, tekintse meg a [identity blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
-
-### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>A közreműködők több e-mailt a felhasználói fiókok
-Ha közreműködők ad hozzá egy LUIS-alkalmazásokon, adja meg a pontos e-mail-cím, LUIS közreműködőként használandó kell közreműködő. Az Azure Active Directory (Azure AD) lehetővé teszi, hogy egyetlen felhasználó felcserélhetők egynél több e-mail-fiókot, amíg a LUIS a felhasználót, hogy jelentkezzen be a közreműködő listában megadott e-mail-cím szükséges. 
-
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,49 +1,49 @@
 ---
-title: Megtekintéséhez és szerkesztéséhez Azure videó indexelő insights |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan megtekintése és szerkesztése a videó indexelő insights.
+title: Megtekintheti és szerkesztheti az Azure-Videóindexelő-elemzések |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan szeretné áttekinteni vagy módosítani a Videóindexelő-elemzések.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: df4e2152f0f3ff0a2cc6a4dbb8c46478d5db7dc7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 797c09d72402cfc1ee2524e7792cc1310a53fb1e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349870"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399477"
 ---
-# <a name="view-and-edit-video-indexer-insights"></a>Megtekintése és szerkesztése a videó indexelő insights
+# <a name="view-and-edit-video-indexer-insights"></a>Video Indexer-elemzések megtekintése és szerkesztése
 
-Ez a témakör bemutatja, hogyan megtekintése és szerkesztése a videó indexelő insights egy videó.
+Ez a témakör bemutatja, hogyan szeretné áttekinteni vagy módosítani a videó a Video Indexer insights.
 
-1. Jelentkezzen be a [videó indexelő](https://api-portal.videoindexer.ai/) fiók.
-2. Videó, amelyből el kívánja létrehozni az videó indexelő elemzések keresése. További információkért lásd: [pontos pillanat videók belül található](video-indexer-search.md).
-3. Nyomja le az **lejátszása**.
+1. Jelentkezzen be a [Video Indexer](https://api-portal.videoindexer.ai/) fiókot.
+2. Keresse meg egy videót, amelyből hozzá szeretne létrehozni a Video Indexer insights. További információkért lásd: [videókban pontos időpontok keresése](video-indexer-search.md).
+3. Nyomja meg **lejátszása**.
 
-    A lapon látható a videó röviden bemutatják azok insights. 
+    A lapon látható a videó összefoglaló insights. 
 
     ![Insights](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
 
-4. Az összesített insights videó megtekintése. 
+4. Az összesített elemzések a videó megtekintése. 
 
-    Összesített insights az adatok egy összevont nézetének megjelenítése: lapokat, kulcsszavakat, hangulati elemek. Például láthatja a személyek és jelennek meg minden lapot időtartományhoz felületei és a %-ában megjelenő.
+    Összesített insights összesített nézete az adatok megjelenítése: arcok, kulcsszavakat, hangulati. Megtekintheti például az arcok, személyek és a időtartományok minden jelenik meg, és az idő %-a látható.
 
-    A Windows Media player és az elemzések szinkronizálva van. Például ha kulcsszó vagy a Beszélgetés szövegének sor gombra kattint, a Windows Media player biztosít számára, hogy néhány percet a videó. Az alkalmazás érhet el a player/insights megtekintése és a szinkronizálás. További információkért lásd: [az alkalmazásba beágyazni Azure indexelő widgeteket](video-indexer-embed-widgets.md). 
+    A Windows Media player és az elemzések szinkronizálva van. Például ha kulcsszó vagy a szöveges sorra kattint, a Windows Media player biztosít hozzáférést, hogy a videóban. A player/elemzések megtekintése és a szinkronizálás érheti el az alkalmazásban. További információkért lásd: [az alkalmazásba való beágyazása Azure indexelő widgetek](video-indexer-embed-widgets.md). 
 
-3. A videó indexelő insights szerkesztése.
+3. A Videóindexelő-elemzések szerkesztése.
 
-    Nyomja meg a Szerkesztés alatt a videót. A teljes körű információkat a videó bemutatja, hogy a lap jelenik meg. A részletes információkat blokkokra megszakad. Blokkok jelenleg itt könnyebb halad át az adatokat. Például blokk előfordulhat, hogy kell bontani alapján amikor hangszórók változnak, vagy hosszú szünetet. Létrehozhat saját kívánt sorokat tartalmazó lista. Videó megjelenítése a forrás csak meghatározott részeit, témakörök/kulcsszavak, hangulati elemek, személyek, hangszórók szerint szűrheti. Ha szeretné, csak megtekinteni a videó Beszélgetés szövegének vagy OCR.  
+    Nyomja le a Szerkesztés a videó alatt. A videó teljes bontását mutatja meg az oldal jelenik meg. Táblázat összefoglalja a blokkok van osztva. Blokkok itt, hogy egyszerűbb legyen halad át az adatokat. Például blokk előfordulhat, hogy bonthatók fel alapján előadói módosítása, vagy hosszabb szünet. Létrehozhat saját csak a kívánt sorokat tartalmazó lista. Videó megjelenítése a forrás csak bizonyos részeit, a témakörök/kulcsszavakat, hangulati, személyek, előadói szűrhet. Ha szeretné, csak megtekinteni a videót a szövegben vagy OCR.  
 
     ![Insights](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
 
 ## <a name="next-steps"></a>További lépések
 
-[Megtudhatja, hogyan videó indexelő adatmodellünk saját néhány más videó alapján](video-indexer-create-new.md).
+[Ismerje meg, hogyan hozhat létre saját alapján néhány egyéb videó a Video Indexer insights](video-indexer-create-new.md).
 
 ## <a name="see-also"></a>Lásd még
 
-[Az indexelő áttekintő videó](video-indexer-overview.md)
+[Video Indexer – áttekintés](video-indexer-overview.md)
 

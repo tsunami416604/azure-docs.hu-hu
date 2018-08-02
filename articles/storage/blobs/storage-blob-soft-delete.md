@@ -3,17 +3,17 @@ title: Helyreállítható Törlés az Azure Storage-blobok |} A Microsoft Docs
 description: Azure Storage blob-objektumok a helyreállítható Törlés most kínál, így könnyebben helyreállíthatja az adatokat próbál módosított vagy törölt egy alkalmazás vagy más storage-fiók felhasználó által.
 services: storage
 author: MichaelHauss
-manager: vamshik
 ms.service: storage
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
-ms.openlocfilehash: 37ae52b34cc87a7d78524f893a3b1577a5a59f7e
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.component: blobs
+ms.openlocfilehash: 0e7487525dc23482cbd3029b626e7bb30dd51b50
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248825"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398560"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Helyreállítható Törlés az Azure Storage-BLOB
 Azure Storage blob-objektumok a helyreállítható Törlés most kínál, így könnyebben helyreállíthatja az adatokat próbál módosított vagy törölt egy alkalmazás vagy más storage-fiók felhasználó által.
@@ -139,7 +139,7 @@ Az Azure Blob Storage díjai az általános további részletekért tekintse meg
 
 Ha kezdetben kapcsolni a helyreállítható törlés, segít jobban megérteni, hogy a szolgáltatás hogyan érinti a számla egy kis megőrzési időszak használatát javasoljuk.
 
-## <a name="quickstart"></a>Gyors üzembe helyezés
+## <a name="quickstart"></a>Első lépések
 ### <a name="azure-portal"></a>Azure Portal
 Helyreállítható törlés engedélyezéséhez lépjen a **helyreállítható törlési** lehetőség **Blob Service**. Kattintson a **engedélyezve** , és meg szeretné őrizni a helyreállíthatóan törölt adatok napok számát adja meg.
 
@@ -202,7 +202,7 @@ A helyreállítható törlés currrent adatmegőrzési házirend megkereséséhe
    Get-AzureStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI) 
+### <a name="azure-cli"></a>Azure CLI 
 Helyreállítható törlés engedélyezéséhez frissítse az ügyfél blob szolgáltatás tulajdonságai:
 
 ```azurecli-interactive
@@ -274,7 +274,7 @@ blockBlob.StartCopy(copySource);
 ## <a name="should-i-use-soft-delete"></a>Helyreállítható törlés érdemes használni?
 Ha esély van arra, hogy az adatok akkor véletlenül által módosított vagy törölt egy alkalmazás vagy a storage-fiók egy másik felhasználó, ajánlott bekapcsolni a helyreállítható törlés. Helyreállítható törlés egy adatvédelmi stratégiát egy része, és segít megelőzni a véletlen adatvesztést okoz.
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 **Milyen tárolási típus esetében használható a helyreállítható törlés?**  
 Jelenleg a helyreállítható törlés csak akkor használható (objektum) a blob Storage.
 

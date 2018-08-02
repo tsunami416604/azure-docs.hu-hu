@@ -1,9 +1,9 @@
 ---
-title: Azure Linux virtuális gép ügynök áttekintése |} Microsoft Docs
-description: Megtudhatja, hogyan telepítse és konfigurálja a Linux-ügynök (waagent) a virtuális gép az Azure Fabric Controller kezeléséhez.
+title: Azure Linux rendszerű virtuális gép-ügynök – áttekintés |} A Microsoft Docs
+description: Megtudhatja, hogyan telepítése és konfigurálása Linux-ügynök (waagent) a virtuális gép az Azure Fabric Controller kezeléséhez.
 services: virtual-machines-linux
 documentationcenter: ''
-author: danis
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
-ms.author: danis
+ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2fe93cba2c8b295925ce4cfa8c3017ee1373261
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d3cba4e884b64d47c4e3109b23aebab7dd9da45f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942766"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412160"
 ---
-# <a name="understanding-and-using-the-azure-linux-agent"></a>Megismeréséhez és használatához az Azure Linux ügynök
+# <a name="understanding-and-using-the-azure-linux-agent"></a>Megismeréséhez és használatához az Azure Linux-ügynök
 
-A Microsoft Azure Linux-ügynök (waagent) a Linux és freebsd rendszerű kiépítés és az Azure Fabric Controller interakcióba VM kezeli. A Linux-ügynök üzembe helyezési funkciók mellett Azure is lehetőséget nyújt a felhő inicializálás használatával az egyes Linux operációs rendszer. A Linux-ügynök a következő funkciókat biztosítja a Linux és freebsd rendszerű infrastruktúra-szolgáltatási központi telepítések:
+A Microsoft Azure Linux-ügynök (waagent) kezeli a Linux és FreeBSD kiépítés és az Azure Fabric Controller VM-szal. A Linux-ügynök kiépítési funkciókat biztosító Azure cloud-init használata az egyes Linux rendszerű OSE-kre lehetőséget is nyújt. A Linux-ügynök a következő funkciókat tartalmazza a Linux és freebsd rendszerű IaaS központi telepítések:
 
 > [!NOTE]
 > További információkért lásd: a [információs](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
 > 
 > 
 
-* **Kép kiépítése**
+* **Lemezképek telepítése**
   
   * A felhasználói fiók létrehozása
-  * SSH hitelesítési típus konfigurálása
-  * Az SSH nyilvános kulcsok és kulcspárok központi telepítését
-  * Beállítás a gazdagép neve
-  * Az állomásnév közzététele a DNS platform
-  * SSH-kulcs ujjlenyomat állomás Reporting a platformra
+  * SSH hitelesítési típusok konfigurálása
+  * Nyilvános SSH-kulcsokat és a kulcspárokat központi telepítését
+  * A gazdagép nevének beállítása
+  * A gazdagép nevét a platform DNS való közzétételéhez
+  * A platform a jelentéskészítés SSH gazdagép ujjlenyomata
   * Erőforrás Lemezkezelés
-  * Formázás és az erőforrás-lemez csatlakoztatása
-  * Lapozófájl konfigurálása
+  * Színformázás és az erőforrás-lemez csatlakoztatása
+  * Lapozófájl-kapacitás beállítása
 * **Hálózat**
   
-  * Útvonalak való kompatibilitás érdekében platform DHCP-kiszolgálók kezelése
-  * Biztosítja a stabilitását a hálózati kapcsolat neve
+  * Kezeli az útvonalak platform DHCP-kiszolgálókon való kompatibilitás érdekében
+  * Biztosítja a stabilitását a hálózati adapter neve
 * **Kernel**
   
-  * Konfigurálja a virtuális NUMA (letiltja a kernel <`2.6.37`)
-  * Hyper-V entrópia /dev/random a felhasználva
-  * Konfigurálja az SCSI-időtúllépések a legfelső szintű eszköz (amely lehet távoli)
+  * Konfigurálja a virtuális NUMA-t (letiltja a kernel <`2.6.37`)
+  * Hyper-V vysokou a /dev/random használ fel
+  * Konfigurálja a SCSI-időtúllépések, a legfelső szintű eszköz (amely lehet távoli)
 * **Diagnosztika**
   
-  * A soros portjára segítségével
-* **Az SCVMM központi telepítések**
+  * A soros port konzol-átirányítás
+* **SCVMM központi telepítések**
   
-  * Észleli és a VMM-ügynök Linux betöltéséhez, ha a System Center Virtual Machine Manager 2012 R2 környezetben futó
+  * Észleli, és csatlakoztatja a Linuxhoz készült VMM-ügynököt, amikor a System Center Virtual Machine Manager 2012 R2 környezetben futó
 * **Virtuálisgép-bővítmény**
   
-  * Linux virtuális gép (IaaS) szoftver engedélyezéséhez és a konfigurációs automation Microsoft és a partnerei által készített összetevő beszúrása
-  * A Virtuálisgép-bővítmény hivatkozási végrehajtása [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Linux rendszerű virtuális gép (IaaS) szoftver engedélyezéséhez és a konfigurálás automatizálásához a Microsoft és partnerei által készített összetevők beszúrása
+  * A Virtuálisgép-bővítmény referenciaimplementáció [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Kommunikáció
-Az ügynöknek a platformról információáramlás két csatornákon keresztül történnek:
+Az ügynök a platformról információáramlás két csatornákon keresztül történik:
 
-* A rendszerindítás DVD csatolt IaaS telepítésekhez. A DVD-t egy OVF-kompatibilis konfigurációs fájl, amely tartalmazza a tényleges SSH keypairs kivételével az összes kiépítési információkat tartalmaz.
-* A TCP-végpont teszi ki a REST API-t használja a központi telepítés és a topológia konfigurációjával.
+* A rendszerindításkor DVD-ről a szolgáltatott infrastruktúra telepített példányainak csatolva. A DVD-t egy OVF-kompatibilis konfigurációs fájlt, amely tartalmazza a tényleges SSH keypairs kivételével az összes kiépítési információkat tartalmaz.
+* TCP-végpont adatokhoz hozzáférést biztosító REST API segítségével a telepítési és konfigurációs topológiát.
 
 ## <a name="requirements"></a>Követelmények
-A következő rendszerek lettek tesztelve, és ismert, hogy az Azure Linux ügynök használata:
+A következő rendszerek teszteltük, és ismert, hogy az Azure Linux-ügynök használata:
 
 > [!NOTE]
-> Ebben a listában a Microsoft Azure platformon támogatott rendszerek hivatalos listája eltérhet a itt leírtak szerint: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
+> Ez a lista eltérhet a Microsoft Azure platformon támogatott rendszerek hivatalos listáját itt leírtak szerint: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -88,52 +88,52 @@ A következő rendszerek lettek tesztelve, és ismert, hogy az Azure Linux ügyn
 
 Egyéb támogatott rendszerek:
 
-* Freebsd rendszerű 10 + (Azure Linux ügynök v2.0.10 +)
+* FreeBSD 10 + (az Azure Linux-ügynök v2.0.10 +)
 
 A Linux-ügynök megfelelő működéséhez néhány rendszer csomag függ:
 
-* Python 2.6 +
+* Python 2.6
 * OpenSSL 1.0 +
-* OpenSSH 5.3 +
+* Az OpenSSH 5.3 +
 * Fájlrendszer segédprogramok: sfdisk, fdisk, mkfs, válogatottak
 * Jelszó-eszközök: chpasswd, sudo
-* Eszközök feldolgozása szöveg: csökkentésének, grep
+* Eszközök szövegfeldolgozást: csökkentésének, a grep
 * A hálózati eszközök: ip-útvonal
-* Kernel támogatása UDF fájlrendszerek csatlakoztatni.
+* Kernel csatlakoztatni UDF fájlrendszereit támogatja.
 
 ## <a name="installation"></a>Telepítés
-A telepítési csomag tárházból egy RPM vagy DEB-csomag telepítését a előnyben részesített lehetőség, telepítése és az Azure Linux ügynök frissítése. Minden a [terjesztési szolgáltatók által támogatott](../linux/endorsed-distros.md) az Azure Linux-ügynök csomagja integrálja a képeket és tárházak találhatók.
+A terjesztési csomag adattárból az RPM- vagy DEB-csomag telepítését a telepítése és frissítése az Azure Linux-ügynök előnyben részesített módszer. Az összes a [terjesztési szolgáltatók által támogatott](../linux/endorsed-distros.md) integrálhatja az Azure-beli Linuxos ügynök csomag adattárak, valamint a lemezképek.
 
-A dokumentációban találja a [Azure Linux ügynök-tárház a Githubon](https://github.com/Azure/WALinuxAgent) a speciális telepítési lehetőségeket, például a forrás vagy egyéni helyek vagy az előtagok telepítése.
+A dokumentáció a [Azure Linux-ügynök adattárat a Githubon](https://github.com/Azure/WALinuxAgent) a speciális telepítési lehetőségekről, például a forrás vagy egyéni helyek vagy előtagok telepítése.
 
 ## <a name="command-line-options"></a>Parancssori kapcsolók
-### <a name="flags"></a>Jelzők
+### <a name="flags"></a>Jelölők
 * részletes: növelése a megadott parancs
 * kényszerített: hagyja ki az egyes parancsok interaktív megerősítése
 
 ### <a name="commands"></a>Parancsok
 * Súgó: a támogatott parancsok és jelzők sorolja fel.
-* deprovision: próbálja meg törölni a rendszer, és lehetővé teszi a megfelelő reprovisioning. A következő művelet törlése:
+* megszüntetési: próbál meg törölni a rendszer, és adja meg a megfelelő reprovisioning. A következő művelet törlése:
   
-  * Az összes SSH állomáskulcsai (ha Provisioning.RegenerateSshHostKeyPair "y", a konfigurációs fájlban)
-  * A /etc/resolv.conf névkiszolgáló-konfiguráció
-  * Gyökér szintű jelszavát a /etc/shadow (ha Provisioning.DeleteRootPassword "y", a konfigurációs fájlban)
-  * Gyorsítótárazott DHCP-ügyfél bérletek
+  * Az összes SSH állomáskulcsok (ha Provisioning.RegenerateSshHostKeyPair "y", a konfigurációs fájlban)
+  * Az /etc/resolv.conf névkiszolgáló-konfiguráció
+  * Gyökér szintű jelszó a rendszergazda (ha Provisioning.DeleteRootPassword "y", a konfigurációs fájlban)
+  * Gyorsítótárazott DHCP-ügyfélbérletek
   * A localhost.localdomain állomásnév visszaállítása
 
 > [!WARNING]
-> Megszüntetés nem garantálható, hogy a lemezkép minden a bizalmas adatok törlődik, és a megfelelő terjesztési.
+> A megszüntetés nem garantálja, hogy a lemezkép törlődik a bizalmas adatok, és alkalmas terjesztési.
 > 
 > 
 
-* deprovision + felhasználói: hajt végre minden - deprovision (fent) is törli a legutóbbi kiépített felhasználói fiókot (/var/lib/waagent nyert) és az adatok. Ez a paraméter esetén a megszüntetést egy olyanra, amely korábban az Azure-on kiépítés volt, előfordulhat, hogy lehet rögzíteni és használja fel újra.
-* verzió: waagent-verzió
-* serialconsole: ttyS0 megjelölni LÁRVAJÁRAT konfigurálása (az első soros port) a rendszerindító konzollal. Ez biztosítja, hogy kernel rendszerindítási naplókat a soros port küldött és elérhetővé tenni a hibakereséshez.
-* démon: waagent futtató démon kezeléséhez a platformon. Ennek az argumentumnak a waagent a waagent init parancsfájl van megadva.
-* Start: háttérfolyamatként waagent futtatása
+* megszüntetési + felhasználó: hajt végre minden - megszüntetési (feljebb) és is törli az utoljára kiépített felhasználói fiókot (/var/lib/waagent szerzett) és a kapcsolódó adatokat. Ezt a paramétert akkor, ha a megszüntetést olyan lemezképet, amely korábban az Azure-ban kiépítés volt, előfordulhat, hogy lehet rögzíteni és újra felhasználható.
+* verzió: waagent verzióját jeleníti meg
+* serialconsole: konfigurálja a grub-HIBÁT való megjelöléséhez ttyS0 (az első soros port), a rendszerindító konzol. Ez biztosítja, hogy a rendszermag rendszerindítási naplók küldött a soros port és a hibakereséshez elérhetővé.
+* démon: waagent futtató démon a platformmal való kezeléséhez. Ennek az argumentumnak a waagent a waagent init parancsfájl van megadva.
+* Indítsa el: waagent futtatása háttérfolyamatként
 
 ## <a name="configuration"></a>Konfiguráció
-Egy konfigurációs fájl (/ etc/waagent.conf) waagent műveleteit szabályozza. Az alábbiakban látható egy példa konfigurációs fájlt:
+Egy konfigurációs fájl (/ etc/waagent.conf) waagent műveleteket szabályozza. Az alábbiakban látható egy minta konfigurációs fájlt:
 
     ```
     Provisioning.Enabled=y
@@ -161,17 +161,17 @@ Egy konfigurációs fájl (/ etc/waagent.conf) waagent műveleteit szabályozza.
     AutoUpdate.Enabled=y
     ```
 
-A következő különböző konfigurációs beállításokat. Beállítási lehetőségek állnak a három típusa létezik; Logikai érték, String vagy Integer. "Y" vagy "n" logikai konfigurációs beállításokat adhat meg. A speciális kulcsszó "None" használhatók a néhány karakterlánc típusú konfigurációs elemet a következő adatokat:
+Az alábbiakban különböző konfigurációs beállításokat a leírtak szerint. Konfigurációs lehetőségeket vannak három típusa létezik; Logikai érték beolvasása, karakterlánc vagy egész szám. A logikai lehetőségek "y" vagy "n" adható meg. A speciális kulcsszó "None" használható bizonyos karakterlánc típusú konfigurációs bejegyzéseket a következő adatokat:
 
 **Provisioning.Enabled:**  
 ```
 Type: Boolean  
 Default: y
 ```
-A felhasználó engedélyezhető vagy tiltható le az ügynököt a kiépítési funkciói. Érvényes értékek: "y" vagy "n". Kiépítés le van tiltva, ha a kép SSH-állomás és a felhasználói kulcsok megmaradnak, és a kiépítés API Azure-ban megadott minden beállítás figyelmen kívül hagyja.
+Ez lehetővé teszi a felhasználó engedélyezheti vagy tilthatja le a kiépítési az ügynök-funkciókat. Érvényes értékek: "y" vagy "n". Kiépítés le van tiltva, ha megmaradnak a gazdagép és a felhasználó lévő SSH-kulcsokat a lemezképet, és az Azure-beli üzembe helyezési API megadott minden beállítás figyelmen kívül hagyja.
 
 > [!NOTE]
-> A `Provisioning.Enabled` "n" Ubuntu felhő lemezképeket inicializálás felhőben történő üzembe helyezéséhez használjon a paraméter alapértelmezett értéke.
+> A `Provisioning.Enabled` Ubuntu felhő-rendszerképek üzembe helyezés a cloud-init használó "n" paraméter alapértelmezett értéke.
 > 
 > 
 
@@ -180,161 +180,161 @@ A felhasználó engedélyezhető vagy tiltható le az ügynököt a kiépítési
 Type: Boolean  
 Default: n
 ```
-Ha be van állítva, a/etc/árnyékmásolat fájlban gyökér szintű jelszavát a telepítési folyamat során elvész.
+Ha a beállított, az/etc/shadow fájlt a gyökér szintű jelszavát a kiépítési folyamat során elvész.
 
 **Provisioning.RegenerateSshHostKeyPair:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Ha be van állítva, az összes SSH állomás kulcspárok (ecdsa dsa vagy rsa) a rendszer törli az/etc/ssh/a telepítési folyamat során. És egy egyetlen új kulcspár.
+Ha a beállított, az összes SSH gazdagép kulcspárokat (ecdsa, dsa és rsa) az/etc/ssh/a kiépítési folyamat során törlődnek. És a egy egyetlen új kulcspár.
 
-A friss kulcspár titkosítási típus a Provisioning.SshHostKeyPairType bejegyzés által konfigurálható. Néhány azokat a terjesztéseket hozza létre újra a hiányzó titkosítási típusok SSH-kulcspár az SSH démon (például biztonsági újraindításkor) újraindításakor.
+A friss kulcspár titkosítási típus a Provisioning.SshHostKeyPairType bejegyzés által konfigurálható. Néhány disztribúciók hozza létre újra az összes hiányzó titkosítási típusok SSH-kulcspárok az SSH démon (például egy újraindítás) után újraindításakor.
 
 **Provisioning.SshHostKeyPairType:**  
 ```
 Type: String  
 Default: rsa
 ```
-Ez a virtuális gépen az SSH démon által támogatott titkosítási algoritmus típust állítható be. A általában támogatott értékek: "rsa", "dsa" és "ecdsa". "putty.exe" a Windows nem támogatja a "ecdsa". Igen ha az Windows putty.exe segítségével csatlakozzon a Linux-környezethez, használja "rsa" vagy "dsa".
+Ez a virtuális gépen az SSH démon által támogatott titkosítási algoritmus típust állítható. Az általában támogatott értékei a következők: "rsa", "dsa" és "ecdsa". "putty.exe" a Windows nem támogatja a "ecdsa". Ezért ha szeretne Windows putty.exe használatával csatlakozhat egy Linux-telepítést, a "rsa" vagy "dsa".
 
 **Provisioning.MonitorHostName:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Ha be van állítva, waagent figyeli a Linux virtuális gép állomásnevét módosítási (a parancs által visszaadott "állomásnév"), és automatikusan frissíteni az ábrán a változásnak olyan hálózati beállításokat. Ahhoz, hogy a kiszolgálónév-változás leküldése a DNS-kiszolgálók, hálózat a virtuális gép újraindul. Ennek eredményeképp a Internet kapcsolat megszakadása röviden.
+Ha a készlet, waagent figyeli a Linux virtuális gép állomásneve módosítások (mivel a parancs által visszaadott "állomásnév"), és automatikusan frissíti az ábrán a változás tükrözése érdekében hálózati konfigurációját. Annak érdekében, hogy a névmódosítás leküldése a DNS-kiszolgálók, hálózat a virtuális gép újraindul. Az eredmény röviden internetkapcsolat elvesztését.
 
 **Provisioning.DecodeCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ha be van állítva, waagent a Base64 kódolású anyag CustomData dekódolása.
+Ha a készlet, waagent a Base64 kódolású anyag CustomData dekódol.
 
 **Provisioning.ExecuteCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ha be van állítva, waagent CustomData kiépítése után végrehajtása során.
+Ha a készlet, waagent CustomData kiépítése után hajtja végre.
 
 **Provisioning.AllowResetSysUser**
 ```
 Type: Boolean
 Default: n
 ```
-Ez a beállítás lehetővé teszi, hogy a jelszót a sys felhasználó állítható alaphelyzetbe; alapértelmezett le van tiltva.
+Ez a beállítás lehetővé teszi, hogy az alaphelyzetbe állítandó; a sys-felhasználó jelszavát alapértelmezett le van tiltva.
 
 **Provisioning.PasswordCryptId**  
 ```
 Type: String  
 Default: 6
 ```
-Jelszókivonat létrehozásakor használt titkosítási algoritmus.  
+Jelszókivonat készítésekor használt titkosítási algoritmus.  
  1 - MD5  
  2a – Blowfish  
- 5 - SHA-256  
- 6 - SHA-512  
+ 5 – A SHA-256 ALGORITMUST  
+ 6 – SHA-512  
 
 **Provisioning.PasswordCryptSaltLength**  
 ```
 Type: String  
 Default: 10
 ```
-Jelszókivonat létrehozásához használt véletlenszerű védőérték hosszát.
+Jelszókivonat létrehozásához használt véletlenszerű Salt érték hossza.
 
 **ResourceDisk.Format:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Ha beállítva, az erőforrás lemez a platform által biztosított formázott és waagent által csatlakoztatott, ha a fájlrendszer típusát kérte a felhasználónak a "ResourceDisk.Filesystem" nem "ntfs". Egy olyan partíciót, Linux (83) típusú szeretné elérhetővé tenni a lemezen. Ez a partíció nem van formázva, ha sikeresen csatlakoztatva.
+Ha a beállítása, az erőforrás lemez a platform által biztosított formátumú, és waagent által csatlakoztatott, ha a fájlrendszer típusát, a felhasználó a "ResourceDisk.Filesystem" nem "ntfs". A lemez Linux (83) típus egy partíció legyen elérhető. Ez a partíció nem van formázva, ha sikeresen csatlakoztatva.
 
 **ResourceDisk.Filesystem:**  
 ```
 Type: String  
 Default: ext4
 ```
-Azt határozza meg az erőforrás-lemez a fájlrendszer típusát. A Linux-disztribúció által támogatott értékek eltérők lehetnek. Ha a karakterlánc X, majd mkfs. X a Linux-lemezkép jelen kell lennie. SLES 11 lemezképeket általában használjon "ext3". Freebsd rendszerű lemezképek itt "ufs2" kell használni.
+Ez meghatározza a fájlrendszer az erőforrás-lemez. Támogatott értékei eltérőek a Linux-disztribúció. Ha a karakterlánc X, majd mkfs. X a Linux-rendszerképek jelen kell lennie. SLES 11 lemezképeket általában használjon "ext3". FreeBSD lemezképek "ufs2" Itt kell használni.
 
 **ResourceDisk.MountPoint:**  
 ```
 Type: String  
 Default: /mnt/resource 
 ```
-Azt határozza meg az elérési utat, amelyen az erőforrás-lemez csatlakoztatva van. Az erőforrás-lemez van egy *ideiglenes* lemezre, és előfordulhat, hogy szerepelnek, ha a virtuális gép van platformelőfizetés.
+Megadja az elérési utat, amelyen az erőforrás-lemez csatlakoztatva van. Az erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép.
 
 **ResourceDisk.MountOptions**  
 ```
 Type: String  
 Default: None
 ```
-A mount -o parancs átadandó lemez csatlakoztatási beállításait adja meg. Például ez az értékek, vesszővel tagolt listája. "nodev, nosuid". Tekintse meg a részletes mount(8).
+Megadja a lemez csatlakoztatási beállítások történő átadása a mount -o parancsot. Például ez az értékek vesszővel elválasztott listáját. "nodev, nosuid". Tekintse meg a részleteket mount(8).
 
 **ResourceDisk.EnableSwap:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ha beállításához lapozófájl (/ swapfile), az erőforrás lemezen létrehozni, és a rendszer lapozóterület hozzáadni.
+Ha a beállítása, a lapozófájl (/ swapfile), az erőforrás-lemezen létrehozni, és a rendszer lapozóterület hozzáadni.
 
 **ResourceDisk.SwapSizeMB:**  
 ```
 Type: Integer  
 Default: 0
 ```
-A lapozófájl mérete (MB) mérete.
+MB-ban a lapozófájl mérete.
 
 **Logs.Verbose:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ha be van állítva, napló részletességi súlyozott van. Waagent /var/log/waagent.log jelentkezik, és használja a rendszer logrotate működőképességét elforgatása naplókat.
+Ha a csoportba, a napló részletességi súlyozott van. Waagent /var/log/waagent.log jelentkezik, és használja a naplók rotálása logrotate rendszerfunkcióit.
 
 **OS.EnableRDMA**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ha be van állítva, az ügynök megpróbálja telepítse, majd betölteni az RDMA egy rendszermag-illesztőprogramot, amely ugyanolyan verziójúak, mint az alapul szolgáló hardverben belső vezérlőprogramját.
+Ha a beállított, az ügynök megpróbálja telepíteni, és töltsön be egy RDMA kernel-illesztőprogram, amely megfelel az alapul szolgáló hardver belső vezérlőprogramjának verzióját.
 
 **AZ OPERÁCIÓS RENDSZER. RootDeviceScsiTimeout:**  
 ```
 Type: Integer  
 Default: 300
 ```
-Ezzel a beállítással a SCSI-időtúllépés másodpercben az operációs rendszer lemez- és meghajtókon. Ha nincs beállítva, a rendszer alapértelmezett értékeket használják.
+Ezzel a beállítással az SCSI-időtúllépés másodpercben, az operációs rendszer lemez- és meghajtókon. Ha nincs beállítva, a rendszer alapértelmezett értékek használatát.
 
 **AZ OPERÁCIÓS RENDSZER. OpensslPath:**  
 ```
 Type: String  
 Default: None
 ```
-Ez a beállítás segítségével adjon meg egy alternatív elérési utat a titkosítási műveletek használandó bináris openssl.
+Ez a beállítás adja meg egy alternatív elérési utat a titkosítási műveletek használandó bináris openssl használható.
 
 **HttpProxy.Host, HttpProxy.Port**  
 ```
 Type: String  
 Default: None
 ```
-Ha be van állítva, az ügynök az internet eléréséhez a proxykiszolgálót használ. 
+Ha a beállított, az ügynök az internet eléréséhez proxykiszolgáló használ. 
 
 **AutoUpdate.Enabled**
 ```
 Type: Boolean
 Default: y
 ```
-Engedélyezi vagy letiltja az automatikus frissítés feldolgozása; célt állapothoz Alapértelmezés szerint engedélyezve.
+Engedélyezi vagy letiltja az automatikus frissítés feldolgozása; cél állapot Alapértelmezés szerint engedélyezve.
 
 
 
-## <a name="ubuntu-cloud-images"></a>Ubuntu felhő lemezképek
-Ubuntu felhő lemezképek használata [felhő inicializálás](https://launchpad.net/ubuntu/+source/cloud-init) számos konfigurációs feladatok végrehajtását, amelyek egyébként volna kezeli az Azure Linux ügynök. Alkalmazza a következő eltérésekkel:
+## <a name="ubuntu-cloud-images"></a>Ubuntu felhő-rendszerképek
+Ubuntu felhő-rendszerképek használatához [a cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) számos, ellenkező esetben lenne az Azure Linux-ügynök által felügyelt konfigurációs feladatok végrehajtásához. Az alábbi eltérések a alkalmazni:
 
-* **Provisioning.Enabled** az alapértelmezett érték "n" a telepítési feladatok végrehajtásához használja a felhő inicializálás Ubuntu felhő lemezképeket.
-* A következő konfigurációs paraméterek nem befolyásolják a felhő inicializálás segítségével kezelheti az erőforrás-lemez, és a lapozófájl Ubuntu felhő lemezképek:
+* **Provisioning.Enabled** , az alapértelmezett érték "n" Ubuntu felhő-rendszerképek, amely a cloud-init használatával üzembe helyezési feladatok végrehajtására.
+* Az alábbi konfigurációs paramétereket nem befolyásolják a Ubuntu Felhőbeli rendszerkép található, a cloud-init használata kezelheti az erőforrás-lemez és a lapozófájl:
   
   * **ResourceDisk.Format**
   * **ResourceDisk.Filesystem**
@@ -342,8 +342,8 @@ Ubuntu felhő lemezképek használata [felhő inicializálás](https://launchpad
   * **ResourceDisk.EnableSwap**
   * **ResourceDisk.SwapSizeMB**
 
-* További információkért tekintse meg az erőforrás lemez csatlakoztatási pont és a lapozófájl Ubuntu felhő képek a kiépítés során a következőket:
+* További információkért tekintse meg az erőforrás-lemez csatlakoztatási pont konfigurálása és üzembe helyezés során a felhő-rendszerképek Ubuntu lapozófájl az alábbi forrásanyagokat:
   
-  * [Ubuntu Wiki: Lapozófájl-kapacitás-partíciók konfigurálása](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Egyéni adatok hogy Azure virtuális géphez](../windows/classic/inject-custom-data.md)
+  * [Ubuntu Wiki: A lapozófájl-kapacitás-partíciók konfigurálása](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Egyéni adatok betöltése az Azure virtuális gépként](../windows/classic/inject-custom-data.md)
 

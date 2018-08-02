@@ -12,17 +12,17 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.date: 06/25/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 3b0fbbe466f51a6216716d274f238497a8a79294
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+ms.openlocfilehash: bd345f5ce2db6d35ed1c921466d7761e69bf85f0
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441634"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398658"
 ---
 # <a name="permissions-in-azure-active-directory"></a>Engedélyek az Azure Active Directoryban
 
@@ -99,7 +99,7 @@ Az Azure AD-ben lévő alkalmazások a jóváhagyásokra támaszkodnak a szüks�
     - a `Permission` a felhasználók által az adatokon végezhető műveletet jelöli, 
     - a nem kötelező `Modifier` pedig egy másik engedély specializációit írja le. 
     
-    Például: 
+    Példa: 
     * Mail.Read – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket.
     * Mail.ReadWrite – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket és leveleket írjanak.
     * Mail.ReadWrite.All – Lehetővé teszi, hogy egy rendszergazda vagy felhasználó elérje a cégben lévő összes levelet.

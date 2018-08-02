@@ -2,23 +2,18 @@
 title: Az Azure blobtárolási rétege gyakran és ritkán használt, valamint archivált adatokhoz | Microsoft Docs
 description: A gyakran és a ritkán használt, valamint az archivált adatok tárolása Azure Storage-fiókok esetében.
 services: storage
-documentationcenter: ''
 author: kuhussai
-manager: jwillis
-editor: ''
-ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: 21b09d9c428f9c29e0048faa32ce5349a127be89
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.component: blobs
+ms.openlocfilehash: 5d12b9f04dc1cc5017ab4c9ff1bde9b84ac24cfe
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400384"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív tárolási szintek
 
@@ -72,7 +67,7 @@ A rehidratálás során a blob **Archív állapot** tulajdonságának ellenőrz�
 
 A blobszintű rétegezés segítségével az adatok szintje egyetlen művelet, a [Blobszint beállítása](/rest/api/storageservices/set-blob-tier) használatával módosítható az egyes objektumok szintjén. A blobok hozzáférési szintje a használati forgatókönyvek változásával könnyen állítható a gyakran és ritkán használt, valamint az archív szintek között anélkül, hogy az adatokat át kellene helyezni egyik fiókból a másikba. Az archív blobok rehidratálásától eltekintve, ami több órát is igénybe vehet, a szintváltások azonnal megtörténnek. Az utolsó blobszint-módosítás időpontja a **Hozzáférési szint utolsó módosítása** blobtulajdonságon keresztül érhető el. Ha egy blob az archív szinten van, előfordulhat, hogy nem felülírható, ezért ugyanennek a blobnak a feltöltése nem engedélyezett ebben a forgatókönyvben. A gyakran használt és a ritkán használt adatokat tároló szint felülírható egy blobhoz, és ebben az esetben az új blob örökli a felülírt régi blob szintjét.
 
-Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azok a blobok, amelyekhez nincs kifejezetten hozzárendelve szint, a fiók hozzáférési szintjének beállítását veszik át. Ha a hozzáférési szint a fióktól vette a beállításait, a **Hozzáférési szint következtetett** blobtulajdonság beállítása „true”, és a blob **Hozzáférési szint** blobtulajdonság megfelel a fiókszintjének. Az Azure Portalon a hozzáférési szint hozott tulajdonsága a blob hozzáférési szintjével együtt jelenik meg (például Gyakori (következtetett) vagy Ritka (következtetett)).
+Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azok a blobok, amelyekhez nincs kifejezetten hozzárendelve szint, a fiók hozzáférési szintjének beállítását veszik át. Ha a hozzáférési szint a fióktól vette a beállításait a fiók, akkor tekintse meg a **hozzáférési szint következtetett** blobtulajdonság beállítása "true", és a blob **hozzáférési szint** blobtulajdonság megfelel a fiókszintjének. Az Azure Portalon a hozzáférési szint hozott tulajdonsága a blob hozzáférési szintjével együtt jelenik meg (például Gyakori (következtetett) vagy Ritka (következtetett)).
 
 > [!NOTE]
 > Az archív tárolás és a blobszintű rétegezés csak a blokkblobokat támogatja. A pillanatképeket tartalmazó blokkblob szintje sem módosítható.
@@ -97,7 +92,7 @@ Az alábbi táblázat a gyakori és ritka elérésű, valamint archív tárolás
 | **Rendelkezésre állás** <br> **(RA-GRS olvasások)**| 99.99% | 99.9% | N/A |
 | **Használati díjak** | Magasabb tárolási, alacsonyabb hozzáférési és tranzakciós költségek | Alacsonyabb tárolási, magasabb hozzáférési és tranzakciós költségek | Legalacsonyabb tárolási, legmagasabb hozzáférési és tranzakciós költségek |
 | **Minimális objektumméret** | N/A | N/A | N/A |
-| **Minimális tárolási időtartam** | N/A | 30 nap (csak GPv2 esetében) | 180 nap
+| **Minimális tárolási időtartam** | – | 30 nap (csak GPv2 esetében) | 180 nap
 | **Késés** <br> **(Az első bájtig eltelt idő)** | ezredmásodperc | ezredmásodperc | < 15 óra
 | **Méretezhetőségi és teljesítménycélok** | Ugyanazok, mint az általános célú tárfiókok esetében | Ugyanazok, mint az általános célú tárfiókok esetében | Ugyanazok, mint az általános célú tárfiókok esetében |
 

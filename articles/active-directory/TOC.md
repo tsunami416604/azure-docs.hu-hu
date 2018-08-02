@@ -153,26 +153,23 @@
 
 
 ## Eszközök kezelése
-### [Bevezetés](device-management-introduction.md)
-### [Az Azure Portal használata](device-management-azure-portal.md)
-### [Az Azure AD Join megtervezése](active-directory-azureadjoin-deployment-aadjoindirect.md)
-### [Gyakori kérdések](device-management-faq.md)
+### [Áttekintés](devices/overview.md)
+### [Az Azure Portal használata](devices/device-management-azure-portal.md)
+### [Az Azure AD Join megtervezése](devices/azureadjoin-plan.md)
+### [Gyakori kérdések](devices/faq.md)
 ### Feladatok
 #### [A hibrid Azure Active Directory-csatlakozás megvalósításának tervezése](devices/hybrid-azuread-join-plan.md)
 #### [A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz](devices/hybrid-azuread-join-managed-domains.md)
 #### [A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz](devices/hybrid-azuread-join-federated-domains.md)
 #### [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](devices/hybrid-azuread-join-control.md)
-
-
-
 #### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök beállítása](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Az Azure AD-hez csatlakoztatott eszközök beállítása](user-help/device-management-azuread-joined-devices-setup.md)
 #### [Hibrid Azure AD-hez csatlakoztatott eszközök beállítása](devices/hybrid-azuread-join-manual-steps.md)
 #### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
-#### [Azure AD-csatlakozás a Windows 10 első futtatási élménye alkalmával](device-management-azuread-joined-devices-frx.md)
+#### [Azure AD-csatlakozás a Windows 10 első futtatási élménye alkalmával](devices/azuread-joined-devices-frx.md)
 ### Hibaelhárítás
-#### [Hibrid Azure AD-csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök](device-management-troubleshoot-hybrid-join-windows-current.md)
-#### [Hibrid Azure AD-csatlakoztatott, régebbi Windows-eszközök](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+#### [Hibrid Azure AD-csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [Hibrid Azure AD-csatlakoztatott, régebbi Windows-eszközök](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ## Alkalmazások kezelése
 ### [Áttekintés](manage-apps/what-is-application-management.md)

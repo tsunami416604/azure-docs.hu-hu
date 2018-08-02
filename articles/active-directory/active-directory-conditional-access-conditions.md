@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 59ae7e83bc2b76cb679b0baf1f5739f28ec7046c
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: d868a59dd5d00dea410cbe8c373263e13903d3ba
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248280"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413144"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Mik azok a feltételek az Azure Active Directory feltételes hozzáférés? 
 
@@ -117,7 +117,7 @@ Az eszköz Eszközállapot-feltételt nem tartalmazza a hibrid Azure AD-hoz csat
 Ha azt szeretné, a nem felügyelt eszközök hozzáférésének letiltására, alkalmazzon [eszközalapú feltételes hozzáférési](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
 
 
-## <a name="locations"></a>Földrajzi egységek
+## <a name="locations"></a>Helyek
 
 A helyek, ahol kísérlet történt a kapcsolat alapján feltételeket adhat meg. 
 
@@ -152,7 +152,7 @@ Gyakori alkalmazási esetei ezt az állapotot a következő védelmi szabályzat
 
 - Webes alkalmazásokhoz való hozzáférés letiltása, de a mobil és asztali alkalmazásokhoz való hozzáférés.
 
-Ezt az állapotot webes egyszeri bejelentkezés és a modern hitelesítési protokollok is alkalmazható. Is alkalmazhat, levelezési alkalmazásokban, amely a Microsoft Exchange ActiveSync programot használ. Például a legtöbb okostelefonok natív levelezőalkalmazásait. Örökölt protokollokat használó ügyfélalkalmazások jelenleg az Azure AD összevonási szolgáltatások használatával kell védeni kell.
+Ezt az állapotot webes egyszeri bejelentkezés és a modern hitelesítési protokollok is alkalmazható. Is alkalmazhat, levelezési alkalmazásokban, amely a Microsoft Exchange ActiveSync programot használ. Például a legtöbb okostelefonok natív levelezőalkalmazásait. 
 
 Az ügyfél alkalmazások feltétel csak válassza ki, ha a Microsoft Office 365 Exchange Online az egyetlen olyan kiválasztott felhőalapú alkalmazás.
 
