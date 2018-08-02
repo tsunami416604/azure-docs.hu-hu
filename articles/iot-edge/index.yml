@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 156dc9a825185194c54b58c52bc5ebae47afb918
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414657"
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
@@ -11,14 +17,17 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/21/2018
   ms.author: kgremban
-  ms.openlocfilehash: 4c2ffde78b2a29601722f4233c69c99b37f332d5
-  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37028540"
 abstract:
   description: Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön szeretnék elemezni az adatokat, vagyis „a peremhálózaton”, nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az állapotváltozásokra.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/iot-edge-thumbnail.png
+      width: 250
+    title: Intelligens peremhálózat kiépítése az Azure IoT Edge segítségével (6:59)
+    href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Creating-the-intelligent-edge-with-Azure-IoT-Edge
+    width: 250
 sections:
 - title: 5 perces gyors útmutatók
   items:
@@ -48,4 +57,5 @@ sections:
     - html: <a href="/azure/iot-edge/tutorial-csharp-module">Adatok szűrése egy C#-modullal</a>
     - html: <a href="/azure/iot-edge/tutorial-python-module">Adatok szűrése egy Python-modullal</a>
     - html: <a href="/azure/iot-edge/tutorial-node-module">Adatok szűrése egy Node.js-modullal</a>
+    - html: <a href="/azure/iot-edge/tutorial-c-module">Adatok szűrése C-modullal</a>
     - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Adatok tárolása a peremhálózaton az SQL Serverrel</a>

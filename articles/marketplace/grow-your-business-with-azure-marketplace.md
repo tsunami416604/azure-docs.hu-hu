@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3c45abb16f571485fdea292f9436fe24b550fc10
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
-ms.translationtype: HT
+ms.openlocfilehash: 094958911435b899773ef4ee11176f538a4c8fe0
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358963"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399124"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Növelje üzletét a Marketplace-en 
 Az appsource-on vagy az Azure piactéren az ajánlat közzététele után a Microsofttal közös piaci megjelenést (GTM) tevékenységek használhatja a lista egy kezdőpanele. Vezetői forgalom, a Piactéri ajánlat és gondozásának biztosításáig a Marketplace-en az érdeklődők, például módon nagyszerű felgyorsíthatja az üzlet növekedésének megfelelően. 
@@ -28,7 +28,7 @@ Ebben a cikkben számos marketing ajánlott eljárások a vállalat a Marketplac
 
 ## <a name="app-listing-best-practices"></a>Alkalmazás listázása – ajánlott eljárások
 
-A következő szakaszok táblázatai vonzó Marketplace-ajánlat létrehozására vonatkozó javaslatokat. Írhat, és konfigurálja a marketinganyagok, nyissa meg a [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights). 
+A következő szakaszok táblázatai vonzó marketplace-ajánlat létrehozására vonatkozó javaslatokat. Írhat, és konfigurálja a marketinganyagok, nyissa meg a [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights). 
 
 ### <a name="storefront-offer-details"></a>Storefront ajánlat részletei
 | Storefront beállítás | Ajánlott eljárás |
@@ -57,7 +57,7 @@ A következő szakaszok táblázatai vonzó Marketplace-ajánlat létrehozásár
 
 Nyilvántartásba vételre a Marketplace-en előnyeinek optimális kihasználása érdekében, hogy gyűjtött marketing, amelyek a következő gyakorlati tanácsok az appsource-on és az Azure piactéren. Először mindenképpen tekintse át a gazdasági ajánlott eljárások és források a Microsoft Partner Network (MPN). Ez a hely az átjáró kapcsolódik a Microsoft partneri marketing és szoftveres erőforrások.
 
-Emellett a Marketplace-ajánlat és a vonatkozó kötelezettségvállalást, ügyfélközpontú igény szerinti generálása minőségének segítségével az üzleti növekedés elősegítése. Ezek a tevékenységek szabályzatra hivatkozó segítségével a Microsoft GTM munkahelyi megalapozottabb és a legfontosabb megoldások funkció a kirakattípus a Marketplace-en keresztül.
+Emellett a marketplace-ajánlat és a vonatkozó kötelezettségvállalást, ügyfélközpontú igény szerinti generálása minőségének segítségével az üzleti növekedés elősegítése. Ezek a tevékenységek szabályzatra hivatkozó segítségével a Microsoft GTM munkahelyi megalapozottabb és a legfontosabb megoldások funkció a kirakattípus a Marketplace-en keresztül.
 
 Miután létrehozott egy nagyszerű listázása, a következő marketing kezdeményezések segít terjessze ki üzleti tevékenységét:
 
@@ -75,7 +75,7 @@ Miután létrehozott egy nagyszerű listázása, a következő marketing kezdem�
 
 * Népszerűsítse alkalmazását az appsource-on és/vagy az Azure Marketplace-en.<br>Az alkalmazás leírására mutató hivatkozás, és minden alkalommal, amikor az alkalmazás-t címkézés URL-CÍMÉT használja.
 
-* Marketing- és promóciós kampányok létrehozását.<br>Tervezze meg és hozhat létre a műveletet, amely átirányítja a forgalmat a Marketplace piactéren egyértelmű hívásával felfedezhetővé és engagement, kampányokat.
+* Marketing- és promóciós kampányok létrehozását.<br>Tervezze meg és hozhat létre a műveletet, amely átirányítja a forgalmat a marketplace piactéren egyértelmű hívásával felfedezhetővé és engagement, kampányokat.
 
 * Vásárlói visszajelzéseket kaphat.<br>Ügyfelei számára, hogy küldje el a minősítése, és tekintse át a lista webhely meghívása. Után már a próbaverziót, kapnak egy e-mail-üzenetet felkéri őket megosztani a tapasztalataikat más ügyfelekkel.
 
@@ -105,33 +105,33 @@ A célközönséget minden iparág, függőlegesen vagy kategória nem egyezik. 
 ### <a name="create-clear-campaign-goals"></a>Törölje a kampány célok létrehozása
 Sikeres meghatározása a Marketplace-en a kampány kell, és törölje a fő teljesítménymutatók (KPI) létrehozása. Futtathatja a kampányok több különböző záró céljait, természetesen. A végső célja általában nagyobb bevétel vagy vevői beszerzési; azonban a digitálismarketing-kampányok előfordulhat, hogy időpontjától céljaihoz a vásárlási ciklus egyéb szakaszaiban. Íme, néhány példa: 
 
-* Újonnan indította el a terméket a Marketplace-en. Ebben az esetben előfordulhat, hogy a marketing erőforrások legjobb költött célközönség oktatási és az érdeklődések. generációs. Sikeres határozhat meg a Marketplace piactéren létrehozott érdeklődők száma. Ebben az esetben a marketing taktika (és a kezdőlap) az ügyfelek rajzot a Marketplace piactéren kellene összpontosítani.
+* Újonnan indította el a terméket a Marketplace-en. Ebben az esetben előfordulhat, hogy a marketing erőforrások legjobb költött célközönség oktatási és az érdeklődések. generációs. Sikeres határozhat meg a marketplace piactéren létrehozott érdeklődők száma. Ebben az esetben a marketing taktika (és a kezdőlap) az ügyfelek rajzot a marketplace piactéren kellene összpontosítani.
 
 * Állítsa be a Marketplace-en próbaverzió és a termék csak a bizonyos szintű engagement, és felület, vásárlás előtt. Fontolja meg a kampány célja a letöltött kísérletek számát. Ebben az esetben a kampány taktika művelet meghívásához lenne koncentrálhat, jelentősen lecsökkenti a próbaverzió a Marketplace-en.
 
 * A termék vagy a kategória jól ismert, és állítsa be a Marketplace-en vásárlási lehetőségeket rendelkezik. Vegye figyelembe a rendszer kihagyja a próba-hívás művelet, és a közönség közvetlen a **első most** hivatkozásra a Marketplace-en.
 
-* Az ajánlatot csak az elismert és bevált technológiáját alkalmazza. Vegye figyelembe, hogy átállásig a kampány upselling a rátába és a vezetési művelet növelése a Marketplace vásárlások felé. Az üzenetkezelési szeretne összpontosítani lecsökkenti az ügyfelek számára a Marketplace-en keresztül. A KPI lehet a bevétel, amely akkor jön létre, a piactéren.
+* Az ajánlatot csak az elismert és bevált technológiáját alkalmazza. Vegye figyelembe, hogy átállásig a kampány upselling a rátába és a vezetési művelet növelése a marketplace vásárlások felé. Az üzenetkezelési szeretne összpontosítani lecsökkenti az ügyfelek számára a Marketplace-en keresztül. A KPI lehet a bevétel, amely akkor jön létre, a piactéren.
 
 Függetlenül az Ön ajánlatát a lejárat és a szervezet céljai a következők kulcsokat a kampány hatékonyságának maximalizálása:
 * A kitűzött célokat a fókuszban lévő maradnak.
 * Képezze le egy készletét, amely igazodik a kitűzött célokat integrált marketing taktika ki.
 
-Részeként folyamatban van az új kiadóvá a piactéren a Marketplace-en GTM ingyenes előnyöket a Microsoft kap. Úgy gondolja, hogy kritikus fontosságú ezeket az előnyöket a kampány stratégia használatával kapcsolatban. Lehetővé teszik a marketinges csapata számára a Marketplace-en kampány céljait és a kívánt célközönség művelet. A Microsoft segítségével testre szabhatja a tervbe működéséhez ezeket le.
+Részeként folyamatban van az új kiadóvá a piactéren a piactér ingyenes GTM előnyöket a Microsoft kap. Úgy gondolja, hogy kritikus fontosságú ezeket az előnyöket a kampány stratégia használatával kapcsolatban. Lehetővé teszik a marketinges csapata számára a Marketplace-en kampány céljait és a kívánt célközönség művelet. A Microsoft segítségével testre szabhatja a tervbe működéséhez ezeket le.
 
 A kampány létrehozásához, és eljárások, marketing kapcsolatos további tartalmak ügyeljen arra, hogy folytatni a [intelligens partneri Marketing program](https://partner.microsoft.com/smart-partner-marketing), egyik előnye, hogy csatlakozzon a Microsoft Partner Networkhöz. 
 
 ### <a name="invest-in-merchandising"></a>Termékkihelyezési helyre költeni
 A közzétételi folyamat részeként a fontolja meg, milyen típusú ajánlat létrehozásához, és válasszon egy kategóriát az ajánlat az appsource-on vagy az Azure piactéren. Ügyeljen arra, hogy válasszon egy kategóriát, amely alkalmas a megoldását, így jelenik meg pontosan a lehetséges vásárlók felé.
 
-Piactér kiemelt kínál, ami a legjobb felhasználói élményt és magas színvonalú partner marketing engagement előnyeit a kiválasztott alapulnak. A következő feltételeknek, hogy a megoldás által kiemelt Marketplace részévé válik valószínűségének növelése:
+Piactér kiemelt kínál, ami a legjobb felhasználói élményt és magas színvonalú partner marketing engagement előnyeit a kiválasztott alapulnak. A következő feltételeknek, hogy a megoldás által kiemelt marketplace részévé válik valószínűségének növelése:
 * A lista az egyértelműség érdekében
 * A megoldás minősége
 * A technológia megbízhatóság
 * Az ügyfelek által a platform használatának növekedése
 * A magas színvonalú marketinganyagot létrehozása együttműködés szintjét
 
-Annak a valószínűségét, hogy megjelent-e az ajánlat maximalizálása beruházni a Marketplace-ajánlat sikeres. Az ajánlatban egy kiváló felhasználói élmény biztosítása érdekében vegye figyelembe az alábbiakat:
+Annak a valószínűségét, hogy megjelent-e az ajánlat maximalizálása beruházni a marketplace-ajánlat sikeres. Az ajánlatban egy kiváló felhasználói élmény biztosítása érdekében vegye figyelembe az alábbiakat:
 * Győződjön meg arról, hogy a marketing összetevők fel és megfelelően jelenik meg.
 * Kiváló minőségű forgalom meghajtót az ajánlatot a piactéren, a kampányok kiváló minőségű keresletet keltő létrehozásával.
 * Növelje az appsource-ban vagy az Azure Marketplace-ajánlatok felhasználása vezetési igény szerinti, magas színvonalú ügyfélélményt biztosító szolgáltatást, és időben gondoskodik az ajánlatot.
@@ -188,7 +188,7 @@ Részletes jelentések megjelenítéséhez az ügyféladatokat, például a vál
 * Ügyfél ZIP-kód
 
 ## <a name="enable-lead-sharing"></a>Érdeklődő megosztásának engedélyezése 
-A Marketplace-felhasználót a sikeres együttműködés egy fő engedélyező gondozásának biztosításáig érdeklődőket a Marketplace-ről. Indítása azáltal, hogy a listaelem engedélyezve van-e és megfelelően konfigurálva a vállalati CRM-rendszerében a lead felügyelet. Ezzel a módszerrel a jeleket kap, és a felhasználókat, akik használhatják fel kell dolgozni a minősítési egy üzenetsorban lévő a listaelem elérhetőségi adatai. 
+A marketplace-felhasználót a sikeres együttműködés egy fő engedélyező gondozásának biztosításáig érdeklődőket a marketplace-ről. Indítása azáltal, hogy a listaelem engedélyezve van-e és megfelelően konfigurálva a vállalati CRM-rendszerében a lead felügyelet. Ezzel a módszerrel a jeleket kap, és a felhasználókat, akik használhatják fel kell dolgozni a minősítési egy üzenetsorban lévő a listaelem elérhetőségi adatai. 
 
 Az érdeklődők használja a következő eljárásokat:
 
@@ -201,7 +201,7 @@ A közös értékesítési programunkhoz elérésével kapcsolatos további info
 
 ## <a name="gtm-benefits-in-the-marketplace"></a>A Marketplace-en GTM előnyei
 
-A Marketplace-en a kirakattípus új készültként ingyenes Marketplace GTM-juttatások jogosultak. Után helyez egy listát, a Microsoft szakemberei marketing fog kapcsolatba lépni Önnel, vagy a marketing beindításához lépjen kapcsolatba a tevékenységek. Nem, kivéve, ahol kapcsolatba léphet a Microsoft, ha próbál kapcsolódni, hogy semmi sem.
+A Marketplace-en a kirakattípus új készültként ingyenes marketplace GTM-juttatások jogosultak. Után helyez egy listát, a Microsoft szakemberei marketing fog kapcsolatba lépni Önnel, vagy a marketing beindításához lépjen kapcsolatba a tevékenységek. Nem, kivéve, ahol kapcsolatba léphet a Microsoft, ha próbál kapcsolódni, hogy semmi sem.
 
 A Microsoft által nyújtott tevékenységek változhat a megoldás állapotát, a Marketplace-en. Előnyöket jelentősen növelheti a listaelemek.
 
@@ -234,235 +234,7 @@ Az ajánlat vagy az előléptetni, és további előnyök és erőforrások elé
 | IP-közös értékesítési kész legyen | Előfordulhat, hogy jogosult az IP-közös értékesítési program készen programot, amely lehetővé teszi a közvetlenül a Microsoft-értékesítőkkel közösen és a cél ügyfél lehetőségeket és a fiók tervezési más partnerekkel közösen dolgozzon. A megoldás lesz látható a Microsoft-értékesítőkkel közösen az értékesítői megoldás-katalógusban. Microsoft-értékesítőkkel közösen van jutalmakat a beküldött fordításaiért együttműködés és a winning with meg.<br> További információ a értékesítési program, többek között a jogosultsági követelményeknek, látogasson el a [elősegítik az üzleti](https://partner.microsoft.com/reach-customers/promote-your-business). |
 
 
-## <a name="easier-customer-usage-attribution-for-azure-partners"></a>Az Azure-partnerek számára egyszerűbb ügyfél-használati megnevezése
-
-Partnerként szoftverek az Azure a megoldások az Azure-összetevőket kell, vagy közvetlenül az Azure infrastruktúra telepítve vannak. Még ma amikor a partneri megoldások ügyfelek által telepített, és használja az Azure-ügyfelek által felhasznált erőforrások, nehézkes lehet ezen központi telepítések állapotának megtekintéséhez. Azt is nehéz érheti el az Azure fejlődés gyakorolt hatására vonatkozó adatokat. Az ilyen információk segítik a Microsoft értékesítői csapatok igazodjanak, és szerezze be a Microsoft partner programok kreditet.  
-
-A Microsoft egy új módszer jobban nyomon követheti az Azure-használatát, amely ügyfelei az Azure-szoftverek üzembe helyezésére való partnerek segítségével hoz létre. Ez az új módszer alapján az Azure Resource Managerrel történő üzembe helyezés az Azure-szolgáltatások.
-
-A Microsoft-partnerként bármely Azure-erőforrások, amelyek az ügyfél nevében üzembe Azure-használat is társíthat. Ez a társítás használatával az Azure piactéren, a rövid útmutató adattár, privát GitHub-adattárak és az ügyfélesetekből még akkor is lehetővé teheti. Ennek engedélyezéséhez teheti két módszer közül választhat:
-
-* **Az Azure Resource Manager-sablonok**: használja az Azure Resource Manager-sablonok vagy megoldássablonok a szoftver futtatásához az Azure-szolgáltatások üzembe helyezéséhez. Sablonok, amelyek meghatározzák az infrastruktúra és a konfiguráció az Azure-megoldás is létrehozhat. Ön és ügyfelei számára a megoldás teljes életciklusa során ismételten üzembe lehetővé teszik. Biztos lehet benne, hogy az erőforrások telepítése konzisztens módon. 
-
-* **Az Azure Resource Manager API-k**: meghívhatja az Azure Resource Manager API-k közvetlenül vagy üzembe helyezése az Azure Resource Manager-sablonok vagy az API-hívások közvetlen kiosztása az Azure-szolgáltatások létrehozásához. 
-
-## <a name="method-1-azure-resource-manager-templates"></a>1. módszer: Az Azure Resource Manager-sablonok 
-Ma számos partneri megoldás telepítve vannak, egy ügyfél előfizetését az Azure Resource Manager-sablonok használatával. Ha már rendelkezik egy Azure Resource Manager-sablon elérhető az Azure piactéren, a Githubon, vagy a rövid útmutatóban a folyamat az új követési módszer engedélyezéséhez a sablon módosításával kell könnyen érthető megjegyzésblokkok írására. Ha az Azure Resource Manager-sablon jelenleg nem használ, Íme néhány információ segítségével jobban megismerheti az Azure Resource Manager-sablonok és hogyan hozhat létre egyet: 
-
-*   [Létre és helyezhet üzembe az első Azure Resource Manager-sablon](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [Útmutató a megoldássablon létrehozásához az Azure Marketplace-en](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
-
-### <a name="add-a-guid-to-your-existing-azure-resource-manager-template"></a>Egy GUID Azonosítót a meglévő Azure Resource Manager-sablon hozzáadása
-
-A GUID azonosító hozzáadása nem a fő sablonfájl egyszeri módosítását. Ehhez tegye a következőket:
- 1. Hozzon létre egy GUID Azonosítót. Ha például a létrehozott értéket lehet *eb7927c8-dd66-43e1-b0cf-c346a422063*.
- 2. Nyissa meg az Azure Resource Manager-sablon.
- 3. Adjon hozzá egy új erőforrást a fő sablonfájlban. Az erőforrás kell lennie csak ebben a *mainTemplate.json* vagy *azuredeploy.json* fájl nem az összes beágyazott vagy kapcsolódó sablonok.
- 4. Adja meg a GUID után a *pid -*, ahogy korábban is látható.
-
-    Valami példához hasonlóan kell kinéznie: `pid-eb7927c8-dd66-43e1-b0cf-c346a422063`
-
- 5. Ellenőrizze a sablont, a hibákat.
- 6. Tegye közzé újra a sablont a megfelelő tárházban.
-
-### <a name="sample-template-code"></a>Sablon mintakód
-
-```
-
-{ // add this resource to the mainTemplate.json file (do not add the entire file)
-      "apiVersion": "2018-02-01",
-      "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your GUID here
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": []
-        }
-      }
-    } // remove all comments from the file when done
-
-```
-
-## <a name="method-2-azure-resource-manager-apis"></a>2. módszer: Az Azure Resource Manager API-k
-
-Bizonyos esetekben üzembe helyezése az Azure-szolgáltatások, a partnerek inkább hívásokat közvetlenül az Azure Resource Manager REST API-k. A központi telepítés engedélyezése [az Azure támogatja több SDK](https://docs.microsoft.com/en-us/azure/#pivot=sdkstools). Erőforrások üzembe helyezéséhez használja az SDK-k valamelyikét, vagy közvetlenül a REST API-jainak hívására.
-
-Ha egy Azure Resource Manager-sablont használ, címkével a megoldás az előző utasítások segítségével. Ha Ön nem egy Azure Resource Manager-sablon használatával és közvetlen API-hívások, továbbra is megjelölheti a központi telepítés rendelni az Azure-erőforrások használatát. 
-
-### <a name="tag-a-deployment-by-using-the-azure-resource-manager-apis"></a>Központi telepítés címkézése az Azure Resource Manager API-k használatával
-Ezzel a módszerrel a kialakításakor az API-hívás, felvehet egy GUID Azonosítót a felhasználói ügynök a kérelemben szereplő tartományfejléc. A globálisan egyedi Azonosítót minden ajánlat vagy Termékváltozat hozzá kell adni. A karakterlánc a előtaggal kell formázni *pid -* , majd adja meg a partner által létrehozott GUID.  
-
->[!NOTE] 
->Használja a GUID formátumú szúr be a felhasználói ügynök: `pid-eb7927c8-dd66-43e1-b0cf-c346a422063`. Cserélje le a helyőrző GUID a GUID Azonosítóval rendelkező után a *pid -* (Megjegyzés: kötőjel).
-
-A karakterlánc formátuma fontos. Ha az előtag *pid -* van nem tartalmazza, hogy nem tudja lekérdezni az adatokat. SDK-k egy számos különböző módon hajthatja végre. Ez a metódus megvalósításához, tekintse át a támogatási és megközelítés az előnyben részesített Azure SDK-t. 
-
-### <a name="example-using-the-python-sdk"></a>Példa a Python SDK használatával
-A Python, használja a `config` attribútum. Adhat hozzá, csak egy UserAgent itt látható módon:
-
-```python
-client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
-        client.config.add_user_agent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
-
-```
-
-Ezt a módszert használja, minden ügyfél számára. Nem tartozik a globális, statikus konfiguráció. Győződjön meg arról, hogy minden ügyfél akkor használ, választhat egy ügyfélgyára tennie. Első [további információk](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79).
-
-### <a name="tag-a-deployment-by-using-the-azure-powershell-or-the-azure-cli"></a>Központi telepítés címkézése az Azure PowerShell vagy az Azure CLI használatával
-Helyez üzembe erőforrásokat az Azure Powershellen keresztül, ha a GUID fűzze hozzá a következő módon:
-
-```
-[Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
-
-```
-
-Fűzze hozzá a GUID Azonosítót az Azure CLI-vel, állítsa a AZURE_HTTP_USER_AGENT környezeti változót. Állítsa be a változót egy parancsfájl hatókörén belül, vagy globálisan, állítsa rendszerhéj hatókör használatra:
-
-```
-export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
-
-```
-
-## <a name="register-guids-and-offers"></a>Regisztrálja a GUID-ok és ajánlatok
-
-Szeretne adni egy GUID Azonosítót a nyomon követés, regisztrálnia kell azt. Az Azure Marketplace-en Cloud Partner Portalon regisztrálnia minden sablon GUID-azonosítóit. Hozzáférés a Cloud Partner portálra, a alkalmazni a [Azure Marketplace-en](http://aka.ms/listonazuremarketplace).
-
-További információ a GUID-AZONOSÍTÓI regisztrálása:
-*   Partnerek szükségesek [profillal rendelkeznek a Cloud Partner Portalon](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) ügyfeleinkre listában az ajánlat az Azure Marketplace-en vagy az appsource-ban. 
-*   Partnerek regisztrálhatja az több GUID-ot. 
-*   Partnerek egy GUID Azonosítót nem Marketplace-megoldássablonok és ajánlatokkal is regisztrálhatja.
-
-Miután hozzáadott a globálisan egyedi Azonosítót a sablonhoz, vagy a felhasználói ügynököt, és regisztrálta a GUID, amely a Cloud Partner portálra, a Microsoft megkezdi az nyomon követéséhez az üzemelő példányok. 
-
-## <a name="verify-guid-deployment"></a>GUID-telepítés ellenőrzése 
-
-Miután módosította a sablont, és egy tesztelési üzembe helyezés végrehajtott, az erőforrások által üzembe helyezett és címkézett ebben a szakaszban a PowerShell-parancsprogram használatával kérheti le. 
-
-A parancsfájl segítségével győződjön meg arról, hogy a globálisan egyedi Azonosítót, az Azure Resource Manager-sablon sikerült hozzáadni. Ez a módszer nem vonatkozik Azure Resource Manager API-telepítéshez.
-
-A parancsfájl futtatása előtt jelentkezzen be az Azure-ba, és válassza ki az előfizetést, amely tartalmazza az ellenőrizni kívánt központi telepítés. Az üzembe helyezés előfizetés környezetében kell futtatni.
-
-A globálisan egyedi Azonosítót, és `resourceGroup` nevét, a központi telepítés rendszer szükséges paramétereket.
-
-[Az eredeti parancsfájl első](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1).
-
-```
-Param(
-    [GUID][Parameter(Mandatory=$true)]$guid,
-    [string][Parameter(Mandatory=$true)]$resourceGroupName'
-)
-
-#get the correlationId of the pid deployment
-
-$correlationId = (Get-AzureRmResourceGroupDeployment -ResourceGroupName 
-$resourceGroupName -Name "pid-$guid").correlationId
-
-#find all deployments with that correlationId
-
-$deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName | Where-Object{$_.correlationId -eq $correlationId}
-
-#find all deploymentOperations in a deployment by name (since PowerShell does not surface outputResources on the deployment or correlationId on the deploymentOperation)
-
-foreach ($deployment in $deployments){
-
-#get deploymentOperations by deploymentName and then the resourceId for any create operation
-
-($deployment | Get-AzureRmResourceGroupDeploymentOperation | Where-Object{$_.properties.provisioningOperation -eq "Create" -and $_.properties.targetResource.resourceType -ne "Microsoft.Resources/deployments"}).properties.targetResource.id
-
-}
-
-```
-
-## <a name="create-a-guid"></a>Hozzon létre egy GUID Azonosítót
-
-Egy globálisan egyedi azonosító (GUID) egy olyan 32 hexadecimális számjegy egyedi hivatkozási szám. Segítségével hozhat létre követési egy GUID azonosító bármelyik számos online [GUID generátorok](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E).
-
-Javasoljuk, hogy hozzon létre egy egyedi GUID Azonosítót az egyes ajánlat és a terjesztési csatornákra. Például ha a két megoldás rendelkezik, és mindkét sablon segítségével telepítve vannak, és mind az Azure piactéren, és a Githubon érhető el, létre kell hoznia 4 GUID-AZONOSÍTÓI:
-
-*   Az Azure Marketplace-en A ajánlat 
-*   Ajánlat A githubon
-*   B ajánlat az Azure Marketplace-en 
-*   Az ajánlat B a Githubon
-
-Jelentéskészítés végzi el a Microsoft-Partnerazonosító és GUID. 
-
-Azt is beállíthatja nyomon követéséhez részletesebb szintű GUID (azt jelenti, SKU, ahol a termékváltozatok a következők ajánlat változatának szerint).
-
-## <a name="guidance-on-privacy-and-data-collection"></a>Útmutatás az adatvédelem és az adatok gyűjtése
-
-Üzenet értesíti ügyfeleit, hogy az Azure Resource Manager GUID követési tartalmazó üzemelő példányok engedélyezése a Microsoft, a jelentés ezen központi telepítések társított Azure-használat kell adnia. Néhány példa nyelvi követi. Emellett győződjön meg arról, hogy az üzenetkezelési igazodik a saját adatok adatvédelmi és -gyűjteményt szabályzatokat, az ügyfelek számára zárható ki a központi telepítések a következő típusú nyomon követheti a lehetőségek többek között: 
-
-* **Az Azure Resource Manager-sablon üzembe helyezések**
-
-    Ez a sablon központi telepítése esetén a Microsoft azonosíthatja a [insert partner szoftver neve] szoftver telepítése az üzembe helyezett Azure-erőforrások. A Microsoft Azure-erőforrások a szoftver támogatásához használt kapcsolhatja össze. A Microsoft ezeket az információkat a lehető legjobb élményt biztosíthat a termékeiket és üzleti működésre gyűjt. Ezeket az adatokat gyűjti, és annak a Microsoft adatvédelmi szabályzatok által szabályozott a [Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter) hely. 
-
-* **Az SDK vagy API-t központi telepítéséhez**
-
-    A szoftverek központi telepítésekor a Microsoft azonosíthatja a [insert partner szoftver neve] szoftver telepítése az üzembe helyezett Azure-erőforrások. A Microsoft Azure-erőforrások a szoftver támogatásához használt kapcsolhatja össze. A Microsoft ezeket az információkat a lehető legjobb élményt biztosíthat a termékeiket és üzleti működésre gyűjt. Ezeket az adatokat gyűjti, és annak a Microsoft adatvédelmi szabályzatok által szabályozott a [Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter) hely.
-
-## <a name="support"></a>Támogatás
-
-1. További segítségért lépjen [Marketplace közzétételi támogatási](https://go.microsoft.com/fwlink/?linkid=844975).
-2. Az a **Problématípus** legördülő listában válassza **Marketplace bevezetési**.
-3. A következő lehetőségek közül választhat:
- 
-   * A problémák **használati társítás**, a a **kategória** legördülő listában válassza **más**.
-
-   * Problémáinak **elérése az Azure Marketplace-en Cloud Partner portal**, a a **kategória** legördülő listában válassza **hozzáférési probléma**.
-
-4. Válassza ki **indítási kérést**. 
-5. A következő oldalon töltse ki a kötelező mezőket, és válassza **Folytatás**.
-6. A következő oldalon a szabad szöveges mezők kitöltése.
- 
-    >[!IMPORTANT] 
-    >Az a **esemény címe** mezőbe írja be **ISV használat nyomon követése**, és ismertesse a problémát, részletesen. 
-
-7. Fejezze be az űrlapot, és válassza ki **küldés**.
-
-## <a name="faq"></a>GYIK
-
-**Mi az az előnye, hogy a GUID azonosító hozzáadása a sablonhoz?**
-
-A Microsoft ügyfél-telepítések a sablonok és a befolyásolt használatuk betekintést áttekintést nyújt a partnerek. A Microsoft és Ön segítségével is ezeket az információkat mindkét közelebb engagement meghajtó között, és a Microsoft értékesítési csapatához és partnerközösségünkhöz Azure növekedési a hatás egy egységes nézetben. 
-
-**Akik GUID adhat hozzá egy sablont?**
-
-A nyomon követési erőforrás való csatlakozáshoz a megoldás az ügyfelek Azure-használat célokat. A használati adatok vannak kötve, a Microsoft Partner Network-azonosító (MPN-azonosító), és a jelentéskészítési tett elérhetővé, a Cloud Partner Portalon. 
-
-**Miután hozzá lett adva egy GUID Azonosítót, akkor módosítható?**
- 
-Igen, az ügyfél vagy egy megvalósítási partner is a sablon testreszabásához és sikerült módosítása vagy eltávolítása a GUID Azonosítót. Javasoljuk, hogy proaktív módon adja meg a szerepkört az erőforrás és a GUID az ügyfelek és más partnerekkel, a nyomon követési GUID eltávolítása és a módosítások megelőzése érdekében. Vegye figyelembe, hogy a globálisan egyedi Azonosítót megváltoztatásával csak az új üzemelő példányok és erőforrások, nem meglévő üzemelő példányok és erőforrások.
-
-**Amikor jelentéskészítési rendelkezésre áll?**
-
-Jelentéskészítés béta verzióját kell hamarosan közzétesszük. Jelentéskészítés integrálva van az a Cloud Partner portálra.
-
-**Követhető nyomon a sablonok üzembe helyezett egy nem Microsoft-adattárból, például a GitHub?**
-
-Igen. Mindaddig, amíg a GUID azonosító megtalálható a sablon üzembe helyezésekor, akkor a használat nyomon követi. 
-
-Az Azure piactéren kívül közzétett kapcsolódó sablonok regisztrálásához szükségesek profillal rendelkeznek a Cloud Partner Portalon. 
-
-**A különbség a sablon üzembe Azure Marketplace-ről vagy más tárházakban meg például a GitHub-e végre?**
-
-Igen, partnereknek, akik ajánlatok közzététele az Azure Marketplace-en fogadhat részletesebb adatokat üzemelő példányok esetében az Azure piactéren. Ön előnyt is közzéteheti az ajánlatot az ügyfelek számára az Azure Marketplace-en portálon és az Azure felügyeleti portálján. Az Azure piactér lehetővé teszi az érdeklődők is létrehozhat az Ön számára.
-
-**Mi történik, ha egy egyéni sablont, és egy egyéni ügyféligények engagement hozhatok létre?**
-
-Ön továbbra is üdvözli a GUID azonosító hozzáadása a sablonhoz. Ha egy meglévő, a már regisztrált GUID-Azonosítót használ, a a jelentés tartalmazni fogja. Létrehoz egy új GUID Azonosítót, ha szeretne regisztrálni, hogy a letöltés követési szerepel.
-
-**Az ügyfél fogad, valamint reporting?**
-
-Ügyfelek képesek jelenleg az egyes erőforrások vagy erőforráscsoportok felhasználó által meghatározott az Azure felügyeleti portálján használatának nyomon követése.  
-
-**Az ilyen hasonló a digitális partnert a rekord (DPOR)?**
-
-Ez az új módszer az üzembe helyezés és használat kapcsolódni egy partneri megoldás célja egy olyan mechanizmust, egy partneri megoldás összekapcsolása az Azure-használatát. Tanácsadási (rendszerintegrátor) vagy (felügyelt szolgáltató) felügyeleti partnertől, az ügyfél Azure-előfizetés társítása dpor használatára alkalmas.  
-
-
 ## <a name="next-steps"></a>További lépések
-További információ a Marketplace-szolgáltatásait, lépjen a [piaci megjelenést szolgáltatások](https://partner.microsoft.com/reach-customers/gtm). 
+Marketplace-en GTM services kapcsolatos további információkért lépjen [piaci megjelenést szolgáltatások](https://partner.microsoft.com/reach-customers/gtm). 
 
 ---

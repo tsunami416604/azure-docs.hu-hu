@@ -71,6 +71,8 @@
           href: create-ssl-portal.md
         - name: SSL leállítása az Azure PowerShell használatával
           href: tutorial-ssl-powershell.md
+        - name: Teljes körű SSL-lezárás az Azure PowerShell használatával
+          href: application-gateway-end-to-end-ssl-powershell.md
         - name: Tanúsítványok megújítása
           href: renew-certificates.md
         - name: Az SSL-szabályzatok konfigurálása

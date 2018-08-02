@@ -55,8 +55,10 @@
           href: log-analytics-log-search-portals.md
 - name: Útmutatók
   items:
-    - name: Log Analytics-munkaterület létrehozása
-      href: log-analytics-quick-create-workspace.md
+    - name: Munkaterület létrehozása
+      items:
+        - name: Az Azure Portal használata
+          href: log-analytics-quick-create-workspace.md
     - name: Adatok gyűjtése
       items:
         - name: Összekapcsolt források

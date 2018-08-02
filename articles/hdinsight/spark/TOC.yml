@@ -319,6 +319,8 @@
       items:
         - name: Hibakeresés Spark-feladatokban
           href: apache-spark-job-debugging.md
+        - name: Hibakeresés Spark-feladatokban feladatgrafikonokkal
+          href: apache-azure-spark-history-server.md
         - name: Spark-feladatok hibakeresése IntelliJ használatával
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása

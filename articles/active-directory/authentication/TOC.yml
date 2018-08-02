@@ -25,6 +25,8 @@
   items:
     - name: Hitelesítési módszerek
       href: concept-authentication-methods.md
+    - name: Konvergens regisztráció
+      href: concept-registration-mfa-sspr-converged.md
     - name: Új jelszó önkiszolgáló kérése
       items:
         - name: Új jelszó kérésének módja
