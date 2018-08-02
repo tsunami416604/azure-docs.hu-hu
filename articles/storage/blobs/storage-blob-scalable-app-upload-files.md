@@ -3,20 +3,19 @@ title: Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure 
 description: Ebből a cikkből megtudhatja, hogy az Azure SDK hogyan használható nagy mennyiségű véletlenszerű adat párhuzamos feltöltésére egy Azure Storage-fiókba
 services: storage
 author: roygara
-manager: jeconnoc
 ms.service: storage
-ms.workload: web
-ms.devlang: csharp
+ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 668700cf3ff3d1a90f9639129ef2953ddca016f1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: blobs
+ms.openlocfilehash: 557dd1d89fc05d82f1839a7b02356857f41164c6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30239898"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399736"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba
 
@@ -25,7 +24,7 @@ Ez az oktatóanyag egy sorozat második része. Ez az oktatóanyag egy olyan alk
 A sorozat második részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Kapcsolati karakterlánc konfigurálása
+> * Kapcsolati sztring konfigurálása
 > * Az alkalmazás létrehozása
 > * Az alkalmazás futtatása
 > * A kapcsolatok számának ellenőrzése
@@ -46,9 +45,9 @@ Használja az alábbi parancsot a helyi gépén, ha egy távoli asztali kapcsola
 mstsc /v:<publicIpAddress>
 ```
 
-## <a name="configure-the-connection-string"></a>Kapcsolati karakterlánc konfigurálása
+## <a name="configure-the-connection-string"></a>Kapcsolati sztring konfigurálása
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati karakterláncát**. Jelentkezzen be az előző oktatóanyagban létrehozott virtuális gépbe. Nyissa meg rendszergazdaként a **parancssort** és futtassa a `setx` parancsot a `/m` kapcsolóval. Ez a parancs egy gépbeállításhoz tartozó környezeti változó értékét menti. A környezeti változó nem érhető el, amíg újra be nem tölti a **parancssort**. Cserélje le a **\<storageConnectionString\>** kifejezést a következő mintában:
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Jelentkezzen be az előző oktatóanyagban létrehozott virtuális gépbe. Nyissa meg rendszergazdaként a **parancssort** és futtassa a `setx` parancsot a `/m` kapcsolóval. Ez a parancs egy gépbeállításhoz tartozó környezeti változó értékét menti. A környezeti változó nem érhető el, amíg újra be nem tölti a **parancssort**. Cserélje le a **\<storageConnectionString\>** kifejezést a következő mintában:
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
@@ -189,7 +188,7 @@ C:\>
 A sorozat második részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókba történő párhuzamos feltöltésével, többek között a következőkkel:
 
 > [!div class="checklist"]
-> * Kapcsolati karakterlánc konfigurálása
+> * Kapcsolati sztring konfigurálása
 > * Az alkalmazás létrehozása
 > * Az alkalmazás futtatása
 > * A kapcsolatok számának ellenőrzése

@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 07/30/2018
 ms.author: terrylan
-ms.openlocfilehash: cda204f5b54aef239cc0795b62c6fa484a27ebb5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b882f9740a9b29cddb2cbe0359056cf66c293717
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29529414"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363754"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerrel
 A Security Center korlátozza a fenyegetéseknek való kitettségét azzal, hogy hozzáférés- és alkalmazásvezérlőket használ a kártékony tevékenységek blokkolására. Az igény szerinti virtuálisgép-hozzáférés lehetővé teszi, hogy megtagadja a virtuális gépekhez való állandó hozzáférést, így kevésbé fogják veszélyeztetni a támadások. Az állandó hozzáférés helyett szabályozott és naplózott hozzáférést biztosít a virtuális gépekhez – csak akkor, ha szükség van rá. Az adaptív alkalmazásvezérlők segítenek felvértezni a virtuális gépeket a kártevők ellen azáltal, hogy szabályozzák, mely alkalmazások futhatnak rajtuk. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában.
@@ -38,8 +38,6 @@ Az oktatóanyagban ismertetett funkciók végrehajtásához a Security Center St
 
 ## <a name="manage-vm-access"></a>Virtuális gépekhez való hozzáférés kezelése
 A virtuális gépek igény szerinti elérésével zárolhatja az Azure-beli virtuális gépek bejövő forgalmát. Ezzel csökkenti a támadásoknak való kitettséget, ugyanakkor könnyű hozzáférést biztosít arra az esetre, amikor csatlakozni kell a virtuális gépekhez.
-
-Az igény szerinti virtuálisgép-hozzáférés jelenleg még előzetes verziójú kiadásban érhető el.
 
 A felügyeleti portoknak nem kell mindig nyitva lenniük. Csak addig kell nyitva lenniük, amíg Ön csatlakozik a virtuális géphez, például azért, hogy felügyeleti vagy karbantartási feladatokat végezzen. Ha az igény szerinti hozzáférés engedélyezve van, a Security Center hálózati biztonsági csoporton (NSG) alapuló szabályokat alkalmaz, amelyek korlátozzák a felügyeleti portokhoz való hozzáférést, hogy a támadók ne tudják célba venni azokat.
 
@@ -75,7 +73,7 @@ A felügyeleti portoknak nem kell mindig nyitva lenniük. Csak addig kell nyitva
 ## <a name="harden-vms-against-malware"></a>Virtuális gépek kártevők elleni felvértezése
 Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurált erőforráscsoportokon futtatható alkalmazások csoportját, ami többek között segít felvértezni virtuális gépeit a kártevők ellen. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában.
 
-Az adaptív alkalmazásvezérlők jelenleg még előzetes verziójú kiadásban érhetők el. Ez a funkció csak Windows rendszerű gépeken használható.
+Ez a funkció csak Windows rendszerű gépeken használható.
 
 1. Térjen vissza a Security Center főmenüjébe. Az **ADVANCED CLOUD DEFENSE** (SPECIÁLIS FELHŐVÉDELEM) területen válassza ki az **Adaptive application controls** (Adaptív alkalmazásvezérlők) elemet.
 

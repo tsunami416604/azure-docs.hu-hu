@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2174135aaf2e16907f16f38c1df1ec002b3083fd
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 589df59e02a18629d5f405ff1ce8870333f2228e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391435"
+ms.locfileid: "39397713"
 ---
 # <a name="runbook-settings"></a>Runbook beállításai
 Az Azure Automationben minden runbook rendelkezik több beállítások, amelyek segítenek azonosítani és módosítani annak naplózási viselkedését. Ezek a beállítások leírását alább módosításukkal követ.
@@ -39,7 +39,7 @@ Az Azure Portalon az egyes runbookok beállításait módosíthatja a **beállí
 3. Kattintson a runbook nevére, és átirányítjuk a beállítások panelről a runbook. Itt adja meg vagy módosíthatja a címkék és a runbook leírása, naplózás és nyomkövetés beállításainak konfigurálása, és segítséget nyújt a problémák megoldása támogatási eszközök elérése.     
 
 ### <a name="changing-runbook-settings-with-windows-powershell"></a>A Windows PowerShell-lel runbookok beállításainak módosítása
-Használhatja a [Set-azurermautomationrunbook parancsmag](https://msdn.microsoft.com/library/mt603786.aspx) parancsmaggal módosíthatja az egyes runbookok beállításait. Ha azt szeretné, több címkék adhatók meg, vagy megadhat egy tömböt vagy karakterláncot egyetlen a Tags paraméter vesszővel tagolt értékeket tartalmazó. Megtekintheti az aktuális címkéket azokkal a [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx).
+Használhatja a [Set-azurermautomationrunbook parancsmag](/powershell/module/azurerm.automation/set-azurermautomationrunbook) parancsmaggal módosíthatja az egyes runbookok beállításait. Ha azt szeretné, több címkék adhatók meg, vagy megadhat egy tömböt vagy karakterláncot egyetlen a Tags paraméter vesszővel tagolt értékeket tartalmazó. Megtekintheti az aktuális címkéket azokkal a [Get-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/get-azurermautomationrunbook).
 
 Az alábbi Példaparancsok szemléltetik egy runbook tulajdonságainak beállítását. Ez a példa három címkét ad hozzá a meglévő címkéket, és meghatározza, hogy részletes rekordok legyenek naplózva.
 

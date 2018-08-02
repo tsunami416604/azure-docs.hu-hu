@@ -3,18 +3,17 @@ title: Azure rövid útmutató – Blob létrehozása objektumtárban az Azure S
 description: Ebben a rövid útmutatóban az Azure Storage Explorer használatával kezelheti az objektumtárat (blobtárat). Majd a Storage Explorer segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: tamram
-ms.openlocfilehash: 176d2fffa9f9e3c43a4e5c922aed58cebdbe2b1d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 83698abd3006671c5edce37e3cada26d07d25b8f
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416246"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399636"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Storage Explorer használatával
 
@@ -33,7 +32,7 @@ Első indításkor megjelenik a **Microsoft Azure Storage Explorer – Csatlakoz
 |Tevékenység|Cél|
 |---|---|
 |Azure-fiók hozzáadása | Átirányítja a vállalati bejelentkezési oldalra az Azure-hitelesítéshez. |
-|Kapcsolati karakterlánc vagy közös hozzáférésű jogosultságkód URI azonosítójának használata | Egy tároló vagy tárfiók közvetlen elérésére szolgál egy SAS-token vagy egy közös kapcsolati karakterlánc segítségével. |
+|Kapcsolati sztring vagy közös hozzáférésű jogosultságkód URI azonosítójának használata | Egy tároló vagy tárfiók közvetlen elérésére szolgál egy SAS-token vagy egy közös kapcsolati sztring segítségével. |
 |Tárfióknév és -kulcs használata| Csatlakozzon az Azure Storage-hoz a tárfiók nevével és kulcsával.|
 
 Válassza az **Azure-fiók hozzáadása** lehetőséget, majd kattintson a **Bejelentkezés** gombra. A képernyőn megjelenő utasításokat követve jelentkezzen be Azure-fiókjába.
@@ -90,7 +89,7 @@ Válassza a **Hozzáadás** lehetőséget egy új hozzáférési szabályzat hoz
 
 ## <a name="work-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok használata
 
-A közös hozzáférésű jogosultságkódok (SAS) a Storage Exploreren keresztül kérhetők le. Kattintson a jobb gombbal a tárfiókra, tárolóra, vagy blobra, majd válassza a **Közös hozzáférésű jogosultságkód igénylése...** lehetőséget. Válassza ki a kezdő és lejárati időpontot, valamint az engedélyeket a SAS URL-hez, majd kattintson a **Létrehozás** gombra. A lekérdezési karakterlánccal ellátott teljes URL-cím, illetve a lekérdezési karakterlánc önmagában is megjelenik a következő képernyőn, ahonnan mindkettő másolható.
+A közös hozzáférésű jogosultságkódok (SAS) a Storage Exploreren keresztül kérhetők le. Kattintson a jobb gombbal a tárfiókra, tárolóra, vagy blobra, majd válassza a **Közös hozzáférésű jogosultságkód igénylése...** lehetőséget. Válassza ki a kezdő és lejárati időpontot, valamint az engedélyeket a SAS URL-hez, majd kattintson a **Létrehozás** gombra. A lekérdezési sztringgel ellátott teljes URL-cím, illetve a lekérdezési sztring önmagában is megjelenik a következő képernyőn, ahonnan mindkettő másolható.
 
 ![Microsoft Azure Storage Explorer – Tárolóban lévő blobok listázása](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 

@@ -3,19 +3,18 @@ title: Alkalmazásadatok magas rendelkezésre állásának biztosítása az Azur
 description: Írásvédett georedundáns tárolás használata az alkalmazásadatok magas rendelkezésre állásának biztosításához
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
-ms.workload: web
 ms.topic: tutorial
 ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 8cf96059b1bbfbad24bf28fec9ddb0aa930adbad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: blobs
+ms.openlocfilehash: 7abd251751613224d062da5578e9c91a525599c9
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193774"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399032"
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Az alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure Storage használatával
 
@@ -24,9 +23,9 @@ Ez az oktatóanyag egy sorozat első része, amely azt ismerteti, hogyan biztos�
 A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Tárfiók létrehozása
 > * A minta letöltése
-> * A kapcsolati karakterlánc beállítása
+> * A kapcsolati sztring beállítása
 > * A konzolalkalmazás futtatása
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -58,9 +57,9 @@ Az oktatóanyag elvégzéséhez:
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez.
 
@@ -111,11 +110,11 @@ git clone https://github.com/Azure-Samples/storage-java-ha-ra-grs.git
 ---
 
 
-## <a name="set-the-connection-string"></a>A kapcsolati karakterlánc beállítása
+## <a name="set-the-connection-string"></a>A kapcsolati sztring beállítása
 
-Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. Javasoljuk, hogy ezt a kapcsolati karakterláncot egy környezeti változóban tárolja az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
+Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Javasoljuk, hogy ezt a kapcsolati sztringet egy környezeti változóban tárolja az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati karakterláncát**. Cserélje le a \<yourconnectionstring\> kifejezést a tényleges kapcsolati karakterláncra. Ehhez futtassa a következő parancsok közül az operációs rendszerének megfelelőt. A parancs egy környezeti változót ment a helyi számítógépen. Windows rendszerben a környezeti változó nem érhető el, amíg újra be nem tölti a **parancssort** vagy a rendszerhéjat, amelyet használ. Cserélje le a **\<storageConnectionString\>** kifejezést a következő mintában:
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Cserélje le a \<yourconnectionstring\> kifejezést a tényleges kapcsolati sztringre. Ehhez futtassa a következő parancsok közül az operációs rendszerének megfelelőt. A parancs egy környezeti változót ment a helyi számítógépen. Windows rendszerben a környezeti változó nem érhető el, amíg újra be nem tölti a **parancssort** vagy a rendszerhéjat, amelyet használ. Cserélje le a **\<storageConnectionString\>** kifejezést a következő mintában:
 
 # <a name="linux-tablinux"></a>[Linux] (#tab/linux) 
 export storageconnectionstring=\<yourconnectionstring\> 
@@ -270,9 +269,9 @@ Java esetén nem kell visszahívás-kezelőket meghatározni, ha a **BlobRequest
 A sorozat első részében megtudta, hogyan biztosítható az alkalmazások magas rendelkezésre állása az RA-GRS-tárfiókok használatával:
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Tárfiók létrehozása
 > * A minta letöltése
-> * A kapcsolati karakterlánc beállítása
+> * A kapcsolati sztring beállítása
 > * A konzolalkalmazás futtatása
 
 Folytassa a sorozat második részével, ha szeretné megismerni, hogyan szimulálhat hibákat és kényszerítheti az alkalmazást, hogy a másodlagos RA-GRS-végpontot használja.

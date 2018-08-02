@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.author: charwen,cherylmc
-ms.openlocfilehash: cdeda7d72461f35c138f12ca9b2758cdba44d5f6
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.author: charwen,cherylmc,rambala
+ms.openlocfilehash: 80d2f65f516d7f1190f276fa9f2c62206bd31e67
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259255"
+ms.locfileid: "39262872"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Az egyidejű helyek közötti VPN- és ExpressRoute-kapcsolatok konfigurálása 
 * Konfigurálhat helyek közötti VPN-t biztonságos feladatátvételi útvonalként az ExpressRoute számára. 
 * Azt is megteheti, hogy helyek közötti VPN-t használ olyan helyekhez való csatlakozáshoz, amelyek nem az ExpressRoute-on keresztül kapcsolódnak. 
 
-Ebben a cikkben ismertetjük mindkét forgatókönyv konfigurálásának lépéseit. Ez a cikk a Resource Manager-alapú üzemi modellre vonatkozik, és a PowerShellt használja. Ez a konfiguráció az Azure Portalon nem érhető el.
+Ebben a cikkben ismertetjük mindkét forgatókönyv konfigurálásának lépéseit. Ez a cikk a Resource Manager-alapú üzemi modellre vonatkozik, és a PowerShellt használja. 
 
 >[!NOTE]
 >Ha helyek közötti VPN-t szeretne létrehozni egy ExpressRoute-kapcsolatcsoport között, tekintse meg [ezt a cikket](site-to-site-vpn-over-microsoft-peering.md).

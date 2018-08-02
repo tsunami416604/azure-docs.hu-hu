@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 07/26/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f9dea759f6556bc521dda4efbd27176f1e06452b
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 350749161260768071afbb47b854cb2e9184bd9d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126575"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284727"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-web-application"></a>Oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése
 
@@ -58,7 +58,7 @@ Ha nem hozta létre a teendőlista-mintaalkalmazást az [oktatóanyag második r
 git clone https://github.com/azure-samples/service-fabric-mesh
 ```
 
-Az alkalmazás a `src\todolistapp` könyvtárban található.
+Az alkalmazás az `src\todolistapp` könyvtárban található.
 
 ## <a name="publish-to-azure"></a>Közzététel az Azure platformon
 
@@ -106,26 +106,9 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Nyisson meg egy webböngészőt, és a megadott URL-címen tekintse meg az Azure-ban futó webhelyet.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="set-up-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása 
+A további lépésekhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Az Azure Service Fabric Mesh CLI-bővítmény moduljának telepítéséhez kövesse ezeket az [útmutatásokat](service-fabric-mesh-howto-setup-cli.md).
 
-A további lépésekhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát.
-
-Ha a parancssori felület (CLI) helyi telepítését és használatát választja, akkor ehhez ez az oktatóanyaghoz az Azure CLI 2.0.35-ös vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. A parancssori felület (CLI) telepítéséhez vagy legújabb verzióra történő frissítéséhez lásd: [Az Azure CLI 2.0 telepítése][azure-cli-install].
-
-## <a name="install-the-az-mesh-cli"></a>Az Azure Mesh CLI telepítése
-A CLI-parancssornál
-
-1) Távolítsa el az Azure Service Fabric Mesh CLI-moduljának minden korábbi telepítését.
-
-```cli
-az extension remove --name mesh
-```
-
-2)  Telepítse az Azure Service Fabric Mesh CLI kiterjesztett modulját. Az előzetes verzióhoz az Azure Service Fabric Mesh parancssori felülete az Azure CLI kiterjesztéseként készült el, a nyilvános előzetes verzióban azonban az Azure CLI részét képezi.
-
-```cli
-az extension add --source https://sfmeshcli.blob.core.windows.net/cli/mesh-0.8.1-py2.py3-none-any.whl
-```
 
 ## <a name="check-application-deployment-status"></a>Az alkalmazás üzembe helyezésének ellenőrzése
 
@@ -169,7 +152,7 @@ Az erőforráscsoportot [a portálról](../azure-resource-manager/resource-group
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag a következőket ismertette:
+Az oktatóanyag jelen része az alábbiakat ismertette:
 > [!div class="checklist"]
 > * Az alkalmazás közzététele az Azure-ban.
 > * Az alkalmazás üzembe helyezésének ellenőrzése

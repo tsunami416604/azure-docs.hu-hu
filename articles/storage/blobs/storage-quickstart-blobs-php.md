@@ -3,19 +3,17 @@ title: Azure rövid útmutató – Blob létrehozása objektumtárban PHP haszn�
 description: Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a PHP használatával
 services: storage
 author: roygara
-manager: jeconnoc
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: c97585607a8694840d24f4582f5a850b3d6e11f0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f0d5cba238b9fc026a3bc67dd33dba8427b9b506
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618559"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397141"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PHP használatával
 A rövid útmutató azt ismerteti, hogyan használható a PHP blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 

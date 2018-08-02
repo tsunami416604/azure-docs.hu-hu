@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 9c961c06a01bba0b645088a19cd55e72a54396c1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6dc5d494135fde3740d41453f3f484b49fcb3f80
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586852"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308660"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Időzítő által aktivált függvény létrehozása az Azure-ban
 
@@ -62,7 +62,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     | Beállítás | Ajánlott érték | Leírás |
     |---|---|---|
     | **Name (Név)** | Alapértelmezett | Az időzítő által aktivált függvény nevét adja meg. |
-    | **[Ütemezés](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | Hat mezőből álló [CRON-kifejezés](http://en.wikipedia.org/wiki/Cron#CRON_expression), amely úgy ütemezi a függvényt, hogy minden percben fusson. |
+    | **Ütemezés** | 0 \*/1 \* \* \* \* | Hat mezőből álló [CRON-kifejezés](functions-bindings-timer.md#cron-expressions), amely úgy ütemezi a függvényt, hogy minden percben fusson. |
 
 2. Kattintson a **Create** (Létrehozás) gombra. Létrejön egy függvény a választott nyelven, amely minden percben futni fog.
 

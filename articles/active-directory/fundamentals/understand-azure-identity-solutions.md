@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: b052613161b4fee9a01def966fb02cbf8a7a483c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 118f8258673c8a19d5f06e5fc62ff56d0fb44ea1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056936"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398364"
 ---
 # <a name="understand-azure-identity-solutions"></a>Az Azure identitáskezelési megoldásainak ismertetése
 A Microsoft Azure Active Directory (Azure AD) egy felhőalapú identitás- és hozzáférés-kezelési megoldás, amely címtárszolgáltatásokat, identitáskezelést és alkalmazáshozzáférés-felügyeletet kínál. Az Azure AD lehetővé teszi az [egyszeri bejelentkezést](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) több ezer előre integrált kereskedelmi és egyéni alkalmazásba, amelyek szerepelnek [az Azure AD alkalmazáskatalógusában](https://azure.microsoft.com/marketplace/active-directory/all/). Ezen alkalmazások között számos olyan van, például az Office 365, a Salesforce.com, a Box, a ServiceNow vagy a Workday, amelyeket Ön valószínűleg már használ.
@@ -103,7 +103,7 @@ Az **Azure AD Domain Services** felhőalapú megoldást nyújt az egyszerű Azur
 |A vállalat jelentős befektetéseket eszközölt egy helyszíni Windows Server Active Directoryba, de szeretnénk az identitáskezelést kiterjeszteni a felhőbe.| A leggyakrabban használt Azure-identitáskezelési megoldás a [hibrid identitás](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview). Ha már befektetett a helyszíni AD DS-be, könnyedén kiterjesztheti az identitáskezelést a felhőbe az Azure AD Connect használatával.|
 |A vállalkozásom a felhőben indult, és nincsenek helyszíni identitáskezelési megoldásokkal kapcsolatos befektetéseink.| Az [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) a legjobb választás a kizárólag a felhőben működő, helyszíni befektetésekkel nem rendelkező vállalkozások számára.|
 |Egyszerű Azure-beli virtuális gép konfigurálási és vezérlési megoldásra van szükségem a helyszíni identitáskezelési követelmények teljesítéséhez alkalmazások fejlesztése és tesztelése céljából.|Az [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) jó választás, ha az egyszerű Azure VM-konfiguráláshoz és -vezérléshez az AD DS-t szeretné használni, vagy ha örökölt, címtárfüggő, helyszíni alkalmazásokat szeretne fejleszteni vagy a felhőbe migrálni.|  
-|Szükségem van néhány Azure-beli virtuális gépre, de a vállalat továbbra is jelentős befektetéssel rendelkezik a helyszíni Active Directory (AD DS) terén.|Használjon [önkiszolgáló AD DS-t](https://msdn.microsoft.com/library/azure/jj156090.aspx) az Azure-beli virtuális gépekhez, ha csak néhány virtuális gépre van szüksége, és jelentős helyszíni AD DS-befektetései vannak. |
+|Szükségem van néhány Azure-beli virtuális gépre, de a vállalat továbbra is jelentős befektetéssel rendelkezik a helyszíni Active Directory (AD DS) terén.|Használjon [önkiszolgáló AD DS-t](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison#do-it-yourself-diy-ad-deployment-options) az Azure-beli virtuális gépekhez, ha csak néhány virtuális gépre van szüksége, és jelentős helyszíni AD DS-befektetései vannak. |
 
 ## <a name="where-can-i-learn-more"></a>Hol találhatok további információkat?
 Rengeteg hasznos forrásanyagunk található online, amelyekből mindent megtudhat az Azure AD-ről. Íme néhány cikk kiindulásként:
@@ -126,5 +126,3 @@ Most, hogy megismerkedett az Azure identitáskezelési fogalmaival és az elérh
 [További tudnivalók az Azure hibrid identitáskezelési megoldásairól](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)
 
 [További információk Azure megvalósíthatósági próba (PoC) környezetben](https://aka.ms/aad-poc)
-
-[Az Azure AD üzembe helyezése éles környezetben](https://aka.ms/aad-onboard)

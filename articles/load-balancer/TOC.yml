@@ -40,7 +40,7 @@
   items:
     - name: Mi az a Load Balancer Standard?
       href: load-balancer-standard-overview.md
-    - name: Load Balancer-tesztek
+    - name: Állapotminták
       href: load-balancer-custom-probe-overview.md
     - name: Magas rendelkezésre állású portok
       href: load-balancer-ha-ports-overview.md

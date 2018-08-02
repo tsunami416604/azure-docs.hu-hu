@@ -3,18 +3,17 @@ title: Azure rövid útmutató – Blob létrehozása objektumtárban .NET haszn
 description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Majd a Storage .NET-hez készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: tamram
-ms.openlocfilehash: 157fd47861857fedbe4886407ba464f886ef1be3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d5a9c87246a175cc7455113c36caa59d59a79226
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767136"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399685"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a .NET használatával
 

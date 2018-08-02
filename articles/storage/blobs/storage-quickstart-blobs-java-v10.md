@@ -3,18 +3,17 @@ title: 'Azure rövid útmutató: Blob létrehozása objektumtárban a Java Stora
 description: Ebben a rövid útmutatóban létrehoz egy tárolót egy objektumtárban (Azure Blob Storage-ban), feltölt egy fájlt, objektumokat listáz ki, valamint letöltést végez a Java Storage SDK használatával.
 services: storage
 author: roygara
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: rogarana
-ms.openlocfilehash: 749badbc0bf5286c06da02f092933abbefda7ceb
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6e15f31ed0e9f6bfcbc41277fcf90e9444bac661
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185414"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397047"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10-preview"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása a Java Storage SDK V10 (előzetes verzió) használatával
 

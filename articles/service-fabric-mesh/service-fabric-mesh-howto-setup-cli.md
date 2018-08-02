@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/11/2018
+ms.date: 07/26/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: cf899e236b7fa21a90a0784e1e2b4fce0feae055
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 567f2afdea44f439779212c61fb3a129f4f979be
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213435"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281572"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása
 A Service Fabric Mesh parancssori felülete az erőforrások a Service Fabric Meshben való üzembe helyezéséhez és felügyeletéhez szükséges. 
@@ -23,7 +23,7 @@ Az előzetes verzióban az Azure Service Fabric Mesh parancssori felülete az Az
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0.35-ös vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. A parancssori felület legújabb verziójának telepítésével vagy frissítésével kapcsolatban lásd: [Az Azure CLI 2.0 telepítése][azure-cli-install].
+Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0.35-ös vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. A parancssori felület (CLI) telepítéséhez vagy legújabb verzióra történő frissítéséhez lásd: [Az Azure CLI 2.0 telepítése][azure-cli-install].
 
 Az Azure Service Fabric Mesh parancssori felület moduljának előzetesen telepített példányait távolítsa el.
 
@@ -34,7 +34,7 @@ az extension remove --name mesh
 Az Azure Service Fabric Mesh parancssori felület bővítménymodulját az alábbi paranccsal telepítheti. 
 
 ```azurecli-interactive
-az extension add --source https://sfmeshcli.blob.core.windows.net/cli/mesh-0.8.1-py2.py3-none-any.whl
+az extension add --source https://meshcli.blob.core.windows.net/cli/mesh-0.9.1-py2.py3-none-any.whl
 ```
 
 A [Windows fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md) is beállíthatja.

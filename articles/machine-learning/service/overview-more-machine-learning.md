@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: 20fd51f8906861e725b80202235e1684c31fd562
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3e36d9202c578294609b01eaf2731b1551ae67af
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268399"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282330"
 ---
 # <a name="other-machine-learning-products-and-services-from-microsoft"></a>Más gépi tanuláson alapuló Microsoft-termékek és -szolgáltatások
 
@@ -36,7 +36,7 @@ Az [SQL Server Microsoft Machine Learning-szolgáltatások](https://docs.microso
 Használja a Microsoft Machine Learning-szolgáltatásokat, ha modelleket szeretne betanítani vagy üzembe helyezni a helyszínen vagy a Microsoft SQL Serverben. A Machine Learning-szolgáltatásokkal összeállított modellek az Azure Machine Learning Modellkezelővel helyezhetők üzembe. 
 
 ## <a name="microsoft-machine-learning-server"></a>Microsoft Machine Learning-kiszolgáló 
-A [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone) egy vállalati kiszolgáló, amely R- és Python-folyamatok párhuzamos és elosztott munkaterheléseinek futtatására és kezelésére szolgál. A Microsoft Machine Learning-kiszolgáló Linux és Windows rendszeren, valamint Hadoopon és Apache Sparkon fut. Ezenkívül elérhető a [HDInsighton](https://azure.microsoft.com/services/hdinsight/r-server/) is. Végrehajtómotorokat biztosít a [Microsoft Machine Learning-csomagokkal](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package) összeállított megoldásokhoz, és kiterjeszti a nyílt forráskódú R és Python támogatását az alábbi forgatókönyvekre:
+A [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/en-us/machine-learning-server/what-is-machine-learning-server) egy vállalati kiszolgáló, amely R- és Python-folyamatok párhuzamos és elosztott munkaterheléseinek futtatására és kezelésére szolgál. A Microsoft Machine Learning-kiszolgáló Linux és Windows rendszeren, valamint Hadoopon és Apache Sparkon fut. Ezenkívül elérhető a [HDInsighton](https://azure.microsoft.com/services/hdinsight/r-server/) is. Végrehajtómotorokat biztosít a [Microsoft Machine Learning-csomagokkal](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package) összeállított megoldásokhoz, és kiterjeszti a nyílt forráskódú R és Python támogatását az alábbi forgatókönyvekre:
 
 - Nagy teljesítményű elemzés
 - Statisztikai elemzés
