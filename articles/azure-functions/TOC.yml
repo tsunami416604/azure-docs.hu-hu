@@ -149,6 +149,8 @@
           href: functions-run-local.md
         - name: IntelliJ IDEA fejlesztése
           href: functions-create-maven-intellij.md
+        - name: Eclipse-fejlesztés
+          href: functions-create-maven-eclipse.md
         - name: Kapcsolatok kezelése
           href: manage-connections.md
         - name: Hibakezelés
