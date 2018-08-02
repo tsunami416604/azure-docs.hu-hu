@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: aafbf7d1b4a624d42e2caa96f9d3ebdfaee4efe6
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2e100f2019c3bb99e3909e64305ebe641e2a637e
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238005"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308969"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Oktatóanyag: 7. Egyszerű entitás és kifejezéslista hozzáadása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhetők ki gépi tanulással létrejött adatok egy kimondott szövegből az **Egyszerű** entitás használatával.
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan 
 > * Kifejezéslista hozzáadása az állással kapcsolatos szavak jelének erősítéséhez
 > * Betanítás, alkalmazás közzététele és végpont ismételt lekérdezése
 
-Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 Ha még nincs meg az Emberi erőforrások alkalmazása az [összetett entitás](luis-tutorial-composite-entity.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) GitHub-adattárban található.
@@ -70,8 +70,6 @@ Ez a LUIS-alkalmazás számos szándékban rendelkezik állásnevekkel. Ezen sza
 ## <a name="create-job-simple-entity"></a>Egyszerű állásentitás létrehozása
 
 1. Győződjön meg arról, hogy az Emberi erőforrások alkalmazás a LUIS **Build** (Létrehozás) szakaszában van. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
-
-    [ ![Képernyőkép a LUIS-alkalmazásról a kiemelt Létrehozás elemmel a jobb felső navigációs sávon](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png#lightbox)
 
 2. Az **Intents** (Szándékok) lapon válassza az **ApplyForJob** szándékot. 
 
@@ -139,22 +137,14 @@ Amíg nincs betanítva, a LUIS nem ismeri fel a szándékok és entitások (a mo
     ![Sikeres betanítást jelző értesítés](./media/luis-quickstart-primary-and-secondary-data/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
-Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más alkalmazásban, közzé kell tennie az alkalmazást. 
 
-1. A LUIS-webhely jobb felső részén válassza a **Publish** (Közzététel) lehetőséget. 
-
-2. Válasza a Production (Termelés) helyet, és kattintson a **Publish** (Közzététel) gombra.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png "A Publish (Közzététel) lap képernyőképe a kiemelt Publish to production slot (Közzététel éles termelési helyre) elemmel")](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png#lightbox)
-
-3. A közzététel akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>A végpont lekérdezése egy másik kimondott szöveggel
-A **Publish** (Közzététel) lapon kattintson a lap alján található **Endpoint** (Végpont) hivatkozásra. 
 
-[![](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png "Publish (Közzététel) lap képernyőképe a kiemelt végponttal")](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png#lightbox)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-Ez a művelet megnyit egy másik böngészőablakot, amelynek címsorában a végpont URL-címe látható. Lépjen az URL-cím végéhez, és írja be a következőt: `Here is my c.v. for the programmer job`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő kimondott szövegeket kell visszaadnia: `ApplyForJob`.
+2. Lépjen az URL-cím végéhez, és írja be a következőt: `Here is my c.v. for the programmer job`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő kimondott szövegeket kell visszaadnia: `ApplyForJob`.
 
 ```JSON
 {

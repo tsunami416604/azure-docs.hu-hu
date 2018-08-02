@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: diberry
-ms.openlocfilehash: 1cafca2433cd96c0595a6124df82856d0c491a49
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 53f8f9ea5b3fea20202dd5aaa001a789d66f5a11
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224262"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282738"
 ---
 # <a name="tutorial-8-add-keyphrase-entity"></a>Oktatóanyag: 8. keyPhrase entitás hozzáadása 
 Ebben az oktatóanyagban egy alkalmazást használhat, amely bemutatja, hogyan nyerhetők ki kulcstémák a kimondott szövegekből.
@@ -27,7 +27,7 @@ Ebben az oktatóanyagban egy alkalmazást használhat, amely bemutatja, hogyan n
 > * Alkalmazás betanítása és közzététele
 > * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez, beleértve a kulcskifejezéseket is
 
-Ebben a cikkben használhatja az ingyenes [LUIS](luis-reference-regions.md#publishing-regions)-fiókot a LUIS-alkalmazás létrehozásához.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 Ha még nincs meg az Emberi erőforrások alkalmazása az [egyszerű entitás](luis-quickstart-primary-and-secondary-data.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) GitHub-adattárban található.
@@ -50,8 +50,6 @@ Az ügyfélalkalmazás használhatja ezeket az értékeket csakúgy, mint más k
 A kimondott szöveg témájának kinyeréséhez adja hozzá az előre összeállított keyPhrase entitást.
 
 1. Győződjön meg arról, hogy az Emberi erőforrások alkalmazás a LUIS **Build** (Létrehozás) szakaszában van. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
-
-    [ ![Képernyőfelvétel a LUIS-alkalmazásról a kiemelt Létrehozás elemmel a jobb felső navigációs sávon](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png)](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png#lightbox)
 
 2. Válassza az **Entities** (Entitások) elemet a bal oldali menüben.
 
@@ -85,21 +83,12 @@ Az alkalmazás új `keyphrase` verzióját be kell tanítani.
 
 ## <a name="publish-app-to-endpoint"></a>Alkalmazás közzététele a végponton
 
-1. A jobb felső navigációs menüben válassza a **Publish** (Közzététel) lehetőséget.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png "A Publish (Közzététel) lap képernyőképe a kiemelt Publish to production slot (Közzététel éles termelési helyre) elemmel")](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png#lightbox)
-
-2. Válasza a Production (Termelés) helyet, és kattintson a **Publish** (Közzététel) gombra.
-
-    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png "A Publish (Közzététel) lap képernyőképe a kiemelt Publish to production slot (Közzététel éles termelési helyre) elemmel")](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png#lightbox)
-
-3. A közzététel akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>A kimondott szöveget tartalmazó végpont lekérdezése
 
-1. A **Publish** (Közzététel) lapon kattintson a lap alján található **Endpoint** (Végpont) hivatkozásra. Ez a művelet megnyit egy másik böngészőablakot, amelynek címsorában a végpont URL-címe látható. 
-
-    ![A Publish (Közzététel) lap képernyőképe a kiemelt végponti URL-címmel](media/luis-quickstart-intent-and-key-phrase/hr-endpoint-url-inline.png )
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `does form hrf-123456 cover the new dental benefits and medical plan`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
 

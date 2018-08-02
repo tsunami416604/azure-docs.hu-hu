@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 06/27/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237774"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358138"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Oktatóanyag: 1. Egyéni tartományt használó alkalmazás létrehozása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan használhatja a **szándékokat** a felhasználó _szándékának_ meghatározásához az alkalmazás számára elküldött kimondott szöveg (szöveg) alapján. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
@@ -32,7 +32,7 @@ Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert nem nyer ki a
 > * Kimondott példaszövegek hozzáadása az ApplyForJob szándékhoz 
 > * Betanítás, közzététel és végpont ismételt lekérdezése 
 
-Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="purpose-of-the-app"></a>Az alkalmazás célja
 Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformation`**) azonosítja, amikor egy felhasználó a vállalatnál meghirdetett állásokkal kapcsolatban szeretne információt kapni. A második szándék (**`None`**) az összes többi típusú kimondott szöveget azonosítja. A rövid útmutató későbbi szakaszában hozzáadunk egy harmadik szándékot is: `ApplyForJob`. 
@@ -49,8 +49,6 @@ Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformat
     ![LUIS – új alkalmazás](./media/luis-quickstart-intents-only/create-app.png)
 
 4. Amikor a folyamat befejeződött, az alkalmazás megjeleníti az **Intents** (Szándékok) lapot és rajta a **None** szándékot. 
-
-    [![](media/luis-quickstart-intents-only/intents-list.png "Szándéklistát tartalmazó oldal képernyőképe")](media/luis-quickstart-intents-only/intents-list.png#lightbox)
 
 ## <a name="create-getjobinformation-intention"></a>A GetJobInformation szándék létrehozása
 1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. Adja meg az új szándék nevét: `GetJobInformation`. A rendszer erre a szándékra következtet, ha a felhasználó a vállalatnál elérhető állásokról szeretne információt kapni.
@@ -90,16 +88,16 @@ Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformat
 
     ![Betanítás gomb](./media/luis-quickstart-intents-only/train-button.png)
 
-    A betanítás akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
+2. A betanítás akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
 
     ![Sikeres betanítást jelző állapotsáv](./media/luis-quickstart-intents-only/trained.png)
 
-2. A LUIS-webhely jobb felső részén válassza a **Publish** (Közzététel) lehetőséget a Publish (Közzététel) oldal megnyitásához. A termelési hely alapértelmezés szerint ki van választva. Kattintson a **Publish** (Közzététel) gombra a kiválasztott termelési helynél. A közzététel akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
+## <a name="publish-app-to-endpoint"></a>Alkalmazás közzététele a végponton
 
-    Nem kell létrehoznia LUIS-végpontkulcsot az Azure Portalon a közzététel előtt vagy a végpont URL-címének tesztelése előtt. Minden LUIS-alkalmazás ingyenes indulókulccsal rendelkezik a tartalomkészítéshez. Ez korlátlan tartalomkészítést és [néhány végponttalálatot](luis-boundaries.md#key-limits) biztosít. 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>Végpont lekérdezése a GetJobInformation szándékhoz
-1. A **Publish** (Közzététel) lapon kattintson a lap alján található **Endpoint** (Végpont) hivatkozásra. Ez a művelet megnyit egy másik böngészőablakot, amelynek címsorában a végpont URL-címe látható. 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `I'm looking for a job with Natual Language Processing`. Az utolsó lekérdezésisztring-paraméter a `q`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg a 4. lépésben található egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `GetJobInformation` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként. 
 
@@ -152,7 +150,10 @@ Térjen vissza a LUIS-webhely böngészőlapjára, és hozzon létre egy új, á
     [Betanítás és közzététel](#train-and-publish-the-app) újból. 
 
 ## <a name="query-endpoint-for-applyforjob-intent"></a>Végpont lekérdezése az ApplyForJob szándékhoz
-A **Publish** (Közzététel) lapon kattintson a lap alján található **Endpoint** (Végpont) hivatkozásra. Az új böngészőablakban az URL-cím végén adja meg a következőt: `Can I submit my resume for job 235986`. 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. Az új böngészőablakban az URL-cím végén adja meg a következőt: `Can I submit my resume for job 235986`. 
 
     ```
     {
