@@ -1,6 +1,6 @@
 ---
-title: Attribútumalapú dinamikus csoporttagsági szabályok az Azure Active Directoryban |} A Microsoft Docs
-description: A dinamikus tagsági többek között speciális szabályok létrehozása kifejezés operátorokat és paramétereket támogatja.
+title: Dinamikus automatikus tagsági szabályok hivatkoznak az Azure Active Directoryban |} A Microsoft Docs
+description: Hogyan lehet automatikusan feltölti a csoportokat és a egy odkaz nA pravidlo tagsági szabályok létrehozásához.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,167 +10,63 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 08/01/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e49da237584a48c01e72552abae01da2514da3c1
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 9c0bb676cc59820d3ae83612893c8920d5d0aebe
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248889"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424371"
 ---
-# <a name="create-dynamic-groups-with-attribute-based-membership-in-azure-active-directory"></a>Dinamikus csoportok létrehozása a tagság attribútum alapján az Azure Active Directoryban
+# <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
-Az Azure Active Directory (Azure AD) létrehozhat összetett Attribútumalapú szabályok dinamikus csoporttagságok engedélyezése. Ez a cikk részletesen az attribútumokat és a felhasználók vagy eszközök számára a dinamikus tagsági szabályok létrehozásához szintaxist. Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
+Az Azure Active Directory (Azure AD) létrehozhat összetett Attribútumalapú szabályok dinamikus csoporttagságok engedélyezése. Dinamikus csoporttagság csökkenti az adminisztratív terhelést, a felhasználók hozzáadása és eltávolítása. Ez a cikk részletesen, a tulajdonságok és a felhasználók vagy eszközök számára a dinamikus tagsági szabályok létrehozásához szintaxisát. Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
 
 Ha módosítja olyan felhasználó vagy eszköz attribútumai, a rendszer kiértékeli az összes dinamikus szabályok annak ellenőrzéséhez, hogy aktiválja a változás minden olyan csoportot ad hozzá vagy távolít el egy könyvtárban. Ha egy felhasználó vagy az eszköz megfelel a egy egy csoportra vonatkozó szabálynak, kerülnek, a csoport tagjaként. Ezek a szabály már nem felel meg, ha eltávolítja.
+
+* Eszközök vagy felhasználók dinamikus csoportot hozhat létre, de nem hozhat létre egy szabályt, amely tartalmazza a felhasználókat és eszközöket egyaránt.
+* Nem hozható létre egy eszközcsoportot a eszköztulajdonosok attribútumok alapján. Eszköz tagsági szabályok csak is lehet hivatkozni az eszköz attribútumait.
 
 > [!NOTE]
 > Ez a funkció egy Azure AD Premium P1-licenc szükséges minden egyedi felhasználóhoz, amely egy vagy több dinamikus csoport tagja. Licencek hozzárendelése a felhasználókhoz a számukra a dinamikus csoportok tagjai nem szükséges, de minimálisan hány licencet kell rendelkeznie ahhoz, hogy biztosítsák a minden ilyen felhasználót a bérlőben. Például ha 1000 egyedi felhasználók összesen elérhető összes dinamikus a bérlőben, kell legalább 1000 licencek az Azure AD Premium P1 licenc követelménynek.
 >
-> Eszközök vagy felhasználók dinamikus csoportot hozhat létre, de nem hozhat létre egy szabályt, amely tartalmazza a felhasználókat és eszközöket egyaránt.
-> 
-> Jelenleg nincs lehetőség a tulajdonos attribútum alapján eszközcsoport létrehozásához. Eszköz tagsági szabályok csak a címtárban található objektumokhoz eszköz azonnali attribútumai hivatkozhat.
 
-## <a name="to-create-an-advanced-rule"></a>Egy olyan speciális szabályt
+## <a name="constructing-the-body-of-a-membership-rule"></a>A szervezet egy tagsági szabály létrehozása
 
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda vagy egy felhasználói fiók rendszergazdája.
-2. Válassza a **Felhasználók és csoportok** elemet.
-3. Válassza ki **összes csoport**, és válassza ki **új csoport**.
+A tagsági szabály, amely automatikusan feltölti a felhasználók vagy eszközök egy csoport a bináris kifejezés, amely egy igaz vagy HAMIS eredményt eredményez. A három része egy egyszerű szabályt a következők:
 
-   ![Új csoport hozzáadása](./media/groups-dynamic-membership/new-group-creation.png)
+* Tulajdonság
+* Művelet
+* Érték
 
-4. Az a **csoport** panelen adjon meg egy nevet és leírást az új csoport. Válassza ki a **tagsági típussal** lehet **dinamikus felhasználói** vagy **dinamikus eszköz**, attól függően, hogy hozzon létre egy szabályt, felhasználók vagy eszközök számára, és válassza ki a szeretné**Dinamikus lekérdezés hozzáadása**. A szabály builder használatával egy egyszerű szabályt hozhat létre, vagy írhat egy olyan speciális szabályt, saját magának. Ez a cikk tartalmaz további információt az elérhető felhasználó és eszköz attribútumait, valamint a példák a speciális szabályok.
+A kifejezés a kijelzők sorrendje fontosak szintaktikai hibák elkerülése érdekében.
 
-   ![Dinamikus tagsági szabály hozzáadása](./media/groups-dynamic-membership/add-dynamic-group-rule.png)
+### <a name="rules-with-a-single-expression"></a>Egyetlen kifejezés a szabályok
 
-5. A szabály létrehozása után válassza ki a **lekérdezés hozzáadása** a panel alján.
-6. Válassza ki **létrehozás** a a **csoport** panelen a csoport létrehozásához.
+Egyetlen kifejezés a legegyszerűbb egy tagsági szabályt, és csak három részből áll a fent említett. Egy szabályt az egyetlen kifejezés ehhez hasonlóan néz ki: `Property Operator Value`, ahol a tulajdonság a szintaxis object.property nevére.
 
-> [!TIP]
-> Csoport létrehozása sikertelen lesz, ha a megadott szabály helytelenül formázott vagy érvénytelen volt. A tartalmazó annak magyarázatát, miért érdemes a szabályt nem sikerült feldolgozni a portál jobb felső sarkában megjelenik egy értesítés. Olvassa el, hogy alaposan megismerheti, hogyan, hogy a szabály érvényes, hogy módosítani kell.
-
-## <a name="status-of-the-dynamic-rule"></a>A dinamikus szabály állapota
-
-Láthatja, hogy a tagság feldolgozási állapotát és a egy dinamikus csoport Áttekintés lapján az utolsó frissítés dátumaként.
-  
-  ![dinamikus csoport állapotának megjelenítése](./media/groups-dynamic-membership/group-status.png)
-
-
-A következő állapotüzeneteket is látható, a **tagsági feldolgozási** állapota:
-
-* **Kiértékelése**: A csoport módosítása érkezett, és a frissítések kiértékelése megtörténik.
-* **Feldolgozási**: frissítések feldolgozása folyamatban van.
-* **Frissítés befejezve**: feldolgozása befejeződött, és minden szükséges frissítés történtek-e.
-* **Feldolgozási hiba**: Hiba történt a tagsági szabály értékelése és feldolgozása nem fejeződött be.
-* **Frissítés szüneteltetve**: frissítések szünetelnek a rendszergazda által a dinamikus tagsági szabály. MembershipRuleProcessingState "Felfüggesztett" értékre van állítva.
-
-A következő állapotüzeneteket is látható, a **tagság utolsó frissítés** állapota:
-
-* &lt;**Dátum és idő**&gt;: a tagság utolsó frissítésekor.
-* **Folyamatban lévő**: frissítések jelenleg folyamatban vannak.
-* **Ismeretlen**: nem lehet beolvasni a utolsó frissítésének időpontját. Ennek oka az újonnan létrehozott csoport lehet.
-
-Az egy adott csoport tagsági szabály feldolgozása során hiba történik, ha egy riasztás tetején látható a **áttekintőlapján** a csoporthoz. Ha nincs függőben van a dinamikus tagsági frissítések feldolgozási az a bérlőn belüli összes csoportra további majd 24 órán keresztül, egy riasztás jelenik meg tetején **összes csoport**.
-
-![Hiba történt az üzenet feldolgozásakor](./media/groups-dynamic-membership/processing-error.png)
-
-## <a name="constructing-the-body-of-an-advanced-rule"></a>A szervezet egy speciális szabály létrehozása
-
-A speciális szabályt, amely a dinamikus csoporttagságba hozhat létre a lényegében bináris kifejezés, amely három részből áll, és a egy igaz vagy HAMIS eredményt eredményez. A három részből áll a következők:
-
-* Bal oldali paraméter
-* Binární operátor
-* Jobb oldali állandó
-
-Egy teljes speciális szabály ehhez hasonló: (leftParameter binaryOperator "RightConstant"), ahol a nyitó és záró zárójel teljes bináris kifejezés nem kötelező, dupla idézőjelek között megadása nem kötelező, csak a megfelelő állandó szükséges Ha a karakterlánc, és a bal oldali paraméter szintaxisa user.property. Egy olyan speciális szabályt tartalmazhat egynél több bináris kifejezések elválasztva a - és, - vagy, és – nincs logikai operátorok.
-
-A következő példák a speciális szabály megfelelően:
-```
-(user.department -eq "Sales") -or (user.department -eq "Marketing")
-(user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
-```
-A támogatott paraméterek és kifejezés szabály operátorok teljes listáját tekintse meg az alábbi szakaszokban. Az attribútumok Eszközszabályok használni, lásd: [eszközobjektumok szabályok létrehozása attribútumok használatával](#using-attributes-to-create-rules-for-device-objects).
-
-A speciális szabály törzsét teljes hossza nem lehet hosszabb 2048 karakternél.
-
-> [!NOTE]
-> Karakterlánc és regex műveletek nagybetűk nem számítanak. Is Null ellenőrzéseket végezhet, használatával *null* konstansként, például user.department - eq *null*.
-> Idézőjeleket tartalmazó karakterláncok "érdemes lehet átléptetni" karakter, például user.department - eq \`"Értékesítés".
-
-## <a name="supported-expression-rule-operators"></a>Támogatott kifejezés szabály operátorok
-
-A következő táblázat felsorolja a speciális szabály törzsében használandó minden támogatott kifejezés a szabály operátor és a szintaxis:
-
-| Operátor | Szintaxis |
-| --- | --- |
-| Nem egyenlő |-ne |
-| Egyenlő |-eq |
-| Nem ezzel kezdődik |-notStartsWith |
-| Ezzel kezdődik |-startsWith |
-| Nem tartalmazza |-notContains |
-| Tartalmazza |-tartalmaz |
-| Nem egyezik |-notMatch |
-| Egyezés |-felel meg |
-| Eleme ennek | -a |
-| Nem található | -notIn |
-
-## <a name="operator-precedence"></a>Műveleti sorrendet
-
-Minden operátor száma nagyobb, kisebb a elsőbbséget alább láthatók. Operátorok ugyanabban a sorban azonos prioritású szerepelnek:
-
-````
--any -all
--or
--and
--not
--eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
-````
-
-Minden operátor is használható, vagy a kötőjel előtag nélkül. Zárójelek között van szükség, csak akkor, ha a sorrendje nem felel meg a követelményeknek.
-Példa:
+Az alábbiakban látható egy példa egy megfelelően kialakított tagsági szabályt, az egyetlen kifejezés:
 
 ```
-   user.department –eq "Marketing" –and user.country –eq "US"
+user.department -eq "Sales"
 ```
 
-a következő azonos:
-
-```
-   (user.department –eq "Marketing") –and (user.country –eq "US")
-```
-
-## <a name="using-the--in-and--notin-operators"></a>Használja a - az - notIn operátorok és
-
-Ha azt szeretné, a felhasználói attribútum több különböző érték összehasonlítására használhatja a - a vagy - notIn operátorok. Íme egy példa használatával – az In operátor:
-```
-   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
-```
-Figyeljük meg a "[" és "]" elején és végén az értékek listáját. Ez a feltétel kiértékelése user.department egyenlő a listában található értékek az egyik értéke igaz.
-
-
-## <a name="query-error-remediation"></a>Lekérdezési hiba szervizelés
-
-Az alábbi táblázat a gyakori hibák és javítsa ki őket annak
-
-| Lekérdezés-elemzési hiba | Hiba használat | Javított használat |
-| --- | --- | --- |
-| Chyba: Attribútum nem támogatott. |(user.invalidProperty - eq "Value") |(user.department - eq "value")<br/><br/>Ellenőrizze, hogy a rendszer az attribútum a [támogatott tulajdonságok listája](#supported-properties). |
-| Chyba: Operátor nem támogatott az attribútum. |(user.accountEnabled – igaz tartalmaz) |(user.accountEnabled - eq true)<br/><br/>Az operátor nem támogatott a tulajdonság típusa (ebben a példában-tartalmaz nem használható írja be a logikai érték). Használja a megfelelő operátorok a tulajdonság típusát. |
-| Chyba: Lekérdezésfordítási hiba. |1. (user.department - eq "Értékesítés") (user.department - eq "Marketing")<br/><br/>2. (user.userPrincipalName-egyezik "*@domain.ext") |1. Hiányzó operátor. Használja a - és vagy - vagy két predikátumok csatlakoztatása<br/><br/>(user.department - eq "Értékesítés") – vagy (user.department - eq "Marketing")<br/><br/>2. hiba történt az - használt reguláris kifejezést az felel meg<br/><br/>(user.userPrincipalName-egyezik ". *@domain.ext"), azt is megteheti: (user.userPrincipalName-egyezik "\@domain.ext$")|
+Zárójelek egyetlen kifejezés nem kötelezően megadandó jellegűek. A tagsági szabály törzsét teljes hossza nem lehet hosszabb 2048 karakternél.
 
 ## <a name="supported-properties"></a>Támogatott tulajdonságok
 
-A speciális szabályt is használhat az összes felhasználói tulajdonságok a következők:
+Három feltételtípus tulajdonságok, a tagsági szabály létrehozására használható.
+
+* Logikai
+* Sztring
+* Karakterlánc-gyűjtemény
+
+Az alábbiakban a felhasználói tulajdonságok, amelyek segítségével hozzon létre egy egyetlen kifejezés.
 
 ### <a name="properties-of-type-boolean"></a>Tulajdonságait írja be a logikai érték
-
-Engedélyezett operátorok
-
-* -eq
-* -ne
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
@@ -179,27 +75,14 @@ Engedélyezett operátorok
 
 ### <a name="properties-of-type-string"></a>Karakterlánc típusú tulajdonságok
 
-Engedélyezett operátorok
-
-* -eq
-* -ne
-* -notStartsWith
-* -StartsWith
-* -tartalmaz
-* -notContains
-* -felel meg
-* -notMatch
-* -a
-* -notIn
-
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
 | city |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.city - eq "value") |
 | Ország |Bármilyen karakterlánc értékét, vagy *null értékű* |(felhasználó.ország - eq "value") |
 | Cégnév | Bármilyen karakterlánc értékét, vagy *null értékű* | (user.companyName - eq "value") |
 | Szervezeti egység |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.department - eq "value") |
-| displayName |Bármilyen karakterlánc típusú értéket |(user.displayName - eq "value") |
-| employeeId |Bármilyen karakterlánc típusú értéket |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
+| displayName |bármilyen karakterlánc típusú értéket |(user.displayName - eq "value") |
+| employeeId |bármilyen karakterlánc típusú értéket |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.facsimileTelephoneNumber - eq "value") |
 | givenName |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.givenName - eq "value") |
 | Beosztás |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.jobTitle - eq "value") |
@@ -213,52 +96,153 @@ Engedélyezett operátorok
 | Irányítószám |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.postalCode - eq "value") |
 | preferredLanguage |ISO 639-1 kód |(user.preferredLanguage - eq "en-US") |
 | sipProxyAddress |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.sipProxyAddress - eq "value") |
-| állapot |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.state - eq "value") |
+| state |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.state - eq "value") |
 | streetAddress |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.streetAddress - eq "value") |
 | Vezetéknév |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.surname - eq "value") |
 | telephoneNumber |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.telephoneNumber - eq "value") |
 | a usagelocation érték |Két betűkkel országkód: |(user.usageLocation - eq "US") |
-| userPrincipalName |Bármilyen karakterlánc típusú értéket |(user.userPrincipalName - eq "alias@domain") |
+| userPrincipalName |bármilyen karakterlánc típusú értéket |(user.userPrincipalName - eq "alias@domain") |
 | userType |tag vendég *null értékű* |(user.userType - eq "Tag") |
 
 ### <a name="properties-of-type-string-collection"></a>Típus string gyűjtemény tulajdonságai
 
-Engedélyezett operátorok
-
-* -tartalmaz
-* -notContains
-
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| otherMails |Bármilyen karakterlánc típusú értéket |(user.otherMails-tartalmaz "alias@domain") |
+| otherMails |bármilyen karakterlánc típusú értéket |(user.otherMails-tartalmaz "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
+
+A használt eszköz szabályok tulajdonságainak megtekintéséhez [eszközök szabályai](#rules-for-devices).
+
+## <a name="supported-operators"></a>Támogatott operátorok
+
+Az alábbi táblázat a támogatott operátorok és azok egyetlen kifejezés szintaxisa. Operátorok használhatók, vagy a kötőjel (-) előtag nélkül.
+
+| Művelet | Szintaxis |
+| --- | --- |
+| Nem egyenlő |-ne |
+| Egyenlő |-eq |
+| Nem ezzel kezdődik |-notStartsWith |
+| Ezzel kezdődik |-startsWith |
+| Nem tartalmazza |-notContains |
+| Contains |-tartalmaz |
+| Nem egyezik |-notMatch |
+| Egyezés |-felel meg |
+| Eleme ennek | -a |
+| Nem található | -notIn |
+
+### <a name="using-the--in-and--notin-operators"></a>Használja a - az - notIn operátorok és
+
+Ha azt szeretné, a felhasználói attribútum több különböző érték összehasonlítására használhatja a - a vagy - notIn operátorok. A szögletes zárójelet szimbólumok használata "[" és "]", és az értékek listája végén.
+
+ A következő példában a kifejezés eredménye IGAZ Ha user.department értéke megegyezik a listában található értékek valamelyikét:
+
+```
+   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
+```
+
+## <a name="supported-values"></a>Támogatott értékek
+
+A kifejezésben használt értékek számos különböző típusú, beleértve a következőket tartalmazhatják:
+
+* Sztringek
+* Logikai – IGAZ, hamis
+* Számok
+* Tömbök – tömb szám, karakterlánc-tömbben
+
+Egy kifejezés belüli értéket megadásakor fontos hibák elkerülése érdekében használja a megfelelő szintaxist. Szintaxis tippek a következők:
+
+* Dupla idézőjelek között megadása nem kötelező, ha az érték nem karakterlánc.
+* Karakterlánc és regex műveletek nagybetűk nem számítanak.
+* Ha egy karakterláncértéket tartalmaz dupla idézőjelek között, mindkét idézőjelek között kell lehet átléptetni a \` karakter, például user.department - eq \`"értékesítési\`" a megfelelő szintaxist akkor, ha "Értékesítés" értékét.
+* Is Null ellenőrzéseket végezhet, használja a null értékként, például `user.department -eq null`.
+
+### <a name="use-of-null-values"></a>Null értékek használatát
+
+Adjon meg null értéket a szabályban, használhatja a *null* értéket. 
+
+* Használja a - eq vagy - ne összehasonlítása a *null* értéke egy kifejezés.
+* Használjon idézőjeleket szó *null* csak akkor, ha azt szeretné, az értéknek szövegkonstansnak kell értelmezni.
+* A - not operátor nem használható, összehasonlító operátor null értékű. Ha használ, hibaüzenetet kap vagy $null e null használja.
+
+A megfelelő módon való hivatkozáshoz a null értéket a következőképpen történik:
+
+```
+   user.mail –ne null
+```
+
+## <a name="rules-with-multiple-expressions"></a>Szabályok több kifejezésekkel
+
+A csoporttagsági szabály egynél több egyetlen kifejezés által csatlakoztatott állhat a - és, - vagy, és – nincs logikai operátorok. Logikai operátorok is együtt használható. 
+
+A következő példák több kifejezésekkel megfelelően kialakított tagsági szabályok:
+
+```
+(user.department -eq "Sales") -or (user.department -eq "Marketing")
+(user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
+```
+
+### <a name="operator-precedence"></a>Műveleti sorrendet
+
+Minden operátor ellentmondások legmagasabbtól a legalacsonyabb alább láthatók. Operátorok ugyanabban a sorban azonos prioritással a következők:
+
+```
+-eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
+-not
+-and
+-or
+-any -all
+```
+
+A következő egy példa precedencia ahol kiértékelése a felhasználó számára a két kifejezés:
+
+```
+   user.department –eq "Marketing" –and user.country –eq "US"
+```
+
+Zárójelek között van szükség, csak akkor, ha a sorrendje nem felel meg a követelményeknek. Például, ha azt szeretné, hogy először ki kell értékelni részleg, az alábbiakban látható hogyan zárójelek használható sorrend meghatározására:
+
+```
+   user.country –eq "US" –and (user.department –eq "Marketing" –or user.department –eq "Sales")
+```
+
+## <a name="rules-with-complex-expressions"></a>Az összetett kifejezések szabályok
+
+A tagsági szabály összetett kifejezések, ahol a tulajdonságait, operátorokat és értékeket is összetettebb űrlapokon állhat. Kifejezések összetett tekinthetők, ha a következők bármelyike igaz:
+
+* A tulajdonság értékek; áll. pontosabban a többértékű tulajdonságai
+* A kifejezések használata a - bármely és - minden operátor
+* A kifejezés értéke maga is lehet egy vagy több kifejezése
 
 ## <a name="multi-value-properties"></a>Többértékű tulajdonságai
 
-Engedélyezett operátorok
+Többértékű tulajdonságok azonos típusú objektumok gyűjteményei. Használatával a tagsági szabályok létrehozásához használható a - bármely és - az összes logikai operátor.
+
+| Tulajdonságok | Értékek | Használat |
+| --- | --- | --- |
+| assignedPlans | A gyűjtemény minden egyes objektum a következő karakterlánc-tulajdonságok közzététele: capabilityStatus, szolgáltatás, servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
+| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses – bármely (\_ – tartalmazza a "contoso")) |
+
+### <a name="using-the--any-and--all-operators"></a>Használja a - bármely és - minden operátor
+
+Használható – egy olyan feltétel alkalmazására egy, vagy az összes elem a gyűjteményben, illetve bármely és - minden operátorok.
 
 * -bármely (elégedett az eredménnyel ha legalább egy elem a gyűjteményben lévő megegyezik a feltétel)
 * -az összes (teljesülnek, ha a gyűjteményben lévő összes elem a feltételnek megfelelő)
 
-| Tulajdonságok | Értékek | Használat |
-| --- | --- | --- |
-| assignedPlans |A gyűjtemény minden egyes objektum a következő karakterlánc-tulajdonságok közzététele: capabilityStatus, szolgáltatás, servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
-| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses – bármely (\_ – tartalmazza a "contoso")) |
+#### <a name="example-1"></a>1. példa
 
-Többértékű tulajdonságok azonos típusú objektumok gyűjteményei. Használható – egy olyan feltétel alkalmazására egy, vagy az összes elem a gyűjteményben, illetve bármely és - minden operátorok. Példa:
-
-assignedplans parancsmagot, amely felsorolja a felhasználóhoz rendelt minden szolgáltatáscsomag többértékű tulajdonság. Az alábbi kifejezés választ ki, akik rendelkeznek az Exchange Online (2. csomag) service-csomag, amely egyben az engedélyezési állapotot:
+assignedplans parancsmagot, amely felsorolja a felhasználóhoz rendelt minden szolgáltatáscsomag többértékű tulajdonság. A következő kifejezés lehetőséget választja, az Exchange Online (2. csomag) service-csomag (a GUID értéket), amely egyben az engedélyezési állapotot rendelkező felhasználók számára:
 
 ```
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-(A GUID azonosító azonosítja az Exchange Online (2. csomag) service-csomag).
+Egy szabály például a segítségével minden felhasználó csoport számára, akikkel az Office 365-höz (vagy más Microsoft Online Services) funkció engedélyezve van. Ezután alkalmazhat házirendeket vannak beállítva a csoporthoz.
 
-> [!NOTE]
-> Ez akkor hasznos, ha azt szeretné, azonosíthatja a minden felhasználó, akinek egy Office 365-höz (vagy más Microsoft Online Services) funkció engedélyezve van, például a házirendek egy meghatározott készletével együtt lehetőséget.
+#### <a name="example-2"></a>2. példa
 
 A következő kifejezés bármely service-csomag, amely társítva van az Intune szolgáltatással ("SCO" szolgáltatásnév alapján azonosított) rendelkező minden felhasználó számára lehetőséget választja:
+
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
@@ -273,55 +257,75 @@ Az aláhúzás (\_) szintaxisa megegyezik egy adott értéket a többértékű k
 (user.proxyAddresses -any (_ -contains "contoso"))
 ```
 
-## <a name="use-of-null-values"></a>Null értékek használatát
+## <a name="other-properties-and-common-rules"></a>Egyéb tulajdonságok és a közös szabályok
 
-Adjon meg null értéket a szabályban, használhatja a *null* értéket. Ügyeljen arra, hogy nem használja a word idézőjeleket *null* – Ha így tesz, azt fogja értelmezni egy szöveges karakterlánc értéket. A - not operátor nem használható, összehasonlító operátor null értékű. Ha használ, hibaüzenetet kap vagy $null e null használja. Ehelyett használja a - eq vagy - ne. A megfelelő módon való hivatkozáshoz a null értéket a következőképpen történik:
+### <a name="create-a-direct-reports-rule"></a>"A közvetlen beosztottak" szabály létrehozása
+
+Létrehozhat egy vezető közvetlen beosztottjainak összes tartalmazó csoport. A közvetlen beosztottjait később módosíthatja, ha a csoport tagsága automatikusan módosul.
+
+A közvetlen beosztottak szabály jön létre a következő szintaxis használatával:
+
 ```
-   user.mail –ne $null
+Direct Reports for "{objectID_of_manager}"
 ```
 
-## <a name="extension-attributes-and-custom-attributes"></a>A bővítményattribútumok és egyéni attribútumok
-A bővítményattribútumok és az egyéni attribútumokat a dinamikus tagsági szabályok támogatottak.
+Íme egy példa egy érvényes szabályt, ahol a "62e19b97-8b3d-4d4a-a106-4ce66896a863" az ObjectId azonosítóját, a kezelő:
 
-A bővítményattribútumok szinkronizálva lesznek a helyszíni Windows Server AD, és tegye meg "ExtensionAttributeX", ahol az X értéke 1 – 15 formátumát.
-Egy példa bővítményattribútum használó szabály
+```
+Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
+```
+
+Az alábbi tippek segíthetnek a szabály megfelelően használja.
+
+* A **Kezelőazonosító** a kezelő objektum azonosítója. A kezelőben található **profil**.
+* A szabály működik, ellenőrizze, hogy a **Manager** tulajdonság helyesen van-e állítva a bérlőn belüli felhasználók számára. A jelenlegi érték a felhasználó ellenőrizheti **profil**.
+* Ez a szabály csak a közvetlen beosztottjait támogatja. Más szóval nem hozható létre egy csoportot a felettese, közvetlen beosztottai *és* jelentéseiket.
+* Ez a szabály nem kombinálható más tagsági szabályok.
+
+### <a name="create-an-all-users-rule"></a>"Minden felhasználó" szabály létrehozása
+
+Létrehozhat egy tagsági szabállyal a bérlőn belüli összes felhasználóját tartalmazó csoporthoz. Amikor a felhasználók hozzáadásakor vagy eltávolításakor a bérlőtől a jövőben, a csoport tagsága automatikusan módosul.
+
+A "Minden felhasználó" szabály - ne operátor és a null érték egyetlen kifejezés használatával jön létre. Ez a szabály B2B vendégfelhasználók, valamint a tag felhasználók hozzáadása a csoporthoz.
+
+```
+user.objectid -ne null
+```
+
+### <a name="create-an-all-devices-rule"></a>"Minden eszköz" szabály létrehozása
+
+Létrehozhat egy tagsági szabály használatával a bérlőn belüli összes eszközök csoportja. Eszközök hozzáadásakor vagy eltávolításakor a bérlőtől a jövőben, ha a csoport tagsága automatikusan módosul.
+
+A "Minden eszköz" szabály jön létre a - ne operátor és a null érték egyetlen kifejezés használatával:
+
+```
+device.objectid -ne null
+```
+
+### <a name="extension-properties-and-custom-extension-properties"></a>Bővítmény tulajdonságai és egyéni bővítmény tulajdonságai
+
+A dinamikus tagsági szabályok karakterlánc tulajdonságai bővítményattribútumok és egyéni extenson tulajdonságok támogatottak. A bővítményattribútumok szinkronizálva lesznek a helyszíni Windows Server AD, és tegye meg "ExtensionAttributeX", ahol az X értéke 1 – 15 formátumát. Íme egy példa bővítményattribútum-tulajdonságként használó szabály:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Egyéni attribútumok szinkronizálva lesznek a helyszíni Windows Server AD vagy egy csatlakoztatott SaaS-alkalmazás és a formátuma "user.extension_[GUID]\__ [attribútum]", ahol a [GUID] az alkalmazás által létrehozott egyedi azonosítója az aad-ben a az Azure AD-attribútum és [attribútum] megegyezik az attribútum neve lett létrehozva. Vlastní atribut használó szabály például
+Egyéni bővítménytulajdonságok szinkronizálva lesznek a helyszíni Windows Server AD- vagy csatlakoztatott SaaS-alkalmazás és -formátumát `user.extension_[GUID]__[Attribute]`, ahol:
+
+* [GUID] egy egyedi azonosítója, amely a tulajdonság az Azure AD-ben létrehozott Azure AD-ben
+* [] Attribútum a tulajdonság nevét módon lett létrehozva
+
+Például egy szabályt, amely egy egyéni bővítmény tulajdonságot használja a következő:
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
+user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-Az egyéni attribútum nevében található a címtárban lekérdezi a felhasználó által a attribútum Graph Explorer használatával, és megkeresi az attribútum neve.
+Az egyéni tulajdonság neve található a címtárban lekérdezi a felhasználó által a tulajdonság Graph Explorer használatával, és megkeresi a tulajdonság nevét.
 
-## <a name="direct-reports-rule"></a>"A közvetlen beosztottak" szabály
-Létrehozhat egy vezető közvetlen beosztottjainak összes tartalmazó csoport. A közvetlen beosztottjait később módosíthatja, ha a csoport tagsága automatikusan módosul.
+## <a name="rules-for-devices"></a>Eszközök szabályai
 
-> [!NOTE]
-> 1. A szabály működik, ellenőrizze, hogy a **Kezelőazonosító** tulajdonság megfelelően van-e állítva, a felhasználók a saját bérlőjében. A jelenlegi érték a felhasználó ellenőrizheti a saját **profil lapon**.
-> 2. Ez a szabály csak **közvetlen** jelentéseket. Ez jelenleg nem lehetséges egy egymásba ágyazott hierarchiák; csoport létrehozása például egy csoportot, amely tartalmazza a közvetlen beosztottak és jelentéseiket.
-> 3. Ez a szabály más speciális szabályokkal nelze kombinovat.
-
-**A csoport konfigurálása**
-
-1. Lépése 1 – 5 szakaszban [a speciális szabályt](#to-create-the-advanced-rule), és válassza ki egy **tagság típusa** , **dinamikus felhasználói**.
-2. Az a **dinamikus tagsági szabályok** panelen adja meg a szabály a következő szintaxissal:
-
-    *"{ObjectID_of_manager}" közvetlen beosztottjainak profilját*
-
-    Egy érvényes szabályt egy példát:
-```
-                    Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
-```
-    where “62e19b97-8b3d-4d4a-a106-4ce66896a863” is the objectID of the manager. The object ID can be found on manager's **Profile tab**.
-3. A szabály mentése után minden felhasználó a megadott kezelő azonosító értéket a hozzáadja a csoporthoz.
-
-## <a name="using-attributes-to-create-rules-for-device-objects"></a>Eszközobjektumok szabályok létrehozása attribútumok használatával
-Egy szabály, amely eszközobjektumok tagsági kiválaszt egy csoportot is létrehozhat. A következő eszköz attribútumokat is használható.
+Egy szabály, amely eszközobjektumok tagsági kiválaszt egy csoportot is létrehozhat. Csoport tagjai nem lehet a felhasználókat és eszközöket egyaránt. A következő eszköz attribútumokat is használható.
 
  Eszköz-attribútum  | Értékek | Példa
  ----- | ----- | ----------------
@@ -341,100 +345,8 @@ Egy szabály, amely eszközobjektumok tagsági kiválaszt egy csoportot is létr
  deviceId | egy érvényes Azure AD-Eszközazonosító | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | érvényes Azure AD-objektumazonosító |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
 
-
-
-## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>Dinamikus csoporttagság módosítása statikusra, és ez fordítva is igaz
-Akkor lehet módosítani egy csoport tagságát kezeléséről. Ez akkor hasznos, ha meg szeretné tartani csoport neve és azonosítója a rendszeren, hogy a csoport bármely meglévő hivatkozások még érvényesek; Új csoport létrehozása miatt frissíteni kellene az ezeket a hivatkozásokat.
-
-Frissítettük az Azure AD felügyeleti központban nyílik ezt a funkciót. Most már használó ügyfelek átalakíthatják a meglévő csoportokat a dinamikus tagsági hozzárendelt tagságot és fordítva vagy Azure AD felügyeleti központ vagy a PowerShell-parancsmagok alább látható módon.
-
-> [!WARNING]
-> Egy meglévő statikus csoportot egy dinamikus csoport módosításakor összes meglévő tag törlődni fog a csoportból, és ezután a tagsági szabály új tagok hozzáadása a program feldolgozza. Alkalmazások vagy erőforrásokhoz való hozzáférés szabályozásához a csoport használata esetén az eredeti tagok elveszthetik a hozzáférést, amíg a tagsági szabály feldolgoz.
->
-> Azt javasoljuk, hogy előre az új tagsági szabályt, győződjön meg arról, hogy az új a csoporttagságot a várt módon vizsgálati.
-
-### <a name="using-azure-ad-admin-center-to-change-membership-management-on-a-group"></a>Az Azure AD felügyeleti központ használatával tagsági felügyeleti csoport módosítása 
-
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda vagy egy felhasználói fiók rendszergazdája a bérlőben.
-2. Válassza ki **csoportok**.
-3. Az a **összes csoport** list, nyissa meg a csoportot, amelyet módosítani szeretne.
-4. Válassza ki **tulajdonságok**.
-5. A a **tulajdonságok** csoportban válassza a lap egy **tagságtípusának** hozzárendelt (statikus), a dinamikus felhasználó vagy a dinamikus eszköz, a kívánt tagsági típusától függően. A dinamikus tagságot a szabály builder használatával jelölje be egy egyszerű szabályt, vagy írjon egy olyan speciális szabályt, saját magának. 
-
-A következő lépéseket kell egy példa egy csoport módosítása statikusról dinamikus tagsági a felhasználók egy csoportjánál. 
-
-1. Az a **tulajdonságok** a kiválasztott csoportot, válassza az oldal egy **tagság típusa** , **dinamikus felhasználói**, majd válassza az Igen lehetőséget a módosítások elmagyarázza a csoporthoz párbeszédpanelen tagság a folytatáshoz. 
-  
-   ![Válassza ki a felhasználó dinamikus tagsági típusa](./media/groups-dynamic-membership/select-group-to-convert.png)
-  
-2. Válassza ki **dinamikus lekérdezés hozzáadása**, majd adja meg a szabály.
-  
-   ![Adja meg a szabály](./media/groups-dynamic-membership/enter-rule.png)
-  
-3. A szabály létrehozása után válassza ki a **lekérdezés hozzáadása** az oldal alján.
-4. Válassza ki **mentése** a a **tulajdonságok** lap a csoport a módosítások mentéséhez. A **tagságtípusának** a csoport azonnal frissül a listájából.
-
-> [!TIP]
-> Csoport konvertálása sikertelen lehet, ha a speciális szabály beírt helytelen volt. A benne található annak magyarázatát, miért érdemes a szabályt nem fogadja el a rendszer a portál jobb felső sarkában megjelenik egy értesítés. Olvassa el, hogy alaposan megismerheti, hogyan módosíthatja a szabályt, hogy érvényes.
-
-### <a name="using-powershell-to-change-membership-management-on-a-group"></a>Tagság felügyeleti csoport módosítása a PowerShell használatával
-
-> [!NOTE]
-> A parancsmagok használatával kell a dinamikus csoport tulajdonságainak módosítása **előzetes verzióját** [az Azure AD PowerShell 2-es verziójú](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Az előzetes verzióját, a telepítése a [PowerShell-galériából](https://www.powershellgallery.com/packages/AzureADPreview).
-
-Íme egy példa, amely egy meglévő csoportot a tagsági felügyeleti kapcsoló funkciók. Ebben a példában van ügyelni arra, hogy megfelelően GroupTypes tulajdonság módosítására, és megőrizheti azokat az értékeket, a dinamikus tagsági kapcsolódnak.
-
-```
-#The moniker for dynamic groups as used in the GroupTypes property of a group object
-$dynamicGroupTypeString = "DynamicMembership"
-
-function ConvertDynamicGroupToStatic
-{
-    Param([string]$groupId)
-
-    #existing group types
-    [System.Collections.ArrayList]$groupTypes = (Get-AzureAdMsGroup -Id $groupId).GroupTypes
-
-    if($groupTypes -eq $null -or !$groupTypes.Contains($dynamicGroupTypeString))
-    {
-        throw "This group is already a static group. Aborting conversion.";
-    }
-
-
-    #remove the type for dynamic groups, but keep the other type values
-    $groupTypes.Remove($dynamicGroupTypeString)
-
-    #modify the group properties to make it a static group: i) change GroupTypes to remove the dynamic type, ii) pause execution of the current rule
-    Set-AzureAdMsGroup -Id $groupId -GroupTypes $groupTypes.ToArray() -MembershipRuleProcessingState "Paused"
-}
-
-function ConvertStaticGroupToDynamic
-{
-    Param([string]$groupId, [string]$dynamicMembershipRule)
-
-    #existing group types
-    [System.Collections.ArrayList]$groupTypes = (Get-AzureAdMsGroup -Id $groupId).GroupTypes
-
-    if($groupTypes -ne $null -and $groupTypes.Contains($dynamicGroupTypeString))
-    {
-        throw "This group is already a dynamic group. Aborting conversion.";
-    }
-    #add the dynamic group type to existing types
-    $groupTypes.Add($dynamicGroupTypeString)
-
-    #modify the group properties to make it a static group: i) change GroupTypes to add the dynamic type, ii) start execution of the rule, iii) set the rule
-    Set-AzureAdMsGroup -Id $groupId -GroupTypes $groupTypes.ToArray() -MembershipRuleProcessingState "On" -MembershipRule $dynamicMembershipRule
-}
-```
-Egy csoport statikus tétele:
-```
-ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
-```
-A csoport dinamikus tétele:
-```
-ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
-```
 ## <a name="next-steps"></a>További lépések
+
 E cikkekben további információk az Azure Active Directory-csoportokon.
 
 * [Meglévő csoportok megtekintése](../fundamentals/active-directory-groups-view-azure-portal.md)

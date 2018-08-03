@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a Tableau Online |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Tableau Online között.
+title: 'Oktatóanyag: Azure Active Directory-integráció a Tableau Online |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Tableau Online között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,238 +14,238 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 11edcfe1075d2afc6c62db5e125d2d150e8c7bfc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b0aaa27164c84a06c6fad92d5036a00ca5a319f8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227856"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421731"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Oktatóanyag: Azure Active Directory-integráció a Tableau Online
+# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Oktatóanyag: Azure Active Directory-integráció a Tableau online-nal
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a Tableau Online az Azure Active Directoryval (Azure AD).
 
-Tableau Online integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Az Azure AD integrálása Tableau Online nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, aki hozzáfér a Tableau Online Azure AD-ben
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Tableau online (egyszeri bejelentkezés)
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá a Tableau Online az Azure AD-ben
+- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a Tableau Online (egyszeri bejelentkezés)
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a Tableau Online, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - A Tableau Online egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Tableau Online hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. A katalógusból Tableau Online hozzáadása
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-tableau-online-from-the-gallery"></a>A gyűjteményből Tableau Online hozzáadása
-Az Azure AD integrálása a Tableau Online konfigurálásához kell hozzáadnia Tableau Online a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-tableau-online-from-the-gallery"></a>A katalógusból Tableau Online hozzáadása
+Az Azure AD integrálása a Tableau Online konfigurálásához hozzá kell Tableau Online a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a Tableau Online a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a Tableau Online a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **Tableau Online**.
+1. A Keresés mezőbe írja be a **Tableau Online**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_search.png)
 
-5. Az eredmények panelen válassza ki a **Tableau Online**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Tableau Online**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a Tableau Online "Britta Simon." nevű tesztfelhasználó alapján
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Tableau Online egy "Britta Simon." nevű tesztelési felhasználó alapján
 
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó a Tableau Online Újdonságok egy felhasználó számára az Azure ad-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a Tableau Online közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó, a Tableau Online mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a Tableau Online hivatkozás kapcsolatát kell létrehozni.
 
-A Tableau Online, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+A Tableau Online hozzárendelése értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Tableau Online tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Konfigurálása és az Azure AD egyszeri bejelentkezés Tableau online-nal való teszteléséhez hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[A Tableau Online tesztfelhasználó létrehozása](#creating-a-tableau-online-test-user)**  - való Britta Simon egy megfelelője a Tableau Online, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[A Tableau Online tesztfelhasználó létrehozása](#creating-a-tableau-online-test-user)**  - a-megfelelője a Britta Simon rendelkezik a Tableau online-ban, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Tableau Online alkalmazás egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Tableau Online alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Az Azure AD egyszeri bejelentkezést a Tableau Online megadásához hajtsa végre az alábbi lépéseket:**
+**Konfigurálja az Azure AD egyszeri bejelentkezés, a Tableau Online, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Tableau Online** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Tableau Online** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
 
-3. Az a **Tableau Online tartomány és az URL-címek** területen tegye a következőket:
+1. Az a **Tableau Online tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
     
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://sso.online.tableau.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím: `https://sso.online.tableau.com`
 
-    b. Az a **azonosító** szövegmező, írja be az URL-cím: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `
+    b. Az a **azonosító** szövegmezőbe írja be az URL-cím: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/tutorial_general_400.png)
 
-6. Egy másik böngészőablakban bejelentkezés a Tableau Online alkalmazáshoz. Ugrás a **beállítások** , majd **hitelesítési**.
+1. Egy másik böngészőablakban bejelentkezés, a Tableau Online alkalmazás. Lépjen a **beállítások** , majd **hitelesítési**.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
     
-7. Ahhoz, hogy SAML, a **hitelesítési típusok** szakasz. Ellenőrizze a **egyszeri bejelentkezéshez a SAML** jelölőnégyzetet.
+1. SAML, a engedélyezéséhez **hitelesítési típusok** szakaszban. Ellenőrizze a **egyszeri bejelentkezéses SAML-** jelölőnégyzetet.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
-8. Görgessen lefelé, amíg **importálási metaadatait tartalmazó fájl a Tableau Online** szakasz.  Kattintson a Tallózás gombra, és importálja a metaadat-fájlt már letöltötte az Azure AD. Kattintson a **alkalmaz**.
+1. Görgessen lefelé, amíg **metaadatait tartalmazó fájl importálása a Tableau Online szolgáltatásba** szakaszban.  Kattintson a Tallózás gombra, és az Azure AD-ból letöltött metaadatait tartalmazó fájl importálása. Kattintson a **alkalmaz**.
    
    ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
-9. Az a **helyességi feltételek egyeznek** szakaszban, helyezze be a megfelelő identitásszolgáltató helyességi feltétel nevét **e-mail cím**, **Utónév**, és **Vezetéknév**. Ezt az információt lekérni az Azure AD: 
+1. Az a **felel meg a helyességi feltételek** szakaszban, a megfelelő identitásszolgáltató helyességi feltétel nevét a **e-mail-cím**, **Utónév**, és **Vezetéknév**. Ez az információ lekérése az Azure ad-ből: 
   
-    a. Az Azure portálon, nyissa meg a **Tableau Online** alkalmazás integráció lapján.
+    a. Az Azure Portalon lépjen a **Tableau Online** alkalmazás integráció lapján.
     
-    b. Attribútumok területen válassza ki a **"megtekintése és szerkesztése a más felhasználói attribútumok"** jelölőnégyzetet. 
+    b. Az attribútumok területen válassza ki a **"megtekintése és egyéb felhasználói attribútumok szerkesztése"** jelölőnégyzetet. 
     
    ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/attributesection.png)
       
-    c. Másolja a névtér értéke attribútumait: givenname, e-mailek és a Vezetéknév, az alábbi lépéseket követve:
+    c. Másolja a névtér értéke attribútumait: givenname, e-mailek és a Vezetéknév, az alábbi lépések segítségével:
 
-   ![Az Azure AD-egyszeri bejelentkezés](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![Az Azure AD egyszeri bejelentkezés](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
     
     d. Kattintson a **user.givenname** érték 
     
-    e. Másolja az értéket a **névtér** szövegmező.
+    e. Másolja az értéket a **névtér** szövegmezőbe.
 
    ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/attributesection2.png)
 
-    f. Másolja a namesapce értékek az e-mailek és a Vezetéknév kövesse a fenti lépéseket.
+    f. Másolja a névtér értékeit az e-mailek és a Vezetéknév kövesse a fenti lépéseket.
 
-    g. Váltson a Tableau Online alkalmazást, majd állítsa be a **Tableau Online attribútumok** szakasz az alábbiak szerint:
-     * E-mailek: **mail** vagy **userprincipalname**
+    g. Váltson a Tableau Online alkalmazást, majd állítsa be a **Tableau online-hoz attribútumait** szakasz az alábbiak szerint:
+     * E-mail cím: **mail** vagy **userprincipalname**
      * Utónév: **givenname**
-     * Vezetéknév: **Vezetéknév**
+     * Vezetéknév: **vezetékneve**
    
    ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tableauonline-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tableauonline-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tableauonline-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tableauonline-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-tableau-online-test-user"></a>A Tableau Online tesztfelhasználó létrehozása
 
-Ebben a szakaszban a Tableau Online Britta Simon nevű felhasználó létrehozása.
+Ebben a szakaszban egy a Tableau Online Britta Simon nevű felhasználó hoz létre.
 
-1. A **Tableau Online**, kattintson a **beállítások** , majd **hitelesítési** szakasz. Görgessen le a **felhasználók** szakasz. Kattintson a **felhasználók hozzáadása az** , majd **adja meg az E-mail címek**.
+1. A **Tableau Online**, kattintson a **beállítások** , majd **hitelesítési** szakaszban. Görgessen le a **felhasználók kijelölése** szakaszban. Kattintson a **felhasználók hozzáadása** , majd **E-mail címeket**.
    
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
-2. Válassza ki **adja hozzá a felhasználók az egyszeri bejelentkezés (SSO) hitelesítési**. Az a **E-mail címet adjon meg** szövegmező hozzáadása britta.simon@contoso.com
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
+1. Válassza ki **adja hozzá a felhasználók az egyszeri bejelentkezés (SSO) hitelesítést**. Az a **adja meg E-mail címeket** szövegmező hozzáadása britta.simon@contoso.com
    
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
-3. Kattintson a **Create** (Létrehozás) gombra.
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
+1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez használandó Tableau online-hoz való hozzáférés biztosítása.
+Ebben a szakaszban engedélyezze Britta Simon Tableau online-hoz való hozzáférés biztosításával Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Tableau Online, hajtsa végre az alábbi lépéseket:**
+**Britta Simon Tableau online-hoz való hozzárendeléséhez végezze el az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Tableau Online**.
+1. Az alkalmazások listájában jelölje ki a **Tableau Online**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/tutorial_tableauonline_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ez a szakasz célja a hozzáférési panelen az Azure AD SSO-konfigurációjának tesztelése.
+Ez a szakasz célja a a hozzáférési Panel használatával az Azure AD egyszeri bejelentkezési konfiguráció tesztelése.
 
-Ha a hozzáférési panelen a Tableau Online csempére kattint, akkor kell beolvasása automatikusan bejelentkezett a Tableau Online alkalmazáshoz.
+Ha a hozzáférési panelen, a Tableau Online csempére kattint, akkor kell lekérése automatikusan bejelentkezett, a Tableau Online alkalmazás.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

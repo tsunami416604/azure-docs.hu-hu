@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: bbfee75497681df0d51e164b3035b9b88c67ccaa
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 94ded0ef1bf77de20973a87a1ca2d6d1dd3fdf3f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052135"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426652"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Oktatóanyag: Azure Active Directory-integráció az Jitbit segélyszolgálat
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Jitbit segélyszolgálat hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-jitbit-helpdesk-from-the-gallery"></a>Jitbit segélyszolgálat hozzáadása a katalógusból
 Az Azure AD integrálása a segélyszolgálat Jitbit konfigurálásához hozzá kell Jitbit segélyszolgálat a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a segélyszolgálat Jitbit konfigurálásához hozzá 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Jitbit segélyszolgálat**.
+1. A Keresés mezőbe írja be a **Jitbit segélyszolgálat**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_search.png)
 
-5. Az eredmények panelen válassza ki a **Jitbit segélyszolgálat**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Jitbit segélyszolgálat**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Jitbit segélyszolgálat, rendelje hozzá az értékét a **felhasználónév** 
 Az Azure AD egyszeri bejelentkezés az Jitbit segélyszolgálat tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Jitbit segélyszolgálat tesztfelhasználó létrehozása](#creating-a-jitbit-helpdesk-test-user)**  - a-megfelelője a Britta Simon szerepel, amely kapcsolódik a felhasználó Azure ad-ben reprezentációja segélyszolgálat Jitbit.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Jitbit segélyszolgálat tesztfelhasználó létrehozása](#creating-a-jitbit-helpdesk-test-user)**  - a-megfelelője a Britta Simon szerepel, amely kapcsolódik a felhasználó Azure ad-ben reprezentációja segélyszolgálat Jitbit.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_samlbase.png)
 
-3. Az a **Jitbit segélyszolgálat tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Jitbit segélyszolgálat tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_url.png)
 
@@ -128,29 +128,29 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
  
 
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jitbit-helpdesk-tutorial/tutorial_general_400.png)
 
-6. Az a **Jitbit segélyszolgálat konfigurációs** területén kattintson **konfigurálása Jitbit segélyszolgálat** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Jitbit segélyszolgálat konfigurációs** területén kattintson **konfigurálása Jitbit segélyszolgálat** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_configure.png) 
 
-7. Egy másik böngészőablakban jelentkezzen be a segélyszolgálat Jitbit vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a segélyszolgálat Jitbit vállalati hely rendszergazdaként.
 
-8. A felső eszköztáron kattintson **felügyeleti**.
+1. A felső eszköztáron kattintson **felügyeleti**.
    
     ![Felügyeleti](./media/jitbit-helpdesk-tutorial/ic777681.png "felügyelete")
 
-9. Kattintson a **általános beállítások**.
+1. Kattintson a **általános beállítások**.
    
     ![Felhasználók, a vállalatok és az engedélyek](./media/jitbit-helpdesk-tutorial/ic777680.png "felhasználókat, a vállalatok és engedélyek")
 
-10. Az a **hitelesítési beállítások** konfigurációs szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **hitelesítési beállítások** konfigurációs szakaszban, hajtsa végre az alábbi lépéseket:
    
     ![Hitelesítési beállítások](./media/jitbit-helpdesk-tutorial/ic777683.png "hitelesítési beállítások")
     
@@ -177,15 +177,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jitbit-helpdesk-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jitbit-helpdesk-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jitbit-helpdesk-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jitbit-helpdesk-tutorial/create_aaduser_04.png) 
 
@@ -205,19 +205,19 @@ Ahhoz, hogy az Azure AD-felhasználók Jitbit segélyszolgálat-ba való bejelen
 
 1. Jelentkezzen be a **Jitbit segélyszolgálat** bérlő.
 
-2. A felső menüben kattintson **felügyeleti**.
+1. A felső menüben kattintson **felügyeleti**.
    
     ![Felügyeleti](./media/jitbit-helpdesk-tutorial/ic777681.png "felügyelete")
 
-3. Kattintson a **felhasználók, a vállalatok és az engedélyek**.
+1. Kattintson a **felhasználók, a vállalatok és az engedélyek**.
    
     ![Felhasználók, a vállalatok és az engedélyek](./media/jitbit-helpdesk-tutorial/ic777682.png "felhasználókat, a vállalatok és engedélyek")
 
-4. Kattintson a **felhasználó hozzáadása**.
+1. Kattintson a **felhasználó hozzáadása**.
    
     ![Felhasználó hozzáadása](./media/jitbit-helpdesk-tutorial/ic777685.png "felhasználó hozzáadása")
    
-5. A létrehozás területen írja be az adatokat az Azure AD-fiók kíván létrehozni a következő:
+1. A létrehozás területen írja be az adatokat az Azure AD-fiók kíván létrehozni a következő:
 
     ![Hozzon létre](./media/jitbit-helpdesk-tutorial/ic777686.png "létrehozása")
    
@@ -248,23 +248,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Jitbit segélyszolgálat**.
+1. Az alkalmazások listájában jelölje ki a **Jitbit segélyszolgálat**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -276,7 +276,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

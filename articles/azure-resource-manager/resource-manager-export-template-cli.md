@@ -1,6 +1,6 @@
 ---
-title: Azure parancssori felülettel Resource Manager sablon exportálása |} Microsoft Docs
-description: Azure Resource Manager és az Azure parancssori felület használatával sablonokat exportálhat egy erőforráscsoportot.
+title: Az Azure CLI-vel Resource Manager-sablonok exportálása |} A Microsoft Docs
+description: Azure Resource Manager és az Azure CLI használatával sablonokat exportálhat egy erőforráscsoportot.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1d73142931a5cfa84cb24df7a85c799a0f508385
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4a1a687700badc550d37bf74f6a7e1680388897
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358829"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440315"
 ---
 # <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Az Azure CLI Azure Resource Manager-sablonok exportálása
 
 A Resource Manager lehetővé teszi az előfizetéshez tartozó meglévő erőforrások Resource Manager-sablonjainak exportálását. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését.
 
-Fontos megjegyezni, hogy két különböző módon sablon exportálása:
+Fontos megjegyezni, hogy nincsenek-e kétféleképpen exportálhat sablont:
 
-* Exportálhatja a **tényleges, a központi telepítéshez használt sablon**. Ebben az esetben az exportált sablon pontosan úgy tartalmazza a különböző paramétereket és változókat, ahogy azok az eredeti sablonban szerepeltek. Ez a módszer akkor hasznos, ha egy sablon visszakeresését.
-* A másik megoldás, hogy úgy exportálja a **létrejött sablont, hogy az az erőforráscsoport aktuális állapotát tükrözze**. Ebben az esetben az exportált sablon nem az üzembe helyezéshez használt sablonon alapul. Ehelyett az alkalmazás létrehozza a sablont, amely a "snapshot" vagy "Mentés" az erőforráscsoport. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a beállítás segítségével telepítse újra az erőforrásokat ugyanabban az erőforráscsoportban. Egy másik erőforráscsoport a sablon használatához, előfordulhat, hogy jelentősen módosítható.
+* Exportálhatja a **üzembe helyezéséhez használt tényleges sablont**. Ebben az esetben az exportált sablon pontosan úgy tartalmazza a különböző paramétereket és változókat, ahogy azok az eredeti sablonban szerepeltek. Ez a megközelítés akkor hasznos, ha ki kell olvasnia a sablont.
+* A másik megoldás, hogy úgy exportálja a **létrejött sablont, hogy az az erőforráscsoport aktuális állapotát tükrözze**. Ebben az esetben az exportált sablon nem az üzembe helyezéshez használt sablonon alapul. Ehelyett egy sablont, amely egy "snapshot" vagy "Mentés" az erőforráscsoport hoz létre. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a beállítás használatával telepítse újra az erőforrásokat ugyanabban az erőforráscsoportban. A sablon használatához egy másik erőforrás-csoport, előfordulhat, jelentős mértékben módosítani azt.
 
-Ez a cikk mindkét megközelítés jeleníti meg.
+Ez a cikk mindkét módszert bemutatja.
 
-## <a name="deploy-a-solution"></a>A megoldás üzembe helyezéséhez
+## <a name="deploy-a-solution"></a>Megoldás üzembe helyezése
 
-A sablon exportálása mindkét megközelítés mutatja be, először egy megoldás telepítésére az előfizetéséhez. Ha már rendelkezik egy erőforráscsoportot az előfizetés az exportálni kívánt, nem rendelkeznek a megoldás üzembe helyezéséhez. Ez a cikk többi azonban ez a megoldás sablonját hivatkozik. A példaként megadott parancsfájlt a storage-fiók telepíti.
+Mindkét módszerénél a sablon exportálását mutatja be, először megoldás telepítése az előfizetéshez. Ha már rendelkezik erőforráscsoporttal az előfizetésében, amelyet szeretne exportálni, nem rendelkezik a megoldás üzembe helyezéséhez. Ez a cikk további részének azonban ennél a megoldásnál a sablon hivatkozik. A példaszkript üzembe helyez egy tárfiókot.
 
 ```azurecli
 az group create --name ExampleGroup --location "Central US"
@@ -43,26 +43,26 @@ az group deployment create \
     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
 ```  
 
-## <a name="save-template-from-deployment-history"></a>Menti a sablont a központi telepítés előzményei
+## <a name="save-template-from-deployment-history"></a>Sablon mentése üzembe helyezési előzményekből
 
-Beolvasható egy sablont az üzembe helyezési előzményeket használva a [az telepítési exportálása](/cli/azure/group/deployment#az_group_deployment_export) parancsot. Az alábbi példa menti a sablont, amely korábban központilag:
+Lehet lekérdezni egy sablont az üzembe helyezési előzmények használatával a [az üzembe helyezés exportálása](/cli/azure/group/deployment#az-group-deployment-export) parancsot. Az alábbi példa a korábban üzembe helyezett sablon menti:
 
 ```azurecli
 az group deployment export --name NewStorage --resource-group ExampleGroup
 ```
 
-A sablon adja vissza. Másolja át a JSON, és menteni a fájlt. Figyelje meg, hogy a rendszer a központi telepítéshez használt pontos sablont. A paraméterek és változók felel meg a sablont a Githubból. Ez a sablon központilag telepítheti.
+A sablon adja vissza. Másolja a JSON-, és mentse a fájlt. Figyelje meg, hogy-e az üzembe helyezéshez használt pontos sablont. A paraméterek és változók felel meg a sablont a Githubból. Ez a sablon újbóli telepítése is.
 
 
-## <a name="export-resource-group-as-template"></a>Erőforráscsoportok exportálása sablonként
+## <a name="export-resource-group-as-template"></a>Erőforráscsoport exportálása sablonként
 
-Helyett egy sablon fogadása az üzembe helyezési előzményeket, a sablont, amely az erőforráscsoport aktuális állapotát jeleníti meg használatával kérheti le a [az exportálása](/cli/azure/group#az_group_export) parancsot. Ez a parancs használni, amikor sok módosításokat végzett az erőforráscsoporton, és nincs meglévő sablon jelenti. a módosításokat. Az erőforráscsoport, amelyet felhasználhat az ugyanabban az erőforráscsoportban újratelepíteni pillanatképként szolgál. Az exportált sablon használata az egyéb megoldások, jelentősen módosítania kell azt.
+Helyett az üzembe helyezés előzményeiből a sablonok lekérése, a sablont, amely az erőforráscsoport aktuális állapotát tükrözze használatával lekérheti a [az exportálása](/cli/azure/group#az-group-export) parancsot. Ez a parancs használnia, ha sok módosítást végzett az erőforráscsoportban, és nincs meglévő sablon jelöli az összes módosítást. A szándék szerint egy pillanatkép, az erőforráscsoport, amely segítségével ugyanabban az erőforráscsoportban üzembe helyezése. Használja az exportált sablon más megoldásokkal, jelentős mértékben módosítani kell azt.
 
 ```azurecli
 az group export --name ExampleGroup
 ```
 
-A sablon adja vissza. Másolja át a JSON, és menteni a fájlt. Figyelje meg, hogy nem egyezik a GitHub-sablon. A sablon különböző paraméterek és változók nem rendelkezik. A tárolási SKU és hely érték nem módosítható értékeket is. A következő példa bemutatja az exportált sablon, de a sablon némileg eltérő névvel rendelkezik:
+A sablon adja vissza. Másolja a JSON-, és mentse a fájlt. Figyelje meg, hogy nem egyezik a GitHub-sablon. A sablon rendelkezik a különböző paraméterek, és nincsenek változók. A tároló-Termékváltozat és a hely módosíthatóként értékekre. Az alábbi példa bemutatja az exportált sablon, de a sablon némileg eltérő paraméter neve van:
 
 ```json
 {
@@ -94,7 +94,7 @@ A sablon adja vissza. Másolja át a JSON, és menteni a fájlt. Figyelje meg, h
 }
 ```
 
-Ez a sablon központilag telepítheti, de egy egyedi nevet a tárfiók találgatás igényel. A paraméter neve kis mértékben eltér.
+Ez a sablon újbóli telepítése is, de egy egyedi nevet a tárfiók találgatás igényel. A paraméter neve kismértékben eltér.
 
 ```azurecli
 az group deployment create --name NewStorage --resource-group ExampleGroup \
@@ -104,13 +104,13 @@ az group deployment create --name NewStorage --resource-group ExampleGroup \
 
 ## <a name="customize-exported-template"></a>Exportált sablon személyre szabása
 
-Ez a sablon használatával egyszerűbbé és rugalmasabbá módosíthatja. Engedélyezi a további helyeket, módosítsa a helyet jelölő tulajdonsághoz használandó ugyanazon a helyen az erőforráscsoport:
+A sablon használatához egyszerűbbé és rugalmasabbá módosíthatja. Ahhoz, hogy további helyeket, ugyanazt a helyet használja, az erőforráscsoport helyét tulajdonság módosítása:
 
 ```json
 "location": "[resourceGroup().location]",
 ```
 
-Ne kelljen kitalálni a tárfiók uniques nevét, távolítsa el a paramétert a tárfiók nevét. Tárolási névutótag, és egy tárolási SKU paraméter hozzáadása:
+A storage-fiók uniques nevet találjon ki kellene elkerüléséhez távolítsa el a paramétert, a storage-fiók neve. A tárolási utótag és a egy tároló-Termékváltozat paraméter hozzáadása:
 
 ```json
 "parameters": {
@@ -133,7 +133,7 @@ Ne kelljen kitalálni a tárfiók uniques nevét, távolítsa el a paramétert a
 },
 ```
 
-Adja hozzá egy változó, amely a tárfiók nevét a uniqueString függvénnyel hoz létre:
+Adjon hozzá egy változó, amely a tárfiók nevét a uniqueString függvénnyel hoz létre:
 
 ```json
 "variables": {
@@ -141,13 +141,13 @@ Adja hozzá egy változó, amely a tárfiók nevét a uniqueString függvénnyel
   },
 ```
 
-A változó értéke a tárfiók nevét:
+Állítsa be a tárfiók nevét a változó:
 
 ```json
 "name": "[variables('storageAccountName')]",
 ```
 
-A paraméter értéke a Termékváltozat:
+A Termékváltozat a paraméter értéke:
 
 ```json
 "sku": {
@@ -202,9 +202,9 @@ A sablon most a következőképpen néz ki:
 }
 ```
 
-A módosított sablon újbóli.
+A módosított sablon újbóli telepítése.
 
 ## <a name="next-steps"></a>További lépések
 * Sablon exportálása a portál használatával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).
-* Sablon paraméterek megadásához tekintse meg a [sablonok készítése](resource-group-authoring-templates.md#parameters).
-* Tippek az általános telepítési hibák feloldására, lásd: [hibaelhárítás általános az Azure-telepítés az Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* A paraméterek meghatározása sablonban, lásd: [sablonok készítése](resource-group-authoring-templates.md#parameters).
+* Gyakori üzembehelyezési hibák elhárítása a tippek: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).

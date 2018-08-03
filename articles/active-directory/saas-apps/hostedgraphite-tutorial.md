@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált üzemeltetett grafit |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az üzemeltetett grafit között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az üzemeltetett grafit |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés grafit üzemeltetett és Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,241 +14,241 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: dc9d5964a71d1cb33e6d5ddd974160f59c8d8c06
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c64e54b80b6295358036d054af14ebe85432d3f6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226391"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437379"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Oktatóanyag: Azure Active Directoryval integrált üzemeltetett grafit
+# <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Oktatóanyag: Azure Active Directory-integráció az üzemeltetett grafit
 
-Ebben az oktatóanyagban elsajátíthatja üzemeltetett grafit integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan üzemeltetett grafit integrálása az Azure Active Directory (Azure AD).
 
-Üzemeltetett grafit integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Üzemeltetett grafit integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja az Azure ad-ben üzemeltetett grafit hozzáféréssel rendelkező
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett az üzemeltetett grafit (egyszeri bejelentkezés)
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá az üzemeltetett grafit Azure AD-ben
+- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett az üzemeltetett grafit (egyszeri bejelentkezés)
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integrációs üzemeltetett grafit konfigurálni, kell a következő elemek:
+Az Azure AD-integráció konfigurálása az üzemeltetett grafit, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy üzemeltetett grafit egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Üzemeltetett grafit hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Üzemeltetett grafit hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-hosted-graphite-from-the-gallery"></a>Üzemeltetett grafit hozzáadása a gyűjteményből
-Az Azure AD integrálása a üzemeltetett grafit konfigurálásához kell hozzáadnia üzemeltetett grafit a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-hosted-graphite-from-the-gallery"></a>Üzemeltetett grafit hozzáadása a katalógusból
+Azure ad-ben üzemeltetett grafit integráció konfigurálásához, hozzá kell üzemeltetett grafit a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá az üzemeltetett grafit a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Üzemeltetett grafit hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **üzemeltetett grafit**.
+1. A Keresés mezőbe írja be a **üzemeltetett grafit**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_search.png)
 
-5. Az eredmények panelen válassza ki a **üzemeltetett grafit**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **üzemeltetett grafit**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapuló szolgáltatott grafit.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés üzemeltetett grafit a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a grafit üzemeltetett megfelelőjén felhasználót a felhasználók az Azure ad-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a üzemeltetett grafit közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó lévő üzemeltetett grafit mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó lévő üzemeltetett grafit hivatkozás kapcsolata kell létrehozni.
 
-Üzemeltetett grafit, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Üzemeltetett grafit rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést az üzemeltetett grafit tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az üzemeltetett grafit tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Üzemeltetett grafit tesztfelhasználó létrehozása](#creating-a-hosted-graphite-test-user)**  - való egy megfelelője a Britta Simon üzemeltetett grafit, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Üzemeltetett grafit tesztfelhasználó létrehozása](#creating-a-hosted-graphite-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon lévő üzemeltetett grafit, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az üzemeltetett grafit alkalmazásban egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az grafit üzemeltetett alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés üzemeltetett grafit, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés grafit üzemeltetett, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **üzemeltetett grafit** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **üzemeltetett grafit** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_samlbase.png)
 
-3. Az a **üzemeltetett grafit tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **IDP kezdeményezett mód**, hajtsa végre a következő lépéseket:
+1. Az a **grafit tartományok vagy URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett mód**, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.hostedgraphite.com/metadata/<user id>`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.hostedgraphite.com/metadata/<user id>`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.hostedgraphite.com/complete/saml/<user id>`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.hostedgraphite.com/complete/saml/<user id>`
 
-4. Az a **üzemeltetett grafit tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **Szolgáltató kezdeményezett mód**, hajtsa végre a következő lépéseket:
+1. Az a **grafit tartományok vagy URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **SP által kezdeményezett mód**, hajtsa végre az alábbi lépéseket:
    
     ![Egyszeri bejelentkezés konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_10.png)
   
-    a. Kattintson a **megjelenítése speciális URL-beállításainak** beállítás
+    a. Kattintson a **speciális URL-beállítások megjelenítése** lehetőség
 
-    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.hostedgraphite.com/login/saml/<user id>/`   
+    b. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.hostedgraphite.com/login/saml/<user id>/`   
 
     > [!NOTE] 
-    > Ne feledje, hogy ezek nincsenek a valódi értékek. Akkor kell frissíteni ezeket az értékeket a tényleges azonosítója, válasz és bejelentkezési az URL-címe. Ahhoz, hogy ezeket az értékeket, elvégezheti a hozzáférés -> az alkalmazás oldalán, vagy forduljon a SAML-alapú telepítő [üzemeltetett grafit támogatási csoport](mailto:help@hostedgraphite.com).
+    > Vegye figyelembe, hogy ezek nem állnak a valós értékeket. A tényleges azonosítója, válasz URL-cím és bejelentkezési URL-ezeket az értékeket frissítenie kell. Ezek az értékek lekéréséhez hozzáférés megnyithatja az alkalmazás oldalán, vagy forduljon a SAML beállítása -> [üzemeltetett grafit támogatási csapatával](mailto:help@hostedgraphite.com).
     >
  
-5. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_certificate.png) 
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hostedgraphite-tutorial/tutorial_general_400.png)
 
-7. A a **üzemeltetett grafit konfigurációs** kattintson **üzemeltetett grafit konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+1. Az a **üzemeltetett grafit konfigurációs** területén kattintson **üzemeltetett grafit konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_configure.png) 
 
-8. Bejelentkezés az üzemeltetett grafit bérlő rendszergazdaként.
+1. Bejelentkezés az üzemeltetett grafit bérlői rendszergazdaként.
 
-9. Lépjen a **SAML-alapú telepítő oldalán** az oldalsávon (**Access -> SAML-alapú telepítő**).
+1. Nyissa meg a **SAML beállítása lapon** az oldalsávon (**hozzáférés SAML beállítása ->**).
    
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
-10. URL-egyezniük hajtható végre a konfigurációt a **üzemeltetett grafit tartomány és az URL-címek** szakasza az Azure-portálon.
+1. Erősítse meg az alábbi URL-címek a kész a konfigurációnak megfelelően a **grafit tartományok vagy URL-címek** szakaszában az Azure Portalon.
    
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
-11. A **entitás vagy a kibocsátó azonosító** és **Egyszeri bejelentkezési URL-cím** szövegmezőből, illessze be az értékét **SAML Entitásazonosító** és **SAML-alapú egyszeri bejelentkezési URL-címe** amely Azure-portálon másolta. 
+1. A **entitást vagy a kiállító azonosító** és **Egyszeri bejelentkezési URL-cím** szövegmezőből, illessze be az értékét **SAML Entitásazonosító** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** amely az Azure Portalról másolta. 
    
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
    
 
-12. Jelölje ki "**írásvédett**" mint **felhasználói szerepkör alapértelmezett**.
+1. Jelölje be "**csak olvasható**" as **felhasználói szerepkör alapértelmezett**.
     
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
-13. A base-64 kódolású tanúsítvány megnyitása a Jegyzettömbben az Azure portálról letöltött, a tartalmának másolása a vágólapra és illessze be azt a **X.509 tanúsítvány** szövegmező.
+1. A base-64 kódolású tanúsítvány megnyitása a Jegyzettömbben az Azure-portálról letöltött, a tartalmát a vágólapra másolja és illessze be azt a **X.509-tanúsítvány** szövegmezőbe.
     
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
-14. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hostedgraphite-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-hosted-graphite-test-user"></a>Üzemeltetett grafit tesztfelhasználó létrehozása
 
-Ez a szakasz célja üzemeltetett grafit Britta Simon nevű felhasználót létrehozni. Üzemeltetett grafit támogatja just-in-time kiosztást, amely alapértelmezés szerint van engedélyezve.
+Ez a szakasz célja egy lévő üzemeltetett grafit Britta Simon nevű felhasználó létrehozásához. Üzemeltetett grafit támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van.
 
-Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre az üzemeltetett grafit elérésére, ha még nem létezik tett kísérlet során.
+Nincs meg ebben a szakaszban a művelet elem. Egy új felhasználót hoz létre az üzemeltetett grafit elérésére, ha még nem létezik tett kísérlet során.
 
 >[!NOTE]
->Hozza létre a felhasználó manuálisan kell, ha szeretné-e a üzemeltetett grafit támogatási csoportjához keresztül <mailto:help@hostedgraphite.com>. 
+>Ha szeretné manuálisan hozzon létre egy felhasználót, szeretné-e a üzemeltetett grafit támogatási csapat <mailto:help@hostedgraphite.com>. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés üzemeltetett grafit Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által üzemeltetett grafit való hozzáférés biztosítása az Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Az üzemeltetett grafit Britta Simon rendeléséhez hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel grafit üzemeltetett, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **üzemeltetett grafit**.
+1. Az alkalmazások listájában jelölje ki a **üzemeltetett grafit**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ez a szakasz célja a hozzáférési panelen az Azure AD SSO-konfigurációjának tesztelése.
+Ez a szakasz célja a a hozzáférési Panel használatával az Azure AD egyszeri bejelentkezési konfiguráció tesztelése.
 
-Ha a hozzáférési Panel üzemeltetett grafit mozaik gombra kattint, akkor kell beolvasása automatikusan bejelentkezett az üzemeltetett grafit alkalmazására.
+Ha a hozzáférési panelen a üzemeltetett grafit csempére kattint, akkor kell lekérése automatikusan bejelentkezett az grafit üzemeltetett alkalmazás.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

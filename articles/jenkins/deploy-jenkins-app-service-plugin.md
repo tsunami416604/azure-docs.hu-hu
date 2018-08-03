@@ -8,12 +8,12 @@ manager: jpconnock
 ms.service: devops
 ms.custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 1b01eb760fa36c9f0fb6180c12dc3e5c1bf9de6f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f54e4e8f64fe444f264b547d5af475c533c5723f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391486"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441680"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Azure App Service üzembe helyezése a Jenkins beépülő modul használatával 
 
@@ -65,7 +65,7 @@ Projekt telepítése a Web Apps szolgáltatásban, feltöltheti a build-összete
 A feladat a Jenkins beállítása előtt szüksége a Java-alkalmazás futtatását Azure App Service-csomag és egy webalkalmazást.
 
 
-1. Hozzon létre egy Azure App Service-csomagot a **ingyenes** tarifacsomag használatával a `az appservice plan create` [Azure CLI-paranccsal](/cli/azure/appservice/plan#az_appservice_plan_create). Az App Service-csomag határozza meg, hogy az alkalmazások üzemeltetéséhez használt fizikai erőforrások. Egy App Service-csomaghoz rendelt összes alkalmazás ossza meg ezeket az erőforrásokat. Megosztott erőforrások segítségével több alkalmazás üzemeltetése esetén csökkenthetők a költségek.
+1. Hozzon létre egy Azure App Service-csomagot a **ingyenes** tarifacsomag használatával a `az appservice plan create` [Azure CLI-paranccsal](/cli/azure/appservice/plan#az-appservice-plan-create). Az App Service-csomag határozza meg, hogy az alkalmazások üzemeltetéséhez használt fizikai erőforrások. Egy App Service-csomaghoz rendelt összes alkalmazás ossza meg ezeket az erőforrásokat. Megosztott erőforrások segítségével több alkalmazás üzemeltetése esetén csökkenthetők a költségek.
 2. Hozzon létre egy webes alkalmazást. Használhatja a [az Azure portal](/azure/app-service-web/web-sites-configure) vagy a következő `az` Azure CLI-parancsot:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>

@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4fbde5306efb2de5cfe3ffd0a49b9e24a7b67e8c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 986440e5af2fb665f5d7e244f2df12edba09f022
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003958"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431300"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>A v2.0-végpont érdemes használni?
 
@@ -31,7 +31,7 @@ Ha hoz létre, amelyekbe beépül az Azure Active Directory (Azure AD-) alkalmaz
 Íme egy egyszerűsített javaslatot a fejlesztők ezen a ponton az időben:
 
 * Ha az alkalmazás támogatnia kell a személyes Microsoft-fiókok, használja a v2.0-végpontra. De előtt, fontos tisztában legyen azzal, hogy az ebben a cikkben tárgyalt korlátozások.
-* Ha az alkalmazás csak a Microsoft munkahelyi és iskolai fiókok van szüksége, ne használja a v2.0-végpontra. Helyette tekintse meg a [az Azure AD fejlesztői útmutató](active-directory-developers-guide.md).
+* Ha az alkalmazás csak a Microsoft munkahelyi és iskolai fiókok van szüksége, ne használja a v2.0-végpontra. Helyette tekintse meg a [az Azure AD fejlesztői útmutató](azure-ad-developers-guide.md).
 
 A v2.0-végpont az itt felsorolt korlátozásokkal kiküszöböléséhez, így minden eddiginél csak kell használni a v2.0-végpont fejlődik. Addig is ez a cikk segítségével ellenőrizze, hogy a v2.0-végpont az Ön számára megfelelő. Ez a cikk a v2.0-végpont aktuális állapotát tükröző update továbbra is. Ellenőrizze, hogy vissza kiértékeli a v2.0-képességek követelményei.
 

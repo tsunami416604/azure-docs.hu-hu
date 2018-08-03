@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 59b05814be0be9042e7507cc8d928b5f5feb80ad
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 04ba94e3263af03279b74b4832b8291ad6414274
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051761"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Oktatóanyag: Azure Active Directory-integráció az RFPIO
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a ja
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Ebben az oktatóanyagban a forgatókönyv két fő építőelemeket áll:
 
 1. RFPIO hozzáadása a katalógusból.
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés.
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés.
 
 ## <a name="add-rfpio-from-the-gallery"></a>RFPIO hozzáadása a katalógusból
 Az Azure AD integrálása a RFPIO konfigurálásához hozzá kell RFPIO a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a RFPIO konfigurálásához hozzá kell RFPIO a katal�
 
     ![Active Directory][1]
 
-2. Válassza ki **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Válassza ki **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **RFPIO**.
+1. A Keresés mezőbe írja be a **RFPIO**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rfpio-tutorial/tutorial_rfpio_search.png)
 
-5. Az eredmények panelen válassza ki a **RFPIO**, majd válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **RFPIO**, majd válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rfpio-tutorial/tutorial_rfpio_addfromgallery.png)
 
@@ -89,10 +89,10 @@ RFPIO, rendelje hozzá a értékét **felhasználónév** értékeként az Azure
 Az Azure AD egyszeri bejelentkezés az RFPIO tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**– ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#creating-an-azure-ad-test-user)**– az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy RFPIO tesztfelhasználót](#creating-a-rfpio-test-user)**  --van egy megfelelője a Britta Simon RFPIO, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assigning-the-azure-ad-test-user)**--Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  --működik, ha a konfiguráció ellenőrzéséhez.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#creating-an-azure-ad-test-user)**– az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy RFPIO tesztfelhasználót](#creating-a-rfpio-test-user)**  --van egy megfelelője a Britta Simon RFPIO, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assigning-the-azure-ad-test-user)**--Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  --működik, ha a konfiguráció ellenőrzéséhez.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/tutorial_rfpio_samlbase.png)
 
-3. Az a **RFPIO tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+1. Az a **RFPIO tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/tutorial_rfpio_url.png)
 
@@ -120,39 +120,39 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. Az a **továbbítási állapot** szövegmezőbe írja be a karakterlánc-érték. Kapcsolattartó [RFPIO támogatási csoportjának](https://www.rfpio.com/contact/) lekérni ezt az értéket. 
 
-4. Ellenőrizze **speciális URL-beállítások megjelenítése**. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód: 
+1. Ellenőrizze **speciális URL-beállítások megjelenítése**. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód: 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/tutorial_rfpio_url2.png)
 
     Az a **bejelentkezési URL-cím** szövegmezőbe írja be az URL-cím: `https://www.app.rfpio.com`
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/tutorial_rfpio_certificate.png) 
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/tutorial_general_400.png)
 
-7. Egy másik böngészőablakban, jelentkezzen be a **RFPIO** webhely rendszergazdaként.
+1. Egy másik böngészőablakban, jelentkezzen be a **RFPIO** webhely rendszergazdaként.
 
-8. Kattintson az alsó bal felső sarokban található legördülő listából.
+1. Kattintson az alsó bal felső sarokban található legördülő listából.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app1.png)
 
-9. Kattintson a **szervezeti beállítások**. 
+1. Kattintson a **szervezeti beállítások**. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app2.png)
 
-10. Kattintson a **funkciók és integrációs**.
+1. Kattintson a **funkciók és integrációs**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app4.png)
 
-11. Az a **SAML SSO-konfiguráció** kattintson **szerkesztése**.
+1. Az a **SAML SSO-konfiguráció** kattintson **szerkesztése**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app3.png)
 
-12. Ebben a szakaszban végre a következő műveleteket:
+1. Ebben a szakaszban végre a következő műveleteket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app5.png)
     
@@ -182,15 +182,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rfpio-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rfpio-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rfpio-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rfpio-tutorial/create_aaduser_04.png) 
 
@@ -211,23 +211,23 @@ RFPIO, esetén kiépítése a manuális feladat.
 
 1. Jelentkezzen be rendszergazdaként a RFPIO vállalati webhely.
 
-2. Kattintson az alsó bal felső sarokban található legördülő listából.
+1. Kattintson az alsó bal felső sarokban található legördülő listából.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app1.png)
 
-3. Kattintson a **szervezeti beállítások**. 
+1. Kattintson a **szervezeti beállítások**. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app2.png)
 
-4. Kattintson a **CSAPAT tagjai**.
+1. Kattintson a **CSAPAT tagjai**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app6.png)
 
-5. Kattintson a **tagok hozzáadása**.
+1. Kattintson a **tagok hozzáadása**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app7.png)
 
-6. Az a **új tagok hozzáadása** szakaszban. Hajtsa végre a következő műveleteket:
+1. Az a **új tagok hozzáadása** szakaszban. Hajtsa végre a következő műveleteket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app8.png)
 
@@ -252,23 +252,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **RFPIO**.
+1. Az alkalmazások listájában jelölje ki a **RFPIO**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/tutorial_rfpio_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -280,7 +280,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

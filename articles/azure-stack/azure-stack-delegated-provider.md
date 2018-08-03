@@ -1,155 +1,162 @@
 ---
-title: "Azure-készletben ajánlatok delegálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan helyezze más személyek ajánlatok létrehozása és a felhasználók regisztráljanak az Ön feladata."
+title: Ajánlat delegálása az Azure Stackben |} A Microsoft Docs
+description: Ismerje meg, hogyan helyezze más személyek felelős az ajánlatok létrehozásához, és regisztrál a felhasználók az Ön számára.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 157f0207-bddc-42e5-8351-197ec23f9d46
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 06/11/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 287bc04660664facbe99d2cb80ae6c92e41c4111
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 161a17f2360767dacc4f418a078c695d7cb8daa7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449749"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Ajánlat delegálása az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure-verem operátorként érdemes, amelyre az ajánlatok létrehozása és a felhasználók regisztráljanak mások. Például ha egy szolgáltató, érdemes viszonteladók ügyfél regisztrálhat, és kezelheti azokat az Ön nevében. Vagy ha a vállalat egy központi informatikai csoport része, érdemes lehet a leányvállalatai a beavatkozás nélküli felhasználók regisztrálni.
+Az Azure Stack-operátorokról, milyen gyakran szeretné ajánlatok létrehozásához, és regisztráló felhasználók felelős mások. Például ha Ön a szolgáltató, érdemes lehet a viszonteladók számára a felhasználók regisztrálása és kezelheti azokat az Ön nevében is. Vagy, ha Ön egy vállalat egy központi informatikai csoport része, érdemes a felhasználói bejelentkezési akár delegálása más informatikai munkatársakkal.
 
-Delegálás segít a feladatok éri el és felügyeli a felhasználók több, mint közvetlenül lehetővé teszi. Az alábbi ábrán a delegálás egy szinttel, de Azure verem több szintet támogat. Delegált szolgáltatók (terjesztési pontok) pedig delegálhatja más szolgáltatók legfeljebb öt szintnél.
+Delegálás megkönnyíti a éri el és több felhasználót, ezt úgy teheti meg saját maga felügyeli. Az alábbi ábrán látható egy szintjének összecsukása delegálás, de az Azure Stack egynél több szintet támogat. Delegált szolgáltatók (DPs) is engedélyezheti – delegálja más szolgáltatók esetén legfeljebb öt szintnél.
 
-![A delegálás szintek](media/azure-stack-delegated-provider/image1.png)
+![Delegálás szintjei](media/azure-stack-delegated-provider/image1.png)
 
-Azure verem operátorok delegálhatja létrehozása ajánlatok és a felhasználók más felhasználók számára a delegálás funkcióinak használatával.
+## <a name="understand-delegation-roles-and-steps"></a>Delegálás szerepkörök és lépéseket ismertetése
 
-## <a name="roles-and-steps-in-delegation"></a>Szerepkörök és a delegálás lépései
-Delegálás megértéséhez, vegye figyelembe, hogy három szerepkörök pillanatképkészlethez állnak rendelkezésre:
+### <a name="delegation-roles"></a>Delegálás szerepkörök
 
-* A *Azure verem operátor* kezeli az Azure-verem infrastruktúra, egy ajánlat sablont hoz létre, és delegálja másokkal, azok a felhasználók számára biztosítani.
+A következő szerepkörök delegálása részét képezik:
 
-* Az átadott Azure verem operátorok nevezzük *szolgáltatókat megszereznie*. Egyéb szervezetekhez, például az egyéb Azure Active Directory (Azure AD) felhasználó is tartoznak.
+* A *Azure Stack-operátorokról* kezeli az Azure Stack-infrastruktúra és a egy ajánlat sablont hoz létre. Az operátor másokat, hogy azok a felhasználók rendelkezésére ajánlatok irányelvmodulnak delegálja.
 
-* *Felhasználók* iratkozzon fel az ajánlatok és használhatja őket a munkaterhelések létrehozása a virtuális gépek, az adattárolás, kezelése és így tovább.
+* A delegált Azure Stack-operátorok nevezzük *delegált szolgáltatók*. Más szervezetek, például az Azure Active Directory (Azure AD) mások is tartoznak.
 
-Az alábbi képen látható, két lépésben történik delegálás beállítása.
+* *Felhasználók* iratkozzon fel az ajánlatok, és alkalmazza őket a számítási feladatok létrehozása a virtuális gépek, az adattárolás, kezelése és így tovább.
 
-1. *Azonosítsa a delegált szolgáltatók*. Ezt megteheti egy ajánlatot csak az előfizetések szolgáltatást tartalmazó terv alapján történő feliratkozással. Ez az ajánlat előfizetni felhasználók szerezzen be néhány az Azure-verem operátor képessége, beleértve a ajánlatok kiterjesztése, valamint feliratkozott azokat a felhasználókat.
+### <a name="delegation-steps"></a>Delegálás lépések
 
-2. *A feladat egy ajánlatot a delegált szolgáltató*. Ezt az ajánlatot a delegált szolgáltató kínálhat sablonját funkcionál. A delegált szolgáltató is igénybe vehet a ajánlat most. Válassza ki azt a nevet (de ne módosítsa a szolgáltatások és kvóták), és nyújtsanak az ügyfeleknek.
+Delegálás beállítása két alapvető lépésből áll:
 
-![Hozza létre a delegált szolgáltatót, és lehetővé teszi a felhasználók feliratkozáshoz](media/azure-stack-delegated-provider/image2.png)
+1. *Hozzon létre egy meghatalmazott szolgáltatót* előfizetés egy ajánlatra, amely csak rendelkezik az előfizetés szolgáltatás-terv alapján a felhasználó által. Felhasználók, akik előfizetnek az ajánlatra ezután ajánlatok kiterjesztése, és az ajánlatok felhasználókat regisztrálhat.
 
-Delegált szolgáltatók összekötőként, a felhasználóknak meg kell kapcsolatot hozhat létre a fő szolgáltatónál. Más szóval szükségük előfizetés létrehozása. Ebben a forgatókönyvben az előfizetés, a fő szolgáltató nevében található ajánlatok joggal rendelkező delegált szolgáltatók azonosítja.
+1. *Ajánlat delegálása a delegált szolgáltató*. Ajánlatunkat egy sablont a Mi a delegált szolgáltatói kínálnak. A delegált szolgáltatói mostantól az ajánlat igénybe vehet, és felkínálható más felhasználók számára.
 
-Ez a kapcsolat létrejötte után az Azure-verem operátor delegálhatja ajánlatot a delegált szolgáltató. A delegált szolgáltató most vonatkozó ajánlatot tenni, nevezni (de nem módosíthatja a tartalmát), és nyújtsanak az ügyfeleinek.
+A következő ábrán látható a delegálás beállításának lépéseit.
 
-Az alábbi szakaszok azt ismertetik, hogyan arra, hogy egy delegált szolgáltató delegálása ajánlatot, és győződjön meg arról, hogy felhasználók iratkozhatnak fel azt.
+![A delegált szolgáltatói létrehozása, és lehetővé teszi számukra a felhasználói regisztrációhoz](media/azure-stack-delegated-provider/image2.png)
 
-## <a name="set-up-roles"></a>Szerepkörök beállítása
+**Delegált szolgáltatói követelményei**
 
-Munkahelyi delegált szolgáltató megtekintéséhez szükséges további Azure AD-fiókok Azure verem operátor fiókja mellett. Ha ez a két fiók nem rendelkezik, hozzon létre őket. A fiókok Azure AD-felhasználó is tartozik, és nevezzük a delegált szolgáltató és a felhasználó.
+Delegált szolgáltatói funkcionálni, a felhasználónak kell kapcsolatot hozhat létre a fő szolgáltatónál hozzon létre egy előfizetést. Ebben az előfizetésben a delegált szolgáltató nevében fő szolgáltató jelenlegi ajánlatok joggal rendelkező azonosítja.
+
+Ez a kapcsolat létrejötte után az Azure Stack-operátorokról is engedélyezheti – delegálja az ajánlatot a delegált szolgáltatói. A delegált szolgáltatói is az ajánlat igénybe, nevezze át a következőre (de nem módosíthatja az anyag), és felkínálható az ügyfeleinek.
+
+## <a name="delegation-walkthrough"></a>Delegálás forgatókönyv
+
+A következő szakaszok a gyakorlati útmutató delegált szolgáltatói beállítása, az ajánlat delegálása és annak ellenőrzésére, hogy felhasználók regisztrálhatnak a delegált ajánlatot.
+
+### <a name="set-up-roles"></a>Szerepkörök beállítása
+
+Ez az útmutató használatához két Azure AD-fiókokat az Azure Stack operátori fiókon kívül kell. Ha ez a két fiók nem rendelkezik, meg kell létrehoznia őket. A fiókok Azure AD-felhasználók is tartozhat, és nevezzük a delegált szolgáltatói és a felhasználó.
 
 | **Szerepkör** | **Szervezeti jogok** |
 | --- | --- |
-| Delegált szolgáltató |Felhasználó |
+| Delegált szolgáltatói |Felhasználó |
 | Felhasználó |Felhasználó |
 
-## <a name="identify-the-delegated-providers"></a>A delegált szolgáltatók azonosítása
-1. Jelentkezzen be Azure verem kezelőként.
+### <a name="identify-the-delegated-provider"></a>A delegált szolgáltatói azonosítása
 
-2. Az ajánlat, amely lehetővé teszi a felhasználók számára válik delegált szolgáltatók létrehozása:
-   
+1. Jelentkezzen be az Azure Stack operátorait szerint a felügyeleti portálon.
+
+1. Hozhat létre, amely lehetővé teszi a felhasználók, delegált szolgáltatói válik ajánlatot:
+
    a.  [Hozzon létre egy csomagot](azure-stack-create-plan.md).
-       A tervnek mindenképp tartalmaznia kell csak az előfizetések szolgáltatást. Ebben a cikkben egy nevű díjcsomagot az **PlanForDelegation**.
-   
-   b.  [Hozzon létre egy ajánlatot](azure-stack-create-offer.md) a terv alapján. Ebben a cikkben az ajánlatot nevű **OfferToDP**.
-   
-   c.  Az ajánlat létrehozásának befejezése után a meghatalmazott-szolgáltató felvétele előfizetőként az ajánlat. Ehhez jelölje **előfizetések** > **Hozzáadás** > **új bérlő előfizetés**.
-   
-   ![A delegált szolgáltató előfizetőként hozzáadása](media/azure-stack-delegated-provider/image3.png)
+       Ez a csomag csak az előfizetések szolgáltatás tartalmaznia kell. Ebben a cikkben egy nevű csomag **PlanForDelegation** példaként.
 
-> [!NOTE]
-> Az összes Azure verem ajánlatokat, ha van a beállítást, amellyel nyilvános és lehetővé teszi a felhasználók az ajánlatot iratkozzon fel, vagy titkos tartása, és ha engedélyezi, hogy az Azure-verem operátor kezelése a regisztrációs. Delegált szolgáltatók rendszerint egy kis csoport. Azt szeretné, hogy ki van bevezetett, így a legtöbb esetben ez az ajánlat titkos tartása teljesen logikus.
-> 
-> 
+   b.  [Hozzon létre egy ajánlatot](azure-stack-create-offer.md) a terv alapján. Ebben a cikkben egy ajánlatot nevű **OfferToDP** példaként.
 
-## <a name="azure-stack-operator-creates-the-delegated-offer"></a>Az Azure verem operátor hoz létre delegált vonatkozó ajánlatot
+   c.  Adja hozzá a delegált szolgáltatói előfizetőként ehhez az ajánlathoz kiválasztásával **előfizetések** > **Hozzáadás** > **új bérlői előfizetéshez**.
 
-A delegált szolgáltató most hozott létre. A következő lépés, ha a terv és az ajánlat, amely delegálni fog, és amelyek az ügyfelek. Célszerű határozza meg az ajánlat kívánt a felhasználók látható legyen, a meghatalmazott szolgáltató nem módosíthatók, a csomagok és a kvóták tartalmazza.
+   ![Adja hozzá a delegált szolgáltatói előfizetőként](media/azure-stack-delegated-provider/image3.png)
 
-1. Azure verem kezelőként [hozzon létre egy csomagot](azure-stack-create-plan.md) és [ajánlatot](azure-stack-create-offer.md) alapján. Ebben a cikkben az ajánlatot nevű **DelegatedOffer.**
-   
    > [!NOTE]
-   > Ez az ajánlat nem kell lennie a nyilvános. Ha úgy dönt, hogy azt nyilvános. A legtöbb esetben azonban csak a szeretné delegált szolgáltatók számára, hogy jogosult az elérésére. A következő lépésekben ismertetett személyes ajánlat delegálását, követően a delegált szolgáltató hozzáfér.
-   > 
-   > 
-1. Az ajánlat delegálni. Ugrás a **DelegatedOffer.** Ezt követően a a **beállítások** ablaktáblán válassza előbb **szolgáltatókat megszereznie** > **Hozzáadás**.
+   > Hogy az összes Azure Stack ajánlatokhoz a lehetőség az, hogy az ajánlat nyilvános, és hogy a felhasználók regisztrálhatnak azt, vagy privát tartja, és ami lehetővé teszi az előfizetés kezelése az Azure Stack-operátorokról. Delegált szolgáltatók rendszerint egy kisebb csoportot. Szabályozza, ki, így a legtöbb esetben logikus tartja az ajánlat privát engednek szeretné.
 
-2. A delegált szolgáltató előfizetésének a legördülő listából, majd válassza ki és **delegált**.
+### <a name="azure-stack-operator-creates-the-delegated-offer"></a>Az Azure Stack-operátorokról hoz létre a delegált ajánlatot
 
-> ![A delegált szolgáltató felvétele](media/azure-stack-delegated-provider/image4.png)
-> 
-> 
+A következő lépés, ha a csomag és ajánlat, amely delegálni fog, és hogy a felhasználók használni fogják. Célszerű az ajánlat definiálása, pontosan, ahogy látja, mivel a delegált szolgáltatói nem lehet módosítani a tervek és kvóták tartalmazza a felhasználók.
 
-## <a name="delegated-provider-customizes-the-offer"></a>Delegált szolgáltató testreszabása vonatkozó ajánlatot
+1. Az Azure Stack operátorait szerint [hozzon létre egy csomagot](azure-stack-create-plan.md) és [ajánlat](azure-stack-create-offer.md) a terv alapján. Ebben a cikkben egy ajánlatot nevű **DelegatedOffer** példaként.
 
-Jelentkezzen be a felhasználói portálra a delegált szolgáltatóként, és ezután hozzon létre egy új ajánlatot a delegált ajánlat egy sablon segítségével.
+   > [!NOTE]
+   > Ez az ajánlat nem kell lennie a nyilvános, de azt teheti, hogy nyilvános Ha szeretné. Azonban a legtöbb esetben célszerű csak akkor hozzáférjenek az ajánlatot a delegált szolgáltatók. Miután egy privát ajánlat delegálása, a következő lépésben ismertetett módon, a delegált szolgáltatói van hozzáférése hozzájuk.
 
-1. Válassza ki **új** > **bérlői kínál + tervek** > **kínálnak**.
+1. Delegálni az ajánlatot. Lépjen a **DelegatedOffer**. A **beállítások**válassza **delegált szolgáltatók** > **Hozzáadás**.
 
-    ![Hozzon létre egy új ajánlatot](media/azure-stack-delegated-provider/image5.png)
+1. A delegált szolgáltatói előfizetés kiválasztása a legördülő listából, majd **delegált**.
 
+   ![Delegált szolgáltató hozzáadása](media/azure-stack-delegated-provider/image4.png)
 
-1. Adjon nevet az ajánlatra. Ebben a cikkben az **ResellerOffer**. Válassza ki a használandó kiinduló azt, majd válassza ki a delegált ajánlat **létrehozása**.
-   
-   ![A név hozzárendelése](media/azure-stack-delegated-provider/image6.png)
+### <a name="delegated-provider-customizes-the-offer"></a>Delegált szolgáltatói testreszabja az ajánlatot
 
-    >[!NOTE] 
-    > Vegye figyelembe a különbség az ajánlat létrehozása, az Azure-verem operátor által tapasztalt képest. A delegált szolgáltató összeállítani az alap tervek és bővítmények tervek ajánlatot. Csak választható ajánlatokat, amelyek rájuk bízott, és nem módosítja azokat az ajánlatokat.
+Jelentkezzen be a felhasználói portál átadott szolgáltatója, és majd hozzon létre egy új ajánlatot a delegált ajánlatot sablonként való használatával.
 
-1. Az ajánlat kiválasztásával nyilvánosságra **Tallózás**, majd **kínál**. Az ajánlat, majd válassza ki és **állapotváltoztatási**.
+1. Válassza ki **új** > **bérlői kínál + csomagok** > **ajánlat**.
 
-2. Ezekről az ajánlatokról saját portálon keresztül mutatja meg a delegált szolgáltató URL-CÍMÉT. Ezekről az ajánlatokról láthatók csak a delegált portálon keresztül. Található, és módosítsa az URL-címet:
-   
-    a.  Válassza ki **Tallózás** > **további szolgáltatások** > **előfizetések**. Ezután válassza ki a delegált szolgáltató előfizetést. Például **DPSubscription** > **tulajdonságok**.
-   
-    b.  Másolja a portál URL-cím egy külön helyre, például a Jegyzettömböt.
-   
-    ![Válassza ki a delegált szolgáltató előfizetést](media/azure-stack-delegated-provider/dpportaluri.png)  
-   
-   Most létrehozott egy delegált ajánlat delegált-szolgáltatóként. Jelentkezzen ki a delegált szolgáltatóként. Zárja be a böngészőablakot használja.
+    ![Új ajánlat létrehozása](media/azure-stack-delegated-provider/image5.png)
 
-## <a name="sign-up-for-the-offer"></a>Az ajánlat regisztráció
-1. Egy új böngészőablakot, keresse meg a delegált portál URL-címet, amelyet az előző lépésben mentett. Jelentkezzen be a portálra egy olyan felhasználó nevében. 
-   
+1. Rendeljen egy nevet az ajánlatra. Ez a cikk **ResellerOffer** példaként. Válassza ki, amelyen a alapjaként, majd válassza a delegált ajánlatot **létrehozás**.
+
+   ![Rendeljen egy nevet](media/azure-stack-delegated-provider/image6.png)
+
+   >[!IMPORTANT]
+   >Fontos megérteni, hogy eltérően az Azure Stack operátorait delegált szolgáltatói nem hozhat létre egy ajánlatot az alapcsomagok és kiegészítő csomagok. Delegált szolgáltatók csak válassza ki azokat a delegált ajánlatok, azokat nem lehet módosítani azokat az ajánlatokat.
+
+1. Győződjön meg arról, az ajánlat nyilvános kiválasztásával **Tallózás**, majd **kínál**. Az ajánlat, majd válassza ki és **állapot módosítása**.
+
+1. A delegált szolgáltatói elérhetővé teszi ezeket az ajánlatokat saját portálon keresztül URL-CÍMÉT. Ezek az ajánlatok már csak a delegált portálon jelennek meg. Keresse meg, és módosítsa az URL-cím:
+
+    a.  Válassza ki **Tallózás** > **további szolgáltatások** > **előfizetések**. Ezután válassza ki a delegált szolgáltatói előfizetés. Ha például **DPSubscription** > **tulajdonságok**.
+
+    b.  Másolja a portál URL-címet egy külön helyen, például a Jegyzettömbben.
+
+    ![A delegált szolgáltatói előfizetés kiválasztása](media/azure-stack-delegated-provider/dpportaluri.png)  
+
+   A delegált ajánlatot a delegált szolgáltatói létrehozása befejeződött. Jelentkezzen ki, mint a delegált szolgáltatói, és zárja be a böngészőablakot használ.
+
+### <a name="sign-up-for-the-offer"></a>Iratkozzon fel az ajánlatra
+
+1. Egy új böngészőablakban nyissa meg a delegált portált, amely az előző lépésben mentett URL-CÍMÉT. Jelentkezzen be a portálra felhasználóként.
+
    >[!NOTE]
-   >A delegált ajánlatok nem láthatók, kivéve, ha a meghatalmazott portál. 
+   >A delegált ajánlatokkal, kivéve, ha a delegált a portálon nem láthatók.
 
-2. Az irányítópulton, válassza ki a **egy előfizetés**. Láthatja, hogy csak a delegált ajánlatokat a delegált szolgáltató által létrehozott jelennek meg a felhasználó számára:
+1. Az irányítópulton, válassza ki a **előfizetés beszerzése**. Látni fogja, hogy csak a delegált ajánlatokkal. a delegált szolgáltató által létrehozott jelennek meg a felhasználó számára.
 
-> ![Megtekintheti, és válassza ki a ajánlatok](media/azure-stack-delegated-provider/image8.png)
-> 
-> 
+   ![Megtekintheti, és a kívánt ajánlatok kiválasztása](media/azure-stack-delegated-provider/image8.png)
 
-Az ajánlat delegálási folyamat be nem fejeződik. A felhasználó most regisztrálhat az ajánlat által az előfizetés első.
+Ajánlat delegálása, a folyamat befejeződött. Most egy felhasználó regisztrálhat Ez az ajánlat hozzá tartozó előfizetés lekérésével.
 
-## <a name="multiple-tier-delegation"></a>Többrétegű delegálás
+## <a name="multiple-tier-delegation"></a>Többszintű delegálás
 
-Többrétegű delegálása lehetővé teszi, hogy a delegálása egyéb entitások ajánlatot a delegált szolgáltató. Ez lehetővé teszi, például mélyebb viszonteladóhoz csatornák, amelyben a szolgáltatót, amelyet a Azure verem kezel delegálja a terjesztőhöz ajánlatot létrehozását. A terjesztő, viszonteladók gazdakiszolgálója. Az Azure verem delegálás legfeljebb öt szintet támogat.
+Többszintű delegálás delegálása más entitásokra vonatkozó ajánlatot a delegált szolgáltatói lehetővé teszi. Például a mélyebb viszonteladói létrehozása csatornák where:
 
-Több rétegből álló ajánlat delegálás létrehozásához, a meghatalmazott szolgáltató pedig gazdakiszolgálója ajánlatot a következő szolgáltató. A folyamat megegyezik a delegált szolgáltató, akkor az Azure-verem operátorhoz (lásd: [Azure verem operátor hoz létre a delegált ajánlat](#cloud-operator-creates-the-delegated-offer)).
+* Az Azure Stack kezelő szolgáltatót a terjesztőhöz ajánlat irányelvmodulnak delegálja.
+* A viszonteladó a terjesztőn delegáltakat.
+
+Több rétegből álló ajánlat delegálás létrehozásához, a delegált szolgáltatói az ajánlat a következő szolgáltató az irányelvmodulnak delegálja. A folyamat megegyezik a delegált szolgáltatói számára az Azure Stack-operátorokról volt. További információkért lásd: [Azure Stack-operátorokról hoz létre a delegált ajánlatot](#cloud-operator-creates-the-delegated-offer).
 
 ## <a name="next-steps"></a>További lépések
-[A virtuális gép kiépítése](azure-stack-provision-vm.md)
 
+[Virtuális gép létrehozása](azure-stack-provision-vm.md)

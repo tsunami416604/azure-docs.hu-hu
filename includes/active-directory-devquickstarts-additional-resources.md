@@ -1,5 +1,5 @@
 ## <a name="additional-resources"></a>További források
-* [Azure AD fejlesztői útmutató](../articles/active-directory/develop/active-directory-developers-guide.md)
+* [Azure AD fejlesztői útmutató](../articles/active-directory/develop/azure-ad-developers-guide.md)
 * [Azure AD-példák a GitHubon](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=active-directory)
 * [CloudIdentity.com](http://cloudidentity.com)
 

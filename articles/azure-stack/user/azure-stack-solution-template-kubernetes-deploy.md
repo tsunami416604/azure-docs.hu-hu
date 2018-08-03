@@ -1,6 +1,6 @@
 ---
-title: Az Azure verem Kubernetes fürt központi telepítése |} Microsoft Docs
-description: 'Útmutató: Azure verem Kubernetes fürt központi telepítése.'
+title: Kubernetes-fürt üzembe helyezése az Azure Stackhez |} A Microsoft Docs
+description: Ismerje meg, hogyan helyezhet üzembe egy Kubernetes-fürtöt az Azure Stackhez.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,147 +14,147 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 43c0b7c87f9ee1cd33da3d617747c11dc120e51a
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: edcea5f0a4b95725bf766632731f461334e829a9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823622"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420138"
 ---
-# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Azure verem Kubernetes fürt központi telepítése
+# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Kubernetes-fürt üzembe helyezése az Azure Stackhez
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
-> Az Azure-tároló szolgáltatás (ACS) Kubernetes Azure veremben van private Preview verziójára. Az Azure-verem operátort kell igényelnie az ebben a cikkben az utasítások végrehajtásához szükség Kubernetes Piactéri elemet a hozzáférést.
+> Az Azure Container szolgáltatások (ACS) Kubernetes az Azure Stacken private preview verzióban van. Az Azure Stack-operátorokról kell kérnie a Kubernetes Piactéri elem ebben a cikkben az utasítások végrehajtásához szükséges hozzáférést.
 
-A következő cikk megvizsgálja egy Azure Resource Manager-megoldás sablon használatával történő telepítése és jogosultságok kiosztása a erőforrások Kubernetes az egyetlen, koordinált műveletben. Ön lesz kell a szükséges adatok összegyűjtése az Azure-verem telepítésével kapcsolatos hozza létre a sablont, és ezután telepíti a felhőbe.
+A következő cikkben megvizsgál egy megoldás Azure Resource Manager-sablon használatával történő üzembe helyezése és a Kubernetes-erőforrások kiépítése egyetlen, koordinált műveletben. Fogja kell az Azure Stack-telepítés, a szükséges információkat gyűjthet, létrehozni a sablont, és ezután üzembe helyezése a felhőben.
 
-## <a name="kubernetes-and-containers"></a>Kubernetes és tárolók
+## <a name="kubernetes-and-containers"></a>Kubernetes és a tárolók
 
-Az Azure-veremben Azure tároló szolgáltatás (ACS) motor által létrehozott Azure Resource Manager-sablonok használatával Kubernetes telepítése. [Kubernetes](https://kubernetes.io) automatizálhatja a központi telepítés, nyílt forráskódú rendszer méretezés és a tárolókban lévő alkalmazások kezelése. A [tároló](https://www.docker.com/what-container) képeket hasonló egy virtuális gép található. Ellentétben a virtuális gépek a tároló kép csak erőforrásokat is magában foglalja a egy alkalmazás, például a kódot, a kódot, az adott könyvtárakat és a beállítások végrehajtásához futásidejű futtatásához.
+A Kubernetes Azure Stack az Azure Container szolgáltatások (ACS)-motor által létrehozott Azure Resource Manager-sablonok használatával is telepítheti. [Kubernetes](https://kubernetes.io) üzembe helyezés automatizálásához egy nyílt forráskódú rendszer méretezés, és a tárolókban található alkalmazások felügyeletét. A [tároló](https://www.docker.com/what-container) az a képen hasonló virtuális gép szerepel. Ellentétben a virtuális gép, a tároló rendszerképét csak az olyan erőforrások tartoznak az alkalmazás, például a kódot, a kód, az adott könyvtárakat és a beállítások végrehajtásához futásidejű futtatásához.
 
 A Kubernetes használhatja:
 
-- Amely másodpercben telepíthető nagymértékben méretezhető, frissíthető, alkalmazások fejlesztéséhez. 
-- Leegyszerűsítheti az alkalmazás tervét, és a megbízhatóság javításához különböző Helm alkalmazások. [Helm](https://github.com/kubernetes/helm) nyílt forráskódú csomagolás eszköz, amely segít telepíteni, és Kubernetes alkalmazások életciklusának kezelését.
-- Könnyen figyelése és diagnosztizálása, amely a futó alkalmazások állapotát, és funkciók frissítése.
+- Rugalmasan méretezhető, bővíthető, másodpercek alatt telepíthető alkalmazásokat fejleszthet. 
+- Leegyszerűsítheti az alkalmazást, és a megbízhatóság javításához különböző Helm-alkalmazások. [Helm](https://github.com/kubernetes/helm) egy nyílt forráskódú csomagolás eszköz, amely segít telepítése és a Kubernetes-alkalmazások életciklusának kezelését.
+- Könnyedén figyelheti és diagnosztizálhatja a révén az alkalmazások állapotát, és frissítés funkcióit.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-A kezdéshez, győződjön meg arról, a megfelelő engedélyekkel rendelkezik, és, hogy készen áll-e az Azure-verem.
+Első lépésként ellenőrizze, hogy a megfelelő engedélyekkel rendelkezik, és, hogy készen áll-e az Azure Stack.
 
-1. Győződjön meg arról, hogy az Azure Active Directory (Azure AD-) bérlőben hozhatók létre alkalmazások. Ezeket az engedélyeket a Kubernetes telepítési van szükség.
+1. Győződjön meg arról, hogy hozhat létre alkalmazásokat az Azure Active Directory (Azure AD) bérlő. A Kubernetes üzembe helyezési ezekkel az engedélyekkel kell rendelkeznie.
 
-    Az engedélyek ellenőrzése, lásd: [ellenőrizze Azure Active Directory-engedélyek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#check-azure-active-directory-permissions).
+    Engedélyek ellenőrzése kapcsolatos utasításokért lásd: [ellenőrizze az Azure Active Directory-engedélyek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#check-azure-active-directory-permissions).
 
-2. Az SSH nyilvános és titkos kulcsból álló kulcspárt bejelentkezni a Linux virtuális gép Azure veremben készítése. A fürt létrehozásakor kell a nyilvános kulcsot.
+1. Hozzon létre nyilvános és titkos ssh-kulcs, jelentkezzen be a Linux rendszerű virtuális gép az Azure Stacken. A fürt létrehozásakor kell a nyilvános kulcsot.
 
-    Kulcs létrehozása, lásd: [SSH kulcs generálása](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation).
+    -Kulcs létrehozásával kapcsolatos utasításokért lásd: [SSH kulcs generálása](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation).
 
-3. Ellenőrizze, hogy rendelkezik érvényes előfizetéssel a Azure verem bérlői portálon, és, hogy rendelkezik-e elegendő nyilvános IP-címek adhatók hozzá új alkalmazások.
+1. Ellenőrizze, hogy az Azure Stack-bérlői portálon érvényes előfizetéssel rendelkezik, és, hogy rendelkezik-e elegendő nyilvános IP-címek adhatók hozzá az új alkalmazások.
 
-    A fürt nem telepíthető az Azure-verem **rendszergazda** előfizetés. Egy felhasználó ** előfizetést kell használnia. 
+    A fürt nem telepíthető az Azure Stackkel **rendszergazda** előfizetés. Egy felhasználó ** előfizetést kell használnia. 
 
-## <a name="create-a-service-principal-in-azure-ad"></a>Egy egyszerű szolgáltatás létrehozása az Azure ad-ben
+## <a name="create-a-service-principal-in-azure-ad"></a>Egyszerű szolgáltatás létrehozása az Azure ad-ben
 
-1. Jelentkezzen be globális [Azure-portálon](http://portal.azure.com).
-2. Ellenőrizze, hogy a fiók be van jelentkezve az Azure-verem-példányhoz társított Azure AD-bérlő segítségével.
-3. Hozzon létre egy Azure AD-alkalmazást.
+1. Jelentkezzen be globális [az Azure portal](http://portal.azure.com).
+1. Ellenőrizze, hogy Ön az Azure Stack-példányhoz társított Azure AD-bérlő jelentkezzen be.
+1. Hozzon létre egy Azure AD-alkalmazást.
 
-    a. Válassza ki **az Azure Active Directory** > **+ alkalmazás regisztrációk** > **új alkalmazás regisztrációja**.
+    a. Válassza ki **az Azure Active Directory** > **+ Alkalmazásregisztrációk** > **új Alkalmazásregisztráció**.
 
     b. Adjon meg egy **neve** az alkalmazás.
 
-    c. Válassza ki **Web app / API**.
+    c. Válassza ki **webalkalmazás / API**.
 
-    d. Adja meg `http://localhost` a a **bejelentkezési URL-cím**.
+    d. Adja meg `http://localhost` számára a **bejelentkezési URL-**.
 
     c. Kattintson a **Create** (Létrehozás) gombra.
 
-4. Jegyezze fel a **Alkalmazásazonosító**. A fürt létrehozásakor kell a azonosítója. Az azonosító hivatkozott **egyszerű szolgáltatás ügyfél-azonosító**.
+1. Jegyezze fel a **Alkalmazásazonosító**. A fürt létrehozásakor kell a azonosítója. Az azonosító néven van hivatkozott **egyszerű szolgáltatás ügyfél-azonosító**.
 
-5. Válassza ki **beállítások** > **kulcsok**.
+1. Válassza ki **beállítások** > **kulcsok**.
 
     a. Adja meg a **leírás**.
 
-    b. Válassza ki **soha nem jár le** a **Expires**.
+    b. Válassza ki **soha nem jár le** a **lejárat**.
 
-    c. Kattintson a **Mentés** gombra. Ellenőrizze, jegyezze fel a kulcs karakterlánc. A fürt létrehozásakor kell a kulcs karakterlánc. A kulcs hivatkoznak, mint a **egyszerű Ügyfélkulcs**.
+    c. Kattintson a **Mentés** gombra. Győződjön meg, vegye figyelembe a kulcs karakterláncát. Szüksége lesz a kulcs karakterláncát a fürt létrehozásakor. A kulcs hivatkozik a **egyszerű szolgáltatás titkos Ügyfélkód**.
 
 
 
 ## <a name="give-the-service-principal-access"></a>A szolgáltatás egyszerű hozzáférést
 
-A szolgáltatás egyszerű hozzáférés biztosítása az előfizetését, így a megbízó erőforrások.
+A szolgáltatás egyszerű hozzáférést biztosít az előfizetéshez, hogy a rendszerbiztonsági tag erőforrásokat hozhat létre.
 
-1.  Jelentkezzen be a [felügyeleti portál](https://adminportal.local.azurestack.external).
+1.  Jelentkezzen be a [felügyeleti portálján](https://adminportal.local.azurestack.external).
 
-2. Válassza ki **további szolgáltatások** > **felhasználói előfizetések** > **+ Hozzáadás**.
+1. Válassza ki **további szolgáltatások** > **felhasználói előfizetések** > **+ Hozzáadás**.
 
-3. Válassza ki a létrehozott előfizetést.
+1. Válassza ki az előfizetést, amelyhez a létrehozott.
 
-4. Válassza ki **hozzáférés-vezérlés (IAM)** > Válasszon **+ Hozzáadás**.
+1. Válassza ki **hozzáférés-vezérlés (IAM)** > Válasszon **+ Hozzáadás**.
 
-5. Válassza ki a **tulajdonos** szerepkör.
+1. Válassza ki a **tulajdonosa** szerepkör.
 
-6. Válassza ki az egyszerű szolgáltatás létrehozása alkalmazásnév. Előfordulhat, hogy a keresőmezőbe írja be a nevét.
+1. Válassza ki az egyszerű szolgáltatásnév a szolgáltatás számára létrehozott alkalmazás nevét. A Keresés mezőbe írja be a név lehet.
 
-7. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="deploy-a-kubernetes-cluster"></a>Kubernetes fürt központi telepítése
+## <a name="deploy-a-kubernetes-cluster"></a>Kubernetes-fürt üzembe helyezése
 
-1. Nyissa meg a [verem Azure portal](https://portal.local.azurestack.external).
+1. Nyissa meg a [Azure Stack portálon](https://portal.local.azurestack.external).
 
-2. Válassza ki **+ új** > **számítási** > **Kubernetes fürt**. Kattintson a **Create** (Létrehozás) gombra.
+1. Válassza ki **+ új** > **számítási** > **Kubernetes-fürt**. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Megoldássablon telepítése](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-3. Válassza ki **alapjai** a a Kubernetes fürt létrehozása.
+1. Válassza ki **alapjai** a a Kubernetes-fürt létrehozása.
 
     ![Megoldássablon telepítése](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
-2. Adja meg a **Linux virtuális gép rendszergazdai felhasználónév**. A Linux virtuális gépek a Kubernetes fürt részét képező és a DVM felhasználónév.
+1. Adja meg a **Linux rendszerű virtuális gép rendszergazdai felhasználónevét**. A Linux rendszerű virtuális gépek, a Kubernetes-fürt részét képező és a DVM felhasználóneve.
 
-3. Adja meg a **SSH Public Key** az összes Linux-gépekhez hozza létre a Kubernetes fürt és a DVM részeként engedélyezési műveletekben használatos.
+1. Adja meg a **SSH Public Key** használt a hitelesítéshez a Kubernetes-fürt és a DVM részeként létrehozott összes Linux rendszerű gépen.
 
-4. Adja meg a **fő profil DNS-előtagja** a régió egyedi. Régió egyedi nevet, például a kell `k8s-12345`. Próbálja meg választott azt ugyanaz, mint az erőforráscsoport neve ajánlott eljárás.
+1. Adja meg a **fő profil DNS-előtagja** , amely egyedi a régióban. Ez egy régió egyedi nevet, például kell lennie `k8s-12345`. Próbálja meg úgy döntött, hogy ugyanaz, mint az erőforráscsoport neve ajánlott eljárás.
 
     > [!Note]  
-    > Minden fürthöz egy új és egyedi fő profil DNS-előtagot használja.
+    > Ha mindegyik fürthöz egy új és egyedi fő profil DNS-előtagot használja.
 
-5. Adja meg a **ügynökök készlet profil száma**. A szám a fürtben lévő ügynökök számát tartalmazza. Nem lehet 1-4.
+1. Adja meg a **készlet profil ügynökeinek**. A száma a fürtben található ügynökök számát tartalmazza. Lehet 1-4.
 
-6. Adja meg a **egyszerű ClientId** Kubernetes Azure felhőszolgáltató használja.
+1. Adja meg a **szolgáltatásnév ClientId** ezt használja a Kubernetes Azure felhőszolgáltató.
 
-7. Adja meg a **egyszerű Ügyfélkulcs** szolgáltatás egyszerű alkalmazás létrehozásakor létrehozott.
+1. Adja meg a **egyszerű szolgáltatás titkos Ügyfélkód** szolgáltatás egyszerű alkalmazás létrehozásakor létrehozott.
 
-8. Adja meg a **Kubernetes Azure Cloud szolgáltatóverzió**. Ez az a verzió a Kubernetes Azure Provider. Az Azure verem minden Azure verem verzió egyéni Kubernetes build kiadását.
+1. Adja meg a **Kubernetes az Azure Cloud szolgáltató verziója**. Ez az a verzió a Kubernetes Azure-szolgáltatóhoz. Az Azure Stack kiad egy egyéni Kubernetes-build minden egyes Azure Stack-verzió.
 
-9. Válassza ki a **előfizetés** azonosítóját.
+1. Válassza ki a **előfizetés** azonosítóját.
 
-10. Adjon meg egy új erőforráscsoport neve, vagy válasszon ki egy meglévő erőforráscsoportot. Az erőforrás nevének kell lennie a alfanumerikus- és nagybetűket.
+1. Adja meg egy új erőforráscsoport nevét, vagy válasszon ki egy meglévő erőforráscsoportot. Az erőforrás nevét kell lennie a alfanumerikus- és nagybetűket.
 
-11. Válassza ki a **hely** az erőforráscsoportban. Ez az a régió, az Azure-verem telepítés választja.
+1. Válassza ki a **hely** az erőforráscsoport. Ez az a régió úgy dönt, az Azure Stack-telepítés.
 
-### <a name="specify-the-azure-stack-settings"></a>Az Azure-verem beállításainak megadása
+### <a name="specify-the-azure-stack-settings"></a>Az Azure Stack-beállításainak megadása
 
-1. Válassza ki a **Azure verem Stamp beállítások**.
+1. Válassza ki a **blokk beállításait az Azure Stack**.
 
     ![Megoldássablon telepítése](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
 
-2. Adja meg a **Arm végpont bérlői**. Ez az az Azure Resource Manager végpont hozzon létre az erőforráscsoportot a Kubernetes fürthöz való csatlakozáshoz. Szüksége lesz az Azure-verem operátor integrált rendszert a végpont lekérése. Az az Azure verem Development Kit (ASDK), használhat `https://management.local.azurestack.external`.
+1. Adja meg a **bérlői Arm-végpont**. Ez az az Azure Resource Manager-végpont hozza létre az erőforráscsoportot, a Kubernetes-fürthöz való kapcsolódáshoz. A végpont kérhet le az Azure Stack-operátorokról integrált rendszer kell. Az az Azure Stack Development Kit (ASDK), használhatja `https://management.local.azurestack.external`.
 
-3. Adja meg a **Bérlőazonosító** a bérlő számára. Ha ez az érték segítségre van szüksége, tekintse meg [-bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
+1. Adja meg a **Bérlőazonosító** a bérlő számára. Ha az érték megkeresésével segítségre van szüksége, tekintse meg [Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
 
-## <a name="connect-to-your-cluster"></a>Csatlakozzon a fürthöz
+## <a name="connect-to-your-cluster"></a>Csatlakozás a fürthöz
 
-Most már készen áll a fürthöz való csatlakozáshoz. A fő itt található: a fürterőforrás-csoportot, és nevű `k8s-master-<sequence-of-numbers>`. Egy SSH-ügyfél segítségével a fő kapcsolódik. A fő használható **kubectl**, a Kubernetes parancssori ügyfél, a fürt kezeléséhez. Útmutatásért lásd: [Kubernetes.io](https://kubernetes.io/docs/reference/kubectl/overview).
+Most már készen áll a fürthöz való csatlakozáshoz. A fő tekintheti meg az erőforráscsoportot, és nevű `k8s-master-<sequence-of-numbers>`. Használja az SSH-ügyfelet a főcsomóponthoz való kapcsolódáshoz. A fő használhatja **kubectl**, a fürt kezeléséhez a Kubernetes parancssori ügyfelét. Útmutatásért lásd: [Kubernetes.io](https://kubernetes.io/docs/reference/kubectl/overview).
 
-Azt is tapasztalhatja a **Helm** Csomagkezelő telepítéséhez és alkalmazások központi telepítéséhez a fürt hasznos. Útmutatás a telepítéssel és használattal Helm a fürthöz: [helm.sh](https://helm.sh/).
+Azt is tapasztalhatja a **Helm** Csomagkezelő hasznos telepítéséhez és alkalmazások telepítése a fürtön. Telepítéséről és használatáról a Helm a fürttel kapcsolatos utasításokért lásd: [helm.sh](https://helm.sh/).
 
 ## <a name="next-steps"></a>További lépések
 
-[A piactér (az Azure-verem operátor) Kubernetes fürt hozzáadása](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Kubernetes-fürt hozzáadása a Marketplace-en (az Azure Stack-operátorokról)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
 
-[Az Azure-on Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Kubernetes az Azure-ban](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

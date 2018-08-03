@@ -1,6 +1,6 @@
 ---
 title: Naplóriasztás létrehozása Resource Manager-sablonnal
-description: Megtudhatja, hogyan napló riasztás létrehozása az Azure Resource Manager-sablon és a API használatával.
+description: Megtudhatja, hogyan hozhat létre a riasztás egy Azure Resource Manager-sablon és az API használatával.
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263201"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441442"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Naplóriasztás létrehozása Resource Manager-sablonnal
-Ez a cikk bemutatja, hogyan kezelheti [figyelmeztetések naplózása](monitor-alerts-unified-log.md) programozott módon léptékű Azure használatával [Azure Resource Manager sablon](..//azure-resource-manager/resource-group-authoring-templates.md) keresztül [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) és [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md). Jelenleg Azure riasztások támogatja jelentkezzen ki riasztást a lekérdezések [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md) és [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
+Ez a cikk bemutatja, hogyan kezelheti [naplóriasztások](monitor-alerts-unified-log.md) programozott módon ipari méretekben, az Azure-ban [Azure Resource Manager-sablon](..//azure-resource-manager/resource-group-authoring-templates.md) keresztül [Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md) és [Az azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md). Jelenleg az Azure-riasztások, támogatja a naplóriasztások a lekérdezések [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) és [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
 
-## <a name="managing-log-alert-on-log-analytics"></a>A Naplóelemzési napló riasztás kezelése
-Napló-riasztás [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md) integrálva van a [új Azure riasztások élmény](monitoring-overview-unified-alerts.md); közben továbbra is ki Analytics API-k fut, és továbbra is a séma kezeléséreszolgálókorábbikompatibilitási[az OMS-portálon riasztásokat](..//log-analytics/log-analytics-alerts-creating.md).
+## <a name="managing-log-alert-on-log-analytics"></a>A Log Analytics riasztás kezelése
+A riasztás [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) integrálva van a [új Azure-riasztások élmény](monitoring-overview-unified-alerts.md); közben továbbra is ki a Log Analytics API-k fut, és továbbra is a korábban kezeléséhezhasználtsémávalkompatibilitási[az OMS-portálon riasztásokat](..//log-analytics/log-analytics-alerts-creating.md).
 
 > [!NOTE]
-> 2018. május 14., kezdve egy munkaterület minden riasztás automatikusan megkezdődik, Azure kiterjeszti. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](monitoring-alerts-extend.md). 
+> 2018. május 14., kezdve egy adott munkaterület minden riasztás automatikusan megkezdődik kiterjesztése az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az OMS-ből Azure-ba való](monitoring-alerts-extend.md). 
 
 ### <a name="using-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon használatával
-Riasztási szabályok, amelyek rendszeres időközönkénti mentett keresést futtat Naplóelemzési napló riasztások jönnek létre. Ha a lekérdezés megfelelő eredmények megadott feltételeknek, egy riasztás rekord jön létre, és egy vagy több műveletek futnak. 
+Riasztások a Log Analytics, amely a rendszeres időközönkénti mentett keresést futtat riasztási szabályok hozzák létre. Ha a lekérdezés egyeztetés eredményei adott feltételeknek, létrejön egy riasztásbejegyzés, és a egy vagy több műveletek futnak. 
 
-Az erőforrás-sablon [napló analytics mentett keresés](../log-analytics/log-analytics-log-searches.md) és [analytics riasztások jelentkezzen](../log-analytics/log-analytics-alerts.md) találhatók dokumentáció Naplóelemzési része. További információ, [Naplóelemzési hozzáadása a mentett keresések riasztások](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md); tartalmazók szemléltető mintákat, valamint a sémaadatokat.
+Erőforrás-sablon a Log analytics-beli mentett keresés és a Log analytics alertsare elérhető dokumentáció a Log Analytics szakaszban. További tudnivalókért tekintse meg, [hozzáadása a Log Analytics mentett keresések és a riasztások](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md); mely szemléltető példák, valamint a séma részleteit tartalmazza.
 
-### <a name="using-resource-template-via-apipowershell"></a>Erőforrás-sablonnal API/Powershell használatával
-A napló Analytics riasztási REST API RESTful, és az Azure Resource Manager REST API-n keresztül érhető el. Az API-t fog kimeneti keresési eredmények Önnek JSON formátumban, lehetővé téve az eredmények segítségével számos különböző módon programozott módon, és a PowerShell parancssori így elérhető.
+### <a name="using-resource-template-via-apipowershell"></a>API/PowerShell erőforrás-sablon használatával
+A Log Analytics Alert REST API RESTful és az Azure Resource Manager REST API-n keresztül érhető el. Az API-t az így elérhető lesz egy PowerShell-parancssorból, és kimenete JSON formátumban, hogy a keresési eredmények az eredmények használatával számos különböző módon programozott módon.
 
-További információ [létrehozása és kezelése a REST API-val Naplóelemzési riasztási szabályok](../log-analytics/log-analytics-api-alerts.md); beleértve az API eléréséhez Powershell példát.
+Tudjon meg többet [létrehozása és kezelése a REST API-val a Log Analytics riasztási szabályai](../log-analytics/log-analytics-api-alerts.md)köztük az API-t a Powershell elérése példái.
 
-## <a name="managing-log-alert-on-application-insights"></a>Az Application Insights napló riasztás kezelése
-Az új Azure riasztások az Azure-figyelő részeként Azure Application Insights napló riasztások jelentek meg. Ezért futása alatt Azure figyelő API, [ütemezett lekérdezési szabályok](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) REST művelet csoport.
+## <a name="managing-log-alert-on-application-insights"></a>Az Application Insights riasztás kezelése
+Naplóriasztások az Azure Application Insights része alatt az Azure Monitor az új Azure-riasztások jelentek meg. Ezért futása alatt az Azure Monitor API-t szolgáltatásként [ütemezett lekérdezési szabály](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) REST művelet csoport.
 
 ### <a name="using-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon használatával
-Az Application Insights-erőforrások napló riasztáshoz tartozik egy típusú `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure figyelője – ütemezett lekérdezési szabályok API-referencia](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
+Az Application Insights-erőforrások riasztás van valamilyen `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure Monitor - ütemezett lekérdezési szabály API-referencia](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
 
-Az alábbiakban található a szerkezet [ütemezett lekérdezési szabályok létrehozásának](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) erőforrás sablon minta adatkészlet változók alapján.
+Az alábbiakban található az struktúráját [ütemezett lekérdezési szabály létrehozása](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) erőforrás-sablont változókként minta adatkészlet alapján.
 
 ```json
 {
@@ -113,27 +113,27 @@ Az alábbiakban található a szerkezet [ütemezett lekérdezési szabályok lé
 }
 ```
 > [!IMPORTANT]
-> Rejtett-hivatkozás célerőforrás címke mező kitöltése kötelező igénybe veszik a [ütemezett lekérdezési szabályok ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon. 
+> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon. 
 
-A fenti példa json (azaz) sampleScheduledQueryRule.json Ez a bemutató céljából menthetők, és segítségével telepíthető [az Azure portál Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+A fenti json-mintaadatok menthető, ez a bemutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
-### <a name="using-resource-template-via-clipowershell"></a>Erőforrás-sablonnal CLI/Powershell használatával
-A figyelő az Azure - ütemezett lekérdezési szabályok API van a REST API-t és a teljes mértékben kompatibilis a Azure Resource Manager REST API-t. Ezért használható PowerShell-parancsmag erőforrás-kezelő, valamint az Azure parancssori felület használatával.
+### <a name="using-resource-template-via-clipowershell"></a>Erőforrás-sablon CLI és PowerShell használatával
+Az Azure Monitor - ütemezett lekérdezési szabály API, a REST API-t és a teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
 
-Az alábbi ábra szemlélteti használati minta erőforrás sablon korábban bemutatott (sampleScheduledQueryRule.json) az Azure Resource Manager PowerShell parancsmag segítségével:
+Az alábbi ábra szemlélteti a használati minta erőforrás sablon korábban bemutatott (sampleScheduledQueryRule.json) Azure Resource Manager PowerShell-parancsmaggal keresztül:
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
-Az alábbi ábra szemlélteti használati minta erőforrás sablon korábban bemutatott (sampleScheduledQueryRule.json) az Azure CLI Azure Resource Manager-parancs segítségével:
+Az alábbi ábra szemlélteti a használati minta erőforrás sablon korábban bemutatott (sampleScheduledQueryRule.json) az Azure CLI Azure Resource Manager parancs-n keresztül:
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleScheduledQueryRule.json
 ```
-A sikeres művelet 201 visszatér állapot új riasztási szabály létrehozása vagy 200 adható vissza, ha egy meglévő szabályt módosítva lett.
+Sikeres művelet esetén 201-es állapot új riasztási szabály létrehozása ad vissza, vagy a 200-as vissza kell adni, ha egy meglévő riasztási szabályt módosítva lett.
 
 
 ## <a name="next-steps"></a>További lépések
-* Megértéséhez [webhookműveletek napló riasztások](monitor-alerts-unified-log-webhook.md)
-* További tudnivalók az új [Azure riasztások](monitoring-overview-unified-alerts.md)
-* További információ [Application insights szolgáltatással](../application-insights/app-insights-analytics.md)
-* További információ [Naplóelemzési](../log-analytics/log-analytics-overview.md).   
+* Megismerheti [naplóriasztásokra vonatkozó Webhook-műveletek](monitor-alerts-unified-log-webhook.md)
+* Ismerje meg az új [Azure-riasztások](monitoring-overview-unified-alerts.md)
+* Tudjon meg többet [Application Insights](../application-insights/app-insights-analytics.md)
+* Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-overview.md).   

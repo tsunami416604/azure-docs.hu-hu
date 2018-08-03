@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Asana |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Asana között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Asanában |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az Asanában között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,221 +15,221 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: b60f80353a6c2a67c5c1602987ba06aad8bd38e1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f5ea7a330891d4befeb6388bbe7f37b2a4aa848f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224827"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438208"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-asana"></a>Oktatóanyag: Azure Active Directoryval integrált Asana
+# <a name="tutorial-azure-active-directory-integration-with-asana"></a>Oktatóanyag: Azure Active Directory-integráció az Asanában
 
-Ebben az oktatóanyagban elsajátíthatja Asana integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Asana integrálása az Azure Active Directory (Azure AD).
 
-Asana integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Asana integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a Asana hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Asana (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá az Asanában Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett az Asanában (egyszeri bejelentkezés) az Azure AD-fiókjukat
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Asana, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása az Asanában, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy Asana egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy Asana egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben.
-Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Asana hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Asana hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-asana-from-the-gallery"></a>A gyűjteményből Asana hozzáadása
-Az Azure AD integrálása a Asana konfigurálásához kell hozzáadnia Asana a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-asana-from-the-gallery"></a>Asana hozzáadása a katalógusból
+Az Azure AD-be Asana-integráció konfigurálásához, hozzá kell Asana a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Asana hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Asana hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Asana**, jelölje be **Asana** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Asana**válassza **Asana** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/asana-tutorial/tutorial_asana_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/asana-tutorial/tutorial_asana_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban konfigurálása, és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon." nevű tesztfelhasználó alapján Asana
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Asanában egy "Britta Simon." nevű tesztelési felhasználó alapján
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Asana a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Asana közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó az Asanában mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó az Asanában hivatkozás kapcsolata kell létrehozni.
 
-Asana, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Az Asanában, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Asana tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Asanában tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Asana tesztfelhasználó](#create-an-asana-test-user)**  - való Britta Simon valami Asana, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Asana tesztfelhasználót](#create-an-asana-test-user)**  - a-megfelelője a Britta Simon rendelkezik az Asanában, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Asana alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az Asanában alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Asana, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása az Asanában, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Asana** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Asana** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/asana-tutorial/tutorial_asana_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/asana-tutorial/tutorial_asana_samlbase.png)
 
-3. Az a **Asana tartomány és az URL-címek** területen tegye a következőket:
+1. Az a **Asana-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk Asana tartomány és az URL-címek](./media/asana-tutorial/tutorial_asana_url.png)
+    ![Asana-tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/asana-tutorial/tutorial_asana_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőhöz típus URL-címe: `https://app.asana.com/`
+    a. Az a **bejelentkezési URL-** szövegmezőbe típus URL-címe: `https://app.asana.com/`
 
-    b. Az a **azonosító** szövegmezőhöz objektumtípus-érték: `https://app.asana.com/`
+    b. Az a **azonosító** szövegmező, érték: `https://app.asana.com/`
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/asana-tutorial/tutorial_asana_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](./media/asana-tutorial/tutorial_asana_certificate.png)
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/asana-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/asana-tutorial/tutorial_general_400.png)
 
-6. A a **Asana konfigurációs** kattintson **konfigurálása Asana** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+1. Az a **Asana-konfiguráció** területén kattintson **konfigurálása Asana** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Asana konfiguráció](./media/asana-tutorial/tutorial_asana_configure.png)
+    ![Asana-konfiguráció](./media/asana-tutorial/tutorial_asana_configure.png)
 
-7. Egy másik böngészőablakban bejelentkezés az Asana alkalmazására. Asana SSO konfigurálásához a munkaterület beállításához kattintson a képernyő jobb felső sarkában a munkaterület neve való hozzáféréshez. Kattintson a  **\<a munkaterület neve\> beállítások**.
+1. Egy másik böngészőablakban bejelentkezés Asana-alkalmazását. Egyszeri bejelentkezés konfigurálása az Asanában, a munkaterület nevére a képernyő jobb felső sarkában lévő kattintva férhet hozzá a munkaterület beállításait. Ezután kattintson a  **\<a munkaterület neve\> beállítások**.
 
-    ![Asana egyszeri bejelentkezési beállítások](./media/asana-tutorial/tutorial_asana_09.png)
+    ![Asana egyszeri bejelentkezési beállításainak](./media/asana-tutorial/tutorial_asana_09.png)
 
-8. Az a **szervezeti beállítások** ablak, kattintson a **felügyeleti**. Kattintson a **tagok SAML keresztül kell bejelentkezniük** engedélyezése az egyszeri bejelentkezés konfigurálása. Hajtsa végre az alábbi lépéseket:
+1. Az a **szervezeti beállítások** ablakban kattintson a **felügyeleti**. Kattintson a **SAML használatával be kell jelentkeznie a tagok** engedélyezése az egyszeri bejelentkezés konfigurálása. Hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés szervezeti beállítások konfigurálása](./media/asana-tutorial/tutorial_asana_10.png)  
 
-     a. Az a **bejelentkezési URL-címe** szövegmező, illessze be a **SAML-alapú egyszeri bejelentkezési URL-címe**.
+     a. Az a **lap URL-címe be** szövegmezőjébe illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**.
 
-     b. Az Azure portálról letöltött tanúsítvány kattintson a jobb gombbal, majd nyissa meg a tanúsítványfájlt, a Jegyzettömb vagy az előnyben részesített szövegszerkesztőben. Másolja a tartalmat a kezdő és záró tanúsítvány címe között, és illessze be a **X.509 tanúsítvány** szövegmező.
+     b. Az Azure-portálról letöltött tanúsítvány kattintson a jobb gombbal, majd nyissa meg a tanúsítvány-fájlt a Jegyzettömb vagy az előnyben részesített szövegszerkesztőben. Másolja az a kezdő és záró tanúsítvány címe között, és illessze be a **X.509-tanúsítvány** szövegmezőbe.
 
-9. Kattintson a **Save** (Mentés) gombra. Ugrás a [Asana útmutató egyszeri bejelentkezés beállításával kapcsolatos](https://asana.com/guide/help/premium/authentication#gl-saml) Ha segítségre van szüksége további.
+1. Kattintson a **Save** (Mentés) gombra. Lépjen a [Asana-útmutató az egyszeri bejelentkezés beállítása](https://asana.com/guide/help/premium/authentication#gl-saml) Ha segítségre van szüksége további.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Hozzon létre egy Azure AD-teszt felhasználó][100]
+![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](./media/asana-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/asana-tutorial/create_aaduser_02.png)
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/asana-tutorial/create_aaduser_03.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/asana-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
 
     ![A Hozzáadás gombra.](./media/asana-tutorial/create_aaduser_04.png)
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-an-asana-test-user"></a>Hozzon létre egy Asana tesztfelhasználó számára
 
-Ez a szakasz célja Asana Britta Simon nevű felhasználót létrehozni. Asana támogatja az automatikus a felhasználók átadása, amely alapértelmezés szerint van engedélyezve. További részletek találhatók [Itt](asana-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
+Ez a szakasz célja az Asanában Britta Simon nevű felhasználó létrehozásához. Asana támogatja a felhasználók automatikus átadása, amely alapértelmezés szerint van engedélyezve. További részleteket talál [Itt](asana-provisioning-tutorial.md) konfigurálásának a felhasználók automatikus átadása.
 
-**Ha szeretne létrehozni a felhasználót manuálisan, hajtson végre a következő lépéseket:**
+**Ha szeretné manuálisan létrehozni a felhasználói, hajtson végre a következő lépéseket:**
 
-Ebben a szakaszban egy Asana Britta Simon nevű felhasználót hoz létre.
+Ebben a szakaszban egy asana Britta Simon nevű felhasználó létrehozásához.
 
-1. A **Asana**, navigáljon a **csapatok** szakaszt, a bal oldali panelen. Kattintson a plusz jelre gombra.
+1. A **Asana**, nyissa meg a **csapatok** szakaszban a bal oldali panelen. Kattintson a pluszjel gombra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/asana-tutorial/tutorial_asana_12.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Írja be az e-mailt britta.simon@contoso.com a szövegmezőbe, és válassza ki a **meghívása**.
+1. Írja be az e-mailt britta.simon@contoso.com a szövegmezőbe, és válassza ki a **meghívása**.
 
-3. Kattintson a **küldése a meghívás**. Az új felhasználó kap egy e-mail az az e-mail fiókjába. Egyenként kell létrehozni, és ellenőrizze a fiók.
+1. Kattintson a **meghívó küldése**. Az új felhasználó kap egy e-mailt saját e-mail-fiókba. Marcela kell létrehozni és megerősíteni a fiókot.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Asana Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Asana Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200]
 
-**Britta Simon hozzárendelése Asana, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel az Asanában, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listában válassza ki a **Asana**.
+1. Az alkalmazások listájában jelölje ki a **Asana**.
 
-    ![Az alkalmazások listáját a Asana hivatkozás](./media/asana-tutorial/tutorial_asana_app.png)
+    ![Az alkalmazások listáját az Asanában hivatkozásra](./media/asana-tutorial/tutorial_asana_app.png)
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ez a szakasz célja az Azure AD az egyszeri bejelentkezés tesztelése.
+Ez a szakasz célja az Azure AD egyszeri bejelentkezés teszteléséhez.
 
-Ugrás a Asana bejelentkezési lapot. Az E-mail cím szövegmezőjének helyezze be az e-mail cím britta.simon@contoso.com. A jelszó szövegmezőjét hagyja üresen, és kattintson a **bejelentkezés**. Az Azure AD bejelentkezési oldalára irányítja. Végezze el az Azure AD hitelesítő adatait. Most jelentkezett Asana.
+Nyissa meg az Asanában bejelentkezési oldalára. Szúrja be az E-mail cím szövegmezőbe az e-mail-cím britta.simon@contoso.com. A jelszó szövegmező hagyja üresen, és kattintson a **bejelentkezés**. Az Azure AD bejelentkezési oldalára irányítja. Végezze el az Azure AD hitelesítő adatait. Most már van bejelentkezve Asanában.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
-* [A felhasználók átadása konfigurálása](asana-provisioning-tutorial.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználók átadásának konfigurálása](asana-provisioning-tutorial.md)
 
 <!--Image references-->
 

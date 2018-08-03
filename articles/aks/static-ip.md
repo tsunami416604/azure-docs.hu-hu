@@ -1,6 +1,6 @@
 ---
-title: Egy statikus IP-címet használ az Azure Kubernetes szolgáltatás (AKS) terheléselosztó
-description: Egy statikus IP-címet használ az Azure Kubernetes szolgáltatás (AKS) terheléselosztót.
+title: Az Azure Kubernetes Service (AKS) terheléselosztót statikus IP-cím használata
+description: Statikus IP-cím használata az Azure Kubernetes Service (AKS) terheléselosztót.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2ff964e4909c288686253816bc40322b7839a2da
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: af1dffd681eaf7b2eb90ab4657cc25f2144a48d9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100589"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423623"
 ---
-# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Egy statikus IP-címet használ az Azure Kubernetes szolgáltatás (AKS) terheléselosztó
+# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Az Azure Kubernetes Service (AKS) terheléselosztót statikus IP-cím használata
 
-Egyes esetekben például az Azure Kubernetes szolgáltatás (AKS) betöltése terheléselosztó újból létrejön, illetve terheléselosztó típussal rendelkező Kubernetes szolgáltatások jönnek létre újból, a nyilvános IP-cím a Kubernetes szolgáltatás módosíthatja. Ez a dokumentum adatokat egy statikus IP-címet a Kubernetes szolgáltatások konfigurálása.
+Bizonyos esetekben például ha az Azure Kubernetes Service (AKS) betöltése terheléselosztó újból létrejön vagy a terheléselosztó típusú Kubernetes-szolgáltatás létrejönnek, a nyilvános IP-címét a Kubernetes-szolgáltatást változhat. Ez a dokumentum részletesen, statikus IP-címet a Kubernetes-szolgáltatás konfigurálása.
 
 ## <a name="create-static-ip-address"></a>Statikus IP-cím létrehozása
 
-Hozzon létre egy statikus nyilvános IP-címet a Kubernetes szolgáltatás. Az IP-címet kell létrehozni a AKS a **csomópont** erőforráscsoportot. Az erőforráscsoport neve az beszerzése a [az erőforrás megjelenítése] [ az-resource-show] parancsot.
+Hozzon létre egy statikus nyilvános IP-címet a Kubernetes-szolgáltatást. Az IP-címet kell hozhatók létre az AKS **csomópont** erőforráscsoportot. Az erőforráscsoport nevét az első a [az resource show] [ az-resource-show] parancsot.
 
 ```azurecli-interactive
 $ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
@@ -30,13 +30,13 @@ $ az resource show --resource-group myResourceGroup --name myAKSCluster --resour
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Használja a [az hálózati nyilvános IP-cím létrehozása] [ az-network-public-ip-create] parancsot az IP-cím létrehozásához.
+Használja a [az hálózati nyilvános IP-cím létrehozása] [ az-network-public-ip-create] paranccsal hozza létre az IP-címet.
 
 ```azurecli-interactive
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
 ```
 
-Jegyezze fel az IP-cím.
+Jegyezze fel az IP-címet.
 
 ```json
 {
@@ -64,7 +64,7 @@ Jegyezze fel az IP-cím.
   }
 ````
 
- Ha szükséges, a cím lekérhető használatával a [az nyilvános ip-lista] [ az-network-public-ip-list] parancsot.
+ Ha szükséges, a cím lehet lekérni a [az network public-ip list] [ az-network-public-ip-list] parancsot.
 
 ```azurecli-interactive
 az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
@@ -74,9 +74,9 @@ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastu
 40.121.183.52
 ```
 
-## <a name="create-service-with-ip-address"></a>Szolgáltatás létrehozása az IP-címmel
+## <a name="create-service-with-ip-address"></a>Szolgáltatás létrehozása az IP-cím
 
-Ha a statikus IP-cím van megadva, a Kubernetes szolgáltatás hozhatja létre a `loadBalancerIP` tulajdonság és a statikus IP-cím érték.
+A statikus IP-címet kiosztották, miután egy Kubernetes-szolgáltatást lehet létrehozni a `loadBalancerIP` tulajdonság és a egy statikus IP-cím értékét.
 
 ```yaml
 apiVersion: v1
@@ -94,7 +94,7 @@ spec:
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a statikus IP-cím nem lett létrehozva, vagy a megfelelő erőforráscsoport létrehozása befejeződött, a szolgáltatás létrehozása sikertelen lesz. Elhárításával kapcsolatos tudnivalókat térjen vissza a szolgáltatás folyamatlétrehozási eseményeket a [kubectl ismertetik] [ kubectl-describe] parancsot.
+Ha statikus IP-címe nem lett létrehozva, vagy a helytelen erőforrás-csoport létrehozása, a szolgáltatás létrehozása sikertelen lesz. A vissza a szolgáltatás-létrehozási események elhárításához a [írja le a kubectl] [ kubectl-describe] parancsot.
 
 ```azurecli-interactive
 kubectl describe service azure-vote-front
@@ -127,6 +127,6 @@ Events:
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
-[az-network-public-ip-create]: /cli/azure/network/public-ip#az_network_public_ip_create
-[az-network-public-ip-list]: /cli/azure/network/public-ip#az_network_public_ip_list
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [az-resource-show]: /cli/azure/resource#az-resource-show

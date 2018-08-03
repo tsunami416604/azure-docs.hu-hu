@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: d52672099c309dfeac641cb3aedaf32c7230b676
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4f6f6ef12f5a8dd8a9f210e9b1f1ca978ec5a1ac
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047759"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440456"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Oktatóanyag: Azure Active Directory-integráció az Egnyte
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Egnyte hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-egnyte-from-the-gallery"></a>Egnyte hozzáadása a katalógusból
 Az Azure AD integrálása a Egnyte konfigurálásához hozzá kell Egnyte a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a Egnyte konfigurálásához hozzá kell Egnyte a kata
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Egnyte**.
+1. A Keresés mezőbe írja be a **Egnyte**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/egnyte-tutorial/tutorial_egnyte_search.png)
 
-5. Az eredmények panelen válassza ki a **Egnyte**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Egnyte**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/egnyte-tutorial/tutorial_egnyte_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Egnyte, rendelje hozzá az értékét a **felhasználónév** értékeként az A
 Az Azure AD egyszeri bejelentkezés az Egnyte tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Egy Egnyte tesztfelhasználó létrehozása](#creating-an-egnyte-test-user)**  – egy megfelelője a Britta Simon Egnyte, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Egy Egnyte tesztfelhasználó létrehozása](#creating-an-egnyte-test-user)**  – egy megfelelője a Britta Simon Egnyte, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/egnyte-tutorial/tutorial_egnyte_samlbase.png)
 
-3. Az a **Egnyte tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Egnyte tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/egnyte-tutorial/tutorial_egnyte_url.png)
 
@@ -117,33 +117,33 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Az érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Egnyte ügyfél-támogatási csapatának](https://www.egnyte.com/corp/contact_egnyte.html) lekérni ezt az értéket. 
  
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/egnyte-tutorial/tutorial_egnyte_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/egnyte-tutorial/tutorial_general_400.png)
 
-6. Az a **Egnyte konfigurációs** területén kattintson **konfigurálása Egnyte** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Egnyte konfigurációs** területén kattintson **konfigurálása Egnyte** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/egnyte-tutorial/tutorial_egnyte_configure.png) 
 
-7. Egy másik böngészőablakban jelentkezzen be a Egnyte vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Egnyte vállalati hely rendszergazdaként.
 
-8. Kattintson a **beállítások**.
+1. Kattintson a **beállítások**.
    
    ![Beállítások](./media/egnyte-tutorial/ic787819.png "beállításai")
 
-9. Kattintson a menü **beállítások**.
+1. Kattintson a menü **beállítások**.
 
    ![Beállítások](./media/egnyte-tutorial/ic787820.png "beállításai")
 
-10. Kattintson a **konfigurációs** fülre, majd **biztonsági**.
+1. Kattintson a **konfigurációs** fülre, majd **biztonsági**.
 
     ![Biztonsági](./media/egnyte-tutorial/ic787821.png "biztonsági")
 
-11. Az a **egyszeri bejelentkezéses hitelesítéshez** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **egyszeri bejelentkezéses hitelesítéshez** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés hitelesítési](./media/egnyte-tutorial/ic787822.png "egyszeri bejelentkezés – hitelesítés")   
     
@@ -178,15 +178,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/egnyte-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/egnyte-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/egnyte-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/egnyte-tutorial/create_aaduser_04.png) 
 
@@ -206,13 +206,13 @@ Ahhoz, hogy az Azure AD-felhasználók Egnyte jelentkezzen be, akkor ki kell ép
 
 1. Jelentkezzen be a **Egnyte** rendszergazdaként a vállalati webhely.
 
-2. Lépjen a **beállítások \> felhasználók és csoportok**.
+1. Lépjen a **beállítások \> felhasználók és csoportok**.
 
-3. Kattintson a **új felhasználó hozzáadása**, majd válassza ki a hozzáadni kívánt felhasználó típusát.
+1. Kattintson a **új felhasználó hozzáadása**, majd válassza ki a hozzáadni kívánt felhasználó típusát.
    
    ![Felhasználók](./media/egnyte-tutorial/ic787824.png "felhasználók")
 
-4. Az a **új általános jogú felhasználói** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **új általános jogú felhasználói** szakaszban, hajtsa végre az alábbi lépéseket:
    
    ![Új általános jogú felhasználói](./media/egnyte-tutorial/ic787825.png "új általános jogú felhasználó")   
 
@@ -240,23 +240,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Egnyte**.
+1. Az alkalmazások listájában jelölje ki a **Egnyte**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/egnyte-tutorial/tutorial_egnyte_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -268,7 +268,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

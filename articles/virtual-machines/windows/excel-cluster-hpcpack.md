@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 4a6327fcfe6f6e6f3b8b5c6ecbd14b832b4134c5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971859"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421212"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Ismerkedés az Excel és SOA típusú számítási feladatok futtatása az Azure-beli HPC Pack-fürthöz
 Ez a cikk bemutatja, hogyan helyezhet üzembe Azure-beli virtuális gépeken a Microsoft HPC Pack 2012 R2-fürtöt az Azure gyorsindítási sablon, vagy igény szerint az Azure PowerShell telepítési parancsfájlt. A fürt használ az Azure piactér Virtuálisgép-rendszerképek a Microsoft Excel- vagy szolgáltatásorientált architektúra (SOA) számítási feladatok futnak a HPC Pack segítségével. A fürt használhatja egy a helyszíni ügyfélszámítógépről Excel a HPC- és SOA típusú szolgáltatások futtatásához. Az Excel a HPC-szolgáltatások közé tartoznak az Excel-munkafüzet kiürítéséhez, és az Excel-felhasználó által definiált függvények, vagy az UDF-EK.
@@ -53,10 +53,10 @@ Az Azure gyorsindítási sablon használatával gyorsan üzembe helyezhet a HPC 
 > 
 
 1. Látogasson el a [HPC-fürt létrehozása a sablon lapját a githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster). Ha azt szeretné, tekintse át a sablon és a forráskód adatait.
-2. Kattintson a **üzembe helyezés az Azure** elindítani egy központi telepítést a sablont az Azure Portalon.
+1. Kattintson a **üzembe helyezés az Azure** elindítani egy központi telepítést a sablont az Azure Portalon.
    
    ![Sablon üzembe helyezése az Azure-bA][github]
-3. A portálon kövesse ezeket a lépéseket adja meg a paramétereket a HPC-fürt sablon.
+1. A portálon kövesse ezeket a lépéseket adja meg a paramétereket a HPC-fürt sablon.
    
    a. Az a **paraméterek** lapon adja meg vagy módosítsa a sablon paramétereihez tartozó értékek. (Kattintson a súgó információit minden beállítás melletti ikonra.) Az alábbi képernyőn mintaértékek láthatók. Ebben a példában egy nevű fürtöt hoz létre *hpc01* a a *hpc.local* a számítási csomópontok egy fő csomópontot és 2 tartományban. A számítási csomópontok Virtuálisgép-rendszerképből egy HPC Pack, amely tartalmazza a Microsoft Excel jönnek létre.
    
@@ -76,7 +76,7 @@ Az Azure gyorsindítási sablon használatával gyorsan üzembe helyezhet a HPC 
    d. Válassza ki például az USA középső RÉGIÓJA, az erőforráscsoport helyét.
    
    e. Az a **jogi feltételek** lapon, olvassa el a feltételeket. Ha elfogadja, kattintson a **beszerzési**. Ha elkészült, az értékének megadása a sablont, kattintson a **létrehozás**.
-4. Amikor befejeződik az üzembe helyezés (általában körülbelül 30 percet vesz), a fürt tanúsítványfájl exportálhat a fürt fő csomópontjának. Egy későbbi lépésben a kiszolgálóoldali hitelesíthető biztonságos HTTP-kötést az ügyfélszámítógépen a nyilvános tanúsítvány importálása.
+1. Amikor befejeződik az üzembe helyezés (általában körülbelül 30 percet vesz), a fürt tanúsítványfájl exportálhat a fürt fő csomópontjának. Egy későbbi lépésben a kiszolgálóoldali hitelesíthető biztonságos HTTP-kötést az ügyfélszámítógépen a nyilvános tanúsítvány importálása.
    
    a. Az Azure Portalon nyissa meg az irányítópultot, válassza ki a fő csomópontot, majd kattintson **Connect** távoli asztali kapcsolattal csatlakozni az oldal tetején.
    
@@ -177,12 +177,12 @@ A HPC Pack IaaS telepítési szkripttel HPC Pack-fürt üzembe helyezése egy m�
 **A parancsfájl futtatása**
 
 1. Nyissa meg az ügyfélszámítógépen a PowerShell-konzolt rendszergazdaként.
-2. Módosítsa a könyvtárat a script mappát (ebben a példában E:\IaaSClusterScript).
+1. Módosítsa a könyvtárat a script mappát (ebben a példában E:\IaaSClusterScript).
    
    ```
    cd E:\IaaSClusterScript
    ```
-3. A HPC Pack-fürt üzembe helyezéséhez futtassa a következő parancsot. Ez a példa feltételezi, hogy a konfigurációs fájlban található E:\HPCDemoConfig.xml.
+1. A HPC Pack-fürt üzembe helyezéséhez futtassa a következő parancsot. Ez a példa feltételezi, hogy a konfigurációs fájlban található E:\HPCDemoConfig.xml.
    
    ```
    .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
@@ -214,8 +214,8 @@ Az Office Professional Plus 2013 a Virtuálisgép-lemezkép telepítve az által
 Kövesse az alábbi lépéseket egy Excel-munkafüzet kiszervezzük, hogy fusson a HPC Pack-fürtön az Azure-ban. Ehhez az Excel 2010 vagy 2013 már telepítve van az ügyfélszámítógépen kell rendelkeznie.
 
 1. Az Excel a HPC Pack-fürt üzembe helyezése 1. lépésben a lehetőségek egyikét használja a számítási csomópont lemezképével. Szerezze be a fürt tanúsítványfájlt (.cer) és a fürt felhasználónevet és jelszót.
-2. Az ügyfélszámítógépen a Cert: \CurrentUser\Root fürt tanúsítványt importálni.
-3. Ellenőrizze, hogy telepítve van az Excelben. Hozzon létre egy Excel.exe.config fájl ugyanabban a mappában, Excel.exe az ügyfélszámítógépen a következő tartalmakat. Ez a lépés biztosítja, hogy a HPC Pack 2012 R2 Excel COM-beépülő modul sikeresen betöltődik.
+1. Az ügyfélszámítógépen a Cert: \CurrentUser\Root fürt tanúsítványt importálni.
+1. Ellenőrizze, hogy telepítve van az Excelben. Hozzon létre egy Excel.exe.config fájl ugyanabban a mappában, Excel.exe az ügyfélszámítógépen a következő tartalmakat. Ez a lépés biztosítja, hogy a HPC Pack 2012 R2 Excel COM-beépülő modul sikeresen betöltődik.
    
     ```
     <?xml version="1.0"?>
@@ -225,13 +225,13 @@ Kövesse az alábbi lépéseket egy Excel-munkafüzet kiszervezzük, hogy fusson
         </startup>
     </configuration>
     ```
-4. Állítsa be az ügyfél küldhetők be feladatok a HPC Pack-fürthöz. Az egyik lehetőség, hogy töltse le a teljes [HPC Pack 2012 R2 Update 3 telepítési](http://www.microsoft.com/download/details.aspx?id=49922) és a HPC Pack-ügyfél telepítéséhez. Másik lehetőségként töltse le és telepítse a [HPC Pack 2012 R2 Update 3 ügyfél segédprogramok](https://www.microsoft.com/download/details.aspx?id=49923) és a megfelelő Visual C++ 2010 újraterjeszthető csomag a számítógép ([x64](http://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555) ).
-5. Ebben a példában egy Excel-munkafüzetmintát ConvertiblePricing_Complete.xlsb nevű használjuk. Letöltheti a [Itt](https://www.microsoft.com/en-us/download/details.aspx?id=2939).
-6. Másolja az Excel-munkafüzet D:\Excel\Run például a munkamappában.
-7. Nyissa meg az Excel-munkafüzet. Az a **Develop** menüszalagra, majd **COM-bővítmények** , és győződjön meg arról, hogy a HPC Pack Excel COM-az adatok sikeresen betöltve.
+1. Állítsa be az ügyfél küldhetők be feladatok a HPC Pack-fürthöz. Az egyik lehetőség, hogy töltse le a teljes [HPC Pack 2012 R2 Update 3 telepítési](http://www.microsoft.com/download/details.aspx?id=49922) és a HPC Pack-ügyfél telepítéséhez. Másik lehetőségként töltse le és telepítse a [HPC Pack 2012 R2 Update 3 ügyfél segédprogramok](https://www.microsoft.com/download/details.aspx?id=49923) és a megfelelő Visual C++ 2010 újraterjeszthető csomag a számítógép ([x64](http://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555) ).
+1. Ebben a példában egy Excel-munkafüzetmintát ConvertiblePricing_Complete.xlsb nevű használjuk. Letöltheti a [Itt](https://www.microsoft.com/en-us/download/details.aspx?id=2939).
+1. Másolja az Excel-munkafüzet D:\Excel\Run például a munkamappában.
+1. Nyissa meg az Excel-munkafüzet. Az a **Develop** menüszalagra, majd **COM-bővítmények** , és győződjön meg arról, hogy a HPC Pack Excel COM-az adatok sikeresen betöltve.
    
    ![Excel-bővítmény a HPC Pack][addin]
-8. A VBA makró az Excelben HPCControlMacros szerkesztése megjegyzésekkel sorok módosításával, ahogyan az az alábbi parancsfájlt. A környezet megfelelő értékekkel helyettesítse.
+1. A VBA makró az Excelben HPCControlMacros szerkesztése megjegyzésekkel sorok módosításával, ahogyan az az alábbi parancsfájlt. A környezet megfelelő értékekkel helyettesítse.
    
    ![A HPC Pack Excel-makrók][macro]
    
@@ -251,8 +251,8 @@ Kövesse az alábbi lépéseket egy Excel-munkafüzet kiszervezzük, hogy fusson
    'HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath
    HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath, UserName:="hpc\azureuser", Password:="<YourPassword>"
    ```
-9. Másolja ki az Excel-munkafüzet D:\Excel\Upload például feltöltés könyvtárba. Ez a könyvtár a VBA makró a HPC_DependsFiles állandó van megadva.
-10. A munkafüzet futtatunk a fürtön az Azure-ban, kattintson a **fürt** gomb a munkalapon.
+1. Másolja ki az Excel-munkafüzet D:\Excel\Upload például feltöltés könyvtárba. Ez a könyvtár a VBA makró a HPC_DependsFiles állandó van megadva.
+1. A munkafüzet futtatunk a fürtön az Azure-ban, kattintson a **fürt** gomb a munkalapon.
 
 ### <a name="run-excel-udfs"></a>Excel univerzális Lemezformátumokat futtatása
 Excel univerzális Lemezformátumokat futtatásához kövesse az előző lépések az ügyfélszámítógép beállítása 1 – 3. Excel univerzális Lemezformátumokat nem kell rendelkeznie az Excel-alkalmazás telepítése a számítási csomópontok. Tehát a fürt létrehozása számítási csomópontokra, amikor dönthet a normál számítási csomópont lemezképével helyett az Excelbe, a számítási csomópont lemezképével.
@@ -267,10 +267,10 @@ A fürt sikeres telepítése után folytassa a következő lépéseket egy beép
 1. Nyisson meg egy új Excel-munkafüzet. Az a **Develop** menüszalagra, majd **bővítmények**. Majd kattintson a párbeszédpanelen **Tallózás**, keresse meg a %CCP_HOME%Bin\XLL32 mappát, és válassza ki a minta ClusterUDF32.xll. Ha a ClusterUDF32 nem létezik az ügyfélszámítógépen, másolja a fő csomópontot %CCP_HOME%Bin\XLL32 mappájából.
    
    ![Válassza ki az UDF-ben][udf]
-2. Kattintson a **fájl** > **beállítások** > **speciális**. A **képletek**, ellenőrizze **engedélyezése a felhasználó által definiált XLL függvények futtatása egy számítási fürt**. Kattintson a **beállítások** , és adja meg a teljes fürt nevét a **fürt fő csomópontjának neve**. (Amint korábban a beviteli mezőt korlátozódik 34 karakter hosszúságú lehet, ezért előfordulhat, hogy nem férnek el a hosszú fürt nevét. Használhat egy gépre kiterjedő változó egy hosszú fürt nevéhez.)
+1. Kattintson a **fájl** > **beállítások** > **speciális**. A **képletek**, ellenőrizze **engedélyezése a felhasználó által definiált XLL függvények futtatása egy számítási fürt**. Kattintson a **beállítások** , és adja meg a teljes fürt nevét a **fürt fő csomópontjának neve**. (Amint korábban a beviteli mezőt korlátozódik 34 karakter hosszúságú lehet, ezért előfordulhat, hogy nem férnek el a hosszú fürt nevét. Használhat egy gépre kiterjedő változó egy hosszú fürt nevéhez.)
    
    ![Az UDF konfigurálása][options]
-3. Az UDF számítási fürtön futnak, kattintson a cellára, amely érték =XllGetComputerNameC(), és nyomja le az Enter billentyűt. A függvényt egyszerűen lekéri a számítási csomóponton, amelyen fut az UDF nevét. Az első futtatáskor a hitelesítő adatok párbeszédpanel kérni fogja a felhasználónevet és jelszót az IaaS-fürthöz való csatlakozáshoz.
+1. Az UDF számítási fürtön futnak, kattintson a cellára, amely érték =XllGetComputerNameC(), és nyomja le az Enter billentyűt. A függvényt egyszerűen lekéri a számítási csomóponton, amelyen fut az UDF nevét. Az első futtatáskor a hitelesítő adatok párbeszédpanel kérni fogja a felhasználónevet és jelszót az IaaS-fürthöz való csatlakozáshoz.
    
    ![UDF futtatása][run]
    
@@ -280,9 +280,9 @@ A fürt sikeres telepítése után folytassa a következő lépéseket egy beép
 Általános SOA-alkalmazások futtatása a HPC Pack IaaS-fürtön, először használja a módszerek közül az 1. lépésben a fürt üzembe helyezéséhez. Adja meg, egy általános számítási csomópont lemezképével ebben az esetben, mert az Excel nem szükséges a számítási csomópontokon. Ezután kövesse az alábbi lépéseket.
 
 1. A fürttanúsítvány beolvasása, után importálja a Cert: \CurrentUser\Root az ügyfélszámítógépen.
-2. Telepítse a [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) és [HPC Pack 2012 R2 Update 3 ügyfél segédprogramok](https://www.microsoft.com/download/details.aspx?id=49923). Ezek az eszközök lehetővé teszik a SOA típusú ügyfél alkalmazások fejlesztése és futtatása.
-3. Töltse le a HelloWorldR2 [mintakód](https://www.microsoft.com/download/details.aspx?id=41633). Nyissa meg a HelloWorldR2.sln a Visual Studio 2010- vagy 2012. (Ez a minta nem áll jelenleg kompatibilis a Visual Studio legújabb verziói.)
-4. Először hozza létre a EchoService projektet. Ezt követően a szolgáltatás üzembe helyezése az IaaS-fürt központi telepítése a helyi fürthöz ugyanolyan módon. A részletes lépéseket lásd: a Readme.doc HelloWordR2 a. Módosíthatja, és az SOA-ügyfélalkalmazások az Azure IaaS-fürtön futó létrehozni a HellWorldR2 és más projektek, a következő szakaszban leírtak szerint hozhat létre.
+1. Telepítse a [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) és [HPC Pack 2012 R2 Update 3 ügyfél segédprogramok](https://www.microsoft.com/download/details.aspx?id=49923). Ezek az eszközök lehetővé teszik a SOA típusú ügyfél alkalmazások fejlesztése és futtatása.
+1. Töltse le a HelloWorldR2 [mintakód](https://www.microsoft.com/download/details.aspx?id=41633). Nyissa meg a HelloWorldR2.sln a Visual Studio 2010- vagy 2012. (Ez a minta nem áll jelenleg kompatibilis a Visual Studio legújabb verziói.)
+1. Először hozza létre a EchoService projektet. Ezt követően a szolgáltatás üzembe helyezése az IaaS-fürt központi telepítése a helyi fürthöz ugyanolyan módon. A részletes lépéseket lásd: a Readme.doc HelloWordR2 a. Módosíthatja, és az SOA-ügyfélalkalmazások az Azure IaaS-fürtön futó létrehozni a HellWorldR2 és más projektek, a következő szakaszban leírtak szerint hozhat létre.
 
 ### <a name="use-http-binding-with-azure-storage-queue"></a>Http-kötést használja az Azure storage-üzenetsorba
 Az Azure storage üzenetsorába Http-kötést használja, győződjön meg arról, néhány változás történt a mintakódhoz.
@@ -335,10 +335,10 @@ Szeretné használni a Http-kötést az Azure storage üzenetsorába nélkül, e
 NetTcp kötés használatához a konfiguráció hasonlít a csatlakozás a helyi fürthöz. Meg kell nyitnia a fő csomópont Virtuálisgép-pár végpontok. Ha a fürt létrehozásához használt a HPC Pack IaaS telepítési szkripttel, például állítsa be a végpontok az Azure Portalon a következő.
 
 1. A virtuális gép leállítása.
-2. Adja hozzá a TCP-portok 9090, 9087, 9091, a munkamenet 9094 közvetítse, feldolgozói és adatszolgáltatások, közvetítő jelölik
+1. Adja hozzá a TCP-portok 9090, 9087, 9091, a munkamenet 9094 közvetítse, feldolgozói és adatszolgáltatások, közvetítő jelölik
    
     ![Végpontok konfigurálása][endpoint-new-portal]
-3. Indítsa el a virtuális gépet.
+1. Indítsa el a virtuális gépet.
 
 A SOA típusú ügyfélalkalmazás nem kell módosítani az IaaS-fürt teljes nevét a fő nevének módosítása kivételével.
 

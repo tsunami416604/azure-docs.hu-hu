@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d76ee059720baa1f91dd157c093b476e4cfaf035
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2a477d8e10b9be4aa90cc80341c787facaabc520
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040704"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Oktatóanyag: Azure Active Directory-integráció az Tangoe parancs Premium Mobile
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Tangoe parancs Premium Mobile hozzáadása a katalógusból
-2. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
 ## <a name="add-tangoe-command-premium-mobile-from-the-gallery"></a>Tangoe parancs Premium Mobile hozzáadása a katalógusból
 Tangoe parancs Premium Mobile integrálása az Azure AD beállítása, hozzá kell Tangoe parancs Premium Mobile a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Tangoe parancs Premium Mobile integrálása az Azure AD beállítása, hozzá ke
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Tangoe parancs Premium Mobile**, jelölje be **Tangoe parancs Premium Mobile** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Tangoe parancs Premium Mobile**, jelölje be **Tangoe parancs Premium Mobile** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Tangoe parancs Premium Mobile hozzáadása a katalógusból ](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
 
@@ -86,10 +86,10 @@ Tangoe parancs Premium Mobile, rendelje hozzá az értékét a **felhasználón�
 Az Azure AD egyszeri bejelentkezés és a Tangoe parancs Premium Mobile tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Tangoe parancs Premium Mobile tesztfelhasználót](#create-a-tangoe-command-premium-mobile-test-user)**  – egy megfelelője a Britta Simon Tangoe parancs Premium Mobile, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Tangoe parancs Premium Mobile tesztfelhasználót](#create-a-tangoe-command-premium-mobile-test-user)**  – egy megfelelője a Britta Simon Tangoe parancs Premium Mobile, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -101,11 +101,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![SAML-alapú bejelentkezés](./media/tangoe-tutorial/tutorial_tangoe_samlbase.png)
 
-3. Az a **Tangoe parancs Premium Mobile tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Tangoe parancs Premium Mobile tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Tangoe parancs prémium mobil tartomány és URL-címek](./media/tangoe-tutorial/tutorial_tangoe_url.png)
 
@@ -116,19 +116,19 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Tangoe parancs Premium Mobile ügyfél-támogatási csapatának](https://www.tangoe.com/contact-us/) beolvasni ezeket az értékeket. 
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![SAML-aláíró tanúsítvány szakaszban](./media/tangoe-tutorial/tutorial_tangoe_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Mentés gomb](./media/tangoe-tutorial/tutorial_general_400.png)
     
-6. Az a **Tangoe parancs Premium Mobile konfigurációs** területén kattintson **Tangoe parancs konfigurálása prémium szintű Mobile** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Tangoe parancs Premium Mobile konfigurációs** területén kattintson **Tangoe parancs konfigurálása prémium szintű Mobile** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Tangoe parancs prémium szintű mobilalkalmazás-konfigurációs szakasz](./media/tangoe-tutorial/tutorial_tangoe_configure.png) 
 
-7. Egyszeri bejelentkezés az alkalmazáshoz konfigurált lekéréséhez lépjen kapcsolatba a [Tangoe parancs Premium Mobile ügyfél-támogatási csapatával](https://www.tangoe.com/contact-us/) , és adja meg a következőket:
+1. Egyszeri bejelentkezés az alkalmazáshoz konfigurált lekéréséhez lépjen kapcsolatba a [Tangoe parancs Premium Mobile ügyfél-támogatási csapatával](https://www.tangoe.com/contact-us/) , és adja meg a következőket:
 
    - A letöltött metaadatait tartalmazó fájl
    - A **SAML entitás azonosítója**
@@ -150,15 +150,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tangoe-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Felhasználók és csoportok -> minden felhasználó](./media/tangoe-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Felhasználó hozzáadása](./media/tangoe-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Felhasználói párbeszédpanel lap](./media/tangoe-tutorial/create_aaduser_04.png) 
 
@@ -188,23 +188,23 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Tangoe parancs Premium Mobile**.
+1. Az alkalmazások listájában jelölje ki a **Tangoe parancs Premium Mobile**.
 
     ![Tangoe parancs Premium Mobile app listában](./media/tangoe-tutorial/tutorial_tangoe_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -215,7 +215,7 @@ Ha a hozzáférési panelen a Tangoe parancs Premium Mobile csempére kattint, a
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

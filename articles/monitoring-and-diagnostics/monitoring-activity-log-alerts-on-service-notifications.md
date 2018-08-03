@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 1cd82f7ffa9360dbc35f9c9d790df34355d9dd1a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e1a72c428425c73ff0446fc0d41b1b18333c3e3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035713"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423888"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tevékenységnapló-riasztások létrehozása szolgáltatási értesítésekhez
 ## <a name="overview"></a>Áttekintés
@@ -43,32 +43,32 @@ Health értesítési szolgáltatásriasztások konfigurálása Azure Resource Ma
 
     ![A "Service" szolgáltatása](./media/monitoring-activity-log-alerts-on-service-notifications/home-servicehealth.png)
 
-2. Az a **riasztások** szakaszban jelölje be **állapotriasztások**.
+1. Az a **riasztások** szakaszban jelölje be **állapotriasztások**.
 
     ![A "Állapotriasztások" lap](./media/monitoring-activity-log-alerts-on-service-notifications/alerts-blades-sh.png)
 
-3. Válassza ki **szolgáltatásállapot-riasztás létrehozása** , és töltse ki a mezőket.
+1. Válassza ki **szolgáltatásállapot-riasztás létrehozása** , és töltse ki a mezőket.
 
     ![A "Létrehozás szolgáltatásállapot-riasztás" parancs](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. Válassza ki a **előfizetés**, **szolgáltatások**, és **régiók** szeretne riasztást létrehozni.
+1. Válassza ki a **előfizetés**, **szolgáltatások**, és **régiók** szeretne riasztást létrehozni.
 
     ![A "Tevékenységnapló-riasztás hozzáadása" párbeszédpanel](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
 > [!NOTE]
 > Ebben az előfizetésben a tevékenységnapló-riasztás mentéséhez használatos. A riasztási erőforrás ehhez az előfizetéshez van telepítve, és a tevékenységnaplóban eseményeket figyeli.
 
-5. Válassza ki a **eseménytípusok** szeretne riasztást létrehozni: *szolgáltatási probléma*, *tervezett karbantartás*, és *állapottanácsadási információk* 
+1. Válassza ki a **eseménytípusok** szeretne riasztást létrehozni: *szolgáltatási probléma*, *tervezett karbantartás*, és *állapottanácsadási információk* 
 
-6. Írja be a riasztás részleteinek megadása egy **riasztásiszabály-névnek** és **leírás**.
+1. Írja be a riasztás részleteinek megadása egy **riasztásiszabály-névnek** és **leírás**.
 
-7. Válassza ki a **erőforráscsoport** hol szeretné menteni a riasztást.
+1. Válassza ki a **erőforráscsoport** hol szeretné menteni a riasztást.
 
-8. Hozzon létre egy új műveletcsoportot kiválasztásával **új műveletcsoport**. Adjon meg egy nevet a a **műveletcsoport neve** mezőbe, majd adjon meg egy nevet a a **rövid, nevet** mezőbe. Ez a riasztás aktiválódásakor küldött értesítések hivatkozik rövid nevét.
+1. Hozzon létre egy új műveletcsoportot kiválasztásával **új műveletcsoport**. Adjon meg egy nevet a a **műveletcsoport neve** mezőbe, majd adjon meg egy nevet a a **rövid, nevet** mezőbe. Ez a riasztás aktiválódásakor küldött értesítések hivatkozik rövid nevét.
 
     ![Új műveletcsoport létrehozása](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
-9. Adja meg a fogadók listáját azáltal, hogy a fogadó:
+1. Adja meg a fogadók listáját azáltal, hogy a fogadó:
 
     a. **Név**: Adja meg a fogadó nevét, alias vagy azonosítója.
 
@@ -76,7 +76,7 @@ Health értesítési szolgáltatásriasztások konfigurálása Azure Resource Ma
 
     c. **Részletek**: a választott művelet típusa alapján, adja meg, egy telefonszám, e-mail címét, webhook URI-t, stb.
 
-10. Válassza ki **OK** a műveletcsoport létrehozásához, majd **riasztási szabály létrehozása** a riasztás végrehajtásához.
+1. Válassza ki **OK** a műveletcsoport létrehozásához, majd **riasztási szabály létrehozása** a riasztás végrehajtásához.
 
 Néhány percen belül a riasztás aktív, és megkezdi aktiválása a létrehozása során megadott feltételek alapján.
 
@@ -91,9 +91,9 @@ Ismerje meg, hogyan [konfigurálása webhook-értesítésekkel meglévő problé
 
 1. Végezze el az 1 – 7 hozhat létre a szolgáltatás állapotával kapcsolatos értesítés az előző szakaszban. 
 
-2. Alatt **definiálása műveletcsoport**, kattintson a **válassza műveletcsoport** gombra. Válassza ki a megfelelő műveletet.
+1. Alatt **definiálása műveletcsoport**, kattintson a **válassza műveletcsoport** gombra. Válassza ki a megfelelő műveletet.
 
-3. Válassza ki **Hozzáadás** hozzáadása a műveletcsoport, majd **riasztási szabály létrehozása** a riasztás végrehajtásához.
+1. Válassza ki **Hozzáadás** hozzáadása a műveletcsoport, majd **riasztási szabály létrehozása** a riasztás végrehajtásához.
 
 Néhány percen belül a riasztás aktív, és megkezdi aktiválása a létrehozása során megadott feltételek alapján.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 5807ab0090f401c02599db40f110b7a9b1504060
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 878bbe16e2d33375c160c17d458654541e2f4174
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047052"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Oktatóanyag: Azure Active Directory-integráció az Kudos
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Kudos hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-kudos-from-the-gallery"></a>Kudos hozzáadása a katalógusból
 Az Azure AD integrálása a Kudos konfigurálásához hozzá kell Kudos a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a Kudos konfigurálásához hozzá kell Kudos a katal�
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Kudos**.
+1. A Keresés mezőbe írja be a **Kudos**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kudos-tutorial/tutorial_kudos_search.png)
 
-5. Az eredmények panelen válassza ki a **Kudos**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Kudos**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kudos-tutorial/tutorial_kudos_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Kudos, rendelje hozzá az értékét a **felhasználónév** értékeként az Az
 Az Azure AD egyszeri bejelentkezés az Kudos tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Kudos tesztfelhasználó létrehozása](#creating-a-kudos-test-user)**  – egy megfelelője a Britta Simon Kudos, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Kudos tesztfelhasználó létrehozása](#creating-a-kudos-test-user)**  – egy megfelelője a Britta Simon Kudos, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/kudos-tutorial/tutorial_kudos_samlbase.png)
 
-3. Az a **Kudos tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Kudos tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kudos-tutorial/tutorial_kudos_url.png)
 
@@ -117,27 +117,27 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Az érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Kudos ügyfél-támogatási csapatának](http://success.kudosnow.com/home) lekérni ezt az értéket. 
  
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kudos-tutorial/tutorial_kudos_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kudos-tutorial/tutorial_general_400.png)
 
-6. Az a **Kudos konfigurációs** területén kattintson **konfigurálása Kudos** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Kudos konfigurációs** területén kattintson **konfigurálása Kudos** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kudos-tutorial/tutorial_kudos_configure.png) 
 
-7. Egy másik böngészőablakban jelentkezzen be a Kudos vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Kudos vállalati hely rendszergazdaként.
 
-8. A felső menüben kattintson **beállítások**.
+1. A felső menüben kattintson **beállítások**.
    
     ![Beállítások](./media/kudos-tutorial/ic787806.png "beállításai")
 
-9. Kattintson a **Integrációk \> SSO**.
+1. Kattintson a **Integrációk \> SSO**.
 
-10. Az a **SSO** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **SSO** szakaszban, hajtsa végre az alábbi lépéseket:
    
     ![EGYSZERI BEJELENTKEZÉS](./media/kudos-tutorial/ic787807.png "EGYSZERI BEJELENTKEZÉS")
    
@@ -166,15 +166,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kudos-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kudos-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kudos-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kudos-tutorial/create_aaduser_04.png) 
 
@@ -196,17 +196,17 @@ Kudos, esetén kiépítése a manuális feladat.
 
 1. Jelentkezzen be a **Kudos** rendszergazdaként a vállalati webhely.
 
-2. A felső menüben kattintson **beállítások**.
+1. A felső menüben kattintson **beállítások**.
    
    ![Beállítások](./media/kudos-tutorial/ic787806.png "beállításai")
 
-3. Kattintson a **felhasználói rendszergazda**.
+1. Kattintson a **felhasználói rendszergazda**.
 
-4. Kattintson a **felhasználók** fülre, majd **felhasználó hozzáadása**.
+1. Kattintson a **felhasználók** fülre, majd **felhasználó hozzáadása**.
    
    ![Felhasználói rendszergazda](./media/kudos-tutorial/ic787809.png "felhasználói rendszergazda")
 
-5. Az a **felhasználó hozzáadása** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználó hozzáadása** szakaszban, hajtsa végre az alábbi lépéseket:
    
     ![Felhasználó hozzáadása](./media/kudos-tutorial/ic787810.png "felhasználó hozzáadása")
    
@@ -229,23 +229,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Kudos**.
+1. Az alkalmazások listájában jelölje ki a **Kudos**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kudos-tutorial/tutorial_kudos_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -256,7 +256,7 @@ Ha a hozzáférési panelen a Kudos csempére kattint, meg kell lekérése autom
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

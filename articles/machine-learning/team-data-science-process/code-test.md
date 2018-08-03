@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: 7d9d63d6c3d5c8ccf1777a46832457670d307d4a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 46d156ce09b1ebcdcceb27ede6e7fa1595d30da6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970859"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439497"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Adatok adatelemzési kódot a UCI felnőtt bevétel előrejelzése adatkészlettel tesztelése
 Ez a cikk tartalmaz útmutatást előzetes kód tesztelése egy adatelemzési munkafolyamathoz. Az ilyen tesztelést adatszakértők egy rendszeres és hatékony módszert kínál ellenőrizze a minőség és a kódját a várt eredményt kapja. A csoportos adatelemzési folyamat (TDSP) használjuk [a UCI felnőtt jövedelem adatkészletet használó projekt](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) azt korábban közzétett megjelenítéséhez a kódot tesztelés menetét. 
@@ -60,11 +60,11 @@ A következő lépések segítségével állítsa be, és futtassa a kódot tesz
 
     ![Megoldáskezelő](./media/code-test/solution_explorer_in_vs.PNG)
 
-3. Hírcsatorna projektkódját a VSTS projekt kód tárházba: 
+1. Hírcsatorna projektkódját a VSTS projekt kód tárházba: 
 
     ![Projekt kódtár](./media/code-test/create_repo.PNG)
 
-4. Tegyük fel, hogy néhány előkészítő munka, például adatbetöltést, funkciófejlesztési és címke oszlopok létrehozásához végezze el. Ellenőrizze, hogy a kód létrehozza az eredményeket várhatóan szeretné. Íme néhány kódot, amely annak megállapítására, hogy megfelelően működik az adatfeldolgozási kódot használhatja:
+1. Tegyük fel, hogy néhány előkészítő munka, például adatbetöltést, funkciófejlesztési és címke oszlopok létrehozásához végezze el. Ellenőrizze, hogy a kód létrehozza az eredményeket várhatóan szeretné. Íme néhány kódot, amely annak megállapítására, hogy megfelelően működik az adatfeldolgozási kódot használhatja:
 
     * Ellenőrizze, hogy megfelelő oszlopainak nevét:
     
@@ -83,7 +83,7 @@ A következő lépések segítségével állítsa be, és futtassa a kódot tesz
       ![A hiányzó ráta kód](./media/code-test/check_missing_rate.PNG)
 
 
-5. Miután hajtotta végre az adatfeldolgozás és a szolgáltatás mérnöki munkát, és a megfelelő modellek, hogy betanított, győződjön meg arról, hogy az Ön betanított modell is pontszámot rendelni az új adatkészletek megfelelően. A következő két tesztek segítségével ellenőrizze az előrejelzési szintek és a felirat értékek eloszlása:
+1. Miután hajtotta végre az adatfeldolgozás és a szolgáltatás mérnöki munkát, és a megfelelő modellek, hogy betanított, győződjön meg arról, hogy az Ön betanított modell is pontszámot rendelni az új adatkészletek megfelelően. A következő két tesztek segítségével ellenőrizze az előrejelzési szintek és a felirat értékek eloszlása:
 
     * Ellenőrizze az előrejelzési szintek:
     
@@ -93,58 +93,58 @@ A következő lépések segítségével állítsa be, és futtassa a kódot tesz
 
       ![Előrejelzési értékek ellenőrzésére szolgáló kód](./media/code-test/check_prediction_values.PNG)
 
-6. A vizsgálati függvények együttesen nevű Python-szkriptet, PUT **test_funcs.py**:
+1. A vizsgálati függvények együttesen nevű Python-szkriptet, PUT **test_funcs.py**:
 
     ![Python-szkriptet a tesztelési funkciók](./media/code-test/create_file_test_func.PNG)
 
 
-7. Után készen áll a teszt kódokat, beállíthatja a tesztelési környezetet a Visual Studióban.
+1. Után készen áll a teszt kódokat, beállíthatja a tesztelési környezetet a Visual Studióban.
 
    Hozzon létre egy Python-fájlt nevű **test1.py**. Ezt a fájlt hozzon létre egy osztályt, amely tartalmazza az összes tesztet szeretne tenni. Az alábbi példa bemutatja az előkészített hat tesztek:
     
     ![Python-fájlt osztályban található tesztek listája](./media/code-test/create_file_test1_class.PNG)
 
-8. Ezek a tesztek automatikusan felderíthető, ha beírja a **codetest.testCase** az osztály neve után. A jobb oldali ablaktáblában nyissa meg a teszt Explorert, és válassza ki **összes futtatása**. Az összes teszt egymás után fog futni, és jelzi, ha a teszt sikeres-e vagy sem.
+1. Ezek a tesztek automatikusan felderíthető, ha beírja a **codetest.testCase** az osztály neve után. A jobb oldali ablaktáblában nyissa meg a teszt Explorert, és válassza ki **összes futtatása**. Az összes teszt egymás után fog futni, és jelzi, ha a teszt sikeres-e vagy sem.
 
     ![A tesztek futtatása](./media/code-test/run_tests.PNG)
 
-9. Ellenőrizze a kódban, hogy a projekt tárház Git-parancsok használatával. A legutóbbi munkahelyi röviddel a vsts-ben jelennek meg.
+1. Ellenőrizze a kódban, hogy a projekt tárház Git-parancsok használatával. A legutóbbi munkahelyi röviddel a vsts-ben jelennek meg.
 
     ![Git-parancsok a kód ellenőrzése](./media/code-test/git_check_in.PNG)
 
     ![Legutóbbi munkahelyi a vsts-ben](./media/code-test/git_check_in_most_recent_work.PNG)
 
-10. Állítsa be az automatikus hozhat létre, és tesztelje a vsts-ben:
+1. Állítsa be az automatikus hozhat létre, és tesztelje a vsts-ben:
 
     a. Válassza ki a projektadattárat **készítése és kiadása**, majd válassza ki **+ új** új buildelési folyamat létrehozásához.
 
-       ![Új buildelési folyamat indítása szolgáló kiválasztások](./media/code-test/create_new_build.PNG)
+       ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
 
     b. Kövesse az utasításokat, jelölje be a forráshely kódja, a projekt nevét, a tárház és a fiókadatokat.
     
-       ![Forrás, a nevet, a tárházat és a ág adatokat](./media/code-test/fill_in_build_info.PNG)
+       ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
 
     c. Válasszon egy sablont. Mivel az nem érhető el Python projekt sablon, először jelöljön ki **üres folyamat**. 
 
-       ![Sablonok és a "Üres folyamat" gomb](./media/code-test/start_empty_process_template.PNG)
+       ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
     d. Nevezze el a build, és válassza ki az ügynököt. Az alapértelmezett itt is válassza, ha a buildelési folyamat befejezéséhez a dsvm-hez használni kívánt. A beállítás ügynökök kapcsolatos további információkért lásd: [készítése és kiadása ügynökök](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts).
     
-       ![Kiválasztott hozhat létre és az ügynök](./media/code-test/select_agent.PNG)
+       ![Build and agent selections](./media/code-test/select_agent.PNG)
 
     e. Válassza ki **+** feladat hozzáadása a build ebben a szakaszban a bal oldali panelen. Mivel a Python-szkript futtatásához fogunk **test1.py** összes ellenőrzés befejeződik, ezt a feladatot használja egy PowerShell-parancsot a Python-kód futtatása.
     
-       !["Tevékenységek hozzáadása" panelen a kiválasztott PowerShell-lel](./media/code-test/add_task_powershell.PNG)
+       !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
 
     f. A PowerShell részletei között adja meg a szükséges információkat, például a nevét és a PowerShell-verzió. Válasszon **beágyazott parancsfájlja** típusaként. 
     
-       Alatti mezőbe **beágyazott parancsfájlja**, beírhatja **python test1.py**. Győződjön meg arról, hogy a környezeti változó megfelelően van beállítva a Pythonhoz készült. Ha egy másik verzió vagy a Python kernel van szüksége, explicit módon adhatja meg az elérési utat az ábrán látható módon: 
+       In the box under **Inline Script**, you can type **python test1.py**. Make sure the environment variable is set up correctly for Python. If you need a different version or kernel of Python, you can explicitly specify the path as shown in the figure: 
     
-       ![PowerShell-részletek](./media/code-test/powershell_scripts.PNG)
+       ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
     g. Válassza ki **várólistára & mentése** a build definíció folyamat befejezéséhez.
 
-       !["A Mentés és a várólista" gomb](./media/code-test/save_and_queue_build_definition.PNG)
+       !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 
 Most már minden alkalommal, amikor egy új véglegesítés át lett helyezve a kódtárat, a létrehozási folyamat automatikusan elindul. (Jelen példában használjuk fő mint a tárház, de megadhat bármilyen ág.) A folyamat a **test1.py** az ügynökgépen, győződjön meg arról, hogy minden definiálva a kód megfelelően fut, a fájlt. 
 

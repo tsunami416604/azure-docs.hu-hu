@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: eb7e77af86628be7f92de1caf3137ae829511d0a
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 741affee9d073cd282be4ee7e30dfd7a1a0ff45d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263027"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426271"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory – Graph API
 > [!IMPORTANT]
@@ -67,5 +67,5 @@ Azure AD Graph API lehetővé teszi, hogy az alkalmazás-forgatókönyvek. A kö
 
 [Az Azure AD Graph REST dokumentációja](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 
-[Az Azure Active Directory fejlesztői útmutatója](active-directory-developers-guide.md)
+[Az Azure Active Directory fejlesztői útmutatója](azure-ad-developers-guide.md)
 

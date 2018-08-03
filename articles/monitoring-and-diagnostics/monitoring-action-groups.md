@@ -1,6 +1,6 @@
 ---
-title: Az Azure portálon művelet csoportok létrehozása és kezelése
-description: Útmutató az Azure portálon művelet csoportok létrehozásához és kezeléséhez.
+title: Az Azure Portalon a műveleti csoportok létrehozása és kezelése
+description: Ismerje meg, hogyan hozhat létre és kezelheti az Azure Portalon Műveletcsoportok.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,106 +8,106 @@ ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 091a097fc9fafd5bdc6a2521f4fa2a1b6b77ba4c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263065"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422553"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure portálon művelet csoportok létrehozása és kezelése
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
-Egy művelet csoport, a felhasználó által megadott értesítési beállítások gyűjteménye. Egy bizonyos művelet csoport használatára, a riasztás aktiválása Azure figyelő és a szolgáltatás állapotát riasztások vannak konfigurálva. Különféle riasztások is megjelenhetnek a azonos művelet csoport(ok) különböző művelet attól függően, hogy a felhasználói követelmények használhat.
+Műveletcsoport gyűjteménye, felhasználó által definiált értesítési beállításokat. Azure Monitor és a Service Health-riasztások a riasztás akkor aktiválódik, amikor egy adott műveletcsoport használandó vannak konfigurálva. Az azonos műveletcsoport vagy a felhasználó követelményeitől függően különböző Műveletcsoportok különböző riasztások használhatja.
 
-Ez a cikk bemutatja, hogyan az Azure portálon művelet csoportok létrehozásához és kezeléséhez.
+Ez a cikk bemutatja, hogyan hozhat létre és kezelheti az Azure Portalon Műveletcsoportok.
 
-Egyes műveletek során a következő tulajdonságok tevődik össze:
+Minden művelet a következő tulajdonságok tevődik össze:
 
 * **Név**: a művelet csoporton belül egyedi azonosítója.  
-* **Művelet típusa**: küldése hang hívás vagy SMS, küldjön egy e-mailt, hívható meg olyan webhook, adatokat küldeni egy ITSM eszköz, logikai alkalmazás hívja, leküldéses értesítést küldeni az Azure app vagy az Automation-forgatókönyv futtatása.
-* **Részletek**: A megfelelő telefonszám, számot, e-mail címét, webhook URI vagy ITSM kapcsolódási adatait.
+* **Művelet típusa**: hanghívások vagy SMS-küldenek, e-mail küldése, webhook meghívása, adatokat küld egy ITSM-eszközhöz, logikai alkalmazások hívása, leküldéses értesítés küldése az Azure-alkalmazáshoz vagy lefuttatni egy Automation-runbookot.
+* **Részletek**: A megfelelő telefonszám, számot, az e-mail címet, a webhook URI-t vagy a ITSM-kapcsolat adatai.
 
-Művelet csoportok konfigurálása Azure Resource Manager-sablonok használatával kapcsolatos információkért lásd: [művelet csoport Resource Manager-sablonok](monitoring-create-action-group-with-resource-manager-template.md).
+Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatáról további információért lásd: [műveleti csoport Resource Manager-sablonok](monitoring-create-action-group-with-resource-manager-template.md).
 
-## <a name="create-an-action-group-by-using-the-azure-portal"></a>Egy művelet csoport létrehozása az Azure-portál használatával ##
-1. Az a [portal](https://portal.azure.com), jelölje be **figyelő**. A **figyelő** panel összes figyelési beállítások és adatok az egyik nézetben összesíti.
+## <a name="create-an-action-group-by-using-the-azure-portal"></a>Műveletcsoport létrehozása az Azure portal használatával ##
+1. Az a [portál](https://portal.azure.com)válassza **figyelő**. A **figyelő** panel összesíti az összes figyelési beállítást és adatokat egyetlen nézetben.
 
     ![A "Figyelés" szolgáltatás](./media/monitoring-action-groups/home-monitor.png)
-2. Az a **beállítások** szakaszban jelölje be **művelet csoportok**.
+1. Az a **beállítások** szakaszban jelölje be **Műveletcsoportok**.
 
-    ![A "Művelet csoportok" lap](./media/monitoring-action-groups/action-groups-blade.png)
-3. Válassza ki **művelet csoport hozzáadása**, és töltse ki a mezőket.
+    ![Az "Action groups" lap](./media/monitoring-action-groups/action-groups-blade.png)
+1. Válassza ki **műveleti csoport hozzáadása**, és töltse ki a mezőket.
 
-    ![A "Művelet csoport hozzáadása" parancs](./media/monitoring-action-groups/add-action-group.png)
-4. Adjon meg egy nevet a a **művelet csoportnév** mezőbe, majd írjon be egy nevet a **rövid név** mezőbe. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
+    ![A "Csoport hozzáadása művelet" parancs](./media/monitoring-action-groups/add-action-group.png)
+1. Adjon meg egy nevet a a **műveletcsoport neve** mezőbe, majd adjon meg egy nevet a a **rövid, nevet** mezőbe. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 
-      ![A művelet csoport hozzáadása"párbeszédpanel](./media/monitoring-action-groups/action-group-define.png)
+      ![A műveleti csoport hozzáadása"párbeszédpanel](./media/monitoring-action-groups/action-group-define.png)
 
-5. A **előfizetés** a jelenlegi előfizetés autofills mezőben. Ez az előfizetés, amelyben a művelet csoport mentett lesz.
+1. A **előfizetés** az aktuális előfizetéshez autofills mezőbe. Ebben az előfizetésben a műveletcsoport elmentett.
 
-6. Válassza ki a **erőforráscsoport** az a művelet csoport mentve.
+1. Válassza ki a **erőforráscsoport** a a műveletcsoport mentve.
 
-7. Adja meg azon műveletek listáját, adja meg a minden egyes művelethez:
+1. Adja meg a műveleteknek a listája, azáltal, hogy minden egyes művelethez:
 
     a. **Név**: Adjon meg egy egyedi azonosítót ehhez a művelethez.
 
-    b. **Művelet típusa**: e-mailek és SMS/leküldéses/szóbeli, logikai alkalmazás, Webhook, ITSM vagy Automation-forgatókönyv kiválasztása.
+    b. **Művelet típusa**: válassza ki az e-mailek és SMS és leküldéses/Hangvétel, a logikai alkalmazás, Webhookot, ITSM vagy Automation-Runbook.
 
-    c. **Részletek**: művelet típusa alapján, adjon meg egy telefonszámot, e-mail címét, webhook URI, az Azure app, ITSM kapcsolat, vagy Automation-runbook. A ITSM művelet, továbbá meg **munkaelem** és más mezők a ITSM eszköz szükséges.
+    c. **Részletek**: a művelet típusa alapján, adja meg, egy telefonszám, e-mail címét, webhook URI-t, az Azure app, ITSM-kapcsolat vagy Automation-runbook. ITSM-művelet, továbbá adja meg **munkaelem** és a többi mező az ITSM-eszközhöz van szükség.
 
-8. Válassza ki **OK** a művelet csoport létrehozásához.
+1. Válassza ki **OK** a műveletcsoport létrehozásához.
 
-## <a name="action-specific-information"></a>A művelet információk
+## <a name="action-specific-information"></a>A művelet adott információk
 <dl>
-<dt>Azure-alkalmazás leküldési</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 Azure-alkalmazás műveletek művelet-csoportban.</dd>
-<dd>Ekkor az Azure app csak által támogatott műveletet ServiceHealth riasztásokat. Más riasztási bármikor a rendszer figyelmen kívül hagyja. Lásd: [riasztások konfigurálása, ha az állapotfigyelő szolgáltatáshoz értesítést visszaküldi](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
+<dt>Az Azure app-leküldés</dt>
+<dd>Műveletcsoport az Azure app-műveletek legfeljebb 10 lehet.</dd>
+<dd>Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Más riasztási bármikor figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
 
-<dt>E-mailek</dt>
-<dd>A következő e-mail címek a kapnak e-mailt. Győződjön meg arról, hogy az e-mailek szűrése megfelelően konfigurálta
+<dt>e-mailben</dt>
+<dd>E-mailt küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mailek szűrése megfelelően vannak konfigurálva
 
     - azure-noreply@microsoft.com
     - azureemail-noreply@microsoft.com
     - alerts-noreply@mail.windowsazure.com
     
 </dd>
-<dd>Előfordulhat, hogy legfeljebb 1000 e-mail műveletek művelet-csoportban</dd>
-<dd>Tekintse meg a [információk sebességével](./monitoring-alerts-rate-limiting.md) cikk</dd>
+<dd>Előfordulhat, hogy e-mailes műveletek legfeljebb 1000 tartalmaz műveletcsoportot</dd>
+<dd>Tekintse meg a [sebessége korlátozza az információk](./monitoring-alerts-rate-limiting.md) cikk</dd>
 
 <dt>ITSM</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 ITSM műveletek művelet-csoportban</dd>
-<dd>ITSM művelet ITSM kapcsolatot igényel. Megtudhatja, hogyan hozzon létre egy [ITSM kapcsolat](../log-analytics/log-analytics-itsmc-overview.md).</dd>
+<dd>Előfordulhat, hogy legfeljebb 10 ITSM-műveletek tartalmaz műveletcsoportot</dd>
+<dd>ITSM-művelethez egy ITSM-kapcsolat szükséges. Ismerje meg, hogyan hozhat létre egy [ITSM-kapcsolat](../log-analytics/log-analytics-itsmc-overview.md).</dd>
 
 <dt>Logikai alkalmazás</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 logikai alkalmazás műveletek művelet-csoportban</dd>
+<dd>Előfordulhat, hogy legfeljebb 10 Logic App-műveletek tartalmaz műveletcsoportot</dd>
 
-<dt>a runbook</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 Runbook műveletek művelet-csoportban</dd>
+<dt>Runbook</dt>
+<dd>Előfordulhat, hogy legfeljebb 10 Runbook műveleteket tartalmaz műveletcsoportot</dd>
 
 <dt>SMS</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 SMS műveletek művelet-csoportban</dd>
-<dd>Tekintse meg a [információk sebességével](./monitoring-alerts-rate-limiting.md) cikk</dd>
-<dd>Tekintse meg a [SMS riasztási viselkedés](monitoring-sms-alert-behavior.md) cikk</dd>
+<dd>Előfordulhat, hogy legfeljebb 10 SMS műveleteket tartalmaz műveletcsoportot</dd>
+<dd>Tekintse meg a [sebessége korlátozza az információk](./monitoring-alerts-rate-limiting.md) cikk</dd>
+<dd>Tekintse meg a [SMS-riasztás viselkedése](monitoring-sms-alert-behavior.md) cikk</dd>
 
-<dt>hangalámondás</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 hang műveletek művelet-csoportban</dd>
-<dd>Tekintse meg a [információk sebességével](./monitoring-alerts-rate-limiting.md) cikk</dd>
+<dt>Hang</dt>
+<dd>Előfordulhat, hogy legfeljebb 10 hangalapú műveleteket tartalmaz műveletcsoportot</dd>
+<dd>Tekintse meg a [sebessége korlátozza az információk](./monitoring-alerts-rate-limiting.md) cikk</dd>
 
 <dt>Webhook</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 webhookműveletek művelet-csoportban
-<dd>Újrapróbálkozási logika - időkorlát választ érték 10 másodperc. A webhook hívás lesz a rendszer megpróbálja újból végrehajtani a maximális 2 alkalommal létrehozásakor a következő HTTP-állapotkódok vannak okozott: 408, 429, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozásnál 10 másodperc után történik. A második és az utolsó újrapróbálkozási 100 másodpercen belül történik.</dd>
+<dd>Előfordulhat, hogy legfeljebb 10 Webhook-műveletek tartalmaz műveletcsoportot
+<dd>Újrapróbálkozási logika – az időkorlát választ érték 10 másodperc. A webhook hívása lesz újból legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429-es, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második és az utolsó újrapróbálkozási 100 másodperc múlva történik.</dd>
 </dl>
 
-## <a name="manage-your-action-groups"></a>A művelet csoportok kezelése ##
-Egy művelet csoport létrehozása után is látható, az a **művelet csoportok** szakasza a **figyelő** panelen. Válassza ki a kezelni kívánt:
+## <a name="manage-your-action-groups"></a>A műveleti csoportok kezelése ##
+Miután létrehozta a műveletcsoport, is látható, az a **Műveletcsoportok** szakaszában a **figyelő** panelen. Válassza ki a kezelni kívánt műveletcsoport:
 
-* Adja hozzá, szerkeszthet és eltávolíthat műveletek.
-* A művelet csoport törlése.
+* Adja hozzá, szerkeszthet és eltávolíthat műveleteket.
+* A műveletcsoport törlése.
 
 ## <a name="next-steps"></a>További lépések ##
-* További információ [SMS riasztási viselkedés](monitoring-sms-alert-behavior.md).  
-* Szerezzen egy [megismerni a műveletnapló riasztási webhook séma](monitoring-activity-log-alerts-webhook.md).  
-* További információ [ITSM összekötő](../log-analytics/log-analytics-itsmc-overview.md)
-* További információ [sebességkorlátozást](monitoring-alerts-rate-limiting.md) értesítésekről.
-* Első egy [tevékenység napló riasztások áttekintése](monitoring-overview-alerts.md), és megtudhatja, hogyan szeretné megkapni a riasztásokat.  
-* Megtudhatja, hogyan [riasztások konfigurálása, ha az állapotfigyelő szolgáltatáshoz értesítést visszaküldi](monitoring-activity-log-alerts-on-service-notifications.md).
+* Tudjon meg többet [SMS-riasztás viselkedése](monitoring-sms-alert-behavior.md).  
+* Szerezzen egy [megértése a tevékenység log riasztási webhookséma](monitoring-activity-log-alerts-webhook.md).  
+* Tudjon meg többet [ITSM-összekötő](../log-analytics/log-analytics-itsmc-overview.md)
+* Tudjon meg többet [sebességkorlátozással](monitoring-alerts-rate-limiting.md) a riasztásokat.
+* Get- [tevékenységnapló-riasztások áttekintése](monitoring-overview-alerts.md), és a riasztások fogadása.  
+* Ismerje meg, hogyan [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](monitoring-activity-log-alerts-on-service-notifications.md).

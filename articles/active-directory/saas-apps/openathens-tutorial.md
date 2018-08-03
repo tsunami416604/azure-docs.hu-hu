@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jeedes
-ms.openlocfilehash: ddd669bb8ff8e520c5538457789d4f660a82255d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 269b216a94b1233c5f9f9a634fda3c05e46cac90
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051424"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Oktatóanyag: Azure Active Directory-integráció az OpenAthens
 
@@ -50,7 +50,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. OpenAthens hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-openathens-from-the-gallery"></a>OpenAthens hozzáadása a katalógusból
 Az Azure AD integrálása a OpenAthens konfigurálásához hozzá kell OpenAthens a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -61,15 +61,15 @@ Az Azure AD integrálása a OpenAthens konfigurálásához hozzá kell OpenAthen
 
     ![Az Azure Active Directory gomb][1]
 
-2. Keresse meg a **vállalati alkalmazások**, majd lépjen **minden alkalmazás**.
+1. Keresse meg a **vállalati alkalmazások**, majd lépjen **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **OpenAthens**válassza **OpenAthens** az eredmények panelen, és válassza ki a a **Hozzáadás** gombra.
+1. A Keresés mezőbe írja be a **OpenAthens**válassza **OpenAthens** az eredmények panelen, és válassza ki a a **Hozzáadás** gombra.
 
     ![Az eredmények listájában OpenAthens](./media/openathens-tutorial/tutorial_openathens_addfromgallery.png)
 
@@ -84,10 +84,10 @@ OpenAthens, rendelje hozzá az értékét a **felhasználónév** értékeként 
 Az Azure AD egyszeri bejelentkezés az OpenAthens tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on), amely lehetővé teszi a felhasználók a funkció használatához.
-2. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user), az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. [Hozzon létre egy OpenAthens tesztfelhasználót](#create-a-openathens-test-user), van egy megfelelője a Britta Simon OpenAthens, amely a felhasználó Azure ad-ben reprezentációja van csatolva.
-4. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user), amely lehetővé teszi az Azure AD egyszeri bejelentkezés használatára Britta Simon.
-5. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on), hogy működik-e a konfiguráció ellenőrzése.
+1. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user), az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. [Hozzon létre egy OpenAthens tesztfelhasználót](#create-a-openathens-test-user), van egy megfelelője a Britta Simon OpenAthens, amely a felhasználó Azure ad-ben reprezentációja van csatolva.
+1. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user), amely lehetővé teszi az Azure AD egyszeri bejelentkezés használatára Britta Simon.
+1. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on), hogy működik-e a konfiguráció ellenőrzése.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -99,37 +99,37 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Az egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Egyszeri bejelentkezéssel, engedélyeznie a **egyszeri bejelentkezési** párbeszédpanelen jelölje ki **SAML-alapú bejelentkezés** , a **mód**.
+1. Egyszeri bejelentkezéssel, engedélyeznie a **egyszeri bejelentkezési** párbeszédpanelen jelölje ki **SAML-alapú bejelentkezés** , a **mód**.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/openathens-tutorial/tutorial_openathens_samlbase.png)
 
-3. Az a **OpenAthens tartomány és URL-címek** területén írja be az értéket `https://login.openathens.net/saml/2/metadata-sp` a a **azonosító** szövegmezőben.
+1. Az a **OpenAthens tartomány és URL-címek** területén írja be az értéket `https://login.openathens.net/saml/2/metadata-sp` a a **azonosító** szövegmezőben.
 
     ![OpenAthens tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/openathens-tutorial/tutorial_openathens_url.png)
 
-4. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **metaadatainak XML**, majd mentse a fájlt a számítógépen a metaadat.
+1. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **metaadatainak XML**, majd mentse a fájlt a számítógépen a metaadat.
 
     ![A letöltési hivatkozás a AMSL aláíró tanúsítvány](./media/openathens-tutorial/tutorial_openathens_certificate.png) 
 
-5. Válassza ki a **Mentés** gombot.
+1. Válassza ki a **Mentés** gombot.
 
     ![Az egyszeri bejelentkezés Mentés gomb](./media/openathens-tutorial/tutorial_general_400.png)
 
-6. Egy másik böngészőablakban jelentkezzen be a OpenAthens vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a OpenAthens vállalati hely rendszergazdaként.
 
-7. Válassza ki **kapcsolatok** alatti listából a **felügyeleti** fülre. 
+1. Válassza ki **kapcsolatok** alatti listából a **felügyeleti** fülre. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
-8. Válassza ki **SAML 1.1-es és 2.0-s**, majd válassza ki a **konfigurálása** gombra.
+1. Válassza ki **SAML 1.1-es és 2.0-s**, majd válassza ki a **konfigurálása** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application2.png)
     
-9. A konfiguráció hozzáadásához válassza a **Tallózás** gombra kattintva töltse fel az Azure Portalról letöltött metaadatok .xml fájlt, és válassza **Hozzáadás**.
+1. A konfiguráció hozzáadásához válassza a **Tallózás** gombra kattintva töltse fel az Azure Portalról letöltött metaadatok .xml fájlt, és válassza **Hozzáadás**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-10. Az alábbi lépések szerint a **részletek** fülre.
+1. Az alábbi lépések szerint a **részletek** fülre.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
@@ -162,15 +162,15 @@ Ez a szakasz célja az, hogy hozzon létre egy tesztfelhasználót "Britta Simon
 
     ![Az Azure Active Directory gomb](./media/openathens-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, majd válassza ki **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, majd válassza ki **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/openathens-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/openathens-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/openathens-tutorial/create_aaduser_04.png)
 
@@ -198,23 +198,23 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés Open
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az a **alkalmazások** listáról válassza ki **OpenAthens**.
+1. Az a **alkalmazások** listáról válassza ki **OpenAthens**.
 
     ![Az alkalmazások listáját a OpenAthens hivatkozásra](./media/openathens-tutorial/tutorial_openathens_app.png)  
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. A bal oldali menüben válassza **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Válassza ki a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** ablaktáblán.
+1. Válassza ki a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** ablaktáblán.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. Az a **felhasználók és csoportok** listáról válassza ki **Britta Simon**.
+1. Az a **felhasználók és csoportok** listáról válassza ki **Britta Simon**.
 
-6. Válassza ki a **kiválasztása** gombra a **felhasználók és csoportok** listája.
+1. Válassza ki a **kiválasztása** gombra a **felhasználók és csoportok** listája.
 
-7. Válassza ki a **hozzárendelése** gombra a **hozzárendelés hozzáadása** ablaktáblán.
+1. Válassza ki a **hozzárendelése** gombra a **hozzárendelés hozzáadása** ablaktáblán.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 

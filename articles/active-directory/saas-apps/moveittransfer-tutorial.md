@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált MOVEit átadás - Azure AD-integrációs |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és MOVEit átadás - integráció az Azure AD között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az MOVEit átvitele – az Azure AD-integráció |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés MOVEit átvitele – az Azure AD-integrációs és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,245 +15,245 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.openlocfilehash: f35fbacd4eac39cd9931d4725ac9bb299986c934
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e73ca95c27e7c9ef0799107dadc58c17aea5a9ca
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217248"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435914"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Oktatóanyag: Azure Active Directoryval integrált MOVEit átadás - Azure AD-integrációs
+# <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Oktatóanyag: Azure Active Directory-integráció az MOVEit átvitele – az Azure AD-integráció
 
-Ebben az oktatóanyagban elsajátíthatja MOVEit átadás - Azure AD integrálása az Azure Active Directoryval (Azure AD) integrálása.
+Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja MOVEit átvitele – az Azure AD-integráció az Azure Active Directoryval (Azure AD).
 
-MOVEit átadás - Azure AD integrálása az Azure AD integrálása lehetővé teszi a következő előnyöket biztosítja:
+MOVEit átvitele – az Azure AD-integráció az Azure AD integrálása nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér MOVEit átadás - Azure AD-integrációs szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett MOVEit átviteléig – az Azure AD integrálása (egyszeri bejelentkezés) az Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá MOVEit átvitele – az Azure AD-integráció az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett MOVEit átvitelhez – az Azure AD-integrációs (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs MOVEit átadás - Azure AD-integrációs, a következőkre van szükség:
+MOVEit átvitele – az Azure AD-integráció, az Azure AD-integráció konfigurálása a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- A MOVEit átvitel – az Azure AD integrálása egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- A MOVEit átvitel – az Azure AD integrációja egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Hozzáadás MOVEit átadás - Azure AD integrálása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Hozzáadás MOVEit átvitele – az Azure AD-integráció a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-moveit-transfer---azure-ad-integration-from-the-gallery"></a>Hozzáadás MOVEit átadás - Azure AD integrálása a gyűjteményből
-A MOVEit átadás - az Azure AD integrálása az Azure AD-integráció konfigurálása kell hozzáadnia a MOVEit átadás - az Azure AD integrálása a gyűjteményből listájára felügyelt SaaS-alkalmazásokhoz.
+## <a name="adding-moveit-transfer---azure-ad-integration-from-the-gallery"></a>Hozzáadás MOVEit átvitele – az Azure AD-integráció a katalógusból
+MOVEit átvitele – az Azure AD integrálása az Azure AD-integráció konfigurálásához hozzá kell MOVEit átvitele – az Azure AD-integrációs a katalógusból a listához, kezelt SaaS-alkalmazások.
 
-**Adja hozzá a MOVEit átadás - Azure AD integrálása a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**A következő lépésekkel adja hozzá a MOVEit átviteli - katalógusból, az Azure AD-integráció:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **MOVEit átadás - Azure AD-integrációs**, jelölje be **MOVEit átadás - Azure AD-integrációs** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel a az alkalmazás.
+1. A Keresés mezőbe írja be a **MOVEit átvitele – az Azure AD-integrációs**, jelölje be **MOVEit átvitele – az Azure AD-integrációs** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
 
-    ![MOVEit átadás - Azure AD integrálása az eredménylistában](./media/moveittransfer-tutorial/tutorial_moveittransfer_addfromgallery.png)
+    ![MOVEit átvitele – az eredménylistában az Azure AD-integráció](./media/moveittransfer-tutorial/tutorial_moveittransfer_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a MOVEit átadás - Azure AD-integrációs "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az MOVEit átvitele – az Azure AD-integráció a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó MOVEit átadás - Azure AD-integrációs a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a MOVEit átadás - hivatkozás kapcsolata az Azure AD-integrációs kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben kell tudja, hogy mi a partner felhasználó MOVEit átvitele – az Azure AD-integráció a felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó az MOVEit átviteli - hivatkozás kapcsolata az Azure AD-integrációs kell létrehozni.
 
-Az MOVEit átviteli - Azure AD-integrációs, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+MOVEit átvitele – az Azure AD-integráció, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a MOVEit átadás - tesztelése és konfigurálása az Azure AD-integrációs kell végrehajtani a következő építőelemeket:
+Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés MOVEit átvitele – az Azure AD-integráció, kell hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy MOVEit átadás - az Azure AD-integrációs tesztfelhasználó](#create-a-moveit-transfer---azure-ad-integration-test-user)**  - való egy megfelelője a Britta Simon MOVEit átadás - Azure AD-integrációs, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy MOVEit átvitele – az Azure AD-integrációs tesztfelhasználó](#create-a-moveit-transfer---azure-ad-integration-test-user)**  – van egy megfelelője a Britta Simon MOVEit átvitele – az Azure AD-integráció, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a MOVEit átadás - Azure AD-integrációs alkalmazást az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a MOVEit átvitele – az Azure AD-integrációs alkalmazást az egyszeri bejelentkezés konfigurálása.
 
-**Az Azure AD konfigurálása egyszeri bejelentkezéshez az MOVEit átadás - Azure AD-integrációs, hajtsa végre az alábbi lépéseket:**
+**MOVEit átvitele – az Azure AD-integráció, az Azure AD egyszeri bejelentkezés konfigurálásához hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **MOVEit átadás - Azure AD-integrációs** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **MOVEit átvitele – az Azure AD-integrációs** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/moveittransfer-tutorial/tutorial_moveittransfer_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/moveittransfer-tutorial/tutorial_moveittransfer_samlbase.png)
 
-3. Az a **MOVEit átviteli - tartomány az Azure AD-integrációs és URL-címek** területen tegye a következőket:
+1. Az a **MOVEit átvitele – az Azure AD-integrációs tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/moveittransfer-tutorial/tutorial_moveittransfer_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://contoso.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://contoso.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://contoso.com/<tenatid>`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://contoso.com/<tenatid>`
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://contoso.com/<tenatid>/SAML/SSO/HTTP-Post`    
+    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://contoso.com/<tenatid>/SAML/SSO/HTTP-Post`    
      
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Olvassa el ezeket az értékeket később a **szolgáltató metaadatainak URL-címe** szakaszban, vagy forduljon a [MOVEit átadás - az Azure AD integrálása ügyfél támogatási csoport](https://community.ipswitch.com/s/support) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Tekintse meg ezeket az értékeket később a **szolgáltató metaadatok URL-címe** szakaszban, vagy forduljon [MOVEit átvitele – az Azure AD-integrációs ügyfél ügyfélszolgálathoz](https://community.ipswitch.com/s/support) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/moveittransfer-tutorial/tutorial_moveittransfer_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/moveittransfer-tutorial/tutorial_moveittransfer_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/moveittransfer-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/moveittransfer-tutorial/tutorial_general_400.png)
     
-6. Jelentkezzen be rendszergazdaként a MOVEit átviteli bérlő.
+1. Jelentkezzen be rendszergazdaként a MOVEit átviteli bérlő.
 
-7. A bal oldali navigációs ablaktábláján kattintson **beállítások**.
+1. A bal oldali navigációs panelén kattintson **beállítások**.
 
-    ![Beállítások szakaszban az alkalmazás ügyféloldali](./media/moveittransfer-tutorial/tutorial_moveittransfer_000.png)
+    ![Beállítások szakaszban az alkalmazás oldalán](./media/moveittransfer-tutorial/tutorial_moveittransfer_000.png)
 
-8. Kattintson a **egyszeri bejelentkezés** hivatkozás, amely alatt **biztonsági házirendek -> felhasználói hitelesítési**.
+1. Kattintson a **egyszeri bejelentkezés** hivatkozás, amely alatt található **biztonsági házirendek -> felhasználói hitelesítés**.
 
-    ![Biztonsági házirendek az alkalmazás ügyféloldali](./media/moveittransfer-tutorial/tutorial_moveittransfer_001.png)
+    ![Biztonsági szabályzatok az alkalmazás oldalán](./media/moveittransfer-tutorial/tutorial_moveittransfer_001.png)
 
-9. Kattintson a metaadatok hivatkozásra kattintva töltse le a metaadat-dokumentum.
+1. A metaadatok URL-címe hivatkozásra a metaadat-dokumentum letöltése.
 
-    ![Szolgáltató metaadatainak URL-címe](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
+    ![Service Provider metaadatok URL-címe](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
-    * Győződjön meg arról **entityid beállítást** megfelelő **azonosító** a a **MOVEit átviteli - tartomány az Azure AD-integrációs és URL-címek** szakasz.
-    * Győződjön meg arról **AssertionConsumerService** hely URL-címe megegyezik **válasz URL-CÍMEN** a a **MOVEit átviteli - tartomány az Azure AD-integrációs és URL-címek** szakasz.
+    * Győződjön meg arról **entityID** megegyezik **azonosító** a a **MOVEit átvitele – az Azure AD-integrációs tartomány és URL-címek** szakaszban.
+    * Győződjön meg arról **AssertionConsumerService** hely URL-címe megegyezik **válasz URL-cím** a a **MOVEit átvitele – az Azure AD-integrációs tartomány és URL-címek** szakaszban.
     
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
-10. Kattintson a **identitásszolgáltató hozzáadása** új összevont identitás szolgáltató hozzáadása gomb.
+1. Kattintson a **identitásszolgáltató hozzáadása** gombra kattintva adhat hozzá egy új összevont identitásszolgáltatót.
 
-    ![Identitás-szolgáltató felvétele](./media/moveittransfer-tutorial/tutorial_moveittransfer_003.png)
+    ![Identitásszolgáltató hozzáadása](./media/moveittransfer-tutorial/tutorial_moveittransfer_003.png)
 
-11. Kattintson a **Tallózás...**  válassza ki a metaadatok fájlt, amely az Azure-portálról letöltött, majd kattintson a **identitásszolgáltató hozzáadása** fel kell töltenie a letöltött fájlt.
+1. Kattintson a **Tallózás...**  kiválasztásához a metaadatait tartalmazó fájl, amely az Azure Portalról letöltött, majd kattintson a **identitásszolgáltató hozzáadása** feltölteni a letöltött fájlt.
 
-    ![SAML-Identitásszolgáltatóként](./media/moveittransfer-tutorial/tutorial_moveittransfer_004.png)
+    ![SAML-identitásszolgáltató](./media/moveittransfer-tutorial/tutorial_moveittransfer_004.png)
 
-12. Jelölje ki "**Igen**" mint **engedélyezett** a a **összevont identitás Szolgáltatóbeállítások szerkesztése...**  lapot, és kattintson **mentése**.
+1. Jelölje be "**Igen**" as **engedélyezve** a a **összevont identitás szolgáltató beállításainak szerkesztése...**  lapot, és kattintson **mentése**.
 
     ![Összevont identitás-szolgáltató beállításai](./media/moveittransfer-tutorial/tutorial_moveittransfer_005.png)
 
-13. Az a **összevont identitás szolgáltató felhasználói beállítások szerkesztése** lapon, a következő műveleteket:
+1. Az a **összevont identitás szolgáltató felhasználói beállítások szerkesztése** lapon, hajtsa végre a következő műveleteket:
     
-    ![Összevont identitás Szolgáltatóbeállítások szerkesztése](./media/moveittransfer-tutorial/tutorial_moveittransfer_006.png)
+    ![Összevont identitás szolgáltató beállításainak szerkesztése](./media/moveittransfer-tutorial/tutorial_moveittransfer_006.png)
     
     a. Válassza ki **SAML NameID** , **bejelentkezési név**.
     
-    b. Válassza ki **más** , **teljes nevét** és a a **attribútumnév** szövegmezőbe írja be az értéket: `http://schemas.microsoft.com/identity/claims/displayname`.
+    b. Válassza ki **más** , **teljes fájlvisszaállítási név** és a a **attribútumnév** szövegmezőben, hogy az érték put: `http://schemas.microsoft.com/identity/claims/displayname`.
     
-    c. Válassza ki **más** , **E-mail** és a a **attribútumnév** szövegmezőbe írja be az értéket: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Válassza ki **más** , **E-mail** és a a **attribútumnév** szövegmezőben, hogy az érték put: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
     
-    d. Válassza ki **Igen** , **fiók automatikus létrehozása frissítsen**.
+    d. Válassza ki **Igen** , **frissítsen-fiók automatikus létrehozása**.
     
     e. Kattintson a **mentése** gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/moveittransfer-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/moveittransfer-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/moveittransfer-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/moveittransfer-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-moveit-transfer---azure-ad-integration-test-user"></a>Hozzon létre egy MOVEit átadás - Azure AD-integrációs teszt felhasználó
+### <a name="create-a-moveit-transfer---azure-ad-integration-test-user"></a>A MOVEit átvitel – az Azure AD-integrációs tesztfelhasználó létrehozása
 
-Ez a szakasz célja Britta Simon meghívta MOVEit átadás - Azure AD-integrációs felhasználó létrehozásához. MOVEit átadás - Azure AD-integrációs támogatja közvetlenül az időponthoz kötött kiosztást, amelyhez engedélyezte. Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre az MOVEit átviteli – Ha még nem létezik az Azure AD-integrációs elérésére tett kísérlet során.
+Ez a szakasz célja MOVEit átvitele – az Azure AD-integrációs Britta Simon nevű felhasználó létrehozásához. MOVEit átvitele – az Azure AD-integrációs támogatja a just-in-time-kiépítés, amelyhez engedélyezte. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az MOVEit átvitel – Ha még nem létezik az Azure AD-integrációs elérésére tett kísérlet során.
 
 >[!NOTE]
->Hozza létre a felhasználó manuálisan kell, ha szeretné-e lépjen kapcsolatba a [MOVEit átadás - az Azure AD integrálása ügyfél támogatási csoport](https://community.ipswitch.com/s/support).
+>Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [MOVEit átvitele – az Azure AD-integrációs ügyfél ügyfélszolgálathoz](https://community.ipswitch.com/s/support).
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon használandó Azure egyszeri bejelentkezés által biztosított hozzáférés MOVEit átadás - Azure AD-integrációs engedélyezni.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés MOVEit átvitele – az Azure AD-integrációs Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése MOVEit átadás - Azure AD-integrációs, hajtsa végre az alábbi lépéseket:**
+**Britta Simon hozzárendelése MOVEit átvitele – az Azure AD-integráció, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **MOVEit átadás - Azure AD-integrációs**.
+1. Az alkalmazások listájában jelölje ki a **MOVEit átvitele – az Azure AD-integrációs**.
 
-    ![A MOVEit átadás - Azure AD-integrációs hivatkozásra az alkalmazások listáját](./media/moveittransfer-tutorial/tutorial_moveittransfer_app.png)  
+    ![MOVEit átvitele – az Azure AD-integrációs hivatkozásra az alkalmazások listáját](./media/moveittransfer-tutorial/tutorial_moveittransfer_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ez a szakasz célja a hozzáférési panelen az Azure AD SSO-konfigurációjának tesztelése.
+Ez a szakasz célja a a hozzáférési Panel használatával az Azure AD egyszeri bejelentkezési konfiguráció tesztelése.
 
-A MOVEit átadás - kattintva az Azure AD-integrációs csempét a hozzáférési panelen, meg kell beolvasása automatikusan aláírt-a MOVEit átviteléig - Azure AD-integrációs alkalmazást. 
+Kattintva MOVEit átvitele – az Azure AD-integrációs csempéje a hozzáférési panelen, meg kell lekérése automatikusan bejelentkezett a MOVEit átvitelhez – Azure AD-integrációs alkalmazást. 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

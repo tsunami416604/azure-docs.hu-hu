@@ -1,6 +1,6 @@
 ---
-title: Azure-tároló példányát az Azure fájlok kötet csatlakoztatása
-description: 'Útmutató: Azure tároló osztályt állapot megőrizni az Azure fájlok kötet csatlakoztatása'
+title: Az Azure Container Instances szolgáltatásban az Azure Files kötet csatlakoztatási
+description: Ismerje meg, hogyan csatlakoztathatja az Azure Files-köteten is tartalmaz az Azure Container Instances állapota
 services: container-instances
 author: seanmck
 manager: jeconnoc
@@ -9,23 +9,23 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 239150c1e752ce6a4f2a19fa1192cd1a910ebea9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 83c86d8310aff80f148e878261ba33b01846006b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166796"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441323"
 ---
-# <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure-tároló példányát az Azure fájlmegosztások csatlakoztatása
+# <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Csatlakoztassa az Azure-fájlmegosztások az Azure Container Instances szolgáltatásban
 
-Alapértelmezés szerint Azure tároló példányok állapot nélküli alkalmazások. Ha a tároló összeomlik, vagy leállítja, annak teljes állapota elvész. Állapot élettartama meghaladja a tároló megőrizni, a kötet csatlakoztatnia kell külső áruházban. Ez a cikk bemutatja, hogyan használható Azure tároló osztályt egy Azure fájlmegosztás csatlakoztatásához.
+Alapértelmezés szerint az Azure Container Instances nélküliek. Ha a tároló összeomlik, vagy leáll, az összes állapotában elvész. A tároló állapotának túli élettartamát is tartalmaz, a kötet csatlakoztatnia kell egy külső áruházból. Ez a cikk bemutatja, hogyan csatlakoztathat Azure-fájlmegosztások az Azure Container Instances szolgáltatásban való használatra.
 
 > [!NOTE]
-> Egy Azure fájlok fájlmegosztás csatlakoztatása korlátozódik jelenleg Linux tárolók. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
+> Az Azure Files-megosztás csatlakoztatásával korlátozódik jelenleg Linux-tárolókat. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 
-Az Azure fájlmegosztások használatához Azure tároló osztályt, akkor létre kell hoznia. A következő parancsprogrammal hozzon létre egy tárfiókot, a fájlmegosztás és a megosztás saját magát. A tárfiók nevének globálisan egyedi, kell lennie, a parancsfájl egy véletlenszerű értékét hozzáadja a kezdőpontját meghatározó karakterlánc.
+Mielőtt Azure-fájlmegosztások az Azure Container Instances, akkor létre kell hoznia. A következő parancsprogrammal hozzon létre egy tárfiókot a fájlmegosztás és a megosztás magát. A tárfiók nevének globálisan egyedinek, kell lennie, a parancsfájl hozzáad egy véletlenszerű értéket alap karakterláncot.
 
 ```azurecli-interactive
 # Change these four parameters as needed
@@ -51,25 +51,25 @@ az storage share create -n $ACI_PERS_SHARE_NAME
 
 ## <a name="get-storage-credentials"></a>Tároló hitelesítő adatainak lekérése
 
-Az Azure fájlmegosztások csatlakoztatása kötetként az Azure-tároló példányok, három értékek kell: a tárfiók nevét, a megosztás neve és a hozzáférési kulcsot.
+Azure-fájlmegosztás csatlakoztatása az Azure Container Instancesben kötetként, akkor három értékre szüksége lesz: a tárfiók nevét, a megosztás nevét és a tárelérési kulcs.
 
-Ha követte a fenti parancsfájl, a tárfiók nevének végén véletlenszerű értéket hozták létre. A végső karakterláncban (beleértve a véletlenszerű része) lekérdezéséhez használja a következő parancsokat:
+Ha követte a fenti a parancsfájlt, a tárfiók nevének végén egy véletlenszerű értéket jött létre. A végső karakterláncban (beleértve a véletlenszerű rész) lekérdezés, használja a következő parancsokat:
 
 ```azurecli-interactive
 STORAGE_ACCOUNT=$(az storage account list --resource-group $ACI_PERS_RESOURCE_GROUP --query "[?contains(name,'$ACI_PERS_STORAGE_ACCOUNT_NAME')].[name]" --output tsv)
 echo $STORAGE_ACCOUNT
 ```
 
-A megosztásnév már ismert (definiálva *acishare* a parancsfájlban), hogy most már a tárfiók hívóbetűjét, amely a következő paranccsal található összes:
+A megosztásnév már ismert (részlete *acishare* a szkriptben), hogy most már a tárfiók hívóbetűjét, a következő paranccsal található összes:
 
 ```azurecli-interactive
 STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query "[0].value" --output tsv)
 echo $STORAGE_KEY
 ```
 
-## <a name="deploy-container-and-mount-volume"></a>Tároló és a csatlakoztatási kötet telepítése
+## <a name="deploy-container-and-mount-volume"></a>Tároló és a csatlakoztatási kötet üzembe helyezése
 
-Az Azure fájlmegosztások csatlakoztatása a tárolóban lévő kötetként, adja meg a megosztás és a kötet csatlakoztatási pontjának a tárolóhoz létrehozásakor [az tároló létrehozása][az-container-create]. Ha követte a fenti lépéseket, akkor is csatlakoztathatja a megosztáshoz a következő paranccsal hozhat létre tárolót, korábban létrehozott:
+Azure-fájlmegosztás csatlakoztatása egy tárolóban kötetként, adja meg a megosztás és a kötet csatlakoztatási pont az a tároló létrehozásakor [az tároló létrehozása][az-container-create]. Ha követte a fenti lépéseket, csatlakoztathatja a korábban létrehozott tároló létrehozásához az alábbi parancs használatával:
 
 ```azurecli-interactive
 az container create \
@@ -84,23 +84,23 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-A `--dns-name-label` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a tárolópéldányt létrehozza. Frissítse az előző parancsban szereplő érték, ha egy **DNS-névcímke** hibaüzenet jelenik meg, a parancs végrehajtásakor.
+A `--dns-name-label` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a tárolópéldányt létrehozza. Frissítse az értéket az előző parancs, ha egy **DNS-névcímke** hibaüzenet jelenik meg, hogy a parancs futtatásakor.
 
-## <a name="manage-files-in-mounted-volume"></a>Csatlakoztatott kötet lévő fájlok kezeléséhez
+## <a name="manage-files-in-mounted-volume"></a>Csatlakoztatott kötet található fájlok kezeléséhez
 
-A tároló elindul, ha a egyszerű webalkalmazást telepített keresztül is használhatja a [microsoft/aci-hellofiles] [ aci-hellofiles] kép kezelése az Azure-fájlmegosztáshoz megadott csatlakoztatási elérési úton található fájlokat. A webes alkalmazás teljesen minősített tartománynevét (FQDN) az beszerzése a [az tároló megjelenítése] [ az-container-show] parancs:
+A tároló megkezdéséről keresztül üzembe helyezett egyszerű webalkalmazás használhatja a [microsoft/aci-hellofiles] [ aci-hellofiles] rendszerképet az Azure-fájlmegosztás a megadott csatlakoztatási elérési úton található fájlok kezeléséhez. Szerezze be a webalkalmazás teljesen minősített tartománynevét (FQDN) az a [az container show] [ az-container-show] parancsot:
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn
 ```
 
-Használhatja a [Azure-portálon] [ portal] vagy egy eszköz, például a [Microsoft Azure Tártallózó] [ storage-explorer] kérhető le, és vizsgálja meg a fájl írása a fájlmegosztás.
+Használhatja a [az Azure portal] [ portal] vagy egy eszköz, például a [Microsoft Azure Storage Explorer] [ storage-explorer] beolvasni és írni a fájl vizsgálata a fájlmegosztás.
 
-## <a name="mount-multiple-volumes"></a>Több kötet csatlakoztatása
+## <a name="mount-multiple-volumes"></a>Több kötet csatlakoztatási
 
-Egy tároló-példányban több kötet csatlakoztatása, ha már telepítette használatával egy [Azure Resource Manager sablon](/azure/templates/microsoft.containerinstance/containergroups).
+A tárolópéldány több kötet csatlakoztatása, telepítenie kell használatával egy [Azure Resource Manager-sablon](/azure/templates/microsoft.containerinstance/containergroups).
 
-Először adja meg a fájlmegosztás adatait, és adja meg a kötetek program kitölti a `volumes` tömb a a `properties` a sablon szakasza. Például, ha a két Azure fájlmegosztásokat nevű létrehozott *megosztas1* és *share2* tárfiókban *myStorageAccount*, a `volumes` tömb jelent. a következőhöz hasonló:
+Először adja meg a megosztás részleteit, és adja meg a kötetek fürtjogosultsági a `volumes` Pole a `properties` szakaszában a sablont. Ha például létrehozta a két Azure-fájlmegosztások nevű *megosztas1* és *share2* tárfiókban *myStorageAccount*, a `volumes` tömb jelenik meg a következőhöz hasonló:
 
 ```json
 "volumes": [{
@@ -121,7 +121,7 @@ Először adja meg a fájlmegosztás adatait, és adja meg a kötetek program ki
 }]
 ```
 
-Ezt követően a tároló csoport, amelyben szeretné csatlakoztatni a kötetek minden egyes tároló esetén feltöltése a `volumeMounts` tömb a a `properties` szakasz tároló-definícióban. Például ez csatlakoztatja a két kötet *myvolume1* és *myvolume2*, korábban definiált:
+Ezután az egyes tárolók, amelyben szeretné csatlakoztatni a kötetek tárolócsoportban, töltse fel a `volumeMounts` Pole a `properties` a tároló-definíció szakasza. Például ez csatlakoztatja a két kötet *myvolume1* és *myvolume2*, korábban meghatározott:
 
 ```json
 "volumeMounts": [{
@@ -134,15 +134,15 @@ Ezt követően a tároló csoport, amelyben szeretné csatlakoztatni a kötetek 
 }]
 ```
 
-Az Azure Resource Manager sablonnal tároló példány szemléltet, olvassa el [központi telepítése az Azure-tároló esetekben több tárolócsoportok](container-instances-multi-container-group.md).
+Tárolópéldány üzembe helyezésének Azure Resource Manager-sablonnal egy példát, olvassa el [többtárolós csoportok az Azure Container Instancesben üzembe helyezése](container-instances-multi-container-group.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan csatlakoztatása egyéb Azure tároló példányok kötet típusa:
+Ismerje meg, hogyan csatlakoztathat egyéb kötettípusok az Azure Container Instances szolgáltatásban:
 
 * [Az Azure-tároló példányát emptyDir kötet csatlakoztatása](container-instances-volume-emptydir.md)
 * [Azure-tároló példányát gitRepo kötet csatlakoztatása](container-instances-volume-gitrepo.md)
-* [Azure-tároló példányát titkos kötet csatlakoztatása](container-instances-volume-secret.md)
+* [Az Azure Container Instances szolgáltatásban titkos kötet csatlakoztatása](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->
 [aci-hellofiles]: https://hub.docker.com/r/microsoft/aci-hellofiles/
@@ -150,5 +150,5 @@ Megtudhatja, hogyan csatlakoztatása egyéb Azure tároló példányok kötet t�
 [storage-explorer]: https://storageexplorer.com
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az_container_create
-[az-container-show]: /cli/azure/container#az_container_show
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-show]: /cli/azure/container#az-container-show

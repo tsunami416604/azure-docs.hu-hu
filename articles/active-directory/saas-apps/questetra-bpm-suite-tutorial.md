@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 57c418f686aa956294efeabd831042441c055e56
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 655140fc7f8cc52adf6a13a99cef531f28d5cefc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041109"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422247"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Oktatóanyag: Azure Active Directory-integráció Questetra BPM Suite-tal
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Questetra BPM Suite hozzáadása a katalógusból
-2. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
 ## <a name="add-questetra-bpm-suite-from-the-gallery"></a>Questetra BPM Suite hozzáadása a katalógusból
 Az Azure AD-be Questetra BPM Suite integrációjának konfigurálása, hozzá kell Questetra BPM Suite a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Az Azure AD-be Questetra BPM Suite integrációjának konfigurálása, hozzá ke
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Questetra BPM Suite**válassza **Questetra BPM Suite** eredmény panelen, majd kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Questetra BPM Suite**válassza **Questetra BPM Suite** eredmény panelen, majd kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Katalógus hozzáadása](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_addfromgallery.png)
 
@@ -86,10 +86,10 @@ Questetra BPM Suite, rendelje hozzá az értékét a **felhasználónév** ért�
 Az Azure AD egyszeri bejelentkezés az Questetra BPM Suite tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Questetra BPM Suite tesztfelhasználót](#create-a-questetra-bpm-suite-test-user)**  – egy megfelelője a Britta Simon Questetra BPM csomag, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Questetra BPM Suite tesztfelhasználót](#create-a-questetra-bpm-suite-test-user)**  – egy megfelelője a Britta Simon Questetra BPM csomag, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -101,11 +101,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![SAML-alapú bejelentkezés](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_samlbase.png)
 
-3. Az a **Questetra BPM Suite tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Questetra BPM Suite tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![A szakasz Questetra BPM Suite tartomány és URL-címek](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_url.png)
 
@@ -116,35 +116,35 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Beszerezheti ezeket az értéteket **SP információk** szakaszában a **Questetra BPM Suite** vállalati webhelyre, ahol később az oktatóanyag, vagy forduljon a [Questetra BPM Suite ügyfelek támogatása csapat](https://www.questetra.com/contact/). 
  
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base-64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base-64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![SAML-aláíró tanúsítvány szakaszban](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Mentés gomb](./media/questetra-bpm-suite-tutorial/tutorial_general_400.png)
 
-6. Az a **Questetra BPM konfigurálásának** területén kattintson **Questetra BPM Suite konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Questetra BPM konfigurálásának** területén kattintson **Questetra BPM Suite konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Questetra BPM Suite konfigurációs szakasz](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_configure.png) 
 
-7. Egy másik böngészőablakban, jelentkezzen be a **Questetra BPM Suite** rendszergazdaként a vállalati webhely.
+1. Egy másik böngészőablakban, jelentkezzen be a **Questetra BPM Suite** rendszergazdaként a vállalati webhely.
 
-8. A felső menüben kattintson **rendszerbeállítások**. 
+1. A felső menüben kattintson **rendszerbeállítások**. 
    
     ![Az Azure AD egyszeri bejelentkezés][10]
 
-9. Megnyitásához a **SingleSignOnSAML** kattintson **egyszeri bejelentkezés (SAML)**. 
+1. Megnyitásához a **SingleSignOnSAML** kattintson **egyszeri bejelentkezés (SAML)**. 
    
     ![Az Azure AD egyszeri bejelentkezés][11]
 
-10. Az a **Questetra BPM Suite** vállalati hely, az a **SP információkat** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Questetra BPM Suite** vállalati hely, az a **SP információkat** szakaszban, hajtsa végre az alábbi lépéseket:
 
     a. Másolás a **ACS URL**, és illessze be azt a **bejelentkezési URL-** szövegmezőjébe a **Questetra BPM Suite tartomány és URL-címek** szakaszban az Azure Portalról.
     
     b. Másolás a **Entitásazonosító**, és illessze be azt a **azonosító** szövegmezőjébe a **Questetra BPM Suite tartomány és URL-címek** szakaszban az Azure Portalról.
 
-11. Az a **Questetra BPM Suite** vállalati hely, hajtsa végre az alábbi lépéseket: 
+1. Az a **Questetra BPM Suite** vállalati hely, hajtsa végre az alábbi lépéseket: 
    
     ![Egyszeri bejelentkezés konfigurálása][15]
    
@@ -177,15 +177,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/questetra-bpm-suite-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/questetra-bpm-suite-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/questetra-bpm-suite-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/questetra-bpm-suite-tutorial/create_aaduser_04.png) 
 
@@ -204,8 +204,8 @@ Ez a szakasz célja Britta Simon Questetra BPM Suite nevű felhasználó létreh
 **Britta Simon Questetra BPM Suite nevű felhasználó létrehozásához hajtsa végre az alábbi lépéseket:**
 
 1. Jelentkezzen be rendszergazdaként a Questetra BPM Suite vállalati webhely.
-2. Lépjen a **Rendszerbeállítások > Felhasználólista > Új felhasználó**. 
-3. Új felhasználó párbeszédpanelen hajtsa végre az alábbi lépéseket: 
+1. Lépjen a **Rendszerbeállítások > Felhasználólista > Új felhasználó**. 
+1. Új felhasználó párbeszédpanelen hajtsa végre az alábbi lépéseket: 
    
     ![Tesztfelhasználó létrehozása][300] 
    
@@ -229,23 +229,23 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Questetra BPM Suite**.
+1. Az alkalmazások listájában jelölje ki a **Questetra BPM Suite**.
 
     ![Questetra BPM Suite alkalmazások listájában](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -257,7 +257,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

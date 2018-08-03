@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 832998a6028a8977b43e343ed778cc0b60388728
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8f1c6aa2e691a11e8920db8ca8bfdef5b8eb61b9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561364"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434190"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Fenyegetések felderítése az Azure Security Centerben
 Ez a cikk segít az Azure Security Center fenyegetésfelderítésének a biztonsággal kapcsolatos problémák kezeléséhez történő használatában.
@@ -50,22 +50,22 @@ A környezet aktuális fenyegetésfelderítési állapotának megjelenítéséhe
 
 1. Nyissa meg a **Security Center** irányítópultját.
 
-2. A bal oldali panelen a **veszélyforrások elleni védelem** kiválasztása **Fenyegetésfelderítés**. Megnyílik a térképen.
+1. A bal oldali panelen a **veszélyforrások elleni védelem** kiválasztása **Fenyegetésfelderítés**. Megnyílik a térképen.
 
     ![Fenyegetésfelderítési térkép](./media/security-center-threat-intel/security-center-threat-intel.png)
 
-3. A térkép tetején válassza **megtekintése a klasszikus fenyegetésfelderítés**. A **Fenyegetésfelderítés** irányítópult nyílik meg.
+1. A térkép tetején válassza **megtekintése a klasszikus fenyegetésfelderítés**. A **Fenyegetésfelderítés** irányítópult nyílik meg.
 
     ![Fenyegetésfelderítési irányítópult](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
 
     > [!NOTE]
     > Ha a jobb szélső oszlopban a **CSOMAG FRISSÍTÉSE** szöveg látható, akkor a munkaterület az ingyenes előfizetést használja. A funkció használatához frissítsen a Standard előfizetésre. Ha a jobb szélső oszlopban a **FRISSÍTÉS SZÜKSÉGES** szöveg látható, frissítse az [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)et a funkció használatához. A díjszabással kapcsolatos további információkért olvassa el az Azure Security Center díjszabását ismertető cikket.
     >
-3. Ha több munkaterületet szeretne vizsgálni, rangsorolja a vizsgálatot a **Kártékony IP-címek** oszlop szerint. Ez az oszlop a munkaterülethez tartozó kártékony IP-címek aktuális számát jeleníti meg. Jelölje ki a használni kívánt munkaterületet, és megjelenik a **Fenyegetésfelderítés** irányítópult.
+1. Ha több munkaterületet szeretne vizsgálni, rangsorolja a vizsgálatot a **Kártékony IP-címek** oszlop szerint. Ez az oszlop a munkaterülethez tartozó kártékony IP-címek aktuális számát jeleníti meg. Jelölje ki a használni kívánt munkaterületet, és megjelenik a **Fenyegetésfelderítés** irányítópult.
 
     ![Fenyegetésfelderítési információk](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
 
-4. Az irányítópult négy csempére oszlik:
+1. Az irányítópult négy csempére oszlik:
 
     a.  **Fenyegetéstípusok**. Összegzi a kiválasztott munkaterületen észlelt fenyegetések típusát.
 

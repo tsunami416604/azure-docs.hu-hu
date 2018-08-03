@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 1b59409e43a23dd63a6697a44a20df079a751516
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e5dd41b34c41c442034e0a7ccb74c8d5b6583753
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866858"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436709"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>API-verzióprofilok használata az Azure CLI 2.0 az Azure Stackben
 
@@ -38,7 +38,7 @@ Az Azure CLI és a számítógépen telepített függő könyvtárak verzióját
 
 1. Az Azure Stack hitelesítésszolgáltató főtanúsítványát a GET [az Azure Stack-operátorokról](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) és megbízzon benne. Az Azure Stack hitelesítésszolgáltató főtanúsítványát megbízhatónak, hozzáfűzése a meglévő Python-tanúsítványt.
 
-2. Keresse meg a tanúsítvány helye a gépen. A hely eltérőek lehetnek attól függően, hol telepítette a Python. Rendelkeznie kell [pip](https://pip.pypa.io) és a [certifi](https://pypi.org/project/certifi/) modul telepítve van. A bash használatával a következő Python-parancsot használhatja:
+1. Keresse meg a tanúsítvány helye a gépen. A hely eltérőek lehetnek attól függően, hol telepítette a Python. Rendelkeznie kell [pip](https://pip.pypa.io) és a [certifi](https://pypi.org/project/certifi/) modul telepítve van. A bash használatával a következő Python-parancsot használhatja:
 
   ```bash  
     python -c "import certifi; print(certifi.where())"
@@ -60,9 +60,9 @@ Ha egy gép CLI futtatja **kívül** az Azure Stack-környezet:
 
 1. Be kell állítania [VPN-kapcsolat Azure stackhez](azure-stack-connect-azure-stack.md).
 
-2. Másolja a portáltól kapott Azure Stack-operátorokról PEM-tanúsítványt, és jegyezze fel a fájlt (PATH_TO_PEM_FILE) helyét.
+1. Másolja a portáltól kapott Azure Stack-operátorokról PEM-tanúsítványt, és jegyezze fel a fájlt (PATH_TO_PEM_FILE) helyét.
 
-3. Futtassa a következő parancsokat, a fejlesztő munkaállomás operációs rendszereken befejezési függően.
+1. Futtassa a következő parancsokat, a fejlesztő munkaállomás operációs rendszereken befejezési függően.
 
 #### <a name="linux"></a>Linux
 
@@ -140,7 +140,7 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
 
-2. Állítsa be az aktív környezetet az alábbi parancsok használatával.
+1. Állítsa be az aktív környezetet az alábbi parancsok használatával.
 
    a. Az a *felhőalapú felügyeleti* környezet használja:
 
@@ -156,14 +156,14 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
         -n AzureStackUser
       ```
 
-3. Frissítés az Ön környezetének konfigurációját az Azure Stack meghatározott API verzió profil használatára. Frissítse a konfigurációt, futtassa a következő parancsot:
+1. Frissítés az Ön környezetének konfigurációját az Azure Stack meghatározott API verzió profil használatára. Frissítse a konfigurációt, futtassa a következő parancsot:
 
    ```azurecli
    az cloud update \
      --profile 2017-03-09-profile
    ```
 
-4. Jelentkezzen be az Azure Stack-környezet használatával a `az login` parancsot. Bejelentkezhet az Azure Stack-környezet vagy egy felhasználó vagy egy [szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
+1. Jelentkezzen be az Azure Stack-környezet használatával a `az login` parancsot. Bejelentkezhet az Azure Stack-környezet vagy egy felhasználó vagy egy [szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
    * Jelentkezzen be egy *felhasználói*: megadhatja a felhasználónevet és jelszót közvetlenül belül a `az login` parancsot, vagy hitelesíteni tudja a webböngésző használatával. Ehhez az utóbbi, ha a fiók rendelkezik-e többtényezős hitelesítés engedélyezve van.
 

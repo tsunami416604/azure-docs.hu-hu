@@ -1,6 +1,6 @@
 ---
-title: Jupyter helyileg telepíteni, és csatlakozzon az Azure HDInsight Spark-fürt |} Microsoft Docs
-description: Útmutató a Jupyter notebook helyileg telepíteni a számítógépére, és csatlakoztassa egy Azure HDInsight az Apache Spark-fürt.
+title: Helyi Jupyter telepítése & csatlakozni egy Azure HDInsight Spark-fürt |} A Microsoft Docs
+description: Ismerje meg, hogyan telepítse a Jupyter notebook helyileg a számítógépen, és csatlakoztassa az Azure HDInsight az Apache Spark-fürt.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: eea61586054f34142d77f16333fe70a66d95d529
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 72850bc7d7c86f2fefd1b8f4311b038ddd7c8b33
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528358"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423544"
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook telepítse a számítógépre, és kapcsolódjon az Apache Spark on HDInsight
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook telepítse a számítógépre, és csatlakozzon az Apache Spark on HDInsight
 
-Ebben a cikkben megismerheti, hogyan kell telepíteni a Jupyter notebook egyéni PySpark (a Python) és a Spark magic (a Scala) Spark mag, és a notebook kapcsolódni HDInsight-fürtök. Számos Jupyter telepítéséhez a helyi számítógépen oka lehet, és némi kihívást is lehet. Bővebben a részben [Miért célszerű telepíteni Jupyter a számítógépemen](#why-should-i-install-jupyter-on-my-computer) Ez a cikk végén.
+Ebben a cikkben megismerheti, hogyan kell telepíteni a Jupyter notebookot, a (a pythonhoz írt) egyéni Pysparkkal és Spark (a Scala) kernelekkel, a Spark Magic Quadrant és a notebook csatlakozás egy HDInsight-fürtön. Számos, a Jupyter telepítése a helyi számítógépen oka lehet, és áttekinthet néhány problémát is lehet. Ezzel kapcsolatban további információkért lásd: a szakasz [Miért célszerű telepíteni Jupyter a számítógépemen](#why-should-i-install-jupyter-on-my-computer) Ez a cikk végén található.
 
-Három fő lépésből áll részt Jupyter és a Spark magic telepíti a számítógépre.
+Három kulcsfontosságú lépésnek vannak a számítógépen a Jupyter és a Spark Magic Quadrant megismeréséhez.
 
-* Jupyter notebook telepítése
-* Telepítse a PySpark és Spark mag a Spark varázsszám
-* A HDInsight Spark-fürt eléréséhez Spark magic konfigurálása
+* Telepítse a Jupyter notebook
+* A Spark és a PySpark kernelt telepítése a Spark Magic Quadrant-nal
+* A Spark Magic Quadrant elérésére, HDInsight Spark-fürt konfigurálása
 
-Az egyéni kernelek és a Spark HDInsight-fürthöz használt Jupyter notebookokban elérhető magic kapcsolatos további információkért lásd: [Apache Spark Linux és a Jupyter notebookok elérhető kernelek a HDInsight-fürtök](apache-spark-jupyter-notebook-kernels.md).
+Az egyéni kernelekkel, és a Spark HDInsight-fürttel Jupyter notebookokhoz elérhető Magic Quadrant kapcsolatos további információkért lásd: [notebookokhoz elérhető kernelek Jupyter notebookokhoz az Apache Spark-alapú Linux-fürtök HDInsight az](apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az itt felsorolt előfeltételeket nem Jupyter telepítéséhez. Ezek azok a Jupyter notebook kapcsolódáshoz HDInsight-fürtöt, a notebook telepítése után.
+Az itt felsorolt előfeltételeket nem a Jupyter telepítése. Ezek a, a Jupyter notebook egy HDInsight-fürtön való csatlakozáshoz, miután telepítette a notebookot.
 
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* A HDInsight az Apache Spark-fürt. Útmutatásért lásd: [létrehozása az Apache Spark on Azure hdinsight clusters](apache-spark-jupyter-spark-sql.md).
+* Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter notebook telepítse a számítógépre
 
-Jupyter notebookok telepítése előtt telepítenie kell az Python. Python és a Jupyter állnak rendelkezésre, egy részének a [Anaconda terjesztési](https://www.continuum.io/downloads). Ha Anaconda telepíti, a Python egy terjesztési telepítése. Anaconda telepítése után adja hozzá a Jupyter telepítés megfelelő parancsok futtatásával.
+A Jupyter notebooks telepítése előtt telepítenie kell az Python. Python és a Jupyter állnak rendelkezésre, része a [Anaconda terjesztési](https://www.continuum.io/downloads). Anaconda telepítésekor telepíti a Python egy terjesztési. Anaconda telepítése után adja hozzá a Jupyter telepítése megfelelő parancsok futtatásával.
 
-1. Töltse le a [Anaconda telepítő](https://www.continuum.io/downloads) a platform és futtassa a telepítőt. A telepítő varázsló futtatása közben, gondoskodjon róla, hogy a beállítás Anaconda hozzáadása a PATH változóban.
-2. A következő paranccsal telepítse a Jupyter.
+1. Töltse le a [Anaconda telepítő](https://www.continuum.io/downloads) a platform és futtassa a telepítőt. A varázsló futtatásakor ellenőrizze, hogy Anaconda hozzáadása a PATH változóban lehetőséget választotta.
+1. A következő parancsot a Jupyter telepítése.
 
         conda install jupyter
 
     Jupyter telepítésével kapcsolatos további információkért lásd: [telepítése Jupyter használatával Anaconda](http://jupyter.readthedocs.io/en/latest/install.html).
 
-## <a name="install-the-kernels-and-spark-magic"></a>Telepítse a kernelek és Spark varázsszám
+## <a name="install-the-kernels-and-spark-magic"></a>A kernelekkel, és a Spark Magic Quadrant telepítése
 
-A Spark magic telepítéséhez útmutatást a PySpark és Spark mag, hajtsa végre a szereplő telepítési útmutatást a [sparkmagic dokumentáció](https://github.com/jupyter-incubator/sparkmagic#installation) a Githubon. Az első lépés a Spark magic dokumentációjának arra kéri, hogy a Spark magic telepítése. Cserélje le a következő parancsokat a HDInsight-fürthöz fog csatlakozni verziójától függően, hogy a hivatkozás első lépése. Ezután kövesse a további lépéseket a Spark magic dokumentációjában. Ha a különböző kernelek telepíteni kívánja, 3. lépés a Spark magic telepítési utasításokat szakaszban kell elvégeznie.
+A Spark Magic Quadrant telepítésével kapcsolatos útmutatásért PySpark- és Spark mag, kövesse a telepítési utasításait a [sparkmagic dokumentáció](https://github.com/jupyter-incubator/sparkmagic#installation) a Githubon. Az első lépés a Spark magic dokumentációjában kéri, hogy a Spark Magic Quadrant telepítse. Cserélje le a következő parancsokat, a HDInsight-fürtöt fog csatlakozni verziójától függően, hogy a hivatkozás első lépése. Ezt követően hajtsa végre a hátralévő lépéseket a Spark magic dokumentációjában. Ha szeretné telepíteni a különböző kernelekkel, el kell végezni a Spark magic telepítési utasításokat szakasz 3. lépés.
 
-* A fürtök v3.4 telepítenie sparkmagic 0.2.3 `pip install sparkmagic==0.2.3`
+* A fürtök v3.4 telepítse sparkmagic 0.2.3 végrehajtásával: `pip install sparkmagic==0.2.3`
 
-* A fürtök v3.5 és v3.6 telepítse a következő futtatásával sparkmagic 0.11.2 `pip install sparkmagic==0.11.2`
+* A fürtök 3.5-ös és v3.6 telepítse sparkmagic 0.11.2 végrehajtásával: `pip install sparkmagic==0.11.2`
 
-## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>Spark magic való kapcsolódáshoz a HDInsight Spark-fürt konfigurálása
+## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>HDInsight Spark-fürthöz való csatlakozáshoz a Spark Magic Quadrant konfigurálása
 
-Ez a szakasz a korábban létrehozott kell már Azure HDInsight az Apache Spark-fürt való csatlakozáshoz telepített Spark magic konfigurálja.
+Ebben a szakaszban konfigurálhatja a Spark Magic Quadrant, amelyet korábban telepített csatlakozni kell már létrehozott Azure HDInsight az Apache Spark-fürt.
 
-1. A Jupyter konfigurációs adatokat általában tárolja a felhasználók kezdőkönyvtárban. Keresse meg a kezdőkönyvtár az operációsrendszer-platformhoz, írja be a következő parancsokat.
+1. A Jupyter-konfigurációs adatokat általában a felhasználó kezdőkönyvtárának tárolják. Keresse meg a kezdőkönyvtár bármely operációs rendszer platformon, írja be a következő parancsokat.
 
-    Indítsa el a Python-rendszerhéjat. Egy parancsablakot írja be a következőt:
+    Indítsa el a Python-rendszerhéjat. Egy parancsablakban írja be a következőt:
 
         python
 
-    A Python felületet adja meg a kezdőkönyvtár megállapítása a következő parancsot.
+    Adja meg a Python rendszerhéj a Ismerje meg a kezdőkönyvtár az alábbi parancsot.
 
         import os
         print(os.path.expanduser('~'))
 
-2. Nyissa meg a kezdőkönyvtár, és hozzon létre egy nevű **.sparkmagic** Ha még nem létezik.
-3. A mappában található nevű fájl létrehozása **config.json** , és adja hozzá a következő JSON kódrészletet, azon belül.
+1. Keresse meg a kezdőkönyvtár, és hozzon létre egy nevű **.sparkmagic** Ha azt nem létezik.
+1. A mappában hozzon létre egy fájlt, nevű **config.json** , és adja hozzá a következő JSON-kódrészletben belül.
 
         {
           "kernel_python_credentials" : {
@@ -89,56 +89,56 @@ Ez a szakasz a korábban létrehozott kell már Azure HDInsight az Apache Spark-
           }
         }
 
-4. Helyettesítő **{USERNAME}**, **{CLUSTERDNSNAME}**, és **{BASE64ENCODEDPASSWORD}** megfelelő értékekkel. A kedvenc programozási nyelven vagy online segédprogramok számos segítségével készítése base64-kódolású jelszót a tényleges jelszót.
+1. A helyettesítő **{USERNAME}**, **{CLUSTERDNSNAME}**, és **{BASE64ENCODEDPASSWORD}** a megfelelő értékekre. A kedvenc programozási nyelven vagy online segédprogramok számos használhatja a tényleges jelszót létrehozni a base64-kódolású jelszót.
 
-5. Adja meg a megfelelő szívverés-beállításokat a `config.json`. Adja hozzá ezeket a beállításokat ugyanazon a szinten az `kernel_python_credentials` és `kernel_scala_credentials` kódtöredékek a hozzáadott korábban. Például hogyan és hol vegye fel a szívverés-beállításokat, lásd: a [minta config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
+1. A jobb oldali szívverés-beállítások konfigurálása `config.json`. Ezek a beállítások azonos szinten, adja hozzá a `kernel_python_credentials` és `kernel_scala_credentials` kódrészletek a hozzáadott korábban. Egy példa, hogyan és hol lehet megadni a szívverés-beállítások: Ez [minta config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
 
-    * A `sparkmagic 0.2.3` (v3.4 fürtöket) tartalmazza:
+    * A `sparkmagic 0.2.3` (fürtök v3.4), például:
 
             "should_heartbeat": true,
             "heartbeat_refresh_seconds": 5,
             "heartbeat_retry_seconds": 1
 
-    * A `sparkmagic 0.11.2` (fürtök v3.5 és v3.6), a következők:
+    * A `sparkmagic 0.11.2` (fürtök 3.5-ös és v3.6), a következők:
 
             "heartbeat_refresh_seconds": 5,
             "livy_server_heartbeat_timeout_seconds": 60,
             "heartbeat_retry_seconds": 1
 
     >[!TIP]
-    >Annak érdekében, hogy munkamenetek nem szivárognak szívveréseket küld. Ha a számítógép alvó állapotba, vagy le van állítva, a szívverés nem küldi el, ami azt eredményezi, hogy a munkamenet éppen törölni a. Fürtök v3.4, ha szeretné letiltani ezt a viselkedést állíthatók be a Livy config `livy.server.interactive.heartbeat.timeout` való `0` a az Ambari felhasználói Felületéről. A fürtök v3.5 Ha nincs megadva a fenti, 3.5-ös configuration a munkamenet nem törlődik.
+    >A szívverések küldése a győződjön meg arról, hogy ne szivárogjanak ki munkamenetek. A számítógép alvó állapotba, vagy le van állítva, a szívverés nem küldi el, eredményez a munkamenet éppen törlődik. A fürtök v3.4, ha szeretné tiltani ezt a viselkedést állíthatja be a Livy-konfigurációs `livy.server.interactive.heartbeat.timeout` való `0` az Ambari felhasználói felületen. A fürtök 3.5-ös verzió Ha nem állítja be a fenti, 3.5-ös configuration a munkamenet nem törlődik.
 
-6. Indítsa el a Jupyter. Használja a következő parancsot a parancssorból.
+1. Indítsa el a Jupyter. Használja a következő parancsot a parancssorból.
 
         jupyter notebook
 
-7. Győződjön meg arról, hogy a fürt a Jupyter notebook használatával csatlakozhat, és hogy használata a Spark magic érhető el a kernelek. A következő lépésekkel.
+1. Győződjön meg arról, hogy képes-e csatlakozni a fürthöz a Jupyter notebook használatával, és, a Spark elérhető Magic Quadrant használható a kernelekkel az. Hajtsa végre a következő lépéseket.
 
-    a. Hozzon létre új notebookot. Kattintson a jobb oldali sarokban **új**. Az alapértelmezett kernel kell megjelennie **Python2** és a két új kernelek, a telepítés **PySpark** és **Spark**. Kattintson a **PySpark**.
+    a. Hozzon létre új notebookot. Kattintson a jobb oldali sarokban, **új**. Megjelenik az alapértelmezett kernel **Python2** és a két új kernelekkel, a telepítés **PySpark** és **Spark**. Kattintson a **PySpark**.
 
-    ![A Jupyter notebook kernelek](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "kernelek a Jupyter notebook")
+    ![A Jupyter notebook kernelekkel](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Kernelekkel, a Jupyter notebook")
 
     b. Futtassa a következő kódrészletet.
 
         %%sql
         SELECT * FROM hivesampletable LIMIT 5
 
-    A kimeneti sikeresen le, ha a kapcsolat a HDInsight-fürthöz tesztelése.
+    Ha sikeresen kérheti le a kimenetet, a HDInsight-fürthöz a kapcsolat tesztelése.
 
     >[!TIP]
-    >Ha szeretné frissíteni a notebook konfigurációját egy másik fürthöz való csatlakozáshoz, frissítse a config.json az új értékhalmazt látható a fenti a 3. lépésben.
+    >Ha szeretné frissíteni a jegyzetfüzet-konfigurációt egy másik fürthöz való csatlakozáshoz, frissítse a config.json értékek, az újonnan létrehozott, ahogyan a 3. lépés.
 
-## <a name="why-should-i-install-jupyter-on-my-computer"></a>Miért kell telepíteni a számítógépre Jupyter?
-Számos oka, hogy miért érdemes Jupyter telepítse a számítógépre, és csatlakoztassa a HDInsight Spark-fürt lehet.
+## <a name="why-should-i-install-jupyter-on-my-computer"></a>Miért érdemes a Jupyter telepítése a számítógépemen?
+Számos miért érdemes a Jupyter telepítése a számítógépre, és hogyan csatlakoztathatja a HDInsight Spark-fürt oka lehet.
 
-* Annak ellenére, hogy a Jupyter notebookok már elérhetők az Azure HDInsight Spark-fürt, Jupyter telepíti a számítógépre, lehetőséget biztosít a notebookok helyileg létrehozása, tesztelheti az alkalmazást egy működő fürthöz, majd töltse fel a notebookok a fürthöz. Töltse fel a notebookok a fürthöz, is feltöltheti ezeket a Jupyter notebook futtató vagy a fürt, vagy menti a tárfiók a fürthöz tartozó /HdiNotebooks mappájában. A fürt notebookok tárolásával további információkért lásd: [Jupyter notebookok tároló](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
-* Elérhető notebookok helyileg, akkor csatlakozhatnak különböző Spark-fürtjei alapján az alkalmazás követelményeinek.
-* GitHub segítségével valósítja meg a forrásrendszerben vezérlő és a notebookok verzió-vezérlést. A együttműködési környezetekben, ahol több felhasználó dolgozhat ugyanazon a notebook is lehet.
-* Dolgozhat notebookok helyileg egy fürtöt is nélkül. Csak akkor kell tesztelni a notebookok ellen, nem kézi kezelését a jegyzetfüzetek és a környezet egy fürt.
-* Elképzelhető, hogy könnyebben a saját helyi fejlesztési környezet konfigurálása, mint a Jupyter telepítésének konfigurálása a fürtön.  Kihasználhatja a egy vagy több távoli fürtök beállítása nélkül helyileg telepített összes szoftver.
+* Annak ellenére, hogy a Jupyter notebookok már elérhetők az Azure HDInsight Spark-fürtön, a Jupyter telepítése a számítógépre, lehetőséget biztosít helyileg a jegyzetfüzetek létrehozása, az alkalmazás futó fürtön történő teszteléséhez és majd töltse fel a notebookok a fürthöz. A notebookok feltöltése a fürthöz, a is feltölti őket a Jupyter notebookot, hogy fut-e, vagy a fürt használatával, vagy mentse őket a fürthöz társított storage-fiókban a /HdiNotebooks mappába. Hogyan notebookok tárolja a fürt további információkért lásd: [Jupyter notebookok tároló](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
+* A rendelkezésre álló jegyzetfüzet helyileg, kapcsolódhat a különböző Spark-fürtök, az alkalmazás követelmény alapján.
+* GitHub segítségével megvalósítani egy forráskódú verziókezelő rendszer és verzió felügyelheti a jegyzetfüzetekkel. Egy együttműködési környezet, ahol több felhasználó dolgozhat ugyanazon a jegyzetfüzet is rendelkezhet.
+* Együttműködve notebookok helyileg egy fürtöt is nélkül. Csak egy fürtöt, szemben a notebookok teszteléséhez manuálisan a saját jegyzetfüzetek vagy a fejlesztési környezet kezelése, nem kell.
+* Konfigurálhatja a saját helyi fejlesztői környezetében, konfigurálja a Jupyter telepítése a fürtön, mint egyszerűbb lehet.  Használja ki egy vagy több távoli fürtök konfigurálása nélkül helyileg telepített összes szoftver is igénybe vehet.
 
 > [!WARNING]
-> Jupyter a helyi számítógépen, a több felhasználó futtathatja a azonos notebook Spark-fürt egyszerre. Ilyen esetben több Livy munkamenetek jönnek létre. Ha problémát tapasztal, és végezzen azon hibakeresést szeretne, mely felhasználó tartozik egy összetett feladat, mely Livy munkamenet nyomkövetéséhez lesz.
+> A Jupyter telepítése a helyi számítógépen, a több felhasználó is a azonos jegyzetfüzet futtatása ugyanazon a Spark-fürtön egyszerre. Ilyen esetben több Livy-munkamenetek jönnek létre. Ha problémába, amelyen hibakeresést végez, amely egy összetett feladat, mely Livy munkamenet nyomon felhasználóhoz tartozik, mely lesz.
 >
 >
 

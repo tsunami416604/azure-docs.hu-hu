@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Litmos |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Litmos között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Litmos |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Litmos között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,266 +15,266 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 786040054875d5e90b558ca1684d0ce657205cff
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a0c70ee6419280b0975d77fb213f9406286708cc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219257"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428002"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Oktatóanyag: Azure Active Directoryval integrált Litmos
+# <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Oktatóanyag: Azure Active Directory-integráció az Litmos
 
-Ebben az oktatóanyagban elsajátíthatja Litmos integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Litmos integrálása az Azure Active Directory (Azure AD).
 
-Litmos integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Litmos integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Litmos szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Litmos (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Litmos Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Litmos (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Litmos, a következőkre van szükség:
+Litmos az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Litmos egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Litmos hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Litmos hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-litmos-from-the-gallery"></a>A gyűjteményből Litmos hozzáadása
-Az Azure AD integrálása a Litmos konfigurálásához kell hozzáadnia Litmos a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-litmos-from-the-gallery"></a>Litmos hozzáadása a katalógusból
+Az Azure AD integrálása a Litmos konfigurálásához hozzá kell Litmos a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Litmos hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Litmos hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Litmos**, jelölje be **Litmos** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Litmos**válassza **Litmos** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Litmos](./media/litmos-tutorial/tutorial_litmos_addfromgallery.png)
+    ![Az eredmények listájában Litmos](./media/litmos-tutorial/tutorial_litmos_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Litmos.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Litmos a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Litmos a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Litmos közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Litmos mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Litmos hivatkozás kapcsolata kell létrehozni.
 
-Litmos, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Litmos, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Litmos tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Litmos tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Litmos tesztfelhasználó létrehozása](#create-a-litmos-test-user)**  - való Britta Simon valami Litmos, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Litmos tesztfelhasználót](#create-a-litmos-test-user)**  – egy megfelelője a Britta Simon Litmos, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Litmos alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Litmos alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Litmos, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Litmos, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Litmos** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Litmos** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/litmos-tutorial/tutorial_litmos_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/litmos-tutorial/tutorial_litmos_samlbase.png)
 
-3. Az a **Litmos tartomány és az URL-címek** területen tegye a következőket:
+1. Az a **Litmos tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk Litmos tartomány és az URL-címek](./media/litmos-tutorial/tutorial_litmos_url.png)
+    ![Litmos tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/litmos-tutorial/tutorial_litmos_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.litmos.com/account/Login`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.litmos.com/account/Login`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.litmos.com/integration/samllogin`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.litmos.com/integration/samllogin`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN, amelyeket az oktatóanyag, vagy forduljon a [Litmos támogatási csoport](https://www.litmos.com/contact-us/) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítója és a válasz URL-cím, amelyeket később az oktatóanyagban, vagy forduljon a [Litmos támogatási csoportjának](https://www.litmos.com/contact-us/) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/litmos-tutorial/tutorial_litmos_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](./media/litmos-tutorial/tutorial_litmos_certificate.png)
 
-5. A konfigurálás részeként testre kell szabnia a **SAML-jogkivonat attribútumok** Litmos alkalmazás.
+1. A konfigurálás részeként testre kell szabnia a **SAML-jogkivonat attribútumai** Litmos alkalmazásához.
 
     ![Attribútum szakasz](./media/litmos-tutorial/tutorial_attribute.png)
            
     | Attribútum neve   | Attribútum értéke |   
     | ---------------  | ----------------|
-    | Utónév |User.givenName |
-    | Vezetéknév  |User.surname |
+    | FirstName |User.givenName |
+    | LastName  |User.surname |
     | E-mail |user.mail |
 
-    a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
     ![Attribútum hozzáadása](./media/litmos-tutorial/tutorial_attribute_04.png)
 
-    ![Attribútum Dailog hozzáadása](./media/litmos-tutorial/tutorial_attribute_05.png)
+    ![Dailog attribútum hozzáadása](./media/litmos-tutorial/tutorial_attribute_05.png)
 
-    b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
+    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
     
     d. Kattintson az **OK** gombra.     
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/litmos-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/litmos-tutorial/tutorial_general_400.png)
 
-7. Egy másik böngészőablakban bejelentkezés webhelyekhez Litmos vállalati rendszergazdaként.
+1. Egy másik böngészőablakban bejelentkezés Litmos vállalat webhelye rendszergazdaként.
 
-8. A bal oldali navigációs sávon kattintson **fiókok**.
+1. A bal oldali navigációs sávon kattintson **fiókok**.
    
-    ![Alkalmazás ügyféloldali a fiókok területen][22] 
+    ![Alkalmazás oldalán a fiókok területen][22] 
 
-9. Kattintson a **integrációja** fülre.
+1. Kattintson a **Integrációk** fülre.
    
-    ![Integráció lap][23] 
+    ![Integráció lapon][23] 
 
-10. Az a **integrációja** lapra, görgessen le a **3. fél integrációja**, és kattintson a **SAML 2.0** fülre.
+1. Az a **Integrációk** fülre, görgessen le a **3. fél Integrációk**, és kattintson a **SAML 2.0** fülre.
    
-    ![SAML 2.0 szakasz][24] 
+    ![SAML 2.0-s szakasz][24] 
 
-11. Másolja az érték a **litmos az SAML-végpont esetében:** és illessze be azt a **válasz URL-CÍMEN** textbox a **Litmos tartomány és az URL-címek** szakaszban az Azure portálon. 
+1. Másolja az értéket a **litmos számára a SAML-végpont:** és illessze be azt a **válasz URL-cím** szövegmezőjébe a **Litmos tartomány és URL-címek** szakaszban az Azure Portalon. 
    
     ![SAML-végpont][26] 
 
-12. Az a **Litmos** alkalmazás, hajtsa végre a következő lépéseket:
+1. Az a **Litmos** alkalmazás, hajtsa végre az alábbi lépéseket:
     
      ![Litmos alkalmazás][25] 
      
      a. Kattintson a **SAML engedélyezése**.
     
-     b. Nyissa meg a base-64 kódolású tanúsítvány a Jegyzettömbben, a tartalmának másolása a vágólapra és illessze be azt a **SAML X.509 tanúsítvány** szövegmező.
+     b. Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **SAML X.509-tanúsítvány** szövegmezőbe.
      
      c. Kattintson a **módosítások mentése**.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/litmos-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/litmos-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/litmos-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/litmos-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
   
 ### <a name="create-a-litmos-test-user"></a>Litmos tesztfelhasználó létrehozása
 
-Ez a szakasz célja Litmos Britta Simon nevű felhasználót létrehozni.  
-A Litmos alkalmazás támogatja-e közvetlenül időponthoz kötött kiépítés. Ez azt jelenti, egy felhasználói fiók automatikusan létrejön szükség esetén az alkalmazás a hozzáférési panelen elérésére tett kísérlet során.
+Ez a szakasz célja Litmos Britta Simon nevű felhasználó létrehozásához.  
+Az Litmos alkalmazás támogatja a Just-in-Time-kiépítés. Ez azt jelenti, hogy egy felhasználói fiókot automatikusan jön létre szükség esetén próbál hozzáférni az alkalmazáshoz a hozzáférési panelen.
 
-**A felhasználó Britta Simon meghívta Litmos létrehozásához hajtsa végre az alábbi lépéseket:**
+**Britta Simon Litmos nevű felhasználó létrehozásához hajtsa végre az alábbi lépéseket:**
 
-1. Egy másik böngészőablakban bejelentkezés webhelyekhez Litmos vállalati rendszergazdaként.
+1. Egy másik böngészőablakban bejelentkezés Litmos vállalat webhelye rendszergazdaként.
 
-2. A bal oldali navigációs sávon kattintson **fiókok**.
+1. A bal oldali navigációs sávon kattintson **fiókok**.
    
-    ![Alkalmazás ügyféloldali a fiókok területen][22] 
+    ![Alkalmazás oldalán a fiókok területen][22] 
 
-3. Kattintson a **integrációja** fülre.
+1. Kattintson a **Integrációk** fülre.
    
     ![Integrációk lap][23] 
 
-4. Az a **integrációja** lapra, görgessen le a **3. fél integrációja**, és kattintson a **SAML 2.0** fülre.
+1. Az a **Integrációk** fülre, görgessen le a **3. fél Integrációk**, és kattintson a **SAML 2.0** fülre.
    
     ![SAML 2.0][24] 
     
-5. Válassza ki **Autogenerate felhasználók**
+1. Válassza ki **felhasználók automatikus létrehozása**
    
     ![Felhasználók automatikus létrehozása][27] 
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Litmos Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Litmos Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Litmos, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Litmos, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Litmos**.
+1. Az alkalmazások listájában jelölje ki a **Litmos**.
 
-    ![Az alkalmazások listáját a Litmos hivatkozás](./media/litmos-tutorial/tutorial_litmos_app.png)  
+    ![Az alkalmazások listáját a Litmos hivatkozásra](./media/litmos-tutorial/tutorial_litmos_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ez a szakasz célja tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.  
 
-Ha a hozzáférési panelen Litmos csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Litmos alkalmazására. 
+Ha a hozzáférési panelen a Litmos csempére kattint, meg kell lekérése automatikusan bejelentkezett az Litmos alkalmazáshoz. 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

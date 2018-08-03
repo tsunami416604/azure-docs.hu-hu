@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 71991347ffaf036065aae9e1a93b7eb83a14b15c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 0b2bb17c85f76498e11ea3f007d55d7488f249cf
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917333"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426887"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>A VMM-parancsfájl hozzáadása a helyreállítási terv
 
@@ -52,9 +52,9 @@ A helyreállítási tervekben használhatja a PowerShell-parancsfájlokat. A hel
   
   1. Nyissa meg a Beállításszerkesztőt, és folytassa a **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure hely Recovery\Registration**.
 
-  2. Módosítsa az értéket a **ScriptLibraryPath** való  **\\\libserver2.contoso.com\share\\**. Adja meg a teljes Tartománynevet. Adja meg a megosztás helyéhez engedélyeket. Ez az a csomópont, a megosztáshoz. A VMM-ben a gyökércsomópont kereséséhez nyissa meg a gyökércsomópont a könyvtárban. A megnyíló elérési út, az útvonal gyökerének. Ez az az elérési utat, amely a változóban kell használnia.
+  1. Módosítsa az értéket a **ScriptLibraryPath** való  **\\\libserver2.contoso.com\share\\**. Adja meg a teljes Tartománynevet. Adja meg a megosztás helyéhez engedélyeket. Ez az a csomópont, a megosztáshoz. A VMM-ben a gyökércsomópont kereséséhez nyissa meg a gyökércsomópont a könyvtárban. A megnyíló elérési út, az útvonal gyökerének. Ez az az elérési utat, amely a változóban kell használnia.
 
-  3. A parancsprogram teszteléséhez egy, a VMM-szolgáltatásfiók azonos szintű felhasználói jogosultságokkal rendelkező felhasználói fiókkal. Ezen jogosultság segítségével ellenőrzi, hogy önálló, tesztelt parancsfájlok futtatása ugyanúgy, mint a helyreállítási terv futnak. A VMM-kiszolgálón állítsa be a végrehajtási házirend kihagyásához a következő:
+  1. A parancsprogram teszteléséhez egy, a VMM-szolgáltatásfiók azonos szintű felhasználói jogosultságokkal rendelkező felhasználói fiókkal. Ezen jogosultság segítségével ellenőrzi, hogy önálló, tesztelt parancsfájlok futtatása ugyanúgy, mint a helyreállítási terv futnak. A VMM-kiszolgálón állítsa be a végrehajtási házirend kihagyásához a következő:
 
      a. Nyissa meg a **64 bites Windows PowerShell** konzolt rendszergazdaként.
      
@@ -68,19 +68,19 @@ A helyreállítási tervekben használhatja a PowerShell-parancsfájlokat. A hel
 Ha a forrás VMM-helyről, létrehozhat egy parancsfájlt a VMM-kiszolgálón. Ezután vegye fel a parancsfájl a tervet.
 
 1. Az erőforrástár-megosztásban hozzon létre egy új mappát. Ha például \<VMM-kiszolgáló neve > \MSSCVMMLibrary\RPScripts. A mappa helye a forrás és cél a VMM-kiszolgálókon.
-2. A parancsprogram létrehozásához. Például nevezze el a szkript RPScript. Győződjön meg arról, hogy a parancsfájl a várt módon működik-e.
-3. Helyezze el a szkriptet a \<VMM-kiszolgáló neve > \MSSCVMMLibrary mappát a forrás- és VMM-kiszolgálókon.
+1. A parancsprogram létrehozásához. Például nevezze el a szkript RPScript. Győződjön meg arról, hogy a parancsfájl a várt módon működik-e.
+1. Helyezze el a szkriptet a \<VMM-kiszolgáló neve > \MSSCVMMLibrary mappát a forrás- és VMM-kiszolgálókon.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>A szkript hozzáadása a helyreállítási terv
 
 Miután hozzáadta a virtuális gépek vagy a replikációs csoportok egy helyreállítási tervhez és a terv létre, a parancsfájl is hozzáadhat a csoporthoz.
 
 1. Nyissa meg a helyreállítási tervben.
-2. Az a **lépés** válasszon ki egy elemet. Ezután válassza ki vagy **parancsfájl** vagy **manuális műveletek**.
-3. Adja meg, hogy a parancsfájl vagy a művelet előtt vagy után a kijelölt elem hozzáadásához. A parancsfájl pozícióját felfelé vagy lefelé áthelyezéséhez jelölje ki a **feljebb** és **lejjebb** gombok.
-4. Ha egy új VMM-ben, válasszon **a VMM-szkript feladatátvételi**. A **parancsfájl elérési útján**, adja meg a relatív elérési utat a megosztáshoz. Adja meg például **\RPScripts\RPScript.PS1**.
-5. Ha hozzáad egy Azure Automation-runbook, adja meg az Automation-fiókot, ahol a runbook is található. Ezután válassza ki a használni kívánt Azure-forgatókönyv parancsprogramja.
-6. Győződjön meg arról, hogy a parancsfájl a várt módon működik-e, tegye a helyreállítási terv feladatátvételi tesztet.
+1. Az a **lépés** válasszon ki egy elemet. Ezután válassza ki vagy **parancsfájl** vagy **manuális műveletek**.
+1. Adja meg, hogy a parancsfájl vagy a művelet előtt vagy után a kijelölt elem hozzáadásához. A parancsfájl pozícióját felfelé vagy lefelé áthelyezéséhez jelölje ki a **feljebb** és **lejjebb** gombok.
+1. Ha egy új VMM-ben, válasszon **a VMM-szkript feladatátvételi**. A **parancsfájl elérési útján**, adja meg a relatív elérési utat a megosztáshoz. Adja meg például **\RPScripts\RPScript.PS1**.
+1. Ha hozzáad egy Azure Automation-runbook, adja meg az Automation-fiókot, ahol a runbook is található. Ezután válassza ki a használni kívánt Azure-forgatókönyv parancsprogramja.
+1. Győződjön meg arról, hogy a parancsfájl a várt módon működik-e, tegye a helyreállítási terv feladatátvételi tesztet.
 
 
 ## <a name="next-steps"></a>További lépések

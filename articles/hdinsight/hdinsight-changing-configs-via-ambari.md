@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 2f0956c1cbbc6a351b2fc76a6918280dbead298f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6fe7092b2038b5cf53906e537ef02e457370d0d3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951216"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434662"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>HDInsight-fürt konfigurációjának optimalizálása az Ambari használatával
 
@@ -44,19 +44,19 @@ A NameNode Java. generace módosítása:
 
     ![HDFS-konfiguráció](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
 
-2. Keresse meg a beállítás **NameNode Java. generace**. Is használhatja a **szűrő** szövegmezőbe írja be, és a egy adott beállítást keres. Válassza ki a **toll** a beállítás neve melletti ikonra.
+1. Keresse meg a beállítás **NameNode Java. generace**. Is használhatja a **szűrő** szövegmezőbe írja be, és a egy adott beállítást keres. Válassza ki a **toll** a beállítás neve melletti ikonra.
 
     ![NameNode Java. generace](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
 
-3. Írja be az új értéket a szövegmezőbe, és nyomja le az **Enter** menteni a módosítást.
+1. Írja be az új értéket a szövegmezőbe, és nyomja le az **Enter** menteni a módosítást.
 
     ![Szerkesztés NameNode Java. generace](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-4. A NameNode Java halommemória mérete 1 GB-os megváltozott 2 GB-ra.
+1. A NameNode Java halommemória mérete 1 GB-os megváltozott 2 GB-ra.
 
     ![Szerkesztett NameNode Java. generace](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
-5. A módosítások mentéséhez kattintson a zöld a **mentése** gombra a konfiguráció képernyő felső részén.
+1. A módosítások mentéséhez kattintson a zöld a **mentése** gombra a konfiguráció képernyő felső részén.
 
     ![Változtatások mentése](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
@@ -65,7 +65,7 @@ A NameNode Java. generace módosítása:
 A következő szakaszok ismertetik a konfigurációs beállítások teljes Hive teljesítményének optimalizálásához.
 
 1. Hive-konfigurációs paraméterek módosításához válassza **Hive** szolgáltatások oldalsávon.
-2. Keresse meg a **Configs** fülre.
+1. Keresse meg a **Configs** fülre.
 
 ### <a name="set-the-hive-execution-engine"></a>Állítsa be a Hive-végrehajtó motor
 
@@ -75,7 +75,7 @@ Hive biztosít két végrehajtási motorok: MapReduce és a tezben futtatja. Tez
 
     ![Keresőmotor-végrehajtás](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
 
-2. A **optimalizálási** tulajdonság alapértelmezett értéke **Tez**.
+1. A **optimalizálási** tulajdonság alapértelmezett értéke **Tez**.
 
     ![Optimalizálás - Tez](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
 
@@ -92,7 +92,7 @@ Például beállítása négy eseményleképező feladatok adatméret 128 MB-ot,
 
 1. A korlát paraméterek módosításához lépjen a **Configs** a Tez szolgáltatás lapján. Bontsa ki a **általános** panelen, és keresse meg a `tez.grouping.max-size` és `tez.grouping.min-size` paramétereket.
 
-2. Mindkét paraméter beállítása **33,554,432** bájtok (32 MB).
+1. Mindkét paraméter beállítása **33,554,432** bájtok (32 MB).
 
     ![Tez csoportosítási méretek](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
  
@@ -112,13 +112,13 @@ A `hive.exec.reducers.bytes.per.reducer` paraméter megadja a feldolgozott nyom�
 
     ![Nyomáscsökkentő adatot](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
  
-2. Válassza ki **szerkesztése** módosítsa a 128 MB-ra (134,217,728 bájt) értéket, és nyomja le az **Enter** mentéséhez.
+1. Válassza ki **szerkesztése** módosítsa a 128 MB-ra (134,217,728 bájt) értéket, és nyomja le az **Enter** mentéséhez.
 
     ![/ Nyomáscsökkentő – szerkesztett adatokat](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
     Egy bemeneti mérete 1 024 MB, 128 MB-nyi adatot nyomáscsökkentő, az adott nincsenek 8 csökkentő (1024/128).
 
-3. Értékkel a **nyomáscsökkentő adatot** paraméter csökkentő, kedvezőtlen hatással lenne a lekérdezési teljesítmény nagy számú eredményezhet. Korlátozza a maximális számát csökkentő, állítsa `hive.exec.reducers.max` egy megfelelő értékre. Az alapértelmezett érték: 1009.
+1. Értékkel a **nyomáscsökkentő adatot** paraméter csökkentő, kedvezőtlen hatással lenne a lekérdezési teljesítmény nagy számú eredményezhet. Korlátozza a maximális számát csökkentő, állítsa `hive.exec.reducers.max` egy megfelelő értékre. Az alapértelmezett érték: 1009.
 
 ### <a name="enable-parallel-execution"></a>Párhuzamos végrehajtás engedélyezése
 
@@ -126,7 +126,7 @@ A Hive-lekérdezések végrehajtása egy vagy több lépésben történik. A fü
 
 1.  Ahhoz, hogy a párhuzamos lekérdezés-végrehajtás, keresse meg a Hive **Config** lapra, és keresse meg a `hive.exec.parallel` tulajdonság. Az alapértelmezett értéke FALSE (hamis). Módosítsa az értéket Igaz értékre, és nyomja le az **Enter** mentheti az értéket.
  
-2.  Korlátozza az egyidejűleg futtatandó feladatok számát, módosítsa a `hive.exec.parallel.thread.number` tulajdonság. Az alapértelmezett értéke 8.
+1.  Korlátozza az egyidejűleg futtatandó feladatok számát, módosítsa a `hive.exec.parallel.thread.number` tulajdonság. Az alapértelmezett értéke 8.
 
     ![Hive-exec párhuzamos](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
 
@@ -137,7 +137,7 @@ Hive feldolgozza az adatokat soronként. Vektorizációt 1024 sorok helyett egy 
 
 1. Ahhoz, hogy egy vectorized lekérdezés-végrehajtás, keresse meg a Hive **Configs** lapra, és keresse meg a `hive.vectorized.execution.enabled` paraméter. Az alapértelmezett értéke igaz, a Hive 0.13.0 vagy újabb.
  
-2. Ahhoz, hogy a lekérdezés csökkentse oldalára vectorized végrehajtását, állítsa be a `hive.vectorized.execution.reduce.enabled` paraméter igaz. Az alapértelmezett értéke FALSE (hamis).
+1. Ahhoz, hogy a lekérdezés csökkentse oldalára vectorized végrehajtását, állítsa be a `hive.vectorized.execution.reduce.enabled` paraméter igaz. Az alapértelmezett értéke FALSE (hamis).
 
     ![Hive vectorized végrehajtás](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
@@ -193,9 +193,9 @@ A rendelkezésre álló tömörítési típusok a következők:
     > [!NOTE]
     > A köztes fájlok tömörítése, válassza ki a tömörítési kodek költsége alacsonyabb CPU-még akkor is, ha a kodeket nem rendelkezik egy nagy tömörítési kimeneti.
 
-2. A köztes tömörítési kodeket, adja hozzá az egyéni tulajdonság `mapred.map.output.compression.codec` , a `hive-site.xml` vagy `mapred-site.xml` fájlt.
+1. A köztes tömörítési kodeket, adja hozzá az egyéni tulajdonság `mapred.map.output.compression.codec` , a `hive-site.xml` vagy `mapred-site.xml` fájlt.
 
-3. Egyéni beállítás hozzáadásához:
+1. Egyéni beállítás hozzáadásához:
 
     a. Keresse meg a Hive **Configs** lapra, és válassza a **speciális** fülre.
 
@@ -220,7 +220,7 @@ A végeredmény Hive is tömöríthető.
 
 1. A végeredmény Hive tömöríteni, keresse meg a Hive **Configs** lapra, és állítsa a `hive.exec.compress.output` paraméter igaz. Az alapértelmezett értéke FALSE (hamis).
 
-2. Válassza ki a kimeneti tömörítési kodeket, adja hozzá a `mapred.output.compression.codec` egyéni tulajdonság egyéni hive-hely megjelenítő, az előző szakasz 3. lépésben leírtak szerint.
+1. Válassza ki a kimeneti tömörítési kodeket, adja hozzá a `mapred.output.compression.codec` egyéni tulajdonság egyéni hive-hely megjelenítő, az előző szakasz 3. lépésben leírtak szerint.
 
     ![Egyéni Hive-tulajdonság](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
 
@@ -240,11 +240,11 @@ Hive lehetővé teszi, hogy a dinamikus partíciók létrehozása, ha a rekordok
 
 1. A Hive, a dinamikus partíciók, ehhez a `hive.exec.dynamic.partition` lehet, hogy a paraméter értéke true (alapértelmezett).
 
-2. Módosítsa a dinamikus partíció módot *szigorú*. Legalább egy partíciót szigorú módban nem lehet statikus. Ez megakadályozza, hogy a partíció-szűrő a WHERE záradék nélkül lekérdezések, *szigorú* megakadályozza, hogy a lekérdezések, amelyek az összes partíció beolvasása. Keresse meg a Hive **Configs** lapra, és állítsa `hive.exec.dynamic.partition.mode` való **szigorú**. Az alapértelmezett érték **nonstrict**.
+1. Módosítsa a dinamikus partíció módot *szigorú*. Legalább egy partíciót szigorú módban nem lehet statikus. Ez megakadályozza, hogy a partíció-szűrő a WHERE záradék nélkül lekérdezések, *szigorú* megakadályozza, hogy a lekérdezések, amelyek az összes partíció beolvasása. Keresse meg a Hive **Configs** lapra, és állítsa `hive.exec.dynamic.partition.mode` való **szigorú**. Az alapértelmezett érték **nonstrict**.
  
-3. Létrehozandó dinamikus partíciók számának korlátozásához, módosítsa a `hive.exec.max.dynamic.partitions` paraméter. Az alapértelmezett érték: 5000-es.
+1. Létrehozandó dinamikus partíciók számának korlátozásához, módosítsa a `hive.exec.max.dynamic.partitions` paraméter. Az alapértelmezett érték: 5000-es.
  
-4. A dinamikus partíciók száma csomópontonként teljes számának korlátozásához, módosítsa `hive.exec.max.dynamic.partitions.pernode`. Az alapértelmezett érték: 2000.
+1. A dinamikus partíciók száma csomópontonként teljes számának korlátozásához, módosítsa `hive.exec.max.dynamic.partitions.pernode`. Az alapértelmezett érték: 2000.
 
 ### <a name="enable-local-mode"></a>Helyi mód engedélyezése
 
@@ -294,9 +294,9 @@ A Pig-tulajdonságok is lehet módosítani az Ambari webes Felülettel Pig Leké
 
 1. Pig-tulajdonságok módosításához nyissa meg a Pig **Configs** lapra, és ezután bontsa ki a **speciális pig-tulajdonságok** ablaktáblán.
 
-2. Keresse meg, és állítsa vissza a módosítani kívánt tulajdonság értékének módosítása.
+1. Keresse meg, és állítsa vissza a módosítani kívánt tulajdonság értékének módosítása.
 
-3. Válassza ki **mentése** mentse az új értéket az ablak felső jobb oldalán. Egyes tulajdonságok szükség lehet a szolgáltatás újraindítását.
+1. Válassza ki **mentése** mentse az új értéket az ablak felső jobb oldalán. Egyes tulajdonságok szükség lehet a szolgáltatás újraindítását.
 
     ![Speciális pig-tulajdonságok](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
@@ -309,7 +309,7 @@ Két végrehajtási motorok Pig-parancsfájlok végrehajtása érhetők el: a Ma
 
 1. A végrehajtó motor módosítása a a **speciális pig-tulajdonságok** ablaktáblán keresse meg a tulajdonság `exectype`.
 
-2. Az alapértelmezett érték **MapReduce**. Módosítsa a következőre **Tez**.
+1. Az alapértelmezett érték **MapReduce**. Módosítsa a következőre **Tez**.
 
 
 ### <a name="enable-local-mode"></a>Helyi mód engedélyezése
@@ -318,7 +318,7 @@ Hasonló a Hive, helyi mód gyorsabb feladatok viszonylag kisebb mennyiségű ad
 
 1. A helyi mód engedélyezéséhez állítsa `pig.auto.local.enabled` való **igaz**. Az alapértelmezett értéke FALSE (hamis).
 
-2. Feladatok és a egy bemeneti adatok mérete kisebb, mint a `pig.auto.local.input.maxbytes` tulajdonság értéke kisebb feladatokat kell tekinteni. Az alapértelmezett érték: 1 GB.
+1. Feladatok és a egy bemeneti adatok mérete kisebb, mint a `pig.auto.local.input.maxbytes` tulajdonság értéke kisebb feladatokat kell tekinteni. Az alapértelmezett érték: 1 GB.
 
 
 ### <a name="copy-user-jar-cache"></a>Másolja a felhasználói jar-gyorsítótár
@@ -327,7 +327,7 @@ A Pig másolja át az UDF-EK számára szükséges egy elosztott gyorsítótár 
 
 1. Ha engedélyezni szeretné, állítsa be `pig.user.cache.enabled` igaz értékre. Az alapértelmezett érték FALSE (hamis).
 
-2. Állítsa be a kiinduló elérési útját a gyorsítótárazott JAR-fájlok kivételével, állítsa `pig.user.cache.location` az az alapútvonal. Az alapértelmezett érték `/tmp`.
+1. Állítsa be a kiinduló elérési útját a gyorsítótárazott JAR-fájlok kivételével, állítsa `pig.user.cache.location` az az alapútvonal. Az alapértelmezett érték `/tmp`.
 
 
 ### <a name="optimize-performance-with-memory-settings"></a>A memóriabeállításokat teljesítményének optimalizálása
@@ -372,7 +372,7 @@ A HBase. generace meghatározza a maximális halommemória (MB) által használa
 
 1. Módosításához lépjen a **speciális HBase-env** panel az a HBase **Configs** lapra, és keresse meg a `HBASE_HEAPSIZE` beállítás.
 
-2. Módosítsa az alapértelmezett érték 5000 MB.
+1. Módosítsa az alapértelmezett érték 5000 MB.
 
     ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
 
@@ -389,7 +389,7 @@ A blokk-gyorsítótárához az olvasási gyorsítótár. Annak méretét szabál
 
     ![A HBase blokk-gyorsítótár mérete](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
  
-2. Az érték módosításához jelölje ki a **szerkesztése** ikonra.
+1. Az érték módosításához jelölje ki a **szerkesztése** ikonra.
 
 
 #### <a name="memstore-size"></a>Kapott mérete

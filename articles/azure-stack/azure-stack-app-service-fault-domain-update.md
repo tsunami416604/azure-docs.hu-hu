@@ -1,6 +1,6 @@
 ---
-title: 'App Service Azure veremben: Fault tartomány frissítés |} Microsoft Docs'
-description: How Azure App Service Azure veremben elvégzi a tartalék tartományok között
+title: 'App Service-ben az Azure Stack: tartalék tartomány frissítése |} A Microsoft Docs'
+description: Hogyan lehet Azure App Service az Azure Stacken újraterjeszteni a tartalék tartományok között
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: anwestg
-ms.openlocfilehash: ce57e153dcab6a386150ebefe1ecb4a018514247
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130370"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440151"
 ---
-# <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>How Azure App Service Azure veremben elvégzi a tartalék tartományok között
+# <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Hogyan lehet Azure App Service az Azure Stacken újraterjeszteni a tartalék tartományok között
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-A 1802 frissítéstől kezdve Azure verem mostantól támogatja az munkaterhelések tartalék tartományokban egy szolgáltatás, amely a magas rendelkezésre állás fontos.
+Az 1802-es frissítés az Azure Stack mostantól támogatja a számítási feladatok eloszlása hibatartományokban, egy szolgáltatás, amelyet a kritikus fontosságú a magas rendelkezésre állás érdekében.
 
 >[!IMPORTANT]
->Tartalék tartomány támogatása előnyeit, frissítenie kell az integrált Azure verem rendszer 1802. Ez a dokumentum csak érvényes App Service erőforrás szolgáltató központi telepítések a 1802 frissítése előtt volt befejeződött. Ha telepítette az Azure veremben App Service 1802 rendszer frissítés Azure verem után, az erőforrás-szolgáltató már terjesztve tartalék tartományok között.
+>Tartalék tartomány támogatása kihasználásához frissítenie kell az Azure Stackkel integrált rendszereknél 1802. Ez a dokumentum csak érvényes App Service erőforrás szolgáltató üzemelő példánya, amely az 1802-es frissítés előtt voltak befejeződött. Ha telepítette az Azure Stack App Service-ben a után az 1802-es frissítés került alkalmazásra, az Azure Stackhez, az erőforrás-szolgáltató már terjesztve van tartalék tartomány között.
 
-## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>Az App Service erőforrás-szolgáltató egyensúlyba tartalék tartományok között
+## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>Az App Service erőforrás-szolgáltató újraegyensúlyozására tartalék tartomány között
 
-A méretezési készlet telepítve az App Service erőforrás-szolgáltató újraterjesztése, lépésekkel az ebben a cikkben minden méretezési készlet. Alapértelmezés szerint a scaleset nevek a következők:
+A méretezési csoportok üzembe helyezve, az App Service erőforrás-szolgáltató újraterjesztése, a lépéseket kell elvégeznie ebben a cikkben minden egyes méretezési csoport esetében. Alapértelmezés szerint a méretezési csoport nevek a következők:
 
 * ManagementServersScaleSet
 * FrontEndsScaleSet
@@ -43,17 +43,17 @@ A méretezési készlet telepítve az App Service erőforrás-szolgáltató újr
 * LargeWorkerTierScaleSet
 
 >[!NOTE]
-> Ha példányt az egyes a munkavégző réteg méretezési készlet nem rendelkezik, nem kell azokat méretezési csoportok egyensúlyba. A méretezési készlet kiegyensúlyozott megfelelően kell akkor ki azokat a jövőben.
+> Ha nem rendelkezik a feldolgozói réteg méretezési csoportok egyes üzembe helyezett, nem kell ezeket a méretezési csoportok újraegyensúlyozására. A méretezési csoportok kiegyensúlyozott megfelelően kell horizontális ki azokat a jövőben.
 
-A méretezési készlet horizontális, kövesse az alábbi lépéseket:
+A méretezési csoportok horizontális, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a Azure verem felügyeleti portálra.
-2. Válassza ki **további szolgáltatások**.
-3. A SZÁMÍTÁST, és válassza a **virtuálisgép-méretezési csoportok**. Az App Service központi telepítésének részeként telepített meglévő méretezési csoportok példányok száma információkkal jelennek meg. Az alábbi képernyőfelvételen látható méretezési készlet.
+1. Jelentkezzen be az Azure Stack rendszergazdai portál.
+1. Válassza ki **további szolgáltatások**.
+1. Válassza a COMPUTE, **a Virtual machine scale sets**. Meglévő méretezési csoportok az alkalmazásszolgáltatás üzemelő példányának részeként üzembe helyezett példányok száma adatokkal jelennek meg. Az alábbi képernyőfelvétel-készítés méretezési csoportok egy példát mutat be.
 
-      ![Az Azure App Service méretezési készlet szerepel a virtuális gép méretezési készletek UX][1]
+      ![Az Azure App Service a méretezési csoportok szerepel a Virtual Machine Scale Sets UX][1]
 
-4. Minden kiterjesztése. Például ha három meglévő a méretezési csoportban lévő kell a horizontális 6, a három új példányok tartalék tartományokban vannak telepítve. A következő PowerShell-példa a méretezési horizontális jeleníti meg.
+1. Minden készlet méretezése. Például ha rendelkezik meglévő három példányban a méretezési csoportban lévő ki kell terjeszteni a 6, a három új példányok üzembe helyezése tartalék tartomány között. A következő PowerShell-példa a méretezési horizontális jeleníti meg.
 
    ```powershell
    Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
@@ -67,22 +67,22 @@ A méretezési készlet horizontális, kövesse az alábbi lépéseket:
    ```
 
    >[!NOTE]
-   >Ez a lépés néhány órát, attól függően, hogy milyen típusú szerepkör és a példányok száma is tarthat.
+   >Ez a lépés több órát, attól függően, a szerepkör típusát és a példányok számát is eltarthat.
 
-5. A **App Service felügyeleti szerepkörök**, új szerepkör-példányok állapotának figyelése. A szerepkör példánya állapotának ellenőrzéséhez listáján válassza ki a felhasználóiszerepkör-típus
+1. A **App Service felügyeleti szerepkörök**, figyelheti az új szerepkör-példányok állapotát. Egy szerepkörpéldány állapotának ellenőrzéséhez válassza ki a szerepkör típusa a listából
 
-    ![Azure verem szerepkörök az Azure App Service][2]
+    ![Az Azure App Service-ben az Azure Stack-szerepkörökről][2]
 
-6. Amikor új szerepkör-példányok állapota **készen**, lépjen vissza a **virtuálisgép-méretezési csoport** és **törlése** a régi szerepkörpéldányokat.
+1. Ha az új szerepkör példányai állapota **készen**, lépjen vissza **virtuálisgép-méretezési** és **törlése** a régi szerepkörpéldányokat.
 
-7. Ismételje meg ezeket a lépéseket **minden** virtuálisgép-méretezési készlet.
+1. Ismételje meg ezeket a lépéseket **egyes** virtuálisgép-méretezési csoportot.
 
 ## <a name="next-steps"></a>További lépések
 
-Is kipróbálhatja más [platformok (PaaS) szolgáltatás](azure-stack-tools-paas-services.md).
+Is kipróbálhatja más [platform platformszolgáltatási (PaaS) szolgáltatásokra](azure-stack-tools-paas-services.md).
 
-* [SQL Server erőforrás-szolgáltató](azure-stack-sql-resource-provider-deploy.md)
-* [MySQL-erőforrás-szolgáltató](azure-stack-mysql-resource-provider-deploy.md)
+* [Az SQL Server erőforrás-szolgáltató](azure-stack-sql-resource-provider-deploy.md)
+* [MySQL típusú erőforrás-szolgáltató](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-fault-domain-update/app-service-scale-sets.png

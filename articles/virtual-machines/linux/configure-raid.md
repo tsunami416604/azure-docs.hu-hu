@@ -1,6 +1,6 @@
 ---
-title: Szoftveres RAID Linuxot futtató virtuális gépen konfigurálása |} Microsoft Docs
-description: Útmutató mdadm Linux RAID konfigurálása az Azure-ban.
+title: Szoftveres RAID a Linux rendszerű virtuális gép konfigurálása |} A Microsoft Docs
+description: Ismerje meg, hogyan mdadm használatával Linux rendszeren RAID konfigurálása az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: na
 author: rickstercdn
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: d6e831692da37645e264c6674f1ba54bb16d25d4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2376ade49b990ff22683a14ecd4ae6b4dda356c3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911757"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434543"
 ---
 # <a name="configure-software-raid-on-linux"></a>Szoftveres RAID konfigurálása Linuxban
-Egy általános forgatókönyv szoftveres RAID Linux virtuális gépeken használatára az Azure-ban van több csatolt adatlemezek egyetlen RAID eszközként is. Általában ez is használható a teljesítmény javítása, és nagyobb átviteli sebesség eléréséhez csak egyetlen lemez használatával engedélyezheti.
+Egy általános forgatókönyv szoftveres RAID Linux rendszerű virtuális gépeken használhatja az Azure több csatlakoztatott adatlemezt nyújtjuk egyetlen RAID eszközként. Általában ez segítségével javíthatja a teljesítményt, és csak egyetlen lemez használatához képest nagyobb átviteli sebességet teszi lehetővé.
 
-## <a name="attaching-data-disks"></a>Adatlemez csatlakoztatása
-Két vagy több üres adatlemezek RAID eszköz beállítása van szükség.  Az elsődleges RAID eszköz létrehozása oka, hogy a lemez IO teljesítmény javítása érdekében.  IO igényei szerint, ha szeretné, csatlakoztassa a szabványos tároló, a legfeljebb 500 IO/ps / lemez vagy a prémium szintű storage, legfeljebb 5000 IO/ps lemezenként tárolt lemezeket. Ez a cikk nem halad részletes kiépíteni, és a Linux virtuális gép adatlemezt csatolni.  A Microsoft Azure cikke [lemezt csatlakoztatni](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) egy üres adatlemezt csatolni egy Linux virtuális gépet az Azure részletes útmutatást.
+## <a name="attaching-data-disks"></a>Adatlemezek csatolására
+Két vagy több üres adatlemezt a RAID-eszköz konfigurálásához szükségesek.  RAID eszköz létrehozásának elsődleges oka, a lemez i/o-teljesítmény javítása érdekében.  I/o-igényei alapján, ha szeretné, a standard szintű tárhelyre, legfeljebb 500 i/o/ps lemez vagy a prémium szintű storage lemezenkénti legfeljebb 5000 i/o/ps-tárolt lemezt. Ez a cikk nem lépnek részletes történő kiépítéséhez és adatlemezeket csatlakoztathat egy Linux rendszerű virtuális gépet.  A Microsoft Azure cikke [lemez csatolása](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) üres adatlemez csatolása az Azure-ban Linux rendszerű virtuális gép részletes útmutatást.
 
-## <a name="install-the-mdadm-utility"></a>Telepítse a mdadm segédprogram
+## <a name="install-the-mdadm-utility"></a>A mdadm segédprogram telepítéséhez
 * **Ubuntu**
 ```bash
 sudo apt-get update
 sudo apt-get install mdadm
 ```
 
-* **CentOS & Oracle Linux**
+* **CentOS és Oracle Linux-környezetekkel**
 ```bash
 sudo yum install mdadm
 ```
@@ -45,10 +45,10 @@ sudo yum install mdadm
 zypper install mdadm
 ```
 
-## <a name="create-the-disk-partitions"></a>Hozzon létre a lemezpartíció
-Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új tároló lemezpartíción /dev/sdc1 neve.
+## <a name="create-the-disk-partitions"></a>A lemez partíciók létrehozása
+Ebben a példában a /dev/sdc hozunk létre egy egyetlen lemezpartíció. Az új lemez partíció /dev/sdc1 fogja meghívni.
 
-1. Start `fdisk` partíciók létrehozásának megkezdéséhez
+1. Indítsa el `fdisk` partíciók létrehozásának megkezdéséhez
 
     ```bash
     sudo fdisk /dev/sdc
@@ -62,13 +62,13 @@ Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új t
                     sectors (command 'u').
     ```
 
-2. Nyomja meg az "n" létrehozásához a parancssorban a **n**új partíció:
+1. Nyomja le a parancssorba létrehozása ennyi egy **n**PPA partíció:
 
     ```bash
     Command (m for help): n
     ```
 
-3. Nyomja meg az "p" létrehozásához egy **p**lsődleges partíció:
+1. Ezután nyomja le az "p" hozhat létre egy **p**lsődleges partíció:
 
     ```bash 
     Command action
@@ -76,27 +76,27 @@ Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új t
             p   primary partition (1-4)
     ```
 
-4. Nyomja meg az "1" partíciószám 1 kiválasztásához:
+1. Kattintson ide "1" a partíciószám 1 kiválasztása:
 
     ```bash
     Partition number (1-4): 1
     ```
 
-5. Válassza ki az új partíciót, vagy nyomja meg a kiindulási pont `<enter>` elfogadja az alapértelmezett helyezhető el a partíció a szabad lemezterület a meghajtón elején:
+1. Válassza ki az új partíciót, vagy nyomja meg a kiindulási pont `<enter>` , fogadja el az alapértelmezett helyezi el a partíciót a szabad lemezterület a meghajtón a elején:
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-6. Válassza ki a partíció méretét, írja be például a "+10G" 10 gigabájt partíció létrehozásához. Vagy nyomja le az ENTER `<enter>` létrehoz egy olyan partíciót a teljes meghajtót is:
+1. Válassza ki a partíció méretét, írja be például a "+10G" 10 gigabájt partíció létrehozásához. Vagy nyomja meg az `<enter>` hozzon létre egy olyan partíciót a teljes meghajtót is:
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
     Using default value 1305
     ```
 
-7. Ezután módosítsa az Azonosítót és **t**típusa a partíció a "83" alapértelmezett-azonosító (Linux) azonosító "fd" (Linux raid automatikus):
+1. Ezután módosítsa az Azonosítót és **t**típusa a partíció az alapértelmezett azonosítójú "83" (Linux) "fd" (Linux raid automatikus) azonosító:
 
     ```bash  
     Command (m for help): t
@@ -104,22 +104,22 @@ Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új t
     Hex code (type L to list codes): fd
     ```
 
-8. Végezetül a partíciós táblán írni a meghajtót, és zárja be a fdisk:
+1. Végül a partíciós táblán írni a meghajtó, és lépjen ki a fdisk:
 
     ```bash   
     Command (m for help): w
     The partition table has been altered!
     ```
 
-## <a name="create-the-raid-array"></a>A RAID tömb létrehozása
-1. A következő példa fog "paritásos" (RAID 0. szint) három lemezeken található három különböző adatokhoz (sdc1, sdd1, sde1).  A parancs új RAID eszköz futtatása után **/dev/md127** jön létre. Vegye figyelembe azt is, hogy ha ezeket az adatokat lemezek azt korábban egy másik inaktív RAID tömb része lehet kell hozzáadnia a `--force` paramétert a `mdadm` parancs:
+## <a name="create-the-raid-array"></a>A RAID-tömb létrehozása
+1. A következő példa lesz "stripe" (a RAID 0. szint) három partíció található, három különálló adatok lemezen (sdc1, sdd1, sde1).  Hívása a parancs egy új RAID eszköz futtatása után **/dev/md127** jön létre. Vegye figyelembe, hogy ha ezeket az adatokat lemezek azt korábban már egy másik működőképes RAID-tömb részeként szükség lehet hozzáadni a `--force` paramétert a `mdadm` parancsot:
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
         /dev/sdc1 /dev/sdd1 /dev/sde1
     ```
 
-2. A fájlrendszer létrehozása az új RAID-eszközön
+1. A fájlrendszer létrehozása az új RAID-eszközön
    
     a. **CentOS, Oracle Linux, SLES 12, openSUSE és Ubuntu**
 
@@ -133,7 +133,7 @@ Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új t
     sudo mkfs -t ext3 /dev/md127
     ```
    
-    c. **SLES 11** - boot.md engedélyezése és mdadm.conf létrehozása
+    c. **SLES 11** – boot.md engedélyezése és mdadm.conf létrehozása
 
     ```bash
     sudo -i chkconfig --add boot.md
@@ -141,20 +141,20 @@ Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új t
     ```
    
    > [!NOTE]
-   > A SUSE rendszereken módosítások végrehajtását követően újraindításra lehet szükség. Ez a lépés *nem* SLES 12 szükséges.
+   > A SUSE-rendszerek módosítások elvégzése után újraindítás lehet szükség. Ez a lépés *nem* SLES 12 szükséges.
    > 
    > 
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Az új fájlrendszer /etc/fstab hozzáadása
 > [!IMPORTANT]
-> Helytelen a az /etc/fstab fájl szerkesztése meghiúsulását eredményezheti. Ha nem ismeri, tekintse meg a telepítési dokumentációban talál információkat arról a fájl megfelelően szerkesztése. Ajánlott továbbá, hogy létrejött-e a fájl biztonsági másolata /etc/fstab szerkesztése előtt.
+> Helytelen a az /etc/fstab fájl szerkesztése meghiúsulását eredményezheti. Ha nem tudja biztosan, tekintse meg a telepítési dokumentációban talál információkat megfelelően szerkesztése ezt a fájlt. Emellett javasoljuk, hogy a /etc/fstab fájl biztonsági másolata jön létre szerkesztése előtt.
 
-1. Létrehozhat például az új fájlrendszer, a megfelelő csatlakozási pont:
+1. Például hozza létre az új fájlrendszer, a kívánt csatlakoztatási pontja:
 
     ```bash
     sudo mkdir /data
     ```
-2. /Etc/fstab, szerkesztésekor a **UUID** használatával hivatkozik, az eszköz neve helyett a fájlrendszerben.  Használja a `blkid` segítségével határozza meg, az új fájlrendszer UUID:
+1. /Etc/fstab, szerkesztésekor a **UUID** segítségével az eszköz nevét, hanem a fájlrendszer hivatkozhat.  Használja a `blkid` segítségével határozza meg, az új fájlrendszer UUID:
 
     ```bash   
     sudo /sbin/blkid
@@ -162,7 +162,7 @@ Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új t
     /dev/md127: UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" TYPE="ext4"
     ```
 
-3. Nyissa meg a /etc/fstab egy szövegszerkesztőben, és adja hozzá a bejegyzést az új fájlrendszer, például:
+1. Nyissa meg a /etc/fstab egy szövegszerkesztőben, és adjon hozzá egy bejegyzés az új fájlrendszer, például:
 
     ```bash   
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
@@ -176,15 +176,15 @@ Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új t
    
     Ezt követően mentse, és zárja be a /etc/fstab.
 
-4. Tesztelje, hogy helyesek-e az/etc/fstab bejegyzést:
+1. Ellenőrizze, hogy helyesen szerepel-e az/etc/fstab bejegyzést:
 
     ```bash  
     sudo mount -a
     ```
 
-    Ha ezt a parancsot egy hibaüzenet, ellenőrizze a szintaxist a /etc/fstab fájlban.
+    Ha ez a parancs egy hibaüzenetet eredményez, ellenőrizze a szintaxist a /etc/fstab fájlban.
    
-    Ezután futtassa a `mount` parancsot annak biztosítására, hogy a fájlrendszer van csatlakoztatva:
+    Ezután futtassa a `mount` parancsot annak biztosítása érdekében a fájlrendszer csatlakoztatása:
 
     ```bash   
     mount
@@ -192,32 +192,32 @@ Ebben a példában /dev/sdc egyetlen lemezt a partíciót létrehozni azt. Új t
     /dev/md127 on /data type ext4 (rw)
     ```
 
-5. (Választható) FailSafe rendszerindító paraméterek
+1. (Nem kötelező) FailSafe rendszerindítási paramétereinek
    
-    **fstab konfiguráció**
+    **fstab-konfiguráció**
    
-    Terjesztések valamelyikét tartalmazza a `nobootwait` vagy `nofail` csatlakoztatási paramétereket, előfordulhat, hogy hozzá lehet adni a/etc/fstab fájlhoz. Ezek a paraméterek hibák engedélyezése, ha egy adott fájlrendszer csatlakoztatása és a Linux rendszer akkor is, ha az nem csatolható fel a RAID fájlrendszer megfelelően elindulni. Tekintse meg a terjesztési dokumentációjában talál további információt ezekről a paraméterekről.
+    Terjesztések közé tartozik, vagy a `nobootwait` vagy `nofail` csatlakoztatási paraméterek, amelyeket az/etc/fstab fájl adhatók hozzá. Ezek a paraméterek lehetővé teszi a hibák, amikor az adott operációs rendszer, és lehetővé teszi a Linux rendszer folytatja a rendszerindítást, még akkor is, ha nem tudja megfelelően csatlakoztathatja a RAID fájlrendszert. Tekintse meg a disztribúció dokumentációjában talál további információt ezekről a paraméterekről.
    
-    (Ubuntu). példa:
+    (Ubuntu). például:
 
     ```bash  
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,nobootwait  0  2
     ```   
 
-    **Linux rendszerindító paraméterek**
+    **Linux rendszerindítási paramétereinek**
    
-    A fenti paraméterek, a kernel paraméter mellett "`bootdegraded=true`" megtehetik, hogy a rendszer akkor is, ha a RAID érzékelt sérült vagy csökkent, a példaként, ha egy adatmeghajtó véletlenül eltávolítják a virtuális gépről. Alapértelmezés szerint ez is vezethet a nem rendszerindító rendszer.
+    A fenti paraméterek, a kernel paraméter mellett "`bootdegraded=true`" engedélyezheti a rendszer akkor is, ha a RAID által tapasztalt sérült vagy csökkentett teljesítményű, a példaként, ha egy adatmeghajtó véletlenül eltávolítják a virtuális gép. Alapértelmezés szerint ez is eredményezhet egy rendszerindításra képtelen rendszer.
    
-    Tekintse meg a terjesztési dokumentációja megfelelően a kernel paraméterek szerkesztése. Például terjesztések (CentOS, Oracle Linux SLES 11.) a következő paraméterek vehetők manuálisan a "`/boot/grub/menu.lst`" fájl.  Ubuntu az ezzel a paraméterrel adhatók hozzá a `GRUB_CMDLINE_LINUX_DEFAULT` változó a "/ etc/alapértelmezett/lárvajárat".
+    Tekintse meg a telepítési dokumentációban megfelelően a kernel paraméterek szerkesztése. Például a terjesztések (CentOS, Oracle Linux, SLES 11) ezeket a paramétereket vehetők fel manuálisan a "`/boot/grub/menu.lst`" fájl.  Ubuntu rendszeren ez a paraméter lehet hozzáadni a `GRUB_CMDLINE_LINUX_DEFAULT` változó a "/ etc/alapértelmezett/grub".
 
 
 ## <a name="trimunmap-support"></a>TRIM/UNMAP támogatása
-Egyes Linux kernelek támogatja a vágás/UNMAP műveleteket elveti a nem használt blokkok a lemezen. Ezek a műveletek elsősorban hasznosak standard tárolási tájékoztatja Azure törölt lapok már nem érvényesek, és is elvesznek. Lapok elvetése költség mentheti, ha nagy fájlok létrehozása, majd törli őket.
+Egyes Linux-kernelek vannak a elveti a nem használt blokkolja a lemez TRIM/UNMAP műveletek támogatásához. Ezek a műveletek elsősorban hasznosak tájékoztatja, hogy az oldalak törlése az Azure már nem érvényesek, és lehet elvetni a standard szintű tárolóban. Oldalak elvetése mentheti a költség, ha nagy méretű fájlokat hoz létre, és törölje őket.
 
 > [!NOTE]
-> RAID nem lehetséges, hogy ki elvetési parancsok, ha a tömb az adatrészlet méretének értéke kisebb, mint az alapértelmezett (512KB). Ez azért, mert a gazdagépen unmap granularitása is 512KB. Ha a tömb adatrészlet méretének keresztül mdadm által módosított `--chunk=` paramétert, majd a vágás/megfeleltetésének törlése kérelmek előfordulhat, hogy figyelmen kívül lesz hagyva a rendszermag által.
+> RAID előfordulhat, hogy a elvetési parancsok nem ad meg, ha a tömb az adatrészlet méretének értéke kisebb, mint az alapértelmezett (512KB). Ez azért, mert a gazdagépen a unmap granularitási is 512KB. Ha a tömb adattömbméret keresztül mdadm a módosított `--chunk=` paramétert, majd a kérelmek TRIM/leképezésének megszüntetése figyelmen kívül hagyhatja a kernel.
 
-Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A szokásos módon olvassa el a terjesztési az ajánlott módszer:
+Nincsenek a TRIM engedélyezéséhez kétféleképpen támogatja a Linux rendszerű virtuális gépen. A szokásos módon tekintse meg a terjesztési az ajánlott módszer:
 
 - Használja a `discard` lehetőség a csatlakoztatási `/etc/fstab`, például:
 
@@ -225,7 +225,7 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
     ```
 
-- Bizonyos esetekben a `discard` lehetőség is van a teljesítményre. Alternatív megoldásként futtathatja a `fstrim` manuálisan parancsot a parancssorból, vagy adja hozzá a crontab rendszeresen futtatásához:
+- Bizonyos esetekben a `discard` lehetőség is van a teljesítményre. Másik megoldásként futtathatja a `fstrim` manuálisan parancsot a parancssorból, vagy adja hozzá a crontab rendszeresen futtatásához:
 
     **Ubuntu**
 

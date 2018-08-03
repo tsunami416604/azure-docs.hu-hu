@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Databricks: Gyakori kérdések és Súgó |} Microsoft Docs'
-description: Gyakori kérdések és a hibaelhárítási információk a Azure Databricks választ kaphat.
+title: 'Az Azure Databricks: Gyakori kérdések és Súgó |} A Microsoft Docs'
+description: Válaszok a gyakori kérdéseket és az Azure Databricks kapcsolatos hibaelhárítási információkat.
 services: azure-databricks
 documentationcenter: ''
 author: nitinme
@@ -13,117 +13,117 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cd231a6baad74cd88d82b219e2e58e9252187ff5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3ba235c60480c38a21ee3264c54b4a4dcdea340
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598997"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434601"
 ---
-# <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-about-azure-databricks"></a>Az Azure Databricks kapcsolatos gyakori kérdések
 
-Ez a cikk a leggyakoribb lekérdezések, előfordulhat, hogy rendelkezik kapcsolatos Azure Databricks sorolja fel. Is olyan gyakori problémákat, lehetséges, hogy Databricks használatakor sorolja fel. További információkért lásd: [Mi az Azure Databricks](what-is-azure-databricks.md). 
+Ez a cikk a leggyakoribb lekérdezések, előfordulhat, hogy rendelkezik az Azure databricks kapcsolódó sorolja fel. Databricks használatakor előfordulhat néhány gyakori problémát is felsorolja. További információkért lásd: [Mi az Azure Databricks](what-is-azure-databricks.md). 
 
-## <a name="can-i-use-my-own-keys-for-local-encryption"></a>Használható a helyi titkosítási kulcsok az saját? 
-A jelenlegi kiadásban az Azure Key Vault a saját kulcs használata nem támogatott. 
+## <a name="can-i-use-my-own-keys-for-local-encryption"></a>Használható a helyi titkosítási kulcsok saját? 
+A jelenlegi kiadásban a saját kulcsok Azure Key vault használata nem támogatott. 
 
-## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Használható az Azure virtuális hálózatok Databricks?
-Egy új virtuális hálózat létrejötte Databricks kiépítés részeként. Ebben a kiadásban a saját Azure virtuális hálózat nem használható.
+## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Használható az Azure virtuális hálózatok a Databricks?
+Databricks üzembe helyezésének részeként jön létre egy új virtuális hálózatot. Ebben a kiadásban a saját Azure virtuális hálózat nem használható.
 
 ## <a name="how-do-i-access-azure-data-lake-store-from-a-notebook"></a>Hogyan érhetem el az Azure Data Lake Store a jegyzetfüzet? 
 
 Kövesse az alábbi lépéseket:
-1. Az Azure Active Directory (Azure AD) egy egyszerű szolgáltatást telepíteni, és jegyezze fel annak kulcsát.
-2. A szükséges engedélyek hozzárendelése a szolgáltatás egyszerű Data Lake Store-ban.
-3. Hozzáférni egy fájlhoz a Data Lake Store, használja a Notebook a szolgáltatás egyszerű hitelesítő adatait.
+1. Az Azure Active Directoryban (Azure AD) egy egyszerű szolgáltatás kiépítése, és jegyezze fel a kulcsot.
+1. A szükséges engedélyek hozzárendelése a Data Lake Store az egyszerű szolgáltatás.
+1. Egy fájlt a Data Lake Store eléréséhez használja az egyszerű szolgáltatás hitelesítő adatai jegyzetfüzetben.
 
 További információkért lásd: [használata Data Lake Store az Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html).
 
 ## <a name="fix-common-problems"></a>Gyakori problémák megoldása
 
-Az alábbiakban néhány Databricks az esetleg felmerülő problémákat.
+Az alábbiakban néhány, a Databricks esetleg felmerülő problémák.
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Probléma: Ez az előfizetés nincs regisztrálva a "Microsoft.Databricks" névtér használatára
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Probléma: Az előfizetés nincs regisztrálva a "Microsoft.Databricks" névtér használatára
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"Ez az előfizetés nincs regisztrálva a következő névtérben:"Microsoft.Databricks"használja. Lásd: https://aka.ms/rps-not-found hogyan regisztrálhat előfizetések. (Code: MissingSubscriptionRegistration) "
+"Ez az előfizetés nincs regisztrálva a"Microsoft.Databricks"névtér használatára. Lásd: https://aka.ms/rps-not-found előfizetések esetében. (Code: MissingSubscriptionRegistration) "
 
 #### <a name="solution"></a>Megoldás
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
-2. Válassza ki **előfizetések**, használ, az előfizetés, majd **erőforrás-szolgáltató**. 
-3. Az erőforrás-szolgáltatók listáját elleni **Microsoft.Databricks**, jelölje be **regisztrálása**. Az erőforrás-szolgáltató regisztrálása előfizetésnek közreműködő vagy a tulajdonos szerepkörrel kell rendelkeznie.
+1. Válassza ki **előfizetések**, az előfizetést használ, majd **erőforrás-szolgáltatók**. 
+1. Erőforrás-szolgáltatók listáján elleni **Microsoft.Databricks**válassza **regisztrálása**. Az előfizetésben az erőforrás-szolgáltató regisztrálása a közreműködői vagy tulajdonosi szerepkörrel kell rendelkeznie.
 
 
-### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>Probléma: {E-mail} fiókja nem rendelkezik a tulajdonos vagy közreműködő szerepkört az Azure-portálon Databricks munkaterület erőforráson
-
-#### <a name="error-message"></a>Hibaüzenet
-
-"A fiók {e-mail} nem rendelkezik tulajdonosi vagy közreműködői szerepkört az Azure-portálon Databricks munkaterület erőforráson. Ez a hiba akkor is előfordulhat, ha a bérlő vendég felhasználók. Kérje meg a rendszergazdát eléréséhez, vagy adja hozzá azt a felhasználó közvetlenül a Databricks munkaterületen." 
-
-#### <a name="solution"></a>Megoldás
-
-A megoldás a probléma néhány a következők:
-
-* A bérlő inicializálása, be kell jelentkeznie tenant, nem pedig a Vendég felhasználó felhasználói. A közreműködői szerepkör a Databricks munkaterület erőforrás is kell rendelkeznie. Az egy felhasználó hozzáférést biztosíthat a **hozzáférés-vezérlés (IAM)** lapon belül a Databricks munkaterület az Azure portálon.
-
-* Ezt a hibát is okozhat az e-mailek tartománynév van rendelve több címtárral az Azure ad-ben. A probléma megoldása érdekében új felhasználó létrehozása a könyvtárban, amely tartalmazza az előfizetés a Databricks munkaterülettel.
-
-    a. Az Azure-portálon lépjen az Azure ad Szolgáltatásba. Válassza ki **felhasználók és csoportok** > **hozzáadni egy felhasználót**.
-
-    b. A felhasználó hozzáadása egy `@<tenant_name>.onmicrosoft.com` ahelyett, hogy e-mail `@<your_domain>` e-mailt. Ez a beállítás található **egyéni tartományok**, az Azure AD-t az Azure-portálon.
-    
-    c. Adja meg ennek a felhasználónak a **közreműködő** szerepkör a Databricks munkaterület erőforráson.
-    
-    d. Jelentkezzen be az Azure-portálon az új felhasználóval, és a Databricks munkaterületen található.
-    
-    e. A Databricks munkaterületen nyissa meg a felhasználó nevében.
-
-
-### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>Probléma: A fiók {e-mail} nincs regisztrálva a Databricks 
-
-#### <a name="solution"></a>Megoldás
-
-Ha nem hozott létre a munkaterületen, és hogy hozzá szeretné adni a felhasználó, lépjen kapcsolatba a személy, aki létrehozta a munkaterületen. Kell hozzáadnia az Azure Databricks felügyeleti konzol használatával személy. Útmutatásért lásd: [hozzáadása és a felhasználók kezelése](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Ha a munkaterületet hozott létre, és továbbra is a következő hibaüzenet jelenik meg, próbálkozzon **inicializálása munkaterület** újra az Azure portálról.
-
-### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Probléma: Felhő szolgáltató indítási hiba lépett fel a fürt (PublicIPCountLimitReached) beállítása
+### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>Probléma: {Email} fiókja nem rendelkezik a tulajdonosi vagy közreműködői szerepkörhöz a Databricks-munkaterület erőforrás az Azure Portalon
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"A felhő szolgáltató indítási hiba: A felhőbeli szolgáltató hiba történt a fürt beállítása. További információ a Databricks útmutatójában talál. Az Azure hibakód: PublicIPCountLimitReached. Azure-hibaüzenet: nem hozható létre több mint 60 nyilvános IP-címek ehhez az előfizetéshez ebben a régióban. "
+"A fiók {email} nem rendelkezik tulajdonosi vagy közreműködői szerepkörhöz az Azure Portalon a Databricks munkaterületen erőforráson. Ez a hiba akkor is előfordulhat, ha Ön a bérlő vendégfelhasználó. Kérje meg a rendszergazdát, hogy eléréséhez, vagy vegye fel a Databricks-munkaterülethez közvetlenül a felhasználó." 
 
 #### <a name="solution"></a>Megoldás
 
-Databricks fürtök csomópontonként egy nyilvános IP-cím használatára. Ha az előfizetés már használatban van minden a nyilvános IP-címeket, akkor [a kvóta növeléséhez kérelem](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Válasszon **kvóta** , a **típusú**, és **hálózati: ARM** , a **Kvótatípus**. A **részletek**, a nyilvános IP-cím kvótájának növelését. Például ha korlát jelenleg 60, és szeretne létrehozni egy 100-csomópontot tartalmazó fürtben, kérése a 160 a korlát növelését.
+Az alábbiakban néhány probléma megoldása:
 
-### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Probléma: A második típusú felhő szolgáltató indítási hiba lépett fel a fürt (MissingSubscriptionRegistration) beállítása
+* A bérlő inicializálása, akkor be kell jelentkeznie a bérlő nem meg vendégként normál felhasználóként. A Databricks-munkaterület erőforráson is egy közreműködő szerepkörrel kell rendelkeznie. Az egy felhasználó hozzáférést biztosíthat a **hozzáférés-vezérlés (IAM)** lapján a Databricks-munkaterület az Azure Portalon.
+
+* Ezt a hibát is okozhat az e-mailben is tartománynév hozzá van rendelve több címtár Azure AD-ben. A probléma megkerüléséhez a könyvtárban, amely tartalmazza az előfizetést a Databricks-munkaterület az új felhasználó létrehozása.
+
+    a. Az Azure Portalon nyissa meg Azure ad-ben. Válassza ki **felhasználók és csoportok** > **felhasználó hozzáadása**.
+
+    b. A felhasználó hozzáadása egy `@<tenant_name>.onmicrosoft.com` helyett e-mail `@<your_domain>` e-mailt. Ezt a beállítást annak **egyéni tartományok**, az Azure Portalon az Azure AD-csoportban.
+    
+    c. Adja meg az új felhasználóhoz a **közreműködői** szerepkör a Databricks-munkaterület erőforráson.
+    
+    d. Jelentkezzen be az Azure portal az új felhasználó, és keresse meg a Databricks-munkaterülethez.
+    
+    e. Nyissa meg a Databricks-munkaterülethez, a felhasználó.
+
+
+### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>Probléma: A fiók {email} nincs regisztrálva a Databricksben 
+
+#### <a name="solution"></a>Megoldás
+
+Ha nem hozott létre a munkaterületet, és Ön hozzá szeretné adni a felhasználó, lépjen kapcsolatba a munkaterületet létrehozó személy. Vegye fel Önt az Azure Databricks felügyeleti konzol az adott személy rendelkezik. Útmutatásért lásd: [felhasználók kezelése és felvétele](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Ha a munkaterületet hozott létre, és továbbra is megjelenik a hibaüzenet, próbálkozzon **munkaterület inicializálása** újra az Azure Portalról.
+
+### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Probléma: A felhő szolgáltatóhiba indítsa el a fürt (PublicIPCountLimitReached) beállítása közben
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"A felhő szolgáltató indítási hiba: A felhőbeli szolgáltató hiba történt a fürt beállítása. További információ a Databricks útmutatójában talál.
-Az Azure hibakód: MissingSubscriptionRegistration Azure-hibaüzenet: az előfizetés nincs regisztrálva "Microsoft.Compute" névtér használatára. Lásd: https://aka.ms/rps-not-found hogyan regisztrálhat előfizetések. "
+"A felhő-szolgáltató indítása sikertelen: A felhőbeli szolgáltató hiba történt a fürt beállítása. További információkért tekintse meg a Databricks útmutató. Az Azure-hibakód: PublicIPCountLimitReached. Azure-hibaüzenet: nem hozható létre több mint 60 nyilvános IP-címeket, ehhez az előfizetéshez ebben a régióban. "
+
+#### <a name="solution"></a>Megoldás
+
+Databricks-fürtök csomópontonként egy nyilvános IP-címet használja. Ha az előfizetés már használatban van az összes hozzá tartozó nyilvános IP-címek, meg kell [kérelmet a kvóta növeléséhez](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Válassza ki **kvóta** , a **Problématípus**, és **Hálózatkezelés: ARM** , a **Kvótatípus**. A **részletek**, nyilvános IP-címet a kvóta növelésére. Például ha a korlát jelenleg 60, és szeretne létrehozni egy 100 csomópontos fürtre, korlátozás megnövelésére 160 való.
+
+### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Probléma: A második típusú indítási szolgáltatóhiba felhő beállításakor a fürt (MissingSubscriptionRegistration)
+
+#### <a name="error-message"></a>Hibaüzenet
+
+"A felhő-szolgáltató indítása sikertelen: A felhőbeli szolgáltató hiba történt a fürt beállítása. További információkért tekintse meg a Databricks útmutató.
+Az Azure-hibakód: MissingSubscriptionRegistration Azure-hibaüzenet: az előfizetés nincs regisztrálva a névtér "Microsoft.Compute". Lásd: https://aka.ms/rps-not-found előfizetések számára. "
 
 #### <a name="solution"></a>Megoldás
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
-2. Válassza ki **előfizetések**, használ, az előfizetés, majd **erőforrás-szolgáltató**. 
-3. Az erőforrás-szolgáltatók listáját elleni **Microsoft.Compute**, jelölje be **regisztrálása**. Az erőforrás-szolgáltató regisztrálása előfizetésnek közreműködő vagy a tulajdonos szerepkörrel kell rendelkeznie.
+1. Válassza ki **előfizetések**, az előfizetést használ, majd **erőforrás-szolgáltatók**. 
+1. Erőforrás-szolgáltatók listáján elleni **Microsoft.Compute**válassza **regisztrálása**. Az előfizetésben az erőforrás-szolgáltató regisztrálása a közreműködői vagy tulajdonosi szerepkörrel kell rendelkeznie.
 
-Részletes utasítások, lásd: [erőforrás-szolgáltatók és típusok](../azure-resource-manager/resource-manager-supported-services.md).
+További részletes utasítások: [erőforrás-szolgáltatókat és típusaikat](../azure-resource-manager/resource-manager-supported-services.md).
 
-### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Probléma: Az Azure Databricks kell engedélyekkel csak a rendszergazda biztosíthat egy szervezeti erőforrások eléréséhez.
+### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Probléma: Az Azure Databricks engedélyre van szüksége, amelyek csak egy rendszergazda is biztosítanak a szervezet erőforrásaihoz.
 
 #### <a name="background"></a>Háttér
 
-Az Azure Databricks integrálva van az Azure ad-val. Ez lehetővé teszi engedélyeinek beállítása Azure Databricks belül (például notebookok vagy fürtöket) az Azure AD felhasználók megadásával. Az Azure Databricks tudni az Azure ad-felhasználó nevét a listában akkor ezt az információt olvasási engedélyre van szüksége. Ehhez a hozzájárulásukat adják. A hozzájárulási már nem érhető el, ha a hibát látja.
+Az Azure Databricks integrálva van az Azure ad-ben. Ez lehetővé teszi, hogy az Azure databricksben engedélyek beállítása (mint például a jegyzetfüzetek és a fürtök) megadásával a felhasználók Azure AD-ből. Az Azure Databricksnek tudják listázza a nevüket, a felhasználók az Azure AD-ből szükséges adatok olvasási engedéllyel. Ehhez a jóváhagyást. Ha a jóváhagyás már nem érhető el, a következő hibát látja.
 
 #### <a name="solution"></a>Megoldás
 
-Jelentkezzen be egy globális rendszergazda az Azure portálon. Azure Active Directoryban, látogasson el a **felhasználói beállítások** lapra, és győződjön meg arról, hogy **felhasználók is hozzájárul a nevében a vállalati adatokhoz hozzáférő alkalmazásokat** értéke **Igen**.
+Jelentkezzen be az Azure Portalra globális rendszergazdaként. Az Azure Active Directory, nyissa meg a **felhasználói beállítások** lapra, és győződjön meg arról, hogy **felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való** értékre van állítva **Igen**.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Gyors üzembe helyezés: Az Azure Databricks első lépései](quickstart-create-databricks-workspace-portal.md)
+- [Gyors útmutató: Azure Databricks használatának első lépései](quickstart-create-databricks-workspace-portal.md)
 - [Mi az Azure Databricks?](what-is-azure-databricks.md)
 

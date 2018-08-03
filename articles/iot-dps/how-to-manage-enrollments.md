@@ -1,6 +1,6 @@
 ---
-title: Az Azure-portálon eszközbeléptetésnél kezelése |} Microsoft Docs
-description: A terjesztési pontok szolgáltatás az Azure portálon eszközbeléptetésnél kezelése
+title: Eszközök beléptetésének kezelése az Azure Portalon |} A Microsoft Docs
+description: A DPS szolgáltatást az Azure Portalon az eszközök beléptetésének kezelése
 author: dsk-2015
 ms.author: dkshir
 ms.date: 04/05/2018
@@ -8,69 +8,69 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: b13f74e0c3df5090d1b1b2e0c48e3dc612821250
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ff28d9730cc95d934c78163534aed08271c6b98c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628436"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439822"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Az Azure portál eszközbeléptetésnél kezelése
+# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Hogyan eszközök beléptetésének kezelése az Azure Portalon
 
-A *eszközregisztráció* létrehoz egy rekordot egyetlen eszközt vagy eszközöket, amelyek bármikor előfordulhat, hogy regisztrálja az Azure IoT Hub eszköz kiépítése szolgáltatással csoportja. A beléptetési rekord tartalmazza a kezdeti kívánt beállításait, hogy a regisztráció, beleértve a kívánt IoT-központ részeként őket. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a létesítési szolgáltatás.
+A *eszközregisztráció* létrehoz egy rekordot egy adott eszköz vagy egy csoport, az eszközről, bármikor előfordulhat, hogy regisztrálja az Azure IoT Hub Device Provisioning Service szolgáltatással. A regisztrációs rekord az regisztrálása, beleértve a kívánt IoT-központ részeként (ök) höz kezdeti kívánt beállításait tartalmazza. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a kiépítési szolgáltatás.
 
 
-## <a name="create-a-device-enrollment"></a>Hozzon létre egy eszközök beléptetése
+## <a name="create-a-device-enrollment"></a>Hozzon létre egy eszközregisztrációs
 
-Az üzembe helyezési szolgáltatással az eszközök regisztrálása két módja van:
+Regisztrálhatja az eszközöket a kiépítési szolgáltatás két módja van:
 
-* Egy **beléptetési csoport** , amelyek egy közös igazolás mechanizmus X.509-tanúsítványokat, az azonos aláíró tanúsítványnak, amely lehet írja alá az egy eszközcsoportra bejegyzés a [legfelső szintű tanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) vagy a [köztes tanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate), fizikai eszközön eszköz tanúsítvány létrehozásához használt. Azt javasoljuk, egy beléptetési csoport az eszközök, amelyek kívánt kezdeti konfigurációja számos vagy eszközök valamennyi amelyet ugyanannak a bérlőnek. Vegye figyelembe, hogy csak regisztrálhatja az eszközöket, amelyek használják az X.509 tanúsítvány mechanizmust *beléptetési csoportok*. 
+* Egy **regisztrációs csoportot** , amelyek egy közös igazolási mechanizmus az ugyanazon aláíró tanúsítványnak, amely lehet által aláírt X.509-tanúsítványok az eszközök egy csoportját egy bejegyzés az [főtanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) vagy a [köztes tanúsítványt](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)előállításához eszközre tanúsítvány fizikai eszközön szolgál. Javasoljuk egy regisztrációs csoportnak eszközök, amelyek a megosztani kívánt kezdeti konfigurációval nagy számú, vagy eszközök célzó ugyanazt bérlőhöz. Vegye figyelembe, hogy csak regisztrálhat eszközöket, amelyek az X.509-igazolási mechanizmus, *regisztrációs csoportok*. 
 
-    A portálon, a csoport az eszközök az alábbi lépéseket követve létrehozhat egy beléptetési csoport:
+    A portálon az alábbi lépéseket követve eszközök egy csoportját, egy regisztrációs csoportot hozhat létre:
 
-    1. Jelentkezzen be az Azure-portálon, majd kattintson a **összes erőforrás** a bal oldali menüből.  
-    2. Kattintson az eszköz az erőforrások listájához a regisztrálni kívánt eszközök kiépítését szolgáltatás.  
-    3. Az üzembe helyezési szolgáltatásban:  
-       a. Kattintson a **regisztrációkat kezelése**, majd jelölje be a **beléptetési csoportok** fülre.  
+    1. Jelentkezzen be az Azure Portalon, és kattintson a **összes erőforrás** elemet a bal oldali menüben.  
+    1. Kattintson a Device Provisioning service szeretne regisztrálni az eszközt az erőforrások listájából.  
+    1. A kiépítési szolgáltatás:  
+       a. Kattintson a **beléptetések kezelése**, majd válassza ki a **regisztrációs csoportok** fülre.  
        b. Kattintson a felül lévő **Hozzáadás** gombra.  
-       c. Amikor megjelenik a "Csoport hozzáadása a beléptetési" panelen, írja be a beléptetési listaelem adatait.  **Csoportnév** szükséges. Kiválaszthatja a "CA vagy köztes" lehetőséget a **tanúsítványtípus**, és töltse fel a legfelső szintű **elsődleges tanúsítvány** a csoport az eszközök.  
-       d. Kattintson a **Save** (Mentés) gombra. A beléptetési csoport sikeres létrehozásakor kell megjelennie a csoport neve alatt jelennek meg a **beléptetési csoportok** fülre.  
+       c. Ha az "A regisztrációs csoport hozzáadása" panel jelenik meg, írja be a beléptetési listabejegyzés adatait.  **Csoport neve** megadása kötelező. Kiválaszthatja a "CA vagy a köztes" lehetőséget a **tanúsítványtípus**, és töltse fel a legfelső szintű **elsődleges tanúsítvány** eszközök csoportja.  
+       d. Kattintson a **Save** (Mentés) gombra. A regisztrációs csoport sikeres létrehozás esetén kell megjelennie a csoport neve meg fog jelenni a **regisztrációs csoportok** fülre.  
 
-       [![A portál regisztrációs csoport](./media/how-to-manage-enrollments/group-enrollment.png)] (. / media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+       [![Regisztrációs csoportot a portálon](./media/how-to-manage-enrollments/group-enrollment.png)] (. / media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
-* Egy **egyes beléptetési** regisztrálni lehet, hogy egyetlen eszköz bejegyzés. Egyes regisztrációkat használhatja bármelyik x509 tanúsítványokat vagy SAS jogkivonatok (a fizikai vagy virtuális TPM), állapotigazolási mechanizmusok. Azt javasoljuk, egyes regisztrációkat az eszközök, amelyek külön kezdeti konfigurációt igényelnek, vagy az eszközök, amelyek is csak TPM vagy virtuális TPM SAS-tokenje igazoló mechanizmusként. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
+* Egy **egyéni regisztráció** regisztrálható egyetlen eszközhöz tartozó bejegyzés. Egyéni regisztrációk használhatja bármelyik x509 tanúsítványokat vagy SAS-tokeneket (az egy fizikai vagy virtuális TPM-ben) igazolási mechanizmusként. Azt javasoljuk, hogy egyéni regisztrációk használatát, eszközök, az egyedi kezdeti konfigurációt igénylő vagy az eszközök, amelyek a TPM-eszköz vagy virtuális TPM-n keresztül SAS-tokeneket csak használhatja az igazolási mechanizmusként. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
 
-    A portál az alábbi lépéseket követve hozhat létre az egyes tagság:
+    A portálon az alábbi lépésekkel hozhat létre egyéni regisztrációt:
 
-    1. Jelentkezzen be az Azure-portálon, majd kattintson a **összes erőforrás** a bal oldali menüből.
-    2. Kattintson az eszköz az erőforrások listájához a regisztrálni kívánt eszközök kiépítését szolgáltatás.
-    3. Az üzembe helyezési szolgáltatásban:  
-       a. Kattintson a **regisztrációkat kezelése**, majd válassza a **egyedi regisztrációkat** fülre.  
+    1. Jelentkezzen be az Azure Portalon, és kattintson a **összes erőforrás** elemet a bal oldali menüben.
+    1. Kattintson a Device Provisioning service szeretne regisztrálni az eszközt az erőforrások listájából.
+    1. A kiépítési szolgáltatás:  
+       a. Kattintson a **beléptetések kezelése**, majd válassza ki a **egyéni regisztrációk** fülre.  
        b. Kattintson a felül lévő **Hozzáadás** gombra.   
-       c. Amikor megjelenik a "Regisztrációja hozzáadása" panelen, írja be a beléptetési listaelem adatait. Először válassza ki azt a tanúkiszolgáló **mechanizmus** az eszköz (X.509 vagy TPM). X.509 tanúsítvány meg feltölteni a levél **elsődleges tanúsítvány** az eszközön. TPM meg kell adnia a **Állapotigazolási kulcs** és **regisztrációs Azonosítót** az eszközön.  
-       d. Kattintson a **Save** (Mentés) gombra. A beléptetési csoport sikeres létrehozásakor kell megjelennie az eszköz alatt jelennek meg a **egyedi regisztrációkat** fülre.  
+       c. Ha a "Regisztráció hozzáadása" panel jelenik meg, írja be a beléptetési listabejegyzés adatait. Először válassza ki az igazolási **mechanizmus** az eszköz (X.509 vagy TPM). X.509-igazoláshoz kötelező feltölteni a levél **elsődleges tanúsítvány** az eszközhöz. TPM kell adnia a **igazolási kulcs** és **regisztrációs azonosító** az eszközhöz.  
+       d. Kattintson a **Save** (Mentés) gombra. A regisztrációs csoport sikeres létrehozás esetén kell megjelennie az eszköz meg fog jelenni a **egyéni regisztrációk** fülre.  
 
-       [![Az egyes beléptetési a portálon](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+       [![Egyéni regisztráció a portálon](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 
 ## <a name="update-an-enrollment-entry"></a>Regisztrációs bejegyzés frissítése
-Frissítheti a meglévő regisztrációs bejegyzése a portálon, az alábbi lépéseket követve:
+Egy meglévő eszközregisztrációs bejegyzés a portálon az alábbi lépéseket követve frissítheti:
 
-1. Nyissa meg az eszközök kiépítését szolgáltatást az Azure portálon, és kattintson a **kezelése regisztrációkat**. 
-2. Nyissa meg a módosítani kívánt regisztrációs bejegyzés. Kattintson a bejegyzésre, amely megnyit egy az eszközök regisztrálásával kapcsolatos összegző információkat. 
-3. Ezen a lapon a Biztonság típusa nem módosítható, és a hitelesítő adatokat, például az IoT-központ az eszközt össze kell kapcsolni, valamint az eszközazonosító. A kezdeti eszköz iker állapotát is módosíthatja. 
-4. Ezt követően kattintson **mentése** az eszközregisztráció frissítéséhez. 
+1. Nyissa meg a Device Provisioning service az Azure Portalon, és kattintson a **regisztrációk kezelése**. 
+1. Keresse meg a módosítani kívánt regisztrációs bejegyzés. Kattintson a bejegyzésre, amely megnyit egy eszközök regisztrálásával kapcsolatos összegző információkat. 
+1. Ezen az oldalon módosíthatja a biztonsági típus eltérő elemek, és a hitelesítő adatokat, például az IoT hubhoz az eszközt össze kell kapcsolni, valamint az eszköz azonosítójával. Az ikereszköz kezdeti állapota is módosíthatja. 
+1. Ha befejeződött, kattintson a **mentése** az eszközregisztráció frissítéséhez. 
 
-    ![Frissíti a regisztrációját a portálon](./media/how-to-manage-enrollments/update-enrollment.png)
+    ![Regisztráció a portálon frissítése](./media/how-to-manage-enrollments/update-enrollment.png)
 
-## <a name="remove-a-device-enrollment"></a>Távolítsa el az olyan eszközök beléptetése
-Azokban az esetekben, ahol az eszközöket nem kell kell létrehozni, hogy az IoT-központ eltávolíthatja a kapcsolódó regisztrációs bejegyzés a portálon, az alábbi lépéseket követve:
+## <a name="remove-a-device-enrollment"></a>Távolítsa el a eszközök regisztrálása
+Azokban az esetekben, ahol az eszköz nem kell lennie minden olyan IoT hubon építette ki akkor a kapcsolódó regisztrációs bejegyzést a portálon az alábbi lépéseket követve távolíthatja el:
 
-1. Nyissa meg az eszközök kiépítését szolgáltatást az Azure portálon, és kattintson a **kezelése regisztrációkat**. 
-2. Keresse meg és válassza ki az eltávolítani kívánt beléptetési. 
-3. Kattintson a **törlése** felső gombra, majd válassza ki **Igen** megerősítéséhez. 
-5. Ha a művelet befejeződött, a bejegyzés eltávolítja a listáról, az eszközök regisztrációját jelenik meg. 
+1. Nyissa meg a Device Provisioning service az Azure Portalon, és kattintson a **regisztrációk kezelése**. 
+1. Keresse meg és válassza ki az eltávolítani kívánt regisztrációs bejegyzés. 
+1. Kattintson a **törlése** gombra az oldal tetején, majd **Igen** megerősítéséhez. 
+1. A művelet befejezése után az eszközök regisztrációját a listából eltávolított bejegyzést fog látni. 
  
-    ![Távolítsa el a regisztrációs a portálon](./media/how-to-manage-enrollments/remove-enrollment.png)
+    ![Regisztráció a portálon eltávolítása](./media/how-to-manage-enrollments/remove-enrollment.png)
 
 

@@ -1,30 +1,30 @@
 ---
-title: A szolgáltatással modell adatok gyűjtése az Azure Machine Learning-munkaterület |} Microsoft Docs
-description: Ez a cikk a modell adatok gyűjtemény szolgáltatás használata az Azure Machine Learning-munkaterület beszél
+title: A modell adatok gyűjtési szolgáltatás használata az Azure Machine Learning Workbenchben |} A Microsoft Docs
+description: Ez a cikk ismerteti a modell adatok gyűjtési szolgáltatás használata az Azure Machine Learning Workbenchben
 services: machine-learning
 author: aashishb
 ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 7a76322d70f6b54d65a4b751a7187425cb4be821
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5c1a884ebe6216c4e8099f2ada2182ccff68b63e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834542"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449784"
 ---
-# <a name="collect-model-data-by-using-data-collection"></a>Adatgyűjtés a modell adatainak gyűjtéséről
+# <a name="collect-model-data-by-using-data-collection"></a>Az adatgyűjtés modelladatok gyűjtése
 
-A modell adatok gyűjtemény funkció az Azure Machine Learning segítségével archiválja a modell a be- és egy webszolgáltatás-bővítmény által.
+A modell adatok gyűjtési szolgáltatás az Azure Machine Learning segítségével archiválja modellbemenetek és előrejelzések webszolgáltatásból.
 
 ## <a name="install-the-data-collection-package"></a>Az adatgyűjtési csomag telepítése
-A Linux és Windows natív módon telepítheti a gyűjtemény könyvtára.
+A gyűjtemény könyvtára natív módon telepítheti a Linux és Windows.
 
 ### <a name="windows"></a>Windows
 Telepítse az adatokat gyűjtő moduljának Windows, a következő paranccsal:
@@ -32,7 +32,7 @@ Telepítse az adatokat gyűjtő moduljának Windows, a következő paranccsal:
     pip install azureml.datacollector
 
 ### <a name="linux"></a>Linux
-Linux először telepítse a libxml ++ könyvtárban. A következő parancsot, amely kell kiadni a sudo:
+Linuxon először telepítse a libxml ++ könyvtárban. Futtassa az alábbi parancsot, amely a sudo kell kiadni:
 
     sudo apt-get install libxml++2.6-2v5
 
@@ -42,21 +42,21 @@ Ezután futtassa a következő parancsot:
 
 ## <a name="set-environment-variables"></a>Környezeti változók beállítása
 
-Modell adatgyűjtés két környezeti változók függ. AML_MODEL_DC_STORAGE_ENABLED értékre kell állítani **igaz** (összes, kisbetű) és AML_MODEL_DC_STORAGE értékre kell állítani az Azure-tárfiók kapcsolati karakterlánca hol szeretné tárolni az adatokat.
+A modelladatok gyűjtésének két környezeti változó függ. AML_MODEL_DC_STORAGE_ENABLED értékre kell állítani **igaz** (csak kisbetűkkel) és AML_MODEL_DC_STORAGE kell állítani az Azure Storage-fiókhoz tartozó kapcsolati karakterláncot, az adatokat tárolni szeretné.
 
-Ezek a környezeti változók van beállítva, ha a webszolgáltatás fut a fürtön, az Azure-ban. A helyi futtatás során kell saját kezűleg meg őket. Docker használ, ha a parancs futtatása a docker -e paraméterének használatával átadására környezeti változók.
+Ezekhez a környezeti változókhoz van beállítva, a web service-fürtön az Azure-ban való futtatásakor. Helyi futtatás során kell állítani őket saját maga. Ha használja a Docker, a docker, futtassa a parancsot az – e paraméter használatával adja át a környezeti változókat.
 
 ## <a name="collect-data"></a>Adatok gyűjtése
 
-A modell adatgyűjtés használatához a következő módosításokat a pontozási fájlba:
+A modelladatgyűjtés használata, hajtsa végre a következő módosításokat a pontozófájl:
 
-1. A fájl elejéhez adja hozzá a következő kódot:
+1. Adja hozzá a következő kódot a fájl elejéhez:
    
     ```python
     from azureml.datacollector import ModelDataCollector
     ```
 
-2. Adja hozzá a következő sorokat a kód a `init()` függvény:
+1. Adja hozzá a következő kódsort a `init()` függvény:
     
     ```python
     global inputs_dc, prediction_dc
@@ -64,7 +64,7 @@ A modell adatgyűjtés használatához a következő módosításokat a pontozá
     prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")
     ```
 
-3. Adja hozzá a következő sorokat a kód a `run(input_df)` függvény:
+1. Adja hozzá a következő kódsort a `run(input_df)` függvény:
     
     ```python
     global inputs_dc, prediction_dc
@@ -72,43 +72,43 @@ A modell adatgyűjtés használatához a következő módosításokat a pontozá
     prediction_dc.collect(pred)
     ```
 
-    Győződjön meg arról, hogy a változók `input_df` és `pred` (előrejelzés értéket `model.predict()`) a rendszer hívása előtt inicializálja a `collect()` függvény rajtuk.
+    Győződjön meg arról, hogy a változók `input_df` és `pred` (előrejelzés értéket `model.predict()`) hívása előtt inicializálja a `collect()` függvény rajtuk.
 
-4. Használja a `az ml service create realtime` parancsot a `--collect-model-data true` kapcsolót, hogy hozzon létre egy valós idejű webszolgáltatás-bővítmény. Ez a lépés gondoskodik arról, hogy a modell adatait gyűjti a program a szolgáltatás fut.
+1. Használja a `az ml service create realtime` parancsot a `--collect-model-data true` kapcsolót, hogy a valós idejű webszolgáltatás létrehozására. Ebben a lépésben gondoskodik arról, hogy a modell adatait gyűjti a program fut a szolgáltatás.
 
      ```batch
     c:\temp\myIris> az ml service create realtime -f iris_score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
     ```
     
-5. Az adatgyűjtés teszteléséhez futtassa a `az ml service run realtime` parancs:
+1. Ha tesztelni szeretné az adatgyűjtést, futtassa a `az ml service run realtime` parancsot:
 
     ```
     C:\Temp\myIris> az ml service run realtime -i irisapp -d "ADD YOUR INPUT DATA HERE!!" 
     ``` 
     
 ## <a name="view-the-collected-data"></a>Az összegyűjtött adatok megtekintése
-Az összegyűjtött adatok megtekintése a blob Storage tárolóban:
+Az összegyűjtött adatok megtekintése a blob storage-ban:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **minden szolgáltatás**.
-3. Írja be a keresőmezőbe, **tárfiókok** válassza ki az Enter billentyűt.
-4. Az a **tárfiókok** keresési panelen válassza a **tárfiók** erőforrás. Annak megállapításához, a tárfiók, tegye a következőket:
+1. Válassza ki **minden szolgáltatás**.
+1. A Keresés mezőbe írja be a **tárfiókok** és az Enter billentyűt.
+1. Az a **tárfiókok** keresés panelen válassza ki a **tárfiók** erőforrás. Annak megállapításához, a storage-fiókot, használja az alábbi lépéseket:
 
-    a. Ugrás az Azure Machine Learning-munkaterület, válassza ki a projekt dolgozik, és nyisson meg egy parancssort a **fájl** menü.
+    a. Ugrás az Azure Machine Learning Workbench, válassza ki a projektet, amelyen dolgozik, és nyisson meg egy parancssort a **fájl** menü.
     
-    b. Adja meg `az ml env show -v` , és ellenőrizze a *storage_account* érték. Ez az Ön Storage-fiókjának neve
+    b. Adja meg `az ml env show -v` , és ellenőrizze a *storage_account* értéket. Ez az Ön Storage-fiókjának neve
 
-5. Válassza ki **tárolók** az erőforrás-panel menüt, és a tároló neve **modeldata**. Indítsa el a tárolási fiók propagálása adatok megjelenítéséhez szükség lehet a webalkalmazás első kérelem után akár 10 percet várnia. Az adatok a következő tárolóútvonallal vannak a blobokba továbbítva:
+1. Válassza ki **tárolók** az erőforrás panel menüjének, és a tároló nevű **modeldata**. Tekintse meg az adatok propagálódjanak a storage-fiókba, szükség van az első webszolgáltatás-kérés után akár 10 percet várnia. Az adatok a következő tárolóútvonallal vannak a blobokba továbbítva:
 
     `/modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv`
 
-Adatok az Azure-blobokat képes használni a többféle módon, Microsoft-szoftverek és nyílt forrású eszközök is. Néhány példa:
-- Az Azure Machine Learning munkaterület: Nyissa meg a .csv fájlt Azure Machine Learning-munkaterület adatforrásként a .csv fájl hozzáadásával.
-- Excel: Munkafüzetként nyissa meg a napi .csv fájlokat.
-- [A Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/): blobok adatokat .csv lekért adatok készíthetnek diagramokat.
-- [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): adatok keret hozzon létre egy .csv adatok nagy része.
+Az Azure-blobokból tudják használni a többféle módon, Microsoft szoftvereket és nyílt forráskódú eszközök használatával. Néhány példa:
+- Az Azure Machine Learning Workbench: A .csv-fájlt az Azure Machine Learning Workbenchben való felvételével nyissa meg a .csv-fájlt adatforrásként.
+- Excel: Nyissa meg a napi csv-fájlokat a táblázatként.
+- [Power bi-ban](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/): hozzon létre diagramokat a .csv nyerhető a blobok lekért adatokkal.
+- [A Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): adatkeretek hozzon létre egy .csv-adatok nagy része.
     ```python
     var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
     ```
-- [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): .csv adatok betöltése a struktúrát a tábla, és végezze el az SQL lekérdezések közvetlenül a blob.
+- [Hive-](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): .csv-adatok betöltése, a Hive táblát, és végezzen SQL-lekérdezéseket közvetlenül a blobon.
 

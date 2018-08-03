@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs-minták |} Microsoft Docs
+title: Azure Event Hubs-minták |} A Microsoft Docs
 description: Azure Event Hubs-minták
 services: event-hubs
 documentationcenter: na
@@ -12,64 +12,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: sethm
-ms.openlocfilehash: 9d2c38ac589e5120441daf972217e61738fd57a1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 8e80587f7b3f6b0cb081fd963848c7aa3ab11e3e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131355"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431256"
 ---
-# <a name="event-hubs-samples"></a>Event Hubs – minták 
+# <a name="event-hubs-samples"></a>Event Hubs-minták 
+Az Event Hubs-minták találhat [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Ezek a minták a legfontosabb funkcióit mutatja be [Azure Event Hubs](/azure/event-hubs/). Ez a cikk kategorizálja, és ismerteti a rendelkezésre álló, hivatkozásokkal az egyes minták.
 
-Az Azure Event Hubs minták készletét bemutatja a legfontosabb jellemzők [Azure Event Hubs](/azure/event-hubs/). Ez a cikk kategorizálja, és az egyes hivatkozásokkal elérhető mintákat ismerteti.
+## <a name="net-samples"></a>.NET-minták
 
-Az Event Hubs minták írásának időpontjában számos különböző helyeken találhatók:
+| Minta neve | Leírás | 
+| ----------- | ----------- | 
+| [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) | Ez a példa bemutatja, hogyan írható olyan .NET Core-konzolalkalmazást, amely események egy meghatározott készletének küld egy eseményközpontnak. |
+| [SampleEHReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) | Ez a példa bemutatja, hogyan írható olyan .NET Core-konzolalkalmazást, amely események egy meghatározott készletének fogad egy eseményközpontból az Event Processor Host tár használatával.  | 
 
-- [MSDN fejlesztői mintakódok](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
-- [GitHubon](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+## <a name="java-samples"></a>Java-példák
 
-A .NET-keretrendszer különböző verziói kapcsolatos további információkért lásd: [keretrendszerek és célok](/dotnet/articles/standard/frameworks).
-
-Több minta lesz hozzáadva adott idő alatt, ezért vissza ide gyakran frissítések keresése.
-
-## <a name="net-standard"></a>.NET Standard
-
-A következő minták bemutatják, hogyan lehet küldeni és fogadni az eseményeket a [Event Hubs-ügyfél](https://github.com/Azure/azure-event-hubs-dotnet/blob/master/readme.md) a a [.NET szabványos függvénytár](/dotnet/articles/standard/library).
-
-### <a name="send-events"></a>Események küldése 
-
-A [Ismerkedés küldése](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) minta bemutatja, hogyan írása a .NET Core console alkalmazást, amely események az eseményközpontba.
-
-### <a name="receive-events"></a>Események fogadása 
-
-A [fogadását az Event Processor Host az első lépések](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) minta a .NET Core-Konzolalkalmazás, amely üzeneteket fogad egy eseményközpontot, az Event Processor Host használatával.
-
-## <a name="net-framework"></a>.NET-keretrendszer   
-
-Azure Event hubs célcsoport-kezelési különböző más funkciókat fogunk bemutatni, ezeket a mintákat a [.NET Framework könyvtár](/dotnet/framework/index).
- 
-### <a name="notify-users-of-events-received"></a>Értesítse a felhasználókat a fogadott események
-
-A [AppToNotifyUsers](https://github.com/Azure-Samples/event-hubs-dotnet-user-notifications) minta értesíti a felhasználókat az érzékelők vagy más rendszerek érkező adatokat.
-
-### <a name="get-started-with-event-hubs"></a>Bevezetés az Event Hubs használatába 
-
-A [Event Hubs használatának első lépéseit](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097) például létrehoz egy eseményközpontot, események küldése az eseményközpont, és segítségével események felhasználásához az Event Hubs alapvető képességeit mutatja be a [Event Processor Host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) .
-
-### <a name="scale-out-event-processing"></a>Horizontális felskálázás esemény feldolgozása 
-
-A [esemény feldolgozása kibővítési](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) minta bemutatja, hogyan használható a [Event Processor Host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) Event Hubs adatfolyam fogyasztás okozott terhelés elosztásához. Azt illusztrálja, hogyan megvalósításához a **EventProcessor** és **EventProcessorFactory** az eseménystream kezelendő objektumokat. 
+| Minta neve | Leírás | 
+| ----------- | ----------- | 
+| [SendBatch](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SendBatch)  | Ez a példa bemutatja, hogyan kötegek események fogadása az event hubs-eseményközpontba. | 
+| [SimpleSend](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) | Ez a példa bemutatja, hogyan események fogadása az event hubs-eseményközpontba. |
+| [AdvanceSendOptions](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/AdvancedSendOptions) | Ez a példa bemutatja az eseményeket, hogy az Event hubs szolgáltatással elérhető különböző lehetőségek. |
+| [ReceiveByDateTime](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveByDateTime) | Ez a példa bemutatja, hogyan események fogadása az event hub-partícióról használatával egy adott dátum-idő eltolása. |
+| [ReceiveUsingOffset](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingOffset) | Ez a példa bemutatja, hogyan események fogadása az event hub-partícióról használatával egy adott eltolása. |  
+| [ReceiveUsingSequenceNumber](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingSequenceNumber) | Ez a példa bemutatja, hogyan igényelhető az event hub partíciók használatával egy megfelelő sorszám. |   
+| [EventProcessorSample](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/EventProcessorSample) |Ez a példa bemutatja, hogyan események fogadása az eseményközpontok a több egyidejű fogadóra automatikus partíció-kiválasztási és -feladatátvételt biztosító event processor host használatával. | 
+| [AutoScaleOnIngress](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/AutoScaleOnIngress) | Ez a példa bemutatja, hogyan egy eseményközpont is automatikus vertikális felskálázás a magas terhelés. A minta gyakorisággal csupán haladhatja meg az eseményközpontok felé, ami az vertikális felskálázása az event hubs konfigurált arányát eseményeket küld. | 
+| [IngressBenchmark](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/IngressBenchmark) | Ez a minta lehetővé teszi, hogy a bejövő forgalom mérése. | 
 
 ## <a name="next-steps"></a>További lépések
-
-További tudnivalók a .NET-keretrendszer-verziók érhetők el a következőket:
-
-- [Keretrendszerek és célok](/dotnet/articles/standard/frameworks)
-- [.NET-keretrendszer 4.6 és 4.5](/dotnet/framework/index)
-
-Ön többet is megtudhat az Event Hubs a következő cikkekben:
+További információ az Event Hubs az alábbi cikkeket:
 
 - [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)
 - [Event Hubs-szolgáltatások](event-hubs-features.md)

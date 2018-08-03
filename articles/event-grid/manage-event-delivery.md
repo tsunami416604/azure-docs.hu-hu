@@ -6,52 +6,20 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: e91ee640d18e2cf804be33fd130bf48737c9efb1
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 0e575d668e28be52ee4ca61226693122304c7ea0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035669"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441358"
 ---
-# <a name="manage-event-grid-delivery-settings"></a>Event Grid Kézbesítési beállítások kezelése
+# <a name="dead-letter-and-retry-policies"></a>Kézbesítetlen levelek és újrapróbálkozási szabályzatok
 
 Egy esemény-előfizetés létrehozásakor testre szabható eseménykézbesítés beállításait. Beállíthatja, hogy mennyi ideig Event Grid próbál kézbesíteni az üzenetet. Beállíthat egy eseményeket, amelyek nem sikerült kézbesíteni a végpont tárolására szolgáló tárfiókot.
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
-
-## <a name="set-retry-policy"></a>Újrapróbálkozási szabályzat beállítása
-
-Event Grid-előfizetés létrehozásakor beállíthatja mennyi ideig kell próbálja az Event Grid, hogy az esemény értékeit. Alapértelmezés szerint az Event Grid kísérletek 24 óra (1440 perc), és legfeljebb 30 alkalommal próbálkozik. Ezek az értékek valamelyike beállíthatja az event grid-előfizetés számára.
-
-Az esemény time-to-live 1440 perc értéktől létrehozásához használja:
-
-```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
-az eventgrid event-subscription create \
-  -g gridResourceGroup \
-  --topic-name <topic_name> \
-  --name <event_subscription_name> \
-  --endpoint <endpoint_URL> \
-  --event-ttl 720
-```
-
-A maximális újrapróbálkozási kísérletek 30-től eltérő érték beállításához használja:
-
-```azurecli-interactive
-az eventgrid event-subscription create \
-  -g gridResourceGroup \
-  --topic-name <topic_name> \
-  --name <event_subscription_name> \
-  --endpoint <endpoint_URL> \
-  --max-delivery-attempts 18
-```
-
-Ha mind `event-ttl` és `max-deliver-attempts`, Event Grid használja az első az újrapróbálkozási kísérletek lejár.
 
 ## <a name="set-dead-letter-location"></a>Kézbesíthetetlen levelek helyének beállítása
 
@@ -85,8 +53,41 @@ Event Grid használatára kézbesítetlen válaszadására [esemény-előfizeté
 
 Kikapcsolja a kézbesítetlen levelek kezelése, futtassa újra a parancsot az esemény-előfizetés létrehozásához, de nem ad meg értéket `deadletter-endpoint`. Az Eseményelőfizetés törlése nincs szükségünk.
 
+## <a name="set-retry-policy"></a>Újrapróbálkozási szabályzat beállítása
+
+Event Grid-előfizetés létrehozásakor beállíthatja mennyi ideig kell próbálja az Event Grid, hogy az esemény értékeit. Alapértelmezés szerint az Event Grid kísérletek 24 óra (1440 perc), és legfeljebb 30 alkalommal próbálkozik. Ezek az értékek valamelyike beállíthatja az event grid-előfizetés számára.
+
+Az esemény time-to-live 1440 perc értéktől létrehozásához használja:
+
+```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid event-subscription create \
+  -g gridResourceGroup \
+  --topic-name <topic_name> \
+  --name <event_subscription_name> \
+  --endpoint <endpoint_URL> \
+  --event-ttl 720
+```
+
+A maximális újrapróbálkozási kísérletek 30-től eltérő érték beállításához használja:
+
+```azurecli-interactive
+az eventgrid event-subscription create \
+  -g gridResourceGroup \
+  --topic-name <topic_name> \
+  --name <event_subscription_name> \
+  --endpoint <endpoint_URL> \
+  --max-delivery-attempts 18
+```
+
+Ha mind `event-ttl` és `max-deliver-attempts`, Event Grid használja az első az újrapróbálkozási kísérletek lejár.
+
 ## <a name="next-steps"></a>További lépések
 
+* Egy mintaalkalmazás, amely egy Azure-függvényalkalmazást kézbesítetlen levelek események feldolgozásához használja, lásd: [Azure Event Grid kézbesítetlen levelek minták a .NET-hez](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
 * Eseménykézbesítés és újrapróbálkozás [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
 * Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
 * Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).

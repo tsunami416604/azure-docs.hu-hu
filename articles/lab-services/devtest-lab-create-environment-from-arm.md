@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 5ae7a0d3aa0606fd02bfbaa0dcebdfaed5d11eb7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: a6f6beedfc6c23be70693428388f6d0e585260bc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283093"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433170"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal
 
@@ -136,7 +136,7 @@ Miután mentése a Resource Manager-sablonnal, és igény szerint testreszabott,
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) ismerteti, hogyan lehet Azure CLI használatával a Resource Manager-sablonokkal helyezheti üzembe az erőforrásokat az Azure-bA.
 
 > [!NOTE]
-> Csak egy tesztlabor tulajdonosi engedélyekkel rendelkező felhasználói virtuális gépeket hozhat létre a Resource Manager-sablon Azure PowerShell használatával. Ha szeretné automatizálni a virtuális gép létrehozása Resource Manager-sablon használatával, és csak felhasználói engedélyek, használhatja a [ **az lab vm létrehozása** parancsot a parancssori felületen](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create).
+> Csak egy tesztlabor tulajdonosi engedélyekkel rendelkező felhasználói virtuális gépeket hozhat létre a Resource Manager-sablon Azure PowerShell használatával. Ha szeretné automatizálni a virtuális gép létrehozása Resource Manager-sablon használatával, és csak felhasználói engedélyek, használhatja a [ **az lab vm létrehozása** parancsot a parancssori felületen](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create).
 
 ### <a name="general-limitations"></a>Általános korlátozások 
 

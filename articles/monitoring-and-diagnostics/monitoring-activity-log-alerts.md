@@ -1,6 +1,6 @@
 ---
-title: Napló riasztások klasszikus tevékenység létrehozása
-description: Értesítést SMS, webhook és e-mailt a műveletnaplóban bizonyos események megtörténtekor.
+title: Klasszikus tevékenységnapló-riasztások létrehozása
+description: Értesítést küldünk az SMS, webhook és e-mailek bizonyos események történnek a tevékenységnaplóban.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,121 +8,121 @@ ms.topic: conceptual
 ms.date: 03/18/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 84bd82f479ce516152f50d5753e8d91940724c93
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 120fd3552ad36b3d19179f39ca95ce2b3ee2c2e6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263524"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426618"
 ---
-# <a name="create-activity-log-alerts-classic"></a>Napló riasztások (klasszikus) tevékenység létrehozása
+# <a name="create-activity-log-alerts-classic"></a>Tevékenységnapló-riasztások (klasszikus) létrehozása
 
 ## <a name="overview"></a>Áttekintés
-Tevékenység napló riasztások az éppen aktiválása, ha egy új tevékenység napló esemény történik a riasztás megadott feltételeknek megfelelő riasztásokat. Azure-erőforrások, így azok hozhat létre Azure Resource Manager-sablonnal. Akkor is is létrehozása, frissítése, vagy törölve az Azure portálon. Ez a cikk bemutatja a napló tevékenységriasztásokat mögött. Azt ezután bemutatja, hogyan használható az Azure-portálon naplózási eseményeket a riasztás beállításához.
+A tevékenységnapló-riasztások aktiválása, ha egy új tevékenységnapló eseményéhez akkor fordul elő a riasztást a megadott feltételeknek megfelelő riasztásokat is. Azure-erőforrások, így azok az Azure Resource Manager-sablon segítségével hozható létre. Akkor is képes lehet létrehozott, frissített vagy törölt az Azure Portalon. Ez a cikk bemutatja a tevékenységnapló-riasztások mögött. Majd bemutatja, hogyan állítsa be a riasztást a tevékenységnapló-események az Azure portal használatával.
 
 > [!NOTE]
 
->  Az új [riasztások](monitoring-overview-unified-alerts.md) élmény váltja fel ezt az eljárást. Ez a cikk az előzetes tapasztalata előírt hivatkozásként. [További információk](monitoring-activity-log-alerts-new-experience.md).
+>  Az új [riasztások](monitoring-overview-unified-alerts.md) élmény váltotta fel ezt az eljárást. Ez a cikk a korábbi élmény biztosítunk hivatkozásként van listázva. [További információk](monitoring-activity-log-alerts-new-experience.md).
 
-Általában létrehozhat tevékenység napló riasztásokat, értesítéseket során:
+Általában akkor tevékenységnapló-riasztások létrehozása az értesítések fogadása során:
 
-* Erőforrások az Azure-előfizetése, gyakran hatókörű adott forrás-és erőforrások adott változás. Például előfordulhat, hogy kívánt értesíti, ha bármely myProductionResourceGroup a virtuális gép törlődik. Vagy előfordulhat, hogy szeretne értesítést kapni, ha új szerepköröket a felhasználó az előfizetéshez vannak rendelve.
-* Egy szolgáltatás állapotát az esemény akkor következik be. Szolgáltatás állapotával kapcsolatos események tartalmazzák az incidensek és karbantartási események erőforrást az előfizetésében vonatkozó értesítés.
+* Adott változások történnek az erőforrások az Azure-előfizetésben, az adott erőforrás-csoportok vagy az erőforrások gyakran hatóköre. Például érdemes értesíti, ha bármelyik virtuális gépre myProductionResourceGroup törlődik. Vagy előfordulhat, hogy szeretne értesítést kapjon, ha egyetlen új szerepkör hozzá van rendelve egy felhasználó az előfizetésében.
+* A service health esemény következik be. A Szolgáltatásállapot-események értesítési incidensek és a karbantartási események, amelyek érvényesek az előfizetése tartalmazza.
 
-Mindkét esetben egy figyelmeztetés a napló csak az eseményeket az előfizetés, amelyben a riasztást hoz létre figyeli.
+Mindkét esetben a tevékenységnapló-riasztás csak az az előfizetés, amelyben a riasztás létrejött eseményeket figyeli.
 
-A JSON-objektumokat az tevékenység naplóesemény legfelső szintű tulajdonságnak sem alapján tevékenység napló riasztásokat lehet beállítani. A portál azonban a leggyakoribb beállítások láthatók:
+Egy tevékenységnapló-riasztás alapján a JSON-objektumokat egy tevékenységnapló eseményéhez szereplő összes legfelső szintű tulajdonsággal is beállíthatja. A portálon azonban a leggyakrabban használt beállításai láthatók:
 
-- **Kategória**: felügyeleti, a szolgáltatás állapotát, automatikus skálázás és javaslat. További információkért lásd: [az Azure tevékenységnapló áttekintése](./monitoring-overview-activity-logs.md#categories-in-the-activity-log). A szolgáltatás állapotával kapcsolatos események kapcsolatos további információkért lásd: [szolgáltatáshoz értesítést tevékenység napló riasztásokat fogadhat](./monitoring-activity-log-alerts-on-service-notifications.md).
+- **Kategória**: rendszergazda, a Service Health, automatikus méretezés és javaslat. További információkért lásd: [áttekintése az Azure-tevékenységnapló](./monitoring-overview-activity-logs.md#categories-in-the-activity-log). A Szolgáltatásállapot-események kapcsolatos további információkért lásd: [szolgáltatási értesítésekhez tevékenységnapló-riasztások fogadása](./monitoring-activity-log-alerts-on-service-notifications.md).
 - **Erőforráscsoport**
 - **Erőforrás**
 - **Erőforrás típusa**
-- **A művelet neve**: hozzáférés-vezérlés The Resource Manager Role-Based művelet neve.
+- **Název operace**: hozzáférés-vezérlés The Resource Manager Role-Based művelet neve.
 - **Szint**: A súlyossági szintet az esemény (részletes, tájékoztatás, figyelmeztetés, hiba vagy kritikus).
 - **Állapot**: az esemény, általában elindult, sikertelen vagy sikeres állapotát.
-- **Az esemény által kezdeményezett**: más néven a "hívó." Az e-mail cím vagy a műveletet a felhasználó Azure Active Directory azonosítója.
+- **Esemény kezdeményezője**: más néven a "hívó." Az e-mail címet vagy az Azure Active Directory a műveletet végrehajtó felhasználó azonosítója.
 
 > [!NOTE]
-> "Rendszergazda" kategória esetén meg kell adnia legalább egy a fenti feltételek közül a riasztásban. Nem hozható létre egy riasztást, amely minden alkalommal, amikor egy esemény jön létre a tevékenységi naplóit aktiválja.
+> Ha "rendszergazda" kategória, adjon meg legalább egy, a fenti feltételek közül a riasztásban. Nem hozható létre egy riasztást, amely minden alkalommal, amikor létrejön egy esemény a Tevékenységnaplókban aktiválja.
 
-Amikor egy tevékenység napló riasztás aktív, az egy műveletek vagy értesítések. Egy olyan újrafelhasználható értesítési fogadók, például az e-mail címeket, a webhook URL-címek vagy SMS telefonszámokat. A fogadók központosítása és az értesítési csatornák csoport több riasztás lehet hivatkozni. Ha a napló figyelmeztetés, két választási lehetősége van. A következőket teheti:
+Tevékenységnapló-riasztás aktiválódik, ha a műveletek vagy értesítések műveletcsoportot használ. Műveletcsoport egy újrafelhasználható értesítési címzett e-mail-címeket, például a webhook URL-címek vagy SMS ügyfélszolgálatának telefonszámai. A fogadók központosítása és az értesítési csatornák csoportban több riasztásokból lehet hivatkozni. A tevékenységnapló-riasztás határozza meg, amikor két lehetősége van. A következőket teheti:
 
-* A napló figyelmeztetés művelet meglévő csoport használata
-* Hozzon létre egy új művelet.
+* Használja meglévő műveletcsoport a tevékenységnapló-riasztás.
+* Hozzon létre egy új műveletcsoportot.
 
-Művelet csoportokkal kapcsolatos további tudnivalókért lásd: [létrehozása és kezelése az Azure portálon művelet csoportok](monitoring-action-groups.md).
+További információ a műveletcsoportokról, lásd: [létrehozása és kezelése az Azure Portalon Műveletcsoportok](monitoring-action-groups.md).
 
-A szolgáltatás állapotával kapcsolatos értesítésekre kapcsolatos további információkért lásd: [tevékenység napló értesítést a szolgáltatás állapotával kapcsolatos értesítésekre](monitoring-activity-log-alerts-on-service-notifications.md).
+Szolgáltatás állapotára vonatkozó értesítések kapcsolatos további információkért lásd: [tevékenységnapló-riasztások a szolgáltatás állapotára vonatkozó értesítések fogadásához](monitoring-activity-log-alerts-on-service-notifications.md).
 
-## <a name="create-an-alert-classic-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>Riasztás létrehozása (klasszikus) a művelet új csoportot a tevékenység napló esemény az Azure portál használatával
-1. Az a [portal](https://portal.azure.com), jelölje be **figyelő**.
+## <a name="create-an-alert-classic-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>Riasztás létrehozása (klasszikus) egy tevékenységnapló eseményéhez az új műveletcsoport az Azure portal használatával
+1. Az a [portál](https://portal.azure.com)válassza **figyelő**.
 
     ![A "Figyelés" szolgáltatás](./media/monitoring-activity-log-alerts/home-monitor.png)
-2. Az a **tevékenységnapló** szakaszban jelölje be **riasztások (klasszikus)**.
+1. Az a **tevékenységnapló** szakaszban jelölje be **riasztások (klasszikus)**.
 
     ![Az "Értesítések" lapon](./media/monitoring-activity-log-alerts/alerts-blades.png)
-3. Válassza ki **Hozzáadás figyelmeztetés a napló**, és töltse ki a mezőket.
+1. Válassza ki **tevékenységnapló-riasztás hozzáadása**, és töltse ki a mezőket.
 
-4. Írjon be egy nevet a **tevékenység napló riasztás neve** mezőbe, majd válassza ki a **leírás**.
+1. Írjon be egy nevet a **tevékenységnapló-riasztás neve** mezőbe, majd válassza ki a **leírás**.
 
-    ![A "Hozzáadás napló figyelmeztetés" parancs](./media/monitoring-activity-log-alerts/add-activity-log-alert.png)
+    ![A "Tevékenységnapló-riasztás hozzáadása" parancs](./media/monitoring-activity-log-alerts/add-activity-log-alert.png)
 
-5. A **előfizetés** a jelenlegi előfizetés autofills mezőben. Ez az előfizetés, amelyben a művelet csoport mentett lesz. A riasztási erőforrás ebbe az előfizetésbe telepítve van, és figyeli a naplózási eseményeket belőle.
+1. A **előfizetés** az aktuális előfizetéshez autofills mezőbe. Ebben az előfizetésben a műveletcsoport elmentett. A riasztási erőforrás ehhez az előfizetéshez van telepítve, és figyeli, a tevékenységnapló eseményeit.
 
-    ![A "Napló figyelmeztetés hozzáadása" párbeszédpanel](./media/monitoring-activity-log-alerts/activity-log-alert-new-action-group.png)
+    ![A "Tevékenységnapló-riasztás hozzáadása" párbeszédpanel](./media/monitoring-activity-log-alerts/activity-log-alert-new-action-group.png)
 
-6. Válassza ki a **erőforráscsoport** a riasztási erőforrás létrehozása. Ez nem az erőforráscsoport, amelyet a riasztást. Ehelyett az erőforráscsoportot, ahol a riasztás erőforrás.
+1. Válassza ki a **erőforráscsoport** , amelyben a riasztási erőforrás létrejön. Ez a nem az erőforráscsoport, a riasztás által figyelt. Ehelyett érdemes az erőforráscsoport, ahol a riasztás erőforrás megtalálható.
 
-7. Ha kijelöl egy **eseménykategória** módosítása a további szűrőket látható. A felügyeleti események, a szűrők a következők **erőforráscsoport**, **erőforrás**, **erőforrástípus**, **műveletnév**, **Szint**, **állapot**, és **esemény által kezdeményezett**. Ezeket az értékeket a riasztás célszerű figyelemmel kísérni események azonosítása.
+1. Kiválaszthat egy **eseménykategória** jelennek meg a további szűrők módosításához. Felügyeleti események, a szűrők a következők **erőforráscsoport**, **erőforrás**, **erőforrástípus**, **műveletnév**, **Szint**, **állapot**, és **esemény kezdeményezője**. Ezek az értékek azonosítják, mely eseményeket a riasztás figyelni kell.
 
     >[!NOTE]
-    >Meg kell adnia legalább egy a fenti feltételek közül a riasztásban. Nem hozható létre egy riasztást, amely minden alkalommal, amikor egy esemény jön létre a tevékenységi naplóit aktiválja.
+    >A fenti feltételek legalább egyikének a riasztásban szereplő adjon meg. Nem hozható létre egy riasztást, amely minden alkalommal, amikor létrejön egy esemény a Tevékenységnaplókban aktiválja.
     >
     >
 
-8. Adjon meg egy nevet a a **művelet csoportnév** mezőbe, majd írjon be egy nevet a **rövid név** mezőbe. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
+1. Adjon meg egy nevet a a **műveletcsoport neve** mezőbe, majd adjon meg egy nevet a a **rövid, nevet** mezőbe. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 
-9.  A művelet megadásával határozza meg azon műveletek listáját:
+1.  Adja meg a műveleteknek a listája, azáltal, hogy a művelet:
 
-    a. **Név**: Adja meg a művelet neve, az alias vagy a azonosítója.
+    a. **Név**: Adja meg a művelet nevét, alias vagy azonosítója.
 
-    b. **Művelet típusa**: válassza ki az SMS, e-mailek vagy webhook.
+    b. **Művelet típusa**: válassza ki az SMS, e-mailben vagy webhook.
 
-    c. **Részletek**: a művelet típusa alapján, adjon meg egy telefonszám, e-mail címét vagy webhook URI.
+    c. **Részletek**: a művelet típusa alapján, adja meg, egy telefonszám, e-mail címét vagy webhook URI-t.
 
-10. Válassza ki **OK** a riasztás létrehozása.
+1.  Válassza ki **OK** a riasztás létrehozásához.
 
-A riasztás teljesen propagálása és válik aktívvá néhány percet vesz igénybe. Amikor új események feltételeknek a riasztás elindítja.
+A riasztás teljes propagálása, és ezután aktiválása néhány percet vesz igénybe. Amikor új események feltételeknek a riasztás elindítja.
 
-További információkért lásd: [megérteni a webhook séma napló tevékenységriasztásokat használt](monitoring-activity-log-alerts-webhook.md).
+További információkért lásd: [megismerni a webhook-sémát, használja a tevékenységnapló-riasztások](monitoring-activity-log-alerts-webhook.md).
 
 >[!NOTE]
->A művelet csoportnak, az alábbi lépéseket az használható fel újra egy meglévő művelet csoportként jövőbeli riasztási-definíciók.
+>A műveletcsoport meghatározott ezeket a lépéseket az újrafelhasználható, az összes jövőbeli riasztásdefiníciók meglévő műveletcsoport.
 >
 >
 
-## <a name="create-an-alert-on-an-activity-log-event-for-an-existing-action-group-by-using-the-azure-portal"></a>Az Azure portál segítségével hozzon létre egy riasztást az tevékenység naplóesemény meglévő művelet csoportok
-1. Végezze el az 1 – 7 a napló figyelmeztetés létrehozásához az előző szakaszban.
+## <a name="create-an-alert-on-an-activity-log-event-for-an-existing-action-group-by-using-the-azure-portal"></a>Egy tevékenységnapló eseményéhez meglévő műveletcsoport a riasztás létrehozása az Azure portal használatával
+1. Végezze el az 1 – 7 a tevékenységnapló-riasztás létrehozásához az előző szakaszban.
 
-2. A **keresztül értesíti**, jelölje be a **meglévő** művelet csoport gombra. Válasszon egy meglévő művelet csoportot a listából.
+1. A **értesítés ezen keresztül**, jelölje be a **meglévő** műveleti csoport gombra. Válasszon egy meglévő művelet csoportot a listából.
 
-3. Válassza ki **OK** a riasztás létrehozása.
+1. Válassza ki **OK** a riasztás létrehozásához.
 
-A riasztás teljesen propagálása és válik aktívvá néhány percet vesz igénybe. Amikor új események feltételeknek a riasztás elindítja.
+A riasztás teljes propagálása, és ezután aktiválása néhány percet vesz igénybe. Amikor új események feltételeknek a riasztás elindítja.
 
 ## <a name="manage-your-alerts"></a>A riasztások kezelése
 
-Riasztás létrehozása után már látható a riasztások szakaszban, a figyelő panelről. Jelölje ki a kezelni kívánt riasztást:
+Miután létrehozta a riasztást, értéke látható a riasztások szakasz az a Monitor panel. Válassza ki a kezelni kívánt riasztás:
 
 * Szerkesztheti.
-* Törölje a parancsikont.
-* Tiltsa le, vagy engedélyezheti, ha azt szeretné, ideiglenesen leállítani, vagy folytassa a riasztás értesítések fogadásának.
+* Törölje azt.
+* Letiltani vagy engedélyezni, ha szeretné ideiglenesen leállítani, vagy folytathatja a riasztás-mailjeire.
 
 ## <a name="next-steps"></a>További lépések
-- Első egy [riasztások áttekintése](monitoring-overview-alerts.md).
-- További tudnivalók [értesítési sebessége korlátozza az](monitoring-alerts-rate-limiting.md).
-- Tekintse át a [műveletnapló riasztási webhook séma](monitoring-activity-log-alerts-webhook.md).
-- További információ [művelet csoportok](monitoring-action-groups.md).  
-- További tudnivalók [szolgáltatás állapotával kapcsolatos értesítésekre](monitoring-service-notifications.md).
-- Hozzon létre egy [napló figyelmeztetés a figyelheti az előfizetés minden automatikus skálázási motor műveletek](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert).
-- Hozzon létre egy [napló figyelmeztetés a figyelheti az előfizetés összes sikertelen automatikus skálázás méretezési-a/kibővített művelete](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+- Get- [riasztások áttekintése](monitoring-overview-alerts.md).
+- Ismerje meg [értesítési sebességkorlátozással](monitoring-alerts-rate-limiting.md).
+- Tekintse át a [tevékenység log riasztási webhookséma](monitoring-activity-log-alerts-webhook.md).
+- Tudjon meg többet [Műveletcsoportok](monitoring-action-groups.md).  
+- Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](monitoring-service-notifications.md).
+- Hozzon létre egy [figyelése az előfizetés összes automatikus skálázási motor műveletek tevékenységnapló-riasztás](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert).
+- Hozzon létre egy [figyelése az előfizetés összes sikertelen automatikus skálázás méretezési-a/horizontális felskálázás műveletek tevékenységnapló-riasztás](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).

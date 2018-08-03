@@ -1,6 +1,6 @@
 ---
-title: Biztonságosan csatlakozik Azure-adatbázis a MySQL SSL-kapcsolat konfigurálása
-description: Útmutatást megfelelően konfigurálni az Azure-adatbázis MySQL és a társított alkalmazások megfelelően az SSL-kapcsolat használata
+title: A biztonságosan csatlakozhat az Azure Database for MySQL-hez SSL-kapcsolatok konfigurálása
+description: Megfelelően konfigurálni az Azure Database for MySQL és a társított alkalmazások SSL-kapcsolatok megfelelően használatára vonatkozó utasításokat
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -9,51 +9,51 @@ manager: kfile
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: ea4fd90670c2137fbe6127ba5c0b7641d846f407
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f18510e83d4e7d6498f34012b68368552399c806
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265427"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439575"
 ---
-# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Az alkalmazásokhoz való biztonságos kapcsolódás Azure-adatbázis a MySQL SSL-kapcsolat konfigurálása
-Azure MySQL-adatbázis támogatja az Azure-adatbázis MySQL-kiszolgáló csatlakozik a Secure Sockets Layer (SSL) használó ügyfélalkalmazások. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
+# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>SSL-összekapcsolhatóság konfigurálása az alkalmazásban való kapcsolódás az Azure Database for MySQL-hez
+Azure Database for MySQL támogatja a Secure Sockets Layer (SSL) használó ügyfélalkalmazások az Azure Database for MySQL-kiszolgálóhoz csatlakozik. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
 
 ## <a name="step-1-obtain-ssl-certificate"></a>1. lépés: SSL-tanúsítvány beszerzése
-Töltse le a tanúsítványt, az Azure-adatbázis a MySQL-kiszolgáló az SSL protokollt használó kommunikációra szükséges [ https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem ](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) , és mentse a fájlt a helyi meghajtóról (Ez az oktatóanyag használja c:\ssl például).
-**A Microsoft Internet Explorer és a Microsoft Edge:** a letöltés befejezése után nevezze át a tanúsítvány BaltimoreCyberTrustRoot.crt.pem.
+Töltse le a tanúsítványt, az Azure Database for MySQL-kiszolgáló az SSL-en keresztüli kommunikációhoz szükséges [ https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem ](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) , és mentse a tanúsítványfájlt a helyi meghajtón (ebben az oktatóanyagban c:\ssl például).
+**A Microsoft Internet Explorer és Microsoft Edge:** a letöltés befejezése után nevezze át a tanúsítványt BaltimoreCyberTrustRoot.crt.pem.
 
-## <a name="step-2-bind-ssl"></a>2. lépés: A kötés SSL
-### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Kapcsolódás a kiszolgálóhoz a MySQL munkaterület használata az SSL-en keresztül
-Konfigurálja a MySQL munkaterület biztonságos SSL Csatornán keresztül csatlakozni. Új kapcsolat beállítása párbeszéd navigáljon a **SSL** fülre. Az a **SSL-hitelesítésszolgáltató fájl:** mezőbe írja be a fájl helyét a **BaltimoreCyberTrustRoot.crt.pem**. 
-![Mentse testre szabott csempe](./media/howto-configure-ssl/mysql-workbench-ssl.png) meglévő kapcsolatok esetén SSL kötési kattintson a jobb gombbal a kapcsolat ikonra és kattintson a Szerkesztés. Keresse meg a **SSL** lapra, majd kösse a tanúsítványfájl.
+## <a name="step-2-bind-ssl"></a>2. lépés: SSL Bind
+### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Kapcsolódás a kiszolgálóhoz a MySQL Workbench használatával SSL-en keresztül
+Állítsa be a MySQL Workbench SSL-en keresztül biztonságos kapcsolatot. Az új kapcsolat beállítása párbeszédpanelen keresse meg a **SSL** fülre. Az a **SSL CA-fájl:** mezőben adja meg a fájl helyét, a **BaltimoreCyberTrustRoot.crt.pem**. 
+![Mentse testre szabott csempe](./media/howto-configure-ssl/mysql-workbench-ssl.png) a meglévő kapcsolatok esetében kattintson a jobb gombbal a kapcsolat ikon az SSL bind és kattintson a Szerkesztés. Keresse meg a **SSL** lapra, és kösse a tanúsítványfájl.
 
-### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Kapcsolódás a kiszolgálóhoz SSL-en keresztül a MySQL parancssori felület használatával
-Egy másik az SSL-tanúsítvány kötését módja a MySQL parancssori felület használatával futtassa a következő parancsot:
+### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Kapcsolódás a kiszolgálóhoz a MySQL parancssori felületről SSL-en keresztül
+Az SSL-tanúsítvány kötése egy másik módja, a MySQL parancssori felület használatához futtassa az alábbi parancsot:
 ```dos
 mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
 
-## <a name="step-3--enforcing-ssl-connections-in-azure"></a>3. lépés: SSL-kapcsolatok az Azure-ban kényszerítése 
+## <a name="step-3--enforcing-ssl-connections-in-azure"></a>3. lépés: Az Azure-beli SSL-kapcsolatok kényszerítése 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
-Az Azure portál használatával, látogasson el a MySQL-kiszolgálóhoz tartozó Azure-adatbázis, és kattintson **kapcsolatbiztonsági**. A váltógomb segítségével engedélyezheti vagy tilthatja le a **kényszerítése SSL-kapcsolat** beállításával, és kattintson a **mentése**. A Microsoft azt javasolja, hogy ahhoz, hogy mindig a **kényszerítése SSL-kapcsolat** vonatkozó fokozott biztonsági beállításait.
+Az Azure portal használatával, keresse fel az Azure Database for MySQL-kiszolgálóhoz, és kattintson **kapcsolatbiztonság**. A váltógomb segítségével engedélyezheti vagy tilthatja le a **kényszerítése SSL-kapcsolat** beállítást, és kattintson a **mentése**. Mindig engedélyezi a Microsoft javasolja a **kényszerítése SSL-kapcsolat** fokozott biztonsági beállítást.
 ![ssl engedélyezése](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
-Engedélyezheti vagy letilthatja a **ssl-kényszerítési** engedélyezve vagy letiltva értékek használatával rendre az Azure CLI paraméter.
+Engedélyezheti vagy letilthatja a **ssl-kényszerítés** paraméter engedélyezett vagy letiltott értékek jelölik az Azure CLI-ben.
 ```azurecli-interactive
 az mysql server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
 ## <a name="step-4-verify-the-ssl-connection"></a>4. lépés: Az SSL-kapcsolat ellenőrzése
-A mysql végrehajtása **állapot** parancs futtatásával ellenőrizze, hogy rendelkezik-e csatlakozik a MySQL-kiszolgálóval SSL használatával:
+Hajtsa végre a mysql **állapot** paranccsal ellenőrizheti, hogy csatlakozott a MySQL-kiszolgáló SSL-lel:
 ```dos
 mysql> status
 ```
-Ellenőrizze a kapcsolat a kimeneti, amelyhez meg kell jelennie megtekintésével titkosított: **SSL: titkosító használatban AES256-SHA** 
+Erősítse meg a kapcsolat van titkosítva, tekintse át a kimenetet, amely kell megjelennie: **SSL: titkosító használatban az AES256-SHA** 
 
 ## <a name="sample-code"></a>Mintakód
-Biztonságos kapcsolatot létesíteni az Azure Database-MySQL az SSL-en keresztül az alkalmazásról, tekintse meg a következő kód minták:
+Biztonságos kapcsolatot létesíteni az Azure Database for MySQL-hez SSL-en keresztül az alkalmazásból, tekintse meg a következő kód minták:
 
 ### <a name="php"></a>PHP
 ```php
@@ -100,7 +100,7 @@ pem, _ := ioutil.ReadFile("/var/www/html/BaltimoreCyberTrustRoot.crt.pem")
 if ok := rootCertPool.AppendCertsFromPEM(pem); !ok {
     log.Fatal("Failed to append PEM.")
 }
-mysql.RegisterTLSConfig("custom", &tls.Config{RootCAs: rootCertPool, InsecureSkipVerify: true})
+mysql.RegisterTLSConfig("custom", &tls.Config{RootCAs: rootCertPool})
 var connectionString string
 connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=custom",'myadmin@mydemoserver' , 'yourpassword', 'mydemoserver.mysql.database.azure.com', 'quickstartdb')   
 db, _ := sql.Open("mysql", connectionString)
@@ -161,4 +161,4 @@ conn = DriverManager.getConnection(url, properties);
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a következő különböző alkalmazás kapcsolati lehetőségek [adatkapcsolattárak MySQL az Azure-adatbázis](concepts-connection-libraries.md)
+Tekintse át a különböző alkalmazás kapcsolódási lehetőségekről a következő [adatkapcsolattárak az Azure Database for MySQL-hez](concepts-connection-libraries.md)

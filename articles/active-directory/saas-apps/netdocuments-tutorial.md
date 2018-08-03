@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 1dbcb2999afedcea03013b258073d39350b4fcdb
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2da548b0d3a13dfac5d3928d8d692ac8e083bf58
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051669"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>Oktatóanyag: Azure Active Directory-integráció az NetDocuments
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. NetDocuments hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-netdocuments-from-the-gallery"></a>NetDocuments hozzáadása a katalógusból
 Az Azure AD integrálása a NetDocuments konfigurálásához hozzá kell NetDocuments a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a NetDocuments konfigurálásához hozzá kell NetDocu
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **NetDocuments**.
+1. A Keresés mezőbe írja be a **NetDocuments**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/netdocuments-tutorial/tutorial_netdocuments_search.png)
 
-5. Az eredmények panelen válassza ki a **NetDocuments**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **NetDocuments**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/netdocuments-tutorial/tutorial_netdocuments_addfromgallery.png)
 
@@ -89,10 +89,10 @@ NetDocuments, rendelje hozzá az értékét a **felhasználónév** értékekén
 Az Azure AD egyszeri bejelentkezés az NetDocuments tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[NetDocuments tesztfelhasználó létrehozása](#creating-a-netdocuments-test-user)**  – egy megfelelője a Britta Simon NetDocuments, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[NetDocuments tesztfelhasználó létrehozása](#creating-a-netdocuments-test-user)**  – egy megfelelője a Britta Simon NetDocuments, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/netdocuments-tutorial/tutorial_netdocuments_samlbase.png)
 
-3. Az a **NetDocuments tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **NetDocuments tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/netdocuments-tutorial/tutorial_netdocuments_url.png)
 
@@ -119,27 +119,27 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-cím és a válasz URL-cím. Kapcsolattartó [NetDocuments támogatási csoportjának](https://support.netdocuments.com/hc/) beolvasni ezeket az értékeket.
  
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/netdocuments-tutorial/tutorial_netdocuments_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/netdocuments-tutorial/tutorial_general_400.png)
 
-6. Egy másik böngészőablakban jelentkezzen be a NetDocuments vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a NetDocuments vállalati hely rendszergazdaként.
 
-7. Lépjen a **rendszergazdai**.
+1. Lépjen a **rendszergazdai**.
 
-8. Kattintson a **hozzáadása és eltávolítása a felhasználók és csoportok**.
+1. Kattintson a **hozzáadása és eltávolítása a felhasználók és csoportok**.
    
     ![Tárház](./media/netdocuments-tutorial/ic795047.png "tárház")
 
-9. Kattintson a **speciális hitelesítési beállítások konfigurálása**.
+1. Kattintson a **speciális hitelesítési beállítások konfigurálása**.
     
     ![Speciális hitelesítési beállítások konfigurálása](./media/netdocuments-tutorial/ic795048.png "speciális hitelesítési beállítások konfigurálása")
 
-10. Az a **összevont identitás** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **összevont identitás** párbeszédpanelen hajtsa végre az alábbi lépéseket:
    
     ![Összevont Identitty](./media/netdocuments-tutorial/ic795049.png "Identitty összevont")
    
@@ -163,15 +163,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/netdocuments-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/netdocuments-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/netdocuments-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/netdocuments-tutorial/create_aaduser_04.png) 
 
@@ -192,15 +192,15 @@ NetDocuments, esetén kiépítése a manuális feladat.
 
 1. A Sign a **NetDocuments** rendszergazdaként a vállalati webhely.
 
-2. A felső menüben kattintson **rendszergazdai**.
+1. A felső menüben kattintson **rendszergazdai**.
    
     ![Rendszergazdai](./media/netdocuments-tutorial/ic795051.png "rendszergazda")
 
-3. Kattintson a **hozzáadása és eltávolítása a felhasználók és csoportok**.
+1. Kattintson a **hozzáadása és eltávolítása a felhasználók és csoportok**.
    
     ![Tárház](./media/netdocuments-tutorial/ic795047.png "tárház")
 
-4. Az a **E-mail cím** szövegmezőbe írja be egy érvényes Azure Active Directory-fiókot kíván üzembe helyezni, és kattintson az e-mail-címe **felhasználó hozzáadása**.
+1. Az a **E-mail cím** szövegmezőbe írja be egy érvényes Azure Active Directory-fiókot kíván üzembe helyezni, és kattintson az e-mail-címe **felhasználó hozzáadása**.
    
     ![E-mail-cím](./media/netdocuments-tutorial/ic795053.png "E-mail-cím")
    
@@ -219,23 +219,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **NetDocuments**.
+1. Az alkalmazások listájában jelölje ki a **NetDocuments**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/netdocuments-tutorial/tutorial_netdocuments_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -247,7 +247,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

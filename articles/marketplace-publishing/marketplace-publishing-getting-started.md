@@ -1,6 +1,6 @@
 ---
-title: Bemutatja, hogyan hozhat létre és telepíthet egy ajánlatot a piactér áttekintése |} Microsoft Docs
-description: Ismerkedjen meg a lépésekkel kell egy engedélyezett Microsoft developer válnak és létrehozása és központi telepítése egy virtuális gép lemezképére, sablon, adatokat vagy fejlesztői szolgáltatást az Azure piactéren
+title: Hogyan lehet létrehozni és üzembe helyezni egy ajánlatot a piactéren – áttekintés |} A Microsoft Docs
+description: Egy engedélyezett Microsoft fejlesztői válnak, és létrehozása és üzembe helyezése egy virtuálisgép-lemezkép, a sablon, szolgáltatás vagy az Azure piactéren elérhető fejlesztői szolgáltatás szükséges lépések ismertetése
 services: marketplace-publishing
 documentationcenter: ''
 author: msmbaldwin
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 02df78de48c8466f3488ef5f8346e1852b4e3ded
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9715ff83675646bd9be0ecf14078fe07fa263a45
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29943173"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437215"
 ---
 > [!NOTE]
-> Ebben a dokumentációban már nem aktuális pedig nem pontos. Ehelyett nyissa meg az Azure piactérről [értékesítő útmutató](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) útmutatót ajánlat közzététele az Azure piactéren.
+> Ez a dokumentáció már nem aktuális, és nem pontos. Ehelyett nyissa meg az Azure Marketplace-en [– eladói útmutató](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) útmutató az ajánlat közzététele az Azure Marketplace-en.
 
-# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Közzétehet és kezelhet egy ajánlatot az Azure piactéren
-Ez a cikk segítségével a fejlesztők létrehozásához, telepítéséhez és az egyéb Azure-ügyfél és a partnerek beszerzési és használata az Azure piactéren felsorolt megoldások kezelése valósul meg.
+# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Közzétehet és kezelhet az Azure Marketplace-ajánlat
+Ez a cikk segítségével a fejlesztők létrehozása, üzembe helyezése és kezelése a más Azure-ügyfelek és partnerek vásárlása és használata az Azure piactéren szereplő megoldásaikat biztosítunk.
 
-## <a name="marketplace-publishing"></a>Piactér-közzététel
-Egy Azure közzétevőként terjesztése és a innovatív megoldás vagy szolgáltatás értékesítés más fejlesztők számára, a független szoftverszállítók, és az informatikai szakemberek számára a piactéren. A piactéren keresztül érhető el az ügyfelek, akik gyorsan fejlesztése a felhőalapú alkalmazások és a mobil megoldások. Ha a megoldás az üzleti felhasználók célozza, érdemes figyelembe kell venni a [AppSource](http://appsource.microsoft.com) piactéren.
+## <a name="marketplace-publishing"></a>Marketplace – közzététel
+Egy Azure közzétevőként terjesztése és értékesíthetik az innovatív megoldások vagy a szolgáltatás más fejlesztők, független szoftverszállítók, és informatikai szakemberek számára a Marketplace-en. A piactéren a felhasználóknak, akik gyorsan fejleszthetnek felhőalapú alkalmazásokat és a mobil megoldások elérheti. A megoldás célozza meg benne az üzleti felhasználók, előfordulhat, hogy szeretné-e, vegye figyelembe a [AppSource](http://appsource.microsoft.com) Marketplace-en.
 
 
-## <a name="supported-types-of-solutions"></a>Támogatott típusok megoldások
-Először is meg szeretné tenni, mert a közzétevő megadhatja, milyen típusú megoldás vállalata kínál. A piactér a következő ajánlatok-típusokat támogatja:
+## <a name="supported-types-of-solutions"></a>Támogatott típusú megoldások
+A vállalati ajánlat szeretne tenni, közzétevő, hogy milyen típusú megoldás meghatározásához először is. A piactér támogatja a következő típusú ajánlatok:
 
-|Megoldás típusa|Virtuális gép|Megoldás sablon|
+|Megoldás típusa|Virtuális gép|Megoldássablon|
 |---|---|---|
-|**Meghatározása**|Előre konfigurált képek a teljes telepített operációs rendszer és egy vagy több alkalmazást. A virtuálisgép-lemezkép létrehozása és telepítése a virtuális gépek az Azure Virtual Machines szolgáltatásban szükséges információkat tartalmazza.|Olyan adatszerkezet, amely egy vagy több különböző Azure-szolgáltatások hivatkozhat, más eladók többek között a szolgáltatások közzé. Az Azure-előfizetők segítségével egy vagy több ajánlatok egyetlen, koordinált módon telepítheti.|
-|**Példa**|Egy Azure közzétevőként elkészítette és ellenőrizni a virtuális gép és egy új adatbázis-szolgáltatás. Egyéb Azure-előfizetők be kell szereznie, és a virtuális gép üzembe helyezés a cloud service-környezetek szeretné.|Egy Azure közzétevőként a szolgáltatások már kötegelt, amelyek miatt gyors felhőszolgáltatások terheléselosztás, a fokozott biztonságot és a magas rendelkezésre állású telepítése Azure között. Egyéb Azure-előfizetők időt takaríthat beszerzése a megoldás-sablont, amely megfelel a célja. Nem rendelkeznek manuálisan található, be kell szereznie, telepítésére és konfigurálására ugyanazon vagy hasonló Azure-szolgáltatás.|
+|**Definíció**|A egy teljes körűen telepített operációs rendszer és a egy vagy több előre konfigurált rendszerképeket. Virtuálisgép-lemezkép hozhat létre és helyezhet üzembe virtuális gépeket az Azure Virtual Machines szolgáltatás szükséges információkat tartalmazza.|Olyan adatszerkezet, amely egy vagy több különböző Azure-szolgáltatásokat is hivatkozhatnak, beleértve a szolgáltatások más eladók teszi közzé. Az Azure-előfizetők használhatják azt az egyetlen, koordinált módon egy vagy több ajánlatok üzembe helyezéséhez.|
+|**Példa**|Egy Azure közzétevőként létrehozta és ellenőrizni a virtuális gép egy innovatív adatbázis-szolgáltatással. Más Azure-előfizetők be kell szereznie, és a cloud service-környezetek üzembe helyezése a virtuális gép szeretné.|Egy Azure közzétevőként a szolgáltatások már kötegelve, amelyek megkönnyítik a gyors üzembe helyezéséhez a cloud services és a terheléselosztás, a fokozott biztonságot és a magas rendelkezésre állású Azure-ban. Más Azure-előfizetők is időt takaríthat meg, amely megfelel a cél a megoldássablon beszerzése. Nem kell manuálisan keresse meg, beszerezzük, üzembe helyezését és az azonos vagy hasonló Azure-szolgáltatások konfigurálása.|
 
 > [!NOTE]
-> Néhány lépést a különböző típusú megoldások között vannak megosztva, és mások különbözőek a megoldás megfelelő típusú. Ez a cikk rövid áttekintést nyújt az azon megoldás elvégzéséhez szükséges lépéseket.
+> Néhány lépést a különböző típusú megoldások között vannak megosztva, és más, a megoldás megfelelő típusát különböző. Ez a cikk a bármilyen típusú megoldás végrehajtásához szükséges lépések rövid áttekintést nyújt.
 
 ## <a name="publish-a-solution"></a>A megoldás közzététele
-![Jelöljön ki, regisztrálása, közzététele](media/marketplace-publishing-getting-started/img01.png)
+![Jelöl ki, regisztrálása, közzététele](media/marketplace-publishing-getting-started/img01.png)
 
-### <a name="nominate-your-solution-for-pre-approval"></a>A megoldás megadjuk előtti jóváhagyásra
-Közzététele egy virtuális gép [megoldás](https://createopportunity.azurewebsites.net) a piactéren, végezze el a Microsoft Azure hitelesített **megoldás jelölési űrlap**.
+### <a name="nominate-your-solution-for-pre-approval"></a>A megoldás jelölje a előzetes jóváhagyásra
+A virtuális gép közzététele [megoldás](https://createopportunity.azurewebsites.net) a Marketplace-en, végezze el a Microsoft Azure Certified **megoldás jelölési űrlapot**.
 
 >[!NOTE]
-> Ha egy Partner-Ügyfélreferenséhez vagy a DX Partner Manager dolgozik, kérje meg őket, hogy jelöljön ki a megoldás az Azure hitelesített program. Ön is végrehajthatja a [hivatalos Microsoft Azure](http://createopportunity.azurewebsites.net) weblap és töltse ki az alkalmazás az űrlapot. Adja meg az e-mailt, a Partner Ügyfélfelelőshöz vagy a Partner Manager DX a **forduljon a Microsoft támogató** mezőbe.
+> Ha egy Partner Ügyfélmenedzserével vagy egy partneri DX Manager dolgozik, kérje meg, hogy jelöljön ki a megoldás az Azure Certified program. Azt is választhatja a [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) weblap és az alkalmazás űrlap kitöltésekor. Adja meg az e-mailt, a Partner Ügyfélfelelőshöz vagy a Partner Manager DX a **forduljon a Microsoft támogató** mezőbe.
 
-Ha a jogosultsági feltételeknek a a [Azure piactér részvételét házirendek](http://go.microsoft.com/fwlink/?LinkID=526833) és az alkalmazás jóváhagyva, először a használata akkor érheti a megoldás a piactéren.
+Ha megfelel a jogosultsági feltételeket a [Azure piactér részvételi szabályzatának](http://go.microsoft.com/fwlink/?LinkID=526833) és az alkalmazás jóvá van hagyva, hogy való használatának megkezdéséhez, üzembe helyezni a megoldást a Marketplace-en.
 
-### <a name="register-your-account-as-a-microsoft-seller"></a>A fiók regisztrálásához a Microsoft értékesítő
-Regisztrálja a Microsoft-fiókjával, mint egy [Microsoft Developer-fiók](marketplace-publishing-accounts-creation-registration.md).
+### <a name="register-your-account-as-a-microsoft-seller"></a>A fiók regisztrálásához a Microsoft értékesítői
+Microsoft-fiókja, regisztráljon egy [Microsoft Developer-fiók](marketplace-publishing-accounts-creation-registration.md).
 
-### <a name="publish-your-solution"></a>A megoldás közzététele
-A megoldást a piactérről való közzétételéhez kövesse az alábbi lépéseket:
+### <a name="publish-your-solution"></a>Tegye közzé a megoldását
+A megoldás közzététele a piactéren, kövesse az alábbi lépéseket:
 1. A felhasználóknak követelmények teljesítéséhez.
 
-    a. Teljesítéséhez a [felhasználóknak Előfeltételek](marketplace-publishing-pre-requisites.md).
+    a. Életciklusában képesek megfelelni a [felhasználóknak Előfeltételek](marketplace-publishing-pre-requisites.md).
 
-    b. Teljesítéséhez a [VM műszaki Előfeltételek](marketplace-publishing-vm-image-creation-prerequisites.md).
+    b. Életciklusában képesek megfelelni a [VM technikai Előfeltételek](marketplace-publishing-vm-image-creation-prerequisites.md).
 
-    c. Teljesítéséhez a [megoldás sablon műszaki Előfeltételek](marketplace-publishing-solution-template-creation-prerequisites.md).
+    c. Életciklusában képesek megfelelni a [megoldás sablon technikai Előfeltételek](marketplace-publishing-solution-template-creation-prerequisites.md).
 
-2. Az ajánlat létrehozása.
+1. Az ajánlat létrehozása.
 
     a. Hozzon létre egy [virtuális gép](marketplace-publishing-vm-image-creation.md) kínálnak.
 
-    b. Hozzon létre egy [megoldássablonban](marketplace-publishing-solution-template-creation.md) kínálnak.
+    b. Hozzon létre egy [megoldássablon](marketplace-publishing-solution-template-creation.md) kínálnak.
 
-3. Hozzon létre az ajánlatot [tartalom marketing](marketplace-publishing-push-to-staging.md).
+1. Az ajánlat létrehozása [marketing-tartalom](marketplace-publishing-push-to-staging.md).
 
-4. Tesztelje az ajánlatot a tesztelési.
+1. Az ajánlat tesztelése az átmeneti állapotában is.
 
-    a. A virtuális gép ajánlatát tesztelése [átmeneti](marketplace-publishing-vm-image-test-in-staging.md).
+    a. A Virtuálisgép-ajánlat a teszt [átmeneti](marketplace-publishing-vm-image-test-in-staging.md).
 
-    b. A sablon megoldás ajánlatát tesztelése [átmeneti](marketplace-publishing-solution-template-test-in-staging.md).
+    b. A megoldás sablon ajánlatot tesztelése [átmeneti](marketplace-publishing-solution-template-test-in-staging.md).
 
-5. A lefokozásra szolgáló telepítése a [piactér](marketplace-publishing-push-to-production.md).
+1. Az ajánlat az üzembe helyezése a [Marketplace](marketplace-publishing-push-to-production.md).
 
 
-### <a name="create-and-manage-a-virtual-machine-image"></a>Létrehozását és kezelését egy virtuálisgép-lemezkép
-Hozzon létre, és Virtuálisgép-lemezkép kezelheti ezeket az erőforrásokat:
+### <a name="create-and-manage-a-virtual-machine-image"></a>Hozzon létre és virtuálisgép-lemezképek kezelése
+Hozzon létre, és egy Virtuálisgép-lemezkép kezelheti ezeket az erőforrásokat:
 * Hozzon létre egy Virtuálisgép-lemezkép [helyszíni](marketplace-publishing-vm-image-creation-on-premise.md).
-* Hozzon létre egy virtuális gépet futtató [Windows Azure-portálon](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Hozzon létre egy virtuális gépet futtató [az Azure portálon Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Hibaelhárítás során tapasztalt gyakori problémákkal [virtuális merevlemez létrehozása](marketplace-publishing-vm-image-creation-troubleshooting.md).
+* Virtuális gép létrehozása [az Azure Portalon Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Virtuális gép létrehozása [Linux az Azure Portalon](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Során tapasztalt gyakori problémák megoldása [virtuális merevlemez létrehozása](marketplace-publishing-vm-image-creation-troubleshooting.md).
 
 ## <a name="manage-your-solution"></a>A megoldás kezelése
-A megoldás segítségével kezelheti a következő erőforrások:
-* [Olvassa el a gyártás utáni útmutatót a virtuális gép ajánlatok](marketplace-publishing-vm-image-post-publishing.md)
-* [Az ajánlat vagy egy SKU felhasználóknak részleteinek frissítése](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
-* [Az ajánlat vagy egy SKU műszaki részleteinek frissítése](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
-* [Adja hozzá a felsorolt ajánlat keretében egy új Termékváltozat](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
-* [A felsorolt termékváltozat adatlemez módosítása](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
-* [A felsorolt ajánlat törlése a piactérről](marketplace-publishing-vm-image-post-publishing.md)
-* [A felsorolt SKU törlése a piactérről](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
-* [A felsorolt SKU jelenlegi verziója törlése a piactérről](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
-* [Állítsa vissza az éles értékek listaelem ár](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
-* [A számlázási modellt éles értékek visszaállításához](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
-* [Állítsa vissza a láthatósági a felsorolt metódust az éles értékre](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
+A megoldás segítségével kezelheti az alábbi forrásanyagokat:
+* [A virtuálisgép-ajánlat utáni üzemi útmutató elolvasása](marketplace-publishing-vm-image-post-publishing.md)
+* [Az ajánlat vagy a Termékváltozat felhasználóknak részleteinek frissítése](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
+* [A technikai részleteket ajánlat vagy a Termékváltozat frissítése](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
+* [Adjon hozzá egy új Termékváltozatot alatt felsorolt ajánlat](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
+* [Az adatlemezek száma a listán szereplő termékváltozat módosítása](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
+* [A Marketplace-ről egy listán szereplő ajánlat törlése](marketplace-publishing-vm-image-post-publishing.md)
+* [A listában szereplő SKU törlése a Marketplace-ről](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
+* [A jelenlegi verziója a listában szereplő SKU törlése a Marketplace-ről](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
+* [Visszaállítás a termelési értékekkel a listaelem ár](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
+* [Visszaállítás a termelési értékekkel a számlázási modell](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
+* [Az éles értéket egy listán szereplő SKU láthatóságának beállítását visszaállítani](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
 
 ## <a name="additional-resources"></a>További források
-[Azure PowerShell beállítása](marketplace-publishing-powershell-setup.md)
+[Állítsa be az Azure PowerShell-lel](marketplace-publishing-powershell-setup.md)

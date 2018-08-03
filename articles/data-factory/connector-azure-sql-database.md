@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása vagy az Azure SQL Database a Data Factory használatával |} Microsoft Docs
-description: Ismerje meg az adatok másolása támogatott forráshierarchiából adatokat tárolja az Azure SQL Database vagy az SQL-adatbázis támogatott fogadó adattárolókhoz Data Factory használatával.
+title: Adatok másolása az vagy egy Azure SQL Database használatával a Data Factory |} A Microsoft Docs
+description: Ismerje meg, hogyan másolhat adatokat az Azure SQL Database támogatott forrás adattárakból származó, vagy az SQL-adatbázisoktól a támogatott fogadó adattárakba Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,62 +13,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 5287a1d1f09a7057590b455c14aa7f70128ad7fa
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e5ecd3ab5133150368be935d8208a3e93a713df3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053641"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435828"
 ---
-# <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Database az Azure Data Factory használatával
+# <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Database-ből az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
-> * [1-es verziójával](v1/data-factory-azure-sql-connector.md)
+> * [1-es verzió](v1/data-factory-azure-sql-connector.md)
 > * [Aktuális verzió](connector-azure-sql-database.md)
 
-Ez a cikk azt ismerteti, hogyan másolási tevékenység használható az Azure Data Factory másolja az adatokat, vagy az Azure SQL Database. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikk, amelynek során a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti az Azure Data Factory másolási tevékenység használatával másolja az adatokat, vagy az Azure SQL Database. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) című cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-Másolhat adatokat a vagy az Azure SQL Database bármely támogatott fogadó adattár. És átmásolhatja adatok bármely támogatott forrás adattár az Azure SQL Database. A másolási tevékenység által támogatott adatforrások vagy mosdók adattárolókhoz listájáért lásd: a [adatokról és formátumok támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Adatokat másolja vagy az Azure SQL Database bármely támogatott fogadó adattárba. És másolhat bármely támogatott forrásadattárból adatokat az Azure SQL Database. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Az Azure SQL Database összekötő kifejezetten, ezeket a funkciókat támogatja:
+Pontosabban az Azure SQL Database-összekötő támogatja ezeket a funkciókat:
 
-- Másolja az adatokat a szolgáltatás egyszerű vagy a felügyelt szolgáltatás identitásának (MSI) SQL-hitelesítést és az Azure Active Directory (Azure AD) alkalmazás tokent használó hitelesítés használatával.
-- Forrásként egy SQL-lekérdezést vagy tárolt eljárás használatával adatainak beolvasása.
-- A fogadó adatok hozzáfűzése a célként megadott táblája vagy egyéni logikával tárolt eljárás meghívása a másolás során.
+- Adatok másolása az SQL-hitelesítés és Azure Active Directory (Azure AD) alkalmazástoken-hitelesítésének használatával egy egyszerű szolgáltatást, vagy a Felügyeltszolgáltatás-identitás (MSI).
+- Forrásként adatok lekérdezése egy SQL-lekérdezést vagy tárolt eljárás használatával.
+- Fogadóként adatok hozzáfűzése a táblát, vagy a másolás során az egyéni logikát tárolt eljárás meghívása.
 
 > [!IMPORTANT]
-> Ha az adatok másolása Azure Data Factory integrációs futásidejű használatával, konfigurálja egy [Azure SQL-kiszolgáló tűzfal](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) érdekében, hogy a Azure-szolgáltatásokat a kiszolgáló.
-> Ha egy önálló üzemeltetett integrációs futásidejű használatával adatok másolása az Azure SQL server tűzfal engedélyezze a megfelelő IP-címtartomány megadása A tartományba beletartozik a gép IP-cím segítségével csatlakozzon az Azure SQL Database.
+> Az Azure Data Factory integrációs modul adatokat másol, konfiguráljon egy [Azure SQL server tűzfal](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) úgy, hogy az Azure-szolgáltatásokhoz férhet hozzá a kiszolgálón.
+> Ha adatokat másolja egy saját üzemeltetésű integrációs modul használatával, konfigurálja az Azure SQL-kiszolgáló tűzfalán, hogy a megfelelő IP-címtartomány. A tartományba beletartozik az Azure SQL adatbázishoz való csatlakozáshoz használja a gép IP-Címmel.
 
 ## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják adat-előállító tartozó entitások meghatározásához az Azure SQL Database-összekötők használt tulajdonságokat.
+Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások egy Azure SQL Database-összekötő-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Ezeket a tulajdonságokat az Azure SQL Database kapcsolódó szolgáltatás támogatottak:
+Ezek a Tulajdonságok támogatottak egy Azure SQL Database-beli társított szolgáltatást:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A **típus** tulajdonság értékre kell állítani **AzureSqlDatabase**. | Igen |
-| connectionString | Adja meg az Azure SQL Database-példány való kapcsolódáshoz szükséges adatokat a **connectionString** tulajdonság. Jelölje meg ebben a mezőben, mint egy **SecureString** tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen, az Azure AD-alapú hitelesítés használatakor egy szolgáltatásnevet. |
-| servicePrincipalKey | Adja meg az alkalmazás kulcsot. Jelölje meg ebben a mezőben, mint egy **SecureString** tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen, az Azure AD-alapú hitelesítés használatakor egy szolgáltatásnevet. |
-| bérlő | Adja meg a bérlői adatokat (tartomány nevét vagy a bérlő azonosító) alatt az alkalmazás található. Az Azure-portál jobb felső sarkában az egér rámutató lekérni azt. | Igen, az Azure AD-alapú hitelesítés használatakor egy szolgáltatásnevet. |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Azure integrációs futásidejű vagy egy önálló üzemeltetett integrációs futásidejű akkor használhatja, ha egy magánhálózaton található az adattárban. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nem |
+| type | A **típus** tulajdonságot állítsa **AzureSqlDatabase**. | Igen |
+| kapcsolati Sztringje | Adja meg a az Azure SQL Database-példányhoz való kapcsolódáshoz szükséges adatokat a **connectionString** tulajdonság. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
+| servicePrincipalKey | Adja meg az alkalmazáskulcsot. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
+| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
+| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Azure integrációs modul és a egy saját üzemeltetésű integrációs modult is használhatja, ha az adattár egy magánhálózaton található. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem |
 
-Különböző hitelesítési típusok tekintse meg az alábbi szakaszok az Előfeltételek és a JSON-mintákat, illetve:
+Különböző hitelesítési típus tekintse meg a következő szakaszok az Előfeltételek és a JSON-minták, illetve:
 
 - [SQL-hitelesítés](#sql-authentication)
-- [Az Azure AD alkalmazás jogkivonat-alapú hitelesítés: egyszerű szolgáltatásnév](#service-principal-authentication)
-- [Az Azure AD alkalmazás jogkivonat-alapú hitelesítés: felügyelt identitás](#managed-service-identity-authentication)
+- [Az Azure AD alkalmazástoken-hitelesítésének: egyszerű szolgáltatás](#service-principal-authentication)
+- [Az Azure AD alkalmazástoken-hitelesítésének: Felügyeltszolgáltatás-identitás](#managed-service-identity-authentication)
 
 ### <a name="sql-authentication"></a>SQL-hitelesítés
 
-#### <a name="linked-service-example-that-uses-sql-authentication"></a>SQL-hitelesítést használó társított szolgáltatás – példa
+#### <a name="linked-service-example-that-uses-sql-authentication"></a>SQL-hitelesítést használó társított szolgáltatás példa
 
 ```json
 {
@@ -91,32 +91,32 @@ Különböző hitelesítési típusok tekintse meg az alábbi szakaszok az Előf
 
 ### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 
-A szolgáltatás az Azure AD-alapú alkalmazás tokent használó hitelesítés használatához kövesse az alábbi lépéseket:
+A szolgáltatás egyszerűszolgáltatás-alapú Azure AD alkalmazástoken-hitelesítésének használatához kövesse az alábbi lépéseket:
 
-1. **[Hozzon létre egy Azure Active Directory-alkalmazás](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**  Azure-portálról. Jegyezze fel az alkalmazás nevét és a következő értékek, amelyek meghatározzák a társított szolgáltatás:
+1. **[Az Azure Active Directory-alkalmazás létrehozása](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**  az Azure Portalról. Jegyezze fel az alkalmazás nevét és a következő értékeket, amelyek meghatározzák a társított szolgáltatást:
 
     - Alkalmazásazonosító
-    - Alkalmazás kulcs
+    - Alkalmazáskulcs
     - Bérlőazonosító
 
-2. **[Egy Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL-kiszolgáló, az Azure portálon, ha még nem tette. Az Azure AD-rendszergazdának kell lennie, az Azure AD-felhasználó vagy az Azure AD-csoport, de nem lehet egy egyszerű szolgáltatást. Ebben a lépésben végezhető el, hogy a következő lépésben használhatja az Azure AD identity tartalmazott adatbázis-felhasználó a szolgáltatás egyszerű létrehozásához.
+1. **[Az Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Serverhez, az Azure Portalon, ha ezt még nem tette meg. Azure AD-rendszergazdaként kell lennie az Azure AD-felhasználó vagy az Azure AD-csoport, de nem lehet egy egyszerű szolgáltatást. Ebben a lépésben végezhető el, hogy a következő lépéssel, használhatja az Azure AD identity egy tartalmazottadatbázis-felhasználó, a szolgáltatás egyszerű létrehozásához.
 
-3. **[Hozzon létre a tartalmazott adatbázis-felhasználók](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  a szolgáltatás rendszerbiztonsági tag. Csatlakoztassa az adatbázist, vagy amelyek át kívánja másolni az adatok eszközökkel SSMS, például egy Azure AD-identitás, amely rendelkezik legalább bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL: 
+1. **[Hozzon létre tartalmazottadatbázis-felhasználók](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  egyszerű szolgáltatás számára. Az adatbázis vagy amelyek adatok másolása az Azure AD identitás, amelynek legalább az ssms-ben, más eszközök használatával szeretné bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL: 
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Adja meg a szükséges engedélyekkel a szolgáltatás egyszerű** szokásos módon SQL felhasználók vagy mások számára. Futtassa a következő kódot:
+1. **Adja meg a szükséges engedélyekkel a szolgáltatásnév** szokásos módon SQL-felhasználók vagy mások számára. Futtassa a következő kódot:
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-5. **Egy Azure SQL Database társított szolgáltatás beállítása** az Azure Data Factory.
+1. **Egy Azure SQL Database társított szolgáltatás konfigurálása** az Azure Data Factoryban.
 
 
-#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Szolgáltatás egyszerű hitelesítést használó társított szolgáltatás – példa
+#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Társított szolgáltatás példa, amely használja az egyszerű szolgáltatásnév hitelesítése
 
 ```json
 {
@@ -143,39 +143,39 @@ A szolgáltatás az Azure AD-alapú alkalmazás tokent használó hitelesítés 
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Felügyelt Szolgáltatásidentitás hitelesítés
+### <a name="managed-service-identity-authentication"></a>Felügyeltszolgáltatás-identitás felügyelt hitelesítésre
 
-Egy adat-előállító is társítható egy [Szolgáltatásidentitás felügyelt](data-factory-service-identity.md) , amely jelzi, hogy az adott adat-előállítóban. A szolgáltatásidentitás használhatja az Azure SQL Database-hitelesítéshez. A kijelölt gyári férhetnek hozzá, és másolja a identitásával adatok vagy az adatbázishoz.
+Adat-előállító társítható egy [Felügyeltszolgáltatás-identitás](data-factory-service-identity.md) , amely az adott adat-előállító jelöli. A felügyeltszolgáltatás-identitás az Azure SQL Database-hitelesítéshez használható. A kijelölt gyári férhet hozzá, és másolja ezt az identitást az adatok vagy az adatbázishoz.
 
-Az Azure AD MSI-alapú alkalmazás tokent használó hitelesítés használatához kövesse az alábbi lépéseket:
+MSI-alapú Azure AD alkalmazástoken-hitelesítésének használatához kövesse az alábbi lépéseket:
 
-1. **Hozzon létre egy csoportot az Azure ad-ben.** A gyári MSI legyen a csoport tagja.
+1. **Hozzon létre egy csoportot az Azure ad-ben.** Ellenőrizze az MSI-előállító a csoport tagja.
 
-    a. Keresés a data factory szolgáltatásidentitás Azure-portálról. Lépjen a data factory **tulajdonságok**. Másolja a szolgáltatás IDENTITÁSÁNAK azonosítóját.
+    a. Keresse meg a data factory felügyeltszolgáltatás-identitás az Azure Portalról. Nyissa meg az adat-előállító **tulajdonságok**. Másolja az IDENTITÁS azonosítót.
 
-    b. Telepítse a [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Futtassa a következő parancsok futtatásával hozzon létre egy csoportot, és adja hozzá a data factory MSI tagja.
+    b. Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Hozzon létre egy csoportot, és adja hozzá az adat-előállító MSI, amelynek a következő parancsok futtatásával.
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. **[Egy Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL-kiszolgáló, az Azure portálon, ha még nem tette. Az Azure AD-rendszergazda az Azure AD-felhasználó vagy az Azure AD-csoport lehet. Ha a csoportban található MSI engedélyez egy rendszergazdai szerepkört, hagyja ki a 3. és 4. A rendszergazda az adatbázis teljes hozzáféréssel fog rendelkezni.
+1. **[Az Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Serverhez, az Azure Portalon, ha ezt még nem tette meg. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy az Azure AD-csoporthoz. Ha a rendszergazda szerepkörrel, engedélyezze a csoportnak MSI-vel, hagyja ki a 3. és 4. A rendszergazda az adatbázis teljes hozzáféréssel fog rendelkezni.
 
-3. **[Hozzon létre a tartalmazott adatbázis-felhasználók](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  az Azure AD-csoport. Csatlakoztassa az adatbázist, vagy amelyek át kívánja másolni az adatok eszközökkel SSMS, például egy Azure AD-identitás, amely rendelkezik legalább bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL: 
+1. **[Hozzon létre tartalmazottadatbázis-felhasználók](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  az Azure AD-csoport. Az adatbázis vagy amelyek adatok másolása az Azure AD identitás, amelynek legalább az ssms-ben, más eszközök használatával szeretné bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL: 
     
     ```sql
     CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Adja meg a szükséges engedélyekkel az Azure AD-csoport** szokásos módon az SQL-felhasználók és a többi. Például futtassa a következő kódot:
+1. **Adja meg a szükséges engedélyekkel az Azure AD-csoport** szokásos módon SQL-felhasználók és mások. Például futtassa a következő kódot:
 
     ```sql
     EXEC sp_addrolemember [role name], [your AAD group name];
     ```
 
-5. **Egy Azure SQL Database társított szolgáltatás beállítása** az Azure Data Factory.
+1. **Egy Azure SQL Database társított szolgáltatás konfigurálása** az Azure Data Factoryban.
 
-#### <a name="linked-service-example-that-uses-msi-authentication"></a>MSI-hitelesítést használó társított szolgáltatás – példa
+#### <a name="linked-service-example-that-uses-msi-authentication"></a>MSI-hitelesítést használó társított szolgáltatás példa
 
 ```json
 {
@@ -198,16 +198,16 @@ Az Azure AD MSI-alapú alkalmazás tokent használó hitelesítés használatáh
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services) cikk. Ez a témakör az Azure SQL Database adatkészlet által támogatott tulajdonságokról.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services) cikk. Ez a szakasz az Azure SQL Database-adatkészletet által támogatott tulajdonságok listáját tartalmazza.
 
-Másolja az adatokat, vagy az Azure SQL Database, állítsa be a **típus** a DataSet tulajdonság **AzureSqlTable**. A következő tulajdonságok támogatottak:
+Másolja az adatokat, vagy az Azure SQL Database, állítsa be a **típus** tulajdonság, az adatkészlet **AzureSqlTable**. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A **típus** értékre kell állítani a DataSet tulajdonság **AzureSqlTable**. | Igen |
-| tableName | A tábla vagy nézet, amelyre a társított szolgáltatás hivatkozik az Azure SQL Database-példány neve. | Igen |
+| type | A **típus** értékre kell állítani a tulajdonságot az adatkészlet **AzureSqlTable**. | Igen |
+| tableName | A tábla vagy nézet az Azure SQL Database-példány, amelyre a társított szolgáltatás hivatkozik a neve. | Igen |
 
-#### <a name="dataset-properties-example"></a>Adatkészlet tulajdonságai – példa
+#### <a name="dataset-properties-example"></a>Adatkészlet tulajdonságai példa
 
 ```json
 {
@@ -228,26 +228,26 @@ Másolja az adatokat, vagy az Azure SQL Database, állítsa be a **típus** a Da
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör az Azure SQL Database-forrás és a fogadó által támogatott tulajdonságokról.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a forrás Azure SQL Database és a fogadó által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="azure-sql-database-as-the-source"></a>Az Azure SQL-adatbázis, mint a forrás
+### <a name="azure-sql-database-as-the-source"></a>Az Azure SQL Database-t a forrás
 
-Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonság a másolási tevékenység forrásból történő **SqlSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonság, a másolási tevékenység forrás **SqlSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **SqlSource**. | Igen |
-| sqlReaderQuery | Az egyéni SQL-lekérdezés segítségével adatokat olvasni. Példa: `select * from MyTable`. | Nem |
-| sqlReaderStoredProcedureName | A tárolt eljárás, amely adatokat olvas a forrástábla neve. Az utolsó SQL-utasítás a következő tárolt eljárást a SELECT utasítással kell lennie. | Nem |
-| storedProcedureParameters | A tárolt eljárás paramétereit.<br/>Megengedett értékek:-név és érték párokat. Nevét és a kis-és a paraméterek meg kell egyeznie a nevek és a kis-és nagybetűhasználat a tárolt eljárás paramétereit. | Nem |
+| sqlReaderQuery | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Példa: `select * from MyTable`. | Nem |
+| sqlReaderStoredProcedureName | A tárolt eljárást, amely adatokat olvas be a forrás-tábla neve. Az utolsó SQL-utasítást a tárolt eljárás a SELECT utasítással kell lennie. | Nem |
+| storedProcedureParameters | A tárolt eljárás paraméterei.<br/>Megengedett értékek: neve vagy értéke párokat. Nevek és a kis-és a paraméterek meg kell egyeznie a neveket és a kis-és nagybetűhasználatot, a tárolt eljárás paraméterértékeinek. | Nem |
 
-### <a name="points-to-note"></a>Vegye figyelembe mutat
+### <a name="points-to-note"></a>Tudnivalók
 
-- Ha a **sqlReaderQuery** van megadva a **SqlSource**, másolási tevékenység fut ez a lekérdezés az adatok lekérdezése az Azure SQL Database forrása. Vagy megadhatja a tárolt eljárást. Adja meg **sqlReaderStoredProcedureName** és **storedProcedureParameters** Ha a tárolt eljárás paraméterek fogadja el.
-- Ha nem adja meg vagy **sqlReaderQuery** vagy **sqlReaderStoredProcedureName**, az oszlopok definiálva a **struktúra** célra szolgálnak az adatkészlet JSON szakasza a lekérdezés létrehozásához. `select column1, column2 from mytable` az Azure SQL Database fut. Ha az adatkészlet-definícióban nem rendelkezik a **struktúra**, kiválasztott összes oszlop a táblából.
-- Amikor **sqlReaderStoredProcedureName**, továbbra is meg kell adnia egy helyőrző **tableName** az adatkészlet JSON tulajdonság.
+- Ha a **sqlReaderQuery** van megadva a **SqlSource**, a másolási tevékenység a lekérdezés fut az Azure SQL Database forrás, az adatok beolvasásához. Vagy megadhat egy tárolt eljárást. Adja meg **sqlReaderStoredProcedureName** és **storedProcedureParameters** Ha paramétereket fogadja tárolt eljárást.
+- Ha nem adja meg vagy **sqlReaderQuery** vagy **sqlReaderStoredProcedureName**, az oszlopok definiálva a **struktúra** az adatkészlet JSON szakaszában is használható a lekérdezés hozhatnak létre. `select column1, column2 from mytable` futtatja az Azure SQL-adatbázison. Ha az adatkészlet definíciója nem rendelkezik a **struktúra**, az összes oszlop ki van jelölve, a táblából.
+- Ha használ **sqlReaderStoredProcedureName**, továbbra is meg kell adnia egy helyőrző **tableName** tulajdonságot az adatkészlet JSON.
 
-#### <a name="sql-query-example"></a>SQL-lekérdezés példa
+#### <a name="sql-query-example"></a>SQL-lekérdezési példa
 
 ```json
 "activities":[
@@ -315,7 +315,7 @@ Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonság 
 ]
 ```
 
-### <a name="stored-procedure-definition"></a>Tárolt eljárás meghatározása
+### <a name="stored-procedure-definition"></a>Tárolt eljárás definíciója
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -334,22 +334,22 @@ END
 GO
 ```
 
-### <a name="azure-sql-database-as-the-sink"></a>Az Azure SQL Database, a fogadó
+### <a name="azure-sql-database-as-the-sink"></a>Az Azure SQL Database-t a fogadó
 
-Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonság a másolási tevékenység során a gyűjtése a **SqlSink**. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakasz:
+Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonságot a másolási tevékenység fogadó való **SqlSink**. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságának **SqlSink**. | Igen |
-| writeBatchSize | Adatok beszúrása az SQL táblázatba, amikor a puffer mérete eléri a következőt **writeBatchSize**.<br/> Az engedélyezett érték **egész** (sorok száma). | Nem. Az alapértelmezett beállítás 10000. |
+| type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát **SqlSink**. | Igen |
+| WriteBatchSize | Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a **writeBatchSize**.<br/> Az engedélyezett érték **egész** (sorok száma). | Nem. Az alapértelmezett érték a 10000. |
 | writeBatchTimeout | A várakozási idő a köteg beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/> Az engedélyezett érték **timespan**. Példa: "00: 30:00" (30 perc). | Nem |
-| preCopyScript | Adjon meg egy SQL-lekérdezés futtatása előtt az Azure SQL-adatbázisba írását másolási tevékenységhez. Csak meghívták egyszer futtatni példányonként. Ez a tulajdonság használatával az előre betöltött adatok törlése. | Nem |
-| sqlWriterStoredProcedureName | A tárolt eljárás, amely meghatározza a forrásadatok alkalmazásáról a céloldali tábla neve. Példa: upserts vagy átalakítási által a saját üzleti logika használatával. <br/><br/>A tárolt eljárás **kötegenként meghívott**. Csak egyszer futnak le és nincs köze az adatforrás adatokkal műveleteket, használja a `preCopyScript` tulajdonság. Példa műveleteket delete és csonkolja. | Nem |
-| storedProcedureParameters |A tárolt eljárás paramétereit.<br/>Megengedett értékek: név-érték párokat. Nevét és a kis-és a paraméterek meg kell egyeznie a nevek és a kis-és nagybetűhasználat a tárolt eljárás paramétereit. | Nem |
-| sqlWriterTableType | Adjon meg egy tábla típus a következő tárolt eljárás használható. Másolási tevékenység elérhetővé teszi az adatok áthelyezése egy ideiglenes táblát, amely a táblatípus. Tárolt eljárás kódot is majd egyesítheti az adatokat, a meglévő adatok másolásának. | Nem |
+| preCopyScript | Adjon meg egy SQL-lekérdezést a másolási tevékenység futtatása előtt írja az adatokat az Azure SQL Database-be. Csak indítva egyszer futtatni példányonkénti. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem |
+| sqlWriterStoredProcedureName | A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok egy cél táblába neve. Például akkor upserts, vagy átalakíthatja a saját üzleti logikája használatával. <br/><br/>A tárolt eljárás **kötegenként meghívása**. Csak egyszer futnak le, és nincs köze forrásadatokkal rendelkező műveletek, használja a `preCopyScript` tulajdonság. Példa műveleti delete és csonkolja. | Nem |
+| storedProcedureParameters |A tárolt eljárás paraméterei.<br/>Megengedett értékek: név-érték párokat. Nevek és a kis-és a paraméterek meg kell egyeznie a neveket és a kis-és nagybetűhasználatot, a tárolt eljárás paraméterértékeinek. | Nem |
+| sqlWriterTableType | Adjon meg egy tábla típusú név a tárolt eljárás használható. A másolási tevékenység áthelyezett elérhetővé teszi a tábla típusú egy ideiglenes táblába. Tárolt eljárás kód majd egyesítheti az adatok másolását a adatokkal. | Nem |
 
 > [!TIP]
-> Az Azure SQL Database-adatok másolásakor másolási tevékenység hozzáfűzi adatokat a fogadó tábla alapértelmezés szerint. Ehhez az upsert vagy további üzleti logikát, használja a tárolt eljárás **SqlSink**. Többet is megtudhat a [meghívása tárolt eljárás végrehajtásával SQL gyűjtése](#invoking-stored-procedure-for-sql-sink).
+> Adatmásolás az Azure SQL Database, amikor a másolási tevékenység adatokat fűz hozzá a fogadó tábla alapértelmezés szerint. Ehhez az upsert vagy további üzleti logikát, használja a tárolt eljárás **SqlSink**. További részletek a [fogadó SQL tárolt eljárás meghívása](#invoking-stored-procedure-for-sql-sink).
 
 #### <a name="append-data-example"></a>Példa adatok hozzáfűzése
 
@@ -383,9 +383,9 @@ Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonság 
 ]
 ```
 
-#### <a name="invoke-a-stored-procedure-during-copy-for-upsert-example"></a>A tárolt eljárás meghívása upsert például másolása során
+#### <a name="invoke-a-stored-procedure-during-copy-for-upsert-example"></a>Tárolt eljárás meghívása során upsert például másolása
 
-Többet is megtudhat a [meghívása tárolt eljárás végrehajtásával SQL gyűjtése](#invoking-stored-procedure-for-sql-sink).
+További részletek a [fogadó SQL tárolt eljárás meghívása](#invoking-stored-procedure-for-sql-sink).
 
 ```json
 "activities":[
@@ -424,7 +424,7 @@ Többet is megtudhat a [meghívása tárolt eljárás végrehajtásával SQL gy�
 
 ## <a name="identity-columns-in-the-target-database"></a>A céladatbázis azonosító oszlop
 
-Ez a szakasz bemutatja, hogyan adatokat másolni a forrástábla nélkül azonosító oszlop azonosító oszlopot tartalmazó táblát.
+Ez a szakasz bemutatja, hogyan másolhat adatokat egy forrás táblából egy identitásoszlop nélkül az identity oszlopot tartalmazó táblát.
 
 #### <a name="source-table"></a>Forrástábla
 
@@ -450,7 +450,7 @@ create table dbo.TargetTbl
 > [!NOTE]
 > A céltábla tartalmaz azonosító oszlopot.
 
-#### <a name="source-dataset-json-definition"></a>Forrás adatkészlet JSON-definícióból
+#### <a name="source-dataset-json-definition"></a>Forrás adatkészlet JSON-definíció
 
 ```json
 {
@@ -468,7 +468,7 @@ create table dbo.TargetTbl
 }
 ```
 
-#### <a name="destination-dataset-json-definition"></a>Cél adatkészlet JSON-definícióból
+#### <a name="destination-dataset-json-definition"></a>Cél adatkészlet JSON-definíció
 
 ```json
 {
@@ -491,17 +491,17 @@ create table dbo.TargetTbl
 ```
 
 > [!NOTE]
-> A forrás és cél tábla sémája eltérő. 
+> A forrás- és table eltérő sémával rendelkezik. 
 
-A cél egy további oszlopot identitással rendelkezik. Ebben az esetben meg kell adnia a **struktúra** tulajdonság az a tároló adatkészlet-definícióban, amely nem tartalmazza az identitásoszlop.
+A cél egy további oszlopot egy identitással rendelkezik. Ebben az esetben meg kell adnia a **struktúra** tulajdonság a célként megadott adatkészlet definíciójában, amely nem tartalmazza az identitásoszlop.
 
-## <a name="invoking-stored-procedure-for-sql-sink"></a> A fogadó SQL tárolt eljárás meghívása
+## <a name="invoking-stored-procedure-for-sql-sink"></a> Az SQL-fogadó tárolt eljárás meghívása
 
-Adatok másolása az Azure SQL Database-be, amikor is konfigurálhatja és hívhatnak meg a felhasználó által megadott tárolt eljárást a további paramétereket.
+Azure SQL Database-be másol adatokat, amikor is konfigurálásához és meghívása felhasználó által megadott tárolt eljárást a további paraméterek.
 
-A tárolt eljárás segítségével használhatja, ha a beépített másolási mechanizmust a célt nem szolgál. Azok még jellemzően akkor egy upsert, az insert és a frissítés, vagy a felesleges feldolgozási a forrásadatok végső szúrás a célként megadott táblája előtt kell elvégezni. Néhány további feldolgozás többek között az egyesítési oszlopok, keresse meg a további értékeket, és több tábla szúrás.
+Tárolt eljárás segítségével használhatja, ha a beépített másolási mechanizmusokkal nem szolgálnak ki erre a célra. Általában használhatók, amikor egy upsert, insert és update, vagy további feldolgozás előtt a végső beszúrási a forrásadatok a céltáblázatba történő kell elvégezni. Extra feldolgozási példákat egyesítési oszlop, keresse meg a további értéket, és annak több tábla.
 
-A következő példa bemutatja, hogyan egy upsert tegye az Azure SQL-adatbázis egy táblába a tárolt eljárás használatával. Tegyük fel, amelyek bemeneti adatok és a fogadó **Marketing** minden táblának rendelkeznie három oszlopot: **ProfileID**, **állapot**, és **kategória**. Hajtsa végre a upsert alapján a **ProfileID** oszlopban, és csak az egy adott konkrét kategóriával.
+A következő minta bemutatja, hogyan egy tárolt eljárást az upsert ehhez az Azure SQL Database egyik táblájába. Tegyük fel, amelyek bemeneti és a fogadó **Marketing** tábla minden egyes háromoszloposak: **ProfileID**, **állapot**, és **kategória**. Hajtsa végre az upsert alapján a **ProfileID** oszlopot, és csak egy adott kategória alkalmazhatja azt.
 
 #### <a name="output-dataset"></a>Kimeneti adatkészlet
 
@@ -522,7 +522,7 @@ A következő példa bemutatja, hogyan egy upsert tegye az Azure SQL-adatbázis 
 }
 ```
 
-Adja meg a **SqlSink** szakasz a másolási tevékenység:
+Adja meg a **SqlSink** a másolási tevékenység szakaszban:
 
 ```json
 "sink": {
@@ -537,7 +537,7 @@ Adja meg a **SqlSink** szakasz a másolási tevékenység:
 }
 ```
 
-Az adatbázis meghatározása a neve megegyezik a tárolt eljárásnak a **SqlWriterStoredProcedureName**. Kezeli a bemeneti adatokat az adott forrásból származnak, és a kimeneti táblához egyesít. A paraméternév megadásához, a tárolt eljárás egyeznie kell a **tableName** adatkészlet definiálva.
+Az adatbázis határoz meg a tárolt eljárás, amelynek a neve megegyezik a **SqlWriterStoredProcedureName**. Kezeli a bemeneti adatokat az adott forrásból származnak, és azt a kimeneti tábla egyesít. A tárolt eljárás paraméter neve legyen ugyanaz, mint a **tableName** adatkészletben történő definiálása okozza.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -554,7 +554,7 @@ BEGIN
 END
 ```
 
-Az adatbázisban, adja meg a tábla Típus – amelynek a neve megegyezik a **sqlWriterTableType**. A tábla típusú sémát a bemeneti adatok által visszaadott sémának megegyezőnek kell lennie.
+Az adatbázis határoz meg a táblatípus, amelynek a neve megegyezik a **sqlWriterTableType**. A tábla típusú sémát a sémát, a bemeneti adatok által visszaadott megegyezőnek kell lennie.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -566,44 +566,44 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 
 A tárolt eljárás szolgáltatás kihasználja [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb675163.aspx).
 
-## <a name="data-type-mapping-for-azure-sql-database"></a>Adattípus-hozzárendelése az Azure SQL Database
+## <a name="data-type-mapping-for-azure-sql-database"></a>Az Azure SQL Database-adattípus-leképezés
 
-Vagy az Azure SQL Database a másolt adatok, a következő leképezéseit segítségével az Azure SQL Database adattípusok Azure Data Factory ideiglenes adattípusok. Lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md) megtudhatja, hogyan másolási tevékenység van leképezve a séma- és adatok típusa a fogadó.
+Másolt adatok vagy az Azure SQL Database, a következő hozzárendeléseket használják az Azure SQL Database adattípusok Azure Data Factory-közbenső adattípusok. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megtudhatja, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
-| Az Azure SQL adatbázis-adattípust | Data Factory ideiglenes adattípus |
+| Az Azure SQL Database-adattípus | Data Factory közbenső adattípus |
 |:--- |:--- |
 | bigint |Int64 |
 | Bináris |Byte] |
 | bit |Logikai |
-| karakter |Karakterlánc, Char] |
+| CHAR |Karakterlánc, Char] |
 | dátum |DateTime |
 | Dátum és idő |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimális |Decimális |
+| tizedes tört |tizedes tört |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
 | Lebegőpontos |Dupla |
 | image |Byte] |
 | int |Int32 |
-| pénz |Decimális |
+| költséget takaríthat meg |tizedes tört |
 | nchar |Karakterlánc, Char] |
 | ntext |Karakterlánc, Char] |
-| numerikus |Decimális |
+| numerikus |tizedes tört |
 | nvarchar |Karakterlánc, Char] |
-| valós |Önálló |
+| valódi |Önálló |
 | ROWVERSION |Byte] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| kis pénz típusú értéknél |Decimális |
+| pénz |tizedes tört |
 | sql_variant |Objektum * |
 | szöveg |Karakterlánc, Char] |
-| time |A TimeSpan |
+| time |Időtartam |
 | időbélyeg |Byte] |
 | tinyint |Bájt |
-| egyedi azonosító |GUID |
+| UniqueIdentifier |GUID |
 | varbinary |Byte] |
 | varchar |Karakterlánc, Char] |
 | xml |Xml |
 
 ## <a name="next-steps"></a>További lépések
-Források és mosdók másolási tevékenység során az Azure Data Factory által támogatott adattárolókhoz listájáért lásd: [adatokról és formátumok támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
+Az Azure Data Factory másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak és formátumok](copy-activity-overview.md##supported-data-stores-and-formats).

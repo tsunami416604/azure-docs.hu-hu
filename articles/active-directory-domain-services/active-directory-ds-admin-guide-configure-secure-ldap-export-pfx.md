@@ -1,6 +1,6 @@
 ---
-title: Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi szolgáltatásokban |} Microsoft Docs
-description: Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
+title: Hozzon létre egy secure LDAP-tanúsítványt a tartomány egy Azure AD tartományi szolgáltatások kezelése |} A Microsoft Docs
+description: Hozzon létre egy secure LDAP-tanúsítványt a tartomány egy Azure AD tartományi szolgáltatások kezelése
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -13,86 +13,89 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/30/2017
+ms.date: 08/01/2017
 ms.author: maheshu
-ms.openlocfilehash: d2c7bd8b335ce49bed8e39812cccbe7ab474bf8f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0bccb90029f319805086c12162f4e0eec4939865
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211526"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430076"
 ---
-# <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS) használatos az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz tartozó konfigurálása
+# <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>Hozzon létre egy. PFX-fájlt a biztonságos LDAP (LDAPS) tanúsítványt a felügyelt tartományhoz
 
 ## <a name="before-you-begin"></a>Előkészületek
-Győződjön meg arról, hogy befejezte [1. feladat – tanúsítvány beszerzése biztonságos LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md).
+Teljes [az 1. feladat: tanúsítvány beszerzése biztonságos LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md).
 
 
-## <a name="task-2---export-the-secure-ldap-certificate-to-a-pfx-file"></a>2. feladat – a biztonságos LDAP tanúsítvány exportálása a. PFX-fájlból
-Ez a feladat megkezdése előtt győződjön meg arról, szerzett be a biztonságos LDAP tanúsítványt nyilvános hitelesítésszolgáltatótól származó, vagy önaláírt tanúsítványt hozott létre.
+## <a name="task-2-export-the-secure-ldap-certificate-to-a-pfx-file"></a>2. feladat: A secure LDAP-tanúsítványt exportálni egy. PFX-fájl
+Ez a feladat a Kezdés előtt lekérése a secure LDAP-tanúsítványt nyilvános hitelesítésszolgáltatótól származó, vagy hozzon létre egy önaláírt tanúsítványt.
 
-A következő lépésekkel, a LDAPS tanúsítvány exportálása a. PFX-fájlt.
+Az LDAPS-t tanúsítványának exportálásához egy. PFX-fájlt:
 
-1. Nyomja meg a **Start** gombra, és írja be **R**. Az a **futtatása** párbeszédpanel, írja be **mmc** kattintson **OK**.
+1. Nyomja le az **Start** gombra, és írja be **R**. Az a **futtatása** párbeszédpanel, írja be **mmc** kattintson **OK**.
 
     ![Nyissa meg az MMC konzolt](./media/active-directory-domain-services-admin-guide/secure-ldap-start-run.png)
-2. Az a **felhasználói fiókok felügyelete** kérdés, kattintson a **Igen** rendszergazdaként (Microsoft Management Console) MMC indítása.
+2. Az a **felhasználói fiókok felügyelete** kérdés, kattintson a **Igen** rendszergazdaként (a Microsoft Management Console) MMC indítása.
 3. Az a **fájl** menüben kattintson a **beépülő modul hozzáadása/eltávolítása...** .
 
     ![Az MMC-konzolt a beépülő modul hozzáadása](./media/active-directory-domain-services-admin-guide/secure-ldap-add-snapin.png)
-4. Az a **hozzáadása vagy eltávolítása a beépülő modulok** párbeszédpanelen válassza a **tanúsítványok** beépülő modult, majd kattintson a **Hozzáadás >** gombra.
+4. Az a **hozzáadása vagy eltávolítása a beépülő modulok** párbeszédpanelen válassza ki a **tanúsítványok** beépülő modult, majd kattintson a **Hozzáadás >** gombra.
 
     ![Az MMC konzol Tanúsítványok beépülő modul hozzáadása](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-snapin.png)
-5. Az a **tanúsítványok beépülő modul** varázslóban válassza **számítógépfiók** kattintson **következő**.
+5. Az a **tanúsítványok beépülő modul** varázslóban válassza **számítógépfiók** kattintson **tovább**.
 
-    ![Tanúsítványok beépülő modul számítógép fiók hozzáadása](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-computer-account.png)
-6. Az a **számítógép kijelölése** lapon, hogy melyik **helyi számítógép: (a számítógép a konzol fut)** kattintson **Befejezés**.
+    ![Tanúsítványkezelő beépülő modul számítógép fiók hozzáadása](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-computer-account.png)
+6. Az a **számítógép kijelölése** lapra, jelölje be **helyi számítógép: (a számítógépet a konzol fut)** kattintson **Befejezés**.
 
-    ![Tanúsítványok beépülő modul – jelölje be a számítógép hozzáadása](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-local-computer.png)
-7. Az a **hozzáadása vagy eltávolítása a beépülő modulok** párbeszédpanel, kattintson a **OK** hozzáadása a tanúsítványok beépülő MMC-hez.
+    ![Tanúsítványok beépülő modul – válassza ki a számítógép hozzáadása](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-local-computer.png)
+7. Az a **hozzáadása vagy eltávolítása a beépülő modulok** párbeszédpanelen kattintson a **OK** hozzáadása a tanúsítványok beépülő MMC.
 
-    ![Tanúsítványok beépülő MMC - végzett hozzáadása](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-snapin-done.png)
-8. Az MMC ablak Ide kattintva kibonthatja a **konzolgyökér**. Meg kell jelennie a tanúsítványok beépülő modul betöltése. Kattintson a **tanúsítványok (helyi számítógép)** kibontásához. Ide kattintva bontsa ki a **személyes** csomópontot, majd a **tanúsítványok** csomópont.
+    ![Tanúsítványok beépülő MMC - kész hozzáadása](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-snapin-done.png)
+8. Bontsa ki az MMC ablakában kattintson **konzolgyökér**. A tanúsítványok beépülő modul betöltése kell megjelennie. Kattintson a **tanúsítványok (helyi számítógép)** kibontásához. Ide kattintva bontsa ki a **személyes** csomópontot, majd a **tanúsítványok** csomópont.
 
     ![Nyissa meg személyes tanúsítványok tárolójában](./media/active-directory-domain-services-admin-guide/secure-ldap-open-personal-store.png)
-9. Meg kell jelenniük a létrehozott önaláírt tanúsítványt. A tanúsítvány meg arról, hogy az ujjlenyomat, amely a PowerShell windows jelentett létrehozása után a tanúsítvány tulajdonságainak ellenőrizheti.
-10. Válassza ki az önaláírt tanúsítványt, és **kattintson a jobb gombbal**. A helyi menüben válassza ki a **feladataival** válassza **exportálása...** .
+9. A létrehozott önaláírt tanúsítványt kell megjelennie. A tanúsítvány ujjlenyomata megegyezik a tanúsítvány létrehozásakor a PowerShell windows jelentett ellenőrzése tulajdonságainak ellenőrizheti.
+10. Válassza ki az önaláírt tanúsítványt, és **kattintson a jobb gombbal**. A helyi menüben válassza ki a **feladatok** válassza **exportálása...** .
 
     ![Tanúsítvány exportálása](./media/active-directory-domain-services-admin-guide/secure-ldap-export-cert.png)
-11. Az a **Tanúsítványexportáló varázsló**, kattintson a **következő**.
+11. Az a **Tanúsítványexportáló varázsló**, kattintson a **tovább**.
 
     ![Exportálja a tanúsítványt varázsló](./media/active-directory-domain-services-admin-guide/secure-ldap-export-cert-wizard.png)
-12. Az a **titkos kulcs exportálása** lapon jelölje be **Igen, a titkos kulcs exportálását választom**, és kattintson a **következő**.
+12. A a **titkos kulcs exportálása** lapon jelölje be **Igen, a titkos kulcs exportálásának**, és kattintson a **tovább**.
 
     ![Tanúsítvány titkos kulcs exportálása](./media/active-directory-domain-services-admin-guide/secure-ldap-export-private-key.png)
 
     > [!WARNING]
-    > Exportálnia kell a titkos kulcsot, valamint a tanúsítvány. Ha megad egy PFX a tanúsítványhoz tartozó titkos kulcs nem tartalmazó, a felügyelt tartományok biztonságos LDAP engedélyezése sikertelen.
+    > Exportálnia kell a titkos kulcsot, valamint a tanúsítvány. Ha megad egy PFX, amely nem tartalmazza a tanúsítvány titkos kulcsát, a felügyelt tartomány secure LDAP engedélyezése sikertelen.
     >
     >
-13. Az a **Exportfájlformátum** lapon jelölje be **személyes információcsere - PKCS #12 (. PFX)** , a fájlformátum az exportált tanúsítványhoz.
 
-    ![A tanúsítvány fájlformátuma exportálása](./media/active-directory-domain-services-admin-guide/secure-ldap-export-to-pfx.png)
+13. Az a **Exportfájlformátum** lapon jelölje be **személyes információcsere – PKCS #12 (. PFX)** , a fájlformátum az exportált tanúsítványhoz.
+
+    ![Exportálás tanúsítvány fájlformátuma](./media/active-directory-domain-services-admin-guide/secure-ldap-export-to-pfx.png)
 
     > [!NOTE]
-    > Csak a. PFX-fájl formátuma támogatott. Nem exportálja a tanúsítványt a. CER-fájlformátum.
+    > Csak a. PFX-fájl formátuma támogatott. Nem akarom exportálni a tanúsítványt a. CER-fájlformátum.
     >
     >
-14. Az a **biztonsági** lapon jelölje be a **jelszó** lehetőséget és a jelszót írja be védelméhez a. PFX-fájlt. Ne felejtse el ezt a jelszót, mert a következő feladat lesz szükség. Kattintson a **tovább** a folytatáshoz.
+
+14. Az a **biztonsági** lapon válassza ki a **jelszó** védelméhez lehetőséget és adja meg egy jelszót a. PFX-fájlt. Ne felejtse el ezt a jelszót, mivel az a következő feladat lesz szükség. Kattintson a **Tovább** gombra.
 
     ![A Tanúsítványexportálás jelszó ](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
 
     > [!NOTE]
-    > Jegyezze fel ezt a jelszót. A felügyelt tartomány biztonságos LDAP engedélyezése során szüksége [3. feladat – a felügyelt tartomány számára biztonságos LDAP engedélyezése](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+    > Jegyezze fel ezt a jelszót. Szüksége lesz rá az a felügyelt tartomány secure LDAP engedélyezése során [3. feladat – a felügyelt tartomány secure LDAP engedélyezése](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
     >
     >
-15. Az a **exportálandó fájl** csoportjában adja meg a fájl nevét és helyét, hol szeretné, exportálja a tanúsítványt.
+
+15. Az a **exportálandó fájl** adja meg azokat a fájl nevét és helyét, ahol szeretné exportálni a tanúsítványt.
 
     ![A Tanúsítványexportálás elérési útja](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-path.png)
-16. Kattintson a következő lap **Befejezés** exportálja a tanúsítványt egy PFX-fájl. Amikor exportálta a tanúsítványt meg kell jelennie a megerősítő párbeszédpanelen.
+16. A következő lapon kattintson a **Befejezés** exportálja a tanúsítványt egy PFX-fájlba. Ha a tanúsítvány exportálása párbeszédpanel a megerősítő kell megjelennie.
 
     ![Kész tanúsítvány exportálása](./media/active-directory-domain-services-admin-guide/secure-ldap-exported-as-pfx.png)
 
 
 ## <a name="next-step"></a>Következő lépés
-[3. feladat – a felügyelt tartomány számára biztonságos LDAP engedélyezése](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+[3. feladat: a felügyelt tartomány secure LDAP engedélyezése](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)

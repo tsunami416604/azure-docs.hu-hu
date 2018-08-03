@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 9b37c6d1c1c2e7ec002ac1b4ea5768c8972dd9e8
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ddf22491d7531daecf4448e62e8594c3326d7b77
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39039988"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420274"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Oktatóanyag: Azure Active Directory-integráció az QPrism
 
@@ -50,7 +50,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a ja
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. QPrism hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="add-qprism-from-the-gallery"></a>QPrism hozzáadása a katalógusból
 Az Azure AD integrálása a QPrism konfigurálásához hozzá kell QPrism a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -61,15 +61,15 @@ Az Azure AD integrálása a QPrism konfigurálásához hozzá kell QPrism a kata
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások** > **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások** > **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. A párbeszédpanel tetején egy új alkalmazás hozzáadásához válassza **új alkalmazás**.
+1. A párbeszédpanel tetején egy új alkalmazás hozzáadásához válassza **új alkalmazás**.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **QPrism**, és válassza ki **QPrism** eredmény panelen. Kattintson a **Hozzáadás** , vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **QPrism**, és válassza ki **QPrism** eredmény panelen. Kattintson a **Hozzáadás** , vegye fel az alkalmazást.
 
     ![Az eredmények listájában QPrism](./media/qprism-tutorial/tutorial_qprism_addfromgallery.png)
 
@@ -84,10 +84,10 @@ Ezt a kapcsolatot létesíteni a QPrism, rendelje hozzá az értékét a **felha
 Az Azure AD egyszeri bejelentkezés az QPrism tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
 1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. [Hozzon létre egy QPrism tesztfelhasználót](#create-a-qprism-test-user) van egy megfelelője a Britta Simon QPrism, akik kapcsolódik az Azure AD felhasználói ábrázolása.
-4. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ellenőrzése, hogy működik-e a konfiguráció.
+1. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. [Hozzon létre egy QPrism tesztfelhasználót](#create-a-qprism-test-user) van egy megfelelője a Britta Simon QPrism, akik kapcsolódik az Azure AD felhasználói ábrázolása.
+1. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ellenőrzése, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -97,11 +97,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédpanelen jelölje ki **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédpanelen jelölje ki **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/qprism-tutorial/tutorial_qprism_samlbase.png)
 
-3. Az a **QPrism tartomány és URL-címek** területén tegye a következőket:
+1. Az a **QPrism tartomány és URL-címek** területén tegye a következőket:
 
     ![QPrism tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/qprism-tutorial/tutorial_qprism_url.png)
 
@@ -112,15 +112,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóval és bejelentkezés URL-CÍMÉT. Kapcsolattartó [QPrism ügyfél-támogatási csapatának](mailto:qsupport-ce@quatrro.com) beolvasni ezeket az értékeket. 
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
 
      ![A tanúsítvány letöltési hivatkozás](./media/qprism-tutorial/tutorial_qprism_certificate.png)
 
-5. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása Mentés gombra](./media/qprism-tutorial/tutorial_general_400.png)
     
-6. Az egyszeri bejelentkezés konfigurálása **QPrism** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [QPrism támogatási csapatának](mailto:qsupport-ce@quatrro.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **QPrism** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [QPrism támogatási csapatának](mailto:qsupport-ce@quatrro.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -134,15 +134,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/qprism-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/qprism-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel tetején a **minden felhasználó** párbeszédpanelen jelölje ki **Hozzáadás**.
+1. Megnyitásához a **felhasználói** párbeszédpanel tetején a **minden felhasználó** párbeszédpanelen jelölje ki **Hozzáadás**.
 
     ![A Hozzáadás gombra.](./media/qprism-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen tegye a következőket:
+1. Az a **felhasználói** párbeszédpanelen tegye a következőket:
 
     ![A felhasználó párbeszédpanel](./media/qprism-tutorial/create_aaduser_04.png)
 
@@ -170,23 +170,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **QPrism**.
+1. Az alkalmazások listájában jelölje ki a **QPrism**.
 
     ![Az alkalmazások listáját a QPrism hivatkozásra](./media/qprism-tutorial/tutorial_qprism_app.png)  
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. A bal oldali menüben válassza **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Válassza a **Hozzáadás** lehetőséget. Ezután a **hozzárendelés hozzáadása**válassza **felhasználók és csoportok**.
+1. Válassza a **Hozzáadás** lehetőséget. Ezután a **hozzárendelés hozzáadása**válassza **felhasználók és csoportok**.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a a **felhasználók** listája.
+1. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a a **felhasználók** listája.
 
-6. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **kiválasztása**.
+1. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **kiválasztása**.
 
-7. A **hozzárendelés hozzáadása**válassza **hozzárendelése**.
+1. A **hozzárendelés hozzáadása**válassza **hozzárendelése**.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -198,7 +198,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

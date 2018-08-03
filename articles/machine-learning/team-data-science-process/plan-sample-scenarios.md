@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learning speciális elemzésekre forgatókönyveinek |} Microsoft Docs
-description: Válassza ki a megfelelő forgatókönyvek speciális az Team tudományos folyamat a prediktív elemzés megteheti.
+title: Azonosítsa a továbbfejlesztett elemzési forgatókönyvek az Azure Machine Learning |} A Microsoft Docs
+description: Válassza ki a megfelelő ezzel a prediktív elemzés a csoportos adatelemzési folyamat a speciális forgatókönyvek.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: a194061bf443f50bed673a518ab62746f67b4a78
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 62e035c0d28a797ae08480b982598d8265b18767
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838159"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423844"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Speciális elemzési forgatókönyvek az Azure Machine Learning rendszerben
-Ez a cikk ismerteti a különböző minta adatforrások és a cél-szolgáltatásokat, amelyek kezelhetik a [Team adatok tudományos folyamat (TDSP)](overview.md). A TDSP munkacsoportok számára az intelligens alkalmazások rendszeres megközelítését ismerteti. Az itt bemutatott esetekben bemutatják lehetőségeit adatok feldolgozása a munkafolyamatban, amely a adatjellemzők, az adatforrás helyének és a cél tárházak találhatók, az Azure-ban függ.
+Ez a cikk ismerteti a különböző minta adatforrások és a cél forgatókönyvek tudja kezelni a [csoportos adatelemzési folyamat (TDSP)](overview.md). A TDSP rendszerezett megközelítést biztosít olyan munkacsoportok számára az intelligens alkalmazások készítéséhez. Az itt bemutatott forgatókönyveket mutatnak be lehetőségek az adatok feldolgozása a munkafolyamat, amely a adatjellemzők, az adatforrás helyének és az Azure-beli cél tárházak függ.
 
-A **döntési fa** a kiválasztása a mintaforgatókönyvek megfelelő az adatok és a cél számára jelenik meg az utolsó szakaszban.
+A **döntési fa** esetében a mintaként használható jelen forgatókönyvek megfelelő adat-és cél kiválasztása az utolsó szakaszban jelenik meg.
 
 > [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 > 
 > 
 
-A következő szakaszok mindegyikének megadja egy mintaforgatókönyv. Az egyes forgatókönyvek esetében, egy lehetséges adattudomány vagy speciális elemzésekre folyamata és a támogató Azure-erőforrások találhatók.
+A következő szakaszok mindegyike megjelenít egy mintaforgatókönyv. Minden forgatókönyvben egy lehetséges adatelemzéshez vagy a fejlett analitikai folyamat és a támogató Azure-erőforrások listáját.
 
 > [!NOTE]
-> **Az összes a következő esetekben kell:**
+> **Az összes, a következő esetekben kell tennie:**
 > <br/>
 > 
 > * [Tárfiók létrehozása](../../storage/common/storage-create-storage-account.md)
@@ -43,216 +43,216 @@ A következő szakaszok mindegyikének megadja egy mintaforgatókönyv. Az egyes
 > 
 > 
 
-## <a name="smalllocal"></a>A forgatókönyv \#1: kicsi, közepes méretű táblázatos adatkészlet egy helyi fájlok
-![Kis-és közepes méretű helyi fájlok][1]
+## <a name="smalllocal"></a>A forgatókönyv \#1: kicsi, közepes méretű tabulált adatkészlet egy helyi fájlok
+![Kis és közepes méretű helyi fájlok][1]
 
 #### <a name="additional-azure-resources-none"></a>További Azure-erőforrások: nincs
-1. Jelentkezzen be a [Azure Machine Learning Studio](https://studio.azureml.net/).
-2. Töltse fel a DataSet adatkészlet.
-3. Hozzon létre egy Azure Machine Learning kísérlet folyamat feltöltött adatkészlet(ek) kezdve.
+1. Jelentkezzen be a [az Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Töltsön fel egy adatkészletet.
+1. Az Azure Machine Learning-kísérlet feltöltött adatkészlet(ek) kezdve folyamat létrehozása.
 
-## <a name="smalllocalprocess"></a>A forgatókönyv \#2: kis, közepes méretű DataSet feldolgozást igénylő helyi fájlok
-![Kis-és közepes méretű helyi fájlok feldolgozása][2]
+## <a name="smalllocalprocess"></a>A forgatókönyv \#2: kicsi, közepes méretű adatkészlet feldolgozást igénylő helyi fájlok
+![Kis és közepes méretű helyi fájlok és a feldolgozás][2]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (IPython Notebook kiszolgáló)
-1. Hozzon létre egy Azure virtuális gépen futó IPython Notebook.
-2. Adatok feltöltése egy Azure storage-tárolóhoz.
-3. Előre feldolgozzák a, és az adatok elérése az Azure storage tárolóból IPython Notebook adatait.
-4. Alakítsa át adatokat a tisztítás, táblázatos formában.
-5. Az Azure-blobokat átalakított adatok mentése.
-6. Jelentkezzen be a [Azure Machine Learning Studio](https://studio.azureml.net/).
-7. Az adatokat olvasni az Azure-blobokat használ a [és adatokat importálhat] [ import-data] modul.
-8. Hozzon létre egy Azure Machine Learning kísérlet folyamat feldolgozott adatkészlet(ek) kezdve.
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (IPython Notebook server)
+1. Hozzon létre egy Azure virtuális gép futtatása az IPython Notebook.
+1. Adatok feltöltése egy Azure storage-tárolóba.
+1. IPython Notebook az Azure storage-tárolóból az adatok elérése az adatok előzetes feldolgozása és.
+1. Alakítsa át az adatokat megtisztítani, táblázatos formában.
+1. Az átalakított adatok mentése az Azure-blobok.
+1. Jelentkezzen be a [az Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Azure-blobokat használ az adatok beolvasása a [adatok importálása] [ import-data] modul.
+1. Egy Azure Machine Learning-kísérlet betöltött adatkészlet(ek) kezdve folyamat létrehozása.
 
-## <a name="largelocal"></a>A forgatókönyv \#3: a helyi fájloknak, Azure-Blobokkal célzó nagy adatkészlet
-![Nagy helyi fájlok][3]
+## <a name="largelocal"></a>A forgatókönyv \#3: nagy méretű adathalmazt a helyi fájlok célzó Azure-Blobok
+![Nagy méretű helyi fájlok][3]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (IPython Notebook kiszolgáló)
-1. Hozzon létre egy Azure virtuális gépen futó IPython Notebook.
-2. Adatok feltöltése egy Azure storage-tárolóhoz.
-3. Előre feldolgozzák, és az adatok elérése az Azure-blobokat IPython Notebook adatait.
-4. Alakítsa át adatokat a tisztítás, táblázatos formában, szükség esetén.
-5. Adatokba, és szükség szerint funkciók létrehozása.
-6. Bontsa ki a kis és közepes méretű mintáját.
-7. Mentse a mintaadatokat az Azure-blobokat.
-8. Jelentkezzen be a [Azure Machine Learning Studio](https://studio.azureml.net/).
-9. Az adatokat olvasni az Azure-blobokat használ a [és adatokat importálhat] [ import-data] modul.
-10. Build Azure Machine Learning kísérlet folyamata feldolgozott adatkészlet(ek) kezdve.
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (IPython Notebook server)
+1. Hozzon létre egy Azure virtuális gép futtatása az IPython Notebook.
+1. Adatok feltöltése egy Azure storage-tárolóba.
+1. IPython Notebook az Azure-blobokból az adatok elérése az adatok előzetes feldolgozása és.
+1. Adatátalakítás tisztítani, táblázatos formában, ha szükséges.
+1. Fedezze fel az adatokat, és szükség szerint funkciók létrehozása.
+1. Bontsa ki a kis és közepes méretű adatok minta.
+1. A mintavételezett adatok mentése az Azure-blobokat.
+1. Jelentkezzen be a [az Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Azure-blobokat használ az adatok beolvasása a [adatok importálása] [ import-data] modul.
+1. Betöltött adatkészlet(ek) kezdve az Azure Machine Learning-kísérlet folyamat létrehozása.
 
-## <a name="smalllocaltodb"></a>A forgatókönyv \#4: kis, közepes méretű DataSet helyi fájlok, SQL Server egy Azure virtuális gép célzó
-![Kis-és közepes méretű helyi fájlok az Azure SQL Adatbázishoz][4]
+## <a name="smalllocaltodb"></a>A forgatókönyv \#4: kicsi, közepes méretű adatkészlet a helyi fájlok, SQL Server egy Azure virtuális gép célzó
+![Kis és közepes méretű helyi fájlok az Azure SQL DB-hez][4]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (SQL Server / IPython Notebook kiszolgáló)
-1. Hozzon létre egy Azure virtuális gépen fut az SQL-kiszolgáló + IPython Notebookot.
-2. Adatok feltöltése egy Azure storage-tárolóhoz.
-3. Előre feldolgozzák, és az Azure storage tárolóban IPython Notebook használatával adatait.
-4. Alakítsa át adatokat a tisztítás, táblázatos formában, szükség esetén.
-5. Adatok mentése a virtuális gép helyi fájlok (IPython Notebook a virtuális gép fut, helyi meghajtók tekintse meg a VM-meghajtók).
-6. Egy Azure virtuális Gépen futó SQL Server-adatbázis az adatok betöltése.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (az SQL Server / IPython Notebook server)
+1. Hozzon létre egy Azure virtuális gép fut az SQL Server és az IPython Notebook.
+1. Adatok feltöltése egy Azure storage-tárolóba.
+1. IPython Notebook használata az Azure storage-tárolót az adatok előzetes feldolgozása és.
+1. Adatátalakítás tisztítani, táblázatos formában, ha szükséges.
+1. Adatok mentése a virtuális gép helyi fájlok (IPython Notebook fut, a virtuális gép, Virtuálisgép-meghajtókat helyi meghajtók tekintse meg).
+1. Adatok betöltése az SQL Server-adatbázisból egy Azure virtuális gépen.
    
-   A beállítás \#1: SQL Server Management Studio használatával.
+   A beállítás \#1: az SQL Server Management Studióval.
    
-   * Jelentkezzen be az SQL Server rendszerű virtuális Géphez
-   * Futtassa az SQL Server Management Studio eszközt.
-   * Adatbázis és a célként megadott táblák létrehozása.
-   * Használja a tömeges importálásához módszerek a virtuális gép helyi fájlok az adatok betöltésére.
+   * Jelentkezzen be az SQL Servert futtató virtuális gép
+   * Futtassa az SQL Server Management Studióval.
+   * Adatbázis és a céloldali tábla létrehozása.
+   * A tömeges közül módszerek az adatok betöltéséhez a virtuális gép helyi fájlok importálása.
    
-   A beállítás \#2: használatával IPython Notebook – közepes és nagyobb adatkészletek esetében nem ajánlott
+   A beállítás \#2: használatával IPython Notebook – közepes és nagyobb adatkészletek esetében nem javasolt
    
    <!-- -->    
-   * A virtuális gép az SQL Server eléréséhez használja az ODBC kapcsolati karakterlánc.
-   * Adatbázis és a célként megadott táblák létrehozása.
-   * Használja a tömeges importálásához módszerek a virtuális gép helyi fájlok az adatok betöltésére.
-7. Adatokba, és szolgáltatások igény szerint. Ne feledje, hogy a szolgáltatások nem kell az adatbázis táblázatokban materializált. Csak jegyezze fel a szükséges lekérdezést kell létrehoznia őket.
-8. Döntse el, az adatok mintájának méretét, ha szükséges, és/vagy a szükséges.
-9. Jelentkezzen be a [Azure Machine Learning Studio](https://studio.azureml.net/).
-10. Közvetlenül olvassák be az adatokat az SQL Server használja a [és adatokat importálhat] [ import-data] modul. Illessze be a szükséges lekérdezést, mely bontja ki a mezőket, szolgáltatások létrehozza, és minták adatok közvetlenül szükség esetén a [és adatokat importálhat] [ import-data] lekérdezés.
-11. Build Azure Machine Learning kísérlet folyamata feldolgozott adatkészlet(ek) kezdve.
+   * ODBC kapcsolati karakterlánc használata a virtuális Gépen futó SQL Server eléréséhez.
+   * Adatbázis és a céloldali tábla létrehozása.
+   * A tömeges közül módszerek az adatok betöltéséhez a virtuális gép helyi fájlok importálása.
+1. Adatok feltárása, a funkciók létrehozása igény szerint. Vegye figyelembe, hogy az funkciók nem kell is lehet az adatbázistáblák. Csak vegye figyelembe a szükséges lekérdezést kell létrehoznia őket.
+1. Ha szükséges, és/vagy a kívánt dönt adatméret minta.
+1. Jelentkezzen be a [az Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Az adatok beolvasása közvetlenül az SQL Server használatával a [adatok importálása] [ import-data] modul. Illessze be a szükséges lekérdezést, amely kinyeri a mezők, szolgáltatásokat hoz létre, és minták adatokat, ha közvetlenül a szükséges a [adatok importálása] [ import-data] lekérdezés.
+1. Betöltött adatkészlet(ek) kezdve az Azure Machine Learning-kísérlet folyamat létrehozása.
 
-## <a name="largelocaltodb"></a>A forgatókönyv \#5: a helyi fájlok nagy dataset cél SQL Server Azure virtuális gépen
-![Nagy helyi fájlok az Azure SQL Adatbázishoz][5]
+## <a name="largelocaltodb"></a>A forgatókönyv \#5: nagy méretű adathalmazt a helyi fájlok a cél SQL Server Azure-beli virtuális gépen
+![Az SQL DB-hez az Azure-ban nagy méretű helyi fájlok][5]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (SQL Server / IPython Notebook kiszolgáló)
-1. Hozzon létre egy Azure virtuális gépen futó SQL Server IPython Notebook kiszolgáló.
-2. Adatok feltöltése egy Azure storage-tárolóhoz.
-3. (Választható) Előre feldolgozzák és adatait.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (az SQL Server / IPython Notebook server)
+1. Hozzon létre egy Azure virtuális gép fut az SQL Server és az IPython Notebook kiszolgálót.
+1. Adatok feltöltése egy Azure storage-tárolóba.
+1. (Nem kötelező) Adatok előzetes feldolgozása és.
    
-   a.  Előre feldolgozzák és adatait IPython jegyzetfüzet adatok elérése az Azure-ból
+   a.  Adatok az IPython Notebook az Azure-ból adatok elérése és előzetes feldolgozása
    
        blobs.
    
-   b.  Alakítsa át adatokat a tisztítás, táblázatos formában, szükség esetén.
+   b.  Adatátalakítás tisztítani, táblázatos formában, ha szükséges.
    
-   c.  Adatok mentése a virtuális gép helyi fájlok (IPython Notebook a virtuális gép fut, helyi meghajtók tekintse meg a VM-meghajtók).
-4. Egy Azure virtuális Gépen futó SQL Server-adatbázis az adatok betöltése.
+   c.  Adatok mentése a virtuális gép helyi fájlok (IPython Notebook fut, a virtuális gép, Virtuálisgép-meghajtókat helyi meghajtók tekintse meg).
+1. Adatok betöltése az SQL Server-adatbázisból egy Azure virtuális gépen.
    
-   a.  Bejelentkezés az SQL Server rendszerű virtuális Géphez.
+   a.  Jelentkezzen be az SQL Servert futtató virtuális gép.
    
-   b.  Ha az adatok nem már mentve, adatfájlok le az Azure-ból
+   b.  Ha adatok nem már mentette, töltse le az adatfájlokat az Azure-ból
    
        storage container to local-VM folder.
    
-   c.  Futtassa az SQL Server Management Studio eszközt.
+   c.  Futtassa az SQL Server Management Studióval.
    
-   d.  Adatbázis és a célként megadott táblák létrehozása.
+   d.  Adatbázis és a céloldali tábla létrehozása.
    
-   e.  Használja a tömeges importálásához módszerek az adatok betöltésére.
+   e.  A tömeges közül importálása módszerek az adatok betöltéséhez.
    
-   f.  Ha táblákra szükség, illesztések elősegítésére indexek létrehozása.
-   
-   > [!NOTE]
-   > Nagy adatmennyiség gyorsabb betöltését, javasolt, hogy a particionált táblák létrehozása, és tömeges az adatimportálás párhuzamosan. További információkért lásd: [párhuzamos importálhat SQL particionált táblák](parallel-load-sql-partitioned-tables.md).
-   > 
-   > 
-5. Adatokba, és szolgáltatások igény szerint. Ne feledje, hogy a szolgáltatások nem kell az adatbázis táblázatokban materializált. Csak jegyezze fel a szükséges lekérdezést kell létrehoznia őket.
-6. Döntse el, az adatok mintájának méretét, ha szükséges, és/vagy a szükséges.
-7. Jelentkezzen be a [Azure Machine Learning Studio](https://studio.azureml.net/).
-8. Közvetlenül olvassák be az adatokat az SQL Server használja a [és adatokat importálhat] [ import-data] modul. Illessze be a szükséges lekérdezést, mely bontja ki a mezőket, szolgáltatások létrehozza, és minták adatok közvetlenül szükség esetén a [és adatokat importálhat] [ import-data] lekérdezés.
-9. Egyszerű Azure Machine Learning kísérlet folyamata feltöltött dataset kezdődően
-
-## <a name="largedbtodb"></a>A forgatókönyv \#6: nagy adatkészlet egy SQL Server adatbázis a helyszínen, célzás SQL Server egy Azure virtuális gépen
-![Nagy SQL DB a helyszínen az Azure SQL Adatbázishoz][6]
-
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (SQL Server / IPython Notebook kiszolgáló)
-1. Hozzon létre egy Azure virtuális gépen futó SQL Server IPython Notebook kiszolgáló.
-2. Használja az adatok exportálása az adatok exportálása az SQL Server memóriaképek módszerek.
+   f.  Ha a JOIN szükség, gyorsíthatja fel az illesztések indexet hoz létre.
    
    > [!NOTE]
-   > Ha úgy dönt, hogy minden adat áthelyezése a helyszíni adatbázis, a teljes adatbázis áthelyezése az Azure SQL Server-példány (gyorsabb) alternatív módszert. Hagyja ki a lépéseket, exportálhatja az adatokat hozzon létre adatbázis, és a céladatbázis adatok betöltése vagy importálása, és kövesse az alternatív módszert.
+   > A gyorsabb betöltési nagy mennyiségű adat méretű, ajánlott, hogy a particionált táblák létrehozása és tömeges adatimportálás párhuzamosan. További információkért lásd: [párhuzamos adatok importálása az SQL-particionált táblák](parallel-load-sql-partitioned-tables.md).
    > 
    > 
-3. Biztonsági másolat fájlok feltöltése az Azure storage tárolóba.
-4. Egy Azure virtuális gépen futó SQL Server-adatbázishoz az adatok betöltésére.
-   
-   a.  Bejelentkezés az SQL Server virtuális gép.
-   
-   b.  Adatfájlok le az Azure storage-tárolójából a helyi-VM mappába.
-   
-   c.  Futtassa az SQL Server Management Studio eszközt.
-   
-   d.  Adatbázis és a célként megadott táblák létrehozása.
-   
-   e.  Használja a tömeges importálásához módszerek az adatok betöltésére.
-   
-   f.  Ha táblákra szükség, illesztések elősegítésére indexek létrehozása.
+1. Adatok feltárása, a funkciók létrehozása igény szerint. Vegye figyelembe, hogy az funkciók nem kell is lehet az adatbázistáblák. Csak vegye figyelembe a szükséges lekérdezést kell létrehoznia őket.
+1. Ha szükséges, és/vagy a kívánt dönt adatméret minta.
+1. Jelentkezzen be a [az Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Az adatok beolvasása közvetlenül az SQL Server használatával a [adatok importálása] [ import-data] modul. Illessze be a szükséges lekérdezést, amely kinyeri a mezők, szolgáltatásokat hoz létre, és minták adatokat, ha közvetlenül a szükséges a [adatok importálása] [ import-data] lekérdezés.
+1. Az Azure Machine Learning-kísérlet egyszerű folyamatot kezdve a feltöltött adatkészlet
+
+## <a name="largedbtodb"></a>A forgatókönyv \#6: nagy méretű adatkészlet egy SQL Server adatbázis helyben, SQL Server egy Azure virtuális gép célzó
+![Nagy SQL DB – helyszíni SQL-adatbázisba az Azure-ban][6]
+
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (az SQL Server / IPython Notebook server)
+1. Hozzon létre egy Azure virtuális gép fut az SQL Server és az IPython Notebook kiszolgálót.
+1. Az adatok közül export metódus az adatok exportálása az SQL Server memóriaképeket.
    
    > [!NOTE]
-   > A nagy méretű gyorsabb betöltése particionált táblák létrehozása, és tömeges adatimportálás párhuzamosan. További információkért lásd: [párhuzamos importálhat SQL particionált táblák](parallel-load-sql-partitioned-tables.md).
+   > Ha úgy dönt, hogy minden adat áthelyezése a helyszíni adatbázisból, a teljes adatbázis áthelyezése az Azure-beli SQL Server-példány (gyorsabb) alternatív módszert. Adatok exportálása, hozzon létre adatbázist, és terhelés /-importálási adatok a céladatbázis és kövesse a másik módszer a lépés kihagyható.
    > 
    > 
-5. Adatokba, és szolgáltatások igény szerint. Ne feledje, hogy a szolgáltatások nem kell az adatbázis táblázatokban materializált. Csak jegyezze fel a szükséges lekérdezést kell létrehoznia őket.
-6. Döntse el, az adatok mintájának méretét, ha szükséges, és/vagy a szükséges.
-7. Jelentkezzen be a [Azure Machine Learning Studio](https://studio.azureml.net/).
-8. Közvetlenül olvassák be az adatokat az SQL Server használja a [és adatokat importálhat] [ import-data] modul. Illessze be a szükséges lekérdezést, mely bontja ki a mezőket, szolgáltatások létrehozza, és minták adatok közvetlenül szükség esetén a [és adatokat importálhat] [ import-data] lekérdezés.
-9. Egyszerű Azure Machine Learning kísérlet folyamata feltöltött dataset kezdve.
+1. Memóriaképek feltöltése az Azure storage-tárolóba.
+1. Az adatok betöltése az Azure virtuális gépen futó SQL Server-adatbázis.
+   
+   a.  Jelentkezzen be az SQL Server virtuális gép.
+   
+   b.  Töltse le az Azure storage-tárolókat adatfájlokat a helyi virtuális mappába.
+   
+   c.  Futtassa az SQL Server Management Studióval.
+   
+   d.  Adatbázis és a céloldali tábla létrehozása.
+   
+   e.  A tömeges közül importálása módszerek az adatok betöltéséhez.
+   
+   f.  Ha a JOIN szükség, gyorsíthatja fel az illesztések indexet hoz létre.
+   
+   > [!NOTE]
+   > A nagy mennyiségű adat méretű gyorsabb betöltése a particionált táblákat hozhat létre, és tömeges adatimportálás párhuzamosan. További információkért lásd: [párhuzamos adatok importálása az SQL-particionált táblák](parallel-load-sql-partitioned-tables.md).
+   > 
+   > 
+1. Adatok feltárása, a funkciók létrehozása igény szerint. Vegye figyelembe, hogy az funkciók nem kell is lehet az adatbázistáblák. Csak vegye figyelembe a szükséges lekérdezést kell létrehoznia őket.
+1. Ha szükséges, és/vagy a kívánt dönt adatméret minta.
+1. Jelentkezzen be a [az Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Az adatok beolvasása közvetlenül az SQL Server használatával a [adatok importálása] [ import-data] modul. Illessze be a szükséges lekérdezést, amely kinyeri a mezők, szolgáltatásokat hoz létre, és minták adatokat, ha közvetlenül a szükséges a [adatok importálása] [ import-data] lekérdezés.
+1. Egyszerű Azure Machine Learning kísérlet folyamatot feltöltött adatkészlet kezdve.
 
-### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternatív módszert egy helyi SQL Server az Azure SQL Database egy teljes adatbázis másolása
-![Válassza le a helyi adatbázis és az Azure SQL-adatbázis csatlakoztatása][7]
+### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternatív módja teljes adatbázis másolása a helyszíni SQL Serverről az Azure SQL Database
+![Válassza le a helyi adatbázis és az Azure SQL DB csatolása][7]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (SQL Server / IPython Notebook kiszolgáló)
-A teljes SQL Server-adatbázist az SQL Server virtuális gépen replikálni, másolja egy adatbázis egy hálózatihely-kiszolgáló a a másikra, feltéve, hogy az adatbázis átmenetileg offline állapotú lehet tenni. Ehhez az SQL Server Management Studio Object Explorer vagy a megfelelő Transact-SQL-parancsok használatával.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure virtuális gép (az SQL Server / IPython Notebook server)
+A teljes SQL Server-adatbázis az SQL Server virtuális gép replikálása, meg kell egy adatbázis másolatát egy hálózatihely-kiszolgáló egy másikba, feltételezve, hogy az adatbázis átmenetileg offline állapotú lehessen állítani. Ehhez az SQL Server Management Studio Object Explorer vagy az azzal egyenértékű Transact-SQL parancsokkal.
 
-1. Válassza le a forráshely adatbázisához. További információkért lásd: [egy adatbázis leválasztásához](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
-2. A Windows Explorer vagy a Windows parancssori ablakban másolja a adatbázisát fájl vagy fájlokat és a naplófájl vagy naplófájlok az SQL Server virtuális gépen, az Azure-ban a célhelyre.
-3. A másolt fájlok csatolása a célként megadott SQL Server-példány. További információkért lásd: [adatbázis csatolása](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
+1. Válassza le a forráshely adatbázisához. További információkért lásd: [adatbázis leválasztása](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
+1. A Windows Explorer vagy a Windows parancssori ablakban másolja a leválasztott adatbázisban fájl vagy fájlok és a naplófájl vagy naplófájlok cél helye az az SQL Server rendszerű virtuális gép az Azure-ban.
+1. A másolt fájlok csatolása a cél SQL Server-példányt. További információkért lásd: [adatbázis csatolása](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
 
-[Helyezze át egy adatbázis használatával válassza le, és csatolja (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
+[Helyezze át egy adatbázis használatával válassza le és csatlakoztassa (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="largedbtohive"></a>A forgatókönyv \#7: helyi fájlok Big Data típusú adatok cél Hive-adatbázisban az Azure HDInsight Hadoop-fürtök
+## <a name="largedbtohive"></a>A forgatókönyv \#7: helyi fájlok, a big Data típusú adatok Hive-adatbázis az Azure HDInsight Hadoop-fürtök cél
 ![A helyi cél Hive big Data típusú adatok][9]
 
-#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>További Azure-erőforrások: az Azure HDInsight Hadoop-fürt és az Azure virtuális gép (IPython Notebook kiszolgáló)
-1. Hozzon létre egy IPython Notebook Servert futtató Azure virtuális gépen.
-2. Hozzon létre egy Azure HDInsight Hadoop-fürt.
-3. (Választható) Előre feldolgozzák és adatait.
+#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>További Azure-erőforrások: az Azure HDInsight Hadoop-fürt és az Azure virtuális gép (IPython Notebook server)
+1. Hozzon létre egy IPython Notebook Servert futtató Azure virtuális gépet.
+1. Hozzon létre egy Azure HDInsight Hadoop-fürtöt.
+1. (Nem kötelező) Adatok előzetes feldolgozása és.
    
-   a.  Előre feldolgozzák és adatait IPython jegyzetfüzet adatok elérése az Azure-ból
+   a.  Adatok az IPython Notebook az Azure-ból adatok elérése és előzetes feldolgozása
    
        blobs.
    
-   b.  Alakítsa át adatokat a tisztítás, táblázatos formában, szükség esetén.
+   b.  Adatátalakítás tisztítani, táblázatos formában, ha szükséges.
    
-   c.  Adatok mentése a virtuális gép helyi fájlok (IPython Notebook a virtuális gép fut, helyi meghajtók tekintse meg a VM-meghajtók).
-4. Az alapértelmezett tároló, a Hadoop-fürt a 2. lépésben kiválasztott feltölteni az adatokat.
-5. Az Azure HDInsight Hadoop-fürt Hive database adatok betöltése.
+   c.  Adatok mentése a virtuális gép helyi fájlok (IPython Notebook fut, a virtuális gép, Virtuálisgép-meghajtókat helyi meghajtók tekintse meg).
+1. A 2. lépésben kiválasztott Hadoop-fürt alapértelmezett tárolója feltölteni az adatokat.
+1. Adatok betöltése az Azure HDInsight Hadoop-fürtben Hive-adatbázis.
    
-   a.  Jelentkezzen be a Hadoop-fürt átjárócsomópontjához
+   a.  Jelentkezzen be a Hadoop-fürt fő csomópontjának
    
-   b.  Nyissa meg a Hadoop parancssort.
+   b.  Nyissa meg a Hadoop parancssor.
    
-   c.  Adja meg a Hive gyökérkönyvtár parancs `cd %hive_home%\bin` Hadoop parancssor futtatása.
+   c.  Adja meg a Hive gyökérkönyvtár parancs által `cd %hive_home%\bin` Hadoop parancssor.
    
-   d.  Adatbázis és a táblák létrehozásához a Hive-lekérdezések futtatása, és az adatok betöltése az blob storage Hive táblákat.
+   d.  Az adatbázis és tábla létrehozása Hive-lekérdezések futtatásához és Hive-tábláihoz beolvassa az adatokat blob storage-ból.
    
    > [!NOTE]
-   > Ha az adatok nagy, a felhasználók létrehozhatják a Hive tábla partíciókat. Ezt követően a felhasználók használhatják a `for` hurok a Hadoop parancssori az átjárócsomópont az adatok betöltése a Hive tábla particionálva partíció által az.
+   > Big Data típusú adatok esetén a felhasználók létrehozhatnak a Hive-tábla partícióval. Ezt követően a felhasználók használhatják a `for` ciklus az a Hadoop parancssor a fő csomópontot a táblába való betöltéséhez adatokat a Hive segítségével partíció.
    > 
    > 
-6. Adatokba, és szükség esetén a Hadoop parancssori funkciók létrehozása. Ne feledje, hogy a szolgáltatások nem kell az adatbázis táblázatokban materializált. Csak jegyezze fel a szükséges lekérdezést kell létrehoznia őket.
+1. Adatok feltárása és funkciók létrehozása, a Hadoop parancssor igény szerint. Vegye figyelembe, hogy az funkciók nem kell is lehet az adatbázistáblák. Csak vegye figyelembe a szükséges lekérdezést kell létrehoznia őket.
    
-   a.  Jelentkezzen be a Hadoop-fürt átjárócsomópontjához
+   a.  Jelentkezzen be a Hadoop-fürt fő csomópontjának
    
-   b.  Nyissa meg a Hadoop parancssort.
+   b.  Nyissa meg a Hadoop parancssor.
    
-   c.  Adja meg a Hive gyökérkönyvtár parancs `cd %hive_home%\bin` Hadoop parancssor futtatása.
+   c.  Adja meg a Hive gyökérkönyvtár parancs által `cd %hive_home%\bin` Hadoop parancssor.
    
-   d.  A Hadoop parancssor az a Hive-lekérdezések futtatása az adatokba, és szükség szerint funkciók létrehozása a Hadoop-fürt központi csomópontján.
-7. Ha szükséges, és/vagy szükséges, példa a az adatok az Azure Machine Learning Studióban.
-8. Jelentkezzen be a [Azure Machine Learning Studio](https://studio.azureml.net/).
-9. Olvassa el az adatok közvetlenül a `Hive Queries` használatával a [és adatokat importálhat] [ import-data] modul. Illessze be a szükséges lekérdezést, mely bontja ki a mezőket, szolgáltatások létrehozza, és minták adatok közvetlenül szükség esetén a [és adatokat importálhat] [ import-data] lekérdezés.
-10. Egyszerű Azure Machine Learning kísérlet folyamata feltöltött dataset kezdve.
+   d.  Futtassa a Hive-lekérdezések a Hadoop parancssor a feltárhatja az adatait, és szükség szerint funkciók létrehozása a Hadoop-fürt főcsomópontjához.
+1. Ha szükséges, és/vagy kívánt, mintaadatokkal megfelelően az Azure Machine Learning Studióban.
+1. Jelentkezzen be a [az Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Olvassa el az adatokat közvetlenül a `Hive Queries` használatával a [adatok importálása] [ import-data] modul. Illessze be a szükséges lekérdezést, amely kinyeri a mezők, szolgáltatásokat hoz létre, és minták adatokat, ha közvetlenül a szükséges a [adatok importálása] [ import-data] lekérdezés.
+1. Egyszerű Azure Machine Learning kísérlet folyamatot feltöltött adatkészlet kezdve.
 
-## <a name="decisiontree"></a>A forgatókönyv kiválasztása döntési fája
+## <a name="decisiontree"></a>Forgatókönyv kiválasztása döntési fája
 - - -
-Az alábbi ábra a fent leírt forgatókönyvek és a speciális Analytics folyamat és a technológia választások kattintva az egyes részletezett forgatókönyv foglalja össze. Vegye figyelembe, hogy az adatok feldolgozása, a feltárása, a szolgáltatás műszaki osztály és a mintavételi is igénybe vehet egy vagy több módszer/környezet – a forrás, a köztes, és/vagy a cél környezetekben – helyezze, és szükség szerint ismételt folytathatja. A diagram csak néhány lehetséges adatfolyamok szemléltetésére szolgál, és nem biztosít teljes körű enumerálást.
+A következő ábra összefoglalja a fent leírt forgatókönyveket és a fejlett analitikai folyamat és technológia választott lehetőségek, amelyek az egyes a tételes forgatókönyvek esetében. Vegye figyelembe, hogy az adatokat feldolgozó, feltárása, funkciófejlesztési és mintavételi eltarthat egy vagy több módszer/környezet – a forrásnál, köztes, és/vagy a célzott adathalászatban – helyezze, és szükség szerint iteratív folytathatja. A diagram csak néhány lehetséges folyamatok olyan bemutatásáért funkcionál, és nem biztosít teljes körű enumerálás.
 
-![A minta DS folyamat bemutató forgatókönyvek][8]
+![Minta DS folyamatot bemutató forgatókönyvek][8]
 
-### <a name="advanced-analytics-in-action-examples"></a>Speciális elemzés a művelet példák
-Végpontok közötti Azure Machine Learning forgatókönyvek alkalmazó szoftverbiztonsági a Advanced Analytics folyamat és a nyilvános adatkészleteket használó technológia lásd:
+### <a name="advanced-analytics-in-action-examples"></a>Advanced Analytics példák működés közben
+Teljes körű Azure Machine Learning forgatókönyvek, amelyek a alkalmazni a fejlett analitikai folyamat és technológia nyilvános adatkészleteket használó lásd:
 
-* [Vonja össze az adatokat tudományos folyamat működés közben: SQL Server használatával](sql-walkthrough.md).
-* [Vonja össze az adatokat tudományos folyamat működés közben: HDInsight Hadoop-fürtök használata](hive-walkthrough.md).
+* [Csoportos adatelemzési folyamat működés közben: az SQL-kiszolgáló](sql-walkthrough.md).
+* [Csoportos adatelemzési folyamat működés közben: HDInsight Hadoop-fürtöket használó](hive-walkthrough.md).
 
 [1]: ./media/plan-sample-scenarios/dsp-plan-small-in-aml.png
 [2]: ./media/plan-sample-scenarios/dsp-plan-local-with-processing.png

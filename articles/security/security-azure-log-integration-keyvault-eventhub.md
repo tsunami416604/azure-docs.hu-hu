@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault naplók integrálni az Event Hubs használatával |} Microsoft Docs
-description: Oktatóanyag, amely biztosítja a szükséges lépéseket, ha egy SIEM szeretné elérhetővé tenni az Key Vault naplóinak, az Azure napló integrálása révén
+title: Az Azure Key Vault naplóinak integrálása az Event Hubs használatával |} A Microsoft Docs
+description: Ez az oktatóanyag elérhetővé Key Vault-naplók egy siem-nek az Azure Log Integration szükséges lépéseket ismerteti
 services: security
 author: barclayn
 manager: MBaldwin
@@ -11,179 +11,179 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 3de876a8d06a52412bbbfd3ad922c2c4c6d8ec37
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: b91d405b8ada1446a477dc10a116b5dfdf349131
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235957"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440046"
 ---
-# <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure napló integrációs Útmutató: az Event Hubs használatával folyamat az Azure Key Vault-események
+# <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Az Azure Log Integration-oktatóanyag: folyamat az Azure Key Vault események Event Hubs használatával
 
 >[!IMPORTANT]
-> Az Azure Naplóelemzés integrációs szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018 jún 27 letiltásra kerül. Mi a teendő áthelyezése előre tekintse át a feladás egy vagy több útmutatót [integrálható a meglévő SIEM-eszközök használata Azure-figyelő](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018. június 27. letiltásra kerül. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
-Használhatja az Azure napló integrációs naplózott események beolvasásához, és elérhetővé teszi azokat a biztonsági információk és az esemény (SIEM) felügyeleti rendszerbe. Ez az oktatóanyag azt szemlélteti, hogyan Azure napló integrációs használható az Azure Event Hubs beszerzett naplók feldolgozása.
+Használhatja az Azure Log Integration naplózott események beolvasásához, és elérhetővé teheti azokat a biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti rendszer. Ez az oktatóanyag azt szemlélteti, hogyan Azure Log Integration használható-e feldolgozni az Azure Event Hubs keretében beszerzett naplókat.
 
-Az előnyben részesített módszere integrálása az Azure naplókat, hogy a SIEM gyártója által biztosított Azure figyelő összekötővel, és ezeket a következő [utasításokat](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Azonban ha a SIEM-szállító Azure figyelése nem biztosít egy összekötőt, akkor előfordulhat, hogy fogja tudni használni Azure napló integrációs ideiglenes megoldásként (Ha a SIEM Azure napló integrációs támogatja) addig, amíg az ilyen összekötő nem érhető el.
+Az előnyben részesített módja az Azure-naplók integrálása a SIEM gyártója által biztosított Azure Monitor-összekötő használatával, és ezek a következő van [utasításokat](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Azonban a SIEM gyártója által biztosított az Azure monitornak nem biztosít egy összekötőt, ha, előfordulhat, hogy tudni használni az Azure Log Integration ideiglenes megoldás (ha az Azure Log Integration támogatja a siem-nek) mindaddig, amíg elérhető ilyen egy összekötőt.
 
  
-Ez az oktatóanyag segítségével Ismerkedjen meg a hogyan Azure napló integráció és az Event Hubs működik együtt a példa a lépéseket követve, és hogyan minden lépés támogatja a megoldást. Majd is eltarthat, mire hogy megismerte itt létrehozása a saját lépéseket a vállalat egyedi igényeinek támogatására.
+Ebben az oktatóanyagban használatával leckén keresztül az Azure Log Integration és az Event Hubs együttműködésének példa lépések, és hogyan támogatja az egyes lépések a a megoldás ismertetése. Kipróbálhatja a tanultak Itt hozhat létre a saját vállalata egyedi igényeinek támogatásához lépéseket.
 
 >[!WARNING]
-A lépéseket és az oktatóanyagban szereplő parancsok nem célja, hogy másolni és beilleszteni. Példák csak fontosságúak. Ne használja a PowerShell-parancsok "adott állapotban" élő környezetében. Kell testre szabnia a saját egyedi környezete alapján.
+A lépéseket, és ebben az oktatóanyagban szereplő parancsok nem tartozhat másolni és beilleszteni. Még csak példák. Az élő környezetben ne használja az "adott állapotában" PowerShell-parancsokat. Kell testre szabnia egyedi környezete alapján.
 
 
-Ez az oktatóanyag bemutatja, hogyan véve az eseményközpontok a rendszer naplózza az Azure Key Vault tevékenység és hozzáférhető legyen JSON-fájlok formájában a SIEM rendszerhez. Konfigurálhatja a SIEM-rendszerben a JSON-fájlok feldolgozásához.
+Ez az oktatóanyag végigvezeti egy eseményközpontba naplózza az Azure Key Vault tevékenység elkészítéséhez, és elérhetővé JSON-fájlok formájában a SIEM rendszerhez. Konfigurálhatja a SIEM-rendszerbe, a JSON-fájlok feldolgozására.
 
 >[!NOTE]
->A jelen oktatóanyagban szereplő lépések a legtöbb tartalmaz, amely kulcstárolót, storage-fiókok és az event hubs konfigurálása. Az adott Azure napló integrációs lépésekre az oktatóanyag végén. Éles környezetben ne hajtsa végre ezeket a lépéseket. Csak egy tesztkörnyezetet szolgálnak. A lépések testre kell szabnia az éles használat előtt.
+>A jelen oktatóanyagban szereplő lépések a legtöbb magában foglalja a kulcstartók, a storage-fiókok és az event hubs konfigurálása. Az adott Azure Log Integration lépései is, ez az oktatóanyag végén. Éles környezetben ne hajtsa végre ezeket a lépéseket. Csak tesztkörülmények szolgálnak. Az éles használat előtt testre kell szabnia a lépéseket.
 
-Információk menet segít megérteni a minden lépés okaival. Más cikkek hivatkozásainak nyújtanak további információkhoz juthat az egyes témakörök.
+Követhető megadott információk segítségével megismerheti az egyes lépések okaival. Más cikkek hivatkozásainak biztosíthatja a további részleteket az egyes témaköröket.
 
-A szolgáltatásokat, amelyeket az oktatóanyag említi kapcsolatos további információkért lásd: 
+Az alkalmazásfrissítés ebben az oktatóanyagban, amely a szolgáltatásokkal kapcsolatos további információkért lásd: 
 
 - [Azure Key Vault](../key-vault/key-vault-whatis.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
-- [Azure Naplóelemzés integráció](security-azure-log-integration-overview.md)
+- [Azure-naplók integrációja](security-azure-log-integration-overview.md)
 
 
 ## <a name="initial-setup"></a>Kezdeti telepítés
 
-Ebben a cikkben szereplő lépések végrehajtásához, a következők szükségesek:
+Mielőtt elvégezhetné a jelen cikkben ismertetett lépések, a következők szükségesek:
 
-1. Azure-előfizetések és az adott előfizetéshez, rendszergazdai jogosultságokkal rendelkező fiókot. Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+1. Azure-előfizetések és az előfizetés rendszergazdai jogosultságokkal rendelkező fiókot. Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
  
-2. A rendszer, amely megfelel a Azure napló-integráció telepítése Internet-hozzáféréssel rendelkező. A rendszer lehet egy felhőalapú szolgáltatás, vagy helyben tárolt.
+1. A rendszer, amely megfelel a az Azure Log Integration telepítése internet-hozzáféréssel rendelkező. A rendszer a felhőalapú szolgáltatásként vagy a helyszínen üzemeltetett.
 
-3. [Azure napló-integráció](https://www.microsoft.com/download/details.aspx?id=53324) telepítve. A telepítéséhez:
+1. [Az Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324) telepítve. A telepítéshez:
 
-   a. A távoli asztal segítségével a rendszer a 2. lépésben említett csatlakozni.   
-   b. Másolja a rendszer a Azure napló integráció telepítője. Is [a telepítési fájlok letöltési](https://www.microsoft.com/download/details.aspx?id=53324).   
-   c. A telepítő elindításához, és fogadja el a Microsoft szoftverlicenc-szerződést.   
-   d. Ha telemetriai tájékoztatást fogunk adni, hagyja bejelölve a jelölőnégyzetet. Ha szeretné ahelyett, hogy nem küldött használati adatait a Microsoft, törölje a jelet a jelölőnégyzetből.
+   a. A távoli asztal használatával csatlakozhat a rendszer a 2. lépésben említett.   
+   b. Másolja a rendszer az Azure Log Integration telepítőt. Is [a telepítési fájlok letöltési](https://www.microsoft.com/download/details.aspx?id=53324).   
+   c. Indítsa el a telepítőt, és fogadja el a Microsoft szoftverlicenc-feltételeket.   
+   d. Telemetriai adatok fog megadása esetén hagyja meg a jelölőnégyzet be van jelölve. Ha szeretné inkább nem küld használati adatokat a Microsoft, törölje a jelölőnégyzet jelölését.
    
-   További információ a Azure napló integráció és telepítéséről: [Azure napló integráció az Azure diagnosztikai naplózás és a Windows-Eseménytovábbítást](security-azure-log-integration-get-started.md).
+   További információ az Azure Log Integration, és a telepítésének módjáról lásd: [Azure Log Integration az Azure diagnosztikai naplózás és a Windows-Eseménytovábbítást](security-azure-log-integration-get-started.md).
 
-4. A legújabb PowerShell-verzió.
+1. A PowerShell legújabb verziója.
  
-   Ha a Windows Server 2016 telepítve van, akkor legalább rendelkezik PowerShell 5.0. A Windows Server bármely verziója használata, lehetséges, hogy egy korábbi telepített PowerShell. A verzió beírásával ellenőrizheti ```get-host``` egy PowerShell-ablakban. Ha nincs PowerShell 5.0 verziója, akkor [le is](https://www.microsoft.com/download/details.aspx?id=50395).
+   Ha Windows Server 2016 telepítve van, akkor legalább rendelkezik PowerShell 5.0-s. Ha Windows Server bármilyen más verziót használ, előfordulhat, hogy rendelkezik PowerShell telepítve van egy korábbi verzióját. A verzió ellenőrzéséhez írja be ```get-host``` egy PowerShell-ablakban. Ha még nincs telepítve a PowerShell 5.0, [letöltheti](https://www.microsoft.com/download/details.aspx?id=50395).
 
-   Miután legalább PowerShell 5.0, folytathatja a legújabb verzió telepítése:
+   Miután legalább PowerShell 5.0-, folytathatja a legfrissebb verzió telepítéséhez:
    
-   a. A PowerShell-ablakot, írja be a ```Install-Module Azure``` parancsot. A telepítés végrehajtásához.    
-   b. Adja meg a ```Install-Module AzureRM``` parancsot. A telepítés végrehajtásához.
+   a. A PowerShell ablakban írja be a ```Install-Module Azure``` parancsot. A telepítési lépéseket.    
+   b. Adja meg a ```Install-Module AzureRM``` parancsot. A telepítési lépéseket.
 
    További információkért lásd: [Azure PowerShell telepítése](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0).
 
 
-## <a name="create-supporting-infrastructure-elements"></a>Támogató infrastruktúra elemeinek létrehozása
+## <a name="create-supporting-infrastructure-elements"></a>Támogató infrastruktúra-elemek létrehozása
 
-1. Nyisson meg egy emelt szintű PowerShell ablakot, és navigáljon **C:\Program Files\Microsoft Azure napló integrációs**.
-2. Importálja a AzLog parancsmagok a parancsfájl LoadAzLogModule.ps1 való futtatásával. Adja meg a `.\LoadAzLogModule.ps1` parancsot. (Figyelje meg a ". \" parancsnak a.) Ennek nagyjából a következőképpen kell kinéznie:</br>
+1. Nyisson meg egy rendszergazda jogú PowerShell-ablakban, majd **C:\Program Files\Microsoft Azure Log Integration**.
+1. Importálja a AzLog parancsmagok a LoadAzLogModule.ps1 szkript futtatásával. Adja meg a `.\LoadAzLogModule.ps1` parancsot. (Közlemény a ". \" parancsot a.) Ennek nagyjából a következőképpen kell kinéznie:</br>
 
-   ![A betöltött modulok listáján](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
+   ![A betöltött modulok listája](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
-3. Adja meg a `Connect-AzureRmAccount` parancsot. A bejelentkezési ablakban adja meg a hitelesítő adatok az előfizetés használni ehhez az oktatóanyaghoz.
+1. Adja meg a `Connect-AzureRmAccount` parancsot. A bejelentkezési ablakban írja be a hitelesítő adatokat az ehhez az oktatóanyaghoz használt előfizetés.
 
    >[!NOTE]
-   >Ha ez az első alkalommal meg most jelentkezik be Azure erről a gépről, látni fogja a PowerShell adatgyűjtés engedélyezése a Microsoft üzenet. Azt javasoljuk, hogy engedélyezze az adatgyűjtés, mert lesz használható Azure PowerShell javítása érdekében.
+   >Ha először, akkor már bejelentkezett az Azure-bA erről a gépről, látni fogja a PowerShell-használati adatok gyűjtéséhez lehetővé teszi a Microsoft szóló üzenetet. Azt javasoljuk, hogy engedélyezze az adatgyűjtést, mivel lesz használható Azure PowerShell-lel javítása érdekében.
 
-4. Sikeres hitelesítést követően jelentkezett be, és meg az alábbi képernyőfelvételen szereplő információkat. Jegyezze fel az előfizetés-azonosító és az előfizetés nevét, mert szükség lesz a későbbi lépésekben befejeződnek.
+1. Sikeres hitelesítés után jelentkezett be, és az adatok az alábbi képernyőfelvételen láthatók. Jegyezze fel a előfizetése Azonosítóját és az előfizetés nevét, mert kell őket a későbbi lépések végrehajtásához.
 
-   ![PowerShell-ablakot](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
-5. Hozzon létre változókat értékeket, amelyeket a rendszer később tárolásához. Adja meg a következő PowerShell-sorok. Szükség lehet az értékeket a környezet beállításához.
+   ![PowerShell-ablakban](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
+1. Hozzon létre változókat a értékeket, amelyeket később fogja használni. Adja meg a következő PowerShell-parancsokat minden egyes. Előfordulhat, hogy a értékeit, hogy megfeleljenek a környezet módosítani kell.
     - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (Az előfizetés neve eltérő lehet. Tekintheti meg az előző parancs részeként.)
-    - ```$location = 'West US'``` (Ezt a változót használja felelt meg a helyet, ahol erőforrásokat kell létrehozni. Módosíthatja ezt a változót a bárhol lehet.)
+    - ```$location = 'West US'``` (Ezt a változót használja át a helyet, ahol erőforrásokat kell létrehozni. Módosíthatja ezt a változót kell bármely tetszőleges helyre.)
     - ```$random = Get-Random```
     - ``` $name = 'azlogtest' + $random``` (A neve bármi lehet, de ez csak kisbetűket és számokat kell tartalmaznia.)
-    - ``` $storageName = $name``` (Ezt a változót használja a tárfiók nevének.)
-    - ```$rgname = $name ``` (Ez a változó lesz használható az erőforráscsoport neve.)
-    - ``` $eventHubNameSpaceName = $name``` (Ez az esemény hub névtér nevét.)
-6. Adja meg az előfizetést, hogy a működik:
+    - ``` $storageName = $name``` (Ezt a változót használja a storage-fiók neve.)
+    - ```$rgname = $name ``` (Ezt a változót használja az erőforráscsoport neveként.)
+    - ``` $eventHubNameSpaceName = $name``` (Ez a az eseményközpont-névtér nevét.)
+1. Adja meg az előfizetést, amelyhez a működik:
     
     ```Select-AzureRmSubscription -SubscriptionName $subscriptionName```
-7. Hozzon létre egy erőforráscsoportot:
+1. Hozzon létre egy erőforráscsoportot:
     
     ```$rg = New-AzureRmResourceGroup -Name $rgname -Location $location```
     
-   Ha beírja `$rg` ezen a ponton ezen a képernyőfelvételen látható hasonló kimenetnek kell megjelennie:
+   Ha megad `$rg` ezen a ponton kimenetnek kell megjelennie alábbi képernyőképhez hasonlóan:
 
-   ![Kimeneti erőforráscsoport létrehozása után](./media/security-azure-log-integration-keyvault-eventhub/create-rg.png)
-8. Hozzon létre egy tárfiókot, állapotadatokat nyomon követéséhez használható:
+   ![Az erőforráscsoport létrehozása után a kimenet](./media/security-azure-log-integration-keyvault-eventhub/create-rg.png)
+1. Hozzon létre egy tárfiókot, amelyet állapotinformációkat nyomon követéséhez használható:
     
     ```$storage = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $location -SkuName Standard_LRS```
-9. Az event hub névtér létrehozása. Ez az eseményközpontok létrehozásához szükséges.
+1. Az eseményközpont-névtér létrehozása. Ez egy eseményközpont létrehozásához szükséges.
     
     ```$eventHubNameSpace = New-AzureRmEventHubNamespace -ResourceGroupName $rgname -NamespaceName $eventHubnamespaceName -Location $location```
-10. Töltse le az elemzések szolgáltatóval használható Szabályazonosító:
+1. Insights-szolgáltatóval használandó szabály Azonosítójának lekéréséhez:
     
     ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
-11. Minden lehetséges az Azure-helyeinek lekéréséhez, és vegye fel a neveket egy változó, amely egy későbbi lépésben használható:
+1. Első minden lehetséges Azure-helyen, és vegye fel a neveket, amely egy későbbi lépésben használható:
     
     a. ```$locationObjects = Get-AzureRMLocation```    
     b. ```$locations = @('global') + $locationobjects.location```
     
-    Ha beírja `$locations` ezen a ponton a helynevek lásd a Get-AzureRmLocation által visszaadott további adatok nélkül.
-12. Azure Resource Manager napló profil létrehozása: 
+    Ha megad `$locations` ezen a ponton az adatgyűjtés kiterjed a hely a Get-AzureRmLocation által visszaadott további adatok nélkül.
+1. Hozzon létre egy Azure Resource Manager naplóprofil: 
     
     ```Add-AzureRmLogProfile -Name $name -ServiceBusRuleId $sbruleid -Locations $locations```
     
-    Az Azure naplóelemzés profillal kapcsolatos további információkért lásd: [áttekintése Azure tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+    Az Azure log-profillal kapcsolatos további információkért lásd: [áttekintése az Azure-tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
 > [!NOTE]
-> Egy hibaüzenetet kaphat napló-profil létrehozása közben. Majd a Get-AzureRmLogProfile és eltávolítása-AzureRmLogProfile dokumentációjában tekintheti meg. Ha futtatja a Get-AzureRmLogProfile, tekintse meg a napló-profillal kapcsolatos információk. Írja be a meglévő napló-profil törlése a ```Remove-AzureRmLogProfile -name 'Log Profile Name' ``` parancsot.
+> Előfordulhat, hogy kapott hibaüzenetet, amikor megpróbál létrehozni egy naplóprofil. Ezután a Get-AzureRmLogProfile és a Remove-AzureRmLogProfile dokumentációjában tekintheti meg. Ha futtatja a Get-AzureRmLogProfile, láthatja a napló-profillal kapcsolatos információkat. Írja be a meglévő naplóprofil törölheti a ```Remove-AzureRmLogProfile -name 'Log Profile Name' ``` parancsot.
 >
->![Erőforrás-kezelő profil hiba](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
+>![Resource Manager-profil hiba](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-1. A kulcstároló létrehozása:
+1. A key vault létrehozása:
 
    ```$kv = New-AzureRmKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location ```
 
-2. A key vault naplózásának konfigurálása:
+1. A key vault naplózásának konfigurálása:
 
    ```Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true ```
 
-## <a name="generate-log-activity"></a>Napló tevékenység létrehozása
+## <a name="generate-log-activity"></a>Naplózási tevékenység létrehozása
 
-Kérelmek kell küldeni a Key Vault naplózása létrehozásához. Műveletek, például Kulcslétrehozási, titkok, tárolása, vagy titkos kulcsok beolvasása a Key Vault naplóbejegyzések hoz létre.
+Kérelmek kell küldeni a Key Vault naplózása létrehozásához szükséges. Műveletek, például kulcslétrehozás, titkos kódok, tárolásához, vagy titkos kulcsok a Key Vault olvasásakor naplóbejegyzések hoz létre.
 
-1. Megjeleníti az aktuális tároló kulcsait:
+1. Megjeleníti az aktuális tárkulcsok:
     
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
-2. Egy új készítése **key2**:
+1. Hozzon létre egy új **key2**:
     
    ```New-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname -KeyName key2```
-3. Jelenjen meg többé a kulcsokat, és tekintse meg, amely **key2** egy másik értéket tartalmazza:
+1. Nyissa meg ismét a kulcsokat, és itt látható, hogy **key2** egy másik értéket tartalmazza:
     
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
-4. Állítsa be, és olvassa el a titkos kulcs további naplóbejegyzések létrehozásához:
+1. Adja meg, és olvassa el a titkos kulcs létrehozásához további bejegyzései:
     
    a. ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![Visszaadott titkos](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 
 
-## <a name="configure-azure-log-integration"></a>Azure Naplóelemzés-integráció konfigurálása
+## <a name="configure-azure-log-integration"></a>Az Azure Log-integráció konfigurálása
 
-Most, hogy minden szükséges elemeket kell rendelkeznie a Key Vault naplózásával az eseményközpontba van beállítva, kell Azure napló-integráció konfigurálása:
+Most, hogy konfigurálta a szükséges elemeket, hogy a Key Vault-naplózás az eseményközpontba, kell konfigurálni az Azure Log Integration:
 
 1. ```$storage = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename```
-2. ```$eventHubKey = Get-AzureRmEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
-3. ```$storagekeys = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
-4. ``` $storagekey = $storagekeys[0].Value```
+1. ```$eventHubKey = Get-AzureRmEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
+1. ```$storagekeys = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
+1. ``` $storagekey = $storagekeys[0].Value```
 
 Minden event hubs AzLog parancsot:
 
 1. ```$eventhubs = Get-AzureRmEventHub -ResourceGroupName $rgname -NamespaceName $eventHubNamespaceName```
-2. ```$eventhubs.Name | %{Add-AzLogEventSource -Name $sub' - '$_ -StorageAccount $storage.StorageAccountName -StorageKey $storageKey -EventHubConnectionString $eventHubKey.PrimaryConnectionString -EventHubName $_}```
+1. ```$eventhubs.Name | %{Add-AzLogEventSource -Name $sub' - '$_ -StorageAccount $storage.StorageAccountName -StorageKey $storageKey -EventHubConnectionString $eventHubKey.PrimaryConnectionString -EventHubName $_}```
 
-Egy perc vagy, a két legutóbbi parancsok futtatására megtekintheti az JSON-fájlok létrehozása folyamatban. A könyvtár figyelésével ellenőrizheti, hogy **C:\users\AzLog\EventHubJson**.
+Egy percet vesz, az utolsó két parancsok futtatása, ha létrehozott JSON-fájlok jelenik meg. Azt is ellenőrizze, hogy a címtár-figyelési szolgáltatás által **C:\users\AzLog\EventHubJson**.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Naplóelemzés integrációs – gyakori kérdések](security-azure-log-integration-faq.md)
-- [Ismerkedés az Azure napló integráció](security-azure-log-integration-get-started.md)
-- [Az Azure-erőforrások naplók integrálja a SIEM-rendszerekről](security-azure-log-integration-overview.md)
+- [Az Azure Log Integration – gyakori kérdések](security-azure-log-integration-faq.md)
+- [Ismerkedés az Azure Log Integration](security-azure-log-integration-get-started.md)
+- [Azure-erőforrások naplóinak integrálása a SIEM rendszerekhez](security-azure-log-integration-overview.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 97e77fdbb352e1fcf66044f48e17cb19a8aa2e1d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 266c9523f45294899e3cddbe782cbc54846eb119
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042146"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422307"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>Oktatóanyag: Azure Active Directory-integráció az SAP Felhőplatform Identitáshitelesítésével
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a ja
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Ebben az oktatóanyagban a forgatókönyv két fő építőelemeket áll:
 
 1. SAP Felhőplatform Identitáshitelesítésével hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 Mielőtt alaposabban elmerülne a technikai részleteket, létfontosságú a szereplőknek tekintse meg fog a fogalmak megértéséhez. Az SAP Felhőplatform Identitáshitelesítésével és az Active Directory összevonási szolgáltatások lehetővé teszi az egyszeri bejelentkezés megvalósítása a különböző alkalmazások vagy szolgáltatások, az SAP-alkalmazások (mint az IdP) az Azure AD által védett és védett SAP Cloud services Felhőplatform Identitáshitelesítésével.
 
@@ -84,17 +84,17 @@ Az integráció az SAP Felhőplatform Identitáshitelesítésével konfigurálá
 
     ![Az Azure Active Directory gomb][1]
 
-2. Lépjen a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Lépjen a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új az új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új az új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **SAP Felhőplatform Identitáshitelesítésével**. 
+1. A Keresés mezőbe írja be a **SAP Felhőplatform Identitáshitelesítésével**. 
 
-5. Válassza ki **SAP Felhőplatform Identitáshitelesítésével** az eredmények panelen, és válassza ki a **Hozzáadás** gombra.
+1. Válassza ki **SAP Felhőplatform Identitáshitelesítésével** az eredmények panelen, és válassza ki a **Hozzáadás** gombra.
 
     ![SAP Felhőplatform Identitáshitelesítésével a találatok listájában](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_addfromgallery.png)
 
@@ -109,10 +109,10 @@ SAP Felhőplatform Identitáshitelesítésével, adjon az érték **felhasznál�
 Az Azure AD egyszeri bejelentkezés az SAP Felhőplatform Identitáshitelesítésével tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
 1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. [Hozzon létre egy SAP Felhőplatform Identitáshitelesítésével tesztfelhasználót](#create-an-sap-cloud-platform-identity-authentication-test-user) van egy megfelelője a Britta Simon SAP Felhőplatform Identitáshitelesítésével, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) , hogy működik-e a konfiguráció ellenőrzéséhez.
+1. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. [Hozzon létre egy SAP Felhőplatform Identitáshitelesítésével tesztfelhasználót](#create-an-sap-cloud-platform-identity-authentication-test-user) van egy megfelelője a Britta Simon SAP Felhőplatform Identitáshitelesítésével, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) , hogy működik-e a konfiguráció ellenőrzéséhez.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -124,11 +124,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédpanel **SAML-alapú bejelentkezés**, jelölje be **mód** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédpanel **SAML-alapú bejelentkezés**, jelölje be **mód** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_samlbase.png)
 
-3. Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, a **SAP Cloud platformon identitás hitelesítési tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:  
+1. Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, a **SAP Cloud platformon identitás hitelesítési tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:  
 
     ![Az SAP Cloud platformon identitás hitelesítési tartomány és URL-címek egyszeri bejelentkezési adatait](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_url.png)
 
@@ -139,7 +139,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Forduljon a [SAP Cloud platformon identitás hitelesítési ügyfél-támogatási csapatának](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) beolvasni ezeket az értékeket. Ha nem ismeri a azonosító értékét, olvassa el az SAP Felhőplatform Identitáshitelesítésével dokumentáció [bérlői SAML 2.0 konfigurációs](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
 
-4. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett üzemmódnál válassza **speciális URL-beállítások megjelenítése**.
+1. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett üzemmódnál válassza **speciális URL-beállítások megjelenítése**.
 
     ![Az SAP Cloud platformon identitás hitelesítési tartomány és URL-címek egyszeri bejelentkezési adatait](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_url1.png)
 
@@ -148,15 +148,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Az érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Az adott üzleti alkalmazás bejelentkezési URL-CÍMÉT használja. Forduljon a [SAP Cloud platformon identitás hitelesítési ügyfél-támogatási csapatának](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) Ha kétségei vannak.
 
-5. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **metaadatainak XML**. Mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **metaadatainak XML**. Mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_certificate.png)
 
-6. SAP-Felhőplatform Identitáshitelesítésével alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Ezek az attribútumok értékeinek kezelése a **felhasználói attribútumok** szakaszban az alkalmazás integrációs oldalán található. A következő képernyőképen látható egy példa a formátumra. 
+1. SAP-Felhőplatform Identitáshitelesítésével alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Ezek az attribútumok értékeinek kezelése a **felhasználói attribútumok** szakaszban az alkalmazás integrációs oldalán található. A következő képernyőképen látható egy példa a formátumra. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sap-hana-cloud-platform-identity-authentication-tutorial/attribute.png)
 
-7. Ha az SAP-alkalmazás vár egy attribútum, például **firstName**, adja hozzá a **firstName** az attribútum a **felhasználói attribútumok** szakaszban. Ez a beállítás érhető el a **egyszeri bejelentkezési** párbeszédpanelén a **SAML-jogkivonat attribútumai** párbeszédpanel megnyitásához...
+1. Ha az SAP-alkalmazás vár egy attribútum, például **firstName**, adja hozzá a **firstName** az attribútum a **felhasználói attribútumok** szakaszban. Ez a beállítás érhető el a **egyszeri bejelentkezési** párbeszédpanelén a **SAML-jogkivonat attribútumai** párbeszédpanel megnyitásához...
 
     a. Megnyitásához a **attribútum hozzáadása** párbeszédpanelen jelölje ki **attribútum hozzáadása**. 
     
@@ -168,27 +168,27 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     c. Az a **érték** listájához, válassza ki az attribútum értéke **user.givenname**.
     
-    d. Válassza ki **Ok**.
+    d. Kattintson az **OK** gombra.
 
-8. Válassza ki a **Mentés** gombot.
+1. Válassza ki a **Mentés** gombot.
 
     ![Egyszeri bejelentkezés konfigurálása Mentés gombra](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_400.png)
 
-9. Az a **SAP Cloud Platform identitás hitelesítési konfiguráció** szakaszban jelölje be **konfigurálja az SAP Felhőplatform Identitáshitelesítésével** megnyitásához a **bejelentkezéskonfigurálása**ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **SAP Cloud Platform identitás hitelesítési konfiguráció** szakaszban jelölje be **konfigurálja az SAP Felhőplatform Identitáshitelesítésével** megnyitásához a **bejelentkezéskonfigurálása**ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Az SAP Cloud Platform identitás hitelesítési konfiguráció](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_configure.png) 
 
-10. Egyszeri bejelentkezés az alkalmazáshoz konfigurált keresse fel az SAP Felhőplatform Identitáshitelesítésével felügyeleti konzoljára. Az URL-címnek a következő mintának: `https://<tenant-id>.accounts.ondemand.com/admin`. Ezután olvassa el a dokumentációjában az SAP Felhőplatform Identitáshitelesítésével, [a Microsoft Azure AD-integráció](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html). 
+1. Egyszeri bejelentkezés az alkalmazáshoz konfigurált keresse fel az SAP Felhőplatform Identitáshitelesítésével felügyeleti konzoljára. Az URL-címnek a következő mintának: `https://<tenant-id>.accounts.ondemand.com/admin`. Ezután olvassa el a dokumentációjában az SAP Felhőplatform Identitáshitelesítésével, [a Microsoft Azure AD-integráció](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html). 
 
-11. Az Azure Portalon válassza ki a **mentése** gombra.
+1. Az Azure Portalon válassza ki a **mentése** gombra.
 
-12. Folytassa a következő csak akkor, ha azt szeretné, adja hozzá, és engedélyezze az egyszeri Bejelentkezést az SAP egy másik alkalmazás. Ismételje meg a szakasz alatt **hozzáadása SAP Felhőplatform Identitáshitelesítésével a katalógusból**.
+1. Folytassa a következő csak akkor, ha azt szeretné, adja hozzá, és engedélyezze az egyszeri Bejelentkezést az SAP egy másik alkalmazás. Ismételje meg a szakasz alatt **hozzáadása SAP Felhőplatform Identitáshitelesítésével a katalógusból**.
 
-13. Az Azure Portalon az a **SAP Felhőplatform Identitáshitelesítésével** alkalmazás integráció lapon jelölje be **csatolt bejelentkezés**.
+1. Az Azure Portalon az a **SAP Felhőplatform Identitáshitelesítésével** alkalmazás integráció lapon jelölje be **csatolt bejelentkezés**.
 
     ![Csatolt bejelentkezés konfigurálása](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked_sign_on.png)
 
-14. A konfiguráció mentéséhez.
+1. A konfiguráció mentéséhez.
 
 >[!NOTE] 
 >Az új alkalmazás használja az előző SAP alkalmazás egyszeri bejelentkezési konfiguráció. Ellenőrizze, hogy használja az ugyanazon vállalati identitás-szolgáltatóktól az SAP Felhőplatform Identitáshitelesítésével felügyeleti konzolon.
@@ -209,15 +209,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, majd válassza ki **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, majd válassza ki **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_04.png)
 
@@ -251,23 +251,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **SAP Felhőplatform Identitáshitelesítésével**.
+1. Az alkalmazások listájában jelölje ki a **SAP Felhőplatform Identitáshitelesítésével**.
 
     ![Az alkalmazások listáját az SAP Felhőplatform Identitáshitelesítésével hivatkozásra](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_app.png)  
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. A bal oldali menüben válassza **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Válassza ki a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+1. Válassza ki a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a felhasználók listában.
+1. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombra a **felhasználók és csoportok** párbeszédpanel bezárásához.
+1. Kattintson a **kiválasztása** gombra a **felhasználók és csoportok** párbeszédpanel bezárásához.
 
-7. Válassza ki a **hozzárendelése** gombra a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+1. Válassza ki a **hozzárendelése** gombra a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -280,7 +280,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

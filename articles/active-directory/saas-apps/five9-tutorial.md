@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 3caa9b6885b87664f4b63d629677e69f47768a29
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8ee04008b62867c8eba68b1525cf50edec881cbc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052961"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Oktatóanyag: Azure Active Directory-integráció Five9 Plus-adaptert (PBX, ügyfél-Center-ügynökök)
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-five9-plus-adapter-cti-contact-center-agents-from-the-gallery"></a>Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) hozzáadása a katalógusból
 Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) integrálásának konfigurálása az Azure AD-be, hozzá kell Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) integrálásának konfigu
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)**.
+1. A Keresés mezőbe írja be a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/five9-tutorial/tutorial_five9_search.png)
 
-5. Az eredmények panelen válassza ki a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/five9-tutorial/tutorial_five9_addfromgallery.png)
 
@@ -89,10 +89,10 @@ A Five9 plusz (PBX, ügyfél-Center-ügynökök) hozzárendelése az értékét 
 Az Azure AD egyszeri bejelentkezés adapterrel Five9 plusz (PBX, ügyfél-Center-ügynökök) tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) tesztfelhasználó létrehozása](#creating-a-five9-plus-adapter-cti-contact-center-agents-test-user)**  – egy megfelelője a Britta Simon Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök), amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) tesztfelhasználó létrehozása](#creating-a-five9-plus-adapter-cti-contact-center-agents-test-user)**  – egy megfelelője a Britta Simon Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök), amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/five9-tutorial/tutorial_five9_samlbase.png)
 
-3. Az a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/five9-tutorial/tutorial_five9_url.png)
     
@@ -128,19 +128,19 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | "Five9 plusz Zendesk adaptert" | `https://app.five9.com/appsvcs/saml/SSO/alias/zd` |
     | "Five9, valamint az ügynök asztali eszközkészlet Adapter" | `https://app.five9.com/appsvcs/saml/SSO/alias/adt` |
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/five9-tutorial/tutorial_five9_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/five9-tutorial/tutorial_general_400.png)
 
-6. Az a **Five9 plusz (PBX, ügyfél-Center-ügynökök) adapterkonfiguráció** területén kattintson **konfigurálása Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** megnyitásához **bejelentkezéskonfigurálása**ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Five9 plusz (PBX, ügyfél-Center-ügynökök) adapterkonfiguráció** területén kattintson **konfigurálása Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** megnyitásához **bejelentkezéskonfigurálása**ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/five9-tutorial/tutorial_five9_configure.png) 
 
-7. Az egyszeri bejelentkezés konfigurálása **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** oldalon kell küldenie a letöltött **Certificate(Base64), kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím**való [Five9 plusz (PBX, ügyfél-Center-ügynökök) támogatás adaptercsoporton](https://www.five9.com/about/contact). Is ezenkívül SSO további konfigurálásához kövesse az alábbi lépéseket a csatoló megfelelően:
+1. Az egyszeri bejelentkezés konfigurálása **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** oldalon kell küldenie a letöltött **Certificate(Base64), kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím**való [Five9 plusz (PBX, ügyfél-Center-ügynökök) támogatás adaptercsoporton](https://www.five9.com/about/contact). Is ezenkívül SSO további konfigurálásához kövesse az alábbi lépéseket a csatoló megfelelően:
 
     a. "Five9 plusz ügynök asztali eszközkészlet adaptert" rendszergazdai útmutató: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
@@ -164,15 +164,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/five9-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/five9-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/five9-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/five9-tutorial/create_aaduser_04.png) 
 
@@ -200,23 +200,23 @@ Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejel
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)**.
+1. Az alkalmazások listájában jelölje ki a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/five9-tutorial/tutorial_five9_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -228,7 +228,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

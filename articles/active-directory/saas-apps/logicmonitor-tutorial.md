@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 10bf78e4ea09b521138d62b29ffd0e4908ffb34d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 36d1229de6eb71a41eeea895e16e3757c800fc16
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040995"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429080"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Oktatóanyag: Azure Active Directory-integráció az LogicMonitor
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. LogicMonitor hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-logicmonitor-from-the-gallery"></a>LogicMonitor hozzáadása a katalógusból
 Az Azure AD integrálása a LogicMonitor konfigurálásához hozzá kell LogicMonitor a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a LogicMonitor konfigurálásához hozzá kell LogicMo
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **LogicMonitor**.
+1. A Keresés mezőbe írja be a **LogicMonitor**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/logicmonitor-tutorial/tutorial_logicmonitor_search.png)
 
-5. Az eredmények panelen válassza ki a **LogicMonitor**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **LogicMonitor**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/logicmonitor-tutorial/tutorial_logicmonitor_addfromgallery.png)
 
@@ -89,10 +89,10 @@ LogicMonitor, rendelje hozzá az értékét a **felhasználónév** értékekén
 Az Azure AD egyszeri bejelentkezés az LogicMonitor tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[LogicMonitor tesztfelhasználó létrehozása](#creating-a-logicmonitor-test-user)**  – egy megfelelője a Britta Simon LogicMonitor, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[LogicMonitor tesztfelhasználó létrehozása](#creating-a-logicmonitor-test-user)**  – egy megfelelője a Britta Simon LogicMonitor, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/logicmonitor-tutorial/tutorial_logicmonitor_samlbase.png)
 
-3. Az a **LogicMonitor tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **LogicMonitor tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/logicmonitor-tutorial/tutorial_logicmonitor_url.png)
 
@@ -121,25 +121,25 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
  
 
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/logicmonitor-tutorial/tutorial_logicmonitor_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/logicmonitor-tutorial/tutorial_general_400.png)
 
-6. Jelentkezzen be a **LogicMonitor** rendszergazdaként a vállalati webhely.
+1. Jelentkezzen be a **LogicMonitor** rendszergazdaként a vállalati webhely.
 
-7. A felső menüben kattintson **beállítások**.
+1. A felső menüben kattintson **beállítások**.
    
    ![Beállítások](./media/logicmonitor-tutorial/ic790052.png "beállításai")
 
-8. Kattintson a bal oldali navigációs határozunk meg **egyszeri bejelentkezés**
+1. Kattintson a bal oldali navigációs határozunk meg **egyszeri bejelentkezés**
    
    ![Egyszeri bejelentkezés](./media/logicmonitor-tutorial/ic790053.png "egyszeri bejelentkezés")
 
-9. Az a **egyszeri bejelentkezés (SSO) beállításainak** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **egyszeri bejelentkezés (SSO) beállításainak** szakaszban, hajtsa végre az alábbi lépéseket:
    
    ![Egyszeri bejelentkezés beállításai](./media/logicmonitor-tutorial/ic790054.png "egyszeri bejelentkezés beállításai")
    
@@ -166,15 +166,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/logicmonitor-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/logicmonitor-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/logicmonitor-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/logicmonitor-tutorial/create_aaduser_04.png) 
 
@@ -194,13 +194,13 @@ AAD-felhasználók számára jelentkezhetnek be akkor ki kell építeni az Azure
 
 1. Jelentkezzen be rendszergazdaként a LogicMonitor vállalati webhely.
 
-2. A felső menüben kattintson **beállítások**, és kattintson a **szerepkörök és a felhasználók**.
+1. A felső menüben kattintson **beállítások**, és kattintson a **szerepkörök és a felhasználók**.
    
    ![Szerepkörök és a felhasználók](./media/logicmonitor-tutorial/ic790056.png "szerepkörök és a felhasználók")
 
-3. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson a **Hozzáadás** parancsra.
 
-4. Az a **vegyen fel egy fiókot** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **vegyen fel egy fiókot** szakaszban, hajtsa végre az alábbi lépéseket:
    
    ![Vegyen fel egy fiókot](./media/logicmonitor-tutorial/ic790057.png "-fiók hozzáadása")
    
@@ -225,23 +225,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **LogicMonitor**.
+1. Az alkalmazások listájában jelölje ki a **LogicMonitor**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/logicmonitor-tutorial/tutorial_logicmonitor_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -253,7 +253,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

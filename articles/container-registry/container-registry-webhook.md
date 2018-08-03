@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: aff8f1b18c60610ff1d231661fe142eb6c69f3d7
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: e85b69e452f4d76dfdf974698fa7d3b5cdbc0c30
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887573"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426088"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhookok használata
 
@@ -28,7 +28,7 @@ További információ a webhook-kérelem: [Azure Container Registry webhookok s�
 
 ## <a name="create-webhook-azure-portal"></a>Az Azure portal webhook létrehozása
 
-1. Jelentkezzen be a [Azure Portalon](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. Lépjen a tárolóregisztrációs adatbázisba, amelyben meg szeretné hozzon létre egy webhookot.
 1. A **szolgáltatások**válassza **Webhookok**.
 1. Válassza ki **Hozzáadás** a webhook eszköztáron.
@@ -49,7 +49,7 @@ Példa webhook-űrlapon:
 
 ## <a name="create-webhook-azure-cli"></a>Azure CLI-vel webhook létrehozása
 
-Hozzon létre egy webhookot, az Azure CLI-vel, használja a [az acr webhook létrehozása](/cli/azure/acr/webhook#az_acr_webhook_create) parancsot.
+Hozzon létre egy webhookot, az Azure CLI-vel, használja a [az acr webhook létrehozása](/cli/azure/acr/webhook#az-acr-webhook-create) parancsot.
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -69,7 +69,7 @@ Való használata előtt a webhook tárolón leküldéses kép és törlési mű
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI-vel egy ACR webhook teszteléséhez használja a [az acr webhook pingelése](/cli/azure/acr/webhook#az_acr_webhook_ping) parancsot.
+Az Azure CLI-vel egy ACR webhook teszteléséhez használja a [az acr webhook pingelése](/cli/azure/acr/webhook#az-acr-webhook-ping) parancsot.
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01

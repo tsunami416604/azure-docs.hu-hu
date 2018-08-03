@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Load Balancer szabványos nyilvános zonal nyilvános IP-cím cím előtér Azure parancssori felületével |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy Load Balancer szabványos nyilvános zonal nyilvános IP-cím cím előtér Azure parancssori felület használatával
+title: Zónaszintű nyilvános előtérbeli IP-Címmel cím az Azure CLI-vel egy nyilvános Load Balancer Standard létrehozása |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy nyilvános Load Balancer Standard zónaszintű nyilvános előtérbeli IP-Címmel cím az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 0932195bb95ab9610f723245bfed7fedb01001f9
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b4bb0cdb9be59ae35b640ef67b12c382bb621a19
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30324095"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433581"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Hozzon létre egy Load Balancer szabványos nyilvános zonal előtér Azure parancssori felület használatával
+#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Az Azure CLI-vel zónaszintű előtér egy nyilvános Load Balancer Standard létrehozása
 
-Ez a cikk lépésről-lépésre nyilvános létrehozása [Load Balancer szabványos](https://aka.ms/azureloadbalancerstandard) rendelkező egy zonal előtérbeli IP szabványos nyilvános cím segítségével. Ebben a forgatókönyvben adjon meg egy adott zónában az előtér- és példányok, akkor igazíthatók az elérési útja és erőforrások eléréséről a megadott zónában.
+Ez a cikk végigvezeti egy nyilvános létrehozása [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) és a egy zónaszintű frontend-IP szabványos nyilvános cím segítségével. Ennek a forgatókönyvnek a követésével meg fog adni egy meghatározott zónát az előtér- és háttérpéldányokhoz, hogy hozzáigazíthassa az adatkapcsolatot és erőforrásokat a meghatározott zónához.
 
-Rendelkezésre állási zónák használatával szabványos terheléselosztással kapcsolatos további információkért lásd: [szabványos terheléselosztó és a rendelkezésre állási zónák](load-balancer-standard-availability-zones.md).
+A rendelkezésre állási zónák a Standard Load Balancerrel való használatáról bővebben a [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md) című cikkben tájékozódhat.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
  
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha telepíti, és a parancssori felület helyileg választja, győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és az Azure-fiókkal bejelentkezett [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az_login).
+Ha helyi telepítése és használata a parancssori felület választja, győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és az Azure-fiókkal jelentkezett be [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).
 
 > [!NOTE]
- Rendelkezésre állási zónák támogatása select Azure-erőforrások és a régiók és a virtuális gép mérete családok érhető el. További információ az első lépések, és mely Azure-erőforrások, régiók és virtuális gép mérete családok megpróbálhatja a rendelkezésre állási zónákat, lásd: [rendelkezésre állási zónák áttekintése](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
+ A rendelkezésre állási zónák támogatása az Azure-erőforrásokhoz, és a régiók és a virtuális gép méretcsaládjai érhető el. További információ az első lépésekről, és melyik Azure-erőforrások, régiók, és próbálja meg a rendelkezésre állási zónák a virtuális gép méretcsaládjai, lásd: [a rendelkezésre állási zónákat áttekintő](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupLB* a a *westeurope* helye:
+A következő példában létrehozunk egy erőforráscsoportot, nevű *myResourceGroupLB* a a *westeurope* helye:
 
 ```azurecli-interactive
 az group create \
@@ -50,10 +50,10 @@ az group create \
 --location westeurope
 ```
 
-## <a name="create-a-zonal-public-ip-standard"></a>Hozzon létre egy zonal nyilvános IP Standard
-Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Egy nyilvános IP-címet, amely jön létre a megadott zónában mindig csak adott zónában van. Nincs lehetőség a zóna egy nyilvános IP-cím módosításához.
+## <a name="create-a-zonal-public-ip-standard"></a>A zónaszintű nyilvános IP Standard létrehozása
+Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. A megadott zónában mindig létrehozott nyilvános IP-cím csak a zóna létezik. Nem alkalmas a zóna nyilvános IP-cím módosításához.
 
-Hozzon létre egy nyilvános IP-címet a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) paranccsal. Az alábbi példakód létrehozza nevű zonal nyilvános IP-cím *myPublicIP* a a *myResourceGroupLoadBalancer* erőforráscsoport zónában 1.
+Hozzon létre egy nyilvános IP-címet a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) paranccsal. A következő példában létrehozunk egy zónaszintű nyilvános IP-címet *myPublicIP* a a *myResourceGroupLoadBalancer* 1. zóna erőforráscsoportban.
 
 ```azurecli-interactive
 az network public-ip create \
@@ -64,14 +64,14 @@ az network public-ip create \
 ```
 
 ## <a name="create-azure-load-balancer-standard"></a>Az Azure Load Balancer Standard létrehozása
-Ez a szakasz részletesen felsorolja, hogyan hozhat létre, és a terheléselosztó a következő összetevők konfigurálása:
-- egy előtérbeli IP-címkészlet, amely megkapja a bejövő hálózati forgalmat a terheléselosztón.
-- a háttér IP-készlet, amennyiben az előtér-készlet elküldi a terhelés eloszlik a hálózati forgalom.
-- határozza meg, hogy a háttér Virtuálisgép-példányok állapotát állapotmintáihoz.
-- olyan terheléselosztó szabályhoz, amely meghatározza, hogyan adatforgalom elosztása a virtuális gépekhez.
+Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevőinek létrehozását és konfigurálását:
+- a terheléselosztón a bejövő hálózati forgalmat fogadó előtérbeli IP-címkészlet;
+- a háttér-IP-címkészlet, ahová az előtérkészlet küldi az elosztott terhelésű hálózati forgalmat;
+- állapot-mintavétel, amely a háttérbeli virtuálisgép-példányok állapotát határozza meg;
+- terheléselosztási szabály, amely megadja, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között.
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
-Hozzon létre egy szabványos terheléselosztót, [az hálózati terheléselosztó létrehozása](/cli/azure/network/lb#az_network_lb_create). Az alábbi példa létrehoz egy terhelés-kiegyenlítő nevű *myLoadBalancer* és hozzárendeli a *myPublicIP* cím előtér-IP-konfigurációhoz.
+A Standard load balancer létrehozása [az network lb létrehozása](/cli/azure/network/lb#az-network-lb-create). A következő példában létrehozunk egy nevű terheléselosztót *myLoadBalancer* és hozzárendeli a *myPublicIP* címet az előtérbeli IP-konfigurációhoz.
 
 ```azurecli-interactive
 az network lb create \
@@ -83,9 +83,9 @@ az network lb create \
 --sku Standard
 ```
 
-## <a name="create-health-probe-on-port-80"></a>Hozzon létre állapotmintáihoz 80-as porton
+## <a name="create-health-probe-on-port-80"></a>Állapotminta létrehozásához a 80-as porton
 
-Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenőrzi, hogy biztosan képesek legyenek hálózati forgalom küldésére. A mintavételező tesztjén elbukó virtuálisgép-példányokat a rendszer eltávolítja a terheléselosztóból, és így is maradnak, amíg ismét online állapotúak nem lesznek, és a mintavételező tesztje azt nem jelzi, hogy megfelelő az állapotuk. Hozzon létre egy állapotmintáihoz az hálózati lb mintavételi létrehozása a virtuális gépek állapotának figyelésére. TCP-állapotminta létrehozásához használja az [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) parancsot. Az alábbi példa egy *myHealthProbe* nevű állapotmintát hoz létre:
+Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenőrzi, hogy biztosan képesek legyenek hálózati forgalom küldésére. A mintavételező tesztjén elbukó virtuálisgép-példányokat a rendszer eltávolítja a terheléselosztóból, és így is maradnak, amíg ismét online állapotúak nem lesznek, és a mintavételező tesztje azt nem jelzi, hogy megfelelő az állapotuk. Hozzon létre egy állapotmintát az network lb probe a hozhat létre a virtuális gépek állapotának monitorozásához. TCP-állapotminta létrehozásához használja az [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) parancsot. Az alábbi példa egy *myHealthProbe* nevű állapotmintát hoz létre:
 
 ```azurecli-interactive
 az network lb probe create \
@@ -96,8 +96,8 @@ az network lb probe create \
 --port 80
 ```
 
-## <a name="create-load-balancer-rule-for-port-80"></a>A 80-as port terheléselosztási szabály létrehozása
-Olyan terheléselosztó szabályhoz határozza meg, hogy az előtér-IP-konfigurációjának megadása a bejövő forgalom és a háttér IP-címkészlet, valamint a megfelelő forrás és cél portot forgalom fogadására. Hozzon létre olyan terheléselosztó szabályhoz *myLoadBalancerRuleWeb* rendelkező [az hálózati terheléselosztó szabály létrehozása](/cli/azure/network/lb/rule#az_network_lb_rule_create) az előtér-készletben a 80-as porton figyel *myFrontEndPool* és küldése hálózati forgalmat az elosztott terhelésű a háttér címkészletet *myBackEndPool* is a 80-as portot használja.
+## <a name="create-load-balancer-rule-for-port-80"></a>Hozzon létre a terheléselosztó-szabályt a 80-as port
+A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Hozzon létre egy *myLoadBalancerRuleWeb* nevű terheléselosztási szabályt az [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) paranccsal a *myFrontEndPool* nevű előtérbeli címkészlet 80-as portjának figyeléséhez és az elosztott terhelésű hálózati forgalomnak a *myBackEndPool* nevű háttércímkészletre való küldéséhez, amely a 80-as portot használja.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -113,11 +113,11 @@ az network lb rule create \
 ```
 
 ## <a name="configure-virtual-network"></a>Virtuális hálózat konfigurálása
-Mielőtt központilag az egyes virtuális gépek, és tesztelheti a terheléselosztóhoz, hozzon létre a támogató virtuális hálózati erőforrásokat.
+Mielőtt üzembe helyezné a virtuális gépeket, és tesztelné a terheléselosztót, hozza létre a támogató virtuális hálózati erőforrásokat.
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot nevű *myVnet* nevű alhálózattal *mySubnet* be a contoso.com [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create).
+Hozzon létre egy virtuális hálózatot nevű *myVnet* nevű alhálózattal *mySubnet* a myResourceGroup található [az network vnet létrehozása](/cli/azure/network/vnet#az-network-vnet-create).
 
 
 ```azurecli-interactive
@@ -130,7 +130,7 @@ az network vnet create \
 
 ### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hálózati biztonsági csoport nevű létrehozása *myNetworkSecurityGroup* bejövő kapcsolatok meghatározásához a virtuális hálózaton található [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create).
+Nevű hálózati biztonsági csoport létrehozása *myNetworkSecurityGroup* bejövő kapcsolatainak meghatározásához a virtuális hálózaton való [az network nsg létrehozása](/cli/azure/network/nsg#az-network-nsg-create).
 
 ```azurecli-interactive
 az network nsg create \
@@ -138,7 +138,7 @@ az network nsg create \
 --name myNetworkSecurityGroup
 ```
 
-Hozzon létre egy hálózati biztonsági szabály nevű *myNetworkSecurityGroupRule* a 80-as port [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create).
+Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt nevű *myNetworkSecurityGroupRule* a 80-as porthoz [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az-network-nsg-rule-create).
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -155,7 +155,7 @@ az network nsg rule create \
 --priority 200
 ```
 ### <a name="create-nics"></a>Hálózati adapterek létrehozása
-Hozzon létre három virtuális hálózati adapterrel [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#az_network_nic_create) , és rendelje hozzá őket a nyilvános IP-cím és a hálózati biztonsági csoport. Az alábbi példa három virtuális NIC-t hoz létre. (Egy virtuális NIC-t minden virtuális géphez, amelyet létre fog hozni az alkalmazáshoz a következő lépések során). Bármikor létrehozhat további virtuális NIC-ket és virtuális gépeket, és hozzáadhatja őket a terheléselosztóhoz:
+Hozzon létre három virtuális NIC- [az network nic létrehozása](/cli/azure/network/nic#az-network-nic-create) , és rendelje azokat a nyilvános IP-cím és a hálózati biztonsági csoport. Az alábbi példa három virtuális NIC-t hoz létre. (Egy virtuális NIC-t minden virtuális géphez, amelyet létre fog hozni az alkalmazáshoz a következő lépések során). Bármikor létrehozhat további virtuális NIC-ket és virtuális gépeket, és hozzáadhatja őket a terheléselosztóhoz:
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -169,12 +169,12 @@ for i in `seq 1 3`; do
         --lb-address-pools myBackEndPool
 done
 ```
-## <a name="create-backend-servers"></a>Háttér-kiszolgálókat hoz létre
-Ebben a példában a terheléselosztóhoz tartozó háttér-kiszolgálóként használandó 1 található három virtuális gépet hoz létre. Ellenőrizze, hogy a terheléselosztó sikeresen létrejött-e a virtuális gépeken telepítése NGINX is.
+## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
+Ebben a példában három virtuális gépet a terheléselosztó háttérkiszolgálóiként használandó 1. zónában található hoz létre. Az NGINX-et is telepíti a virtuális gépeket, hogy a terheléselosztó sikeres létrehozásának ellenőrzéséhez.
 
 ### <a name="create-cloud-init-config"></a>Cloud-init konfiguráció létrehozása
 
-A felhő inicializálás konfigurációs fájl segítségével NGINX telepítheti és futtathatja a "Hello, World" Node.js alkalmazást egy Linux virtuális gépen. Az aktuális rendszerhéjban hozzon létre egy fájlt felhő-init.txt, másolja és illessze be a következő konfigurációs a rendszerhéj. Győződjön meg arról, hogy a teljes másolása felhő inicializálás fájl helyes, különösen az első sor:
+Egy cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy „Hello World” Node.js-alkalmazást a Linux rendszerű virtuális gépeken. Az aktuális parancshéjban hozzon létre egy cloud-init.txt nevű fájlt, majd másolja és illessze be a következő konfigurációt a parancshéjba. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```yaml
 #cloud-config
@@ -218,8 +218,8 @@ runcmd:
   - nodejs index.js
 ```
 
-### <a name="create-the-zonal-virtual-machines"></a>A zonal virtuális gépek létrehozása
-A virtuális gépek létrehozása [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Az alábbi példában három virtuális gépek zóna 1 hoz létre, és SSH-kulcsokat generál, ha még nem léteznek:
+### <a name="create-the-zonal-virtual-machines"></a>A zónaszintű virtuális gépek létrehozása
+Hozzon létre a virtuális gépeket a [az virtuális gép létrehozása](/cli/azure/vm#az-vm-create). Az alábbi példa három virtuális gépet hoz létre 1. zóna, és az SSH-kulcsokat hoz létre, ha azok nem léteznek:
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -234,8 +234,8 @@ for i in `seq 1 3`; do
 done
 ```
 
-## <a name="test-the-load-balancer"></a>A load balancer tesztelése
-A betöltési terheléselosztó használatával a nyilvános IP-cím beszerzése [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). 
+## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
+A terheléselosztó használatával a nyilvános IP-címének lekéréséhez [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). 
 
 ```azurecli-interactive
   az network public-ip show \
@@ -249,10 +249,10 @@ A nyilvános IP-címet beírhatja egy böngészőbe. Ne feledje: néhány percet
 
 ![Node.js-alkalmazás futtatása](./media/load-balancer-standard-public-zonal-cli/running-nodejs-app.png)
 
-Tekintse meg a terheléselosztó terjesztése a forgalmat a virtuális gépek futnak az alkalmazás 1 zónán belül, akkor is kényszerített frissítési a webböngésző.
+A terheléselosztó az alkalmazást futtató 1. zóna virtuális gépek a forgalom elosztásához megtekintéséhez, kényszerített frissítését a webböngészőt.
 
 ## <a name="next-steps"></a>További lépések
-- További információ [szabványos terheléselosztó](./load-balancer-standard-overview.md).
+- További tudnivalók a [Standard Load Balancerről](./load-balancer-standard-overview.md).
 
 
 

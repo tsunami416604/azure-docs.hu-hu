@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 962b3f0e18c2dbedf80c0cfca6bc8275b394307b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4d8be22a6b700d5ea9d95ee19d6ad3fa7bf5910a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046015"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Oktatóanyag: Azure Active Directory-integráció SilkRoad életre Suite-tal
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. SilkRoad életre Suite hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-silkroad-life-suite-from-the-gallery"></a>SilkRoad életre Suite hozzáadása a katalógusból
 Az Azure AD-be SilkRoad életre Suite integrációjának konfigurálása, hozzá kell SilkRoad életre Suite a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Az Azure AD-be SilkRoad életre Suite integrációjának konfigurálása, hozzá
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **SilkRoad életre Suite**, jelölje be **SilkRoad életre Suite** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **SilkRoad életre Suite**, jelölje be **SilkRoad életre Suite** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában SilkRoad életre Suite](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_addfromgallery.png)
 
@@ -87,10 +87,10 @@ SilkRoad életre Suite, rendelje hozzá az értékét a **felhasználónév** é
 Az Azure AD egyszeri bejelentkezés az SilkRoad életre Suite tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy SilkRoad életre Suite tesztfelhasználót](#create-a-silkroad-life-suite-test-user)**  – egy megfelelője a Britta Simon SilkRoad életre csomag, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy SilkRoad életre Suite tesztfelhasználót](#create-a-silkroad-life-suite-test-user)**  – egy megfelelője a Britta Simon SilkRoad életre csomag, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_samlbase.png)
 
-3. Az a **SilkRoad életre Suite tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **SilkRoad életre Suite tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![SilkRoad életre Suite tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_url1.png)
 
@@ -127,40 +127,40 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [SilkRoad életre Suite ügyfél-támogatási csapatának](https://www.silkroad.com/locations/) beolvasni ezeket az értékeket. 
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/silkroad-life-suite-tutorial/tutorial_general_400.png)
     
-6. Az a **SilkRoad életre konfigurálásának** területén kattintson **SilkRoad életre Suite konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **SilkRoad életre konfigurálásának** területén kattintson **SilkRoad életre Suite konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![SilkRoad életre Suite konfigurálása](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_configure.png) 
 
-7. Bejelentkezés a SilkRoad vállalati webhelyre rendszergazdaként. 
+1. Bejelentkezés a SilkRoad vállalati webhelyre rendszergazdaként. 
  
     >[!NOTE] 
     > A Microsoft Azure AD-összevonás konfigurálása a SilkRoad életre Suite hitelesítési alkalmazáshoz való hozzáférést, forduljon SilkRoad támogatása vagy az Ön SilkRoad szolgáltatások képviselőjével.
 
-8. Lépjen a **szolgáltató**, és kattintson a **összevonási részletek**. 
+1. Lépjen a **szolgáltató**, és kattintson a **összevonási részletek**. 
    
     ![Az Azure AD egyszeri bejelentkezés][10]
 
-9. Kattintson a **összevonási metaadatok letöltése**, majd mentse a metaadat-fájlt a számítógépen.
+1. Kattintson a **összevonási metaadatok letöltése**, majd mentse a metaadat-fájlt a számítógépen.
    
     ![Az Azure AD egyszeri bejelentkezés][11] 
 
-10. Az a **SilkRoad** alkalmazást, kattintson a **hitelesítési források**.
+1. Az a **SilkRoad** alkalmazást, kattintson a **hitelesítési források**.
    
     ![Az Azure AD egyszeri bejelentkezés][12] 
 
-11. Kattintson a **hitelesítési forrás hozzáadása**. 
+1. Kattintson a **hitelesítési forrás hozzáadása**. 
    
     ![Az Azure AD egyszeri bejelentkezés][13] 
 
-12. Az a **hitelesítési forrás hozzáadása** szakaszban, hajtsa végre az alábbi lépéseket: 
+1. Az a **hitelesítési forrás hozzáadása** szakaszban, hajtsa végre az alábbi lépéseket: 
    
     ![Az Azure AD egyszeri bejelentkezés][14]
   
@@ -168,11 +168,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
   
     b. Kattintson a **fájladatok használatával hozzon létre identitásszolgáltató**.
 
-13. Az a **hitelesítési források** területén kattintson **szerkesztése**. 
+1. Az a **hitelesítési források** területén kattintson **szerkesztése**. 
     
      ![Az Azure AD egyszeri bejelentkezés][15] 
 
-14. Az a **hitelesítési forrás szerkesztése** párbeszédpanelen hajtsa végre az alábbi lépéseket: 
+1. Az a **hitelesítési forrás szerkesztése** párbeszédpanelen hajtsa végre az alábbi lépéseket: 
     
      ![Az Azure AD egyszeri bejelentkezés][16] 
 
@@ -192,7 +192,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     h. Kattintson a **Save** (Mentés) gombra.
 
-15. Tiltsa le minden más hitelesítési forrás. 
+1. Tiltsa le minden más hitelesítési forrás. 
     
      ![Az Azure AD egyszeri bejelentkezés][17]
 
@@ -211,15 +211,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/silkroad-life-suite-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/silkroad-life-suite-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/silkroad-life-suite-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/silkroad-life-suite-tutorial/create_aaduser_04.png)
 
@@ -247,23 +247,23 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **SilkRoad életre Suite**.
+1. Az alkalmazások listájában jelölje ki a **SilkRoad életre Suite**.
 
     ![Az alkalmazások listáját a SilkRoad életre Suite hivatkozás](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -275,7 +275,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

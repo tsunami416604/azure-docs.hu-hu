@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Node.js webes API-k első lépések |} Microsoft Docs
-description: Hogyan hozhat létre a többi Node.js webes API-k, amely az Azure AD használatára a hitelesítéshez.
+title: Az Azure AD Node.js webes API-k első lépések |} A Microsoft Docs
+description: Hogyan hozhat létre egy Node.js REST webes API-t, amely integrálható az Azure AD-hitelesítés.
 services: active-directory
 documentationcenter: nodejs
 author: CelesteDG
@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 24591c46858970724fbd1fe36336f7f2b0b2fefd
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1137e7164ac83a2ee0bf05804296aeeb5c3496fb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155837"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437447"
 ---
 # <a name="azure-ad-nodejs-web-api-getting-started"></a>Az Azure AD Node.js webes API-k első lépések
 
-Ez a cikk bemutatja, hogyan kell biztonságos egy [Restify](http://restify.com/) az API-végpont [Passport](http://passportjs.org/) használatával a [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) modul Azure aktív kommunikáció kezelése Directory (AAD). 
+Ez a cikk bemutatja, hogyan teheti biztonságossá a [létrehozásához a restify programot](http://restify.com/) az API-végpont [Passport](http://passportjs.org/) használatával a [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) modul kezelni a kommunikációt az Azure Active Directory (AAD). 
 
-Ez az oktatóanyag kiterjed fontos szempont vonatkozó biztonságossá tétele API-végpontokon. Bejelentkezés és a hitelesítési tokenek megőrzése fontos szempont itt nincsenek megvalósítva, és egy ügyfélalkalmazás felelőssége. Egy ügyfél megvalósítása körülvevő részletekért tekintse át a [Node.js webalkalmazás be- és kijelentkezési az Azure ad-val](active-directory-devquickstarts-openidconnect-nodejs.md).
+Ebben az oktatóanyagban kiterjed a aggályokat kapcsolatos biztonságossá tétele API-végpontokon. Bejelentkezés és a hitelesítési tokenek megőrzése fontos szempont nejsou implementovány itt, és egy ügyfélalkalmazás kell eljárnia. Egy ügyfél megvalósítása körülvevő részletekért tekintse át a [Node.js-webalkalmazás bejelentkezési és kijelentkezési az Azure ad-vel](active-directory-devquickstarts-openidconnect-nodejs.md).
 
-A teljes kódminta, ez a cikk társított érhető el a [GitHub](https://github.com/Azure-Samples/active-directory-node-webapi-basic).
+A teljes kódmintát, ez a cikk társított érhető el az [GitHub](https://github.com/Azure-Samples/active-directory-node-webapi-basic).
 
-## <a name="create-the-sample-project"></a>A minta-projekt létrehozása
-A kiszolgálói alkalmazás támogatja a Restify és Passport, valamint a fiókot az aad-be továbbított adatokat néhány csomagfüggőségek igényel.
+## <a name="create-the-sample-project"></a>A mintaprojekt létrehozása
+A Restify és Passport támogatása, valamint a fiókadatok AAD átadott néhány csomagfüggőségek szükséges.
 
-Első lépésként adja hozzá a következő kódot fájlba `package.json`:
+Első lépésként adja a következő kódot egy fájlba nevű `package.json`:
 
 ```Shell
 {
@@ -51,36 +51,36 @@ Első lépésként adja hozzá a következő kódot fájlba `package.json`:
 }
 ```
 
-Egyszer `package.json` jön létre, futtassa `npm install` a parancssorban a csomag függőségeinek telepítéséhez. 
+Egyszer `package.json` jön létre, futtassa `npm install` a parancssorban a csomag függőségek telepítéséhez. 
 
-### <a name="configure-the-project-to-use-active-directory"></a>A használatára az Active Directory-projekt konfigurálása
+### <a name="configure-the-project-to-use-active-directory"></a>Konfigurálja az Active Directory használatára
 
-Először az alkalmazás konfigurálása néhány fiókspecifikus értékek vannak az Azure parancssori felület szerezhetők be. Ismerkedjen meg a parancssori felület a legegyszerűbben az Azure-felhő rendszerhéj használata.
+Első lépésként az alkalmazás konfigurálása nincsenek fiók-specifikus értékeket szerezhet be az Azure parancssori felület. A legegyszerűbben úgy, hogy a CLI használatának első lépései az Azure Cloud Shell használatához.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-A felhő rendszerhéj adja meg a következő parancsot: 
+A cloud shellben adja meg a következő parancsot: 
 
 ```azurecli-interactive
 az ad app create --display-name node-aad-demo --homepage http://localhost --identifier-uris http://node-aad-demo
 ```
 
-A [argumentumok](/cli/azure/ad/app?view=azure-cli-latest#az_ad_app_create) a a `create` parancs tartalmazza:
+A [argumentumok](/cli/azure/ad/app?view=azure-cli-latest#az-ad-app-create) számára a `create` parancsot tartalmazza:
 
 | Argumentum  | Leírás |
 |---------|---------|
-|`display-name` | A regisztrációs rövid neve |
-|`homepage` | URL-cím, ahol a felhasználók bejelentkezés és az alkalmazás használata |
-|`identifier-uris` | Lemezterület-egymástól egyedi URI-azonosítók, amelyek az Azure AD alkalmazás |
+|`display-name` | A regisztráció rövid neve |
+|`homepage` | URL-címet, ahol a felhasználók jelentkezzen be és használják az alkalmazást |
+|`identifier-uris` | Hely elválasztott egyedi URI-k, amelyek az Azure AD használható ehhez az alkalmazáshoz |
 
-Mielőtt az csatlakozna az Azure Active Directory, a következő információkat kell:
+Mielőtt az csatlakozna az Azure Active Directoryhoz, szüksége van a következő információkat:
 
-| Név  | Leírás | A konfigurációs fájlban változó neve |
+| Name (Név)  | Leírás | A konfigurációs fájlban változó neve |
 | ------------- | ------------- | ------------- |
-| Bérlő neve  | [Bérlő neve](active-directory-howto-tenant.md) a hitelesítéshez használni kívánt | `tenantName`  |
-| Ügyfél-azonosító  | Ügyfél-azonosító az aad-ben használt OAuth-kifejezésnek _Alkalmazásazonosító_. |  `clientID`  |
+| Bérlő neve  | [A bérlő nevét](active-directory-howto-tenant.md) a hitelesítéshez használni kívánt | `tenantName`  |
+| Ügyfél-azonosító  | Ügyfél-azonosító az AAD OAuth kifejezés _Alkalmazásazonosító_. |  `clientID`  |
 
-A regisztrációs válasz az Azure-felhő rendszerhéj, másolja a `appId` értékét, és hozzon létre egy új fájlt `config.js`. Ezután adja hozzá az alábbi kódot, és cserélje le az értékeket a zárójeles jogkivonatokat:
+A regisztrációs válasz, az Azure Cloud shellben, másolja a `appId` értékét, és hozzon létre egy új fájlt `config.js`. Ezután adja hozzá az alábbi kódot, és cserélje le az értékeket a zárójeles jogkivonatokat:
 
 ```JavaScript
 const tenantName    = //<YOUR_TENANT_NAME>;
@@ -94,13 +94,13 @@ module.exports.credentials = {
   clientID: clientID
 };
 ```
-Az egyes konfigurációs beállítások kapcsolatos további információkért tekintse át a [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modul dokumentációját.
+Az egyes konfigurációs beállítások kapcsolatos további információkért tekintse át a [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modul dokumentációjában talál.
 
 ## <a name="implement-the-server"></a>A kiszolgáló megvalósítása
-A [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modul szolgáltatások két hitelesítési stratégiák: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) és [tulajdonosi](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratégiák. A kiszolgáló, a cikkben végrehajtott tulajdonosi stratégiát használja a biztonságos az API-végpontot.
+A [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modul funkciók két hitelesítési stratégiák: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) és [tulajdonosi](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratégiák. A kiszolgáló, ebben a cikkben végrehajtott biztonságossá tétele az API-végpont tulajdonosi stratégiát használja.
 
-### <a name="step-1-import-dependencies"></a>1. lépés: Import függőségek
-Hozzon létre egy új fájlt `app.js` és illessze be a következő szöveget:
+### <a name="step-1-import-dependencies"></a>1. lépés: Import-függőségek
+Hozzon létre egy új fájlt `app.js` illessze be a következő szöveget:
 
 ```JavaScript
 const
@@ -114,20 +114,20 @@ const
 ;
 ```
 
-Az Itt kódot:
+Ebben a kód szakaszban:
 
-- A `restify` és `restify-plugins` modulok hivatkozott ahhoz, hogy a Restify-kiszolgáló beállítása.
+- A `restify` és `restify-plugins` modulok hivatkozott annak érdekében, hogy a Restify kiszolgáló beállításához.
 
-- A `passport` és `passport-azure-ad` modulok felelősek az AAD-ben való kommunikációhoz.
+- A `passport` és `passport-azure-ad` modulok felelős az aad-vel való kommunikációhoz.
 
-- A `config` változó értékeivel inicializálva van a `config.js` az előző lépésben létrehozott fájlt.
+- A `config` változó értékeit inicializálva van a `config.js` az előző lépésben létrehozott fájlt.
 
-- Létrejön egy tömb `authenticatedUserTokens` felhasználói jogkivonatokhoz tárolja a védett végpontok feleltek meg.
+- Létrejön egy tömb `authenticatedUserTokens` felhasználói jogkivonatok tárolására, a rendszer átad a biztonsági biztonságos végpontok.
 
-- A `serverPort` vagy definiálva van a folyamat környezet vagy a konfigurációs fájlból.
+- A `serverPort` vagy meghatározása a folyamat környezet port vagy a konfigurációs fájlból.
 
-### <a name="step-2-instantiate-an-authentication-strategy"></a>2. lépés: Példányosítható hitelesítési stratégia kialakítása
-Biztonságos végpont, mivel meg kell adnia a felel annak meghatározásáért stratégiát, az aktuális kérelem hitelesített felhasználók származik-e. Itt a `authenticatonStrategy` változó egy példányát a `passport-azure-ad` `BearerStrategy` osztály. Az alábbi kód után adja hozzá a `require` utasításokat.
+### <a name="step-2-instantiate-an-authentication-strategy"></a>2. lépés: Hozza létre a hitelesítési stratégia
+Védelmét egy végpontot, ahogy meg kell adnia egy stratégia felelős megállapítani az aktuális kérelem egy hitelesített felhasználó származik-e. Itt a `authenticatonStrategy` változó egy példányát a `passport-azure-ad` `BearerStrategy` osztály. Az alábbi kód után adja hozzá a `require` utasításokat.
 
 ```JavaScript
 const authenticationStrategy = new BearerStrategy(config.credentials, (token, done) => {
@@ -145,16 +145,16 @@ const authenticationStrategy = new BearerStrategy(config.credentials, (token, do
     return done(null, currentUser, token);
 });
 ```
-Ez a megvalósítás automatikus regisztráció használ a hitelesítési tokenek történő hozzáadásával a `authenticatedUserTokens` tömb, ha még nem léteznek.
+Ez a megvalósítás automatikus regisztráció használ a hitelesítési tokenek történő hozzáadásával a `authenticatedUserTokens` tömböt, ha azok nem léteznek.
 
-A stratégia új példányának létrehozása után át kell adnia azt a Passport használatával a `use` metódust. Adja hozzá a következő kódot a `app.js` Passport stratégia használatára.
+Egy új példányát a stratégia létrehozása után előtt meg kell adnia a Passport használatával történő a `use` metódust. Adja hozzá a következő kódot a `app.js` Passport stratégia használatára.
 
 ```JavaScript
 passport.use(authenticationStrategy);
 ```
 
 ### <a name="step-3-server-configuration"></a>3. lépés: Kiszolgáló konfigurálása
-A hitelesítési biztosításával kapcsolatos stratégia definiált mostantól a Restify-kiszolgáló néhány alapvető beállításokkal beállítása és használni a Passport for biztonsági beállítása.
+A megadott hitelesítési stratégiát most is néhány alapvető beállításokkal a Restify-kiszolgáló beállítása és használni a Passport for security állítsa.
 
 ```JavaScript
 const server = restify.createServer({ name: 'Azure Active Directroy with Node.js Demo' });
@@ -162,11 +162,11 @@ server.use(restifyPlugins.authorizationParser());
 server.use(passport.initialize());
 server.use(passport.session());
 ```
-Ez a kiszolgáló inicializálása és engedélyezési fejléceket elemzése és konfigurált Passport használata akkor értéke.
+Ezen a kiszolgálón van inicializálva és konfigurálva elemezni a hitelesítési fejléceket, majd beállíthatja a Passport használata.
 
 
-### <a name="step-4-define-routes"></a>4. lépés: Útvonalak megadása
-Ezután adja meg az útvonalakat és döntse el, amelyek védelmét az aad-ben. Ez a projekt tartalmazza két útvonalakat, ahol a gyökérszinten meg nyitva, és a `/api` útvonal van beállítva, hogy hitelesítésre van szükség.
+### <a name="step-4-define-routes"></a>4. lépés: Az útvonalak megadása
+Mostantól útvonalak megadása, és döntse el, amelyek védelmét az aad-ben. Ez a projekt tartalmazza a két útvonal, ahol a gyökérszintű nyitva-e, és a `/api` útvonal hitelesítés úgy van beállítva.
 
 A `app.js` adja hozzá a következő kódot a gyökér szintű útvonal:
 
@@ -177,7 +177,7 @@ server.get('/', (req, res, next) => {
 });
 ```
 
-A legfelső szintű útvonal lehetővé teszi, hogy az útvonal keresztül összes kérelmet, és adja vissza egy üzenetet, amely tesztelése egy olyan parancsot tartalmaz a `/api` útvonal. Ezzel szemben a `/api` útvonal zárolva használatával [ `passport.authenticate` ](http://passportjs.org/docs/authenticate). Adja hozzá a következő kódot a legfelső szintű útvonal után.
+A legfelső szintű útvonal lehetővé teszi, hogy az útvonal keresztül, és a egy parancs teszteléséhez tartalmazó üzenetet adja vissza a `/api` útvonalat. Ezzel szemben a `/api` útvonal zárolva használatával [ `passport.authenticate` ](http://passportjs.org/docs/authenticate). Adja hozzá a következő kódot a legfelső szintű útvonal után.
 
 ```JavaScript
 server.get('/api', passport.authenticate('oauth-bearer', { session: false }), (req, res, next) => {
@@ -186,9 +186,9 @@ server.get('/api', passport.authenticate('oauth-bearer', { session: false }), (r
 });
 ```
 
-Ez a konfiguráció csak lehetővé teszi a hitelesített kérelmek egy tulajdonosi jogkivonatot hozzáférést tartalmazó `/api`. A lehetőség a `session: false` letiltja az szükséges, hogy a jogkivonat az API minden egyes kérelemmel közlekednek munkamenetek.
+Ez a konfiguráció csak lehetővé teszi a hitelesített kérelmek, amelyek egy tulajdonosi jogkivonat hozzáférést biztosít `/api`. A lehetőség a `session: false` letiltja az szükséges, hogy a jogkivonat minden egyes kérelemmel továbbítódik az API-munkameneteket.
 
-Végül a kiszolgáló meghívásával a konfigurált port figyelésére van beállítva a `listen` metódust.
+Végül, a kiszolgáló meghívásával a konfigurált port figyelésére van beállítva a `listen` metódust.
 
 ```JavaScript
 server.listen(serverPort);
@@ -196,13 +196,13 @@ server.listen(serverPort);
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Most, hogy a kiszolgáló van telepítve, indítsa el a kiszolgálón nyissa meg egy parancssort, és írja be:
+Most, hogy a kiszolgáló van telepítve, a parancssort. Ehhez másolatot megnyitásával indítsa el a kiszolgálót, és írja be:
 
 ```Shell
 npm start
 ```
 
-A futtató kiszolgálóval elküldheti a kérelem a kiszolgálóra a teszteredmények. A legfelső szintű útvonal válaszát, nyissa meg a bash rendszerhéjat, és írja be a következő kódot:
+Futó Server küldhet egy kérést az eredmények teszteléséhez. A legfelső szintű útvonal válasza bemutatása érdekében nyissa meg a bash felületet, és írja be a következő kódot:
 
 ```Shell 
 curl -isS -X GET http://127.0.0.1:3000/
@@ -221,13 +221,13 @@ Connection: keep-alive
 Try: curl -isS -X GET http://127.0.0.1:3000/api
 ```
 
-A következő tesztelheti az útvonalat, amely megköveteli a hitelesítést az alábbi parancs beírásával a bash rendszerhéjat:
+Ezután tesztelheti az útvonal, amelyhez hitelesítés szükséges a bash rendszerhéjat a következő parancs beírásával:
 
 ```Shell 
 curl -isS -X GET http://127.0.0.1:3000/api
 ```
 
-Ha megfelelően konfigurálta a kiszolgálót, akkor a kiszolgáló állapota kell válaszolnia `Unauthorized`.
+Ha a kiszolgáló megfelelően van konfigurálva, akkor a kiszolgáló állapottal kell válaszolnia `Unauthorized`.
 
 ```Shell
 HTTP/1.1 401 Unauthorized
@@ -239,10 +239,10 @@ Content-Length: 12
 
 Unauthorized
 ```
-Most, hogy a biztonságos API létrehozott, egy ügyfelet, amelyben tudja átadni a hitelesítési tokenek az API-t is létrehozható.
+Most, hogy létrehozott egy biztonságos API-t, valósítható meg, amely képes hitelesítési jogkivonatok átadása az API-t az ügyfél.
 
 ## <a name="next-steps"></a>További lépések
-Amint azt a bevezetés, meg kell valósítani egy ügyfél megfelelője, amely kezeli a bejelentkezés, a Kijelentkezés és a jogkivonatok kezelése a kiszolgálóhoz való csatlakozáshoz. Példák kódalapú nézze meg az ügyfélalkalmazások számára a [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) és [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android). Tekintse meg a következő cikk részletes oktatóanyaga:
+Amint azt a bevezetés, meg kell valósítani egy ügyfél megfelelője, amely kezeli a bejelentkezés, jelentkezzen ki, majd a jogkivonatok kezeléséhez a kiszolgálóhoz való csatlakozáshoz. Példák kódalapú nézze meg az ügyfélalkalmazások a [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) és [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android). Részletes útmutató tekintse meg a következő cikket:
 
 > [!div class="nextstepaction"]
-> [NODE.js-webalkalmazás be- és kijelentkezési az Azure ad szolgáltatással](active-directory-devquickstarts-openidconnect-nodejs.md)
+> [NODE.js-webalkalmazás bejelentkezési és kijelentkezési az Azure ad-vel](active-directory-devquickstarts-openidconnect-nodejs.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 330dbf31a1c1af6146ae1272a42ecc3621271bb1
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a93acc79fc447018b5cf63b2e2456bc394c1f78e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046569"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onit"></a>Oktatóanyag: Azure Active Directory-integráció az Onit
 
@@ -54,7 +54,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Onit hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-onit-from-the-gallery"></a>Onit hozzáadása a katalógusból
 Az Azure AD integrálása a Onit konfigurálásához hozzá kell Onit a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -65,15 +65,15 @@ Az Azure AD integrálása a Onit konfigurálásához hozzá kell Onit a katalóg
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **Onit**válassza **Onit** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Onit**válassza **Onit** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában Onit](./media/onit-tutorial/tutorial_onit_addfromgallery.png)
 
@@ -88,10 +88,10 @@ Onit, rendelje hozzá az értékét a **felhasználónév** értékeként az Azu
 Az Azure AD egyszeri bejelentkezés az Onit tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Onit tesztfelhasználót](#create-an-onit-test-user)**  – egy megfelelője a Britta Simon Onit, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Onit tesztfelhasználót](#create-an-onit-test-user)**  – egy megfelelője a Britta Simon Onit, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  ellenőrzése, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -103,11 +103,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/onit-tutorial/tutorial_onit_samlbase.png)
 
-3. Az a **Onit tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Onit tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Onit tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/onit-tutorial/tutorial_onit_url.png)
 
@@ -118,15 +118,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Onit ügyfél-támogatási csapatának](https://www.onit.com/support) beolvasni ezeket az értékeket. 
  
-4. Az a **SAML-aláíró tanúsítvány** területén másolja a **UJJLENYOMAT** tanúsítvány értékét.
+1. Az a **SAML-aláíró tanúsítvány** területén másolja a **UJJLENYOMAT** tanúsítvány értékét.
 
     ![A tanúsítvány letöltési hivatkozás](./media/onit-tutorial/tutorial_onit_certificate.png) 
 
-5. Onit alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Állítsa be a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **"Atrribute"** az alkalmazás lapján. Az alábbi képernyőfelvételen látható erre egy példa látható. 
+1. Onit alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Állítsa be a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **"Atrribute"** az alkalmazás lapján. Az alábbi képernyőfelvételen látható erre egy példa látható. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/onit-tutorial/tutorial_onit_attribute.png) 
 
-6. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket:
     
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |
@@ -146,28 +146,28 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     e. Kattintson az **OK** gombra.
 
-7. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/onit-tutorial/tutorial_general_400.png)
 
-8. Az a **Onit konfigurációs** területén kattintson **konfigurálása Onit** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címet, a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Onit konfigurációs** területén kattintson **konfigurálása Onit** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címet, a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Onit konfiguráció](./media/onit-tutorial/tutorial_onit_configure.png)
 
-9. Egy másik böngészőablakban jelentkezzen be a Onit vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Onit vállalati hely rendszergazdaként.
 
-10. A felső menüben kattintson **felügyeleti**.
+1. A felső menüben kattintson **felügyeleti**.
    
    ![Felügyeleti](./media/onit-tutorial/IC791174.png "felügyelete")
-11. Kattintson a **szerkesztési Corporation**.
+1. Kattintson a **szerkesztési Corporation**.
    
    ![Szerkesztés Corporation](./media/onit-tutorial/IC791175.png "Corporation szerkesztése")
    
-12. Kattintson a **biztonsági** fülre.
+1. Kattintson a **biztonsági** fülre.
     
     ![Vállalat adatainak szerkesztése](./media/onit-tutorial/IC791176.png "vállalat adatainak szerkesztése")
 
-13. Az a **biztonsági** fülre, hajtsa végre az alábbi lépéseket:
+1. Az a **biztonsági** fülre, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés](./media/onit-tutorial/IC791177.png "egyszeri bejelentkezés")
 
@@ -195,15 +195,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/onit-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/onit-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/onit-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/onit-tutorial/create_aaduser_04.png)
 
@@ -224,15 +224,15 @@ Onit, esetén kiépítése a manuális feladat.
 **Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:**
 
 1. Jelentkezzen be a **Onit** rendszergazdaként a vállalati webhely.
-2. Kattintson a **felhasználó hozzáadása**.
+1. Kattintson a **felhasználó hozzáadása**.
    
    ![Felügyeleti](./media/onit-tutorial/IC791180.png "felügyelete")
-3. Az a **felhasználó hozzáadása** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználó hozzáadása** párbeszédpanel lapon, a következő lépésekkel:
    
    ![Felhasználó hozzáadása](./media/onit-tutorial/IC791181.png "felhasználó hozzáadása")
    
   1. Írja be a **neve** és a **E-mail cím** egy érvényes Azure AD-fiókot, a kapcsolódó szövegmezőkben kiépítendő.
-  2. Kattintson a **Create** (Létrehozás) gombra.    
+  1. Kattintson a **Create** (Létrehozás) gombra.    
    
  > [!NOTE]
  > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
@@ -249,23 +249,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Onit**.
+1. Az alkalmazások listájában jelölje ki a **Onit**.
 
     ![Az alkalmazások listáját a Onit hivatkozásra](./media/onit-tutorial/tutorial_onit_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -277,7 +277,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

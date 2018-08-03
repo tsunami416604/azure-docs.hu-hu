@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/02/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b8fec9a263eee6bf1e8bf347a9b6dd256840738f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2ee54ca3d6e787267010736343a570e614c4204d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391766"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427550"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Azure Active Directoryhoz csatlakoztatott eszközök hibrid kézi konfigurálása 
 
-Az Eszközfelügyelet az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók az erőforrásokhoz hozzáférő eszközei megfeleljenek a biztonsági és megfelelőségi szabványoknak. További részletekért lásd: [... / Az Eszközfelügyelet az Azure Active Directory bemutatása](../device-management-introduction.md).
+Az Eszközfelügyelet az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók az erőforrásokhoz hozzáférő eszközei megfeleljenek a biztonsági és megfelelőségi szabványoknak. További részletekért tekintse meg a [bemutatása az Eszközfelügyelet az Azure Active Directory](overview.md).
 
 Ha rendelkezik a helyszíni Active Directory-környezetben, és azt szeretné, a tartományhoz csatlakoztatott eszközök csatlakoztatása az Azure ad-ben, ez elvégezhető a hibrid Azure AD-csatlakoztatott eszközök konfigurálásával. A cikk ismerteti a kapcsolódó lépések. 
 
@@ -114,15 +114,15 @@ Az alábbi táblázat segítségével áttekintheti a forgatókönyvhöz szüks�
 
 | Lépések                                      | Windows jelenlegi és a jelszót a jelszókivonatok szinkronizálása | Jelenlegi Windows és az összevonás | Régebbi verziójú Windows |
 | :--                                        | :-:                                    | :-:                            | :-:                |
-| 1. lépés: Konfigurálja a szolgáltatáskapcsolati pontot | ![Jelölőnégyzet][1]                            | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
-| 2. lépés: A telepítő kiállítási jogcímek           |                                        | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
-| 3. lépés: A Windows 10-eszközök engedélyezése      |                                        |                                | ![Jelölőnégyzet][1]        |
-| 4. lépés: Az üzembe helyezési és bevezetési szabályozása     | ![Jelölőnégyzet][1]                            | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
-| 5. lépés: A csatlakoztatott eszközök ellenőrzése          | ![Jelölőnégyzet][1]                            | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
+| Szolgáltatáskapcsolódási pont konfigurálása | ![Jelölőnégyzet][1]                            | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
+| A telepítő kiállítási jogcímek           |                                        | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
+| A Windows 10-eszközök engedélyezése      |                                        |                                | ![Jelölőnégyzet][1]        |
+| Vezérlőelem üzembe helyezési és bevezetési     | ![Jelölőnégyzet][1]                            | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
+| Csatlakoztatott eszközök ellenőrzése          | ![Jelölőnégyzet][1]                            | ![Jelölőnégyzet][1]                    | ![Jelölőnégyzet][1]        |
 
 
 
-## <a name="step-1-configure-service-connection-point"></a>1. lépés: Konfigurálja a szolgáltatáskapcsolati pontot
+## <a name="configure-service-connection-point"></a>Szolgáltatáskapcsolódási pont konfigurálása
 
 A szolgáltatás kapcsolódási pont (SCP) objektum az eszközök a regisztráció során felderítésére szolgál az Azure AD bérlői kapcsolatos információkat. A helyszíni Active Directoryban (AD) a hibrid Azure AD-hez csatlakoztatott eszközök a szolgáltatáskapcsolódási pont objektum konfigurációs környezet partíciójára a számítógép erdő léteznie kell. Csak egy konfigurációs névhasználati környezet minden erdőre van. Többerdős Active Directory-konfiguráció esetén a szolgáltatáskapcsolódási pont minden olyan erdőben, tartományhoz csatlakoztatott számítógépeket tartalmazó léteznie kell.
 
@@ -200,7 +200,7 @@ A vállalat ellenőrzött tartományok listájának lekéréséhez használja a 
 
 ![Get-AzureADDomain](./media/hybrid-azuread-join-manual-steps/01.png)
 
-## <a name="step-2-setup-issuance-of-claims"></a>2. lépés: A telepítő kiállítási jogcímek
+## <a name="setup-issuance-of-claims"></a>A telepítő kiállítási jogcímek
 
 Az összevont Azure AD konfigurálása, a eszközök támaszkodnak az Active Directory összevonási szolgáltatások (AD FS) vagy a 3. fél a helyi összevonási szolgáltatás az Azure AD-hitelesítést. Eszközök regisztrálása a Azure Active Directory Eszközregisztrációs szolgáltatásában (Azure DRS) ellen hozzáférési jogkivonatot kapjon hitelesíteni.
 
@@ -504,7 +504,7 @@ A következő parancsfájl segítségével létrehozni a kiállítási átalakí
 
 - Ha már adtak egy **ImmutableID** jogcím-felhasználói fiókok esetében, az értékét állítsa be **$immutableIDAlreadyIssuedforUsers** a parancsfájl **$true**.
 
-## <a name="step-3-enable-windows-down-level-devices"></a>3. lépés: A Windows régebbi verziójú eszközök engedélyezése
+## <a name="enable-windows-down-level-devices"></a>Windows régebbi verziójú eszközök engedélyezése
 
 Ha Windows régebbi verziójú eszközök, a tartományhoz csatlakoztatott eszközök némelyike kell tennie:
 
@@ -562,7 +562,7 @@ Tanúsítvány elkerülése érdekében kérni fogja, ha az eszközök regisztr�
 
 `https://device.login.microsoftonline.com`
 
-## <a name="step-4-control-deployment-and-rollout"></a>4. lépés: Az üzembe helyezési és bevezetési szabályozása
+## <a name="control-deployment-and-rollout"></a>Vezérlőelem üzembe helyezési és bevezetési
 
 Amikor befejezte a szükséges lépéseket, tartományhoz csatlakoztatott eszközök készen állnak a automatikusan csatlakozik az Azure ad-ben:
 
@@ -611,15 +611,24 @@ Telepítheti a csomagot a szoftverterjesztési rendszer például System Center 
 
 A telepítő létrehoz egy ütemezett feladatot a rendszer a felhasználó környezetében futó. A feladat akkor aktiválódik, ha a felhasználó bejelentkezik a Windows. A feladat csendes csatlakoztatja az eszközt az Azure AD-felhasználói hitelesítő adatok hitelesítése az integrált Windows-hitelesítés használata után. Az ütemezett feladatot, az eszközön megtekintéséhez keresse fel a **Microsoft** > **munkahelyi csatlakoztatás**, és folytassa a Feladatütemező könyvtárban.
 
-## <a name="step-5-verify-joined-devices"></a>5. lépés: A csatlakoztatott eszközök ellenőrzése
+## <a name="verify-joined-devices"></a>Csatlakoztatott eszközök ellenőrzése
 
 Ellenőrizheti a sikeres csatlakoztatott eszközök a szervezetben használatával a [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) parancsmagot a [Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
 Az ezzel a parancsmaggal megjelenítheti által regisztrált és az Azure AD-csatlakoztatott eszközök. Minden eszköz lekéréséhez használja a **-minden** paramétert, majd szűrheti őket, és használatával a **deviceTrustType** tulajdonság. Tartományhoz csatlakoztatott eszközök a egy értéke lehet **tartományhoz csatlakozó**.
 
+
+
+## <a name="troubleshoot-your-implementation"></a>A megvalósítás hibaelhárítása
+
+Ha problémákat tapasztal a hibrid befejezése az Azure AD join tartományhoz csatlakoztatott Windows-eszközök, lásd:
+
+- [Aktuális Windows-eszközök hibrid Azure AD joinnal hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
+- [Hibaelhárítás Windows régebbi verziójú eszközök hibrid Azure AD joinnal](troubleshoot-hybrid-join-windows-legacy.md)
+
 ## <a name="next-steps"></a>További lépések
 
-* [Az Eszközfelügyelet az Azure Active Directory bemutatása](../device-management-introduction.md)
+* [Az Eszközfelügyelet az Azure Active Directory bemutatása](overview.md)
 
 
 

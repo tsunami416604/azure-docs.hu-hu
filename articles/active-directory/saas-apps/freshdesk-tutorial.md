@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált FreshDesk |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és FreshDesk között.
+title: 'Oktatóanyag: Azure Active Directory-integráció a freshdesk szolgáltatással |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a FreshDesk között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,261 +15,261 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 064f122deb6e53a33048d3159941a8b4dc5d0a9a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d0fbed347805a581fb66e0218290993817277214
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228890"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428332"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Oktatóanyag: Azure Active Directoryval integrált FreshDesk
+# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Oktatóanyag: Azure Active Directory-integráció a freshdesk szolgáltatással
 
-Ebben az oktatóanyagban elsajátíthatja FreshDesk integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan átmásolása a Freshdeskbe integrálása az Azure Active Directory (Azure AD).
 
-FreshDesk integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Freshdeskből integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a FreshDesk hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett FreshDesk (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
+- Szabályozhatja, hogy ki férhet hozzá a freshdesk szolgáltatással az Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett átmásolása a freshdeskbe (egyszeri bejelentkezés) az Azure AD-fiókjukat
+- A fiókok egyetlen központi helyen – az Azure felügyeleti portálján kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs FreshDesk, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a freshdesk szolgáltatással, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy FreshDesk egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- A FreshDesk egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, ha ez nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Az éles környezetben ne használjon, ha erre szükség.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti az egy hónapos próbaidőszak [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből FreshDesk hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Freshdeskből hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-freshdesk-from-the-gallery"></a>A gyűjteményből FreshDesk hozzáadása
-Az Azure AD integrálása a FreshDesk konfigurálásához kell hozzáadnia FreshDesk a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-freshdesk-from-the-gallery"></a>Freshdeskből hozzáadása a katalógusból
+Az Azure AD integrálása a FreshDesk konfigurálásához hozzá kell átmásolása a Freshdeskbe a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből FreshDesk hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Freshdeskből hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure felügyeleti portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[Azure felügyeleti portálján](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
+1. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **FreshDesk**.
+1. A Keresés mezőbe írja be a **átmásolása a Freshdeskbe**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshdesk-tutorial/tutorial_freshdesk_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshdesk-tutorial/tutorial_freshdesk_search.png)
 
-5. Az eredmények panelen válassza ki a **FreshDesk**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **átmásolása a Freshdeskbe**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján FreshDesk.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a freshdesk szolgáltatással a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó FreshDesk a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a FreshDesk közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó átmásolása a Freshdeskbe mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a FreshDesk hivatkozás kapcsolata kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** FreshDesk a.
+Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a freshdesk szolgáltatással.
 
-Az Azure AD egyszeri bejelentkezést a FreshDesk tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés vizsgálata a freshdesk szolgáltatással konfigurálni, kell hajtsa végre a következő építőelemeit:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[FreshDesk tesztfelhasználó létrehozása](#creating-a-freshdesk-test-user)**  - való Britta Simon valami FreshDesk, amely csatolva van rá, hogy az Azure AD ábrázolása.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Freshdeskből tesztfelhasználó létrehozása](#creating-a-freshdesk-test-user)**  – van egy Britta Simon megfelelője a freshdesk szolgáltatással, amely kapcsolódik az Azure ad-ben ábrázolása számára.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure felügyeleti portálon, és konfigurálása egyszeri bejelentkezéshez az FreshDesk alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure felügyeleti portálon, és a freshdesk nevű alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés FreshDesk, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálásához a freshdesk szolgáltatással, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure felügyeleti portálján a a **FreshDesk** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure felügyeleti portálon a a **átmásolása a Freshdeskbe** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. A a **egyszeri bejelentkezés** párbeszédpanel, mint **mód** kiválasztása **SAML-alapú bejelentkezés** a engedélyezése az egyszeri bejelentkezéshez.
+1. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** kiválasztása **SAML-alapú bejelentkezés** való egyszeri bejelentkezés engedélyezése.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/freshdesk-tutorial/tutorial_freshdesk_samlbase.png)
 
-3. A a **FreshDesk tartomány és az URL-címek** területen írja be a **bejelentkezési URL-cím** mint: `https://<tenant-name>.freshdesk.com` vagy bármely más érték Freshdesk javasolt.
+1. A a **átmásolása a Freshdeskbe tartomány és URL-címek** területén adja meg a **bejelentkezési URL-** mint: `https://<tenant-name>.freshdesk.com` vagy bármely más érték javasolt átmásolása a Freshdeskbe.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
 
     > [!NOTE] 
-    > Ne feledje, hogy ez a nem a tényleges érték. Frissítse az értéket a tényleges bejelentkezési URL-címmel rendelkezik. Ügyfél [FreshDesk ügyfél-támogatási csoport](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) lekérni ezt az értéket.  
+    > Vegye figyelembe, hogy ez nem a tényleges érték. Frissítse az értéket a tényleges bejelentkezési URL-címmel rendelkezik. Kapcsolattartó [átmásolása a Freshdeskbe ügyfél-támogatási csapatának](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) lekérni ezt az értéket.  
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány** , és mentse a tanúsítványt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány** , majd mentse a tanúsítványt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshdesk-tutorial/tutorial_general_400.png)
 
-6. A a **FreshDesk konfigurációs** kattintson **konfigurálása FreshDesk** konfigurálása bejelentkezés ablak megnyitásához. Másolja a SAML-alapú egyszeri bejelentkezési URL-címe és Sign-Out URL-CÍMÉT a **rövid összefoglaló** szakasz.
+1. Az a **átmásolása a Freshdeskbe konfigurációs** területén kattintson **konfigurálása átmásolása a Freshdeskbe** konfigurálása bejelentkezési ablak megnyitásához. Másolja a SAML egyszeri bejelentkezési szolgáltatás URL-cím és kijelentkezéses URL-CÍMÉT a **rövid összefoglaló** szakaszban.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
 
-7. Egy másik webes böngészőablakban jelentkezzen be a Freshdesk vállalati webhely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a freshdesk nevű vállalat webhelye rendszergazdaként.
 
-8. Kattintson a felső menüben **Admin**.
+1. A felső menüben kattintson **rendszergazdai**.
    
-   ![Felügyeleti](./media/freshdesk-tutorial/IC776768.png "rendszergazda")
+   ![Rendszergazdai](./media/freshdesk-tutorial/IC776768.png "rendszergazda")
 
-9. Az a **általános beállítások** lapra, majd **biztonsági**.
+1. Az a **általános beállítások** lapra, majd **biztonsági**.
    
    ![Biztonsági](./media/freshdesk-tutorial/IC776769.png "biztonsági")
 
-10. Az a **biztonsági** területen tegye a következőket:
+1. Az a **biztonsági** szakaszban, hajtsa végre az alábbi lépéseket:
    
     ![Egyszeri bejelentkezés](./media/freshdesk-tutorial/IC776770.png "egyszeri bejelentkezés")
    
-    a. A **egyszeri bejelentkezés (SSO)**, jelölje be **a**.
+    a. A **egyszeri bejelentkezés (SSO)** válassza **a**.
 
     b. Válassza ki **SAML SSO**.
 
-    c. Típus a **SAML-alapú egyszeri bejelentkezési URL-címe** másolta az Azure-portálon a **SAML bejelentkezési URL-cím** szövegmező.
+    c. Írja be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** az Azure Portalról másolt a **SAML bejelentkezési URL-cím** szövegmezőbe.
 
-    d. Típus a **Sign-Out URL-cím** másolta az Azure-portálon a **kijelentkezési URL-cím** szövegmező.
+    d. Írja be a **kijelentkezéses URL-cím** az Azure Portalról másolt a **kijelentkezési URL-címe** szövegmezőbe.
 
-    e. Másolás a **ujjlenyomat** Azure portálról letöltött tanúsítvány értéket, és illessze be azt a **biztonsági tanúsítvány-ujjlenyomat** szövegmező.  
+    e. Másolás a **ujjlenyomat** értéket a letöltött tanúsítvány az Azure Portalról, és illessze be azt a **biztonsági tanúsítvány-ujjlenyomat** szövegmezőbe.  
  
     >[!TIP]
-    >További részletekért lásd: [hogyan lehet lekérni egy tanúsítvány-ujjlenyomat értékének](http://youtu.be/YKQF266SAxI). 
+    >További részletekért lásd: [hogyan kérhető le egy tanúsítvány ujjlenyomatának értékét](http://youtu.be/YKQF266SAxI). 
     
     f. Kattintson a **Save** (Mentés) gombra.
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure felügyeleti portálján Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure felügyeleti portálján, Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure Management portal**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **Azure Management portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshdesk-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshdesk-tutorial/create_aaduser_01.png) 
 
-2. Ugrás a **felhasználók és csoportok** kattintson **minden felhasználó** azon felhasználók listájának megjelenítéséhez.
+1. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshdesk-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshdesk-tutorial/create_aaduser_02.png) 
 
-3. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
+1. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshdesk-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshdesk-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/freshdesk-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/freshdesk-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="creating-a-freshdesk-test-user"></a>FreshDesk tesztfelhasználó létrehozása
+### <a name="creating-a-freshdesk-test-user"></a>Freshdeskből tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók FreshDesk bejelentkezni, akkor ki kell építenie FreshDesk be.  
-FreshDesk, ha egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók FreshDesk-ba való bejelentkezéshez, akkor ki kell építeni történő átmásolása a Freshdeskbe.  
+Esetén a freshdesk szolgáltatással kiépítés a manuális feladat.
 
-**A felhasználói fiókok létrehozásához hajtsa végre az alábbi lépéseket:**
+**A felhasználói fiókok kiépítése, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a **Freshdesk** bérlő.
-2. Kattintson a felső menüben **Admin**.
+1. Jelentkezzen be a **átmásolása a Freshdeskbe** bérlő.
+1. A felső menüben kattintson **rendszergazdai**.
    
-   ![Felügyeleti](./media/freshdesk-tutorial/IC776772.png "rendszergazda")
+   ![Rendszergazdai](./media/freshdesk-tutorial/IC776772.png "rendszergazda")
 
-3. Az a **általános beállítások** lapra, majd **ügynökök**.
+1. Az a **általános beállítások** lapra, majd **ügynökök**.
    
    ![Ügynökök](./media/freshdesk-tutorial/IC776773.png "ügynökök")
 
-4. Kattintson a **új ügynök**.
+1. Kattintson a **új ügynök**.
    
-    ![Az új ügynök](./media/freshdesk-tutorial/IC776774.png "új ügynök")
+    ![Új ügynök](./media/freshdesk-tutorial/IC776774.png "új ügynök")
 
-5. Az ügynök adatait párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az ügynök adatait párbeszédpanelen hajtsa végre az alábbi lépéseket:
    
    ![Az ügynök adatait](./media/freshdesk-tutorial/IC776775.png "ügynök adatait")
    
-   a. Az a **teljes nevét** szövegmező, írja be a kiépítés kívánt Azure AD-fiókot.
+   a. Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be a kíván üzembe helyezni az Azure AD-fiók nevét.
 
-   b. Az a **E-mail** szövegmezőhöz típus az Azure AD e-mail címe rendelkezés kívánt Azure AD-fiókot.
+   b. Az a **E-mail** szövegmezőbe írja be az Azure AD e-mail címét, az Azure AD-szolgáltatásfiók kíván üzembe helyezni.
 
-   c. Az a **cím** szövegmező, írja be a kívánt rendelkezés Azure AD-fiókot.
+   c. Az a **cím** szövegmezőbe írja be az Azure AD-szolgáltatásfiók kíván üzembe helyezni.
 
    d. Válassza ki **ügynökök szerepkör**, és kattintson a **hozzárendelése**.
        
    e. Kattintson a **Save** (Mentés) gombra.     
    
     >[!NOTE]
-    >Az Azure AD fióktulajdonos kap egy e-mailt, amely tartalmaz egy hivatkozást a fiók megerősítéséhez, mielőtt aktívvá válik. 
+    >Az Azure ad-ben fióktulajdonos előtt aktiválva van, győződjön meg arról, hogy a fiók mutató hivatkozást tartalmazó e-mailt fog kapni. 
     > 
     
     >[!NOTE]
-    >Bármely más Freshdesk felhasználói fiók létrehozása eszközök vagy rendelkezés AAD felhasználói fiókokhoz Freshdesk által nyújtott API-k. a FreshDesk.
+    >Bármely más átmásolása a Freshdeskbe felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését átmásolása a Freshdeskbe által biztosított API-k. átmásolása a freshdeskbe.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon nyújtó saját mezőben Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon számára a hozzáférés biztosításával a Boxba Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése FreshDesk, hajtsa végre az alábbi lépéseket:**
+**Britta Simon átmásolása a freshdeskbe rendelni, végezze el az alábbi lépéseket:**
 
-1. Az Azure felügyeleti portálra, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure felügyeleti portálon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **FreshDesk**.
+1. Az alkalmazások listájában jelölje ki a **átmásolása a Freshdeskbe**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/freshdesk-tutorial/tutorial_freshdesk_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen FreshDesk csempére kattint, az beszerzése bejelentkezett FreshDesk Alkalmazásmódosítások bejelentkezési oldalt szerezheti be.
+Ha a hozzáférési panelen a FreshDesk csempére kattint, első bejelentkezett a FreshDesk-alkalmazásba való bejelentkezési oldal szerezheti be.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

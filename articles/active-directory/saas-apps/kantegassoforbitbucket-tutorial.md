@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: ce88ff333cd24e331c0d9c9b3b58372d5b09fdec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a81ea48937927e13141642d70093bc322196b2cc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042894"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Oktatóanyag: Azure Active Directory-integráció a Bitbucket Kantega SSO-val
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. A Bitbucket Kantega SSO hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-kantega-sso-for-bitbucket-from-the-gallery"></a>A Bitbucket Kantega SSO hozzáadása a katalógusból
 Adja meg a Bitbucket Kantega SSO integrálása az Azure AD, szüksége Kantega egyszeri Bejelentkezést, a Bitbucket hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
@@ -63,19 +63,19 @@ Adja meg a Bitbucket Kantega SSO integrálása az Azure AD, szüksége Kantega e
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Kantega egyszeri Bejelentkezést, a Bitbucket**.
+1. A Keresés mezőbe írja be a **Kantega egyszeri Bejelentkezést, a Bitbucket**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_search.png)
 
-5. Az eredmények panelen válassza ki a **Kantega egyszeri Bejelentkezést, a Bitbucket**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Kantega egyszeri Bejelentkezést, a Bitbucket**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Bitbucket Kantega egyszeri Bejelentkezést, rendelje hozzá az értékét a **fe
 Az Azure AD egyszeri bejelentkezés a Bitbucket Kantega SSO-val tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Egy bitbucket-alapú tesztfelhasználó számára Kantega SSO létrehozása](#creating-a-kantega-sso-for-bitbucket-test-user)**  – van egy megfelelője a Britta Simon Kantega egyszeri Bejelentkezést, a Bitbucket, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Egy bitbucket-alapú tesztfelhasználó számára Kantega SSO létrehozása](#creating-a-kantega-sso-for-bitbucket-test-user)**  – van egy megfelelője a Britta Simon Kantega egyszeri Bejelentkezést, a Bitbucket, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_samlbase.png)
 
-3. A **Identitásszolgáltató** módban indul a **Kantega egyszeri Bejelentkezést, a bitbucket-alapú tartomány és URL-címek** szakasz hajtsa végre a következő lépést:
+1. A **Identitásszolgáltató** módban indul a **Kantega egyszeri Bejelentkezést, a bitbucket-alapú tartomány és URL-címek** szakasz hajtsa végre a következő lépést:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url1.png)
 
@@ -116,7 +116,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-4. A **SP** kezdeményezett mód, a jelölőnégyzet **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést:
+1. A **SP** kezdeményezett mód, a jelölőnégyzet **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url2.png)
     
@@ -125,49 +125,49 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Ezeket az értékeket az oktatóanyag későbbi részében ismertetett bitbucket-alapú beépülő modul konfigurálása során érkeznek.
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_certificate.png) 
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/tutorial_general_400.png)
 
-7. Egy másik böngészőablakban jelentkezzen be a bitbucket-alapú felügyeleti portálra rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a bitbucket-alapú felügyeleti portálra rendszergazdaként.
 
-8. Kattintson a fogaskerék alakú ikonjára, majd kattintson a **új bővítmények keresése**.
+1. Kattintson a fogaskerék alakú ikonjára, majd kattintson a **új bővítmények keresése**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon1.png)
 
-9. Keresés **Kantega egyszeri bejelentkezési Bitbucket SAML & Kerberos** kattintson **telepítése** gombra az új SAML beépülő modul telepítéséhez.
+1. Keresés **Kantega egyszeri bejelentkezési Bitbucket SAML & Kerberos** kattintson **telepítése** gombra az új SAML beépülő modul telepítéséhez.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon2.png)
 
-10. A beépülő modul telepítése elindul.
+1. A beépülő modul telepítése elindul.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon31.png)
 
-11. A telepítés befejezése után. Kattintson a **Bezárás** gombra.
+1. A telepítés befejezése után. Kattintson a **Bezárás** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon33.png)
 
-12. Kattintson a **Kezelés** gombra.
+1.  Kattintson a **Kezelés** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon34.png)
     
-13. Kattintson a **konfigurálása** a új beépülő modul konfigurálásához.    
+1. Kattintson a **konfigurálása** a új beépülő modul konfigurálásához. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon35.png)
 
-14. Az a **SAML** szakaszban. Válassza ki **Azure Active Directory (Azure AD)** származó a **Hozzáadás identitásszolgáltató** legördülő listából.
+1. Az a **SAML** szakaszban. Válassza ki **Azure Active Directory (Azure AD)** származó a **Hozzáadás identitásszolgáltató** legördülő listából.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon4.png)
 
-15. Válassza ki az előfizetés szintjén, **alapszintű**.
+1. Válassza ki az előfizetés szintjén, **alapszintű**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon5.png)
 
-16. Az a **alkalmazás tulajdonságai** szakaszban, hajtsa végre a következő lépéseket:
+1. Az a **alkalmazás tulajdonságai** szakaszban, hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
@@ -175,7 +175,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Kattintson a **Tovább** gombra.
 
-17. Az a **metaadatok importálása** szakaszban, hajtsa végre a következő lépéseket:
+1. Az a **metaadatok importálása** szakaszban, hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
@@ -183,7 +183,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Kattintson a **Tovább** gombra.
 
-18. Az a **nevét és az egyszeri bejelentkezés helyét** szakaszban, hajtsa végre a következő lépéseket:
+1. Az a **nevét és az egyszeri bejelentkezés helyét** szakaszban, hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
@@ -191,11 +191,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Kattintson a **Tovább** gombra.
 
-19. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább**.  
+1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább**.   
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon9.png)
 
-20. Az a **bitbucket-alapú felhasználói fiókok** szakaszban, hajtsa végre a következő lépéseket:
+1. Az a **bitbucket-alapú felhasználói fiókok** szakaszban, hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
@@ -203,11 +203,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Kattintson a **Tovább** gombra.
 
-21. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Befejezés** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon11.png)
 
-22. Az a **ismert tartományok az Azure ad** szakaszban, hajtsa végre a következő lépéseket: 
+1. Az a **ismert tartományok az Azure ad** szakaszban, hajtsa végre a következő lépéseket:  
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
@@ -232,15 +232,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforbitbucket-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforbitbucket-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforbitbucket-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforbitbucket-tutorial/create_aaduser_04.png) 
 
@@ -260,19 +260,19 @@ Ahhoz, hogy a bitbucket-alapú bejelentkezés az Azure AD-felhasználók, akkor 
 
 1. Jelentkezzen be rendszergazdaként a bitbucket-alapú vállalati webhely.
 
-2. Kattintson a beállítások ikonra.
+1. Kattintson a beállítások ikonra.
 
     ![Alkalmazott hozzáadása](./media/kantegassoforbitbucket-tutorial/user1.png) 
 
-3. A **felügyeleti** szakasz lapra, majd **felhasználók**.
+1. A **felügyeleti** szakasz lapra, majd **felhasználók**.
 
     ![Alkalmazott hozzáadása](./media/kantegassoforbitbucket-tutorial/user2.png)
 
-4. Kattintson a **felhasználó létrehozása**.
+1. Kattintson a **felhasználó létrehozása**.
 
     ![Alkalmazott hozzáadása](./media/kantegassoforbitbucket-tutorial/user3.png)   
 
-5. Az a **Create User** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **Create User** párbeszédpanel lapon, a következő lépésekkel:
 
     ![Alkalmazott hozzáadása](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
@@ -300,23 +300,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Kantega egyszeri Bejelentkezést, a Bitbucket**.
+1. Az alkalmazások listájában jelölje ki a **Kantega egyszeri Bejelentkezést, a Bitbucket**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -328,7 +328,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

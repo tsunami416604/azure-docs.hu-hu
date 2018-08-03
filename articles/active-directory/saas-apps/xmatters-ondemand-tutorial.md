@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 60991f2780de86f0b15f64def6b1776316f974d4
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d140cbdb0548de869c7aab6ba5da281046a215f9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055623"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Oktatóanyag: Azure Active Directory-integráció az OnDemand xMatters
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. XMatters OnDemand hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-xmatters-ondemand-from-the-gallery"></a>XMatters OnDemand hozzáadása a katalógusból
 Az Azure AD integrálása a xMatters OnDemand konfigurálásához hozzá kell xMatters OnDemand a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a xMatters OnDemand konfigurálásához hozzá kell xM
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **xMatters OnDemand**.
+1. A Keresés mezőbe írja be a **xMatters OnDemand**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_search.png)
 
-5. Az eredmények panelen válassza ki a **xMatters OnDemand**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **xMatters OnDemand**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_addfromgallery.png)
 
@@ -89,10 +89,10 @@ XMatters OnDemand, rendelje hozzá az értékét a **felhasználónév** érték
 Az Azure AD egyszeri bejelentkezés az xMatters OnDemand tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[XMatters OnDemand tesztfelhasználó létrehozása](#creating-a-xmatters-ondemand-test-user)**  – egy megfelelője a Britta Simon xMatters OnDemand, amely kapcsolódik az Azure AD felhasználói ábrázolása a rendelkeznie.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[XMatters OnDemand tesztfelhasználó létrehozása](#creating-a-xmatters-ondemand-test-user)**  – egy megfelelője a Britta Simon xMatters OnDemand, amely kapcsolódik az Azure AD felhasználói ábrázolása a rendelkeznie.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_samlbase.png)
 
-3. Az a **xMatters OnDemand tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **xMatters OnDemand tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
@@ -132,28 +132,28 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [xMatters OnDemand támogatási csoportjának](https://www.xmatters.com/company/contact-us/) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse helyben a tanúsítványfájlt, **c:\\XMatters OnDemand.cer**.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse helyben a tanúsítványfájlt, **c:\\XMatters OnDemand.cer**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_certificate.png)
 
     > [!IMPORTANT]
     > Kell továbbítani a tanúsítványt a [xMatters OnDemand támogatási csoportjának](https://www.xmatters.com/company/contact-us/). A tanúsítványt kell feltölteni a xMatters támogatási csapat is az egyszeri bejelentkezési konfigurációjának véglegesítése előtt. 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/xmatters-ondemand-tutorial/tutorial_general_400.png)
 
-6. Az a **xMatters OnDemand konfigurációs** területén kattintson **xMatters OnDemand konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **xMatters OnDemand konfigurációs** területén kattintson **xMatters OnDemand konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_configure.png) 
 
-7. Egy másik böngészőablakban jelentkezzen be a XMatters OnDemand vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a XMatters OnDemand vállalati hely rendszergazdaként.
 
-8. A felső eszköztáron kattintson **rendszergazdai**, és kattintson a **cég adatait** a a bal oldali navigációs sávon.
+1. A felső eszköztáron kattintson **rendszergazdai**, és kattintson a **cég adatait** a a bal oldali navigációs sávon.
 
     ![Rendszergazdai](./media/xmatters-ondemand-tutorial/IC776795.png "rendszergazda")
 
-9. Az a **SAML-konfigurációja** lapon, a következő lépésekkel:
+1. Az a **SAML-konfigurációja** lapon, a következő lépésekkel:
 
     ![SAML-konfigurációja](./media/xmatters-ondemand-tutorial/IC776796.png "SAML-konfigurációja")
 
@@ -180,15 +180,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/xmatters-ondemand-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/xmatters-ondemand-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/xmatters-ondemand-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/xmatters-ondemand-tutorial/create_aaduser_04.png) 
 
@@ -208,11 +208,11 @@ Ez a szakasz célja xMatters OnDemand Britta Simon nevű felhasználó létrehoz
 
 1. Jelentkezzen be a **XMatters OnDemand** bérlő.
 
-2.  Kattintson a **felhasználók** fülre, majd kattintson **felhasználó hozzáadása**.
+1.  Kattintson a **felhasználók** fülre, majd kattintson **felhasználó hozzáadása**.
 
     ![Felhasználók](./media/xmatters-ondemand-tutorial/IC781048.png "felhasználók")
 
-3. Az a **felhasználó hozzáadása** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználó hozzáadása** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Felhasználó hozzáadása](./media/xmatters-ondemand-tutorial/IC781049.png "felhasználó hozzáadása")
 
@@ -240,23 +240,23 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **xMatters OnDemand**.
+1. Az alkalmazások listájában jelölje ki a **xMatters OnDemand**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -268,7 +268,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Felhasználók átadásának konfigurálása](xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->

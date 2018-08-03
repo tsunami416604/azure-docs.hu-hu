@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/02/2018
 ms.author: raynew
-ms.openlocfilehash: e2fbe766391759f2bbe4a95e75897b2bc9523c0c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 50d1b8fca8e5377c35810e08258a0ecc3770ae75
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399073"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422324"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: a helyszíni számítási feladatok Azure-bA migrálásának értékelése
 
@@ -99,7 +99,7 @@ Ebben a forgatókönyvben a Contoso letölti és futtatja a Data Migration Assis
 - Contoso egy fiktív egy jellemző nagyvállalati szervezet jelölő nevet.
 - Contoso rendelkezik egy helyszíni adatközpont (**contoso-datacenter**) és a helyszíni tartományvezérlő (**CONTOSODC1**, **CONTOSODC2**).
 - VMware virtuális gépek 6.5-ös verziójú VMware ESXi-gazdagépek találhatók (**contosohost1**, **contosohost2**).
-- A VMware-környezet kezeli a vCenter Server 6.5-ös (**vcenter**, egy virtuális gépen futó).
+- A VMware-környezet kezeli a vCenter Server 6.5-ös (**vcenter.contoso.com**, egy virtuális gépen futó).
 - A SmartHotel utazási alkalmazás a következő jellemzőkkel rendelkeznek:
     - Az alkalmazás két VMware virtuális gépek között többszintű (**WEBVM** és **SQLVM**).
     - VMware ESXi-gazdagépen található virtuális gépek **contosohost1.contoso.com**.
@@ -123,12 +123,10 @@ A Contoso és más felhasználók az értékelés a következő előfeltételekn
 - Legalább két helyszíni VMware virtuális gép, amelyek közül az egyik egy SQL Server-adatbázist futtat.
 - Engedélyek az Azure Migrate-ügynökök telepítéséhez minden virtuális gépen.
 - A virtuális gépeknek közvetlen internetkapcsolattal kell rendelkezniük.  
-        
-- Internet-hozzáférést korlátozhatja a [szükséges URL-címekre](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
-
-- Ha a virtuális gépek nem rendelkezik internetkapcsolattal, az Azure Log Analytics [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) telepíteni kell őket.
+        - Az internetes hozzáférést korlátozhatja [a szükséges URL-címekre](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
+        – Ha a virtuális gépek nem rendelkezik internetkapcsolattal, az Azure Log Analytics [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) telepíteni kell őket, és az ügynök forgalmat rajta keresztül.
 - Az SQL Server-példányt futtató virtuális gép teljes tartományneve az adatbázis-értékeléshez.
-- Az SQL Server virtuális gépen futó Windows tűzfalnak engedélyeznie kell a külső kapcsolatokat a 1433-as (alapértelmezett) TCP-porton. A telepítő lehetővé teszi a Data Migration Assistant való csatlakozáshoz.
+- Az SQL Server virtuális gépen futó Windows tűzfalnak engedélyeznie kell a külső kapcsolatokat a 1433-as (alapértelmezett) TCP-porton. Ez a beállítás lehetővé teszi a Data Migration Assistant való csatlakozáshoz.
 
 ## <a name="assessment-overview"></a>– Áttekintés
 
@@ -297,7 +295,7 @@ A virtuális gép üzembe helyezése előtt Contoso ellenőrzi, hogy az OVA-fáj
 
 ### <a name="create-the-collector-appliance"></a>A gyűjtőberendezés létrehozása
 
-Most Contoso importálni a letöltött fájlt a vCenter Server-példány és a konfigurációs kiszolgáló virtuális gép üzembe helyezéséhez:
+Most Contoso importálni a letöltött fájlt a vCenter Server-példány és a gyűjtőberendezés virtuális gép kiépítése:
 
 1. A vSphere Client-konzolon, a Contoso kiválasztja **fájl** > **OVF-sablon telepítése**.
 
@@ -353,7 +351,7 @@ Gyűjtemény befejezését követően a Contoso ellenőrzi, hogy a virtuális g�
 
 ## <a name="step-5-prepare-for-dependency-analysis"></a>5. lépés: Felkészülés a függőségelemzésre
 
-Szeretné elérni, hogy virtuális gépek közötti függőségek megtekintéséhez, Contoso letölti és telepíti az alkalmazást, virtuális gépek ügynökök. Contoso pedig az alkalmazások, mind a Windows és Linux rendszerű virtuális gépek ügynököket telepít.
+Szeretné felmérheti, hogy virtuális gépek közötti függőségek megtekintéséhez, Contoso letölti és telepíti az alkalmazást, virtuális gépek ügynökök. Contoso pedig az alkalmazások, mind a Windows és Linux rendszerű virtuális gépek ügynököket telepít.
 
 ### <a name="take-a-snapshot"></a>Pillanatkép készítése
 

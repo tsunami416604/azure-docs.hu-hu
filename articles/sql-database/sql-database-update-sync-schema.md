@@ -10,12 +10,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: cc1c9c9385d34f317ff911d131058b9210065edf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: eca5e308399b9fb694a8e5060d72c12790a8f78d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237043"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434958"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Az Azure SQL Data Sync sémamódosítások-replikáció automatizálása
 
@@ -23,9 +23,9 @@ Az SQL Data Sync lehetővé teszi a felhasználóknak az Azure SQL Database-adat
 
 Ez a cikk egy megoldás összes SQL Data Sync-végpontot automatikusan replikálhatók sémaváltozások be.
 1. Ez a megoldás a DDL-triggerek séma nyomon követésére használ.
-2. Az eseményindító a séma módosítása parancsok beszúr egy nyomkövetési táblát.
-3. A nyomkövetési táblát szinkronizálva van az összes olyan végpontok, a Data Sync szolgáltatás használatával.
-4. A sémaváltozások alkalmazásához a többi végpont a DML-trigger Beszúrás után használhatók.
+1. Az eseményindító a séma módosítása parancsok beszúr egy nyomkövetési táblát.
+1. A nyomkövetési táblát szinkronizálva van az összes olyan végpontok, a Data Sync szolgáltatás használatával.
+1. A sémaváltozások alkalmazásához a többi végpont a DML-trigger Beszúrás után használhatók.
 
 Ebben a cikkben az ALTER TABLE egy sémaváltozás példaként, de más típusú sémaváltozások is működik ez a megoldás.
 
@@ -136,31 +136,31 @@ Miután a séma változásai replikálódnak az összes végpontokra, is indít�
 
 1.  Győződjön meg a séma módosításához.
 
-2.  Ne használjon bármely adatmódosítás, ahol az új oszlopok érintett mindaddig, amíg Ön teljesítette a lépés, amely az eseményindítót hoz létre.
+1.  Ne használjon bármely adatmódosítás, ahol az új oszlopok érintett mindaddig, amíg Ön teljesítette a lépés, amely az eseményindítót hoz létre.
 
-3.  Várjon, amíg a sémamódosítások érvénybe lépnek minden végpontok.
+1.  Várjon, amíg a sémamódosítások érvénybe lépnek minden végpontok.
 
-4.  Frissítse az adatbázissémát, és az új oszlop hozzáadása a szinkronizálási sémához.
+1.  Frissítse az adatbázissémát, és az új oszlop hozzáadása a szinkronizálási sémához.
 
-5.  Az új oszlopban lévő adatok szinkronizálva van a következő szinkronizálási művelet során.
+1.  Az új oszlopban lévő adatok szinkronizálva van a következő szinkronizálási művelet során.
 
 #### <a name="remove-columns"></a>Oszlopok eltávolítása
 
 1.  Az oszlopok eltávolítása a szinkronizálási sémához. Adatszinkronizálás leállítja ezeket az oszlopokat az adatok szinkronizálása.
 
-2.  Győződjön meg a séma módosításához.
+1.  Győződjön meg a séma módosításához.
 
-3.  Frissítse az adatbázissémát.
+1.  Frissítse az adatbázissémát.
 
 #### <a name="update-data-types"></a>Az adattípusok módosítása
 
 1.  Győződjön meg a séma módosításához.
 
-2.  Várjon, amíg a sémamódosítások érvénybe lépnek minden végpontok.
+1.  Várjon, amíg a sémamódosítások érvénybe lépnek minden végpontok.
 
-3.  Frissítse az adatbázissémát.
+1.  Frissítse az adatbázissémát.
 
-4.  Ha a régi és új adattípusokat nem teljesen kompatibilis – például, ha módosítja a `int` való `bigint` -szinkronizálás meghiúsulhat előtt elvégezte a lépéseket, amelyek az eseményindítók létrehozásához. Szinkronizálás sikeres újrapróbálkozást követően.
+1.  Ha a régi és új adattípusokat nem teljesen kompatibilis – például, ha módosítja a `int` való `bigint` -szinkronizálás meghiúsulhat előtt elvégezte a lépéseket, amelyek az eseményindítók létrehozásához. Szinkronizálás sikeres újrapróbálkozást követően.
 
 #### <a name="rename-columns-or-tables"></a>Nevezze át az oszlopok vagy táblázatok
 
@@ -176,25 +176,25 @@ A replikációs logika leírt cikk leáll, az egyes esetekben – például megt
 
 1.  Tiltsa le a DDL-triggerek, és további séma módosítások elkerülése érdekében, amíg a probléma nem oldódik.
 
-2.  A végpont adatbázisban, ahol a hiba történik tiltsa le az AFTER INSERT eseményindítót a végponton, ahol a séma módosítás nem hajtható végre. Ez a művelet lehetővé teszi, hogy szinkronizálja a séma módosítása parancsot.
+1.  A végpont adatbázisban, ahol a hiba történik tiltsa le az AFTER INSERT eseményindítót a végponton, ahol a séma módosítás nem hajtható végre. Ez a művelet lehetővé teszi, hogy szinkronizálja a séma módosítása parancsot.
 
-3.  A sémaváltozás-nyomkövetési táblát szinkronizálása a szinkronizálási események indítása.
+1.  A sémaváltozás-nyomkövetési táblát szinkronizálása a szinkronizálási események indítása.
 
-4.  A végpont adatbázisban, ahol a hiba történik a lekérdezés a séma módosítása előzménytábla utolsó alkalmazott séma módosítása parancs Azonosítójának lekéréséhez.
+1.  A végpont adatbázisban, ahol a hiba történik a lekérdezés a séma módosítása előzménytábla utolsó alkalmazott séma módosítása parancs Azonosítójának lekéréséhez.
 
-5.  A lekérdezés a sémaváltozás-nyomkövetési táblát az összes parancs olyan azonosítót az azonosító értéke nagyobb az előző lépésben lekért listában.
+1.  A lekérdezés a sémaváltozás-nyomkövetési táblát az összes parancs olyan azonosítót az azonosító értéke nagyobb az előző lépésben lekért listában.
 
     a.  Hagyja figyelmen kívül azokat a parancsokat, amelyek nem hajtható végre az endpoint adatbázisban. A séma inkonzisztenciája kezelni kell. Visszaállítás az eredeti sémamódosítások, ha a program inkonzisztenciát hatással van az alkalmazás.
 
     b.  Manuálisan a alkalmazni azokat a parancsokat, amelyek a alkalmazni kell.
 
-6.  A séma változástábla-előzmények frissítéséhez, és állítsa be az utolsó alkalmazott azonosítója a helyes értékre.
+1.  A séma változástábla-előzmények frissítéséhez, és állítsa be az utolsó alkalmazott azonosítója a helyes értékre.
 
-7.  Ellenőrizze, hogy naprakész-e a séma.
+1.  Ellenőrizze, hogy naprakész-e a séma.
 
-8.  Engedélyezze újra az AFTER INSERT eseményindítót, a második lépésben le van tiltva.
+1.  Engedélyezze újra az AFTER INSERT eseményindítót, a második lépésben le van tiltva.
 
-9.  A DDL-triggerek le van tiltva, az első lépésben engedélyezze újra.
+1.  A DDL-triggerek le van tiltva, az első lépésben engedélyezze újra.
 
 Ha szeretné törölni a nyomon követési séma változástábla-rekordokat, használja a DELETE TRUNCATE helyett. Soha ne reseed az identitásoszlop sémaváltozás-nyomkövetési táblát DBCC CHECKIDENT használatával. Hozzon létre új nyomkövetési táblát, és frissítse a tábla neve a DDL-triggert, ha újravetéssel szükség.
 

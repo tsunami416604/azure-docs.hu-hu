@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5c6a4ac68694c74f9a7ed99a2d7b4939b84dc33f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 38e5e37111c6996fcf1342b123b5fc034b58fc0b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054879"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430994"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden dokumentumnak Azure Active Directory (Azure AD) különböző-alkalmazásokkal kapcsolatos lehetőségei írt átfogó listáját tartalmazza.
@@ -143,7 +143,7 @@ Ha a szervezet fejlesztéséhez vagy karbantartása – üzletági (LoB) alkalma
 
 | A cikk az útmutató |  |
 |:---:| --- |
-| Informatikai szakemberek és az alkalmazások fejlesztői az Azure AD-alkalmazások integrálását ismertető útmutató |[Az IT Pro az útmutató az Azure ad-alkalmazások fejlesztéséhez](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Az Azure Active Directory fejlesztői útmutatója](active-directory-developers-guide.md) |
+| Informatikai szakemberek és az alkalmazások fejlesztői az Azure AD-alkalmazások integrálását ismertető útmutató |[Az IT Pro az útmutató az Azure ad-alkalmazások fejlesztéséhez](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Az Azure Active Directory fejlesztői útmutatója](develop/azure-ad-developers-guide.md) |
 | Hogyan alkalmazáshoz szállítók adhat hozzá alkalmazásaikat az Azure AD Alkalmazáskatalógusában |[Az alkalmazás szerepeltetése az Azure Active Directory Alkalmazáskatalógusában listázása](active-directory-app-gallery-listing.md) |
 | Az Azure Active Directoryval fejlett alkalmazásokhoz való hozzáférés kezelése |[Fejlett alkalmazások felhasználó-hozzárendelés engedélyezése](active-directory-applications-guiding-developers-requiring-user-assignment.md)<br /><br />[Felhasználók hozzárendelése az alkalmazáshoz](active-directory-applications-guiding-developers-assigning-users.md)<br /><br />[Csoport hozzárendelése az alkalmazáshoz](active-directory-applications-guiding-developers-assigning-groups.md) |
 

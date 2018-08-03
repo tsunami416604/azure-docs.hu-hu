@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 1af195e644fe93e0c59f5e4402dd8942f5fe1aba
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 108abe45b4b296e0d7928f2da00a06ac43e1ccbe
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635506"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438783"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>Az Azure DevTest Labs integrálása a VSTS folyamatos integrációs és teljesítési folyamat
 Használhatja a *Azure DevTest Labs-feladatok* bővítmény, amely egyszerűen települ a Visual Studio Team Services (VSTS) hogy a build és kiadás folyamatos üzembe helyezési folyamat integrálása az Azure DevTest Labs szolgáltatásban. A bővítmény telepítését három feladatot: 
@@ -91,10 +91,10 @@ Ez a szakasz ismerteti, hogyan hozhat létre az Azure Resource Manager-sablon, a
 A kiadási definíció létrehozása, tegye a következőket:
 
 1. Az a **kiadásokban** lapján a **Build & Release** hub, válassza a plusz jelre (+) gombot.
-2. Az a **kiadási definíció létrehozása** ablakban válassza ki a **üres** sablont, és válassza ki **tovább**.
-3. Válassza ki **válasszon később**, majd válassza ki **létrehozás** új kiadási definíció létrehozása egy alapértelmezett környezetet, és nem társított összetevők.
-4. A helyi menü megnyitásához, az új kiadás definíciója, a környezet neve melletti három pontra (...), majd válassza ki és **változók konfigurálása**. 
-5. Az a **konfigurálása - környezet** ablakban, a változók a kiadási definíció feladatok során használt, adja meg a következő értékeket:
+1. Az a **kiadási definíció létrehozása** ablakban válassza ki a **üres** sablont, és válassza ki **tovább**.
+1. Válassza ki **válasszon később**, majd válassza ki **létrehozás** új kiadási definíció létrehozása egy alapértelmezett környezetet, és nem társított összetevők.
+1. A helyi menü megnyitásához, az új kiadás definíciója, a környezet neve melletti három pontra (...), majd válassza ki és **változók konfigurálása**. 
+1. Az a **konfigurálása - környezet** ablakban, a változók a kiadási definíció feladatok során használt, adja meg a következő értékeket:
 
    a. A **vmName**, adja meg a nevét, amely a virtuális gép az Azure Portalon a Resource Manager-sablon létrehozásakor hozzárendelt.
 
@@ -107,7 +107,7 @@ A kiadási definíció létrehozása, tegye a következőket:
 A központi telepítés a következő szintre, ha a virtuális Géphez használandó "arany lemezképpel" az ezt követő központi telepítések. A virtuális gép az Azure DevTest Labs-példány belül kifejezetten erre a célra fejlesztik feladat használatával hoz létre. 
 
 1. Válassza ki a kiadási definíció **tevékenységek hozzáadása a**.
-2. Az a **telepítés** lapon maradva adja hozzá egy *Azure DevTest Labs szolgáltatásban hozzon létre virtuális gép* feladat. A feladat a következőképpen konfigurálja:
+1. Az a **telepítés** lapon maradva adja hozzá egy *Azure DevTest Labs szolgáltatásban hozzon létre virtuális gép* feladat. A feladat a következőképpen konfigurálja:
 
    > [!NOTE]
    > Az ezt követő központi telepítéséhez használandó virtuális gép létrehozásához lásd: [Azure DevTest Labs-feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
@@ -134,8 +134,8 @@ A központi telepítés a következő szintre, ha a virtuális Géphez használa
    /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualMachines/{vmName}
    ```
 
-3. Hajtsa végre a gyűjtése a DevTest Labs virtuális gép részletei korábban létrehozott parancsfájlt. 
-4. Válassza ki a kiadási definíció **tevékenységek hozzáadása a** , majd a a **telepítés** lapon maradva adja hozzá egy *Azure PowerShell-lel* feladat. A feladat a következőképpen konfigurálja:
+1. Hajtsa végre a gyűjtése a DevTest Labs virtuális gép részletei korábban létrehozott parancsfájlt. 
+1. Válassza ki a kiadási definíció **tevékenységek hozzáadása a** , majd a a **telepítés** lapon maradva adja hozzá egy *Azure PowerShell-lel* feladat. A feladat a következőképpen konfigurálja:
 
    > [!NOTE]
    > Gyűjteni a DevTest Labs virtuális gép adatait, tekintse meg [üzembe helyezés: Azure PowerShell-lel](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) , és hajtsa végre a parancsprogramot.
@@ -156,7 +156,7 @@ A központi telepítés a következő szintre, ha a virtuális Géphez használa
       ```
     A parancsfájl összegyűjti a szükséges értékeket, és az környezeti változókat a kiadási definíció belül tárolja őket, így könnyen hivatkozhat rájuk a későbbi lépésekben.
 
-5. Az alkalmazás üzembe helyezése az új DevTest Labs virtuális gépre. A feladatok általában használatával az alkalmazás üzembe helyezése *Azure fájlmásolás* és *PowerShellben célszámítógépekre*.
+1. Az alkalmazás üzembe helyezése az új DevTest Labs virtuális gépre. A feladatok általában használatával az alkalmazás üzembe helyezése *Azure fájlmásolás* és *PowerShellben célszámítógépekre*.
    A virtuális Gépet, ezeket a feladatokat a paraméterek szükséges információ nevű három konfigurációs változókban tárolt **labVmRgName**, **labVMIpAddress**, és **labVMFqdn**a kiadási definíció belül. Ha csak szeretné létrehozása a DevTest Labs virtuális gép és a egy egyéni rendszerképet, az alkalmazás üzembe helyezése nélkül kísérletezhet, kihagyhatja ezt a lépést.
 
 ### <a name="create-an-image"></a>Rendszerkép létrehozása
@@ -164,7 +164,7 @@ A központi telepítés a következő szintre, ha a virtuális Géphez használa
 A következő szakaszban, hogy az újonnan üzembe helyezett virtuális gép rendszerképének létrehozása az Azure DevTest Labs-példányban. Ezután használhatja a lemezképet, igény szerint hozhat létre a virtuális gép másolatát, ha szeretné végrehajtani egy fejlesztési feladatot, vagy egyes tesztek futtatása. 
 
 1. Válassza ki a kiadási definíció **tevékenységek hozzáadása a**.
-2. Az a **telepítés** lapon maradva adja hozzá egy **Azure DevTest Labs szolgáltatásban hozzon létre egyéni lemezkép** feladat. Ez a következőképpen konfigurálja:
+1. Az a **telepítés** lapon maradva adja hozzá egy **Azure DevTest Labs szolgáltatásban hozzon létre egyéni lemezkép** feladat. Ez a következőképpen konfigurálja:
 
    > [!NOTE]
    > A kép létrehozásához lásd: [Azure DevTest Labs-feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
@@ -194,8 +194,8 @@ Az utolsó fáziséit, hogy törli a virtuális Gépet üzembe helyezett Azure D
  
    b. A **tesztlabor virtuális gép azonosítója**, ha a labor virtuális gép egy korábbi feladat azonosítójú a környezeti változó, amely a rendszer automatikusan kitölti a rendszer alapértelmezett neve módosította Itt szerkesztheti. Az alapértelmezett érték **$(labVMId)**.
 
-2. Adja meg a kiadási definíció nevét, és mentse azt.
-3. Hozzon létre egy új kiadás, válassza ki a legújabb buildre és telepítheti a definícióban az egyetlen környezetre.
+1. Adja meg a kiadási definíció nevét, és mentse azt.
+1. Hozzon létre egy új kiadás, válassza ki a legújabb buildre és telepítheti a definícióban az egyetlen környezetre.
 
 Minden egyes fázisában a nézet frissítése a DevTest Labs-példány az Azure Portalon a virtuális gép és a lemezkép létrehozása és a virtuális gép által törlése folyamatban van újra megtekintéséhez.
 

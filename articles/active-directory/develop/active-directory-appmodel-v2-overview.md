@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory v2.0-végponttól |} Microsoft Docs
-description: A Microsoft Account, mind az Azure Active Directory-bejelentkezés alkalmazások bemutatása.
+title: Az Azure Active Directory v2.0-végpont |} A Microsoft Docs
+description: Bevezetés a Microsoft Account és az Azure Active Directory-bejelentkezés alkalmazások létrehozásához.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,41 +17,41 @@ ms.date: 05/01/2017
 ms.author: celested
 ms.reviewer: hirsin, jmprieur, elisol, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 1c91c1ed8358f58ab7a4d9a697ec2d7933c4f137
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: b90e03ad15f3656c06f36d6114250298db91e9ad
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316738"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430323"
 ---
-# <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Jelentkezzen be a Microsoft Account és az Azure Active Directory felhasználók egy adott alkalmazásban
-A múltban az alkalmazásfejlesztők számára személyes Microsoft-fiókot is támogatja, és a munkahelyi fiókok az Azure Active Directory kellett két külön rendszer integrálása. Az Azure Active Directory (Azure AD) v2.0-végponttól bevezet egy új hitelesítési API-verziót, amely leegyszerűsíti ezt a folyamatot. Az Azure AD v2.0-végponttól lehetővé teszi, hogy bejelentkezés mindkét típusú fiókok egyetlen integrációs használatával. Az Azure AD v2.0-végponttól használó alkalmazások is igénybe vehet, a REST API-kat a [Microsoft Graph API](https://graph.microsoft.io) bármely típusú fiókot használva.
+# <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Jelentkezzen be Microsoft-Account és az Azure Active Directory a felhasználók egy adott alkalmazásban
+Múltbeli időpont az alkalmazásfejlesztők számára személyes Microsoft-fiókot is támogatja, és a munkahelyi fiókok Azure Active Directoryból kellett két külön rendszerekkel való integrációt segítik. Az Azure Active Directory (Azure AD) v2.0-végpont egy új hitelesítési API-verziót, amely leegyszerűsíti a folyamatot mutatja be. Az Azure AD v2.0-végpont be mindkét típusú fiókok olyan egységes integrációs segítségével teszi lehetővé. Az Azure AD v2.0-végpont használó alkalmazások is használhatnak fel, a REST API-kat a [Microsoft Graph API](https://graph.microsoft.io) mindkét típusú fiók használatával.
 
 ## <a name="getting-started"></a>Első lépések
-Válassza ki az alábbi listából alkalmazás létrehozásához használja a Microsoft által előnyben részesített platformját nyissa meg a forrás kódtárai és keretrendszerei. Az OAuth 2.0 és az OpenID Connect protokoll használatával üzeneteket küldjön és fogadjon protokoll közvetlenül egy hitelesítési tár használata nélkül.
+Válassza ki kedvenc platformjának használatával a Microsoft egy olyan alkalmazás létrehozásához az alábbi listáról nyissa meg a forrás-kódtárakat és keretrendszereket. Az OAuth 2.0 és OpenID Connect protokollok segítségével üzenetek küldése és fogadása protokoll közvetlenül a-hitelesítési tár használata nélkül.
 <br />
 
 [!INCLUDE [Azure AD v2.0 endpoint platforms](../../../includes/active-directory-v2-quickstart-table.md)]
 
-## <a name="learn-more-about-the-azure-ad-v20-endpoint"></a>További tudnivalók az Azure AD v2.0-végponttól
-Ismerje meg, mi mindent a Azure AD v2.0-végponttal kapcsolatban:
+## <a name="learn-more-about-the-azure-ad-v20-endpoint"></a>További információ az Azure AD v2.0-végpont
+Ismerje meg mi mindent az Azure AD v2.0-végpont:
 
-* Fedezze fel az [úgy, hogy az Azure AD v2.0-végponttal rendelkező alkalmazások](active-directory-v2-flows.md).
-* Megérteni a [korlátozások, korlátozások és megkötések](active-directory-v2-limitations.md) a Azure AD v2.0-végponttal.
-* A videó az Azure AD v2.0-végponttól áttekintése:
+* Fedezze fel a [típusú hozhat létre az Azure AD v2.0-végpont az alkalmazások](active-directory-v2-flows.md).
+* Megismerheti a [korlátozások, korlátozások és megkötések](active-directory-v2-limitations.md) együtt az Azure AD v2.0-végpont.
+* Ebben a videóban áttekintést az Azure AD v2.0-végpont:
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/P4031/player]
 
 ## <a name="additional-resources"></a>További források
-Fedezze fel az Azure AD v2.0 végpont platform kapcsolatos részletesebb információk:
+Ismerkedés az Azure AD v2.0-végpont platform kapcsolatos részletes információk:
 
-* [Az Azure AD v2.0 protokoll hivatkozik](active-directory-v2-protocols.md)
-* [Az Azure AD v2.0 jogkivonatok referencia](active-directory-v2-tokens.md)
-* [Az Azure AD v2.0-hitelesítési kódtárakkal hivatkozik](active-directory-v2-libraries.md)
-* [Hatókörök és az Azure AD v2.0-végponttól jóváhagyása](active-directory-v2-scopes.md)
+* [Az Azure AD v2.0 protokoll hivatkozhat.](active-directory-v2-protocols.md)
+* [Az Azure AD v2.0-jogkivonatok referencia](active-directory-v2-tokens.md)
+* [Hitelesítési tárak az Azure AD v2.0-hivatkozás](active-directory-v2-libraries.md)
+* [Hatókörök és jóváhagyás az Azure AD v2.0-végpont](active-directory-v2-scopes.md)
 * [A Microsoft Graph API](https://graph.microsoft.io)
 
 > [!NOTE]
-> Ha csak kell jelentkezzen be munkahelyi és iskolai fiókok az Azure Active Directoryból, kezdje a [az Azure AD – fejlesztői útmutató](active-directory-developers-guide.md). Az Azure AD v2.0-végpontra a explicit módon be kell jelentkeznie személyes Microsoft-fiókok fejlesztőknek szól.
+> Ha csak kell bejelentkezni az Azure Active Directory munkahelyi és iskolai fiókok, kezdje a [az Azure AD fejlesztői útmutató](azure-ad-developers-guide.md). Az Azure AD v2.0-végpont a fejlesztőknek szól, akik kifejezetten be kell jelentkeznie személyes Microsoft-fiókok célja.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: ServiceNow konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
-description: Megtudhatja, hogyan automatikusan ellátásához, majd leépíti a felhasználói fiókok Azure ad-ServiceNow.
+title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a ServiceNow |} A Microsoft Docs'
+description: Ismerje meg, hogyan automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből a ServiceNow.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,97 +15,97 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: d76a8996f7ccc6a7b6df2f8e1fe52568dbd725db
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8d05e314cb31aaba96e7db79e0e4dd287e6d2184
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210798"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426904"
 ---
-# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Oktatóanyag: ServiceNow konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval ServiceNow konfigurálása
 
-Ez az oktatóanyag célja a lépéseket kell elvégeznie a ServiceNow és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-ServiceNow mutatjuk be.
+Ez az oktatóanyag célja, a lépéseket kell elvégeznie a ServiceNow és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből a ServiceNow mutatni.
 
 > [!NOTE]
-> Ez az oktatóanyag leírja egy összekötőt, az Azure AD-felhasználó kiépítési Service platformra épül. Ez a szolgáltatás funkciója, hogyan működik, és gyakran ismételt kérdések fontos tudnivalókat tartalmaz [felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](./../active-directory-saas-app-provisioning.md).
+> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](./../active-directory-saas-app-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a ServiceNow, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a servicenow segítségével, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- A ServiceNow, egy példány vagy bérlő ServiceNow, Calgary verzió vagy újabb
-- A ServiceNow expressz, ServiceNow kifejezett, Helsinki verzió példányának vagy újabb
+- Az Azure AD-előfizetéshez
+- ServiceNow, egy példány vagy a bérlő ServiceNow, Calgary verzió vagy újabb
+- ServiceNow expressz, egy példányát a ServiceNow kifejezett, Helsinki verzió vagy újabb
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## <a name="assigning-users-to-servicenow"></a>A ServiceNow felhasználók hozzárendelése
+## <a name="assigning-users-to-servicenow"></a>Felhasználók hozzárendelése a ServiceNow
 
-Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" használ annak meghatározásához, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus fiók felhasználókiépítése keretében csak a felhasználók és csoportok "hozzárendelt" az Azure AD-alkalmazáshoz való szinkronizálása.
+Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "", az alkalmazások az Azure AD szinkronizálása.
 
-A létesítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége döntse el, hogy mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik a ServiceNow alkalmazásához való hozzáférést. Ha úgy döntött, rendelhet ezeket a felhasználókat a ServiceNow app utasítások itt: [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége dönthet arról, hogy mely felhasználók és/vagy az Azure AD-csoportokat a felhasználók, akik hozzáférhetnek a ServiceNow alkalmazás a jelölik. Ha úgy döntött, rendelhet ezeket a felhasználókat a ServiceNow alkalmazás a következő utasításokat: [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 
 > [!IMPORTANT]
->*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a ServiceNow teszteli a telepítési konfigurációt. További felhasználók és/vagy csoportok később is rendelhető.
->*   Amikor egy felhasználó rendel a ServiceNow, ki kell választania egy érvényes felhasználói szerepkörnek. A "Default" szerepkör nem működik történő üzembe helyezéséhez.
+>*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a ServiceNow az üzembe helyezési konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
+>*   Amikor egy felhasználó hozzárendelése ServiceNow, ki kell választania egy érvényes felhasználói szerepkörnek. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítéshez.
 
 ## <a name="enable-automated-user-provisioning"></a>Az automatikus felhasználó-kiépítés engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD kapcsolódás ServiceNow a felhasználói fiók kiépítése API és a létesítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a hozzárendelt felhasználói fiókok a ServiceNow alapján a felhasználók és csoportok hozzárendelése az Azure AD.
+Ez a szakasz végigvezeti az Azure AD-csatlakozás a ServiceNow-felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, konfigurálása frissíteni, és tiltsa le a hozzárendelt felhasználói fiókok Azure AD-ben a felhasználó és csoport-hozzárendelések alapján ServiceNow a.
 
 > [!TIP]
->Dönthet úgy is, engedélyezze SAML-alapú egyszeri bejelentkezést a ServiceNow, utasítások megadott [Azure-portálon](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, bár ez a két funkció egészítse ki egymást.
+>Előfordulhat, hogy meg servicenow-hoz készült SAML-alapú egyszeri bejelentkezés engedélyezve, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
 
-### <a name="configure-automatic-user-account-provisioning"></a>Konfigurálja az automatikus felhasználói fiók kiépítése
+### <a name="configure-automatic-user-account-provisioning"></a>Automatikus felhasználói fiók üzembe helyezésének konfigurálása
 
-1. Az a [Azure-portálon](https://portal.azure.com), keresse meg a **Azure Active Directory > Vállalati alkalmazások > összes alkalmazás** szakasz.
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
 
-2. Ha már konfigurált ServiceNow egyszeri bejelentkezést, keresse meg a példányát használja a keresőmezőt ServiceNow. Máskülönben válassza **Hozzáadás** keresse meg a **ServiceNow** az alkalmazás katalógusában. Válassza ki a ServiceNow a keresési eredmények közül, és adja hozzá az alkalmazások listáját.
+1. Ha már konfigurálta a ServiceNow az egyszeri bejelentkezés, keresse meg a keresési mező használatával ServiceNow-példányát. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **ServiceNow** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a ServiceNow, és adja hozzá az alkalmazások listáját.
 
-3. Jelölje ki a ServiceNow példányát, majd válassza ki a **kiépítési** fülre.
+1. Válassza ki a ServiceNow-példányát, majd válassza ki a **kiépítési** fülre.
 
-4. Állítsa be a **kiépítés** módot **automatikus**. 
+1. Állítsa be a **kiépítés** mód **automatikus**. 
 
     ![kiépítés folyamatban](./media/servicenow-provisioning-tutorial/provisioning.png)
 
-5. A rendszergazdai hitelesítő adataival szakaszban a következő lépésekkel:
+1. A rendszergazdai hitelesítő adatok szakaszban hajtsa végre az alábbi lépéseket:
    
-    a. Az a **ServiceNow példánynév** szövegmező, írja be a ServiceNow-példány nevét.
+    a. Az a **ServiceNow-példány neve** szövegmezőbe írja be a ServiceNow-példány neve.
 
-    b. Az a **ServiceNow rendszergazda felhasználóneve** szövegmező, írja be a felhasználónevet, a rendszergazda.
+    b. Az a **ServiceNow-rendszergazda felhasználóneve** szövegmezőbe írja be a felhasználónevet, a rendszergazda.
 
-    c. Az a **ServiceNow rendszergazdai jelszó** szövegmező, a rendszergazdai jelszót.
+    c. Az a **ServiceNow rendszergazdai jelszó** szövegmezőbe a rendszergazdai jelszót.
 
-6. Az Azure portálon kattintson **kapcsolat tesztelése** biztosításához az Azure AD csatlakozhat a ServiceNow alkalmazást. Ha nem sikerül, gondoskodjon a ServiceNow-fiók Team rendszergazdai jogosultságokkal, majd próbálkozzon a **"Rendszergazdai hitelesítő adatok"** léptessen ismét.
+1. Az Azure Portalon kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat a ServiceNow alkalmazás. A csatlakozás sikertelen lesz, ha a ServiceNow-fiók rendelkezzen a csapat rendszergazdai engedélyekkel, és próbálkozzon a **"Rendszergazdai hitelesítő adatok"** lépés újra.
 
-7. Adja meg az e-mail címet vagy egy csoport, az üzembe helyezési hiba értesítéseket kapjanak a **értesítő e-mailt** mezőben, majd jelölje be a jelölőnégyzetet.
+1. Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be a jelölőnégyzetet.
 
-8. Kattintson a **mentéséhez.**
+1. Kattintson a **mentéséhez.**
 
-9. A hozzárendelések szakaszban válassza ki a **szinkronizálása Azure Active Directory-felhasználók számára a ServiceNow.**
+1. A leképezések szakasz alatt válassza ki a **szinkronizálása az Azure Active Directory-felhasználók a ServiceNow.**
 
-10. Az a **attribútum-leképezésekhez** szakaszban, tekintse át a felhasználói attribútumokat a ServiceNow szinkronizált Azure AD-ből. A kiválasztott attribútumok **egyező** tulajdonságok használatával felel meg a felhasználói fiókokat a ServiceNow a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+1. Az a **attribútumleképezések** területen tekintse át a ServiceNow az Azure AD-ből szinkronizált felhasználói attribútumok. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a ServiceNow a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-11. A ServiceNow szolgáltatás kiépítését az Azure AD engedélyezéséhez módosítsa a **kiépítési állapot** való **a** beállításai szakaszában
+1. Az Azure AD létesítési szolgáltatás servicenow-hoz készült engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** beállítások szakaszában
 
-12. Kattintson a **mentéséhez.**
+1. Kattintson a **mentéséhez.**
 
-A kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban ServiceNow rendelt csoportok kezdődik. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amely a ServiceNow app a létesítési szolgáltatás által végzett összes műveletet írják le.
+Elindítja a kezdeti szinkronizálás, a felhasználók és/vagy a servicenow-hoz a felhasználók és csoportok szakaszban hozzárendelt csoportok. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a ServiceNow alkalmazás a kiépítési szolgáltatás által végrehajtott összes műveletet.
 
-Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](servicenow-tutorial.md)
 
 

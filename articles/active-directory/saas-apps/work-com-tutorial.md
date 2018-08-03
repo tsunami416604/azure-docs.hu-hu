@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: f51f9eff7a2ab0dd7ca466931f9de78355b917c0
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f4247a24905b5865635495774412237118e3372a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050724"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Oktatóanyag: Azure Active Directory-integráció az Work.com
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Work.com hozzáadása a katalógusból
-2. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
 ## <a name="add-workcom-from-the-gallery"></a>Work.com hozzáadása a katalógusból
 Az Azure AD integrálása a Work.com konfigurálásához hozzá kell Work.com a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Az Azure AD integrálása a Work.com konfigurálásához hozzá kell Work.com a 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Work.com**válassza **Work.com** az eredmények panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Work.com**válassza **Work.com** az eredmények panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Katalógus hozzáadása](./media/work-com-tutorial/tutorial_work-com_addfromgallery.png)
 
@@ -86,10 +86,10 @@ Work.com, rendelje hozzá az értékét a **felhasználónév** értékeként az
 Az Azure AD egyszeri bejelentkezés az Work.com tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Work.com tesztfelhasználót](#create-a-workcom-test-user)**  – egy megfelelője a Britta Simon Work.com, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Work.com tesztfelhasználót](#create-a-workcom-test-user)**  – egy megfelelője a Britta Simon Work.com, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![SAML-alapú bejelentkezés](./media/work-com-tutorial/tutorial_work-com_samlbase.png)
 
-3. Az a **Work.com tartomány és URL-címek** területén tegye a következőket:
+1. Az a **Work.com tartomány és URL-címek** területén tegye a következőket:
 
     ![A szakasz Work.com tartomány és URL-címek](./media/work-com-tutorial/tutorial_work-com_url.png)
 
@@ -117,42 +117,42 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Az érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Work.com ügyfél-támogatási csapatának](https://help.salesforce.com/articleView?id=000159855&type=3) lekérni ezt az értéket. 
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![SAML-aláíró tanúsítvány szakaszban](./media/work-com-tutorial/tutorial_work-com_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Mentés gomb](./media/work-com-tutorial/tutorial_general_400.png)
 
-6. Az a **Work.com konfigurációs** területén kattintson **konfigurálása Work.com** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Work.com konfigurációs** területén kattintson **konfigurálása Work.com** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Work.com konfigurációs szakasz](./media/work-com-tutorial/tutorial_work-com_configure.png) 
-7. Jelentkezzen be rendszergazdaként a Work.com bérlő.
+1. Jelentkezzen be rendszergazdaként a Work.com bérlő.
 
-8. Lépjen a **telepítő**.
+1. Lépjen a **telepítő**.
    
     ![A telepítő](./media/work-com-tutorial/ic794108.png "beállítása")
 
-9. A bal oldali navigációs ablaktáblán a a **Administer** területén kattintson **tartományok kezelése** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány** megnyitásához a **Saját tartomány** lapot. 
+1. A bal oldali navigációs ablaktáblán a a **Administer** területén kattintson **tartományok kezelése** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány** megnyitásához a **Saját tartomány** lapot. 
    
     ![Saját tartomány](./media/work-com-tutorial/ic767825.png "saját tartomány")
 
-10. Győződjön meg arról, hogy a tartomány megfelelően van beállítva, győződjön meg arról, hogy "**4. lépés telepíti a felhasználók számára**", és tekintse át a "**beállításaim tartomány**".
+1. Győződjön meg arról, hogy a tartomány megfelelően van beállítva, győződjön meg arról, hogy "**4. lépés telepíti a felhasználók számára**", és tekintse át a "**beállításaim tartomány**".
    
     ![Tartományi felhasználó](./media/work-com-tutorial/ic784377.png "tartományi felhasználóra")
 
-11. Jelentkezzen be a Work.com bérlő.
+1. Jelentkezzen be a Work.com bérlő.
 
-12. Lépjen a **telepítő**.
+1. Lépjen a **telepítő**.
     
     ![A telepítő](./media/work-com-tutorial/ic794108.png "beállítása")
 
-13. Bontsa ki a **biztonsági vezérlők** menüre, majd **egyszeri bejelentkezési beállításainak**.
+1. Bontsa ki a **biztonsági vezérlők** menüre, majd **egyszeri bejelentkezési beállításainak**.
     
     ![Egyszeri bejelentkezés beállításai](./media/work-com-tutorial/ic794113.png "egyszeri bejelentkezés beállításai")
 
-14. Az a **egyszeri bejelentkezési beállításainak** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **egyszeri bejelentkezési beállításainak** párbeszédpanel lapon, a következő lépésekkel:
     
     ![A SAML engedélyezett](./media/work-com-tutorial/ic781026.png "SAML engedélyezve")
     
@@ -160,7 +160,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     b. Kattintson az **Új** lehetőségre.
 
-15. Az a **SAML egyszeri bejelentkezési beállításainak** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **SAML egyszeri bejelentkezési beállításainak** szakaszban, hajtsa végre az alábbi lépéseket:
     
     ![SAML egyszeri bejelentkezési beállítás](./media/work-com-tutorial/ic794114.png "SAML egyszeri bejelentkezési beállítás")
     
@@ -187,15 +187,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     j. Kattintson a **Save** (Mentés) gombra.
 
-16. A Work.com klasszikus portálon, a bal oldali navigációs ablaktáblán kattintson a **tartományok** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány** megnyitásához a **saját tartomány** oldal. 
+1. A Work.com klasszikus portálon, a bal oldali navigációs ablaktáblán kattintson a **tartományok** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány** megnyitásához a **saját tartomány** oldal. 
     
     ![Saját tartomány](./media/work-com-tutorial/ic794115.png "saját tartomány")
 
-17. Az a **saját tartomány** lap a **bejelentkezési oldal márkajelzési** területén kattintson **szerkesztése**.
+1. Az a **saját tartomány** lap a **bejelentkezési oldal márkajelzési** területén kattintson **szerkesztése**.
     
     ![Bejelentkezési oldal márkajelzési](./media/work-com-tutorial/ic767826.png "arculat megjelenítése a bejelentkezési oldal")
 
-14. Az a **bejelentkezési oldal márkajelzési** lap a **hitelesítési szolgáltatás** részben, a neve a **SAML egyszeri bejelentkezési beállításainak** jelenik meg. Válassza ki, és kattintson a **mentése**.
+1. Az a **bejelentkezési oldal márkajelzési** lap a **hitelesítési szolgáltatás** részben, a neve a **SAML egyszeri bejelentkezési beállításainak** jelenik meg. Válassza ki, és kattintson a **mentése**.
     
     ![Bejelentkezési oldal márkajelzési](./media/work-com-tutorial/ic784366.png "arculat megjelenítése a bejelentkezési oldal")
 
@@ -214,15 +214,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/work-com-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Felhasználók és csoportok -> minden felhasználó](./media/work-com-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Hozzáadás](./media/work-com-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Felhasználói párbeszédpanel lap](./media/work-com-tutorial/create_aaduser_04.png) 
 
@@ -240,18 +240,18 @@ Azure Active Directory-felhasználók számára jelentkezhetnek be akkor ki kell
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:
 1. Jelentkezzen be rendszergazdaként a Work.com vállalati webhely.
 
-2. Lépjen a **telepítő**.
+1. Lépjen a **telepítő**.
    
     ![A telepítő](./media/work-com-tutorial/IC794108.png "beállítása")
-3. Lépjen a **felhasználók kezelése \> felhasználók**.
+1. Lépjen a **felhasználók kezelése \> felhasználók**.
    
     ![Felhasználók kezelése](./media/work-com-tutorial/IC784369.png "felhasználók kezelése")
 
-4. Kattintson a **új felhasználó**.
+1. Kattintson a **új felhasználó**.
    
     ![Minden felhasználó](./media/work-com-tutorial/IC794117.png "minden felhasználó")
 
-5. A felhasználó szerkesztheti a szakaszban a következő lépésekkel, az attribútumok egy érvényes Azure AD-fiókot szeretné a kapcsolódó szövegmezőkben létrehozásához:
+1. A felhasználó szerkesztheti a szakaszban a következő lépésekkel, az attribútumok egy érvényes Azure AD-fiókot szeretné a kapcsolódó szövegmezőkben létrehozásához:
    
     ![Felhasználó szerkesztése](./media/work-com-tutorial/ic794118.png "felhasználó szerkesztése")
    
@@ -288,23 +288,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Work.com**.
+1. Az alkalmazások listájában jelölje ki a **Work.com**.
 
     ![Alkalmazás listában Work.com](./media/work-com-tutorial/tutorial_work-com_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -316,7 +316,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

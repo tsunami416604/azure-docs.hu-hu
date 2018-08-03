@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: 318a39e244f0fca3a1b2d8531dd9197a15400e02
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 155062a702d45683be9009a366b4e5fcaf80335f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205357"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425792"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -198,7 +198,7 @@ Alkalmazásbeállítások ezeket más módon is kezelhetők:
 
 * [Az Azure portal használatával](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Használatával a `--publish-local-settings` publish beállítást, az az Azure Functions Core Tools](functions-run-local.md#publish).
-* [Az Azure CLI-vel](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set). 
+* [Az Azure CLI-vel](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
 
 ## <a name="next-steps"></a>További lépések
 

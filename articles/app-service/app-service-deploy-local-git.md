@@ -1,6 +1,6 @@
 ---
 title: Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
-description: Útmutató az Azure App Service helyi Git-telepítésének engedélyezése.
+description: Ismerje meg, hogyan engedélyezheti a helyi Git üzemelő példányt az Azure App Service.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: a614dadae40fcfc28eba85e5943f60a38653224b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0f6a0e2fe3aa632137392efe806aaab265eedf10
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233903"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435542"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
-Ez az útmutató útmutató bemutatja, hogyan telepítheti a kódot a [Azure App Service](app-service-web-overview.md) a Git-tárházat a helyi számítógépen.
+Ez az útmutató bemutatja, hogyan helyezhet üzembe a kódot a [Azure App Service](app-service-web-overview.md) a helyi számítógépen Git-adattárból.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Kövesse a jelen útmutató Útmutató lépéseit:
+Ez az Útmutató lépéseit kövesse:
 
 * [Telepítse a Git szoftvert](http://www.git-scm.com/downloads).
-* Egy helyi Git-tárház számára telepíteni kívánja kóddal karbantartása.
+* Kód számára telepíteni kívánja a helyi Git-tárház karbantartása.
 
-Egy minta-tárházat követéséhez használatához futtassa a következő parancsot a helyi terminálablakot:
+Hogy követni tudja a mintaadattár használatához a helyi terminálablakban futtassa a következő parancsot:
 
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
@@ -43,29 +43,29 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-from-local-git-with-kudu-builds"></a>A Kudu buildek a helyi Git telepítése
+## <a name="deploy-from-local-git-with-kudu-builds"></a>Üzembe helyezés a Kudu-buildek használatával a helyi Gitből
 
-Ahhoz, hogy az alkalmazás a Kudu build server a helyi Git-telepítésének legegyszerűbb módja a felhő rendszerhéj használata.
+Helyi Git üzemelő példányt az alkalmazás a Kudu-buildelési kiszolgáló engedélyezése a legegyszerűbb módja, hogy a Cloud Shellt használja.
 
 ### <a name="create-a-deployment-user"></a>Üzembe helyező felhasználó létrehozása
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="enable-local-git-with-kudu"></a>A Kudu rendelkező helyi Git engedélyezése
+### <a name="enable-local-git-with-kudu"></a>Engedélyezi a helyi Git, a kudu használatával
 
-A Kudu build kiszolgálóval az alkalmazás helyi Git-telepítésének engedélyezéséhez futtassa [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) a felhő rendszerhéj.
+Helyi Git üzemelő példányt az alkalmazás a Kudu-buildelési kiszolgáló engedélyezéséhez futtassa [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) a Cloud shellben.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-Ehelyett egy Git-kompatibilis alkalmazások létrehozásához futtassa az [ `az webapp create` ](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) és a felhő rendszerhéj a `--deployment-local-git` paraméter.
+Ehelyett egy Git-kompatibilis alkalmazások létrehozásához futtassa [ `az webapp create` ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) az a Cloud shellben a `--deployment-local-git` paraméter.
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
 ```
 
-A `az webapp create` parancs biztosítani fogja az alábbi kimenet hasonló:
+A `az webapp create` parancs adjon meg a következő kimenethez hasonló:
 
 ```json
 Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
@@ -83,9 +83,9 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 }
 ```
 
-### <a name="deploy-your-project"></a>A projekt telepítése
+### <a name="deploy-your-project"></a>A projekt üzembe helyezése
 
-A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le  _\<URL-címe >_ URL-címét a Git távoli során kapott azonosítóértékeket [Git engedélyezése az alkalmazás](#enable-git-for-you-app).
+A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le  _\<URL-címe >_ webhelyről származó alkalmazásazonosítóra távoli Git URL-címével [Git engedélyezése az alkalmazás](#enable-git-for-you-app).
 
 ```bash
 git remote add azure <url>
@@ -97,83 +97,83 @@ A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazás
 git push azure master
 ```
 
-Futásidejű-specifikus automatizálási a kimeneten, például az ASP.NET, az MSBuild fog látni `npm install` a Node.js, és `pip install` a Python. 
+A kimenetben, például az ASP.NET, MSBuild futtatókörnyezet-specifikus automation látni `npm install` a node.js-ben, és `pip install` Pythonhoz készült. 
 
-Keresse meg azt az alkalmazásnak, hogy ellenőrizze, hogy a tartalom központi telepítése.
+Keresse meg az alkalmazásba és ellenőrizze, hogy telepítve van-e a tartalmat.
 
-## <a name="deploy-from-local-git-with-vsts-builds"></a>A helyi Git VSTS-buildek és központi telepítése
+## <a name="deploy-from-local-git-with-vsts-builds"></a>Üzembe helyezés a VSTS-buildek használatával a helyi Gitből
 
 > [!NOTE]
-> Az App Service segítségével hozzon létre a szükséges összeállítása, és felszabadíthatja a definíciók VSTS-fiókjában, az Azure-fiókjába rendelkeznie kell a szerepe **tulajdonos** az Azure-előfizetésben.
+> Az App Service létrehozná az szükséges, és a kiadási definícióiról a VSTS-fiókban, az Azure-fiókkal kell rendelkeznie szerepe **tulajdonos** az Azure-előfizetésében.
 >
 
-Ahhoz, hogy a helyi Git-telepítésének beállítása az alkalmazáshoz, a Kudu build kiszolgálóval, az alkalmazást a navigáljon a [Azure-portálon](https://portal.azure.com).
+Ahhoz, hogy az alkalmazás a Kudu-buildelési kiszolgáló tartozó helyi Git üzemelő példányt, keresse meg az alkalmazás a [az Azure portal](https://portal.azure.com).
 
-Kattintson a bal oldali navigációs az alkalmazás oldalát a **Telepítőközpontot** > **helyi Git** > **Folytatás**. 
+Az alkalmazás lapjának bal oldali navigációs sávján kattintson **üzembe helyezési központ** > **helyi Git** > **Folytatás**. 
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Kattintson a **VSTS folyamatos kézbesítési** > **továbbra is**.
+Kattintson a **VSTS folyamatos Készregyártás** > **továbbra is**.
 
 ![](media/app-service-deploy-local-git/vsts-build-server.png)
 
-Az a **konfigurálása** lapon konfigurálja egy új VSTS-fiókot, vagy adjon meg egy meglévő fiókot. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** lapon konfigurálja egy új VSTS-fiókot, vagy egy meglévő fiókot. Ha befejezte, kattintson a **Folytatás**.
 
 > [!NOTE]
-> Ha egy meglévő VSTS-fiókkal, amely nem szerepel a használni kívánt, akkor [a VSTS-fiók összekötése az Azure-előfizetéshez](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Ha egy meglévő VSTS-fiók, amely nem szerepel a használni kívánt, kell [a VSTS-fiók összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
-Az a **teszt** lapon, válassza ki, hogy betöltés tesztek engedélyezése, majd kattintson az **Folytatás**.
+Az a **teszt** lapon, döntse el, hogy engedélyezze a terhelési teszteket, majd kattintson a **Folytatás**.
 
-Attól függően a [tarifacsomag](/pricing/details/app-service/plans/) az App Service-csomag, szintén megjelenik egy **az átmeneti telepítéséhez** lap. Válasszon, hogy engedélyezze az üzembe helyezési, majd kattintson az **Folytatás**.
+Attól függően, a [tarifacsomag](/pricing/details/app-service/plans/) az App Service-csomag is megjelenhetnek egy **üzembe helyezés átmeneti környezetbe** lapot. Döntse el, hogy az üzembe helyezési pontok engedélyezése, majd kattintson a **Folytatás**.
 
-Az a **összegzés** lapon ellenőrizze a beállításokat, majd kattintson **Befejezés**.
+Az a **összefoglalás** oldalon ellenőrizze a beállításokat, kattintson a **Befejezés**.
 
-A VSTS-fiók készen áll arra, hogy néhány percet vesz igénybe. Amikor készen áll a telepítőközpontot másolja át a Git-tárház URL-CÍMÉT.
+A VSTS-fiók készen áll a pár percet vesz igénybe. Amikor elkészült, az üzembe helyezési központ másoljon át a Git-adattár URL-címe.
 
 ![](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
-A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le  _\<URL-címe >_ a portáltól kapott utolsó lépése URL-címet.
+A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le  _\<URL-címe >_ az URL-címmel, az utolsó lépésében kapott.
 
 ```bash
 git remote add vsts <url>
 ```
 
-A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a rendszer kéri a Git hitelesítőadat-kezelő felügyeli, jelentkezzen be a visualstudio.com webhelyre felhasználó. További hitelesítési módszerek, lásd: [VSTS hitelesítéskonfiguráló áttekintése](/vsts/git/auth-overview?view=vsts).
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a Git hitelesítőadat-kezelője kéri, jelentkezzen be a visualstudio.com felhasználói. További hitelesítési módszereket, lásd: [VSTS hitelesítéskonfiguráló áttekintése](/vsts/git/auth-overview?view=vsts).
 
 ```bash
 git push vsts master
 ```
 
-Miután a telepítés befejeződött, a build folyamatban található `https://<vsts_account>.visualstudio.com/<project_name>/_build` és a telepítési folyamatban `https://<vsts_account>.visualstudio.com/<project_name>/_release`.
+Üzembe helyezés befejeződése után a build folyamatának címen található `https://<vsts_account>.visualstudio.com/<project_name>/_build` és az üzembe helyezés folyamatban `https://<vsts_account>.visualstudio.com/<project_name>/_release`.
 
-Keresse meg azt az alkalmazásnak, hogy ellenőrizze, hogy a tartalom központi telepítése.
+Keresse meg az alkalmazásba és ellenőrizze, hogy telepítve van-e a tartalmat.
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="troubleshooting-kudu-deployment"></a>A Kudu üzembe helyezés hibaelhárítása
+## <a name="troubleshooting-kudu-deployment"></a>Kudu üzembe helyezés hibaelhárítása
 
-Az alábbiakban gyakori hibák vagy problémák Git használatával az Azure App Service alkalmazás közzététele:
+Az alábbiakban gyakori hibák vagy problémák az Azure App Service-alkalmazások közzététele a Git használata esetén:
 
 ---
 **Jelenség**: `Unable to access '[siteURL]': Failed to connect to [scmAddress]`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha az alkalmazás nem válik működőképessé.
+**OK**: Ez a hiba akkor fordulhat elő, ha az alkalmazás működése nem áll.
 
-**Megoldási**: Indítsa el az alkalmazást az Azure-portálon. Git-telepítés nem érhető el, ha a webalkalmazás le van állítva.
+**Feloldási**: Indítsa el az alkalmazást az Azure Portalon. Git-telepítés nem érhető el, ha a webalkalmazás leállt.
 
 ---
 **Jelenség**: `Couldn't resolve host 'hostname'`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha a megadott létrehozásakor az "azure" távoli címadatokat helytelen volt.
+**OK**: Ez a hiba akkor fordulhat elő, ha a megadott létrehozásakor az "azure" távoli címadatok helytelen volt.
 
-**Megoldási**: használja a `git remote -v` paranccsal listát készíthet az összes távvezérlő, és a kapcsolódó URL-címe. Ellenőrizze, hogy helyes-e az "azure" távoli URL-CÍMÉT. Ha szükséges, távolítsa el és hozza létre újból a távoli, a helyes URL-cím használatával.
+**Feloldási**: használja a `git remote -v` paranccsal listát készíthet az összes távoli, és a társított URL-címe. Győződjön meg arról, hogy helyesen szerepel-e az "azure" távoli URL-CÍMÉT. Ha szükséges, távolítsa el, és hozza létre újból a távoli, a helyes URL-cím használatával.
 
 ---
 **Jelenség**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha nem adja meg egy ágat során `git push`, vagy ha még nem állította be a `push.default` értéket `.gitconfig`.
+**OK**: Ez a hiba akkor fordulhat elő, ha nem ad meg egy ágat során `git push`, vagy ha nem állított be a `push.default` értékét `.gitconfig`.
 
-**Megoldási**: futtatása `git push` ebben az esetben adja meg a főágba. Példa:
+**Feloldási**: futtassa `git push` újra, adja meg a master ágról. Példa:
 
 ```bash
 git push azure master
@@ -182,9 +182,9 @@ git push azure master
 ---
 **Jelenség**: `src refspec [branchname] does not match any.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha megpróbálja leküldése egy ágat a főadatbázison kívül az "Azure" távoli.
+**OK**: Ez a hiba akkor fordulhat elő, ha megpróbál egy ágat a főadatbázison kívül, az "Azure" a távoli mappához küldéssel.
 
-**Megoldási**: futtatása `git push` ebben az esetben adja meg a főágba. Példa:
+**Feloldási**: futtassa `git push` újra, adja meg a master ágról. Példa:
 
 ```bash
 git push azure master
@@ -193,9 +193,9 @@ git push azure master
 ---
 **Jelenség**: `RPC failed; result=22, HTTP code = 5xx.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha egy nagy git-tárház leküldéses HTTPS-KAPCSOLATON keresztül.
+**OK**: Ez a hiba akkor fordulhat elő, ha megpróbál egy nagy git-tárház leküldéses HTTPS-kapcsolaton keresztül.
 
-**Megoldási**: a helyi gépen a postBuffer nagyobb git konfigurációjának módosítása
+**Feloldási**: a helyi gépen, hogy a postBuffer nagyobb a git-konfiguráció módosítása
 
 ```bash
 git config --global http.postBuffer 524288000
@@ -204,12 +204,12 @@ git config --global http.postBuffer 524288000
 ---
 **Jelenség**: `Error - Changes committed to remote repository but your web app not updated.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha a Node.js alkalmazást telepít egy _package.json_ fájl, amely meghatározza a további szükséges modulokat.
+**OK**: Ez a hiba akkor fordulhat elő, ha, a Node.js-alkalmazás üzembe helyezése egy _package.json_ fájlt, amely meghatározza a további szükséges modulokat.
 
-**Megoldási**: "npm hiba!" további üzenetek Ez a hiba előtt legyenek naplózva, és a hiba esetén további környezetet biztosíthat. A következő ismert oka ezt a hibát, és a megfelelő "npm hiba!" üzenet:
+**Feloldási**: 'npm ERR!' a további üzeneteket Ez a hiba előtt be kell jelentkeznie, és a hibával kapcsolatban további környezet tud biztosítani. Az alábbiakban néhány ismert oka ezt a hibát, és a megfelelő "npm ERR!" üzenet:
 
-* **Nem megfelelően formázott package.json fájl**: npm hiba! Nem lehetett olvasni a függőségek.
-* **Natív modul, amely nem rendelkezik Windows bináris terjesztési**:
+* **Helytelen formátumú package.json fájl**: npm hiba! Nem lehetett olvasni a függőségek.
+* **Natív modul, hogy egy nem bináris terjesztési Windows**:
 
   * `npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1`
 
@@ -218,7 +218,7 @@ git config --global http.postBuffer 524288000
 
 ## <a name="additional-resources"></a>További források
 
-* [Project Kudu dokumentációja](https://github.com/projectkudu/kudu/wiki)
-* [Folyamatos üzembe helyezés az Azure App Service](app-service-continuous-deployment.md)
-* [Minta: Webalkalmazás létrehozása és központi telepítése a kódot egy helyi Git-tárház (Azure CLI)](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
-* [Példa: Webalkalmazás létrehozása és egy helyi Git-tárház (PowerShell) a kód telepítésére](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+* [Projekt Kudu-dokumentáció](https://github.com/projectkudu/kudu/wiki)
+* [Folyamatos üzembe helyezés az Azure App Service-ben](app-service-continuous-deployment.md)
+* [Példa: Webalkalmazás létrehozása és kód üzembe helyezése a helyi Git-tárház (az Azure parancssori felület)](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
+* [Példa: Webalkalmazás létrehozása és kód üzembe helyezése a helyi Git-tárház (PowerShell)](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

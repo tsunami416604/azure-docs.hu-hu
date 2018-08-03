@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 60133dd6d541500db448cf107dd3c0ab193a03f7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d617b7a1195f322ad33a47ae2fd99b7eb336b7b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048687"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Oktatóanyag: Azure Active Directory-integráció Cezanne HR szoftverrel
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Cezanne HR szoftver hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-cezanne-hr-software-from-the-gallery"></a>Cezanne HR szoftver hozzáadása a katalógusból
 Az Azure AD-be a HR-szoftver Cezanne integráció konfigurálásához, kell Cezanne HR szoftver hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
@@ -64,15 +64,15 @@ Az Azure AD-be a HR-szoftver Cezanne integráció konfigurálásához, kell Ceza
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **Cezanne HR szoftver**, jelölje be **Cezanne HR szoftver** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Cezanne HR szoftver**, jelölje be **Cezanne HR szoftver** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában Cezanne HR szoftver](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Cezanne HR szoftver, rendelje hozzá az értékét a **felhasználónév** ért�
 Az Azure AD egyszeri bejelentkezés Cezanne HR szoftverrel tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Cezanne HR szoftver tesztfelhasználót](#create-a-cezannehrsoftware-test-user)**  – egy megfelelője a Britta Simon Cezanne HR szoftver, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Cezanne HR szoftver tesztfelhasználót](#create-a-cezannehrsoftware-test-user)**  – egy megfelelője a Britta Simon Cezanne HR szoftver, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_samlbase.png)
 
-3. Az a **Cezanne HR szoftver tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Cezanne HR szoftver tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Cezanne HR szoftver tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
 
@@ -119,37 +119,37 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és válasz URL-cím. Kapcsolattartó [Cezanne HR Szoftverügyfél támogatási csapatának](https://cezannehr.com/services/support/) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/cezannehrsoftware-tutorial/tutorial_general_400.png)
 
-6. Az a **Cezanne HR szoftverfrissítési konfiguráció** területén kattintson **Cezanne HR szoftver konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak.
+1. Az a **Cezanne HR szoftverfrissítési konfiguráció** területén kattintson **Cezanne HR szoftver konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak.
 
     ![Cezanne HR szoftverfrissítési konfiguráció](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png)
 
-7. Görgessen le a **rövid összefoglaló** szakaszban. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím és a SAML Entitásazonosító** származó a **gyors útmutató szakaszban.**
+1. Görgessen le a **rövid összefoglaló** szakaszban. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím és a SAML Entitásazonosító** származó a **gyors útmutató szakaszban.**
 
     ![Cezanne HR szoftverfrissítési konfiguráció](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure1.png)
 
-8. Egy másik böngészőablakban, a bejelentkezés a Cezanne HR szoftver bérlői rendszergazdaként.
+1. Egy másik böngészőablakban, a bejelentkezés a Cezanne HR szoftver bérlői rendszergazdaként.
 
-9. A bal oldali navigációs panelén kattintson **rendszerbeállítás**. Lépjen a **biztonsági beállítások**. Majd keresse meg a **egyszeri bejelentkezési konfigurációjának**.
+1. A bal oldali navigációs panelén kattintson **rendszerbeállítás**. Lépjen a **biztonsági beállítások**. Majd keresse meg a **egyszeri bejelentkezési konfigurációjának**.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-10. Az a **engedélyezése a felhasználók számára, hogy jelentkezzen be a következő egyszeri bejelentkezéses (SSO) szolgáltatás** panel, ellenőrizze a **SAML 2.0** mezőbe, majd válassza ki a **speciális konfiguráció** lehetőséget.
+1. Az a **engedélyezése a felhasználók számára, hogy jelentkezzen be a következő egyszeri bejelentkezéses (SSO) szolgáltatás** panel, ellenőrizze a **SAML 2.0** mezőbe, majd válassza ki a **speciális konfiguráció** lehetőséget.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
-11. Kattintson a **új hozzáadása** gombra.
+1. Kattintson a **új hozzáadása** gombra.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-12. Hajtsa végre a következő lépéseket **SAML 2.0 IDENTITÁSSZOLGÁLTATÓ** szakaszban.
+1. Hajtsa végre a következő lépéseket **SAML 2.0 IDENTITÁSSZOLGÁLTATÓ** szakaszban.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
@@ -167,7 +167,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     g. Kattintson az **OK** gombra. 
 
-13. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
@@ -187,15 +187,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/cezannehrsoftware-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/cezannehrsoftware-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/cezannehrsoftware-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/cezannehrsoftware-tutorial/create_aaduser_04.png)
 
@@ -215,11 +215,11 @@ Ahhoz, hogy az Azure AD-felhasználók Cezanne HR szoftver-ba való bejelentkez�
 
 1.  Jelentkezzen be a Cezanne HR szoftver vállalati hely rendszergazdaként.
 
-2.  A bal oldali navigációs panelén kattintson **rendszerbeállítás**. Lépjen a **felhasználók kezelése**. Majd keresse meg a **új felhasználó hozzáadása**.
+1.  A bal oldali navigációs panelén kattintson **rendszerbeállítás**. Lépjen a **felhasználók kezelése**. Majd keresse meg a **új felhasználó hozzáadása**.
 
     ![Új felhasználó](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "új felhasználó")
 
-3.  A **személy adatai** szakaszban, hajtsa végre az alábbi lépéseket:
+1.  A **személy adatai** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Új felhasználó](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "új felhasználó")
     
@@ -231,7 +231,7 @@ Ahhoz, hogy az Azure AD-felhasználók Cezanne HR szoftver-ba való bejelentkez�
     
     d. Az a **E-mail** szövegmezőbe írja be az e-mail-cím, felhasználó, például Brittasimon@contoso.com.
 
-4.  A **fiókadatok** szakaszban, hajtsa végre az alábbi lépéseket:
+1.  A **fiókadatok** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Új felhasználó](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "új felhasználó")
     
@@ -243,15 +243,15 @@ Ahhoz, hogy az Azure AD-felhasználók Cezanne HR szoftver-ba való bejelentkez�
     
     d. Kattintson az **OK** gombra.
 
-5. Navigáljon a **egyszeri bejelentkezés** lapra, és válassza **új hozzáadása** a a **SAML 2.0-s azonosítók** területen.
+1. Navigáljon a **egyszeri bejelentkezés** lapra, és válassza **új hozzáadása** a a **SAML 2.0-s azonosítók** területen.
 
     ![Felhasználói](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "felhasználó")
 
-6. Válassza ki az identitásszolgáltatót a **identitásszolgáltató** és a szövegmezőbe, **felhasználói azonosító**, adja meg a Britta Simon fiók e-mail-címe.
+1. Válassza ki az identitásszolgáltatót a **identitásszolgáltató** és a szövegmezőbe, **felhasználói azonosító**, adja meg a Britta Simon fiók e-mail-címe.
 
     ![Felhasználói](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "felhasználó")
     
-7. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Felhasználói](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "felhasználó")
 
@@ -267,23 +267,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Cezanne HR szoftver**.
+1. Az alkalmazások listájában jelölje ki a **Cezanne HR szoftver**.
 
     ![A Cezanne HR szoftverhivatkozás alkalmazásainak listájában](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -295,7 +295,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

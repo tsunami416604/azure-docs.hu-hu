@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 7f8bedda36e4008bdb9c3aeefc4d5acdf6ba253e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ce74d4263e06c33c9beb66417b5ab8d61b8a259f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042129"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Oktatóanyag: Azure Active Directory-integráció az TOPdesk - nyilvános
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Hozzáadás TOPdesk – nyilvános a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-topdesk---public-from-the-gallery"></a>Hozzáadás TOPdesk – nyilvános a katalógusból
 TOPdesk – az Azure AD-be nyilvános integráció konfigurálásához hozzá kell TOPdesk – nyilvános a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ TOPdesk – az Azure AD-be nyilvános integráció konfigurálásához hozzá ke
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **TOPdesk – nyilvános**, jelölje be **TOPdesk – nyilvános** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **TOPdesk – nyilvános**, jelölje be **TOPdesk – nyilvános** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![TOPdesk – nyilvános a találatok listájában](./media/topdesk-public-tutorial/tutorial_topdesk-public_addfromgallery.png)
 
@@ -87,10 +87,10 @@ TOPdesk – a nyilvános, az értéket a **felhasználónév** értékeként az 
 A konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés TOPdesk – a nyilvános, az alábbi építőelemeket végrehajtásához szükséges:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy TOPdesk – nyilvános tesztfelhasználó](#create-a-topdesk---public-test-user)**  – egy megfelelője a Britta Simon TOPdesk – a felhasználó Azure ad-ben ábrázolása csatolt nyilvános van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy TOPdesk – nyilvános tesztfelhasználó](#create-a-topdesk---public-test-user)**  – egy megfelelője a Britta Simon TOPdesk – a felhasználó Azure ad-ben ábrázolása csatolt nyilvános van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/topdesk-public-tutorial/tutorial_topdesk-public_samlbase.png)
 
-3. Az a **TOPdesk – a nyilvános tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **TOPdesk – a nyilvános tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![TOPdesk – a nyilvános tartomány és URL-címek egyszeri bejelentkezési adatait](./media/topdesk-public-tutorial/tutorial_topdesk-public_url.png)
 
@@ -119,33 +119,33 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Válasz URL-cím explaned az oktatóanyag későbbi részében. Kapcsolattartó [TOPdesk – nyilvános ügyfél-támogatási csapatának](https://help.topdesk.com/saas/enterprise/user/) beolvasni ezeket az értékeket.  
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/topdesk-public-tutorial/tutorial_topdesk-public_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/topdesk-public-tutorial/tutorial_general_400.png)
     
-6. Az a **TOPdesk – nyilvános Bővítménykonfiguráció** területén kattintson **TOPdesk konfigurálása – nyilvános** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **TOPdesk – nyilvános Bővítménykonfiguráció** területén kattintson **TOPdesk konfigurálása – nyilvános** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![TOPdesk – nyilvános konfiguráció](./media/topdesk-public-tutorial/tutorial_topdesk-public_configure.png) 
 
-7. Jelentkezzen be a **TOPdesk – nyilvános** rendszergazdaként a vállalati webhely.
+1. Jelentkezzen be a **TOPdesk – nyilvános** rendszergazdaként a vállalati webhely.
 
-8. Az a **TOPdesk** menüben kattintson a **beállítások**.
+1. Az a **TOPdesk** menüben kattintson a **beállítások**.
    
     ![Beállítások](./media/topdesk-public-tutorial/ic790598.png "beállításai")
 
-9. Kattintson a **bejelentkezés beállításai**.
+1. Kattintson a **bejelentkezés beállításai**.
    
     ![Bejelentkezési beállítások](./media/topdesk-public-tutorial/ic790599.png "bejelentkezési beállítások")
 
-10. Bontsa ki a **bejelentkezési beállítások** menüre, majd **általános**.
+1. Bontsa ki a **bejelentkezési beállítások** menüre, majd **általános**.
    
     ![Általános](./media/topdesk-public-tutorial/ic790600.png "általános")
 
-11. Az a **nyilvános** szakaszában a **SAML bejelentkezési** konfigurációs szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **nyilvános** szakaszában a **SAML bejelentkezési** konfigurációs szakaszban, hajtsa végre az alábbi lépéseket:
    
     ![Műszaki beállítások](./media/topdesk-public-tutorial/ic790601.png "műszaki beállítások")
    
@@ -157,7 +157,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
    
     c. Másolás a **AssertionConsumerService** értékét, illessze be ezt az értéket a **válasz URL-cím** szövegmezőjébe **TOPdesk – a nyilvános tartomány és URL-címek** szakaszban.      
    
-12. A tanúsítványfájl létrehozásához hajtsa végre az alábbi lépéseket:
+1. A tanúsítványfájl létrehozásához hajtsa végre az alábbi lépéseket:
     
     ![Tanúsítvány](./media/topdesk-public-tutorial/ic790606.png "tanúsítvány")
     
@@ -169,11 +169,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     d. Mentse a másolt **X509Certificate** érték helyileg a számítógépen egy fájlban.
 
-13. Az a **nyilvános** területén kattintson **Hozzáadás**.
+1. Az a **nyilvános** területén kattintson **Hozzáadás**.
     
     ![SAML-bejelentkezési](./media/topdesk-public-tutorial/ic790625.png "SAML-bejelentkezés")
 
-14. Az a **SAML-konfigurációja Segéd** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **SAML-konfigurációja Segéd** párbeszédpanel lapon, a következő lépésekkel:
     
     ![SAML-konfigurációja Segéd](./media/topdesk-public-tutorial/ic790608.png "SAML-konfigurációja Segéd")
     
@@ -204,15 +204,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/topdesk-public-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/topdesk-public-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/topdesk-public-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/topdesk-public-tutorial/create_aaduser_04.png)
 
@@ -232,11 +232,11 @@ TOPdesk - esetén nyilvános kiépítése a manuális feladat.
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:
 1. Jelentkezzen be a **TOPdesk – nyilvános** rendszergazdaként a vállalati webhely.
 
-2. A felső menüben kattintson **TOPdesk \> új \> támogatófájljait \> személy**.
+1. A felső menüben kattintson **TOPdesk \> új \> támogatófájljait \> személy**.
    
     ![Személy](./media/topdesk-public-tutorial/ic790628.png "személy")
 
-3. Új személy párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Új személy párbeszédpanelen hajtsa végre az alábbi lépéseket:
    
     ![Új személy](./media/topdesk-public-tutorial/ic790629.png "új személy")
    
@@ -263,23 +263,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított TOPdesk - nyil
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **TOPdesk – nyilvános**.
+1. Az alkalmazások listájában jelölje ki a **TOPdesk – nyilvános**.
 
     ![A TOPdesk – nyilvános hivatkozást alkalmazásainak listájában](./media/topdesk-public-tutorial/tutorial_topdesk-public_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -291,7 +291,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

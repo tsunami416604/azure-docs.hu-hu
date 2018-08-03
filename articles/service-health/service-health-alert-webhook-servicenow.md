@@ -1,6 +1,6 @@
 ---
-title: Azure-szolgáltatások állapotának riasztások konfigurálása a ServiceNow |} Microsoft Docs
-description: A ServiceNow példányra szolgáltatás állapotának eseményekről személyre szabott értesítések lekérése.
+title: A servicenow segítségével az Azure service health-riasztások konfigurálása |} A Microsoft Docs
+description: A Szolgáltatásállapot-események, a ServiceNow-példány kapcsolatos személyre szabott értesítések küldése.
 author: shawntabrizi
 services: service-health
 documentationcenter: service-health
@@ -12,47 +12,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 867a8c0b478df9d2b7690b8b914ded7c42558583
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1f5984f8f28832c33d3a5a844fde72e7286ad251
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178868"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433789"
 ---
-# <a name="configure-service-health-alerts-with-servicenow"></a>A ServiceNow health-riasztások konfigurálása
+# <a name="configure-service-health-alerts-with-servicenow"></a>Service health-riasztások beállítása a ServiceNow
 
-Ez a cikk bemutatja, hogyan Azure-szolgáltatások állapotának riasztások integrálása a ServiceNow egy webhook használatával. Miután beállította a ServiceNow példányát webhook integrációja, kapott riasztások a meglévő értesítési infrastruktúrán keresztül Azure szolgáltatásokkal kapcsolatos problémákról hatása a felhasználókra. Minden alkalommal, amikor egy Azure szolgáltatás állapota riasztás akkor következik be, meghívja a webhook ServiceNow tartozó parancsprogrammal létrehozva REST API-n keresztül.
+Ez a cikk bemutatja, hogyan integrálható az Azure service health-riasztások a servicenow segítségével egy webhook használatával. Miután beállította a ServiceNow-példány a webhook-integrációt, is számíthat riasztások keresztül a meglévő értesítési infrastruktúra Önt érintő problémái az Azure szolgáltatás. Minden alkalommal, amikor egy Azure Service Health-riasztások aktiválásáról, a ServiceNow parancsfájlalapú REST API-val egy webhookot hív meg.
 
-## <a name="creating-a-scripted-rest-api-in-servicenow"></a>A ServiceNow egy parancsprogram-alapú REST API létrehozása
-1.  Ellenőrizze, hogy rendelkezik regisztrált a bejelentkezett a [ServiceNow](https://www.servicenow.com/) fiók.
+## <a name="creating-a-scripted-rest-api-in-servicenow"></a>A ServiceNow parancsfájlalapú REST API létrehozásával
+1.  Győződjön meg arról, hogy regisztrált-, és bejelentkezett, a [ServiceNow](https://www.servicenow.com/) fiókot.
 
-2.  Keresse meg a **System webszolgáltatások** ServiceNow, és válassza ki a szakasz **parancsprogrammal létrehozva REST API-k**.
+1.  Keresse meg a **System webszolgáltatások** a ServiceNow, és válassza a szakasz **parancsfájlalapú REST API-k**.
 
-    ![A ServiceNow "Parancsprogrammal létrehozva webszolgáltatás" című](./media/webhook-alerts/servicenow-sws-section.png)
+    ![A ServiceNow "Parancsfájlalapú webszolgáltatás" című szakaszában](./media/webhook-alerts/servicenow-sws-section.png)
 
-3.  Válassza ki **új** parancsprogrammal létrehozva REST új szolgáltatás létrehozása.
+1.  Válassza ki **új** egy új parancsfájlalapú REST-szolgáltatás létrehozásához.
  
-    ![Az "Új parancsprogrammal létrehozva REST API" gombra, a ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
+    ![Az "Új parancsfájlalapú REST API-t" gombra, a ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
 
-4.  Adja hozzá a **neve** a REST API-t és a készlet a **API azonosítója** a `azureservicehealth`.
+1.  Adjon hozzá egy **neve** a REST API-t és a készlet a **API-azonosító** való `azureservicehealth`.
 
-5.  Válassza ki **nyújt**.
+1.  Válassza ki **elküldése**.
 
     ![A "REST API-beállítások" a ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-6.  Válassza ki a REST API hozott létre, és a **erőforrások** lapon válassza **új**.
+1.  Válassza ki a REST API hozta létre, és a **erőforrások** lapon válassza **új**.
 
-    ![A ServiceNow "Erőforrás lap"](./media/webhook-alerts/servicenow-resources-tab.png)
+    ![Az "erőforrás lapot" ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
 
-7.  **Név** az új erőforrás `event` , és módosítsa a **HTTP-metódus** való `POST`.
+1.  **Név** az új erőforrás `event` , és módosítsa a **HTTP-metódus** való `POST`.
 
-8.  Az a **parancsfájl** területen írja be a következő JavaScript-kódot:
+1.  Az a **parancsfájl** területen adja hozzá a következő JavaScript-kódot:
 
     >[!NOTE]
-    >Frissíteni kell a `<secret>`,`<group>`, és `<email>` értékét az alábbi parancsfájlt.
-    >* `<secret>` véletlenszerű karakterlánc, például a GUID-nak kell lennie.
-    >* `<group>` a ServiceNow csoport ki szeretné osztani az incidenst a következőhöz
-    >* `<email>` az adott személy ki szeretné osztani az incidenst a következőhöz (nem kötelező) kell lennie.
+    >Frissítenie kell a `<secret>`,`<group>`, és `<email>` értékét az alábbi parancsprogram.
+    >* `<secret>` egy véletlenszerű karakterlánc, például egy GUID Azonosítót kell lennie.
+    >* `<group>` a ServiceNow-csoport az incidenst a hozzárendelni kívánt kell lennie.
+    >* `<email>` az incidens (nem kötelező) a hozzárendelni kívánt adott személyt kell lennie.
     >
 
     ```javascript
@@ -139,54 +139,54 @@ Ez a cikk bemutatja, hogyan Azure-szolgáltatások állapotának riasztások int
     })(request, response);
     ```
 
-9.  A biztonság lapon törölje a jelet **hitelesítést igényel** válassza **Submit**. A `<secret>` meg set védelmet nyújt az API helyette.
+1.  A biztonság lapon törölje a jelet **hitelesítést igényel** válassza **küldés**. A `<secret>` , set inkább védi az API-t.
 
-    ![A ServiceNow "Szükséges hitelesítés" jelölőnégyzet](./media/webhook-alerts/servicenow-resource-settings.png)
+    ![A ServiceNow "Szükséges hitelesítés" jelölőnégyzetet](./media/webhook-alerts/servicenow-resource-settings.png)
 
-10.  Eközben a REST API-k parancsprogrammal létrehozva szakaszban keresse meg a **alap API elérési** az új REST API:
+1.  Vissza a REST API-k parancsfájlalapú területen, keresse meg a **alap API elérési út** az új REST API-hoz:
 
-     ![A "kiinduló API elérési út" a ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
+     ![A "Base API elérési út" a ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
 
-11.  A teljes integrációs URL-címet a következőhöz hasonló:
+1.  A teljes integrációs URL-Címének hasonlóan néz ki:
         
          https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
 
-## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>A ServiceNow használata az Azure portálon riasztás létrehozása
-### <a name="for-a-new-action-group"></a>Egy új művelet csoporthoz:
-1. Végezze el az 1 – 8 [Ez a cikk](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) riasztás létrehozása egy új művelet csoporttal.
+## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Hozzon létre egy riasztást, a ServiceNow segítségével az Azure Portalon
+### <a name="for-a-new-action-group"></a>Az új műveletcsoport:
+1. Végezze el az 1 – 8 [Ez a cikk](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) riasztás az új műveletcsoport létrehozásához.
 
-2. Adja meg a közül **műveletek**:
-
-    a. **Művelet típusa:** *Webhook*
-
-    b. **Részletek:** a ServiceNow **integrációs URL-címet** meg a korábban mentett.
-
-    c. **Name:** Webhook tartozó név, az alias vagy a azonosítója.
-
-3. Válassza ki **mentése** végzett a riasztás létrehozása.
-
-### <a name="for-an-existing-action-group"></a>Meglévő művelet csoportok:
-1. Az a [Azure-portálon](https://portal.azure.com/), jelölje be **figyelő**.
-
-2. Az a **beállítások** szakaszban jelölje be **művelet csoportok**.
-
-3. Keresse meg és válassza ki a szerkeszteni kívánt művelet csoportot.
-
-4. Vegye fel a **műveletek**:
+1. Adja meg a listában, **műveletek**:
 
     a. **Művelet típusa:** *Webhook*
 
-    b. **Részletek:** a ServiceNow **integrációs URL-címet** meg a korábban mentett.
+    b. **Részletek:** a ServiceNow **integrációs URL-Címének** , korábban mentett.
 
-    c. **Name:** Webhook tartozó név, az alias vagy a azonosítója.
+    c. **Name:** a Webhook nevét, alias vagy azonosítója.
 
-5. Válassza ki **mentése** végzett frissíteni a művelet csoportot.
+1. Válassza ki **mentése** Ha ezzel elkészült, a riasztás létrehozásához.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>A webhook integrációs via HTTP POST-kérelmet tesztelése
-1. Hozzon létre a szolgáltatás állapotának forgalma szeretne küldeni. Példa service állapotfigyelő webhook payloadot címen található [Webhookok Azure tevékenység naplózása riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+### <a name="for-an-existing-action-group"></a>A meglévő műveletcsoport:
+1. Az a [az Azure portal](https://portal.azure.com/)válassza **figyelő**.
 
-2. Hozzon létre egy HTTP POST-kérelmet az alábbiak szerint:
+1. Az a **beállítások** szakaszban jelölje be **Műveletcsoportok**.
+
+1. Keresse meg és válassza ki a szerkeszteni kívánt művelet csoportot.
+
+1. Adja hozzá a listához, **műveletek**:
+
+    a. **Művelet típusa:** *Webhook*
+
+    b. **Részletek:** a ServiceNow **integrációs URL-Címének** , korábban mentett.
+
+    c. **Name:** a Webhook nevét, alias vagy azonosítója.
+
+1. Válassza ki **mentése** végeztével a műveletcsoport frissítéséhez.
+
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Egy HTTP POST kérelem használatával a webhook-integráció tesztelése
+1. Hozza létre a service health hasznos adatokat szeretne küldeni. Egy példa service health webhook hasznos adatai címen található [Webhookok az Azure-tevékenységi naplóriasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+
+1. HTTP POST-kérelmet a következőképpen hozhat létre:
 
     ```
     POST        https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
@@ -195,12 +195,12 @@ Ez a cikk bemutatja, hogyan Azure-szolgáltatások állapotának riasztások int
 
     BODY        <service health payload>
     ```
-3. Ekkor egy `200 OK` válasz a következő üzenettel: "Incidenst hozott létre."
+1. Ekkor kap egy `200 OK` válasz a következő üzenettel: "Incidens létrehozása."
 
-4. Ugrás a [ServiceNow](https://www.servicenow.com/) annak ellenőrzéséhez, hogy integráció sikeres volt-e beállítva.
+1. Lépjen a [ServiceNow](https://www.servicenow.com/) annak ellenőrzéséhez, hogy az integrációs sikeres volt-e beállítva.
 
 ## <a name="next-steps"></a>További lépések
-- Megtudhatja, hogyan [meglévő probléma felügyeleti rendszerekhez webhook értesítések konfigurálása](service-health-alert-webhook-guide.md).
-- Tekintse át a [műveletnapló riasztási webhook séma](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
-- További tudnivalók [szolgáltatás állapotával kapcsolatos értesítésekre](../monitoring-and-diagnostics/monitoring-service-notifications.md).
-- További információ [művelet csoportok](../monitoring-and-diagnostics/monitoring-action-groups.md).
+- Ismerje meg, hogyan [konfigurálása webhook-értesítésekkel meglévő probléma felügyeleti rendszerek](service-health-alert-webhook-guide.md).
+- Tekintse át a [tevékenység log riasztási webhookséma](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
+- Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Tudjon meg többet [Műveletcsoportok](../monitoring-and-diagnostics/monitoring-action-groups.md).

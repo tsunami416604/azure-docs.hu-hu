@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált O.C. Péter - AppreciateHub |} Microsoft Docs'
-description: Egyszeri bejelentkezés Azure Active Directory és O.C. konfigurálása Péter - AppreciateHub.
+title: 'Oktatóanyag: Azure Active Directory-integráció az O.C. Péter - AppreciateHub |} A Microsoft Docs'
+description: Ismerje meg, hogyan konfigurálása egyszeri bejelentkezéshez O.C. és az Azure Active Directory között Péter - AppreciateHub.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,211 +14,211 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 29f3acc5992502f87fa57156f12244cb074f0491
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2a3c6641c3fd9402ede2176e3c5c3f3ec15ed9de
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210781"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438705"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Oktatóanyag: Azure Active Directoryval integrált O.C. Péter - AppreciateHub
+# <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Oktatóanyag: Azure Active Directory-integráció az O.C. Péter - AppreciateHub
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja O.C. Péter - AppreciateHub az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban megismerheti, hogyan integrálható a O.C. Péter - AppreciateHub az Azure Active Directory (Azure AD).
 
-O.C. integrálása Péter - AppreciateHub az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+O.C. integrálása Péter – az Azure ad-vel AppreciateHub nyújt a következő előnyökkel jár:
 
-- Megadhatja a O.C. hozzáféréssel rendelkező Azure AD-ben Péter - AppreciateHub
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a O.C. Péter - AppreciateHub (egyszeri bejelentkezés) a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá O.C. Azure AD-ben Péter - AppreciateHub
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a O.C. Péter - AppreciateHub (egyszeri bejelentkezés) az Azure AD-fiókjukat
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integrációs O.C. konfigurálása Péter - AppreciateHub, van szüksége a következőkre:
+Az Azure AD-integráció konfigurálása az O.C. Péter - AppreciateHub, akkor a következők szükségesek:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - EGY O.C. Péter - AppreciateHub egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. O.C. hozzáadása Péter - AppreciateHub a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. O.C. hozzáadása Péter - AppreciateHub a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>O.C. hozzáadása Péter - AppreciateHub a gyűjteményből
-O.C. integrációjának konfigurálása Péter - AppreciateHub az Azure AD-be, hozzá kell adnia O.C. Péter - AppreciateHub a gyűjteményből, a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>O.C. hozzáadása Péter - AppreciateHub a katalógusból
+O.C. integrációjának konfigurálása Péter - AppreciateHub az Azure AD-be, hozzá kell adnia O.C. Péter - AppreciateHub a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**O.C. hozzáadása Péter - AppreciateHub a gyűjteményből, hajtsa végre a következő lépéseket:**
+**O.C. hozzáadása Péter - AppreciateHub katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **O.C. Péter - AppreciateHub**.
+1. A Keresés mezőbe írja be a **O.C. Péter - AppreciateHub**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_search.png)
 
-5. Az eredmények panelen válassza ki a **O.C. Péter - AppreciateHub**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **O.C. Péter - AppreciateHub**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a O.C. Péter - AppreciateHub "Britta Simon" nevű tesztfelhasználó alapján.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az O.C. Péter - AppreciateHub "Britta Simon" nevű tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, milyen a párjukhoz felhasználó O.C. Péter - AppreciateHub van egy felhasználó számára az Azure ad-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a O.C. közötti kapcsolat kapcsolatot Péter - AppreciateHub kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, milyen a partner felhasználó O.C. Péter - AppreciateHub, hogy egy felhasználó Azure AD-ben. Más szóval a hivatkozás kapcsolatot Azure AD-felhasználót és a kapcsolódó felhasználó O.C. között Péter - AppreciateHub kell létrehozni.
 
-A O.C. Péter - AppreciateHub, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+A O.C. Péter - AppreciateHub, az értéket a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a O.C. tesztelése és konfigurálása Péter - AppreciateHub, végre kell hajtania a következő építőelemeket:
+Az Azure AD egyszeri bejelentkezés az O.C. tesztelése és konfigurálása Péter - AppreciateHub, át kell adnia a következő építőelemeket:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Egy O.C. létrehozása Péter - AppreciateHub tesztfelhasználó](#creating-a-oc-tanner---appreciatehub-test-user)**  - való egy megfelelője a Britta Simon O.C. Péter - AppreciateHub, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Egy O.C. létrehozása Péter - AppreciateHub tesztfelhasználó](#creating-a-oc-tanner---appreciatehub-test-user)**  – egy megfelelője a Britta Simon O.C. van Péter - AppreciateHub, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a O.C. az egyszeri bejelentkezés konfigurálása Péter - AppreciateHub alkalmazás.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a O.C. az egyszeri bejelentkezés konfigurálása Péter - AppreciateHub alkalmazás.
 
-**Az Azure AD az egyszeri bejelentkezés O.C. konfigurálása Péter - AppreciateHub, hajtsa végre a következő lépéseket:**
+**O.C. az Azure AD egyszeri bejelentkezés konfigurálása Péter - AppreciateHub, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **O.C. Péter - AppreciateHub** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **O.C. Péter - AppreciateHub** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_samlbase.png)
 
-3. Az a **O.C. Péter - AppreciateHub tartomány és az URL-címek** területen tegye a következőket:
+1. Az a **O.C. Péter - AppreciateHub tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_url.png)
 
-    a. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.octanner.net/sp/ACS.saml2`
+    a. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.octanner.net/sp/ACS.saml2`
 
     > [!NOTE] 
-    > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges válasz URL-címet. Ügyfél [O.C. Péter - AppreciateHub támogatási csoport](mailto:sso@octanner.com) lekérni ezt az értéket.
+    > Az érték nem valódi. Ez az érték frissítse a tényleges válasz URL-cím. Kapcsolattartó [O.C. Péter - AppreciateHub támogatási csapatának](mailto:sso@octanner.com) lekérni ezt az értéket.
 
     b. Nyissa meg a metaadat-fájlt a következő hivatkozás használatával: [ https://fed.appreciatehub.com/fed/sp/metadata ](https://fed.appreciatehub.com/fed/sp/metadata).
    
     c. Keresse meg a **md:AssertionConsumerService** csomópont. 
    
-    d. Másolja a értékének a **hely** attribútum. 
+    d. Másolja az értéket, a **hely** attribútum. 
    
     ![Alkalmazásbeállítások konfigurálása][12]
    
-    e. Az a **URL-cím bejelentkezési** szövegmezőhöz túli az érték az előző lépésben szerzett be.
+    e. Az a **bejelentkezési URL-** szövegmező, az érték az előző lépésben beszerzett múltbeli.
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/oc-tanner-tutorial/tutorial_general_400.png)
 
-6. Egyszeri bejelentkezés konfigurálása **O.C. Péter - AppreciateHub** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [O.C. Péter - AppreciateHub támogatási csoport](mailto:sso@octanner.com).
+1. Az egyszeri bejelentkezés konfigurálása **O.C. Péter - AppreciateHub** oldalon kell küldenie a letöltött **metaadatainak XML** való [O.C. Péter - AppreciateHub támogatási csapatának](mailto:sso@octanner.com).
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/oc-tanner-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-oc-tanner---appreciatehub-test-user"></a>Egy O.C. létrehozása Péter - AppreciateHub tesztfelhasználó számára
 
-Ez a szakasz célja Britta Simon meghívta O.C. felhasználó létrehozása Péter - AppreciateHub.
+Ez a szakasz célja az, hogy O.C. Britta Simon nevű felhasználó létrehozása Péter - AppreciateHub.
 
-**Felhasználó létrehozásához O.C. Britta Simon meghívta Péter - AppreciateHub, hajtsa végre a következő lépéseket:**
+**Britta Simon O.C. nevű felhasználó létrehozása Péter - AppreciateHub, hajtsa végre az alábbi lépéseket:**
 
-Kérje meg a [O.C. Péter - AppreciateHub támogatási csoport](mailto:sso@octanner.com) , amely rendelkezik nameID attribútum értéke Britta Simon felhasználó neve megegyezik az Azure AD-felhasználó létrehozásához.
+Kérje meg a [O.C. Péter - AppreciateHub támogatási csapatának](mailto:sso@octanner.com) , amely rendelkezik nameID attribútum Britta Simon felhasználóneve megegyezik az Azure AD-felhasználó létrehozásához.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon által biztosított hozzáférés O.C. használandó Azure egyszeri bejelentkezés engedélyezése Péter - AppreciateHub.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés O.C. Azure egyszeri bejelentkezés használatára Péter - AppreciateHub.
 
 ![Felhasználó hozzárendelése][200] 
 
-**O.C. Britta Simon hozzárendelése Péter - AppreciateHub, hajtsa végre a következő lépéseket:**
+**Britta Simon hozzárendelése O.C. Péter - AppreciateHub, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **O.C. Péter - AppreciateHub**.
+1. Az alkalmazások listájában jelölje ki a **O.C. Péter - AppreciateHub**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ez a szakasz célja tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.  
-Ha a O.C. kattint. Péter - AppreciateHub csempe a hozzáférési panelen, meg kell beolvasni automatikusan bejelentkezett a O.C. számára Péter - AppreciateHub alkalmazás.
+Amikor rákattint a O.C. Péter - AppreciateHub csempe a hozzáférési panelen azt kell lekérése automatikusan bejelentkezett, a O.C. Péter - AppreciateHub alkalmazás.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

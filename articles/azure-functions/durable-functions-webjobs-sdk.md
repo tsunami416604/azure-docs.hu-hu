@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 90100461d7db93ece23bf2420a1b7e8c43da915b
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 94d443505c5c1634c9da00d455e0163b2762d969
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343049"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426034"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Tartós függvények futtatása a webjobs-feladatok
 
@@ -223,7 +223,7 @@ A fő változás 3.x bevezetett, a .NET-keretrendszer helyett a .NET Core haszn�
   * `Microsoft.Azure.WebJobs.Extensions`
   * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-2. Változás `Main` metódus kód segítségével kérheti le a tárolási kapcsolati karakterlánc és az Application Insights-kialakítási kulcsot a egy *appsettings.json* fájlt, a .NET Core keretrendszerrel.  Például:
+1. Változás `Main` metódus kód segítségével kérheti le a tárolási kapcsolati karakterlánc és az Application Insights-kialakítási kulcsot a egy *appsettings.json* fájlt, a .NET Core keretrendszerrel.  Például:
 
    ```cs
    static void Main(string[] args)

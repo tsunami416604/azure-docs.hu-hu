@@ -1,7 +1,7 @@
 ---
-title: Az adatok tudományos virtuálisgép - Azure közös identitás beállítása |} Microsoft Docs
-description: Állítson be egy közös identitás egy vállalati team DSVM környezetekben.
-keywords: a mélyhivatkozással tanulási, AI adatok tudományos eszközök, a adatok tudományos virtuális gép, a földrajzi analytics, a csapat az tudományos folyamata
+title: Közös identitás beállítása a az adatelemző virtuális gép – Azure |} A Microsoft Docs
+description: Az enterprise csapat DSVM környezetekben közös identitást állíthat be.
+keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés, a csoportos adatelemzési folyamat
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,75 +15,75 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: d6235f3a425481a13e627d683bb4c3943b473b40
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309826"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436301"
 ---
-# <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Az adatok tudományos virtuális gép közös identitás beállítása
+# <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen közös identitás beállítása
 
-Egy Azure virtuális gép (VM), az adatok tudományos virtuális gép (DSVM), beleértve a helyi felhasználói fiókokat hozhat létre a virtuális gép kiépítése során. A felhasználók majd hitelesítik a virtuális gép ezen hitelesítő adatok használatával. Ha több virtuális géphez való hozzáférést igénylő, ezt a módszert is gyorsan karban lehessen nehézkes hitelesítő adatok kezelése közben. Általános felhasználói fiókok és egy szabványalapú identitásszolgáltató tartalomablakban engedélyezi, hogy a hitelesítő adatok egyetlen készletének használata az Azure, beleértve a több DSVMs több erőforrások eléréséhez. 
+Egy Azure virtuális gép (VM), az adatelemzési virtuális gép (DSVM), beleértve a helyi felhasználói fiókokat hozhat létre a virtuális gép kiépítése során. A felhasználók ezután hitelesíthetők a virtuális gép ezen hitelesítő adatok használatával. Ha több virtuális gép elérését igénylő, ez a módszer gyors bevezetés nehézkes, hitelesítő adatok kezelése. Általános felhasználói fiókokhoz és a egy szabványalapú identitásszolgáltató-kezelési lehetővé teszi több erőforrást az Azure-ban, beleértve a több Dsvm eléréséhez hitelesítő adatok egy készletét használja. 
 
-Az Active Directory egy népszerű identitásszolgáltató, és egy szolgáltatás és a helyszíni Azure támogatja. Akkor használhatja az Azure Active Directory (Azure AD) vagy a helyszíni Active Directory DSVM különálló, vagy egy Azure virtuálisgép-méretezési csoportban lévő DSVMs fürtben a felhasználók hitelesítésére. Ehhez a DSVM példányok csatlakoztatása egy Active Directory-tartományhoz. 
+Active Directory egy népszerű identitásszolgáltatóktól szolgáltató, és egy szolgáltatás és a helyszínen is támogatott az Azure-ban. Használhatja az Azure Active Directory (Azure AD) vagy a helyszíni Active Directory felhasználók DSVM önálló vagy egy Azure-beli virtuálisgép-méretezési csoportban lévő Dsvm fürttel való hitelesítéséhez. Ehhez a DSVM-példányok egy Active Directory-tartományhoz történő csatlakoztatásához. 
 
-Ha már rendelkezik az Active Directory az identitáskezelést, használhatja a közös identitás-szolgáltatóként. Ha még nem rendelkezik az Active Directory, a felügyelt Active Directory-példányban Azure segítségével futtathatja nevű szolgáltatás [Azure Active Directory tartományi szolgáltatások](https://docs.microsoft.com/azure/active-directory-domain-services/) (az Azure AD DS). 
+Ha már rendelkezik Active Directory az identitások kezelésére, használhatja az általános identitás-szolgáltatóként. Ha nem rendelkezik az Active Directory, futtathatja felügyelt Active Directory-példányok az Azure-ban egy úgynevezett szolgáltatáson keresztül [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS). 
 
-A dokumentációja [az Azure AD](https://docs.microsoft.com/azure/active-directory/) biztosít részletes [felügyeleti utasításokat](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity), beleértve az Azure AD csatlakozni a helyszíni címtár, ha nem rendelkezik ilyennel. 
+A dokumentációban [Azure ad-ben](https://docs.microsoft.com/azure/active-directory/) biztosít részletes [felügyeleti utasításokat](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity), beleértve az Azure ad-ben csatlakozhat a helyszíni címtár, ha rendelkezik ilyennel. 
 
-Ez a cikk ismerteti a lépéseket egy teljes körűen felügyelt Azure Active Directory tartományi szolgáltatások beállítása az Azure Active Directory tartományi szolgáltatások használatával. A DSVMs majd csatlakoztatása a felügyelt Active Directory-tartomány ahhoz, hogy felhasználók hozzáférhessenek az DSVMs (és más Azure-erőforrások) készlete egy közös felhasználói fiók és a hitelesítő adatok használatával. 
+Ez a cikk ismerteti a lépéseket az Azure AD DS használatával egy teljes körűen felügyelt Active Directory tartományi szolgáltatáshoz az Azure-ban beállított. A Dsvm majd csatlakoztatása a felügyelt Active Directory-tartomány engedélyezése a felhasználók férhetnek hozzá a készlet Dsvm (és más Azure-erőforrások) közös felhasználói fiók és a hitelesítő adatok használatával. 
 
-## <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Állítson be egy teljes körűen felügyelt, az Azure Active Directory-tartomány
+## <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Egy teljes körűen felügyelt, az Azure Active Directory-tartomány beállítása
 
-Az Azure Active Directory tartományi szolgáltatások leegyszerűsíti az identitások kezeléséhez Azure teljes körűen felügyelt szolgáltatás megadásával. Az Active Directory-tartomány kezelheti a felhasználókat és csoportokat. Állítsa be az Azure által kezelt Active Directory tartományt és felhasználói fiókot a címtárban lépései a következők:
+Az Azure Active Directory tartományi szolgáltatások leegyszerűsíti az identitások kezelése egy teljes körűen felügyelt szolgáltatás azáltal, hogy az Azure-ban. Az Active Directory-tartomány kezelheti a felhasználókat és csoportokat. A lépések egy Azure-ban üzemeltetett Active Directory tartományt és felhasználói fiókot a címtárban beállításához a következők:
 
-1. Az Azure portálon vegye fel a felhasználót az Active Directory: 
+1. Az Azure Portalon vegye fel a felhasználót az Active Directory: 
 
-   a. Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
+   a. Jelentkezzen be az [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
     
-   b. Válassza ki **Azure Active Directory** , majd **felhasználók és csoportok**.
+   b. Válassza az **Azure Active Directory**, majd a **Felhasználók és csoportok** elemet.
     
-   c. A **felhasználók és csoportok**, jelölje be **minden felhasználó**, majd válassza ki **új felhasználó**.
+   c. A **Felhasználók és csoportok** területen válassza a **Minden felhasználó**, majd az **Új felhasználó** lehetőséget.
    
-      A **felhasználói** ablaktábla megnyitása.
+      A **felhasználói** panel nyílik meg.
       
-      ![A "User" ablak](./media/add-user.png)
+      ![A "Felhasználó" panelen](./media/add-user.png)
     
-   d. Adja meg a felhasználó, például a **neve** és **felhasználónév**. A felhasználói tartomány részét kell lennie, vagy a kezdeti alapértelmezett tartomány neve "[neve].onmicrosoft.com", vagy egy ellenőrzött és érvényes, nem összevont [egyéni tartománynév](../../active-directory/add-custom-domain.md) például "contoso.com".
+   d. Adja meg a felhasználó adatait (például **Név** és **Felhasználónév**). A tartomány felhasználónév részét kell lennie, vagy a kezdeti alapértelmezett tartomány neve "[domain name].onmicrosoft.com", vagy olyan ellenőrzött, nem összevont [egyéni tartománynév](../../active-directory/add-custom-domain.md) például "contoso.com".
     
-   e. Másolja, vagy ellenkező esetben vegye figyelembe a létrehozott felhasználói jelszót, így megadhatja azt a felhasználó számára a folyamat befejezése után.
+   e. Másolja a vágólapra vagy egyéb módon jegyezze fel a létrehozott jelszót, hogy megadhassa azt a felhasználónak a folyamat befejezése után.
     
-   f. Másik lehetőségként megnyithatja és töltse ki **profil**, **csoportok**, vagy **Directory szerepkör** a felhasználó számára. 
+   f. Az adatokat a felhasználóhoz tartozó **Profil**, **Csoportok**, vagy **Címtárbeli szerepkör** területeken is megadhatja. 
     
-   g. A **felhasználói**, jelölje be **létrehozása**.
+   g. A **Felhasználó** területen válassza a **Létrehozás** elemet.
     
-   h. Az új felhasználó számára létrehozott jelszót biztonságos terjesztése, hogy a felhasználói bejelentkezés.
+   h. Küldje el a létrehozott jelszót biztonságosan az új felhasználónak, hogy az be tudjon vele jelentkezni.
 
-2. Az Azure Active Directory tartományi szolgáltatások példányt létrehozni. A cikk utasításait [engedélyezése Azure Active Directory tartományi szolgáltatások az Azure portál használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (feladatokat az 1-5). Fontos, a meglévő felhasználói jelszavakat az Active Directory frissítése, hogy az Azure Active Directory tartományi szolgáltatásokban a jelszó van-e szinkronizálva. Fontos továbbá DNS hozzáadása az Azure Active Directory tartományi szolgáltatások, a cikk 4. feladat leírtak szerint. 
+1. Hozzon létre egy Azure AD DS-példánya. Kövesse a cikk a [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (1-5 feladat). Fontos a meglévő felhasználói jelszavakat az Active Directory frissítése, hogy a jelszó az Azure Active Directory tartományi szolgáltatásokban szinkronizálva van. Fontos továbbá DNS hozzáadása az Azure Active Directory tartományi szolgáltatások, 4. feladat, a cikkben leírtak szerint. 
 
-3. Hozzon létre egy külön DSVM alhálózatot a 2. feladat az előző lépésben létrehozott virtuális hálózatban.
-4. Hozzon létre egy vagy több adat tudományos Virtuálisgép-példányok DSVM alhálózaton. 
-5. Kövesse a [utasításokat](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm ) DSVM hozzáadása az Active Directory. 
-6. Csatlakoztassa egy Azure fájlok megosztáson ahhoz, hogy a munkaterület csatlakoztatása bármelyik olyan gépen home vagy notebook címtárat. (Ha szoros fájlszintű engedélyekre van szükség, szüksége lesz egy vagy több virtuális gépeken futó NFS.)
+1. Hozzon létre egy külön DSVM-alhálózat a 2. feladat az előző lépésben létrehozott virtuális hálózat.
+1. Hozzon létre egy vagy több adatelemző virtuális gép példány a DSVM-alhálózat. 
+1. Kövesse a [utasításokat](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm ) DSVM hozzáadása az Active Directory. 
+1. Csatlakoztassa az Azure Files megosztáson a home vagy a jegyzetfüzet címtár csatlakoztatása a munkaterület bármelyik olyan gépen engedélyezi. (Ha szoros fájl szintű engedélyek szükségesek, szüksége lesz egy vagy több virtuális gépeken futó NFS.)
 
-   a. [Hozzon létre egy Azure fájlok megosztás](../../storage/files/storage-how-to-create-file-share.md).
+   a. [Hozzon létre egy Azure-fájlmegosztási](../../storage/files/storage-how-to-create-file-share.md).
     
-   b. A Linux DSVM csatlakoztassa azt. Ha bejelöli a **Connect** gombra kattint, az Azure fájlokat megosztani az Azure portálon, a parancs futtatása a a Bash rendszerhéjat a Linux DSVM megjelenik tárfiókba. A parancs így néz ki:
+   b. Csatlakoztathatom azokat az Linux-DSVM. Amikor kiválasztja a **Connect** esetében az Azure Files oszthat meg a storage-fiókot az Azure Portalon, a parancs futtatása a a Bash rendszerhéjat a Linux-DSVM jelenik meg a gombot. A parancs így néz ki:
    
    ```
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
-7. Tegyük fel, az Azure-fájlok megosztásra /data/workspace, például csatlakoztatva. Most hozzon létre a könyvtárak a megosztáson található, a felhasználók vonatkozó: /data/workspace/user1 /data/workspace/user2 és így tovább. Hozzon létre egy `notebooks` könyvtárhoz, az egyes felhasználók munkaterületen. 
-8. Hozzon létre a szimbolikus csatolást `notebooks` a `$HOME/userx/notebooks/remote`.   
+1. Tegyük fel, az Azure-fájlmegosztást az /data/workspace, például csatlakoztatva. Most hozzon létre a könyvtárak a felhasználók a megosztásban található minden egyes: /data/workspace/user1 /data/workspace/user2 és így tovább. Hozzon létre egy `notebooks` könyvtárban lévő minden egyes felhasználó munkaterületét. 
+1. Hozzon létre szimbolikus hivatkozásokat `notebooks` a `$HOME/userx/notebooks/remote`.   
 
-Meg kell, a felhasználók az Azure-ban üzemeltetett Active Directory-példányban. Az Active Directory hitelesítő adatok használatával felhasználók bejelentkezhet bármely DSVM (SSH vagy JupyterHub), amely az Azure Active Directory tartományi szolgáltatások csatlakozik. A felhasználó munkaterület Azure fájlok megosztáson van, mert a felhasználók rendelkeznek a jegyzetfüzetek és más feladatok bármely DSVM való hozzáférést, ha JupyterHub használatát. 
+Már a felhasználók az Azure Active Directory-példányában. Az Active Directory hitelesítő adatok használatával felhasználók bejelentkezhetnek bármely DSVM (SSH- vagy JupyterHub), amely csatlakozik az Azure Active Directory tartományi Szolgáltatásokban való. Mivel a felhasználói munkaterület egy Azure-fájlmegosztással, felhasználók bármilyen dsvm-hez a a jegyzetfüzetekre és más munkahelyi hozzáféréssel rendelkeznek a JupyterHub használatát. 
 
-Az automatikus skálázást használhatja a virtuálisgép-méretezési készlet létrehozásához egy olyan virtuális gépek, amelyek összes csatlakoznak a tartományhoz, ilyen módon, és a megosztott lemez van beállítva. Felhasználók jelentkezzen be a virtuálisgép-méretezési csoportban lévő elérhető gépi, és hozzáférhetnek a megosztott lemez a notebookok menteni. 
+Az automatikus skálázáshoz a készlet összes a tartományhoz csatlakozó ilyen módon, és a megosztott lemezzel, csatlakoztatott virtuális gépek létrehozása egy virtuális gép méretezési is használhatja. Felhasználók jelentkezzen be a virtuálisgép-méretezési csoportban lévő bármely elérhető gépére, és hozzáférhetnek a megosztott lemez a jegyzetfüzetekre mentési helye. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Biztonságosan tárolni a felhőben lévő erőforrások eléréséhez szükséges hitelesítő adatokat](dsvm-secure-access-keys.md)
+* [A felhőbeli erőforrások eléréséhez szükséges hitelesítő adatok biztonságos tárolása](dsvm-secure-access-keys.md)
 
 
 

@@ -9,12 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 120c78d9adb83ca58ae61700ae70d07ead42ebd0
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 9981db7e2994b9a4f20f99f4997a89b0368d343c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226560"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423674"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery Deployment Planner Hyper-V Azure-bA
 
@@ -96,7 +96,7 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
 
             set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
-2.  A profillal ellátni kívánt összes Hyper-V-gazdagépen a következők megléte szükséges:
+1.  A profillal ellátni kívánt összes Hyper-V-gazdagépen a következők megléte szükséges:
 
     a. A virtuális gép, amelyen az eszközt futtatni kívánja hozzá van adva a TrustedHosts listájához. Futtassa a következő parancsot a Hyper-V-gazdagépen egy emelt szintű PowerShell-munkamenetből.
 
@@ -111,10 +111,10 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
 1.  Töltse le az [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner) legújabb verzióját.
 Az eszköz .zip-mappába van csomagolva. Ugyanaz az eszköz támogatja a VMware – Azure és a Hyper-V – Azure vészhelyreállítási forgatókönyveket. Az eszközt Hyper-V – másodlagos hely vészhelyreállítási forgatókönyvekhez is használhatja, de hagyja figyelmen kívül a jelentés Azure-infrastruktúrára vonatkozó javaslatait.
 
-2.  Másolja a zip-fájlt azon Windows Serverre, ahol futtatni kívánja az eszközt. Az eszközt Windows Server 2012 R2 vagy Windows Server 2016 rendszeren futtathatja. A kiszolgáló számára hálózati hozzáférés szükséges a profillal ellátni kívánt virtuális gépeket tároló Hyper-V-fürthöz vagy Hyper-V-gazdagéphez való csatlakozáshoz. Javasoljuk, hogy a virtuális gép, ahol az eszközt futtatni kívánja és a Hyper-V-kiszolgáló, amely számára védelmet kíván biztosítani azonos hardverkonfigurációval rendelkezzen. Ez biztosítja, hogy az eszköz által jelentett elért átviteli sebesség megegyezik az Azure Site Recovery által replikáció közben elért tényleges átviteli sebességgel. Az átviteli sebesség kiszámítása a kiszolgálón elérhető hálózati sávszélességtől és a kiszolgáló hardverkonfigurációjától (processzor, tárterület stb.) függ. Az átviteli sebesség arról a kiszolgálóról lesz kiszámítva, ahol az eszköz fut az Azure-ra. Ha a kiszolgáló és a Hyper-V-kiszolgáló hardverkonfigurációja nem egyezik, az eszköz által jelentett elért átviteli sebesség nem lesz pontos.
+1.  Másolja a zip-fájlt azon Windows Serverre, ahol futtatni kívánja az eszközt. Az eszközt Windows Server 2012 R2 vagy Windows Server 2016 rendszeren futtathatja. A kiszolgáló számára hálózati hozzáférés szükséges a profillal ellátni kívánt virtuális gépeket tároló Hyper-V-fürthöz vagy Hyper-V-gazdagéphez való csatlakozáshoz. Javasoljuk, hogy a virtuális gép, ahol az eszközt futtatni kívánja és a Hyper-V-kiszolgáló, amely számára védelmet kíván biztosítani azonos hardverkonfigurációval rendelkezzen. Ez biztosítja, hogy az eszköz által jelentett elért átviteli sebesség megegyezik az Azure Site Recovery által replikáció közben elért tényleges átviteli sebességgel. Az átviteli sebesség kiszámítása a kiszolgálón elérhető hálózati sávszélességtől és a kiszolgáló hardverkonfigurációjától (processzor, tárterület stb.) függ. Az átviteli sebesség arról a kiszolgálóról lesz kiszámítva, ahol az eszköz fut az Azure-ra. Ha a kiszolgáló és a Hyper-V-kiszolgáló hardverkonfigurációja nem egyezik, az eszköz által jelentett elért átviteli sebesség nem lesz pontos.
 A virtuális gép ajánlott konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD.
 
-3.  Csomagolja ki a .zip mappát.
+1.  Csomagolja ki a .zip mappát.
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
 Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR Deployment Planner_v2.2.zip

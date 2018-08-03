@@ -1,6 +1,6 @@
 ---
-title: CI/CD-ről az Azure Tárolószolgáltatás és a Swarm
-description: Azure Tárolószolgáltatás használja a Docker Swarm, egy Azure-tároló beállításkulcs, és a Visual Studio Team Services folyamatosan egy több tároló .NET Core alkalmazás képes biztosítani
+title: CI/CD – az Azure Container Service és a Swarm
+description: Az Azure Container Service Docker Swarm, egy Azure Container Registry és a Visual Studio Team Services, hogy folyamatosan többtárolós .NET Core-alkalmazásokhoz
 services: container-service
 author: jcorioland
 manager: jeconnoc
@@ -9,128 +9,128 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 81a07fdfe1c862bc30fb9d567db9a393c0610990
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b88fba4e04adb56742edf8023fde34e8ff6519c2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179554"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437916"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Teljes CI/CD adatcsatorna egy Azure tárolószolgáltatás a Docker Swarmmal Visual Studio Team Services segítségével többszörös tároló alkalmazás központi telepítése
+# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>A teljes CI/CD-folyamat üzembe helyezéséhez egy többtárolós alkalmazást az Azure Container Service a Docker Swarmmal Visual Studio Team Services használatával
 
-Egyik legnagyobb kihívás a felhő modern alkalmazások fejlesztése során ezeknek az alkalmazásoknak folyamatosan küldött alatt. Ebből a cikkből megismerheti, hogyan egy teljes folyamatos integrációt és az Azure Tárolószolgáltatás használata a Docker Swarm Azure tároló beállításjegyzék és a Visual Studio Team Services build (CI/CD) telepítési folyamat bevezetése, valamint a kiadáskezelés.
+Az egyik legnagyobb kihívást az jelenti a modern alkalmazások fejlesztése során folyamatban van, hogy ezek az alkalmazások folyamatosan. Ebből a cikkből megismerheti, hogyan teljes folyamatos integráció és készregyártás (CI/CD) folyamat használatával az Azure Container Service Docker Swarm, az Azure Container Registry és a Visual Studio Team Services buildelési megvalósítása, és a kiadáskezelés.
 
-Ez a cikk alapján egy egyszerű alkalmazást, a rendelkezésre álló [GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs), az ASP.NET Core fejlett. Az alkalmazások négy különböző szolgáltatások állnak: három webes API-k és egy webes előtér:
+Ez a cikk egy egyszerű alkalmazást, a rendelkezésre álló alapján [GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs), fejlett ASP.NET Core használatával. Az alkalmazás négy különböző szolgáltatást épül fel: három webes API-k és a egy webes előtérrendszert:
 
 ![MyShop mintaalkalmazás](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
-A célja, hogy az alkalmazás folyamatosan biztosítanak a Docker Swarm fürtön Visual Studio Team Services használatával. Az alábbi ábra az folyamatos kézbesítési adatcsatorna részletesen:
+A célja, hogy az alkalmazás folyamatosan, a Docker Swarm-fürt, a Visual Studio Team Services használatával. Az alábbi ábra a folyamatos teljesítési folyamat részletesen:
 
 ![MyShop mintaalkalmazás](./media/container-service-docker-swarm-setup-ci-cd/full-ci-cd-pipeline.png)
 
-A lépések rövid leírása itt található:
+A következő lépések röviden:
 
-1. A forráskódraktárban kódmódosításokat elkötelezettek (Itt GitHub) 
-2. GitHub elindítja a Visual Studio Team Services build 
-3. Visual Studio Team Services lekérdezi a források legújabb verzióját, és létrehozza a lemezképeket, amelyek az alkalmazás összeállítása 
-4. A Visual Studio Team Services az egyes lemezképek egy Docker beállításjegyzék, az Azure-tároló beállításjegyzék szolgáltatással létrehozott leküldéses értesítések 
-5. A Visual Studio Team Services új verziót váltja ki. 
-6. A kiadás néhány SSH használatával az Azure-tárolót szolgáltatás fő fürtcsomóponton parancsokat futtat 
-7. A docker Swarm a fürtön a képek legújabb verzióját kéri le. 
-8. Az alkalmazás új verziójának használatával a Docker Compose van telepítve 
+1. A forráskód adattára kódmódosítás elkötelezettek (Itt GitHub) 
+1. GitHub aktiválnak egy buildet, a Visual Studio Team Servicesben 
+1. Visual Studio Team Services lekérdezi a legújabb verzióra a forrásból, és létrehozza a lemezképeket, amelyek az alkalmazás összeállítása 
+1. A Visual Studio Team Services minden rendszerképet leküldi a Docker-tárolójegyzék létrehozása az Azure Container Registry szolgáltatással 
+1. A Visual Studio Team Services elindít egy új kiadás 
+1. A kiadás fut néhány parancsot SSH-val az Azure container service fő fürtcsomópontra 
+1. A fürtön a docker Swarm lekéri a rendszerképet a legújabb verzióra 
+1. Az alkalmazás új verziója telepítve van a Docker Compose használatával 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elindítása előtt végre kell hajtania a következő feladatokat:
+Az oktatóanyag elindítása előtt kell végrehajtani az alábbi feladatokat:
 
 - [Swarm-fürt létrehozása az Azure Container Service-ben](container-service-deployment.md)
 - [Csatlakozás a Swarm-fürthöz az Azure Container Service-ben](../container-service-connect.md)
-- [Hozzon létre egy Azure-tárolót beállításjegyzék](../../container-registry/container-registry-get-started-portal.md)
-- [Egy Visual Studio Team Services fiók és a team projekt létrehozása](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
-- [Elágazás a GitHub-tárházban, a GitHub-fiókba](https://github.com/jcorioland/MyShop/)
+- [Az Azure container registry létrehozása](../../container-registry/container-registry-get-started-portal.md)
+- [Rendelkezik egy Visual Studio Team Services-fiók és a team projekt létrehozása](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+- [A GitHub-fiókjába a GitHub tárház elágaztatása](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Egy Ubuntu (14.04 vagy 16.04) gépet is telepítve Docker kell. Ezen a számítógépen a build és kiadás folyamatok során használja a Visual Studio Team Services. Ez gépen létrehozásának egyik módja, hogy a lemezképpel találhatók a [Azure piactér](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
+A Docker telepítve van egy (14.04-es vagy 16.04) Ubuntu-gép is szükséges. Ezen a számítógépen használja a Visual Studio Team Services a buildelési és kiadási folyamatok során. Ez a gép létrehozásának egyik módja az, hogy az elérhető rendszerképet használja a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
 
 ## <a name="step-1-configure-your-visual-studio-team-services-account"></a>1. lépés: A Visual Studio Team Services-fiók konfigurálása 
 
-Ebben a szakaszban konfigurálhatja a Visual Studio Team Services-fiók.
+Ebben a szakaszban konfigurálja a Visual Studio Team Services-fiók.
 
-### <a name="configure-a-visual-studio-team-services-linux-build-agent"></a>A Visual Studio Team Services Linux build ügynök konfigurálása
+### <a name="configure-a-visual-studio-team-services-linux-build-agent"></a>A Visual Studio Team Services Linux fordító-ügynökhöz konfigurálása
 
-Docker-képek létrehozására és az Azure-tárolót beállításjegyzékbe, a Visual Studio Team Services build leküldéses ezeket a lemezképeket, akkor regisztrálnia kell egy Linux-ügynök. Ezen telepítési lehetőség közül választhat:
+Docker-rendszerképek létrehozásához, és ezek a lemezképek leküldése az Azure container registry a Visual Studio Team Services build, akkor regisztrálnia kell egy Linux-ügynök. Ezen telepítési lehetőségek állnak rendelkezésére:
 
 * [Egy Linux-ügynök telepítése](https://www.visualstudio.com/docs/build/admin/agents/v2-linux)
 
-* [A VSTS-ügynök futtatásához használt Docker](https://hub.docker.com/r/microsoft/vsts-agent)
+* [Futtassa a VSTS-ügynököt a Docker használatával](https://hub.docker.com/r/microsoft/vsts-agent)
 
-### <a name="install-the-docker-integration-vsts-extension"></a>A Docker-integráció VSTS-kiterjesztés telepítése
+### <a name="install-the-docker-integration-vsts-extension"></a>A Docker-integráció VSTS-bővítmény telepítése
 
-A Microsoft biztosít egy VSTS bővítménye build a Docker használni, és felszabadíthatja a folyamatok. A bővítmény érhető el a [VSTS piactér](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker). Kattintson a **telepítése** VSTS-fiókját a bővítmény hozzáadása:
+A Microsoft biztosít egy VSTS-bővítmény, amely a docker használatával a build és a kiadási folyamatok. Ez a bővítmény érhető el a [VSTS Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker). Kattintson a **telepítése** Ez a bővítmény hozzáadása a VSTS-fiók:
 
-![A Docker-integráció telepítése](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
+![Telepítse a Docker-integrációval](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
 
-A rendszer felkéri a hitelesítő adatok használatával VSTS-fiókjához. 
+A rendszer felkéri a VSTS-fiók hitelesítő adataival csatlakozhat. 
 
-### <a name="connect-visual-studio-team-services-and-github"></a>Csatlakoztassa a Visual Studio Team Services, GitHub
+### <a name="connect-visual-studio-team-services-and-github"></a>Csatlakozás a Visual Studio Team Services és a GitHub
 
-Állítsa be a kapcsolatot a VSTS-projektet és a GitHub-fiók között.
+Állítsa be a VSTS-projektet és a GitHub-fiók közötti kapcsolat.
 
-1. A Visual Studio Team Services projektben kattintson a **beállítások** ikonra az eszköztár, és válassza ki a **szolgáltatások**.
+1. A Visual Studio Team Services-projektben kattintson a **beállítások** ikonra az eszköztárban, majd válassza a **szolgáltatások**.
 
-    ![A Visual Studio Team Services - külső kapcsolatot](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
+    ![A Visual Studio Team Services - külső kapcsolatok](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-2. Kattintson a bal oldali **új szolgáltatási végpont** > **GitHub**.
+1. Kattintson a bal oldali **új szolgáltatásvégpont** > **GitHub**.
 
-    ![A Visual Studio Team Services - GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
+    ![A Visual Studio Team Services – GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
-3. A GitHub-fiók használható VSTS engedélyezésére, kattintson a **engedélyezés** és kövesse a megjelenő ablakban.
+1. Engedélyezze a GitHub-fiók használata a vsts-ben, kattintson a **engedélyezés** , és kövesse a megjelenő ablakban.
 
-    ![A Visual Studio Team Services - engedélyezik a Githubon](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
+    ![A Visual Studio Team Services - GitHub engedélyezése](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
 
-### <a name="connect-vsts-to-your-azure-container-registry-and-azure-container-service-cluster"></a>VSTS csatlakozni az Azure-tárolót beállításjegyzék és Azure Tárolószolgáltatás-fürt
+### <a name="connect-vsts-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Csatlakoztathatja a VSTS-a az Azure container registry és Azure Container Service-fürt
 
-Az utolsó lépéseket azokat a CI/CD adatcsatorna elérése előtt kell a tároló beállításjegyzék és a Docker Swarm-fürt külső kapcsolatok konfigurálása az Azure-ban. 
+Az utolsó előtt a CI/CD-folyamat az első lépésekre külső kapcsolatok a tárolóregisztrációs adatbázis és a Docker Swarm-fürt beállítása az Azure-ban. 
 
-1. Az a **szolgáltatások** a Visual Studio Team Services projekt beállítások hozzáadása típusú szolgáltatásvégpont **Docker beállításjegyzék**. 
+1. Az a **szolgáltatások** beállításait a Visual Studio Team Services projekt hozzáadása egy szolgáltatásvégpont típusú **Docker-beállításjegyzék**. 
 
-2. A felugró ablakban nyílik meg adja meg az URL-címet, és az Azure-tárolót beállításjegyzék hitelesítő adatai.
+1. Az előugró ablak írja be az URL-cím és az Azure container registry hitelesítő adataival.
 
-    ![A Visual Studio Team Services - Docker beállításjegyzék](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
+    ![A Visual Studio Team Services – Docker-beállításjegyzék](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
 
-3. A Docker Swarm-fürt típusú végpont hozzáadása **SSH**. Majd adja meg az SSH csatlakozási adatait a Swarm-fürt.
+1. A Docker Swarm-fürt esetében típusú végpont hozzáadása **SSH**. Ezután írja be a SSH-kapcsolati adatok a Swarm-fürt.
 
-    ![A Visual Studio Team Services - SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
+    ![Visual Studio Team Services - SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
 
-A konfiguráció most történik. A következő lépésekben a CI/CD-feldolgozási folyamat alapszik, és központilag telepíti az alkalmazást a Docker Swarm-fürt létrehozása. 
+Minden konfiguráció a most történik. Az alábbi lépésekkel hoz létre a CI/CD folyamatot, amely az alkalmazás a Docker Swarm-fürt létrehozása és telepítése. 
 
-## <a name="step-2-create-the-build-definition"></a>2. lépés: A build definíció létrehozása
+## <a name="step-2-create-the-build-definition"></a>2. lépés: A builddefiníció létrehozása
 
-Ebben a lépésben állítson be egy build definitionfor a VSTS-projektet, és a létrehozási munkafolyamat megadása a tároló lemezképek
+Ebben a lépésben egy build definitionfor beállítása a VSTS-projekthez, és a build munkafolyamat definiálása a tárolólemezképek
 
-### <a name="initial-definition-setup"></a>Kezdeti beállításának
+### <a name="initial-definition-setup"></a>Kezdeti definíció beállítása
 
-1. Build definíció létrehozása, csatlakozzon a Visual Studio Team Services-projektet, és kattintson **Build & kiadási**. 
+1. Builddefiníció létrehozása a Visual Studio Team Services-projekthez csatlakozzon, és kattintson a **Build & Release**. 
 
-2. Az a **definíciók Build** kattintson **+ új**. Válassza ki a **üres** sablont.
+1. Az a **Builddefinícióiról** területén kattintson **+ új**. Válassza ki a **üres** sablont.
 
-    ![A Visual Studio Team Services - új definíció létrehozása](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
+    ![A Visual Studio Team Services – új Build definíciója](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
 
-3. A GitHub tárház forrását, ellenőrizze az új buildverziót konfigurálása **folyamatos integrációt**, és válassza ki az ügynök várólista, ahol regisztrálták-e a Linux-ügynök. Kattintson a **létrehozása** hozza létre a build definícióit.
+1. A GitHub adattár forrással, ellenőrizze az új build konfigurálása **folyamatos integráció**, és válassza ki az ügynök üzenetsorba, ahol regisztrálta a Linux-ügynök. Kattintson a **létrehozás** a builddefiníció létrehozása.
 
-    ![A Visual Studio Team Services - Build-definíció létrehozása](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
+    ![A Visual Studio Team Services - Build definíció létrehozása](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
 
-4. Az a **Build definíciók** lapon, először megnyitja a **tárház** lapot és a build az Előfeltételek című szakaszban létrehozott MyShop projekt elágazás használatára konfigurálja. Győződjön meg arról, hogy kiválassza *acs-dokumentumok* , a **alapértelmezett ágat**.
+1. Az a **definíciókat hozhat létre** lapon, először nyissa meg a **tárház** fülre, és a build, amelyet az Előfeltételek MyShop projekt elágazás használatára konfigurálja. Győződjön meg arról, hogy kiválasztotta *acs-docs* , a **alapértelmezett ággal**.
 
-    ![Visual Studio Team Services - Build tárház konfigurációja](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
+    ![A Visual Studio Team Services - Build adattár-konfiguráció](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
 
-5. Az a **eseményindítók** lapra, konfigurálja a build minden véglegesítés után aktiválására. Válassza ki **folyamatos integrációt** és **módosítások kötegelt**.
+1. Az a **eseményindítók** lapra, konfigurálja a build minden véglegesítés után aktiválását. Válassza ki **folyamatos integráció** és **Batch-módosítások**.
 
-    ![Visual Studio Team Services - Build eseményindító konfigurációja](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
+    ![A Visual Studio Team Services - Build-Trigger konfigurációja](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
 
-### <a name="define-the-build-workflow"></a>Adja meg a létrehozási munkafolyamat
-A következő lépéseket a build munkafolyamat határozza meg. Öt tároló lemezképeit számára részére a *MyShop* alkalmazás. Minden egyes lemezképének összeállítása a Dockerfile a projektben található használatával:
+### <a name="define-the-build-workflow"></a>A build munkafolyamatokat
+A következő lépéseket a build munkafolyamat határozza meg. Nincsenek hozhat létre öt tárolórendszerképeket a *MyShop* alkalmazás. Egyes rendszerképek a docker-fájlban található meg a projekt használatával lett összeállítva:
 
 * ProductsApi
 * Proxy
@@ -138,89 +138,89 @@ A következő lépéseket a build munkafolyamat határozza meg. Öt tároló lem
 * RecommandationsApi
 * ShopFront
 
-Adjon hozzá két Docker lépéseket az egyes lemezképek, egy a lemezkép létrehozásához, és egy leküldéses a lemezkép az Azure-tárolót beállításjegyzékben kell. 
+Adjon hozzá két Docker lépéseket minden egyes képe, egyet a rendszerkép létrehozásához és a egy-a rendszerkép leküldése az Azure container registry a kell. 
 
-1. A build munkafolyamat egy lépés felvételéhez kattintson **+ Hozzáadás összeállítása lépés** válassza **Docker**.
+1. A build-munkafolyamat egy lépés hozzáadásához kattintson **+ Add build lépés** válassza **Docker**.
 
-    ![A Visual Studio Team Services - Build lépéseket adhat hozzá.](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
+    ![A Visual Studio Team Services - létrehozási lépések hozzáadása](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-2. Az egyes lemezképek konfigurálása egy lépést, amely használja a `docker build` parancsot.
+1. Az egyes lemezképek konfigurálása egy lépést, amely használja a `docker build` parancsot.
 
-    ![A Visual Studio Team Services - Docker-Build](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
+    ![A Visual Studio Team Services - Docker Build](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
-    A létrehozási műveletet, válassza ki az Azure-tárolót beállításjegyzék, a **lemezképet készít** művelet, és az egyes lemezképek definiáló Dockerfile. Állítsa be a **összeállítási környezet** , a Dockerfile gyökérkönyvtár, és adja meg a **Lemezképnév**. 
+    A létrehozási műveletet, válassza ki az Azure container registry a **állítson össze egy rendszerképet** művelet, és a docker-fájl, amely meghatározza az egyes rendszerképek. Állítsa be a **összeállítási környezet** gyökér, a docker-fájl a könyvtárban, és definiálja a **Lemezképnév**. 
     
-    Amint az előző képernyőn, a lemezkép neve kezdődhet URI-azonosítója az Azure-tárolót beállításjegyzék. (Is segítségével build változó parametrizálja a címke a kép, például az ebben a példában a build azonosítója.)
+    Ahogyan az előző képernyőn, indítsa el a rendszerkép nevének URI-ját az Azure container registrybe. (Is használhatja egy build változót a címke a rendszerkép, például a build azonosító ebben a példában paraméterezni.)
 
-3. Az egyes lemezképek, a második lépésben használó konfigurálása a `docker push` parancsot.
+1. Az egyes lemezképek, a második lépésben használó konfigurálása a `docker push` parancsot.
 
-    ![A Visual Studio Team Services - Docker leküldéses](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
+    ![A Visual Studio Team Services - Docker Push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
-    Leküldéses művelethez válassza ki az Azure-tárolót beállításjegyzék a **lemezkép leküldéses** művelet, és írja be a **kép neve** , amely az előző lépésben épül.
+    A leküldéses művelethez válassza ki az Azure container registry a **rendszerkép leküldése** műveletet, és adja meg a **Lemezképnév** , amely az előző lépésben épül.
 
-4. Miután konfigurálta a build és leküldéses lépéseket az egyes öt lemezképet, adja hozzá a két további lépés a build munkafolyamatban.
+1. Miután konfigurálta a build és a leküldéses lépéseket az egyes öt rendszerképet, két további lépések hozzáadása a build-munkafolyamatot.
 
-    a. A parancssori feladatot, amely egy bash parancsfájlt használ a *BuildNumber* a docker-compose.yml fájlt, és a jelenlegi számainak létrehozása azonosítóját. További részletek a következő képernyő jelenik meg.
+    a. Egy parancssori feladatot, amely egy bash-szkript használ a *BuildNumber* a docker-compose.yml fájl és a jelenlegi eseményt hozhat létre azonosítót. Részleteket a következő képernyő jelenik meg.
 
-    ![A Visual Studio Team Services - frissítés Compose fájl](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
+    ![A Visual Studio Team Services - frissítés Compose-fájl](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
-    b. Ez a feladat elutasítja azokat a frissített Compose fájlt egy összeállítási összetevő, így használható a kiadásban. További részletek a következő képernyő jelenik meg.
+    b. Ez a feladat csökken, a buildösszetevőt a frissített Compose-fájlt, így használhatók a kiadásban. Részleteket a következő képernyő jelenik meg.
 
-    ![A Visual Studio Team Services - Compose közzététele fájl](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
+    ![A Visual Studio Team Services - összeállítás közzététele fájl](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
-5. Kattintson a **mentése** és a build definition neve.
+1. Kattintson a **mentése** és nevezze el a builddefiníció.
 
 ## <a name="step-3-create-the-release-definition"></a>3. lépés: A kiadási definíció létrehozása
 
-A Visual Studio Team Services lehetővé teszi [kiadásokban kezelése környezetek között](https://www.visualstudio.com/team-services/release-management/). Folyamatos üzembe helyezés, győződjön meg arról, hogy az alkalmazás telepítve van a különböző környezetekben (például a fejlesztői, tesztelési, éles üzem előtti és éles) zökkenőmentes úgy is engedélyezheti. Létrehozhat egy új környezetben, amely az Azure tároló szolgáltatás Docker Swarm-fürt jelöli.
+A Visual Studio Team Services lehetővé teszi, hogy [kiadások kezelheti a környezeteket](https://www.visualstudio.com/team-services/release-management/). Győződjön meg arról, hogy az alkalmazás üzemel, a különböző környezetekben (például fejlesztési, tesztelési, éles üzem előtti vagy éles) zökkenőmentes módon való folyamatos üzembe helyezés is engedélyezheti. Létrehozhat egy új környezetet, amely az Azure Container Service Docker Swarm-fürt jelöli.
 
-![A Visual Studio Team Services - ACS verzióját](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
+![A Visual Studio Team Services - az ACS-kiadás](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
-### <a name="initial-release-setup"></a>Eredeti kiadásának beállítása
+### <a name="initial-release-setup"></a>Kezdeti kiadás beállítása
 
-1. Egy kiadási definition létrehozásához kattintson a **kiadásokban** > **+ kiadás**
+1. Kiadási definíció létrehozása, kattintson a **kiadásokban** > **+ kiadás**
 
-2. Az összetevő-forrás konfigurálásához kattintson **összetevők** > **hivatkozás egy összetevő forrás**. A build, amelyet az előző lépésben megadott itt, csatolja az új kiadási definíciója. Ezzel a docker-compose.yml fájlt érhető el a kibocsátási folyamatban.
+1. Az összetevő-forrás konfigurálásához kattintson **összetevők** > **hivatkozás egy összetevő forrás**. Az új kiadási definíció itt összekapcsolása a build, amelyet az előző lépésben megadott. Ha így tesz, a docker-compose.yml fájl érhető el a kibocsátási folyamat.
 
     ![A Visual Studio Team Services - kiadás összetevők](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
-3. A kiadási eseményindító konfigurálásához kattintson **eseményindítók** válassza **folyamatos üzembe helyezés**. Az eseményindító be ugyanazon összetevő forrás. Ez a beállítás biztosítja, hogy az új kiadási elindul, amint a létrehozás sikeresen befejeződik.
+1. A kiadási trigger konfigurálásához kattintson **eseményindítók** válassza **folyamatos üzembe helyezés**. Állítsa be az eseményindító összetevő azonos forrásból. Ez a beállítás biztosítja, hogy az új kiadás elindul, amint a létrehozás sikeresen befejeződik.
 
     ![A Visual Studio Team Services - kiadás eseményindítók](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
 
-### <a name="define-the-release-workflow"></a>Adja meg a kiadási munkafolyamat
+### <a name="define-the-release-workflow"></a>A kiadási munkafolyamatokat
 
-A kiadási munkafolyamat két feladatot hozzáadott tevődik össze.
+A kiadási munkafolyamat két feladatot a hozzáadott tevődik össze.
 
-1. Egy feladat biztonságosan másolja a compose-fájlt egy *telepítése* mappa a Docker Swarm fő csomóponton korábban konfigurált SSH-kapcsolat használatával. További részletek a következő képernyő jelenik meg.
+1. Egy feladat használatával is biztonságosan átmásolhatja a compose-fájlt egy *üzembe helyezése* mappájába, a Docker Swarm fő csomóponttal, az előzőekben konfigurált SSH-kapcsolat használatával. Részleteket a következő képernyő jelenik meg.
 
-    ![Visual Studio Team Services - kiadás SCP-je](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
+    ![A Visual Studio Team Services - kiadás SCP-je](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-2. Egy második feladat futtatásához bash parancs `docker` és `docker-compose` parancsok a fő csomóponton. További részletek a következő képernyő jelenik meg.
+1. Egy második tevékenység futtatásához egy bash-parancs végrehajtása konfigurálása `docker` és `docker-compose` parancsok a fő csomópont. Részleteket a következő képernyő jelenik meg.
 
     ![A Visual Studio Team Services - kiadás Bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
-    A parancs végrehajtása meg a fő használja, a Docker parancssori felületén és a Docker Compose CLI-t a következő feladatok elvégzéséhez:
+    A parancs végrehajtása a fő használatát a Docker parancssori felületén és a Docker-Compose CLI a következő feladatokat végezheti el:
 
-    - Bejelentkezés az Azure-tárolót beállításjegyzék (három build variab'les definiált használ a **változók** lapon)
-    - Adja meg a **DOCKER_HOST** működéséhez a Swarm végponthoz változó (: 2375)
-    - Keresse meg a *telepítése* , amely az előző biztonságos másolási feladat hozta létre, és a docker-compose.yml fájlt tartalmazó mappa 
-    - Végrehajtás `docker-compose` parancsokat, amelyek az új lemezképet lekéréses leállítania a szolgáltatásokat, távolítsa el a szolgáltatásokat, és a tárolók létrehozása.
+    - Jelentkezzen be az Azure container registrybe (három build variab'les meghatározott használ a **változók** lap)
+    - Adja meg a **DOCKER_HOST** változó dolgozhat a Swarm-végponthoz (: 2375-ös)
+    - Keresse meg a *üzembe helyezése* , amely az előző biztonságos másolási tevékenység által létrehozott és a docker-compose.yml fájlt tartalmazó mappa 
+    - Hajtsa végre `docker-compose` parancsok, amelyek az új rendszerképeket, állítsa le a szolgáltatásokat, távolítsa el a szolgáltatásokat, és a tárolók létrehozásához.
 
     >[!IMPORTANT]
-    > Amint az előző képernyőn, hagyja a **stderr-en sikertelen** jelölőnégyzet nincs bejelölve. Ez az egy fontos beállítása, mert `docker-compose` több diagnosztikai üzeneteket, jelenít meg, például a tárolók leállítása vagy törlése, a standard hibák kimenetét. Jelölje be a jelölőnégyzetet, ha a Visual Studio Team Services jelenti, hogy a kiadás során hibák jelentkeztek akkor is, ha minden megfelelően működik.
+    > Ahogyan az előző képernyőn, hagyja a **STDERR-en sikertelen** jelölőnégyzet nincs bejelölve. Ez az egy fontos beállítást, mert `docker-compose` több diagnosztikai üzeneteket jelenít meg például tárolók leállítása vagy törlése, a standard hibakimenet. Jelölje be a jelölőnégyzetet, ha Visual Studio Team Services-jelentések, hogy a kiadás során hibák jelentkeztek akkor is, ha minden megfelelően működik.
     >
-3. Mentse az új kiadási definíciója.
+1. Az új kiadási definíció mentéséhez.
 
 
 >[!NOTE]
->A központi telepítés tartalmazza a némi állásidővel, mivel azt a régi szolgáltatások leállítása és futtatja az újjal. Ennek elkerüléséhez a kék-zöld központi telepítés végrehajtásával lehetőség.
+>A központi telepítés tartalmazza a némi állásidőt jelent, mivel azt a régi szolgáltatások leállítása és futtatja az újat. Ennek elkerülése a kék-zöld üzembe helyezés végrehajtásával lehetőség.
 >
 
-## <a name="step-4-test-the-cicd-pipeline"></a>4. lépés A CI/CD-feldolgozási folyamat tesztelése
+## <a name="step-4-test-the-cicd-pipeline"></a>4. lépés A CI/CD-folyamat tesztelése
 
-Most, hogy a konfiguráció befejezése után is tesztelheti az új CI/CD adatcsatornát. A tesztek legkönnyebben frissítése a forráskódot, és véglegesítse a módosításokat a GitHub-tárházban történő. Néhány másodperccel azután leküldéses a kód jelenik meg a Visual Studio Team Services rendszert futtató új buildverziót. Sikeres befejezést követően az új kiadási indul, és az Azure Tárolószolgáltatás-fürthöz az alkalmazás új verzióját telepíti.
+Most, hogy végzett a konfiguráció, legyen az új CI/CD-folyamat teszteléséhez. A legegyszerűbben úgy, hogy tesztelje, hogy frissítse a forráskódot, és véglegesítse a módosításokat a GitHub-tárházba. Néhány másodperccel azután, küldje le a kódot, megjelenik egy új buildet a Visual Studio Team Servicesben futó. Sikeres befejezést követően új kiadás indul, és az Azure Container Service-fürtön az alkalmazás új verzióját telepíti.
 
 ## <a name="next-steps"></a>További lépések
 
-* Visual Studio Team Services CI/CD kapcsolatos további információkért tekintse meg a [VSTS összeállítása – áttekintés](https://www.visualstudio.com/docs/build/overview).
+* CI/CD a Visual Studio Team Services szolgáltatással kapcsolatos további információkért lásd: a [hozhat létre a vsts-ben – áttekintés](https://www.visualstudio.com/docs/build/overview).

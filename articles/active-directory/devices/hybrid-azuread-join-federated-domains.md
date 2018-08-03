@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 1aa5c0f259fdb5fce449bc86f9cf293801b4770a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b5cd03098f4b4698c40966ceb79d5263b456a979
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369169"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430305"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás összevont tartományok konfigurálása
 
@@ -48,7 +48,7 @@ Ez az oktatóanyag feltételezi, hogy Ön ismeri a:
 
 -  [Az Eszközfelügyelet az Azure Active Directory bemutatása](../device-management-introduction.md)
 
--  [A hibrid Azure Active Directory join megvalósítás tervezése](hybrid-azuread-join-plan.md)
+-  [A hibrid Azure Active Directory-csatlakozás megvalósításának tervezése](hybrid-azuread-join-plan.md)
 
 
 
@@ -212,8 +212,8 @@ Használatakor a **Get-MSolDevice** parancsmaggal ellenőrizheti a szolgáltatá
 
 Ha problémákat tapasztal a hibrid befejezése az Azure AD join tartományhoz csatlakoztatott Windows-eszközök, lásd:
 
-- [Aktuális Windows-eszközök hibrid Azure AD joinnal hibaelhárítása](../device-management-troubleshoot-hybrid-join-windows-current.md)
-- [Hibaelhárítás Windows régebbi verziójú eszközök hibrid Azure AD joinnal](../device-management-troubleshoot-hybrid-join-windows-legacy.md)
+- [Aktuális Windows-eszközök hibrid Azure AD joinnal hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
+- [Hibaelhárítás Windows régebbi verziójú eszközök hibrid Azure AD joinnal](troubleshoot-hybrid-join-windows-legacy.md)
 
 
 
@@ -221,7 +221,7 @@ Ha problémákat tapasztal a hibrid befejezése az Azure AD join tartományhoz c
 
 > [!div class="nextstepaction"]
 > [Konfigurálás hibrid Azure Active Directory-csatlakozás a felügyelt tartományok](hybrid-azuread-join-managed-domains.md)
-> [hibrid Azure Active Directory-csatlakozás kézi konfigurálása](../device-management-hybrid-azuread-joined-devices-setup.md)
+> [hibrid Azure Active Directory-csatlakozás kézi konfigurálása](hybrid-azuread-join-manual-steps.md)
 
 
 

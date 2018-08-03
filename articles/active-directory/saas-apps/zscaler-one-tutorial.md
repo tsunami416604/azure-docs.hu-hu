@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: f827b1befb37e15b5e9fa98f3208a23b71cb2b81
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a7a6abe3a9af98574ffd0a00d21fd0247785f7a5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055690"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438290"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Oktatóanyag: Azure Active Directory-integráció az Zscaler egy
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. A katalógusból Zscaler egy hozzáadása
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-zscaler-one-from-the-gallery"></a>A katalógusból Zscaler egy hozzáadása
 Az Azure AD integrálása a Zscaler egy konfigurálásához hozzá kell Zscaler egy a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a Zscaler egy konfigurálásához hozzá kell Zscaler 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Zscaler egy**.
+1. A Keresés mezőbe írja be a **Zscaler egy**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/zscaler-one-tutorial/tutorial_zscalerone_search.png)
 
-5. Az eredmények panelen válassza ki a **Zscaler egy**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Zscaler egy**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/zscaler-one-tutorial/tutorial_zscalerone_addfromgallery.png)
 
@@ -89,11 +89,11 @@ Zscaler egy rendelje hozzá az értékét a **felhasználónév** értékeként 
 Az Azure AD egyszeri bejelentkezés a Zscaler egy tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Proxybeállítások konfigurálása](#configuring-proxy-settings)**  – az Internet Explorerben a Proxybeállítások konfigurálása
-3. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Zscaler egy tesztfelhasználó létrehozása](#creating-a-zscaler-one-test-user)**  – egy megfelelője a Britta Simon Zscaler egy felhasználó Azure ad-ben reprezentációja van csatolva van.
-5. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-6. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Proxybeállítások konfigurálása](#configuring-proxy-settings)**  – az Internet Explorerben a Proxybeállítások konfigurálása
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Zscaler egy tesztfelhasználó létrehozása](#creating-a-zscaler-one-test-user)**  – egy megfelelője a Britta Simon Zscaler egy felhasználó Azure ad-ben reprezentációja van csatolva van.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -105,11 +105,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-one-tutorial/tutorial_zscalerone_samlbase.png)
 
-3. Az a **Zscaler tartománya és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Zscaler tartománya és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-one-tutorial/tutorial_zscalerone_url.png)
 
@@ -118,29 +118,29 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Frissíteni ezt az értéket a tényleges bejelentkezési URL-címmel rendelkezik. Kapcsolattartó [Zscaler egy ügyfél-támogatási csapatának](https://www.zscaler.com/company/contact) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-one-tutorial/tutorial_zscalerone_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-one-tutorial/tutorial_general_400.png)
 
-6. Az a **Zscaler egy konfigurációs** területén kattintson **Zscaler egy konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Zscaler egy konfigurációs** területén kattintson **Zscaler egy konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-one-tutorial/tutorial_zscalerone_configure.png) 
 
-7. Egy másik böngészőablakban jelentkezzen be a Zscaler egy vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Zscaler egy vállalati hely rendszergazdaként.
 
-8. A felső menüben kattintson **felügyeleti**.
+1. A felső menüben kattintson **felügyeleti**.
    
     ![Felügyeleti](./media/zscaler-one-tutorial/ic800206.png "felügyelete")
 
-9. A **szerepkörök és a rendszergazdák kezelése**, kattintson a **felhasználók kezelése és a hitelesítési**.   
+1. A **szerepkörök és a rendszergazdák kezelése**, kattintson a **felhasználók kezelése és a hitelesítési**.   
             
     ![Felhasználók és hitelesítés kezeléséhez](./media/zscaler-one-tutorial/ic800207.png "felhasználók és hitelesítés kezeléséhez")
 
-10. Az a **hitelesítési beállítások kiválasztása a szervezet** szakaszban, hajtsa végre az alábbi lépéseket:   
+1. Az a **hitelesítési beállítások kiválasztása a szervezet** szakaszban, hajtsa végre az alábbi lépéseket:   
                 
     ![Hitelesítési](./media/zscaler-one-tutorial/ic800208.png "hitelesítés")
    
@@ -148,7 +148,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Kattintson a **SAML egyszeri bejelentkezés paramétereinek konfigurálása**.
 
-11. Az a **konfigurálása SAML egyszeri bejelentkezéses paraméterek** párbeszédpanel lapon hajtsa végre az alábbi lépéseket, és kattintson **kész**
+1. Az a **konfigurálása SAML egyszeri bejelentkezéses paraméterek** párbeszédpanel lapon hajtsa végre az alábbi lépéseket, és kattintson **kész**
 
     ![Egyszeri bejelentkezés](./media/zscaler-one-tutorial/ic800209.png "egyszeri bejelentkezés")
     
@@ -160,7 +160,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     d. Válassza ki **SAML automatikus kiépítés engedélyezése**.
 
-12. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
 
     ![Felügyeleti](./media/zscaler-one-tutorial/ic800210.png "felügyelete")
     
@@ -173,17 +173,17 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Indítsa el **az Internet Explorer**.
 
-2. Válassza ki **Internetbeállítások** származó a **eszközök** nyílt menüje a **Internetbeállítások** párbeszédpanel.   
+1. Válassza ki **Internetbeállítások** származó a **eszközök** nyílt menüje a **Internetbeállítások** párbeszédpanel.   
     
      ![Internetbeállítások](./media/zscaler-one-tutorial/ic769492.png "Internetbeállítások")
 
-3. Kattintson a **kapcsolatok** fülre.   
+1. Kattintson a **kapcsolatok** fülre.   
   
      ![Kapcsolatok](./media/zscaler-one-tutorial/ic769493.png "kapcsolatok")
 
-4. Kattintson a **LAN-beállítások** megnyitásához a **LAN-beállítások** párbeszédpanel.
+1. Kattintson a **LAN-beállítások** megnyitásához a **LAN-beállítások** párbeszédpanel.
 
-5. A Proxy server szakaszban hajtsa végre az alábbi lépéseket:   
+1. A Proxy server szakaszban hajtsa végre az alábbi lépéseket:   
    
     ![Proxykiszolgáló](./media/zscaler-one-tutorial/ic769494.png "proxykiszolgáló")
 
@@ -197,7 +197,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     e. Kattintson a **OK** gombra kattintva zárja be a **helyi hálózati (LAN) beállításai** párbeszédpanel.
 
-6. Kattintson a **OK** gombra kattintva zárja be a **Internetbeállítások** párbeszédpanel.
+1. Kattintson a **OK** gombra kattintva zárja be a **Internetbeállítások** párbeszédpanel.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -214,15 +214,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/zscaler-one-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/zscaler-one-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/zscaler-one-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/zscaler-one-tutorial/create_aaduser_04.png) 
 
@@ -242,19 +242,19 @@ Ahhoz, hogy jelentkezzen be a Zscaler egy Azure AD-felhasználók, akkor ki kell
 
 1. Jelentkezzen be a **Zscaler egy** bérlő.
 
-2. Kattintson a **felügyeleti**.   
+1. Kattintson a **felügyeleti**.   
    
     ![Felügyeleti](./media/zscaler-one-tutorial/ic781035.png "felügyelete")
 
-3. Kattintson a **felhasználókezelés**.   
+1. Kattintson a **felhasználókezelés**.   
         
      ![Adjon hozzá](./media/zscaler-one-tutorial/ic781036.png "hozzáadása")
 
-4. Az a **felhasználók** lapra, majd **Hozzáadás**.
+1. Az a **felhasználók** lapra, majd **Hozzáadás**.
       
     ![Adjon hozzá](./media/zscaler-one-tutorial/ic781037.png "hozzáadása")
 
-5. A felhasználó hozzáadása a szakaszban a következő lépésekkel:
+1. A felhasználó hozzáadása a szakaszban a következő lépésekkel:
         
     ![Felhasználó hozzáadása](./media/zscaler-one-tutorial/ic781038.png "felhasználó hozzáadása")
    
@@ -277,23 +277,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Zscaler egy**.
+1. Az alkalmazások listájában jelölje ki a **Zscaler egy**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-one-tutorial/tutorial_zscalerone_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -305,7 +305,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

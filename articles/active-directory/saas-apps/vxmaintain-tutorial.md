@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6362bcb701b444c8cd71b270222ce4f87b4cc2e3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055858"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Oktatóanyag: Azure Active Directory-integráció az vxMaintain
 
@@ -65,19 +65,19 @@ A katalógusból vxMaintain hozzáadásához tegye a következőket:
 
     ![Az Azure Active Directory gomb][1]
 
-2. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
+1. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
 
     ![A "Nagyvállalati alkalmazások" panel][2]
     
-3. Egy alkalmazás hozzáadása a a **minden alkalmazás** párbeszédpanelen jelölje ki **új alkalmazás**.
+1. Egy alkalmazás hozzáadása a a **minden alkalmazás** párbeszédpanelen jelölje ki **új alkalmazás**.
 
     ![Az "új alkalmazás" gombra][3]
 
-4. A Keresés mezőbe írja be a **vxMaintain**.
+1. A Keresés mezőbe írja be a **vxMaintain**.
 
     ![Az "Egyszeri bejelentkezési mód" legördülő lista](./media/vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. Az eredmények listájában válassza ki a **vxMaintain**, majd válassza ki **Hozzáadás**.
+1. Az eredmények listájában válassza ki a **vxMaintain**, majd válassza ki **Hozzáadás**.
 
     ![A vxMaintain hivatkozás](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
@@ -98,11 +98,11 @@ Ebben a szakaszban is mind az Azure AD egyszeri bejelentkezés engedélyezése a
 
     ![Az "Egyszeri bejelentkezés" parancs][4]
 
-2. Az SSO engedélyezéséhez a **egyszeri bejelentkezési mód** legördülő listában válassza **SAML-alapú bejelentkezés**.
+1. Az SSO engedélyezéséhez a **egyszeri bejelentkezési mód** legördülő listában válassza **SAML-alapú bejelentkezés**.
  
     ![Az "SAML-alapú bejelentkezés" parancs](./media/vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. A **vxMaintain tartomány és URL-címek**, tegye a következőket:
+1. A **vxMaintain tartomány és URL-címek**, tegye a következőket:
 
     ![A tartomány és URL-címek szakaszt vxMaintain](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
@@ -113,15 +113,15 @@ Ebben a szakaszban is mind az Azure AD egyszeri bejelentkezés engedélyezése a
     > [!NOTE] 
     > Az előző értékek nem valódi. Frissítse azokat a tényleges azonosítóval, és a válasz URL-címe. Az értékek beszerzéséhez forduljon a [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact).
  
-4. Alatt **SAML-aláíró tanúsítvány**válassza **metaadatainak XML**, majd mentse a metaadat-fájlt a számítógépre.
+1. Alatt **SAML-aláíró tanúsítvány**válassza **metaadatainak XML**, majd mentse a metaadat-fájlt a számítógépre.
 
     ![Az "SAML aláíró tanúsítvány" szakasz](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
-5. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
     ![A Mentés gombra](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Konfigurálása **vxMaintain** SSO, küldjön a letöltött **metaadatainak XML** fájlt a [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact).
+1. Konfigurálása **vxMaintain** SSO, küldjön a letöltött **metaadatainak XML** fájlt a [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact).
 
 > [!TIP]
 > Az alkalmazás beállítása során az előző utasítások a tömör verziója olvashat a [az Azure portal](https://portal.azure.com). Az alkalmazás hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapra, és hozzáférhet a beágyazott dokumentáció a **konfigurációs** szakaszban. 
@@ -138,16 +138,16 @@ Ebben a szakaszban tesztfelhasználó Britta Simon az Azure Portalon létrehozha
 
     ![Az "Azure Active Directory" gomb](./media/vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. Felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** > **minden felhasználó**.
+1. Felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** > **minden felhasználó**.
     
     ![A "Minden felhasználó" hivatkozásra](./media/vxmaintain-tutorial/create_aaduser_02.png)  
     A **minden felhasználó** párbeszédpanel nyílik meg. 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás**.
+1. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás**.
  
     ![A Hozzáadás gombra.](./media/vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanelen tegye a következőket:
+1. Az a **felhasználói** párbeszédpanelen tegye a következőket:
  
     ![A felhasználó párbeszédpanel](./media/vxmaintain-tutorial/create_aaduser_04.png) 
 
@@ -173,21 +173,21 @@ Ebben a szakaszban engedélyezze tesztfelhasználó Britta Simon Azure egyszeri 
 
     ![Az "Összes alkalmazás" hivatkozásra][201] 
 
-2. Az a **alkalmazások** listáról válassza ki **vxMaintain**.
+1. Az a **alkalmazások** listáról válassza ki **vxMaintain**.
 
     ![A vxMaintain hivatkozás](./media/vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
+1. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202] 
 
-4. Válassza ki **Hozzáadás** , majd a **hozzárendelés hozzáadása** ablaktáblán válassza **felhasználók és csoportok**.
+1. Válassza ki **Hozzáadás** , majd a **hozzárendelés hozzáadása** ablaktáblán válassza **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][203]
 
-5. A a **felhasználók és csoportok** párbeszédpanel a **felhasználók** listáról válassza ki **Britta Simon**, majd válassza ki a **válassza** gombra.
+1. A a **felhasználók és csoportok** párbeszédpanel a **felhasználók** listáról válassza ki **Britta Simon**, majd válassza ki a **válassza** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
+1. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése
 
@@ -200,7 +200,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure Active Directory SaaS-alkalmazások integrálását ismertető oktatóanyagok listáját](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

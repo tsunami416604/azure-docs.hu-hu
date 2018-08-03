@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bbb17d1b47c5409d15a15a7461da981fa5e09f7e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a87cccbcf58a9d8f701f9721fb3ec36460b13703
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056834"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438732"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Csatlakoztassa a számítógépet az OMS-átjáró Internet-hozzáférés nélkül
 Ez a dokumentum ismerteti a kommunikáció konfigurálása az Azure Automation és a Log Analytics használatával az OMS-átjárót, ha közvetlenül csatlakoztatott, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáféréssel.  Az OMS-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxyt, adatok gyűjtéséhez és küldhet az Azure Automation és a Log Analytics a felhasználók nevében.  
@@ -98,35 +98,35 @@ Kétféleképpen az OMS-átjáró telepítőjének fájl legújabb verziójának
 
 1. Letölthető a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=54443).
 
-2. Töltse le az Azure Portalról.  Miután bejelentkezik az Azure Portalon:  
+1. Töltse le az Azure Portalról.  Miután bejelentkezik az Azure Portalon:  
 
    1. Keresse meg a szolgáltatások listájában, és válassza ki **Log Analytics**.  
-   2. Jelöljön ki egy munkaterületet.
-   3. A munkaterület panel **általános**, kattintson a **gyors üzembe helyezés**.
-   4. A **válasszon egy a munkaterülethez csatlakoztatandó adatforrást**, kattintson a **számítógépek**.
-   5. Az a **közvetlen ügynök** panelen kattintson a **OMS-átjáró letöltése**.<br><br> ![OMS-átjáró letöltése](./media/log-analytics-oms-gateway/download-gateway.png)
+   1. Jelöljön ki egy munkaterületet.
+   1. A munkaterület panel **általános**, kattintson a **gyors üzembe helyezés**.
+   1. A **válasszon egy a munkaterülethez csatlakoztatandó adatforrást**, kattintson a **számítógépek**.
+   1. Az a **közvetlen ügynök** panelen kattintson a **OMS-átjáró letöltése**.<br><br> ![OMS-átjáró letöltése](./media/log-analytics-oms-gateway/download-gateway.png)
 
 vagy 
 
    1. A munkaterület panel **beállítások**, kattintson a **speciális beállítások**.
-   2. Navigáljon a **csatlakoztatott források** > **Windows kiszolgálók** kattintson **OMS-átjáró letöltése**.
+   1. Navigáljon a **csatlakoztatott források** > **Windows kiszolgálók** kattintson **OMS-átjáró letöltése**.
 
 ## <a name="install-the-oms-gateway"></a>Az OMS-átjáró telepítése
 
 Az átjáró telepítéséhez hajtsa végre az alábbi lépéseket.  Ha egy korábbi verzióját telepítette, korábbi nevén *Log Analytics-továbbító*, erre a kiadásra lesz frissítve.  
 
 1. Kattintson duplán a célmappa **OMS Gateway.msi**.
-2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.<br><br> ![Átjárókiszolgáló telepítése varázsló](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br> 
-3. A a **licencszerződés** lapon jelölje be **elfogadom a licencszerződés feltételeit** fogadja el a végfelhasználói LICENCSZERZŐDÉST, majd **tovább**.
-4. Az a **Port és a proxykiszolgáló címét** oldalon:
+1. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.<br><br> ![Átjárókiszolgáló telepítése varázsló](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br> 
+1. A a **licencszerződés** lapon jelölje be **elfogadom a licencszerződés feltételeit** fogadja el a végfelhasználói LICENCSZERZŐDÉST, majd **tovább**.
+1. Az a **Port és a proxykiszolgáló címét** oldalon:
    1. Írja be az átjáró használni a TCP-port száma. A telepítő egy bejövő szabályt konfigurálja, a port számát, a Windows tűzfalon.  Az alapértelmezett érték: 8080-as.
       A portnak a számát, az érvényes értéktartomány: 1-65535. Ha a bemeneti nem esik a tartományba, hibaüzenet jelenik meg.
-   2. Igény szerint ha a kiszolgáló, amelyen az átjáró telepítve van egy proxyn keresztül történő kommunikációhoz van szüksége, írja be a proxykiszolgáló címét, amelyen az átjáró kell csatlakoztatnia. Például: `http://myorgname.corp.contoso.com:80`.  Ha üres, akkor az átjáró megpróbálja közvetlenül csatlakozik az internethez.  Ha a proxykiszolgáló hitelesítést igényel, adjon meg egy felhasználónevet és jelszót.<br><br> ![Átjáró varázsló proxy konfigurálása](./media/log-analytics-oms-gateway/gateway-wizard02.png)<br>   
-   3. Kattintson a **Tovább** gombra.
-5. Ha nincs engedélyezve a Microsoft Update, a Microsoft Update lapon jelenik meg, ahol kiválaszthatja az engedélyezéshez. Jelölje ki, és kattintson a **tovább**. Ellenkező esetben folytassa a következő lépéssel.
-6. Az a **célmappa** lapon hagyja bejelölve az alapértelmezett mappa: C:\Program Files\OMS átjáró, vagy írja be a helyet, ahol szeretné telepíteni az átjárót, és kattintson a **tovább**.
-7. Az a **készen áll a telepítésre** kattintson **telepítése**. Felhasználói fiókok felügyeletének telepítése kér engedélyt jelenhet meg. Ha igen, kattintson a **Igen**.
-8. Kattintson a telepítés után **Befejezés**. Ellenőrizheti, hogy a szolgáltatás fut, nyissa meg a services.msc beépülő modult, és ellenőrizze, hogy **OMS-átjáró** megjelenik a listán, a szolgáltatások, és azt állapota van **futó**.<br><br> ![Szolgáltatások – OMS-átjáró](./media/log-analytics-oms-gateway/gateway-service.png)  
+   1. Igény szerint ha a kiszolgáló, amelyen az átjáró telepítve van egy proxyn keresztül történő kommunikációhoz van szüksége, írja be a proxykiszolgáló címét, amelyen az átjáró kell csatlakoztatnia. Például: `http://myorgname.corp.contoso.com:80`.  Ha üres, akkor az átjáró megpróbálja közvetlenül csatlakozik az internethez.  Ha a proxykiszolgáló hitelesítést igényel, adjon meg egy felhasználónevet és jelszót.<br><br> ![Átjáró varázsló proxy konfigurálása](./media/log-analytics-oms-gateway/gateway-wizard02.png)<br>   
+   1. Kattintson a **Tovább** gombra.
+1. Ha nincs engedélyezve a Microsoft Update, a Microsoft Update lapon jelenik meg, ahol kiválaszthatja az engedélyezéshez. Jelölje ki, és kattintson a **tovább**. Ellenkező esetben folytassa a következő lépéssel.
+1. Az a **célmappa** lapon hagyja bejelölve az alapértelmezett mappa: C:\Program Files\OMS átjáró, vagy írja be a helyet, ahol szeretné telepíteni az átjárót, és kattintson a **tovább**.
+1. Az a **készen áll a telepítésre** kattintson **telepítése**. Felhasználói fiókok felügyeletének telepítése kér engedélyt jelenhet meg. Ha igen, kattintson a **Igen**.
+1. Kattintson a telepítés után **Befejezés**. Ellenőrizheti, hogy a szolgáltatás fut, nyissa meg a services.msc beépülő modult, és ellenőrizze, hogy **OMS-átjáró** megjelenik a listán, a szolgáltatások, és azt állapota van **futó**.<br><br> ![Szolgáltatások – OMS-átjáró](./media/log-analytics-oms-gateway/gateway-service.png)  
 
 ## <a name="configure-network-load-balancing"></a>Hálózati terheléselosztás beállítása 
 Beállíthatja, hogy az átjáró magas rendelkezésre álláshoz a hálózati terheléselosztás (NLB) a Microsoft hálózati terheléselosztás (NLB) vagy a hardveres terheléselosztók használatával.  A terheléselosztó forgalmat kezeli az OMS-ügynököket a kért kapcsolatokat, vagy az Operations Manager felügyeleti kiszolgálók átirányításával a csomópontok között. Egy átjáró kiszolgáló leáll, ha más csomópontokhoz átirányítja a forgalmat.
@@ -134,9 +134,9 @@ Beállíthatja, hogy az átjáró magas rendelkezésre álláshoz a hálózati t
 Ismerje meg, hogyan tervezhet és a egy Windows Server 2016 hálózati terheléselosztási fürt üzembe helyezése, lásd: [a hálózati terheléselosztás](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing).  Az alábbi lépéseket a Microsoft hálózati terheléselosztási fürt konfigurálását ismertetik.  
 
 1. Jelentkezzen be a Windows server, amely tagja a rendszergazdák rendszergazdai fiókkal az NLB-fürt.  
-2. Hálózati terheléselosztás kezelőjének megnyitása a Kiszolgálókezelőben, kattintson a **eszközök**, és kattintson a **a hálózati terheléselosztás kezelője**.
-3. Az OMS-átjáró kiszolgáló kapcsolódni a Microsoft Monitoring Agent telepítve van, kattintson a jobb gombbal a fürt IP-címét, és kattintson **gazdagép hozzáadása fürthöz**.<br><br> ![Hálózati terheléselosztás kezelője – betöltéséhez adja hozzá a gazdagépet a fürthöz](./media/log-analytics-oms-gateway/nlb02.png)<br> 
-4. Adja meg az IP-cím, az átjárókiszolgáló, amely kapcsolódni szeretne.<br><br> ![Hálózati terheléselosztás kezelője – a gazdagépet a fürthöz: csatlakozás](./media/log-analytics-oms-gateway/nlb03.png) 
+1. Hálózati terheléselosztás kezelőjének megnyitása a Kiszolgálókezelőben, kattintson a **eszközök**, és kattintson a **a hálózati terheléselosztás kezelője**.
+1. Az OMS-átjáró kiszolgáló kapcsolódni a Microsoft Monitoring Agent telepítve van, kattintson a jobb gombbal a fürt IP-címét, és kattintson **gazdagép hozzáadása fürthöz**.<br><br> ![Hálózati terheléselosztás kezelője – betöltéséhez adja hozzá a gazdagépet a fürthöz](./media/log-analytics-oms-gateway/nlb02.png)<br> 
+1. Adja meg az IP-cím, az átjárókiszolgáló, amely kapcsolódni szeretne.<br><br> ![Hálózati terheléselosztás kezelője – a gazdagépet a fürthöz: csatlakozás](./media/log-analytics-oms-gateway/nlb03.png) 
     
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>Az OMS-ügynök és az Operations Manager felügyeleti csoport konfigurálása
 A következő szakasz tartalmazza a közvetlenül csatlakoztatott OMS-ügynököket, az Operations Manager felügyeleti csoport vagy az Azure Automation hibrid Runbook-feldolgozók konfigurálása az Azure Automation és a Log Analytics kommunikálni az OMS-átjáró szükséges lépéseket.  
@@ -163,15 +163,15 @@ Ha ez az első alkalommal regisztrál a Log Analytics-munkaterület az Operation
 1. Nyisson meg egy emelt szintű parancssort.
    a. Lépjen a **Start** , és írja be **cmd**.
    b. Kattintson a jobb gombbal **parancssor** , és válassza ki futtató rendszergazda **.
-2. Írja be a következő parancsot, majd nyomja le az **Enter** billentyűt:
+1. Írja be a következő parancsot, majd nyomja le az **Enter** billentyűt:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
 Miután befejezte a Log Analytics-integráció, eltávolíthatja a módosítás futtatásával `netsh winhttp reset proxy` , majd a **Configure proxy server** lehetőség az operatív konzolon, az OMS-átjáró kiszolgáló megadása. 
 
 1. Nyissa meg az Operations Manager konzolt és a **Operations Management Suite**, kattintson a **kapcsolat** majd **proxykiszolgáló konfigurálása**.<br><br> ![Az Operations Manager – proxykiszolgáló konfigurálása](./media/log-analytics-oms-gateway/scom01.png)<br> 
-2. Válassza ki **proxykiszolgáló használata az Operations Management Suite eléréséhez** majd írja be az OMS-átjáró kiszolgáló IP-címét vagy az NLB virtuális IP-címét. Győződjön meg arról, hogy kezdjen a `http://` előtag.<br><br> ![Az Operations Manager – a proxykiszolgáló címe](./media/log-analytics-oms-gateway/scom02.png)<br> 
-3. Kattintson a **Befejezés** gombra. Az Operations Manager felügyeleti csoportban most már a Log Analytics szolgáltatás az átjárókiszolgálón keresztül kommunikációra van konfigurálva.
+1. Válassza ki **proxykiszolgáló használata az Operations Management Suite eléréséhez** majd írja be az OMS-átjáró kiszolgáló IP-címét vagy az NLB virtuális IP-címét. Győződjön meg arról, hogy kezdjen a `http://` előtag.<br><br> ![Az Operations Manager – a proxykiszolgáló címe](./media/log-analytics-oms-gateway/scom02.png)<br> 
+1. Kattintson a **Befejezés** gombra. Az Operations Manager felügyeleti csoportban most már a Log Analytics szolgáltatás az átjárókiszolgálón keresztül kommunikációra van konfigurálva.
 
 ### <a name="configure-operations-manager---specific-agents-use-proxy-server"></a>Konfigurálja az Operations Manager - ügynökök adott proxykiszolgáló használata
 Nagy vagy összetett környezetek esetében csak szüksége lehet adott kiszolgálók (vagy csoportokba) az OMS-átjáró kiszolgáló használatára.  Ezek a kiszolgálók, az Operations Manager-ügynök nem frissíthető közvetlenül a globális érték a felügyeleti csoport felülírja ezt az értéket.  Ehelyett kell elküldeni ezeket az értékeket használja szabály felülbírálása.  
@@ -181,17 +181,17 @@ Nagy vagy összetett környezetek esetében csak szüksége lehet adott kiszolg�
 >  
 
 1. Nyissa meg az Operations Manager konzolt, és válassza ki a **szerzői műveletek** munkaterületen.  
-2. Válassza a szerzői műveletek munkaterületének **szabályok** , és kattintson a **hatókör** gombra az Operations Manager eszköztárán. Ha ez a gomb nem érhető el, ellenőrizze, győződjön meg arról, hogy egy objektumot, nem pedig mappát jelölt a figyelés ablaktáblán. A **felügyeleti csomag objektumai** párbeszédpanel közös célzott osztályok, csoportok és objektumok listáját jeleníti meg. 
-3. Típus **Állapotfigyelő szolgáltatás** a a **keressen** mezőben, majd válassza ki a listából.  Kattintson az **OK** gombra.  
-4. Keresse meg a szabály **Advisor beállítás szabály** és az operatív konzol eszköztárán kattintson **felülbírálások** , majd mutasson a **bírálja felül a Rule\For osztály egy adott objektumához: Állapotfigyelő szolgáltatás**  , és válasszon ki egy adott objektumot a listából.  Igény szerint hozhat létre egyéni csoportja az állapotfigyelő szolgáltatás objektum a kiszolgálók, ez a felülbírálás a alkalmazni, és ezután alkalmazza a felülbírálást, ehhez a csoporthoz.
-5. Az a **felülbírálás tulajdonságai** párbeszédpanelen jelölje be a a **felülbírálása** oszlop melletti a **WebProxyAddress** paraméter.  Az a **felülbírálás értéke** mezőben adja meg az URL-cím, az OMS-átjáró kiszolgáló biztosítsa, hogy először a a `http://` előtag.  
+1. Válassza a szerzői műveletek munkaterületének **szabályok** , és kattintson a **hatókör** gombra az Operations Manager eszköztárán. Ha ez a gomb nem érhető el, ellenőrizze, győződjön meg arról, hogy egy objektumot, nem pedig mappát jelölt a figyelés ablaktáblán. A **felügyeleti csomag objektumai** párbeszédpanel közös célzott osztályok, csoportok és objektumok listáját jeleníti meg. 
+1. Típus **Állapotfigyelő szolgáltatás** a a **keressen** mezőben, majd válassza ki a listából.  Kattintson az **OK** gombra.  
+1. Keresse meg a szabály **Advisor beállítás szabály** és az operatív konzol eszköztárán kattintson **felülbírálások** , majd mutasson a **bírálja felül a Rule\For osztály egy adott objektumához: Állapotfigyelő szolgáltatás**  , és válasszon ki egy adott objektumot a listából.  Igény szerint hozhat létre egyéni csoportja az állapotfigyelő szolgáltatás objektum a kiszolgálók, ez a felülbírálás a alkalmazni, és ezután alkalmazza a felülbírálást, ehhez a csoporthoz.
+1. Az a **felülbírálás tulajdonságai** párbeszédpanelen jelölje be a a **felülbírálása** oszlop melletti a **WebProxyAddress** paraméter.  Az a **felülbírálás értéke** mezőben adja meg az URL-cím, az OMS-átjáró kiszolgáló biztosítsa, hogy először a a `http://` előtag.  
 
     >[!NOTE]
     > Nem kell engedélyezése a szabály már felügyelt automatikusan egy felülbírálással, a Microsoft System Center Advisor biztonságos hivatkozás felülbírálhatja felügyeleticsomag célzó a Microsoft System Center Advisor figyelési kiszolgáló csoport található.
     >   
 
-6. Válasszon felügyeleti csomagot a **célhelyként szolgáló felügyeleti csomag** listában, vagy hozzon létre egy új, lezáratlan felügyeleti csomag kattintva **új**. 
-7. Amikor végzett a változtatásokkal, kattintson az **OK**. 
+1. Válasszon felügyeleti csomagot a **célhelyként szolgáló felügyeleti csomag** listában, vagy hozzon létre egy új, lezáratlan felügyeleti csomag kattintva **új**. 
+1. Amikor végzett a változtatásokkal, kattintson az **OK**. 
 
 ### <a name="configure-for-automation-hybrid-workers"></a>Az automation hibrid feldolgozó konfigurálása
 Ha Automation hibrid Runbook-feldolgozók a környezetében, az alábbi lépéseket, ideiglenes manuális kerülő támogatja azokat az átjáró konfigurálásához adjon meg.
@@ -199,9 +199,9 @@ Ha Automation hibrid Runbook-feldolgozók a környezetében, az alábbi lépése
 A következő lépésekben, ismernie kell az Automation-fiókot tartalmazó Azure-régióban. Keresse meg a helyet:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza ki az Azure Automation szolgáltatást.
-3. Válassza ki a megfelelő Azure Automation-fiókot.
-4. Megtekintheti a régió alatt **hely**.<br><br> ![Az Azure-portál – Automation-fiók helye](./media/log-analytics-oms-gateway/location.png)  
+1. Válassza ki az Azure Automation szolgáltatást.
+1. Válassza ki a megfelelő Azure Automation-fiókot.
+1. Megtekintheti a régió alatt **hely**.<br><br> ![Az Azure-portál – Automation-fiók helye](./media/log-analytics-oms-gateway/location.png)  
 
 Az alábbi táblázat segítségével azonosíthatja az egyes helyeken az URL-cím:
 
@@ -238,23 +238,23 @@ Az alábbi táblázat segítségével azonosíthatja az egyes helyeken az URL-c�
 Ha a számítógép regisztrálva van, a hibrid Runbook-feldolgozók automatikusan Pro opravy az Update Management megoldás használatával, kövesse az alábbi lépéseket:
 
 1. Adja hozzá a Feladatadatok futásidejű szolgáltatás URL-címeit az OMS gatewayen engedélyezett gazdagép-listába. Például:`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-2. Indítsa újra az OMS-átjáró szolgáltatás a következő PowerShell-parancsmag segítségével: `Restart-Service OMSGatewayService`
+1. Indítsa újra az OMS-átjáró szolgáltatás a következő PowerShell-parancsmag segítségével: `Restart-Service OMSGatewayService`
 
 Ha a számítógép egy előre telepített Azure Automation hibrid Runbook-feldolgozó regisztrációs parancsmag használatával, kövesse az alábbi lépéseket:
 
 1. Az ügynök regisztrációs URL-címe adja hozzá az OMS gatewayen engedélyezett gazdagép-listába. Például:`Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
-2. Adja hozzá a Feladatadatok futásidejű szolgáltatás URL-címeit az OMS gatewayen engedélyezett gazdagép-listába. Például:`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-3. Indítsa újra az OMS-átjáró szolgáltatást.
+1. Adja hozzá a Feladatadatok futásidejű szolgáltatás URL-címeit az OMS gatewayen engedélyezett gazdagép-listába. Például:`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. Indítsa újra az OMS-átjáró szolgáltatást.
     `Restart-Service OMSGatewayService`
 
 ## <a name="useful-powershell-cmdlets"></a>Hasznos PowerShell-parancsmagok
 Parancsmagok segítségével a feladatokat, melyek szükségesek ahhoz, hogy az OMS-átjáró konfigurációs beállításainak frissítése. Mielőtt azokat használni, ügyeljen arra, hogy:
 
 1. Telepítse az OMS-átjáró (MSI).
-2. Nyisson meg egy PowerShell-konzolablakot.
-3. Importálja a modult, írja be ezt a parancsot: `Import-Module OMSGateway`
-4. Ha nem történt hiba az előző lépésben, a modul importálása sikeresen megtörtént, és a parancsmag is használható. Típusa `Get-Module OMSGateway`
-5. Miután változtatásokat parancsmagok segítségével, győződjön meg arról, újra kell indítania az átjárószolgáltatást.
+1. Nyisson meg egy PowerShell-konzolablakot.
+1. Importálja a modult, írja be ezt a parancsot: `Import-Module OMSGateway`
+1. Ha nem történt hiba az előző lépésben, a modul importálása sikeresen megtörtént, és a parancsmag is használható. Típusa `Get-Module OMSGateway`
+1. Miután változtatásokat parancsmagok segítségével, győződjön meg arról, újra kell indítania az átjárószolgáltatást.
 
 Ha hibaüzenetet kap a 3. lépésben, a modul nem lett importálva. A hiba akkor fordulhat elő, ha nem található a modul PowerShell. Az átjáró telepítési elérési úton található: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
 

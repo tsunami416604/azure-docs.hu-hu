@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0f6713b9b8704e813ab1fd77ab1cf4e71e7f6670
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235429"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434679"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Hozzon létre és kezelhet virtuális gépeket a DevTest Labs szolgáltatással az Azure CLI használatával
 Ez a rövid útmutató végigvezeti létrehozása, indítása, csatlakozás, frissítése és a fejlesztői gépen, a laborban karbantartása. 
 
-Előzetes teendők
+Előkészületek:
 
 * Ha a labor nem lett létrehozva, útmutató [Itt](devtest-lab-create-lab.md).
 
@@ -38,7 +38,7 @@ az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGrou
 > Helyezze a **tesztkörnyezet erőforráscsoport** a--resource-group-paraméter neve.
 >
 
-Ha szeretne egy virtuális gép létrehozása egy képletet, használja a--képlet paraméter használatával [az lab vm létrehozása](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create).
+Ha szeretne egy virtuális gép létrehozása egy képletet, használja a--képlet paraméter használatával [az lab vm létrehozása](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create).
 
 
 Győződjön meg arról, hogy a virtuális gép érhető el.

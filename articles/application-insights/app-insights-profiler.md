@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 07/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: e4712b94be94eb6d4cf363fc120b72c74f29f0a2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 52f0e6c90aa9fa0dc439eae3801b2d4ac29387a9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059661"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429680"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil élő Azure-webalkalmazások az Application insights segítségével
 
@@ -33,15 +33,15 @@ Profiler az ASP.NET és az ASP.NET Core web Apps, Web Apps szolgáltatást futta
 Miután telepített egy webalkalmazást, függetlenül attól, ha az App Insights SDK forráskódját szerepel, akkor tegye a következőket:
 
 1. Nyissa meg a **App Services** panel az Azure Portalon.
-2. Navigáljon a **beállítások > figyelés** ablaktáblán.
+1. Navigáljon a **beállítások > figyelés** ablaktáblán.
 
    ![Az App Insights engedélyezése az App Services portálon](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-3. Lehet, kövesse az utasításokat a panelen hozzon létre egy új erőforrást, vagy válasszon egy meglévő App Insights-erőforrás a webes alkalmazás figyelésére. Fogadja el az összes alapértelmezett beállításokat. **Kódszintű diagnosztika** alapértelmezés szerint be van kapcsolva, és lehetővé teszi, hogy a Profiler.
+1. Lehet, kövesse az utasításokat a panelen hozzon létre egy új erőforrást, vagy válasszon egy meglévő App Insights-erőforrás a webes alkalmazás figyelésére. Fogadja el az összes alapértelmezett beállításokat. **Kódszintű diagnosztika** alapértelmezés szerint be van kapcsolva, és lehetővé teszi, hogy a Profiler.
 
    ![App Insights-webhelybővítményt hozzáadása][Enablement UI]
 
-4. Profiler az App Insights-webhelybővítményt a most már telepítve van, és engedélyezve van az App Services Alkalmazásbeállítás használatával.
+1. Profiler az App Insights-webhelybővítményt a most már telepítve van, és engedélyezve van az App Services Alkalmazásbeállítás használatával.
 
     ![A Profiler Alkalmazásbeállítás][profiler-app-setting]
 
@@ -214,14 +214,14 @@ Ezeket a paramétereket törölje a mappát, amely az Application Insights Profi
 Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott frissítéseket. Ha a környezet számára szükséges, manuálisan alkalmazhatja a frissítések. Például lehet, hogy az alkalmazás a Web Apps környezetben fut a powerapps szolgáltatásra.
 
 1. Az a **webes alkalmazás-vezérlő** ablaktáblán nyissa meg **beállítások**.
-2. Állítsa be **.Net Framework version** való **v4.6**.
-3. Állítsa be **Always On** való **a**.
-4. Adja hozzá a **állítani az APPINSIGHTS_INSTRUMENTATIONKEY** beállítást, és állítsa az értékét a azonos kialakítási kulcsot, az SDK által használt alkalmazás.
-5. Nyissa meg **speciális eszközök**.
-6. Válassza ki **Go** a Kudu-webhely megnyitásához.
-7. Válassza ki a Kudu webhelyen **Webhelybővítményekkel**.
-8. Telepítés **az Application Insights** az Azure Web Apps katalógusából.
-9. Indítsa újra a webalkalmazást.
+1. Állítsa be **.Net Framework version** való **v4.6**.
+1. Állítsa be **Always On** való **a**.
+1. Adja hozzá a **állítani az APPINSIGHTS_INSTRUMENTATIONKEY** beállítást, és állítsa az értékét a azonos kialakítási kulcsot, az SDK által használt alkalmazás.
+1. Nyissa meg **speciális eszközök**.
+1. Válassza ki **Go** a Kudu-webhely megnyitásához.
+1. Válassza ki a Kudu webhelyen **Webhelybővítményekkel**.
+1. Telepítés **az Application Insights** az Azure Web Apps katalógusából.
+1. Indítsa újra a webalkalmazást.
 
 ## <a id="profileondemand"></a> Profiler aktiválása manuálisan
 
@@ -272,7 +272,7 @@ Miért érdemes ezt a hibaüzenetet két oka lehet:
 
 1. A profiler igény szerinti munkamenet sikeres volt, de az Application Insights az összegyűjtött adatok feldolgozásához hosszabb időt vett igénybe. Nem fejeződött be adatok feldolgozása folyamatban 15 percet vesz igénybe, ha a portálon egy időtúllépési üzenet jelenik meg. Bár idővel Profiler nyomkövetések jelennek meg. Ha ez történik, csak mellőzi a hibaüzenet most. Aktívan dolgozunk a javítás
 
-2. A webalkalmazás, amely nem rendelkezik az igény szerinti szolgáltatás Profiler-ügynök egy korábbi verziója van. Ha korábban engedélyezte az Application Insights-profilban, valószínűleg a Profiler-ügynök a igény szerinti funkció használatához frissítenie kell.
+1. A webalkalmazás, amely nem rendelkezik az igény szerinti szolgáltatás Profiler-ügynök egy korábbi verziója van. Ha korábban engedélyezte az Application Insights-profilban, valószínűleg a Profiler-ügynök a igény szerinti funkció használatához frissítenie kell.
   
 Kövesse az alábbi lépéseket, és telepítse a legújabb Profiler:
 
@@ -281,25 +281,25 @@ Kövesse az alábbi lépéseket, és telepítse a legújabb Profiler:
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 Ha ezen beállítások bármelyike nincs beállítva, nyissa meg az Application Insights engedélyezését ablaktábla a legújabb webhelybővítmény telepítése.
 
-2. Nyissa meg az Application Insights paneljén App Services portálon.
+1. Nyissa meg az Application Insights paneljén App Services portálon.
 
     ![App Services portálon az Application Insights engedélyezése][enable-app-insights]
 
-3. Ha egy "Frissítés" gombot a következő oldal jelenik meg, kattintson az Application Insights-webhelybővítményt is telepíti a legújabb Profiler-ügynök frissítését.
+1. Ha egy "Frissítés" gombot a következő oldal jelenik meg, kattintson az Application Insights-webhelybővítményt is telepíti a legújabb Profiler-ügynök frissítését.
 ![Webhelybővítmény frissítése][update-site-extension]
 
-4. Kattintson a **módosítása** való gondoskodik róla, hogy a Profiler bekapcsolt, és válassza ki **OK** menti a módosításokat.
+1. Kattintson a **módosítása** való gondoskodik róla, hogy a Profiler bekapcsolt, és válassza ki **OK** menti a módosításokat.
 
     ![Módosítsa és mentse az app insights][change-and-save-appinsights]
 
-5. Lépjen vissza a **Alkalmazásbeállítások** lapon ellenőrizze a következő alkalmazás beállítások elemeinek az App Service vannak beállítva:
+1. Lépjen vissza a **Alkalmazásbeállítások** lapon ellenőrizze a következő alkalmazás beállítások elemeinek az App Service vannak beállítva:
     * **Állítani az APPINSIGHTS_INSTRUMENTATIONKEY**: cserélje le a megfelelő rendszerállapotkulcsot az application insights.
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
     ![a profiler App beállításai][app-settings-for-profiler]
 
-6. Szükség esetén ellenőrizze a bővítmény verziója, és gondoskodik róla, hogy nincs elérhető frissítés.
+1. Szükség esetén ellenőrizze a bővítmény verziója, és gondoskodik róla, hogy nincs elérhető frissítés.
 
     ![Ellenőrizze a bővítmény frissítése][check-for-extension-update]
 

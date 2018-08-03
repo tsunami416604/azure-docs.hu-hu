@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Asana konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikusan ellátásához, majd leépíti Asana felhasználói fiókokat.
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval Asana konfigurálása |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Asana felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
@@ -16,91 +16,91 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 8c3224a392e7e130b62e36019a1d180c6826d0ed
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9ab2b22840d162fc0194151c5eec02675aad92dc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332211"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427652"
 ---
-# <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Asana konfigurálása
+# <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Asana konfigurálása
 
-Ez az oktatóanyag célja a lépéseket kell elvégeznie a Asana és az Azure Active Directory (Azure AD) automatikusan ellátásához, majd leépíti a felhasználói fiókok Azure ad-Asana mutatjuk be.
+Ez az oktatóanyag célja, a lépéseket kell elvégeznie a Asana és az Azure Active Directory (Azure AD) való automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből Asana mutatni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
+Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
 *   Az Azure AD-bérlő
-*   Az Asana bérlő a egy [vállalati](https://www.asana.com/pricing) a terv és jobban engedélyezve 
-*   A Asana rendszergazdai jogosultságokkal rendelkező felhasználói fiókot 
+*   Az egy Asana-bérlőt egy [vállalati](https://www.asana.com/pricing) a terv és jobban engedélyezve 
+*   Egy felhasználói fiók rendszergazdai jogosultságokkal rendelkezik az Asanában 
 
 > [!NOTE] 
-> Az Azure AD-integrációs kiépítés támaszkodik a [Asana API](https://asana.com/developers/api-reference/users), amely Asana rendelkezésére áll.
+> Azure AD létesítési integrációs támaszkodik a [Asana API](https://asana.com/developers/api-reference/users), amely Asana rendelkezésére áll.
 
-## <a name="assign-users-to-asana"></a>Felhasználók hozzárendelése Asana
+## <a name="assign-users-to-asana"></a>Felhasználók hozzárendelése az Asanában
 
-Az Azure AD egy fogalom, más néven "hozzárendeléseket" alapján határozza meg, mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus fiók felhasználókiépítése keretében csak a kérelmet az Azure ad-ben rendelt felhasználók szinkronizálása. 
+Azure ad-ben más néven "hozzárendeléseket" fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus fióklétesítés kontextusában csak a az Azure AD-alkalmazáshoz hozzárendelt felhasználók szinkronizálása. 
 
-Konfigurálását megelőzően, illetve a létesítési szolgáltatás engedélyezése, el kell döntenie, mely felhasználóknak az Azure AD hozzá kell férniük a Asana alkalmazásba. Ezután ezek a felhasználók itt utasításokat követve hozzárendelheti a Asana alkalmazás:
+Beállítása, és a kiépítési szolgáltatás engedélyezése előtt el kell döntenie, hogy mely felhasználók Azure AD-ben az Asanában alkalmazás hozzáférésre van szükségük. Ezután ezek a felhasználók utasításokat követve hozzárendelheti az Asanában alkalmazás:
 
 [Felhasználó hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-asana"></a>Felhasználók hozzárendelése Asana fontos tippek
 
-Azt javasoljuk, hogy egyetlen rendelje Asana a kiépítési konfigurációjának tesztelése az Azure AD-felhasználó. További felhasználók később is hozzárendelhető.
+Azt javasoljuk, hogy hozzárendelje egyetlen Azure AD-felhasználót az Asanában, az üzembe helyezési konfiguráció tesztelése. További felhasználók később is hozzárendelhető.
 
-## <a name="configure-user-provisioning-to-asana"></a>A felhasználók átadása a Asana konfigurálása 
+## <a name="configure-user-provisioning-to-asana"></a>Konfigurálnom a felhasználókiépítést az Asanában 
 
-Ez a szakasz végigvezeti az Azure AD API kiépítés Asana felhasználói fiókhoz való kapcsolódás. Az üzembe helyezési szolgáltatást létrehozása, frissítése és tiltsa le a hozzárendelt felhasználói fiókok Azure AD-ben a felhasználó-hozzárendeléseket alapján Asana is konfigurálja.
+Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Asana-felhasználói fiókot. Is konfigurálhatja az eszközkiépítési szolgáltatás létrehozása, frissítése és tiltsa le a hozzárendelt felhasználói fiókok az Asanában, az Azure AD felhasználói hozzárendelések alapján.
 
 > [!TIP]
-> SAML-alapú egyszeri bejelentkezésre vonatkozó Asana engedélyezéséhez kövesse az utasításokat a [Azure-portálon](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, bár ez a két funkció egészítik ki egymást.
+> SAML-alapú egyszeri bejelentkezés az Asanában engedélyezéséhez kövesse az utasításokat a [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható az Automatikus kiépítés függetlenül azonban ezen két funkció kiegészíti egymást.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Automatikus felhasználói fiók kiépítés Asana az Azure AD konfigurálása
+### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Automatikus felhasználói fiók kiépítése Asanában, az Azure AD konfigurálása
 
-1. Az a [Azure-portálon](https://portal.azure.com), keresse meg a **Azure Active Directory** > **vállalati alkalmazások** > **összes alkalmazás** szakasz.
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg a **Azure Active Directory** > **vállalati alkalmazások** > **mindenalkalmazás** szakaszban.
 
-2. Ha már konfigurált az egyszeri bejelentkezés Asana, keresni Asana példányát használja a keresőmezőt. Máskülönben válassza **Hozzáadás** keresse meg a **Asana** az alkalmazás katalógusában. Válassza ki **Asana** a keresési eredmények közül, és adja hozzá az alkalmazások listáját.
+1. Ha már konfigurálta az egyszeri bejelentkezés Asana, keresse meg az Asana-példány a keresőmező használatával. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **Asana** az alkalmazás-katalógusában. Válassza ki **Asana** a keresési eredmények között, és adja hozzá az alkalmazások listáját.
 
-3. Jelölje ki a Asana példányát, majd válassza ki a **kiépítési** fülre.
+1. Asana-példányát, majd válassza ki és a **kiépítési** fülre.
 
-4. Állítsa be **kiépítési üzemmódját** való **automatikus**.
+1. Állítsa be **Kiépítési mód** való **automatikus**.
 
-    ![Asana kiépítése](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
+    ![Asana-kiépítés](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
 
-5. Az a **rendszergazdai hitelesítő adataival** területen hozza létre a jogkivonatot, és írja be a következő lépések követésével **titkos Token**:
+1. Alatt a **rendszergazdai hitelesítő adataival** területén kövesse ezeket az utasításokat a jogkivonatot, és írja be a **titkos jogkivonat**:
 
-    a. Jelentkezzen be [Asana](https://app.asana.com) a rendszergazdai fiók használatával.
+    a. Jelentkezzen be a [Asana](https://app.asana.com) a rendszergazdai fiók használatával.
 
-    b. Válassza ki a felső sávon a profilképet, és válassza ki a jelenlegi szervezetnév beállításokat.
+    b. Válassza ki profilképét a felső sávon, és válassza ki a jelenlegi cégnév beállításokat.
 
-    c. Lépjen a **szolgáltatásfiókok** fülre.
+    c. Nyissa meg a **szolgáltatásfiókok** fülre.
 
     d. Válassza ki **szolgáltatásfiók hozzáadása**.
 
-    e. Frissítés **neve** és **kapcsolatos** és a profilképet, igény szerint. Másolja a lexikális elem szerepel az **Token**, és válassza ki azt a **módosítások mentése**.
+    e. Frissítés **neve** és **kapcsolatos** és a profilképet, igény szerint. Másolja a tokent az **Token**, és válassza ki azt a **módosítások mentése**.
 
-6. Válassza ki az Azure-portálon **kapcsolat tesztelése** annak érdekében, hogy az Azure AD az Asana alkalmazáshoz csatlakozhat. Ha nem sikerül, győződjön meg arról, hogy a Asana fiókja rendelkezik-e rendszergazdai jogosultságokkal, és próbálja meg a **kapcsolat tesztelése** léptessen ismét.
+1. Az Azure Portalon válassza ki a **kapcsolat tesztelése** annak érdekében, hogy az Azure AD az Asanában alkalmazáshoz kapcsolódik. Ha a kapcsolat hibája esetén, győződjön meg arról, hogy az Asanában rendszergazdai engedélyekkel rendelkezzen, majd próbálkozzon a **kapcsolat tesztelése** lépés újra.
 
-7. Adja meg az e-mail cím vagy egy csoportot, amelybe az üzembe helyezési hiba értesítéseket **értesítő e-mailt**. Jelölje be a jelölőnégyzetet alatt.
+1. Adja meg az e-mail-címét egy személy vagy csoport, amely az üzembe helyezési hiba értesítéseket kapni szeretné **értesítő e-mailt**. Jelölje be a jelölőnégyzetet alá.
 
-8. Kattintson a **Mentés** gombra. 
+1. Kattintson a **Mentés** gombra. 
 
-9. Az a **hozzárendelések** szakaszban jelölje be **szinkronizálása Azure Active Directory-felhasználókat Asana**.
+1. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók az Asanában**.
 
-10. Az a **attribútum-leképezésekhez** szakaszban, tekintse át a felhasználói attribútumok Asana az Azure ad-szinkronizálandó. A kiválasztott attribútumok **egyező** tulajdonságok használatával felel meg a felhasználói fiókokat a Asana a frissítési műveleteket. Válassza ki **mentése** véglegesíteni a módosításokat. További információkért lásd: [testreszabása felhasználói rendelkezés attribútum-leképezésekhez](../active-directory-saas-customizing-attribute-mappings.md).
+1. Az a **attribútumleképezések** területen tekintse át a felhasználói attribútumok Asana szinkronizálását az Azure ad-ből. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókokat az Asanában a frissítési műveleteket. Válassza ki **mentése** véglegesíti a módosításokat. További információkért lásd: [felhasználó kiépítése attribútumleképezések testreszabása](../active-directory-saas-customizing-attribute-mappings.md).
 
-11. Ahhoz, hogy az Azure AD a Asana, a szolgáltatás kiépítését a **beállítások** területen módosítsa **kiépítési állapot** való **a**.
+1. Ahhoz, hogy az Azure AD létesítési szolgáltatás az Asanában, az a **beállítások** területén módosíthatja **üzembe helyezési állapotra** való **a**.
 
-12. Kattintson a **Mentés** gombra. 
+1. Kattintson a **Mentés** gombra. 
 
-Most a kezdeti szinkronizálás indítása a Asana rendelt bármely felhasználó számára a **felhasználók** szakasz. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve a tevékenységi naplóit kiépítésére. A felügyeleti naplók az Asana alkalmazás a létesítési szolgáltatás által végzett összes műveletet írják le.
+Most a kezdeti szinkronizálás indítása az Asanában rendelt bármely felhasználó számára a **felhasználók** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat tevékenységeket tartalmazó naplók kiépítés szakaszt. A naplók a Asana-alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet ismerteti.
 
-Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentést](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [automatikus felhasználói fiók üzembe helyezésének jelentést](../active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](asana-tutorial.md)

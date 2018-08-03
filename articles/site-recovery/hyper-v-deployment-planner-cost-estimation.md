@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 01d4f3873c854776078986918e6ece55017c9193
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: d5b3bf62999c197c437e55a66ee6ba935bdc6ea8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917472"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428530"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
 
@@ -105,7 +105,7 @@ Virtuális gépek manuális hozzáadása:
 
 1. Válassza a **Sor beszúrása** lehetőséget egy új sor beszúrásához a **kezdő-** és a **zárósor** közé.
 
-2. Töltse ki az alábbi oszlopokat a virtuális gép hozzávetőleges mérete és a konfigurációnak megfelelő virtuális gépek száma alapján: 
+1. Töltse ki az alábbi oszlopokat a virtuális gép hozzávetőleges mérete és a konfigurációnak megfelelő virtuális gépek száma alapján: 
 
     a. **Virtuális gépek száma**
 
@@ -125,9 +125,9 @@ Virtuális gépek manuális hozzáadása:
 
     i. **Azure Hybrid Use Benefit**
 
-3. Alkalmazhatja ugyanazokat az értékeket minden virtuális gépre a táblázatban az **Alkalmazás az összesre** lehetőséget kiválasztva a következőknél: **DR működéseinek száma évente**, **DR egyes működéseinek időtartama (nap)**, **Adatredundancia** és az **Azure Hybrid Use Benefit**.
+1. Alkalmazhatja ugyanazokat az értékeket minden virtuális gépre a táblázatban az **Alkalmazás az összesre** lehetőséget kiválasztva a következőknél: **DR működéseinek száma évente**, **DR egyes működéseinek időtartama (nap)**, **Adatredundancia** és az **Azure Hybrid Use Benefit**.
 
-4. A költségek frissítéséhez kattintson a **Költségek újraszámítása** lehetőségre.
+1. A költségek frissítéséhez kattintson a **Költségek újraszámítása** lehetőségre.
 
 **Virtuális gép neve**: A virtuális gép neve.
 

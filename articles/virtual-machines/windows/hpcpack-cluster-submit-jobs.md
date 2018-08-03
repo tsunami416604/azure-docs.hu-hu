@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: c4fd48e40eb4f03daf4bcb7e3b7d6794880799cf
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036489"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421134"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>HPC-feladatok elküldése helyi számítógépről Azure-ban üzembe helyezett HPC Pack-fürtnek
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -47,34 +47,34 @@ Szükséges részletes eljárásokért lásd: [telepítse a Microsoft HPC Pack w
 **A webes összetevők telepítése**
 
 1. Csatlakozás az átjárócsomóponthoz virtuális gép a fürt rendszergazdai hitelesítő adataival.
-2. A HPC Pack telepítési mappából futtassa HpcWebComponents.msi a fő csomópontot.
-3. Kövesse a varázsló a webes összetevők telepítése
+1. A HPC Pack telepítési mappából futtassa HpcWebComponents.msi a fő csomópontot.
+1. Kövesse a varázsló a webes összetevők telepítése
 
 **A webes összetevők konfigurálása**
 
 1. A központi csomóponton indítsa el a HPC PowerShell rendszergazdaként.
-2. A konfigurációs parancsprogram helye könyvtár módosításához írja be a következő parancsot:
+1. A konfigurációs parancsprogram helye könyvtár módosításához írja be a következő parancsot:
    
     ```powershell
     cd $env:CCP_HOME\bin
     ```
-3. Konfigurálja a REST-felület, és indítsa el a HPC-webszolgáltatás, írja be a következő parancsot:
+1. Konfigurálja a REST-felület, és indítsa el a HPC-webszolgáltatás, írja be a következő parancsot:
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service REST –enable
     ```
-4. Amikor a rendszer kéri, válassza ki a tanúsítványt, válassza ki a tanúsítványt, amely megfelel a fő csomópontot nyilvános DNS-nevét. Például, ha az átjárócsomópont a klasszikus üzemi modellt használó virtuális Gépet telepít, a tanúsítvány neve néz CN =&lt;*HeadNodeDnsName*&gt;. cloudapp.net. A Resource Manager üzemi modell használatakor a tanúsítvány neve néz CN =&lt;*HeadNodeDnsName*&gt;.&lt; *régió*&gt;. cloudapp.Azure.com formát követi.
+1. Amikor a rendszer kéri, válassza ki a tanúsítványt, válassza ki a tanúsítványt, amely megfelel a fő csomópontot nyilvános DNS-nevét. Például, ha az átjárócsomópont a klasszikus üzemi modellt használó virtuális Gépet telepít, a tanúsítvány neve néz CN =&lt;*HeadNodeDnsName*&gt;. cloudapp.net. A Resource Manager üzemi modell használatakor a tanúsítvány neve néz CN =&lt;*HeadNodeDnsName*&gt;.&lt; *régió*&gt;. cloudapp.Azure.com formát követi.
    
    > [!NOTE]
    > Válassza ki ezt a tanúsítványt később elküldésekor feladatok az átjárócsomóponthoz a helyi számítógépről. Ne válasszon, vagy adja meg egy tanúsítványt, amely megfelel a fő csomópontot az Active Directory-tartományban lévő számítógép nevét (például: CN =*MyHPCHeadNode.HpcAzure.local*).
    > 
    > 
-5. A webes portálon a feladatok elküldéséhez, írja be a következő parancsot:
+1. A webes portálon a feladatok elküldéséhez, írja be a következő parancsot:
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service Portal -enable
     ```
-6. A szkript befejezése után állítsa le és indítsa újra a HPC-feladatok a Feladatütemező szolgáltatás a következő parancsok beírásával:
+1. A szkript befejezése után állítsa le és indítsa újra a HPC-feladatok a Feladatütemező szolgáltatás a következő parancsok beírásával:
    
     ```powershell
     net stop hpcscheduler
@@ -89,18 +89,18 @@ A HPC Pack ügyféleszközök küldhetők be feladatok a fő csomópont virtuál
 **A tanúsítvány exportálása a fő csomópont**
 
 1. A fő csomópont egy Microsoft Management Console a helyi számítógép-fiók a tanúsítványok beépülő modul hozzáadása. A beépülő modul hozzáadása lépéseiért lásd: [hozzáadása a tanúsítványok beépülő MMC Konzolhoz](https://technet.microsoft.com/library/cc754431.aspx).
-2. A konzolfán bontsa ki **tanúsítványok – helyi számítógép** > **személyes**, és kattintson a **tanúsítványok**.
-3. Keresse meg a tanúsítványt, a HPC Pack webösszetevők a beállított [1. lépés: Telepítse és konfigurálja a webes összetevők a fő csomópontot](#step-1-install-and-configure-the-web-components-on-the-head-node) (például: CN =&lt;*HeadNodeDnsName* &gt;. cloudapp.net).
-4. Kattintson a jobb gombbal a tanúsítványt, és kattintson a **feladatok** > **exportálása**.
-5. A Tanúsítványexportáló varázslóban kattintson **tovább**, és ellenőrizze, hogy **nem, nem akarom exportálni a titkos kulcs** van kiválasztva.
-6. Kövesse a hátralévő lépéseket a varázsló exportálja a tanúsítványt a DER kódolású bináris X.509 (. CER) formátumban.
+1. A konzolfán bontsa ki **tanúsítványok – helyi számítógép** > **személyes**, és kattintson a **tanúsítványok**.
+1. Keresse meg a tanúsítványt, a HPC Pack webösszetevők a beállított [1. lépés: Telepítse és konfigurálja a webes összetevők a fő csomópontot](#step-1-install-and-configure-the-web-components-on-the-head-node) (például: CN =&lt;*HeadNodeDnsName* &gt;. cloudapp.net).
+1. Kattintson a jobb gombbal a tanúsítványt, és kattintson a **feladatok** > **exportálása**.
+1. A Tanúsítványexportáló varázslóban kattintson **tovább**, és ellenőrizze, hogy **nem, nem akarom exportálni a titkos kulcs** van kiválasztva.
+1. Kövesse a hátralévő lépéseket a varázsló exportálja a tanúsítványt a DER kódolású bináris X.509 (. CER) formátumban.
 
 **Importálja a tanúsítványt az ügyfélszámítógépen**
 
 1. Másolja az exportált tanúsítványt a fő csomópont egy mappába, az ügyfélszámítógépen.
-2. Az ügyfélszámítógépen futtassa certmgr.msc.
-3. A tanúsítvány-kezelőben bontsa ki a **tanúsítványok – aktuális felhasználó** > **megbízható legfelső szintű hitelesítésszolgáltatók**, kattintson a jobb gombbal **tanúsítványok**, majd Kattintson a **feladatok** > **importálás**.
-4. A tanúsítvány importálása varázslóban kattintson **tovább** és lépésekkel importálhatja a tanúsítványt a megbízható legfelső szintű hitelesítésszolgáltatók tárolójába, az átjárócsomópont exportált.
+1. Az ügyfélszámítógépen futtassa certmgr.msc.
+1. A tanúsítvány-kezelőben bontsa ki a **tanúsítványok – aktuális felhasználó** > **megbízható legfelső szintű hitelesítésszolgáltatók**, kattintson a jobb gombbal **tanúsítványok**, majd Kattintson a **feladatok** > **importálás**.
+1. A tanúsítvány importálása varázslóban kattintson **tovább** és lépésekkel importálhatja a tanúsítványt a megbízható legfelső szintű hitelesítésszolgáltatók tárolójába, az átjárócsomópont exportált.
 
 > [!TIP]
 > Előfordulhat, hogy megjelenik egy biztonsági figyelmeztetés, mert a hitelesítésszolgáltatót a fő csomópontja nem ismeri fel az ügyfélszámítógép. Tesztelési célokra, figyelmen kívül hagyhatja ezt a figyelmeztetést, és fejezze be a tanúsítvány importálása.
@@ -113,7 +113,7 @@ A konfiguráció ellenőrzéséhez próbálja meg a fürtön az Azure-ban, a hel
 **Feladat küldése parancsok futtatásához az ügyfélszámítógépen**
 
 1. Egy ügyfélszámítógépen, amelyen telepítve vannak-e az a HPC Pack ügyfél segédprogramok indítson el egy parancssort.
-2. Írjon be egy mintául szolgáló parancs. Írja be például a fürt összes feladat megtekintéséhez a következők egyikét, attól függően, a fő csomópont teljes DNS-nevét hasonló parancsot:
+1. Írjon be egy mintául szolgáló parancs. Írja be például a fürt összes feladat megtekintéséhez a következők egyikét, attól függően, a fő csomópont teljes DNS-nevét hasonló parancsot:
    
     ```command
     job list /scheduler:https://<HeadNodeDnsName>.cloudapp.net /all
@@ -129,7 +129,7 @@ A konfiguráció ellenőrzéséhez próbálja meg a fürtön az Azure-ban, a hel
    > A scheduler URL-CÍMÉT az átjárócsomóponthoz, nem az IP-cím teljes DNS-nevét használja. Ha az IP-címet ad meg, hibaüzenet jelenik meg hasonló "a tanúsítvány szükséges, vagy hogy egy érvényes megbízhatósági láncában, vagy a megbízható legfelső szintű tárolójában kell helyezni."
    > 
    > 
-3. Amikor a rendszer kéri, írja be a felhasználónevet (a képernyő &lt;DomainName&gt;\\&lt;felhasználónév&gt;) és a HPC-fürt rendszergazdája vagy egy másik fürt felhasználójának beállított jelszót. Kiválaszthatja, hogy több feladat műveletet a helyi hitelesítő adatok tárolására.
+1. Amikor a rendszer kéri, írja be a felhasználónevet (a képernyő &lt;DomainName&gt;\\&lt;felhasználónév&gt;) és a HPC-fürt rendszergazdája vagy egy másik fürt felhasználójának beállított jelszót. Kiválaszthatja, hogy több feladat műveletet a helyi hitelesítő adatok tárolására.
    
     Feladatok listája jelenik meg.
 
@@ -142,8 +142,8 @@ A konfiguráció ellenőrzéséhez próbálja meg a fürtön az Azure-ban, a hel
     b. Kattintson a **Windows hitelesítő adatok** > **általános hitelesítő adatainak hozzáadása**.
    
     c. Adja meg az Internet-címet (például a https://&lt;HeadNodeDnsName&gt;.cloudapp.net/HpcScheduler vagy a https://&lt;HeadNodeDnsName&gt;.&lt; régió&gt;.cloudapp.azure.com/HpcScheduler), és a felhasználó nevét (&lt;DomainName&gt;\\&lt;felhasználónév&gt;) és a fürt rendszergazdája vagy egy másik jelszót fürt felhasználó konfigurált.
-2. Az ügyfélszámítógépen indítsa el a HPC Job Manager használatát.
-3. Az a **válassza ki a fő csomópont** párbeszédpanelen írja be az URL-címet a fő csomópontot az Azure-ban (például a https://&lt;HeadNodeDnsName&gt;. cloudapp.net vagy https://&lt;HeadNodeDnsName&gt;.&lt; régió&gt;. cloudapp.Azure.com formát követi).
+1. Az ügyfélszámítógépen indítsa el a HPC Job Manager használatát.
+1. Az a **válassza ki a fő csomópont** párbeszédpanelen írja be az URL-címet a fő csomópontot az Azure-ban (például a https://&lt;HeadNodeDnsName&gt;. cloudapp.net vagy https://&lt;HeadNodeDnsName&gt;.&lt; régió&gt;. cloudapp.Azure.com formát követi).
    
     A HPC Job Manager megnyílik, és a fő csomópont feladatok listáját jeleníti meg.
 
@@ -160,13 +160,13 @@ A konfiguráció ellenőrzéséhez próbálja meg a fürtön az Azure-ban, a hel
     ```
     https://<HeadNodeDnsName>.<region>.cloudapp.azure.com/HpcPortal
     ```
-2. A rendszerbiztonság párbeszédpanel, amely akkor jelenik meg írja be a HPC-fürt rendszergazdai tartományi hitelesítő adatait. (Is hozzáadhat mások fürt különböző szerepkörök. Lásd: [fürt felhasználók kezelése](https://technet.microsoft.com/library/ff919335.aspx).)
+1. A rendszerbiztonság párbeszédpanel, amely akkor jelenik meg írja be a HPC-fürt rendszergazdai tartományi hitelesítő adatait. (Is hozzáadhat mások fürt különböző szerepkörök. Lásd: [fürt felhasználók kezelése](https://technet.microsoft.com/library/ff919335.aspx).)
    
     A webes portálon a feladatok listanézete nyílik meg.
-3. Elküldött egy mintául szolgáló feladatot, amely visszaadja a "Hello World" karakterlánc a fürtről, kattintson a **új feladat** a bal oldali navigációs menüben.
-4. Az a **új feladat** lap **küldésének lap**, kattintson a **HelloWorld**. A feladat beküldése lap jelenik meg.
-5. Kattintson a **elküldése**. Ha a rendszer kéri, adja meg a HPC-fürt rendszergazdai tartományi hitelesítő adatait. A feladat elküldésekor, és megjelenik a Feladatazonosító a **saját feladatok** lapot.
-6. Az elküldött feladat eredményeinek megtekintéséhez kattintson a feladat azonosítója, majd **nézet feladatai** parancs eredményének megtekintéséhez (alatt **kimeneti**).
+1. Elküldött egy mintául szolgáló feladatot, amely visszaadja a "Hello World" karakterlánc a fürtről, kattintson a **új feladat** a bal oldali navigációs menüben.
+1. Az a **új feladat** lap **küldésének lap**, kattintson a **HelloWorld**. A feladat beküldése lap jelenik meg.
+1. Kattintson a **elküldése**. Ha a rendszer kéri, adja meg a HPC-fürt rendszergazdai tartományi hitelesítő adatait. A feladat elküldésekor, és megjelenik a Feladatazonosító a **saját feladatok** lapot.
+1. Az elküldött feladat eredményeinek megtekintéséhez kattintson a feladat azonosítója, majd **nézet feladatai** parancs eredményének megtekintéséhez (alatt **kimeneti**).
 
 ## <a name="next-steps"></a>További lépések
 * Az Azure-fürtön a feladatok is küldhet a [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).

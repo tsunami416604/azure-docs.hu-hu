@@ -1,6 +1,6 @@
 ---
-title: Egy Azure-tárolót beállításjegyzék hitelesítéshez
-description: Egy Azure-tárolót beállításjegyzék, például az Azure Active Directory hitelesítési beállítások a rendszerbiztonsági tagok közvetlen és a beállításjegyzék bejelentkezési szolgáltatás.
+title: Azure container registry a hitelesítéshez
+description: Hitelesítési lehetőségek az Azure container registry, beleértve az Azure Active Directory rendszerbiztonsági tagok direct- és beállításjegyzék-bejelentkezési szolgáltatás.
 services: container-registry
 author: stevelas
 manager: jeconnoc
@@ -9,92 +9,92 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8fcebae21d73db75e19bd1091faa8f389f0ba40
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8b97a0fffa6f21e7a8b06dc406711f249310fd73
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165513"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431589"
 ---
-# <a name="authenticate-with-a-private-docker-container-registry"></a>A hitelesítést egy titkos Docker-tároló beállításjegyzék
+# <a name="authenticate-with-a-private-docker-container-registry"></a>Hitelesítés a egy privát Docker regisztrációs adatbázist
 
-Több módon is hitelesítik magukat az Azure-tárolót beállításjegyzék, amelyek egy-egy vagy több beállításjegyzék használati forgatókönyvek alkalmazandó.
+Többféleképpen is lehet egy Azure container registryt, amelyek mindegyike esetében alkalmazható egy vagy több beállításjegyzék használati forgatókönyvek a hitelesítéshez.
 
-A beállításjegyzék közvetlen keresztül bejelentkezhet [egyedi bejelentkezési](#individual-login-with-azure-ad), és az alkalmazások és a tároló orchestrators képes felügyelet nélküli, vagy "távfelügyeleti," hitelesítést végezni egy Azure Active Directory (Azure AD) segítségével [ szolgáltatás egyszerű](#service-principal).
+Egy beállításjegyzék-on keresztül bejelentkezhet [egyéni bejelentkezési](#individual-login-with-azure-ad), és az alkalmazások és tárolóvezénylőt hajthat végre felügyelet nélküli vagy "távfelügyelt" hitelesítés Azure Active Directory (Azure AD) használatával [ egyszerű szolgáltatás](#service-principal).
 
-Az Azure tároló beállításjegyzék nem támogatja a nem hitelesített Docker műveletek vagy névtelen hozzáférés. Nyilvános képek használhatja [Docker Hub](https://docs.docker.com/docker-hub/).
+Az Azure Container Registry támogatja a Docker-műveletek nem hitelesített vagy névtelen hozzáférés. A nyilvános lemezképeket használhatja [Docker Hub](https://docs.docker.com/docker-hub/).
 
-## <a name="individual-login-with-azure-ad"></a>Egyéni bejelentkezési az Azure ad szolgáltatással
+## <a name="individual-login-with-azure-ad"></a>Egyéni bejelentkezési az Azure ad-vel
 
-Az használatakor a beállításjegyzék közvetlenül, például a lemezképeket húzza és lemezképek terjesztése a fejlesztő munkaállomás a hitelesítéshez használja a [az acr bejelentkezési](/cli/azure/acr?view=azure-cli-latest#az_acr_login) parancsot a [Azure CLI](/cli/azure/install-azure-cli):
+Például a rendszerképek lekérése és leküldése a lemezképek a fejlesztői munkaállomáson közvetlenül, a beállításjegyzék használata során hitelesítést végezni a [az acr bejelentkezési](/cli/azure/acr?view=azure-cli-latest#az-acr-login) parancsot a [Azure CLI-vel](/cli/azure/install-azure-cli):
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-Ha jelentkezzen be az `az acr login`, a CLI-t használja a jogkivonatot jön létre, amikor hajtja végre `az login` akadálytalanul hitelesíteni a beállításjegyzék-munkamenet. Ha így már bejelentkezett, a hitelesítő adatok gyorsítótárazott, és az azt követő `docker` parancsok nem igényelnek, a felhasználónév vagy jelszó. Ha a jogkivonat lejár, frissítheti azt használatával a `az acr login` újra a parancsot újból hitelesítésre. Használatával `az acr login` Azure identitások nyújt [szerepkörön alapuló hozzáférés](../role-based-access-control/role-assignments-portal.md).
+Amikor bejelentkezés a következővel `az acr login`, a parancssori Felületet használja a jogkivonatot, jön létre, amikor hajtja végre `az login` zökkenőmentesen hitelesítéséhez a beállításjegyzék-munkamenet. Miután ezzel a módszerrel bejelentkezett a hitelesítő adatok-e a gyorsítótárazott és az azt követő `docker` parancsok nem igényelnek, egy felhasználónevet vagy jelszót. Ha a jogkivonat lejár, frissítheti, használatával a `az acr login` újra hitelesítse magát újra a parancsot. Használatával `az acr login` biztosít az Azure-identitások [szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="service-principal"></a>Szolgáltatásnév
 
-Hozzárendelhet egy [szolgáltatás egyszerű](../active-directory/develop/active-directory-application-objects.md) a beállításjegyzéket, és az alkalmazás vagy szolgáltatás használható a távfelügyeleti hitelesítéshez. Engedélyezi szolgáltatás rendszerbiztonsági tagok [szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md) a beállításjegyzéket, és több szolgáltatásnevekről rendelhet a beállításjegyzékben. Több szolgáltatásnevekről lehetővé teszik a különböző alkalmazások különböző hozzáférés meghatározása.
+Hozzárendelhet egy [szolgáltatásnév](../active-directory/develop/active-directory-application-objects.md) a regisztrációs adatbázisba, és az alkalmazás vagy szolgáltatás használható távfelügyelt hitelesítéshez. Az egyszerű szolgáltatások engedélyezése [szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md) egy regisztrációs adatbázisba, és több szolgáltatásnevek hozzárendelhet egy regisztrációs adatbázisba. Több szolgáltatásnevek lehetővé teszik a különböző alkalmazások különböző hozzáférés meghatározásához.
 
 A következő szerepkörök választhatók:
 
   * **Olvasó**: lekéréses
-  * **A közreműködői**: lekéréses és leküldéses
-  * **Tulajdonos**: lekéréses leküldéses és más felhasználók szerepkörök hozzárendelése
+  * **Közreműködői**: leküldésének és lekérésének
+  * **Tulajdonos**: lekéréses, push és szerepköröket hozzárendelni más felhasználókhoz
 
-Szolgáltatás rendszerbiztonsági tagok a lekérést és a küldést helyzetekben, például a következő regisztrációs távfelügyeleti kapcsolódásának engedélyezése:
+Az egyszerű szolgáltatások beállításjegyzékhez a lekérést és a egy, a következőkhöz hasonló forgatókönyveket távfelügyelt kapcsolódásának engedélyezése:
 
-  * *Olvasó*: a beállításjegyzék Kubernetes, a DC/OS és a Docker Swarm vezénylési rendszerekre üzemelő Tárolópéldányokat. Akkor is is lekéréses tároló nyilvántartó a kapcsolódó Azure-szolgáltatásokhoz való például [AKS](../aks/index.yml), [App Service](../app-service/index.yml), [kötegelt](../batch/index.yml), [Service Fabric](/azure/service-fabric/), és mások számára.
+  * *Olvasó*: a beállításjegyzék vezénylési rendszerekhez, beleértve a Kubernetes, DC/OS és Docker Swarm üzemelő Tárolópéldányokat. Is olvashatók a tároló-beállításjegyzékek kapcsolódó Azure-szolgáltatások, például [AKS](../aks/index.yml), [App Service-ben](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/), és mások.
 
-  * *A közreműködői*: folyamatos integrációt és telepítést megoldások, például a Visual Studio Team Services (VSTS) vagy a tároló lemezképeket, és azok leküldése a beállításjegyzék Jenkins.
+  * *Közreműködői*: folyamatos integrációs és üzembe helyezési megoldásokat, mint a Visual Studio Team Services (VSTS) vagy a Jenkins, amelyek tárolórendszerképek létrehozása és azok leküldése egy beállításjegyzék.
 
 > [!TIP]
-> Újragenerálás egyszerű szolgáltatás jelszavának futtatásával a [alaphelyzetbe állítása-hitelesítő adatokat az ad sp](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_reset_credentials) parancsot.
+> Egyszerű szolgáltatás jelszava futtatásával létrehozhatja a [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) parancsot.
 >
 
-Is bejelentkezhet egy egyszerű szolgáltatás közvetlenül az. Az alkalmazás Azonosítóját és jelszavát az egyszerű szolgáltatásnév az a `docker login` parancs:
+Akkor is bejelentkezhet közvetlenül a szolgáltatásnévvel. Adja meg az alkalmazás Azonosítóját és jelszavát, az egyszerű szolgáltatás a `docker login` parancsot:
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
-Miután bejelentkezett, Docker gyorsítótárazza a hitelesítő adatokat, így nem kell jegyezze meg az alkalmazás azonosítót.
+Miután bejelentkezett, Docker gyorsítótárazza-e a hitelesítő adatokat, így nem kell észben az alkalmazás azonosítóját.
 
-Attól függően, hogy a Docker telepített verzióját, megjelenhet egy biztonsági figyelmeztetés használatát javasolja a `--password-stdin` paraméter. Bár a paraméter használatát a cikk nem tárgyalja, javasoljuk, kövesse ezt az ajánlott eljárást. További információkért lásd: a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) hivatkozás parancsot.
+Telepített Docker verziójától függően előfordulhat, hogy egy biztonsági figyelmeztetést látja használatát javasolja a `--password-stdin` paraméter. Bár a paraméter használatát a cikk nem tárgyalja, javasoljuk, kövesse ezt az ajánlott eljárást. További információkért lásd: a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) referencia parancsot.
 
-Az egyszerű szolgáltatás használatával az ACR távfelügyeleti hitelesítés további információkért lásd: [szolgáltatásnevekről Azure tároló beállításjegyzék hitelesítés](container-registry-auth-service-principal.md).
+Egyszerű szolgáltatás használatával távfelügyelt hitelesítés az ACR-be a további információkért lásd: [Azure Tárolóregisztrációs adatbázis hitelesítési szolgáltatásnevekkel](container-registry-auth-service-principal.md).
 
 ## <a name="admin-account"></a>Rendszergazdai fiók
 
-Minden egyes tároló beállításjegyzék magában foglalja a rendszergazda felhasználói fiókkal, amely alapértelmezés szerint le van tiltva. A felhasználót a rendszergazda engedélyezheti és kezelése a saját hitelesítő adatait a [Azure-portálon](container-registry-get-started-portal.md#create-a-container-registry), vagy az Azure parancssori felület használatával.
+Minden tároló-beállításjegyzékhez magában foglalja a rendszergazdai felhasználói fiókhoz, amely alapértelmezés szerint le van tiltva. Engedélyezze a rendszergazdai felhasználót, és a hozzá tartozó hitelesítő adatok kezelése a [az Azure portal](container-registry-get-started-portal.md#create-a-container-registry), vagy az Azure CLI használatával.
 
 > [!IMPORTANT]
-> A rendszergazdai fiók egy-egy felhasználóhoz hozzáférni a beállításjegyzékhez, különösen ha tesztelési célokra tervezték. Több felhasználó osztja meg a rendszergazdai fiók hitelesítő adatai nem ajánlott. A beállításjegyzék leküldéses és lekéréses hozzáférést egy felhasználó hitelesíti a rendszergazdai fiókkal minden felhasználó jelennek meg. Módosítása vagy a fiók letiltása letiltja az összes felhasználó számára a megszerzett hitelesítő adatokkal beállításjegyzék elérésének. Egyedi azonosító a felhasználók és szolgáltatásnevekről távfelügyeleti forgatókönyvek esetén ajánlott.
+> A rendszergazdai fiók egy egyetlen felhasználó hozzáférni a beállításjegyzékhez, elsősorban a tesztelési célokra tervezték. A rendszergazdai fiók hitelesítő adatai több felhasználókkal való megosztás nem ajánlott. Egyetlen felhasználó lekérést és a beállításjegyzék-hozzáféréssel rendelkező összes felhasználót a rendszergazdai fiókkal való hitelesítés közben jelennek meg. Módosítja vagy letiltja a fiókját, azzal letiltja az összes felhasználó számára a hitelesítő adatok használata a beállításjegyzék elérésével. Egyéni identitás-felhasználók és az egyszerű szolgáltatások távfelügyelt forgatókönyvek esetén ajánlott.
 >
 
-A rendszergazdai fiók kerül a két jelszavakkal, amelyek mindegyikét helyreállíthatja. Két jelszavak lehetővé teszik a beállításjegyzék kapcsolatot tart egy jelszó használatával, amíg a másikat újragenerálja. Ha a rendszergazdai fiókon engedélyezve van, a felhasználónevet és vagy jelszót átadhatók a `docker login` parancsot az egyszerű hitelesítés a beállításjegyzékhez. Példa:
+A rendszergazdai fiók kerül a két jelszavakkal, amelyek helyreállíthatja. Két jelszó-használatával hozza létre újra a másik egy jelszót a beállításjegyzék kapcsolat fenntartását teszi lehetővé. Ha a rendszergazdai fiókon engedélyezve van, a felhasználónevet és jelszót vagy átadható a `docker login` parancsot az egyszerű hitelesítést a regisztrációs adatbázisba. Példa:
 
 ```
 docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 ```
 
-Ebben az esetben Docker javasolja, hogy a `--password-stdin` paraméter a parancssorban a biztonság fokozása érdekében a parancskimenetnél helyett. Azt is megadhatja, csak a felhasználónév, nélkül `-p`, és írja be a jelszót, amikor a rendszer kéri.
+Ismét Docker javasolja, hogy a `--password-stdin` paraméter helyett azokat a biztonság fokozása érdekében a parancssorban megadja. Csak a felhasználónév is megadhat nélkül `-p`, és adja meg a jelszót, amikor a rendszer kéri.
 
-Ahhoz, hogy a felhasználót a rendszergazda egy meglévő beállításjegyzék, használhatja a `--admin-enabled` paramétere a [az acr frissítés](/cli/azure/acr?view=azure-cli-latest#az_acr_update) az Azure parancssori felület parancsot:
+Ahhoz, hogy a rendszergazdai felhasználó meglévő beállításjegyzékhez, használhatja a `--admin-enabled` paraméterében a [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) parancsot az Azure CLI-ben:
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true
 ```
 
-Engedélyezheti a felhasználót a rendszergazda az Azure portálon lépjen a beállításjegyzék kiválasztásával **hívóbetűk** alatt **beállítások**, majd **engedélyezése** alatt **rendszergazda felhasználói**.
+Engedélyezheti a rendszergazdai felhasználó, az Azure Portalon lépjen a beállításjegyzék kiválasztásával **hozzáférési kulcsok** alatt **beállítások**, majd **engedélyezése** alatt **rendszergazda felhasználói**.
 
-![Engedélyezze a felhasználót a rendszergazda felhasználói felület az Azure-portálon][auth-portal-01]
+![Engedélyezze a rendszergazdai felhasználó felhasználói felület az Azure Portalon][auth-portal-01]
 
 ## <a name="next-steps"></a>További lépések
 
-* [Leküldéses az első lemezkép az Azure parancssori felület használatával](container-registry-get-started-azure-cli.md)
+* [Az Azure CLI-vel az első rendszerkép leküldése](container-registry-get-started-azure-cli.md)
 
 <!-- IMAGES -->
 [auth-portal-01]: ./media/container-registry-authentication/auth-portal-01.png

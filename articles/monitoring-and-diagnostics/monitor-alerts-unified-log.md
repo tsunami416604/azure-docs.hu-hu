@@ -8,23 +8,27 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971720"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440429"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Az Azure Monitor - riasztásokat a riasztások 
-Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú támogatott belül az új riasztások [Azure Alerts](monitoring-overview-unified-alerts.md) és a felhasználó használhat az Azure elemzési platform szolgál alapul riasztási... További részleteket a naplóit mérőszám riasztásokról, [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md)
+Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú támogatott belül az új riasztások [Azure Alerts](monitoring-overview-unified-alerts.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
 
 
-Riasztás létre naplóbeli keresés szabályból áll [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events)
+Riasztás létre naplóbeli keresés szabályból áll [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). Díjszabás a riasztások mindig elérhető legyen a [Azure Monitor szolgáltatás díjszabása](https://azure.microsoft.com/en-us/pricing/details/monitor/) lapot. Az Azure-számlák tartoznak, a riasztások jelentésekként jelennek meg a típus `microsoft.insights/scheduledqueryrules` együtt:
+- Az Application Insights-erőforrás-csoport és riasztás tulajdonságai együtt pontos riasztás neve mellett látható riasztások
+- A Log Analytics riasztási néven látható naplóriasztások `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` erőforráscsoportot és a riasztás tulajdonságai
 
+    > [!NOTE]
+    > A név minden mentett keresést, ütemezését és a Log Analytics API-val létrehozott műveleteket kisbetűs kell lennie. Ha érvénytelen karaktert `<, >, %, &, \, ?, /` vannak használja – ezek helyébe a `_` szerepel a számlán.
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Log search riasztásiszabály - definíció- és típusok
 
-Log search szabályok szerint automatikusan rendszeres időközönként a megadott naplózási lekérdezések futtatása az Azure-riasztások jönnek létre.  Ha a lekérdezés eredményeit, a napló megfelel bizonyos feltételeknek, egy riasztásbejegyzés jön létre. A szabály ekkor automatikusan lefuttathat egy vagy több művelet használatával [Műveletcsoportok](monitoring-action-groups.md). 
+Az Azure Alerts naplókeresési szabályokat hoz létre megadott naplólekérdezések rendszeres időközönként való automatikus futtatására.  Ha a naplólekérdezés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés. A szabály ekkor automatikusan futtathat egy vagy több műveletet [Műveletcsoportok](monitoring-action-groups.md) használatával. 
 
 Log search szabályok határozzák meg a következő adatokat:
 - **Lekérdezés jelentkezzen**.  Akkor következik be, a lekérdezést, amely minden alkalommal lefut a riasztási szabályt.  A lekérdezés által visszaadott rekordok segítségével meghatározhatja, hogy létrejöjjön-e riasztást. *Az Azure Application Insights* lekérdezés is tartalmazhatnak [alkalmazások közti hívások](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), ha a felhasználó rendelkezik hozzáférési jogokat a külső alkalmazások számára. 
@@ -60,7 +64,7 @@ Példaként vegyünk egy forgatókönyvet, ahol érdemes figyelembe venni, amiko
 - **Lekérdezés:** kérelmek |} ahol resultCode == "500"<br>
 - **Adott időszakban:** 30 perc<br>
 - **Riasztási időköz:** öt perc alatt<br>
-- **Küszöbérték:** nagyszerű 0-nál<br>
+- **Küszöbérték:** 0-nál nagyobb<br>
 
 A riasztás lenne a lekérdezés futtatásával 5 percenként, a 30 percnyi adat - rekordot keres, ahol volt az eredménykód a 500-as. Ha még egy ilyen rekord található, a riasztás akkor aktiválódik, és eseményindítók a beállított műveleteket.
 
@@ -86,7 +90,7 @@ Példaként vegyünk egy forgatókönyvet, ahol szeretett volna egy riasztás mi
 - **Lekérdezés:** Teljesítményoptimalizált |} ahol ObjectName == "Processzor" és a CounterName == "%-ban a processzoron" |} summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 5 m), a számítógép szerint<br>
 - **Adott időszakban:** 30 perc<br>
 - **Riasztási időköz:** öt perc alatt<br>
-- **Összesített érték:** nagyszerű, mint 90<br>
+- **Összesített érték:** nagyobb, mint 90<br>
 - **Eseményindító riasztás alapján:** összesen feltöri a 2-nél nagyobb<br>
 
 A lekérdezés minden olyan számítógépen átlagos értékét hozna létre, 5 perces időközönként.  Ez a lekérdezés szeretné futtatni át 5 percenként összegyűjtött adatokat az előző 30 perc.  Mintaadatok három számítógép az alább látható.
@@ -104,7 +108,7 @@ Riasztás, valamint a hozzá tartozó consisting log search riasztási szabály 
 - Az Azure Resource Manager-sablonok
 
 ### <a name="azure-portal"></a>Azure Portal
-A bevezetése óta az [új Azure-riasztások](monitoring-overview-unified-alerts.md)már a felhasználók kezelhetik az egyetlen helyen és hasonló lépéseket minden típusú riasztások az Azure Portalon. Tudjon meg többet [új Azure-riasztások segítségével](monitor-alerts-unified-usage.md).
+A bevezetése óta az [új Azure-riasztások](monitoring-overview-unified-alerts.md)már a felhasználók kezelhetik az összes riasztási típusokat, az Azure Portalon egyetlen helyről, és a használati hasonló lépéseket. Tudjon meg többet [új Azure-riasztások segítségével](monitor-alerts-unified-usage.md).
 
 Emellett a felhasználók is tökéletes az elemzési platform az Azure-ban választott lekérdezéseit, majd *importálja azokat az értesítések használatra menti a lekérdezés*. Hajtsa végre a lépéseket:
 - *Az Application Insights*: ideális analitika portálon ellenőrizze a lekérdezés, és az eredményeket. Egyedi névvel, majd mentse *megosztott lekérdezések*.
@@ -131,7 +135,7 @@ A részleteket, valamint a példák a Resource Manager-sablonokkal; csak az itt 
  
 
 ## <a name="next-steps"></a>További lépések
-* Megismerheti [naplóriasztások az Azure-ban](monitor-alerts-unified-log-webhook.md).
+* Megismerheti [naplóriasztások az Azure-ban a webhookok](monitor-alerts-unified-log-webhook.md).
 * Ismerje meg az új [Azure Alerts](monitoring-overview-unified-alerts.md).
 * Tudjon meg többet [Application Insights](../application-insights/app-insights-analytics.md).
 * Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-overview.md).    

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 6b1bc9b0eaf7ff94a2ba51a521ba6fb75cef13f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e12e3187893690b75dc69835312ec86a0e601d32
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041840"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Oktatóanyag: Azure Active Directory-integráció az BUKÓÍV
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Bukóív hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-rollbar-from-the-gallery"></a>Bukóív hozzáadása a katalógusból
 Az Azure AD integrálása a BUKÓÍV konfigurálásához hozzá kell BUKÓÍV a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Az Azure AD integrálása a BUKÓÍV konfigurálásához hozzá kell BUKÓÍV a 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **BUKÓÍV**válassza **BUKÓÍV** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **BUKÓÍV**válassza **BUKÓÍV** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában BUKÓÍV](./media/rollbar-tutorial/tutorial_rollbar_addfromgallery.png)
 
@@ -87,10 +87,10 @@ BUKÓÍV, rendelje hozzá az értékét a **felhasználónév** értékeként az
 Az Azure AD egyszeri bejelentkezés az BUKÓÍV tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy BUKÓÍV tesztfelhasználót](#create-a-rollbar-test-user)**  – egy megfelelője a Britta Simon BUKÓÍV, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy BUKÓÍV tesztfelhasználót](#create-a-rollbar-test-user)**  – egy megfelelője a Britta Simon BUKÓÍV, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/rollbar-tutorial/tutorial_rollbar_samlbase.png)
 
-3. Az a **BUKÓÍV tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+1. Az a **BUKÓÍV tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
     ![Bukóív tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/rollbar-tutorial/tutorial_rollbar_url.png)
 
@@ -114,7 +114,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://rollbar.com/<accountname>/saml/sso/azure/`
 
-4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+1. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![Bukóív tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/rollbar-tutorial/tutorial_rollbar_url1.png)
 
@@ -123,25 +123,25 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [BUKÓÍV ügyfél-támogatási csapatának](mailto:support@rollbar.com) beolvasni ezeket az értékeket. 
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/rollbar-tutorial/tutorial_rollbar_certificate.png) 
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/rollbar-tutorial/tutorial_general_400.png)
     
-7. Egy másik böngészőablakban jelentkezzen be a BUKÓÍV vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a BUKÓÍV vállalati hely rendszergazdaként.
 
-8. Kattintson a **Profilbeállítások** elemre a jobb felső sarokban, majd kattintson **fióknév beállítások**.
+1. Kattintson a **Profilbeállítások** elemre a jobb felső sarokban, majd kattintson **fióknév beállítások**.
     
     ![Konfiguráció](./media/rollbar-tutorial/general.png)
 
-9. Kattintson a **identitásszolgáltató** biztonsági csoportban.
+1. Kattintson a **identitásszolgáltató** biztonsági csoportban.
 
     ![Konfiguráció](./media/rollbar-tutorial/configure1.png)
 
-10. Az a **identitásszolgáltató SAML** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **identitásszolgáltató SAML** szakaszban, hajtsa végre az alábbi lépéseket:
     
     ![Konfiguráció](./media/rollbar-tutorial/configure2.png)
 
@@ -151,7 +151,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. Kattintson a **Save** (Mentés) gombra.
 
-11. Után kattintson a Mentés gombra a képernyő lesz hasonló:
+1. Után kattintson a Mentés gombra a képernyő lesz hasonló:
     
     ![Konfiguráció](./media/rollbar-tutorial/configure3.png)
     > [!NOTE] 
@@ -177,15 +177,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/rollbar-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/rollbar-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/rollbar-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/rollbar-tutorial/create_aaduser_04.png)
 
@@ -205,23 +205,23 @@ Ahhoz, hogy az Azure AD-felhasználók BUKÓÍV jelentkezzen be, akkor ki kell �
 
 1. Jelentkezzen be rendszergazdaként a BUKÓÍV vállalati webhely.
 
-2. Kattintson a **Profilbeállítások** elemre a jobb felső sarokban, majd kattintson **fióknév beállítások**.
+1. Kattintson a **Profilbeállítások** elemre a jobb felső sarokban, majd kattintson **fióknév beállítások**.
 
     ![Felhasználó](./media/rollbar-tutorial/general.png)
 
-3. Kattintson a **felhasználók**.
+1. Kattintson a **felhasználók**.
     
     ![Alkalmazott hozzáadása](./media/rollbar-tutorial/user1.png)
 
-4. Kattintson a **csapattag meghívása**.
+1. Kattintson a **csapattag meghívása**.
 
     ![Személyek meghívása](./media/rollbar-tutorial/user2.png)
 
-5. A szövegmezőbe írja be például a felhasználó nevét **brittasimon@contoso.com** , és kattintson a **Hozzáadás/meghívó**.
+1. A szövegmezőbe írja be például a felhasználó nevét **brittasimon@contoso.com** , és kattintson a **Hozzáadás/meghívó**.
 
     ![Személyek meghívása](./media/rollbar-tutorial/user3.png)
 
-6. Felhasználó felkérést kap, és azt követő hallgatója a rendszer létre.
+1. Felhasználó felkérést kap, és azt követő hallgatója a rendszer létre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -235,23 +235,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **BUKÓÍV**.
+1. Az alkalmazások listájában jelölje ki a **BUKÓÍV**.
 
     ![Az alkalmazások listáját a BUKÓÍV hivatkozás](./media/rollbar-tutorial/tutorial_rollbar_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -263,7 +263,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e5ef74329e2adb6f3b8b60f547231a245a03b1fe
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9b467fa966c2a785677f47faaa4bb8bd3ed238e2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050595"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427601"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Oktatóanyag: Zendesk-Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Zendesk hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-zendesk-from-the-gallery"></a>Zendesk hozzáadása a katalógusból
 Adja meg Zendesk integrációja az Azure AD-be, szüksége Zendesk hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
@@ -64,15 +64,15 @@ Adja meg Zendesk integrációja az Azure AD-be, szüksége Zendesk hozzáadása 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **Zendesk**válassza **Zendesk** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Zendesk**válassza **Zendesk** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![A Zendesk a találatok listájában](./media/zendesk-tutorial/tutorial_zendesk_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Zendesk, rendelje hozzá az értékét a **felhasználónév** értékeként az 
 Az Azure AD egyszeri bejelentkezés Zendesk-tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Zendesk-tesztfelhasználót](#create-a-zendesk-test-user)**  – a felhasználó Azure ad-ben reprezentációja kapcsolódó Zendeskben egy megfelelője a Britta Simon rendelkeznie.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Zendesk-tesztfelhasználót](#create-a-zendesk-test-user)**  – a felhasználó Azure ad-ben reprezentációja kapcsolódó Zendeskben egy megfelelője a Britta Simon rendelkeznie.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/zendesk-tutorial/tutorial_zendesk_samlbase.png)
 
-3. Az a **Zendesk-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Zendesk-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Zendesk-tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/zendesk-tutorial/tutorial_zendesk_url.png)
 
@@ -117,11 +117,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Zendesk-ügyfél-támogatási csapatának](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítvány** területén másolja a **UJJLENYOMAT** tanúsítvány értékét.
+1. Az a **SAML-aláíró tanúsítvány** területén másolja a **UJJLENYOMAT** tanúsítvány értékét.
 
     ![A tanúsítvány letöltési hivatkozás](./media/zendesk-tutorial/tutorial_zendesk_certificate.png)
 
-5. Zendesk a SAML helyességi feltételek vár egy megadott formátumban. SAML attribútum sem kötelező, de igény szerint hozzáadhat egy attribútum az **felhasználói attribútumok** a következő szakaszban az alábbi lépéseket: 
+1. Zendesk a SAML helyességi feltételek vár egy megadott formátumban. SAML attribútum sem kötelező, de igény szerint hozzáadhat egy attribútum az **felhasználói attribútumok** a következő szakaszban az alábbi lépéseket: 
 
      ![Egyszeri bejelentkezés konfigurálása](./media/zendesk-tutorial/tutorial_zendesk_attributes1.png)
 
@@ -140,21 +140,21 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > A bővítményattribútumok használatával ad hozzá az attribútumokat, amelyek nem szerepelnek az Azure AD alapértelmezés szerint. Kattintson a [felhasználói attribútumok SAML-beállítható](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-) teljes listájának beolvasásához SAML attribútumok, amelyek **Zendesk** fogad el.
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/zendesk-tutorial/tutorial_general_400.png)
 
-7. Az a **Zendesk konfigurációs** területén kattintson **konfigurálása Zendesk** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Zendesk konfigurációs** területén kattintson **konfigurálása Zendesk** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Zendesk-konfiguráció](./media/zendesk-tutorial/tutorial_zendesk_configure.png) 
 
-8. Egy másik böngészőablakban jelentkezzen be a Zendesk vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Zendesk vállalati hely rendszergazdaként.
 
-9. Kattintson a **rendszergazdai**.
+1. Kattintson a **rendszergazdai**.
 
-10. Kattintson a bal oldali navigációs ablaktáblában **beállítások**, és kattintson a **biztonsági**.
+1. Kattintson a bal oldali navigációs ablaktáblában **beállítások**, és kattintson a **biztonsági**.
 
-11. Az a **biztonsági** lapon, a következő lépésekkel: 
+1. Az a **biztonsági** lapon, a következő lépésekkel: 
 
      ![Biztonsági](./media/zendesk-tutorial/ic773089.png "biztonsági")
 
@@ -184,15 +184,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/zendesk-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/zendesk-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/zendesk-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/zendesk-tutorial/create_aaduser_04.png)
 
@@ -215,12 +215,12 @@ Ez a szakasz célja a Zendeskben Britta Simon nevű felhasználó létrehozásá
 
 1. Jelentkezzen be a **Zendesk** bérlő.
 
-2. Válassza ki a **Ügyféllistára** fülre.
+1. Válassza ki a **Ügyféllistára** fülre.
 
-3. Válassza ki a **felhasználói** fülre, majd **Hozzáadás**.
+1. Válassza ki a **felhasználói** fülre, majd **Hozzáadás**.
 
     ![Felhasználó hozzáadása](./media/zendesk-tutorial/ic773632.png "felhasználó hozzáadása")
-4. Írja be a **neve** és **E-mail** egy meglévő Azure AD-fiókot kíván üzembe helyezni, és kattintson a **mentése**.
+1. Írja be a **neve** és **E-mail** egy meglévő Azure AD-fiókot kíván üzembe helyezni, és kattintson a **mentése**.
 
     ![Új felhasználó](./media/zendesk-tutorial/ic773633.png "új felhasználó")
 
@@ -239,23 +239,23 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listájában jelölje ki a **Zendesk**.
+1. Az alkalmazások listájában jelölje ki a **Zendesk**.
 
     ![A Zendesk-hivatkozás alkalmazásainak listájában](./media/zendesk-tutorial/tutorial_zendesk_app.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -267,7 +267,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Felhasználók átadásának konfigurálása](zendesk-provisioning-tutorial.md)
 
 <!--Image references-->

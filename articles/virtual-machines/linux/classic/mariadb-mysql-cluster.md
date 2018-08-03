@@ -1,6 +1,6 @@
 ---
-title: Egy MariaDB (MySQL) fürt futtatása az Azure-on |} Microsoft Docs
-description: Hozzon létre egy MariaDB + Galera MySQL az Azure virtuális gépek fürtön
+title: Az Azure-ban (MySQL) MariaDB-fürt futtatásához |} A Microsoft Docs
+description: Hozzon létre egy MariaDB + Galera MySQL-fürt Azure-beli virtuális gépeken
 services: virtual-machines-linux
 documentationcenter: ''
 author: sabbour
@@ -15,77 +15,77 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.openlocfilehash: 4a3eede532345f8628af1722a06531571f01afbf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2cdc58a827f696d62e6240b90202ee04ce371d07
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32191951"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426853"
 ---
-# <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) fürt: Azure útmutató
+# <a name="mariadb-mysql-cluster-azure-tutorial"></a>(MySQL) MariaDB-fürt: Azure-oktatóanyag
 > [!IMPORTANT]
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager](../../../resource-manager-deployment-model.md) és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén az Azure Resource Manager modellt használja.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager](../../../resource-manager-deployment-model.md) és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén az Azure Resource Manager modellt használja.
 
 > [!NOTE]
-> MariaDB vállalati fürt most nem áll rendelkezésre az Azure piactéren. Az új ajánlat automatikusan telepíteni fogja az Azure Resource Manager MariaDB Galera fürt. Az új ajánlat használjon [Azure piactér](https://azure.microsoft.com/marketplace/partners/mariadb/cluster-maxscale/).
+> MariaDB Enterprise cluster már elérhető az Azure piactéren. Az új ajánlat automatikusan telepíti a MariaDB Galera fürt az Azure Resource Managerrel. Az új ajánlat használjon [Azure Marketplace-en](https://azure.microsoft.com/marketplace/partners/mariadb/cluster-maxscale/).
 >
 >
 
-Ez a cikk bemutatja, hogyan hozzon létre egy többszörös főkiszolgáló [Galera](http://galeracluster.com/products/) fürtben [MariaDBs](https://mariadb.org/en/about/) (nagy teljesítményű, méretezhető és megbízható Esőcsepp helyettesíti a MySQL) működését a magas rendelkezésre állású környezet az Azure-on virtuális gépek.
+Ez a cikk bemutatja, hogyan hozhat létre több főkiszolgálós [Galera](http://galeracluster.com/products/) fürt [MariaDBs](https://mariadb.org/en/about/) (egy robusztus, skálázható és megbízható protokollkompatibilitását MySQL-hez) működik a magas rendelkezésre állású környezetben az Azure-ban virtuális gépek.
 
 ## <a name="architecture-overview"></a>Az architektúra áttekintése
-Ez a cikk ismerteti, hogyan lehet elvégezni az alábbi lépéseket:
+Ez a cikk ismerteti, hogyan hajthatja végre az alábbi lépéseket:
 
-- Hozzon létre egy három csomópontos fürtre.
-- Az adatlemezek külön származó az operációsrendszer-lemezképet.
+- Hozzon létre egy három csomópontos fürt.
+- Az operációsrendszer-lemezt az adatlemezek egymástól.
 - Hozzon létre az adatlemezek RAID-0/csíkozott beállítás IOPS növelése érdekében.
-- Használja az Azure terheléselosztó a három csomópontok a terhelés kiegyenlítése érdekében.
-- Ismétlődő munkahelyi minimalizálása érdekében hozzon létre egy Virtuálisgép-lemezkép MariaDB + Galera tartalmazó és a virtuális gépek más fürt létrehozására használható.
+- Használja az Azure Load Balancer a három csomópont számára a terhelés kiegyenlítése érdekében.
+- Ismétlődő munkahelyi minimalizálása érdekében hozzon létre egy Virtuálisgép-rendszerképet, amely tartalmazza a MariaDB + Galera, és ezzel hozzon létre a virtuális gépek másik fürthöz.
 
 ![Rendszer-architektúra](./media/mariadb-mysql-cluster/Setup.png)
 
 > [!NOTE]
-> Ez a témakör használja a [Azure CLI](../../../cli-install-nodejs.md) eszközök, ezért ügyeljen arra, hogy letöltheti a fájlokat, és csatlakoztassa őket az Azure-előfizetéshez a utasításainak megfelelően. Ha egy hivatkozást az az Azure parancssori felület parancsai van szüksége, tekintse meg a [Azure CLI parancsdokumentációja](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2). Is kell [hitelesítéshez SSH-kulcs létrehozása] és jegyezze fel a .pem fájl helyét.
+> Ez a témakör használja a [Azure CLI-vel](../../../cli-install-nodejs.md) eszközök, ezért ügyeljen arra, hogy töltse le azokat, és csatlakoztassa őket az Azure-előfizetéshez az utasításoknak megfelelően. Ha egy hivatkozást az Azure CLI elérhető parancsai van szüksége, tekintse meg a [Azure CLI-vel parancsdokumentációja](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2). Is kell [hozzon létre egy SSH-kulcsot a hitelesítéshez] , és jegyezze fel a .pem fájl helyét.
 >
 >
 
 ## <a name="create-the-template"></a>A sablon létrehozása
 ### <a name="infrastructure"></a>Infrastruktúra
-1. Ahhoz, hogy az erőforrások együtt affinitáscsoport létrehozásához.
+1. Olyan affinitáscsoportot hozzon létre az erőforrások tárolásához együtt.
 
         azure account affinity-group create mariadbcluster --location "North Europe" --label "MariaDB Cluster"
-2. Hozzon létre egy virtuális hálózatot.
+1. Hozzon létre egy virtuális hálózatot.
 
         azure network vnet create --address-space 10.0.0.0 --cidr 8 --subnet-name mariadb --subnet-start-ip 10.0.0.0 --subnet-cidr 24 --affinity-group mariadbcluster mariadbvnet
-3. Hozzon létre egy tárfiókot, a lemezek. Legfeljebb 40 terhelésnek kitett lemezek nem szabad elhelyezése elérte-e a 20 000 IOPS fiók méretkorlátot elkerülése érdekében ugyanazt a tárfiókot. Ebben az esetben Ön alatt ezt a határértéket, így mindent az egyszerűség kedvéért ugyanazt a fiókot fogja tárolni.
+1. Hozzon létre egy tárfiókot az összes lemez üzemeltetéséhez. Több mint 40 kitett lemezek nem szabad elhelyezése ugyanazt a tárfiókot, hogy elkerülje a 20 000 IOPS-tárolási fiók korlátját. Ebben az esetben Ön alatt ezt a korlátot, ezért minden ugyanahhoz a fiókhoz az egyszerűség kedvéért fogja tárolni.
 
         azure storage account create mariadbstorage --label mariadbstorage --affinity-group mariadbcluster
-4. Keresse meg a CentOS 7 virtuális gép lemezképe.
+1. Keresse meg a CentOS 7 virtuális gép rendszerképének nevét.
 
         azure vm image list | findstr CentOS
-   A kimenet lesz hasonlót `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926`.
+   A kimenet lesz hasonló `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926`.
 
-   Használja ezt a nevet a következő lépésben.
-5. A Virtuálisgép-sablon létrehozásához, és cserélje le /path/to/key.pem az elérési út a generált .pem SSH-kulcs tárolására.
+   Ezt a nevet használja a következő lépésben.
+1. A Virtuálisgép-sablon létrehozása és /path/to/key.pem cserélje le a tároló létrehozott .pem SSH-kulcs elérési útja.
 
         azure vm create --virtual-network-name mariadbvnet --subnet-names mariadb --blob-url "http://mariadbstorage.blob.core.windows.net/vhds/mariadbhatemplate-os.vhd"  --vm-size Medium --ssh 22 --ssh-cert "/path/to/key.pem" --no-ssh-password mariadbtemplate 5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926 azureuser
-6. Négy 500 GB-os adatlemezt csatolni a virtuális Gépet a RAID-konfigurációban való használat céljából.
+1. Négy 500 GB-os adatlemezeket csatlakoztathat a virtuális gép használatra a RAID-konfigurációt.
 
         FOR /L %d IN (1,1,4) DO azure vm disk attach-new mariadbhatemplate 512 http://mariadbstorage.blob.core.windows.net/vhds/mariadbhatemplate-data-%d.vhd
-7. Jelentkezzen be a sablon virtuális Gépet, amely létrehozta a következő mariadbhatemplate.cloudapp.net:22 az SSH segítségével, és a titkos kulcs használatával csatlakoznak.
+1. Jelentkezzen be a sablon következő mariadbhatemplate.cloudapp.net:22 létrehozott virtuális gép SSH-val, és a titkos kulcs használatával csatlakoznak.
 
 ### <a name="software"></a>Szoftver
 1. A legfelső szintű beolvasása.
 
         sudo su
 
-2. A RAID telepítése:
+1. A RAID telepítése:
 
     a. Telepítse a mdadm.
 
               yum install mdadm
 
-    b. Hozza létre a RAID0/paritásos konfigurációt EXT4 fájlrendszerrel.
+    b. Hozzon létre egy EXT4 fájlrendszer RAID0/stripe konfigurációját.
 
               mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=4 /dev/sdc /dev/sdd /dev/sde /dev/sdf
               mdadm --detail --scan >> /etc/mdadm.conf
@@ -93,67 +93,67 @@ Ez a cikk ismerteti, hogyan lehet elvégezni az alábbi lépéseket:
     c. Hozzon létre a csatlakoztatási pont könyvtárat.
 
               mkdir /mnt/data
-    d. Az újonnan létrehozott RAID eszköz UUID beolvasása.
+    d. Az újonnan létrehozott RAID eszköz UUID lekéréséhez.
 
               blkid | grep /dev/md0
     e. /Etc/fstab szerkesztése.
 
               vi /etc/fstab
-    f. Adja hozzá az eszközt, hogy engedélyezze az automatikus csatlakoztatását a újraindításkor UUID cseréje a során kapott érték az előző **blkid** parancsot.
+    f. Hozzáadja az eszközt ahhoz, hogy újraindításkor, és cserélje le az előző kapott érték az UUID automatikus csatlakoztatási **blkid** parancsot.
 
               UUID=<UUID FROM PREVIOUS>   /mnt/data ext4   defaults,noatime   1 2
     g. Csatlakoztassa az új partíciót.
 
               mount /mnt/data
 
-3. Telepítse a MariaDB.
+1. Telepítse a MariaDB.
 
     a. Hozza létre a MariaDB.repo fájlt.
 
                 vi /etc/yum.repos.d/MariaDB.repo
 
-    b. Töltse ki a tárházban fájl a következő tartalommal:
+    b. Töltse ki az adattár fájlt az alábbi tartalommal:
 
               [mariadb]
               name = MariaDB
               baseurl = http://yum.mariadb.org/10.0/centos7-amd64
               gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
               gpgcheck=1
-    c. Az ütközések elkerülése érdekében távolítsa el a meglévő utótag és mariadb-függvénytárak.
+    c. Az ütközések elkerülése érdekében távolítsa el a meglévő utótag és a mariadb-függvénytárak.
 
            yum remove postfix mariadb-libs-*
-    d. Telepítési MariaDB Galera.
+    d. Telepítse a MariaDB Galera.
 
            yum install MariaDB-Galera-server MariaDB-client galera
 
-4. Helyezze át a MySQL adatkönyvtár a RAID-blokk eszköz.
+1. Helyezze át a MySQL adatkönyvtárat a RAID blokkblob eszközre.
 
-    a. Az aktuális MySQL könyvtár átmásolja az új helyre, és távolítsa el a régi könyvtárat.
+    a. Az aktuális MySQL könyvtár másolja be az új helyre, és távolítsa el a régi könyvtárat.
 
            cp -avr /var/lib/mysql /mnt/data  
            rm -rf /var/lib/mysql
-    b. Ennek megfelelően állítsa be az új könyvtár engedélyeket.
+    b. Ennek megfelelően állítsa be az új könyvtár engedélyeit.
 
            chown -R mysql:mysql /mnt/data && chmod -R 755 /mnt/data/
 
-    c. Hozzon létre egy symlink mutat, a régi könyvtár az új helyre a RAID-partíción.
+    c. Hozzon létre szimbolikus, amely a régi könyvtár mutat az új helyre a RAID-partíción.
 
            ln -s /mnt/data/mysql /var/lib/mysql
 
-5. Mivel [SELinux a fürt működését gátolja](http://galeracluster.com/documentation-webpages/configuration.html#selinux), le kell tiltani az aktuális munkamenetre szükséges. Szerkesztés `/etc/selinux/config` le kell tiltani a későbbi újraindítások.
+1. Mivel [SELinux zavarja a fürt működését a](http://galeracluster.com/documentation-webpages/configuration.html#selinux), tiltsa le az aktuális munkamenet szükséges. Szerkesztés `/etc/selinux/config` letiltani a későbbi újraindításhoz.
 
             setenforce 0
 
             then editing `/etc/selinux/config` to set `SELINUX=permissive`
-6. Ellenőrizze a MySQL futtatása.
+1. Ellenőrizze a MySQL-futtatások.
 
    a. Indítsa el a MySQL.
 
            service mysql start
-   b. A MySQL-telepítés biztonságos, a legfelső szintű jelszó beállítását, távolítsa el a névtelen felhasználók számára, hogy tiltsa le a távoli legfelső szintű bejelentkezést és a test-adatbázis eltávolításához.
+   b. A MySQL telepítése biztonságos, a legfelső szintű jelszó beállítása, távolítsa el a névtelen felhasználók számára, hogy tiltsa le a távoli legfelső szintű bejelentkezési és a test-adatbázis eltávolítása.
 
            mysql_secure_installation
-   c. Felhasználó létrehozása az adatbázis, a fürt működését, és szükség esetén az alkalmazások számára.
+   c. Hozzon létre egy felhasználót az adatbázison a fürt működését, és szükség esetén az alkalmazások számára.
 
            mysql -u root -p
            GRANT ALL PRIVILEGES ON *.* TO 'cluster'@'%' IDENTIFIED BY 'p@ssw0rd' WITH GRANT OPTION; FLUSH PRIVILEGES;
@@ -162,14 +162,14 @@ Ez a cikk ismerteti, hogyan lehet elvégezni az alábbi lépéseket:
    d. Állítsa le a MySQL.
 
             service mysql stop
-7. Hozzon létre egy konfigurációs helyőrző.
+1. Hozzon létre egy konfigurációs helyőrző.
 
-   a. A fürtbeállítások helyőrzője létrehozása a MySQL konfigurációjának a szerkesztésével. Cserélje le a **`<Variables>`** vagy állítsa vissza a most. Amely akkor után hozzon létre egy virtuális Gépet a sablon alapján történik.
+   a. A fürtbeállítások egy helyőrző létrehozása MySQL-konfiguráció szerkesztése. Ne cserélje le a **`<Variables>`** vagy állítsa vissza a most. Hogy fog történni, ha ebből a sablonból létrehozott virtuális gép.
 
             vi /etc/my.cnf.d/server.cnf
    b. Szerkessze a **[galera]** szakaszt, és törölje a jelölést.
 
-   c. Szerkessze a **[mariadb]** szakasz.
+   c. Szerkessze a **[mariadb]** szakaszban.
 
            wsrep_provider=/usr/lib64/galera/libgalera_smm.so
            binlog_format=ROW
@@ -183,23 +183,23 @@ Ez a cikk ismerteti, hogyan lehet elvégezni az alábbi lépéseket:
            #wsrep_cluster_address="gcomm://mariadb1,mariadb2,mariadb3" # CHANGE: Uncomment and Add all your servers
            #wsrep_node_address='<ServerIP>' # CHANGE: Uncomment and set IP address of this server
            #wsrep_node_name='<NodeName>' # CHANGE: Uncomment and set the node name of this server
-8. Nyissa meg a szükséges portok a tűzfalon keresztül FirewallD CentOS 7.
+1. Nyissa meg a szükséges portok a tűzfalon a CentOS 7 FirewallD használatával.
 
    * MySQL: `firewall-cmd --zone=public --add-port=3306/tcp --permanent`
    * GALERA: `firewall-cmd --zone=public --add-port=4567/tcp --permanent`
-   * GALERA ITT: `firewall-cmd --zone=public --add-port=4568/tcp --permanent`
+   * GALERA IZRAELI NORMÁL IDŐ SZERINT: `firewall-cmd --zone=public --add-port=4568/tcp --permanent`
    * RSYNC: `firewall-cmd --zone=public --add-port=4444/tcp --permanent`
    * Töltse be újra a tűzfalon: `firewall-cmd --reload`
 
-9. A rendszer a teljesítmény optimalizálása. További információkért lásd: [teljesítményének hangolása stratégia](optimize-mysql.md).
+1. A rendszer a teljesítmény optimalizálásához. További információkért lásd: [teljesítmény-finomhangolási stratégia](optimize-mysql.md).
 
    a. A MySQL-konfigurációs fájl újból szerkeszteni.
 
             vi /etc/my.cnf.d/server.cnf
-   b. Szerkessze a **[mariadb]** szakaszt, és hozzáfűzése a következőket:
+   b. Szerkessze a **[mariadb]** szakaszt, és fűzze hozzá a következő tartalommal:
 
    > [!NOTE]
-   > Azt javasoljuk, hogy innodb\_puffer\_pool_size a virtuális gép memória 70 százalék. Ebben a példában beállítása 2.45 GB a közepes 3.5-ös GB RAM-MAL rendelkező Azure virtuális gépet.
+   > Azt javasoljuk, hogy innodb\_puffer\_pool_size a virtuális memória 70 százalék. Ebben a példában azt beállított 2.45 GB, a közepes méretű Azure-beli virtuális gép 3,5 GB RAM.
    >
    >
 
@@ -210,35 +210,35 @@ Ez a cikk ismerteti, hogyan lehet elvégezni az alábbi lépéseket:
            innodb_log_buffer_size = 128M # The log buffer allows transactions to run without having to flush the log to disk before the transactions commit
            innodb_flush_log_at_trx_commit = 2 # The setting of 2 enables the most data integrity and is suitable for Master in MySQL cluster
            query_cache_size = 0
-10. Állítsa le a MySQL, futtatását indítási elkerülése érdekében a fürt megszakítása, ha a csomópont hozzáadása a MySQL-szolgáltatás letiltása, és a gép kiosztásának megszüntetése.
+1. Állítsa le a MySQL, tiltsa le a MySQL szolgáltatás nem fut az elkerülése érdekében a fürt megszakítása, ha csomópontot ad indítási és a gép megszüntetése.
 
         service mysql stop
         chkconfig mysql off
         waagent -deprovision
-11. Rögzítse a virtuális Gépet a portálon keresztül. (Jelenleg [adja ki az Azure CLI-eszközei #1268](https://github.com/Azure/azure-xplat-cli/issues/1268) ismerteti azt a tényt, hogy az Azure CLI-eszközök által rögzített lemezképeket nem rögzíthető lemezkép a mellékelt adatok lemezek.)
+1. A portálon keresztül a virtuális gép rögzítése. (Jelenleg [adja ki az Azure CLI-eszközöket a #1268](https://github.com/Azure/azure-xplat-cli/issues/1268) ismerteti azt a tényt, hogy az Azure CLI-eszközök által rögzített rendszerképek nem rögzíti a csatlakoztatott adatlemezekkel.)
 
     a. Állítsa le a gépet a portálon keresztül.
 
-    b. Kattintson a **rögzítése** , és adja meg a lemezkép neve, ahogyan **mariadb-galera-lemezkép**. Adjon meg egy leírást, és ellenőrizze a "Rendelkezik futtattam a waagent."
+    b. Kattintson a **rögzítése** , és adja meg a rendszerkép nevének, **mariadb-galera-image**. Adjon meg egy leírást, és ellenőrizze a "Waagent futtatnom kell."
       
       ![A virtuális gép rögzítése](./media/mariadb-mysql-cluster/Capture2.PNG)
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
-Hozzon létre három virtuális gépek sablonnal létrehozott, és ezután konfigurálása és a fürt elindításához.
+Hozzon létre három virtuális gépet hozott létre, és ezután konfigurálása és a fürt elindításához a sablont.
 
-1. Az első CentOS 7 virtuális gép létrehozása a mariadb-galera-lemezkép lemezképet létrehozni, a következő adatokat:
+1. Hozzon létre az első CentOS 7 virtuális gép a mariadb-galera-image lemezképből létrehozott, a következő adatok megadásával:
 
- - Virtuális hálózati név: mariadbvnet
- - Alhálózati: mariadb
- - Méret gépen: Közepes
- - Felhőszolgáltatás neve: mariadbha (vagy mariadbha.cloudapp.net elérni kívánt nevet)
- - Számítógépnév: mariadb1
+ - Virtuális hálózat neve: mariadbvnet
+ - Alhálózat: mariadb
+ - A gép méretének: Közepes
+ - Felhőszolgáltatás neve: mariadbha (vagy bármilyen nevet szeretné mariadbha.cloudapp.net keresztül érhetők el)
+ - Gépnév: mariadb1
  - Felhasználónév: azureuser
- - SSH-elérést: engedélyezve
- - Átadja a SSH tanúsítvány .pem fájlt, és /path/to/key.pem cseréje az elérési út a generált .pem SSH-kulcs tárolására.
+ - SSH-hozzáférés: engedélyezve
+ - Átadása az SSH tanúsítvány .pem-fájlt, és /path/to/key.pem cserélje le a tároló létrehozott .pem SSH-kulcs elérési útja.
 
    > [!NOTE]
-   > A következő parancsokat az átláthatóság többsoros vannak osztva, de egyes egy sorba kell megadnia.
+   > Az alábbi parancsokat az átláthatóság érdekében több vonalon vannak osztva, de egyes egy sorba kell megadnia.
    >
    >
         azure vm create
@@ -251,7 +251,7 @@ Hozzon létre három virtuális gépek sablonnal létrehozott, és ezután konfi
         --ssh 22
         --vm-name mariadb1
         mariadbha mariadb-galera-image azureuser
-2. Hozzon létre két további virtuális gépek csatlakoztatja őket a mariadbha felhőalapú szolgáltatás. Módosítsa a virtuális gép nevét és az SSH-port nem ütközik más virtuális gépek ugyanazt a felhőszolgáltatásban található egy egyedi portot.
+1. Hozzon létre két további virtuális gépek a mariadbha felhőszolgáltatáshoz való csatlakozással. Módosítsa a virtuális gép és az SSH-port nem ütközik a többi virtuális gépe ugyanazon a felhőszolgáltatáson egyedi portját.
 
         azure vm create
         --virtual-network-name mariadbvnet
@@ -275,30 +275,30 @@ Hozzon létre három virtuális gépek sablonnal létrehozott, és ezután konfi
         --ssh 24
         --vm-name mariadb3
         --connect mariadbha mariadb-galera-image azureuser
-3. A három virtuális gépek mindegyikének a belső IP-cím lekérése a következő lépésben lesz szüksége:
+1. Szüksége lesz a következő lépés az egyes a három virtuális gép belső IP-címének lekéréséhez:
 
     ![IP-cím beolvasása](./media/mariadb-mysql-cluster/IP.png)
-4. SSH használatával jelentkezzen be a három virtuális gépeket, majd szerkessze a konfigurációs fájlt a hozzájuk.
+1. SSH-val jelentkezzen be a három virtuális gépet, és módosítsa a konfigurációs fájlt az egyes őket.
 
         sudo vi /etc/my.cnf.d/server.cnf
 
-    Állítsa vissza **`wsrep_cluster_name`** és **`wsrep_cluster_address`** eltávolításával a **#** a sor elején.
-    Továbbá cserélje le **`<ServerIP>`** a **`wsrep_node_address`** és **`<NodeName>`** a **`wsrep_node_name`** rendelkező a A virtuális gép IP cím és nevet, illetve kódrészig, és azokat a sorokat.
-5. Indítsa el a fürt a MariaDB1, és hagyja, hogy az indítási parancsot.
+    Állítsa vissza **`wsrep_cluster_name`** és **`wsrep_cluster_address`** eltávolításával a **#** a sor elejére.
+    Továbbá cserélje le **`<ServerIP>`** a **`wsrep_node_address`** és **`<NodeName>`** a **`wsrep_node_name`** -a Virtuális gép IP-cím és nevet, és, valamint azokat a sorokat, állítsa vissza.
+1. MariaDB1 elindítja a fürtöt, és biztosítani, hogy az indításkor futnak.
 
         sudo service mysql bootstrap
         chkconfig mysql on
-6. Indítsa el a MySQL MariaDB2 és MariaDB3, és hagyja, hogy az indítási parancsot.
+1. Indítsa el a MySQL MariaDB2 és MariaDB3, és biztosítani, hogy az indításkor futnak.
 
         sudo service mysql start
         chkconfig mysql on
 
 ## <a name="load-balance-the-cluster"></a>A fürt terheléselosztás
-A fürtözött virtuális gépek létrehozásakor hozzá azokat a clusteravset annak érdekében, hogy a különböző tartalék és a frissítési tartományok fel, és egyszerre csak a soha nem nem karbantartás, minden számítógépen, hogy Azure nevű rendelkezésre állási csoportok. Ez a konfiguráció megfelel az Azure szolgáltatásiszint-szerződéssel (SLA) támogatott.
+A fürtözött virtuális gépek létrehozásakor hozzá azokat egy nevű clusteravset, győződjön meg arról, hogy azok különböző hibatűrési és frissítési tartományokban is helyezi, és egyszerre csak a soha nem karbantartási minden gépen, hogy az Azure rendelkezésre állási csoportba. Ez a konfiguráció megfelel a követelményeknek, az Azure szolgáltatásiszint-szerződés (SLA) támogatott.
 
-Azure Load Balancer segítségével kiegyenlítheti vonatkozó a három csomópontok között.
+Most már használja az Azure Load Balancer kérelmek három csomópontok közötti elosztása érdekében.
 
-A következő parancsokat a számítógépen az Azure parancssori felület használatával.
+Futtassa az alábbi parancsokat a gépen az Azure parancssori felület használatával.
 
 A parancs paraméterei struktúra a következő: `azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
 
@@ -306,7 +306,7 @@ A parancs paraméterei struktúra a következő: `azure vm endpoint create-multi
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb3 3306:3306:tcp:false:MySQL:tcp:3306
 
-A parancssori felület a load balancer mintavétel gyakoriságát 15 másodpercre állítja, elképzelhető, hogy egy kicsit túl hosszú. A portál módosítása **végpontok** bármely, a virtuális gépek.
+A parancssori felület beállítása a load balancer mintavételi időköz 15 másodperc, amely egy kicsit túl hosszú lehet. Módosítsa a portál **végpontok** bármely, a virtuális gépek.
 
 ![Végpont szerkesztése](./media/mariadb-mysql-cluster/Endpoint.PNG)
 
@@ -314,18 +314,18 @@ Válassza ki **konfigurálja újra az elosztott terhelésű készlet**.
 
 ![Konfigurálja újra az elosztott terhelésű készlet](./media/mariadb-mysql-cluster/Endpoint2.PNG)
 
-Változás **mintavételi időköze** 5 másodperc és a változtatások mentéséhez.
+Változás **mintavételi időköz** 5 másodperc és mentse a módosításokat.
 
 ![Mintavételi időköz módosítása](./media/mariadb-mysql-cluster/Endpoint3.PNG)
 
 ## <a name="validate-the-cluster"></a>A fürt ellenőrzése
-A rögzített munkát. A fürt elérhető kell, hogy most a `mariadbha.cloudapp.net:3306`, amely találatok, a terheléselosztó és útvonal terhelésigényét a három virtuális gépek közötti hatékony és problémamentesen.
+A nehezét történik. A fürt már érhető el, `mariadbha.cloudapp.net:3306`, amely eléri a load balancer és útvonal kérelmek a három virtuális gép között, zökkenőmentesen és hatékony.
 
-A kedvenc MySQL-ügyfél segítségével csatlakoztassa, vagy csatlakoztassa a virtuális gépek ellenőrzése, hogy működik-e a fürt egyik.
+A kedvenc MySQL-ügyfél segítségével csatlakozzon, vagy csatlakoztassa a virtuális gépeket, ellenőrizze, hogy működik-e a fürt egyik.
 
      mysql -u cluster -h mariadbha.cloudapp.net -p
 
-Ezután hozzon létre egy adatbázist, és feltöltheti olyan néhány adat.
+Ezután hozzon létre egy adatbázist, és néhány adatokkal való feltöltéséhez.
 
     CREATE DATABASE TestDB;
     USE TestDB;
@@ -346,9 +346,9 @@ A létrehozott adatbázis a következő táblázatot ad vissza:
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben egy három csomópontos MariaDB létrehozott + Galera magas rendelkezésre állású fürt Azure virtuális gépen futó CentOS 7. A virtuális gépek az elosztott terhelésű Azure terheléselosztó.
+Ebben a cikkben létrehozott egy három csomópontos MariaDB + Galera magas rendelkezésre állású fürtöt az Azure-beli virtuális gépen futó CentOS 7. A virtuális gépek elosztott terhelésű Azure Load balancerrel.
 
-Érdemes megtekinteni [MySQL-fürt Linux rendszeren másik módja](mysql-cluster.md) és módjai [optimalizálása és MySQL az Azure Linux virtuális gépeken futó teljesítménytesztelési](optimize-mysql.md).
+Érdemes megtekinteni [másik módja, hogy a MySQL-fürt Linux rendszeren](mysql-cluster.md) és [optimalizálása és az Azure Linux rendszerű virtuális gépekhez a MySQL teljesítményének tesztelése](optimize-mysql.md).
 
 <!--Anchors-->
 [Architecture overview]:#architecture-overview
@@ -363,5 +363,5 @@ Ebben a cikkben egy három csomópontos MariaDB létrehozott + Galera magas rend
 <!--Link references-->
 [Galera]:http://galeracluster.com/products/
 [MariaDBs]:https://mariadb.org/en/about/
-[hitelesítéshez SSH-kulcs létrehozása]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
+[Hozzon létre egy SSH-kulcsot a hitelesítéshez]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
 [issue #1268 in the Azure CLI]:https://github.com/Azure/azure-xplat-cli/issues/1268

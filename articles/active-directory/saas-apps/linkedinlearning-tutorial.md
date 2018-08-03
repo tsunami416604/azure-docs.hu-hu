@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0050613f4a92380f48a93cdf1f82ed91dc34f6a4
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 02e7d9d26b389e82365f3447cceb5566244236f1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343518"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Oktatóanyag: A LinkedIn Learning Azure Active Directory-integráció
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Hozzáadás a katalógusból, LinkedIn Learning
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-linkedin-learning-from-the-gallery"></a>Hozzáadás a katalógusból, LinkedIn Learning
 Az Azure AD integrálása a LinkedIn Learning konfigurálásához hozzá kell LinkedIn Learning a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -63,15 +63,15 @@ Az Azure AD integrálása a LinkedIn Learning konfigurálásához hozzá kell Li
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
+1. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **LinkedIn Learning**. Az eredmények panelen kattintson a **LinkedIn Learning** , vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **LinkedIn Learning**. Az eredmények panelen kattintson a **LinkedIn Learning** , vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_000.png)
 
@@ -85,10 +85,10 @@ Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasznál�
 Az Azure AD egyszeri bejelentkezés a LinkedIn Learning tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[LinkedIn Learning tesztfelhasználó létrehozása](#creating-a-linkedin-learning-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[LinkedIn Learning tesztfelhasználó létrehozása](#creating-a-linkedin-learning-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -100,21 +100,21 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial-linkedin_01.png)
 
-3. Egy másik böngészőablakban bejelentkezés, a LinkedIn Learning bérlői rendszergazdaként.
+1. Egy másik böngészőablakban bejelentkezés, a LinkedIn Learning bérlői rendszergazdaként.
 
-4. A **Account Center**, kattintson a **globális beállítások** alatt **beállítások**. Jelölje be **tanulás – alapértelmezett** a legördülő listából.
+1. A **Account Center**, kattintson a **globális beállítások** alatt **beállítások**. Jelölje be **tanulás – alapértelmezett** a legördülő listából.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-5. Kattintson a **, vagy kattintson ide betöltése, és másolja ki az egyes mezők az űrlap** és másolási **entitásazonosító** és **helyességi feltétel fogyasztói Access (ACS) URL-címe**
+1. Kattintson a **, vagy kattintson ide betöltése, és másolja ki az egyes mezők az űrlap** és másolási **entitásazonosító** és **helyességi feltétel fogyasztói Access (ACS) URL-címe**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
-6. Az Azure Portal alatt **LinkedIn Learning tartomány és URL-címek**, kövesse az alábbi lépéseket, ha szeretné az egyszeri bejelentkezést **identitásszolgáltató által kezdeményezett** mód
+1. Az Azure Portal alatt **LinkedIn Learning tartomány és URL-címek**, kövesse az alábbi lépéseket, ha szeretné az egyszeri bejelentkezést **identitásszolgáltató által kezdeményezett** mód
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
 
@@ -122,17 +122,17 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a **helyességi feltétel fogyasztói Access (ACS) URL-cím** LinkedIn Portalról másolt
 
-7. Ha szeretné az egyszeri bejelentkezést **SP által kezdeményezett**, majd kattintson a speciális URL-cím megjelenítése beállítás a konfigurációs szakaszban, és a bejelentkezési URL-cím konfigurálása a következő mintának:
+1. Ha szeretné az egyszeri bejelentkezést **SP által kezdeményezett**, majd kattintson a speciális URL-cím megjelenítése beállítás a konfigurációs szakaszban, és a bejelentkezési URL-cím konfigurálása a következő mintának:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_02.png)   
     
-8. LinkedIn Learning alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható. Az alapértelmezett érték **felhasználóazonosító** van **user.userprincipalname** , de a LinkedIn Learning vár ezt a képezhető le a felhasználó e-mail-címmel. Használhatja, amely **user.mail** attribútumot a listából, vagy használja a megfelelő attribútum értéket, a szervezet konfiguráció alapján. 
+1. LinkedIn Learning alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható. Az alapértelmezett érték **felhasználóazonosító** van **user.userprincipalname** , de a LinkedIn Learning vár ezt a képezhető le a felhasználó e-mail-címmel. Használhatja, amely **user.mail** attribútumot a listából, vagy használja a megfelelő attribútum értéket, a szervezet konfiguráció alapján. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/updateusermail.png)
     
-9. A **felhasználói attribútumok** területén kattintson **megtekintése és egyéb felhasználói attribútumok szerkesztése** és attribútumainak beállítása. A felhasználónak kell nevű négy jogcímek hozzáadása **e-mail**, **részleg**, **firstname**, és **lastname** értéke pedig leképezve**user.mail**, **user.department**, **user.givenname**, és **user.surname** osztályban
+1. A **felhasználói attribútumok** területén kattintson **megtekintése és egyéb felhasználói attribútumok szerkesztése** és attribútumainak beállítása. A felhasználónak kell nevű négy jogcímek hozzáadása **e-mail**, **részleg**, **firstname**, és **lastname** értéke pedig leképezve**user.mail**, **user.department**, **user.givenname**, és **user.surname** osztályban
 
     | Attribútum neve | Attribútum értéke |
     | --- | --- |
@@ -155,7 +155,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     d. Kattintson a **Ok**
 
-10. Hajtsa végre a következő lépéseket a **neve** attribútum -
+1. Hajtsa végre a következő lépéseket a **neve** attribútum -
 
     a. Az attribútum megnyitásához kattintson a **attribútum szerkesztése** ablak.
 
@@ -165,19 +165,19 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     c. Kattintson a **Ok** a beállítás mentéséhez.
 
-11. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse az XML-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse az XML-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png)
 
-12. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial_general_400.png)
 
-13. Lépjen a **LinkedIn adminisztrátori beállítások** szakaszban. A feltöltés XML-fájl lehetőségre kattintva az Azure Portalról letöltött XML-fájl feltöltése.
+1. Lépjen a **LinkedIn adminisztrátori beállítások** szakaszban. A feltöltés XML-fájl lehetőségre kattintva az Azure Portalról letöltött XML-fájl feltöltése.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
-14. Kattintson a **a** egyszeri bejelentkezés engedélyezéséhez. Egyszeri bejelentkezés állapota változik **nincs csatlakoztatva** való **csatlakoztatva**
+1. Kattintson a **a** egyszeri bejelentkezés engedélyezéséhez. Egyszeri bejelentkezés állapota változik **nincs csatlakoztatva** való **csatlakoztatva**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
@@ -192,15 +192,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinlearning-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinlearning-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinlearning-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinlearning-tutorial/create_aaduser_04.png) 
 
@@ -230,23 +230,23 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listájában jelölje ki a **LinkedIn Learning**.
+1. Az alkalmazások listájában jelölje ki a **LinkedIn Learning**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 

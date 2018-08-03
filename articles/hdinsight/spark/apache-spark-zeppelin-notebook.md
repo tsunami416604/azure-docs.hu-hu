@@ -1,6 +1,6 @@
 ---
-title: Zeppelin notebookok használata Azure HDInsight az Apache Spark-fürt |} Microsoft Docs
-description: Részletes útmutatók Apache Spark-fürtök on Azure HDInsight Zeppelin notebookok használata.
+title: Zeppelin notebookok használata Apache Spark-fürtöt az Azure HDInsight |} A Microsoft Docs
+description: Zeppelin notebookok használata Azure HDInsight az Apache Spark-fürtök lépésenkénti útmutatót.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -13,46 +13,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: b2f47dce058af7a39366c06d0b33117a66ed116a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 0346e81fb7601085df483291ff352cc611e9a2b0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31522004"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429454"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Zeppelin notebookok használata Azure HDInsight az Apache Spark-fürt
 
-HDInsight Spark-fürtjei Zeppelin notebookok használó feladatok futtatása Spark tartalmazza. Ebből a cikkből megismerheti a Zeppelin notebook használata a HDInsight-fürtöt.
+HDInsight Spark-fürtök tartalmazzák, amelyek segítségével a Spark-feladatok futtatása a Zeppelin notebookok. Ebből a cikkből elsajátíthatja a Zeppelin notebook használata egy HDInsight-fürtön.
 
 > [!NOTE]
-> Zeppelin notebookok csak 1.6.3 Spark on HDInsight 3.5-ös és 2.1.0 Spark on HDInsight 3.6 érhetők el.
+> Zeppelin notebookok csak a HDInsight 3.5-ös 1.6.3 Spark és a Spark 2.1.0 on HDInsight 3.6-os érhetők el.
 >
 
 **Előfeltételek:**
 
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* A HDInsight az Apache Spark-fürt. Útmutatásért lásd: [létrehozása az Apache Spark on Azure hdinsight clusters](apache-spark-jupyter-spark-sql.md).
+* Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 
-## <a name="launch-a-zeppelin-notebook"></a>Indítsa el a Zeppelin notebook
-1. A Spark-fürt panelén kattintson **fürt irányítópult**, és kattintson a **Zeppelin Notebook**. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
+## <a name="launch-a-zeppelin-notebook"></a>Indítsa el a Zeppelin-jegyzetfüzet
+1. A Spark-fürt panelén kattintson **fürt irányítópultja**, és kattintson a **Zeppelin-Jegyzetfüzet**. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
    
    > [!NOTE]
-   > Előfordulhat, hogy is eléri a Zeppelin Notebook a fürt a böngészőben nyissa meg a következő URL-címet. Cserélje le a **CLUSTERNAME** elemet a fürt nevére:
+   > A Zeppelin Notebook használhat saját fürtjében, a böngészőben a következő URL-cím megnyitásával is elérheti. Cserélje le a **CLUSTERNAME** elemet a fürt nevére:
    > 
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
    > 
    > 
-2. Hozzon létre új notebookot. A fejléc ablaktáblában kattintson **Notebook**, és kattintson a **hozzon létre új megjegyzés**.
+1. Hozzon létre új notebookot. Kattintson a fejléc ablak **Notebook**, és kattintson a **új megjegyzés létrehozása**.
    
-    ![Létrehozhat egy újat Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "egy új Zeppelin notebook létrehozása")
+    ![Hozzon létre egy új Zeppelin-Jegyzetfüzet](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "új Zeppelin notebook létrehozása")
    
-    Adja meg a notebook nevét, és kattintson **létrehozása Megjegyzés**.
-3. Ellenőrizze azt is, a notebook fejléc egy csatlakoztatott állapotát jeleníti meg. A jobb felső sarokban, zöld pontot helyén.
+    Adja meg a notebook elnevezése, és kattintson a **Megjegyzés létrehozása**.
+1. Ügyeljen arra, hogy a notebook fejléc egy csatlakoztatott állapotát jeleníti meg. A jobb felső sarokban lévő zöld pontot helyén.
    
     ![Zeppelin notebook állapot](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin notebook állapota")
-4. Töltse be a mintaadatokat egy ideiglenes táblába. Spark-fürt hdinsightban a mintaadatfájlokat létrehozásakor **hvac.csv**, másolja a kapcsolódó tárfiók alatt **\HdiSamples\SensorSampleData\hvac**.
+1. Töltse be a mintaadatokat egy ideiglenes táblába. Spark-fürt létrehozásakor, a HDInsight, a mintaadatfájl **hvac.csv**, másolja a társított storage-fiók alatt **\HdiSamples\SensorSampleData\hvac**.
    
-    Az üres bekezdés, amely az új notebook alapértelmezés szerint létrejön illessze be a következő kódrészletet.
+    Az üres bekezdés, amely az Új jegyzetfüzet alapértelmezés szerint létrejön illessze be az alábbi kódrészletet.
    
         %livy.spark
         //The above magic instructs Zeppelin to use the Livy Scala interpreter
@@ -76,87 +76,87 @@ HDInsight Spark-fürtjei Zeppelin notebookok használó feladatok futtatása Spa
         // Register as a temporary table called "hvac"
         hvac.registerTempTable("hvac")
    
-    Nyomja le az **SHIFT + ENTER** , vagy kattintson a **lejátszása** gomb a bekezdés, a részlet futtatásához. A bekezdés jobb-sarkában állapotának a kész, függőben lévő, FUTÓ befejezett kell előrehaladás. Egyazon paragraph alján megjelenik a kimenetet. A képernyőfelvételen a következőképpen néznek:
+    Nyomja meg **SHIFT + ENTER** , vagy kattintson a **lejátszása** a bekezdés a kódrészlet futtatása gombra. A bekezdés a jobb felső sarkának állapota Kész, függő, BEFEJEZETT, FUTÓ, érdemes halad. A kimenetben megjelenik-e stejném paragraph alján. A képernyőfelvételen a következőhöz hasonlóan néz ki:
    
-    ![Hozzon létre egy ideiglenes táblából a nyers adatoktól](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "a nyers adatoktól ideiglenes tábla létrehozása")
+    ![Hozzon létre egy ideiglenes táblát a nyers adatoktól](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "hozzon létre egy ideiglenes táblát nyers adatokból")
    
-    Minden bekezdéséhez címet is megadhatja. Kattintson a jobb oldali sarokban a **beállítások** ikonra, végül **cím megjelenítése a**.
-5. Most futtathatja a Spark SQL-utasítások a **hvac** tábla. Illessze be a következő lekérdezést egy új bekezdésben szereplő esetekben. A lekérdezés lekéri az épület-Azonosítót és a különbség a cél és a tényleges hőmérsékletek minden készítéséhez egy adott időpontban. Nyomja le az **SHIFT + ENTER**.
+    Minden bekezdéséhez címet is megadhatja. A jobb oldali sarokban, kattintson a **beállítások** ikonra, majd kattintson **Zobrazit název**.
+1. Spark SQL-utasítások mostantól futtathatja a **hvac** tábla. Ha új bekezdést illessze be a következő lekérdezést. A lekérdezés lekéri a az épület-Azonosítót és a különbség a cél és minden egyes létrehozásához egy adott időpontban aktuális hőmérséklet. Nyomja meg **SHIFT + ENTER**.
    
         %sql
         select buildingID, (targettemp - actualtemp) as temp_diff, date from hvac where date = "6/1/13" 
    
-    A **% sql** nyilatkozat elején közli a notebook használatához a Livy Scala értelmező.
+    A **% sql** elején utasítás arra utasítja a notebook használatához a Livy Scala értelmezője számára készült.
    
-    Az alábbi képernyőfelvételen látható a kimenetet.
+    Az alábbi képernyőfelvételen a kimenetet.
    
-    ![A notebook használata Spark SQL-utasítás futtatása](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "a notebook használata Spark SQL-utasítás futtatása")
+    ![A notebook használatával Spark SQL-utasítás futtatásával](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "a notebook használatával Spark SQL-utasítás futtatása")
    
-     Kattintson a megjelenítési beállítások (kiemelt téglalap) az azonos kimenethez tartozó különböző felelősséget közötti váltáshoz. Kattintson a **beállítások** választhat, milyen consitutes a kulcs értékeit a kimenetben. A fenti képernyőfelvételen használ **buildingID** átlaga és a kulcs, **temp_diff** értékeként.
-6. A lekérdezési változók használata Spark SQL-utasítások is futtathatja. A következő kódrészletet bemutatja, hogyan adhat meg egy változót **Temp**, a lehetséges értékek a le szeretné kérdezni a lekérdezésben. A lekérdezés első futtatásakor egy legördülő lista automatikusan töltődik változó megadott értékekre.
+     Az azonos kimenethez tartozó különböző reprezentációinak közötti váltáshoz kattintson (téglalap színnel) megjelenítési beállításait. Kattintson a **beállítások** kiválasztása milyen consitutes a kulcs és az értékeket a kimenetben. Használja a fenti képernyőfelvételen **buildingID** a kulcs és az átlagosan **temp_diff** értékeként.
+1. Változók használata a lekérdezés Spark SQL-utasítások is futtathatja. A következő kódrészletet bemutatja, hogyan adhat meg egy változót **Temp**, a lehetséges értékek a lekérdezni kívánt lekérdezés. A lekérdezés első futtatásakor automatikusan megjelenik egy legördülő változóhoz megadott értékekkel.
    
         %sql
         select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}" 
    
-    Ezt a kódrészletet illessze be egy új bekezdés, és nyomja le az **SHIFT + ENTER**. Az alábbi képernyőfelvételen látható a kimenetet.
+    Illessze be a kódrészletet egy új bekezdés, és nyomja le az **SHIFT + ENTER**. Az alábbi képernyőfelvételen a kimenetet.
    
-    ![A notebook használata Spark SQL-utasítás futtatása](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "a notebook használata Spark SQL-utasítás futtatása")
+    ![A notebook használatával Spark SQL-utasítás futtatásával](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "a notebook használatával Spark SQL-utasítás futtatása")
    
-    A lekérdezések egy új értéket a legördülő listán válasszon, és futtassa újból a lekérdezést. Kattintson a **beállítások** választhat, milyen consitutes a kulcs értékeit a kimenetben. A fenti képernyőfelvételen használ **buildingID** átlaga kulcsként **temp_diff** értékeként, és **targettemp** csoportot.
-7. Indítsa újra a Livy értelmező kilép az alkalmazásból. Ehhez az szükséges, parancsértelmező beállításai megnyitásához a bejelentkezett felhasználó nevében a jobb felső sarokban a, és kattintson a **parancsértelmező**.
+    Az ezt követő lekérdezéseket válasszon ki egy új értéket a legördülő listából, és futtassa újra a lekérdezést. Kattintson a **beállítások** kiválasztása milyen consitutes a kulcs és az értékeket a kimenetben. Használja a fenti képernyőfelvételen **buildingID** átlagát kulcsként **temp_diff** értéket, és **targettemp** csoportként.
+1. Indítsa újra a Livy értelmezője számára készült kilép belőle. Ehhez nyissa meg a interpret beállítások elemre kattintva a bejelentkezett felhasználó neve, a jobb felső sarokban, és kattintson a **Interpret**.
    
-    ![Indítsa el a parancsértelmező](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "kimeneti struktúra")
-8. Görgessen a Livy parancsértelmező beállításait, és kattintson a **indítsa újra a**.
+    ![Indítsa el a interpret](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive-kimenet")
+1. Görgessen a Livy interpret beállításait, és kattintson a **indítsa újra a**.
    
     ![Indítsa újra a Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "indítsa újra a Zeppelin intepreter")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Hogyan külső csomagok használata a notebook?
-Konfigurálhatja a Zeppelin notebook az Apache Spark-fürt a HDInsight (Linux), amelyek nem szerepel az a-kész a fürt külső, közösségi hozzájárult csomagok használata. Kereshet az [Maven-tárház](http://search.maven.org/) csomagok rendelkezésre álló teljes listáját. Más forrásból is megkapható elérhető csomagok listáját. Például közösségi hozzájárult csomagok teljes listája megtalálható [Spark csomagok](http://spark-packages.org/).
+A Zeppelin notebook konfigurálhatja az Apache Spark-fürt a HDInsight (Linux), amelyek nem tartalmaz-a-beépített a fürt külső, a Közösség által biztosított csomagok használata. Kereshet a [Maven tárházból](http://search.maven.org/) a teljes listát az elérhető csomagokat. Elérhető csomagok listáját a más forrásokból is beszerezheti. Például Közösség által biztosított csomagok teljes listája megtalálható [Spark csomagok](http://spark-packages.org/).
 
-Ebből a cikkből látni fogja a használata a [spark-fürt megosztott kötetei szolgáltatás](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) a Jupyter notebookkal csomag.
+Ebben a cikkben bemutatjuk, hogyan használata a [spark-fürt megosztott kötetei szolgáltatás](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) a Jupyter notebookkal csomagot.
 
-1. Nyissa meg a parancsértelmező beállításait. A jobb felső sarokban, kattintson a bejelentkezett felhasználó nevében, majd kattintson **parancsértelmező**.
+1. Interpret beállításainak megnyitásához. A jobb felső sarokban, kattintson a bejelentkezett felhasználó nevében, és kattintson **Interpret**.
    
-    ![Indítsa el a parancsértelmező](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "kimeneti struktúra")
-2. Görgessen a Livy parancsértelmező beállításait, és kattintson a **szerkesztése**.
+    ![Indítsa el a interpret](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive-kimenet")
+1. Görgessen a Livy interpret beállításait, és kattintson a **szerkesztése**.
    
-    ![Parancsértelmező beállításainak módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "parancsértelmező beállításainak módosítása")
-3. Adja hozzá egy új kulcsot, úgynevezett **livy.spark.jars.packages** és az értékét állítsa a formátumban `group:id:version`. Ha szeretné használni a [spark-fürt megosztott kötetei szolgáltatás](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomag, meg kell adni a kulcs értékének `com.databricks:spark-csv_2.10:1.4.0`.
+    ![Interpret beállításainak módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "interpret beállításainak módosítása")
+1. Adjon hozzá egy új kulcsot nevű **livy.spark.jars.packages** majd az értékét állítsa a következő formátumban `group:id:version`. Ha használni szeretné a [spark-fürt megosztott kötetei szolgáltatás](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomag, be kell a kulcs értékét `com.databricks:spark-csv_2.10:1.4.0`.
    
-    ![Parancsértelmező beállításainak módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "parancsértelmező beállításainak módosítása")
+    ![Interpret beállításainak módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "interpret beállításainak módosítása")
    
-    Kattintson a **mentése** , majd indítsa újra a Livy értelmező.
-4. **Tipp**: Ha azt szeretné, hogy hogyan megérkeznek a kulcsnak az értéke a fent megadott, hogyan.
+    Kattintson a **mentése** , majd indítsa újra a Livy értelmezője számára készült.
+1. **Tipp**: Ha szeretné megtudni, hogyan kell érkeznie a kulcsnak az értéke a fent megadott, a következő módját.
    
-    a. Keresse meg a csomagot a Maven-tárházat. Ebben az oktatóanyagban használtuk [spark-fürt megosztott kötetei szolgáltatás](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Keresse meg a csomagot a Maven tárházból. Ebben az oktatóanyagban használt [spark-fürt megosztott kötetei szolgáltatás](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
-    b. A tárház gyűjtse össze a értékeinek **GroupId**, **artifactid szakaszát**, és **verzió**.
+    b. Gyűjtse össze a tárházban, a tartozó értékeket **GroupId**, **ArtifactId**, és **verzió**.
    
     ![Külső csomagok használata Jupyter notebook](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "külső csomagok használata Jupyter notebook")
    
-    c. A következő három érték, egymástól kettősponttal összefűzésére (**:**).
+    c. Fűz össze adatokat a három, egymástól kettősponttal (**:**).
    
         com.databricks:spark-csv_2.10:1.4.0
 
 ## <a name="where-are-the-zeppelin-notebooks-saved"></a>A Zeppelin notebookok tároló?
-A fürt headnodes a Zeppelin notebookok kerülnek. Ezért, ha törli a fürtöt, a notebookok is törlődik. Ha meg szeretné őrizni későbbi használatra más fürtökön jegyzetfüzetek, exportálnia kell őket futó a feladatok befejezése után. A notebook exportálásához kattintson a **exportálása** ikon az alábbi ábrán látható módon.
+A Zeppelin notebookok kerülnek a fürt átjárócsomópontjaihoz. Így ha törli a fürtöt, a notebookok is törlődik. Ha meg szeretné őrizni a notebookok más fürtökön későbbi használatra, exportálnia kell őket a feladatok futtatását követően. A notebook exportálásához kattintson a **exportálása** ikonra az alábbi képen látható módon.
 
-![Töltse le a notebook](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "töltse le a notebook")
+![Töltse le a notebookot](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "töltse le a notebookot")
 
-Ez a notebook egy JSON-fájl a letöltési helyre menti.
+Ez a jegyzetfüzet egy JSON-fájlt a letöltési helyre menti.
 
 ## <a name="livy-session-management"></a>Livy munkamenet-kezelés
-A kód első bekezdésben szereplő esetekben a Zeppelin jegyzetfüzet futtatásakor a új Livy munkamenet létrehozása a HDInsight Spark-fürtön. A munkamenet által megosztott minden Zeppelin notebookok ezt követően hozzon létre. Ha valamilyen okból a munkamenet Livy leállítása (fürt újraindítás, stb.), nem kell a Zeppelin notebook származó feladatok futtathatók.
+A Zeppelin-jegyzetfüzet futtatásakor a kód első bekezdésben új Livy-munkamenetet a HDInsight Spark-fürt jön létre. Ez a munkamenet közösen használja az összes Zeppelin-jegyzetfüzetek ezt követően hozzon létre. Ha valamilyen okból a Livy-munkamenet le állni a (fürt újraindítás, stb.), nem lesz képes feladatok futtatása a Zeppelin-jegyzetfüzet.
 
-Ilyen esetben a következő lépéseket kell elvégezni, a Zeppelin jegyzetfüzet futó feladatok megkezdése előtt. 
+Ebben az esetben a következő lépéseket kell elvégeznie, feladatok futtatása a Zeppelin-jegyzetfüzet megkezdése előtt. 
 
-1. Indítsa újra a Livy értelmező a Zeppelin notebook a. Ehhez az szükséges, parancsértelmező beállításai megnyitásához a bejelentkezett felhasználó nevében a jobb felső sarokban a, és kattintson a **parancsértelmező**.
+1. Indítsa újra a Zeppelin-jegyzetfüzet a Livy értelmezője számára készült. Ehhez nyissa meg a interpret beállítások elemre kattintva a bejelentkezett felhasználó neve, a jobb felső sarokban, és kattintson a **Interpret**.
    
-    ![Indítsa el a parancsértelmező](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "kimeneti struktúra")
-2. Görgessen a Livy parancsértelmező beállításait, és kattintson a **indítsa újra a**.
+    ![Indítsa el a interpret](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive-kimenet")
+1. Görgessen a Livy interpret beállításait, és kattintson a **indítsa újra a**.
    
     ![Indítsa újra a Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "indítsa újra a Zeppelin intepreter")
-3. Futtassa a kódcella meglévő Zeppelin jegyzetfüzet. Ez létrehoz egy új Livy munkamenetet a HDInsight-fürt.
+1. A kódcella futtatásához a meglévő Zeppelin-jegyzetfüzeteket. Ez létrehoz egy új Livy-munkamenetet a HDInsight-fürt.
 
 ## <a name="seealso"></a>Lásd még:
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)

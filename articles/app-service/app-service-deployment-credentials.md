@@ -1,6 +1,6 @@
 ---
-title: Az Azure App Service telepítési hitelesítő adatok |} Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure App Service üzembe helyezési hitelesítő adatokat.
+title: Az Azure App Service-üzembehelyezési hitelesítő adatok |} A Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure App Service üzembe helyezési hitelesítő adatok.
 services: app-service
 documentationcenter: ''
 author: dariagrigoriu
@@ -13,84 +13,84 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: d66b5aa4eb2ad90596dfe9e26bbc18996c967295
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a17260770f0b2e0a73585ce4108bd5625ac22229
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "27778547"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436148"
 ---
-# <a name="configure-deployment-credentials-for-azure-app-service"></a>Telepítési hitelesítő adatok beállítása az Azure App Service
-[Az Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) támogatja a hitelesítő adatok kétféle [helyi Git-telepítésének](app-service-deploy-local-git.md) és [FTP/S telepítési](app-service-deploy-ftp.md). Ezek olyan nem ugyanaz, mint az Azure Active Directorybeli hitelesítő adatokat.
+# <a name="configure-deployment-credentials-for-azure-app-service"></a>Az Azure App Service üzembe helyezési hitelesítő adatok konfigurálása
+[Az Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) hitelesítő adatok kétféle [Git helyi üzemelő példányának](app-service-deploy-local-git.md) és [FTP/S üzembe helyezési](app-service-deploy-ftp.md). Ezek nem azonosak az Azure Active Directory hitelesítő adatként.
 
-* **Felhasználói szintű hitelesítő adatokat**: a teljes Azure-fiók hitelesítő adatait egy készletét. Az App Service a telepíteni kívánt alkalmazást, minden előfizetést, az Azure-fiókra van hozzáférése a használható. Ezek az alapértelmezett hitelesítő adatok beállítása, amelyet megadtak a **alkalmazásszolgáltatások** > **&lt;alkalmazás_neve >** > **üzembe helyezési hitelesítő adatok**. Ez egyben az alapértelmezett, amely a grafikus felhasználói Felülettel portálon illesztett van (például a **áttekintése** és **tulajdonságok** az alkalmazás [erőforrás oldala](../azure-resource-manager/resource-group-portal.md#manage-resources)).
+* **A felhasználói szintű hitelesítő adatokat**: a teljes Azure-fiók hitelesítő adatait egy készletét. App Service-ben minden olyan alkalmazáshoz, minden előfizetéshez, amely az Azure-fiók rendelkezik hozzáféréssel a üzembe helyezéséhez használható. Ezek a konfigurált alapértelmezett hitelesítő adatok beállítása a **App Services** > **&lt;app_name >** > **üzembe helyezési hitelesítő adatok**. Ez egyben az alapértelmezett csoportot, amely a portálon grafikus felhasználói Felülettel illesztett van (például a **áttekintése** és **tulajdonságok** az alkalmazás [erőforráslapján](../azure-resource-manager/resource-group-portal.md#manage-resources)).
 
     > [!NOTE]
-    > Azure-erőforrások szerepköralapú hozzáférés vezérlés (RBAC) vagy társadminisztrátornak engedélyek hozzáférés delegálásához, ha minden Azure felhasználói, amely fogad egy alkalmazás hozzáférési jogának képes személyes felhasználói szintű hitelesítő adatokat használhatna, amíg hozzáférését visszavonja. A központi telepítési hitelesítő adatokat nem lehet megosztva Azure másokkal.
+    > Szerepkör alapú hozzáférés-vezérlés (RBAC) vagy a társadminisztrátori engedélyek használatával Azure-erőforrásokhoz való hozzáférést delegálhat, minden egyes Azure-felhasználó, amely megkapja a hozzáférést egy alkalmazáshoz használhat marketingosztályhoz személyes felhasználói szintű hitelesítő adatokat mindaddig, amíg hozzáférést visszavonták. Ezeket üzembe helyezési hitelesítő adatok nem szabad megosztani a többi Azure-felhasználóval.
     >
     >
 
-* **Alkalmazási szintű hitelesítő adatokat**: hitelesítő adatok az egyes alkalmazásokhoz egy készletét. Csak az alkalmazás telepítéséhez használható. A hitelesítő adatokat az egyes alkalmazások a alkalmazás létrehozásakor automatikusan létrejön, és az alkalmazás megtalálható közzétételi profil. Nem lehet manuálisan konfigurálnia a hitelesítő adatokat, de visszaállíthatja őket egy olyan alkalmazáshoz bármikor.
+* **Az alkalmazásszintű hitelesítő adatok**: hitelesítőadat minden alkalmazáshoz. Csak az alkalmazás üzembe helyezéséhez használható. A hitelesítő adatok minden alkalmazás automatikusan generált alkalmazás létrehozásakor, és megtalálható-e az alkalmazás közzétételi profil. Nem lehet manuálisan konfigurálnia a hitelesítő adatokat, de visszaállíthatja őket az alkalmazás bármikor.
 
     > [!NOTE]
-    > Annak érdekében, hogy illetéktelen személyek számára hozzáférést a hitelesítő adatokat keresztül szerepköralapú hozzáférés vezérlés (RBAC), meg kell győződnie őket közreműködő vagy magasabb a webalkalmazásban. Olvasók nem engedélyezett a közzététel, és ezért nem tudja elérni ezeket a hitelesítő adatokat.
+    > Annak érdekében, hogy valaki ezeket a hitelesítő adatokat keresztül szerepköralapú hozzáférést vezérlő (RBAC), hozzáférést kell tenni őket a közreműködői vagy újabb a webalkalmazásban. Olvasói nem tehet közzé, és ezért nem érhető el ezeket a hitelesítő adatokat.
     >
     >
 
 ## <a name="userscope"></a>Állítsa be, és a felhasználói szintű hitelesítő adatok alaphelyzetbe állítása
 
-Konfigurálhatja a felhasználói szintű hitelesítő adatokat a bármely alkalmazás [erőforrás oldala](../azure-resource-manager/resource-group-portal.md#manage-resources). Minden alkalmazás és az Azure-fiókjával a előfizetéseket függetlenül melyik alkalmazás konfigurálja ezeket a hitelesítő adatokat, vonatkozik. 
+Konfigurálhatja a felhasználói szintű hitelesítő adatok használatát bármely olyan alkalmazásban [erőforráslapján](../azure-resource-manager/resource-group-portal.md#manage-resources). Függetlenül attól hogy mely alkalmazás konfigurálja ezeket a hitelesítő adatokat, vonatkozik minden alkalmazásra és az Azure-fiókjával minden előfizetés esetén. 
 
-A felhasználói szintű hitelesítő adatok konfigurálása:
+A felhasználói szintű hitelesítő adatok megadása:
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson az App Service >  **&lt;any_app >** > **üzembe helyezési hitelesítő adatok**.
+1. Az a [az Azure portal](https://portal.azure.com), kattintson az App Service-ben >  **&lt;any_app >** > **üzembe helyezési hitelesítő adatok**.
 
     > [!NOTE]
-    > A portálon rendelkeznie kell legalább egy alkalmazást a központi telepítési hitelesítő adatok lap elérése előtt. Azonban a a [Azure CLI](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set), konfigurálhatja a felhasználói szintű hitelesítő adatok nélkül egy meglévő alkalmazást.
+    > A portálon rendelkeznie kell legalább egy alkalmazást az üzembe helyezési hitelesítő adatok oldal elérése előtt. Azonban a a [Azure CLI-vel](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set), konfigurálhatja a felhasználói szintű hitelesítő adatokat, anélkül, hogy egy meglévő alkalmazást.
 
-2. Konfigurálja a felhasználónevet és jelszót, és kattintson **mentése**.
+2. Konfigurálja a felhasználónevet és jelszót, és kattintson a **mentése**.
 
     ![](./media/app-service-deployment-credentials/deployment_credentials_configure.png)
 
-Az üzembe helyezési hitelesítő adatok megadása után található a *Git* az alkalmazás központi telepítési felhasználónév **áttekintése**,
+Miután beállította az üzembehelyezési hitelesítő adatokat, annak a *Git* az alkalmazás üzembehelyezési felhasználónév **áttekintése**,
 
 ![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
-és *FTP* az alkalmazás központi telepítési felhasználónév **tulajdonságok**.
+és *FTP* az alkalmazás üzembehelyezési felhasználónév **tulajdonságok**.
 
 ![](./media/app-service-deployment-credentials/deployment_credentials_properties.png)
 
 > [!NOTE]
-> Azure nem jeleníti meg a felhasználói szintű telepítési jelszavát. Ha elfelejti a jelszavát, nem lehet beolvasni. Azonban, alaphelyzetbe állíthatja a hitelesítő adatok ebben a szakaszban ismertetett lépések szerint.
+> Az Azure nem jeleníti meg a felhasználói szintű üzembehelyezési jelszót. Ha elfelejti a jelszavát, nem lehet beolvasni. Azonban alaphelyzetbe állíthatja a hitelesítő adatait a jelen szakaszban ismertetett lépéseket követve.
 >
 >  
 
-## <a name="appscope"></a>Első és az alkalmazási szintű hitelesítő adatok alaphelyzetbe állítása
-Minden alkalmazás az App Service-ben, az alkalmazási szintű tárolják a hitelesítő adatokat az XML-közzétételi profil.
+## <a name="appscope"></a>Első és az alkalmazásszintű hitelesítő adatok alaphelyzetbe állítása
+Minden alkalmazás az App Service-ben, az alkalmazásszintű hitelesítő adatok tárolt XML-közzétételi profil.
 
-Az alkalmazási szintű hitelesítő adatainak lekéréséhez:
+Az alkalmazásszintű hitelesítő adatok lekérése:
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson az App Service >  **&lt;any_app >** > **áttekintése**.
+1. Az a [az Azure portal](https://portal.azure.com), kattintson az App Service-ben >  **&lt;any_app >** > **áttekintése**.
 
-2. Kattintson a **... További** > **Get közzétételi profil**, és elindítja a letöltési egy. PublishSettings-fájl.
+2. Kattintson a **... További** > **közzétételi profil letöltése**, és elindítja a letöltési egy. PublishSettings-fájl.
 
     ![](./media/app-service-deployment-credentials/publish_profile_get.png)
 
-3. Nyissa meg a. PublishSettings fájlt, és keresse a `<publishProfile>` attribútummal rendelkező címke `publishMethod="FTP"`. Ezt követően az beszerzése a `userName` és `password` attribútumok.
-Ezek azok az alkalmazási szintű hitelesítő adatokat.
+3. Nyissa meg a. PublishSettings fájlt, és keresse meg a `<publishProfile>` attribútummal rendelkező címke `publishMethod="FTP"`. Kérje le annak `userName` és `password` attribútumok.
+Ezek azok az alkalmazásszintű hitelesítő adatok.
 
     ![](./media/app-service-deployment-credentials/publish_profile_editor.png)
 
-    A felhasználói szintű hitelesítő adatokat hasonló, az FTP telepítési felhasználónév az formátumban `<app_name>\<username>`, és a Git telepítési felhasználónév az imént `<username>` anélkül, hogy az előző `<app_name>\`.
+    A felhasználói szintű hitelesítő adatokat hasonlóan az FTP-üzembehelyezési felhasználónév is formátumban `<app_name>\<username>`, és a Git telepítési felhasználónév csak rendszer `<username>` anélkül, hogy az előző `<app_name>\`.
 
-Az alkalmazási szintű hitelesítő adatok alaphelyzetbe állítása:
+Az alkalmazásszintű hitelesítő adatok visszaállítása:
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson az App Service >  **&lt;any_app >** > **áttekintése**.
+1. Az a [az Azure portal](https://portal.azure.com), kattintson az App Service-ben >  **&lt;any_app >** > **áttekintése**.
 
-2. Kattintson a **... További** > **a közzétételi profil alaphelyzetbe állítása**. Kattintson a **Igen** az alaphelyzetbe állítás megerősítéséhez.
+2. Kattintson a **... További** > **közzétételi profil alaphelyzetbe állítása**. Kattintson a **Igen** a visszaállítás megerősítéséhez.
 
-    A reset művelet érvényteleníti a korábban letöltött. PublishSettings-fájlok.
+    A visszaállítási művelet minden korábban letöltött érvényteleníti. PublishSettings-fájlok.
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan telepítse az alkalmazást a rendszer ezen hitelesítő adatok segítségével [helyi Git](app-service-deploy-local-git.md) vagy [FTP/S](app-service-deploy-ftp.md).
+Ismerje meg, hogyan használhatja ezeket a hitelesítő adatokat az alkalmazás üzembe helyezése [helyi Git](app-service-deploy-local-git.md) vagy [FTP/S](app-service-deploy-ftp.md).

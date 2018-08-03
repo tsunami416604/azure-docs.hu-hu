@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 7e1d942d593fc01f68c1cdb7ffd923d2529cf171
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e7f0f6bb778dedeea61b74b5ca0c2edbadd5279b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050612"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Oktatóanyag: Azure Active Directory-integráció az TimeOffManager
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. TimeOffManager hozzáadása a katalógusból
-2. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
 ## <a name="add-timeoffmanager-from-the-gallery"></a>TimeOffManager hozzáadása a katalógusból
 Az Azure AD integrálása a TimeOffManager konfigurálásához hozzá kell TimeOffManager a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Az Azure AD integrálása a TimeOffManager konfigurálásához hozzá kell TimeO
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **TimeOffManager**válassza **TimeOffManager** eredmény panelen, majd kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **TimeOffManager**válassza **TimeOffManager** eredmény panelen, majd kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Katalógus hozzáadása](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addfromgallery.png)
 
@@ -86,10 +86,10 @@ TimeOffManager, rendelje hozzá az értékét a **felhasználónév** értékek�
 Az Azure AD egyszeri bejelentkezés az TimeOffManager tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy TimeOffManager tesztfelhasználót](#create-a-timeoffmanager-test-user)**  – egy megfelelője a Britta Simon TimeOffManager, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy TimeOffManager tesztfelhasználót](#create-a-timeoffmanager-test-user)**  – egy megfelelője a Britta Simon TimeOffManager, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -101,11 +101,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![SAML-alapú bejelentkezésre](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_samlbase.png)
 
-3. Az a **TimeOffManager tartomány és URL-címek** területén tegye a következőket:
+1. Az a **TimeOffManager tartomány és URL-címek** területén tegye a következőket:
 
      ![A szakasz TimeOffManager tartomány és URL-címek](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_url.png)
 
@@ -114,11 +114,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Az érték nem valódi. Ez az érték frissítse a tényleges válasz URL-cím. Ezt az értéket kap **egyszeri bejelentkezést a beállítások lapon** amely ismertetését később az oktatóanyag, vagy forduljon a [TimeOffManager támogatási csapatának](https://www.purelyhr.com/contact-us).
  
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![SAML-aláíró tanúsítvány szakaszban](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_certificate.png) 
 
-5. Ez a szakasz célja kidolgozására engedélyezése a felhasználóknak a hitelesítést TimeOffManger fiókkal az Azure AD összevonási SAML protokoll használatával.
+1. Ez a szakasz célja kidolgozására engedélyezése a felhasználóknak a hitelesítést TimeOffManger fiókkal az Azure AD összevonási SAML protokoll használatával.
     
     TimeOffManger alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható.
 
@@ -142,20 +142,20 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     d.  Kattintson az **OK** gombra.
     
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/timeoffmanager-tutorial/tutorial_general_400.png)
 
-7. Az a **TimeOffManager konfigurációs** területén kattintson **konfigurálása TimeOffManager** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **TimeOffManager konfigurációs** területén kattintson **konfigurálása TimeOffManager** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![TimeOffManager konfigurációs szakasz](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_configure.png) 
 
-8. Egy másik böngészőablakban jelentkezzen be a TimeOffManager vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a TimeOffManager vállalati hely rendszergazdaként.
 
-9. Lépjen a **fiók \> fiókokat \> egyszeri bejelentkezési beállításainak**.
+1. Lépjen a **fiók \> fiókokat \> egyszeri bejelentkezési beállításainak**.
    
    ![Egyszeri bejelentkezés beállításai](./media/timeoffmanager-tutorial/ic795917.png "egyszeri bejelentkezés beállításai")
-7. Az a **egyszeri bejelentkezési beállításainak** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **egyszeri bejelentkezési beállításainak** szakaszban, hajtsa végre az alábbi lépéseket:
    
    ![Egyszeri bejelentkezés beállításai](./media/timeoffmanager-tutorial/ic795918.png "egyszeri bejelentkezés beállításai")
    
@@ -173,7 +173,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
    
    g. Kattintson a **módosítások mentése**.
 
-11. A **egyszeri bejelentkezési beállításai** lapon, másolja az értéket a **helyességi feltétel fogyasztói URL-címe** , és illessze be a a **válasz URL-cím** alatti szövegmezőbe **TimeOffManager Tartomány és URL-címek** szakaszban az Azure Portalon. 
+1. A **egyszeri bejelentkezési beállításai** lapon, másolja az értéket a **helyességi feltétel fogyasztói URL-címe** , és illessze be a a **válasz URL-cím** alatti szövegmezőbe **TimeOffManager Tartomány és URL-címek** szakaszban az Azure Portalon. 
 
       ![Egyszeri bejelentkezés beállításai](./media/timeoffmanager-tutorial/ic795915.png "egyszeri bejelentkezés beállításai")
 
@@ -192,15 +192,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/timeoffmanager-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Felhasználók és csoportok--> minden felhasználó](./media/timeoffmanager-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Hozzáadás gomb](./media/timeoffmanager-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Felhasználói párbeszédpanel lap](./media/timeoffmanager-tutorial/create_aaduser_04.png) 
 
@@ -236,23 +236,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **TimeOffManager**.
+1. Az alkalmazások listájában jelölje ki a **TimeOffManager**.
 
     ![Az Alkalmazáslista TimeOffManager](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -263,7 +263,7 @@ Ha a hozzáférési panelen a TimeOffManager csempére kattint, meg kell lekér�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 
