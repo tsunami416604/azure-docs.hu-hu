@@ -6,15 +6,15 @@
       href: key-vault-overview.md
 - name: Gyors útmutatók
   items:
-    - name: Key Vault létrehozása – Parancssori felület
+    - name: Titkos kód beállítása és lekérése – parancssori felület
       href: quick-create-cli.md
-    - name: Key Vault létrehozása – PowerShell
+    - name: Titkos kód beállítása és lekérése – PowerShell
       href: quick-create-powershell.md
-    - name: Key Vault létrehozása – Portal
+    - name: Titkos kód beállítása és lekérése – portál
       href: quick-create-portal.md
-    - name: Olvasás Key Vaultból – .NET
+    - name: Titkos kód beállítása és lekérése – .NET
       href: quick-create-net.md
-    - name: Olvasás Key Vaultból – Node.js
+    - name: Titkos kód beállítása és lekérése – Node.js
       href: quick-create-node.md
 - name: Oktatóanyagok
   items:
@@ -82,6 +82,8 @@
       href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
     - name: Python
       href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
     - name: Fejlesztés
       items:
         - name: Gyors kezdés – videó fejlesztőknek
@@ -143,3 +145,5 @@
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Termékkel kapcsolatos visszajelzés
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

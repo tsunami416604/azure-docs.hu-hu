@@ -8,7 +8,7 @@
 #### [Számlázási lehetőségek az Azure Marketplace-en](./billing-options-azure-marketplace.md)  
 #### [Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése](./azure-partner-customer-usage-attribution.md)
 
-### Áruházak [Az AppSource és az Azure Marketplace összehasonlítása](./comparing-appsource-azure-marketplace.md)  
+### [Áruházak](./comparing-appsource-azure-marketplace.md)  
 
 ### [A megoldás közzétételi beállításának meghatározása](./determine-your-listing-type.md)  
 
@@ -25,6 +25,6 @@
 ### [Vállalatfejlesztés a piactéren](./grow-your-business-with-azure-marketplace.md)  
 #### [Előnyben részesített megoldások](./preferred-solutions.md) 
 
-### Támogatás [Azure Marketplace- és AppSource-támogatás](./support-azure-marketplace.md)  
+### [Azure Marketplace- és AppSource-támogatás](./support-azure-marketplace.md)  
 
 ## [Felhőpartnerportál](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  

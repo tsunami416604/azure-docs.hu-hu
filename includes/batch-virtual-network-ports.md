@@ -1,10 +1,12 @@
 - A virtuális hálózatnak a Batch-fiókkal megegyező Azure **-régióban** és **-előfizetésben** kell lennie.
 
-- A virtuális hálózati konfigurációval létrehozott készletek esetében csak az Azure Resource Manager-alapú virtuális hálózatok támogatottak. A felhőszolgáltatás-konfigurációval létrehozott készletek esetében csak a klasszikus virtuális hálózatok támogatottak. 
+- A virtuális hálózati konfigurációval létrehozott készletek esetében csak az Azure Resource Manager-alapú virtuális hálózatok támogatottak. A felhőszolgáltatás-konfigurációval létrehozott készletek esetében csak a klasszikus virtuális hálózatok támogatottak.
   
 - Egy klasszikus virtuális hálózat használatához a `MicrosoftAzureBatch` szolgáltatásnévnek rendelkeznie kell a `Classic Virtual Machine Contributor` szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel az adott virtuális hálózaton. Egy Azure Resource Manager-alapú VNet használatához engedélyekre van szüksége a VNethez való hozzáféréshez és a virtuális gépek az alhálózatban való üzembe helyezéséhez.
 
 - A készlethez meghatározott alhálózatnak elegendő hozzá nem rendelt IP-címmel kell rendelkeznie ahhoz, hogy helyet tudjon adni a készlethez kijelölt számú virtuális gépnek. Ez a szám a készlet `targetDedicatedNodes` és `targetLowPriorityNodes` tulajdonságának összege. Ha az alhálózaton nincs elegendő hozzá nem rendelt IP-cím, akkor a készlet részlegesen lefoglalja a számítási csomópontokat, és átméretezési hiba következik be. 
+
+- Az Azure-beli virtuális hálózatban üzembe helyezett virtuálisgép-konfigurációban lévő készletek automatikusan lefoglalnak további Azure hálózati erőforrásokat. A következő erőforrások szükségesek a virtuális hálózatokban üzembe helyezett 50 készletes csomópontokhoz: 1 hálózati biztonsági csoport, 1 nyilvános IP-cím és 1 terheléselosztó. Ezekre az erőforrásokra az azon előfizetésben meghatározott [kvóták](../articles/batch/batch-quota-limit.md) vonatkoznak, amely a Batch-készlet létrehozásakor biztosított virtuális hálózatot tartalmazza.
 
 - A virtuális hálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon. Ehhez ellenőrizheti, hogy a virtuális hálózattal vannak-e társítva hálózati biztonsági csoportok (NSG-k). Ha a megadott alhálózaton a számítási csomópontok felé irányuló kommunikációt egy NSG letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát. 
 

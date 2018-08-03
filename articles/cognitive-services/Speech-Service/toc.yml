@@ -1,13 +1,13 @@
 # displayName: additional text for filtering down the ToC in meaningful way.
-- name: Beszédszolgáltatási API dokumentációja
+- name: Beszédszolgáltatás és SDK dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
     - name: Beszédforgatókönyvek
       href: speech-scenarios.md
-    - name: Mi az a beszédszolgáltatás?
-      href: overview.md
       expanded: true
+    - name: Beszédszolgáltatás
+      href: overview.md
     - name: Beszéd SDK
       href: speech-sdk.md
       displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'

@@ -102,11 +102,13 @@
 ### [Az összes csoport megtekintése](fundamentals/active-directory-groups-view-azure-portal.md)
 ### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](users-groups-roles/groups-saasapps.md)
 ### [Törölt Office 365-csoport visszaállítása](fundamentals/active-directory-groups-restore-azure-portal.md)
-### [Csoportbeállítások kezelése](fundamentals/active-directory-groups-settings-azure-portal.md) 
-### Speciális szabályok létrehozása
-#### [Azure Portal](users-groups-roles/groups-dynamic-membership.md)
+### [Csoportbeállítások kezelése](fundamentals/active-directory-groups-settings-azure-portal.md)
 ### [Önkiszolgáló csoportok beállítása](users-groups-roles/groups-self-service-management.md)
-### [Hibaelhárítás](users-groups-roles/groups-troubleshooting.md)
+### Dinamikus csoportok
+#### [Dinamikus csoport létrehozása](users-groups-roles/groups-create-rule.md)
+#### [Szabályszintaxis és -tulajdonságok](users-groups-roles/groups-dynamic-membership.md)
+#### [Csoporttagság típusának módosítása](users-groups-roles/groups-change-type.md)
+#### [Hibaelhárítás](users-groups-roles/groups-troubleshooting.md)
 
 ## [Jelentések kezelése](active-directory-reporting-azure-portal.md)
 ### [Bejelentkezési tevékenység](active-directory-reporting-activity-sign-ins.md)

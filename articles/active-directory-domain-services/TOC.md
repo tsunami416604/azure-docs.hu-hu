@@ -36,6 +36,9 @@
 #### [1. feladat: tanúsítvány beszerzése biztonságos LDAP-hoz](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [2. feladat: a megbízható LDAP-tanúsítványának exportálása](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
 #### [3. feladat: biztonságos LDAP engedélyezése a felügyelt tartományhoz az Azure portállal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [4. feladat: A DNS konfigurálása a felügyelt tartomány internetről való elérésére](active-directory-ds-ldaps-configure-dns.md)
+#### [5. feladat: Kötés létrehozása a felügyelt tartománnyal és a biztonságos LDAP-hozzáférés zárolása](active-directory-ds-ldaps-bind-lockdown.md)
+#### [A biztonságos LDAP hibaelhárítása](active-directory-ds-ldaps-troubleshoot.md)
 
 ### [Szervezeti egység létrehozása egy felügyelt tartományon](active-directory-ds-admin-guide-create-ou.md)
 ### [Csoportosan felügyelt szolgáltatásfiók létrehozása felügyelt tartományon](active-directory-ds-create-gmsa.md)

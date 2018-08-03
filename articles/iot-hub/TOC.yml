@@ -308,6 +308,8 @@
               href: iot-hub-live-data-visualization-in-web-apps.md
             - name: Időjárás-előrejelzés az Azure Machine Learning használatával
               href: iot-hub-weather-forecast-machine-learning.md
+            - name: Eszközfelügyelet VS Code-hoz készült Azure IoT-eszközkészlettel
+              href: iot-hub-device-management-iot-toolkit.md
             - name: Eszközkezelés az iothub-explorerrel
               href: iot-hub-device-management-iothub-explorer.md
             - name: Eszközfelügyelet az Azure CLI 2.0-hoz készült IoT-bővítménnyel

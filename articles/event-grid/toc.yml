@@ -47,8 +47,34 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
+      items:
+        - name: Egyéni témakör létrehozása
+          href: scripts/event-grid-cli-create-custom-topic.md
+        - name: Feliratkozás Azure-előfizetésre
+          href: scripts/event-grid-cli-azure-subscription.md
+        - name: Feliratkozás a Blob Storage-ra
+          href: scripts/event-grid-cli-blob.md
+        - name: Feliratkozás egyéni témakörre
+          href: scripts/event-grid-cli-subscribe-custom-topic.md
+        - name: Feliratkozás erőforráscsoportra
+          href: scripts/event-grid-cli-resource-group.md
+        - name: Előfizetés és események szűrése erőforráscsoporthoz
+          href: scripts/event-grid-cli-resource-group-filter.md
     - name: Azure PowerShell
       href: powershell-samples.md
+      items:
+        - name: Egyéni témakör létrehozása
+          href: scripts/event-grid-powershell-create-custom-topic.md
+        - name: Feliratkozás Azure-előfizetésre
+          href: scripts/event-grid-powershell-azure-subscription.md
+        - name: Feliratkozás a Blob Storage-ra
+          href: scripts/event-grid-powershell-blob.md
+        - name: Feliratkozás egyéni témakörre
+          href: scripts/event-grid-powershell-subscribe-custom-topic.md
+        - name: Feliratkozás erőforráscsoportra
+          href: scripts/event-grid-powershell-resource-group.md
+        - name: Előfizetés és események szűrése erőforráscsoporthoz
+          href: scripts/event-grid-powershell-resource-group-filter.md
     - name: Resource Manager-sablonok
       href: template-samples.md
     - name: Kódminták
@@ -71,7 +97,7 @@
       href: post-to-custom-topic.md
     - name: Események fogadása HTTP-végponton
       href: receive-events.md
-    - name: Eseménykézbesítés kezelése
+    - name: Kézbesíthetetlen üzenet és újrapróbálkozás
       href: manage-event-delivery.md
     - name: Eseménykézbesítés figyelése
       href: monitor-event-delivery.md

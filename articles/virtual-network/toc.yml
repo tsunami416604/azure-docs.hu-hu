@@ -211,6 +211,8 @@
           href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
         - name: PTR konfigurálása SMTP szalagcím-ellenőrzésre
           href: create-ptr-for-smtp-service.md
+        - name: Hibaelhárítási ellenőrzőlista virtuális berendezésekhez
+          href: virtual-network-troubleshoot-nva.md
     - name: Klasszikus
       items:
         - name: Virtuális hálózat létrehozása és kezelése

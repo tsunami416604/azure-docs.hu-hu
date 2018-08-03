@@ -61,6 +61,8 @@
           href: devtest-lab-create-lab.md
         - name: Virtuális gép létrehozása a tesztkörnyezetben
           href: devtest-lab-create-first-vm.md
+        - name: Tesztkörnyezet vagy tesztkörnyezetben lévő virtuális gép törlése
+          href: devtest-lab-delete-lab-vm.md
         - name: Tesztkörnyezetre vonatkozó szabályzatok létrehozása
           href: devtest-lab-get-started-with-lab-policies.md
         - name: Titkos kulcsok tárolása az Azure Key Vaultban

@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33a447e2161925d23385cbd0c471e0f5babd618f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 292540100096b26a652094cb0ea8d8f585961a22
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473749"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422433"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>A Mobile Apps Node.js SDK használata
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -50,7 +50,7 @@ Minden Mobile Apps Node.js háttérrendszer ExpressJS alkalmazást indítja el. 
 1. Egy parancs vagy a PowerShell-ablakot hozzon létre egy könyvtárat a projekthez:
 
         mkdir basicapp
-2. Futtatás `npm init` inicializálása a csomag szerkezete:
+1. Futtatás `npm init` inicializálása a csomag szerkezete:
 
         cd basicapp
         npm init
@@ -58,10 +58,10 @@ Minden Mobile Apps Node.js háttérrendszer ExpressJS alkalmazást indítja el. 
    A `npm init` parancs kéri a projekt inicializálása kérdésekre. A példa kimenet látható:
 
    ![Az npm init kimenet][0]
-3. Telepítse a `express` és `azure-mobile-apps` az npm-adattárból könyvtárak:
+1. Telepítse a `express` és `azure-mobile-apps` az npm-adattárból könyvtárak:
 
         npm install --save express azure-mobile-apps
-4. Hozzon létre egy app.js fájlban az alapvető mobileszköz kiszolgáló megvalósításához:
+1. Hozzon létre egy app.js fájlban az alapvető mobileszköz kiszolgáló megvalósításához:
 
         var express = require('express'),
             azureMobileApps = require('azure-mobile-apps');
@@ -94,18 +94,18 @@ Ez a alapvető alkalmazás találja a kódot a [basicapp minta a Githubon].
 Visual Studio 2015-bővítményt az ide Node.js-alkalmazások fejlesztéséhez szükséges. Először telepítse a [1.1 node.js-eszközök a Visual Studióhoz]. Amikor befejezi a telepítést, hozzon létre egy expressz 4.x-es alkalmazás:
 
 1. Nyissa meg a **új projekt** párbeszédpanel (a **fájl** > **új** > **projekt**).
-2. Bontsa ki a **sablonok** > **JavaScript** > **Node.js**.
-3. Válassza ki **alapszintű Azure Node.js Express 4-alkalmazás**.
-4. Adja meg a projekt nevét. Kattintson az **OK** gombra.
+1. Bontsa ki a **sablonok** > **JavaScript** > **Node.js**.
+1. Válassza ki **alapszintű Azure Node.js Express 4-alkalmazás**.
+1. Adja meg a projekt nevét. Kattintson az **OK** gombra.
 
    ![A Visual Studio 2015-ben új projekt][1]
-5. Kattintson a jobb gombbal a **npm** csomópontra, és válassza **új telepítése az npm csomagok**.
-6. Akkor lehet, hogy frissítenie kell az npm-katalógus az első Node.js-alkalmazás létrehozása után. Válassza ki **frissítése** szükség esetén.
-7. Adja meg **azure-mobilalkalmazások** kifejezést a keresőmezőbe. Válassza ki a **azure-mobile-alkalmazások 2.0.0-s** csomagot, és válassza ki **telepítőcsomag**.
+1. Kattintson a jobb gombbal a **npm** csomópontra, és válassza **új telepítése az npm csomagok**.
+1. Akkor lehet, hogy frissítenie kell az npm-katalógus az első Node.js-alkalmazás létrehozása után. Válassza ki **frissítése** szükség esetén.
+1. Adja meg **azure-mobilalkalmazások** kifejezést a keresőmezőbe. Válassza ki a **azure-mobile-alkalmazások 2.0.0-s** csomagot, és válassza ki **telepítőcsomag**.
 
    ![Új npm-csomagok telepítése][2]
-8. Válassza ki **Bezárás**.
-9. Nyissa meg a Mobile Apps SDK-támogatás hozzáadása az app.js fájlban. At sor 6 at a tár alján `require` utasítások, adja hozzá a következő kódot:
+1. Válassza ki **Bezárás**.
+1. Nyissa meg a Mobile Apps SDK-támogatás hozzáadása az app.js fájlban. At sor 6 at a tár alján `require` utasítások, adja hozzá a következő kódot:
 
         var bodyParser = require('body-parser');
         var azureMobileApps = require('azure-mobile-apps');
@@ -120,7 +120,7 @@ Visual Studio 2015-bővítményt az ide Node.js-alkalmazások fejlesztéséhez s
         app.use(mobile);
 
    Mentse a fájlt.
-10. Akár az a alkalmazás helyileg történő futtatása (az API-t a kiszolgált http://localhost:3000) vagy közzéteheti az Azure-bA.
+1. Akár az a alkalmazás helyileg történő futtatása (az API-t a kiszolgált http://localhost:3000) vagy közzéteheti az Azure-bA.
 
 ### <a name="create-node-backend-portal"></a>Egy Node.js-háttérrendszer létrehozása az Azure portal használatával
 A Mobile Apps-háttéralkalmazás közvetlenül is létrehozhat a a [Azure Portal]. A következő lépéseket, vagy hozzon létre egy ügyfél és kiszolgáló együtt a következő a [mobilalkalmazás létrehozása](app-service-mobile-ios-get-started.md) oktatóanyag. Az oktatóanyag egy egyszerűsített változata ezeket az utasításokat tartalmaz, és nem proof-of-concept projektek esetén ajánlott használni.
@@ -136,13 +136,13 @@ Ha egy Node.js Mobile Apps-háttéralkalmazás létrehozása a portál használa
 Az alábbi eljárás egy Git-tárház használatával töltse le a rövid útmutató projekt kódja:
 
 1. Ha ezt még nem tette meg, telepítse a Git. A Git telepítéséhez szükséges lépések eltérőek lehetnek, operációs rendszerek között. Operációsrendszer-specifikus disztribúciók és a telepítéssel kapcsolatos útmutató: [telepítése Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
-2. Lásd: [készítse elő a tárház](../app-service/app-service-deploy-local-git.md#prepare-your-repository) ahhoz, hogy a Git-tárházba, a háttér-helyhez. Jegyezze fel a központi telepítési felhasználónevet és jelszót.
-3. A panelen for a Mobile Apps-háttéralkalmazáshoz, jegyezze fel a **Git clone URL-cím** beállítás.
-4. Hajtsa végre a `git clone` parancsot a Git clone URL-cím használatával. Adja meg a jelszót, ha szükséges, az alábbi példában látható módon:
+1. Lásd: [készítse elő a tárház](../app-service/app-service-deploy-local-git.md#prepare-your-repository) ahhoz, hogy a Git-tárházba, a háttér-helyhez. Jegyezze fel a központi telepítési felhasználónevet és jelszót.
+1. A panelen for a Mobile Apps-háttéralkalmazáshoz, jegyezze fel a **Git clone URL-cím** beállítás.
+1. Hajtsa végre a `git clone` parancsot a Git clone URL-cím használatával. Adja meg a jelszót, ha szükséges, az alábbi példában látható módon:
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
-5. Tallózással keresse meg a helyi könyvtárban (`/todolist` az előző példában), és figyelje meg, hogy project fájlok le vannak töltve. Keresse meg a todoitem.json fájlt a `/tables` könyvtár. Ez a fájl engedélyeit a tábla határozza meg. Ugyanabban a címtárban todoitem.js fájl is található. Azt határozza meg a CRUD-MŰVELETEKKEL művelet parancsfájlok a táblához.
-6. Soubory projektu: futtassa a következő parancsokat hozzáadása, módosítása után véglegesítés, és ezután töltse fel a módosítások a hely:
+1. Tallózással keresse meg a helyi könyvtárban (`/todolist` az előző példában), és figyelje meg, hogy project fájlok le vannak töltve. Keresse meg a todoitem.json fájlt a `/tables` könyvtár. Ez a fájl engedélyeit a tábla határozza meg. Ugyanabban a címtárban todoitem.js fájl is található. Azt határozza meg a CRUD-MŰVELETEKKEL művelet parancsfájlok a táblához.
+1. Soubory projektu: futtassa a következő parancsokat hozzáadása, módosítása után véglegesítés, és ezután töltse fel a módosítások a hely:
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -252,7 +252,7 @@ A Mobile Apps Node.js SDK-t használ a [mssql Node.js-csomag] létrehozásához,
 >
 
 1. Töltse le és telepítse [Microsoft SQL Server 2014 Express]. Győződjön meg arról, hogy telepíti az SQL Server 2014 Express Edition eszközök. Csak 64 bites támogatása explicit módon van szüksége, a 32 bites verziója a futtatásakor kevesebb memóriát használ fel.
-2. Futtassa az SQL Server 2014 Configuration Manager:
+1. Futtassa az SQL Server 2014 Configuration Manager:
 
    a. Bontsa ki a **SQL Server hálózati konfigurációja** csomópontra a fanézetben menü.
 
@@ -275,25 +275,25 @@ A Mobile Apps Node.js SDK-t használ a [mssql Node.js-csomag] létrehozásához,
    i. Kattintson a jobb gombbal **SQL Server (SQLEXPRESS)** válassza **indítsa újra a**.
 
    j. Zárja be az SQL Server 2014 Configuration Manager.
-3. SQL Server 2014 Management Studióban futtassa, és csatlakozzon az SQL Server Express helyi példányának:
+1. SQL Server 2014 Management Studióban futtassa, és csatlakozzon az SQL Server Express helyi példányának:
 
    1. Kattintson a jobb gombbal a példány, az Object Explorerben, és válassza ki **tulajdonságok**.
-   2. Válassza ki a **biztonsági** lapot.
-   3. Ügyeljen arra, hogy **SQL Server és a Windows-hitelesítési mód** van kiválasztva.
-   4. Kattintson az **OK** gombra.
+   1. Válassza ki a **biztonsági** lapot.
+   1. Ügyeljen arra, hogy **SQL Server és a Windows-hitelesítési mód** van kiválasztva.
+   1. Kattintson az **OK** gombra.
 
       ![Az SQL Server Express-hitelesítés konfigurálása][4]
-   5. Bontsa ki a **biztonsági** > **bejelentkezések** az Object Explorerben.
-   6. Kattintson a jobb gombbal **bejelentkezések** válassza **új bejelentkezés**.
-   7. Adja meg a bejelentkezési névhez. Kattintson az **SQL Server-hitelesítés** lehetőségre. Adjon meg egy jelszót, és írja be ugyanezt a jelszót **jelszó megerősítése**. A jelszónak meg kell felelnie a bonyolultsági feltételeknek Windows.
-   8. Kattintson az **OK** gombra.
+   1. Bontsa ki a **biztonsági** > **bejelentkezések** az Object Explorerben.
+   1. Kattintson a jobb gombbal **bejelentkezések** válassza **új bejelentkezés**.
+   1. Adja meg a bejelentkezési névhez. Kattintson az **SQL Server-hitelesítés** lehetőségre. Adjon meg egy jelszót, és írja be ugyanezt a jelszót **jelszó megerősítése**. A jelszónak meg kell felelnie a bonyolultsági feltételeknek Windows.
+   1. Kattintson az **OK** gombra.
 
       ![Új felhasználó hozzáadása SQL Server Express][5]
-   9. Kattintson a jobb gombbal az új bejelentkezési adatait, és válassza ki **tulajdonságok**.
-   10. Válassza ki a **kiszolgálói szerepkörök** lapot.
-   11. Jelölje be a jelölőnégyzetet a **dbcreator** kiszolgálói szerepkört.
-   12. Kattintson az **OK** gombra.
-   13. Zárja be az SQL Server 2015 Management Studiót.
+   1. Kattintson a jobb gombbal az új bejelentkezési adatait, és válassza ki **tulajdonságok**.
+   1. Válassza ki a **kiszolgálói szerepkörök** lapot.
+   1. Jelölje be a jelölőnégyzetet a **dbcreator** kiszolgálói szerepkört.
+   1. Kattintson az **OK** gombra.
+   1. Zárja be az SQL Server 2015 Management Studiót.
 
 Mindenképpen jegyezze fel a felhasználónevet és jelszót, amelyet kiválasztott. Előfordulhat, hogy szeretne további kiszolgálói szerepkörök vagy engedélyek, az adatbázis követelményei hozzárendelése.
 
@@ -348,13 +348,13 @@ A azureMobile.js fájl beállításai a legtöbb rendelkezik egyenértékű alka
 Alkalmazásbeállítás megadása:
 
 1. Jelentkezzen be az [Azure Portal].
-2. Válassza ki **összes erőforrás** vagy **App Services**, majd válassza a mobilalkalmazás neve.
-3. A **beállítások** panelen alapértelmezés szerint megnyílik. Ha nem, és válassza az **beállítások**.
-4. Az a **általános** menüjében válassza **Alkalmazásbeállítások**.
-5. Görgessen a **Alkalmazásbeállítások** szakaszban.
-6. Ha az alkalmazás, beállítás már létezik, válassza ki az érték szerkesztéséhez Alkalmazásbeállítás értékét.
+1. Válassza ki **összes erőforrás** vagy **App Services**, majd válassza a mobilalkalmazás neve.
+1. A **beállítások** panelen alapértelmezés szerint megnyílik. Ha nem, és válassza az **beállítások**.
+1. Az a **általános** menüjében válassza **Alkalmazásbeállítások**.
+1. Görgessen a **Alkalmazásbeállítások** szakaszban.
+1. Ha az alkalmazás, beállítás már létezik, válassza ki az érték szerkesztéséhez Alkalmazásbeállítás értékét.
    Ha az alkalmazás-beállítás nem létezik, adja meg az Alkalmazásbeállítás a **kulcs** mezőbe, és az értéket a **érték** mezőbe.
-8. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
 A legtöbb alkalmazás beállításainak módosítása a szolgáltatás újraindítását igényli.
 
@@ -364,9 +364,9 @@ A legtöbb alkalmazás beállításainak módosítása a szolgáltatás újraind
 Azure SQL Database használatával adattárként megegyezik az Azure App Service-alkalmazás összes típusa. Ha Ön még nem tette már, kövesse az alábbi lépéseket egy Mobile Apps-háttéralkalmazás létrehozásához:
 
 1. Jelentkezzen be az [Azure Portal].
-2. Az ablak bal felső sarokban válassza ki a **+ új** gomb > **Web + mobil** > **mobilalkalmazás**, majd adja meg egy nevet a Mobile Apps-háttéralkalmazás számára.
-3. Az a **erőforráscsoport** mezőbe írja be ugyanazzal a névvel, az alkalmazás.
-4. Az alapértelmezett App Service-csomag van kiválasztva. Ha azt szeretné, az App Service-csomag módosítása:
+1. Az ablak bal felső sarokban válassza ki a **+ új** gomb > **Web + mobil** > **mobilalkalmazás**, majd adja meg egy nevet a Mobile Apps-háttéralkalmazás számára.
+1. Az a **erőforráscsoport** mezőbe írja be ugyanazzal a névvel, az alkalmazás.
+1. Az alapértelmezett App Service-csomag van kiválasztva. Ha azt szeretné, az App Service-csomag módosítása:
 
    a. Válassza ki **App Service-csomag** > **+ új létrehozása**. 
    
@@ -377,7 +377,7 @@ Azure SQL Database használatával adattárként megegyezik az Azure App Service
    d. Kattintson a **kiválasztása** gombra. 
    
    e. Térjen vissza a **App Service-csomag** ablaktáblán válassza előbb **OK**.
-5. Kattintson a **Létrehozás** gombra. 
+1. Kattintson a **Létrehozás** gombra. 
 
 Egy Mobile Apps-kiépítés háttérrendszer néhány percig is eltarthat. Miután a Mobile Apps biztonsági célból ki van építve, a portál megnyitja az **beállítások** panelen a Mobile Apps-háttéralkalmazás számára.
 
@@ -389,13 +389,13 @@ Választhat, vagy egy meglévő SQL database csatlakozhat a Mobile Apps-háttér
 >
 
 1. Válassza ki az új Mobile Apps-háttéralkalmazást, **beállítások** > **mobilalkalmazás** > **adatok** > **+ Hozzáadás**.
-2. Az a **adatkapcsolat hozzáadása** ablaktáblán válassza **SQL Database – kötelező beállítások konfigurálása** > **hozzon létre egy új adatbázist**. Adja meg az új adatbázis nevét a **neve** mezőbe.
-3. Válassza ki **kiszolgáló**. Az a **új kiszolgáló** panelen adjon meg egy egyedi kiszolgálónevet a a **kiszolgálónév** mezőbe, majd adja meg a megfelelő kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát. Ügyeljen arra, hogy **azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** van kiválasztva. Kattintson az **OK** gombra.
+1. Az a **adatkapcsolat hozzáadása** ablaktáblán válassza **SQL Database – kötelező beállítások konfigurálása** > **hozzon létre egy új adatbázist**. Adja meg az új adatbázis nevét a **neve** mezőbe.
+1. Válassza ki **kiszolgáló**. Az a **új kiszolgáló** panelen adjon meg egy egyedi kiszolgálónevet a a **kiszolgálónév** mezőbe, majd adja meg a megfelelő kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát. Ügyeljen arra, hogy **azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** van kiválasztva. Kattintson az **OK** gombra.
 
    ![Azure SQL-adatbázis létrehozása][6]
-4. Az a **új adatbázis** ablaktáblán válassza előbb **OK**.
-5. Térjen vissza a **adatkapcsolat hozzáadása** ablaktáblán válassza előbb **kapcsolati karakterlánc**, és adja meg a bejelentkezési és az adatbázis létrehozásakor megadott jelszót. Ha egy meglévő adatbázist használ, adja meg a bejelentkezési hitelesítő adatokat, hogy az adatbázis. Kattintson az **OK** gombra.
-6. Térjen vissza a **adatkapcsolat hozzáadása** panelt, válassza **OK** az adatbázis létrehozásához.
+1. Az a **új adatbázis** ablaktáblán válassza előbb **OK**.
+1. Térjen vissza a **adatkapcsolat hozzáadása** ablaktáblán válassza előbb **kapcsolati karakterlánc**, és adja meg a bejelentkezési és az adatbázis létrehozásakor megadott jelszót. Ha egy meglévő adatbázist használ, adja meg a bejelentkezési hitelesítő adatokat, hogy az adatbázis. Kattintson az **OK** gombra.
+1. Térjen vissza a **adatkapcsolat hozzáadása** panelt, válassza **OK** az adatbázis létrehozásához.
 
 <!--- END OF ALTERNATE INCLUDE -->
 
@@ -693,8 +693,8 @@ Ha szeretné használni az App Service-hitelesítés egy egyéni API-val, konfig
 Egyéni API-k a tábla API-ként ugyanolyan módon vannak meghatározva:
 
 1. Hozzon létre egy `api` könyvtár.
-2. Hozzon létre egy API-definíciós JavaScript a fájlt a `api` könyvtár.
-3. Importálási módszer használatával importálhatja a `api` könyvtár.
+1. Hozzon létre egy API-definíciós JavaScript a fájlt a `api` könyvtár.
+1. Importálási módszer használatával importálhatja a `api` könyvtár.
 
 Íme a korábban használt alap-alkalmazást a mintán alapuló API-definíció prototípus:
 
@@ -857,7 +857,7 @@ Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerk
 1. A ablaktábla számára a Mobile Apps-háttéralkalmazáshoz, válassza a **minden beállítás** > vagy **könnyen kezelhető táblák** vagy **egyszerű API-k**. Egy tábla vagy API-t, majd válassza ki és **parancsfájl szerkesztése**. A parancsfájl az App Service Editor nyílik meg.
 
    ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
-2. A módosítások a kódfájl a online szerkesztőjében. Módosítások mentése automatikusan történik, akkor írja be.
+1. A módosítások a kódfájl a online szerkesztőjében. Módosítások mentése automatikusan történik, akkor írja be.
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png

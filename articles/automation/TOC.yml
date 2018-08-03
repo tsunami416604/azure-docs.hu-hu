@@ -147,7 +147,7 @@
           href: automation-dsc-cd-chocolatey.md
         - name: Az Azure Automation DSC jelentési adatainak továbbítása az OMS Log Analyticsbe
           href: automation-dsc-diagnostics.md
-    - name: Eszközök kezelése
+    - name: Megosztott erőforrások kezelése
       items:
         - name: Tanúsítványok
           href: automation-certificates.md

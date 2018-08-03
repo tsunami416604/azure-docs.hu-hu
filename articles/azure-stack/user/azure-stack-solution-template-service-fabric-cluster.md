@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: acf850bdc56e55d13b13a40ef343f2f20c4a77ca
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9feb2e538d3578fe259aa3fbc693a1e953f2f894
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969112"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440351"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Az Azure Stack a Service Fabric-fürt üzembe helyezése
 
@@ -39,9 +39,9 @@ A következők szükségesek a Service Fabric-fürt üzembe helyezéséhez:
     > [!NOTE]  
     > A x.509 tanúsítvány egy önaláírt tanúsítványt inplace tesztelési célokra használható. Önaláírt tanúsítványok nem kell egyeznie a fürt teljes Tartománynevét.
 
-2.  **Rendszergazdai ügyfél tanúsítványa** Ez az a tanúsítvány, amelyet az ügyfél a Service Fabric-fürtöt, amely is lehet önaláírt hitelesítést fog használni. Lásd: [követelmények](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) az ügyféltanúsítvány létrehozásához.
+1.  **Rendszergazdai ügyfél tanúsítványa** Ez az a tanúsítvány, amelyet az ügyfél a Service Fabric-fürtöt, amely is lehet önaláírt hitelesítést fog használni. Lásd: [követelmények](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) az ügyféltanúsítvány létrehozásához.
 
-3.  **Az Azure Stack piactéren elérhetőnek kell lennie a következőkkel:**
+1.  **Az Azure Stack piactéren elérhetőnek kell lennie a következőkkel:**
      - **A Windows Server 2016** – a sablon a Windows Server 2016 rendszerképet használ a fürt létrehozásához.  
      - **Ügyfél parancsprogramok futtatására szolgáló bővítmény** – virtuálisgép-bővítmény a Microsoft.  
      - **PowerShell célállapot-konfigurációs szakasz** – virtuálisgép-bővítmény a Microsoft.
@@ -124,15 +124,15 @@ További információkért lásd: [KeyVault kezelése az Azure Stackben a PowerS
 
    ![Válassza ki a Service Fabric-fürt](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
 
-2. Minden olyan lap például *alapjai*, töltse ki az üzembe helyezés űrlapot. Használja az alapértelmezett értékeket, ha nem biztos egy értéket. Válassza ki **OK** , folytassa a következő oldalra:
+1. Minden olyan lap például *alapjai*, töltse ki az üzembe helyezés űrlapot. Használja az alapértelmezett értékeket, ha nem biztos egy értéket. Válassza ki **OK** , folytassa a következő oldalra:
 
    ![Alapvető beállítások](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
 
-3. Az a *hálózati beállítások* lapon megadhat adott portok megnyitásához az alkalmazások számára:
+1. Az a *hálózati beállítások* lapon megadhat adott portok megnyitásához az alkalmazások számára:
 
    ![Hálózati beállítások](media/azure-stack-solution-template-service-fabric-cluster/image4.png)
 
-4. Az a *biztonsági* lap, adja hozzá az értékeket webhelyről származó alkalmazásazonosítóra [létrehozása az Azure KeyVault](#add-a-secret-to-key-vault) , és töltse fel a titkos kulcsot.
+1. Az a *biztonsági* lap, adja hozzá az értékeket webhelyről származó alkalmazásazonosítóra [létrehozása az Azure KeyVault](#add-a-secret-to-key-vault) , és töltse fel a titkos kulcsot.
 
    Az a *felügyeleti ügyfél tanúsítványának ujjlenyomata*, ujjlenyomatát adja meg a *rendszergazdai ügyfél tanúsítványa*. (Lásd a [Előfeltételek](#prerequisites).)
    
@@ -145,7 +145,7 @@ További információkért lásd: [KeyVault kezelése az Azure Stackben a PowerS
 
    ![Biztonság](media/azure-stack-solution-template-service-fabric-cluster/image6.png)
 
-5. Fejezze be a varázslót, és válassza ki **létrehozás** a Service Fabric-fürt üzembe helyezéséhez.
+1. Fejezze be a varázslót, és válassza ki **létrehozás** a Service Fabric-fürt üzembe helyezéséhez.
 
 
 
@@ -169,7 +169,7 @@ Elérheti a Service Fabric-fürthöz a Service Fabric Explorerben vagy a Service
 
     d. Az a *tanúsítvány Store* lapon jelölje be **személyes**, majd fejezze be a varázslót.  
        ![Tanúsítványtároló](media/azure-stack-solution-template-service-fabric-cluster/image9.png)  
-2. Keresése a Service Fabric-fürt teljes Tartománynevét:  
+1. Keresése a Service Fabric-fürt teljes Tartománynevét:  
 
     a. Nyissa meg az erőforráscsoporthoz társított a Service Fabric-fürt, és keresse meg a *nyilvános IP-cím* erőforrás. Jelölje ki az objektumot, nyissa meg a nyilvános IP-címet társítva a *nyilvános IP-cím* panelen.  
 
@@ -179,12 +179,12 @@ Elérheti a Service Fabric-fürthöz a Service Fabric Explorerben vagy a Service
 
       ![DNS-név](media/azure-stack-solution-template-service-fabric-cluster/image11.png)  
 
-3. Az URL-Címének megkeresése a Service Fabric Explorert, és az ügyfél csatlakozási végpontját, tekintse át a sablon telepítésének eredményeit.
+1. Az URL-Címének megkeresése a Service Fabric Explorert, és az ügyfél csatlakozási végpontját, tekintse át a sablon telepítésének eredményeit.
 
-4. A böngészőben nyissa meg a https://*FQDN*: 19080-as. Cserélje le *FQDN* a 2. lépés a Service Fabric-fürt teljes Tartománynevét.   
+1. A böngészőben nyissa meg a https://*FQDN*: 19080-as. Cserélje le *FQDN* a 2. lépés a Service Fabric-fürt teljes Tartománynevét.   
    Ha korábban már használta egy önaláírt tanúsítványt, kap egy figyelmeztetés, hogy a kapcsolat nem biztonságos. Lépjen a webhely, válassza ki a **több információt**, majd **folytassa a képernyőn látható weblapon**. 
 
-5. A webhely hitelesítéséhez jelöljön ki egy használni kívánt tanúsítványt. Válassza ki **további lehetőségek**, válassza ki a megfelelő tanúsítvány, és kattintson **OK** szeretne csatlakozni a Service Fabric Explorert. 
+1. A webhely hitelesítéséhez jelöljön ki egy használni kívánt tanúsítványt. Válassza ki **további lehetőségek**, válassza ki a megfelelő tanúsítvány, és kattintson **OK** szeretne csatlakozni a Service Fabric Explorert. 
 
    ![Hitelesítés](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 
@@ -194,7 +194,7 @@ Elérheti a Service Fabric-fürthöz a Service Fabric Explorerben vagy a Service
 
 1. Telepítse a *a Microsoft Azure Service Fabric SDK* a [a Windows a fejlesztési környezet előkészítését](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started#install-the-sdk-and-tools) az Azure Service Fabric dokumentációjában.  
 
-2. A telepítés befejezése után ellenőrizze, hogy a Service Fabric-parancsmagok elérhetők-e a PowerShellben a rendszer környezeti változók konfigurálása.  
+1. A telepítés befejezése után ellenőrizze, hogy a Service Fabric-parancsmagok elérhetők-e a PowerShellben a rendszer környezeti változók konfigurálása.  
     
     a. Lépjen a **Vezérlőpult** > **rendszer és biztonság** > **rendszer**, majd válassza ki **Speciális rendszerbeállítások**.  
     
@@ -206,7 +206,7 @@ Elérheti a Service Fabric-fürthöz a Service Fabric Explorerben vagy a Service
 
       ![Környezeti változók listájának](media/azure-stack-solution-template-service-fabric-cluster/image16.png)
 
-3. Miután megváltoztatta a környezeti változók sorrendjét, indítsa újra a PowerShell, és futtassa a következő PowerShell-parancsfájl hozzáfér a Service Fabric-fürthöz:
+1. Miután megváltoztatta a környezeti változók sorrendjét, indítsa újra a PowerShell, és futtassa a következő PowerShell-parancsfájl hozzáfér a Service Fabric-fürthöz:
 
    ````PowerShell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric

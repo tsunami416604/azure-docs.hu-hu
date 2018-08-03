@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: 0de62b6fa05ccad1977e7d98a614e8d601409f5b
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f381285d29d70d6f5da6a6cd319c682cd0c6a235
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390177"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444538"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>A Jenkins használata a fejleszthetők és helyezhetők üzembe Linuxos alkalmazások
 A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához és üzembe helyezéséhez. Ebből a témakörből megtudhatja, hogyan helyezheti üzembe Azure Service Fabric-alkalmazásait a Jenkins használatával.
@@ -26,12 +26,12 @@ A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához 
 Ez a cikk ismerteti a Jenkins-környezet beállítása több lehetséges módjait, valamint a különböző módon helyezheti üzembe a Service Fabric-fürtön alkalmazását követően állították össze. Kövesse az alábbi általános lépéseket sikeresen a Jenkins beállítása, kérje le a módosításokat a Githubról, az alkalmazás létrehozása és üzembe helyezése a fürtön:
 
 1. Győződjön meg arról, hogy telepítse a [Előfeltételek](#prerequisites).
-2. Ezután kövesse az ezekben a szakaszokban a Jenkins beállítása egy lépéseit:
+1. Ezután kövesse az ezekben a szakaszokban a Jenkins beállítása egy lépéseit:
    * [A Jenkins beállítása egy Service Fabric-fürtben](#set-up-jenkins-inside-a-service-fabric-cluster), 
    * [A Jenkins beállítása Service Fabric-fürtön kívül](#set-up-jenkins-outside-a-service-fabric-cluster), vagy
    * [A Service Fabric beépülő modul telepítéséhez egy már létező környezetben Jenkins](#install-service-fabric-plugin-in-an-existing-jenkins-environment).
-3. A Jenkins beállítása után kövesse a [létrehozása és konfigurálása a Jenkins-feladat](#create-and-configure-a-jenkins-job) állítsa be a Githubot a Jenkins eseményindító végrehajtott módosítások az alkalmazás és a Jenkins projekt folyamatot lépést, amely lekéréses konfigurálása a a GitHub változik, és az alkalmazás létrehozása. 
-4. Végül állítsa be a Jenkins feladat utáni lépést, amely az alkalmazás a Service Fabric-fürt üzembe helyezéséhez. Az üzembe helyezése egy fürtön a Jenkins konfigurálása két módja van:    
+1. A Jenkins beállítása után kövesse a [létrehozása és konfigurálása a Jenkins-feladat](#create-and-configure-a-jenkins-job) állítsa be a Githubot a Jenkins eseményindító végrehajtott módosítások az alkalmazás és a Jenkins projekt folyamatot lépést, amely lekéréses konfigurálása a a GitHub változik, és az alkalmazás létrehozása. 
+1. Végül állítsa be a Jenkins feladat utáni lépést, amely az alkalmazás a Service Fabric-fürt üzembe helyezéséhez. Az üzembe helyezése egy fürtön a Jenkins konfigurálása két módja van:    
    * A fejlesztési-tesztelési környezetet használja [konfigurálhatja a telepítést, használja a fürt felügyeleti végpontja](#configure-deployment-using-cluster-management-endpoint). Ez az a legegyszerűbb módszer beállítása.
    * Használja az éles környezetekhez, [konfigurálhatja a telepítést, az Azure-hitelesítőadatokkal](#configure-deployment-using-azure-credentials). A Microsoft javasolja ezt a módszert, az éles környezetekhez, mert az Azure-beli hitelesítő korlátozhatja a hozzáférést, amely rendelkezik egy Jenkins-feladatot az Azure-erőforrások. 
 
@@ -81,10 +81,10 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
    cd jenkins-container-application
    ```
 
-3. A Jenkins-tárolót egy fájlmegosztásban állapotának megőrzése:
+1. A Jenkins-tárolót egy fájlmegosztásban állapotának megőrzése:
    1. Az Azure storage-fiók létrehozása a **ugyanabban a régióban** egy névvel, mint például a fürt `sfjenkinsstorage1`.
-   2. Hozzon létre egy **fájlmegosztás** alatt a storage-fiók nevére például `sfjenkins`.
-   3. Kattintson a **Connect** a fájlmegosztás és megjegyzés az értékeket jeleníti meg a **csatlakozás linuxról**, az érték az alábbihoz hasonlóan kell kinéznie:
+   1. Hozzon létre egy **fájlmegosztás** alatt a storage-fiók nevére például `sfjenkins`.
+   1. Kattintson a **Connect** a fájlmegosztás és megjegyzés az értékeket jeleníti meg a **csatlakozás linuxról**, az érték az alábbihoz hasonlóan kell kinéznie:
 
       ```sh
       sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
@@ -94,14 +94,14 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
    > A csatlakoztatási cifs shares szüksége lesz a cifs-utils csomag, a fürtcsomópontokon telepített.      
    >
 
-4. A helyőrző értékeket az frissítése a `setupentrypoint.sh` szkriptet az azure-storage-adatokkal 2. lépés.
+1. A helyőrző értékeket az frissítése a `setupentrypoint.sh` szkriptet az azure-storage-adatokkal 2. lépés.
    ```sh
    vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
    ```
    * Cserélje le `[REMOTE_FILE_SHARE_LOCATION]` értékkel `//sfjenkinsstorage1.file.core.windows.net/sfjenkins` a csatlakozás a kimenetéből származó a fenti 2. lépésben.
    * Cserélje le `[FILE_SHARE_CONNECT_OPTIONS_STRING]` értékkel `vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777` a fenti 2. lépésben.
 
-5. **Csak a fürt védelme:** 
+1. **Csak a fürt védelme:** 
    
    Az alkalmazások telepítését a Jenkins egy biztonságos fürt konfigurálásához a fürttanúsítványnak a Jenkins-tároló elérhetőnek kell lennie. Az a *ApplicationManifest.xml* a fájlt a **ContainerHostPolicies** címke hozzáadása a tanúsítvány hivatkozást, és frissítse az ujjlenyomat értéket, amely a fürt tanúsítvány.
 
@@ -117,7 +117,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
    </Certificates> 
    ```
 
-6. Csatlakozzon a fürthöz, és a tároló alkalmazás telepítéséhez.
+1. Csatlakozzon a fürthöz, és a tároló alkalmazás telepítéséhez.
 
    **Fürt biztonságossá tétele**
    ```sh
@@ -141,13 +141,13 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
    > Eltarthat néhány percig, le kell tölteni a fürtön a Jenkins kép.
    >
 
-7. Nyissa meg a `http://PublicIPorFQDN:8081` URL-címet a böngészőben. Így megkapja a bejelentkezéshez szükséges kezdeti rendszergazdai jelszó elérési útját. 
-2. Tekintse meg a Service Fabric Explorer állapítható meg, melyik csomópontján fut a Jenkins-tárolót. Secure Shell (SSH) jelentkezzen be ezen a csomóponton.
+1. Nyissa meg a `http://PublicIPorFQDN:8081` URL-címet a böngészőben. Így megkapja a bejelentkezéshez szükséges kezdeti rendszergazdai jelszó elérési útját. 
+1. Tekintse meg a Service Fabric Explorer állapítható meg, melyik csomópontján fut a Jenkins-tárolót. Secure Shell (SSH) jelentkezzen be ezen a csomóponton.
    ```sh
    ssh user@PublicIPorFQDN -p [port]
    ``` 
-3. Kérje le a tároló példányazonosítóját a `docker ps -a` paranccsal.
-4. Secure Shell (SSH) jelentkezzen be a tárolóba, és illessze be a Jenkins portálon látott elérési útja. Például, ha a portálon jelenik meg az elérési út `PATH_TO_INITIAL_ADMIN_PASSWORD`, futtassa a következő parancsokat:
+1. Kérje le a tároló példányazonosítóját a `docker ps -a` paranccsal.
+1. Secure Shell (SSH) jelentkezzen be a tárolóba, és illessze be a Jenkins portálon látott elérési útja. Például, ha a portálon jelenik meg az elérési út `PATH_TO_INITIAL_ADMIN_PASSWORD`, futtassa a következő parancsokat:
 
    ```sh
    docker exec -t -i [first-four-digits-of-container-ID] /bin/bash   # This takes you inside Docker shell
@@ -155,8 +155,8 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
    ```sh
    cat PATH_TO_INITIAL_ADMIN_PASSWORD # This displays the password value
    ```
-5. A Jenkins kezdeti lépések a lapon választhatja ki a Select beépülő modulok telepítése lehetőséget, jelölje be a **nincs** jelölőnégyzetet, majd kattintson a telepítés.
-6. Hozzon létre egy felhasználót vagy rendszergazdaként. a folytatáshoz válasszon
+1. A Jenkins kezdeti lépések a lapon választhatja ki a Select beépülő modulok telepítése lehetőséget, jelölje be a **nincs** jelölőnégyzetet, majd kattintson a telepítés.
+1. Hozzon létre egy felhasználót vagy rendszergazdaként. a folytatáshoz válasszon
 
 Miután beállította a Jenkins, folytassa a [létrehozása és konfigurálása a Jenkins-feladat](#create-and-configure-a-jenkins-job).  
 
@@ -176,23 +176,23 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
 
 ### <a name="steps"></a>Lépések
 1. Kérje le a Service Fabric Jenkins-tárolójának rendszerképét: `docker pull rapatchi/jenkins:latest`. A rendszerképhez előre telepítve van a Service Fabric Jenkins beépülő modulja.
-2. Futtassa a tároló rendszerképét: `docker run -itd -p 8080:8080 rapatchi/jenkins:latest`
-3. Kérje le a tárolórendszerkép-példány azonosítóját. A `docker ps –a` paranccsal az összes Docker-tárolót listázhatja
-4. Jelentkezzen be a Jenkins portálra a következő lépéseket:
+1. Futtassa a tároló rendszerképét: `docker run -itd -p 8080:8080 rapatchi/jenkins:latest`
+1. Kérje le a tárolórendszerkép-példány azonosítóját. A `docker ps –a` paranccsal az összes Docker-tárolót listázhatja
+1. Jelentkezzen be a Jenkins portálra a következő lépéseket:
 
    1. Jelentkezzen be a Jenkins felületére, a gazdagépről. Használja az első négy számjegy, a tároló azonosítója. Például, ha a tárolót azonosító `2d24a73b5964`, használjon `2d24`.
 
       ```sh
       docker exec -it [first-four-digits-of-container-ID] /bin/bash
       ```
-   2. A Jenkins felületére, a rendszergazdai jelszó lekérése a tárolópéldány:
+   1. A Jenkins felületére, a rendszergazdai jelszó lekérése a tárolópéldány:
 
       ```sh
       cat /var/jenkins_home/secrets/initialAdminPassword
       ```      
-   3. Jelentkezzen be a Jenkins-irányítópultra, nyissa meg a következő URL-címet egy webböngészőben: `http://<HOST-IP>:8080`. Az előző lépésben a jelszó használatával Jenkins zárolásának feloldása.
-   4. (Választható.) Első bejelentkezés után létrehozhatja saját felhasználói fiókját, és használja, amely az alábbi lépéseket, vagy továbbra is rendszergazdai fiókot használja. Ha felhasználót hoz létre, az adott felhasználóhoz továbbra is szeretné.
-5. Állítsa be a Githubot a Jenkins a lépéseket követve [új SSH-kulcs létrehozásával és SSH-ügynökhöz adásával](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
+   1. Jelentkezzen be a Jenkins-irányítópultra, nyissa meg a következő URL-címet egy webböngészőben: `http://<HOST-IP>:8080`. Az előző lépésben a jelszó használatával Jenkins zárolásának feloldása.
+   1. (Választható.) Első bejelentkezés után létrehozhatja saját felhasználói fiókját, és használja, amely az alábbi lépéseket, vagy továbbra is rendszergazdai fiókot használja. Ha felhasználót hoz létre, az adott felhasználóhoz továbbra is szeretné.
+1. Állítsa be a Githubot a Jenkins a lépéseket követve [új SSH-kulcs létrehozásával és SSH-ügynökhöz adásával](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
    * A GitHub utasításait követve hozza létre az SSH-kulcsot, majd adja hozzá ahhoz a GitHub-fiókhoz, amelyen az adattár üzemel.
    * Futtassa a fenti hivatkozással elérhető parancsokat a Jenkins Docker-felületén (és ne a saját gazdagépén).
    * Ahhoz, hogy a saját gazdagépéről jelentkezhessen be a Jenkinsbe, használja a következő parancsot:
@@ -210,13 +210,13 @@ Miután beállította a Jenkins, folytassa a következő szakaszban [létrehozá
 A jelen szakaszban ismertetett lépések bemutatják, hogyan konfigurálhatja a Jenkins-feladatot reagálni az igények változásaira, a GitHub-tárházba, beolvassa a módosításokat és hozhatóak létre. Ez a szakasz végén, van irányítva az utolsó lépéseit alapján, hogy telepít egy fejlesztési-tesztelési környezet vagy éles környezetben az alkalmazás központi telepítése a feladat konfigurálása. 
 
 1. A Jenkins irányítópultján kattintson **új elem**.
-2. Adjon nevet az elemnek (pl. **MyJob**). Válassza a **free-style project** (szabad projekt) lehetőséget, majd kattintson az **OK** gombra.
-3. A feladat konfigurálása lapon nyílik meg. (A konfiguráció lekérése a Jenkins-irányítópultra, kattintson a feladat, és kattintson **konfigurálása**).
+1. Adjon nevet az elemnek (pl. **MyJob**). Válassza a **free-style project** (szabad projekt) lehetőséget, majd kattintson az **OK** gombra.
+1. A feladat konfigurálása lapon nyílik meg. (A konfiguráció lekérése a Jenkins-irányítópultra, kattintson a feladat, és kattintson **konfigurálása**).
 
-4. Az a **általános** lapra, jelölje be a **GitHub-projekt**, és adja meg a GitHub-projekt URL-CÍMÉT. Ez az URL-cím üzemelteti azt a Service Fabric Java-alkalmazást, amelyet integrálni szeretne a Jenkins folyamatos integrációs és üzembe helyezési (CI/CD) folyamatával (például: `https://github.com/{your-github-account}/service-fabric-java-getting-started`).
+1. Az a **általános** lapra, jelölje be a **GitHub-projekt**, és adja meg a GitHub-projekt URL-CÍMÉT. Ez az URL-cím üzemelteti azt a Service Fabric Java-alkalmazást, amelyet integrálni szeretne a Jenkins folyamatos integrációs és üzembe helyezési (CI/CD) folyamatával (például: `https://github.com/{your-github-account}/service-fabric-java-getting-started`).
 
-5. Az a **Source Code Management** lapon jelölje be **Git**. Adja meg annak az adattárnak az URL-címét, amely a Jenkins CI/CD folyamatával integrálni kívánt Service Fabric Java-alkalmazást tartalmazza (például: `https://github.com/{your-github-account}/service-fabric-java-getting-started`). Melyik ágat kívánja létrehozni is megadhat (például `/master`).
-6. Konfigurálja a *GitHub* kommunikáció a Jenkinsszel tárházat:
+1. Az a **Source Code Management** lapon jelölje be **Git**. Adja meg annak az adattárnak az URL-címét, amely a Jenkins CI/CD folyamatával integrálni kívánt Service Fabric Java-alkalmazást tartalmazza (például: `https://github.com/{your-github-account}/service-fabric-java-getting-started`). Melyik ágat kívánja létrehozni is megadhat (például `/master`).
+1. Konfigurálja a *GitHub* kommunikáció a Jenkinsszel tárházat:
 
    a. A GitHub-adattár oldalát, lépjen a **beállítások** > **Integrációk és szolgáltatások**.
 
@@ -226,8 +226,8 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan konfigurálhatja a 
 
    d. A Jenkins-példányra egy tesztesemény érkezik. A GitHubban egy zöld pipa jelenik meg a webhook mellett, és a projekt létrejön.
 
-7. Az a **hozhat létre eseményindítókat** Jenkins lapra, válassza ki a kívánt felépítési. Ebben a példában a buildelés kiváltása, valahányszor az adattárba egy leküldéses történik, ezért kattintson kívánt **GitHub hook trigger for GITScm lekérdezés**. (Korábban ez **Build when a change is pushed to GitHub** (Felépítés módosítások GitHubon való közzétételekor) volt.)
-8. Az a **összeállítása** lapon, tegye a következők egyikét attól függően, hogy egy Java-alkalmazás vagy egy .NET Core-alkalmazást készít:
+1. Az a **hozhat létre eseményindítókat** Jenkins lapra, válassza ki a kívánt felépítési. Ebben a példában a buildelés kiváltása, valahányszor az adattárba egy leküldéses történik, ezért kattintson kívánt **GitHub hook trigger for GITScm lekérdezés**. (Korábban ez **Build when a change is pushed to GitHub** (Felépítés módosítások GitHubon való közzétételekor) volt.)
+1. Az a **összeállítása** lapon, tegye a következők egyikét attól függően, hogy egy Java-alkalmazás vagy egy .NET Core-alkalmazást készít:
 
    * **A Java-alkalmazások:** származó a **felépítési lépés hozzáadása** legördülő menüben válassza **Invoke Gradle Script**. Kattintson a **speciális**. A Speciális menüben adja meg az elérési útját **fő felépítési szkript** az alkalmazáshoz. A rendszer felveszi a build.gradle elemet a megadott elérési útból, és annak megfelelően működik. Az a [ActorCounter alkalmazás](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter), ez a: `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`.
 
@@ -244,7 +244,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan konfigurálhatja a 
 
       ![Service Fabric, Jenkins felépítési művelet][build-step-dotnet]
 
-9. Helyezze üzembe az alkalmazást a felépítés utáni műveletek a Service Fabric-fürtön a Jenkins konfigurálásához kell a fürt tanúsítvány helyét a Jenkins-tárolót. Válassza ki a következők egyikét attól függően, hogy a Jenkins-tárolót belül vagy kívül a fürt fut, és jegyezze fel a fürt tanúsítvány helye:
+1. Helyezze üzembe az alkalmazást a felépítés utáni műveletek a Service Fabric-fürtön a Jenkins konfigurálásához kell a fürt tanúsítvány helyét a Jenkins-tárolót. Válassza ki a következők egyikét attól függően, hogy a Jenkins-tárolót belül vagy kívül a fürt fut, és jegyezze fel a fürt tanúsítvány helye:
 
    * **A fürtben futó jenkins:** a tanúsítvány elérési útjának értékét echo találhatók a *Certificates_JenkinsOnSF_Code_MyCert_PEM* környezeti változót, a tárolóban.
 
@@ -265,8 +265,8 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan konfigurálhatja a 
          openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
          ``` 
 
-      2. A Jenkins-tárolót a tárolót azonosító lekéréséhez futtassa `docker ps` a gazdagépről.
-      3. Másolja a PEM-fájl az a következő paranccsal Docker-tároló:
+      1. A Jenkins-tárolót a tárolót azonosító lekéréséhez futtassa `docker ps` a gazdagépről.
+      1. Másolja a PEM-fájl az a következő paranccsal Docker-tároló:
     
          ```sh
          docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
@@ -281,15 +281,15 @@ Majdnem kész! Ne zárja be a Jenkins-feladatot. Csak a többi feladat, hogy az 
 Fejlesztési-tesztelési környezetet az alkalmazás üzembe helyezéséhez használhatja a fürt felügyeleti végpontját. A lehető legkevesebb beállítás konfigurálása a felépítés utáni művelet a fürt felügyeleti végpontját az alkalmazás üzembe helyezéséhez szükséges. Ha egy éles környezetbe helyezi üzembe, folytassa a [konfigurálhatja a telepítést, az Azure-hitelesítőadatokkal](#configure-deployment-using-azure-credentials) konfigurálhatja egy Azure Active Directory szolgáltatás egyszerű üzembe helyezés során használni.    
 
 1. A Jenkins-feladatot, kattintson a **felépítés utáni műveletekben** fülre. 
-2. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. 
-3. A **Service Fabric-fürtkonfiguráció**, jelölje be a **töltse ki a Service Fabric felügyeleti végpontja** választógombot.
-4. A **felügyeleti futtató**, adja meg a kapcsolati végpont a fürtben – például `{your-cluster}.eastus.cloudapp.azure.com`.
-5. A **Ügyfélkulcsot** és **ügyféltanúsítvány**, adja meg a PEM-fájl helyét a Jenkins-tárolót; például `/var/jenkins_home/clustercert.pem`. (Utolsó lépésében a tanúsítvány helye kimásolt [létrehozása és konfigurálása a Jenkins-feladat](#create-and-configure-a-jenkins-job).)
-6. Alatt **Alkalmazáskonfiguráció**, konfigurálja a **alkalmazásnév**, **alkalmazástípus**, (relatív) és **Application Manifestelérésiútja** mezőket.
+1. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. 
+1. A **Service Fabric-fürtkonfiguráció**, jelölje be a **töltse ki a Service Fabric felügyeleti végpontja** választógombot.
+1. A **felügyeleti futtató**, adja meg a kapcsolati végpont a fürtben – például `{your-cluster}.eastus.cloudapp.azure.com`.
+1. A **Ügyfélkulcsot** és **ügyféltanúsítvány**, adja meg a PEM-fájl helyét a Jenkins-tárolót; például `/var/jenkins_home/clustercert.pem`. (Utolsó lépésében a tanúsítvány helye kimásolt [létrehozása és konfigurálása a Jenkins-feladat](#create-and-configure-a-jenkins-job).)
+1. Alatt **Alkalmazáskonfiguráció**, konfigurálja a **alkalmazásnév**, **alkalmazástípus**, (relatív) és **Application Manifestelérésiútja** mezőket.
 
    ![Service Fabric Jenkins felépítés utáni művelet felügyeleti végpont konfigurálása](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-endpoint.png)
 
-7. Kattintson a **konfigurációjának ellenőrzése**. Kattintson az ellenőrzés sikeres **mentése**. A Jenkins-feladat folyamat most már teljes körűen konfigurálva. Folytassa a [további lépések](#next-steps) az üzemelő példány teszteléséhez.
+1. Kattintson a **konfigurációjának ellenőrzése**. Kattintson az ellenőrzés sikeres **mentése**. A Jenkins-feladat folyamat most már teljes körűen konfigurálva. Folytassa a [további lépések](#next-steps) az üzemelő példány teszteléséhez.
 
 ## <a name="configure-deployment-using-azure-credentials"></a>Az Azure-hitelesítőadatokkal üzemelő példányának konfigurálása
 Éles környezetben az alkalmazások üzembe helyezése az Azure hitelesítő erősen ajánlott. Ez a szakasz bemutatja, hogyan konfigurálhatja egy Azure Active Directory-szolgáltatásnevet a felépítés utáni művelet az alkalmazás telepítéséhez. Szolgáltatásnevek rendelhet szerepköröket, a Jenkins-feladat az engedélyek korlátozására a címtárban. 
@@ -303,26 +303,26 @@ Fejlesztési és tesztelési környezetek esetében konfigurálhatja az Azure hi
    * Az a [létrehozása az Azure Active Directory-alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) a szakaszban adhatja meg minden olyan megfelelően formázott URL-CÍMÉT a **bejelentkezési URL-**.
    * Az a [rendelje hozzá az alkalmazást egy szerepkörhöz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) területen rendelhet hozzá az alkalmazás a *olvasó* szerepkör az az erőforráscsoport, a fürt számára.
 
-2. A Jenkins-feladatot, kattintson a **felépítés utáni műveletekben** fülre.
-3. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. 
-4. A **Service Fabric-fürtkonfiguráció**, jelölje be a **válassza ki a Service Fabric-fürt** választógombot. Kattintson a **Hozzáadás** melletti **Azure hitelesítő adatok**. Kattintson a **Jenkins** jelölje be a Jenkins-hitelesítő adatok szolgáltató.
-5. Válassza ki a Jenkins-hitelesítő adatok szolgáltató **a Microsoft Azure egyszerű szolgáltatás** származó a **Kind** legördülő.
-6. A mentett beállításakor mentése az egyszerű szolgáltatást az 1. lépésben a következő mezők beállítása értékeket használja:
+1. A Jenkins-feladatot, kattintson a **felépítés utáni műveletekben** fülre.
+1. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. 
+1. A **Service Fabric-fürtkonfiguráció**, jelölje be a **válassza ki a Service Fabric-fürt** választógombot. Kattintson a **Hozzáadás** melletti **Azure hitelesítő adatok**. Kattintson a **Jenkins** jelölje be a Jenkins-hitelesítő adatok szolgáltató.
+1. Válassza ki a Jenkins-hitelesítő adatok szolgáltató **a Microsoft Azure egyszerű szolgáltatás** származó a **Kind** legördülő.
+1. A mentett beállításakor mentése az egyszerű szolgáltatást az 1. lépésben a következő mezők beállítása értékeket használja:
 
    * **Ügyfél-azonosító**: *alkalmazás azonosítója*
    * **Titkos Ügyfélkód**: *Alkalmazáskulcs*
    * **Bérlőazonosító**: *címtár-azonosító*
    * **Előfizetés-azonosító**: *előfizetés-azonosító*
-6. Adjon meg egy leíró **azonosító** segítségével válassza ki a hitelesítő adatokat a Jenkins és a egy rövid **leírás**. Kattintson a **egyszerű szolgáltatás ellenőrzése**. Ha az ellenőrzés sikeres, kattintson a **Hozzáadás**.
+1. Adjon meg egy leíró **azonosító** segítségével válassza ki a hitelesítő adatokat a Jenkins és a egy rövid **leírás**. Kattintson a **egyszerű szolgáltatás ellenőrzése**. Ha az ellenőrzés sikeres, kattintson a **Hozzáadás**.
 
    ![A Jenkins Service Fabric adja meg Azure hitelesítő adatait](./media/service-fabric-cicd-your-linux-application-with-jenkins/enter-azure-credentials.png)
-7. Vissza csoportban **Service Fabric-fürtkonfiguráció**, győződjön meg arról, hogy az új hitelesítő adat van kiválasztva a **Azure hitelesítő adatok**. 
-8. Az a **erőforráscsoport** legördülő menüben válassza ki az erőforráscsoportot, a fürt számára az alkalmazás számára telepíteni kívánja.
-9. Az a **Service Fabric** legördülő menüben válassza ki a fürtöt, amelyre az alkalmazást telepíteni kívánja.
-10. A **Ügyfélkulcsot** és **Client Cert**, írja be a Jenkins-tárolót a PEM-fájl helyét. Például: `/var/jenkins_home/clustercert.pem`. 
-11. Alatt **Alkalmazáskonfiguráció**, konfigurálja a **alkalmazásnév**, **alkalmazástípus**, (relatív) és **Application Manifestelérésiútja** mezőket.
+1. Vissza csoportban **Service Fabric-fürtkonfiguráció**, győződjön meg arról, hogy az új hitelesítő adat van kiválasztva a **Azure hitelesítő adatok**. 
+1. Az a **erőforráscsoport** legördülő menüben válassza ki az erőforráscsoportot, a fürt számára az alkalmazás számára telepíteni kívánja.
+1. Az a **Service Fabric** legördülő menüben válassza ki a fürtöt, amelyre az alkalmazást telepíteni kívánja.
+1. A **Ügyfélkulcsot** és **Client Cert**, írja be a Jenkins-tárolót a PEM-fájl helyét. Például: `/var/jenkins_home/clustercert.pem`. 
+1. Alatt **Alkalmazáskonfiguráció**, konfigurálja a **alkalmazásnév**, **alkalmazástípus**, (relatív) és **Application Manifestelérésiútja** mezőket.
     ![Az Azure hitelesítő adatok beállítása a Service Fabric Jenkins felépítés utáni művelet](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
-12. Kattintson a **konfigurációjának ellenőrzése**. Kattintson az ellenőrzés sikeres **mentése**. A Jenkins-feladat folyamat most már teljes körűen konfigurálva. Továbbra is a [további lépések](#next-steps) az üzemelő példány teszteléséhez.
+1. Kattintson a **konfigurációjának ellenőrzése**. Kattintson az ellenőrzés sikeres **mentése**. A Jenkins-feladat folyamat most már teljes körűen konfigurálva. Továbbra is a [további lépések](#next-steps) az üzemelő példány teszteléséhez.
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Hibaelhárítás a Jenkins beépülő modul
 
