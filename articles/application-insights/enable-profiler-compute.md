@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 9eb99ecea8efbbce322e61ac281cd534a112728b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950670"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424024"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Application Insights Profiler engedélyezése az Azure virtuális gépek, Service Fabric és az Azure Cloud Services
 
@@ -44,11 +44,11 @@ Teljes mértékű engedélyezéséhez Profiler, módosítania kell a három hely
 
 1. [Hozzon létre egy új Application Insights-erőforrást](https://docs.microsoft.com/azure/application-insights/app-insights-create-new-resource), vagy válasszon ki egy meglévőt. 
 
-2. Nyissa meg az Application Insights-erőforrást, és másolja a kialakítási kulcsot.
+1. Nyissa meg az Application Insights-erőforrást, és másolja a kialakítási kulcsot.
 
    ![A kialakítási kulcs helyét](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. A Profiler az Application Insights-példány beállításának befejezéséhez, hajtsa végre az eljárást, itt olvashat [Profiler engedélyezése. Nem kell összekapcsolni a webalkalmazásokat, mivel az app services-erőforrás a lépéseket. Győződjön meg arról, hogy a Profiler engedélyezve van az a **Profiler konfigurálása** ablaktáblán.
+1. A Profiler az Application Insights-példány beállításának befejezéséhez, hajtsa végre az eljárást, itt olvashat [Profiler engedélyezése. Nem kell összekapcsolni a webalkalmazásokat, mivel az app services-erőforrás a lépéseket. Győződjön meg arról, hogy a Profiler engedélyezve van az a **Profiler konfigurálása** ablaktáblán.
 
 
 ## <a name="set-up-the-application-source-code"></a>Az alkalmazás forráskódja beállítása
@@ -74,7 +74,7 @@ Az előző lépés végrehajtása, ha az alkalmazás mellett *nem* egy ASP.NET- 
         ```
       A globális kialakítási kulcs konfigurálásával kapcsolatban további információkért lásd: [az Application Insights használata a Service Fabric](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  2. A bármely alakítsa ki, a hozzáadni kívánt kódrészleteket egy `StartOperation<RequestTelemetry>` **USING** utasítás körülötte, az alábbi példában látható módon:
+  1. A bármely alakítsa ki, a hozzáadni kívánt kódrészleteket egy `StartOperation<RequestTelemetry>` **USING** utasítás körülötte, az alábbi példában látható módon:
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -143,7 +143,7 @@ Teljes példákért lásd:
 Állítsa be a környezetet, tegye a következőket:
 1. Győződjön meg arról, hogy használja a [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb, elegendő ahhoz, hogy erősítse meg, hogy a telepített operációs rendszer `Windows Server 2012 R2` vagy újabb.
 
-2. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) kiterjesztése a központi telepítési sablont a fájlt, és ezután adja hozzá a következő `SinksConfig` szegmensben, mint a gyermekelemet `WadCfg`. Cserélje le a `ApplicationInsightsProfiler` tulajdonság értékét a saját Application Insights-kialakítási kulcsot:  
+1. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) kiterjesztése a központi telepítési sablont a fájlt, és ezután adja hozzá a következő `SinksConfig` szegmensben, mint a gyermekelemet `WadCfg`. Cserélje le a `ApplicationInsightsProfiler` tulajdonság értékét a saját Application Insights-kialakítási kulcsot:  
 
       ```json
       "SinksConfig": {
@@ -165,13 +165,13 @@ Teljes példákért lásd:
 
 1. Győződjön meg arról, hogy használja a [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) , vagy később ellenőrizheti, hogy elegendő a *ServiceConfiguration.\*. cscfg* fájlok egy `osFamily` érték "5" vagy újabb verzió.
 
-2. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* fájlt az alkalmazás-szerepkörökhöz az itt látható módon:  
+1. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* fájlt az alkalmazás-szerepkörökhöz az itt látható módon:  
 
    ![A diagnosztika konfigurációs fájl helye](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
 
    Ha a fájl nem található, további információk az Azure Cloud Services-projektben a diagnosztikai bővítmény engedélyezése: [diagnosztika beállítása az Azure Cloud Services és virtual machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
 
-3. Adja hozzá a következő `SinksConfig` szegmensben, mint a gyermekelemet `WadCfg`:  
+1. Adja hozzá a következő `SinksConfig` szegmensben, mint a gyermekelemet `WadCfg`:  
 
       ```xml
       <WadCfg>
@@ -212,7 +212,7 @@ Teljes példákért lásd:
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-2. Ha az importálni kívánt alkalmazást futtató [IIS](https://www.microsoft.com/web/downloads/platform.aspx), engedélyezze a `IIS Http Tracing` Windows-szolgáltatást az alábbiak szerint:  
+1. Ha az importálni kívánt alkalmazást futtató [IIS](https://www.microsoft.com/web/downloads/platform.aspx), engedélyezze a `IIS Http Tracing` Windows-szolgáltatást az alábbiak szerint:  
 
    a. Állítsa be a környezeti távoli elérését, és használja a [hozzáadása Windows-szolgáltatások]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ablakban, vagy futtassa a következő parancsot a PowerShellben (rendszergazdaként):  
 
